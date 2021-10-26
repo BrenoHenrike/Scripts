@@ -6,7 +6,7 @@ public class CoreNulgath
 	public ScriptInterface Bot => ScriptInterface.Instance;
 
 	public CoreBots Core = new CoreBots();
-	public CoreFarm Farm = new CoreFarm();
+	public CoreFarms Farm = new CoreFarms();
 
 	/// <summary>
 	/// Crag & Bamboozle name in game

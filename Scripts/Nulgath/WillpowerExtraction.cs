@@ -1,5 +1,5 @@
 ﻿//cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarm.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 using RBot;
 
@@ -7,7 +7,7 @@ public class WillpowerExtraction
 {
 	public ScriptInterface Bot = ScriptInterface.Instance;
 	public CoreBots Core = new CoreBots();
-	public CoreFarm Farm = new CoreFarm();
+	public CoreFarms Farm = new CoreFarms();
 	public CoreNulgath Nulgath = new CoreNulgath();
 
 	public void ScriptMain(ScriptInterface bot)

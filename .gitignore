@@ -1,4 +1,5 @@
 .vs
+packages
 *.csproj
 *.sln
 *.config
@@ -6,8 +7,4 @@ bin
 obj
 Properties
 LordsofChaos
-Farm
-Hollowborn
-SDKA
 Test.cs
-*.csproj

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>BrenoHenrike RBot Base</Title>
+      <Shortcut>rbcore</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[using RBot;
+
+public class $ScriptName$ {
+
+	public void ScriptMain(ScriptInterface bot){
+		Core.SetOptions();
+		
+		$end$
+    
+    Core.SetOptions(false);
+	}
+}]]>
+      </Code>
+      <Declarations>
+        <Literal>
+          <ID>ScriptName</ID>
+          <ToolTip>Name of the Class.</ToolTip>
+          <Default>Script</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

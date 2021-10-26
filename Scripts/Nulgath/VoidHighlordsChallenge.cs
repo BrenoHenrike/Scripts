@@ -1,5 +1,5 @@
 ﻿//cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarm.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 using RBot;
@@ -11,7 +11,7 @@ public class VoidHighlordsChallenge
 	public CoreBots Core = new CoreBots();
 	public CoreNulgath Nulgath = new CoreNulgath();
 	public CoreDailys Dailys = new CoreDailys();
-	public CoreFarm Farm = new CoreFarm();
+	public CoreFarms Farm = new CoreFarms();
 
 	List<string> drops = new List<string>();
 

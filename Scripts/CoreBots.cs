@@ -1,5 +1,8 @@
 ﻿using RBot;
+using RBot.Items;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 public class CoreBots
@@ -45,10 +48,12 @@ public class CoreBots
 
 	#region Inventory
 	/// <summary>
-	/// Returns whether the item exists in the desired quantity either in the inventory or bank, if in bank moves it to inv
+	/// Check the Bank and Inventory for the item
 	/// </summary>
-	/// <param name="item">Name of the item to check</param>
-	/// <param name="quant">Quantity needed of the item</param>
+	/// <param name="item">Name of the item</param>
+	/// <param name="quant">Desired quantity</param>
+	/// <param name="toInv">Whether or not send the item to Inventory</param>
+	/// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
 	public bool CheckInventory(string item, int quant = 1, bool toInv = true)
 	{
 		if (Bot.Bank.Contains(item))
@@ -65,7 +70,35 @@ public class CoreBots
 		if (Bot.Inventory.Contains(item, quant))
 			return true;
 		return false;
-	} 
+	}
+
+	/// <summary>
+	/// Checks the Bank and Inventory for the item with it's ID
+	/// </summary>
+	/// <param name="itemID">ID of the item to verify</param>
+	/// <param name="quant">Desired quantity</param>
+	/// <param name="toInv">Whether or not send the item to Inventory</param>
+	/// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
+	public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
+	{
+		string item = Bot.Bank.BankItems.Find(i => i.ID == itemID).Name;
+		if (item == null || item == "")
+			return false;
+		if (Bot.Bank.Contains(item))
+		{
+			if (!toInv)
+				return true;
+			JumpWait();
+			Bot.Player.OpenBank();
+			Bot.Bank.ToInventory(item);
+			Bot.Wait.ForBankToInventory(item);
+			Logger($"{item} moved from bank");
+			Bot.Sleep(ActionDelay);
+		}
+		if (Bot.Inventory.Contains(item, quant))
+			return true;
+		return false;
+	}
 
 	/// <summary>
 	/// Move items from bank to inventory
