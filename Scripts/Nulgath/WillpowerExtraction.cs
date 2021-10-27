@@ -37,15 +37,11 @@ public class WillpowerExtraction
 		{
 			if (Bot.Player.Gold < 50000)
 				Farm.BattleGroundE(60000);
-			Bot.Player.Join("Shadowfall");
-			Bot.Shops.BuyItem(89, "Shadow Lich");
+			Core.BuyItem("shadowfall", 89, "Shadow Lich");
 		}
 
 		if (!Core.CheckInventory("Mystic Tribal Sword"))
-		{
-			Bot.Player.Join("arcangrove");
-			Bot.Shops.BuyItem(214, "Mystic Tribal Sword");
-		}
+			Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
 		if (Core.CheckInventory(Nulgath.CragName))
 			Nulgath.BambloozevsDrudgen("Unidentified 19");

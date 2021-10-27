@@ -48,16 +48,16 @@ public class NulgathDemandsWork
 				Nulgath.SwindleBulk(50);
 				Nulgath.EssenceofDefeatReagent(45);
 				Nulgath.Supplies("Voucher of Nulgath (non-mem)");
-				if(Core.CheckInventory("Gem of Nulgath", 15))
+				if (!Core.CheckInventory("Gem of Nulgath", 15))
 					Nulgath.VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
-				if (Core.CheckInventory("Gem of Nulgath", 15))
+				if (!Core.CheckInventory("Gem of Nulgath", 15))
 					Nulgath.VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
 				Nulgath.KisstheVoid(2);
 			}
 
 			Nulgath.Supplies("Unidentified 26");
 
-			if (Core.CheckInventory("Unidentified 27"))
+			if (!Core.CheckInventory("Unidentified 27"))
 			{
 				Core.EnsureAccept(584);
 				Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
@@ -66,26 +66,24 @@ public class NulgathDemandsWork
 
 			Nulgath.ApprovalAndFavor(50, 200);
 			Farm.BattleGroundE(100000);
-			bot.Player.Join("evilwarnul");
-			bot.Player.Jump("Enter", "Spawn");
-			bot.Shops.BuyItem(456, "Golden Hanzo Void");
+			Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
 
-			if (!Core.CheckInventory("DoomLord's War Mask"))
+			if (!Core.CheckInventory("DoomLord's War Mask", toInv: false))
 			{
 				Core.EnsureComplete(5259, 35399);
 				bot.Player.Pickup("DoomLord's War Mask", "Unidentified 35", "Archfiend Essence Fragment");
 			}
-			else if (!Core.CheckInventory("ShadowFiend Cloak"))
+			else if (!Core.CheckInventory("ShadowFiend Cloak", toInv: false))
 			{
 				Core.EnsureComplete(5259, 35400);
 				bot.Player.Pickup("ShadowFiend Cloak", "Unidentified 35", "Archfiend Essence Fragment");
 			}
-			else if (!Core.CheckInventory("Locks of the DoomLord"))
+			else if (!Core.CheckInventory("Locks of the DoomLord", toInv: false))
 			{
 				Core.EnsureComplete(5259, 35401);
 				bot.Player.Pickup("Locks of the DoomLord", "Unidentified 35", "Archfiend Essence Fragment");
 			}
-			else if (!Core.CheckInventory("Doomblade of Destruction"))
+			else if (!Core.CheckInventory("Doomblade of Destruction", toInv: false))
 			{
 				Core.EnsureComplete(5259, 35398);
 				bot.Player.Pickup("Doomblade of Destruction", "Unidentified 35", "Archfiend Essence Fragment");

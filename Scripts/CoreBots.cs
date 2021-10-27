@@ -46,6 +46,41 @@ public class CoreBots
 			Bot.Skills.StopTimer();
 	}
 
+	public void SendPackets(string packet, int times = 1)
+	{
+		for (int i = 0; i < times; i++)
+			Bot.SendPacket(packet);
+	}
+
+	public void BuyItem(string map, int shopID, string itemName, int quant = 1)
+	{
+		if (CheckInventory(itemName, quant))
+			return;
+		Bot.Player.Join(map);
+		int quantB = quant - Bot.Inventory.GetQuantity(itemName);
+		quant = quantB < 0 ? quant : quantB;
+		for (int i = 0; i < quant; i++)
+		{
+			Bot.Shops.BuyItem(shopID, itemName);
+			Bot.Sleep(ActionDelay);
+		}
+	}
+
+	public void BuyItem(string map, int shopID, int itemID, int quant = 1)
+	{
+		if (CheckInventory(itemID, quant))
+			return;
+		InventoryItem item = Bot.Inventory.Items.Find(i => i.ID == itemID);
+		Bot.Player.Join(map);
+		int quantB = quant - Bot.Inventory.GetQuantity(item == null ? "any" : item.Name);
+		quant = quantB < 0 ? quant : quantB;
+		for (int i = 0; i < quant; i++)
+		{
+			Bot.Shops.BuyItem(shopID, itemID);
+			Bot.Sleep(ActionDelay);
+		}
+	}
+
 	#region Inventory
 	/// <summary>
 	/// Check the Bank and Inventory for the item
@@ -81,21 +116,21 @@ public class CoreBots
 	/// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
 	public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
 	{
-		string item = Bot.Bank.BankItems.Find(i => i.ID == itemID).Name;
-		if (item == null || item == "")
+		InventoryItem item = Bot.Bank.BankItems.Find(i => i.ID == itemID);
+		if (item == null)
 			return false;
-		if (Bot.Bank.Contains(item))
+		if (Bot.Bank.Contains(item.Name))
 		{
 			if (!toInv)
 				return true;
 			JumpWait();
 			Bot.Player.OpenBank();
-			Bot.Bank.ToInventory(item);
-			Bot.Wait.ForBankToInventory(item);
-			Logger($"{item} moved from bank");
+			Bot.Bank.ToInventory(item.Name);
+			Bot.Wait.ForBankToInventory(item.Name);
+			Logger($"{item.Name} moved from bank");
 			Bot.Sleep(ActionDelay);
 		}
-		if (Bot.Inventory.Contains(item, quant))
+		if (Bot.Inventory.Contains(item.Name, quant))
 			return true;
 		return false;
 	}
