@@ -214,7 +214,20 @@ public class CoreBots
 		if (Bot.Quests.IsInProgress(questID))
 			return true;
 		JumpWait();
+		Bot.Sleep(ActionDelay);
 		return Bot.Quests.EnsureAccept(questID);
+	}
+
+	public void EnsureAccept(params int[] questIDs)
+	{
+		JumpWait();
+		foreach (int quest in questIDs)
+		{
+			if (Bot.Quests.IsInProgress(quest))
+				continue;
+			Bot.Sleep(ActionDelay);
+			Bot.Quests.EnsureAccept(quest);
+		}
 	}
 
 	/// <summary>
@@ -225,7 +238,18 @@ public class CoreBots
 	public bool EnsureComplete(int questID, int itemID = -1)
 	{
 		JumpWait();
+		Bot.Sleep(ActionDelay);
 		return Bot.Quests.EnsureComplete(questID, itemID);
+	}
+
+	public void EnsureComplete(params int[] questIDs)
+	{
+		JumpWait();
+		foreach (int quest in questIDs)
+		{
+			Bot.Sleep(ActionDelay);
+			Bot.Quests.EnsureComplete(quest);
+		}
 	}
 
 	/// <summary>
@@ -237,9 +261,7 @@ public class CoreBots
 	{
 		JumpWait();
 		Bot.Quests.EnsureAccept(questID);
-		Bot.Sleep(ActionDelay);
 		Bot.Quests.EnsureComplete(questID, itemID);
-		Bot.Sleep(ActionDelay);
 	}
 	#endregion
 
@@ -287,6 +309,21 @@ public class CoreBots
 			Bot.Player.Hunt(monster);
 		else
 			Bot.Player.HuntForItem(monster, item, quant, isTemp);
+	}
+
+	public void KillEscherion(string item, int quant = 1, bool isTemp = false, bool removeHandler = true)
+	{
+		if(!Bot.Handlers.Where(h => h.Name == "escherion").Any())
+		{
+			Bot.RegisterHandler(5, b =>
+			{
+				if (b.Monsters.CurrentMonsters.Where(m => m.Alive).Count() > 1)
+					b.Player.Kill("Staff of Inversion");
+			}, "escherion");
+		}
+		KillMonster("escherion", "Boss", "Left", "Escherion", item, quant, isTemp);
+		if(removeHandler)
+			Bot.Handlers.RemoveAll(h => h.Name == "escherion");
 	}
 	#endregion
 

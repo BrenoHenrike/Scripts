@@ -15,15 +15,7 @@ public class DirtyDeedsDoneDirtCheap
 		Core.CheckInventory("Blood Gem of the Archfiend");
 
 		if(!Core.CheckInventory("Emerald Pickaxe"))
-		{
-			bot.RegisterHandler(5, b =>
-			{
-				if (b.Monsters.CurrentMonsters.Where(m => m.Alive).Count() > 1)
-					b.Player.Kill("Staff of Inversion");
-			}, "escherion");
-			Core.KillMonster("escherion", "Boss", "Left", "Escherion", "Emerald Pickaxe", 1, false);
-			bot.Handlers.RemoveAll(h => h.Name == "escherion");
-		}
+			Core.KillEscherion("Emeral Pickaxe");
 
 		if(!Core.CheckInventory("Seraphic Grave Digger Spade"))
 			Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);

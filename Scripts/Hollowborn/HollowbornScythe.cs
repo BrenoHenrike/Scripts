@@ -36,8 +36,7 @@ public class HollowbornScythe
 			Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 250, false);
 			Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone Dust", 2000);
 			Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 2, false);
-			bot.Player.Join("shadowrealm");
-			bot.Shops.BuyItem(1889, "Hollowborn Reaper's Minion");
+			Core.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Minion");
 		}
 
 		//Daggers, Kamas, Kama
@@ -58,8 +57,7 @@ public class HollowbornScythe
 					bot.Shops.BuyItem(1951, "Unmoulded Fiend Essence");
 					bot.Wait.ForItemBuy();
 				}
-				bot.Player.Join("shadowrealm");
-				bot.Shops.BuyItem(1889, reqName[i]);
+				Core.BuyItem("shadowrealm", 1889, reqName[i]);
 			} 
 		}
 		Core.Logger("All necessary items acquired");

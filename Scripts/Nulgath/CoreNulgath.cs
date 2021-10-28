@@ -120,11 +120,6 @@ public class CoreNulgath
 			return;
 		Core.AddDrop(tercessBags);
 		int i = 1;
-		Bot.RegisterHandler(5, b =>
-		{
-			if (b.Monsters.CurrentMonsters.Where(m => m.Alive).Count() > 1)
-				b.Player.Kill("Staff of Inversion");
-		}, "escherion");
 		Core.Logger($"Farming {quant} Dark Crystal Shard");
 		while (!Bot.Inventory.Contains("Dark Crystal Shard", quant))
 		{
@@ -137,7 +132,7 @@ public class CoreNulgath
 				Core.HuntMonster("stalagbite", "Vath", "Strand of Vath's Hair", 1, false);
 			}
 			Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
-			Core.HuntMonster("escherion", "Escherion", "Escherion's Chain", 1, false);
+			Core.KillEscherion("Escherion's Chain", removeHandler: false);
 			if (!Core.CheckInventory("Defeated Makai", 50))
 			{
 				JoinTercessuinotlim();
@@ -424,11 +419,6 @@ public class CoreNulgath
 	{
 		if (Core.CheckInventory(item, quant))
 			return;
-		Bot.RegisterHandler(5, b =>
-		{
-			if (b.Monsters.CurrentMonsters.Where(m => m.Alive).Count() > 1)
-				b.Player.Kill("Staff of Inversion");
-		}, "escherion");
 		Core.AddDrop("Escherion's Helm");
 		Core.CheckInventory("Escherion's Helm");
 		Core.Logger($"Farming {quant} {item}");
@@ -436,7 +426,7 @@ public class CoreNulgath
 		while(!Bot.Inventory.Contains(item, quant))
 		{
 			Core.EnsureAccept(2857);
-			Core.KillMonster("escherion", "Boss", "Left", "Escherion", "Escherion's Helm", 1, false);
+			Core.KillEscherion("Escherion's Helm", removeHandler: false);
 			Core.EnsureComplete(2857);
 			Core.Logger($"Completed x{i}");
 			i++;
