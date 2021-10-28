@@ -54,19 +54,24 @@ public class NulgathDemandsWork
 					Nulgath.VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
 				Nulgath.KisstheVoid(2);
 			}
-
 			Nulgath.Supplies("Unidentified 26");
+			Core.Logger("All miscs collected");
 
 			if (!Core.CheckInventory("Unidentified 27"))
 			{
 				Core.EnsureAccept(584);
 				Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
 				Core.EnsureComplete(584);
+				Core.Logger("Uni 27 acquired");
 			}
 
-			Nulgath.ApprovalAndFavor(50, 200);
-			Farm.BattleGroundE(100000);
-			Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
+			if (!Core.CheckInventory("Golden Hanzo Void"))
+			{
+				Nulgath.ApprovalAndFavor(50, 200);
+				Farm.BattleGroundE(100000);
+				Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
+				Core.Logger("Golden Hanzo Void bought");
+			}
 
 			if (!Core.CheckInventory("DoomLord's War Mask", toInv: false))
 			{
