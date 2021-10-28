@@ -37,6 +37,8 @@ public class CoreDailys
 		DagesScrollFragment();
 		Core.Logger("13");
 		CryptoToken();
+		Core.Logger("14");
+		BeastMasterChallenge();
 		Core.Logger("Dailys completed");
 	}
 
@@ -75,6 +77,14 @@ public class CoreDailys
 		return Core.EnsureComplete(quest);
 	}
 
+	public void BeastMasterChallenge()
+	{
+		if (!CheckDaily(3759) || Bot.Player.GetFactionRank("BeastMaster") == 10 || !IsMember)
+			return;
+
+		DailyRoutine(3759, "swordhavenbridge", "Purple Slime", "Purple Slime", 10);
+	}
+
 	public void CyserosSuperHammer()
 	{
 		if (Core.CheckInventory("Cysero's SUPER Hammer", toInv: false))
@@ -87,9 +97,7 @@ public class CoreDailys
 			return;
 		DailyRoutine(4310, "deadmoor", "Geist", "Geist's Chain Link");
 		if (IsMember)
-		{
-			DailyRoutine(4311, "deadmoor", "Geist", "Geist's Pocket Lint"); 
-		}
+			DailyRoutine(4311, "deadmoor", "Geist", "Geist's Pocket Lint");
 		Core.ToBank("C-Hammer Token");
 	}
 
@@ -103,9 +111,7 @@ public class CoreDailys
 			return;
 		DailyRoutine(4308, "deadmoor", "Nightmare", "Nightmare Fire");
 		if (IsMember)
-		{
-			DailyRoutine(4309, "deadmoor", "Nightmare", "Unlucky Horseshoe"); 
-		}
+			DailyRoutine(4309, "deadmoor", "Nightmare", "Unlucky Horseshoe");
 		Core.ToBank("C-Armor Token");
 	}
 

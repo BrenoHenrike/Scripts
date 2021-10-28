@@ -12,12 +12,7 @@ public class YokaiREP
 
 		//Farm.UseREPBoost(REPBoost.REP20);
 
-		while (bot.Player.GetFactionRank("Yokai") != 10)
-		{
-			Core.EnsureAccept(383);
-			Core.KillMonster("dragonkoiz-111111", "t1", "Left", "Pockey Chew", "Piece of Pockey", 3);
-			Core.EnsureComplete(383);
-		}
+		Farm.YokaiREP();
 
 		Core.SetOptions(false);
 	}

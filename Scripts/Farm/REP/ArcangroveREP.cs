@@ -1,18 +1,17 @@
-﻿//cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarm.cs
-using RBot;
+﻿using RBot;
 
-public class HollowbornREP
+public class ArcangroveREP
 {
 	public CoreBots Core = new CoreBots();
 	public CoreFarms Farm = new CoreFarms();
+
 	public void ScriptMain(ScriptInterface bot)
 	{
 		Core.SetOptions();
 
 		//Farm.UseREPBoost(REPBoost.REP20);
 
-		Farm.HollowbornREP();
+		Farm.ArcangroveREP();
 
 		Core.SetOptions(false);
 	}
