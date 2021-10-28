@@ -46,12 +46,27 @@ public class CoreBots
 			Bot.Skills.StopTimer();
 	}
 
+	/// <summary>
+	/// Send a packet to the server the desired amount of times
+	/// </summary>
+	/// <param name="packet">Packet to send</param>
+	/// <param name="times">How many times to send</param>
 	public void SendPackets(string packet, int times = 1)
 	{
 		for (int i = 0; i < times; i++)
+		{
 			Bot.SendPacket(packet);
+			Bot.Sleep(ActionDelay);
+		}
 	}
 
+	/// <summary>
+	/// Buys a item till it have the desired quantity
+	/// </summary>
+	/// <param name="map">Map of the shop</param>
+	/// <param name="shopID">ID of the shop</param>
+	/// <param name="itemName">Name of the item</param>
+	/// <param name="quant">Desired quantity</param>
 	public void BuyItem(string map, int shopID, string itemName, int quant = 1)
 	{
 		if (CheckInventory(itemName, quant))
@@ -66,6 +81,13 @@ public class CoreBots
 		}
 	}
 
+	/// <summary>
+	/// Buys a item till it have the desired quantity
+	/// </summary>
+	/// <param name="map">Map of the shop</param>
+	/// <param name="shopID">ID of the shop</param>
+	/// <param name="itemID">ID of the item</param>
+	/// <param name="quant">Desired quantity</param>
 	public void BuyItem(string map, int shopID, int itemID, int quant = 1)
 	{
 		if (CheckInventory(itemID, quant))
@@ -218,6 +240,10 @@ public class CoreBots
 		return Bot.Quests.EnsureAccept(questID);
 	}
 
+	/// <summary>
+	/// Accepts all de quests given
+	/// </summary>
+	/// <param name="questIDs">IDs of the quests</param>
 	public void EnsureAccept(params int[] questIDs)
 	{
 		JumpWait();
@@ -242,6 +268,10 @@ public class CoreBots
 		return Bot.Quests.EnsureComplete(questID, itemID);
 	}
 
+	/// <summary>
+	/// Completes all the quests given but doesn't support quests with choosable rewards
+	/// </summary>
+	/// <param name="questIDs">IDs of the quests</param>
 	public void EnsureComplete(params int[] questIDs)
 	{
 		JumpWait();
@@ -311,6 +341,13 @@ public class CoreBots
 			Bot.Player.HuntForItem(monster, item, quant, isTemp);
 	}
 
+	/// <summary>
+	/// Kill Escherion for the desired item
+	/// </summary>
+	/// <param name="item">Item name</param>
+	/// <param name="quant">Desired quantity</param>
+	/// <param name="isTemp">Whether the item is temporary</param>
+	/// <param name="removeHandler">Whether remove the handler for Staff of Inversion after finished</param>
 	public void KillEscherion(string item, int quant = 1, bool isTemp = false, bool removeHandler = true)
 	{
 		if(!Bot.Handlers.Where(h => h.Name == "escherion").Any())

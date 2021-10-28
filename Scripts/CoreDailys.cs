@@ -39,6 +39,8 @@ public class CoreDailys
 		CryptoToken();
 		Core.Logger("14");
 		BeastMasterChallenge();
+		Core.Logger("15");
+		FungiforaFunGuy();
 		Core.Logger("Dailys completed");
 	}
 
@@ -48,13 +50,9 @@ public class CoreDailys
 			return false;
 		Bot.Player.Join(map);
 		Core.EnsureAccept(quest);
-		if (cell != null && pad != null)
-		{
-			Core.Jump(cell, pad);
-			Bot.Player.KillForItem(monster, item, quant, isTemp);
-		}
+		if (cell != null && pad != null) Core.KillMonster(map, cell, pad, monster, item, quant, isTemp);
 		else
-			Bot.Player.HuntForItem(monster, item, quant, isTemp);
+			Core.HuntMonster(map, monster, item, quant, isTemp);
 		return Core.EnsureComplete(quest);
 	}
 
@@ -75,6 +73,19 @@ public class CoreDailys
 
 		Core.EnsureAccept(quest);
 		return Core.EnsureComplete(quest);
+	}
+
+	public void FungiforaFunGuy()
+	{
+		if (!CheckDaily(4465) || Bot.Player.GetFactionRank("Brightoak") == 10 || !IsMember)
+			return;
+
+		if (Bot.Quests.IsDailyComplete(4465))
+			return;
+		Core.EnsureAccept(4465);
+		Core.HuntMonster("brightoak", "Grove Spore", "Colony Spore");
+		Core.HuntMonster("brightoak", "Grove Spore", "Intact Spore");
+		Core.EnsureComplete(4465);
 	}
 
 	public void BeastMasterChallenge()

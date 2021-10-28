@@ -319,6 +319,28 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void BrightoakREP(int rank = 10)
+	{
+		if (FactionRank("Brightoak") >= rank)
+			return;
+		if (!Bot.Quests.IsAvailable(4667))
+		{
+			Core.Logger("Quest not avaible for farm, do Brightoak saga till Elfhame [Unlocking the Guardian's Mouth]");
+			return;
+		}
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		Bot.Player.Join("elfhame");
+		while (FactionRank("Brightoak") < rank)
+		{
+			Core.EnsureAccept(4667);
+			Bot.Map.GetMapItem(3984);
+			Core.EnsureComplete(4667);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
 
 	public void HollowbornREP(int rank = 10)
 	{
@@ -337,6 +359,59 @@ public class CoreFarms
 			Core.EnsureComplete(7555);
 			Core.Logger($"Completed x{i}");
 			i++;
+		}
+		Core.Logger("Finished");
+	}
+
+	public void SpellCraftingREP(int rank = 10)
+	{
+		if (FactionRank("SpellCrafting") >= rank)
+			return;
+		Core.AddDrop("Mystic Quills", "Mystic Parchment");
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		if (Bot.Quests.IsAvailable(2260))
+		{
+			Core.EnsureAccept(2260);
+			Bot.Player.Join("dragonrune");
+			Bot.Map.GetMapItem(1920);
+			Core.HuntMonster("castleundead", "Skeletal Warrior", "Arcane Parchment", 13);
+			Core.EnsureComplete(2260);
+			Core.Logger("SpellCrafting now unlocked");
+		}
+		if(FactionRank("SpellCrafting") < 4)
+		{
+			Core.CheckInventory("Mystic Quills");
+			Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
+			Bot.Shops.Load(549);
+			Core.SendPackets("%xt%zm%buyItem%30190%13280%549%1633%", 10);
+			Bot.Player.Join("spellcraft");
+			while (FactionRank("SpellCrafting") < 4)
+			{
+				Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%1%1555%Spell%");
+				Bot.Sleep(3000);
+				Bot.SendPacket("%xt%zm%crafting%1%spellComplete%1%2299%Ssikari's Breath%");
+				Core.Logger($"Completed x{i}");
+				Bot.Sleep(3000);
+			}
+		}
+		while (FactionRank("SpellCrafting") < rank)
+		{
+			if(!Core.CheckInventory("Mystic Parchment"))
+				Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
+			Bot.Player.Join("dragonrune");
+			Bot.Shops.Load(549);
+			Core.SendPackets("%xt%zm%buyItem%30932%13285%549%1638%", 10);
+			Bot.Player.Join("spellcraft");
+			while(Core.CheckInventory("Hallow Ink"))
+			{
+				Bot.SendClientPacket("%xt%zm%crafting%1%spellOnStart%6%1555%Spell%");
+				Bot.Sleep(3000);
+				Bot.SendPacket("%xt%zm%crafting%1%spellComplete%6%2322%Plague Flare%");
+				Bot.Sleep(3000);
+				Core.Logger($"Completed x{i}");
+				i++;
+			}
 		}
 		Core.Logger("Finished");
 	}
