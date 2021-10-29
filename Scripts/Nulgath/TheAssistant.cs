@@ -15,5 +15,7 @@ public class TheAssistant
 		Core.AddDrop(Nulgath.bagDrops);
 
 		Nulgath.TheAssistant();
+
+		Core.SetOptions(false);
 	}
 }

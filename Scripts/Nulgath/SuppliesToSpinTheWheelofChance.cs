@@ -25,5 +25,7 @@ public class SuppliesToSpinTheWheelofChance
 		 * "Unidentified 6", "Unidentified 7", "Unidentified 8", "Unidentified 9");*/
 
 		Nulgath.Supplies();
+
+		Core.SetOptions(false);
 	}
 }

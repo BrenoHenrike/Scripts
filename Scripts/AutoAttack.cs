@@ -1,6 +1,6 @@
 ﻿using RBot;
 
-public class Script
+public class AutoAttack
 {
 	public void ScriptMain(ScriptInterface bot)
 	{

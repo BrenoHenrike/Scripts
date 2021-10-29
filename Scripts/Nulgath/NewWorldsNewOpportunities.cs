@@ -15,5 +15,7 @@ public class NewWorldsNewOpportunities
 		Core.AddDrop(Nulgath.bagDrops);
 
 		Nulgath.NewWorldsNewOpportunities();
+
+		Core.SetOptions(false);
 	}
 }

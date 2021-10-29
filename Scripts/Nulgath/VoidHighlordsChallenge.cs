@@ -98,7 +98,7 @@ public class VoidHighlordsChallenge
 		if (!Core.CheckInventory("Bone Dust", 20))
 			Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone Dust", 20, false);
 
-		Nulgath.EmblemofNulgath(19);
+		Nulgath.EmblemofNulgath(20);
 
 		Nulgath.EssenceofNulgath(50);
 

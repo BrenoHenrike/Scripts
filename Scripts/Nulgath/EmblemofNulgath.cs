@@ -15,5 +15,7 @@ public class EmblemofNulgath
 		Core.AddDrop(Nulgath.bagDrops);
 
 		Nulgath.EmblemofNulgath();
+
+		Core.SetOptions(false);
 	}
 }

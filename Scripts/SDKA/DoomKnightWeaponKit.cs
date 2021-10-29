@@ -79,5 +79,7 @@ public class DoomKnightWeaponKit
 
 			Core.EnsureComplete(2165);
 		}
+
+		Core.SetOptions(false);
 	}
 }
