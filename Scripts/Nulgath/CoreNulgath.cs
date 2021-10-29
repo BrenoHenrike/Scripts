@@ -128,8 +128,12 @@ public class CoreNulgath
 			Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false);
 			if (!Core.CheckInventory("Strand of Vath's Hair"))
 			{
-				Core.HuntMonster("stalagbite", "Stalagbite");
-				Core.HuntMonster("stalagbite", "Vath", "Strand of Vath's Hair", 1, false);
+				Bot.Player.Join("stalagbite");
+				Core.Jump("r2", "Left");
+				Bot.Player.Kill("Vath");
+				Core.JumpWait();
+				if (Bot.Player.DropExists("Strand of Vath's Hair"))
+					Bot.Player.Pickup("Strand of Vath's Hair");
 			}
 			Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
 			Core.KillEscherion("Escherion's Chain", removeHandler: false);
@@ -200,14 +204,14 @@ public class CoreNulgath
 		Bot.Player.Join("evilwarnul");
 		while (!Bot.Inventory.Contains("Diamond of Nulgath", quant))
 		{
-			if (Bot.Player.IsMember)
+			if (Core.IsMember)
 				Core.EnsureAccept(2221);
 			else
 				Core.EnsureAccept(2219);
 			Core.Jump("r2", "Down");
 			Bot.Player.KillForItems("*", new[] { "Legion Blade", "Dessicated Heart" }, new[] { 1, 22 });
 			Bot.Player.KillForItems("*", new[] { "Legion Helm", "Undead Skull", "Legion Champion Medal" }, new[] { 5, 3, 5 }, true);
-			if (Bot.Player.IsMember)
+			if (Core.IsMember)
 				Core.EnsureComplete(2221);
 			else
 				Core.EnsureComplete(2219);

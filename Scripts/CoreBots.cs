@@ -18,6 +18,11 @@ public class CoreBots
 	public int ExitCombatDelay { get; set; } = 1600;
 
 	/// <summary>
+	/// Whether the player is Member
+	/// </summary>
+	public bool IsMember => ScriptInterface.Instance.Player.IsMember;
+
+	/// <summary>
 	/// Set commom bot options to desired value
 	/// </summary>
 	/// <param name="changeTo">Value the options will be changed to</param>

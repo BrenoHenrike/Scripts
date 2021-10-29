@@ -6,8 +6,6 @@ public class CoreDailys
 
 	public CoreBots Core = new CoreBots();
 
-	public bool IsMember => ScriptInterface.Instance.Player.IsMember;
-
 	public void DoAllDailys()
 	{
 		Core.Logger("Doing all dailys");
@@ -77,7 +75,7 @@ public class CoreDailys
 
 	public void FungiforaFunGuy()
 	{
-		if (!CheckDaily(4465) || Bot.Player.GetFactionRank("Brightoak") == 10 || !IsMember)
+		if (!CheckDaily(4465) || Bot.Player.GetFactionRank("Brightoak") == 10 || !Core.IsMember)
 			return;
 
 		if (Bot.Quests.IsDailyComplete(4465))
@@ -90,7 +88,7 @@ public class CoreDailys
 
 	public void BeastMasterChallenge()
 	{
-		if (!CheckDaily(3759) || Bot.Player.GetFactionRank("BeastMaster") == 10 || !IsMember)
+		if (!CheckDaily(3759) || Bot.Player.GetFactionRank("BeastMaster") == 10 || !Core.IsMember)
 			return;
 
 		DailyRoutine(3759, "swordhavenbridge", "Purple Slime", "Purple Slime", 10);
@@ -102,12 +100,12 @@ public class CoreDailys
 			return;
 		if(!Core.CheckInventory("Mad Weaponsmith"))
 			return;
-		if (!CheckDaily(4310, "C-Hammer Token") && !IsMember)
+		if (!CheckDaily(4310, "C-Hammer Token") && !Core.IsMember)
 			return;
-		if (!CheckDaily(4311, "C-Hammer Token") && IsMember)
+		if (!CheckDaily(4311, "C-Hammer Token") && Core.IsMember)
 			return;
 		DailyRoutine(4310, "deadmoor", "Geist", "Geist's Chain Link");
-		if (IsMember)
+		if (Core.IsMember)
 			DailyRoutine(4311, "deadmoor", "Geist", "Geist's Pocket Lint");
 		Core.ToBank("C-Hammer Token");
 	}
@@ -116,12 +114,12 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("Mad Weaponsmith", toInv: false))
 			return;
-		if (!CheckDaily(4308, "C-Armor Token") && !IsMember)
+		if (!CheckDaily(4308, "C-Armor Token") && !Core.IsMember)
 			return;
-		if (!CheckDaily(4309, "C-Armor Token") && IsMember)
+		if (!CheckDaily(4309, "C-Armor Token") && Core.IsMember)
 			return;
 		DailyRoutine(4308, "deadmoor", "Nightmare", "Nightmare Fire");
-		if (IsMember)
+		if (Core.IsMember)
 			DailyRoutine(4309, "deadmoor", "Nightmare", "Unlucky Horseshoe");
 		Core.ToBank("C-Armor Token");
 	}
@@ -140,12 +138,12 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("The Collector", toInv: false))
 			return;
-		if (!CheckDaily(1316, "This Might Be A Token", "Tokens of Collection") && !IsMember)
+		if (!CheckDaily(1316, "This Might Be A Token", "Tokens of Collection") && !Core.IsMember)
 			return;
-		if (!CheckDaily(1331, "This Is Definitely A Token", "Tokens of Collection") && !CheckDaily(1332, "This Might Be A Token", "Tokens of Collection") && IsMember)
+		if (!CheckDaily(1331, "This Is Definitely A Token", "Tokens of Collection") && !CheckDaily(1332, "This Might Be A Token", "Tokens of Collection") && Core.IsMember)
 			return;
 		DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
-		if (IsMember)
+		if (Core.IsMember)
 		{
 			DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
 			DailyRoutine(1332, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right"); 
@@ -156,11 +154,11 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("Cryomancer", toInv: false))
 			return;
-		if (!CheckDaily(3966, "Glacera Ice Token") && !IsMember)
+		if (!CheckDaily(3966, "Glacera Ice Token") && !Core.IsMember)
 			return;
-		if (!CheckDaily(3965, "Glacera Ice Token") && IsMember)
+		if (!CheckDaily(3965, "Glacera Ice Token") && Core.IsMember)
 			return;
-		if (IsMember)
+		if (Core.IsMember)
 			DailyRoutine(3965, "frozentower", "Frost Invader", "Dark Ice");
 		else
 			DailyRoutine(3966, "frozentower", "Frost Invader", "Dark Ice");
@@ -171,11 +169,11 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("Pyromancer", toInv: false))
 			return;
-		if (!CheckDaily(2209, "Shurpu Blaze Token") && !IsMember)
+		if (!CheckDaily(2209, "Shurpu Blaze Token") && !Core.IsMember)
 			return;
-		if (!CheckDaily(2210, "Shurpu Blaze Token") && IsMember)
+		if (!CheckDaily(2210, "Shurpu Blaze Token") && Core.IsMember)
 			return;
-		if (IsMember)
+		if (Core.IsMember)
 			DailyRoutine(2210, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
 		else
 			DailyRoutine(2209, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
@@ -186,7 +184,7 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("DeathKnight Lord", toInv: false))
 			return;
-		if (!CheckDaily(492, "Shadow Skull") || !IsMember)
+		if (!CheckDaily(492, "Shadow Skull") || !Core.IsMember)
 			return;
 		DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
 		Core.ToBank("Shadow Skull");
@@ -194,12 +192,12 @@ public class CoreDailys
 	
 	public void ShadowScytheClass()
 	{
-		if (!CheckDaily(3828, "Shadow Shield") && !IsMember)
+		if (!CheckDaily(3828, "Shadow Shield") && !Core.IsMember)
 			return;
-		if (!CheckDaily(3827, "Shadow Shield") && IsMember)
+		if (!CheckDaily(3827, "Shadow Shield") && Core.IsMember)
 			return;
 		DailyRoutine(3828, "lightguardwar", "Citadel Crusader", "Broken Blade");
-		if (IsMember)
+		if (Core.IsMember)
 			DailyRoutine(3827, "lightguardwar", "Citadel Crusader", "Broken Blade");
 	}
 
