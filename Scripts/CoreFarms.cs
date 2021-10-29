@@ -56,8 +56,15 @@ public class CoreFarms
 		BeastMasterREP();
 		BlacksmithingREP();
 		BladeofAweREP();
+		BrightoakREP();
+		DoomwoodREP();
+		//EvilREP();
+		//GoodREP();
+
 
 		HollowbornREP();
+		MysteriousDungeonREP();
+		SpellCraftingREP();
 		YokaiREP();
 	}
 	
@@ -171,13 +178,13 @@ public class CoreFarms
 	{
 		if (FactionRank("BaconCat") >= rank)
 			return;
-		if (Bot.Player.IsMember)
+		if (Core.IsMember)
 			Core.AddDrop("Wheel of Bacon Token");
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("BaconCat") < rank)
 		{
-			if (!Bot.Player.IsMember)
+			if (!Core.IsMember)
 			{
 				Core.EnsureAccept(5111, 5112, 5119, 5120);
 
@@ -212,7 +219,7 @@ public class CoreFarms
 
 	public void BeastMasterREP(int rank = 10)
 	{
-		if (FactionRank("BeastMaster") >= rank || !Bot.Player.IsMember)
+		if (FactionRank("BeastMaster") >= rank || !Core.IsMember)
 			return;
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
@@ -342,6 +349,126 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void DoomwoodREP(int rank = 10)
+	{
+		if (FactionRank("Doomwood") >= rank)
+			return;
+		if (Core.IsMember)
+			Core.AddDrop("Dark Tower Sword", "Light Tower Sword");
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Doomwood") < rank)
+		{
+			if (!Core.IsMember)
+			{
+				Core.EnsureAccept(1151);
+				Core.EnsureAccept(1152);
+				Core.EnsureAccept(1153);
+				Core.HuntMonster("shadowfallwar", "*", "To Do List of Doom");
+				Core.HuntMonster("shadowfallwar", "*", "Skeleton Key");
+				if (Bot.Quests.CanComplete(1151))
+					Core.EnsureComplete(1151);
+				Core.EnsureComplete(1152);
+				Core.EnsureComplete(1153); 
+			}
+			else
+			{
+				if(Core.CheckInventory("Light Tower Sword"))
+				{
+					Core.EnsureAccept(2100);
+					Core.HuntMonster("battleunderb", "Skeleton Warrior", "Battered Dark Tower Sword");
+					Core.EnsureComplete(2100);
+					Bot.Player.Pickup("Dark Tower Sword");
+					Core.EnsureAccept(2101);
+					Core.HuntMonster("doomwar", "Bronze DracoZombie", "Dracozombies' Spirits", 13);
+					Core.EnsureComplete(2101);
+					Bot.Player.Pickup("Dark Tower Sword");
+				}
+				Core.EnsureAccept(2102);
+				Core.HuntMonster("doomwar", "Dark DracoZombie", "Bones of the Dracozombie");
+				Core.EnsureComplete(2102);
+			}
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		if (Core.IsMember)
+			Bot.Shops.SellItem("Light Tower Sword");
+		Core.Logger("Finished");
+	}
+
+	public void EvilREP(int rank = 10)
+	{
+		if (FactionRank("Evil") >= rank)
+			return;
+		Core.Logger("This needs the player to be aligned to evil");
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while(FactionRank("Evil") < 4)
+		{
+			Core.EnsureAccept(364);
+			Core.HuntMonster("newbie", "Slime", "Youthanize");
+			Core.EnsureComplete(364);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		while (FactionRank("Evil") < rank)
+		{
+			if (!Core.IsMember)
+			{
+				Core.EnsureAccept(367);
+				Core.HuntMonster("castleundead", "*", "Replacement Tibia", 6);
+				Core.HuntMonster("castleundead", "*", "Phalanges", 3);
+				Core.EnsureComplete(367); 
+			}
+			else
+			{
+				Core.EnsureAccept(366);
+				Core.HuntMonster("sleuthhound", "Chair", "Chair", 4);
+				Core.HuntMonster("sleuthhound", "Table", "Table", 2);
+				Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase");
+				Core.EnsureComplete(366);
+			}
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+
+	public void GoodREP(int rank = 10)
+	{
+		if (FactionRank("Good") >= rank)
+			return;
+		Core.Logger("This needs the player to be aligned to good");
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while(FactionRank("Good") < 4)
+		{
+			Core.EnsureAccept(369);
+			Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
+			Core.EnsureComplete(369);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		while (FactionRank("Good") < rank)
+		{
+			if (!Core.IsMember)
+			{
+				Core.EnsureAccept(372);
+				Core.HuntMonster("castleundead", "*", "Chaorrupted Skull", 5);
+				Core.EnsureComplete(372); 
+			}
+			else
+			{
+				Core.EnsureAccept(371);
+				Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", 5);
+				Core.EnsureComplete(371);
+			}
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+
 	public void HollowbornREP(int rank = 10)
 	{
 		if (FactionRank("Hollowborn") >= rank)
@@ -357,6 +484,33 @@ public class CoreFarms
 			Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
 			Core.EnsureComplete(7553);
 			Core.EnsureComplete(7555);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+
+	public void MysteriousDungeonREP(int rank = 10)
+	{
+		if (FactionRank("Mysterious Dungeon") >= rank)
+			return;
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		if (!Bot.Quests.IsAvailable(5429))
+		{
+			Bot.Player.Join("cursedshop");
+			Core.EnsureAccept(5428);
+			Bot.Map.GetMapItem(4803);
+			Bot.Sleep(2500);
+			if(Bot.Quests.CanComplete(5428))
+				Core.EnsureComplete(5428);
+			Bot.Player.Jump("Enter", "Spawn");
+		}
+		while (FactionRank("Mysterious Dungeon") < rank)
+		{
+			Core.EnsureAccept(5429);
+			Core.HuntMonster("cursedshop", "Antique Chair", "Antique Chair Defeated");
+			Core.EnsureComplete(5429);
 			Core.Logger($"Completed x{i}");
 			i++;
 		}
