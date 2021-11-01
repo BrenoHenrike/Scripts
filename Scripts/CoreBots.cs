@@ -326,6 +326,49 @@ public class CoreBots
 	}
 
 	/// <summary>
+	/// Kills a monster using it's name
+	/// </summary>
+	/// <param name="map">Map to join</param>
+	/// <param name="cell">Cell to jump to</param>
+	/// <param name="pad">Pad to jump to</param>
+	/// <param name="monsterID">ID of the monster</param>
+	/// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+	/// <param name="quant">Desired quantity of the item</param>
+	/// <param name="isTemp">Whether the item is temporary</param>
+	public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true)
+	{
+		if (item != null && isTemp && Bot.Inventory.ContainsTempItem(item, quant))
+			return;
+		if (item != null && !isTemp && Bot.Inventory.Contains(item, quant))
+			return;
+		Bot.Player.Join(map);
+		Jump(cell, pad);
+		if (item == null)
+			Bot.Player.Kill(Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID));
+		else
+		{
+			if(isTemp)
+				while (Bot.Inventory.ContainsTempItem(item, quant))
+				{
+					if (Bot.Inventory.ContainsTempItem(item, quant))
+						break;
+					Bot.Player.Kill(Bot.Monsters.CurrentMonsters.Find(m => m.ID == 2908));
+					Bot.Sleep(ActionDelay);
+				}
+			else
+				while (Bot.Inventory.Contains(item, quant))
+				{
+					if (Bot.Inventory.Contains(item, quant))
+						break;
+					Bot.Player.Kill(Bot.Monsters.CurrentMonsters.Find(m => m.ID == 2908));
+					Bot.Sleep(ActionDelay);
+					if(Bot.Player.DropExists(item))
+						Bot.Player.Pickup(item);
+				}
+		}
+	}
+
+	/// <summary>
 	/// Joins a map and hunt for the monster
 	/// </summary>
 	/// <param name="map">Map to join</param>

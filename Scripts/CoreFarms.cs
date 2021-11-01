@@ -57,14 +57,23 @@ public class CoreFarms
 		BlacksmithingREP();
 		BladeofAweREP();
 		BrightoakREP();
+		ChaosREP();
 		DoomwoodREP();
+		ElementalMasterREP();
+		EmberseaREP();
+		EternalREP();
 		//EvilREP();
+		GlaceraREP();
 		//GoodREP();
+		LycanREP();
 
 
 		HollowbornREP();
 		MysteriousDungeonREP();
+		MythsongREP();
+		RavenlossREP();
 		SpellCraftingREP();
+		VampireREP();
 		YokaiREP();
 	}
 	
@@ -349,6 +358,23 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void ChaosREP(int rank = 10)
+	{
+		if (FactionRank("Chaos") >= rank)
+			return;
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Chaos") < rank)
+		{
+			Core.EnsureAccept(3594);
+			Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos Power Increased", 6);
+			Core.EnsureComplete(3594);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+	
 	public void DoomwoodREP(int rank = 10)
 	{
 		if (FactionRank("Doomwood") >= rank)
@@ -396,6 +422,73 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void ElementalMasterREP(int rank = 10)
+	{
+		if (FactionRank("Elemental Master") >= rank)
+			return;
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Elemental Master") < rank)
+		{
+			Core.EnsureAccept(3050);
+			Core.EnsureAccept(3298);
+			Core.HuntMonster("gilead", "Water Elemental", "Water Core");
+			Core.HuntMonster("gilead", "Fire Elemental", "Fire Core");
+			Core.HuntMonster("gilead", "Wind Elemental", "Air Core");
+			Core.HuntMonster("gilead", "Earth Elemental", "Earth Core");
+			Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
+			Core.EnsureComplete(3050);
+			if(Bot.Quests.CanComplete(3298))
+				Core.EnsureComplete(3298);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+
+	public void EmberseaREP(int rank = 10)
+	{
+		if (FactionRank("Embersea") >= rank)
+			return;
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Embersea") < rank)
+		{
+			Core.EnsureAccept(4228);
+			//Core.EnsureAccept(4224);
+			Core.HuntMonster("fireforge", "Blazebinder", "Defeated Blazebinder", 5);
+			//Core.HuntMonster("fireforge", "Blazebinder", "Blazebinder defeated", 2);
+			//Core.EnsureComplete(4224);
+			Core.EnsureComplete(4228);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+
+	public void EternalREP(int rank = 10)
+	{
+		if (FactionRank("Eternal") >= rank)
+			return;
+		if (!Bot.Quests.IsAvailable(5198))
+		{
+			Core.Logger("Can't do farming quest [Sphynxes are Riddled with Gems] (/fourdpyramid)");
+			return;
+		}
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Eternal") < rank)
+		{
+			Core.EnsureAccept(5198);
+			Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "White Gem", 2);
+			Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "Black Gem", 2);
+			Core.EnsureComplete(5198);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+	
 	public void EvilREP(int rank = 10)
 	{
 		if (FactionRank("Evil") >= rank)
@@ -434,6 +527,32 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void GlaceraREP(int rank = 10)
+	{
+		if (FactionRank("Glacera") >= rank)
+			return;
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Glacera") < rank)
+		{
+			Core.EnsureAccept(5597);
+			Core.EnsureAccept(5598);
+			Core.EnsureAccept(5599);
+			Core.EnsureAccept(5600);
+			Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10);
+			Core.EnsureComplete(5599);
+			if (Bot.Quests.CanComplete(5600))
+				Core.EnsureComplete(5600);
+			if (Bot.Quests.CanComplete(5598))
+				Core.EnsureComplete(5598);
+			if(Bot.Quests.CanComplete(5597))
+				Core.EnsureComplete(5597);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+	
 	public void GoodREP(int rank = 10)
 	{
 		if (FactionRank("Good") >= rank)
@@ -469,6 +588,28 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void LycanREP(int rank = 10)
+	{
+		if (FactionRank("Lycan") >= rank)
+			return;
+		if (!Bot.Quests.IsAvailable(537))
+		{
+			Core.Logger("Can't do farming quest [Sanguine] (/lycan)");
+			return;
+		}
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Lycan") < rank)
+		{
+			Core.EnsureAccept(537);
+			Core.HuntMonster("sanguine", "Sanguine", "Sanguine Mask");
+			Core.EnsureComplete(537);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+	
 	public void HollowbornREP(int rank = 10)
 	{
 		if (FactionRank("Hollowborn") >= rank)
@@ -517,6 +658,50 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void MythsongREP(int rank = 10)
+	{
+		if (FactionRank("Mythsong") >= rank)
+			return;
+		if (!Bot.Quests.IsAvailable(710))
+		{
+			Core.Logger("Can't do farming quest [Kimberly] (/palooza)");
+			return;
+		}
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Mythsong") < rank)
+		{
+			Core.EnsureAccept(710);
+			Core.HuntMonster("palooza", "Kimberly", "Kimberly Defeated");
+			Core.EnsureComplete(710);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+
+	public void RavenlossREP(int rank = 10)
+	{
+		if (FactionRank("Ravenloss") >= rank)
+			return;
+		if (!Bot.Quests.IsAvailable(3445))
+		{
+			Core.Logger("Can't do farming quest [Slay the Spiderkin] (/twilightedge)");
+			return;
+		}
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Ravenloss") < rank)
+		{
+			Core.EnsureAccept(3445);
+			Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10);
+			Core.EnsureComplete(3445);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+	
 	public void SpellCraftingREP(int rank = 10)
 	{
 		if (FactionRank("SpellCrafting") >= rank)
@@ -570,6 +755,28 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
+	public void VampireREP(int rank = 10)
+	{
+		if (FactionRank("Vampire") >= rank)
+			return;
+		if (!Bot.Quests.IsAvailable(522))
+		{
+			Core.Logger("Can't do farming quest [Twisted Paw] (/safiria)");
+			return;
+		}
+		Core.Logger($"Farming rank {rank}");
+		int i = 1;
+		while (FactionRank("Vampire") < rank)
+		{
+			Core.EnsureAccept(522);
+			Core.HuntMonster("safiria", "Twisted Paw", "Twisted Paw's Head");
+			Core.EnsureComplete(522);
+			Core.Logger($"Completed x{i}");
+			i++;
+		}
+		Core.Logger("Finished");
+	}
+	
 	public void YokaiREP(int rank = 10)
 	{
 		if (FactionRank("Yokai") >= rank)
