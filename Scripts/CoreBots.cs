@@ -37,7 +37,7 @@ public class CoreBots
 		//Bot.Options.LagKiller = changeTo;
 		Bot.Lite.UntargetDead = changeTo;
 		Bot.Lite.UntargetSelf = changeTo;
-		Bot.Lite.Set("bReaccept", !changeTo);
+		Bot.Lite.Set("bReaccept", false);
 
 		if (changeTo)
 		{
