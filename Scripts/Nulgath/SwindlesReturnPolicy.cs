@@ -25,7 +25,7 @@ public class SwindlesReturnPolicy
 			"Unidentified 6", "Unidentified 16",
 			"Unidentified 20", "Receipt of Swindle");
 
-		while(Core.CheckInventory("Receipt of Swindle", 100))
+		while(!Core.CheckInventory("Receipt of Swindle", 100))
 		{
 			Core.EnsureAccept(7551);
 			if (Core.CheckInventory(Nulgath.CragName))
