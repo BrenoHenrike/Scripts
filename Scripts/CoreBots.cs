@@ -39,12 +39,20 @@ public class CoreBots
 		Bot.Lite.UntargetSelf = changeTo;
 		Bot.Lite.Set("bReaccept", false);
 
-		if (changeTo)
-		{
-			Bot.Player.LoadBank();
-			Bot.Wait.ForBankLoad();
-		}
+		//Uncomment to use AutoRelogin to restart the script when the player goes AFK, it should not be necessary
+		//Bot.Options.AutoRelogin = changeTo;
+		//void AFKHandler(ScriptInterface b)
+		//{
+		//	Logger("Player AFK, triggering logout");
+		//	b.Events.PlayerAFK -= AFKHandler;
+		//	b.Player.Logout();
+		//}
+		//Bot.Events.PlayerAFK += AFKHandler;
 
+		if (changeTo)
+			Bot.Player.LoadBank();
+
+		//Bot.Skills.LoadSkills("Skills/---.xml");
 		if (changeTo)
 			Bot.Skills.StartTimer();
 		else
@@ -242,7 +250,7 @@ public class CoreBots
 			return true;
 		JumpWait();
 		Bot.Sleep(ActionDelay);
-		return Bot.Quests.EnsureAccept(questID);
+		return Bot.Quests.EnsureAccept(questID, 20);
 	}
 
 	/// <summary>
@@ -257,7 +265,7 @@ public class CoreBots
 			if (Bot.Quests.IsInProgress(quest))
 				continue;
 			Bot.Sleep(ActionDelay);
-			Bot.Quests.EnsureAccept(quest);
+			Bot.Quests.EnsureAccept(quest, 20);
 		}
 	}
 
@@ -270,7 +278,7 @@ public class CoreBots
 	{
 		JumpWait();
 		Bot.Sleep(ActionDelay);
-		return Bot.Quests.EnsureComplete(questID, itemID);
+		return Bot.Quests.EnsureComplete(questID, itemID, tries: 20);
 	}
 
 	/// <summary>
@@ -283,7 +291,7 @@ public class CoreBots
 		foreach (int quest in questIDs)
 		{
 			Bot.Sleep(ActionDelay);
-			Bot.Quests.EnsureComplete(quest);
+			Bot.Quests.EnsureComplete(quest, tries: 20);
 		}
 	}
 
@@ -295,8 +303,8 @@ public class CoreBots
 	public void ChainComplete(int questID, int itemID = -1)
 	{
 		JumpWait();
-		Bot.Quests.EnsureAccept(questID);
-		Bot.Quests.EnsureComplete(questID, itemID);
+		Bot.Quests.EnsureAccept(questID, 20);
+		Bot.Quests.EnsureComplete(questID, itemID, tries: 20);
 	}
 	#endregion
 

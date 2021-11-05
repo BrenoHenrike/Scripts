@@ -15,14 +15,14 @@ public class SwindlesReturnPolicy
 
 		Core.AddDrop(Nulgath.bagDrops);
 		Core.AddDrop("Unidentified 1", "Unidentified 6",
-			"Unidentified 6", "Unidentified 16",
+			"Unidentified 9", "Unidentified 16",
 			"Unidentified 20", "Receipt of Swindle");
 
 		Core.Unbank("Tainted Gem", "Dark Crystal Shard",
 			"Diamond of Nulgath", "Gem of Nulgath",
 			"Blood Gem of the Archfiend",
 			"Unidentified 1", "Unidentified 6",
-			"Unidentified 6", "Unidentified 16",
+			"Unidentified 9", "Unidentified 16",
 			"Unidentified 20", "Receipt of Swindle");
 
 		while(!Core.CheckInventory("Receipt of Swindle", 100))

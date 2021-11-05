@@ -33,6 +33,7 @@ public class CoreNulgath
 		"Voucher of Nulgath (non-mem)",
 		"Emblem of Nulgath",
 		"Receipt of Swindle",
+		"Bone Dust",
 		"Nulgath's Approval",
 		"Archfiend's Favor"
 	};
@@ -63,7 +64,6 @@ public class CoreNulgath
 		"Elder's Blood",
 		"Aelita's Emerald",
 		"Elemental Ink",
-		"Bone Dust",
 		"Emblem of Nulgath",
 		"Void Highlord Armor",
 		"Helm of the Highlord",
@@ -585,9 +585,40 @@ public class CoreNulgath
 		}
 		Core.Logger($"Exchanged for {reward}");
 	}
-	
+
 	/// <summary>
-	/// Farms Unidentified 13 with the best method avaible
+	/// Does Swindles Dirt-y Deeds Done Dirt Cheap quest, only use if you have /TowerofDoom10 completed and a good solo class
+	/// </summary>
+	/// <param name="quant"></param>
+	public void DirtyDeedsDoneDirtCheap(int quant = 1000)
+	{
+		if (Core.CheckInventory("Unidentified 10", quant))
+			return;
+		Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade");
+		Core.CheckInventory("Receipt of Swindle");
+		Core.CheckInventory("Blood Gem of the Archfiend");
+
+		if (!Core.CheckInventory("Emerald Pickaxe"))
+			Core.KillEscherion("Emeral Pickaxe");
+
+		if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
+			Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
+
+		int i = 1;
+		while (!Core.CheckInventory("Unidentified 10", quant))
+		{
+			Core.EnsureAccept(7818);
+			Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice");
+			Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
+			Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);
+			Core.EnsureComplete(7818);
+			Core.Logger($"Completed {i}");
+			i++;
+		}
+	}
+
+	/// <summary>
+	/// Farms Unidentified 13 with the best method available
 	/// </summary>
 	/// <param name="quant">Desired quantity, 13 = max stack</param>
 	public void FarmUni13(int quant = 1)
@@ -597,10 +628,99 @@ public class CoreNulgath
 		if (Core.CheckInventory(CragName))
 			while (!Bot.Inventory.Contains("Unidentified 13", quant > 13 ? 13 : quant))
 				DiamondExchange();
-		else if (Core.CheckInventory("Bounty Hunter's Drone Pet") || Core.CheckInventory("Nulgath's Birthday Gift"))
-			NewWorldsNewOpportunities("Unidentified 13", quant > 13 ? 13 : quant);
-		else
-			Supplies("Unidentified 13", quant > 13 ? 13 : quant);
+		NewWorldsNewOpportunities("Unidentified 13", quant > 13 ? 13 : quant);
+		Supplies("Unidentified 13", quant > 13 ? 13 : quant);
+	}
+
+	/// <summary>
+	/// Farms Unidentified 10 with the best method available
+	/// </summary>
+	/// <param name="quant">Desired quantity, 1000 = max stack</param>
+	public void FarmUni10(int quant = 1000)
+	{
+		if (Core.CheckInventory("Unidentified 10", quant))
+			return;
+		//if (Core.CheckInventory("Legion Revenant") || Core.CheckInventory("Void Highlord"))
+		//DirtyDeedsDoneDirtCheap(quant);
+		BambloozevsDrudgen("Unidentified 10", quant);
+		NulgathLarvae("unidentified 10", quant);
+	}
+
+	/// <summary>
+	/// Farms Dark Crystal Shard with the best method available
+	/// </summary>
+	/// <param name="quant">Desired quantity, 1000 = max stack</param>
+	public void FarmDarkCrystalShard(int quant  = 1000)
+	{
+		if (Core.CheckInventory("Dark Crystal Shard", quant))
+			return;
+		NewWorldsNewOpportunities("Dark Crystal Shard", quant);
+		EssenceofDefeatReagent(quant);
+	}
+
+	/// <summary>
+	/// Farms Diamond of Nulgath with the best method available
+	/// </summary>
+	/// <param name="quant">Desired quantity, 1000 = max stack</param>
+	public void FarmDiamondofNulgath(int quant = 1000)
+	{
+		if (Core.CheckInventory("Diamond of Nulgath", quant))
+			return;
+		NewWorldsNewOpportunities("Diamond of Nulgath", quant);
+		DiamondEvilWar(quant);
+	}
+
+	/// <summary>
+	/// Farms Gem of Nulgath with the best method available
+	/// </summary>
+	/// <param name="quant">Desired quantity, 300 = max stack</param>
+	public void FarmGemofNulgath(int quant = 300)
+	{
+		if (Core.CheckInventory("Gem of Nulgath", quant))
+			return;
+		NewWorldsNewOpportunities("Gem of Nulgath", quant);
+		while (!Core.CheckInventory("Gem of Nulgath", quant))
+			VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
+	}
+
+	/// <summary>
+	/// Farms Blood Gem of the Archfiend with the best method available
+	/// </summary>
+	/// <param name="quant">Desired quantity, 100 = max stack</param>
+	public void FarmBloodGem(int quant = 100)
+	{
+		if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
+			return;
+		if (Core.CheckInventory("Drudgen the Assistant"))
+			while (!Core.CheckInventory("Blood Gem of the Archfiend", quant))
+				ContractExchange(ChooseReward.BloodGemoftheArchfiend);
+		NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
+		KisstheVoid(30);
+	}
+
+	/// <summary>
+	/// Farms Totem of Nulgath with the best method available
+	/// </summary>
+	/// <param name="quant">Desired quantity, 100 = max stack</param>
+	public void FarmTotemofNulgath(int quant = 100)
+	{
+		NewWorldsNewOpportunities("Totem of Nulgath", quant);
+		while (!Core.CheckInventory("Totem of Nulgath", quant))
+			VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
+	}
+
+	/// <summary>
+	/// Farms Voucher of Nulgath (member or not) with the best method available
+	/// </summary>
+	/// <param name="member">If true will farm Voucher of Nulgath; false Voucher of Nulgath (nom-mem)</param>
+	public void FarmVoucher(bool member)
+	{
+		if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && !member)
+			return;
+		if (Core.CheckInventory("Voucher of Nulgath") && member)
+			return;
+		NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+		Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 	}
 
 	/// <summary>
