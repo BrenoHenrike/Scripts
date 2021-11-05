@@ -23,18 +23,20 @@ public class CoreFarms
 	//Daily XP Boost! (1 hr) -- 19189
 	//XP Boost! (20 min) -- 22448
 
-	public void UseGoldBoost(GoldBoost boost, bool useMultiple = true) => UseBoost((int)boost, BoostType.Gold, useMultiple);
-	public void UseXPBoost(XpBoosts boost, bool useMultiple = true) => UseBoost((int)boost, BoostType.Experience, useMultiple);
-	public void UseClassBoost(ClassBoost boost, bool useMultiple = true) => UseBoost((int)boost, BoostType.Class, useMultiple);
-	public void UseREPBoost(REPBoost boost, bool useMultiple = true) => UseBoost((int)boost, BoostType.Reputation, useMultiple);
-
-	private void UseBoost(int boostID, BoostType type, bool useMultiple = true)
+	/// <summary>
+	/// Uses a boost with the given ID.
+	/// </summary>
+	/// <param name="boostID">ID of the Boost</param>
+	/// <param name="type">Type of the Boost</param>
+	/// <param name="useMultiple">Whether use more than one boost</param>
+	public void UseBoost(int boostID, BoostType type, bool useMultiple = true)
 	{
 		if (!Core.CheckInventory(boostID))
 			return;
 
 		if (useMultiple)
 		{
+			Bot.Player.UseBoost(boostID);
 			Bot.RegisterHandler(30200, b =>
 			{
 				if (!b.Player.IsBoostActive(type))
@@ -46,6 +48,14 @@ public class CoreFarms
 			Bot.Player.UseBoost(boostID);
 		}
 	}
+
+	/// <summary>
+	/// Uses a boost with one of the IDs present in <see cref="BoostIDs"/>
+	/// </summary>
+	/// <param name="boost">Desired Boost</param>
+	/// <param name="type">Type of the Boost</param>
+	/// <param name="useMultiple">Whether use more than one boost</param>
+	public void UseBoost(BoostIDs boost, BoostType type, bool useMultiple = true) => UseBoost((int)boost, type, useMultiple);
 
 	public void GetAllRanks()
 	{
@@ -812,31 +822,19 @@ public class CoreFarms
 	public int FactionRank(string faction) => Bot.Player.GetFactionRank(faction);
 }
 
-public enum XpBoosts
+public enum BoostIDs
 {
 	DailyXP60 = 19189,
 	XP20 = 22448,
-	XP60 = 27552
-}
-
-public enum ClassBoost
-{
+	XP60 = 27552,
 	DoomClass60 = 19761,
 	Class20 = 22447,
-	Class60 = 27555
-}
-
-public enum REPBoost
-{
-
+	Class60 = 27555,
 	DoomREP60 = 19762,
 	REP20 = 22449,
-	REP60 = 27553
-}
-
-public enum GoldBoost
-{ 
+	REP60 = 27553,
 	DoomGold60 = 19763,
 	Gold20 = 22450,
 	Gold60 = 27554
+
 }

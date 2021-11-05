@@ -42,35 +42,56 @@ public class CoreDailys
 		Core.Logger("Dailys completed");
 	}
 
-	public bool DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = null)
+	/// <summary>
+	/// Accepts the quest and kills the monster to complete, if no cell/pad is given will hunt for the monster.
+	/// </summary>
+	/// <param name="quest">ID of the quest</param>
+	/// <param name="map">Map where the monster is</param>
+	/// <param name="monster">Name of the monster</param>
+	/// <param name="item">Item to get</param>
+	/// <param name="quant">Quantity of the item</param>
+	/// <param name="isTemp">Whether it is temporary</param>
+	/// <param name="cell">Cell where the monster is (optional)</param>
+	/// <param name="pad">Pad where the monster is</param>
+	public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = null)
 	{
 		if (Bot.Quests.IsDailyComplete(quest))
-			return false;
+			return;
 		Bot.Player.Join(map);
 		Core.EnsureAccept(quest);
-		if (cell != null && pad != null) Core.KillMonster(map, cell, pad, monster, item, quant, isTemp);
+		if (cell != null || pad != null)
+			Core.KillMonster(map, cell, pad, monster, item, quant, isTemp);
 		else
 			Core.HuntMonster(map, monster, item, quant, isTemp);
-		return Core.EnsureComplete(quest);
+		Core.EnsureComplete(quest);
+		Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
 	}
-
+	/// <summary>
+	/// Checks if the daily is complete, if not will add the specified drops and unbank if necessary
+	/// </summary>
+	/// <param name="quest">ID of the quest</param>
+	/// <param name="items">Items to add to drop grabber and unbank</param>
+	/// <returns></returns>
 	public bool CheckDaily(int quest, params string[] items)
 	{
 		if (Bot.Quests.IsDailyComplete(quest))
 			return false;
 		Core.AddDrop(items);
-		foreach (string item in items)
-			Core.CheckInventory(item);
+		Core.Unbank(items);
 		return true;
 	}
 
-	public bool DailyRoutine(int quest)
+	/// <summary>
+	/// This is exclusive for Grumble, Grumble or any other quest without requirements
+	/// </summary>
+	/// <param name="quest"></param>
+	public void DailyRoutine(int quest)
 	{
 		if (Bot.Quests.IsDailyComplete(quest))
-			return false;
+			return;
 
 		Core.EnsureAccept(quest);
-		return Core.EnsureComplete(quest);
+		Core.EnsureComplete(quest);
 	}
 
 	public void FungiforaFunGuy()
@@ -140,13 +161,13 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(1316, "This Might Be A Token", "Tokens of Collection") && !Core.IsMember)
 			return;
-		if (!CheckDaily(1331, "This Is Definitely A Token", "Tokens of Collection") && !CheckDaily(1332, "This Might Be A Token", "Tokens of Collection") && Core.IsMember)
+		if (!CheckDaily(1331, "This Is Definitely A Token", "Tokens of Collection") && !CheckDaily(1332, "This Could Be A Token", "Tokens of Collection") && Core.IsMember)
 			return;
 		DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
 		if (Core.IsMember)
 		{
 			DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
-			DailyRoutine(1332, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right"); 
+			DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right"); 
 		}
 	}
 	
@@ -192,6 +213,8 @@ public class CoreDailys
 	
 	public void ShadowScytheClass()
 	{
+		if (Core.CheckInventory("ShadowScythe General"))
+			return;
 		if (!CheckDaily(3828, "Shadow Shield") && !Core.IsMember)
 			return;
 		if (!CheckDaily(3827, "Shadow Shield") && Core.IsMember)
@@ -217,7 +240,6 @@ public class CoreDailys
 		if (!CheckDaily(802, "Elders' Blood"))
 			return;
 		DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
-		return;
 	}
 
 	public void ShadowShroud()
