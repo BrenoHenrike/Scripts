@@ -1,4 +1,6 @@
-﻿using RBot;
+﻿//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+using RBot;
 using RBot.Options;
 using System.Collections.Generic;
 
@@ -23,7 +25,7 @@ public class AlchemyREP
 	{
 		Core.SetOptions();
 
-		//Farm.UseREPBoost(REPBoost.REP20, false);
+		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
 		Farm.AlchemyREP(10, bot.Config.Get<bool>("goldMethod"));
 

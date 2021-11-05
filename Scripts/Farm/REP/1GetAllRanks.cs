@@ -1,7 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using RBot;
-public class VampireREP
+public class GetAllRanks
 {
 	public CoreBots Core = new CoreBots();
 	public CoreFarms Farm = new CoreFarms();
@@ -10,9 +10,9 @@ public class VampireREP
 	{
 		Core.SetOptions();
 
-		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+		//Farm.UseREPBoost(REPBoost.REP20);
 
-		Farm.VampireREP();
+		Farm.GetAllRanks();
 
 		Core.SetOptions(false);
 	}

@@ -11,7 +11,7 @@ public class EvilREP
 	{
 		Core.SetOptions();
 
-		//Farm.UseREPBoost(REPBoost.REP20);
+		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
 		Farm.EvilREP();
 

@@ -10,7 +10,7 @@ public class GoodREP
 	{
 		Core.SetOptions();
 
-		//Farm.UseREPBoost(REPBoost.REP20);
+		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
 		Farm.GoodREP();
 
