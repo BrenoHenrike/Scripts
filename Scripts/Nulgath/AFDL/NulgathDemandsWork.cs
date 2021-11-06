@@ -16,6 +16,8 @@ public class NulgathDemandsWork
 		Core.AddDrop("Unidentified 35", "Archfiend Essence Fragment", "Unidentified 27", "Unidentified 26", 
 			"Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 		int i = 1;
+		if(!Core.CheckInventory("Unidentified 34", 10))
+			Core.Logger("Need 10 or more Unidentified 34 to work");
 		while (bot.Inventory.GetQuantity("Unidentified 34") >= 10)
 		{
 			Nulgath.FarmUni13(2);

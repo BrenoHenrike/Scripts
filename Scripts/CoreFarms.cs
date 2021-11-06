@@ -32,7 +32,7 @@ public class CoreFarms
 		if (useMultiple)
 		{
 			Bot.Player.UseBoost(boostID);
-			Bot.RegisterHandler(30200, b =>
+			Bot.RegisterHandler(5, b =>
 			{
 				if (!b.Player.IsBoostActive(type))
 					b.Player.UseBoost(boostID);
@@ -140,13 +140,22 @@ public class CoreFarms
 		{
 			if (goldMethod)
 			{
-				Bot.Player.Join("alchemyacademy");
-				Bot.Shops.Load(395);
-				Core.SendPackets("%xt%zm%buyItem%10124%61043%395%8421%", 2);
-				Core.SendPackets("%xt%zm%buyItem%10124%7132%395%8845%");
-				Bot.Shops.Load(397);
-				Core.SendPackets("%xt%zm%buyItem%10124%11475%397%1232%", 5);
-				Core.SendPackets("%xt%zm%buyItem%10124%11478%397%1235%", 5);
+				if (!Core.CheckInventory("Ice Vapor") || !Core.CheckInventory("Dragon Scale"))
+				{
+					Bot.Player.Join("alchemyacademy");
+					if (!Core.CheckInventory("Dragon Runestone"))
+					{
+						Bot.Shops.Load(395);
+						if(!Core.CheckInventory("Gold Voucher 500k"))
+							Core.SendPackets("%xt%zm%buyItem%10124%61043%395%8421%", 2);
+						Core.SendPackets("%xt%zm%buyItem%10124%7132%395%8845%"); 
+					}
+					Bot.Shops.Load(397);
+					if (!Core.CheckInventory("Dragon Scale"))
+						Core.SendPackets("%xt%zm%buyItem%10124%11475%397%1232%", 5);
+					if (!Core.CheckInventory("Ice Vapor"))
+						Core.SendPackets("%xt%zm%buyItem%10124%11478%397%1235%", 5);
+				}
 				AlchemyPacket();
 			}
 			else
@@ -809,6 +818,8 @@ public class CoreFarms
 			Bot.Sleep(15000);
 			Bot.SendPacket("%xt%zm%crafting%1%checkAlchComplete%11475%11478%false%Mix Complete%Dragon Scale%Ice Vapor%Gebo%Moose%");
 			Bot.Sleep(700);
+			if (FactionRank("Alchemy") == 10)
+				break;
 			Core.Logger($"Completed alchemy x{i}");
 			i++;
 		}

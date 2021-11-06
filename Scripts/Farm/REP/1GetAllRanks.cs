@@ -10,7 +10,7 @@ public class GetAllRanks
 	{
 		Core.SetOptions();
 
-		//Farm.UseREPBoost(REPBoost.REP20);
+		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, true);
 
 		Farm.GetAllRanks();
 
