@@ -220,6 +220,7 @@ public class CoreBots
 	public void AddDrop(params string[] items)
 	{
 		Bot.Drops.Stop();
+		Unbank(items);
 		foreach (string item in items)
 			Bot.Drops.Add(item);
 		Bot.Drops.Start();

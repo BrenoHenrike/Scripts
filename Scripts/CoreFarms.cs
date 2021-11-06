@@ -246,7 +246,7 @@ public class CoreFarms
 		{
 			Core.EnsureAccept(3757);
 
-			Core.HuntMonster("pyramids", "Golden Scarab", "Gleaming Gems of Containment", 9);
+			Core.HuntMonster("pyramid", "Golden Scarab", "Gleaming Gems of Containment", 9);
 			Core.HuntMonster("lair", "Golden Draconian", "Bright Binding of Submission", 8);
 
 			Core.EnsureComplete(3757);

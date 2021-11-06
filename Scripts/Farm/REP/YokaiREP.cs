@@ -1,5 +1,5 @@
 ﻿//cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarm.cs
+//cs_include Scripts/CoreFarms.cs
 using RBot;
 
 public class YokaiREP

@@ -1,4 +1,5 @@
-﻿using RBot;
+﻿//cs_include Script/CoreBots.cs
+using RBot;
 
 public class BloodMoonToken
 {
@@ -14,8 +15,8 @@ public class BloodMoonToken
 		{
 			Core.EnsureAccept(6059);
 
-			Core.HuntMonster("bloodmoon", "Lycan Guard", "Black Blood Vial", 1, false);
-			Core.HuntMonster("bloodmoon", "Black Unicorn", "Moon Stone", 1, false);
+			Core.HuntMonster("bloodmoon", "Black Unicorn", "Black Blood Vial", 1, false);
+			Core.HuntMonster("bloodmoon", "Lycan Guard", "Moon Stone", 1, false);
 
 			Core.EnsureComplete(6059);
 			bot.Wait.ForPickup("Blood Moon Token");
