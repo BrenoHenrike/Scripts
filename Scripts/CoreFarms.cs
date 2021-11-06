@@ -31,7 +31,6 @@ public class CoreFarms
 	{
 		if (useMultiple)
 		{
-			Bot.Player.UseBoost(boostID);
 			Bot.RegisterHandler(5, b =>
 			{
 				if (!b.Player.IsBoostActive(type))
