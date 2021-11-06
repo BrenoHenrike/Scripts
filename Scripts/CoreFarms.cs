@@ -1,7 +1,5 @@
 ﻿using RBot;
 using RBot.Items;
-using System.Collections.Generic;
-using System.Linq;
 
 public class CoreFarms
 {
@@ -31,9 +29,6 @@ public class CoreFarms
 	/// <param name="useMultiple">Whether use more than one boost</param>
 	public void UseBoost(int boostID, BoostType type, bool useMultiple = true)
 	{
-		if (!Core.CheckInventory(boostID))
-			return;
-
 		if (useMultiple)
 		{
 			Bot.Player.UseBoost(boostID);
