@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+<a href="1 Intro">1. Intro</a><br>
+<a href="2 Options and Lite">2. Options</a><br>
+<a href="3 Timings and Handlers">3. Timings</a><br>
+<a href="4 Monsters">4. Monsters</a><br>
+<a href="5 Skills">5. Skills</a><br>
 
-You can use the [editor on GitHub](https://github.com/BrenoHenrike/Rbot-Scripts/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BrenoHenrike/Rbot-Scripts/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## WIP
+<a href="6 Shops">6. Shops</a><br>
+<a href="7 Player">7. Player</a><br>
+<a href="8 Quests">8. Quests</a><br>
+<a href="9 Map">9. Map</a><br>
+<a href="10 Inventory and Bank">10. Inventory and Bank</a><br>
+<a href="11 Events">11. Events</a><br>
+<a href="12 Packets">12. Packets</a><br>
+<a href="13 Examples">13. Examples</a><br>
+<a href="14 Script Options">14. Script Options</a><br>
+<a href="15 Plugins">15. Plugins</a><br>
