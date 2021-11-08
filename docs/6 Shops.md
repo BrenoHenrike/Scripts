@@ -1,7 +1,7 @@
 ## Shops
 It is very simple to buy and sell items using `ScriptInterface#Shops`.
 
-#### Properties
+### Properties
 
 | Property | Return Type | Description |
 |---|:---:|---|
@@ -11,7 +11,7 @@ It is very simple to buy and sell items using `ScriptInterface#Shops`.
 | `ShopName` | *string* | Gets the last (or currently) loaded shop's name. |
 | `MergeItems` | *List\<RBot.Shops.MergeItem>* | Gets a list of items in the last (or currently) loaded merge shop. |
 
-#### Methods
+### Methods
 
 | Method Definition | Description |
 |---|---|

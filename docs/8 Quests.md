@@ -1,7 +1,7 @@
 ## Quests
 Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 
-#### Properties
+### Properties
 
 | Properties | Type | Description |
 |---|:---:|---|
@@ -9,7 +9,7 @@ Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 | `CompletedQuests` | *List\<RBot.Quests.Quest>* | A list of currently accepted quests which are ready to turn in. |
 | `QuestTree` | *List\<RBot.Quests.Quest>* | A list of all quests that have been loaded in the current session. |
 
-#### Methods
+### Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
@@ -26,7 +26,7 @@ Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 | `IsUnlocked(int id)` | *bool* | Checks if a storyline quest is unlocked. |
 | `IsAvailable(int id)` | *bool* | Performs all checks to see if a quest can be accepted/turned in. |
 
-#### The 'Quest' class
+### The 'Quest' class
 Some properties give lists of `Quest` objects. These objects have the following properties:
 
 | Property | Type | Description |

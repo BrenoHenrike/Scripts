@@ -47,6 +47,7 @@ If `SafeTimings` is enabled, these methods are used by default to wait for actio
 | `ForActionCooldown(GameActions action)` | Waits for the specified game action to cool down. |
 
 #### Examples
+
 Even when using `SafeTimings`, it is sometimes suitable to use these wait methods. For example, when turning in a quest, it is recommended you do the following:
 
 ```csharp
@@ -59,8 +60,8 @@ where `id` is the quest id you are turning in and `reward` is the name of the re
 
 Also, if you are not used to see [delegates](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/) (like [Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=net-5.0), [Action](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=net-5.0) and [Predicate](https://docs.microsoft.com/en-us/dotnet/api/system.predicate-1?view=net-5.0)), they are, putting it simply, reference of methods. They allow you to use an anonymous method as a parameter for another method, you can use them in `For` and `ForTrue` methods but as most of `Wait` methods already cover essential parts of game mechanics, you will see them beign more used for `Handlers` in the next topic.
 
-### Handlers and Scheduling
-#### Handlers
+## Handlers and Scheduling
+### Handlers
 
 If you would like to run code repeatedly alongside your script at a fixed interval, you can do so using a `ScriptHandler`. The best way to do this is through the `ScriptInterface#RegisterHandler(int ticks, Action<ScriptInterface> func)` method. This method takes a number of `ticks` (the interval in units of **250ms *(WAIT_SLEEP)***), and the function, `func`, to be run.
 
@@ -76,7 +77,7 @@ will log `"Test"` every 500ms.
 
 Handlers are cleared when a script stops or when a new script starts running.
 
-#### Scheduling
+### Scheduling
 
 If you want to schedule some code to run **once** after a set period of time, you can use `ScriptInterface#Schedule(int delay, Action<ScriptInterface> func)` where `delay` is the time in ms after the code is run, and `func` is the function to run.
 

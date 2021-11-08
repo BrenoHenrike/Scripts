@@ -46,7 +46,7 @@ These Options can be changed in the **Advanced Options** tab in-game.
 | `UntargetDead` | *bool* | Untargets monsters that are dead. |
 | `UntargetSelf` | *bool* | Prevents skills from targeting yourself. |
 
-#### Setting options
+### Setting options
 Some options can be set through the UI. All options can be set programatically in a script as follows:
 
 ```csharp

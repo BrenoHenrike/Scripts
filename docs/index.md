@@ -1,13 +1,13 @@
 <details>
-    <summary><a href="1 Intro">1. Intro</a></summary>
+    <summary><a href="1 Intro">1. Intro</a> ↨</summary>
     <ul>
-    <a href="1 Intro#creating-a-script">Creating a Script</a><br>
+    <a href="1 Intro#creating-a-script">Creating a Script</a> ↨<br>
     <a href="1 Intro#the-script-interface">The Script Interface</a>
     </ul>
 </details>
 
 <details>
-    <summary><a href="2 Options and Lite">2. Options & Lite</a></summary>
+    <summary><a href="2 Options and Lite">2. Options & Lite</a> ↨</summary>
     <ul>
     <a href="2 Options and Lite#scriptinterface%23options">ScriptInterface.Options</a><br>
     <a href="2 Options and Lite#scriptinterface%23Lite">ScriptInterface.Lite</a><br>
@@ -16,7 +16,7 @@
 </details>
 
 <details>
-<summary><a href="3 Timings and Handlers">3. Timings</a></summary>
+<summary><a href="3 Timings and Handlers">3. Timings</a> ↨</summary>
     <ul>
     <a href="3 Timings and Handlers#sleeping">Sleep</a><br>
     <a href="3 Timings and Handlers#waiting">Wait</a><br>
@@ -27,7 +27,7 @@
 </details>
 
 <details>
-<summary><a href="4 Monsters">4. Monsters</a></summary>
+<summary><a href="4 Monsters">4. Monsters</a> ↨</summary>
     <ul>
     <a href="4 Monsters#properties">Properties</a><br>
     <a href="4 Monster#methods">Methods</a><br>
@@ -36,7 +36,7 @@
 </details>
 
 <details>
-<summary><a href="5 Skills">5. Skills</a></summary>
+<summary><a href="5 Skills">5. Skills</a> ↨</summary>
     <ul>
     <a href="5 Skills#properties">Properties</a><br>
     <a href="5 Skills#methods">Methods</a><br>
@@ -47,7 +47,7 @@
 </details>
 
 <details>
-<summary><a href="6 Shops">6. Shops</a></summary>
+<summary><a href="6 Shops">6. Shops</a> ↨</summary>
     <ul>
     <a href="6 Shops#properties">Properties</a><br>
     <a href="6 Shops#methods">Methods</a><br>
@@ -55,7 +55,7 @@
 </details>
 
 <details>
-<summary><a href="7 Player">7. Player</a><br></summary>
+<summary><a href="7 Player">7. Player</a> ↨</summary>
     <ul>
     <a href="7 Player#properties">Properties</a><br>
     <a href="7 Player#methods">Methods</a><br>
@@ -64,7 +64,7 @@
 </details>
 
 <details>
-<summary><a href="8 Quests">8. Quests</a></summary>
+<summary><a href="8 Quests">8. Quests</a> ↨</summary>
     <ul>
     <a href="8 Quests#properties">Properties</a><br>
     <a href="8 Quests#methods">Methods</a><br>
@@ -73,7 +73,7 @@
 </details>
 
 <details>
-<summary><a href="9 Map">9. Map</a></summary>
+<summary><a href="9 Map">9. Map</a> ↨</summary>
     <ul>
     <a href="9 Map#properties">Properties</a><br>
     <a href="9 Map#methods">Methods</a><br>
@@ -82,28 +82,28 @@
 </details>
 
 <details>
-<summary><a href="10 Inventory and Bank">10. Inventory and Bank</a></summary>
+<summary><a href="10 Inventory and Bank">10. Inventory and Bank</a> ↨</summary>
     <ul>
-    <a href="10 Inventory and Bank#properties">Inventory Properties</a><br>
-    <a href="10 Inventory and Bank#methods">Inventory Methods</a><br>
-    <a href="10 Inventory and Bank#properties">Bank Properties</a><br>
-    <a href="10 Inventory and Bank#methods">Bank Methods</a>
+    <a href="10 Inventory and Bank#inventory-properties">Inventory Properties</a><br>
+    <a href="10 Inventory and Bank#inventory-methods">Inventory Methods</a><br>
+    <a href="10 Inventory and Bank#bank-properties">Bank Properties</a><br>
+    <a href="10 Inventory and Bank#bank-methods">Bank Methods</a>
     </ul>
 </details>
 
 <details>
-<summary><a href="11 Events">11. Events</a></summary>
+<summary><a href="11 Events">11. Events</a> ↨</summary>
     <ul>
     <a href="11 Events#listening-for-events">Listening for Events</a>
     </ul>
 </details>
 
 <details>
-<summary><a href="12 Packets">12. Packets</a></summary>
+<summary><a href="12 Packets">12. Packets</a> ↨</summary>
 </details>
 
 <details>
-<summary><a href="13 Examples">13. Examples</a></summary>
+<summary><a href="13 Examples">13. Examples</a> ↨</summary>
     <ul>
     <a href="13 Examples#design-and-layout">Design and Layout</a><br>
     <a href="13 Examples#repeating-the-quest">Repeating the quest</a><br>
@@ -115,7 +115,7 @@
 </details>
 
 <details>
-<summary><a href="14 Script Options">14. Script Options</a></summary>
+<summary><a href="14 Script Options">14. Script Options</a> ↨</summary>
     <ul>
     <a href="14 Script Options#setting-up">Setting up</a><br>
     <a href="14 Script Options#adding-configurable-options">Adding configurable Options</a><br>
@@ -126,7 +126,7 @@
 </details>
 
 <details>
-<summary><a href="15 Plugins">15. Plugins</a></summary>
+<summary><a href="15 Plugins">15. Plugins</a> ↨</summary>
     <ul>
     <a href="15 Plugins#creating-a-plugin">Creating a Plugin</a><br>
     <a href="15 Plugins#configurable-plugin-options">Configurable Plugin Options</a>

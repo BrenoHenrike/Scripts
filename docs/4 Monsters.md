@@ -1,7 +1,7 @@
 ## Monsters
 Information about monsters in the current map and cell can be obtained through `ScriptInterface#Monsters`. This is useful for testing if monsters exist or exist with specific conditions about their health or other properties.
 
-#### Properties
+### Properties
 The class has the following properties:
 
 | Property | Type | Description |
@@ -10,7 +10,7 @@ The class has the following properties:
 | `MapMonsters` | *List\<Monster>* | A list of monsters in the current map. |
 | `HuntCellBlacklist` | *List\<string>* | A list of cells that are ignored when hunting for monsters. This is typically unneeded. |
 
-#### Methods
+### Methods
 The class has the following methods (return values will be according to the current Map):
 
 | Method Definition | Return Type | Description |

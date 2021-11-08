@@ -16,9 +16,10 @@ The following events can be listened for:
 | `PlayerAFK()` | Player goes AFK. |
 | `TryBuyItem()` | Player attempts to buy an item from a shop. |
 
-Event handlers are cleared when a script stops or starts. To manually clear event handlers use `ScriptEvents#ClearHandlers()`, although this is typically not necessary. **(In current version [3.6] they aren't cleared as intened)**
+Event handlers are cleared when a script stops or starts. To manually clear event handlers use `ScriptEvents#ClearHandlers()`, although this is typically not necessary. **(In current version [3.6] they aren't cleared as intended)**
 
-#### Listening for Events
+### Listening for Events
+
 To attach your own listener to an event, you can use the typical C# syntax for adding event handlers. All event handlers take a first argument which is the current instance of the `ScriptInterface` and some take a second argument (shown in the list above). For example:
 
 ```csharp

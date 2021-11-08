@@ -1,7 +1,7 @@
 ## Skills
 It is recommended you load skills from an XML skills file created from the Skills form. If you would like to manually manage skills in your script, you can do this through `ScriptInterface#Skills`. Manual management is overridden by the UI by default.
 
-#### Properties
+### Properties
 The following properties can be modified to change the behaviour of the skill timer thread:
 
 | Property | Type | Description |
@@ -10,7 +10,7 @@ The following properties can be modified to change the behaviour of the skill ti
 | `SkillTimeout` | *int* | The timeout in **multiples** of SkillTimer milliseconds it will wait before skipping the current unavailable skill when using SkillMode.Wait (which comes with [Patterns](/docs/5%20Skills#patterns) or your own [SkillProvider](/docs/5%20Skills#skill-provider)). The default is -1 (no timeout). |
 | `TimerRunning` | *bool* | Whether the skill timer thread is currently running. |
 
-#### Methods
+### Methods
 The following methods can be used to programatically manage skills. The method's return types are ommitted as they are all void.
 
 | Method Definition | Description |
@@ -27,7 +27,7 @@ The following methods can be used to programatically manage skills. The method's
 | `LoadPattern(string def)` | Loads a pattern definition file (can be any type of text file). `def` is the path to the definition file which can be absolute or relative to the running directory of the bot. |
 | `StartSkills(string xml)` | Loads a skill definition XML file and then restarts the skill timer. |
 
-#### Skill Use Rules
+### Skill Use Rules
 If you would like finer grained control over when skills are used, you can apply a `UseRule` to a skill at the given index. There are 3 rules which can be used in the UI:
 
 1. `HealthUseRule` - Specifies a minimum and maximum health at which the skill can be used.

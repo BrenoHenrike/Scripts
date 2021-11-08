@@ -2,7 +2,7 @@
 
 Plugins can be used for whatever need you may want to fulfill. In this page the examples will be simple but you certainly can design new Forms to show in RBot using plugins.
 
-#### Creating a Plugin
+### Creating a Plugin
 To create plugin, create a new class library project in Visual Studio (or whatever IDE you use), and add a reference to RBot.exe.
 
 Then create a new class that extends `RBot.Plugins.RPlugin` and override the plugin's properties and methods:
@@ -36,7 +36,7 @@ public class TestPlugin : RPlugin
 
 References to the current bot instance and the plugin's container are found at `RPlugin#Bot` and `RPlugin#Container` respectively. The plugin's container is used to get and set the plugin's options.
 
-#### Configurable Plugin Options
+### Configurable Plugin Options
 Plugins can set options in the exact same way as script options are set (see 14. Script Options). The only difference is the options must be defined as a property, not a field. Options values can be get and set through `Container.Options` in the exact same way as script options:
 
 ```csharp

@@ -1,7 +1,7 @@
 ## Map
 Information about the currently loaded map (room) can be obtained through the `ScriptInterface#Map` object.
 
-#### Properties
+### Properties
 
 | Property | Type | Description |
 |---|:---:|---|
@@ -14,7 +14,7 @@ Information about the currently loaded map (room) can be obtained through the `S
 | `Loaded` | *bool* | Indicates whether a map is currently loaded. |
 | `Cells` | *List\<string>* | An list of all the cell names in the map. |
 
-#### Methods
+### Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
@@ -25,7 +25,7 @@ Information about the currently loaded map (room) can be obtained through the `S
 | `TryGetPlayer(string username)` | *bool; out RBot.Players.PlayerInfo* | Whether the player exists and is loaded in the current map. It `out`s the `PlayerInfo` of the given name. |
 | `Reload()` | *void* | Reloads the current map. |
 
-#### The 'PlayerInfo' class
+### The 'PlayerInfo' class
 Some properties give single or lists of `PlayerInfo` objects. These objects have the following properties:
 
 | Property | Type | Description |

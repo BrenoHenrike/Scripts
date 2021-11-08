@@ -64,7 +64,7 @@ while(!bot.ShouldExit()){
 
 This will complete the quest until RBot is closed. The condition in the while loop can be changed to anything, such as checking wheter a player has a specified quantity of item.
 
-#### Hunting multiple monsters
+### Hunting multiple monsters
 The easiest way to hunt multiple monsters for an item is to separate the monster names with a `"|"` character and pass it as the monster's name to `HuntForItem`. For example, if multiple monsters `Monster 1`, `Monster 2` and `Monster 3` drop the item `Item 1`, and these monsters exist in the same room (can be in different cells), you can hunt them to get `Item 1 x 10` like this:
 
 ```csharp
@@ -77,14 +77,14 @@ If `Item 1` is a temp item, you can simply pass another argument after the quant
 bot.Player.HuntForItem("Monster 1|Monster 2|Monster 3", "Item 1", 10, true);
 ```
 
-#### Hunting for multiple items
+### Hunting for multiple items
 If you want to hunt a monster or multiple monsters for multiple items, you can use `HuntForItems`. Multiple monsters are passed to this method in the same way as for `HuntForItem` (using a `"|"` separator). For example, if you want `Item 1 x 10` and `Item 2 x 5`, and all three of of the monsters drop these 2 items, you would use this:
 
 ```csharp
 bot.Player.HuntForItems("Monster 1|Monster 2|Monster 3", new string[] { "Item 1", "Item 2" }, new int[] { 10, 5 });
 ```
 
-#### Setting up relogin
+### Setting up relogin
 I would recommend you setup the auto relogin in the UI as it is easier, although you can do it in your script if you want. Add this code to where you setup your options:
 
 ```csharp
@@ -108,7 +108,7 @@ bot.Options.AutoRelogin = true;
 
 This will relogin you to the specified server. You can change Artix to whatever server you want to relogin to.
 
-#### Legion Fealty 1
+### Legion Fealty 1
 Here I will build a script to complete the `Legion Fealty 1` quest until the player has `Revenant's Spellscroll x 20`.
 
 Looking at the [wiki](http://aqwwiki.wikidot.com/legion-revenant-s-quests) page for this quest, we require [Aeacus Empowered](http://aqwwiki.wikidot.com/aeacus-empowered) x 50, [Tethered Soul](http://aqwwiki.wikidot.com/tethered-soul) x 300, [Darkened Essence](http://aqwwiki.wikidot.com/darkened-essence) x 500, and [Dracolich Contract](http://aqwwiki.wikidot.com/dracolich-contract) x 1000.
