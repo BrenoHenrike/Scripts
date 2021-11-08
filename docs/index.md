@@ -1,7 +1,7 @@
 <details>
     <summary><a href="1 Intro">1. Intro</a> ↨</summary>
     <ul>
-    <a href="1 Intro#creating-a-script">Creating a Script</a> ↨<br>
+    <a href="1 Intro#creating-a-script">Creating a Script</a><br>
     <a href="1 Intro#the-script-interface">The Script Interface</a>
     </ul>
 </details>
@@ -99,7 +99,7 @@
 </details>
 
 <details>
-<summary><a href="12 Packets">12. Packets</a> ↨</summary>
+<summary><a href="12 Packets">12. Packets</a></summary>
 </details>
 
 <details>
