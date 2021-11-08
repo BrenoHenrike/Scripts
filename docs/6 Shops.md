@@ -10,9 +10,10 @@ It is very simple to buy and sell items using `ScriptInterface#Shops`.
 | `IsShopLoaded` | *bool* | Checks whether a shop is currently loaded. |
 | `ShopID` | *int* | Gets the last (or currently) loaded shop id. |
 | `ShopName` | *string* | Gets the last (or currently) loaded shop's name. |
-| `MergeItems` | *List\<RBot.Shops.MergeItem>* | Gets a list of items int the last (or currently) loaded merge shop. |
+| `MergeItems` | *List\<RBot.Shops.MergeItem>* | Gets a list of items in the last (or currently) loaded merge shop. |
 
 #### Methods
+
 | Method Definition | Description |
 |---|---|
 | `Load(int id)` | Loads the shop with the specified id. |

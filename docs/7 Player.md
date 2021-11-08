@@ -45,6 +45,7 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 | `CurrentDropInfos` | *List\<DropInfo>* | Gets a list of drops available with their counts. |
 
 ### Methods
+
 | Method Definition | Return Type | Description |
 |---|:---:|---|
 | `Pickup(params string[] items)` | *void* | Picks up the specified items. |
