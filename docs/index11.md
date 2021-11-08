@@ -89,6 +89,6 @@
     <a href="15 Plugins#creating-a-plugin">Creating a Plugin</a><br>
     <a href="15 Plugins#configurable-plugin-options">Configurable Plugin Options</a>
 <dd>
-</dl>
+</dl><br>
 
 #### Made by [Rodit](rodit.github.io/Rbot-Scripts/), updated by BrenoHenrike
