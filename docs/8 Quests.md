@@ -3,6 +3,7 @@ Quests
 Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 
 #### Properties
+
 | Properties | Type | Description |
 |---|:---:|---|
 | `ActiveQuests` | *List\<RBot.Quests.Quest>* | A list of currently accepted quests. |
@@ -10,6 +11,7 @@ Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 | `QuestTree` | *List\<RBot.Quests.Quest>* | A list of all quests that have been loaded in the current session. |
 
 #### Methods
+
 | Method Definition | Return Type | Description |
 |---|:---:|---|
 | `Load(int id)` | *void* | Loads the quest with the given id. |

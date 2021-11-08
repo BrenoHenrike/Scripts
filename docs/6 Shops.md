@@ -3,6 +3,7 @@ Shops
 It is very simple to buy and sell items using `ScriptInterface#Shops`.
 
 #### Properties
+
 | Property | Return Type | Description |
 |---|:---:|---|
 | `ShopItems` | *List\<RBot.Shops.ShopItem>* | Gets a list of items in the last (or currently) loaded shop. |
