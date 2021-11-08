@@ -1,8 +1,3 @@
----
-title: AA
-permalink: brenohenrike.github.io/RBotDocs/1%20Intro
----
-
 # Script Documentation
 Creating a Script
 ------
