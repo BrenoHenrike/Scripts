@@ -27,5 +27,6 @@ It is very simple to buy and sell items using `ScriptInterface#Shops`.
 
 These methods are very easy to use and should be self-explanatory.
 
-|[◄ Previous](/docs/5%20Skills "5. Skills") ——— [Next ►](/docs/7%20Player "7. Player") |
-| :---: |
+---------
+<center>
+<a href="/Rbot-Scripts/5 Skills" title="5. Skills">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/7 Player" title="7. Player">Next ►</a></center>

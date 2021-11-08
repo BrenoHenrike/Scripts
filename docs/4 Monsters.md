@@ -38,9 +38,10 @@ Many of the above properties return lists containing instances of `Monster`. Thi
 | `FileName` | *string* | The SWF file name of the monster. |
 | `Alive` | *bool* | Returns whether the monster is Alive by checking its `HP`. |
 
-You can use the method `Monster.ToString()` to return a string formatted like `{Name} [{ID}] [{MapID}, {Cell}]` with each respective property filled with the monster info.
+You can use the method `Monster.ToString()` to return a string formatted like `{Name} [{ID}] [{MapID}, {Cell}]` with each respective variable filled with the monster info.
 
 Later, [when attacking monsters is explained](https://brenohenrike.github.io/Rbot-Scripts/), it will be made clear how to query monster lists and target monsters using these properties.
 
-|[◄ Previous](https://brenohenrike.github.io/Rbot-Scripts/3%20Timings%20and%20Handlers "3. Timings & Handlers") ——— [Next ►](https://brenohenrike.github.io/Rbot-Scripts/5%20Skills "5. Skills") |
-| :---: |
+---------
+<center>
+<a href="/Rbot-Scripts/3 Timings and Handlers" title="3. Timings & Handlers">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/5 Skills" title="5. Skills">Next ►</a></center>

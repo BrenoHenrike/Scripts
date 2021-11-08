@@ -56,9 +56,10 @@ Some properties give lists of `Quest` objects. These objects have the following 
 | `Rewards` | *RBot.Items.ItemBase* | The items given as a reward for completing the quest. |
 | `SimpleRewards` | *RBot.Items.SimpleReward* | Item drop rates are mapped to their IDs in this list. |
 
-You can use the method `Quest.ToString()` to return a string formatted like `{Name} [{ID}]` with each respective property filled with the quest info.
+You can use the method `Quest.ToString()` to return a string formatted like `{Name} [{ID}]` with each respective variable filled with the quest info.
 
 These properties can be used as a trustful source of information about the quest, preventing typos that can be found in the wiki.
 
-|[◄ Previous](/docs/7%20Player "7. Player") ——— [Next ►]() |
-| :---: |
+---------
+<center>
+<a href="/Rbot-Scripts/7 Player" title="7. Player">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/9 Map" title="9. Map">Next ►</a></center>

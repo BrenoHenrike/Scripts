@@ -101,5 +101,6 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 #### Examples
 The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. Examples [can be found at the end of the documentation]().
 
-|[◄ Previous](/docs/6%20Shops "6. Shops") ——— [Next ►](/docs/8%20Quests "7. Quests") |
-| :---: |
+---------
+<center>
+<a href="/Rbot-Scripts/6 Shops" title="6. Shops">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/8 Quests" title="8. Quests">Next ►</a></center>

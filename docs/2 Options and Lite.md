@@ -65,5 +65,6 @@ public void ScriptMain(ScriptInterface bot)
 
 **Note:** It is strongly recommended that `SafeTimings` is always enabled so you do not have to manage the timings of the bot yourself. Also, always make sure **_Reaccept Quest_** from **Advanced Options** is turned **OFF**.
 
+---------
 <center>
-<a href="/docs/Rbot-Scripts/1%20Intro" title="1. Intro">◄ Previous</a> ——— <a href="/docs/Rbot-Scripts/3 Timings and Handlers" title="3. Timings and Handlers">Next ►</a></center>
+<a href="/Rbot-Scripts/1%20Intro" title="1. Intro">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/3 Timings and Handlers" title="3. Timings and Handlers">Next ►</a></center>

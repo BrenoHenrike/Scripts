@@ -65,5 +65,6 @@ This would show a native windows `MessageBox` containing the message `"This clas
 ***
 The `ScriptInterface` class provides a multitude of methods and properties for accessing and interacting with the game. An instance of the `ScriptInterface` class is passed as the first (and only) argument to the `ScriptMain` method of every script run by the bot application.
 
-|◄ Previous ——— [Next ►](https://brenohenrike.github.io/Rbot-Scripts/2%20Options%20and%20Lite "2. Options & Lite") |
-| :---: |
+---------
+<center>
+◄ Previous — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/2 Options and Lite" title="2. Options and Lite">Next ►</a></center>

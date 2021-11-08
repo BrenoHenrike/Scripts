@@ -91,5 +91,6 @@ bot.Schedule(500, b => {
 
 will log `"Test"` once after 500ms.
 
-|[◄ Previous](https://brenohenrike.github.io/Rbot-Scripts/2%20Options%20and%20Lite "3. Timings & Handlers") ——— [Next ►](https://brenohenrike.github.io/Rbot-Scripts/4%20Monsters "4. Monsters") |
-| :---: |
+---------
+<center>
+<a href="/Rbot-Scripts/2 Options and Lite" title="2. Options & Lite">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/4 Monsters" title="4. Monsters">Next ►</a></center>

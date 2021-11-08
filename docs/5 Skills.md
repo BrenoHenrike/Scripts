@@ -122,5 +122,6 @@ bot.Skills.ClearPattern();
 
 //TODO
 
-|[◄ Previous](/docs/4%20Monsters "4. Monsters") ——— [Next ►](/docs/6%20Shops "6. Shops") |
-| :---: |
+---------
+<center>
+<a href="/Rbot-Scripts/4 Monsters" title="4. Monsters">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/6 Shops" title="6. Shops">Next ►</a></center>
