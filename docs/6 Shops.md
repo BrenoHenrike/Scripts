@@ -1,5 +1,4 @@
-Shops
-======
+## Shops
 It is very simple to buy and sell items using `ScriptInterface#Shops`.
 
 #### Properties

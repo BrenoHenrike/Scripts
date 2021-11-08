@@ -1,5 +1,4 @@
-Timings & Handlers
-======
+## Timings & Handlers
 If you enable `SafeTimings` as recommended, you can ignore most of this document. The `ScriptWait` class has many methods useful for pausing the bot's execution until a desired condition is met.
 
 ### Sleeping

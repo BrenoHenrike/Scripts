@@ -1,5 +1,4 @@
-Player
-======
+## Player
 Most of the bot's functionality is called through `ScriptInterface#Player`. There are many methods for movement, combat and properties that can be examined.
 
 #### Properties
@@ -99,7 +98,7 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 | `GetFactionRank(string name)` | *int* | Gets the players rank of the given faction. |
 
 #### Examples
-The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. Examples [can be found at the end of the documentation]().
+The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. <a href="13 Examples">Examples can be found at the end of the documentation</a>.
 
 ---------
 <center>

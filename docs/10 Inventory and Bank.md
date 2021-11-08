@@ -1,12 +1,11 @@
-Inventory and Bank
-======
+## Inventory and Bank
 
 The player's inventory and bank can be managed through `ScriptInterface#Inventory` and `ScriptInterface#Bank` respectively.
 
 ### Inventory
 You can query and manage the player's inventory through `ScriptInterface#Inventory`.
 
-#### Properties
+#### Inventory Properties
 
 | Property | Type | Description |
 |---|:---:|---|
@@ -14,7 +13,7 @@ You can query and manage the player's inventory through `ScriptInterface#Invento
 | `TempItems` | *List\<RBot.Items.ItemBase>* | A list of items in the player's temporary inventory. |
 | `CurrentClass` | *RBot.Items.InventoryItem* | The player's current equipped class. |
 
-#### Methods
+#### Inventory Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
@@ -38,7 +37,7 @@ You can query and manage the player's inventory through `ScriptInterface#Invento
 ### Bank
 The player's bank can also be managed through `ScriptInterface#Bank`. However, before using this object, you should load the player's bank through `ScriptPlayer#LoadBank`. The client will otherwise think the bank is empty. The bank should typically be loaded at the start of the script.
 
-#### Properties
+#### Bank Properties
 
 | Property | Type | Description |
 |---|:---:|---|
@@ -47,7 +46,7 @@ The player's bank can also be managed through `ScriptInterface#Bank`. However, b
 | `UsedSlots` | *int* | The number of bank slots that are currently in use. |
 | `FreeSlots` | *int* | The number of free bank slots the player has. Calculates `Slots - UsedSlots` |
 
-#### Methods
+#### Bank Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|

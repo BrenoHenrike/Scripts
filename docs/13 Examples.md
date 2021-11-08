@@ -1,5 +1,4 @@
-Examples
-======
+## Examples
 ### Design and Layout
 Let's say a quest had ID `1`, and required `Required Item 1 x 10` and `Required Item 2 x 5` which were dropped by `Monster 1` and `Monster 2` respectively in map `example1`. The reward for the quest is called `Reward Item`. A typical script to complete this quest once would look like this:
 
@@ -65,7 +64,7 @@ while(!bot.ShouldExit()){
 
 This will complete the quest until RBot is closed. The condition in the while loop can be changed to anything, such as checking wheter a player has a specified quantity of item.
 
-#### Hunting Multiple Monsters
+#### Hunting multiple monsters
 The easiest way to hunt multiple monsters for an item is to separate the monster names with a `"|"` character and pass it as the monster's name to `HuntForItem`. For example, if multiple monsters `Monster 1`, `Monster 2` and `Monster 3` drop the item `Item 1`, and these monsters exist in the same room (can be in different cells), you can hunt them to get `Item 1 x 10` like this:
 
 ```csharp
@@ -78,22 +77,36 @@ If `Item 1` is a temp item, you can simply pass another argument after the quant
 bot.Player.HuntForItem("Monster 1|Monster 2|Monster 3", "Item 1", 10, true);
 ```
 
-#### Hunting for Multiple Items
+#### Hunting for multiple items
 If you want to hunt a monster or multiple monsters for multiple items, you can use `HuntForItems`. Multiple monsters are passed to this method in the same way as for `HuntForItem` (using a `"|"` separator). For example, if you want `Item 1 x 10` and `Item 2 x 5`, and all three of of the monsters drop these 2 items, you would use this:
 
 ```csharp
 bot.Player.HuntForItems("Monster 1|Monster 2|Monster 3", new string[] { "Item 1", "Item 2" }, new int[] { 10, 5 });
 ```
 
-#### Setting Up Relogin
+#### Setting up relogin
 I would recommend you setup the auto relogin in the UI as it is easier, although you can do it in your script if you want. Add this code to where you setup your options:
 
 ```csharp
 bot.Options.AutoRelogin = true;
-bot.Options.LoginServer = ServerList.Servers.Find(x => x.Name == "Artix");
 ```
 
-You can change Artix to whatever server you want to relogin to.
+This will relogin you to the last server you were.
+
+```csharp
+bot.Options.AutoReloginAny = true;
+// You need to make sure Auto Relogin is setted to true too
+bot.Options.AutoRelogin = true;
+```
+
+This will relogin you to any server that isn't the last one you were.
+
+```csharp
+bot.Options.LoginServer = ServerList.Servers.Find(x => x.Name == "Artix");
+bot.Options.AutoRelogin = true;
+```
+
+This will relogin you to the specified server. You can change Artix to whatever server you want to relogin to.
 
 #### Legion Fealty 1
 Here I will build a script to complete the `Legion Fealty 1` quest until the player has `Revenant's Spellscroll x 20`.

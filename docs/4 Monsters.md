@@ -1,5 +1,4 @@
-Monsters
-======
+## Monsters
 Information about monsters in the current map and cell can be obtained through `ScriptInterface#Monsters`. This is useful for testing if monsters exist or exist with specific conditions about their health or other properties.
 
 #### Properties
@@ -23,7 +22,7 @@ The class has the following methods (return values will be according to the curr
 | `GetLivingMonsterCells(string name)` | *List\<string>* | Gets a list of cells that contain a living monster with the given name. |
 | `TryGetMonster(string name, out RBot.Monsters.Monster monster)` | *bool; out RBot.Monsters.Monster* | Tries to get the monster with the given name, if true will assign it to the monster variable. |
 
-### The Monster Class
+### The 'Monster' class
 Many of the above properties return lists containing instances of `Monster`. This class has the following properties:
 
 | Property | Type | Description |

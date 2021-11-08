@@ -1,5 +1,4 @@
-Options & Lite
-======
+## Options & Lite
 The bot has a range of options that can be changed through the `ScriptInterface`. Some of these options can be changed through the UI as well (Options > Bot Options). Changes to options in a script will update their state in the UI accordingly.
 Also there is `Lite` options that let you set the new **Advanced Options** in game.
 ### ScriptInterface#Options
@@ -47,6 +46,7 @@ These Options can be changed in the **Advanced Options** tab in-game.
 | `UntargetDead` | *bool* | Untargets monsters that are dead. |
 | `UntargetSelf` | *bool* | Prevents skills from targeting yourself. |
 
+#### Setting options
 Some options can be set through the UI. All options can be set programatically in a script as follows:
 
 ```csharp

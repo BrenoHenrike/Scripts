@@ -1,5 +1,7 @@
-Plugins
-======
+## Plugins
+
+Plugins can be used for whatever need you may want to fulfill. In this page the examples will be simple but you certainly can design new Forms to show in RBot using plugins.
+
 #### Creating a Plugin
 To create plugin, create a new class library project in Visual Studio (or whatever IDE you use), and add a reference to RBot.exe.
 

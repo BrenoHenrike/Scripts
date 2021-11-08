@@ -1,5 +1,4 @@
-Quests
-======
+## Quests
 Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 
 #### Properties
@@ -27,7 +26,7 @@ Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 | `IsUnlocked(int id)` | *bool* | Checks if a storyline quest is unlocked. |
 | `IsAvailable(int id)` | *bool* | Performs all checks to see if a quest can be accepted/turned in. |
 
-#### The Quest Class
+#### The 'Quest' class
 Some properties give lists of `Quest` objects. These objects have the following properties:
 
 | Property | Type | Description |
@@ -58,7 +57,7 @@ Some properties give lists of `Quest` objects. These objects have the following 
 
 You can use the method `Quest.ToString()` to return a string formatted like `{Name} [{ID}]` with each respective variable filled with the quest info.
 
-These properties can be used as a trustful source of information about the quest, preventing typos that can be found in the wiki.
+These properties can be used as a trustful source of information about the quest, as they are acquired on the run preventing typos that can be found in the wiki and possible future name changes.
 
 ---------
 <center>
