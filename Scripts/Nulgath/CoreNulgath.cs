@@ -175,7 +175,7 @@ public class CoreNulgath
 				Core.EnsureAccept(6697);
 			Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5);
 			JoinTercessuinotlim();
-			Core.HuntMonster("tercessuinotlim", "Dark Makai", "Makai Fang", 5);
+			Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5);
 			Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
 			Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3);
 			Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2);
@@ -232,6 +232,8 @@ public class CoreNulgath
 		if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
 			return;
 		Core.Logger($"Farming {quantApproval} Nulgath's Approval and {quantFavor} Archfiend's Favor");
+		Core.Unbank("Nulgath's Approval", "Archfiend's Favor");
+		
 		if (quantApproval > 0)
 			Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
 		if (quantFavor > 0)
@@ -353,6 +355,8 @@ public class CoreNulgath
 	/// <param name="reward">Which reward to pick (totem or gem)</param>
 	public void VoucherItemTotemofNulgath(ChooseReward reward)
 	{
+		if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
+			FarmVoucher(false);
 		Core.Logger($"Reward selected: {reward}");
 		Core.EnsureAccept(4778);
 		EssenceofNulgath();
@@ -362,9 +366,11 @@ public class CoreNulgath
 		{
 			case ChooseReward.GemofNulgath:
 				Core.EnsureComplete(4778, 6136);
+				Bot.Player.Pickup("Gem of Nulgath");
 				break;
 			default:
 				Core.EnsureComplete(4778, 5357);
+				Bot.Player.Pickup("Totem of Nulgath");
 				break;
 		}
 		Core.Logger("Finished");
@@ -400,7 +406,8 @@ public class CoreNulgath
 		while(!Bot.Inventory.Contains(item, quant))
 		{
 			Core.EnsureAccept(2566);
-			Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 10, false);
+			if(!Core.CheckInventory("Mana Energy for Nulgath"))
+				Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 10, false);
 			while(Bot.Inventory.Contains("Mana Energy for Nulgath"))
 			{
 				Core.EnsureAccept(2566);
@@ -719,6 +726,7 @@ public class CoreNulgath
 			return;
 		if (Core.CheckInventory("Voucher of Nulgath") && member)
 			return;
+		BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 		NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 		Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 	}

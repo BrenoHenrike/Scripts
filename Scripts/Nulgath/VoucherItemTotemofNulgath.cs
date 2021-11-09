@@ -12,6 +12,8 @@ public class VoucherItemTotemofNulgath
 	{
 		Core.SetOptions();
 
+		Core.AddDrop(Nulgath.bagDrops);
+
 		while (!bot.ShouldExit())
 		{
 			Nulgath.VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);

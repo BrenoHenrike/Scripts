@@ -728,7 +728,8 @@ public class CoreFarms
 			Bot.Player.Join("dragonrune");
 			Bot.Map.GetMapItem(1920);
 			Core.HuntMonster("castleundead", "Skeletal Warrior", "Arcane Parchment", 13);
-			Core.EnsureComplete(2260);
+			Core.JumpWait();
+			Bot.Quests.EnsureComplete(2260, tries: 3);
 			Core.Logger("SpellCrafting now unlocked");
 		}
 		if(FactionRank("SpellCrafting") < 4)

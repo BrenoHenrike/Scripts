@@ -62,13 +62,13 @@ public class WillpowerExtraction
 
 		Nulgath.ApprovalAndFavor(0, 90);
 
-		Nulgath.EssenceofNulgath(70);
-
 		Nulgath.FarmTotemofNulgath(1);
+
+		Nulgath.EssenceofNulgath(10);
 
 		if (!Core.CheckInventory("Mortality Cape of Revontheus"))
 		{
-			Nulgath.ApprovalAndFavor(35);
+			Nulgath.ApprovalAndFavor(0, 35);
 			Bot.Player.Join("evilwarnul");
 			Bot.Player.Jump("Enter", "Spawn");
 			Bot.Shops.BuyItem(452, "Mortality Cape of Revontheus");
@@ -82,7 +82,7 @@ public class WillpowerExtraction
 				Core.EnsureAccept(3046);
 				Core.HuntMonster("citadel", "Grand Inquisitor", "Golden Shadow Breaker", 1, false);
 				Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
-				Nulgath.FarmUni13();
+				Nulgath.FarmUni13(2);
 				Nulgath.FarmDarkCrystalShard(5);
 				Nulgath.SwindleBulk(5);
 				Nulgath.FarmDiamondofNulgath(1);
@@ -91,6 +91,8 @@ public class WillpowerExtraction
 				Bot.Sleep(Core.ActionDelay);
 			}
 		}
+		Nulgath.FarmUni13();
+
 		Core.EnsureComplete(5258);
 		Bot.Player.Pickup("Unidentified 34");
 	}

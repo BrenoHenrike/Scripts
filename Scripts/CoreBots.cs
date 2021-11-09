@@ -39,6 +39,8 @@ public class CoreBots
 		Bot.Lite.UntargetSelf = changeTo;
 		Bot.Lite.Set("bReaccept", false);
 
+		Bot.Drops.Interval = 500;
+
 		//Uncomment to use AutoRelogin to restart the script when the player goes AFK, it should not be necessary
 		//Bot.Options.AutoRelogin = changeTo;
 		//void AFKHandler(ScriptInterface b)
@@ -130,12 +132,7 @@ public class CoreBots
 		{
 			if (!toInv)
 				return true;
-			JumpWait();
-			Bot.Player.OpenBank();
-			Bot.Bank.ToInventory(item);
-			Bot.Wait.ForBankToInventory(item);
-			Logger($"{item} moved from bank");
-			Bot.Sleep(ActionDelay);
+			Unbank(item);
 		}
 		if (Bot.Inventory.Contains(item, quant))
 			return true;
@@ -158,12 +155,7 @@ public class CoreBots
 		{
 			if (!toInv)
 				return true;
-			JumpWait();
-			Bot.Player.OpenBank();
-			Bot.Bank.ToInventory(item.Name);
-			Bot.Wait.ForBankToInventory(item.Name);
-			Logger($"{item.Name} moved from bank");
-			Bot.Sleep(ActionDelay);
+			Unbank(item.Name);
 		}
 		if (Bot.Inventory.Contains(item.Name, quant))
 			return true;
@@ -182,10 +174,13 @@ public class CoreBots
 		{
 			if (Bot.Bank.Contains(item))
 			{
-				Bot.Bank.ToInventory(item);
-				Bot.Wait.ForBankToInventory(item);
+				while (!Bot.Inventory.Contains(item))
+				{
+					Bot.Bank.ToInventory(item);
+					Bot.Wait.ForBankToInventory(item);
+					Bot.Sleep(ActionDelay); 
+				}
 				Logger($"{item} moved from bank");
-				Bot.Sleep(ActionDelay);
 			}
 		}
 	}
@@ -202,10 +197,13 @@ public class CoreBots
 		{
 			if (Bot.Inventory.Contains(item))
 			{
-				Bot.Inventory.ToBank(item);
-				Bot.Wait.ForInventoryToBank(item);
-				Logger($"{item} moved to bank");
-				Bot.Sleep(ActionDelay);
+				while (!Bot.Bank.Contains(item))
+				{
+					Bot.Inventory.ToBank(item);
+					Bot.Wait.ForInventoryToBank(item);
+					Bot.Sleep(ActionDelay);
+				}
+				Logger($"{item} moved to bank"); 
 			}
 		}
 	}
