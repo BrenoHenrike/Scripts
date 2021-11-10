@@ -26,13 +26,13 @@ public class EnoughDOOMforanArchfiend
 
 	public void AFDL()
 	{
+		NulgathDemandsWork.Unidentified35();
+
 		Core.AddDrop(Nulgath.bagDrops);
 		Core.AddDrop("ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",
 			"Essence Potion", "Essence of Klunk", "Living Star Essence", "Bone Dust", "Undead Energy");
 
 		Core.Unbank("DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
-
-		NulgathDemandsWork.Unidentified35();
 
 		WillpowerExtraction.Unidentified34(4);
 

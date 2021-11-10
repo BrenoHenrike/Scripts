@@ -422,7 +422,7 @@ public class CoreNulgath
 	}
 
 	/// <summary>
-	/// Does Supplies to Spin the Whell of Chance for the desired item
+	/// Does Supplies to Spin the Whell of Chance for the desired item with the best method available
 	/// </summary>
 	/// <param name="item">Desired item name</param>
 	/// <param name="quant">Desired item quantity</param>
@@ -430,19 +430,24 @@ public class CoreNulgath
 	{
 		if (Core.CheckInventory(item, quant))
 			return;
-		Core.AddDrop("Escherion's Helm");
-		Core.CheckInventory("Escherion's Helm");
-		Core.Logger($"Farming {quant} {item}");
-		int i = 1;
-		while(!Bot.Inventory.Contains(item, quant))
+		if (Core.CheckInventory(CragName))
+			BambloozevsDrudgen(item, quant);
+		else
 		{
-			Core.EnsureAccept(2857);
-			Core.KillEscherion("Escherion's Helm", removeHandler: false);
-			Core.EnsureComplete(2857);
-			Core.Logger($"Completed x{i}");
-			i++;
+			Core.AddDrop("Escherion's Helm");
+			Core.CheckInventory("Escherion's Helm");
+			Core.Logger($"Farming {quant} {item}");
+			int i = 1;
+			while(!Bot.Inventory.Contains(item, quant))
+			{
+				Core.EnsureAccept(2857);
+				Core.KillEscherion("Escherion's Helm", removeHandler: false);
+				Core.EnsureComplete(2857);
+				Core.Logger($"Completed x{i}");
+				i++;
+			}
+			Bot.Handlers.RemoveAll(h => h.Name == "escherion");
 		}
-		Bot.Handlers.RemoveAll(h => h.Name == "escherion");
 	}
 
 	/// <summary>
