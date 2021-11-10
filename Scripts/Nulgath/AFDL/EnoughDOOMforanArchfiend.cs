@@ -1,32 +1,40 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nulgath/AFDL/WillpowerExtractions.cs
+//cs_include Scripts/Nulgath/AFDL/NulgathDemandsWork.cs
 using RBot;
 
 public class EnoughDOOMforanArchfiend
 {
+	public ScriptInterface Bot => ScriptInterface.Instance;
 	public CoreBots Core = new CoreBots();
-	public CoreNulgath Nulgath = new CoreNulgath();
 	public CoreFarms Farms = new CoreFarms();
+	public CoreNulgath Nulgath = new CoreNulgath();
+
+	public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
+	public NulgathDemandsWork NulgathDemandsWork = new NulgathDemandsWork();
 
 	public void ScriptMain(ScriptInterface bot)
 	{
 		Core.SetOptions();
 
-		if(!Core.CheckInventory("Doomblade of Destruction") || !Core.CheckInventory("DoomLord's War Mask")
-			|| !Core.CheckInventory("ShadowFiend Cloak") || !Core.CheckInventory("Locks of the DoomLord")
-			|| !Core.CheckInventory("Unidentified 35") || !Core.CheckInventory("Unidentified 34"))
-		{
-			Core.Logger("Missing one or more items from Nulgath Demands Work quest");
-			return;
-		}
+		AFDL();
 
-		Core.Unbank("DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
+		Core.SetOptions(false);
+	}
 
+	public void AFDL()
+	{
 		Core.AddDrop(Nulgath.bagDrops);
 		Core.AddDrop("ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",
 			"Essence Potion", "Essence of Klunk", "Living Star Essence", "Bone Dust", "Undead Energy");
 
+		Core.Unbank("DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
+
+		NulgathDemandsWork.Unidentified35();
+
+		WillpowerExtraction.Unidentified34(4);
 
 		Nulgath.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
 
@@ -46,30 +54,33 @@ public class EnoughDOOMforanArchfiend
 
 		if (!Core.CheckInventory("Aelita's Emerald"))
 		{
-			bot.Player.Join("yulgar");
-			bot.Shops.Load(16);
-			bot.Wait.ForActionCooldown(ScriptWait.GameActions.LoadShop);
-			bot.SendPacket("%xt%zm%buyItem%150738%40660%16%23790%");
-			bot.Sleep(1500);
+			Bot.Player.Join("yulgar");
+			Bot.Shops.Load(16);
+			Bot.Wait.ForActionCooldown(ScriptWait.GameActions.LoadShop);
+			Bot.SendPacket("%xt%zm%buyItem%150738%40660%16%23790%");
+			Bot.Sleep(1500);
 		}
 
 		while (!Core.CheckInventory("Essence Potion", 5))
 		{
+			if (!Bot.Player.Factions.Exists(f => f.Name == "Alchemy"))
+				Core.Logger("You need at least 1 point in Alchemy for the packets to work, make sure you do 1 potion first in /Join Alchemy.", messageBox: true, stopBot: true);
+
 			Core.HuntMonster("orecavern", "Deathmole", "Arashtite Ore", 2, false);
 			Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 2, false);
 
-			bot.Player.Join("alchemy");
-			bot.Sleep(2000);
+			Bot.Player.Join("alchemy");
+			Bot.Sleep(2000);
 			for (int i = 0; i < 2; i++)
 			{
-				bot.SendPacket("%xt%zm%crafting%1%getAlchWait%11480%11473%false%Ready to Mix%Necrot%Arashtite Ore%Uruz%Moose%");
-				bot.Sleep(15000);
-				bot.SendPacket("%xt%zm%crafting%1%checkAlchComplete%11480%11473%false%Mix Complete%Necrot%Arashtite Ore%Uruz%Moose%");
-				bot.Sleep(1000);
-				bot.Player.RejectExcept("Essence Potion");
-				bot.Player.Pickup("Essence Potion");
-				bot.Sleep(1000);
-				if (bot.Inventory.Contains("Essence Potion", 5))
+				Bot.SendPacket("%xt%zm%crafting%1%getAlchWait%11480%11473%false%Ready to Mix%Necrot%Arashtite Ore%Uruz%Moose%");
+				Bot.Sleep(15000);
+				Bot.SendPacket("%xt%zm%crafting%1%checkAlchComplete%11480%11473%false%Mix Complete%Necrot%Arashtite Ore%Uruz%Moose%");
+				Bot.Sleep(1000);
+				Bot.Player.RejectExcept("Essence Potion");
+				Bot.Player.Pickup("Essence Potion");
+				Bot.Sleep(1000);
+				if (Bot.Inventory.Contains("Essence Potion", 5))
 					break;
 			}
 		}
@@ -80,9 +91,9 @@ public class EnoughDOOMforanArchfiend
 
 		Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
+		if (!Bot.Quests.CanComplete(5260))
+			Bot.Player.Logout();
 		Core.EnsureComplete(5260);
-		bot.Player.Pickup("ArchFiend DoomLord");
-
-		Core.SetOptions(false);
+		Bot.Player.Pickup("ArchFiend DoomLord");
 	}
 }
