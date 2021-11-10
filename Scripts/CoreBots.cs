@@ -1,9 +1,9 @@
 ﻿using RBot;
 using RBot.Items;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 public class CoreBots
 {
@@ -28,18 +28,25 @@ public class CoreBots
 	/// <param name="changeTo">Value the options will be changed to</param>
 	public void SetOptions(bool changeTo = true)
 	{
+		// Commom Options
+		Bot.Options.LagKiller = changeTo;
 		Bot.Options.SafeTimings = changeTo;
 		Bot.Options.RestPackets = changeTo;
+		Bot.Options.AutoRelogin = changeTo;
+		Bot.Options.PrivateRooms = changeTo;
 		Bot.Options.InfiniteRange = changeTo;
-		Bot.Options.ExitCombatBeforeQuest = changeTo;
 		Bot.Options.SkipCutscenes = changeTo;
+		Bot.Options.ExitCombatBeforeQuest = changeTo;
 		Bot.Drops.RejectElse = changeTo;
-		//Bot.Options.LagKiller = changeTo;
+		Bot.Drops.Interval = 500;
 		Bot.Lite.UntargetDead = changeTo;
 		Bot.Lite.UntargetSelf = changeTo;
 		Bot.Lite.Set("bReaccept", false);
 
-		Bot.Drops.Interval = 500;
+		// Anti-lag option
+		Bot.SetGameObject("stage.frameRate", 10);
+		if (!Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+			Bot.CallGameFunction("world.toggleMonsters");
 
 		//Uncomment to use AutoRelogin to restart the script when the player goes AFK, it should not be necessary
 		//Bot.Options.AutoRelogin = changeTo;
@@ -51,12 +58,23 @@ public class CoreBots
 		//}
 		//Bot.Events.PlayerAFK += AFKHandler;
 
-		if (changeTo)
-			Bot.Player.LoadBank();
-
+		// Uncomment and use any skill set you want, by default it will use Generic.xml
 		//Bot.Skills.LoadSkills("Skills/---.xml");
+
 		if (changeTo)
+		{
+			Bot.Player.LoadBank();
 			Bot.Skills.StartTimer();
+			Bot.RegisterHandler(2, b => {
+				if (b.ShouldExit())
+				{
+					b.SetGameObject("stage.frameRate", 30);
+					b.Options.LagKiller = false;
+					if (b.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+						b.CallGameFunction("world.toggleMonsters");
+				}
+			});
+		}
 		else
 			Bot.Skills.StopTimer();
 	}
@@ -172,6 +190,7 @@ public class CoreBots
 		Bot.Player.OpenBank();
 		foreach (string item in items)
 		{
+			Bot.Sleep(ActionDelay);
 			if (Bot.Bank.Contains(item))
 			{
 				while (!Bot.Inventory.Contains(item))
@@ -197,6 +216,7 @@ public class CoreBots
 		{
 			if (Bot.Inventory.Contains(item))
 			{
+				Bot.Sleep(ActionDelay);
 				while (!Bot.Bank.Contains(item))
 				{
 					Bot.Inventory.ToBank(item);
@@ -422,7 +442,21 @@ public class CoreBots
 	/// <summary>
 	/// Logs a line of text to the script log with time, method from where it's called and a message
 	/// </summary>
-	public void Logger(string message = "", [CallerMemberName] string caller = null) => Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
+	public void Logger(string message = "", [CallerMemberName] string caller = null, bool messageBox = false, bool stopBot = false)
+	{
+		Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
+		if (messageBox)
+			Message(message, caller);
+		if (stopBot)
+			ScriptManager.StopScript();
+	}
+
+	/// <summary>
+	/// Creates a Message Box with the desired text and caption
+	/// </summary>
+	/// <param name="message">Message to display</param>
+	/// <param name="caption">Title of the box</param>
+	public void Message(string message, string caption) => MessageBox.Show(message, caption);
 	
 	/// <summary>
 	/// Sends a getMapItem packet for the specified item
@@ -449,7 +483,7 @@ public class CoreBots
 		if (Bot.Player.Cell == cell)
 			return;
 		Bot.Player.Jump(cell, pad);
-		Bot.Player.SetSpawnPoint();
+		Bot.Player.SetSpawnPoint(cell, pad);
 	}
 
 	/// <summary>

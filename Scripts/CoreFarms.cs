@@ -89,18 +89,17 @@ public class CoreFarms
 	{
 		if (Bot.Player.Gold >= goldQuant)
 			return;
-		Bot.Player.Join("battlegrounde");
 		Core.Logger($"Farming {goldQuant}  gold");
 		int i = 0;
 		while (Bot.Player.Gold < goldQuant || Bot.Player.Gold <= 100000000)
 		{
-			Core.Logger($"Iteration {i}");
 			Core.EnsureAccept(3991);
 			Core.EnsureAccept(3992);
-			Core.Jump("r2", "Center");
-			Bot.Player.KillForItems("*", new[] { "Battleground D Opponent Defeated", "Battleground E Opponent Defeated" }, new[] { 10, 10 }, true);
+			Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10);
+			Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10);
 			Core.EnsureComplete(3991);
 			Core.EnsureComplete(3992);
+			Core.Logger($"Completed x{i}");
 			i++;
 		}
 		Core.Logger("Finished");
@@ -132,6 +131,9 @@ public class CoreFarms
 	{
 		if (FactionRank("Alchemy") >= rank)
 			return;
+		if (!Bot.Player.Factions.Exists(f => f.Name == "Alchemy"))
+			Core.Logger("You need at least 1 point in Alchemy for the packets to work, make sure you do 1 potion first in /Join Alchemy.", messageBox: true, stopBot: true);
+
 		Core.AddDrop("Dragon Scale", "Ice Vapor");
 		Core.Logger($"Farming rank {rank} Alchemy");
 		int i = 1;

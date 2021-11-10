@@ -8,7 +8,7 @@ public class AutoAttack
 		bot.Lite.UntargetSelf = true;
 
 		bot.Skills.StartTimer();
-
+		bot.Player.SetSpawnPoint();
 		while (!bot.ShouldExit())
 			bot.Player.Kill("*");
 	}
