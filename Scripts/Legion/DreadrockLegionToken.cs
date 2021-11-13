@@ -2,7 +2,7 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 using RBot;
 
-public class BrightParagonLightvsDark
+public class DreadrockLegionToken
 {
 	public CoreBots Core = new CoreBots();
 	public CoreLegion Legion = new CoreLegion();
@@ -11,9 +11,9 @@ public class BrightParagonLightvsDark
 	{
 		Core.SetOptions();
 
-		Core.AddDrop("Legion Token", "Legion Token Pile");
+		Core.AddDrop("Legion Token");
 
-		Legion.LTBrightParagon();
+		Legion.LTDreadrock();
 
 		Core.SetOptions(false);
 	}

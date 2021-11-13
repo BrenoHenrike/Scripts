@@ -63,6 +63,7 @@ public class CoreBots
 
 		if (changeTo)
 		{
+			Logger("Bot Started");
 			Bot.Player.LoadBank();
 			Bot.Skills.StartTimer();
 			Bot.RegisterHandler(2, b => {
@@ -76,7 +77,10 @@ public class CoreBots
 			});
 		}
 		else
+		{
 			Bot.Skills.StopTimer();
+			Logger("Bot Stopped", messageBox: true);
+		}
 	}
 
 	/// <summary>
@@ -295,6 +299,8 @@ public class CoreBots
 	/// <param name="itemID">ID of the choosable reward item</param>
 	public bool EnsureComplete(int questID, int itemID = -1)
 	{
+		if (!Bot.Quests.CanComplete(questID))
+			return false;
 		JumpWait();
 		Bot.Sleep(ActionDelay);
 		return Bot.Quests.EnsureComplete(questID, itemID, tries: 20);

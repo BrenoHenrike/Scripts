@@ -1,8 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 using RBot;
-
-public class BrightParagonLightvsDark
+public class TimeforSomeSpringCleaning_AnyPet_
 {
 	public CoreBots Core = new CoreBots();
 	public CoreLegion Legion = new CoreLegion();
@@ -11,9 +10,9 @@ public class BrightParagonLightvsDark
 	{
 		Core.SetOptions();
 
-		Core.AddDrop("Legion Token", "Legion Token Pile");
+		Core.AddDrop("Legion Token");
 
-		Legion.LTBrightParagon();
+		Legion.LTShogunParagon();
 
 		Core.SetOptions(false);
 	}
