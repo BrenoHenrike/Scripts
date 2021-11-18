@@ -5,7 +5,7 @@ using RBot;
 public class FirstClassEntertainment
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreLegion Legion = new CoreLegion();
 	public void ScriptMain(ScriptInterface bot)
 	{

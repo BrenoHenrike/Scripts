@@ -3,7 +3,7 @@
 using RBot;
 public class GlaceraREP
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 
 	public void ScriptMain(ScriptInterface bot)

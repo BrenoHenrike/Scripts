@@ -4,7 +4,7 @@ public class CoreLegion
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
 
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 
 	public void FarmLegionToken(int quant = 25000)
 	{

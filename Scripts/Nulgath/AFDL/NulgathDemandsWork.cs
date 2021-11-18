@@ -7,7 +7,7 @@ using RBot;
 public class NulgathDemandsWork
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 	public CoreNulgath Nulgath = new CoreNulgath();
 
@@ -91,13 +91,11 @@ public class NulgathDemandsWork
 			i++;
 		}
 
-		if(Core.CheckInventory("Archfiend Essence Fragment", 9))
+		if(Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35"))
 		{
 			Nulgath.JoinTercessuinotlim();
 			Bot.Player.Jump("Swindle", "Left");
-			Bot.Shops.Load(1951);
-			Bot.Sleep(1000);
-			Bot.SendPacket("%xt%zm%buyItem%119981%35770%1951%7912%");
+            Core.BuyItem("tercessuinotlim", 1951, 35770);
 		}
 		
 	}

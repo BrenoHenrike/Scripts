@@ -6,7 +6,7 @@ using RBot;
 public class WillpowerExtraction
 {
 	public ScriptInterface Bot = ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 	public CoreNulgath Nulgath = new CoreNulgath();
 
@@ -67,10 +67,7 @@ public class WillpowerExtraction
 			if (!Core.CheckInventory("Mortality Cape of Revontheus"))
 			{
 				Nulgath.ApprovalAndFavor(0, 35);
-				Bot.Player.Join("evilwarnul");
-				Bot.Player.Jump("Enter", "Spawn");
-				Bot.Shops.BuyItem(452, "Mortality Cape of Revontheus");
-				Bot.Wait.ForItemBuy();
+                Core.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
 			}
 
 			if (!Core.CheckInventory("Facebreaker of Nulgath"))

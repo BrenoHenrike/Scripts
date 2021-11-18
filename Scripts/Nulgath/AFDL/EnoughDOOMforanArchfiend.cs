@@ -8,7 +8,7 @@ using RBot;
 public class EnoughDOOMforanArchfiend
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farms = new CoreFarms();
 	public CoreNulgath Nulgath = new CoreNulgath();
 
@@ -52,14 +52,7 @@ public class EnoughDOOMforanArchfiend
 
 		Nulgath.FarmBloodGem(2);
 
-		if (!Core.CheckInventory("Aelita's Emerald"))
-		{
-			Bot.Player.Join("yulgar");
-			Bot.Shops.Load(16);
-			Bot.Wait.ForActionCooldown(ScriptWait.GameActions.LoadShop);
-			Bot.SendPacket("%xt%zm%buyItem%150738%40660%16%23790%");
-			Bot.Sleep(1500);
-		}
+        Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
 		while (!Core.CheckInventory("Essence Potion", 5))
 		{

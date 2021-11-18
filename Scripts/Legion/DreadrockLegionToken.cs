@@ -4,7 +4,7 @@ using RBot;
 
 public class DreadrockLegionToken
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreLegion Legion = new CoreLegion();
 
 	public void ScriptMain(ScriptInterface bot)

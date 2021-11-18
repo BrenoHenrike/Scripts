@@ -3,7 +3,7 @@ using RBot;
 
 public class BloodMoonToken
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 
 	public void ScriptMain(ScriptInterface bot)
 	{

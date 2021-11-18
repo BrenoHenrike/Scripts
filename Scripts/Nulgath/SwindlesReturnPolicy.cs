@@ -5,7 +5,7 @@ using RBot;
 
 public class SwindlesReturnPolicy
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 	public CoreNulgath Nulgath = new CoreNulgath();
 

@@ -5,7 +5,7 @@ public class CoreNulgath
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
 
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 
 	/// <summary>
@@ -466,7 +466,7 @@ public class CoreNulgath
 		{
 			while (!Bot.Inventory.Contains(item, quant))
 			{
-				TheAssistantLoop(item, ref i, quant);
+				_TheAssistantLoop(item, ref i, quant);
 				if(Bot.Player.Gold < 100000)
 					Farm.BattleGroundE(10000000);
 			}
@@ -474,7 +474,7 @@ public class CoreNulgath
 		else
 		{
 			while (Bot.Player.Gold > 100000)
-				TheAssistantLoop(item, ref i, quant);
+				_TheAssistantLoop(item, ref i, quant);
 
 			if (Bot.Inventory.Contains(item, quant))
 				Core.Logger($"Couldn't get {item}({quant})");
@@ -482,7 +482,7 @@ public class CoreNulgath
 		Core.Logger("Finished");
 	}
 
-	private void TheAssistantLoop(string item, ref int i, int quant = 1)
+	private void _TheAssistantLoop(string item, ref int i, int quant = 1)
 	{
 		if (!Core.CheckInventory("War-Torn Memorabilia"))
 		{
@@ -667,7 +667,8 @@ public class CoreNulgath
 		if (Core.CheckInventory("Dark Crystal Shard", quant))
 			return;
 		NewWorldsNewOpportunities("Dark Crystal Shard", quant);
-		EssenceofDefeatReagent(quant);
+        Supplies("Dark Crystal Shard", quant);
+        EssenceofDefeatReagent(quant);
 	}
 
 	/// <summary>
@@ -679,7 +680,8 @@ public class CoreNulgath
 		if (Core.CheckInventory("Diamond of Nulgath", quant))
 			return;
 		NewWorldsNewOpportunities("Diamond of Nulgath", quant);
-		DiamondEvilWar(quant);
+        Supplies("Diamond of Nulgath", quant);
+        DiamondEvilWar(quant);
 	}
 
 	/// <summary>

@@ -7,7 +7,7 @@ using RBot;
 public class VoidHighlordsChallenge
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreNulgath Nulgath = new CoreNulgath();
 	public CoreDailys Dailys = new CoreDailys();
 	public CoreFarms Farm = new CoreFarms();
@@ -33,36 +33,24 @@ public class VoidHighlordsChallenge
 		BlackKnightOrb();
 		
 		if (!Core.CheckInventory("Dwakel Decoder"))
-		{
-			bot.Player.Join("crashsite");
-			bot.Map.GetMapItem(106); 
-		}
+            Core.GetMapItem(106, map: "crashsite");
 		
 		if(!Core.CheckInventory("Nulgath Shaped Chocolate"))
 		{
 			if (bot.Player.Gold < 2000000)
 				Farm.BattleGroundE(2000000);
-			bot.Player.Join("citadel");
-			bot.Shops.BuyItem(44, 38316);
-			bot.Wait.ForItemBuy();
+            Core.BuyItem("citadel", 44, 38316);
 		}
 		
 		if (!Core.CheckInventory("The Secret 1"))
 		{
 			Core.EnsureAccept(623);
-			Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", 1, false);
+			Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
 		}
 		
 		Dailys.EldersBlood();
 
-		if (!Core.CheckInventory("Aelita's Emerald"))
-		{
-			bot.Player.Join("yulgar");
-			bot.Shops.Load(16);
-			bot.Wait.ForActionCooldown(ScriptWait.GameActions.LoadShop);
-			bot.SendPacket("%xt%zm%buyItem%150738%40660%16%23790%");
-			bot.Sleep(1500);
-		}
+        Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
 		Nulgath.FarmUni13();
 
@@ -70,11 +58,7 @@ public class VoidHighlordsChallenge
 		{
 			if(!Core.CheckInventory("Mystic Quills", 4))
 				Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 4, false);
-			bot.Player.Join("dragonrune");
-			bot.Shops.BuyItem(549, 13284);
-			bot.Wait.ForItemBuy();
-			if(!bot.Inventory.Contains("Elemental Ink", 10))
-				bot.Shops.BuyItem(549, 13284);
+            Core.BuyItem("dragonrune", 549, 13284, 10, 5);
 		}
 
 		Nulgath.FarmGemofNulgath(20);

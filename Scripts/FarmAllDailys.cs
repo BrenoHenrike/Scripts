@@ -4,7 +4,7 @@ using RBot;
 
 public class FarmAllDailys
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreDailys Dailys = new CoreDailys();
 
 	public void ScriptMain(ScriptInterface bot)

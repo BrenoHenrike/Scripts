@@ -5,7 +5,7 @@ using RBot;
 public class HollowbornScythe
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 
 	public string[] reqName =

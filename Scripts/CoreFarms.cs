@@ -4,7 +4,7 @@ using RBot.Items;
 public class CoreFarms
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	//CLASS Boost! (60 min) -- 27555
 	//Doom CLASS Boost! (60 min) -- 19761 (can get this from /join Doom merge with Daily XP Boosts)
 	//Daily Login Class Boost *20 min* -- 22447
@@ -132,7 +132,7 @@ public class CoreFarms
 		if (FactionRank("Alchemy") >= rank)
 			return;
 		if (!Bot.Player.Factions.Exists(f => f.Name == "Alchemy"))
-			Core.Logger("You need at least 1 point in Alchemy for the packets to work, make sure you do 1 potion first in /Join Alchemy.", messageBox: true, stopBot: true);
+			Core.Logger("You need at least 1 point in Alchemy for the packets to work, make sure you do 1 potion first in /Join Alchemy. Bot Stopped", messageBox: true, stopBot: true);
 
 		Core.AddDrop("Dragon Scale", "Ice Vapor");
 		Core.Logger($"Farming rank {rank} Alchemy");
@@ -143,27 +143,19 @@ public class CoreFarms
 			{
 				if (!Core.CheckInventory("Ice Vapor") || !Core.CheckInventory("Dragon Scale"))
 				{
-					Bot.Player.Join("alchemyacademy");
-					if (!Core.CheckInventory("Dragon Runestone"))
-					{
-						Bot.Shops.Load(395);
-						if(!Core.CheckInventory("Gold Voucher 500k"))
-							Core.SendPackets("%xt%zm%buyItem%10124%61043%395%8421%", 2);
-						Core.SendPackets("%xt%zm%buyItem%10124%7132%395%8845%"); 
-					}
-					Bot.Shops.Load(397);
-					if (!Core.CheckInventory("Dragon Scale"))
-						Core.SendPackets("%xt%zm%buyItem%10124%11475%397%1232%", 5);
-					if (!Core.CheckInventory("Ice Vapor"))
-						Core.SendPackets("%xt%zm%buyItem%10124%11478%397%1235%", 5);
+					if(Core.CheckInventory("Dragon Runestone", 10))
+						Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
+                    Core.BuyItem("alchemyacademy", 395, 7132, 10, 10, 8845);
+                    Core.BuyItem("alchemyacademy", 397, 11475, 10, 2);
+					Core.BuyItem("alchemyacademy", 397, 11478, 10, 2);
 				}
-				AlchemyPacket();
+				_AlchemyPacket();
 			}
 			else
 			{
 				Core.KillMonster("lair", "Enter", "Spawn", "*", "Dragon Scale", 10, false);
 				Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, false);
-				AlchemyPacket();
+				_AlchemyPacket();
 			}
 			Core.Logger($"Iteration {i} completed");
 			i++;
@@ -731,15 +723,14 @@ public class CoreFarms
 			Bot.Map.GetMapItem(1920);
 			Core.HuntMonster("castleundead", "Skeletal Warrior", "Arcane Parchment", 13);
 			Core.JumpWait();
-			Bot.Quests.EnsureComplete(2260, tries: 3);
+			Bot.Quests.EnsureComplete(2260, tries: 2);
 			Core.Logger("SpellCrafting now unlocked");
 		}
 		if(FactionRank("SpellCrafting") < 4)
 		{
 			Core.CheckInventory("Mystic Quills");
 			Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
-			Bot.Shops.Load(549);
-			Core.SendPackets("%xt%zm%buyItem%30190%13280%549%1633%", 10);
+            Core.BuyItem("dragonrune", 549, 13280, 50, 5);
 			Bot.Player.Join("spellcraft");
 			while (FactionRank("SpellCrafting") < 4)
 			{
@@ -754,9 +745,7 @@ public class CoreFarms
 		{
 			if(!Core.CheckInventory("Mystic Parchment"))
 				Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
-			Bot.Player.Join("dragonrune");
-			Bot.Shops.Load(549);
-			Core.SendPackets("%xt%zm%buyItem%30932%13285%549%1638%", 10);
+            Core.BuyItem("dragonrune", 549, 13285, 50, 5);
 			Bot.Player.Join("spellcraft");
 			while(Core.CheckInventory("Hallow Ink"))
 			{
@@ -810,7 +799,7 @@ public class CoreFarms
 		Core.Logger("Finished");
 	}
 
-	private void AlchemyPacket()
+	private void _AlchemyPacket()
 	{
 		int i = 1;
 		Bot.Player.Join("alchemy");

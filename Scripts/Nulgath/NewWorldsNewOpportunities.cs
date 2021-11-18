@@ -5,7 +5,7 @@ using RBot;
 
 public class NewWorldsNewOpportunities
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreNulgath Nulgath = new CoreNulgath();
 
 	public void ScriptMain(ScriptInterface bot)

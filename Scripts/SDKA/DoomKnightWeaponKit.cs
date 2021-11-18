@@ -3,7 +3,7 @@ using RBot;
 public class DoomKnightWeaponKit
 {
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 
 	public string[] drops =
 	{

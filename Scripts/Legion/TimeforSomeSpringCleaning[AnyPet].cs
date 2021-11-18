@@ -3,7 +3,7 @@
 using RBot;
 public class TimeforSomeSpringCleaning_AnyPet_
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreLegion Legion = new CoreLegion();
 
 	public void ScriptMain(ScriptInterface bot)

@@ -7,7 +7,7 @@ using RBot;
 public class VoidCrystals
 {
 	// This bot only gets the items, do the merge yourself for precaution
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreFarms Farm = new CoreFarms();
 	public CoreDailys Dailys = new CoreDailys();
 	public CoreNulgath Nulgath = new CoreNulgath();

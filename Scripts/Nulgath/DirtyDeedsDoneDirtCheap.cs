@@ -6,7 +6,7 @@ using System.Linq;
 
 public class DirtyDeedsDoneDirtCheap
 {
-	public CoreBots Core = new CoreBots();
+	public CoreBots Core => CoreBots.Instance;
 	public CoreNulgath Nulgath = new CoreNulgath();
 	public void ScriptMain(ScriptInterface bot)
 	{
