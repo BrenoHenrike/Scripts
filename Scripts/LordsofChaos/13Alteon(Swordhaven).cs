@@ -151,7 +151,7 @@ public class SagaSwordhaven
 					Core.SmartKillMonster(qIDs[i], "chaosaltar", "Princess Thrall");
 					break;
 				case 24: //Chaos Dragon Confrontation
-					Core.SmartKillMonster(qIDs[i], "chaosroof", "Chaos Dragon");
+					Core.SmartKillMonster(qIDs[i], "castleroof", "Chaos Dragon");
 					break;
 				case 25: //To Catch a King
 					Core.GetMapItem(2158, map: "swordhavenfalls");

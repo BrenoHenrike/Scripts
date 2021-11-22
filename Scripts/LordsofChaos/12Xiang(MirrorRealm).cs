@@ -101,7 +101,9 @@ public class SagaMirrorRealm
 					Core.SmartKillMonster(qIDs[i], "brightfall", "Painadin Overlord");
 					break;
 				case 9: //Rearm The Legion of Light
-					Core.SmartKillMonster(qIDs[i], "overworld", "Undead Minion");
+                    bot.Player.Join("overworld");
+                    bot.SendPacket("%xt%zm%tryQuestComplete%96506%2918%-1%false%wvz%");
+                    Core.SmartKillMonster(qIDs[i], "overworld", "Undead Minion");
 					break;
 				case 10: //Free Their Souls
 					Core.SmartKillMonster(qIDs[i], "overworld", "Undead Minion");

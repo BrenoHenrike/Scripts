@@ -180,10 +180,10 @@ public class SagaTheSpan
 					Core.GetMapItem(1549, 8, "dflesson");
 					break;
 				case 24: //Fight Chaos with Fire!
-					Core.SmartKillMonster(qIDs[i], "dflesson", new[] { "Slain Flame Elemental", "Chaos Gemerald" });
+					Core.SmartKillMonster(qIDs[i], "dflesson", new[] { "Fire Elemental", "Fire Elemental" });
 					break;
 				case 25: //Save Aria
-					Core.SmartKillMonster(qIDs[i], "dflesson", new[] { "Slain Slime", "Slain Elemental", "Blue Clue" });
+					Core.SmartKillMonster(qIDs[i], "dflesson", new[] { "Lava Slime", "Fire Elemental", "Fire Elemental" });
 					break;
 				case 26: //Find the Time to Travel
 					Core.SmartKillMonster(qIDs[i], "dflesson", new[] { "Tog", "Agitated Orb", "Tog|Agitated Orb" });

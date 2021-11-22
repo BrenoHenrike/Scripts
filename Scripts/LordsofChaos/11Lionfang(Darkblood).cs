@@ -95,8 +95,9 @@ public class SagaDarkblood
 	public void ScriptMain(ScriptInterface bot)
 	{
 		Core.SetOptions();
+        Core.AddDrop("Mage Glove (Required)");
 
-		questStart = bot.Config.Get<int>("startQuest");
+        questStart = bot.Config.Get<int>("startQuest");
 
 		for (int i = questStart; i < qIDs.Length; i++)
 		{
@@ -307,7 +308,8 @@ public class SagaDarkblood
 					break;
 			}
 			Core.EnsureComplete(qIDs[i]);
-			Core.Logger($"Finished {i}");
+            bot.Player.Pickup("Mage Glove (Required)");
+            Core.Logger($"Finished {i}");
 			Core.Rest();
 		}
 
