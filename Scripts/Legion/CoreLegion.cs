@@ -54,10 +54,7 @@ public class CoreLegion
 			Core.KillMonster("fotia", "r5", "Left", "*", "Nothing Heard", 10);
 			Core.KillMonster("fotia", "r5", "Left", "*", "Nothing To See", 10);
 			Core.KillMonster("fotia", "r5", "Left", "*", "Area Secured and Quiet", 10);
-			Core.EnsureComplete(5755);
-			Core.EnsureComplete(5756);
-			Core.EnsureComplete(6750);
-			Core.EnsureComplete(7073);
+			Core.EnsureComplete(5755, 5756, 6750, 7073);
 			Bot.Player.Pickup("Legion Token");
 			Core.Logger($"Completed x{i}");
 			i++;
