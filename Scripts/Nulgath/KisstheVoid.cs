@@ -9,8 +9,11 @@ public class KisstheVoid
 	public void ScriptMain(ScriptInterface bot)
 	{
 		Core.SetOptions();
+        Core.AddDrop("Blood Gem of the Archfiend");
+        // Uncomment to pick up the Betrayal Blades
+        //Core.AddDrop(Nulgath.betrayalBlades);
 
-		Nulgath.KisstheVoid();
+        Nulgath.KisstheVoid();
 
 		Core.SetOptions(false);
 	}

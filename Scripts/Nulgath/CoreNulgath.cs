@@ -136,7 +136,7 @@ public class CoreNulgath
 					Bot.Player.Pickup("Strand of Vath's Hair");
 			}
 			Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
-			Core.KillEscherion("Escherion's Chain", removeHandler: false);
+			Core.KillEscherion("Escherion's Chain");
 			if (!Core.CheckInventory("Defeated Makai", 50))
 			{
 				JoinTercessuinotlim();
@@ -441,7 +441,7 @@ public class CoreNulgath
 			while(!Bot.Inventory.Contains(item, quant))
 			{
 				Core.EnsureAccept(2857);
-				Core.KillEscherion("Escherion's Helm", removeHandler: false);
+				Core.KillEscherion("Escherion's Helm");
 				Core.EnsureComplete(2857);
 				Core.Logger($"Completed x{i}");
 				i++;

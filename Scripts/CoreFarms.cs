@@ -80,6 +80,101 @@ public class CoreFarms
 		VampireREP();
 		YokaiREP();
 	}
+
+	/// <summary>
+    /// Farms the Black Knight Orb
+    /// </summary>
+	public void BlackKnightOrb()
+	{
+		if (Core.CheckInventory("Black Knight Orb"))
+			return;
+        Core.AddDrop("Black Knight Orb");
+        Core.EnsureAccept(318);
+		Core.HuntMonster("well", "Gell Oh No", "Black Knight Leg Piece");
+		Core.HuntMonster("greendragon", "Greenguard Dragon", "Black Knight Chest Piece");
+		Core.HuntMonster("deathgazer", "DeathGazer", "Black Knight Shoulder Piece");
+		Core.HuntMonster("trunk", "Greenguard Basilisk", "Black Knight Arm Piece");
+		Core.EnsureComplete(318);
+        Bot.Player.Pickup("Black Knight Orb");
+    }
+
+	/// <summary>
+    /// Kills the Restorers from /BludrutBrawl for "The Secret 4" item
+    /// </summary>
+	public void TheSecret4()
+	{
+		while(Core.CheckInventory("The Secret 4"))
+		{
+			Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
+			Bot.Wait.ForMapLoad("bludrutbrawl");
+			Core.BludrutMove(5, "Morale0C");
+			Core.BludrutMove(4, "Morale0B");
+			Core.BludrutMove(7, "Morale0A");
+			Core.BludrutMove(9, "Crosslower");
+			Core.BludrutMove(14, "Crossupper", 528, 255);
+			Core.BludrutMove(18, "Resource1A");
+			Bot.Player.Kill("Team B Restorer");
+			Bot.Player.Pickup("The Secret 4");
+			Bot.Player.Kill("Team B Restorer");
+			Bot.Player.Pickup("The Secret 4");
+			if(Core.CheckInventory("The Secret 4"))
+                break;
+            Core.BludrutMove(20, "Resource1B");
+			Bot.Player.Kill("Team B Restorer");
+			Bot.Player.Pickup("The Secret 4");
+			Bot.Player.Kill("Team B Restorer");
+			Bot.Player.Pickup("The Secret 4");
+		}
+	}
+
+	/// <summary>
+    /// Kills the Team B Captain in /BludrutBrawl for the desired item (Combat Trophy or Yoshino's Citrine)
+    /// </summary>
+    /// <param name="item">Name of the desired item</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="canSoloBoss">Whether you can solo the Boss without killing Restorers and Brawlers</param>
+	public void BludrutBrawlBoss(string item = "Combat Trophy", int quant = 500, bool canSoloBoss = true)
+	{
+		if(Core.CheckInventory(item, quant))
+            return;
+
+        Core.AddDrop(item);
+        while (Core.CheckInventory(item, quant))
+		{
+            Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
+            Bot.Wait.ForMapLoad("bludrutbrawl");
+			Core.BludrutMove(5, "Morale0C");
+			Core.BludrutMove(4, "Morale0B");
+			Core.BludrutMove(7, "Morale0A");
+			Core.BludrutMove(9, "Crosslower");
+			if(!canSoloBoss)
+			{
+				Core.BludrutMove(14, "Crossupper", 528, 255);
+				Core.BludrutMove(18, "Resource1A");
+				Bot.Player.Kill("Team B Restorer");
+				Bot.Player.Kill("Team B Restorer");
+				Core.BludrutMove(20, "Resource1B");
+				Bot.Player.Kill("Team B Restorer");
+				Bot.Player.Kill("Team B Restorer");
+                Core.BludrutMove(21, "Resource1A", 124);
+                Core.BludrutMove(19, "Crossupper", 124);
+                Core.BludrutMove(17, "Crosslower", 488, 483);
+            }
+            Core.BludrutMove(15, "Morale1A");
+			if(!canSoloBoss)
+                Bot.Player.Kill("Team B Brawler");
+            Core.BludrutMove(23, "Morale1B");
+			if(!canSoloBoss)
+                Bot.Player.Kill("Team B Brawler");
+            Core.BludrutMove(25, "Morale1C");
+			if(!canSoloBoss)
+                Bot.Player.Kill("Team B Brawler");
+            Core.BludrutMove(28, "Captain1", 528, 255);
+            Bot.Player.Kill("Team B Captain");
+            Bot.Player.Pickup(item);
+            Core.Rest();
+        }
+	}
 	
 	/// <summary>
 	/// Farms Gold in Battle Ground E with quests Level 46-60 and 61-75

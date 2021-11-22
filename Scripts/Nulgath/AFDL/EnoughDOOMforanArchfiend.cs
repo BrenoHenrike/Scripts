@@ -1,7 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
-//cs_include Scripts/Nulgath/AFDL/WillpowerExtractions.cs
+//cs_include Scripts/Nulgath/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nulgath/AFDL/NulgathDemandsWork.cs
 using RBot;
 

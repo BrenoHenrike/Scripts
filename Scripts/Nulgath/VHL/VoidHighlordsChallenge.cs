@@ -30,7 +30,7 @@ public class VoidHighlordsChallenge
 
 		Core.EnsureAccept(5660);
 
-		BlackKnightOrb();
+		Farm.BlackKnightOrb();
 		
 		if (!Core.CheckInventory("Dwakel Decoder"))
             Core.GetMapItem(106, map: "crashsite");
@@ -81,17 +81,5 @@ public class VoidHighlordsChallenge
 			Core.Logger("Couldn't complete the quest");
 
 		Core.SetOptions(false);
-	}
-
-	public void BlackKnightOrb()
-	{
-		if (Core.CheckInventory("Black Knight Orb"))
-			return;
-		Core.EnsureAccept(318);
-		Core.HuntMonster("well", "Gell Oh No", "Black Knight Leg Piece");
-		Core.HuntMonster("greendragon", "Greenguard Dragon", "Black Knight Chest Piece");
-		Core.HuntMonster("deathgazer", "DeathGazer", "Black Knight Shoulder Piece");
-		Core.HuntMonster("trunk", "Greenguard Basilisk", "Black Knight Arm Piece");
-		Core.EnsureComplete(318);
 	}
 }
