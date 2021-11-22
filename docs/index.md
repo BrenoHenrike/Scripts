@@ -129,7 +129,8 @@
 <summary><a href="15 Plugins">15. Plugins</a> ↨</summary>
     <ul>
     <a href="15 Plugins#creating-a-plugin">Creating a Plugin</a><br>
-    <a href="15 Plugins#configurable-plugin-options">Configurable Plugin Options</a>
+    <a href="15 Plugins#configurable-plugin-options">Configurable Plugin Options</a><br>
+    <a href="15 Plugins#user-interface-plugins">User Interface plugins</a>
     </ul>
 </details>
 
