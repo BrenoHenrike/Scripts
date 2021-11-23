@@ -101,7 +101,8 @@ public class CoreDailys
 
 		if (Bot.Quests.IsDailyComplete(4465))
 			return;
-		Core.EnsureAccept(4465);
+        Core.EquipClass(ClassType.Farm);
+        Core.EnsureAccept(4465);
 		Core.HuntMonster("brightoak", "Grove Spore", "Colony Spore");
 		Core.HuntMonster("brightoak", "Grove Spore", "Intact Spore");
 		Core.EnsureComplete(4465);
@@ -125,6 +126,7 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(4311, "C-Hammer Token") && Core.IsMember)
 			return;
+		Core.EquipClass(ClassType.Solo);
 		DailyRoutine(4310, "deadmoor", "Geist", "Geist's Chain Link");
 		if (Core.IsMember)
 			DailyRoutine(4311, "deadmoor", "Geist", "Geist's Pocket Lint");
@@ -139,6 +141,7 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(4309, "C-Armor Token") && Core.IsMember)
 			return;
+		Core.EquipClass(ClassType.Solo);
 		DailyRoutine(4308, "deadmoor", "Nightmare", "Nightmare Fire");
 		if (Core.IsMember)
 			DailyRoutine(4309, "deadmoor", "Nightmare", "Unlucky Horseshoe");
@@ -151,6 +154,7 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(3826, "Seal of Light") && !CheckDaily(3825, "Seal of Darkness"))
 			return;
+		Core.EquipClass(ClassType.Solo);
 		DailyRoutine(3826, "alteonbattle", "Ultra Alteon", "Alteon Defeated");
 		DailyRoutine(3825, "sepulchurebattle", "Ultra Sepulchure", "Sepulchure Defeated");
 	}
@@ -163,6 +167,7 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(1331, "This Is Definitely A Token", "Tokens of Collection") && !CheckDaily(1332, "This Could Be A Token", "Tokens of Collection") && Core.IsMember)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
 		if (Core.IsMember)
 		{
@@ -194,6 +199,7 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(2210, "Shurpu Blaze Token") && Core.IsMember)
 			return;
+		Core.EquipClass(ClassType.Solo);
 		if (Core.IsMember)
 			DailyRoutine(2210, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
 		else
@@ -239,6 +245,7 @@ public class CoreDailys
 			return;
 		if (!CheckDaily(802, "Elders' Blood"))
 			return;
+		Core.EquipClass(ClassType.Farm);
 		DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
 	}
 

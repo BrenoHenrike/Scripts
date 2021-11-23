@@ -103,6 +103,9 @@ public class CoreFarms
     /// </summary>
 	public void TheSecret4()
 	{
+		if(Core.CheckInventory("The Secret 4"))
+            return;
+		Core.EquipClass(ClassType.Solo);
 		while(Core.CheckInventory("The Secret 4"))
 		{
 			Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
@@ -137,7 +140,7 @@ public class CoreFarms
 	{
 		if(Core.CheckInventory(item, quant))
             return;
-
+        Core.EquipClass(ClassType.Solo);
         Core.AddDrop(item);
         while (Core.CheckInventory(item, quant))
 		{
@@ -184,7 +187,8 @@ public class CoreFarms
 	{
 		if (Bot.Player.Gold >= goldQuant)
 			return;
-		Core.Logger($"Farming {goldQuant}  gold");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {goldQuant}  gold");
 		int i = 0;
 		while (Bot.Player.Gold < goldQuant || Bot.Player.Gold <= 100000000)
 		{
@@ -204,7 +208,8 @@ public class CoreFarms
 	{
 		if (FactionRank("Aegis") >= rank)
 			return;
-		Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Aegis") < rank)
 		{
@@ -262,6 +267,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Arcangrove") >= rank)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Arcangrove") < rank)
@@ -291,7 +297,8 @@ public class CoreFarms
 			return;
 		if (Core.IsMember)
 			Core.AddDrop("Wheel of Bacon Token");
-		Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("BaconCat") < rank)
 		{
@@ -332,7 +339,8 @@ public class CoreFarms
 	{
 		if (FactionRank("BeastMaster") >= rank || !Core.IsMember)
 			return;
-		Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("BeastMaster") < rank)
 		{
@@ -352,6 +360,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Blacksmithing") >= rank)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Blacksmithing") < rank)
@@ -383,6 +392,7 @@ public class CoreFarms
 		if (farmBoA)
 			Core.AddDrop("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
 		Core.AddDrop("Stonewrit Found!", "Handle Found!", "Hilt Found!", "Blade Found!", "Runes Found!");
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		if(!Core.CheckInventory("Legendary Stonewrit", toInv: false) && !Bot.Quests.IsAvailable(2935))
@@ -464,6 +474,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Chaos") >= rank)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Chaos") < rank)
@@ -483,7 +494,8 @@ public class CoreFarms
 			return;
 		if (Core.IsMember)
 			Core.AddDrop("Dark Tower Sword", "Light Tower Sword");
-		Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Doomwood") < rank)
 		{
@@ -552,6 +564,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Embersea") >= rank)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Embersea") < rank)
@@ -574,9 +587,10 @@ public class CoreFarms
 			return;
 		if (!Bot.Quests.IsAvailable(5198))
 		{
-			Core.Logger("Can't do farming quest [Sphynxes are Riddled with Gems] (/fourdpyramid)");
+            Core.Logger("Can't do farming quest [Sphynxes are Riddled with Gems] (/fourdpyramid)", messageBox: true);
 			return;
 		}
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Eternal") < rank)
@@ -595,7 +609,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Evil") >= rank)
 			return;
-		Core.Logger("This needs the player to be aligned to evil");
+		Core.Logger("This needs the player to be aligned to evil", messageBox: true);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while(FactionRank("Evil") < 4)
@@ -633,6 +647,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Glacera") >= rank)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Glacera") < rank)
@@ -659,7 +674,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Good") >= rank)
 			return;
-		Core.Logger("This needs the player to be aligned to good");
+		Core.Logger("This needs the player to be aligned to good", messageBox: true);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while(FactionRank("Good") < 4)
@@ -696,7 +711,7 @@ public class CoreFarms
 			return;
 		if (!Bot.Quests.IsAvailable(537))
 		{
-			Core.Logger("Can't do farming quest [Sanguine] (/lycan)");
+			Core.Logger("Can't do farming quest [Sanguine] (/lycan)", messageBox: true);
 			return;
 		}
 		Core.Logger($"Farming rank {rank}");
@@ -717,6 +732,7 @@ public class CoreFarms
 		if (FactionRank("Hollowborn") >= rank)
 			return;
 		Core.AddDrop("Hollow Soul");
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Hollowborn") < rank)
@@ -766,9 +782,10 @@ public class CoreFarms
 			return;
 		if (!Bot.Quests.IsAvailable(710))
 		{
-			Core.Logger("Can't do farming quest [Kimberly] (/palooza)");
+			Core.Logger("Can't do farming quest [Kimberly] (/palooza)", messageBox: true);
 			return;
 		}
+		Core.EquipClass(ClassType.Solo);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Mythsong") < rank)
@@ -788,9 +805,10 @@ public class CoreFarms
 			return;
 		if (!Bot.Quests.IsAvailable(3445))
 		{
-			Core.Logger("Can't do farming quest [Slay the Spiderkin] (/twilightedge)");
+			Core.Logger("Can't do farming quest [Slay the Spiderkin] (/twilightedge)", messageBox: true);
 			return;
 		}
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Ravenloss") < rank)
@@ -861,9 +879,10 @@ public class CoreFarms
 			return;
 		if (!Bot.Quests.IsAvailable(522))
 		{
-			Core.Logger("Can't do farming quest [Twisted Paw] (/safiria)");
+			Core.Logger("Can't do farming quest [Twisted Paw] (/safiria)", messageBox: true);
 			return;
 		}
+		Core.EquipClass(ClassType.Solo);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Vampire") < rank)
@@ -881,6 +900,7 @@ public class CoreFarms
 	{
 		if (FactionRank("Yokai") >= rank)
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming rank {rank}");
 		int i = 1;
 		while (FactionRank("Yokai") < rank)
@@ -928,5 +948,4 @@ public enum BoostIDs
 	DoomGold60 = 19763,
 	Gold20 = 22450,
 	Gold60 = 27554
-
 }

@@ -45,13 +45,13 @@ public class WillpowerExtraction
 				Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
 			Nulgath.Supplies("Unidentified 19");
-
+			Core.EquipClass(ClassType.Farm);
 			if (!Core.CheckInventory("Necrot", 5))
 				Core.KillMonster("deathsrealm", "Frame2", "Left", "Skeleton Fighter", "Necrot", 5, false);
 
 			if (!Core.CheckInventory("Chaoroot", 5))
 				Core.KillMonster("hydra", "Boss", "Left", "Hydra Head", "Chaoroot", 5, false);
-
+			Core.EquipClass(ClassType.Solo);
 			if (!Core.CheckInventory("Doomatter", 5))
 				Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Doomatter", 5, false);
 
@@ -75,6 +75,7 @@ public class WillpowerExtraction
 				while (!Bot.Inventory.Contains("Facebreaker of Nulgath"))
 				{
 					Core.EnsureAccept(3046);
+					Core.EquipClass(ClassType.Solo);
 					Core.HuntMonster("citadel", "Grand Inquisitor", "Golden Shadow Breaker", 1, false);
 					Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
 					Nulgath.FarmUni13(2);

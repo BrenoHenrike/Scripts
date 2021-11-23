@@ -2,37 +2,53 @@
 using RBot.Items;
 using RBot.Monsters;
 using RBot.Quests;
+using RBot.Skills;
+using RBot.Flash;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using System.Threading;
+using System.Text.RegularExpressions;
 
 public class CoreBots
 {
+	// [Can Change] Delay between commom actions, 700 is the safe number
+	public int ActionDelay { get; set; } = 700;
+	// [Can Change] Delay used to get out of combat, 1600 is the safe number
+	public int ExitCombatDelay { get; set; } = 1600;
+    // [Can Change] Whether the bots will use private rooms
+    public bool PrivateRooms { get; set; } = true;
+    // [Can Change] Whether the player should rest after killing a monster
+    public bool ShouldRest { get; set; } = false;
+	// [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
+	public int SkillTimer { get; set; } = 100;
+	// [Can Change] Name of your soloing class
+	public string SoloClass { get; set; } = "Generic";
+	// [Can Change] (Use the Core Skill plugin) Skill sequence string
+	public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
+    // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the soloing class
+    public int SoloClassSkillTimeout { get; set; } = 150;
+    // [Can Change] Name of your farming class
+    public string FarmClass { get; set; } = "Generic";
+    // [Can Change] (Use the Core Skill plugin) Skill sequence string
+    public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
+    // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the farming class
+	public int FarmClassSkillTimeout { get; set; } = 1;
+	// [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
+	public int HeroAlignment { get; set; } = (int)Alignment.Evil;
+
+	// The timeout in multiples of SkillTimer milliseconds before skipping the current unavailable skill when using SkillMode.Wait.
+	public int SkillTimeout { get; set; } = 1;
+	// Whether the player is Member
+	public bool IsMember => ScriptInterface.Instance.Player.IsMember;
+
 	private static CoreBots _instance;
 	public static CoreBots Instance => _instance ?? (_instance = new CoreBots());
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	/// <summary>
-	/// Delay between commom actions, 700 is the safe number
-	/// </summary>
-	public int ActionDelay { get; set; } = 700;
-	/// <summary>
-	/// Delay used to get out of combat, 1500 is the safe number
-	/// </summary>
-	public int ExitCombatDelay { get; set; } = 1600;
-
-	/// <summary>
-	/// If true will wait till the player is fully rested after killing monsters
-	/// </summary>
-	public bool ShouldRest { get; set; } = false;
-
-	public int HeroAlignment { get; set; } = (int)Alignment.Evil;
-
-	/// <summary>
-	/// Whether the player is Member
-	/// </summary>
-	public bool IsMember => ScriptInterface.Instance.Player.IsMember;
+	private CoreSkillProvider _Provider = new CoreSkillProvider();
+	private Thread _SkillThread;
 
 	public List<ItemBase> CurrentRequirements = new List<ItemBase>();
 
@@ -43,72 +59,71 @@ public class CoreBots
 	public void SetOptions(bool changeTo = true)
 	{
 		// Common Options
+		Bot.Options.PrivateRooms = PrivateRooms;
 		Bot.Options.LagKiller = changeTo;
 		Bot.Options.SafeTimings = changeTo;
 		Bot.Options.RestPackets = changeTo;
 		Bot.Options.AutoRelogin = changeTo;
-		Bot.Options.PrivateRooms = changeTo;
 		Bot.Options.InfiniteRange = changeTo;
-		Bot.Options.SkipCutscenes = changeTo;
 		Bot.Options.ExitCombatBeforeQuest = changeTo;
 		Bot.Drops.RejectElse = changeTo;
-		Bot.Drops.Interval = 500;
 		Bot.Lite.UntargetDead = changeTo;
 		Bot.Lite.UntargetSelf = changeTo;
 		Bot.Lite.Set("bReaccept", false);
-
-		// Anti-lag option
-		Bot.SetGameObject("stage.frameRate", 10);
-		if (!Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-			Bot.CallGameFunction("world.toggleMonsters");
-
-		//Uncomment to use AutoRelogin to restart the script when the player goes AFK, it should not be necessary
-		//Bot.Options.AutoRelogin = changeTo;
-		//void AFKHandler(ScriptInterface b)
-		//{
-		//	Logger("Player AFK, triggering logout");
-		//	b.Events.PlayerAFK -= AFKHandler;
-		//	b.Player.Logout();
-		//}
-		//Bot.Events.PlayerAFK += AFKHandler;
-
-		// Uncomment and use any skill set you want, by default it will use Generic.xml
-		//Bot.Skills.LoadSkills("Skills/---.xml");
 
 		if (changeTo)
 		{
 			Logger("Bot Started");
 			Bot.Player.LoadBank();
 			Bot.Runtime.BankLoaded = true;
-			Bot.Skills.StartTimer();
-			Bot.RegisterHandler(2, b => {
+            EquipClass(ClassType.Solo);
+            // Anti-lag option
+            Bot.SetGameObject("stage.frameRate", 10);
+            if (!Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                Bot.CallGameFunction("world.toggleMonsters");
+
+            Bot.RegisterHandler(2, b => 
+			{
 				if (b.ShouldExit())
 				{
+                    StopTimer();
 					b.SetGameObject("stage.frameRate", 30);
 					b.Options.LagKiller = false;
 					b.Options.LagKiller = true;
 					b.Options.LagKiller = false;
-					if (b.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                    if (b.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
 						b.CallGameFunction("world.toggleMonsters");
+					Logger("Bot Stopped Successfully", messageBox: true);
 				}
 			});
-		}
+
+            Bot.RegisterHandler(15, b =>
+            {
+                if (b.Player.Cell.Contains("Cut"))
+                {
+                    FlashUtil.Call("skipCutscenes");
+                    b.Sleep(1000);
+                    b.Player.Jump("Enter", "Spawn");
+                }
+            });
+        }
 		else
 		{
-			Bot.Skills.StopTimer();
-			Bot.SetGameObject("stage.frameRate", 30);
+            StopTimer();
+            Bot.Options.PrivateRooms = false;
+            Bot.SetGameObject("stage.frameRate", 30);
 			Bot.Options.LagKiller = false;
 			Bot.Options.LagKiller = true;
 			Bot.Options.LagKiller = false;
 			if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
 				Bot.CallGameFunction("world.toggleMonsters");
-			Logger("Bot Stopped", messageBox: true);
+			Logger("Bot Stopped Successfully", messageBox: true);
 		}
 	}
 
 	#region Inventory, Bank and Shop
 	/// <summary>
-	/// Check the Bank and Inventory for the item
+	/// Check the Bank, Inventory and Temp Inventory for the item
 	/// </summary>
 	/// <param name="item">Name of the item</param>
 	/// <param name="quant">Desired quantity</param>
@@ -123,6 +138,8 @@ public class CoreBots
 			Unbank(item);
 		}
 		if (Bot.Inventory.Contains(item, quant))
+			return true;
+		if(Bot.Inventory.ContainsTempItem(item, quant))
 			return true;
 		return false;
 	}
@@ -147,7 +164,7 @@ public class CoreBots
 		}
 		if (Bot.Inventory.Contains(item.Name, quant))
 			return true;
-		return false;
+        return false;
 	}
 
 	/// <summary>
@@ -206,8 +223,8 @@ public class CoreBots
 	/// <param name="shopID">ID of the shop</param>
 	/// <param name="itemName">Name of the item</param>
 	/// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
-    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+	/// <param name="shopQuant">How many items you get for 1 buy</param>
+	/// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
 	public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
 	{
 		if (CheckInventory(itemName, quant))
@@ -218,26 +235,23 @@ public class CoreBots
 		if(quant > 1)
 		{
 			if(Bot.Inventory.GetQuantity(itemName) + shopQuant > item.MaxStack)
-                return;
-            int quantB = quant - Bot.Inventory.GetQuantity(itemName);
+				return;
+			int quantB = quant - Bot.Inventory.GetQuantity(itemName);
 			if(quantB < 0)
-                return;
+				return;
 			decimal quantF = (decimal)quantB / (decimal)shopQuant;
-            quant = (int)Math.Ceiling(quantF);
+			quant = (int)Math.Ceiling(quantF);
 		}
 		if(shopItemID == 0)
-        	for (int i = 0; i < quant; i++)
-                Bot.Shops.BuyItem(shopID, itemName);
+			for (int i = 0; i < quant; i++)
+				Bot.Shops.BuyItem(shopID, itemName);
 		else
 		{
-            SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
-            if(!Bot.Options.AutoRelogin)
-                Bot.Options.AutoRelogin = true;
-            Bot.Sleep(2000);
-			Logger($"Triggering Auto Relogin to prevent ghost buy");
-            Bot.Player.Logout();
-        }
-        Logger($"Bought {quant} {itemName}");
+			SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
+			Logger("Relogin to prevent ghost buy");
+			Relogin();
+		}
+		Logger($"Bought {quant} {itemName}");
 	}
 
 	/// <summary>
@@ -247,37 +261,34 @@ public class CoreBots
 	/// <param name="shopID">ID of the shop</param>
 	/// <param name="itemID">ID of the item</param>
 	/// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
-    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+	/// <param name="shopQuant">How many items you get for 1 buy</param>
+	/// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
 	public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
 	{
 		if (CheckInventory(itemID, quant))
 			return;
-        Bot.Player.Join(map);
-        Bot.Shops.Load(shopID);
-        RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
-        if(quant > 1)
+		Bot.Player.Join(map);
+		Bot.Shops.Load(shopID);
+		RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
+		if(quant > 1)
 		{
 			int quantB = quant - Bot.Inventory.GetQuantity(item.Name);
-            if(quantB < 0)
-                return;
-            decimal quantF = (decimal)quantB / (decimal)shopQuant;
-            quant = (int)Math.Ceiling(quantF);
-        }
+			if(quantB < 0)
+				return;
+			decimal quantF = (decimal)quantB / (decimal)shopQuant;
+			quant = (int)Math.Ceiling(quantF);
+		}
 		if(shopItemID == 0)
-        	for (int i = 0; i < quant; i++)
-            	Bot.Shops.BuyItem(shopID, itemID);
+			for (int i = 0; i < quant; i++)
+				Bot.Shops.BuyItem(shopID, itemID);
 		else
 		{
 			SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
-            if(!Bot.Options.AutoRelogin)
-                Bot.Options.AutoRelogin = true;
-			Bot.Sleep(2000);
-            Logger($"Triggering Auto Relogin to prevent ghost buy");
-            Bot.Player.Logout();
-        }
-        Logger($"Bought {quant} {item.Name}");
-    }
+			Logger("Relogin to prevent ghost buy");
+			Relogin();
+		}
+		Logger($"Bought {quant} {item.Name}");
+	}
 	#endregion
 
 	#region Drops
@@ -397,7 +408,7 @@ public class CoreBots
 	public void SmartKillMonster(int questID, string map, string[] monsters, int iterations = 20, bool completeQuest = false)
 	{
 		EnsureAccept(questID);
-		AddRequirements(questID);
+		_AddRequirement(questID);
 		Bot.Player.Join(map);
 		foreach (string monster in monsters)
 			_SmartKill(monster, iterations);
@@ -417,7 +428,7 @@ public class CoreBots
 	public void SmartKillMonster(int questID, string map, string monster, int iterations = 20, bool completeQuest = false)
 	{
 		EnsureAccept(questID);
-		AddRequirements(questID);
+		_AddRequirement(questID);
 		Bot.Player.Join(map);
 		_SmartKill(monster, iterations);
 		if (completeQuest)
@@ -435,7 +446,7 @@ public class CoreBots
 			if (CurrentRequirements.Count == 1)
 			{
 				if(_RepeatCheck(ref repeat, 0))
-                    break;
+					break;
 				_MonsterHunt(ref repeat, monster, CurrentRequirements[0].Name, CurrentRequirements[0].Quantity, CurrentRequirements[0].Temp, 0);
 				break;
 			}
@@ -451,11 +462,11 @@ public class CoreBots
 					if (j != 0 && (Bot.Inventory.Contains(CurrentRequirements[i].Name) || Bot.Inventory.ContainsTempItem(CurrentRequirements[i].Name)))
 					{
 						if(_RepeatCheck(ref repeat, i))
-                            break;
-                        _MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
-                        break;
+							break;
+						_MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
+						break;
 					}
-                }
+				}
 			}
 			if (!repeat)
 				break;
@@ -468,23 +479,23 @@ public class CoreBots
 
 	private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
 	{
-        Logger($"Hunting {monster} for {itemName} ({quantity})[{isTemp}]");
+		Logger($"Hunting {monster} for {itemName} ({quantity})[{isTemp}]");
 		Bot.Player.HuntForItem(monster, itemName, quantity, isTemp);
 		CurrentRequirements.RemoveAt(index);
 		shouldRepeat = false;
-    }
+	}
 
-    private bool _RepeatCheck(ref bool shouldRepeat, int index)
+	private bool _RepeatCheck(ref bool shouldRepeat, int index)
 	{
 		if(Bot.Inventory.Contains(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity) 
 			|| Bot.Inventory.ContainsTempItem(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity))
 		{
 			CurrentRequirements.RemoveAt(index);
 			shouldRepeat = false;
-            return true;
-        }
-        return false;
-    }
+			return true;
+		}
+		return false;
+	}
 
 	/// <summary>
 	/// Joins a map, jump & set the spawn point and kills the specified monster
@@ -584,56 +595,36 @@ public class CoreBots
 	/// <param name="quant">Desired quantity</param>
 	/// <param name="isTemp">Whether the item is temporary</param>
 	/// <param name="removeHandler">Whether remove the handler for Staff of Inversion after finished</param>
-	public void KillEscherion(string item = null, int quant = 1, bool isTemp = false, bool removeHandler = true)
+	public void KillEscherion(string item = null, int quant = 1, bool isTemp = false)
 	{
-		if(!Bot.Handlers.Where(h => h.Name == "escherion").Any())
-		{
-			Bot.RegisterHandler(5, b =>
-			{
-				if (b.Monsters.CurrentMonsters.Where(m => m.Alive).Count() > 1)
-					b.Player.Kill("Staff of Inversion");
-			}, "escherion");
-		}
+		Jump("Boss", "Left");
 		if (item == null)
 		{
 			Logger("Killing Escherion");
-			Bot.Player.Kill("Escherion");
+			while(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Escherion").Alive)
+			{
+				if(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+					Bot.Player.Kill("Staff of Inversion");
+				Bot.Player.Attack("Escherion");
+				Bot.Sleep(1000);
+			}
 		}
 		else
 		{
-			Logger("Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
-			KillMonster("escherion", "Boss", "Left", "Escherion", item, quant, isTemp);
+			Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
+			while(!CheckInventory(item, quant))
+			{
+				if(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+					Bot.Player.Kill("Staff of Inversion");
+				Bot.Player.Attack("Escherion");
+				Bot.Sleep(1000);
+			}
 		}
-		if(removeHandler)
-			Bot.Handlers.RemoveAll(h => h.Name == "escherion");
 	}
 	#endregion
 
-	/// <summary>
-    /// Will add any requirements from the specified quest to the CurrentRequirements list. Be sure to clear the list after completing the quest if you are not using the SmartKillMonster method
-    /// </summary>
-    /// <param name="questID">ID of the quest</param>
-	public void AddRequirements(int questID)
-	{
-		if (questID > 0)
-		{
-			Quest quest = Bot.Quests.EnsureLoad(questID);
-			if (quest == null)
-				Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
-            List<string> reqItems = new List<string>();
-            quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
-            quest.Requirements.ForEach(item =>
-			{
-				if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
-				{
-                    reqItems.Add(item.Name);
-					CurrentRequirements.Add(item);
-				}
-			});
-            AddDrop(reqItems.ToArray());
-		}
-	}
-
+	#region Utils
+	
 	/// <summary>
 	/// Logs a line of text to the script log with time, method from where it's called and a message
 	/// </summary>
@@ -643,7 +634,10 @@ public class CoreBots
 		if (messageBox)
 			Message(message, caller);
 		if (stopBot)
-			ScriptManager.StopScript();
+		{
+            SetOptions(false);
+            ScriptManager.StopScript();
+		}
 	}
 
 	/// <summary>
@@ -668,6 +662,124 @@ public class CoreBots
 	}
 
 	/// <summary>
+	/// Rest the player until full if ShouldRest = true
+	/// </summary>
+	public void Rest()
+	{
+		if (Bot.Player.Mana < 30 && ShouldRest)
+		{
+			Bot.Player.Rest(true);
+			while (Bot.Player.Mana < 90)
+				Bot.Sleep(2000);
+		}
+	}
+
+	public void Relogin()
+	{
+		bool autoRelogSwitch = Bot.Options.AutoRelogin;
+		Bot.Options.AutoRelogin = false;
+		Bot.Sleep(2000);
+		Logger("Relogin started");
+		Bot.Player.Logout();
+		Bot.Sleep(5000);
+		RBot.Servers.Server server = Bot.Options.AutoReloginAny 
+				? RBot.Servers.ServerList.Servers.Find(x => x.IP != RBot.Servers.ServerList.LastServerIP) 
+				: RBot.Servers.ServerList.Servers.Find(s => s.IP == RBot.Servers.ServerList.LastServerIP) ?? RBot.Servers.ServerList.Servers[0];
+		Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+		Bot.Player.Connect(server);
+		while(!Bot.Player.LoggedIn)
+			Bot.Sleep(500);
+		Bot.Sleep(5000);
+		Logger("Relogin finished");
+		Bot.Options.AutoRelogin = autoRelogSwitch;
+	}
+
+	ClassType lastClass = ClassType.None;
+    bool usingSoloGeneric = false;
+    bool usingFarmGeneric = false;
+    public void EquipClass(ClassType classToUse)
+	{
+        usingSoloGeneric = SoloClass.ToLower() == "generic";
+        usingFarmGeneric = FarmClass.ToLower() == "generic";
+        switch (classToUse)
+		{
+			case ClassType.Farm:
+				if(usingFarmGeneric && !usingSoloGeneric)
+				{
+                    EquipClass(ClassType.Solo);
+                    return;
+                }
+                _EquipClass(FarmClass);
+				if(lastClass != ClassType.Farm)
+				{
+                    UseSkills(FarmClassSkills);
+                	SkillTimeout = FarmClassSkillTimeout;
+				}
+                break;
+            default:
+				if(usingSoloGeneric && !usingFarmGeneric)
+				{
+                    EquipClass(ClassType.Farm);
+                    return;
+                }
+                _EquipClass(SoloClass);
+				if(lastClass != ClassType.Solo)
+				{
+                    UseSkills(SoloClassSkills);
+                	SkillTimeout = SoloClassSkillTimeout;
+				}
+                break;
+        }
+        lastClass = classToUse;
+    }
+
+	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
+	{
+		while (!Bot.ShouldExit()
+			&& (tempItem || !Bot.Inventory.Contains(item, quantity))
+			&& (!tempItem || !Bot.Inventory.ContainsTempItem(item, quantity)))
+		{
+			Bot.Player.Kill(name);
+			Bot.Player.Pickup(item);
+			Rest();
+		}
+	}
+
+	private void _AddRequirement(int questID)
+	{
+		if (questID > 0)
+		{
+			Quest quest = Bot.Quests.EnsureLoad(questID);
+			if (quest == null)
+				Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
+			List<string> reqItems = new List<string>();
+			quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
+			quest.Requirements.ForEach(item =>
+			{
+				if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
+				{
+					reqItems.Add(item.Name);
+					CurrentRequirements.Add(item);
+				}
+			});
+			AddDrop(reqItems.ToArray());
+		}
+	}
+
+	private void _EquipClass(string className)
+	{
+        if(className.ToLower() != "generic" 
+			&& Bot.Inventory.CurrentClass.Name.ToLower() != className.ToLower())
+		{
+        	JumpWait();
+            Bot.Player.EquipItem(className);
+            Logger($"{className} equipped");
+        }
+	}
+	#endregion
+
+	#region Map
+	/// <summary>
 	/// Sends a getMapItem packet for the specified item
 	/// </summary>
 	/// <param name="itemID">ID of the item</param>
@@ -677,10 +789,11 @@ public class CoreBots
 	{
 		if (map != null)
 			Bot.Player.Join(map);
+		Bot.Sleep(ActionDelay);
 		for (int i = 0; i < quant; i++)
 		{
 			Bot.Map.GetMapItem(itemID);
-			Bot.Sleep(ActionDelay);
+			Bot.Sleep(1000);
 		}
 		Logger($"Map item {itemID}({quant}) acquired");
 	}
@@ -710,35 +823,244 @@ public class CoreBots
 		}
 	}
 
-	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
+	/// <summary>
+	/// This method is used to move between Bludrut Brawl rooms
+	/// </summary>
+	/// <param name="mtcid">Last number of the mtcid packet</param>
+	/// <param name="cell">Cell you want to be</param>
+	/// <param name="moveX">X position of the door</param>
+	/// <param name="moveY">Y position of the door</param>
+	public void BludrutMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
 	{
-		while (!Bot.ShouldExit()
-			&& (tempItem || !Bot.Inventory.Contains(item, quantity))
-			&& (!tempItem || !Bot.Inventory.ContainsTempItem(item, quantity)))
+		while (Bot.Player.Cell != cell)
 		{
-			Bot.Player.Kill(name);
-			Bot.Player.Pickup(item);
-			Rest();
+			Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
+			Bot.Sleep(1500);
+			Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
+		}
+	}
+	#endregion
+
+	#region Skill Thread
+	public void StartTimer()
+	{
+		if (_SkillThread == null)
+		{
+			_SkillThread = new Thread(_Timer) { Name = "Core Skill Timer" };
+			_SkillThread.Start();
 		}
 	}
 
-	/// <summary>
-    /// Rest the player until full if ShouldRest = true
-    /// </summary>
-	public void Rest()
+	public void StopTimer()
 	{
-		if (Bot.Player.Mana < 30 && ShouldRest)
+		_Provider?.Stop(Bot);
+		_SkillThread?.Join(1000);
+		if (_SkillThread?.IsAlive ?? false)
+			_SkillThread.Abort();
+		_SkillThread = null;
+	}
+
+	public void UseSkills(string skills)
+	{
+		StopTimer();
+		_Provider?.Load(skills);
+		StartTimer();
+	}
+
+	private void _Timer()
+	{
+		while (!Bot.ShouldExit() && Bot.Player.LoggedIn)
 		{
-			Bot.Player.Rest(true);
-			while (Bot.Player.Mana < 90)
-				Bot.Sleep(2000);
+            if (Bot.Player.HasTarget)
+				_Poll();
+			_Provider?.OnTargetReset(Bot);
+            Thread.Sleep(SkillTimer);
 		}
 	}
+
+	private int _lastRank = -1;
+	private SkillInfo[] _lastSkills;
+	private void _Poll()
+	{
+        int rank = Bot.Player.Rank;
+		if (rank > _lastRank && _lastRank != -1)
+		{
+			using (FlashArray<object> skills = FlashObject<object>.Create("world.actions.active").ToArray())
+			{
+				int k = 0;
+				foreach (FlashObject<object> skill in skills)
+				{
+					using (FlashObject<long> ts = skill.GetChild<long>("ts"))
+						ts.Value = _lastSkills[k++].LastUse;
+				}
+			}
+		}
+		_lastRank = rank;
+		_lastSkills = Bot.Player.Skills;
+		if(_Provider.ShouldUseSkill(Bot) == true)
+		{
+			int skilltrue = _Provider.GetNextSkill(Bot, out SkillMode modetrue);
+            switch (modetrue)
+            {
+                case SkillMode.Optimistic:
+                    if (Bot.Player.CanUseSkill(skilltrue))
+                        Bot.Player.UseSkill(skilltrue);
+                    break;
+                case SkillMode.Wait:
+                    if (skilltrue > 0)
+                    {
+                        Bot.Wait.ForTrue(() => Bot.Player.CanUseSkill(skilltrue), SkillTimeout, SkillTimer);
+                        Bot.Player.UseSkill(skilltrue);
+                    }
+                    break;
+            }
+        }
+		else if(_Provider.ShouldUseSkill(Bot) == null)
+            _Provider.GetNextSkill(Bot, out SkillMode modeNull);
+    }
+	#endregion
 }
+
+#region Core Skill Provider
+public class CoreSkillProvider
+{
+	public CoreSkillCommand Root { get; set; } = new CoreSkillCommand();
+	public bool ResetOnTarget { get; set; } = false;
+	public SkillMode Mode { get; set; } = SkillMode.Wait;
+
+	public int GetNextSkill(ScriptInterface bot, out SkillMode mode)
+	{
+		mode = Mode;
+		return Root.GetNextSkill(bot);
+	}
+
+	public void Load(string file)
+	{
+		char[] separators = { '|', ':', ';', '/' };
+		string[] commands = file.ToLower().Trim().Split(separators);
+		foreach (string command in commands)
+		{
+			if(command.Contains("reset"))
+			{
+				if(command.Contains("false"))
+					ResetOnTarget = false;
+			}
+			else if(command.Contains("mode"))
+			{
+				if(command.Contains("opt"))
+					Mode = SkillMode.Optimistic;
+			}
+			else
+			{
+				int.TryParse(command.Trim().Substring(0, 1), out int skill);
+				string useRules;
+				if (command.Trim().Length <= 1)
+					useRules = "";
+				else
+					useRules = command.Substring(2).Trim();
+
+				Root.Skills.Add(skill);
+				Root.UseRule.Add(useRules);
+			}
+		}
+	}
+	public void OnTargetReset(ScriptInterface bot)
+	{
+		if (ResetOnTarget && !bot.Player.HasTarget)
+			Root.Reset();
+	}
+	public bool? ShouldUseSkill(ScriptInterface bot) => Root.ShouldUse(bot);
+	public void Stop(ScriptInterface bot) => Root.Reset();
+}
+
+public class CoreSkillCommand
+{
+	public List<int> Skills { get; set; } = new List<int>();
+	public List<string> UseRule { get; set; } = new List<string>();
+
+	private int _Index = 0;
+
+	public int GetNextSkill(ScriptInterface bot)
+	{
+		int skill = Skills[_Index];
+		_Index++;
+		if(_Index >= Skills.Count)
+			_Index = 0;
+
+		return skill;
+	}
+
+	public bool? ShouldUse(ScriptInterface bot)
+	{
+        if(string.IsNullOrWhiteSpace(UseRule[_Index]))
+			return true;
+        string[] useRules = UseRule[_Index].Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+		bool shouldUse = true;
+        bool skip = UseRule[_Index].Contains("s");
+        foreach (string useRule in useRules)
+		{
+            int.TryParse(RemoveLetters(useRule), out int result);
+            if(useRule.Contains("h"))
+			{
+				if(result > 100)
+					result = 100;
+				if(useRules.Contains(">"))
+					shouldUse = HealthUseRule(bot, true, result);
+				else
+					shouldUse = HealthUseRule(bot, false, result);
+			}
+			else if(useRule.Contains("m"))
+			{
+				if(result > 100)
+					result = 100;
+				if(useRules.Contains(">"))
+					shouldUse = ManaUseRule(bot, true, result);
+				else
+					shouldUse = ManaUseRule(bot, false, result);
+			}
+			else if(useRule.Contains("w"))
+				WaitUseRule(bot, result);
+			if(skip && !shouldUse)
+                return null;
+            if(!shouldUse)
+				break;
+		}
+        return shouldUse;
+	}
+
+    private string RemoveLetters(string userule) => Regex.Replace(userule, "[^0-9.]", "");
+
+    private bool HealthUseRule(ScriptInterface bot, bool greater, int health)
+	{
+        float ratio = (float)bot.Player.Health / (float)bot.Player.MaxHealth * 100.0f;
+        if(greater)
+			return health >= ratio;
+		return health <= ratio;
+	}
+
+	private bool ManaUseRule(ScriptInterface bot, bool greater, int mana)
+	{
+		if(greater)
+			return bot.Player.Mana >= mana;
+		return bot.Player.Mana <= mana;
+	}
+
+	private void WaitUseRule(ScriptInterface bot, int time) => Thread.Sleep(time);
+
+	public void Reset() => _Index = 0;
+}
+#endregion
 
 public enum Alignment
 {
 	Good,
 	Evil,
 	Chaos
+}
+
+public enum ClassType
+{
+	Solo,
+	Farm,
+	None
 }

@@ -123,6 +123,7 @@ public class CoreNulgath
 		Core.Logger($"Farming {quant} Dark Crystal Shard");
 		while (!Bot.Inventory.Contains("Dark Crystal Shard", quant))
 		{
+			Core.EquipClass(ClassType.Solo);
 			Core.EnsureAccept(570);
 			Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", 1, false);
 			Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false);
@@ -139,11 +140,13 @@ public class CoreNulgath
 			Core.KillEscherion("Escherion's Chain");
 			if (!Core.CheckInventory("Defeated Makai", 50))
 			{
+				Core.EquipClass(ClassType.Farm);
 				JoinTercessuinotlim();
 				Core.Jump("m2", "Bottom");
 				Bot.Player.KillForItem("Dark Makai", "Defeated Makai", 50);
 				Core.JumpWait();
 			}
+			Core.EquipClass(ClassType.Solo);
 			Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain");
 			Core.EnsureComplete(570);
 			Bot.Wait.ForPickup("Dark Crystal Shard");
@@ -199,6 +202,7 @@ public class CoreNulgath
 		if (Core.CheckInventory("Diamond of Nulgath", quant))
 			return;
 		Core.AddDrop("Legion Blade", "Dessicated Heart");
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Diamonds");
 		int i = 1;
 		Bot.Player.Join("evilwarnul");
@@ -233,7 +237,7 @@ public class CoreNulgath
 			return;
 		Core.Logger($"Farming {quantApproval} Nulgath's Approval and {quantFavor} Archfiend's Favor");
 		Core.Unbank("Nulgath's Approval", "Archfiend's Favor");
-		
+		Core.EquipClass(ClassType.Farm);
 		if (quantApproval > 0)
 			Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
 		if (quantFavor > 0)
@@ -249,6 +253,7 @@ public class CoreNulgath
 	{
 		if(Core.CheckInventory("Tainted Gem", quant))
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Tainted Gems");
 		int i = 1;
 		Core.AddDrop("Cubes");
@@ -279,6 +284,7 @@ public class CoreNulgath
 		Core.AddDrop("Fiend Seal", "Gem of Domination");
 		Core.CheckInventory("Field Seal");
 		Core.CheckInventory("Gem of Domination");
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Emblems");
 		Bot.Player.Join("shadowblast");
 		int i = 1;
@@ -384,6 +390,7 @@ public class CoreNulgath
 	{
 		if (Core.CheckInventory("Essence of Nulgath", quant))
 			return;
+		Core.EquipClass(ClassType.Farm);
 		JoinTercessuinotlim();
 		Core.Jump("m2", "Bottom");
 		Core.Logger($"Farming {quant} Essences");
@@ -402,6 +409,7 @@ public class CoreNulgath
 			return;
 		Core.AddDrop("Mana Energy for Nulgath");
 		int i = 1;
+		Core.EquipClass(ClassType.Solo);
 		Core.Logger($"Farming {quant} {item}");
 		while(!Bot.Inventory.Contains(item, quant))
 		{
@@ -514,6 +522,7 @@ public class CoreNulgath
 			return;
 		Core.AddDrop("Escherion's Helm", "Tainted Core");
 		int i = 1;
+		Core.EquipClass(ClassType.Solo);
 		Core.Logger($"Farming {quant} {item}");
 		while (!Bot.Inventory.Contains(item, quant))
 		{
@@ -565,6 +574,7 @@ public class CoreNulgath
 			return;
 		if (farmUni13 && !Bot.Inventory.Contains("Unidentified 13"))
 			FarmUni13();
+		Core.EquipClass(ClassType.Solo);
 		Core.EnsureAccept(870);
 		JoinTercessuinotlim();
 		Core.Jump("m4", "Right");
@@ -611,11 +621,11 @@ public class CoreNulgath
 		Core.CheckInventory("Blood Gem of the Archfiend");
 
 		if (!Core.CheckInventory("Emerald Pickaxe"))
-			Core.KillEscherion("Emeral Pickaxe");
+			Core.KillEscherion("Emerald Pickaxe");
 
 		if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
 			Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
-
+		Core.EquipClass(ClassType.Solo);
 		int i = 1;
 		while (!Core.CheckInventory("Unidentified 10", quant))
 		{
@@ -747,7 +757,8 @@ public class CoreNulgath
 		if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
 			return;
 		Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos");
-		Core.Logger($"Farming {quant} Blood Gems");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quant} Blood Gems");
 		int i = 1;
 		while(!Bot.Inventory.Contains("Blood Gem of the Archfiend", quant))
 		{

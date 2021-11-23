@@ -20,6 +20,7 @@ public class CoreLegion
 	{
 		if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Legion Tokens");
 		int i = 1;
 		while (!Core.CheckInventory("Legion Token", quant))
@@ -78,6 +79,7 @@ public class CoreLegion
 				return;
 			}
 		}
+		Core.EquipClass(ClassType.Solo);
 		Bot.Player.Jump("Boss", "Left");
 		int i = 1;
 		while (!Core.CheckInventory("Legion Token", quant))
@@ -95,6 +97,7 @@ public class CoreLegion
 	{
 		if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Legion Champion"))
 			return;
+		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Legion Tokens");
 		Bot.Player.Join("dreadrock");
 		int i = 1;
