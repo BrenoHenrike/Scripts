@@ -3,6 +3,8 @@
 If any of my scripts helped you and you want to donate:  
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)
 
+- [Versão em Português Brasileiro](README.pt-br.md)
+
 - [Rbot-Scripts](#rbot-scripts)
   - [To do](#to-do)
   - [Customizing CoreBots](#customizing-corebots)
@@ -10,6 +12,7 @@ If any of my scripts helped you and you want to donate:
   - [FAQ](#faq)
 
 ## To do
+
 - Save option for the plugin;
 - Complete Legion quest;
 - Complete SDKA quests.
@@ -86,11 +89,11 @@ And then click the **Add** button. Note that I setted the health to be 25% so it
 
 <p align="center"><img src="https://imgur.com/QNOASl5.png"></p>
 
-The **Use Mode** is optional but I recommend you always use the Wait mode. With everything right you can click the **"Convert"** button.
+The **Use Mode** is optional but I recommend you always use the Wait mode (unless your class doesn't need a defined sequence). With everything right you can click the **"Convert"** button.
 
 <p align="center"><img src="https://imgur.com/AKGlJY8.png"></p>
 
-For the **SkillTimeout** of VHL we can use the longest CD which is of _Armageddon_ with 15 seconds, convert it to milliseconds (15000) and if our **SkillTimer** is 100ms it will give us **SkillTimeout = 150**, you can now change the **ClassSkillTimeout**, which in this case is our Solo Class. With all this info we can make the respective changes to **CoreBots.cs** file:
+For the **SkillTimeout** (only calculate it if you're using the **Wait Use Mode**) of VHL we can use the longest CD which is of _Armageddon_ with 15 seconds, convert it to milliseconds (15000) and if our **SkillTimer** is 100ms it will give us **SkillTimeout = 150**, you can now change the **ClassSkillTimeout**, which in this case is our Solo Class. With all this info we can make the respective changes to **CoreBots.cs** file:
 
 ```csharp
 // [Can Change] Name of your soloing class
@@ -103,11 +106,13 @@ public int SoloClassSkillTimeout { get; set; } = 150;
 
 Now your bot will use the defined class and skills when needed.
 
-> **Notes:** 
+> **Notes:**
+>
 > - You can make use of all use rules for the same skill without any problem. 
 > - Wait rules have priority over all rules, even if you can't use the skill and skip is checked, it will first wait the desired time first and then check the other rules.
 
 ## FAQ
+
 To use just drop the Scripts folder in RBot.exe folder.  
 <p align="center"><img src="https://imgur.com/SDU0oqd.gif" width=450></p>
 
@@ -119,6 +124,7 @@ To use just drop the Scripts folder in RBot.exe folder.
 
 **Q:** I'm running a bot and I get an error like *"The type or namespace 'CoreBots' could not be found"*, how do I fix it?  
 **A:** That's an installation problem, certify that you dropped the **"*Scripts*"** folder directly in the **"*RBot.exe*"** folder, this way it will update all previous bots that you downloaded from here. A commom error is your file path be like: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* or even *"\*/Rbot/**Rbot-Scripts-master/Scripts**/FarmAllDailys.cs"* it should be *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
+> **Note:** If after you follow this answer the error persists, open the script you got an error and certify that the first lines with `//cs_include` have the right path/file name, typos happen.
 
 **Q:** Even after doing the solutions above my script doesn't run, what now?  
 **A:** Then I might have messed up something. In this case you can reach out to me in Discord: **Breno_Henrike#6959** and tell me which script you are having trouble with.
