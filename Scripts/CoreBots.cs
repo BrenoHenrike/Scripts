@@ -74,6 +74,23 @@ public class CoreBots
 		if (changeTo)
 		{
 			Logger("Bot Started");
+
+            Bot.RegisterHandler(2, b =>
+            {
+                if (b.ShouldExit())
+                    StopBot();
+            });
+
+            Bot.RegisterHandler(15, b =>
+            {
+                if (b.Player.Cell.Contains("Cut"))
+                {
+                    FlashUtil.Call("skipCutscenes");
+                    b.Sleep(1500);
+                    b.Player.Jump("Enter", "Spawn");
+                }
+            });
+
 			Bot.Player.LoadBank();
 			Bot.Runtime.BankLoaded = true;
             EquipClass(ClassType.Solo);
@@ -82,44 +99,11 @@ public class CoreBots
             if (!Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                 Bot.CallGameFunction("world.toggleMonsters");
 
-            Bot.RegisterHandler(2, b => 
-			{
-				if (b.ShouldExit())
-				{
-                    StopTimer();
-					b.SetGameObject("stage.frameRate", 30);
-					b.Options.LagKiller = false;
-					b.Options.LagKiller = true;
-					b.Options.LagKiller = false;
-                    if (b.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-						b.CallGameFunction("world.toggleMonsters");
-					Logger("Bot Stopped Successfully", messageBox: true);
-				}
-			});
-
-            Bot.RegisterHandler(15, b =>
-            {
-                if (b.Player.Cell.Contains("Cut"))
-                {
-                    FlashUtil.Call("skipCutscenes");
-                    b.Sleep(1000);
-                    b.Player.Jump("Enter", "Spawn");
-                }
-            });
+            Logger("Bot Configured");
         }
 		else
-		{
-            StopTimer();
-            Bot.Options.PrivateRooms = false;
-            Bot.SetGameObject("stage.frameRate", 30);
-			Bot.Options.LagKiller = false;
-			Bot.Options.LagKiller = true;
-			Bot.Options.LagKiller = false;
-			if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-				Bot.CallGameFunction("world.toggleMonsters");
-			Logger("Bot Stopped Successfully", messageBox: true);
-		}
-	}
+            StopBot();
+    }
 
 	#region Inventory, Bank and Shop
 	/// <summary>
@@ -177,10 +161,9 @@ public class CoreBots
 		Bot.Player.OpenBank();
 		foreach (string item in items)
 		{
-			Bot.Sleep(ActionDelay);
-			Bot.Runtime.Require(item);
 			if (Bot.Bank.Contains(item))
 			{
+				Bot.Sleep(ActionDelay);
 				while (!Bot.Inventory.Contains(item))
 				{
 					Bot.Bank.ToInventory(item);
@@ -359,7 +342,7 @@ public class CoreBots
 	/// <param name="itemID">ID of the choosable reward item</param>
 	public bool EnsureComplete(int questID, int itemID = -1)
 	{
-		if (!Bot.Quests.CanComplete(questID) || questID <= 0)
+		if (questID <= 0)
 			return false;
 		JumpWait();
 		Bot.Sleep(ActionDelay);
@@ -375,7 +358,7 @@ public class CoreBots
 		JumpWait();
 		foreach (int quest in questIDs)
 		{
-			if (!Bot.Quests.CanComplete(quest) || quest <= 0)
+			if (quest <= 0)
 				continue;
 			Bot.Sleep(ActionDelay);
 			Bot.Quests.EnsureComplete(quest, tries: 20);
@@ -578,12 +561,12 @@ public class CoreBots
 		Bot.Player.Join(map);
 		if (item == null)
 		{
-			Logger("Hunting {monster}");
+			Logger($"Hunting {monster}");
 			Bot.Player.Hunt(monster);
 		}
 		else
 		{
-			Logger("Hunting {monster} for {item} ({quant}) [Temp = {isTemp}]");
+			Logger($"Hunting {monster} for {item} ({quant}) [Temp = {isTemp}]");
 			Bot.Player.HuntForItem(monster, item, quant, isTemp);
 		}
 	}
@@ -634,11 +617,8 @@ public class CoreBots
 		if (messageBox)
 			Message(message, caller);
 		if (stopBot)
-		{
-            SetOptions(false);
-            ScriptManager.StopScript();
-		}
-	}
+            StopBot();
+    }
 
 	/// <summary>
 	/// Creates a Message Box with the desired text and caption
@@ -776,6 +756,21 @@ public class CoreBots
             Logger($"{className} equipped");
         }
 	}
+
+	public void StopBot()
+	{
+        StopTimer();
+        Bot.Options.PrivateRooms = false;
+        Bot.Options.AutoRelogin = false;
+        Bot.SetGameObject("stage.frameRate", 30);
+        Bot.Options.LagKiller = false;
+        Bot.Options.LagKiller = true;
+        Bot.Options.LagKiller = false;
+        if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+            Bot.CallGameFunction("world.toggleMonsters");
+        Logger("Bot Stopped Successfully", messageBox: true);
+        ScriptManager.StopScript();
+    }
 	#endregion
 
 	#region Map
@@ -805,10 +800,10 @@ public class CoreBots
 	/// <param name="pad">Pad to jump to</param>
 	public void Jump(string cell = "Enter", string pad = "Spawn")
 	{
+		Bot.Player.SetSpawnPoint(cell, pad);
 		if (Bot.Player.Cell == cell)
 			return;
 		Bot.Player.Jump(cell, pad);
-		Bot.Player.SetSpawnPoint(cell, pad);
 	}
 
 	/// <summary>
@@ -822,6 +817,20 @@ public class CoreBots
 			Bot.Sleep(ExitCombatDelay);
 		}
 	}
+
+    /// <summary>
+    /// Joins Tercessuinotlim
+    /// </summary>
+    public void JoinTercessuinotlim()
+    {
+        if (Bot.Map.Name == "tercessuinotlim")
+            return;
+        Bot.Player.Join("citadel", "m22", "Left");
+        if (Bot.Player.Cell != "m22")
+            Bot.Player.Jump("m22", "Left");
+        Bot.Player.Join("tercessuinotlim");
+        Bot.Wait.ForMapLoad("tercessuinotlim");
+    }
 
 	/// <summary>
 	/// This method is used to move between Bludrut Brawl rooms

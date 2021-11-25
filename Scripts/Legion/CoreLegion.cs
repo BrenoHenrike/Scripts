@@ -6,7 +6,206 @@ public class CoreLegion
 
 	public CoreBots Core => CoreBots.Instance;
 
-	public void FarmLegionToken(int quant = 25000)
+    public string[] LR =
+    {
+		"Exalted Crown",
+		"Revenant's Spellscroll",
+		"Conquest Wreath"
+    };
+
+    public string[] LF1 =
+    {
+        "Aeacus Empowered",
+        "Tethered Soul",
+        "Darkened Essence",
+        "Dracolich Contract"
+    };
+
+    public string[] LF2 =
+    {
+        "Grim Cohort Conquered",
+		"Ancient Cohort Conquered",
+		"Pirate Cohort Conquered",
+		"Battleon Cohort Conquered",
+		"Mirror Cohort Conquered",
+		"Darkblood Cohort Conquered",
+		"Vampire Cohort Conquered",
+		"Spirit Cohort Conquered",
+		"Dragon Cohort Conquered",
+		"Doomwood Cohort Conquered",
+    };
+
+    public string[] LF3 =
+    {
+        "Hooded Legion Cowl",
+        "Legion Token",
+        "Dage's Favor",
+        "Emblem of Dage",
+        "Diamond Token of Dage",
+        "Dark Token"
+    };
+
+    public string[] legionMedals =
+    {
+        "Legion Round 1 Medal",
+        "Legion Round 2 Medal",
+        "Legion Round 3 Medal",
+        "Legion Round 4 Medal"
+    };
+
+    public void EmblemofDage(int quant = 500)
+    {
+        if (Core.CheckInventory("Emblem of Dage", quant))
+            return;
+        if (!Core.CheckInventory("Legion Round 4 Medal"))
+            LegionRound4Medal();
+
+        Core.AddDrop("Legion Seal", "Gem of Mastery");
+        Core.CheckInventory("Legion Seal");
+        Core.CheckInventory("Gem of Mastery");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quant} Emblems");
+        Bot.Player.Join("shadowblast");
+        int i = 1;
+        while (!Bot.Inventory.Contains("Emblem of Legion", quant))
+        {
+            Core.EnsureAccept(4748);
+            Core.Jump("r10", "Left");
+            Core.HuntMonster("shadowblast", "*", "Gem of Mastery", 1);
+            Core.HuntMonster("shadowblast", "*", "Legion Seal", 27);
+            Core.EnsureComplete(4748);
+            Bot.Wait.ForPickup("Emblem of Dage");
+            Core.Logger($"Completed x{i}");
+            i++;
+        }
+        Core.Logger($"Finished");
+    }
+
+	public void DarkToken(int quant = 600)
+	{
+        if (Core.CheckInventory("Dark Token", quant))
+            return;
+
+        int i = 1;
+        Core.AddDrop("Dark Token");
+        Core.Logger($"Farming {quant} Dark Tokens");
+		while(!Bot.Inventory.Contains("Dark Token", quant))
+		{
+            Core.EnsureAccept(6248, 6249, 6251);
+            Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6);
+            Core.EnsureComplete(6251);
+			while(Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
+                Core.EnsureComplete(6248);
+			while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
+                Core.EnsureComplete(6249);
+            Bot.Player.Pickup("Dark Token");
+            Core.Logger($"Completed x{i}");
+            i++;
+        }
+    }
+
+	public void DiamondTokenofDage(int quant = 300)
+	{
+        if (Core.CheckInventory("Diamond Token of Dage", quant))
+            return;
+        if (!Core.CheckInventory("Legion Round 4 Medal"))
+            LegionRound4Medal();
+		if(!Core.CheckInventory("Legion Token", 50))
+            FarmLegionToken(50);
+
+        Core.AddDrop("Diamond Token of Dage", "Legion Token");
+
+        int i = 1;
+		while(!Bot.Inventory.Contains("Diamond Token of Dage", quant))
+		{
+            Core.EnsureAccept(4743);
+            if(!Core.CheckInventory("Defeated Makai", 25))
+			{
+				Core.EquipClass(ClassType.Farm);
+                Core.JoinTercessuinotlim();
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
+			}
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye");
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
+            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
+            Core.HuntMonster("dflesson", "Fluffy the Dracolich", "Fluffy's Bones");
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
+
+            Core.EnsureComplete(4743);
+            Core.Logger($"Completed x{i}");
+            i++;
+        }
+    }
+
+    /// <summary>
+    /// Farms Legion Round 4 Medal in Shadow Blast Arena
+    /// </summary>
+    public void LegionRound4Medal()
+    {
+        Core.AddDrop(legionMedals);
+        Core.Logger("Farming Legion Round 4 Medal");
+        Bot.Player.Join("shadowblast");
+        while (!Bot.Inventory.Contains("Legion Round 4 Medal"))
+        {
+            if (!Core.CheckInventory("Legion Round 1 Medal") &&
+                !Core.CheckInventory("Legion Round 2 Medal") &&
+                !Core.CheckInventory("Legion Round 3 Medal"))
+            {
+                Core.EnsureAccept(4738);
+                Core.HuntMonster("shadowblast", "Caesaristhedark", "Nation Rookie Defeated", 5, true);
+                Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true);
+                Core.EnsureComplete(4738);
+                Bot.Wait.ForDrop("Legion Round 1 Medal");
+                Core.Logger("Medal 1 acquired");
+            }
+
+            if (Core.CheckInventory("Legion Round 1 Medal"))
+            {
+                Core.EnsureAccept(4739);
+                Core.HuntMonster("shadowblast", "Carnage", "Nation Veteran Defeated", 7, true);
+                Core.HuntMonster("shadowblast", "Doombringer", "Shadowscythe Veteran Defeated", 7, true);
+                Core.EnsureComplete(4739);
+                Bot.Wait.ForDrop("Legion Round 2 Medal");
+                Core.Logger("Medal 2 acquired");
+            }
+
+            if (Core.CheckInventory("Legion Round 2 Medal"))
+            {
+                Core.EnsureAccept(4740);
+                Core.HuntMonster("shadowblast", "Minotaurofwar", "Nation Elite Defeated", 10, true);
+                Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true);
+                Core.EnsureComplete(4740);
+                Bot.Wait.ForDrop("Legion Round 3 Medal");
+                Core.Logger("Medal 3 acquired");
+            }
+
+            if (Core.CheckInventory("Legion Round 3 Medal"))
+            {
+                Core.EnsureAccept(4741);
+                Core.HuntMonster("shadowblast", "Thanatos", "Thanatos Vanquished", 1, true);
+                Core.EnsureComplete(4741);
+                Bot.Wait.ForDrop("Legion Round 4 Medal");
+                Core.Logger("Medal 4 acquired");
+            }
+        }
+    }
+
+	public void ApprovalAndFavor(int quantApproval = 5000, int quantFavor = 5000)
+	{
+        if (Core.CheckInventory("Dage's Approval", quantApproval) && Core.CheckInventory("Dage's Favor", quantFavor))
+            return;
+        Core.Logger($"Farming {quantApproval} Dage's Approval and {quantFavor} Dage's Favor");
+        Core.Unbank("Dage's Approval", "Dage's Favor");
+        Core.EquipClass(ClassType.Farm);
+        if (quantApproval > 0)
+            Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false);
+        if (quantFavor > 0)
+            Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false);
+	}
+
+
+    public void FarmLegionToken(int quant = 25000)
 	{
 		if (Core.CheckInventory("Legion Token", quant))
 			return;
@@ -111,6 +310,4 @@ public class CoreLegion
 			i++;
 		}
 	}
-
-
 }

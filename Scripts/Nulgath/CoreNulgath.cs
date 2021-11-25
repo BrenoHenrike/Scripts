@@ -97,20 +97,6 @@ public class CoreNulgath
 	};
 
 	/// <summary>
-	/// Joins Tercessuinotlim
-	/// </summary>
-	public void JoinTercessuinotlim()
-	{
-		if (Bot.Map.Name == "tercessuinotlim")
-			return;
-		Bot.Player.Join("citadel", "m22", "Left");
-		if (Bot.Player.Cell != "m22")
-			Bot.Player.Jump("m22", "Left");
-		Bot.Player.Join("tercessuinotlim");
-		Bot.Wait.ForMapLoad("tercessuinotlim");
-	}
-
-	/// <summary>
 	/// Does Essence of Defeat Reagent quest for Dark Crystal Shards
 	/// </summary>
 	/// <param name="quant">Desired quantity, 1000 = max stack</param>
@@ -141,9 +127,8 @@ public class CoreNulgath
 			if (!Core.CheckInventory("Defeated Makai", 50))
 			{
 				Core.EquipClass(ClassType.Farm);
-				JoinTercessuinotlim();
-				Core.Jump("m2", "Bottom");
-				Bot.Player.KillForItem("Dark Makai", "Defeated Makai", 50);
+				Core.JoinTercessuinotlim();
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false);
 				Core.JumpWait();
 			}
 			Core.EquipClass(ClassType.Solo);
@@ -154,7 +139,6 @@ public class CoreNulgath
 			i++;
 		}
 		Bot.Handlers.RemoveAll(h => h.Name == "escherion");
-		Core.Logger("Finished");
 	}
 
 	/// <summary>
@@ -177,7 +161,7 @@ public class CoreNulgath
 			else
 				Core.EnsureAccept(6697);
 			Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5);
-			JoinTercessuinotlim();
+			Core.JoinTercessuinotlim();
 			Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5);
 			Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
 			Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3);
@@ -190,7 +174,6 @@ public class CoreNulgath
 			Core.Logger($"Completed x{i}");
 			i++;
 		}
-		Core.Logger("Finished");
 	}
 
 	/// <summary>
@@ -212,9 +195,11 @@ public class CoreNulgath
 				Core.EnsureAccept(2221);
 			else
 				Core.EnsureAccept(2219);
-			Core.Jump("r2", "Down");
-			Bot.Player.KillForItems("*", new[] { "Legion Blade", "Dessicated Heart" }, new[] { 1, 22 });
-			Bot.Player.KillForItems("*", new[] { "Legion Helm", "Undead Skull", "Legion Champion Medal" }, new[] { 5, 3, 5 }, true);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Blade", 1, false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Dessicated Heart", 22, false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Helm", 5);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Undead Skull", 3);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Champion Medal", 5);
 			if (Core.IsMember)
 				Core.EnsureComplete(2221);
 			else
@@ -223,7 +208,6 @@ public class CoreNulgath
 			Core.Logger($"Completed x{i}");
 			i++;
 		}
-		Core.Logger("Finished");
 	}
 
 	/// <summary>
@@ -267,7 +251,6 @@ public class CoreNulgath
 			Core.Logger($"Completed x{i}");
 			i++;
 		}
-		Core.Logger("Finished");
 	}
 
 	/// <summary>
@@ -282,18 +265,14 @@ public class CoreNulgath
 			NationRound4Medal();
 
 		Core.AddDrop("Fiend Seal", "Gem of Domination");
-		Core.CheckInventory("Field Seal");
-		Core.CheckInventory("Gem of Domination");
 		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Emblems");
-		Bot.Player.Join("shadowblast");
 		int i = 1;
 		while (!Bot.Inventory.Contains("Emblem of Nulgath", quant))
 		{
 			Core.EnsureAccept(4748);
-			Core.Jump("r13", "Left");
-			Bot.Player.KillForItem("*", "Gem of Domination", 1);
-			Bot.Player.KillForItem("*", "Fiend Seal", 27);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 27, false);
 			Core.EnsureComplete(4748);
 			Bot.Wait.ForPickup("Emblem of Nulgath");
 			Core.Logger($"Completed x{i}");
@@ -317,8 +296,8 @@ public class CoreNulgath
 				!Core.CheckInventory("Nation Round 3 Medal"))
 			{
 				Core.EnsureAccept(4744);
-				Bot.Player.HuntForItem("Legion Airstrike", "Legion Rookie Defeated", 5, true);
-				Bot.Player.HuntForItem("Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true);
+				Core.HuntMonster("shadowblast", "Legion Airstrike", "Legion Rookie Defeated", 5, true);
+				Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true);
 				Core.EnsureComplete(4744);
 				Bot.Wait.ForDrop("Nation Round 1 Medal");
 				Core.Logger("Medal 1 acquired");
@@ -327,8 +306,8 @@ public class CoreNulgath
 			if (Core.CheckInventory("Nation Round 1 Medal"))
 			{
 				Core.EnsureAccept(4745);
-				Bot.Player.HuntForItem("Legion Fenrir", "Legion Veteran Defeated", 7, true);
-				Bot.Player.HuntForItem("Doombringer", "Shadowscythe Veteran Defeated", 7, true);
+				Core.HuntMonster("shadowblast", "Legion Fenrir", "Legion Veteran Defeated", 7, true);
+				Core.HuntMonster("shadowblast", "Doombringer", "Shadowscythe Veteran Defeated", 7, true);
 				Core.EnsureComplete(4745);
 				Bot.Wait.ForDrop("Nation Round 2 Medal");
 				Core.Logger("Medal 2 acquired");
@@ -337,8 +316,8 @@ public class CoreNulgath
 			if (Core.CheckInventory("Nation Round 2 Medal"))
 			{
 				Core.EnsureAccept(4746);
-				Bot.Player.HuntForItem("Legion Cannon", "Legion Elite Defeated", 10, true);
-				Bot.Player.HuntForItem("Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true);
+				Core.HuntMonster("shadowblast", "Legion Cannon", "Legion Elite Defeated", 10, true);
+				Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true);
 				Core.EnsureComplete(4746);
 				Bot.Wait.ForDrop("Nation Round 3 Medal");
 				Core.Logger("Medal 3 acquired");
@@ -347,7 +326,7 @@ public class CoreNulgath
 			if (Core.CheckInventory("Nation Round 3 Medal"))
 			{
 				Core.EnsureAccept(4747);
-				Bot.Player.HuntForItem("Grimlord Boss", "Grimlord Vanquished", 1, true);
+				Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true);
 				Core.EnsureComplete(4747);
 				Bot.Wait.ForDrop("Nation Round 4 Medal");
 				Core.Logger("Medal 4 acquired");
@@ -379,7 +358,6 @@ public class CoreNulgath
 				Bot.Player.Pickup("Totem of Nulgath");
 				break;
 		}
-		Core.Logger("Finished");
 	}
 
 	/// <summary>
@@ -391,11 +369,8 @@ public class CoreNulgath
 		if (Core.CheckInventory("Essence of Nulgath", quant))
 			return;
 		Core.EquipClass(ClassType.Farm);
-		JoinTercessuinotlim();
-		Core.Jump("m2", "Bottom");
-		Core.Logger($"Farming {quant} Essences");
-		Bot.Player.KillForItem("Dark Makai", "Essence of Nulgath", quant);
-		Core.Logger("Finished");
+		Core.JoinTercessuinotlim();
+        Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
 	}
 
 	/// <summary>
@@ -426,7 +401,6 @@ public class CoreNulgath
 				i++;
 			}
 		}
-		Core.Logger("Finished");
 	}
 
 	/// <summary>
@@ -487,7 +461,6 @@ public class CoreNulgath
 			if (Bot.Inventory.Contains(item, quant))
 				Core.Logger($"Couldn't get {item}({quant})");
 		}
-		Core.Logger("Finished");
 	}
 
 	private void _TheAssistantLoop(string item, ref int i, int quant = 1)
@@ -520,15 +493,18 @@ public class CoreNulgath
 	{
 		if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
 			return;
-		Core.AddDrop("Escherion's Helm", "Tainted Core");
+		Core.AddDrop("Escherion's Helm", "Tainted Core", "Tainted Soul");
 		int i = 1;
 		Core.EquipClass(ClassType.Solo);
 		Core.Logger($"Farming {quant} {item}");
 		while (!Bot.Inventory.Contains(item, quant))
 		{
-			Core.EnsureAccept(2857);
-			Core.EnsureAccept(609);
-			Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
+			Core.EnsureAccept(2857, 609);
+			if (Core.CheckInventory("Oblivion Blade of Nulgath"))
+                Core.EnsureAccept(2561);
+			if(Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                Core.EnsureAccept(599);
+            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
 			while (Bot.Inventory.Contains("Tainted Core"))
 			{
 				Core.EnsureComplete(609);
@@ -536,15 +512,29 @@ public class CoreNulgath
 				Bot.Player.Pickup("Escherion's Helm");
 				Core.EnsureComplete(2857);
 				Bot.Sleep(Core.ActionDelay);
-				Core.EnsureAccept(2857);
-				Bot.Sleep(Core.ActionDelay);
-				Core.EnsureAccept(609);
-				Bot.Sleep(Core.ActionDelay);
+                Core.EnsureAccept(2857, 609);
+                Bot.Sleep(Core.ActionDelay);
 				Core.Logger($"Completed x{i}");
 				i++;
 			}
-		}
-		Core.Logger("Finished");
+			while(Bot.Inventory.Contains("Tainted Soul"))
+			{
+                Core.EnsureComplete(609);
+                Bot.Wait.ForDrop("Escherion's Helm");
+                Bot.Player.Pickup("Escherion's Helm");
+                Core.EnsureComplete(2857);
+                Bot.Sleep(Core.ActionDelay);
+                Core.EnsureAccept(2857);
+                Bot.Sleep(Core.ActionDelay);
+                if (Core.CheckInventory("Oblivion Blade of Nulgath"))
+                    Core.EnsureComplete(2561);
+                if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                    Core.ChainComplete(599);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed x{i}");
+                i++;
+			}
+        }
 	}
 
 	/// <summary>
@@ -576,9 +566,8 @@ public class CoreNulgath
 			FarmUni13();
 		Core.EquipClass(ClassType.Solo);
 		Core.EnsureAccept(870);
-		JoinTercessuinotlim();
-		Core.Jump("m4", "Right");
-		Bot.Player.KillForItem("Shadow of Nulgath", "Blade Master Rune", 1, true);
+		Core.JoinTercessuinotlim();
+        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune");
 		switch (reward)
 		{
 			case ChooseReward.TaintedGem:
@@ -765,9 +754,8 @@ public class CoreNulgath
 			Core.EnsureAccept(3743);
 			if(!Core.CheckInventory("Tendurrr The Assistant"))
 			{
-				JoinTercessuinotlim();
-				Core.Jump("m2", "Bottom");
-				Bot.Player.KillForItem("Dark Makai", "Tendurrr The Assistant", 1);
+				Core.JoinTercessuinotlim();
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false);
 				Core.JumpWait();
 			}
 			if (!Core.CheckInventory("Fragment of Chaos", 80))

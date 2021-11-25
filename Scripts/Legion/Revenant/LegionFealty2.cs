@@ -1,0 +1,56 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/Legion/CoreLegion.cs
+using RBot;
+
+public class LegionFealty2
+{
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreLegion Legion = new CoreLegion();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+        Core.AddDrop("Legion Token");
+        Core.AddDrop(Legion.LR);
+        Core.AddDrop(Legion.LF2);
+
+        ConquestWreath();
+
+        Core.SetOptions(false);
+    }
+
+    public void ConquestWreath(int quant = 6)
+    {
+        if (Core.CheckInventory("Conquest Wreath", quant))
+            return;
+
+        int i = 1;
+        Core.Logger($"Farming {quant} Conquest Wreath");
+        while (!Core.CheckInventory("Conquest Wreath", quant))
+        {
+            Core.EnsureAccept(6898);
+
+            Core.EquipClass(ClassType.Farm);
+            Bot.Player.Join("mummies");
+            Bot.Sleep(8000);
+            if (Bot.Map.Name == "cruxshadows")
+                Core.KillMonster("cruxship", "r10", "Right", "Mummy", "Ancient Cohort Conquered", 500, false);
+            else
+                Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
+            Core.KillMonster("doomvault", "r1", "Right", "*", "Grim Cohort Conquered", 500, false);
+            Core.KillMonster("wrath", "r5", "Left", "*", "Pirate Cohort Conquered", 500, false);
+            Core.KillMonster("doomhaven", "r3", "Left", "*", "Battleon Cohort Conquered", 500, false);
+            Core.KillMonster("overworld", "Enter", "Spawn", "*", "Mirror Cohort Conquered", 500, false);
+            Core.KillMonster("deathpits", "r1", "Left", "*", "Darkblood Cohort Conquered", 500, false);
+            Core.KillMonster("maxius", "r2", "Left", "*", "Vampire Cohort Conquered", 500, false);
+            Core.KillMonster("curseshore", "Enter", "Spawn", "*", "Spirit Cohort Conquered", 500, false);
+            Core.KillMonster("dragonbone", "Enter", "Spawn", "*", "Dragon Cohort Conquered", 500, false);
+            Core.KillMonster("doomwood", "r6", "Right", "*", "Doomwood Cohort Conquered", 500, false);
+
+            Core.EnsureComplete(6898);
+            Bot.Player.Pickup("Conquest Wreath");
+            Core.Logger($"Completed x{i}");
+            i++;
+        }
+    }
+}

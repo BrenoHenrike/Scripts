@@ -93,7 +93,7 @@ public class NulgathDemandsWork
 
 		if(Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35"))
 		{
-			Nulgath.JoinTercessuinotlim();
+			Core.JoinTercessuinotlim();
 			Bot.Player.Jump("Swindle", "Left");
             Core.BuyItem("tercessuinotlim", 1951, 35770);
 		}

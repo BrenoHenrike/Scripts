@@ -26,6 +26,7 @@ public class BambloozevsDrudgen
 			while (!Core.CheckInventory("Blood Gem of the Archfiend", 100))
 				Nulgath.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
 		}
+        Nulgath.BambloozevsDrudgen("Diamond of Nulgath", 1000);
 
 		Core.SetOptions(false);
 	}
