@@ -14,7 +14,6 @@ Se eu te ajudei e você quer doar qualquer quantia:
 ## A fazer
 
 - Opção de salvar skills no plugin;
-- Completar as quests da Legion;
 - Complete as quests da SDKA.
 - Criar uma interface de bots parecida com o Grim ([$15/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
@@ -76,7 +75,7 @@ Depois disso um botão vai aparecer no menu principal do RBot, clique em _"Core 
 3. Irá adicionar a skill (1-4) com as regras (caso você tenha checado a Checkbox) para a lista.
 4. O modo de uso das skills:
    - Optimistic - Se o bot consegue usar a skill ele a usará. Senão ele irá pular para a próxima skill.
-   - Wait (Padrão) - Irá esperar a skill estar disponível (ou o tempo acabar (SkillTimeout]) antes de utilizar a skill;
+   - Wait (Padrão) - Irá esperar a skill estar disponível (ou o tempo acabar (SkillTimeout)) antes de utilizar a skill;
 5. Uma calculadora para a propriedade [SkillTimeout](#customizing-corebots). Você preenche o valor de SkillTimer (padrão é 100) e o maior cooldown da sua classe, depois de apertar Enter você pode usar o valor ao lado de _"SkillTimeout"_ no arquivo **CoreBots.cs**;
 6. Este botão irá converter as informações da lista para uma string que pode ser usada em **CoreBots.cs**, na propriedade _"ClassSkill"_. Depois de apertar este botão a string será copiada automaticamente para sua área de transferência.
 7. Onde a string será mostrada apôs apertar o botão Convert.

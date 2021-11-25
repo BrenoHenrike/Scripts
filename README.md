@@ -14,7 +14,6 @@ If any of my scripts helped you and you want to donate:
 ## To do
 
 - Save option for the plugin;
-- Complete Legion quest;
 - Complete SDKA quests.
 - Make a script assistant UI like Grim ([$15/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
