@@ -4,6 +4,8 @@ using RBot;
 
 public class LegionFealty2
 {
+    // If you can go to /Join Mummies change it to true.
+    public bool MummiesUnlocked { get; } = false;
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new CoreLegion();
@@ -25,21 +27,20 @@ public class LegionFealty2
             return;
 
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
         while (!Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);
 
-            Core.EquipClass(ClassType.Farm);
-            Bot.Player.Join("mummies");
-            Bot.Sleep(8000);
-            if (Bot.Map.Name == "cruxshadows")
-                Core.KillMonster("cruxship", "r10", "Right", "Mummy", "Ancient Cohort Conquered", 500, false);
-            else
+            if(MummiesUnlocked)
                 Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
+            else
+                Core.KillMonster("cruxship", "r10", "Left", "Mummy", "Ancient Cohort Conquered", 500, false);
+            
             Core.KillMonster("doomvault", "r1", "Right", "*", "Grim Cohort Conquered", 500, false);
             Core.KillMonster("wrath", "r5", "Left", "*", "Pirate Cohort Conquered", 500, false);
-            Core.KillMonster("doomhaven", "r3", "Left", "*", "Battleon Cohort Conquered", 500, false);
+            Core.KillMonster("doomwar", "r6", "Left", "*", "Battleon Cohort Conquered", 500, false);
             Core.KillMonster("overworld", "Enter", "Spawn", "*", "Mirror Cohort Conquered", 500, false);
             Core.KillMonster("deathpits", "r1", "Left", "*", "Darkblood Cohort Conquered", 500, false);
             Core.KillMonster("maxius", "r2", "Left", "*", "Vampire Cohort Conquered", 500, false);

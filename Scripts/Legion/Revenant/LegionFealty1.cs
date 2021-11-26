@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 using RBot;
 
 public class LegionFealty1
