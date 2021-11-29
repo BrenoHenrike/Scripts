@@ -40,8 +40,7 @@ public class LegionFealty1
 
             Core.EnsureComplete(6897);
             Bot.Player.Pickup("Revenant's Spellscroll");
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
     }
 }
