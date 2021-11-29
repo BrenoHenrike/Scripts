@@ -75,8 +75,7 @@ public class CoreLegion
             Core.HuntMonster("shadowblast", "*", "Legion Seal", 27);
             Core.EnsureComplete(4748);
             Bot.Wait.ForPickup("Emblem of Dage");
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
         Core.Logger($"Finished");
     }
@@ -99,8 +98,7 @@ public class CoreLegion
 			while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
                 Core.EnsureComplete(6249);
             Bot.Player.Pickup("Dark Token");
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
     }
 
@@ -133,8 +131,7 @@ public class CoreLegion
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
 
             Core.EnsureComplete(4743);
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
     }
 
@@ -230,8 +227,7 @@ public class CoreLegion
 			Core.KillMonster("brightfortress", "r3", "Right", "*", "Twisted Light Token", 6);
 			Core.EnsureComplete(4704);
 			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i}");
-			i++;
+			Core.Logger($"Completed x{i++}");
 		}
 	}
 	public void LTShogunParagon(int quant = 25000)
@@ -256,8 +252,7 @@ public class CoreLegion
 			Core.KillMonster("fotia", "r5", "Left", "*", "Area Secured and Quiet", 10);
 			Core.EnsureComplete(5755, 5756, 6750, 7073);
 			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i}");
-			i++;
+			Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -287,8 +282,7 @@ public class CoreLegion
 			Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch");
 			Core.EnsureComplete(6743);
 			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i}");
-			i++;
+			Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -306,8 +300,7 @@ public class CoreLegion
 			Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6);
 			Core.EnsureComplete(4849);
 			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i}");
-			i++;
+			Core.Logger($"Completed x{i++}");
 		}
 	}
 }

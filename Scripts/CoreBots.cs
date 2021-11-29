@@ -69,9 +69,9 @@ public class CoreBots
 		Bot.Drops.RejectElse = changeTo;
 		Bot.Lite.UntargetDead = changeTo;
 		Bot.Lite.UntargetSelf = changeTo;
-		Bot.Lite.Set("bReaccept", false);
+        Bot.SetGameObject("litePreference.data.bReaccept", false);
 
-		if (changeTo)
+        if (changeTo)
 		{
 			Logger("Bot Started");
 
@@ -79,7 +79,7 @@ public class CoreBots
             {
                 if (b.ShouldExit())
                     StopBot();
-            });
+            }, "Stop Handler");
 
             Bot.RegisterHandler(15, b =>
             {
@@ -89,7 +89,7 @@ public class CoreBots
                     b.Sleep(1500);
                     b.Player.Jump("Enter", "Spawn");
                 }
-            });
+            }, "Skip Cutscenes");
 
 			Bot.Player.LoadBank();
 			Bot.Runtime.BankLoaded = true;
@@ -102,7 +102,7 @@ public class CoreBots
             Logger("Bot Configured");
         }
 		else
-            StopBot();
+            StopBot(true);
     }
 
 	#region Inventory, Bank and Shop
@@ -134,7 +134,7 @@ public class CoreBots
 	/// <param name="itemID">ID of the item to verify</param>
 	/// <param name="quant">Desired quantity</param>
 	/// <param name="toInv">Whether or not send the item to Inventory</param>
-	/// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
+	/// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
 	public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
 	{
 		InventoryItem item = Bot.Bank.BankItems.Find(i => i.ID == itemID);
@@ -150,6 +150,33 @@ public class CoreBots
 			return true;
         return false;
 	}
+
+	/// <summary>
+    /// Check if the Bank/Inventory has atleast 1 of all listed items
+    /// </summary>
+    /// <param name="itemNames">Array of names of the items to be check</param>
+    /// <param name="toInv">Whether or not send the item to Inventory</param>
+    /// <param name="any">If any of the items exist, returns true</param>
+    /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
+	public bool CheckInventory(string[] itemNames, bool any = false, bool toInv = true)
+	{
+		foreach (string name in itemNames)
+		{
+            if (Bot.Bank.Contains(name))
+            {
+                if (!toInv)
+                    continue;
+                Unbank(name);
+            }
+			if(Bot.Inventory.Contains(name) && any)
+                return true;
+            else if (Bot.Inventory.Contains(name) && !any)
+                continue;
+			else if(!any)
+                return false;
+        }
+        return true;
+    }
 
 	/// <summary>
 	/// Move items from bank to inventory
@@ -490,7 +517,8 @@ public class CoreBots
 	/// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
 	/// <param name="quant">Desired quantity of the item</param>
 	/// <param name="isTemp">Whether the item is temporary</param>
-	public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true)
+	/// <param name="log">Whether it will log that it is killing the monster</param>
+	public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true)
 	{
 		if (item != null && isTemp && Bot.Inventory.ContainsTempItem(item, quant))
 			return;
@@ -500,12 +528,14 @@ public class CoreBots
 		Jump(cell, pad);
 		if (item == null)
 		{
-			Logger($"Killing {monster}");
+			if(log)
+				Logger($"Killing {monster}");
 			Bot.Player.Kill(monster);
 		}
 		else
 		{
-			Logger($"Killing {monster} for {item} ({quant}) [Temp = {isTemp}]");
+			if(log)
+				Logger($"Killing {monster} for {item} ({quant}) [Temp = {isTemp}]");
 			_KillForItem(monster, item, quant, isTemp);
 		}
 	}
@@ -577,10 +607,10 @@ public class CoreBots
 	/// <param name="item">Item name</param>
 	/// <param name="quant">Desired quantity</param>
 	/// <param name="isTemp">Whether the item is temporary</param>
-	/// <param name="removeHandler">Whether remove the handler for Staff of Inversion after finished</param>
 	public void KillEscherion(string item = null, int quant = 1, bool isTemp = false)
 	{
-		Jump("Boss", "Left");
+        Bot.Player.Join("escherion");
+        Jump("Boss", "Left");
 		if (item == null)
 		{
 			Logger("Killing Escherion");
@@ -617,7 +647,7 @@ public class CoreBots
 		if (messageBox)
 			Message(message, caller);
 		if (stopBot)
-            StopBot();
+            StopBot(true);
     }
 
 	/// <summary>
@@ -679,6 +709,8 @@ public class CoreBots
     bool usingFarmGeneric = false;
     public void EquipClass(ClassType classToUse)
 	{
+		if(lastClass == classToUse)
+            return;
         usingSoloGeneric = SoloClass.ToLower() == "generic";
         usingFarmGeneric = FarmClass.ToLower() == "generic";
         switch (classToUse)
@@ -757,8 +789,11 @@ public class CoreBots
         }
 	}
 
-	public void StopBot()
+	public void StopBot(bool removeStopHandler = false)
 	{
+		if(removeStopHandler)
+            Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
+        Bot.Player.Join("battleon");
         StopTimer();
         Bot.Options.PrivateRooms = false;
         Bot.Options.AutoRelogin = false;

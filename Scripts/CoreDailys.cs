@@ -2,44 +2,53 @@
 
 public class CoreDailys
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
+	// [Can Change] Default metals to be acquired by MineCrafting quest
+    public string[] MineCraftingMetals = { "Barium", "Copper", "Silver" };
+	// [Can Change] Default metals to be acquired by Hard Core Metals quest
+    public string[] HardCoreMetalsMetals = { "Arsenic", "Chromium", "Rhodium" };
+
+    public ScriptInterface Bot => ScriptInterface.Instance;
 
 	public CoreBots Core => CoreBots.Instance;
 
 	public void DoAllDailys()
 	{
 		Core.Logger("Doing all dailys");
-		Core.Logger("1");
+		Core.Logger("Mad Weaponsmith");
 		MadWeaponSmith();
-		Core.Logger("2");
+		Core.Logger("Cysero's Super Hammer");
 		CyserosSuperHammer();
-		Core.Logger("3");
+		Core.Logger("Bright Knight Armor");
 		BrightKnightArmor();
-		Core.Logger("4");
+		Core.Logger("Collector Class");
 		CollectorClass();
-		Core.Logger("5");
+		Core.Logger("Cryomancer Class");
 		Cryomancer();
-		Core.Logger("6");
+		Core.Logger("Pyromancer Class");
 		Pyromancer();
-		Core.Logger("7");
+		Core.Logger("Death KnightLord Class");
 		DeathKnightLord();
-		Core.Logger("8");
+		Core.Logger("ShadowScythe General Class");
 		ShadowScytheClass();
-		Core.Logger("9");
+		Core.Logger("Grumble Grumble (Blood Gem of the Archfiend");
 		GrumbleGrumble();
-		Core.Logger("10");
+		Core.Logger("Elders' Blood");
 		EldersBlood();
-		Core.Logger("11");
+		Core.Logger("Shadow Shroud");
 		ShadowShroud();
-		Core.Logger("12");
+		Core.Logger("Dage's Scroll Fragment");
 		DagesScrollFragment();
-		Core.Logger("13");
+		Core.Logger("Crypto Token (/Join Curio)");
 		CryptoToken();
-		Core.Logger("14");
+		Core.Logger("Beast Master Class");
 		BeastMasterChallenge();
-		Core.Logger("15");
+		Core.Logger("Fungi for a Fun Guy (BrightOak Reputation)");
 		FungiforaFunGuy();
-		Core.Logger("Dailys completed");
+        Core.Logger("Mine Crafting (Barium/Copper/Silver)");
+        MineCrafting();
+        Core.Logger("Hard Core Metals (Arsenic/Chromium/Rhodium)");
+        HardCoreMetals();
+        Core.Logger("Dailys completed");
 	}
 
 	/// <summary>
@@ -66,6 +75,7 @@ public class CoreDailys
 		Core.EnsureComplete(quest);
 		Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
 	}
+
 	/// <summary>
 	/// Checks if the daily is complete, if not will add the specified drops and unbank if necessary
 	/// </summary>
@@ -77,30 +87,111 @@ public class CoreDailys
 		if (Bot.Quests.IsDailyComplete(quest))
 			return false;
 		Core.AddDrop(items);
-		Core.Unbank(items);
 		return true;
 	}
 
 	/// <summary>
-	/// This is exclusive for Grumble, Grumble or any other quest without requirements
-	/// </summary>
-	/// <param name="quest"></param>
-	public void DailyRoutine(int quest)
+    /// Does the Mine Crafting quest for 2 Barium, Copper and Silver by default.
+    /// </summary>
+    /// <param name="metals">Metals you want to be collected</param>
+    /// <param name="quant">Quantity you want of the metals</param>
+	public void MineCrafting(string[] metals = null, int quant = 2)
 	{
-		if (Bot.Quests.IsDailyComplete(quest))
-			return;
+        if (metals == null)
+            metals = MineCraftingMetals;
+        if (!CheckDaily(2091, metals))
+            return;
 
-		Core.EnsureAccept(quest);
-		Core.EnsureComplete(quest);
+        Core.EnsureAccept(2091);
+        Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
+        Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
+        foreach (string metal in metals)
+        {
+            if (!Core.CheckInventory(metal, quant, false))
+            {
+                int metalID = MetalID(metal);
+                Core.EnsureComplete(2091, metalID);
+                Bot.Player.Pickup(metal);
+                break;
+            }
+        }
+        if (Bot.Quests.IsInProgress(2091))
+            Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");
 	}
+
+    /// <summary>
+    /// Does the Hard Core Metals quest for 1 Arsenic, Chromium and Rhodium by default
+    /// </summary>
+    /// <param name="metals">Metals you want to be collected</param>
+    /// <param name="quant">Quantity you want of the metals</param>
+    public void HardCoreMetals(string[] metals = null, int quant = 1)
+	{
+		if(!Core.IsMember)
+            return;
+        if(metals == null)
+            metals = HardCoreMetalsMetals;
+        if(!CheckDaily(2098, metals))
+            return;
+
+        Core.EnsureAccept(2098);
+        Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
+        Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
+		foreach (string metal in metals)
+		{
+			if(!Core.CheckInventory(metal, quant, false))
+			{
+                int metalID = MetalID(metal);
+                Core.EnsureComplete(2098, metalID);
+                Bot.Player.Pickup(metal);
+                break;
+            }
+		}
+		if(Bot.Quests.IsInProgress(2098))
+            Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");
+    }
+
+	private int MetalID(string metal)
+	{
+		switch (metal.ToLower())
+		{
+			case "arsenic":
+                return 11287;
+			case "beryllium":
+                return 11534;
+			case "chromium":
+                return 11591;
+			case "palladium":
+                return 11864;
+            case "rhodium":
+                return 12032;
+			case "thorium":
+                return 12075;
+			case "mercury":
+                return 12122;
+			case "aluminum":
+                return 11608;
+			case "barium":
+                return 11932;
+			case "gold":
+                return 12157;
+			case "iron":
+                return 12263;
+			case "copper":
+                return 12297;
+			case "silver":
+                return 12308;
+			case "platinum":
+                return 12315;
+        }
+        Core.Logger($"Could not find {metal}, is it written right?", messageBox: true, stopBot: true);
+        return 0;
+    }
 
 	public void FungiforaFunGuy()
 	{
 		if (!CheckDaily(4465) || Bot.Player.GetFactionRank("Brightoak") == 10 || !Core.IsMember)
 			return;
 
-		if (Bot.Quests.IsDailyComplete(4465))
-			return;
         Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(4465);
 		Core.HuntMonster("brightoak", "Grove Spore", "Colony Spore");
@@ -221,9 +312,7 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("ShadowScythe General"))
 			return;
-		if (!CheckDaily(3828, "Shadow Shield") && !Core.IsMember)
-			return;
-		if (!CheckDaily(3827, "Shadow Shield") && Core.IsMember)
+		if (!CheckDaily(3828, "Shadow Shield") && (!CheckDaily(3827, "Shadow Shield") && Core.IsMember))
 			return;
 		DailyRoutine(3828, "lightguardwar", "Citadel Crusader", "Broken Blade");
 		if (Core.IsMember)
@@ -232,11 +321,9 @@ public class CoreDailys
 
 	public void GrumbleGrumble()
 	{
-		if (!Core.CheckInventory("Crag & Bamboozle"))
+		if (!Core.CheckInventory("Crag & Bamboozle") || !CheckDaily(592, "Diamond of Nulgath", "Blood Gem of the Archfiend"))
 			return;
-		if (!CheckDaily(592, "Diamond of Nulgath", "Blood Gem of the Archfiend"))
-			return;
-		DailyRoutine(592);
+		Core.ChainComplete(592);
 	}
 
 	public void EldersBlood()

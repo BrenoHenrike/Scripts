@@ -135,10 +135,8 @@ public class CoreNulgath
 			Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain");
 			Core.EnsureComplete(570);
 			Bot.Wait.ForPickup("Dark Crystal Shard");
-			Core.Logger($"Completed x{i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
-		Bot.Handlers.RemoveAll(h => h.Name == "escherion");
 	}
 
 	/// <summary>
@@ -171,8 +169,7 @@ public class CoreNulgath
 			else
 				Core.EnsureComplete(6697);
 			Bot.Wait.ForPickup("Diamond of Nulgath");
-			Core.Logger($"Completed x{i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -205,8 +202,7 @@ public class CoreNulgath
 			else
 				Core.EnsureComplete(2219);
 			Bot.Wait.ForPickup("Diamond of Nulgath");
-			Core.Logger($"Completed x{i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -248,8 +244,7 @@ public class CoreNulgath
 			Core.KillMonster("mountfrost-111111", "War", "Left", "Snow Golem", "Ice Cubes", 6);
 			Core.EnsureComplete(7817);
 			Bot.Wait.ForPickup("Tainted Gem");
-			Core.Logger($"Completed x{i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -275,10 +270,8 @@ public class CoreNulgath
             Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 27, false);
 			Core.EnsureComplete(4748);
 			Bot.Wait.ForPickup("Emblem of Nulgath");
-			Core.Logger($"Completed x{i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
-		Core.Logger($"Finished");
 	}
 
 	/// <summary>
@@ -338,7 +331,7 @@ public class CoreNulgath
 	/// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest
 	/// </summary>
 	/// <param name="reward">Which reward to pick (totem or gem)</param>
-	public void VoucherItemTotemofNulgath(ChooseReward reward)
+	public void VoucherItemTotemofNulgath(ChooseReward reward = ChooseReward.TotemofNulgath)
 	{
 		if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
 			FarmVoucher(false);
@@ -347,17 +340,8 @@ public class CoreNulgath
 		EssenceofNulgath();
 		if (!Bot.Quests.CanComplete(4778))
 			EssenceofNulgath(65);
-		switch (reward)
-		{
-			case ChooseReward.GemofNulgath:
-				Core.EnsureComplete(4778, 6136);
-				Bot.Player.Pickup("Gem of Nulgath");
-				break;
-			default:
-				Core.EnsureComplete(4778, 5357);
-				Bot.Player.Pickup("Totem of Nulgath");
-				break;
-		}
+        Core.EnsureComplete(4778, (int)reward);
+        Bot.Player.Pickup("Gem of Nulgath", "Totem of Nulgath");
 	}
 
 	/// <summary>
@@ -397,8 +381,7 @@ public class CoreNulgath
 				Core.HuntMonster("elemental", "Mana Imp|Mana Falcon", "Charged Mana Energy for Nulgath", 5);
 				Core.EnsureComplete(2566);
 				Bot.Sleep(Core.ActionDelay);
-				Core.Logger($"Completed x{i}");
-				i++;
+                Core.Logger($"Completed x{i++}");
 			}
 		}
 	}
@@ -425,10 +408,8 @@ public class CoreNulgath
 				Core.EnsureAccept(2857);
 				Core.KillEscherion("Escherion's Helm");
 				Core.EnsureComplete(2857);
-				Core.Logger($"Completed x{i}");
-				i++;
+                Core.Logger($"Completed x{i++}");
 			}
-			Bot.Handlers.RemoveAll(h => h.Name == "escherion");
 		}
 	}
 
@@ -479,8 +460,7 @@ public class CoreNulgath
 		{
 			Core.ChainComplete(2859);
 			Bot.Player.Pickup(bagDrops);
-			Core.Logger($"Completed x{i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -493,8 +473,10 @@ public class CoreNulgath
 	{
 		if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
 			return;
-		Core.AddDrop("Escherion's Helm", "Tainted Core", "Tainted Soul");
-		int i = 1;
+		Core.AddDrop("Escherion's Helm", "Tainted Core");
+		if(Core.CheckInventory("Oblivion Blade of Nulgath") || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            Core.AddDrop("Tainted Soul");
+        int i = 1;
 		Core.EquipClass(ClassType.Solo);
 		Core.Logger($"Farming {quant} {item}");
 		while (!Bot.Inventory.Contains(item, quant))
@@ -502,7 +484,7 @@ public class CoreNulgath
 			Core.EnsureAccept(2857, 609);
 			if (Core.CheckInventory("Oblivion Blade of Nulgath"))
                 Core.EnsureAccept(2561);
-			if(Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+			if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
                 Core.EnsureAccept(599);
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
 			while (Bot.Inventory.Contains("Tainted Core"))
@@ -514,25 +496,26 @@ public class CoreNulgath
 				Bot.Sleep(Core.ActionDelay);
                 Core.EnsureAccept(2857, 609);
                 Bot.Sleep(Core.ActionDelay);
-				Core.Logger($"Completed x{i}");
-				i++;
+                Core.Logger($"Completed x{i++}");
 			}
-			while(Bot.Inventory.Contains("Tainted Soul"))
+			if(Core.CheckInventory("Oblivion Blade of Nulgath") || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
 			{
-                Core.EnsureComplete(609);
-                Bot.Wait.ForDrop("Escherion's Helm");
-                Bot.Player.Pickup("Escherion's Helm");
-                Core.EnsureComplete(2857);
-                Bot.Sleep(Core.ActionDelay);
-                Core.EnsureAccept(2857);
-                Bot.Sleep(Core.ActionDelay);
-                if (Core.CheckInventory("Oblivion Blade of Nulgath"))
-                    Core.EnsureComplete(2561);
-                if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                    Core.ChainComplete(599);
-                Bot.Sleep(Core.ActionDelay);
-                Core.Logger($"Completed x{i}");
-                i++;
+				while(Bot.Inventory.Contains("Tainted Soul"))
+				{
+	                Core.EnsureComplete(609);
+	                Bot.Wait.ForDrop("Escherion's Helm");
+	                Bot.Player.Pickup("Escherion's Helm");
+	                Core.EnsureComplete(2857);
+	                Bot.Sleep(Core.ActionDelay);
+	                Core.EnsureAccept(2857);
+	                Bot.Sleep(Core.ActionDelay);
+	                if (Core.CheckInventory("Oblivion Blade of Nulgath"))
+	                    Core.EnsureComplete(2561);
+	                if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+	                    Core.ChainComplete(599);
+	                Bot.Sleep(Core.ActionDelay);
+	                Core.Logger($"Completed x{i++}");
+				}
 			}
         }
 	}
@@ -558,7 +541,7 @@ public class CoreNulgath
 	/// </summary>
 	/// <param name="reward">Desired reward</param>
 	/// <param name="farmUni13">Whether or not farm Uni 13</param>
-	public void ContractExchange(ChooseReward reward, bool farmUni13 = true)
+	public void ContractExchange(ChooseReward reward = ChooseReward.DiamondofNulgath, bool farmUni13 = true)
 	{
 		if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
 			return;
@@ -568,32 +551,8 @@ public class CoreNulgath
 		Core.EnsureAccept(870);
 		Core.JoinTercessuinotlim();
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune");
-		switch (reward)
-		{
-			case ChooseReward.TaintedGem:
-				Core.EnsureComplete(870, 4769);
-				Bot.Player.Pickup("Tainted Gem");
-				break;
-			case ChooseReward.DarkCrystalShard:
-				Core.EnsureComplete(870, 4770);
-				Bot.Player.Pickup("Dark Crystal Shard");
-				break;
-			case ChooseReward.DiamondofNulgath:
-				Core.EnsureComplete(870, 4771);
-				Bot.Player.Pickup("Diamond of Nulgath");
-				break;
-			case ChooseReward.GemofNulgath:
-				Core.EnsureComplete(870, 6136);
-				Bot.Player.Pickup("Gem of Nulgath");
-				break;
-			case ChooseReward.BloodGemoftheArchfiend:
-				Core.EnsureComplete(870, 22332);
-				Bot.Player.Pickup("Blood Gem of The Archfiend");
-				break;
-			default:
-				Core.EnsureComplete(870, 4771);
-				break;
-		}
+        Core.EnsureComplete(870, (int)reward);
+        Bot.Player.Pickup(bagDrops);
 		Core.Logger($"Exchanged for {reward}");
 	}
 
@@ -623,8 +582,7 @@ public class CoreNulgath
 			Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
 			Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);
 			Core.EnsureComplete(7818);
-			Core.Logger($"Completed {i}");
-			i++;
+            Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -764,16 +722,16 @@ public class CoreNulgath
 				Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8);
 			Core.EnsureComplete(3743);
 			Bot.Wait.ForPickup("Blood Gem of the Archfiend");
-			Core.Logger($"Completed x{i}");
+            Core.Logger($"Completed x{i++}");
 		}
 	}
 }
 public enum ChooseReward
 {
-	TaintedGem,
-	DarkCrystalShard,
-	DiamondofNulgath,
-	GemofNulgath,
-	BloodGemoftheArchfiend,
-	TotemofNulgath
+    TaintedGem = 4769,
+    DarkCrystalShard = 4770,
+    DiamondofNulgath = 4771,
+    GemofNulgath = 6136,
+    BloodGemoftheArchfiend = 22332,
+    TotemofNulgath = 5357
 }
