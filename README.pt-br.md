@@ -5,6 +5,8 @@ Se eu te ajudei e você quer doar qualquer quantia:
 
 - [English version](README.md)
 
+- [RBot Docs](https://brenohenrike.github.io/Rbot-Scripts/)
+
 - [Rbot-Scripts](#rbot-scripts)
   - [A fazer](#a-fazer)
   - [Customizando CoreBots](#customizando-corebots)
@@ -14,7 +16,7 @@ Se eu te ajudei e você quer doar qualquer quantia:
 ## A fazer
 
 - Opção de salvar skills no plugin;
-- Complete as quests da SDKA.
+- Blinding Light of Destiny quests.
 - Criar uma interface de bots parecida com o Grim ([$15/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizando CoreBots
