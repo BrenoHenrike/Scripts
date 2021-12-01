@@ -28,10 +28,14 @@ No arquivo **CoreBots.cs** você achará diversas propriedades que podem se muda
 public int ActionDelay { get; set; } = 700;
 // [Pode Mudar] Tempo de espera para sair de combate, 1600ms é o padrão
 public int ExitCombatDelay { get; set; } = 1600;
+// [Pode Mudar] Quantas packets de aceitar/completar a quest serão enviadas
+public int AcceptandCompleteTries { get; set; } = 20;
 // [Pode Mudar] Se os bots vão usar salas privadas
 public bool PrivateRooms { get; set; } = true;
 // [Pode Mudar] Se o player deve dar rest depois de matar um monstro
 public bool ShouldRest { get; set; } = false;
+// [Pode Mudar] Se você quer usar medidas anti lag: lag killer (tela preta), deixar monstros invisíveis e deixar o FPS limitado em 10
+public bool AntiLag { get; set; } = true;
 // [Pode Mudar] O intervalo, em milissegundos, que as skills serão usadas se estiverem disponíveis.
 public int SkillTimer { get; set; } = 100;
 // [Pode Mudar] Nome da sua classe de solo
@@ -114,11 +118,15 @@ Agora seus bots irão utilizar a classe e skills definidas quando necessário.
 
 ## FAQ
 
-Apenas arraste a pasta Scripts para qualquer lugar vazio na pasta do RBot.exe.  
-<p align="center"><img src="https://imgur.com/SDU0oqd.gif" width=450></p>
+**Q:** Como baixar os scripts?
+**A:**
 
-**Q:** Como baixar os scripts?  
-**A:** Clique no botão **"*Code*"** verde e depois em **"*Download ZIP*"**, direto do WinRar/7z arrastar a pasta **"*Scripts*"** para a pasta onde **"*RBot.exe*"** está igual ao gif acima.
+- Vá para a aba de [Releases](https://github.com/BrenoHenrike/Rbot-Scripts/releases/tag/Scripts);
+- Na postagem marcada com "Latest", baixe a pasta **Scripts.zip** abaixo de _Assets_;
+- Coloque a pasta **Scripts.zip** dentro da pasta _Scripts do seu RBot_;
+- Clique com o botão direito sobre **Scripts.zip** e depois clique em **"_Extrair aqui_"**;
+- Caso apareça uma mensagem perguntando se você quer substituir os arquivos, clique em **_Sim_**;
+- Agora é só utilizar os scripts!
 
 **Q:** Quando tento usar CoreBots/Dailys/Farms da erro, o que eu faço?  
 **A:** Arquivos que começam com **"*Core*"** não são bots, são apenas arquivos que os bots usam.

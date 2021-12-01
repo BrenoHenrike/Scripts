@@ -28,10 +28,14 @@ Inside the **CoreBots.cs** you can find various properties you can change to you
 public int ActionDelay { get; set; } = 700;
 // [Can Change] Delay used to get out of combat, 1600 is the safe number
 public int ExitCombatDelay { get; set; } = 1600;
+// [Can Change] How many tries to accept/complete the quest will be sent
+public int AcceptandCompleteTries { get; set; } = 20;
 // [Can Change] Whether the bots will use private rooms
 public bool PrivateRooms { get; set; } = true;
 // [Can Change] Whether the player should rest after killing a monster
 public bool ShouldRest { get; set; } = false;
+// [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
+public bool AntiLag { get; set; } = true;
 // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
 public int SkillTimer { get; set; } = 100;
 // [Can Change] Name of your soloing class
@@ -114,11 +118,15 @@ Now your bot will use the defined class and skills when needed.
 
 ## FAQ
 
-To use just drop the Scripts folder in RBot.exe folder.  
-<p align="center"><img src="https://imgur.com/SDU0oqd.gif" width=450></p>
+**Q:** How do I download the scripts?
+**A:**
 
-**Q:** How do I download the scripts?  
-**A:** Click in the green **"*Code*"** button then in **"*Download ZIP*"**, from WinRar/7z you can drag and drop the **"*Scripts*"** folder directly in the **"*RBot.exe*"** folder like in the gif above.
+- Go to the [Releases link](https://github.com/BrenoHenrike/Rbot-Scripts/releases/tag/Scripts);
+- From the latest upload, download the **Scripts.zip** folder under _Assets_;
+- Place the **Scripts.zip** inside your _RBot Scripts folder_;
+- Right click **Scripts.zip** and click **"_Extract here_"**;
+- If prompted to replace your files, click **_Yes_**;
+- All should be good to use now!
 
 **Q:** I try to run CoreBots/Dailys/Farms and get an error, what do I do?  
 **A:** All files starting with **"*Core*"** aren't bots, they are used by bots.
