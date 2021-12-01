@@ -1,7 +1,8 @@
-## Map
+# Map
+
 Information about the currently loaded map (room) can be obtained through the `ScriptInterface#Map` object.
 
-### Properties
+## Properties
 
 | Property | Type | Description |
 |---|:---:|---|
@@ -14,7 +15,7 @@ Information about the currently loaded map (room) can be obtained through the `S
 | `Loaded` | *bool* | Indicates whether a map is currently loaded. |
 | `Cells` | *List\<string>* | An list of all the cell names in the map. |
 
-### Methods
+## Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
@@ -25,7 +26,8 @@ Information about the currently loaded map (room) can be obtained through the `S
 | `TryGetPlayer(string username)` | *bool; out RBot.Players.PlayerInfo* | Whether the player exists and is loaded in the current map. It `out`s the `PlayerInfo` of the given name. |
 | `Reload()` | *void* | Reloads the current map. |
 
-### The 'PlayerInfo' class
+## The 'PlayerInfo' class
+
 Some properties give single or lists of `PlayerInfo` objects. These objects have the following properties:
 
 | Property | Type | Description |
@@ -47,5 +49,4 @@ Some properties give single or lists of `PlayerInfo` objects. These objects have
 You can use the method `PlayerInfo.ToString()` to return a string formatted like `{EntID}: {Name}` with each respective variable filled with the player info.
 
 ---------
-<center>
-<a href="/Rbot-Scripts/8 Quests" title="8. Quests">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/10 Inventory and Bank" title="10. Inventory & Bank">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Quests" title="Quests">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Inventory and Bank" title="Inventory & Bank">Next ►</a></center>

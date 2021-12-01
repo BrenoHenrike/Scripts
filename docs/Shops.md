@@ -1,7 +1,8 @@
-## Shops
+# Shops
+
 It is very simple to buy and sell items using `ScriptInterface#Shops`.
 
-### Properties
+## Properties
 
 | Property | Return Type | Description |
 |---|:---:|---|
@@ -11,7 +12,7 @@ It is very simple to buy and sell items using `ScriptInterface#Shops`.
 | `ShopName` | *string* | Gets the last (or currently) loaded shop's name. |
 | `MergeItems` | *List\<RBot.Shops.MergeItem>* | Gets a list of items in the last (or currently) loaded merge shop. |
 
-### Methods
+## Methods
 
 | Method Definition | Description |
 |---|---|
@@ -27,5 +28,4 @@ It is very simple to buy and sell items using `ScriptInterface#Shops`.
 These methods are very easy to use and should be self-explanatory.
 
 ---------
-<center>
-<a href="/Rbot-Scripts/5 Skills" title="5. Skills">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/7 Player" title="7. Player">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Skills" title="Skills">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Player" title="Player">Next ►</a></center>

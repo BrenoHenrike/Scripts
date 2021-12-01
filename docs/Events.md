@@ -1,4 +1,5 @@
-## Events
+# Events
+
 The bot can listen for certain events and your script can attach its own listeners to handle these events. This is done through the `ScriptInterface#Events` object.
 
 The following events can be listened for:
@@ -18,7 +19,7 @@ The following events can be listened for:
 
 Event handlers are cleared when a script stops or starts. To manually clear event handlers use `ScriptEvents#ClearHandlers()`, although this is typically not necessary. **(In current version [3.6] they aren't cleared as intended)**
 
-### Listening for Events
+## Listening for Events
 
 To attach your own listener to an event, you can use the typical C# syntax for adding event handlers. All event handlers take a first argument which is the current instance of the `ScriptInterface` and some take a second argument (shown in the list above). For example:
 
@@ -55,4 +56,4 @@ bot.Events.PlayerAFK += AFKHandler;
 which will log `"Player AFK, triggering logout"`, unsubscribe the event handler (this is needed because when the script starts again, it will create another handler which can cause memory problems) and then logging out to trigger the auto-relogin feature.
 
 ---------
-<center><a href="/Rbot-Scripts/10 Inventory and Bank" title="10. Inventory & Bank">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/12 Packets" title="12. Packets">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Inventory and Bank" title="Inventory & Bank">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Packets" title="Packets">Next ►</a></center>

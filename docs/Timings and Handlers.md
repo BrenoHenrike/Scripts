@@ -1,7 +1,9 @@
-## Timings & Handlers
+# Timings & Handlers
+
 If you enable `SafeTimings` as recommended, you can ignore most of this document. The `ScriptWait` class has many methods useful for pausing the bot's execution until a desired condition is met.
 
-### Sleeping
+## Sleeping
+
 If you would simply like to pause exeuction for a specific length of time, you can do this easily using:
 
 ```csharp
@@ -16,7 +18,8 @@ bot.Sleep(1000);
 
 will sleep the bot for 1000 milliseconds (1 second).
 
-### Waiting
+## Waiting
+
 There are also many actions that can be waiting for using `ScriptInterface#Wait`. All of these methods have a default `timeout` parameter ommited as this typically does not need to be modified. The return types of these methods are mostly irellevant so they have also been ommited.
 
 If `SafeTimings` is enabled, these methods are used by default to wait for actions to complete.
@@ -46,7 +49,7 @@ If `SafeTimings` is enabled, these methods are used by default to wait for actio
 | `ForTrue(Func func)` | Waits for `func` to return `true`. |
 | `ForActionCooldown(GameActions action)` | Waits for the specified game action to cool down. |
 
-#### Examples
+### Examples
 
 Even when using `SafeTimings`, it is sometimes suitable to use these wait methods. For example, when turning in a quest, it is recommended you do the following:
 
@@ -61,6 +64,7 @@ where `id` is the quest id you are turning in and `reward` is the name of the re
 Also, if you are not used to see [delegates](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/) (like [Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=net-5.0), [Action](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=net-5.0) and [Predicate](https://docs.microsoft.com/en-us/dotnet/api/system.predicate-1?view=net-5.0)), they are, putting it simply, reference of methods. They allow you to use an anonymous method as a parameter for another method, you can use them in `For` and `ForTrue` methods but as most of `Wait` methods already cover essential parts of game mechanics, you will see them beign more used for `Handlers` in the next topic.
 
 ## Handlers and Scheduling
+
 ### Handlers
 
 If you would like to run code repeatedly alongside your script at a fixed interval, you can do so using a `ScriptHandler`. The best way to do this is through the `ScriptInterface#RegisterHandler(int ticks, Action<ScriptInterface> func)` method. This method takes a number of `ticks` (the interval in units of **250ms *(WAIT_SLEEP)***), and the function, `func`, to be run.
@@ -92,5 +96,4 @@ bot.Schedule(500, b => {
 will log `"Test"` once after 500ms.
 
 ---------
-<center>
-<a href="/Rbot-Scripts/2 Options and Lite" title="2. Options & Lite">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/4 Monsters" title="4. Monsters">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Options and Lite" title="Options & Lite">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Monsters" title="Monsters">Next ►</a></center>

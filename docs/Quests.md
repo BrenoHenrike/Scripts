@@ -1,7 +1,8 @@
-## Quests
+# Quests
+
 Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 
-### Properties
+## Properties
 
 | Properties | Type | Description |
 |---|:---:|---|
@@ -9,7 +10,7 @@ Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 | `CompletedQuests` | *List\<RBot.Quests.Quest>* | A list of currently accepted quests which are ready to turn in. |
 | `QuestTree` | *List\<RBot.Quests.Quest>* | A list of all quests that have been loaded in the current session. |
 
-### Methods
+## Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
@@ -26,7 +27,8 @@ Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 | `IsUnlocked(int id)` | *bool* | Checks if a storyline quest is unlocked. |
 | `IsAvailable(int id)` | *bool* | Performs all checks to see if a quest can be accepted/turned in. |
 
-### The 'Quest' class
+## The 'Quest' class
+
 Some properties give lists of `Quest` objects. These objects have the following properties:
 
 | Property | Type | Description |
@@ -60,5 +62,4 @@ You can use the method `Quest.ToString()` to return a string formatted like `{Na
 These properties can be used as a trustful source of information about the quest, as they are acquired on the run preventing typos that can be found in the wiki and possible future name changes.
 
 ---------
-<center>
-<a href="/Rbot-Scripts/7 Player" title="7. Player">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/9 Map" title="9. Map">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Player" title="Player">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Map" title="Map">Next ►</a></center>

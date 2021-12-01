@@ -1,8 +1,9 @@
-## Plugins
+# Plugins
 
 Plugins can be used for whatever need you may want to fulfill. In this page the examples will be simple but you certainly can design new Forms to show in RBot using plugins.
 
-### Creating a Plugin
+## Creating a Plugin
+
 To create plugin, create a new class library project in Visual Studio (or whatever IDE you use) for .NET Framework 4.7.2, and add a reference to RBot.exe.
 
 Then create a new class that extends `RBot.Plugins.RPlugin` and override the plugin's properties and methods:
@@ -36,7 +37,8 @@ public class TestPlugin : RPlugin
 
 References to the current bot instance and the plugin's container are found at `RPlugin#Bot` and `RPlugin#Container` respectively. The plugin's container is used to get and set the plugin's options.
 
-### Configurable Plugin Options
+## Configurable Plugin Options
+
 Plugins can set options in the exact same way as script options are set (see 14. Script Options). The only difference is the options must be defined as a property, not a field. Options values can be get and set through `Container.Options` in the exact same way as script options:
 
 ```csharp
@@ -79,6 +81,7 @@ Plugin options are configured by opening the plugins window and clicking on the 
 If you want your plugin to do more than just set options and instead show a user interface that will do whatever you have in mind, first you will need some knowledge in Visual Studio's [WinForms](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8 "WinForms Documentation").
 
 To start your plugin follow the ["Create a Plugin"](#creating-a-plugin). When all is set up you can now add a Form to your project, press **F7** to go to the code behind the Design of your form and make it inherit from **_RBot.HideForm_** and create an instance for it:
+
 ```csharp
 // YourFormName inherits from HideForm which inherits from Form too
 public partial class YourFormName : RBot.HideForm
@@ -91,7 +94,9 @@ public partial class YourFormName : RBot.HideForm
     }
 }
 ```
+
 The instance will allow you to reference it in other places and the HideForm inheritance will allow your form to not be disposed when closing while using it in RBot. Now back to **_TestPlugin.cs_** we can make it create a button in the RBot menu when loaded and remove it when unloaded:
+
 ```csharp
 using System;
 using RBot;
@@ -150,4 +155,4 @@ After that you can build your project (**Ctrl+Shift+B**), it will give you a war
 After that it will show a blank page but with the basics up and running you can add any controls and code you want to your user interface.
 
 ---------
-<center><a href="/Rbot-Scripts/14 Script Options" title="14. Script Options">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — Next ►</center>
+<center><a href="/Rbot-Scripts/Script Options" title="Script Options">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — Next ►</center>

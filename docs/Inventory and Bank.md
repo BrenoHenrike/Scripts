@@ -1,8 +1,9 @@
-## Inventory and Bank
+# Inventory and Bank
 
 The player's inventory and bank can be managed through `ScriptInterface#Inventory` and `ScriptInterface#Bank` respectively.
 
 ## Inventory
+
 You can query and manage the player's inventory through `ScriptInterface#Inventory`.
 
 ### Inventory Properties
@@ -35,6 +36,7 @@ You can query and manage the player's inventory through `ScriptInterface#Invento
 | `BankAllCoinItems()` | *void* | Transfers all AC items to the bank from the player's inventory. This is useful at the start of a script to free up inventory space (Be aware that it will bank *EVERY* AC tagged item). |
 
 ## Bank
+
 The player's bank can also be managed through `ScriptInterface#Bank`. However, before using this object, you should load the player's bank through `ScriptPlayer#LoadBank`. The client will otherwise think the bank is empty. The bank should typically be loaded at the start of the script.
 
 ### Bank Properties
@@ -57,8 +59,9 @@ The player's bank can also be managed through `ScriptInterface#Bank`. However, b
 | `ToInventory(string name)` | *void* | Moves the given item from the player's bank to their inventory. |
 
 ## Notes
+
 Inventory and bank management is typically done at the start of a script where options are set and skills are set up. It can also be done as quests are being completed or as drops are being picked up if inventory space is very limited. **Remember to load the bank before attempting to transfer items from it.**
 
 ---------
 <center>
-<a href="/Rbot-Scripts/9 Map" title="9. Map">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/11 Events" title="11. Events">Next ►</a></center>
+<a href="/Rbot-Scripts/Map" title="Map">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Events" title="Events">Next ►</a></center>

@@ -1,7 +1,9 @@
-## Options & Lite
+# Options & Lite
+
 The bot has a range of options that can be changed through the `ScriptInterface`. Some of these options can be changed through the UI as well (Options > Bot Options). Changes to options in a script will update their state in the UI accordingly.
 Also there is `Lite` options that let you set the new **Advanced Options** in game.
-### ScriptInterface#Options
+
+## ScriptInterface#Options
 
 | Definition | Type | Description |  
 |---|:---:|---|  
@@ -33,7 +35,8 @@ Also there is `Lite` options that let you set the new **Advanced Options** in ga
 | `RunOnExit` | *string* | A string that, if set, will indicate a program to run when the script finishes. |  
 | `WalkSpeed` | *int* | An integer that sets the player's walking speed. The default is `8` and the maximum is `32`. |  
 
-### ScriptInterface#Lite
+## ScriptInterface#Lite
+
 These Options can be changed in the **Advanced Options** tab in-game.
 
 | Definition | Type | Description |
@@ -46,7 +49,8 @@ These Options can be changed in the **Advanced Options** tab in-game.
 | `UntargetDead` | *bool* | Untargets monsters that are dead. |
 | `UntargetSelf` | *bool* | Prevents skills from targeting yourself. |
 
-### Setting options
+## Setting options
+
 Some options can be set through the UI. All options can be set programatically in a script as follows:
 
 ```csharp
@@ -66,5 +70,4 @@ public void ScriptMain(ScriptInterface bot)
 **Note:** It is strongly recommended that `SafeTimings` is always enabled so you do not have to manage the timings of the bot yourself. Also, always make sure **_Reaccept Quest_** from **Advanced Options** is turned **OFF**.
 
 ---------
-<center>
-<a href="/Rbot-Scripts/1%20Intro" title="1. Intro">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/3 Timings and Handlers" title="3. Timings and Handlers">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Intro" title="Intro">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Timings and Handlers" title="Timings and Handlers">Next ►</a></center>

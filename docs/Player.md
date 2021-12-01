@@ -1,7 +1,8 @@
-## Player
+# Player
+
 Most of the bot's functionality is called through `ScriptInterface#Player`. There are many methods for movement, combat and properties that can be examined.
 
-### Properties
+## Properties
 
 | Property | Type | Description |
 |---|:---:|---|
@@ -43,7 +44,7 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 | `CurrentDrops` | *List\<string>* | Gets a list of item names currently on the drop stack. |
 | `CurrentDropInfos` | *List\<DropInfo>* | Gets a list of drops available with their counts. |
 
-### Methods
+## Methods
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
@@ -97,9 +98,10 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 | `UseBoost(int id)` | *void* | Uses the boost with the given id. |
 | `GetFactionRank(string name)` | *int* | Gets the players rank of the given faction. |
 
-### Examples
-The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. <a href="13 Examples">Examples can be found at the end of the documentation</a>.
+## Examples
+
+The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. <a href="Examples">Examples can be found at the end of the documentation</a>.
 
 ---------
 <center>
-<a href="/Rbot-Scripts/6 Shops" title="6. Shops">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/8 Quests" title="8. Quests">Next ►</a></center>
+<a href="/Rbot-Scripts/Shops" title="Shops">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Quests" title="Quests">Next ►</a></center>
