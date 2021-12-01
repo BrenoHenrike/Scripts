@@ -50,8 +50,7 @@ public class LegionFealty2
 
             Core.EnsureComplete(6898);
             Bot.Player.Pickup("Conquest Wreath");
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
     }
 }

@@ -61,23 +61,18 @@ public class CoreLegion
             LegionRound4Medal();
 
         Core.AddDrop("Legion Seal", "Gem of Mastery");
-        Core.CheckInventory("Legion Seal");
-        Core.CheckInventory("Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
-        Bot.Player.Join("shadowblast");
         int i = 1;
         while (!Bot.Inventory.Contains("Emblem of Legion", quant))
         {
-            Core.EnsureAccept(4748);
-            Core.Jump("r10", "Left");
-            Core.HuntMonster("shadowblast", "*", "Gem of Mastery", 1);
-            Core.HuntMonster("shadowblast", "*", "Legion Seal", 27);
-            Core.EnsureComplete(4748);
+            Core.EnsureAccept(4742);
+            Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1);
+            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 27);
+            Core.EnsureComplete(4742);
             Bot.Wait.ForPickup("Emblem of Dage");
             Core.Logger($"Completed x{i++}");
         }
-        Core.Logger($"Finished");
     }
 
 	public void DarkToken(int quant = 600)
@@ -94,9 +89,9 @@ public class CoreLegion
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6);
             Core.EnsureComplete(6251);
 			while(Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
-                Core.EnsureComplete(6248);
+                Core.ChainComplete(6248);
 			while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
-                Core.EnsureComplete(6249);
+                Core.ChainComplete(6249);
             Bot.Player.Pickup("Dark Token");
             Core.Logger($"Completed x{i++}");
         }
@@ -124,13 +119,14 @@ public class CoreLegion
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
 			}
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye");
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye");
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
-            Core.HuntMonster("dflesson", "Fluffy the Dracolich", "Fluffy's Bones");
+            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones");
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
 
             Core.EnsureComplete(4743);
+            Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");
             Core.Logger($"Completed x{i++}");
         }
     }

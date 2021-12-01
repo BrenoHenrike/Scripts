@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 using RBot;
 
@@ -46,8 +47,7 @@ public class LegionFealty3
 
             Core.EnsureComplete(6899);
             Bot.Player.Pickup("Exalted Crown");
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
     }
 }
