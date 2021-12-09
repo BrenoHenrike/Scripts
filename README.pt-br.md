@@ -1,7 +1,8 @@
 # Rbot-Scripts
 
 Se eu te ajudei e você quer doar qualquer quantia:  
-[![Doar](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)
+[![Doar](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)  
+Pix: bhenrike@prontonmail.com
 
 - [English version](README.md)
 
@@ -16,8 +17,7 @@ Se eu te ajudei e você quer doar qualquer quantia:
 ## A fazer
 
 - Opção de salvar skills no plugin;
-- Blinding Light of Destiny quests.
-- Criar uma interface de bots parecida com o Grim ([$15/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- Criar uma interface de bots parecida com o Grim ([$18/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizando CoreBots
 
@@ -28,6 +28,8 @@ No arquivo **CoreBots.cs** você achará diversas propriedades que podem se muda
 public int ActionDelay { get; set; } = 700;
 // [Pode Mudar] Tempo de espera para sair de combate, 1600ms é o padrão
 public int ExitCombatDelay { get; set; } = 1600;
+// [Pode Mudar] Tempo de espera entre matar um monstro e pular para outra sala quando estiver usando Hunt, aumente o valor se achar que esta pulando muito rápido
+public int HuntDelay { get; set; } = 1000;
 // [Pode Mudar] Quantas packets de aceitar/completar a quest serão enviadas
 public int AcceptandCompleteTries { get; set; } = 20;
 // [Pode Mudar] Se os bots vão usar salas privadas
@@ -118,7 +120,7 @@ Agora seus bots irão utilizar a classe e skills definidas quando necessário.
 
 ## FAQ
 
-**Q:** Como baixar os scripts?
+**Q:** Como baixar os scripts?  
 **A:**
 
 - Vá para a aba de [Releases](https://github.com/BrenoHenrike/Rbot-Scripts/releases/tag/Scripts);
@@ -127,6 +129,8 @@ Agora seus bots irão utilizar a classe e skills definidas quando necessário.
 - Clique com o botão direito sobre **Scripts.zip** e depois clique em **"_Extrair aqui_"**;
 - Caso apareça uma mensagem perguntando se você quer substituir os arquivos, clique em **_Sim_**;
 - Agora é só utilizar os scripts!
+
+> **Nota:** A versão mais recente do RBot é a 3.6.1 que você pode [baixar aqui](https://github.com/BrenoHenrike/RBot/releases).
 
 **Q:** Quando tento usar CoreBots/Dailys/Farms da erro, o que eu faço?  
 **A:** Arquivos que começam com **"*Core*"** não são bots, são apenas arquivos que os bots usam.
