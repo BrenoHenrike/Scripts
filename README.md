@@ -2,6 +2,7 @@
 
 If any of my scripts helped you and you want to donate:  
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)
+Pix: bhenrike@protonmail.com
 
 - [Versão em Português Brasileiro](README.pt-br.md)
 
@@ -16,8 +17,7 @@ If any of my scripts helped you and you want to donate:
 ## To do
 
 - Save option for the plugin;
-- BLoD quests.
-- Make a script assistant UI like Grim ([$15/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- Make a script assistant UI like Grim ([$18/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizing CoreBots
 
@@ -28,6 +28,8 @@ Inside the **CoreBots.cs** you can find various properties you can change to you
 public int ActionDelay { get; set; } = 700;
 // [Can Change] Delay used to get out of combat, 1600 is the safe number
 public int ExitCombatDelay { get; set; } = 1600;
+// [Can Change] Delay between jumping rooms after hunting a monster, increase if you think it is jumping too much
+public int HuntDelay { get; set; } = 1000;
 // [Can Change] How many tries to accept/complete the quest will be sent
 public int AcceptandCompleteTries { get; set; } = 20;
 // [Can Change] Whether the bots will use private rooms
@@ -118,15 +120,17 @@ Now your bot will use the defined class and skills when needed.
 
 ## FAQ
 
-**Q:** How do I download the scripts?
+**Q:** How do I download the scripts?  
 **A:**
 
-- Go to the [Releases link](https://github.com/BrenoHenrike/Rbot-Scripts/releases/tag/Scripts);
+- Go to the [Releases link](https://github.com/BrenoHenrike/Rbot-Scripts/releases);
 - From the latest upload, download the **Scripts.zip** folder under _Assets_;
 - Place the **Scripts.zip** inside your _RBot Scripts folder_;
 - Right click **Scripts.zip** and click **"_Extract here_"**;
 - If prompted to replace your files, click **_Yes_**;
 - All should be good to use now!
+
+> **Note:** The current latest RBot version is my 3.6.1 which you can [download here](https://github.com/BrenoHenrike/RBot/releases).
 
 **Q:** I try to run CoreBots/Dailys/Farms and get an error, what do I do?  
 **A:** All files starting with **"*Core*"** aren't bots, they are used by bots.
