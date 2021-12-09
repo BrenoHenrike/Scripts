@@ -1,7 +1,7 @@
 # Rbot-Scripts
 
 If any of my scripts helped you and you want to donate:  
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)  
 Pix: bhenrike@protonmail.com
 
 - [Versão em Português Brasileiro](README.pt-br.md)
