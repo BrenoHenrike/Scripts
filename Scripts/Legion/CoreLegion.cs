@@ -67,8 +67,8 @@ public class CoreLegion
         while (!Bot.Inventory.Contains("Emblem of Legion", quant))
         {
             Core.EnsureAccept(4742);
-            Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1);
-            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 27);
+            Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
+            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 27, false);
             Core.EnsureComplete(4742);
             Bot.Wait.ForPickup("Emblem of Dage");
             Core.Logger($"Completed x{i++}");
@@ -284,7 +284,7 @@ public class CoreLegion
 
 	public void LTDreadrock(int quant = 25000)
 	{
-		if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Legion Champion"))
+		if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Undead Champion"))
 			return;
 		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Legion Tokens");
