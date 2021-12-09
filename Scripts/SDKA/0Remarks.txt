@@ -1,0 +1,3 @@
+Needs active membership and DoomWood part 1 and 2 completed;
+
+0SepulchureDoomKnightArmor.cs will farm from the beginning if needed, but I recommend you to do Hard Core Metals quest 3 times so you got Arsenic, Chromium and Rhodium before starting.
