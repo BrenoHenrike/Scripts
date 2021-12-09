@@ -171,11 +171,11 @@ public class CoreFarms
     /// <param name="heresySouls">Desired quantity of "Souls of Heresy"</param>
 	public void SevenCirclesWar(int level = 100, int wrathEssence = 0, int heresySouls = 0)
 	{
-		if(Bot.Player.Level >= level)
+		if(Bot.Player.Level >= level && wrathEssence == 0 && heresySouls == 0)
             return;
 		
 		if(!Bot.Quests.IsAvailable(7979))
-            Core.Logger("Do the /Join SevenCircles history with the Farms/SevenCircles[History].cs", messageBox: true, stopBot: true);
+            Core.Logger("Do the /Join SevenCircles history with the Farm/SevenCircles[History].cs", messageBox: true, stopBot: true);
 
         Core.AddDrop("Essence of Wrath", "Souls of Heresy");
         while (Bot.Player.Level < level || (!Core.CheckInventory("Essence of Wrath", wrathEssence) && !Core.CheckInventory("Souls of Heresy", heresySouls)))
@@ -188,7 +188,7 @@ public class CoreFarms
             while (Bot.Inventory.ContainsTempItem("Mega War Medal", 3))
                 Core.ChainComplete(7981);
             Bot.Player.Pickup("Essence of Wrath", "Souls of Heresy");
-        }
+		}
     }
 	#endregion
 
@@ -218,7 +218,7 @@ public class CoreFarms
 		if(Core.CheckInventory("The Secret 4"))
             return;
 		Core.EquipClass(ClassType.Solo);
-		while(Core.CheckInventory("The Secret 4"))
+		while(!Core.CheckInventory("The Secret 4"))
 		{
 			Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
 			Bot.Wait.ForMapLoad("bludrutbrawl");
@@ -254,7 +254,8 @@ public class CoreFarms
             return;
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(item);
-        while (Core.CheckInventory(item, quant))
+		Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
+		while (!Core.CheckInventory(item, quant))
 		{
             Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
@@ -286,8 +287,9 @@ public class CoreFarms
                 Bot.Player.Kill("Team B Brawler");
             Core.BludrutMove(28, "Captain1", 528, 255);
             Bot.Player.Kill("Team B Captain");
-            Bot.Player.Pickup(item);
-            Core.Rest();
+			Bot.Wait.ForDrop(item, 30);
+			Bot.Player.Pickup(item);
+			Core.Rest();
         }
 	}
     #endregion
@@ -532,8 +534,12 @@ public class CoreFarms
 			Core.EnsureAccept(2935);
 			Core.HuntMonster("castleundead", "Skeletal Viking|Skeletal Warrior", "Hilt Found!", 1, false);
 			Core.EnsureComplete(2935);
-			if (farmBoA && !Core.CheckInventory("Legendary Hilt", toInv: false))
+			if (farmBoA)
+			{
 				Bot.Player.Pickup("Legendary Hilt");
+				if(FactionRank("Blade of Awe") >= 6)
+					break;
+			}
 			Core.Logger($"Completed Find the Hilt! x{i++}");
 		}
 		if (farmBoA)
@@ -555,7 +561,7 @@ public class CoreFarms
 				Core.Logger("Find the Runes! completed");
 			}
 			Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
-			Core.Logger("You can now merge the Blade of Awe at /join museum");
+			Core.Logger("You can now merge the Blade of Awe at /join museum", messageBox: true);
 		}
 
 	}
@@ -902,48 +908,49 @@ public class CoreFarms
 			return;
 		Core.AddDrop("Mystic Quills", "Mystic Parchment");
 		Core.Logger($"Farming rank {rank}");
-		int i = 1;
-		if (Bot.Quests.IsAvailable(2260))
+
+		RBot.Factions.Faction spellcrafting = Bot.Player.Factions.Find(f => f.ID == 23);
+		if (spellcrafting == null)
 		{
 			Core.EnsureAccept(2260);
 			Bot.Player.Join("dragonrune");
 			Bot.Map.GetMapItem(1920);
 			Core.HuntMonster("castleundead", "Skeletal Warrior", "Arcane Parchment", 13);
 			Core.JumpWait();
-			Bot.Quests.EnsureComplete(2260, tries: 2);
-			Core.Logger("SpellCrafting now unlocked");
+			Bot.Quests.EnsureComplete(2260, tries: 1);
 		}
+
+		int i = 1;
 		if(FactionRank("SpellCrafting") < 4)
 		{
-			Core.CheckInventory("Mystic Quills");
 			Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
-			Core.BuyItem("dragonrune", 549, 13280, 50, 5);
+			Core.BuyItem("dragonrune", 549, "Ember Ink", 50, 5);
 			Bot.Player.Join("spellcraft");
 			while (FactionRank("SpellCrafting") < 4)
 			{
 				Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%1%1555%Spell%");
 				Bot.Sleep(3000);
 				Bot.SendPacket("%xt%zm%crafting%1%spellComplete%1%2299%Ssikari's Breath%");
-				Core.Logger($"Completed x{i++}");
 				Bot.Sleep(3000);
+				Core.Logger($"Completed x{i++}");
 			}
 		}
 		while (FactionRank("SpellCrafting") < rank)
 		{
-			if(!Core.CheckInventory("Mystic Parchment"))
-				Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
-			Core.BuyItem("dragonrune", 549, 13285, 50, 5);
+			Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
+			Core.BuyItem("dragonrune", 549, "Hallow Ink", 50, 5);
 			Bot.Player.Join("spellcraft");
-			while(Core.CheckInventory("Hallow Ink"))
+			while(Core.CheckInventory("Hallow Ink") && FactionRank("SpellCrafting") < rank)
 			{
-				Bot.SendClientPacket("%xt%zm%crafting%1%spellOnStart%6%1555%Spell%");
+				Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%6%1555%Spell%");
 				Bot.Sleep(3000);
 				Bot.SendPacket("%xt%zm%crafting%1%spellComplete%6%2322%Plague Flare%");
 				Bot.Sleep(3000);
 				Core.Logger($"Completed x{i++}");
 			}
 		}
-
+		Core.SellItem("Ember Ink", all: true);
+		Core.SellItem("Hallow Ink", all: true);
 	}
 
 	public void VampireREP(int rank = 10)
@@ -977,8 +984,9 @@ public class CoreFarms
 		while (FactionRank("Yokai") < rank)
 		{
 			Core.EnsureAccept(383);
-			Core.KillMonster("dragonkoiz-111111", "t1", "Left", "Pockey Chew", "Piece of Pockey", 3);
+			Core.KillMonster("dragonkoiz", "t1", "Left", "Pockey Chew", "Piece of Pockey", 3);
 			Core.EnsureComplete(383);
+			Bot.Player.Jump("Enter", "Spawn");
 			Core.Logger($"Completed x{i++}");
 		}
 	}

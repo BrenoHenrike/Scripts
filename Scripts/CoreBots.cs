@@ -18,27 +18,29 @@ public class CoreBots
 	public int ActionDelay { get; set; } = 700;
 	// [Can Change] Delay used to get out of combat, 1600 is the safe number
 	public int ExitCombatDelay { get; set; } = 1600;
+	// [Can Change] Delay between jumping rooms after hunting a monster, increase if you think it is jumping too much
+	public int HuntDelay { get; set; } = 1000;
 	// [Can Change] How many tries to accept/complete the quest will be sent
-    public int AcceptandCompleteTries { get; set; } = 20;
-    // [Can Change] Whether the bots will use private rooms
-    public bool PrivateRooms { get; set; } = true;
-    // [Can Change] Whether the player should rest after killing a monster
-    public bool ShouldRest { get; set; } = false;
-    // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
+	public int AcceptandCompleteTries { get; set; } = 20;
+	// [Can Change] Whether the bots will use private rooms
+	public bool PrivateRooms { get; set; } = true;
+	// [Can Change] Whether the player should rest after killing a monster
+	public bool ShouldRest { get; set; } = false;
+	// [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
 	public bool AntiLag { get; set; } = true;
-    // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
-    public int SkillTimer { get; set; } = 100;
+	// [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
+	public int SkillTimer { get; set; } = 100;
 	// [Can Change] Name of your soloing class
 	public string SoloClass { get; set; } = "Generic";
 	// [Can Change] (Use the Core Skill plugin) Skill sequence string
 	public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-    // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the soloing class
-    public int SoloClassSkillTimeout { get; set; } = 1;
-    // [Can Change] Name of your farming class
-    public string FarmClass { get; set; } = "Generic";
-    // [Can Change] (Use the Core Skill plugin) Skill sequence string
-    public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-    // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the farming class
+	// [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the soloing class
+	public int SoloClassSkillTimeout { get; set; } = 1;
+	// [Can Change] Name of your farming class
+	public string FarmClass { get; set; } = "Generic";
+	// [Can Change] (Use the Core Skill plugin) Skill sequence string
+	public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
+	// [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the farming class
 	public int FarmClassSkillTimeout { get; set; } = 1;
 	// [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
 	public int HeroAlignment { get; set; } = (int)Alignment.Evil;
@@ -72,45 +74,49 @@ public class CoreBots
 		Bot.Drops.RejectElse = changeTo;
 		Bot.Lite.UntargetDead = changeTo;
 		Bot.Lite.UntargetSelf = changeTo;
-        Bot.SetGameObject("litePreference.data.bReaccept", false);
+		Bot.SetGameObject("litePreference.data.bReaccept", false);
 
-        if (changeTo)
+		if (changeTo)
 		{
 			Logger("Bot Started");
 
-            Bot.RegisterHandler(2, b =>
-            {
-                if (b.ShouldExit())
-                    StopBot();
-            }, "Stop Handler");
+			Bot.Options.HuntDelay = HuntDelay;
 
-            Bot.RegisterHandler(15, b =>
-            {
-                if (b.Player.Cell.Contains("Cut"))
-                {
-                    FlashUtil.Call("skipCutscenes");
-                    b.Sleep(1500);
-                    b.Player.Jump("Enter", "Spawn");
-                }
-            }, "Skip Cutscenes");
+			Bot.RegisterHandler(2, b =>
+			{
+				if (b.ShouldExit())
+					StopBot();
+			}, "Stop Handler");
+
+			Bot.RegisterHandler(15, b =>
+			{
+				if (b.Player.Cell.Contains("Cut"))
+				{
+					FlashUtil.Call("skipCutscenes");
+					b.Sleep(1500);
+					b.Player.Jump("Enter", "Spawn");
+				}
+			}, "Skip Cutscenes");
 
 			Bot.Player.LoadBank();
 			Bot.Runtime.BankLoaded = true;
-            EquipClass(ClassType.Solo);
-            // Anti-lag option
-            if (AntiLag)
+			usingSoloGeneric = SoloClass.ToLower() == "generic";
+			usingFarmGeneric = FarmClass.ToLower() == "generic";
+			EquipClass(ClassType.Solo);
+			// Anti-lag option
+			if (AntiLag)
 			{
-                Bot.Options.LagKiller = true;
-                Bot.SetGameObject("stage.frameRate", 10);
+				Bot.Options.LagKiller = true;
+				Bot.SetGameObject("stage.frameRate", 10);
 				if (!Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
 					Bot.CallGameFunction("world.toggleMonsters");
 			}
 
-            Logger("Bot Configured");
-        }
+			Logger("Bot Configured");
+		}
 		else
-            StopBot(true);
-    }
+			StopBot(true);
+	}
 
 	#region Inventory, Bank and Shop
 	/// <summary>
@@ -122,8 +128,8 @@ public class CoreBots
 	/// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
 	public bool CheckInventory(string item, int quant = 1, bool toInv = true)
 	{
-        if (Bot.Inventory.ContainsTempItem(item, quant))
-            return true;
+		if (Bot.Inventory.ContainsTempItem(item, quant))
+			return true;
 		if (Bot.Bank.Contains(item))
 		{
 			if (!toInv)
@@ -147,8 +153,8 @@ public class CoreBots
 		InventoryItem item = Bot.Bank.BankItems.Find(i => i.ID == itemID);
 		if (item == null)
 			return false;
-        if (item.Temp && Bot.Inventory.ContainsTempItem(item.Name, quant))
-            return true;
+		if (item.Temp && Bot.Inventory.ContainsTempItem(item.Name, quant))
+			return true;
 		if (!item.Temp && Bot.Bank.Contains(item.Name))
 		{
 			if (!toInv)
@@ -158,35 +164,35 @@ public class CoreBots
 		if (!item.Temp && Bot.Inventory.Contains(item.Name, quant))
 			return true;
 		
-        return false;
+		return false;
 	}
 
 	/// <summary>
-    /// Check if the Bank/Inventory has atleast 1 of all listed items
-    /// </summary>
-    /// <param name="itemNames">Array of names of the items to be check</param>
-    /// <param name="toInv">Whether or not send the item to Inventory</param>
-    /// <param name="any">If any of the items exist, returns true</param>
-    /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
+	/// Check if the Bank/Inventory has atleast 1 of all listed items
+	/// </summary>
+	/// <param name="itemNames">Array of names of the items to be check</param>
+	/// <param name="toInv">Whether or not send the item to Inventory</param>
+	/// <param name="any">If any of the items exist, returns true</param>
+	/// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
 	public bool CheckInventory(string[] itemNames, bool any = false, bool toInv = true)
 	{
 		foreach (string name in itemNames)
 		{
-            if (Bot.Bank.Contains(name))
-            {
-                if (!toInv)
-                    continue;
-                Unbank(name);
-            }
+			if (Bot.Bank.Contains(name))
+			{
+				if (!toInv)
+					continue;
+				Unbank(name);
+			}
 			if(Bot.Inventory.Contains(name) && any)
-                return true;
-            else if (Bot.Inventory.Contains(name) && !any)
-                continue;
+				return true;
+			else if (Bot.Inventory.Contains(name) && !any)
+				continue;
 			else if(!any)
-                return false;
-        }
-        return true;
-    }
+				return false;
+		}
+		return true;
+	}
 
 	/// <summary>
 	/// Move items from bank to inventory
@@ -249,14 +255,15 @@ public class CoreBots
 	{
 		if (CheckInventory(itemName, quant))
 			return;
+		JumpWait();
 		Bot.Player.Join(map);
 		Bot.Shops.Load(shopID);
 		RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
-        quant = _CalcBuyQuantity(item, quant, shopQuant);
-        if(quant <= 0)
-            return;
-        _BuyItem(shopID, item, quant, shopQuant, shopItemID);
-    }
+		quant = _CalcBuyQuantity(item, quant, shopQuant);
+		if(quant <= 0)
+			return;
+		_BuyItem(shopID, item, quant, shopQuant, shopItemID);
+	}
 
 	/// <summary>
 	/// Buys a item till it have the desired quantity
@@ -271,41 +278,63 @@ public class CoreBots
 	{
 		if (CheckInventory(itemID, quant))
 			return;
+		JumpWait();
 		Bot.Player.Join(map);
 		Bot.Shops.Load(shopID);
 		RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
-        quant = _CalcBuyQuantity(item, quant, shopQuant);
-        if(quant <= 0)
-            return;
-        _BuyItem(shopID, item, quant, shopQuant, shopItemID);
-    }
-
-    private void _BuyItem(int shopID, RBot.Shops.ShopItem item, int quant, int shopQuant, int shopItemID)
-	{
-        if (shopItemID == 0)
-            for (int i = 0; i < quant; i++)
-                Bot.Shops.BuyItem(shopID, item.Name);
-        else
-        {
-            SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
-            Logger("Relogin to prevent ghost buy");
-            Relogin();
-        }
-        Logger($"Bought {quant} {item.Name}");
+		quant = _CalcBuyQuantity(item, quant, shopQuant);
+		if(quant <= 0)
+			return;
+		_BuyItem(shopID, item, quant, shopQuant, shopItemID);
 	}
 
-    private int _CalcBuyQuantity(RBot.Shops.ShopItem item, int quant, int shopQuant)
+	private void _BuyItem(int shopID, RBot.Shops.ShopItem item, int quant, int shopQuant, int shopItemID)
 	{
-        if (Bot.Inventory.GetQuantity(item.Name) + shopQuant > item.MaxStack)
+		if (shopItemID == 0)
+			for (int i = 0; i < quant; i++)
+				Bot.Shops.BuyItem(shopID, item.Name);
+		else
 		{
-            Logger("Can't buy merge item past its max stack, skipping");
-            return 0;
+			SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
+			Logger("Relogin to prevent ghost buy");
+			Relogin();
 		}
-        int quantB = quant - Bot.Inventory.GetQuantity(item.Name);
-        if (quantB < 0)
-            return 0;
-        decimal quantF = (decimal)quantB / (decimal)shopQuant;
-        return (int)Math.Ceiling(quantF);
+		Logger($"Bought {quant}x{shopQuant} {item.Name}");
+	}
+
+	private int _CalcBuyQuantity(RBot.Shops.ShopItem item, int quant, int shopQuant)
+	{
+		if (Bot.Inventory.GetQuantity(item.Name) + shopQuant > item.MaxStack)
+		{
+			Logger("Can't buy merge item past its max stack, skipping");
+			return 0;
+		}
+		int quantB = quant - Bot.Inventory.GetQuantity(item.Name);
+		if (quantB < 0)
+			return 0;
+		decimal quantF = (decimal)quantB / (decimal)shopQuant;
+		return (int)Math.Ceiling(quantF);
+	}
+
+	public void SellItem(string itemName, int quant = 0, bool all = false)
+	{
+		if(!CheckInventory(itemName))
+			return;
+		JumpWait();
+		if(!all)
+			for (int i = 0; i < quant; i++)
+			{
+				Bot.Shops.SellItem(itemName);
+				Bot.Sleep(ActionDelay);
+			}
+		else
+			while(Bot.Inventory.GetQuantity(itemName) != 0)
+			{
+				Bot.Shops.SellItem(itemName);
+				Bot.Sleep(ActionDelay);
+			}
+
+		Logger($"{(quant == 0 ? "" : quant.ToString())}{itemName} sold");
 	}
 	#endregion
 
@@ -382,6 +411,33 @@ public class CoreBots
 		JumpWait();
 		Bot.Sleep(ActionDelay);
 		return Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
+	}
+
+	/// <summary>
+	/// Completes a quest and choose any item from it that you don't have (automatically accepts the drop)
+	/// </summary>
+	/// <param name="questID">ID of the quest</param>
+	/// <param name="itemList">List of the items to get, if you want all just let it be null</param>
+	public bool EnsureCompleteChoose(int questID, string[] itemList = null)
+	{
+		if (questID <= 0)
+			return false;
+		JumpWait();
+		Bot.Sleep(ActionDelay);
+		if(Bot.Quests.TryGetQuest(questID, out Quest quest))
+			foreach (ItemBase item in quest.Rewards)
+			{
+				if(!CheckInventory(item.Name, toInv: false)
+					&& (itemList == null || (itemList != null && itemList.Contains(item.Name))))
+				{
+					Logger($"Completed [{quest.Name}] for {item.Name}");
+					bool completed = Bot.Quests.EnsureComplete(questID, item.ID, tries: AcceptandCompleteTries);
+					Bot.Player.Pickup(item.Name);
+					return completed;
+				}
+			}
+		Logger($"Could not complete the quest {questID}. Maybe all items are already in your inv");
+		return false;
 	}
 
 	/// <summary>
@@ -498,7 +554,7 @@ public class CoreBots
 	private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
 	{
 		Logger($"Hunting {monster} for {itemName} ({quantity})[{isTemp}]");
-        _HuntForItem(monster, itemName, quantity, isTemp);
+		_HuntForItem(monster, itemName, quantity, isTemp);
 		CurrentRequirements.RemoveAt(index);
 		shouldRepeat = false;
 	}
@@ -527,8 +583,8 @@ public class CoreBots
 	/// <param name="log">Whether it will log that it is killing the monster</param>
 	public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true)
 	{
-        if (item != null && CheckInventory(item, quant))
-            return;
+		if (item != null && CheckInventory(item, quant))
+			return;
 		Bot.Player.Join(map);
 		Jump(cell, pad);
 		if (item == null)
@@ -536,8 +592,8 @@ public class CoreBots
 			if(log)
 				Logger($"Killing {monster}");
 			Bot.Player.Kill(monster);
-            Rest();
-        }
+			Rest();
+		}
 		else
 		{
 			if(log)
@@ -546,36 +602,36 @@ public class CoreBots
 		}
 	}
 
-    /// <summary>
-    /// Kills a monster using it's ID
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monsterID">ID of the monster</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true)
+	/// <summary>
+	/// Kills a monster using it's ID
+	/// </summary>
+	/// <param name="map">Map to join</param>
+	/// <param name="cell">Cell to jump to</param>
+	/// <param name="pad">Pad to jump to</param>
+	/// <param name="monsterID">ID of the monster</param>
+	/// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+	/// <param name="quant">Desired quantity of the item</param>
+	/// <param name="isTemp">Whether the item is temporary</param>
+	/// <param name="log">Whether it will log that it is killing the monster</param>
+	public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true)
 	{
-        if (item != null && CheckInventory(item, quant))
-            return;
+		if (item != null && CheckInventory(item, quant))
+			return;
 		Bot.Player.Join(map);
 		Jump(cell, pad);
 		Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
 		if (item == null)
 		{
-            if (log)
-                Logger($"Killing {monster}");
+			if (log)
+				Logger($"Killing {monster}");
 			Bot.Player.Kill(monster);
-            Rest();
-        }
+			Rest();
+		}
 		else
 		{
-            if (log)
-                Logger($"Killing {monster} for {item} ({quant}) [Temp = {isTemp}]");
-            _KillForItem(monster.Name, item, quant, isTemp);
+			if (log)
+				Logger($"Killing {monster} for {item} ({quant}) [Temp = {isTemp}]");
+			_KillForItem(monster.Name, item, quant, isTemp);
 		}
 	}
 
@@ -590,14 +646,14 @@ public class CoreBots
 	public void HuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true)
 	{
 		if (item != null && CheckInventory(item, quant))
-            return;
+			return;
 		Bot.Player.Join(map);
 		if (item == null)
 		{
 			Logger($"Hunting {monster}");
 			Bot.Player.Hunt(monster);
-            Rest();
-        }
+			Rest();
+		}
 		else
 		{
 			Logger($"Hunting {monster} for {item} ({quant}) [Temp = {isTemp}]");
@@ -613,10 +669,10 @@ public class CoreBots
 	/// <param name="isTemp">Whether the item is temporary</param>
 	public void KillEscherion(string item = null, int quant = 1, bool isTemp = false)
 	{
-        if (item != null && CheckInventory(item, quant))
-            return;
-        Bot.Player.Join("escherion");
-        Jump("Boss", "Left");
+		if (item != null && CheckInventory(item, quant))
+			return;
+		Bot.Player.Join("escherion");
+		Jump("Boss", "Left");
 		if (item == null)
 		{
 			Logger("Killing Escherion");
@@ -653,8 +709,8 @@ public class CoreBots
 		if (messageBox)
 			Message(message, caller);
 		if (stopBot)
-            StopBot(true);
-    }
+			StopBot(true);
+	}
 
 	/// <summary>
 	/// Creates a Message Box with the desired text and caption
@@ -711,45 +767,43 @@ public class CoreBots
 	}
 
 	ClassType lastClass = ClassType.None;
-    bool usingSoloGeneric = false;
-    bool usingFarmGeneric = false;
-    public void EquipClass(ClassType classToUse)
+	bool usingSoloGeneric = false;
+	bool usingFarmGeneric = false;
+	public void EquipClass(ClassType classToUse)
 	{
 		if(lastClass == classToUse)
-            return;
-        usingSoloGeneric = SoloClass.ToLower() == "generic";
-        usingFarmGeneric = FarmClass.ToLower() == "generic";
-        switch (classToUse)
+			return;
+		switch (classToUse)
 		{
 			case ClassType.Farm:
 				if(usingFarmGeneric && !usingSoloGeneric)
 				{
-                    EquipClass(ClassType.Solo);
-                    return;
-                }
-                _EquipClass(FarmClass);
+					EquipClass(ClassType.Solo);
+					return;
+				}
+				_EquipClass(FarmClass);
 				if(lastClass != ClassType.Farm)
 				{
-                    UseSkills(FarmClassSkills);
-                	SkillTimeout = FarmClassSkillTimeout;
+					SkillTimeout = FarmClassSkillTimeout;
+					UseSkills(FarmClassSkills);
 				}
-                break;
-            default:
+				break;
+			default:
 				if(usingSoloGeneric && !usingFarmGeneric)
 				{
-                    EquipClass(ClassType.Farm);
-                    return;
-                }
-                _EquipClass(SoloClass);
+					EquipClass(ClassType.Farm);
+					return;
+				}
+				_EquipClass(SoloClass);
 				if(lastClass != ClassType.Solo)
 				{
-                    UseSkills(SoloClassSkills);
-                	SkillTimeout = SoloClassSkillTimeout;
+					SkillTimeout = SoloClassSkillTimeout;
+					UseSkills(SoloClassSkills);
 				}
-                break;
-        }
-        lastClass = classToUse;
-    }
+				break;
+		}
+		lastClass = classToUse;
+	}
 
 	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
 	{
@@ -763,22 +817,22 @@ public class CoreBots
 		}
 	}
 
-    private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
-    {
-        while (!Bot.ShouldExit()
-                && (tempItem || !Bot.Inventory.Contains(item, quantity))
-                && (!tempItem || !Bot.Inventory.ContainsTempItem(item, quantity)))
-        {
-            Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
-            if (!tempItem)
-            {
-                Bot.Player.Pickup(item);
-                if (rejectElse)
-                    Bot.Player.RejectExcept(item);
-            }
-            Rest();
-        }
-    }
+	private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
+	{
+		while (!Bot.ShouldExit()
+				&& (tempItem || !Bot.Inventory.Contains(item, quantity))
+				&& (!tempItem || !Bot.Inventory.ContainsTempItem(item, quantity)))
+		{
+			Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
+			if (!tempItem)
+			{
+				Bot.Player.Pickup(item);
+				if (rejectElse)
+					Bot.Player.RejectExcept(item);
+			}
+			Rest();
+		}
+	}
 
 	private void _AddRequirement(int questID)
 	{
@@ -803,32 +857,36 @@ public class CoreBots
 
 	private void _EquipClass(string className)
 	{
-        if(className.ToLower() != "generic" 
+		if(className.ToLower() != "generic" 
 			&& Bot.Inventory.CurrentClass.Name.ToLower() != className.ToLower())
 		{
-        	JumpWait();
-            Bot.Player.EquipItem(className);
-            Logger($"{className} equipped");
-        }
+			JumpWait();
+			while(!Bot.Inventory.IsEquipped(className))
+			{
+				Bot.Player.EquipItem(className);
+				Bot.Sleep(ActionDelay);
+			}
+			Logger($"{className} equipped");
+		}
 	}
 
 	public void StopBot(bool removeStopHandler = false)
 	{
 		if(removeStopHandler)
-            Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
-        Bot.Player.Join("battleon");
-        StopTimer();
-        Bot.SetGameObject("stage.frameRate", 30);
-        Bot.Options.PrivateRooms = false;
-        Bot.Options.AutoRelogin = false;
-        Bot.Options.LagKiller = false;
-        Bot.Options.LagKiller = true;
-        Bot.Options.LagKiller = false;
-        if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-            Bot.CallGameFunction("world.toggleMonsters");
-        Logger("Bot Stopped Successfully", messageBox: true);
-        ScriptManager.StopScript();
-    }
+			Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
+		Bot.Player.Join("battleon");
+		StopTimer();
+		Bot.SetGameObject("stage.frameRate", 30);
+		if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+			Bot.CallGameFunction("world.toggleMonsters");
+		Bot.Options.PrivateRooms = false;
+		Bot.Options.AutoRelogin = false;
+		Bot.Options.LagKiller = false;
+		Bot.Options.LagKiller = true;
+		Bot.Options.LagKiller = false;
+		Logger("Bot Stopped Successfully", messageBox: true);
+		ScriptManager.StopScript();
+	}
 	#endregion
 
 	#region Map
@@ -876,19 +934,19 @@ public class CoreBots
 		}
 	}
 
-    /// <summary>
-    /// Joins Tercessuinotlim
-    /// </summary>
-    public void JoinTercessuinotlim()
-    {
-        if (Bot.Map.Name == "tercessuinotlim")
-            return;
-        Bot.Player.Join("citadel", "m22", "Left");
-        if (Bot.Player.Cell != "m22")
-            Bot.Player.Jump("m22", "Left");
-        Bot.Player.Join("tercessuinotlim");
-        Bot.Wait.ForMapLoad("tercessuinotlim");
-    }
+	/// <summary>
+	/// Joins Tercessuinotlim
+	/// </summary>
+	public void JoinTercessuinotlim()
+	{
+		if (Bot.Map.Name == "tercessuinotlim")
+			return;
+		Bot.Player.Join("citadel", "m22", "Left");
+		if (Bot.Player.Cell != "m22")
+			Bot.Player.Jump("m22", "Left");
+		Bot.Player.Join("tercessuinotlim");
+		Bot.Wait.ForMapLoad("tercessuinotlim");
+	}
 
 	/// <summary>
 	/// This method is used to move between Bludrut Brawl rooms
@@ -938,10 +996,10 @@ public class CoreBots
 	{
 		while (!Bot.ShouldExit() && Bot.Player.LoggedIn)
 		{
-            if (Bot.Player.HasTarget)
+			if (Bot.Player.HasTarget)
 				_Poll();
 			_Provider?.OnTargetReset(Bot);
-            Thread.Sleep(SkillTimer);
+			Thread.Sleep(SkillTimer);
 		}
 	}
 
@@ -949,7 +1007,7 @@ public class CoreBots
 	private SkillInfo[] _lastSkills;
 	private void _Poll()
 	{
-        int rank = Bot.Player.Rank;
+		int rank = Bot.Player.Rank;
 		if (rank > _lastRank && _lastRank != -1)
 		{
 			using (FlashArray<object> skills = FlashObject<object>.Create("world.actions.active").ToArray())
@@ -967,24 +1025,24 @@ public class CoreBots
 		if(_Provider.ShouldUseSkill(Bot) == true)
 		{
 			int skilltrue = _Provider.GetNextSkill(Bot, out SkillMode modetrue);
-            switch (modetrue)
-            {
-                case SkillMode.Optimistic:
-                    if (Bot.Player.CanUseSkill(skilltrue))
-                        Bot.Player.UseSkill(skilltrue);
-                    break;
-                case SkillMode.Wait:
-                    if (skilltrue > 0)
-                    {
-                        Bot.Wait.ForTrue(() => Bot.Player.CanUseSkill(skilltrue), SkillTimeout, SkillTimer);
-                        Bot.Player.UseSkill(skilltrue);
-                    }
-                    break;
-            }
-        }
+			switch (modetrue)
+			{
+				case SkillMode.Optimistic:
+					if (Bot.Player.CanUseSkill(skilltrue))
+						Bot.Player.UseSkill(skilltrue);
+					break;
+				case SkillMode.Wait:
+					if (skilltrue > 0)
+					{
+						Bot.Wait.ForTrue(() => Bot.Player.CanUseSkill(skilltrue), SkillTimeout, SkillTimer);
+						Bot.Player.UseSkill(skilltrue);
+					}
+					break;
+			}
+		}
 		else if(_Provider.ShouldUseSkill(Bot) == null)
-            _Provider.GetNextSkill(Bot, out SkillMode modeNull);
-    }
+			_Provider.GetNextSkill(Bot, out SkillMode modeNull);
+	}
 	#endregion
 }
 
@@ -1059,15 +1117,15 @@ public class CoreSkillCommand
 
 	public bool? ShouldUse(ScriptInterface bot)
 	{
-        if(string.IsNullOrWhiteSpace(UseRule[_Index]))
+		if(string.IsNullOrWhiteSpace(UseRule[_Index]))
 			return true;
-        string[] useRules = UseRule[_Index].Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+		string[] useRules = UseRule[_Index].Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
 		bool shouldUse = true;
-        bool skip = UseRule[_Index].Contains("s");
-        foreach (string useRule in useRules)
+		bool skip = UseRule[_Index].Contains("s");
+		foreach (string useRule in useRules)
 		{
-            int.TryParse(RemoveLetters(useRule), out int result);
-            if(useRule.Contains("h"))
+			int.TryParse(RemoveLetters(useRule), out int result);
+			if(useRule.Contains("h"))
 			{
 				if(result > 100)
 					result = 100;
@@ -1088,19 +1146,19 @@ public class CoreSkillCommand
 			else if(useRule.Contains("w"))
 				WaitUseRule(bot, result);
 			if(skip && !shouldUse)
-                return null;
-            if(!shouldUse)
+				return null;
+			if(!shouldUse)
 				break;
 		}
-        return shouldUse;
+		return shouldUse;
 	}
 
-    private string RemoveLetters(string userule) => Regex.Replace(userule, "[^0-9.]", "");
+	private string RemoveLetters(string userule) => Regex.Replace(userule, "[^0-9.]", "");
 
-    private bool HealthUseRule(ScriptInterface bot, bool greater, int health)
+	private bool HealthUseRule(ScriptInterface bot, bool greater, int health)
 	{
-        float ratio = (float)bot.Player.Health / (float)bot.Player.MaxHealth * 100.0f;
-        if(greater)
+		float ratio = (float)bot.Player.Health / (float)bot.Player.MaxHealth * 100.0f;
+		if(greater)
 			return health >= ratio;
 		return health <= ratio;
 	}
