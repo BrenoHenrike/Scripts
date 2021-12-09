@@ -1,5 +1,4 @@
 ﻿using RBot;
-using System.Linq;
 
 public class CoreNulgath
 {
@@ -28,6 +27,8 @@ public class CoreNulgath
 		"Tainted Gem",
 		"Unidentified 10",
 		"Unidentified 13",
+		"Unidentified 24",
+		"Unidentified 25",
 		"Unidentified 34",
 		"Voucher of Nulgath",
 		"Voucher of Nulgath (non-mem)",
@@ -148,12 +149,11 @@ public class CoreNulgath
 	{
 		if (Core.CheckInventory(item, quant) || (!Core.CheckInventory("Nulgath's Birthday Gift") && !Core.CheckInventory("Bounty Hunter's Drone Pet")))
 			return;
+
 		Core.Logger($"Farming for {item}({quant})");
 		int i = 1;
 		while (!Bot.Inventory.Contains(item, quant))
 		{
-			if (Bot.Inventory.Contains(item, quant))
-				break;
 			if (Bot.Inventory.Contains("Bounty Hunter's Drone Pet"))
 				Core.EnsureAccept(6183);
 			else
@@ -168,8 +168,8 @@ public class CoreNulgath
 				Core.EnsureComplete(6183);
 			else
 				Core.EnsureComplete(6697);
-			Bot.Wait.ForPickup("Diamond of Nulgath");
-            Core.Logger($"Completed x{i++}");
+			Bot.Player.Pickup(bagDrops);
+			Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -201,8 +201,8 @@ public class CoreNulgath
 				Core.EnsureComplete(2221);
 			else
 				Core.EnsureComplete(2219);
-			Bot.Wait.ForPickup("Diamond of Nulgath");
-            Core.Logger($"Completed x{i++}");
+			Bot.Player.Pickup("Diamond of Nulgath");
+			Core.Logger($"Completed x{i++}");
 		}
 	}
 
@@ -243,7 +243,7 @@ public class CoreNulgath
 			Core.KillMonster("boxes-111111", "Fort2", "Left", "*", "Cubes", 500, false);
 			Core.KillMonster("mountfrost-111111", "War", "Left", "Snow Golem", "Ice Cubes", 6);
 			Core.EnsureComplete(7817);
-			Bot.Wait.ForPickup("Tainted Gem");
+			Bot.Player.Pickup("Tainted Gem");
             Core.Logger($"Completed x{i++}");
 		}
 	}
@@ -269,7 +269,7 @@ public class CoreNulgath
             Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false);
             Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 27, false);
 			Core.EnsureComplete(4748);
-			Bot.Wait.ForPickup("Emblem of Nulgath");
+			Bot.Player.Pickup("Emblem of Nulgath");
             Core.Logger($"Completed x{i++}");
 		}
 	}
@@ -292,7 +292,7 @@ public class CoreNulgath
 				Core.HuntMonster("shadowblast", "Legion Airstrike", "Legion Rookie Defeated", 5, true);
 				Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true);
 				Core.EnsureComplete(4744);
-				Bot.Wait.ForDrop("Nation Round 1 Medal");
+				Bot.Player.Pickup("Nation Round 1 Medal");
 				Core.Logger("Medal 1 acquired");
 			}
 
@@ -302,7 +302,7 @@ public class CoreNulgath
 				Core.HuntMonster("shadowblast", "Legion Fenrir", "Legion Veteran Defeated", 7, true);
 				Core.HuntMonster("shadowblast", "Doombringer", "Shadowscythe Veteran Defeated", 7, true);
 				Core.EnsureComplete(4745);
-				Bot.Wait.ForDrop("Nation Round 2 Medal");
+				Bot.Player.Pickup("Nation Round 2 Medal");
 				Core.Logger("Medal 2 acquired");
 			}
 
@@ -312,7 +312,7 @@ public class CoreNulgath
 				Core.HuntMonster("shadowblast", "Legion Cannon", "Legion Elite Defeated", 10, true);
 				Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true);
 				Core.EnsureComplete(4746);
-				Bot.Wait.ForDrop("Nation Round 3 Medal");
+				Bot.Player.Pickup("Nation Round 3 Medal");
 				Core.Logger("Medal 3 acquired");
 			}
 
@@ -321,7 +321,7 @@ public class CoreNulgath
 				Core.EnsureAccept(4747);
 				Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true);
 				Core.EnsureComplete(4747);
-				Bot.Wait.ForDrop("Nation Round 4 Medal");
+				Bot.Player.Pickup("Nation Round 4 Medal");
 				Core.Logger("Medal 4 acquired");
 			}
 		}
@@ -383,6 +383,7 @@ public class CoreNulgath
 				Bot.Sleep(Core.ActionDelay);
                 Core.Logger($"Completed x{i++}");
 			}
+			Bot.Player.Pickup(item);
 		}
 	}
 
@@ -408,6 +409,7 @@ public class CoreNulgath
 				Core.EnsureAccept(2857);
 				Core.KillEscherion("Escherion's Helm");
 				Core.EnsureComplete(2857);
+				Bot.Player.Pickup(item);
                 Core.Logger($"Completed x{i++}");
 			}
 		}
@@ -510,7 +512,7 @@ public class CoreNulgath
 	                Core.EnsureAccept(2857);
 	                Bot.Sleep(Core.ActionDelay);
 	                if (Core.CheckInventory("Oblivion Blade of Nulgath"))
-	                    Core.EnsureComplete(2561);
+	                    Core.ChainComplete(2561);
 	                if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
 	                    Core.ChainComplete(599);
 	                Bot.Sleep(Core.ActionDelay);

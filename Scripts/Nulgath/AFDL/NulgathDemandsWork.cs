@@ -31,9 +31,11 @@ public class NulgathDemandsWork
 			"Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
 		int i = 0;
-		while (!Core.CheckInventory("DoomLord's War Mask", toInv: false) && !Core.CheckInventory("ShadowFiend Cloak", toInv: false)
-			&& !Core.CheckInventory("Locks of the DoomLord", toInv: false) && !Core.CheckInventory("Doomblade of Destruction", toInv: false)
-			&& !Core.CheckInventory("Unidentified 35"))
+		while (!Core.CheckInventory("DoomLord's War Mask", toInv: false)
+				|| !Core.CheckInventory("ShadowFiend Cloak", toInv: false)
+				|| !Core.CheckInventory("Locks of the DoomLord", toInv: false)
+				|| !Core.CheckInventory("Doomblade of Destruction", toInv: false)
+				|| !Core.CheckInventory("Unidentified 35"))
 		{
 			if (Core.CheckInventory("Archfiend Essence Fragment", 9))
 				break;
@@ -74,7 +76,7 @@ public class NulgathDemandsWork
 			}
 
 			if (!Bot.Quests.CanComplete(5259))
-				Bot.Player.Logout();
+				Core.Relogin();
 			else if (!Core.CheckInventory("DoomLord's War Mask", toInv: false))
 				Core.EnsureComplete(5259, 35399);
 			else if (!Core.CheckInventory("ShadowFiend Cloak", toInv: false))
