@@ -172,8 +172,8 @@ public class SagaMirrorRealm
 					break;
 				case 31: //Reflect the Damage / Pure Chaos, Corrupted Blood / Enemies of a Feather Flock Together
 					Core.SmartKillMonster(3184, "earthstorm", "Shard Spinner", completeQuest: true);
-					Core.SmartKillMonster(3185, "bloodtuskwar", "Chaotic Vulture|Chaotic Horcboar", completeQuest: true);
-					Core.SmartKillMonster(3186, "bloodtuskwar", "Chaos Tigriff|Chaotic Vulture", completeQuest: true);
+					Core.SmartKillMonster(3185, "bloodtuskwar", "Chaotic Horcboar", completeQuest: true);
+					Core.SmartKillMonster(3186, "bloodtuskwar", "Chaos Tigriff", completeQuest: true);
 					break;
 				case 32: //Ward Off the Beast
 					bot.Player.Join("mirrorportal");

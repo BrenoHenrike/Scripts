@@ -142,7 +142,7 @@ public class SagaTheSpan
 					Core.GetMapItem(1467, map: "aqlesson");
 					break;
 				case 13: //Reach the Temple
-					Core.SmartKillMonster(qIDs[i], "aqlesson", "Ninja");
+					Core.SmartKillMonster(qIDs[i], "aqlesson", "Ninja ");
 					break;
 				case 14: //Not All Hope is Lost
 					Core.GetMapItem(1468, 8, "aqlesson");
