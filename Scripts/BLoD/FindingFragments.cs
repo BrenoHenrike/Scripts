@@ -21,7 +21,7 @@ public class FindingFragments_Any
 	public void ScriptMain(ScriptInterface bot)
 	{
 		Core.SetOptions();
-		Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
+		Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
 
 		Core.EquipClass(ClassType.Farm);
 		int i = 1;

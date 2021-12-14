@@ -43,6 +43,7 @@ public class CoreBLOD
 		"Bone Dust",
 		"Undead Essence",
 		"Undead Energy",
+		"Blinding Light Fragments",
 		"Spirit Orb",
 		"Loyal Spirit Orb",
 		"Bright Aura",
@@ -449,7 +450,7 @@ public class CoreBLOD
 	public void FindingFragments(int quest)
 	{
 		Core.EnsureAccept(quest);
-		BattleUnderB("Blinding Light Framents", 10);
+		BattleUnderB("Blinding Light Fragments", 10);
 		Core.EnsureComplete(quest);
 	}
 }

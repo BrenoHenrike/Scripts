@@ -27,7 +27,8 @@ public class WillpowerExtraction
 		Core.AddDrop(Nulgath.bagDrops);
 		Core.AddDrop(Nulgath.tercessBags);
 		Core.AddDrop("Unidentified 34", "Unidentified 19", "Necrot", "Chaoroot", "Doomatter",
-			"Mortality Cape of Revontheus", "Facebreaker of Nulgath", "SightBlinder Axe of Nulgath", "Mystic Tribal Sword", "King Klunk's Crown");
+			"Mortality Cape of Revontheus", "Facebreaker of Nulgath", "SightBlinder Axe of Nulgath", "Mystic Tribal Sword",
+			"King Klunk's Crown", "Golden Shadow Breaker", "Shadow Terror Axe");
 
 		int i = 1;
 		while (!Core.CheckInventory("Unidentified 34", quant))
