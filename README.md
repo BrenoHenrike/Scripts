@@ -16,8 +16,7 @@ Pix: bhenrike@protonmail.com
 
 ## To do
 
-- Save option for the plugin;
-- Make a script assistant UI like Grim ([$18/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- Make a script assistant interface like Grimoire (easy to use) ([$70/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizing CoreBots
 
@@ -115,7 +114,7 @@ Now your bot will use the defined class and skills when needed.
 
 > **Notes:**
 >
-> - You can make use of all use rules for the same skill without any problem. 
+> - You can make use of all use rules for the same skill without any problem.
 > - Wait rules have priority over all rules, even if you can't use the skill and skip is checked, it will first wait the desired time first and then check the other rules.
 
 ## FAQ

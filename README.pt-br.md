@@ -16,8 +16,7 @@ Pix: bhenrike@prontonmail.com
 
 ## A fazer
 
-- Opção de salvar skills no plugin;
-- Criar uma interface de bots parecida com o Grim ([$18/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- Criar uma interface de bots parecida com o Grimoire (fácil de usar) ([$70/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizando CoreBots
 
