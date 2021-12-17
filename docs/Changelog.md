@@ -202,6 +202,8 @@ The file for it will be included in the [3.6.2 release](https://github.com/Breno
 
 You edit scripts with the built in Editor but don't like the light theme of it? If you wanna be a hackerman and use IntelliSense/Omnisharp word completion, I'm going to walk you through how to setup VSCode to help you with it.
 
+> **Note:** you might need the [Developer Pack for .NET Framework 4.8 AND 4.7.2](https://docs.microsoft.com/en-us/dotnet/framework/install/guide-for-developers) to be able to open the VSCode-Scripts in VSCode.
+
 1. First, of course, you need to [download VSCode](https://code.visualstudio.com/download).
 2. When opening for the first time it will show you somethings that might be useful, but for the time being we don't need them. To continue, click in the **"Extensions"** button *(Ctrl + Shift + X)*:
 
