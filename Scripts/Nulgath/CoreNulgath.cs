@@ -519,7 +519,8 @@ public class CoreNulgath
 	                Core.Logger($"Completed x{i++}");
 				}
 			}
-        }
+			Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+		}
 	}
 
 	/// <summary>

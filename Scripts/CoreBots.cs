@@ -465,6 +465,7 @@ public class CoreBots
 	{
 		JumpWait();
 		Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
+		Bot.Sleep(ActionDelay);
 		Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
 	}
 	#endregion
@@ -693,6 +694,7 @@ public class CoreBots
 					Bot.Player.Kill("Staff of Inversion");
 				Bot.Player.Attack("Escherion");
 				Bot.Sleep(1000);
+				Bot.Player.Pickup(item);
 			}
 		}
 	}

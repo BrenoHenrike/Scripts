@@ -64,6 +64,7 @@ public class NulgathDemandsWork
 				Core.EnsureAccept(584);
 				Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
 				Core.EnsureComplete(584);
+				Bot.Player.Pickup("Unidentified 27");
 				Core.Logger("Uni 27 acquired");
 			}
 
@@ -74,7 +75,9 @@ public class NulgathDemandsWork
 				Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
 				Core.Logger("Golden Hanzo Void bought");
 			}
-
+			
+			Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+			Bot.Sleep(Core.ActionDelay);
 			if (!Bot.Quests.CanComplete(5259))
 				Core.Relogin();
 			else if (!Core.CheckInventory("DoomLord's War Mask", toInv: false))
