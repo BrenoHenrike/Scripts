@@ -23,4 +23,4 @@ bot.SendClientPacket("packet", "type");
 ```
 
 ---------
-<center><a href="/Rbot-Scripts/Events" title="Events">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Examples" title="Examples">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Events" title="Events">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Script Options" title="Script Options">Next ►</a></center>

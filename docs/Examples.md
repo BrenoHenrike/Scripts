@@ -191,4 +191,4 @@ bot.Player.Pickup("Revenant's Spellscroll");
 I have added 2 second sleeps between each map join to improve stability, although it usually is not necessary to do this.
 
 ---------
-<center><a href="/Rbot-Scripts/Packets" title="Packets">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Script Options" title="Script Options">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Plugins" title="Plugins">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — Next ►</a></center>

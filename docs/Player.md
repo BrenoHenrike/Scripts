@@ -100,7 +100,7 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 
 ## Examples
 
-The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. <a href="Examples">Examples can be found at the end of the documentation</a>.
+The main use of `ScriptInterface#Player` is movement and combat. This is especially useful in fulfilling quest requirements. <a href="/Rbot-Scripts/Examples">Examples can be found at the end of the documentation</a>.
 
 ---------
 <center>

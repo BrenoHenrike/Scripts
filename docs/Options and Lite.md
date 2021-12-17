@@ -58,12 +58,12 @@ using RBot;
 
 public void ScriptMain(ScriptInterface bot)
 {
-	bot.Options.SafeTimings = true;
-	bot.Options.InfiniteRange = true;
-	bot.Options.CustomName = "ARTIX";
-	bot.Lite.UntargetSelf = true;
-	//You can also set then using their game object name
-	bot.Lite.Set("bReaccept", false);
+    bot.Options.SafeTimings = true;
+    bot.Options.InfiniteRange = true;
+    bot.Options.CustomName = "ARTIX";
+    bot.Lite.UntargetSelf = true;
+    //You can also set then using their game object name
+    bot.Lite.Set("bReaccept", false);
 }
 ```
 

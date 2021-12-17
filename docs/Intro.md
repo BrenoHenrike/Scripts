@@ -61,7 +61,7 @@ public class Script
 
 This would show a native windows `MessageBox` containing the message `"This class has been instantiated"`, as you would expect. Custom classes can also be defined outside of the main script class (`Script` in the example above), but they must be declared **after** the main script class.
 
-## The Script Interface
+# The Script Interface
 
 The `ScriptInterface` class provides a multitude of methods and properties for accessing and interacting with the game. An instance of the `ScriptInterface` class is passed as the first (and only) argument to the `ScriptMain` method of every script run by the bot application.
 

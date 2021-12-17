@@ -157,4 +157,4 @@ public enum OptionEnum
 You can manually open the configuration UI by clicking the `Script Options` button on the main form after loading a script (if the script has any configurable option).
 
 ---------
-<center><a href="/Rbot-Scripts/Examples" title="Examples">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Plugins" title="Plugins">Next ►</a></center>
+<center><a href="/Rbot-Scripts/Packets" title="Packets">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Object Classes and Enums" title="Object Classes and Enums">Next ►</a></center>

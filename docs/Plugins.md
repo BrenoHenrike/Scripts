@@ -155,4 +155,4 @@ After that you can build your project (**Ctrl+Shift+B**), it will give you a war
 After that it will show a blank page but with the basics up and running you can add any controls and code you want to your user interface.
 
 ---------
-<center><a href="/Rbot-Scripts/Script Options" title="Script Options">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — Next ►</center>
+<center><a href="/Rbot-Scripts/Object Classes and Enums" title="Object Classes and Enums">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Examples" title="Examples">Next ►</a></center>

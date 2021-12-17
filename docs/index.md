@@ -103,25 +103,33 @@
 </details>
 
 <details>
-<summary><a href="Examples">13. Examples</a> ↨</summary>
-    <ul>
-    <a href="Examples#design-and-layout">Design and Layout</a><br>
-    <a href="Examples#repeating-the-quest">Repeating the quest</a><br>
-    <a href="Examples#hunting-multiple-monsters">Hunting multiple monsters</a><br>
-    <a href="Examples#hunting-for-multiple-items">Hunting for multiple items</a><br>
-    <a href="Examples#setting-up-relogin">Setting up relogin</a><br>
-    <a href="Examples#legion-fealty-1">Legion Fealty 1</a>
-    </ul>
-</details>
-
-<details>
-<summary><a href="Script Options">14. Script Options</a> ↨</summary>
+<summary><a href="Script Options">13. Script Options</a> ↨</summary>
     <ul>
     <a href="Script Options#setting-up">Setting up</a><br>
     <a href="Script Options#adding-configurable-options">Adding configurable Options</a><br>
     <a href="Script Options#using-configured-options">Using configured Options</a><br>
     <a href="Script Options#enumerated-options">Enumerated Options</a><br>
     <a href="Script Options#manually-opening-configuration-ui">Manually opening Configuration UI</a>
+    </ul>
+</details>
+
+<details>
+<summary><a href="Object Classes and Enums">14. Object Classes & Enums</a> ↨</summary>
+    <ul>
+    <a href="Object Classes and Enums#object-classes">Object Classes</a><br>
+    <a href="Object Classes and Enums#playerinfo"> - PlayerInfo</a><br>
+    <a href="Object Classes and Enums#monster"> - Monster</a><br>
+    <a href="Object Classes and Enums#quest"> - Quest</a><br>
+    <a href="Object Classes and Enums#itembase"> - ItemBase</a><br>
+    <a href="Object Classes and Enums#inventoryitem-itembase"> - InventoryItem</a><br>
+    <a href="Object Classes and Enums#shopitem-itembase"> - ShopItem</a><br>
+    <a href="Object Classes and Enums#mergeitem-shopitem"> - MergeItem</a><br>
+    <a href="Object Classes and Enums#simplereward-itembase"> - SimpleReward</a><br>
+    <a href="Object Classes and Enums#server"> - Server</a><br>
+    <a href="Object Classes and Enums#enums">Enums</a><br>
+    <a href="Object Classes and Enums#huntpriority"> - HuntPriority</a><br>
+    <a href="Object Classes and Enums#boosttype"> - BoostType</a><br>
+    <a href="Object Classes and Enums#itemcategory"> - ItemCategory</a><br>
     </ul>
 </details>
 
@@ -134,6 +142,20 @@
     </ul>
 </details>
 
+<details>
+<summary><a href="Examples">16. Examples</a> ↨</summary>
+    <ul>
+    <a href="Examples#design-and-layout">Design and Layout</a><br>
+    <a href="Examples#repeating-the-quest">Repeating the quest</a><br>
+    <a href="Examples#hunting-multiple-monsters">Hunting multiple monsters</a><br>
+    <a href="Examples#hunting-for-multiple-items">Hunting for multiple items</a><br>
+    <a href="Examples#setting-up-relogin">Setting up relogin</a><br>
+    <a href="Examples#legion-fealty-1">Legion Fealty 1</a>
+    </ul>
+</details>
+
+<a href="Changelog">Changelog</a>
+
 <br>
 
-#### Made by [Rodit](https://rodit.github.io/rbot-scripts/), updated by BrenoHenrike
+#### Made by [Rodit](https://rodit.github.io/rbot-scripts/), updated by BrenoHenrike.

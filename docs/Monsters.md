@@ -25,25 +25,7 @@ The class has the following methods (return values will be according to the curr
 | `GetLivingMonsterCells(string name)` | *List\<string>* | Gets a list of cells that contain a living monster with the given name. |
 | `TryGetMonster(string name, out RBot.Monsters.Monster monster)` | *bool; out RBot.Monsters.Monster* | Tries to get the monster with the given name, if true will assign it to the monster variable. |
 
-## The 'Monster' class
-
-Many of the above properties return lists containing instances of `Monster`. This class has the following properties:
-
-| Property | Type | Description |
-|---|:---:|---|
-| `Name` | *string* | The name of the monster. |
-| `ID` | *int* | The unique id of the monster. |
-| `Race` | *string* | The race of the monster. Can be useful when you want to equip respective damage boost item. |
-| `Cell` | *string* | The name of the cell that contains this monster. |
-| `MapID` | *int* | The map id of the monster. This can be used to target specific monsters in a room when multiple monsters with the same name exist. |
-| `HP` | *int* | The health of the monster. |
-| `State` | *int* | The state of the monster. When `State > 0`, the monster is alive, otherwise it is dead. |
-| `FileName` | *string* | The SWF file name of the monster. |
-| `Alive` | *bool* | Returns whether the monster is Alive by checking its `HP`. |
-
-You can use the method `Monster.ToString()` to return a string formatted like `{Name} [{ID}] [{MapID}, {Cell}]` with each respective variable filled with the monster info.
-
-Later, [when attacking monsters is explained](https://brenohenrike.github.io/Rbot-Scripts/), it will be made clear how to query monster lists and target monsters using these properties.
+Later, when attacking monsters is explained, it will be made clear how to query monster lists and target monsters using these properties.
 
 ---------
 <center><a href="/Rbot-Scripts/Timings and Handlers" title="Timings & Handlers">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Skills" title="Skills">Next ►</a></center>
