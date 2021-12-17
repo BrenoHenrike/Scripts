@@ -238,8 +238,9 @@ The first 2 lines will set autosave to each 10 seconds (optional). The csproj on
 5. Back in the [3.6.2 release](https://github.com/BrenoHenrike/RBot/releases), download the *VSCode-Scripts.zip*;
 6. Place the folder anywhere you want, for ease of use you can extract it inside your RBot Scripts folder;
 7. Back to VSCode, click File > Open Folder... > Select the folder were the **VSCode-Scripts.sln** is located;
-8. You can then click the *"Script.cs"* file, wait a bit so Omnisharp can load all references et voi'la, your script has auto complete, but wait!
-9. There is 2 catches:
+8. When the folder opens, click the *VSCode-Scripts.csproj* and search for \<HintPath> (should be at line 35) and change the path to where **your RBot.exe** is located;
+9. You can then click the *"Script.cs"* file, wait a bit so Omnisharp can load all references et voi'la, your script has auto complete, but wait!
+10. There is 2 catches:
 
     - You can't have 2 classes with the same name, normally all scripts have the main class called "Script", so every cs file you create remember to rename the **Script Class** to anything you want;
     - Whenever creating a new file, the .csproj extension you downloaded will prompt you if you want to add the new file to the csproj, so **ATTENTION**, if you need auto complete in the file, you can either right click > csproj: Include in Project or click yes in the prompt:
