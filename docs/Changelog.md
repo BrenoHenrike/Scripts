@@ -22,6 +22,11 @@ All files related to converting gbots to scripts have been removed as the final 
 
 The changes that don't need an explanation are listed bellow.
 
+- **Update 17/12/2021 at 17:40 (Thanks to Purple):**
+  - `ScriptInterface#Options.SetFPS` added to set the maximum game FPS;
+  - `ScriptInterface#Options.ShowFPS` added to show the FPS counter;
+  - Upgrade, Staff, FPS Counter and Set FPS Cap in the Bot Options now work as intended.
+
 - Shift + 3 opens the *"Run"* window, it was always there, just documenting it for who don't know yet;
 - Logs now are also in the *"Scripts"* window and don't need the window to be opened;
 - Events are cleared when the script stops, also added missing events from the clear method;
