@@ -24,7 +24,7 @@ The changes that don't need an explanation are listed bellow.
 
 - **Update 17/12/2021 at 17:40 (Thanks to Purple):**
   - `ScriptInterface#Options.SetFPS` added to set the maximum game FPS;
-  - `ScriptInterface#Options.ShowFPS` added to show the FPS counter;
+  - `ScriptInterface#Options.ShowFPS()` added to toggle the FPS counter;
   - Upgrade, Staff, FPS Counter and Set FPS Cap in the Bot Options now work as intended.
 
 - Shift + 3 opens the *"Run"* window, it was always there, just documenting it for who don't know yet;
@@ -243,7 +243,7 @@ The first 2 lines will set autosave to each 10 seconds (optional). The csproj on
 5. Back in the [3.6.2 release](https://github.com/BrenoHenrike/RBot/releases), download the *VSCode-Scripts.zip*;
 6. Place the folder anywhere you want, for ease of use you can extract it inside your RBot Scripts folder;
 7. Back to VSCode, click File > Open Folder... > Select the folder were the **VSCode-Scripts.sln** is located;
-8. When the folder opens, click the *VSCode-Scripts.csproj* and search for \<HintPath> (should be at line 35) and change the path to where **your RBot.exe** is located;
+8. When the folder opens, click the *VSCode-Scripts.csproj* and search for \<HintPath> (should be at line 35) and change the path to where **your RBot.exe** is located (this might need VSCode to be restarted);
 9. You can then click the *"Script.cs"* file, wait a bit so Omnisharp can load all references et voi'la, your script has auto complete, but wait!
 10. There is 2 catches:
 
