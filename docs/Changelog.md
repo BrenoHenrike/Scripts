@@ -22,7 +22,7 @@ All files related to converting gbots to scripts have been removed as the final 
 
 The changes that don't need an explanation are listed bellow.
 
-- **Update 17/12/2021 at 17:40 (Thanks to Purple):**
+- **Update 17/12/2021 at 19:09 (EST) - Thanks to Purple:**
   - `ScriptInterface#Options.SetFPS` added to set the maximum game FPS;
   - `ScriptInterface#Options.ShowFPS()` added to toggle the FPS counter;
   - Upgrade, Staff, FPS Counter and Set FPS Cap in the Bot Options now work as intended.
