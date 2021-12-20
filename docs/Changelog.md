@@ -28,7 +28,7 @@ The changes that don't need an explanation are listed bellow.
   - Upgrade, Staff, FPS Counter and Set FPS Cap in the Bot Options now work as intended.
 
 - Shift + 3 opens the *"Run"* window, it was always there, just documenting it for who don't know yet;
-- Logs now are also in the *"Scripts"* window and don't need the window to be opened;
+- Logs now are also in the *"Scripts"* window and don't need the window to be opened (Right click to Clear/Save);
 - Events are cleared when the script stops, also added missing events from the clear method;
 - Stopping a script will disable the options: LagKiller, AutoRelogin, AggroMonsters, AggroAllMonsters and SkipCutscenes;
 - Possible fix for hunting not working for some people;
