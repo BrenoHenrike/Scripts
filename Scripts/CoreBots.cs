@@ -740,12 +740,8 @@ public class CoreBots
 	/// </summary>
 	public void Rest()
 	{
-		if (Bot.Player.Mana < 30 && ShouldRest)
-		{
-			Bot.Player.Rest(true);
-			while (Bot.Player.Mana < 90)
-				Bot.Sleep(2000);
-		}
+		if (ShouldRest)
+            Bot.Player.Rest(true);
 	}
 
 	public void Relogin()
@@ -809,22 +805,27 @@ public class CoreBots
 
 	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
 	{
-		while (!Bot.ShouldExit()
-			&& (tempItem || !Bot.Inventory.Contains(item, quantity))
-			&& (!tempItem || !Bot.Inventory.ContainsTempItem(item, quantity)))
+		while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
 		{
-			Bot.Player.Kill(name);
-			Bot.Player.Pickup(item);
+            if(CheckInventory(item, quantity))
+                return;
+            Bot.Player.Kill(name);
+			if (!tempItem)
+			{
+				Bot.Player.Pickup(item);
+				if (rejectElse)
+					Bot.Player.RejectExcept(item);
+			}
 			Rest();
 		}
 	}
 
 	private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
 	{
-		while (!Bot.ShouldExit()
-				&& (tempItem || !Bot.Inventory.Contains(item, quantity))
-				&& (!tempItem || !Bot.Inventory.ContainsTempItem(item, quantity)))
+		while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
 		{
+            if (CheckInventory(item, quantity))
+                return;
 			Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
 			if (!tempItem)
 			{
