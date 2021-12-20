@@ -619,6 +619,7 @@ public class CoreBots
 		if (item != null && CheckInventory(item, quant))
 			return;
 		Bot.Player.Join(map);
+        Bot.Wait.ForMapLoad(map);
 		Jump(cell, pad);
 		Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
 		if (item == null)
@@ -649,7 +650,8 @@ public class CoreBots
 		if (item != null && CheckInventory(item, quant))
 			return;
 		Bot.Player.Join(map);
-		if (item == null)
+        Bot.Wait.ForMapLoad(map);
+        if (item == null)
 		{
 			Logger($"Hunting {monster}");
 			Bot.Player.Hunt(monster);
@@ -764,12 +766,12 @@ public class CoreBots
 		Bot.Options.AutoRelogin = autoRelogSwitch;
 	}
 
-	ClassType lastClass = ClassType.None;
+	ClassType currentClass = ClassType.None;
 	bool usingSoloGeneric = false;
 	bool usingFarmGeneric = false;
 	public void EquipClass(ClassType classToUse)
 	{
-		if(lastClass == classToUse)
+		if(currentClass == classToUse)
 			return;
 		switch (classToUse)
 		{
@@ -780,7 +782,7 @@ public class CoreBots
 					return;
 				}
 				_EquipClass(FarmClass);
-				if(lastClass != ClassType.Farm)
+				if(currentClass != ClassType.Farm)
 				{
 					SkillTimeout = FarmClassSkillTimeout;
 					UseSkills(FarmClassSkills);
@@ -793,14 +795,14 @@ public class CoreBots
 					return;
 				}
 				_EquipClass(SoloClass);
-				if(lastClass != ClassType.Solo)
+				if(currentClass != ClassType.Solo)
 				{
 					SkillTimeout = SoloClassSkillTimeout;
 					UseSkills(SoloClassSkills);
 				}
 				break;
 		}
-		lastClass = classToUse;
+		currentClass = classToUse;
 	}
 
 	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
@@ -817,7 +819,9 @@ public class CoreBots
 					Bot.Player.RejectExcept(item);
 			}
 			Rest();
-		}
+            if(currentClass == ClassType.Solo)
+                Bot.Sleep(ActionDelay);
+        }
 	}
 
 	private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
@@ -834,6 +838,8 @@ public class CoreBots
 					Bot.Player.RejectExcept(item);
 			}
 			Rest();
+            if (currentClass == ClassType.Solo)
+                Bot.Sleep(ActionDelay);
 		}
 	}
 
