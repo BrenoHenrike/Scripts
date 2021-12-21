@@ -129,7 +129,7 @@ Now your bot will use the defined class and skills when needed.
 - If prompted to replace your files, click **_Yes_**;
 - All should be good to use now!
 
-> **Note:** The current latest RBot version is my 3.6.1 which you can [download here](https://github.com/BrenoHenrike/RBot/releases).
+> **Note:** The current latest RBot version (as long as I update it) can be [downloaded here](https://github.com/BrenoHenrike/RBot/releases).
 
 **Q:** I try to run CoreBots/Dailys/Farms and get an error, what do I do?  
 **A:** All files starting with **"*Core*"** aren't bots, they are used by bots.
