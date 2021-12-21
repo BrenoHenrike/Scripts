@@ -117,9 +117,9 @@ public class TestPlugin : RPlugin
     {
         // We set and add it to RBot main menu, 
         // the button text will be "Test Plugin"
-        menuItem = RBot.Forms.Main.MainMenu.Items.Add("Test Plugin");
+        menuItem = RBot.Forms.Main.Plugins.DropDownItems.Add("Test Plugin");
         // When we click in the button it will call MenuItem_Click method
-		menuItem.Click += MenuItem_Click;
+        menuItem.Click += MenuItem_Click;
     }
 
     private void MenuItem_Click(object sender, EventArgs e)
@@ -145,7 +145,7 @@ public class TestPlugin : RPlugin
         // When unloading we remove the event handler
         menuItem.Click -= MenuItem_Click;
         // Remove it from the main menu
-        RBot.Forms.Main.MainMenu.Items.Remove(menuItem);
+        RBot.Forms.Main.Plugins.DropDownItems.Remove(menuItem);
     }
 }
 ```

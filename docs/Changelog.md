@@ -1,9 +1,11 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [3.6.3](#363)
+    - [Changes and fixes](#changes-and-fixes)
   - [3.6.2](#362)
     - [Removed](#removed)
-    - [Changes and fixes](#changes-and-fixes)
+    - [Changes and fixes](#changes-and-fixes-1)
     - [House Items](#house-items)
     - [Wait Override](#wait-override)
     - [Jump overlay](#jump-overlay)
@@ -11,6 +13,35 @@
     - [Advanced Skills](#advanced-skills)
     - [Multiple Options](#multiple-options)
     - [VSCode Setup for C# scripting](#vscode-setup-for-c-scripting)
+
+## 3.6.3
+
+### Changes and fixes
+
+This update was made exclusively by [Purple](https://github.com/SharpTheNightmare). The changes and fixes are listed bellow:
+
+- *"Get scripts"* button now show scripts from [AuQW site](https://auqw.tk/) too, if you filter by author they should appear first;
+- Updates window get its updates from Breno's Github now;
+- New properties to manage your inventory/bank space:
+
+> From `ScriptInterface#Inventory`;
+
+| Property | Description |
+|---|---|
+| `Slots` | The total number of inventory slots the player has. |
+| `UsedSlots` | The number of inventory slots that are currently in use. |
+| `FreeSlots` | The number of free inventory slots the player has. |
+
+Those properties return integers that can help you manage the player inventory in your script.
+
+- **`ScriptInterface#Options`** now has options to change the **`NameColor`** and **`GuildColor`**. Both accepts HEX values (0xFFFFFF);
+- **`ScriptInterface#SendWhisper(string name, string message)`**: Sends a whisper to the specified name;
+- **`ScriptInterface#SendMSGPacket(string message, string sentBy, string messageType)`**: Sends a message in chat. Message type can be: moderator, warning, server, event, guild, zone and whisper;
+- Bot Options (under Options in the main menu) now has visuals of how many slots you have total, free and used;
+- Fixed `ScriptInterface#Bank.UsedSlots` to use the right function;
+- `ScriptInterface#Player.Join` no longer recurse indefinitely, the max amount of recursions is now 3;
+- UI plugins can be added as a dropdown item under Plugins in the main menu ([check Plugins docs](https://brenohenrike.github.io/Rbot-Scripts/Plugins));
+- Various UI updates.
 
 ## 3.6.2
 

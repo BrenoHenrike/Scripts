@@ -13,6 +13,9 @@ You can query and manage the player's inventory through `ScriptInterface#Invento
 | `Items` | *List\<RBot.Items.InventoryItem>* | A list of the items in the player's inventory. |
 | `TempItems` | *List\<RBot.Items.ItemBase>* | A list of items in the player's temporary inventory. |
 | `CurrentClass` | *RBot.Items.InventoryItem* | The player's current equipped class. |
+| `Slots` | *int* | The total number of inventory slots the player has. |
+| `UsedSlots` | *int* | The number of inventory slots that are currently in use. |
+| `FreeSlots` | *int* | The number of free inventory slots the player has. |
 
 ### Inventory Methods
 
