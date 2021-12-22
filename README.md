@@ -16,7 +16,7 @@ Pix: bhenrike@protonmail.com
 
 ## To do
 
-- Make a script assistant interface like Grimoire (easy to use) ([$70/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- Make a script assistant interface like Grimoire (easy to use) ([$75/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizing CoreBots
 
