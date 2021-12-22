@@ -13,6 +13,9 @@
     - [Advanced Skills](#advanced-skills)
     - [Multiple Options](#multiple-options)
     - [VSCode Setup for C# scripting](#vscode-setup-for-c-scripting)
+  - [3.6.1](#361)
+    - [Fixes](#fixes)
+    - [Added](#added)
 
 ## 3.6.3
 
@@ -284,3 +287,20 @@ The first 2 lines will set autosave to each 10 seconds (optional). The csproj on
 <p align="center"><img src="https://imgur.com/b87R9bu.png"></p>
 
 Now we are finished, if you don't like the default dark mode of VSCode you can always download themes in the Extensions tab, some nice dark mode themes are [listed here](https://medium.com/for-self-taught-developers/15-best-vscode-themes-for-dark-mode-awesomeness-82e079caf913).
+
+## 3.6.1
+
+### Fixes
+
+- New weapon categories added to fix inventory/bank grabber;
+- Jump window updates properly when changing map;
+- [Patterns](https://brenohenrike.github.io/Rbot-Scripts/Skills#patterns) work as they should (Read the link to see how to use);
+
+### Added
+
+- Some more bot.Lite options;
+- ShouldUseSkill from ISkillProvider now accepts null, this allows skills from your custom SkillProvider to be skipped;
+- Button "Open Logs" added to Scripts window;
+- Holding Ctrl when clicking "Load Script" in the Scripts window will open the Scripts folder;
+- Multiple packets from Logger and Interceptor can be copied at the same time;
+- In the Spammer window, holding Ctrl when clicking "Add" button will add anything from the clipboard.
