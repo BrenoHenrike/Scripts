@@ -16,7 +16,7 @@ Pix: bhenrike@prontonmail.com
 
 ## A fazer
 
-- Criar uma interface de bots parecida com o Grimoire (fácil de usar) ([$75/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- Criar uma interface de bots parecida com o Grimoire (fácil de usar) ([$85/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizando CoreBots
 
@@ -41,21 +41,23 @@ public bool AntiLag { get; set; } = true;
 public int SkillTimer { get; set; } = 100;
 // [Pode Mudar] Nome da sua classe de solo
 public string SoloClass { get; set; } = "Generic";
-// [Pode Mudar] (Use o Core Skill plugin) Sequência de skills da class de solo
+// [Pode Mudar] (Use o Skills > Advanced) Sequência de skills da class de solo
 public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-// [Pode Mudar] (Use o Core Skill plugin) SkillTimeout da classe de solo
+// [Pode Mudar] (Use o Skills > Advanced) SkillTimeout da classe de solo
 public int SoloClassSkillTimeout { get; set; } = 150;
 // [Pode Mudar] Nome da sua classe de farm
 public string FarmClass { get; set; } = "Generic";
-// [Pode Mudar] (Use o Core Skill plugin) Sequência de skills da classe de farm
+// [Pode Mudar] (Use o Skills > Advanced) Sequência de skills da classe de farm
 public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-// [Pode Mudar] (Use o Core Skill plugin) SkillTimeout da classe de farm
+// [Pode Mudar] (Use o Skills > Advanced) SkillTimeout da classe de farm
 public int FarmClassSkillTimeout { get; set; } = 1;
 // [Pode Mudar] Algumas Sagas utilizam a aliança do seu personagem para receber pontos de rep extra, mude a sua preferência (Alignment.Evil ou Alignment.Good).
 public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 ```
 
 ## Core Skill Plugin
+
+> **Nas versões a partir do RBot 3.6.2, Core Skills foram implementadas como Advanced skills então você não precisa utilizar mais o plugin (clique em Skills > Advanced).**
 
 Se você quer utilizar sequências de skill específicas para sua classe de solo ou farm, esse plugin vai the ajudar a criar a sequência que você quiser. Abaixo eu te guiarei em como criar uma sequência para a Void HighLord.
 
@@ -129,7 +131,7 @@ Agora seus bots irão utilizar a classe e skills definidas quando necessário.
 - Caso apareça uma mensagem perguntando se você quer substituir os arquivos, clique em **_Sim_**;
 - Agora é só utilizar os scripts!
 
-> **Nota:** A versão mais recente do RBot é a 3.6.1 que você pode [baixar aqui](https://github.com/BrenoHenrike/RBot/releases).
+> **Nota:** A versão mais recente do RBot você pode [baixar aqui](https://github.com/BrenoHenrike/RBot/releases).
 
 **Q:** Quando tento usar CoreBots/Dailys/Farms da erro, o que eu faço?  
 **A:** Arquivos que começam com **"*Core*"** não são bots, são apenas arquivos que os bots usam.
