@@ -2,6 +2,22 @@
 
 While scripting you might stumble uppon different classes and enums that are required for some methods, in this page they all will be listed.
 
+- [Object Classes & Enums](#object-classes--enums)
+  - [Object Classes](#object-classes)
+    - [PlayerInfo](#playerinfo)
+    - [Monster](#monster)
+    - [Quest](#quest)
+    - [ItemBase](#itembase)
+    - [InventoryItem : ItemBase](#inventoryitem--itembase)
+    - [ShopItem : ItemBase](#shopitem--itembase)
+    - [MergeItem : ShopItem](#mergeitem--shopitem)
+    - [SimpleReward : ItemBase](#simplereward--itembase)
+    - [Server](#server)
+  - [Enums](#enums)
+    - [HuntPriority](#huntpriority)
+    - [BoostType](#boosttype)
+    - [ItemCategory](#itemcategory)
+
 ## Object Classes
 
 You might have noted that some methods can either accept or return a class object or even a list of them, for example `ScriptInterface#Map.GetPlayer("name")` will return a `PlayerInfo` object. With those objects you can read, set and use all the available information inside your scripts. The object classes you will find in RBot are listed bellow with their respective namespace and inheritances.

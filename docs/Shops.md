@@ -2,6 +2,10 @@
 
 It is very simple to buy and sell items using `ScriptInterface#Shops`.
 
+- [Shops](#shops)
+  - [Properties](#properties)
+  - [Methods](#methods)
+
 ## Properties
 
 | Property | Return Type | Description |

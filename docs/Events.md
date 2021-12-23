@@ -1,5 +1,8 @@
 # Events
 
+- [Events](#events)
+  - [Listening for Events](#listening-for-events)
+
 The bot can listen for certain events and your script can attach its own listeners to handle these events. This is done through the `ScriptInterface#Events` object.
 
 The following events can be listened for:

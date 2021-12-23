@@ -2,6 +2,13 @@
 
 You can add configurable options to your script easily by giving it an `Options` field which is of type `List<IOption>`.
 
+- [Script Options](#script-options)
+  - [Setting Up](#setting-up)
+    - [Adding configurable Options](#adding-configurable-options)
+    - [Using configured Options](#using-configured-options)
+    - [Enumerated Options](#enumerated-options)
+  - [Manually opening Configuration UI](#manually-opening-configuration-ui)
+
 ## Setting Up
 
 To add configurable options, your script should have a `OptionsStorage` field which is a string that determines the file system location your script's options are saved at. The value of this field should be **unique to your script** to ensure option's don't clash with other scripts. Your script's options will be stored in a file at `options/{OptionsStorage}.cfg`.

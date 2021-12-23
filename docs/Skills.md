@@ -2,6 +2,13 @@
 
 It is recommended you load skills from an XML skills file created from the Skills form. If you would like to manually manage skills in your script, you can do this through `ScriptInterface#Skills`. Manual management is overridden by the UI by default.
 
+- [Skills](#skills)
+  - [Properties](#properties)
+  - [Methods](#methods)
+  - [Skill Use Rules](#skill-use-rules)
+  - [Patterns](#patterns)
+  - [Advanced Skills](#advanced-skills)
+
 ## Properties
 
 The following properties can be modified to change the behaviour of the skill timer thread:
@@ -121,7 +128,7 @@ bot.Skills.ClearPattern();
 
 **Note:** The execution state of skill patterns are reseted when the player has no target (i.e. the skill timer starts again from the beginning of the pattern definition file when the player loses their target, and targets another monster).
 
-### Advanced Skills
+## Advanced Skills
 
 In RBot 3.6.2 you are able to set up advanced skills that allow you to manage how your skills are used. This way you can create skill sequences for any class that wasn't possible before, in special Chronos. The Advanced Skill is an implementation of the Core Skill Plugin for RBot with small changes. Bellow I will attach the guide I made for the plugin creating a sequence for Void Highlord, after it I will add explanation for the save menu.
 

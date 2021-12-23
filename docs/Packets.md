@@ -1,5 +1,9 @@
 # Packets
 
+- [Packets](#packets)
+  - [Sending to Server](#sending-to-server)
+  - [Simulating Server Packets](#simulating-server-packets)
+
 ## Sending to Server
 
 Packets can be sent from the client to the server easily through `ScriptInterface#SendPacket`. For example, to send the rest packet, you can use:

@@ -1,5 +1,13 @@
 # Examples
 
+- [Examples](#examples)
+  - [Design and Layout](#design-and-layout)
+    - [Repeating the Quest](#repeating-the-quest)
+    - [Hunting multiple monsters](#hunting-multiple-monsters)
+    - [Hunting for multiple items](#hunting-for-multiple-items)
+    - [Setting up relogin](#setting-up-relogin)
+  - [Legion Fealty 1](#legion-fealty-1)
+
 ## Design and Layout
 
 Let's say a quest had ID `1`, and required `Required Item 1 x 10` and `Required Item 2 x 5` which were dropped by `Monster 1` and `Monster 2` respectively in map `example1`. The reward for the quest is called `Reward Item`. A typical script to complete this quest once would look like this:

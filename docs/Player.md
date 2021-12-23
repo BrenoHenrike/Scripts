@@ -2,6 +2,11 @@
 
 Most of the bot's functionality is called through `ScriptInterface#Player`. There are many methods for movement, combat and properties that can be examined.
 
+- [Player](#player)
+  - [Properties](#properties)
+  - [Methods](#methods)
+  - [Examples](#examples)
+
 ## Properties
 
 | Property | Type | Description |

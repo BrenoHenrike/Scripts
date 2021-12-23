@@ -2,6 +2,14 @@
 
 If you enable `SafeTimings` as recommended, you can ignore most of this document. The `ScriptWait` class has many methods useful for pausing the bot's execution until a desired condition is met.
 
+- [Timings & Handlers](#timings--handlers)
+  - [Sleeping](#sleeping)
+  - [Waiting](#waiting)
+    - [Examples](#examples)
+  - [Handlers and Scheduling](#handlers-and-scheduling)
+    - [Handlers](#handlers)
+    - [Scheduling](#scheduling)
+
 ## Sleeping
 
 If you would simply like to pause exeuction for a specific length of time, you can do this easily using:

@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [3.6.3.1 (Small Changes)](#3631-small-changes)
   - [3.6.3](#363)
     - [Changes and fixes](#changes-and-fixes)
   - [3.6.2](#362)
@@ -16,6 +17,12 @@
   - [3.6.1](#361)
     - [Fixes](#fixes)
     - [Added](#added)
+
+## 3.6.3.1 (Small Changes)
+
+- Any Kill/HuntForItem method will now wait a maximum of 750ms after killing a monster if you don't have the item in inventory. The reason is the new AQW drop update that can delay the showing of the drops by 500-1500ms making you kill bosses more than necessary (this will most likely be removed when they fix the drop delay);
+- Ctrl clicking the _"Edit Script"_ button of **Script window** will open a default script in the Script Editor;
+- Cleared assemblies of the final folder, now they all belong to a separated folder.
 
 ## 3.6.3
 

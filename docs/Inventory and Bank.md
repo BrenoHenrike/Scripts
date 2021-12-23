@@ -2,6 +2,15 @@
 
 The player's inventory and bank can be managed through `ScriptInterface#Inventory` and `ScriptInterface#Bank` respectively.
 
+- [Inventory and Bank](#inventory-and-bank)
+  - [Inventory](#inventory)
+    - [Inventory Properties](#inventory-properties)
+    - [Inventory Methods](#inventory-methods)
+  - [Bank](#bank)
+    - [Bank Properties](#bank-properties)
+    - [Bank Methods](#bank-methods)
+  - [Notes](#notes)
+
 ## Inventory
 
 You can query and manage the player's inventory through `ScriptInterface#Inventory`.

@@ -3,6 +3,11 @@
 The bot has a range of options that can be changed through the `ScriptInterface`. Some of these options can be changed through the UI as well (Options > Bot Options). Changes to options in a script will update their state in the UI accordingly.
 Also there is `Lite` options that let you set the new **Advanced Options** in game.
 
+- [Options & Lite](#options--lite)
+  - [ScriptInterface#Options](#scriptinterfaceoptions)
+  - [ScriptInterface#Lite](#scriptinterfacelite)
+  - [Setting options](#setting-options)
+
 ## ScriptInterface#Options
 
 | Definition | Type | Description |  

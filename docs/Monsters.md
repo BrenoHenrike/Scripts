@@ -2,6 +2,10 @@
 
 Information about monsters in the current map and cell can be obtained through `ScriptInterface#Monsters`. This is useful for testing if monsters exist or exist with specific conditions about their health or other properties.
 
+- [Monsters](#monsters)
+  - [Properties](#properties)
+  - [Methods](#methods)
+
 ## Properties
 
 The class has the following properties:

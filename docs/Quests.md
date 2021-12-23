@@ -2,6 +2,10 @@
 
 Quests can be loaded, accepted and completed through `ScriptInterface#Quests`.
 
+- [Quests](#quests)
+  - [Properties](#properties)
+  - [Methods](#methods)
+
 ## Properties
 
 | Properties | Type | Description |

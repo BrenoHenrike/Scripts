@@ -2,6 +2,10 @@
 
 Information about the currently loaded map (room) can be obtained through the `ScriptInterface#Map` object.
 
+- [Map](#map)
+  - [Properties](#properties)
+  - [Methods](#methods)
+
 ## Properties
 
 | Property | Type | Description |
