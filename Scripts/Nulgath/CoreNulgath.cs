@@ -489,7 +489,7 @@ public class CoreNulgath
 			if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
                 Core.EnsureAccept(599);
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
-			while (Bot.Inventory.Contains("Tainted Core"))
+			while (Core.CheckInventory("Tainted Core"))
 			{
 				Core.EnsureComplete(609);
 				Bot.Wait.ForDrop("Escherion's Helm");
@@ -502,9 +502,12 @@ public class CoreNulgath
 			}
 			if(Core.CheckInventory("Oblivion Blade of Nulgath") || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
 			{
-				while(Bot.Inventory.Contains("Tainted Soul"))
+				while(Core.CheckInventory("Tainted Soul"))
 				{
-	                Core.EnsureComplete(609);
+                    if (Core.CheckInventory("Oblivion Blade of Nulgath"))
+                        Core.EnsureComplete(2561);
+                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                        Core.EnsureComplete(599);
 	                Bot.Wait.ForDrop("Escherion's Helm");
 	                Bot.Player.Pickup("Escherion's Helm");
 	                Core.EnsureComplete(2857);
@@ -512,9 +515,9 @@ public class CoreNulgath
 	                Core.EnsureAccept(2857);
 	                Bot.Sleep(Core.ActionDelay);
 	                if (Core.CheckInventory("Oblivion Blade of Nulgath"))
-	                    Core.ChainComplete(2561);
-	                if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-	                    Core.ChainComplete(599);
+	                    Core.EnsureAccept(2561);
+	                else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+	                    Core.EnsureAccept(599);
 	                Bot.Sleep(Core.ActionDelay);
 	                Core.Logger($"Completed x{i++}");
 				}

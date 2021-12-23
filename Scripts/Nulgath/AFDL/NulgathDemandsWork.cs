@@ -23,21 +23,18 @@ public class NulgathDemandsWork
 
 	public void Unidentified35()
 	{
-		if (Core.CheckInventory("Unidentified 35"))
-			return;
+		if (Core.CheckInventory(new[] { "Unidentified 35", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" }))
+            return;
 
-		Core.AddDrop(Nulgath.bagDrops);
+        Core.AddDrop(Nulgath.bagDrops);
 		Core.AddDrop("Unidentified 35", "Archfiend Essence Fragment", "Unidentified 27", "Unidentified 26",
 			"Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
 		int i = 0;
-		while (!Core.CheckInventory("DoomLord's War Mask", toInv: false)
-				|| !Core.CheckInventory("ShadowFiend Cloak", toInv: false)
-				|| !Core.CheckInventory("Locks of the DoomLord", toInv: false)
-				|| !Core.CheckInventory("Doomblade of Destruction", toInv: false)
-				|| !Core.CheckInventory("Unidentified 35"))
+		while (!Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction", "Unidentified 35" }, toInv: false))
 		{
-			if (Core.CheckInventory("Archfiend Essence Fragment", 9))
+			if (Core.CheckInventory("Archfiend Essence Fragment", 9) 
+                && Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" }))
 				break;
 
 			WillpowerExtraction.Unidentified34(10);
@@ -77,22 +74,10 @@ public class NulgathDemandsWork
 			}
 			
 			Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
-			Bot.Sleep(Core.ActionDelay);
-			if (!Bot.Quests.CanComplete(5259))
-				Core.Relogin();
-			else if (!Core.CheckInventory("DoomLord's War Mask", toInv: false))
-				Core.EnsureComplete(5259, 35399);
-			else if (!Core.CheckInventory("ShadowFiend Cloak", toInv: false))
-				Core.EnsureComplete(5259, 35400);
-			else if (!Core.CheckInventory("Locks of the DoomLord", toInv: false))
-				Core.EnsureComplete(5259, 35401);
-			else if (!Core.CheckInventory("Doomblade of Destruction", toInv: false))
-				Core.EnsureComplete(5259, 35398);
-			else
-				Core.EnsureComplete(5259, 35399);
-			Bot.Player.Pickup("DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction", "Unidentified 35", "Archfiend Essence Fragment");
 
-			Core.Logger($"Completed x{i}");
+            Core.EnsureCompleteChoose(5259, new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" });
+
+            Core.Logger($"Completed x{i}");
 			i++;
 		}
 
@@ -102,6 +87,5 @@ public class NulgathDemandsWork
 			Bot.Player.Jump("Swindle", "Left");
             Core.BuyItem("tercessuinotlim", 1951, 35770);
 		}
-		
 	}
 }

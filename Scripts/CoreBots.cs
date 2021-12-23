@@ -45,16 +45,13 @@ public class CoreBots
 	// [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
 	public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
-	// The timeout in multiples of SkillTimer milliseconds before skipping the current unavailable skill when using SkillMode.Wait.
-	public int SkillTimeout { get; set; } = 1;
+
 	// Whether the player is Member
 	public bool IsMember => ScriptInterface.Instance.Player.IsMember;
 
 	private static CoreBots _instance;
 	public static CoreBots Instance => _instance ?? (_instance = new CoreBots());
 	public ScriptInterface Bot => ScriptInterface.Instance;
-	private CoreSkillProvider _Provider = new CoreSkillProvider();
-	private Thread _SkillThread;
 
 	public List<ItemBase> CurrentRequirements = new List<ItemBase>();
 
@@ -74,7 +71,7 @@ public class CoreBots
 		Bot.Drops.RejectElse = changeTo;
 		Bot.Lite.UntargetDead = changeTo;
 		Bot.Lite.UntargetSelf = changeTo;
-		Bot.SetGameObject("litePreference.data.bReaccept", false);
+        Bot.Lite.ReacceptQuest = false;
 
 		if (changeTo)
 		{
@@ -94,7 +91,7 @@ public class CoreBots
 				{
 					FlashUtil.Call("skipCutscenes");
 					b.Sleep(1500);
-					b.Player.Jump("Enter", "Spawn");
+					b.Map.Reload();
 				}
 			}, "Skip Cutscenes");
 
@@ -150,18 +147,20 @@ public class CoreBots
 	/// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
 	public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
 	{
-		InventoryItem item = Bot.Bank.BankItems.Find(i => i.ID == itemID);
-		if (item == null)
+		InventoryItem itemBank = Bot.Bank.BankItems.Find(i => i.ID == itemID);
+		InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
+		ItemBase itemTempInv = Bot.Inventory.TempItems.Find(i => i.ID == itemID);
+		if (itemBank == null && itemInv == null && itemTempInv == null)
 			return false;
-		if (item.Temp && Bot.Inventory.ContainsTempItem(item.Name, quant))
+		if (itemTempInv != null && Bot.Inventory.ContainsTempItem(itemTempInv.Name, quant))
 			return true;
-		if (!item.Temp && Bot.Bank.Contains(item.Name))
+		if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
 		{
 			if (!toInv)
 				return true;
-			Unbank(item.Name);
+			Unbank(itemBank.Name);
 		}
-		if (!item.Temp && Bot.Inventory.Contains(item.Name, quant))
+		if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
 			return true;
 		
 		return false;
@@ -334,7 +333,7 @@ public class CoreBots
 				Bot.Sleep(ActionDelay);
 			}
 
-		Logger($"{(quant == 0 ? "" : quant.ToString())}{itemName} sold");
+		Logger($"{(all ? "" : quant.ToString())} {itemName} sold");
 	}
 	#endregion
 
@@ -654,8 +653,8 @@ public class CoreBots
         if (item == null)
 		{
 			Logger($"Hunting {monster}");
-			Bot.Player.Hunt(monster);
-			Rest();
+            Bot.Player.Hunt(monster);
+            Rest();
 		}
 		else
 		{
@@ -716,19 +715,23 @@ public class CoreBots
 			StopBot(true);
 	}
 
-	/// <summary>
-	/// Creates a Message Box with the desired text and caption
-	/// </summary>
-	/// <param name="message">Message to display</param>
-	/// <param name="caption">Title of the box</param>
-	public void Message(string message, string caption) => MessageBox.Show(message, caption);
+    /// <summary>
+    /// Creates a Message Box with the desired text and caption
+    /// </summary>
+    /// <param name="message">Message to display</param>
+    /// <param name="caption">Title of the box</param>
+    public void Message(string message, string caption)
+    {
+        if(DialogResult.OK == MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0x40000))
+            return;
+    }
 
-	/// <summary>
-	/// Send a packet to the server the desired amount of times
-	/// </summary>
-	/// <param name="packet">Packet to send</param>
-	/// <param name="times">How many times to send</param>
-	public void SendPackets(string packet, int times = 1)
+    /// <summary>
+    /// Send a packet to the server the desired amount of times
+    /// </summary>
+    /// <param name="packet">Packet to send</param>
+    /// <param name="times">How many times to send</param>
+    public void SendPackets(string packet, int times = 1)
 	{
 		for (int i = 0; i < times; i++)
 		{
@@ -783,10 +786,7 @@ public class CoreBots
 				}
 				_EquipClass(FarmClass);
 				if(currentClass != ClassType.Farm)
-				{
-					SkillTimeout = FarmClassSkillTimeout;
-					UseSkills(FarmClassSkills);
-				}
+                    Bot.Skills.StartAdvanced(FarmClassSkills, FarmClassSkillTimeout);
 				break;
 			default:
 				if(usingSoloGeneric && !usingFarmGeneric)
@@ -796,10 +796,7 @@ public class CoreBots
 				}
 				_EquipClass(SoloClass);
 				if(currentClass != ClassType.Solo)
-				{
-					SkillTimeout = SoloClassSkillTimeout;
-					UseSkills(SoloClassSkills);
-				}
+                    Bot.Skills.StartAdvanced(SoloClassSkills, SoloClassSkillTimeout);
 				break;
 		}
 		currentClass = classToUse;
@@ -814,13 +811,13 @@ public class CoreBots
             Bot.Player.Kill(name);
 			if (!tempItem)
 			{
+                if (currentClass == ClassType.Solo)
+                    Bot.Sleep(ActionDelay);
 				Bot.Player.Pickup(item);
 				if (rejectElse)
 					Bot.Player.RejectExcept(item);
 			}
 			Rest();
-            if(currentClass == ClassType.Solo)
-                Bot.Sleep(ActionDelay);
         }
 	}
 
@@ -833,13 +830,13 @@ public class CoreBots
 			Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
 			if (!tempItem)
 			{
+                if (currentClass == ClassType.Solo)
+                    Bot.Sleep(ActionDelay);
 				Bot.Player.Pickup(item);
 				if (rejectElse)
 					Bot.Player.RejectExcept(item);
 			}
 			Rest();
-            if (currentClass == ClassType.Solo)
-                Bot.Sleep(ActionDelay);
 		}
 	}
 
@@ -884,10 +881,12 @@ public class CoreBots
 		if(removeStopHandler)
 			Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
 		Bot.Player.Join("battleon");
-		StopTimer();
-		Bot.SetGameObject("stage.frameRate", 30);
-		if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-			Bot.CallGameFunction("world.toggleMonsters");
+		if (AntiLag)
+        {
+            Bot.SetGameObject("stage.frameRate", 60);
+            if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                Bot.CallGameFunction("world.toggleMonsters");
+        }
 		Bot.Options.PrivateRooms = false;
 		Bot.Options.AutoRelogin = false;
 		Bot.Options.LagKiller = false;
@@ -974,216 +973,7 @@ public class CoreBots
 		}
 	}
 	#endregion
-
-	#region Skill Thread
-	public void StartTimer()
-	{
-		if (_SkillThread == null)
-		{
-			_SkillThread = new Thread(_Timer) { Name = "Core Skill Timer" };
-			_SkillThread.Start();
-		}
-	}
-
-	public void StopTimer()
-	{
-		_Provider?.Stop(Bot);
-		_SkillThread?.Join(1000);
-		if (_SkillThread?.IsAlive ?? false)
-			_SkillThread.Abort();
-		_SkillThread = null;
-	}
-
-	public void UseSkills(string skills)
-	{
-		StopTimer();
-		_Provider?.Load(skills);
-		StartTimer();
-	}
-
-	private void _Timer()
-	{
-		while (!Bot.ShouldExit() && Bot.Player.LoggedIn)
-		{
-			if (Bot.Player.HasTarget)
-				_Poll();
-			_Provider?.OnTargetReset(Bot);
-			Thread.Sleep(SkillTimer);
-		}
-	}
-
-	private int _lastRank = -1;
-	private SkillInfo[] _lastSkills;
-	private void _Poll()
-	{
-		int rank = Bot.Player.Rank;
-		if (rank > _lastRank && _lastRank != -1)
-		{
-			using (FlashArray<object> skills = FlashObject<object>.Create("world.actions.active").ToArray())
-			{
-				int k = 0;
-				foreach (FlashObject<object> skill in skills)
-				{
-					using (FlashObject<long> ts = skill.GetChild<long>("ts"))
-						ts.Value = _lastSkills[k++].LastUse;
-				}
-			}
-		}
-		_lastRank = rank;
-		_lastSkills = Bot.Player.Skills;
-		if(_Provider.ShouldUseSkill(Bot) == true)
-		{
-			int skilltrue = _Provider.GetNextSkill(Bot, out SkillMode modetrue);
-			switch (modetrue)
-			{
-				case SkillMode.Optimistic:
-					if (Bot.Player.CanUseSkill(skilltrue))
-						Bot.Player.UseSkill(skilltrue);
-					break;
-				case SkillMode.Wait:
-					if (skilltrue > 0)
-					{
-						Bot.Wait.ForTrue(() => Bot.Player.CanUseSkill(skilltrue), SkillTimeout, SkillTimer);
-						Bot.Player.UseSkill(skilltrue);
-					}
-					break;
-			}
-		}
-		else if(_Provider.ShouldUseSkill(Bot) == null)
-			_Provider.GetNextSkill(Bot, out SkillMode modeNull);
-	}
-	#endregion
 }
-
-#region Core Skill Provider
-public class CoreSkillProvider
-{
-	public CoreSkillCommand Root { get; set; } = new CoreSkillCommand();
-	public bool ResetOnTarget { get; set; } = false;
-	public SkillMode Mode { get; set; } = SkillMode.Wait;
-
-	public int GetNextSkill(ScriptInterface bot, out SkillMode mode)
-	{
-		mode = Mode;
-		return Root.GetNextSkill(bot);
-	}
-
-	public void Load(string file)
-	{
-		char[] separators = { '|', ':', ';', '/' };
-		string[] commands = file.ToLower().Trim().Split(separators);
-		foreach (string command in commands)
-		{
-			if(command.Contains("reset"))
-			{
-				if(command.Contains("false"))
-					ResetOnTarget = false;
-			}
-			else if(command.Contains("mode"))
-			{
-				if(command.Contains("opt"))
-					Mode = SkillMode.Optimistic;
-			}
-			else
-			{
-				int.TryParse(command.Trim().Substring(0, 1), out int skill);
-				string useRules;
-				if (command.Trim().Length <= 1)
-					useRules = "";
-				else
-					useRules = command.Substring(2).Trim();
-
-				Root.Skills.Add(skill);
-				Root.UseRule.Add(useRules);
-			}
-		}
-	}
-	public void OnTargetReset(ScriptInterface bot)
-	{
-		if (ResetOnTarget && !bot.Player.HasTarget)
-			Root.Reset();
-	}
-	public bool? ShouldUseSkill(ScriptInterface bot) => Root.ShouldUse(bot);
-	public void Stop(ScriptInterface bot) => Root.Reset();
-}
-
-public class CoreSkillCommand
-{
-	public List<int> Skills { get; set; } = new List<int>();
-	public List<string> UseRule { get; set; } = new List<string>();
-
-	private int _Index = 0;
-
-	public int GetNextSkill(ScriptInterface bot)
-	{
-		int skill = Skills[_Index];
-		_Index++;
-		if(_Index >= Skills.Count)
-			_Index = 0;
-
-		return skill;
-	}
-
-	public bool? ShouldUse(ScriptInterface bot)
-	{
-		if(string.IsNullOrWhiteSpace(UseRule[_Index]))
-			return true;
-		string[] useRules = UseRule[_Index].Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-		bool shouldUse = true;
-		bool skip = UseRule[_Index].Contains("s");
-		foreach (string useRule in useRules)
-		{
-			int.TryParse(RemoveLetters(useRule), out int result);
-			if(useRule.Contains("h"))
-			{
-				if(result > 100)
-					result = 100;
-				if(useRules.Contains(">"))
-					shouldUse = HealthUseRule(bot, true, result);
-				else
-					shouldUse = HealthUseRule(bot, false, result);
-			}
-			else if(useRule.Contains("m"))
-			{
-				if(result > 100)
-					result = 100;
-				if(useRules.Contains(">"))
-					shouldUse = ManaUseRule(bot, true, result);
-				else
-					shouldUse = ManaUseRule(bot, false, result);
-			}
-			else if(useRule.Contains("w"))
-				WaitUseRule(bot, result);
-			if(skip && !shouldUse)
-				return null;
-			if(!shouldUse)
-				break;
-		}
-		return shouldUse;
-	}
-
-	private string RemoveLetters(string userule) => Regex.Replace(userule, "[^0-9.]", "");
-
-	private bool HealthUseRule(ScriptInterface bot, bool greater, int health)
-	{
-		float ratio = (float)bot.Player.Health / (float)bot.Player.MaxHealth * 100.0f;
-		if(greater)
-			return health >= ratio;
-		return health <= ratio;
-	}
-
-	private bool ManaUseRule(ScriptInterface bot, bool greater, int mana)
-	{
-		if(greater)
-			return bot.Player.Mana >= mana;
-		return bot.Player.Mana <= mana;
-	}
-
-	private void WaitUseRule(ScriptInterface bot, int time) => Thread.Sleep(time);
-
-	public void Reset() => _Index = 0;
-}
-#endregion
 
 public enum Alignment
 {

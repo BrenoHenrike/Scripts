@@ -12,7 +12,8 @@ public class SevenCirclesWarXP
         Core.SetOptions();
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
-        Farm.SevenCirclesWar(wrathEssence: 0, heresySouls: 0);
+        // Change the level to 101 so it will run until you stop it.
+        Farm.SevenCirclesWar(level: 100, wrathEssence: 0, heresySouls: 0);
 
         Core.SetOptions(false);
     }
