@@ -672,7 +672,7 @@ public class CoreNulgath
 			while (!Core.CheckInventory("Blood Gem of the Archfiend", quant))
 				ContractExchange(ChooseReward.BloodGemoftheArchfiend);
 		NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
-		KisstheVoid(30);
+		KisstheVoid(quant);
 	}
 
 	/// <summary>
