@@ -60,32 +60,40 @@ public class CoreBLOD
 	public void UnlockMineCrafting()
 	{
 		if(Bot.Quests.IsUnlocked(2091))
-			return;
+        {
+            Core.Logger("Mine Crafting quest already unlocked, skipping.");
+            return;
+        }
 
 		if(!Bot.Quests.IsUnlocked(2067))
 		{
-			Core.BuyItem("doomwood", 276, "Blinding Light of Destiny Handle");
+            Core.Logger("Quest: Reforging the Blinding Light of Destiny [2066]");
+            Core.BuyItem("doomwood", 276, "Blinding Light of Destiny Handle");
 			Core.ChainComplete(2066);
 		}
 		if(!Bot.Quests.IsUnlocked(2082))
 		{
-			Farm.Gold(15000);
+            Core.Logger("Quest: Secret Order of Undead Slayers [2067]");
+            Farm.Gold(15000);
 			Core.BuyItem("doomwood", 276, "Bonegrinder Medal");
 			Core.ChainComplete(2067);
 		}
 		if(!Bot.Quests.IsUnlocked(2083))
 		{
-			BattleUnderB("Undead Essence", 25);
+            Core.Logger("Quest: Essential Essences [2082]");
+            BattleUnderB("Undead Essence", 25);
 			Core.ChainComplete(2082);
 		}
 		if(!Bot.Quests.IsUnlocked(2084))
 		{
-			BattleUnderB("Bone Dust", 40);
+            Core.Logger("Quest: Bust Some Dust [2083]");
+            BattleUnderB("Bone Dust", 40);
 			Core.ChainComplete(2083);
 		}
 		if(!Bot.Quests.IsUnlocked(2091))
 		{
-			SpiritOrb(100);
+            Core.Logger("Quest: A Loyal Follower [2084]");
+            SpiritOrb(100);
 			Core.EnsureAccept(2084);
 			Core.HuntMonster("timevoid", "Ephemerite", "Celestial Compass");
 			Core.EnsureComplete(2084);
@@ -98,17 +106,18 @@ public class CoreBLOD
 		if(Core.CheckInventory("Spirit Orb", quant))
 			return;
 
-		Core.EquipClass(ClassType.Farm);
 		int i = 1;
-		while (!Core.CheckInventory("Spirit Orb", quant))
+		Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quant} Spirit Orb");
+        while (!Core.CheckInventory("Spirit Orb", quant))
 		{
 			BattleUnderB("Undead Essence", 900);
-			while (Core.CheckInventory("Undead Essence", 25))
+			while (Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
 			{
 				Core.ChainComplete(2082);
 				Core.Logger($"Completed x{i++}");
 			}
-			while (Core.CheckInventory("Bone Dust", 40))
+			while (Core.CheckInventory("Bone Dust", 40) && !Core.CheckInventory("Spirit Orb", quant))
 			{
 				Core.ChainComplete(2083);
 				Core.Logger($"Completed x{i++}");
@@ -179,7 +188,7 @@ public class CoreBLOD
 			return;
 
 		int i = 1;
-		Core.Logger($"Farming {quant} item");
+		Core.Logger($"Farming {quant} {item}");
 		while (!Core.CheckInventory(item, quant))
 		{
 			Core.EnsureAccept(2163);
@@ -211,20 +220,30 @@ public class CoreBLOD
 	public void BlindingMace()
 	{
 		if(Core.CheckInventory("Blinding Mace of Destiny"))
-			return;
+        {
+            Core.Logger("Mace found, skipping.");
+            return;
+        }
 
 		if(!Core.CheckInventory(new[] {"Mace of Destiny", "Bright Mace of Destiny", "Blinding Mace of Destiny"}, any: true))
 		{
-			if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper", "Bright Aura" }, any: true)
-				&& !Core.CheckInventory("Loyal Spirit Orb", 105))
-				SpiritOrb();
+			if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
+				&& !Core.CheckInventory("Bright Aura", 2))
+            {
+                int SOQuantity = 10500 - (Bot.Inventory.GetQuantity("Loyal Spirit Orb") * 100) - (Bot.Inventory.GetQuantity("Bright Aura") * 5000);
+				SpiritOrb(SOQuantity);
+            }
 
 			if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
-				&& !Core.CheckInventory("Loyal Spirit Orb", 105)
 				&& !Core.CheckInventory("Bright Aura", 2))
-				LightMerge("Loyal Spirit Orb", 105);
+            {
+                int LSOQuantity = 105 - (Bot.Inventory.GetQuantity("Bright Aura") * 50);
+                if ((LSOQuantity * 100) > Bot.Inventory.GetQuantity("Spirit Orb"))
+                    SpiritOrb(LSOQuantity * 100);
+				LightMerge("Loyal Spirit Orb", LSOQuantity);
+            }
 
-			if (!Core.CheckInventory(new string[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
+			if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
 				&& !Core.CheckInventory("Bright Aura", 2))
 				LightMerge("Bright Aura", 2);
 
@@ -232,7 +251,8 @@ public class CoreBLOD
 			{
 				if (!Core.CheckInventory("Celestial Copper"))
 				{
-					Core.EnsureAccept(2107);
+                    Core.Logger("Farming for Celestial Copper");
+                    Core.EnsureAccept(2107);
 					BattleUnderB("Undead Energy", 25);
 					Dailys.MineCrafting(new[] { "Copper" });
 					if (!Core.CheckInventory("Copper"))
@@ -246,12 +266,13 @@ public class CoreBLOD
 
 			if (!Bot.Quests.IsUnlocked(2136))
 			{
-				Core.EnsureAccept(2133);
+                Core.Logger("Unlocking Weapon Kit quests");
+                Core.EnsureAccept(2133);
 				Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", 1, false);
 				Core.EnsureComplete(2133);
 			}
-
-			BattleUnderB("Undead Energy", 7);
+            Core.Logger("Farming for Mace of Destiny");
+            BattleUnderB("Undead Energy", 7);
 			BasicWK();
 			AdvancedWK();
 			UltimateWK("Loyal Spirit Orb");
@@ -261,14 +282,16 @@ public class CoreBLOD
 
 		if(Core.CheckInventory("Mace of Destiny"))
 		{
-			AdvancedWK();
+            Core.Logger("Farming for Bright Mace of Destiny");
+            AdvancedWK();
 			UltimateWK("Bright Aura", 2);
 			LightMerge("Bright Mace of Destiny");
 		}
 
 		if(Core.CheckInventory("Bright Mace of Destiny"))
 		{
-			UltimateWK();
+            Core.Logger("Blinding Mace of Destiny");
+            UltimateWK();
 			LightMerge("Bliding Mace of Destiny");
 		}
 	}
@@ -276,7 +299,10 @@ public class CoreBLOD
 	public void BlindingBow()
 	{
 		if(Core.CheckInventory("Blinding Bow of Destiny"))
-			return;
+        {
+            Core.Logger("Bow found, skipping");
+            return;
+        }
 		if(!Core.CheckInventory("Bliding Mace of Destiny"))
 			BlindingMace();
 
@@ -286,7 +312,8 @@ public class CoreBLOD
 			{
 				if (!Core.CheckInventory("Sanctified Silver"))
 				{
-					Core.EnsureAccept(2108);
+                    Core.Logger("Farming for Sanctified Silver");
+                    Core.EnsureAccept(2108);
 					BattleUnderB("Undead Energy", 25);
 					Dailys.MineCrafting(new[] { "Silver" });
 					if (!Core.CheckInventory("Silver"))
@@ -295,13 +322,13 @@ public class CoreBLOD
 					Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
 					Core.EnsureComplete(2108);
 				}
-
-				UltimateWK("Loyal Spirit Orb", 5);
+                Core.Logger("Farming for Sanctified Silver of Destiny");
+                UltimateWK("Loyal Spirit Orb", 5);
 				UltimateWK("Bright Aura", 2);
 				Core.BuyItem("dwarfhold", 434, "Sanctified Silver of Destiny");
 			}
-
-			FindingFragmentsMace();
+            Core.Logger("Farming for Bow of Destiny");
+            FindingFragmentsMace();
 			BattleUnderB("Undead Energy", 17);
 			UltimateWK("Loyal Spirit Orb");
 			UltimateWK("Spirit Orb", 13);
@@ -311,23 +338,27 @@ public class CoreBLOD
 
 		if (Core.CheckInventory("Bow of Destiny"))
 		{
-			UltimateWK("Loyal Spirit Orb", 3);
+            Core.Logger("Farming for Bright Bow of Destiny");
+            UltimateWK("Loyal Spirit Orb", 3);
 			AdvancedWK();
 			LightMerge("Bright Bow of Destiny");
 		}
 
 		if (Core.CheckInventory("Bright Bow of Destiny"))
 		{
-			UltimateWK();
+            Core.Logger("Farming for Blinding Bow of Destiny");
+            UltimateWK();
 			LightMerge("Blinding Bow of Destiny");
 		}
-
 	}
 
 	public void BlindingBlade()
 	{
 		if(Core.CheckInventory("Blinding Blade of Destiny"))
-			return;
+        {
+            Core.Logger("Blade found, skipping.");
+            return;
+        }
 		if(!Core.CheckInventory("Blinding Bow of Destiny"))
 			BlindingBow();
 
@@ -337,7 +368,8 @@ public class CoreBLOD
 			{
 				if (!Core.CheckInventory("Blessed Barium"))
 				{
-					Core.EnsureAccept(2104);
+                    Core.Logger("Farming for Blessed Barium");
+                    Core.EnsureAccept(2104);
 					BattleUnderB("Undead Energy", 25);
 					Dailys.MineCrafting(new[] { "Barium" });
 					if (!Core.CheckInventory("Barium"))
@@ -346,13 +378,13 @@ public class CoreBLOD
 					Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
 					Core.EnsureComplete(2104);
 				}
-
-				FindingFragmentsBow(2);
+                Core.Logger("Farming for Blessed Barium of Doom");
+                FindingFragmentsBow(2);
 				UltimateWK("Loyal Spirit Orb", 5);
 				Core.BuyItem("dwarfhold", 434, "Blessed Barium of Destiny");
 			}
-
-			FindingFragmentsMace();
+            Core.Logger("Farming for Blade of Destiny");
+            FindingFragmentsMace();
 			UltimateWK("Loyal Spirit Orb");
 			UltimateWK("Spirit Orb", 15);
 			BasicWK();
@@ -361,14 +393,16 @@ public class CoreBLOD
 
 		if (Core.CheckInventory("Blade of Destiny"))
 		{
-			FindingFragmentsMace();
+            Core.Logger("Farming for Bright Blade of Destiny");
+            FindingFragmentsMace();
 			AdvancedWK();
 			LightMerge("Bright Blade of Destiny");
 		}
 
 		if (Core.CheckInventory("Bright Blade of Destiny"))
 		{
-			UltimateWK();
+            Core.Logger("Farming for Blinding Blade of Destiny");
+            UltimateWK();
 			LightMerge("Blinding Blade of Destiny");
 		}
 	}
@@ -377,8 +411,8 @@ public class CoreBLOD
 	{
 		if(Core.CheckInventory("Blinding Light of Destiny"))
 			return;
-
-		FindingFragmentsBow(125);
+        Core.Logger("Final part");
+        FindingFragmentsBow(125);
 		FindingFragmentsMace(75);
 		FindingFragmentsBlade(500, 250);
 		int i = 1;
@@ -394,8 +428,6 @@ public class CoreBLOD
 		Bot.Player.Pickup("Get Your Blinding Light of Destiny");
 	}
 
-
-
 	public void FindingFragmentsMace(int quant = 1)
 	{
 		if(Core.CheckInventory("Brilliant Aura", quant))
@@ -405,7 +437,8 @@ public class CoreBLOD
 
 		int i = 1;
 		Core.EquipClass(ClassType.Farm);
-		while (!Core.CheckInventory("Brilliant Aura", quant))
+        Core.Logger($"Farming {quant} Brilliant Aura");
+        while (!Core.CheckInventory("Brilliant Aura", quant))
 		{
 			FindingFragments(2176);
 			Bot.Player.Pickup("Brilliant Aura");
@@ -422,6 +455,7 @@ public class CoreBLOD
 
 		int i = 1;
 		Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quant} Bright Aura");
 		while (!Core.CheckInventory("Bright Aura", quant))
 		{
 			FindingFragments(2174);
@@ -439,6 +473,7 @@ public class CoreBLOD
 
 		int i = 1;
 		Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quantSO} SOs and {quantLSO} LSOs");
 		while (!Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
 		{
 			FindingFragments(2179);

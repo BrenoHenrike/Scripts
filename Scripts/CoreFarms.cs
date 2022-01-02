@@ -287,8 +287,13 @@ public class CoreFarms
                 Bot.Player.Kill("Team B Brawler");
             Core.BludrutMove(28, "Captain1", 528, 255);
             Bot.Player.Kill("Team B Captain");
-			Bot.Wait.ForDrop(item, 30);
-			Bot.Player.Pickup(item);
+            if(!Core.CheckInventory(item))
+            {
+			    Bot.Wait.ForDrop(item, 30);
+			    Bot.Player.Pickup(item);
+            }
+            else
+                Bot.Sleep(5000);
 			Core.Rest();
         }
 	}
@@ -790,7 +795,7 @@ public class CoreFarms
 			else
 			{
 				Core.EnsureAccept(371);
-				Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", 5);
+				Core.HuntMonster("sewer", "Grumble", "Grumble's Fang");
 				Core.EnsureComplete(371);
 			}
 			Core.Logger($"Completed x{i++}");

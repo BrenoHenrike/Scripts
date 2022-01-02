@@ -179,15 +179,17 @@ public class CoreBots
 		{
 			if (Bot.Bank.Contains(name))
 			{
-				if (!toInv)
+				if (!toInv && !any)
 					continue;
-				Unbank(name);
+                if (!toInv && any)
+                    return true;
+                Unbank(name);
 			}
-			if(Bot.Inventory.Contains(name) && any)
+			if (Bot.Inventory.Contains(name) && any)
 				return true;
 			else if (Bot.Inventory.Contains(name) && !any)
 				continue;
-			else if(!any)
+			else if (!any)
 				return false;
 		}
 		return true;
@@ -533,7 +535,7 @@ public class CoreBots
 						CurrentRequirements.RemoveAt(i);
 						continue;
 					}
-					if (j != 0 && (CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity)))
+					if (j != 0 && CheckInventory(CurrentRequirements[i].Name))
 					{
 						if(_RepeatCheck(ref repeat, i))
 							break;
@@ -553,7 +555,6 @@ public class CoreBots
 
 	private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
 	{
-		Logger($"Hunting {monster} for {itemName} ({quantity})[{isTemp}]");
 		_HuntForItem(monster, itemName, quantity, isTemp);
 		CurrentRequirements.RemoveAt(index);
 		shouldRepeat = false;
@@ -595,11 +596,7 @@ public class CoreBots
 			Rest();
 		}
 		else
-		{
-			if(log)
-				Logger($"Killing {monster} for {item} ({quant}) [Temp = {isTemp}]");
-			_KillForItem(monster, item, quant, isTemp);
-		}
+			_KillForItem(monster, item, quant, isTemp, log: log);
 	}
 
 	/// <summary>
@@ -657,10 +654,7 @@ public class CoreBots
             Rest();
 		}
 		else
-		{
-			Logger($"Hunting {monster} for {item} ({quant}) [Temp = {isTemp}]");
 			_HuntForItem(monster, item, quant, isTemp);
-		}
 	}
 
 	/// <summary>
@@ -802,17 +796,16 @@ public class CoreBots
 		currentClass = classToUse;
 	}
 
-	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
+	private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
 	{
+        if(log)
+            Logger($"Killing {name} for {item} ({quantity}) [Temp = {tempItem}]");
 		while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
 		{
-            if(CheckInventory(item, quantity))
-                return;
             Bot.Player.Kill(name);
-			if (!tempItem)
+			if (!tempItem && !CheckInventory(item))
 			{
-                if (currentClass == ClassType.Solo)
-                    Bot.Sleep(ActionDelay);
+                Bot.Sleep(ActionDelay);
 				Bot.Player.Pickup(item);
 				if (rejectElse)
 					Bot.Player.RejectExcept(item);
@@ -823,15 +816,15 @@ public class CoreBots
 
 	private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false)
 	{
+        Logger($"Hunting {name} for {item} ({quantity}) [Temp = {tempItem}]");
 		while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
 		{
             if (CheckInventory(item, quantity))
                 return;
 			Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
-			if (!tempItem)
+			if (!tempItem && !CheckInventory(item))
 			{
-                if (currentClass == ClassType.Solo)
-                    Bot.Sleep(ActionDelay);
+                Bot.Sleep(ActionDelay);
 				Bot.Player.Pickup(item);
 				if (rejectElse)
 					Bot.Player.RejectExcept(item);
@@ -853,7 +846,8 @@ public class CoreBots
 			{
 				if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
 				{
-					reqItems.Add(item.Name);
+                    if(!item.Temp)
+					    reqItems.Add(item.Name);
 					CurrentRequirements.Add(item);
 				}
 			});

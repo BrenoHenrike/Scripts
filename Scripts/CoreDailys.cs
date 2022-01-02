@@ -99,6 +99,8 @@ public class CoreDailys
 	{
         if (metals == null)
             metals = MineCraftingMetals;
+        if (Core.CheckInventory(metals))
+            return;
         if (!CheckDaily(2091, metals))
             return;
 
@@ -130,6 +132,8 @@ public class CoreDailys
             return;
         if(metals == null)
             metals = HardCoreMetalsMetals;
+        if (Core.CheckInventory(metals))
+            return;
         if(!CheckDaily(2098, metals))
             return;
 
@@ -243,7 +247,7 @@ public class CoreDailys
 	{
 		if (Core.CheckInventory("Bright Knight", toInv: false))
 			return;
-		if (!CheckDaily(3826, "Seal of Light") && !CheckDaily(3825, "Seal of Darkness"))
+		if (!CheckDaily(3826, "Seal of Light") & !CheckDaily(3825, "Seal of Darkness"))
 			return;
 		Core.EquipClass(ClassType.Solo);
 		DailyRoutine(3826, "alteonbattle", "Ultra Alteon", "Alteon Defeated");
