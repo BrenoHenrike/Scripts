@@ -16,7 +16,7 @@ Pix: bhenrike@protonmail.com
 
 ## To do
 
-- Make a script assistant interface like Grimoire (easy to use) ([$85/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- The goal to make a script assistant interface was reached, **RBot 4** should be released by **late Feb/Mar**. Thanks to everyone that donated. ([You can still donate here.](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizing CoreBots
 

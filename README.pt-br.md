@@ -16,7 +16,7 @@ Pix: bhenrike@prontonmail.com
 
 ## A fazer
 
-- Criar uma interface de bots parecida com o Grimoire (fácil de usar) ([$85/200](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
+- A meta de uma interface mais fácil de utilizar foi atingida, **RBot 4** deve sair pelo **fim de Fevereiro/Março**. Obrigado a todos que doaram. ([Você ainda pode doar aqui.](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY))
 
 ## Customizando CoreBots
 
