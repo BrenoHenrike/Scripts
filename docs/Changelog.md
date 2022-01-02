@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [3.6.3.2 (Inventory fix)](#3632-inventory-fix)
   - [3.6.3.1 (Small Changes)](#3631-small-changes)
   - [3.6.3](#363)
     - [Changes and fixes](#changes-and-fixes)
@@ -17,6 +18,11 @@
   - [3.6.1](#361)
     - [Fixes](#fixes)
     - [Added](#added)
+
+## 3.6.3.2 (Inventory fix)
+
+- New item type added to fix problems with checking inventory;
+- Advanced Skills has a new format of saving its skills: althought it is not visible in the UI, in the near future a file with pretty much every class skill sequence will be released for ease of use.
 
 ## 3.6.3.1 (Small Changes)
 
