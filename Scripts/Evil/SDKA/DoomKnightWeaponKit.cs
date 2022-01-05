@@ -1,7 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
-//cs_include Scripts/SDKA/CoreSDKA.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using RBot;
 public class DoomKnightWeaponKit
 {
