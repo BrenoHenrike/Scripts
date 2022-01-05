@@ -1,0 +1,9 @@
+These are most untested and can be prone to bugs. If you find anything you can contact me in Discord at Breno_Henrike#6959
+
+For optimal performance use a !!! SINGLE TARGET !!! solo class as classes with AoE can break the bot hunting method.
+
+## In 3Vath(Dwarfhold).cs the script ends early in the saga, after running it till the end do the following steps:
+
+    1=> /Join Vath, walk until you see the cutscene, do the mini-game;
+	2=> /Join Roc then kill Rock Roc;
+	3=> /Join Stalagbite and kill Vath to finish.
