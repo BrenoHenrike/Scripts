@@ -292,7 +292,7 @@ public class CoreBLOD
 		{
             Core.Logger("Blinding Mace of Destiny");
             UltimateWK();
-			LightMerge("Bliding Mace of Destiny");
+			LightMerge("Blinding Mace of Destiny");
 		}
 	}
 
@@ -303,7 +303,7 @@ public class CoreBLOD
             Core.Logger("Bow found, skipping");
             return;
         }
-		if(!Core.CheckInventory("Bliding Mace of Destiny"))
+		if(!Core.CheckInventory("Blinding Mace of Destiny"))
 			BlindingMace();
 
 		if (!Core.CheckInventory(new[] { "Blinding Bow of Destiny", "Bright Bow of Destiny", "Bow of Destiny" }, any: true))
