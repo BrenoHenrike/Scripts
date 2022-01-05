@@ -3,7 +3,7 @@ using RBot;
 using RBot.Options;
 using System.Collections.Generic;
 
-public class Template
+public class Frostval
 {
     public CoreBots Core => CoreBots.Instance;
 
