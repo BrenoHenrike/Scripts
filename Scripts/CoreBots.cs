@@ -192,7 +192,7 @@ public class CoreBots
 			else if (!any)
 				return false;
 		}
-		return true;
+        return any ? false : true;
 	}
 
 	/// <summary>
