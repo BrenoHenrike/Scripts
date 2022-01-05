@@ -166,9 +166,9 @@ public class CoreBLOD
 
 			Core.EquipClass(ClassType.Solo);
 			Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil");
-			Core.HuntMonster("vordredboss", "Lightning Ball", "Shining Lacquer Finish");
+			Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
 			Core.HuntMonster("faerie", "Cyclops Warlord", "Brass Awl");
-			Core.HuntMonster("darkovia", "Lich of the Stone", "Slate Stone Sharpener");
+			Core.HuntMonster("darkoviaforest", "Lich of the Stone", "Slate Stone Sharpener");
 
 			Core.EquipClass(ClassType.Farm);
 			Core.KillMonster("safiria", "c3", "Left", "Chaos Lycan", "WolfClaw Hammer", 1, false);
