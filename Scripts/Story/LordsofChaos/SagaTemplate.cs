@@ -1,9 +1,9 @@
-﻿//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreBots.cs
 using RBot;
 using RBot.Options;
 using System.Collections.Generic;
 
-public class Template
+public class SagaTemplate
 {
     public CoreBots Core => CoreBots.Instance;
 
