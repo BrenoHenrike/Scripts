@@ -725,12 +725,15 @@ public class CoreBots
     /// </summary>
     /// <param name="packet">Packet to send</param>
     /// <param name="times">How many times to send</param>
-    public void SendPackets(string packet, int times = 1)
+    public void SendPackets(string packet, int times = 1, bool toClient = false)
 	{
 		for (int i = 0; i < times; i++)
 		{
-			Bot.SendPacket(packet);
-			Bot.Sleep(ActionDelay*2);
+            if (toClient)
+                Bot.SendClientPacket(packet);
+            else
+                Bot.SendPacket(packet);
+            Bot.Sleep(ActionDelay*2);
 		}
 	}
 
