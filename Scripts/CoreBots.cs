@@ -87,12 +87,17 @@ public class CoreBots
 
 			Bot.RegisterHandler(15, b =>
 			{
+                FlashUtil.Call("skipCutscenes");
 				if (b.Player.Cell.Contains("Cut"))
 				{
-					FlashUtil.Call("skipCutscenes");
 					b.Sleep(1500);
-					b.Map.Reload();
-				}
+                    b.Player.Jump("Enter", "Spawn");
+                    bool lagKiller = b.Options.LagKiller;
+                    b.Options.LagKiller = true;
+                    b.Options.LagKiller = false;
+                    b.Options.LagKiller = true;
+                    b.Options.LagKiller = lagKiller;
+                }
 			}, "Skip Cutscenes");
 
 			Bot.Player.LoadBank();
