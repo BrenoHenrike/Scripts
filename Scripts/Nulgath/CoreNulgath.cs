@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using RBot;
 
 public class CoreNulgath
@@ -507,7 +507,7 @@ public class CoreNulgath
                 Bot.Sleep(Core.ActionDelay);
                 Core.Logger($"Completed x{i++}");
             }
-            if(Core.CheckInventory("Oblivion Blade of Nulgath") || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            if(OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             {
                 while(Core.CheckInventory("Tainted Soul"))
                 {
@@ -521,7 +521,7 @@ public class CoreNulgath
                     Bot.Sleep(Core.ActionDelay);
                     Core.EnsureAccept(2857);
                     Bot.Sleep(Core.ActionDelay);
-                    if (Core.CheckInventory("Oblivion Blade of Nulgath"))
+                    if (OBoNPet)
                         Core.EnsureAccept(2561);
                     else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
                         Core.EnsureAccept(599);
