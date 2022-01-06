@@ -1,4 +1,3 @@
-﻿using System.Linq;
 using RBot;
 
 public class CoreNulgath
@@ -426,6 +425,10 @@ public class CoreNulgath
 	{
 		if (Core.CheckInventory(item, quant))
 			return;
+        if (item != "Any")
+            Core.AddDrop(item);
+        else
+            Core.AddDrop(bagDrops);
 		int i = 1;
 		Core.Logger($"Farming {quant} {item}");
 		if (farmGold)
@@ -477,9 +480,7 @@ public class CoreNulgath
 		if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
 			return;
 		Core.AddDrop("Escherion's Helm", "Tainted Core");
-        bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
-                    & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
-		if(OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+		if(Core.CheckInventory("Oblivion Blade of Nulgath") || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             Core.AddDrop("Tainted Soul");
         int i = 1;
 		Core.EquipClass(ClassType.Solo);
@@ -487,10 +488,10 @@ public class CoreNulgath
 		while (!Bot.Inventory.Contains(item, quant))
 		{
 			Core.EnsureAccept(2857, 609);
-            if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                Core.EnsureAccept(599);
-			else if (OBoNPet)
+			if (Core.CheckInventory("Oblivion Blade of Nulgath"))
                 Core.EnsureAccept(2561);
+			if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                Core.EnsureAccept(599);
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
 			while (Core.CheckInventory("Tainted Core"))
 			{
@@ -507,7 +508,7 @@ public class CoreNulgath
 			{
 				while(Core.CheckInventory("Tainted Soul"))
 				{
-                    if (OBoNPet)
+                    if (Core.CheckInventory("Oblivion Blade of Nulgath"))
                         Core.EnsureComplete(2561);
                     else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
                         Core.EnsureComplete(599);
