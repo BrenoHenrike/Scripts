@@ -243,10 +243,11 @@ public class CoreDailys
 		Core.ToBank("C-Armor Token");
 	}
 
-	public void BrightKnightArmor()
+	public void BrightKnightArmor(bool checkArmor = true)
 	{
-		if (Core.CheckInventory("Bright Knight", toInv: false))
-			return;
+		if (checkArmor)
+			if (Core.CheckInventory("Bright Knight", toInv: false))
+				return;
 		if (!CheckDaily(3826, "Seal of Light") & !CheckDaily(3825, "Seal of Darkness"))
 			return;
 		Core.EquipClass(ClassType.Solo);
