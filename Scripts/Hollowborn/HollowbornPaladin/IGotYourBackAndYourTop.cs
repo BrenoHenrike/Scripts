@@ -48,7 +48,7 @@ public class IGotYourBackAndYourTop
                     Core.EnsureAccept(4811);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("graveyard", "Skeletal Viking", "Ravenwing Scroll");
-                    Core.HuntMonster("graveyard", "Skeletal Warrior", "Unseen Eye", 3);
+                    Core.HuntMonster("graveyard", "Skeletal Warrior", "Unseeing Eye", 3);
                     Core.HuntMonster("graveyard", "Big Jack Sprat", "Shard of Diamond Blade", 5);
                     Core.EnsureComplete(4811);
                 }
