@@ -426,48 +426,50 @@ public class CoreNulgath
     {
         if (Core.CheckInventory(item, quant))
             return;
+
         if (item != "Any")
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
+        
         int i = 1;
+        void AssistantLoop()
+        {
+            if (!Core.CheckInventory("War-Torn Memorabilia"))
+            {
+                Bot.Player.Join("yulgar");
+                while (Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
+                {
+                    Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
+                    Bot.Sleep(Core.ActionDelay);
+                }
+            }
+            Core.EnsureAccept(2859);
+            while (Core.CheckInventory("War-Torn Memorabilia") && !Core.CheckInventory(item, quant))
+            {
+                Core.ChainComplete(2859);
+                Bot.Player.Pickup(bagDrops);
+                Core.Logger($"Completed x{i++}");
+            }
+        }
+
         Core.Logger($"Farming {quant} {item}");
         if (farmGold)
         {
-            while (!Bot.Inventory.Contains(item, quant))
+            while (!Core.CheckInventory(item, quant))
             {
-                _TheAssistantLoop(item, ref i, quant);
-                if(Bot.Player.Gold < 100000)
-                    Farm.BattleGroundE(10000000);
+                AssistantLoop();
+                if (Bot.Player.Gold < 100000 && !Core.CheckInventory(item, quant))
+                    Farm.Gold(1000000);
             }
         }
         else
         {
             while (Bot.Player.Gold > 100000)
-                _TheAssistantLoop(item, ref i, quant);
+                AssistantLoop();
 
-            if (Bot.Inventory.Contains(item, quant))
+            if (!Core.CheckInventory(item, quant))
                 Core.Logger($"Couldn't get {item}({quant})");
-        }
-    }
-
-    private void _TheAssistantLoop(string item, ref int i, int quant = 1)
-    {
-        if (!Core.CheckInventory("War-Torn Memorabilia"))
-        {
-            Bot.Player.Join("yulgar");
-            while (Bot.Player.Gold >= 100000 && !Bot.Inventory.Contains("War-Torn Memorabilia", 5))
-            {
-                Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
-                Bot.Sleep(Core.ActionDelay);
-            }
-        }
-        Core.EnsureAccept(2859);
-        while (Bot.Inventory.Contains("War-Torn Memorabilia") && !Bot.Inventory.Contains(item, quant))
-        {
-            Core.ChainComplete(2859);
-            Bot.Player.Pickup(bagDrops);
-            Core.Logger($"Completed x{i++}");
         }
     }
 
