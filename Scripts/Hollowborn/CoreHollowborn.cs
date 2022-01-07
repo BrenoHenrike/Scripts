@@ -20,14 +20,10 @@ public class CoreHollowborn
         if (!Core.CheckInventory("Soul Potion"))
         {
             Core.Logger("Getting Soul Potion");
-            Farm.AlchemyREP(8);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 1, false);
             Core.HuntMonster("orecavern", "Deathmole", "Arashtite Ore", 1, false);
-            Bot.Player.Join("Alchemy");
-            Core.SendPackets("%xt%zm%crafting%1%getAlchWait%11480%11473%false%Ready to Mix%Necrot%Arashtite Ore%Gebo%Man%");
-            Bot.Sleep(15000);
-            Core.SendPackets("%xt%zm%crafting%1%checkAlchComplete%11480%11473%false%Mix Complete%Necrot%Arashtite Ore%Gebo%Man%");
+            Farm.AlchemyPacket("Necrot", "Arashtite Ore", AlchemyRunes.Gebo, rank: 8, loop: false, modifier: "Man");
         }
         HumanSoul(50);
         Core.EquipClass(ClassType.Solo);
