@@ -87,10 +87,10 @@ You can use the method `Monster#ToString()` to return a string formatted like `{
 | `XP` | *int* | The amount of XP this quest gives as a reward. |
 | `Status` | *string* | The status of the quest. If not equals `null`, the quest is active; if equals `c`, the quest is completed. |
 | `Active` | *bool* | Indicates whether the quest is active or not. |
-| `AcceptRequirements` | *RBot.Items.ItemBase* | The items required in the player's inventory to accept the quest. |
-| `Requirements` | *RBot.Items.ItemBase* | The required items/temp items to turn in the quest. |
-| `Rewards` | *RBot.Items.ItemBase* | The items given as a reward for completing the quest. |
-| `SimpleRewards` | *RBot.Items.SimpleReward* | Item drop rates are mapped to their IDs in this list. |
+| `AcceptRequirements` | *List\<RBot.Items.ItemBase>* | The items required in the player's inventory to accept the quest. |
+| `Requirements` | *List\<RBot.Items.ItemBase>* | The required items/temp items to turn in the quest. |
+| `Rewards` | *List\<RBot.Items.ItemBase>* | The items given as a reward for completing the quest. |
+| `SimpleRewards` | *List\<RBot.Items.SimpleReward>* | Item drop rates are mapped to their IDs in this list. |
 
 You can use the method `Quest#ToString()` to return a string formatted like `{Name} [{ID}]` with each respective variable filled with the quest info. These properties can be used as a trustful source of information about the quest, as they are acquired on the run preventing typos that can be found in the wiki and possible future name changes.
 
