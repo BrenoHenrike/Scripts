@@ -35,7 +35,7 @@ public class Artixpointe
 
     public void QuestProgress(int QuestID, string MapName, string MonsterName, string Item = null, bool hasFollowup = true)
     {
-        if (Item == null)
+        if (Item != null)
         {
             if (Core.CheckInventory(Item))
                 return;
@@ -49,7 +49,7 @@ public class Artixpointe
 
     public void QuestMapItem(int QuestID, string MapName, int MapItemID, string Item = null, bool hasFollowup = true)
     {
-        if (Item == null)
+        if (Item != null)
         {
             if (Core.CheckInventory(Item))
                 return;
