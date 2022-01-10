@@ -802,20 +802,20 @@ public class CoreBots
     {
         if (Side == Alignment.Good)
         {
-            Bot.Player.Join("castle", "Wait", "Enter");
             SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%1%");
+            Bot.Sleep(1500);
             return;
         }
         if (Side == Alignment.Evil)
         {
-            Bot.Player.Join("shadowfall", "Wait", "Enter");
             SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%2%");
+            Bot.Sleep(1500);
             return;
         }
         if (Side == Alignment.Chaos)
         {
-            Bot.Player.Join("crownsreach", "Wait", "Enter");
             SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%3%");
+            Bot.Sleep(1500);
             return;
         }
     }
