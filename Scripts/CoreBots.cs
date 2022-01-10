@@ -798,6 +798,27 @@ public class CoreBots
         currentClass = classToUse;
     }
 
+    private void SwitchAlignment(Alignment Side)
+    {
+        if (Side == Alignment.Good)
+        {
+            Bot.Player.Join("castle", "Wait", "Enter");
+            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%1%");
+            return;
+        }
+        if (Side == Alignment.Evil)
+        {
+            Bot.Player.Join("shadowfall", "Wait", "Enter");
+            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%2%");
+            return;
+        }
+        if (Side == Alignment.Chaos)
+        {
+            Bot.Player.Join("crownsreach", "Wait", "Enter");
+            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%3%");
+            return;
+        }
+    }
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
         if(log)
