@@ -28,6 +28,7 @@ public class VoidSpartan
 	{
 		Core.SetOptions();
 		Core.AddDrop(Nulgath.bagDrops);
+		Core.AddDrop(Rewards);
 		Core.AddDrop("Zee's Red Jasper", "Fiend Cloak of Nulgath");
 
 		int i = 1;
