@@ -471,6 +471,104 @@ public class CoreBots
         Bot.Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
     }
+    
+    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        EnsureAccept(QuestID);
+        GetMapItem(MapItemID, Amount, MapName);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        EnsureAccept(QuestID);
+        BuyItem(MapName, ShopID, ItemName, Amount);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        RBot.Items.ItemBase[] AcceptRequirements = QuestData.AcceptRequirements.ToArray();
+        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+        RBot.Items.ItemBase[] Rewards = QuestData.Rewards.ToArray();
+        RBot.Quests.SimpleReward[] SimpleRewards = QuestData.SimpleRewards.ToArray();
+        
+        if (QuestData == null)
+            Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
+
+        if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID+1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite)))) 
+        {
+            Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
+            return true;
+        }
+        
+        if (Reward != "All")
+        {
+            if (CheckInventory(Reward)) 
+            {
+                Logger($"You already have {Reward}, skipping quest");
+                return true;
+            }
+            AddDrop(Reward);
+        }
+        else
+            foreach (RBot.Items.ItemBase Item in Rewards)
+                AddDrop(Item.Name);
+
+        Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
+        return false;
+    }
     #endregion
 
     #region Kill
