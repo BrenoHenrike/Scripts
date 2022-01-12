@@ -539,13 +539,13 @@ public class CoreBots
     public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] AcceptRequirements = QuestData.AcceptRequirements.ToArray();
-        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
         RBot.Items.ItemBase[] Rewards = QuestData.Rewards.ToArray();
-        RBot.Quests.SimpleReward[] SimpleRewards = QuestData.SimpleRewards.ToArray();
         
         if (QuestData == null)
             Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
+        
+        if (!Bot.Quests.IsUnlocked(QuestID))
+            Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
         if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID+1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite)))) 
         {
