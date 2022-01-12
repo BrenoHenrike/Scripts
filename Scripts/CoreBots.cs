@@ -771,10 +771,10 @@ public class CoreBots
         if (item == null)
         {
             Logger("Killing Escherion");
-            while(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Escherion").Alive)
+            while(Bot.Monsters.MapMonsters.Find(m => m.Name == "Escherion").Alive)
             {
-                if(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
-                    Bot.Player.Kill("Staff of Inversion");
+                if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                    Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
             }
@@ -784,8 +784,8 @@ public class CoreBots
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
             while(!CheckInventory(item, quant))
             {
-                if(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
-                    Bot.Player.Kill("Staff of Inversion");
+                if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                    Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
                 Bot.Player.Pickup(item);
