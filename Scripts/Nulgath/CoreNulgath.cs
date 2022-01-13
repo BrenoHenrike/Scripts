@@ -609,11 +609,12 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Unidentified 13", quant))
             return;
+        quant = quant > 13 ? 13 : quant;
         if (Core.CheckInventory(CragName))
-            while (!Bot.Inventory.Contains("Unidentified 13", quant > 13 ? 13 : quant))
+            while (!Bot.Inventory.Contains("Unidentified 13", quant))
                 DiamondExchange();
-        NewWorldsNewOpportunities("Unidentified 13", quant > 13 ? 13 : quant);
-        Supplies("Unidentified 13", quant > 13 ? 13 : quant);
+        NewWorldsNewOpportunities("Unidentified 13", quant);
+        NulgathLarvae("Unidentified 13", quant);
     }
 
     /// <summary>

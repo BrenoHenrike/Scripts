@@ -22,7 +22,7 @@ public class VoidHighlordsChallenge
 		if(!Core.CheckInventory("Hadean Onyx of Nulgath"))
 		{
 			Core.JoinTercessuinotlim();
-			Core.Jump("r13", "Right");
+			Core.Jump("m4", "Right");
 			Bot.Player.KillForItem("Shadow of Nulgath", "Hadean Onyx of Nulgath", 1);
 		}
 

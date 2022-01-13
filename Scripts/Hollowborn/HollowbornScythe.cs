@@ -33,7 +33,8 @@ public class HollowbornScythe
 		//Minion
 		if(!Core.CheckInventory("Hollowborn Reaper's Minion"))
 		{
-			Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 250, false);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 250, false);
 			Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone Dust", 2000, false);
 			Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 2, false);
 			Core.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Minion");
@@ -44,10 +45,12 @@ public class HollowbornScythe
 		{
 			if (!Core.CheckInventory(reqName[i]))
 			{
+                Core.EquipClass(ClassType.Farm);
 				Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 250, false);
 				Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone Dust", 3000, false);
 				Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 5, false);
 				Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
+                Core.EquipClass(ClassType.Solo);
 				Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", 1, false);
 				if (!bot.Inventory.Contains("Unmoulded Fiend Essence"))
 				{

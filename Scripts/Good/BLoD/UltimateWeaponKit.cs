@@ -12,7 +12,7 @@ public class UltimateWeaponKit
 	public void ScriptMain(ScriptInterface bot)
 	{
 		Core.SetOptions();
-		Core.AddDrop("Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
+		Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
 
 		BLOD.UltimateWK("Bright Aura", 10000);
 

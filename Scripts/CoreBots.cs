@@ -834,10 +834,12 @@ public class CoreBots
         }
     }
 
+    private int lastQuestID;
     private void _AddRequirement(int questID)
     {
-        if (questID > 0)
+        if (questID > 0 && questID != lastQuestID)
         {
+            lastQuestID = questID;
             Quest quest = Bot.Quests.EnsureLoad(questID);
             if (quest == null)
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
