@@ -555,7 +555,7 @@ public class CoreBots
         if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID+1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite)))) 
         {
             Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
-            Bot.Sleep(700)
+            Bot.Sleep(700);
             return true;
         }
         
