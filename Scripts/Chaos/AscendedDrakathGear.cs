@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Script/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 using RBot;
