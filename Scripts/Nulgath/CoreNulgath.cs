@@ -732,10 +732,8 @@ public class CoreNulgath
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false);
                 Core.JumpWait();
             }
-            if (!Core.CheckInventory("Fragment of Chaos", 80))
-                Core.HuntMonster("blindingsnow", "Chaos Gemrald", "Fragment of Chaos", 80, false);
-            if (!Bot.Inventory.ContainsTempItem("Broken Betrayal Blade", 8))
-                Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8);
+            Core.HuntMonster("lair", "Water Draconian", "Fragment of Chaos", 80, false);
+            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8);
             Core.EnsureComplete(3743);
             Bot.Wait.ForPickup("Blood Gem of the Archfiend");
             Core.Logger($"Completed x{i++}");
