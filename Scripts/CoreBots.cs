@@ -900,7 +900,7 @@ public class CoreBots
         currentClass = classToUse;
     }
 
-    private void SwitchAlignment(Alignment Side)
+    public void SwitchAlignment(Alignment Side)
     {
         if (Side == Alignment.Good)
         {
