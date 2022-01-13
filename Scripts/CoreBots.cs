@@ -585,11 +585,11 @@ public class CoreBots
     /// <param name="monsters">Array of the monsters to kill</param>
     /// <param name="iterations">How many times it should kill the monster until going to the next</param>
     /// <param name="completeQuest">Whether complete the quest after killing all monsters</param>
-    public void SmartKillMonster(int questID, string map, string[] monsters, int iterations = 20, bool completeQuest = false)
+    public void SmartKillMonster(int questID, string map, string[] monsters, int iterations = 20, bool completeQuest = false, bool publicRoom = false)
     {
         EnsureAccept(questID);
         _AddRequirement(questID);
-        Join(map);
+        Join(map, publicRoom: publicRoom);
         foreach (string monster in monsters)
             _SmartKill(monster, iterations);
         if (completeQuest)
@@ -605,11 +605,11 @@ public class CoreBots
     /// <param name="monster">Monster to kill</param>
     /// <param name="iterations">How many times it should kill the monster until exiting</param>
     /// <param name="completeQuest">Whether complete the quest after killing all monsters</param>
-    public void SmartKillMonster(int questID, string map, string monster, int iterations = 20, bool completeQuest = false)
+    public void SmartKillMonster(int questID, string map, string monster, int iterations = 20, bool completeQuest = false, bool publicRoom = false)
     {
         EnsureAccept(questID);
         _AddRequirement(questID);
-        Join(map);
+        Join(map, publicRoom: publicRoom);
         _SmartKill(monster, iterations);
         if (completeQuest)
             EnsureComplete(questID);
@@ -686,11 +686,11 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true)
+    public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Join(map);
+        Join(map, publicRoom: publicRoom);
         Jump(cell, pad);
         if (item == null)
         {
@@ -714,11 +714,11 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true)
+    public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Join(map);
+        Join(map, publicRoom: publicRoom);
         Bot.Wait.ForMapLoad(map);
         Jump(cell, pad);
         Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
@@ -741,11 +741,11 @@ public class CoreBots
     /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void HuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true)
+    public void HuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Join(map);
+        Join(map, publicRoom: publicRoom);
         Bot.Wait.ForMapLoad(map);
         if (item == null)
         {
@@ -764,11 +764,11 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void KillEscherion(string item = null, int quant = 1, bool isTemp = false)
+    public void KillEscherion(string item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Join("escherion");
+        Join("escherion", publicRoom: publicRoom);
         Jump("Boss", "Left");
         if (item == null)
         {
@@ -1063,10 +1063,10 @@ public class CoreBots
         }
     }
 
-    public void Join(string map, string cell = "Enter", string pad = "Spawn", bool Public = false, bool ignoreCheck = false)
+    public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
         JumpWait();
-        Bot.Player.Join((Public && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+        Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
     }
 
     /// <summary>
