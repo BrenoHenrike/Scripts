@@ -87,77 +87,77 @@ public class SagaChaosFinale
             switch (i)
             {
                 case 0: //
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut1", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3578%-1%false%wvz%");
                     break;
                 case 1: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut2", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3579%-1%false%wvz%");
                     break;
                 case 2: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut3", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3580%-1%false%wvz%");
                     break;
                 case 3: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut4", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3581%-1%false%wvz%");
                     break;
                 case 4: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut5", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3582%-1%false%wvz%");
                     break;
                 case 5: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut6", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3583%-1%false%wvz%");
                     break;
                 case 6: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut7", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3584%-1%false%wvz%");
                     break;
                 case 7: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut8", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3585%-1%false%wvz%");
                     break;
                 case 8: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut9", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3586%-1%false%wvz%");
                     break;
                 case 9: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut10", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3587%-1%false%wvz%");
                     break;
                 case 10: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut11", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3588%-1%false%wvz%");
                     break;
                 case 11: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut12", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3589%-1%false%wvz%");
                     break;
                 case 12: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut13", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3590%-1%false%wvz%");
                     break;
                 case 13: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("Cut13a", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3591%-1%false%wvz%");
                     break;
                 case 14: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     Core.Jump("NPC2", "Left");
                     // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3764%-1%false%wvz%");
                     break;
@@ -165,10 +165,10 @@ public class SagaChaosFinale
                     Core.GetMapItem(2726, map: "mountdoomskull");
                     break;
                 case 16: // 
-                    bot.Player.Join("mountdoomskull");
+                    Core.Join("mountdoomskull");
                     break;
                 case 17: // 
-                    bot.Player.Join("newfinale");
+                    Core.Join("newfinale");
                     break;
                 case 18: // 
                     Core.SmartKillMonster(qIDs[i], "newfinale", "Chaos Healer");
@@ -194,43 +194,43 @@ public class SagaChaosFinale
                     bot.SendPacket("%xt%zm%tryQuestComplete%2303%3791%-1%false%wvz%");
                     break;
                 case 25: // 
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 26: // 3618
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 27: // 3609
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 28: // 3610
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 29: // 3611
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 30: // 3612
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 31: // 3613
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 32: // 3614
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 33: // 3615
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 34: // 3616
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 35: // 3617
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 36: // 3619
-                    bot.Player.Join("chaosbeast");
+                    Core.Join("chaosbeast");
                     break;
                 case 37: // 
-                    bot.Player.Join("newfinale");
+                    Core.Join("newfinale");
                     break;
                 case 38: // 
                     Core.SmartKillMonster(qIDs[i], "newfinale", "Alliance Soldier");
@@ -245,7 +245,7 @@ public class SagaChaosFinale
                     Core.GetMapItem(2895, map: "shadowrise");
                     break;
                 case 42: // 
-                    bot.Player.Join("shadowattack");
+                    Core.Join("shadowattack");
                     break;
                 case 43: // 
                     Core.GetMapItem(2896, map: "shadowattack");
@@ -254,7 +254,7 @@ public class SagaChaosFinale
                     Core.SmartKillMonster(qIDs[i], "shadowattack", "Death");
                     break;
                 case 45: // 
-                    bot.Player.Join("confrontation");
+                    Core.Join("confrontation");
                     break;
                 case 46: // 
                     Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");

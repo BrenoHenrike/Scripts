@@ -117,7 +117,7 @@ public class CoreNulgath
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false);
             if (!Core.CheckInventory("Strand of Vath's Hair"))
             {
-                Bot.Player.Join("stalagbite");
+                Core.Join("stalagbite");
                 Core.Jump("r2", "Left");
                 Bot.Player.Kill("Vath");
                 Core.JumpWait();
@@ -186,7 +186,7 @@ public class CoreNulgath
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Diamonds");
         int i = 1;
-        Bot.Player.Join("evilwarnul");
+        Core.Join("evilwarnul");
         while (!Bot.Inventory.Contains("Diamond of Nulgath", quant))
         {
             if (Core.IsMember)
@@ -282,7 +282,7 @@ public class CoreNulgath
     {
         Core.AddDrop(nationMedals);
         Core.Logger("Farming Nation Round 4 Medal");
-        Bot.Player.Join("shadowblast");
+        Core.Join("shadowblast");
         while (!Bot.Inventory.Contains("Nation Round 4 Medal"))
         {
             if (!Core.CheckInventory("Nation Round 1 Medal") &&
@@ -437,7 +437,7 @@ public class CoreNulgath
         {
             if (!Core.CheckInventory("War-Torn Memorabilia"))
             {
-                Bot.Player.Join("yulgar");
+                Core.Join("yulgar");
                 while (Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
                 {
                     Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
@@ -732,10 +732,8 @@ public class CoreNulgath
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false);
                 Core.JumpWait();
             }
-            if (!Core.CheckInventory("Fragment of Chaos", 80))
-                Core.HuntMonster("blindingsnow", "Chaos Gemrald", "Fragment of Chaos", 80, false);
-            if (!Bot.Inventory.ContainsTempItem("Broken Betrayal Blade", 8))
-                Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8);
+            Core.HuntMonster("lair", "Water Draconian", "Fragment of Chaos", 80, false);
+            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8);
             Core.EnsureComplete(3743);
             Bot.Wait.ForPickup("Blood Gem of the Archfiend");
             Core.Logger($"Completed x{i++}");

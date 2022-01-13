@@ -263,8 +263,7 @@ public class CoreBots
     {
         if (CheckInventory(itemName, quant))
             return;
-        JumpWait();
-        Bot.Player.Join(map);
+        Join(map);
         Bot.Shops.Load(shopID);
         RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
@@ -286,8 +285,7 @@ public class CoreBots
     {
         if (CheckInventory(itemID, quant))
             return;
-        JumpWait();
-        Bot.Player.Join(map);
+        Join(map);
         Bot.Shops.Load(shopID);
         RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
@@ -591,7 +589,7 @@ public class CoreBots
     {
         EnsureAccept(questID);
         _AddRequirement(questID);
-        Bot.Player.Join(map);
+        Join(map);
         foreach (string monster in monsters)
             _SmartKill(monster, iterations);
         if (completeQuest)
@@ -611,7 +609,7 @@ public class CoreBots
     {
         EnsureAccept(questID);
         _AddRequirement(questID);
-        Bot.Player.Join(map);
+        Join(map);
         _SmartKill(monster, iterations);
         if (completeQuest)
             EnsureComplete(questID);
@@ -692,7 +690,7 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Bot.Player.Join(map);
+        Join(map);
         Jump(cell, pad);
         if (item == null)
         {
@@ -720,7 +718,7 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Bot.Player.Join(map);
+        Join(map);
         Bot.Wait.ForMapLoad(map);
         Jump(cell, pad);
         Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
@@ -747,7 +745,7 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Bot.Player.Join(map);
+        Join(map);
         Bot.Wait.ForMapLoad(map);
         if (item == null)
         {
@@ -770,7 +768,7 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
-        Bot.Player.Join("escherion");
+        Join("escherion");
         Jump("Boss", "Left");
         if (item == null)
         {
@@ -902,7 +900,7 @@ public class CoreBots
         currentClass = classToUse;
     }
 
-    private void SwitchAlignment(Alignment Side)
+    public void SwitchAlignment(Alignment Side)
     {
         if (Side == Alignment.Good)
         {
@@ -1002,7 +1000,7 @@ public class CoreBots
     {
         if(removeStopHandler)
             Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
-        Bot.Player.Join("battleon");
+        Join("battleon");
         if (AntiLag)
         {
             Bot.SetGameObject("stage.frameRate", 60);
@@ -1029,7 +1027,7 @@ public class CoreBots
     public void GetMapItem(int itemID, int quant = 1, string map = null)
     {
         if (map != null)
-            Bot.Player.Join(map);
+            Join(map);
         Bot.Sleep(ActionDelay);
         for (int i = 0; i < quant; i++)
         {
@@ -1078,10 +1076,10 @@ public class CoreBots
     {
         if (Bot.Map.Name == "tercessuinotlim")
             return;
-        Bot.Player.Join("citadel", "m22", "Left");
+        Join("citadel", "m22", "Left");
         if (Bot.Player.Cell != "m22")
             Bot.Player.Jump("m22", "Left");
-        Bot.Player.Join("tercessuinotlim");
+        Join("tercessuinotlim");
         Bot.Wait.ForMapLoad("tercessuinotlim");
     }
 
