@@ -138,7 +138,7 @@ public class CoreLegion
     {
         Core.AddDrop(legionMedals);
         Core.Logger("Farming Legion Round 4 Medal");
-        Bot.Player.Join("shadowblast");
+        Core.Join("shadowblast");
         while (!Bot.Inventory.Contains("Legion Round 4 Medal"))
         {
             if (!Core.CheckInventory("Legion Round 1 Medal") &&
@@ -259,10 +259,10 @@ public class CoreLegion
 		bool privateRoomSwitch = Bot.Options.PrivateRooms;
 		if (Bot.Options.PrivateRooms)
 			Bot.Options.PrivateRooms = false;
-		Bot.Player.Join("legionarena");
+		Core.Join("legionarena");
 		if (Bot.Map.PlayerCount < partySize && onlyWithParty)
 		{
-			Bot.Player.Join("legionarena", ignoreCheck: true);
+			Core.Join("legionarena", ignoreCheck: true);
 			if(Bot.Map.PlayerCount < partySize)
 			{
 				Bot.Options.PrivateRooms = privateRoomSwitch;
@@ -288,7 +288,7 @@ public class CoreLegion
 			return;
 		Core.EquipClass(ClassType.Farm);
 		Core.Logger($"Farming {quant} Legion Tokens");
-		Bot.Player.Join("dreadrock");
+		Core.Join("dreadrock");
 		int i = 1;
 		while(!Core.CheckInventory("Legion Token", quant))
 		{

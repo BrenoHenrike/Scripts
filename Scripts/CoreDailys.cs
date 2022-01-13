@@ -66,7 +66,7 @@ public class CoreDailys
 	{
 		if (Bot.Quests.IsDailyComplete(quest))
 			return;
-		Bot.Player.Join(map);
+		Core.Join(map);
 		Core.EnsureAccept(quest);
 		if (cell != null || pad != null)
 			Core.KillMonster(map, cell, pad, monster, item, quant, isTemp);

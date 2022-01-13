@@ -62,7 +62,7 @@ public class VoidPaladin
 					Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shard", 2, false);
 					Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
 				}
-				Bot.Player.Join("spellcraft");
+				Core.Join("spellcraft");
 				Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%10%1555%Spell%");
 				Bot.Sleep(Core.ExitCombatDelay);
 				Bot.SendPacket("%xt%zm%crafting%1%spellComplete%10%2346%Underworld%");

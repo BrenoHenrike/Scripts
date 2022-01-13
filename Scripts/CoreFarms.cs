@@ -220,7 +220,7 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         while(!Core.CheckInventory("The Secret 4"))
         {
-            Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
+            Core.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -257,7 +257,7 @@ public class CoreFarms
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
         while (!Core.CheckInventory(item, quant))
         {
-            Bot.Player.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
+            Core.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -374,7 +374,7 @@ public class CoreFarms
             Bot.Sleep(700);
         }
 
-        Bot.Player.Join("alchemy");
+        Core.Join("alchemy");
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
         Core.Logger($"Modifier: {modifier}.");
@@ -623,7 +623,7 @@ public class CoreFarms
         }
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        Bot.Player.Join("elfhame");
+        Core.Join("elfhame");
         while (FactionRank("Brightoak") < rank)
         {
             Core.EnsureAccept(4667);
@@ -889,7 +889,7 @@ public class CoreFarms
         int i = 1;
         if (!Bot.Quests.IsAvailable(5429))
         {
-            Bot.Player.Join("cursedshop");
+            Core.Join("cursedshop");
             Core.EnsureAccept(5428);
             Bot.Map.GetMapItem(4803);
             Bot.Sleep(2500);
@@ -959,7 +959,7 @@ public class CoreFarms
         if (spellcrafting == null)
         {
             Core.EnsureAccept(2260);
-            Bot.Player.Join("dragonrune");
+            Core.Join("dragonrune");
             Bot.Map.GetMapItem(1920);
             Core.HuntMonster("castleundead", "Skeletal Warrior", "Arcane Parchment", 13);
             Core.JumpWait();
@@ -971,7 +971,7 @@ public class CoreFarms
         {
             Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
             Core.BuyItem("dragonrune", 549, "Ember Ink", 50, 5);
-            Bot.Player.Join("spellcraft");
+            Core.Join("spellcraft");
             while (FactionRank("SpellCrafting") < 4)
             {
                 Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%1%1555%Spell%");
@@ -985,7 +985,7 @@ public class CoreFarms
         {
             Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
             Core.BuyItem("dragonrune", 549, "Hallow Ink", 50, 5);
-            Bot.Player.Join("spellcraft");
+            Core.Join("spellcraft");
             while(Core.CheckInventory("Hallow Ink") && FactionRank("SpellCrafting") < rank)
             {
                 Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%6%1555%Spell%");
