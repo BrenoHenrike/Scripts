@@ -21,6 +21,10 @@ public class CoreBots
     public int AcceptandCompleteTries { get; set; } = 20;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
+    // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
+    public int PrivateRoomNumber { get; set; } = 100000;
+    // [Can Change] Use public rooms if the enemy is tough
+    public bool HardMonPublicRoom { get; set; } = true;
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
@@ -59,7 +63,7 @@ public class CoreBots
     public void SetOptions(bool changeTo = true)
     {
         // Common Options
-        Bot.Options.PrivateRooms = PrivateRooms;
+        Bot.Options.PrivateRooms = false;
         Bot.Options.SafeTimings = changeTo;
         Bot.Options.RestPackets = changeTo;
         Bot.Options.AutoRelogin = changeTo;
