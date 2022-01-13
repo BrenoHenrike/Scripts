@@ -37,10 +37,10 @@ public class SagaPrologue
         Core.KillQuest(180, "castleundead", "*", FollowupIDOverwrite: 196);                                         // Defend the Throne
         if (!Core.QuestProgression(1, FollowupIDOverwrite: 196))                                                    // The Arrival of Drakath cutscene
         {
-            Bot.Player.Join("castleundead", "King2", "Center");
+            Core.Join("castleundead", "King2", "Center");
             Bot.SendPacket($"%xt%zm%updateQuest%188220%41%{(Core.HeroAlignment > 1 ? 1 : Core.HeroAlignment)}%");
             Bot.Sleep(2000);
-            Bot.Player.Join("shadowfall");
+            Core.Join("shadowfall");
             Bot.Sleep(2000);
         }
         //Map: ChaosCrypt

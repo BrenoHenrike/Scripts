@@ -48,13 +48,13 @@ public class SagaExtra
 			switch (i)
 			{
 				case 0: //
-                    bot.Player.Join("dreadhaven");
+                    Core.Join("dreadhaven");
                     break;
 				case 1: //
-                    bot.Player.Join("dreadhaven");
+                    Core.Join("dreadhaven");
                     break;
 				case 2: //
-                    bot.Player.Join("dreadhaven");
+                    Core.Join("dreadhaven");
                     break;
 				case 3: //
                     Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");

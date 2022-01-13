@@ -97,7 +97,7 @@ public class SagaArcangrove
 					Core.SmartKillMonster(qIDs[i], "cloister", "Karasu");
 					break;
 				case 5: //It's A Bough-t Time
-					bot.Player.Join("arcangrove");
+					Core.Join("arcangrove");
 					Core.Jump("Potion", "Right");
 					bot.Shops.Load(211);
 					bot.Shops.BuyItem(211, "Mana Potion");
@@ -195,7 +195,7 @@ public class SagaArcangrove
 					Core.SmartKillMonster(qIDs[i], "mafic", "Mafic Dragon");
 					break;
 				case 33: //The Great Mana Golem
-					bot.Player.Join("elemental");
+					Core.Join("elemental");
 					Core.Jump("r5", "Down");
 					bot.Sleep(2000);
 					Core.Jump("Enter", "Spawn");

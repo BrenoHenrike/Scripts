@@ -57,7 +57,7 @@ public class SagaDarkovia
         //Map: LycanWar
         if (!Core.QuestProgression(1, FollowupIDOverwrite: 564))                                        // Lycan War
         {
-            Bot.Player.Join("lycanwar");
+            Core.Join("lycanwar");
             Core.Jump("Boss", "Right");
             Bot.Sleep(5000);
             Core.Jump("Boss", "Left");

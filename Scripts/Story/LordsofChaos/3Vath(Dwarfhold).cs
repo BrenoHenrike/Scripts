@@ -52,7 +52,7 @@ public class SagaDwarfhold
         Core.KillQuest(340, "dwarfhold", "Albino Bat");                                                                 // Talc to Me
         if (!Core.QuestProgression(343, FollowupIDOverwrite: 341))                                                        // Upper City Gates
         {
-            Bot.Player.Join("dwarfhold", "rdoor", "Right");
+            Core.Join("dwarfhold", "rdoor", "Right");
             Core.EnsureComplete(343);
             Bot.Sleep(2500);
         }
@@ -67,14 +67,14 @@ public class SagaDwarfhold
         Core.KillQuest(352, "uppercity", "Cave Lizard");                                                                // Lizard Gizzard
         if (!Core.QuestProgression(1, FollowupIDOverwrite: 353))                                                        // Confront Vath
         {
-            Bot.Player.Join("vath");
+            Core.Join("vath");
             Bot.Player.Jump("CutCap", "Left");
             Bot.Sleep(2500);
         }
         Core.KillQuest(353, "dwarfprison", new[] {"Balboa", "Albino Bat", "Chaos Drow"});                               // Mock the Lock
         if (!Core.QuestProgression(354, FollowupIDOverwrite: 355))                                                        // Like Butter
         {
-            Bot.Player.Join("dwarfprison", "Enter", "Right");
+            Core.Join("dwarfprison", "Enter", "Right");
             Core.EnsureComplete(354);
         }
         Core.KillQuest(355, "dwarfprison", "Warden Elfis", FollowupIDOverwrite: 357);                                   // Jailhouse Rock
@@ -82,7 +82,7 @@ public class SagaDwarfhold
             Core.KillQuest(356, "dwarfprison", new[] {"Balboa", "Albino Bat", "Chaos Drow"}, FollowupIDOverwrite: 362); // Explosives 101
         if (!Core.QuestProgression(357, FollowupIDOverwrite: 362))                                                      // Big Bada-Boom
         {
-            Bot.Player.Join("dwarfprison");
+            Core.Join("dwarfprison");
             Core.EnsureComplete(357);
         } 
         //Map: Roc

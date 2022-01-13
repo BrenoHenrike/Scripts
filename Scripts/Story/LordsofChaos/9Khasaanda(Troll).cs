@@ -95,7 +95,7 @@ public class SagaTroll
 					Core.SmartKillMonster(qIDs[i], "bloodtusk", "Trollola Plant");
 					break;
 				case 4: //She Who Answers 1
-					bot.Player.Join("crossroads");
+					Core.Join("crossroads");
 					Core.Jump("r11", "Down");
 					bot.SendPacket("%xt%zm%tryQuestComplete%74343%1230%-1%false%wvz%");
 					bot.Sleep(2000);
@@ -107,12 +107,12 @@ public class SagaTroll
 					Core.SmartKillMonster(qIDs[i], "bloodtusk", "Crystal-Rock");
 					break;
 				case 6: //She Who Answers 2 - cutscene
-					bot.Player.Join("crossroads");
+					Core.Join("crossroads");
 					Core.Jump("CutE", "Left");
 					bot.SendPacket("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
 					break;
 				case 7: //Bloodtusk War
-					bot.Player.Join("bloodtuskwar");
+					Core.Join("bloodtuskwar");
 					Core.Jump("r7", "Left");
 					bot.Player.Kill("Chaotic Troll");
 					Core.Jump("Cut1", "Left");

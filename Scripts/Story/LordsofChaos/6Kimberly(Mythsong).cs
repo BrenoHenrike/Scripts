@@ -73,7 +73,7 @@ public class SagaMythsong
 					Core.SmartKillMonster(qIDs[i], "beehive", "Lord Ovthedance");
 					break;
 				case 7: //Dance with Great Godfather of Souls
-					bot.Player.Join("beehive");
+					Core.Join("beehive");
 					bot.SendPacket("%xt%zm%tryQuestComplete%30004%661%-1%false%wvz%");
 					break;
 				case 8: //Bad Moon Rising
@@ -89,10 +89,10 @@ public class SagaMythsong
 					Core.SmartKillMonster(qIDs[i], "orchestra", "Faust");
 					break;
 				case 12: //Kimberly
-					bot.Player.Join("mythsongwar");
+					Core.Join("mythsongwar");
 					bot.Sleep(2500);
 					Core.Jump("War4", "Right");
-					bot.Player.Join("palooza");
+					Core.Join("palooza");
 					Core.Jump("Act5", "Left");
 					bot.Player.Kill("Chaos Lord Discordia");
 					Core.Jump("Cut", "Left");

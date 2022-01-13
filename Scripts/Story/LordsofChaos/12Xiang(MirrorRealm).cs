@@ -101,7 +101,7 @@ public class SagaMirrorRealm
 					Core.SmartKillMonster(qIDs[i], "brightfall", "Painadin Overlord");
 					break;
 				case 9: //Rearm The Legion of Light
-                    bot.Player.Join("overworld");
+                    Core.Join("overworld");
                     bot.SendPacket("%xt%zm%tryQuestComplete%96506%2918%-1%false%wvz%");
                     Core.SmartKillMonster(qIDs[i], "overworld", "Undead Minion");
 					break;
@@ -176,7 +176,7 @@ public class SagaMirrorRealm
 					Core.SmartKillMonster(3186, "bloodtuskwar", "Chaos Tigriff", completeQuest: true);
 					break;
 				case 32: //Ward Off the Beast
-					bot.Player.Join("mirrorportal");
+					Core.Join("mirrorportal");
 					bot.Sleep(2500);
 					break;
 				case 33: //Horror Takes Flight
