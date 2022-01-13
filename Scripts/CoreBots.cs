@@ -1079,7 +1079,7 @@ public class CoreBots
         Join("citadel", "m22", "Left");
         if (Bot.Player.Cell != "m22")
             Bot.Player.Jump("m22", "Left");
-        Bot.Player.Join("tercessuinotlim");
+        Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"));
         Bot.Wait.ForMapLoad("tercessuinotlim");
     }
 
