@@ -1040,6 +1040,17 @@ public class CoreBots
     /// </summary>
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
+    public void Jump(string cell = "Enter", string pad = "Spawn")
+    {
+        Bot.Player.SetSpawnPoint(cell, pad);
+        if (Bot.Player.Cell == cell)
+            return;
+        Bot.Player.Jump(cell, pad);
+    }
+
+    /// <summary>
+    /// Jump to wait room and wait <see cref="ExitCombatDelay"/>
+    /// </summary>
     public void JumpWait()
     {
         if (Bot.Player.Cell != "Wait")
@@ -1054,18 +1065,6 @@ public class CoreBots
     {
         JumpWait();
         Bot.Player.Join((HardMonster && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-    }
-
-    /// <summary>
-    /// Jump to wait room and wait <see cref="ExitCombatDelay"/>
-    /// </summary>
-    public void JumpWait()
-    {
-        if (Bot.Player.Cell != "Wait")
-        {
-            Bot.Player.Jump("Wait", "Spawn");
-            Bot.Sleep(ExitCombatDelay);
-        }
     }
 
     /// <summary>
