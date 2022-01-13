@@ -65,6 +65,7 @@ public class CoreBots
         Bot.Options.AutoRelogin = changeTo;
         Bot.Options.InfiniteRange = changeTo;
         Bot.Options.ExitCombatBeforeQuest = changeTo;
+        Bot.Options.SkipCutscenes = changeTo;
         Bot.Drops.RejectElse = changeTo;
         Bot.Lite.UntargetDead = changeTo;
         Bot.Lite.UntargetSelf = changeTo;
@@ -471,6 +472,105 @@ public class CoreBots
         Bot.Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
     }
+    
+    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        EnsureAccept(QuestID);
+        GetMapItem(MapItemID, Amount, MapName);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+            return;
+
+        EnsureAccept(QuestID);
+        BuyItem(MapName, ShopID, ItemName, Amount);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            EnsureComplete(QuestID);
+            Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    {
+        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        RBot.Items.ItemBase[] Rewards = QuestData.Rewards.ToArray();
+        
+        if (QuestData == null)
+            Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
+        
+        if (!Bot.Quests.IsUnlocked(QuestID))
+            Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
+
+        if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID+1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite)))) 
+        {
+            Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
+            Bot.Sleep(700)
+            return true;
+        }
+        
+        if (Reward != "All")
+        {
+            if (CheckInventory(Reward)) 
+            {
+                Logger($"You already have {Reward}, skipping quest");
+                return true;
+            }
+            AddDrop(Reward);
+        }
+        else
+            foreach (RBot.Items.ItemBase Item in Rewards)
+                AddDrop(Item.Name);
+
+        Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
+        return false;
+    }
     #endregion
 
     #region Kill
@@ -671,10 +771,10 @@ public class CoreBots
         if (item == null)
         {
             Logger("Killing Escherion");
-            while(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Escherion").Alive)
+            while(Bot.Monsters.MapMonsters.Find(m => m.Name == "Escherion").Alive)
             {
-                if(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
-                    Bot.Player.Kill("Staff of Inversion");
+                if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                    Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
             }
@@ -684,8 +784,8 @@ public class CoreBots
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
             while(!CheckInventory(item, quant))
             {
-                if(Bot.Monsters.CurrentMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
-                    Bot.Player.Kill("Staff of Inversion");
+                if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                    Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
                 Bot.Player.Pickup(item);
@@ -798,6 +898,27 @@ public class CoreBots
         currentClass = classToUse;
     }
 
+    private void SwitchAlignment(Alignment Side)
+    {
+        if (Side == Alignment.Good)
+        {
+            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%1%");
+            Bot.Sleep(1500);
+            return;
+        }
+        if (Side == Alignment.Evil)
+        {
+            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%2%");
+            Bot.Sleep(1500);
+            return;
+        }
+        if (Side == Alignment.Chaos)
+        {
+            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%3%");
+            Bot.Sleep(1500);
+            return;
+        }
+    }
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
         if(log)
@@ -919,12 +1040,20 @@ public class CoreBots
     /// </summary>
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
-    public void Jump(string cell = "Enter", string pad = "Spawn")
+    public void JumpWait()
     {
-        Bot.Player.SetSpawnPoint(cell, pad);
-        if (Bot.Player.Cell == cell)
-            return;
-        Bot.Player.Jump(cell, pad);
+        if (Bot.Player.Cell != "Wait")
+        {
+            Bot.Player.Jump("Wait", "Spawn");
+            Bot.Sleep(ExitCombatDelay);
+            Bot.Wait.ForCombatExit();
+        }
+    }
+
+    public void Join(string map, string cell = "Enter", string pad = "Spawn", bool HardMonster = false, bool ignoreCheck = false)
+    {
+        JumpWait();
+        Bot.Player.Join((HardMonster && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
     }
 
     /// <summary>
