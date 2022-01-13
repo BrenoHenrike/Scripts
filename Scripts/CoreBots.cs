@@ -1063,10 +1063,10 @@ public class CoreBots
         }
     }
 
-    public void Join(string map, string cell = "Enter", string pad = "Spawn", bool HardMonster = false, bool ignoreCheck = false)
+    public void Join(string map, string cell = "Enter", string pad = "Spawn", bool Public = false, bool ignoreCheck = false)
     {
         JumpWait();
-        Bot.Player.Join((HardMonster && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+        Bot.Player.Join((Public && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
     }
 
     /// <summary>
