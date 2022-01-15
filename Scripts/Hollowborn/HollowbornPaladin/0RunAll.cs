@@ -1,9 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/LetsGetYouASuit.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/IGotYourBackAndYourTop.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/TheDarkSacrifice.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/ThePostSummoning.cs
+//cs_include Scripts/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
@@ -14,19 +11,21 @@
 //cs_include Scripts/CoreDailys.cs
 using RBot;
 
-public class HollowbornPaladinAll
+public class HBPalAll
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public ThePostSummoning HBPalPost = new ThePostSummoning();
+    public CoreHollowborn HB = new CoreHollowborn();
+    public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
+    public CoreFarms Farm = new CoreFarms();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
         Bot.Player.LoadBank();
 
-        HBPalPost.GetAll();
+        HBPal.GetAll();
 
         Core.SetOptions(false);
     }
