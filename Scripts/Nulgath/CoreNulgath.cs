@@ -401,14 +401,14 @@ public class CoreNulgath
             BambloozevsDrudgen(item, quant);
         else
         {
-            Core.AddDrop("Escherion's Helm");
-            Core.CheckInventory("Escherion's Helm");
+            Core.AddDrop("Relic of Chaos");
+            Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
             while(!Bot.Inventory.Contains(item, quant))
             {
                 Core.EnsureAccept(2857);
-                Core.KillEscherion("Escherion's Helm");
+                Core.KillEscherion("Relic of Chaos");
                 Core.EnsureComplete(2857);
                 Bot.Player.Pickup(item);
                 Core.Logger($"Completed x{i++}");
@@ -482,7 +482,7 @@ public class CoreNulgath
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
-        Core.AddDrop("Escherion's Helm", "Tainted Core");
+        Core.AddDrop("Relic of Chaos", "Tainted Core");
         bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
         if(OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
@@ -501,8 +501,8 @@ public class CoreNulgath
             while (Core.CheckInventory("Tainted Core"))
             {
                 Core.EnsureComplete(609);
-                Bot.Wait.ForDrop("Escherion's Helm");
-                Bot.Player.Pickup("Escherion's Helm");
+                Bot.Wait.ForDrop("Relic of Chaos");
+                Bot.Player.Pickup("Relic of Chaos");
                 Core.EnsureComplete(2857);
                 Bot.Sleep(Core.ActionDelay);
                 Core.EnsureAccept(2857, 609);
@@ -517,8 +517,8 @@ public class CoreNulgath
                         Core.EnsureComplete(2561);
                     else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
                         Core.EnsureComplete(599);
-                    Bot.Wait.ForDrop("Escherion's Helm");
-                    Bot.Player.Pickup("Escherion's Helm");
+                    Bot.Wait.ForDrop("Relic of Chaos");
+                    Bot.Player.Pickup("Relic of Chaos");
                     Core.EnsureComplete(2857);
                     Bot.Sleep(Core.ActionDelay);
                     Core.EnsureAccept(2857);
