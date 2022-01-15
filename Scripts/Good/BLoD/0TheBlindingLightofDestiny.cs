@@ -6,24 +6,16 @@ using RBot;
 
 public class TheBlindingLightofDestiny
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
-	public CoreBLOD BLOD = new CoreBLOD();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-		Core.AddDrop(BLOD.BLoDItems);
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    
+    public CoreBots Core => CoreBots.Instance;
+    public CoreBLOD BLOD = new CoreBLOD();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		BLOD.UnlockMineCrafting();
+        BLOD.DoAll();
 
-		BLOD.BlindingMace();
-
-		BLOD.BlindingBow();
-
-		BLOD.BlindingBlade();
-
-		BLOD.TheBlindingLightofDestiny();
-
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }
