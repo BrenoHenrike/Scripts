@@ -1065,6 +1065,9 @@ public class CoreBots
 
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
+        if (Bot.Map.Name == map)
+            return;
+
         JumpWait();
         Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
     }
