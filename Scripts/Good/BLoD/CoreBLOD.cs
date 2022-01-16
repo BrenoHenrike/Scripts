@@ -96,13 +96,13 @@ public class CoreBLOD
         if(!Bot.Quests.IsUnlocked(2083))
         {
             Core.Logger("Quest: Essential Essences [2082]");
-            BattleUnderB("Undead Essence", 25);
+            Farm.BattleUnderB("Undead Essence", 25);
             Core.ChainComplete(2082);
         }
         if(!Bot.Quests.IsUnlocked(2084))
         {
             Core.Logger("Quest: Bust Some Dust [2083]");
-            BattleUnderB("Bone Dust", 40);
+            Farm.BattleUnderB("Bone Dust", 40);
             Core.ChainComplete(2083);
         }
         if(!Bot.Quests.IsUnlocked(2091))
@@ -126,7 +126,7 @@ public class CoreBLOD
         Core.Logger($"Farming {quant} Spirit Orb");
         while (!Core.CheckInventory("Spirit Orb", quant))
         {
-            BattleUnderB("Undead Essence", 900);
+            Farm.BattleUnderB("Undead Essence", 900);
             while (Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
             {
                 Core.ChainComplete(2082);
@@ -226,9 +226,6 @@ public class CoreBLOD
         }
     }
 
-    public void BattleUnderB(string item = "Bone Dust", int quant = 1) 
-        => Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false);
-
     public void LightMerge(string item, int quant = 1) 
         => Core.BuyItem("necropolis", 422, item, quant);
 
@@ -268,7 +265,7 @@ public class CoreBLOD
                 {
                     Core.Logger("Farming for Celestial Copper");
                     Core.EnsureAccept(2107);
-                    BattleUnderB("Undead Energy", 25);
+                    Farm.BattleUnderB("Undead Energy", 25);
                     Dailys.MineCrafting(new[] { "Copper" });
                     if (!Core.CheckInventory("Copper"))
                         Core.Logger("Can't complete Celestial Copper Enchantment (Missing Copper).", messageBox: true, stopBot: true);
@@ -287,7 +284,7 @@ public class CoreBLOD
                 Core.EnsureComplete(2133);
             }
             Core.Logger("Farming for Mace of Destiny");
-            BattleUnderB("Undead Energy", 7);
+            Farm.BattleUnderB("Undead Energy", 7);
             BasicWK();
             AdvancedWK();
             UltimateWK("Loyal Spirit Orb");
@@ -329,7 +326,7 @@ public class CoreBLOD
                 {
                     Core.Logger("Farming for Sanctified Silver");
                     Core.EnsureAccept(2108);
-                    BattleUnderB("Undead Energy", 25);
+                    Farm.BattleUnderB("Undead Energy", 25);
                     Dailys.MineCrafting(new[] { "Silver" });
                     if (!Core.CheckInventory("Silver"))
                         Core.Logger("Can't complete Sanctified Silver Enchantment (Missing Silver).", messageBox: true, stopBot: true);
@@ -344,7 +341,7 @@ public class CoreBLOD
             }
             Core.Logger("Farming for Bow of Destiny");
             FindingFragmentsMace();
-            BattleUnderB("Undead Energy", 17);
+            Farm.BattleUnderB("Undead Energy", 17);
             UltimateWK("Loyal Spirit Orb");
             UltimateWK("Spirit Orb", 13);
             BasicWK();
@@ -385,7 +382,7 @@ public class CoreBLOD
                 {
                     Core.Logger("Farming for Blessed Barium");
                     Core.EnsureAccept(2104);
-                    BattleUnderB("Undead Energy", 25);
+                    Farm.BattleUnderB("Undead Energy", 25);
                     Dailys.MineCrafting(new[] { "Barium" });
                     if (!Core.CheckInventory("Barium"))
                         Core.Logger("Can't complete Sanctified Barium Enchantment (Missing Barium).", messageBox: true, stopBot: true);
@@ -500,7 +497,7 @@ public class CoreBLOD
     public void FindingFragments(int quest)
     {
         Core.EnsureAccept(quest);
-        BattleUnderB("Blinding Light Fragments", 10);
+        Farm.BattleUnderB("Blinding Light Fragments", 10);
         Core.EnsureComplete(quest);
     }
 }

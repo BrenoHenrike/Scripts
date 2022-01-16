@@ -63,8 +63,7 @@ public class VoidHighlordsChallenge
 
 		Nulgath.FarmGemofNulgath(20);
 
-		if (!Core.CheckInventory("Bone Dust", 20))
-			Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone Dust", 20, false);
+		Farm.BattleUnderB("Bone Dust", 20);
 
 		Nulgath.EmblemofNulgath(20);
 

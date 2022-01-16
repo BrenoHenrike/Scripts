@@ -297,6 +297,10 @@ public class CoreFarms
             Core.Rest();
         }
     }
+
+    public void BattleUnderB(string item = "Bone Dust", int quant = 1) 
+        => Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false);
+
     #endregion
 
     #region Reputation
