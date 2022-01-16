@@ -451,7 +451,7 @@ public class CoreSDKA
             DoomKnightWK("Corrupt Spirit Orb");
             DoomKnightWK("Dark Spirit Orb", 13);
             PinpointBroadsword();
-            Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Undead Energy", 17, false);
+            Farm.BattleUnderB("Undead Energy", 17);
             DoomMerge("Bow to the Shadows");
         }
 
