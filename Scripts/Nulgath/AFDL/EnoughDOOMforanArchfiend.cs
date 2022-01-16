@@ -46,7 +46,7 @@ public class EnoughDOOMforanArchfiend
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", 1, false);
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Undead Essence", 1000, false);
+        Farm.BattleUnderB("Undead Essence", 1000);
 
         Nulgath.FarmVoucher(false);
 
