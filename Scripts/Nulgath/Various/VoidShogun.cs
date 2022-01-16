@@ -5,63 +5,70 @@ using RBot;
 
 public class VoidShogun
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
-	public CoreNulgath Nulgath = new CoreNulgath();
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public CoreNulgath Nulgath = new CoreNulgath();
 
-	public readonly string[] Rewards =
-	{
-		"Void Shogun",
-		"Void Shogun Mask",
-		"Void Shogun Helm",
-		"Void Shogun Masked Helm",
-		"Void Shogun Banner",
-		"Void Shogun Runes",
-		"Void Shogun Katana",
-		"Void Shogun Naginata",
-		"Mini Void Shogun",
-		"Mini Void Shogun Battlepet",
-		"Void Shogun Katanas on your Hip",
-		"Dual Void Shogun Katanas"
-	};
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-		Core.AddDrop(Nulgath.bagDrops);
-		Core.AddDrop(Rewards); 
-		Core.AddDrop("Void Voucher", "DaiTengu Blade of Wind", "Orochi's Shadow");
+    public readonly string[] Rewards =
+    {
+        "Void Shogun",
+        "Void Shogun Mask",
+        "Void Shogun Helm",
+        "Void Shogun Masked Helm",
+        "Void Shogun Banner",
+        "Void Shogun Runes",
+        "Void Shogun Katana",
+        "Void Shogun Naginata",
+        "Mini Void Shogun",
+        "Mini Void Shogun Battlepet",
+        "Void Shogun Katanas on your Hip",
+        "Dual Void Shogun Katanas"
+    };
+    
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		if(!Core.CheckInventory("Void Monk of Nulgath"))
-		{
-			Core.EquipClass(ClassType.Farm);
-			Core.KillMonster("quibblehunt", "r2", "Left", "*", "Void Voucher", 500, false);
-			Core.JumpWait();
-			Core.BuyItem("quibblehunt", 1421, "Void Monk of Nulgath");
-		}
+        GetShogun();
 
-		Farm.YokaiREP();
-		Nulgath.FarmVoucher(false);
+        Core.SetOptions(false);
+    }
 
-		int i = 1;
-		while(!Core.CheckInventory(Rewards, toInv: false))
-		{
-			Core.EnsureAccept(6484);
+    public void GetShogun()
+    {
+        Core.AddDrop(Nulgath.bagDrops);
+        Core.AddDrop(Rewards); 
+        Core.AddDrop("Void Voucher", "DaiTengu Blade of Wind", "Orochi's Shadow");
 
-			Nulgath.FarmUni13();
-			Nulgath.FarmDiamondofNulgath(10);
-			Nulgath.Supplies("Unidentified 24");
+        if(!Core.CheckInventory("Void Monk of Nulgath"))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("quibblehunt", "r2", "Left", "*", "Void Voucher", 500, false);
+            Core.JumpWait();
+            Core.BuyItem("quibblehunt", 1421, "Void Monk of Nulgath");
+        }
 
-			Core.EquipClass(ClassType.Solo);
-			Core.HuntMonster("hachiko", "Dai Tengu", "DaiTengu Blade of Wind", 1, false);
-			Core.HuntMonster("shogunwar", "Orochi", "Orochi's Shadow", 1, false);
-			Core.HuntMonster("necrocavern", "Shadowstone Support", "ShadowStone Rune");
+        Farm.YokaiREP();
+        Nulgath.FarmVoucher(false);
 
-			Core.EnsureComplete(6484);
-			bot.Player.Pickup(Rewards);
-			Core.Logger($"Completed x{i++}");
-		}
+        int i = 1;
+        while(!Core.CheckInventory(Rewards, toInv: false))
+        {
+            Core.EnsureAccept(6484);
 
-		Core.SetOptions(false);
-	}
+            Nulgath.FarmUni13();
+            Nulgath.FarmBloodGem(7);
+            Nulgath.Supplies("Unidentified 24");
+
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("hachiko", "Dai Tengu", "DaiTengu Blade of Wind", 1, false);
+            Core.HuntMonster("shogunwar", "Orochi", "Orochi's Shadow", 1, false);
+            Core.HuntMonster("necrocavern", "Shadowstone Support", "ShadowStone Rune");
+
+            Core.EnsureCompleteChoose(6484, Rewards);
+            Bot.Player.Pickup(Rewards);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
 }
