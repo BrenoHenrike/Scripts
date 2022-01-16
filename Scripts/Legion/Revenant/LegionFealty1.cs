@@ -31,12 +31,12 @@ public class LegionFealty1
             Core.EnsureAccept(6897);
 
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("judgement", "r10a", "Left", "Ultra Aeacus", "Aeacus Empowered", 50, false);
+            Core.KillMonster("judgement", "r10a", "Left", "Ultra Aeacus", "Aeacus Empowered", 50, false, publicRoom: true);
 
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("revenant", "r2", "Left", "*", "Tethered Soul", 300, false);
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 500, false);
-            Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false);
+            Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false, publicRoom: true);
 
             Core.EnsureComplete(6897);
             Bot.Player.Pickup("Revenant's Spellscroll");
