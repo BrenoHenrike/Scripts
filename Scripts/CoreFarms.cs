@@ -122,7 +122,7 @@ public class CoreFarms
     /// <param name="level">Desired level</param>
     public void IcestormArena(int level = 100, bool rankUpClass = false)
     {
-        if(Bot.Player.Level >= level)
+        if(Bot.Player.Level >= level && !rankUpClass)
             return;
         if(!rankUpClass)
             Core.EquipClass(ClassType.Farm);
@@ -299,7 +299,15 @@ public class CoreFarms
     }
 
     public void BattleUnderB(string item = "Bone Dust", int quant = 1) 
-        => Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false);
+    {
+        if (Core.CheckInventory(item, quant))
+            return;
+
+        Core.AddDrop(item);
+        Core.EquipClass(ClassType.Farm);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
+    }
+
 
     #endregion
 
