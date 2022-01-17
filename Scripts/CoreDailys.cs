@@ -99,7 +99,7 @@ public class CoreDailys
 	{
         if (metals == null)
             metals = MineCraftingMetals;
-        if (Core.CheckInventory(metals))
+        if (Core.CheckInventory(metals, quant))
             return;
         if (!CheckDaily(2091, metals))
             return;
