@@ -131,7 +131,7 @@ public class NSOD
         while (!Core.CheckInventory("Void Aura", Quantity))
         {
             Core.EnsureAccept(4432);
-            Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false, publicRoom: true);
+            Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
             Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", EssenceQuantity, false, publicRoom: true);
             Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", EssenceQuantity, false, publicRoom: true);
             Core.KillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", EssenceQuantity, false, publicRoom: true);
