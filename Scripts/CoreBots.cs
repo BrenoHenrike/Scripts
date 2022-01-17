@@ -180,11 +180,11 @@ public class CoreBots
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <param name="any">If any of the items exist, returns true</param>
     /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
-    public bool CheckInventory(string[] itemNames, bool any = false, bool toInv = true)
+    public bool CheckInventory(string[] itemNames, int quant = 1, bool any = false, bool toInv = true)
     {
         foreach (string name in itemNames)
         {
-            if (Bot.Bank.Contains(name))
+            if (Bot.Bank.Contains(name, quant))
             {
                 if (!toInv && !any)
                     continue;
@@ -192,9 +192,9 @@ public class CoreBots
                     return true;
                 Unbank(name);
             }
-            if (Bot.Inventory.Contains(name) && any)
+            if (Bot.Inventory.Contains(name, quant) && any)
                 return true;
-            else if (Bot.Inventory.Contains(name) && !any)
+            else if (Bot.Inventory.Contains(name, quant) && !any)
                 continue;
             else if (!any)
                 return false;
