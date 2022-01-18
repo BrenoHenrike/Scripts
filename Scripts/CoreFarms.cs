@@ -327,9 +327,9 @@ public class CoreFarms
             ElementalMasterREP();
             EmberseaREP();
             EternalREP();
-            //EvilREP();
+            EvilREP();
             GlaceraREP();
-            //GoodREP();
+            GoodREP();
             LycanREP();
     
     
@@ -770,7 +770,7 @@ public class CoreFarms
     {
         if (FactionRank("Evil") >= rank)
             return;
-        Core.Logger("This needs the player to be aligned to evil", messageBox: true);
+        Core.SwitchAlignment(Alignment.Evil);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         while(FactionRank("Evil") < 4)
@@ -827,7 +827,7 @@ public class CoreFarms
     {
         if (FactionRank("Good") >= rank)
             return;
-        Core.Logger("This needs the player to be aligned to good", messageBox: true);
+        Core.SwitchAlignment(Alignment.Good);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         while(FactionRank("Good") < 4)
