@@ -322,6 +322,7 @@ public class CoreFarms
             BlacksmithingREP();
             BladeofAweREP();
             BrightoakREP();
+            ChronoSpanREP();
             ChaosREP();
             DoomwoodREP();
             ElementalMasterREP();
@@ -621,7 +622,6 @@ public class CoreFarms
             Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
             Core.Logger("You can now merge the Blade of Awe at /join museum", messageBox: true);
         }
-
     }
 
     public void BrightoakREP(int rank = 10)
@@ -657,6 +657,23 @@ public class CoreFarms
             Core.EnsureAccept(3594);
             Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos Power Increased", 6);
             Core.EnsureComplete(3594);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void ChronoSpanREP(int rank = 10)
+    {
+        if (FactionRank("ChronoSpan") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        //if (Core.IsMember)
+        //    SuperFanREP(REP.ChronoSpan);
+        //else
+        while (FactionRank("ChronoSpan") < rank)
+        {
+            Core.SmartKillMonster(2204, "thespan", new[] {"Minx Fairy", "Tog", "Moglin Ghost"}, completeQuest: true);
             Core.Logger($"Completed x{i++}");
         }
     }
