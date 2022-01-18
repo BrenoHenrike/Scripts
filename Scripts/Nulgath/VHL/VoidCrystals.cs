@@ -6,37 +6,46 @@ using RBot;
 
 public class VoidCrystals
 {
-	// This bot only gets the items, do the merge yourself for precaution
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
-	public CoreDailys Dailys = new CoreDailys();
-	public CoreNulgath Nulgath = new CoreNulgath();
+    // This bot only gets the items, do the merge yourself for precaution
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public CoreDailys Dailys = new CoreDailys();
+    public CoreNulgath Nulgath = new CoreNulgath();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop(Nulgath.bagDrops);
+        VHLCrystals();
 
-		Nulgath.FarmUni13(1);
-		Dailys.EldersBlood();
+        Core.SetOptions(false);
 
-		//If you have /TowerofDoom10 unlocked and can solo Slugbutter uncomment
-		//Nulgath.DirtyDeedsDoneDirtCheap(200);
-		Nulgath.FarmUni10(200);
+    }
 
-		Nulgath.FarmGemofNulgath(150);
+    public void VHLCrystals()
+    {
 
-		Nulgath.FarmDarkCrystalShard(200);
+        Core.AddDrop(Nulgath.bagDrops);
 
-		Nulgath.FarmDiamondofNulgath(200);
+        Nulgath.FarmUni13(1);
+        Dailys.EldersBlood();
 
-		Nulgath.FarmBloodGem(30);
+        //If you have /TowerofDoom10 unlocked and can solo Slugbutter uncomment
+        //Nulgath.DirtyDeedsDoneDirtCheap(200);
+        Nulgath.FarmUni10(200);
 
-		Nulgath.FarmTotemofNulgath(15);
+        Nulgath.FarmGemofNulgath(150);
 
-		Nulgath.SwindleBulk(200);
+        Nulgath.FarmDarkCrystalShard(200);
 
-		Core.SetOptions(false);
-	}
+        Nulgath.FarmDiamondofNulgath(200);
+
+        Nulgath.FarmBloodGem(30);
+
+        Nulgath.FarmTotemofNulgath(15);
+
+        Nulgath.SwindleBulk(200);
+
+        Core.SetOptions(false);
+    }
 }

@@ -6,79 +6,70 @@ using RBot;
 
 public class VoidHighlordsChallenge
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
-	public CoreNulgath Nulgath = new CoreNulgath();
-	public CoreDailys Dailys = new CoreDailys();
-	public CoreFarms Farm = new CoreFarms();
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreDailys Dailys = new CoreDailys();
+    public CoreFarms Farm = new CoreFarms();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+        {
+            Core.SetOptions();
 
-		Core.AddDrop(Nulgath.bagDrops);
-		Core.AddDrop(Nulgath.VHLDrops);
+            Farm.IcestormArena(80);
+            Challenge();
 
-		if(!Core.CheckInventory("Hadean Onyx of Nulgath"))
-		{
-			Core.JoinTercessuinotlim();
-			Core.Jump("m4", "Right");
-			Bot.Player.KillForItem("Shadow of Nulgath", "Hadean Onyx of Nulgath", 1);
-		}
+            Core.SetOptions(false);
+        }
 
-		Nulgath.FarmVoucher(false);
 
-		Core.EnsureAccept(5660);
+    public void Challenge()
+        {
 
-		Farm.BlackKnightOrb();
-		
-		if (!Core.CheckInventory("Dwakel Decoder"))
-            Core.GetMapItem(106, map: "crashsite");
-		
-		if(!Core.CheckInventory("Nulgath Shaped Chocolate"))
-		{
-			if (bot.Player.Gold < 2000000)
-				Farm.BattleGroundE(2000000);
-            Core.BuyItem("citadel", 44, 38316);
-		}
-		
-		if (!Core.CheckInventory("The Secret 1"))
-		{
-			Core.EnsureAccept(623);
-			Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
-		}
-		
-		Dailys.EldersBlood();
+            Core.AddDrop(Nulgath.bagDrops);
+            Core.AddDrop(Nulgath.VHLDrops);
+            
 
-        Core.BuyItem("yulgar", 16, "Aelita's Emerald");
+            if(!Core.CheckInventory("Hadean Onyx of Nulgath"))
+            {
+                Core.JoinTercessuinotlim();
+                Core.Jump("m4", "Right");
+                Bot.Player.KillForItem("Shadow of Nulgath", "Hadean Onyx of Nulgath", 1);
+            }
 
-		Nulgath.FarmUni13();
+            Nulgath.FarmVoucher(false);
 
-		if (!Core.CheckInventory("Elemental Ink", 10))
-		{
-			if(!Core.CheckInventory("Mystic Quills", 4))
-				Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 4, false);
-            Core.BuyItem("dragonrune", 549, 13284, 10, 5);
-		}
+            Core.EnsureAccept(5660);
 
-		Nulgath.FarmGemofNulgath(20);
+            Farm.BlackKnightOrb();
+            
+            if(!Core.CheckInventory("Nulgath Shaped Chocolate"))
+            {
+                if (Bot.Player.Gold < 2000000)
+                    Farm.Gold(2000000);
+                Core.BuyItem("citadel", 44, 38316);
+            }
+            
+            Dailys.EldersBlood();
 
-		Farm.BattleUnderB("Bone Dust", 20);
+            Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
-		Nulgath.EmblemofNulgath(20);
+            Nulgath.FarmUni13();
 
-		Nulgath.EssenceofNulgath(50);
+            Nulgath.FarmGemofNulgath(20);
 
-		Nulgath.SwindleBulk(100);
+            Nulgath.EmblemofNulgath(20);
 
-		Nulgath.ApprovalAndFavor(300, 300);
-		
-		bot.Sleep(Core.ActionDelay);
-		if (Bot.Quests.CanComplete(5660))
-			Core.EnsureComplete(5660);
-		else
-			Core.Logger("Couldn't complete the quest");
+            Nulgath.EssenceofNulgath(50);
 
-		Core.SetOptions(false);
-	}
+            Nulgath.SwindleBulk(100);
+
+            Nulgath.ApprovalAndFavor(300, 300);
+            
+            Bot.Sleep(Core.ActionDelay);
+            if (Bot.Quests.CanComplete(5660))
+                Core.EnsureComplete(5660);
+            else
+                Core.Logger("Couldn't complete the quest");
+        }
 }
