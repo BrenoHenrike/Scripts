@@ -220,7 +220,7 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         while(!Core.CheckInventory("The Secret 4"))
         {
-            Core.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
+            Core.Join("bludrutbrawl", "Enter0", "Spawn", true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -257,7 +257,7 @@ public class CoreFarms
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
         while (!Core.CheckInventory(item, quant))
         {
-            Core.Join("bludrutbrawl-111111", "Enter0", "Spawn", true);
+            Core.Join("bludrutbrawl", "Enter0", "Spawn", true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");

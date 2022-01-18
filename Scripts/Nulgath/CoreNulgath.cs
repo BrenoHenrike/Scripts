@@ -241,8 +241,8 @@ public class CoreNulgath
         while (!Bot.Inventory.Contains("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
-            Core.KillMonster("boxes-111111", "Fort2", "Left", "*", "Cubes", 500, false);
-            Core.KillMonster("mountfrost-111111", "War", "Left", "Snow Golem", "Ice Cubes", 6);
+            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false);
+            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", 6);
             Core.EnsureComplete(7817);
             Bot.Player.Pickup("Tainted Gem");
             Core.Logger($"Completed x{i++}");
