@@ -1,9 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/LetsGetYouASuit.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/IGotYourBackAndYourTop.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/TheDarkSacrifice.cs
-//cs_include Scripts/Hollowborn/HollowbornPaladin/ThePostSummoning.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
