@@ -36,14 +36,16 @@ public class CapeOfAwe
             
         Core.EnsureAccept(4178);
         Core.EquipClass(ClassType.Solo);
-        Core.Join("doomvault", "r5", "Left");
+        Core.Join("doomvault", "r5", "Left", true, true);
         Core.Jump("r5", "Left");
-        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
+        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false, true, false);
         Core.EnsureComplete(4178);
 
         Core.BuyItem("museum", 1129, "Cape Relic");
 
         Core.BuyItem("museum", 1129, "Cape of Awe");
+
+        Core.ToBank("Legendary Awe Pass");
     }
     
     public bool GuardianCheck()
@@ -76,14 +78,16 @@ public class CapeOfAwe
 
         Core.EnsureAccept(4179);
         Core.EquipClass(ClassType.Solo);
-        Core.Join("doomvault", "r5", "Left");
+        Core.Join("doomvault", "r5", "Left", true, true);
         Core.Jump("r5", "Left");
-        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
+        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false, true, false);
         Core.EnsureComplete(4179);
                
         Core.BuyItem("museum", 1129, "Cape Relic");
 
         Core.BuyItem("museum", 1129, "Cape of Awe");
+
+        Core.ToBank("Guardian Awe Pass");
     }
     public void FreeAwe()
     {
@@ -97,13 +101,15 @@ public class CapeOfAwe
 
         Core.EnsureAccept(4180);
         Core.EquipClass(ClassType.Solo);
-        Core.Join("doomvault", "r5", "Left");
+        Core.Join("doomvault", "r5", "Left", true, true);
         Core.Jump("r5", "Left");
-        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
+        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false, true, false);
         Core.EnsureComplete(4180);
 
         Core.BuyItem("museum", 1129, "Cape Relic");
 
         Core.BuyItem("museum", 1129, "Cape of Awe");
+
+        Core.ToBank("Armor of Awe Pass");
     }
 }
