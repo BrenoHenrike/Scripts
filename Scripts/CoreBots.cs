@@ -921,6 +921,28 @@ public class CoreBots
             return;
         }
     }
+
+    public void BestGear(GearBoost BoostType)
+    {
+        RBot.Items.InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
+        RBot.Items.InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
+        RBot.Items.InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
+        Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
+
+        foreach (RBot.Items.InventoryItem Item in BankInvData)
+        {
+            if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
+            {
+                string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains(BoostType.ToString()));
+                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""));
+                BoostedGear.Add(Item.Name, BoostFloat);
+            }
+        }
+        string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
+        CheckInventory(BestItem);
+        Bot.Player.EquipItem(BestItem);
+    }
+
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
         if(log)
@@ -1117,4 +1139,18 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum GearBoost
+{
+    cp,
+    gold,
+    rep,
+    exp,
+    dmgAll,
+    Chaos,
+    Dragonkin,
+    Elemental,
+    Human,
+    Undead
 }
