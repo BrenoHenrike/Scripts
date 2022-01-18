@@ -27,7 +27,7 @@ public class WillpowerExtraction
 		Core.AddDrop(Nulgath.bagDrops);
 		Core.AddDrop(Nulgath.tercessBags);
 		Core.AddDrop("Unidentified 34", "Unidentified 19", "Necrot", "Chaoroot", "Doomatter",
-			"Mortality Cape of Revontheus", "Facebreaker of Nulgath", "SightBlinder Axe of Nulgath", "Mystic Tribal Sword",
+			"Mortality Cape of Revontheus", "Facebreakers of Nulgath", "SightBlinder Axes of Nulgath", "Mystic Tribal Sword",
 			"King Klunk's Crown", "Golden Shadow Breaker", "Shadow Terror Axe");
 
 		int i = 1;
@@ -71,9 +71,9 @@ public class WillpowerExtraction
                 Core.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
 			}
 
-			if (!Core.CheckInventory("Facebreaker of Nulgath"))
+			if (!Core.CheckInventory("Facebreakers of Nulgath"))
 			{
-				while (!Bot.Inventory.Contains("Facebreaker of Nulgath"))
+				while (!Bot.Inventory.Contains("Facebreakers of Nulgath"))
 				{
 					Core.EnsureAccept(3046);
 					Core.EquipClass(ClassType.Solo);
@@ -84,7 +84,7 @@ public class WillpowerExtraction
 					Nulgath.SwindleBulk(5);
 					Nulgath.FarmDiamondofNulgath(1);
 					Core.EnsureComplete(3046);
-					Bot.Player.Pickup("Facebreaker of Nulgath", "SightBlinder Axe of Nulgath");
+					Bot.Player.Pickup("Facebreakers of Nulgath", "SightBlinder Axes of Nulgath");
 					Bot.Sleep(Core.ActionDelay);
 				}
 			}
