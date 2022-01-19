@@ -30,7 +30,7 @@ public class SwordMaster
         if (rankUpClass)
         {
             Core.JumpWait();
-            Bot.Player.EquipItem("Blood Sorceress");
+            Bot.Player.EquipItem("SwordMaster");
             Farm.IcestormArena(1, rankUpClass: true);
         }
     }
