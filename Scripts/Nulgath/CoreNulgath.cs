@@ -60,15 +60,13 @@ public class CoreNulgath
     {
         "Hadean Onyx of Nulgath",
         "Black Knight Orb",
-        "Dwakel Decoder",
         "Nulgath Shaped Chocolate",
-        "The Secret 1",
         "Elder's Blood",
         "Aelita's Emerald",
-        "Elemental Ink",
         "Emblem of Nulgath",
         "Void Highlord Armor",
         "Helm of the Highlord",
+        "Highlord's Void Wrap",
         "Roentgenium of Nulgath"
     };
 
