@@ -287,6 +287,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
+        Bot.Sleep(ActionDelay);
         RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
@@ -924,6 +925,28 @@ public class CoreBots
 
     public void BestGear(GearBoost BoostType)
     {
+        GearBoost[] RaceBoosts = {
+            GearBoost.Chaos, 
+            GearBoost.Dragonkin, 
+            GearBoost.Elemental, 
+            GearBoost.Human, 
+            GearBoost.Undead
+        };
+        ItemCategory[] WeaponCatagories = {
+            RBot.Items.ItemCategory.Sword, 
+            RBot.Items.ItemCategory.Axe, 
+            RBot.Items.ItemCategory.Dagger, 
+            RBot.Items.ItemCategory.Gun, 
+            RBot.Items.ItemCategory.HandGun, 
+            RBot.Items.ItemCategory.Rifle, 
+            RBot.Items.ItemCategory.Bow, 
+            RBot.Items.ItemCategory.Mace, 
+            RBot.Items.ItemCategory.Gauntlet, 
+            RBot.Items.ItemCategory.Polearm, 
+            RBot.Items.ItemCategory.Staff, 
+            RBot.Items.ItemCategory.Wand, 
+            RBot.Items.ItemCategory.Whip
+        };
         RBot.Items.InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
         RBot.Items.InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
         RBot.Items.InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
@@ -939,6 +962,28 @@ public class CoreBots
             }
         }
         string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
+        ItemCategory BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
+
+        if (RaceBoosts.Contains(BoostType))
+        {
+            Dictionary<string, float> BoostedGearDMGall = new Dictionary<string, float>();
+
+            foreach (RBot.Items.InventoryItem Item in BankInvData)
+            {
+                if (Item.Meta != null && Item.Meta.Contains("dmgAll") && (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)))
+                {
+                    string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
+                    float BoostFloat = float.Parse(CorrectData.Replace($"dmgAll:", ""));
+                    BoostedGearDMGall.Add(Item.Name, BoostFloat);
+                }
+            }
+            string BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
+            JumpWait();
+            CheckInventory(BestItemDMGall);
+            Bot.Player.EquipItem(BestItemDMGall);
+            Bot.Sleep(ActionDelay);
+        }
+        JumpWait();
         CheckInventory(BestItem);
         Bot.Player.EquipItem(BestItem);
     }
