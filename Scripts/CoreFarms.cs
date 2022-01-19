@@ -322,7 +322,7 @@ public class CoreFarms
             BlacksmithingREP();
             BladeofAweREP();
             BrightoakREP();
-            ChroaMilitiaREP();
+            ChaosMilitiaREP();
             ChaosREP();
             ChronoSpanREP();
             //CraggleRockREP();
@@ -668,7 +668,7 @@ public class CoreFarms
         }
     }
 
-    public void ChroaMilitiaREP(int rank = 10)
+    public void ChaosMilitiaREP(int rank = 10)
     {
         if (FactionRank("Chaos Militia") >= rank)
             return;
