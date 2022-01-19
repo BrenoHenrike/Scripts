@@ -141,7 +141,7 @@ public class NSOD
             Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", EssenceQuantity, false, publicRoom: true);
             Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", EssenceQuantity, false, publicRoom: true);
             Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", EssenceQuantity, false, publicRoom: true);
-            for (int i = 0; i <= EssenceQuantity; i = i + 20)
+            for (int i = 20; i <= EssenceQuantity; i = i + 20)
                 Core.ChainComplete(4432);
             Bot.Wait.ForPickup("Void Aura");
         }
