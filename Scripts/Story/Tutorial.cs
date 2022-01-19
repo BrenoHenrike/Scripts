@@ -6,7 +6,7 @@
 
 using RBot;
 
-public class BotName
+public class Tutorial
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
