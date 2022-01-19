@@ -313,7 +313,7 @@ public class CoreFarms
 
     #region Reputation
     public void GetAllRanks()
-        {
+        {                           // Commented out functions dont excist yet
             AegisREP();
             AlchemyREP();
             ArcangroveREP();
@@ -322,17 +322,17 @@ public class CoreFarms
             BlacksmithingREP();
             BladeofAweREP();
             BrightoakREP();
-            //ChroaMilitiaREP();
+            ChroaMilitiaREP();
             ChaosREP();
             ChronoSpanREP();
             //CraggleRockREP();
             //DeathPitArenaREP();
             //DeathPitBrawlREP();
-            //DiabolicalREP()
+            DiabolicalREP();
             DoomwoodREP();
             //DreadfireREP();
             //DruidGroveREP();
-            //DwarfholdREP()
+            //DwarfholdREP();
             ElementalMasterREP();
             EmberseaREP();
             EternalREP();
@@ -668,6 +668,21 @@ public class CoreFarms
         }
     }
 
+    public void ChroaMilitiaREP(int rank = 10)
+    {
+        if (FactionRank("Chaos Militia") >= rank)
+            return;
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Chaos Militia") < rank)
+        {
+            Core.EnsureAccept(5775);
+            Core.HuntMonster("crownsreach", "Inquisitor Guard", "Inquisitor's Tabard", 10);
+            Core.EnsureComplete(5775);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
     public void ChaosREP(int rank = 10)
     {
         if (FactionRank("Chaos") >= rank)
@@ -701,6 +716,21 @@ public class CoreFarms
         }
     }
     
+    public void DiabolicalREP(int rank = 10)
+    {
+        if (FactionRank("Diabolical") >= rank)
+            return;
+        if (!Bot.Quests.IsUnlocked(7877))
+            Core.KillQuest(7875, "timevoid", "Unending Avatar");
+            Core.KillQuest(7876, "twiligtedge", "ChaosWeaver Warrior");
+        int i = 1;
+        while (FactionRank("Diabolical") < rank)
+        {
+            Core.SmartKillMonster(7877, "mudluk", "Tiger Leech", completeQuest: true);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
     public void DoomwoodREP(int rank = 10)
     {
         if (FactionRank("Doomwood") >= rank)
