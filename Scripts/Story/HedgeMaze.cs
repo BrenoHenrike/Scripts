@@ -42,14 +42,7 @@ public class HedgeMaze
         Core.KillQuest(QuestID: 5310, MapName: "hedgemaze", MonsterName: "Hedge Goblin");
         Core.MapItemQuest(QuestID: 5311, MapName: "hedgemaze", MapItemID: 4686);
         Core.KillQuest(QuestID: 5312, MapName: "hedgemaze", MonsterName: "Shattered Knight");
-        Core.KillQuest(QuestID: 5313, MapName: "hedgemaze", MonsterName: "Resurrected Minotaur");
-
-
-        
-
-
-        
-
-
+        Core.KillQuest(QuestID: 5313, MapName: "hedgemaze", MonsterName: "Resurrected Minotaur", hasFollowup: false);
+        Core.Join("party");
     }
 }
