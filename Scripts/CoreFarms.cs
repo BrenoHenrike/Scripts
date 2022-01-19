@@ -322,23 +322,46 @@ public class CoreFarms
             BlacksmithingREP();
             BladeofAweREP();
             BrightoakREP();
-            ChronoSpanREP();
+            //ChroaMilitiaREP();
             ChaosREP();
+            ChronoSpanREP();
+            //CraggleRockREP();
+            //DeathPitArenaREP();
+            //DeathPitBrawlREP();
+            //DiabolicalREP()
             DoomwoodREP();
+            //DreadfireREP();
+            //DruidGroveREP();
+            //DwarfholdREP()
             ElementalMasterREP();
             EmberseaREP();
             EternalREP();
+            //EtherStormREP();
             EvilREP();
+            //FaerieCourtREP();
+            //FishingREP();
             GlaceraREP();
             GoodREP();
-            LycanREP();
-    
-    
             HollowbornREP();
+            //HorcREP();
+            //InfernalArmyREP();
+            //LoremasterREP();
+            LycanREP();
+            //MonsterHunterREP();
             MysteriousDungeonREP();
             MythsongREP();
+            //NecroCryptREP();
+            //NorthpointeREP();
+            //PetTamerREP();
             RavenlossREP();
+            //SandSeaREP();
+            //SkyguardREP();
+            //SomniaREP();
             SpellCraftingREP();
+            //SwordhavenREP();
+            //ThunderForceREP();
+            //TreasureHunterREP();
+            //TrollREP();
             VampireREP();
             YokaiREP();
         }
