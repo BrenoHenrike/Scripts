@@ -37,11 +37,14 @@ public class HelmOfAwe
         Core.AddDrop("Legendary Awe Pass", "Helm Shard", "Helm Fragment", "Helm Relic", "Helm of Awe");
         
         Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            
-        Core.EnsureAccept(4175);
-        Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-        Core.EnsureComplete(4175);
+
+        while (!Core.CheckInventory("Helm Fragment", 10))
+        {
+            Core.EnsureAccept(4175);
+            Core.EquipClass(ClassType.Solo);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
+            Core.EnsureComplete(4175);
+        }
 
         Core.BuyItem("museum", 1129, "Helm Relic");
 
@@ -58,11 +61,14 @@ public class HelmOfAwe
 
         Farm.Experience(35);
 
-        Core.EnsureAccept(4176);
-        Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-        Core.EnsureComplete(4176);
-               
+        while (!Core.CheckInventory("Helm Fragment", 10))
+        {
+            Core.EnsureAccept(4176);
+            Core.EquipClass(ClassType.Solo);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
+            Core.EnsureComplete(4176);
+        }
+
         Core.BuyItem("museum", 1129, "Helm Relic");
 
         Core.BuyItem("museum", 1129, "Helm of Awe");
@@ -79,10 +85,13 @@ public class HelmOfAwe
 
         Core.BuyItem("museum", 1130, "Armor of Awe Pass");
 
-        Core.EnsureAccept(4177);
-        Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-        Core.EnsureComplete(4177);
+        while (!Core.CheckInventory("Helm Fragment", 10))
+        {
+            Core.EnsureAccept(4177);
+            Core.EquipClass(ClassType.Solo);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
+            Core.EnsureComplete(4177);
+        }
 
         Core.BuyItem("museum", 1129, "Helm Relic");
 
