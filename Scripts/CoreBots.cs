@@ -1220,8 +1220,14 @@ public class CoreBots
         if (Bot.Map.Name == map)
             return;
 
-        JumpWait();
-        Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+        if (map == "tercessuinotlim")
+            JoinTercessuinotlim();
+        else
+        {
+            JumpWait();
+            Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+            Bot.Wait.ForMapLoad(map);
+        }
     }
 
     /// <summary>
@@ -1231,7 +1237,6 @@ public class CoreBots
     {
         if (Bot.Map.Name == "tercessuinotlim")
             return;
-        Join("citadel", "m22", "Left");
         if (Bot.Player.Cell != "m22")
             Bot.Player.Jump("m22", "Left");
         Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"));
