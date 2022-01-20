@@ -58,12 +58,7 @@ public class SagaChiralValley
         Core.KillQuest(269, "relativity", "Fire Imp");                                  // Find the Key! (Part Two)
         Core.KillQuest(270, "relativity", "Head Gargoyle");                             // Find the Key! (Part Three)
         //Map: Hydra
-        //if (!Core.QuestProgression(271))                                                 // The Lake Hydra
-        //{
-        //    Core.EnsureAccept(271);
-        //    Core.HuntMonster("hydra", "Hydra Head", "Hydra Fang", 9);
-        //}
-        Core.MapItemQuest(271, "hydra", 50);
+        Core.MapItemQuest(271, "hydra", 50);                                            // The Lake Hydra
         Core.MapItemQuest(271, "hydra", 51);
         Core.MapItemQuest(271, "hydra", 52);
         //Map: Escherion

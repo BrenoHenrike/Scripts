@@ -251,7 +251,7 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Buys a item till it have the desired quantity
+    /// Buys a item till you have the desired quantity
     /// </summary>
     /// <param name="map">Map of the shop</param>
     /// <param name="shopID">ID of the shop</param>
@@ -287,6 +287,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
+        Bot.Sleep(ActionDelay);
         RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
@@ -322,6 +323,12 @@ public class CoreBots
         return (int)Math.Ceiling(quantF);
     }
 
+    /// <summary>
+    /// Sells a item till you have the desired quantity
+    /// </summary>
+    /// <param name="itemName">Name of the item</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="all">Set to true if you wish to sell all the items</param>
     public void SellItem(string itemName, int quant = 0, bool all = false)
     {
         if(!CheckInventory(itemName))
@@ -474,7 +481,17 @@ public class CoreBots
         Bot.Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
     }
-    
+
+    /// <summary>
+    /// Kills a monster for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
+    /// <param name="MonsterName">Monster to kill</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
+    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
@@ -491,6 +508,16 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Kills an array of monsters for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
+    /// <param name="MonsterName">Monster to kill</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
+    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
@@ -507,6 +534,17 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
+    /// <param name="MapItemID">ID of the item</param>
+    /// <param name="Amount">The amount of <paramref name="MapItemID"/> it grabs</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
+    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
@@ -523,6 +561,17 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
+    /// <param name="ItemName">Name of the item</param>
+    /// <param name="Amount">The amount of <paramref name="ItemName"/> to buy</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
+    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
@@ -539,6 +588,14 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Skeleton of KillQuest, MapItemQuest and BuyQuest, only needs to be used inside a script if there isnt a solid QuestID tied to an event. See 5Wolfwing(Darkovia).cs for an example
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
+    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
@@ -847,6 +904,9 @@ public class CoreBots
             Bot.Player.Rest(true);
     }
 
+    /// <summary>
+    /// Logs the player out and then in again to the same server. Disables Options.AutoRelogin temporarily 
+    /// </summary>
     public void Relogin()
     {
         bool autoRelogSwitch = Bot.Options.AutoRelogin;
@@ -870,6 +930,10 @@ public class CoreBots
     ClassType currentClass = ClassType.None;
     bool usingSoloGeneric = false;
     bool usingFarmGeneric = false;
+    /// <summary>
+    /// Equips either the FarmClass or SoloClass from the CanChange section at the top of CoreBots 
+    /// </summary>
+    /// <param name="classToUse">Type "ClassType." and then either Farm or Solo in order to select which type it should swap too</param>
     public void EquipClass(ClassType classToUse)
     {
         if(currentClass == classToUse)
@@ -900,6 +964,10 @@ public class CoreBots
         currentClass = classToUse;
     }
 
+    /// <summary>
+    /// Switches the player's Alignment to the input Alignment type
+    /// </summary>
+    /// <param name="Side">Type "Alignment." and then Good, Evil or Chaos in order to select which Alignment it should swap too</param>
     public void SwitchAlignment(Alignment Side)
     {
         if (Side == Alignment.Good)
@@ -922,8 +990,34 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
+    /// </summary>
+    /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
     public void BestGear(GearBoost BoostType)
     {
+        GearBoost[] RaceBoosts = {
+            GearBoost.Chaos, 
+            GearBoost.Dragonkin, 
+            GearBoost.Elemental, 
+            GearBoost.Human, 
+            GearBoost.Undead
+        };
+        ItemCategory[] WeaponCatagories = {
+            RBot.Items.ItemCategory.Sword, 
+            RBot.Items.ItemCategory.Axe, 
+            RBot.Items.ItemCategory.Dagger, 
+            RBot.Items.ItemCategory.Gun, 
+            RBot.Items.ItemCategory.HandGun, 
+            RBot.Items.ItemCategory.Rifle, 
+            RBot.Items.ItemCategory.Bow, 
+            RBot.Items.ItemCategory.Mace, 
+            RBot.Items.ItemCategory.Gauntlet, 
+            RBot.Items.ItemCategory.Polearm, 
+            RBot.Items.ItemCategory.Staff, 
+            RBot.Items.ItemCategory.Wand, 
+            RBot.Items.ItemCategory.Whip
+        };
         RBot.Items.InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
         RBot.Items.InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
         RBot.Items.InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
@@ -939,6 +1033,30 @@ public class CoreBots
             }
         }
         string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
+        ItemCategory BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
+
+        if (RaceBoosts.Contains(BoostType))
+        {
+            Dictionary<string, float> BoostedGearDMGall = new Dictionary<string, float>();
+
+            foreach (RBot.Items.InventoryItem Item in BankInvData)
+            {
+                if (Item.Meta != null && Item.Meta.Contains("dmgAll") && 
+                   (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
+                    Item.Category != BestItemCatagory)
+                {
+                    string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
+                    float BoostFloat = float.Parse(CorrectData.Replace($"dmgAll:", ""));
+                    BoostedGearDMGall.Add(Item.Name, BoostFloat);
+                }
+            }
+            string BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
+            JumpWait();
+            CheckInventory(BestItemDMGall);
+            Bot.Player.EquipItem(BestItemDMGall);
+            Bot.Sleep(ActionDelay);
+        }
+        JumpWait();
         CheckInventory(BestItem);
         Bot.Player.EquipItem(BestItem);
     }
@@ -1018,6 +1136,10 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Stops the bot and moves you back to /Battleon
+    /// </summary>
+    /// <param name="removeStopHandler">Whether or not it should also stop the "Stop Handler" that is activated with SetOptions </param>
     public void StopBot(bool removeStopHandler = false)
     {
         if(removeStopHandler)
@@ -1085,6 +1207,14 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Joins a map
+    /// </summary>
+    /// <param name="map">The name of the map</param>
+    /// <param name="cell">The cell to jump to</param>
+    /// <param name="pad">The pad to jump to</param>
+    /// <param name="publicRoom">Whether or not it should be a public room, if PrivateRoom is on in the CanChange section on the top of CoreBots</param>
+    /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
         if (Bot.Map.Name == map)

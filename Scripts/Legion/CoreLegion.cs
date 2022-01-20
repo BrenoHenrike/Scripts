@@ -2,15 +2,16 @@
 
 public class CoreLegion
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
+    public ScriptInterface Bot => ScriptInterface.Instance;
 
-	public CoreBots Core => CoreBots.Instance;
+    public CoreBots Core => CoreBots.Instance;
 
     public string[] LR =
     {
-		"Exalted Crown",
-		"Revenant's Spellscroll",
-		"Conquest Wreath"
+        "Exalted Crown",
+        "Revenant's Spellscroll",
+        "Conquest Wreath",
+        "Legion Revenant"
     };
 
     public string[] LF1 =
@@ -24,15 +25,15 @@ public class CoreLegion
     public string[] LF2 =
     {
         "Grim Cohort Conquered",
-		"Ancient Cohort Conquered",
-		"Pirate Cohort Conquered",
-		"Battleon Cohort Conquered",
-		"Mirror Cohort Conquered",
-		"Darkblood Cohort Conquered",
-		"Vampire Cohort Conquered",
-		"Spirit Cohort Conquered",
-		"Dragon Cohort Conquered",
-		"Doomwood Cohort Conquered",
+        "Ancient Cohort Conquered",
+        "Pirate Cohort Conquered",
+        "Battleon Cohort Conquered",
+        "Mirror Cohort Conquered",
+        "Darkblood Cohort Conquered",
+        "Vampire Cohort Conquered",
+        "Spirit Cohort Conquered",
+        "Dragon Cohort Conquered",
+        "Doomwood Cohort Conquered",
     };
 
     public string[] LF3 =
@@ -75,49 +76,49 @@ public class CoreLegion
         }
     }
 
-	public void DarkToken(int quant = 600)
-	{
+    public void DarkToken(int quant = 600)
+    {
         if (Core.CheckInventory("Dark Token", quant))
             return;
 
         int i = 1;
         Core.AddDrop("Dark Token");
         Core.Logger($"Farming {quant} Dark Tokens");
-		while(!Bot.Inventory.Contains("Dark Token", quant))
-		{
+        while(!Bot.Inventory.Contains("Dark Token", quant))
+        {
             Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6);
             Core.EnsureComplete(6251);
-			while(Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
+            while(Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
                 Core.ChainComplete(6248);
-			while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
+            while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
                 Core.ChainComplete(6249);
             Bot.Player.Pickup("Dark Token");
             Core.Logger($"Completed x{i++}");
         }
     }
 
-	public void DiamondTokenofDage(int quant = 300)
-	{
+    public void DiamondTokenofDage(int quant = 300)
+    {
         if (Core.CheckInventory("Diamond Token of Dage", quant))
             return;
         if (!Core.CheckInventory("Legion Round 4 Medal"))
             LegionRound4Medal();
-		if(!Core.CheckInventory("Legion Token", 50))
+        if(!Core.CheckInventory("Legion Token", 50))
             FarmLegionToken(50);
 
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
-		while(!Bot.Inventory.Contains("Diamond Token of Dage", quant))
-		{
+        while(!Bot.Inventory.Contains("Diamond Token of Dage", quant))
+        {
             Core.EnsureAccept(4743);
             if(!Core.CheckInventory("Defeated Makai", 25))
-			{
-				Core.EquipClass(ClassType.Farm);
+            {
+                Core.EquipClass(ClassType.Farm);
                 Core.JoinTercessuinotlim();
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
-			}
+            }
             Core.EquipClass(ClassType.Solo);
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye");
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
@@ -184,8 +185,8 @@ public class CoreLegion
         }
     }
 
-	public void ApprovalAndFavor(int quantApproval = 5000, int quantFavor = 5000)
-	{
+    public void ApprovalAndFavor(int quantApproval = 5000, int quantFavor = 5000)
+    {
         if (Core.CheckInventory("Dage's Approval", quantApproval) && Core.CheckInventory("Dage's Favor", quantFavor))
             return;
         Core.Logger($"Farming {quantApproval} Dage's Approval and {quantFavor} Dage's Favor");
@@ -195,108 +196,126 @@ public class CoreLegion
             Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false);
         if (quantFavor > 0)
             Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false);
-	}
+    }
 
+    public void BoneSigil(int quant = 1)
+    {
+        if (Core.CheckInventory("Bone Sigil", quant))
+            return;
+        Core.SmartKillMonster(6739, "legionarena", "Legion Gladiator|Legion Sergeant");
+    }
+
+    public void SoulForgeHammer(int quant = 1)
+    {
+        if (Core.CheckInventory("SoulForge Hammer"))
+            return;
+        Core.AddDrop("SoulForge Hammer");
+        Core.EnsureAccept(2741);
+        Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", 1, false);
+        Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", 1, false);
+        Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Rock Hammer", 1, false);
+        Core.EnsureComplete(2741);
+    }
 
     public void FarmLegionToken(int quant = 25000)
-	{
-		if (Core.CheckInventory("Legion Token", quant))
-			return;
-		LTBrightParagon(quant);
-		LTShogunParagon(quant);
-		LTFirstClassEntertainment(quant, true, 3);
-		LTDreadrock(quant);
-	}
+    {
+        if (Core.CheckInventory("Legion Token", quant))
+            return;
+        LTBrightParagon(quant);
+        LTShogunParagon(quant);
+        LTFirstClassEntertainment(quant, true, 3);
+        LTDreadrock(quant);
+    }
 
-	public void LTBrightParagon(int quant = 25000)
-	{
-		if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
-			return;
-		Core.EquipClass(ClassType.Farm);
-		Core.Logger($"Farming {quant} Legion Tokens");
-		int i = 1;
-		while (!Core.CheckInventory("Legion Token", quant))
-		{
-			Core.EnsureAccept(4704);
-			Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Loyalty", 10);
-			Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Corruption", 8);
-			Core.KillMonster("brightfortress", "r3", "Right", "*", "Twisted Light Token", 6);
-			Core.EnsureComplete(4704);
-			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i++}");
-		}
-	}
-	public void LTShogunParagon(int quant = 25000)
-	{
-		if (Core.CheckInventory("Legion Token", quant)
-			|| (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Paragon Fiend Quest Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Shogun Dage Pet")))
-			return;
-		Core.Logger($"Farming {quant} Legion Tokens");
-		int i = 1;
-		while (!Core.CheckInventory("Legion Token", quant))
-		{
-			if (Core.CheckInventory("Shogun Paragon Pet"))
-				Core.EnsureAccept(5755);
-			else if (Core.CheckInventory("Shogun Dage Pet"))
-				Core.EnsureAccept(5756);
-			else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
-				Core.EnsureAccept(6750);
-			else if (Core.CheckInventory("Paragon Ringbearer"))
-				Core.EnsureAccept(7073);
-			Core.KillMonster("fotia", "r5", "Left", "*", "Nothing Heard", 10);
-			Core.KillMonster("fotia", "r5", "Left", "*", "Nothing To See", 10);
-			Core.KillMonster("fotia", "r5", "Left", "*", "Area Secured and Quiet", 10);
-			Core.EnsureComplete(5755, 5756, 6750, 7073);
-			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i++}");
-		}
-	}
+    public void LTBrightParagon(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quant} Legion Tokens");
+        int i = 1;
+        while (!Core.CheckInventory("Legion Token", quant))
+        {
+            Core.EnsureAccept(4704);
+            Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Loyalty", 10);
+            Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Corruption", 8);
+            Core.KillMonster("brightfortress", "r3", "Right", "*", "Twisted Light Token", 6);
+            Core.EnsureComplete(4704);
+            Bot.Player.Pickup("Legion Token");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+    public void LTShogunParagon(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant)
+            || (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Paragon Fiend Quest Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Shogun Dage Pet")))
+            return;
+        Core.Logger($"Farming {quant} Legion Tokens");
+        int i = 1;
+        while (!Core.CheckInventory("Legion Token", quant))
+        {
+            if (Core.CheckInventory("Shogun Paragon Pet"))
+                Core.EnsureAccept(5755);
+            else if (Core.CheckInventory("Shogun Dage Pet"))
+                Core.EnsureAccept(5756);
+            else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
+                Core.EnsureAccept(6750);
+            else if (Core.CheckInventory("Paragon Ringbearer"))
+                Core.EnsureAccept(7073);
+            Core.KillMonster("fotia", "r5", "Left", "*", "Nothing Heard", 10);
+            Core.KillMonster("fotia", "r5", "Left", "*", "Nothing To See", 10);
+            Core.KillMonster("fotia", "r5", "Left", "*", "Area Secured and Quiet", 10);
+            Core.EnsureComplete(5755, 5756, 6750, 7073);
+            Bot.Player.Pickup("Legion Token");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
 
-	public void LTFirstClassEntertainment(int quant = 25000, bool onlyWithParty = false, int partySize = 4)
-	{
-		if (Core.CheckInventory("Legion Token", quant))
-			return;
-		bool privateRoomSwitch = Bot.Options.PrivateRooms;
-		if (Bot.Options.PrivateRooms)
-			Bot.Options.PrivateRooms = false;
-		Core.Join("legionarena");
-		if (Bot.Map.PlayerCount < partySize && onlyWithParty)
-		{
-			Core.Join("legionarena", ignoreCheck: true);
-			if(Bot.Map.PlayerCount < partySize)
-			{
-				Bot.Options.PrivateRooms = privateRoomSwitch;
-				return;
-			}
-		}
-		Core.EquipClass(ClassType.Solo);
-		Bot.Player.Jump("Boss", "Left");
-		int i = 1;
-		while (!Core.CheckInventory("Legion Token", quant))
-		{
-			Core.EnsureAccept(6743);
-			Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch");
-			Core.EnsureComplete(6743);
-			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i++}");
-		}
-	}
+    public void LTFirstClassEntertainment(int quant = 25000, bool onlyWithParty = false, int partySize = 4)
+    {
+        if (Core.CheckInventory("Legion Token", quant))
+            return;
+        bool privateRoomSwitch = Bot.Options.PrivateRooms;
+        if (Bot.Options.PrivateRooms)
+            Bot.Options.PrivateRooms = false;
+        Core.Join("legionarena");
+        if (Bot.Map.PlayerCount < partySize && onlyWithParty)
+        {
+            Core.Join("legionarena", ignoreCheck: true);
+            if(Bot.Map.PlayerCount < partySize)
+            {
+                Bot.Options.PrivateRooms = privateRoomSwitch;
+                return;
+            }
+        }
+        Core.EquipClass(ClassType.Solo);
+        Bot.Player.Jump("Boss", "Left");
+        int i = 1;
+        while (!Core.CheckInventory("Legion Token", quant))
+        {
+            Core.EnsureAccept(6743);
+            Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch");
+            Core.EnsureComplete(6743);
+            Bot.Player.Pickup("Legion Token");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
 
-	public void LTDreadrock(int quant = 25000)
-	{
-		if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Undead Champion"))
-			return;
-		Core.EquipClass(ClassType.Farm);
-		Core.Logger($"Farming {quant} Legion Tokens");
-		Core.Join("dreadrock");
-		int i = 1;
-		while(!Core.CheckInventory("Legion Token", quant))
-		{
-			Core.EnsureAccept(4849);
-			Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6);
-			Core.EnsureComplete(4849);
-			Bot.Player.Pickup("Legion Token");
-			Core.Logger($"Completed x{i++}");
-		}
-	}
+    public void LTDreadrock(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Undead Champion"))
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quant} Legion Tokens");
+        Core.Join("dreadrock");
+        int i = 1;
+        while(!Core.CheckInventory("Legion Token", quant))
+        {
+            Core.EnsureAccept(4849);
+            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6);
+            Core.EnsureComplete(4849);
+            Bot.Player.Pickup("Legion Token");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
 }

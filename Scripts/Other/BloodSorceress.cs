@@ -25,7 +25,7 @@ public class BloodSorceress
         {
             Core.JumpWait();
             Bot.Player.EquipItem("Blood Sorceress");
-            Farm.IcestormArena(rankUpClass: true);
+            Farm.IcestormArena(1, rankUpClass: true);
         }
     }
 }

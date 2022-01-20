@@ -31,7 +31,7 @@ public class Necromancer
         if (rankUp)
         {
             Bot.Player.EquipItem("Necromancer");
-            Farm.IcestormArena(rankUpClass: true);
+            Farm.IcestormArena(1, rankUpClass: true);
         }
     }
 }

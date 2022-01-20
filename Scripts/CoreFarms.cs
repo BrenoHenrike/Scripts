@@ -190,6 +190,25 @@ public class CoreFarms
             Bot.Player.Pickup("Essence of Wrath", "Souls of Heresy");
         }
     }
+
+    public void rankUpClass(string ClassName)
+    {
+        if (!Core.CheckInventory(ClassName))
+            Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
+
+        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name == ClassName);
+        if (itemInv.Category != ItemCategory.Class)
+            Core.Logger($"\"{ClassName}\" is not a valid Class", messageBox: true, stopBot: true);
+        if (itemInv.Quantity == 302500)
+        {
+            Core.Logger($"\"{ClassName}\" is already Rank 10");
+            return;
+        }
+        Core.BestGear(GearBoost.cp);
+        Bot.Player.EquipItem(ClassName);
+        IcestormArena(1, true);
+        Core.Logger($"\"{ClassName}\" is now Rank 10");
+    }
     #endregion
 
     #region Misc
@@ -220,7 +239,7 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         while(!Core.CheckInventory("The Secret 4"))
         {
-            Core.Join("bludrutbrawl", "Enter0", "Spawn", true);
+            Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -257,7 +276,7 @@ public class CoreFarms
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
         while (!Core.CheckInventory(item, quant))
         {
-            Core.Join("bludrutbrawl", "Enter0", "Spawn", true);
+            Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -313,7 +332,7 @@ public class CoreFarms
 
     #region Reputation
     public void GetAllRanks()
-        {
+        {                           // Commented out functions dont excist yet
             AegisREP();
             AlchemyREP();
             ArcangroveREP();
@@ -322,23 +341,46 @@ public class CoreFarms
             BlacksmithingREP();
             BladeofAweREP();
             BrightoakREP();
-            ChronoSpanREP();
+            ChaosMilitiaREP();
             ChaosREP();
+            ChronoSpanREP();
+            //CraggleRockREP();
+            //DeathPitArenaREP();
+            //DeathPitBrawlREP();
+            DiabolicalREP();
             DoomwoodREP();
+            //DreadfireREP();
+            //DruidGroveREP();
+            //DwarfholdREP();
             ElementalMasterREP();
             EmberseaREP();
             EternalREP();
+            //EtherStormREP();
             EvilREP();
+            //FaerieCourtREP();
+            //FishingREP();
             GlaceraREP();
             GoodREP();
-            LycanREP();
-    
-    
             HollowbornREP();
+            //HorcREP();
+            //InfernalArmyREP();
+            //LoremasterREP();
+            LycanREP();
+            //MonsterHunterREP();
             MysteriousDungeonREP();
             MythsongREP();
+            //NecroCryptREP();
+            //NorthpointeREP();
+            //PetTamerREP();
             RavenlossREP();
+            //SandSeaREP();
+            //SkyguardREP();
+            //SomniaREP();
             SpellCraftingREP();
+            //SwordhavenREP();
+            //ThunderForceREP();
+            //TreasureHunterREP();
+            //TrollREP();
             VampireREP();
             YokaiREP();
         }
@@ -645,6 +687,21 @@ public class CoreFarms
         }
     }
 
+    public void ChaosMilitiaREP(int rank = 10)
+    {
+        if (FactionRank("Chaos Militia") >= rank)
+            return;
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Chaos Militia") < rank)
+        {
+            Core.EnsureAccept(5775);
+            Core.HuntMonster("crownsreach", "Inquisitor Guard", "Inquisitor's Tabard", 10);
+            Core.EnsureComplete(5775);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
     public void ChaosREP(int rank = 10)
     {
         if (FactionRank("Chaos") >= rank)
@@ -678,6 +735,21 @@ public class CoreFarms
         }
     }
     
+    public void DiabolicalREP(int rank = 10)
+    {
+        if (FactionRank("Diabolical") >= rank)
+            return;
+        if (!Bot.Quests.IsUnlocked(7877))
+            Core.KillQuest(7875, "timevoid", "Unending Avatar");
+            Core.KillQuest(7876, "twiligtedge", "ChaosWeaver Warrior");
+        int i = 1;
+        while (FactionRank("Diabolical") < rank)
+        {
+            Core.SmartKillMonster(7877, "mudluk", "Tiger Leech", completeQuest: true);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
     public void DoomwoodREP(int rank = 10)
     {
         if (FactionRank("Doomwood") >= rank)
