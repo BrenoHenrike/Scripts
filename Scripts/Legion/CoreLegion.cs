@@ -10,7 +10,8 @@ public class CoreLegion
     {
         "Exalted Crown",
         "Revenant's Spellscroll",
-        "Conquest Wreath"
+        "Conquest Wreath",
+        "Legion Revenant"
     };
 
     public string[] LF1 =

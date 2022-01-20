@@ -44,7 +44,7 @@ public class LegionFealty4
         LF2.ConquestWreath();
         LF3.ExaltedCrown();
 
-        Core.Logger("Just turn in the LF4 to get your Legion Revenant", messageBox: true);
+        Core.ChainComplete(6900);
     }
 }
 
