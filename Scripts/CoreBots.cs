@@ -1041,7 +1041,9 @@ public class CoreBots
 
             foreach (RBot.Items.InventoryItem Item in BankInvData)
             {
-                if (Item.Meta != null && Item.Meta.Contains("dmgAll") && (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)))
+                if (Item.Meta != null && Item.Meta.Contains("dmgAll") && 
+                   (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
+                    Item.Category != BestItemCatagory)
                 {
                     string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
                     float BoostFloat = float.Parse(CorrectData.Replace($"dmgAll:", ""));
