@@ -81,7 +81,7 @@ public class HelmOfAwe
 
         Core.EnsureAccept(4177);
         Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 1, false, true, true);
+        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
         Core.EnsureComplete(4177);
 
         Core.BuyItem("museum", 1129, "Helm Relic");
