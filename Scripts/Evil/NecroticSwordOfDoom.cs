@@ -8,7 +8,7 @@
 using RBot;
 using System;
 
-public class NSOD
+public class NecroticSwordOfDoom
 {
     // [Can Change]
     // True = Farms each boss for 100 essence in "Retreive Void Auras"

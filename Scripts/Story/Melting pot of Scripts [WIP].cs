@@ -27,7 +27,7 @@ public class BecauseyNot //By Tato
     public CoreNulgath Nulgath = new CoreNulgath();
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreSDKA SDKA = new CoreSDKA();
-    public NSOD NSOD = new NSOD();
+    public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
     public Tutorial Tutorial = new Tutorial();
     public HedgeMaze Maze = new HedgeMaze();
     public BloodSorceress Blood = new BloodSorceress();
