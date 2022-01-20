@@ -4,6 +4,7 @@
 //cs_include Scripts/Legion/Revenant/LegionFealty1.cs
 //cs_include Scripts/Legion/Revenant/LegionFealty2.cs
 //cs_include Scripts/Legion/Revenant/LegionFealty3.cs
+//cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
 using RBot;
 
 public class LegionFealty4
@@ -15,9 +16,23 @@ public class LegionFealty4
     public LegionFealty1 LF1 = new LegionFealty1();
     public LegionFealty2 LF2 = new LegionFealty2();
     public LegionFealty3 LF3 = new LegionFealty3();
+    public JoinLegion JoinLegion = new JoinLegion();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
+        GetLR();
+
+        Core.SetOptions(false);
+    }
+
+    public void GetLR()
+    {
+        if (Core.CheckInventory("Legion Revenant"))
+            return;
+
+        JoinLegion.JoinLegionQuests();
+
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.legionMedals);
         Core.AddDrop(Legion.LR);
@@ -30,7 +45,6 @@ public class LegionFealty4
         LF3.ExaltedCrown();
 
         Core.Logger("Just turn in the LF4 to get your Legion Revenant", messageBox: true);
-
-        Core.SetOptions(false);
     }
 }
+

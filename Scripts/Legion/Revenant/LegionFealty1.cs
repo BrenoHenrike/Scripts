@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
 using RBot;
 
 public class LegionFealty1
@@ -7,12 +8,10 @@ public class LegionFealty1
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new CoreLegion();
+    public JoinLegion JoinLegion = new JoinLegion();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Legion Token");
-        Core.AddDrop(Legion.LR);
-        Core.AddDrop(Legion.LF1);
 
         RevenantSpellscroll();
 
@@ -23,6 +22,12 @@ public class LegionFealty1
     {
         if (Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
+
+        JoinLegion.JoinLegionQuests();
+
+        Core.AddDrop("Legion Token");
+        Core.AddDrop(Legion.LR);
+        Core.AddDrop(Legion.LF1);
 
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");

@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
 using RBot;
 
 public class LegionFealty3
@@ -9,12 +10,10 @@ public class LegionFealty3
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new CoreLegion();
     public CoreFarms Farm = new CoreFarms();
+    public JoinLegion JoinLegion = new JoinLegion();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Legion Token");
-        Core.AddDrop(Legion.LR);
-        Core.AddDrop(Legion.LF3);
 
         ExaltedCrown();
 
@@ -25,6 +24,12 @@ public class LegionFealty3
     {
         if (Core.CheckInventory("Exalted Crown", quant))
             return;
+
+        JoinLegion.JoinLegionQuests();
+
+        Core.AddDrop("Legion Token");
+        Core.AddDrop(Legion.LR);
+        Core.AddDrop(Legion.LF3);
 
         int i = 1;
         Core.Logger($"Farming {quant} Exalted Crown");
