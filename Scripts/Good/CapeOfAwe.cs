@@ -1,5 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Good/CoreAwe.cs
+
 
 using RBot;
 
@@ -10,7 +12,9 @@ public class CapeOfAwe
     public CoreBots Core => CoreBots.Instance;
     
     public CoreFarms Farm = new CoreFarms();
-    
+
+    public CoreAwe Awe = new CoreAwe();
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -22,7 +26,7 @@ public class CapeOfAwe
     {
         if(Core.IsMember)
             LegendaryAwe();
-        else if(GuardianCheck())
+        else if(Awe.GuardianCheck())
             GuardianAwe();
         else 
             FreeAwe();
@@ -48,27 +52,7 @@ public class CapeOfAwe
         Core.ToBank("Legendary Awe Pass");
     }
     
-    public bool GuardianCheck()
-    {
-        Core.Logger("Checking AQ Guardian");
-        if (Core.CheckInventory("Guardian Awe Pass", 1, true))
-        {
-            Core.Logger("You're AQ Guardian!");
-            return true;
-        }
-        Core.BuyItem("museum", 53, "Guardian Awe Pass");
-        if (Core.CheckInventory("Guardian Awe Pass"))
-        {
-            Core.Logger("Guardian Awe Pass bought successfully! You're AQ Guardian!");
-            return true;
-        }
-        else
-        {
-            Core.Logger("You're not AQ Guardian.");
-            return false;
-        }
-    }
-    public void GuardianAwe()
+        public void GuardianAwe()
     {
         Core.AddDrop("Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
         
