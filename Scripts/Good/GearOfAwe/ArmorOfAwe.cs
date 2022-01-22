@@ -42,7 +42,7 @@ public class ArmorOfAwe
 
         if (!Core.CheckInventory("Pauldron Relic", 1))
         {
-            if (Awe.GuardianCheck)
+            if (Awe.GuardianCheck())
             {
                 Farm.BladeofAweREP(5, false);
                 Farm.Experience(35);

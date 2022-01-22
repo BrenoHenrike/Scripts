@@ -29,26 +29,6 @@ public bool GuardianCheck()
         }
     }
 
-// 4161 - Guardian Pauldron
-// 4162 - Free Pauldron
-// 4163 - Legendary Breastplate
-// 4164 - Guardian Breastplate
-// 4165 - Free Breastplate
-// 4166 - Legendary Vambrace
-// 4167 - Guardian Vambrace
-// 4168 - Free Vambrace
-// 4169 - Legendary Gauntlet
-// 4170 - Guardian Gauntlet
-// 4171 - Free Gauntlet
-// 4172 - Legendary Greaves
-// 4173 - Guardian Greaves
-// 4174 - Free Greaves
-// 4175 - Legendary Helm
-// 4176 - Guardian Helm
-// 4177 - Free Helm
-// 4178 - Legendary Cape
-// 4179 - Guardian Cape
-// 4180 - Free Cape
     public void AweKill(int questID, string gear)
     {
        if(gear.Equals("pauldron"))
