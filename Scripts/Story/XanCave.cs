@@ -61,7 +61,7 @@ public class BotName
         Core.KillQuest(QuestID: 1256, MapName: "volcano", MonsterName: "Fire Imp");
         Core.MapItemQuest(QuestID: 1257, MapName: "volcano", MapItemID: 532, Amount: 10);
         Core.KillQuest(QuestID: 1258, MapName: "volcano", MonsterName: "Flamethrower Dwakel"); 
-        Core.KillQuest(QuestID: 1259, MapName: "volcano", MonsterName: new string[] { "Fire Imp, Flame Elemental" } );
+        Core.KillQuest(QuestID: 1259, MapName: "volcano", MonsterNames: new[] {"Fire Imp", "Flame Elemental"});
         Core.KillQuest(QuestID: 1260, MapName: "volcano", MonsterName: "Fire Imp");
         Core.MapItemQuest(QuestID: 1260, MapName: "volcano", MapItemID: 533, Amount: 6);
         Core.KillQuest(QuestID: 1261, MapName: "volcano", MonsterName: "Magman", hasFollowup: false);
