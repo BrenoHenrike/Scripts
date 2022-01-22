@@ -33,12 +33,16 @@ public class CoreBots
     public int SkillTimer { get; set; } = 100;
     // [Can Change] Name of your soloing class
     public string SoloClass { get; set; } = "Generic";
+    // [Can Change] Names of your soloing equipment
+    public string[] SoloGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
     // [Can Change] (Use the Core Skill plugin) Skill sequence string
     public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
     // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the soloing class
     public int SoloClassSkillTimeout { get; set; } = 1;
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
+    // [Can Change] Names of your farming equipment
+    public string[] FarmGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
     // [Can Change] (Use the Core Skill plugin) Skill sequence string
     public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
     // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the farming class
@@ -947,6 +951,7 @@ public class CoreBots
                     return;
                 }
                 _EquipClass(FarmClass);
+                _EquipGear(FarmGear);
                 if(currentClass != ClassType.Farm)
                     Bot.Skills.StartAdvanced(FarmClassSkills, FarmClassSkillTimeout);
                 break;
@@ -957,6 +962,7 @@ public class CoreBots
                     return;
                 }
                 _EquipClass(SoloClass);
+                _EquipGear(SoloGear);
                 if(currentClass != ClassType.Solo)
                     Bot.Skills.StartAdvanced(SoloClassSkills, SoloClassSkillTimeout);
                 break;
@@ -1133,6 +1139,20 @@ public class CoreBots
                 Bot.Sleep(ActionDelay);
             }
             Logger($"{className} equipped");
+        }
+    }
+
+    private void _EquipGear(string[] gear)
+    {
+        foreach (string Item in gear)
+        {
+            if((Item.ToLower() != "Weapon" || Item.ToLower() != "Headpiece" || Item.ToLower() != "Cape") && !Bot.Inventory.IsEquipped(Item))
+            {
+                JumpWait();
+                Bot.Player.EquipItem(Item);
+                Bot.Sleep(ActionDelay);
+                Logger($"{Item} equipped");
+            }
         }
     }
 
