@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Good/CoreAwe.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 
 using RBot;
 
@@ -42,11 +42,20 @@ public class ArmorOfAwe
 
         if (!Core.CheckInventory("Pauldron Relic", 1))
         {
-            while (!Core.CheckInventory("Pauldron Fragment", 15))
+            if (Awe.GuardianCheck())
             {
-                Core.EnsureAccept(4160);
-                Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false, true);
-                Core.EnsureComplete(4160);
+                Farm.BladeofAweREP(5, false);
+                Farm.Experience(35);
+                while (!Core.CheckInventory("Pauldron Fragment", 15))
+                    Awe.AweKill(4161, "pauldron");
+            }
+            else
+            {
+                Farm.BladeofAweREP(10, false);
+                Farm.Experience(55);
+                while (!Core.CheckInventory("Pauldron Fragment", 15))
+                    Awe.AweKill(4162, "pauldron");
+
             }
 
             Core.BuyItem("museum", 1129, "Pauldron Relic");
@@ -55,11 +64,7 @@ public class ArmorOfAwe
         if (!Core.CheckInventory("Breastplate Relic", 1))
         {
             while (!Core.CheckInventory("Breastplate Fragment", 10))
-            {
-                Core.EnsureAccept(4163);
-                Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false, true);
-                Core.EnsureComplete(4163);
-            }
+                Awe.AweKill(4163, "breastplate");
 
             Core.BuyItem("museum", 1129, "Breastplate Relic");
         }
@@ -67,11 +72,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Vambrace Relic", 1))
         {
             while (!Core.CheckInventory("Vambrace Fragment", 15))
-            {
-                Core.EnsureAccept(4166);
-                Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, true, true);
-                Core.EnsureComplete(4166);
-            }
+                Awe.AweKill(4166, "vambrace");
 
             Core.BuyItem("museum", 1129, "Vambrace Relic");
         }
@@ -79,11 +80,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Gauntlet Relic", 1, true))
         {
             while (!Core.CheckInventory("Gauntlet Fragment", 25, true))
-            {
-                Core.EnsureAccept(4169);
-                Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false, true);
-                Core.EnsureComplete(4169);
-            }
+                Awe.AweKill(4169, "gauntlet");
 
             Core.BuyItem("museum", 1129, "Gauntlet Relic");
         }
@@ -91,11 +88,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Greaves Relic", 1, true))
         {
            while (!Core.CheckInventory("Greaves Fragment", 10, true))
-            {
-                Core.EnsureAccept(4172);
-                Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, true, true);
-                Core.EnsureComplete(4172);
-            }
+                Awe.AweKill(4172, "greaves");
 
             Core.BuyItem("museum", 1129, "Greaves Relic");
         }
@@ -119,11 +112,7 @@ public class ArmorOfAwe
         if (!Core.CheckInventory("Pauldron Relic", 1))
         {
             while (!Core.CheckInventory("Pauldron Fragment", 15))
-            {
-                Core.EnsureAccept(4161);
-                Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false, true);
-                Core.EnsureComplete(4161);
-            }
+                Awe.AweKill(4161, "pauldron");
 
             Core.BuyItem("museum", 1129, "Pauldron Relic");
         }
@@ -131,11 +120,7 @@ public class ArmorOfAwe
         if (!Core.CheckInventory("Breastplate Relic", 1))
         {
             while (!Core.CheckInventory("Breastplate Fragment", 10))
-            {
-                Core.EnsureAccept(4164);
-                Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false, true);
-                Core.EnsureComplete(4164);
-            }
+                Awe.AweKill(4164, "breastplate");
 
             Core.BuyItem("museum", 1129, "Breastplate Relic");
         }
@@ -143,11 +128,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Vambrace Relic", 1))
         {
             while (!Core.CheckInventory("Vambrace Fragment", 15))
-            {
-                Core.EnsureAccept(4167);
-                Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, true, true);
-                Core.EnsureComplete(4167);
-            }
+                Awe.AweKill(4167, "vambrace");
 
             Core.BuyItem("museum", 1129, "Vambrace Relic");
         }
@@ -155,22 +136,15 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Gauntlet Relic", 1))
         {
             while (!Core.CheckInventory("Gauntlet Fragment", 25))
-            {
-                Core.EnsureAccept(4170);
-                Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false, true);
-                Core.EnsureComplete(4170);
-            }
+                Awe.AweKill(4170, "gauntlet");
 
             Core.BuyItem("museum", 1129, "Gauntlet Relic");
         }
 
         if(!Core.CheckInventory("Greaves Relic", 1))
-        {while (!Core.CheckInventory("Greaves Fragment", 10))
-            {
-                Core.EnsureAccept(4173);
-                Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, true, true);
-                Core.EnsureComplete(4173);
-            }
+        {
+            while (!Core.CheckInventory("Greaves Fragment", 10))
+                Awe.AweKill(4173, "greaves");
 
             Core.BuyItem("museum", 1129, "Greaves Relic");
         }
@@ -196,11 +170,7 @@ public class ArmorOfAwe
         if (!Core.CheckInventory("Pauldron Relic", 1))
         {
             while (!Core.CheckInventory("Pauldron Fragment", 15))
-            {
-                Core.EnsureAccept(4162);
-                Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false, true);
-                Core.EnsureComplete(4162);
-            }
+                Awe.AweKill(4162, "pauldron");
 
             Core.BuyItem("museum", 1129, "Pauldron Relic");
         }
@@ -208,11 +178,7 @@ public class ArmorOfAwe
         if (!Core.CheckInventory("Breastplate Relic", 1))
         {
             while (!Core.CheckInventory("Breastplate Fragment", 10))
-            {
-                Core.EnsureAccept(4165);
-                Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false, true);
-                Core.EnsureComplete(4165);
-            }
+                Awe.AweKill(4165, "breastplate");
 
             Core.BuyItem("museum", 1129, "Breastplate Relic");
         }
@@ -220,11 +186,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Vambrace Relic", 1))
         {
             while (!Core.CheckInventory("Vambrace Fragment", 15))
-            {
-                Core.EnsureAccept(4168);
-                Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, true, true);
-                Core.EnsureComplete(4168);
-            }
+                Awe.AweKill(4168, "vambrace");
 
             Core.BuyItem("museum", 1129, "Vambrace Relic");
         }
@@ -232,11 +194,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Gauntlet Relic", 1))
         {
             while (!Core.CheckInventory("Gauntlet Fragment", 25))
-            {
-                Core.EnsureAccept(4171);
-                Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false, true);
-                Core.EnsureComplete(4171);
-            }
+                Awe.AweKill(4171, "gauntlet");
 
             Core.BuyItem("museum", 1129, "Gauntlet Relic");
         }
@@ -244,11 +202,7 @@ public class ArmorOfAwe
         if(!Core.CheckInventory("Greaves Relic", 1))
         {
             while (!Core.CheckInventory("Greaves Fragment", 10))
-            {
-                Core.EnsureAccept(4174);
-                Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, true, true);
-                Core.EnsureComplete(4174);
-            }
+                Awe.AweKill(4174, "greaves");
 
             Core.BuyItem("museum", 1129, "Greaves Relic");
         }

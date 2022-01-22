@@ -48,8 +48,9 @@ public CoreNulgath Nulgath = new CoreNulgath();
         Core.Logger("Purchase VHL [Start]"); 
         BuyVHL();
         
-        // Bot.Player.EquipItem("Void Highlord");
-        // Farm.IcestormArena(rankUpClass: true);
+    //    Bot.Player.EquipItem("Void Highlord");
+    //    Farm.IcestormArena(rankUpClass: true);    // When auto-enhance gets released/mde un // these 2 lines
+    
 
         Core.Logger("All Finished"); 
     }

@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Good/CoreAwe.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 
 
 using RBot;
@@ -37,13 +37,10 @@ public class CapeOfAwe
         Core.AddDrop("Legendary Awe Pass", "Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
         
         Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            
-        Core.EnsureAccept(4178);
+
         Core.EquipClass(ClassType.Solo);
-        Core.Join("doomvault", "r5", "Left", true, true);
-        Core.Jump("r5", "Left");
-        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false, true, false);
-        Core.EnsureComplete(4178);
+
+        Awe.AweKill(4178, "cape");
 
         Core.BuyItem("museum", 1129, "Cape Relic");
 
@@ -52,7 +49,7 @@ public class CapeOfAwe
         Core.ToBank("Legendary Awe Pass");
     }
     
-        public void GuardianAwe()
+    public void GuardianAwe()
     {
         Core.AddDrop("Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
         
@@ -60,13 +57,10 @@ public class CapeOfAwe
 
         Farm.Experience(35);
 
-        Core.EnsureAccept(4179);
         Core.EquipClass(ClassType.Solo);
-        Core.Join("doomvault", "r5", "Left", true, true);
-        Core.Jump("r5", "Left");
-        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false, true, false);
-        Core.EnsureComplete(4179);
-               
+
+        Awe.AweKill(4179, "cape");
+
         Core.BuyItem("museum", 1129, "Cape Relic");
 
         Core.BuyItem("museum", 1129, "Cape of Awe");
@@ -83,12 +77,9 @@ public class CapeOfAwe
 
         Core.BuyItem("museum", 1130, "Armor of Awe Pass");
 
-        Core.EnsureAccept(4180);
         Core.EquipClass(ClassType.Solo);
-        Core.Join("doomvault", "r5", "Left", true, true);
-        Core.Jump("r5", "Left");
-        Core.KillMonster("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false, true, false);
-        Core.EnsureComplete(4180);
+
+        Awe.AweKill(4180, "cape");
 
         Core.BuyItem("museum", 1129, "Cape Relic");
 
