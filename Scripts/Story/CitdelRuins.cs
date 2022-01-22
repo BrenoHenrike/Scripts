@@ -13,7 +13,7 @@ public class CitdelRuins
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Dailys = new CoreDailys();
     public CoreNulgath Nulgath = new CoreNulgath();
-    public string[] rewards ={ "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath"};
+    public string[] rewards = { "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath", "Mage's Gratitude"};
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -104,5 +104,6 @@ public class CitdelRuins
         Core.KillQuest(QuestID: 6181, MapName: "citadelruins", MonsterName: "Grand Inquisitor Murry");
         //defeat enn'tropy
         Core.KillQuest(QuestID: 6182, MapName: "citadelruins", MonsterName: "Enn'tröpy", hasFollowup: false);
+        Core.ToBank(rewards);
     }
 }
