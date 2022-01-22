@@ -33,12 +33,16 @@ public class CoreBots
     public int SkillTimer { get; set; } = 100;
     // [Can Change] Name of your soloing class
     public string SoloClass { get; set; } = "Generic";
+    // [Can Change] Names of your soloing equipment
+    public string[] SoloGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
     // [Can Change] (Use the Core Skill plugin) Skill sequence string
     public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
     // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the soloing class
     public int SoloClassSkillTimeout { get; set; } = 1;
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
+    // [Can Change] Names of your farming equipment
+    public string[] FarmGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
     // [Can Change] (Use the Core Skill plugin) Skill sequence string
     public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
     // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the farming class
@@ -947,6 +951,7 @@ public class CoreBots
                     return;
                 }
                 _EquipClass(FarmClass);
+                _EquipGear(FarmGear);
                 if(currentClass != ClassType.Farm)
                     Bot.Skills.StartAdvanced(FarmClassSkills, FarmClassSkillTimeout);
                 break;
@@ -957,6 +962,7 @@ public class CoreBots
                     return;
                 }
                 _EquipClass(SoloClass);
+                _EquipGear(SoloGear);
                 if(currentClass != ClassType.Solo)
                     Bot.Skills.StartAdvanced(SoloClassSkills, SoloClassSkillTimeout);
                 break;
@@ -1136,6 +1142,20 @@ public class CoreBots
         }
     }
 
+    private void _EquipGear(string[] gear)
+    {
+        foreach (string Item in gear)
+        {
+            if((Item.ToLower() != "Weapon" || Item.ToLower() != "Headpiece" || Item.ToLower() != "Cape") && !Bot.Inventory.IsEquipped(Item))
+            {
+                JumpWait();
+                Bot.Player.EquipItem(Item);
+                Bot.Sleep(ActionDelay);
+                Logger($"{Item} equipped");
+            }
+        }
+    }
+
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
     /// </summary>
@@ -1217,11 +1237,17 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        if (Bot.Map.Name == map)
+        if (Bot.Map.Name == map.ToLower())
             return;
 
-        JumpWait();
-        Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+        if (map.ToLower() == "tercessuinotlim")
+            JoinTercessuinotlim();
+        else
+        {
+            JumpWait();
+            Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+            Bot.Wait.ForMapLoad(map.ToLower());
+        }
     }
 
     /// <summary>
@@ -1231,7 +1257,6 @@ public class CoreBots
     {
         if (Bot.Map.Name == "tercessuinotlim")
             return;
-        Join("citadel", "m22", "Left");
         if (Bot.Player.Cell != "m22")
             Bot.Player.Jump("m22", "Left");
         Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"));
