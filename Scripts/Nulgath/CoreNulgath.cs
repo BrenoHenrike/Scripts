@@ -16,7 +16,7 @@ public class CoreNulgath
     /// <summary>
     /// All principal drops from Nulgath
     /// </summary>
-    public string[] bagDrops = 
+    public string[] bagDrops =
     {
         "Blood Gem of the Archfiend",
         "Dark Crystal Shard",
@@ -95,6 +95,20 @@ public class CoreNulgath
         "Nation Round 3 Medal",
         "Nation Round 4 Medal"
     };
+    
+    public string[] Receipt =
+    {
+        "Unidentified 6",
+        "Unidentified 9",
+        "Unidentified 16",
+        "Unidentified 20",
+        "Receipt of Swindle",
+        "Dark Crystal Shard",
+        "Diamond of Nulgath",
+        "Gem of Nulgath",
+        "Blood Gem of the Archfiend"
+    };
+
 
     /// <summary>
     /// Does Essence of Defeat Reagent quest for Dark Crystal Shards
@@ -225,12 +239,46 @@ public class CoreNulgath
     }
 
     /// <summary>
+    /// Farms Receipt of Swindle with Swindles Return Policy quest
+    /// </summary>
+    /// <param name="quant">Desired quantity, 100 = max stack</param>
+    public void SwindleReturn(int quant = 100)
+    {
+        if (Core.CheckInventory("Receipt of Swindle", quant))
+            return;
+
+
+        while (!Core.CheckInventory("Receipt of Swindle", quant))
+        {
+            Core.EnsureAccept(7551);
+
+            Supplies("Unidentified 1");
+            Supplies("Unidentified 6");
+            Supplies("Unidentified 9");
+            Supplies("Unidentified 16");
+            Supplies("Unidentified 20");
+            Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune");
+
+            if (!Core.CheckInventory("Tainted Gem", 1000))
+                Core.EnsureComplete(7551, 4769);
+            else if (!Core.CheckInventory("Dark Crystal Shard", 1000))
+                Core.EnsureComplete(7551, 4770);
+            else if (!Core.CheckInventory("Diamond of Nulgath", 1000))
+                Core.EnsureComplete(7551, 4771);
+            else if (!Core.CheckInventory("Gem of Nulgath", 300))
+                Core.EnsureComplete(7551, 6136);
+            else if (!Core.CheckInventory("Blood Gem of the Archfiend", 100))
+                Core.EnsureComplete(7551, 22332);
+        }
+    }
+
+    /// <summary>
     /// Farms Tainted Gem with Swindle Bulk quest
     /// </summary>
     /// <param name="quant">Desired quantity, 1000 = max stack</param>
     public void SwindleBulk(int quant = 1000)
     {
-        if(Core.CheckInventory("Tainted Gem", quant))
+        if (Core.CheckInventory("Tainted Gem", quant))
             return;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Tainted Gems");
@@ -369,12 +417,12 @@ public class CoreNulgath
         int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
-        while(!Bot.Inventory.Contains(item, quant))
+        while (!Bot.Inventory.Contains(item, quant))
         {
             Core.EnsureAccept(2566);
-            if(!Core.CheckInventory("Mana Energy for Nulgath"))
+            if (!Core.CheckInventory("Mana Energy for Nulgath"))
                 Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 10, false);
-            while(Bot.Inventory.Contains("Mana Energy for Nulgath"))
+            while (Bot.Inventory.Contains("Mana Energy for Nulgath"))
             {
                 Core.EnsureAccept(2566);
                 Core.HuntMonster("elemental", "Mana Imp|Mana Falcon", "Charged Mana Energy for Nulgath", 5);
@@ -403,7 +451,7 @@ public class CoreNulgath
             Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
-            while(!Bot.Inventory.Contains(item, quant))
+            while (!Bot.Inventory.Contains(item, quant))
             {
                 Core.EnsureAccept(2857);
                 Core.KillEscherion("Relic of Chaos");
@@ -429,7 +477,7 @@ public class CoreNulgath
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
-        
+
         int i = 1;
         void AssistantLoop()
         {
@@ -483,7 +531,7 @@ public class CoreNulgath
         Core.AddDrop("Relic of Chaos", "Tainted Core");
         bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
-        if(OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             Core.AddDrop("Tainted Soul");
         int i = 1;
         Core.EquipClass(ClassType.Solo);
@@ -507,9 +555,9 @@ public class CoreNulgath
                 Bot.Sleep(Core.ActionDelay);
                 Core.Logger($"Completed x{i++}");
             }
-            if(OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             {
-                while(Core.CheckInventory("Tainted Soul"))
+                while (Core.CheckInventory("Tainted Soul"))
                 {
                     if (OBoNPet)
                         Core.EnsureComplete(2561);
@@ -633,7 +681,7 @@ public class CoreNulgath
     /// Farms Dark Crystal Shard with the best method available
     /// </summary>
     /// <param name="quant">Desired quantity, 1000 = max stack</param>
-    public void FarmDarkCrystalShard(int quant  = 1000)
+    public void FarmDarkCrystalShard(int quant = 1000)
     {
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
@@ -721,10 +769,10 @@ public class CoreNulgath
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Blood Gems");
         int i = 1;
-        while(!Bot.Inventory.Contains("Blood Gem of the Archfiend", quant))
+        while (!Bot.Inventory.Contains("Blood Gem of the Archfiend", quant))
         {
             Core.EnsureAccept(3743);
-            if(!Core.CheckInventory("Tendurrr The Assistant"))
+            if (!Core.CheckInventory("Tendurrr The Assistant"))
             {
                 Core.JoinTercessuinotlim();
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false);
