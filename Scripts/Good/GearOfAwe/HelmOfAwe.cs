@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Good/CoreAwe.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 
 
 using RBot;
@@ -38,13 +38,10 @@ public class HelmOfAwe
         
         Core.BuyItem("museum", 1130, "Legendary Awe Pass");
 
+        Core.EquipClass(ClassType.Solo);
+
         while (!Core.CheckInventory("Helm Fragment", 10))
-        {
-            Core.EnsureAccept(4175);
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-            Core.EnsureComplete(4175);
-        }
+            Awe.AweKill(4175, "helm");
 
         Core.BuyItem("museum", 1129, "Helm Relic");
 
@@ -53,7 +50,7 @@ public class HelmOfAwe
         Core.ToBank("Legendary Awe Pass");
     }
     
-        public void GuardianHoA()
+    public void GuardianHoA()
     {
         Core.AddDrop("Helm Shard", "Helm Fragment", "Helm Relic", "Helm of Awe");
         
@@ -61,13 +58,10 @@ public class HelmOfAwe
 
         Farm.Experience(35);
 
+        Core.EquipClass(ClassType.Solo);
+
         while (!Core.CheckInventory("Helm Fragment", 10))
-        {
-            Core.EnsureAccept(4176);
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-            Core.EnsureComplete(4176);
-        }
+            Awe.AweKill(4176, "helm");
 
         Core.BuyItem("museum", 1129, "Helm Relic");
 
@@ -85,13 +79,10 @@ public class HelmOfAwe
 
         Core.BuyItem("museum", 1130, "Armor of Awe Pass");
 
+        Core.EquipClass(ClassType.Solo);
+
         while (!Core.CheckInventory("Helm Fragment", 10))
-        {
-            Core.EnsureAccept(4177);
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-            Core.EnsureComplete(4177);
-        }
+            Awe.AweKill(4177, "helm");
 
         Core.BuyItem("museum", 1129, "Helm Relic");
 
