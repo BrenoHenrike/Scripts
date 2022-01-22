@@ -1217,16 +1217,16 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        if (Bot.Map.Name == map)
+        if (Bot.Map.Name == map.ToLower())
             return;
 
-        if (map == "tercessuinotlim")
+        if (map.ToLower() == "tercessuinotlim")
             JoinTercessuinotlim();
         else
         {
             JumpWait();
-            Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-            Bot.Wait.ForMapLoad(map);
+            Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+            Bot.Wait.ForMapLoad(map.ToLower());
         }
     }
 
