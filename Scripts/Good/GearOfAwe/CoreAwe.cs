@@ -31,55 +31,22 @@ public bool GuardianCheck()
 
     public void AweKill(int questID, string gear)
     {
+        Core.EnsureAccept(questID);
        if(gear.Equals("pauldron"))
-       {
-            Core.EnsureAccept(questID);
-            Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false, true);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false);
         else if(gear.Equals("breastplate"))
-        {
-            Core.EnsureAccept(questID);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false, true);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false);
         else if(gear.Equals("vambrace"))
-        {
-            Core.EnsureAccept(questID);
-            Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, true, true);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, publicRoom: true);
         else if(gear.Equals("gauntlet"))
-        {
-            Core.EnsureAccept(questID);
-            Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false, true);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false);
         else if(gear.Equals("greaves"))
-        {
-            Core.EnsureAccept(questID);
-            Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, true, true);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, publicRoom: true);
         else if(gear.Equals("helm"))
-        {
-            Core.EnsureAccept(questID);
-            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, true, true);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false, publicRoom: true);
         else
-        {
-            Core.EnsureAccept(questID);
-            Core.HuntMonster("doomvault", "Binky", "Cape Shard", 1, false, true, false);
-            Core.EnsureComplete(questID);
-            return;
-        }
+            Core.HuntMonster("doomvault", "Binky", "Cape Shard", 1, false, publicRoom: true);
+        Core.EnsureComplete(questID);
     }
 
 }
