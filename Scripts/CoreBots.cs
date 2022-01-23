@@ -3,6 +3,7 @@ using RBot.Items;
 using RBot.Monsters;
 using RBot.Quests;
 using RBot.Flash;
+using RBot.Skills;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,20 +34,16 @@ public class CoreBots
     public int SkillTimer { get; set; } = 100;
     // [Can Change] Name of your soloing class
     public string SoloClass { get; set; } = "Generic";
+    // [Can Change] Mode of soloing class, if it has multiple. 
+    public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your soloing equipment
     public string[] SoloGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
-    // [Can Change] (Use the Core Skill plugin) Skill sequence string
-    public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-    // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the soloing class
-    public int SoloClassSkillTimeout { get; set; } = 1;
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
+    // [Can Change] Mode of farminging class, if it has multiple. 
+    public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your farming equipment
     public string[] FarmGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
-    // [Can Change] (Use the Core Skill plugin) Skill sequence string
-    public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-    // [Can Change] (Use the Core Skill plugin if unsure) SkillTimeout of the farming class
-    public int FarmClassSkillTimeout { get; set; } = 1;
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
@@ -66,6 +63,8 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
     {
+        VersionChecker("3.6.3.0");
+
         // Common Options
         Bot.Options.PrivateRooms = false;
         Bot.Options.SafeTimings = changeTo;
@@ -105,6 +104,15 @@ public class CoreBots
                     b.Options.LagKiller = lagKiller;
                 }
             }, "Skip Cutscenes");
+
+            Bot.RegisterHandler(1000, b =>
+            {
+                if (b.Player.AFK)
+                {
+                    b.Options.AutoRelogin = true;
+                    b.Player.Logout();
+                }
+            }, "AFK Handler");
 
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
@@ -931,6 +939,18 @@ public class CoreBots
         Bot.Options.AutoRelogin = autoRelogSwitch;
     }
 
+    public void VersionChecker(string TargetVersion)
+    {
+        int[] TargetVArray = Array.ConvertAll(TargetVersion.Split('.'), int.Parse);
+        int[] CurrentVArray = Array.ConvertAll(Forms.Main.Text.Replace("RBot ", "").Split('.'), int.Parse);
+        foreach (int Digit in TargetVArray)
+        {
+            int Index = Array.IndexOf(TargetVArray, Digit);
+            if (Digit > CurrentVArray[Index])
+                Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
+        }
+    }
+
     ClassType currentClass = ClassType.None;
     bool usingSoloGeneric = false;
     bool usingFarmGeneric = false;
@@ -945,26 +965,12 @@ public class CoreBots
         switch (classToUse)
         {
             case ClassType.Farm:
-                if(usingFarmGeneric && !usingSoloGeneric)
-                {
-                    EquipClass(ClassType.Solo);
-                    return;
-                }
-                _EquipClass(FarmClass);
                 _EquipGear(FarmGear);
-                if(currentClass != ClassType.Farm)
-                    Bot.Skills.StartAdvanced(FarmClassSkills, FarmClassSkillTimeout);
+                Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                 break;
             default:
-                if(usingSoloGeneric && !usingFarmGeneric)
-                {
-                    EquipClass(ClassType.Farm);
-                    return;
-                }
-                _EquipClass(SoloClass);
                 _EquipGear(SoloGear);
-                if(currentClass != ClassType.Solo)
-                    Bot.Skills.StartAdvanced(SoloClassSkills, SoloClassSkillTimeout);
+                Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                 break;
         }
         currentClass = classToUse;
