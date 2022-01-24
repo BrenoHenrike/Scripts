@@ -37,12 +37,12 @@ public class Necrodungeon
         Core.KillQuest(QuestID: 2047, MapName: "necrodungeon", MonsterName: "SlimeSkull");
         Core.MapItemQuest(QuestID: 2047, MapName: "necrodungeon", MapItemID: 1003);
         //retrieve the past, room 4 - 2048
-        Core.KillQuest(QuestID: 2048, MapName: "necrodungeon", MonsterNames:  new[] { "Necropolis Soldier", "Ghoul"});
+        Core.KillQuest(QuestID: 2048, MapName: "necrodungeon", MonsterNames: new[] { "Necropolis Soldier", "Ghoul" });
         Core.MapItemQuest(QuestID: 2048, MapName: "necrodungeon", MapItemID: 1004);
         //deeper into darkness - 2049
         Core.KillQuest(QuestID: 2049, MapName: "necrodungeon", MonsterName: "Bellhop");
         //retrieve the past, room 5 - 2050
-        Core.KillQuest(QuestID: 2050, MapName: "necrodungeon", MonsterNames: new[] {"SlimeSkull", "Necropolis Soldier"});
+        Core.KillQuest(QuestID: 2050, MapName: "necrodungeon", MonsterNames: new[] { "SlimeSkull", "Necropolis Soldier" });
         Core.MapItemQuest(QuestID: 2050, MapName: "necrodungeon", MapItemID: 1016, Amount: 3);
         Core.MapItemQuest(QuestID: 2050, MapName: "necrodungeon", MapItemID: 1005);
         //retrieve the past, room 6 - 2051
@@ -74,11 +74,11 @@ public class Necrodungeon
         Core.MapItemQuest(QuestID: 2059, MapName: "necrodungeon", MapItemID: 1013);
         //five times the fury - 2060
         Core.EnsureAccept(2060);
-        Core.KillMonster(map: "necrodungeon", cell: "r22", pad: "Down", monsterID: 889, item: "Dracolich Head 1 Defeated!");
-        Core.KillMonster(map: "necrodungeon", cell: "r22", pad: "Down", monsterID: 890, item: "Dracolich Head 2 Defeated!");
-        Core.KillMonster(map: "necrodungeon", cell: "r22", pad: "Down", monsterID: 891, item: "Dracolich Head 3 Defeated!");
-        Core.KillMonster(map: "necrodungeon", cell: "r22", pad: "Down", monsterID: 892, item: "Dracolich Head 4 Defeated!");
-        Core.KillMonster(map: "necrodungeon", cell: "r22", pad: "Down", monsterID: 893, item: "Dracolich Head 5 Defeated!");
+        Core.KillMonster("necrodungeon", "r22", "Down", 889);
+        Core.KillMonster("necrodungeon", "r22", "Down", 890);
+        Core.KillMonster("necrodungeon", "r22", "Down", 891);
+        Core.KillMonster("necrodungeon", "r22", "Down", 892);
+        Core.KillMonster("necrodungeon", "r22", "Down", 893);
         Core.EnsureComplete(2060);
         //the past will haunt you - 2061
         Core.MapItemQuest(QuestID: 2061, MapName: "necrodungeon", MapItemID: 1020, hasFollowup: false);
