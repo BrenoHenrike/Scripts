@@ -285,7 +285,7 @@ public class NecroticSwordOfDoom
         Core.AddDrop("Undead Energy");
         Farm.BattleUnderB("Bone Dust", Quantity*50);
         VoidAuras(Quantity*50);
-        Core.BuyItem("shadowfall", 793, "Bones of the Void Realm", Quantity);
+        Core.BuyItem("shadowfall", 793, "Bones from the Void Realm", Quantity);
     }
 
     public void TimeLordNecro(int Quantity)
