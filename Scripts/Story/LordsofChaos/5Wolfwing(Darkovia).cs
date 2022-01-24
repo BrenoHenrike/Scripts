@@ -17,7 +17,7 @@ public class SagaDarkovia
 
     public void CompleteSaga()
     {
-        Core.BuyItem("battleon", 944, "Sapphire Mace");
+        Core.BuyItem("battleon", 949, "Sapphire Mace");
         if (Core.CheckInventory("Sapphire Mace", toInv: false))
         {
             Bot.Sleep(700);
@@ -78,7 +78,7 @@ public class SagaDarkovia
             Core.EnsureComplete(598);
 
         Core.Relogin();
-        Core.BuyItem("battleon", 944, "Sapphire Mace");
+        Core.BuyItem("battleon", 949, "Sapphire Mace");
         Bot.Sleep(700);
         Core.ToBank("Sapphire Mace");
     }
