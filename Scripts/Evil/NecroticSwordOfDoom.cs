@@ -305,17 +305,17 @@ public class NecroticSwordOfDoom
             return;
 
         Core.AddDrop("Cavern Celestite");
-        if (!Bot.Quests.IsUnlocked(3010))
+        if (!Bot.Quests.IsUnlocked(939))
             BattleUnder.BattleUnderC();
         Core.Logger("Cavern Celestite");
         int i = 1;
         while (!Core.CheckInventory("Cavern Celestite", Quantity))
         {
-            Core.EnsureAccept(3010);
+            Core.EnsureAccept(939);
             Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
             Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");
             Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul");
-            Core.EnsureComplete(3010);
+            Core.EnsureComplete(939);
             Bot.Wait.ForPickup("Cavern Celestite");
             Core.Logger($"Completed {i++}x");
         }
