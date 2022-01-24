@@ -853,13 +853,14 @@ public class CoreBots
         else
         {
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
+            if (!isTemp)
+                AddDrop(item);
             while(!CheckInventory(item, quant))
             {
                 if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
-                Bot.Player.Pickup(item);
             }
         }
     }
@@ -1082,8 +1083,8 @@ public class CoreBots
             Bot.Player.Kill(name);
             if (!tempItem && !CheckInventory(item))
             {
+                AddDrop(item);
                 Bot.Sleep(ActionDelay);
-                Bot.Player.Pickup(item);
                 if (rejectElse)
                     Bot.Player.RejectExcept(item);
             }
@@ -1100,8 +1101,8 @@ public class CoreBots
             Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
             if (!tempItem && !CheckInventory(item))
             {
+                AddDrop(item);
                 Bot.Sleep(ActionDelay);
-                Bot.Player.Pickup(item);
                 if (rejectElse)
                     Bot.Player.RejectExcept(item);
             }
