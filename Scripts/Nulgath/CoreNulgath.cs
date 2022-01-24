@@ -95,9 +95,10 @@ public class CoreNulgath
         "Nation Round 3 Medal",
         "Nation Round 4 Medal"
     };
-    
+
     public string[] Receipt =
     {
+        "Unidentified 1",
         "Unidentified 6",
         "Unidentified 9",
         "Unidentified 16",
@@ -238,39 +239,43 @@ public class CoreNulgath
         Core.Logger($"Finished");
     }
 
-    /// <summary>
-    /// Farms Receipt of Swindle with Swindles Return Policy quest
-    /// </summary>
-    /// <param name="quant">Desired quantity, 100 = max stack</param>
-    public void SwindleReturn(int quant = 100)
+
+/// <summary>
+/// Farms specific item with Swindles Return Policy quest
+/// </summary>
+/// <param name="quant">Desired Item quantity</param>
+/// <param name="item">Desired Item</param>
+public void SwindleReturn(string item = "Any", int quant = 1000)
+{
+    while (!Core.CheckInventory(item, quant))
     {
-        if (Core.CheckInventory("Receipt of Swindle", quant))
-            return;
-
-
-        while (!Core.CheckInventory("Receipt of Swindle", quant))
+        Core.EnsureAccept(7551);
+        Supplies("Unidentified 1");
+        Supplies("Unidentified 6");
+        Supplies("Unidentified 9");
+        Supplies("Unidentified 16");
+        Supplies("Unidentified 20");
+        Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune");
+        switch (item)
         {
-            Core.EnsureAccept(7551);
-
-            Supplies("Unidentified 1");
-            Supplies("Unidentified 6");
-            Supplies("Unidentified 9");
-            Supplies("Unidentified 16");
-            Supplies("Unidentified 20");
-            Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune");
-
-            if (!Core.CheckInventory("Tainted Gem", 1000))
-                Core.EnsureComplete(7551, 4769);
-            else if (!Core.CheckInventory("Dark Crystal Shard", 1000))
+            case "Dark Crystal Shard":
                 Core.EnsureComplete(7551, 4770);
-            else if (!Core.CheckInventory("Diamond of Nulgath", 1000))
+                break;
+            case "Diamond of Nulgath":
                 Core.EnsureComplete(7551, 4771);
-            else if (!Core.CheckInventory("Gem of Nulgath", 300))
+                break;
+            case "Gem of Nulgath":
                 Core.EnsureComplete(7551, 6136);
-            else if (!Core.CheckInventory("Blood Gem of the Archfiend", 100))
+                break;
+            case "Blood Gem of the Archfiend":
                 Core.EnsureComplete(7551, 22332);
+                break;
+            default: //Tainted Gem
+                Core.EnsureComplete(7551, 4769);
+                break;
         }
     }
+}
 
     /// <summary>
     /// Farms Tainted Gem with Swindle Bulk quest

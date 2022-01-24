@@ -13,8 +13,8 @@ public string[] Rebank = { };
 
 public ScriptInterface Bot => ScriptInterface.Instance;
 public CoreBots Core => CoreBots.Instance;
-public VoidHighlordsChallenge VoidHighlordsChallenge = new VoidHighlordsChallenge();
-public VoidCrystals VoidCrystals = new VoidCrystals();
+public VoidHighlordsChallenge VHL = new VoidHighlordsChallenge();
+public VoidCrystals ShinyRocks = new VoidCrystals();
 public CoreFarms Farm = new CoreFarms();
 public CoreDailys Dailys = new CoreDailys();
 public CoreNulgath Nulgath = new CoreNulgath();
@@ -32,9 +32,9 @@ public CoreNulgath Nulgath = new CoreNulgath();
     public void DoAll()
     {
         Bot.Player.LoadBank();
-
         
-        if (Core.CheckInventory("Void Highlord")) {Core.SetOptions(false);}
+        if (Core.CheckInventory("Void Highlord")) 
+        {Core.SetOptions(false);}
 
         Core.Logger("Level Check");    
         Farm.Experience(80);
@@ -62,13 +62,10 @@ public CoreNulgath Nulgath = new CoreNulgath();
 
         if (Core.CheckInventory("Roentgenium of Nulgath", quant))
         return;
-
-        if (!Dailys.CheckDaily(802, "Elders' Blood"))
-        return;
         
         while (!Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
-            VoidHighlordsChallenge.Challenge();
+            VHL.Challenge();
         }
     }
 
@@ -77,7 +74,7 @@ public CoreNulgath Nulgath = new CoreNulgath();
         Core.AddDrop("Void Crystal A");
         Core.AddDrop("Void Crystal B");
         
-        VoidCrystals.VHLCrystals();      
+        ShinyRocks.VHLCrystals();      
 
         if (!Core.CheckInventory("Void Crystal A"))
         {
