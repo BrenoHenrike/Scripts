@@ -5,7 +5,7 @@
 
 using RBot;
 
-public class CitdelRuins
+public class CitadelRuins
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
