@@ -947,7 +947,9 @@ public class CoreBots
         foreach (int Digit in TargetVArray)
         {
             int Index = Array.IndexOf(TargetVArray, Digit);
-            if (Digit > CurrentVArray[Index])
+            if (Digit < CurrentVArray[Index])
+                return;
+            else if (Digit > CurrentVArray[Index])
                 Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
         }
     }
