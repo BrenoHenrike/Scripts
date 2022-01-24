@@ -26,11 +26,14 @@ public class BotName
     public void DoAll()
     {
         Farm.Experience(20);
+        Core.Logger("Volcano Quests");
         Volcano();
+        Core.Logger("Andesis Quests");
         AndesisQuests();
+        Core.Logger("Scorias Quests");
         ScoriasQuestsQuests();
+        Core.Logger("Warlics Quests");
         WarlicsQuests();
-        Dailys.Pyromancer();
     }
 
     public void Volcano()
@@ -72,6 +75,7 @@ public class BotName
         if (Bot.Quests.IsUnlocked(1740))
         return;
 
+
         Core.MapItemQuest(QuestID: 1733, MapName: "xantown", MapItemID: 922);
         Core.KillQuest(QuestID: 1734, MapName: "xantown", MonsterName: "Fire Imp");
         Core.KillQuest(QuestID: 1735, MapName: "xantown", MonsterName: "Fire Imp");
@@ -86,19 +90,22 @@ public class BotName
         if (Bot.Quests.IsUnlocked(2151))
         return;
 
+
         Core.KillQuest(QuestID: 1740, MapName: "xantown", MonsterName: "Xan", hasFollowup: false);
 
     }
 
     public void WarlicsQuests()
     {
-        if (Bot.Quests.IsUnlocked(2209))
+        if (Bot.Quests.IsUnlocked(2157))
         return;
+
 
         Core.MapItemQuest(QuestID: 2151, MapName: "xancave", MapItemID: 1220);
         Core.KillQuest(QuestID: 2152, MapName: "xancave", MonsterName: "Lava Goblin");
         Core.MapItemQuest(QuestID: 2153, MapName: "xancave", MapItemID: 1221);
         Core.KillQuest(QuestID: 2154, MapName: "xancave", MonsterName: "Lava Goblin");
+        Core.KillQuest(QuestID: 2155, MapName: "xancave", MonsterName: "Lava Goblin");
         Core.KillQuest(QuestID: 2155, MapName: "xancave", MonsterName: "Lava Goblin");
         Core.MapItemQuest(QuestID: 2155, MapName: "xancave", MapItemID: 1223, Amount: 8);
         Core.KillQuest(QuestID: 2156, MapName: "xancave", MonsterName: "Shurpu Ring Guardian");
