@@ -22,10 +22,6 @@ public class BloodSorceress
     {
         Core.HuntMonster("towerofmirrors", "Scarletta", "Blood Sorceress");
         if (rankUpClass)
-        {
-            Core.JumpWait();
-            Bot.Player.EquipItem("Blood Sorceress");
-            Farm.IcestormArena(1, rankUpClass: true);
-        }
+            Farm.rankUpClass("Blood Sorceress");
     }
 }

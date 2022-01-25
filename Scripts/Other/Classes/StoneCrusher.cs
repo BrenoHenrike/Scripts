@@ -18,7 +18,7 @@ public class StoneCrusher
         Core.SetOptions(false);
     }
 
-    public void GetSC(bool rankUp = true)
+    public void GetSC(bool rankUpClass = true)
     {
         if (Core.CheckInventory("StoneCrusher"))
             return;
@@ -31,7 +31,7 @@ public class StoneCrusher
         Core.BuyItem("Gaiazor", 1210, "Shaman Armor");
         Core.BuyItem("Gaiazor", 1210, "StoneCrusher");
 
-        if (rankUp)
+        if (rankUpClass)
             Farm.rankUpClass("StoneCrusher");
     }
 }

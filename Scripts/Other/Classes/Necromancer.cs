@@ -18,7 +18,7 @@ public class Necromancer
         Core.SetOptions(false);
     }
 
-    public void GetNecromancer(bool rankUp = true)
+    public void GetNecromancer(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Necromancer"))
             return;
@@ -28,10 +28,8 @@ public class Necromancer
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Shard", isTemp: false, publicRoom: true);
         Core.BuyItem("necrotower", 285, "Necromancer");
-        if (rankUp)
-        {
-            Bot.Player.EquipItem("Necromancer");
-            Farm.IcestormArena(1, rankUpClass: true);
-        }
+        
+        if (rankUpClass)
+            Farm.rankUpClass("Necromancer");
     }
 }
