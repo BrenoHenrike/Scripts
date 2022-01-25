@@ -444,12 +444,12 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void Supplies(string item = "Any", int quant = 1)
+    public void Supplies(string item = "Any", int quant = 1, bool sellMemVoucher = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
         if (Core.CheckInventory(CragName))
-            BambloozevsDrudgen(item, quant);
+            BambloozevsDrudgen(item, quant, sellMemVoucher);
         else
         {
             Core.AddDrop("Relic of Chaos");
@@ -462,6 +462,11 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
                 Core.KillEscherion("Relic of Chaos");
                 Core.EnsureComplete(2857);
                 Bot.Player.Pickup(item);
+                if (item != "Voucher of Nulgath" && sellMemVoucher)
+                {
+                    Bot.Player.Pickup("Voucher of Nulgath");
+                    Core.SellItem("Voucher of Nulgath");
+                }
                 Core.Logger($"Completed x{i++}");
             }
         }
@@ -529,7 +534,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void BambloozevsDrudgen(string item = "Any", int quant = 1)
+    public void BambloozevsDrudgen(string item = "Any", int quant = 1, bool sellMemVoucher = true)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
@@ -583,6 +588,8 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
                 }
             }
             Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+            if (item != "Voucher of Nulgath" && sellMemVoucher)
+                Core.SellItem("Voucher of Nulgath");
         }
     }
 
