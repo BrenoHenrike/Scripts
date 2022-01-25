@@ -5,7 +5,7 @@
 
 using RBot;
 
-public class Necrodungeon
+public class NecroDungeon
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
