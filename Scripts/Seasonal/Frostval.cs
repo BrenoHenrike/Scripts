@@ -19,6 +19,10 @@ public class Frostval
         Part5();
         Part6();
         Part7();
+        Part8();
+        Part9();
+        Part10();
+        Part11();
 
         Core.SetOptions(false);
     }
@@ -29,60 +33,59 @@ public class Frostval
             return;
 
         // Rescue Blizzy
-        Core.KillQuest(QuestID: 155, MapName: "icecave", MonsterName: "Frosty");
+        Core.KillQuest(155, "icecave", "Frosty");
 
         // Scary Snow Men
-        Core.KillQuest(QuestID: 156, MapName: "icecave", MonsterName: "Snow Golem");
+        Core.KillQuest(156, "icecave", "Snow Golem");
 
         // Moglin Popsicles
-        Core.KillQuest(QuestID: 157, MapName: "icecave", MonsterName: "Frozen Moglin");
+        Core.KillQuest(157, "icecave", "Frozen Moglin");
 
         // Crystal Spider
-        Core.KillQuest(QuestID: 158, MapName: "icecave", MonsterName: "Ice Spider");
+        Core.KillQuest(158, "icecave", "Ice Spider");
 
         // Fluffy Bears
-        Core.KillQuest(QuestID: 159, MapName: "icecave", MonsterName: "Polar Bear");
+        Core.KillQuest(159, "icecave", "Polar Bear");
 
         // Blue Eyed Beast
-        Core.KillQuest(QuestID: 160, MapName: "icecave", MonsterName: "Frost Dragon");
+        Core.KillQuest(160, "icecave", "Frost Dragon");
 
         // Trouble Makers
-        Core.KillQuest(QuestID: 161, MapName: "factory", MonsterName: "Sneevil Toy Maker");
+        Core.KillQuest(161, "factory", "Sneevil Toy Maker");
 
         // Bad Ice Cream
-        Core.KillQuest(QuestID: 162, MapName: "factory", MonsterName: "Snow Golem");
+        Core.KillQuest(162, "factory", "Snow Golem");
 
         // Greedy Sneevil
-        Core.KillQuest(QuestID: 163, MapName: "factory", MonsterName: "Ebilsneezer");
+        Core.KillQuest(163, "factory", "Ebilsneezer");
 
         // Shadow Figure
-        Core.KillQuest(QuestID: 164, MapName: "frost", MonsterName: "FrostScythe", FollowupIDOverwrite: 456);
+        Core.KillQuest(164, "frost", "FrostScythe", FollowupIDOverwrite: 456);
 
         // 'Twas the night before Frostval
-        Core.KillQuest(QuestID: 456, MapName: "icecave", MonsterName: "Frosty");
+        Core.KillQuest(456, "icecave", "Frosty");
 
         // Find Page 2
-        Core.KillQuest(QuestID: 457, MapName: "icecave", MonsterName: "Frozen Moglin");
-        Core.MapItemQuest(QuestID: 457, MapName: "yulgar", MapItemID: 85);
+        Core.KillQuest(457, "icecave", "Frozen Moglin");
+        Core.MapItemQuest(457, "yulgar", 85);
 
         // Find Page 3
-        Core.KillQuest(QuestID: 458, MapName: "icecave", MonsterName: "Frozen Moglin");
-        Core.MapItemQuest(QuestID: 458, MapName: "battleontown", MapItemID: 86);
+        Core.KillQuest(458, "icecave", "Frozen Moglin");
+        Core.MapItemQuest(458, "battleontown", 86);
 
         // Find Page 4
-        Core.KillQuest(QuestID: 459, MapName: "factory", MonsterName: "Sneevil Toy Maker");
+        Core.KillQuest(459, "factory", "Sneevil Toy Maker");
 
         // Find Page 5
-        Core.KillQuest(QuestID: 460, MapName: "northlandlight", MonsterName: "Santy Claws");
+        Core.KillQuest(460, "northlandlight", "Santy Claws");
 
         // Find Page 6
-        Core.MapItemQuest(QuestID: 461, MapName: "battleontown", MapItemID: 87);
-        Core.KillQuest(QuestID: 461, MapName: "icecave", MonsterName: "Frozen Moglin", hasFollowup: false);
+        Core.MapItemQuest(461, "battleontown", 87);
+        Core.KillQuest(461, "icecave", "Frozen Moglin", hasFollowup: false);
 
         // Spirit Abducted 
         Core.Join("frostval");
         Core.ChainComplete(905);
-        //Core.EnsureComplete(905);
     }
 
     public void Part2()
@@ -91,30 +94,30 @@ public class Frostval
             return;
 
         // Shaking the Globes
-        Core.MapItemQuest(QuestID: 906, MapName: "snowglobe", MapItemID: 243, Amount: 10);
-        Core.KillQuest(QuestID: 906, MapName: "snowglobe", MonsterName: "Snow Golem");
+        Core.MapItemQuest(906, "snowglobe", 243, 10);
+        Core.KillQuest(906, "snowglobe", "Snow Golem");
 
         //A Demonstration
-        Core.KillQuest(QuestID: 907, MapName: "snowglobe", MonsterName: "Snow Golem");
+        Core.KillQuest(907, "snowglobe", "Snow Golem");
 
         // Hearts of Ice
-        Core.KillQuest(QuestID: 908, MapName: "snowglobe", MonsterName: "snowman Soldier");
+        Core.KillQuest(908, "snowglobe", "snowman Soldier");
 
         // Defeat Garaja
-        Core.KillQuest(QuestID: 909, MapName: "snowglobe", MonsterName: "Garaja");
+        Core.KillQuest(909, "snowglobe", "Garaja");
 
         // Springing Traps
-        Core.KillQuest(QuestID: 910, MapName: "goldenruins", MonsterName: "Golden Warrior");
-        Core.MapItemQuest(QuestID: 910, MapName: "goldenruins", MapItemID: 244, Amount: 10);
+        Core.KillQuest(910, "goldenruins", "Golden Warrior");
+        Core.MapItemQuest(910, "goldenruins", 244, 10);
 
         // Frost Lions
-        Core.KillQuest(QuestID: 911, MapName: "goldenruins", MonsterName: "Frost Lion");
+        Core.KillQuest(911, "goldenruins", "Frost Lion");
 
         // Onslaught Keyrings
-        Core.KillQuest(QuestID: 912, MapName: "goldenruins", MonsterName: "Golden Warrior");
+        Core.KillQuest(912, "goldenruins", "Golden Warrior");
 
         // Defeat Lionfang
-        Core.KillQuest(QuestID: 913, MapName: "goldenruins", MonsterName: "Maximillian Lionfang", hasFollowup: false);
+        Core.KillQuest(913, "goldenruins", "Maximillian Lionfang", hasFollowup: false);
     }
 
     public void Part3()
@@ -124,35 +127,35 @@ public class Frostval
 
 
         // Snow Way to Know Where to Go
-        Core.MapItemQuest(QuestID: 1508, MapName: "alpine", MapItemID: 758);
+        Core.MapItemQuest(1508, "alpine", 758);
 
         // Arming the Undead Army
-        Core.KillQuest(QuestID: 1509, MapName: "alpine", MonsterName: "Glacier Mole");
+        Core.KillQuest(1509, "alpine", "Glacier Mole");
 
         // Cold As A Corpse
-        Core.MapItemQuest(QuestID: 1510, MapName: "alpine", MapItemID: 759, Amount: 10);
+        Core.MapItemQuest(1510, "alpine", 759, 10);
 
         // Pretty Pretty Undead Princess Decor
-        Core.MapItemQuest(QuestID: 1511, MapName: "alpine", MapItemID: 760, Amount: 13);
+        Core.MapItemQuest(1511, "alpine", 760, 13);
 
         // Deadfying Frost Lions
-        Core.KillQuest(QuestID: 1512, MapName: "alpine", MonsterName: "Frost Lion", FollowupIDOverwrite: 1516);
+        Core.KillQuest(1512, "alpine", "Frost Lion", FollowupIDOverwrite: 1516);
 
         // Defiant Undead Deserters
-        Core.KillQuest(QuestID: 1516, MapName: "alpine", MonsterName: "Frozen Deserter", FollowupIDOverwrite: 1513);
+        Core.KillQuest(1516, "alpine", "Frozen Deserter", FollowupIDOverwrite: 1513);
 
         // Forest Guadian Gauntlet
-        Core.KillQuest(QuestID: 1513, MapName: "alpine", MonsterName: "Wendigo", FollowupIDOverwrite: 1519);
+        Core.KillQuest(1513, "alpine", "Wendigo", FollowupIDOverwrite: 1519);
 
         // Snow Turning Back!
-        Core.KillQuest(QuestID: 1519, MapName: "icevolcano", MonsterNames: new[] { "Snow Golem", "Dead-ly Ice Elemental" });
-        Core.MapItemQuest(QuestID: 1519, MapName: "icevolcano", MapItemID: 761, Amount: 10);
+        Core.KillQuest(1519, "icevolcano", MonsterNames: new[] { "Snow Golem", "Dead-ly Ice Elemental" });
+        Core.MapItemQuest(1519, "icevolcano", 761, 10);
 
         // Venom in Your Veins
-        Core.KillQuest(QuestID: 1520, MapName: "icevolcano", MonsterName: "Ice Symbiote");
+        Core.KillQuest(1520, "icevolcano", "Ice Symbiote");
 
         // Song of the Frozen Heart
-        Core.KillQuest(QuestID: 1521, MapName: "icevolcano", MonsterName: "Dead Morice", hasFollowup: false);
+        Core.KillQuest(1521, "icevolcano", "Dead Morice", hasFollowup: false);
     }
 
     public void Part4()
@@ -161,82 +164,82 @@ public class Frostval
             return;
 
         // Locate Kezeroth
-        Core.MapItemQuest(QuestID: 2522, MapName: "snowyvale", MapItemID: 1584);
+        Core.MapItemQuest(2522, "snowyvale", 1584);
 
         // Chronoton Detection
-        Core.KillQuest(QuestID: 2523, MapName: "snowyvale", MonsterName: "Polar Golem");
+        Core.KillQuest(2523, "snowyvale", "Polar Golem");
 
         // Core Knowledge
-        Core.MapItemQuest(QuestID: 2524, MapName: "snowyvale", MapItemID: 1585, Amount: 6);
+        Core.MapItemQuest(2524, "snowyvale", 1585, 6);
 
         // Temporal Revelation
-        Core.MapItemQuest(QuestID: 2525, MapName: "snowyvale", MapItemID: 1586);
+        Core.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour
-        Core.MapItemQuest(QuestID: 2526, MapName: "frostdeep", MapItemID: 1587);
+        Core.MapItemQuest(2526, "frostdeep", 1587);
 
         // Heart of Ice
-        Core.KillQuest(QuestID: 2527, MapName: "frostdeep", MonsterNames: new[] { "Polar Golem", "Polar Elemental" });
+        Core.KillQuest(2527, "frostdeep", MonsterNames: new[] { "Polar Golem", "Polar Elemental" });
 
         // Absolute Zero Success
-        Core.KillQuest(QuestID: 2528, MapName: "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Golem" });
+        Core.KillQuest(2528, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Golem" });
 
         // Dirty Secret
-        Core.KillQuest(QuestID: 2529, MapName: "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Mole" });
+        Core.KillQuest(2529, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Mole" });
 
         // Frozen Venom
-        Core.KillQuest(QuestID: 2530, MapName: "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Spider" });
+        Core.KillQuest(2530, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Spider" });
 
         // Rune-ing His Plan
-        Core.KillQuest(QuestID: 2531, MapName: "frostdeep", MonsterName: "Ancient Golem");
+        Core.KillQuest(2531, "frostdeep", "Ancient Golem");
 
         // Deadly Beauty
-        Core.KillQuest(QuestID: 2532, MapName: "frostdeep", MonsterNames: new[] { "Polar Elemental", "Polar Golem", "Polar Golem" });
+        Core.KillQuest(2532, "frostdeep", MonsterNames: new[] { "Polar Elemental", "Polar Golem", "Polar Golem" });
 
         // Cold-Hearted Trophies
-        Core.KillQuest(QuestID: 2533, MapName: "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Prowler", "Temple Prowler" });
+        Core.KillQuest(2533, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Prowler", "Temple Prowler" });
 
         // Warmth in the Cold
-        Core.KillQuest(QuestID: 2534, MapName: "frostdeep", MonsterNames: new[] { "Temple Spider", "Temple Maggot" });
+        Core.KillQuest(2534, "frostdeep", MonsterNames: new[] { "Temple Spider", "Temple Maggot" });
 
         // Icy Prizes
-        Core.KillQuest(QuestID: 2535, MapName: "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
+        Core.KillQuest(2535, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
 
         // Fading Magic
-        Core.KillQuest(QuestID: 2536, MapName: "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        Core.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
 
         // FrostDeep Dwellers
-        Core.KillQuest(QuestID: 2537, MapName: "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
+        Core.KillQuest(2537, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
 
         // A Breather
-        Core.KillQuest(QuestID: 2538, MapName: "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Spider", "Polar Spider" });
+        Core.KillQuest(2538, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Spider", "Polar Spider" });
 
         // Raiders From FrostDeep
-        Core.KillQuest(QuestID: 2539, MapName: "frostdeep", MonsterNames: new[] { "Polar Draconian", "Temple Maggot" });
+        Core.KillQuest(2539, "frostdeep", MonsterNames: new[] { "Polar Draconian", "Temple Maggot" });
 
         // 8 Legged Frost Freaks
-        Core.KillQuest(QuestID: 2540, MapName: "frostdeep", MonsterNames: new[] { "Temple Spider", "Polar Spider" });
+        Core.KillQuest(2540, "frostdeep", MonsterNames: new[] { "Temple Spider", "Polar Spider" });
 
         // Freezing the Stone
-        Core.KillQuest(QuestID: 2541, MapName: "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        Core.KillQuest(2541, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
 
         // Can You Feel the Chill Tonight?
-        Core.KillQuest(QuestID: 2542, MapName: "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Elemental" });
+        Core.KillQuest(2542, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Elemental" });
 
         // Shrouded in Ice
-        Core.KillQuest(QuestID: 2543, MapName: "frostdeep", MonsterNames: new[] { "Ancient Maggot", "Ancient Maggot" });
+        Core.KillQuest(2543, "frostdeep", MonsterNames: new[] { "Ancient Maggot", "Ancient Maggot" });
 
         // Hard Fight for a Cold Truth
-        Core.KillQuest(QuestID: 2544, MapName: "frostdeep", MonsterNames: new[] { "Ancient Prowler", "Ancient Prowler" });
+        Core.KillQuest(2544, "frostdeep", MonsterNames: new[] { "Ancient Prowler", "Ancient Prowler" });
 
         // Sand and Shardin' Bones
-        Core.KillQuest(QuestID: 2545, MapName: "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Mole" });
+        Core.KillQuest(2545, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Mole" });
 
         // Older and Colder
-        Core.KillQuest(QuestID: 2546, MapName: "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
+        Core.KillQuest(2546, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
 
         // The Sword Of Hope
-        Core.KillQuest(QuestID: 2547, MapName: "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" }, hasFollowup: false);
+        Core.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" }, hasFollowup: false);
     }
 
     public void Part5()
@@ -245,25 +248,25 @@ public class Frostval
             return;
 
         // A Little Warmth and Light
-        Core.MapItemQuest(QuestID: 2576, MapName: "icerise", MapItemID: 1592, Amount: 5);
+        Core.MapItemQuest(2576, "icerise", 1592, 5);
 
         // Behind Locked Doors
-        Core.MapItemQuest(QuestID: 2577, MapName: "icerise", MapItemID: 1593);
+        Core.MapItemQuest(2577, "icerise", 1593);
 
         // The Lost Key
-        Core.KillQuest(QuestID: 2578, MapName: "icerise", MonsterName: "Polar Golem");
+        Core.KillQuest(2578, "icerise", "Polar Golem");
 
         // Uncovering Pages Of The Past
-        Core.KillQuest(QuestID: 2579, MapName: "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
+        Core.KillQuest(2579, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
 
         // We Know Where To Look
-        Core.KillQuest(QuestID: 2580, MapName: "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
+        Core.KillQuest(2580, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
 
         // A Terrible Hiding Place
-        Core.KillQuest(QuestID: 2581, MapName: "icerise", MonsterName: "Arctic Direwolf");
+        Core.KillQuest(2581, "icerise", "Arctic Direwolf");
 
         // Face Kezeroth!
-        Core.KillQuest(QuestID: 2582, MapName: "icerise", MonsterName: "Kezeroth", hasFollowup: false);
+        Core.KillQuest(2582, "icerise", "Kezeroth", hasFollowup: false);
     }
 
     public void Part6()
@@ -272,94 +275,250 @@ public class Frostval
             return;
 
         // Help Blizzy
-        Core.MapItemQuest(QuestID: 6122, MapName: "coldwindvalley", MapItemID: 5547);
-        Core.MapItemQuest(QuestID: 6122, MapName: "coldwindvalley", MapItemID: 5548);
-        Core.MapItemQuest(QuestID: 6122, MapName: "coldwindvalley", MapItemID: 5549);
-        Core.MapItemQuest(QuestID: 6122, MapName: "coldwindvalley", MapItemID: 5550);
+        Core.MapItemQuest(6122, "coldwindvalley", 5547);
+        Core.MapItemQuest(6122, "coldwindvalley", 5548);
+        Core.MapItemQuest(6122, "coldwindvalley", 5549);
+        Core.MapItemQuest(6122, "coldwindvalley", 5550);
 
         // Gather Ammunition
-        Core.KillQuest(QuestID: 6123, MapName: "coldwindvalley", MonsterName: "Hail Elemental");
+        Core.KillQuest(6123, "coldwindvalley", "Hail Elemental");
 
         // Arm the Mob
-        Core.KillQuest(QuestID: 6124, MapName: "coldwindvalley", MonsterName: "Scarecrow");
-        Core.MapItemQuest(QuestID: 6124, MapName: "coldwindvalley", MapItemID: 5551, Amount: 5);
+        Core.KillQuest(6124, "coldwindvalley", "Scarecrow");
+        Core.MapItemQuest(6124, "coldwindvalley", 5551, 5);
 
         // Gather Bait
-        Core.KillQuest(QuestID: 6125, MapName: "coldwindvalley", MonsterName: "Arctic Wolf");
+        Core.KillQuest(6125, "coldwindvalley", "Arctic Wolf");
 
         // Bait the Trap
-        Core.KillQuest(QuestID: 6126, MapName: "coldwindvalley", MonsterName: "Ice Master Yeti");
-        Core.MapItemQuest(QuestID: 6126, MapName: "coldwindvalley", MapItemID: 5552);
+        Core.KillQuest(6126, "coldwindvalley", "Ice Master Yeti");
+        Core.MapItemQuest(6126, "coldwindvalley", 5552);
 
         // Gather Snowman Pieces
-        Core.KillQuest(QuestID: 6127, MapName: "coldwindvalley", MonsterName: "Snow Golem");
-        Core.MapItemQuest(QuestID: 6127, MapName: "coldwindvalley", MapItemID: 5553, Amount: 2);
+        Core.KillQuest(6127, "coldwindvalley", "Snow Golem");
+        Core.MapItemQuest(6127, "coldwindvalley", 5553, 2);
 
         // Gather Snowman Decorations
-        Core.KillQuest(QuestID: 6128, MapName: "coldwindvalley", MonsterName: "Coal Imp");
-        Core.MapItemQuest(QuestID: 6128, MapName: "coldwindvalley", MapItemID: 5554);
+        Core.KillQuest(6128, "coldwindvalley", "Coal Imp");
+        Core.MapItemQuest(6128, "coldwindvalley", 5554);
 
         // Grab some Garb
-        Core.KillQuest(QuestID: 6129, MapName: "coldwindvalley", MonsterName: "Frost Goblin");
+        Core.KillQuest(6129, "coldwindvalley", "Frost Goblin");
 
         // Bait and Gifts
-        Core.MapItemQuest(QuestID: 6130, MapName: "coldwindvalley", MapItemID: 5555);
+        Core.MapItemQuest(6130, "coldwindvalley", 5555);
 
         // Check out the Cave
-        Core.KillQuest(QuestID: 6131, MapName: "coldwindvalley", MonsterName: "Arctusk");
+        Core.KillQuest(6131, "coldwindvalley", "Arctusk");
 
         // Holly and Ice
-        Core.KillQuest(QuestID: 6132, MapName: "coldwindvalley", MonsterName: "Snow Golem");
-        Core.MapItemQuest(QuestID: 6132, MapName: "coldwindvalley", MapItemID: 5557, Amount: 8, hasFollowup: false);
+        Core.KillQuest(6132, "coldwindvalley", "Snow Golem");
+        Core.MapItemQuest(6132, "coldwindvalley", 5557, 8, hasFollowup: false);
     }
 
     public void Part7()
     {
-        if (Bot.Quests.IsUnlocked(3920))
+        if (Bot.Quests.IsUnlocked(3942))
             return;
 
         // Seek the Tower
-        Core.MapItemQuest(QuestID: 3907, MapName: "frozentower", MapItemID: 3022);
+        Core.MapItemQuest(3907, "frozentower", 3022);
 
         // A n-Ice Beginning
-        Core.KillQuest(QuestID: 3908, MapName: "frozentower", MonsterName: "Polar Elemental");
+        Core.KillQuest(3908, "frozentower", "Polar Elemental");
 
         // Search for Syrrus
-        Core.MapItemQuest(QuestID: 3909, MapName: "frozentower", MapItemID: 3019);
+        Core.MapItemQuest(3909, "frozentower", 3019);
 
         // Building the Base
-        Core.MapItemQuest(QuestID: 3910, MapName: "frozentower", MapItemID: 3004, Amount: 13);
+        Core.MapItemQuest(3910, "frozentower", 3004, 13);
 
         // Refugee Roundup
-        Core.KillQuest(QuestID: 3911, MapName: "frozentower", MonsterNames: new[] { "Frostwyrm", "Frostwyrm" });
+        Core.KillQuest(3911, "frozentower", MonsterNames: new[] { "Frostwyrm", "Frostwyrm" });
 
         // Retrieve the Water Starstone
-        Core.KillQuest(QuestID: 3912, MapName: "frozentower", MonsterName: "FrostDeep Dweller");
+        Core.KillQuest(3912, "frozentower", "FrostDeep Dweller");
 
         // Magical Attraction
-        Core.MapItemQuest(QuestID: 3913, MapName: "frozentower", MapItemID: 3005, Amount: 13);
+        Core.MapItemQuest(3913, "frozentower", 3005, 13);
 
         // Frozen Blood
-        Core.KillQuest(QuestID: 3914, MapName: "frozentower", MonsterName: "Twisted Ice");
+        Core.KillQuest(3914, "frozentower", "Twisted Ice");
 
         // Retrieve the Fire Starstone
-        Core.MapItemQuest(QuestID: 3915, MapName: "frozentower", MapItemID: 3006);
+        Core.MapItemQuest(3915, "frozentower", 3006);
 
         // Defend the Tower!
-        Core.KillQuest(QuestID: 3916, MapName: "frozentower", MonsterName: "Polar Elemental");
+        Core.KillQuest(3916, "frozentower", "Polar Elemental");
 
         // Refugee Rescue Run
-        Core.MapItemQuest(QuestID: 3917, MapName: "frozentower", MapItemID: 3007, Amount: 6);
+        Core.MapItemQuest(3917, "frozentower", 3007, 6);
 
         // Retrieve the Earth Starston
-        Core.MapItemQuest(QuestID: 3918, MapName: "frozentower", MapItemID: 3013);
+        Core.MapItemQuest(3918, "frozentower", 3013);
 
         // Polar Penetration and Progress
-        Core.KillQuest(QuestID: 3919, MapName: "frozentower", MonsterName: "Polar Elemental");
-        Core.MapItemQuest(QuestID: 3919, MapName: "frozentower", MapItemID: 3008, Amount: 6);
+        Core.KillQuest(3919, "frozentower", "Polar Elemental");
+        Core.MapItemQuest(3919, "frozentower", 3008, 6);
 
         // Save the Astronomer Apprentice
-        Core.KillQuest(QuestID: 3920, MapName: "frozentower", MonsterName: "Polar Elemental");
-        Core.MapItemQuest(QuestID: 3920, MapName: "frozentower", MapItemID: 3020, hasFollowup: false);
+        Core.KillQuest(3920, "frozentower", new[] { "Polar Elemental", "Ice Wolf" } );
+        Core.KillQuest(3920, "frozentower", "Ice Wolf");
+        Core.MapItemQuest(3920, "frozentower", 3020); 
+        
+        // Glacial Elixir
+        Core.KillQuest(3921, "frozentower", "FrostDeep Dweller");
+        Core.MapItemQuest(3921, "frozentower", 3017, 6);
+
+        // Retrieve the Energy Starstone
+        Core.KillQuest(3922, "frozentower", "Polar Elemental");
+
+        // Marking the Future
+        Core.KillQuest(3923, "frozentower", "Frostwyrm");
+
+        //Glacial Shift
+        Core.MapItemQuest(3924, "frozentower", 3009, 6);
+
+        // Divination Draft
+        Core.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
+        Core.MapItemQuest(3925, "frozentower", 3012, 4);
+        Core.MapItemQuest(3925, "frozentower", 3011, 4);
+
+        // Retrieve the Light StarStone
+        Core.MapItemQuest(3926, "frozentower", 3021, 4);
+
+        // The Future is Bright
+        Core.MapItemQuest(3927, "frozentower", 3014, 7);
+
+        // Bled Bone Dry
+        Core.KillQuest(3928, "frozentower", "Arctic Eel");
+
+        // Chill of Fear
+        Core.KillQuest(3929, "frozentower", "Polar Elemental");
+
+        // Retrieve the Darkness Starstone
+        Core.KillQuest(3930, "frozentower", "Twisted Ice");
+
+        // Web of Fear
+        Core.KillQuest(3931, "frozentower", "Frostwyrm");
+
+        // Frozen in Time
+        Core.MapItemQuest(3932, "frozentower", 3016, 13);
+
+        // Heart of the Matter
+        Core.KillQuest(3933, "frozentower", "Ice Wolf");
+
+        // Retrieve the Wind Starstone
+        Core.KillQuest(3934, "frozentower", "Rotten Ice");
+
+        // Create the Gate
+        Core.KillQuest(3935, "frozentower", "Ice Wolf");
+        Core.MapItemQuest(3935, "frozentower", 3018, 13);
+
+        // Drive Back the Invaders
+        Core.KillQuest(3936, "frozentower", "Frost Invader");
+
+        // Defeat the FrostSpawn Invaders
+        Core.KillQuest(3937, "frozentower", "Frost Fangbeast", FollowupIDOverwrite: 3941);
+
+        // FangBeast Bash-up
+        Core.KillQuest(3941, "frozentower", "Frost Fangbeast", hasFollowup: false);
+    }
+
+    public void Part8()
+    {
+        if (Bot.Quests.IsUnlocked(3947))
+            return;
+
+        // FrozenRuins
+
+        // Ravage the Reapers
+        Core.KillQuest(3942, "frozenruins", "Frost Reaper");
+
+        // Oh the Humanity
+        Core.KillQuest(3943, "frozenruins", "Frost Reaper" ); 
+
+        // Close the Gate
+        Core.KillQuest(3944, "frozenruins", "Frost Reaper" );
+
+        // Form the Lock
+        Core.KillQuest(3945, "frozenruins", "Frozen Moglinster");
+
+        Core.MapItemQuest(3945, "frozenruins", 3050, 10);
+        // Glacera
+        Core.KillQuest(3946, "frozenruins", "Frost Reaper", hasFollowup: false);
+    }
+
+    public void Part9()
+    {
+        if (Bot.Quests.IsUnlocked(3951))
+            return;
+
+        // Glaera     
+
+        //A Frost Welcome
+        Core.EnsureAccept(3947);        
+        Core.MapItemQuest(3947, "glacera", 3048, 1);
+        // Key to the Fortress
+        Core.KillQuest(3948, "glacera", "Frost Invader");
+        // Ravage the Reapers
+        Core.MapItemQuest(3949, "glacera", 3049, 6);
+        // Oh the Humanity
+        Core.MapItemQuest(3950, "glacera", 3047, 1, hasFollowup: false);
+    }
+
+    public void Part10()
+    {
+        if (Bot.Quests.IsUnlocked(3958))
+            return;
+
+        // FrozenRuins encore
+
+        // Rescue the Refugees
+        Core.KillQuest(3951, "frozenruins", new[] { "Frost Invader", "Frozen Moglinster" } );
+        // Defeat the Fangbeasts
+        Core.KillQuest(3952, "frozenruins", "Frost Fangbeast");
+        // Destroy the Frost Reapers
+        Core.KillQuest(3953, "frozenruins", "Frost Reaper");
+        // FrostSpawn General Takedown
+        Core.KillQuest(3954, "frozenruins", "Frost General", hasFollowup: false);
+    }
+
+    public void Part11()
+    {
+        if (Bot.Quests.IsUnlocked(3971))
+            return;
+
+        // Northstar
+
+        // From Refugee to Enemy
+        Core.KillQuest(3958, "northstar", new[] { "Frost Invader", "Monstrous Refugee" });
+        // Fangs and Blades
+        Core.KillQuest(3959, "northstar", new[] { "Frost Fangbeast", "Frost Invader"} );
+        // Reaping the Refugees
+        Core.KillQuest(3960, "northstar", "Frost Reaper");
+        // Saving Syrrus' Spirit
+        Core.KillQuest(3961, "northstar", new[] { "Frost Fangbeast", "Frost Invader", "Frost Reaper"} );
+        Core.MapItemQuest(3961, "northstar", 3060, 5);
+        Core.MapItemQuest(3961, "northstar", 3061, 7);
+        Core.MapItemQuest(3961, "northstar", 3073, 5, FollowupIDOverwrite: 3972);
+        // It's a Trap!
+        Core.MapItemQuest(3972, "northstar", 3063, 10);
+        // Feast or Famine
+        Core.KillQuest(3973, "northstar", new[] { "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Frost Superreaper", "Monstrous Refugee"} );
+        // Decipher the Freezing
+        Core.KillQuest(3974, "northstar", new[] { "Frost Fangbeast", "Monstrous Refugee", "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Monstrous Refugee" }, FollowupIDOverwrite: 3970);
+        // A New Frost Monster
+        Core.KillQuest(3970, "northstar", "The Queen's Gift");
+        // Defeat Karok!
+        Core.KillQuest(3971, "northstar", "Karok the Fallen", hasFollowup: false);
+
+
+
+        // --------------------------------------------------------------------------------------------------------------------------
+
+        // The rest of the Frostval quests are not necessary for Frostval Barbaria. Can skip and farm Frozen Orb directly using jump.
+
+        // --------------------------------------------------------------------------------------------------------------------------
     }
 }
