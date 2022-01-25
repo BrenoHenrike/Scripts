@@ -54,16 +54,22 @@ public class CitadelRuins
         if (Bot.Quests.IsUnlocked(6172))
         return;
 
-        Core.AddDrop(rewards);
+        Core.AddDrop("Unidentified 9", "Unidentified 28", "Dark Crystal Shard", "Claw of Nulgath", "Relic of Chaos" );
 
-        // Map: "Tercessuinotlim";
-        Nulgath.Supplies(item: "Unidentified 9");
+        // Map: "Tercessuinotlim"
+
+        //iron wing helm enchant=
+        Nulgath.TheAssistant(item: "Unidentified 9");
         Core.KillQuest(QuestID: 560, MapName: "underworld", MonsterName: "Undead Bruiser", GetReward: false, FollowupIDOverwrite: 585);
-        Nulgath.FarmDarkCrystalShard(5);
-        Nulgath.Supplies(item: "Unidentified 28");        
+
+        //cleansing of spinal tap=
+        Nulgath.Supplies("Dark Crystal Shard", 5);
+        Nulgath.TheAssistant(item: "Unidentified 28");      
         Core.KillQuest(QuestID: 585, MapName: "Tercessuinotlim", MonsterName: "Legion Fenrir", FollowupIDOverwrite: 668);
-        Nulgath.SwindleBulk(7);
-        Nulgath.FarmDarkCrystalShard(7);
+
+        //purified claw
+        Nulgath.Supplies(item: "Tainted Gem", 7); 
+        Nulgath.Supplies(item: "Claw of Nulgath");
         Core.KillQuest(QuestID: 668, MapName: "Tercessuinotlim", MonsterName: "Dark Makai", hasFollowup: false);
     }
 
