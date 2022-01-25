@@ -133,9 +133,9 @@ public class ArchDoomKnight
         Core.HuntMonster(map: "djinn", monster: "Tibicenas", item: "Tibicenas", isTemp: false);
         Core.HuntMonster(map: "dreamnexus", monster: "Khasaanda", item: "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster(map: "stormtemple", monster: "Chaos Lord Lionfang", item: "Chaos Lionfang Armor", isTemp: false);
-        Core.HuntMonster(map: "swordhavenfalls", monster: "Chaos Lord Alteon", item: "Shorn Chaos King Crown", isTemp: false);
-        Core.HuntMonster(map: "mirrorportal", monster: "Xiang", item: "Xiang Chaos", isTemp: false);
-        Core.HuntMonster(map: "ultradrakath", monster: "Champion of Chaos", item: "Drakath's Sword", isTemp: false);
+        Core.HuntMonster(map: "swordhavenfalls", monster: "Chaos Lord Alteon", item: "Shorn Chaos King Crown", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "mirrorportal", monster: "Xiang", item: "Xiang Chaos", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "ultradrakath", monster: "Champion of Chaos", item: "Drakath's Sword", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "timespace", monster: "Chaos Lord Iadoa", item: "Chaorrupted Hourglass", isTemp: false);
         Core.EnsureComplete(6797);
         Core.ToBank(Q3items);
@@ -151,7 +151,7 @@ public class ArchDoomKnight
 
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster(map: "shadowfallwar", monster: "Skeletal Fire Mage", item: "Ultimate Darkness Gem", quant: 50);
-        Core.HuntMonster(map: "battleunderb", monster: "Skeleton Warrior", item: "Undead Energy", quant: 2000);
+        Farm.BattleUnderB(item: "Undead Energy", quant: 2000);
         
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster(map: "epicvordred", monster: "Ultra Vordred", item: "(Necro) Scroll of Dark Arts", quant: 2);
