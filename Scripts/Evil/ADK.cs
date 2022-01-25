@@ -90,10 +90,7 @@ public class ArchDoomKnight
         Core.AddDrop(Q1items);
         Core.EnsureAccept(6795);
 
-        Bot.Player.EquipItem("Vampire Lord");
         Core.EquipClass(ClassType.Farm);
-        
-
         Core.HuntMonster(map: "battleunderb", monster: "Skeleton Warrior", item: "Undead Energy", quant: 1800);
         Core.HuntMonster(map: "noxustower", monster: "Lightguard Paladin", item: "Human Souls", quant: 500);
         Core.HuntMonster(map: "lair", monster: "Water Draconian", item: "Dragon Energy", quant: 600);
@@ -109,9 +106,7 @@ public class ArchDoomKnight
         Core.AddDrop(Q2items);
         Core.EnsureAccept(6796);
 
-        Bot.Player.EquipItem("Void Highlord");
         Core.EquipClass(ClassType.Solo);
-
         Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Death's Power", quant: 1);
         Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Souls of the Dead", quant: 400);
         Core.EnsureComplete(6796);
@@ -126,12 +121,9 @@ public class ArchDoomKnight
         Core.AddDrop(Q3items);
         Core.EnsureAccept(6797);
 
-        Bot.Player.EquipItem("Void Highlord");
         Core.EquipClass(ClassType.Solo);
-
         Core.KillEscherion(item: "Escherion's Helm", publicRoom: false);
         Core.KillEscherion(item: "Chaotic Power", quant: 13, publicRoom: false);
-
 
         Core.HuntMonster(map: "Stalagbite", monster: "Vath|Stalagbite", item: "Legendary Sword of Dragon Control", isTemp: false);
         Core.HuntMonster(map: "Kitsune", monster: "Kitsune", item: "Hanzamune Dragon Koi Blade", isTemp: false);
@@ -157,15 +149,11 @@ public class ArchDoomKnight
         Core.AddDrop(Q4items);
         Core.EnsureAccept(6798);
 
-        Bot.Player.EquipItem("Vampire Lord");
         Core.EquipClass(ClassType.Farm);
-
         Core.HuntMonster(map: "shadowfallwar", monster: "Skeletal Fire Mage", item: "Ultimate Darkness Gem", quant: 50);
         Core.HuntMonster(map: "battleunderb", monster: "Skeleton Warrior", item: "Undead Energy", quant: 2000);
         
-        Bot.Player.EquipItem("Void Highlord");
         Core.EquipClass(ClassType.Solo);
-        
         Core.HuntMonster(map: "epicvordred", monster: "Ultra Vordred", item: "(Necro) Scroll of Dark Arts", quant: 2);
         Core.HuntMonster(map: "sepulchurebattle", monster: "Ultra Sepulchure", item: "Doom Heart");
         Core.HuntMonster(map: "sepulchure", monster: "Dark Sepulchure", item: "Dread Knight Cleaver");
