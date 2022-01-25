@@ -604,9 +604,6 @@ public class CoreBots
     /// Accepts a quest and then turns it in again
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
-    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
-    /// <param name="ItemName">Name of the item</param>
-    /// <param name="Amount">The amount of <paramref name="ItemName"/> to buy</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
