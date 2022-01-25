@@ -498,10 +498,10 @@ public class Frostval
         // Reaping the Refugees
         Core.KillQuest(3960, "northstar", "Frost Reaper");
         // Saving Syrrus' Spirit
-        Core.KillQuest(3961, "northstar", new[] { "Frost Fangbeast", "Frost Invader", "Frost Reaper"} );
-        Core.MapItemQuest(3961, "northstar", 3060, 5);
-        Core.MapItemQuest(3961, "northstar", 3061, 7);
-        Core.MapItemQuest(3961, "northstar", 3073, 5, FollowupIDOverwrite: 3972);
+        Core.KillQuest(3961, "northstar", "Frost Reaper", FollowupIDOverwrite: 3972); //loadstone peice
+        Core.MapItemQuest(3961, "northstar", 3060, 5, FollowupIDOverwrite: 3972); //plush bear
+        Core.MapItemQuest(3961, "northstar", 3061, 7, FollowupIDOverwrite: 3972); //snowdrop blossom
+        Core.MapItemQuest(3961, "northstar", 3073, 5, FollowupIDOverwrite: 3972); //journal page
         // It's a Trap!
         Core.MapItemQuest(3972, "northstar", 3063, 10);
         // Feast or Famine
