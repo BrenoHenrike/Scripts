@@ -19,7 +19,7 @@ public class LegionFealty4
     public LegionFealty2 LF2 = new LegionFealty2();
     public LegionFealty3 LF3 = new LegionFealty3();
     public JoinLegion JoinLegion = new JoinLegion();
-    public Necrodungeon Necrodung = new Necrodungeon();
+    public NecroDungeon Necrodung = new NecroDungeon();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
