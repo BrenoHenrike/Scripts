@@ -344,7 +344,7 @@ public class CoreFarms
             ChaosMilitiaREP();
             ChaosREP();
             ChronoSpanREP();
-            //CraggleRockREP();
+            CraggleRockREP();
             //DeathPitArenaREP();
             //DeathPitBrawlREP();
             DiabolicalREP();
@@ -734,6 +734,22 @@ public class CoreFarms
             Core.Logger($"Completed x{i++}");
         }
     }
+    
+    public void CraggleRock(int rank = 10)
+    {
+        if (FactionRank("CraggleRock") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("CraggleRock") < rank)
+        {
+            Core.EnsureAccept(7277);
+            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", 1);
+            Core.EnsureComplete(7277);
+            Core.Logger($"Completed x{i++}");
+        }
+    }    
     
     public void DiabolicalREP(int rank = 10)
     {
