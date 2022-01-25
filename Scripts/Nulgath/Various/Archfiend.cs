@@ -4,7 +4,7 @@
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-//cs_include Scripts/Other/Necromancer.cs
+//cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
 using RBot;
