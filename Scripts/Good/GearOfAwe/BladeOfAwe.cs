@@ -26,6 +26,6 @@ public class BladeOfAwe
         if (Core.CheckInventory("Blade of Awe"))
             return;
             
-        Farm.BladeofAweREP(1, true);
+        Farm.BladeofAweREP(6, true);
     }
 }
