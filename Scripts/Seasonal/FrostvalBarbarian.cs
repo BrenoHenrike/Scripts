@@ -86,6 +86,7 @@ public class FrostvalBarbarian
         }
         Core.EnsureComplete(6649);
 
+        Bot.Wait.ForPickup("Frostval Barbarian");
         if (rankUpClass)
             Farm.rankUpClass("Frostval Barbarian");
     }
