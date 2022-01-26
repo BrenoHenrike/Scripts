@@ -162,9 +162,9 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant} Souls of Heresy");
         while (!Core.CheckInventory("Souls of Heresy", quant))
         {
-            Core.EnsureAccept(7980, 7981);
+            Core.EnsureAccept(7979, 7980, 7981);
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
-            Core.EnsureComplete(6251);
+            Core.EnsureComplete(7979);
             while (Bot.Inventory.ContainsTempItem("War Medal", 5))
                 Core.EnsureComplete(7980);
             while (Bot.Inventory.ContainsTempItem("Mega War Medal", 3))
@@ -190,7 +190,8 @@ public class HeadoftheLegionBeast
             EssenceViolence(1);
             EssenceTreachery(1);
             SoulsHeresy(15);
-            Core.BuyItem("sevencircleswar", 1984, "Penance");
+            Core.Join("sevencircleswar", "Wait", "Enter");
+            Bot.Shops.BuyItem(1984, "Penance");
             i++;
             Core.Logger($"Completed x{i}");
         }
