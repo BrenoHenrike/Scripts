@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+
 using RBot;
 
 public class SevenCircles
