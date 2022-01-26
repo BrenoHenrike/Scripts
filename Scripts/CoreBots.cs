@@ -778,6 +778,8 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
+        if (!isTemp && item != null)
+            AddDrop(item);
         Join(map, publicRoom: publicRoom);
         Jump(cell, pad);
         if (item == null)
@@ -806,6 +808,8 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
+        if (!isTemp && item != null)
+            AddDrop(item);
         Join(map, publicRoom: publicRoom);
         Bot.Wait.ForMapLoad(map);
         Jump(cell, pad);
@@ -833,6 +837,8 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
+        if (!isTemp && item != null)
+            AddDrop(item);
         Join(map, publicRoom: publicRoom);
         Bot.Wait.ForMapLoad(map);
         if (item == null)
@@ -856,6 +862,8 @@ public class CoreBots
     {
         if (item != null && CheckInventory(item, quant))
             return;
+        if (!isTemp && item != null)
+            AddDrop(item);
         Join("escherion", publicRoom: publicRoom);
         Jump("Boss", "Left");
         if (item == null)
@@ -872,8 +880,6 @@ public class CoreBots
         else
         {
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
-            if (!isTemp)
-                AddDrop(item);
             while(!CheckInventory(item, quant))
             {
                 if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
@@ -1122,7 +1128,6 @@ public class CoreBots
             Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
             if (!tempItem && !CheckInventory(item))
             {
-                AddDrop(item);
                 Bot.Sleep(ActionDelay);
                 if (rejectElse)
                     Bot.Player.RejectExcept(item);
