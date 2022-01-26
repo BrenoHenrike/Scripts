@@ -27,7 +27,7 @@ public class DrakathArmorBot
 
     public void DrakathArmor()
     {
-		if (Core.CheckInventory("Drakath Armor"))
+        if (Core.CheckInventory("Drakath Armor"))
             return;
         Core.Logger("Attempting Purchase, will check if shop is unlocked. Next message may be incorrect.");
         Core.BuyItem("battleon", 994, "Drakath Armor");
@@ -40,15 +40,15 @@ public class DrakathArmorBot
 
     public void DrakathOriginalArmor()
     {
-		if (Core.CheckInventory("Drakath Original Armor"))
+        if (Core.CheckInventory("Original Drakath Armor"))
             return;
         Core.Logger("Attempting Purchase, will check if shop is unlocked. Next message may be incorrect.");
-        Core.BuyItem("battleon", 994, "Drakath Original Armor");
+        Core.BuyItem("battleon", 994, "Original Drakath Armor");
         Bot.Sleep(Core.ActionDelay);
-        if (Core.CheckInventory("Drakath Original Armor"))
+        if (Core.CheckInventory("Original Drakath Armor"))
             return;
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Drakath Original Armor");
+        Core.BuyItem("battleon", 994, "Original Drakath Armor");
     }
 
     public void DrakathArmorQuest()
