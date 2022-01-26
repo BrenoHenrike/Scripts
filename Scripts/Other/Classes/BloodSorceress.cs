@@ -20,7 +20,10 @@ public class BloodSorceress
 
     public void GetBSorc(bool rankUpClass = true)
     {
-        Core.HuntMonster("towerofmirrors", "Scarletta", "Blood Sorceress");
+        if (Core.CheckInventory("Blood Sorceress"))
+            return;
+        
+        Core.HuntMonster("towerofmirrors", "Scarletta", "Blood Sorceress", isTemp: false);
         if (rankUpClass)
             Farm.rankUpClass("Blood Sorceress");
     }
