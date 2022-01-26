@@ -105,6 +105,7 @@ public class CoreBots
                 }
             }, "Skip Cutscenes");
 
+            JumpWait();
             Bot.RegisterHandler(1000, b =>
             {
                 if (b.Player.AFK)
