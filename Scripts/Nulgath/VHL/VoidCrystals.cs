@@ -45,7 +45,5 @@ public class VoidCrystals
         Nulgath.FarmTotemofNulgath(15);
 
         Nulgath.SwindleBulk(200);
-
-        Core.SetOptions(false);
     }
 }

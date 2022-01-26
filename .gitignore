@@ -9,3 +9,22 @@ Properties
 Test.cs
 Standalone
 Rbot-Scripts
+Script.cs
+docs
+Snippets
+*.md
+.gitignore
+.gitattributes
+Plugins
+roslyn
+WIP
+RBot_3.6.3.2
+*.txt
+*.xml
+*.swf
+*.exe
+*.dll
+*.cfg
+*.rar
+*.zip
+Projects W.I.P
