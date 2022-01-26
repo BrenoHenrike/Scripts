@@ -312,7 +312,7 @@ public class Frostval
         Core.KillQuest(6131, "coldwindvalley", "Arctusk");
 
         // Holly and Ice
-        Core.KillQuest(6132, "coldwindvalley", "Snow Golem");
+        Core.KillQuest(6132, "coldwindvalley", "Snow Golem", hasFollowup: false);
         Core.MapItemQuest(6132, "coldwindvalley", 5557, 8, hasFollowup: false);
     }
 
