@@ -1,7 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 using RBot;
-using RBot.Options;
-using System.Collections.Generic;
 
 public class Frostval
 {
