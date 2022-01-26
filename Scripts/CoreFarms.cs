@@ -364,7 +364,7 @@ public class CoreFarms
             HollowbornREP();
             //HorcREP();
             //InfernalArmyREP();
-            //LoremasterREP();
+            LoremasterREP();
             LycanREP();
             //MonsterHunterREP();
             MysteriousDungeonREP();
@@ -957,6 +957,45 @@ public class CoreFarms
                 Core.EnsureComplete(371);
             }
             Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void LoremasterREP(int rank = 10)
+    {
+        if (FactionRank("Loremaster") >= rank)
+            return;
+
+        Experience(15);
+        Core.Logger($"Farming rank {rank}");
+        while (FactionRank("Loremaster") < rank)
+        {
+            if (Core.IsMember ? FactionRank("Loremaster") < 3 : FactionRank("Loremaster") < rank)
+            {
+                Core.EquipClass(ClassType.Farm);
+                while (Core.IsMember ? FactionRank("Loremaster") < 3 : FactionRank("Loremaster") < rank)
+                {
+                    Core.EnsureAccept(7505);
+                    Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4);
+                    Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", 1);
+                    Core.EnsureComplete(7505);
+                }
+            }
+            else if (Core.IsMember && FactionRank("Loremaster") >= 3)
+            {
+                Core.EquipClass(ClassType.Solo);
+                if (!Bot.Quests.IsUnlocked(3032))
+                {
+                    Core.KillQuest(3029, "druids", "Void Bear|Void Elemental|Void Ghast|Void Larva", false);
+                    Core.KillQuest(3030, "druids", "Void Larva", false);
+                    Core.KillQuest(3031, "druids", "Void Ghast", false);
+                }
+                while (FactionRank("Loremaster") < rank)
+                {
+                    Core.EnsureAccept(3032);
+                    Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", 1);
+                    Core.EnsureComplete(3032);
+                }
+            }
         }
     }
 
