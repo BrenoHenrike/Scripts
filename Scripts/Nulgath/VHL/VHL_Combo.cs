@@ -34,7 +34,7 @@ public class Void_Highlord_AIO
         Bot.Player.LoadBank();
 
         if (Core.CheckInventory("Void Highlord"))
-        { Core.SetOptions(false); }
+        return;
 
         Core.Logger("Level Check");
         Farm.Experience(80);
