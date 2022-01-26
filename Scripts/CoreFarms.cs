@@ -761,7 +761,9 @@ public class CoreFarms
         int i = 1;
         while (FactionRank("Diabolical") < rank)
         {
-            Core.SmartKillMonster(7877, "mudluk", "Tiger Leech", completeQuest: true);
+            Core.EnsureAccept(7877);
+            Core.HuntMonster("mudluk", "Tiger Leech", "Swamped Leech Tooth");
+            Core.EnsureComplete(7877);
             Core.Logger($"Completed x{i++}");
         }
     }
