@@ -1,5 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/Story/SevenCircles.cs
+//cs_include Scripts/Story/SevenCirclesWar.cs
 using RBot;
 
 public class HeadoftheLegionBeast
@@ -8,11 +10,15 @@ public class HeadoftheLegionBeast
 
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new CoreLegion();
+    public SevenCirclesWar War = new SevenCirclesWar();
+    public SevenCircles Circles = new SevenCircles();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
+        Circles.Storyline();
+        War.StoryLine();   
         LegionBeastHead();
 
         Core.SetOptions(false);
