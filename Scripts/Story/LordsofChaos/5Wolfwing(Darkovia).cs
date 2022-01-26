@@ -35,8 +35,14 @@ public class SagaDarkovia
         //Map: GreenguardEast/West
         if (!Core.CheckInventory("Red's Big Wolf Slaying Axe") && !Bot.Quests.IsUnlocked(516))          // Can I axe you something?
         {
-            Core.KillQuest(515, "greenguardeast", new[] {"Wolf", "Spider"});
-            Core.KillQuest(515, "greenguardwest", new[] {"Frogzard", "Slime", "Big Bad Boar"});
+            Core.AddDrop("Red's Big Wolf Slaying Axe");
+            Core.EnsureAccept(515);
+            Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
+            Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
+            Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
+            Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
+            Core.EnsureComplete(515);
         }
         //Map: DarkoviaForest
         if (!Core.QuestProgression(514, GetReward: false, FollowupIDOverwrite: 516))                    // Lil' Red
