@@ -462,7 +462,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
                 Core.KillEscherion("Relic of Chaos");
                 Core.EnsureComplete(2857);
                 Bot.Player.Pickup(item);
-                if (item != "Voucher of Nulgath" && sellMemVoucher)
+                if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
                 {
                     Bot.Player.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath");
@@ -588,7 +588,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
                 }
             }
             Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
-            if (item != "Voucher of Nulgath" && sellMemVoucher)
+            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath");
         }
     }
