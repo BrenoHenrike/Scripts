@@ -25,7 +25,7 @@ public class SevenCircles
         Core.KillQuest(7969, "sevencircles", "Luxuria Guard");
 
         //Gone With the Wind
-        Core.KillQuest(7970, "sevencircles", new[] { "Limbo Guard|Luxuria Guard", "Limbo Guard", "Luxuria Guard" });
+        Core.KillQuest(7970, "sevencircles", new[] { "Limbo Guard|Luxuria Guard", "Luxuria Guard", "Limbo Guard" });
 
         //Lest Ye Be Destroyed
         Core.KillQuest(7971, "sevencircles", "Luxuria");
