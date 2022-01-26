@@ -17,8 +17,6 @@ public class HeadoftheLegionBeast
     {
         Core.SetOptions();
 
-        Circles.Storyline();
-        War.StoryLine();   
         LegionBeastHead();
 
         Core.SetOptions(false);
@@ -46,6 +44,9 @@ public class HeadoftheLegionBeast
     {
         if (Core.CheckInventory("Head of the Legion Beast"))
             return;
+
+        Circles.Storyline();
+        War.StoryLine();
 
         Core.AddDrop(HeadLegionBeast);
         HelmSevenCircles();
