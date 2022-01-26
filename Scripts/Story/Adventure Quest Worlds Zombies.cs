@@ -31,7 +31,7 @@ public class AQWZombies
 
     public void AdventureQuestWorldsZombiesQuestline()
     {
-        Core.Logger("AQW Zombies Questline;")
+        Core.Logger("AQW Zombies Questline");
         Core.Logger("------------------------------");
         Core.Logger(" Doom Haven Questline");
         Core.Logger("------------------------------");
@@ -72,8 +72,8 @@ public class AQWZombies
         //Talk to The Knights-
         //-Convince the Knights x5
         //-Talk to the knights in the castle
-        bot.SendPacket($"InsertPacket");
-        EnsureComplete(2096);
+        Bot.SendPacket($"InsertPacket");
+        Core.EnsureComplete(2096);
 
         Core.Logger("Defend the Throne Room;");
         //Defend the Throne Room-
