@@ -735,7 +735,7 @@ public class CoreFarms
         }
     }
     
-    public void CraggleRock(int rank = 10)
+    public void CraggleRockREP(int rank = 10)
     {
         if (FactionRank("CraggleRock") >= rank)
             return;
