@@ -19,16 +19,6 @@ public class SagaHorc
 
 	public void CompleteSaga()
 	{
-		Core.Logger("Saga Complete Check");
-		Core.BuyItem("bloodtusk", 308, "Elite Phoenix Bow");
-        if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
-        {
-            Bot.Sleep(700);
-            Core.ToBank("Elite Phoenix Bow");
-            Core.Logger("Chapter: \"Chaos Lord Khasaanda\" already complete. Skipping");
-        	Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-            return;
-        }
 		Core.Logger("Part 1");
 		Part1();
 		Core.Logger("Part 2");
@@ -53,22 +43,22 @@ public class SagaHorc
             return;
 
         //Troll Stink!
-        Core.MapItemQuest(1232, "bloodtusk", 523);
-        Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
         Core.KillQuest(1232, "crossroads", "Chinchilizard");
+        Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
+        Core.MapItemQuest(1232, "bloodtusk", 523);
 
         //It Not Time Yet
         Core.KillQuest(1233, "crossroads", new[] { "Lemurphant", "Koalion" });
 
         //Mountain Protection
-        Core.MapItemQuest(1234, "crossroads", 525);
+        Core.KillQuest(1234, "bloodtusk", "Rock");
         Core.KillQuest(1234, "crossroads", new[] { "Chinchilizard", "Lemurphant" });
-        Core.KillQuest(1234, "bloodtusk", "Crystal-Rock");
+        Core.MapItemQuest(1234, "crossroads", 525);
 
         //Clear Mind, Cleanse Spirit
-        Core.MapItemQuest(1235, "crossroads", 521, 10);
+        Core.KillQuest(1235, "bloodtusk", "Trollola Plant"); 
         Core.KillQuest(1235, "crossroads", new[] { "Lemurphant", "Koalion" });
-        Core.KillQuest(1235, "bloodtusk", "Trollola Plant");
+        Core.MapItemQuest(1235, "crossroads", 521, 10);
 
         //She Who Answers 1
         Core.EnsureAccept(1236);
@@ -78,10 +68,10 @@ public class SagaHorc
         Bot.Sleep(2000);
 
         //Be Horc Inside
-        Core.MapItemQuest(1237, "crossroads", 524, 10);
-        Core.MapItemQuest(1237, "mapname", 522, 5);
         Core.KillQuest(1237, "crossroads", new[] { "Lemurphant", "Koalion" });
         Core.KillQuest(1237, "bloodtusk", "Rock");
+        Core.MapItemQuest(1237, "crossroads", 524, 10);
+        Core.MapItemQuest(1237, "mapname", 522, 5);
 
         //She Who Answers 2 - cutscene
         Core.EnsureAccept(1241);
@@ -114,8 +104,8 @@ public class SagaHorc
         Core.KillQuest(1282, "ravinetemple", "*");
 
         //Defend the UnderMountain
-        Core.MapItemQuest(1283, "ravinetemple", 557, 10);
         Core.KillQuest(1283, "ravinetemple", "*");
+        Core.MapItemQuest(1283, "ravinetemple", 557, 10);
 
         //Alliance Defiance
         Core.KillQuest(1284, "ravinetemple", "*");
@@ -150,8 +140,8 @@ public class SagaHorc
         Core.KillQuest(1424, "ancienttemple", "Chaotic Vulture");
 
         //Chaorruption Cure?
-        Core.MapItemQuest(1425, "ancienttemple", 706, 7);
         Core.KillQuest(1425, "ancienttemple", "Chaotic Vulture");
+        Core.MapItemQuest(1425, "ancienttemple", 706, 7);
 
         //Guardian Salvation
         Core.KillQuest(1426, "ancienttemple", "Chaos Troll Spirit");
@@ -174,8 +164,8 @@ public class SagaHorc
         Core.MapItemQuest(1456, "orecavern", 717);
 
         //Light in Underhome
-        Core.MapItemQuest(1457, "orecavern", 719, 5);
         Core.KillQuest(1457, "orecavern", "Crashroom");
+        Core.MapItemQuest(1457, "orecavern", 719, 5);
 
         //Truth is its Own Light
         Core.MapItemQuest(1458, "orecavern", 718, 5);

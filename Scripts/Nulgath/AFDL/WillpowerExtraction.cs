@@ -37,27 +37,29 @@ public class WillpowerExtraction
 
 			if (!Core.CheckInventory("Shadow Lich"))
 			{
+				Farm.EvilREP();
 				if (Bot.Player.Gold < 50000)
 					Farm.BattleGroundE(60000);
 				Core.BuyItem("shadowfall", 89, "Shadow Lich");
 			}
 
 			if (!Core.CheckInventory("Mystic Tribal Sword"))
+				Farm.ArcangroveREP();
 				Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
 			Nulgath.Supplies("Unidentified 19");
 			Core.EquipClass(ClassType.Farm);
 			if (!Core.CheckInventory("Necrot", 5))
-				Core.KillMonster("deathsrealm", "Frame2", "Left", "Skeleton Fighter", "Necrot", 5, false);
+				Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
 
 			if (!Core.CheckInventory("Chaoroot", 5))
-				Core.KillMonster("hydra", "Boss", "Left", "Hydra Head", "Chaoroot", 5, false);
+				Core.HuntMonster("hydra", "Hydra Head", "Chaoroot", 5, false);
 			Core.EquipClass(ClassType.Solo);
 			if (!Core.CheckInventory("Doomatter", 5))
-				Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Doomatter", 5, false);
+				Core.HuntMonster("maul", "Creature Creation", "Doomatter", 5, false);
 
 			if (!Core.CheckInventory("King Klunk's Crown"))
-				Core.KillMonster("evilwarnul", "r15", "Left", "Laken", "King Klunk's Crown", 1, false);
+				Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
 
 			Nulgath.ApprovalAndFavor(0, 90);
 
