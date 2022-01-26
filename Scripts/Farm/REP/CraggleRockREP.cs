@@ -13,7 +13,7 @@ public class CraggleRockREP
 
 		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-		Farm.CraggleRock();
+		Farm.CraggleRockREP();
 
 		Core.SetOptions(false);
 	}
