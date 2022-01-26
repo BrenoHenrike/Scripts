@@ -79,8 +79,8 @@ public class Frostval
         // Find Page 5
         Core.KillQuest(460, "northlandlight", "Santy Claws");
 
-        // Find Page 6
-        Core.MapItemQuest(461, "battleontown", 87);
+        // Find Page 6v
+        Core.MapItemQuest(461, "battleontown", 87, hasFollowup: false);
         Core.KillQuest(461, "icecave", "Frozen Moglin", hasFollowup: false);
 
         // Spirit Abducted 
