@@ -12,7 +12,7 @@ public class SevenCirclesWar
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Dailys = new CoreDailys();
 
-    new string[] War = { "Essence of Treachery", "Essence of Violence", "Souls of Heresy", "Essence of Wrath" };
+    string[] War = { "Essence of Treachery", "Essence of Violence", "Souls of Heresy", "Essence of Wrath" };
 
     public void ScriptMain(ScriptInterface bot)
     {
