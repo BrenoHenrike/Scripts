@@ -120,9 +120,8 @@ public class Frostval
 
     public void Alpine()
     {
-        if (Bot.Quests.IsUnlocked(2522))
+        if (Bot.Quests.IsUnlocked(1521))
             return;
-
 
         // Snow Way to Know Where to Go
         Core.MapItemQuest(1508, "alpine", 758);
@@ -269,7 +268,7 @@ public class Frostval
 
     public void ColdWindValley()
     {
-        if (Bot.Quests.IsUnlocked(3907))
+        if (Bot.Quests.IsUnlocked(6132))
             return;
 
         // Help Blizzy
@@ -282,7 +281,7 @@ public class Frostval
         Core.KillQuest(6123, "coldwindvalley", "Hail Elemental");
 
         // Arm the Mob
-        Core.KillQuest(6124, "coldwindvalley", "Scarecrow");
+        Core.KillQuest(6124, "farm", "Scarecrow");
         Core.MapItemQuest(6124, "coldwindvalley", 5551, 5);
 
         // Gather Bait
@@ -307,6 +306,7 @@ public class Frostval
         Core.MapItemQuest(6130, "coldwindvalley", 5555);
 
         // Check out the Cave
+        Core.MapItemQuest(6131, "coldwindvalley", 5556);
         Core.KillQuest(6131, "coldwindvalley", "Arctusk");
 
         // Holly and Ice
