@@ -1110,7 +1110,6 @@ public class CoreBots
             Bot.Player.Kill(name);
             if (!tempItem && !CheckInventory(item))
             {
-                AddDrop(item);
                 Bot.Sleep(ActionDelay);
                 if (rejectElse)
                     Bot.Player.RejectExcept(item);
