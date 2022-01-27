@@ -10,6 +10,7 @@ public class Frostvale
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         DoAll();
 
         Core.SetOptions(false);
@@ -249,7 +250,7 @@ public class Frostvale
         Core.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" }, hasFollowup: false);
     }
 
-    public void IceRise() 
+    public void IceRise()
     {
         // A Little Warmth and Light
         Core.MapItemQuest(2576, "icerise", 1592, 5);
