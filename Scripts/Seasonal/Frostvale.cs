@@ -252,6 +252,9 @@ public class Frostvale
 
     public void IceRise()
     {
+        if (Bot.Quests.IsUnlocked(2582))
+            return;
+            
         // A Little Warmth and Light
         Core.MapItemQuest(2576, "icerise", 1592, 5);
 
