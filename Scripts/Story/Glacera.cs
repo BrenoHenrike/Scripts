@@ -71,8 +71,7 @@ public class GlaceraStory
         Core.MapItemQuest(3919, "frozentower", 3008, 6);
 
         // Save the Astronomer Apprentice
-        Core.KillQuest(3920, "frozentower", new[] { "Polar Elemental", "Ice Wolf" } );
-        Core.KillQuest(3920, "frozentower", "Ice Wolf");
+        Core.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" } );
         Core.MapItemQuest(3920, "frozentower", 3020); 
         
         // Glacial Elixir

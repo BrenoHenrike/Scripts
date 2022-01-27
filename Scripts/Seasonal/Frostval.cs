@@ -82,7 +82,7 @@ public class Frostval
         Core.KillQuest(461, "icecave", "Frozen Moglin", hasFollowup: false);
 
         // Spirit Abducted 
-        Core.Join("frostval");
+        Core.Join("frostvale");
         Core.ChainComplete(905);
     }
 
@@ -159,6 +159,7 @@ public class Frostval
     {
         if (Bot.Quests.IsUnlocked(2576))
             return;
+        Core.AddDrop("Ray of Hope", "Sands of Time");
 
         // Locate Kezeroth
         Core.MapItemQuest(2522, "snowyvale", 1584);
@@ -170,10 +171,16 @@ public class Frostval
         Core.MapItemQuest(2524, "snowyvale", 1585, 6);
 
         // Temporal Revelation
-        Core.MapItemQuest(2525, "snowyvale", 1586);
+        Core.MapItemQuest(2525, "snowyvale", 1586, hasFollowup: false);
 
-        // Before the Darkest Hour
-        Core.MapItemQuest(2526, "frostdeep", 1587);
+        // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
+        if (!Bot.Quests.IsUnlocked(2527))
+        {
+            Core.EnsureAccept(2526);
+            Core.Join("frostdeep", "Enter", "Spawn");
+            Bot.Sleep(2500);
+            Core.EnsureComplete(2526);
+        }
 
         // Heart of Ice
         Core.KillQuest(2527, "frostdeep", MonsterNames: new[] { "Polar Golem", "Polar Elemental" });
@@ -202,8 +209,11 @@ public class Frostval
         // Icy Prizes
         Core.KillQuest(2535, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
 
-        // Fading Magic
-        Core.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        // Fading Magic - may bug out as its 2 items from 1 mob if the delay doesnt work idfk, doesnt work as a string[] as it gets the sand drop 
+        Core.KillQuest(2536, "frostdeep", "Ancient Golem");
+        Bot.Sleep(2500);
+        Core.KillQuest(2536, "frostdeep", "Ancient Golem");
+        //Core.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
 
         // FrostDeep Dwellers
         Core.KillQuest(2537, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
@@ -239,11 +249,8 @@ public class Frostval
         Core.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" }, hasFollowup: false);
     }
 
-    public void IceRise()
+    public void IceRise() 
     {
-        if (Bot.Quests.IsUnlocked(6122))
-            return;
-
         // A Little Warmth and Light
         Core.MapItemQuest(2576, "icerise", 1592, 5);
 
@@ -314,9 +321,9 @@ public class Frostval
         Core.MapItemQuest(6132, "coldwindvalley", 5557, 8, hasFollowup: false);
     }
 
-        // --------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------------------
 
-        // The rest of the Frostval quests are not necessary for Frostval Barbaria. Can skip and farm Frozen Orb directly using jump.
+    // The rest of the Frostval quests are not necessary for Frostval Barbaria. Can skip and farm Frozen Orb directly using jump.
 
-        // --------------------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------------------
 }

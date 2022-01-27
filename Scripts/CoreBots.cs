@@ -19,7 +19,7 @@ public class CoreBots
     // [Can Change] Delay between jumping rooms after hunting a monster, increase if you think it is jumping too much
     public int HuntDelay { get; set; } = 1000;
     // [Can Change] How many tries to accept/complete the quest will be sent
-    public int AcceptandCompleteTries { get; set; } = 20;
+    public int AcceptandCompleteTries { get; set; } = 5;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
