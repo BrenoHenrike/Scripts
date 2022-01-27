@@ -68,8 +68,8 @@ public class CitadelRuins
         Core.KillQuest(QuestID: 585, MapName: "Tercessuinotlim", MonsterName: "Legion Fenrir", FollowupIDOverwrite: 668);
 
         //purified claw
-        Nulgath.Supplies(item: "Tainted Gem", 7); 
-        Nulgath.Supplies(item: "Claw of Nulgath");
+        Nulgath.Supplies("Tainted Gem", 7); 
+        Nulgath.Supplies("Claw of Nulgath");
         Core.KillQuest(QuestID: 668, MapName: "Tercessuinotlim", MonsterName: "Dark Makai", hasFollowup: false);
     }
 
