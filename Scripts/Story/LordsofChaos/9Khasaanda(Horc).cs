@@ -43,9 +43,16 @@ public class SagaHorc
             return;
 
         //Troll Stink!
-        Core.KillQuest(1232, "crossroads", "Chinchilizard");
-        Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
-        Core.MapItemQuest(1232, "bloodtusk", 523);
+        Core.EnsureAccept(1232);
+        Core.Join("crossroads");
+        Core.HuntMonster("crossroads", "Chinchilizard", "Scaley Skin Scrub", 7);
+        Core.Join("bloodtusk");
+        Bot.Map.GetMapItem(523);
+        Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
+        Core.EnsureComplete(1232);
+        // Core.KillQuest(1232, "crossroads", "Chinchilizard");
+        // Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
+        // Core.MapItemQuest(1232, "bloodtusk", 523);
 
         //It Not Time Yet
         Core.KillQuest(1233, "crossroads", new[] { "Lemurphant", "Koalion" });
