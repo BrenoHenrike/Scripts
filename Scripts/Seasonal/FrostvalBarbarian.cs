@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Seasonal/Frostval.cs
+//cs_include Scripts/Seasonal/Frostvale.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/CoreDailys.cs
 using RBot;
@@ -11,7 +11,7 @@ public class FrostvalBarbarian
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public Frostval Frostval = new Frostval();
+    public Frostvale Frostvale = new Frostvale();
     public GlaceraStory Glacera = new GlaceraStory();
     public CoreDailys Daily = new CoreDailys();
 
@@ -29,7 +29,7 @@ public class FrostvalBarbarian
         if (Core.CheckInventory("Frostval Barbarian"))
             return;
 
-        Frostval.DoAll();
+        Frostvale.DoAll();
         Glacera.DoAll();
 
         if (!Core.CheckInventory("Infernal Ice Heart") && !Core.CheckInventory("Crypto Token", 5))

@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 using RBot;
 
-public class Frostval
+public class Frostvale
 {
     public CoreBots Core => CoreBots.Instance;
     public ScriptInterface Bot => ScriptInterface.Instance;
