@@ -1015,7 +1015,7 @@ public class CoreFarms
         while (FactionRank("Lycan") < rank)
         {
             Core.EnsureAccept(537);
-            Core.HuntMonster("sanguine", "Sanguine", "Sanguine Mask");
+            Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask");
             Core.EnsureComplete(537);
             Core.Logger($"Completed x{i++}");
         }
