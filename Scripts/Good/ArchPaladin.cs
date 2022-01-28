@@ -90,7 +90,7 @@ public class ArchPaladin
                 Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("thirdspell", "Mana Phoenix", "Nightmare Kibble", 200, false);
-                Core.HuntMonster("thunderfang.", "Lightning Ball", "Condensed Energy", isTemp: false);
+                Core.HuntMonster("thunderfang", "Lightning Ball", "Condensed Energy", isTemp: false);
                 Core.KillMonster("downward", "r11", "Right", "Crystal Mana Construct", "Crystallised Mana Catalyst", isTemp: false);
                 Core.HuntMonster("farm", "Treeant", "Just the Perfect Stick", isTemp: false);
             }
