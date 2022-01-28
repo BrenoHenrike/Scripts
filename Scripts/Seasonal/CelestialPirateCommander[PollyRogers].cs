@@ -43,6 +43,7 @@ public class CelestialPirateCommander
         while (!Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(7713);
+            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 5, false, publicRoom: true);
             Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Rumors of the Celestial Commander", 5, false, publicRoom: true);
             Core.HuntMonster("iceplane", "Animus of Ice", "Starlit Journal Page 1 Scraps", 10, false);
             Core.HuntMonster("ivoliss", "Ivoliss", "Starlit Journal Page 2 Scraps", 10, false, publicRoom: true);
