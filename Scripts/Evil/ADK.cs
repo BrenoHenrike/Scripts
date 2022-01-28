@@ -134,7 +134,7 @@ public class ArchDoomKnight
         Core.HuntMonster(map: "dreamnexus", monster: "Khasaanda", item: "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster(map: "stormtemple", monster: "Chaos Lord Lionfang", item: "Chaos Lionfang Armor", isTemp: false);
         Core.HuntMonster(map: "swordhavenfalls", monster: "Chaos Lord Alteon", item: "Shorn Chaos King Crown", isTemp: false, publicRoom: true);
-        Core.HuntMonster(map: "mirrorportal", monster: "Xiang", item: "Xiang Chaos", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "mirrorportal", monster: "Chaos Lord Xiang", item: "Xiang Chaos", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "ultradrakath", monster: "Champion of Chaos", item: "Drakath's Sword", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "timespace", monster: "Chaos Lord Iadoa", item: "Chaorrupted Hourglass", isTemp: false);
         Core.EnsureComplete(6797);
