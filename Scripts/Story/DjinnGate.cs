@@ -97,5 +97,6 @@ public class DjinnGateStory
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(6161);
         Core.KillMonster("djinngate", "r5", "Left", "*", "Gedoz the Malignant Defeated");
+        Core.EnsureComplete(6161);
     }
 }
