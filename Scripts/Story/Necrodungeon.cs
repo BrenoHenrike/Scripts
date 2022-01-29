@@ -25,6 +25,9 @@ public class NecroDungeon
 
     public void NecrodungeonStoryLine()
     {
+        if (Bot.Quests.IsUnlocked(2061))
+        return;
+
         //descent into darkness - 2044
         Core.KillQuest(QuestID: 2044, MapName: "necrodungeon", MonsterName: "Bellhop");
         //retrieve the past, room 1 - 2045
@@ -73,13 +76,16 @@ public class NecroDungeon
         Core.MapItemQuest(QuestID: 2059, MapName: "necrodungeon", MapItemID: 1019, Amount: 5);
         Core.MapItemQuest(QuestID: 2059, MapName: "necrodungeon", MapItemID: 1013);
         //five times the fury - 2060
-        Core.EnsureAccept(2060);
-        Core.KillMonster("necrodungeon", "r22", "Down", 889);
-        Core.KillMonster("necrodungeon", "r22", "Down", 890);
-        Core.KillMonster("necrodungeon", "r22", "Down", 891);
-        Core.KillMonster("necrodungeon", "r22", "Down", 892);
-        Core.KillMonster("necrodungeon", "r22", "Down", 893);
-        Core.EnsureComplete(2060);
+        if (!Bot.Quests.IsUnlocked(2061))
+        {
+            Core.EnsureAccept(2060);
+            Core.KillMonster("necrodungeon", "r22", "Down", 889);
+            Core.KillMonster("necrodungeon", "r22", "Down", 890);
+            Core.KillMonster("necrodungeon", "r22", "Down", 891);
+            Core.KillMonster("necrodungeon", "r22", "Down", 892);
+            Core.KillMonster("necrodungeon", "r22", "Down", 893);
+            Core.EnsureComplete(2060);
+        }
         //the past will haunt you - 2061
         Core.MapItemQuest(QuestID: 2061, MapName: "necrodungeon", MapItemID: 1020, hasFollowup: false);
     }
