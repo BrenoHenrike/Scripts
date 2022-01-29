@@ -57,10 +57,3 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
         Core.EnsureComplete(8497);
     }
 }
-
-"Cr1tikal Meme Poster",
-"2D Moistverse House",
-"GIANT Mushroom Guard (R)",
-"GIANT Mushroom Guard (L)",
-"Major Mushroom Guard (L)",
-"Major Mushroom Guard (R)",
