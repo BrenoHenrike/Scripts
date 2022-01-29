@@ -3,7 +3,7 @@
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 using RBot;
 
-public class test2
+public class EvolvedOrb
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreNulgath Nulgath = new CoreNulgath();
@@ -35,7 +35,6 @@ public class test2
         Nulgath.FarmTotemofNulgath(10);
         Nulgath.FarmDiamondofNulgath(30);
         Core.BuyItem("archportal", 1211, "Evolved Blood Orb");
-        Core.Logger($"Buy Evolved Blood Orb");
     }
     public void EvolvedHexOrb()
     {
@@ -48,11 +47,10 @@ public class test2
         Nulgath.FarmDarkCrystalShard(30);
         Nulgath.Supplies("Tainted Gem", 30);
         Core.BuyItem("archportal", 1211, "Evolved Hex Orb");
-        Core.Logger($"Buy Evolved Hex Orb");
     }
     public void EvolvedShadowOrb()
     {
-        if(Core.IsMember == false)
+        if(!Core.IsMember)
             return;
         else if(Core.CheckInventory("Evolved Shadow Orb"))
             return;
@@ -63,6 +61,5 @@ public class test2
         Nulgath.FarmTotemofNulgath(10);
         Nulgath.FarmGemofNulgath(20);
         Core.BuyItem("archportal", 1211, "Evolved Shadow Orb");
-        Core.Logger($"Buy Evolved Shadow Orb");
     }
 }
