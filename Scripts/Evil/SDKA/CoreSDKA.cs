@@ -234,8 +234,8 @@ public class CoreSDKA
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cornelis", "Stone Golem", "Stone Hammer", 1, false);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil");
-            Core.HuntMonster("vordredboss", "Shadow Vordred", "Shadow Lacquer Finish");
+            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom : true);
+            Core.HuntMonster("vordredboss", "Shadow Vordred", "Shadow Lacquer Finish", publicRoom : true);
             Core.HuntMonster("anders", "Copper Sky Pirate", "Copper Awl");
             Core.HuntMonster("necrocavern", "Shadow Imp", "Shadowstone Sharpener");
 
@@ -263,8 +263,8 @@ public class CoreSDKA
             Core.EnsureAccept(2165);
 
             Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", 1, false);
-            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil");
-            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush");
+            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true);
+            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true);
             Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder");
             Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3);
             Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener");

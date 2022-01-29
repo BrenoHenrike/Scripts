@@ -180,7 +180,7 @@ public class CoreBLOD
             Core.EnsureAccept(2162);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil");
+            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom : true);
             Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
             Core.HuntMonster("faerie", "Cyclops Warlord", "Brass Awl");
             Core.HuntMonster("darkoviaforest", "Lich of the Stone", "Slate Stone Sharpener");
@@ -213,9 +213,9 @@ public class CoreBLOD
 
             Core.EquipClass(ClassType.Solo);
             Core.KillMonster("greendragon", "Boss", "Left", "Greenguard Dragon", "Greenguard Dragon Hide", 3);
-            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush");
+            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true);
             Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder");
-            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil");
+            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true);
             Core.KillMonster("citadel", "m14", "Left", "Grand Inquisitor", "Blinding Lacquer Finish");
             Core.HuntMonster("djinn", "Harpy", "Suede Travel Case");
             Core.KillMonster("roc", "Enter", "Spawn", "Rock Roc", "Sharp Stone Sharpener");

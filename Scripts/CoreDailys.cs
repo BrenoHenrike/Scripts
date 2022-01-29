@@ -62,16 +62,16 @@ public class CoreDailys
 	/// <param name="isTemp">Whether it is temporary</param>
 	/// <param name="cell">Cell where the monster is (optional)</param>
 	/// <param name="pad">Pad where the monster is</param>
-	public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = null)
+	public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = null, bool publicRoom = false)
 	{
 		if (Bot.Quests.IsDailyComplete(quest))
 			return;
 		Core.Join(map);
 		Core.EnsureAccept(quest);
 		if (cell != null || pad != null)
-			Core.KillMonster(map, cell, pad, monster, item, quant, isTemp);
+			Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, true, publicRoom);
 		else
-			Core.HuntMonster(map, monster, item, quant, isTemp);
+			Core.HuntMonster(map, monster, item, quant, isTemp, true, publicRoom);
 		Core.EnsureComplete(quest);
 		Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
 	}
