@@ -25,6 +25,9 @@ public class NecroDungeon
 
     public void NecrodungeonStoryLine()
     {
+        if (Bot.Quests.IsUnlocked(2061))
+        return;
+
         //descent into darkness - 2044
         Core.KillQuest(QuestID: 2044, MapName: "necrodungeon", MonsterName: "Bellhop");
         //retrieve the past, room 1 - 2045
