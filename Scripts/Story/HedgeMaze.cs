@@ -32,7 +32,7 @@ public class HedgeMaze
         Core.KillQuest(QuestID: 5300, MapName: "hedgemaze", MonsterName: "Knight's Reflection");
         Core.MapItemQuest(QuestID: 5301, MapName: "hedgemaze", MapItemID: 4680);
         Core.KillQuest(QuestID: 5302, MapName: "hedgemaze", MonsterName: "Hedge Goblin");
-        Core.MapItemQuest(QuestID: 5303, MapName: "hedgemaze", MapItemID: 4681);
+        Core.MapItemQuest(QuestID: 5303, MapName: "hedgemaze", MapItemID: 4681, Amount: 12);
         Core.KillQuest(QuestID: 5304, MapName: "hedgemaze", MonsterName: "Mirrored Shard");
         Core.MapItemQuest(QuestID: 5305, MapName: "hedgemaze", MapItemID: 4682);
         Core.KillQuest(QuestID: 5306, MapName: "hedgemaze", MonsterName: "Minotaur Prime");

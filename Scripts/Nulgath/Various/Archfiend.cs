@@ -34,10 +34,11 @@ public class ArchFiend
 
         if (!Core.CheckInventory("Abyssal Contract"))
         {
+            Core.AddDrop(Nulgath.bagDrops);
             Core.AddDrop("Pink Star Diamond of Nulgath", "Immortal Joe's Black Star", "Dirtlicker Demoted", "Abyssal Contract");
             Farm.Experience(50);
             Core.EnsureAccept(8476);
-            Nulgath.FarmUni13();
+            Nulgath.FarmUni13(3);
             Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
             Core.HuntMonster("mercutio", "Mercutio", "Immortal Joe's Black Star", 1, false);
             if (!Core.CheckInventory("Abyssal Star"))
@@ -57,7 +58,7 @@ public class ArchFiend
             if (!Core.CheckInventory("Blood Star of the Archfiend"))
             {
                 Nulgath.FarmBloodGem(20);
-                Nulgath.FarmTotemofNulgath(2);
+                Nulgath.FarmTotemofNulgath(8);
                 if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
                     NSOD.RetrieveVoidAuras(2);
                 else NSOD.VoidAuras(2);

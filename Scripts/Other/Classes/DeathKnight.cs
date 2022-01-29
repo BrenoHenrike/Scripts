@@ -25,7 +25,7 @@ public class DeathKnight
 
         Farm.DoomwoodREP();
 
-        Core.BuyItem("necropolis", 408, "DeathKnight");
+        Core.BuyItem("necropolis", 408, "DeathKnight", shopItemID: 8079);
 
         if (rankUpClass)
             Farm.rankUpClass("DeathKnight");
