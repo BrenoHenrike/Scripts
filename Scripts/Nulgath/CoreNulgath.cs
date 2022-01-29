@@ -418,7 +418,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         {
             Core.EnsureAccept(2566);
             if (!Core.CheckInventory("Mana Energy for Nulgath"))
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 10, false);
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 1, false);
             while (Bot.Inventory.Contains("Mana Energy for Nulgath"))
             {
                 Core.EnsureAccept(2566);
