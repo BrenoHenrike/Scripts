@@ -144,7 +144,12 @@ public class CoreHollowbornPaladin
 
         Core.AddDrop("Undead Skull", "Hollowborn Shadow of Fate");
         Core.EnsureAccept(7559);
-        Nulgath.TheAssistant("Unidentified 25");
+        if (!Core.CheckInventory("Unidentified 25"))
+        {
+            Farm.Gold(15000000);
+            Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
+            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+        }
         if (!Core.CheckInventory("Seal of Light") || !Core.CheckInventory("Seal of Darkness"))
             Daily.BrightKnightArmor(false);
         Core.EquipClass(ClassType.Farm);
