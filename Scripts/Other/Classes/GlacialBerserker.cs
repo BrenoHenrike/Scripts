@@ -23,7 +23,7 @@ public class GlacialBerserker
         if (Core.CheckInventory("Glacial Berserker"))
             return;
 
-        Farm.ArcangroveREP();
+        Farm.GlaceraREP();
 
         Core.BuyItem("icewindpass", 1339, "Glacial Berserker", 22266);
 
