@@ -162,7 +162,7 @@ public class VoidPaladin
 
 				Core.EnsureAccept(4439);
 
-				Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false);
+				Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false, publicRoom : true);
 				Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
 
 				Core.EnsureComplete(4439);
@@ -191,15 +191,15 @@ public class VoidPaladin
 				Core.KillMonster("timespace", "Frame1", "Left", "*", "Astral Ephemerite Essence", 20, false);
 
 				Core.EquipClass(ClassType.Solo);
-				Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence", 20, false);
-				Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", 20, false);
-				Core.HuntMonster("greenguardwest", "Black Knight", "Black Knight Essence", 20, false);
-				Core.HuntMonster("mudluk", "Tiger Leech", "Tiger Leech Essence", 20, false);
-				Core.HuntMonster("necrocavern", "Chaos Vordred", "Chaos Vordred Essence", 20, false);
-				Core.HuntMonster("hachiko", "Dai Tengu", "Dai Tengu Essence", 20, false);
-				Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", 20, false);
-				Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", 20, false);
-				Core.HuntMonster("maul", "Creature Creation", "Creature Creation Essence", 20, false);
+				Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("greenguardwest", "Black Knight", "Black Knight Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("mudluk", "Tiger Leech", "Tiger Leech Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("necrocavern", "Chaos Vordred", "Chaos Vordred Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("hachiko", "Dai Tengu", "Dai Tengu Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", 20, false, publicRoom : true);
+				Core.HuntMonster("maul", "Creature Creation", "Creature Creation Essence", 20, false, publicRoom : true);
 
 				Core.EnsureComplete(4432);
 

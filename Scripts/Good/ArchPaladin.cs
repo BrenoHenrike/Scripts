@@ -49,7 +49,7 @@ public class ArchPaladin
                 Farm.BattleUnderB("Undead Energy", 1000);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
-                Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle");
+                Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom : true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
 
                 string[] DOTClasses = {
@@ -77,7 +77,7 @@ public class ArchPaladin
                 Core.HuntMonster("doomkitten", "DoomKitten", "DoomKitten Claw", publicRoom: true);
 
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("vordredboss", "Vordred", "Vordred's Skull", isTemp: false);
+                Core.HuntMonster("vordredboss", "Vordred", "Vordred's Skull", isTemp: false, publicRoom : true);
                 Core.EnsureComplete(5464);
             }
             // Mastering the Arcane
@@ -86,8 +86,8 @@ public class ArchPaladin
                 Core.EnsureAccept(5465);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("xantown", "Xan", "Pyromancer Artifact", isTemp: false);
-                Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false);
-                Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
+                Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false, publicRoom: true);
+                Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("thirdspell", "Mana Phoenix", "Nightmare Kibble", 200, false);
                 Core.HuntMonster("thunderfang", "Lightning Ball", "Condensed Energy", isTemp: false);
@@ -125,7 +125,7 @@ public class ArchPaladin
                 Core.HuntMonster("bosschallenge", "Colossal Primarch", "Primarch's Hilt", isTemp: false, publicRoom: true);
                 Farm.Gold(500000);
                 Core.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
-                Core.HuntMonster("timevoid ", "Unending Avatar", "Condensed Mana", isTemp: false);
+                Core.HuntMonster("timevoid ", "Unending Avatar", "Condensed Mana", isTemp: false, publicRoom : true);
                 Core.EnsureComplete(Core.CheckInventory("Silver Paladin") ? 5478 : 5474);
             }
         }
@@ -135,7 +135,7 @@ public class ArchPaladin
         {
             Core.EnsureAccept(5467);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("brightfall", "Painadin Overlord", "Skill Observed", isTemp: false);
+            Core.HuntMonster("brightfall", "Painadin Overlord", "Skill Observed", isTemp: false, publicRoom : true);
             Core.HuntMonster("citadel", "Grant Inquisitor", "Spirit of Vindication", isTemp: false);
             Core.HuntMonster("alliance", "Good Lieutenant", "Radiant Blade Enhancement", isTemp: false);
             Core.EnsureComplete(5467);

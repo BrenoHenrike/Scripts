@@ -130,7 +130,7 @@ public class CoreNulgath
                     Bot.Player.Pickup("Strand of Vath's Hair");
             }
             Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
-            Core.KillEscherion("Escherion's Chain");
+            Core.KillEscherion("Escherion's Chain", publicRoom : true);
             if (!Core.CheckInventory("Defeated Makai", 50))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -139,7 +139,7 @@ public class CoreNulgath
                 Core.JumpWait();
             }
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain");
+            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom : true);
             Core.EnsureComplete(570);
             Bot.Wait.ForPickup("Dark Crystal Shard");
             Core.Logger($"Completed x{i++}");
@@ -474,7 +474,7 @@ public class CoreNulgath
             while (!Bot.Inventory.Contains(item, quant))
             {
                 Core.EnsureAccept(2857);
-                Core.KillEscherion("Relic of Chaos");
+                Core.KillEscherion("Relic of Chaos", publicRoom : true);
                 Core.EnsureComplete(2857);
                 Bot.Player.Pickup(item);
                 if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
@@ -663,7 +663,7 @@ public class CoreNulgath
         Core.CheckInventory("Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
-            Core.KillEscherion("Emerald Pickaxe");
+            Core.KillEscherion("Emerald Pickaxe", publicRoom : true);
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
             Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
@@ -672,7 +672,7 @@ public class CoreNulgath
         while (!Core.CheckInventory("Unidentified 10", quant))
         {
             Core.EnsureAccept(7818);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice");
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom : true);
             Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
             Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);
             Core.EnsureComplete(7818);

@@ -122,15 +122,15 @@ public class ArchDoomKnight
         Core.EnsureAccept(6797);
 
         Core.EquipClass(ClassType.Solo);
-        Core.KillEscherion(item: "Escherion's Helm", publicRoom: false);
-        Core.KillEscherion(item: "Chaotic Power", quant: 13, publicRoom: false);
+        Core.KillEscherion(item: "Escherion's Helm", publicRoom: true);
+        Core.KillEscherion(item: "Chaotic Power", quant: 13, publicRoom: true);
 
-        Core.HuntMonster(map: "Stalagbite", monster: "Vath|Stalagbite", item: "Legendary Sword of Dragon Control", isTemp: false);
-        Core.HuntMonster(map: "Kitsune", monster: "Kitsune", item: "Hanzamune Dragon Koi Blade", isTemp: false);
+        Core.HuntMonster(map: "Stalagbite", monster: "Vath|Stalagbite", item: "Legendary Sword of Dragon Control", isTemp: false, publicRoom : true);
+        Core.HuntMonster(map: "Kitsune", monster: "Kitsune", item: "Hanzamune Dragon Koi Blade", isTemp: false, publicRoom : true);
         Core.HuntMonster(map: "Wolfwing", monster: "Wolfwing", item: "Wolfwing Armor", isTemp: false);
         Core.HuntMonster(map: "palooza", monster: "Kimberly", item: "One Eyed Doll Breaker", isTemp: false);
-        Core.HuntMonster(map: "Ledgermayne", monster: "Ledgermayne", item: "Ledgermayne", isTemp: false);
-        Core.HuntMonster(map: "djinn", monster: "Tibicenas", item: "Tibicenas", isTemp: false);
+        Core.HuntMonster(map: "Ledgermayne", monster: "Ledgermayne", item: "Ledgermayne", isTemp: false, publicRoom : true);
+        Core.HuntMonster(map: "djinn", monster: "Tibicenas", item: "Tibicenas", isTemp: false, publicRoom : true);
         Core.HuntMonster(map: "dreamnexus", monster: "Khasaanda", item: "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster(map: "stormtemple", monster: "Chaos Lord Lionfang", item: "Chaos Lionfang Armor", isTemp: false);
         Core.HuntMonster(map: "swordhavenfalls", monster: "Chaos Lord Alteon", item: "Shorn Chaos King Crown", isTemp: false, publicRoom: true);

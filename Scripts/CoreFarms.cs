@@ -128,39 +128,39 @@ public class CoreFarms
             Core.EquipClass(ClassType.Farm);
 
         while ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r4", "Left", "*", log: false);
+            Core.KillMonster("icestormarena", "r4", "Left", "*", log: false, publicRoom: true);
 
         while ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r5", "Left", "*", log: false);
+            Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
         
         while ((Bot.Player.Level < 20 && Bot.Player.Level < level) || (Bot.Player.Level < 20 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r6", "Left", "*", log: false);
+            Core.KillMonster("icestormarena", "r6", "Left", "*", log: false, publicRoom: true);
 
         while ((Bot.Player.Level < 25 && Bot.Player.Level < level) || (Bot.Player.Level < 25 && rankUpClass && Bot.Player.Rank != 10))
         {
             Core.EnsureAccept(6628);
-            Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false);
+            Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
             Core.EnsureComplete(6628);
         }
 
         while ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r10", "Left", "*", log: false);
+            Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
 
         while ((Bot.Player.Level < 35 && Bot.Player.Level < level) || (Bot.Player.Level < 35 && rankUpClass && Bot.Player.Rank != 10))
         {
             Core.EnsureAccept(6629);
-            Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false);
+            Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
             Core.EnsureComplete(6629);
         }
 
         while((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r14", "Left", "*", log: false);
+            Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
         while((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false);
+            Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
 
         while((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level < 100 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false);
+            Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
     }
 
     /// <summary>
@@ -181,7 +181,7 @@ public class CoreFarms
         while (Bot.Player.Level < level || (!Core.CheckInventory("Essence of Wrath", wrathEssence) && !Core.CheckInventory("Souls of Heresy", heresySouls)))
         {
             Core.EnsureAccept(7979, 7980, 7981);
-            Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
+            Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12, publicRoom: true);
             Core.EnsureComplete(7979);
             while (Bot.Inventory.ContainsTempItem("War Medal", 5))
                 Core.ChainComplete(7980);
@@ -657,7 +657,7 @@ public class CoreFarms
             if (!Core.CheckInventory("Legendary Runes", toInv: false))
             {
                 Core.EnsureAccept(2937);
-                Core.KillEscherion("Runes Found!");
+                Core.KillEscherion("Runes Found!", publicRoom: true);
                 Core.EnsureComplete(2937);
                 Bot.Player.Pickup("Legendary Runes");
                 Core.Logger("Find the Runes! completed");
