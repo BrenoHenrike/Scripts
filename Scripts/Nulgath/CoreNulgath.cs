@@ -43,15 +43,7 @@ public class CoreNulgath
     /// <summary>
     /// Drops from the bosses that used to give acess to tercess
     /// </summary>
-    public string[] tercessBags =
-    {
-        "Aracara's Fang",
-        "Defeated Makai",
-        "Escherion's Chain",
-        "Hydra Scale",
-        "O-dokuro's Tooth",
-        "Strand of Vath's Hair"
-    };
+    public string[] tercessBags = { "Bone Dust" };
 
     /// <summary>
     /// Drops from the VHL Challenge quest
@@ -426,7 +418,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         {
             Core.EnsureAccept(2566);
             if (!Core.CheckInventory("Mana Energy for Nulgath"))
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 10, false);
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 1, false);
             while (Bot.Inventory.Contains("Mana Energy for Nulgath"))
             {
                 Core.EnsureAccept(2566);

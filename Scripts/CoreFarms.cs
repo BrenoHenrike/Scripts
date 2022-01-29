@@ -1,4 +1,4 @@
-﻿using RBot;
+using RBot;
 using RBot.Items;
 
 public class CoreFarms
@@ -349,21 +349,22 @@ public class CoreFarms
             //DeathPitBrawlREP();
             DiabolicalREP();
             DoomwoodREP();
-            //DreadfireREP();
-            //DruidGroveREP();
-            //DwarfholdREP();
+            DreadFireREP();
+            //DreadrockREP();
+            DruidGroveREP();
+            DwarfholdREP();
             ElementalMasterREP();
             EmberseaREP();
             EternalREP();
-            //EtherStormREP();
+            EtherStormREP();
             EvilREP();
             //FaerieCourtREP();
             //FishingREP();
             GlaceraREP();
             GoodREP();
             HollowbornREP();
-            //HorcREP();
-            //InfernalArmyREP();
+            HorcREP();
+            InfernalArmyREP();
             LoremasterREP();
             LycanREP();
             //MonsterHunterREP();
@@ -811,6 +812,57 @@ public class CoreFarms
             Bot.Shops.SellItem("Light Tower Sword");
     }
 
+    public void DreadFireREP(int rank = 10)
+    {
+        if (FactionRank("Dreadfire") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Dreadfire") < rank)
+        {
+            Core.EnsureAccept(5697);
+            Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb", 1);
+            Core.EnsureComplete(5697);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void DruidGroveREP(int rank = 10)
+    {
+        if (FactionRank("Druid Grove") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Druid Grove") < rank)
+        {
+            Core.EnsureAccept(3049);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 5);
+            Core.EnsureComplete(3049);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void DwarfholdREP(int rank = 10)
+    {
+        if (FactionRank("Dwarfhold") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Dwarfhold") < rank)
+        {
+            Core.EnsureAccept(320,321);
+            Core.KillMonster("pines","Enter", "Right", "Pine Grizzly", "Bear Skin", 5);
+            Core.KillMonster("pines","Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5);            
+            Core.EnsureComplete(320, 321);
+            if(Bot.Quests.CanComplete(321))
+                Core.EnsureComplete(321);
+            Core.Logger($"Completed x{i++}");
+        }
+    }                
+
     public void ElementalMasterREP(int rank = 10)
     {
         if (FactionRank("Elemental Master") >= rank)
@@ -872,6 +924,25 @@ public class CoreFarms
             Core.Logger($"Completed x{i++}");
         }
     }
+
+    public void EtherStormREP(int rank = 10)
+    {
+        if (FactionRank("Etherstorm") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Etherstorm") < rank)
+        {
+            Core.EnsureAccept(1721);
+            Core.HuntMonster("etherwardes","Water Dragon Warrior", "Water Dragon Tears", 3);
+            Core.HuntMonster("etherwardes","Fire Dragon Warrior", "Fire Dragon Flames", 3);
+            Core.HuntMonster("etherwardes","Air Dragon Warrior", "Air Dragon Breaths", 3);
+            Core.HuntMonster("etherwardes","Earth Dragon Warrior", "Earth Dragon Claws", 3);
+            Core.EnsureComplete(1721);
+            Core.Logger($"Completed x{i++}");
+        }
+    }      
     
     public void EvilREP(int rank = 10)
     {
@@ -987,9 +1058,7 @@ public class CoreFarms
                 Core.EquipClass(ClassType.Solo);
                 if (!Bot.Quests.IsUnlocked(3032))
                 {
-                    Core.KillQuest(3029, "druids", "Void Bear|Void Elemental|Void Ghast|Void Larva", false);
-                    Core.KillQuest(3030, "druids", "Void Larva", false);
-                    Core.KillQuest(3031, "druids", "Void Ghast", false);
+                    Core.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);                    
                 }
                 while (FactionRank("Loremaster") < rank)
                 {
@@ -1038,6 +1107,40 @@ public class CoreFarms
             Core.Logger($"Completed x{i++}");
         }
     }
+
+    public void HorcREP(int rank = 10)
+    {
+        if (FactionRank("Horc") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Horc") < rank)
+        {
+            Core.EnsureAccept(1265);
+            Core.HuntMonster("bloodtuskwar","Chaotic Lemurphant|Chaotic Rhison|Chaos Tigriff", "Chaorrupted Eye", 3);
+            Core.HuntMonster("bloodtuskwar","Chaotic Horcboar|Chaotic Vulture", "Chaorrupted Tentacle", 5);
+            Core.HuntMonster("bloodtuskwar","Chaotic Chinchilizard|Chaotic Rhison|Chaotic Koalion", "Chaorrupted Tusk", 5);
+            Core.EnsureComplete(1265);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void InfernalArmyREP(int rank = 10)
+    {
+        if (FactionRank("Infernal Army") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Infernal Army") < rank)
+        {
+            Core.EnsureAccept(5707);
+            Core.KillMonster("dreadfire","r10","Left","Living Brimstone", "Living Brimstone Defeated", 1);
+            Core.EnsureComplete(5707);
+            Core.Logger($"Completed x{i++}");
+        }
+    }           
 
     public void MysteriousDungeonREP(int rank = 10)
     {
