@@ -12,7 +12,7 @@ public class GoldFarm
 
 		//Farm.UseBoost(BoostIDs.Gold20, RBot.Items.BoostType.Gold);
 
-		Farm.BattleGroundE();
+		Farm.Gold();
 
 		Core.SetOptions(false);
 	}
