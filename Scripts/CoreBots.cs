@@ -1196,7 +1196,10 @@ public class CoreBots
     public void StopBot(bool removeStopHandler = false)
     {
         if(removeStopHandler)
+        {
             Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
+            Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
+        }
         Join("battleon");
         if (AntiLag)
         {
