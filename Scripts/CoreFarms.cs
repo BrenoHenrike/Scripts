@@ -1057,9 +1057,7 @@ public class CoreFarms
                 Core.EquipClass(ClassType.Solo);
                 if (!Bot.Quests.IsUnlocked(3032))
                 {
-                    Core.KillQuest(3029, "druids", "Void Bear|Void Elemental|Void Ghast|Void Larva", false);
-                    Core.KillQuest(3030, "druids", "Void Larva", false);
-                    Core.KillQuest(3031, "druids", "Void Ghast", false);
+                    Core.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);                    
                 }
                 while (FactionRank("Loremaster") < rank)
                 {
