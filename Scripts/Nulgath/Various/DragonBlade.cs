@@ -5,60 +5,74 @@ using RBot;
 
 public class DragonBladeofNulgath
 {
-	// [Can Change] Whether you can solo the PvP boss without killing restorers/brawlers
-	public bool CanSoloPvPBoss = true;
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
-	public CoreNulgath Nulgath = new CoreNulgath();
+    // [Can Change] Whether you can solo the PvP boss without killing restorers/brawlers
+    public bool CanSoloPvPBoss = true;
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public CoreNulgath Nulgath = new CoreNulgath();
 
-	public readonly string[] TwistedItems =
-	{
-		"DragonFire of Nulgath",
-		"Crimson Plate of Nulgath",
-		"Crimson Face Plate of Nulgath"
-	};
+    public readonly string[] TwistedItems =
+    {
+        "DragonFire of Nulgath",
+        "Crimson Plate of Nulgath",
+        "Crimson Face Plate of Nulgath"
+    };
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-		Core.AddDrop(Nulgath.bagDrops);
-		Core.AddDrop(TwistedItems);
-		Core.AddDrop("DragonBlade of Nulgath", "Combat Trophy", "Basic War Sword", "Behemoth Blade of Shadow", "Behemoth Blade of Light");
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		BehemothBladeof("Shadow");
-		BehemothBladeof("Light");
+        GetDragonBlade();
 
-		while(!Core.CheckInventory(TwistedItems))
-		{
-			Core.EnsureAccept(765);
-			Nulgath.FarmTotemofNulgath(3);
-			Core.HuntMonster("underworld", "Skull Warrior", "Skull Warrior Rune");
-			Core.EnsureCompleteChoose(765);
-		}
+        Core.SetOptions(false);
+    }
 
-		Nulgath.FarmTotemofNulgath(3);
+    public void GetDragonBlade()
+    {
+        if (Core.CheckInventory("DragonBlade of Nulgath"))
+            return;
 
-		Core.EnsureAccept(766);
-		Core.HuntMonster("underworld", "Legion Fenrir", "Legion Fenrir Rune");
-		Core.EnsureComplete(766, 5483);
-		bot.Player.Pickup("DragonBlade of Nulgath");
+        Core.AddDrop(Nulgath.bagDrops);
+        Core.AddDrop(TwistedItems);
+        Core.AddDrop("DragonBlade of Nulgath", "Combat Trophy", "Basic War Sword", "Behemoth Blade of Shadow", "Behemoth Blade of Light");
 
-		Core.SetOptions(false);
-	}
+        BehemothBladeof("Shadow");
+        BehemothBladeof("Light");
 
-	public void BehemothBladeof(string blade)
-	{
-		if(Core.CheckInventory($"Behemoth Blade of {blade}"))
-			return;
+        while(!Core.CheckInventory(TwistedItems))
+        {
+            Core.EnsureAccept(765);
+            Nulgath.FarmTotemofNulgath(3);
+            Core.HuntMonster("underworld", "Skull Warrior", "Skull Warrior Rune");
+            Core.EnsureCompleteChoose(765);
+        }
 
-		Core.EquipClass(ClassType.Solo);
-		if (!Core.CheckInventory("Basic War Sword"))
-		{
-			Farm.BludrutBrawlBoss(quant: 50, canSoloBoss: CanSoloPvPBoss);
-			Core.BuyItem("battleon", 222, "Basic War Sword");
-		}
-		Farm.BludrutBrawlBoss(canSoloBoss: CanSoloPvPBoss);
-		Core.BuyItem("battleon", 222, $"Behemoth Blade of {blade}");
-	}
+        Nulgath.FarmTotemofNulgath(3);
+
+        Core.EnsureAccept(766);
+        Core.HuntMonster("underworld", "Legion Fenrir", "Legion Fenrir Rune");
+        Core.EnsureComplete(766, 5483);
+        Bot.Player.Pickup("DragonBlade of Nulgath");
+    }
+
+    public void BehemothBladeof(string blade)
+    {
+        if(Core.CheckInventory($"Behemoth Blade of {blade}"))
+            return;
+
+        Core.EquipClass(ClassType.Solo);
+        if (!Core.CheckInventory("Basic War Sword"))
+        {
+            Farm.BludrutBrawlBoss(quant: 50, canSoloBoss: CanSoloPvPBoss);
+            Core.BuyItem("battleon", 222, "Basic War Sword");
+        }
+        if (!Core.CheckInventory("Steel Afterlife"))
+        {
+            Farm.BludrutBrawlBoss(quant: 50, canSoloBoss: CanSoloPvPBoss);
+            Core.BuyItem("battleon", 222, "Basic War Sword");
+        }
+        Farm.BludrutBrawlBoss(canSoloBoss: CanSoloPvPBoss);
+        Core.BuyItem("battleon", 222, $"Behemoth Blade of {blade}");
+    }
 }
