@@ -359,7 +359,7 @@ public class CoreFarms
         EtherStormREP();
         EvilREP();
         //FaerieCourtREP();
-        //FishingREP();
+        FishingREP();
         GlaceraREP();
         GoodREP();
         HollowbornREP();
@@ -1318,6 +1318,72 @@ public class CoreFarms
             if (Bot.Quests.CanComplete(4865))
                 Core.EnsureComplete(4865);
             Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void FishingREP(int rank = 10)
+    {
+        if (FactionRank("Fishing") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Fishing") < rank)
+        {
+            Core.AddDrop("Fising Bait", "Fishing Dynamite");
+
+            while (Bot.Player.GetFactionRank("Fishing") < 2)
+            {
+                Core.Logger("Farming Bait");
+                while (!Bot.Inventory.Contains("Fishing Bait", 10))
+                {
+                    Core.EnsureAccept(1682);
+                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", quant: 1, log: false);
+                    Core.EnsureComplete(1682);
+                    Core.Logger($"Completed x{i++}");
+                }
+
+                Core.Join("party");
+                Core.Logger("Bait Fishing");
+
+                while (Bot.Inventory.Contains("Fishing Bait", 1))
+                {
+                    while (!Core.CheckInventory("Fishing Bait", 1))
+                        return;
+                    Bot.SendPacket("%xt%zm%FishCast%1%Pole%1%");
+                    Bot.Sleep(5000);
+                    Bot.SendPacket("%xt%zm%getFish%1%false%");
+                    Bot.Sleep(1500);
+                    Core.Logger($"Fished {i++} Times");
+                }
+            }
+
+
+            while (Bot.Player.GetFactionRank("Fishing") > 2)
+            {
+                Core.Logger("Farming Dynamite");
+                while (!Bot.Inventory.Contains("Fishing Dynamite", 10))
+                {
+                    Core.EnsureAccept(1682);
+                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", quant: 1, log: false);
+                    Core.EnsureComplete(1682);
+                    Core.Logger($"Completed x{i++}");
+                }
+
+                Core.Join("party");
+                Core.Logger("Dynamite Fishing");
+
+                while (Bot.Inventory.Contains("Fishing Dynamite", 1))
+                {
+                    while (!Core.CheckInventory("Fishing Dynamite", 1))
+                        return;
+                    Bot.SendPacket("%xt%zm%FishCast%1%Dynamite%30%");
+                    Bot.Sleep(5000);
+                    Bot.SendPacket("%xt%zm%getFish%1%false%");
+                    Bot.Sleep(1500);
+                    Core.Logger($"Fished {i++} Times");
+                }
+            }
         }
     }
     #endregion
