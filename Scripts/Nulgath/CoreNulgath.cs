@@ -43,15 +43,7 @@ public class CoreNulgath
     /// <summary>
     /// Drops from the bosses that used to give acess to tercess
     /// </summary>
-    public string[] tercessBags =
-    {
-        "Aracara's Fang",
-        "Defeated Makai",
-        "Escherion's Chain",
-        "Hydra Scale",
-        "O-dokuro's Tooth",
-        "Strand of Vath's Hair"
-    };
+    public string[] tercessBags = { "Bone Dust" };
 
     /// <summary>
     /// Drops from the VHL Challenge quest
