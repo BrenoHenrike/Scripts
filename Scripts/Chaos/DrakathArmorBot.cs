@@ -85,7 +85,7 @@ public class DrakathArmorBot
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("swordhavenundead", "Left", "Right", "*", "Treasure Chest", 100, false);
         Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("ultradrakath", "r1", "Left", "Champion of Chaos", "Face of Chaos", 1, false);
+        Core.KillMonster("ultradrakath", "r1", "Left", "Champion of Chaos", "Face of Chaos", 1, false, publicRoom: true);
         Core.EnsureComplete(3882);
     }
 }

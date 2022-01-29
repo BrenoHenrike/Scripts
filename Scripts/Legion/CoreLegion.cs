@@ -120,11 +120,11 @@ public class CoreLegion
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
             }
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye");
-            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
-            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones");
-            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
+            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true);
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
 
             Core.EnsureComplete(4743);
             Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");

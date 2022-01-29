@@ -36,7 +36,7 @@ public class HollowbornScythe
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 250, false);
             Farm.BattleUnderB("Bone Dust", 2000);
-            Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 2, false);
+            Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 2, false, publicRoom : true);
             Core.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Minion");
         }
 
@@ -48,10 +48,10 @@ public class HollowbornScythe
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 250, false);
                 Farm.BattleUnderB("Bone Dust", 3000);
-                Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 5, false);
+                Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 5, false, publicRoom : true);
                 Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", 1, false);
+                Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", 1, false, publicRoom : true);
                 if (!bot.Inventory.Contains("Unmoulded Fiend Essence"))
                 {
                     Farm.Gold(15000000);
