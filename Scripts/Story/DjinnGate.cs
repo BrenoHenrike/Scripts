@@ -23,8 +23,6 @@ public class DjinnGateStory
     {
         Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", 
         "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun");
-        if(Core.CheckInventory("Armor of Zular"))
-            return;
         Core.EquipClass(ClassType.Farm);
         if(!Bot.Quests.IsUnlocked(6154))
         {
