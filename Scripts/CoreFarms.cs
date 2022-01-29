@@ -350,7 +350,7 @@ public class CoreFarms
         DiabolicalREP();
         DoomwoodREP();
         DreadFireREP();
-        //DreadrockREP();
+        DreadrockREP();
         DruidGroveREP();
         DwarfholdREP();
         ElementalMasterREP();
