@@ -153,13 +153,13 @@ public class CoreFarms
             Core.EnsureComplete(6629);
         }
 
-        while((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10))
+        while ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
-        while((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10))
+        while ((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
 
-        while((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level < 100 && rankUpClass && Bot.Player.Rank != 10))
+        while ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level < 100 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
     }
 
@@ -325,6 +325,49 @@ public class CoreFarms
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
+    }
+    public void SwagTokenA(int quant = 100)
+    {
+        if (!Core.IsMember)
+            return;
+
+        while (Core.CheckInventory("Super-Fan Swag Token A", quant))
+            return;
+
+        Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
+
+        int i = quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
+
+        while (!Core.CheckInventory("Super-Fan Swag Token A", quant))
+        {
+            Core.Logger($"Farming Token A x {i}");
+
+            Core.Logger($"Farming Token C x { 200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C") }");
+
+            while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
+            {
+                Core.EnsureAccept(1310);
+                Core.HuntMonster("collectorlab", "Dust Bunny of Doom|Death on Wings", "Doppelganger Documents", log: false);
+                Core.EnsureComplete(1310);
+            }
+
+            if (!Core.CheckInventory("Super-Fan Swag Token A", quant))
+            {
+                Core.BuyItem("collection", 325, 9394, 20);
+                Bot.Sleep(1500);
+                Core.BuyItem("collection", 325, 9393, Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
+            }
+            Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A") } Left to Farm");
+        }
+
+        Core.ToBank("Super-Fan Swag Token A");
+        Core.Logger("Post Farm Cleanup");
+        while (Core.CheckInventory("Super-Fan Swag Token C"))
+            Core.SellItem("Super-Fan Swag Token C", all: true);
+        while (Core.CheckInventory("Super-Fan Swag Token B"))
+            Core.SellItem("Super-Fan Swag Token B", all: true);
+        while (Core.CheckInventory("Super-Fan Swag Token D"))
+            Core.SellItem("Super-Fan Swag Token D", all: true);
     }
 
 
@@ -710,13 +753,16 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Chaos") < rank)
-        {
-            Core.EnsureAccept(3594);
-            Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos Power Increased", 6);
-            Core.EnsureComplete(3594);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Chaos);
+        else
+            while (FactionRank("Chaos") < rank)
+            {
+                Core.EnsureAccept(3594);
+                Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos Power Increased", 6);
+                Core.EnsureComplete(3594);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void ChronoSpanREP(int rank = 10)
@@ -726,14 +772,14 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        //if (Core.IsMember)
-        //    SuperFanREP(REP.ChronoSpan);
-        //else
-        while (FactionRank("ChronoSpan") < rank)
-        {
-            Core.SmartKillMonster(2204, "thespan", new[] { "Minx Fairy", "Tog", "Moglin Ghost" }, completeQuest: true);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.ChronoSpan);
+        else
+            while (FactionRank("ChronoSpan") < rank)
+            {
+                Core.SmartKillMonster(2204, "thespan", new[] { "Minx Fairy", "Tog", "Moglin Ghost" }, completeQuest: true);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void CraggleRockREP(int rank = 10)
@@ -774,6 +820,8 @@ public class CoreFarms
         if (FactionRank("Doomwood") >= rank)
             return;
         if (Core.IsMember)
+            MemREP(MemberShipsIDS.Doomwood);
+        else
             Core.AddDrop("Dark Tower Sword", "Light Tower Sword");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
@@ -819,13 +867,16 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Dreadfire") < rank)
-        {
-            Core.EnsureAccept(5697);
-            Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb", 1);
-            Core.EnsureComplete(5697);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Arcangrove);
+        else
+            while (FactionRank("Dreadfire") < rank)
+            {
+                Core.EnsureAccept(5697);
+                Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb", 1);
+                Core.EnsureComplete(5697);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void DruidGroveREP(int rank = 10)
@@ -851,16 +902,19 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Dwarfhold") < rank)
-        {
-            Core.EnsureAccept(320, 321);
-            Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5);
-            Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5);
-            Core.EnsureComplete(320, 321);
-            if (Bot.Quests.CanComplete(321))
-                Core.EnsureComplete(321);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Dwarfhold);
+        else
+            while (FactionRank("Dwarfhold") < rank)
+            {
+                Core.EnsureAccept(320, 321);
+                Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5);
+                Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5);
+                Core.EnsureComplete(320, 321);
+                if (Bot.Quests.CanComplete(321))
+                    Core.EnsureComplete(321);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void ElementalMasterREP(int rank = 10)
@@ -891,16 +945,19 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Embersea") < rank)
-        {
-            Core.EnsureAccept(4228);
-            //Core.EnsureAccept(4224);
-            Core.HuntMonster("fireforge", "Blazebinder", "Defeated Blazebinder", 5);
-            //Core.HuntMonster("fireforge", "Blazebinder", "Blazebinder defeated", 2);
-            //Core.EnsureComplete(4224);
-            Core.EnsureComplete(4228);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Embersea);
+        else
+            while (FactionRank("Embersea") < rank)
+            {
+                Core.EnsureAccept(4228);
+                //Core.EnsureAccept(4224);
+                Core.HuntMonster("fireforge", "Blazebinder", "Defeated Blazebinder", 5);
+                //Core.HuntMonster("fireforge", "Blazebinder", "Blazebinder defeated", 2);
+                //Core.EnsureComplete(4224);
+                Core.EnsureComplete(4228);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void EternalREP(int rank = 10)
@@ -932,16 +989,19 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Etherstorm") < rank)
-        {
-            Core.EnsureAccept(1721);
-            Core.HuntMonster("etherwardes", "Water Dragon Warrior", "Water Dragon Tears", 3);
-            Core.HuntMonster("etherwardes", "Fire Dragon Warrior", "Fire Dragon Flames", 3);
-            Core.HuntMonster("etherwardes", "Air Dragon Warrior", "Air Dragon Breaths", 3);
-            Core.HuntMonster("etherwardes", "Earth Dragon Warrior", "Earth Dragon Claws", 3);
-            Core.EnsureComplete(1721);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Etherstorm);
+        else
+            while (FactionRank("Etherstorm") < rank)
+            {
+                Core.EnsureAccept(1721);
+                Core.HuntMonster("etherwardes", "Water Dragon Warrior", "Water Dragon Tears", 3);
+                Core.HuntMonster("etherwardes", "Fire Dragon Warrior", "Fire Dragon Flames", 3);
+                Core.HuntMonster("etherwardes", "Air Dragon Warrior", "Air Dragon Breaths", 3);
+                Core.HuntMonster("etherwardes", "Earth Dragon Warrior", "Earth Dragon Claws", 3);
+                Core.EnsureComplete(1721);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void EvilREP(int rank = 10)
@@ -951,13 +1011,16 @@ public class CoreFarms
         Core.SwitchAlignment(Alignment.Evil);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Evil") < 4)
-        {
-            Core.EnsureAccept(364);
-            Core.HuntMonster("newbie", "Slime", "Youthanize");
-            Core.EnsureComplete(364);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Evil);
+        else
+            while (FactionRank("Evil") < 4)
+            {
+                Core.EnsureAccept(364);
+                Core.HuntMonster("newbie", "Slime", "Youthanize");
+                Core.EnsureComplete(364);
+                Core.Logger($"Completed x{i++}");
+            }
         while (FactionRank("Evil") < rank)
         {
             if (!Core.IsMember)
@@ -1008,13 +1071,16 @@ public class CoreFarms
         Core.SwitchAlignment(Alignment.Good);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Good") < 4)
-        {
-            Core.EnsureAccept(369);
-            Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
-            Core.EnsureComplete(369);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Good);
+        else
+            while (FactionRank("Good") < 4)
+            {
+                Core.EnsureAccept(369);
+                Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
+                Core.EnsureComplete(369);
+                Core.Logger($"Completed x{i++}");
+            }
         while (FactionRank("Good") < rank)
         {
             if (!Core.IsMember)
@@ -1074,6 +1140,9 @@ public class CoreFarms
     {
         if (FactionRank("Lycan") >= rank)
             return;
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Lycan);
+        else
         if (!Bot.Quests.IsAvailable(537))
         {
             Core.Logger("Can't do farming quest [Sanguine] (/lycan)", messageBox: true);
@@ -1115,15 +1184,18 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Horc") < rank)
-        {
-            Core.EnsureAccept(1265);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant|Chaotic Rhison|Chaos Tigriff", "Chaorrupted Eye", 3);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar|Chaotic Vulture", "Chaorrupted Tentacle", 5);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard|Chaotic Rhison|Chaotic Koalion", "Chaorrupted Tusk", 5);
-            Core.EnsureComplete(1265);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Horc);
+        else
+            while (FactionRank("Horc") < rank)
+            {
+                Core.EnsureAccept(1265);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant|Chaotic Rhison|Chaos Tigriff", "Chaorrupted Eye", 3);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar|Chaotic Vulture", "Chaorrupted Tentacle", 5);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard|Chaotic Rhison|Chaotic Koalion", "Chaorrupted Tusk", 5);
+                Core.EnsureComplete(1265);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void InfernalArmyREP(int rank = 10)
@@ -1150,7 +1222,7 @@ public class CoreFarms
         {
             Core.EnsureAccept(5849);
             Core.KillMonster("pilgrimage", "r5", "Left", "SpiderWing", "Spiderwing Captured", 4);
-            Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4);            
+            Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4);
             Core.EnsureComplete(5849);
             Core.Logger($"Completed Quest Capture the Misshapen");
 
@@ -1159,16 +1231,16 @@ public class CoreFarms
         int i = 1;
         while (FactionRank("Monster Hunter") < rank)
         {
-            Core.EnsureAccept(5849,5850);
+            Core.EnsureAccept(5849, 5850);
             Core.KillMonster("pilgrimage", "r5", "Left", "SpiderWing", "Spiderwing Captured", 4);
             Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4);
-            Core.KillMonster("pilgrimage", "r5", "Left", "Ravenous Parasite", "Ravenous Parasites Slain", 7);            
+            Core.KillMonster("pilgrimage", "r5", "Left", "Ravenous Parasite", "Ravenous Parasites Slain", 7);
             Core.EnsureComplete(5849);
-            if(Bot.Quests.CanComplete(5850))
-                Core.EnsureComplete(5850);            
+            if (Bot.Quests.CanComplete(5850))
+                Core.EnsureComplete(5850);
             Core.Logger($"Completed x{i++}");
         }
-    }       
+    }
 
     public void MysteriousDungeonREP(int rank = 10)
     {
@@ -1199,6 +1271,9 @@ public class CoreFarms
     {
         if (FactionRank("Mythsong") >= rank)
             return;
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Mythsong);
+        else
         if (!Bot.Quests.IsAvailable(710))
         {
             Core.Logger("Can't do farming quest [Kimberly] (/palooza)", messageBox: true);
@@ -1226,7 +1301,7 @@ public class CoreFarms
         while (FactionRank("Necro Crypt") < rank)
         {
             Core.EnsureAccept(3048);
-            Core.HuntMonster("castleundead","Skeletal Viking|Skeletal Warrior", "Old Bone", 5);
+            Core.HuntMonster("castleundead", "Skeletal Viking|Skeletal Warrior", "Old Bone", 5);
             Core.EnsureComplete(3048);
             Core.Logger($"Completed x{i++}");
         }
@@ -1239,13 +1314,16 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Northpointe") < rank)
-        {
-            Core.EnsureAccept(4027);
-            Core.HuntMonster("northpointe","Grim Stalker", "Bunch of Sage", 10);
-            Core.EnsureComplete(4027);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Northpointe);
+        else
+            while (FactionRank("Northpointe") < rank)
+            {
+                Core.EnsureAccept(4027);
+                Core.HuntMonster("northpointe", "Grim Stalker", "Bunch of Sage", 10);
+                Core.EnsureComplete(4027);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void PetTamerREP(int rank = 10)
@@ -1262,12 +1340,15 @@ public class CoreFarms
             Core.EnsureComplete(5261);
             Core.Logger($"Completed x{i++}");
         }
-    }         
+    }
 
     public void RavenlossREP(int rank = 10)
     {
         if (FactionRank("Ravenloss") >= rank)
             return;
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Ravenloss);
+        else
         if (!Bot.Quests.IsAvailable(3445))
         {
             Core.Logger("Can't do farming quest [Slay the Spiderkin] (/twilightedge)", messageBox: true);
@@ -1292,25 +1373,28 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Sandsea") < rank)
-        {
-            Core.EnsureAccept(916, 917, 919, 921, 922);
-            Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10);
-            Core.HuntMonster("sandsea", "Bupers Camel|Cactus Creeper", "Barrel of Desert Water", 10);
-            Core.HuntMonster("sandsea", "Bupers Camel", "Flexible Camel Spit", 7);
-            //Core.HuntMonster("sandsea", "Bupers Camel", "Camel Hide", 6);  Quest: 8044            
-            Core.HuntMonster("sandsea", "Bupers Camel", "Oasis Jewelry Piece", 4);
-            Core.HuntMonster("sandsea", "Bupers Camel", "Camel Skull", 2);
-            Core.HuntMonster("sandsea", "Cactus Creeper", "Sandsea Cotton", 8);
-            //Core.HuntMonster("sandsea", "Cactus Creeper", "Creeper Needle", 8);  Quest: 8045
-            Core.HuntMonster("sandsea", "Cactus Creeper", "Cactus Creeper Head", 8);
-            //Core.HuntMonster("sandsea", "Sand Monkey", "Monkey Claw", 6);  Quest: 8044
-            //Core.HuntMonster("sandsea", "Sandsea Frask", "Frask Feather", 3);  Quest: 8044 and 8045
-            //Core.HuntMonster("sandsea", "Sandsea Frask", "Frask Scale", 2);  Quest: 8044 and 8045
-            //Core.HuntMonster("sandsea", "Desert Vase", "Golden Vase Shard", 4);  Quest: 8044
-            Core.EnsureComplete(916, 917, 919, 921, 922);               
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Sandsea);
+        else
+            while (FactionRank("Sandsea") < rank)
+            {
+                Core.EnsureAccept(916, 917, 919, 921, 922);
+                Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10);
+                Core.HuntMonster("sandsea", "Bupers Camel|Cactus Creeper", "Barrel of Desert Water", 10);
+                Core.HuntMonster("sandsea", "Bupers Camel", "Flexible Camel Spit", 7);
+                //Core.HuntMonster("sandsea", "Bupers Camel", "Camel Hide", 6);  Quest: 8044            
+                Core.HuntMonster("sandsea", "Bupers Camel", "Oasis Jewelry Piece", 4);
+                Core.HuntMonster("sandsea", "Bupers Camel", "Camel Skull", 2);
+                Core.HuntMonster("sandsea", "Cactus Creeper", "Sandsea Cotton", 8);
+                //Core.HuntMonster("sandsea", "Cactus Creeper", "Creeper Needle", 8);  Quest: 8045
+                Core.HuntMonster("sandsea", "Cactus Creeper", "Cactus Creeper Head", 8);
+                //Core.HuntMonster("sandsea", "Sand Monkey", "Monkey Claw", 6);  Quest: 8044
+                //Core.HuntMonster("sandsea", "Sandsea Frask", "Frask Feather", 3);  Quest: 8044 and 8045
+                //Core.HuntMonster("sandsea", "Sandsea Frask", "Frask Scale", 2);  Quest: 8044 and 8045
+                //Core.HuntMonster("sandsea", "Desert Vase", "Golden Vase Shard", 4);  Quest: 8044
+                Core.EnsureComplete(916, 917, 919, 921, 922);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void SkyguardREP(int rank = 10)
@@ -1320,18 +1404,21 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Skyguard") < rank)
-        {
-            Core.EnsureAccept(1016);
-            Core.HuntMonster("gilead", "Water Elemental", "Bucket of Water", 5);
-            Core.HuntMonster("gilead", "Wind Elemental", "Beaker of Air", 5);
-            Core.EnsureComplete(1016);
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Skygaurd);
+        else
+            while (FactionRank("Skyguard") < rank)
+            {
+                Core.EnsureAccept(1016);
+                Core.HuntMonster("gilead", "Water Elemental", "Bucket of Water", 5);
+                Core.HuntMonster("gilead", "Wind Elemental", "Beaker of Air", 5);
+                Core.EnsureComplete(1016);
+                Core.Logger($"Completed x{i++}");
+            }
 
     }
 
-        public void SomniaREP(int rank = 10)
+    public void SomniaREP(int rank = 10)
     {
         if (FactionRank("Somnia") >= rank)
             return;
@@ -1344,10 +1431,10 @@ public class CoreFarms
             Core.HuntMonster("somnia", "Nightspore", "Dream Truffle", 8);
             Core.HuntMonster("somnia", "Orpheum Elemental", "Orphium Ore", 8);
             Core.HuntMonster("somnia", "Dream Larva", "Dreamsilk", 5);
-            Core.EnsureComplete(7665, 7666, 7669);               
+            Core.EnsureComplete(7665, 7666, 7669);
             Core.Logger($"Completed x{i++}");
         }
-    }        
+    }
 
     public void SpellCraftingREP(int rank = 10)
     {
@@ -1400,36 +1487,42 @@ public class CoreFarms
         Core.SellItem("Hallow Ink", all: true);
     }
 
-        public void SwordhavenREP(int rank = 10)
+    public void SwordhavenREP(int rank = 10)
     {
         if (FactionRank("Swordhaven") >= rank)
             return;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        while (FactionRank("Swordhaven") < rank)
-        {
-            Core.EnsureAccept(3065, 3066, 3067, 3070, 3085, 3086, 3087);
-            Core.HuntMonster("castle", "Castle Spider", "Eradicated Arachnid", 10);
-            Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk", 8);
-            Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk Yarn", 2);
-            Core.HuntMonster("castle", "Castle Wraith", "Castle Wraith Defeated", 10);
-            Core.HuntMonster("castle", "Castle Wraith", "Jarred Wraith", 5);
-            Core.HuntMonster("castle", "Castle Wraith", "Castle Wraith Wool", 2);
-            Core.HuntMonster("castle", "Gargoyle", "Stony Plating", 6);
-            Core.HuntMonster("castle", "Gargoyle", "Gargoyle Gems", 2);            
-            Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Hair Bow", 5);
-            Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Bow Tie", 5);
-            Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Textiles", 2);
-            Core.EnsureComplete(3065, 3066, 3067, 3070, 3085, 3086, 3087);               
-            Core.Logger($"Completed x{i++}");
-        }
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Swordhaven);
+        else
+            while (FactionRank("Swordhaven") < rank)
+            {
+                Core.EnsureAccept(3065, 3066, 3067, 3070, 3085, 3086, 3087);
+                Core.HuntMonster("castle", "Castle Spider", "Eradicated Arachnid", 10);
+                Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk", 8);
+                Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk Yarn", 2);
+                Core.HuntMonster("castle", "Castle Wraith", "Castle Wraith Defeated", 10);
+                Core.HuntMonster("castle", "Castle Wraith", "Jarred Wraith", 5);
+                Core.HuntMonster("castle", "Castle Wraith", "Castle Wraith Wool", 2);
+                Core.HuntMonster("castle", "Gargoyle", "Stony Plating", 6);
+                Core.HuntMonster("castle", "Gargoyle", "Gargoyle Gems", 2);
+                Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Hair Bow", 5);
+                Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Bow Tie", 5);
+                Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Textiles", 2);
+                Core.EnsureComplete(3065, 3066, 3067, 3070, 3085, 3086, 3087);
+                Core.Logger($"Completed x{i++}");
+            }
     }
 
     public void ThunderForgeREP(int rank = 10)
     {
         if (FactionRank("ThunderForge") >= rank)
             return;
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Thunderforge);
+        else
         if (!Bot.Quests.IsAvailable(2733))
         {
             Core.Logger("Quest not avaible for farm, do ThunderForge saga till Deathpits [The Chaos Eye of Vestis]");
@@ -1445,9 +1538,9 @@ public class CoreFarms
             Core.EnsureComplete(2733);
             Core.Logger($"Completed x{i++}");
         }
-    } 
+    }
 
-        public void TreasureHunterREP(int rank = 10)
+    public void TreasureHunterREP(int rank = 10)
     {
         if (FactionRank("TreasureHunter") >= rank)
             return;
@@ -1457,8 +1550,8 @@ public class CoreFarms
         while (FactionRank("TreasureHunter") < rank)
         {
             Core.EnsureAccept(6593);
-            Core.HuntMonster("stalagbite", "Balboa", "Super Specific Rock", 1);            
-            Core.EnsureComplete(6593);               
+            Core.HuntMonster("stalagbite", "Balboa", "Super Specific Rock", 1);
+            Core.EnsureComplete(6593);
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -1467,7 +1560,10 @@ public class CoreFarms
     {
         if (FactionRank("Troll") >= rank)
             return;
-        Core.EquipClass(ClassType.Farm);
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Troll);
+        else
+            Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         while (FactionRank("Troll") < rank)
@@ -1479,12 +1575,15 @@ public class CoreFarms
             Core.EnsureComplete(1263);
             Core.Logger($"Completed x{i++}");
         }
-    }                 
+    }
 
     public void VampireREP(int rank = 10)
     {
         if (FactionRank("Vampire") >= rank)
             return;
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Vampire);
+        else
         if (!Bot.Quests.IsAvailable(522))
         {
             Core.Logger("Can't do farming quest [Twisted Paw] (/safiria)", messageBox: true);
@@ -1506,7 +1605,10 @@ public class CoreFarms
     {
         if (FactionRank("Yokai") >= rank)
             return;
-        Core.EquipClass(ClassType.Farm);
+        if (Core.IsMember)
+            MemREP(MemberShipsIDS.Yokai);
+        else
+            Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         while (FactionRank("Yokai") < rank)
@@ -1607,6 +1709,24 @@ public class CoreFarms
             }
         }
     }
+
+    public void MemREP(MemberShipsIDS faction, int rank = 10)
+    {
+        if (!Core.IsMember)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+
+        int questID = (int)Bot.Config.Get<MemberShipsIDS>("questID");
+        int i = 1;
+
+        while (Bot.Player.GetFactionRank("faction") < 10)
+        {
+            SwagTokenA(1);
+            Core.ChainComplete(questID);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
     #endregion
 
     public int FactionRank(string faction) => Bot.Player.GetFactionRank(faction);
@@ -1635,4 +1755,30 @@ public enum AlchemyRunes
     Uruz,
     Fehu,
     Gebo
+}
+
+public enum MemberShipsIDS
+{
+    Dwarfhold = 1317,
+    Good = 1318,
+    Evil = 1319,
+    Yokai = 1320,
+    Vampire = 1321,
+    Lycan = 1322,
+    Mythsong = 1323,
+    Arcangrove = 1324,
+    Sandsea = 1325,
+    Skygaurd = 1326,
+    Doomwood = 1327,
+    Troll = 1328,
+    Horc = 1329,
+    Etherstorm = 4340,
+    ChronoSpan = 4341,
+    Thunderforge = 4342,
+    Swordhaven = 4343,
+    Chaos = 4344,
+    Northpointe = 4345,
+    Embersea = 4346,
+    Ravenloss = 4347
+
 }
