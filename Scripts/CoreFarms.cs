@@ -367,21 +367,21 @@ public class CoreFarms
         InfernalArmyREP();
         LoremasterREP();
         LycanREP();
-        //MonsterHunterREP();
+        MonsterHunterREP();
         MysteriousDungeonREP();
         MythsongREP();
-        //NecroCryptREP();
-        //NorthpointeREP();
-        //PetTamerREP();
+        NecroCryptREP();
+        NorthpointeREP();
+        PetTamerREP();
         RavenlossREP();
-        //SandSeaREP();
-        //SkyguardREP();
-        //SomniaREP();
+        SandseaREP();
+        SkyguardREP();
+        SomniaREP();
         SpellCraftingREP();
-        //SwordhavenREP();
-        //ThunderForceREP();
-        //TreasureHunterREP();
-        //TrollREP();
+        SwordhavenREP();
+        ThunderForgeREP();
+        TreasureHunterREP();
+        TrollREP();
         VampireREP();
         YokaiREP();
     }
@@ -1142,6 +1142,34 @@ public class CoreFarms
         }
     }
 
+    public void MonsterHunterREP(int rank = 10)
+    {
+        if (FactionRank("Monster Hunter") >= rank)
+            return;
+        if (!Bot.Quests.IsAvailable(5850))
+        {
+            Core.EnsureAccept(5849);
+            Core.KillMonster("pilgrimage", "r5", "Left", "SpiderWing", "Spiderwing Captured", 4);
+            Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4);            
+            Core.EnsureComplete(5849);
+            Core.Logger($"Completed Quest Capture the Misshapen");
+
+        }
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Monster Hunter") < rank)
+        {
+            Core.EnsureAccept(5849,5850);
+            Core.KillMonster("pilgrimage", "r5", "Left", "SpiderWing", "Spiderwing Captured", 4);
+            Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4);
+            Core.KillMonster("pilgrimage", "r5", "Left", "Ravenous Parasite", "Ravenous Parasites Slain", 7);            
+            Core.EnsureComplete(5849);
+            if(Bot.Quests.CanComplete(5850))
+                Core.EnsureComplete(5850);            
+            Core.Logger($"Completed x{i++}");
+        }
+    }       
+
     public void MysteriousDungeonREP(int rank = 10)
     {
         if (FactionRank("Mysterious Dungeon") >= rank)
@@ -1188,6 +1216,54 @@ public class CoreFarms
         }
     }
 
+    public void NecroCryptREP(int rank = 10)
+    {
+        if (FactionRank("Necro Crypt") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Necro Crypt") < rank)
+        {
+            Core.EnsureAccept(3048);
+            Core.HuntMonster("castleundead","Skeletal Viking|Skeletal Warrior", "Old Bone", 5);
+            Core.EnsureComplete(3048);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void NorthpointeREP(int rank = 10)
+    {
+        if (FactionRank("Northpointe") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Northpointe") < rank)
+        {
+            Core.EnsureAccept(4027);
+            Core.HuntMonster("northpointe","Grim Stalker", "Bunch of Sage", 10);
+            Core.EnsureComplete(4027);
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void PetTamerREP(int rank = 10)
+    {
+        if (FactionRank("Pet Tamer") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Pet Tamer") < rank)
+        {
+            Core.EnsureAccept(5261);
+            Core.KillMonster("greenguardwest", "West7", "Down", "Mogzard", "Mogzard Captured", 1);
+            Core.EnsureComplete(5261);
+            Core.Logger($"Completed x{i++}");
+        }
+    }         
+
     public void RavenlossREP(int rank = 10)
     {
         if (FactionRank("Ravenloss") >= rank)
@@ -1208,6 +1284,70 @@ public class CoreFarms
             Core.Logger($"Completed x{i++}");
         }
     }
+
+    public void SandseaREP(int rank = 10)
+    {
+        if (FactionRank("Sandsea") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Sandsea") < rank)
+        {
+            Core.EnsureAccept(916, 917, 919, 921, 922);
+            Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10);
+            Core.HuntMonster("sandsea", "Bupers Camel|Cactus Creeper", "Barrel of Desert Water", 10);
+            Core.HuntMonster("sandsea", "Bupers Camel", "Flexible Camel Spit", 7);
+            //Core.HuntMonster("sandsea", "Bupers Camel", "Camel Hide", 6);  Quest: 8044            
+            Core.HuntMonster("sandsea", "Bupers Camel", "Oasis Jewelry Piece", 4);
+            Core.HuntMonster("sandsea", "Bupers Camel", "Camel Skull", 2);
+            Core.HuntMonster("sandsea", "Cactus Creeper", "Sandsea Cotton", 8);
+            //Core.HuntMonster("sandsea", "Cactus Creeper", "Creeper Needle", 8);  Quest: 8045
+            Core.HuntMonster("sandsea", "Cactus Creeper", "Cactus Creeper Head", 8);
+            //Core.HuntMonster("sandsea", "Sand Monkey", "Monkey Claw", 6);  Quest: 8044
+            //Core.HuntMonster("sandsea", "Sandsea Frask", "Frask Feather", 3);  Quest: 8044 and 8045
+            //Core.HuntMonster("sandsea", "Sandsea Frask", "Frask Scale", 2);  Quest: 8044 and 8045
+            //Core.HuntMonster("sandsea", "Desert Vase", "Golden Vase Shard", 4);  Quest: 8044
+            Core.EnsureComplete(916, 917, 919, 921, 922);               
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void SkyguardREP(int rank = 10)
+    {
+        if (FactionRank("Skyguard") >= rank || !Core.IsMember)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Skyguard") < rank)
+        {
+            Core.EnsureAccept(1016);
+            Core.HuntMonster("gilead", "Water Elemental", "Bucket of Water", 5);
+            Core.HuntMonster("gilead", "Wind Elemental", "Beaker of Air", 5);
+            Core.EnsureComplete(1016);
+            Core.Logger($"Completed x{i++}");
+        }
+
+    }
+
+        public void SomniaREP(int rank = 10)
+    {
+        if (FactionRank("Somnia") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Somnia") < rank)
+        {
+            Core.EnsureAccept(7665, 7666, 7669);
+            Core.HuntMonster("somnia", "Nightspore", "Dream Truffle", 8);
+            Core.HuntMonster("somnia", "Orpheum Elemental", "Orphium Ore", 8);
+            Core.HuntMonster("somnia", "Dream Larva", "Dreamsilk", 5);
+            Core.EnsureComplete(7665, 7666, 7669);               
+            Core.Logger($"Completed x{i++}");
+        }
+    }        
 
     public void SpellCraftingREP(int rank = 10)
     {
@@ -1259,6 +1399,87 @@ public class CoreFarms
         Core.SellItem("Ember Ink", all: true);
         Core.SellItem("Hallow Ink", all: true);
     }
+
+        public void SwordhavenREP(int rank = 10)
+    {
+        if (FactionRank("Swordhaven") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Swordhaven") < rank)
+        {
+            Core.EnsureAccept(3065, 3066, 3067, 3070, 3085, 3086, 3087);
+            Core.HuntMonster("castle", "Castle Spider", "Eradicated Arachnid", 10);
+            Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk", 8);
+            Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk Yarn", 2);
+            Core.HuntMonster("castle", "Castle Wraith", "Castle Wraith Defeated", 10);
+            Core.HuntMonster("castle", "Castle Wraith", "Jarred Wraith", 5);
+            Core.HuntMonster("castle", "Castle Wraith", "Castle Wraith Wool", 2);
+            Core.HuntMonster("castle", "Gargoyle", "Stony Plating", 6);
+            Core.HuntMonster("castle", "Gargoyle", "Gargoyle Gems", 2);            
+            Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Hair Bow", 5);
+            Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Bow Tie", 5);
+            Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Textiles", 2);
+            Core.EnsureComplete(3065, 3066, 3067, 3070, 3085, 3086, 3087);               
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void ThunderForgeREP(int rank = 10)
+    {
+        if (FactionRank("ThunderForge") >= rank)
+            return;
+        if (!Bot.Quests.IsAvailable(2733))
+        {
+            Core.Logger("Quest not avaible for farm, do ThunderForge saga till Deathpits [The Chaos Eye of Vestis]");
+            return;
+        }
+        Core.EquipClass(ClassType.Solo);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("ThunderForge") < rank)
+        {
+            Core.EnsureAccept(2733);
+            Core.HuntMonster("deathpits", "Wrathful Vestis", "Vestis's Chaos Eye", 1);
+            Core.EnsureComplete(2733);
+            Core.Logger($"Completed x{i++}");
+        }
+    } 
+
+        public void TreasureHunterREP(int rank = 10)
+    {
+        if (FactionRank("TreasureHunter") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("TreasureHunter") < rank)
+        {
+            Core.EnsureAccept(6593);
+            Core.HuntMonster("stalagbite", "Balboa", "Super Specific Rock", 1);            
+            Core.EnsureComplete(6593);               
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void TrollREP(int rank = 10)
+    {
+        if (FactionRank("Troll") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Troll") < rank)
+        {
+            Core.EnsureAccept(1263);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant|Chaotic Rhison|Chaos Tigriff", "Chaorrupted Eye", 3);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar|Chaotic Vulture", "Chaorrupted Tentacle", 5);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard|Chaotic Rhison|Chaotic Koalion", "Chaorrupted Tusk", 5);
+            Core.EnsureComplete(1263);
+            Core.Logger($"Completed x{i++}");
+        }
+    }                 
 
     public void VampireREP(int rank = 10)
     {
