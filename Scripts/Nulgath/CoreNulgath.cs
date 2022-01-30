@@ -575,41 +575,39 @@ public class CoreNulgath
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
             while (Core.CheckInventory("Tainted Core"))
             {
-                Core.EnsureComplete(609);
-                Bot.Wait.ForDrop("Relic of Chaos");
-                Bot.Player.Pickup("Relic of Chaos");
-                Core.EnsureComplete(2857);
-                Bot.Sleep(Core.ActionDelay);
-                Core.EnsureAccept(2857, 609);
-                Bot.Sleep(Core.ActionDelay);
+                Core.ChainComplete(609);
                 Core.Logger($"Completed x{i++}");
             }
-            if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            while (Core.CheckInventory("Relic of Chaos", 1))
             {
-                while (Core.CheckInventory("Tainted Soul"))
+                Core.ChainComplete(2857);
+                Core.Logger($"Completed x{i++}");
+            }
+        }
+        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+        {
+            while (Core.CheckInventory("Tainted Soul"))
+            {
+                if (OBoNPet)
                 {
-                    if (OBoNPet)
-                        Core.EnsureComplete(2561);
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                        Core.EnsureComplete(599);
-                    Bot.Wait.ForDrop("Relic of Chaos");
-                    Bot.Player.Pickup("Relic of Chaos");
-                    Core.EnsureComplete(2857);
-                    Bot.Sleep(Core.ActionDelay);
-                    Core.EnsureAccept(2857);
-                    Bot.Sleep(Core.ActionDelay);
-                    if (OBoNPet)
-                        Core.EnsureAccept(2561);
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                        Core.EnsureAccept(599);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.ChainComplete(2561);
+                    Core.Logger($"Completed x{i++}");
+                }
+                else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                {
+                    Core.ChainComplete(599);
+                    Core.Logger($"Completed x{i++}");
+                }
+                else if (Core.CheckInventory("Relic of Chaos", 1))
+                {
+                    Core.ChainComplete(2857);
                     Core.Logger($"Completed x{i++}");
                 }
             }
-            Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
-            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-                Core.SellItem("Voucher of Nulgath");
         }
+        Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+        if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
+            Core.SellItem("Voucher of Nulgath");
     }
 
     /// <summary>
