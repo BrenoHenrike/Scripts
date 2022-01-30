@@ -80,8 +80,8 @@ public class BattleUnder
         Core.KillQuest(936, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead");
         Core.KillQuest(937, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead|Purple Crystalized Jellyfish");
         Core.KillQuest(938, "battleunderc", "Crystalized Jellyfish");
-        Core.KillQuest(939, "battleundera", "Bone Terror", FollowupIDOverwrite: 2211);
-        Core.KillQuest(939, "battleunderb", "Undead Champion", FollowupIDOverwrite: 2211);
+        Core.KillQuest(939, "battleundera", "Bone Terror");
+        Core.KillQuest(939, "battleunderb", "Undead Champion");
         Core.KillQuest(939, "battleunderc", "Crystalized Jellyfish", FollowupIDOverwrite: 2211);
     }
 
