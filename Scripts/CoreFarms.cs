@@ -570,14 +570,14 @@ public class CoreFarms
             {
                 Core.EnsureAccept(5111, 5112, 5119, 5120);
 
-                Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloudy Hide", 6);
-                Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Moglinberry Ice Cream", 5);
-                Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Sprinkles", 3);
-                Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloud Shark Farts", 3);
-                Core.HuntMonster("baconcatlair", "Sketchy Shark", "College-Ruled Paper", 3);
-                Core.HuntMonster("baconcatlair", "8-Bit Shark", "Great White DLC", 3);
-                Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3);
-                Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Shark Teeth", 10);
+                Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloudy Hide", 6); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Moglinberry Ice Cream", 5); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Sprinkles", 3); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloud Shark Farts", 3); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "Sketchy Shark", "College-Ruled Paper", 3); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "8-Bit Shark", "Great White DLC", 3); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3); //these are all locked if the quests arent done
+                Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Shark Teeth", 10); //these are all locked if the quests arent done
 
                 Core.EnsureComplete(5111, 5112, 5119, 5120);
             }
@@ -585,11 +585,11 @@ public class CoreFarms
             {
                 Core.EnsureAccept(5121, 5123, 5124, 5131);
 
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Wheel of Bacon Token", 5, false);
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Legs Smashed", 10);
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Quarters", 7);
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 1 Destroyed", 4);
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 2 Destroyed", 4);
+                Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 1 Destroyed", 4); // 5121 rest are locked
+                Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 2 Destroyed", 4); // 5121 rest are locked
+                // Core.HuntMonster("baconcatlair", "Robo Shark", "Wheel of Bacon Token", 5, false);
+                // Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Legs Smashed", 10);
+                // Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Quarters", 7);
 
                 Core.EnsureComplete(5121, 5123, 5124, 5131);
             }
