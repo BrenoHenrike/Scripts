@@ -862,7 +862,6 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        Bot.Wait.ForMapLoad(map);
         Jump(cell, pad);
         Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
         if (item == null)
@@ -891,7 +890,6 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        Bot.Wait.ForMapLoad(map);
         if (item == null)
         {
             if(log)
@@ -902,6 +900,7 @@ public class CoreBots
         else
             _HuntForItem(monster, item, quant, isTemp, log: log);
     }
+
 
     /// <summary>
     /// Kill Escherion for the desired item
