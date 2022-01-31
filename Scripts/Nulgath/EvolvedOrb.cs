@@ -9,13 +9,13 @@ public class EvolvedOrb
     public CoreNulgath Nulgath = new CoreNulgath();
 
     public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    {
+        Core.SetOptions();
 
         GetAllOrb();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 
     public void GetAllOrb()
     {
