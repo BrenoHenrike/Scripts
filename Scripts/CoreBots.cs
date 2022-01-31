@@ -292,6 +292,8 @@ public class CoreBots
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
             else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
                 Logger($"You dont have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+        if (!item.Coins && item.Cost > Bot.Player.Gold)
+            Logger($"You dont have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -324,7 +326,9 @@ public class CoreBots
                             != DialogResult.Yes)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
             else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You dont have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+                Logger($"You dont have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+        if (!item.Coins && item.Cost > Bot.Player.Gold)
+            Logger($"You dont have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
