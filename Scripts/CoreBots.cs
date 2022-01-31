@@ -986,17 +986,31 @@ public class CoreBots
         Bot.Options.AutoRelogin = autoRelogSwitch;
     }
 
+    /// <summary>
+    /// Checks, and promps for the latest Rbot Version
+    /// <param name="TargetVersion">Current RBot Version to Check against</param>
+    /// </summary>
     public void VersionChecker(string TargetVersion)
     {
-        int[] TargetVArray = Array.ConvertAll(TargetVersion.Split('.'), int.Parse);
-        int[] CurrentVArray = Array.ConvertAll(Forms.Main.Text.Replace("RBot ", "").Split('.'), int.Parse);
-        foreach (int Digit in TargetVArray)
+        List<int> TargetVArray = Array.ConvertAll(TargetVersion.Split('.'), int.Parse).ToList();
+        List<int> CurrentVArray = Array.ConvertAll(Forms.Main.Text.Replace("RBot ", "").Split('.'), int.Parse).ToList();
+        for (int i = 0; i < TargetVArray.Count; i++)
         {
-            int Index = Array.IndexOf(TargetVArray, Digit);
-            if (Digit < CurrentVArray[Index])
+            int Target = TargetVArray.Skip(i).First();
+            int Current = CurrentVArray.Skip(i).First();
+            if (Target < Current)
                 return;
-            else if (Digit > CurrentVArray[Index])
-                Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
+            else if (Target > Current)
+            {
+                DialogResult SendSite = MessageBox.Show($"This script requires RBot {TargetVersion} or above, click OK to open the download page of the latest release", "Outdated RBot detected", MessageBoxButtons.OKCancel);
+                if (SendSite == DialogResult.OK)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/BrenoHenrike/RBot/releases");
+                    StopBot();
+                }
+                else
+                    Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
+            }
         }
     }
 
