@@ -22,7 +22,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
     private bool GetNONac = false;
 
 
-    new string[] WOOOOODropsAC = {
+    string[] WOOOOODropsAC = {
     "Cr1tikal Hair",
     "Cr1tikal Hair + Beard",
     "Cr1tikal Hat",
@@ -37,14 +37,14 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
     "Treasure Chest"
     };
 
-    new string[] WOOOOODropsNonAC =
+    string[] WOOOOODropsNonAC =
     {
     "YugiWOAH Card",
     "ARTX 3090 Controller",
     "ARTX Dome",
     "ARTX Shelf",
     "ARTX Twilly Pet",
-    "CCCG Set",,
+    "CCCG Set",
     "Major Mushroom Pet",
     "Moist Water Bottle",
     };
@@ -61,10 +61,10 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
 
     public void WOOOOOOOOOOOOOOO()
     {
-
-        if (GetNONac) string[] ArrayName = WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
-        else string ArrayName = WOOOOODropsAC;
-        while (!Core.CheckInventory(ArrayName))
+        string[] FocussedArray;
+        if (GetNONac) FocussedArray = WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
+        else  FocussedArray = WOOOOODropsAC;
+        while (!Core.CheckInventory(FocussedArray))
         {
             Core.EnsureAccept(8497);
             Core.HuntMonster("Mverse", "Major Mushroom", "Dark Caster Card", 1, isTemp: true);
