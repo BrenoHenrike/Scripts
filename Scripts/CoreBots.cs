@@ -284,12 +284,14 @@ public class CoreBots
             return;
         if (item.Coins && item.Cost > 0)
             if (MessageBox.Show(
-                                "The bot is about to buy an item that costs AC's, do you accept this?", 
-                                "Warning: AC costing item!", 
+                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?", 
+                                "Warning: Costs AC!", 
                                 MessageBoxButtons.YesNo, 
                                 MessageBoxIcon.Question)
                             != DialogResult.Yes)
-                Logger("The bot cannot continue without buying item item, stopping the bot.", messageBox: true, stopBot: true);
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+            else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
+                Logger($"You dont have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -315,12 +317,14 @@ public class CoreBots
             return;
         if (item.Coins && item.Cost > 0)
             if (MessageBox.Show(
-                                "The bot is about to buy an item that costs AC's, do you accept this?", 
-                                "Warning: AC costing item!", 
+                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?", 
+                                "Warning: Costs AC!", 
                                 MessageBoxButtons.YesNo, 
                                 MessageBoxIcon.Question)
                             != DialogResult.Yes)
-                Logger("The bot cannot continue without buying item item, stopping the bot.", messageBox: true, stopBot: true);
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+            else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
+                Logger($"You dont have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
