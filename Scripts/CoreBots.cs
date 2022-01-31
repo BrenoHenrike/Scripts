@@ -106,6 +106,7 @@ public class CoreBots
             }, "Skip Cutscenes");
 
             Bot.SendPacket("%xt%zm%afk%1%false%");
+            Bot.Sleep(ActionDelay);
             Bot.RegisterHandler(1000, b =>
             {
                 if (b.Player.AFK)
