@@ -31,10 +31,8 @@ public class Void_Highlord_AIO
 
     public void DoAll()
     {
-        Bot.Player.LoadBank();
-
         if (Core.CheckInventory("Void Highlord"))
-        return;
+            return;
 
         Core.Logger("Level Check");
         Farm.Experience(80);
@@ -50,7 +48,6 @@ public class Void_Highlord_AIO
 
         //    Bot.Player.EquipItem("Void Highlord");
         //    Farm.IcestormArena(rankUpClass: true);    // When auto-enhance gets released/mde un // these 2 lines
-
 
         Core.Logger("All Finished");
     }
