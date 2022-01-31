@@ -4,6 +4,8 @@ using RBot.Monsters;
 using RBot.Quests;
 using RBot.Flash;
 using RBot.Skills;
+using RBot.Servers;
+using RBot.Shops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -298,7 +300,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
-        RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
+        ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
             return;
@@ -333,7 +335,7 @@ public class CoreBots
         Join(map);
         Bot.Shops.Load(shopID);
         Bot.Sleep(ActionDelay);
-        RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
+        ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
             return;
@@ -352,7 +354,7 @@ public class CoreBots
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
-    private void _BuyItem(int shopID, RBot.Shops.ShopItem item, int quant, int shopQuant, int shopItemID)
+    private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant, int shopItemID)
     {
         if (shopItemID == 0)
             for (int i = 0; i < quant; i++)
@@ -366,7 +368,7 @@ public class CoreBots
         Logger($"Bought {quant}x{shopQuant} {item.Name}");
     }
 
-    private int _CalcBuyQuantity(RBot.Shops.ShopItem item, int quant, int shopQuant)
+    private int _CalcBuyQuantity(ShopItem item, int quant, int shopQuant)
     {
         if (Bot.Inventory.GetQuantity(item.Name) + shopQuant > item.MaxStack)
         {
@@ -551,8 +553,8 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -578,8 +580,8 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -606,7 +608,7 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -634,7 +636,7 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -659,7 +661,7 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void ChainQuest(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -678,8 +680,8 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] Rewards = QuestData.Rewards.ToArray();
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        ItemBase[] Rewards = QuestData.Rewards.ToArray();
         
         if (QuestData == null)
             Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
@@ -704,7 +706,7 @@ public class CoreBots
             AddDrop(Reward);
         }
         else
-            foreach (RBot.Items.ItemBase Item in Rewards)
+            foreach (ItemBase Item in Rewards)
                 AddDrop(Item.Name);
 
         Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
@@ -1002,9 +1004,9 @@ public class CoreBots
         Logger("Relogin started");
         Bot.Player.Logout();
         Bot.Sleep(5000);
-        RBot.Servers.Server server = Bot.Options.AutoReloginAny 
-                ? RBot.Servers.ServerList.Servers.Find(x => x.IP != RBot.Servers.ServerList.LastServerIP) 
-                : RBot.Servers.ServerList.Servers.Find(s => s.IP == RBot.Servers.ServerList.LastServerIP) ?? RBot.Servers.ServerList.Servers[0];
+        Server server = Bot.Options.AutoReloginAny 
+                ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP) 
+                : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
         Bot.Player.Connect(server);
         while(!Bot.Player.LoggedIn)
@@ -1111,26 +1113,26 @@ public class CoreBots
             GearBoost.Undead
         };
         ItemCategory[] WeaponCatagories = {
-            RBot.Items.ItemCategory.Sword, 
-            RBot.Items.ItemCategory.Axe, 
-            RBot.Items.ItemCategory.Dagger, 
-            RBot.Items.ItemCategory.Gun, 
-            RBot.Items.ItemCategory.HandGun, 
-            RBot.Items.ItemCategory.Rifle, 
-            RBot.Items.ItemCategory.Bow, 
-            RBot.Items.ItemCategory.Mace, 
-            RBot.Items.ItemCategory.Gauntlet, 
-            RBot.Items.ItemCategory.Polearm, 
-            RBot.Items.ItemCategory.Staff, 
-            RBot.Items.ItemCategory.Wand, 
-            RBot.Items.ItemCategory.Whip
+            ItemCategory.Sword, 
+            ItemCategory.Axe, 
+            ItemCategory.Dagger, 
+            ItemCategory.Gun, 
+            ItemCategory.HandGun, 
+            ItemCategory.Rifle, 
+            ItemCategory.Bow, 
+            ItemCategory.Mace, 
+            ItemCategory.Gauntlet, 
+            ItemCategory.Polearm, 
+            ItemCategory.Staff, 
+            ItemCategory.Wand, 
+            ItemCategory.Whip
         };
-        RBot.Items.InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
-        RBot.Items.InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
-        RBot.Items.InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
+        InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
+        InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
+        InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
 
-        foreach (RBot.Items.InventoryItem Item in BankInvData)
+        foreach (InventoryItem Item in BankInvData)
         {
             if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
             {
@@ -1146,7 +1148,7 @@ public class CoreBots
         {
             Dictionary<string, float> BoostedGearDMGall = new Dictionary<string, float>();
 
-            foreach (RBot.Items.InventoryItem Item in BankInvData)
+            foreach (InventoryItem Item in BankInvData)
             {
                 if (Item.Meta != null && Item.Meta.Contains("dmgAll") && 
                    (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
