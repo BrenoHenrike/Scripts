@@ -1653,7 +1653,7 @@ public class CoreFarms
         int i = 1;
         while (FactionRank("Fishing") < rank)
         {
-            Core.AddDrop("Fising Bait", "Fishing Dynamite");
+            Core.AddDrop("Fishing Bait", "Fishing Dynamite");
 
             while (Bot.Player.GetFactionRank("Fishing") < 2)
             {
