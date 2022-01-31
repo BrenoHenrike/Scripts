@@ -326,50 +326,6 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
     }
-    public void SwagTokenA(int quant = 100)
-    {
-        if (!Core.IsMember)
-            return;
-
-        while (Core.CheckInventory("Super-Fan Swag Token A", quant))
-            return;
-
-        Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
-
-        int i = quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
-
-        while (!Core.CheckInventory("Super-Fan Swag Token A", quant))
-        {
-            Core.Logger($"Farming Token A x {i}");
-
-            Core.Logger($"Farming Token C x { 200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C") }");
-
-            while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
-            {
-                Core.EnsureAccept(1310);
-                Core.HuntMonster("collectorlab", "Dust Bunny of Doom|Death on Wings", "Doppelganger Documents", log: false);
-                Core.EnsureComplete(1310);
-            }
-
-            if (!Core.CheckInventory("Super-Fan Swag Token A", quant))
-            {
-                Core.BuyItem("collection", 325, 9394, 20);
-                Bot.Sleep(1500);
-                Core.BuyItem("collection", 325, 9393, Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
-            }
-            Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A") } Left to Farm");
-        }
-
-        Core.ToBank("Super-Fan Swag Token A");
-        Core.Logger("Post Farm Cleanup");
-        while (Core.CheckInventory("Super-Fan Swag Token C"))
-            Core.SellItem("Super-Fan Swag Token C", all: true);
-        while (Core.CheckInventory("Super-Fan Swag Token B"))
-            Core.SellItem("Super-Fan Swag Token B", all: true);
-        while (Core.CheckInventory("Super-Fan Swag Token D"))
-            Core.SellItem("Super-Fan Swag Token D", all: true);
-    }
-
 
     #endregion
 
@@ -754,7 +710,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Chaos);
+            MembershipDues(MemberShipsIDS.Chaos);
         else
             while (FactionRank("Chaos") < rank)
             {
@@ -773,7 +729,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.ChronoSpan);
+            MembershipDues(MemberShipsIDS.ChronoSpan);
         else
             while (FactionRank("ChronoSpan") < rank)
             {
@@ -820,7 +776,7 @@ public class CoreFarms
         if (FactionRank("Doomwood") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Doomwood);
+            MembershipDues(MemberShipsIDS.Doomwood);
         else
             Core.AddDrop("Dark Tower Sword", "Light Tower Sword");
         Core.EquipClass(ClassType.Farm);
@@ -868,7 +824,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Arcangrove);
+            MembershipDues(MemberShipsIDS.Arcangrove);
         else
             while (FactionRank("Dreadfire") < rank)
             {
@@ -903,7 +859,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Dwarfhold);
+            MembershipDues(MemberShipsIDS.Dwarfhold);
         else
             while (FactionRank("Dwarfhold") < rank)
             {
@@ -946,7 +902,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Embersea);
+            MembershipDues(MemberShipsIDS.Embersea);
         else
             while (FactionRank("Embersea") < rank)
             {
@@ -990,7 +946,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Etherstorm);
+            MembershipDues(MemberShipsIDS.Etherstorm);
         else
             while (FactionRank("Etherstorm") < rank)
             {
@@ -1012,7 +968,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Evil);
+            MembershipDues(MemberShipsIDS.Evil);
         else
             while (FactionRank("Evil") < 4)
             {
@@ -1072,7 +1028,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Good);
+            MembershipDues(MemberShipsIDS.Good);
         else
             while (FactionRank("Good") < 4)
             {
@@ -1141,7 +1097,7 @@ public class CoreFarms
         if (FactionRank("Lycan") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Lycan);
+            MembershipDues(MemberShipsIDS.Lycan);
         else
         if (!Bot.Quests.IsAvailable(537))
         {
@@ -1185,7 +1141,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Horc);
+            MembershipDues(MemberShipsIDS.Horc);
         else
             while (FactionRank("Horc") < rank)
             {
@@ -1272,7 +1228,7 @@ public class CoreFarms
         if (FactionRank("Mythsong") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Mythsong);
+            MembershipDues(MemberShipsIDS.Mythsong);
         else
         if (!Bot.Quests.IsAvailable(710))
         {
@@ -1315,7 +1271,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Northpointe);
+            MembershipDues(MemberShipsIDS.Northpointe);
         else
             while (FactionRank("Northpointe") < rank)
             {
@@ -1347,7 +1303,7 @@ public class CoreFarms
         if (FactionRank("Ravenloss") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Ravenloss);
+            MembershipDues(MemberShipsIDS.Ravenloss);
         else
         if (!Bot.Quests.IsAvailable(3445))
         {
@@ -1374,7 +1330,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Sandsea);
+            MembershipDues(MemberShipsIDS.Sandsea);
         else
             while (FactionRank("Sandsea") < rank)
             {
@@ -1405,7 +1361,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Skygaurd);
+            MembershipDues(MemberShipsIDS.Skygaurd);
         else
             while (FactionRank("Skyguard") < rank)
             {
@@ -1495,7 +1451,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Swordhaven);
+            MembershipDues(MemberShipsIDS.Swordhaven);
         else
             while (FactionRank("Swordhaven") < rank)
             {
@@ -1521,7 +1477,7 @@ public class CoreFarms
         if (FactionRank("ThunderForge") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Thunderforge);
+            MembershipDues(MemberShipsIDS.Thunderforge);
         else
         if (!Bot.Quests.IsAvailable(2733))
         {
@@ -1561,7 +1517,7 @@ public class CoreFarms
         if (FactionRank("Troll") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Troll);
+            MembershipDues(MemberShipsIDS.Troll);
         else
             Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
@@ -1582,7 +1538,7 @@ public class CoreFarms
         if (FactionRank("Vampire") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Vampire);
+            MembershipDues(MemberShipsIDS.Vampire);
         else
         if (!Bot.Quests.IsAvailable(522))
         {
@@ -1606,7 +1562,7 @@ public class CoreFarms
         if (FactionRank("Yokai") >= rank)
             return;
         if (Core.IsMember)
-            MemREP(MemberShipsIDS.Yokai);
+            MembershipDues(MemberShipsIDS.Yokai);
         else
             Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
@@ -1710,26 +1666,64 @@ public class CoreFarms
         }
     }
 
-    public void MemREP(MemberShipsIDS faction, int rank = 10)
+    public void SwagTokenA(int quant = 100)
+    {
+        if (!Core.IsMember || Core.CheckInventory("Super-Fan Swag Token A", quant))
+            return;
+
+        Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
+        Core.EquipClass(ClassType.Farm);
+        int i = quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
+
+        while (!Core.CheckInventory("Super-Fan Swag Token A", quant))
+        {
+            Core.Logger($"Farming Token A x {i}");
+
+            Core.Logger($"Farming Token C x { 200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C") }");
+
+            while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
+            {
+                Core.EnsureAccept(1310);
+                Core.HuntMonster("collectorlab", "Dust Bunny of Doom|Death on Wings", "Doppelganger Documents", log: false);
+                Core.EnsureComplete(1310);
+            }
+
+            if (!Core.CheckInventory("Super-Fan Swag Token A", quant))
+            {
+                Core.BuyItem("collection", 325, 9394, 20);
+                Bot.Sleep(1500);
+                Core.BuyItem("collection", 325, 9393, Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
+            }
+            Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A") } Left to Farm");
+        }
+
+        Core.ToBank("Super-Fan Swag Token A");
+        Core.Logger("Post Farm Cleanup");
+        while (Core.CheckInventory("Super-Fan Swag Token C"))
+            Core.SellItem("Super-Fan Swag Token C", all: true);
+        while (Core.CheckInventory("Super-Fan Swag Token B"))
+            Core.SellItem("Super-Fan Swag Token B", all: true);
+        while (Core.CheckInventory("Super-Fan Swag Token D"))
+            Core.SellItem("Super-Fan Swag Token D", all: true);
+    }
+
+    public void MembershipDues(MemberShipsIDS faction, int rank = 10)
     {
         if (!Core.IsMember)
             return;
 
-        Core.EquipClass(ClassType.Farm);
-
-        int questID = (int)Bot.Config.Get<MemberShipsIDS>("questID");
         int i = 1;
-
-        while (Bot.Player.GetFactionRank("faction") < 10)
+        while (FactionRank($"{faction}") < 10)
         {
             SwagTokenA(1);
-            Core.ChainComplete(questID);
+            Core.ChainComplete((int)faction);
             Core.Logger($"Completed x{i++}");
         }
     }
-    #endregion
 
     public int FactionRank(string faction) => Bot.Player.GetFactionRank(faction);
+
+    #endregion
 }
 
 public enum BoostIDs
