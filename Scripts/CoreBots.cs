@@ -505,7 +505,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
@@ -516,7 +516,8 @@ public class CoreBots
         SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -531,7 +532,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
@@ -542,7 +543,8 @@ public class CoreBots
         SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -558,7 +560,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
@@ -569,7 +571,8 @@ public class CoreBots
         GetMapItem(MapItemID, Amount, MapName);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -585,7 +588,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
         RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
@@ -596,7 +599,8 @@ public class CoreBots
         BuyItem(MapName, ShopID, ItemName, Amount);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
