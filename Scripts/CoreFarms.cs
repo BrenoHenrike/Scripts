@@ -159,7 +159,7 @@ public class CoreFarms
         while ((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level < 100 && rankUpClass && Bot.Player.Rank != 10))
+        while ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level <= 100 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
     }
 
@@ -196,8 +196,8 @@ public class CoreFarms
         if (!Core.CheckInventory(ClassName))
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
 
-        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name == ClassName);
-        if (itemInv.Category != ItemCategory.Class)
+        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name == ClassName && i.Category == ItemCategory.Class);
+        if (itemInv == null)
             Core.Logger($"\"{ClassName}\" is not a valid Class", messageBox: true, stopBot: true);
         if (itemInv.Quantity == 302500)
         {
