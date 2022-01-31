@@ -3,25 +3,25 @@ using RBot;
 
 public class BloodMoonToken
 {
-	public CoreBots Core => CoreBots.Instance;
+    public CoreBots Core => CoreBots.Instance;
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop("Blood Moon Token", "Black Blood Vial", "Moon Stone");
+        Core.AddDrop("Blood Moon Token", "Black Blood Vial", "Moon Stone");
 
-		while (!bot.ShouldExit() || !Core.CheckInventory("Blood Moon Token", 300))
-		{
-			Core.EnsureAccept(6059);
+        while (!bot.ShouldExit() || !Core.CheckInventory("Blood Moon Token", 300))
+        {
+            Core.EnsureAccept(6059);
 
-			Core.HuntMonster("bloodmoon", "Black Unicorn", "Black Blood Vial", 1, false);
-			Core.HuntMonster("bloodmoon", "Lycan Guard", "Moon Stone", 1, false);
+            Core.HuntMonster("bloodmoon", "Black Unicorn", "Black Blood Vial", 1, false);
+            Core.HuntMonster("bloodmoon", "Lycan Guard", "Moon Stone", 1, false);
 
-			Core.EnsureComplete(6059);
-			bot.Wait.ForPickup("Blood Moon Token");
-		}
+            Core.EnsureComplete(6059);
+            bot.Wait.ForPickup("Blood Moon Token");
+        }
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

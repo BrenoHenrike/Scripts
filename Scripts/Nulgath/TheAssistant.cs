@@ -5,17 +5,17 @@ using RBot;
 
 public class TheAssistant
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNulgath Nulgath = new CoreNulgath();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop(Nulgath.bagDrops);
+        Core.AddDrop(Nulgath.bagDrops);
 
-		Nulgath.TheAssistant();
+        Nulgath.TheAssistant();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

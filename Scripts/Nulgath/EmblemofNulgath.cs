@@ -5,17 +5,17 @@ using RBot;
 
 public class EmblemofNulgath
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNulgath Nulgath = new CoreNulgath();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop(Nulgath.bagDrops);
+        Core.AddDrop(Nulgath.bagDrops);
 
-		Nulgath.EmblemofNulgath();
+        Nulgath.EmblemofNulgath();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

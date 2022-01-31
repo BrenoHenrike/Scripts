@@ -4,16 +4,16 @@ using RBot;
 
 public class YokaiREP
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-		Farm.YokaiREP();
+        Farm.YokaiREP();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

@@ -18,10 +18,10 @@ public class FishingREP
     {
         Core.SetOptions();
 
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+
         Farm.FishingREP();
 
         Core.SetOptions(false);
     }
-
-
 }

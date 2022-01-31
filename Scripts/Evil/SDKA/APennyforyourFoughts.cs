@@ -6,16 +6,16 @@ using RBot;
 
 public class DSOPenny
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
     public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    {
+        Core.SetOptions();
         Core.AddDrop("DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant");
 
         SDKA.Penny();
 
         Core.SetOptions(false);
-	}
+    }
 }

@@ -4,17 +4,17 @@ using RBot;
 
 public class DreadrockLegionToken
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreLegion Legion = new CoreLegion();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreLegion Legion = new CoreLegion();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop("Legion Token");
+        Core.AddDrop("Legion Token");
 
-		Legion.LTDreadrock();
+        Legion.LTDreadrock();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

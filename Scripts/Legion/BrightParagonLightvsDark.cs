@@ -4,17 +4,17 @@ using RBot;
 
 public class BrightParagonLightvsDark
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreLegion Legion = new CoreLegion();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreLegion Legion = new CoreLegion();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop("Legion Token", "Legion Token Pile");
+        Core.AddDrop("Legion Token", "Legion Token Pile");
 
-		Legion.LTBrightParagon();
+        Legion.LTBrightParagon();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

@@ -17,25 +17,25 @@ public class SagaHorc
         Core.SetOptions(false);
     }
 
-	public void CompleteSaga()
-	{
-		Core.Logger("Part 1");
-		Part1();
-		Core.Logger("Part 2");
-		Part2();
-		Core.Logger("Part 3");
-		Part3();
-		Core.Logger("Part 4");
-		Part4();
-		Core.Logger("Part 5");
-		Part5();
+    public void CompleteSaga()
+    {
+        Core.Logger("Part 1");
+        Part1();
+        Core.Logger("Part 2");
+        Part2();
+        Core.Logger("Part 3");
+        Part3();
+        Core.Logger("Part 4");
+        Part4();
+        Core.Logger("Part 5");
+        Part5();
 
         Core.Relogin();
         Core.BuyItem("bloodtusk", 308, "Elite Phoenix Bow");
         Bot.Sleep(2500);
         Core.ToBank("Elite Phoenix Bow");
         Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-	}
+    }
 
     public void Part1()
     {
@@ -90,9 +90,9 @@ public class SagaHorc
         Bot.Sleep(2000);
 
         //Chaos Enrages the Horcs
-		Core.ChainComplete(1273);
-	}
-	
+        Core.ChainComplete(1273);
+    }
+    
     public void Part2()
     {
         if (Bot.Quests.IsUnlocked(1424))
@@ -135,8 +135,8 @@ public class SagaHorc
 
         //Alliance Subdued
         Core.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" }, hasFollowup: false);
-	}
-	
+    }
+    
     public void Part3()
     {
         if (Bot.Quests.IsUnlocked(1456))
@@ -158,8 +158,8 @@ public class SagaHorc
 
         //The Heart of the Temple Awaits
         Core.MapItemQuest(1428, "ancienttemple", 707, hasFollowup: false);
-	}
-	
+    }
+    
     public void Part4()
     {
         if (Bot.Quests.IsUnlocked(1469))
@@ -182,8 +182,8 @@ public class SagaHorc
 
         //Battle the Baas!
         Core.KillQuest(1460, "orecavern", "Naga Baas", hasFollowup: false);
-	}
-	
+    }
+    
     public void Part5()
     {
         if (Bot.Quests.IsUnlocked(1473))

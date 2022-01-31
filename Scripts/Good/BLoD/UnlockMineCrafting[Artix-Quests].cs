@@ -6,18 +6,18 @@ using RBot;
 
 public class UnlockMineCrafting_ArtixQuests
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
-	public CoreBLOD BLOD = new CoreBLOD();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-		Core.AddDrop("BLinding Light of Destiny Handle", "Bonegrinder Medal", 
-					 "Bone Dust", "Undead Essence", "Undead Energy",
-					 "Spirit Orb", "Loyal Spirit Orb");
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreBLOD BLOD = new CoreBLOD();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+        Core.AddDrop("BLinding Light of Destiny Handle", "Bonegrinder Medal", 
+                     "Bone Dust", "Undead Essence", "Undead Energy",
+                     "Spirit Orb", "Loyal Spirit Orb");
 
-		BLOD.UnlockMineCrafting();
+        BLOD.UnlockMineCrafting();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

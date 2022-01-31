@@ -3,16 +3,16 @@
 using RBot;
 public class SpellCraftingREP
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-		Farm.SpellCraftingREP();
+        Farm.SpellCraftingREP();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

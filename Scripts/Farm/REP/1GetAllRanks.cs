@@ -3,17 +3,17 @@
 using RBot;
 public class GetAllRanks
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, true);
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, true);
 
-		Farm.GetAllRanks();
+        Farm.GetAllRanks();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }
