@@ -10,6 +10,15 @@ public class JuggernautItemsofNulgath
     public CoreFarms Farm = new CoreFarms();
     public CoreNulgath Nulgath = new CoreNulgath();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        JuggItems();
+
+        Core.SetOptions(false);
+    }
+
     public readonly string[] Rewards =
     {
         "Oblivion of Nulgath",
@@ -33,9 +42,9 @@ public class JuggernautItemsofNulgath
         "Void Cowboy's Pistol",
         "Dual Void Cowboy Pistols"
     };
-    public void ScriptMain(ScriptInterface bot)
+
+    public void JuggItems()
     {
-        Core.SetOptions();
         Core.AddDrop(Nulgath.bagDrops);
         Core.AddDrop(Rewards);
 
@@ -56,7 +65,5 @@ public class JuggernautItemsofNulgath
             Core.EnsureCompleteChoose(837);
             Core.Logger($"Completed x{i++}");
         }
-
-        Core.SetOptions(false);
     }
 }

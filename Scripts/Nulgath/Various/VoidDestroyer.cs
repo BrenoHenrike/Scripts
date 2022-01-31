@@ -26,6 +26,13 @@ public class VoidDestroyer
     {
         Core.SetOptions();
 
+        GetDestroyer();
+
+        Core.SetOptions(false);
+    }
+
+    public void GetDestroyer()
+    {
         int i = 1;
         while(!Core.CheckInventory(Rewards, toInv: false))
         {
@@ -36,10 +43,8 @@ public class VoidDestroyer
             Nulgath.FarmGemofNulgath(1);
             
             Core.ChainComplete(5661);
-            bot.Player.Pickup(Rewards);
+            Bot.Player.Pickup(Rewards);
             Core.Logger($"Completed x{i++}");
         }
-
-        Core.SetOptions(false);
     }
 }

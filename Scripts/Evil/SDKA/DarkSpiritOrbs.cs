@@ -12,8 +12,7 @@ public class DarkSpiritOrbs
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Dark Spirit Orb", "Shadow Creeper Enchant", "Shadow Serpent Scythe");
-
+        
         SDKA.DSO(10500);
 
         Core.SetOptions(false);

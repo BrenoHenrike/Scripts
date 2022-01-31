@@ -12,6 +12,13 @@ public class BambloozevsDrudgen
     {
         Core.SetOptions();
 
+        MaxBags();
+
+        Core.SetOptions(false);
+    }
+
+    public void MaxBags()
+    {
         Core.AddDrop(Nulgath.bagDrops);
 
         Nulgath.BambloozevsDrudgen("Diamond of Nulgath", 1000);
@@ -27,7 +34,5 @@ public class BambloozevsDrudgen
                 Nulgath.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         }
         Nulgath.BambloozevsDrudgen("Diamond of Nulgath", 1000);
-
-        Core.SetOptions(false);
     }
 }

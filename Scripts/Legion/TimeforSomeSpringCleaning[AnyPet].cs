@@ -10,8 +10,6 @@ public class TimeforSomeSpringCleaning_AnyPet_
     {
         Core.SetOptions();
 
-        Core.AddDrop("Legion Token");
-
         Legion.LTShogunParagon();
 
         Core.SetOptions(false);

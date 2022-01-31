@@ -12,8 +12,7 @@ public class DoomKnightWeaponKit
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("DoomKnight Weapon Kit", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Grumpy Warhammer");
-
+        
         SDKA.DoomKnightWK("Ominous Aura", 10000);
 
         Core.SetOptions(false);

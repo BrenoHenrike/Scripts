@@ -112,6 +112,7 @@ public class CoreNulgath
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
         Core.AddDrop(tercessBags);
+        Core.AddDrop(bagDrops);
         int i = 1;
         Core.Logger($"Farming {quant} Dark Crystal Shard");
         while (!Bot.Inventory.Contains("Dark Crystal Shard", quant))
@@ -250,6 +251,7 @@ public class CoreNulgath
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
+        Core.AddDrop(Receipt);
         while (!Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(7551);
@@ -293,6 +295,7 @@ public class CoreNulgath
         Core.Logger($"Farming {quant} Tainted Gems");
         int i = 1;
         Core.AddDrop("Cubes", "Tainted Gem");
+        Core.AddDrop(bagDrops);
         while (!Bot.Inventory.Contains("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
@@ -316,6 +319,7 @@ public class CoreNulgath
             NationRound4Medal();
 
         Core.AddDrop("Fiend Seal", "Gem of Domination", "Emblem of Nulgath");
+        Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
@@ -393,6 +397,7 @@ public class CoreNulgath
             FarmVoucher(false);
 
         Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
+        Core.AddDrop(bagDrops);
         Core.Logger($"Reward selected: {reward}");
         Core.EnsureAccept(4778);
         EssenceofNulgath();
@@ -656,9 +661,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
-        Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10");
-        Core.CheckInventory("Receipt of Swindle");
-        Core.CheckInventory("Blood Gem of the Archfiend");
+        Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
             Core.KillEscherion("Emerald Pickaxe", publicRoom : true);

@@ -12,8 +12,6 @@ public class EmblemofNulgath
     {
         Core.SetOptions();
 
-        Core.AddDrop(Nulgath.bagDrops);
-
         Nulgath.EmblemofNulgath();
 
         Core.SetOptions(false);

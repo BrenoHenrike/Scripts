@@ -12,8 +12,6 @@ public class DirtyDeedsDoneDirtCheap
     {
         Core.SetOptions();
 
-        Core.AddDrop("Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
-
         Nulgath.DirtyDeedsDoneDirtCheap();
 
         Core.SetOptions(false);

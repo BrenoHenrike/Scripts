@@ -12,7 +12,6 @@ public class DSOPenny
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant");
 
         SDKA.Penny();
 

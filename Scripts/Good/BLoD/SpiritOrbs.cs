@@ -12,7 +12,6 @@ public class SpiritOrbs
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
 
         BLOD.SpiritOrb(10500);
 

@@ -11,8 +11,6 @@ public class DreadrockLegionToken
     {
         Core.SetOptions();
 
-        Core.AddDrop("Legion Token");
-
         Legion.LTDreadrock();
 
         Core.SetOptions(false);

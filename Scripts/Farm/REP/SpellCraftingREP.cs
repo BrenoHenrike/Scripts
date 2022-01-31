@@ -5,6 +5,7 @@ public class SpellCraftingREP
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();

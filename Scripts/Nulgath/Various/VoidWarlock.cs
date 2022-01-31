@@ -10,6 +10,15 @@ public class VoidWarlock
     public CoreFarms Farm = new CoreFarms();
     public CoreNulgath Nulgath = new CoreNulgath();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        GetWarlock();
+
+        Core.SetOptions(false);
+    }
+
     public readonly string[] Rewards =
     {
         "Void Warlock",
@@ -19,6 +28,7 @@ public class VoidWarlock
         "Void Warlock Overfiend Blade Pet",
         "Void Warlock Crown"
     };
+
     public readonly string[] Rewards2 =
     {
         "Void Warlock Helm",
@@ -28,9 +38,9 @@ public class VoidWarlock
         "Void Warlock Tendrils",
         "Void Warlock Horns",
     };
-    public void ScriptMain(ScriptInterface bot)
+
+    public void GetWarlock()
     {
-        Core.SetOptions();
         Core.AddDrop(Nulgath.bagDrops);
         Core.AddDrop(Rewards);
         Core.AddDrop(Rewards2);
@@ -68,6 +78,5 @@ public class VoidWarlock
             Core.Logger($"Completed x{i++}");
         }
         Core.Logger("All drops acquired from [Corrupted Touch] Quest");
-        Core.SetOptions(false);
     }
 }

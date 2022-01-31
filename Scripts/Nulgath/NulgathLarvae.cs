@@ -12,8 +12,6 @@ public class NulgathLarvae
     {
         Core.SetOptions();
 
-        Core.AddDrop(Nulgath.bagDrops);
-
         Nulgath.NulgathLarvae();
 
         Core.SetOptions(false);

@@ -11,8 +11,6 @@ public class FirstClassEntertainment
     {
         Core.SetOptions();
 
-        Core.AddDrop("Legion Token");
-
         Legion.LTFirstClassEntertainment();
 
         Core.SetOptions(false);

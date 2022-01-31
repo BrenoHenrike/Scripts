@@ -24,7 +24,6 @@ public class VoidCrystals
 
     public void VHLCrystals()
     {
-
         Core.AddDrop(Nulgath.bagDrops);
 
         Nulgath.FarmUni13(1);

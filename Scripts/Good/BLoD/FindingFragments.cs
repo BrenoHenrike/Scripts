@@ -13,26 +13,30 @@ public class FindingFragments_Any
     public CoreBLOD BLOD = new CoreBLOD();
 
     public string OptionStorage = "Finding_Fragments";
-
     public List<IOption> Options = new List<IOption>()
     {
         new Option<FindingFragmentsIDs>("questID", "Quest ID", "ID of the desired Finding Fragments quest to do.", FindingFragmentsIDs.Blade)
     };
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
 
+        FindingFragments();
+
+        Core.SetOptions(false);
+    }
+
+    public void FindingFragments()
+    {
         Core.EquipClass(ClassType.Farm);
         int i = 1;
-        int questID = (int)bot.Config.Get<FindingFragmentsIDs>("questID");
-        while (!bot.ShouldExit())
+        int questID = (int)Bot.Config.Get<FindingFragmentsIDs>("questID");
+        while (!Bot.ShouldExit())
         {
             BLOD.FindingFragments(questID);
             Core.Logger($"Completed x{i++}");
         }
-
-        Core.SetOptions(false);
     }
 }
 

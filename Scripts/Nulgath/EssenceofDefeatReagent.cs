@@ -12,8 +12,6 @@ public class EssenceofDefeatReagent
     {
         Core.SetOptions();
 
-        Core.AddDrop(Nulgath.bagDrops);
-
         Nulgath.EssenceofDefeatReagent();
 
         Core.SetOptions(false);

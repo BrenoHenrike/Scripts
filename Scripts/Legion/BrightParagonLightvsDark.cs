@@ -11,8 +11,6 @@ public class BrightParagonLightvsDark
     {
         Core.SetOptions();
 
-        Core.AddDrop("Legion Token", "Legion Token Pile");
-
         Legion.LTBrightParagon();
 
         Core.SetOptions(false);

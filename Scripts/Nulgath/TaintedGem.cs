@@ -12,8 +12,6 @@ public class TaintedGem
     {
         Core.SetOptions();
 
-        Core.AddDrop(Nulgath.bagDrops);
-
         Nulgath.SwindleBulk();
 
         Core.SetOptions(false);

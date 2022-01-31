@@ -21,18 +21,22 @@ public class PinpointthePieces_Any
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
 
+        Pinpoint();
+
+        Core.SetOptions(false);
+    }
+
+    public void Pinpoint()
+    {
         Core.EquipClass(ClassType.Farm);        
         int i = 1;
-        int questID = (int)bot.Config.Get<PinpointIDs>("questID");
-        while(!bot.ShouldExit())
+        int questID = (int)Bot.Config.Get<PinpointIDs>("questID");
+        while(!Bot.ShouldExit())
         {
             SDKA.PinpointthePieces(questID);
             Core.Logger($"Completed x{i++}");
         }
-
-        Core.SetOptions(false);
     }
 }
 

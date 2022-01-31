@@ -21,7 +21,6 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
     // Recommended: false
     private bool GetNONac = false;
 
-
     string[] WOOOOODropsAC = {
     "Cr1tikal Hair",
     "Cr1tikal Hair + Beard",
@@ -48,7 +47,6 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
     "Major Mushroom Pet",
     "Moist Water Bottle",
     };
-
 
     public void ScriptMain(ScriptInterface bot)
     {

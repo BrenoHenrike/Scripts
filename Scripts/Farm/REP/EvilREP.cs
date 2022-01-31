@@ -1,7 +1,6 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using RBot;
-
 public class EvilREP
 {
     public CoreBots Core => CoreBots.Instance;

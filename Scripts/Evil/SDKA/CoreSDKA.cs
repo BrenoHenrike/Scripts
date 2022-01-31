@@ -85,6 +85,11 @@ public class CoreSDKA
             return;
         }
 
+        Core.AddDrop("Dark Energy", "Dark Spirit Orb", "DoomKnight Hood", 
+                     "Experimental Dark Item", "Shadow Terror Axe", "Elders' Blood", 
+                     "DoomCoin", "Shadow Creeper Enchant", "Shadow Serpent Scythe", 
+                     "Dark Skull", "Corrupt Spirit Orb");
+
         if (!Bot.Quests.IsUnlocked(2087))
         {
             Core.Logger("Sepulchure's Armor [2069]");
@@ -145,6 +150,7 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quant) && !oneTime)
             return;
 
+        Core.AddDrop("DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant");
         if(!oneTime)
         {
             Core.Logger($"Farming {quant} DSOs");
@@ -171,6 +177,8 @@ public class CoreSDKA
     {
         if (Core.CheckInventory("Dark Spirit Orb", quant))
             return;
+
+        Core.AddDrop("Dark Spirit Orb", "Shadow Creeper Enchant", "Shadow Serpent Scythe");
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} DSOs");
@@ -255,6 +263,7 @@ public class CoreSDKA
         if(Core.CheckInventory(item, quant))
             return;
 
+        Core.AddDrop("DoomKnight Weapon Kit", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Grumpy Warhammer");
         int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
@@ -476,6 +485,7 @@ public class CoreSDKA
     {
         if(Core.CheckInventory("Sepulchure's DoomKnight Armor"))
             return;
+
         Core.Logger("Final part");
         PinpointBow(500, 250);
         PinpointDaggers(125);
@@ -506,6 +516,7 @@ public class CoreSDKA
     {
         if(Core.CheckInventory("Ominous Aura", quant))
             return;
+
         if(!Core.CheckInventory("Necrotic Daggers of Destruction"))
             NecroticDaggers();
 
@@ -524,6 +535,7 @@ public class CoreSDKA
     {
         if (Core.CheckInventory("Diabolical Aura", quant))
             return;
+
         if (!Core.CheckInventory("Necrotic Broadsword of Bane"))
             NecroticBroadsword();
 
@@ -542,6 +554,7 @@ public class CoreSDKA
     {
         if (Core.CheckInventory("Dark Spirit Orb", quantDSO) && Core.CheckInventory("Corrupt Spirit Orb", quantDSO))
             return;
+
         if (!Core.CheckInventory("Necrotic Bow of the Shadow"))
             NecroticBow();
 
@@ -558,6 +571,8 @@ public class CoreSDKA
 
     public void PinpointthePieces(int quest)
     {
+        Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
+
         Core.EnsureAccept(quest);
         Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10);
         Core.EnsureComplete(quest);
