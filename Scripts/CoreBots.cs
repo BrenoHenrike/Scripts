@@ -28,6 +28,8 @@ public class CoreBots
     public bool HardMonPublicRoom { get; set; } = true;
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
+    // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
+    public bool BankMiscAC { get; set; } = true;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
@@ -106,9 +108,9 @@ public class CoreBots
             }, "Skip Cutscenes");
 
             Bot.SendPacket("%xt%zm%afk%1%false%");
-            Bot.Sleep(ActionDelay);
             Bot.RegisterHandler(1000, b =>
             {
+                Bot.Sleep(ActionDelay);
                 if (b.Player.AFK)
                 {
                     b.Options.AutoRelogin = true;
@@ -118,6 +120,20 @@ public class CoreBots
 
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
+            if (BankMiscAC)
+            {
+                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse", "Misc" };
+                List<string> MiscForBank = new List<string>();
+                foreach (var item in Bot.Inventory.Items)
+                {
+                    if (!Whitelisted.Contains(item.Category.ToString())) 
+                        continue;
+                    if (item.Name != "Treasure Potion" && item.Coins)
+                        MiscForBank.Add(item.Name);
+                }
+                ToBank(MiscForBank.ToArray());
+            }
+
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
             EquipClass(ClassType.Solo);
@@ -246,6 +262,9 @@ public class CoreBots
     /// <param name="items">Items to move</param>
     public void ToBank(params string[] items)
     {
+        if (items == null)
+            return;
+        
         JumpWait();
         Bot.Player.OpenBank();
         foreach (string item in items)
