@@ -67,7 +67,7 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
     {
-        VersionChecker("3.6.3.0");
+        VersionChecker("3.6.3.2");
 
         // Common Options
         Bot.Options.PrivateRooms = false;
