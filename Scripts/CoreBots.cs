@@ -1057,11 +1057,15 @@ public class CoreBots
         {
             case ClassType.Farm:
                 _EquipGear(FarmGear);
-                Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
+                if (!usingFarmGeneric)
+                    Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
+                else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
                 _EquipGear(SoloGear);
-                Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
+                if (!usingSoloGeneric)
+                    Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
+                else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
         }
         currentClass = classToUse;
