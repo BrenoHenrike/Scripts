@@ -282,6 +282,14 @@ public class CoreBots
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
             return;
+        if (item.Coins && item.Cost > 0)
+            if (MessageBox.Show(
+                                "The bot is about to buy an item that costs AC's, do you accept this?", 
+                                "Warning: AC costing item!", 
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question)
+                            != DialogResult.Yes)
+                Logger("The bot cannot continue without buying item item, stopping the bot.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -305,6 +313,14 @@ public class CoreBots
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
             return;
+        if (item.Coins && item.Cost > 0)
+            if (MessageBox.Show(
+                                "The bot is about to buy an item that costs AC's, do you accept this?", 
+                                "Warning: AC costing item!", 
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question)
+                            != DialogResult.Yes)
+                Logger("The bot cannot continue without buying item item, stopping the bot.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
