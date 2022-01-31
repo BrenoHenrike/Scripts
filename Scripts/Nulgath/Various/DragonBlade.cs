@@ -70,7 +70,7 @@ public class DragonBladeofNulgath
         if (!Core.CheckInventory("Steel Afterlife"))
         {
             Farm.BludrutBrawlBoss(quant: 50, canSoloBoss: CanSoloPvPBoss);
-            Core.BuyItem("battleon", 222, "Basic War Sword");
+            Core.BuyItem("battleon", 222, "Steel Afterlife");
         }
         Farm.BludrutBrawlBoss(canSoloBoss: CanSoloPvPBoss);
         Core.BuyItem("battleon", 222, $"Behemoth Blade of {blade}");
