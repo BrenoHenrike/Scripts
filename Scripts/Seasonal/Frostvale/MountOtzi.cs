@@ -72,6 +72,6 @@ public class MountOtzi
         }
 
         //Corvus Mellori
-        Core.KillQuest(8444, "MountOtzi", "Sluagh Mellori", AutoCompleteQuest: false);
+        Core.KillQuest(8444, "MountOtzi", "Sluagh Mellori", hasFollowup: false, AutoCompleteQuest: false);
     }
 }
