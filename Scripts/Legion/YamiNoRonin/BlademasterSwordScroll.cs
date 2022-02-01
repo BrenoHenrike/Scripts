@@ -43,6 +43,7 @@ public class ThePathtoPower
             return;
         Core.AddDrop("Meditation");
         SwordMaster();
+        Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(7414);
         Legion.BoneSigil(1);
         Core.EnsureComplete(7414);
