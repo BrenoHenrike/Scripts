@@ -12,10 +12,6 @@ public class UnlockHardCoreMetals_Vayle_Quests
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AddDrop("Dark Energy", "Dark Spirit Orb", "DoomKnight Hood", 
-                     "Experimental Dark Item", "Shadow Terror Axe", "Elders' Blood", 
-                     "DoomCoin", "Shadow Creeper Enchant", "Shadow Serpent Scythe", 
-                     "Dark Skull", "Corrupt Spirit Orb");
 
         SDKA.UnlockHardCoreMetals();
 

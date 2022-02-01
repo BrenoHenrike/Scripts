@@ -27,7 +27,6 @@ public class TheDarkSacrifice
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Bot.Player.LoadBank();
 
         HBPal.HBShadowOfFate();
 

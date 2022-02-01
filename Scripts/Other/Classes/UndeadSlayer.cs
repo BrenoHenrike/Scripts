@@ -22,6 +22,8 @@ public class UndeadSlayer
     {
         if (Core.CheckInventory("UndeadSlayer"))
             return;
+        if (!Core.IsMember)
+            return;
 
         Farm.DoomwoodREP();
 

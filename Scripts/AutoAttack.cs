@@ -3,30 +3,30 @@
 public class AutoAttack
 {
     public string[] DropItems = 
-	{
-		// Add items here like: "Legion Blade", "Treasure Chest" **no comma after the last item**
+    {
+        // Add items here like: "Legion Blade", "Treasure Chest" **no comma after the last item**
 
     };
 
     public void ScriptMain(ScriptInterface bot)
-	{
-		bot.Options.InfiniteRange = true;
-		bot.Lite.UntargetSelf = true;
-		
+    {
+        bot.Options.InfiniteRange = true;
+        bot.Lite.UntargetSelf = true;
+        
         if (DropItems.Length != 0)
-		{
-        	bot.Drops.RejectElse = false;
-			foreach (string item in DropItems)
-			{
-				bot.Drops.Add(item);
-			}
-			bot.Drops.Start();
-		}
+        {
+            bot.Drops.RejectElse = false;
+            foreach (string item in DropItems)
+            {
+                bot.Drops.Add(item);
+            }
+            bot.Drops.Start();
+        }
 
         bot.Skills.StartTimer();
-		bot.Player.SetSpawnPoint();
-		
-		while (!bot.ShouldExit())
-			bot.Player.Kill("*");
-	}
+        bot.Player.SetSpawnPoint();
+        
+        while (!bot.ShouldExit())
+            bot.Player.Kill("*");
+    }
 }

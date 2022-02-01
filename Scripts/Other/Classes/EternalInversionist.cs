@@ -25,7 +25,7 @@ public class EternalInversionist
 
         Farm.EternalREP();
 
-        Core.BuyItem("fourdpyramid", 1275, "Eternal Inversionist");
+        Core.BuyItem("fourdpyramid", 1275, "Eternal Inversionist", shopItemID: 21138);
 
         if (rankUpClass)
             Farm.rankUpClass("Eternal Inversionist");

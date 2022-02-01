@@ -14,7 +14,6 @@ public class SwindlesReturnPolicy
     {
         Core.SetOptions();
 
-        Core.AddDrop(Nulgath.Receipt);
         Nulgath.SwindleReturn();
 
         Core.SetOptions(false);

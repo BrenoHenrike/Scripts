@@ -4,16 +4,19 @@ using RBot;
 
 public class GoldFarm
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
 
-		//Farm.UseBoost(BoostIDs.Gold20, RBot.Items.BoostType.Gold);
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Farm.BattleGroundE();
+        //Core.ActionDelay = 1000; //if script is having issues turning in or is slow; un // this line ^_^
 
-		Core.SetOptions(false);
-	}
+        //Farm.UseBoost(BoostIDs.Gold20, RBot.Items.BoostType.Gold);
+
+        Farm.Gold();
+
+        Core.SetOptions(false);
+    }
 }

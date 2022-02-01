@@ -8,7 +8,7 @@ public class CoreAwe
 
     public CoreBots Core => CoreBots.Instance;
 
-public bool GuardianCheck()
+    public bool GuardianCheck()
     {
         Core.Logger("Checking AQ Guardian");
         if (Core.CheckInventory("Guardian Awe Pass", 1, true))

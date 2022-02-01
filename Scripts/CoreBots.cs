@@ -4,6 +4,8 @@ using RBot.Monsters;
 using RBot.Quests;
 using RBot.Flash;
 using RBot.Skills;
+using RBot.Servers;
+using RBot.Shops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,8 @@ public class CoreBots
     public bool HardMonPublicRoom { get; set; } = true;
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
+    // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
+    public bool BankMiscAC { get; set; } = true;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
@@ -63,7 +67,7 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
     {
-        VersionChecker("3.6.3.0");
+        VersionChecker("3.6.3.2");
 
         // Common Options
         Bot.Options.PrivateRooms = false;
@@ -108,6 +112,7 @@ public class CoreBots
             Bot.SendPacket("%xt%zm%afk%1%false%");
             Bot.RegisterHandler(1000, b =>
             {
+                Bot.Sleep(ActionDelay);
                 if (b.Player.AFK)
                 {
                     b.Options.AutoRelogin = true;
@@ -117,6 +122,20 @@ public class CoreBots
 
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
+            if (BankMiscAC)
+            {
+                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse", "Misc" };
+                List<string> MiscForBank = new List<string>();
+                foreach (var item in Bot.Inventory.Items)
+                {
+                    if (!Whitelisted.Contains(item.Category.ToString())) 
+                        continue;
+                    if (item.Name != "Treasure Potion" && item.Coins)
+                        MiscForBank.Add(item.Name);
+                }
+                ToBank(MiscForBank.ToArray());
+            }
+
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
             EquipClass(ClassType.Solo);
@@ -245,6 +264,9 @@ public class CoreBots
     /// <param name="items">Items to move</param>
     public void ToBank(params string[] items)
     {
+        if (items == null)
+            return;
+        
         JumpWait();
         Bot.Player.OpenBank();
         foreach (string item in items)
@@ -278,10 +300,22 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
-        RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
+        ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
             return;
+        if (item.Coins && item.Cost > 0)
+            if (MessageBox.Show(
+                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?", 
+                                "Warning: Costs AC!", 
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question)
+                            != DialogResult.Yes)
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+            else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
+                Logger($"You dont have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+        if (!item.Coins && item.Cost > Bot.Player.Gold)
+            Logger($"You dont have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -301,14 +335,26 @@ public class CoreBots
         Join(map);
         Bot.Shops.Load(shopID);
         Bot.Sleep(ActionDelay);
-        RBot.Shops.ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
+        ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if(quant <= 0)
             return;
+        if (item.Coins && item.Cost > 0)
+            if (MessageBox.Show(
+                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?", 
+                                "Warning: Costs AC!", 
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question)
+                            != DialogResult.Yes)
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+            else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
+                Logger($"You dont have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+        if (!item.Coins && item.Cost > Bot.Player.Gold)
+            Logger($"You dont have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
-    private void _BuyItem(int shopID, RBot.Shops.ShopItem item, int quant, int shopQuant, int shopItemID)
+    private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant, int shopItemID)
     {
         if (shopItemID == 0)
             for (int i = 0; i < quant; i++)
@@ -322,7 +368,7 @@ public class CoreBots
         Logger($"Bought {quant}x{shopQuant} {item.Name}");
     }
 
-    private int _CalcBuyQuantity(RBot.Shops.ShopItem item, int quant, int shopQuant)
+    private int _CalcBuyQuantity(ShopItem item, int quant, int shopQuant)
     {
         if (Bot.Inventory.GetQuantity(item.Name) + shopQuant > item.MaxStack)
         {
@@ -505,10 +551,10 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -516,7 +562,8 @@ public class CoreBots
         SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -531,10 +578,10 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] Requirements = QuestData.Requirements.ToArray();
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -542,7 +589,8 @@ public class CoreBots
         SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -558,9 +606,9 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -569,7 +617,8 @@ public class CoreBots
         GetMapItem(MapItemID, Amount, MapName);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -585,9 +634,9 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -596,7 +645,8 @@ public class CoreBots
         BuyItem(MapName, ShopID, ItemName, Amount);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            EnsureComplete(QuestID);
+            if (QuestAutoCompletes)
+                EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -611,7 +661,7 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public void ChainQuest(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
             return;
@@ -630,8 +680,8 @@ public class CoreBots
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
     public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
     {
-        RBot.Quests.Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        RBot.Items.ItemBase[] Rewards = QuestData.Rewards.ToArray();
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        ItemBase[] Rewards = QuestData.Rewards.ToArray();
         
         if (QuestData == null)
             Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
@@ -656,7 +706,7 @@ public class CoreBots
             AddDrop(Reward);
         }
         else
-            foreach (RBot.Items.ItemBase Item in Rewards)
+            foreach (ItemBase Item in Rewards)
                 AddDrop(Item.Name);
 
         Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
@@ -812,7 +862,6 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        Bot.Wait.ForMapLoad(map);
         Jump(cell, pad);
         Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
         if (item == null)
@@ -841,7 +890,6 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        Bot.Wait.ForMapLoad(map);
         if (item == null)
         {
             if(log)
@@ -852,6 +900,7 @@ public class CoreBots
         else
             _HuntForItem(monster, item, quant, isTemp, log: log);
     }
+
 
     /// <summary>
     /// Kill Escherion for the desired item
@@ -954,9 +1003,9 @@ public class CoreBots
         Logger("Relogin started");
         Bot.Player.Logout();
         Bot.Sleep(5000);
-        RBot.Servers.Server server = Bot.Options.AutoReloginAny 
-                ? RBot.Servers.ServerList.Servers.Find(x => x.IP != RBot.Servers.ServerList.LastServerIP) 
-                : RBot.Servers.ServerList.Servers.Find(s => s.IP == RBot.Servers.ServerList.LastServerIP) ?? RBot.Servers.ServerList.Servers[0];
+        Server server = Bot.Options.AutoReloginAny 
+                ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP) 
+                : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
         Bot.Player.Connect(server);
         while(!Bot.Player.LoggedIn)
@@ -966,17 +1015,31 @@ public class CoreBots
         Bot.Options.AutoRelogin = autoRelogSwitch;
     }
 
+    /// <summary>
+    /// Checks, and promps for the latest Rbot Version
+    /// <param name="TargetVersion">Current RBot Version to Check against</param>
+    /// </summary>
     public void VersionChecker(string TargetVersion)
     {
-        int[] TargetVArray = Array.ConvertAll(TargetVersion.Split('.'), int.Parse);
-        int[] CurrentVArray = Array.ConvertAll(Forms.Main.Text.Replace("RBot ", "").Split('.'), int.Parse);
-        foreach (int Digit in TargetVArray)
+        List<int> TargetVArray = Array.ConvertAll(TargetVersion.Split('.'), int.Parse).ToList();
+        List<int> CurrentVArray = Array.ConvertAll(Forms.Main.Text.Replace("RBot ", "").Split('.'), int.Parse).ToList();
+        for (int i = 0; i < TargetVArray.Count; i++)
         {
-            int Index = Array.IndexOf(TargetVArray, Digit);
-            if (Digit < CurrentVArray[Index])
+            int Target = TargetVArray.Skip(i).First();
+            int Current = CurrentVArray.Skip(i).First();
+            if (Target < Current)
                 return;
-            else if (Digit > CurrentVArray[Index])
-                Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
+            else if (Target > Current)
+            {
+                DialogResult SendSite = MessageBox.Show($"This script requires RBot {TargetVersion} or above, click OK to open the download page of the latest release", "Outdated RBot detected", MessageBoxButtons.OKCancel);
+                if (SendSite == DialogResult.OK)
+                {
+                    System.Diagnostics.Process.Start("https://github.com/BrenoHenrike/RBot/releases");
+                    StopBot();
+                }
+                else
+                    Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
+            }
         }
     }
 
@@ -995,11 +1058,15 @@ public class CoreBots
         {
             case ClassType.Farm:
                 _EquipGear(FarmGear);
-                Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
+                if (!usingFarmGeneric)
+                    Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
+                else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
                 _EquipGear(SoloGear);
-                Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
+                if (!usingSoloGeneric)
+                    Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
+                else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
         }
         currentClass = classToUse;
@@ -1045,26 +1112,26 @@ public class CoreBots
             GearBoost.Undead
         };
         ItemCategory[] WeaponCatagories = {
-            RBot.Items.ItemCategory.Sword, 
-            RBot.Items.ItemCategory.Axe, 
-            RBot.Items.ItemCategory.Dagger, 
-            RBot.Items.ItemCategory.Gun, 
-            RBot.Items.ItemCategory.HandGun, 
-            RBot.Items.ItemCategory.Rifle, 
-            RBot.Items.ItemCategory.Bow, 
-            RBot.Items.ItemCategory.Mace, 
-            RBot.Items.ItemCategory.Gauntlet, 
-            RBot.Items.ItemCategory.Polearm, 
-            RBot.Items.ItemCategory.Staff, 
-            RBot.Items.ItemCategory.Wand, 
-            RBot.Items.ItemCategory.Whip
+            ItemCategory.Sword, 
+            ItemCategory.Axe, 
+            ItemCategory.Dagger, 
+            ItemCategory.Gun, 
+            ItemCategory.HandGun, 
+            ItemCategory.Rifle, 
+            ItemCategory.Bow, 
+            ItemCategory.Mace, 
+            ItemCategory.Gauntlet, 
+            ItemCategory.Polearm, 
+            ItemCategory.Staff, 
+            ItemCategory.Wand, 
+            ItemCategory.Whip
         };
-        RBot.Items.InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
-        RBot.Items.InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
-        RBot.Items.InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
+        InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
+        InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
+        InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
 
-        foreach (RBot.Items.InventoryItem Item in BankInvData)
+        foreach (InventoryItem Item in BankInvData)
         {
             if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
             {
@@ -1080,7 +1147,7 @@ public class CoreBots
         {
             Dictionary<string, float> BoostedGearDMGall = new Dictionary<string, float>();
 
-            foreach (RBot.Items.InventoryItem Item in BankInvData)
+            foreach (InventoryItem Item in BankInvData)
             {
                 if (Item.Meta != null && Item.Meta.Contains("dmgAll") && 
                    (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
@@ -1196,7 +1263,10 @@ public class CoreBots
     public void StopBot(bool removeStopHandler = false)
     {
         if(removeStopHandler)
+        {
             Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
+            Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
+        }
         Join("battleon");
         if (AntiLag)
         {

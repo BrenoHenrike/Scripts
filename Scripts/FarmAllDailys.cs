@@ -4,15 +4,15 @@ using RBot;
 
 public class FarmAllDailys
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreDailys Dailys = new CoreDailys();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreDailys Dailys = new CoreDailys();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Dailys.DoAllDailys();
+        Dailys.DoAllDailys();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

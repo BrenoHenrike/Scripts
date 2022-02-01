@@ -41,7 +41,7 @@ public class TowerOfDoom
         Bot.SendClientPacket($"{{\"t\":\"xt\",\"b\":{{\"r\":-1,\"o\":{{\"cmd\":\"updateQuest\",\"iValue\":{Floor},\"iIndex\":159}}}}}}", "json");
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(3474+Floor);
-        Core.KillMonster(Map, "r10", "Left", "*");
+        Core.KillMonster(Map, "r10", "Left", "*", publicRoom : true);
         Core.EnsureComplete(3474+Floor);
     }
 }

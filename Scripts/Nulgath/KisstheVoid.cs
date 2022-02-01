@@ -4,17 +4,17 @@
 using RBot;
 public class KisstheVoid
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreNulgath Nulgath = new CoreNulgath();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-        Core.AddDrop("Blood Gem of the Archfiend");
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNulgath Nulgath = new CoreNulgath();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
         // Uncomment to pick up the Betrayal Blades
         //Core.AddDrop(Nulgath.betrayalBlades);
 
         Nulgath.KisstheVoid();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

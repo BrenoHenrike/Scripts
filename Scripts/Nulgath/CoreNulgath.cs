@@ -43,15 +43,7 @@ public class CoreNulgath
     /// <summary>
     /// Drops from the bosses that used to give acess to tercess
     /// </summary>
-    public string[] tercessBags =
-    {
-        "Aracara's Fang",
-        "Defeated Makai",
-        "Escherion's Chain",
-        "Hydra Scale",
-        "O-dokuro's Tooth",
-        "Strand of Vath's Hair"
-    };
+    public string[] tercessBags = { "Bone Dust" };
 
     /// <summary>
     /// Drops from the VHL Challenge quest
@@ -120,6 +112,7 @@ public class CoreNulgath
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
         Core.AddDrop(tercessBags);
+        Core.AddDrop(bagDrops);
         int i = 1;
         Core.Logger($"Farming {quant} Dark Crystal Shard");
         while (!Bot.Inventory.Contains("Dark Crystal Shard", quant))
@@ -138,7 +131,7 @@ public class CoreNulgath
                     Bot.Player.Pickup("Strand of Vath's Hair");
             }
             Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
-            Core.KillEscherion("Escherion's Chain");
+            Core.KillEscherion("Escherion's Chain", publicRoom : true);
             if (!Core.CheckInventory("Defeated Makai", 50))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -147,7 +140,7 @@ public class CoreNulgath
                 Core.JumpWait();
             }
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain");
+            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom : true);
             Core.EnsureComplete(570);
             Bot.Wait.ForPickup("Dark Crystal Shard");
             Core.Logger($"Completed x{i++}");
@@ -164,6 +157,10 @@ public class CoreNulgath
         if (Core.CheckInventory(item, quant) || (!Core.CheckInventory("Nulgath's Birthday Gift") && !Core.CheckInventory("Bounty Hunter's Drone Pet")))
             return;
 
+        if (item != "Any")
+            Core.AddDrop(item);
+        else
+            Core.AddDrop(bagDrops);
         Core.Logger($"Farming for {item}({quant})");
         int i = 1;
         while (!Bot.Inventory.Contains(item, quant))
@@ -195,7 +192,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Diamond of Nulgath", quant))
             return;
-        Core.AddDrop("Legion Blade", "Dessicated Heart");
+        Core.AddDrop("Legion Blade", "Dessicated Heart", "Diamond of Nulgath");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Diamonds");
         int i = 1;
@@ -230,7 +227,7 @@ public class CoreNulgath
         if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
             return;
         Core.Logger($"Farming {quantApproval} Nulgath's Approval and {quantFavor} Archfiend's Favor");
-        Core.Unbank("Nulgath's Approval", "Archfiend's Favor");
+        Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
         Core.EquipClass(ClassType.Farm);
         if (quantApproval > 0)
             Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
@@ -240,42 +237,50 @@ public class CoreNulgath
     }
 
 
-/// <summary>
-/// Farms specific item with Swindles Return Policy quest
-/// </summary>
-/// <param name="quant">Desired Item quantity</param>
-/// <param name="item">Desired Item</param>
-public void SwindleReturn(string item = "Any", int quant = 1000)
-{
-    while (!Core.CheckInventory(item, quant))
+    /// <summary>
+    /// Farms specific item with Swindles Return Policy quest
+    /// </summary>
+    /// <param name="quant">Desired Item quantity</param>
+    /// <param name="item">Desired Item</param>
+    public void SwindleReturn(string item = "Any", int quant = 1000)
     {
-        Core.EnsureAccept(7551);
-        Supplies("Unidentified 1");
-        Supplies("Unidentified 6");
-        Supplies("Unidentified 9");
-        Supplies("Unidentified 16");
-        Supplies("Unidentified 20");
-        Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune");
-        switch (item)
+        if (Core.CheckInventory(item, quant))
+            return;
+
+        if (item != "Any")
+            Core.AddDrop(item);
+        else
+            Core.AddDrop(bagDrops);
+        Core.AddDrop(Receipt);
+        while (!Core.CheckInventory(item, quant))
         {
-            case "Dark Crystal Shard":
-                Core.EnsureComplete(7551, 4770);
-                break;
-            case "Diamond of Nulgath":
-                Core.EnsureComplete(7551, 4771);
-                break;
-            case "Gem of Nulgath":
-                Core.EnsureComplete(7551, 6136);
-                break;
-            case "Blood Gem of the Archfiend":
-                Core.EnsureComplete(7551, 22332);
-                break;
-            default: //Tainted Gem
-                Core.EnsureComplete(7551, 4769);
-                break;
+            Core.EnsureAccept(7551);
+            Supplies("Unidentified 1");
+            Supplies("Unidentified 6");
+            Supplies("Unidentified 9");
+            Supplies("Unidentified 16");
+            Supplies("Unidentified 20");
+            Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune");
+            switch (item)
+            {
+                case "Dark Crystal Shard":
+                    Core.EnsureComplete(7551, 4770);
+                    break;
+                case "Diamond of Nulgath":
+                    Core.EnsureComplete(7551, 4771);
+                    break;
+                case "Gem of Nulgath":
+                    Core.EnsureComplete(7551, 6136);
+                    break;
+                case "Blood Gem of the Archfiend":
+                    Core.EnsureComplete(7551, 22332);
+                    break;
+                default: //Tainted Gem
+                    Core.EnsureComplete(7551, 4769);
+                    break;
+            }
         }
     }
-}
 
     /// <summary>
     /// Farms Tainted Gem with Swindle Bulk quest
@@ -285,10 +290,12 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Tainted Gem", quant))
             return;
+        
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Tainted Gems");
         int i = 1;
-        Core.AddDrop("Cubes");
+        Core.AddDrop("Cubes", "Tainted Gem");
+        Core.AddDrop(bagDrops);
         while (!Bot.Inventory.Contains("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
@@ -311,7 +318,8 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         if (!Core.CheckInventory("Nation Round 4 Medal"))
             NationRound4Medal();
 
-        Core.AddDrop("Fiend Seal", "Gem of Domination");
+        Core.AddDrop("Fiend Seal", "Gem of Domination", "Emblem of Nulgath");
+        Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
@@ -387,6 +395,9 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
             FarmVoucher(false);
+
+        Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
+        Core.AddDrop(bagDrops);
         Core.Logger($"Reward selected: {reward}");
         Core.EnsureAccept(4778);
         EssenceofNulgath();
@@ -404,6 +415,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Essence of Nulgath", quant))
             return;
+        Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
         Core.JoinTercessuinotlim();
         Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
@@ -419,6 +431,10 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         if (Core.CheckInventory(item, quant))
             return;
         Core.AddDrop("Mana Energy for Nulgath");
+        if (item != "Any")
+            Core.AddDrop(item);
+        else
+            Core.AddDrop(bagDrops);
         int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
@@ -426,7 +442,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         {
             Core.EnsureAccept(2566);
             if (!Core.CheckInventory("Mana Energy for Nulgath"))
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 10, false);
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 1, false);
             while (Bot.Inventory.Contains("Mana Energy for Nulgath"))
             {
                 Core.EnsureAccept(2566);
@@ -453,13 +469,17 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         else
         {
             Core.AddDrop("Relic of Chaos");
+            if (item != "Any")
+                Core.AddDrop(item);
+            else
+                Core.AddDrop(bagDrops);
             Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
             while (!Bot.Inventory.Contains(item, quant))
             {
                 Core.EnsureAccept(2857);
-                Core.KillEscherion("Relic of Chaos");
+                Core.KillEscherion("Relic of Chaos", publicRoom : true);
                 Core.EnsureComplete(2857);
                 Bot.Player.Pickup(item);
                 if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
@@ -539,6 +559,10 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
         Core.AddDrop("Relic of Chaos", "Tainted Core");
+        if (item != "Any")
+            Core.AddDrop(item);
+        else
+            Core.AddDrop(bagDrops);
         bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
@@ -556,41 +580,39 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
             while (Core.CheckInventory("Tainted Core"))
             {
-                Core.EnsureComplete(609);
-                Bot.Wait.ForDrop("Relic of Chaos");
-                Bot.Player.Pickup("Relic of Chaos");
-                Core.EnsureComplete(2857);
-                Bot.Sleep(Core.ActionDelay);
-                Core.EnsureAccept(2857, 609);
-                Bot.Sleep(Core.ActionDelay);
+                Core.ChainComplete(609);
                 Core.Logger($"Completed x{i++}");
             }
-            if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            while (Core.CheckInventory("Relic of Chaos", 1))
             {
-                while (Core.CheckInventory("Tainted Soul"))
+                Core.ChainComplete(2857);
+                Core.Logger($"Completed x{i++}");
+            }
+        }
+        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+        {
+            while (Core.CheckInventory("Tainted Soul"))
+            {
+                if (OBoNPet)
                 {
-                    if (OBoNPet)
-                        Core.EnsureComplete(2561);
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                        Core.EnsureComplete(599);
-                    Bot.Wait.ForDrop("Relic of Chaos");
-                    Bot.Player.Pickup("Relic of Chaos");
-                    Core.EnsureComplete(2857);
-                    Bot.Sleep(Core.ActionDelay);
-                    Core.EnsureAccept(2857);
-                    Bot.Sleep(Core.ActionDelay);
-                    if (OBoNPet)
-                        Core.EnsureAccept(2561);
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                        Core.EnsureAccept(599);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.ChainComplete(2561);
+                    Core.Logger($"Completed x{i++}");
+                }
+                else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                {
+                    Core.ChainComplete(599);
+                    Core.Logger($"Completed x{i++}");
+                }
+                else if (Core.CheckInventory("Relic of Chaos", 1))
+                {
+                    Core.ChainComplete(2857);
                     Core.Logger($"Completed x{i++}");
                 }
             }
-            Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
-            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-                Core.SellItem("Voucher of Nulgath");
         }
+        Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+        if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
+            Core.SellItem("Voucher of Nulgath");
     }
 
     /// <summary>
@@ -601,6 +623,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if ((!Core.CheckInventory("Diamond of Nulgath", 15) && !farmDiamond) || !Core.CheckInventory(CragName))
             return;
+        Core.AddDrop("Diamond of Nulgath");
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
@@ -618,6 +641,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
             return;
+        Core.AddDrop(bagDrops);
         if (farmUni13 && !Bot.Inventory.Contains("Unidentified 13"))
             FarmUni13();
         Core.EquipClass(ClassType.Solo);
@@ -637,12 +661,10 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
-        Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade");
-        Core.CheckInventory("Receipt of Swindle");
-        Core.CheckInventory("Blood Gem of the Archfiend");
+        Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
-            Core.KillEscherion("Emerald Pickaxe");
+            Core.KillEscherion("Emerald Pickaxe", publicRoom : true);
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
             Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
@@ -651,7 +673,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
         while (!Core.CheckInventory("Unidentified 10", quant))
         {
             Core.EnsureAccept(7818);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice");
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom : true);
             Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
             Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);
             Core.EnsureComplete(7818);
@@ -667,6 +689,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Unidentified 13", quant))
             return;
+        Core.AddDrop("Unidentified 13");
         quant = quant > 13 ? 13 : quant;
         if (Core.CheckInventory(CragName))
             while (!Bot.Inventory.Contains("Unidentified 13", quant))
@@ -683,6 +706,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
+        Core.AddDrop("Unidentified 10");
         //if (Core.CheckInventory("Legion Revenant") || Core.CheckInventory("Void Highlord"))
         //DirtyDeedsDoneDirtCheap(quant);
         BambloozevsDrudgen("Unidentified 10", quant);
@@ -697,6 +721,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
+        Core.AddDrop("Dark Crystal Shard");
         NewWorldsNewOpportunities("Dark Crystal Shard", quant);
         Supplies("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
@@ -710,6 +735,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Diamond of Nulgath", quant))
             return;
+        Core.AddDrop("Diamond of Nulgath");
         NewWorldsNewOpportunities("Diamond of Nulgath", quant);
         Supplies("Diamond of Nulgath", quant);
         DiamondEvilWar(quant);
@@ -723,6 +749,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Gem of Nulgath", quant))
             return;
+        Core.AddDrop("Gem of Nulgath");
         NewWorldsNewOpportunities("Gem of Nulgath", quant);
         while (!Core.CheckInventory("Gem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
@@ -736,6 +763,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
             return;
+        Core.AddDrop("Blood Gem of the Archfiend");
         if (Core.CheckInventory("Drudgen the Assistant"))
             while (!Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend);
@@ -749,6 +777,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     /// <param name="quant">Desired quantity, 100 = max stack</param>
     public void FarmTotemofNulgath(int quant = 100)
     {
+        Core.AddDrop("Totem of Nulgath");
         NewWorldsNewOpportunities("Totem of Nulgath", quant);
         while (!Core.CheckInventory("Totem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
@@ -764,6 +793,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
             return;
         if (Core.CheckInventory("Voucher of Nulgath") && member)
             return;
+        Core.AddDrop(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
@@ -777,7 +807,7 @@ public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
             return;
-        Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos");
+        Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Blood Gems");
         int i = 1;

@@ -23,7 +23,6 @@ public class LetsGetYouASuit
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Bot.Player.LoadBank();
         Core.SetOptions();
 
         HBPal.HBPaladin();

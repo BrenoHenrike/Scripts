@@ -16,7 +16,6 @@ public class VoidHighlordsChallenge
         {
             Core.SetOptions();
 
-            Farm.IcestormArena(80);
             Challenge();
 
             Core.SetOptions(false);
@@ -25,10 +24,9 @@ public class VoidHighlordsChallenge
 
     public void Challenge()
         {
-
+            Farm.IcestormArena(80);
             Core.AddDrop(Nulgath.bagDrops);
             Core.AddDrop(Nulgath.VHLDrops);
-            
 
             if(!Core.CheckInventory("Hadean Onyx of Nulgath"))
             {

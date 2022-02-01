@@ -58,6 +58,7 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Emblem of Dage", quant))
             return;
+
         if (!Core.CheckInventory("Legion Round 4 Medal"))
             LegionRound4Medal();
 
@@ -102,6 +103,7 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Diamond Token of Dage", quant))
             return;
+
         if (!Core.CheckInventory("Legion Round 4 Medal"))
             LegionRound4Medal();
         if(!Core.CheckInventory("Legion Token", 50))
@@ -120,11 +122,11 @@ public class CoreLegion
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
             }
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye");
-            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
-            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones");
-            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
+            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true);
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
 
             Core.EnsureComplete(4743);
             Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");
@@ -137,6 +139,9 @@ public class CoreLegion
     /// </summary>
     public void LegionRound4Medal()
     {
+        if (Core.CheckInventory("Legion Round 4 Medal"))
+            return;
+
         Core.AddDrop(legionMedals);
         Core.Logger("Farming Legion Round 4 Medal");
         Core.Join("shadowblast");
@@ -189,6 +194,7 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Dage's Approval", quantApproval) && Core.CheckInventory("Dage's Favor", quantFavor))
             return;
+
         Core.Logger($"Farming {quantApproval} Dage's Approval and {quantFavor} Dage's Favor");
         Core.Unbank("Dage's Approval", "Dage's Favor");
         Core.EquipClass(ClassType.Farm);
@@ -202,6 +208,7 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Bone Sigil", quant))
             return;
+
         Core.SmartKillMonster(6739, "legionarena", "Legion Gladiator|Legion Sergeant");
     }
 
@@ -209,6 +216,7 @@ public class CoreLegion
     {
         if (Core.CheckInventory("SoulForge Hammer"))
             return;
+
         Core.AddDrop("SoulForge Hammer");
         Core.EnsureAccept(2741);
         Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", 1, false);
@@ -231,6 +239,8 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
             return;
+
+        Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Legion Tokens");
         int i = 1;
@@ -250,6 +260,8 @@ public class CoreLegion
         if (Core.CheckInventory("Legion Token", quant)
             || (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Paragon Fiend Quest Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Shogun Dage Pet")))
             return;
+
+        Core.AddDrop("Legion Token");
         Core.Logger($"Farming {quant} Legion Tokens");
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
@@ -275,6 +287,8 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
+
+        Core.AddDrop("Legion Token");
         bool privateRoomSwitch = Bot.Options.PrivateRooms;
         if (Bot.Options.PrivateRooms)
             Bot.Options.PrivateRooms = false;
@@ -305,6 +319,8 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Undead Champion"))
             return;
+
+        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Legion Tokens");
         Core.Join("dreadrock");

@@ -23,7 +23,6 @@ public class IGotYourBackAndYourTop
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Bot.Player.LoadBank();
 
         HBPal.HBPaladinHelmet();
 

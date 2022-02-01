@@ -6,16 +6,14 @@ using System.Linq;
 
 public class DirtyDeedsDoneDirtCheap
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreNulgath Nulgath = new CoreNulgath();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNulgath Nulgath = new CoreNulgath();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop("Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
+        Nulgath.DirtyDeedsDoneDirtCheap();
 
-		Nulgath.DirtyDeedsDoneDirtCheap();
-
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

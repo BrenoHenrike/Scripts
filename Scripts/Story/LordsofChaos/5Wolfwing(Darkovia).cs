@@ -43,6 +43,7 @@ public class SagaDarkovia
             Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
             Core.EnsureComplete(515);
+            Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
         }
         //Map: DarkoviaForest
         if (!Core.QuestProgression(514, GetReward: false, FollowupIDOverwrite: 516))                    // Lil' Red

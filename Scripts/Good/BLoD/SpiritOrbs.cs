@@ -6,16 +6,15 @@ using RBot;
 
 public class SpiritOrbs
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
-	public CoreBLOD BLOD = new CoreBLOD();
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-		Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreBLOD BLOD = new CoreBLOD();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		BLOD.SpiritOrb(10500);
+        BLOD.SpiritOrb(10500);
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

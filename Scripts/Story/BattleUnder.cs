@@ -29,44 +29,27 @@ public class BattleUnder
     {
         if (Bot.Quests.IsUnlocked(689))
             return;
-        else
-        {
-            if (!Bot.Quests.IsUnlocked(375))
-                Bot.Quests.EnsureAccept(374);
-            if (!Bot.Quests.IsUnlocked(376))
-                Bot.Quests.EnsureAccept(375);
-            Bot.Quests.EnsureAccept(377);
-        }
+
         Core.EquipClass(ClassType.Farm);
-        Core.KillQuest(374, "battleundera", "Skeletal Warrior|Skeletal Fire Mage|Skeletal Ice Mage|Skeletal Soldier");
-        Core.KillQuest(375, "battleundera", "Skeletal Warrior|Skeletal Fire Mage|Skeletal Ice Mage|Skeletal Soldier");
+        Core.KillQuest(374, "battleundera", "Skeletal Warrior");
+        Core.KillQuest(375, "battleundera", "Skeletal Warrior");
         Core.EquipClass(ClassType.Solo);
         Core.KillQuest(376, "battleundera", "Bone Terror");
         Core.EquipClass(ClassType.Farm);
-        Core.KillQuest(377, "battleundera", "Skeletal Warrior|Skeletal Fire Mage|Skeletal Ice Mage|Skeletal Soldier", FollowupIDOverwrite: 689);
+        Core.KillQuest(377, "battleundera", "Skeletal Warrior", hasFollowup: false);
     }
 
     public void BattleUnderB()
     {
-        BattleUnderA();
+        if (Bot.Quests.IsUnlocked(935))
+            return;
 
-        if (!Bot.Quests.IsUnlocked(935))
-        {
-            if (!Bot.Quests.IsUnlocked(692))
-            {
-                if (!Bot.Quests.IsUnlocked(690))
-                    Bot.Quests.EnsureAccept(689);
-                if (!Bot.Quests.IsUnlocked(691))
-                    Bot.Quests.EnsureAccept(690);
-                Bot.Quests.EnsureAccept(691);
-            }
-            Core.EquipClass(ClassType.Farm);
-            Core.KillQuest(689, "battleunderb", "Skeleton Warrior|Skeleton Fighter");
-            Core.KillQuest(690, "battleunderb", "Skeleton Warrior|Skeleton Fighter");
-            Core.KillQuest(691, "battleunderb", "Skeleton Warrior|Skeleton Fighter");
-            Core.EquipClass(ClassType.Solo);
-            Core.KillQuest(692, "battleunderb", "Undead Champion", GetReward: false, FollowupIDOverwrite: 935);
-        }
+        Core.EquipClass(ClassType.Farm);
+        Core.KillQuest(689, "battleunderb", "Skeleton Warrior");
+        Core.KillQuest(690, "battleunderb", "Skeleton Warrior");
+        Core.KillQuest(691, "battleunderb", "Skeleton Warrior");
+        Core.EquipClass(ClassType.Solo);
+        Core.KillQuest(692, "battleunderb", "Undead Champion", GetReward: false, hasFollowup: false);
         Core.MapItemQuest(935, "battleunderb", 253);
     }
 
@@ -74,31 +57,29 @@ public class BattleUnder
     {
         if (Bot.Quests.IsUnlocked(2211))
             return;
-        
-        BattleUnderB();
 
         Core.KillQuest(936, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead");
         Core.KillQuest(937, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead|Purple Crystalized Jellyfish");
         Core.KillQuest(938, "battleunderc", "Crystalized Jellyfish");
-        Core.KillQuest(939, "battleundera", "Bone Terror", FollowupIDOverwrite: 2211);
-        Core.KillQuest(939, "battleunderb", "Undead Champion", FollowupIDOverwrite: 2211);
-        Core.KillQuest(939, "battleunderc", "Crystalized Jellyfish", FollowupIDOverwrite: 2211);
+        Core.KillQuest(939, "battleundera", "Bone Terror", hasFollowup: false);
+        Core.KillQuest(939, "battleunderb", "Undead Champion", hasFollowup: false);
+        Core.KillQuest(939, "battleunderc", "Crystalized Jellyfish", hasFollowup: false);
     }
 
-    public void BattleUnderD()
+    public void BattleUnderD() //use Core.KillMonster(map: "MapName", cell: "Cell", pad: "pad", monster: "Mob", item = "item", quant: Amount) - map is a broke otherwise spawns random enemies.
     {
         if (!Core.IsMember)
             return;
 
-        if (!Bot.Quests.IsUnlocked(2215))
-        {
-            Core.KillQuest(2211, "battleunderd", "Shivering Bones");
-            Core.KillQuest(2212, "battleunderd", "Icy Banshee");
-            Core.MapItemQuest(2212, "battleunderd", 1286, 8);
-            Core.KillQuest(2213, "battleunderd", "Skeletal Warrior");
-            Core.MapItemQuest(2214, "battleunderd", 1287, 4);
-            Core.KillQuest(2214, "battleunderd", "Glacial Horror");
-        }
+        if (Bot.Quests.IsUnlocked(2215))
+            return;
+
+        Core.KillQuest(2211, "battleunderd", "Shivering Bones");
+        Core.MapItemQuest(2212, "battleunderd", 1286, 8);
+        Core.KillQuest(2212, "battleunderd", "Icy Banshee");
+        Core.KillQuest(2213, "battleunderd", "Skeletal Warrior");
+        Core.MapItemQuest(2214, "battleunderd", 1287, 4);
+        Core.KillQuest(2214, "battleunderd", "Glacial Horror");
         Core.MapItemQuest(2215, "battleunderd", 1288, hasFollowup: false);
     }
 

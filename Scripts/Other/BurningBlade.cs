@@ -10,7 +10,9 @@ public class BurningBlade
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
         GetBurningBlade();
+        
         Core.SetOptions(false);
     }
 
