@@ -645,24 +645,30 @@ public class CoreFarms
         }
         if (farmBoA)
         {
-            if (!Core.CheckInventory("Legendary Blade", toInv: false))
+            if (FactionRank("Blade of Awe") < 6)
             {
-                Core.EnsureAccept(2936);
-                Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false);
-                Core.EnsureComplete(2936);
-                Bot.Player.Pickup("Legendary Blade");
-                Core.Logger("Find the Blade! completed");
+                if (!Core.CheckInventory("Legendary Blade", toInv: false))
+                {
+                    Core.EnsureAccept(2936);
+                    Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false);
+                    Core.EnsureComplete(2936);
+                    Bot.Player.Pickup("Legendary Blade");
+                    Core.Logger("Find the Blade! completed");
+                }
+                if (!Core.CheckInventory("Legendary Runes", toInv: false))
+                {
+                    Core.EnsureAccept(2937);
+                    Core.KillEscherion("Runes Found!", publicRoom: true);
+                    Core.EnsureComplete(2937);
+                    Bot.Player.Pickup("Legendary Runes");
+                    Core.Logger("Find the Runes! completed");
+                }
+                Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
+                Core.BuyItem("museum", 630, "Blade of Awe");
             }
-            if (!Core.CheckInventory("Legendary Runes", toInv: false))
-            {
-                Core.EnsureAccept(2937);
-                Core.KillEscherion("Runes Found!", publicRoom: true);
-                Core.EnsureComplete(2937);
-                Bot.Player.Pickup("Legendary Runes");
-                Core.Logger("Find the Runes! completed");
-            }
-            Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
-            Core.Logger("You can now merge the Blade of Awe at /join museum", messageBox: true);
+            if (FactionRank("Blade of Awe") >= 6)
+                Core.BuyItem("museum", 631, "Blade of Awe");
+
         }
     }
 
