@@ -23,7 +23,7 @@ public class AutoAttack
             bot.Drops.Start();
         }
 
-        bot.Skills.StartTimer();
+        bot.Skills.StartAdvanced(bot.Inventory.CurrentClass.Name, false);
         bot.Player.SetSpawnPoint();
         
         while (!bot.ShouldExit())
