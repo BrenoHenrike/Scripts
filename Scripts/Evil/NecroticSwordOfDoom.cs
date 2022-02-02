@@ -126,7 +126,7 @@ public class NecroticSwordOfDoom
         );
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
             Core.AddDrop("Creature Shard");
-        Core.Logger($"Gathering {Quantity - Bot.Inventory.GetQuantity("Void Aura") } Void Aura's with Non-SDKA Method");
+        Core.Logger($"Gathering {Quantity} Void Aura's with Non-SDKA Method");
 
         while (!Core.CheckInventory("Void Aura", Quantity))
         {
