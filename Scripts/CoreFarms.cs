@@ -273,7 +273,7 @@ public class CoreFarms
             return;
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(item);
-        Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
+        Core.Logger($"Farming {quant - Bot.Inventory.GetQuantity("Combat Trophy")} {item}. SoloBoss = {canSoloBoss}");
         while (!Core.CheckInventory(item, quant))
         {
             Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
@@ -322,9 +322,12 @@ public class CoreFarms
         if (Core.CheckInventory(item, quant))
             return;
 
+        i = Bot.Inventory.GetQuantity("Bone Dust");
+
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
+        Core.Logger($"Farmed {quant - i} Bone Dust");
     }
 
     #endregion
@@ -1684,7 +1687,6 @@ public class CoreFarms
         while (!Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
             Core.Logger($"Farming Token A x {i}");
-
             Core.Logger($"Farming Token C x { 200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C") }");
 
             while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
