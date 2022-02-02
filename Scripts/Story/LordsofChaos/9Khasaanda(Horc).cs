@@ -45,7 +45,7 @@ public class SagaHorc
         //Troll Stink!
         Core.EnsureAccept(1232);
         Core.Join("crossroads");
-        Core.HuntMonster("crossroads", "Chinchilizard", "Scaley Skin Scrub", 7);
+        Core.HuntMonster("crossroads", "Chinchilizard", "Scaly Skin Scrub", 7);
         Core.Join("bloodtusk");
         Bot.Map.GetMapItem(523);
         Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
