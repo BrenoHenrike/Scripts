@@ -17,17 +17,28 @@ public class MysteriousStranger
         Core.SetOptions();
 
         SmartPick();
-        
+
         Core.SetOptions(false);
     }
 
     public void SmartPick()
     {
-        Core.CheckInventory("Golden Blade of Fate");
+        if (Core.CheckInventory("Golden Blade of Fate")) ;
+        {
+            Core.Logger("Golden Blade of Fate Already Owned");
+            return;
+        }
 
-        if(!Bot.Quests.IsUnlocked(5679)){Storyline();}
-        if(Bot.Quests.IsUnlocked(5679) && !Core.CheckInventory("Golden Blade of Fate")){GoldenBladeofFate();}
-        if(Core.CheckInventory("Golden Blade of Fate")){Core.Logger("Blade Already Owned"); return;}
+        if (Bot.Quests.IsUnlocked(5679) && !Core.CheckInventory("Golden Blade of Fate"))
+        {
+            GoldenBladeofFate();
+        }
+
+        if (!Bot.Quests.IsUnlocked(5679))
+        {
+            Storyline();
+        }
+
     }
 
     public void Storyline()
@@ -94,7 +105,7 @@ public class MysteriousStranger
     public void GoldenBladeofFate()
     {
         Core.AddDrop("Golden Blade of Fate");
-        
+
         Core.Logger(" Obtaining Golden Blade of Fate");
 
         Core.EnsureAccept(5679);
