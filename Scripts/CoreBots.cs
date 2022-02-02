@@ -124,7 +124,7 @@ public class CoreBots
             Bot.Runtime.BankLoaded = true;
             if (BankMiscAC)
             {
-                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse", "Misc" };
+                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
                 List<string> MiscForBank = new List<string>();
                 foreach (var item in Bot.Inventory.Items)
                 {
