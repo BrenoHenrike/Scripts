@@ -42,7 +42,7 @@ public class SagaTroll
         Core.KillQuest(1229, "bloodtusk", "Trollola Plant", hasFollowup: false);
 
         //She Who Answers 1
-        if (!Bot.Quests.IsUnlocked(1231))
+        if (!Core.QuestProgression(1230))
         {
             Core.EnsureAccept(1230);
             Core.Join("crossroads");
@@ -57,7 +57,7 @@ public class SagaTroll
         Core.KillQuest(1231, "bloodtusk", "Crystal-Rock", hasFollowup: false);
 
         //She Who Answers 2 - cutscene
-        if (!Bot.Quests.IsUnlocked(1272))
+        if (!Core.QuestProgression(1240))
         {
             Core.Join("crossroads");
             Core.Jump("CutE", "Left");
