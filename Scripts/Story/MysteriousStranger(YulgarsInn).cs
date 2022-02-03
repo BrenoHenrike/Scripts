@@ -23,7 +23,7 @@ public class MysteriousStranger
 
     public void SmartPick()
     {
-        if (Core.CheckInventory("Golden Blade of Fate")) ;
+        if (Core.CheckInventory("Golden Blade of Fate"))
         {
             Core.Logger("Golden Blade of Fate Already Owned");
             return;
