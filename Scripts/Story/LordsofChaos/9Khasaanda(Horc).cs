@@ -43,18 +43,18 @@ public class SagaHorc
             return;
 
         //Troll Stink!
-        if (!Bot.Quests.IsUnlocked(1233))
+        if (!Core.QuestProgression(1232))
         {
-        Core.EnsureAccept(1232);
-        Core.Join("crossroads");
-        Core.HuntMonster("crossroads", "Chinchilizard", "Scaly Skin Scrub", 7);
-        Core.Join("bloodtusk");
-        Bot.Map.GetMapItem(523);
-        Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
-        Core.EnsureComplete(1232);
-        // Core.KillQuest(1232, "crossroads", "Chinchilizard");
-        // Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
-        // Core.MapItemQuest(1232, "bloodtusk", 523);
+            Core.EnsureAccept(1232);
+            Core.Join("crossroads");
+            Core.HuntMonster("crossroads", "Chinchilizard", "Scaly Skin Scrub", 7);
+            Core.Join("bloodtusk");
+            Bot.Map.GetMapItem(523);
+            Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
+            Core.EnsureComplete(1232);
+            // Core.KillQuest(1232, "crossroads", "Chinchilizard");
+            // Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
+            // Core.MapItemQuest(1232, "bloodtusk", 523);
         }
 
         //It Not Time Yet
@@ -71,13 +71,13 @@ public class SagaHorc
         Core.MapItemQuest(1235, "crossroads", 521, 10, hasFollowup: false);
 
         //She Who Answers 1
-        if (!Bot.Quests.IsUnlocked(1237))
+        if (!Core.QuestProgression(1236))
         {
-        Core.EnsureAccept(1236);
-        Core.Join("crossroads");
-        Core.Jump("r11", "Down");
-        Bot.SendPacket("%xt%zm%tryQuestComplete%21863%1236%-1%false%wvz%");
-        Bot.Sleep(2000);
+            Core.EnsureAccept(1236);
+            Core.Join("crossroads");
+            Core.Jump("r11", "Down");
+            Bot.SendPacket("%xt%zm%tryQuestComplete%21863%1236%-1%false%wvz%");
+            Bot.Sleep(2000);
         }
 
         //Be Horc Inside
@@ -87,24 +87,24 @@ public class SagaHorc
         Core.MapItemQuest(1237, "mapname", 522, 5, hasFollowup: false);
 
         //She Who Answers 2 - cutscene
-        if (!Bot.Quests.IsUnlocked(1273))
+        if (!Core.QuestProgression(1241))
         {
-        Core.EnsureAccept(1241);
-        Core.Join("crossroads");
-        Core.Jump("CutE", "Left");
-        Bot.Sleep(2500);
-        Core.JumpWait();
-        Bot.SendPacket("%xt%zm%tryQuestComplete%22189%1241%-1%false%wvz%");
-        Bot.Sleep(2000);
+            Core.EnsureAccept(1241);
+            Core.Join("crossroads");
+            Core.Jump("CutE", "Left");
+            Bot.Sleep(2500);
+            Core.JumpWait();
+            Core.EnsureComplete(1241);
+            Bot.Sleep(2000);
         }
 
         //Chaos Enrages the Horcs
         Core.ChainComplete(1273);
     }
-    
+
     public void Part2()
     {
-        if (Bot.Quests.IsUnlocked(1424))
+        if (Core.QuestProgression(1424))
             return;
 
 
@@ -145,10 +145,10 @@ public class SagaHorc
         //Alliance Subdued
         Core.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" }, hasFollowup: false);
     }
-    
+
     public void Part3()
     {
-        if (Bot.Quests.IsUnlocked(1456))
+        if (Core.QuestProgression(1456))
             return;
 
 
@@ -168,10 +168,10 @@ public class SagaHorc
         //The Heart of the Temple Awaits
         Core.MapItemQuest(1428, "ancienttemple", 707, hasFollowup: false);
     }
-    
+
     public void Part4()
     {
-        if (Bot.Quests.IsUnlocked(1469))
+        if (Core.QuestProgression(1469))
             return;
 
 
@@ -192,10 +192,10 @@ public class SagaHorc
         //Battle the Baas!
         Core.KillQuest(1460, "orecavern", "Naga Baas", hasFollowup: false);
     }
-    
+
     public void Part5()
     {
-        if (Bot.Quests.IsUnlocked(1473))
+        if (Core.QuestProgression(1473))
             return;
 
 
