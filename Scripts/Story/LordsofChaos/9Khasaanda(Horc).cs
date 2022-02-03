@@ -43,6 +43,8 @@ public class SagaHorc
             return;
 
         //Troll Stink!
+        if (!Bot.Quests.IsUnlocked(1233))
+        {
         Core.EnsureAccept(1232);
         Core.Join("crossroads");
         Core.HuntMonster("crossroads", "Chinchilizard", "Scaly Skin Scrub", 7);
@@ -53,6 +55,7 @@ public class SagaHorc
         // Core.KillQuest(1232, "crossroads", "Chinchilizard");
         // Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
         // Core.MapItemQuest(1232, "bloodtusk", 523);
+        }
 
         //It Not Time Yet
         Core.KillQuest(1233, "crossroads", new[] { "Lemurphant", "Koalion" });
@@ -63,24 +66,29 @@ public class SagaHorc
         Core.MapItemQuest(1234, "crossroads", 525);
 
         //Clear Mind, Cleanse Spirit
-        Core.KillQuest(1235, "bloodtusk", "Trollola Plant"); 
-        Core.KillQuest(1235, "crossroads", new[] { "Lemurphant", "Koalion" });
-        Core.MapItemQuest(1235, "crossroads", 521, 10);
+        Core.KillQuest(1235, "bloodtusk", "Trollola Plant", hasFollowup: false);
+        Core.KillQuest(1235, "crossroads", new[] { "Lemurphant", "Koalion" }, hasFollowup: false);
+        Core.MapItemQuest(1235, "crossroads", 521, 10, hasFollowup: false);
 
         //She Who Answers 1
+        if (!Bot.Quests.IsUnlocked(1237))
+        {
         Core.EnsureAccept(1236);
         Core.Join("crossroads");
         Core.Jump("r11", "Down");
         Bot.SendPacket("%xt%zm%tryQuestComplete%21863%1236%-1%false%wvz%");
         Bot.Sleep(2000);
+        }
 
         //Be Horc Inside
-        Core.KillQuest(1237, "crossroads", new[] { "Lemurphant", "Koalion" });
-        Core.KillQuest(1237, "bloodtusk", "Rock");
-        Core.MapItemQuest(1237, "crossroads", 524, 10);
-        Core.MapItemQuest(1237, "mapname", 522, 5);
+        Core.KillQuest(1237, "crossroads", new[] { "Lemurphant", "Koalion" }, hasFollowup: false);
+        Core.KillQuest(1237, "bloodtusk", "Rock", hasFollowup: false);
+        Core.MapItemQuest(1237, "crossroads", 524, 10, hasFollowup: false);
+        Core.MapItemQuest(1237, "mapname", 522, 5, hasFollowup: false);
 
         //She Who Answers 2 - cutscene
+        if (!Bot.Quests.IsUnlocked(1273))
+        {
         Core.EnsureAccept(1241);
         Core.Join("crossroads");
         Core.Jump("CutE", "Left");
@@ -88,6 +96,7 @@ public class SagaHorc
         Core.JumpWait();
         Bot.SendPacket("%xt%zm%tryQuestComplete%22189%1241%-1%false%wvz%");
         Bot.Sleep(2000);
+        }
 
         //Chaos Enrages the Horcs
         Core.ChainComplete(1273);
