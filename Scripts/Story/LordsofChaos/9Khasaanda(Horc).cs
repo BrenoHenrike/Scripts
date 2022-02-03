@@ -59,19 +59,33 @@ public class SagaHorc
         }
 
         //It Not Time Yet
-        Core.KillQuest(1233, "crossroads", new[] { "Lemurphant", "Koalion" });
+        Core.KillQuest(1233, "crossroads", "Lemurphant");
+        Core.KillQuest(1233, "crossroads", "Koalion");
 
         //Mountain Protection
-        Core.KillQuest(1234, "bloodtusk", "Rock");
-        Core.KillQuest(1234, "crossroads", new[] { "Chinchilizard", "Lemurphant" });
-        Core.MapItemQuest(1234, "crossroads", 525);
+        if (!Core.QuestProgression(1234))
+        {
+            Core.EnsureAccept(1234);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Polished Rocks", 3);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Ivory", 5);
+            Core.HuntMonster("crossroads", "Chinchilizard", "Liz-Leather Thongs", 5);
+            // Core.KillQuest(1234, "bloodtusk", "Rock");
+            // Core.KillQuest(1234, "crossroads", "Chinchilizard");
+            // Core.KillQuest(1234, "crossroads", "Lemurphant");
+            Core.MapItemQuest(1234, "crossroads", 525);
+        }
 
         //Clear Mind, Cleanse Spirit
-        Core.KillQuest(1235, "bloodtusk", "Trollola Plant", hasFollowup: false);
-        Core.KillQuest(1235, "crossroads", new[] { "Lemurphant", "Koalion" }, hasFollowup: false);
-        Core.MapItemQuest(1235, "crossroads", 521, 10, hasFollowup: false);
+        if (!Core.QuestProgression(1235))
+        {
+            Core.EnsureAccept(1235);
+            Core.HuntMonster("bloodtusk", "Trollola Plant", "Trollola Plant Resin", 4);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Musk", 5);
+            Core.HuntMonster("crossroads", "Koalion", "Fur for Firestarting", 5);
+            Core.MapItemQuest(1235, "crossroads", 521, 10);
+        }
 
-        //She Who Answers 1
+        //She Who Asks
         if (!Core.QuestProgression(1236))
         {
             Core.EnsureAccept(1236);
@@ -82,14 +96,16 @@ public class SagaHorc
         }
 
         //Be Horc Inside
-        Core.KillQuest(1237, "crossroads", new[] { "Lemurphant", "Koalion" }, hasFollowup: false);
-        Core.KillQuest(1237, "bloodtusk", "Rock", hasFollowup: false);
-        Core.MapItemQuest(1237, "crossroads", 524, 10, hasFollowup: false);
-        Core.MapItemQuest(1237, "mapname", 522, 5, hasFollowup: false);
+            Core.KillQuest(1237, "crossroads", "Lemurphant", FollowupIDOverwrite: 1241);
+            Core.KillQuest(1237, "crossroads", "Koalion", FollowupIDOverwrite: 1241);
+            Core.KillQuest(1237, "bloodtusk", "Rock", FollowupIDOverwrite: 1241);
+            Core.MapItemQuest(1237, "crossroads", 524, 5, FollowupIDOverwrite: 1241);
+            Core.MapItemQuest(1237, "crossroads", 522, 10, FollowupIDOverwrite: 1241);
 
         //She Who Answers 2 - cutscene
         if (!Core.QuestProgression(1241))
         {
+            //Core.MapItemQuest(1241, "crossroads", mapitemid);
             Core.EnsureAccept(1241);
             Core.Join("crossroads");
             Core.Jump("CutE", "Left");
