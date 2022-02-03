@@ -11,6 +11,7 @@ public class SagaSandsea
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         StoryLine();
 
         Core.SetOptions(false);

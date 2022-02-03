@@ -11,6 +11,7 @@ public class SagaYokai
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         StoryLine();
 
         Core.SetOptions();

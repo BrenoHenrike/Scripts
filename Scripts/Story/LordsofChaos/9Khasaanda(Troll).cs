@@ -11,6 +11,7 @@ public class SagaTroll
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         StoryLine();
 
         Core.SetOptions(false);
@@ -44,6 +45,7 @@ public class SagaTroll
         //She Who Answers 1
         if (!Core.QuestProgression(1230))
         {
+            //Core.MapItemQuest(1230, "crossroads", mapitemid, AutoCompleteQuest: false);
             Core.EnsureAccept(1230);
             Core.Join("crossroads");
             Core.Jump("r11", "Down");
@@ -59,9 +61,11 @@ public class SagaTroll
         //She Who Answers 2 - cutscene
         if (!Core.QuestProgression(1240))
         {
+            //Core.MapItemQuest(1240, "crossroads", mapitemid, AutoCompleteQuest: false);
+            Core.EnsureAccept(1240);
             Core.Join("crossroads");
             Core.Jump("CutE", "Left");
-            Core.SendPackets("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
+            Core.EnsureComplete(1240);
         }
 
         //Bloodtusk War

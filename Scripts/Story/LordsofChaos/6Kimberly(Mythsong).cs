@@ -10,6 +10,7 @@ public class SagaMythsong
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         StoryLine();
 
         Core.SetOptions(false);
@@ -17,10 +18,7 @@ public class SagaMythsong
     public void StoryLine()
     {
         if (Bot.Quests.IsUnlocked(710))
-        {
-            Core.Logger("Stroryline Already Complete");
             return;
-        }
 
 
         //Stairway to Heaven
@@ -45,7 +43,7 @@ public class SagaMythsong
         Core.KillQuest(660, "beehive", "Lord Ovthedance", hasFollowup: false);
 
         //Dance with Great Godfather of Souls
-        if (!Bot.Quests.IsUnlocked(661))
+        if (!Core.QuestProgression(661))
         {
             Core.EnsureAccept(661);
             Core.Join("beehive");
