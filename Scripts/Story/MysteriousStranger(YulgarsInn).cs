@@ -28,17 +28,9 @@ public class MysteriousStranger
             Core.Logger("Golden Blade of Fate Already Owned");
             return;
         }
-
-        if (Bot.Quests.IsUnlocked(5679) && !Core.CheckInventory("Golden Blade of Fate"))
-        {
+        else if (Bot.Quests.IsUnlocked(5679))
             GoldenBladeofFate();
-        }
-
-        if (!Bot.Quests.IsUnlocked(5679))
-        {
-            Storyline();
-        }
-
+        else Storyline();
     }
 
     public void Storyline()
