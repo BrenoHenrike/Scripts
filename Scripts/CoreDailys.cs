@@ -34,6 +34,8 @@ public class CoreDailys
         GrumbleGrumble();
         Core.Logger("Elders' Blood");
         EldersBlood();
+        Core.Logger("Sparrow's Blood");
+        SparrowsBlood();
         Core.Logger("Shadow Shroud");
         ShadowShroud();
         Core.Logger("Dage's Scroll Fragment");
@@ -339,6 +341,21 @@ public class CoreDailys
             return;
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
+    }
+
+    public void SparrowsBlood()
+    {
+        if (Core.CheckInventory("Sparrow's Blood", 5))
+            return;
+        if (!CheckDaily(803, "Sparrow's Blood"))
+            return;
+        Core.AddDrop("Sparrow's Blood");
+        Core.EquipClass(ClassType.Farm);
+        Core.EnsureAccept(803);
+        Core.HuntMonster("arcangrove", "Gorillaphant", "Blood Lily", 30);
+        Core.HuntMonster("arcangrove", "Seed Spitter", "Snapdrake ", 17);
+        Core.HuntMonster("arcangrove", "Seed Spitter|Gorillaphant", "DOOM Dirt", 12);
+        Core.EnsureComplete(803);
     }
 
     public void ShadowShroud()
