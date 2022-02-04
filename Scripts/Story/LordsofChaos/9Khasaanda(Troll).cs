@@ -12,13 +12,21 @@ public class SagaTroll
         Core.SetOptions();
 
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
-    //Core.MapItemQuest(questid, "Mapname", mapitemid, amount);
-    //Core.KillQuest(questid, "Mapname", "mobname");
+    public void CompleteSaga()
+    {
+        StoryLine();
+
+        Core.Relogin();
+        Core.BuyItem("bloodtusk", 308, "Elite Phoenix Bow");
+        Bot.Sleep(2500);
+        Core.ToBank("Elite Phoenix Bow");
+        Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
+    }
 
     public void StoryLine()
     {
@@ -26,47 +34,61 @@ public class SagaTroll
             return;
 
         //Horc Stink! 
-        Core.MapItemQuest(1226, "bloodtusk", 523);
-        Core.KillQuest(1226, "bloodtusk", "Trollola Plant");
-        Core.KillQuest(1226, "crossroads", "Chinchilizard");
+        if (!Core.QuestProgression(1226))
+        {
+            Core.EnsureAccept(1226);
+            Core.HuntMonster("crossroads", "Chinchilizard", "Scaly Skin Scrub", 7);
+            Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
+            Core.MapItemQuest(1226, "bloodtusk", 523);
+        }
 
         //The Time Grows Closer
-        Core.KillQuest(1227, "crossroads", new[] { "Lemurphant", "Koalion" });
+        Core.KillQuest(1227, "crossroads", new[] { "Koalion", "Lemurphant" });
 
         //Like Calls to Like
-        Core.KillQuest(1228, "crossroads", new[] { "Chinchilizard", "Lemurphant" });
-        Core.KillQuest(1228, "bloodtusk", "Crystal-Rock");
+        if (!Core.QuestProgression(1228))
+        {
+            Core.EnsureAccept(1228);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Mountain Crystal", 3);
+            Core.HuntMonster("crossroads", "Chinchilizard", "Liz-Leather Thongs", 5);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Ivory", 5);
+            Core.MapItemQuest(1228, "crossroads", 525);
+        }
 
         //Incense Makes Sense
-        Core.MapItemQuest(1229, "crossroads", 521, 10, hasFollowup: false);
-        Core.KillQuest(1229, "crossroads", new[] { "Lemurphant", "Koalion" }, hasFollowup: false);
-        Core.KillQuest(1229, "bloodtusk", "Trollola Plant", hasFollowup: false);
+        if (!Core.QuestProgression(1229))
+        {
+            Core.EnsureAccept(1229);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Musk", 5);
+            Core.HuntMonster("bloodtusk", "Trollola Plant", "Trollola Plant Resin", 4);
+            Core.HuntMonster("crossroads", "Koalion", "Fur for Firestarting", 5);
+            Core.MapItemQuest(1229, "crossroads", 521, 10);
+        }
 
-        //She Who Answers 1
+        //She Who asks 1
         if (!Core.QuestProgression(1230))
         {
-            //Core.MapItemQuest(1230, "crossroads", mapitemid, AutoCompleteQuest: false);
-            Core.EnsureAccept(1230);
-            Core.Join("crossroads");
-            Core.Jump("r11", "Down");
-            Core.EnsureComplete(1230);
+            Core.ChainQuest(1230);
         }
 
         //The Troll Inside
-        Core.MapItemQuest(1231, "crossroads", 524, 10, hasFollowup: false);
-        Core.MapItemQuest(1231, "crossroads", 522, 5, hasFollowup: false);
-        Core.KillQuest(1231, "crossroads", new[] { "Lemurphant", "Koalion" }, hasFollowup: false);
-        Core.KillQuest(1231, "bloodtusk", "Crystal-Rock", hasFollowup: false);
-
-        //She Who Answers 2 - cutscene
-        if (!Core.QuestProgression(1240))
+        if (!Core.QuestProgression(1231))
         {
-            //Core.MapItemQuest(1240, "crossroads", mapitemid, AutoCompleteQuest: false);
-            Core.EnsureAccept(1240);
+            Core.EnsureAccept(1231);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Tusks", 5);
+            Core.HuntMonster("crossroads", "Koalion", "Koalion Claw", 5);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Singing Crystals", 10);
+            Core.MapItemQuest(1231, "crossroads", 522, 10);
+            Core.MapItemQuest(1231, "crossroads", 524, 5);
+        }
+
+        //She Who asks 2 - cutscene
+            // Core.Join("crossroads");
+            // Core.ChainQuest(1240, FollowupIDOverwrite: 1272);
             Core.Join("crossroads");
             Core.Jump("CutE", "Left");
-            Core.EnsureComplete(1240);
-        }
+            Bot.Sleep(2000);
+            Core.SendPackets("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
 
         //Bloodtusk War
         Core.KillQuest(1272, "bloodtuskwar", "Chaotic Troll", FollowupIDOverwrite: 1274, AutoCompleteQuest: false);
@@ -85,6 +107,7 @@ public class SagaTroll
         //Too Little, Too Late. Still Needed
         Core.MapItemQuest(1277, "ravinetemple", 557, 10);
         Core.KillQuest(1277, "ravinetemple", "*");
+        Core.MapItemQuest(1277, "ravinetemple", 557, 10);
 
         //Alliance Defiance
         Core.KillQuest(1278, "ravinetemple", "*", FollowupIDOverwrite: 1369);
@@ -112,8 +135,8 @@ public class SagaTroll
         Core.KillQuest(1419, "ancienttemple", "Chaotic Vulture|Chaotic Horcboar");
 
         //Ancient Ointment
-        Core.MapItemQuest(1420, "ancienttemple", 706, 7);
         Core.KillQuest(1420, "ancienttemple", "Chaotic Vulture|Chaotic Horcboar");
+        Core.MapItemQuest(1420, "ancienttemple", 706, 7);
 
         //Anoint the Ancients
         Core.KillQuest(1421, "ancienttemple", "Chaos Troll Spirit|Chaos Horc Spirit");
@@ -142,10 +165,10 @@ public class SagaTroll
         Core.KillQuest(1455, "orecavern", "Naga Baas");
 
         //Know the Nexus
-        Core.MapItemQuest(1456, "dreamnexus", 734, FollowupIDOverwrite: 1464);
-        Core.MapItemQuest(1456, "dreamnexus", 735, FollowupIDOverwrite: 1464);
-        Core.MapItemQuest(1456, "dreamnexus", 736, FollowupIDOverwrite: 1464);
-        Core.MapItemQuest(1456, "dreamnexus", 737, FollowupIDOverwrite: 1464);
+        Core.MapItemQuest(1456, "dreamnexus", 734, FollowupIDOverwrite: 1465);
+        Core.MapItemQuest(1456, "dreamnexus", 735, FollowupIDOverwrite: 1465);
+        Core.MapItemQuest(1456, "dreamnexus", 736, FollowupIDOverwrite: 1465);
+        Core.MapItemQuest(1456, "dreamnexus", 737, FollowupIDOverwrite: 1465);
 
         //Secure a Route Home
         Core.KillQuest(1465, "dreamnexus", new[] { "Dark Wyvern", "Dark Wyvern", "Aether Serpent", "Aether Serpent" });
