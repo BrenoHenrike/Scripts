@@ -2,8 +2,6 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
 using RBot;
 
 public class DoomVault

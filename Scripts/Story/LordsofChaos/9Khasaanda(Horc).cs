@@ -20,16 +20,7 @@ public class SagaHorc
 
     public void CompleteSaga()
     {
-        Core.Logger("Part 1");
-        Part1();
-        Core.Logger("Part 2");
-        Part2();
-        Core.Logger("Part 3");
-        Part3();
-        Core.Logger("Part 4");
-        Part4();
-        Core.Logger("Part 5");
-        Part5();
+        StoryLine();
 
         Core.Relogin();
         Core.BuyItem("bloodtusk", 308, "Elite Phoenix Bow");
@@ -38,24 +29,19 @@ public class SagaHorc
         Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
     }
 
-    public void Part1()
+    public void StoryLine()
     {
-        if (Bot.Quests.IsUnlocked(1280))
+        if (Bot.Quests.IsUnlocked(1473))
             return;
+
 
         //Troll Stink!
         if (!Core.QuestProgression(1232))
         {
             Core.EnsureAccept(1232);
-            Core.Join("crossroads");
             Core.HuntMonster("crossroads", "Chinchilizard", "Scaly Skin Scrub", 7);
-            Core.Join("bloodtusk");
-            Bot.Map.GetMapItem(523);
             Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
-            Core.EnsureComplete(1232);
-            // Core.KillQuest(1232, "crossroads", "Chinchilizard");
-            // Core.KillQuest(1232, "bloodtusk", "Trollola Plant");
-            // Core.MapItemQuest(1232, "bloodtusk", 523);
+            Core.MapItemQuest(1232, "bloodtusk", 523);
         }
 
         //It Not Time Yet
@@ -69,9 +55,6 @@ public class SagaHorc
             Core.HuntMonster("bloodtusk", "Crystal-Rock", "Polished Rocks", 3);
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Ivory", 5);
             Core.HuntMonster("crossroads", "Chinchilizard", "Liz-Leather Thongs", 5);
-            // Core.KillQuest(1234, "bloodtusk", "Rock");
-            // Core.KillQuest(1234, "crossroads", "Chinchilizard");
-            // Core.KillQuest(1234, "crossroads", "Lemurphant");
             Core.MapItemQuest(1234, "crossroads", 525);
         }
 
@@ -86,44 +69,18 @@ public class SagaHorc
         }
 
         //She Who Asks
-        if (!Core.QuestProgression(1236))
-        {
-            Core.EnsureAccept(1236);
-            Core.Join("crossroads");
-            Core.Jump("r11", "Down");
-            Bot.SendPacket("%xt%zm%tryQuestComplete%21863%1236%-1%false%wvz%");
-            Bot.Sleep(2000);
-        }
+        Core.ChainQuest(1236);
 
         //Be Horc Inside
-            Core.KillQuest(1237, "crossroads", "Lemurphant", FollowupIDOverwrite: 1241);
-            Core.KillQuest(1237, "crossroads", "Koalion", FollowupIDOverwrite: 1241);
-            Core.KillQuest(1237, "bloodtusk", "Rock", FollowupIDOverwrite: 1241);
-            Core.MapItemQuest(1237, "crossroads", 524, 5, FollowupIDOverwrite: 1241);
-            Core.MapItemQuest(1237, "crossroads", 522, 10, FollowupIDOverwrite: 1241);
+        Core.KillQuest(1237, "crossroads", new[] { "Lemurphant", "Koalion", "Koalion" }, FollowupIDOverwrite: 1241);
+        Core.MapItemQuest(1237, "crossroads", 524, 5, FollowupIDOverwrite: 1241);
+        Core.MapItemQuest(1237, "crossroads", 522, 10, FollowupIDOverwrite: 1241);
 
         //She Who Answers 2 - cutscene
-        if (!Core.QuestProgression(1241))
-        {
-            //Core.MapItemQuest(1241, "crossroads", mapitemid);
-            Core.EnsureAccept(1241);
-            Core.Join("crossroads");
-            Core.Jump("CutE", "Left");
-            Bot.Sleep(2500);
-            Core.JumpWait();
-            Core.EnsureComplete(1241);
-            Bot.Sleep(2000);
-        }
+        Core.ChainQuest(1241, FollowupIDOverwrite: 1273);
 
         //Chaos Enrages the Horcs
-        Core.ChainComplete(1273);
-    }
-
-    public void Part2()
-    {
-        if (Core.QuestProgression(1424))
-            return;
-
+        Core.ChainQuest(1273, FollowupIDOverwrite: 1280);
 
         //Into, Under the Mountain
         Core.MapItemQuest(1280, "ravinetemple", 553);
@@ -141,7 +98,7 @@ public class SagaHorc
         Core.MapItemQuest(1283, "ravinetemple", 557, 10);
 
         //Alliance Defiance
-        Core.KillQuest(1284, "ravinetemple", "*");
+        Core.KillQuest(1284, "ravinetemple", "*", FollowupIDOverwrite: 1375);
 
         //Scout and Return
         Core.MapItemQuest(1375, "alliance", 679);
@@ -160,14 +117,7 @@ public class SagaHorc
         Core.KillQuest(1379, "alliance", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
 
         //Alliance Subdued
-        Core.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" }, hasFollowup: false);
-    }
-
-    public void Part3()
-    {
-        if (Core.QuestProgression(1456))
-            return;
-
+        Core.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" }, FollowupIDOverwrite: 1424);
 
         //Cleanse the Chaorruption
         Core.KillQuest(1424, "ancienttemple", "Chaotic Vulture");
@@ -183,15 +133,7 @@ public class SagaHorc
         Core.KillQuest(1427, "ancienttemple", "Serpentress");
 
         //The Heart of the Temple Awaits
-        Core.MapItemQuest(1428, "ancienttemple", 707, hasFollowup: false);
-    }
-
-    public void Part4()
-    {
-        if (Core.QuestProgression(1469))
-            return;
-
-
+        Core.MapItemQuest(1428, "ancienttemple", 707, FollowupIDOverwrite: 1456);
 
         //Wounds in Stones and Beasts
         Core.MapItemQuest(1456, "orecavern", 717);
@@ -207,14 +149,7 @@ public class SagaHorc
         Core.KillQuest(1459, "orecavern", "Chaorrupted Evil Soldier");
 
         //Battle the Baas!
-        Core.KillQuest(1460, "orecavern", "Naga Baas", hasFollowup: false);
-    }
-
-    public void Part5()
-    {
-        if (Core.QuestProgression(1473))
-            return;
-
+        Core.KillQuest(1460, "orecavern", "Naga Baas", FollowupIDOverwrite: 1469);
 
         //Know the Nexus
         Core.MapItemQuest(1469, "dreamnexus", 734);

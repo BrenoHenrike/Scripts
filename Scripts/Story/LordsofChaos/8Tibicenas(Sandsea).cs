@@ -38,7 +38,7 @@ public class SagaSandsea
         Core.KillQuest(933, "sandport", "Tomb Robber");
 
         //Sell-Sword Sell-Outs
-        Core.KillMonster(934, "sandport", new[] { "Horc Sell-Sword", "Horc Sell-Sword" }, FollowupIDOverwrite: 967);
+        Core.KillQuest(934, "sandport", new[] { "Horc Sell-Sword", "Horc Sell-Sword" }, FollowupIDOverwrite: 967);
 
         //Sacred Scarabs
         Core.KillQuest(967, "pyramid", "Golden Scarab");
