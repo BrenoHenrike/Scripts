@@ -1,6 +1,17 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [4 (Beta)](#4-beta)
+    - [Problems](#problems)
+    - [Auto menu](#auto-menu)
+    - [Loader](#loader)
+    - [Packet Logger](#packet-logger)
+    - [Overall UI Changes](#overall-ui-changes)
+    - [Scripting additions](#scripting-additions)
+      - [Events](#events)
+      - [ScriptInterface](#scriptinterface)
+      - [Item information](#item-information)
+    - [New VSCode setup](#new-vscode-setup)
   - [3.6.3.2 (Inventory fix)](#3632-inventory-fix)
   - [3.6.3.1 (Small Changes)](#3631-small-changes)
   - [3.6.3](#363)
@@ -18,6 +29,182 @@
   - [3.6.1](#361)
     - [Fixes](#fixes)
     - [Added](#added)
+
+## 4 (Beta)
+
+The version 4 of RBot is a breakthrough for me, in it we can work with all the improvements that came with .NET 6. This includes faster compilation/recompilation and better performance overall out of the box.
+The changelog is big so if you want specific info use the table of contents above.
+
+> **Note:** to run this version of RBot you will need the **.NET 6 Desktop Runtime** which you can [download here for 64 bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x64-installer) and [download here for 32 bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x86-installer).
+
+### Problems
+
+Porting to .NET 6 gives a lot of improvements but as RBot still uses the Windows Forms there is some missing packages that were not updated to work in .NET 6. The problems are listed bellow, and they will not be fixed:
+
+1. Console and the AS3 Injector lost its ability to highlight keywords. My initial plan was to remake RBot in NET 6 and in WPF so I could have control over how it would render and a lot more of other possibilities that I can't seen to make work in WinForms, so it is what it is;
+2. Script errors don't show which line they are anymore. This will be a major problem for some, but if you setup an VSCode environment to work on your scripts it should be no problem;
+
+### Auto menu
+
+In the main menu of RBot at the right corner you can see a new button: **"Auto"**. This button allow you to acess the interface bellow:
+
+<p align="center"><img src="https://imgur.com/zOErYk7.png"></p>
+
+At the top is the status of the auto attack/hunt, if it is running it will tell you so. The numbered items works as follow:
+
+1. **Auto Attack:** When active your player will attack any monster in the current cell it is, using the skills predefined for your current class (make sure you have the *AdvancedSkills.txt* that comes with the scripts folder);
+2. **Auto Hunt:** When active your player will hunt the selected (targeted) monster, if no monster is selected it will get the names of the monsters in the current cell and hunt for them instead;
+
+> **Note:** Starting the attack/hunt method will automatically enable the drops, quest completion and boosts if any of these are setup.
+
+3. The drop list that will be picked up, you can use the key **Del** to delete the selected drops or **Ctrl + Del** to delete all the drops (Right clicking shows the same options):
+   1. Here you can type the drops you want to be added. You can type and press enter to add them to the list or separate multiple drops with a pipe character (`|`);
+   2. The **"Add"** button works just like pressing enter in the text box but with the possibility for more options:
+   **Ctrl + click:** Will add the requirements of all the active (accepted) quests;
+   **Alt + click:** Will add the requirements **AND** the rewards of all the active (accepted) quests;
+   3. Starts the drop grabber, useful if you just want it to grab the drops for you;
+
+4. The list of the quests that will be completed while using the Auto Attack/Hunt, you can use the key **Del** to delete the selected quests or **Ctrl + Del** to delete all the quests (Right clicking shows the same options):
+   1. Just like the drops you can press enter to add the quest IDs you want. For multiple additions you can separate them with a pipe character (`|`) or a comma (`,`);
+   2. This **"Add"** has more options too:
+   **Ctrl + click:** Will add the active (accepted) quest IDs to the list;
+   **Alt + click:** Will add **ALL** the loaded quest IDs to the list;
+
+5. The boost part allows you to use any boost you currently have in your inventory. Checking any of the check boxes will do a search in you inventory and set the ID of the first boost of that type it finds and when you press **Start Boosts** it will automatically use them when needed.
+
+### Loader
+
+The loader is pretty much the same but with a lot more functions attached to it than before:
+
+- You can search for an item name/ID using the **Search** text box, you can use **Ctrl + F** to select it while the Loader window is focused;
+- Right clicking the list of grabbed items will show some new buttons depending in the type of item grabbed:
+  - **Buy:** tries to buy the selected shop item, **Ctrl + click** allow you to input a quantity of how many you want to buy;
+  - **Load:** loads the selected shop in the Shop ID's grabber;
+  - **Open Quest:** opens the selected quests;
+  - **Accept Quest:** accepts the selected quests;
+  - **Equip:** equips all the selected items;
+  - **Sell:** sells the selected item, you can only sell one item at a time and it will prompt you first just in case;
+  - **To Bank:** sends all the selected items to bank;
+  - **To Inventory:** sends all the selected items to inventory;
+  - **Teleport To:** *(Map monsters grabber)* jumps you to the selected monster.
+
+### Packet Logger
+
+It is possible to filter the packets now so you don't see the the spam of skills while trying to get an important packet. Although there is a tooltip balloon, I was trolled by WinForms so it doesn't show long enough, each check box filter out the respective packets:
+
+- **Combat:** gar, aggroMon, restPacket;
+- **User Data:** retrieveUserData, retrieveUserDatas;
+- **Join:** tfer, house;
+- **Jump:** moveToCell;
+- **Movement:** mv, mtcid;
+- **Get Map:** getMapItem;
+- **Quest:** getQuest, acceptQuest, updateQuest, tryQuestComplete;
+- **Shop:** loadShop, buyItem, sellItem;
+- **Equip:** equipItem;
+- **Drop:** getDrop;
+- **Chat:** cc, message;
+- **Misc:** afk, crafting, setHomeTown, summonPet.
+
+You can also right click the list of packets to clear the current selections.
+
+### Overall UI Changes
+
+- All forms but the Main one have an option to make it the top most window and lock its position in the screen, to do it just **right click** any blank space in the window;
+- Ability to hide the application to the system tray, you can do so by double clicking the icon or right clicking it and choosing to Hide/Show, if you have system notifications on it will tell you when a script starts, stops or finishes with an error;
+- All windows are more responsive to its size;
+- The Scripts window shows the status of the script;
+- Logs are synchronized between any window and there is no need to let it open all times;
+- Ctrl + click in the **"Jump"** button of either one of the jump interfaces will jump you to "Enter", "Spawn". ([More info about the jump window here](#jump-overlay));
+
+### Scripting additions
+
+#### Events
+
+There is a new event to be listened for, it's the `CounterAttack` and you can use it like:
+
+```cs
+public void ScriptMain(ScriptInterface bot)
+{
+    // You assign a method to be called when a counter attack is detected
+    bot.Events.CounterAttack += CounterAttackHandler;
+
+    /*
+    Code
+    */
+}
+
+public void CounterAttackHandler(ScriptInterface bot, bool faded)
+{
+    // If faded is false it means the Counter Attack is about to start,
+    // inside it you should handle what the bot should do.
+    if(!faded)
+    {
+        /*
+        Code
+        */
+    }
+    // If faded is true then the Counter Attack finished,
+    // you can then tell the bot the specific actions after that.
+    else
+    {
+        /*
+        Code
+        */
+    }
+}
+
+```
+
+#### ScriptInterface
+
+You can use `ScriptInterface#Stop()` to stop the script, it works just like calling `ScriptManager.StopScript()`.
+
+#### Item information
+
+- `InventoryItem` now has an integer property to check the enhancement level of the item, you can access it by `InventoryItem#EnhancementLevel`;
+- `ShopItem` has a similar one for level, you can access it by `ShopItem#Level`.
+
+### New VSCode setup
+
+VSCode has "built in" methods to create an project for .NET 6, here I will show you how to make VSC able to autocomplete your projects.
+
+1. First you need to [download the .NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0), in the left you will see the SDK, download it for your Windows version;
+2. You can follow the steps **1 to 4** [from the last VSCode setup](#vscode-setup-for-c-scripting), you will only need the **C# and Auto-Using for C# extensions**, the optional ones are... optional;
+3. After the initial setup, click **File > Open Folder...** and select the folder where your scripts are;
+4. With the folder open, press **Ctrl + ' (single quote)** to open the Terminal;
+5. In the terminal write `dotnet new classlib` and press enter, it will create the .csproj needed for the referencing;
+6. Open the newly created .csproj and add this lines:
+
+```xml
+<ItemGroup>
+    <Reference Include="RBot">
+        <HintPath>$Path to your RBot exe$\RBot.exe</HintPath>
+    </Reference>
+</ItemGroup>
+```
+
+After replacing with your RBot exe path, it should look like this:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <!--Change this to "disable" so the usings are explicit-->
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Reference Include="RBot">
+      <HintPath>D:\Rbot-4\RBot.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
+```
+
+7. That's all you need!
+
+You can do it to as many folders as you want, if you want multiple of them open at the same time search for VSCode Workspaces.
 
 ## 3.6.3.2 (Inventory fix)
 
