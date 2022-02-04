@@ -345,7 +345,7 @@ public class CoreDailys
 
     public void SparrowsBlood()
     {
-        if (Core.CheckInventory("Sparrow's Blood", 5))
+        if (Core.CheckInventory("Sparrow's Blood", 3))
             return;
         if (!CheckDaily(803, "Sparrow's Blood"))
             return;
