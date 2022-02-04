@@ -69,7 +69,7 @@ public class SagaTroll
         }
 
         //Bloodtusk War
-        Core.KillQuest(1272, "bloodtuskwar", "Chaotic Troll", FollowupIDOverwrite: 1274, AutoCompleteQuest = false);
+        Core.KillQuest(1272, "bloodtuskwar", "Chaotic Troll", FollowupIDOverwrite: 1274, AutoCompleteQuest: false);
 
         //Guarded Secrets, Hidden Treasures
         Core.MapItemQuest(1274, "ravinetemple", 553);
@@ -83,7 +83,7 @@ public class SagaTroll
         Core.KillQuest(1276, "ravinetemple", "*");
 
         //Too Little, Too Late. Still Needed
-        Core.MapItemQuest(1277, "ravinetemple", 557, 10,);
+        Core.MapItemQuest(1277, "ravinetemple", 557, 10);
         Core.KillQuest(1277, "ravinetemple", "*");
 
         //Alliance Defiance
@@ -109,7 +109,7 @@ public class SagaTroll
         Core.KillQuest(1374, "alliance", new[] { "General Cynari", "General Tibias" }, FollowupIDOverwrite: 1419);
 
         //Contain the Chaorruption
-        Core.KillQuest(1419, "ancienttemple", "Chaotic Vulture|Chaotic Horcboar"
+        Core.KillQuest(1419, "ancienttemple", "Chaotic Vulture|Chaotic Horcboar");
 
         //Ancient Ointment
         Core.MapItemQuest(1420, "ancienttemple", 706, 7);
