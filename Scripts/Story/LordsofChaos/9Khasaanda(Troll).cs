@@ -91,19 +91,7 @@ public class SagaTroll
             Core.SendPackets("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
 
         //Bloodtusk War
-<<<<<<< Updated upstream
         Core.KillQuest(1272, "bloodtuskwar", "Chaotic Troll", FollowupIDOverwrite: 1274, AutoCompleteQuest: false);
-=======
-            // Core.Join("bloodtuskwar");
-            // Core.KillMonster("bloodtuskwar", "r7", "Left", "Chaotic Troll");
-            // Core.ChainQuest(1272, FollowupIDOverwrite: 1274);
-            Core.Join("bloodtuskwar");
-            Core.Jump("r7", "Left");
-            Core.KillMonster("bloodtuskwar", "r7", "Left", "Chaotic Troll");
-            Core.Jump("Cut1", "Left");
-            Bot.Sleep(2000);
-            Core.SendPackets("%xt%zm%tryQuestComplete%76390%1272%-1%false%wvz%");
->>>>>>> Stashed changes
 
         //Guarded Secrets, Hidden Treasures
         Core.MapItemQuest(1274, "ravinetemple", 553);
@@ -117,10 +105,7 @@ public class SagaTroll
         Core.KillQuest(1276, "ravinetemple", "*");
 
         //Too Little, Too Late. Still Needed
-<<<<<<< Updated upstream
         Core.MapItemQuest(1277, "ravinetemple", 557, 10);
-=======
->>>>>>> Stashed changes
         Core.KillQuest(1277, "ravinetemple", "*");
         Core.MapItemQuest(1277, "ravinetemple", 557, 10);
 
