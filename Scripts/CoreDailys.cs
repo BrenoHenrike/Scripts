@@ -353,7 +353,7 @@ public class CoreDailys
         Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(803);
         Core.HuntMonster("arcangrove", "Gorillaphant", "Blood Lily", 30);
-        Core.HuntMonster("arcangrove", "Seed Spitter", "Snapdrake ", 17);
+        Core.HuntMonster("arcangrove", "Seed Spitter", "Snapdrake", 17);
         Core.HuntMonster("arcangrove", "Seed Spitter|Gorillaphant", "DOOM Dirt", 12);
         Core.EnsureComplete(803);
     }
