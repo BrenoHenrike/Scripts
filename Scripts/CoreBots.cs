@@ -1157,7 +1157,10 @@ public class CoreBots
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
         if (log)
-            Logger($"Killing {name} for {item}, ({Bot.Inventory.GetQuantity(item)}/{quantity}) [Temp = {tempItem}]");
+        {
+            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+            Logger($"Killing {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
+        }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
             Bot.Player.Kill(name);
@@ -1174,7 +1177,10 @@ public class CoreBots
     private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
         if (log)
-            Logger($"Hunting {name} for {item}, ({Bot.Inventory.GetQuantity(item)}/{quantity}) [Temp = {tempItem}]");
+        {
+            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+            Logger($"Hunting {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
+        }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
             Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
