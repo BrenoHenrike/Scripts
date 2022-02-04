@@ -23,7 +23,7 @@ public class CoreBots
     // [Can Change] How many tries to accept/complete the quest will be sent
     public int AcceptandCompleteTries { get; set; } = 20;
     // [Can Change] Whether the bots will use private rooms
-    public bool PrivateRooms { get; set; } = false;
+    public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
