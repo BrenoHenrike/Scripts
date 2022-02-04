@@ -1,28 +1,21 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
-
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
 using RBot;
-
 public class CastleofBones
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        CastleofBones();
+        CastleofBonesSaga();
 
         Core.SetOptions(false);
     }
 
-    public void CastleofBones()
+    public void CastleofBonesSaga()
     {
         // Enter the Castle of Bone
         Core.KillQuest(4968, "bonecastle", "Undead Guard");
