@@ -10,6 +10,7 @@ public class SagaChiralValley
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
 
         CompleteSaga();
 

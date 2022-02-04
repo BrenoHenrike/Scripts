@@ -344,7 +344,7 @@ public class CoreFarms
         ChaosREP();
         ChronoSpanREP();
         CraggleRockREP();
-        //DeathPitArenaREP();
+        DeathPitArenaREP();
         //DeathPitBrawlREP();
         DiabolicalREP();
         DoomwoodREP();
@@ -357,7 +357,7 @@ public class CoreFarms
         EternalREP();
         EtherStormREP();
         EvilREP();
-        //FaerieCourtREP();
+        FaerieCourtREP();
         FishingREP();
         GlaceraREP();
         GoodREP();
@@ -645,24 +645,30 @@ public class CoreFarms
         }
         if (farmBoA)
         {
-            if (!Core.CheckInventory("Legendary Blade", toInv: false))
+            if (FactionRank("Blade of Awe") < 6)
             {
-                Core.EnsureAccept(2936);
-                Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false);
-                Core.EnsureComplete(2936);
-                Bot.Player.Pickup("Legendary Blade");
-                Core.Logger("Find the Blade! completed");
+                if (!Core.CheckInventory("Legendary Blade", toInv: false))
+                {
+                    Core.EnsureAccept(2936);
+                    Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false);
+                    Core.EnsureComplete(2936);
+                    Bot.Player.Pickup("Legendary Blade");
+                    Core.Logger("Find the Blade! completed");
+                }
+                if (!Core.CheckInventory("Legendary Runes", toInv: false))
+                {
+                    Core.EnsureAccept(2937);
+                    Core.KillEscherion("Runes Found!", publicRoom: true);
+                    Core.EnsureComplete(2937);
+                    Bot.Player.Pickup("Legendary Runes");
+                    Core.Logger("Find the Runes! completed");
+                }
+                Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
+                Core.BuyItem("museum", 630, "Blade of Awe");
             }
-            if (!Core.CheckInventory("Legendary Runes", toInv: false))
-            {
-                Core.EnsureAccept(2937);
-                Core.KillEscherion("Runes Found!", publicRoom: true);
-                Core.EnsureComplete(2937);
-                Bot.Player.Pickup("Legendary Runes");
-                Core.Logger("Find the Runes! completed");
-            }
-            Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
-            Core.Logger("You can now merge the Blade of Awe at /join museum", messageBox: true);
+            if (FactionRank("Blade of Awe") >= 6)
+                Core.BuyItem("museum", 631, "Blade of Awe");
+
         }
     }
 
@@ -753,6 +759,27 @@ public class CoreFarms
             Core.Logger($"Completed x{i++}");
         }
     }
+
+    public void DeathPitArenaREP(int rank = 10)
+    {
+        if (FactionRank("Death Pit Arena") >= rank)
+            return;
+        if (!Bot.Quests.IsAvailable(5154))
+        {
+            Core.Logger("Quest not available for farm, do the Death Pit Arena saga and unlock the quest [Pax Defeated]");
+            return;
+        }
+        Core.EquipClass(ClassType.Solo);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Death Pit Arena") < rank)
+        {
+            Core.EnsureAccept(5153);
+            Core.HuntMonster("deathpit", "General Hun'Gar", "General Hun'Gar Defeated", 1);
+            Core.EnsureComplete(5153);
+            Core.Logger($"Completed x{i++}");
+        }
+    } 
 
     public void DiabolicalREP(int rank = 10)
     {
@@ -994,6 +1021,22 @@ public class CoreFarms
                 Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase");
                 Core.EnsureComplete(366);
             }
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void FaerieCourtREP(int rank = 10) // Seasonal
+    {
+        if (FactionRank("Faerie Court") >= rank)
+            return;
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int i = 1;
+        while (FactionRank("Faerie Court") < rank)
+        {
+            Core.EnsureAccept(6779);
+            Core.HuntMonster("faegrove", "Dark Sylphdrake", "Silver Sylph Feather", 1);
+            Core.EnsureComplete(6779);
             Core.Logger($"Completed x{i++}");
         }
     }

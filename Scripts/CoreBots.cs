@@ -41,13 +41,13 @@ public class CoreBots
     // [Can Change] Mode of soloing class, if it has multiple. 
     public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your soloing equipment
-    public string[] SoloGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
+    public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
     // [Can Change] Mode of farminging class, if it has multiple. 
     public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your farming equipment
-    public string[] FarmGear { get; set; } = {"Weapon", "Headpiece", "Cape"};
+    public string[] FarmGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
@@ -94,21 +94,6 @@ public class CoreBots
                     StopBot();
             }, "Stop Handler");
 
-            Bot.RegisterHandler(15, b =>
-            {
-                FlashUtil.Call("skipCutscenes");
-                if (b.Player.Cell.Contains("Cut"))
-                {
-                    b.Sleep(1500);
-                    b.Player.Jump("Enter", "Spawn");
-                    bool lagKiller = b.Options.LagKiller;
-                    b.Options.LagKiller = true;
-                    b.Options.LagKiller = false;
-                    b.Options.LagKiller = true;
-                    b.Options.LagKiller = lagKiller;
-                }
-            }, "Skip Cutscenes");
-
             Bot.SendPacket("%xt%zm%afk%1%false%");
             Bot.RegisterHandler(1000, b =>
             {
@@ -124,11 +109,11 @@ public class CoreBots
             Bot.Runtime.BankLoaded = true;
             if (BankMiscAC)
             {
-                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse", "Misc" };
+                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
                 List<string> MiscForBank = new List<string>();
                 foreach (var item in Bot.Inventory.Items)
                 {
-                    if (!Whitelisted.Contains(item.Category.ToString())) 
+                    if (!Whitelisted.Contains(item.Category.ToString()))
                         continue;
                     if (item.Name != "Treasure Potion" && item.Coins)
                         MiscForBank.Add(item.Name);
@@ -201,7 +186,7 @@ public class CoreBots
         }
         if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
             return true;
-        
+
         return false;
     }
 
@@ -251,7 +236,7 @@ public class CoreBots
                 {
                     Bot.Bank.ToInventory(item);
                     Bot.Wait.ForBankToInventory(item);
-                    Bot.Sleep(ActionDelay); 
+                    Bot.Sleep(ActionDelay);
                 }
                 Logger($"{item} moved from bank");
             }
@@ -266,7 +251,7 @@ public class CoreBots
     {
         if (items == null)
             return;
-        
+
         JumpWait();
         Bot.Player.OpenBank();
         foreach (string item in items)
@@ -280,7 +265,7 @@ public class CoreBots
                     Bot.Wait.ForInventoryToBank(item);
                     Bot.Sleep(ActionDelay);
                 }
-                Logger($"{item} moved to bank"); 
+                Logger($"{item} moved to bank");
             }
         }
     }
@@ -302,13 +287,13 @@ public class CoreBots
         Bot.Shops.Load(shopID);
         ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
-        if(quant <= 0)
+        if (quant <= 0)
             return;
         if (item.Coins && item.Cost > 0)
             if (MessageBox.Show(
-                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?", 
-                                "Warning: Costs AC!", 
-                                MessageBoxButtons.YesNo, 
+                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
+                                "Warning: Costs AC!",
+                                MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question)
                             != DialogResult.Yes)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
@@ -337,13 +322,13 @@ public class CoreBots
         Bot.Sleep(ActionDelay);
         ShopItem item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
         quant = _CalcBuyQuantity(item, quant, shopQuant);
-        if(quant <= 0)
+        if (quant <= 0)
             return;
         if (item.Coins && item.Cost > 0)
             if (MessageBox.Show(
-                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?", 
-                                "Warning: Costs AC!", 
-                                MessageBoxButtons.YesNo, 
+                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
+                                "Warning: Costs AC!",
+                                MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question)
                             != DialogResult.Yes)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
@@ -390,17 +375,17 @@ public class CoreBots
     /// <param name="all">Set to true if you wish to sell all the items</param>
     public void SellItem(string itemName, int quant = 0, bool all = false)
     {
-        if(!CheckInventory(itemName))
+        if (!CheckInventory(itemName))
             return;
         JumpWait();
-        if(!all)
+        if (!all)
             for (int i = 0; i < quant; i++)
             {
                 Bot.Shops.SellItem(itemName);
                 Bot.Sleep(ActionDelay);
             }
         else
-            while(Bot.Inventory.GetQuantity(itemName) != 0)
+            while (Bot.Inventory.GetQuantity(itemName) != 0)
             {
                 Bot.Shops.SellItem(itemName);
                 Bot.Sleep(ActionDelay);
@@ -424,7 +409,7 @@ public class CoreBots
             Bot.Drops.Add(item);
         Bot.Drops.Start();
     }
-    
+
     /// <summary>
     /// Removes drops from the pickup list and restart the Drop Grabber
     /// </summary>
@@ -439,7 +424,7 @@ public class CoreBots
     #endregion
 
     #region Quest
-    
+
     /// <summary>
     /// Ensures you are out of combat before accepting the quest
     /// </summary>
@@ -448,7 +433,7 @@ public class CoreBots
     {
         if (Bot.Quests.IsInProgress(questID))
             return true;
-        if(questID <= 0)
+        if (questID <= 0)
             return false;
         JumpWait();
         Bot.Sleep(ActionDelay);
@@ -496,10 +481,10 @@ public class CoreBots
             return false;
         JumpWait();
         Bot.Sleep(ActionDelay);
-        if(Bot.Quests.TryGetQuest(questID, out Quest quest))
+        if (Bot.Quests.TryGetQuest(questID, out Quest quest))
             foreach (ItemBase item in quest.Rewards)
             {
-                if(!CheckInventory(item.Name, toInv: false)
+                if (!CheckInventory(item.Name, toInv: false)
                     && (itemList == null || (itemList != null && itemList.Contains(item.Name))))
                 {
                     Logger($"Completed [{quest.Name}] for {item.Name}");
@@ -551,7 +536,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
+    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         ItemBase[] Requirements = QuestData.Requirements.ToArray();
@@ -562,7 +547,7 @@ public class CoreBots
         SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            if (QuestAutoCompletes)
+            if (AutoCompleteQuest)
                 EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
@@ -578,7 +563,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
+    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         ItemBase[] Requirements = QuestData.Requirements.ToArray();
@@ -589,7 +574,7 @@ public class CoreBots
         SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            if (QuestAutoCompletes)
+            if (AutoCompleteQuest)
                 EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
@@ -606,7 +591,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
+    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
@@ -617,7 +602,7 @@ public class CoreBots
         GetMapItem(MapItemID, Amount, MapName);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            if (QuestAutoCompletes)
+            if (AutoCompleteQuest)
                 EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
@@ -634,7 +619,7 @@ public class CoreBots
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
     /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool QuestAutoCompletes = false)
+    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
@@ -645,7 +630,7 @@ public class CoreBots
         BuyItem(MapName, ShopID, ItemName, Amount);
         if (Bot.Quests.CanComplete(QuestID))
         {
-            if (QuestAutoCompletes)
+            if (AutoCompleteQuest)
                 EnsureComplete(QuestID);
             Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
@@ -682,23 +667,23 @@ public class CoreBots
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
-        
+
         if (QuestData == null)
             Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
-        
+
         if (!Bot.Quests.IsUnlocked(QuestID))
             Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID+1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite)))) 
+        if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID + 1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite))))
         {
             Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
             Bot.Sleep(700);
             return true;
         }
-        
+
         if (Reward != "All")
         {
-            if (CheckInventory(Reward)) 
+            if (CheckInventory(Reward))
             {
                 Logger($"You already have {Reward}, skipping quest");
                 return true;
@@ -758,13 +743,13 @@ public class CoreBots
     private void _SmartKill(string monster, int iterations = 20)
     {
         bool repeat = true;
-        for(int j = 0; j < iterations; j++)
+        for (int j = 0; j < iterations; j++)
         {
-            if(CurrentRequirements.Count == 0)
+            if (CurrentRequirements.Count == 0)
                 break;
             if (CurrentRequirements.Count == 1)
             {
-                if(_RepeatCheck(ref repeat, 0))
+                if (_RepeatCheck(ref repeat, 0))
                     break;
                 _MonsterHunt(ref repeat, monster, CurrentRequirements[0].Name, CurrentRequirements[0].Quantity, CurrentRequirements[0].Temp, 0);
                 break;
@@ -773,14 +758,14 @@ public class CoreBots
             {
                 for (int i = CurrentRequirements.Count - 1; i >= 0; i--)
                 {
-                    if(j == 0 && (CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity)))
+                    if (j == 0 && (CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity)))
                     {
                         CurrentRequirements.RemoveAt(i);
                         continue;
                     }
                     if (j != 0 && CheckInventory(CurrentRequirements[i].Name))
                     {
-                        if(_RepeatCheck(ref repeat, i))
+                        if (_RepeatCheck(ref repeat, i))
                             break;
                         _MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
                         break;
@@ -805,7 +790,7 @@ public class CoreBots
 
     private bool _RepeatCheck(ref bool shouldRepeat, int index)
     {
-        if(CheckInventory(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity))
+        if (CheckInventory(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity))
         {
             CurrentRequirements.RemoveAt(index);
             shouldRepeat = false;
@@ -835,7 +820,7 @@ public class CoreBots
         Jump(cell, pad);
         if (item == null)
         {
-            if(log)
+            if (log)
                 Logger($"Killing {monster}");
             Bot.Player.Kill(monster);
             Rest();
@@ -862,7 +847,6 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        Bot.Wait.ForMapLoad(map);
         Jump(cell, pad);
         Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
         if (item == null)
@@ -891,10 +875,9 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        Bot.Wait.ForMapLoad(map);
         if (item == null)
         {
-            if(log)
+            if (log)
                 Logger($"Hunting {monster}");
             Bot.Player.Hunt(monster);
             Rest();
@@ -902,6 +885,7 @@ public class CoreBots
         else
             _HuntForItem(monster, item, quant, isTemp, log: log);
     }
+
 
     /// <summary>
     /// Kill Escherion for the desired item
@@ -920,9 +904,9 @@ public class CoreBots
         if (item == null)
         {
             Logger("Killing Escherion");
-            while(Bot.Monsters.MapMonsters.Find(m => m.Name == "Escherion").Alive)
+            while (Bot.Monsters.MapMonsters.Find(m => m.Name == "Escherion").Alive)
             {
-                if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                if (Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -931,9 +915,9 @@ public class CoreBots
         else
         {
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
-            while(!CheckInventory(item, quant))
+            while (!CheckInventory(item, quant))
             {
-                if(Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                if (Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -943,7 +927,7 @@ public class CoreBots
     #endregion
 
     #region Utils
-    
+
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
     /// </summary>
@@ -963,7 +947,7 @@ public class CoreBots
     /// <param name="caption">Title of the box</param>
     public void Message(string message, string caption)
     {
-        if(DialogResult.OK == MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0x40000))
+        if (DialogResult.OK == MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0x40000))
             return;
     }
 
@@ -980,7 +964,7 @@ public class CoreBots
                 Bot.SendClientPacket(packet);
             else
                 Bot.SendPacket(packet);
-            Bot.Sleep(ActionDelay*2);
+            Bot.Sleep(ActionDelay * 2);
         }
     }
 
@@ -1004,12 +988,12 @@ public class CoreBots
         Logger("Relogin started");
         Bot.Player.Logout();
         Bot.Sleep(5000);
-        Server server = Bot.Options.AutoReloginAny 
-                ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP) 
+        Server server = Bot.Options.AutoReloginAny
+                ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP)
                 : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
         Bot.Player.Connect(server);
-        while(!Bot.Player.LoggedIn)
+        while (!Bot.Player.LoggedIn)
             Bot.Sleep(500);
         Bot.Sleep(5000);
         Logger("Relogin finished");
@@ -1053,7 +1037,7 @@ public class CoreBots
     /// <param name="classToUse">Type "ClassType." and then either Farm or Solo in order to select which type it should swap too</param>
     public void EquipClass(ClassType classToUse)
     {
-        if(currentClass == classToUse)
+        if (currentClass == classToUse)
             return;
         switch (classToUse)
         {
@@ -1106,25 +1090,25 @@ public class CoreBots
     public void BestGear(GearBoost BoostType)
     {
         GearBoost[] RaceBoosts = {
-            GearBoost.Chaos, 
-            GearBoost.Dragonkin, 
-            GearBoost.Elemental, 
-            GearBoost.Human, 
+            GearBoost.Chaos,
+            GearBoost.Dragonkin,
+            GearBoost.Elemental,
+            GearBoost.Human,
             GearBoost.Undead
         };
         ItemCategory[] WeaponCatagories = {
-            ItemCategory.Sword, 
-            ItemCategory.Axe, 
-            ItemCategory.Dagger, 
-            ItemCategory.Gun, 
-            ItemCategory.HandGun, 
-            ItemCategory.Rifle, 
-            ItemCategory.Bow, 
-            ItemCategory.Mace, 
-            ItemCategory.Gauntlet, 
-            ItemCategory.Polearm, 
-            ItemCategory.Staff, 
-            ItemCategory.Wand, 
+            ItemCategory.Sword,
+            ItemCategory.Axe,
+            ItemCategory.Dagger,
+            ItemCategory.Gun,
+            ItemCategory.HandGun,
+            ItemCategory.Rifle,
+            ItemCategory.Bow,
+            ItemCategory.Mace,
+            ItemCategory.Gauntlet,
+            ItemCategory.Polearm,
+            ItemCategory.Staff,
+            ItemCategory.Wand,
             ItemCategory.Whip
         };
         InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
@@ -1150,7 +1134,7 @@ public class CoreBots
 
             foreach (InventoryItem Item in BankInvData)
             {
-                if (Item.Meta != null && Item.Meta.Contains("dmgAll") && 
+                if (Item.Meta != null && Item.Meta.Contains("dmgAll") &&
                    (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
                     Item.Category != BestItemCatagory)
                 {
@@ -1172,8 +1156,11 @@ public class CoreBots
 
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
-        if(log)
-            Logger($"Killing {name} for {item} ({quantity}) [Temp = {tempItem}]");
+        if (log)
+        {
+            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+            Logger($"Killing {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
+        }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
             Bot.Player.Kill(name);
@@ -1189,8 +1176,11 @@ public class CoreBots
 
     private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
-        if(log)
-            Logger($"Hunting {name} for {item} ({quantity}) [Temp = {tempItem}]");
+        if (log)
+        {
+            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+            Logger($"Hunting {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
+        }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
             Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
@@ -1219,7 +1209,7 @@ public class CoreBots
             {
                 if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
                 {
-                    if(!item.Temp)
+                    if (!item.Temp)
                         reqItems.Add(item.Name);
                     CurrentRequirements.Add(item);
                 }
@@ -1230,11 +1220,11 @@ public class CoreBots
 
     private void _EquipClass(string className)
     {
-        if(className.ToLower() != "generic" 
+        if (className.ToLower() != "generic"
             && Bot.Inventory.CurrentClass.Name.ToLower() != className.ToLower())
         {
             JumpWait();
-            while(!Bot.Inventory.IsEquipped(className))
+            while (!Bot.Inventory.IsEquipped(className))
             {
                 Bot.Player.EquipItem(className);
                 Bot.Sleep(ActionDelay);
@@ -1247,7 +1237,7 @@ public class CoreBots
     {
         foreach (string Item in gear)
         {
-            if((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
+            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
                 JumpWait();
                 Bot.Player.EquipItem(Item);
@@ -1263,7 +1253,7 @@ public class CoreBots
     /// <param name="removeStopHandler">Whether or not it should also stop the "Stop Handler" that is activated with SetOptions </param>
     public void StopBot(bool removeStopHandler = false)
     {
-        if(removeStopHandler)
+        if (removeStopHandler)
         {
             Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
             Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
@@ -1304,7 +1294,7 @@ public class CoreBots
         }
         Logger($"Map item {itemID}({quant}) acquired");
     }
-    
+
     /// <summary>
     /// Jumps to the desired cell and set spawn point
     /// </summary>

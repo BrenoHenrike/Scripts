@@ -46,23 +46,6 @@ public class CoreNulgath
     public string[] tercessBags = { "Bone Dust" };
 
     /// <summary>
-    /// Drops from the VHL Challenge quest
-    /// </summary>
-    public string[] VHLDrops =
-    {
-        "Hadean Onyx of Nulgath",
-        "Black Knight Orb",
-        "Nulgath Shaped Chocolate",
-        "Elder's Blood",
-        "Aelita's Emerald",
-        "Emblem of Nulgath",
-        "Void Highlord Armor",
-        "Helm of the Highlord",
-        "Highlord's Void Wrap",
-        "Roentgenium of Nulgath"
-    };
-
-    /// <summary>
     /// List of Betrayal Blades
     /// </summary>
     public string[] betrayalBlades =

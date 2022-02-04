@@ -10,6 +10,7 @@ public class SagaDarkovia
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         CompleteSaga();
 
         Core.SetOptions(false);

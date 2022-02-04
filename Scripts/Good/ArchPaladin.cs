@@ -185,7 +185,7 @@ public class ArchPaladin
             Core.EnsureComplete(5469);
         }
         // Sacred Magic: Eden
-        if (!Core.QuestProgression(5470))
+        if (!Core.QuestProgression(5470, hasFollowup: false))
         {
             Core.EnsureAccept(5470);
             Core.EquipClass(ClassType.Solo);

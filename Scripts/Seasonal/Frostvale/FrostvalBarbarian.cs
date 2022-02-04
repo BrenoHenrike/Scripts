@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Seasonal/Frostvale.cs
+//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/CoreDailys.cs
 using RBot;
