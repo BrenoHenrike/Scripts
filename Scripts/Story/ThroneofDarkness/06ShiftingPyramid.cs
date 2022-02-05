@@ -55,7 +55,15 @@ public class ShiftingPyramid
         // Honor the God Thoth
         Core.MapItemQuest(5183, "whitehole", 4544, 1);
         // The Brightest Cartouches
-        Core.KillQuest(5184, "whitehole", new[] {"Vortex Matter", "Dimensional Crystal", "Dimensional Crystal", "Vortex Crystal"});
+        if (!Core.QuestProgression(5184))
+        {
+            Core.EnsureAccept(5184);
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Sun Cartouche");
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Sky Cartouche");
+            Core.HuntMonster("whitehole", "Vortex Matter", "Star Cartouche");
+            Core.HuntMonster("whitehole", "Vortex Crystal", "Moon Cartouche");
+            Core.EnsureComplete(5184);
+        }
         // Honor the Astral Deities
         Core.MapItemQuest(5185, "whitehole", 4545, 4);
         // Serpent of the Stars
