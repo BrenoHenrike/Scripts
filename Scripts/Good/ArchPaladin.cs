@@ -4,7 +4,6 @@
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Story/XansLair.cs
-//cs_include Scripts/Story/DoomVault.cs
 using RBot;
 
 public class ArchPaladin
@@ -17,7 +16,6 @@ public class ArchPaladin
     public CoreDailys Daily = new CoreDailys();
     public Paladin Pal = new Paladin();
     public XansLair Xan = new XansLair();
-    public DoomVaultA DVA = new DoomVaultA();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -48,10 +46,14 @@ public class ArchPaladin
             {
                 Core.EnsureAccept(5464);
                 BLOD.UnlockMineCrafting();
-                DVA.StoryLine();
                 Farm.BattleUnderB("Undead Energy", 1000);
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
+                if (Core.CheckInventory("Binky's Uni-horn"))
+                {
+                    Core.Join("doomvault");
+                    Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":18,\"iIndex\":126}}}");
+                    Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
+                }
                 Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom : true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
 
