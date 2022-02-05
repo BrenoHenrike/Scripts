@@ -4,7 +4,6 @@ using RBot;
 public class BurningBlade
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
 
     public void ScriptMain(ScriptInterface bot)
