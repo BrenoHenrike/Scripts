@@ -405,7 +405,6 @@ public class CoreBots
     /// <param name="items">Items to add</param>
     public void AddDrop(params string[] items)
     {
-        Bot.Drops.Stop();
         Unbank(items);
         foreach (string item in items)
             Bot.Drops.Add(item);
