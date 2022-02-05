@@ -25,7 +25,7 @@ public class BurningBladeOfAzabeth
                 b.Options.AggroMonsters = false;
             });
         Bot.Options.AggroMonsters = true;
-        Core.HuntMonster("celestialareand", "Aranx", "Burning Blade of Azabeth", isTemp: false);
+        Core.HuntMonster("celestialarenad", "Aranx", "Burning Blade of Azabeth", isTemp: false);
         Bot.Wait.ForPickup("Burning Blade of Azabeth");
     }
 }
