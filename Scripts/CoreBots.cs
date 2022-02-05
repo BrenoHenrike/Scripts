@@ -94,6 +94,7 @@ public class CoreBots
                     StopBot();
             }, "Stop Handler");
 
+            /*
             Bot.SendPacket("%xt%zm%afk%1%false%");
             Bot.RegisterHandler(1000, b =>
             {
@@ -104,6 +105,7 @@ public class CoreBots
                     b.Player.Logout();
                 }
             }, "AFK Handler");
+            */
 
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
