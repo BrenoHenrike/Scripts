@@ -243,7 +243,7 @@ Those properties return integers that can help you manage the player inventory i
 - Bot Options (under Options in the main menu) now has visuals of how many slots you have total, free and used;
 - Fixed `ScriptInterface#Bank.UsedSlots` to use the right function;
 - `ScriptInterface#Player.Join` no longer recurse indefinitely, the max amount of recursions is now 3;
-- UI plugins can be added as a dropdown item under Plugins in the main menu ([check Plugins docs](https://brenohenrike.github.io/Rbot-Scripts/Plugins));
+- UI plugins can be added as a dropdown item under Plugins in the main menu ([check Plugins docs](https://brenohenrike.github.io/Scripts/Plugins));
 - Various UI updates.
 
 ## 3.6.2
@@ -364,11 +364,11 @@ After adding it you can click the *"Go"* button to join the selected fast travel
 
 ### Advanced Skills
 
-Core Skill plugin is now implemented inside RBot and are saved to `RBot folder/Skills/AdvancedSkills.txt`, more info on how to use can be [seen here](http://brenohenrike.github.io/rbot-Scripts/Skills#advanced-skills). This will allow you and bot makers to provide skill sets.
+Core Skill plugin is now implemented inside RBot and are saved to `RBot folder/Skills/AdvancedSkills.txt`, more info on how to use can be [seen here](http://brenohenrike.github.io/Scripts/Skills#advanced-skills). This will allow you and bot makers to provide skill sets.
 
 ### Multiple Options
 
-It's now possible to create multiple lists of options for your scripts, allowing categorized options to be shown at script start. To set it up you will need to create the option fields [explained here](https://brenohenrike.github.io/Rbot-Scripts/Script%20Options#setting-up) and an aditional field (`public string[] MultiOptions`) that will list the fields you want to be used as options:
+It's now possible to create multiple lists of options for your scripts, allowing categorized options to be shown at script start. To set it up you will need to create the option fields [explained here](https://brenohenrike.github.io/Scripts/Script%20Options#setting-up) and an aditional field (`public string[] MultiOptions`) that will list the fields you want to be used as options:
 
 ```cs
 // Like in the default setup, we specify the file name.
@@ -494,7 +494,7 @@ Now we are finished, if you don't like the default dark mode of VSCode you can a
 
 - New weapon categories added to fix inventory/bank grabber;
 - Jump window updates properly when changing map;
-- [Patterns](https://brenohenrike.github.io/Rbot-Scripts/Skills#patterns) work as they should (Read the link to see how to use);
+- [Patterns](https://brenohenrike.github.io/Scripts/Skills#patterns) work as they should (Read the link to see how to use);
 
 ### Added
 

@@ -1,4 +1,4 @@
-# Rbot-Scripts
+# Scripts
 
 If any of my scripts helped you and you want to donate:  
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)  
@@ -6,9 +6,9 @@ Pix: bhenrike@protonmail.com
 
 - [Versão em Português Brasileiro](README.pt-br.md)
 
-- [RBot Docs](https://brenohenrike.github.io/Rbot-Scripts/)
+- [RBot Docs](https://brenohenrike.github.io/Scripts/)
 
-- [Rbot-Scripts](#rbot-scripts)
+- [Scripts](#Scripts)
   - [To do](#to-do)
   - [Customizing CoreBots](#customizing-corebots)
   - [Core Skill Plugin](#core-skill-plugin)
@@ -58,14 +58,14 @@ public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 ## Core Skill Plugin
 
 > **In RBot 3.6.2 and beyond Core Skills are branded as Advanced skills so you don't need the plugin anymore.**
-> **The guide was [moved to here](https://brenohenrike.github.io/Rbot-Scripts/Skills#advanced-skills)**
+> **The guide was [moved to here](https://brenohenrike.github.io/Scripts/Skills#advanced-skills)**
 
 ## FAQ
 
 **Q:** How do I download the scripts?  
 **A:**
 
-- Go to the [Releases link](https://github.com/BrenoHenrike/Rbot-Scripts/releases);
+- Go to the [Releases link](https://github.com/BrenoHenrike/Scripts/releases);
 - From the latest upload, download the **Scripts.zip** folder under _Assets_;
 - Place the **Scripts.zip** inside your _RBot Scripts folder_;
 - Right click **Scripts.zip** and click **"_Extract here_"**;
@@ -78,7 +78,7 @@ public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 **A:** All files starting with **"*Core*"** aren't bots, they are used by bots.
 
 **Q:** I'm running a bot and I get an error like *"The type or namespace 'CoreBots' could not be found"*, how do I fix it?  
-**A:** That's an installation problem, certify that you dropped the **"*Scripts*"** folder directly in the **"*RBot.exe*"** folder, this way it will update all previous bots that you downloaded from here. A commom error is your file path be like: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* or even *"\*/Rbot/**Rbot-Scripts-master/Scripts**/FarmAllDailys.cs"* it should be *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
+**A:** That's an installation problem, certify that you dropped the **"*Scripts*"** folder directly in the **"*RBot.exe*"** folder, this way it will update all previous bots that you downloaded from here. A commom error is your file path be like: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* or even *"\*/Rbot/**Scripts-master/Scripts**/FarmAllDailys.cs"* it should be *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
 > **Note:** If after you follow this answer the error persists, open the script you got an error and certify that the first lines with `//cs_include` have the right path/file name, typos happen.
 
 **Q:** Even after doing the solutions above my script doesn't run, what now?  

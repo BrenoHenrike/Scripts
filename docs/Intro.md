@@ -69,4 +69,4 @@ The `ScriptInterface` class provides a multitude of methods and properties for a
 
 ---------
 <center>
-◄ Previous — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Options and Lite" title="Options and Lite">Next ►</a></center>
+◄ Previous — <a href="/Scripts/" title="Back to Index">Index</a> — <a href="/Scripts/Options and Lite" title="Options and Lite">Next ►</a></center>

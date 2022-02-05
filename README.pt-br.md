@@ -1,4 +1,4 @@
-# Rbot-Scripts
+# Scripts
 
 Se eu te ajudei e você quer doar qualquer quantia:  
 [![Doar](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=QVQ4Q7XSH9VBY)  
@@ -6,9 +6,9 @@ Pix: bhenrike@prontonmail.com
 
 - [English version](README.md)
 
-- [RBot Docs](https://brenohenrike.github.io/Rbot-Scripts/)
+- [RBot Docs](https://brenohenrike.github.io/Scripts/)
 
-- [Rbot-Scripts](#rbot-scripts)
+- [Scripts](#Scripts)
   - [A fazer](#a-fazer)
   - [Customizando CoreBots](#customizando-corebots)
   - [Core Skill Plugin](#core-skill-plugin)
@@ -124,7 +124,7 @@ Agora seus bots irão utilizar a classe e skills definidas quando necessário.
 **Q:** Como baixar os scripts?  
 **A:**
 
-- Vá para a aba de [Releases](https://github.com/BrenoHenrike/Rbot-Scripts/releases/tag/Scripts);
+- Vá para a aba de [Releases](https://github.com/BrenoHenrike/Scripts/releases/tag/Scripts);
 - Na postagem marcada com "Latest", baixe a pasta **Scripts.zip** abaixo de _Assets_;
 - Coloque a pasta **Scripts.zip** dentro da pasta _Scripts do seu RBot_;
 - Clique com o botão direito sobre **Scripts.zip** e depois clique em **"_Extrair aqui_"**;
@@ -137,7 +137,7 @@ Agora seus bots irão utilizar a classe e skills definidas quando necessário.
 **A:** Arquivos que começam com **"*Core*"** não são bots, são apenas arquivos que os bots usam.
 
 **Q:** Quando uso um bot o erro *"The type or namespace 'CoreBots' could not be found"* aparece, como consertar?  
-**A:** Pode ser um problema na instalação, certifique-se que a pasta **"*Scripts*"** foi colada na mesma pasta do **"*RBot.exe*"**, desta maneira todos bots meus serão atualizados. Um erro comum de diretório é: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* ou até *"\*/Rbot/**Rbot-Scripts-master/Scripts**/FarmAllDailys.cs"* quando deveria ser *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
+**A:** Pode ser um problema na instalação, certifique-se que a pasta **"*Scripts*"** foi colada na mesma pasta do **"*RBot.exe*"**, desta maneira todos bots meus serão atualizados. Um erro comum de diretório é: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* ou até *"\*/Rbot/**Scripts-master/Scripts**/FarmAllDailys.cs"* quando deveria ser *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
 > **Nota:** Se mesmo após seguir esta resposta e não der certo, abra o script que deu erro e verifique se as primeiras linhas que começam com `//cs_include` tem os nomes/diretórios corretos, as vezes eu posso escrever errado e não percerber.
 
 **Q:** Mesmo depois de seguir as soluções meu script não funciona, o que eu faço agora?  
