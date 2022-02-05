@@ -16,6 +16,14 @@ public class EnhancedNulgathNationHouse
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
+        GetENNH();
+
+        Core.SetOptions(false);
+    }
+
+    public void GetENNH()
+    {
         Core.AddDrop(Nulgath.bagDrops);
         Core.AddDrop("Nulgath Nation House", "Enchanted Nulgath Nation House", "Cemaros' Amethyst", "Aluminum", "Pink Star Diamond of Nulgath", "Musgravite of Nulgath", "NUE Necronomicon");
 
@@ -45,13 +53,11 @@ public class EnhancedNulgathNationHouse
             Core.EnsureAccept(4779);
             if(!Core.EnsureComplete(4779))
                 Core.Logger("Could not complete the quest, stopping bot", messageBox: true, stopBot: true);
-            bot.Player.Pickup("Nulgath Nation House");
+            Bot.Player.Pickup("Nulgath Nation House");
         }
 
         Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
         Core.HuntMonster("timelibrary", "Ancient Chest", "Musgravite of Nulgath", 2, false);
         Core.BuyItem("archportal", 1211, "Enchanted Nulgath Nation House");
-
-        Core.SetOptions(false);
     }
 }

@@ -20,18 +20,28 @@ public class AscendedDrakathGear
     {
         Core.SetOptions();
 
+        GetAll();
+
+        Core.SetOptions(false);
+    }
+
+    public void GetAll()
+    {
+        if (Core.CheckInventory(new[] {"Ascended Blade of Awe", "Ascended Light of Destiny", "Ascended Face of Chaos"}))
+            return;
+
         Core.AddDrop("Ascended Blade of Awe", "Ascended Light of Destiny", "Ascended Face of Chaos");
+
         AscendedGear("Ascended Blade of Awe");
         AscendedGear("Ascended Light of Destiny");
         AscendedGear("Ascended Face of Chaos");
-
-        Core.SetOptions(false);
     }
 
     public void AscendedGear(string Target)
     {
         if (Core.CheckInventory(Target))
             return;
+
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
         TOD.TowerProgress(4);

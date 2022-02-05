@@ -17,7 +17,9 @@ public class ArmorOfAwe
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
         GetArmor();
+
         Core.SetOptions(false);
     }
 

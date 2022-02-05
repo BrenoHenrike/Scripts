@@ -8,6 +8,15 @@ public class HollowbornScythe
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        GetScythe();
+
+        Core.SetOptions(false);
+    }
+
     public string[] reqName =
     {
         "Hollow Soul",
@@ -22,10 +31,8 @@ public class HollowbornScythe
         "Hollowborn Reaper's Kama"
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void GetScythe()
     {
-        Core.SetOptions();
-
         Core.AddDrop(reqName);
 
         Core.Unbank(reqName);
@@ -52,17 +59,16 @@ public class HollowbornScythe
                 Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", 1, false, publicRoom : true);
-                if (!bot.Inventory.Contains("Unmoulded Fiend Essence"))
+                if (!Bot.Inventory.Contains("Unmoulded Fiend Essence"))
                 {
                     Farm.Gold(15000000);
                     Core.JoinTercessuinotlim();
                     Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-                    bot.Wait.ForItemBuy();
+                    Bot.Wait.ForItemBuy();
                 }
                 Core.BuyItem("shadowrealm", 1889, reqName[i]);
             } 
         }
         Core.Logger("All necessary items acquired");
-        Core.SetOptions(false);
     }
 }

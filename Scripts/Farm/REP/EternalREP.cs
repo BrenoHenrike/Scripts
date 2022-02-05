@@ -3,17 +3,17 @@
 using RBot;
 public class EternalREP
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreFarms Farm = new CoreFarms();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		//Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-		Farm.EternalREP();
+        Farm.EternalREP();
 
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }

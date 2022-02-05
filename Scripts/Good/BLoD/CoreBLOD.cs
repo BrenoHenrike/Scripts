@@ -121,6 +121,7 @@ public class CoreBLOD
         if(Core.CheckInventory("Spirit Orb", quant))
             return;
 
+        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Spirit Orb");
@@ -202,6 +203,7 @@ public class CoreBLOD
         if(Core.CheckInventory(item, quant))
             return;
 
+        Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
         int i = 1;
         Core.Logger($"Farming {quant} {item}");
         while (!Core.CheckInventory(item, quant))
@@ -496,6 +498,8 @@ public class CoreBLOD
 
     public void FindingFragments(int quest)
     {
+        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
+
         Core.EnsureAccept(quest);
         Farm.BattleUnderB("Blinding Light Fragments", 10);
         Core.EnsureComplete(quest);

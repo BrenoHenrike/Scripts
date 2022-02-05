@@ -5,17 +5,16 @@
 using RBot;
 public class DoomKnightWeaponKit
 {
-	public ScriptInterface Bot => ScriptInterface.Instance;
-	public CoreBots Core => CoreBots.Instance;
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
-        Core.AddDrop("DoomKnight Weapon Kit", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Grumpy Warhammer");
-
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+        
         SDKA.DoomKnightWK("Ominous Aura", 10000);
 
         Core.SetOptions(false);
-	}
+    }
 }

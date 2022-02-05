@@ -18,7 +18,9 @@ public class CapeOfAwe
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
         GetCoA();
+
         Core.SetOptions(false);
     }
 

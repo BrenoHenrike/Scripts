@@ -122,6 +122,7 @@ The item base class have commom properties through some other item objects that 
 | `Equipped` | *bool* | Whether it is equipped by the player. |
 | `Meta` | *string* | The meta value of the item. This is where the boosts (XP, REP, etc.) are shown. |
 | `Level` | *int* | The level of the item. |
+| `EnhancementLevel` | *int* | The enhancement level of the item. |
 
 ### ShopItem : ItemBase
 
@@ -131,6 +132,7 @@ The item base class have commom properties through some other item objects that 
 |---|:---:|---|
 | `ShopItemID` | *int* | The shop specific item ID of the item. |
 | `Cost` | *int* | The cost of the item. |
+| `Level` | *int* | The level of the item. |
 
 ### MergeItem : ShopItem
 

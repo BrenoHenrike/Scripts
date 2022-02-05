@@ -6,7 +6,8 @@
 //cs_include Scripts/Legion/Revenant/LegionFealty2.cs
 //cs_include Scripts/Legion/Revenant/LegionFealty3.cs
 //cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
-//cs_include Scripts/Story/Necrodungeon.cs
+//cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
+//cs_include Scripts/Story/NecroDungeon.cs
 using RBot;
 
 public class LegionFealty4
@@ -19,7 +20,8 @@ public class LegionFealty4
     public LegionFealty2 LF2 = new LegionFealty2();
     public LegionFealty3 LF3 = new LegionFealty3();
     public JoinLegion JoinLegion = new JoinLegion();
-    public NecroDungeon Necrodung = new NecroDungeon();
+    public NecroDungeon NecroDung = new NecroDungeon();
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -43,7 +45,7 @@ public class LegionFealty4
         Core.AddDrop(Legion.LF2);
         Core.AddDrop(Legion.LF3);
         
-        Necrodung.NecrodungeonStoryLine();
+        NecroDung.NecrodungeonStoryLine();
         LF1.RevenantSpellscroll();
         LF2.ConquestWreath();
         LF3.ExaltedCrown();

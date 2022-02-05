@@ -19,10 +19,15 @@ public class DrakathArmorBot
     {
         Core.SetOptions();
 
-        DrakathArmor();
-        DrakathOriginalArmor();
+        GetBoth();
 
         Core.SetOptions(false);
+    }
+
+    public void GetBoth()
+    {
+        DrakathArmor();
+        DrakathOriginalArmor();
     }
 
     public void DrakathArmor()

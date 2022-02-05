@@ -1,0 +1,29 @@
+//cs_include Scripts/CoreBots.cs
+using RBot;
+public class LanceOfTime
+{
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        GetLoT();
+
+        Core.SetOptions(false);
+    }
+
+    public void GetLoT()
+    {
+        if (Core.CheckInventory("Lance of Time"))
+            return;
+
+        Core.AddDrop("Lance of Time");
+        Core.EnsureAccept(4512);
+        Core.EquipClass(ClassType.Farm);
+        Core.HuntMonster("celestialrealm", "Infernal Imp", "Captured Time", 500, false);
+        Core.EnsureComplete(4512);
+        Bot.Wait.ForPickup("Lance of Time");
+    }
+}

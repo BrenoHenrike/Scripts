@@ -18,7 +18,9 @@ public class HelmOfAwe
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
         GetHoA();
+
         Core.SetOptions(false);
     }
 

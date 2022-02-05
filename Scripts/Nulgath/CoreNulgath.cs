@@ -46,23 +46,6 @@ public class CoreNulgath
     public string[] tercessBags = { "Bone Dust" };
 
     /// <summary>
-    /// Drops from the VHL Challenge quest
-    /// </summary>
-    public string[] VHLDrops =
-    {
-        "Hadean Onyx of Nulgath",
-        "Black Knight Orb",
-        "Nulgath Shaped Chocolate",
-        "Elder's Blood",
-        "Aelita's Emerald",
-        "Emblem of Nulgath",
-        "Void Highlord Armor",
-        "Helm of the Highlord",
-        "Highlord's Void Wrap",
-        "Roentgenium of Nulgath"
-    };
-
-    /// <summary>
     /// List of Betrayal Blades
     /// </summary>
     public string[] betrayalBlades =
@@ -112,6 +95,7 @@ public class CoreNulgath
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
         Core.AddDrop(tercessBags);
+        Core.AddDrop(bagDrops);
         int i = 1;
         Core.Logger($"Farming {quant} Dark Crystal Shard");
         while (!Bot.Inventory.Contains("Dark Crystal Shard", quant))
@@ -250,6 +234,7 @@ public class CoreNulgath
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
+        Core.AddDrop(Receipt);
         while (!Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(7551);
@@ -293,6 +278,7 @@ public class CoreNulgath
         Core.Logger($"Farming {quant} Tainted Gems");
         int i = 1;
         Core.AddDrop("Cubes", "Tainted Gem");
+        Core.AddDrop(bagDrops);
         while (!Bot.Inventory.Contains("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
@@ -316,6 +302,7 @@ public class CoreNulgath
             NationRound4Medal();
 
         Core.AddDrop("Fiend Seal", "Gem of Domination", "Emblem of Nulgath");
+        Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
@@ -393,6 +380,7 @@ public class CoreNulgath
             FarmVoucher(false);
 
         Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
+        Core.AddDrop(bagDrops);
         Core.Logger($"Reward selected: {reward}");
         Core.EnsureAccept(4778);
         EssenceofNulgath();
@@ -575,41 +563,39 @@ public class CoreNulgath
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
             while (Core.CheckInventory("Tainted Core"))
             {
-                Core.EnsureComplete(609);
-                Bot.Wait.ForDrop("Relic of Chaos");
-                Bot.Player.Pickup("Relic of Chaos");
-                Core.EnsureComplete(2857);
-                Bot.Sleep(Core.ActionDelay);
-                Core.EnsureAccept(2857, 609);
-                Bot.Sleep(Core.ActionDelay);
+                Core.ChainComplete(609);
                 Core.Logger($"Completed x{i++}");
             }
-            if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            while (Core.CheckInventory("Relic of Chaos", 1))
             {
-                while (Core.CheckInventory("Tainted Soul"))
+                Core.ChainComplete(2857);
+                Core.Logger($"Completed x{i++}");
+            }
+        }
+        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+        {
+            while (Core.CheckInventory("Tainted Soul"))
+            {
+                if (OBoNPet)
                 {
-                    if (OBoNPet)
-                        Core.EnsureComplete(2561);
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                        Core.EnsureComplete(599);
-                    Bot.Wait.ForDrop("Relic of Chaos");
-                    Bot.Player.Pickup("Relic of Chaos");
-                    Core.EnsureComplete(2857);
-                    Bot.Sleep(Core.ActionDelay);
-                    Core.EnsureAccept(2857);
-                    Bot.Sleep(Core.ActionDelay);
-                    if (OBoNPet)
-                        Core.EnsureAccept(2561);
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                        Core.EnsureAccept(599);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.ChainComplete(2561);
+                    Core.Logger($"Completed x{i++}");
+                }
+                else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                {
+                    Core.ChainComplete(599);
+                    Core.Logger($"Completed x{i++}");
+                }
+                else if (Core.CheckInventory("Relic of Chaos", 1))
+                {
+                    Core.ChainComplete(2857);
                     Core.Logger($"Completed x{i++}");
                 }
             }
-            Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
-            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-                Core.SellItem("Voucher of Nulgath");
         }
+        Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+        if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
+            Core.SellItem("Voucher of Nulgath");
     }
 
     /// <summary>
@@ -658,9 +644,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
-        Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10");
-        Core.CheckInventory("Receipt of Swindle");
-        Core.CheckInventory("Blood Gem of the Archfiend");
+        Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
             Core.KillEscherion("Emerald Pickaxe", publicRoom : true);

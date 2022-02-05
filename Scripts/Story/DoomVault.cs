@@ -2,11 +2,9 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
 using RBot;
 
-public class DoomVault
+public class DoomVaultA 
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
@@ -18,16 +16,11 @@ public class DoomVault
     {
         Core.SetOptions();
 
-        DoAll();
+        StoryLine();
 
         Core.SetOptions(false);
     }
-
-    public void DoAll()
-    {
-        StoryLine();
-    }
-
+    
     public void StoryLine()
     {
         // the challenge begins

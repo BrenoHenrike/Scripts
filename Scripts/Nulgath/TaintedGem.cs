@@ -5,17 +5,15 @@ using RBot;
 
 public class TaintedGem
 {
-	public CoreBots Core => CoreBots.Instance;
-	public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNulgath Nulgath = new CoreNulgath();
 
-	public void ScriptMain(ScriptInterface bot)
-	{
-		Core.SetOptions();
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
 
-		Core.AddDrop(Nulgath.bagDrops);
+        Nulgath.SwindleBulk();
 
-		Nulgath.SwindleBulk();
-
-		Core.SetOptions(false);
-	}
+        Core.SetOptions(false);
+    }
 }
