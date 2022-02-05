@@ -19,10 +19,10 @@ public class BurningBlade
     public void GetBurningBlade()
     {
         if (Core.CheckInventory("Burning Blade"))
-        {
-            Core.Logger("You already own the Burning Blade.");
             return;
-        }
+        
+        Core.EquipClass(ClassType.Solo);
         Core.KillMonster("lostruinswar", "r7", "Left", "Diabolical Warlord", "Burning Blade", isTemp: false, publicRoom: true);
+        Bot.Wait.ForPickup("Burning Blade");
     }
 }
