@@ -645,7 +645,7 @@ public class CoreFarms
         }
         if (farmBoA)
         {
-            if (FactionRank("Blade of Awe") < 6)
+            if (FactionRank("Blade of Awe") < 6 || !Bot.Quests.IsAvailable(2939))
             {
                 if (!Core.CheckInventory("Legendary Blade", toInv: false))
                 {
@@ -666,9 +666,8 @@ public class CoreFarms
                 Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
                 Core.BuyItem("museum", 630, "Blade of Awe");
             }
-            if (FactionRank("Blade of Awe") >= 6)
+            if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
                 Core.BuyItem("museum", 631, "Blade of Awe");
-
         }
     }
 
