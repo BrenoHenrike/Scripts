@@ -8,6 +8,7 @@
 //cs_include Scripts/Story/ThroneofDarkness/05FourthDimensionalPyramid.cs
 //cs_include Scripts/Story/ThroneofDarkness/06ShiftingPyramid.cs
 //cs_include Scripts/Story/ThroneofDarkness/HedgeMaze.cs
+//cs_include Scripts/Story/ThroneofDarkness/TowerofMirrors.cs
 
 
 using RBot;
@@ -26,6 +27,7 @@ public class TheThroneisMine
     public FourthDimensionalPyramid story5 = new FourthDimensionalPyramid();
     public ShiftingPyramid story6 = new ShiftingPyramid();
     public HedgeMaze story7 = new HedgeMaze();
+    public TowerofMirrors story8 = new TowerofMirrors();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -53,5 +55,7 @@ public class TheThroneisMine
         story6.ShiftingPyramidSaga();
         Core.Logger("HedgeMaze");
         story7.HedgeMaze_Questline();
+        Core.Logger("TowerofMirrors");
+        story8.TowerofMirrorsSaga();
     }
 }
