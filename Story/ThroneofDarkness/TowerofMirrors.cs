@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 using RBot;
-public class TowerofMirros
+public class TowerofMirrors
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
@@ -10,12 +10,12 @@ public class TowerofMirros
     {
         Core.SetOptions();
 
-        TowerofMirrosSaga();
+        TowerofMirrorsSaga();
 
         Core.SetOptions(false);
     }
 
-    public void TowerofMirrosSaga()
+    public void TowerofMirrorsSaga()
     {
         // Drink Me
         Core.KillQuest(5314, "towerofmirrors",new[] { "Glassgoyle|Glass Serpent", "Glass Serpent"});
