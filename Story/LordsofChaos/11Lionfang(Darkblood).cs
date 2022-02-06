@@ -3,7 +3,7 @@
 using System;
 using RBot;
 
-public class SagaTheSpan
+public class SagaDarkblood
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
