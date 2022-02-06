@@ -5,7 +5,6 @@ using RBot;
 
 public class SagaTheSpan
 {
-
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
@@ -21,10 +20,6 @@ public class SagaTheSpan
         Core.SetOptions(false);
     }
 
-    // Core.MapItemQuest(QuestID: QuestID, MapName: "MapName", MapItemID: MapItemID, Amount);
-    // CoreBots.KillQuest(QuestID: QuestID, MapName: "MapName", MonsterNames: new[] { "Mobmname" });
-    // CoreBots.KillQuest(QuestID: QuestID, MapName: "MapName", MonsterName: "Mobmname");
-
     public void StoryLine()
     {
         Core.BuyItem("battleon", 990, "Blood Summoner");
@@ -38,202 +33,202 @@ public class SagaTheSpan
 
 
         //Final Rest
-        CoreBots.KillQuest(QuestID: 2612, MapName: "blackhorn", MonsterName: "Restless Undead");
+        Core.KillQuest(2612, "blackhorn", "Restless Undead");
 
         //Disturbing The Peace
-        Core.MapItemQuest(QuestID: 2613, MapName: "blackhorn", MapItemID: 1615, Amount: 10);
+        Core.MapItemQuest(2613, "blackhorn", 1615, 10);
 
         //Sampling Silk
-        CoreBots.KillQuest(QuestID: 2614, MapName: "blackhorn", MonsterName: "Tomb Spider");
+        Core.KillQuest(2614, "blackhorn", "Tomb Spider");
 
         //Fire Is The Thing
-        CoreBots.KillQuest(QuestID: 2615, MapName: "blackhorn", MonsterNames: new[] { "Tomb Spider", "Restless Undead" });
+        Core.KillQuest(2615, "blackhorn", new[] { "Tomb Spider", "Restless Undead" });
 
         //The Wall Comes Down
-        Core.MapItemQuest(QuestID: 2616, QuestID, MapName: "blackhorn", MapItemID: 1617, Amount: 1);
+        Core.MapItemQuest(2616, "blackhorn", 1617);
 
         //The Bonefeeder
-        CoreBots.KillQuest(QuestID: 2617, MapName: "blackhorn", MonsterName: "Bonefeeder Spider");
+        Core.KillQuest(2617, "blackhorn", "Bonefeeder Spider");
 
         //What Lies Beyond?
-        Core.MapItemQuest(QuestID: 2618, MapName: "blackhorn", MapItemID: 1618);
+        Core.MapItemQuest(2618, "blackhorn", 1618);
 
         //Toxic
-        CoreBots.KillQuest(QuestID: 2619, MapName: "blackhorn", MonsterName: "Tomb Spider");
+        Core.KillQuest(2619, "blackhorn", "Tomb Spider");
 
         //Very Toxic
-        CoreBots.KillQuest(QuestID: 2620, MapName: "blackhorn", MonsterName: "estless Undead");
+        Core.KillQuest(2620, "blackhorn", "estless Undead");
 
         //Really, VERY VERY TOXIC!
-        Core.MapItemQuest(QuestID: 2621, MapName: "blackhorn", MapItemID: 1619);
+        Core.MapItemQuest(2621, "blackhorn", 1619);
 
         //Lion Hunting
-        Core.MapItemQuest(QuestID: 2622, MapName: "onslaughttower", MapItemID: 1620);
-        Core.MapItemQuest(QuestID: 2622, MapName: "onslaughttower", MapItemID: 1621);
-        Core.MapItemQuest(QuestID: 2622, MapName: "onslaughttower", MapItemID: 1622);
-        Core.MapItemQuest(QuestID: 2622, MapName: "onslaughttower", MapItemID: 1623);
+        Core.MapItemQuest(2622, "onslaughttower", 1620);
+        Core.MapItemQuest(2622, "onslaughttower", 1621);
+        Core.MapItemQuest(2622, "onslaughttower", 1622);
+        Core.MapItemQuest(2622, "onslaughttower", 1623);
 
         //Secret Of The Death Fog
-        CoreBots.KillQuest(QuestID: 2623, MapName: "onslaughttower", MonsterName: "Golden Caster|Golden Warrior|Golden Cavalry");
+        Core.KillQuest(2623, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
 
         //The Key To Survival
-        CoreBots.KillQuest(QuestID: 2624, MapName: "onslaughttower", MonsterName: "Golden Caster|Golden Warrior|Golden Cavalry");
+        Core.KillQuest(2624, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
 
         //The Tools
-        Core.MapItemQuest(QuestID: 2625, MapName: "onslaughttower", MapItemID: 1624, 8);
+        Core.MapItemQuest(2625, "onslaughttower", 1624, 8);
 
         //The Talent
-        Core.MapItemQuest(QuestID: 2626, MapName: "onslaughttower", MapItemID: 1625);
+        Core.MapItemQuest(2626, "onslaughttower", 1625);
 
         //The Local Locale
-        Core.MapItemQuest(QuestID: 2627, MapName: "onslaughttower", MapItemID: 1626, 4);
+        Core.MapItemQuest(2627, "onslaughttower", 1626, 4);
 
         //Who Holds The Key?
-        CoreBots.KillQuest(QuestID: 2628, MapName: "onslaughttower", MonsterName: "Golden Caster|Golden Warrior|Golden Cavalry");
+        Core.KillQuest(2628, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
 
         //Leave No Rug Unturned
-        Core.MapItemQuest(QuestID: 2629, MapName: "onslaughttower", MapItemID: 1627);
+        Core.MapItemQuest(2629, "onslaughttower", 1627);
 
         //Tame The Lion
-        CoreBots.KillQuest(QuestID: 2630, MapName: "onslaughttower", MonsterName: "Maximillian Lionfang", FollowupIDOverwrite: 2666);
+        Core.KillQuest(2630, "onslaughttower", "Maximillian Lionfang", FollowupIDOverwrite: 2666);
 
         //Take Up The Cause
-        CoreBots.KillQuest(QuestID: 2666, MapName: "falguard", MonsterName: "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
+        Core.KillQuest(2666, "falguard", "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
 
         //Well Kept Secrets
-        Core.MapItemQuest(QuestID: 2667, MapName: "falguard", MapItemID: 1628, 6);
+        Core.MapItemQuest(2667, "falguard", 1628, 6);
 
         //Feeding On The Fallen
-        CoreBots.KillQuest(QuestID: 2668, MapName: "falguard", MonsterNames: new[] { "Chaonslaught Warrior", "Chaonslaught Cavalry" });
+        Core.KillQuest(2668, "falguard", new[] { "Chaonslaught Warrior", "Chaonslaught Cavalry" });
 
         //Special Delivery
-        Core.MapItemQuest(QuestID: 2669, MapName: "falguard", MapItemID: 1629);
+        Core.MapItemQuest(2669, "falguard", 1629);
 
         //Precious Scraps
-        CoreBots.KillQuest(QuestID: 2670, MapName: "falguard", MonsterName: "Chaonslaught Warrior|Chaonslaught Cavalry");
+        Core.KillQuest(2670, "falguard", "Chaonslaught Warrior|Chaonslaught Cavalry");
 
         //Restocking
-        Core.MapItemQuest(QuestID: 2671, MapName: "falguard", MapItemID: 1630);
+        Core.MapItemQuest(2671, "falguard", 1630);
 
         //An Innside Job
-        Core.MapItemQuest(QuestID: 2672, MapName: "falguard", MapItemID: 1631);
+        Core.MapItemQuest(2672, "falguard", 1631);
 
         //Streets Run Red
-        CoreBots.KillQuest(QuestID: 2673, MapName: "falguard", MonsterName: "Chaonslaught Caster");
+        Core.KillQuest(2673, "falguard", "Chaonslaught Caster");
 
         //Open the Temple
-        Core.MapItemQuest(QuestID: 2674, MapName: "falguard", MapItemID: 1632);
+        Core.MapItemQuest(2674, "falguard", 1632);
 
         //The Open Temple
-        CoreBots.KillQuest(QuestID: 2675, MapName: "falguard", MonsterName: "Primarch", FollowupIDOverwrite: 2720);
+        Core.KillQuest(2675, "falguard", "Primarch", FollowupIDOverwrite: 2720);
 
         //Remains
-        CoreBots.KillQuest(QuestID: 2720, MapName: "deathpits", MonsterName: "Rotting Darkblood");
+        Core.KillQuest(2720, "deathpits", "Rotting Darkblood");
 
         //Thriving In Rot
-        Core.MapItemQuest(QuestID: 2721, MapName: "deathpits", MapItemID: 1691, 5);
+        Core.MapItemQuest(2721, "deathpits", 1691, 5);
 
         //Rotting Ribs
-        CoreBots.KillQuest(QuestID: 2722, MapName: "deathpits", MonsterName: "Rotting Darkblood");
+        Core.KillQuest(2722, "deathpits", "Rotting Darkblood");
 
         //A Perfect Skull
-        CoreBots.KillQuest(QuestID: 2723, MapName: "deathpits", MonsterName: "Rotting Darkblood");
+        Core.KillQuest(2723, "deathpits", "Rotting Darkblood");
 
         //Deeper Into Death
-        CoreBots.KillQuest(QuestID: 2724, MapName: "deathpits", MonsterName: "Ghastly Darkblood");
+        Core.KillQuest(2724, "deathpits", "Ghastly Darkblood");
 
         //Precise Placement
-        CoreBots.KillQuest(QuestID: 2725, MapName: "deathpits", MonsterName: "Ghastly Darkblood");
+        Core.KillQuest(2725, "deathpits", "Ghastly Darkblood");
 
         //Painted Protection
-        Core.MapItemQuest(QuestID: 2726, MapName: "MapName", MapItemID: 1692, 6);
+        Core.MapItemQuest(2726, "deathpits", 1692, 6);
 
         //They Sense You
-        CoreBots.KillQuest(QuestID: 2727, MapName: "deathpits", MonsterName: "Rotting Darkblood");
+        Core.KillQuest(2727, "deathpits", "Rotting Darkblood");
 
         //They Hate You
-        CoreBots.KillQuest(QuestID: 2728, MapName: "deathpits", MonsterName: "Ghastly Darkblood");
+        Core.KillQuest(2728, "deathpits", "Ghastly Darkblood");
 
         //The Sundered
-        CoreBots.KillQuest(QuestID: 2729, MapName: "deathpits", MonsterName: "Sundered Darkblood");
+        Core.KillQuest(2729, "deathpits", "Sundered Darkblood");
 
         //Rotstone
-        Core.MapItemQuest(QuestID: 2730, MapName: "deathpits", MapItemID: 1693, 9);
+        Core.MapItemQuest(2730, "deathpits", 1693, 9);
 
         //Honor The Dead
-        CoreBots.KillQuest(QuestID: 2731, MapName: "deathpits", MonsterNames: new[] { "Sundered Darkblood", "Ghastly Darkblood", "Rotting Darkblood" });
+        Core.KillQuest(2731, "deathpits", new[] { "Sundered Darkblood", "Ghastly Darkblood", "Rotting Darkblood" });
 
         //Ties to Life
-        Core.MapItemQuest(QuestID: 2732, MapName: "deathpits", MapItemID: 1694, 12, FollowupIDOverwrite: 2740);
+        Core.MapItemQuest(2732, "deathpits", 1694, 12, FollowupIDOverwrite: 2740);
 
         //Destroy Wrathful Vestis and Secure The Tears
-        CoreBots.KillQuest(QuestID: 2740, MapName: "deathpits", MonsterName: "Wrathful Vestis", FollowupIDOverwrite: 2792);
-        Core.MapItemQuest(QuestID: 2740, MapName: "deathpits", MapItemID: 1695, 1, FollowupIDOverwrite: 2792);
+        Core.KillQuest(2740, "deathpits", "Wrathful Vestis", FollowupIDOverwrite: 2792);
+        Core.MapItemQuest(2740, "deathpits", 1695, 1, FollowupIDOverwrite: 2792);
 
         //Surveillance for Sir Valence
-        Core.MapItemQuest(QuestID: 2792, MapName: "venomvaults", MapItemID: 1724);
+        Core.MapItemQuest(2792, "venomvaults", 1724);
 
         //Well Planned Getaway
-        CoreBots.KillQuest(QuestID: 2793, MapName: "venomvaults", MonsterName: "Chaonslaught Warrior");
+        Core.KillQuest(2793, "venomvaults", "Chaonslaught Warrior");
 
         //Secrets Of The Mad Prince
-        Core.MapItemQuest(QuestID: 2794, MapName: "venomvaults", MapItemID: 2794, Amount, FollowupIDOverwrite: 2796);
+        Core.MapItemQuest(2794, "venomvaults", 2794, FollowupIDOverwrite: 2796);
 
         //Potion of Cleansing
-        Core.MapItemQuest(QuestID: 2796, MapName: "venomvaults", MapItemID: 1726);
+        Core.MapItemQuest(2796, "venomvaults", 1726);
 
         //You've Been Noticed
-        CoreBots.KillQuest(QuestID: 2797, MapName: "venomvaults", MonsterName: "Chaonslaught Caster");
+        Core.KillQuest(2797, "venomvaults", "Chaonslaught Caster");
 
         //Thorny Situations
-        Core.MapItemQuest(QuestID: 2798, MapName: "venomvaults", MapItemID: 1727, 5);
+        Core.MapItemQuest(2798, "venomvaults", 1727, 5);
 
         //Other Ingredients
-        CoreBots.KillQuest(QuestID: 2799, MapName: "venomvaults", MonsterName: "Chaonslaught Caster", FollowupIDOverwrite: 2792);
+        Core.KillQuest(2799, "venomvaults", "Chaonslaught Caster", FollowupIDOverwrite: 2792);
 
         //Time For Supplies
-        CoreBots.KillQuest(QuestID: 2800, MapName: "venomvaults", MonsterName: "Chaonslaught Warrior");
+        Core.KillQuest(2800, "venomvaults", "Chaonslaught Warrior");
 
         //Cooking Without Fire
-        CoreBots.KillQuest(QuestID: 2801, MapName: "venomvaults", MonsterName: "Chaonslaught Caster|Chaonslaught Warrior");
+        Core.KillQuest(2801, "venomvaults", "Chaonslaught Caster|Chaonslaught Warrior");
 
         //Introduction
-        Core.MapItemQuest(QuestID: 2802, MapName: "venomvaults", MapItemID: 1728, 3);
+        Core.MapItemQuest(2802, "venomvaults", 1728, 3);
 
         //Courtyard Key
-        CoreBots.KillQuest(QuestID: 2803, MapName: "venomvaults", MonsterName: "Chaonslaught Caster|Chaonslaught Warrior");
+        Core.KillQuest(2803, "venomvaults", "Chaonslaught Caster|Chaonslaught Warrior");
 
         //Take Out The Chaos Manticore!
-        CoreBots.KillQuest(QuestID: 2804, MapName: "venomvaults", MonsterName: "Manticore");
+        Core.KillQuest(2804, "venomvaults", "Manticore");
 
         //Shocking Footwear
-        Core.MapItemQuest(QuestID: 2805, MapName: "stormtemple", MapItemID: 1729, Amount: 4);
+        Core.MapItemQuest(2805, "stormtemple", 1729, 4);
 
         //New Shoes
-        CoreBots.KillQuest(QuestID: 2806, MapName: "stormtemple", MonsterName: "Chaonslaught Warrior");
+        Core.KillQuest(2806, "stormtemple", "Chaonslaught Warrior");
 
         //Mouth Of The Lion
-        CoreBots.KillQuest(QuestID: 2807, MapName: "stormtemple", MonsterName: "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
+        Core.KillQuest(2807, "stormtemple", "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
 
         //Storm the Storm Temple
-        CoreBots.KillQuest(QuestID: 2808, MapName: "stormtemple", MonsterName: "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
+        Core.KillQuest(2808, "stormtemple", "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
 
         //A High Minded Matter
-        Core.MapItemQuest(QuestID: 2809, MapName: "MapName", MapItemID: 1730, Amount: 3);
+        Core.MapItemQuest(2809, "stormtemple", 1730, 3);
 
         //Storm Bottles
-        CoreBots.KillQuest(QuestID: 2810, MapName: "stormtemple", MonsterName: "Chaonslaught Caster");
+        Core.KillQuest(2810, "stormtemple", "Chaonslaught Caster");
 
         //Breaching Defenses
-        Core.MapItemQuest(QuestID: 2811, MapName: "stormtemple", MapItemID: 1731, Amount: 1);
+        Core.MapItemQuest(2811, "stormtemple", 1731);
 
         //Chaos Lightning Rods
-        CoreBots.KillQuest(QuestID: 2812, MapName: "MastormtemplepName", MonsterName: "Chaonslaught Cavalry");
+        Core.KillQuest(2812, "MastormtemplepName", "Chaonslaught Cavalry");
 
         //Barrier Buster
-        Core.MapItemQuest(QuestID: 2813, MapName: "stormtemple", MapItemID: 1732, Amount: 1);
+        Core.MapItemQuest(2813, "stormtemple", 1732);
 
         //Face Chaos Lord Lionfang!
-        CoreBots.KillQuest(QuestID: 2814, MapName: "stormtemple", MonsterName: "Chaos Lord Lionfang");
+        Core.KillQuest(2814, "stormtemple", "Chaos Lord Lionfang");
     }
 }
