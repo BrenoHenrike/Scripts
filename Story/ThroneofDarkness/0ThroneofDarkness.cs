@@ -1,13 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
-//cs_include Scripts/Story/ThroneofDarkness/01CastleofBones.cs
-//cs_include Scripts/Story/ThroneofDarkness/02ParadoxPortal.cs
-//cs_include Scripts/Story/ThroneofDarkness/03FlyingBaconCatFortress.cs
-//cs_include Scripts/Story/ThroneofDarkness/04DeathPitArena.cs
-//cs_include Scripts/Story/ThroneofDarkness/05FourthDimensionalPyramid.cs
-//cs_include Scripts/Story/ThroneofDarkness/06ShiftingPyramid.cs
+//cs_include Scripts/Story/ThroneofDarkness/CastleofBones.cs
+//cs_include Scripts/Story/ThroneofDarkness/ParadoxPortal.cs
+//cs_include Scripts/Story/ThroneofDarkness/FlyingBaconCatFortress.cs
+//cs_include Scripts/Story/ThroneofDarkness/DeathPitArena.cs
+//cs_include Scripts/Story/ThroneofDarkness/FourthDimensionalPyramid.cs
+//cs_include Scripts/Story/ThroneofDarkness/ShiftingPyramid.cs
 //cs_include Scripts/Story/ThroneofDarkness/HedgeMaze.cs
+//cs_include Scripts/Story/ThroneofDarkness/TowerofMirros.cs
 
 
 using RBot;
@@ -26,6 +27,7 @@ public class TheThroneisMine
     public FourthDimensionalPyramid story5 = new FourthDimensionalPyramid();
     public ShiftingPyramid story6 = new ShiftingPyramid();
     public HedgeMaze story7 = new HedgeMaze();
+    public TowerofMirrors story8 = new TowerofMirrors();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -53,5 +55,7 @@ public class TheThroneisMine
         story6.ShiftingPyramidSaga();
         Core.Logger("HedgeMaze");
         story7.HedgeMaze_Questline();
+        Core.Logger("TowerofMirrors");
+        story8.TowerofMirrorsSaga();
     }
 }
