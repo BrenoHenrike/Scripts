@@ -26,7 +26,7 @@ public class SagaYokai
         {
             Bot.Sleep(700);
             Core.ToBank("Amethyst Mace");
-            Core.Logger("Chapter: \"Chaos Lord Wolfwing\" already complete. Skipping");
+            Core.Logger("Chapter: \"Chaos Lord Kitsune\" already complete. Skipping");
             return;
         }
 
