@@ -5,11 +5,14 @@ public class Core13LoC
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void Complete13LOC(bool withExtra = false)
+    public void Complete13LOC(bool withExtras = false)
     {
         Hero();
-        if (withExtra)
+        if (withExtras)
+        {
+            KhasaandaTroll(true);
             Extra();
+        }
     }
 
     public void Prologue()
@@ -667,15 +670,18 @@ public class Core13LoC
 
     }
 
-    public void KhasaandaHorc()
+    public void KhasaandaHorc(bool bypassCheck = false)
     {
-        Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
-        if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
+        if (!bypassCheck)
         {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Elite Phoenix Bow");
-            Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-            return;
+            Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
+            if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
+            {
+                Bot.Sleep(Core.ActionDelay);
+                Core.ToBank("Elite Phoenix Bow");
+                Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
+                return;
+            }
         }
 
         //Troll Stink!
@@ -820,15 +826,18 @@ public class Core13LoC
 
     }
 
-    public void KhasaandaTroll()
+    public void KhasaandaTroll(bool bypassCheck = false)
     {
-        Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
-        if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
+        if (!bypassCheck)
         {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Elite Phoenix Bow");
-            Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-            return;
+            Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
+            if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
+            {
+                Bot.Sleep(Core.ActionDelay);
+                Core.ToBank("Elite Phoenix Bow");
+                Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
+                return;
+            }
         }
 
         //Horc Stink! 
