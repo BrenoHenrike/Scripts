@@ -54,5 +54,8 @@ public class LightCaster
         Core.HuntMonster("celestialareand", "Aranx", "Aranx's Pure Light", isTemp: false);
         Core.EnsureComplete(6495);
         Bot.Wait.ForPickup("LightCaster");
+
+        if (rankUpClass)
+            Farm.rankUpClass("LightCaster");
     }
 }
