@@ -21,8 +21,14 @@ public class SagaChaosFinale
 
     public void CompleteSaga()
     {
-        if (Core.QuestProgression(3881))
+        Core.BuyItem("battleon", 993, "Lore's Champion Seal");
+        if (Core.CheckInventory("Lore's Champion Seal", toInv: false))
+        {
+            Bot.Sleep(700);
+            Core.ToBank("Lore's Champion Seal");
+            Core.Logger("Chapter: \"Chaos Lord Kitsune\" already complete. Skipping");
             return;
+        }
 
         //12 Lords of Chaos
         Core.Join("mountdoomskull");
@@ -215,5 +221,10 @@ public class SagaChaosFinale
 
         // The Final Showdown!
         Core.KillQuest(3881, "finalshowdown", "Prince Drakath", hasFollowup: false);
+
+        Core.Relogin();
+        Core.BuyItem("battleon", 948, "Lore's Champion Seal");
+        Bot.Sleep(700);
+        Core.ToBank("Lore's Champion Seal");
     }
 }
