@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story/LordsofChaos/5Wolfwing(Darkovia).cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
 public class Lycan
@@ -9,7 +9,7 @@ public class Lycan
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public SagaDarkovia Darko = new SagaDarkovia();
+    public Core13LoC LOC = new Core13LoC();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -25,7 +25,7 @@ public class Lycan
         if (Core.CheckInventory("Lycan"))
             return;
 
-        Darko.CompleteSaga();
+        LOC.Wolfwing();
         Farm.LycanREP();
 
         Core.BuyItem("lycan", 161, "Lycan");
