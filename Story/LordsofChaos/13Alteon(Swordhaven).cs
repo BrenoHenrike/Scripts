@@ -116,7 +116,7 @@ public class SagaSwordhaven
         Core.KillQuest(3127, "ceremony", "Chaos Justicar", FollowupIDOverwrite: 3133);
 
         //Endless Aisle of Chaos
-        Core.MapItemQuest(3133, MapName: "", 2127, 12, "chaosaltar");
+        Core.MapItemQuest(3133, MapName: "chaosaltar", 2127, 12);
 
         //Save the Princess... Again!
         Core.KillQuest(3134, "chaosaltar", "Princess Thrall", FollowupIDOverwrite: 3158);

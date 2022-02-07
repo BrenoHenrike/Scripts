@@ -2,7 +2,7 @@
 //cs_include Scripts/Story/Core13LoC.cs
 using RBot;
 
-public class SagaTheSpan
+public class CompleteChaosSaga
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -13,7 +13,7 @@ public class SagaTheSpan
         Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
-        LOC.Iadoa();
+        LOC.Complete13LOC();
 
         Core.SetOptions(false);
     }
