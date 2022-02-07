@@ -994,6 +994,7 @@ public class CoreBots
                 ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP)
                 : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+        Bot.Sleep(1000);
         Bot.Player.Connect(server);
         while (!Bot.Player.LoggedIn)
             Bot.Sleep(500);
