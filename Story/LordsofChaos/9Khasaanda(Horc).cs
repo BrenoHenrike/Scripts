@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 using RBot;
-using RBot.Options;
 using System.Collections.Generic;
 
 public class SagaHorc
@@ -169,6 +168,11 @@ public class SagaHorc
 
         //Choose: Khasaanda Confrontation?
         Core.KillQuest(1473, "dreamnexus", "Khasaanda", hasFollowup: false);
+        
+        Core.Relogin();
+        Core.BuyItem("battleon", 308, "Elite Phoenix Bow");
+        Bot.Sleep(700);
+        Core.ToBank("Elite Phoenix Bow");
 
     }
 }

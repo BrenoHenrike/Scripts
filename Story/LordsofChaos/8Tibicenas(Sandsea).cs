@@ -16,14 +16,20 @@ public class SagaSandsea
 
         Core.SetOptions(false);
     }
-    
-        //Core.MapItemQuest(questid, "Mapname", mapitemid, amount);
-        //Core.KillQuest(questid, "Mapname", "mobname");
+
+    //Core.MapItemQuest(questid, "Mapname", mapitemid, amount);
+    //Core.KillQuest(questid, "Mapname", "mobname");
 
     public void StoryLine()
     {
-        if (Bot.Quests.IsUnlocked(1005))
+        Core.BuyItem("battleon", 952, "Angelic Lightning");
+        if (Core.CheckInventory("Angelic Lightning", toInv: false))
+        {
+            Bot.Sleep(700);
+            Core.ToBank("Angelic Lightning");
+            Core.Logger("Chapter: \"Chaos Lord Tibicenas\" already complete. Skipping");
             return;
+        }
 
         //Sandport and Starboard
         Core.MapItemQuest(930, "sandport", 251);
@@ -108,6 +114,11 @@ public class SagaSandsea
 
         //Chaos Lord Tibicenas
         Core.KillQuest(1005, "djinn", "Tibicenas", hasFollowup: false);
+
+        Core.Relogin();
+        Core.BuyItem("battleon", 952, "Angelic Lightning");
+        Bot.Sleep(700);
+        Core.ToBank("Angelic Lightning");
 
     }
 }

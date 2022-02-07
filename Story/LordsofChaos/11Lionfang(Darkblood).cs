@@ -229,6 +229,11 @@ public class SagaDarkblood
         Core.MapItemQuest(2813, "stormtemple", 1732);
 
         //Face Chaos Lord Lionfang!
-        Core.KillQuest(2814, "stormtemple", "Chaos Lord Lionfang");
+        Core.KillQuest(2814, "stormtemple", "Chaos Lord Lionfang", hasFollowup: false);
+
+        Core.Relogin();
+        Core.BuyItem("battleon", 990, "Blood Summoner");
+        Bot.Sleep(700);
+        Core.ToBank("Blood Summoner");
     }
 }

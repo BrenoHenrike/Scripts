@@ -17,8 +17,14 @@ public class SagaMythsong
     }
     public void StoryLine()
     {
-        if (Bot.Quests.IsUnlocked(710))
+        Core.BuyItem("battleon", 950, "Rockstar");
+        if (Core.CheckInventory("Rockstar", toInv: false))
+        {
+            Bot.Sleep(700);
+            Core.ToBank("Rockstar");
+            Core.Logger("Chapter: \"Chaos Lord Kimberly\" already complete. Skipping");
             return;
+        }
 
 
         //Stairway to Heaven
@@ -63,6 +69,11 @@ public class SagaMythsong
         Core.KillQuest(678, "orchestra", "Faust", hasFollowup: false);
 
         //Kimberly
-        Core.KillQuest(710, "palooza", "Kimberly");
+        Core.KillQuest(710, "palooza", "Kimberly", hasFollowup: false);
+        
+        Core.Relogin();
+        Core.BuyItem("battleon", 950, "Rockstar");
+        Bot.Sleep(700);
+        Core.ToBank("Rockstar");
     }
 }

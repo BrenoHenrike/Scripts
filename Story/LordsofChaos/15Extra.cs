@@ -1,97 +1,67 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
-using RBot.Options;
+
+using System.IO.Compression;
+using System.Diagnostics;
 using System.Collections.Generic;
 
 public class SagaExtra
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-
-    public int questStart = 0;
-
-    public string OptionsStorage = "SagaExtra";
-    public bool DontPreconfigure = true;
-
-    public List<IOption> Options = new List<IOption>()
-    {
-        new Option<int>("startQuest", "Quest start index", "This will save the progress through the script.")
-    };
-
-    public static readonly int[] qIDs =
-    {
-        3812, /* 0  - */
-        3813, /* 1  - */
-        3814, /* 2  - */
-        3815, /* 3  - */
-        3816, /* 4  - */
-        3817, /* 5  - */
-        3818, /* 6  - */
-        3819, /* 7  - */
-        3820, /* 8  - */
-        3821, /* 9  - */
-        3822, /* 10 - */
-        3823, /* 11 - */
-        3824  /* 12 - */
-    };
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        questStart = bot.Config.Get<int>("startQuest");
-
-        for (int i = questStart; i < qIDs.Length; i++)
-        {
-            bot.Config.Set("startQuest", i);
-            Core.Logger($"Starting {i}");
-            Core.EnsureAccept(qIDs[i]);
-            switch (i)
-            {
-                case 0: //
-                    Core.Join("dreadhaven");
-                    break;
-                case 1: //
-                    Core.Join("dreadhaven");
-                    break;
-                case 2: //
-                    Core.Join("dreadhaven");
-                    break;
-                case 3: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");
-                    break;
-                case 4: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");
-                    break;
-                case 5: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");					
-                    break;
-                case 6: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");
-                    break;
-                case 7: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");
-                    break;
-                case 8: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Lady Knight|Sir Knight");
-                    break;
-                case 9: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "DragonLord");
-                    break;
-                case 10: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Dragon Drakath");
-                    break;
-                case 11: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Sepulchure");
-                    break;
-                case 12: //
-                    Core.SmartKillMonster(qIDs[i], "falcontower", "Alteon");
-                    break;
-            }
-            Core.EnsureComplete(qIDs[i]);
-            Core.Logger($"Finished {i}");
-            Core.Rest();
-        }
+        Core.AcceptandCompleteTries = 5;
+        StoryLine();
 
         Core.SetOptions(false);
+    }
+    public void StoryLine()
+    {
+        if (Core.QuestProgression(3824))
+        return;
+
+        
+        //Arrive in DreadHaven
+        Core.ChainQuest(3812);
+
+
+        //Kill SlugWrath in Dreadhaven
+        Core.ChainQuest(3813);
+
+        //Kill Bandit Drakath in Dreadhaven
+        Core.ChainQuest(3814);
+
+        //Up the Mountain
+        Core.KillQuest(3815, "falcontower", "Lady Knight|Sir Knight");
+
+        //Higher Up
+        Core.KillQuest(3816, "falcontower", "Lady Knight|Sir Knight");
+
+        //Even Higher
+        Core.KillQuest(3817, "falcontower", "Lady Knight|Sir Knight");
+
+        //Falconreach Tower
+        Core.KillQuest(3818, "falcontower", "Lady Knight|Sir Knight");
+
+        //Climb the Tower
+        Core.KillQuest(3819, "falcontower", "Lady Knight|Sir Knight");
+
+        //To the Dragonlord
+        Core.KillQuest(3820, "falcontower", "Lady Knight|Sir Knight");
+
+        //Defeat the Dragonlord
+        Core.KillQuest(3821, "falcontower", "DragonLord");
+
+        //Defeat Dragon Drakath
+        Core.KillQuest(3822, "falcontower", "Dragon Drakath");
+
+        //Defeat Sepulchure
+        Core.KillQuest(3823, "falcontower", "Sepulchure");
+
+        //Defeat Alteon
+        Core.KillQuest(3824, "falcontower", "Alteon", hasFollowup: false);
     }
 }

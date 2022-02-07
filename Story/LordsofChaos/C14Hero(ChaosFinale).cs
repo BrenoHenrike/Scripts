@@ -1,286 +1,216 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
-using RBot.Options;
-using System.Collections.Generic;
+
+using Rbot;
 
 public class SagaChaosFinale
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-
-    public int questStart = 0;
-
-    public string OptionsStorage = "SagaChaosFinale";
-    public bool DontPreconfigure = true;
-
-    public List<IOption> Options = new List<IOption>()
-    {
-        new Option<int>("startQuest", "Quest start index", "This will save the progress through the script.")
-    };
-
-    public static readonly int[] qIDs =
-    {
-        3578, /* 0  - */
-        3579, /* 1  - */
-        3580, /* 2  - */
-        3581, /* 3  - */
-        3582, /* 4  - */
-        3583, /* 5  - */
-        3584, /* 6  - */
-        3585, /* 7  - */
-        3586, /* 8  - */
-        3587, /* 9  - */
-        3588, /* 10 - */
-        3589, /* 11 - */
-        3590, /* 12 - */
-        3591, /* 13 - */
-        3764, /* 14 - */
-        3765, /* 15 - */
-        3766, /* 16 - */
-        3779, /* 17 - */
-        3781, /* 18 - */
-        3788, /* 19 - */
-        3783, /* 20 - */
-        3789, /* 21 - */
-        3785, /* 22 - */
-        3790, /* 23 - */
-        3787, /* 24 - */
-        3608, /* 25 - */
-        3618, /* 26 - */
-        3609, /* 27 - */
-        3610, /* 28 - */
-        3611, /* 29 - */
-        3612, /* 30 - */
-        3613, /* 31 - */
-        3614, /* 32 - */
-        3615, /* 33 - */
-        3616, /* 34 - */
-        3617, /* 35 - */
-        3619, /* 36 - */
-        3792, /* 37 - */
-        3794, /* 38 - */
-        3795, /* 39 - */
-        3620, /* 40 - */
-        3796, /* 41 - */
-        3797, /* 42 - */
-        3798, /* 43 - */
-        3799, /* 44 - */
-        3875, /* 45 - */
-        3876, /* 46 - */
-        3877, /* 47 - */
-        3878, /* 48 - */
-        3879, /* 49 - */
-        3880, /* 50 - */
-        3881  /* 51 - */
-	};
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        questStart = bot.Config.Get<int>("startQuest");
-
-        for (int i = questStart; i < qIDs.Length; i++)
-        {
-            bot.Config.Set("startQuest", i);
-            Core.Logger($"Starting {i}");
-            Core.EnsureAccept(qIDs[i]);
-            switch (i)
-            {
-                case 0: //
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut1", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3578%-1%false%wvz%");
-                    break;
-                case 1: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut2", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3579%-1%false%wvz%");
-                    break;
-                case 2: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut3", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3580%-1%false%wvz%");
-                    break;
-                case 3: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut4", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3581%-1%false%wvz%");
-                    break;
-                case 4: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut5", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3582%-1%false%wvz%");
-                    break;
-                case 5: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut6", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3583%-1%false%wvz%");
-                    break;
-                case 6: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut7", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3584%-1%false%wvz%");
-                    break;
-                case 7: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut8", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3585%-1%false%wvz%");
-                    break;
-                case 8: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut9", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3586%-1%false%wvz%");
-                    break;
-                case 9: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut10", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3587%-1%false%wvz%");
-                    break;
-                case 10: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut11", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3588%-1%false%wvz%");
-                    break;
-                case 11: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut12", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3589%-1%false%wvz%");
-                    break;
-                case 12: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut13", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3590%-1%false%wvz%");
-                    break;
-                case 13: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("Cut13a", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3591%-1%false%wvz%");
-                    break;
-                case 14: // 
-                    Core.Join("mountdoomskull");
-                    Core.Jump("NPC2", "Left");
-                    // bot.SendPacket("%xt%zm%tryQuestComplete%1275%3764%-1%false%wvz%");
-                    break;
-                case 15: // 
-                    Core.GetMapItem(2726, map: "mountdoomskull");
-                    break;
-                case 16: // 
-                    Core.Join("mountdoomskull");
-                    break;
-                case 17: // 
-                    Core.Join("newfinale");
-                    break;
-                case 18: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Chaos Healer");
-                    break;
-                case 19: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Chaos Challenger");
-                    break;
-                case 20: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Chaos Virago");
-                    break;
-                case 21: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Chaorrupted Lycan Hunter");
-                    break;
-                case 22: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Shadow Slayer");
-                    break;
-                case 23: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Memory of Vampires");
-                    break;
-                case 24: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Chaotic Virago", completeQuest: true);
-                    Core.EnsureComplete(qIDs[i]);
-                    bot.SendPacket("%xt%zm%tryQuestComplete%2303%3791%-1%false%wvz%");
-                    break;
-                case 25: // 
-                    Core.Join("chaosbeast");
-                    break;
-                case 26: // 3618
-                    Core.Join("chaosbeast");
-                    break;
-                case 27: // 3609
-                    Core.Join("chaosbeast");
-                    break;
-                case 28: // 3610
-                    Core.Join("chaosbeast");
-                    break;
-                case 29: // 3611
-                    Core.Join("chaosbeast");
-                    break;
-                case 30: // 3612
-                    Core.Join("chaosbeast");
-                    break;
-                case 31: // 3613
-                    Core.Join("chaosbeast");
-                    break;
-                case 32: // 3614
-                    Core.Join("chaosbeast");
-                    break;
-                case 33: // 3615
-                    Core.Join("chaosbeast");
-                    break;
-                case 34: // 3616
-                    Core.Join("chaosbeast");
-                    break;
-                case 35: // 3617
-                    Core.Join("chaosbeast");
-                    break;
-                case 36: // 3619
-                    Core.Join("chaosbeast");
-                    break;
-                case 37: // 
-                    Core.Join("newfinale");
-                    break;
-                case 38: // 
-                    Core.SmartKillMonster(qIDs[i], "newfinale", "Alliance Soldier");
-                    break;
-                case 39: // 
-                    Core.GetMapItem(2894, map: "drakathfight");
-                    break;
-                case 40: // 
-                    Core.SmartKillMonster(qIDs[i], "shadowrise", "Broken Bones|Darkness Elemental|Dry Ice Mage");
-                    break;
-                case 41: // 
-                    Core.GetMapItem(2895, map: "shadowrise");
-                    break;
-                case 42: // 
-                    Core.Join("shadowattack");
-                    break;
-                case 43: // 
-                    Core.GetMapItem(2896, map: "shadowattack");
-                    break;
-                case 44: // 
-                    Core.SmartKillMonster(qIDs[i], "shadowattack", "Death");
-                    break;
-                case 45: // 
-                    Core.Join("confrontation");
-                    break;
-                case 46: // 
-                    Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
-                    break;
-                case 47: // 
-                    Core.KillMonster("finalbattle", "r4", "Left", "Drakath", "Drakath Defeated");
-                    break;
-                case 48: // 
-                    Core.KillMonster("finalbattle", "r9", "Left", "Drakath", "Drakath Defeated");
-                    break;
-                case 49: // 
-                    Core.SmartKillMonster(qIDs[i], "chaosrealm", "Alteon");
-                    break;
-                case 50: // 
-                    Core.SmartKillMonster(qIDs[i], "chaoslord", "*");
-                    break;
-                case 51: // 
-                    Core.SmartKillMonster(qIDs[i], "finalshowdown", "Prince Drakath");
-                    break;
-            }
-            Core.EnsureComplete(qIDs[i]);
-            Core.Logger($"Finished {i}");
-            Core.Rest();
-            bot.Sleep(Core.ActionDelay);
-        }
+        Core.AcceptandCompleteTries = 5;
+        StoryLine();
 
         Core.SetOptions(false);
+    }
+    public void StoryLine()
+    {
+        if (Core.QuestProgression(3881))
+            return;
+
+        //12 Lords of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3578);
+
+        // Prologue: Good vs Evil
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3579);
+
+        // 1st Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3580);
+
+        // // 2nd Lord of Chaos
+        // Core.Join("mountdoomskull");
+        // Core.ChainQuest(3590);
+
+        // 3rd Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3581);
+
+        // 4th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3582);
+
+        // 5th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3583);
+
+        // 6th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3584);
+
+        // 7th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3585);
+
+        // 8th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3586);
+
+        // 9th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3587);
+
+        // 10th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3588);
+
+        // 11th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3589);
+
+        // 2nd Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3590);
+
+        // 12th Lord of Chaos
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3591, FollowupIDOverwrite: 3764);
+
+        // Mountain Top Reached
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3764);
+
+        // Drakath Faced
+        Core.GetMapItem(QuestID: 3765, MapItemID: 2726, MapName: "mountdoomskull");
+
+        // Who is the 13th Lord of Chaos?
+        Core.Join("mountdoomskull");
+        Core.ChainQuest(3766, FollowupIDOverwrite: 3779);
+
+        // World War Lore!
+        Core.Join("newfinale");
+        Core.ChainQuest(3779, FollowupIDOverwrite: 3781);
+
+        // Battle for Chaos in Willowcreek!
+        Core.KillQuest(3781, "newfinale", "Chaos Healer", FollowupIDOverwrite: 3788);
+
+        // Defeat the Chaos Challenger
+        Core.KillQuest(3788, "newfinale", "Chaos Challenger", FollowupIDOverwrite: 3783);
+
+        // Battle for Chaos in Doomwood!
+        Core.KillQuest(3783, "newfinale", "Chaos Virago", FollowupIDOverwrite: 3789);
+
+        // Beat Chaorrupted Lycan Hunter
+        Core.KillQuest(3789, "newfinale", "Chaorrupted Lycan Hunter", FollowupIDOverwrite: 3785);
+
+        // Battle for Chaos in Darkovia!
+        Core.KillQuest(3785, "newfinale", "Shadow Slayer", FollowupIDOverwrite: 3790);
+
+        // Defeat the Memory of Vampires
+        Core.KillQuest(3790, "newfinale", "Memory of Vampires", FollowupIDOverwrite: 3787);
+
+        // Battle for Chaos in the Lair!
+        Core.KillQuest(3787, "newfinale", "Chaotic Virago", FollowupIDOverwrite: 3608);
+
+        // 1st Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3608, FollowupIDOverwrite: 3618);
+
+        // 2nd Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3618, FollowupIDOverwrite: 3609);
+
+        // 3rd Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3609);
+
+        // 4th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3610);
+
+        // 5th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3611);
+
+        // 6th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3612);
+
+        // 7th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3613);
+
+        // 8th Chaos Beast
+        Core.join(chaosbeast);
+        Core.ChainQuest(3614);
+
+        // 9th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3615);
+
+        // 10th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3616);
+
+        // 11th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3617, FollowupIDOverwrite: 3619);
+
+        // 12th Chaos Beast
+        Core.Join("chaosbeast");
+        Core.ChainQuest(3619, FollowupIDOverwrite: 3792);
+
+        // Time to save Battleon!
+        Core.Join("newfinale");
+        Core.ChainQuest(3792, FollowupIDOverwrite: 3794);
+
+        // Battle for Chaos in Battleon!
+        Core.KillQuest(3794, "newfinale", "Alliance Soldier");
+
+        // Battle the Champion of Chaos!
+        Core.GetMapItem(QuestID: 3795, MapItemID: 2894, MapName: "drakathfight", FollowupIDOverwrite: 3620);
+
+        // REUSE
+        Core.KillQuest(QuestID: 3620, "shadowrise", "Broken Bones|Darkness Elemental|Dry Ice Mage", FollowupIDOverwrite: 3796);
+
+        // Search for Death's Lair
+        Core.GetMapItem(QuestID: 3796, MapItemID: 2895, MapName: "shadowrise");
+
+        // Arrive in Shadowattack
+        Core.Join("shadowattack");
+        Core.ChainQuest(3797);
+
+        // Find your way to Death's lair
+        Core.GetMapItem(QuestID: 3798, MapItemID: 2896, MapName: "shadowattack");
+
+        // Beat Death!
+        Core.KillQuest(QuestID: 3799, "shadowattack", "Death", FollowupIDOverwrite: 3875);
+
+        // Enter Confrontation
+        Core.Join("confrontation");
+        Core.ChainQuest(3875);
+
+        // Defeat Drakath!
+        Core.KillQuest(3876, "finalbattle", "Drakath");
+
+        // Defeat Drakath... again!
+        Core.KillQuest(3877, "finalbattle", "Drakath");
+
+        // Defeat Drakath!
+        Core.KillQuest(3878, "finalbattle", "Drakath");
+
+        // Defeat the 12 Lords of Chaos!
+        Core.KillQuest(QuestID: 3879, "chaosrealm", "Alteon");
+
+        // Defeat the 13th Lord of Chaos
+        Core.KillQuest(QuestID: 3880, "chaoslord", "*");
+
+        // The Final Showdown!
+        Core.KillQuest(QuestID: 3881, "finalshowdown", "Prince Drakath", hasFollowup: false);
     }
 }

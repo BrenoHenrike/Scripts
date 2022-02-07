@@ -71,7 +71,7 @@ public class SagaChiralValley
         }
 
         Core.Relogin();
-        Core.BuyItem("battleon", 946, "Phoenix Hunter");
+        Core.BuyItem("battleon", shopid, "Phoenix Hunter");
         Bot.Sleep(700);
         Core.ToBank("Phoenix Hunter");
     }

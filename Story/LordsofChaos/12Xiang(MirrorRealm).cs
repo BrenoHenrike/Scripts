@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
-using RBot.Options;
 using System.Collections.Generic;
 
 public class SagaMirrorRealm
@@ -15,6 +16,7 @@ public class SagaMirrorRealm
     {
         Core.SetOptions();
 
+        Core.AcceptandCompleteTries = 5;
         StoryLine();
 
         Core.SetOptions(false);
@@ -36,7 +38,7 @@ public class SagaMirrorRealm
         Core.MapItemQuest(2909, MapItemID: 1779, MapName: "battleoff");
 
         //Spare Parts
-        Core.MapItemQuest(2910, MapItemID: 1780, MapName: "battleoff" );
+        Core.MapItemQuest(2910, MapItemID: 1780, MapName: "battleoff");
 
         //Power It Uo
         Core.KillQuest(2911, "battleoff", "Evil Moglin");
@@ -145,6 +147,11 @@ public class SagaMirrorRealm
         Core.KillQuest(3188, "mirrorportal", "Chaos Harpy");
 
         //Good, Evil and Chaos Battle!
-        Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
+        Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang", hasFollowup: false);
+
+        Core.Relogin();
+        Core.BuyItem("battleon", 992, "PaladinSlayer Daimyo");
+        Bot.Sleep(700);
+        Core.ToBank("PaladinSlayer Daimyo");
     }
 }

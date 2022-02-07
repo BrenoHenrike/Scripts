@@ -182,5 +182,10 @@ public class SagaTroll
 
         //Choose: Khasaanda Confrontation?
         Core.KillQuest(1468, "dreamnexus", "Khasaanda", hasFollowup: false);
+        
+        Core.Relogin();
+        Core.BuyItem("battleon", 308, "Elite Phoenix Bow");
+        Bot.Sleep(700);
+        Core.ToBank("Elite Phoenix Bow");
     }
 }

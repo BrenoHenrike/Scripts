@@ -198,5 +198,10 @@ public class SagaTheSpan
 
         //Chaos Lord Iadoa
         Core.KillQuest(QuestID: 2519, "timespace", "Chaos Lord Iadoa", hasFollowup: false);
+        
+        Core.Relogin();
+        Core.BuyItem("battleon", 989, "Ruler Of The Deep");
+        Bot.Sleep(700);
+        Core.ToBank("Ruler Of The Deep");
     }
 }

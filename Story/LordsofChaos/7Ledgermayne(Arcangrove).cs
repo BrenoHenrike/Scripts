@@ -18,8 +18,14 @@ public class SagaArcangrove
 
     public void StoryLine()
     {
-        if (Bot.Quests.IsUnlocked(847))
+        Core.BuyItem("battleon", 951, "Invoker Mask");
+        if (Core.CheckInventory("Invoker Mask", toInv: false))
+        {
+            Bot.Sleep(700);
+            Core.ToBank("Invoker Mask");
+            Core.Logger("Chapter: \"Chaos Lord Ledgermayne\" already complete. Skipping");
             return;
+        }
 
 
         //Observing the Observatory
@@ -133,6 +139,11 @@ public class SagaArcangrove
         //The Great Mana Golem
         Core.KillQuest(846, "elemental", "Mana Golem");
         //Chaos Lord Ledgermayne
-        Core.KillQuest(847, "ledgermayne", "Ledgermayne");
+        Core.KillQuest(847, "ledgermayne", "Ledgermayne", hasFollowup: false);
+        
+        Core.Relogin();
+        Core.BuyItem("battleon", 951, "Invoker Mask");
+        Bot.Sleep(700);
+        Core.ToBank("Invoker Mask");
     }
 }
