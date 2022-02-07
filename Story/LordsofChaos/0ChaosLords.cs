@@ -1,5 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Story/LordsofChaos/0ChaosLords.cs
 //cs_include Scripts/Story/LordsofChaos/1Prologue.cs
 //cs_include Scripts/Story/LordsofChaos/2Escherion(ChiralValley).cs
 //cs_include Scripts/Story/LordsofChaos/3Vath(Dwarfhold).cs
