@@ -21,11 +21,14 @@ public class SagaYokai
     }
     public void CompleteSaga()
     {
-        if(Bot.Quests.IsUnlocked(488))
+        Core.BuyItem("battleon", 948, "Amethyst Mace");
+        if (Core.CheckInventory("Amethyst Mace", toInv: false))
         {
-        Core.Logger("Stroryline Already Complete");
-        return;     
-        }   
+            Bot.Sleep(700);
+            Core.ToBank("Amethyst Mace");
+            Core.Logger("Chapter: \"Chaos Lord Wolfwing\" already complete. Skipping");
+            return;
+        }
 
         //Turtle Power
         Core.KillQuest(380, "yokaiboat", "Kappa Ninja");
@@ -107,5 +110,10 @@ public class SagaYokai
 
         //Defeat Kitsune
         Core.KillQuest(488, "kitsune", "kitsune", hasFollowup: false);
+
+        Core.Relogin();
+        Core.BuyItem("battleon", 948, "Amethyst Mace");
+        Bot.Sleep(700);
+        Core.ToBank("Amethyst Mace");
     }
 }
