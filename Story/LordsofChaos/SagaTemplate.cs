@@ -1,6 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 
-using Rbot;
+using System;
+using RBot;
+using System.Collections.Generic;
 
 public class SagaTemplate
 {
@@ -12,18 +14,18 @@ public class SagaTemplate
         Core.SetOptions();
 
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
-    public void StoryLine()
+    public void CompleteSaga()
     {
-        if (Core.QuestProgression(QuestID))
+        if (Core.QuestProgression(1))
             return;
          
-        Core.KillQuest(QuestID: , MapName: "", MonsterName: "");
-        Core.KillQuest(QuestID: , MapName: "", MonsterNames: new[] { "Monstername", "Monstername" });
-        Core.MapItemQuest(QuestID: , MapName: "", MapItemID: , Amount: ); 
-        Core.ChainQuest(QuestID: );
+        // Core.KillQuest(QuestID: 1, MapName: "mapname", MonsterName: "MonsterName");
+        // Core.KillQuest(QuestID: 1, MapName: "mapname", MonsterNames: new[] { "Monstername", "Monstername" });
+        // Core.MapItemQuest(QuestID: 1, MapName: "mapname", MapItemID: 1, Amount: 1); 
+        // Core.ChainQuest(QuestID: 1);
     }
 }

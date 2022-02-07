@@ -10,8 +10,8 @@ public class SagaTroll
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
+
         CompleteSaga();
 
         Core.SetOptions(false);
@@ -19,19 +19,11 @@ public class SagaTroll
 
     public void CompleteSaga()
     {
-        StoryLine();
-
         Core.Relogin();
         Core.BuyItem("bloodtusk", 308, "Elite Phoenix Bow");
         Bot.Sleep(2500);
         Core.ToBank("Elite Phoenix Bow");
         Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-    }
-
-    public void StoryLine()
-    {
-        if (Bot.Quests.IsUnlocked(1468))
-            return;
 
         //Horc Stink! 
         if (!Core.QuestProgression(1226))
@@ -83,12 +75,12 @@ public class SagaTroll
         }
 
         //She Who asks 2 - cutscene
-            // Core.Join("crossroads");
-            // Core.ChainQuest(1240, FollowupIDOverwrite: 1272);
-            Core.Join("crossroads");
-            Core.Jump("CutE", "Left");
-            Bot.Sleep(2000);
-            Core.SendPackets("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
+        // Core.Join("crossroads");
+        // Core.ChainQuest(1240, FollowupIDOverwrite: 1272);
+        Core.Join("crossroads");
+        Core.Jump("CutE", "Left");
+        Bot.Sleep(2000);
+        Core.SendPackets("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
 
         //Bloodtusk War
         Core.KillQuest(1272, "bloodtuskwar", "Chaotic Troll", FollowupIDOverwrite: 1274, AutoCompleteQuest: false);
@@ -182,7 +174,7 @@ public class SagaTroll
 
         //Choose: Khasaanda Confrontation?
         Core.KillQuest(1468, "dreamnexus", "Khasaanda", hasFollowup: false);
-        
+
         Core.Relogin();
         Core.BuyItem("battleon", 308, "Elite Phoenix Bow");
         Bot.Sleep(700);

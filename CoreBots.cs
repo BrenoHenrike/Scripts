@@ -68,6 +68,7 @@ public class CoreBots
     public void SetOptions(bool changeTo = true)
     {
         VersionChecker("3.6.3.2");
+        // VersionChecker("4.0.0.0");
 
         // Common Options
         Bot.Options.PrivateRooms = false;
@@ -1271,7 +1272,7 @@ public class CoreBots
         Bot.Options.LagKiller = false;
         Bot.Options.LagKiller = true;
         Bot.Options.LagKiller = false;
-        Logger("Bot Stopped Successfully", messageBox: true);
+        Logger("Bot Stopped Successfully", messageBox: false);
         ScriptManager.StopScript();
     }
     #endregion

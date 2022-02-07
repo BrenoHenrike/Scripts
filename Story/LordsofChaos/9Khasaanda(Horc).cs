@@ -1,4 +1,6 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
 using System.Collections.Generic;
 
@@ -10,8 +12,8 @@ public class SagaHorc
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
+
         CompleteSaga();
 
         Core.SetOptions(false);
@@ -19,19 +21,11 @@ public class SagaHorc
 
     public void CompleteSaga()
     {
-        StoryLine();
-
         Core.Relogin();
         Core.BuyItem("bloodtusk", 308, "Elite Phoenix Bow");
         Bot.Sleep(2500);
         Core.ToBank("Elite Phoenix Bow");
         Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-    }
-
-    public void StoryLine()
-    {
-        if (Bot.Quests.IsUnlocked(1473))
-            return;
 
 
         //Troll Stink!

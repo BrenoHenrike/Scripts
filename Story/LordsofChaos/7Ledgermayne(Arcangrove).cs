@@ -1,5 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaArcangrove
 {
@@ -9,14 +12,14 @@ public class SagaArcangrove
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 951, "Invoker Mask");
         if (Core.CheckInventory("Invoker Mask", toInv: false))
@@ -26,7 +29,6 @@ public class SagaArcangrove
             Core.Logger("Chapter: \"Chaos Lord Ledgermayne\" already complete. Skipping");
             return;
         }
-
 
         //Observing the Observatory
         Core.MapItemQuest(805, "arcangrove", 139);

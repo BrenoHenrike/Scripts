@@ -1,6 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 
-using Rbot;
+using System;
+using RBot;
+using System.Collections.Generic;
 
 public class SagaChaosFinale
 {
@@ -10,13 +12,14 @@ public class SagaChaosFinale
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
-    public void StoryLine()
+
+    public void CompleteSaga()
     {
         if (Core.QuestProgression(3881))
             return;
@@ -86,7 +89,7 @@ public class SagaChaosFinale
         Core.ChainQuest(3764);
 
         // Drakath Faced
-        Core.GetMapItem(QuestID: 3765, MapItemID: 2726, MapName: "mountdoomskull");
+        Core.MapItemQuest(3765, "mountdoomskull", 2726);
 
         // Who is the 13th Lord of Chaos?
         Core.Join("mountdoomskull");
@@ -146,7 +149,7 @@ public class SagaChaosFinale
         Core.ChainQuest(3613);
 
         // 8th Chaos Beast
-        Core.join(chaosbeast);
+        Core.Join("chaosbeast");
         Core.ChainQuest(3614);
 
         // 9th Chaos Beast
@@ -173,23 +176,23 @@ public class SagaChaosFinale
         Core.KillQuest(3794, "newfinale", "Alliance Soldier");
 
         // Battle the Champion of Chaos!
-        Core.GetMapItem(QuestID: 3795, MapItemID: 2894, MapName: "drakathfight", FollowupIDOverwrite: 3620);
+        Core.MapItemQuest(3795, "drakathfight", 2894, FollowupIDOverwrite: 3620);
 
         // REUSE
-        Core.KillQuest(QuestID: 3620, "shadowrise", "Broken Bones|Darkness Elemental|Dry Ice Mage", FollowupIDOverwrite: 3796);
+        Core.KillQuest(3620, "shadowrise", "Broken Bones|Darkness Elemental|Dry Ice Mage", FollowupIDOverwrite: 3796);
 
         // Search for Death's Lair
-        Core.GetMapItem(QuestID: 3796, MapItemID: 2895, MapName: "shadowrise");
+        Core.MapItemQuest(3796, "shadowrise", 2895);
 
         // Arrive in Shadowattack
         Core.Join("shadowattack");
         Core.ChainQuest(3797);
 
         // Find your way to Death's lair
-        Core.GetMapItem(QuestID: 3798, MapItemID: 2896, MapName: "shadowattack");
+        Core.MapItemQuest(3798,  "shadowattack", 2896);
 
         // Beat Death!
-        Core.KillQuest(QuestID: 3799, "shadowattack", "Death", FollowupIDOverwrite: 3875);
+        Core.KillQuest(3799, "shadowattack", "Death", FollowupIDOverwrite: 3875);
 
         // Enter Confrontation
         Core.Join("confrontation");
@@ -205,12 +208,12 @@ public class SagaChaosFinale
         Core.KillQuest(3878, "finalbattle", "Drakath");
 
         // Defeat the 12 Lords of Chaos!
-        Core.KillQuest(QuestID: 3879, "chaosrealm", "Alteon");
+        Core.KillQuest(3879, "chaosrealm", "Alteon");
 
         // Defeat the 13th Lord of Chaos
-        Core.KillQuest(QuestID: 3880, "chaoslord", "*");
+        Core.KillQuest(3880, "chaoslord", "*");
 
         // The Final Showdown!
-        Core.KillQuest(QuestID: 3881, "finalshowdown", "Prince Drakath", hasFollowup: false);
+        Core.KillQuest(3881, "finalshowdown", "Prince Drakath", hasFollowup: false);
     }
 }

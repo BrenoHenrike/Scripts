@@ -1,5 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaYokai
 {
@@ -10,13 +13,13 @@ public class SagaYokai
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
 
-        Core.SetOptions();
+        CompleteSaga();
+
+        Core.SetOptions(false);
     }
-    public void StoryLine()
+    public void CompleteSaga()
     {
         if(Bot.Quests.IsUnlocked(488))
         {

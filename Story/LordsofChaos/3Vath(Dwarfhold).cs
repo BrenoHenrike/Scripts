@@ -1,5 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaDwarfhold
 {
@@ -9,8 +12,8 @@ public class SagaDwarfhold
     public void ScriptMain(ScriptInterface Bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
+
         CompleteSaga();
 
         Core.SetOptions(false);

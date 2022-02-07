@@ -1,5 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaMythsong
 {
@@ -9,13 +12,13 @@ public class SagaMythsong
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 950, "Rockstar");
         if (Core.CheckInventory("Rockstar", toInv: false))
@@ -25,7 +28,6 @@ public class SagaMythsong
             Core.Logger("Chapter: \"Chaos Lord Kimberly\" already complete. Skipping");
             return;
         }
-
 
         //Stairway to Heaven
         Core.KillQuest(648, "stairway", new[] { "Rock Lobster", "Grateful Undead" });

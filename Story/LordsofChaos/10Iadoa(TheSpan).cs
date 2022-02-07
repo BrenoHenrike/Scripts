@@ -2,6 +2,7 @@
 
 using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaTheSpan
 {
@@ -14,18 +15,14 @@ public class SagaTheSpan
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
-    // Core.MapItemQuest(QuestID: QuestID, MapName: "MapName", MapItemID: MapItemID, Amount: Amount, MapItemID: MapItemID);
-    // CoreBots.KillQuest(QuestID: QuestID, MapName: "MapName", MonsterNames: new[] { "Mobmname" });
-    // CoreBots.KillQuest(QuestID: QuestID, MapName: "MapName", MonsterName: "Mobmname");
-
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 989, "Ruler Of The Deep");
         if (Core.CheckInventory("Ruler Of The Deep", toInv: false))

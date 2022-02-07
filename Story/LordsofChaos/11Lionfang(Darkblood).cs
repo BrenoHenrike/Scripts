@@ -2,6 +2,7 @@
 
 using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaDarkblood
 {
@@ -13,14 +14,14 @@ public class SagaDarkblood
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 990, "Blood Summoner");
         if (Core.CheckInventory("Blood Summoner", toInv: false))
@@ -30,7 +31,6 @@ public class SagaDarkblood
             Core.Logger("Chapter: \"Chaos Lord LionFang\" already complete. Skipping");
             return;
         }
-
 
         //Final Rest
         Core.KillQuest(2612, "blackhorn", "Restless Undead");

@@ -1,5 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaChiralValley
 {
@@ -9,7 +12,6 @@ public class SagaChiralValley
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
 
         CompleteSaga();

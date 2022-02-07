@@ -15,15 +15,15 @@ public class SagaMirrorRealm
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
 
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 992, "PaladinSlayer Daimyo");
         if (Core.CheckInventory("PaladinSlayer Daimyo", toInv: false))

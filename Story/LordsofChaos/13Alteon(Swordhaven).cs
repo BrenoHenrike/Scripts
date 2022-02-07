@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 
-using System.Diagnostics;
-using System.Reflection.PortableExecutable;
+using System;
+using RBot;
 using System.Collections.Generic;
 
 public class SagaSwordhaven
@@ -12,14 +12,14 @@ public class SagaSwordhaven
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 991, "Cyber King");
         if (Core.CheckInventory("Cyber King", toInv: false))

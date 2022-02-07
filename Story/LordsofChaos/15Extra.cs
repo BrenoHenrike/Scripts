@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 
-using System.IO.Compression;
-using System.Diagnostics;
+using System;
+using RBot;
 using System.Collections.Generic;
 
 public class SagaExtra
@@ -12,21 +12,19 @@ public class SagaExtra
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
-    public void StoryLine()
+    public void CompleteSaga()
     {
         if (Core.QuestProgression(3824))
         return;
-
         
         //Arrive in DreadHaven
         Core.ChainQuest(3812);
-
 
         //Kill SlugWrath in Dreadhaven
         Core.ChainQuest(3813);

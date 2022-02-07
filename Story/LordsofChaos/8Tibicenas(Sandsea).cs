@@ -1,5 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+
+using System;
 using RBot;
+using System.Collections.Generic;
 
 public class SagaSandsea
 {
@@ -10,17 +13,14 @@ public class SagaSandsea
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
         Core.AcceptandCompleteTries = 5;
-        StoryLine();
+
+        CompleteSaga();
 
         Core.SetOptions(false);
     }
 
-    //Core.MapItemQuest(questid, "Mapname", mapitemid, amount);
-    //Core.KillQuest(questid, "Mapname", "mobname");
-
-    public void StoryLine()
+    public void CompleteSaga()
     {
         Core.BuyItem("battleon", 952, "Angelic Lightning");
         if (Core.CheckInventory("Angelic Lightning", toInv: false))
