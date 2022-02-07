@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
-//cs_include Scripts/Story/LordsofChaos/5Wolfwing(Darkovia).cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 
 using RBot;
 using System.Linq;
@@ -13,7 +13,7 @@ public class ArchDoomKnight
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Dailys = new CoreDailys();
-    public SagaDarkovia Chaos5 = new SagaDarkovia();
+    public Core13LoC LOC => new Core13LoC();
     public static string[] Q1items = {
         "Arch DoomKnight Cape",
         "Undead Energy",
@@ -72,7 +72,7 @@ public class ArchDoomKnight
     public void DoAll()
     {
         Core.Logger($"Doing Wolfwing Saga");
-        Chaos5.CompleteSaga();
+        LOC.Wolfwing();
         Core.Logger($"Evil Rep");
         Farm.EvilREP(7);
         GatheringPower();
@@ -125,12 +125,12 @@ public class ArchDoomKnight
         Core.KillEscherion(item: "Escherion's Helm", publicRoom: true);
         Core.KillEscherion(item: "Chaotic Power", quant: 13, publicRoom: true);
 
-        Core.HuntMonster(map: "Stalagbite", monster: "Vath|Stalagbite", item: "Legendary Sword of Dragon Control", isTemp: false, publicRoom : true);
-        Core.HuntMonster(map: "Kitsune", monster: "Kitsune", item: "Hanzamune Dragon Koi Blade", isTemp: false, publicRoom : true);
+        Core.HuntMonster(map: "Stalagbite", monster: "Vath|Stalagbite", item: "Legendary Sword of Dragon Control", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "Kitsune", monster: "Kitsune", item: "Hanzamune Dragon Koi Blade", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "Wolfwing", monster: "Wolfwing", item: "Wolfwing Armor", isTemp: false);
         Core.HuntMonster(map: "palooza", monster: "Kimberly", item: "One Eyed Doll Breaker", isTemp: false);
-        Core.HuntMonster(map: "Ledgermayne", monster: "Ledgermayne", item: "Ledgermayne", isTemp: false, publicRoom : true);
-        Core.HuntMonster(map: "djinn", monster: "Tibicenas", item: "Tibicenas", isTemp: false, publicRoom : true);
+        Core.HuntMonster(map: "Ledgermayne", monster: "Ledgermayne", item: "Ledgermayne", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "djinn", monster: "Tibicenas", item: "Tibicenas", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "dreamnexus", monster: "Khasaanda", item: "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster(map: "stormtemple", monster: "Chaos Lord Lionfang", item: "Chaos Lionfang Armor", isTemp: false);
         Core.HuntMonster(map: "swordhavenfalls", monster: "Chaos Lord Alteon", item: "Shorn Chaos King Crown", isTemp: false, publicRoom: true);
@@ -152,7 +152,7 @@ public class ArchDoomKnight
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster(map: "shadowfallwar", monster: "Skeletal Fire Mage", item: "Ultimate Darkness Gem", quant: 50);
         Farm.BattleUnderB(item: "Undead Energy", quant: 2000);
-        
+
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster(map: "epicvordred", monster: "Ultra Vordred", item: "(Necro) Scroll of Dark Arts", quant: 2, publicRoom: true);
         Core.HuntMonster(map: "sepulchurebattle", monster: "Ultra Sepulchure", item: "Doom Heart", publicRoom: true);
