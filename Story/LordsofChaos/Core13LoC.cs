@@ -5,7 +5,7 @@ public class Core13LoC
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void Complete13LOC(bool withExtra = true)
+    public void Complete13LOC(bool withExtra = false)
     {
         Hero();
         if (withExtra)

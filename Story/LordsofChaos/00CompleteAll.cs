@@ -13,7 +13,7 @@ public class CompleteChaosSaga
         Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
-        LOC.Complete13LOC();
+        LOC.Complete13LOC(true);
 
         Core.SetOptions(false);
     }
