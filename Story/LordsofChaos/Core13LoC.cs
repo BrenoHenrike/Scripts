@@ -24,7 +24,12 @@ public class Core13LoC
         }
 
         //Map: PortalUndead
-        Core.KillQuest(183, "portalundead", "Skeletal Fire Mage", FollowupIDOverwrite: 176);                        // Enter the gates
+        if (!Core.QuestProgression(183, FollowupIDOverwrite: 176))                                                  // Enter the gates
+        {
+            Core.EnsureAccept(183);            // Enter the gates
+            Core.KillMonster("portalundead", "Enter", "Spawn", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
+            Core.EnsureComplete(183);
+        }
         //Map: SwordhavenUndead
         Core.KillQuest(176, "swordhavenundead", "Skeletal Soldier");                                                // Undead Assault
         Core.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage");                                               // Skull Crusher Mountain
