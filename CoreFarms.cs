@@ -778,7 +778,7 @@ public class CoreFarms
             Core.EnsureComplete(5153);
             Core.Logger($"Completed x{i++}");
         }
-    } 
+    }
 
     public void DiabolicalREP(int rank = 10)
     {
