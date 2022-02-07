@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Story/ThroneofDarkness/06FourthDimensionalPyramid.cs
 using RBot;
 
 public class EternalInversionist
@@ -8,6 +9,7 @@ public class EternalInversionist
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public FourthDimensionalPyramid FDP = new FourthDimensionalPyramid();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -23,6 +25,7 @@ public class EternalInversionist
         if (Core.CheckInventory("Eternal Inversionist"))
             return;
 
+        FDP.FourthDimensionalPyramidSaga();
         Farm.EternalREP();
 
         Core.BuyItem("fourdpyramid", 1275, "Eternal Inversionist", shopItemID: 21138);

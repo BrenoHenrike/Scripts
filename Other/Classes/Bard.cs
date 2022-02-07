@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Story/LordofChaos/Core13LoC.cs
 using RBot;
 
 public class Bard
@@ -8,6 +9,7 @@ public class Bard
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public Core13LoC LOC => new Core13LoC();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -23,6 +25,7 @@ public class Bard
         if (Core.CheckInventory("Bard"))
             return;
 
+        LOC.Kimberly();
         Farm.MythsongREP(4);
 
         Core.BuyItem("mythsong", 186, "Bard");
