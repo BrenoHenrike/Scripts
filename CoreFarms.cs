@@ -515,8 +515,7 @@ public class CoreFarms
     {
         if (FactionRank("BaconCat") >= rank)
             return;
-        if (Core.IsMember)
-            Core.AddDrop("Wheel of Bacon Token");
+        
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
