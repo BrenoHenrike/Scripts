@@ -536,14 +536,13 @@ public class CoreBots
     /// <param name="MonsterName">Monster to kill</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
-    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
-    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
-        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+        if (QuestProgression(QuestID, QuestData, GetReward, Reward))
             return;
 
         SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
@@ -563,14 +562,13 @@ public class CoreBots
     /// <param name="MonsterName">Monster to kill</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
-    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
-    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
-        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+        if (QuestProgression(QuestID, QuestData, GetReward, Reward))
             return;
 
         SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
@@ -591,13 +589,12 @@ public class CoreBots
     /// <param name="Amount">The amount of <paramref name="MapItemID"/> it grabs</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
-    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
-    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
-        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+        if (QuestProgression(QuestID, QuestData, GetReward, Reward))
             return;
 
         EnsureAccept(QuestID);
@@ -619,13 +616,12 @@ public class CoreBots
     /// <param name="Amount">The amount of <paramref name="ItemName"/> to buy</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
-    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
-    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0, bool AutoCompleteQuest = true)
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
-        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+        if (QuestProgression(QuestID, QuestData, GetReward, Reward))
             return;
 
         EnsureAccept(QuestID);
@@ -644,30 +640,35 @@ public class CoreBots
     /// <param name="QuestID">ID of the quest</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
-    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
-    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public void ChainQuest(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void ChainQuest(int QuestID, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
 
-        if (QuestProgression(QuestID, GetReward, Reward, hasFollowup, FollowupIDOverwrite))
+        if (QuestProgression(QuestID, QuestData, GetReward, Reward))
             return;
 
-        ChainComplete(QuestID);
+        if (AutoCompleteQuest)
+            ChainComplete(QuestID);
+        else
+        {
+            EnsureAccept(QuestID);
+            Bot.Sleep(ActionDelay);
+        }
         Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
     }
 
     /// <summary>
-    /// Skeleton of KillQuest, MapItemQuest, BuyQuest and ChainQuest only needs to be used inside a script if there isnt a solid QuestID tied to an event. See 5Wolfwing(Darkovia).cs for an example
+    /// Skeleton of KillQuest, MapItemQuest, BuyQuest and ChainQuest. Only needs to be used inside a script if there isnt a solid QuestID tied to an event. See Core13LoC for an example
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
+    /// <param name="QuestData">If you saved the QuestData here somewhere, it can be passed on to this function. Only for internal use</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
-    /// <param name="hasFollowup">Set to false if it's the end of the questline</param>
-    /// <param name="FollowupIDOverwrite">Modify this paramater if the QuestID of the quest after this is not QuestID+1</param>
-    public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All", bool hasFollowup = true, int FollowupIDOverwrite = 0)
+    public bool QuestProgression(int QuestID, Quest QuestData = null, bool GetReward = true, string Reward = "All")
     {
-        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        if (QuestData == null)
+            QuestData = Bot.Quests.EnsureLoad(QuestID);
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
         if (QuestData == null)
@@ -676,10 +677,10 @@ public class CoreBots
         if (!Bot.Quests.IsUnlocked(QuestID))
             Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (hasFollowup && ((FollowupIDOverwrite == 0 && Bot.Quests.IsUnlocked(QuestID + 1)) || (FollowupIDOverwrite != 0 && Bot.Quests.IsUnlocked(FollowupIDOverwrite))))
+        if (QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value)
         {
             Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
-            Bot.Sleep(700);
+            Bot.Sleep(ActionDelay);
             return true;
         }
 
