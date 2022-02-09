@@ -515,8 +515,7 @@ public class CoreFarms
     {
         if (FactionRank("BaconCat") >= rank)
             return;
-        if (Core.IsMember)
-            Core.AddDrop("Wheel of Bacon Token");
+        
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
@@ -539,7 +538,7 @@ public class CoreFarms
             }
             else
             {
-                Core.EnsureAccept(5121, 5123, 5124, 5131);
+                Core.EnsureAccept(5121, 5123, 5124);
 
                 Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 1 Destroyed", 4); // 5121 rest are locked
                 Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 2 Destroyed", 4); // 5121 rest are locked
@@ -547,7 +546,7 @@ public class CoreFarms
                 // Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Legs Smashed", 10);
                 // Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Quarters", 7);
 
-                Core.EnsureComplete(5121, 5123, 5124, 5131);
+                Core.EnsureComplete(5121, 5123, 5124);
             }
             Core.Logger($"Completed x{i++}");
         }
@@ -701,7 +700,7 @@ public class CoreFarms
         while (FactionRank("Chaos Militia") < rank)
         {
             Core.EnsureAccept(5775);
-            Core.HuntMonster("crownsreach", "Inquisitor Guard", "Inquisitor's Tabard", 10);
+            Core.HuntMonster("citadel", "Inquisitor Guard", "Inquisitor's Tabard", 10);
             Core.EnsureComplete(5775);
             Core.Logger($"Completed x{i++}");
         }
