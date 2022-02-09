@@ -1302,7 +1302,7 @@ public class CoreBots
         Bot.Options.LagKiller = false;
         Bot.Options.LagKiller = true;
         Bot.Options.LagKiller = false;
-        Logger("Bot Stopped Successfully", messageBox: false);
+        Logger("Bot Stopped Successfully", messageBox: true);
         ScriptManager.StopScript();
     }
     #endregion
