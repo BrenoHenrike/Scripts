@@ -677,7 +677,7 @@ public class CoreBots
         if (!Bot.Quests.IsUnlocked(QuestID))
             Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value)
+        if (isCompletedBefore(QuestID, QuestData))
         {
             Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
             Bot.Sleep(ActionDelay);
@@ -700,6 +700,27 @@ public class CoreBots
         Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
         return false;
     }
+
+    /// <param name="QuestID">ID of the quest</param>
+    public bool isCompletedBefore(int QuestID)
+    {
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        if (QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value)
+            return true;
+        return false;
+    }
+
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="QuestData">If you saved the QuestData here somewhere, it can be passed on to this function. Only for internal use</param>
+    public bool isCompletedBefore(int QuestID, Quest QuestData)
+    {
+        if (QuestData == null)
+            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        if (QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value)
+            return true;
+        return false;
+    }
+
     #endregion
 
     #region Kill
