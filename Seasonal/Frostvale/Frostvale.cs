@@ -8,9 +8,9 @@ public class Frostvale
 
     public void ScriptMain(ScriptInterface Bot)
     {
+        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
-        Core.AcceptandCompleteTries = 5;
         DoAll();
 
         Core.SetOptions(false);
@@ -28,7 +28,7 @@ public class Frostvale
 
     public void IceCave()
     {
-        if (Bot.Quests.IsUnlocked(906))
+        if (Core.isCompletedBefore(906))
             return;
 
         // Rescue Blizzy
@@ -59,7 +59,7 @@ public class Frostvale
         Core.KillQuest(163, "factory", "Ebilsneezer");
 
         // Shadow Figure
-        Core.KillQuest(164, "frost", "FrostScythe", FollowupIDOverwrite: 456);
+        Core.KillQuest(164, "frost", "FrostScythe");
 
         // 'Twas the night before Frostval
         Core.KillQuest(456, "icecave", "Frosty");
@@ -79,8 +79,8 @@ public class Frostvale
         Core.KillQuest(460, "northlandlight", "Santy Claws");
 
         // Find Page 6
-        Core.MapItemQuest(461, "battleontown", 87, hasFollowup: false);
-        Core.KillQuest(461, "icecave", "Frozen Moglin", hasFollowup: false);
+        Core.MapItemQuest(461, "battleontown", 87);
+        Core.KillQuest(461, "icecave", "Frozen Moglin");
 
         // Spirit Abducted 
         Core.Join("frostvale");
@@ -89,7 +89,7 @@ public class Frostvale
 
     public void SnowGlobe()
     {
-        if (Bot.Quests.IsUnlocked(1508))
+        if (Core.isCompletedBefore(1508))
             return;
 
         // Shaking the Globes
@@ -116,12 +116,12 @@ public class Frostvale
         Core.KillQuest(912, "goldenruins", "Golden Warrior");
 
         // Defeat Lionfang
-        Core.KillQuest(913, "goldenruins", "Maximillian Lionfang", hasFollowup: false);
+        Core.KillQuest(913, "goldenruins", "Maximillian Lionfang");
     }
 
     public void Alpine()
     {
-        if (Bot.Quests.IsUnlocked(1521))
+        if (Core.isCompletedBefore(1521))
             return;
 
         // Snow Way to Know Where to Go
@@ -137,13 +137,13 @@ public class Frostvale
         Core.MapItemQuest(1511, "alpine", 760, 13);
 
         // Deadfying Frost Lions
-        Core.KillQuest(1512, "alpine", "Frost Lion", FollowupIDOverwrite: 1516);
+        Core.KillQuest(1512, "alpine", "Frost Lion");
 
         // Defiant Undead Deserters
-        Core.KillQuest(1516, "alpine", "Frozen Deserter", FollowupIDOverwrite: 1513);
+        Core.KillQuest(1516, "alpine", "Frozen Deserter");
 
         // Forest Guadian Gauntlet
-        Core.KillQuest(1513, "alpine", "Wendigo", FollowupIDOverwrite: 1519);
+        Core.KillQuest(1513, "alpine", "Wendigo");
 
         // Snow Turning Back!
         Core.KillQuest(1519, "icevolcano", MonsterNames: new[] { "Snow Golem", "Dead-ly Ice Elemental" });
@@ -153,13 +153,14 @@ public class Frostvale
         Core.KillQuest(1520, "icevolcano", "Ice Symbiote");
 
         // Song of the Frozen Heart
-        Core.KillQuest(1521, "icevolcano", "Dead Morice", hasFollowup: false);
+        Core.KillQuest(1521, "icevolcano", "Dead Morice");
     }
 
     public void SnowyVale()
     {
-        if (Bot.Quests.IsUnlocked(2576))
+        if (Core.isCompletedBefore(2576))
             return;
+
         Core.AddDrop("Ray of Hope", "Sands of Time");
 
         // Locate Kezeroth
@@ -172,10 +173,10 @@ public class Frostvale
         Core.MapItemQuest(2524, "snowyvale", 1585, 6);
 
         // Temporal Revelation
-        Core.MapItemQuest(2525, "snowyvale", 1586, hasFollowup: false);
+        Core.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
-        if (!Bot.Quests.IsUnlocked(2527))
+        if (!Core.QuestProgression(2527))
         {
             Core.EnsureAccept(2526);
             Core.Join("frostdeep", "Enter", "Spawn");
@@ -247,14 +248,14 @@ public class Frostvale
         Core.KillQuest(2546, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
 
         // The Sword Of Hope
-        Core.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" }, hasFollowup: false);
+        Core.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" });
     }
 
     public void IceRise()
     {
-        if (Bot.Quests.IsUnlocked(2582))
+        if (Core.isCompletedBefore(2582))
             return;
-            
+
         // A Little Warmth and Light
         Core.MapItemQuest(2576, "icerise", 1592, 5);
 
@@ -274,12 +275,12 @@ public class Frostvale
         Core.KillQuest(2581, "icerise", "Arctic Direwolf");
 
         // Face Kezeroth!
-        Core.KillQuest(2582, "icerise", "Kezeroth", hasFollowup: false);
+        Core.KillQuest(2582, "icerise", "Kezeroth");
     }
 
     public void ColdWindValley()
     {
-        if (Bot.Quests.IsUnlocked(6132))
+        if (Core.isCompletedBefore(6132))
             return;
 
         // Help Blizzy
@@ -321,8 +322,8 @@ public class Frostvale
         Core.KillQuest(6131, "coldwindvalley", "Arctusk");
 
         // Holly and Ice
-        Core.KillQuest(6132, "coldwindvalley", "Snow Golem", hasFollowup: false);
-        Core.MapItemQuest(6132, "coldwindvalley", 5557, 8, hasFollowup: false);
+        Core.KillQuest(6132, "coldwindvalley", "Snow Golem");
+        Core.MapItemQuest(6132, "coldwindvalley", 5557, 8);
     }
 
     // --------------------------------------------------------------------------------------------------------------------------

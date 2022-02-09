@@ -54,7 +54,7 @@ public class FourthDimensionalPyramid
         Core.MapItemQuest(5204, "fourdpyramid", 4567, 1);
         // Fighting in 4D
         Core.KillQuest(5205, "fourdpyramid", "Tesseract Sprite");
-        Core.MapItemQuest(5205, "fourdpyramid", 4568, 1);    
+        Core.MapItemQuest(5205, "fourdpyramid", 4568, 1);
         // Lever-age    
         Core.MapItemQuest(5206, "fourdpyramid", 4569, 1);
         // 4D Goblins?
@@ -70,6 +70,6 @@ public class FourthDimensionalPyramid
         // The Black Plague
         Core.KillQuest(5211, "fourdpyramid", "Black Plague");
         // The Hero's Doom
-        Core.MapItemQuest(5212, "fourdpyramid", 4574, 1, hasFollowup: false);
+        Core.MapItemQuest(5212, "fourdpyramid", 4574, 1);
     }
 }

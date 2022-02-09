@@ -34,7 +34,7 @@ public class Tutorial
         Core.SendPackets("%xt%zm%setAchievement%93430%ia0%23%1%");//interact- 
         Bot.Sleep(700);
         Core.Logger("Achievement - Quest");
-        Core.KillQuest(QuestID: 4007, MapName: "oaklore", MonsterName: "Bone Berserker", hasFollowup: false);
+        Core.KillQuest(QuestID: 4007, MapName: "oaklore", MonsterName: "Bone Berserker");
         Core.SendPackets("xt%zm%setAchievement%93430%ia0%24%1%");//quest- 
         Bot.Sleep(700);
         Core.Logger("Achievement - Skill");

@@ -20,17 +20,17 @@ public class ShiftingPyramid
         // Hunt for the Infinity Codex
         Core.KillQuest(5166, "whitehole", "Vortex Mage");
         // Sacrific and Survival
-        Core.KillQuest(5167, "whitehole", new[] {"Vortex Naga", "Vortex Hawk"});
+        Core.KillQuest(5167, "whitehole", new[] { "Vortex Naga", "Vortex Hawk" });
         // The Cartouche of Isis
         Core.KillQuest(5168, "whitehole", "Gate Goblin");
         // The Cartouche of Ma'at
         Core.KillQuest(5169, "whitehole", "Vortex Walker");
         // Bound to Do Good
-        Core.KillQuest(5170, "whitehole", new[] {"Dimensional Crystal", "Gate Goblin", "Vortex Matter"});
+        Core.KillQuest(5170, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
         // Honor the Goddess Isis
         Core.MapItemQuest(5171, "whitehole", 4539, 1);
         // Stick to the Task
-        Core.KillQuest(5172, "whitehole", new[] {"Dimensional Crystal", "Gate Goblin", "Vortex Matter"});
+        Core.KillQuest(5172, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
         // Honor the Goddess Ma'at
         Core.MapItemQuest(5173, "whitehole", 4540, 4);
         Core.MapItemQuest(5173, "whitehole", 4542, 1);
@@ -51,7 +51,7 @@ public class ShiftingPyramid
         // Guardian of the Vortex
         Core.KillQuest(5181, "whitehole", "Vortex Guardian");
         // Stick with it
-        Core.KillQuest(5182, "whitehole", new[] {"Dimensional Crystal", "Gate Goblin", "Vortex Matter"});
+        Core.KillQuest(5182, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
         // Honor the God Thoth
         Core.MapItemQuest(5183, "whitehole", 4544, 1);
         // The Brightest Cartouches
@@ -69,6 +69,6 @@ public class ShiftingPyramid
         // Serpent of the Stars
         Core.KillQuest(5186, "whitehole", "Mehensi Serpent");
         // The Infinity Shield
-        Core.MapItemQuest(5187, "whitehole", 4546, 1, hasFollowup: false);
+        Core.MapItemQuest(5187, "whitehole", 4546, 1);
     }
 }

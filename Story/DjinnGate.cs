@@ -21,10 +21,10 @@ public class DjinnGateStory
 
     public void DjinnGate()
     {
-        Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", 
+        Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion",
         "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun");
         Core.EquipClass(ClassType.Farm);
-        if(!Bot.Quests.IsUnlocked(6154))
+        if (!Bot.Quests.IsUnlocked(6154))
         {
             Core.EnsureAccept(6153);
             Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
@@ -34,7 +34,7 @@ public class DjinnGateStory
             Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
             Core.EnsureComplete(6153);
         }
-        if(!Bot.Quests.IsUnlocked(6155))
+        if (!Bot.Quests.IsUnlocked(6155))
         {
             Core.EnsureAccept(6154);
             Core.KillMonster("arcangrove", "Left", "Left", "*", "Fragment 6");
@@ -44,7 +44,7 @@ public class DjinnGateStory
             Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
             Core.EnsureComplete(6154);
         }
-        if(!Bot.Quests.IsUnlocked(6156))
+        if (!Bot.Quests.IsUnlocked(6156))
         {
             Core.EnsureAccept(6155);
             Core.KillMonster("mythsong", "Hill", "Left", "*", "Fragment 11");
@@ -54,7 +54,7 @@ public class DjinnGateStory
             Core.KillMonster("beehive", "r5", "Left", "*", "Fragment 14");
             Core.EnsureComplete(6155);
         }
-        if(!Bot.Quests.IsUnlocked(6157))
+        if (!Bot.Quests.IsUnlocked(6157))
         {
             Core.EnsureAccept(6156);
             Core.KillMonster("forestchaos", "Boss", "Left", "*", "Fragment 16");
@@ -64,7 +64,7 @@ public class DjinnGateStory
             Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
             Core.EnsureComplete(6156);
         }
-        if(!Bot.Quests.IsUnlocked(6158))
+        if (!Bot.Quests.IsUnlocked(6158))
         {
             Core.EnsureAccept(6157);
             Core.KillMonster("pirates", "End", "Left", "Shark Bait", "Fragment 21");
@@ -74,7 +74,7 @@ public class DjinnGateStory
             Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
             Core.EnsureComplete(6157);
         }
-        if(!Bot.Quests.IsUnlocked(6159))
+        if (!Bot.Quests.IsUnlocked(6159))
         {
             Core.EnsureAccept(6158);
             Core.EquipClass(ClassType.Solo);
@@ -85,8 +85,8 @@ public class DjinnGateStory
             Core.KillMonster("thevoid", "r16", "Left", "*", "Potent Reaper Mana", publicRoom: true);
             Core.EnsureComplete(6158);
         }
-        if(!Bot.Quests.IsUnlocked(6160))
-            Core.MapItemQuest(6159, "djinngate", 5571, 5, false, hasFollowup: false);
+        if (!Bot.Quests.IsUnlocked(6160))
+            Core.MapItemQuest(6159, "djinngate", 5571, 5, false);
         if (!Bot.Quests.IsUnlocked(6161))
         {
             Core.EquipClass(ClassType.Farm);

@@ -29,21 +29,21 @@ public class FlyingBaconCatFortress
         // The Chosen One!
         Core.MapItemQuest(5091, "baconcat", 4473, 1);
         // BACON PIZZA!
-        Core.KillQuest(5092, "baconcat", new[] { "Baconcatzard", "Pizzacatzard"});
+        Core.KillQuest(5092, "baconcat", new[] { "Baconcatzard", "Pizzacatzard" });
         // No More Clowns!
-        Core.KillQuest(5093, "baconcat", new[] { "Creepy Clown", "Creepy Clown", "Creepy Clown"});
+        Core.KillQuest(5093, "baconcat", new[] { "Creepy Clown", "Creepy Clown", "Creepy Clown" });
         // Life's a Beach
         Core.MapItemQuest(5094, "baconcat", 4468, 9);
         // Not all Sand is Cat Litter
-        Core.KillQuest(5095, "baconcat", new[] { "Fart Elemental", "Litter Elemental"});
+        Core.KillQuest(5095, "baconcat", new[] { "Fart Elemental", "Litter Elemental" });
         // King Strong
-        Core.KillQuest(5096, "baconcat", new[] { "Box", "King Strong", "King Strong"});
+        Core.KillQuest(5096, "baconcat", new[] { "Box", "King Strong", "King Strong" });
         // Snack Man!
         Core.MapItemQuest(5097, "baconcat", 4469, 4);
         // Ghost Busting
-        Core.KillQuest(5098, "baconcat", new[] { "Oopy", "Bloopy", "Hoopy", "Frood"});
+        Core.KillQuest(5098, "baconcat", new[] { "Oopy", "Bloopy", "Hoopy", "Frood" });
         // Super Ziri Brothers
-        Core.KillQuest(5099, "baconcat", new[] { "Red Shell Turtle", "Snapper Shrub"});
+        Core.KillQuest(5099, "baconcat", new[] { "Red Shell Turtle", "Snapper Shrub" });
         // It's-A-Me
         Core.KillQuest(5100, "baconcat", "Horcio");
         // Me So Corny!
@@ -55,7 +55,7 @@ public class FlyingBaconCatFortress
         // Smell This!
         Core.KillQuest(5102, "baconcat", "Scent Trail");
         // Trial of being SMALL
-        Core.KillQuest(5103, "baconcat", new[] { "Buttermancer", "Potato Knight"});
+        Core.KillQuest(5103, "baconcat", new[] { "Buttermancer", "Potato Knight" });
         // King of the Unbread
         Core.KillQuest(5104, "baconcat", "King of the Unbread");
         // Evil Undead!
@@ -65,7 +65,7 @@ public class FlyingBaconCatFortress
         // Kitty Boo Boo, Overlord of the Catverse
         Core.KillQuest(5107, "baconcat", "Kitty Boo Boo");
         // Stop Hitting Yourself!
-        Core.KillQuest(5108, "baconcatyou", "*", hasFollowup: false);
+        Core.KillQuest(5108, "baconcatyou", "*");
         Core.Join("farm");
     }
 }

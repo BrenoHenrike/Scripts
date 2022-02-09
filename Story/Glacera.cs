@@ -27,7 +27,7 @@ public class GlaceraStory
 
     public void FrozenTower()
     {
-        if (Bot.Quests.IsUnlocked(3942))
+        if (Core.isCompletedBefore(3941))
             return;
 
         // Seek the Tower
@@ -71,9 +71,9 @@ public class GlaceraStory
         Core.MapItemQuest(3919, "frozentower", 3008, 6);
 
         // Save the Astronomer Apprentice
-        Core.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" } );
-        Core.MapItemQuest(3920, "frozentower", 3020); 
-        
+        Core.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" });
+        Core.MapItemQuest(3920, "frozentower", 3020);
+
         // Glacial Elixir
         Core.KillQuest(3921, "frozentower", "FrostDeep Dweller");
         Core.MapItemQuest(3921, "frozentower", 3017, 6);
@@ -127,15 +127,15 @@ public class GlaceraStory
         Core.KillQuest(3936, "frozentower", "Frost Invader");
 
         // Defeat the FrostSpawn Invaders
-        Core.KillQuest(3937, "frozentower", "Frost Fangbeast", FollowupIDOverwrite: 3941);
+        Core.KillQuest(3937, "frozentower", "Frost Fangbeast");
 
         // FangBeast Bash-up
-        Core.KillQuest(3941, "frozentower", "Frost Fangbeast", hasFollowup: false);
+        Core.KillQuest(3941, "frozentower", "Frost Fangbeast");
     }
 
     public void FrozenRuins()
     {
-        if (Bot.Quests.IsUnlocked(3947))
+        if (Core.isCompletedBefore(3946))
             return;
 
         // FrozenRuins
@@ -144,57 +144,57 @@ public class GlaceraStory
         Core.KillQuest(3942, "frozenruins", "Frost Reaper");
 
         // Oh the Humanity
-        Core.KillQuest(3943, "frozenruins", "Frost Reaper" ); 
+        Core.KillQuest(3943, "frozenruins", "Frost Reaper");
 
         // Close the Gate
-        Core.KillQuest(3944, "frozenruins", "Frost Reaper" );
+        Core.KillQuest(3944, "frozenruins", "Frost Reaper");
 
         // Form the Lock
         Core.KillQuest(3945, "frozenruins", "Frozen Moglinster");
 
         Core.MapItemQuest(3945, "frozenruins", 3050, 10);
         // Glacera
-        Core.KillQuest(3946, "frozenruins", "Frost Reaper", hasFollowup: false);
+        Core.KillQuest(3946, "frozenruins", "Frost Reaper");
     }
 
     public void Glacera()
     {
-        if (Bot.Quests.IsUnlocked(3951))
+        if (Core.isCompletedBefore(3950))
             return;
 
         // Glaera     
 
         //A Frost Welcome
-        Core.EnsureAccept(3947);        
+        Core.EnsureAccept(3947);
         Core.MapItemQuest(3947, "glacera", 3048, 1);
         // Key to the Fortress
         Core.KillQuest(3948, "glacera", "Frost Invader");
         // Ravage the Reapers
         Core.MapItemQuest(3949, "glacera", 3049, 6);
         // Oh the Humanity
-        Core.MapItemQuest(3950, "glacera", 3047, 1, hasFollowup: false);
+        Core.MapItemQuest(3950, "glacera", 3047, 1);
     }
 
     public void FrozenRuins2()
     {
-        if (Bot.Quests.IsUnlocked(3958))
+        if (Core.isCompletedBefore(3954))
             return;
 
         // FrozenRuins encore
 
         // Rescue the Refugees
-        Core.KillQuest(3951, "frozenruins", new[] { "Frost Invader", "Frozen Moglinster" } );
+        Core.KillQuest(3951, "frozenruins", new[] { "Frost Invader", "Frozen Moglinster" });
         // Defeat the Fangbeasts
         Core.KillQuest(3952, "frozenruins", "Frost Fangbeast");
         // Destroy the Frost Reapers
         Core.KillQuest(3953, "frozenruins", "Frost Reaper");
         // FrostSpawn General Takedown
-        Core.KillQuest(3954, "frozenruins", "Frost General", hasFollowup: false);
+        Core.KillQuest(3954, "frozenruins", "Frost General");
     }
 
     public void Northstar()
     {
-        if (Bot.Quests.IsUnlocked(3971))
+        if (Core.isCompletedBefore(3971))
             return;
 
         // Northstar
@@ -202,23 +202,23 @@ public class GlaceraStory
         // From Refugee to Enemy
         Core.KillQuest(3958, "northstar", new[] { "Frost Invader", "Monstrous Refugee" });
         // Fangs and Blades
-        Core.KillQuest(3959, "northstar", new[] { "Frost Fangbeast", "Frost Invader"} );
+        Core.KillQuest(3959, "northstar", new[] { "Frost Fangbeast", "Frost Invader" });
         // Reaping the Refugees
         Core.KillQuest(3960, "northstar", "Frost Reaper");
         // Saving Syrrus' Spirit
-        Core.KillQuest(3961, "northstar", "Frost Reaper", FollowupIDOverwrite: 3972); //loadstone peice
-        Core.MapItemQuest(3961, "northstar", 3060, 5, FollowupIDOverwrite: 3972); //plush bear
-        Core.MapItemQuest(3961, "northstar", 3061, 7, FollowupIDOverwrite: 3972); //snowdrop blossom
-        Core.MapItemQuest(3961, "northstar", 3073, 5, FollowupIDOverwrite: 3972); //journal page
+        Core.KillQuest(3961, "northstar", "Frost Reaper"); //loadstone peice
+        Core.MapItemQuest(3961, "northstar", 3060, 5); //plush bear
+        Core.MapItemQuest(3961, "northstar", 3061, 7); //snowdrop blossom
+        Core.MapItemQuest(3961, "northstar", 3073, 5); //journal page
         // It's a Trap!
         Core.MapItemQuest(3972, "northstar", 3063, 10);
         // Feast or Famine
-        Core.KillQuest(3973, "northstar", new[] { "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Frost Superreaper", "Monstrous Refugee"} );
+        Core.KillQuest(3973, "northstar", new[] { "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Frost Superreaper", "Monstrous Refugee" });
         // Decipher the Freezing
-        Core.KillQuest(3974, "northstar", new[] { "Frost Fangbeast", "Monstrous Refugee", "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Monstrous Refugee" }, FollowupIDOverwrite: 3970);
+        Core.KillQuest(3974, "northstar", new[] { "Frost Fangbeast", "Monstrous Refugee", "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Monstrous Refugee" });
         // A New Frost Monster
         Core.KillQuest(3970, "northstar", "The Queen's Gift");
         // Defeat Karok!
-        Core.KillQuest(3971, "northstar", "Karok the Fallen", hasFollowup: false);
+        Core.KillQuest(3971, "northstar", "Karok the Fallen");
     }
 }

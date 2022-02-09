@@ -18,15 +18,15 @@ public class MystEgg
 
     public void MysteriousEgg()
     {
-        Core.AddDrop("Mysterious Egg", "Key of Pride", "Key of Gluttony", "Key of Greed", "Key of Sloth", 
+        Core.AddDrop("Mysterious Egg", "Key of Pride", "Key of Gluttony", "Key of Greed", "Key of Sloth",
         "Key of Lust", "Key of Envy", "Key of Wrath");
-        if(Core.CheckInventory("Mysterious Egg"))
+        if (Core.CheckInventory("Mysterious Egg"))
             return;
         Core.EnsureAccept(6171);
         Core.HuntMonster("pride", "Valsarian", "Key of Pride", isTemp: false);
         Core.KillMonster("gluttony", "Enter2", "Left", "*", "Key of Gluttony", isTemp: false);
         Core.HuntMonster("greed", "Goregold", "Key of Greed", isTemp: false);
-        if(!Core.CheckInventory("Key of Sloth"))
+        if (!Core.CheckInventory("Key of Sloth"))
         {
             Core.EnsureAccept(5944);
             Core.GetMapItem(5380, map: "sloth");
@@ -42,18 +42,19 @@ public class MystEgg
 
     public void Maloth()
     {
-        if(Core.CheckInventory("Key of Envy"))
+        if (Core.CheckInventory("Key of Envy"))
             return;
-        if(!Bot.Quests.IsUnlocked(6000))
+
+        if (!Bot.Quests.IsUnlocked(6000))
         {
-            if(!Bot.Quests.IsUnlocked(5990))
+            if (!Bot.Quests.IsUnlocked(5990))
             {
                 if (!Bot.Quests.IsUnlocked(5989))
                 {
                     if (!Bot.Quests.IsUnlocked(5984))
-                        Core.MapItemQuest(5983, "dragoncrown", 5420, GetReward: false, hasFollowup: false);
+                        Core.MapItemQuest(5983, "dragoncrown", 5420, GetReward: false);
                     if (!Bot.Quests.IsUnlocked(5985))
-                        Core.MapItemQuest(5984, "dragoncrown", 5421, GetReward: false, hasFollowup: false);
+                        Core.MapItemQuest(5984, "dragoncrown", 5421, GetReward: false);
                     if (!Bot.Quests.IsUnlocked(5986))
                     {
                         Core.EnsureAccept(5985);
@@ -75,9 +76,9 @@ public class MystEgg
                         Core.KillMonster("dragoncrown", "r3", "Left", "Earth Elemental", "Sticky Mud", 5);
                         Core.EnsureComplete(5987);
                     }
-                    Core.MapItemQuest(5988, "dragoncrown", 5423, GetReward: false, hasFollowup: false);
+                    Core.MapItemQuest(5988, "dragoncrown", 5423, GetReward: false);
                 }
-                Core.MapItemQuest(5989, "dragoncrown", 5424, GetReward: false, hasFollowup: false);
+                Core.MapItemQuest(5989, "dragoncrown", 5424, GetReward: false);
             }
             if (!Bot.Quests.IsUnlocked(5991))
             {

@@ -25,9 +25,9 @@ public class JoinLegion
 
         Core.BuyItem("underworld", 215, "Undead Warrior");
         DialogResult SellUW = MessageBox.Show(
-                                "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you", 
-                                "Sell \"Undead Warrior\"?", 
-                                MessageBoxButtons.YesNo, 
+                                "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
+                                "Sell \"Undead Warrior\"?",
+                                MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question);
 
         Core.AddDrop("Ravaged Champion Soul");
@@ -49,7 +49,7 @@ public class JoinLegion
             Core.ChainComplete(792);
         }
         // Fail to the King
-        Core.KillQuest(793, "prison", "King Alteon's Knight", hasFollowup: false);
+        Core.KillQuest(793, "prison", "King Alteon's Knight");
 
         if (SellUW == DialogResult.Yes)
             Core.SellItem("Undead Warrior");

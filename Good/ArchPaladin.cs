@@ -54,7 +54,7 @@ public class ArchPaladin
                     Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":18,\"iIndex\":126}}}");
                     Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
                 }
-                Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom : true);
+                Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom: true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
 
                 string[] DOTClasses = {
@@ -82,7 +82,7 @@ public class ArchPaladin
                 Core.HuntMonster("doomkitten", "DoomKitten", "DoomKitten Claw", publicRoom: true);
 
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("vordredboss", "Vordred", "Vordred's Skull", isTemp: false, publicRoom : true);
+                Core.HuntMonster("vordredboss", "Vordred", "Vordred's Skull", isTemp: false, publicRoom: true);
                 Core.EnsureComplete(5464);
             }
             // Mastering the Arcane
@@ -123,24 +123,24 @@ public class ArchPaladin
             // Legendary|Silver Paladin's Pledge
             Core.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5477 : 5473);
             // Aptitude Test
-            if (!Core.QuestProgression(Core.CheckInventory("Silver Paladin") ? 5478 : 5474, FollowupIDOverwrite: 5467))
+            if (!Core.QuestProgression(Core.CheckInventory("Silver Paladin") ? 5478 : 5474))
             {
                 Core.EnsureAccept(Core.CheckInventory("Silver Paladin") ? 5478 : 5474);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("bosschallenge", "Colossal Primarch", "Primarch's Hilt", isTemp: false, publicRoom: true);
                 Farm.Gold(500000);
                 Core.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
-                Core.HuntMonster("timevoid ", "Unending Avatar", "Condensed Mana", isTemp: false, publicRoom : true);
+                Core.HuntMonster("timevoid ", "Unending Avatar", "Condensed Mana", isTemp: false, publicRoom: true);
                 Core.EnsureComplete(Core.CheckInventory("Silver Paladin") ? 5478 : 5474);
             }
         }
-        
+
         // Commandment
         if (!Core.QuestProgression(5467))
         {
             Core.EnsureAccept(5467);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("brightfall", "Painadin Overlord", "Skill Observed", isTemp: false, publicRoom : true);
+            Core.HuntMonster("brightfall", "Painadin Overlord", "Skill Observed", isTemp: false, publicRoom: true);
             Core.HuntMonster("citadel", "Grant Inquisitor", "Spirit of Vindication", isTemp: false);
             Core.HuntMonster("alliance", "Good Lieutenant", "Radiant Blade Enhancement", isTemp: false);
             Core.EnsureComplete(5467);
@@ -190,7 +190,7 @@ public class ArchPaladin
             Core.EnsureComplete(5469);
         }
         // Sacred Magic: Eden
-        if (!Core.QuestProgression(5470, hasFollowup: false))
+        if (!Core.QuestProgression(5470))
         {
             Core.EnsureAccept(5470);
             Core.EquipClass(ClassType.Solo);

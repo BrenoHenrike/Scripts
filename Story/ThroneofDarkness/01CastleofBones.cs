@@ -49,7 +49,7 @@ public class CastleofBones
         // Putting Your Hands All over Everything
         Core.MapItemQuest(4979, "bonecastle", 4349, 1);
         Core.MapItemQuest(4979, "bonecastle", 4350, 1);
-        Core.MapItemQuest(4979, "bonecastle", 4351, 1);        
+        Core.MapItemQuest(4979, "bonecastle", 4351, 1);
         Core.KillQuest(4979, "bonecastle", "Skeletal Warrior");
         // Paladin Rock
         Core.KillQuest(4980, "bonecastle", new[] { "Grateful Undead", "That 70's Zombie" });
@@ -58,7 +58,7 @@ public class CastleofBones
         // Do You Find This Humerus?
         Core.KillQuest(4981, "bonecastle", "Skeletal Warrior|Undead Knight|Undead Guard");
         // Vaden Says
-        Core.KillQuest(4982, "bonecastle", new[] {"Skeletal Warrior", "Undead Guard", "Undead Knight"});
+        Core.KillQuest(4982, "bonecastle", new[] { "Skeletal Warrior", "Undead Guard", "Undead Knight" });
         // The Dead King's Bedroom
         Core.MapItemQuest(4983, "bonecastle", 4352, 1);
         // Game of Porcelain Thrones
@@ -66,18 +66,18 @@ public class CastleofBones
         // Teenage Mutant Sewer Turtles
         Core.KillQuest(4985, "bonecastle", "Turtle");
         // Adolescent Inhuman Samurai Reptiles
-        Core.KillQuest(4986, "bonecastle", new[] {"Turtle", "Turtle", "Turtle", "Turtle"});
+        Core.KillQuest(4986, "bonecastle", new[] { "Turtle", "Turtle", "Turtle", "Turtle" });
         // Snuggles!
         Core.KillQuest(4987, "bonecastle", "Snuggles, Torturer");
         // Game of Bones
-        Core.KillQuest(4988, "bonecastle", new[] {"Jon Bones", "Oberon Marrowtell", "Baskerville", "Knight of Lichens"});
+        Core.KillQuest(4988, "bonecastle", new[] { "Jon Bones", "Oberon Marrowtell", "Baskerville", "Knight of Lichens" });
         // Rot Tin Tin!
         Core.KillQuest(4989, "bonecastle", "Rot Tin Tin");
         // Gold Digger
-        Core.KillQuest(4990, "bonecastle", new[] {"Undead Golden Knight", "Undead Golden Knight", "Undead Golden Knight"});
+        Core.KillQuest(4990, "bonecastle", new[] { "Undead Golden Knight", "Undead Golden Knight", "Undead Golden Knight" });
         // Gotta Hand It To Ya
-        Core.KillQuest(4991, "bonecastle", new[] {"Undead Knight", "Skeletal Warrior"});
+        Core.KillQuest(4991, "bonecastle", new[] { "Undead Knight", "Skeletal Warrior" });
         // Vaden's Defeat
-        Core.KillQuest(4992, "bonecastle", "Vaden", hasFollowup: false);
+        Core.KillQuest(4992, "bonecastle", "Vaden");
     }
 }

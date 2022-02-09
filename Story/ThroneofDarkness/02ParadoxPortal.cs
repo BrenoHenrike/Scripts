@@ -52,6 +52,6 @@ public class ParadoxPortal
         // Vorefax
         Core.KillQuest(5049, "portalmaze", "Vorefax");
         // The Death of Time
-        Core.KillQuest(5050, "portalmaze", "Mors Temporis", hasFollowup: false);
+        Core.KillQuest(5050, "portalmaze", "Mors Temporis");
     }
 }

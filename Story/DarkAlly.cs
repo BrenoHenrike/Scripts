@@ -17,14 +17,14 @@ public class DarkAlly_Story
 
     public void DarkAlly_Questline()
     {
-        if(Bot.Quests.IsUnlocked(7443))
+        if (Core.isCompletedBefore(7428))
             return;
-        
+
         Core.MapItemQuest(7419, "darkally", 7179, 6);
         Core.KillQuest(7419, "darkally", "Shadow");
 
         Core.KillQuest(7420, "darkally", new[] { "Underworld Golem", "Underworld Golem" });
-        
+
         Core.MapItemQuest(7421, "darkally", 7180, 1);
         Core.MapItemQuest(7421, "darkally", 7181, 8);
 
@@ -40,8 +40,8 @@ public class DarkAlly_Story
 
         Core.MapItemQuest(7427, "darkally", 7182, 1);
 
-        Core.KillQuest(7428, "darkally", "Underfiend", hasFollowup : false);
-        
+        Core.KillQuest(7428, "darkally", "Underfiend");
+
     }
 
 }

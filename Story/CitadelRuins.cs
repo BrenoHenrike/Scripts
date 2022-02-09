@@ -13,7 +13,7 @@ public class CitadelRuins
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Dailys = new CoreDailys();
     public CoreNulgath Nulgath = new CoreNulgath();
-    public string[] rewards = { "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath", "Mage's Gratitude"};
+    public string[] rewards = { "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath", "Mage's Gratitude" };
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -34,8 +34,8 @@ public class CitadelRuins
 
     public void MurrysQuests()
     {
-        if (Bot.Quests.IsUnlocked(560))
-        return;
+        if (Core.isCompletedBefore(182))
+            return;
 
         // Map: "Citadel";
         Core.KillQuest(QuestID: 144, MapName: "Citadel", MonsterName: "Inquisitor Guard");
@@ -46,31 +46,31 @@ public class CitadelRuins
         Core.KillQuest(QuestID: 149, MapName: "Citadel", MonsterName: "Grand Inquisitor");
         Core.KillQuest(QuestID: 181, MapName: "Citadel", MonsterName: "Belrot The Fiend");
         Core.KillQuest(QuestID: 151, MapName: "Citadel", MonsterName: "Grand Inquisitor");
-        Core.KillQuest(QuestID: 182, MapName: "Citadel", MonsterName: "Grand Inquisitor", hasFollowup: false);
+        Core.KillQuest(QuestID: 182, MapName: "Citadel", MonsterName: "Grand Inquisitor");
     }
 
     public void PolishsQuestsTercessuinotlim()
     {
-        if (Bot.Quests.IsUnlocked(6172))
-        return;
+        if (Core.isCompletedBefore(668))
+            return;
 
-        Core.AddDrop("Unidentified 9", "Unidentified 28", "Dark Crystal Shard", "Claw of Nulgath", "Relic of Chaos" );
+        Core.AddDrop("Unidentified 9", "Unidentified 28", "Dark Crystal Shard", "Claw of Nulgath", "Relic of Chaos");
 
         // Map: "Tercessuinotlim"
 
         //iron wing helm enchant=
         Nulgath.TheAssistant(item: "Unidentified 9");
-        Core.KillQuest(QuestID: 560, MapName: "underworld", MonsterName: "Undead Bruiser", GetReward: false, FollowupIDOverwrite: 585);
+        Core.KillQuest(QuestID: 560, MapName: "underworld", MonsterName: "Undead Bruiser", GetReward: false);
 
         //cleansing of spinal tap=
         Nulgath.Supplies("Dark Crystal Shard", 5);
-        Nulgath.TheAssistant(item: "Unidentified 28");      
-        Core.KillQuest(QuestID: 585, MapName: "Tercessuinotlim", MonsterName: "Legion Fenrir", FollowupIDOverwrite: 668);
+        Nulgath.TheAssistant(item: "Unidentified 28");
+        Core.KillQuest(QuestID: 585, MapName: "Tercessuinotlim", MonsterName: "Legion Fenrir");
 
         //purified claw
-        Nulgath.Supplies("Tainted Gem", 7); 
+        Nulgath.Supplies("Tainted Gem", 7);
         Nulgath.Supplies("Claw of Nulgath");
-        Core.KillQuest(QuestID: 668, MapName: "Tercessuinotlim", MonsterName: "Dark Makai", hasFollowup: false);
+        Core.KillQuest(QuestID: 668, MapName: "Tercessuinotlim", MonsterName: "Dark Makai");
     }
 
     public void PolishsQuestsCitadelRuins()
@@ -109,7 +109,7 @@ public class CitadelRuins
         //defeat the grand inquisitor
         Core.KillQuest(QuestID: 6181, MapName: "citadelruins", MonsterName: "Grand Inquisitor Murry");
         //defeat enn'tropy
-        Core.KillQuest(QuestID: 6182, MapName: "citadelruins", MonsterName: "Enn'tröpy", hasFollowup: false);
+        Core.KillQuest(QuestID: 6182, MapName: "citadelruins", MonsterName: "Enn'tröpy");
         Core.ToBank(rewards);
     }
 }

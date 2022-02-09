@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 using RBot;
-public class DoomVaultA 
+public class DoomVaultA
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
@@ -18,7 +18,7 @@ public class DoomVaultA
 
         Core.SetOptions(false);
     }
-    
+
     public void StoryLine()
     {
         // the challenge begins
@@ -34,7 +34,7 @@ public class DoomVaultA
         BypassPacket();
 
         // a close shave
-        Core.KillQuest(QuestID: 2955, MapName: "doomvault", MonsterName: "Grim Shelleton", FollowupIDOverwrite: 2965);
+        Core.KillQuest(QuestID: 2955, MapName: "doomvault", MonsterName: "Grim Shelleton");
         BypassPacket();
 
         // eye spy a victim
@@ -62,11 +62,11 @@ public class DoomVaultA
         BypassPacket();
 
         //help me again!
-        Core.KillQuest(QuestID: 2971, MapName: "doomvault", MonsterName: "Princess Angler", FollowupIDOverwrite: 2974);
+        Core.KillQuest(QuestID: 2971, MapName: "doomvault", MonsterName: "Princess Angler");
         BypassPacket();
 
         //overheated hero
-        Core.KillQuest(QuestID: 2974, MapName: "doomvault", MonsterName: "Grim Fire Mage", FollowupIDOverwrite: 2981);
+        Core.KillQuest(QuestID: 2974, MapName: "doomvault", MonsterName: "Grim Fire Mage");
         BypassPacket();
 
         //the blade-breaker
@@ -78,7 +78,7 @@ public class DoomVaultA
         BypassPacket();
 
         //elemental destroyer
-        Core.KillQuest(QuestID: 2983, MapName: "doomvault", MonsterName: "Grim Ectomancer", FollowupIDOverwrite: 3006);
+        Core.KillQuest(QuestID: 2983, MapName: "doomvault", MonsterName: "Grim Ectomancer");
         BypassPacket();
 
         //the unkillable
@@ -90,10 +90,10 @@ public class DoomVaultA
         BypassPacket();
 
         //i command you, help me!
-        Core.KillQuest(QuestID: 3008, MapName: "doomvault", MonsterName: "Ghost King Angler", hasFollowup: false);
+        Core.KillQuest(QuestID: 3008, MapName: "doomvault", MonsterName: "Ghost King Angler");
         BypassPacket();
     }
-    
+
     private void BypassPacket()
         => Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":18,\"iIndex\":126}}}");
 }

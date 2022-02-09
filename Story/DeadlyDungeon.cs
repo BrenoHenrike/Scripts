@@ -20,8 +20,8 @@ public class DeadlyDungeon
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
         else
-        // Floor 1
-        Core.KillQuest(3680, "deadlydungeon", "Dire Muncher ");
+            // Floor 1
+            Core.KillQuest(3680, "deadlydungeon", "Dire Muncher ");
         // Floor 2
         Core.KillQuest(3681, "deadlydungeon", "Hulking Dire Wolf");
         // Floor 3
@@ -37,7 +37,7 @@ public class DeadlyDungeon
         // Floor 7
         Core.KillQuest(3686, "deadlydungeon", "Weeping Spyball");
         // Floor 8
-        Core.KillQuest(3687, "deadlydungeon", "Dire Muncher ");     
+        Core.KillQuest(3687, "deadlydungeon", "Dire Muncher ");
         // Floor 9
         Core.KillQuest(3688, "deadlydungeon", "Weeping Spyball");
         // Floor 10
@@ -45,25 +45,25 @@ public class DeadlyDungeon
         Core.MapItemQuest(3689, "deadlydungeon", 2766, 1);
         // Floor 11
         Core.KillQuest(3690, "deadlydungeon", "Dire Draugr");
-        Core.MapItemQuest(3690, "deadlydungeon", 2765, 1);       
+        Core.MapItemQuest(3690, "deadlydungeon", 2765, 1);
         // Floor 12
         Core.KillQuest(3691, "deadlydungeon", "Giant Dungeon Spider");
         // Floor 13
         Core.KillQuest(3692, "deadlydungeon", "Undead Dungeon Crawler");
         // Floor 14
-        Core.KillQuest(3693, "deadlydungeon", "Giant Dungeon Spider");       
+        Core.KillQuest(3693, "deadlydungeon", "Giant Dungeon Spider");
         // Floor 15
         Core.KillQuest(3694, "deadlydungeon", "Dire Draugr|DoomKitten|Giant Dungeon Spider|Undead Dungeon Crawler");
         // Floor 16
         Core.KillQuest(3695, "deadlydungeon", "Dire Draugr|DoomKitten|Giant Dungeon Spider|Undead Dungeon Crawler");
         // Floor 17
         Core.KillQuest(3696, "deadlydungeon", "DoomKitten");
-        Core.MapItemQuest(3696, "deadlydungeon", 2767, 1); 
+        Core.MapItemQuest(3696, "deadlydungeon", 2767, 1);
         // Floor 18
         Core.KillQuest(3697, "deadlydungeon", "Giant Dungeon Spider|Hulking Dire Wolf|Undead Dungeon Crawler|Weeping Spyball");
         // Floor 19
         Core.KillQuest(3698, "deadlydungeon", "Dire Draugr|Dire Muncher ");
         // Floor 20
-        Core.KillQuest(3699, "deadlydungeon", "Chest Guardian", hasFollowup: false);
+        Core.KillQuest(3699, "deadlydungeon", "Chest Guardian");
     }
 }

@@ -69,6 +69,6 @@ public class TowerofMirrors
         // Find Scarletta
         Core.MapItemQuest(5331, "towerofmirrors", 4697, 1);
         // Defeat ... Wait. What?
-        Core.KillQuest(5332, "towerofmirrors", "Scarletta", hasFollowup: false);
+        Core.KillQuest(5332, "towerofmirrors", "Scarletta");
     }
 }

@@ -21,17 +21,10 @@ public class Fiendshard_Story
     public void Fiendshard_Questline()
     {
 
-        // if (Bot.Quests.IsUnlocked(7901)) // Does not work: This will return even if Destroy the Fiend Shard is not done.
-        // {
-        //     Core.Logger("You have already finished the Fiendshard questline.");
-        //     return;
-        // }
+        if (Core.isCompletedBefore(7898))
+            return;
 
-        if (!Bot.Quests.IsUnlocked(7892))
-        {
-            Core.Logger("Doing Originul questline to unlock Fiendshard.");
-            Originul.Originul_Questline();
-        }
+        Originul.Originul_Questline();
 
         // Sneak Attack
         Core.EnsureAccept(7892);
@@ -43,7 +36,7 @@ public class Fiendshard_Story
         Core.KillQuest(7894, "Fiendshard", "Paladin Fiend|Rogue Fiend");
         // Unlock the Door
         Core.KillQuest(7895, "Fiendshard", new[] { "Rogue Fiend", "Paladin Fiend", "Void Knight" });
-        Core.GetMapItem(7984); // %xt%zm%getMapItem%1266931%7984%
+        Core.GetMapItem(7984);
         // Dirtlicking Guards
         Core.KillQuest(7896, "Fiendshard", "Paladin Fiend|Void Knight");
         // Defeat Dirtlicker
@@ -51,7 +44,7 @@ public class Fiendshard_Story
 
         // Destroy the Fiend Shard
         // Archfiend DeathLord quests can be done without finishing this quest.
-        Core.KillQuest(7898, "Fiendshard", "Nulgath's Fiend Shard", hasFollowup: false);
+        Core.KillQuest(7898, "Fiendshard", "Nulgath's Fiend Shard");
         Core.EnsureAccept(7898);
         Core.Join("Fiendshard", "r9", "Left");
         while (!Bot.Quests.CanComplete(7898))
@@ -60,8 +53,6 @@ public class Fiendshard_Story
             Bot.Player.Kill("Void Knight");
         }
         Core.EnsureComplete(7898);
-
-        Core.Logger("Questline completed.");
     }
 
 }

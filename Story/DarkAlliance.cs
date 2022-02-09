@@ -5,7 +5,7 @@ using RBot;
 public class DarkAlliance_Story
 {
     public CoreBots Core => CoreBots.Instance;
-    public DarkAlly_Story DarkAlly = new DarkAlly_Story(); 
+    public DarkAlly_Story DarkAlly = new DarkAlly_Story();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -49,6 +49,6 @@ public class DarkAlliance_Story
         //Burn the Shadows
         Core.MapItemQuest(7459, "darkalliance", 7230, 1);
         //Defeat Shadow Nulgath
-        Core.KillQuest(7460, "darkalliance", "ShadowFlame Nulgath", hasFollowup : false);
+        Core.KillQuest(7460, "darkalliance", "ShadowFlame Nulgath");
     }
 }

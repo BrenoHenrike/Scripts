@@ -67,6 +67,6 @@ public class DeathPitArena
         // Hun'Gar Defeated
         Core.KillQuest(5153, "deathpit", "General Hun'Gar");
         // Pax Defeated
-        Core.KillQuest(5154, "deathpit", "Warlord Pax", hasFollowup: false);
+        Core.KillQuest(5154, "deathpit", "Warlord Pax");
     }
 }

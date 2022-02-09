@@ -17,10 +17,11 @@ public class SevenCircles
 
     public void Circles()
     {
-        if (Bot.Quests.IsUnlocked(7979))
+        if (Core.isCompletedBefore(7978))
             return;
 
         Core.AddDrop("Indulgence");
+
         //Canto IV
         Core.KillQuest(7968, "sevencircles", "Limbo Guard");
         //Canto V
@@ -30,12 +31,7 @@ public class SevenCircles
         //Lest Ye Be Destroyed
         Core.KillQuest(7971, "sevencircles", "Luxuria");
         //Canto VI
-        if (!Core.QuestProgression(7972))
-        {
-            Core.EnsureAccept(7972);
-            Core.GetMapItem(8206, 3, "sevencircles");
-            Core.EnsureComplete(7972);
-        }
+        Core.MapItemQuest(7972, "sevencircles", 8206, 3);
         //HeckHound
         Core.KillQuest(7973, "sevencircles", "Gluttony Guard");
         //Glutton  for Punishment
@@ -47,17 +43,19 @@ public class SevenCircles
         //Ava-risky Business
         Core.KillQuest(7977, "sevencircles", "Avarice");
         //Cirlces of Fate
-        Core.KillQuest(7978, "sevencircles", new[] {"Luxuria", "Gluttony", "Avarice", "Limbo Guard"}, hasFollowup: false);
+        Core.KillQuest(7978, "sevencircles", new[] { "Luxuria", "Gluttony", "Avarice", "Limbo Guard" });
     }
 
     public void CirclesWar()
     {
-        if (Bot.Quests.IsUnlocked(7990))
+        if (Core.isCompletedBefore(7990))
             return;
+
         if (!Bot.Quests.IsUnlocked(7979))
             Circles();
 
         Core.AddDrop("Essence of Treachery", "Essence of Violence", "Souls of Heresy", "Essence of Wrath");
+
         //Guards of Wrath
         Core.KillQuest(7979, "sevencircleswar", "Wrath Guard");
         //War Medals

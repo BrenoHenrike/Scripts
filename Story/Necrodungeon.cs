@@ -25,8 +25,8 @@ public class NecroDungeon
 
     public void NecrodungeonStoryLine()
     {
-        if (Bot.Quests.IsUnlocked(2061))
-        return;
+        if (Core.isCompletedBefore(2061))
+            return;
 
         //descent into darkness - 2044
         Core.KillQuest(QuestID: 2044, MapName: "necrodungeon", MonsterName: "Bellhop");
@@ -87,7 +87,6 @@ public class NecroDungeon
             Core.EnsureComplete(2060);
         }
         //the past will haunt you - 2061
-        Core.MapItemQuest(QuestID: 2061, MapName: "necrodungeon", MapItemID: 1020, hasFollowup: false);
+        Core.MapItemQuest(QuestID: 2061, MapName: "necrodungeon", MapItemID: 1020);
     }
-
 }

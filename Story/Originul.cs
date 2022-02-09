@@ -17,11 +17,9 @@ public class Originul_Story
 
     public void Originul_Questline()
     {
-        if (Bot.Quests.IsUnlocked(7892))
-        {
-            Core.Logger("You have already finished the Originul questline.");
+        if (Core.isCompletedBefore(7889))
             return;
-        }
+
         // Inquisite the Inquisitors
         Core.KillQuest(7881, "Originul", "Inquisitor Guard");
         // Captains Capped
@@ -30,7 +28,6 @@ public class Originul_Story
         Core.KillQuest(7883, "Originul", "Grand Inquisitor");
         // Portal Unlocked
         Core.KillQuest(7884, "Originul", new[] { "Inquisitor Guard", "Inquisitor Captain", "Grand Inquisitor" });
-
         // Fiend Training
         Core.KillQuest(7885, "Originul", "Bloodfiend");
         // Failed Fiend Shards

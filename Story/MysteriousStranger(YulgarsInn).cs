@@ -36,7 +36,6 @@ public class MysteriousStranger
     public void Storyline()
     {
         Core.AddDrop("Golden Blade of Fate", "Purification Dust");
-
         Core.Logger("Doing Storyline");
 
         // The Lost Teacher
@@ -90,7 +89,7 @@ public class MysteriousStranger
         // The Mysterious Reward
         // Stranger Found x1
         // Talk to the Mysterious Stranger (NPC) in Yulgar's Inn
-        Core.MapItemQuest(QuestID: 5679, MapName: "yulgar", MapItemID: 5145, AutoCompleteQuest: true, hasFollowup: false);
+        Core.MapItemQuest(QuestID: 5679, MapName: "yulgar", MapItemID: 5145, AutoCompleteQuest: true);
 
     }
 

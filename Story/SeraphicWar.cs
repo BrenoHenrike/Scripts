@@ -17,8 +17,9 @@ public class SeraphicWar_Story
 
     public void SeraphicWar_Questline()
     {
-        if(Bot.Quests.IsUnlocked(7443))
+        if (Core.isCompletedBefore(7428))
             return;
+
         //Get the Parts
         Core.KillQuest(6238, "worldsoul", new[] { "Dwakel Infiltrator", "Dwakel Infiltrator", "Dwakel Infiltrator", "Dwakel Infiltrator" });
         //Get the Water
@@ -37,8 +38,6 @@ public class SeraphicWar_Story
         Core.MapItemQuest(6244, "worldsoul", 5682);
         Core.KillQuest(6244, "worldsoul", "Legion Dreadmarch|Legion Shadowpriest");
         //Defeat the Guardian
-        Core.KillQuest(7428, "worldsoul", "Core Guardian", hasFollowup : false);
-        
+        Core.KillQuest(7428, "worldsoul", "Core Guardian");
     }
-
 }
