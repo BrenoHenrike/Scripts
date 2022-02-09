@@ -222,10 +222,10 @@ public class Core13LoC
 
     public void Kitsune()
     {
-        Core.BuyItem("battleon", 948, "Amethyst Mace");
+        Core.BuyItem(Bot.Map.Name, 948, "Amethyst Mace");
         if (Core.CheckInventory("Amethyst Mace", toInv: false))
         {
-            Bot.Sleep(700);
+            Bot.Sleep(Core.ActionDelay);
             Core.ToBank("Amethyst Mace");
             Core.Logger("Chapter: \"Chaos Lord Kitsune\" already complete. Skipping");
             return;
@@ -244,7 +244,7 @@ public class Core13LoC
         }
 
         //Dragon Koi Tournament
-        Core.KillQuest(382, "dragonkoi", "Ryoku", FollowupIDOverwrite: 402);
+        Core.KillQuest(382, "dragonkoi", "Ryoku");
 
         //Dog Days
         // Core.KillQuest("hachiko", "Samurai Nopperabo");
@@ -258,7 +258,7 @@ public class Core13LoC
         }
 
         //Faceless Threat - i think it has to be this cell? it wasnt getting the item from the rest
-        if (!Core.QuestProgression(403, FollowupIDOverwrite: 405))
+        if (!Core.QuestProgression(403))
         {
             Core.EnsureAccept(403);
             Core.KillMonster("hachiko", "Ox", "Center", "Samurai Nopperabo", "Note from DT");
@@ -277,7 +277,7 @@ public class Core13LoC
         }
 
         //Rescue!
-        Core.KillQuest(406, "hachiko", "Dai Tengu", FollowupIDOverwrite: 466);
+        Core.KillQuest(406, "hachiko", "Dai Tengu");
 
         //Jinmenju Tree
         Core.MapItemQuest(466, "bamboo", 90);
@@ -305,13 +305,13 @@ public class Core13LoC
         // Core.KillQuest(470, "junkyard", new[] { "Tsukumo-Gami", "Tsukumo-Gami", "Tsukumo-Gami", "Tsukumo-Gami" });
 
         //The Hunt for the Hag
-        Core.KillQuest(471, "junkyard", "Onibaba", FollowupIDOverwrite: 473);
+        Core.KillQuest(471, "junkyard", "Onibaba");
 
         //Su-she
         Core.KillQuest(473, "yokairiver", new[] { "Funa-Yurei", "Funa-Yurei", "Funa-Yurei" });
 
         //Kappa Cuisine
-        if (!Core.QuestProgression(474, FollowupIDOverwrite: 476))
+        if (!Core.QuestProgression(474))
         {
             Core.EnsureAccept(474);
             Core.KillMonster("yokairiver", "r4", "Left", "Kappa Ninja", "Dried Nori Leaf", 6);
@@ -334,17 +334,17 @@ public class Core13LoC
         Core.KillQuest(479, "yokaigrave", "Neko Mata");
 
         //Defeat O-dokuro
-        Core.KillQuest(481, "odokuro", "O-dokuro", FollowupIDOverwrite: 484);
+        Core.KillQuest(481, "odokuro", "O-dokuro");
 
         //Defeat O-Dokuro's Head
-        Core.KillQuest(484, "yokaiwar", "O-Dokuro's Head", FollowupIDOverwrite: 488);
+        Core.KillQuest(484, "yokaiwar", "O-Dokuro's Head");
 
         //Defeat Kitsune
-        Core.KillQuest(488, "kitsune", "kitsune", hasFollowup: false);
+        Core.KillQuest(488, "kitsune", "kitsune");
 
         Core.Relogin();
-        Core.BuyItem("battleon", 948, "Amethyst Mace");
-        Bot.Sleep(700);
+        Core.BuyItem(Bot.Map.Name, 948, "Amethyst Mace");
+        Bot.Sleep(Core.ActionDelay);
         Core.ToBank("Amethyst Mace");
     }
 
