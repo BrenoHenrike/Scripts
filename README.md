@@ -33,24 +33,30 @@ public int HuntDelay { get; set; } = 1000;
 public int AcceptandCompleteTries { get; set; } = 20;
 // [Can Change] Whether the bots will use private rooms
 public bool PrivateRooms { get; set; } = true;
+// [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
+public int PrivateRoomNumber { get; set; } = 100000;
+// [Can Change] Use public rooms if the enemy is tough
+public bool HardMonPublicRoom { get; set; } = true;
 // [Can Change] Whether the player should rest after killing a monster
 public bool ShouldRest { get; set; } = false;
+// [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
+public bool BankMiscAC { get; set; } = true;
 // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
 public bool AntiLag { get; set; } = true;
 // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
 public int SkillTimer { get; set; } = 100;
 // [Can Change] Name of your soloing class
 public string SoloClass { get; set; } = "Generic";
-// [Can Change] (Use the Skills > Advanced window) Skill sequence string
-public string SoloClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-// [Can Change] (Use the Skills > Advanced window if unsure) SkillTimeout of the soloing class
-public int SoloClassSkillTimeout { get; set; } = 150;
+// [Can Change] Mode of soloing class, if it has multiple. 
+public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
+// [Can Change] Names of your soloing equipment
+public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
 // [Can Change] Name of your farming class
 public string FarmClass { get; set; } = "Generic";
-// [Can Change] (Use the Skills > Advanced window) Skill sequence string
-public string FarmClassSkills { get; set; } = "1 | 2 | 3 | 4 | Mode Optimistic";
-// [Can Change] (Use the Skills > Advanced window if unsure) SkillTimeout of the farming class
-public int FarmClassSkillTimeout { get; set; } = 1;
+// [Can Change] Mode of farminging class, if it has multiple. 
+public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
+// [Can Change] Names of your farming equipment
+public string[] FarmGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
 // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
 public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 ```
