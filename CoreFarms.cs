@@ -423,10 +423,10 @@ public class CoreFarms
 
         void Packet()
         {
+            Bot.Sleep(2000);
             Bot.SendPacket($"%xt%zm%crafting%1%getAlchWait%11475%11478%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            Bot.Sleep(15000);
+            Bot.Sleep(9000);
             Bot.SendPacket($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            Bot.Sleep(700);
         }
 
         Core.Join("alchemy");
@@ -515,7 +515,7 @@ public class CoreFarms
     {
         if (FactionRank("BaconCat") >= rank)
             return;
-        
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
