@@ -43,6 +43,8 @@ public class BattleUnder
     {
         if (Core.isCompletedBefore(935))
             return;
+        
+        BattleUnderA();
 
         Core.EquipClass(ClassType.Farm);
         Core.KillQuest(689, "battleunderb", "Skeleton Warrior");
@@ -58,18 +60,27 @@ public class BattleUnder
         if (Core.isCompletedBefore(939))
             return;
 
+        BattleUnderB();
+
         Core.KillQuest(936, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead");
         Core.KillQuest(937, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead|Purple Crystalized Jellyfish");
         Core.KillQuest(938, "battleunderc", "Crystalized Jellyfish");
-        Core.KillQuest(939, "battleundera", "Bone Terror");
-        Core.KillQuest(939, "battleunderb", "Undead Champion");
-        Core.KillQuest(939, "battleunderc", "Crystalized Jellyfish");
+        if (!Core.QuestProgression(939))
+        {
+            Core.EnsureAccept(939);
+            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
+            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");
+            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul");
+            Core.EnsureComplete(939);
+        }
     }
 
     public void BattleUnderD() //use Core.KillMonster(map: "MapName", cell: "Cell", pad: "pad", monster: "Mob", item = "item", quant: Amount) - map is a broke otherwise spawns random enemies.
     {
         if (!Core.IsMember || Core.isCompletedBefore(2215))
             return;
+
+        BattleUnderC();
 
         Core.KillQuest(2211, "battleunderd", "Shivering Bones");
         Core.MapItemQuest(2212, "battleunderd", 1286, 8);
