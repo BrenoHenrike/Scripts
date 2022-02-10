@@ -60,6 +60,7 @@ public class CoreBots
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public List<ItemBase> CurrentRequirements = new List<ItemBase>();
+    public List<string> BankingBlackList = new List<string>();
 
     /// <summary>
     /// Set commom bot options to desired value
@@ -82,6 +83,11 @@ public class CoreBots
         Bot.Lite.UntargetDead = changeTo;
         Bot.Lite.UntargetSelf = changeTo;
         Bot.Lite.ReacceptQuest = false;
+        Bot.Lite.CharacterSelectScreen = false;
+        Bot.Lite.CustomDropsUI = true;
+        //Bot.Lite.Set("openMenu", true);
+        //Bot.Lite.Set("warnDecline", false);
+        //Bot.Lite.Set("disRed", true);
 
         if (changeTo)
         {
@@ -118,7 +124,7 @@ public class CoreBots
                 {
                     if (!Whitelisted.Contains(item.Category.ToString()))
                         continue;
-                    if (item.Name != "Treasure Potion" && item.Coins)
+                    if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
                         MiscForBank.Add(item.Name);
                 }
                 ToBank(MiscForBank.ToArray());
