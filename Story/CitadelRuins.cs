@@ -39,11 +39,11 @@ public class CitadelRuins
 
         // Map: "Citadel";
         Core.KillQuest(QuestID: 144, MapName: "Citadel", MonsterName: "Inquisitor Guard");
-        Core.KillQuest(QuestID: 145, MapName: "Citadel", MonsterName: "Inquisitor Captain");
-        Core.KillQuest(QuestID: 146, MapName: "Citadel", MonsterName: "Burning Witch");
-        Core.KillQuest(QuestID: 147, MapName: "Citadel", MonsterName: "Crusader");
-        Core.KillQuest(QuestID: 148, MapName: "Citadel", MonsterName: "Crusader");
-        Core.KillQuest(QuestID: 149, MapName: "Citadel", MonsterName: "Grand Inquisitor");
+        Core.KillQuest(QuestID: 145, MapName: "Citadel", MonsterName: "Crusader");
+        Core.KillQuest(QuestID: 146, MapName: "Citadel", MonsterName: "Inquisitor Captain");
+        Core.KillQuest(QuestID: 147, MapName: "Citadel", MonsterName: "Burning Witch");
+        Core.KillQuest(QuestID: 148, MapName: "Citadel", MonsterName: "Inquisitor Guard");
+        Core.KillQuest(QuestID: 149, MapName: "Citadel", MonsterName: "Inquisitor Guard");
         Core.KillQuest(QuestID: 181, MapName: "Citadel", MonsterName: "Belrot The Fiend");
         Core.KillQuest(QuestID: 151, MapName: "Citadel", MonsterName: "Grand Inquisitor");
         Core.KillQuest(QuestID: 182, MapName: "Citadel", MonsterName: "Grand Inquisitor");
@@ -79,10 +79,10 @@ public class CitadelRuins
         // Map: "citadelruins";
         //get ready to amplify
         Core.KillQuest(QuestID: 6172, MapName: "citadelruins", MonsterName: "Mana Sprites");
+        Core.MapItemQuest(QuestID: 6172, MapName: "citadelruins", MapItemID: 5592);
         //break the seal
-        Core.MapItemQuest(QuestID: 6172, MapName: "citadelruins", MapItemID: 5591);
+        Core.MapItemQuest(QuestID: 6173, MapName: "citadelruins", MapItemID: 5602);
         //clear out the squatters
-        Core.MapItemQuest(QuestID: 6173, MapName: "citadelruins", MapItemID: 5592);
         Core.KillQuest(QuestID: 6174, MapName: "citadelruins", MonsterName: "Inquisitor Hobo");
         //grab a clue
         Core.KillQuest(QuestID: 6175, MapName: "citadelruins", MonsterName: "Inquisitor Hobo");
