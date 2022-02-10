@@ -517,7 +517,7 @@ public class Core13LoC
         Core.KillQuest(811, "cloister", "Wendigo");
 
         //Find Paddy Lump
-        Core.MapItemQuest(812, "mudluk", 143);
+        Core.MapItemQuest(813, "mudluk", 143);
 
         //Toothy Smiles
         Core.KillQuest(814, "mudluk", "Swamp Lurker");
