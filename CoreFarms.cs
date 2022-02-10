@@ -783,9 +783,13 @@ public class CoreFarms
     {
         if (FactionRank("Diabolical") >= rank)
             return;
+
         if (!Bot.Quests.IsUnlocked(7877))
+        {
             Core.KillQuest(7875, "timevoid", "Unending Avatar");
-        Core.KillQuest(7876, "twiligtedge", "ChaosWeaver Warrior");
+            Core.KillQuest(7876, "twilightedge", "ChaosWeaver Warrior");
+        }
+
         int i = 1;
         while (FactionRank("Diabolical") < rank)
         {
