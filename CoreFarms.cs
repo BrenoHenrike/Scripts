@@ -1456,13 +1456,9 @@ public class CoreFarms
         {
             Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
             Core.BuyItem("dragonrune", 549, "Ember Ink", 50, 5);
-            Core.Join("spellcraft");
             while (FactionRank("SpellCrafting") < 4)
             {
-                Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%1%1555%Spell%");
-                Bot.Sleep(3000);
-                Bot.SendPacket("%xt%zm%crafting%1%spellComplete%1%2299%Ssikari's Breath%");
-                Bot.Sleep(3000);
+                Core.ChainComplete(2299);
                 Core.Logger($"Completed x{i++}");
             }
         }
@@ -1470,13 +1466,9 @@ public class CoreFarms
         {
             Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
             Core.BuyItem("dragonrune", 549, "Hallow Ink", 50, 5);
-            Core.Join("spellcraft");
             while (Core.CheckInventory("Hallow Ink") && FactionRank("SpellCrafting") < rank)
             {
-                Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%6%1555%Spell%");
-                Bot.Sleep(3000);
-                Bot.SendPacket("%xt%zm%crafting%1%spellComplete%6%2322%Plague Flare%");
-                Bot.Sleep(3000);
+                Core.ChainComplete(2322);
                 Core.Logger($"Completed x{i++}");
             }
         }

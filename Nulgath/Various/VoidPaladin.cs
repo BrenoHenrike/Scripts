@@ -49,14 +49,14 @@ public class VoidPaladin
 
     public void ADarkTemptation()
     {
-        if(Core.CheckInventory(ADKRewards))
+        if (Core.CheckInventory(ADKRewards))
             return;
         Core.AddDrop(ADKRewards);
         Core.AddDrop("Scroll of Underworld", "Archmage Ink", "Mystic Shard");
 
         int i = 1;
         Core.Logger("Starting [A Dark Temptation] Quest");
-        while(!Core.CheckInventory(ADKRewards, toInv: false))
+        while (!Core.CheckInventory(ADKRewards, toInv: false))
         {
             Core.EnsureAccept(5826);
 
@@ -69,15 +69,12 @@ public class VoidPaladin
 
             if (!Core.CheckInventory("Scroll of Underworld"))
             {
-                if(Core.CheckInventory("Archmage Ink"))
+                if (Core.CheckInventory("Archmage Ink"))
                 {
                     Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shard", 2, false);
                     Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
                 }
-                Core.Join("spellcraft");
-                Bot.SendPacket("%xt%zm%crafting%1%spellOnStart%10%1555%Spell%");
-                Bot.Sleep(Core.ExitCombatDelay);
-                Bot.SendPacket("%xt%zm%crafting%1%spellComplete%10%2346%Underworld%");
+                Core.ChainComplete(2346);
                 Bot.Player.Pickup("Scroll of Underworld");
             }
 
@@ -116,9 +113,9 @@ public class VoidPaladin
 
     public void Sacrifice()
     {
-        if(Core.CheckInventory("Void Light of Destiny"))
+        if (Core.CheckInventory("Void Light of Destiny"))
             return;
-            
+
         Core.AddDrop("Void Light of Destiny");
         Core.Logger("Starting [Sacrifice] Quest");
 
@@ -130,9 +127,9 @@ public class VoidPaladin
         Nulgath.FarmTotemofNulgath(1);
         NSOD.VoidAuras(6);
 
-        if(Core.CheckInventory("Blinding Light of Destiny"))
+        if (Core.CheckInventory("Blinding Light of Destiny"))
             Core.ChainComplete(5828);
-        else if(Core.CheckInventory("Ascended Light of Destiny"))
+        else if (Core.CheckInventory("Ascended Light of Destiny"))
             Core.ChainComplete(5829);
         Bot.Player.Pickup("Void Light of Destiny");
     }
@@ -147,7 +144,7 @@ public class VoidPaladin
 
     public void CyberSet()
     {
-        if(Core.CheckInventory(CyberVoidSet, toInv: false))
+        if (Core.CheckInventory(CyberVoidSet, toInv: false))
             return;
 
         Core.AddDrop(CyberVoidSet);
