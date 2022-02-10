@@ -55,7 +55,7 @@
 · Converted all 13 Lords into a Core file (Exelot)  
 · QuestProgression and reliant methods can now detect Questline progression automatically (Exelot)  
 · Made it so QuestProgression and reliant methods only load the QuestData once (Exelot)  
-· New bool method that detects if a quest (that is part of a questline) has been completed before (this will be added to RBot at one point) (Exelot)  
+· New bool method that detects if a quest (that is part of a questline) has been completed before (Exelot)  
 · Updated all story line bots as to fit the updated QuestProgression paramaters (Exelot)  
 · Optimized BaconCat REP (Hao)  
 · Fixed Chaos Militia REP  
