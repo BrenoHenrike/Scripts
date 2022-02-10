@@ -1,4 +1,4 @@
-- Versions
+- ##### Versions
   - [v2.22](#v222)
     - [v2.22.1 - Latest](#v2211)
     - [MAS v1.1](#mas-v11)
@@ -38,6 +38,7 @@
 **Released on Feb 10, 2022 at 00:50 / 12:50 AM (UTC)**  
 · Fixed import path for all 13 LoC bots and REP/RankUpAll  
 · Fixed a int on Ledgermayne  
+[Back to top](#versions)
 
 ### v2.22
 **Released on Feb 09, 2022 at 20:30 / 08:30 PM (UTC)**  
@@ -63,10 +64,12 @@
 · Fixed Blade of Awe  
 · Fixed Relogin function from CoreBots (not to be mistaken for the Auto Relogin from RBot)  
 · Various fixes to excisting 13 Lords bots  
+[Back to top](#versions)
 
 ### MAS v1.1 
 · Updated Atk Combo for Void Highlord (Tato)  
 · Updated Def Combo for Void Highlord (Tato)  
+[Back to top](#versions)
 
 ### v2.21.1
 **Released on Feb 06, 2022 at 12:00 / 12:00 PM (UTC)**  
@@ -74,6 +77,7 @@
 · Fixed typo in Burning Blade of Azebeth  
 · Added bypass packet to DoomVault  
 · Added same bypass packet to ArchPaladin  
+[Back to top](#versions)
 
 ### v2.21
 **Released on Feb 05, 2022 at 16:00 / 04:00 PM (UTC)**  
@@ -114,10 +118,12 @@
 · Moved Hedge Maze to Story/ThroneofDarkness  
 · Fixed 9Khasaanda(Troll)  
 · Fixed ArchPaladin  
+[Back to top](#versions)
 
 ### v2.20.1
 **Released on Feb, 02 2022 at 01:00 / 01:00 AM (UTC)**  
 · Fixed the bot trying to bank your ground rune as part of it's inventory clean  
+[Back to top](#versions)
 
 ### v2.20
 **Released on Feb 01, 2022 at 14:50 / 02:50 PM (UTC)**  
@@ -172,12 +178,14 @@
 · Moved Legion Token bots into their own folder  
 · Moved Frostval Bots into their own folder  
 · Some tiny number fixes and typos  
+[Back to top](#versions)
 
 ### v2.19.1
 **Released on Jan 29, 2022 at 00:00 / 12:00 AM (UTC)**  
 · Fixed LycanREP not joining the right map  
 · Fixed Hedgemaze not grabbing the right amount of mapitems  
 · Fixed DeathKnight buying the AC variant  
+[Back to top](#versions)
   
 ### v2.19
 **Released on Jan 28, 2022 at 20:00 / 08:00 PM (UTC)**  
@@ -201,6 +209,7 @@
 · Removed a dot that breaks things in ArchPaladin (Phoenix)  
 · Numerous fixes for Frostval Berserker and dependencies  
 \* = these classes aren't setup to also do the questlines in order to unlock their rep farm (yet)  
+[Back to top](#versions)
 
 ### v2.18
 **Released on Jan 26, 2022 at 17:05 / 05:05 PM (UTC)**  
@@ -219,10 +228,12 @@
 · Numerous fixes to Head of the Legion Beast  
 · Numerous fixes to Frostval  
 · Changed numerous things in VHL_Combo  
+[Back to top](#versions)
 
 ### v2.17.1
 **Released on Jan 26, 2022 at 10:45 / 10:45 AM (UTC)**  
 · Fixed Kill and Hunt methods for real this time >.>  
+[Back to top](#versions)
 
 ### v2.17
 **Released on Jan 26, 2022 at 10:15 / 10:15 AM (UTC)**  
@@ -233,6 +244,7 @@
 · Some fixes to 9Khasaanda(Horc)  
 · Fixed Kill and Hunt methods  
 · Fixed order of enemies for SevenCircles  
+[Back to top](#versions)
 
 ### v2.16
 **Released on Jan 25, 2022 at 21:30 / 09:30 PM (UTC)**  
@@ -263,6 +275,7 @@
 · Multiple fixes to XansLair  
 · Classes in Other now moved in to own map within Other  
 · Classes code streamlined  
+[Back to top](#versions)
 
 ### v2.15.1
 **Released on Jan 23, 2022 at 20:25 / 08:25 PM (UTC)**  
@@ -270,10 +283,12 @@
 · Added versionchecker to SetOptions (Exelot)  
 · Fixed Operand in _EquipGear, you no longer get logs that you equipped Cape  
 · Fixed new dependencies for Legion Fealty 1 + 2  
+[Back to top](#versions)
 
 ### MAS v1.0  
 **Released on Jan 23, 2022 at 20:25 / 08:25 PM (UTC)**  
 · Added the Master Advanced Skill file, CoreBots will automatically give you the optimal skill combo based on your set farm/solo classes (Breno, Exelot & Tato)  
+[Back to top](#versions)
 
 ### v2.15
 **Released on Jan 23, 2022 at 11:01 / 11:01 AM (UTC)**  
@@ -283,6 +298,7 @@
 · Released Swindles Return Policy (Tato)  
 · Fixed Dependencies of Archfiend.cs  
 · Fixed Join, which was causing issues for BludrutBrawl  
+[Back to top](#versions)
 
 ### v2.14
 **Released on Jan 22, 2022 at 12:50 / 12:50 PM (UTC)**  
@@ -299,6 +315,7 @@
 · Fix for BestGear to now cross reference itemcatagories on damage stacking  
 · Integrated JoinTercess into Join  
 · Fixed dependencies for Hollowborn Paladin  
+[Back to top](#versions)
 
 ### v2.13
 **Released on Jan 19, 2022 at 17:10 / 05:10 PM (UTC)**  
@@ -315,6 +332,7 @@
 · Fixed quest turning in 6 times instead of 5 in NSOD Master script.  
 · Fixed ENNH script not unlocking MineCrafting for you.  
 · Fixed rankUpClass trying to level you to level 100 in BloodSorceress and Necromancer script.  
+[Back to top](#versions)
 
 ### v2.12.3
 **Released on Jan 18, 2022 at 15:00 / 03:00 PM (UTC)**  
@@ -323,14 +341,17 @@
 · Fixed typos on WillPowerExtraction  
 · Removed multiple redundancies  
 · Updated VHL files to latest Nulgath Faction changes (Tato)  
+[Back to top](#versions)
 
 ### v2.12.2
 **Released on Jan 17, 2022 at 22:50 / 10:50 PM (UTC)**  
 · Made Astral Ephemerite Essence farm in a private room  
+[Back to top](#versions)
 
 ### v2.12.1
 **Released on Jan 17, 2022 at 22:25 / 10:25 PM (UTC)**  
 · Fixed Void Auras  
+[Back to top](#versions)
 
 ### v2.12
 **Released on Jan 17, 2022 at 21:55 / 09:55 PM (UTC)**  
@@ -345,10 +366,12 @@
 · Fixed rankUpClass paramater on IceStormArena  
 · Added quantity check on CheckInventory[]  
 · Edit to MineCrafting so it accepts quantities >1  
+[Back to top](#versions)
 
 ### v2.11
 **Released on Jan 15, 2022 at 17:41 / 05:41 PM (UTC)**  
 · Fixed map joins  
+[Back to top](#versions)
 
 ### v2.10
 **Released on Jan 15, 2022 at 16:35 / 04:35 PM (UTC)**  
@@ -366,20 +389,24 @@
 · Story bot for Dwarfhold now does the complete saga instead of stopping before /roc  
 · Added bot to get Blood Sorceress  
 · Fixed typos here and there  
+[Back to top](#versions)
 
 ### v2.9
 **Released on Jan 07, 2022 at 22:45 / 10:45 PM (UTC)**  
 · Fixed issues with TowerOfDoom; Fixed a typo in IGotYourBackAndYourTop; Fixed Logging issue with Hunt  
+[Back to top](#versions)
 
 ### v2.8
 **Released on Jan 07, 2022 at 14:25 / 02:25 PM (UTC)**  
 · Alchemy methods replaced and fixed; Gold farming will not farm till 100m anymore.  
+[Back to top](#versions)
 
 ### v2.7
 **Released on Jan 07, 2022 at 00:45 / 12:45 AM (UTC)**  
 · ArtixPointe quests added;  
 · Hollowborn Paladin added;  
 · Ascended Drakath Gear quest fixed.  
+[Back to top](#versions)
 
 ### v2.6
 **Released on Jan 05, 2022 at 00:30 / 12:30 AM (UTC)**  
@@ -388,28 +415,36 @@
 · Added way to send client packet multiple times;  
 · Fixed method that was messing BLoD and SDKA;  
 · Typo fixes.  
+[Back to top](#versions)
 
 ### v2.5
 **Released on Jan 02, 2022 at 22:00 / 10:00 PM (UTC)**  
 · Possible fix to all bugs in BLoD and SDKA scripts; Frostvale history added.  
+[Back to top](#versions)
 
 ### v2.4
 **Released on Dec 24, 2021 at 01:28 / 01:28 AM (UTC)**  
 · CoreBots no longer has it's skill timer ([need RBot 3.6.2 or more recent](https://github.com/BrenoHenrike/RBot/releases)) and some small fixes.  
+[Back to top](#versions)
 
 ### v2.3
 **Released on Dec 20, 2021 at 17:20 / 05:20 PM (UTC)**  
 · Added an extra check in ForItem methods so it doesn't kill monsters an extra time.  
+[Back to top](#versions)
+
 ### v2.2
 **Released on Dec 17, 2021 at 21:50 / 09:50 PM (UTC)**  
 · Duplicate includes removed and delay in ChainComplete added to not mess up and spam pakcets.  
+[Back to top](#versions)
 
 ### v2.1
 **Released on Dec 14, 2021 at 13:28 / 01:28 PM (UTC)**  
 · Typos and missing drops.  
+[Back to top](#versions)
 
 ### v2.0
 **Released on Dec 09, 2021 at an undocumented time**  
 · BLoD quests added;  
 · Multiple Nulgath farms added;  
 · Bug fixes that were not included in the previous updates of v1.0.  
+[Back to top](#versions)
