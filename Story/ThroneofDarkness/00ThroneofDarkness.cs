@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
-//cs_include Scripts/Story/ThroneofDarkness/01CastleofBones.cs
-//cs_include Scripts/Story/ThroneofDarkness/02ParadoxPortal.cs
-//cs_include Scripts/Story/ThroneofDarkness/03FlyingBaconCatFortress.cs
-//cs_include Scripts/Story/ThroneofDarkness/04DeathPitArena.cs
-//cs_include Scripts/Story/ThroneofDarkness/05ShiftingPyramid.cs
-//cs_include Scripts/Story/ThroneofDarkness/06FourthDimensionalPyramid.cs
-//cs_include Scripts/Story/ThroneofDarkness/07HedgeMaze.cs
-//cs_include Scripts/Story/ThroneofDarkness/08TowerofMirrors.cs
+//cs_include Scripts/Story/ThroneofDarkness/01Vaden(CastleofBones).cs
+//cs_include Scripts/Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
+//cs_include Scripts/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs
+//cs_include Scripts/Story/ThroneofDarkness/04aPax(DeathPit).cs
+//cs_include Scripts/Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs
+//cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
+//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
+//cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors.cs
 using RBot;
 
 public class CompleteThroneOfDarknessSaga
