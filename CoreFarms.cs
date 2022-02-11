@@ -852,16 +852,13 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
-        if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Arcangrove);
-        else
-            while (FactionRank("Dreadfire") < rank)
-            {
-                Core.EnsureAccept(5697);
-                Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb", 1);
-                Core.EnsureComplete(5697);
-                Core.Logger($"Completed x{i++}");
-            }
+        while (FactionRank("Dreadfire") < rank)
+        {
+            Core.EnsureAccept(5706);
+            Core.HuntMonster("hydra", "Fire Imp", "Brimstone", 7);
+            Core.EnsureComplete(5706);
+            Core.Logger($"Completed x{i++}");
+        }
     }
 
     public void DruidGroveREP(int rank = 10)
