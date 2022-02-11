@@ -1730,15 +1730,6 @@ public class CoreFarms
             }
             Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A") } Left to Farm");
         }
-
-        Core.ToBank("Super-Fan Swag Token A");
-        Core.Logger("Post Farm Cleanup");
-        while (Core.CheckInventory("Super-Fan Swag Token C"))
-            Core.SellItem("Super-Fan Swag Token C", all: true);
-        while (Core.CheckInventory("Super-Fan Swag Token B"))
-            Core.SellItem("Super-Fan Swag Token B", all: true);
-        while (Core.CheckInventory("Super-Fan Swag Token D"))
-            Core.SellItem("Super-Fan Swag Token D", all: true);
     }
 
     public void MembershipDues(MemberShipsIDS faction, int rank = 10)
