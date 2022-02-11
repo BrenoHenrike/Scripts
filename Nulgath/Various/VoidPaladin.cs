@@ -52,7 +52,7 @@ public class VoidPaladin
         if (Core.CheckInventory(ADKRewards))
             return;
         Core.AddDrop(ADKRewards);
-        Core.AddDrop("Scroll of Underworld", "Archmage Ink", "Mystic Shard");
+        Core.AddDrop("Scroll of Underworld", "Archmage Ink", "Mystic Shards");
 
         int i = 1;
         Core.Logger("Starting [A Dark Temptation] Quest");
@@ -71,7 +71,7 @@ public class VoidPaladin
             {
                 if (Core.CheckInventory("Archmage Ink"))
                 {
-                    Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shard", 2, false);
+                    Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 2, false);
                     Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
                 }
                 Core.ChainComplete(2346);
