@@ -84,13 +84,16 @@ public class CoreLegion
 
         int i = 1;
         Core.AddDrop("Dark Token");
+        Core.Logger("Checking Questline: WorldSoul");
+        WorldSoul();
         Core.Logger($"Farming {quant} Dark Tokens");
-        while(!Bot.Inventory.Contains("Dark Token", quant))
+        while (!Bot.Inventory.Contains("Dark Token", quant))
         {
+
             Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6);
             Core.EnsureComplete(6251);
-            while(Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
+            while (Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
                 Core.ChainComplete(6248);
             while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
                 Core.ChainComplete(6249);
@@ -106,16 +109,16 @@ public class CoreLegion
 
         if (!Core.CheckInventory("Legion Round 4 Medal"))
             LegionRound4Medal();
-        if(!Core.CheckInventory("Legion Token", 50))
+        if (!Core.CheckInventory("Legion Token", 50))
             FarmLegionToken(50);
 
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
-        while(!Bot.Inventory.Contains("Diamond Token of Dage", quant))
+        while (!Bot.Inventory.Contains("Diamond Token of Dage", quant))
         {
             Core.EnsureAccept(4743);
-            if(!Core.CheckInventory("Defeated Makai", 25))
+            if (!Core.CheckInventory("Defeated Makai", 25))
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.JoinTercessuinotlim();
@@ -296,7 +299,7 @@ public class CoreLegion
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
             Core.Join("legionarena", ignoreCheck: true);
-            if(Bot.Map.PlayerCount < partySize)
+            if (Bot.Map.PlayerCount < partySize)
             {
                 Bot.Options.PrivateRooms = privateRoomSwitch;
                 return;
@@ -325,7 +328,7 @@ public class CoreLegion
         Core.Logger($"Farming {quant} Legion Tokens");
         Core.Join("dreadrock");
         int i = 1;
-        while(!Core.CheckInventory("Legion Token", quant))
+        while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(4849);
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6);
@@ -333,5 +336,28 @@ public class CoreLegion
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}");
         }
+    }
+
+    public void WorldSoul()
+    {
+        if (!Core.isCompletedBefore(6245))
+        {
+            Core.EnsureAccept(6238);
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Void Cortex");
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Paradox Processor");
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Thermal Vent");
+            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Dwakel Defeated", 6);
+            Core.EnsureComplete(6238);
+        }
+        Core.KillQuest(6239, "worldsoul", "Divine Water Elemental");
+        Core.KillQuest(6240, "worldsoul", "Divine Fire Elemental");
+        Core.KillQuest(6241, "worldsoul", "Skeletal Squatter");
+        Core.MapItemQuest(6241, "worldsoul", 5681, 3);
+        Core.KillQuest(6242, "worldsoul", "Radioactive Hydra");
+        Core.KillQuest(6243, "worldsoul", "Legion Dreadmarch");
+        Core.MapItemQuest(6243, "worldsoul", 5680);
+        Core.KillQuest(6244, "worldsoul", "Legion Dreadmarch");
+        Core.MapItemQuest(6244, "worldsoul", 5682);
+        Core.KillQuest(6245, "worldsoul", "Core Guardian");
     }
 }
