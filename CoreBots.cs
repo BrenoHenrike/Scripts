@@ -85,9 +85,9 @@ public class CoreBots
         Bot.Lite.ReacceptQuest = false;
         Bot.Lite.CharacterSelectScreen = false;
         Bot.Lite.CustomDropsUI = true;
-        //Bot.Lite.Set("openMenu", true);
-        //Bot.Lite.Set("warnDecline", false);
-        //Bot.Lite.Set("disRed", true);
+        //Bot.Lite.Set("dOptions[\"openMenu\"]", true);
+        //Bot.Lite.Set("dOptions[\"warnDecline\"]", false);
+        //Bot.Lite.Set("dOptions[\"disRed\"]", true);
 
         if (changeTo)
         {
@@ -1295,7 +1295,7 @@ public class CoreBots
         if (removeStopHandler)
         {
             Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
-            Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
+            //Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
         }
         Join("battleon");
         if (AntiLag)
