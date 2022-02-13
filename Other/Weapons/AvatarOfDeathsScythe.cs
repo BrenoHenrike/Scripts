@@ -22,7 +22,7 @@ public class AvatarOfDeathsScythe
         Core.AddDrop("Avatar Of Death's Scythe");
         Core.EnsureAccept(4511);
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("celestialrealm", "Underworld Hound", "Energy of Death", 500, false);
+        Core.HuntMonster("lostruins", "Underworld Hound", "Energy of Death", 500, false);
         Core.EnsureComplete(4511);
         Bot.Wait.ForPickup("Avatar Of Death's Scythe");
     }
