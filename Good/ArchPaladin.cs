@@ -63,7 +63,7 @@ public class ArchPaladin
                     "ShadowWalker of Time",
                     "Infinity Knight",
                     "Interstellar Knight",
-                    "Void HighLord",
+                    "Void Highlord",
                     "Dragon of Time",
                     "Timeless Dark Caster",
                     "Frostval Barbarian",
@@ -74,8 +74,8 @@ public class ArchPaladin
                 {
                     if (Core.CheckInventory(Class))
                     {
-                        Bot.Player.EquipItem("Class");
                         Farm.rankUpClass(Class);
+                        Bot.Player.EquipItem(Class);
                         break;
                     }
                 }
