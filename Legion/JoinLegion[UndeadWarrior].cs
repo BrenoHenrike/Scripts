@@ -20,7 +20,7 @@ public class JoinLegion
 
     public void JoinLegionQuests()
     {
-        if (Bot.Quests.IsUnlocked(3043))
+        if (Core.isCompletedBefore(793))
             return;
 
         Core.BuyItem("underworld", 215, "Undead Warrior");
@@ -35,10 +35,15 @@ public class JoinLegion
         // Undead Champion Initiation
         Core.KillQuest(789, "greenguardwest", "Black Knight");
         // Mourn the Soldiers
-        Core.KillQuest(790, "dwarfhold", "Chaos Drow");
-        Core.KillQuest(790, "swordhavenundead", "Skeletal Soldier");
-        Core.KillQuest(790, "pirates", "Fishman Soldier");
-        Core.KillQuest(790, "willowcreek", "Dwakel Soldier");
+        if (!Core.QuestProgression(790))
+        {
+            Core.EnsureAccept(790);
+            Core.HuntMonster("dwarfhold", "Chaos Drow", "Chaos Drow slain");
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Skeletal Soldier slain");
+            Core.HuntMonster("pirates", "Fishman Soldier", "Fishman Soldier slain");
+            Core.HuntMonster("willowcreek", "Dwakel Soldier", "Dwarkel Soldier slain");
+            Core.EnsureComplete(790);
+        }
         // Understanding Undead Champions
         Core.KillQuest(791, "battleunderb", "Undead Champion");
         // Player vs Power
@@ -46,7 +51,7 @@ public class JoinLegion
         {
             if (!Core.CheckInventory("Combat Trophy", 200))
                 Farm.BludrutBrawlBoss(quant: 200);
-            Core.ChainComplete(792);
+            Core.ChainQuest(792);
         }
         // Fail to the King
         Core.KillQuest(793, "prison", "King Alteon's Knight");
