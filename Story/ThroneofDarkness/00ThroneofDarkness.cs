@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Story/ThroneofDarkness/01Vaden(CastleofBones).cs
 //cs_include Scripts/Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
 //cs_include Scripts/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs
@@ -17,15 +16,14 @@ public class CompleteThroneOfDarknessSaga
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
     public CastleofBones s01 = new CastleofBones();
-    public ParadoxPortal s02 = new ParadoxPortal();
-    public FlyingBaconCatFortress s03 = new FlyingBaconCatFortress();
-    public DeathPitArena s04 = new DeathPitArena();
-    public ShiftingPyramid s05 = new ShiftingPyramid();
-    public FourthDimensionalPyramid s06 = new FourthDimensionalPyramid();
-    public HedgeMaze s07 = new HedgeMaze();
-    public TowerofMirrors s08 = new TowerofMirrors();
+    public ParadoxPortal s02a = new ParadoxPortal();
+    public FlyingBaconCatFortress s03a = new FlyingBaconCatFortress();
+    public DeathPitArena s04a = new DeathPitArena();
+    public ShiftingPyramid s05a = new ShiftingPyramid();
+    public FourthDimensionalPyramid s05b = new FourthDimensionalPyramid();
+    public HedgeMaze s06a = new HedgeMaze();
+    public TowerofMirrors s06b = new TowerofMirrors();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -41,18 +39,18 @@ public class CompleteThroneOfDarknessSaga
         Core.Logger("Castle of Bones");
         s01.CastleofBonesSaga();
         Core.Logger("Paradox Portal");
-        s02.ParadoxPortalSaga();
+        s02a.ParadoxPortalSaga();
         Core.Logger("Flying BaconCat Fortress");
-        s03.FlyingBaconCatFortressSaga();
+        s03a.FlyingBaconCatFortressSaga();
         Core.Logger("Death Pi tArena");
-        s04.DeathPitArenaSaga();
+        s04a.DeathPitArenaSaga();
         Core.Logger("Shifting Pyramid");
-        s05.ShiftingPyramidSaga();
+        s05a.ShiftingPyramidSaga();
         Core.Logger("Fourth Dimensional Pyramid");
-        s06.FourthDimensionalPyramidSaga();
+        s05b.FourthDimensionalPyramidSaga();
         Core.Logger("HedgeMaze");
-        s07.HedgeMaze_Questline();
+        s06a.HedgeMaze_Questline();
         Core.Logger("Tower of Mirrors");
-        s08.TowerofMirrorsSaga();
+        s06b.TowerofMirrorsSaga();
     }
 }

@@ -13,7 +13,6 @@ public class ArchPaladin
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreBLOD BLOD = new CoreBLOD();
-    public CoreDailys Daily = new CoreDailys();
     public Paladin Pal = new Paladin();
     public XansLair Xan = new XansLair();
 
