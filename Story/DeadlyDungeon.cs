@@ -17,6 +17,9 @@ public class DeadlyDungeon
 
     public void DeadlyDungeonQuest_Line()
     {
+        if (Core.isCompletedBefore(3699))
+            return;
+
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
         else

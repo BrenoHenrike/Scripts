@@ -51,8 +51,7 @@ public class SevenCircles
         if (Core.isCompletedBefore(7990))
             return;
 
-        if (!Bot.Quests.IsUnlocked(7979))
-            Circles();
+        Circles();
 
         Core.AddDrop("Essence of Treachery", "Essence of Violence", "Souls of Heresy", "Essence of Wrath");
 

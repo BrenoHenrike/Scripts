@@ -17,6 +17,9 @@ public class ShiftingPyramid
 
     public void ShiftingPyramidSaga()
     {
+        if (Core.isCompletedBefore(5187))
+            return;
+
         // Hunt for the Infinity Codex
         Core.KillQuest(5166, "whitehole", "Vortex Mage");
         // Sacrific and Survival

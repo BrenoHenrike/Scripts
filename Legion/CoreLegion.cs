@@ -87,9 +87,9 @@ public class CoreLegion
         Core.Logger("Checking Questline: WorldSoul");
         WorldSoul();
         Core.Logger($"Farming {quant} Dark Tokens");
+        Core.EquipClass(ClassType.Farm);
         while (!Bot.Inventory.Contains("Dark Token", quant))
         {
-
             Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6);
             Core.EnsureComplete(6251);
@@ -258,6 +258,7 @@ public class CoreLegion
             Core.Logger($"Completed x{i++}");
         }
     }
+
     public void LTShogunParagon(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant)
@@ -292,18 +293,12 @@ public class CoreLegion
             return;
 
         Core.AddDrop("Legion Token");
-        bool privateRoomSwitch = Bot.Options.PrivateRooms;
-        if (Bot.Options.PrivateRooms)
-            Bot.Options.PrivateRooms = false;
-        Core.Join("legionarena");
+        Core.Join("legionarena", publicRoom: true);
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
-            Core.Join("legionarena", ignoreCheck: true);
+            Core.Join("legionarena", ignoreCheck: true, publicRoom: true);
             if (Bot.Map.PlayerCount < partySize)
-            {
-                Bot.Options.PrivateRooms = privateRoomSwitch;
                 return;
-            }
         }
         Core.EquipClass(ClassType.Solo);
         Bot.Player.Jump("Boss", "Left");

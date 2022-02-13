@@ -17,6 +17,9 @@ public class FlyingBaconCatFortress
 
     public void FlyingBaconCatFortressSaga()
     {
+        if (Core.isCompletedBefore(5108))
+            return;
+
         // How Rude!
         Core.MapItemQuest(5087, "baconcat", 4466, 7);
         // Bar Fight!

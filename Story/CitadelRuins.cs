@@ -75,6 +75,9 @@ public class CitadelRuins
 
     public void PolishsQuestsCitadelRuins()
     {
+        if (Core.isCompletedBefore(6182))
+            return;
+
         Core.AddDrop("Mage's Gratitude");
         // Map: "citadelruins";
         //get ready to amplify

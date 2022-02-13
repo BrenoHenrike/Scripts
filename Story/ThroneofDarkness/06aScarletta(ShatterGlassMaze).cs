@@ -1,8 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
-
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
 
 using RBot;
 
@@ -11,8 +7,6 @@ public class HedgeMaze
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -25,6 +19,9 @@ public class HedgeMaze
 
     public void HedgeMaze_Questline()
     {
+        if (Core.isCompletedBefore(5313))
+            return;
+
         Core.MapItemQuest(QuestID: 5298, MapName: "hedgemaze", MapItemID: 4678);
         Core.KillQuest(QuestID: 5298, MapName: "hedgemaze", MonsterName: "Knight's Reflection");
         Core.MapItemQuest(QuestID: 5299, MapName: "hedgemaze", MapItemID: 4679);
@@ -43,6 +40,5 @@ public class HedgeMaze
         Core.MapItemQuest(QuestID: 5311, MapName: "hedgemaze", MapItemID: 4686);
         Core.KillQuest(QuestID: 5312, MapName: "hedgemaze", MonsterName: "Shattered Knight");
         Core.KillQuest(QuestID: 5313, MapName: "hedgemaze", MonsterName: "Resurrected Minotaur");
-        Core.Join("party");
     }
 }

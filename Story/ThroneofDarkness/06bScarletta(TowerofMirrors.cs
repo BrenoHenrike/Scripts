@@ -1,5 +1,5 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Story/ThroneofDarkness/07HedgeMaze.cs
+//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
 using RBot;
 public class TowerofMirrors
 {
@@ -19,8 +19,10 @@ public class TowerofMirrors
 
     public void TowerofMirrorsSaga()
     {
-        if (!Bot.Quests.IsUnlocked(5314))
-            HM.HedgeMaze_Questline();
+        if (Core.isCompletedBefore(5332))
+            return;
+
+        HM.HedgeMaze_Questline();
 
         // Drink Me
         Core.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle|Glass Serpent", "Glass Serpent" });

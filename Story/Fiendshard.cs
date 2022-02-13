@@ -20,7 +20,6 @@ public class Fiendshard_Story
 
     public void Fiendshard_Questline()
     {
-
         if (Core.isCompletedBefore(7898))
             return;
 

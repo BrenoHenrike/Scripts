@@ -17,6 +17,9 @@ public class ParadoxPortal
 
     public void ParadoxPortalSaga()
     {
+        if (Core.isCompletedBefore(5050))
+            return;
+
         // Through the Portal!
         Core.KillQuest(5034, "portalmaze", "Time Wraith");
         // Red Alert
