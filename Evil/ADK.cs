@@ -1,19 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-
 using RBot;
-using System.Linq;
 
 public class ArchDoomKnight
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
     public Core13LoC LOC => new Core13LoC();
+
     public static string[] Q1items = {
         "Arch DoomKnight Cape",
         "Undead Energy",

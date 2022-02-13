@@ -1,8 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
-//cs_include Scripts/Story/ThroneofDarkness/07HedgeMaze.cs
-//cs_include Scripts/Story/ThroneofDarkness/08TowerofMirrors.cs
+//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
+//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(TowerofMirrors).cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 using RBot;
 
@@ -12,7 +11,6 @@ public class ScarletSorceress
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm => new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
     public TowerofMirrors TOM = new TowerofMirrors();
     public BloodSorceress BS = new BloodSorceress();
 

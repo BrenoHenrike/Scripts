@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 
 using RBot;
@@ -11,8 +10,8 @@ public class CitadelRuins
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
     public CoreNulgath Nulgath = new CoreNulgath();
+
     public string[] rewards = { "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath", "Mage's Gratitude" };
 
     public void ScriptMain(ScriptInterface bot)

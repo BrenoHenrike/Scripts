@@ -1,11 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
-
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
 using RBot;
-using System.Linq;
 
 public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
 {
@@ -61,7 +56,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
     {
         string[] FocussedArray;
         if (GetNONac) FocussedArray = WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
-        else  FocussedArray = WOOOOODropsAC;
+        else FocussedArray = WOOOOODropsAC;
         while (!Core.CheckInventory(FocussedArray))
         {
             Core.EnsureAccept(8497);
