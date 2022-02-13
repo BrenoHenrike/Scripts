@@ -1,3 +1,4 @@
+using System.Runtime.Versioning;
 using RBot;
 
 public class Core13LoC
@@ -33,14 +34,9 @@ public class Core13LoC
 
     public void Prologue()
     {
-        Core.BuyItem(Bot.Map.Name, 944, "Ascended Avatar's Blade");
-        if (Core.CheckInventory("Ascended Avatar's Blade", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Ascended Avatar's Bladed");
-            Core.Logger("Chapter: \"Prologue\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(6219))
             return;
-        }
 
         //Map: PortalUndead
         if (!Core.QuestProgression(183))                                                  // Enter the gates
@@ -73,23 +69,13 @@ public class Core13LoC
         Core.MapItemQuest(6217, "chaoscrypt", 5662);                                                                // Enter the Crypt
         Core.KillQuest(6218, "chaoscrypt", "Chaorrupted Knight");                                                   // Rescue the Knights
         Core.KillQuest(6219, "forestchaos", new[] { "Chaorrupted Wolf", "Chaorrupted Bear" });  // Forest of Chaos
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 944, "Ascended Avatar's Blade");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Ascended Avatar's Bladed");
     }
 
     public void Escherion()
     {
-        Core.BuyItem(Bot.Map.Name, 946, "Phoenix Hunter");
-        if (Core.CheckInventory("Phoenix Hunter", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Phoenix Hunter");
-            Core.Logger("Chapter: \"Chaos Lord Escherion\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(272))
             return;
-        }
 
         //Map: Mobius
         Core.KillQuest(245, "mobius", "Chaos Sp-Eye");                                  // Winged Spies
@@ -132,23 +118,13 @@ public class Core13LoC
             Core.KillEscherion();
             Core.EnsureComplete(272);
         }
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 946, "Phoenix Hunter");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Phoenix Hunter");
     }
 
     public void Vath()
     {
-        Core.BuyItem(Bot.Map.Name, 947, "Volcanic Fire Sword");
-        if (Core.CheckInventory("Volcanic Fire Sword", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Volcanic Fire Sword");
-            Core.Logger("Chapter: \"Chaos Lord Vath\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(363))
             return;
-        }
 
         //Map: Pines
         Core.MapItemQuest(319, "tavern", 56, 7);                                                                            // Adorable Sisters
@@ -213,23 +189,13 @@ public class Core13LoC
         Core.MapItemQuest(362, "roc", 62);                                                                                  // Defeat Rock Roc
         //Map: Stalagbite
         Core.MapItemQuest(363, "stalagbite", 63);                                                       // Facing Vath
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 947, "Volcanic Fire Sword");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Volcanic Fire Sword");
     }
 
     public void Kitsune()
     {
-        Core.BuyItem(Bot.Map.Name, 948, "Amethyst Mace");
-        if (Core.CheckInventory("Amethyst Mace", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Amethyst Mace");
-            Core.Logger("Chapter: \"Chaos Lord Kitsune\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(488))
             return;
-        }
 
         //Turtle Power
         Core.KillQuest(380, "yokaiboat", "Kappa Ninja");
@@ -341,23 +307,13 @@ public class Core13LoC
 
         //Defeat Kitsune
         Core.KillQuest(488, "kitsune", "kitsune");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 948, "Amethyst Mace");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Amethyst Mace");
     }
 
     public void Wolfwing()
     {
-        Core.BuyItem(Bot.Map.Name, 949, "Sapphire Mace");
-        if (Core.CheckInventory("Sapphire Mace", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Sapphire Mace");
-            Core.Logger("Chapter: \"Chaos Lord Wolfwing\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(598))
             return;
-        }
 
         //Map: DarkoviaGrave
         Core.MapItemQuest(494, "darkoviagrave", 97);                                                    // Grave Mission
@@ -416,23 +372,12 @@ public class Core13LoC
             Core.EnsureComplete(597);
         else
             Core.EnsureComplete(598);
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 949, "Sapphire Mace");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Sapphire Mace");
     }
 
     public void Kimberly()
     {
-        Core.BuyItem(Bot.Map.Name, 950, "Rockstar");
-        if (Core.CheckInventory("Rockstar", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Rockstar");
-            Core.Logger("Chapter: \"Chaos Lord Kimberly\" already complete. Skipping");
+        if (Core.isCompletedBefore(710))
             return;
-        }
 
         //Stairway to Heaven
         Core.KillQuest(648, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
@@ -453,7 +398,7 @@ public class Core13LoC
         Core.KillQuest(659, "beehive", "Killer Queen Bee");
 
         //Satisfaction
-        Core.KillQuest(660, "beehive", "Lord Ovthedance");
+        Core.KillQuest(660, "beehive", "Lord Ovthedance", AutoCompleteQuest: false);
 
         //Dance with Great Godfather of Souls
         if (!Core.QuestProgression(661))
@@ -464,36 +409,41 @@ public class Core13LoC
         }
 
         //Bad Moon Rising
-        Core.KillQuest(675, "orchestra", "Mozard|Pachelbel's Cannon");
+        Core.KillQuest(675, "orchestra", "Mozard");
 
         //Burning Down The House
-        Core.KillQuest(676, "orchestra", "Pachelbel's Cannon");
+        if (!Core.QuestProgression(676))
+        {
+            Core.EnsureAccept(676);
+            Core.KillMonster("orchestra", "R4", "Down", "*", "Cannon Powder");
+            Core.EnsureComplete(676);
+        }
 
         //Superstition
         Core.KillQuest(677, "orchestra", "Mozard");
 
         //Soul Man
-        Core.KillQuest(678, "orchestra", "Faust");
+        Core.KillQuest(678, "orchestra", "Faust", AutoCompleteQuest: false);
+
+        //Great gig in the Sky
+        Core.KillQuest(4827, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
+
+
+        //Mythsong War Cutscene
+        Core.ChainQuest(707, AutoCompleteQuest: false);
+
+        //Pony Gary Yellow
+        Core.KillQuest(709, "palooza", "Pony Gary Yellow", AutoCompleteQuest: false);
 
         //Kimberly
-        Core.KillQuest(710, "palooza", "Kimberly");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 950, "Rockstar");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Rockstar");
+        Core.KillQuest(710, "palooza", "Kimberly", AutoCompleteQuest: false);
     }
 
     public void Ledgermayne()
     {
-        Core.BuyItem(Bot.Map.Name, 951, "Invoker Mask");
-        if (Core.CheckInventory("Invoker Mask", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Invoker Mask");
-            Core.Logger("Chapter: \"Chaos Lord Ledgermayne\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(847))
             return;
-        }
 
         //Observing the Observatory
         Core.MapItemQuest(805, "arcangrove", 139);
@@ -547,9 +497,16 @@ public class Core13LoC
         Core.KillQuest(828, "natatorium", "Merdraconian");
 
         //Synchronized Slaying
-        Core.KillQuest(829, "arcangrove", "Seed Spitter|Gorillaphant");
-        Core.KillQuest(829, "cloister", new[] { "Acornent", "Karasu", "Wendigo" });
-        Core.KillQuest(829, "mudluk", "Swamp Frogdrake|Swamp Lurker");
+        if (!Core.QuestProgression(829))
+        {
+            Core.EnsureAccept(829);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Brain Coral", 5);
+            Core.HuntMonster("cloister", "Acornent", "Staghorns", 4);
+            Core.HuntMonster("cloister", "Karasu", "Sea Fan", 3);
+            Core.HuntMonster("cloister", "Wendigo", "Sea Whip");
+            Core.HuntMonster("mudluk", "Swamp Frogdrake|Swamp Lurker", "Anemones", 6);
+            Core.EnsureComplete(829);
+        }
 
         //The Deep End
         Core.KillQuest(830, "natatorium", "Nessie");
@@ -558,20 +515,40 @@ public class Core13LoC
         Core.MapItemQuest(831, "gilead", 146);
 
         //The Root of Elementals
-        Core.KillQuest(832, "gilead", "Earth Elemental");
-        Core.KillQuest(832, "arcangrove", "Seed Spitter");
+        if (!Core.QuestProgression(832))
+        {
+            Core.EnsureAccept(832);
+            Core.HuntMonster("gilead", "Earth Elemental", "Dregs Essence", 5);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Spitter Spirit", 4);
+            Core.EnsureComplete(832);
+        }
 
         //Eupotamic Elementals
-        Core.KillQuest(833, "gilead", "Water Elemental");
-        Core.KillQuest(833, "natatorium", "Merdraconian");
+        if (!Core.QuestProgression(833))
+        {
+            Core.EnsureAccept(833);
+            Core.HuntMonster("gilead", "Water Elemental", "Aqueous Essence", 5);
+            Core.HuntMonster("natatorium", "Merdraconian", "MerCore", 6);
+            Core.EnsureComplete(833);
+        }
 
         //Breaking Wind Elementals
-        Core.KillQuest(834, "gilead", "Wind Elemental");
-        Core.KillQuest(834, "cloister", "Karasu");
+        if (!Core.QuestProgression(834))
+        {
+            Core.EnsureAccept(834);
+            Core.HuntMonster("gilead", "Wind Elemental", "Welkin Essence", 5);
+            Core.HuntMonster("cloister", "Karasu", "Karasu Soul", 8);
+            Core.EnsureComplete(834);
+        }
 
         //Fight Fire With Fire Salamanders
-        Core.KillQuest(835, "gilead", "Fire Elemental");
-        Core.KillQuest(835, "mudluk", "Swamp Frogdrake");
+        if (!Core.QuestProgression(835))
+        {
+            Core.EnsureAccept(835);
+            Core.HuntMonster("gilead", "Fire Elemental", "Pyre Essence", 5);
+            Core.HuntMonster("mudluk", "Swamp Frogdrake", "Fire Salamander", 5);
+            Core.EnsureComplete(835);
+        }
 
         //Guardian of the Gilead Wrap
         Core.KillQuest(836, "gilead", "Mana Elemental");
@@ -598,32 +575,28 @@ public class Core13LoC
         Core.KillQuest(844, "elemental", "Mana Falcon");
 
         //Big, bad, and Baddest Bosses
-        Core.KillQuest(845, "cloister", "Wendigo");
-        Core.KillQuest(845, "mudluk", "Tiger Leech");
-        Core.KillQuest(845, "natatorium", "Nessie");
-        Core.KillQuest(845, "gilead", "Mana Elemental");
-        Core.KillQuest(846, "mafic", "Mafic Dragon");
+        if (!Core.QuestProgression(845))
+        {
+            Core.EnsureAccept(845);
+            Core.HuntMonster("mafic", "Mafic Dragon", "Astral Orb of Mafic");
+            Core.HuntMonster("cloister", "Wendigo", "Astral Orb of the Cloister");
+            Core.HuntMonster("mudluk", "Tiger Leech", "Astral Orb of Mudluk");
+            Core.HuntMonster("natatorium", "Nessie", "Astral Orb of Natatorium");
+            Core.HuntMonster("gilead", "Mana Elemental", "Astral Orb of Gilead");
+            Core.EnsureComplete(845);
+        }
         //The Great Mana Golem
         Core.KillQuest(846, "elemental", "Mana Golem");
         //Chaos Lord Ledgermayne
         Core.KillQuest(847, "ledgermayne", "Ledgermayne");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 951, "Invoker Mask");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Invoker Mask");
     }
+
 
     public void Tibicenas()
     {
-        Core.BuyItem(Bot.Map.Name, 952, "Angelic Lightning");
-        if (Core.CheckInventory("Angelic Lightning", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Angelic Lightning");
-            Core.Logger("Chapter: \"Chaos Lord Tibicenas\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(1005))
             return;
-        }
 
         //Sandport and Starboard
         Core.MapItemQuest(930, "sandport", 251);
@@ -638,7 +611,13 @@ public class Core13LoC
         Core.KillQuest(933, "sandport", "Tomb Robber");
 
         //Sell-Sword Sell-Outs
-        Core.KillQuest(934, "sandport", new[] { "Horc Sell-Sword", "Horc Sell-Sword" });
+        if (!Core.QuestProgression(934))
+        {
+            Core.EnsureAccept(934);
+            Core.KillMonster("sandport", "r6", "Right", "2153", "Horc Sell-Swords Defeated", 1);
+            Core.KillMonster("sandport", "r5", "Right", "536", "Horc Sell-Swords Defeated", 3);
+            Core.EnsureComplete(934);
+        }
 
         //Sacred Scarabs
         Core.KillQuest(967, "pyramid", "Golden Scarab");
@@ -674,7 +653,15 @@ public class Core13LoC
         Core.KillQuest(977, "wanders", "Lotus Spider");
 
         //I Dream Of...
-        Core.KillQuest(978, "wanders", "Sek-Duat");
+        if (!Core.QuestProgression(978))
+        {
+            Core.EnsureAccept(978);
+            Core.Join("wanders", "Boss", "Left");
+            Bot.Sleep(1500);
+            Bot.Player.UseSkill(0);
+            Core.KillMonster("wanders", "Boss", "Left", "Sek-Duat", "Sek-Duat Defeated");
+            Core.EnsureComplete(978);
+        }
 
         //Sandsational Castle
         Core.MapItemQuest(995, "sandcastle", 361);
@@ -709,26 +696,17 @@ public class Core13LoC
         //Chaos Lord Tibicenas
         Core.KillQuest(1005, "djinn", "Tibicenas");
 
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 952, "Angelic Lightning");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Angelic Lightning");
-
     }
 
     public void KhasaandaHorc(bool bypassCheck = false)
     {
         if (!bypassCheck)
         {
-            Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
-            if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
-            {
-                Bot.Sleep(Core.ActionDelay);
-                Core.ToBank("Elite Phoenix Bow");
-                Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
+            if (Core.isCompletedBefore(1473))
                 return;
-            }
         }
+
+
 
         //Troll Stink!
         if (!Core.QuestProgression(1232))
@@ -740,8 +718,13 @@ public class Core13LoC
         }
 
         //It Not Time Yet
-        Core.KillQuest(1233, "crossroads", "Lemurphant");
-        Core.KillQuest(1233, "crossroads", "Koalion");
+        if (!Core.QuestProgression(1233))
+        {
+            Core.EnsureAccept(1233);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Stones", 5);
+            Core.HuntMonster("crossroads", "Koalion", "Golden Down-fur", 5);
+            Core.EnsureComplete(1233);
+        }
 
         //Mountain Protection
         if (!Core.QuestProgression(1234))
@@ -767,15 +750,28 @@ public class Core13LoC
         Core.ChainQuest(1236);
 
         //Be Horc Inside
-        Core.KillQuest(1237, "crossroads", new[] { "Lemurphant", "Koalion", "Koalion" });
-        Core.MapItemQuest(1237, "crossroads", 524, 5);
-        Core.MapItemQuest(1237, "crossroads", 522, 10);
+        if (!Core.QuestProgression(1237))
+        {
+            Core.EnsureAccept(1237);
+            Core.HuntMonster("crossroads", "Koalion", "Koalion Claw", 5);
+            Core.HuntMonster("crossroads", "Koalion", "Skin of the Mountain", 10);
+            Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Tusks", 5);
+            Core.MapItemQuest(1237, "crossroads", 524, 5);
+            Core.MapItemQuest(1237, "crossroads", 522, 10);
+            Core.EnsureComplete(1237);
+        }
 
         //She Who Answers 2 - cutscene
+        //if(!Core.QuestProgression(1241))
+        //{
         Core.ChainQuest(1241);
+        //}
 
         //Chaos Enrages the Horcs
+        // if(!Core.QuestProgression(1273))
+        //{
         Core.ChainQuest(1273);
+        //}
 
         //Into, Under the Mountain
         Core.MapItemQuest(1280, "ravinetemple", 553);
@@ -800,7 +796,13 @@ public class Core13LoC
         Core.MapItemQuest(1375, "alliance", 680);
 
         //Good and Evil Not Always Right
-        Core.KillQuest(1376, "alliance", new[] { "Good Soldier", "Evil Soldier" });
+        if (!Core.QuestProgression(1376))
+        {
+            Core.EnsureAccept(1376);
+            Core.HuntMonster("alliance", "Good Soldier", "Good Soldier Vanquished", 10);
+            Core.HuntMonster("alliance", "Evil Soldier", "Evil Soldier Vanquished", 10);
+            Core.EnsureComplete(1376);
+        }
 
         //Trapping Savage Soldiers
         Core.MapItemQuest(1377, "alliance", 675, 10);
@@ -812,7 +814,14 @@ public class Core13LoC
         Core.KillQuest(1379, "alliance", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
 
         //Alliance Subdued
-        Core.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" });
+        //Core.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" });
+        if (!Core.QuestProgression(1380))
+        {
+            Core.EnsureAccept(1380);
+            Core.HuntMonster("alliance", "General Cynari", "Cynari Defeated!");
+            Core.HuntMonster("alliance", "General Tibias", "Tibias Defeated!");
+            Core.EnsureComplete(1380);
+        }
 
         //Cleanse the Chaorruption
         Core.KillQuest(1424, "ancienttemple", "Chaotic Vulture");
@@ -853,38 +862,39 @@ public class Core13LoC
         Core.MapItemQuest(1469, "dreamnexus", 737);
 
         //Secure a Route Home
-        Core.KillQuest(1470, "dreamnexus", new[] { "Dark Wyvern", "Dark Wyvern", "Aether Serpent", "Aether Serpent" });
+        if (!Core.QuestProgression(1470))
+        {
+            Core.EnsureAccept(1470);
+            Core.HuntMonster("dreamnexus", "Dark Wyvern", "Wyvern Scales", 5);
+            Core.HuntMonster("dreamnexus", "Dark Wyvern", "Wyvern Claws", 5);
+            Core.HuntMonster("dreamnexus", "Aether Serpent", "Serpent Fangs", 5);
+            Core.HuntMonster("dreamnexus", "Aether Serpent", "Serpent Hair", 5);
+            Core.EnsureComplete(1470);
+        }
 
         //DreamDancers' Orbs
         Core.MapItemQuest(1471, "dreamnexus", 738, 10);
         Core.MapItemQuest(1471, "dreamnexus", 739, 11);
 
-        //Master the Flames
+        //Master the Flames 
         Core.KillQuest(1472, "dreamnexus", new[] { "Solar Phoenix", "Solar Phoenix" });
+        // if (!Core.QuestProgression(1472))
+        // {
+        //     Core.EnsureAccept(1472);
+        // Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Tear", 5);
+        // Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Blood", 5);
+        //     Core.EnsureComplete(1472);
+        // }
 
         //Choose: Khasaanda Confrontation?
         Core.KillQuest(1473, "dreamnexus", "Khasaanda");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Elite Phoenix Bow");
 
     }
 
     public void KhasaandaTroll(bool bypassCheck = false)
     {
-        if (!bypassCheck)
-        {
-            Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
-            if (Core.CheckInventory("Elite Phoenix Bow", toInv: false))
-            {
-                Bot.Sleep(Core.ActionDelay);
-                Core.ToBank("Elite Phoenix Bow");
-                Core.Logger("Chapter: \"Chaos Lord Khasaanda\" complete");
-                return;
-            }
-        }
+        if (Core.isCompletedBefore(1468))
+            return;
 
         //Horc Stink! 
         if (!Core.QuestProgression(1226))
@@ -935,16 +945,21 @@ public class Core13LoC
             Core.MapItemQuest(1231, "crossroads", 524, 5);
         }
 
-        //She Who asks 2 - cutscene
-        // Core.Join("crossroads");
-        // Core.ChainQuest(1240);
-        Core.Join("crossroads");
-        Core.Jump("CutE", "Left");
-        Bot.Sleep(2000);
-        Core.SendPackets("%xt%zm%tryQuestComplete%76051%1240%-1%false%wvz%");
+        //Eclipse - cutscene
+        if (!Core.QuestProgression(1240))
+        {
+            Core.EnsureAccept(1240);
+            Core.Join("crossroads");
+            Bot.Sleep(2000);
+            Core.Join("crossroads");
+            Core.Jump("CutE", "Left");
+            Bot.Sleep(2000);
+            Core.EnsureComplete(1240);
+        }
 
-        //Bloodtusk War
-        Core.KillQuest(1272, "bloodtuskwar", "Chaotic Troll", AutoCompleteQuest: false);
+        //Chaos scars the Trolls
+
+        Core.ChainQuest(1272);
 
         //Guarded Secrets, Hidden Treasures
         Core.MapItemQuest(1274, "ravinetemple", 553);
@@ -958,8 +973,8 @@ public class Core13LoC
         Core.KillQuest(1276, "ravinetemple", "*");
 
         //Too Little, Too Late. Still Needed
-        Core.MapItemQuest(1277, "ravinetemple", 557, 10);
         Core.KillQuest(1277, "ravinetemple", "*");
+        Core.MapItemQuest(1277, "ravinetemple", 557, 10);
         Core.MapItemQuest(1277, "ravinetemple", 557, 10);
 
         //Alliance Defiance
@@ -995,10 +1010,9 @@ public class Core13LoC
         Core.KillQuest(1421, "ancienttemple", "Chaos Troll Spirit|Chaos Horc Spirit");
 
         //Serpents Do No Harm
-        Core.KillQuest(1421, "ancienttemple", "Serpentress");
+        Core.KillQuest(1422, "ancienttemple", "Serpentress");
 
         //Though Nature Bars the Way
-        //Core.MapItemQuest(questid, "Mapname", mapitemid, amount);
         Core.MapItemQuest(1423, "ancienttemple", 707);
 
         //Descent Into Darkness
@@ -1018,13 +1032,21 @@ public class Core13LoC
         Core.KillQuest(1455, "orecavern", "Naga Baas");
 
         //Know the Nexus
-        Core.MapItemQuest(1456, "dreamnexus", 734);
-        Core.MapItemQuest(1456, "dreamnexus", 735);
-        Core.MapItemQuest(1456, "dreamnexus", 736);
-        Core.MapItemQuest(1456, "dreamnexus", 737);
+        Core.MapItemQuest(1464, "dreamnexus", 734);
+        Core.MapItemQuest(1464, "dreamnexus", 735);
+        Core.MapItemQuest(1464, "dreamnexus", 736);
+        Core.MapItemQuest(1464, "dreamnexus", 737);
 
         //Secure a Route Home
-        Core.KillQuest(1465, "dreamnexus", new[] { "Dark Wyvern", "Dark Wyvern", "Aether Serpent", "Aether Serpent" });
+        if (!Core.QuestProgression(1465))
+        {
+            Core.EnsureAccept(1465);
+            Core.HuntMonster("dreamnexus", "Dark Wyvern", "Wyvern Scales", 2);
+            Core.HuntMonster("dreamnexus", "Dark Wyvern", "Wyvern Claws", 2);
+            Core.HuntMonster("dreamnexus", "Aether Serpent", "Serpent Fangs", 2);
+            Core.HuntMonster("dreamnexus", "Aether Serpent", "Serpent Hair", 2);
+            Core.EnsureComplete(1465);
+        }
 
         //DreamDancers' Orbs
         Core.MapItemQuest(1466, "dreamnexus", 738, 10);
@@ -1035,23 +1057,13 @@ public class Core13LoC
 
         //Choose: Khasaanda Confrontation?
         Core.KillQuest(1468, "dreamnexus", "Khasaanda");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 308, "Elite Phoenix Bow");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Elite Phoenix Bow");
     }
 
     public void Iadoa()
     {
-        Core.BuyItem(Bot.Map.Name, 989, "Ruler Of The Deep");
-        if (Core.CheckInventory("Ruler Of The Deep", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Ruler Of The Deep");
-            Core.Logger("Chapter: \"Chaos Lord Iadoa\" already complete. Skipping");
+
+        if (Core.isCompletedBefore(2519))
             return;
-        }
 
         //Time to Learn the Truth
         Core.MapItemQuest(2239, "thespan", 1358);
@@ -1065,31 +1077,58 @@ public class Core13LoC
         Core.KillQuest(2240, "timelibrary", new[] { "Sneak", "Tog", "Shadowscythe" });
 
         //Adventures and Quests
-        Core.MapItemQuest(2241, "timelibrary", 1365, 3);
-        Core.KillQuest(2241, "timelibrary", new[] { "Moglin Ghost|Undead Knight", "Moglin Ghost|Undead Knight" });
+        if (!Core.QuestProgression(2241))
+        {
+            Core.EnsureAccept(2241);
+            Core.HuntMonster("timelibrary", "Moglin Ghost", "Necromancy in AQ Knowledge");
+            Core.HuntMonster("timelibrary", "Undead Knight", "Tales of Planet-Peril Page", 6);
+            Core.MapItemQuest(2241, "timelibrary", 1365, 3);
+        }
 
         //A Fable of Dragons
-        Core.MapItemQuest(2242, "timelibrary", 1366, 2);
-        Core.KillQuest(2242, "timelibrary", new[] { "Ninja|Tog", "Ninja|Tog" });
+        if (!Core.QuestProgression(2242))
+        {
+            Core.EnsureAccept(2242);
+            Core.HuntMonster("timelibrary", "Tog", "Elemental Orb Knowledge", 8);
+            Core.HuntMonster("timelibrary", "Tog", "\"Draconic Prophecy\" Page", 6);
+            Core.MapItemQuest(2242, "timelibrary", 1366, 2);
+        }
 
         //Mechas and Quests
-        Core.MapItemQuest(2243, "timelibrary", 1367);
-        Core.KillQuest(2243, "timelibrary", new[] { "Shadowscythe|Training Globe", "Shadowscythe|Training Globe" });
+        if (!Core.QuestProgression(2243))
+        {
+            Core.EnsureAccept(2243);
+            Core.HuntMonster("timelibrary", "Shadowscythe", "Shadowscythe Combat Strategy", 7);
+            Core.HuntMonster("timelibrary", "Training Globe", "Galactic Hypertron Engines: A Primer");
+            Core.MapItemQuest(2243, "timelibrary", 1367);
+        }
 
         //After the Chaos
-        Core.MapItemQuest(2244, "timelibrary", 1368);
-        Core.KillQuest(2244, "timelibrary", new[] { "Queen's Knight", "Queen's Knight", "Queen's Knight" });
+        Core.KillQuest(2244, "timelibrary", new[] { "Queen's Lieutenant", "Queen's Recruit", "Queen's Knight" });
+        if (!Core.QuestProgression(2244))
+        {
+            Core.EnsureAccept(2244);
+            Core.HuntMonster("timelibrary", "Queen's Knight", "Princess Freed… but for what?", 2);
+            Core.HuntMonster("timelibrary", "Queen's Knight", "The Future is Now", 3);
+            Core.HuntMonster("timelibrary", "Queen's Knight", "Past Failures Brought Us Here", 2);
+            Core.MapItemQuest(2244, "timelibrary", 1368);
+        }
 
         //Trust is Not Ephemeral
         Core.KillQuest(2253, "timevoid", "Ephemerite");
 
         //In a Split Exasecond
-        Core.MapItemQuest(2254, "timevoid", 1438, 8);
-        Core.KillQuest(2254, "timevoid", new[] { "Time-Travel Fairy", "Time-Travel Fairy" });
+        if (!Core.QuestProgression(2254))
+        {
+            Core.EnsureAccept(2254);
+            Core.HuntMonster("timevoid", "Time-Travel Fairy", "Exaglass", 4);
+            Core.HuntMonster("timevoid", "Time-Travel Fairy", "Fairy Plasma", 8);
+            Core.MapItemQuest(2254, "timevoid", 1438, 16);
+        }
 
         //Time to Prove Yourself
-        Core.MapItemQuest(2255, "timevoid", 1439, 15);
         Core.KillQuest(2255, "timevoid", new[] { "Time-Travel Fairy", "Ephemerite" });
+        Core.MapItemQuest(2255, "timevoid", 1439, 15);
 
         //Fill the Empty Hours
         Core.KillQuest(2256, "timevoid", new[] { "Void Phoenix", "Time-Travel Fairy" });
@@ -1101,7 +1140,12 @@ public class Core13LoC
         Core.MapItemQuest(2257, "timevoid", 1443);
 
         //Unending Avatar
-        Core.KillQuest(2258, "timevoid", "Unending Avatar");
+        if (!Core.QuestProgression(2258))
+        {
+            Core.EnsureAccept(2258);
+            Core.HuntMonster("timevoid", "Unending Avatar", "Avatar Slain");
+            Core.EnsureComplete(2258);
+        }
 
         //Construct Your Reality
         Core.MapItemQuest(2376, "aqlesson", 1467);
@@ -1114,14 +1158,19 @@ public class Core13LoC
         Core.MapItemQuest(2378, "aqlesson", 1469);
 
         //Bolster the Elements
-        Core.MapItemQuest(2379, "aqlesson", 1470, 3);
-        Core.MapItemQuest(2379, "aqlesson", 1471, 3);
-        Core.KillQuest(2379, "aqlesson", new[] { "Water Elemental", "Eternite Ore" });
+        if (!Core.QuestProgression(2379))
+        {
+            Core.EnsureAccept(2379);
+            Core.HuntMonster("aqlesson", "Eternite Ore", "TimeSpark Acquired", 3);
+            Core.HuntMonster("aqlesson", "Water Elemental", "Tears of Joy Acquired", 3);
+            Core.MapItemQuest(2379, "aqlesson", 1470, 3);
+            Core.MapItemQuest(2379, "aqlesson", 1471, 3);
+        }
 
         //Maintain Elemental Strength
-        Core.MapItemQuest(2380, "aqlesson", 1473, 3);
-        Core.MapItemQuest(2380, "aqlesson", 1473, 3);
         Core.KillQuest(2380, "aqlesson", new[] { "Ice Elemental", "Fire Elemental" });
+        Core.MapItemQuest(2380, "aqlesson", 1473, 3);
+        Core.MapItemQuest(2380, "aqlesson", 1472, 3);
 
         //Rescue the Innocent
         Core.KillQuest(2381, "aqlesson", "Void Dragon");
@@ -1145,13 +1194,33 @@ public class Core13LoC
         Core.MapItemQuest(2470, "dflesson", 1549, 8);
 
         //Fight Chaos with Fire!
-        Core.KillQuest(2471, "dflesson", new[] { "Fire Elemental", "Fire Elemental" });
+        if (!Core.QuestProgression(2471))
+        {
+            Core.EnsureAccept(2471);
+            Core.HuntMonster("dflesson", "Fire Elemental", "Slain Flame Elemental", 8);
+            Core.HuntMonster("dflesson", "Fire Elemental", "Chaos Gemerald", 4);
+            Core.EnsureComplete(2471);
+        }
 
         //Save Aria
-        Core.KillQuest(2472, "dflesson", new[] { "Lava Slime", "Fire Elemental", "Fire Elemental" });
+        if (!Core.QuestProgression(2472))
+        {
+            Core.EnsureAccept(2472);
+            Core.HuntMonster("dflesson", "Lava Slime", "Slain Slime", 5);
+            Core.HuntMonster("dflesson", "Fire Elemental", "Slain Elemental", 6);
+            Core.HuntMonster("dflesson", "Fire Elemental", "Blue Clue");
+            Core.EnsureComplete(2472);
+        }
 
         //Find the Time to Travel
-        Core.KillQuest(2473, "dflesson", new[] { "Tog", "Agitated Orb", "Tog|Agitated Orb" });
+        if (!Core.QuestProgression(2473))
+        {
+            Core.EnsureAccept(2473);
+            Core.HuntMonster("dflesson", "Tog", "Life AND the Universe", 4);
+            Core.HuntMonster("dflesson", "Agitated Orb", "Everything", 5);
+            Core.HuntMonster("dflesson", "Agitated Orb", "Hoopy Frood's Towel", 3);
+            Core.EnsureComplete(2473);
+        }
 
         //Dragon Egg... or Junk?
         Core.KillQuest(2474, "dflesson", "Vultragon");
@@ -1194,6 +1263,13 @@ public class Core13LoC
 
         //Mysterious!
         Core.KillQuest(2511, "mqlesson", new[] { "Chaos Shadowscythe", "Chaos Shadowscythe" });
+        if (!Core.QuestProgression(2511))
+        {
+            Core.EnsureAccept(2511);
+            Core.HuntMonster("mqlesson", "Chaos Shadowscythe", "Truth Glasses");
+            Core.HuntMonster("mqlesson", "Chaos Shadowscythe", "Darkness Destroyed", 13);
+            Core.EnsureComplete(2511);
+        }
 
         //The 3rd Proto-Chaos Beast
         Core.KillQuest(2512, "mqlesson", "Dragonoid");
@@ -1215,29 +1291,20 @@ public class Core13LoC
 
         //Chaos Lord Iadoa
         Core.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 989, "Ruler Of The Deep");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Ruler Of The Deep");
     }
 
     public void Lionfang()
     {
-        Core.BuyItem(Bot.Map.Name, 990, "Blood Summoner");
-        if (Core.CheckInventory("Blood Summoner", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Blood Summoner");
-            Core.Logger("Chapter: \"Chaos Lord LionFang\" already complete. Skipping");
+
+
+        if (Core.isCompletedBefore(2814))
             return;
-        }
 
         //Final Rest
         Core.KillQuest(2612, "blackhorn", "Restless Undead");
 
         //Disturbing The Peace
-        Core.MapItemQuest(2613, "blackhorn", 1615, 10);
+        Core.MapItemQuest(2613, "blackhorn", 1616, 10);
 
         //Sampling Silk
         Core.KillQuest(2614, "blackhorn", "Tomb Spider");
@@ -1246,7 +1313,7 @@ public class Core13LoC
         Core.KillQuest(2615, "blackhorn", new[] { "Tomb Spider", "Restless Undead" });
 
         //The Wall Comes Down
-        Core.MapItemQuest(2616, "blackhorn", 1617);
+        Core.MapItemQuest(2616, "blackhorn", 1617, AutoCompleteQuest: false);
 
         //The Bonefeeder
         Core.KillQuest(2617, "blackhorn", "Bonefeeder Spider");
@@ -1258,7 +1325,7 @@ public class Core13LoC
         Core.KillQuest(2619, "blackhorn", "Tomb Spider");
 
         //Very Toxic
-        Core.KillQuest(2620, "blackhorn", "estless Undead");
+        Core.KillQuest(2620, "blackhorn", "Restless Undead");
 
         //Really, VERY VERY TOXIC!
         Core.MapItemQuest(2621, "blackhorn", 1619);
@@ -1373,7 +1440,7 @@ public class Core13LoC
         Core.KillQuest(2793, "venomvaults", "Chaonslaught Warrior");
 
         //Secrets Of The Mad Prince
-        Core.MapItemQuest(2794, "venomvaults", 2794);
+        Core.MapItemQuest(2794, "venomvaults", 1725);
 
         //Potion of Cleansing
         Core.MapItemQuest(2796, "venomvaults", 1726);
@@ -1431,29 +1498,20 @@ public class Core13LoC
 
         //Face Chaos Lord Lionfang!
         Core.KillQuest(2814, "stormtemple", "Chaos Lord Lionfang");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 990, "Blood Summoner");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Blood Summoner");
     }
 
     public void Xiang()
     {
-        Core.BuyItem(Bot.Map.Name, 992, "PaladinSlayer Daimyo");
-        if (Core.CheckInventory("PaladinSlayer Daimyo", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("PaladinSlayer Daimyo");
-            Core.Logger("Chapter: \"Chaos Lord Xiang\" already complete. Skipping");
+        if (Core.isCompletedBefore(3189))
             return;
-        }
+
+        Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
 
         //Bright Idea
         Core.MapItemQuest(2909, "battleoff", 1779);
 
         //Spare Parts
-        Core.MapItemQuest(2910, "battleoff", 1780);
+        Core.MapItemQuest(2910, "battleoff", 1780, 8);
 
         //Power It Uo
         Core.KillQuest(2911, "battleoff", "Evil Moglin");
@@ -1468,17 +1526,19 @@ public class Core13LoC
         Core.KillQuest(2914, "brightfall", "Undead Mage");
 
         //Help Where It is Needed
-        Core.MapItemQuest(2915, "brightfall", 1781);
+        Core.MapItemQuest(2915, "brightfall", 1781, 6);
 
         //Bring A Ward To A Swordfight
-        Core.MapItemQuest(2916, "brightfall", 1782);
+        Core.MapItemQuest(2916, "brightfall", 1782, 8);
 
         //Cut Off The Head
         Core.KillQuest(2917, "brightfall", "Painadin Overlord");
 
         //Rearm The Legion of Light
         Core.Join("overworld");
-        Core.ChainComplete(2918);
+        Core.ChainQuest(2918);
+
+        //Speak to Dage The Good
         Core.KillQuest(2919, "overworld", "Undead Minion");
 
         //Free Their Souls
@@ -1491,7 +1551,7 @@ public class Core13LoC
         Core.KillQuest(2922, "overworld", "Undead Mage");
 
         //Legion's Lifesblood
-        Core.MapItemQuest(2923, "overworld", 1800);
+        Core.MapItemQuest(2923, "overworld", 1800, 6);
 
         //Legion's Purpose
         Core.KillQuest(2924, "overworld", "Undead Bruiser");
@@ -1503,7 +1563,7 @@ public class Core13LoC
         Core.KillQuest(2926, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
 
         //Boost Morale
-        Core.MapItemQuest(2927, "overworld", 1801);
+        Core.MapItemQuest(2927, "overworld", 1801, 8);
 
         //Alteon's Folly
         Core.KillQuest(2928, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
@@ -1515,7 +1575,7 @@ public class Core13LoC
         Core.KillQuest(2930, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
 
         //Purity of Bone
-        Core.MapItemQuest(2931, "overworld", 1802);
+        Core.MapItemQuest(2931, "overworld", 1802, 10);
 
         //Undead Artix Returns!
         Core.KillQuest(2932, "overworld", "Undead Artix");
@@ -1548,39 +1608,51 @@ public class Core13LoC
 
         //Reflect the Damage
         Core.KillQuest(3184, "earthstorm", "Shard Spinner");
+        // while (!Core.CheckInventory("Perfect Prism") | !Core.QuestProgression(3184))
+        // {
+        //     Core.EnsureAccept(3184);
+        //     Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
+        //     Core.EnsureComplete(3184);
+        //     Bot.Wait.ForDrop("Perfect Prism");
+        // }
 
         //Pure Chaos
         Core.KillQuest(3185, "bloodtuskwar", "Chaotic Horcboar");
+        // while (!Core.CheckInventory("Unchaorrupted Sample") | !Core.QuestProgression(3185))
+        // {
+        //     Core.EnsureAccept(3185);
+        //     Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
+        //     Core.EnsureComplete(3185);
+        //     Bot.Wait.ForDrop("Unchaorrupted Sample");
+        // }
 
         //Enemies of a Feather Flock Together
         Core.KillQuest(3186, "bloodtuskwar", "Chaos Tigriff");
+        // while (!Core.CheckInventory("Harpy Feather") | !Core.QuestProgression(3186))
+        // {
+        //     Core.EnsureAccept(3186);
+        //     Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
+        //     Core.EnsureComplete(3186);
+        //     Bot.Wait.ForDrop("Harpy Feather");
+        // }
 
         //Ward Off the Beast
         Core.Join("mirrorportal");
-        Core.ChainComplete(3187);
+        Core.ChainQuest(3187);
 
         //Horror Takes Flight
         Core.KillQuest(3188, "mirrorportal", "Chaos Harpy");
 
         //Good, Evil and Chaos Battle!
+        Core.Join("mirrorportal", "r6", "Right");
+        Core.EquipClass(ClassType.Solo);
         Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 992, "PaladinSlayer Daimyo");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("PaladinSlayer Daimyo");
     }
 
     public void Alteon()
     {
-        Core.BuyItem(Bot.Map.Name, 991, "Cyber King");
-        if (Core.CheckInventory("Cyber King", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Cyber King");
-            Core.Logger("Chapter: \"Chaos Lord Alteon\" already complete. Skipping");
+        if (Core.isCompletedBefore(3160))
             return;
-        }
 
         //Bandit Bounty
         Core.KillQuest(3077, "archives", "Chaos Bandit");
@@ -1681,11 +1753,6 @@ public class Core13LoC
 
         //Chaos Lord Alteon
         Core.KillQuest(3160, "swordhavenfalls", "Chaos Lord Alteon");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 991, "Cyber King");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Cyber King");
     }
 
     public void Hero()
