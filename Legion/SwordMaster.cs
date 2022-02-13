@@ -24,17 +24,13 @@ public class SwordMaster
     {
         if (Core.CheckInventory("SwordMaster"))
             return;
-        
+
         Legion.FarmLegionToken(2000);
         Core.BuyItem("underworld", 238, "SwordMaster", 1);
         Bot.Shops.Load(763);
         Bot.Sleep(5000);
         Core.SendPackets($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%53837%19662%763%");
         if (rankUpClass)
-        {
-            Core.JumpWait();
-            Bot.Player.EquipItem("SwordMaster");
-            Farm.IcestormArena(1, rankUpClass: true);
-        }
+            Farm.rankUpClass("SwordMaster");
     }
 }
