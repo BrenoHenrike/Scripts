@@ -37,33 +37,33 @@
 
 ### v2.23
 **Released on Feb 14, 2022 at 23:45 / 11:45 PM (UTC)**  
-· Released Killer Catacombs (Hao)
-· Released Pyramid of Pain (Hao)
-· Released WorldSoul (Tato)
-· Added a forced Custom Drops UI (opened), to fix peoples issues with the dropper
-· Added a forced Character Select off, to fix peoples issues with the Character Select screen
-· Added a forced Disable Red Messages, to make sure people dont get spammed
-· Added Core.isCompleteBefore to a bunch of story scripts
-· Added the new public room settings to FirstClassEntertainment
-· Added rankUpClass to SwordMaster and a Yami dependency
-· Added BankingBlackList as a new feature, this can be added before setOptions so it wont bank certain items. Might be replaced soon
-· Added internal dependencies for BattleUnder
-· Changed any spellcrafting to do quests instead of packets
-· Script no longer banks boosts if you have the boost option in the auto menu enabled [rbot 4]
-· Modified Alchemy delays, which supposedly fix Alchemy
-· Converted Legion Revenant into a Core file
-· rankUpClass is no longer case sensitive
-· rankUpClass now reequips your old class after its done
-· Renamed Throne of Darkness files
-· Fixed CitadelRuins (Thanks Tuko)
-· Fixed Diabolical REP
-· Fixed Dreadfire REP
-· Fixed Membership Dues
-· Fixed Avatar of Death Scythe
-· Fixed JoinLegion Mourn the Soldiers
-· Fixed multiple typos
-· Multiple fixed to Core13LoC
-· Removed redundant imports in multiple files
+· Released Killer Catacombs (Hao)  
+· Released Pyramid of Pain (Hao)  
+· Released WorldSoul (Tato)  
+· Added a forced Custom Drops UI (opened), to fix peoples issues with the dropper  
+· Added a forced Character Select off, to fix peoples issues with the Character Select screen  
+· Added a forced Disable Red Messages, to make sure people dont get spammed  
+· Added Core.isCompleteBefore to a bunch of story scripts  
+· Added the new public room settings to FirstClassEntertainment  
+· Added rankUpClass to SwordMaster and a Yami dependency  
+· Added BankingBlackList as a new feature, this can be added before setOptions so it wont bank certain items. Might be replaced soon  
+· Added internal dependencies for BattleUnder  
+· Changed any spellcrafting to do quests instead of packets  
+· Script no longer banks boosts if you have the boost option in the auto menu enabled [rbot 4]  
+· Modified Alchemy delays, which supposedly fix Alchemy  
+· Converted Legion Revenant into a Core file  
+· rankUpClass is no longer case sensitive  
+· rankUpClass now reequips your old class after its done  
+· Renamed Throne of Darkness files  
+· Fixed CitadelRuins (Thanks Tuko)  
+· Fixed Diabolical REP  
+· Fixed Dreadfire REP  
+· Fixed Membership Dues  
+· Fixed Avatar of Death Scythe  
+· Fixed JoinLegion Mourn the Soldiers  
+· Fixed multiple typos  
+· Multiple fixed to Core13LoC  
+· Removed redundant imports in multiple files  
 [Back to top](#versions)
 
 ### v2.22.1
