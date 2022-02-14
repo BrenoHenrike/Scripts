@@ -1,4 +1,5 @@
-﻿using RBot;
+﻿//Scripts v2.23
+using RBot;
 using RBot.Items;
 using RBot.Monsters;
 using RBot.Quests;
