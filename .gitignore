@@ -12,7 +12,8 @@ Rbot-Scripts
 Script.cs
 docs
 Snippets
-*.md
+README.md
+README.pt-br.md
 .gitignore
 .gitattributes
 Plugins
