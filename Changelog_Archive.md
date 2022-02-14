@@ -36,7 +36,7 @@
   - [v2.0](#v20)
 
 ### v2.23
-**Released on Feb 14, 2022 at 23:30 / 11:30 PM (UTC)**  
+**Released on Feb 14, 2022 at 23:45 / 11:45 PM (UTC)**  
 · Released Killer Catacombs (Hao)
 · Released Pyramid of Pain (Hao)
 · Released WorldSoul (Tato)
