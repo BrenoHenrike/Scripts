@@ -85,9 +85,9 @@ public class CoreBots
         Bot.Lite.ReacceptQuest = false;
         Bot.Lite.CharacterSelectScreen = false;
         Bot.Lite.CustomDropsUI = true;
-        //Bot.Lite.Set("dOptions[\"openMenu\"]", true);
-        //Bot.Lite.Set("dOptions[\"warnDecline\"]", false);
-        //Bot.Lite.Set("dOptions[\"disRed\"]", true);
+        Bot.Lite.Set("dOptions[\"openMenu\"]", true);
+        Bot.Lite.Set("dOptions[\"warnDecline\"]", false);
+        Bot.Lite.Set("dOptions[\"disRed\"]", true);
 
         if (changeTo)
         {
