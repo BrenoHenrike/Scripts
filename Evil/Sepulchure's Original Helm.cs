@@ -2,8 +2,8 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Story/Adventure Quest Worlds Zombies.cs
-//cs_include Story/MysteriousDungeon.cs
+//cs_include Scripts/Story/Adventure Quest Worlds Zombies.cs
+//cs_include Scripts/Story/MysteriousDungeon.cs
 
 using RBot;
 
@@ -54,44 +54,27 @@ public class SepulchuresOriginalHelm
         Bot.Wait.ForDrop("Sepulchure's Original Helm");
     }
 
-    public void GravelynsDoomFireToken()
+    public void GravelynsDoomFireToken(int quant = 1)
     {
-        if (Core.CheckInventory("Gravelyn's DoomFire Token"))
+        if (Core.CheckInventory("Gravelyn's DoomFire Token", quant))
             return;
 
 
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
 
-        while (!Core.CheckInventory("Gravelyn's DoomFire Token"))
+        while (!Core.CheckInventory("Gravelyn's DoomFire Token", quant))
         {
-            // A Loyal Servant: Necrotic Sword of Doom
-            if (Core.CheckInventory("Necrotic Sword of Doom") && !Core.CheckInventory("Gravelyn's Blessing") && !Core.CheckInventory("Gravelyn's DoomFire Token"))
+
+            if (Core.CheckInventory("Necrotic Sword of Doom") && !Core.CheckInventory("Gravelyn's DoomFire Token"))
                 Core.ChainComplete(5455);
-
-            // A Loyal Servant: Sepulchure's DoomKnight
-            if (Core.CheckInventory("Sepulchure's DoomKnight Armor") && !Core.CheckInventory("Gravelyn's Blessing") && !Core.CheckInventory("Gravelyn's DoomFire Token"))
+            if (Core.CheckInventory("Sepulchure's DoomKnight Armor") && !Core.CheckInventory("Gravelyn's DoomFire Token"))
                 Core.ChainComplete(5456);
-
-            // Let Darkness Enter your Heart
-            if (!Core.CheckInventory("Gravelyn's Blessing") || Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
-
-            // Find me some Doom
-            if (!Core.CheckInventory("Painful Memory Bubble") || Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.SmartKillMonster(5458, "swordhavenfalls", "Chaos Lord Alteon", completeQuest: true);
-
-            // Abyssal
-            if (!Core.CheckInventory("Burning Passion Flame") || Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.SmartKillMonster(5459, "shadowstrike", "Sepulchuroth", completeQuest: true);
-
-            // Memories of The Past
-            if (!Core.CheckInventory("Father's Sorrowful Tear") || Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.SmartKillMonster(5460, "Shadowfall", "Shadow of the Past", completeQuest: true);
-
-            // The Summoning
-            if (!Core.CheckInventory("Empowered Essence", 13) || Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.SmartKillMonster(5461, "shadowrealmpast", "*", completeQuest: true);
+            Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
+            Core.SmartKillMonster(5458, "swordhavenfalls", "Chaos Lord Alteon", completeQuest: true);
+            Core.SmartKillMonster(5459, "shadowstrike", "Sepulchuroth", completeQuest: true);
+            Core.SmartKillMonster(5460, "Shadowfall", "Shadow of the Past", completeQuest: true);
+            Core.SmartKillMonster(5461, "shadowrealmpast", "*", completeQuest: true);
             Bot.Wait.ForDrop("Gravelyn's DoomFire Token");
         }
     }
