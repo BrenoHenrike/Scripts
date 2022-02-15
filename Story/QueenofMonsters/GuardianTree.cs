@@ -39,7 +39,12 @@ public class GuardianTree
         Core.KillQuest(6282, "guardiantree", "Pollen Cloud");
         Core.MapItemQuest(6282, "guardiantree", 5773);
         //Reinvigorate the Sprout
-        Core.KillQuest(6283, "guardiantree", "Seed Spitter");
+        if (!Core.QuestProgression(6283))
+        {
+            Core.EnsureAccept(6283);
+            Core.KillMonster("guardiantree", "r8", "Left", "Seed Spitter", "Life Energy", 8);
+            Core.EnsureComplete(6283);
+        }
         //Up We Go!
         Core.MapItemQuest(6284, "guardiantree", 5774);
         //Grow a Bridge
