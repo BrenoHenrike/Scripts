@@ -1,43 +1,29 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/CoreDailys.cs
-
 using RBot;
 
-public class CoreDW3
+public class DoomwoodPart3
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
-    public CoreBLOD BLoD = new CoreBLOD();
 
-    public string[] StoryLineDrops =
-    {
-    "Deadtech War Medal",
-    "Zealous Badge",
-    "Salvaged Deadtech Node",
-    "Kyger"
-    };
-
-
-
-    public void ScriptMain(ScriptInterface bot) //DO NOT RENAME THIS
+    public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        StoryLine();
-        QuestsForUnicornEssence();
-        PinkBlade();
+        Part3();
 
         Core.SetOptions(false);
     }
 
+    public string[] StoryLineDrops =
+    {
+        "Deadtech War Medal",
+        "Zealous Badge",
+        "Salvaged Deadtech Node",
+        "Kyger"
+    };
 
-
-    public void StoryLine()
+    public void Part3()
     {
         if (Core.isCompletedBefore(7653))
             return;

@@ -1,42 +1,30 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 using RBot;
 
-public class Example //you can rename this anything you want it will be the "Class" you refference elsewhere
+public class PinkBladeOfDestruciton
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    
-    
-        public string[] PinkSwordItems =
-    {
-    "Shard of An Orb",
-    "Pink Blade of Destruction",
-    "Fuchsia Dye",
-    "Spirit Orb",
-    "Zealous Badge",
-    "Unicorn Essence",
-    "Gem Power"
-    };
+    public CoreBLOD BLoD = new CoreBLOD();
+    public DoomwoodPart3 P3 = new DoomwoodPart3();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-       PinkBlade();
+        GetPBoD();
 
         Core.SetOptions(false);
     }
 
-
-    public void PinkBlade()
+    public void GetPBoD()
     {
-        Core.AddDrop(PinkSwordItems);
+        P3.Part3();
+
+        Core.AddDrop("Pink Blade of Destruction", "Fuchsia Dye", "Zealous Badge");
         // Forging a Friendship - 7650
         Core.EnsureAccept(7650);
         //reqs:
@@ -53,7 +41,8 @@ public class Example //you can rename this anything you want it will be the "Cla
             Core.HuntMonster("bloodtuskwar", "Chaotic Vulture", "Amaranth Flower", 5);
             Core.EnsureComplete(1487);
         }
-            BLoD.SpiritOrb(500);
+
+        BLoD.SpiritOrb(500);
 
         while (!Core.CheckInventory("Zealous Badge", 5))
         {
