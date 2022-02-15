@@ -7,7 +7,7 @@ public class GetSDD
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public MystEgg Egg = new MystEgg();
+    public MysteriousEgg Egg = new MysteriousEgg();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -26,7 +26,7 @@ public class GetSDD
 
         if (!Core.CheckInventory("Manticore Cub Pet"))
         {
-            Egg.MysteriousEgg();
+            Egg.GetMysteriousEgg();
             if (!Bot.Quests.IsUnlocked(6902))
             {
                 Core.EnsureAccept(6901);
