@@ -215,11 +215,11 @@ Base = Unlucky Leperchaun = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Vampire = 2 | 4 | 3 | 1 | Timeout: 250
 Base = Vampire Lord = 2 | 4 | 3 | 1 | Timeout: 250
 Base = Vindicator Of They = 1 WW20000 | 3 | 4 | 1 | Timeout: 250
-Atk = Void Highlord = 4 | 3 | 2 H<50 | 1 | 2 H<50 | 3 | 2 H<50 | 4 | 1 | 2 H<50 | 3 | 2 H<50 | 1 | 2 H<50 | Timeout:250
-Def = Void Highlord = 4 | 1 | 2 H<50 | 1 | 2 H<50 | 2 | Timeout:250
-Atk = Void Highlord (IoDA) = 4 | 3 | 2 H<50 | 1 | 2 H<50 | 3 | 2 H<50 | 4 | 1 | 2 H<50 | 3 | 2 H<50 | 1 | 2 H<50 | Timeout:250
-Def = Void Highlord (IoDA) = 4 | 1 | 2 H<50 | 1 | 2 H<50 | 2 | Timeout:250
-Base = Void Highlord Tester = 4 | 3 | 2 H<50 | 1 | 2 H<50 | 3 | 2 H<50 | 4 | 1 | 2 H<50 | 3 | 2 H<50 | 1 | 2 H<50 | Timeout:250
+Atk = Void Highlord = 3 H>25S | 4 | 2 | 3 H>25S | 1 H>25S | 2 | 1 H>25S | Timeout: 250
+Def = Void Highlord = 1 | 2 | 4 | Mode Optimistic
+Atk = Void Highlord (IoDA) = 3 H>25S | 4 | 2 | 3 H>25S | 1 H>25S | 2 | 1 H>25S | Timeout: 250
+Def = Void Highlord (IoDA) = 1 | 2 | 4 | Mode Optimistic
+Base = Void Highlord Tester = 3 H>25S | 4 | 2 | 3 H>25S | 1 H>25S | 2 | 1 H>25S | Timeout: 250
 Base = Warlord = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Warrior = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Warrior (Rare) = 1 | 2 | 3 | 4 |  Mode Optimistic
