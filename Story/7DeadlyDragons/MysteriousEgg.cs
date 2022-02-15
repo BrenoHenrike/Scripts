@@ -2,7 +2,7 @@
 
 using RBot;
 
-public class MystEgg
+public class MysteriousEgg
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -11,12 +11,12 @@ public class MystEgg
     {
         Core.SetOptions();
 
-        MysteriousEgg();
+        GetMysteriousEgg();
 
         Core.SetOptions(false);
     }
 
-    public void MysteriousEgg()
+    public void GetMysteriousEgg()
     {
         Core.AddDrop("Mysterious Egg", "Key of Pride", "Key of Gluttony", "Key of Greed", "Key of Sloth",
         "Key of Lust", "Key of Envy", "Key of Wrath");
