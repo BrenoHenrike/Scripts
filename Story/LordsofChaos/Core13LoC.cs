@@ -1,3 +1,5 @@
+//cs_include Scripts/CoreFarms.cs
+
 using System.Runtime.Versioning;
 using RBot;
 
@@ -5,6 +7,7 @@ public class Core13LoC
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farms = new CoreFarms();
 
     public void Complete13LOC(bool withExtras = false)
     {
@@ -1643,10 +1646,23 @@ public class Core13LoC
         //Horror Takes Flight
         Core.KillQuest(3188, "mirrorportal", "Chaos Harpy");
 
-        //Good, Evil and Chaos Battle!
-        Core.Join("mirrorportal", "r6", "Right");
-        Core.EquipClass(ClassType.Solo);
-        Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
+        //Good, Evil and Chaos Battle!]
+        if (!Core.QuestProgression(3189))
+        {
+            if (Core.CheckInventory("Void Highlord"))
+            {
+                Bot.Skills.StartAdvanced("Void Highlord", true, RBot.Skills.ClassUseMode.Def);
+                Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
+            }
+            else
+            if (Core.CheckInventory("Healer"))
+            {
+                Bot.Skills.StartAdvanced("Healer", true, RBot.Skills.ClassUseMode.Base);
+                Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
+            }
+            else
+                Core.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
+        }
     }
 
     public void Alteon()
@@ -1708,8 +1724,6 @@ public class Core13LoC
         Core.KillQuest(3120, "ceremony", "Chaos Invader");
 
         //Better Letter Go!
-        if (Core.QuestProgression(3121))
-        {
             Core.MapItemQuest(3121, "yulgar", 2108);
             Core.MapItemQuest(3121, "yulgar", 2109);
             Core.MapItemQuest(3121, "yulgar", 2110);
@@ -1718,7 +1732,6 @@ public class Core13LoC
             Core.MapItemQuest(3121, "swordhaven", 2113);
             Core.MapItemQuest(3121, "swordhaven", 2114);
             Core.MapItemQuest(3121, "swordhaven", 2115);
-        }
 
         //Decor Rater
         Core.MapItemQuest(3122, "swordhaven", 2116, 8);
@@ -1844,19 +1857,19 @@ public class Core13LoC
         Core.KillQuest(3788, "newfinale", "Chaos Challenger");
 
         // Battle for Chaos in Doomwood!
-        Core.KillQuest(3783, "newfinale", "Chaos Virago");
+        Core.KillQuest(3783, "newfinale", "Chaotic Virago|Chaorrupted Healer|");
 
         // Beat Chaorrupted Lycan Hunter
         Core.KillQuest(3789, "newfinale", "Chaorrupted Lycan Hunter");
 
         // Battle for Chaos in Darkovia!
-        Core.KillQuest(3785, "newfinale", "Shadow Slayer");
+        Core.KillQuest(3785, "newfinale", "Shadow Slayer|Chaorrupted Healer|Mana Blaster");
 
         // Defeat the Memory of Vampires
         Core.KillQuest(3790, "newfinale", "Memory of Vampires");
 
         // Battle for Chaos in the Lair!
-        Core.KillQuest(3787, "newfinale", "Chaotic Virago");
+        Core.KillQuest(3787, "newfinale", "Chaotic Virago|Chaos Draconian|Chaos Crystal");
 
         // 1st Chaos Beast
         Core.ChainQuest(3608);
@@ -1894,11 +1907,18 @@ public class Core13LoC
         // 12th Chaos Beast
         Core.ChainQuest(3619);
 
+        //The Chaos Beast is called forth.
+        Core.ChainQuest(3791);
+
         // Time to save Battleon!
         Core.ChainQuest(3792);
 
         // Battle for Chaos in Battleon!
         Core.KillQuest(3794, "newfinale", "Alliance Soldier");
+
+        //Become a Chaos Lord
+        Core.Join("newfinale", "NPC2", "Left");
+        Core.SendPackets("%xt%zm%setAchievement%15075%ia1%20%1%");
 
         // Battle the Champion of Chaos!
         Core.MapItemQuest(3795, "drakathfight", 2894);
