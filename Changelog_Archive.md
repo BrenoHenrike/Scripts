@@ -1,5 +1,7 @@
 - ##### Versions
-  - [v2.23 - Latest](#v223)
+  - [v2.24 - Latest](#v224)
+    - [MAS v1.2](#mas-v12)
+  - [v2.23](#v223)
   - [v2.22](#v222)
     - [v2.22.1](#v2211)
     - [MAS v1.1](#mas-v11)
@@ -34,6 +36,40 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+
+### v2.24
+**Released on Feb 14, 2022 at 22:30 / 10:30 PM (UTC)**  
+· Released Dragon of Time (Exelot)  
+· Released Guardian Tree (Exelot)  
+· Released CoreDarkon (Exelot)  
+· Released First Errand (Exelot)  
+· Released Second Errand (Exelot)  
+· Released Third Errand (Exelot)  
+· Released Darkon's Receipt (Exelot)  
+· Released Sepulchure's Original Helm (Tato)  
+· Released Mysterious Dungeon (Tato)  
+· Released AQW Zombies (Tato)  
+· Released Doomwood Part 3 (Tato)  
+· Released Pink Blade of Destruction (Tato)  
+· Released Collection (Tato)  
+· Released Borgars (Tato)  
+· RBot 4 \[Beta\] is now a hard demand for these scripts. Will add new features pertaining this soon  
+· Changed a awkward Aggromon bypass into a UpdateQuest bypass in Burning Blade of Azebeth  
+· New feature in CoreBots called UpdateQuest, it makes your client think you have completed a certain quest before. Use with care  
+· Created a new folder in Other/Classes called REP-based and moved multiple classes her  
+· BestGear now returns its findings in a string[]  
+· Modified the QuestProgression isnt unlocked popup to include quest name  
+· Renamed and moved Story/MysteriousStranger(YulgarsInn) to Other/Weapons/GoldenBladeOfFate  
+· Renamed some internal stuff in MysteriousEgg  
+· Reverted Void Highlord Combo now that Advanced Skills works again  
+· Fixed 06bScarletta(TowerofMirrors) file name  
+· Numerous fixes to Core13LoC  
+[Back to top](#versions)
+
+### MAS v1.2
+**Released on Feb 14, 2022 at 22:30 / 10:30 PM (UTC)**  
+· Reverted Void Highlord Combo now that Advanced Skills works again  
+[Back to top](#versions)
 
 ### v2.23
 **Released on Feb 14, 2022 at 23:45 / 11:45 PM (UTC)**  
@@ -218,7 +254,7 @@
 · Fixed Hedgemaze not grabbing the right amount of mapitems  
 · Fixed DeathKnight buying the AC variant  
 [Back to top](#versions)
-  
+
 ### v2.19
 **Released on Jan 28, 2022 at 20:00 / 08:00 PM (UTC)**  
 · Released Arachnomancer* (Exelot)  
@@ -317,7 +353,7 @@
 · Fixed new dependencies for Legion Fealty 1 + 2  
 [Back to top](#versions)
 
-### MAS v1.0  
+### MAS v1.0
 **Released on Jan 23, 2022 at 20:25 / 08:25 PM (UTC)**  
 · Added the Master Advanced Skill file, CoreBots will automatically give you the optimal skill combo based on your set farm/solo classes (Breno, Exelot & Tato)  
 [Back to top](#versions)
