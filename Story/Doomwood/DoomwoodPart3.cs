@@ -22,24 +22,7 @@ public class CoreDW3
     "Kyger"
     };
 
-    public string[] PinkSwordItems =
-    {
-    "Obsidian Light of Destiny",
-    "Purified Undead Dragon Essence",
-    "Shard of An Orb",
-    "Rainbow Paladin",
-    "Rainbow Paladin Cape",
-    "Rainbow Paladin Helm + Locks",
-    "Rainbow Paladin Helm",
-    "Pink Blade of Destruction",
-    "Rainbow Cat Ears + Locks",
-    "Rainbow Cat Ears + Hair",
-    "Fuchsia Dye",
-    "Spirit Orb",
-    "Zealous Badge",
-    "Unicorn Essence",
-    "Gem Power"
-    };
+
 
     public void ScriptMain(ScriptInterface bot) //DO NOT RENAME THIS
     {
@@ -52,55 +35,6 @@ public class CoreDW3
         Core.SetOptions(false);
     }
 
-    public void PinkBlade()
-    {
-        Core.AddDrop(PinkSwordItems);
-        // Forging a Friendship - 7650
-        Core.EnsureAccept(7650);
-        //reqs:
-        // Fuchsia Dye x50
-        // Spirit Orb (Misc) x500
-        // Zealous Badge x5
-        // Unicorn Essence x5
-        // Gem Power x5
-
-        while (!Core.CheckInventory("Fuchsia Dye", 50))
-        {
-            Core.EnsureAccept(1487);
-            Core.HuntMonster("natatorium", "Anglerfish", "Pink Coral", 3);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Vulture", "Amaranth Flower", 5);
-            Core.EnsureComplete(1487);
-        }
-
-        while (!Core.CheckInventory("Spirit Orb", 500))
-        {
-            BLoD.UnlockMineCrafting();
-            Farm.BattleUnderB("Bone Dust", 40);
-            Farm.BattleUnderB("Undead Essence", 25);
-            Core.ChainComplete(2082);
-            Core.ChainComplete(2083);
-        }
-
-        while (!Core.CheckInventory("Zealous Badge", 5))
-        {
-            Core.EnsureAccept(7616);
-            Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7);
-            Core.HuntMonster("techdungeon", "DoomBorg Guard", "Paladin Armor Scraps", 30);
-            Core.EnsureComplete(7616);
-        }
-
-
-        while (!Core.CheckInventory("Unicorn Essence", 5))
-        {
-            Core.EnsureAccept(3157);
-            Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Ultra BrutalCorn");
-            Core.EnsureComplete(3157);
-        }
-
-        Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5);
-
-        Core.EnsureComplete(7650, 55884);
-    }
 
 
     public void StoryLine()
@@ -273,49 +207,5 @@ public class CoreDW3
         Core.KillQuest(7646, "techfortress", "Vortrix");
         // The Final Form
         Core.KillQuest(7653, "techfortress", "MechaVortrix");
-    }
-
-    public void QuestsForUnicornEssence()
-    {
-        if (Core.isCompletedBefore(3157))
-            return;
-
-        Core.AddDrop("Unicorn Essence");
-
-        // Hunt for the Brutal Intruder
-        Core.MapItemQuest(3148, "undergroundlab", 2144);
-        Core.MapItemQuest(3148, "undergroundlab", 2145);
-        Core.MapItemQuest(3148, "undergroundlab", 2146);
-        Core.MapItemQuest(3148, "undergroundlab", 2147);
-        Core.MapItemQuest(3148, "undergroundlab", 2148);
-        // Brutal Detection Desired
-        Core.MapItemQuest(3149, "undergroundlab", 2150);
-        Core.MapItemQuest(3149, "undergroundlab", 2151);
-        Core.MapItemQuest(3149, "undergroundlabb", 2152);
-        Core.MapItemQuest(3149, "undergroundlabb", 2153);
-        // Silence the Green Screamers
-        Core.KillQuest(3150, "undergroundlabb", "Green Screamer");
-        // Soundbooth of Horrors
-        Core.KillQuest(3151, "undergroundlabb", "Soundbooth Horror");
-        // Skeletons in the Server Closet
-        Core.KillQuest(3152, "undergroundlabb", "Closet Skeleton");
-        // Server Gremlags
-        Core.KillQuest(3153, "undergroundlabb", "Server Gremlin");
-        // Window Slayer
-        Core.KillQuest(3154, "undergroundlabb", "Window");
-        // Gamer Fuel
-        if (!Core.QuestProgression(3155))
-        {
-            Core.EnsureAccept(3155);
-            Core.HuntMonster("undergroundlabb", "Invisible Ninjas", "Sushi");
-            Core.HuntMonster("undergroundlabb", "Invisible Ninjas", "Pocky");
-            Core.HuntMonster("undergroundlabb", "Invisible Ninjas", "Coffee");
-            Core.HuntMonster("undergroundlabb", "Invisible Ninjas", "TableGum");
-            Core.EnsureComplete(3155);
-        }
-        // Key to Doom
-        Core.KillQuest(3156, "undergroundlabb", "Rabid Server Hamster");
-        // UltraBrutal Battle
-        Core.KillQuest(3157, "undergroundlabb", "Ultra Brutalcorn");
     }
 }
