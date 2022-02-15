@@ -69,8 +69,7 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
     {
-        VersionChecker("3.6.3.2");
-        // VersionChecker("4.0.0.0");
+        VersionChecker("4");
 
         // Common Options
         Bot.Options.PrivateRooms = false;
@@ -697,7 +696,7 @@ public class CoreBots
             Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
 
         if (!Bot.Quests.IsUnlocked(QuestID))
-            Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
+            Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
         if (isCompletedBefore(QuestID))
         {
