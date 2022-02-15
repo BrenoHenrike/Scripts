@@ -20,11 +20,7 @@ public class BurningBladeOfAzabeth
             return;
 
         Core.EquipClass(ClassType.Solo);
-        if (!Bot.Options.AggroMonsters)
-            Bot.Schedule(10000, b => {
-                b.Options.AggroMonsters = false;
-            });
-        Bot.Options.AggroMonsters = true;
+        Core.UpdateQuest(6042);
         Core.HuntMonster("celestialarenad", "Aranx", "Burning Blade of Azabeth", isTemp: false);
         Bot.Wait.ForPickup("Burning Blade of Azabeth");
     }
