@@ -4,7 +4,6 @@ public class CoreDarkon
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
 
     public void FarmReceipt(int Quantity = 222)
     {
