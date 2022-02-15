@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 using RBot;
 
-public class MysteriousStranger
+public class GoldenBladeOfFate
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
@@ -13,12 +13,12 @@ public class MysteriousStranger
     {
         Core.SetOptions();
 
-        GoldenBladeofFate();
+        GetGBoF();
 
         Core.SetOptions(false);
     }
 
-    public void GoldenBladeofFate()
+    public void GetGBoF()
     {
         if (Core.CheckInventory("Golden Blade of Fate"))
             return;
