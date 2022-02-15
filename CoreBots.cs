@@ -696,7 +696,7 @@ public class CoreBots
             Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
 
         if (!Bot.Quests.IsUnlocked(QuestID))
-            Logger($"Quest {QuestID} is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
+            Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
         if (isCompletedBefore(QuestID))
         {
