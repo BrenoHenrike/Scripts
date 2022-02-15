@@ -1,5 +1,5 @@
-//cs_include Scripts/CoreBots.cs  //LEAVE THIS ALONE
-//cs_include Scripts/CoreFarms.cs //LEAVE THIS ALONE
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 
 //cs_include Scripts/CoreFile(Or folder)/Filename.cs
 
