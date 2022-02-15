@@ -1,13 +1,9 @@
-//cs_include Scripts/CoreFarms.cs
-
-using System.Runtime.Versioning;
 using RBot;
 
 public class Core13LoC
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farms = new CoreFarms();
 
     public void Complete13LOC(bool withExtras = false)
     {
@@ -1724,14 +1720,14 @@ public class Core13LoC
         Core.KillQuest(3120, "ceremony", "Chaos Invader");
 
         //Better Letter Go!
-            Core.MapItemQuest(3121, "yulgar", 2108);
-            Core.MapItemQuest(3121, "yulgar", 2109);
-            Core.MapItemQuest(3121, "yulgar", 2110);
-            Core.MapItemQuest(3121, "archives", 2111);
-            Core.MapItemQuest(3121, "swordhaven", 2112);
-            Core.MapItemQuest(3121, "swordhaven", 2113);
-            Core.MapItemQuest(3121, "swordhaven", 2114);
-            Core.MapItemQuest(3121, "swordhaven", 2115);
+        Core.MapItemQuest(3121, "yulgar", 2108);
+        Core.MapItemQuest(3121, "yulgar", 2109);
+        Core.MapItemQuest(3121, "yulgar", 2110);
+        Core.MapItemQuest(3121, "archives", 2111);
+        Core.MapItemQuest(3121, "swordhaven", 2112);
+        Core.MapItemQuest(3121, "swordhaven", 2113);
+        Core.MapItemQuest(3121, "swordhaven", 2114);
+        Core.MapItemQuest(3121, "swordhaven", 2115);
 
         //Decor Rater
         Core.MapItemQuest(3122, "swordhaven", 2116, 8);
