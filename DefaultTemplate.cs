@@ -1,14 +1,10 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
 using RBot;
 
-public class Example 
+public class Example
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
 
@@ -16,10 +12,18 @@ public class Example
     {
         Core.SetOptions();
 
-        Core.AddDrop("ExampleItem1", "ExampleItem2", "ExampleItem3", "ExampleItem4");
-
-        //some code goes here probably
+        YourFunctionName();
 
         Core.SetOptions(false);
+    }
+
+    public void YourFunctionName()
+    {
+        //if (something)
+        //    return;
+
+        Core.AddDrop("ExampleItem1", "ExampleItem2", "ExampleItem3", "ExampleItem4");
+
+        //Your code here
     }
 }
