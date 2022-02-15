@@ -1127,7 +1127,7 @@ public class CoreBots
     /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
     /// </summary>
     /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    public void BestGear(GearBoost BoostType)
+    public string[] BestGear(GearBoost BoostType)
     {
         GearBoost[] RaceBoosts = {
             GearBoost.Chaos,
@@ -1155,6 +1155,7 @@ public class CoreBots
         InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
         InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
+        string BestItemDMGall = null;
 
         foreach (InventoryItem Item in BankInvData)
         {
@@ -1183,7 +1184,7 @@ public class CoreBots
                     BoostedGearDMGall.Add(Item.Name, BoostFloat);
                 }
             }
-            string BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
+            BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
             JumpWait();
             CheckInventory(BestItemDMGall);
             Bot.Player.EquipItem(BestItemDMGall);
@@ -1192,6 +1193,9 @@ public class CoreBots
         JumpWait();
         CheckInventory(BestItem);
         Bot.Player.EquipItem(BestItem);
+        if (RaceBoosts.Contains(BoostType))
+            return new[] { BestItem, BestItemDMGall };
+        return new[] { BestItem };
     }
 
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
