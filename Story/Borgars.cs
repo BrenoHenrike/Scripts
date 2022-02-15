@@ -1,28 +1,21 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-
-//cs_include Scripts/CoreFile(Or folder)/Filename.cs
-
 using RBot;
 
-public class Borgars //you can rename this anything you want it will be the "Class" you refference elsewhere
+public class Borgars
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
 
-
-    public void ScriptMain(ScriptInterface bot) //DO NOT RENAME THIS
+    public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        StoryLine();
+        BorgarQuests();
 
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void BorgarQuests()
     {
         if (Core.isCompletedBefore(7522))
             return;
@@ -66,7 +59,7 @@ public class Borgars //you can rename this anything you want it will be the "Cla
         //P3 - Requirements: Must have completed the 'A Weird Gourmet' quest.
         //Map: thespan
         // Piece of Cake - 7517
-        
+
         // A Health Nut
         Core.MapItemQuest(7519, "brightfortress", 7372);
 
