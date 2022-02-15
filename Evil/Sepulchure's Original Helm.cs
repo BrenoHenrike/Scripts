@@ -63,20 +63,16 @@ public class SepulchuresOriginalHelm
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
 
-        while (!Core.CheckInventory("Gravelyn's DoomFire Token", quant))
-        {
-
-            if (Core.CheckInventory("Necrotic Sword of Doom") && !Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.ChainComplete(5455);
-            if (Core.CheckInventory("Sepulchure's DoomKnight Armor") && !Core.CheckInventory("Gravelyn's DoomFire Token"))
-                Core.ChainComplete(5456);
-            Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
-            Core.SmartKillMonster(5458, "swordhavenfalls", "Chaos Lord Alteon", completeQuest: true);
-            Core.SmartKillMonster(5459, "shadowstrike", "Sepulchuroth", completeQuest: true);
-            Core.SmartKillMonster(5460, "Shadowfall", "Shadow of the Past", completeQuest: true);
-            Core.SmartKillMonster(5461, "shadowrealmpast", "*", completeQuest: true);
-            Bot.Wait.ForDrop("Gravelyn's DoomFire Token");
-        }
+        if (Core.CheckInventory("Necrotic Sword of Doom"))
+            Core.ChainComplete(5455);
+        if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+            Core.ChainComplete(5456);
+        Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
+        Core.SmartKillMonster(5458, "swordhavenfalls", "Chaos Lord Alteon", completeQuest: true);
+        Core.SmartKillMonster(5459, "shadowstrike", "Sepulchuroth", completeQuest: true);
+        Core.SmartKillMonster(5460, "Shadowfall", "Shadow of the Past", completeQuest: true);
+        Core.SmartKillMonster(5461, "shadowrealmpast", "*", completeQuest: true);
+        Bot.Wait.ForDrop("Gravelyn's DoomFire Token");
     }
 
     public void RoyalShadowScytheBlade()

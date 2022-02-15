@@ -11,7 +11,6 @@ public class Example //you can rename this anything you want it will be the "Cla
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
     //public Classsname Field = new Classname();
     
     //"Classsname" Is the Class name from "Included script you entered above"
