@@ -1,6 +1,7 @@
 - ##### Versions
   - [v2.24](#v224)
-    - [v2.24.1 - Latest](#2241)
+    - [v2.24.2 - Latest](#2242)
+    - [v2.24.1](#2241)
     - [MAS v1.2](#mas-v12)
   - [v2.23](#v223)
   - [v2.22](#v222)
@@ -37,6 +38,17 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+### v2.24.2
+**Released on Feb 16, 2022 at 17:10 / 05:10 PM (UTC)**  
+· Released CoreAdvanced  
+· Added AutoEnhance  
+· Added KillUltra (also to things where its needed)  
+· Darkon's Receipts now escapes Second Errand if its not efficient  
+· Fixes for Vath  
+· Fixes for Pink Blade of Destruction  
+· Multiple fixes to Doomwood Part 3  
+· Multiple fixes to Dragon of Time  
+[Back to top](#versions)
 
 ### v2.24.1
 Released on Feb 16, 2022 at 00:45 / 12:45 AM (UTC)  
