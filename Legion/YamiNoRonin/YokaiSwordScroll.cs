@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/DarkAlly.cs
 using RBot;
@@ -10,6 +11,7 @@ public class TheEdgeofanEra
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
     public DarkAlly_Story DarkAlly = new DarkAlly_Story();
 
@@ -64,12 +66,9 @@ public class TheEdgeofanEra
             Core.BuyItem("underworld", 577, "Obsidian Rock", 108);
         }
         FlameForgedMetal(13);
-        if (!Core.CheckInventory("Weapon Imprint", 15))
-        {
-            Core.Logger("Farm Manually Weapon Imprint x15 by killing Undead Raxgore /doomvaultb");
-            Core.SetOptions(false);
-        }
-        else Core.EnsureComplete(7444);
+        Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
+
+        Core.EnsureComplete(7444);
     }
 
     public void FlameForgedMetal(int quant = 13)
