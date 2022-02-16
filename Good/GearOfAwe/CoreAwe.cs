@@ -3,7 +3,6 @@ using RBot;
 public class CoreAwe
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
 
@@ -47,7 +46,10 @@ public class CoreAwe
             Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false);
         }
         else
-            Core.HuntMonster("doomvault", "Binky", "Cape Shard", 1, false, publicRoom: true);
+        {
+            Core.UpdateQuest(3004);
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape  Shard", 1, false);
+        }
         Core.EnsureComplete(questID);
     }
 

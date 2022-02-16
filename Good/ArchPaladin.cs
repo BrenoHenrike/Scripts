@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/Paladin.cs
@@ -11,6 +12,7 @@ public class ArchPaladin
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreFarms Farm = new CoreFarms();
     public CoreBLOD BLOD = new CoreBLOD();
     public Paladin Pal = new Paladin();
@@ -47,12 +49,8 @@ public class ArchPaladin
                 BLOD.UnlockMineCrafting();
                 Farm.BattleUnderB("Undead Energy", 1000);
                 Core.EquipClass(ClassType.Solo);
-                if (Core.CheckInventory("Binky's Uni-horn"))
-                {
-                    Core.Join("doomvault");
-                    Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":18,\"iIndex\":126}}}");
-                    Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
-                }
+                Core.UpdateQuest(2954);
+                Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false);
                 Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom: true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
 

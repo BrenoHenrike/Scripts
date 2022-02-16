@@ -4,6 +4,7 @@ public class CoreDarkon
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void FarmReceipt(int Quantity = 222)
     {
@@ -47,7 +48,6 @@ public class CoreDarkon
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))
         {
-
             if (Bot.Map.Name == "doomvault")
             {
                 if (Bot.Map.CellPlayers.Count >= 3)
@@ -61,8 +61,8 @@ public class CoreDarkon
             Core.EnsureAccept(7325);
 
             if (!EnoughPeople && Core.IsMember)
-                Core.KillMonster("ultracarnax", "Enter", "Spawn", "*", "Ingredients?", 22, false);
-            else Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false);
+                Core.KillMonster("ultracarnax", "Enter", "Spawn", "*", "Ingredients?", 22, false, publicRoom: true);
+            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false);
 
             Core.EnsureComplete(7325);
             Bot.Wait.ForPickup("Darkon's Receipt");
@@ -81,7 +81,7 @@ public class CoreDarkon
         {
             Core.EnsureAccept(7326);
 
-            Core.HuntMonster("tercessuinotlim", "Nulgath", "NUlgath's mask", 1, false);
+            Core.HuntMonster("tercessuinotlim", "Nulgath", "NUlgath's mask", 1, false, publicRoom: true);
 
             Core.EnsureComplete(7326);
             Bot.Wait.ForPickup("Darkon's Receipt");
