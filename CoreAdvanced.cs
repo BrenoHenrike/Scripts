@@ -75,6 +75,15 @@ public class CoreAdvanced
             Core.AddDrop(item);
         Core.Join(map, publicRoom: publicRoom);
         Core.Jump(cell, pad);
+        
+        /*
+        string TargetRace = Bot.Monsters.CurrentMonsters.Find(x => x.Name == monster).Race;
+        if (TargetRace != null)
+        {
+            string[] _BestGear = Core.BestGear((GearBoost)Enum.Parse(typeof(GearBoost), TargetRace));
+            EnhanceItem(_BestGear, )
+        }
+        */
         Bot.Events.CounterAttack += _KillUltra;
         if (item == null)
         {
