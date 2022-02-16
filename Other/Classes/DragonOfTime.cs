@@ -100,7 +100,7 @@ public class DragonOfTime
             if (!Core.CheckInventory("Chronomancer's Codex"))
             {
                 Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-                Core.HuntMonster("timespace", "CHaos Lord Iadoa", "Chronomancer's Codex", isTemp: false);
+                Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chronomancer's Codex", isTemp: false);
             }
 
             Core.EquipClass(ClassType.Farm);
