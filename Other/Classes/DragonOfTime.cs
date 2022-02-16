@@ -138,7 +138,7 @@ public class DragonOfTime
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("lairdefend", "Dragon Summoner", "Dimensional Dragon Portal", 2, false);
 
-            Core.HuntMonster("bosschallenge", "Grievous Inbunche", "Brutal Slash Studied", isTemp: false, publicRoom: true);
+            Core.HuntMonster("bosschallenge", "Grievous Inbunche", "Brutal Slash Studied", 10, isTemp: false, publicRoom: true);
 
             Core.HuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
 
