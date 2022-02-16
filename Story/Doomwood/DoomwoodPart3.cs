@@ -61,7 +61,7 @@ public class DoomwoodPart3
         // Dress-up Time!
         Core.KillQuest(7598, "Thorngarde", new[] { "CryptHacker", "NecroDrone" });
         // I Need a Distraction
-        Core.KillQuest(7599, "Thorngarde", new[] { "NecroDrone", "NecroMech", "CryptHacker" }, AutoCompleteQuest: false);
+        Core.KillQuest(7599, "Thorngarde", new[] { "NecroDrone", "NecroMech", "CryptHacker" });
 
 
         //Part1.1 - Requirements: Must have completed the 'Zyrus is Lost' quest.
