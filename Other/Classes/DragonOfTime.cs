@@ -79,7 +79,7 @@ public class DragonOfTime
 
             Core.HuntMonster("darkplane", "Victorious", "Victorious's Dignity", isTemp: false);
 
-            Core.HuntMonster("trigoras", "Trigoras", "Trigoras' Tenacity", 3, false);
+            Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
 
             Core.ChainQuest(7717);
         }
