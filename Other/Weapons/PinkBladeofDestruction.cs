@@ -28,7 +28,7 @@ public class PinkBladeOfDestruciton
         P3.Part3();
 
         Core.AddDrop("Fuchsia Dye", "Zealous Badge", "Pink Blade of Destruction");
-        
+
         Core.EnsureAccept(7650);
 
         while (!Core.CheckInventory("Fuchsia Dye", 50))
@@ -38,7 +38,7 @@ public class PinkBladeOfDestruciton
             Core.HuntMonster("bloodtuskwar", "Chaotic Vulture", "Amaranth Flower", 5);
             Core.EnsureComplete(1487);
         }
-        
+
         BLoD.SpiritOrb(500);
 
         while (!Core.CheckInventory("Zealous Badge", 5))
@@ -49,9 +49,9 @@ public class PinkBladeOfDestruciton
             Core.EnsureComplete(7616);
         }
 
-        Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", 5);
+        Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", 5, false);
 
-        Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5);
+        Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5, false);
 
         Core.EnsureComplete(7650, 55884);
         Bot.Wait.ForPickup("Pink Blade of Destruction");
