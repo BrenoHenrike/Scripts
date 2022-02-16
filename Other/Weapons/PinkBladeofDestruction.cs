@@ -22,11 +22,10 @@ public class PinkBladeOfDestruciton
 
     public void GetPBoD()
     {
-        P3.Part3();
-
-
         if (Core.CheckInventory("Pink Blade of Destruction"))
             return;
+
+        P3.Part3();
 
         Core.AddDrop("Fuchsia Dye", "Zealous Badge", "Pink Blade of Destruction");
         
@@ -55,6 +54,7 @@ public class PinkBladeOfDestruciton
         Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5);
 
         Core.EnsureComplete(7650, 55884);
+        Bot.Wait.ForPickup("Pink Blade of Destruction");
     }
 
 }
