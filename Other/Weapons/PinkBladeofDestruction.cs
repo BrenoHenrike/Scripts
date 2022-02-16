@@ -52,7 +52,7 @@ public class PinkBladeOfDestruciton
             Core.EnsureComplete(7616);
         }
 
-        Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence, 5");
+        Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", 5);
 
         Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5);
 
