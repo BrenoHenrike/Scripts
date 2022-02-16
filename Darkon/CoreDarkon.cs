@@ -10,7 +10,7 @@ public class CoreDarkon
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
-        SecondErrand(Quantity);
+        SecondErrand(Quantity, true);
         FirstErrand(Quantity);
     }
 
@@ -33,7 +33,7 @@ public class CoreDarkon
         }
     }
 
-    public void SecondErrand(int Quantity = 222)
+    public void SecondErrand(int Quantity = 222, bool escapeWhile = false)
     {
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
@@ -47,7 +47,6 @@ public class CoreDarkon
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))
         {
-            Core.EnsureAccept(7325);
 
             if (Bot.Map.Name == "doomvault")
             {
@@ -56,9 +55,14 @@ public class CoreDarkon
                 else EnoughPeople = false;
             }
 
-            if (!Core.IsMember || EnoughPeople)
-                Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false);
-            else Core.KillMonster("ultracarnax", "Enter", "Spawn", "*", "Ingredients?", 22, false);
+            if (!EnoughPeople && !Core.IsMember && escapeWhile)
+                return;
+
+            Core.EnsureAccept(7325);
+
+            if (!EnoughPeople && Core.IsMember)
+                Core.KillMonster("ultracarnax", "Enter", "Spawn", "*", "Ingredients?", 22, false);
+            else Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false);
 
             Core.EnsureComplete(7325);
             Bot.Wait.ForPickup("Darkon's Receipt");
