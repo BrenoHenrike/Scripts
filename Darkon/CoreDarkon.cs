@@ -61,7 +61,7 @@ public class CoreDarkon
             Core.EnsureAccept(7325);
 
             if (!EnoughPeople && Core.IsMember)
-                Core.KillMonster("ultracarnax", "Enter", "Spawn", "*", "Ingredients?", 22, false, publicRoom: true);
+                Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true);
             else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false);
 
             Core.EnsureComplete(7325);
