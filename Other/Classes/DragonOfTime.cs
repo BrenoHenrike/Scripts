@@ -95,16 +95,16 @@ public class DragonOfTime
             PBoD.GetPBoD();
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("underworld", "Laken", "Cross-Era Stabiliser", isTemp: false);
+            Core.HuntMonster("underworld", "Laken", "Cross-Era Stabilizer", isTemp: false);
 
             if (!Core.CheckInventory("Chronomancer's Codex"))
             {
                 Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-                Core.HuntMonster("timespace", "Iadoa", "Chronomancer's Codex", isTemp: false);
+                Core.HuntMonster("timespace", "CHaos Lord Iadoa", "Chronomancer's Codex", isTemp: false);
             }
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("arena", "Timesteam Rider", "Timestream String", 100, false);
+            Core.HuntMonster("arena", "Timestream Rider", "Timestream String", 100, false);
 
             Core.ChainQuest(7718);
         }

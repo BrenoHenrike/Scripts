@@ -24,15 +24,13 @@ public class PinkBladeOfDestruciton
     {
         P3.Part3();
 
-        Core.AddDrop("Pink Blade of Destruction", "Fuchsia Dye", "Zealous Badge");
-        // Forging a Friendship - 7650
+
+        if (Core.CheckInventory("Pink Blade of Destruction"))
+            return;
+
+        Core.AddDrop("Fuchsia Dye", "Zealous Badge", "Pink Blade of Destruction");
+        
         Core.EnsureAccept(7650);
-        //reqs:
-        // Fuchsia Dye x50
-        // Spirit Orb (Misc) x500
-        // Zealous Badge x5
-        // Unicorn Essence x5
-        // Gem Power x5
 
         while (!Core.CheckInventory("Fuchsia Dye", 50))
         {
@@ -41,7 +39,7 @@ public class PinkBladeOfDestruciton
             Core.HuntMonster("bloodtuskwar", "Chaotic Vulture", "Amaranth Flower", 5);
             Core.EnsureComplete(1487);
         }
-
+        
         BLoD.SpiritOrb(500);
 
         while (!Core.CheckInventory("Zealous Badge", 5))
