@@ -1,5 +1,6 @@
 - ##### Versions
-  - [v2.24 - Latest](#v224)
+  - [v2.24](#v224)
+    - [v2.24.1 - Latest](#2241)
     - [MAS v1.2](#mas-v12)
   - [v2.23](#v223)
   - [v2.22](#v222)
@@ -36,6 +37,11 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+
+### v2.24.1
+Released on Feb 16, 2022 at 00:45 / 12:45 AM (UTC)  
+· Fixed attacking Hero in DoT, and fixed naming error  
+[Back to top](#versions)
 
 ### v2.24
 **Released on Feb 14, 2022 at 22:30 / 10:30 PM (UTC)**  
