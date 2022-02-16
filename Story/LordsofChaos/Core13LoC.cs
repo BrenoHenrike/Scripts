@@ -176,16 +176,26 @@ public class Core13LoC
             Core.Join("dwarfprison", "Enter", "Right");
             Core.EnsureComplete(354);
         }
+
+
         Core.KillQuest(355, "dwarfprison", "Warden Elfis");                                       // Jailhouse Rock
-        if (!Core.CheckInventory("Tee-En-Tee"))
-            Core.KillQuest(356, "dwarfprison", new[] { "Balboa", "Albino Bat", "Chaos Drow" });   // Explosives 101
+        Core.KillQuest(356, "dwarfprison", new[] { "Albino Bat", "Balboa", "Chaos Drow" });       // Explosives 101
+
         if (!Core.QuestProgression(357))                                                          // Big Bada-Boom
         {
+            Core.EnsureAccept(356);
+            if (!Core.CheckInventory("Tee-En-Tee"))
+            {
+                Core.HuntMonster("dwarfprison", "Albino Bat", "Item", 3);
+                Core.HuntMonster("dwarfprison", "Chaos Drow", "Item", 3);
+                Core.HuntMonster("dwarfprison", "Balboa", "Item", 2);
+                Core.EnsureComplete(356);
+            }
             Core.Join("dwarfprison");
-            Core.EnsureComplete(357);
+            Core.ChainQuest(357);
         }
         //Map: Roc
-        Core.MapItemQuest(362, "roc", 62);                                                                                  // Defeat Rock Roc
+        Core.MapItemQuest(362, "roc", 62);                                                              // Defeat Rock Roc
         //Map: Stalagbite
         Core.MapItemQuest(363, "stalagbite", 63);                                                       // Facing Vath
     }
