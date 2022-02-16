@@ -123,7 +123,7 @@ public class DoomwoodPart3
         //http://aqwwiki.wikidot.com/cat-ears-quest :
         // Cat Ears?
         //Map: stonewooddeep
-        Core.MapItemQuest(7623, "stonewooddeep", 7528, 1, AutoCompleteQuest: false);
+        Core.MapItemQuest(7623, "stonewooddeep", 7528, 1);
         //http://aqwwiki.wikidot.com/stonewood-forest-s-quests :
         // EN GARDE!
         //Map: stonewooddeep
