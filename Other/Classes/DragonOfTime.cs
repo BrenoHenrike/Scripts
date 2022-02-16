@@ -58,7 +58,7 @@ public class DragonOfTime
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("kingcoal", "Frost King", "Frost King's Story", isTemp: false);
 
-            Core.HuntMonster("baconcatyou", Bot.Player.Username, "Your Own Memories", isTemp: false);
+            Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false);
 
             Core.ChainQuest(7716);
         }
@@ -77,7 +77,7 @@ public class DragonOfTime
             Core.AddDrop("Key of Greed");
             Core.HuntMonster("greed", "Goregold", "Goregold's Luck", isTemp: false);
 
-            Core.HuntMonster("darkplane", "Victorius", "Victorius' Dignity", isTemp: false);
+            Core.HuntMonster("darkplane", "Victorious", "Victorious's Dignity", isTemp: false);
 
             Core.HuntMonster("trigoras", "Trigoras", "Trigoras' Tenacity", 3, false);
 
@@ -240,7 +240,7 @@ public class DragonOfTime
 
             Core.EquipClass(ClassType.Solo);
             Core.UpdateQuest(3880);
-            Core.HuntMonster("chaoslord", Bot.Player.Username, "Conquered Past", isTemp: false);
+            Core.KillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false);
 
             Core.UpdateQuest(10, 159);
             Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
