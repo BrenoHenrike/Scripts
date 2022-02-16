@@ -50,9 +50,9 @@
 · Released Mysterious Dungeon (Tato)  
 · Released AQW Zombies (Tato)  
 · Released Doomwood Part 3 (Tato)  
-· Released Pink Blade of Destruction (Tato)  
 · Released Collection (Tato)  
 · Released Borgars (Tato)  
+· Released Pink Blade of Destruction (Tato)  
 · RBot 4 \[Beta\] is now a hard demand for these scripts. Will add new features pertaining this soon  
 · Changed a awkward Aggromon bypass into a UpdateQuest bypass in Burning Blade of Azebeth  
 · New feature in CoreBots called UpdateQuest, it makes your client think you have completed a certain quest before. Use with care  
