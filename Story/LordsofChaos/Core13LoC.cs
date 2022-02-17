@@ -7,7 +7,6 @@ public class Core13LoC
 
     public void Complete13LOC(bool withExtras = false)
     {
-        AcceptandCompleteTries = 5;
         if (Core.IsMember)
         {
             Prologue();
@@ -1774,7 +1773,6 @@ public class Core13LoC
 
     public void Hero()
     {
-        AcceptandCompleteTries = 5;
         Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Daggers");
         if (Core.CheckInventory("Lore's Champion Daggers", toInv: false))
         {
