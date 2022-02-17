@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/YamiNoRonin/YokaiSwordScroll.cs
 //cs_include Scripts/Legion/YamiNoRonin/BlademasterSwordScroll.cs
