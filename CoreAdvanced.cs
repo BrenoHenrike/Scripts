@@ -95,25 +95,38 @@ public class CoreAdvanced
         if (FlexibleList.Count != 0)
         {
             Core.Logger($"Best Enhancement of: {Type.ToString()}");
-            if (Type == EnhancementType.Fighter) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 768 : 141);
-            else if (Type == EnhancementType.Thief) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 767 : 142);
-            else if (Type == EnhancementType.Wizard) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 765 : 144);
-            else if (Type == EnhancementType.Healer) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 762 : 145);
-            else if (Type == EnhancementType.Hybrid) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 766 : 143);
-            else if (Type == EnhancementType.Lucky) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 763 : 147);
-            else if (Type == EnhancementType.SpellBreaker) __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 146 : 146);
+            if (Type == EnhancementType.Fighter)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 768 : 141);
+            else if (Type == EnhancementType.Thief)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 767 : 142);
+            else if (Type == EnhancementType.Wizard)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 765 : 144);
+            else if (Type == EnhancementType.Healer)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 762 : 145);
+            else if (Type == EnhancementType.Hybrid)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 766 : 143);
+            else if (Type == EnhancementType.Lucky)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 763 : 147);
+            else if (Type == EnhancementType.SpellBreaker)
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 146 : 146);
         }
         //Weapon Specials
 
         if (WeaponList.Count != 0 && Special != WeaponSpecial.None)
         {
             Core.Logger($"Best Enhancement of: {Type.ToString()}, {Special.ToString().Replace('_', ' ')}");
-            if (Type == EnhancementType.Fighter) __AutoEnhance(WeaponList, 635, "museum");
-            else if (Type == EnhancementType.Thief) __AutoEnhance(WeaponList, 637, "museum");
-            else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker) __AutoEnhance(WeaponList, 636, "museum");
-            else if (Type == EnhancementType.Healer) __AutoEnhance(WeaponList, 638, "museum");
-            else if (Type == EnhancementType.Hybrid) __AutoEnhance(WeaponList, 633, "museum");
-            else if (Type == EnhancementType.Lucky) __AutoEnhance(WeaponList, 639, "museum");
+            if (Type == EnhancementType.Fighter)
+                __AutoEnhance(WeaponList, 635, "museum");
+            else if (Type == EnhancementType.Thief)
+                __AutoEnhance(WeaponList, 637, "museum");
+            else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
+                __AutoEnhance(WeaponList, 636, "museum");
+            else if (Type == EnhancementType.Healer)
+                __AutoEnhance(WeaponList, 638, "museum");
+            else if (Type == EnhancementType.Hybrid)
+                __AutoEnhance(WeaponList, 633, "museum");
+            else if (Type == EnhancementType.Lucky)
+                __AutoEnhance(WeaponList, 639, "museum");
         }
 
         void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = null)
