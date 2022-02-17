@@ -992,7 +992,7 @@ public class CoreFarms
     {
         if (FactionRank("Evil") >= rank)
             return;
-        Core.SwitchAlignment(Alignment.Evil);
+        Core.ChangeAlignment(Alignment.Evil);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)
@@ -1068,7 +1068,7 @@ public class CoreFarms
     {
         if (FactionRank("Good") >= rank)
             return;
-        Core.SwitchAlignment(Alignment.Good);
+        Core.ChangeAlignment(Alignment.Good);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         if (Core.IsMember)

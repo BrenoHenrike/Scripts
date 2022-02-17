@@ -931,7 +931,6 @@ public class CoreBots
             _HuntForItem(monster, item, quant, isTemp, log: log);
     }
 
-
     /// <summary>
     /// Kill Escherion for the desired item
     /// </summary>
@@ -1107,26 +1106,10 @@ public class CoreBots
     /// Switches the player's Alignment to the input Alignment type
     /// </summary>
     /// <param name="Side">Type "Alignment." and then Good, Evil or Chaos in order to select which Alignment it should swap too</param>
-    public void SwitchAlignment(Alignment Side)
+    public void ChangeAlignment(Alignment Side)
     {
-        if (Side == Alignment.Good)
-        {
-            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%1%");
-            Bot.Sleep(1500);
-            return;
-        }
-        if (Side == Alignment.Evil)
-        {
-            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%2%");
-            Bot.Sleep(1500);
-            return;
-        }
-        if (Side == Alignment.Chaos)
-        {
-            SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%3%");
-            Bot.Sleep(1500);
-            return;
-        }
+        SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)Side}%");
+        Bot.Sleep(ActionDelay * 2);
     }
 
     /// <summary>
@@ -1147,81 +1130,6 @@ public class CoreBots
     {
         Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
         Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (QuestData.Value + 1) + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
-    }
-
-    /// <summary>
-    /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
-    /// </summary>
-    /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    public string[] BestGear(GearBoost BoostType)
-    {
-        GearBoost[] RaceBoosts = {
-            GearBoost.Chaos,
-            GearBoost.Dragonkin,
-            GearBoost.Elemental,
-            GearBoost.Human,
-            GearBoost.Undead
-        };
-        ItemCategory[] WeaponCatagories = {
-            ItemCategory.Sword,
-            ItemCategory.Axe,
-            ItemCategory.Dagger,
-            ItemCategory.Gun,
-            ItemCategory.HandGun,
-            ItemCategory.Rifle,
-            ItemCategory.Bow,
-            ItemCategory.Mace,
-            ItemCategory.Gauntlet,
-            ItemCategory.Polearm,
-            ItemCategory.Staff,
-            ItemCategory.Wand,
-            ItemCategory.Whip
-        };
-        InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
-        InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
-        InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
-        Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
-        string BestItemDMGall = null;
-
-        foreach (InventoryItem Item in BankInvData)
-        {
-            if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
-            {
-                string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains(BoostType.ToString()));
-                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""));
-                BoostedGear.Add(Item.Name, BoostFloat);
-            }
-        }
-        string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
-        ItemCategory BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
-
-        if (RaceBoosts.Contains(BoostType))
-        {
-            Dictionary<string, float> BoostedGearDMGall = new Dictionary<string, float>();
-
-            foreach (InventoryItem Item in BankInvData)
-            {
-                if (Item.Meta != null && Item.Meta.Contains("dmgAll") &&
-                   (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
-                    Item.Category != BestItemCatagory)
-                {
-                    string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
-                    float BoostFloat = float.Parse(CorrectData.Replace($"dmgAll:", ""));
-                    BoostedGearDMGall.Add(Item.Name, BoostFloat);
-                }
-            }
-            BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
-            JumpWait();
-            CheckInventory(BestItemDMGall);
-            Bot.Player.EquipItem(BestItemDMGall);
-            Bot.Sleep(ActionDelay);
-        }
-        JumpWait();
-        CheckInventory(BestItem);
-        Bot.Player.EquipItem(BestItem);
-        if (RaceBoosts.Contains(BoostType))
-            return new[] { BestItem, BestItemDMGall };
-        return new[] { BestItem };
     }
 
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
@@ -1449,9 +1357,9 @@ public class CoreBots
 
 public enum Alignment
 {
-    Good,
-    Evil,
-    Chaos
+    Good = 1,
+    Evil = 2,
+    Chaos = 3
 }
 
 public enum ClassType
@@ -1459,18 +1367,4 @@ public enum ClassType
     Solo,
     Farm,
     None
-}
-
-public enum GearBoost
-{
-    cp,
-    gold,
-    rep,
-    exp,
-    dmgAll,
-    Chaos,
-    Dragonkin,
-    Elemental,
-    Human,
-    Undead
 }

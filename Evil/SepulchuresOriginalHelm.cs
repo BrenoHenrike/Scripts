@@ -37,7 +37,7 @@ public class SepulchuresOriginalHelm
             Core.SetOptions(false);
         }
 
-        Core.SwitchAlignment(Alignment.Evil);
+        Core.ChangeAlignment(Alignment.Evil);
         Farm.EvilREP(10);
         Farm.Experience(70);
         Zombie.Storyline();
