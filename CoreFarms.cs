@@ -190,27 +190,6 @@ public class CoreFarms
             Bot.Player.Pickup("Essence of Wrath", "Souls of Heresy");
         }
     }
-
-    public void rankUpClass(string ClassName)
-    {
-        if (!Core.CheckInventory(ClassName))
-            Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
-
-        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
-        if (itemInv == null)
-            Core.Logger($"\"{itemInv.Name}\" is not a valid Class", messageBox: true, stopBot: true);
-        if (itemInv.Quantity == 302500)
-        {
-            Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
-            return;
-        }
-        string ClassReAfter = Bot.Inventory.CurrentClass.Name;
-        Core.BestGear(GearBoost.cp);
-        Bot.Player.EquipItem(itemInv.Name);
-        IcestormArena(1, true);
-        Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-        Bot.Player.EquipItem(ClassReAfter);
-    }
     #endregion
 
     #region Misc
