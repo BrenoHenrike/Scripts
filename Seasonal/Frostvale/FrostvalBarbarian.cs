@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/CoreDailys.cs
@@ -11,6 +12,7 @@ public class FrostvalBarbarian
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public Frostvale Frostvale = new Frostvale();
     public GlaceraStory Glacera = new GlaceraStory();
     public CoreDailys Daily = new CoreDailys();
@@ -88,6 +90,6 @@ public class FrostvalBarbarian
 
         Bot.Wait.ForPickup("Frostval Barbarian");
         if (rankUpClass)
-            Farm.rankUpClass("Frostval Barbarian");
+            Adv.rankUpClass("Frostval Barbarian");
     }
 }

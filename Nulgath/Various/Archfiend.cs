@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
@@ -12,9 +13,9 @@ using RBot;
 public class ArchFiend
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreNulgath Nulgath = new CoreNulgath();
     public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
 
@@ -71,6 +72,6 @@ public class ArchFiend
         }
         Core.BuyItem("tercessuinotlim", 695, "ArchFiend");
         if (rankUp)
-            Farm.rankUpClass("ArchFiend");
+            Adv.rankUpClass("ArchFiend");
     }
 }

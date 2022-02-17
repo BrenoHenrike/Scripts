@@ -1,13 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class BloodSorceress
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm => new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -25,6 +26,6 @@ public class BloodSorceress
 
         Core.HuntMonster("towerofmirrors", "Scarletta", "Blood Sorceress", isTemp: false);
         if (rankUpClass)
-            Farm.rankUpClass("Blood Sorceress");
+            Adv.rankUpClass("Blood Sorceress");
     }
 }

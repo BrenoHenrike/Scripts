@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 using RBot;
 
@@ -9,6 +10,7 @@ public class SwordMaster
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
 
     public void ScriptMain(ScriptInterface bot)
@@ -27,10 +29,10 @@ public class SwordMaster
 
         Legion.FarmLegionToken(2000);
         Core.BuyItem("underworld", 238, "SwordMaster", 1);
-        Bot.Shops.Load(763);
-        Bot.Sleep(5000);
-        Core.SendPackets($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%53837%19662%763%");
         if (rankUpClass)
-            Farm.rankUpClass("SwordMaster");
+        {
+            Adv.EnhanceItem("SwordMaster", EnhancementType.Lucky);
+            Adv.rankUpClass("SwordMaster");
+        }
     }
 }

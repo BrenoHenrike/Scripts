@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class Shaman
+public class LordOfOrder
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,21 +14,19 @@ public class Shaman
     {
         Core.SetOptions();
 
-        GetShaman();
+        GetLoO();
 
         Core.SetOptions(false);
     }
 
-    public void GetShaman(bool rankUpClass = true)
+    public void GetLoO(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Shaman"))
+        if (Core.CheckInventory("Lord of Order"))
             return;
 
-        Farm.ArcangroveREP();
 
-        Core.BuyItem("arcangrove", 214, "Shaman");
 
         if (rankUpClass)
-            Adv.rankUpClass("Shaman");
+            Adv.rankUpClass("Lord of Order");
     }
 }

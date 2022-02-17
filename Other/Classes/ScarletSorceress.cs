@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
 //cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
@@ -8,9 +9,9 @@ using RBot;
 public class ScarletSorceress
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm => new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public TowerofMirrors TOM = new TowerofMirrors();
     public BloodSorceress BS = new BloodSorceress();
 
@@ -38,6 +39,6 @@ public class ScarletSorceress
         Bot.Wait.ForPickup("Scarlet Sorceress");
 
         if (rankUpClass)
-            Farm.rankUpClass("Scarlet Sorceress");
+            Adv.rankUpClass("Scarlet Sorceress");
     }
 }

@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
@@ -9,6 +10,7 @@ public class ThePathtoPower
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
     public CoreFarms Farm = new CoreFarms();
     public DarkAlly_Story DarkAlly = new DarkAlly_Story();
@@ -52,7 +54,7 @@ public class ThePathtoPower
     public void SwordMaster()
     {
         SM.GetSwordMaster();
-        Farm.rankUpClass("SwordMaster");
+        Adv.rankUpClass("SwordMaster");
     }
 
 }

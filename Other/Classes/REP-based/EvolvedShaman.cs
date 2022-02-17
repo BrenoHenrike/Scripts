@@ -1,13 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class EvolvedShaman
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -28,6 +29,6 @@ public class EvolvedShaman
         Core.BuyItem("arcangrove", 214, "Evolved Shaman", shopItemID: 6396);
 
         if (rankUpClass)
-            Farm.rankUpClass("Evolved Shaman");
+            Adv.rankUpClass("Evolved Shaman");
     }
 }

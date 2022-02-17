@@ -1,13 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class Paladin
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -26,13 +27,13 @@ public class Paladin
         Farm.GoodREP(5);
 
         Core.BuyItem("necropolis", 26, "Warrior");
-        Farm.rankUpClass("Warrior");
+        Adv.rankUpClass("Warrior");
         Core.BuyItem("necropolis", 26, "Healer");
-        Farm.rankUpClass("Healer");
+        Adv.rankUpClass("Healer");
 
         Core.BuyItem("necropolis", 26, "Paladin");
 
         if (rankUpClass)
-            Farm.rankUpClass("Paladin");
+            Adv.rankUpClass("Paladin");
     }
 }

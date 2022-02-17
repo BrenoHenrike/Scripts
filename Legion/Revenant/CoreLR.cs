@@ -6,6 +6,7 @@ public class CoreLR
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
     public JoinLegion JoinLegion = new JoinLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
@@ -32,7 +33,7 @@ public class CoreLR
         Core.ChainComplete(6900);
         Bot.Wait.ForPickup("Legion Revenant");
         if (rankUpClass)
-            Farm.rankUpClass("Legion Revenant");
+            Adv.rankUpClass("Legion Revenant");
     }
 
     //Legion Fealty 1

@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Other/Classes/LightMage.cs
 //cs_include Scripts/Other/Weapons/AvatarOfDeathsScythe.cs
 //cs_include Scripts/Other/Weapons/GuardianOfSpiritsBlade.cs
@@ -12,6 +13,7 @@ public class LightCaster
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public LightMage LM = new LightMage();
     public AvatarOfDeathsScythe AODS = new AvatarOfDeathsScythe();
     public GuardianOfSpiritsBlade GOSB = new GuardianOfSpiritsBlade();
@@ -56,6 +58,6 @@ public class LightCaster
         Bot.Wait.ForPickup("LightCaster");
 
         if (rankUpClass)
-            Farm.rankUpClass("LightCaster");
+            Adv.rankUpClass("LightCaster");
     }
 }

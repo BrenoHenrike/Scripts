@@ -19,6 +19,7 @@ public class DragonOfTime
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreDarkon Darkon = new CoreDarkon();
     public GoldenBladeOfFate GBoF = new GoldenBladeOfFate();
     public PinkBladeOfDestruciton PBoD = new PinkBladeOfDestruciton();
@@ -275,6 +276,6 @@ public class DragonOfTime
         }
 
         if (rankUpClass)
-            Farm.rankUpClass("Dragon of Time");
+            Adv.rankUpClass("Dragon of Time");
     }
 }

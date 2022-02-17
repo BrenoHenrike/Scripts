@@ -71,7 +71,7 @@ public class ArchPaladin
                 {
                     if (Core.CheckInventory(Class))
                     {
-                        Farm.rankUpClass(Class);
+                        Adv.rankUpClass(Class);
                         Bot.Player.EquipItem(Class);
                         break;
                     }
@@ -205,6 +205,6 @@ public class ArchPaladin
 
         Core.BuyItem("darkthronehub", 1303, "ArchPaladin", shopItemID: 21833);
         if (rankUpClass)
-            Farm.rankUpClass("ArchPaladin");
+            Adv.rankUpClass("ArchPaladin");
     }
 }

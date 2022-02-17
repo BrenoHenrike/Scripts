@@ -1,15 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
 public class Lycan
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public Core13LoC LOC = new Core13LoC();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -31,6 +32,6 @@ public class Lycan
         Core.BuyItem("lycan", 161, "Lycan");
 
         if (rankUpClass)
-            Farm.rankUpClass("Lycan");
+            Adv.rankUpClass("Lycan");
     }
 }
