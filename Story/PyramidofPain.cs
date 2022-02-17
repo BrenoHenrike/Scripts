@@ -20,14 +20,11 @@ public class PyramidofPain
         if (Core.isCompletedBefore(3659))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
-
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
         else
-            // Prove Your Worth
-            Core.KillQuest(3640, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab " });
+        // Prove Your Worth
+        Core.KillQuest(3640, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab "});
         // Still Not Impressed?
         Core.KillQuest(3641, "pyramidpain", "Pyramid Vase");
         // A Prickly Situation
@@ -35,7 +32,7 @@ public class PyramidofPain
         // Beetle Battle Armor
         Core.KillQuest(3643, "pyramidpain", "Golden Scarab ");
         // Pyramid Pilgrimage
-        Core.KillQuest(3644, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab " });
+        Core.KillQuest(3644, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab "});
         // Blood in the Sand
         Core.KillQuest(3645, "pyramidpain", "Sandshark ");
         // Defeat Tribal Traitors
@@ -49,7 +46,7 @@ public class PyramidofPain
         // The Legend of Eldo
         Core.KillQuest(3650, "pyramidpain", "Pyramid Vase");
         // There's No Point
-        Core.KillQuest(3651, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab " });
+        Core.KillQuest(3651, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab "});
         // Trail of Naan Crumbs
         Core.MapItemQuest(3652, "pyramidpain", 2770, 13);
         // Tricky Trip Wires

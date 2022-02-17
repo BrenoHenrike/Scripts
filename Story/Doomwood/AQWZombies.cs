@@ -16,6 +16,7 @@ public class AQWZombies
         Core.SetOptions();
 
         Storyline();
+        Core.Logger("AQWZombies Finished");
 
         Core.SetOptions(false);
     }
@@ -25,8 +26,6 @@ public class AQWZombies
     {
         if (Core.isCompletedBefore(2128))
             return;
-
-        Core.EquipClass(ClassType.Solo);
 
         Core.KillQuest(2093, "battleundera", "Skeletal Soldier");
         Core.KillQuest(2094, "battleundera", "Skeletal Ice Mage");

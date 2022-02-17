@@ -22,9 +22,7 @@ public class KillerCatacombs
 
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
-
-        Core.EquipClass(ClassType.Solo);
-
+        else
         // The Coward
         Core.KillQuest(3660, "killercatacombs", "Tomb Robber ");
         // Welcome Party
@@ -47,22 +45,22 @@ public class KillerCatacombs
         // Silverware Cipher
         Core.KillQuest(3669, "killercatacombs", "Ravenous Maw");
         // Dinner Bell
-        Core.KillQuest(3670, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw" });
+        Core.KillQuest(3670, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw"});
         // Faceless Challengers
         Core.KillQuest(3671, "killercatacombs", "Living Armor ");
         // Doorway
         Core.KillQuest(3672, "killercatacombs", "Living Armor ");
         // Eternal Hunger
-        Core.KillQuest(3673, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor " });
+        Core.KillQuest(3673, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor "});
         // You Weren't Invited
         Core.KillQuest(3674, "killercatacombs", "Living Armor ");
         // Teeth and Plates
-        Core.KillQuest(3675, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor " });
+        Core.KillQuest(3675, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor "});
         // The Moment of Silence
         Core.KillQuest(3676, "killercatacombs", "Living Armor |Ravenous Maw|Starved Maw |Sundered Darkblood ");
         Core.MapItemQuest(3676, "killercatacombs", 2763, 10);
         // Eternal Servitude
-        Core.KillQuest(3677, "killercatacombs", new[] { "Living Armor ", "Sundered Darkblood ", "Unstable Spirit Orb " });
+        Core.KillQuest(3677, "killercatacombs", new[] { "Living Armor ", "Sundered Darkblood ", "Unstable Spirit Orb "});
         // A Reanimated Dragon
         Core.KillQuest(3678, "killercatacombs", "Dracolich ");
         // Lonesome Twin Guardian

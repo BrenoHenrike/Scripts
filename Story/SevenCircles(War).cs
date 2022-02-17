@@ -20,9 +20,6 @@ public class SevenCircles
         if (Core.isCompletedBefore(7978))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
-
         Core.AddDrop("Indulgence");
 
         //Canto IV

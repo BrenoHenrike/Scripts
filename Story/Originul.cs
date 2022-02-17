@@ -20,9 +20,6 @@ public class Originul_Story
         if (Core.isCompletedBefore(7889))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
-
         // Inquisite the Inquisitors
         Core.KillQuest(7881, "Originul", "Inquisitor Guard");
         // Captains Capped

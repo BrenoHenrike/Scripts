@@ -20,8 +20,6 @@ public class FlyingBaconCatFortress
         if (Core.isCompletedBefore(5108))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
         // How Rude!
         Core.MapItemQuest(5087, "baconcat", 4466, 7);
         // Bar Fight!

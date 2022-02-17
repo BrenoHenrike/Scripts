@@ -27,9 +27,6 @@ public class DoomwoodPart3
     {
         if (Core.isCompletedBefore(7653))
             return;
-
-        Core.EquipClass(ClassType.Solo);
-
         ///thorngarde > /stonewood > /techdungeon > /stonewooddeep > /techfortress
 
         //Part1

@@ -18,8 +18,6 @@ public class BattleUnder
 
     public void BattleUnderAll()
     {
-        Core.EquipClass(ClassType.Solo);
-
         BattleUnderA();
         BattleUnderB();
         BattleUnderC();
@@ -31,8 +29,6 @@ public class BattleUnder
     {
         if (Core.isCompletedBefore(377))
             return;
-
-        Core.EquipClass(ClassType.Solo);
 
         Core.EquipClass(ClassType.Farm);
         Core.KillQuest(374, "battleundera", "Skeletal Warrior");
@@ -47,9 +43,7 @@ public class BattleUnder
     {
         if (Core.isCompletedBefore(935))
             return;
-
-        Core.EquipClass(ClassType.Solo);
-
+        
         BattleUnderA();
 
         Core.EquipClass(ClassType.Farm);
@@ -65,8 +59,6 @@ public class BattleUnder
     {
         if (Core.isCompletedBefore(939))
             return;
-
-        Core.EquipClass(ClassType.Solo);
 
         BattleUnderB();
 
@@ -88,8 +80,6 @@ public class BattleUnder
         if (!Core.IsMember || Core.isCompletedBefore(2215))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
         BattleUnderC();
 
         Core.KillQuest(2211, "battleunderd", "Shivering Bones");
@@ -103,8 +93,6 @@ public class BattleUnder
 
     public void BattleUnderE()
     {
-        Core.EquipClass(ClassType.Solo);
-
         Core.KillQuest(5927, "battleundere", "Lava Guard");
         Core.MapItemQuest(5927, "battleundere", 5362);
         Core.KillQuest(5928, "battleundere", "Hot Mama");

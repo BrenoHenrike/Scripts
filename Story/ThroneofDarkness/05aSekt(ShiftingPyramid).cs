@@ -20,8 +20,6 @@ public class ShiftingPyramid
         if (Core.isCompletedBefore(5187))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
         // Hunt for the Infinity Codex
         Core.KillQuest(5166, "whitehole", "Vortex Mage");
         // Sacrific and Survival

@@ -20,8 +20,6 @@ public class DeathPitArena
         if (Core.isCompletedBefore(5154))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
         // Mingle
         Core.MapItemQuest(5133, "deathpit", 4484, 1);
         Core.MapItemQuest(5133, "deathpit", 4485, 1);

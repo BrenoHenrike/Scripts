@@ -20,8 +20,6 @@ public class ParadoxPortal
         if (Core.isCompletedBefore(5050))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
         // Through the Portal!
         Core.KillQuest(5034, "portalmaze", "Time Wraith");
         // Red Alert
