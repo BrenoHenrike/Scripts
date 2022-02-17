@@ -30,6 +30,9 @@ public class GlaceraStory
         if (Core.isCompletedBefore(3941))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
+
         // Seek the Tower
         Core.MapItemQuest(3907, "frozentower", 3022);
 

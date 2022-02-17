@@ -20,6 +20,9 @@ public class SeraphicWar_Story
         if (Core.isCompletedBefore(7428))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
+
         //Get the Parts
         Core.KillQuest(6238, "worldsoul", new[] { "Dwakel Infiltrator", "Dwakel Infiltrator", "Dwakel Infiltrator", "Dwakel Infiltrator" });
         //Get the Water

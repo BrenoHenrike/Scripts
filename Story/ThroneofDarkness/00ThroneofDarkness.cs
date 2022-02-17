@@ -36,6 +36,8 @@ public class CompleteThroneOfDarknessSaga
 
     public void CompleteToD()
     {
+        Core.EquipClass(ClassType.Solo);
+
         Core.Logger("Castle of Bones");
         s01.CastleofBonesSaga();
         Core.Logger("Paradox Portal");

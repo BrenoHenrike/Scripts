@@ -24,6 +24,8 @@ public class DjinnGateStory
         if (Core.isCompletedBefore(6161))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion",
         "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun");
         Core.EquipClass(ClassType.Farm);

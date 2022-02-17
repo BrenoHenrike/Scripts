@@ -20,6 +20,8 @@ public class CastleofBones
         if (Core.isCompletedBefore(4992))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         // Enter the Castle of Bone
         Core.KillQuest(4968, "bonecastle", "Undead Guard");
         // Slay Vaden's Undead Guards

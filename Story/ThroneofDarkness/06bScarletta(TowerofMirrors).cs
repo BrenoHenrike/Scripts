@@ -22,6 +22,8 @@ public class TowerofMirrors
         if (Core.isCompletedBefore(5332))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         HM.HedgeMaze_Questline();
 
         // Drink Me

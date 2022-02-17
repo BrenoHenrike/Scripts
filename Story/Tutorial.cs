@@ -22,6 +22,8 @@ public class Tutorial
     {
         Core.Join(map: "oaklore");
 
+        Core.EquipClass(ClassType.Solo);
+
         Core.Logger("Achievement - Combat");
         Core.SendPackets("%xt%zm%setAchievement%93430%ia0%22%1%");//combat-
         Bot.Sleep(700);

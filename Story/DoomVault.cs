@@ -22,6 +22,8 @@ public class DoomVaultA
         if (Core.isCompletedBefore(3008))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         // the challenge begins
         Core.KillQuest(QuestID: 2952, MapName: "doomvault", MonsterName: "Grim Soldier");
         BypassPacket();

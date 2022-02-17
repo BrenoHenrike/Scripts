@@ -20,6 +20,8 @@ public class GuardianTree
         if (Core.isCompletedBefore(6286))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         //Connect to the Earth
         Core.KillQuest(6276, "guardiantree", "Blossoming Treeant");
         Core.MapItemQuest(6276, "guardiantree", 5769, 5);

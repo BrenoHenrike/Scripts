@@ -20,6 +20,8 @@ public class DarkAlly_Story
         if (Core.isCompletedBefore(7428))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         Core.MapItemQuest(7419, "darkally", 7179, 6);
         Core.KillQuest(7419, "darkally", "Shadow");
 

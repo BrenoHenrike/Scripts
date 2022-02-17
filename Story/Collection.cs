@@ -20,6 +20,8 @@ public class Collection
         if (Core.isCompletedBefore(1348))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         // This Town in a Desktop Globe
         Core.MapItemQuest(1293, "Terrarium", 586);
 

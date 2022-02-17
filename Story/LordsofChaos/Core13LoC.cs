@@ -26,16 +26,17 @@ public class Core13LoC
         Hero();
         if (withExtras)
         {
-            KhasaandaTroll(true);
+            KhasaandaTroll();
             Extra();
         }
     }
 
     public void Prologue()
     {
-
         if (Core.isCompletedBefore(6219))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Map: PortalUndead
         if (!Core.QuestProgression(183))                                                  // Enter the gates
@@ -72,9 +73,10 @@ public class Core13LoC
 
     public void Escherion()
     {
-
         if (Core.isCompletedBefore(272))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Map: Mobius
         Core.KillQuest(245, "mobius", "Chaos Sp-Eye");                                  // Winged Spies
@@ -124,6 +126,8 @@ public class Core13LoC
 
         if (Core.isCompletedBefore(363))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Map: Pines
         Core.MapItemQuest(319, "tavern", 56, 7);                                                                            // Adorable Sisters
@@ -202,9 +206,10 @@ public class Core13LoC
 
     public void Kitsune()
     {
-
         if (Core.isCompletedBefore(488))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Turtle Power
         Core.KillQuest(380, "yokaiboat", "Kappa Ninja");
@@ -320,9 +325,10 @@ public class Core13LoC
 
     public void Wolfwing()
     {
-
         if (Core.isCompletedBefore(598))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Map: DarkoviaGrave
         Core.MapItemQuest(494, "darkoviagrave", 97);                                                    // Grave Mission
@@ -388,6 +394,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(710))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         //Stairway to Heaven
         Core.KillQuest(648, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
 
@@ -450,9 +458,10 @@ public class Core13LoC
 
     public void Ledgermayne()
     {
-
         if (Core.isCompletedBefore(847))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Observing the Observatory
         Core.MapItemQuest(805, "arcangrove", 139);
@@ -600,12 +609,12 @@ public class Core13LoC
         Core.KillQuest(847, "ledgermayne", "Ledgermayne");
     }
 
-
     public void Tibicenas()
     {
-
         if (Core.isCompletedBefore(1005))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Sandport and Starboard
         Core.MapItemQuest(930, "sandport", 251);
@@ -707,15 +716,12 @@ public class Core13LoC
 
     }
 
-    public void KhasaandaHorc(bool bypassCheck = false)
+    public void KhasaandaHorc()
     {
-        if (!bypassCheck)
-        {
-            if (Core.isCompletedBefore(1473))
-                return;
-        }
+        if (Core.isCompletedBefore(1473))
+            return;
 
-
+        Core.EquipClass(ClassType.Solo);
 
         //Troll Stink!
         if (!Core.QuestProgression(1232))
@@ -900,10 +906,12 @@ public class Core13LoC
 
     }
 
-    public void KhasaandaTroll(bool bypassCheck = false)
+    public void KhasaandaTroll()
     {
         if (Core.isCompletedBefore(1468))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Horc Stink! 
         if (!Core.QuestProgression(1226))
@@ -1070,9 +1078,10 @@ public class Core13LoC
 
     public void Iadoa()
     {
-
         if (Core.isCompletedBefore(2519))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Time to Learn the Truth
         Core.MapItemQuest(2239, "thespan", 1358);
@@ -1304,10 +1313,10 @@ public class Core13LoC
 
     public void Lionfang()
     {
-
-
         if (Core.isCompletedBefore(2814))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Final Rest
         Core.KillQuest(2612, "blackhorn", "Restless Undead");
@@ -1514,6 +1523,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(3189))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
 
         //Bright Idea
@@ -1676,6 +1687,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(3160))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         //Bandit Bounty
         Core.KillQuest(3077, "archives", "Chaos Bandit");
 
@@ -1776,14 +1789,10 @@ public class Core13LoC
 
     public void Hero()
     {
-        Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Daggers");
-        if (Core.CheckInventory("Lore's Champion Daggers", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Lore's Champion Daggers");
-            Core.Logger($"Chapter: \"Chaos Lord {Bot.Player.Username}\" already complete. Skipping");
+        if (Core.isCompletedBefore(3881))
             return;
-        }
+
+        Core.EquipClass(ClassType.Solo);
 
         if (!Core.IsMember)
         {
@@ -1965,17 +1974,14 @@ public class Core13LoC
 
         // The Final Showdown!
         Core.KillQuest(3881, "finalshowdown", "Prince Drakath");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 948, "Lore's Champion Daggers");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Lore's Champion Daggers");
     }
 
     public void Extra()
     {
         if (Core.QuestProgression(3824))
             return;
+
+        Core.EquipClass(ClassType.Solo);
 
         //Arrive in DreadHaven
         Core.ChainQuest(3812);
@@ -2016,5 +2022,4 @@ public class Core13LoC
         //Defeat Alteon
         Core.KillQuest(3824, "falcontower", "Alteon");
     }
-
 }

@@ -20,6 +20,8 @@ public class FourthDimensionalPyramid
         if (Core.isCompletedBefore(5212))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         // Eye for an Eye of the Old Gods
         Core.KillQuest(5189, "fourdpyramid", "Sekt");
         // Hounded by History

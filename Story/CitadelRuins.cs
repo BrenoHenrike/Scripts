@@ -26,6 +26,8 @@ public class CitadelRuins
 
     public void DoAll()
     {
+        Core.EquipClass(ClassType.Solo);
+
         MurrysQuests();
         PolishsQuestsTercessuinotlim();
         PolishsQuestsCitadelRuins();

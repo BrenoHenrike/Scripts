@@ -21,6 +21,9 @@ public class XansLair
     public void DoAll()
     {
         Farm.Experience(20);
+
+        Core.EquipClass(ClassType.Solo);
+
         Core.Logger("Volcano Quests");
         Volcano();
         Core.Logger("Andesis Quests");

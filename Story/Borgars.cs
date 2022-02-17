@@ -20,6 +20,8 @@ public class Borgars
         if (Core.isCompletedBefore(7522))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         Core.AddDrop("Slice of Cake");
 
         //P1 - START

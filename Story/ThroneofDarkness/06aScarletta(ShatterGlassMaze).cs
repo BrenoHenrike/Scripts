@@ -22,6 +22,8 @@ public class HedgeMaze
         if (Core.isCompletedBefore(5313))
             return;
 
+        Core.EquipClass(ClassType.Solo);
+
         Core.MapItemQuest(QuestID: 5298, MapName: "hedgemaze", MapItemID: 4678);
         Core.KillQuest(QuestID: 5298, MapName: "hedgemaze", MonsterName: "Knight's Reflection");
         Core.MapItemQuest(QuestID: 5299, MapName: "hedgemaze", MapItemID: 4679);
