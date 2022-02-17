@@ -1,6 +1,6 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story/ThroneofDarkness/06FourthDimensionalPyramid.cs
+//cs_include Scripts/Story/ThroneofDarkness/06bSekt(FourthDimensionalPyramid).cs
 using RBot;
 public class EternalREP
 {
