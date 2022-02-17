@@ -6,11 +6,13 @@
 //cs_include Scripts/Legion/YamiNoRonin/BlademasterSwordScroll.cs
 //cs_include Scripts/Story/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class YamiNoRonin
 {
     public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new CoreAdvanced();
     public TheEdgeofanEra TEoaE = new TheEdgeofanEra();
     public ThePathtoPower TPtP = new ThePathtoPower();
 
