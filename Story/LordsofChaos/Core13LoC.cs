@@ -186,9 +186,9 @@ public class Core13LoC
             Core.EnsureAccept(356);
             if (!Core.CheckInventory("Tee-En-Tee"))
             {
-                Core.HuntMonster("dwarfprison", "Albino Bat", "Item", 3);
-                Core.HuntMonster("dwarfprison", "Chaos Drow", "Item", 3);
-                Core.HuntMonster("dwarfprison", "Balboa", "Item", 2);
+                Core.HuntMonster("dwarfprison", "Albino Bat", "Nitrate Elements", 3);
+                Core.HuntMonster("dwarfprison", "Chaos Drow", "Drow Shoelaces", 3);
+                Core.HuntMonster("dwarfprison", "Balboa", "Flint Stone", 2);
                 Core.EnsureComplete(356);
             }
             Core.Join("dwarfprison");
