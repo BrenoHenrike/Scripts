@@ -1383,6 +1383,9 @@ public class CoreBots
     {
         if (Bot.Player.Cell != "Wait")
         {
+            if (Bot.Player.Cell == "Wait")
+                return;
+
             Bot.Player.Jump("Wait", "Spawn");
             Bot.Sleep(ExitCombatDelay);
             Bot.Wait.ForCombatExit();
