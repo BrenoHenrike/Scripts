@@ -42,7 +42,7 @@ public class GuardianTree
         if (!Core.QuestProgression(6283))
         {
             Core.EnsureAccept(6283);
-            Core.KillMonster("guardiantree", "r8", "Left", "Seed Spitter", "Life Energy", 8);
+            Core.KillMonster("guardiantree", "r8", "Left", "*", "Life Energy", 8);
             Core.EnsureComplete(6283);
         }
         //Up We Go!

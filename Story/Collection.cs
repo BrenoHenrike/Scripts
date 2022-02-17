@@ -21,7 +21,7 @@ public class Collection
             return;
 
         // This Town in a Desktop Globe
-        Core.MapItemQuest(1293, "Terrarium", 586, AutoCompleteQuest: false);
+        Core.MapItemQuest(1293, "Terrarium", 586);
 
         // Dust Bunnies Can't Hide
         Core.KillQuest(1294, "Terrarium", "Dustbunny of Doom");
@@ -56,7 +56,7 @@ public class Collection
         Core.KillQuest(1308, "Terrarium", new[] { "Doppleganger of Will", "Doppleganger of Fred" });
 
         // Catapult Climb
-        Core.MapItemQuest(1309, "Terrarium", 598);
+        Core.MapItemQuest(1309, "Terrarium", 604);
 
         // The Treasure that You Seek - 976
         Core.KillQuest(1339, "prehistoric", "Gigantosaurus");
