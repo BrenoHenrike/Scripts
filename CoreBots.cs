@@ -101,18 +101,24 @@ public class CoreBots
                     StopBot();
             }, "Stop Handler");
 
-            /*
             Bot.SendPacket("%xt%zm%afk%1%false%");
-            Bot.RegisterHandler(1000, b =>
+            Bot.Sleep(ActionDelay);
+            bool TimerRunning = false;
+            Bot.RegisterHandler(5000, b =>
             {
-                Bot.Sleep(ActionDelay);
-                if (b.Player.AFK)
+                if (b.Player.AFK && !TimerRunning)
                 {
-                    b.Options.AutoRelogin = true;
-                    b.Player.Logout();
+                    TimerRunning = true;
+                    Bot.Sleep(300000);
+                    if (b.Player.AFK)
+                    {
+                        b.Options.AutoRelogin = true;
+                        b.Player.Logout();
+                    }
+                    TimerRunning = false;
                 }
             }, "AFK Handler");
-            */
+
 
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
@@ -1317,10 +1323,8 @@ public class CoreBots
     public void StopBot(bool removeStopHandler = false)
     {
         if (removeStopHandler)
-        {
             Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
-            //Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
-        }
+        Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
         Join("battleon");
         if (AntiLag)
         {
