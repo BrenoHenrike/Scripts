@@ -7,6 +7,7 @@ public class Core13LoC
 
     public void Complete13LOC(bool withExtras = false)
     {
+        AcceptandCompleteTries = 5;
         if (Core.IsMember)
         {
             Prologue();
@@ -213,11 +214,8 @@ public class Core13LoC
         //Setting Sail to Yokai
         if (!Core.QuestProgression(381))
         {
-            if(!Core.CheckInventory("Sail Permit"))
-            {
             Core.EnsureAccept(381);
-            Core.KillMonster("yokaiboat", "r4", "Left", "*", "Sail Permit");
-            }
+            Core.KillMonster("yokaiboat", "r4", "Spawn", "3844", "Sail Permit");
             Core.EnsureComplete(381);
         }
 
@@ -363,17 +361,14 @@ public class Core13LoC
         Core.KillQuest(536, "lycan", "Chaos Vampire Knight");                                           // Vampire Knights
         Core.KillQuest(537, "lycan", "Sanguine");                             // Sanguine
         //Map: LycanWar
-        if (!Core.QuestProgression(1))                                        // Lycan War
+        if (!Core.QuestProgression(564))
         {
-            Core.Join("lycanwar");
-            Core.Jump("Boss", "Right");
+            Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
             Bot.Sleep(5000);
-            Core.Jump("Boss", "Left");
-            Bot.Player.Kill("Edvard");
-            Bot.Sleep(7000);
+            Core.UpdateQuest(564);
+            Core.MapItemQuest(564, "chaoscave", 107);
         }
-        //Map: ChaosCave
-        Core.MapItemQuest(564, "chaoscave", 107);                                                       // Search and Report
+        //Map: ChaosCave                                                     // Search and Report
         Core.KillQuest(565, "chaoscave", "Werepyre");                                                   // The Key is the Key
         Core.KillQuest(566, "chaoscave", "Werepyre");                                                   // Secret Words
         Core.KillQuest(567, "chaoscave", "Dracowerepyre");                          // Dracowerepyre
@@ -410,7 +405,7 @@ public class Core13LoC
         Core.KillQuest(659, "beehive", "Killer Queen Bee");
 
         //Satisfaction
-        Core.KillQuest(660, "beehive", "Lord Ovthedance", AutoCompleteQuest: false);
+        Core.KillQuest(660, "beehive", "Lord Ovthedance");
 
         //Dance with Great Godfather of Souls
         if (!Core.QuestProgression(661))
@@ -435,20 +430,20 @@ public class Core13LoC
         Core.KillQuest(677, "orchestra", "Mozard");
 
         //Soul Man
-        Core.KillQuest(678, "orchestra", "Faust", AutoCompleteQuest: false);
+        Core.KillQuest(678, "orchestra", "Faust");
 
         //Great gig in the Sky
         Core.KillQuest(4827, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
 
 
         //Mythsong War Cutscene
-        Core.ChainQuest(707, AutoCompleteQuest: false);
+        Core.ChainQuest(707);
 
         //Pony Gary Yellow
-        Core.KillQuest(709, "palooza", "Pony Gary Yellow", AutoCompleteQuest: false);
+        Core.KillQuest(709, "palooza", "Pony Gary Yellow");
 
         //Kimberly
-        Core.KillQuest(710, "palooza", "Kimberly", AutoCompleteQuest: false);
+        Core.KillQuest(710, "palooza", "Kimberly");
     }
 
     public void Ledgermayne()
@@ -472,7 +467,7 @@ public class Core13LoC
         Core.KillQuest(809, "cloister", "Karasu");
 
         //It's A Bough-t Time
-        Core.BuyQuest(810, "arcangrove", 211, "Mana Potion", AutoCompleteQuest: false);
+        Core.BuyQuest(810, "arcangrove", 211, "Mana Potion");
         Core.MapItemQuest(810, "cloister", 141, 3);
 
         //Wendigo Whereabouts
@@ -953,8 +948,8 @@ public class Core13LoC
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Tusks", 5);
             Core.HuntMonster("crossroads", "Koalion", "Koalion Claw", 5);
             Core.HuntMonster("bloodtusk", "Crystal-Rock", "Singing Crystals", 10);
-            Core.MapItemQuest(1231, "crossroads", 522, 10);
-            Core.MapItemQuest(1231, "crossroads", 524, 5);
+            Core.MapItemQuest(1231, "crossroads", 522, 5);
+            Core.MapItemQuest(1231, "crossroads", 524, 10);
         }
 
         //Eclipse - cutscene
@@ -1325,7 +1320,7 @@ public class Core13LoC
         Core.KillQuest(2615, "blackhorn", new[] { "Tomb Spider", "Restless Undead" });
 
         //The Wall Comes Down
-        Core.MapItemQuest(2616, "blackhorn", 1617, AutoCompleteQuest: false);
+        Core.MapItemQuest(2616, "blackhorn", 1617);
 
         //The Bonefeeder
         Core.KillQuest(2617, "blackhorn", "Bonefeeder Spider");
@@ -1779,6 +1774,7 @@ public class Core13LoC
 
     public void Hero()
     {
+        AcceptandCompleteTries = 5;
         Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Daggers");
         if (Core.CheckInventory("Lore's Champion Daggers", toInv: false))
         {
