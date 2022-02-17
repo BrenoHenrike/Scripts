@@ -213,8 +213,11 @@ public class Core13LoC
         //Setting Sail to Yokai
         if (!Core.QuestProgression(381))
         {
+            if(!Core.CheckInventory("Sail Permit"))
+            {
             Core.EnsureAccept(381);
-            Core.KillMonster("yokaiboat", "r4", "Spawn", "3844", "Sail Permit");
+            Core.KillMonster("yokaiboat", "r4", "Left", "*", "Sail Permit");
+            }
             Core.EnsureComplete(381);
         }
 
