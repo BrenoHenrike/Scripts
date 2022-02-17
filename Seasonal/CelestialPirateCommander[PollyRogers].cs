@@ -12,7 +12,7 @@ public class CelestialPirateCommander
     {
         Core.SetOptions();
 
-        GetCPC(true);
+        GetCPC();
 
         Core.SetOptions(false);
     }
@@ -32,7 +32,7 @@ public class CelestialPirateCommander
         "Celestial Commander's Plank"
     };
 
-    public void GetCPC(bool OnlyPolly = false)
+    public void GetCPC(bool OnlyPolly = true)
     {
         if (OnlyPolly && Core.CheckInventory("Polly Roger"))
             return;
