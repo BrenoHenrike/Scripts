@@ -1,6 +1,7 @@
 - ##### Versions
+  - [v2.25- Latest](#v225)
   - [v2.24](#v224)
-    - [v2.24.2 - Latest](#2242)
+    - [v2.24.2](#2242)
     - [v2.24.1](#2241)
     - [MAS v1.2](#mas-v12)
   - [v2.23](#v223)
@@ -38,6 +39,38 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+
+### v2.25
+**Released on Feb 17, 2022 at 23:00 / 11:00 PM (UTC)**  
+· Released Dragon Fable Orgins (Hao)  
+· Released Master Ranger (Exelot)  
+· Added Auto Enhancement to all class bots via rankUpClass  
+· New method in CoreAdvanced: BoostKillMonster, its KillMonster combined with an automated BestGear  
+· New method in CoreAdvanced: BoostHuntMonster, its HuntMonster combined with an automated BestGear  
+· New method in CoreAdvanced: SmartEnhance, it is a large database that knows what class needs what enhancement. Thanks to Vero for the data  
+· New private method in CoreAdvanced: _RaceGear, internal method for a bunch of the new features  
+· New private method in CoreAdvanced: _CurrentClassEnh, internal method for a bunch of the new features  
+· New private method in CoreAdvanced: _CurrentWeaponSpecial, internal method for a bunch of the new features  
+· Moved rankUpClass from CoreFarms to CoreAdvanced  
+· Moved BestGear from CoreBots to CoreAdvanced  
+· Second Errand now uses Ultra Kathool as backup instead of Ultra Carnax  
+· Reintroduced the AFK Handler, but now it checks if you're afk for 5 minutes before logging you out and restarting  
+· All story bots now automatically equip your Solo Class (if defined in CoreBots)  
+· Celestial Pirate Commander \[Polly Rogger\] now only gets you Polly Roger by default  
+· KillUltra now equips BestGear  
+· Lore Master REP now unlocks the quests you need properly  
+· Minor alteration to JumpWait  
+· Renamed SwitchAlignment to ChangeAlignment  
+· Added CoreAdvanced to a bunch of scripts  
+· Fixed Polly Roger  
+· Fixed cs_include pathing for files using Throne of Darkness  
+· Fixed Guardian Tree getting stuck on a Seed Spitter and softlocking your client (hopefully)  
+· A couple fixes to Collection  
+· Moved FaerieCourtREP to Seasonal  
+· Multiple fixes to 13 Lords of Chaos  
+· Multiple fixes to Dragon of Time  
+[Back to top](#versions)
+
 ### v2.24.2
 **Released on Feb 16, 2022 at 17:10 / 05:10 PM (UTC)**  
 · Released CoreAdvanced  
