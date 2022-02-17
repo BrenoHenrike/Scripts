@@ -620,9 +620,14 @@ public class Core13LoC
         if (!Core.QuestProgression(934))
         {
             Core.EnsureAccept(934);
-            Core.KillMonster("sandport", "r6", "Right", "2153", "Horc Sell-Swords Defeated", 1);
-            Core.KillMonster("sandport", "r5", "Right", "536", "Horc Sell-Swords Defeated", 3);
-            Core.EnsureComplete(934);
+            Core.Join("sandport", "r6", "Right");
+            Bot.Player.Kill("*");
+            Core.Jump("r5", "Right");
+            Bot.Player.Kill("*");
+            Bot.Player.Kill("*");
+            Bot.Player.Kill("*");
+            if (Bot.Quest.CanComplete(934))
+                Core.EnsureComplete(934);
         }
 
         //Sacred Scarabs
