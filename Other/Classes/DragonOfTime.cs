@@ -77,7 +77,7 @@ public class DragonOfTime
             Core.HuntMonster("blindingsnow", "Nythera", "Nythera's Patience", isTemp: false);
 
             Core.AddDrop("Key of Greed");
-            Core.HuntMonster("greed", "Goregold", "Goregold's Luck", isTemp: false, publicRoom: true);
+            Adv.BoostHuntMonster("greed", "Goregold", "Goregold's Luck", isTemp: false, publicRoom: true);
 
             Core.HuntMonster("darkplane", "Victorious", "Victorious's Dignity", isTemp: false);
 
@@ -118,7 +118,7 @@ public class DragonOfTime
             Core.EnsureAccept(7719);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("cathedral", "Incarnation of Time", "Time Loop Broken", isTemp: false, publicRoom: true);
+            Adv.BoostHuntMonster("cathedral", "Incarnation of Time", "Time Loop Broken", isTemp: false, publicRoom: true);
 
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("portalwar", "r4", "Right", "*", "Anomaly Silenced", 100, false);
@@ -142,7 +142,7 @@ public class DragonOfTime
 
             Core.HuntMonster("bosschallenge", "Grievous Inbunche", "Brutal Slash Studied", 10, isTemp: false, publicRoom: true);
 
-            Core.HuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
+            Adv.BoostHuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
 
             Core.ChainQuest(7720);
         }
@@ -154,7 +154,7 @@ public class DragonOfTime
             Core.EnsureAccept(7721);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("ivoliss", "Ivoliss", "Sword of Voids", isTemp: false);
+            Adv.BoostHuntMonster("ivoliss", "Ivoliss", "Sword of Voids", isTemp: false);
 
             Darkon.FarmReceipt(100);
 
@@ -169,7 +169,7 @@ public class DragonOfTime
             }
 
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("aqw3d", "r13", "Bottom", "*", "Cross-Dimensional Weapons", 300, isTemp: false, publicRoom: true);
+            Adv.BoostKillMonster("aqw3d", "r13", "Bottom", "*", "Cross-Dimensional Weapons", 300, isTemp: false, publicRoom: true);
 
             SP.ShiftingPyramidSaga();
             if (!Core.CheckInventory("Starlight Singularity"))
@@ -197,16 +197,16 @@ public class DragonOfTime
             Core.HuntMonster("moonlab", "Slime Mold", "Unyielding Slime", 300, false);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
 
-            Core.HuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
 
-            Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
 
             Core.UpdateQuest(9, 159);
-            Core.HuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
 
-            Core.HuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
 
             Core.ChainQuest(7722);
         }
@@ -221,11 +221,11 @@ public class DragonOfTime
             Core.KillMonster("volcano", "r10", "Left", "Fire Imp", "Fire Essence", 3000, false);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("charredplains", "Akriloth", "Akriloth's Flametongue", 100, false, publicRoom: true);
+            Adv.BoostHuntMonster("charredplains", "Akriloth", "Akriloth's Flametongue", 100, false, publicRoom: true);
 
-            Core.HuntMonster("ultraphedra", "Ultra Phedra", "Immortal Embers", 50, false, publicRoom: true);
+            Adv.BoostHuntMonster("ultraphedra", "Ultra Phedra", "Immortal Embers", 50, false, publicRoom: true);
 
-            Core.HuntMonster("thevoid", "Reaper", "Ashes from the Void Realm", 50, false, publicRoom: true);
+            Adv.BoostHuntMonster("thevoid", "Reaper", "Ashes from the Void Realm", 50, false, publicRoom: true);
 
             Core.ChainQuest(7723);
         }
@@ -245,9 +245,9 @@ public class DragonOfTime
             Core.KillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false, publicRoom: true);
 
             Core.UpdateQuest(10, 159);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
+            Adv.BoostHuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
 
-            Core.HuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
+            Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
 
             Core.ChainQuest(7724);
         }
