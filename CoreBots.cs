@@ -727,6 +727,7 @@ public class CoreBots
                 AddDrop(Item.Name);
 
         Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
+        EquipClass(ClassType.Solo);
         PreviousQuestState = false;
         return false;
     }
