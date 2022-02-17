@@ -626,7 +626,7 @@ public class Core13LoC
             Bot.Player.Kill("*");
             Bot.Player.Kill("*");
             Bot.Player.Kill("*");
-            if (Bot.Quest.CanComplete(934))
+            if (Bot.Quests.CanComplete(934))
                 Core.EnsureComplete(934);
         }
 
