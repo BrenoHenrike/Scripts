@@ -338,7 +338,7 @@ public class CoreFarms
         EternalREP();
         EtherStormREP();
         EvilREP();
-        FaerieCourtREP();
+        //FaerieCourtREP(); <- seasonal
         FishingREP();
         GlaceraREP();
         GoodREP();
