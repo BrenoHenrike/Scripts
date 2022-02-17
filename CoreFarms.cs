@@ -1124,7 +1124,10 @@ public class CoreFarms
                 Core.EquipClass(ClassType.Solo);
                 if (!Bot.Quests.IsUnlocked(3032))
                 {
+                    // Rosetta Stones
                     Core.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);
+                    Core.KillQuest(3030, "druids", "Void Larva");
+                    Core.KillQuest(3031, "druids", "Void Ghast");
                 }
                 while (FactionRank("Loremaster") < rank)
                 {
