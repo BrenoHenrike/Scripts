@@ -6,7 +6,6 @@
 //cs_include Scripts/Legion/YamiNoRonin/BlademasterSwordScroll.cs
 //cs_include Scripts/Story/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
-//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class YamiNoRonin
