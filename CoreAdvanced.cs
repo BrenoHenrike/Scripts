@@ -191,6 +191,9 @@ public class CoreAdvanced
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
 
         InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+        string EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category)).Name;
+        string ClassReAfter = Bot.Inventory.CurrentClass.Name;
+        EnhancementType ReEnhanceAfter = _CurrentClassEnh();
         if (itemInv == null)
             Core.Logger($"\"{itemInv.Name}\" is not a valid Class", messageBox: true, stopBot: true);
         if (itemInv.Quantity == 302500)
@@ -198,16 +201,18 @@ public class CoreAdvanced
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
-        string ClassReAfter = Bot.Inventory.CurrentClass.Name;
-        EnhancementType ReEnhanceAfter = _CurrentClassEnh();
         WeaponSpecial ReWEnhanceAfter = _CurrentWeaponSpecial();
         SmartEnhance(ClassName);
         EnhanceItem(BestGear(GearBoost.cp), _CurrentClassEnh(), _CurrentWeaponSpecial());
         Bot.Player.EquipItem(itemInv.Name);
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-        Bot.Player.EquipItem(ClassReAfter);
-        EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
+        if (ClassReAfter != ClassName)
+        {
+            Bot.Player.EquipItem(ClassReAfter);
+            EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
+        }
+        Bot.Player.EquipItem(EquippedWeapon);
     }
 
     /// <summary>
@@ -449,7 +454,7 @@ public class CoreAdvanced
             Bot.Player.EquipItem(Class);
         switch (Class)
         {
-            //Lucky
+            //Lucky - Spiral Carve
             case "Abyssal Angel":
             case "Abyssal Angel’s Shadow":
             case "ArchFiend":
@@ -538,6 +543,7 @@ public class CoreAdvanced
             case "Void Highlord":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
                 break;
+            //Lucky - Mana Vamp
             case "Alpha DOOMmega":
             case "Alpha Omega":
             case "Alpha Pirate":
@@ -578,6 +584,7 @@ public class CoreAdvanced
             case "WarriorScythe General":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
                 break;
+            //Lucky - Awe Blast
             case "Arachnomancer":
             case "Bard":
             case "Chrono Assassin":
@@ -613,6 +620,7 @@ public class CoreAdvanced
             case "Yami no Ronin":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
                 break;
+            //Lucky - Health Vamp
             case "Barber":
             case "Classic DragonLord":
             case "Dragonslayer":
@@ -626,7 +634,7 @@ public class CoreAdvanced
             case "Vampire Lord":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
                 break;
-            //Wizard
+            //Wizard - Awe Blast
             case "Acolyte":
             case "Arcane Dark Caster":
             case "BattleMage":
@@ -650,6 +658,7 @@ public class CoreAdvanced
             case "Witch":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
                 break;
+            //Wizard - Spiral Carve
             case "Chrono DataKnight":
             case "Chrono DragonKnight":
             case "Cryomancer":
@@ -671,6 +680,7 @@ public class CoreAdvanced
             case "Troll Spellsmith":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
                 break;
+            //Wizard - Health Vamp
             case "Daimon":
             case "Evolved Shaman":
             case "LightMage":
@@ -685,12 +695,12 @@ public class CoreAdvanced
             case "The Collector":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
                 break;
-            //Fighter
+            //Fighter - Awe Blast
             case "DeathKnight":
             case "Frostval Barbarian":
                 EnhanceEquipped(EnhancementType.Fighter, WeaponSpecial.Awe_Blast);
                 break;
-            //Healer
+            //Healer - Health Vamp
             case "Dragon of Time":
                 EnhanceEquipped(EnhancementType.Healer, WeaponSpecial.Health_Vamp);
                 break;
