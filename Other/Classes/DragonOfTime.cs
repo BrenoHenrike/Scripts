@@ -38,9 +38,11 @@ public class DragonOfTime
         Core.SetOptions(false);
     }
 
+    private string[] Extras = { "Dragon of Time Horns", "Dragon of Time Horns + Ponytail", "Dragon of Time Wings + Tail" };
+
     public void GetDoT(bool rankUpClass = true, bool doExtra = true)
     {
-        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory("Dragon of Time Horns")))
+        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(Extras)))
             return;
 
         //Acquiring Ancient Secrets
@@ -247,7 +249,7 @@ public class DragonOfTime
         }
 
         //Hero's Heartbeat
-        if (!Core.QuestProgression(7724))
+        if (!Core.QuestProgression(7724) || !Core.CheckInventory("Dragon of Time"))
         {
             Farm.Experience(75);
             if (!Core.CheckInventory("Blade of Awe"))
@@ -266,6 +268,7 @@ public class DragonOfTime
             Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
 
             Core.ChainQuest(7724);
+            Bot.Wait.ForPickup("Dragon of Time");
             Bot.Wait.ForPickup("*");
             Core.ToBank("Ascended Dragon of Time Morph", "Ascended Dragon of Time Wings");
         }
@@ -274,27 +277,35 @@ public class DragonOfTime
             Adv.rankUpClass("Dragon of Time");
 
         //I'm Loving It My Way
-        if (doExtra && !Core.QuestProgression(7725))
+        if (doExtra)
         {
-            Farm.Experience(75);
-            Core.EnsureAccept(7725);
-
-            Borg.BorgarQuests();
-            Core.AddDrop("Burger Buns");
-            Core.EquipClass(ClassType.Solo);
-
-            while (!Core.CheckInventory("Burger Buns", 5))
+            while (!Core.CheckInventory(Extras, toInv: false))
             {
-                Core.EnsureAccept(7522);
-                Core.HuntMonster("borgars", "Burglinster", "Burglinster Cured");
-                Core.EnsureComplete(7522);
-                Bot.Wait.ForPickup("Burger Buns");
+                Farm.Experience(75);
+                Core.EnsureAccept(7725);
+
+                Borg.BorgarQuests();
+                Core.AddDrop("Burger Buns");
+                Core.EquipClass(ClassType.Solo);
+
+                if (!Core.CheckInventory("Borgar"))
+                {
+                    bool LoggedBefore = false;
+                    while (!Core.CheckInventory("Burger Buns", 5))
+                    {
+                        Core.EnsureAccept(7522);
+                        Core.HuntMonster("borgars", "Burglinster", "Burglinster Cured", log: !LoggedBefore);
+                        Core.EnsureComplete(7522);
+                        Bot.Wait.ForPickup("Burger Buns");
+                        LoggedBefore = true;
+                    }
+                }
+
+                Core.BuyItem("borgars", 1884, "Borgar");
+
+                Core.EnsureCompleteChoose(7725, Extras);
+                Bot.Wait.ForPickup("*");
             }
-
-            Core.BuyItem("borgars", 1884, "Borgar");
-
-            Core.ChainQuest(7725);
-            Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time Horns", "Dragon of Time Horns + Ponytail", "Dragon of Time Wings + Tail");
         }
     }
