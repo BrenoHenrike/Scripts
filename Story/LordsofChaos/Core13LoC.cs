@@ -1617,7 +1617,7 @@ public class Core13LoC
 
         //Craft a Better Defense
         Core.MapItemQuest(3183, "battleontown", 2203);
-        
+
         if (!Core.QuestProgression(3187))
         {
             Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
@@ -1958,13 +1958,28 @@ public class Core13LoC
         Core.ChainQuest(3875);
 
         // Defeat Drakath!
-        Core.KillQuest(3876, "finalbattle", "Drakath");
+        if (!Core.QuestProgression(3876))
+        {
+            Core.EnsureAccept(3876);
+            Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
+            Core.EnsureComplete(3876);
+        }
 
         // Defeat Drakath... again!
-        Core.KillQuest(3877, "finalbattle", "Drakath");
+        if (!Core.QuestProgression(3877))
+        {
+            Core.EnsureAccept(3877);
+            Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
+            Core.EnsureComplete(3877);
+        }
 
         // Defeat Drakath!
-        Core.KillQuest(3878, "finalbattle", "Drakath");
+        if (!Core.QuestProgression(3878))
+        {
+            Core.EnsureAccept(3878);
+            Core.KillMonster("finalbattle", "r9", "Right", "Drakath", "Drakath Defeated");
+            Core.EnsureComplete(3878);
+        }
 
         // Defeat the 12 Lords of Chaos!
         Core.KillQuest(3879, "chaosrealm", "Alteon");
