@@ -66,7 +66,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
-        while (!Bot.Inventory.Contains("Emblem of Legion", quant))
+        while (!Bot.Inventory.Contains("Emblem of Dage", quant))
         {
             Core.EnsureAccept(4742);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
