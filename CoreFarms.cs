@@ -127,6 +127,9 @@ public class CoreFarms
         if (!rankUpClass)
             Core.EquipClass(ClassType.Farm);
 
+        bool OptionRestore = Bot.Options.AggroMonsters;
+        Bot.Options.AggroMonsters = true;
+
         while ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r4", "Left", "*", log: false, publicRoom: true);
 
@@ -161,6 +164,8 @@ public class CoreFarms
 
         while ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level <= 100 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
+
+        Bot.Options.AggroMonsters = OptionRestore;
     }
 
     /// <summary>
