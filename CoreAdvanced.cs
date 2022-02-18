@@ -31,7 +31,8 @@ public class CoreAdvanced
 
         if (SelectedItem.Count == 0)
         {
-            Core.Logger($"You do not own \"{ItemName}\", enhancement failed");
+            if (!SelectedItem.Any(x => x.Name == ""))
+                Core.Logger($"You do not own \"{ItemName}\", enhancement failed");
             return;
         }
 
@@ -49,7 +50,8 @@ public class CoreAdvanced
 
         if (SelectedItems.Count == 0)
         {
-            Core.Logger($"You do not own \"{ItemNames}\", enhancement failed");
+            if (!SelectedItems.Any(x => x.Name == ""))
+                Core.Logger($"You do not own \"{ItemNames}\", enhancement failed");
             return;
         }
 
