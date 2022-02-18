@@ -723,7 +723,11 @@ public class CoreFarms
         else
             while (FactionRank("ChronoSpan") < rank)
             {
-                Core.SmartKillMonster(2204, "thespan", new[] { "Minx Fairy", "Tog", "Moglin Ghost" }, completeQuest: true);
+                Core.EnsureAccept(2204);
+                Core.HuntMonster("thespan", "Moglin Ghost", "Tin of Ghost Dust", 2);
+                Core.HuntMonster("thespan", "Minx Fairy", "8 oz Fairy Glitter", 3);
+                Core.HuntMonster("thespan", "Tog", "Tog Fang", 4);
+                Core.EnsureComplete(2204);
                 Core.Logger($"Completed x{i++}");
             }
     }
