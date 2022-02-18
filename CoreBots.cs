@@ -975,9 +975,11 @@ public class CoreBots
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
     /// </summary>
-    public void Logger(string message = "", [CallerMemberName] string caller = null, bool messageBox = false, bool stopBot = false)
+    public void Logger(string message = "", [CallerMemberName] string caller = null, bool messageBox = false, bool stopBot = false, bool chatMessage = true)
     {
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
+        if (chatMessage)
+            Bot.SendMSGPacket(message, caller, "moderator");
         if (messageBox)
             Message(message, caller);
         if (stopBot)
