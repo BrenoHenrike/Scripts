@@ -1108,7 +1108,7 @@ public class CoreBots
     /// <param name="Side">Type "Alignment." and then Good, Evil or Chaos in order to select which Alignment it should swap too</param>
     public void ChangeAlignment(Alignment Side)
     {
-        SendPackets($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)Side}%");
+        Bot.SendPacket($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)Side}%");
         Bot.Sleep(ActionDelay * 2);
     }
 
