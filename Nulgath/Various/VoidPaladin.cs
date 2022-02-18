@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
 //cs_include Scripts/CoreDailys.cs

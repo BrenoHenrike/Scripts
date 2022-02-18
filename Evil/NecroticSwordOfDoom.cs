@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
@@ -40,7 +41,7 @@ public class NecroticSwordOfDoom
 
         Core.SetOptions(false);
     }
-    
+
     public void GetNSOD()
     {
         if (Core.CheckInventory("Necrotic Sword of Doom"))
@@ -113,7 +114,7 @@ public class NecroticSwordOfDoom
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(
             "Void Aura",
-            "Astral Ephemerite Essence", 
+            "Astral Ephemerite Essence",
             "Belrot the Fiend Essence",
             "Black Knight Essence",
             "Tiger Leech Essence",
@@ -199,14 +200,14 @@ public class NecroticSwordOfDoom
     {
         if (Core.CheckInventory("Energized Hilt"))
             return;
-        
+
         Core.Logger("Energized Hilt");
         FindHilt();
         BonesVoidRealm(1);
         VoidAuras(100);
         Core.BuyItem("shadowfall", 793, "Energized Hilt");
     }
-    
+
     public void EnergizedAura()
     {
         if (Core.CheckInventory("Energized Aura"))
@@ -273,7 +274,7 @@ public class NecroticSwordOfDoom
             return;
 
         Core.CheckInventory("Barium", Quantity);
-        VoidAuras(Quantity*50);
+        VoidAuras(Quantity * 50);
         Core.BuyItem("shadowfall", 793, "Barium of Doom");
     }
 
@@ -283,8 +284,8 @@ public class NecroticSwordOfDoom
             return;
 
         Core.AddDrop("Undead Energy");
-        Farm.BattleUnderB("Bone Dust", Quantity*50);
-        VoidAuras(Quantity*50);
+        Farm.BattleUnderB("Bone Dust", Quantity * 50);
+        VoidAuras(Quantity * 50);
         Core.BuyItem("shadowfall", 793, "Bones from the Void Realm", Quantity);
     }
 
@@ -293,9 +294,9 @@ public class NecroticSwordOfDoom
         if (Core.CheckInventory("Time Lord's Necronomicon", Quantity))
             return;
 
-        CHourglass(Quantity*10);
+        CHourglass(Quantity * 10);
         ScrollDarkArts(Quantity);
-        VoidAuras(Quantity*100);
+        VoidAuras(Quantity * 100);
         Core.BuyItem("shadowfall", 793, "Time Lord's Necronomicon", Quantity);
     }
 
@@ -369,8 +370,8 @@ public class NecroticSwordOfDoom
         Core.CheckInventory("Barium");
         Core.CheckInventory("Barium of Doom");
         int i = 0;
-        string[] Blades = {"Unenhanced Doom Blade", "Energized Blade", "Necrotic Sword's Blade" }; 
-        if (Core.CheckInventory(new[] {"Unenhanced Aura", "Energized Aura", "Necrotic Sword's Aura"}, any: true))
+        string[] Blades = { "Unenhanced Doom Blade", "Energized Blade", "Necrotic Sword's Blade" };
+        if (Core.CheckInventory(new[] { "Unenhanced Aura", "Energized Aura", "Necrotic Sword's Aura" }, any: true))
             i++;
         foreach (string Item in Blades)
             if (Core.CheckInventory(Item))
@@ -378,8 +379,8 @@ public class NecroticSwordOfDoom
         i = i + Bot.Inventory.GetQuantity("Barium") + Bot.Inventory.GetQuantity("Barium of Doom");
         if (i >= 4)
             return;
-        
+
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting(new[] {"Barium"}, 4 - i);
+        Daily.MineCrafting(new[] { "Barium" }, 4 - i);
     }
 }

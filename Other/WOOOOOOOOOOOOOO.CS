@@ -1,14 +1,10 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
 using RBot;
 
 public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
 
     // [Can Change]
     // True = Bot will farm both ac & non-AC items

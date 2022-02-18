@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 using RBot;
 

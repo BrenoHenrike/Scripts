@@ -1,4 +1,7 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
@@ -7,8 +10,6 @@
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Story/Artixpointe.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
 using RBot;
 
 public class HBPalAll
@@ -18,7 +19,6 @@ public class HBPalAll
     public CoreBots Core => CoreBots.Instance;
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
-    public CoreFarms Farm = new CoreFarms();
 
     public void ScriptMain(ScriptInterface bot)
     {

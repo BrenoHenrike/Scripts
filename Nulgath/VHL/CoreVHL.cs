@@ -10,13 +10,14 @@ public class CoreVHL
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreDailys Daily = new CoreDailys();
     public CoreNulgath Nulgath = new CoreNulgath();
     public AssistingCragAndBamboozle ACAB = new AssistingCragAndBamboozle();
 
     private int EldersBloodAmount = ScriptInterface.Instance.Inventory.GetQuantity("Elders' Blood");
 
-    public void DoAll()
+    public void GetVHL(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Void Highlord"))
             return;
@@ -26,8 +27,8 @@ public class CoreVHL
 
         Core.BuyItem("tercessuinotlim", 1355, "Void Highlord");
 
-        //    Bot.Player.EquipItem("Void Highlord");
-        //    Farm.IcestormArena(rankUpClass: true);    // When auto-enhance gets released/mde un // these 2 lines
+        if (rankUpClass)
+            Adv.rankUpClass("Void Highlord");
     }
 
     public void VHLChallenge(int quant)
@@ -47,10 +48,10 @@ public class CoreVHL
         while (!Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
             Core.EnsureAccept(5660);
-            
+
             Nulgath.FarmVoucher(false);
             Farm.BlackKnightOrb();
-            if(!Core.CheckInventory("Nulgath Shaped Chocolate"))
+            if (!Core.CheckInventory("Nulgath Shaped Chocolate"))
             {
                 Farm.Gold(2000000);
                 Core.BuyItem("citadel", 44, 38316);
@@ -95,7 +96,7 @@ public class CoreVHL
         if (!Core.CheckInventory("Elders' Blood", 2))
             Daily.EldersBlood();
         _SparrowMethod(2);
-        
+
         if (!Core.CheckInventory("Elders' Blood", 2))
             Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
 
