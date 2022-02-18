@@ -59,6 +59,21 @@ public class CoreAdvanced
             _AutoEnhance(Empty, SelectedOthers, Type, Special);
     }
 
+    public EnhancementType CurrentClassEnh()
+    {
+        int EnhPatternID = Bot.GetGameObject<int>($"world.invTree.{Bot.Inventory.CurrentClass.ID}.EnhPatternID");
+        if (EnhPatternID == 1 || EnhPatternID == 23)
+            EnhPatternID = 9;
+        return (EnhancementType)EnhPatternID;
+    }
+
+    public WeaponSpecial CurrentWeaponSpecial()
+    {
+        InventoryItem EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        int ProcID = Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
+        return (WeaponSpecial)ProcID;
+    }
+
     private static ItemCategory[] EnhanceableCatagories =
     {
         ItemCategory.Sword,
@@ -193,7 +208,7 @@ public class CoreAdvanced
         InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
         string EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category)).Name;
         string ClassReAfter = Bot.Inventory.CurrentClass.Name;
-        EnhancementType ReEnhanceAfter = _CurrentClassEnh();
+        EnhancementType ReEnhanceAfter = CurrentClassEnh();
         if (itemInv == null)
             Core.Logger($"\"{itemInv.Name}\" is not a valid Class", messageBox: true, stopBot: true);
         if (itemInv.Quantity == 302500)
@@ -201,9 +216,9 @@ public class CoreAdvanced
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
-        WeaponSpecial ReWEnhanceAfter = _CurrentWeaponSpecial();
+        WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
         SmartEnhance(ClassName);
-        EnhanceItem(BestGear(GearBoost.cp), _CurrentClassEnh(), _CurrentWeaponSpecial());
+        EnhanceItem(BestGear(GearBoost.cp), CurrentClassEnh(), CurrentWeaponSpecial());
         Bot.Player.EquipItem(itemInv.Name);
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
@@ -296,7 +311,7 @@ public class CoreAdvanced
         if (MonsterRace != null)
         {
             string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
-            EnhanceItem(_BestGear, _CurrentClassEnh(), _CurrentWeaponSpecial());
+            EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
             foreach (string Item in _BestGear)
                 if (!Bot.Inventory.IsEquipped(Item))
                     Bot.Player.EquipItem(Item);
@@ -309,26 +324,11 @@ public class CoreAdvanced
         if (MonsterRace != null)
         {
             string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
-            EnhanceItem(_BestGear, _CurrentClassEnh(), _CurrentWeaponSpecial());
+            EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
             foreach (string Item in _BestGear)
                 if (!Bot.Inventory.IsEquipped(Item))
                     Bot.Player.EquipItem(Item);
         }
-    }
-
-    private EnhancementType _CurrentClassEnh()
-    {
-        int EnhPatternID = Bot.GetGameObject<int>($"world.invTree.{Bot.Inventory.CurrentClass.ID}.EnhPatternID");
-        if (EnhPatternID == 1 || EnhPatternID == 23)
-            EnhPatternID = 9;
-        return (EnhancementType)EnhPatternID;
-    }
-
-    private WeaponSpecial _CurrentWeaponSpecial()
-    {
-        InventoryItem EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
-        int ProcID = Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
-        return (WeaponSpecial)ProcID;
     }
 
     #endregion
@@ -342,7 +342,7 @@ public class CoreAdvanced
 
         Core.Join(map, cell, pad);
         _RaceGear(monster);
-        EnhanceEquipped(_CurrentClassEnh(), _CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
     }
@@ -354,7 +354,7 @@ public class CoreAdvanced
 
         Core.Join(map, cell, pad);
         _RaceGear(monsterID);
-        EnhanceEquipped(_CurrentClassEnh(), _CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
     }
@@ -366,7 +366,7 @@ public class CoreAdvanced
 
         Core.Join(map);
         _RaceGear(monster);
-        EnhanceEquipped(_CurrentClassEnh(), _CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.HuntMonster(map, monster, item, quant, isTemp, log, publicRoom);
     }
@@ -381,7 +381,7 @@ public class CoreAdvanced
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
         _RaceGear(monster);
-        EnhanceEquipped(_CurrentClassEnh(), _CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
@@ -442,7 +442,7 @@ public class CoreAdvanced
 
     #region SmartEnhance
 
-    private void SmartEnhance(string Class)
+    public void SmartEnhance(string Class)
     {
         InventoryItem SelectedClass = Bot.Inventory.Items.Find(i => i.Name == Class && i.Category == ItemCategory.Class);
         if (SelectedClass.EnhancementLevel == 0)
