@@ -451,676 +451,251 @@ public class CoreAdvanced
         {
             //Lucky
             case "Abyssal Angel":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Abyssal Angel’s Shadow":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Alpha DOOMmega":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Alpha Omega":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Alpha Pirate":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Arachnomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "ArchFiend":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "ArchPaladin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Artifact Hunter":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Assassin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Barber":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Bard":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Beast Warrior":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "BeastMaster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Berserker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Beta Berserker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "BladeMaster Assassin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "BladeMaster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Blood Ancient":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Blood Titan":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "CardClasher":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Chaos Avenger":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Chaos Avenger Member Preview":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Chaos Champion Prime":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Chaos Shaper":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Chaos Slayer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Chrono Assassin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Chrono Chaorruptor":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Chrono Commandant":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "ChronoCommander":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "ChronoCorrupter":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Chronomancer Prime":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Chunin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Alpha Pirate":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Barber":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Classic Defender":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Classic DoomKnight":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Classic DragonLord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
             case "Classic Exalted Soul Cleaver":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Guardian":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Legion DoomKnight":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Paladin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Pirate":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Classic Soul Cleaver":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "ClawSuit":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Continuum Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Corrupted Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Cryomancer Mini Pet Coming Soon":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Dark Chaos Berserker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Dark Harbinger":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Dark Legendary Hero":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Dark Metal Necro":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Dark Ultra OmniNight":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "DeathKnight Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "DoomKnight OverLord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "DoomKnight":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Dragon Shinobi":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Dragonlord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Dragonslayer General":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Dragonslayer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "DragonSoul Shinobi":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Drakel Warlord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Empyrean Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Enchanted Vampire Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Enforcer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
             case "Eternal Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Eternal Inversionist":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Evolved ClawSuit":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Evolved Dark Caster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Evolved Leprechaun":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Evolved Pumpkin Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Exalted Harbinger":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Exalted Soul Cleaver":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Flame Dragon Warrior":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Glacial Berserker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Glacial Berserker Test":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Glacial Warlord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Great Thief":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Grunge Rocker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Guardian":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Heavy Metal Necro":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Heavy Metal Rockstar":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Heroic Naval Commander":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Horc Evader":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Immortal Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Imperial Chunin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Infinite Dark Caster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Infinite Legion Dark Caster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Infinity Titan":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Legendary Elemental Warrior":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Legendary Hero":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Legendary Naval Commander":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Legion BladeMaster Assassin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Legion DoomKnight":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Legion DoomKnight Tester":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Legion Evolved Dark Caster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Legion Revenant Member Test":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Legion SwordMaster Assassin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Leprechaun":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Lord of Order":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Lycan":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Master Ranger":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "MechaJouster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Naval Commander":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Nechronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Necromancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Necrotic Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Ninja":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Ninja Warrior":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "NOT A MOD":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Nu Metal Necro":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Oracle":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Overworld Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Paladin High Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Paladin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "PaladinSlayer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Pinkomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Pirate":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Prismatic ClawSuit":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "ProtoSartorium":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Pumpkin Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Ranger":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Renegade":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Rogue":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Royal Vampire Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Rustbucket":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
             case "Scarlet Sorceress":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Sentinel":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Shadow Dragon Shinobi":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Shadow Ripper":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Shadow Rocker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "ShadowFlame DragonLord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "ShadowScythe General":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "ShadowStalker of Time":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "ShadowWalker of Time":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "ShadowWeaver of Time":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Silver Paladin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "SkyCharged Grenadier":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "SkyGuard Grenadier":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Soul Cleaver":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Star Captain":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "StarLord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "StoneCrusher":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "SwordMaster Assassin":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "SwordMaster":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Thief of Hours":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "TimeKeeper":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "TimeKiller":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Timeless Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Troubador of Love":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Ultra Elemental Warrior":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Ultra OmniKnight":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Unchained Rocker":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
-            case "Unchained Rockstar":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
-                break;
             case "Undead Goat":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Undead Leperchaun":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "UndeadSlayer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Underworld Chronomancer":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
             case "Unlucky Leperchaun":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Vampire":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
-            case "Vampire Lord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
-                break;
             case "Void Highlord":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
                 break;
+            case "Alpha DOOMmega":
+            case "Alpha Omega":
+            case "Alpha Pirate":
+            case "Beast Warrior":
+            case "Blood Ancient":
+            case "Chaos Avenger":
+            case "Chaos Shaper":
+            case "Classic Defender":
+            case "ClawSuit":
+            case "Cryomancer Mini Pet Coming Soon":
+            case "Dark Legendary Hero":
+            case "Dark Ultra OmniNight":
+            case "DoomKnight OverLord":
+            case "Dragonslayer General":
+            case "Drakel Warlord":
+            case "Glacial Berserker Test":
+            case "Heroic Naval Commander":
+            case "Legendary Elemental Warrior":
+            case "Horc Evader":
+            case "Legendary Hero":
+            case "Legendary Naval Commander":
+            case "Legion DoomKnight Tester":
+            case "Legion Revenant Member Test":
+            case "Naval Commander":
+            case "Paladin High Lord":
+            case "Paladin":
+            case "PaladinSlayer":
+            case "Pirate":
+            case "Pumpkin Lord":
+            case "ShadowFlame DragonLord":
+            case "Silver Paladin":
+            case "Thief of Hours":
+            case "Ultra Elemental Warrior":
+            case "Ultra OmniKnight":
             case "Void Highlord Tester":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Warlord":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "Warrior":
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
             case "WarriorScythe General":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
                 break;
+            case "Arachnomancer":
+            case "Bard":
+            case "Chrono Assassin":
+            case "Chronomancer":
+            case "Chronomancer Prime":
+            case "Dark Metal Necro":
+            case "DeathKnight Lord":
+            case "Dragon Shinobi":
+            case "Dragonlord":
+            case "Evolved Pumpkin Lord":
+            case "DragonSoul Shinobi":
+            case "Glacial Berserker":
+            case "Grunge Rocker":
+            case "Guardian":
+            case "Heavy Metal Necro":
+            case "Heavy Metal Rockstar":
+            case "Lord of Order":
+            case "Nechronomancer":
+            case "Necrotic Chronomancer":
+            case "Nu Metal Necro":
+            case "Oracle":
+            case "ProtoSartorium":
+            case "Shadow Dragon Shinobi":
+            case "Shadow Ripper":
+            case "Shadow Rocker":
+            case "ShadowStalker of Time":
+            case "ShadowWalker of Time":
+            case "ShadowWeaver of Time":
+            case "Star Captain":
+            case "Troubador of Love":
+            case "Unchained Rocker":
+            case "Unchained Rockstar":
             case "Yami no Ronin":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
                 break;
+            case "Barber":
+            case "Classic DragonLord":
+            case "Dragonslayer":
+            case "Enchanted Vampire Lord":
+            case "Enforcer":
+            case "Flame Dragon Warrior":
+            case "Royal Vampire Lord":
+            case "Rustbucket":
+            case "Sentinel":
+            case "Vampire":
+            case "Vampire Lord":
+                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
+                break;
             //Wizard
             case "Acolyte":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "Arcane Dark Caster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "BattleMage":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "BattleMage of Love":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "Blaze Binder":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "Blood Sorceress":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Chrono DataKnight":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Chrono DragonKnight":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Cryomancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Daimon":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Mana_Vamp);
-                break;
             case "Dark BattleMage":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Dark Caster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Dark Cryomancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Dark Lord":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
             case "Dark Master of Moglins":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Darkblood StormKing":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Darkside":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Defender":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
             case "Dragon Knight":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Elemental Dracomancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
-                break;
-            case "Evolved Shaman":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Mana_Vamp);
-                break;
             case "FireLord Summoner":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Frost SpiritReaver":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
             case "Grim Necromancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "Healer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "HighSeas Commander":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Immortal Dark Caster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
             case "Infinity Knight":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "Interstellar Knight":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Legion Paladin":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Legion Revenant":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "LightCaster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "LightCaster Test":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
-                break;
-            case "LightMage":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Love Caster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
-                break;
-            case "Mage":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
-                break;
             case "Master of Moglins":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "MindBreaker":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Mana_Vamp);
-                break;
             case "Mystical Dark Caster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
             case "Northlands Monk":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Pink Romancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Psionic MindBreaker":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Pyromancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
             case "Royal BattleMage":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Sakura Cryomancer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Shaman":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Mana_Vamp);
-                break;
-            case "Sorcerer":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
-                break;
-            case "The Collector":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
-                break;
             case "Timeless Dark Caster":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            case "Troll Spellsmith":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
-                break;
-            case "Vindicator of They":
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Mana_Vamp);
-                break;
             case "Witch":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
                 break;
+            case "Chrono DataKnight":
+            case "Chrono DragonKnight":
+            case "Cryomancer":
+            case "Dark Caster":
+            case "Dark Cryomancer":
+            case "Dark Lord":
+            case "Darkblood StormKing":
+            case "Darkside":
+            case "Defender":
+            case "Frost SpiritReaver":
+            case "Immortal Dark Caster":
+            case "Legion Paladin":
+            case "Legion Revenant":
+            case "LightCaster":
+            case "Pink Romancer":
+            case "Psionic MindBreaker":
+            case "Pyromancer":
+            case "Sakura Cryomancer":
+            case "Troll Spellsmith":
+                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
+                break;
+            case "Daimon":
+            case "Evolved Shaman":
+            case "LightMage":
+            case "MindBreaker":
+            case "Shaman":
+            case "Vindicator of They":
+            case "Elemental Dracomancer":
+            case "LightCaster Test":
+            case "Love Caster":
+            case "Mage":
+            case "Sorcerer":
+            case "The Collector":
+                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
+                break;
             //Fighter
             case "DeathKnight":
-                EnhanceEquipped(EnhancementType.Fighter, WeaponSpecial.Awe_Blast);
-                break;
             case "Frostval Barbarian":
                 EnhanceEquipped(EnhancementType.Fighter, WeaponSpecial.Awe_Blast);
                 break;
             //Healer
             case "Dragon of Time":
                 EnhanceEquipped(EnhancementType.Healer, WeaponSpecial.Health_Vamp);
+                break;
+            default:
+                Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
                 break;
         }
     }
