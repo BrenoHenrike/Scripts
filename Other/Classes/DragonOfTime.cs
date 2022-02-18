@@ -63,6 +63,8 @@ public class DragonOfTime
             Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false, publicRoom: true);
 
             Core.ChainQuest(7716);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time Helm", "Dragon of Time Ponytail");
         }
 
         //Time to Train Yourself
@@ -84,6 +86,8 @@ public class DragonOfTime
             Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
 
             Core.ChainQuest(7717);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time Runes", "Dragon of Time Wings", "Dragon of Time Tail");
         }
 
         //Do You Have the Time?
@@ -109,6 +113,8 @@ public class DragonOfTime
             Core.HuntMonster("arena", "Timestream Rider", "Timestream String", 100, false);
 
             Core.ChainQuest(7718);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time FangBlade", "Dual Dragon of Time FangBlades");
         }
 
         //Through the Wormhole
@@ -129,6 +135,8 @@ public class DragonOfTime
             Core.HuntMonster("ubear", "Cornholio", "Is This a Wormhole?", isTemp: false);
 
             Core.ChainQuest(7719);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time Armor");
         }
 
         //Rend
@@ -145,6 +153,8 @@ public class DragonOfTime
             Adv.BoostHuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
 
             Core.ChainQuest(7720);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time Daggers", "Dragon of Time Cleaver");
         }
 
         //Confluence of Fates
@@ -185,6 +195,8 @@ public class DragonOfTime
             Core.BuyItem("collection", 325, "Collectible Collector");
 
             Core.ChainQuest(7721);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Ascended Dragon of Time Runes", "Runes Of Time");
         }
 
         //Dragon's Will
@@ -209,6 +221,8 @@ public class DragonOfTime
             Adv.BoostHuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
 
             Core.ChainQuest(7722);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time Reaper", "Dragon of Time WingBlade");
         }
 
         //Burning Fates
@@ -228,6 +242,8 @@ public class DragonOfTime
             Adv.BoostHuntMonster("thevoid", "Reaper", "Ashes from the Void Realm", 50, false, publicRoom: true);
 
             Core.ChainQuest(7723);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Ascended Dragon of Time");
         }
 
         //Hero's Heartbeat
@@ -250,7 +266,12 @@ public class DragonOfTime
             Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
 
             Core.ChainQuest(7724);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Ascended Dragon of Time Morph", "Ascended Dragon of Time Wings");
         }
+
+        if (rankUpClass)
+            Adv.rankUpClass("Dragon of Time");
 
         //I'm Loving It My Way
         if (doExtra && !Core.QuestProgression(7725))
@@ -262,7 +283,7 @@ public class DragonOfTime
             Core.AddDrop("Burger Buns");
             Core.EquipClass(ClassType.Solo);
 
-            while (!Core.CheckInventory("Borgar") || !Core.CheckInventory("Burger Buns", 5))
+            while (!Core.CheckInventory("Burger Buns", 5))
             {
                 Core.EnsureAccept(7522);
                 Core.HuntMonster("borgars", "Burglinster", "Burglinster Cured");
@@ -273,9 +294,8 @@ public class DragonOfTime
             Core.BuyItem("borgars", 1884, "Borgar");
 
             Core.ChainQuest(7725);
+            Bot.Wait.ForPickup("*");
+            Core.ToBank("Dragon of Time Horns", "Dragon of Time Horns + Ponytail", "Dragon of Time Wings + Tail");
         }
-
-        if (rankUpClass)
-            Adv.rankUpClass("Dragon of Time");
     }
 }
