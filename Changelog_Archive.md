@@ -47,7 +47,7 @@
 · Added Auto Enhancement to all class bots via rankUpClass  
 · New method in CoreAdvanced: BoostKillMonster, its KillMonster combined with an automated BestGear  
 · New method in CoreAdvanced: BoostHuntMonster, its HuntMonster combined with an automated BestGear  
-· New method in CoreAdvanced: SmartEnhance, it is a large database that knows what class needs what enhancement. [Data Source](https://www.aqwg.net/enhancing)
+· New method in CoreAdvanced: SmartEnhance, it is a large database that knows what class needs what enhancement. [Data Source](https://www.aqwg.net/enhancing)  
 · New private method in CoreAdvanced: _RaceGear, internal method for a bunch of the new features  
 · New private method in CoreAdvanced: _CurrentClassEnh, internal method for a bunch of the new features  
 · New private method in CoreAdvanced: _CurrentWeaponSpecial, internal method for a bunch of the new features  

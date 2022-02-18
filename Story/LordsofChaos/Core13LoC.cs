@@ -1315,13 +1315,14 @@ public class Core13LoC
         Core.KillQuest(2612, "blackhorn", "Restless Undead");
 
         //Disturbing The Peace
-        Core.MapItemQuest(2613, "blackhorn", 1616, 10);
+        Core.MapItemQuest(2613, "blackhorn", 1615, 10);
 
         //Sampling Silk
         Core.KillQuest(2614, "blackhorn", "Tomb Spider");
 
         //Fire Is The Thing
-        Core.KillQuest(2615, "blackhorn", new[] { "Tomb Spider", "Restless Undead" });
+        Core.KillQuest(2615, "blackhorn", new[] { "Restless Undead", "Tomb Spider" });
+        Core.MapItemQuest(2615, "blackhorn", 1616);
 
         //The Wall Comes Down
         Core.MapItemQuest(2616, "blackhorn", 1617);
@@ -1617,39 +1618,45 @@ public class Core13LoC
         //Craft a Better Defense
         Core.MapItemQuest(3183, "battleontown", 2203);
 
-        //Reflect the Damage
-        Core.KillQuest(3184, "earthstorm", "Shard Spinner");
-        // while (!Core.CheckInventory("Perfect Prism") | !Core.QuestProgression(3184))
-        // {
-        //     Core.EnsureAccept(3184);
-        //     Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
-        //     Core.EnsureComplete(3184);
-        //     Bot.Wait.ForDrop("Perfect Prism");
-        // }
+        if (!Core.QuestProgression(3187))
+        {
+            Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
+            Core.EnsureAccept(3187);
 
-        //Pure Chaos
-        Core.KillQuest(3185, "bloodtuskwar", "Chaotic Horcboar");
-        // while (!Core.CheckInventory("Unchaorrupted Sample") | !Core.QuestProgression(3185))
-        // {
-        //     Core.EnsureAccept(3185);
-        //     Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
-        //     Core.EnsureComplete(3185);
-        //     Bot.Wait.ForDrop("Unchaorrupted Sample");
-        // }
+            //Reflect the Damage
+            Core.KillQuest(3184, "earthstorm", "Shard Spinner");
+            while (!Core.CheckInventory("Perfect Prism"))
+            {
+                Core.EnsureAccept(3184);
+                Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
+                Core.EnsureComplete(3184);
+                Bot.Wait.ForDrop("Perfect Prism");
+            }
 
-        //Enemies of a Feather Flock Together
-        Core.KillQuest(3186, "bloodtuskwar", "Chaos Tigriff");
-        // while (!Core.CheckInventory("Harpy Feather") | !Core.QuestProgression(3186))
-        // {
-        //     Core.EnsureAccept(3186);
-        //     Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
-        //     Core.EnsureComplete(3186);
-        //     Bot.Wait.ForDrop("Harpy Feather");
-        // }
+            //Pure Chaos
+            Core.KillQuest(3185, "bloodtuskwar", "Chaotic Horcboar");
+            while (!Core.CheckInventory("Unchaorrupted Sample"))
+            {
+                Core.EnsureAccept(3185);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
+                Core.EnsureComplete(3185);
+                Bot.Wait.ForDrop("Unchaorrupted Sample");
+            }
 
-        //Ward Off the Beast
-        Core.Join("mirrorportal");
-        Core.ChainQuest(3187);
+            //Enemies of a Feather Flock Together
+            Core.KillQuest(3186, "bloodtuskwar", "Chaos Tigriff");
+            while (!Core.CheckInventory("Harpy Feather"))
+            {
+                Core.EnsureAccept(3186);
+                Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
+                Core.EnsureComplete(3186);
+                Bot.Wait.ForDrop("Harpy Feather");
+            }
+
+            //Ward Off the Beast
+            Core.Join("mirrorportal");
+            Core.EnsureComplete(3187);
+        }
 
         //Horror Takes Flight
         Core.KillQuest(3188, "mirrorportal", "Chaos Harpy");
@@ -1951,13 +1958,28 @@ public class Core13LoC
         Core.ChainQuest(3875);
 
         // Defeat Drakath!
-        Core.KillQuest(3876, "finalbattle", "Drakath");
+        if (!Core.QuestProgression(3876))
+        {
+            Core.EnsureAccept(3876);
+            Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
+            Core.EnsureComplete(3876);
+        }
 
         // Defeat Drakath... again!
-        Core.KillQuest(3877, "finalbattle", "Drakath");
+        if (!Core.QuestProgression(3877))
+        {
+            Core.EnsureAccept(3877);
+            Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
+            Core.EnsureComplete(3877);
+        }
 
         // Defeat Drakath!
-        Core.KillQuest(3878, "finalbattle", "Drakath");
+        if (!Core.QuestProgression(3878))
+        {
+            Core.EnsureAccept(3878);
+            Core.KillMonster("finalbattle", "r9", "Right", "Drakath", "Drakath Defeated");
+            Core.EnsureComplete(3878);
+        }
 
         // Defeat the 12 Lords of Chaos!
         Core.KillQuest(3879, "chaosrealm", "Alteon");
