@@ -194,6 +194,33 @@ public class CoreStory
         PreviousQuestState = false;
         return false;
     }
+
+    /// <summary>
+    /// Send a Client-side packet that makes the game think you have completed a questline up to a certain point
+    /// </summary>
+    /// <param name="Value">Value property of the quest you want it to think you have completed</param>
+    /// <param name="Slot">Slot property of the questline you want it to think you have progressed</param>
+    public void UpdateQuest(int Value, int Slot)
+    {
+        if ((Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", Slot) >= Value))
+            return;
+
+        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (Value + 1) + ",\"iIndex\":" + Slot + "}}}", "json");
+    }
+
+    /// <summary>
+    /// Send a Client-side packet that makes the game think you have completed a questline up to a certain point
+    /// </summary>
+    /// <param name="QuestID">Quest ID of the quest you want the game to think you have compelted</param>
+    public void UpdateQuest(int QuestID)
+    {
+        if (isCompletedBefore(QuestID))
+            return;
+
+        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (QuestData.Value + 1) + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
+    }
+
     /// <param name="QuestID">ID of the quest</param>
     public bool isCompletedBefore(int QuestID)
     {
