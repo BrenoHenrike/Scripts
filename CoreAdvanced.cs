@@ -473,6 +473,10 @@ public class CoreAdvanced
             case "Chaos Avenger Member Preview":
             case "Chaos Champion Prime":
             case "Chaos Slayer":
+            case "Chaos Slayer Berserker":
+            case "Chaos Slayer Cleric":
+            case "Chaos Slayer Mystic":
+            case "Chaos Slayer Thief":
             case "Chrono Chaorruptor":
             case "Chrono Commandant":
             case "ChronoCommander":
