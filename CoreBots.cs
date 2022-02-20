@@ -737,9 +737,7 @@ public class CoreBots
     {
         if (QuestData == null || QuestData.ID != QuestID)
             QuestData = Bot.Quests.EnsureLoad(QuestID);
-        if (QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value)
-            return true;
-        return false;
+        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
     }
 
     #endregion
