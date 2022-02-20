@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class AQWZombies
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -19,23 +21,23 @@ public class AQWZombies
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(2128))
+        if (Story.isCompletedBefore(2128))
             return;
 
-        Core.KillQuest(2093, "battleundera", "Skeletal Soldier");
-        Core.KillQuest(2094, "battleundera", "Skeletal Ice Mage");
-        Core.KillQuest(2095, "battleundera", "Angry Undead Giant");
-        Core.MapItemQuest(2096, "doomhaven", 1174, 5);
-        Core.KillQuest(2097, "Doomhaven", "Skeletal Viking");
-        Core.KillQuest(2117, "doomhaven", "Zombie Rolith");
-        Core.KillQuest(2119, "doomwar", "Zombiue Galanoth");
-        Core.KillQuest(2120, "doomwar", "Zombiue Warlic");
-        Core.KillQuest(2121, "doomwar", "Cyzerombie");
-        Core.KillQuest(2122, "doomwar", "Zhoombie");
-        Core.KillQuest(2123, "doomwar", "Zhoombie");
-        Core.KillQuest(2124, "doomwar", "Angry Zombie");
-        Core.KillQuest(2125, "doomwar", "Zombie Dragon");
-        if (!Core.QuestProgression(2126))
+        Story.KillQuest(2093, "battleundera", "Skeletal Soldier");
+        Story.KillQuest(2094, "battleundera", "Skeletal Ice Mage");
+        Story.KillQuest(2095, "battleundera", "Angry Undead Giant");
+        Story.MapItemQuest(2096, "doomhaven", 1174, 5);
+        Story.KillQuest(2097, "Doomhaven", "Skeletal Viking");
+        Story.KillQuest(2117, "doomhaven", "Zombie Rolith");
+        Story.KillQuest(2119, "doomwar", "Zombiue Galanoth");
+        Story.KillQuest(2120, "doomwar", "Zombiue Warlic");
+        Story.KillQuest(2121, "doomwar", "Cyzerombie");
+        Story.KillQuest(2122, "doomwar", "Zhoombie");
+        Story.KillQuest(2123, "doomwar", "Zhoombie");
+        Story.KillQuest(2124, "doomwar", "Angry Zombie");
+        Story.KillQuest(2125, "doomwar", "Zombie Dragon");
+        if (!Story.QuestProgression(2126))
         {
             Core.EnsureAccept(2126);
             Core.KillMonster("doomwar", "r5", "left", "Cyzerombie");
@@ -44,8 +46,8 @@ public class AQWZombies
             Core.KillMonster("doomwar", "r3", "left", "Zhoombie");
             Core.EnsureComplete(2126);
         }
-        Core.KillQuest(2127, "doomwar", "Zombie King Alteon");
-        Core.KillQuest(2128, "sepulchure", "Dark Sepulchure");
+        Story.KillQuest(2127, "doomwar", "Zombie King Alteon");
+        Story.KillQuest(2128, "sepulchure", "Dark Sepulchure");
         //----------------------------------------
     }
 }

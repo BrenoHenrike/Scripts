@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Darkon/CoreDarkon.cs
@@ -20,6 +21,7 @@ public class DragonOfTime
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
     public CoreDarkon Darkon = new CoreDarkon();
     public GoldenBladeOfFate GBoF = new GoldenBladeOfFate();
     public PinkBladeOfDestruciton PBoD = new PinkBladeOfDestruciton();
@@ -46,12 +48,12 @@ public class DragonOfTime
             return;
 
         //Acquiring Ancient Secrets
-        if (!Core.QuestProgression(7716))
+        if (!Story.QuestProgression(7716))
         {
             Core.EnsureAccept(7716);
 
             Core.EquipClass(ClassType.Farm);
-            Core.UpdateQuest(4614);
+            Story.UpdateQuest(4614);
             Core.KillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
 
             Farm.LoremasterREP(4);
@@ -64,20 +66,20 @@ public class DragonOfTime
 
             Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false, publicRoom: true);
 
-            Core.ChainQuest(7716);
+            Story.ChainQuest(7716);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time Helm", "Dragon of Time Ponytail");
         }
 
         //Time to Train Yourself
-        if (!Core.QuestProgression(7717))
+        if (!Story.QuestProgression(7717))
         {
             Core.EnsureAccept(7717);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("dragonchallenge", "Desoloth the Final", "Desoloth's Destructive Aura", isTemp: false, publicRoom: true);
 
-            Core.UpdateQuest(899);
+            Story.UpdateQuest(899);
             Core.HuntMonster("blindingsnow", "Nythera", "Nythera's Patience", isTemp: false);
 
             Core.AddDrop("Key of Greed");
@@ -87,13 +89,13 @@ public class DragonOfTime
 
             Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
 
-            Core.ChainQuest(7717);
+            Story.ChainQuest(7717);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time Runes", "Dragon of Time Wings", "Dragon of Time Tail");
         }
 
         //Do You Have the Time?
-        if (!Core.QuestProgression(7718))
+        if (!Story.QuestProgression(7718))
         {
             Farm.Experience(31);
             Core.EnsureAccept(7718);
@@ -114,13 +116,13 @@ public class DragonOfTime
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("arena", "Timestream Rider", "Timestream String", 100, false);
 
-            Core.ChainQuest(7718);
+            Story.ChainQuest(7718);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time FangBlade", "Dual Dragon of Time FangBlades");
         }
 
         //Through the Wormhole
-        if (!Core.QuestProgression(7719))
+        if (!Story.QuestProgression(7719))
         {
             Farm.Experience(40);
             Core.EnsureAccept(7719);
@@ -136,13 +138,13 @@ public class DragonOfTime
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("ubear", "Cornholio", "Is This a Wormhole?", isTemp: false);
 
-            Core.ChainQuest(7719);
+            Story.ChainQuest(7719);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time Armor");
         }
 
         //Rend
-        if (!Core.QuestProgression(7720))
+        if (!Story.QuestProgression(7720))
         {
             Farm.Experience(60);
             Core.EnsureAccept(7720);
@@ -154,13 +156,13 @@ public class DragonOfTime
 
             Adv.BoostHuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
 
-            Core.ChainQuest(7720);
+            Story.ChainQuest(7720);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time Daggers", "Dragon of Time Cleaver");
         }
 
         //Confluence of Fates
-        if (!Core.QuestProgression(7721))
+        if (!Story.QuestProgression(7721))
         {
             Farm.Experience(60);
             Core.EnsureAccept(7721);
@@ -196,13 +198,13 @@ public class DragonOfTime
             Coll.CollectionStory();
             Core.BuyItem("collection", 325, "Collectible Collector");
 
-            Core.ChainQuest(7721);
+            Story.ChainQuest(7721);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Ascended Dragon of Time Runes", "Runes Of Time");
         }
 
         //Dragon's Will
-        if (!Core.QuestProgression(7722))
+        if (!Story.QuestProgression(7722))
         {
             Farm.Experience(65);
             Core.EnsureAccept(7722);
@@ -217,18 +219,18 @@ public class DragonOfTime
 
             Adv.BoostHuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
 
-            Core.UpdateQuest(9, 159);
+            Story.UpdateQuest(9, 159);
             Adv.BoostHuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
 
             Adv.BoostHuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
 
-            Core.ChainQuest(7722);
+            Story.ChainQuest(7722);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Dragon of Time Reaper", "Dragon of Time WingBlade");
         }
 
         //Burning Fates
-        if (!Core.QuestProgression(7723))
+        if (!Story.QuestProgression(7723))
         {
             Farm.Experience(70);
             Core.EnsureAccept(7723);
@@ -243,13 +245,13 @@ public class DragonOfTime
 
             Adv.BoostHuntMonster("thevoid", "Reaper", "Ashes from the Void Realm", 50, false, publicRoom: true);
 
-            Core.ChainQuest(7723);
+            Story.ChainQuest(7723);
             Bot.Wait.ForPickup("*");
             Core.ToBank("Ascended Dragon of Time");
         }
 
         //Hero's Heartbeat
-        if (!Core.QuestProgression(7724) || !Core.CheckInventory("Dragon of Time"))
+        if (!Story.QuestProgression(7724) || !Core.CheckInventory("Dragon of Time"))
         {
             Farm.Experience(75);
             if (!Core.CheckInventory("Blade of Awe"))
@@ -259,15 +261,15 @@ public class DragonOfTime
             Egg.GetMysteriousEgg();
 
             Core.EquipClass(ClassType.Solo);
-            Core.UpdateQuest(3880);
+            Story.UpdateQuest(3880);
             Core.KillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false, publicRoom: true);
 
-            Core.UpdateQuest(10, 159);
+            Story.UpdateQuest(10, 159);
             Adv.BoostHuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
 
             Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
 
-            Core.ChainQuest(7724);
+            Story.ChainQuest(7724);
             Bot.Wait.ForPickup("Dragon of Time");
             Bot.Wait.ForPickup("*");
             Core.ToBank("Ascended Dragon of Time Morph", "Ascended Dragon of Time Wings");

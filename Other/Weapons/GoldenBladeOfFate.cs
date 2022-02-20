@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class GoldenBladeOfFate
@@ -8,6 +9,7 @@ public class GoldenBladeOfFate
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -23,42 +25,42 @@ public class GoldenBladeOfFate
         if (Core.CheckInventory("Golden Blade of Fate"))
             return;
 
-        if (!Core.isCompletedBefore(5679))
+        if (!Story.isCompletedBefore(5679))
         {
             Core.Logger("Doing for the Golden Blade of Fate");
 
             // The Lost Teacher
-            Core.KillQuest(5669, "tutor", "Horc Tutor Trainer");
+            Story.KillQuest(5669, "tutor", "Horc Tutor Trainer");
 
             // Big Gold Coins
-            Core.KillQuest(5670, "prison", "Piggy Drake");
+            Story.KillQuest(5670, "prison", "Piggy Drake");
 
             // Light as a Feather
-            Core.KillQuest(5671, "lavarun", "Phedra");
+            Story.KillQuest(5671, "lavarun", "Phedra");
 
             // Shard Shard Shard
-            Core.KillQuest(5672, "chaoscrypt", "Chaorrupted Armor");
+            Story.KillQuest(5672, "chaoscrypt", "Chaorrupted Armor");
 
             // White Scales, Light Scales
-            Core.KillQuest(5673, "j6", "Sketchy Frogzard");
+            Story.KillQuest(5673, "j6", "Sketchy Frogzard");
 
             // The Stench of Defeat
-            Core.MapItemQuest(5674, "orcpath", 5143, 3);
+            Story.MapItemQuest(5674, "orcpath", 5143, 3);
 
             // If you can't stand the heat...
-            Core.KillQuest(5675, "lair", "Red Dragon");
+            Story.KillQuest(5675, "lair", "Red Dragon");
 
             // The Depths of Despair
-            Core.MapItemQuest(5676, "well", 5144);
+            Story.MapItemQuest(5676, "well", 5144);
 
             // All Things Green and Small...
-            Core.KillQuest(5677, "cellar", "GreenRat");
+            Story.KillQuest(5677, "cellar", "GreenRat");
 
             // Doom... Or Redemption?
-            Core.KillQuest(5678, "sepulchure", "Dark Sepulchure");
+            Story.KillQuest(5678, "sepulchure", "Dark Sepulchure");
         }
 
-        Core.MapItemQuest(5679, "yulgar", 5145);
+        Story.MapItemQuest(5679, "yulgar", 5145);
         Bot.Wait.ForPickup("Golden Blade of Fate");
     }
 }

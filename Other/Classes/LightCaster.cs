@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Other/Classes/LightMage.cs
 //cs_include Scripts/Other/Weapons/AvatarOfDeathsScythe.cs
 //cs_include Scripts/Other/Weapons/GuardianOfSpiritsBlade.cs

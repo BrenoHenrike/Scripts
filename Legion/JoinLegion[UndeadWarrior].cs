@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 using System.Windows.Forms;
 
@@ -8,6 +9,7 @@ public class JoinLegion
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -20,7 +22,7 @@ public class JoinLegion
 
     public void JoinLegionQuests()
     {
-        if (Core.isCompletedBefore(793))
+        if (Story.isCompletedBefore(793))
             return;
 
         Core.BuyItem("underworld", 215, "Undead Warrior");
@@ -33,9 +35,9 @@ public class JoinLegion
         Core.AddDrop("Ravaged Champion Soul");
 
         // Undead Champion Initiation
-        Core.KillQuest(789, "greenguardwest", "Black Knight");
+        Story.KillQuest(789, "greenguardwest", "Black Knight");
         // Mourn the Soldiers
-        if (!Core.QuestProgression(790))
+        if (!Story.QuestProgression(790))
         {
             Core.EnsureAccept(790);
             Core.HuntMonster("dwarfhold", "Chaos Drow", "Chaos Drow slain");
@@ -45,16 +47,16 @@ public class JoinLegion
             Core.EnsureComplete(790);
         }
         // Understanding Undead Champions
-        Core.KillQuest(791, "battleunderb", "Undead Champion");
+        Story.KillQuest(791, "battleunderb", "Undead Champion");
         // Player vs Power
-        if (!Core.QuestProgression(792))
+        if (!Story.QuestProgression(792))
         {
             if (!Core.CheckInventory("Combat Trophy", 200))
                 Farm.BludrutBrawlBoss(quant: 200);
-            Core.ChainQuest(792);
+            Story.ChainQuest(792);
         }
         // Fail to the King
-        Core.KillQuest(793, "prison", "King Alteon's Knight");
+        Story.KillQuest(793, "prison", "King Alteon's Knight");
 
         if (SellUW == DialogResult.Yes)
             Core.SellItem("Undead Warrior");

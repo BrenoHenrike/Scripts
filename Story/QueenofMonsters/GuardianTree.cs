@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class GuardianTree
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -17,40 +19,40 @@ public class GuardianTree
 
     public void GuardianTreeQuests()
     {
-        if (Core.isCompletedBefore(6286))
+        if (Story.isCompletedBefore(6286))
             return;
 
         //Connect to the Earth
-        Core.KillQuest(6276, "guardiantree", "Blossoming Treeant");
-        Core.MapItemQuest(6276, "guardiantree", 5769, 5);
+        Story.KillQuest(6276, "guardiantree", "Blossoming Treeant");
+        Story.MapItemQuest(6276, "guardiantree", 5769, 5);
         //Help the Hedgies
-        Core.MapItemQuest(6277, "guardiantree", 5776, 5);
-        Core.MapItemQuest(6277, "guardiantree", 5770);
+        Story.MapItemQuest(6277, "guardiantree", 5776, 5);
+        Story.MapItemQuest(6277, "guardiantree", 5770);
         //Cleanse the Corrupted Zards
-        Core.KillQuest(6278, "guardiantree", "Corrupted Zard");
+        Story.KillQuest(6278, "guardiantree", "Corrupted Zard");
         //Plant the Seed
-        Core.KillQuest(6279, "guardiantree", "Seed Spitter");
-        Core.MapItemQuest(6279, "guardiantree", 5771);
+        Story.KillQuest(6279, "guardiantree", "Seed Spitter");
+        Story.MapItemQuest(6279, "guardiantree", 5771);
         //Reach the Top
-        Core.MapItemQuest(6280, "guardiantree", 5772);
+        Story.MapItemQuest(6280, "guardiantree", 5772);
         //Cointain the Pollen
-        Core.KillQuest(6281, "guardiantree", "Blossoming Treeant");
+        Story.KillQuest(6281, "guardiantree", "Blossoming Treeant");
         //Pass Through the Pollen
-        Core.KillQuest(6282, "guardiantree", "Pollen Cloud");
-        Core.MapItemQuest(6282, "guardiantree", 5773);
+        Story.KillQuest(6282, "guardiantree", "Pollen Cloud");
+        Story.MapItemQuest(6282, "guardiantree", 5773);
         //Reinvigorate the Sprout
-        if (!Core.QuestProgression(6283))
+        if (!Story.QuestProgression(6283))
         {
             Core.EnsureAccept(6283);
             Core.KillMonster("guardiantree", "r8", "Left", "*", "Life Energy", 8);
             Core.EnsureComplete(6283);
         }
         //Up We Go!
-        Core.MapItemQuest(6284, "guardiantree", 5774);
+        Story.MapItemQuest(6284, "guardiantree", 5774);
         //Grow a Bridge
-        Core.KillQuest(6285, "guardiantree", "Myconid");
-        Core.MapItemQuest(6285, "guardiantree", 5775, 2);
+        Story.KillQuest(6285, "guardiantree", "Myconid");
+        Story.MapItemQuest(6285, "guardiantree", 5775, 2);
         //Take Down Terrane
-        Core.KillQuest(6286, "guardiantree", "Terrane");
+        Story.KillQuest(6286, "guardiantree", "Terrane");
     }
 }

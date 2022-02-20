@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class Frostvale
 {
     public CoreBots Core => CoreBots.Instance;
     public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface Bot)
     {
@@ -28,59 +30,59 @@ public class Frostvale
 
     public void IceCave()
     {
-        if (Core.isCompletedBefore(906))
+        if (Story.isCompletedBefore(906))
             return;
 
         // Rescue Blizzy
-        Core.KillQuest(155, "icecave", "Frosty");
+        Story.KillQuest(155, "icecave", "Frosty");
 
         // Scary Snow Men
-        Core.KillQuest(156, "icecave", "Snow Golem");
+        Story.KillQuest(156, "icecave", "Snow Golem");
 
         // Moglin Popsicles
-        Core.KillQuest(157, "icecave", "Frozen Moglin");
+        Story.KillQuest(157, "icecave", "Frozen Moglin");
 
         // Crystal Spider
-        Core.KillQuest(158, "icecave", "Ice Spider");
+        Story.KillQuest(158, "icecave", "Ice Spider");
 
         // Fluffy Bears
-        Core.KillQuest(159, "icecave", "Polar Bear");
+        Story.KillQuest(159, "icecave", "Polar Bear");
 
         // Blue Eyed Beast
-        Core.KillQuest(160, "icecave", "Frost Dragon");
+        Story.KillQuest(160, "icecave", "Frost Dragon");
 
         // Trouble Makers
-        Core.KillQuest(161, "factory", "Sneevil Toy Maker");
+        Story.KillQuest(161, "factory", "Sneevil Toy Maker");
 
         // Bad Ice Cream
-        Core.KillQuest(162, "factory", "Snow Golem");
+        Story.KillQuest(162, "factory", "Snow Golem");
 
         // Greedy Sneevil
-        Core.KillQuest(163, "factory", "Ebilsneezer");
+        Story.KillQuest(163, "factory", "Ebilsneezer");
 
         // Shadow Figure
-        Core.KillQuest(164, "frost", "FrostScythe");
+        Story.KillQuest(164, "frost", "FrostScythe");
 
         // 'Twas the night before Frostval
-        Core.KillQuest(456, "icecave", "Frosty");
+        Story.KillQuest(456, "icecave", "Frosty");
 
         // Find Page 2
-        Core.KillQuest(457, "icecave", "Frozen Moglin");
-        Core.MapItemQuest(457, "yulgar", 85);
+        Story.KillQuest(457, "icecave", "Frozen Moglin");
+        Story.MapItemQuest(457, "yulgar", 85);
 
         // Find Page 3
-        Core.KillQuest(458, "icecave", "Frozen Moglin");
-        Core.MapItemQuest(458, "battleontown", 86);
+        Story.KillQuest(458, "icecave", "Frozen Moglin");
+        Story.MapItemQuest(458, "battleontown", 86);
 
         // Find Page 4
-        Core.KillQuest(459, "factory", "Sneevil Toy Maker");
+        Story.KillQuest(459, "factory", "Sneevil Toy Maker");
 
         // Find Page 5
-        Core.KillQuest(460, "northlandlight", "Santy Claws");
+        Story.KillQuest(460, "northlandlight", "Santy Claws");
 
         // Find Page 6
-        Core.MapItemQuest(461, "battleontown", 87);
-        Core.KillQuest(461, "icecave", "Frozen Moglin");
+        Story.MapItemQuest(461, "battleontown", 87);
+        Story.KillQuest(461, "icecave", "Frozen Moglin");
 
         // Spirit Abducted 
         Core.Join("frostvale");
@@ -89,94 +91,94 @@ public class Frostvale
 
     public void SnowGlobe()
     {
-        if (Core.isCompletedBefore(1508))
+        if (Story.isCompletedBefore(1508))
             return;
 
         // Shaking the Globes
-        Core.MapItemQuest(906, "snowglobe", 243, 10);
-        Core.KillQuest(906, "snowglobe", "Snow Golem");
+        Story.MapItemQuest(906, "snowglobe", 243, 10);
+        Story.KillQuest(906, "snowglobe", "Snow Golem");
 
         //A Demonstration
-        Core.KillQuest(907, "snowglobe", "Snow Golem");
+        Story.KillQuest(907, "snowglobe", "Snow Golem");
 
         // Hearts of Ice
-        Core.KillQuest(908, "snowglobe", "snowman Soldier");
+        Story.KillQuest(908, "snowglobe", "snowman Soldier");
 
         // Defeat Garaja
-        Core.KillQuest(909, "snowglobe", "Garaja");
+        Story.KillQuest(909, "snowglobe", "Garaja");
 
         // Springing Traps
-        Core.KillQuest(910, "goldenruins", "Golden Warrior");
-        Core.MapItemQuest(910, "goldenruins", 244, 10);
+        Story.KillQuest(910, "goldenruins", "Golden Warrior");
+        Story.MapItemQuest(910, "goldenruins", 244, 10);
 
         // Frost Lions
-        Core.KillQuest(911, "goldenruins", "Frost Lion");
+        Story.KillQuest(911, "goldenruins", "Frost Lion");
 
         // Onslaught Keyrings
-        Core.KillQuest(912, "goldenruins", "Golden Warrior");
+        Story.KillQuest(912, "goldenruins", "Golden Warrior");
 
         // Defeat Lionfang
-        Core.KillQuest(913, "goldenruins", "Maximillian Lionfang");
+        Story.KillQuest(913, "goldenruins", "Maximillian Lionfang");
     }
 
     public void Alpine()
     {
-        if (Core.isCompletedBefore(1521))
+        if (Story.isCompletedBefore(1521))
             return;
 
         // Snow Way to Know Where to Go
-        Core.MapItemQuest(1508, "alpine", 758);
+        Story.MapItemQuest(1508, "alpine", 758);
 
         // Arming the Undead Army
-        Core.KillQuest(1509, "alpine", "Glacier Mole");
+        Story.KillQuest(1509, "alpine", "Glacier Mole");
 
         // Cold As A Corpse
-        Core.MapItemQuest(1510, "alpine", 759, 10);
+        Story.MapItemQuest(1510, "alpine", 759, 10);
 
         // Pretty Pretty Undead Princess Decor
-        Core.MapItemQuest(1511, "alpine", 760, 13);
+        Story.MapItemQuest(1511, "alpine", 760, 13);
 
         // Deadfying Frost Lions
-        Core.KillQuest(1512, "alpine", "Frost Lion");
+        Story.KillQuest(1512, "alpine", "Frost Lion");
 
         // Defiant Undead Deserters
-        Core.KillQuest(1516, "alpine", "Frozen Deserter");
+        Story.KillQuest(1516, "alpine", "Frozen Deserter");
 
         // Forest Guadian Gauntlet
-        Core.KillQuest(1513, "alpine", "Wendigo");
+        Story.KillQuest(1513, "alpine", "Wendigo");
 
         // Snow Turning Back!
-        Core.KillQuest(1519, "icevolcano", MonsterNames: new[] { "Snow Golem", "Dead-ly Ice Elemental" });
-        Core.MapItemQuest(1519, "icevolcano", 761, 10);
+        Story.KillQuest(1519, "icevolcano", MonsterNames: new[] { "Snow Golem", "Dead-ly Ice Elemental" });
+        Story.MapItemQuest(1519, "icevolcano", 761, 10);
 
         // Venom in Your Veins
-        Core.KillQuest(1520, "icevolcano", "Ice Symbiote");
+        Story.KillQuest(1520, "icevolcano", "Ice Symbiote");
 
         // Song of the Frozen Heart
-        Core.KillQuest(1521, "icevolcano", "Dead Morice");
+        Story.KillQuest(1521, "icevolcano", "Dead Morice");
     }
 
     public void SnowyVale()
     {
-        if (Core.isCompletedBefore(2576))
+        if (Story.isCompletedBefore(2576))
             return;
 
         Core.AddDrop("Ray of Hope", "Sands of Time");
 
         // Locate Kezeroth
-        Core.MapItemQuest(2522, "snowyvale", 1584);
+        Story.MapItemQuest(2522, "snowyvale", 1584);
 
         // Chronoton Detection
-        Core.KillQuest(2523, "snowyvale", "Polar Golem");
+        Story.KillQuest(2523, "snowyvale", "Polar Golem");
 
         // Core Knowledge
-        Core.MapItemQuest(2524, "snowyvale", 1585, 6);
+        Story.MapItemQuest(2524, "snowyvale", 1585, 6);
 
         // Temporal Revelation
-        Core.MapItemQuest(2525, "snowyvale", 1586);
+        Story.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
-        if (!Core.QuestProgression(2527))
+        if (!Story.QuestProgression(2527))
         {
             Core.EnsureAccept(2526);
             Core.Join("frostdeep", "Enter", "Spawn");
@@ -185,145 +187,145 @@ public class Frostvale
         }
 
         // Heart of Ice
-        Core.KillQuest(2527, "frostdeep", MonsterNames: new[] { "Polar Golem", "Polar Elemental" });
+        Story.KillQuest(2527, "frostdeep", MonsterNames: new[] { "Polar Golem", "Polar Elemental" });
 
         // Absolute Zero Success
-        Core.KillQuest(2528, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Golem" });
+        Story.KillQuest(2528, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Golem" });
 
         // Dirty Secret
-        Core.KillQuest(2529, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Mole" });
+        Story.KillQuest(2529, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Mole" });
 
         // Frozen Venom
-        Core.KillQuest(2530, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Spider" });
+        Story.KillQuest(2530, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Spider" });
 
         // Rune-ing His Plan
-        Core.KillQuest(2531, "frostdeep", "Ancient Golem");
+        Story.KillQuest(2531, "frostdeep", "Ancient Golem");
 
         // Deadly Beauty
-        Core.KillQuest(2532, "frostdeep", MonsterNames: new[] { "Polar Elemental", "Polar Golem", "Polar Golem" });
+        Story.KillQuest(2532, "frostdeep", MonsterNames: new[] { "Polar Elemental", "Polar Golem", "Polar Golem" });
 
         // Cold-Hearted Trophies
-        Core.KillQuest(2533, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Prowler", "Temple Prowler" });
+        Story.KillQuest(2533, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Prowler", "Temple Prowler" });
 
         // Warmth in the Cold
-        Core.KillQuest(2534, "frostdeep", MonsterNames: new[] { "Temple Spider", "Temple Maggot" });
+        Story.KillQuest(2534, "frostdeep", MonsterNames: new[] { "Temple Spider", "Temple Maggot" });
 
         // Icy Prizes
-        Core.KillQuest(2535, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
+        Story.KillQuest(2535, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
 
         // Fading Magic - may bug out as its 2 items from 1 mob if the delay doesnt work idfk, doesnt work as a string[] as it gets the sand drop 
-        Core.KillQuest(2536, "frostdeep", "Ancient Golem");
+        Story.KillQuest(2536, "frostdeep", "Ancient Golem");
         Bot.Sleep(2500);
-        Core.KillQuest(2536, "frostdeep", "Ancient Golem");
-        //Core.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        Story.KillQuest(2536, "frostdeep", "Ancient Golem");
+        //Story.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
 
         // FrostDeep Dwellers
-        Core.KillQuest(2537, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
+        Story.KillQuest(2537, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
 
         // A Breather
-        Core.KillQuest(2538, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Spider", "Polar Spider" });
+        Story.KillQuest(2538, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Spider", "Polar Spider" });
 
         // Raiders From FrostDeep
-        Core.KillQuest(2539, "frostdeep", MonsterNames: new[] { "Polar Draconian", "Temple Maggot" });
+        Story.KillQuest(2539, "frostdeep", MonsterNames: new[] { "Polar Draconian", "Temple Maggot" });
 
         // 8 Legged Frost Freaks
-        Core.KillQuest(2540, "frostdeep", MonsterNames: new[] { "Temple Spider", "Polar Spider" });
+        Story.KillQuest(2540, "frostdeep", MonsterNames: new[] { "Temple Spider", "Polar Spider" });
 
         // Freezing the Stone
-        Core.KillQuest(2541, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        Story.KillQuest(2541, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
 
         // Can You Feel the Chill Tonight?
-        Core.KillQuest(2542, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Elemental" });
+        Story.KillQuest(2542, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Elemental" });
 
         // Shrouded in Ice
-        Core.KillQuest(2543, "frostdeep", MonsterNames: new[] { "Ancient Maggot", "Ancient Maggot" });
+        Story.KillQuest(2543, "frostdeep", MonsterNames: new[] { "Ancient Maggot", "Ancient Maggot" });
 
         // Hard Fight for a Cold Truth
-        Core.KillQuest(2544, "frostdeep", MonsterNames: new[] { "Ancient Prowler", "Ancient Prowler" });
+        Story.KillQuest(2544, "frostdeep", MonsterNames: new[] { "Ancient Prowler", "Ancient Prowler" });
 
         // Sand and Shardin' Bones
-        Core.KillQuest(2545, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Mole" });
+        Story.KillQuest(2545, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Mole" });
 
         // Older and Colder
-        Core.KillQuest(2546, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
+        Story.KillQuest(2546, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
 
         // The Sword Of Hope
-        Core.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" });
+        Story.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" });
     }
 
     public void IceRise()
     {
-        if (Core.isCompletedBefore(2582))
+        if (Story.isCompletedBefore(2582))
             return;
 
         // A Little Warmth and Light
-        Core.MapItemQuest(2576, "icerise", 1592, 5);
+        Story.MapItemQuest(2576, "icerise", 1592, 5);
 
         // Behind Locked Doors
-        Core.MapItemQuest(2577, "icerise", 1593);
+        Story.MapItemQuest(2577, "icerise", 1593);
 
         // The Lost Key
-        Core.KillQuest(2578, "icerise", "Polar Golem");
+        Story.KillQuest(2578, "icerise", "Polar Golem");
 
         // Uncovering Pages Of The Past
-        Core.KillQuest(2579, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
+        Story.KillQuest(2579, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
 
         // We Know Where To Look
-        Core.KillQuest(2580, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
+        Story.KillQuest(2580, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
 
         // A Terrible Hiding Place
-        Core.KillQuest(2581, "icerise", "Arctic Direwolf");
+        Story.KillQuest(2581, "icerise", "Arctic Direwolf");
 
         // Face Kezeroth!
-        Core.KillQuest(2582, "icerise", "Kezeroth");
+        Story.KillQuest(2582, "icerise", "Kezeroth");
     }
 
     public void ColdWindValley()
     {
-        if (Core.isCompletedBefore(6132))
+        if (Story.isCompletedBefore(6132))
             return;
 
         // Help Blizzy
-        Core.MapItemQuest(6122, "coldwindvalley", 5547);
-        Core.MapItemQuest(6122, "coldwindvalley", 5548);
-        Core.MapItemQuest(6122, "coldwindvalley", 5549);
-        Core.MapItemQuest(6122, "coldwindvalley", 5550);
+        Story.MapItemQuest(6122, "coldwindvalley", 5547);
+        Story.MapItemQuest(6122, "coldwindvalley", 5548);
+        Story.MapItemQuest(6122, "coldwindvalley", 5549);
+        Story.MapItemQuest(6122, "coldwindvalley", 5550);
 
         // Gather Ammunition
-        Core.KillQuest(6123, "coldwindvalley", "Hail Elemental");
+        Story.KillQuest(6123, "coldwindvalley", "Hail Elemental");
 
         // Arm the Mob
-        Core.KillQuest(6124, "farm", "Scarecrow");
-        Core.MapItemQuest(6124, "coldwindvalley", 5551, 5);
+        Story.KillQuest(6124, "farm", "Scarecrow");
+        Story.MapItemQuest(6124, "coldwindvalley", 5551, 5);
 
         // Gather Bait
-        Core.KillQuest(6125, "coldwindvalley", "Arctic Wolf");
+        Story.KillQuest(6125, "coldwindvalley", "Arctic Wolf");
 
         // Bait the Trap
-        Core.KillQuest(6126, "coldwindvalley", "Ice Master Yeti");
-        Core.MapItemQuest(6126, "coldwindvalley", 5552);
+        Story.KillQuest(6126, "coldwindvalley", "Ice Master Yeti");
+        Story.MapItemQuest(6126, "coldwindvalley", 5552);
 
         // Gather Snowman Pieces
-        Core.KillQuest(6127, "coldwindvalley", "Snow Golem");
-        Core.MapItemQuest(6127, "coldwindvalley", 5553, 2);
+        Story.KillQuest(6127, "coldwindvalley", "Snow Golem");
+        Story.MapItemQuest(6127, "coldwindvalley", 5553, 2);
 
         // Gather Snowman Decorations
-        Core.KillQuest(6128, "coldwindvalley", "Coal Imp");
-        Core.MapItemQuest(6128, "coldwindvalley", 5554);
+        Story.KillQuest(6128, "coldwindvalley", "Coal Imp");
+        Story.MapItemQuest(6128, "coldwindvalley", 5554);
 
         // Grab some Garb
-        Core.KillQuest(6129, "coldwindvalley", "Frost Goblin");
+        Story.KillQuest(6129, "coldwindvalley", "Frost Goblin");
 
         // Bait and Gifts
-        Core.MapItemQuest(6130, "coldwindvalley", 5555);
+        Story.MapItemQuest(6130, "coldwindvalley", 5555);
 
         // Check out the Cave
-        Core.MapItemQuest(6131, "coldwindvalley", 5556);
-        Core.KillQuest(6131, "coldwindvalley", "Arctusk");
+        Story.MapItemQuest(6131, "coldwindvalley", 5556);
+        Story.KillQuest(6131, "coldwindvalley", "Arctusk");
 
         // Holly and Ice
-        Core.KillQuest(6132, "coldwindvalley", "Snow Golem");
-        Core.MapItemQuest(6132, "coldwindvalley", 5557, 8);
+        Story.KillQuest(6132, "coldwindvalley", "Snow Golem");
+        Story.MapItemQuest(6132, "coldwindvalley", 5557, 8);
     }
 
     // --------------------------------------------------------------------------------------------------------------------------

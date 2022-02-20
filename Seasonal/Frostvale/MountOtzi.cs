@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
+
 public class MountOtzi
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -16,69 +18,69 @@ public class MountOtzi
 
     public void MountOtziQuests()
     {
-        if (Core.isCompletedBefore(8444))
+        if (Story.isCompletedBefore(8444))
             return;
 
         // Light Midnight
-        Core.MapItemQuest(8434, "MountOtzi", 9437, 7);
+        Story.MapItemQuest(8434, "MountOtzi", 9437, 7);
 
         // Actaeon Stew
-        Core.KillQuest(8435, "MountOtzi", "Stitched Stag");
+        Story.KillQuest(8435, "MountOtzi", "Stitched Stag");
 
         // Vain Howl
-        Core.KillQuest(8436, "MountOtzi", "Gauden Hound");
+        Story.KillQuest(8436, "MountOtzi", "Gauden Hound");
 
         // Holle's Meal
-        if (!Core.QuestProgression(8437))
+        if (!Story.QuestProgression(8437))
         {
-            Core.MapItemQuest(8437, "MountOtzi", 9388);
-            Core.MapItemQuest(8437, "MountOtzi", 9387, 6);
-            Core.KillQuest(8437, "MountOtzi", "Stitched Stag");
+            Story.MapItemQuest(8437, "MountOtzi", 9388);
+            Story.MapItemQuest(8437, "MountOtzi", 9387, 6);
+            Story.KillQuest(8437, "MountOtzi", "Stitched Stag");
         }
 
         // The Hidden One
-        if (!Core.QuestProgression(8438))
+        if (!Story.QuestProgression(8438))
         {
-            Core.MapItemQuest(8438, "MountOtzi", 9389);
-            Core.KillQuest(8438, "MountOtzi", "Gauden Hound");
+            Story.MapItemQuest(8438, "MountOtzi", 9389);
+            Story.KillQuest(8438, "MountOtzi", "Gauden Hound");
         }
 
         //MountOtzi's Stones
-        if (!Core.QuestProgression(8439))
+        if (!Story.QuestProgression(8439))
         {
-            Core.MapItemQuest(8439, "MountOtzi", 9390, 7);
-            Core.KillQuest(8439, "MountOtzi", new[] { "Gauden Hound", "Mangled Stag" });
+            Story.MapItemQuest(8439, "MountOtzi", 9390, 7);
+            Story.KillQuest(8439, "MountOtzi", new[] { "Gauden Hound", "Mangled Stag" });
         }
 
         //Faceless Hunters
-        if (!Core.QuestProgression(8440))
+        if (!Story.QuestProgression(8440))
         {
-            Core.KillQuest(8440, "MountOtzi", "Sluagh Warrior");
-            Core.MapItemQuest(8440, "MountOtzi", 9391);
+            Story.KillQuest(8440, "MountOtzi", "Sluagh Warrior");
+            Story.MapItemQuest(8440, "MountOtzi", 9391);
         }
 
         //Stitch Work
-        if (!Core.QuestProgression(8441))
+        if (!Story.QuestProgression(8441))
         {
-            Core.KillQuest(8441, "MountOtzi", "Mangled Stag");
-            Core.MapItemQuest(8441, "MountOtzi", 9392);
+            Story.KillQuest(8441, "MountOtzi", "Mangled Stag");
+            Story.MapItemQuest(8441, "MountOtzi", 9392);
         }
 
         //Killer Promotion
-        if (!Core.QuestProgression(8442))
+        if (!Story.QuestProgression(8442))
         {
-            Core.KillQuest(8442, "MountOtzi", "Sluagh Warrior");
-            Core.MapItemQuest(8442, "MountOtzi", 9393, 7);
+            Story.KillQuest(8442, "MountOtzi", "Sluagh Warrior");
+            Story.MapItemQuest(8442, "MountOtzi", 9393, 7);
         }
 
         //Cold Pleasures
-        if (!Core.QuestProgression(8443))
+        if (!Story.QuestProgression(8443))
         {
-            Core.KillQuest(8443, "MountOtzi", "Sluagh Warrior");
-            Core.MapItemQuest(8443, "MountOtzi", 9394);
+            Story.KillQuest(8443, "MountOtzi", "Sluagh Warrior");
+            Story.MapItemQuest(8443, "MountOtzi", 9394);
         }
 
         //Corvus Mellori
-        Core.KillQuest(8444, "MountOtzi", "Sluagh Mellori", AutoCompleteQuest: false);
+        Story.KillQuest(8444, "MountOtzi", "Sluagh Mellori", AutoCompleteQuest: false);
     }
 }

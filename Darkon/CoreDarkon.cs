@@ -5,6 +5,7 @@ public class CoreDarkon
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
 
     public void FarmReceipt(int Quantity = 222)
     {
@@ -43,7 +44,7 @@ public class CoreDarkon
         Core.AddDrop("Darkon's Receipt");
         Core.EquipClass(ClassType.Solo);
 
-        Core.UpdateQuest(2954);
+        Story.UpdateQuest(2954);
         Core.Join("doomvault", "r5", "Left");
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))

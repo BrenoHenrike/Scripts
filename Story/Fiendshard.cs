@@ -1,12 +1,13 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Originul.cs
-
 using RBot;
 
 public class Fiendshard_Story
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     public Originul_Story Originul = new Originul_Story();
 
     public void ScriptMain(ScriptInterface bot)
@@ -20,7 +21,7 @@ public class Fiendshard_Story
 
     public void Fiendshard_Questline()
     {
-        if (Core.isCompletedBefore(7898))
+        if (Story.isCompletedBefore(7898))
             return;
 
         Originul.Originul_Questline();
@@ -28,22 +29,22 @@ public class Fiendshard_Story
         // Sneak Attack
         Core.EnsureAccept(7892);
         Core.Jump("r6", "Left");
-        Core.KillQuest(7892, "Fiendshard", "Rogue Fiend");
+        Story.KillQuest(7892, "Fiendshard", "Rogue Fiend");
         // Fiend-terrogation
-        Core.KillQuest(7893, "Fiendshard", "Paladin Fiend|Rogue Fiend");
+        Story.KillQuest(7893, "Fiendshard", "Paladin Fiend|Rogue Fiend");
         // Key Difference Between Human and Fiend
-        Core.KillQuest(7894, "Fiendshard", "Paladin Fiend|Rogue Fiend");
+        Story.KillQuest(7894, "Fiendshard", "Paladin Fiend|Rogue Fiend");
         // Unlock the Door
-        Core.KillQuest(7895, "Fiendshard", new[] { "Rogue Fiend", "Paladin Fiend", "Void Knight" });
+        Story.KillQuest(7895, "Fiendshard", new[] { "Rogue Fiend", "Paladin Fiend", "Void Knight" });
         Core.GetMapItem(7984);
         // Dirtlicking Guards
-        Core.KillQuest(7896, "Fiendshard", "Paladin Fiend|Void Knight");
+        Story.KillQuest(7896, "Fiendshard", "Paladin Fiend|Void Knight");
         // Defeat Dirtlicker
-        Core.KillQuest(7897, "Fiendshard", new[] { "Fiend Shard", "Dirtlicker" });
+        Story.KillQuest(7897, "Fiendshard", new[] { "Fiend Shard", "Dirtlicker" });
 
         // Destroy the Fiend Shard
         // Archfiend DeathLord quests can be done without finishing this quest.
-        Core.KillQuest(7898, "Fiendshard", "Nulgath's Fiend Shard");
+        Story.KillQuest(7898, "Fiendshard", "Nulgath's Fiend Shard");
         Core.EnsureAccept(7898);
         Core.Join("Fiendshard", "r9", "Left");
         while (!Bot.Quests.CanComplete(7898))

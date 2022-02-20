@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/Paladin.cs
@@ -12,8 +13,9 @@ public class ArchPaladin
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
     public CoreBLOD BLOD = new CoreBLOD();
     public Paladin Pal = new Paladin();
     public XansLair Xan = new XansLair();
@@ -36,20 +38,20 @@ public class ArchPaladin
         if (!Core.IsMember && !Bot.Quests.IsUnlocked(5467))
         {
             // A Strong Base
-            if (!Core.QuestProgression(5463))
+            if (!Story.QuestProgression(5463))
             {
-                Core.BuyQuest(5463, "temple", 288, "Stone Paladin Armor");
+                Story.BuyQuest(5463, "temple", 288, "Stone Paladin Armor");
                 Farm.Gold(500000);
-                Core.BuyQuest(5463, "darkthronehub", 1308, "Exalted Paladin Seal");
+                Story.BuyQuest(5463, "darkthronehub", 1308, "Exalted Paladin Seal");
             }
             // Proof of Valor
-            if (!Core.QuestProgression(5464))
+            if (!Story.QuestProgression(5464))
             {
                 Core.EnsureAccept(5464);
                 BLOD.UnlockMineCrafting();
                 Farm.BattleUnderB("Undead Energy", 1000);
                 Core.EquipClass(ClassType.Solo);
-                Core.UpdateQuest(3008);
+                Story.UpdateQuest(3008);
                 Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false);
                 Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom: true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
@@ -83,7 +85,7 @@ public class ArchPaladin
                 Core.EnsureComplete(5464);
             }
             // Mastering the Arcane
-            if (!Core.QuestProgression(5465))
+            if (!Story.QuestProgression(5465))
             {
                 Core.EnsureAccept(5465);
                 Core.EquipClass(ClassType.Solo);
@@ -97,7 +99,7 @@ public class ArchPaladin
                 Core.HuntMonster("farm", "Treeant", "Just the Perfect Stick", isTemp: false);
             }
             // For Those Who Have Fallen
-            if (!Core.QuestProgression(5466))
+            if (!Story.QuestProgression(5466))
             {
                 Core.EnsureAccept(5466);
                 Core.BuyItem("castle", 88, "Holy Hand Grenade");
@@ -114,13 +116,13 @@ public class ArchPaladin
             if (!Core.CheckInventory("Silver Paladin"))
                 Pal.GetPaladin(false);
             // Legendary|Silver Paladin's Vow
-            Core.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5475 : 5471);
+            Story.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5475 : 5471);
             // Legendary|Silver Paladin's Oath
-            Core.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5476 : 5472);
+            Story.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5476 : 5472);
             // Legendary|Silver Paladin's Pledge
-            Core.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5477 : 5473);
+            Story.ChainQuest(Core.CheckInventory("Silver Paladin") ? 5477 : 5473);
             // Aptitude Test
-            if (!Core.QuestProgression(Core.CheckInventory("Silver Paladin") ? 5478 : 5474))
+            if (!Story.QuestProgression(Core.CheckInventory("Silver Paladin") ? 5478 : 5474))
             {
                 Core.EnsureAccept(Core.CheckInventory("Silver Paladin") ? 5478 : 5474);
                 Core.EquipClass(ClassType.Solo);
@@ -133,7 +135,7 @@ public class ArchPaladin
         }
 
         // Commandment
-        if (!Core.QuestProgression(5467))
+        if (!Story.QuestProgression(5467))
         {
             Core.EnsureAccept(5467);
             Core.EquipClass(ClassType.Solo);
@@ -143,7 +145,7 @@ public class ArchPaladin
             Core.EnsureComplete(5467);
         }
         // Hymn of Light
-        if (!Core.QuestProgression(5468))
+        if (!Story.QuestProgression(5468))
         {
             Core.EnsureAccept(5468);
             Core.EquipClass(ClassType.Solo);
@@ -155,7 +157,7 @@ public class ArchPaladin
             Core.EnsureComplete(5468);
         }
         // Righteous Seal
-        if (!Core.QuestProgression(5469))
+        if (!Story.QuestProgression(5469))
         {
             Core.EnsureAccept(5469);
             Xan.DoAll();
@@ -187,7 +189,7 @@ public class ArchPaladin
             Core.EnsureComplete(5469);
         }
         // Sacred Magic: Eden
-        if (!Core.QuestProgression(5470))
+        if (!Story.QuestProgression(5470))
         {
             Core.EnsureAccept(5470);
             Core.EquipClass(ClassType.Solo);

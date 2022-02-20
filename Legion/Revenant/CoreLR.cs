@@ -7,6 +7,7 @@ public class CoreLR
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
     public JoinLegion JoinLegion = new JoinLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
@@ -122,7 +123,7 @@ public class CoreLR
         {
             Core.EnsureAccept(6898);
 
-            if (Core.isCompletedBefore(4613))
+            if (Story.isCompletedBefore(4613))
                 Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
             else
                 Core.KillMonster("cruxship", "r10", "Left", "Mummy", "Ancient Cohort Conquered", 500, false);

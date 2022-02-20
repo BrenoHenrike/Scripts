@@ -1,11 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class BattleUnder
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -27,45 +28,45 @@ public class BattleUnder
 
     public void BattleUnderA()
     {
-        if (Core.isCompletedBefore(377))
+        if (Story.isCompletedBefore(377))
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillQuest(374, "battleundera", "Skeletal Warrior");
-        Core.KillQuest(375, "battleundera", "Skeletal Warrior");
+        Story.KillQuest(374, "battleundera", "Skeletal Warrior");
+        Story.KillQuest(375, "battleundera", "Skeletal Warrior");
         Core.EquipClass(ClassType.Solo);
-        Core.KillQuest(376, "battleundera", "Bone Terror");
+        Story.KillQuest(376, "battleundera", "Bone Terror");
         Core.EquipClass(ClassType.Farm);
-        Core.KillQuest(377, "battleundera", "Skeletal Warrior");
+        Story.KillQuest(377, "battleundera", "Skeletal Warrior");
     }
 
     public void BattleUnderB()
     {
-        if (Core.isCompletedBefore(935))
+        if (Story.isCompletedBefore(935))
             return;
         
         BattleUnderA();
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillQuest(689, "battleunderb", "Skeleton Warrior");
-        Core.KillQuest(690, "battleunderb", "Skeleton Warrior");
-        Core.KillQuest(691, "battleunderb", "Skeleton Warrior");
+        Story.KillQuest(689, "battleunderb", "Skeleton Warrior");
+        Story.KillQuest(690, "battleunderb", "Skeleton Warrior");
+        Story.KillQuest(691, "battleunderb", "Skeleton Warrior");
         Core.EquipClass(ClassType.Solo);
-        Core.KillQuest(692, "battleunderb", "Undead Champion", GetReward: false);
-        Core.MapItemQuest(935, "battleunderb", 253);
+        Story.KillQuest(692, "battleunderb", "Undead Champion", GetReward: false);
+        Story.MapItemQuest(935, "battleunderb", 253);
     }
 
     public void BattleUnderC()
     {
-        if (Core.isCompletedBefore(939))
+        if (Story.isCompletedBefore(939))
             return;
 
         BattleUnderB();
 
-        Core.KillQuest(936, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead");
-        Core.KillQuest(937, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead|Purple Crystalized Jellyfish");
-        Core.KillQuest(938, "battleunderc", "Crystalized Jellyfish");
-        if (!Core.QuestProgression(939))
+        Story.KillQuest(936, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead");
+        Story.KillQuest(937, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead|Purple Crystalized Jellyfish");
+        Story.KillQuest(938, "battleunderc", "Crystalized Jellyfish");
+        if (!Story.QuestProgression(939))
         {
             Core.EnsureAccept(939);
             Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
@@ -77,25 +78,25 @@ public class BattleUnder
 
     public void BattleUnderD() //use Core.KillMonster(map: "MapName", cell: "Cell", pad: "pad", monster: "Mob", item = "item", quant: Amount) - map is a broke otherwise spawns random enemies.
     {
-        if (!Core.IsMember || Core.isCompletedBefore(2215))
+        if (!Core.IsMember || Story.isCompletedBefore(2215))
             return;
 
         BattleUnderC();
 
-        Core.KillQuest(2211, "battleunderd", "Shivering Bones");
-        Core.MapItemQuest(2212, "battleunderd", 1286, 8);
-        Core.KillQuest(2212, "battleunderd", "Icy Banshee");
-        Core.KillQuest(2213, "battleunderd", "Skeletal Warrior");
-        Core.MapItemQuest(2214, "battleunderd", 1287, 4);
-        Core.KillQuest(2214, "battleunderd", "Glacial Horror");
-        Core.MapItemQuest(2215, "battleunderd", 1288);
+        Story.KillQuest(2211, "battleunderd", "Shivering Bones");
+        Story.MapItemQuest(2212, "battleunderd", 1286, 8);
+        Story.KillQuest(2212, "battleunderd", "Icy Banshee");
+        Story.KillQuest(2213, "battleunderd", "Skeletal Warrior");
+        Story.MapItemQuest(2214, "battleunderd", 1287, 4);
+        Story.KillQuest(2214, "battleunderd", "Glacial Horror");
+        Story.MapItemQuest(2215, "battleunderd", 1288);
     }
 
     public void BattleUnderE()
     {
-        Core.KillQuest(5927, "battleundere", "Lava Guard");
-        Core.MapItemQuest(5927, "battleundere", 5362);
-        Core.KillQuest(5928, "battleundere", "Hot Mama");
+        Story.KillQuest(5927, "battleundere", "Lava Guard");
+        Story.MapItemQuest(5927, "battleundere", 5362);
+        Story.KillQuest(5928, "battleundere", "Hot Mama");
     }
 
     public void Understone(int Quantity)

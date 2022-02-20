@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/DarkAlly.cs
 using RBot;
@@ -12,6 +13,7 @@ public class TheEdgeofanEra
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
     public DarkAlly_Story DarkAlly = new DarkAlly_Story();
 
@@ -68,9 +70,9 @@ public class TheEdgeofanEra
         FlameForgedMetal(13);
         if (!Core.CheckInventory("Weapon Imprint", 15))
         {
-            Core.UpdateQuest(3008);
+            Story.UpdateQuest(3008);
             Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Core.UpdateQuest(3004);
+            Story.UpdateQuest(3004);
             Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
         }
 

@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class SagaTemplate
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -18,12 +20,12 @@ public class SagaTemplate
 
     public void SagaName()
     {
-        if (Core.QuestProgression(000))
+        if (Story.QuestProgression(000))
             return;
 
-        Core.KillQuest(QuestID: 000, MapName: "mapname", MonsterName: "MonsterName");
-        Core.KillQuest(QuestID: 000, MapName: "mapname", MonsterNames: new[] { "Monstername", "Monstername" });
-        Core.MapItemQuest(QuestID: 000, MapName: "mapname", MapItemID: 1, Amount: 1);
-        Core.ChainQuest(QuestID: 000);
+        Story.KillQuest(QuestID: 000, MapName: "mapname", MonsterName: "MonsterName");
+        Story.KillQuest(QuestID: 000, MapName: "mapname", MonsterNames: new[] { "Monstername", "Monstername" });
+        Story.MapItemQuest(QuestID: 000, MapName: "mapname", MapItemID: 1, Amount: 1);
+        Story.ChainQuest(QuestID: 000);
     }
 }

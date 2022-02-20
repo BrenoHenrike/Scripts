@@ -1,14 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class DjinnGateStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -21,13 +19,13 @@ public class DjinnGateStory
 
     public void DjinnGate()
     {
-        if (Core.isCompletedBefore(6161))
+        if (Story.isCompletedBefore(6161))
             return;
 
         Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion",
         "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun");
         Core.EquipClass(ClassType.Farm);
-        if (!Core.QuestProgression(6154))
+        if (!Story.QuestProgression(6154))
         {
             Core.EnsureAccept(6153);
             Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
@@ -37,7 +35,7 @@ public class DjinnGateStory
             Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
             Core.EnsureComplete(6153);
         }
-        if (!Core.QuestProgression(6155))
+        if (!Story.QuestProgression(6155))
         {
             Core.EnsureAccept(6154);
             Core.KillMonster("arcangrove", "Left", "Left", "*", "Fragment 6");
@@ -47,7 +45,7 @@ public class DjinnGateStory
             Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
             Core.EnsureComplete(6154);
         }
-        if (!Core.QuestProgression(6156))
+        if (!Story.QuestProgression(6156))
         {
             Core.EnsureAccept(6155);
             Core.KillMonster("mythsong", "Hill", "Left", "*", "Fragment 11");
@@ -57,7 +55,7 @@ public class DjinnGateStory
             Core.KillMonster("beehive", "r5", "Left", "*", "Fragment 14");
             Core.EnsureComplete(6155);
         }
-        if (!Core.QuestProgression(6157))
+        if (!Story.QuestProgression(6157))
         {
             Core.EnsureAccept(6156);
             Core.KillMonster("forestchaos", "Boss", "Left", "*", "Fragment 16");
@@ -67,7 +65,7 @@ public class DjinnGateStory
             Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
             Core.EnsureComplete(6156);
         }
-        if (!Core.QuestProgression(6158))
+        if (!Story.QuestProgression(6158))
         {
             Core.EnsureAccept(6157);
             Core.KillMonster("pirates", "End", "Left", "Shark Bait", "Fragment 21");
@@ -77,7 +75,7 @@ public class DjinnGateStory
             Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
             Core.EnsureComplete(6157);
         }
-        if (!Core.QuestProgression(6159))
+        if (!Story.QuestProgression(6159))
         {
             Core.EnsureAccept(6158);
             Core.EquipClass(ClassType.Solo);
@@ -88,7 +86,7 @@ public class DjinnGateStory
             Core.KillMonster("thevoid", "r16", "Left", "*", "Potent Reaper Mana", publicRoom: true);
             Core.EnsureComplete(6158);
         }
-        Core.MapItemQuest(6159, "djinngate", 5571, 5, false);
+        Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
         if (!Bot.Quests.IsUnlocked(6161))
         {
             Core.EquipClass(ClassType.Farm);
@@ -97,6 +95,6 @@ public class DjinnGateStory
             Core.EnsureComplete(6160);
         }
         Core.EquipClass(ClassType.Solo);
-        Core.KillQuest(6161, "djinngate", "Gedoz the Malignant");
+        Story.KillQuest(6161, "djinngate", "Gedoz the Malignant");
     }
 }

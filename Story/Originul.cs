@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class Originul_Story
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -17,25 +19,25 @@ public class Originul_Story
 
     public void Originul_Questline()
     {
-        if (Core.isCompletedBefore(7889))
+        if (Story.isCompletedBefore(7889))
             return;
 
         // Inquisite the Inquisitors
-        Core.KillQuest(7881, "Originul", "Inquisitor Guard");
+        Story.KillQuest(7881, "Originul", "Inquisitor Guard");
         // Captains Capped
-        Core.KillQuest(7882, "Originul", "Inquisitor Captain");
+        Story.KillQuest(7882, "Originul", "Inquisitor Captain");
         // Grand Defeat
-        Core.KillQuest(7883, "Originul", "Grand Inquisitor");
+        Story.KillQuest(7883, "Originul", "Grand Inquisitor");
         // Portal Unlocked
-        Core.KillQuest(7884, "Originul", new[] { "Inquisitor Guard", "Inquisitor Captain", "Grand Inquisitor" });
+        Story.KillQuest(7884, "Originul", new[] { "Inquisitor Guard", "Inquisitor Captain", "Grand Inquisitor" });
         // Fiend Training
-        Core.KillQuest(7885, "Originul", "Bloodfiend");
+        Story.KillQuest(7885, "Originul", "Bloodfiend");
         // Failed Fiend Shards
-        Core.KillQuest(7886, "Originul", "Bloodfiend|Dreadfiend");
+        Story.KillQuest(7886, "Originul", "Bloodfiend|Dreadfiend");
         // Executed Tasks
-        Core.KillQuest(7887, "Originul", "Dreadfiend");
+        Story.KillQuest(7887, "Originul", "Dreadfiend");
         // Champion Usurper
-        Core.KillQuest(7888, "Originul", "Fiend Champion");
+        Story.KillQuest(7888, "Originul", "Fiend Champion");
         // Break their Muti-kneecaps
         Core.EnsureAccept(7889);
         Core.Join("Originul", "r10", "Top");

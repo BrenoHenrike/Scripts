@@ -1,12 +1,13 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
-
 using RBot;
 
 public class GetSDD
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     public MysteriousEgg Egg = new MysteriousEgg();
 
     public void ScriptMain(ScriptInterface bot)
@@ -64,7 +65,7 @@ public class GetSDD
                 Core.EnsureComplete(6906);
             }
             if (!Bot.Quests.IsUnlocked(6908))
-                Core.MapItemQuest(6907, "void", 6453, GetReward: false);
+                Story.MapItemQuest(6907, "void", 6453, GetReward: false);
             if (!Bot.Quests.IsUnlocked(6909))
             {
                 Core.EnsureAccept(6908);
@@ -72,7 +73,7 @@ public class GetSDD
                 Core.EnsureComplete(6908);
             }
             if (!Bot.Quests.IsUnlocked(6910))
-                Core.MapItemQuest(6909, "void", 6454, GetReward: false);
+                Story.MapItemQuest(6909, "void", 6454, GetReward: false);
             if (!Bot.Quests.IsUnlocked(6911))
             {
                 Core.EnsureAccept(6910);
@@ -92,7 +93,7 @@ public class GetSDD
                 Core.EnsureComplete(6912);
             }
             if (!Bot.Quests.IsUnlocked(6914))
-                Core.MapItemQuest(6913, "mysteriousegg", 6455, GetReward: false);
+                Story.MapItemQuest(6913, "mysteriousegg", 6455, GetReward: false);
             Core.EnsureAccept(6914);
             Core.EnsureComplete(6914);
         }

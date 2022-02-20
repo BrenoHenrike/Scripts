@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/01Vaden(CastleofBones).cs
 //cs_include Scripts/Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
 //cs_include Scripts/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs

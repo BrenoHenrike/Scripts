@@ -1,11 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class MysteriousEgg
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -52,9 +53,9 @@ public class MysteriousEgg
                 if (!Bot.Quests.IsUnlocked(5989))
                 {
                     if (!Bot.Quests.IsUnlocked(5984))
-                        Core.MapItemQuest(5983, "dragoncrown", 5420, GetReward: false);
+                        Story.MapItemQuest(5983, "dragoncrown", 5420, GetReward: false);
                     if (!Bot.Quests.IsUnlocked(5985))
-                        Core.MapItemQuest(5984, "dragoncrown", 5421, GetReward: false);
+                        Story.MapItemQuest(5984, "dragoncrown", 5421, GetReward: false);
                     if (!Bot.Quests.IsUnlocked(5986))
                     {
                         Core.EnsureAccept(5985);
@@ -76,9 +77,9 @@ public class MysteriousEgg
                         Core.KillMonster("dragoncrown", "r3", "Left", "Earth Elemental", "Sticky Mud", 5);
                         Core.EnsureComplete(5987);
                     }
-                    Core.MapItemQuest(5988, "dragoncrown", 5423, GetReward: false);
+                    Story.MapItemQuest(5988, "dragoncrown", 5423, GetReward: false);
                 }
-                Core.MapItemQuest(5989, "dragoncrown", 5424, GetReward: false);
+                Story.MapItemQuest(5989, "dragoncrown", 5424, GetReward: false);
             }
             if (!Bot.Quests.IsUnlocked(5991))
             {

@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/SevenCircles(War).cs
 using RBot;
