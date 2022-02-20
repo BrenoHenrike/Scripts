@@ -66,8 +66,13 @@ public class TheEdgeofanEra
             Core.BuyItem("underworld", 577, "Obsidian Rock", 108);
         }
         FlameForgedMetal(13);
-        Core.UpdateQuest(3004);
-        Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
+        if (!Core.CheckInventory("Weapon Imprint", 15))
+        {
+            Core.UpdateQuest(3008);
+            Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
+            Core.UpdateQuest(3004);
+            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
+        }
 
         Core.EnsureComplete(7444);
     }

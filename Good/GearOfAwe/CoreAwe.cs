@@ -42,12 +42,14 @@ public class CoreAwe
             Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, publicRoom: true);
         else if(gear.Equals("helm"))
         {
+            Core.UpdateQuest(3008);
+            Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
             Core.UpdateQuest(3004);
             Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false);
         }
         else
         {
-            Core.UpdateQuest(3004);
+            Core.UpdateQuest(3008);
             Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape  Shard", 1, false);
         }
         Core.EnsureComplete(questID);

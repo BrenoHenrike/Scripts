@@ -49,7 +49,7 @@ public class ArchPaladin
                 BLOD.UnlockMineCrafting();
                 Farm.BattleUnderB("Undead Energy", 1000);
                 Core.EquipClass(ClassType.Solo);
-                Core.UpdateQuest(2954);
+                Core.UpdateQuest(3008);
                 Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false);
                 Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom: true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
