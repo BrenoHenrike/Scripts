@@ -81,7 +81,7 @@ public class CoreDarkon
         {
             Core.EnsureAccept(7326);
 
-            Core.HuntMonster("tercessuinotlim", "Nulgath", "NUlgath's mask", 1, false, publicRoom: true);
+            Core.HuntMonster("tercessuinotlim", "Nulgath", "Nulgath's mask", 1, false, publicRoom: true);
 
             Core.EnsureComplete(7326);
             Bot.Wait.ForPickup("Darkon's Receipt");
