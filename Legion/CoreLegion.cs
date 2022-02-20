@@ -84,8 +84,6 @@ public class CoreLegion
 
         int i = 1;
         Core.AddDrop("Dark Token");
-        Core.Logger("Checking Questline: WorldSoul");
-        WorldSoul();
         Core.Logger($"Farming {quant} Dark Tokens");
         Core.EquipClass(ClassType.Farm);
         while (!Bot.Inventory.Contains("Dark Token", quant))
@@ -333,26 +331,5 @@ public class CoreLegion
         }
     }
 
-    public void WorldSoul()
-    {
-        if (!Core.isCompletedBefore(6245))
-        {
-            Core.EnsureAccept(6238);
-            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Void Cortex");
-            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Paradox Processor");
-            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Thermal Vent");
-            Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Dwakel Defeated", 6);
-            Core.EnsureComplete(6238);
-        }
-        Core.KillQuest(6239, "worldsoul", "Divine Water Elemental");
-        Core.KillQuest(6240, "worldsoul", "Divine Fire Elemental");
-        Core.KillQuest(6241, "worldsoul", "Skeletal Squatter");
-        Core.MapItemQuest(6241, "worldsoul", 5681, 3);
-        Core.KillQuest(6242, "worldsoul", "Radioactive Hydra");
-        Core.KillQuest(6243, "worldsoul", "Legion Dreadmarch");
-        Core.MapItemQuest(6243, "worldsoul", 5680);
-        Core.KillQuest(6244, "worldsoul", "Legion Dreadmarch");
-        Core.MapItemQuest(6244, "worldsoul", 5682);
-        Core.KillQuest(6245, "worldsoul", "Core Guardian");
-    }
+
 }
