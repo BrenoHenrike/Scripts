@@ -382,10 +382,10 @@ public class CoreAdvanced
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
-        //_RaceGear(monster);
-        //EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
+        _RaceGear(monster);
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
-        //Core.Join(map, cell, pad, publicRoom: publicRoom);
+        Core.Join(map, cell, pad, publicRoom: publicRoom);
 
         Bot.Events.CounterAttack += _KillUltra;
 
