@@ -95,7 +95,7 @@ public class ArchPaladin
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("thirdspell", "Mana Phoenix", "Nightmare Kibble", 200, false);
                 Core.HuntMonster("thunderfang", "Lightning Ball", "Condensed Energy", isTemp: false);
-                Core.KillMonster("downward", "r11", "Right", "Crystal Mana Construct", "Crystallised Mana Catalyst", isTemp: false);
+                Core.KillMonster("downward", "r11", "Right", "Crystal Mana Construct", "Crystallized Mana Catalyst", isTemp: false);
                 Core.HuntMonster("farm", "Treeant", "Just the Perfect Stick", isTemp: false);
             }
             // For Those Who Have Fallen
@@ -140,7 +140,7 @@ public class ArchPaladin
             Core.EnsureAccept(5467);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("brightfall", "Painadin Overlord", "Skill Observed", isTemp: false, publicRoom: true);
-            Core.HuntMonster("citadel", "Grant Inquisitor", "Spirit of Vindication", isTemp: false);
+            Core.HuntMonster("citadel", "Grand Inquisitor", "Spirit of Vindication", isTemp: false);
             Core.HuntMonster("alliance", "Good Lieutenant", "Radiant Blade Enhancement", isTemp: false);
             Core.EnsureComplete(5467);
         }
