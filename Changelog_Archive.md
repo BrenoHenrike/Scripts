@@ -1,5 +1,6 @@
 - ##### Versions
-  - [v2.25- Latest](#v225)
+  - [v2.26 - Latest](#v226)
+  - [v2.25](#v225)
   - [v2.24](#v224)
     - [v2.24.2](#2242)
     - [v2.24.1](#2241)
@@ -39,6 +40,55 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+
+### v2.26
+**Released on Feb 17, 2022 at 23:00 / 11:00 PM (UTC)**  
+· Released Hollowborn DoomKnight (Hadmos)  
+· Released Wheel of Love (Hadmos)  
+· Released Living Dungeon (Vladimir)  
+· Released Love Spell merge Pinkest Dye Ever (Vladimir)  
+· Released Love Spell Story (Vladimir)  
+· Released Legion Exercise 1 (Tato)  
+· Released Legion Exercise 2 (Tato)  
+· Released Legion Exercise 3 (Tato)  
+· Released Legion Exercise 4 (Tato)  
+· Released CoreStory (Exelot)  
+· Released EnhanceEquipped\[Fighter\] (Exelot)  
+· Released EnhanceEquipped\[Healer\] (Exelot)  
+· Released EnhanceEquipped\[Hybrid\] (Exelot)  
+· Released EnhanceEquipped\[Lucky\] (Exelot)  
+· Released EnhanceEquipped\[SpellBreaker\] (Exelot)  
+· Released EnhanceEquipped\[Thief\] (Exelot)  
+· Released EnhanceEquipped\[Wizard\] (Exelot)  
+· Released SmartEnhance (Exelot)  
+· Optimized how the SmartEnhance method stores it information (400 less lines)  
+· Added rankUpClass to Yami no Ronin  
+· Added a auto restoring temp name and guildname to protect your identity  
+· Added the Chaos Slayer variants to the Smart Enhance Library  
+· Added safety guard check to UpdateQuest  
+· Added logging in chat with its own option in CanChange  
+· Added AggroMonsters to IcestormArena  
+· Added auto-banking and rankUpClass to Dragon of Time  
+· Changed CurrentClassEnh from a private to a public void  
+· Changed CurrentWeaponSpecial from a private to a public void  
+· Changed private void _EquipGear to public void Equip  
+· Changed Drakath Armor to use BLoD's DoAll function  
+· Minor changes to how rankUpClass works behind the scenes  
+· Moved QuestProgression and reliant methods to CoreStory  
+· Moved UpdateQuest to CoreStory  
+· Moved isCompletedBefore to CoreStory  
+· Moved WorldSoul from CoreLegion into its own story file  
+· Made isCompletedBefore slimmer  
+· Fixed a bunch of missing //cs_includes  
+· Fixed Emblem of Dage farming  the right item  
+· Fixed Nulgath's Mask not being picked up in Third Errand  
+· Fixed typos in Arch Paladin (thanks MaKeCaN)  
+· Fixed not being able to bypass into DoomVaultB properly in multiple bots  
+· Fixed the DoExtra option in Dragon of Time  
+· Fixed ChronoSpan REP only turning in the quest once  
+· Removed a logging mistake from the BestGear function  
+· A multitude of fixes to Core13LoC (I am proud of you Tato)  
+[Back to top](#versions)
 
 ### v2.25
 **Released on Feb 17, 2022 at 23:00 / 11:00 PM (UTC)**  
