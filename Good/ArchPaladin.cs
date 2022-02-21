@@ -90,13 +90,14 @@ public class ArchPaladin
                 Core.EnsureAccept(5465);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("xantown", "Xan", "Pyromancer Artifact", isTemp: false);
-                Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false, publicRoom: true);
+                Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false);
                 Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("thirdspell", "Mana Phoenix", "Nightmare Kibble", 200, false);
                 Core.HuntMonster("thunderfang", "Lightning Ball", "Condensed Energy", isTemp: false);
                 Core.KillMonster("downward", "r11", "Right", "Crystal Mana Construct", "Crystallized Mana Catalyst", isTemp: false);
                 Core.HuntMonster("farm", "Treeant", "Just the Perfect Stick", isTemp: false);
+                Core.EnsureComplete(5465);
             }
             // For Those Who Have Fallen
             if (!Story.QuestProgression(5466))

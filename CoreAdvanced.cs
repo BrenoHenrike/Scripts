@@ -459,7 +459,6 @@ public class CoreAdvanced
             //Lucky - Spiral Carve
             case "Abyssal Angel":
             case "Abyssal Angel’s Shadow":
-            case "ArchFiend":
             case "ArchPaladin":
             case "Artifact Hunter":
             case "Assassin":
@@ -580,6 +579,9 @@ public class CoreAdvanced
             case "Pirate":
             case "Pumpkin Lord":
             case "ShadowFlame DragonLord":
+            case "ShadowStalker of Time":
+            case "ShadowWalker of Time":
+            case "ShadowWeaver of Time":
             case "Silver Paladin":
             case "Thief of Hours":
             case "Ultra Elemental Warrior":
@@ -616,9 +618,6 @@ public class CoreAdvanced
             case "Shadow Dragon Shinobi":
             case "Shadow Ripper":
             case "Shadow Rocker":
-            case "ShadowStalker of Time":
-            case "ShadowWalker of Time":
-            case "ShadowWeaver of Time":
             case "Star Captain":
             case "Troubador of Love":
             case "Unchained Rocker":
@@ -627,6 +626,7 @@ public class CoreAdvanced
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
                 break;
             //Lucky - Health Vamp
+            case "ArchFiend":
             case "Barber":
             case "Classic DragonLord":
             case "Dragonslayer":
