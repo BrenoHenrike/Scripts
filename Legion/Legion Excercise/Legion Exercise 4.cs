@@ -19,7 +19,7 @@ public class LegionExercise4
     public JoinLegion JoinLegion = new JoinLegion();
     public CoreStory Story = new CoreStory();
 
-    new string[] Rewards = { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced", "Legion Token" };
+    string[] Rewards = { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced", "Legion Token" };
 
     public void ScriptMain(ScriptInterface bot)
     {
