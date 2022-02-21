@@ -25,7 +25,7 @@ public class YamiNoRonin
         Core.SetOptions(false);
     }
 
-    public void YaminoRoninClass()
+    public void YaminoRoninClass(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Yami no Ronin"))
             return;
@@ -34,6 +34,9 @@ public class YamiNoRonin
         TPtP.BlademasterSwordScroll(1);
         TEoaE.YokaiSwordScroll(1);
         Core.EnsureComplete(7408);
+
+        if (rankUpClass)
+            Adv.rankUpClass("Yami no Ronin");
     }
 
 }
