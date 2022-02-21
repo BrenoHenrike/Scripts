@@ -6,7 +6,6 @@ public class CoreStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
 
     /// <summary>
     /// Kills a monster for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
