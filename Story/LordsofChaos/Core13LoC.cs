@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using RBot;
 
 public class Core13LoC
@@ -38,13 +39,14 @@ public class Core13LoC
         if (Story.isCompletedBefore(6219))
             return;
 
-        //Map: PortalUndead
-        if (!Story.QuestProgression(183))                                                  // Enter the gates
-        {
-            Core.EnsureAccept(183);            // Enter the gates
-            Core.KillMonster("portalundead", "Enter", "Spawn", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
-            Core.EnsureComplete(183);
-        }
+        //Map: Battleudnera
+        // if (!Story.QuestProgression(183))                                                  // Enter the gates
+        // {
+        //     Core.EnsureAccept(183);            // Enter the gates
+        //     Core.KillMonster("battleundera", "Enter", "Spawn", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
+        //     Core.EnsureComplete(183);
+        // }
+        Story.KillQuest(183, "battleundera", "Skeletal Fire Mage");
         //Map: SwordhavenUndead
         Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier");                                                // Undead Assault
         Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage");                                               // Skull Crusher Mountain
@@ -52,16 +54,19 @@ public class Core13LoC
         //Map: CastleUndead
         Story.MapItemQuest(179, "castleundead", 38, 5);                                                              // Talk to the Knights
         Story.KillQuest(180, "castleundead", "*");                                         // Defend the Throne
-        if (!Story.QuestProgression(1))                                                    // The Arrival of Drakath cutscene
+        if (!Story.QuestProgression(196))                                                    // The Arrival of Drakath cutscene
         {
             Core.Join("castleundead", "King2", "Center");
+            Core.Join("Shadowfall");
+            Core.SendPackets("%xt%zm%updateQuest%73922%43%1%");
             Bot.SendPacket($"%xt%zm%updateQuest%188220%41%{(Core.HeroAlignment > 1 ? 1 : Core.HeroAlignment)}%");
             Bot.Sleep(2000);
             Core.Join("shadowfall");
             Bot.Sleep(2000);
+            Story.ChainQuest(195);
+            Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");                          // Recover Sepulchure's Cursed Armor!
         }
         //Map: ChaosCrypt
-        Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");                          // Recover Sepulchure's Cursed Armor!
         //Map: Prison
         Story.MapItemQuest(6216, "prison", 39, 5);                                        // Unlife Insurance
         Story.BuyQuest(6216, "prison", 1559, "Unlife Insurance Bond");
@@ -164,21 +169,28 @@ public class Core13LoC
         Story.KillQuest(349, "uppercity", "Chaos Egg");                                                                      // Scrambled Eggs
         Story.KillQuest(350, "uppercity", "Terradactyl");                                                                    // The King's Wings
         Story.KillQuest(351, "uppercity", "Rhino Beetle");                                                                   // Bugging Out
-        Story.KillQuest(352, "uppercity", "Cave Lizard");                                                                    // Lizard Gizzard
-        if (!Story.QuestProgression(1))                                                            // Confront Vath
+        Story.KillQuest(352, "uppercity", "Cave Lizard");
+        Story.KillQuest(353, "dwarfprison", new[] {"Balboa", "Albino Bat", "Chaos Drow"});                                                                    // Lizard Gizzard
+        if (!Story.QuestProgression(354))                                                                                    // Like Butter
         {
-            Core.Join("vath");
-            Bot.Player.Jump("CutCap", "Left");
+            Core.AddDrop("Thermite");
+
+            Core.Join("vath");                                                                                                 //Confront Vath
+            Core.Jump("CutCap", "Left");
             Bot.Sleep(2500);
-        }
-        Story.KillQuest(353, "dwarfprison", new[] { "Balboa", "Albino Bat", "Chaos Drow" });                                 // Mock the Lock
-        if (!Story.QuestProgression(354))                                                          // Like Butter
-        {
+            Story.UpdateQuest(354);
+
+            if (!Core.CheckInventory("Thermite"))
+            {
+                Core.EnsureAccept(353);
+                Core.HuntMonster("dwarfprison", "Balboa", "Balboa Core", 4);
+                Core.HuntMonster("dwarfprison", "Albino Bat", "Rusted Claw", 3);
+                Core.HuntMonster("dwarfprison", "Chaos Drow", "Magnesium Flare");
+                Core.EnsureComplete(353);
+            }
             Core.Join("dwarfprison", "Enter", "Right");
             Core.EnsureComplete(354);
         }
-
-
         Story.KillQuest(355, "dwarfprison", "Warden Elfis");                                       // Jailhouse Rock
         Story.KillQuest(356, "dwarfprison", new[] { "Albino Bat", "Balboa", "Chaos Drow" });       // Explosives 101
 
@@ -359,26 +371,40 @@ public class Core13LoC
         Story.KillQuest(534, "lycan", "Dire Wolf");                                                      // A Gift Of Meat
         Story.KillQuest(535, "lycan", new[] { "Lycan", "Lycan Knight" });                                  // No Respect
         Story.KillQuest(536, "lycan", "Chaos Vampire Knight");                                           // Vampire Knights
-        Story.KillQuest(537, "lycan", "Sanguine");                             // Sanguine
-        //Map: LycanWar
-        if (!Story.QuestProgression(564))
+        Story.KillQuest(537, "lycan", "Sanguine", AutoCompleteQuest: false);
+        Bot.Sleep(10000);                                                                                 // Sanguine
+        if (!Story.QuestProgression(564))                                                                   //Map: LycanWar
         {
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
             Bot.Sleep(5000);
-            Story.UpdateQuest(564);
+            Story.UpdateQuest(566);
             Story.MapItemQuest(564, "chaoscave", 107);
         }
-        //Map: ChaosCave                                                     // Search and Report
-        Story.KillQuest(565, "chaoscave", "Werepyre");                                                   // The Key is the Key
-        Story.KillQuest(566, "chaoscave", "Werepyre");                                                   // Secret Words
-        Story.KillQuest(567, "chaoscave", "Dracowerepyre");                          // Dracowerepyre
-        //Map: Wolfwing
-        Core.HuntMonster("wolfwing", "Wolfwing");                                                       // Wolfwing
-        Bot.Sleep(3000);
-        if (Core.HeroAlignment == 0)
-            Core.EnsureComplete(597);
-        else
-            Core.EnsureComplete(598);
+
+        //Map: ChaosCave                                                                                // Search and Report
+        Story.KillQuest(565, "chaoscave", "Werepyre");                                                  // The Key is the Key
+        if (!Story.QuestProgression(566))
+        {
+            Core.EnsureAccept(566);
+            Core.KillMonster("chaoscave", "r3", "Left", "Werepyre", "Secret Words");                   // Secret Words
+            Core.EnsureComplete(566);
+        }
+        if (!Story.QuestProgression(567))
+        {
+            Story.UpdateQuest(567);
+            Core.EnsureAccept(567);
+            Core.KillMonster("chaoscave", "r5", "Left", "Dracowerepyre", "Dracowerepyre Defeated");
+            Core.EnsureComplete(567);
+            Story.UpdateQuest(597);
+        }
+        // Dracowerepyre
+        //Map: Wolfwing                                                                         // Wolfwing
+        if (!Story.QuestProgression(597))
+        {
+            if (Core.HeroAlignment != 1)
+                Bot.SendPacket($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%1%");
+            Story.ChainQuest(597);
+        }
     }
 
     public void Kimberly()
@@ -405,7 +431,12 @@ public class Core13LoC
         Story.KillQuest(659, "beehive", "Killer Queen Bee");
 
         //Satisfaction
-        Story.KillQuest(660, "beehive", "Lord Ovthedance");
+        if (!Story.QuestProgression(660))
+        {
+            Core.EnsureAccept(660);
+            Core.HuntMonster("beehive", "Lord Ovthedance", "No Shoes!");
+            Core.EnsureComplete(660);
+        }
 
         //Dance with Great Godfather of Souls
         if (!Story.QuestProgression(661))
