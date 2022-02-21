@@ -98,7 +98,5 @@ public class LivingDungeon
 
         // DRAGON vs TITAN Rematch!
         Story.KillQuest(4384, "treetitanbattle", "Dakka the Dire Dragon");
-
-        Core.Logger("Tada! Living Dungeon Story is Now Complete!", "Vladimir");
     }
 }
