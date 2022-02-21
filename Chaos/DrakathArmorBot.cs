@@ -70,20 +70,7 @@ public class DrakathArmorBot
         }
         Core.EnsureAccept(3882);
         Farm.BladeofAweREP(farmBoA: true);
-        if(!Core.CheckInventory("Blinding Light of Destiny"))
-        {
-            Core.Logger("Attempting Purchase, will check if shop is unlocked. Next message may be incorrect.");
-            Core.BuyItem("battleon", 994, "Blinding Light of Destiny");
-            Bot.Sleep(Core.ActionDelay);
-            if (!Core.CheckInventory("Blinding Light of Destiny"))
-            {
-                BLOD.UnlockMineCrafting();	
-                BLOD.BlindingMace();
-                BLOD.BlindingBow();
-                BLOD.BlindingBlade();
-                BLOD.TheBlindingLightofDestiny();
-            }
-        }
+        BLOD.DoAll();
         Nulgath.FarmUni13(3);
         Farm.Gold(3750000);
         Core.BuyItem("hyperspace", 194, "Le Chocolat");
