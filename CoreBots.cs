@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using System.Web;
 
 public class CoreBots
 {
@@ -150,7 +149,7 @@ public class CoreBots
                     Bot.CallGameFunction("world.toggleMonsters");
             }
 
-            GuildRestore = Bot.GetGameObject<string>("world.myAvatar.pMC.pname.tg.text");
+            GuildRestore = Bot.GetGameObject<string>("world.myAvatar.pMC.pname.tg.text").Replace("&lt; ", "< ").Replace(" &gt;", " >");
             Bot.Options.CustomName = "AUQW RBOT MASTER";
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
@@ -1032,7 +1031,7 @@ public class CoreBots
         Bot.Options.LagKiller = true;
         Bot.Options.LagKiller = false;
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
-        Bot.Options.CustomGuild = HttpUtility.HtmlDecode(GuildRestore); ;
+        Bot.Options.CustomGuild = GuildRestore;
         Logger("Bot Stopped Successfully", messageBox: true);
         ScriptManager.StopScript();
     }
