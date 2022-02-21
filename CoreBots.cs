@@ -28,7 +28,7 @@ public class CoreBots
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
-    public int PrivateRoomNumber { get; set; } = 51315;
+    public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
     public bool HardMonPublicRoom { get; set; } = true;
     // [Can Change] Whether the player should rest after killing a monster
@@ -784,7 +784,7 @@ public class CoreBots
     {
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
         if (LoggerInChat)
-            Bot.SendMSGPacket(message, caller, "moderator");
+            Bot.SendMSGPacket(message.Replace('[', '(').Replace(']', ')'), caller, "moderator");
         if (messageBox)
             Message(message, caller);
         if (stopBot)
