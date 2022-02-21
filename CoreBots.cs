@@ -119,7 +119,6 @@ public class CoreBots
                 }
             }, "AFK Handler");
 
-
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
             if (BankMiscAC)
@@ -148,6 +147,9 @@ public class CoreBots
                 if (!Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                     Bot.CallGameFunction("world.toggleMonsters");
             }
+
+            Bot.Options.CustomName = "AUQW RBOT MASTER";
+            Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
             Logger("Bot Configured");
         }
@@ -1022,11 +1024,11 @@ public class CoreBots
             if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                 Bot.CallGameFunction("world.toggleMonsters");
         }
-        Bot.Options.PrivateRooms = false;
         Bot.Options.AutoRelogin = false;
         Bot.Options.LagKiller = false;
         Bot.Options.LagKiller = true;
         Bot.Options.LagKiller = false;
+        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Logger("Bot Stopped Successfully", messageBox: true);
         ScriptManager.StopScript();
     }
