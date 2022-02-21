@@ -227,7 +227,7 @@ public class Core13LoC
         if (!Story.QuestProgression(381))
         {
             Core.EnsureAccept(381);
-            Core.KillMonster("yokaiboat", "r4", "Spawn", "3844", "Sail Permit");
+            Core.KillMonster("yokaiboat", "r4", "Spawn", "*", "Sail Permit");
             Core.EnsureComplete(381);
         }
 
