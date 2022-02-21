@@ -62,6 +62,7 @@ public class CoreBots
 
     public List<ItemBase> CurrentRequirements = new List<ItemBase>();
     public List<string> BankingBlackList = new List<string>();
+    private string GuildRestore = null;
 
     /// <summary>
     /// Set commom bot options to desired value
@@ -148,6 +149,7 @@ public class CoreBots
                     Bot.CallGameFunction("world.toggleMonsters");
             }
 
+            GuildRestore = Bot.GetGameObject<string>("world.myAvatar.pMC.pname.tg.text").Replace("&lt; ", "< ").Replace(" &gt;", " >");
             Bot.Options.CustomName = "AUQW RBOT MASTER";
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
@@ -1029,6 +1031,7 @@ public class CoreBots
         Bot.Options.LagKiller = true;
         Bot.Options.LagKiller = false;
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
+        Bot.Options.CustomGuild = GuildRestore;
         Logger("Bot Stopped Successfully", messageBox: true);
         ScriptManager.StopScript();
     }
