@@ -23,6 +23,8 @@ public class CoreBots
     public int HuntDelay { get; set; } = 1000;
     // [Can Change] How many tries to accept/complete the quest will be sent
     public int AcceptandCompleteTries { get; set; } = 20;
+    // [Can Change] Whether the bots should also log in AQW's chat
+    public bool LoggerInChat { get; set; } = true;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
@@ -778,10 +780,10 @@ public class CoreBots
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
     /// </summary>
-    public void Logger(string message = "", [CallerMemberName] string caller = null, bool messageBox = false, bool stopBot = false, bool chatMessage = true)
+    public void Logger(string message = "", [CallerMemberName] string caller = null, bool messageBox = false, bool stopBot = false)
     {
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
-        if (chatMessage)
+        if (LoggerInChat)
             Bot.SendMSGPacket(message, caller, "moderator");
         if (messageBox)
             Message(message, caller);

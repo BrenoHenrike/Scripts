@@ -19,7 +19,7 @@ public class LegionExercise1
     public JoinLegion JoinLegion = new JoinLegion();
     public CoreStory Story = new CoreStory();
 
-    new string[] Rewards = { "Undead Champion Blade", "Legendary Golden Death Blade" };
+    string[] Rewards = { "Undead Champion Blade", "Legendary Golden Death Blade" };
 
     public void ScriptMain(ScriptInterface bot)
     {
