@@ -20,7 +20,7 @@ public class PinkestDyeEver
 
     public void PinkestDyeEverScript()
     {
-        if (!Core.CheckInventory("Pinkest Dye Ever!!!", 200))
+        if (Core.CheckInventory("Pinkest Dye Ever!!!", 200))
         {
             Core.Logger("You already have 200 (Max Quantity) Pinkest Dye Ever!!!");
             return;
