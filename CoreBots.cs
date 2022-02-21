@@ -888,19 +888,33 @@ public class CoreBots
         switch (classToUse)
         {
             case ClassType.Farm:
-                _EquipGear(FarmGear);
+                Equip(FarmGear);
                 if (!usingFarmGeneric)
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
-                _EquipGear(SoloGear);
+                Equip(SoloGear);
                 if (!usingSoloGeneric)
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
         }
         currentClass = classToUse;
+    }
+
+    public void Equip(params string[] gear)
+    {
+        foreach (string Item in gear)
+        {
+            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
+            {
+                JumpWait();
+                Bot.Player.EquipItem(Item);
+                Bot.Sleep(ActionDelay);
+                Logger($"{Item} equipped");
+            }
+        }
     }
 
     /// <summary>
@@ -912,8 +926,6 @@ public class CoreBots
         Bot.SendPacket($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)Side}%");
         Bot.Sleep(ActionDelay * 2);
     }
-
-
 
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
@@ -991,20 +1003,6 @@ public class CoreBots
                 Bot.Sleep(ActionDelay);
             }
             Logger($"{className} equipped");
-        }
-    }
-
-    private void _EquipGear(string[] gear)
-    {
-        foreach (string Item in gear)
-        {
-            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
-            {
-                JumpWait();
-                Bot.Player.EquipItem(Item);
-                Bot.Sleep(ActionDelay);
-                Logger($"{Item} equipped");
-            }
         }
     }
 
