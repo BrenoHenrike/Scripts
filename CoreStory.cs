@@ -188,7 +188,7 @@ public class CoreStory
         if (!Bot.Quests.IsUnlocked(QuestID))
             Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (isCompletedBefore(QuestID))
+        if (Core.isCompletedBefore(QuestID))
         {
             Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
             PreviousQuestState = true;
@@ -234,18 +234,11 @@ public class CoreStory
     /// <param name="QuestID">Quest ID of the quest you want the game to think you have compelted</param>
     public void UpdateQuest(int QuestID)
     {
-        if (isCompletedBefore(QuestID))
+        if (Core.isCompletedBefore(QuestID))
             return;
 
         Quest QuestData = Core.EnsureLoad(QuestID);
         Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (QuestData.Value + 1) + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
-    }
-
-    /// <param name="QuestID">ID of the quest</param>
-    public bool isCompletedBefore(int QuestID)
-    {
-        Quest QuestData = Core.EnsureLoad(QuestID);
-        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
     }
 
     private int PreviousQuestID = 0;
