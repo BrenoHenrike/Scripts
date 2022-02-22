@@ -94,6 +94,35 @@ public class CoreStory
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
     /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
+    /// <param name="MapItemIDs">ID of the item</param>
+    /// <param name="Amount">The amount of <paramref name="MapItemID"/> it grabs</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void MapItemQuest(int QuestID, string MapName, int[] MapItemIDs, int Amount = 1, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
+    {
+        if (QuestData == null || QuestData.ID != QuestID)
+            QuestData = Bot.Quests.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward))
+            return;
+
+        Core.EnsureAccept(QuestID);
+        foreach (int MapItemID in MapItemIDs)
+            Core.GetMapItem(MapItemID, Amount, MapName);
+        if (Bot.Quests.CanComplete(QuestID))
+        {
+            if (AutoCompleteQuest)
+                Core.EnsureComplete(QuestID);
+            Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        }
+    }
+
+    /// <summary>
+    /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
     /// <param name="ItemName">Name of the item</param>
     /// <param name="Amount">The amount of <paramref name="ItemName"/> to buy</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
