@@ -309,7 +309,10 @@ public class CoreAdvanced
 
     private void _RaceGear(string Monster)
     {
-        string MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.Name == Monster).Race;
+        string MonsterRace = null;
+        if (Monster != "*")
+            MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.Name == Monster).Race;
+        else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race;
         if (MonsterRace != null)
         {
             string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
