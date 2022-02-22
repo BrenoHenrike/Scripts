@@ -170,7 +170,7 @@ public class Core13LoC
         Story.KillQuest(350, "uppercity", "Terradactyl");                                                                    // The King's Wings
         Story.KillQuest(351, "uppercity", "Rhino Beetle");                                                                   // Bugging Out
         Story.KillQuest(352, "uppercity", "Cave Lizard");
-        Story.KillQuest(353, "dwarfprison", new[] {"Balboa", "Albino Bat", "Chaos Drow"});                                                                    // Lizard Gizzard
+        Story.KillQuest(353, "dwarfprison", new[] { "Balboa", "Albino Bat", "Chaos Drow" });                                                                    // Lizard Gizzard
         if (!Story.QuestProgression(354))                                                                                    // Like Butter
         {
             Core.AddDrop("Thermite");
@@ -344,51 +344,63 @@ public class Core13LoC
         Story.KillQuest(497, "darkoviagrave", "Albino Bat");                                             // Batting Cage
         Story.KillQuest(498, "darkoviagrave", "Blightfang");                   // His Bark is worse than his Blight
         //Map: GreenguardEast/West
-        if (!Core.CheckInventory("Red's Big Wolf Slaying Axe") && !Bot.Quests.IsUnlocked(516))          // Can I axe you something?
+        if (!Story.QuestProgression(516))          // Can I axe you something?
         {
-            Core.AddDrop("Red's Big Wolf Slaying Axe");
-            Core.EnsureAccept(515);
-            Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
-            Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
-            Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
-            Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
-            Core.EnsureComplete(515);
-            Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
+            if (!Core.CheckInventory("Red's Big Wolf Slaying Axe"))
+            {
+                Core.AddDrop("Red's Big Wolf Slaying Axe");
+                Core.EnsureAccept(515);
+                Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
+                Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
+                Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
+                Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
+                Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
+                Core.EnsureComplete(515);
+                Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
+
+                if (!Story.QuestProgression(514, GetReward: false))                    // Lil' Red
+                    Core.EnsureComplete(514);
+
+                Story.KillQuest(516, "darkoviaforest", "Dire Wolf");
+            }
         }
-        //Map: DarkoviaForest
-        if (!Story.QuestProgression(514, GetReward: false))                    // Lil' Red
-            Core.EnsureComplete(514);
-        Story.KillQuest(516, "darkoviaforest", "Dire Wolf");                                             // A Dire Situation
+        //Map: DarkoviaForest                                            // A Dire Situation
         Story.KillQuest(517, "darkoviaforest", new[] { "Blood Maggot", "Blood Maggot", "Blood Maggot" });  // Blood, Sweat, and Tears
         Story.KillQuest(518, "darkoviaforest", "Lich of the Stone");                                     // What a Lich!
-        //Map: Safiria
+                                                                                                         //Map: Safiria
         Story.KillQuest(519, "safiria", "Blood Maggot");                                                 // Feeding Grounds
         Story.KillQuest(520, "safiria", "Albino Bat");                                                   //Going Batty
         Story.KillQuest(521, "safiria", "Chaos Lycan");                                                  //Lycan Knights
         Story.KillQuest(522, "safiria", "Twisted Paw");                        //Twisted Paw
-        //Map: Lycan
+                                                                               //Map: Lycan
         Story.KillQuest(534, "lycan", "Dire Wolf");                                                      // A Gift Of Meat
         Story.KillQuest(535, "lycan", new[] { "Lycan", "Lycan Knight" });                                  // No Respect
         Story.KillQuest(536, "lycan", "Chaos Vampire Knight");                                           // Vampire Knights
-        Story.KillQuest(537, "lycan", "Sanguine", AutoCompleteQuest: false);
-        Bot.Sleep(10000);                                                                                 // Sanguine
-        if (!Story.QuestProgression(564))                                                                   //Map: LycanWar
+        if (!Core.QuestProgression(537))
         {
+            Core.EnsureAccept(537);
+            Story.HuntMonster("lycan", "Sanguine", "Sanguine's Mask");                                                          // Sanguine     
+            Core.EnsureComplete(537);
+        }
+
+        if (!Story.QuestProgression(564))                                                                   // Search and Report
+        {
+            Core.EnsureAccept(546);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
             Bot.Sleep(5000);
-            Story.UpdateQuest(566);
             Story.MapItemQuest(564, "chaoscave", 107);
         }
 
-        //Map: ChaosCave                                                                                // Search and Report
+        //Map: ChaosCave                                                                                
         Story.KillQuest(565, "chaoscave", "Werepyre");                                                  // The Key is the Key
+
         if (!Story.QuestProgression(566))
         {
             Core.EnsureAccept(566);
             Core.KillMonster("chaoscave", "r3", "Left", "Werepyre", "Secret Words");                   // Secret Words
             Core.EnsureComplete(566);
         }
+
         if (!Story.QuestProgression(567))
         {
             Story.UpdateQuest(567);
@@ -1331,6 +1343,9 @@ public class Core13LoC
 
         //Starry, Starry Night
         Story.KillQuest(2518, "timespace", "Astral Ephemerite");
+
+        if (!Core.CheckInventory("Dragonoid of Hours"))
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
 
         //Chaos Lord Iadoa
         Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
