@@ -73,6 +73,9 @@ public class XansLair
 
     public void ScoriasQuestsQuests()
     {
+        if (Core.isCompletedBefore(1740))
+            return;
+
         Story.KillQuest(QuestID: 1740, MapName: "xantown", MonsterName: "Xan");
     }
 
