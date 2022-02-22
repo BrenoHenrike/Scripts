@@ -98,9 +98,12 @@ public class CoreAdvanced
     };
     private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
     private List<InventoryItem> Empty = new List<InventoryItem>();
+
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
+        int i = 0;
+        bool LogOnce = false;
 
         if (WeaponList.Count == 0 && OtherList.Count == 0)
         {
@@ -108,10 +111,15 @@ public class CoreAdvanced
             return;
         }
 
+        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
+        {
+            Special = WeaponSpecial.None;
+            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
+        }
+
         //Gear
         if (FlexibleList.Count != 0)
         {
-            Core.Logger($"Best Enhancement of: {Type.ToString()}");
             if (Type == EnhancementType.Fighter)
                 __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 768 : 141);
             else if (Type == EnhancementType.Thief)
@@ -125,26 +133,37 @@ public class CoreAdvanced
             else if (Type == EnhancementType.Lucky)
                 __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 763 : 147);
             else if (Type == EnhancementType.SpellBreaker)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 146 : 146);
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 764 : 146);
         }
-        //Weapon Specials
 
+        //Weapon Specials
         if (WeaponList.Count != 0 && Special != WeaponSpecial.None)
         {
-            Core.Logger($"Best Enhancement of: {Type.ToString()}, {Special.ToString().Replace('_', ' ')}");
-            if (Type == EnhancementType.Fighter)
-                __AutoEnhance(WeaponList, 635, "museum");
-            else if (Type == EnhancementType.Thief)
-                __AutoEnhance(WeaponList, 637, "museum");
-            else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
-                __AutoEnhance(WeaponList, 636, "museum");
-            else if (Type == EnhancementType.Healer)
-                __AutoEnhance(WeaponList, 638, "museum");
-            else if (Type == EnhancementType.Hybrid)
-                __AutoEnhance(WeaponList, 633, "museum");
-            else if (Type == EnhancementType.Lucky)
-                __AutoEnhance(WeaponList, 639, "museum");
+            if (Bot.Player.Level == WeaponList.First().EnhancementLevel && (int)Type == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.EnhPatternID") &&
+                   (WeaponCatagories.Contains(WeaponList.First().Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.ProcID") : true))
+                i++;
+            else
+            {
+                Core.Logger($"Best Enhancement of: {Type.ToString()} + {Special.ToString().Replace('_', ' ')}");
+                if (Type == EnhancementType.Fighter)
+                    __AutoEnhance(WeaponList, 635, "museum");
+                else if (Type == EnhancementType.Thief)
+                    __AutoEnhance(WeaponList, 637, "museum");
+                else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
+                    __AutoEnhance(WeaponList, 636, "museum");
+                else if (Type == EnhancementType.Healer)
+                    __AutoEnhance(WeaponList, 638, "museum");
+                else if (Type == EnhancementType.Hybrid)
+                    __AutoEnhance(WeaponList, 633, "museum");
+                else if (Type == EnhancementType.Lucky)
+                    __AutoEnhance(WeaponList, 639, "museum");
+            }
         }
+
+        if (i > 0)
+            Core.Logger($"Skipped enhancement for {i} item{(i > 1 ? 's' : null)}");
+        if (i != WeaponList.Count + OtherList.Count)
+            Core.Logger("Enhancements complete");
 
         void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = null)
         {
@@ -152,8 +171,22 @@ public class CoreAdvanced
 
             foreach (InventoryItem Item in Input)
             {
-                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
                 Core.CheckInventory(Item.Name);
+
+                if (Bot.Player.Level == Item.EnhancementLevel && (int)Type == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhPatternID") &&
+                   (WeaponCatagories.Contains(Item.Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.ProcID") : true))
+                {
+                    i++;
+                    continue;
+                }
+
+                if (!LogOnce && (!WeaponCatagories.Contains(Item.Category) || Special != WeaponSpecial.None))
+                {
+                    Core.Logger($"Best Enhancement of: {Type.ToString()}");
+                    LogOnce = true;
+                }
+
+                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
 
                 if (Map != null)
                     Core.Join(Map);
@@ -161,6 +194,7 @@ public class CoreAdvanced
 
                 Bot.Shops.Load(ShopID);
                 ShopItems = Bot.Shops.ShopItems;
+
                 List<ShopItem> AvailableEnh = new List<ShopItem>();
 
                 foreach (ShopItem Enh in ShopItems)
@@ -313,27 +347,31 @@ public class CoreAdvanced
         if (Monster != "*")
             MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.Name == Monster).Race;
         else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race;
-        if (MonsterRace != null)
-        {
-            string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
-            EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
-            foreach (string Item in _BestGear)
-                if (!Bot.Inventory.IsEquipped(Item))
-                    Bot.Player.EquipItem(Item);
-        }
+
+        if (MonsterRace == null || MonsterRace == "")
+            return;
+
+        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
+        foreach (string Item in _BestGear)
+            if (!Bot.Inventory.IsEquipped(Item))
+                Bot.Player.EquipItem(Item);
+
     }
 
     private void _RaceGear(int MonsterID)
     {
         string MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.ID == MonsterID).Race;
-        if (MonsterRace != null)
-        {
-            string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
-            EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
-            foreach (string Item in _BestGear)
-                if (!Bot.Inventory.IsEquipped(Item))
-                    Bot.Player.EquipItem(Item);
-        }
+
+        if (MonsterRace == null || MonsterRace == "")
+            return;
+
+        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
+        foreach (string Item in _BestGear)
+            if (!Bot.Inventory.IsEquipped(Item))
+                Bot.Player.EquipItem(Item);
+
     }
 
     #endregion
