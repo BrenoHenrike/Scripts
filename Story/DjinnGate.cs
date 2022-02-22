@@ -25,76 +25,75 @@ public class DjinnGateStory
         Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion",
         "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun");
         Core.EquipClass(ClassType.Farm);
-        if (!Story.QuestProgression(6154))
+
+        if (!Story.QuestProgression(6153))
         {
             Core.EnsureAccept(6153);
-            Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
-            Core.KillMonster("faerie", "TopRock", "Left", "*", "Fragment 2");
-            Core.KillMonster("faerie", "Side4", "Right", "*", "Fragment 3");
-            Core.KillMonster("faerie", "End", "Center", "Cyclops Warlord", "Fragment 4");
-            Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
+            Core.HuntMonster("mobius", "Slugfit", "Fragment 1");
+            Core.HuntMonster("faerie", "Aracara", "Fragment 2");
+            Core.HuntMonster("faerie", "Chainsaw Sneevil", "Fragment 3");
+            Core.HuntMonster("faerie", "Cyclops Warlord", "Fragment 4");
+            Core.HuntMonster("cornelis", "Gargoyle", "Fragment 5");
             Core.EnsureComplete(6153);
+        }
+        if (!Story.QuestProgression(6154))
+        {
+            Core.EnsureAccept(6154);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Fragment 6");
+            Core.HuntMonster("cloister", "Karasu", "Fragment 7");
+            Core.HuntMonster("gilead", "Bubblin", "Fragment 8");
+            Core.HuntMonster("natatorium", "Merdraconian", "Fragment 9");
+            Core.HuntMonster("mafic", "Scoria Serpent", "Fragment 10");
+            Core.EnsureComplete(6154);
         }
         if (!Story.QuestProgression(6155))
         {
-            Core.EnsureAccept(6154);
-            Core.KillMonster("arcangrove", "Left", "Left", "*", "Fragment 6");
-            Core.KillMonster("cloister", "r8", "Left", "*", "Fragment 7");
-            Core.KillMonster("gilead", "r5", "Right", "Bubblin", "Fragment 8");
-            Core.KillMonster("natatorium", "r2", "Left", "Merdraconian", "Fragment 9");
-            Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
-            Core.EnsureComplete(6154);
+            Core.EnsureAccept(6155);
+            Core.HuntMonster("mythsong", "French Horned Toadragon", "Fragment 11");
+            Core.HuntMonster("palooza", "Rock Lobster", "Fragment 12");
+            Core.HuntMonster("palooza", "Stinger", "Fragment 13");
+            Core.HuntMonster("palooza", "Mozard", "Fragment 15");
+            Core.HuntMonster("beehive", "Killer Queen Bee", "Fragment 14");
+            Core.EnsureComplete(6155);
         }
         if (!Story.QuestProgression(6156))
         {
-            Core.EnsureAccept(6155);
-            Core.KillMonster("mythsong", "Hill", "Left", "*", "Fragment 11");
-            Core.KillMonster("palooza", "Act3", "Left", "Rock Lobster", "Fragment 12");
-            Core.KillMonster("palooza", "Act2", "Left", "Stinger", "Fragment 13");
-            Core.KillMonster("palooza", "Act3", "Left", "Mozard", "Fragment 15");
-            Core.KillMonster("beehive", "r5", "Left", "*", "Fragment 14");
-            Core.EnsureComplete(6155);
+            Core.EnsureAccept(6156);
+            Core.HuntMonster("forestchaos", "Chaorrupted Bear", "Fragment 16");
+            Core.HuntMonster("guru", "Leatherwing", "Fragment 17");
+            Core.HuntMonster("marsh", "Dark Witch", "Fragment 18");
+            Core.HuntMonster("marsh", "Spider", "Fragment 19");
+            Core.HuntMonster("marsh2", "Soulseeker", "Fragment 20");
+            Core.EnsureComplete(6156);
         }
         if (!Story.QuestProgression(6157))
         {
-            Core.EnsureAccept(6156);
-            Core.KillMonster("forestchaos", "Boss", "Left", "*", "Fragment 16");
-            Core.KillMonster("guru", "Field2", "Left", "*", "Fragment 17");
-            Core.KillMonster("marsh", "Forest3", "Left", "Dark Witch", "Fragment 18");
-            Core.KillMonster("marsh", "Forest3", "Left", "Spider", "Fragment 19");
-            Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
-            Core.EnsureComplete(6156);
+            Core.EnsureAccept(6157);
+            Core.HuntMonster("pirates", "Shark Bait", "Fragment 21");
+            Core.HuntMonster("yokairiver", "Kappa Ninja", "Fragment 22");
+            Core.HuntMonster("bamboo", "Tanuki", "Fragment 23");
+            Core.HuntMonster("yokaiwar", "Samurai Nopperabo", "Fragment 24");
+            Core.HuntMonster("pirates", "Fishwing", "Fragment 25");
+            Core.EnsureComplete(6157);
         }
         if (!Story.QuestProgression(6158))
         {
-            Core.EnsureAccept(6157);
-            Core.KillMonster("pirates", "End", "Left", "Shark Bait", "Fragment 21");
-            Core.KillMonster("pirates", "End", "Left", "Fishwing", "Fragment 25");
-            Core.KillMonster("yokairiver", "r2", "Left", "Kappa Ninja", "Fragment 22");
-            Core.KillMonster("bamboo", "Enter", "Spawn", "*", "Fragment 23");
-            Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
-            Core.EnsureComplete(6157);
-        }
-        if (!Story.QuestProgression(6159))
-        {
             Core.EnsureAccept(6158);
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("doomkitten", "Enter", "Spawn", "*", "Potent DoomKitten Mana", publicRoom: true);
-            Core.KillMonster("bloodtitan", "Ultra", "Left", "*", "Potent Blood Titan Mana");
+            Core.HuntMonster("doomkitten", "DoomKitten", "Potent DoomKitten Mana", publicRoom: true);
+            Core.HuntMonster("bloodtitan", "Ultra Blood Titan", "Potent Blood Titan Mana");
             Core.HuntMonster("trigoras", "Trigoras", "Potent Trigoras Mana");
-            Core.KillMonster("phoenixrise", "r8", "Left", "*", "Potent CinderClaw Mana");
-            Core.KillMonster("thevoid", "r16", "Left", "*", "Potent Reaper Mana", publicRoom: true);
+            Core.HuntMonster("phoenixrise", "Cinderclaw", "Potent CinderClaw Mana");
+            Core.HuntMonster("thevoid", "Reaper", "Potent Reaper Mana", publicRoom: true);
             Core.EnsureComplete(6158);
         }
         Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
-        if (!Bot.Quests.IsUnlocked(6161))
-        {
-            Core.EquipClass(ClassType.Farm);
-            Core.EnsureAccept(6160);
-            Core.KillMonster("djinngate", "r2", "Left", "*", "Djinn's Essence", 100, false);
-            Core.EnsureComplete(6160);
-        }
+
+        Core.EquipClass(ClassType.Farm);
+        Story.KillQuest(6160, "djinngate", new[] { "Harpy", "Lamia" });
+
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(6161, "djinngate", "Gedoz the Malignant");
+        Story.KillQuest(6162, "djinngate", new[] { "Harpy", "Lamia" });
     }
 }
