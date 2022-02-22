@@ -19,10 +19,12 @@ public class FezziniStory
 
     public void FezziniScript()
     {
-        Core.AddDrop("");
 
         if (Story.isCompletedBefore(7389))
             return;
+
+        //Redundant But Needed AddDrop
+        Core.AddDrop("");
 
         //The Dancing Dead
         Story.KillQuest(7377, "fezzini", "Zombie Dancer");
