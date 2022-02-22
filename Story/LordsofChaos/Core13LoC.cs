@@ -28,33 +28,44 @@ public class Core13LoC
         Hero();
         if (withExtras)
         {
-            KhasaandaTroll(true);
+            KhasaandaTroll();
             Extra();
         }
     }
 
     public void Prologue()
     {
-
         if (Story.isCompletedBefore(6219))
             return;
 
-        //Map: Battleudnera
-        // if (!Story.QuestProgression(183))                                                  // Enter the gates
-        // {
-        //     Core.EnsureAccept(183);            // Enter the gates
-        //     Core.KillMonster("battleundera", "Enter", "Spawn", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
-        //     Core.EnsureComplete(183);
-        // }
+        //if (!Story.QuestProgression(183))                                                  
+        //{
+        //    Core.EnsureAccept(183);            //Enter the gates
+        //    Core.KillMonster("battleundera", "Enter", "Spawn", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
+        //    Core.EnsureComplete(183);
+        //}
+
+        //Enter the gates
         Story.KillQuest(183, "battleundera", "Skeletal Fire Mage");
-        //Map: SwordhavenUndead
-        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier");                                                // Undead Assault
-        Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage");                                               // Skull Crusher Mountain
-        Story.KillQuest(178, "swordhavenundead", "Undead Giant");                                                    // The Undead Giant
-        //Map: CastleUndead
-        Story.MapItemQuest(179, "castleundead", 38, 5);                                                              // Talk to the Knights
-        Story.KillQuest(180, "castleundead", "*");                                         // Defend the Throne
-        if (!Story.QuestProgression(196))                                                    // The Arrival of Drakath cutscene
+
+        //Undead Assault
+        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier");
+
+        //Skull Crusher Mountain
+        Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage");
+
+        //The Undead Giant
+        Story.KillQuest(178, "swordhavenundead", "Undead Giant");
+
+
+        //Talk to the Knights
+        Story.MapItemQuest(179, "castleundead", 38, 5);
+
+        //Defend the Throne
+        Story.KillQuest(180, "castleundead", "*");
+
+        //The Arrival of Drakath cutscene
+        if (!Story.QuestProgression(196))
         {
             Core.Join("castleundead", "King2", "Center");
             Core.Join("Shadowfall");
@@ -63,119 +74,225 @@ public class Core13LoC
             Bot.Sleep(2000);
             Core.Join("shadowfall");
             Bot.Sleep(2000);
+
+            //ShadowFall Quest1
             Story.ChainQuest(195);
-            Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");                          // Recover Sepulchure's Cursed Armor!
+
+            //Recover Sepulchure's Cursed Armor!
+            Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");
         }
-        //Map: ChaosCrypt
-        //Map: Prison
-        Story.MapItemQuest(6216, "prison", 39, 5);                                        // Unlife Insurance
+
+        //Unlife Insurance
+        Story.MapItemQuest(6216, "prison", 39, 5);
         Story.BuyQuest(6216, "prison", 1559, "Unlife Insurance Bond");
-        //Map: Various
-        Story.MapItemQuest(6217, "chaoscrypt", 5662);                                                                // Enter the Crypt
-        Story.KillQuest(6218, "chaoscrypt", "Chaorrupted Knight");                                                   // Rescue the Knights
-        Story.KillQuest(6219, "forestchaos", new[] { "Chaorrupted Wolf", "Chaorrupted Bear" });  // Forest of Chaos
+
+        //Enter the Crypt
+        Story.MapItemQuest(6217, "chaoscrypt", 5662);
+
+        //Rescue the Knights
+        Story.KillQuest(6218, "chaoscrypt", "Chaorrupted Knight");
+
+        //Forest of Chaos
+        Story.KillQuest(6219, "forestchaos", new[] { "Chaorrupted Wolf", "Chaorrupted Bear" });
     }
 
     public void Escherion()
     {
-
         if (Story.isCompletedBefore(272))
             return;
 
-        //Map: Mobius
-        Story.KillQuest(245, "mobius", "Chaos Sp-Eye");                                  // Winged Spies
-        Story.MapItemQuest(246, "mobius", 42, 5);                                        // Chaos Prisoners
-        Story.KillQuest(247, "mobius", "Fire Imp");            // IMP-possible Task
-        Story.MapItemQuest(260, "mobius", 44);                 // You Can't Miss It
-        Story.KillQuest(248, "mobius", "Cyclops Raider");                                // Far Sighted
-        Story.KillQuest(249, "mobius", "Slugfit");                                       // Slugfest
-        //Map: Faerie
-        Story.KillQuest(250, "faerie", "Chainsaw Sneevil");                              // Chain Reaction
-        Story.MapItemQuest(251, "faerie", 43, 7);                                        // Epic Drops
-        Story.KillQuest(252, "faerie", "Chainsaw Sneevil");    // Jarring Theft
-        Story.KillQuest(255, "faerie", "Cyclops Warlord");                               // Tree Hugger
-        Story.KillQuest(256, "faerie", "Aracara");                                       // The Second Piece
-        //Map: Cornelis
-        Story.KillQuest(257, "cornelis", "Gargoyle");          // Ruined Ruins
-        Story.MapItemQuest(261, "cornelis", 45);               // Energize!
-        Story.KillQuest(258, "cornelis", "Gargoyle");          // Blueish Glow
-        Story.MapItemQuest(262, "cornelis", 46);               // Quickdraw
-        Story.KillQuest(259, "cornelis", "Stone Golem");       // Arm Yourself
-        Story.MapItemQuest(263, "cornelis", 47);               // You've Been Framed
-        //Map: Mobius
-        Story.MapItemQuest(266, "mobius", 48);                                           // Some Assembly Required
-        //Map: Cornelis
-        Story.MapItemQuest(267, "mobius", 49);                 // Teleporter Report
-        Story.KillQuest(264, "mobius", "Cyclops Raider");                                // Disguise!
-        Story.KillQuest(265, "faerie", "Chainsaw Sneevil");    // To-go box
-        //Map: Relativity
-        Story.KillQuest(268, "relativity", "Cyclops Raider");                            // Find the Key! (Part One)
-        Story.KillQuest(269, "relativity", "Fire Imp");                                  // Find the Key! (Part Two)
-        Story.KillQuest(270, "relativity", "Head Gargoyle");                             // Find the Key! (Part Three)
-        //Map: Hydra
-        Story.MapItemQuest(271, "hydra", 50);                                            // The Lake Hydra
-        Story.MapItemQuest(271, "hydra", 51);
-        Story.MapItemQuest(271, "hydra", 52);
-        //Map: Escherion
-        if (!Story.QuestProgression(272))  // Escherion
+        //Winged Spies
+        Story.KillQuest(245, "mobius", "Chaos Sp-Eye");
+
+        //Chaos Prisoners
+        Story.MapItemQuest(246, "mobius", 42, 5);
+
+        //IMP-possible Task
+        Story.KillQuest(247, "mobius", "Fire Imp");
+
+        //You Can't Miss It
+        Story.MapItemQuest(260, "mobius", 44);
+
+        //Far Sighted
+        Story.KillQuest(248, "mobius", "Cyclops Raider");
+
+        //Slugfest
+        Story.KillQuest(249, "mobius", "Slugfit");
+
+        //Chain Reaction
+        Story.KillQuest(250, "faerie", "Chainsaw Sneevil");
+
+        //Epic Drops
+        Story.MapItemQuest(251, "faerie", 43, 7);
+
+        //Jarring Theft
+        Story.KillQuest(252, "faerie", "Chainsaw Sneevil");
+
+        //Tree Hugger
+        Story.KillQuest(255, "faerie", "Cyclops Warlord");
+
+        //The Second Piece
+        Story.KillQuest(256, "faerie", "Aracara");
+
+        //Ruined Ruins
+        Story.KillQuest(257, "cornelis", "Gargoyle");
+
+        //Energize!
+        Story.MapItemQuest(261, "cornelis", 45);
+
+        //Blueish Glow
+        Story.KillQuest(258, "cornelis", "Gargoyle");
+
+        //Quickdraw
+        Story.MapItemQuest(262, "cornelis", 46);
+
+        //Arm Yourself
+        Story.KillQuest(259, "cornelis", "Stone Golem");
+
+        //You've Been Framed
+        Story.MapItemQuest(263, "cornelis", 47);
+
+        //Some Assembly Required
+        Story.MapItemQuest(266, "mobius", 48);
+
+        //Teleporter Report
+        Story.MapItemQuest(267, "mobius", 49);
+
+        //Disguise!
+        Story.KillQuest(264, "mobius", "Cyclops Raider");
+
+        //To-go box
+        Story.KillQuest(265, "faerie", "Chainsaw Sneevil");
+
+        //Find the Key! (Part One)
+        Story.KillQuest(268, "relativity", "Cyclops Raider");
+
+        //Find the Key! (Part Two)
+        Story.KillQuest(269, "relativity", "Fire Imp");
+
+        //Find the Key! (Part Three)
+        Story.KillQuest(270, "relativity", "Head Gargoyle");
+
+        //The Lake Hydra
+        Story.MapItemQuest(271, "hydra", new[] { 50, 51, 52 });
+
+        //Escherion
+        if (!Story.QuestProgression(272))
         {
             Core.EnsureAccept(272);
-            Core.KillEscherion();
+            Core.KillEscherion(publicRoom: true);
             Core.EnsureComplete(272);
         }
     }
 
     public void Vath()
     {
-
         if (Story.isCompletedBefore(363))
             return;
 
-        //Map: Pines
-        Story.MapItemQuest(319, "tavern", 56, 7);                                                                            // Adorable Sisters
-        Story.KillQuest(320, "pines", "Pine Grizzly");                                                                       // Warm and Furry
-        Story.KillQuest(321, "pines", "Red Shell Turtle");                                                                   // Shell Rock
-        Story.KillQuest(322, "pines", "Twistedtooth");                                             // Bear Facts
-        Story.KillQuest(324, "pines", "Red Shell Turtle");                                                                   // The Spittoon Saloon
-        Story.KillQuest(325, "pines", "Pine Grizzly");                                                                       // Bear it all!
-        Story.KillQuest(326, "pines", "Leatherwing");                                                                        // Leather Feathers
-        if (!Core.CheckInventory("Snowbeard's Gold"))                                                                       // Follow your Nose!
+        //Adorable Sisters
+        Story.MapItemQuest(319, "tavern", 56, 7);
+
+        //Warm and Furry
+        Story.KillQuest(320, "pines", "Pine Grizzly");
+
+        //Shell Rock
+        Story.KillQuest(321, "pines", "Red Shell Turtle");
+
+        //Bear Facts
+        Story.KillQuest(322, "pines", "Twistedtooth");
+
+        //The Spittoon Saloon
+        Story.KillQuest(324, "pines", "Red Shell Turtle");
+
+        //Bear it all!
+        Story.KillQuest(325, "pines", "Pine Grizzly");
+
+        //Leather Feathers
+        Story.KillQuest(326, "pines", "Leatherwing");
+
+        //Follow your Nose!
+        if (!Core.CheckInventory("Snowbeard's Gold"))
             Story.KillQuest(327, "pines", "Pine Troll");
-        if (!Story.QuestProgression(323))                                                          // Give Snowbeard His Gold
+
+        //Give Snowbeard His Gold
+        if (!Story.QuestProgression(323))
             Core.EnsureComplete(323);
-        //Map: Dwarfhold
-        Story.MapItemQuest(344, "dwarfhold", 60);                                                  // Bad Memory
-        Story.KillQuest(331, "mountainpath", "Ore Balboa");                                                                  // Squeeze Water from Stone
-        Story.KillQuest(332, "mountainpath", "Vultragon");                                                                   // Carrion Carrying On
-        Story.KillQuest(333, "dwarfhold", "Chaos Drow");                                                                     // Bagged Lunch
-        Story.KillQuest(334, "dwarfhold", "Glow Worm");                                                                      // Radiant Lamps
-        Story.KillQuest(335, "dwarfhold", "Albino Bat");                                                                     // Having a Blast
-        Story.KillQuest(336, "dwarfhold", "Chaotic Draconian");                                                              // Secret Weapons
-        Story.MapItemQuest(337, "dwarfhold", 59, 7);                                                                         // Rock Star
-        Story.KillQuest(338, "dwarfhold", "Chaos Drow");                                                                     // All that Glitters
-        Story.KillQuest(339, "dwarfhold", "Chaotic Draconian");                                                              // Gemeralds
-        Story.KillQuest(340, "dwarfhold", "Albino Bat");                                                                     // Talc to Me
-        if (!Story.QuestProgression(343))                                                          // Upper City Gates
+
+        //Bad Memory
+        Story.MapItemQuest(344, "dwarfhold", 60);
+
+        //Squeeze Water from Stone
+        Story.KillQuest(331, "mountainpath", "Ore Balboa");
+
+        //Carrion Carrying On
+        Story.KillQuest(332, "mountainpath", "Vultragon");
+
+        //Bagged Lunch
+        Story.KillQuest(333, "dwarfhold", "Chaos Drow");
+
+        //Radiant Lamps
+        Story.KillQuest(334, "dwarfhold", "Glow Worm");
+
+        //Having a Blast
+        Story.KillQuest(335, "dwarfhold", "Albino Bat");
+
+        //Secret Weapons
+        Story.KillQuest(336, "dwarfhold", "Chaotic Draconian");
+
+        //Rock Star
+        Story.MapItemQuest(337, "dwarfhold", 59, 7);
+
+        //All that Glitters
+        Story.KillQuest(338, "dwarfhold", "Chaos Drow");
+
+        //Gemeralds
+        Story.KillQuest(339, "dwarfhold", "Chaotic Draconian");
+
+        //Talc to Me
+        Story.KillQuest(340, "dwarfhold", "Albino Bat");
+
+        //Upper City Gates
+        if (!Story.QuestProgression(343))
         {
             Core.Join("dwarfhold", "rdoor", "Right");
             Core.EnsureComplete(343);
             Bot.Sleep(2500);
         }
-        Story.KillQuest(341, "dwarfhold", "Amadeus");                                              // Rock me Amadeus
-        //Map: UpperCity
-        Story.MapItemQuest(346, "uppercity", 61);                                                                            // Disapoofed
-        Story.KillQuest(347, "uppercity", "Drow Assassin");                                                                  // Hoodwinked
-        Story.KillQuest(348, "uppercity", "Chaotic Draconian");                                                              // Claws for the Cause
-        Story.KillQuest(349, "uppercity", "Chaos Egg");                                                                      // Scrambled Eggs
-        Story.KillQuest(350, "uppercity", "Terradactyl");                                                                    // The King's Wings
-        Story.KillQuest(351, "uppercity", "Rhino Beetle");                                                                   // Bugging Out
+
+        //Rock me Amadeus
+        Story.KillQuest(341, "dwarfhold", "Amadeus");
+
+        //Disapoofed
+        Story.MapItemQuest(346, "uppercity", 61);
+
+        //Hoodwinked
+        Story.KillQuest(347, "uppercity", "Drow Assassin");
+
+        //Claws for the Cause
+        Story.KillQuest(348, "uppercity", "Chaotic Draconian");
+
+        //Scrambled Eggs
+        Story.KillQuest(349, "uppercity", "Chaos Egg");
+
+        //The King's Wings
+        Story.KillQuest(350, "uppercity", "Terradactyl");
+
+        //Bugging Out
+        Story.KillQuest(351, "uppercity", "Rhino Beetle");
+
+        //Lizard Gizzard
         Story.KillQuest(352, "uppercity", "Cave Lizard");
-        Story.KillQuest(353, "dwarfprison", new[] { "Balboa", "Albino Bat", "Chaos Drow" });                                                                    // Lizard Gizzard
-        if (!Story.QuestProgression(354))                                                                                    // Like Butter
+
+        //Mock the Lock
+        Story.KillQuest(353, "dwarfprison", new[] { "Balboa", "Albino Bat", "Chaos Drow" });
+
+        //Like Butter
+        if (!Story.QuestProgression(354))
         {
             Core.AddDrop("Thermite");
 
-            Core.Join("vath");                                                                                                 //Confront Vath
+            Core.Join("vath");
             Core.Jump("CutCap", "Left");
             Bot.Sleep(2500);
             Story.UpdateQuest(354);
@@ -191,10 +308,15 @@ public class Core13LoC
             Core.Join("dwarfprison", "Enter", "Right");
             Core.EnsureComplete(354);
         }
-        Story.KillQuest(355, "dwarfprison", "Warden Elfis");                                       // Jailhouse Rock
-        Story.KillQuest(356, "dwarfprison", new[] { "Albino Bat", "Balboa", "Chaos Drow" });       // Explosives 101
 
-        if (!Story.QuestProgression(357))                                                          // Big Bada-Boom
+        //Jailhouse Rock
+        Story.KillQuest(355, "dwarfprison", "Warden Elfis");
+
+        //Explosives 101
+        Story.KillQuest(356, "dwarfprison", new[] { "Albino Bat", "Balboa", "Chaos Drow" });
+
+        //Big Bada-Boom
+        if (!Story.QuestProgression(357))
         {
             Core.EnsureAccept(356);
             if (!Core.CheckInventory("Tee-En-Tee"))
@@ -207,15 +329,16 @@ public class Core13LoC
             Core.Join("dwarfprison");
             Story.ChainQuest(357);
         }
-        //Map: Roc
-        Story.MapItemQuest(362, "roc", 62);                                                              // Defeat Rock Roc
-        //Map: Stalagbite
-        Story.MapItemQuest(363, "stalagbite", 63);                                                       // Facing Vath
+
+        //Defeat Rock Roc
+        Story.MapItemQuest(362, "roc", 62);
+
+        //Facing Vath
+        Story.MapItemQuest(363, "stalagbite", 63);
     }
 
     public void Kitsune()
     {
-
         if (Story.isCompletedBefore(488))
             return;
 
@@ -235,8 +358,8 @@ public class Core13LoC
         Story.KillQuest(382, "dragonkoi", "Ryoku");
 
         //Dog Days
-        // Story.KillQuest("hachiko", "Samurai Nopperabo");
-        // Story.KillQuest("hachiko", "Ninja Nopperabo");
+        //Story.KillQuest("hachiko", "Samurai Nopperabo");
+        //Story.KillQuest("hachiko", "Ninja Nopperabo");
         if (!Story.QuestProgression(402))
         {
             Core.EnsureAccept(402);
@@ -290,7 +413,7 @@ public class Core13LoC
             Core.KillMonster("Junkyard", "r3", "Down", 3850, "Wild Koto-Furunushi", 2);
             Core.EnsureComplete(470);
         }
-        // Story.KillQuest(470, "junkyard", new[] { "Tsukumo-Gami", "Tsukumo-Gami", "Tsukumo-Gami", "Tsukumo-Gami" });
+        //Story.KillQuest(470, "junkyard", new[] { "Tsukumo-Gami", "Tsukumo-Gami", "Tsukumo-Gami", "Tsukumo-Gami" });
 
         //The Hunt for the Hag
         Story.KillQuest(471, "junkyard", "Onibaba");
@@ -333,18 +456,26 @@ public class Core13LoC
 
     public void Wolfwing()
     {
-
         if (Story.isCompletedBefore(598))
             return;
 
-        //Map: DarkoviaGrave
-        Story.MapItemQuest(494, "darkoviagrave", 97);                                                    // Grave Mission
-        Story.KillQuest(495, "darkoviagrave", "Skeletal Fire Mage");                                     // Lending a Helping Hand
-        Story.KillQuest(496, "darkoviagrave", "Rattlebones");                                            // Bone Appetit
-        Story.KillQuest(497, "darkoviagrave", "Albino Bat");                                             // Batting Cage
-        Story.KillQuest(498, "darkoviagrave", "Blightfang");                   // His Bark is worse than his Blight
-        //Map: GreenguardEast/West
-        if (!Story.QuestProgression(516))          // Can I axe you something?
+        //Grave Mission
+        Story.MapItemQuest(494, "darkoviagrave", 97);
+
+        //Lending a Helping Hand
+        Story.KillQuest(495, "darkoviagrave", "Skeletal Fire Mage");
+
+        //Bone Appetit
+        Story.KillQuest(496, "darkoviagrave", "Rattlebones");
+
+        //Batting Cage
+        Story.KillQuest(497, "darkoviagrave", "Albino Bat");
+
+        //His Bark is worse than his Blight
+        Story.KillQuest(498, "darkoviagrave", "Blightfang");
+
+        //Can I axe you something?
+        if (!Story.QuestProgression(516))
         {
             if (!Core.CheckInventory("Red's Big Wolf Slaying Axe"))
             {
@@ -358,36 +489,55 @@ public class Core13LoC
                 Core.EnsureComplete(515);
                 Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
 
-                if (!Story.QuestProgression(514, GetReward: false))                    // Lil' Red
+                //Lil' Red
+                if (!Story.QuestProgression(514, GetReward: false))
                     Core.EnsureComplete(514);
 
+                //A Dire Situation
                 Story.KillQuest(516, "darkoviaforest", "Dire Wolf");
             }
         }
-        //Map: DarkoviaForest                                            // A Dire Situation
-        Story.KillQuest(517, "darkoviaforest", new[] { "Blood Maggot", "Blood Maggot", "Blood Maggot" });  // Blood, Sweat, and Tears
-        Story.KillQuest(518, "darkoviaforest", "Lich of the Stone");                                     // What a Lich!
-                                                                                                         //Map: Safiria
-        Story.KillQuest(519, "safiria", "Blood Maggot");                                                 // Feeding Grounds
-        Story.KillQuest(520, "safiria", "Albino Bat");                                                   //Going Batty
-        Story.KillQuest(521, "safiria", "Chaos Lycan");                                                  //Lycan Knights
-        Story.KillQuest(522, "safiria", "Twisted Paw");                        //Twisted Paw
-                                                                               //Map: Lycan
-        Story.KillQuest(534, "lycan", "Dire Wolf");                                                      // A Gift Of Meat
-        Story.KillQuest(535, "lycan", new[] { "Lycan", "Lycan Knight" });                                  // No Respect
-        Story.KillQuest(536, "lycan", "Chaos Vampire Knight");
-                                                         //War Boss Fight                                        // Vampire Knights
 
-        if (!Story.QuestProgression(537));
+        //Blood, Sweat, and Tears
+        Story.KillQuest(517, "darkoviaforest", new[] { "Blood Maggot", "Blood Maggot", "Blood Maggot" });
+
+        //What a Lich!
+        Story.KillQuest(518, "darkoviaforest", "Lich of the Stone");
+
+        //Feeding Grounds
+        Story.KillQuest(519, "safiria", "Blood Maggot");
+
+        //Going Batty
+        Story.KillQuest(520, "safiria", "Albino Bat");
+
+        //Lycan Knights
+        Story.KillQuest(521, "safiria", "Chaos Lycan");
+
+        //Twisted Paw
+        Story.KillQuest(522, "safiria", "Twisted Paw");
+
+        //A Gift Of Meat
+        Story.KillQuest(534, "lycan", "Dire Wolf");
+
+        //No Respect
+        Story.KillQuest(535, "lycan", new[] { "Lycan", "Lycan Knight" });
+
+        //Vampire Knights
+        Story.KillQuest(536, "lycan", "Chaos Vampire Knight");
+
+        //Sanguine
+        if (!Story.QuestProgression(537))
         {
             Core.EnsureAccept(537);
-            Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask");                                                          // Sanguine     
+            Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask");
             Core.EnsureComplete(537);
         }
 
-        Story.ChainQuest(552);   
+        //War Boss Fight
+        Story.ChainQuest(552);
 
-        if (!Story.QuestProgression(564))                                                                   // Search and Report
+        //Search and Report
+        if (!Story.QuestProgression(564))
         {
             Core.EnsureAccept(546);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
@@ -395,16 +545,18 @@ public class Core13LoC
             Story.MapItemQuest(564, "chaoscave", 107);
         }
 
-        //Map: ChaosCave                                                                                
-        Story.KillQuest(565, "chaoscave", "Werepyre");                                                  // The Key is the Key
+        //The Key is the Key
+        Story.KillQuest(565, "chaoscave", "Werepyre");
 
+        //Secret Words
         if (!Story.QuestProgression(566))
         {
             Core.EnsureAccept(566);
-            Core.KillMonster("chaoscave", "r3", "Left", "Werepyre", "Secret Words");                   // Secret Words
+            Core.KillMonster("chaoscave", "r3", "Left", "Werepyre", "Secret Words");
             Core.EnsureComplete(566);
         }
 
+        //Dracowerepyre
         if (!Story.QuestProgression(567))
         {
             Story.UpdateQuest(567);
@@ -413,12 +565,12 @@ public class Core13LoC
             Core.EnsureComplete(567);
             Story.UpdateQuest(597);
         }
-        // Dracowerepyre
-        //Map: Wolfwing                                                                         // Wolfwing
+
+        //Wolfwing
         if (!Story.QuestProgression(597))
         {
             if (Core.HeroAlignment != 1)
-                Bot.SendPacket($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%1%");
+                Core.ChangeAlignment(Alignment.Good);
             Story.ChainQuest(597);
         }
     }
@@ -482,7 +634,6 @@ public class Core13LoC
         //Great gig in the Sky
         Story.KillQuest(4827, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
 
-
         //Mythsong War Cutscene
         Story.ChainQuest(707);
 
@@ -495,12 +646,12 @@ public class Core13LoC
 
     public void Ledgermayne()
     {
-
         if (Story.isCompletedBefore(847))
             return;
 
         //Observing the Observatory
         Story.MapItemQuest(805, "arcangrove", 139);
+
         //Ewa the Treekeeper
         Story.MapItemQuest(806, "cloister", 142);
 
@@ -639,8 +790,10 @@ public class Core13LoC
             Core.HuntMonster("gilead", "Mana Elemental", "Astral Orb of Gilead");
             Core.EnsureComplete(845);
         }
+
         //The Great Mana Golem
         Story.KillQuest(846, "elemental", "Mana Golem");
+
         //Chaos Lord Ledgermayne
         Story.KillQuest(847, "ledgermayne", "Ledgermayne");
     }
@@ -648,7 +801,6 @@ public class Core13LoC
 
     public void Tibicenas()
     {
-
         if (Story.isCompletedBefore(1005))
             return;
 
@@ -754,18 +906,12 @@ public class Core13LoC
 
         //Chaos Lord Tibicenas
         Story.KillQuest(1005, "djinn", "Tibicenas");
-
     }
 
-    public void KhasaandaHorc(bool bypassCheck = false)
+    public void KhasaandaHorc()
     {
-        if (!bypassCheck)
-        {
-            if (Story.isCompletedBefore(1473))
-                return;
-        }
-
-
+        if (Story.isCompletedBefore(1473))
+            return;
 
         //Troll Stink!
         if (!Story.QuestProgression(1232))
@@ -821,24 +967,17 @@ public class Core13LoC
         }
 
         //She Who Answers 2 - cutscene
-        //if(!Story.QuestProgression(1241))
-        //{
         Story.ChainQuest(1241);
-        //}
 
         //Chaos Enrages the Horcs
-        // if(!Story.QuestProgression(1273))
-        //{
         Story.ChainQuest(1273);
-        //}
 
         //Into, Under the Mountain
         Story.MapItemQuest(1280, "ravinetemple", 553);
 
         //Has the Land Been Tainted?
         Story.MapItemQuest(1281, "ravinetemple", 554, 5);
-        Story.MapItemQuest(1281, "ravinetemple", 555, 10);
-        Story.MapItemQuest(1281, "ravinetemple", 556, 10);
+        Story.MapItemQuest(1281, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Tears of the Mountain
         Story.KillQuest(1282, "ravinetemple", "*");
@@ -851,8 +990,7 @@ public class Core13LoC
         Story.KillQuest(1284, "ravinetemple", "*");
 
         //Scout and Return
-        Story.MapItemQuest(1375, "alliance", 679);
-        Story.MapItemQuest(1375, "alliance", 680);
+        Story.MapItemQuest(1375, "alliance", new[] { 679, 680 });
 
         //Good and Evil Not Always Right
         if (!Story.QuestProgression(1376))
@@ -873,7 +1011,6 @@ public class Core13LoC
         Story.KillQuest(1379, "alliance", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
 
         //Alliance Subdued
-        //Story.KillQuest(1380, "alliance", new[] { "General Cynari", "General Tibias" });
         if (!Story.QuestProgression(1380))
         {
             Core.EnsureAccept(1380);
@@ -915,10 +1052,7 @@ public class Core13LoC
         Story.KillQuest(1460, "orecavern", "Naga Baas");
 
         //Know the Nexus
-        Story.MapItemQuest(1469, "dreamnexus", 734);
-        Story.MapItemQuest(1469, "dreamnexus", 735);
-        Story.MapItemQuest(1469, "dreamnexus", 736);
-        Story.MapItemQuest(1469, "dreamnexus", 737);
+        Story.MapItemQuest(1469, "dreamnexus", new[] { 734, 735, 736, 737 });
 
         //Secure a Route Home
         if (!Story.QuestProgression(1470))
@@ -937,20 +1071,19 @@ public class Core13LoC
 
         //Master the Flames 
         Story.KillQuest(1472, "dreamnexus", new[] { "Solar Phoenix", "Solar Phoenix" });
-        // if (!Story.QuestProgression(1472))
-        // {
-        //     Core.EnsureAccept(1472);
-        // Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Tear", 5);
-        // Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Blood", 5);
-        //     Core.EnsureComplete(1472);
-        // }
+        //if (!Story.QuestProgression(1472))
+        //{
+        //    Core.EnsureAccept(1472);
+        //Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Tear", 5);
+        //Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Blood", 5);
+        //    Core.EnsureComplete(1472);
+        //}
 
         //Choose: Khasaanda Confrontation?
         Story.KillQuest(1473, "dreamnexus", "Khasaanda");
-
     }
 
-    public void KhasaandaTroll(bool bypassCheck = false)
+    public void KhasaandaTroll()
     {
         if (Story.isCompletedBefore(1468))
             return;
@@ -1025,8 +1158,7 @@ public class Core13LoC
 
         //Evidence of Chaos
         Story.MapItemQuest(1275, "ravinetemple", 554, 5);
-        Story.MapItemQuest(1275, "ravinetemple", 555, 10);
-        Story.MapItemQuest(1275, "ravinetemple", 556, 10);
+        Story.MapItemQuest(1275, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Learn More of the Ore
         Story.KillQuest(1276, "ravinetemple", "*");
@@ -1034,14 +1166,12 @@ public class Core13LoC
         //Too Little, Too Late. Still Needed
         Story.KillQuest(1277, "ravinetemple", "*");
         Story.MapItemQuest(1277, "ravinetemple", 557, 10);
-        Story.MapItemQuest(1277, "ravinetemple", 557, 10);
 
         //Alliance Defiance
         Story.KillQuest(1278, "ravinetemple", "*");
 
         //The Headquartes of Good and Evil
-        Story.MapItemQuest(1369, "alliance", 679);
-        Story.MapItemQuest(1369, "alliance", 680);
+        Story.MapItemQuest(1369, "alliance", new[] { 679, 680 });
 
         //Treat Nullification, Good and Bad
         Story.KillQuest(1370, "alliance", new[] { "Good Soldier", "Evil Soldier" });
@@ -1091,10 +1221,7 @@ public class Core13LoC
         Story.KillQuest(1455, "orecavern", "Naga Baas");
 
         //Know the Nexus
-        Story.MapItemQuest(1464, "dreamnexus", 734);
-        Story.MapItemQuest(1464, "dreamnexus", 735);
-        Story.MapItemQuest(1464, "dreamnexus", 736);
-        Story.MapItemQuest(1464, "dreamnexus", 737);
+        Story.MapItemQuest(1464, "dreamnexus", new[] { 734, 735, 736, 737 });
 
         //Secure a Route Home
         if (!Story.QuestProgression(1465))
@@ -1120,17 +1247,11 @@ public class Core13LoC
 
     public void Iadoa()
     {
-
         if (Story.isCompletedBefore(2519))
             return;
 
         //Time to Learn the Truth
-        Story.MapItemQuest(2239, "thespan", 1358);
-        Story.MapItemQuest(2239, "thespan", 1359);
-        Story.MapItemQuest(2239, "thespan", 1360);
-        Story.MapItemQuest(2239, "thespan", 1361);
-        Story.MapItemQuest(2239, "thespan", 1362);
-        Story.MapItemQuest(2239, "thespan", 1363);
+        Story.MapItemQuest(2239, "thespan", new[] { 1358, 1359, 1360, 1361, 1362, 1363 });
 
         //Gain Access to Doors
         Story.KillQuest(2240, "timelibrary", new[] { "Sneak", "Tog", "Shadowscythe" });
@@ -1193,10 +1314,7 @@ public class Core13LoC
         Story.KillQuest(2256, "timevoid", new[] { "Void Phoenix", "Time-Travel Fairy" });
 
         //Clock of the Long Now
-        Story.MapItemQuest(2257, "timevoid", 1440);
-        Story.MapItemQuest(2257, "timevoid", 1441);
-        Story.MapItemQuest(2257, "timevoid", 1442);
-        Story.MapItemQuest(2257, "timevoid", 1443);
+        Story.MapItemQuest(2257, "timevoid", new[] { 1440, 1441, 1442, 1443 });
 
         //Unending Avatar
         if (!Story.QuestProgression(2258))
@@ -1222,14 +1340,12 @@ public class Core13LoC
             Core.EnsureAccept(2379);
             Core.HuntMonster("aqlesson", "Eternite Ore", "TimeSpark Acquired", 3);
             Core.HuntMonster("aqlesson", "Water Elemental", "Tears of Joy Acquired", 3);
-            Story.MapItemQuest(2379, "aqlesson", 1470, 3);
-            Story.MapItemQuest(2379, "aqlesson", 1471, 3);
+            Story.MapItemQuest(2379, "aqlesson", new[] { 1470, 1471 }, 3);
         }
 
         //Maintain Elemental Strength
         Story.KillQuest(2380, "aqlesson", new[] { "Ice Elemental", "Fire Elemental" });
-        Story.MapItemQuest(2380, "aqlesson", 1473, 3);
-        Story.MapItemQuest(2380, "aqlesson", 1472, 3);
+        Story.MapItemQuest(2380, "aqlesson", new[] { 1473, 1472 }, 3);
 
         //Rescue the Innocent
         Story.KillQuest(2381, "aqlesson", "Void Dragon");
@@ -1357,8 +1473,6 @@ public class Core13LoC
 
     public void Lionfang()
     {
-
-
         if (Story.isCompletedBefore(2814))
             return;
 
@@ -1394,10 +1508,7 @@ public class Core13LoC
         Story.MapItemQuest(2621, "blackhorn", 1619);
 
         //Lion Hunting
-        Story.MapItemQuest(2622, "onslaughttower", 1620);
-        Story.MapItemQuest(2622, "onslaughttower", 1621);
-        Story.MapItemQuest(2622, "onslaughttower", 1622);
-        Story.MapItemQuest(2622, "onslaughttower", 1623);
+        Story.MapItemQuest(2622, "onslaughttower", new[] { 1620, 1621, 1622, 1623 });
 
         //Secret Of The Death Fog
         Story.KillQuest(2623, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
@@ -1648,8 +1759,7 @@ public class Core13LoC
 
         //Nope, Still a Ghost
         Story.KillQuest(3167, "reddeath", "Reddeath Moglin");
-        Story.MapItemQuest(3167, "reddeath", 2178);
-        Story.MapItemQuest(3167, "reddeath", 2179);
+        Story.MapItemQuest(3167, "reddeath", new[] { 2178, 2179 });
 
         //First We Need a Beacon...
         Story.MapItemQuest(3168, "reddeath", 2180);
@@ -1790,14 +1900,7 @@ public class Core13LoC
         Story.KillQuest(3120, "ceremony", "Chaos Invader");
 
         //Better Letter Go!
-        Story.MapItemQuest(3121, "yulgar", 2108);
-        Story.MapItemQuest(3121, "yulgar", 2109);
-        Story.MapItemQuest(3121, "yulgar", 2110);
-        Story.MapItemQuest(3121, "archives", 2111);
-        Story.MapItemQuest(3121, "swordhaven", 2112);
-        Story.MapItemQuest(3121, "swordhaven", 2113);
-        Story.MapItemQuest(3121, "swordhaven", 2114);
-        Story.MapItemQuest(3121, "swordhaven", 2115);
+        Story.MapItemQuest(3121, "yulgar", new[] { 2108, 2109, 2110, 2111, 2112, 2113, 2114, 2115 });
 
         //Decor Rater
         Story.MapItemQuest(3122, "swordhaven", 2116, 8);
@@ -1859,150 +1962,150 @@ public class Core13LoC
         //12 Lords of Chaos
         Story.ChainQuest(3578);
 
-        // Prologue: Good vs Evil
+        //Prologue: Good vs Evil
         Story.ChainQuest(3579);
 
-        // 1st Lord of Chaos
+        //1st Lord of Chaos
         Story.ChainQuest(3580);
 
-        // 3rd Lord of Chaos
+        //3rd Lord of Chaos
         Story.ChainQuest(3581);
 
-        // 4th Lord of Chaos
+        //4th Lord of Chaos
         Story.ChainQuest(3582);
 
-        // 5th Lord of Chaos
+        //5th Lord of Chaos
         Story.ChainQuest(3583);
 
-        // 6th Lord of Chaos
+        //6th Lord of Chaos
         Story.ChainQuest(3584);
 
-        // 7th Lord of Chaos
+        //7th Lord of Chaos
         Story.ChainQuest(3585);
 
-        // 8th Lord of Chaos
+        //8th Lord of Chaos
         Story.ChainQuest(3586);
 
-        // 9th Lord of Chaos
+        //9th Lord of Chaos
         Story.ChainQuest(3587);
 
-        // 10th Lord of Chaos
+        //10th Lord of Chaos
         Story.ChainQuest(3588);
 
-        // 11th Lord of Chaos
+        //11th Lord of Chaos
         Story.ChainQuest(3589);
 
-        // 2nd Lord of Chaos
+        //2nd Lord of Chaos
         Story.ChainQuest(3590);
 
-        // 12th Lord of Chaos
+        //12th Lord of Chaos
         Story.ChainQuest(3591);
 
-        // Mountain Top Reached
+        //Mountain Top Reached
         Story.ChainQuest(3764);
 
-        // Drakath Faced
+        //Drakath Faced
         Story.MapItemQuest(3765, "mountdoomskull", 2726);
 
-        // Who is the 13th Lord of Chaos?
+        //Who is the 13th Lord of Chaos?
         Story.ChainQuest(3766);
 
-        // World War Lore!
+        //World War Lore!
         Story.ChainQuest(3779);
 
-        // Battle for Chaos in Willowcreek!
+        //Battle for Chaos in Willowcreek!
         Story.KillQuest(3781, "newfinale", "Chaos Healer");
 
-        // Defeat the Chaos Challenger
+        //Defeat the Chaos Challenger
         Story.KillQuest(3788, "newfinale", "Chaos Challenger");
 
-        // Battle for Chaos in Doomwood!
+        //Battle for Chaos in Doomwood!
         Story.KillQuest(3783, "newfinale", "Chaotic Virago|Chaorrupted Healer|");
 
-        // Beat Chaorrupted Lycan Hunter
+        //Beat Chaorrupted Lycan Hunter
         Story.KillQuest(3789, "newfinale", "Chaorrupted Lycan Hunter");
 
-        // Battle for Chaos in Darkovia!
+        //Battle for Chaos in Darkovia!
         Story.KillQuest(3785, "newfinale", "Shadow Slayer|Chaorrupted Healer|Mana Blaster");
 
-        // Defeat the Memory of Vampires
+        //Defeat the Memory of Vampires
         Story.KillQuest(3790, "newfinale", "Memory of Vampires");
 
-        // Battle for Chaos in the Lair!
+        //Battle for Chaos in the Lair!
         Story.KillQuest(3787, "newfinale", "Chaotic Virago|Chaos Draconian|Chaos Crystal");
 
-        // 1st Chaos Beast
+        //1st Chaos Beast
         Story.ChainQuest(3608);
 
-        // 2nd Chaos Beast
+        //2nd Chaos Beast
         Story.ChainQuest(3618);
 
-        // 3rd Chaos Beast
+        //3rd Chaos Beast
         Story.ChainQuest(3609);
 
-        // 4th Chaos Beast
+        //4th Chaos Beast
         Story.ChainQuest(3610);
 
-        // 5th Chaos Beast
+        //5th Chaos Beast
         Story.ChainQuest(3611);
 
-        // 6th Chaos Beast
+        //6th Chaos Beast
         Story.ChainQuest(3612);
 
-        // 7th Chaos Beast
+        //7th Chaos Beast
         Story.ChainQuest(3613);
 
-        // 8th Chaos Beast
+        //8th Chaos Beast
         Story.ChainQuest(3614);
 
-        // 9th Chaos Beast
+        //9th Chaos Beast
         Story.ChainQuest(3615);
 
-        // 10th Chaos Beast
+        //10th Chaos Beast
         Story.ChainQuest(3616);
 
-        // 11th Chaos Beast
+        //11th Chaos Beast
         Story.ChainQuest(3617);
 
-        // 12th Chaos Beast
+        //12th Chaos Beast
         Story.ChainQuest(3619);
 
         //The Chaos Beast is called forth.
         Story.ChainQuest(3791);
 
-        // Time to save Battleon!
+        //Time to save Battleon!
         Story.ChainQuest(3792);
 
-        // Battle for Chaos in Battleon!
+        //Battle for Chaos in Battleon!
         Story.KillQuest(3794, "newfinale", "Alliance Soldier");
 
         //Become a Chaos Lord
         Core.Join("newfinale", "NPC2", "Left");
         Core.SendPackets("%xt%zm%setAchievement%15075%ia1%20%1%");
 
-        // Battle the Champion of Chaos!
+        //Battle the Champion of Chaos!
         Story.MapItemQuest(3795, "drakathfight", 2894);
 
-        // REUSE
+        //REUSE
         Story.KillQuest(3620, "shadowrise", "Broken Bones|Darkness Elemental|Dry Ice Mage");
 
-        // Search for Death's Lair
+        //Search for Death's Lair
         Story.MapItemQuest(3796, "shadowrise", 2895);
 
-        // Arrive in Shadowattack
+        //Arrive in Shadowattack
         Story.ChainQuest(3797);
 
-        // Find your way to Death's lair
+        //Find your way to Death's lair
         Story.MapItemQuest(3798, "shadowattack", 2896);
 
-        // Beat Death!
+        //Beat Death!
         Story.KillQuest(3799, "shadowattack", "Death");
 
-        // Enter Confrontation
+        //Enter Confrontation
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
-        // Defeat Drakath!
+        //Defeat Drakath!
         if (!Story.QuestProgression(3876))
         {
             Core.EnsureAccept(3876);
@@ -2010,7 +2113,7 @@ public class Core13LoC
             Core.EnsureComplete(3876);
         }
 
-        // Defeat Drakath... again!
+        //Defeat Drakath... again!
         if (!Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3877);
@@ -2018,7 +2121,7 @@ public class Core13LoC
             Core.EnsureComplete(3877);
         }
 
-        // Defeat Drakath!
+        //Defeat Drakath!
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
@@ -2026,13 +2129,13 @@ public class Core13LoC
             Core.EnsureComplete(3878);
         }
 
-        // Defeat the 12 Lords of Chaos!
+        //Defeat the 12 Lords of Chaos!
         Story.KillQuest(3879, "chaosrealm", "Alteon");
 
-        // Defeat the 13th Lord of Chaos
+        //Defeat the 13th Lord of Chaos
         Story.KillQuest(3880, "chaoslord", "*");
 
-        // The Final Showdown!
+        //The Final Showdown!
         Story.KillQuest(3881, "finalshowdown", "Prince Drakath");
     }
 
@@ -2080,5 +2183,4 @@ public class Core13LoC
         //Defeat Alteon
         Story.KillQuest(3824, "falcontower", "Alteon");
     }
-
 }
