@@ -27,7 +27,7 @@ public class XansLair
 
     public void Volcano()
     {
-        if (Story.isCompletedBefore(1261))
+        if (Core.isCompletedBefore(1261))
             return;
 
         Story.KillQuest(QuestID: 1242, MapName: "volcano", MonsterName: "Lava Golem");
@@ -59,7 +59,7 @@ public class XansLair
 
     public void AndesisQuests()
     {
-        if (Story.isCompletedBefore(1739))
+        if (Core.isCompletedBefore(1739))
             return;
 
         Story.MapItemQuest(QuestID: 1733, MapName: "xantown", MapItemID: 922);
@@ -78,7 +78,7 @@ public class XansLair
 
     public void WarlicsQuests()
     {
-        if (Story.isCompletedBefore(2157))
+        if (Core.isCompletedBefore(2157))
             return;
 
         Story.MapItemQuest(QuestID: 2151, MapName: "xancave", MapItemID: 1220);

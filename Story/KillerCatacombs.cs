@@ -19,14 +19,14 @@ public class KillerCatacombs
 
     public void KillerCatacombs_Line()
     {
-        if (Story.isCompletedBefore(3679))
+        if (Core.isCompletedBefore(3679))
             return;
 
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
         else
-        // The Coward
-        Story.KillQuest(3660, "killercatacombs", "Tomb Robber ");
+            // The Coward
+            Story.KillQuest(3660, "killercatacombs", "Tomb Robber ");
         // Welcome Party
         Story.KillQuest(3661, "killercatacombs", "Tomb Robber ");
         // Scout Ahead
@@ -47,22 +47,22 @@ public class KillerCatacombs
         // Silverware Cipher
         Story.KillQuest(3669, "killercatacombs", "Ravenous Maw");
         // Dinner Bell
-        Story.KillQuest(3670, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw"});
+        Story.KillQuest(3670, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw" });
         // Faceless Challengers
         Story.KillQuest(3671, "killercatacombs", "Living Armor ");
         // Doorway
         Story.KillQuest(3672, "killercatacombs", "Living Armor ");
         // Eternal Hunger
-        Story.KillQuest(3673, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor "});
+        Story.KillQuest(3673, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor " });
         // You Weren't Invited
         Story.KillQuest(3674, "killercatacombs", "Living Armor ");
         // Teeth and Plates
-        Story.KillQuest(3675, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor "});
+        Story.KillQuest(3675, "killercatacombs", new[] { "Starved Maw ", "Ravenous Maw", "Living Armor " });
         // The Moment of Silence
         Story.KillQuest(3676, "killercatacombs", "Living Armor |Ravenous Maw|Starved Maw |Sundered Darkblood ");
         Story.MapItemQuest(3676, "killercatacombs", 2763, 10);
         // Eternal Servitude
-        Story.KillQuest(3677, "killercatacombs", new[] { "Living Armor ", "Sundered Darkblood ", "Unstable Spirit Orb "});
+        Story.KillQuest(3677, "killercatacombs", new[] { "Living Armor ", "Sundered Darkblood ", "Unstable Spirit Orb " });
         // A Reanimated Dragon
         Story.KillQuest(3678, "killercatacombs", "Dracolich ");
         // Lonesome Twin Guardian

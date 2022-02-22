@@ -18,7 +18,7 @@ public class DeathPitArena
 
     public void DeathPitArenaSaga()
     {
-        if (Story.isCompletedBefore(5154))
+        if (Core.isCompletedBefore(5154))
             return;
 
         // Mingle

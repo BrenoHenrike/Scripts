@@ -33,7 +33,7 @@ public class CitadelRuins
 
     public void MurrysQuests()
     {
-        if (Story.isCompletedBefore(182))
+        if (Core.isCompletedBefore(182))
             return;
 
         // Map: "Citadel";
@@ -50,7 +50,7 @@ public class CitadelRuins
 
     public void PolishsQuestsTercessuinotlim()
     {
-        if (Story.isCompletedBefore(668))
+        if (Core.isCompletedBefore(668))
             return;
 
         Core.AddDrop("Unidentified 9", "Unidentified 28", "Dark Crystal Shard", "Claw of Nulgath", "Relic of Chaos");
@@ -74,7 +74,7 @@ public class CitadelRuins
 
     public void PolishsQuestsCitadelRuins()
     {
-        if (Story.isCompletedBefore(6182))
+        if (Core.isCompletedBefore(6182))
             return;
 
         Core.AddDrop("Mage's Gratitude");

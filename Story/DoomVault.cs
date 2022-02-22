@@ -19,7 +19,7 @@ public class DoomVaultA
 
     public void StoryLine()
     {
-        if (Story.isCompletedBefore(3008))
+        if (Core.isCompletedBefore(3008))
             return;
 
         // the challenge begins

@@ -19,7 +19,7 @@ public class FlyingBaconCatFortress
 
     public void FlyingBaconCatFortressSaga()
     {
-        if (Story.isCompletedBefore(5108))
+        if (Core.isCompletedBefore(5108))
             return;
 
         // How Rude!

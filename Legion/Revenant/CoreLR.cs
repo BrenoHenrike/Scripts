@@ -123,7 +123,7 @@ public class CoreLR
         {
             Core.EnsureAccept(6898);
 
-            if (Story.isCompletedBefore(4613))
+            if (Core.isCompletedBefore(4613))
                 Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
             else
                 Core.KillMonster("cruxship", "r10", "Left", "Mummy", "Ancient Cohort Conquered", 500, false);

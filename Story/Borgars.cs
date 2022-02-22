@@ -19,7 +19,7 @@ public class Borgars
 
     public void BorgarQuests()
     {
-        if (Story.isCompletedBefore(7522))
+        if (Core.isCompletedBefore(7522))
             return;
 
         Core.AddDrop("Slice of Cake");

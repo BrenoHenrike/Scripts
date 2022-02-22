@@ -21,7 +21,7 @@ public class AQWZombies
 
     public void Storyline()
     {
-        if (Story.isCompletedBefore(2128))
+        if (Core.isCompletedBefore(2128))
             return;
 
         Story.KillQuest(2093, "battleundera", "Skeletal Soldier");

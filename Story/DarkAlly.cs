@@ -19,7 +19,7 @@ public class DarkAlly_Story
 
     public void DarkAlly_Questline()
     {
-        if (Story.isCompletedBefore(7428))
+        if (Core.isCompletedBefore(7428))
             return;
 
         Story.MapItemQuest(7419, "darkally", 7179, 6);

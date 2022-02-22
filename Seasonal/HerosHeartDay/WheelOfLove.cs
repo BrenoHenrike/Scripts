@@ -25,7 +25,7 @@ public class WheeleOfLove
 
     public void WheelOfLoveDungeon()
     {
-        if (Story.isCompletedBefore(5693))
+        if (Core.isCompletedBefore(5693))
             return;
 
         // The Golden Heart

@@ -556,6 +556,13 @@ public class CoreBots
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
     }
 
+    /// <param name="QuestID">ID of the quest</param>
+    public bool isCompletedBefore(int QuestID)
+    {
+        Quest QuestData = EnsureLoad(QuestID);
+        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
+    }
+
     #endregion
 
     #region Kill

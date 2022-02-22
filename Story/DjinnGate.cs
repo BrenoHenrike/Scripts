@@ -19,7 +19,7 @@ public class DjinnGateStory
 
     public void DjinnGate()
     {
-        if (Story.isCompletedBefore(6161))
+        if (Core.isCompletedBefore(6161))
             return;
 
         Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion",

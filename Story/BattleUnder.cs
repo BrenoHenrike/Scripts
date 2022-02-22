@@ -28,7 +28,7 @@ public class BattleUnder
 
     public void BattleUnderA()
     {
-        if (Story.isCompletedBefore(377))
+        if (Core.isCompletedBefore(377))
             return;
 
         Core.EquipClass(ClassType.Farm);
@@ -42,9 +42,9 @@ public class BattleUnder
 
     public void BattleUnderB()
     {
-        if (Story.isCompletedBefore(935))
+        if (Core.isCompletedBefore(935))
             return;
-        
+
         BattleUnderA();
 
         Core.EquipClass(ClassType.Farm);
@@ -58,7 +58,7 @@ public class BattleUnder
 
     public void BattleUnderC()
     {
-        if (Story.isCompletedBefore(939))
+        if (Core.isCompletedBefore(939))
             return;
 
         BattleUnderB();
@@ -78,7 +78,7 @@ public class BattleUnder
 
     public void BattleUnderD() //use Core.KillMonster(map: "MapName", cell: "Cell", pad: "pad", monster: "Mob", item = "item", quant: Amount) - map is a broke otherwise spawns random enemies.
     {
-        if (!Core.IsMember || Story.isCompletedBefore(2215))
+        if (!Core.IsMember || Core.isCompletedBefore(2215))
             return;
 
         BattleUnderC();

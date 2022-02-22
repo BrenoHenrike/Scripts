@@ -19,7 +19,7 @@ public class SeraphicWar_Story
 
     public void SeraphicWar_Questline()
     {
-        if (Story.isCompletedBefore(7428))
+        if (Core.isCompletedBefore(7428))
             return;
 
         //Get the Parts

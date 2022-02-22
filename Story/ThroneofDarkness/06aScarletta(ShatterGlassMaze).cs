@@ -19,7 +19,7 @@ public class HedgeMaze
 
     public void HedgeMaze_Questline()
     {
-        if (Story.isCompletedBefore(5313))
+        if (Core.isCompletedBefore(5313))
             return;
 
         Story.MapItemQuest(QuestID: 5298, MapName: "hedgemaze", MapItemID: 4678);
