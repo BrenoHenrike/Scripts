@@ -57,7 +57,6 @@ public class Core13LoC
         //The Undead Giant
         Story.KillQuest(178, "swordhavenundead", "Undead Giant");
 
-
         //Talk to the Knights
         Story.MapItemQuest(179, "castleundead", 38, 5);
 
