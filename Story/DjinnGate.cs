@@ -49,11 +49,11 @@ public class DjinnGateStory
         if (!Story.QuestProgression(6155))
         {
             Core.EnsureAccept(6155);
-            Core.HuntMonster("mythsong", "French Horned Toadragon", "Fragment 11");
+            Core.KillMonster("mythsong", "Hill", "Right", "*", "Fragment 11");
             Core.HuntMonster("palooza", "Rock Lobster", "Fragment 12");
             Core.HuntMonster("palooza", "Stinger", "Fragment 13");
-            Core.HuntMonster("palooza", "Mozard", "Fragment 15");
             Core.HuntMonster("beehive", "Killer Queen Bee", "Fragment 14");
+            Core.HuntMonster("palooza", "Mozard", "Fragment 15");
             Core.EnsureComplete(6155);
         }
         if (!Story.QuestProgression(6156))
