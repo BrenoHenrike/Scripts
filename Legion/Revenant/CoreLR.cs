@@ -123,11 +123,8 @@ public class CoreLR
         {
             Core.EnsureAccept(6898);
 
-            if (Core.isCompletedBefore(4613))
-                Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
-            else
-                Core.KillMonster("cruxship", "r10", "Left", "Mummy", "Ancient Cohort Conquered", 500, false);
-
+            Story.UpdateQuest(4614);
+            Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
             Core.KillMonster("doomvault", "r1", "Right", "*", "Grim Cohort Conquered", 500, false);
             Core.KillMonster("wrath", "r5", "Left", "*", "Pirate Cohort Conquered", 500, false);
             Core.KillMonster("doomwar", "r6", "Left", "*", "Battleon Cohort Conquered", 500, false);
