@@ -376,10 +376,11 @@ public class Core13LoC
         Story.KillQuest(534, "lycan", "Dire Wolf");                                                      // A Gift Of Meat
         Story.KillQuest(535, "lycan", new[] { "Lycan", "Lycan Knight" });                                  // No Respect
         Story.KillQuest(536, "lycan", "Chaos Vampire Knight");                                           // Vampire Knights
-        if (!Core.QuestProgression(537))
+        
+        if (!Story.QuestProgression(537));
         {
             Core.EnsureAccept(537);
-            Story.HuntMonster("lycan", "Sanguine", "Sanguine's Mask");                                                          // Sanguine     
+            Core.HuntMonster("lycan", "Sanguine", "Sanguine's Mask");                                                          // Sanguine     
             Core.EnsureComplete(537);
         }
 
