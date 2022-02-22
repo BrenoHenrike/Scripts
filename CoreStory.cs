@@ -191,7 +191,6 @@ public class CoreStory
         if (isCompletedBefore(QuestID))
         {
             Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
-            Bot.Sleep(Core.ActionDelay);
             PreviousQuestState = true;
             return true;
         }
