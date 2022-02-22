@@ -36,7 +36,7 @@ public class Core13LoC
     public void Prologue()
     {
 
-        if (Story.isCompletedBefore(6219))
+        if (Core.isCompletedBefore(6219))
             return;
 
         //Map: Battleudnera
@@ -79,7 +79,7 @@ public class Core13LoC
     public void Escherion()
     {
 
-        if (Story.isCompletedBefore(272))
+        if (Core.isCompletedBefore(272))
             return;
 
         //Map: Mobius
@@ -128,7 +128,7 @@ public class Core13LoC
     public void Vath()
     {
 
-        if (Story.isCompletedBefore(363))
+        if (Core.isCompletedBefore(363))
             return;
 
         //Map: Pines
@@ -216,7 +216,7 @@ public class Core13LoC
     public void Kitsune()
     {
 
-        if (Story.isCompletedBefore(488))
+        if (Core.isCompletedBefore(488))
             return;
 
         //Turtle Power
@@ -334,7 +334,7 @@ public class Core13LoC
     public void Wolfwing()
     {
 
-        if (Story.isCompletedBefore(598))
+        if (Core.isCompletedBefore(598))
             return;
 
         //Map: DarkoviaGrave
@@ -425,7 +425,7 @@ public class Core13LoC
 
     public void Kimberly()
     {
-        if (Story.isCompletedBefore(710))
+        if (Core.isCompletedBefore(710))
             return;
 
         //Stairway to Heaven
@@ -496,7 +496,7 @@ public class Core13LoC
     public void Ledgermayne()
     {
 
-        if (Story.isCompletedBefore(847))
+        if (Core.isCompletedBefore(847))
             return;
 
         //Observing the Observatory
@@ -649,7 +649,7 @@ public class Core13LoC
     public void Tibicenas()
     {
 
-        if (Story.isCompletedBefore(1005))
+        if (Core.isCompletedBefore(1005))
             return;
 
         //Sandport and Starboard
@@ -761,7 +761,7 @@ public class Core13LoC
     {
         if (!bypassCheck)
         {
-            if (Story.isCompletedBefore(1473))
+            if (Core.isCompletedBefore(1473))
                 return;
         }
 
@@ -952,7 +952,7 @@ public class Core13LoC
 
     public void KhasaandaTroll(bool bypassCheck = false)
     {
-        if (Story.isCompletedBefore(1468))
+        if (Core.isCompletedBefore(1468))
             return;
 
         //Horc Stink! 
@@ -1121,7 +1121,7 @@ public class Core13LoC
     public void Iadoa()
     {
 
-        if (Story.isCompletedBefore(2519))
+        if (Core.isCompletedBefore(2519))
             return;
 
         //Time to Learn the Truth
@@ -1359,7 +1359,7 @@ public class Core13LoC
     {
 
 
-        if (Story.isCompletedBefore(2814))
+        if (Core.isCompletedBefore(2814))
             return;
 
         //Final Rest
@@ -1565,7 +1565,7 @@ public class Core13LoC
 
     public void Xiang()
     {
-        if (Story.isCompletedBefore(3189))
+        if (Core.isCompletedBefore(3189))
             return;
 
         Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
@@ -1733,7 +1733,7 @@ public class Core13LoC
 
     public void Alteon()
     {
-        if (Story.isCompletedBefore(3160))
+        if (Core.isCompletedBefore(3160))
             return;
 
         //Bandit Bounty
@@ -1836,7 +1836,7 @@ public class Core13LoC
 
     public void Hero()
     {
-        if (Story.isCompletedBefore(3881))
+        if (Core.isCompletedBefore(3881))
             return;
 
         if (!Core.IsMember)
@@ -2038,7 +2038,7 @@ public class Core13LoC
 
     public void Extra()
     {
-        if (Story.isCompletedBefore(3824))
+        if (Core.isCompletedBefore(3824))
             return;
 
         //Arrive in DreadHaven
