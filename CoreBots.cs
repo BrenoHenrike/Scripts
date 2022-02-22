@@ -1043,7 +1043,7 @@ public class CoreBots
         Bot.Options.LagKiller = false;
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
-        Logger("Bot Stopped Successfully", messageBox: true);
+        Logger("Bot Stopped Successfully");
         ScriptManager.StopScript();
     }
     #endregion
