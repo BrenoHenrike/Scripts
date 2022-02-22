@@ -42,7 +42,7 @@ public class AssistingCragAndBamboozle
 
         if (!Core.CheckInventory("Sparrow's Blood"))
             Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)", messageBox: true, stopBot: true);
-        
+
         if (Reward == "any")
         {
             if (!Core.CheckInventory("Sword of Nulgath"))
@@ -58,7 +58,7 @@ public class AssistingCragAndBamboozle
         }
         else
         {
-            List<RBot.Items.ItemBase> RewardOptions = Bot.Quests.EnsureLoad(5817).Rewards;
+            List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
             Core.EnsureComplete(5817, RewardOptions.Find(x => x.Name == Reward).ID);
         }
         Bot.Wait.ForPickup("*");

@@ -71,7 +71,7 @@ public class WheeleOfLove
 
     public void WheelOfLoveQuest()
     {
-        List<RBot.Items.ItemBase> RewardOptions = Bot.Quests.EnsureLoad(5694).Rewards;
+        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5694).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (RBot.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

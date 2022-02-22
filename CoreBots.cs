@@ -534,6 +534,11 @@ public class CoreBots
         }
     }
 
+    public Quest EnsureLoad(int questID)
+    {
+        return Bot.Quests.QuestTree.Any(x => x.ID == questID) ? Bot.Quests.QuestTree.Find(x => x.ID == questID) : Bot.Quests.EnsureLoad(questID);
+    }
+
     /// <summary>
     /// Accepts and then completes the quest, used inside a loop
     /// </summary>
@@ -979,7 +984,7 @@ public class CoreBots
         if (questID > 0 && questID != lastQuestID)
         {
             lastQuestID = questID;
-            Quest quest = Bot.Quests.EnsureLoad(questID);
+            Quest quest = EnsureLoad(questID);
             if (quest == null)
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
             List<string> reqItems = new List<string>();
