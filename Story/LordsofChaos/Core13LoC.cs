@@ -375,14 +375,17 @@ public class Core13LoC
                                                                                //Map: Lycan
         Story.KillQuest(534, "lycan", "Dire Wolf");                                                      // A Gift Of Meat
         Story.KillQuest(535, "lycan", new[] { "Lycan", "Lycan Knight" });                                  // No Respect
-        Story.KillQuest(536, "lycan", "Chaos Vampire Knight");                                           // Vampire Knights
-        
+        Story.KillQuest(536, "lycan", "Chaos Vampire Knight");
+                                                         //War Boss Fight                                        // Vampire Knights
+
         if (!Story.QuestProgression(537));
         {
             Core.EnsureAccept(537);
-            Core.HuntMonster("lycan", "Sanguine", "Sanguine's Mask");                                                          // Sanguine     
+            Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask");                                                          // Sanguine     
             Core.EnsureComplete(537);
         }
+
+        Story.ChainQuest(552);   
 
         if (!Story.QuestProgression(564))                                                                   // Search and Report
         {
@@ -1833,14 +1836,8 @@ public class Core13LoC
 
     public void Hero()
     {
-        Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Daggers");
-        if (Core.CheckInventory("Lore's Champion Daggers", toInv: false))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            Core.ToBank("Lore's Champion Daggers");
-            Core.Logger($"Chapter: \"Chaos Lord {Bot.Player.Username}\" already complete. Skipping");
+        if (!Story.isCompletedBefore(3881))
             return;
-        }
 
         if (!Core.IsMember)
         {
@@ -2037,11 +2034,6 @@ public class Core13LoC
 
         // The Final Showdown!
         Story.KillQuest(3881, "finalshowdown", "Prince Drakath");
-
-        Core.Relogin();
-        Core.BuyItem(Bot.Map.Name, 948, "Lore's Champion Daggers");
-        Bot.Sleep(Core.ActionDelay);
-        Core.ToBank("Lore's Champion Daggers");
     }
 
     public void Extra()
