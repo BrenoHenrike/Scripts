@@ -450,7 +450,7 @@ public class Core13LoC
         if (!Story.QuestProgression(660))
         {
             Core.EnsureAccept(660);
-            Core.HuntMonster("beehive", "Lord Ovthedance", "No Shoes!");
+            Core.KillMonster("beehive", "r6", "Right", "*", "No Shoes!");
             Core.EnsureComplete(660);
         }
 
