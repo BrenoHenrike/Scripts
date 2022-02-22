@@ -386,6 +386,7 @@ public class CoreAdvanced
         EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
+        Core.Jump(cell, pad);
 
         Bot.Events.CounterAttack += _KillUltra;
 

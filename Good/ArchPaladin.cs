@@ -130,7 +130,7 @@ public class ArchPaladin
                 Core.HuntMonster("bosschallenge", "Colossal Primarch", "Primarch's Hilt", isTemp: false, publicRoom: true);
                 Farm.Gold(500000);
                 Core.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
-                Core.HuntMonster("timevoid ", "Unending Avatar", "Condensed Mana", isTemp: false, publicRoom: true);
+                Core.HuntMonster("timevoid", "Unending Avatar", "Condensed Mana", isTemp: false, publicRoom: true);
                 Core.EnsureComplete(Core.CheckInventory("Silver Paladin") ? 5478 : 5474);
             }
         }
@@ -153,8 +153,8 @@ public class ArchPaladin
             Core.HuntMonster("poisonforest", "Xavier Lionfang", "Divine Elixir", isTemp: false);
             Core.HuntMonster("ultraalteon", "Ultra Alteon", "Prayer of Salvation", isTemp: false, publicRoom: true);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("newfinale ", "Chaos Healer", "Acolyte's Braille", isTemp: false);
-            Core.HuntMonster("skytower ", "Doves", "Innocence", 25, false);
+            Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false);
+            Core.HuntMonster("skytower", "Dove", "Innocence", 25, false);
             Core.EnsureComplete(5468);
         }
         // Righteous Seal
