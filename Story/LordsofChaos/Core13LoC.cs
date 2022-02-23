@@ -815,7 +815,7 @@ public class Core13LoC
 
     public void KhasaandaHorc()
     {
-        if (Story.isCompletedBefore(1473))
+        if (Core.isCompletedBefore(1473))
             return;
 
         //Troll Stink!
