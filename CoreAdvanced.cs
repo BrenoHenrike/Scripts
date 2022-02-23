@@ -1,6 +1,7 @@
 using RBot;
 using RBot.Items;
 using RBot.Shops;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -283,10 +284,11 @@ public class CoreAdvanced
         }
         LastBoostType = BoostType;
 
-        InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
-        InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
-        InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
+        List<InventoryItem> InventoryData = Bot.Inventory.Items;
+        List<InventoryItem> BankData = Bot.Bank.BankItems;
+        List<InventoryItem> BankInvData = InventoryData.Concat(BankData).ToList();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
+        ItemCategory BestItemCatagory = ItemCategory.Unknown;
         string BestItemDMGall = null;
 
         foreach (InventoryItem Item in BankInvData)
@@ -294,12 +296,13 @@ public class CoreAdvanced
             if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
             {
                 string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains(BoostType.ToString()));
-                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""));
+                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
                 BoostedGear.Add(Item.Name, BoostFloat);
             }
         }
         string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
-        ItemCategory BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
+        if ((BankInvData.Find(x => x.Name == BestItem) != null))
+            BestItemCatagory = BankInvData.Find(x => x.Name == BestItem).Category;
 
         if (RaceBoosts.Contains(BoostType))
         {
@@ -312,19 +315,15 @@ public class CoreAdvanced
                     Item.Category != BestItemCatagory)
                 {
                     string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
-                    float BoostFloat = float.Parse(CorrectData.Replace($"dmgAll:", ""));
+                    float BoostFloat = float.Parse(CorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
                     BoostedGearDMGall.Add(Item.Name, BoostFloat);
                 }
             }
             BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
-            Core.JumpWait();
-            Core.CheckInventory(BestItemDMGall);
-            Bot.Player.EquipItem(BestItemDMGall);
+            Core.Equip(BestItemDMGall);
             Bot.Sleep(Core.ActionDelay);
         }
-        Core.JumpWait();
-        Core.CheckInventory(BestItem);
-        Bot.Player.EquipItem(BestItem);
+        Core.Equip(BestItem);
         if (RaceBoosts.Contains(BoostType))
             return new[] { BestItem, BestItemDMGall };
         return new[] { BestItem };
@@ -333,8 +332,10 @@ public class CoreAdvanced
     {
         GearBoost.Chaos,
         GearBoost.Dragonkin,
+        GearBoost.Drakath,
         GearBoost.Elemental,
         GearBoost.Human,
+        GearBoost.Orc,
         GearBoost.Undead
     };
     private GearBoost LastBoostType = GearBoost.None;
@@ -352,6 +353,8 @@ public class CoreAdvanced
             return;
 
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        if (_BestGear.Length == 0)
+            return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
         foreach (string Item in _BestGear)
             if (!Bot.Inventory.IsEquipped(Item))
@@ -367,6 +370,8 @@ public class CoreAdvanced
             return;
 
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        if (_BestGear.Length == 0)
+            return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
         foreach (string Item in _BestGear)
             if (!Bot.Inventory.IsEquipped(Item))
