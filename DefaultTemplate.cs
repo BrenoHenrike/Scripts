@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 using RBot;
 
-public class Example
+public class ScriptTemplate
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
