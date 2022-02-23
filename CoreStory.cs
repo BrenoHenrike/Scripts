@@ -196,7 +196,9 @@ public class CoreStory
 
         if (Core.isCompletedBefore(QuestID) && TestBot ? QuestData.Once : true)
         {
-            Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
+            if (TestBot)
+                Core.Logger($"\"{QuestData.Name}\" [{QuestID}] skipped, TestBot with Once = true");
+            else Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
             PreviousQuestState = true;
             return true;
         }
