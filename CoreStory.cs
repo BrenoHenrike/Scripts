@@ -233,7 +233,7 @@ public class CoreStory
         if ((Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", Slot) >= Value))
             return;
 
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (Value + 1) + ",\"iIndex\":" + Slot + "}}}", "json");
+        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + Value + ",\"iIndex\":" + Slot + "}}}", "json");
     }
 
     /// <summary>
@@ -246,7 +246,7 @@ public class CoreStory
             return;
 
         Quest QuestData = Core.EnsureLoad(QuestID);
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (QuestData.Value + 1) + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
+        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + QuestData.Value + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
     }
 
     private int PreviousQuestID = 0;
