@@ -792,7 +792,9 @@ public enum GearBoost
     dmgAll,
     Chaos,
     Dragonkin,
+    Drakath,
     Elemental,
     Human,
+    Orc,
     Undead
 }
