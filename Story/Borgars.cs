@@ -29,13 +29,13 @@ public class Borgars
         // Beef Up
         Story.KillQuest(7510, "extinction", new[] { "Lard", "Freezer Drone" });
         // Creamy!
-        Story.KillQuest(7511, "battlefowl", "Chickencow");
+        Story.KillQuest(7511, "battlefowl", "Chickencow", false);
         // Sacchar-Imp
-        Story.KillQuest(7512, "freakitiki", "Sugar Imp");
+        Story.KillQuest(7512, "freakitiki", "Sugar Imp", false);
         // Salty Balboa
         Story.KillQuest(7513, "stalagbite", "Balboa");
         // Filet o' Fishwing
-        Story.KillQuest(7514, "pirates", "Fishwing");
+        Story.KillQuest(7514, "pirates", "Fishwing", false);
         // A Potion Master
         Story.MapItemQuest(7515, "Arcangrove", 7370);
 
@@ -81,6 +81,6 @@ public class Borgars
         //P6 - Requirements: Must have completed the 'An Aspiring Burgermonger' quest.
         //Map:
         // Burglinster's Revenge
-        Story.KillQuest(7522, "borgars", "Burglinster");
+        Story.KillQuest(7522, "borgars", "Burglinster", false);
     }
 }
