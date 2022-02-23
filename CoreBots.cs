@@ -536,9 +536,9 @@ public class CoreBots
 
     public Quest EnsureLoad(int questID)
     {
-        JumpWait();
         if (Bot.Quests.QuestTree.Any(x => x.ID == questID))
             return Bot.Quests.QuestTree.Find(x => x.ID == questID);
+        JumpWait();
         Bot.Sleep(ActionDelay);
         return Bot.Quests.EnsureLoad(questID);
     }
