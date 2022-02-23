@@ -194,7 +194,7 @@ public class CoreStory
         if (!Bot.Quests.IsUnlocked(QuestID))
             Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (Core.isCompletedBefore(QuestID) && TestBot ? QuestData.Once : true)
+        if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
         {
             if (TestBot)
                 Core.Logger($"\"{QuestData.Name}\" [{QuestID}] skipped, TestBot with Once = true");
