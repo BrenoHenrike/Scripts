@@ -962,8 +962,8 @@ public class Core13LoC
             Core.EnsureAccept(978);
             Core.Join("wanders", "Boss", "Left");
             Bot.Sleep(1500);
-            Bot.Player.UseSkill(1);
-            Core.KillMonster("wanders", "Boss", "Left", "Sek-Duat", "Sek-Duat Defeated"); //dudes a bitch ._.
+            Bot.Player.UseSkill(0);
+            Core.KillMonster("wanders", "Boss", "Left", "Sek-Duat", "Sek-Duat Defeated");
             Core.EnsureComplete(978);
         }
         //Sandsational Castle
