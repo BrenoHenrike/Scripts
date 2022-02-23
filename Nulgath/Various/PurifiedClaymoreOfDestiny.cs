@@ -27,7 +27,7 @@ public class PurifiedClaymoreOfDestiny
         Farm.GoodREP(8);
 
         Core.EnsureAccept(548);
-        Core.HuntMonster("battleunder", "Undead Berserker", "Warrior Claymore Blade", isTemp: false);
+        Core.HuntMonster("battleundera", "Undead Berserker", "Warrior Claymore Blade", isTemp: false);
         Core.EnsureComplete(548);
     }
 }
