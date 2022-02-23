@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
-public class BurningBladeOfAzebeth
+public class BurningBladeOfAbezeth
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -18,12 +18,12 @@ public class BurningBladeOfAzebeth
 
     public void GetBBoA()
     {
-        if (Core.CheckInventory("Burning Blade of Azebeth"))
+        if (Core.CheckInventory("Burning Blade Of Abezeth"))
             return;
 
         Core.EquipClass(ClassType.Solo);
         Story.UpdateQuest(6042);
-        Core.HuntMonster("celestialarenad", "Aranx", "Burning Blade of Azebeth", isTemp: false);
-        Bot.Wait.ForPickup("Burning Blade of Azebeth");
+        Core.HuntMonster("celestialarenad", "Aranx", "Burning Blade Of Abezeth", isTemp: false);
+        Bot.Wait.ForPickup("Burning Blade Of Abezeth");
     }
 }
