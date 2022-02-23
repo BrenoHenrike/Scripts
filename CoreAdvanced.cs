@@ -256,15 +256,15 @@ public class CoreAdvanced
         WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
         SmartEnhance(ClassName);
         EnhanceItem(BestGear(GearBoost.cp), CurrentClassEnh(), CurrentWeaponSpecial());
-        Bot.Player.EquipItem(itemInv.Name);
+        Core.Equip(itemInv.Name);
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-        if (ClassReAfter != ClassName)
+        if (ClassReAfter != Bot.Inventory.CurrentClass.Name)
         {
-            Bot.Player.EquipItem(ClassReAfter);
+            Core.Equip(ClassReAfter);
             EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
         }
-        Bot.Player.EquipItem(EquippedWeapon);
+        Core.Equip(EquippedWeapon);
     }
 
     /// <summary>
@@ -356,9 +356,7 @@ public class CoreAdvanced
         if (_BestGear.Length == 0)
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
-        foreach (string Item in _BestGear)
-            if (!Bot.Inventory.IsEquipped(Item))
-                Bot.Player.EquipItem(Item);
+        Core.Equip(_BestGear);
 
     }
 
@@ -373,9 +371,7 @@ public class CoreAdvanced
         if (_BestGear.Length == 0)
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
-        foreach (string Item in _BestGear)
-            if (!Bot.Inventory.IsEquipped(Item))
-                Bot.Player.EquipItem(Item);
+        Core.Equip(_BestGear);
 
     }
 
@@ -499,8 +495,7 @@ public class CoreAdvanced
             Core.Logger("Ignore the message about the Hybrid Enhancement");
             EnhanceEquipped(EnhancementType.Hybrid);
         }
-        if (!Bot.Inventory.IsEquipped(Class))
-            Bot.Player.EquipItem(Class);
+        Core.Equip(Class);
         switch (Class)
         {
             //Lucky - Spiral Carve
