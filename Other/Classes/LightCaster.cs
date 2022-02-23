@@ -7,7 +7,7 @@
 //cs_include Scripts/Other/Weapons/GuardianOfSpiritsBlade.cs
 //cs_include Scripts/Other/Weapons/LanceOfTime.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
-//cs_include Scripts/Other/Weapons/BurningBladeOfAzabeth.cs
+//cs_include Scripts/Other/Weapons/BurningBladeOfAzebeth.cs
 using RBot;
 public class LightCaster
 {
@@ -20,7 +20,7 @@ public class LightCaster
     public GuardianOfSpiritsBlade GOSB = new GuardianOfSpiritsBlade();
     public LanceOfTime LOT = new LanceOfTime();
     public BurningBlade BB = new BurningBlade();
-    public BurningBladeOfAzabeth BBOA = new BurningBladeOfAzabeth();
+    public BurningBladeOfAzebeth BBOA = new BurningBladeOfAzebeth();
 
     public void ScriptMain(ScriptInterface bot)
     {
