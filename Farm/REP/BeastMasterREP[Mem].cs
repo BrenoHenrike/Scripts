@@ -11,7 +11,7 @@ public class BeastMasterREP
         Core.SetOptions();
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
-
+        
         Farm.BeastMasterREP();
 
         Core.SetOptions(false);
