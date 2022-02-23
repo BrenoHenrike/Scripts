@@ -4,6 +4,12 @@ using RBot.Quests;
 
 public class CoreStory
 {
+    // [Can Change]
+    // True = Bot only does its smart checks on quests with Once: True 
+    // False = Bot does it's smart checks on all quest
+    // Recommended: false
+    // Used for testing bots, dont toggle this as a user
+    public bool TestBot { get; set; } = false;
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
@@ -188,7 +194,7 @@ public class CoreStory
         if (!Bot.Quests.IsUnlocked(QuestID))
             Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (Core.isCompletedBefore(QuestID))
+        if (Core.isCompletedBefore(QuestID) && TestBot ? QuestData.Once : true)
         {
             Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
             PreviousQuestState = true;
