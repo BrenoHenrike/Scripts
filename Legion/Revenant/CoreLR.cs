@@ -11,7 +11,6 @@ public class CoreLR
     public CoreLegion Legion = new CoreLegion();
     public JoinLegion JoinLegion = new JoinLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
-    // public NecroDungeon ND = new NecroDungeon();
 
     public void GetLR(bool rankUpClass)
     {
@@ -44,7 +43,6 @@ public class CoreLR
             return;
 
         JoinLegion.JoinLegionQuests();
-        // ND.NecrodungeonStoryLine();
 
         bool hasDarkCaster = false;
         if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
@@ -120,11 +118,11 @@ public class CoreLR
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
+        Story.UpdateQuest(4614);
         while (!Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);
 
-            Story.UpdateQuest(4614);
             Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
             Core.KillMonster("doomvault", "r1", "Right", "*", "Grim Cohort Conquered", 500, false);
             Core.KillMonster("wrath", "r5", "Left", "*", "Pirate Cohort Conquered", 500, false);

@@ -1559,18 +1559,10 @@ public class Core13LoC
         if (!Story.QuestProgression(3189))
         {
             if (Core.CheckInventory("Healer"))
-            {
                 Bot.Skills.StartAdvanced("Healer", true, RBot.Skills.ClassUseMode.Base);
-                Story.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
-            }
-            else
-            if (Core.CheckInventory("Void Highlord"))
-            {
+            else if (Core.CheckInventory("Void Highlord"))
                 Bot.Skills.StartAdvanced("Void Highlord", true, RBot.Skills.ClassUseMode.Def);
-                Story.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
-            }
-            else
-                Story.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
+            Story.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
         }
     }
 
