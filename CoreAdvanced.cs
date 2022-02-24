@@ -271,7 +271,7 @@ public class CoreAdvanced
     /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
     /// </summary>
     /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    public string[] BestGear(GearBoost BoostType)
+    public string[] BestGear(GearBoost BoostType, bool EquipItem = true)
     {
         if (BoostType == GearBoost.None)
             return new[] { "" };
@@ -284,12 +284,17 @@ public class CoreAdvanced
         }
         LastBoostType = BoostType;
 
+        if (RaceBoosts.Contains(BoostType))
+            Core.Logger("Searching for the best available gear against: " + BoostType.ToString());
+        else Core.Logger("Searching for the best available gear to boost: " + BoostType.ToString());
+
         List<InventoryItem> InventoryData = Bot.Inventory.Items;
         List<InventoryItem> BankData = Bot.Bank.BankItems;
         List<InventoryItem> BankInvData = InventoryData.Concat(BankData).ToList();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
         ItemCategory BestItemCatagory = ItemCategory.Unknown;
         string BestItemDMGall = null;
+        float BestValueDMGall = 0F;
 
         foreach (InventoryItem Item in BankInvData)
         {
@@ -297,10 +302,12 @@ public class CoreAdvanced
             {
                 string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains(BoostType.ToString()));
                 float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
-                BoostedGear.Add(Item.Name, BoostFloat);
+                if (!BoostedGear.Values.Contains(BoostFloat))
+                    BoostedGear.Add(Item.Name, BoostFloat);
             }
         }
         string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
+        float BestValue = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Value;
         if ((BankInvData.Find(x => x.Name == BestItem) != null))
             BestItemCatagory = BankInvData.Find(x => x.Name == BestItem).Category;
 
@@ -320,12 +327,20 @@ public class CoreAdvanced
                 }
             }
             BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
-            Core.Equip(BestItemDMGall);
+            BestValueDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Value;
+            if (EquipItem)
+                Core.Equip(BestItemDMGall);
             Bot.Sleep(Core.ActionDelay);
         }
-        Core.Equip(BestItem);
+        if (EquipItem)
+            Core.Equip(BestItem);
         if (RaceBoosts.Contains(BoostType))
+        {
+            Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")}) & {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
+            Core.Logger($"Combined they give a boost of " + (BestValue * BestValueDMGall - 1).ToString("+0.##%"));
             return new[] { BestItem, BestItemDMGall };
+        }
+        Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
         return new[] { BestItem };
     }
     private GearBoost[] RaceBoosts =
