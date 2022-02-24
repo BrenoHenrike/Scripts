@@ -95,6 +95,7 @@ public class CoreLR
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("revenant", "r2", "Left", "*", "Tethered Soul", 300, false);
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 500, false);
+            Story.UpdateQuest(2060);
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false, publicRoom: true);
 
             Core.EnsureComplete(6897);
