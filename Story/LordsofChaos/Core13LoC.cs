@@ -1144,6 +1144,7 @@ public class Core13LoC
 
         //After the Chaos
         Story.KillQuest(2244, "timelibrary", new[] { "Queen's Lieutenant", "Queen's Recruit", "Queen's Knight" });
+        Story.MapItemQuest(2244, "timelibrary", 1368);
 
         //Trust is Not Ephemeral
         Story.KillQuest(2253, "timevoid", "Ephemerite");
