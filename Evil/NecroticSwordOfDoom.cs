@@ -29,7 +29,6 @@ public class NecroticSwordOfDoom
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Daily = new CoreDailys();
-    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreSDKA SDKA = new CoreSDKA();
     public Necromancer Necro = new Necromancer();
@@ -259,7 +258,6 @@ public class NecroticSwordOfDoom
 
         Core.Logger("Unenhanced Aura");
         Necro.GetNecromancer();
-        Adv.rankUpClass("Necromancer");
         Core.AddDrop("Unenhanced Aura");
         Core.EnsureAccept(4436);
         FindBlade();
