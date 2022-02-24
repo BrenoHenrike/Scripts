@@ -11,7 +11,7 @@ public class CoreLR
     public CoreLegion Legion = new CoreLegion();
     public JoinLegion JoinLegion = new JoinLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
-    public NecroDungeon ND = new NecroDungeon();
+    // public NecroDungeon ND = new NecroDungeon();
 
     public void GetLR(bool rankUpClass)
     {
@@ -44,6 +44,7 @@ public class CoreLR
             return;
 
         JoinLegion.JoinLegionQuests();
+        // ND.NecrodungeonStoryLine();
 
         bool hasDarkCaster = false;
         if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
@@ -85,6 +86,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
+        Story.UpdateQuest(2060);
         while (!Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Core.EnsureAccept(6897);
@@ -95,7 +97,6 @@ public class CoreLR
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("revenant", "r2", "Left", "*", "Tethered Soul", 300, false);
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 500, false);
-            Story.UpdateQuest(2060);
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false, publicRoom: true);
 
             Core.EnsureComplete(6897);
@@ -111,7 +112,6 @@ public class CoreLR
             return;
 
         JoinLegion.JoinLegionQuests();
-        ND.NecrodungeonStoryLine();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);
