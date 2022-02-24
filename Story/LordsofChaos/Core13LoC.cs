@@ -1183,7 +1183,7 @@ public class Core13LoC
         //Construct Your Reality
         Story.MapItemQuest(2376, "aqlesson", 1467);
 
-        //Reach the Temple       
+        //Reach the Temple
         Story.KillQuest(2377, "aqlesson", "Ninja");
 
 
