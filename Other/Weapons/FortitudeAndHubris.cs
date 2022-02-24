@@ -1,5 +1,5 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreStories.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class FandH
