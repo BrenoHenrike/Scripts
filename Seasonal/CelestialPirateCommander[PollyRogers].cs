@@ -12,13 +12,12 @@ public class CelestialPirateCommander
     {
         Core.SetOptions();
 
-        GetCPC();
+        GetCPC(true);
 
         Core.SetOptions(false);
     }
 
     private string[] Rewards = {
-        "Polly Roger",
         "Celestial Pirate Commander",
         "Celestial Commander's Hat",
         "Celestial Commander's Locks",
@@ -29,10 +28,11 @@ public class CelestialPirateCommander
         "Celestial Commander's Sword",
         "Celestial Commander's Hat + Morph",
         "Celestial Commander's Morph + Locks",
-        "Celestial Commander's Plank"
+        "Celestial Commander's Plank",
+        "Polly Roger"
     };
 
-    public void GetCPC(bool OnlyPolly = true)
+    public void GetCPC(bool OnlyPolly)
     {
         if (OnlyPolly && Core.CheckInventory("Polly Roger"))
             return;
@@ -51,9 +51,11 @@ public class CelestialPirateCommander
             Core.HuntMonster("extinction", "Ultra SN.O.W.", "Starlit Journal Page 4 Scraps", 10, false, publicRoom: true);
             Core.HuntMonster("starsinc", "Empowered Prime", "Map of the Celestial Seas", 1, false, publicRoom: true);
             Core.HuntMonster("underlair", "ArchFiend DragonLord", "Coffer of the Stars", 1, false, publicRoom: true);
-            Core.EnsureCompleteChoose(7713, Rewards);
+            if (!Core.CheckInventory("Polly Roger"))
+                Core.EnsureAccept(7713, 56776);
+            else Core.EnsureCompleteChoose(7713, Rewards);
             Bot.Sleep(Core.ActionDelay);
-            if (OnlyPolly)
+            if (OnlyPolly && Core.CheckInventory("Polly Roger"))
                 break;
         }
     }
