@@ -457,7 +457,7 @@ public class Core13LoC
         Story.KillQuest(311, "greenguardeast", "Spider");
 
         /// Lil' Red + Can I axe you something?
-        if (!Story.QuestProgression(514) | (Core.isCompletedBefore(515)) | !Core.CheckInventory("Red's Big Wolf Slaying Axe"))
+        if (!Story.QuestProgression(514) | !Story.QuestProgression(515))
         {
             Core.AddDrop("Red's Big Wolf Slaying Axe");
             Core.EnsureAccept(514);
@@ -608,9 +608,19 @@ public class Core13LoC
         //Mythsong War Cutscene
         Story.ChainQuest(707);
         //Pony Gary Yellow
-        Story.KillQuest(709, "palooza", "Pony Gary Yellow", AutoCompleteQuest: false);
+        if(!Story.QuestProgression(709))
+        {
+            Core.EnsureAccept(709);
+            Core.HuntMonster("palooza", "Pony Gary Yellow", "Pony Gary Yellow Defeated");
+            Core.EnsureAccept(709);
+        }
         //Kimberly
-        Story.KillQuest(710, "palooza", "Kimberly", AutoCompleteQuest: false);
+        if(!Story.QuestProgression(710))
+        {
+            Core.EnsureAccept(710);
+            Core.HuntMonster("palooza", "Kimberly", "Kimberly Defeated");
+            Core.EnsureAccept(710);
+        }
     }
 
     public void Ledgermayne()
