@@ -21,7 +21,7 @@ public class Fiendshard_Story
 
     public void Fiendshard_Questline()
     {
-        if (Story.isCompletedBefore(7898))
+        if (Core.isCompletedBefore(7898))
             return;
 
         Originul.Originul_Questline();

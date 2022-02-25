@@ -19,7 +19,7 @@ public class Originul_Story
 
     public void Originul_Questline()
     {
-        if (Story.isCompletedBefore(7889))
+        if (Core.isCompletedBefore(7889))
             return;
 
         // Inquisite the Inquisitors

@@ -22,7 +22,7 @@ public class JoinLegion
 
     public void JoinLegionQuests()
     {
-        if (Story.isCompletedBefore(793))
+        if (Core.isCompletedBefore(793))
             return;
 
         Core.BuyItem("underworld", 215, "Undead Warrior");

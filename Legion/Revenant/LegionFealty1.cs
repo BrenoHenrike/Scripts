@@ -6,7 +6,6 @@
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
-//cs_include Scripts/Story/NecroDungeon.cs
 using RBot;
 
 public class LegionFealty1

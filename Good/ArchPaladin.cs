@@ -168,13 +168,14 @@ public class ArchPaladin
             {
                 if (!Core.CheckInventory("Archmage Ink"))
                 {
+                    Farm.SpellCraftingREP(8);
                     if (Core.CheckInventory("Mystic Shards", 2))
                         Core.BuyItem("spellcraft", 549, "Archmage Ink", 1, 5);
                     else
                     {
                         if (!Core.CheckInventory("Arcane Quill"))
                         {
-                            Core.BuyItem("spellcraft", 693, "Gold Voucher 500k");
+                            Core.BuyItem("spellcraft", 693, "Gold Voucher 500k", 2);
                             Core.BuyItem("spellcraft", 693, "Arcane Quill", 1, 10, 8847);
                         }
                         Core.BuyItem("spellcraft", 622, "Archmage Ink", 1, 5);
@@ -196,9 +197,9 @@ public class ArchPaladin
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("seraph", "Adventus", "Sacred Tome", isTemp: false);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("marsh", "Marsh Trees", "Paladaffodil", 25, false);
-            Core.HuntMonster("wanders", "Lotus Spiders", "Spirit Lotus", 25, false);
-            Core.HuntMonster("bloodtusk", "Trollola Plants", "Radiant Magnolia", 25, false);
+            Core.HuntMonster("marsh", "Marsh Tree", "Paladaffodil", 25, false);
+            Core.HuntMonster("wanders", "Lotus Spider", "Spirit Lotus", 25, false);
+            Core.HuntMonster("bloodtusk", "Trollola Plant", "Radiant Magnolia", 25, false);
             Core.HuntMonster("gaiazor", "Wisterrora", "Cyanoblossom", 25, false);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("gaiazor", "Nevanna", "BrightOak Forest Sapling", isTemp: false);

@@ -21,22 +21,49 @@ public class AQWZombies
 
     public void Storyline()
     {
-        if (Story.isCompletedBefore(2128))
+        if (Core.isCompletedBefore(2128))
             return;
 
+        // Undead Assault
         Story.KillQuest(2093, "battleundera", "Skeletal Soldier");
+
+        // Skull Crusher Mountain
         Story.KillQuest(2094, "battleundera", "Skeletal Ice Mage");
+
+        // The Undead Giant
         Story.KillQuest(2095, "battleundera", "Angry Undead Giant");
+
+        // Talk to the Knights
         Story.MapItemQuest(2096, "doomhaven", 1174, 5);
+
+        // Defend the Throne Room
         Story.KillQuest(2097, "Doomhaven", "Skeletal Viking");
-        Story.KillQuest(2117, "doomhaven", "Zombie Rolith");
-        Story.KillQuest(2119, "doomwar", "Zombiue Galanoth");
-        Story.KillQuest(2120, "doomwar", "Zombiue Warlic");
-        Story.KillQuest(2121, "doomwar", "Cyzerombie");
-        Story.KillQuest(2122, "doomwar", "Zhoombie");
-        Story.KillQuest(2123, "doomwar", "Zhoombie");
+
+        // Rolith Defeated
+        Story.ChainQuest(2117);
+
+        // Lair
+        Story.ChainQuest(2120);
+
+        // Mythsong
+        Story.ChainQuest(2121);
+        
+        // Arcangrove
+        Story.ChainQuest(2122);
+
+        // Willowshire
+        Story.ChainQuest(2123);
+
+        // Battleon
+        Story.ChainQuest(2119);
+
+        // Keep the Area Clear
         Story.KillQuest(2124, "doomwar", "Angry Zombie");
+
+        // Defeat Zombie Dragons
         Story.KillQuest(2125, "doomwar", "Zombie Dragon");
+
+        // Defeat Your Fallen Friends
         if (!Story.QuestProgression(2126))
         {
             Core.EnsureAccept(2126);
@@ -46,7 +73,11 @@ public class AQWZombies
             Core.KillMonster("doomwar", "r3", "left", "Zhoombie");
             Core.EnsureComplete(2126);
         }
+
+        // Long Unlive the King!
         Story.KillQuest(2127, "doomwar", "Zombie King Alteon");
+
+        // Dark Sepulchure Must be Slain!
         Story.KillQuest(2128, "sepulchure", "Dark Sepulchure");
         //----------------------------------------
     }

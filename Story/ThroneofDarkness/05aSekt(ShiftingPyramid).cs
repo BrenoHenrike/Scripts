@@ -18,7 +18,7 @@ public class ShiftingPyramid
 
     public void ShiftingPyramidSaga()
     {
-        if (Story.isCompletedBefore(5187))
+        if (Core.isCompletedBefore(5187))
             return;
 
         // Hunt for the Infinity Codex

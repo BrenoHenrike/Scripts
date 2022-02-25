@@ -25,7 +25,7 @@ public class GoldenBladeOfFate
         if (Core.CheckInventory("Golden Blade of Fate"))
             return;
 
-        if (!Story.isCompletedBefore(5679))
+        if (!Core.isCompletedBefore(5679))
         {
             Core.Logger("Doing for the Golden Blade of Fate");
 

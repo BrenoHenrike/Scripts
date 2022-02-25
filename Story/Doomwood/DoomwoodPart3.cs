@@ -27,7 +27,7 @@ public class DoomwoodPart3
 
     public void Part3()
     {
-        if (Story.isCompletedBefore(7653))
+        if (Core.isCompletedBefore(7653))
             return;
         ///thorngarde > /stonewood > /techdungeon > /stonewooddeep > /techfortress
 

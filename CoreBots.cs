@@ -1,4 +1,4 @@
-﻿//Scripts v2.26
+﻿//Scripts v2.26.1
 using RBot;
 using RBot.Items;
 using RBot.Monsters;
@@ -25,6 +25,8 @@ public class CoreBots
     public int AcceptandCompleteTries { get; set; } = 20;
     // [Can Change] Whether the bots should also log in AQW's chat
     public bool LoggerInChat { get; set; } = true;
+    // [Can Change] When enabled, no messagesboxes will be shown unless absolutely neccesary
+    public bool ForceOffMessageboxes { get; set; } = false;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
@@ -534,6 +536,15 @@ public class CoreBots
         }
     }
 
+    public Quest EnsureLoad(int questID)
+    {
+        if (Bot.Quests.QuestTree.Any(x => x.ID == questID))
+            return Bot.Quests.QuestTree.Find(x => x.ID == questID);
+        JumpWait();
+        Bot.Sleep(ActionDelay);
+        return Bot.Quests.EnsureLoad(questID);
+    }
+
     /// <summary>
     /// Accepts and then completes the quest, used inside a loop
     /// </summary>
@@ -545,6 +556,13 @@ public class CoreBots
         Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
         Bot.Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
+    }
+
+    /// <param name="QuestID">ID of the quest</param>
+    public bool isCompletedBefore(int QuestID)
+    {
+        Quest QuestData = EnsureLoad(QuestID);
+        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
     }
 
     #endregion
@@ -785,7 +803,7 @@ public class CoreBots
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
         if (LoggerInChat)
             Bot.SendMSGPacket(message.Replace('[', '(').Replace(']', ')'), caller, "moderator");
-        if (messageBox)
+        if (messageBox & !ForceOffMessageboxes)
             Message(message, caller);
         if (stopBot)
             StopBot(true);
@@ -979,7 +997,7 @@ public class CoreBots
         if (questID > 0 && questID != lastQuestID)
         {
             lastQuestID = questID;
-            Quest quest = Bot.Quests.EnsureLoad(questID);
+            Quest quest = EnsureLoad(questID);
             if (quest == null)
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
             List<string> reqItems = new List<string>();
@@ -1034,7 +1052,7 @@ public class CoreBots
         Bot.Options.LagKiller = false;
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
-        Logger("Bot Stopped Successfully", messageBox: true);
+        Logger("Bot Stopped Successfully");
         ScriptManager.StopScript();
     }
     #endregion

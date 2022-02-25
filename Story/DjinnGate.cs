@@ -19,7 +19,7 @@ public class DjinnGateStory
 
     public void DjinnGate()
     {
-        if (Story.isCompletedBefore(6161))
+        if (Core.isCompletedBefore(6161))
             return;
 
         Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion",
@@ -48,11 +48,11 @@ public class DjinnGateStory
         if (!Story.QuestProgression(6156))
         {
             Core.EnsureAccept(6155);
-            Core.KillMonster("mythsong", "Hill", "Left", "*", "Fragment 11");
-            Core.KillMonster("palooza", "Act3", "Left", "Rock Lobster", "Fragment 12");
-            Core.KillMonster("palooza", "Act2", "Left", "Stinger", "Fragment 13");
-            Core.KillMonster("palooza", "Act3", "Left", "Mozard", "Fragment 15");
-            Core.KillMonster("beehive", "r5", "Left", "*", "Fragment 14");
+            Core.KillMonster("mythsong", "Hill", "Right", "*", "Fragment 11");
+            Core.HuntMonster("palooza", "Rock Lobster", "Fragment 12");
+            Core.HuntMonster("palooza", "Stinger", "Fragment 13");
+            Core.HuntMonster("beehive", "Killer Queen Bee", "Fragment 14");
+            Core.HuntMonster("palooza", "Mozard", "Fragment 15");
             Core.EnsureComplete(6155);
         }
         if (!Story.QuestProgression(6157))

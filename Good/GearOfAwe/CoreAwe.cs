@@ -31,17 +31,17 @@ public class CoreAwe
     public void AweKill(int questID, string gear)
     {
         Core.EnsureAccept(questID);
-        if(gear.Equals("pauldron"))
+        if (gear.Equals("pauldron"))
             Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false);
-        else if(gear.Equals("breastplate"))
+        else if (gear.Equals("breastplate"))
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false);
-        else if(gear.Equals("vambrace"))
+        else if (gear.Equals("vambrace"))
             Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, publicRoom: true);
-        else if(gear.Equals("gauntlet"))
+        else if (gear.Equals("gauntlet"))
             Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false);
-        else if(gear.Equals("greaves"))
+        else if (gear.Equals("greaves"))
             Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, publicRoom: true);
-        else if(gear.Equals("helm"))
+        else if (gear.Equals("helm"))
         {
             Story.UpdateQuest(3008);
             Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
@@ -51,7 +51,7 @@ public class CoreAwe
         else
         {
             Story.UpdateQuest(3008);
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape  Shard", 1, false);
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
         }
         Core.EnsureComplete(questID);
     }

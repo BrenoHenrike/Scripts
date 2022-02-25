@@ -1,6 +1,7 @@
 using RBot;
 using RBot.Items;
 using RBot.Shops;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -98,9 +99,12 @@ public class CoreAdvanced
     };
     private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
     private List<InventoryItem> Empty = new List<InventoryItem>();
+
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
+        int i = 0;
+        bool LogOnce = false;
 
         if (WeaponList.Count == 0 && OtherList.Count == 0)
         {
@@ -108,10 +112,15 @@ public class CoreAdvanced
             return;
         }
 
+        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
+        {
+            Special = WeaponSpecial.None;
+            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
+        }
+
         //Gear
         if (FlexibleList.Count != 0)
         {
-            Core.Logger($"Best Enhancement of: {Type.ToString()}");
             if (Type == EnhancementType.Fighter)
                 __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 768 : 141);
             else if (Type == EnhancementType.Thief)
@@ -125,26 +134,37 @@ public class CoreAdvanced
             else if (Type == EnhancementType.Lucky)
                 __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 763 : 147);
             else if (Type == EnhancementType.SpellBreaker)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 146 : 146);
+                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 764 : 146);
         }
-        //Weapon Specials
 
+        //Weapon Specials
         if (WeaponList.Count != 0 && Special != WeaponSpecial.None)
         {
-            Core.Logger($"Best Enhancement of: {Type.ToString()}, {Special.ToString().Replace('_', ' ')}");
-            if (Type == EnhancementType.Fighter)
-                __AutoEnhance(WeaponList, 635, "museum");
-            else if (Type == EnhancementType.Thief)
-                __AutoEnhance(WeaponList, 637, "museum");
-            else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
-                __AutoEnhance(WeaponList, 636, "museum");
-            else if (Type == EnhancementType.Healer)
-                __AutoEnhance(WeaponList, 638, "museum");
-            else if (Type == EnhancementType.Hybrid)
-                __AutoEnhance(WeaponList, 633, "museum");
-            else if (Type == EnhancementType.Lucky)
-                __AutoEnhance(WeaponList, 639, "museum");
+            if (Bot.Player.Level == WeaponList.First().EnhancementLevel && (int)Type == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.EnhPatternID") &&
+                   (WeaponCatagories.Contains(WeaponList.First().Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.ProcID") : true))
+                i++;
+            else
+            {
+                Core.Logger($"Best Enhancement of: {Type.ToString()} + {Special.ToString().Replace('_', ' ')}");
+                if (Type == EnhancementType.Fighter)
+                    __AutoEnhance(WeaponList, 635, "museum");
+                else if (Type == EnhancementType.Thief)
+                    __AutoEnhance(WeaponList, 637, "museum");
+                else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
+                    __AutoEnhance(WeaponList, 636, "museum");
+                else if (Type == EnhancementType.Healer)
+                    __AutoEnhance(WeaponList, 638, "museum");
+                else if (Type == EnhancementType.Hybrid)
+                    __AutoEnhance(WeaponList, 633, "museum");
+                else if (Type == EnhancementType.Lucky)
+                    __AutoEnhance(WeaponList, 639, "museum");
+            }
         }
+
+        if (i > 0)
+            Core.Logger($"Skipped enhancement for {i} item{(i > 1 ? 's' : null)}");
+        if (i != WeaponList.Count + OtherList.Count)
+            Core.Logger("Enhancements complete");
 
         void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = null)
         {
@@ -152,8 +172,22 @@ public class CoreAdvanced
 
             foreach (InventoryItem Item in Input)
             {
-                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
                 Core.CheckInventory(Item.Name);
+
+                if (Bot.Player.Level == Item.EnhancementLevel && (int)Type == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhPatternID") &&
+                   (WeaponCatagories.Contains(Item.Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.ProcID") : true))
+                {
+                    i++;
+                    continue;
+                }
+
+                if (!LogOnce && (!WeaponCatagories.Contains(Item.Category) || Special != WeaponSpecial.None))
+                {
+                    Core.Logger($"Best Enhancement of: {Type.ToString()}");
+                    LogOnce = true;
+                }
+
+                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
 
                 if (Map != null)
                     Core.Join(Map);
@@ -161,6 +195,7 @@ public class CoreAdvanced
 
                 Bot.Shops.Load(ShopID);
                 ShopItems = Bot.Shops.ShopItems;
+
                 List<ShopItem> AvailableEnh = new List<ShopItem>();
 
                 foreach (ShopItem Enh in ShopItems)
@@ -221,22 +256,22 @@ public class CoreAdvanced
         WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
         SmartEnhance(ClassName);
         EnhanceItem(BestGear(GearBoost.cp), CurrentClassEnh(), CurrentWeaponSpecial());
-        Bot.Player.EquipItem(itemInv.Name);
+        Core.Equip(itemInv.Name);
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-        if (ClassReAfter != ClassName)
+        if (ClassReAfter != Bot.Inventory.CurrentClass.Name)
         {
-            Bot.Player.EquipItem(ClassReAfter);
+            Core.Equip(ClassReAfter);
             EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
         }
-        Bot.Player.EquipItem(EquippedWeapon);
+        Core.Equip(EquippedWeapon);
     }
 
     /// <summary>
     /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
     /// </summary>
     /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    public string[] BestGear(GearBoost BoostType)
+    public string[] BestGear(GearBoost BoostType, bool EquipItem = true)
     {
         if (BoostType == GearBoost.None)
             return new[] { "" };
@@ -249,23 +284,32 @@ public class CoreAdvanced
         }
         LastBoostType = BoostType;
 
-        InventoryItem[] InventoryData = Bot.Inventory.Items.ToArray();
-        InventoryItem[] BankData = Bot.Bank.BankItems.ToArray();
-        InventoryItem[] BankInvData = InventoryData.Concat(BankData).ToArray();
+        if (RaceBoosts.Contains(BoostType))
+            Core.Logger("Searching for the best available gear against: " + BoostType.ToString());
+        else Core.Logger("Searching for the best available gear to boost: " + BoostType.ToString());
+
+        List<InventoryItem> InventoryData = Bot.Inventory.Items;
+        List<InventoryItem> BankData = Bot.Bank.BankItems;
+        List<InventoryItem> BankInvData = InventoryData.Concat(BankData).ToList();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
+        ItemCategory BestItemCatagory = ItemCategory.Unknown;
         string BestItemDMGall = null;
+        float BestValueDMGall = 0F;
 
         foreach (InventoryItem Item in BankInvData)
         {
             if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
             {
                 string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains(BoostType.ToString()));
-                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""));
-                BoostedGear.Add(Item.Name, BoostFloat);
+                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
+                if (!BoostedGear.Values.Contains(BoostFloat))
+                    BoostedGear.Add(Item.Name, BoostFloat);
             }
         }
         string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
-        ItemCategory BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
+        float BestValue = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Value;
+        if ((BankInvData.Find(x => x.Name == BestItem) != null))
+            BestItemCatagory = BankInvData.Find(x => x.Name == BestItem).Category;
 
         if (RaceBoosts.Contains(BoostType))
         {
@@ -278,29 +322,35 @@ public class CoreAdvanced
                     Item.Category != BestItemCatagory)
                 {
                     string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
-                    float BoostFloat = float.Parse(CorrectData.Replace($"dmgAll:", ""));
+                    float BoostFloat = float.Parse(CorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
                     BoostedGearDMGall.Add(Item.Name, BoostFloat);
                 }
             }
             BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
-            Core.JumpWait();
-            Core.CheckInventory(BestItemDMGall);
-            Bot.Player.EquipItem(BestItemDMGall);
+            BestValueDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Value;
+            if (EquipItem)
+                Core.Equip(BestItemDMGall);
             Bot.Sleep(Core.ActionDelay);
         }
-        Core.JumpWait();
-        Core.CheckInventory(BestItem);
-        Bot.Player.EquipItem(BestItem);
+        if (EquipItem)
+            Core.Equip(BestItem);
         if (RaceBoosts.Contains(BoostType))
+        {
+            Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")}) & {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
+            Core.Logger($"Combined they give a boost of " + (BestValue * BestValueDMGall - 1).ToString("+0.##%"));
             return new[] { BestItem, BestItemDMGall };
+        }
+        Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
         return new[] { BestItem };
     }
     private GearBoost[] RaceBoosts =
     {
         GearBoost.Chaos,
         GearBoost.Dragonkin,
+        GearBoost.Drakath,
         GearBoost.Elemental,
         GearBoost.Human,
+        GearBoost.Orc,
         GearBoost.Undead
     };
     private GearBoost LastBoostType = GearBoost.None;
@@ -309,28 +359,35 @@ public class CoreAdvanced
 
     private void _RaceGear(string Monster)
     {
-        string MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.Name == Monster).Race;
-        if (MonsterRace != null)
-        {
-            string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
-            EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
-            foreach (string Item in _BestGear)
-                if (!Bot.Inventory.IsEquipped(Item))
-                    Bot.Player.EquipItem(Item);
-        }
+        string MonsterRace = null;
+        if (Monster != "*")
+            MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.Name == Monster).Race;
+        else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race;
+
+        if (MonsterRace == null || MonsterRace == "")
+            return;
+
+        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        if (_BestGear.Length == 0)
+            return;
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
+        Core.Equip(_BestGear);
+
     }
 
     private void _RaceGear(int MonsterID)
     {
         string MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.ID == MonsterID).Race;
-        if (MonsterRace != null)
-        {
-            string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
-            EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
-            foreach (string Item in _BestGear)
-                if (!Bot.Inventory.IsEquipped(Item))
-                    Bot.Player.EquipItem(Item);
-        }
+
+        if (MonsterRace == null || MonsterRace == "")
+            return;
+
+        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        if (_BestGear.Length == 0)
+            return;
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
+        Core.Equip(_BestGear);
+
     }
 
     #endregion
@@ -453,8 +510,7 @@ public class CoreAdvanced
             Core.Logger("Ignore the message about the Hybrid Enhancement");
             EnhanceEquipped(EnhancementType.Hybrid);
         }
-        if (!Bot.Inventory.IsEquipped(Class))
-            Bot.Player.EquipItem(Class);
+        Core.Equip(Class);
         switch (Class)
         {
             //Lucky - Spiral Carve
@@ -751,7 +807,9 @@ public enum GearBoost
     dmgAll,
     Chaos,
     Dragonkin,
+    Drakath,
     Elemental,
     Human,
+    Orc,
     Undead
 }

@@ -1,11 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class FandH
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-     public CoreBots Core => CoreBots.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -18,97 +19,84 @@ public class FandH
 
     public void FortitudeAndHubris()
     {
-        Core.AddDrop("Zorbak's Secret G-Rave Key", "Sword's Cost", "Shards of the Sword", 
-        "Hubris's Final Blade Shard", "Hubris' Magic Essence", "Hubris", "Fortitude's Blade Shards", 
-        "Fortitude's Magic Essence", "Fortitude", "Fortitude + Hubris");
-        if(Core.CheckInventory("Fortitude + Hubris"))
+        if (Core.CheckInventory("Fortitude + Hubris"))
             return;
+
+        Core.AddDrop("Zorbak's Secret G-Rave Key", "Sword's Cost", "Shards of the Sword",
+        "Hubris's Final Blade Shard", "Hubris' Magic Essence", "Hubris", "Fortitude's Blade Shards",
+        "Fortitude's Magic Essence", "Fortitude", "Fortitude + Hubris");
+
+
+        // Qualifying Quest
         Core.EquipClass(ClassType.Farm);
-        if(!Bot.Quests.IsUnlocked(6594))
-        {
-            Core.EnsureAccept(6593);
-            Core.KillMonster("stalagbite", "Enter", "Spawn", "*", "Super Specific Rock");
-            Core.EnsureComplete(6593);
-        }
-        if(!Bot.Quests.IsUnlocked(6595))
-        {
-            Core.EnsureAccept(6594);
-            Core.KillMonster("pines", "Mountain", "Left", "Red Shell Turtle", "Turtle Shell");
-            Core.KillMonster("pines", "Mountain", "Left", "Pine Grizzly", "Coffee Beans of Awakeness");
-            Core.KillMonster("pines", "Llama", "Left", "Pine Troll", "String Fibers", 5);
-            Core.GetMapItem(6114, map: "tavern");
-            Core.EnsureCompleteChoose(6594);
-        }
-        if(!Bot.Quests.IsUnlocked(6596))
-        {
-            Core.EnsureAccept(6595);
-            Core.KillMonster("river", "End", "Left", "*", "Pisces Shield Pieces", 20);
-            Core.EnsureComplete(6595);
-        }
-        if (!Bot.Quests.IsUnlocked(6598))
-        {
-            Core.EnsureAccept(6596);
-            Core.KillMonster("maul", "r3", "Down", "*", "Zorbak's Secret G-Rave Key", isTemp: false);
-            Core.KillMonster("maul", "r3", "Down", "*", "Ebil Limbs", 5);
-            Core.GetMapItem(6116, map: "maul");
-            Core.EnsureCompleteChoose(6596);
-        }
-        if(!Bot.Quests.IsUnlocked(6599))
-        {
-            Core.EnsureAccept(6598);
-            Core.KillMonster("shadowrealm", "r11", "Left", "*", "ENED+D Lance");
-            Core.EnsureComplete(6598);
-        }
-        if(!Bot.Quests.IsUnlocked(6600))
-        {
-            Core.EnsureAccept(6599);
-            Core.KillMonster("dragontown", "r9", "Right", "*", "Time Traveled Sword");
-            Core.EnsureComplete(6599);
-        }
-        if(!Bot.Quests.IsUnlocked(6601))
-        {
-            Core.EnsureAccept(6600);
-            Core.KillMonster("mountfrost", "War", "Left", "*", "Golems Defeated", 20);
-            Core.GetMapItem(6115, map: "david");
-            Core.EnsureCompleteChoose(6600);
-        }
-        if(!Bot.Quests.IsUnlocked(6602))
-        {
-            Core.EnsureAccept(6601);
-            Core.KillMonster("northpointe", "r12", "Left", "Wyvern", "Soul of the Sword");
-            Core.EnsureComplete(6601);
-        }
-        if(!Bot.Quests.IsUnlocked(6603))
-        {
-            Core.EnsureAccept(6602);
-            Core.BuyItem("museum", 1653, "Sword's Cost");
-            Core.EnsureComplete(6602);
-        }
-        if(!Bot.Quests.IsUnlocked(6604))
-        {
-            Core.EnsureAccept(6603);
-            Core.KillMonster("razorclaw", "r3", "Left", "*", "Shards of the Sword", 30, false);
-            Core.EnsureComplete(6603);
-        }
-        if(!Bot.Quests.IsUnlocked(6605))
+        Story.KillQuest(6593, "stalagbite", "Balboa");
+
+        // Rest for the Not Very Wicked
+        Story.KillQuest(6594, "pines", new[] { "Red Shell Turtle", "Pine Grizzly", "Pine Troll" });
+        Story.MapItemQuest(6594, "tavern", 6114);
+
+        // Pisces Pieces
+        Story.KillQuest(6595, "river", "Kuro");
+
+        // Be Ebil
+        Story.KillQuest(6596, "maul", "Creature Creation");
+        Story.MapItemQuest(6596, "maul", 6116);
+
+        // Eternal, Never-Ending Darkness and Death Lance        
+        Story.KillQuest(6598, "shadowrealm", "Shadow Lord");
+
+        // It Takes a Special Brand of Glory
+        Story.KillQuest(6599, "dragontown", "Chaos Fluffy");
+
+        // 1st Trial
+        Story.KillQuest(6600, "mountfrost", "Snow Golem");
+        Story.MapItemQuest(6600, "david", 6115);
+
+        // 2nd Trial
+        Story.KillQuest(6601, "northpointe", "Wyvern");
+
+        // 3rd Trial
+        Story.BuyQuest(6602, "museum", 1653, "Sword's Cost");
+
+        // 4th Trial
+        Story.KillQuest(6603, "razorclaw", "Enraged Razorclaw");
+
+        // Hubris
+        if (!Core.CheckInventory("Hubris"))
         {
             Core.EnsureAccept(6604);
-            Core.KillMonster("doomwood", "r6a", "Left", "*", "Hubris's Final Blade Shard", isTemp: false);
-            Core.HuntMonster("trigoras", "Trigoras", "Hubris' Handle");
-            Core.KillMonster("styx", "r4", "Left", "*", "Hubris' Magic Essence", 50, false);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Hubris's Final Blade Shard", isTemp: false);
+            Bot.Sleep(2500);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("trigoras", "Trigoras", "Hubris's Handle");
+            Core.HuntMonster("styx", "Styx Hydra", "Hubris' Magic Essence", 50, isTemp: false);
             Core.EnsureComplete(6604);
+            Bot.Wait.ForPickup("Hubris");
         }
-        if(!Bot.Quests.IsUnlocked(6606))
+
+        // Fortitude
+        if (!Core.CheckInventory("Fortitude"))
         {
             Core.EnsureAccept(6605);
+            Core.EnsureAccept(4616);
             Core.HuntMonster("iceplane", "Enfield", "Fortitude's Handle");
-            Core.KillMonster("mummies", "Enter", "Spawn", "*", "Fortitude's Blade Shards", 100, false);
-            Core.KillMonster("banished", "r14", "Left", "*", "Fortitude's Magic Essence", 50, false);
+            Story.UpdateQuest(4614);
+            Core.HuntMonster("mummies", "Mummy", "Fortitude's Blade Shards", 100, isTemp: false);
+            Core.HuntMonster("banished", "Desterrat Moya", "Fortitude's Magic Essence", 50, isTemp: false);
+            Core.EnsureComplete(4616);
             Core.EnsureComplete(6605);
+            Bot.Wait.ForPickup("Fortitude");
         }
-        Core.EnsureAccept(6606);
-        Core.HuntMonster("skytower", "Aspect of Good", "Aspect of Good");
-        Core.HuntMonster("skytower", "Aspect of Evil", "Aspect of Evil");
-        Core.EnsureComplete(6606);
+
+        // Dual Wielding
+        if (!Core.CheckInventory("Fortitude + Hubris"))
+        {
+            Core.EnsureAccept(6606);
+            Core.HuntMonster("skytower", "Aspect of Good", "Aspect of Good");
+            Core.HuntMonster("skytower", "Aspect of Evil", "Aspect of Evil");
+            Core.EnsureComplete(6606);
+            Bot.Wait.ForPickup("Fortitude + Hubris");
+        }
     }
 }

@@ -18,7 +18,7 @@ public class MountOtzi
 
     public void MountOtziQuests()
     {
-        if (Story.isCompletedBefore(8444))
+        if (Core.isCompletedBefore(8444))
             return;
 
         // Light Midnight

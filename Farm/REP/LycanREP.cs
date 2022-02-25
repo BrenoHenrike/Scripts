@@ -1,7 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/LordofChaos/Core13LoC.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 public class LycanREP
 {

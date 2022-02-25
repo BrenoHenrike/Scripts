@@ -19,7 +19,7 @@ public class GuardianTree
 
     public void GuardianTreeQuests()
     {
-        if (Story.isCompletedBefore(6286))
+        if (Core.isCompletedBefore(6286))
             return;
 
         //Connect to the Earth

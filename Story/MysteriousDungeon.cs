@@ -25,7 +25,7 @@ public class MysteriousDungeon
 
     public void Storyline()
     {
-        if (Story.isCompletedBefore(5451))
+        if (Core.isCompletedBefore(5451))
             return;
 
         //cursed artifact shop - 5428

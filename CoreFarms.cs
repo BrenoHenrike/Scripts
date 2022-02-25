@@ -541,8 +541,14 @@ public class CoreFarms
 
     public void BeastMasterREP(int rank = 10)
     {
-        if (FactionRank("BeastMaster") >= rank || !Core.IsMember)
+        if (FactionRank("BeastMaster") >= rank)
             return;
+        if (!Core.IsMember)
+        {
+            Core.Logger("Beast Master REP is Member-Only", messageBox: true);
+            return;
+        }
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
@@ -1390,8 +1396,14 @@ public class CoreFarms
 
     public void SkyguardREP(int rank = 10)
     {
-        if (FactionRank("Skyguard") >= rank || !Core.IsMember)
+        if (FactionRank("Skyguard") >= rank)
             return;
+        if (!Core.IsMember)
+        {
+            Core.Logger("Skyguard REP is Member-Only", messageBox: true);
+            return;
+        }
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;

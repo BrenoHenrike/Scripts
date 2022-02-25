@@ -19,7 +19,7 @@ public class WorldSoul
 
     public void WorldSoulQuests()
     {
-        if (!Story.isCompletedBefore(6245))
+        if (!Core.isCompletedBefore(6245))
         {
             Core.EnsureAccept(6238);
             Core.HuntMonster("worldsoul", "Dwakel Infiltrator", "Void Cortex");

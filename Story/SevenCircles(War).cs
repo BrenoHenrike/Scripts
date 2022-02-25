@@ -19,7 +19,7 @@ public class SevenCircles
 
     public void Circles()
     {
-        if (Story.isCompletedBefore(7978))
+        if (Core.isCompletedBefore(7978))
             return;
 
         Core.AddDrop("Indulgence");
@@ -50,7 +50,7 @@ public class SevenCircles
 
     public void CirclesWar()
     {
-        if (Story.isCompletedBefore(7990))
+        if (Core.isCompletedBefore(7990))
             return;
 
         Circles();
