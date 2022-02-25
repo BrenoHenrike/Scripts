@@ -427,6 +427,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(598))
             return;
 
+        Core.AddDrop("Red's Big Wolf Slaying Axe");
+
         //Grave Mission
         Story.MapItemQuest(494, "darkoviagrave", 97);
 
@@ -442,32 +444,46 @@ public class Core13LoC
         //His Bark is worse than his Blight
         Story.KillQuest(498, "darkoviagrave", "Blightfang");
 
-        //Can I axe you something?
-        if (!Story.QuestProgression(516))
+        // Vicious Wolves
+        Story.KillQuest(308, "greenguardeast", "Wolf");
+
+        // Slimes to the West, Slimes Everywhere
+        Story.KillQuest(309, "greenguardwest", "Slime");
+
+        // Scaly Menace
+        Story.KillQuest(310, "greenguardwest", "Frogzard");
+
+        // Overgrown Spiders    
+        Story.KillQuest(311, "greenguardeast", "Spider");
+
+        /// Lil' Red + Can I axe you something?
+        if (!Story.QuestProgression(514) | (Core.isCompletedBefore(515)) | !Core.CheckInventory("Red's Big Wolf Slaying Axe"))
         {
-            if (!Core.CheckInventory("Red's Big Wolf Slaying Axe"))
-            {
-                Core.AddDrop("Red's Big Wolf Slaying Axe");
-                Core.EnsureAccept(515);
-                Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
-                Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
-                Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
-                Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
-                Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
-                Core.EnsureComplete(515);
-                Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
-
-                //Lil' Red
-                if (!Story.QuestProgression(514, GetReward: false))
-                    Core.EnsureComplete(514);
-
-                //A Dire Situation
-                Story.KillQuest(516, "darkoviaforest", "Dire Wolf");
-            }
+            Core.AddDrop("Red's Big Wolf Slaying Axe");
+            Core.EnsureAccept(514);
+            Core.EnsureAccept(515);
+            Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
+            Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
+            Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
+            Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
+            Core.EnsureComplete(515);
+            Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
+            Core.EnsureComplete(514);
         }
 
+        // A Dire Situation
+        Story.KillQuest(516, "darkoviaforest", "Dire Wolf");
+
         //Blood, Sweat, and Tears
-        Story.KillQuest(517, "darkoviaforest", new[] { "Blood Maggot", "Blood Maggot", "Blood Maggot" });
+        if (!Story.QuestProgression(517))
+        {
+            Core.EnsureAccept(517);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Blood", 2);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Sweat", 2);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Tears");
+            Core.EnsureComplete(517);
+        }
 
         //What a Lich!
         Story.KillQuest(518, "darkoviaforest", "Lich of the Stone");
@@ -689,8 +705,8 @@ public class Core13LoC
         Story.KillQuest(836, "gilead", "Mana Elemental");
         //Find Felsic the Magma Golem
         Story.MapItemQuest(838, "mafic", 147);
-        //Liquid Hot Magma Maggots
-        Story.KillQuest(839, "mafic", "Volcanic Maggot");
+        //Liquid Hot Magma Blood Maggots
+        Story.KillQuest(839, "mafic", "Volcanic Blood Maggot");
         //Scorched Serpents
         Story.KillQuest(840, "mafic", "Scoria Serpent");
         //Playing With Living Fire
