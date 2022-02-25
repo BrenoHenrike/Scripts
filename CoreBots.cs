@@ -25,6 +25,8 @@ public class CoreBots
     public int AcceptandCompleteTries { get; set; } = 20;
     // [Can Change] Whether the bots should also log in AQW's chat
     public bool LoggerInChat { get; set; } = true;
+    // [Can Change] When enabled, no messagesboxes will be shown unless absolutely neccesary
+    public bool ForceOffMessageboxes { get; set; } = false;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
@@ -801,7 +803,7 @@ public class CoreBots
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
         if (LoggerInChat)
             Bot.SendMSGPacket(message.Replace('[', '(').Replace(']', ')'), caller, "moderator");
-        if (messageBox)
+        if (messageBox & !ForceOffMessageboxes)
             Message(message, caller);
         if (stopBot)
             StopBot(true);
