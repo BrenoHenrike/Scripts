@@ -1609,8 +1609,9 @@ public class Core13LoC
         //Chaos Not Invited
         Story.KillQuest(3120, "ceremony", "Chaos Invader");
         //Better Letter Go!
-        Story.MapItemQuest(3121, "yulgar", new[] { 2108, 2109, 2110, 2111, 2112, 2113, 2114, 2115 });
-
+        Story.MapItemQuest(3121, "yulgar", new[] { 2108, 2109, 2110 });
+        Story.MapItemQuest(3121, "archive", 2111);
+        Story.MapItemQuest(3121, "swordhaven", new[] { 2112, 2113, 2114, 2115 });
         //Decor Rater
         Story.MapItemQuest(3122, "swordhaven", 2116, 8);
         //Cold Feet, Warm Heart
