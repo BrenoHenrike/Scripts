@@ -63,6 +63,8 @@ public class Awescended
         {
             Core.EnsureAccept(8035);
             Core.KillMonster("uppercity", "r3", "Left", "Chaos Egg", "Fossilized Egg Yolk", 12);
+            Story.UpdateQuest(537);
+            Core.Join("lycanwar", "Boss", "Left");
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard", "Stone Mask");
             Core.KillMonster("pyramid", "r5", "Left", "Mummy", "Mummified Bone", 6);
             Core.KillMonster("ravinetemple", "r11", "Left", "*", "Iron Head", 4);
@@ -80,6 +82,7 @@ public class Awescended
         if(!Story.QuestProgression(8037))
         {
             Core.EnsureAccept(8037);
+            Core.Join("thunderfang", "r2", "Left");
             Core.KillMonster("thunderfang", "r2", "Left", "Energy Elemental", "Supercharged Gem", 8);
             Core.HuntMonster("lab", "Frank", "Lightning Capacitor", 5);
             Core.KillMonster("boxes", "Boss", "Center", "Sneeviltron", "Wooden Control Panel");
@@ -95,7 +98,7 @@ public class Awescended
             Core.HuntMonster("shadowfallwar", "Noxus", "Noxus' Necromancy Robe");
             Core.EnsureComplete(8038);
         }
-            Story.KillQuest(8039, "crashsite", new[] { "Barrier Bot", "Dwakel Warrior", "Mithril Man", "ProtoSartorium" });
+            Story.KillQuest(8039, "crashsite", new[] { "Dwakel Warrior", "Barrier Bot", "Mithril Man", "ProtoSartorium" });
         Farm.Experience(50);
         if(!Story.QuestProgression(8040))
         {
