@@ -28,74 +28,20 @@ public class GetSDD
         if (!Core.CheckInventory("Manticore Cub Pet"))
         {
             Egg.GetMysteriousEgg();
-            if (!Bot.Quests.IsUnlocked(6902))
-            {
-                Core.EnsureAccept(6901);
-                Core.KillMonster("volcano", "r5", "Left", "*", "Lava Golem Chunk", 10);
-                Core.EnsureComplete(6901);
-            }
-            if (!Bot.Quests.IsUnlocked(6903))
-            {
-                Core.EnsureAccept(6902);
-                Core.KillMonster("embersea", "r8", "Bottom", "*", "Ever-Hot Lava", 5);
-                Core.EnsureComplete(6902);
-            }
-            if (!Bot.Quests.IsUnlocked(6904))
-            {
-                Core.EnsureAccept(6903);
-                Core.KillMonster("ashfallcamp", "r7", "Left", "*", "Dragon Meat", 10);
-                Core.EnsureComplete(6903);
-            }
-            if (!Bot.Quests.IsUnlocked(6905))
-            {
-                Core.EnsureAccept(6904);
-                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Elemental Water", 5);
-                Core.EnsureComplete(6904);
-            }
-            if (!Bot.Quests.IsUnlocked(6906))
-            {
-                Core.EnsureAccept(6905);
-                Core.KillMonster("crossroads", "Enter", "Spawn", "Koalion", "Shaggy Mane");
-                Core.EnsureComplete(6905);
-            }
-            if (!Bot.Quests.IsUnlocked(6907))
-            {
-                Core.EnsureAccept(6906);
-                Core.KillMonster("mountain", "r5", "Left", "*", "Big Scorpion Tail");
-                Core.EnsureComplete(6906);
-            }
-            if (!Bot.Quests.IsUnlocked(6908))
-                Story.MapItemQuest(6907, "void", 6453, GetReward: false);
-            if (!Bot.Quests.IsUnlocked(6909))
-            {
-                Core.EnsureAccept(6908);
-                Core.KillMonster("void", "r11", "Left", "*", "Void Energy", 8);
-                Core.EnsureComplete(6908);
-            }
-            if (!Bot.Quests.IsUnlocked(6910))
-                Story.MapItemQuest(6909, "void", 6454, GetReward: false);
-            if (!Bot.Quests.IsUnlocked(6911))
-            {
-                Core.EnsureAccept(6910);
-                Core.KillMonster("void", "r9", "Left", "*", "Intact Void Husk");
-                Core.EnsureComplete(6910);
-            }
-            if (!Bot.Quests.IsUnlocked(6912))
-            {
-                Core.EnsureAccept(6911);
-                Core.HuntMonster("void", "Void Elemental", "Condensed Void", 6);
-                Core.EnsureComplete(6911);
-            }
-            if (!Bot.Quests.IsUnlocked(6913))
-            {
-                Core.EnsureAccept(6912);
-                Core.HuntMonster("void", "Void Dragon", "Void Soul");
-                Core.EnsureComplete(6912);
-            }
-            if (!Bot.Quests.IsUnlocked(6914))
-                Story.MapItemQuest(6913, "mysteriousegg", 6455, GetReward: false);
-            Core.EnsureAccept(6914);
-            Core.EnsureComplete(6914);
+            Story.KillQuest(6901, "volcano", "Lava Golem");
+            Story.KillQuest(6902, "embersea", "Living Lava");
+            Story.KillQuest(6903, "ashfallcamp", "Lava Dragoblin|Lava Dravir");
+            Story.KillQuest(6904, "gilead", "Water Elemental");
+            Story.KillQuest(6905, "crossroads", "Koalion");
+            Story.KillQuest(6906, "mountain", "Giant Scorpion");
+            Story.MapItemQuest(6907, "void", 6453);
+            Story.KillQuest(6908, "void", "Void Elemental");
+            Story.MapItemQuest(6909, "void", 6454);
+            Story.KillQuest(6910, "void", "Void Bear|Void Elemental|Void Larva");
+            Story.KillQuest(6911, "void", "Void Elemental");
+            Story.KillQuest(6912, "void", "Void Dragon");
+            Story.MapItemQuest(6913, "mysteriousegg", 6455, GetReward: false);
+            Story.ChainQuest(6914);
         }
         Core.BuyItem("mysteriousegg", 1728, "Shadow Dragon Defender");
     }

@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 
 using RBot;
 
@@ -6,6 +7,7 @@ public class SEP
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -21,7 +23,7 @@ public class SEP
         Core.AddDrop("Silver Exalted Paladin");
         if(Core.CheckInventory("Silver Exalted Paladin"))
             return;
-        if (!Bot.Quests.IsUnlocked(7581))
+        if (!Story.QuestProgression(7581))
         {
             Core.EnsureAccept(7580);
             Core.KillMonster("dragonheart", "r3", "Left", "*", "Ancient Paladin Chest 1");
@@ -33,38 +35,15 @@ public class SEP
             Core.KillMonster("dragonheart", "r12", "Left", "Avatar of Desolich", "Ancient Paladin Chest 7");
             Core.EnsureComplete(7580);
         }
-        if(!Bot.Quests.IsUnlocked(7582))
-        {
-            Core.EnsureAccept(7581);
-            Core.KillMonster("ectocave", "r4", "Left", "Ichor Dracolich", "Sticky Paladin Helm");
-            Core.EnsureCompleteChoose(7581);
-        }
-        if(!Bot.Quests.IsUnlocked(7583))
-        {
-            Core.EnsureAccept(7582);
-            Core.KillMonster("frozenruins", "r11a", "Right", "*", "Paladin Helmet Wings");
-            Core.EnsureCompleteChoose(7582);
-        }
-        if(!Bot.Quests.IsUnlocked(7584))
-        {
-            Core.EnsureAccept(7583);
-            Core.HuntMonster("thirdspell", "Great Solar Elemental", "Wings Found");
-            Core.EnsureComplete(7583);
-        }
-        if(!Bot.Quests.IsUnlocked(7585))
-        {
-            Core.EnsureAccept(7584);
-            Core.KillMonster("table", "r6", "Left", "*", "Paladin Polearm Found");
-            Core.EnsureCompleteChoose(7584);
-        }
-        if(!Bot.Quests.IsUnlocked(7586))
-        {
-            Core.EnsureAccept(7585);
-            Core.KillMonster("dracocon", "r16", "Bottom", "Singer", "Paladin Weapon Found");
-            Core.EnsureCompleteChoose(7585);
-        }
-        Core.EnsureAccept(7586);
-        Core.KillMonster("warhorc", "r6", "Left", "*", "Paladin Armor Found");
-        Core.EnsureComplete(7586);
+        Story.KillQuest(7581, "ectocave", "Ichor Dracolich", AutoCompleteQuest: false);
+        Core.EnsureCompleteChoose(7581);
+        Story.KillQuest(7582, "frozenruins", "Frostdeep Dweller", AutoCompleteQuest: false);
+        Core.EnsureCompleteChoose(7582);
+        Story.KillQuest(7583, "thirdspell", "Great Solar Elemental", GetReward: false);
+        Story.KillQuest(7584, "table", "Roach", AutoCompleteQuest: false);
+        Core.EnsureCompleteChoose(7584);
+        Story.KillQuest(7585, "dracocon", "Singer", AutoCompleteQuest: false);
+        Core.EnsureCompleteChoose(7585);
+        Story.KillQuest(7586, "warhorc", "General Drox");
     }
 }

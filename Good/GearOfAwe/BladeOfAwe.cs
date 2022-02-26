@@ -25,7 +25,6 @@ public class BladeOfAwe
         else Core.BuyItem("museum", 631, "Blade of Awe");
         if (Core.CheckInventory("Blade of Awe"))
             return;
-            
         Farm.BladeofAweREP(6, true);
     }
 }

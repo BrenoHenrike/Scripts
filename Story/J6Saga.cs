@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 
 using RBot;
 
@@ -9,6 +10,7 @@ public class J6Saga
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
 
 
     public void ScriptMain(ScriptInterface bot)
@@ -22,36 +24,37 @@ public class J6Saga
 
     public void J6()
     {
+        if(Core.isCompletedBefore(2858))
+            return;
         Core.AddDrop("J6's Secret Hideout Map", "Dwakel Decoder", "Mission 1 Item", "Datadisk 5",
         "Datadisk 4", "Fanciful Feather", "Datadisk 3", "Absorbent Mop", "Hyperium Spaceship Key");
-        if(!Bot.Quests.IsUnlocked(2846))
+        Core.EquipClass(ClassType.Farm);
+        if(!Story.QuestProgression(2846))
         {
-            if (!Bot.Quests.IsUnlocked(2849))
+            if (!Story.QuestProgression(2849))
             {
-                if (!Bot.Quests.IsUnlocked(2834))
+                if (!Story.QuestProgression(2834))
                 {
-                    if (!Bot.Quests.IsUnlocked(2830))
+                    if (!Story.QuestProgression(2830))
                     {
-                        if (!Bot.Quests.IsUnlocked(1178))
+                        if (!Story.QuestProgression(1178))
                         {
-                            if (!Bot.Quests.IsUnlocked(1173))
+                            if (!Story.QuestProgression(1173))
                             {
-                                if (!Bot.Quests.IsUnlocked(1172))
+                                if (!Story.QuestProgression(1172))
                                 {
-                                    if (!Bot.Quests.IsUnlocked(699))
+                                    if (!Story.QuestProgression(699))
                                     {
-                                        if (!Bot.Quests.IsUnlocked(698))
+                                        if (!Story.QuestProgression(698))
                                         {
                                             if (!Core.CheckInventory("J6's Secret Hideout Map"))
                                                 Core.KillMonster("j6", "R4", "Left", "*", "J6's Secret Hideout Map", isTemp: false);
                                             if (!Core.CheckInventory("Dwakel Decoder"))
                                                 Core.GetMapItem(106, map: "crashsite");
-                                            if (!Bot.Quests.IsUnlocked(693))
+                                            if (!Story.QuestProgression(693))
                                             {
                                                 Core.SendPackets("%xt%zm%serverUseItem%327106%+%5041%345,200%saloon%");
-                                                Core.EnsureAccept(674);
-                                                Core.GetMapItem(109, map: "saloon");
-                                                Core.EnsureComplete(674);
+                                                Story.MapItemQuest(674, "saloon", 109);
                                             }
                                             Core.SendPackets("%xt%zm%serverUseItem%327705%+%5041%525,275%hyperium%");
                                             while(!Bot.Player.Cell.Equals("R10"))
@@ -62,29 +65,21 @@ public class J6Saga
                                             Core.GetMapItem(117, map: "zephyrus");
                                             Core.EnsureComplete(694);
                                         }
-                                        Core.EnsureAccept(698);
-                                        Core.KillMonster("forest", "Forest3", "Left", "*", "Mission 1 Item", isTemp: false);
-                                        Core.EnsureComplete(698);
+                                        Story.KillQuest(698, "forest", "Zardman Grunt");
                                     }
-                                    if(!Bot.Quests.IsUnlocked(1171))
-                                    {
-                                        Core.EnsureAccept(699);
-                                        Core.KillMonster("boxes", "Boss", "Left", "*", "Mission 2 Item");
-                                        Core.EnsureComplete(699);
-                                    }
+                                    if(!Story.QuestProgression(1171))
+                                    Story.KillQuest(699, "boxes", "Sneeviltron");
                                     if(!Core.CheckInventory("Datadisk 5"))
                                     Core.KillMonster("frozenfotia", "r5", "Left", "*", "Datadisk 5", isTemp: false);
                                     Core.SendPackets("%xt%zm%serverUseItem%327705%+%5041%525,275%hyperium%");
                                     while(!Bot.Player.Cell.Equals("R10"))
                                     Core.Jump("R10", "Up");
                                     Core.SendPackets($"%xt%zm%cmd%507613%tfer%{Bot.Player.Username}%moonyard%Enter%Spawn%");
-                                    Core.EnsureAccept(1171);
-                                    Core.HuntMonster("moonyard", "Junkyard Wall", "Gate Unlocked");
-                                    Core.EnsureComplete(1171);
+                                    Story.KillQuest(1171, "moonyard", "Junkyard Wall");
                                 }
-                                Core.MapItemQuest(1172, "moonyard", 495, GetReward: false);
+                                Story.MapItemQuest(1172, "moonyard", 495);
                             }
-                            if (!Bot.Quests.IsUnlocked(1177))
+                            if (!Story.QuestProgression(1177))
                             {
                                 if (!Bot.Map.Name.Equals("moonyard"))
                                 {
@@ -95,45 +90,37 @@ public class J6Saga
                                     Core.Jump("MoonCut", "Left");
                                 }
                                 Core.SendPackets($"%xt%zm%cmd%510002%tfer%{Bot.Player.Username}%moonyardb%r24%Right%");
-                                Core.EnsureAccept(1173);
-                                Core.HuntMonster("moonyardb", "Robo Guard", "Drone Head");
-                                Core.EnsureComplete(1173);
+                                Story.KillQuest(1173, "moonyardb", "Robo Guard", GetReward: false);
                             }
-                                Core.EnsureAccept(1177);
-                                Core.KillMonster("marsh2", "End", "Left", "Lesser Shadow Serpent", "Serpent Scales");
-                                Core.EnsureComplete(1177);
+                            Story.KillQuest(1177, "marsh2", "Lesser Shadow Serpent");
                         }
                         if(!Core.CheckInventory("Datadisk 4"))
                         {
-                            Core.EnsureAccept(1178);
-                            Core.KillMonster("marsh2", "Forest3", "Left", "Lesser Groglurk", "Omega Horn");
-                            Core.EnsureComplete(1178);
+                            Story.KillQuest(1178, "marsh2", "Lesser Groglurk");
                             Core.GetMapItem(1258, map: "sewer");
                         }
 
-                        if (!Bot.Quests.IsUnlocked(2169))
+                        if (!Story.QuestProgression(2169))
                         {
-                            Core.EnsureAccept(2168);
                             Core.SendPackets("%xt%zm%serverUseItem%327705%+%5041%525,275%hyperium%");
                             while(!Bot.Player.Cell.Equals("R10"))
                             Core.Jump("R10", "Up");
                             Core.SendPackets($"%xt%zm%cmd%512688%tfer%{Bot.Player.Username}%banzai%Enter%Spawn%");
-                            Core.GetMapItem(1259, map: "banzai");
-                            Core.EnsureComplete(2168);
+                            Story.MapItemQuest(2168, "banzai", 1259);
                         }
-                        if(!Bot.Quests.IsUnlocked(2170))
+                        if(!Story.QuestProgression(2170))
                             Core.ChainComplete(2169);
-                        if(!Bot.Quests.IsUnlocked(2171))
+                        if(!Story.QuestProgression(2171))
                             Core.ChainComplete(2170);
-                        if(!Bot.Quests.IsUnlocked(2173))
+                        if(!Story.QuestProgression(2173))
                             Core.ChainComplete(2171);
-                        Core.KillQuest(2173, "djinn", "Harpy");
+                        Story.KillQuest(2173, "djinn", "Harpy");
                     }
                     if(!Core.CheckInventory("Datadisk 3"))
-                        Core.KillQuest(2830, "xantown", "*");
-                    if(!Bot.Quests.IsUnlocked(2831))
+                        Story.KillQuest(2830, "xantown", "*", GetReward: false);
+                    if(!Story.QuestProgression(2831))
                         Core.GetMapItem(1741, map: "timevoid");
-                    if(!Bot.Quests.IsUnlocked(2832))
+                    if(!Story.QuestProgression(2832))
                     {
                         Core.EnsureAccept(2831);
                         Core.KillMonster("sandsea", "r8", "Left", "*", "Cactus Creeper Oil", 3);
@@ -148,7 +135,7 @@ public class J6Saga
                         Core.KillMonster("farm", "Crop1", "Left", "*", "Scarecrow Canola Oil", 3);
                         Core.EnsureComplete(2831);
                     }
-                    if(!Core.QuestProgression(2832))
+                    if(!Story.QuestProgression(2833))
                     {
                         Core.EnsureAccept(2832);
                         Core.KillMonster("arcangrove", "Right", "Left", "*", "Bag of Peanuts", 4);
@@ -157,7 +144,7 @@ public class J6Saga
                         Core.KillMonster("giant", "r1", "Left", "*", "Bag of Pretzels", 4);
                         Core.EnsureComplete(2832);
                     }
-                    if (!Core.QuestProgression(2833))
+                    if (!Story.QuestProgression(2834))
                     {
                         Core.EnsureAccept(2833);
                         Core.KillMonster("bamboo", "r3", "Left", "Tanuki", "Umeboshi Plum", 4);
@@ -167,33 +154,33 @@ public class J6Saga
                         Core.EnsureComplete(2833);
                     }
                 }
-                if(!Core.QuestProgression(2834))
+                if(!Story.QuestProgression(2837))
                 {
                     Farm.ChronoSpanREP(2);
-                    Core.BuyQuest(2834, "thespan", 439, "Comfy Pillow");
+                    Story.BuyQuest(2834, "thespan", 439, "Comfy Pillow");
                 }
                 Core.Join("hyperspace");
-                Core.MapItemQuest(2837, "hyperspace", 1742);
-                Core.MapItemQuest(2838, "hyperspace", 1743);
-                Core.MapItemQuest(2839, "hyperspace", 1744);
-                Core.ChainQuest(2856);
-                Core.MapItemQuest(2840, "hyperspace", 1745);
+                Story.MapItemQuest(2837, "hyperspace", 1742);
+                Story.MapItemQuest(2838, "hyperspace", 1743);
+                Story.MapItemQuest(2839, "hyperspace", 1744);
+                Story.ChainQuest(2856);
+                Story.MapItemQuest(2840, "hyperspace", 1745);
                 if(!Bot.Map.Name.Equals("hyperspace"))
                     Core.Join("hyperspace");
                 Core.Jump("R10", "Up");
                 Core.SendPackets($"%xt%zm%cmd%136830%tfer%{Bot.Player.Username}%Alley%Enter%Spawn%");
-                Core.KillQuest(2841, "alley", "Trash Can");
-                Core.KillQuest(2842, "alley", "Thug Bully");
-                Core.KillQuest(2843, "alley", "Thug Bully");
+                Story.KillQuest(2841, "alley", "Trash Can");
+                Story.KillQuest(2842, "alley", "Thug Bully");
+                Story.KillQuest(2843, "alley", "Thug Bully");
             }
-            Core.KillQuest(2849, "alley", "Thug Boss");
-            Core.KillQuest(2844, "alley", new[] {"Guard Robot", "Security Cam"});
-            Core.KillQuest(2845, "alley", "Guard Dog Robot");
+            Story.KillQuest(2849, "alley", "Thug Boss");
+            Story.KillQuest(2844, "alley", new[] {"Guard Robot", "Security Cam"});
+            Story.KillQuest(2845, "alley", "Guard Dog Robot");
         }
-        Core.KillQuest(2846, "alley", "Guard Dog Robot|Security Cam|Guard Robot");
-        Core.MapItemQuest(2850, "hyperspace", 1747);
-        Core.KillQuest(2851, "alley", "Thug Minion");
-        Core.MapItemQuest(2852, "hyperspace", 1749);
-        Core.ChainQuest(2858);
+        Story.KillQuest(2846, "alley", "Guard Dog Robot|Security Cam|Guard Robot");
+        Story.MapItemQuest(2850, "hyperspace", 1747);
+        Story.KillQuest(2851, "alley", "Thug Minion");
+        Story.MapItemQuest(2852, "hyperspace", 1749);
+        Story.ChainQuest(2858);
     }   
 }
