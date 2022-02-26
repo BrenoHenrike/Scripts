@@ -69,7 +69,7 @@ public class CoreAwe
         if(Core.CheckInventory("Armor of Zular"))
             return;
         Core.EquipClass(ClassType.Farm);
-        if(!Story.QuestProgression(6154))
+        if(!Story.QuestProgression(6153))
         {
             Core.EnsureAccept(6153);
             Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
@@ -79,7 +79,7 @@ public class CoreAwe
             Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
             Core.EnsureComplete(6153);
         }
-        if(!Story.QuestProgression(6155))
+        if(!Story.QuestProgression(6154))
         {
             Core.EnsureAccept(6154);
             Core.KillMonster("arcangrove", "Left", "Left", "*", "Fragment 6");
@@ -89,7 +89,7 @@ public class CoreAwe
             Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
             Core.EnsureComplete(6154);
         }
-        if(!Story.QuestProgression(6156))
+        if(!Story.QuestProgression(6155))
         {
             Core.EnsureAccept(6155);
             Core.KillMonster("mythsong", "Hill", "Left", "*", "Fragment 11");
@@ -99,7 +99,7 @@ public class CoreAwe
             Core.KillMonster("beehive", "r5", "Left", "*", "Fragment 14");
             Core.EnsureComplete(6155);
         }
-        if(!Story.QuestProgression(6157))
+        if(!Story.QuestProgression(6156))
         {
             Core.EnsureAccept(6156);
             Core.KillMonster("forestchaos", "Boss", "Left", "*", "Fragment 16");
@@ -109,7 +109,7 @@ public class CoreAwe
             Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
             Core.EnsureComplete(6156);
         }
-        if(!Story.QuestProgression(6158))
+        if(!Story.QuestProgression(6157))
         {
             Core.EnsureAccept(6157);
             Core.KillMonster("pirates", "End", "Left", "Shark Bait", "Fragment 21");
@@ -119,7 +119,7 @@ public class CoreAwe
             Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
             Core.EnsureComplete(6157);
         }
-        if(!Story.QuestProgression(6159))
+        if(!Story.QuestProgression(6158))
         {
             Core.EnsureAccept(6158);
             Core.EquipClass(ClassType.Solo);
@@ -171,14 +171,14 @@ public class CoreAwe
         if (Core.CheckInventory("Floozer"))
             return;
         Story.KillQuest(7277, "wanders", "Kalestri Worshiper", GetReward: false);
-        if (!Story.QuestProgression(7280))
+        if (!Story.QuestProgression(7278))
         {
             Core.EnsureAccept(7278);
             if (!Core.CheckInventory("Ice Diamond"))
                 Story.KillQuest(7279, "kingcoal", "Snow Golem");
             Core.EnsureComplete(7278);
         }
-        if (!Story.QuestProgression(7282))
+        if (!Story.QuestProgression(7280))
         {
             Core.EnsureAccept(7280);
             if (!Core.CheckInventory("Dark Bloodstone"))
@@ -188,21 +188,21 @@ public class CoreAwe
         Story.KillQuest(7282, "brightfall", "Painadin Overlord", GetReward: false);
         Story.KillQuest(7283, "timevoid", "Unending Avatar", GetReward: false);
         Story.MapItemQuest(7284, "downward", 6908, GetReward: false);
-        if (!Story.QuestProgression(7286))
+        if (!Story.QuestProgression(7285))
         {
             Core.EnsureAccept(7285);
             if (!Core.CheckInventory("Songstone"))
                 Story.MapItemQuest(7297, "mythsong", 6909, 15);
             Core.EnsureComplete(7285);
         }
-        if (!Story.QuestProgression(7288))
+        if (!Story.QuestProgression(7286))
         {
             Core.EnsureAccept(7286);
             if (!Core.CheckInventory("Butterfly Sapphire"))
                 Story.KillQuest(7287, "bloodtusk", "Trollola Plant");
             Core.EnsureComplete(7286);
         }
-        if (!Story.QuestProgression(7290))
+        if (!Story.QuestProgression(7288))
         {
             Core.EnsureAccept(7288);
             if (!Core.CheckInventory("Understone"))
@@ -217,5 +217,4 @@ public class CoreAwe
             Story.KillQuest(7291, "earthstorm", new[] { "Diamond Golem", "Emerald Golem", "Ruby Golem", "Sapphire Golem" });
         Core.EnsureComplete(7290);
     }
-
 }

@@ -59,7 +59,7 @@ public class Awescended
         "Shadow Dragon Defender", "Silver Exalted Paladin", "Valoth's Cannon of Doom", "Bin Jett's Salvaged Armor Part");
         Farm.Experience(25);
         Core.EquipClass(ClassType.Farm);
-        if (!Story.QuestProgression(8036))
+        if (!Story.QuestProgression(8035))
         {
             Core.EnsureAccept(8035);
             Core.KillMonster("uppercity", "r3", "Left", "Chaos Egg", "Fossilized Egg Yolk", 12);
@@ -68,7 +68,7 @@ public class Awescended
             Core.KillMonster("ravinetemple", "r11", "Left", "*", "Iron Head", 4);
             Core.EnsureComplete(8035);
         }
-        if(!Story.QuestProgression(8037))
+        if(!Story.QuestProgression(8036))
         {
             Core.EnsureAccept(8036);
             Core.KillMonster("deathsrealm", "Frame3", "Down", "Undead Mage", "Enchanted Manuscript", 8);
@@ -77,7 +77,7 @@ public class Awescended
             Core.KillMonster("gilead", "r4", "Left", "*", "Spell Stone", 10);
             Core.EnsureComplete(8036);
         }
-        if(!Story.QuestProgression(8038))
+        if(!Story.QuestProgression(8037))
         {
             Core.EnsureAccept(8037);
             Core.KillMonster("thunderfang", "r2", "Left", "Energy Elemental", "Supercharged Gem", 8);
@@ -86,7 +86,7 @@ public class Awescended
             Core.KillMonster("mqlesson", "Boss", "Left", "Dragonoid", "Dragonoid Core");
             Core.EnsureComplete(8037);
         }
-        if(!Story.QuestProgression(8039))
+        if(!Story.QuestProgression(8038))
         {
             Core.EnsureAccept(8038);
             Core.KillMonster("yokaiwar", "Boss", "Left", "O-Dokuro's Head", "O-Dokuro's Tooth", isTemp: false);
@@ -97,7 +97,7 @@ public class Awescended
         }
             Story.KillQuest(8039, "crashsite", new[] { "Barrier Bot", "Dwakel Warrior", "Mithril Man", "ProtoSartorium" });
         Farm.Experience(50);
-        if(!Story.QuestProgression(8041))
+        if(!Story.QuestProgression(8040))
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8040);
@@ -110,7 +110,7 @@ public class Awescended
             Core.EnsureComplete(8040);
         }
         Farm.Experience(75);
-        if(!Story.QuestProgression(8042))
+        if(!Story.QuestProgression(8041))
         {
             Core.EnsureAccept(8041);
             if (!Core.CheckInventory("Vaden's Helm"))

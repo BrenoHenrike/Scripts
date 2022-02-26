@@ -23,7 +23,7 @@ public class SEP
         Core.AddDrop("Silver Exalted Paladin");
         if(Core.CheckInventory("Silver Exalted Paladin"))
             return;
-        if (!Story.QuestProgression(7581))
+        if (!Story.QuestProgression(7580))
         {
             Core.EnsureAccept(7580);
             Core.KillMonster("dragonheart", "r3", "Left", "*", "Ancient Paladin Chest 1");
