@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
@@ -10,6 +11,7 @@ public class DrakathArmorBot
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Daily = new CoreDailys();
     public CoreBLOD BLOD = new CoreBLOD();
@@ -77,6 +79,7 @@ public class DrakathArmorBot
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("swordhavenundead", "Left", "Right", "*", "Treasure Chest", 100, false);
         Core.EquipClass(ClassType.Solo);
+        Story.UpdateQuest(3879);
         Core.KillMonster("ultradrakath", "r1", "Left", "Champion of Chaos", "Face of Chaos", 1, false, publicRoom: true);
         Core.EnsureComplete(3882);
     }
