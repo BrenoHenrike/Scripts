@@ -83,7 +83,7 @@ public class DragonOfTime
             Core.HuntMonster("blindingsnow", "Nythera", "Nythera's Patience", isTemp: false);
 
             Core.AddDrop("Key of Greed");
-            Adv.BoostHuntMonster("greed", "Goregold", "Goregold's Luck", isTemp: false, publicRoom: true);
+            Core.HuntMonster("greed", "Goregold", "Goregold's Luck", isTemp: false, publicRoom: true);
 
             Core.HuntMonster("darkplane", "Victorious", "Victorious's Dignity", isTemp: false);
 
@@ -128,7 +128,7 @@ public class DragonOfTime
             Core.EnsureAccept(7719);
 
             Core.EquipClass(ClassType.Solo);
-            Adv.BoostHuntMonster("cathedral", "Incarnation of Time", "Time Loop Broken", isTemp: false, publicRoom: true);
+            Core.HuntMonster("cathedral", "Incarnation of Time", "Time Loop Broken", isTemp: false, publicRoom: true);
 
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("portalwar", "r4", "Right", "*", "Anomaly Silenced", 100, false);
@@ -154,7 +154,7 @@ public class DragonOfTime
 
             Core.HuntMonster("bosschallenge", "Grievous Inbunche", "Brutal Slash Studied", 10, isTemp: false, publicRoom: true);
 
-            Adv.BoostHuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
+            Core.HuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
 
             Story.ChainQuest(7720);
             Bot.Wait.ForPickup("*");
@@ -168,7 +168,7 @@ public class DragonOfTime
             Core.EnsureAccept(7721);
 
             Core.EquipClass(ClassType.Solo);
-            Adv.BoostHuntMonster("ivoliss", "Ivoliss", "Sword of Voids", isTemp: false);
+            Core.HuntMonster("ivoliss", "Ivoliss", "Sword of Voids", isTemp: false);
 
             Darkon.FarmReceipt(100);
 
@@ -213,21 +213,21 @@ public class DragonOfTime
             Core.HuntMonster("moonlab", "Slime Mold", "Unyielding Slime", 300, false);
 
             Core.EquipClass(ClassType.Solo);
-            //Adv.BoostHuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
-            Core.HuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: false);
+            //Adv.BoostHuntModnster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
+            Core.HuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
 
-            //Adv.BoostHuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
-            Core.HuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: false);
+            //Adv.BoostHduntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
+            Core.HuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
 
-           // Adv.BoostHuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
-            Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: false);
+           // Adv.BoostHuntdMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
+            Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
 
             Story.UpdateQuest(9, 159);
-           // Adv.BoostHuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
-            Core.HuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: false);
+           // Adv.BoostHudntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
+            Core.HuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
 
-           // Adv.BoostHuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
-            Core.HuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: false);
+           // Adv.BoostHduntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
+            Core.HuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
 
             Story.ChainQuest(7722);
             Bot.Wait.ForPickup("*");
@@ -244,11 +244,11 @@ public class DragonOfTime
             Core.KillMonster("volcano", "r10", "Left", "Fire Imp", "Fire Essence", 3000, false);
 
             Core.EquipClass(ClassType.Solo);
-            Adv.BoostHuntMonster("charredplains", "Akriloth", "Akriloth's Flametongue", 100, false, publicRoom: true);
+            Core.HuntMonster("charredplains", "Akriloth", "Akriloth's Flametongue", 100, false, publicRoom: true);
 
-            Adv.BoostHuntMonster("ultraphedra", "Ultra Phedra", "Immortal Embers", 50, false, publicRoom: true);
+            Core.HuntMonster("ultraphedra", "Ultra Phedra", "Immortal Embers", 50, false, publicRoom: true);
 
-            Adv.BoostHuntMonster("thevoid", "Reaper", "Ashes from the Void Realm", 50, false, publicRoom: true);
+            Core.HuntMonster("thevoid", "Reaper", "Ashes from the Void Realm", 50, false, publicRoom: true);
 
             Story.ChainQuest(7723);
             Bot.Wait.ForPickup("*");
@@ -270,9 +270,9 @@ public class DragonOfTime
             Core.KillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false, publicRoom: true);
 
             Story.UpdateQuest(10, 159);
-            Adv.BoostHuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
 
-            Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
+            Core.HuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
 
             Story.ChainQuest(7724);
             Bot.Wait.ForPickup("Dragon of Time");
