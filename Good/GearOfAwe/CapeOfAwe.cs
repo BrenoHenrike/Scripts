@@ -3,6 +3,8 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
+//cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/Story/J6Saga.cs
 using RBot;
 
 public class CapeOfAwe
@@ -34,56 +36,35 @@ public class CapeOfAwe
     public void LegendaryAwe()
     {
         Core.AddDrop("Legendary Awe Pass", "Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
-        
         Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-
         Core.EquipClass(ClassType.Solo);
-
         Awe.AweKill(4178, "cape");
-
         Core.BuyItem("museum", 1129, "Cape Relic");
-
         Core.BuyItem("museum", 1129, "Cape of Awe");
-
         Core.ToBank("Legendary Awe Pass");
     }
     
     public void GuardianAwe()
     {
         Core.AddDrop("Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
-        
         Farm.BladeofAweREP(5, false);
-
         Farm.Experience(35);
-
         Core.EquipClass(ClassType.Solo);
-
         Awe.AweKill(4179, "cape");
-
         Core.BuyItem("museum", 1129, "Cape Relic");
-
         Core.BuyItem("museum", 1129, "Cape of Awe");
-
         Core.ToBank("Guardian Awe Pass");
     }
     public void FreeAwe()
     {
         Core.AddDrop("Armor of Awe Pass", "Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
-
         Farm.BladeofAweREP(10, false);
-
         Farm.Experience(55);
-
         Core.BuyItem("museum", 1130, "Armor of Awe Pass");
-
         Core.EquipClass(ClassType.Solo);
-
         Awe.AweKill(4180, "cape");
-
         Core.BuyItem("museum", 1129, "Cape Relic");
-
         Core.BuyItem("museum", 1129, "Cape of Awe");
-
         Core.ToBank("Armor of Awe Pass");
     }
 }

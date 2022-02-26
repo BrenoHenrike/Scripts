@@ -79,12 +79,10 @@ public class FandH
         if (!Core.CheckInventory("Fortitude"))
         {
             Core.EnsureAccept(6605);
-            Core.EnsureAccept(4616);
             Core.HuntMonster("iceplane", "Enfield", "Fortitude's Handle");
-            Story.UpdateQuest(4614);
+            Story.UpdateQuest(4616);
             Core.HuntMonster("mummies", "Mummy", "Fortitude's Blade Shards", 100, isTemp: false);
             Core.HuntMonster("banished", "Desterrat Moya", "Fortitude's Magic Essence", 50, isTemp: false);
-            Core.EnsureComplete(4616);
             Core.EnsureComplete(6605);
             Bot.Wait.ForPickup("Fortitude");
         }
@@ -92,10 +90,7 @@ public class FandH
         // Dual Wielding
         if (!Core.CheckInventory("Fortitude + Hubris"))
         {
-            Core.EnsureAccept(6606);
-            Core.HuntMonster("skytower", "Aspect of Good", "Aspect of Good");
-            Core.HuntMonster("skytower", "Aspect of Evil", "Aspect of Evil");
-            Core.EnsureComplete(6606);
+            Story.KillQuest(6606, "skytower", new[] { "Aspect of Good", "Aspect fo Evil" });
             Bot.Wait.ForPickup("Fortitude + Hubris");
         }
     }

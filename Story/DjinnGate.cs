@@ -87,12 +87,10 @@ public class DjinnGateStory
             Core.EnsureComplete(6158);
         }
         Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
-        if (!Bot.Quests.IsUnlocked(6161))
+        if (!Story.QuestProgression(6161))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.EnsureAccept(6160);
-            Core.KillMonster("djinngate", "r2", "Left", "*", "Djinn's Essence", 100, false);
-            Core.EnsureComplete(6160);
+            Story.KillQuest(6160, "djinngate", "Harpy|Lamia");
         }
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(6161, "djinngate", "Gedoz the Malignant");
