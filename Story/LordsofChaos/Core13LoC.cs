@@ -1,4 +1,3 @@
-using System.Globalization;
 using RBot;
 
 public class Core13LoC
