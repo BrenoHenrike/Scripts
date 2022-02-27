@@ -1896,6 +1896,16 @@ public class Core13LoC
             Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
             Core.EnsureComplete(3877);
         }
+        
+        //Defeat Drakath! + Defeat Drakath... again!
+        // if (!Story.QuestProgression(3876) | !Story.QuestProgression(3876))
+        // {
+        //     Core.EnsureAccept(3876);
+        //     Core.EnsureAccept(3877);
+        //     Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
+        //     Core.EnsureComplete(3876);
+        //     Core.EnsureComplete(3877);
+        // }
 
         //Defeat Drakath!
         if (!Story.QuestProgression(3878))
