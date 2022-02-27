@@ -459,7 +459,7 @@ public class Core13LoC
         Story.KillQuest(311, "greenguardeast", "Spider");
 
         /// Lil' Red + Can I axe you something?
-        if (!Story.QuestProgression(514) | !Story.QuestProgression(515))
+        if (!Story.QuestProgression(514) || !Story.QuestProgression(515))
         {
             Core.AddDrop("Red's Big Wolf Slaying Axe");
             Core.EnsureAccept(514);
@@ -1898,7 +1898,7 @@ public class Core13LoC
         }
         
         //Defeat Drakath! + Defeat Drakath... again!
-        // if (!Story.QuestProgression(3876) | !Story.QuestProgression(3876))
+        // if (!Story.QuestProgression(3876) || !Story.QuestProgression(3876))
         // {
         //     Core.EnsureAccept(3876);
         //     Core.EnsureAccept(3877);
