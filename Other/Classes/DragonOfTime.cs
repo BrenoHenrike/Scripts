@@ -213,21 +213,16 @@ public class DragonOfTime
             Core.HuntMonster("moonlab", "Slime Mold", "Unyielding Slime", 300, false);
 
             Core.EquipClass(ClassType.Solo);
-            //Adv.BoostHuntModnster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
-            Core.HuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("bosschallenge", "Mutated Void Dragon", "Omnipotent Cells", 20, false, publicRoom: true);
 
-            //Adv.BoostHduntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
-            Core.HuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("underlair", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false, publicRoom: true);
 
-           // Adv.BoostHuntdMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
-            Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
 
             Story.UpdateQuest(9, 159);
-           // Adv.BoostHudntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
-            Core.HuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
 
-           // Adv.BoostHduntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
-            Core.HuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
+            Adv.BoostHuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
 
             Story.ChainQuest(7722);
             Bot.Wait.ForPickup("*");
