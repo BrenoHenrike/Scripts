@@ -23,7 +23,7 @@ public class Bamboozle
 
     public void BamboozleQuest()
     {
-        if(Story.isCompletedBefore(7292))
+        if(Core.isCompletedBefore(7292))
             return;
         Core.AddDrop("Floozer", "Ice Diamond", "Dark Bloodstone", "Songstone", "Butterfly Sapphire",
          "Understone", "Rainbow Moonstone");
