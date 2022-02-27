@@ -1,3 +1,4 @@
+using System.Globalization;
 using RBot;
 
 public class Core13LoC
@@ -5,6 +6,7 @@ public class Core13LoC
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void Complete13LOC(bool withExtras = false)
     {
@@ -804,7 +806,7 @@ public class Core13LoC
             Bot.Player.KillForItem("*", "Sek-Duat Defeated", 1, true);
             Core.EnsureComplete(978);
         }
-        
+
         //Sandsational Castle
         Story.MapItemQuest(995, "sandcastle", 361);
         //Furry Fury
@@ -999,7 +1001,13 @@ public class Core13LoC
         }
 
         //Choose: Khasaanda Confrontation?
-        Story.KillQuest(1473, "dreamnexus", "Khasaanda");
+        if (!Story.QuestProgression(1473))
+        {
+            Core.EnsureAccept(1473);
+            Adv.KillUltra("dreamnexus", "r17a", "Right", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
+            Core.EnsureComplete(1473);
+        }
+
     }
 
     public void KhasaandaTroll()
