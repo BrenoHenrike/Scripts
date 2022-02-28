@@ -538,11 +538,14 @@ public class CoreBots
 
     public Quest EnsureLoad(int questID)
     {
-        if (Bot.Quests.QuestTree.Any(x => x.ID == questID))
-            return Bot.Quests.QuestTree.Find(x => x.ID == questID);
-        JumpWait();
-        Bot.Sleep(ActionDelay);
-        return Bot.Quests.EnsureLoad(questID);
+        return Bot.Quests.QuestTree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
+
+        Quest _EnsureLoad(int questID)
+        {
+            JumpWait();
+            Bot.Sleep(ActionDelay);
+            return Bot.Quests.EnsureLoad(questID);
+        }
     }
 
     /// <summary>
