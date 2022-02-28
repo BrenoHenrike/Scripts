@@ -4,8 +4,6 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
-//cs_include Scripts/Story/NecroDungeon.cs
-
 using RBot;
 
 public class LegionExercise3
@@ -13,29 +11,29 @@ public class LegionExercise3
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
     public JoinLegion JoinLegion = new JoinLegion();
     public CoreStory Story = new CoreStory();
 
-    string[] Rewards = { "Judgement Hammer", "Legion Token" };
+    private string[] Rewards = { "Judgement Hammer", "Legion Token" };
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Core.AcceptandCompleteTries = 5;
-        if (!Core.CheckInventory("Undead Champion"))
-            JoinLegion.JoinLegionQuests();
-
         Exercise(Rewards);
-        Core.ToBank(Rewards);
 
         Core.SetOptions(false);
     }
 
-    public void Exercise(string[] item = null)
+    public void Exercise(string[] item)
     {
+        if (Core.CheckInventory(item))
+            return;
+        Core.AddDrop(item);
+
+        JoinLegion.JoinLegionQuests();
+
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
 
         Random rnd = new Random();
@@ -43,25 +41,10 @@ public class LegionExercise3
 
         //-------------------------------------------------------------------------------------------------------
 
-        if (item != null)
-        {
-            if (Core.CheckInventory(item)) { return; }
-            Core.AddDrop(item);
-        }
-
-        if (item == null)
-        {
-            if (Core.CheckInventory(Rewards)) { return; }
-            Core.AddDrop(Rewards);
-        }
-
         int i = 1;
-
         var displayPercentage = $"{(decimal)Dice / 100:P}";
 
-
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
-
 
         while (!Core.CheckInventory(new[] { "Undead Champion Blade", "Legendary Golden Death Blade" }))
         {
@@ -83,5 +66,7 @@ public class LegionExercise3
             Core.Logger($"Perdiction: {Dice} was Higher Congratulations");
 
         Core.Logger($"Perdiction: {Dice} was lower sorry it took so long");
+
+        Core.ToBank(Rewards);
     }
 }
