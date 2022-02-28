@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 using RBot;
 public class InfiniteLegionDC
@@ -26,8 +27,8 @@ public class InfiniteLegionDC
 
         Legion.FarmLegionToken(2000);
         Core.BuyItem("underworld", 238, "Infinite Legion Dark Caster");
-        //if (rankUpClass)
-        //    Adv.rankUpClass("Infinite Legion Dark Caster");
-        //Needs auto enhance
+
+        if (rankUpClass)
+            Adv.rankUpClass("Infinite Legion Dark Caster");
     }
 }

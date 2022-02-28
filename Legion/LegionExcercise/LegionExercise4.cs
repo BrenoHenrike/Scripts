@@ -1,9 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
 using RBot;
 
 public class LegionExercise4
@@ -12,7 +12,6 @@ public class LegionExercise4
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
-    public JoinLegion JoinLegion = new JoinLegion();
     public CoreStory Story = new CoreStory();
 
     private string[] Rewards = { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced", "Legion Token" };
@@ -32,7 +31,8 @@ public class LegionExercise4
             return;
         Core.AddDrop(item);
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
+        Core.BuyItem("underworld", 216, "Undead Warrior");
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
 

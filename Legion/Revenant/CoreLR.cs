@@ -9,7 +9,6 @@ public class CoreLR
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
-    public JoinLegion JoinLegion = new JoinLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
 
     public void GetLR(bool rankUpClass)
@@ -17,7 +16,7 @@ public class CoreLR
         if (Core.CheckInventory("Legion Revenant"))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.legionMedals);
@@ -42,7 +41,7 @@ public class CoreLR
         if (Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         bool hasDarkCaster = false;
         if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
@@ -109,7 +108,7 @@ public class CoreLR
         if (Core.CheckInventory("Conquest Wreath", quant))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);
@@ -146,7 +145,7 @@ public class CoreLR
         if (Core.CheckInventory("Exalted Crown", quant))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);

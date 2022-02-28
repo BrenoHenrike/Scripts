@@ -4,7 +4,6 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
-//cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 using RBot;
 
