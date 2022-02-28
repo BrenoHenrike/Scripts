@@ -310,7 +310,7 @@ public class CoreNulgath
         {
             Core.EnsureAccept(4748);
             Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false);
-            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 27, false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 25, false);
             Core.EnsureComplete(4748);
             Bot.Player.Pickup("Emblem of Nulgath");
             Core.Logger($"Completed x{i++}");
