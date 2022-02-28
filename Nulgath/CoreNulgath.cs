@@ -114,7 +114,7 @@ public class CoreNulgath
                     Bot.Player.Pickup("Strand of Vath's Hair");
             }
             Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
-            Core.KillEscherion("Escherion's Chain", publicRoom : true);
+            Core.KillEscherion("Escherion's Chain", publicRoom: true);
             if (!Core.CheckInventory("Defeated Makai", 50))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -123,7 +123,7 @@ public class CoreNulgath
                 Core.JumpWait();
             }
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom : true);
+            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom: true);
             Core.EnsureComplete(570);
             Bot.Wait.ForPickup("Dark Crystal Shard");
             Core.Logger($"Completed x{i++}");
@@ -273,7 +273,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Tainted Gem", quant))
             return;
-        
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Tainted Gems");
         int i = 1;
@@ -462,7 +462,7 @@ public class CoreNulgath
             while (!Bot.Inventory.Contains(item, quant))
             {
                 Core.EnsureAccept(2857);
-                Core.KillEscherion("Relic of Chaos", publicRoom : true);
+                Core.KillEscherion("Relic of Chaos", publicRoom: true);
                 Core.EnsureComplete(2857);
                 Bot.Player.Pickup(item);
                 if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
@@ -541,58 +541,69 @@ public class CoreNulgath
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
+
         Core.AddDrop("Relic of Chaos", "Tainted Core");
+
         if (item != "Any")
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
+
         bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
+
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             Core.AddDrop("Tainted Soul");
+
         int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
-        while (!Bot.Inventory.Contains(item, quant))
+
+        while (!Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(2857, 609);
             if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
                 Core.EnsureAccept(599);
             else if (OBoNPet)
                 Core.EnsureAccept(2561);
+
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
+
             while (Core.CheckInventory("Tainted Core"))
             {
                 Core.ChainComplete(609);
                 Core.Logger($"Completed x{i++}");
             }
+
             while (Core.CheckInventory("Relic of Chaos", 1))
             {
                 Core.ChainComplete(2857);
                 Core.Logger($"Completed x{i++}");
             }
-        }
-        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-        {
-            while (Core.CheckInventory("Tainted Soul"))
+
+            if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             {
-                if (OBoNPet)
+                while (Core.CheckInventory("Tainted Soul"))
                 {
-                    Core.ChainComplete(2561);
-                    Core.Logger($"Completed x{i++}");
-                }
-                else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                {
-                    Core.ChainComplete(599);
-                    Core.Logger($"Completed x{i++}");
-                }
-                else if (Core.CheckInventory("Relic of Chaos", 1))
-                {
-                    Core.ChainComplete(2857);
-                    Core.Logger($"Completed x{i++}");
+                    if (OBoNPet)
+                    {
+                        Core.ChainComplete(2561);
+                        Core.Logger($"Completed x{i++}");
+                    }
+                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+                    {
+                        Core.ChainComplete(599);
+                        Core.Logger($"Completed x{i++}");
+                    }
+                    else if (Core.CheckInventory("Relic of Chaos", 1))
+                    {
+                        Core.ChainComplete(2857);
+                        Core.Logger($"Completed x{i++}");
+                    }
                 }
             }
         }
+
         Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
         if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
             Core.SellItem("Voucher of Nulgath");
@@ -647,7 +658,7 @@ public class CoreNulgath
         Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
-            Core.KillEscherion("Emerald Pickaxe", publicRoom : true);
+            Core.KillEscherion("Emerald Pickaxe", publicRoom: true);
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
             Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
@@ -656,7 +667,7 @@ public class CoreNulgath
         while (!Core.CheckInventory("Unidentified 10", quant))
         {
             Core.EnsureAccept(7818);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom : true);
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom: true);
             Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
             Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);
             Core.EnsureComplete(7818);
