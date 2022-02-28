@@ -5,6 +5,7 @@ public class Core13LoC
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void Complete13LOC(bool withExtras = false)
     {
@@ -427,6 +428,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(598))
             return;
 
+        Core.AddDrop("Red's Big Wolf Slaying Axe");
+
         //Grave Mission
         Story.MapItemQuest(494, "darkoviagrave", 97);
 
@@ -442,32 +445,46 @@ public class Core13LoC
         //His Bark is worse than his Blight
         Story.KillQuest(498, "darkoviagrave", "Blightfang");
 
-        //Can I axe you something?
-        if (!Story.QuestProgression(516))
+        // Vicious Wolves
+        Story.KillQuest(308, "greenguardeast", "Wolf");
+
+        // Slimes to the West, Slimes Everywhere
+        Story.KillQuest(309, "greenguardwest", "Slime");
+
+        // Scaly Menace
+        Story.KillQuest(310, "greenguardwest", "Frogzard");
+
+        // Overgrown Spiders    
+        Story.KillQuest(311, "greenguardeast", "Spider");
+
+        /// Lil' Red + Can I axe you something?
+        if (!Story.QuestProgression(514) || !Story.QuestProgression(515))
         {
-            if (!Core.CheckInventory("Red's Big Wolf Slaying Axe"))
-            {
-                Core.AddDrop("Red's Big Wolf Slaying Axe");
-                Core.EnsureAccept(515);
-                Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
-                Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
-                Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
-                Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
-                Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
-                Core.EnsureComplete(515);
-                Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
-
-                //Lil' Red
-                if (!Story.QuestProgression(514, GetReward: false))
-                    Core.EnsureComplete(514);
-
-                //A Dire Situation
-                Story.KillQuest(516, "darkoviaforest", "Dire Wolf");
-            }
+            Core.AddDrop("Red's Big Wolf Slaying Axe");
+            Core.EnsureAccept(514);
+            Core.EnsureAccept(515);
+            Core.HuntMonster("greenguardeast", "Spider", "Spider Documentation");
+            Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
+            Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
+            Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
+            Core.EnsureComplete(515);
+            Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
+            Core.EnsureComplete(514);
         }
 
+        // A Dire Situation
+        Story.KillQuest(516, "darkoviaforest", "Dire Wolf");
+
         //Blood, Sweat, and Tears
-        Story.KillQuest(517, "darkoviaforest", new[] { "Blood Maggot", "Blood Maggot", "Blood Maggot" });
+        if (!Story.QuestProgression(517))
+        {
+            Core.EnsureAccept(517);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Blood", 2);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Sweat", 2);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Tears");
+            Core.EnsureComplete(517);
+        }
 
         //What a Lich!
         Story.KillQuest(518, "darkoviaforest", "Lich of the Stone");
@@ -592,9 +609,19 @@ public class Core13LoC
         //Mythsong War Cutscene
         Story.ChainQuest(707);
         //Pony Gary Yellow
-        Story.KillQuest(709, "palooza", "Pony Gary Yellow", AutoCompleteQuest: false);
+        if (!Story.QuestProgression(709))
+        {
+            Core.EnsureAccept(709);
+            Core.HuntMonster("palooza", "Pony Gary Yellow", "Pony Gary Yellow Defeated");
+            Core.EnsureComplete(709);
+        }
         //Kimberly
-        Story.KillQuest(710, "palooza", "Kimberly", AutoCompleteQuest: false);
+        if (!Story.QuestProgression(710))
+        {
+            Core.EnsureAccept(710);
+            Core.HuntMonster("palooza", "Kimberly", "Kimberly Defeated");
+            Core.EnsureComplete(710);
+        }
     }
 
     public void Ledgermayne()
@@ -689,7 +716,7 @@ public class Core13LoC
         Story.KillQuest(836, "gilead", "Mana Elemental");
         //Find Felsic the Magma Golem
         Story.MapItemQuest(838, "mafic", 147);
-        //Liquid Hot Magma Maggots
+        //Liquid Hot Magma Blood Maggots
         Story.KillQuest(839, "mafic", "Volcanic Maggot");
         //Scorched Serpents
         Story.KillQuest(840, "mafic", "Scoria Serpent");
@@ -772,12 +799,13 @@ public class Core13LoC
         if (!Story.QuestProgression(978))
         {
             Core.EnsureAccept(978);
-            Core.Join("wanders", "Boss", "Left");
-            Bot.Sleep(1500);
-            Bot.Player.UseSkill(1);
-            Core.KillMonster("wanders", "Boss", "Left", "Sek-Duat", "Sek-Duat Defeated"); //dudes a bitch ._.
+            Core.Join("wanders", "r25", "Left");
+            Bot.Player.ApproachTarget();
+            Bot.Player.UseSkill(0);
+            Bot.Player.KillForItem("*", "Sek-Duat Defeated", 1, true);
             Core.EnsureComplete(978);
         }
+
         //Sandsational Castle
         Story.MapItemQuest(995, "sandcastle", 361);
         //Furry Fury
@@ -815,7 +843,8 @@ public class Core13LoC
             Core.HuntMonster("bloodtusk", "Trollola Plant", "Perfumed Trollola Flower", 10);
             Story.MapItemQuest(1232, "bloodtusk", 523);
         }
-        //It Not Time Yet
+
+        // It Not Time Yet
         if (!Story.QuestProgression(1233))
         {
             Core.EnsureAccept(1233);
@@ -823,6 +852,7 @@ public class Core13LoC
             Core.HuntMonster("crossroads", "Koalion", "Golden Down-fur", 5);
             Core.EnsureComplete(1233);
         }
+
         //Mountain Protection
         if (!Story.QuestProgression(1234))
         {
@@ -832,6 +862,7 @@ public class Core13LoC
             Core.HuntMonster("crossroads", "Chinchilizard", "Liz-Leather Thongs", 5);
             Story.MapItemQuest(1234, "crossroads", 525);
         }
+
         //Clear Mind, Cleanse Spirit
         if (!Story.QuestProgression(1235))
         {
@@ -841,8 +872,10 @@ public class Core13LoC
             Core.HuntMonster("crossroads", "Koalion", "Fur for Firestarting", 5);
             Story.MapItemQuest(1235, "crossroads", 521, 10);
         }
+
         //She Who Asks
         Story.ChainQuest(1236);
+
         //Be Horc Inside
         if (!Story.QuestProgression(1237))
         {
@@ -869,11 +902,14 @@ public class Core13LoC
 
         //Tears of the Mountain
         Story.KillQuest(1282, "ravinetemple", "*");
+
         //Defend the UnderMountain
         Story.KillQuest(1283, "ravinetemple", "*");
         Story.MapItemQuest(1283, "ravinetemple", 557, 10);
+
         //Alliance Defiance
         Story.KillQuest(1284, "ravinetemple", "*");
+
         //Scout and Return
         Story.MapItemQuest(1375, "alliance", new[] { 679, 680 });
 
@@ -885,12 +921,16 @@ public class Core13LoC
             Core.HuntMonster("alliance", "Evil Soldier", "Evil Soldier Vanquished", 10);
             Core.EnsureComplete(1376);
         }
+
         //Trapping Savage Soldiers
         Story.MapItemQuest(1377, "alliance", 675, 10);
+
         //Find What is Hidden Inside
         Story.MapItemQuest(1378, "alliance", 676);
+
         //Chaorruption Rejection
         Story.KillQuest(1379, "alliance", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
+
         //Alliance Subdued
         if (!Story.QuestProgression(1380))
         {
@@ -899,28 +939,39 @@ public class Core13LoC
             Core.HuntMonster("alliance", "General Tibias", "Tibias Defeated!");
             Core.EnsureComplete(1380);
         }
+
         //Cleanse the Chaorruption
         Story.KillQuest(1424, "ancienttemple", "Chaotic Vulture");
+
         //Chaorruption Cure?
         Story.KillQuest(1425, "ancienttemple", "Chaotic Vulture");
         Story.MapItemQuest(1425, "ancienttemple", 706, 7);
+
         //Guardian Salvation
         Story.KillQuest(1426, "ancienttemple", "Chaos Troll Spirit");
+
         //Poison for a Purpose
         Story.KillQuest(1427, "ancienttemple", "Serpentress");
+
         //The Heart of the Temple Awaits
         Story.MapItemQuest(1428, "ancienttemple", 707);
+
         //Wounds in Stones and Beasts
         Story.MapItemQuest(1456, "orecavern", 717);
+
         //Light in Underhome
         Story.KillQuest(1457, "orecavern", "Crashroom");
         Story.MapItemQuest(1457, "orecavern", 719, 5);
+
         //Truth is its Own Light
         Story.MapItemQuest(1458, "orecavern", 718, 5);
+
         //Horcs Know Mercy
         Story.KillQuest(1459, "orecavern", "Chaorrupted Evil Soldier");
+
         //Battle the Baas!
         Story.KillQuest(1460, "orecavern", "Naga Baas");
+
         //Know the Nexus
         Story.MapItemQuest(1469, "dreamnexus", new[] { 734, 735, 736, 737 });
 
@@ -934,12 +985,28 @@ public class Core13LoC
             Core.HuntMonster("dreamnexus", "Aether Serpent", "Serpent Hair", 5);
             Core.EnsureComplete(1470);
         }
+
         //DreamDancers' Orbs
         Story.MapItemQuest(1471, "dreamnexus", 738, 10);
         Story.MapItemQuest(1471, "dreamnexus", 739, 11);
+
         //Master the Flames 
-        Story.KillQuest(1472, "dreamnexus", new[] { "Solar Phoenix", "Solar Phoenix" });
-        Story.KillQuest(1473, "dreamnexus", "Khasaanda");
+        if (!Story.QuestProgression(1472))
+        {
+            Core.EnsureAccept(1472);
+            Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Tear", 10);
+            Core.HuntMonster("dreamnexus", "Solar Phoenix", "Phoenix Blood", 5);
+            Core.EnsureComplete(1472);
+        }
+
+        //Choose: Khasaanda Confrontation?
+        if (!Story.QuestProgression(1473))
+        {
+            Core.EnsureAccept(1473);
+            Adv.KillUltra("dreamnexus", "r17a", "Right", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
+            Core.EnsureComplete(1473);
+        }
+
     }
 
     public void KhasaandaTroll()
@@ -1172,13 +1239,12 @@ public class Core13LoC
 
 
         //Unending Avatar
-        Story.KillQuest(2258, "timevoid", "Unending Avatar");
-        // if (!Story.QuestProgression(2258))
-        // {
-        //     Core.EnsureAccept(2258);
-        //     Core.HuntMonster("timevoid", "Unending Avatar", "Avatar Slain");
-        //     Core.EnsureComplete(2258);
-        // }
+        if (!Story.QuestProgression(2258))
+        {
+            Core.EnsureAccept(2258);
+            Core.HuntMonster("timevoid", "Unending Avatar", "Avatar Slain");
+            Core.EnsureComplete(2258);
+        }
 
         //Construct Your Reality
         Story.MapItemQuest(2376, "aqlesson", 1467);
@@ -1298,8 +1364,11 @@ public class Core13LoC
         Story.KillQuest(2517, "deepchaos", "Kathool");
         //Starry, Starry Night
         Story.KillQuest(2518, "timespace", "Astral Ephemerite");
-        if (!Core.CheckInventory("Dragonoid of Hours"))
+
+        while (!Core.CheckInventory("Dragonoid of Hours"))
+        {
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
+        }
         //Chaos Lord Iadoa
         Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
     }
@@ -1350,7 +1419,7 @@ public class Core13LoC
         //Tame The Lion
         Story.KillQuest(2630, "onslaughttower", "Maximillian Lionfang");
         //Take Up The Cause
-        Story.KillQuest(2666, "falguard", "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
+        Story.KillQuest(2666, "falguard", "Chaonslaught Caster");
         //Well Kept Secrets
         Story.MapItemQuest(2667, "falguard", 1628, 6);
         //Feeding On The Fallen
@@ -1358,7 +1427,7 @@ public class Core13LoC
         //Special Delivery
         Story.MapItemQuest(2669, "falguard", 1629);
         //Precious Scraps
-        Story.KillQuest(2670, "falguard", "Chaonslaught Warrior|Chaonslaught Cavalry");
+        Story.KillQuest(2670, "falguard", "Chaonslaught Warrior");
         //Restocking
         Story.MapItemQuest(2671, "falguard", 1630);
         //An Innside Job
@@ -1415,11 +1484,11 @@ public class Core13LoC
         //Time For Supplies
         Story.KillQuest(2800, "venomvaults", "Chaonslaught Warrior");
         //Cooking Without Fire
-        Story.KillQuest(2801, "venomvaults", "Chaonslaught Caster|Chaonslaught Warrior");
+        Story.KillQuest(2801, "venomvaults", "Chaonslaught Caster");
         //Introduction
         Story.MapItemQuest(2802, "venomvaults", 1728, 3);
         //Courtyard Key
-        Story.KillQuest(2803, "venomvaults", "Chaonslaught Caster|Chaonslaught Warrior");
+        Story.KillQuest(2803, "venomvaults", "Chaonslaught Caster");
         //Take Out The Chaos Manticore!
         Story.KillQuest(2804, "venomvaults", "Manticore");
         //Shocking Footwear
@@ -1427,9 +1496,9 @@ public class Core13LoC
         //New Shoes
         Story.KillQuest(2806, "stormtemple", "Chaonslaught Warrior");
         //Mouth Of The Lion
-        Story.KillQuest(2807, "stormtemple", "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
+        Story.KillQuest(2807, "stormtemple", "Chaonslaught Caster");
         //Storm the Storm Temple
-        Story.KillQuest(2808, "stormtemple", "Chaonslaught Caster|Chaonslaught Warrior|Chaonslaught Cavalry");
+        Story.KillQuest(2808, "stormtemple", "Chaonslaught Caster");
         //A High Minded Matter
         Story.MapItemQuest(2809, "stormtemple", 1730, 3);
         //Storm Bottles
@@ -1559,10 +1628,18 @@ public class Core13LoC
         //Good, Evil and Chaos Battle!]
         if (!Story.QuestProgression(3189))
         {
+            Core.Join("mirrorportal", "r4", "Left");
             if (Core.CheckInventory("Healer"))
+            {
+                Core.Equip("Healer");
                 Bot.Skills.StartAdvanced("Healer", true, RBot.Skills.ClassUseMode.Base);
-            else if (Core.CheckInventory("Void Highlord"))
+            }
+            if (Core.CheckInventory("Void Highlord"))
+            {
+                Core.Equip("Void Highlord");
                 Bot.Skills.StartAdvanced("Void Highlord", true, RBot.Skills.ClassUseMode.Def);
+            }
+            Core.Join("mirrorportal", "r4", "Left");
             Story.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
         }
     }
@@ -1610,7 +1687,7 @@ public class Core13LoC
         Story.KillQuest(3120, "ceremony", "Chaos Invader");
         //Better Letter Go!
         Story.MapItemQuest(3121, "yulgar", new[] { 2108, 2109, 2110 });
-        Story.MapItemQuest(3121, "archive", 2111);
+        Story.MapItemQuest(3121, "archives", 2111);
         Story.MapItemQuest(3121, "swordhaven", new[] { 2112, 2113, 2114, 2115 });
         //Decor Rater
         Story.MapItemQuest(3122, "swordhaven", 2116, 8);
@@ -1818,6 +1895,16 @@ public class Core13LoC
             Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
             Core.EnsureComplete(3877);
         }
+        
+        //Defeat Drakath! + Defeat Drakath... again!
+        // if (!Story.QuestProgression(3876) || !Story.QuestProgression(3876))
+        // {
+        //     Core.EnsureAccept(3876);
+        //     Core.EnsureAccept(3877);
+        //     Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
+        //     Core.EnsureComplete(3876);
+        //     Core.EnsureComplete(3877);
+        // }
 
         //Defeat Drakath!
         if (!Story.QuestProgression(3878))
