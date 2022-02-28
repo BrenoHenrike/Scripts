@@ -102,6 +102,12 @@ public class CoreAdvanced
 
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
+        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
+        {
+            Special = WeaponSpecial.None;
+            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
+        }
+
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
         int i = 0;
         bool LogOnce = false;
@@ -110,12 +116,6 @@ public class CoreAdvanced
         {
             Core.Logger("Please report what you were trying to enhance to Lord Exelot#9674, enchantment failed");
             return;
-        }
-
-        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
-        {
-            Special = WeaponSpecial.None;
-            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
         }
 
         //Gear
@@ -246,6 +246,7 @@ public class CoreAdvanced
         string EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category)).Name;
         string ClassReAfter = Bot.Inventory.CurrentClass.Name;
         EnhancementType ReEnhanceAfter = CurrentClassEnh();
+        WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
         if (itemInv == null)
             Core.Logger($"\"{itemInv.Name}\" is not a valid Class", messageBox: true, stopBot: true);
         if (itemInv.Quantity == 302500)
@@ -253,10 +254,8 @@ public class CoreAdvanced
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
-        WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
         SmartEnhance(ClassName);
         EnhanceItem(BestGear(GearBoost.cp), CurrentClassEnh(), CurrentWeaponSpecial());
-        Core.Equip(itemInv.Name);
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
         if (ClassReAfter != Bot.Inventory.CurrentClass.Name)
@@ -334,10 +333,12 @@ public class CoreAdvanced
         }
         if (EquipItem)
             Core.Equip(BestItem);
+        LastBestItem = BestItem;
         if (RaceBoosts.Contains(BoostType))
         {
             Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")}) & {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
             Core.Logger($"Combined they give a boost of " + (BestValue * BestValueDMGall - 1).ToString("+0.##%"));
+            LastBestItemDMGall = BestItemDMGall;
             return new[] { BestItem, BestItemDMGall };
         }
         Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
