@@ -35,6 +35,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -61,6 +62,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -88,6 +90,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -116,6 +119,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -143,6 +147,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -166,8 +171,8 @@ public class CoreStory
         else
         {
             Core.EnsureAccept(QuestID);
-            Bot.Sleep(Core.ActionDelay);
         }
+        Bot.Sleep(1500);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
     }
 

@@ -82,22 +82,22 @@ public class MysteriousDungeon
         Story.KillQuest(5445, "MysteriousDungeon", "Mysterious Stranger");
 
         // Shut Up And Listen, Vaden!
-        Story.KillQuest(5446, "MysteriousDungeon", "Vaden");
+        Story.KillQuest(5446, "MysteriousDungeon", "Vaden", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Xeight!
-        Story.KillQuest(5447, "MysteriousDungeon", "Xeight");
+        Story.KillQuest(5447, "MysteriousDungeon", "Xeight", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Ziri
-        Story.KillQuest(5448, "MysteriousDungeon", "Ziri");
+        Story.KillQuest(5448, "MysteriousDungeon", "Ziri", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Pax!
-        Story.KillQuest(5449, "MysteriousDungeon", "Pax");
+        Story.KillQuest(5449, "MysteriousDungeon", "Pax", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Sekt!
-        Story.KillQuest(5450, "MysteriousDungeon", "Sekt");
+        Story.KillQuest(5450, "MysteriousDungeon", "Sekt", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Groglurk!
-        Story.KillQuest(5451, "MysteriousDungeon", "Scarletta");
+        Story.KillQuest(5451, "MysteriousDungeon", "Scarletta", AutoCompleteQuest: false);
     }
 
 }
