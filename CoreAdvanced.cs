@@ -72,7 +72,7 @@ public class CoreAdvanced
 
     public WeaponSpecial CurrentWeaponSpecial()
     {
-        InventoryItem EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        InventoryItem EquippedWeapon = Bot.Inventory.Items.First(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
         int ProcID = Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
         return (WeaponSpecial)ProcID;
     }
@@ -166,7 +166,7 @@ public class CoreAdvanced
         if (i != WeaponList.Count + OtherList.Count)
             Core.Logger("Enhancements complete");
 
-        void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = null)
+        void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = "")
         {
             List<ShopItem> ShopItems = new List<ShopItem>();
 
@@ -189,7 +189,7 @@ public class CoreAdvanced
 
                 Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
 
-                if (Map != null)
+                if (Map != "")
                     Core.Join(Map);
                 Core.JumpWait();
 
@@ -217,8 +217,8 @@ public class CoreAdvanced
 
                 if (BestTwo.First().Level == BestTwo.Last().Level)
                     if (Core.IsMember)
-                        SelectedEhn = BestTwo.Find(x => x.Upgrade);
-                    else SelectedEhn = BestTwo.Find(x => !x.Upgrade);
+                        SelectedEhn = BestTwo.First(x => x.Upgrade);
+                    else SelectedEhn = BestTwo.First(x => !x.Upgrade);
                 else SelectedEhn = BestTwo.OrderByDescending(x => x.Level).First();
 
                 if (Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == SelectedEhn.ID)
@@ -242,13 +242,16 @@ public class CoreAdvanced
         if (!Core.CheckInventory(ClassName))
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
 
-        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
-        string EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category)).Name;
+        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+        string EquippedWeapon = Bot.Inventory.Items.First(i => i.Equipped == true && WeaponCatagories.Contains(i.Category)).Name;
         string ClassReAfter = Bot.Inventory.CurrentClass.Name;
         EnhancementType ReEnhanceAfter = CurrentClassEnh();
         WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
         if (itemInv == null)
-            Core.Logger($"\"{itemInv.Name}\" is not a valid Class", messageBox: true, stopBot: true);
+        {
+            Core.Logger($"\"{ClassName}\" is not a valid Class", messageBox: true, stopBot: true);
+            return;
+        }
         if (itemInv.Quantity == 302500)
         {
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
@@ -292,23 +295,23 @@ public class CoreAdvanced
         List<InventoryItem> BankInvData = InventoryData.Concat(BankData).ToList();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
         ItemCategory BestItemCatagory = ItemCategory.Unknown;
-        string BestItemDMGall = null;
+        string BestItemDMGall = "";
         float BestValueDMGall = 0F;
 
         foreach (InventoryItem Item in BankInvData)
         {
             if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
             {
-                string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains(BoostType.ToString()));
+                string CorrectData = Item.Meta.Split(',').ToList().First(i => i.Contains(BoostType.ToString()));
                 float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
                 if (!BoostedGear.Values.Contains(BoostFloat))
                     BoostedGear.Add(Item.Name, BoostFloat);
             }
         }
-        string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
-        float BestValue = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Value;
+        string BestItem = BoostedGear.First(x => x.Value == BoostedGear.Values.Max()).Key;
+        float BestValue = BoostedGear.First(x => x.Value == BoostedGear.Values.Max()).Value;
         if ((BankInvData.Find(x => x.Name == BestItem) != null))
-            BestItemCatagory = BankInvData.Find(x => x.Name == BestItem).Category;
+            BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
 
         if (RaceBoosts.Contains(BoostType))
         {
@@ -320,7 +323,7 @@ public class CoreAdvanced
                    (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
                     Item.Category != BestItemCatagory)
                 {
-                    string CorrectData = Array.Find(Item.Meta.Split(','), i => i.Contains("dmgAll"));
+                    string CorrectData = Item.Meta.Split(',').ToList().First(i => i.Contains("dmgAll"));
                     float BoostFloat = float.Parse(CorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
                     BoostedGearDMGall.Add(Item.Name, BoostFloat);
                 }
@@ -355,17 +358,17 @@ public class CoreAdvanced
         GearBoost.Undead
     };
     private GearBoost LastBoostType = GearBoost.None;
-    private string LastBestItemDMGall;
-    private string LastBestItem;
+    private string LastBestItemDMGall = "";
+    private string LastBestItem = "";
 
     private void _RaceGear(string Monster)
     {
-        string MonsterRace = null;
+        string MonsterRace = "";
         if (Monster != "*")
-            MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.Name == Monster).Race;
+            MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name == Monster).Race;
         else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race;
 
-        if (MonsterRace == null || MonsterRace == "")
+        if (MonsterRace == "")
             return;
 
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
@@ -378,7 +381,7 @@ public class CoreAdvanced
 
     private void _RaceGear(int MonsterID)
     {
-        string MonsterRace = Bot.Monsters.MapMonsters.Find(x => x.ID == MonsterID).Race;
+        string MonsterRace = Bot.Monsters.MapMonsters.First(x => x.ID == MonsterID).Race;
 
         if (MonsterRace == null || MonsterRace == "")
             return;
@@ -395,9 +398,9 @@ public class CoreAdvanced
 
     #region Kill
 
-    public void BoostKillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void BoostKillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && Core.CheckInventory(item, quant))
+        if (item != "" && Core.CheckInventory(item, quant))
             return;
 
         Core.Join(map, cell, pad);
@@ -407,9 +410,9 @@ public class CoreAdvanced
         Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
     }
 
-    public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && Core.CheckInventory(item, quant))
+        if (item != "" && Core.CheckInventory(item, quant))
             return;
 
         Core.Join(map, cell, pad);
@@ -419,9 +422,9 @@ public class CoreAdvanced
         Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
     }
 
-    public void BoostHuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && Core.CheckInventory(item, quant))
+        if (item != "" && Core.CheckInventory(item, quant))
             return;
 
         Core.Join(map);
@@ -431,11 +434,11 @@ public class CoreAdvanced
         Core.HuntMonster(map, monster, item, quant, isTemp, log, publicRoom);
     }
 
-    public void KillUltra(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true)
+    public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true)
     {
-        if (item != null && Core.CheckInventory(item, quant))
+        if (item != "" && Core.CheckInventory(item, quant))
             return;
-        if (!isTemp && item != null)
+        if (!isTemp && item != "")
             Core.AddDrop(item);
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
@@ -448,7 +451,7 @@ public class CoreAdvanced
 
         Bot.Events.CounterAttack += _KillUltra;
 
-        if (item == null)
+        if (item == "")
         {
             if (log)
                 Core.Logger($"Killing Ultra-Boss {monster}");
@@ -483,7 +486,7 @@ public class CoreAdvanced
     private bool shouldAttack = true;
     private void _KillUltra(ScriptInterface bot, bool faded)
     {
-        string Target = null;
+        string Target = "";
         if (!faded)
         {
             Target = Bot.Player.Target.Name;
@@ -493,7 +496,7 @@ public class CoreAdvanced
         }
         else
         {
-            if (Target != null)
+            if (Target != "")
                 Bot.Player.Attack(Target);
             shouldAttack = true;
         }
@@ -505,7 +508,7 @@ public class CoreAdvanced
 
     public void SmartEnhance(string Class)
     {
-        InventoryItem SelectedClass = Bot.Inventory.Items.Find(i => i.Name == Class && i.Category == ItemCategory.Class);
+        InventoryItem SelectedClass = Bot.Inventory.Items.First(i => i.Name == Class && i.Category == ItemCategory.Class);
         if (SelectedClass.EnhancementLevel == 0)
         {
             Core.Logger("Ignore the message about the Hybrid Enhancement");
