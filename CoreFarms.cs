@@ -1446,8 +1446,7 @@ public class CoreFarms
         Core.AddDrop("Mystic Quills", "Mystic Parchment");
         Core.Logger($"Farming rank {rank}");
 
-        RBot.Factions.Faction spellcrafting = Bot.Player.Factions.Find(f => f.ID == 23);
-        if (spellcrafting == null)
+        if (FactionRank("SpellCrafting") == 0)
         {
             Core.EnsureAccept(2260);
             Core.Join("dragonrune");
