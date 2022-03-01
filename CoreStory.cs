@@ -84,7 +84,6 @@ public class CoreStory
 
         Core.EnsureAccept(QuestID);
         Core.GetMapItem(MapItemID, Amount, MapName);
-        Bot.Sleep(Core.ActionDelay);
         if (Bot.Quests.CanComplete(QuestID))
         {
             if (AutoCompleteQuest)
@@ -190,7 +189,10 @@ public class CoreStory
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
         if (QuestData == null)
+        {
             Core.Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
+            return true;
+        }
 
         if (!Bot.Quests.IsUnlocked(QuestID))
             Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
