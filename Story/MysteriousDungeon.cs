@@ -29,7 +29,7 @@ public class MysteriousDungeon
             return;
 
         //cursed artifact shop - 5428
-        Story.MapItemQuest(5428, "cursedshop", MapItemID: 4803, AutoCompleteQuest: false);
+        Story.MapItemQuest(5428, "cursedshop", MapItemID: 4803);
 
         //lamps, painting and chairs, oh my!
         Story.KillQuest(5429, "cursedshop", "Antique Chair");
@@ -44,8 +44,8 @@ public class MysteriousDungeon
         Story.KillQuest(5432, "cursedshop", "Grandfather Clock");
 
         //Dr. Darkwood's Robe
-        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4804, AutoCompleteQuest: false);
-        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4805, AutoCompleteQuest: false);
+        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4804);
+        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4805);
 
         //defeat the arcane sentinel
         Story.KillQuest(5434, "cursedshop", "Arcane Sentinel");
