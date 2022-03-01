@@ -24,10 +24,6 @@ public class J6Saga
         if (Core.isCompletedBefore(2858))
             return;
 
-        Core.AddDrop("Mission 1 Item", "Datadisk 5", "Datadisk 4", "Fanciful Feather", "Datadisk 3", "Absorbent Mop", "Hyperium Spaceship Key");
-
-        Core.EquipClass(ClassType.Farm);
-
         //J6 Quiz Game
         Story.ChainQuest(674);
 
@@ -37,7 +33,8 @@ public class J6Saga
         //Zephyrus End
         if (!Story.QuestProgression(694))
         {
-            JoinHyperium();
+            Core.Jump("R10");
+            Bot.Player.Join("zerpyrus");
             Story.MapItemQuest(694, "zephyrus", new[] { 116, 117 });
         }
 
@@ -45,11 +42,13 @@ public class J6Saga
         Story.KillQuest(698, "forest", "Zardman Grunt");
 
         //Mission2
-        Story.KillQuest(699, "boxes", "Sneeviltron");
+        Story.KillQuest(699, "boxes", "Sneeviltron", AutoCompleteQuest: false);
 
-        Core.KillMonster("frozenfotia", "r5", "Left", "*", "Datadisk 5", isTemp: false);
-
-        JoinHyperium();
+        if (!Core.isCompletedBefore(1172))
+        {
+            Core.Jump("R10");
+            Bot.Player.Join("moonyard");
+        }
         //A Gate and Terrible Monster
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
 
@@ -57,14 +56,10 @@ public class J6Saga
         Story.MapItemQuest(1172, "moonyard", 495);
 
         //Intruder Alert! Intruder Alert!
-        if (!Story.QuestProgression(1173))
+        if (!Story.QuestProgression(1173, GetReward: false))
         {
-            if (!Bot.Map.Name.Equals("moonyard"))
-            {
-                JoinHyperium();
-                Core.Join("moonyard");
-            }
             Core.Jump("MoonCut", "Left");
+            Bot.Player.Join("moonyardb");
             Story.KillQuest(1173, "moonyardb", "Robo Guard", GetReward: false);
         }
 
@@ -74,13 +69,11 @@ public class J6Saga
         //Mission 4
         Story.KillQuest(1178, "marsh2", "Lesser Groglurk");
 
-        if (!Core.CheckInventory("Datadisk 4"))
-            Core.GetMapItem(1258, map: "sewer");
-
         //Planet Banzai!
         if (!Story.QuestProgression(2168))
         {
-            JoinHyperium();
+            Core.Jump("R10");
+            Bot.Player.Join("banzai");
             Story.MapItemQuest(2168, "banzai", 1259);
         }
 
@@ -96,19 +89,23 @@ public class J6Saga
         //Mission 5
         Story.KillQuest(2173, "djinn", "Harpy");
 
-        if (!Core.CheckInventory("Datadisk 3"))
-            Story.KillQuest(2830, "xantown", "*", GetReward: false);
+        //Mission 6
+        Story.KillQuest(2830, "xantown", "*", GetReward: false);
 
         //Fuel For Flight
         if (!Story.QuestProgression(2831))
         {
-            Core.GetMapItem(1741, map: "timevoid");
             Core.EnsureAccept(2831);
             Core.KillMonster("sandsea", "r8", "Left", "*", "Cactus Creeper Oil", 3);
             Core.KillMonster("cloister", "r7", "Left", "Acornent", "Acornent Oil", 3);
-            JoinHyperium();
-            Core.Join("moonyard", "MoonCut", "Left");
-            Core.KillMonster("moonyardb", "r4", "Left", "*", "Robo Dog Oil", 3);
+            if (!Core.CheckInventory("Robo Dog Oil", 3))
+            {
+                Core.Jump("R10");
+                Bot.Player.Join("moonyard");
+                Core.Jump("MoonCut", "Left");
+                Bot.Player.Join("moonyardb");
+                Core.KillMonster("moonyardb", "r4", "Left", "*", "Robo Dog Oil", 3);
+            }
             Core.KillMonster("farm", "Crop1", "Left", "*", "Scarecrow Canola Oil", 3);
             Core.EnsureComplete(2831);
         }
@@ -154,7 +151,11 @@ public class J6Saga
         //Choose J6 cutscene
         Story.MapItemQuest(2840, "hyperspace", 1745);
 
-        JoinAlley();
+        if (!Core.isCompletedBefore(2846))
+        {
+            Core.Jump("R10");
+            Bot.Player.Join("alley");
+        }
         //Reduce, Respawn, Recycle
         Story.KillQuest(2841, "alley", "Trash Can");
 
@@ -179,30 +180,18 @@ public class J6Saga
         //Watch Chapter 1
         Story.MapItemQuest(2850, "hyperspace", 1747);
 
-        JoinAlley();
-        //Watch Chapter 1
+        if (!Core.isCompletedBefore(2851))
+        {
+            Core.Jump("R10");
+            Bot.Player.Join("alley");
+        }
+        //Save the Girl
         Story.KillQuest(2851, "alley", "Thug Minion");
 
-        //Watch Chapter 1
+        //J6 Epilogue
         Story.MapItemQuest(2852, "hyperspace", 1749);
 
-        //Watch Chapter 1
+        //J6 Epilogue
         Story.ChainQuest(2858);
-
-        void JoinHyperium()
-        {
-            Core.SendPackets("%xt%zm%serverUseItem%327705%+%5041%525,275%hyperium%");
-            while (Bot.Player.Cell != "R10")
-                Core.Jump("R10", "Up");
-        }
-
-        void JoinAlley()
-        {
-            if (Bot.Map.Name == "alley")
-                return;
-            Core.Join("hyperspace", "R10", "Up");
-            Core.Join("alley");
-        }
     }
-
 }
