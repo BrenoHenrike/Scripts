@@ -34,7 +34,7 @@ public class J6Saga
         if (!Story.QuestProgression(694))
         {
             Core.Jump("R10");
-            Bot.Player.Join("zerpyrus");
+            Bot.Player.Join("zephyrus");
             Story.MapItemQuest(694, "zephyrus", new[] { 116, 117 });
         }
 
@@ -179,12 +179,17 @@ public class J6Saga
 
         //Watch Chapter 1
         Story.MapItemQuest(2850, "hyperspace", 1747);
+        if (Bot.Quests.IsInProgress(2850))
+            Core.EnsureComplete(2850);
 
         if (!Core.isCompletedBefore(2851))
         {
             Core.Jump("R10");
             Bot.Player.Join("alley");
         }
+
+        Bot.Sleep(2000);
+
         //Save the Girl
         Story.KillQuest(2851, "alley", "Thug Minion");
 
