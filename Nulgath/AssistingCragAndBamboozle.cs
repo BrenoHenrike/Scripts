@@ -59,7 +59,7 @@ public class AssistingCragAndBamboozle
         else
         {
             List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
-            Core.EnsureComplete(5817, RewardOptions.Find(x => x.Name == Reward).ID);
+            Core.EnsureComplete(5817, RewardOptions.First(x => x.Name == Reward).ID);
         }
         Bot.Wait.ForPickup("*");
     }
