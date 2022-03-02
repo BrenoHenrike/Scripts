@@ -66,7 +66,7 @@ public class CoreBots
 
     public List<ItemBase> CurrentRequirements = new List<ItemBase>();
     public List<string> BankingBlackList = new List<string>();
-    private string GuildRestore = null;
+    private string GuildRestore = "";
 
     /// <summary>
     /// Set commom bot options to desired value
@@ -195,9 +195,9 @@ public class CoreBots
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
     public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
     {
-        InventoryItem itemBank = Bot.Bank.BankItems.Find(i => i.ID == itemID);
-        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
-        ItemBase itemTempInv = Bot.Inventory.TempItems.Find(i => i.ID == itemID);
+        InventoryItem itemBank = Bot.Bank.BankItems.First(i => i.ID == itemID);
+        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.ID == itemID);
+        ItemBase itemTempInv = Bot.Inventory.TempItems.First(i => i.ID == itemID);
         if (itemBank == null && itemInv == null && itemTempInv == null)
             return false;
         if (itemTempInv != null && Bot.Inventory.ContainsTempItem(itemTempInv.Name, quant))
@@ -681,15 +681,15 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void KillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != "" && CheckInventory(item, quant))
             return;
-        if (!isTemp && item != null)
+        if (!isTemp && item != "")
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
         Jump(cell, pad);
-        if (item == null)
+        if (item == "")
         {
             if (log)
                 Logger($"Killing {monster}");
@@ -711,16 +711,16 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void KillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != "" && CheckInventory(item, quant))
             return;
-        if (!isTemp && item != null)
+        if (!isTemp && item != "")
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
         Jump(cell, pad);
-        Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
-        if (item == null)
+        Monster monster = Bot.Monsters.CurrentMonsters.First(m => m.ID == monsterID);
+        if (item == "")
         {
             if (log)
                 Logger($"Killing {monster}");
@@ -739,14 +739,14 @@ public class CoreBots
     /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void HuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void HuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != "" && CheckInventory(item, quant))
             return;
-        if (!isTemp && item != null)
+        if (!isTemp && item != "")
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
-        if (item == null)
+        if (item == "")
         {
             if (log)
                 Logger($"Hunting {monster}");
@@ -763,20 +763,20 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void KillEscherion(string item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
+    public void KillEscherion(string item = "", int quant = 1, bool isTemp = false, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != "" && CheckInventory(item, quant))
             return;
-        if (!isTemp && item != null)
+        if (!isTemp && item != "")
             AddDrop(item);
         Join("escherion", publicRoom: publicRoom);
         Jump("Boss", "Left");
-        if (item == null)
+        if (item == "")
         {
             Logger("Killing Escherion");
-            while (Bot.Monsters.MapMonsters.Find(m => m.Name == "Escherion").Alive)
+            while (Bot.Monsters.MapMonsters.First(m => m.Name == "Escherion").Alive)
             {
-                if (Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -787,7 +787,7 @@ public class CoreBots
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
             while (!CheckInventory(item, quant))
             {
-                if (Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -861,7 +861,7 @@ public class CoreBots
         Bot.Player.Logout();
         Bot.Sleep(5000);
         Server server = Bot.Options.AutoReloginAny
-                ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP)
+                ? ServerList.Servers.First(x => x.IP != ServerList.LastServerIP)
                 : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
         Bot.Sleep(1000);
@@ -1002,7 +1002,10 @@ public class CoreBots
             lastQuestID = questID;
             Quest quest = EnsureLoad(questID);
             if (quest == null)
+            {
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
+                return;
+            }
             List<string> reqItems = new List<string>();
             quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest.Requirements.ForEach(item =>
@@ -1067,9 +1070,9 @@ public class CoreBots
     /// <param name="itemID">ID of the item</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="map">Map where the item is</param>
-    public void GetMapItem(int itemID, int quant = 1, string map = null)
+    public void GetMapItem(int itemID, int quant = 1, string map = "")
     {
-        if (map != null)
+        if (map != "")
             Join(map);
         Bot.Sleep(ActionDelay);
         for (int i = 0; i < quant; i++)
