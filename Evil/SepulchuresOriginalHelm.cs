@@ -15,6 +15,7 @@ public class SepulchuresOriginalHelm
 
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Dailys = new CoreDailys();
     public Core13LoC LOC => new Core13LoC();
@@ -66,11 +67,14 @@ public class SepulchuresOriginalHelm
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
 
-        if (Core.CheckInventory("Necrotic Sword of Doom"))
-            Core.ChainComplete(5455);
-        if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
-            Core.ChainComplete(5456);
-        Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
+        while (!Story.QuestProgression(5457) || !Core.CheckInventory("Gravelyn's Blessing"))
+        {
+            if (Core.CheckInventory("Necrotic Sword of Doom"))
+                Core.ChainComplete(5455);
+            if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+                Core.ChainComplete(5456);
+            Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
+        }
         Core.SmartKillMonster(5458, "swordhavenfalls", "Chaos Lord Alteon", completeQuest: true);
         Core.SmartKillMonster(5459, "shadowstrike", "Sepulchuroth", completeQuest: true);
         Core.SmartKillMonster(5460, "Shadowfall", "Shadow of the Past", completeQuest: true);
