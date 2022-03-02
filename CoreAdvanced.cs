@@ -43,7 +43,7 @@ public class CoreAdvanced
             _AutoEnhance(Empty, SelectedOther, Type, Special);
     }
 
-    public void EnhanceItem(string[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
+    public void EnhanceItem(string?[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
         List<InventoryItem> SelectedItems = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => ItemNames.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapons = SelectedItems.FindAll(i => WeaponCatagories.Contains(i.Category));
@@ -273,10 +273,10 @@ public class CoreAdvanced
     /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
     /// </summary>
     /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    public string[] BestGear(GearBoost BoostType, bool EquipItem = true)
+    public string?[] BestGear(GearBoost BoostType, bool EquipItem = true)
     {
         if (BoostType == GearBoost.None)
-            return new[] { "" };
+            BoostType = GearBoost.dmgAll;
 
         if (LastBoostType == BoostType)
         {
@@ -294,7 +294,7 @@ public class CoreAdvanced
         List<InventoryItem> BankData = Bot.Bank.BankItems;
         List<InventoryItem> BankInvData = InventoryData.Concat(BankData).ToList();
         Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
-        ItemCategory BestItemCatagory = ItemCategory.Unknown;
+        ItemCategory BestItemCategory = ItemCategory.Unknown;
         string BestItemDMGall = "";
         float BestValueDMGall = 0F;
 
@@ -308,10 +308,10 @@ public class CoreAdvanced
                     BoostedGear.Add(Item.Name, BoostFloat);
             }
         }
-        string BestItem = BoostedGear.First(x => x.Value == BoostedGear.Values.Max()).Key;
-        float BestValue = BoostedGear.First(x => x.Value == BoostedGear.Values.Max()).Value;
+        string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
+        float BestValue = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Value;
         if ((BankInvData.Find(x => x.Name == BestItem) != null))
-            BestItemCatagory = BankInvData.First(x => x.Name == BestItem).Category;
+            BestItemCategory = BankInvData.First(x => x.Name == BestItem).Category;
 
         if (RaceBoosts.Contains(BoostType))
         {
@@ -320,8 +320,8 @@ public class CoreAdvanced
             foreach (InventoryItem Item in BankInvData)
             {
                 if (Item.Meta != null && Item.Meta.Contains("dmgAll") &&
-                   (WeaponCatagories.Contains(BestItemCatagory) ^ WeaponCatagories.Contains(Item.Category)) &&
-                    Item.Category != BestItemCatagory)
+                   (WeaponCatagories.Contains(BestItemCategory) ^ WeaponCatagories.Contains(Item.Category)) &&
+                    Item.Category != BestItemCategory)
                 {
                     string CorrectData = Item.Meta.Split(',').ToList().First(i => i.Contains("dmgAll"));
                     float BoostFloat = float.Parse(CorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
@@ -337,14 +337,33 @@ public class CoreAdvanced
         if (EquipItem)
             Core.Equip(BestItem);
         LastBestItem = BestItem;
+
         if (RaceBoosts.Contains(BoostType))
         {
+            if (BestItem == null && BestItemDMGall == null)
+            {
+                Core.Logger($"Best gear for [{BoostType.ToString()}] wasnt found!");
+                return new[] { "" };
+            }
+            else if (BestItem == null && BestItemDMGall != null)
+            {
+                Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
+                LastBestItemDMGall = BestItemDMGall;
+                return new[] { BestItemDMGall };
+            }
+            else if (BestItem != null && BestItemDMGall == null)
+            {
+                Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
+                return new[] { BestItem };
+            }
             Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")}) & {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
             Core.Logger($"Combined they give a boost of " + (BestValue * BestValueDMGall - 1).ToString("+0.##%"));
-            LastBestItemDMGall = BestItemDMGall;
+            LastBestItemDMGall = BestItemDMGall ?? "";
             return new[] { BestItem, BestItemDMGall };
         }
-        Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
+        if (BestItem != null)
+            Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
+        else Core.Logger($"Best gear for [{BoostType.ToString()}] wasnt found!");
         return new[] { BestItem };
     }
     private GearBoost[] RaceBoosts =
@@ -371,7 +390,7 @@ public class CoreAdvanced
         if (MonsterRace == null || MonsterRace == "")
             return;
 
-        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        string?[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
@@ -386,7 +405,7 @@ public class CoreAdvanced
         if (MonsterRace == null || MonsterRace == "")
             return;
 
-        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        string?[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
