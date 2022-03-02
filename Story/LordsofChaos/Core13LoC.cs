@@ -8,7 +8,9 @@ public class Core13LoC
     public CoreAdvanced Adv = new CoreAdvanced();
 
     public void Complete13LOC(bool withExtras = false)
-    {
+    {        
+        Adv.BestGear(GearBoost.Chaos);
+
         if (Core.IsMember)
         {
             Prologue();
@@ -1332,12 +1334,7 @@ public class Core13LoC
 
 
         //Unending Avatar
-        if (!Story.QuestProgression(2258))
-        {
-            Core.EnsureAccept(2258);
-            Core.HuntMonster("timevoid", "Unending Avatar", "Avatar Slain");
-            Core.EnsureComplete(2258);
-        }
+        Story.KillQuest(2258, "timevoid", "Unending Avatar", AutoCompleteQuest: false);
 
         //Construct Your Reality
         Story.MapItemQuest(2376, "aqlesson", 1467);
@@ -1351,13 +1348,8 @@ public class Core13LoC
         Story.MapItemQuest(2378, "aqlesson", 1469);
 
         //Bolster the Elements
-        if (!Story.QuestProgression(2379))
-        {
-            Core.EnsureAccept(2379);
-            Core.HuntMonster("aqlesson", "Eternite Ore", "TimeSpark Acquired", 3);
-            Core.HuntMonster("aqlesson", "Water Elemental", "Tears of Joy Acquired", 3);
-            Story.MapItemQuest(2379, "aqlesson", new[] { 1470, 1471 }, 3);
-        }
+        Story.KillQuest(2379, "aqlesson", new[] { "Eternite Ore", "Water Elemental" });
+        Story.MapItemQuest(2379, "aqlesson", new[] { 1470, 1471 }, 3);
 
         //Maintain Elemental Strength
         Story.KillQuest(2380, "aqlesson", new[] { "Ice Elemental", "Fire Elemental" });
@@ -1480,13 +1472,13 @@ public class Core13LoC
         //Starry, Starry Night
         Story.KillQuest(2518, "timespace", "Astral Ephemerite");
 
-        while (!Core.CheckInventory("Dragonoid of Hours"))
-        {
-            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-        }
-
         //Chaos Lord Iadoa
-        Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
+        if (!Story.QuestProgression(2519))
+        {
+            if (!Core.CheckInventory("Dragonoid of Hours"))
+                Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
+            Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
+        }
     }
 
     public void Lionfang()
@@ -1837,7 +1829,7 @@ public class Core13LoC
 
         //Good, Evil and Chaos Battle!]
         string ClassReAfter = Bot.Inventory.CurrentClass.Name;
-        
+
         if (!Story.QuestProgression(3189))
         {
             Core.Join("mirrorportal", "r4", "Left");
@@ -2118,36 +2110,13 @@ public class Core13LoC
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
-        //Defeat Drakath!
-        if (!Story.QuestProgression(3876))
+        // Defeat Drakath! + Defeat Drakath... again!
+        if (!Story.QuestProgression(3876) || !Story.QuestProgression(3876))
         {
-            Core.EnsureAccept(3876);
+            Core.EnsureAccept(3876, 3877);
             Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
-            Core.EnsureComplete(3876);
+            Core.EnsureComplete(3876, 3877);
         }
-
-        //Defeat Drakath... again!
-        if (!Story.QuestProgression(3877))
-        {
-            Core.EnsureAccept(3877);
-            Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
-            Core.EnsureComplete(3877);
-        }
-
-        //Defeat Drakath! + Defeat Drakath... again!
-        // if (!Story.QuestProgression(3876) || !Story.QuestProgression(3876))
-        // {
-        //     Core.EnsureAccept(3876);
-
-        //     Core.EnsureAccept(3877);
-
-        //     Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
-
-        //     Core.EnsureComplete(3876);
-
-        //     Core.EnsureComplete(3877);
-
-        // }
 
         //Defeat Drakath!
         if (!Story.QuestProgression(3878))
