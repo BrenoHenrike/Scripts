@@ -80,6 +80,8 @@ public class CoreBLOD
             return;
         }
 
+        Core.AddDrop(BLoDItems);
+
         if(!Bot.Quests.IsUnlocked(2067))
         {
             Core.Logger("Quest: Reforging the Blinding Light of Destiny [2066]");
@@ -119,9 +121,10 @@ public class CoreBLOD
     public void SpiritOrb(int quant = 10500)
     {
         if(Core.CheckInventory("Spirit Orb", quant))
-            return;
+            return;        
 
         Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
+
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Spirit Orb");
@@ -147,6 +150,8 @@ public class CoreBLOD
         if(Core.CheckInventory("Basic Weapon Kit", quant))
             return;
 
+        Core.AddDrop(BLoDItems);
+        
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Basic Wepon Kit");
@@ -173,6 +178,8 @@ public class CoreBLOD
     {
         if(Core.CheckInventory("Advanced Weapon Kit", quant))
             return;
+
+        Core.AddDrop(BLoDItems);        
 
         int i = 1;
         Core.Logger($"Farming {quant} Advanced Wepon Kit");
@@ -202,6 +209,8 @@ public class CoreBLOD
     {
         if(Core.CheckInventory(item, quant))
             return;
+
+        Core.AddDrop(BLoDItems);        
 
         Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
         int i = 1;
@@ -238,6 +247,8 @@ public class CoreBLOD
             Core.Logger("Mace found, skipping.");
             return;
         }
+
+        Core.AddDrop(BLoDItems);        
 
         if(!Core.CheckInventory(new[] {"Mace of Destiny", "Bright Mace of Destiny", "Blinding Mace of Destiny"}, any: true))
         {
@@ -317,6 +328,9 @@ public class CoreBLOD
             Core.Logger("Bow found, skipping");
             return;
         }
+
+        Core.AddDrop(BLoDItems);
+        
         if(!Core.CheckInventory("Blinding Mace of Destiny"))
             BlindingMace();
 
@@ -373,6 +387,9 @@ public class CoreBLOD
             Core.Logger("Blade found, skipping.");
             return;
         }
+
+        Core.AddDrop(BLoDItems);
+        
         if(!Core.CheckInventory("Blinding Bow of Destiny"))
             BlindingBow();
 
@@ -425,6 +442,9 @@ public class CoreBLOD
     {
         if(Core.CheckInventory("Blinding Light of Destiny"))
             return;
+
+        Core.AddDrop(BLoDItems);
+        
         Core.Logger("Final part");
         FindingFragmentsBow(125);
         FindingFragmentsMace(75);
@@ -449,6 +469,8 @@ public class CoreBLOD
         if(!Core.CheckInventory("Blinding Mace of Destiny"))
             BlindingMace();
 
+        Core.AddDrop(BLoDItems);        
+
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Brilliant Aura");
@@ -467,6 +489,8 @@ public class CoreBLOD
         if (!Core.CheckInventory("Blinding Bow of Destiny"))
             BlindingBow();
 
+        Core.AddDrop(BLoDItems);        
+
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Bright Aura");
@@ -484,6 +508,8 @@ public class CoreBLOD
             return;
         if (!Core.CheckInventory("Blinding Blade of Destiny"))
             BlindingBlade();
+
+        Core.AddDrop(BLoDItems);        
 
         int i = 1;
         Core.EquipClass(ClassType.Farm);
