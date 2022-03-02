@@ -131,7 +131,7 @@ public class CoreFarms
         Bot.Options.AggroMonsters = true;
 
         while ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r4", "Left", "*", log: false, publicRoom: true);
+            Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
 
         while ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
