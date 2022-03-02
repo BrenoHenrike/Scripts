@@ -240,10 +240,7 @@ public class CoreAdvanced
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
 
         InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
-        string EquippedWeapon = Bot.Inventory.Items.First(i => i.Equipped == true && WeaponCatagories.Contains(i.Category)).Name;
-        string ClassReAfter = Bot.Inventory.CurrentClass.Name;
-        EnhancementType ReEnhanceAfter = CurrentClassEnh();
-        WeaponSpecial ReWEnhanceAfter = CurrentWeaponSpecial();
+        GearStore();
         if (itemInv == null)
         {
             Core.Logger($"\"{ClassName}\" is not a valid Class", messageBox: true, stopBot: true);
@@ -258,12 +255,7 @@ public class CoreAdvanced
         EnhanceItem(BestGear(GearBoost.cp), CurrentClassEnh(), CurrentWeaponSpecial());
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-        if (ClassReAfter != Bot.Inventory.CurrentClass.Name)
-        {
-            Core.Equip(ClassReAfter);
-            EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
-        }
-        Core.Equip(EquippedWeapon);
+        GearStore(true);
     }
 
     /// <summary>
@@ -377,8 +369,29 @@ public class CoreAdvanced
     private string LastBestItemDMGall = "";
     private string LastBestItem = "";
 
+    public void GearStore(bool Restore = false)
+    {
+        if (!Restore)
+        {
+            foreach (InventoryItem Item in Bot.Inventory.Items.FindAll(i => i.Equipped == true))
+                ReEquippedItems.Add(Item.Name);
+            ReEnhanceAfter = CurrentClassEnh();
+            ReWEnhanceAfter = CurrentWeaponSpecial();
+        }
+        else
+        {
+            Core.Equip(ReEquippedItems.ToArray());
+            EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
+        }
+    }
+    private List<string> ReEquippedItems = new List<string>();
+    private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
+    private WeaponSpecial ReWEnhanceAfter = WeaponSpecial.None;
+
     private void _RaceGear(string Monster)
     {
+        GearStore();
+
         string MonsterRace = "";
         if (Monster != "*")
             MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name == Monster).Race;
@@ -392,11 +405,13 @@ public class CoreAdvanced
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
     }
 
     private void _RaceGear(int MonsterID)
     {
+        GearStore();
+
         string MonsterRace = Bot.Monsters.MapMonsters.First(x => x.ID == MonsterID).Race;
 
         if (MonsterRace == null || MonsterRace == "")
@@ -407,7 +422,7 @@ public class CoreAdvanced
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-
+        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
     }
 
     #endregion
@@ -419,11 +434,13 @@ public class CoreAdvanced
         if (item != "" && Core.CheckInventory(item, quant))
             return;
 
-        Core.Join(map, cell, pad);
+        Core.Join(map, cell, pad, publicRoom: publicRoom);
+
         _RaceGear(monster);
-        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
+
+        GearStore(true);
     }
 
     public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
@@ -431,11 +448,13 @@ public class CoreAdvanced
         if (item != "" && Core.CheckInventory(item, quant))
             return;
 
-        Core.Join(map, cell, pad);
+        Core.Join(map, cell, pad, publicRoom: publicRoom);
+
         _RaceGear(monsterID);
-        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
+
+        GearStore(true);
     }
 
     public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
@@ -443,11 +462,13 @@ public class CoreAdvanced
         if (item != "" && Core.CheckInventory(item, quant))
             return;
 
-        Core.Join(map);
+        Core.Join(map, publicRoom: publicRoom);
+
         _RaceGear(monster);
-        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.HuntMonster(map, monster, item, quant, isTemp, log, publicRoom);
+
+        GearStore(true);
     }
 
     public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true)
@@ -460,7 +481,6 @@ public class CoreAdvanced
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
         _RaceGear(monster);
-        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
         Core.Jump(cell, pad);
@@ -497,6 +517,8 @@ public class CoreAdvanced
         }
 
         Bot.Events.CounterAttack -= _KillUltra;
+
+        GearStore(true);
     }
 
     private bool shouldAttack = true;
