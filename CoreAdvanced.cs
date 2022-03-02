@@ -368,7 +368,7 @@ public class CoreAdvanced
             MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name == Monster).Race;
         else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race;
 
-        if (MonsterRace == "")
+        if (MonsterRace == null || MonsterRace == "")
             return;
 
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
