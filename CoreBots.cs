@@ -171,7 +171,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
-    public bool CheckInventory(string item, int quant = 1, bool toInv = true)
+    public bool CheckInventory(string? item, int quant = 1, bool toInv = true)
     {
         if (Bot.Inventory.ContainsTempItem(item, quant))
             return true;
@@ -247,11 +247,13 @@ public class CoreBots
     /// Move items from bank to inventory
     /// </summary>
     /// <param name="items">Items to move</param>
-    public void Unbank(params string[] items)
+    public void Unbank(params string?[] items)
     {
+        if (items == null)
+            return;
         JumpWait();
         Bot.Player.OpenBank();
-        foreach (string item in items)
+        foreach (string? item in items)
         {
             if (Bot.Bank.Contains(item))
             {
@@ -930,9 +932,11 @@ public class CoreBots
         currentClass = classToUse;
     }
 
-    public void Equip(params string[] gear)
+    public void Equip(params string?[] gear)
     {
-        foreach (string Item in gear)
+        if (gear == null)
+            return;
+        foreach (string? Item in gear)
         {
             if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
