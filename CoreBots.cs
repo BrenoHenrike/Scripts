@@ -66,6 +66,8 @@ public class CoreBots
 
     public List<ItemBase> CurrentRequirements = new List<ItemBase>();
     public List<string> BankingBlackList = new List<string>();
+    public string[] EmptyArray = { "" };
+    public List<InventoryItem> EmptyList = new List<InventoryItem>();
     private string GuildRestore = "";
 
     /// <summary>
@@ -221,9 +223,11 @@ public class CoreBots
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <param name="any">If any of the items exist, returns true</param>
     /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
-    public bool CheckInventory(string[] itemNames, int quant = 1, bool any = false, bool toInv = true)
+    public bool CheckInventory(string?[] itemNames, int quant = 1, bool any = false, bool toInv = true)
     {
-        foreach (string name in itemNames)
+        if (itemNames == null)
+            return true;
+        foreach (string? name in itemNames)
         {
             if (Bot.Bank.Contains(name, quant))
             {
@@ -427,10 +431,12 @@ public class CoreBots
     /// Adds drops to the pickup list, unbank the items and restart the Drop Grabber
     /// </summary>
     /// <param name="items">Items to add</param>
-    public void AddDrop(params string[] items)
+    public void AddDrop(params string?[] items)
     {
+        if (items == null)
+            return;
         Unbank(items);
-        foreach (string item in items)
+        foreach (string? item in items)
             Bot.Drops.Add(item);
         Bot.Drops.Start();
     }
@@ -500,7 +506,7 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest</param>
     /// <param name="itemList">List of the items to get, if you want all just let it be null</param>
-    public bool EnsureCompleteChoose(int questID, string[] itemList = null)
+    public bool EnsureCompleteChoose(int questID, string?[] itemList = null)
     {
         if (questID <= 0)
             return false;

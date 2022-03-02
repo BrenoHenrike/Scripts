@@ -2,8 +2,6 @@ using RBot;
 using RBot.Items;
 using RBot.Shops;
 using System.Globalization;
-using System.Collections.Generic;
-using System.Linq;
 
 public class CoreAdvanced
 {
@@ -20,7 +18,7 @@ public class CoreAdvanced
         List<InventoryItem> EquippedOther = EquippedItems.FindAll(i => !WeaponCatagories.Contains(i.Category));
 
         if (Special == WeaponSpecial.None)
-            _AutoEnhance(Empty, EquippedItems, Type, Special);
+            _AutoEnhance(Core.EmptyList, EquippedItems, Type, Special);
         else _AutoEnhance(EquippedWeapon, EquippedOther, Type, Special);
     }
 
@@ -38,9 +36,9 @@ public class CoreAdvanced
         }
 
         if (SelectedWeapon.Count != 0)
-            _AutoEnhance(SelectedWeapon, Empty, Type, Special);
+            _AutoEnhance(SelectedWeapon, Core.EmptyList, Type, Special);
         if (SelectedOther.Count != 0)
-            _AutoEnhance(Empty, SelectedOther, Type, Special);
+            _AutoEnhance(Core.EmptyList, SelectedOther, Type, Special);
     }
 
     public void EnhanceItem(string?[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
@@ -57,9 +55,9 @@ public class CoreAdvanced
         }
 
         if (SelectedWeapons.Count != 0)
-            _AutoEnhance(SelectedWeapons, Empty, Type, Special);
+            _AutoEnhance(SelectedWeapons, Core.EmptyList, Type, Special);
         if (SelectedOthers.Count != 0)
-            _AutoEnhance(Empty, SelectedOthers, Type, Special);
+            _AutoEnhance(Core.EmptyList, SelectedOthers, Type, Special);
     }
 
     public EnhancementType CurrentClassEnh()
@@ -98,7 +96,6 @@ public class CoreAdvanced
 
     };
     private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
-    private List<InventoryItem> Empty = new List<InventoryItem>();
 
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
