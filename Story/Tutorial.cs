@@ -33,15 +33,15 @@ public class Tutorial
         Core.Logger("Achievement - Interact");
         Core.SendPackets("%xt%zm%setAchievement%93430%ia0%23%1%");//interact- 
         Core.Logger("Achievement - Quest");
-        if(Bot.Player.Level < 10)
+        if (Bot.Player.Level < 10)
         {
-        Core.EnsureAccept(4007);
-        Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
-        Core.EnsureComplete(4007);
-        Bot.Wait.ForPickup("Bonehead Bludgeon");
-        Bot.Wait.ForPickup("Venom Head");
-        Core.SellItem("Bonehead Bludgeon");
-        Core.SellItem("Venom Head");
+            Core.EnsureAccept(4007);
+            Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
+            Core.EnsureComplete(4007);
+            Bot.Wait.ForPickup("Bonehead Bludgeon");
+            Bot.Wait.ForPickup("Venom Head");
+            Core.SellItem("Bonehead Bludgeon");
+            Core.SellItem("Venom Head");
         }
         Core.SendPackets("xt%zm%setAchievement%93430%ia0%24%1%");//quest- 
         Core.Logger("Achievement - Skill");
