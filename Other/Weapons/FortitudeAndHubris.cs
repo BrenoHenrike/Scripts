@@ -66,7 +66,7 @@ public class FandH
         {
             Core.EnsureAccept(6604);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Hubris's Final Blade Shard", isTemp: false);
+            Core.KillMonster("doomwood", "r6a", "Right", "Doomwood Ectomancer", "Hubris's Final Blade Shard", isTemp: false);
             Bot.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("trigoras", "Trigoras", "Hubris's Handle");
