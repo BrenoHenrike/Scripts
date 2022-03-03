@@ -595,7 +595,7 @@ public class CoreFarms
     {
         if (FactionRank("Blade of Awe") >= rank && !farmBoA)
             return;
-        if (Core.CheckInventory("Blade of Awe", toInv: false) && farmBoA)
+        if (farmBoA && Core.CheckInventory("Blade of Awe"))
             farmBoA = false;
         if (farmBoA)
             Core.AddDrop("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
