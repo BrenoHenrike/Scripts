@@ -3,8 +3,6 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
-//cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Story/J6Saga.cs
 using RBot;
 
 public class CapeOfAwe
@@ -25,46 +23,22 @@ public class CapeOfAwe
 
     public void GetCoA()
     {
-        if(Core.IsMember)
-            LegendaryAwe();
-        else if(Awe.GuardianCheck())
-            GuardianAwe();
-        else 
-            FreeAwe();
-    }
+        if (Core.CheckInventory("Cape of Awe"))
+            return;
 
-    public void LegendaryAwe()
-    {
-        Core.AddDrop("Legendary Awe Pass", "Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
-        Core.BuyItem("museum", 1130, "Legendary Awe Pass");
+        Core.AddDrop("Cape Fragment");
+        Awe.AwePass(4178, 4179, 4180);
         Core.EquipClass(ClassType.Solo);
-        Awe.AweKill(4178, "cape");
+        Story.UpdateQuest(3008);
+        while (!Core.CheckInventory("Cape Fragment", 10))
+        {
+            Core.EnsureAccept(Awe.QuestID);
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
+            Core.EnsureComplete(Awe.QuestID);
+            Bot.Wait.ForPickup("Cape Fragment");
+        }
         Core.BuyItem("museum", 1129, "Cape Relic");
         Core.BuyItem("museum", 1129, "Cape of Awe");
-        Core.ToBank("Legendary Awe Pass");
-    }
-    
-    public void GuardianAwe()
-    {
-        Core.AddDrop("Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
-        Farm.BladeofAweREP(5, false);
-        Farm.Experience(35);
-        Core.EquipClass(ClassType.Solo);
-        Awe.AweKill(4179, "cape");
-        Core.BuyItem("museum", 1129, "Cape Relic");
-        Core.BuyItem("museum", 1129, "Cape of Awe");
-        Core.ToBank("Guardian Awe Pass");
-    }
-    public void FreeAwe()
-    {
-        Core.AddDrop("Armor of Awe Pass", "Cape Shard", "Cape Fragment", "Cape Relic", "Cape of Awe");
-        Farm.BladeofAweREP(10, false);
-        Farm.Experience(55);
-        Core.BuyItem("museum", 1130, "Armor of Awe Pass");
-        Core.EquipClass(ClassType.Solo);
-        Awe.AweKill(4180, "cape");
-        Core.BuyItem("museum", 1129, "Cape Relic");
-        Core.BuyItem("museum", 1129, "Cape of Awe");
-        Core.ToBank("Armor of Awe Pass");
+        Core.ToBank("Legendary Awe Pass", "Guardian Awe Pass", "Armor of Awe Pass");
     }
 }

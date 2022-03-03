@@ -12,25 +12,44 @@ public class CoreAwe
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
 
-    public bool GuardianCheck()
+    public int QuestID;
+
+    public void AwePass(int LegendQuest, int GuardianQuest, int FreeQuest)
     {
-        Core.Logger("Checking AQ Guardian");
-        if (Core.CheckInventory("Guardian Awe Pass", 1, true))
+        if (Core.IsMember || Core.CheckInventory("Legendary Awe Pass"))
         {
-            Core.Logger("You're AQ Guardian!");
-            return true;
+            Core.BuyItem("museum", 1130, "Legendary Awe Pass");
+            QuestID = 4175;
         }
-        Core.BuyItem("museum", 53, "Guardian Awe Pass");
-        if (Core.CheckInventory("Guardian Awe Pass"))
+        else if (Awe.GuardianCheck())
         {
-            Core.Logger("Guardian Awe Pass bought successfully! You're AQ Guardian!");
-            return true;
+            Farm.BladeofAweREP(5, false);
+            Farm.Experience(35);
+            QuestID = 4176;
         }
         else
         {
-            Core.Logger("You're not AQ Guardian.");
-            return false;
+            Farm.BladeofAweREP(10, false);
+            Farm.Experience(55);
+            Core.BuyItem("museum", 1130, "Armor of Awe Pass");
+            QuestID = 4177;
         }
+    }
+
+    public bool GuardianCheck()
+    {
+        if (Core.CheckInventory("Guardian of Awe Pass"))
+            return true;
+
+        Core.Logger("Checking AQ Guardian");
+        Core.BuyItem("museum", 53, "Guardian Awe Pass");
+        if (Core.CheckInventory("Guardian Awe Pass"))
+        {
+            Core.Logger("You own the Guardian Awe Pass! You're AQ Guardian!");
+            return true;
+        }
+        Core.Logger("You're not AQ Guardian.");
+        return false;
     }
 
     public void AweKill(int questID, string gear)
@@ -46,18 +65,10 @@ public class CoreAwe
             Story.KillQuest(questID, "alteonbattle", "Ultra Alteon");
         else if (gear.Equals("greaves"))
             Story.KillQuest(questID, "bosschallenge", "Mutated Void Dragon");
-        else if (gear.Equals("helm"))
-        {
-            Story.UpdateQuest(3008);
-            Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Story.UpdateQuest(3004);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false);
-        }
         else
         {
             Story.UpdateQuest(3008);
             Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
         }
     }
-
 }
