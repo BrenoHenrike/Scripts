@@ -3,10 +3,11 @@
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/GearOfAwe/ArmorOfAwe.cs
 //cs_include Scripts/Good/GearOfAwe/HelmOfAwe.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Good/SilverExaltedPaladin.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
@@ -20,9 +21,6 @@
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Evil/ADK.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
-//cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Story/J6Saga.cs
 using RBot;
 
 public class Awescended
@@ -30,8 +28,9 @@ public class Awescended
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreAwe Awe = new CoreAwe();
     public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAwe Awe = new CoreAwe();
     public ArmorOfAwe AweArmor = new ArmorOfAwe();
     public HelmOfAwe Helm = new HelmOfAwe();
     public SEP Pal = new SEP();
@@ -98,7 +97,7 @@ public class Awescended
         if (!Story.QuestProgression(8038))
         {
             Core.EnsureAccept(8038);
-            Core.KillMonster("yokaiwar", "Boss", "Left", "O-Dokuro's Head", "O-Dokuro's Tooth", isTemp: false);
+            Core.KillMonster("yokaiwar", "Boss", "Left", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false);
             Core.KillMonster("wardwarf", "r4", "Left", "D'wain Jonsen", "D'wain Jonsen's Stinger");
             Core.KillMonster("mythsongwar", "War2", "Left", "*", "Music Pirate's Instrument of War", 6);
             Core.HuntMonster("shadowfallwar", "Noxus", "Noxus' Necromancy Robe");
@@ -114,7 +113,7 @@ public class Awescended
             Farm.Experience(50);
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8040);
-            Core.KillMonster("ledgermayne", "Boss", "Left", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
+            Adv.BoostKillMonster("ledgermayne", "Boss", "Left", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
             Core.BuyItem("doomwood", 276, "Blinding Light of Destiny Handle");
             SRoD.ShadowReaperOfDoom();
             Farm.BladeofAweREP(10, true);
@@ -148,11 +147,11 @@ public class Awescended
         {
             Farm.Experience(100);
             Core.EnsureAccept(8042);
-            Armor.DrakathOriginalArmor();
             AweArmor.GetArmor();
             Helm.GetHoA();
             Seppy.DoAll();
             ADK.DoAll();
+            Armor.DrakathOriginalArmor();
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
             Core.EnsureComplete(8042);
         }
