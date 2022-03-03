@@ -21,7 +21,7 @@ public class CoreAwe
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
             QuestID = 4175;
         }
-        else if (Awe.GuardianCheck())
+        else if (GuardianCheck())
         {
             Farm.BladeofAweREP(5, false);
             Farm.Experience(35);

@@ -10,6 +10,8 @@ public class CapeOfAwe
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
     public CoreAwe Awe = new CoreAwe();
 
     public void ScriptMain(ScriptInterface bot)
