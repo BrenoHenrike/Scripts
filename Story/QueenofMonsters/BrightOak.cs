@@ -237,7 +237,7 @@ public class BrightOak
         Story.MapItemQuest(4699, "Darkheart", 4056);
 
         // Defeat the Gaiazor
-        Story.KillQuest(4700, "Darkheart", "Gaiazor", AutoCompleteQuest: false);
+        Story.KillQuest(4700, "Darkheart", "Gaiazor");
     }
 
     public void RavinosBrightgladePart2()
@@ -247,61 +247,112 @@ public class BrightOak
 
         Core.AddDrop("Ravinos Token I", "Ravinos Token II", "Ravinos Token III", "Ravinos Token IV", "Ravinos Token V");
 
-        // We Have Some Stragglers
-        Story.MapItemQuest(4799, "Gaiazor", 4204, 6);
-        Bot.Wait.ForPickup("Ravinos Token I");
-
-        // Too Many Nasties
-        Story.KillQuest(4800, "Gaiazor", new[] { "Wolfwood", "Wisterrora", "Tree Golem" });
-        Bot.Wait.ForPickup("Ravinos Token II");
-
-        // But...Our Stuff!
-        Story.KillQuest(4801, "Gaiazor", new[] { "Tree Golem", "Wolfwood", "Wisterrora" });
-        Bot.Wait.ForPickup("Ravinos Token III");
-
-        // Like One Of Those Toddler Gates
-        Story.KillQuest(4802, "Gaiazor", new[] { "Tree Golem", "Wisterrora" });
-        Story.MapItemQuest(4802, "Gaiazor", 4205, 5);
-        Bot.Wait.ForPickup("Ravinos Token IV");
-
         // It's Too Bad I'm Poisonous Now
-        Story.KillQuest(4803, "Gaiazor", "Toxic Grove Spider");
-        Story.KillQuest(4803, "bloodtusk", "Trollola Plant");
-        Story.KillQuest(4803, "firestorm", "Sulfur Imp");
-        Bot.Wait.ForPickup("Ravinos Token V");
+        // Ravinos Token V
+        if (!Core.CheckInventory("Ravinos Token V"))
+        {
+            // Like One Of Those Toddler Gates
+            // Ravinos Token VI
+            if (!Core.CheckInventory("Ravinos Token IV"))
+            {
+                // But...Our Stuff!
+                // Ravinos Token III
+                if (!Core.CheckInventory("Ravinos Token III"))
+                {
+                    // Too Many Nasties
+                    // Ravinos Token II
+                    if (!Core.CheckInventory("Ravinos Token II"))
+                    {
+                        // We Have Some Stragglers
+                        // Ravinos Token I
+                        if (!Core.CheckInventory("Ravinos Token I"))
+                        {
+                            Core.EnsureAccept(4799);
+                            Bot.Player.Join("Gaiazor");
+                            Core.GetMapItem(4204, 6);
+                            Core.EnsureComplete(4799);
+                            Bot.Wait.ForPickup("Ravinos Token I");
+                        }
+                        Core.EnsureAccept(4800);
+                        Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Slain", 4);
+                        Core.HuntMonster("Gaiazor", "Wisterrora", "Wisterrora Slain", 4);
+                        Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Slain", 4);
+                        Core.EnsureComplete(4800);
+                        Bot.Wait.ForPickup("Ravinos Token II");
+                    }
+                    Core.EnsureAccept(4801);
+                    Core.HuntMonster("Gaiazor", "Tree Golem", "Lapis' Runestones");
+                    Core.HuntMonster("Gaiazor", "Wolfwood", "Flix's Fertilizer");
+                    Core.HuntMonster("Gaiazor", "Wisterrora", "Zephyr's Toolkit");
+                    Core.EnsureComplete(4801);
+                    Bot.Wait.ForPickup("Ravinos Token III");
+                }
+                Core.EnsureAccept(4802);
+                Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Roots", 5);
+                Core.HuntMonster("Gaiazor", "Wisterrora", "Wisterrora Thorns", 5);
+                Core.GetMapItem(4205, 5);
+                Core.EnsureComplete(4802);
+                Bot.Wait.ForPickup("Ravinos Token IV");
+            }
+            Core.EnsureAccept(4803);
+            Core.HuntMonster("Darkheart", "Toxic Grove Spider", "Grove Spider Silk", 6);
+            Core.HuntMonster("Bloodtusk", "Trollola Plant", "Trollola Nectar", 5);
+            Core.HuntMonster("Firestorm", "Sulfur Imp", "Searbush", 2);
+            Core.EnsureComplete(4803);
+            Bot.Wait.ForPickup("Ravinos Token V");
+        }
 
         // Talk to Lapis
         Story.MapItemQuest(4804, "Gaiazor", 4206);
+
     }
 
     public void LapisPart2()
     {
         if (Core.isCompletedBefore(4808))
             return;
+
         Core.AddDrop("Lapis Token I", "Lapis Token II", "Lapis Token III");
 
-        // Better Than A Magic 8-Ball
-        Story.KillQuest(4805, "Gaiazor", new[] { "Wolfwood", "Wisterrora" });
-        if (!Core.CheckInventory("Lapis Token I"))
-            Bot.Wait.ForPickup("Lapis Token I");
-
-        // Outside Assistance
-        if (!Story.QuestProgression(4806))
+        // Even a Noob Can Do It
+        // Lapis Token III
+        if (!Core.CheckInventory("Lapis Token III"))
         {
-            Core.EnsureAccept(4806);
-            if (!Core.CheckInventory("Sparrow's Blood"))
-                Dailys.SparrowsBlood();
-            Core.EnsureComplete(4806);
-            Bot.Wait.ForPickup("Lapis Token II");
+            // Outside Assistance
+            // Lapis Token II
+            if (!Core.CheckInventory("Lapis Token II"))
+            {
+                // Better Than A Magic 8-Ball
+                // Lapis Token I
+                if (!Core.CheckInventory("Lapis Token I"))
+                {
+                    Core.EnsureAccept(4805);
+                    Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Twigs", 7);
+                    Core.HuntMonster("Gaiazor", "Wisterrora", "Drop of Wisterrora Ichor");
+                    Core.EnsureComplete(4805);
+                    Bot.Wait.ForPickup("Lapis Token I");
+                }
+                Core.EnsureAccept(4806);
+                if (!Core.CheckInventory("Sparrow's Blood"))
+                    Dailys.SparrowsBlood();
+                Core.EnsureComplete(4806);
+                Bot.Wait.ForPickup("Lapis Token II");
+            }
+            Core.EnsureAccept(4807);
+            Core.GetMapItem(4207, 1, "Gaiazor");
+            Core.GetMapItem(4208, 1, "Gaiazor");
+            Core.GetMapItem(4209, 1, "Gaiazor");
+            Core.EnsureComplete(4807);
+            Bot.Wait.ForPickup("Lapis Token III");
         }
 
-        // Even a Noob Can Do It
-        Story.MapItemQuest(4807, "Gaiazor", new[] { 4207, 4208, 4209 });
-        if (!Core.CheckInventory("Lapis Token III"))
-            Bot.Wait.ForPickup("Lapis Token III");
-
         // Return to Ravinos
-        Story.MapItemQuest(4808, "Gaiazor", 4210);
+        if (Core.CheckInventory("Lapis Token III") && !Story.QuestProgression(4808))
+        {
+            Core.EnsureAccept(4808);
+            Core.GetMapItem(4210, 1, "Gaiazor");
+            Core.EnsureComplete(4808);
+        }
     }
 
     public void RavinosBrightgladePart3()
@@ -322,11 +373,11 @@ public class BrightOak
             return;
 
         // Catering to Craftsmanship
-        Dailys.CheckDaily(4471);
+        if (Dailys.CheckDaily(4471))
         {
             Core.EnsureAccept(4471);
             Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
-            Core.HuntMonster("Brightoak", "Wolfwood", "Wolfwood Fur", 7);
+            Core.KillMonster("Brightoak", "r8", "Spawn", "Wolfwood", "Wolfwood Fur", 7);
             Core.EnsureComplete(4471);
         }
 
