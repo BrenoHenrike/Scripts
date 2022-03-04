@@ -39,8 +39,6 @@ public class CoreBots
     public bool BankMiscAC { get; set; } = true;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
-    // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
-    public int SkillTimer { get; set; } = 100;
     // [Can Change] Name of your soloing class
     public string SoloClass { get; set; } = "Generic";
     // [Can Change] Mode of soloing class, if it has multiple. 
