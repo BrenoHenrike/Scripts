@@ -41,12 +41,11 @@ public class BrightOak
         if (Core.isCompletedBefore(4644))
             return;
 
-            // Map: Rivensylth
-
-            // Equip spirit animal packets
-            Core.SendPackets("%xt%zm%getMapItem%104347%3935%");
-            Bot.Sleep(Core.ActionDelay);
-            Core.SendPackets("%xt%zm%equipItem%104347%32057%");
+        // Map: Rivensylth
+        // Equip spirit animal packets
+        Core.SendPackets("%xt%zm%getMapItem%104347%3935%");
+        Bot.Sleep(Core.ActionDelay);
+        Core.SendPackets("%xt%zm%equipItem%104347%32057%");
 
         // Take to the Skies 
         Story.MapItemQuest(4637, "Rivensylth", 3944);
@@ -61,18 +60,17 @@ public class BrightOak
         Story.KillQuest(4640, "Rivensylth", "Mushroom");
 
         // Protect the Nest
-        Story.KillQuest(4641, "Rivensylth", "Pine Grizzly");
-        Story.MapItemQuest(4641, "Rivensylth", 3946, 4);
+        Story.KillQuest(4641, "Pines", "Pine Grizzly");
+        Story.MapItemQuest(4641, "Rivensylth", 3948, 4);
 
         // Night in Shining Armor
         Story.KillQuest(4642, "Rivensylth", "Cave Creeper|Draklet|Mushroom|Rivensylth Spider");
 
         // Finding Rivensylth
-        Story.MapItemQuest(4643, "Rivensylth", 3947);
+        Story.MapItemQuest(4643, "Rivensylth", 3946);
 
         // Zero Tolerance for Nature
         Story.KillQuest(4644, "Rivensylth", "Avada");
-
     }
 
     public void AvenGreywhorl()
@@ -91,37 +89,41 @@ public class BrightOak
         Story.MapItemQuest(4659, "elfhame", 3983);
 
         // Restoring Nature
-        if (!Story.QuestProgression(4660) || !Core.CheckInventory("Restoration of Nature Potion", 10))
-        {
-            Core.EnsureAccept(4660);
-            Core.BuyItem("sandsea", 245, "Water of Life");
-            Core.HuntMonster("elfhame", "Bright Treeant", "Bright Ore ", 3);
-            Core.HuntMonster("elfhame", "Wolfwood", "Herbal Remedy", 4);
-            Core.EnsureComplete(4660);
-        }
+        if (!Story.QuestProgression(4660))
+            NaturePotion(1);
 
         // Unlock the Guardian's First Rune
         if (!Story.QuestProgression(4661))
         {
-            // Gnome Sweet Gnome
+            NaturePotion(1);
+            Story.KillQuest(4661, "elfhame", "Blighted Deer ");
+        }
+
+        // Gnome Sweet Gnome
+        if (!Story.QuestProgression(4662))
+        {
+            Core.EnsureAccept(4662);
             if (!Core.CheckInventory("Paddylump's Elixir"))
             {
                 //Prereq. Quest: Omnomnoms:
                 //Prereq. Item: Paddylump's Elixir:
                 //--- Mapname: mudluk
+                Core.AddDrop("Paddylump's Elixir");
                 Core.EnsureAccept(820);
-                Core.HuntMonster("cloister", "Acornent");
-                Core.HuntMonster("cloister", "Karasu");
+                Core.HuntMonster("cloister", "Acornent", "Wiggly Worm", 15);
+                Core.HuntMonster("cloister", "Karasu", "MegaMite", 10);
                 Core.EnsureComplete(820);
                 Bot.Wait.ForPickup("Paddylump's Elixir");
             }
-            Story.KillQuest(4661, "elfhame", " Ruin Dweller");
+            Core.HuntMonster("elfhame", "Ruin Dweller", "Ruin Dweller Defeated", 12);
+            Core.EnsureComplete(4662);
         }
 
         // Unlock the Guardian's Second Rune
-        if (!Core.CheckInventory("Restoration of Nature Potion", 4) || !Story.QuestProgression(4665))
+        if (!Story.QuestProgression(4663))
         {
             Core.EnsureAccept(4663);
+            NaturePotion(2);
             Core.HuntMonster("elfhame", "Wolfrider", "Wolfrider Maimed", 4);
             Core.EnsureComplete(4663);
         }
@@ -130,20 +132,22 @@ public class BrightOak
         Story.KillQuest(4664, "elfhame", "Ratawampus");
 
         // Unlock the Guardian's Third Rune
-        if (!Core.CheckInventory("Restoration of Nature Potion", 4) || !Story.QuestProgression(4665))
+        if (!Story.QuestProgression(4665))
         {
             Core.EnsureAccept(4665);
+            NaturePotion(3);
             Core.HuntMonster("elfhame", "Ratawampus", "Ratawampus Cleared", 2);
             Core.HuntMonster("elfhame", "Ruin Dweller", "Ruin Dweller Cleared", 3);
             Core.EnsureComplete(4665);
         }
 
         // Unlock the Guardian's Fourth Rune
-        if (!Core.CheckInventory("Restoration of Nature Potion", 4) || !Story.QuestProgression(4667))
+        if (!Story.QuestProgression(4666))
         {
-            Core.EnsureAccept(4667);
+            Core.EnsureAccept(4666);
+            NaturePotion(4);
             Core.HuntMonster("elfhame", "Ruin Stalker", "Ruin Stalker Contained", 6);
-            Core.EnsureComplete(4667);
+            Core.EnsureComplete(4666);
         }
 
         // Unlocking the Guardian's Mouth
@@ -151,11 +155,28 @@ public class BrightOak
 
         // Defeat the Guardian Spirit
         Story.KillQuest(4668, "elfhame", "Guardian Spirit");
+
+        void NaturePotion(int quant)
+        {
+            if (Core.CheckInventory("Restoration of Nature Potion", quant))
+                return;
+
+            Core.AddDrop("Restoration of Nature Potion");
+
+            while (!Core.CheckInventory("Restoration of Nature Potion", quant))
+            {
+                Core.EnsureAccept(4660);
+                Core.BuyItem("sandsea", 245, "Water of Life");
+                Core.HuntMonster("brightoak", "Bright Treeant", "Bright Ore", 3);
+                Core.KillMonster("brightoak", "r8", "Left", "*", "Herbal Remedy", 4);
+                Core.EnsureComplete(4660);
+                Bot.Wait.ForPickup("Restoration of Nature Potion");
+            }
+        }
     }
 
     public void FlixSpiderwhisp()
     {
-
         if (Core.isCompletedBefore(4470))
             return;
 
@@ -163,14 +184,13 @@ public class BrightOak
         Story.KillQuest(4469, "Brightoak", "Hootbear");
 
         // Guardians Gone Bad
-        Story.KillQuest(4469, "Brightoak", "Brightpool Guardian");
+        Story.KillQuest(4470, "Brightoak", "Brightpool Guardian");
         Story.MapItemQuest(4470, "Brightoak", 3667, 5);
     }
 
     public void LapisPart1()
     {
-
-        if (Core.isCompletedBefore(4808))
+        if (Core.isCompletedBefore(4468))
             return;
 
         // That's So Lapis
@@ -186,11 +206,11 @@ public class BrightOak
         if (Core.isCompletedBefore(4700))
             return;
 
-        // Cleanse the Grove 4463
-        Story.KillQuest(4698, "Darkheart", new[] { "Wolfwood", "Hootbear", "Tainted Earth" });
+        // Cleanse the Grove
+        Story.KillQuest(4463, "Darkheart", new[] { "Wolfwood", "Hootbear", "Tainted Earth" });
 
         // Survey the Landscape
-        Story.MapItemQuest(4692, "Brightoak", 4052);
+        Story.MapItemQuest(4692, "Darkheart", 4052);
 
         // Corruption in the Grove 
         Story.KillQuest(4693, "Darkheart", "Mutated Leech");
@@ -207,7 +227,7 @@ public class BrightOak
         Story.MapItemQuest(4696, "Darkheart", 4054, 6);
 
         // Brighten up your Day
-        Story.KillQuest(4697, "Darkheart", "Brightpool Guardian");
+        Story.KillQuest(4697, "Brightoak", "Brightpool Guardian");
         Story.MapItemQuest(4697, "Darkheart", 4055, 7);
 
         // Cleanse the Grove
@@ -217,7 +237,7 @@ public class BrightOak
         Story.MapItemQuest(4699, "Darkheart", 4056);
 
         // Defeat the Gaiazor
-        Story.KillQuest(4700, "Darkheart", "Gaiazor");
+        Story.KillQuest(4700, "Darkheart", "Gaiazor", AutoCompleteQuest: false);
     }
 
     public void RavinosBrightgladePart2()
@@ -252,7 +272,6 @@ public class BrightOak
 
         // Talk to Lapis
         Story.MapItemQuest(4804, "Gaiazor", 4206);
-
     }
 
     public void LapisPart2()
@@ -263,7 +282,8 @@ public class BrightOak
 
         // Better Than A Magic 8-Ball
         Story.KillQuest(4805, "Gaiazor", new[] { "Wolfwood", "Wisterrora" });
-        Bot.Wait.ForPickup("Lapis Token I");
+        if (!Core.CheckInventory("Lapis Token I"))
+            Bot.Wait.ForPickup("Lapis Token I");
 
         // Outside Assistance
         if (!Story.QuestProgression(4806))
@@ -271,25 +291,22 @@ public class BrightOak
             Core.EnsureAccept(4806);
             if (!Core.CheckInventory("Sparrow's Blood"))
                 Dailys.SparrowsBlood();
-            Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Twigs ", 7);
-            Core.HuntMonster("Gaiazor", "Wisterrora", "Drop of Wisterorra Ichor");
-            Bot.Wait.ForPickup("Lapis Token II");
             Core.EnsureComplete(4806);
+            Bot.Wait.ForPickup("Lapis Token II");
         }
 
         // Even a Noob Can Do It
-        Story.MapItemQuest(4807, "Gaiazor", 4209);
-        Story.MapItemQuest(4807, "Gaiazor", 4208);
-        Story.MapItemQuest(4807, "Gaiazor", 4207);
+        Story.MapItemQuest(4807, "Gaiazor", new[] { 4207, 4208, 4209 });
+        if (!Core.CheckInventory("Lapis Token III"))
+            Bot.Wait.ForPickup("Lapis Token III");
 
         // Return to Ravinos
         Story.MapItemQuest(4808, "Gaiazor", 4210);
-
     }
 
     public void RavinosBrightgladePart3()
     {
-        if (Core.isCompletedBefore(4804))
+        if (Core.isCompletedBefore(4810))
             return;
 
         // Defeat the Traitor
@@ -320,6 +337,5 @@ public class BrightOak
             Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);
             Core.EnsureComplete(4472);
         }
-
     }
 }
