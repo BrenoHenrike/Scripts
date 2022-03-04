@@ -1903,7 +1903,7 @@ public class Core13LoC
         Story.KillQuest(3120, "ceremony", "Chaos Invader");
 
         //Better Letter Go!
-        if (Story.QuestProgression(3121))
+        if (!Story.QuestProgression(3121))
         {
             Core.EnsureAccept(3121);
             Core.GetMapItem(2108, 1, "yulgar");
