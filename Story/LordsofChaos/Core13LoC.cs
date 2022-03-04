@@ -8,7 +8,7 @@ public class Core13LoC
     public CoreAdvanced Adv = new CoreAdvanced();
 
     public void Complete13LOC(bool withExtras = false)
-    {        
+    {
         Adv.BestGear(GearBoost.Chaos);
 
         if (Core.IsMember)
@@ -1903,9 +1903,19 @@ public class Core13LoC
         Story.KillQuest(3120, "ceremony", "Chaos Invader");
 
         //Better Letter Go!
-        Story.MapItemQuest(3121, "yulgar", new[] { 2108, 2109, 2110 });
-        Story.MapItemQuest(3121, "archives", 2111);
-        Story.MapItemQuest(3121, "swordhaven", new[] { 2112, 2113, 2114, 2115 });
+        if (Story.QuestProgression(3121))
+        {
+            Core.EnsureAccept(3121);
+            Core.GetMapItem(2108, 1, "yulgar");
+            Core.GetMapItem(2109, 1, "yulgar");
+            Core.GetMapItem(2110, 1, "yulgar");
+            Core.GetMapItem(2111, 1, "archives");
+            Core.GetMapItem(2112, 1, "swordhaven");
+            Core.GetMapItem(2113, 1, "swordhaven");
+            Core.GetMapItem(2114, 1, "swordhaven");
+            Core.GetMapItem(2115, 1, "swordhaven");
+            Core.EnsureComplete(3121);
+        }
 
         //Decor Rater
         Story.MapItemQuest(3122, "swordhaven", 2116, 8);
