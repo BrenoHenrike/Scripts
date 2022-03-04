@@ -69,7 +69,7 @@ public class FandH
             Core.KillMonster("doomwood", "r6a", "Right", "Doomwood Ectomancer", "Hubris's Final Blade Shard", isTemp: false);
             Bot.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("trigoras", "Trigoras", "Hubris's Handle");
+            Core.HuntMonster("trigoras", "Trigoras", "Hubris' Handle");
             Core.HuntMonster("styx", "Styx Hydra", "Hubris' Magic Essence", 50, isTemp: false);
             Core.EnsureComplete(6604);
             Bot.Wait.ForPickup("Hubris");
@@ -90,7 +90,7 @@ public class FandH
         // Dual Wielding
         if (!Core.CheckInventory("Fortitude + Hubris"))
         {
-            Story.KillQuest(6606, "skytower", new[] { "Aspect of Good", "Aspect fo Evil" });
+            Story.KillQuest(6606, "skytower", new[] { "Aspect of Good", "Aspect of Evil" });
             Bot.Wait.ForPickup("Fortitude + Hubris");
         }
     }
