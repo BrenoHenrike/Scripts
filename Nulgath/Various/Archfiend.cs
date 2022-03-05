@@ -22,6 +22,7 @@ public class ArchFiend
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         GetArchfiend();
@@ -37,7 +38,7 @@ public class ArchFiend
         if (!Core.CheckInventory("Abyssal Contract"))
         {
             Core.AddDrop(Nulgath.bagDrops);
-            Core.AddDrop("Pink Star Diamond of Nulgath", "Immortal Joe's Black Star", "Dirtlicker Demoted", "Abyssal Contract");
+            Core.AddDrop("Abyssal Contract");
             Farm.Experience(50);
             Core.EnsureAccept(8476);
             Nulgath.FarmUni13(3);

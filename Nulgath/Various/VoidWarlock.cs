@@ -12,6 +12,9 @@ public class VoidWarlock
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(Rewards);
+        Core.BankingBlackList.AddRange(Rewards2);
         Core.SetOptions();
 
         GetWarlock();
@@ -48,7 +51,7 @@ public class VoidWarlock
 
         int i = 1;
         Core.Logger("Starting [Tools for the Job] Quest");
-        while(!Core.CheckInventory(Rewards, toInv: false))
+        while (!Core.CheckInventory(Rewards, toInv: false))
         {
             Nulgath.FarmUni13(2);
             Nulgath.FarmVoucher(false);
@@ -63,7 +66,7 @@ public class VoidWarlock
         Core.Logger("All drops acquired from [Tools for the Job] Quest");
         i = 1;
         Core.Logger("Starting [Corrupted Touch] Quest");
-        while(!Core.CheckInventory(Rewards2, toInv: false))
+        while (!Core.CheckInventory(Rewards2, toInv: false))
         {
             Nulgath.FarmUni13();
             Nulgath.FarmVoucher(true);

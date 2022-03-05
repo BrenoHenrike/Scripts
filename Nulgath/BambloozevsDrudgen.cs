@@ -10,6 +10,7 @@ public class BambloozevsDrudgen
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         MaxBags();

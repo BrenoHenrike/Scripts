@@ -10,6 +10,7 @@ public class MaxItems
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         MaxBags();
