@@ -19,7 +19,7 @@ public class FourthDimensionalPyramid
 
     public void FourthDimensionalPyramidSaga()
     {
-        if (Story.isCompletedBefore(5212))
+        if (Core.isCompletedBefore(5212))
             return;
 
         // Eye for an Eye of the Old Gods

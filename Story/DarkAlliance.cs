@@ -21,7 +21,7 @@ public class DarkAlliance_Story
 
     public void DarkAlliance_Questline()
     {
-        if (Story.isCompletedBefore(7460))
+        if (Core.isCompletedBefore(7460))
             return;
 
         //Clear the Shadows --DAGE--

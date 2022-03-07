@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/SevenCircles(War).cs
@@ -21,7 +22,7 @@ public class HeadoftheLegionBeast
         Core.SetOptions(false);
     }
 
-    public string[] HeadLegionBeast = 
+    public string[] HeadLegionBeast =
     {
         "Penance",
         "Essence of Wrath",
@@ -62,7 +63,7 @@ public class HeadoftheLegionBeast
             return;
 
         Core.AddDrop(HeadLegionBeast);
-        string[] HelmsCircle = {"Aspect of Luxuria", "Gluttony's Maw", "Stare of Greed"};
+        string[] HelmsCircle = { "Aspect of Luxuria", "Gluttony's Maw", "Stare of Greed" };
         foreach (string Helm in HelmsCircle)
         {
             if (!Core.CheckInventory(Helm))
@@ -72,7 +73,7 @@ public class HeadoftheLegionBeast
                 Core.BuyItem("sevencircles", 1980, Helm);
             }
         }
-        string[] HelmsCircleWar = {"Crown of Wrath", "Face of Treachery", "Faces of Violence"};
+        string[] HelmsCircleWar = { "Crown of Wrath", "Face of Treachery", "Faces of Violence" };
         foreach (string Helm in HelmsCircleWar)
         {
             if (!Core.CheckInventory(Helm))
@@ -152,7 +153,7 @@ public class HeadoftheLegionBeast
 
     public void SoulsHeresy(int quant = 300)
     {
-        
+
         if (Core.CheckInventory("Souls of Heresy", quant))
             return;
 
@@ -206,7 +207,7 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Indulgence");
         int i = 0;
-        while(!Core.CheckInventory("Indulgence", quant))
+        while (!Core.CheckInventory("Indulgence", quant))
         {
             Core.EnsureAccept(7978);
             Core.KillMonster("sevencircles", "r2", "Left", "Limbo Guard", "Souls of Limbo", 25);

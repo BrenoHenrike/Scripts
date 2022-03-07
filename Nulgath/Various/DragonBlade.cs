@@ -21,6 +21,9 @@ public class DragonBladeofNulgath
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(TwistedItems);
+        Core.BankingBlackList.AddRange(new[] { "DragonBlade of Nulgath", "Combat Trophy", "Basic War Sword", "Behemoth Blade of Shadow", "Behemoth Blade of Light" });
         Core.SetOptions();
 
         GetDragonBlade();
@@ -40,7 +43,7 @@ public class DragonBladeofNulgath
         BehemothBladeof("Shadow");
         BehemothBladeof("Light");
 
-        while(!Core.CheckInventory(TwistedItems))
+        while (!Core.CheckInventory(TwistedItems))
         {
             Core.EnsureAccept(765);
             Nulgath.FarmTotemofNulgath(3);
@@ -58,7 +61,7 @@ public class DragonBladeofNulgath
 
     public void BehemothBladeof(string blade)
     {
-        if(Core.CheckInventory($"Behemoth Blade of {blade}"))
+        if (Core.CheckInventory($"Behemoth Blade of {blade}"))
             return;
 
         Core.EquipClass(ClassType.Solo);

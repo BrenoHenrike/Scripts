@@ -19,7 +19,7 @@ public class ParadoxPortal
 
     public void ParadoxPortalSaga()
     {
-        if (Story.isCompletedBefore(5050))
+        if (Core.isCompletedBefore(5050))
             return;
 
         // Through the Portal!

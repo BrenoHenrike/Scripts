@@ -1,4 +1,4 @@
-﻿//Scripts v2.26
+﻿//Scripts v2.26.1
 using RBot;
 using RBot.Items;
 using RBot.Monsters;
@@ -25,6 +25,8 @@ public class CoreBots
     public int AcceptandCompleteTries { get; set; } = 20;
     // [Can Change] Whether the bots should also log in AQW's chat
     public bool LoggerInChat { get; set; } = true;
+    // [Can Change] When enabled, no messagesboxes will be shown unless absolutely neccesary
+    public bool ForceOffMessageboxes { get; set; } = false;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
@@ -37,8 +39,6 @@ public class CoreBots
     public bool BankMiscAC { get; set; } = true;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
-    // [Can Change] The interval, in milliseconds, at which to use skills, if they are available.
-    public int SkillTimer { get; set; } = 100;
     // [Can Change] Name of your soloing class
     public string SoloClass { get; set; } = "Generic";
     // [Can Change] Mode of soloing class, if it has multiple. 
@@ -64,7 +64,9 @@ public class CoreBots
 
     public List<ItemBase> CurrentRequirements = new List<ItemBase>();
     public List<string> BankingBlackList = new List<string>();
-    private string GuildRestore = null;
+    public string[] EmptyArray = { "" };
+    public List<InventoryItem> EmptyList = new List<InventoryItem>();
+    public string? GuildRestore = null;
 
     /// <summary>
     /// Set commom bot options to desired value
@@ -169,7 +171,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
-    public bool CheckInventory(string item, int quant = 1, bool toInv = true)
+    public bool CheckInventory(string? item, int quant = 1, bool toInv = true)
     {
         if (Bot.Inventory.ContainsTempItem(item, quant))
             return true;
@@ -193,9 +195,9 @@ public class CoreBots
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
     public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
     {
-        InventoryItem itemBank = Bot.Bank.BankItems.Find(i => i.ID == itemID);
-        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
-        ItemBase itemTempInv = Bot.Inventory.TempItems.Find(i => i.ID == itemID);
+        InventoryItem? itemBank = Bot.Bank.BankItems.Find(i => i.ID == itemID);
+        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
+        ItemBase? itemTempInv = Bot.Inventory.TempItems.Find(i => i.ID == itemID);
         if (itemBank == null && itemInv == null && itemTempInv == null)
             return false;
         if (itemTempInv != null && Bot.Inventory.ContainsTempItem(itemTempInv.Name, quant))
@@ -219,9 +221,11 @@ public class CoreBots
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <param name="any">If any of the items exist, returns true</param>
     /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
-    public bool CheckInventory(string[] itemNames, int quant = 1, bool any = false, bool toInv = true)
+    public bool CheckInventory(string?[] itemNames, int quant = 1, bool any = false, bool toInv = true)
     {
-        foreach (string name in itemNames)
+        if (itemNames == null)
+            return true;
+        foreach (string? name in itemNames)
         {
             if (Bot.Bank.Contains(name, quant))
             {
@@ -245,11 +249,13 @@ public class CoreBots
     /// Move items from bank to inventory
     /// </summary>
     /// <param name="items">Items to move</param>
-    public void Unbank(params string[] items)
+    public void Unbank(params string?[] items)
     {
+        if (items == null)
+            return;
         JumpWait();
         Bot.Player.OpenBank();
-        foreach (string item in items)
+        foreach (string? item in items)
         {
             if (Bot.Bank.Contains(item))
             {
@@ -423,10 +429,12 @@ public class CoreBots
     /// Adds drops to the pickup list, unbank the items and restart the Drop Grabber
     /// </summary>
     /// <param name="items">Items to add</param>
-    public void AddDrop(params string[] items)
+    public void AddDrop(params string?[] items)
     {
+        if (items == null)
+            return;
         Unbank(items);
-        foreach (string item in items)
+        foreach (string? item in items)
             Bot.Drops.Add(item);
         Bot.Drops.Start();
     }
@@ -496,7 +504,7 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest</param>
     /// <param name="itemList">List of the items to get, if you want all just let it be null</param>
-    public bool EnsureCompleteChoose(int questID, string[] itemList = null)
+    public bool EnsureCompleteChoose(int questID, string?[] itemList = null)
     {
         if (questID <= 0)
             return false;
@@ -534,6 +542,18 @@ public class CoreBots
         }
     }
 
+    public Quest EnsureLoad(int questID)
+    {
+        return Bot.Quests.QuestTree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
+
+        Quest _EnsureLoad(int questID)
+        {
+            JumpWait();
+            Bot.Sleep(ActionDelay);
+            return Bot.Quests.EnsureLoad(questID);
+        }
+    }
+
     /// <summary>
     /// Accepts and then completes the quest, used inside a loop
     /// </summary>
@@ -545,6 +565,13 @@ public class CoreBots
         Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
         Bot.Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
+    }
+
+    /// <param name="QuestID">ID of the quest</param>
+    public bool isCompletedBefore(int QuestID)
+    {
+        Quest QuestData = EnsureLoad(QuestID);
+        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
     }
 
     #endregion
@@ -660,7 +687,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
@@ -690,7 +717,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, int monsterID, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void KillMonster(string map, string cell, string pad, int monsterID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
@@ -698,7 +725,12 @@ public class CoreBots
             AddDrop(item);
         Join(map, publicRoom: publicRoom);
         Jump(cell, pad);
-        Monster monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
+        Monster? monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
+        if (monster == null)
+        {
+            Logger($"Monster [{monsterID}] not found. Something is wrong. Stopping bot", messageBox: true, stopBot: true);
+            return;
+        }
         if (item == null)
         {
             if (log)
@@ -718,7 +750,7 @@ public class CoreBots
     /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void HuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
@@ -742,7 +774,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void KillEscherion(string item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
+    public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
@@ -785,7 +817,7 @@ public class CoreBots
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
         if (LoggerInChat)
             Bot.SendMSGPacket(message.Replace('[', '(').Replace(']', ')'), caller, "moderator");
-        if (messageBox)
+        if (messageBox & !ForceOffMessageboxes)
             Message(message, caller);
         if (stopBot)
             StopBot(true);
@@ -909,9 +941,11 @@ public class CoreBots
         currentClass = classToUse;
     }
 
-    public void Equip(params string[] gear)
+    public void Equip(params string?[] gear)
     {
-        foreach (string Item in gear)
+        if (gear == null)
+            return;
+        foreach (string? Item in gear)
         {
             if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
@@ -979,9 +1013,12 @@ public class CoreBots
         if (questID > 0 && questID != lastQuestID)
         {
             lastQuestID = questID;
-            Quest quest = Bot.Quests.EnsureLoad(questID);
+            Quest quest = EnsureLoad(questID);
             if (quest == null)
+            {
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
+                return;
+            }
             List<string> reqItems = new List<string>();
             quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest.Requirements.ForEach(item =>
@@ -1034,7 +1071,7 @@ public class CoreBots
         Bot.Options.LagKiller = false;
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
-        Logger("Bot Stopped Successfully", messageBox: true);
+        Logger("Bot Stopped Successfully");
         ScriptManager.StopScript();
     }
     #endregion
@@ -1046,7 +1083,7 @@ public class CoreBots
     /// <param name="itemID">ID of the item</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="map">Map where the item is</param>
-    public void GetMapItem(int itemID, int quant = 1, string map = null)
+    public void GetMapItem(int itemID, int quant = 1, string? map = null)
     {
         if (map != null)
             Join(map);

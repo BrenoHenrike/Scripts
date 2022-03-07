@@ -25,9 +25,11 @@ public class VoidShogun
         "Void Shogun Katanas on your Hip",
         "Dual Void Shogun Katanas"
     };
-    
+
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(Rewards);
         Core.SetOptions();
 
         GetShogun();
@@ -38,10 +40,10 @@ public class VoidShogun
     public void GetShogun()
     {
         Core.AddDrop(Nulgath.bagDrops);
-        Core.AddDrop(Rewards); 
+        Core.AddDrop(Rewards);
         Core.AddDrop("Void Voucher", "DaiTengu Blade of Wind", "Orochi's Shadow");
 
-        if(!Core.CheckInventory("Void Monk of Nulgath"))
+        if (!Core.CheckInventory("Void Monk of Nulgath"))
         {
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("quibblehunt", "r2", "Left", "*", "Void Voucher", 500, false);
@@ -53,7 +55,7 @@ public class VoidShogun
         Nulgath.FarmVoucher(false);
 
         int i = 1;
-        while(!Core.CheckInventory(Rewards, toInv: false))
+        while (!Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(6484);
 

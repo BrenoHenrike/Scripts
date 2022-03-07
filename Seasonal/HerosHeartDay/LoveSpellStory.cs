@@ -19,7 +19,7 @@ public class LoveSpell
 
     public void LoveSpellScript()
     {
-        if (Story.isCompletedBefore(7934))
+        if (Core.isCompletedBefore(7934))
             return;
 
         // Something Soft

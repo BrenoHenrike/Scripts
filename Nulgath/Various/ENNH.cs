@@ -15,6 +15,7 @@ public class EnhancedNulgathNationHouse
     public CoreBLOD BLOD = new CoreBLOD();
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         GetENNH();
@@ -25,7 +26,7 @@ public class EnhancedNulgathNationHouse
     public void GetENNH()
     {
         Core.AddDrop(Nulgath.bagDrops);
-        Core.AddDrop("Nulgath Nation House", "Enchanted Nulgath Nation House", "Cemaros' Amethyst", "Aluminum", "Pink Star Diamond of Nulgath", "Musgravite of Nulgath", "NUE Necronomicon");
+        Core.AddDrop("Nulgath Nation House", "Enchanted Nulgath Nation House", "Cemaros' Amethyst", "Aluminum");
 
         if (!Core.CheckInventory("Nulgath Nation House"))
         {
@@ -39,19 +40,19 @@ public class EnhancedNulgathNationHouse
             Nulgath.SwindleBulk(200);
             Nulgath.FarmBloodGem(100);
             Nulgath.ApprovalAndFavor(1000, 0);
-    
+
             Farm.ChaosREP(2);
             Core.BuyItem("mountdoomskull", 776, "Cemaros' Amethyst");
-    
+
             BLOD.UnlockMineCrafting();
             Daily.MineCrafting(new[] { "Aluminum" });
-    
+
             Farm.DoomwoodREP();
             Farm.Gold(999);
             Core.BuyItem("lightguard", 277, "NUE Necronomicon");
-    
+
             Core.EnsureAccept(4779);
-            if(!Core.EnsureComplete(4779))
+            if (!Core.EnsureComplete(4779))
                 Core.Logger("Could not complete the quest, stopping bot", messageBox: true, stopBot: true);
             Bot.Player.Pickup("Nulgath Nation House");
         }

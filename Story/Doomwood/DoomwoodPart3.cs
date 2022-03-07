@@ -12,7 +12,7 @@ public class DoomwoodPart3
     {
         Core.SetOptions();
 
-        Part3();
+        StoryLine();
 
         Core.SetOptions(false);
     }
@@ -25,9 +25,9 @@ public class DoomwoodPart3
         "Kyger"
     };
 
-    public void Part3()
+    public void StoryLine()
     {
-        if (Story.isCompletedBefore(7653))
+        if (Core.isCompletedBefore(7653))
             return;
         ///thorngarde > /stonewood > /techdungeon > /stonewooddeep > /techfortress
 

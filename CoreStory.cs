@@ -4,6 +4,12 @@ using RBot.Quests;
 
 public class CoreStory
 {
+    // [Can Change]
+    // True = Bot only does its smart checks on quests with Once: True 
+    // False = Bot does it's smart checks on all quest
+    // Recommended: false
+    // Used for testing bots, dont toggle this as a user
+    public bool TestBot { get; set; } = false;
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
@@ -18,8 +24,7 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (QuestData == null || QuestData.ID != QuestID)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
         ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
         if (QuestProgression(QuestID, GetReward, Reward))
@@ -30,6 +35,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -45,8 +51,7 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (QuestData == null || QuestData.ID != QuestID)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
         ItemBase[] Requirements = QuestData.Requirements.ToArray();
 
         if (QuestProgression(QuestID, GetReward, Reward))
@@ -57,6 +62,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -73,8 +79,7 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void MapItemQuest(int QuestID, string MapName, int MapItemID, int Amount = 1, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (QuestData == null || QuestData.ID != QuestID)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
@@ -85,6 +90,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -101,8 +107,7 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void MapItemQuest(int QuestID, string MapName, int[] MapItemIDs, int Amount = 1, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (QuestData == null || QuestData.ID != QuestID)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
@@ -114,6 +119,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -130,8 +136,7 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void BuyQuest(int QuestID, string MapName, int ShopID, string ItemName, int Amount = 1, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (QuestData == null || QuestData.ID != QuestID)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
@@ -142,6 +147,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
+            Bot.Sleep(1500);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -155,8 +161,7 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void ChainQuest(int QuestID, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (QuestData == null || QuestData.ID != QuestID)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
@@ -166,8 +171,8 @@ public class CoreStory
         else
         {
             Core.EnsureAccept(QuestID);
-            Bot.Sleep(Core.ActionDelay);
         }
+        Bot.Sleep(1500);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
     }
 
@@ -185,20 +190,23 @@ public class CoreStory
 
         PreviousQuestID = QuestID;
 
-        if (QuestData == null)
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
         if (QuestData == null)
+        {
             Core.Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
+            return true;
+        }
 
         if (!Bot.Quests.IsUnlocked(QuestID))
             Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
 
-        if (isCompletedBefore(QuestID))
+        if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
         {
-            Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
-            Bot.Sleep(Core.ActionDelay);
+            if (TestBot)
+                Core.Logger($"\"{QuestData.Name}\" [{QuestID}] skipped, TestBot with Once = true");
+            else Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
             PreviousQuestState = true;
             return true;
         }
@@ -233,7 +241,7 @@ public class CoreStory
         if ((Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", Slot) >= Value))
             return;
 
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (Value + 1) + ",\"iIndex\":" + Slot + "}}}", "json");
+        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + Value + ",\"iIndex\":" + Slot + "}}}", "json");
     }
 
     /// <summary>
@@ -242,21 +250,13 @@ public class CoreStory
     /// <param name="QuestID">Quest ID of the quest you want the game to think you have compelted</param>
     public void UpdateQuest(int QuestID)
     {
-        if (isCompletedBefore(QuestID))
+        if (Core.isCompletedBefore(QuestID))
             return;
 
-        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + (QuestData.Value + 1) + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
+        Quest QuestData = Core.EnsureLoad(QuestID);
+        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + QuestData.Value + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
     }
 
-    /// <param name="QuestID">ID of the quest</param>
-    public bool isCompletedBefore(int QuestID)
-    {
-        Quest QuestData = Bot.Quests.EnsureLoad(QuestID);
-        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
-    }
-
-    private Quest QuestData = null;
     private int PreviousQuestID = 0;
     private bool PreviousQuestState = false;
 }

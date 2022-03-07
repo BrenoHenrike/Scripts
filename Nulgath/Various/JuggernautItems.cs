@@ -12,6 +12,8 @@ public class JuggernautItemsofNulgath
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(Rewards);
         Core.SetOptions();
 
         JuggItems();
@@ -51,7 +53,7 @@ public class JuggernautItemsofNulgath
         Nulgath.FarmUni13();
 
         int i = 1;
-        while(!Core.CheckInventory(Rewards, toInv: false))
+        while (!Core.CheckInventory(Rewards, toInv: false))
         {
             Nulgath.FarmDiamondofNulgath(13);
             Nulgath.FarmDarkCrystalShard(50);

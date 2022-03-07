@@ -14,6 +14,9 @@ public class AssistingCragAndBamboozle
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] {"Nulgath Larvae",
+                     "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
+                     "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)"});
         Core.SetOptions();
 
         AssistingCandB();
@@ -42,7 +45,7 @@ public class AssistingCragAndBamboozle
 
         if (!Core.CheckInventory("Sparrow's Blood"))
             Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)", messageBox: true, stopBot: true);
-        
+
         if (Reward == "any")
         {
             if (!Core.CheckInventory("Sword of Nulgath"))
@@ -58,8 +61,8 @@ public class AssistingCragAndBamboozle
         }
         else
         {
-            List<RBot.Items.ItemBase> RewardOptions = Bot.Quests.EnsureLoad(5817).Rewards;
-            Core.EnsureComplete(5817, RewardOptions.Find(x => x.Name == Reward).ID);
+            List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
+            Core.EnsureComplete(5817, RewardOptions.First(x => x.Name == Reward).ID);
         }
         Bot.Wait.ForPickup("*");
     }

@@ -33,7 +33,7 @@ public class Artixpointe
         Core.BuyItem("artixpointe", 1002, "Omni Artifact");
     }
 
-    public void QuestProgress(int QuestID, string MapName, string MonsterName, string Item = null, bool hasFollowup = true)
+    public void QuestProgress(int QuestID, string MapName, string MonsterName, string Item, bool hasFollowup = true)
     {
         if (Item != null)
         {
@@ -42,12 +42,12 @@ public class Artixpointe
             Core.AddDrop(Item);
         }
         else if (hasFollowup)
-            if (Bot.Quests.IsUnlocked(QuestID+1))
+            if (Bot.Quests.IsUnlocked(QuestID + 1))
                 return;
         Core.SmartKillMonster(QuestID, MapName, MonsterName, 1, true);
     }
 
-    public void QuestMapItem(int QuestID, string MapName, int MapItemID, string Item = null, bool hasFollowup = true)
+    public void QuestMapItem(int QuestID, string MapName, int MapItemID, string Item, bool hasFollowup = true)
     {
         if (Item != null)
         {
@@ -56,7 +56,7 @@ public class Artixpointe
             Core.AddDrop(Item);
         }
         else if (hasFollowup)
-            if (Bot.Quests.IsUnlocked(QuestID+1))
+            if (Bot.Quests.IsUnlocked(QuestID + 1))
                 return;
         Core.EnsureAccept(QuestID);
         Core.GetMapItem(MapItemID, map: MapName);

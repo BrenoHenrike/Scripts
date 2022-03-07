@@ -88,4 +88,28 @@ public class CoreDarkon
             Bot.Wait.ForPickup("Darkon's Receipt");
         }
     }
+
+    public void AstravianMedal(int Quantity = 300)
+    {
+        if (Core.CheckInventory("Astravian Medal", Quantity))
+            return;
+
+        Core.AddDrop("Astravian Medal");
+
+        while ((!Core.CheckInventory("Astravian Medal", Quantity)))
+        {
+            Core.EnsureAccept(8257);
+
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("astraviacastle", "Creature 27|Creature 28", "Defaced Portrait", 10);
+            Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4);
+            
+            Core.JumpWait();
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("astraviacastle", "The Sun", "Burned Banana");
+
+            Core.EnsureComplete(8257);
+            Bot.Wait.ForPickup("Astravian Medal");
+        }
+    }
 }

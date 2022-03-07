@@ -1,5 +1,6 @@
 - ##### Versions
-  - [v2.26 - Latest](#v226)
+  - [v2.26](#v226)
+    - [v2.26.1 - Latest](v2261)
   - [v2.25](#v225)
   - [v2.24](#v224)
     - [v2.24.2](#2242)
@@ -41,8 +42,50 @@
   - [v2.1](#v21)
   - [v2.0](#v20)
 
+### v2.26.1
+**Released on Feb 24, 2022 at 16:00 / 04:00 PM (UTC)**  
+· Released Fezzini (Vladimir)  
+· Converted Fortitude + Hubris to new quest system  
+· Best Gear function now has logging  
+· Best Gear now uses lists instead of arrays  
+· Best Gear now accepts Drakath and Orc as types  
+· _AutoEnhance function is optimized  
+· _AutoEnhance function now has better logging  
+· Made new option for story bot makers to test their bots with and added special logging for this  
+· Made new EnsureLoad function to make loading quests quicker and smarter  
+· Added MapItemQuest overload for multiple mapitems with the same quantity  
+· Added Member-Only messagebox to REP bot's that are Member-Only  
+· Legion Revenant now uses a bypass for /NecroDungeon instead of doing the questline  
+· Legion Revenant now uses a bypass for /Mummies  
+· DoomVault bot now uses UpdateQuest instead of a custom function  
+· Changed a value in updateQuest so its more stable  
+· Added an extra jump to KillUltra for more stability  
+· Chat message logging will no longer have ?'s where there should be []'s  
+· Made the Borgar questline not fill your inventory with junk  
+· Moved isCompletedBefore back to CoreBots  
+· Optimized delays on QuestProgression  
+· Optimized XansLair  
+· Optimized code for Xiang fight in 13 LoC  
+· Steamlined formatting for Core13LoC  
+· Removed the messagebox you get when stopping a bot  
+· Changed Archfiend's data in Smart Enhance  
+· Changed SSoT's data in Smart Enhance  
+· Fixed OnlyPolly in the Celestial Pirate Commander bot not working properly  
+· Fixed rankUpClass not re-equipping your old gear and enhacing it back  
+· Fixed BestGear for people with a non-English keybaord  
+· Fixed BestGear crashing when you had no item with said boost  
+· Fixed typo in Purified Claymore of Destiny  
+· Fixed typo for Cape of Awe  
+· Fixed typos for Burning Blade of Abezeth ( again >.> )  
+· Multiple bots got renamed  
+· Multiple typos fixes in //cs_includes  
+· Multiple fixes to DjinnGate  
+· Multiple fixes to ArchPaladin  
+· Multiple fixes to Core13LoC  
+[Back to top](#versions)
+
 ### v2.26
-**Released on Feb 17, 2022 at 23:00 / 11:00 PM (UTC)**  
+**Released on Feb 21, 2022 at 23:00 / 11:00 PM (UTC)**  
 · Released Hollowborn DoomKnight (Hadmos)  
 · Released Wheel of Love (Hadmos)  
 · Released Living Dungeon (Vladimir)  
@@ -91,7 +134,7 @@
 [Back to top](#versions)
 
 ### v2.25
-**Released on Feb 17, 2022 at 23:00 / 11:00 PM (UTC)**  
+**Released on Feb 21, 2022 at 23:00 / 11:00 PM (UTC)**  
 · Released Dragon Fable Orgins (Hao)  
 · Released Master Ranger (Exelot)  
 · Added Auto Enhancement to all class bots via rankUpClass  

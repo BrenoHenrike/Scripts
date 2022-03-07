@@ -28,7 +28,7 @@ public class GlaceraStory
 
     public void FrozenTower()
     {
-        if (Story.isCompletedBefore(3941))
+        if (Core.isCompletedBefore(3941))
             return;
 
         // Seek the Tower
@@ -136,7 +136,7 @@ public class GlaceraStory
 
     public void FrozenRuins()
     {
-        if (Story.isCompletedBefore(3946))
+        if (Core.isCompletedBefore(3946))
             return;
 
         // FrozenRuins
@@ -160,7 +160,7 @@ public class GlaceraStory
 
     public void Glacera()
     {
-        if (Story.isCompletedBefore(3950))
+        if (Core.isCompletedBefore(3950))
             return;
 
         // Glaera     
@@ -178,7 +178,7 @@ public class GlaceraStory
 
     public void FrozenRuins2()
     {
-        if (Story.isCompletedBefore(3954))
+        if (Core.isCompletedBefore(3954))
             return;
 
         // FrozenRuins encore
@@ -195,7 +195,7 @@ public class GlaceraStory
 
     public void Northstar()
     {
-        if (Story.isCompletedBefore(3971))
+        if (Core.isCompletedBefore(3971))
             return;
 
         // Northstar

@@ -1,10 +1,12 @@
 ﻿using RBot;
+using System.Windows.Forms;
 
 public class CoreLegion
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
 
     public string[] LR =
     {
@@ -13,7 +15,6 @@ public class CoreLegion
         "Conquest Wreath",
         "Legion Revenant"
     };
-
     public string[] LF1 =
     {
         "Aeacus Empowered",
@@ -21,7 +22,6 @@ public class CoreLegion
         "Darkened Essence",
         "Dracolich Contract"
     };
-
     public string[] LF2 =
     {
         "Grim Cohort Conquered",
@@ -35,7 +35,6 @@ public class CoreLegion
         "Dragon Cohort Conquered",
         "Doomwood Cohort Conquered",
     };
-
     public string[] LF3 =
     {
         "Hooded Legion Cowl",
@@ -45,7 +44,6 @@ public class CoreLegion
         "Diamond Token of Dage",
         "Dark Token"
     };
-
     public string[] legionMedals =
     {
         "Legion Round 1 Medal",
@@ -230,6 +228,9 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
+
+        JoinLegion();
+
         LTBrightParagon(quant);
         LTShogunParagon(quant);
         LTFirstClassEntertainment(quant, true, 3);
@@ -240,6 +241,8 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
             return;
+
+        JoinLegion();
 
         Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.EquipClass(ClassType.Farm);
@@ -262,6 +265,8 @@ public class CoreLegion
         if (Core.CheckInventory("Legion Token", quant)
             || (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Paragon Fiend Quest Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Shogun Dage Pet")))
             return;
+
+        JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.Logger($"Farming {quant} Legion Tokens");
@@ -290,6 +295,8 @@ public class CoreLegion
         if (Core.CheckInventory("Legion Token", quant))
             return;
 
+        JoinLegion();
+
         Core.AddDrop("Legion Token");
         Core.Join("legionarena", publicRoom: true);
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
@@ -313,8 +320,11 @@ public class CoreLegion
 
     public void LTDreadrock(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Undead Champion"))
+        if (Core.CheckInventory("Legion Token", quant))
             return;
+
+        JoinLegion();
+        Core.BuyItem("underworld", 216, "Undead Warrior");
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
@@ -331,5 +341,49 @@ public class CoreLegion
         }
     }
 
+    public void JoinLegion()
+    {
+        if (Core.isCompletedBefore(793))
+            return;
 
+        Core.BuyItem("underworld", 215, "Undead Warrior");
+        DialogResult SellUW = MessageBox.Show(
+                                "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
+                                "Sell \"Undead Warrior\"?",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+        Core.AddDrop("Ravaged Champion Soul");
+
+        // Undead Champion Initiation
+        Story.KillQuest(789, "greenguardwest", "Black Knight");
+
+        // Mourn the Soldiers
+        if (!Story.QuestProgression(790))
+        {
+            Core.EnsureAccept(790);
+            Core.HuntMonster("dwarfhold", "Chaos Drow", "Chaos Drow slain");
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Skeletal Soldier slain");
+            Core.HuntMonster("pirates", "Fishman Soldier", "Fishman Soldier slain");
+            Core.HuntMonster("willowcreek", "Dwakel Soldier", "Dwarkel Soldier slain");
+            Core.EnsureComplete(790);
+        }
+
+        // Understanding Undead Champions
+        Story.KillQuest(791, "battleunderb", "Undead Champion");
+
+        // Player vs Power
+        if (!Story.QuestProgression(792))
+        {
+            if (!Core.CheckInventory("Combat Trophy", 200))
+                Farm.BludrutBrawlBoss(quant: 200);
+            Story.ChainQuest(792);
+        }
+
+        // Fail to the King
+        Story.KillQuest(793, "prison", "King Alteon's Knight");
+
+        if (SellUW == DialogResult.Yes)
+            Core.SellItem("Undead Warrior");
+    }
 }

@@ -20,7 +20,7 @@ public class TowerofMirrors
 
     public void TowerofMirrorsSaga()
     {
-        if (Story.isCompletedBefore(5332))
+        if (Core.isCompletedBefore(5332))
             return;
 
         HM.HedgeMaze_Questline();

@@ -19,7 +19,7 @@ public class CastleofBones
 
     public void CastleofBonesSaga()
     {
-        if (Story.isCompletedBefore(4992))
+        if (Core.isCompletedBefore(4992))
             return;
 
         // Enter the Castle of Bone

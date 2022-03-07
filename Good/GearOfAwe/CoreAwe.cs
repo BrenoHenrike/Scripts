@@ -1,3 +1,7 @@
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class CoreAwe
@@ -6,54 +10,65 @@ public class CoreAwe
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
+    public CoreFarms Farm = new CoreFarms();
 
-    public bool GuardianCheck()
+    public int QuestID;
+
+    public void AwePass(int LegendQuest, int GuardianQuest, int FreeQuest)
     {
-        Core.Logger("Checking AQ Guardian");
-        if (Core.CheckInventory("Guardian Awe Pass", 1, true))
+        if (Core.IsMember || Core.CheckInventory("Legendary Awe Pass"))
         {
-            Core.Logger("You're AQ Guardian!");
-            return true;
+            Core.BuyItem("museum", 1130, "Legendary Awe Pass");
+            QuestID = 4175;
         }
-        Core.BuyItem("museum", 53, "Guardian Awe Pass");
-        if (Core.CheckInventory("Guardian Awe Pass"))
+        else if (GuardianCheck())
         {
-            Core.Logger("Guardian Awe Pass bought successfully! You're AQ Guardian!");
-            return true;
+            Farm.BladeofAweREP(5, false);
+            Farm.Experience(35);
+            QuestID = 4176;
         }
         else
         {
-            Core.Logger("You're not AQ Guardian.");
-            return false;
+            Farm.BladeofAweREP(10, false);
+            Farm.Experience(55);
+            Core.BuyItem("museum", 1130, "Armor of Awe Pass");
+            QuestID = 4177;
         }
+    }
+
+    public bool GuardianCheck()
+    {
+        if (Core.CheckInventory("Guardian of Awe Pass"))
+            return true;
+
+        Core.Logger("Checking AQ Guardian");
+        Core.BuyItem("museum", 53, "Guardian Awe Pass");
+        if (Core.CheckInventory("Guardian Awe Pass"))
+        {
+            Core.Logger("You own the Guardian Awe Pass! You're AQ Guardian!");
+            return true;
+        }
+        Core.Logger("You're not AQ Guardian.");
+        return false;
     }
 
     public void AweKill(int questID, string gear)
     {
-        Core.EnsureAccept(questID);
-        if(gear.Equals("pauldron"))
-            Core.KillMonster("gravestrike", "r1", "Left", "Ultra Akriloth", "Pauldron Shard", 15, false);
-        else if(gear.Equals("breastplate"))
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Breastplate Shard", 10, false);
-        else if(gear.Equals("vambrace"))
-            Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Vambrace Shard", 15, false, publicRoom: true);
-        else if(gear.Equals("gauntlet"))
-            Core.KillMonster("alteonbattle", "Enter", "Spawn", "Ultra Alteon", "Gauntlet Shard", 5, false);
-        else if(gear.Equals("greaves"))
-            Core.KillMonster("bosschallenge", "r17", "Left", "Mutated Void Dragon", "Greaves Shard", 15, false, publicRoom: true);
-        else if(gear.Equals("helm"))
-        {
-            Story.UpdateQuest(3008);
-            Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Story.UpdateQuest(3004);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false);
-        }
+        Core.EquipClass(ClassType.Solo);
+        if (gear.Equals("pauldron"))
+            Story.KillQuest(questID, "gravestrike", "Ultra Akriloth");
+        else if (gear.Equals("breastplate"))
+            Story.KillQuest(questID, "aqlesson", "Carnax");
+        else if (gear.Equals("vambrace"))
+            Story.KillQuest(questID, "bloodtitan", "Ultra Blood Titan");
+        else if (gear.Equals("gauntlet"))
+            Story.KillQuest(questID, "alteonbattle", "Ultra Alteon");
+        else if (gear.Equals("greaves"))
+            Story.KillQuest(questID, "bosschallenge", "Mutated Void Dragon");
         else
         {
             Story.UpdateQuest(3008);
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape  Shard", 1, false);
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
         }
-        Core.EnsureComplete(questID);
     }
-
 }

@@ -14,6 +14,9 @@ public class NulgathDemandsWork
     public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(new[] {"Unidentified 35", "Archfiend Essence Fragment", "Unidentified 27", "Unidentified 26",
+            "Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction"});
         Core.SetOptions();
 
         Unidentified35();
@@ -33,7 +36,7 @@ public class NulgathDemandsWork
         int i = 0;
         while (!Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction", "Unidentified 35" }, toInv: false))
         {
-            if (Core.CheckInventory("Archfiend Essence Fragment", 9) 
+            if (Core.CheckInventory("Archfiend Essence Fragment", 9)
                 && Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" }))
                 break;
 
@@ -72,7 +75,7 @@ public class NulgathDemandsWork
                 Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
                 Core.Logger("Golden Hanzo Void bought");
             }
-            
+
             Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
 
             Core.EnsureCompleteChoose(5259, new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" });
@@ -81,7 +84,7 @@ public class NulgathDemandsWork
             i++;
         }
 
-        if(Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35"))
+        if (Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35"))
         {
             Core.JoinTercessuinotlim();
             Bot.Player.Jump("Swindle", "Left");

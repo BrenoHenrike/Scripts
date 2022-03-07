@@ -10,6 +10,7 @@ public class BambloozevsDrudgen
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         MaxBags();
@@ -22,7 +23,7 @@ public class BambloozevsDrudgen
         Core.AddDrop(Nulgath.bagDrops);
 
         Nulgath.BambloozevsDrudgen("Diamond of Nulgath", 1000);
-        if(Core.CheckInventory("Drudgen the Assistant"))
+        if (Core.CheckInventory("Drudgen the Assistant"))
         {
             while (!Core.CheckInventory("Tainted Gem", 1000))
                 Nulgath.ContractExchange(ChooseReward.TaintedGem);

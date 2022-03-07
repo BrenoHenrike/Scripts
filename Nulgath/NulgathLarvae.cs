@@ -10,6 +10,7 @@ public class NulgathLarvae
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         Nulgath.NulgathLarvae();

@@ -26,7 +26,7 @@ public class PinkBladeOfDestruciton
         if (Core.CheckInventory("Pink Blade of Destruction"))
             return;
 
-        P3.Part3();
+        P3.StoryLine();
 
         Core.AddDrop("Fuchsia Dye", "Zealous Badge", "Pink Blade of Destruction");
 

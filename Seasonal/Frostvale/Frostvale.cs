@@ -30,7 +30,7 @@ public class Frostvale
 
     public void IceCave()
     {
-        if (Story.isCompletedBefore(906))
+        if (Core.isCompletedBefore(906))
             return;
 
         // Rescue Blizzy
@@ -91,7 +91,7 @@ public class Frostvale
 
     public void SnowGlobe()
     {
-        if (Story.isCompletedBefore(1508))
+        if (Core.isCompletedBefore(1508))
             return;
 
         // Shaking the Globes
@@ -123,7 +123,7 @@ public class Frostvale
 
     public void Alpine()
     {
-        if (Story.isCompletedBefore(1521))
+        if (Core.isCompletedBefore(1521))
             return;
 
         // Snow Way to Know Where to Go
@@ -160,7 +160,7 @@ public class Frostvale
 
     public void SnowyVale()
     {
-        if (Story.isCompletedBefore(2576))
+        if (Core.isCompletedBefore(2576))
             return;
 
         Core.AddDrop("Ray of Hope", "Sands of Time");
@@ -255,7 +255,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        if (Story.isCompletedBefore(2582))
+        if (Core.isCompletedBefore(2582))
             return;
 
         // A Little Warmth and Light
@@ -282,7 +282,7 @@ public class Frostvale
 
     public void ColdWindValley()
     {
-        if (Story.isCompletedBefore(6132))
+        if (Core.isCompletedBefore(6132))
             return;
 
         // Help Blizzy

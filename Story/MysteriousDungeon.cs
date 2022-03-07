@@ -25,11 +25,11 @@ public class MysteriousDungeon
 
     public void Storyline()
     {
-        if (Story.isCompletedBefore(5451))
+        if (Core.isCompletedBefore(5451))
             return;
 
         //cursed artifact shop - 5428
-        Story.MapItemQuest(5428, "cursedshop", MapItemID: 4803, AutoCompleteQuest: false);
+        Story.MapItemQuest(5428, "cursedshop", MapItemID: 4803);
 
         //lamps, painting and chairs, oh my!
         Story.KillQuest(5429, "cursedshop", "Antique Chair");
@@ -44,8 +44,8 @@ public class MysteriousDungeon
         Story.KillQuest(5432, "cursedshop", "Grandfather Clock");
 
         //Dr. Darkwood's Robe
-        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4804, AutoCompleteQuest: false);
-        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4805, AutoCompleteQuest: false);
+        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4804);
+        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4805);
 
         //defeat the arcane sentinel
         Story.KillQuest(5434, "cursedshop", "Arcane Sentinel");
@@ -82,22 +82,22 @@ public class MysteriousDungeon
         Story.KillQuest(5445, "MysteriousDungeon", "Mysterious Stranger");
 
         // Shut Up And Listen, Vaden!
-        Story.KillQuest(5446, "MysteriousDungeon", "Vaden");
+        Story.KillQuest(5446, "MysteriousDungeon", "Vaden", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Xeight!
-        Story.KillQuest(5447, "MysteriousDungeon", "Xeight");
+        Story.KillQuest(5447, "MysteriousDungeon", "Xeight", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Ziri
-        Story.KillQuest(5448, "MysteriousDungeon", "Ziri");
+        Story.KillQuest(5448, "MysteriousDungeon", "Ziri", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Pax!
-        Story.KillQuest(5449, "MysteriousDungeon", "Pax");
+        Story.KillQuest(5449, "MysteriousDungeon", "Pax", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Sekt!
-        Story.KillQuest(5450, "MysteriousDungeon", "Sekt");
+        Story.KillQuest(5450, "MysteriousDungeon", "Sekt", AutoCompleteQuest: false);
 
         // Shut Up And Listen, Groglurk!
-        Story.KillQuest(5451, "MysteriousDungeon", "Scarletta");
+        Story.KillQuest(5451, "MysteriousDungeon", "Scarletta", AutoCompleteQuest: false);
     }
 
 }

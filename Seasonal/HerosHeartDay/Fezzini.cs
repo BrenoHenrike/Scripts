@@ -20,7 +20,7 @@ public class FezziniStory
     public void FezziniScript()
     {
 
-        if (Story.isCompletedBefore(7389))
+        if (Core.isCompletedBefore(7389))
             return;
 
         //Redundant But Needed AddDrop
@@ -30,7 +30,7 @@ public class FezziniStory
         Story.KillQuest(7377, "fezzini", "Zombie Dancer");
 
         //Rats n' Goo
-        Story.KillQuest(7378, "fezzini", new[] {"Street Rat", "Zombie Goo"});
+        Story.KillQuest(7378, "fezzini", new[] { "Street Rat", "Zombie Goo" });
 
         //Get a Clue
         Story.KillQuest(7379, "fezzini", "Zombie Dancer");
@@ -42,13 +42,13 @@ public class FezziniStory
         Story.KillQuest(7381, "fezzini", "Zombie Dancer");
 
         //Get Some Fur
-        Story.KillQuest(7382, "fezzini", new[] {"Zombie Goo", "Street Rat"});
+        Story.KillQuest(7382, "fezzini", new[] { "Zombie Goo", "Street Rat" });
 
         //Go Tell Beleen
         Story.MapItemQuest(7383, "fezzini", 7101);
 
         //Ask Around
-        Story.MapItemQuest(7384, "fezzini", new[] {7102, 7103, 7104, 7105, 7106});
+        Story.MapItemQuest(7384, "fezzini", new[] { 7102, 7103, 7104, 7105, 7106 });
 
         //Zombie Invasion
         Story.KillQuest(7385, "fezzini", "Zombie Dancer");

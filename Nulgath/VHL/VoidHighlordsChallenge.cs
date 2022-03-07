@@ -10,9 +10,11 @@ public class VoidHighlordsChallenge
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreVHL VHL = new CoreVHL();
+    public CoreNulgath Nulgath = new CoreNulgath();
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
         Core.SetOptions();
 
         VHL.VHLChallenge(15);

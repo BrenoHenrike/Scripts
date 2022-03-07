@@ -21,6 +21,8 @@ public class VoidPaladin
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(ADKRewards);
         Core.SetOptions();
 
         DoAll();

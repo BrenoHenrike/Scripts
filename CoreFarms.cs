@@ -131,7 +131,7 @@ public class CoreFarms
         Bot.Options.AggroMonsters = true;
 
         while ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10))
-            Core.KillMonster("icestormarena", "r4", "Left", "*", log: false, publicRoom: true);
+            Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
 
         while ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10))
             Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
@@ -541,8 +541,14 @@ public class CoreFarms
 
     public void BeastMasterREP(int rank = 10)
     {
-        if (FactionRank("BeastMaster") >= rank || !Core.IsMember)
+        if (FactionRank("BeastMaster") >= rank)
             return;
+        if (!Core.IsMember)
+        {
+            Core.Logger("Beast Master REP is Member-Only", messageBox: true);
+            return;
+        }
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
@@ -589,7 +595,7 @@ public class CoreFarms
     {
         if (FactionRank("Blade of Awe") >= rank && !farmBoA)
             return;
-        if (Core.CheckInventory("Blade of Awe", toInv: false) && farmBoA)
+        if (farmBoA && Core.CheckInventory("Blade of Awe"))
             farmBoA = false;
         if (farmBoA)
             Core.AddDrop("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
@@ -1390,8 +1396,14 @@ public class CoreFarms
 
     public void SkyguardREP(int rank = 10)
     {
-        if (FactionRank("Skyguard") >= rank || !Core.IsMember)
+        if (FactionRank("Skyguard") >= rank)
             return;
+        if (!Core.IsMember)
+        {
+            Core.Logger("Skyguard REP is Member-Only", messageBox: true);
+            return;
+        }
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
@@ -1434,8 +1446,7 @@ public class CoreFarms
         Core.AddDrop("Mystic Quills", "Mystic Parchment");
         Core.Logger($"Farming rank {rank}");
 
-        RBot.Factions.Faction spellcrafting = Bot.Player.Factions.Find(f => f.ID == 23);
-        if (spellcrafting == null)
+        if (FactionRank("SpellCrafting") == 0)
         {
             Core.EnsureAccept(2260);
             Core.Join("dragonrune");

@@ -21,7 +21,7 @@ public class NecroticSwordOfDoom
     // True = Bot will try to keep your inventory as empty as possible by farming each individual piece one by one when they are needed in the merge shop.
     // False = Bot will farm all items first and then merge them all. Best used if you want overview of how far you are. And will also be faster because less /join's
     // Recommended: false
-    private bool OptimizeInv = false;
+    private bool OptimizeInv = true;
     private int EssenceQuantity;
 
     public ScriptInterface Bot => ScriptInterface.Instance;

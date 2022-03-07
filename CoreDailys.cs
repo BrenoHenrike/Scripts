@@ -64,7 +64,7 @@ public class CoreDailys
     /// <param name="isTemp">Whether it is temporary</param>
     /// <param name="cell">Cell where the monster is (optional)</param>
     /// <param name="pad">Pad where the monster is</param>
-    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = null, bool publicRoom = false)
+    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string? cell = null, string? pad = null, bool publicRoom = false)
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return;
@@ -84,7 +84,7 @@ public class CoreDailys
     /// <param name="quest">ID of the quest</param>
     /// <param name="items">Items to add to drop grabber and unbank</param>
     /// <returns></returns>
-    public bool CheckDaily(int quest, params string[] items)
+    public bool CheckDaily(int quest, params string?[] items)
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return false;
@@ -97,7 +97,7 @@ public class CoreDailys
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void MineCrafting(string[] metals = null, int quant = 2)
+    public void MineCrafting(string?[] metals = null, int quant = 2)
     {
         if (metals == null)
             metals = MineCraftingMetals;
@@ -128,23 +128,23 @@ public class CoreDailys
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void HardCoreMetals(string[] metals = null, int quant = 1)
+    public void HardCoreMetals(string?[] metals = null, int quant = 1)
     {
-        if(!Core.IsMember)
+        if (!Core.IsMember)
             return;
-        if(metals == null)
+        if (metals == null)
             metals = HardCoreMetalsMetals;
         if (Core.CheckInventory(metals))
             return;
-        if(!CheckDaily(2098, metals))
+        if (!CheckDaily(2098, metals))
             return;
 
         Core.EnsureAccept(2098);
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
-        foreach (string metal in metals)
+        foreach (string? metal in metals)
         {
-            if(!Core.CheckInventory(metal, quant, false))
+            if (!Core.CheckInventory(metal, quant, false))
             {
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2098, metalID);
@@ -152,7 +152,7 @@ public class CoreDailys
                 break;
             }
         }
-        if(Bot.Quests.IsInProgress(2098))
+        if (Bot.Quests.IsInProgress(2098))
             Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");
     }
 
@@ -217,7 +217,7 @@ public class CoreDailys
     {
         if (Core.CheckInventory("Cysero's SUPER Hammer", toInv: false))
             return;
-        if(!Core.CheckInventory("Mad Weaponsmith"))
+        if (!Core.CheckInventory("Mad Weaponsmith"))
             return;
         if (!CheckDaily(4310, "C-Hammer Token") && !Core.IsMember)
             return;
@@ -256,7 +256,7 @@ public class CoreDailys
         DailyRoutine(3826, "alteonbattle", "Ultra Alteon", "Alteon Defeated");
         DailyRoutine(3825, "sepulchurebattle", "Ultra Sepulchure", "Sepulchure Defeated");
     }
-    
+
     public void CollectorClass()
     {
         if (Core.CheckInventory("The Collector", toInv: false))
@@ -270,10 +270,10 @@ public class CoreDailys
         if (Core.IsMember)
         {
             DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
-            DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right"); 
+            DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
         }
     }
-    
+
     public void Cryomancer()
     {
         if (Core.CheckInventory("Cryomancer", toInv: false))
@@ -288,7 +288,7 @@ public class CoreDailys
             DailyRoutine(3966, "frozentower", "Frost Invader", "Dark Ice");
         Core.ToBank("Glacera Ice Token");
     }
-    
+
     public void Pyromancer()
     {
         if (Core.CheckInventory("Pyromancer", toInv: false))
@@ -304,7 +304,7 @@ public class CoreDailys
             DailyRoutine(2209, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
         Core.ToBank("Shurpu Blaze Token");
     }
-    
+
     public void DeathKnightLord()
     {
         if (Core.CheckInventory("DeathKnight Lord", toInv: false))
@@ -314,7 +314,7 @@ public class CoreDailys
         DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
         Core.ToBank("Shadow Skull");
     }
-    
+
     public void ShadowScytheClass()
     {
         if (Core.CheckInventory("ShadowScythe General"))

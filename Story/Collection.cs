@@ -19,7 +19,7 @@ public class Collection
 
     public void CollectionStory()
     {
-        if (Story.isCompletedBefore(1348))
+        if (Core.isCompletedBefore(1348))
             return;
 
         // This Town in a Desktop Globe

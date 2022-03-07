@@ -20,7 +20,7 @@ public class NecroDungeon
 
     public void NecrodungeonStoryLine()
     {
-        if (Story.isCompletedBefore(2061))
+        if (Core.isCompletedBefore(2061))
             return;
 
         //descent into darkness - 2044

@@ -9,16 +9,14 @@ public class CoreLR
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
-    public JoinLegion JoinLegion = new JoinLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
-    public NecroDungeon ND = new NecroDungeon();
 
     public void GetLR(bool rankUpClass)
     {
         if (Core.CheckInventory("Legion Revenant"))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.legionMedals);
@@ -43,7 +41,7 @@ public class CoreLR
         if (Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         bool hasDarkCaster = false;
         if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
@@ -85,6 +83,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
+        Story.UpdateQuest(2060);
         while (!Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Core.EnsureAccept(6897);
@@ -109,8 +108,7 @@ public class CoreLR
         if (Core.CheckInventory("Conquest Wreath", quant))
             return;
 
-        JoinLegion.JoinLegionQuests();
-        ND.NecrodungeonStoryLine();
+        Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);
@@ -119,15 +117,12 @@ public class CoreLR
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
+        Story.UpdateQuest(4614);
         while (!Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);
 
-            if (Story.isCompletedBefore(4613))
-                Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
-            else
-                Core.KillMonster("cruxship", "r10", "Left", "Mummy", "Ancient Cohort Conquered", 500, false);
-
+            Core.KillMonster("mummies", "Enter", "Spawn", "*", "Ancient Cohort Conquered", 500, false);
             Core.KillMonster("doomvault", "r1", "Right", "*", "Grim Cohort Conquered", 500, false);
             Core.KillMonster("wrath", "r5", "Left", "*", "Pirate Cohort Conquered", 500, false);
             Core.KillMonster("doomwar", "r6", "Left", "*", "Battleon Cohort Conquered", 500, false);
@@ -150,7 +145,7 @@ public class CoreLR
         if (Core.CheckInventory("Exalted Crown", quant))
             return;
 
-        JoinLegion.JoinLegionQuests();
+        Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);

@@ -12,8 +12,13 @@ public class WillpowerExtraction
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(Nulgath.tercessBags);
+        Core.BankingBlackList.AddRange(new[] {"Unidentified 34", "Unidentified 19", "Necrot", "Chaoroot", "Doomatter",
+            "Mortality Cape of Revontheus", "Facebreakers of Nulgath", "SightBlinder Axes of Nulgath", "Mystic Tribal Sword",
+            "King Klunk's Crown", "Golden Shadow Breaker", "Shadow Terror Axe"});
         Core.SetOptions();
-        
+
         Unidentified34(90);
 
         Core.SetOptions(false);
@@ -45,7 +50,7 @@ public class WillpowerExtraction
 
             if (!Core.CheckInventory("Mystic Tribal Sword"))
                 Farm.ArcangroveREP();
-                Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
+            Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
             Nulgath.Supplies("Unidentified 19");
             Core.EquipClass(ClassType.Farm);

@@ -24,9 +24,11 @@ public class VoidSpartan
         "Void Spartan Helm",
         "Void Spartan Helm and Scarf"
     };
-    
+
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(Rewards);
         Core.SetOptions();
 
         GetSpartan();
@@ -41,7 +43,7 @@ public class VoidSpartan
         Core.AddDrop("Zee's Red Jasper", "Fiend Cloak of Nulgath");
 
         int i = 1;
-        while(!Core.CheckInventory(Rewards, toInv: false))
+        while (!Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(5982);
 
