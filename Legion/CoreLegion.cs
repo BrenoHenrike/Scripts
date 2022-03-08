@@ -324,7 +324,7 @@ public class CoreLegion
             return;
 
         JoinLegion();
-        Core.BuyItem("underworld", 216, "Undead Warrior");
+        Core.BuyItem("underworld", 216, "Undead Champion");
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
