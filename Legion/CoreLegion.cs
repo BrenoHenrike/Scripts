@@ -246,7 +246,8 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Legion Tokens");
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
         {
@@ -269,7 +270,8 @@ public class CoreLegion
         JoinLegion();
 
         Core.AddDrop("Legion Token");
-        Core.Logger($"Farming {quant} Legion Tokens");
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
         {
@@ -328,7 +330,8 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Legion Tokens");
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.Join("dreadrock");
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
