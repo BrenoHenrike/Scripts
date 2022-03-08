@@ -1,10 +1,15 @@
+
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/SevenCircles(War).cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 
 using RBot;
+using RBot.Shops;
+using RBot.Items;
+using System.Collections.Generic;
 
 public class DageChallengeMerge
 {
@@ -13,15 +18,10 @@ public class DageChallengeMerge
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreFarms Farm = new CoreFarms();
+    public CoreLegion Legion = new CoreLegion();
     public SevenCircles Circles = new SevenCircles();
 
-    string[] Items1 = {
-     "Underworld Medal",
-    "Underworld Laurel",
-    "Underworld Accolade"
-    };
-
-    string[] Items2 = {
+    string[] MergeItems = {
     "Avarice of the Legion's Scythe",
     "Virgil of the Legion's Staff",
     "Avarice of the Legion",
@@ -41,46 +41,18 @@ public class DageChallengeMerge
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.Undead, true);
-        SoulForge();
-        ObsidianRock();
-        Circles.CirclesWar();
-        DageQuests();
-        Merge(true);//edit true > false  if u want a specific merge item from "items2" above, and then put teh itme in quotation marks ex: Merge(false, "exampleitem"); (proper caps is reqired.)
+        MergePrep();
 
         Core.SetOptions(false);
     }
 
-    public void SoulForge()
+    public void MergePrep()
     {
-        if (Core.CheckInventory("SoulForge Hammer"))
-            return;
-
-        Core.AddDrop("SoulForge Hammer");
-
-        Core.AddDrop("Zardman's StoneHammer", "Iron Hammer", "Elemental Rock Hammer", "SoulForge Hammer");
-        Core.EnsureAccept(2741);
-        Core.HuntMonster("Forest", "Zardman Grunt", "Zardman's StoneHammer", isTemp: false);
-        Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", isTemp: false);
-        Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Rock Hammer", isTemp: false);
-        Core.EnsureComplete(2741);
-    }
-
-    public void ObsidianRock(int quant = 10)
-    {
-        if (Core.CheckInventory("Obsidian Rock", quant))
-            return;
-
-        Core.AddDrop("Obsidian Rock");
-
-        Core.EquipClass(ClassType.Farm);
-        while (!Core.CheckInventory("Obsidian Rock", 10))
-        {
-            Core.EnsureAccept(2742);
-            Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10);
-            Core.EnsureComplete(2742);
-            Bot.Wait.ForPickup("Obsidian Rock");
-        }
+        Adv.BestGear(GearBoost.Undead, true);
+        Legion.SoulForgeHammer();
+        Circles.CirclesWar(); //Required to turnin & accept the SoH quests
+        DageQuests(); //to unlock mergeshop
+        Merge("all"); //if specific, just put the itemname in the "" 's
     }
 
     public void DageQuests()
@@ -109,7 +81,7 @@ public class DageChallengeMerge
             Core.EnsureAccept(8545);
             if (!Core.CheckInventory("Dage's Favor", 200))
                 Core.HuntMonster("underworld", "Legion Fenrir", "Dage's Favor", 200, isTemp: false);
-            ObsidianRock();
+            Legion.ObsidianRock(10);
             SoH();
             Core.EnsureComplete(8545);
             Bot.Wait.ForPickup("Underworld Medal");
@@ -124,67 +96,6 @@ public class DageChallengeMerge
             Core.HuntMonster("dagefortress", "Grrrberus", "Grrrberus's Grr Grrr");
             Core.EnsureComplete(8546);
             Bot.Wait.ForPickup("Underworld Accolade");
-        }
-    }
-
-
-    public void MergeMaterials(String? item = null, int quant = 1000)
-    {
-        int i = quant - Bot.Inventory.GetQuantity(item);
-        int z = 1;
-
-        if (Core.CheckInventory(item, quant))
-            return;
-
-        if (item != null)
-            Core.AddDrop(item);
-
-        if (item == "Underworld Laurel")
-        {
-            while (!Core.CheckInventory("Underworld Laurel", quant))
-            {
-                Core.Logger($"Farming {item}, {quant - Bot.Inventory.GetQuantity(item)}/{quant}");
-                Core.EnsureAccept(8544);
-                Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled");
-                Core.EnsureComplete(8544);
-                Bot.Wait.ForPickup("Underworld Laurel");
-                Core.Logger($"Quest Completed x{z++} times");
-            }
-        }
-
-        if (item == "Underworld Medal")
-        {
-
-            while (!Core.CheckInventory("Underworld Medal", quant))
-            {
-                Core.Logger($"Farming {item}, {quant - Bot.Inventory.GetQuantity(item)}/{quant}");
-
-                Core.EquipClass(ClassType.Farm);
-
-                Core.EnsureAccept(8545);
-                if (!Core.CheckInventory("Dage's Favor", 200))
-                    Core.HuntMonster("underworld", "Legion Fenrir", "Dage's Favor", 200, isTemp: false);
-                ObsidianRock();
-                SoH(30);
-                Core.EnsureComplete(8545);
-                Bot.Wait.ForPickup("Underworld Medal");
-                Core.Logger($"Quest Completed x{z++} times");
-            }
-        }
-
-        if (item == "Underworld Accolade")
-        {
-            while (!Core.CheckInventory("Underworld Accolade", quant))
-            {
-                Core.Logger($"Farming {item}, {quant - Bot.Inventory.GetQuantity(item)}/{quant}");
-                Core.EnsureAccept(8546);
-                Core.HuntMonster("legionarena", "legion fiend rider", "Fiend Rider's Approval");
-                Core.HuntMonster("frozenlair", "lich lord", "Lich Lord's Approval");
-                Core.HuntMonster("dagefortress", "Grrrberus", "Grrrberus's Grr Grrr");
-                Core.EnsureComplete(8546);
-                Bot.Wait.ForPickup("Underworld Accolade");
-                Core.Logger($"Quest Completed x{z++} times");
-            }
         }
     }
 
@@ -216,103 +127,98 @@ public class DageChallengeMerge
                     Core.EnsureComplete(7981);
                 }
             }
-            Core.KillMonster("sevencircleswar", "r5", "Left", "Heresy Guard", "Heresy Guards Defeated", 12, log: false);
+            Core.KillMonster("sevencircleswar", "r5", "Left", "Heresy Guard", "Heresy Guards Defeated", 12);
             Core.EnsureComplete(7983);
             Core.Logger($"Quest Completed x{z++} times");
         }
     }
 
-    public void Merge(bool Getall = true, string item = "any")
+    public void MergeMats(int quantLaurel, int quantMedal, int quantAccolade)
     {
-        if (Getall && item == "any" && Core.CheckInventory(Items2))
-            return;
 
-        if (!Getall && item != "any" && Core.CheckInventory(item))
-            return;
-
-        Core.AddDrop(Items2);
-
-        if (!Getall && item != "any" && !Core.CheckInventory(item))
+        while (Core.CheckInventory("Underworld Laurel", quantLaurel))
         {
-            MergeMaterials("Underworld Laurel", 7);
-            MergeMaterials("Underworld Medal", 7);
-            MergeMaterials("Underworld Accolade", 7);
+            Core.EnsureAccept(8544);
+            Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled");
+            Core.EnsureComplete(8544);
+            Bot.Wait.ForPickup("Underworld Laurel");
+        }
 
-            if (item == "Avarice of the Legion's Helm")
-            {
-                MergeMaterials("Underworld Laurel", 2);
-                MergeMaterials("Underworld Medal", 2);
-                MergeMaterials("Underworld Accolade", 2);
+        while (Core.CheckInventory("Underworld Medal", quantMedal))
+        {
 
-                while (!Core.CheckInventory("Avarice of the Legion's Skull") || !Core.CheckInventory("Avarice of the Legion's Hood"))
-                {
-                    Core.EquipClass(ClassType.Solo);
+            Core.EquipClass(ClassType.Farm);
 
-                    Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull");
-                    Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood");
-                }
-                Core.BuyItem("dage", 2118, "Avarice of the Legion's Helm");
-                Core.ToBank("Avarice of the Legion's Helm");
-            }
+            Core.EnsureAccept(8545);
+            if (!Core.CheckInventory("Dage's Favor", 200))
+                Core.HuntMonster("underworld", "Legion Fenrir", "Dage's Favor", 200, isTemp: false);
+            Legion.ObsidianRock(10);
+            SoH(30);
+            Core.EnsureComplete(8545);
+            Bot.Wait.ForPickup("Underworld Medal");
+        }
 
+        while (Core.CheckInventory("Underworld Accolade", quantAccolade))
+        {
+            Core.EnsureAccept(8546);
+            Core.HuntMonster("legionarena", "legion fiend rider", "Fiend Rider's Approval");
+            Core.HuntMonster("frozenlair", "lich lord", "Lich Lord's Approval");
+            Core.HuntMonster("dagefortress", "Grrrberus", "Grrrberus's Grr Grrr");
+            Core.EnsureComplete(8546);
+            Bot.Wait.ForPickup("Underworld Accolade");
+        }
+    }
+
+    public void Merge(string item = "all")
+    {
+        if (item == "all" && Core.CheckInventory(MergeItems))
+            return;
+
+        if (item != "all" && Core.CheckInventory(item))
+            return;
+
+        if (item != "all" && !Core.CheckInventory(item))
+        {
+            Core.Join("dage");
+            Bot.Shops.Load(2118);
+            List<ShopItem> shopdata = Bot.Shops.ShopItems;
+
+            List<ItemBase> Requirements = shopdata.Find(i => i.Name == item).Requirements;
+            int Laurel = Requirements.Find(i => i.Name == "Underworld Laurel").Quantity;
+            int Medal = Requirements.Find(i => i.Name == "Underworld Medal").Quantity;
+            int Accolade = Requirements.Find(i => i.Name == "Underworld Accolade").Quantity;
+
+            MergeMats(Laurel, Medal, Accolade);
             Core.BuyItem("dage", 2118, item);
-            Core.Bot.Wait.ForPickup(item);
             Core.ToBank(item);
         }
 
-        if (Getall && item == "any" && !Core.CheckInventory(Items2))
+        if (item == "all" && !Core.CheckInventory(MergeItems))
         {
-            while (!Core.CheckInventory(Items2))
+            Core.Join("dage");
+            Bot.Shops.Load(2118);
+            List<ShopItem> shopdata = Bot.Shops.ShopItems;
+
+            foreach (string MergeItem in MergeItems)
             {
-                if (item == "Avarice of the Legion's Helm")
+                if (!Core.CheckInventory(MergeItem, 1, toInv: false))
                 {
-                    MergeMaterials("Underworld Laurel", 2);
-                    MergeMaterials("Underworld Medal", 2);
-                    MergeMaterials("Underworld Accolade", 2);
-
-                    while (!Core.CheckInventory("Avarice of the Legion's Skull") || !Core.CheckInventory("Avarice of the Legion's Hood"))
+                    if (MergeItem == "Avarice of the Legion's Helm")
                     {
-                        Core.AddDrop("Avarice of the Legion's Skull", "Avarice of the Legion's Hood");
                         Core.EquipClass(ClassType.Solo);
-
                         Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull");
                         Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood");
                     }
-                    Core.BuyItem("dage", 2118, "Avarice of the Legion's Helm");
-                    Core.ToBank("Avarice of the Legion's Helm");
+                    List<ItemBase> Requirements = shopdata.Find(i => i.Name == MergeItem).Requirements;
+                    int Laurel = Requirements.Find(i => i.Name == "Underworld Laurel").Quantity;
+                    int Medal = Requirements.Find(i => i.Name == "Underworld Medal").Quantity;
+                    int Accolade = Requirements.Find(i => i.Name == "Underworld Accolade").Quantity;
+
+                    MergeMats(Laurel, Medal, Accolade);
+                    Core.BuyItem("dage", 2118, MergeItem);
+                    Core.ToBank(MergeItem);
                 }
-
-                MergeMaterials("Underworld Laurel", 48);
-                MergeMaterials("Underworld Medal", 48);
-                MergeMaterials("Underworld Accolade", 48);
-                Core.AddDrop(Items2);
-                Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull");
-                Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood");
-
-                // Merge buying:
-                if (!Core.CheckInventory("Avarice of the Legion's Scythe"))
-                    Core.BuyItem("dage", 2118, "Avarice of the Legion's Scythe");
-                if (!Core.CheckInventory("Virgil of the Legion's Staff"))
-                    Core.BuyItem("dage", 2118, "Virgil of the Legion's Staff");
-                if (!Core.CheckInventory("Avarice of the Legion"))
-                    Core.BuyItem("dage", 2118, "Avarice of the Legion");
-                if (!Core.CheckInventory("Luxuria of the Legion"))
-                    Core.BuyItem("dage", 2118, "Luxuria of the Legion");
-                if (!Core.CheckInventory("Virgil of the Legion"))
-                    Core.BuyItem("dage", 2118, "Virgil of the Legion");
-                if (!Core.CheckInventory("Avarice of the Legion's Helm"))
-                    Core.BuyItem("dage", 2118, "Avarice of the Legion's Helm");
-                if (!Core.CheckInventory("Virgil of the Legion's Helm"))
-                    Core.BuyItem("dage", 2118, "Virgil of the Legion's Helm");
-                if (!Core.CheckInventory("Avarice of the Legion's Scarf"))
-                    Core.BuyItem("dage", 2118, "Avarice of the Legion's Scarf");
-                if (!Core.CheckInventory("Eye of Luxuria Runes"))
-                    Core.BuyItem("dage", 2118, "Eye of Luxuria Runes");
-                if (!Core.CheckInventory("Virgil of the Legion's Cape"))
-                    Core.BuyItem("dage", 2118, "Virgil of the Legion's Cape");
             }
-            Core.ToBank(Items2);
         }
     }
 }

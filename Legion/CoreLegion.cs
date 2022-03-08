@@ -386,4 +386,21 @@ public class CoreLegion
         if (SellUW == DialogResult.Yes)
             Core.SellItem("Undead Warrior");
     }
+
+    public void ObsidianRock(int quant)
+    {
+        if (Core.CheckInventory("Obsidian Rock", quant))
+            return;
+
+        Core.AddDrop("Obsidian Rock");
+
+        Core.EquipClass(ClassType.Farm);
+        while (!Core.CheckInventory("Obsidian Rock", 10))
+        {
+            Core.EnsureAccept(2742);
+            Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10);
+            Core.EnsureComplete(2742);
+            Bot.Wait.ForPickup("Obsidian Rock");
+        }
+    }
 }

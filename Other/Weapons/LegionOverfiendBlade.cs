@@ -15,56 +15,62 @@ public class LegionBlade
     {
         Core.SetOptions();
 
-        Blade(0, 0, 0);
+        Blade();
 
         Core.SetOptions(false);
     }
 
-
-    public void Blade(int questID, int quant1, int quant2, string? item = null)
+    public void Blade()
     {
         if (Core.CheckInventory(Rewards))
             return;
 
         Core.Logger("Checking for one of the required pets.");
 
-        if (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Shogun Dage Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Paragon Fiend Quest Pet"))
-            Core.Logger("You Don't Own the any of the Correct Pets, Stopping", stopBot: true);
+        string item;
+        int quant1;
+        int quant2;
+        int questID;
 
 
-        if (Core.CheckInventory("Shogun Paragon Pet"))
+        if (Core.CheckInventory("Paragon Fiend Quest Pet"))
+        {
+            item = "Paragon Fiend Quest Pet";
+            questID = 6748;
+            quant1 = 1;
+            quant2 = 1;
+        }
+        else if (Core.CheckInventory("Shogun Paragon Pet"))
         {
             item = "Shogun Paragon Pet";
             questID = 5751;
             quant1 = 8;
             quant2 = 10;
-            Core.Logger($"You Own {item}");
         }
+
         else if (Core.CheckInventory("Shogun Dage Pet"))
         {
             item = "Shogun Dage Pet";
             questID = 5752;
             quant1 = 1;
             quant2 = 1;
-            Core.Logger($"You Own {item}");
         }
+
         else if (Core.CheckInventory("Paragon Ringbearer"))
         {
             item = "Paragon Ringbearer";
             questID = 7071;
             quant1 = 1;
             quant2 = 1;
-            Core.Logger($"You Own {item}");
-        }
-        else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
-        {
-            item = "Paragon Fiend Quest Pet";
-            questID = 6748;
-            quant1 = 1;
-            quant2 = 1;
-            Core.Logger($"You Own {item}");
         }
 
+        else
+        {
+            Core.Logger("You Don't Own the any of the Correct Pets, Stopping", stopBot: true);
+            return;
+        }
+
+        Core.Logger($"You Own {item}");
 
         Quest QuestData = Core.EnsureLoad(questID);
 
