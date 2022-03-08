@@ -40,13 +40,13 @@ public class CoreBots
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
-    public string SoloClass { get; set; } = "Void Highlord";
+    public string SoloClass { get; set; } = "Generic";
     // [Can Change] Mode of soloing class, if it has multiple. 
     public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your soloing equipment
     public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Name of your farming class
-    public string FarmClass { get; set; } = "Dark Master of Moglins";
+    public string FarmClass { get; set; } = "Generic";
     // [Can Change] Mode of farminging class, if it has multiple. 
     public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your farming equipment
