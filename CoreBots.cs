@@ -32,7 +32,7 @@ public class CoreBots
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
-    public bool HardMonPublicRoom { get; set; } = true;
+    public bool PublicDifficult { get; set; } = true;
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
@@ -1143,7 +1143,7 @@ public class CoreBots
         else
         {
             JumpWait();
-            Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+            Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
             Bot.Wait.ForMapLoad(map.ToLower());
         }
     }
