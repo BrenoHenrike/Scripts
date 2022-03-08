@@ -6,6 +6,7 @@ public class CoreBLOD
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Dailys = new CoreDailys();
+    public CoreStory Story = new CoreStory();
 
     public string[] BLoDItems =
     {
@@ -179,7 +180,8 @@ public class CoreBLOD
         if(Core.CheckInventory("Advanced Weapon Kit", quant))
             return;
 
-        Core.AddDrop(BLoDItems);        
+        Core.AddDrop(BLoDItems);
+        
 
         int i = 1;
         Core.Logger($"Farming {quant} Advanced Wepon Kit");

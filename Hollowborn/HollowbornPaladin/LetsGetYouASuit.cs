@@ -9,6 +9,7 @@
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class LetsGetYouASuit
@@ -19,6 +20,7 @@ public class LetsGetYouASuit
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
     public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
 
     public void ScriptMain(ScriptInterface bot)

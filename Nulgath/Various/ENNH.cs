@@ -1,8 +1,10 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class EnhancedNulgathNationHouse
@@ -13,6 +15,7 @@ public class EnhancedNulgathNationHouse
     public CoreDailys Daily = new CoreDailys();
     public CoreNulgath Nulgath = new CoreNulgath();
     public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nulgath.bagDrops);

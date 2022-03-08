@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 using RBot;
@@ -13,6 +14,7 @@ public class DrakathArmorBot
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Daily = new CoreDailys();
     public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
     public CoreNulgath Nulgath = new CoreNulgath();
 
     public void ScriptMain(ScriptInterface bot)

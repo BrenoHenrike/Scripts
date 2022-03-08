@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-using System.Collections.Generic;
+//cs_include Scripts/CoreStory.cs
 using RBot;
 using RBot.Options;
 
@@ -11,6 +11,7 @@ public class FindingFragments_Any
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
 
     public string OptionStorage = "Finding_Fragments";
     public List<IOption> Options = new List<IOption>()

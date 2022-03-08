@@ -9,6 +9,7 @@
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class TheDarkSacrifice
@@ -23,6 +24,7 @@ public class TheDarkSacrifice
     public Artixpointe APointe = new Artixpointe();
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Daily = new CoreDailys();
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {

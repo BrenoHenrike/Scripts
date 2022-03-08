@@ -7,6 +7,7 @@
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/CoreStory.cs
 using RBot;
 using System;
 
@@ -30,6 +31,7 @@ public class NecroticSwordOfDoom
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Daily = new CoreDailys();
     public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
     public CoreSDKA SDKA = new CoreSDKA();
     public Necromancer Necro = new Necromancer();
     public BattleUnder BattleUnder = new BattleUnder();
