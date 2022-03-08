@@ -9,6 +9,8 @@
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreStory.cs
+
 using RBot;
 
 public class ThePostSummoning
@@ -19,6 +21,7 @@ public class ThePostSummoning
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
     public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {

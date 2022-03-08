@@ -6,6 +6,7 @@
 //cs_include Scripts/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
@@ -19,6 +20,7 @@ public class HBPalAll
     public CoreBots Core => CoreBots.Instance;
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
+    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {

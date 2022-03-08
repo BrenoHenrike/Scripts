@@ -246,7 +246,8 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Legion Tokens");
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
         {
@@ -269,8 +270,10 @@ public class CoreLegion
         JoinLegion();
 
         Core.AddDrop("Legion Token");
-        Core.Logger($"Farming {quant} Legion Tokens");
+
+        Core.Logger($"Farming Legion Tokens {Bot.Inventory.GetQuantity("Legion Token")}/{quant}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         while (!Core.CheckInventory("Legion Token", quant))
         {
             if (Core.CheckInventory("Shogun Paragon Pet"))
@@ -284,9 +287,16 @@ public class CoreLegion
             Core.KillMonster("fotia", "r5", "Left", "*", "Nothing Heard", 10);
             Core.KillMonster("fotia", "r5", "Left", "*", "Nothing To See", 10);
             Core.KillMonster("fotia", "r5", "Left", "*", "Area Secured and Quiet", 10);
-            Core.EnsureComplete(5755, 5756, 6750, 7073);
+            if (Bot.Quests.CanComplete(5755))
+                Core.EnsureComplete(5755);
+            if (Bot.Quests.CanComplete(5756))
+                Core.EnsureComplete(5756);
+            if (Bot.Quests.CanComplete(6750))
+                Core.EnsureComplete(6750);
+            if (Bot.Quests.CanComplete(7073))
+                Core.EnsureComplete(7073);
             Bot.Player.Pickup("Legion Token");
-            Core.Logger($"Completed x{i++}");
+            Core.Logger($"Completed x{i++}, Legion Tokens({Bot.Inventory.GetQuantity("Legion Token")}/{quant})");
         }
     }
 
@@ -328,7 +338,8 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Legion Tokens");
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.Join("dreadrock");
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
@@ -385,5 +396,22 @@ public class CoreLegion
 
         if (SellUW == DialogResult.Yes)
             Core.SellItem("Undead Warrior");
+    }
+
+    public void ObsidianRock(int quant)
+    {
+        if (Core.CheckInventory("Obsidian Rock", quant))
+            return;
+
+        Core.AddDrop("Obsidian Rock");
+
+        Core.EquipClass(ClassType.Farm);
+        while (!Core.CheckInventory("Obsidian Rock", 10))
+        {
+            Core.EnsureAccept(2742);
+            Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10);
+            Core.EnsureComplete(2742);
+            Bot.Wait.ForPickup("Obsidian Rock");
+        }
     }
 }

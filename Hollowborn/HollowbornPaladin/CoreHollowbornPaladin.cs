@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
@@ -18,6 +19,7 @@ public class CoreHollowbornPaladin
     public CoreFarms Farm = new CoreFarms();
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
     public AscendedDrakathGear ADG = new AscendedDrakathGear();
     public CoreNulgath Nulgath = new CoreNulgath();
     public Artixpointe APointe = new Artixpointe();

@@ -10,6 +10,7 @@ public class PinkBladeOfDestruciton
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLoD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
     public DoomwoodPart3 P3 = new DoomwoodPart3();
 
     public void ScriptMain(ScriptInterface bot)
