@@ -28,7 +28,7 @@ public class ArmorOfAwe
         if (Core.CheckInventory("Armor of Awe"))
             return;
 
-        Awe.GetAweRelic("Pauldon", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
+        Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
         Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
         Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
         Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "Ultra Alteon");
