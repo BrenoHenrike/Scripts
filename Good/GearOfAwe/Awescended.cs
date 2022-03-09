@@ -31,6 +31,7 @@ public class Awescended
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAwe Awe = new CoreAwe();
     public ArmorOfAwe AweArmor = new ArmorOfAwe();
     public HelmOfAwe Helm = new HelmOfAwe();
     public SEP Pal = new SEP();
