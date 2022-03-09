@@ -50,10 +50,11 @@ public class J6Saga
             Bot.Player.Join("moonyard");
         }
         //A Gate and Terrible Monster
-        Story.KillQuest(1171, "moonyard", "Junkyard Wall", AutoCompleteQuest: false);
+        Story.KillQuest(1171, "moonyard", "Junkyard Wall");
 
         if (Core.isCompletedBefore(1172))
             Bot.Sleep(5000);
+
         //I'm on the Hunt, I'm after 58-Sr3
         Story.MapItemQuest(1172, "moonyard", 495);
 
@@ -72,12 +73,14 @@ public class J6Saga
         Story.KillQuest(1178, "marsh2", "Lesser Groglurk");
 
         //Planet Banzai!
-        if (!Story.QuestProgression(2168))
-        {
-            Core.Jump("R10");
-            Bot.Player.Join("banzai");
-            Story.MapItemQuest(2168, "banzai", 1259);
-        }
+        Story.ChainQuest(2168);
+        // if (!Story.QuestProgression(2168))
+        // {
+        //     Core.Jump("R10");
+        //     Bot.Player.Join("banzai");
+        //     Core.ChainComplete(2168);
+        // }
+
 
         //L.O.S.E.R. Battle!
         Story.ChainQuest(2169);
@@ -135,6 +138,7 @@ public class J6Saga
         }
 
         Farm.ChronoSpanREP(2);
+
         //Sweet Dreams for a Safe Flight
         Story.BuyQuest(2834, "thespan", 439, "Comfy Pillow");
 
@@ -182,6 +186,7 @@ public class J6Saga
         //Watch Chapter 1
         Story.MapItemQuest(2850, "hyperspace", 1751);
 
+        //Watch Chaper 1
         if (!Core.isCompletedBefore(2851))
         {
             Core.Jump("R10");
