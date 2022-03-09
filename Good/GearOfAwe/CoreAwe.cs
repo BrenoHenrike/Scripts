@@ -1,6 +1,6 @@
-//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
 
@@ -8,35 +8,59 @@ public class CoreAwe
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
-    public CoreFarms Farm = new CoreFarms();
 
     public int QuestID;
 
-    public void AwePass(int LegendQuest, int GuardianQuest, int FreeQuest)
+    public void GetAweRelic(string Item, int FragmentAmount, int ShardAmount, int LegendQuest, string Map, string Monster)
     {
-        if (Core.IsMember || Core.CheckInventory("Legendary Awe Pass"))
+        if (Core.CheckInventory($"{Item} Relic"))
+            return;
+        Core.AddDrop($"{Item} Fragment");
+
+        if ((Core.IsMember || Core.CheckInventory("Legendary Awe Pass")) && LegendQuest != 4160)
         {
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            QuestID = 4175;
+            QuestID = LegendQuest;
         }
-        else if (GuardianCheck())
+        else if (_GuardianCheck())
         {
             Farm.BladeofAweREP(5, false);
             Farm.Experience(35);
-            QuestID = 4176;
+            QuestID = LegendQuest + 1;
         }
         else
         {
             Farm.BladeofAweREP(10, false);
             Farm.Experience(55);
             Core.BuyItem("museum", 1130, "Armor of Awe Pass");
-            QuestID = 4177;
+            QuestID = LegendQuest + 2;
         }
+
+        if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
+        {
+            Story.UpdateQuest(3008);
+            Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
+            Story.UpdateQuest(3004);
+        }
+
+        Core.EquipClass(ClassType.Solo);
+        while (!Core.CheckInventory($"{Item} Fragment", FragmentAmount))
+        {
+            Core.EnsureAccept(QuestID);
+            if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
+                Adv.KillUltra(Map, Map.ToLower().EndsWith('b') ? "r27" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
+            else Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", 15, false);
+            Core.EnsureComplete(QuestID);
+            Bot.Wait.ForPickup($"{Item} Fragment");
+        }
+
+        Core.BuyItem("museum", 1129, $"{Item} Relic");
     }
 
-    public bool GuardianCheck()
+    private bool _GuardianCheck()
     {
         if (Core.CheckInventory("Guardian of Awe Pass"))
             return true;
@@ -50,25 +74,5 @@ public class CoreAwe
         }
         Core.Logger("You're not AQ Guardian.");
         return false;
-    }
-
-    public void AweKill(int questID, string gear)
-    {
-        Core.EquipClass(ClassType.Solo);
-        if (gear.Equals("pauldron"))
-            Story.KillQuest(questID, "gravestrike", "Ultra Akriloth");
-        else if (gear.Equals("breastplate"))
-            Story.KillQuest(questID, "aqlesson", "Carnax");
-        else if (gear.Equals("vambrace"))
-            Story.KillQuest(questID, "bloodtitan", "Ultra Blood Titan");
-        else if (gear.Equals("gauntlet"))
-            Story.KillQuest(questID, "alteonbattle", "Ultra Alteon");
-        else if (gear.Equals("greaves"))
-            Story.KillQuest(questID, "bosschallenge", "Mutated Void Dragon");
-        else
-        {
-            Story.UpdateQuest(3008);
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
-        }
     }
 }
