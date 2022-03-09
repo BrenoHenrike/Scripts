@@ -67,6 +67,7 @@ public class CoreBots
     public string[] EmptyArray = { "" };
     public List<InventoryItem> EmptyList = new List<InventoryItem>();
     public string? GuildRestore = null;
+    public string? ExecutablePath = Path.GetDirectoryName(Application.ExecutablePath);
 
     /// <summary>
     /// Set commom bot options to desired value
