@@ -28,7 +28,7 @@ public class HelmOfAwe
         if (Core.CheckInventory("Helm of Awe"))
             return;
 
-        Awe.GetAweRelic("Helm", 10, 5, 4175, "doomvaultb", "Undead Raxgore");
+        Awe.GetAweRelic("Helm", 4175, 10, 5, "doomvaultb", "Undead Raxgore");
         Core.BuyItem("museum", 1129, "Helm of Awe");
 
         Core.ToBank("Legendary Awe Pass", "Guardian Awe Pass", "Armor of Awe Pass");

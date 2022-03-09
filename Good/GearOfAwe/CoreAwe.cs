@@ -12,13 +12,12 @@ public class CoreAwe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
 
-    public int QuestID;
-
-    public void GetAweRelic(string Item, int FragmentAmount, int ShardAmount, int LegendQuest, string Map, string Monster)
+    public void GetAweRelic(string Item, int LegendQuest, int FragmentAmount, int ShardAmount, string Map, string Monster)
     {
         if (Core.CheckInventory($"{Item} Relic"))
             return;
         Core.AddDrop($"{Item} Fragment");
+        int QuestID;
 
         if ((Core.IsMember || Core.CheckInventory("Legendary Awe Pass")) && LegendQuest != 4160)
         {
