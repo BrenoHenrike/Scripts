@@ -64,13 +64,13 @@ public class CoreDailys
     /// <param name="isTemp">Whether it is temporary</param>
     /// <param name="cell">Cell where the monster is (optional)</param>
     /// <param name="pad">Pad where the monster is</param>
-    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string? cell = null, string? pad = null, bool publicRoom = false)
+    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string? cell = null, string pad = "Left", bool publicRoom = false)
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return;
         Core.Join(map);
         Core.EnsureAccept(quest);
-        if (cell != null || pad != null)
+        if (cell != null)
             Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, true, publicRoom);
         else
             Core.HuntMonster(map, monster, item, quant, isTemp, true, publicRoom);
@@ -109,8 +109,10 @@ public class CoreDailys
         Core.EnsureAccept(2091);
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
-        foreach (string metal in metals)
+        foreach (string? metal in metals)
         {
+            if (metal == null)
+                continue;
             if (!Core.CheckInventory(metal, quant, false))
             {
                 int metalID = MetalID(metal);
@@ -144,6 +146,8 @@ public class CoreDailys
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
         foreach (string? metal in metals)
         {
+            if (metal == null)
+                continue;
             if (!Core.CheckInventory(metal, quant, false))
             {
                 int metalID = MetalID(metal);

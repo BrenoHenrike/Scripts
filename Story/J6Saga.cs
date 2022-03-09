@@ -52,7 +52,7 @@ public class J6Saga
         //A Gate and Terrible Monster
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
 
-        if (Core.isCompletedBefore(1172))
+        if (!Core.isCompletedBefore(1172))
             Bot.Sleep(5000);
 
         //I'm on the Hunt, I'm after 58-Sr3

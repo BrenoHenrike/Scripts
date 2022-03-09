@@ -1139,26 +1139,16 @@ public class CoreBots
             return;
 
         if (map.ToLower() == "tercessuinotlim")
-            JoinTercessuinotlim();
+        {
+            Bot.Player.Jump("m22", "Left");
+            Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
+        }
         else
         {
             JumpWait();
             Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-            Bot.Wait.ForMapLoad(map.ToLower());
         }
-    }
-
-    /// <summary>
-    /// Joins Tercessuinotlim
-    /// </summary>
-    public void JoinTercessuinotlim()
-    {
-        if (Bot.Map.Name == "tercessuinotlim")
-            return;
-        if (Bot.Player.Cell != "m22")
-            Bot.Player.Jump("m22", "Left");
-        Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"));
-        Bot.Wait.ForMapLoad("tercessuinotlim");
+        Bot.Wait.ForMapLoad(map.ToLower());
     }
 
     /// <summary>

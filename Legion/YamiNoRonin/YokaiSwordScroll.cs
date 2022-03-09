@@ -17,7 +17,7 @@ public class TheEdgeofanEra
     public CoreLegion Legion = new CoreLegion();
     public DarkAlly_Story DarkAlly = new DarkAlly_Story();
 
-     public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -48,7 +48,7 @@ public class TheEdgeofanEra
         while (!Core.CheckInventory("yami", quant))
         {
             Core.EnsureAccept(7409);
-            Core.KillMonster("darkally","r2","Left","*","Dark Wisp",444,false);
+            Core.KillMonster("darkally", "r2", "Left", "*", "Dark Wisp", 444, false);
             Core.EnsureComplete(7409);
         }
     }
@@ -61,7 +61,7 @@ public class TheEdgeofanEra
         Core.EnsureAccept(7444);
         Core.HuntMonster("fotia", "Amia the Cult Leader", "Eternity Flame", 1, false);
         Core.HuntMonster("shadowfortress", "Jaaku", "Shadow Katana Blueprint", 1, false);
-        Legion.SoulForgeHammer(1);
+        Legion.SoulForgeHammer();
         if (!Core.CheckInventory("Obsidian Rock", 108))
         {
             Legion.FarmLegionToken(220);
