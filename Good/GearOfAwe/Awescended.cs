@@ -326,9 +326,10 @@ public class Awescended
         //Butterfly Sapphire
         if (!Story.QuestProgression(7286))
         {
+            Core.EnsureAccept(7286);
             if (!Core.CheckInventory("Butterfly Sapphire"))
             {
-                Core.EnsureAccept(7286);
+
                 Core.EnsureAccept(7287);
                 Core.HuntMonster("bloodtusk", "Trollola Plant", "Butterfly Bloom", 15);
                 Core.EnsureComplete(7287);
