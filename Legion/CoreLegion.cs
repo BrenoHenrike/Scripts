@@ -117,7 +117,6 @@ public class CoreLegion
             if (!Core.CheckInventory("Defeated Makai", 25))
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.JoinTercessuinotlim();
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
             }
             Core.EquipClass(ClassType.Solo);

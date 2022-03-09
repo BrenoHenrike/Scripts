@@ -118,7 +118,6 @@ public class CoreNulgath
             if (!Core.CheckInventory("Defeated Makai", 50))
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.JoinTercessuinotlim();
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false);
                 Core.JumpWait();
             }
@@ -153,7 +152,6 @@ public class CoreNulgath
             else
                 Core.EnsureAccept(6697);
             Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5);
-            Core.JoinTercessuinotlim();
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
             Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3);
@@ -400,7 +398,6 @@ public class CoreNulgath
             return;
         Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
-        Core.JoinTercessuinotlim();
         Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
     }
 
@@ -640,7 +637,6 @@ public class CoreNulgath
             FarmUni13();
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(870);
-        Core.JoinTercessuinotlim();
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune");
         Core.EnsureComplete(870, (int)reward);
         Bot.Player.Pickup(bagDrops);
@@ -810,7 +806,6 @@ public class CoreNulgath
             Core.EnsureAccept(3743);
             if (!Core.CheckInventory("Tendurrr The Assistant"))
             {
-                Core.JoinTercessuinotlim();
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false);
                 Core.JumpWait();
             }

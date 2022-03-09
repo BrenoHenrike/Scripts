@@ -53,7 +53,6 @@ public class VoidSpartan
             Core.HuntMonster("pyrewatch", "Flame Soldier", "Zee's Red Jasper", 1, false);
             Core.JumpWait();
             Farm.Gold(500000);
-            Core.JoinTercessuinotlim();
             Core.BuyItem("tercessuinotlim", 68, "Fiend Cloak of Nulgath");
 
             Core.EnsureCompleteChoose(5982, Rewards);
