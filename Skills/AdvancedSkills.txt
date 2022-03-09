@@ -6,8 +6,8 @@ Base = Alpha Omega = 3 | 4 | 1 | 2 H<50 | Timeout:250
 Base = Alpha Pirate = 4 | 1 | 3 | 2 | Mode Optimistic
 Base = Arachnomancer = 1 | 1 | 1 | 1 | 1 | 1 | 2 | 4 | 3 | Timeout:250
 Base = Arcane Dark Caster = 4 WW5000 | 3 | 3 | 2 | 1 | Timeout:250
-Base = ArchFiend = 1 | 3 | 2 | 3 | 2 | Timeout:250
-Base = ArchPaladin = 3 | 1 | 1 | 1 | 3 | 1 | 1 | 1 | 3 | 1 | 1 | 1 | 1 | 3 | Timeout:250
+Base = ArchFiend = 1 | 3 | 2 | 1 | 2 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout:250
+Base = ArchPaladin = 3 | 4 | 2 | 1 | 1 | 1 | 1 | Timeout:250
 Base = Artifact Hunter = 4 | 3 | 2 | 1 | Timeout:250
 Base = Assassin = 4 | 3 | 1 | 2 | Timeout:250
 Base = Barber = 4 | 1 | 3 | 2 | Timeout:250
@@ -62,10 +62,10 @@ Base = Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dark Chaos Berserker = 4 | 3 | 1 | 2 | Timeout:250
 Base = Dark Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
 Base = Dark Harbinger = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Dark Legendary Hero = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Dark Legendary Hero = 1 | 4>50 | 2| 3| 2 | Timeout: 250
 Base = Dark Lord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dark Master of Moglins = 2 | 2 | 3 | 1 | 4 | Mode Optimistic
-Base = Dark Metal Necro = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Dark Metal Necro = 1 | 4>50 | 2| 3| 2 | Timeout: 250
 Base = Dark Ultra OmniNight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Darkblood StormKing = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Darkside = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -83,18 +83,18 @@ Base = Dragonslayer General = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = DragonSoul Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Drakel Warlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 |  Mode Optimistic
-Base = Empyrean Chronomancer = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Empyrean Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1| 2| 3| 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4| 2 | 3 | Timeout: 250
 Base = Enchanted Vampire Lord = 2 | 4 | 3 | 1 | Timeout: 250
 Base = Enforcer = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Eternal Chronomancer = 2 | 2 | 2 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | Timeout: 250
-Base = Eternal Inversionist = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Evolved ClawSuit = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Evolved Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Evolved Leprechaun = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Evolved Pumpkin Lord = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Exalted Harbinger = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Exalted Soul Cleaver = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = FireLord Summoner = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Eternal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1| 2| 3| 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4| 2 | 3 | Timeout: 250
+Base = Eternal Inversionist = 2 | 4 | 1S | 3S | Timeout: 250
+Base = Evolved ClawSuit = 3 | 4 | 2 | 5 | 2 | 4 | 2| 2| Timeout: 250
+Base = Evolved Dark Caster = 4 | 5| 3| 2 | Timeout: 250 
+Base = Evolved Leprechaun = 5 | 4 | 2| 3 | Timeout: 250 
+Base = Evolved Pumpkin Lord = 3 | 4 | 2 | 1 | Timeout: 250
+Base = Exalted Harbinger = 4 | 4 | 4 | 3 | 1 | 2H<30 | Timeout: 250
+Base = Exalted Soul Cleaver = 2 | 3 | 2 | 2 | 3 | Timeout: 250 
+Base = FireLord Summoner = 1 | 2 | 4 | 3 H<50 | Timeout:250
 Base = Flame Dragon Warrior = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Frost SpiritReaver = 1 | 2 | 3 | 4 | Mode Optimistic
 Supp = Frostval Barbarian = 3 | 1 | 2 | Timeout: 250
@@ -109,13 +109,14 @@ Base = Grunge Rocker = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Guardian = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Healer = 1 | 2 H<50 | 3 | 4 | Timeout: 250
 Base = Healer (Rare) = 1 | 2 H<50 | 3 | 4 | Timeout: 250
-Base = Heavy Metal Necro = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Heavy Metal Rockstar = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Heavy Metal Necro = 1 | 4>50 | 2| 3| 2 | Timeout: 250
+Base = Heavy Metal Rockstar = 1 | 4>50 | 2| 3| 2 | Timeout: 250
 Base = Heroic Naval Commander = 3 WW10000 | 4 | 2 | 1 | Timeout: 250
 Base = HighSeas Commander = 1 | 4 WW15000 | 3 | 2 | Timeout: 250
 Base = Hobo Highlord = 1 | Mode Optimistic
 Base = Horc Evader = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Immortal Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Immortal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1| 2| 3| 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4| 2 | 3 | Timeout: 250
 Base = Imperial Chunin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Infinite Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Infinite Legion Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
@@ -135,8 +136,8 @@ Base = Legion Revenant = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Legion SwordMaster Assassin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Leprechaun = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = LightCaster = 3 | 4 | 1 | 2 | Timeout: 250
-Base = LightCaster Test = 3 | 4 | 1 | 2 | Timeout: 250
+Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout:250
+Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout: 250
 Base = LightMage = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Lord Of Order = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Love Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
@@ -149,7 +150,7 @@ Base = MechaJouster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = MindBreaker = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Naval Commander = 3 WW10000 | 4 | 2 | 1 | Timeout: 250
-Base = Nechronomancer = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Nechronomancer = 1 | 2 | 3S | 4 |  Mode Optimistic
 Base = Necromancer = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Necrotic Chronomancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Ninja = 1 | 2 | 3 | 4 |  Mode Optimistic
@@ -191,7 +192,9 @@ Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = SkyGuard Grenadier = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Sorcerer = 4 | 4 | 4 | 2 | 1 | 3 | Timeout: 250
 Base = Soul Cleaver = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = Star Captain = 1 | 2 | 3 | 4 |  Mode Optimistic
+Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 | Timeout:300
+Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 | Timeout:300
+Solo = Star Captain = 1 | 1S | 2S | 3S | 4 | 1 | Timeout:300
 Base = StarLord = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = StoneCrusher = 2 | 3 | 2 | 3 | 2 | 3 | 1 | 4 |  1 | 4 |  1 | 4 |  1 | 4 | Timeout: 250
 Base = SwordMaster = 1 | 2 | 3 | 4 |  Mode Optimistic
@@ -220,6 +223,7 @@ Def = Void Highlord = 1 | 2 | 4 | Mode Optimistic
 Atk = Void Highlord (IoDA) = 3 H>25S | 4 | 2 | 3 H>25S | 1 H>25S | 2 | 1 H>25S | Timeout: 250
 Def = Void Highlord (IoDA) = 1 | 2 | 4 | Mode Optimistic
 Base = Void Highlord Tester = 3 H>25S | 4 | 2 | 3 H>25S | 1 H>25S | 2 | 1 H>25S | Timeout: 250
+Def = Void Highlord Tester = 1 | 2 | 4 | Mode Optimistic
 Base = Warlord = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Warrior = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Warrior (Rare) = 1 | 2 | 3 | 4 |  Mode Optimistic
