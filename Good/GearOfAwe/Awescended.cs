@@ -1,4 +1,3 @@
-using System.Reflection.PortableExecutable;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailys.cs
@@ -367,3 +366,4 @@ public class Awescended
             Bot.Wait.ForPickup("Floozer");
         }
     }
+}
