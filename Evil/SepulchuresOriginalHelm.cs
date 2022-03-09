@@ -63,23 +63,35 @@ public class SepulchuresOriginalHelm
         if (Core.CheckInventory("Gravelyn's DoomFire Token", quant))
             return;
 
-
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
-
-        while (!Story.QuestProgression(5457) || !Core.CheckInventory("Gravelyn's Blessing"))
+        while (!Core.CheckInventory("Gravelyn's DoomFire Token", quant))
         {
-            if (Core.CheckInventory("Necrotic Sword of Doom"))
-                Core.ChainComplete(5455);
-            if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
-                Core.ChainComplete(5456);
-            Core.SmartKillMonster(5457, "necrodungeon", "Doom Overlord", completeQuest: true);
+            while (!Core.CheckInventory("Gravelyn's Blessing"))
+            {
+                if (Core.CheckInventory("Necrotic Sword of Doom"))
+                    Core.ChainComplete(5455);
+                else if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+                    Core.ChainComplete(5456);
+                else Core.EnsureAccept(5457);
+                Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord");
+                Core.EnsureComplete(5457);
+                Bot.Wait.ForPickup("Gravelyn's Blessing");
+            }
+            Core.EnsureAccept(5458, 5459, 5460, 5461);
+            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Doomed Memories");
+            Core.EnsureComplete(5458);
+            Bot.Wait.ForPickup("Painful Memory Bubble");
+            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flam");
+            Core.EnsureComplete(5459);
+            Bot.Wait.ForPickup("Burning Passion Flame");
+            Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger");
+            Core.EnsureComplete(5460);
+            Bot.Wait.ForPickup("Father's Sorrowful Tear");
+            Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence");
+            Core.EnsureComplete(5461);
+            Bot.Wait.ForPickup("Gravelyn's DoomFire Token");
         }
-        Core.SmartKillMonster(5458, "swordhavenfalls", "Chaos Lord Alteon", completeQuest: true);
-        Core.SmartKillMonster(5459, "shadowstrike", "Sepulchuroth", completeQuest: true);
-        Core.SmartKillMonster(5460, "Shadowfall", "Shadow of the Past", completeQuest: true);
-        Core.SmartKillMonster(5461, "shadowrealmpast", "*", completeQuest: true);
-        Bot.Wait.ForDrop("Gravelyn's DoomFire Token");
     }
 
     public void RoyalShadowScytheBlade()
