@@ -208,10 +208,17 @@ public class CoreLegion
         if (Core.CheckInventory("Bone Sigil", quant))
             return;
 
-        Core.SmartKillMonster(6739, "legionarena", "Legion Gladiator|Legion Sergeant");
+        Core.AddDrop("Bone Sigil");
+        while (!Core.CheckInventory("Bone Sigil", quant))
+        {
+            Core.EnsureAccept(6739);
+            Core.HuntMonster("legionarena", "Legion Gladiator|Legion Sergeant", "Legion Grunt Defeated", 5);
+            Core.EnsureComplete(6739);
+            Bot.Wait.ForPickup("Bone Sigil");
+        }
     }
 
-    public void SoulForgeHammer(int quant = 1)
+    public void SoulForgeHammer()
     {
         if (Core.CheckInventory("SoulForge Hammer"))
             return;
