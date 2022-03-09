@@ -13,6 +13,7 @@
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
 //cs_include Scripts/Story/J6Saga.cs
 //cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/Story/Bamboozle.cs
 //cs_include Scripts/Story/MysteriousDungeon.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
@@ -41,6 +42,7 @@ public class Awescended
     public ArchDoomKnight ADK = new ArchDoomKnight();
     public J6Saga J6 = new J6Saga();
     public BattleUnder Under = new BattleUnder();
+    public Bamboozle Bam = new Bamboozle();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -137,7 +139,43 @@ public class Awescended
             FaH.FortitudeAndHubris();
             SDD.ShadowDragonDefender();
             Pal.SilverExaltedPaladin();
-            ValothsCannonOfDoom();
+
+            if (!Core.CheckInventory("Valoth's Cannon of Doom"))
+            {
+                Core.AddDrop("Valoth's Cannon of Doom");
+
+                if (!Core.CheckInventory("Valoth's Broken Cannon"))
+                {
+                    Farm.Gold(5000000);
+                    Core.BuyItem("crashruins", 1212, "Valoth's Broken Cannon");
+                }
+
+                Core.EnsureAccept(8043);
+                J6.J6();
+                Core.BuyItem("hyperspace", 603, "Peanut");
+                Bam.BamboozleQuest();
+                if (!Core.CheckInventory("Floozer"))
+                {
+                    Core.AddDrop("Floozer");
+                    Core.EnsureAccept(7290);
+                    if (!Core.CheckInventory("Rainbow Moonstone"))
+                    {
+                        Core.AddDrop("Rainbow Moonstone");
+                        Core.EnsureAccept(7291);
+                        Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
+                        Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
+                        Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
+                        Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
+                        Core.EnsureComplete(7291);
+                        Bot.Wait.ForPickup("Rainbow Moonstone");
+                    }
+                    Core.EnsureComplete(7290);
+                    Bot.Wait.ForPickup("Floozer");
+                }
+                Core.EnsureComplete(8043);
+                Bot.Wait.ForPickup("Valoth's Cannon of Doom");
+            }
+
             Core.EnsureComplete(8041);
         }
 
@@ -243,128 +281,5 @@ public class Awescended
         Core.EquipClass(ClassType.Farm);
         //Gauntlet of Generals
         Story.KillQuest(6160, "djinngate", "Harpy|Lamia");
-    }
-
-    public void ValothsCannonOfDoom()
-    {
-        if (Core.CheckInventory("Valoth's Cannon of Doom"))
-            return;
-
-        Core.AddDrop("Valoth's Cannon of Doom");
-
-        if (!Core.CheckInventory("Valoth's Broken Cannon"))
-        {
-            Farm.Gold(5000000);
-            Core.BuyItem("crashruins", 1212, "Valoth's Broken Cannon");
-        }
-
-        Core.EnsureAccept(8043);
-        J6.J6();
-        Core.BuyItem("hyperspace", 603, "Peanut");
-        Floozer();
-        Core.EnsureComplete(8043);
-    }
-
-    public void Floozer()
-    {
-        if (Core.CheckInventory("Floozer"))
-            return;
-
-        Core.AddDrop("Floozer", "Ice Diamond", "Dark Bloodstone", "Songstone", "Butterfly Sapphire", "Understone", "Rainbow Moonstone");
-
-        //Star of the Sandsea
-        Story.KillQuest(7277, "wanders", "Kalestri Worshiper", GetReward: false);
-
-        //Ice Diamond
-        if (!Story.QuestProgression(7278))
-        {
-            if (!Core.CheckInventory("Ice Diamond"))
-            {
-                Core.EnsureAccept(7278, 7279);
-                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
-                Core.EnsureComplete(7279);
-                Bot.Wait.ForPickup("Ice Diamond");
-            }
-            Core.EnsureComplete(7278);
-        }
-
-        //Dark Bloodstone
-        if (!Story.QuestProgression(7280))
-        {
-            if (!Core.CheckInventory("Dark Bloodstone"))
-            {
-                Core.EnsureAccept(7280, 7281);
-                Core.HuntMonster("safiria", "Blood Maggot", "Blood Gem", 10);
-                Core.EnsureComplete(7281);
-                Bot.Wait.ForPickup("Dark Bloodstone");
-            }
-            Core.EnsureComplete(7280);
-        }
-
-        //Doomstone
-        Story.KillQuest(7282, "brightfall", "Painadin Overlord", GetReward: false);
-
-        //Void Opal
-        Story.KillQuest(7283, "timevoid", "Unending Avatar", GetReward: false);
-
-        //Mana Crystal
-        Story.MapItemQuest(7284, "downward", 6908, GetReward: false);
-
-        //Songstone
-        if (!Story.QuestProgression(7285))
-        {
-            if (!Core.CheckInventory("Songstone"))
-            {
-                Core.EnsureAccept(7285, 7297);
-                Core.GetMapItem(6909, 15, "mythsong");
-                Core.EnsureComplete(7297);
-                Bot.Wait.ForPickup("Songstone");
-            }
-            Core.EnsureComplete(7285);
-        }
-
-        //Butterfly Sapphire
-        if (!Story.QuestProgression(7286))
-        {
-            Core.EnsureAccept(7286);
-            if (!Core.CheckInventory("Butterfly Sapphire"))
-            {
-
-                Core.EnsureAccept(7287);
-                Core.HuntMonster("bloodtusk", "Trollola Plant", "Butterfly Bloom", 15);
-                Core.EnsureComplete(7287);
-                Bot.Wait.ForPickup("Butterfly Sapphire");
-            }
-            Core.EnsureComplete(7286);
-
-        }
-
-        //Understone
-        if (!Story.QuestProgression(7288))
-        {
-            if (!Core.CheckInventory("Understone"))
-            {
-                Under.Understone();
-                Bot.Wait.ForPickup("Understone");
-                Core.ChainComplete(7288);
-            }
-        }
-
-        //Rainbow Moonstone
-        if (Story.QuestProgression(7290) || !Core.CheckInventory("Floozer"))
-        {
-            if (!Core.CheckInventory("Rainbow Moonstone"))
-            {
-                Core.EnsureAccept(7290, 7291);
-                Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
-                Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
-                Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
-                Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
-                Core.EnsureComplete(7291);
-                Bot.Wait.ForPickup("Rainbow Moonstone");
-            }
-            Core.EnsureComplete(7290);
-            Bot.Wait.ForPickup("Floozer");
-        }
     }
 }
