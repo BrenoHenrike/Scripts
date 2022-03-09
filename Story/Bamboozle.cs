@@ -107,9 +107,10 @@ public class Bamboozle
         //Rainbow Moonstone
         if (Story.QuestProgression(7290) || !Core.CheckInventory("Floozer"))
         {
+            Core.EnsureAccept(7290);
             if (!Core.CheckInventory("Rainbow Moonstone"))
             {
-                Core.EnsureAccept(7290, 7291);
+                Core.EnsureAccept(7291);
                 Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
                 Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
                 Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
