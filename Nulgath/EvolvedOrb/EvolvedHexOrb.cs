@@ -14,10 +14,10 @@ public class EvolvedHexOrb
         GetEvolvedHexOrb();
         Core.SetOptions(false);
     }
-    
+
     public void GetEvolvedHexOrb()
     {
-        if(Core.CheckInventory("Evolved Hex Orb"))
+        if (Core.CheckInventory("Evolved Hex Orb"))
             return;
         Nulgath.ApprovalAndFavor(200, 0);
         Nulgath.FarmUni13(3);

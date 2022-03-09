@@ -14,10 +14,10 @@ public class EvolvedBloodOrb
         GetEvolvedBloodOrb();
         Core.SetOptions(false);
     }
-    
+
     public void GetEvolvedBloodOrb()
     {
-        if(Core.CheckInventory("Evolved Blood Orb"))
+        if (Core.CheckInventory("Evolved Blood Orb"))
             return;
         Nulgath.ApprovalAndFavor(200, 0);
         Nulgath.FarmUni13(3);
