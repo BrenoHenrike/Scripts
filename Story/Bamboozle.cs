@@ -23,7 +23,7 @@ public class Bamboozle
 
     public void BamboozleQuest()
     {
-        if(Core.isCompletedBefore(7292))
+        if (Core.isCompletedBefore(7292))
             return;
         Core.AddDrop("Floozer", "Ice Diamond", "Dark Bloodstone", "Songstone", "Butterfly Sapphire",
          "Understone", "Rainbow Moonstone");
@@ -35,37 +35,37 @@ public class Bamboozle
                 Story.KillQuest(7279, "kingcoal", "Snow Golem");
             Core.EnsureComplete(7278);
         }
-        if(!Story.QuestProgression(7280))
+        if (!Story.QuestProgression(7280))
         {
             Core.EnsureAccept(7280);
-            if(!Core.CheckInventory("Dark Bloodstone"))
+            if (!Core.CheckInventory("Dark Bloodstone"))
                 Story.KillQuest(7281, "safiria", "Blood Maggot");
             Core.EnsureComplete(7280);
         }
         Story.KillQuest(7282, "brightfall", "Painadin Overlord", GetReward: false);
         Story.KillQuest(7283, "timevoid", "Unending Avatar", GetReward: false);
         Story.MapItemQuest(7284, "downward", 6908, GetReward: false);
-        if(!Story.QuestProgression(7285))
+        if (!Story.QuestProgression(7285))
         {
             Core.EnsureAccept(7285);
             if (!Core.CheckInventory("Songstone"))
                 Story.MapItemQuest(7297, "mythsong", 6909, 15);
             Core.EnsureComplete(7285);
         }
-        if(!Story.QuestProgression(7286))
+        if (!Story.QuestProgression(7286))
         {
             Core.EnsureAccept(7286);
-            if(!Core.CheckInventory("Butterfly Sapphire"))
+            if (!Core.CheckInventory("Butterfly Sapphire"))
                 Story.KillQuest(7287, "bloodtusk", "Trollola Plant");
             Core.EnsureComplete(7286);
         }
-        if(!Story.QuestProgression(7288))
+        if (!Story.QuestProgression(7288))
         {
             Core.EnsureAccept(7288);
-            if(!Core.CheckInventory("Understone"))
+            if (!Core.CheckInventory("Understone"))
             {
                 Under.BattleUnderB();
-                Under.Understone(1);
+                Under.Understone();
             }
             Core.EnsureComplete(7288);
         }

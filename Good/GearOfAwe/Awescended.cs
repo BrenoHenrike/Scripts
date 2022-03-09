@@ -344,7 +344,7 @@ public class Awescended
         {
             if (!Core.CheckInventory("Understone"))
             {
-                Under.Understone(1);
+                Under.Understone();
                 Bot.Wait.ForPickup("Understone");
                 Core.ChainComplete(7288);
             }
