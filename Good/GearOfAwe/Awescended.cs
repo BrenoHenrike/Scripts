@@ -55,7 +55,10 @@ public class Awescended
 
     public void GetAwe()
     {
-        Core.EquipClass(ClassType.Farm);
+        if (Core.CheckInventory(new[] { "Awescended", "Awescended Omni Armblades", "Awescended Omni Cowl", "Awescended Omni Wings" }))
+            return;
+
+        Story.PreLoad();
 
         //The Dawn of Lore
         if (!Story.QuestProgression(8035))
@@ -192,6 +195,11 @@ public class Awescended
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
             Core.EnsureComplete(8042);
         }
+
+        Core.BuyItem("museum", 1994, "Awescended");
+        Core.BuyItem("museum", 1994, "Awescended Omni Armblades");
+        Core.BuyItem("museum", 1994, "Awescended Omni Cowl");
+        Core.BuyItem("museum", 1994, "Awescended Omni Wings");
     }
 
     public void ArmorOfZular()
