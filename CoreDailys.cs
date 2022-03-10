@@ -372,9 +372,12 @@ public class CoreDailys
 
     public void DagesScrollFragment()
     {
-        if (!CheckDaily(3596, "Dage Scroll Fragment"))
-            return;
+        if (!CheckDaily(3596, "Dage's Scroll Fragment"))
+            return;            
+
         DailyRoutine(3596, "mountdoomskull", "*", "Chaos Power Increased", 6, cell: "b1", pad: "Left");
+
+        Bot.Wait.ForPickup("Dage's Scroll Fragment");
         Core.ToBank("Dage's Scroll Fragment");
     }
 
