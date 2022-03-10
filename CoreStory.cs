@@ -1,4 +1,3 @@
-using System.Net.Sockets;
 using RBot;
 using RBot.Items;
 using RBot.Quests;

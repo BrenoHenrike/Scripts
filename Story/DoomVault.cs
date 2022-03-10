@@ -21,6 +21,7 @@ public class DoomVaultA
     {
         if (Core.isCompletedBefore(3008))
             return;
+        Core.AcceptandCompleteTries = 1;
 
         // the challenge begins
         Story.KillQuest(QuestID: 2952, MapName: "doomvault", MonsterName: "Grim Soldier");
@@ -92,6 +93,5 @@ public class DoomVaultA
 
         //i command you, help me!
         Story.KillQuest(QuestID: 3008, MapName: "doomvault", MonsterName: "Ghost King Angler");
-        Story.UpdateQuest(3008);
     }
 }

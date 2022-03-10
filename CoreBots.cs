@@ -78,6 +78,17 @@ public class CoreBots
     {
         VersionChecker("4");
 
+        if (!Bot.Player.LoggedIn)
+        {
+            Logger("Auto Login triggered");
+            Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+            Bot.Sleep(1000);
+            Bot.Player.Connect(ServerList.Servers[2]);
+            while (!Bot.Player.LoggedIn)
+                Bot.Sleep(500);
+            Bot.Sleep(5000);
+        }
+
         // Common Options
         Bot.Options.PrivateRooms = false;
         Bot.Options.SafeTimings = changeTo;
@@ -380,7 +391,9 @@ public class CoreBots
             Logger("Relogin to prevent ghost buy");
             Relogin();
         }
-        Logger($"Bought {quant}x{shopQuant} {item.Name}");
+        if (CheckInventory(item.Name, quant))
+            Logger($"Bought {quant}x{shopQuant} {item.Name}");
+        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
     }
 
     private int _CalcBuyQuantity(ShopItem item, int quant, int shopQuant)
@@ -967,6 +980,17 @@ public class CoreBots
     {
         Bot.SendPacket($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)Side}%");
         Bot.Sleep(ActionDelay * 2);
+    }
+
+    public bool HasAchievement(int ID, string ia = "ia0")
+    {
+        return Bot.CallGameFunction<bool>("world.getAchievement", ia, ID);
+    }
+
+    public void SetAchievement(int ID, string ia = "ia0")
+    {
+        if (!HasAchievement(ID, ia))
+            Bot.SendPacket($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
