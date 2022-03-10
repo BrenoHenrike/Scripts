@@ -45,7 +45,7 @@
   - [v2.0](#v20)
 
 ### v2.27
-**Released on Mar 11, 2022 at 16:00 / 04:00 PM (UTC)**  
+**Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  
 · Released Awescended (Bogalj)  
 · Released J6Saga (Bogalj)  
 · Released DageChallengeMerge (Tato + Ferdy)  
@@ -108,7 +108,7 @@
 [Back to top](#versions)
 
 ### MAS v1.3
-**Released on Mar 11, 2022 at 16:00 / 04:00 PM (UTC)**  
+**Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  
 · Added SSoT and variants (Tato)  
 · Added Eternal Inversionist (Tato)  
 · Added Evolved ClawSuit (Tato)  

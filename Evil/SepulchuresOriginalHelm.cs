@@ -74,21 +74,21 @@ public class SepulchuresOriginalHelm
                 else if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
                     Core.ChainComplete(5456);
                 else Core.EnsureAccept(5457);
-                Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord");
+                Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord", isTemp: false);
                 Core.EnsureComplete(5457);
                 Bot.Wait.ForPickup("Gravelyn's Blessing");
             }
             Core.EnsureAccept(5458, 5459, 5460, 5461);
-            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Doomed Memories");
+            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Doomed Memories", isTemp: false);
             Core.EnsureComplete(5458);
             Bot.Wait.ForPickup("Painful Memory Bubble");
-            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flam");
+            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flam", isTemp: false);
             Core.EnsureComplete(5459);
             Bot.Wait.ForPickup("Burning Passion Flame");
-            Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger");
+            Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger", isTemp: false);
             Core.EnsureComplete(5460);
             Bot.Wait.ForPickup("Father's Sorrowful Tear");
-            Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence");
+            Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 13, isTemp: false);
             Core.EnsureComplete(5461);
             Bot.Wait.ForPickup("Gravelyn's DoomFire Token");
         }
