@@ -1,3 +1,4 @@
+using System.Linq;
 using RBot;
 using RBot.Items;
 
@@ -1552,6 +1553,7 @@ public class CoreFarms
 
     public void TrollREP(int rank = 10)
     {
+        UseBoost(0, RBot.Items.BoostType.Reputation, false);
         if (FactionRank("Troll") >= rank)
             return;
         if (Core.IsMember)
@@ -1639,7 +1641,7 @@ public class CoreFarms
     }
 
     public void FishingREP(int rank = 10)
-    {
+    {        
         if (FactionRank("Fishing") >= rank)
             return;
         Core.EquipClass(ClassType.Farm);
@@ -1660,23 +1662,22 @@ public class CoreFarms
                     Core.Logger($"Completed x{i++}");
                 }
 
-                Core.Join("party");
-                Core.Logger("Bait Fishing");
+                Core.Join("fishing");
+                Core.Logger($"Bait Fishing");
 
-                while (Bot.Inventory.Contains("Fishing Bait", 1))
+                while (Bot.Inventory.Contains("Fishing Bait"))
                 {
-                    while (!Core.CheckInventory("Fishing Bait", 1))
+                    while (!Core.CheckInventory("Fishing Bait"))
                         return;
-                    Bot.SendPacket("%xt%zm%FishCast%1%Pole%1%");
-                    Bot.Sleep(5000);
-                    Bot.SendPacket("%xt%zm%getFish%1%false%");
-                    Bot.Sleep(1500);
+
+                    Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
+                    Bot.Sleep(10000);
                     Core.Logger($"Fished {i++} Times");
                 }
             }
 
 
-            while (Bot.Player.GetFactionRank("Fishing") > 2)
+            while (Bot.Player.GetFactionRank("Fishing") < 10)
             {
                 Core.Logger("Farming Dynamite");
                 while (!Bot.Inventory.Contains("Fishing Dynamite", 10))
@@ -1688,16 +1689,16 @@ public class CoreFarms
                 }
 
                 Core.Join("party");
-                Core.Logger("Dynamite Fishing");
+                Core.Logger($"Dynamite Fishing");
 
                 while (Bot.Inventory.Contains("Fishing Dynamite", 1))
                 {
                     while (!Core.CheckInventory("Fishing Dynamite", 1))
                         return;
-                    Bot.SendPacket("%xt%zm%FishCast%1%Dynamite%30%");
-                    Bot.Sleep(5000);
+
+                    Bot.SendPacket($"%xt%zm%FishCast%1%Dynamite%30%");
+                    Bot.Sleep(3500);
                     Bot.SendPacket("%xt%zm%getFish%1%false%");
-                    Bot.Sleep(1500);
                     Core.Logger($"Fished {i++} Times");
                 }
             }
