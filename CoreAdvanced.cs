@@ -708,10 +708,13 @@ public class CoreAdvanced
             case "Guardian":
             case "Heavy Metal Necro":
             case "Heavy Metal Rockstar":
+            case "Hobo Highlord":
             case "Lord of Order":
             case "Nechronomancer":
             case "Necrotic Chronomancer":
+            case "No Class":
             case "Nu Metal Necro":
+            case "Obsidian No Class":
             case "Oracle":
             case "ProtoSartorium":
             case "Shadow Dragon Shinobi":
