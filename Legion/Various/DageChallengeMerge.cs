@@ -142,7 +142,7 @@ public class DageChallengeMerge
         while (!Core.CheckInventory("Underworld Laurel", quantLaurel))
         {
             Core.EnsureAccept(8544);
-            Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled");
+            Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled", publicRoom: true);
             Core.EnsureComplete(8544);
             Bot.Wait.ForPickup("Underworld Laurel");
         }
@@ -154,8 +154,7 @@ public class DageChallengeMerge
             Core.EquipClass(ClassType.Farm);
 
             Core.EnsureAccept(8545);
-            if (!Core.CheckInventory("Dage's Favor", 200))
-                Core.HuntMonster("underworld", "Legion Fenrir", "Dage's Favor", 200, isTemp: false);
+            Legion.ApprovalAndFavor(0, 200);
             Legion.ObsidianRock(10);
             SoH(30);
             Core.EnsureComplete(8545);
@@ -213,8 +212,8 @@ public class DageChallengeMerge
                     if (MergeItem == "Avarice of the Legion's Helm")
                     {
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull");
-                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood");
+                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull", publicRoom: true);
+                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood", publicRoom: true);
                     }
                     List<ItemBase> Requirements = shopdata.Find(i => i.Name == MergeItem).Requirements;
                     int Laurel = Requirements.Find(i => i.Name == "Underworld Laurel").Quantity;
