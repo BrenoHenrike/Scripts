@@ -42,10 +42,10 @@ public class TheEdgeofanEra
 
     public void Yami(int quant = 10)
     {
-        if (Core.CheckInventory("yami", quant))
+        if (Core.CheckInventory("Yami", quant))
             return;
-        Core.AddDrop("yami");
-        while (!Core.CheckInventory("yami", quant))
+        Core.AddDrop("Yami");
+        while (!Core.CheckInventory("Yami", quant))
         {
             Core.EnsureAccept(7409);
             Core.KillMonster("darkally", "r2", "Left", "*", "Dark Wisp", 444, false);
