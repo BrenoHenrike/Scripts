@@ -136,6 +136,8 @@ public class DageChallengeMerge
     {
         if (Core.CheckInventory("Underworld Laurel", quantLaurel) && Core.CheckInventory("Underworld Medal", quantMedal) && Core.CheckInventory("Underworld Accolade", quantAccolade))
             return;
+            
+        Core.AddDrop("Underworld Laurel", "Underworld Medal", "Underworld Accolade");
 
         if (!Core.CheckInventory("Underworld Laurel", quantLaurel))
             Core.Logger($"Farming \"Underworld Laurel\" x{quantLaurel}");
