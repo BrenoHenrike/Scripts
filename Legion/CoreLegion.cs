@@ -278,30 +278,26 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token");
 
+        int QuestID = 0;
+        if (Core.CheckInventory("Shogun Paragon Pet"))
+            QuestID = 5755;
+        else if (Core.CheckInventory("Shogun Dage Pet"))
+            QuestID = 5756;
+        else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
+            QuestID = 6750;
+        else if (Core.CheckInventory("Paragon Ringbearer"))
+            QuestID = 7073;
+
         Core.Logger($"Farming Legion Tokens {Bot.Inventory.GetQuantity("Legion Token")}/{quant}");
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         while (!Core.CheckInventory("Legion Token", quant))
         {
-            if (Core.CheckInventory("Shogun Paragon Pet"))
-                Core.EnsureAccept(5755);
-            else if (Core.CheckInventory("Shogun Dage Pet"))
-                Core.EnsureAccept(5756);
-            else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
-                Core.EnsureAccept(6750);
-            else if (Core.CheckInventory("Paragon Ringbearer"))
-                Core.EnsureAccept(7073);
-            Core.KillMonster("fotia", "r5", "Left", "*", "Nothing Heard", 10);
-            Core.KillMonster("fotia", "r5", "Left", "*", "Nothing To See", 10);
-            Core.KillMonster("fotia", "r5", "Left", "*", "Area Secured and Quiet", 10);
-            if (Bot.Quests.CanComplete(5755))
-                Core.EnsureComplete(5755);
-            if (Bot.Quests.CanComplete(5756))
-                Core.EnsureComplete(5756);
-            if (Bot.Quests.CanComplete(6750))
-                Core.EnsureComplete(6750);
-            if (Bot.Quests.CanComplete(7073))
-                Core.EnsureComplete(7073);
+            Core.EnsureAccept(QuestID);
+            Core.HuntMonster("fotia", "Fotia Elemental|Fotia Sprit", "Nothing Heard", 10);
+            Core.HuntMonster("fotia", "Fotia Elemental|Fotia Sprit", "Nothing To See", 10);
+            Core.HuntMonster("fotia", "Fotia Elemental|Fotia Sprit", "Area Secured and Quiet", 10);
+            Core.EnsureComplete(QuestID);
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}, Legion Tokens({Bot.Inventory.GetQuantity("Legion Token")}/{quant})");
         }
