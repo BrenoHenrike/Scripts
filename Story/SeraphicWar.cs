@@ -19,7 +19,7 @@ public class SeraphicWar_Story
 
     public void SeraphicWar_Questline()
     {
-        if (Core.isCompletedBefore(7428))
+        if (Core.isCompletedBefore(6245))
             return;
 
         //Get the Parts
@@ -40,6 +40,6 @@ public class SeraphicWar_Story
         Story.MapItemQuest(6244, "worldsoul", 5682);
         Story.KillQuest(6244, "worldsoul", "Legion Dreadmarch|Legion Shadowpriest");
         //Defeat the Guardian
-        Story.KillQuest(7428, "worldsoul", "Core Guardian");
+        Story.KillQuest(6245, "worldsoul", "Core Guardian");
     }
 }

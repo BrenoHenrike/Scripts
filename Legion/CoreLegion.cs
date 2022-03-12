@@ -228,6 +228,7 @@ public class CoreLegion
         Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", 1, false);
         Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Rock Hammer", 1, false);
         Core.EnsureComplete(2741);
+        Bot.Wait.ForPickup("SoulForge Hammer");
     }
 
     public void FarmLegionToken(int quant = 25000)
