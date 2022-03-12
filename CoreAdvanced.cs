@@ -24,6 +24,8 @@ public class CoreAdvanced
 
     public void EnhanceItem(string ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
+        if (ItemName == "")
+            return;
         List<InventoryItem> SelectedItem = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => i.Name == ItemName && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapon = SelectedItem.FindAll(i => WeaponCatagories.Contains(i.Category));
         List<InventoryItem> SelectedOther = SelectedItem.FindAll(i => !WeaponCatagories.Contains(i.Category));
@@ -50,7 +52,7 @@ public class CoreAdvanced
         if (SelectedItems.Count == 0)
         {
             if (!SelectedItems.Any(x => x.Name == ""))
-                Core.Logger($"You do not own \"{ItemNames}\", enhancement failed");
+                Core.Logger($"You do not own \"{ItemNames[0]}\", enhancement failed");
             return;
         }
 
