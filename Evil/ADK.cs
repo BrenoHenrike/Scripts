@@ -91,8 +91,8 @@ public class ArchDoomKnight
 
         Core.EquipClass(ClassType.Farm);
         Farm.BattleUnderB(item: "Undead Energy", quant: 1800);
-        Core.HuntMonster(map: "noxustower", monster: "Lightguard Paladin", item: "Human Souls", quant: 500);
-        Core.HuntMonster(map: "lair", monster: "Water Draconian", item: "Dragon Energy", quant: 600);
+        Core.HuntMonster(map: "noxustower", monster: "Lightguard Paladin", item: "Human Souls", quant: 500, isTemp: false);
+        Core.HuntMonster(map: "lair", monster: "Water Draconian", item: "Dragon Energy", quant: 600, isTemp: false);
         Core.EnsureComplete(6795);
         Core.ToBank(Q1items);
     }
@@ -106,8 +106,8 @@ public class ArchDoomKnight
         Core.EnsureAccept(6796);
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Death's Power", quant: 1);
-        Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Souls of the Dead", quant: 400);
+        Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Death's Power", quant: 1, isTemp: false);
+        Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Souls of the Dead", quant: 400, isTemp: false);
         Core.EnsureComplete(6796);
         Core.ToBank(Q2items);
     }
@@ -153,11 +153,11 @@ public class ArchDoomKnight
         Farm.BattleUnderB(item: "Undead Energy", quant: 2000);
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster(map: "epicvordred", monster: "Ultra Vordred", item: "(Necro) Scroll of Dark Arts", quant: 2, publicRoom: true);
-        Core.HuntMonster(map: "sepulchurebattle", monster: "Ultra Sepulchure", item: "Doom Heart", publicRoom: true);
-        Core.HuntMonster(map: "sepulchure", monster: "Dark Sepulchure", item: "Dread Knight Cleaver", publicRoom: true);
-        Core.HuntMonster(map: "thevoid", monster: "Reaper", item: "Reaper's Soul", quant: 1, publicRoom: true);
-        Core.HuntMonster(map: "Desolich", monster: "Desolich", item: "Desolich's Undead Eye", quant: 2, publicRoom: true);
+        Core.HuntMonster(map: "epicvordred", monster: "Ultra Vordred", item: "(Necro) Scroll of Dark Arts", quant: 2, isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "sepulchurebattle", monster: "Ultra Sepulchure", item: "Doom Heart", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "sepulchure", monster: "Dark Sepulchure", item: "Dread Knight Cleaver", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "thevoid", monster: "Reaper", item: "Reaper's Soul", quant: 1, isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "Desolich", monster: "Desolich", item: "Desolich's Undead Eye", quant: 2, isTemp: false, publicRoom: true);
         Core.EnsureComplete(6798);
         Core.ToBank(Q4items);
     }
