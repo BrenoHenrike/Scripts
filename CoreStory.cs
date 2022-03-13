@@ -232,32 +232,6 @@ public class CoreStory
         return false;
     }
 
-    /// <summary>
-    /// Send a Client-side packet that makes the game think you have completed a questline up to a certain point
-    /// </summary>
-    /// <param name="Value">Value property of the quest you want it to think you have completed</param>
-    /// <param name="Slot">Slot property of the questline you want it to think you have progressed</param>
-    public void UpdateQuest(int Value, int Slot)
-    {
-        if ((Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", Slot) >= Value))
-            return;
-
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + Value + ",\"iIndex\":" + Slot + "}}}", "json");
-    }
-
-    /// <summary>
-    /// Send a Client-side packet that makes the game think you have completed a questline up to a certain point
-    /// </summary>
-    /// <param name="QuestID">Quest ID of the quest you want the game to think you have compelted</param>
-    public void UpdateQuest(int QuestID)
-    {
-        if (Core.isCompletedBefore(QuestID))
-            return;
-
-        Quest QuestData = Core.EnsureLoad(QuestID);
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + QuestData.Value + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
-    }
-
     public void PreLoad()
     {
         if (PreLoaded)
