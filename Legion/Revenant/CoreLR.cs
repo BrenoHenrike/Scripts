@@ -83,7 +83,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
-        Story.UpdateQuest(2060);
+        Bot.Quests.UpdateQuest(2060);
         while (!Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Core.EnsureAccept(6897);
@@ -117,7 +117,7 @@ public class CoreLR
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
-        Story.UpdateQuest(4614);
+        Bot.Quests.UpdateQuest(4614);
         while (!Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);

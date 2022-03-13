@@ -66,7 +66,7 @@ public class Awescended
             Farm.Experience(25);
             Core.EnsureAccept(8035);
             Core.KillMonster("uppercity", "r3", "Left", "Chaos Egg", "Fossilized Egg Yolk", 12);
-            Story.UpdateQuest(537);
+            Bot.Quests.UpdateQuest(537);
             Core.Join("lycanwar", "Boss", "Left");
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard", "Stone Mask");
             Core.KillMonster("pyramid", "r5", "Left", "Mummy", "Mummified Bone", 6);

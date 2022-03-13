@@ -22,7 +22,7 @@ public class BurningBladeOfAbezeth
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Story.UpdateQuest(6042);
+        Bot.Quests.UpdateQuest(6042);
         Core.HuntMonster("celestialarenad", "Aranx", "Burning Blade Of Abezeth", isTemp: false);
         Bot.Wait.ForPickup("Burning Blade Of Abezeth");
     }

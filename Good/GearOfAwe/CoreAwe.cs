@@ -40,9 +40,9 @@ public class CoreAwe
 
         if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
         {
-            Story.UpdateQuest(3008);
+            Bot.Quests.UpdateQuest(3008);
             Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Story.UpdateQuest(3004);
+            Bot.Quests.UpdateQuest(3004);
         }
 
         Core.EquipClass(ClassType.Solo);

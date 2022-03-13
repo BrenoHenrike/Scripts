@@ -36,7 +36,7 @@ public class MysteriousEgg
         }
         Core.HuntMonster("sloth", "Phlegnn", "Key of Sloth", isTemp: false);
         Core.HuntMonster("lust", "Lascivia", "Key of Lust", isTemp: false);
-        Story.UpdateQuest(6000);
+        Bot.Quests.UpdateQuest(6000);
         Core.HuntMonster("maloth", "Maloth", "Key of Envy", isTemp: false);
         Core.HuntMonster("wrath", "Gorgorath", "Key of Wrath", isTemp: false);
         Core.EnsureCompleteChoose(6171, new[] { "Mysterious Egg" });

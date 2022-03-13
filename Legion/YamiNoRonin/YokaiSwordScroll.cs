@@ -70,9 +70,9 @@ public class TheEdgeofanEra
         FlameForgedMetal(13);
         if (!Core.CheckInventory("Weapon Imprint", 15))
         {
-            Story.UpdateQuest(3008);
+            Bot.Quests.UpdateQuest(3008);
             Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Story.UpdateQuest(3004);
+            Bot.Quests.UpdateQuest(3004);
             Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
         }
 

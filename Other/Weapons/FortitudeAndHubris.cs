@@ -80,7 +80,7 @@ public class FandH
         {
             Core.EnsureAccept(6605);
             Core.HuntMonster("iceplane", "Enfield", "Fortitude's Handle");
-            Story.UpdateQuest(4616);
+            Bot.Quests.UpdateQuest(4616);
             Core.HuntMonster("mummies", "Mummy", "Fortitude's Blade Shards", 100, isTemp: false);
             Core.HuntMonster("banished", "Desterrat Moya", "Fortitude's Magic Essence", 50, isTemp: false);
             Core.EnsureComplete(6605);

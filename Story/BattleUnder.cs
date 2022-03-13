@@ -107,7 +107,7 @@ public class BattleUnder
         Core.AddDrop("Understone");
 
         Core.EnsureAccept(7289);
-        Story.UpdateQuest(935);
+        Bot.Quests.UpdateQuest(935);
         Core.KillMonster("battleunderc", "Enter", "Spawn", "*", "Fluorite Shard", 10);
         Core.EnsureComplete(7289);
         Bot.Wait.ForPickup("Understone");
