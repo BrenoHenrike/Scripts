@@ -59,14 +59,14 @@ public class CoreBots
     // Whether the player is Member
     public bool IsMember => ScriptInterface.Instance.Player.IsMember;
 
-    private static CoreBots _instance;
-    public static CoreBots Instance => _instance ?? (_instance = new CoreBots());
+    private static CoreBots? _instance;
+    public static CoreBots Instance => _instance ??= new CoreBots();
     public ScriptInterface Bot => ScriptInterface.Instance;
 
-    public List<ItemBase> CurrentRequirements = new List<ItemBase>();
-    public List<string> BankingBlackList = new List<string>();
+    public List<ItemBase> CurrentRequirements = new();
+    public List<string> BankingBlackList = new();
     public string[] EmptyArray = { "" };
-    public List<InventoryItem> EmptyList = new List<InventoryItem>();
+    public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
     public string? ExecutablePath = Path.GetDirectoryName(Application.ExecutablePath);
 
@@ -141,9 +141,9 @@ public class CoreBots
             Bot.Runtime.BankLoaded = true;
             if (BankMiscAC)
             {
-                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem" };
-                List<string> WhitelistedSU = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
-                List<string> MiscForBank = new List<string>();
+                List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
+                List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
+                List<string> MiscForBank = new();
                 foreach (var item in Bot.Inventory.Items)
                 {
                     if (Bot.Boosts.Enabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
@@ -255,7 +255,7 @@ public class CoreBots
             else if (!any)
                 return false;
         }
-        return any ? false : true;
+        return !any;
     }
 
     /// <summary>
@@ -1045,7 +1045,7 @@ public class CoreBots
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
                 return;
             }
-            List<string> reqItems = new List<string>();
+            List<string> reqItems = new();
             quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest.Requirements.ForEach(item =>
             {
