@@ -54,7 +54,6 @@ public class CoreBots
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
-
     // Whether the player is Member
     public bool IsMember => ScriptInterface.Instance.Player.IsMember;
 
@@ -89,9 +88,6 @@ public class CoreBots
         Bot.Lite.UntargetSelf = changeTo;
         Bot.Lite.ReacceptQuest = false;
         Bot.Lite.CharacterSelectScreen = false;
-        Bot.Lite.CustomDropsUI = true;
-        Bot.Lite.Set("dOptions[\"openMenu\"]", true);
-        Bot.Lite.Set("dOptions[\"warnDecline\"]", false);
         Bot.Lite.Set("dOptions[\"disRed\"]", true);
 
         if (changeTo)
@@ -100,11 +96,7 @@ public class CoreBots
 
             Bot.Options.HuntDelay = HuntDelay;
 
-            Bot.RegisterHandler(2, b =>
-            {
-                if (b.ShouldExit())
-                    StopBot();
-            }, "Stop Handler");
+            Bot.Events.ScriptStopping += StopBotEvent;
 
             Bot.SendPacket("%xt%zm%afk%1%false%");
             Bot.Sleep(ActionDelay);
@@ -157,11 +149,13 @@ public class CoreBots
             Bot.Options.CustomName = "AUQW RBOT MASTER";
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
+            Bot.Drops.Start();
+
             Logger("Bot Configured");
         }
-        else
-            StopBot(true);
     }
+
+    private bool StopBotEvent(ScriptInterface bot) => StopBot();
 
     #region Inventory, Bank and Shop
     /// <summary>
@@ -426,29 +420,22 @@ public class CoreBots
     #region Drops
 
     /// <summary>
-    /// Adds drops to the pickup list, unbank the items and restart the Drop Grabber
+    /// Adds drops to the pickup list, unbank the items.
     /// </summary>
     /// <param name="items">Items to add</param>
-    public void AddDrop(params string?[] items)
+    public void AddDrop(params string[] items)
     {
-        if (items == null)
-            return;
         Unbank(items);
-        foreach (string? item in items)
-            Bot.Drops.Add(item);
-        Bot.Drops.Start();
+        Bot.Drops.Add(items);
     }
 
     /// <summary>
-    /// Removes drops from the pickup list and restart the Drop Grabber
+    /// Removes drops from the pickup list.
     /// </summary>
     /// <param name="items">Items to remove</param>
     public void RemoveDrop(params string[] items)
     {
-        Bot.Drops.Stop();
-        foreach (string item in items)
-            Bot.Drops.Remove(item);
-        Bot.Drops.Start();
+        Bot.Drops.Remove(items);
     }
     #endregion
 
@@ -470,7 +457,7 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Accepts all de quests given
+    /// Accepts all the quests given
     /// </summary>
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureAccept(params int[] questIDs)
@@ -504,7 +491,7 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest</param>
     /// <param name="itemList">List of the items to get, if you want all just let it be null</param>
-    public bool EnsureCompleteChoose(int questID, string?[] itemList = null)
+    public bool EnsureCompleteChoose(int questID, string[]? itemList = null)
     {
         if (questID <= 0)
             return false;
@@ -820,7 +807,7 @@ public class CoreBots
         if (messageBox & !ForceOffMessageboxes)
             Message(message, caller);
         if (stopBot)
-            StopBot(true);
+            StopBot();
     }
 
     /// <summary>
@@ -976,13 +963,10 @@ public class CoreBots
         }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
-            Bot.Player.Kill(name);
-            if (!tempItem && !CheckInventory(item))
-            {
-                Bot.Sleep(ActionDelay);
-                if (rejectElse)
-                    Bot.Player.RejectExcept(item);
-            }
+            Bot.Player.Attack(name);
+            Bot.Sleep(ActionDelay);
+            if (rejectElse)
+                Bot.Player.RejectExcept(item);
             Rest();
         }
     }
@@ -994,17 +978,7 @@ public class CoreBots
             int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
             Logger($"Hunting {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
         }
-        while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
-        {
-            Bot.Player.HuntWithPriority(name, Bot.Options.HuntPriority);
-            if (!tempItem && !CheckInventory(item))
-            {
-                Bot.Sleep(ActionDelay);
-                if (rejectElse)
-                    Bot.Player.RejectExcept(item);
-            }
-            Rest();
-        }
+        Bot.Player.HuntForItem(name, item, quantity, tempItem, rejectElse);
     }
 
     private int lastQuestID;
@@ -1053,10 +1027,8 @@ public class CoreBots
     /// Stops the bot and moves you back to /Battleon
     /// </summary>
     /// <param name="removeStopHandler">Whether or not it should also stop the "Stop Handler" that is activated with SetOptions </param>
-    public void StopBot(bool removeStopHandler = false)
+    public bool StopBot()
     {
-        if (removeStopHandler)
-            Bot.Handlers.RemoveAll(handler => handler.Name == "Stop Handler");
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
         Join("battleon");
         if (AntiLag)
@@ -1065,14 +1037,10 @@ public class CoreBots
             if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                 Bot.CallGameFunction("world.toggleMonsters");
         }
-        Bot.Options.AutoRelogin = false;
-        Bot.Options.LagKiller = false;
-        Bot.Options.LagKiller = true;
-        Bot.Options.LagKiller = false;
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
         Logger("Bot Stopped Successfully");
-        ScriptManager.StopScript();
+        return true;
     }
     #endregion
 

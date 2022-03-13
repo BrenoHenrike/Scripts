@@ -35,10 +35,8 @@ public class LegionExercise1
         Core.BuyItem("underworld", 216, "Undead Warrior");
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
-
-        Random rnd = new Random();
-        int Dice = rnd.Next(1, 101);   // creates a number from 1 to 100
-
+        
+        int Dice = Bot.Runtime.Random.Next(1, 101);   // creates a number from 1 to 100
         //-------------------------------------------------------------------------------------------------------
 
         int i = 1;
