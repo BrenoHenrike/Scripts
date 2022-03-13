@@ -10,6 +10,7 @@ public class CoreLR
     public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
+    public SeraphicWar_Story Seraph = new SeraphicWar_Story();
 
     public void GetLR(bool rankUpClass)
     {
@@ -146,6 +147,7 @@ public class CoreLR
             return;
 
         Legion.JoinLegion();
+        Seraph.SeraphicWar_Questline();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);
