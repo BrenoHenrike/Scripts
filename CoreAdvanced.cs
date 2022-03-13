@@ -238,6 +238,8 @@ public class CoreAdvanced
 
     public void rankUpClass(string ClassName)
     {
+        Bot.Wait.ForPickup(ClassName);
+
         if (!Core.CheckInventory(ClassName))
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
 
