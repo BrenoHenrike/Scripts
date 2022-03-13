@@ -9,9 +9,9 @@ public class ArchDoomKnight
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public Core13LoC LOC => new Core13LoC();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public Core13LoC LOC => new();
 
     public static string[] Q1items = {
         "Arch DoomKnight Cape",
@@ -149,7 +149,7 @@ public class ArchDoomKnight
         Core.EnsureAccept(6798);
 
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster(map: "shadowfallwar", monster: "Skeletal Fire Mage", item: "Ultimate Darkness Gem", quant: 50);
+        Core.HuntMonster(map: "shadowfallwar", monster: "Skeletal Fire Mage", item: "Ultimate Darkness Gem", quant: 50, isTemp: false);
         Farm.BattleUnderB(item: "Undead Energy", quant: 2000);
 
         Core.EquipClass(ClassType.Solo);

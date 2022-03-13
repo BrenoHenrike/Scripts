@@ -13,11 +13,11 @@ public class VordredAmor //you can rename this anything you want it will be the 
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public DoomwoodPart3 DW3 = new DoomwoodPart3();
-    public CoreStory Story = new CoreStory();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreSDKA SDKA = new CoreSDKA();
+    public CoreFarms Farm = new();
+    public DoomwoodPart3 DW3 = new();
+    public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
+    public CoreSDKA SDKA = new();
 
     string[] SKULLSItems = {
         // SKULLS
