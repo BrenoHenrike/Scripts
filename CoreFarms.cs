@@ -1,4 +1,3 @@
-using System.Linq;
 using RBot;
 using RBot.Items;
 
@@ -1606,6 +1605,7 @@ public class CoreFarms
         else
             Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
+        Bot.Quests.UpdateQuest(488);
         int i = 1;
         while (FactionRank("Yokai") < rank)
         {
@@ -1641,7 +1641,7 @@ public class CoreFarms
     }
 
     public void FishingREP(int rank = 10)
-    {        
+    {
         if (FactionRank("Fishing") >= rank)
             return;
         Core.EquipClass(ClassType.Farm);
