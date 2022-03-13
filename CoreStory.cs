@@ -315,10 +315,8 @@ public class CoreStory
 
         for (int i = 0; i < QuestIDs.Count; i = i + 30)
         {
-            Bot.Log("A");
             Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count > i ? i + 30 : QuestIDs.Count)]);
             Bot.Sleep(1500);
-            Bot.Log("B");
         }
 
         PreLoaded = true;
