@@ -70,7 +70,7 @@ public class CoreHollowbornDoomKnight
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadowworn", 1, false);
             Farm.Gold(100000);
             Core.BuyItem("shadowfall", 89, "Shadowscythe Venom Head");
-            Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 10, false); 
+            Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 10, false);
             if (Core.CheckInventory(ADKItems))
                 Core.EnsureComplete(8413);
             else
@@ -104,7 +104,7 @@ public class CoreHollowbornDoomKnight
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadow DoomReaver", 1, false);
             Core.HuntMonster("lumafortress", "Corrupted Luma", "Worshipper of Doom", 1, false);
-            Story.UpdateQuest(2954);
+            Bot.Quests.UpdateQuest(2954);
             Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 10, false);
 
             Core.EnsureComplete(8414);
@@ -140,9 +140,9 @@ public class CoreHollowbornDoomKnight
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 1, false, publicRoom: true);
-        Story.UpdateQuest(3008);
+        Bot.Quests.UpdateQuest(3008);
         Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-        Story.UpdateQuest(2999);
+        Bot.Quests.UpdateQuest(2999);
         Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 1, false);
 
         Core.EnsureComplete(8415);

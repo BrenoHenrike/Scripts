@@ -1,6 +1,8 @@
 - ##### Versions
+  - [v2.27 - Latest](v227)
+    - [MAS v1.3](#mas-v13)
   - [v2.26](#v226)
-    - [v2.26.1 - Latest](v2261)
+    - [v2.26.1](v2261)
   - [v2.25](#v225)
   - [v2.24](#v224)
     - [v2.24.2](#2242)
@@ -41,6 +43,90 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+
+### v2.27
+**Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  
+· Released Awescended (Bogalj)  
+· Released J6Saga (Bogalj)  
+· Released DageChallengeMerge (Tato + Ferdy)  
+· Released LegionOverfiendBlade (Tato + Ferdy)  
+· Released BrightOak (Tato)  
+· Released ChaoruptorUnlocked (Tato)  
+· Released AstravianMedal (Tato)  
+· Released EvolvedLeprechaunMerge (Vladimir)  
+· Released LegionBonfire (Exelot)  
+· Released SoulEssence (Exelot)  
+· Released SoulSand (Exelot)  
+· Released 0MaxBags (Exelot)  
+· Released BloodGems (Exelot)  
+· Released DarkCrystalShards (Exelot)  
+· Released DiamondofNulgath (Exelot)  
+· Released GemofNulgath (Exelot)  
+· Released TotemofNulgath (Exelot)  
+· Released Unidentified10 (Exelot)  
+· Released Unidentified13 (Exelot)  
+· Released VoucherofNulgath(non-member) (Exelot)  
+· Released VoucherofNulgath (Exelot)  
+· Made a new function in CoreStory called PreLoad, it loads all the needed quests for the bot beforehand so that progressionchecks are quicker (Exelot)  
+· Rewrote Armor-/Cape-/Helm of Awe (Exelot)  
+· Added new function to CoreAdvanced called RestoreGear, for internal use only  
+· Added ExecutablePath string to CoreBots in preperation for new options plugin  
+· Added CanChange option to turn off most messageboxes  
+· Updated SepulchuresOriginalHelm as to not use QuestProgression Methods  
+· Streamlined Tutorial bot  
+· Steamlined LegionExercise1-4  
+· Changed Doomatter obtain method for Willpower Extraction to gold  
+· Changed how JoinTercess is handled  
+· Added fancy logging to Legion Token farms  
+· Added AddDrop's to all of CoreBLOD's functions  
+· Added BankingBlacklist to numberous Nulgath bots  
+· Added a Awe Enhancement unlocked check to AutoEnhance  
+· Added No Class and variants to SmartEnhance  
+· Renamed HardMonPublicRoom to PublicDifficult  
+· Made _RaceGear not be case-senstitive  
+· Added delays to all CoreStory methods  
+· Minor alterations to BattleUnder's Understone  
+· Minor alterations to CoreLegion's SoulForgeHammer  
+· Removed outdated CanChange SkillTimer  
+· Moved ObsidianRock from YamiNoRonin to CoreLegion  
+· Set OptimizeInv to true by default in NecroticSwordOfDoom  
+· Fixed Bamboozle Quest bot not handling stones well  
+· Fixed BoneSigil not being able to farm more than 1  
+· Fixed LTShogunParagon not turning in quests properly  
+· Fixed LTDreadrock not buying the right armor  
+· (hopefully) Fixed Blade of Awe not getting everything it needs  
+· Fixed cells in Farm.IcestormArena  
+· Fixed AutoEnhance and BestGear not being able to handle null  
+· Fixed BoostKill not being able to handle null  
+· Fixed BamboozlevsDrudgen not turning in OBoN quests more than once  
+· Multiple changes and fixed to Core13LoC  
+· Multiple fixes to MysteriousDungeon  
+· Multiple fixes to AQWZombies  
+· Added null handing to numerous files  
+· Removed redundancies from numerous files  
+· Fixed typos and spacing on numerous files  
+[Back to top](#versions)
+
+### MAS v1.3
+**Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  
+· Added SSoT and variants (Tato)  
+· Added Eternal Inversionist (Tato)  
+· Added Evolved ClawSuit (Tato)  
+· Added Evolved Dark Caster (Tato)  
+· Added Evolved Leprechaun (Tato)  
+· Added Exalted Harbinger (Tato)  
+· Added Evolved Pumpkin Lord (Tato)  
+· Added Exalted Soul Cleaver (Tato)  
+· Added FireLord Summoner (Tato)  
+· Added Nechronomancer (Tato)  
+· Added Horc Evader (Tato)  
+· Added Dark Metal Necero (Tato)  
+· Added Dark Legendary Hero (Tato)  
+· Added Heavy Metal Rockstar/Necro (Tato)  
+· Updated LightCaster (toacv)  
+· Updated Archfiend (toacv)  
+· Updated ArchPaladin (toacv)  
+[Back to top](#versions)
 
 ### v2.26.1
 **Released on Feb 24, 2022 at 16:00 / 04:00 PM (UTC)**  

@@ -66,8 +66,6 @@ public class EnoughDOOMforanArchfiend
             Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 2, false);
             Farm.AlchemyPacket("Necrot", "Arashtite Ore", AlchemyRunes.Uruz);
             Bot.Player.Pickup("Essence Potion");
-            if (Bot.Inventory.Contains("Essence Potion", 5))
-                break;
         }
 
         Core.EnsureAccept(5260);

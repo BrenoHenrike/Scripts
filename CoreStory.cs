@@ -1,6 +1,7 @@
 using RBot;
 using RBot.Items;
 using RBot.Quests;
+using System.Diagnostics;
 
 public class CoreStory
 {
@@ -35,7 +36,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
-            Bot.Sleep(1500);
+            Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -62,7 +63,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
-            Bot.Sleep(1500);
+            Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -90,7 +91,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
-            Bot.Sleep(1500);
+            Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -119,7 +120,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
-            Bot.Sleep(1500);
+            Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -147,7 +148,7 @@ public class CoreStory
         {
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
-            Bot.Sleep(1500);
+            Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         }
     }
@@ -172,7 +173,7 @@ public class CoreStory
         {
             Core.EnsureAccept(QuestID);
         }
-        Bot.Sleep(1500);
+        Bot.Wait.ForQuestComplete(QuestID);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
     }
 
@@ -231,31 +232,96 @@ public class CoreStory
         return false;
     }
 
-    /// <summary>
-    /// Send a Client-side packet that makes the game think you have completed a questline up to a certain point
-    /// </summary>
-    /// <param name="Value">Value property of the quest you want it to think you have completed</param>
-    /// <param name="Slot">Slot property of the questline you want it to think you have progressed</param>
-    public void UpdateQuest(int Value, int Slot)
+    public void PreLoad()
     {
-        if ((Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", Slot) >= Value))
+        if (PreLoaded)
             return;
 
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + Value + ",\"iIndex\":" + Slot + "}}}", "json");
-    }
+        List<int> QuestIDs = new();
+        List<string> SelectedLines = new();
+        List<string> CSIncFiles = new();
 
-    /// <summary>
-    /// Send a Client-side packet that makes the game think you have completed a questline up to a certain point
-    /// </summary>
-    /// <param name="QuestID">Quest ID of the quest you want the game to think you have compelted</param>
-    public void UpdateQuest(int QuestID)
-    {
-        if (Core.isCompletedBefore(QuestID))
-            return;
+        List<string> CSFile = File.ReadAllLines(ScriptManager.LoadedScript).ToList();
+        string[] SearchParam = {
+            "KillQuest",
+            "MapItemQuest",
+            "BuyQuest",
+            "ChainQuest",
+            "QuestProgression",
+            "EnsureAccept",
+            "EnsureComplete",
+            "EnsureCompleteChoose",
+            "ChainComplete"
+        };
 
-        Quest QuestData = Core.EnsureLoad(QuestID);
-        Bot.SendClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"updateQuest\",\"iValue\":" + QuestData.Value + ",\"iIndex\":" + QuestData.Slot + "}}}", "json");
+        List<string> CSIncludes = CSFile.Where(x => x.Contains("//cs_include ") && (x.Contains("Core13LoC") || !x.Contains("Core"))).ToList();
+
+        foreach (string Include in CSIncludes)
+            CSIncFiles.AddRange(File.ReadAllLines(Include.Replace("//cs_include ", "")));
+
+        SelectedLines.AddRange(CSFile.Where(x => SearchParam.Any(y => x.Contains(y))).ToList());
+        SelectedLines.AddRange(CSIncFiles.Where(x => SearchParam.Any(y => x.Contains(y))).ToList());
+
+        Core.Logger($"Scanning {CSIncludes.Count + 1} Files ({SelectedLines.Count} Lines)");
+
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
+        int t = 0;
+        foreach (string Line in SelectedLines)
+        {
+            int QuestID;
+            if (!Line.Any(char.IsDigit))
+                continue;
+
+            if ((Line.Contains("Chain") || Line.Contains("Ensure")) && !Line.Contains("EnsureCompleteChoose"))
+            {
+                if (Line.Replace("  ", "").Replace("Story.", "").Replace("Core.", "").Length > 22)
+                    continue;
+                QuestID = int.Parse(Line.Split('(')[1].Replace(");", ""));
+            }
+            else if (Line.Contains("QuestProgression"))
+            {
+                if (Line.Replace("  ", "").Replace("if (", "").Replace("Story.", "").Length > 25)
+                    continue;
+                QuestID = int.Parse(Line.Replace("if (", "").Split('(')[1].Replace("))", ""));
+            }
+            else if (!Line.Contains(','))
+                QuestID = int.Parse(Line.Split('(')[1].Replace(");", ""));
+            else QuestID = int.Parse(Line.Split(',')[0].Split('(')[1]);
+
+            if (!QuestIDs.Contains(QuestID) && !Bot.Quests.QuestTree.Exists(x => x.ID == QuestID))
+                QuestIDs.Add(QuestID);
+
+            if (t < 31)
+                t++;
+            if (t == 30)
+            {
+                stopWatch.Stop();
+                TimeSpan sw = stopWatch.Elapsed;
+                TimeSpan ts = TimeSpan.FromSeconds(Convert.ToInt32((SelectedLines.Count / (30 / sw.TotalSeconds)) - sw.TotalSeconds));
+                string Estimate;
+                if (ts.TotalSeconds > 60)
+                    Estimate = string.Format("{0:D2}m{1:D2}s", ts.Minutes, ts.Seconds);
+                else Estimate = string.Format("{0:D2}s", ts.Seconds);
+                Core.Logger($"Estimated Scanning Time: {Estimate}");
+            }
+        }
+        if (stopWatch.IsRunning)
+            stopWatch.Stop();
+
+        Core.Logger($"Loading {QuestIDs.Count} Quests");
+        if (QuestIDs.Count > 30)
+            Core.Logger($"Estimated Loading Time: {Convert.ToInt32(QuestIDs.Count / 30 * 1.6)}s");
+
+        for (int i = 0; i < QuestIDs.Count; i = i + 30)
+        {
+            Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count < i ? QuestIDs.Count : i + 30)]);
+            Bot.Sleep(1500);
+        }
+
+        PreLoaded = true;
     }
+    private bool PreLoaded = false;
 
     private int PreviousQuestID = 0;
     private bool PreviousQuestState = false;

@@ -44,7 +44,7 @@ public class CoreDarkon
         Core.AddDrop("Darkon's Receipt");
         Core.EquipClass(ClassType.Solo);
 
-        Story.UpdateQuest(2954);
+        Bot.Quests.UpdateQuest(2954);
         Core.Join("doomvault", "r5", "Left");
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))
@@ -103,7 +103,7 @@ public class CoreDarkon
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("astraviacastle", "Creature 27|Creature 28", "Defaced Portrait", 10);
             Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4);
-            
+
             Core.JumpWait();
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviacastle", "The Sun", "Burned Banana");

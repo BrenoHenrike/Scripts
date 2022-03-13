@@ -21,7 +21,7 @@ public class SEP
     public void SilverExaltedPaladin()
     {
         Core.AddDrop("Silver Exalted Paladin");
-        if(Core.CheckInventory("Silver Exalted Paladin"))
+        if (Core.CheckInventory("Silver Exalted Paladin"))
             return;
         if (!Story.QuestProgression(7580))
         {

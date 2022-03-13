@@ -289,7 +289,7 @@ public class Core13LoC
             Core.Join("vath");
             Core.Jump("CutCap", "Left");
             Bot.Sleep(2500);
-            Story.UpdateQuest(354);
+            Bot.Quests.UpdateQuest(354);
 
             if (!Core.CheckInventory("Thermite"))
             {
@@ -566,11 +566,11 @@ public class Core13LoC
         //Dracowerepyre
         if (!Story.QuestProgression(567))
         {
-            Story.UpdateQuest(567);
+            Bot.Quests.UpdateQuest(567);
             Core.EnsureAccept(567);
             Core.KillMonster("chaoscave", "r5", "Left", "Dracowerepyre", "Dracowerepyre Defeated");
             Core.EnsureComplete(567);
-            Story.UpdateQuest(597);
+            Bot.Quests.UpdateQuest(597);
         }
 
         //Wolfwing

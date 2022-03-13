@@ -11,6 +11,7 @@ using RBot;
 
 public class YamiNoRonin
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public TheEdgeofanEra TEoaE = new TheEdgeofanEra();
@@ -29,7 +30,9 @@ public class YamiNoRonin
     {
         if (Core.CheckInventory("Yami no Ronin"))
             return;
+
         Core.AddDrop("Yami no Ronin");
+        
         Core.EnsureAccept(7408);
         TPtP.BlademasterSwordScroll(1);
         TEoaE.YokaiSwordScroll(1);

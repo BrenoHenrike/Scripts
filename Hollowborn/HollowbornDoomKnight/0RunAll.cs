@@ -25,7 +25,7 @@ public class HDKAll
     // False = Farms Dark and Doom fragments when needed.
     // Recommended: false
     private bool prefarm = false;
-    
+
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreHollowbornDoomKnight HDK = new CoreHollowbornDoomKnight();

@@ -24,6 +24,8 @@ public class CoreAdvanced
 
     public void EnhanceItem(string ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
+        if (ItemName == "")
+            return;
         List<InventoryItem> SelectedItem = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => i.Name == ItemName && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapon = SelectedItem.FindAll(i => WeaponCatagories.Contains(i.Category));
         List<InventoryItem> SelectedOther = SelectedItem.FindAll(i => !WeaponCatagories.Contains(i.Category));
@@ -50,7 +52,7 @@ public class CoreAdvanced
         if (SelectedItems.Count == 0)
         {
             if (!SelectedItems.Any(x => x.Name == ""))
-                Core.Logger($"You do not own \"{ItemNames}\", enhancement failed");
+                Core.Logger($"You do not own \"{ItemNames[0]}\", enhancement failed");
             return;
         }
 
@@ -107,7 +109,6 @@ public class CoreAdvanced
 
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
         int i = 0;
-        bool LogOnce = false;
 
         if (WeaponList.Count == 0 && OtherList.Count == 0)
         {
@@ -118,6 +119,7 @@ public class CoreAdvanced
         //Gear
         if (FlexibleList.Count != 0)
         {
+            Core.Logger($"Best Enhancement of: {Type.ToString()}");
             if (Type == EnhancementType.Fighter)
                 __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 768 : 141);
             else if (Type == EnhancementType.Thief)
@@ -165,7 +167,12 @@ public class CoreAdvanced
 
         void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = "")
         {
-            List<ShopItem> ShopItems = new List<ShopItem>();
+            if (Map != "")
+                Core.Join(Map);
+            Core.JumpWait();
+
+            Bot.Shops.Load(ShopID);
+            List<ShopItem> ShopItems = Bot.Shops.ShopItems;
 
             foreach (InventoryItem Item in Input)
             {
@@ -178,39 +185,37 @@ public class CoreAdvanced
                     continue;
                 }
 
-                if (!LogOnce && (!WeaponCatagories.Contains(Item.Category) || Special != WeaponSpecial.None))
-                {
-                    Core.Logger($"Best Enhancement of: {Type.ToString()}");
-                    LogOnce = true;
-                }
-
                 Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
-
-                if (Map != "")
-                    Core.Join(Map);
-                Core.JumpWait();
-
-                Bot.Shops.Load(ShopID);
-                ShopItems = Bot.Shops.ShopItems;
 
                 List<ShopItem> AvailableEnh = new List<ShopItem>();
 
                 foreach (ShopItem Enh in ShopItems)
                 {
-                    if ((Core.IsMember || (!Core.IsMember && !Enh.Upgrade)) &&                             //Filtering out Member if you're non Member
-                        Enh.Level <= Bot.Player.Level &&                                                   //Filtering out the ones you're not high enough level for
-                        ((Input.Count == 1 && Enh.Name.Contains(Special.ToString().Replace('_', ' '))) ||     //If Input is just the weapon, and if the name of the Special is seen in the items
-                        (Input.Count > 1 &&                                                               //If Input is not just weapon, then
-                        (Enh.Name.Contains("Armor") && Item.Category == ItemCategory.Class) ||                  //If the Enhancement is for Classes
-                        (Enh.Name.Contains("Helm") && Item.Category == ItemCategory.Helm) ||                    //If the Enhancement is for Helmets
-                        (Enh.Name.Contains("Cape") && Item.Category == ItemCategory.Cape) ||                    //If the Enhancement is for Capes
-                        (Enh.Name.Contains("Weapon") && WeaponCatagories.Contains(Item.Category)))))            //If the Enhancement is for Weapons
-                        AvailableEnh.Add(Enh);                                                          //Add to the list of selectable Enhancements
+                    //Filtering out Member if you're non Member
+                    if ((Core.IsMember || (!Core.IsMember && !Enh.Upgrade)) &&
+                        //Filtering out the ones you're not high enough level for
+                        Enh.Level <= Bot.Player.Level &&
+                        //If Input is just the weapon, and if the name of the Special is seen in the items
+                        ((Input.Count == 1 && isWeapon(Item) && Enh.Name.Contains(Special.ToString().Replace('_', ' '))) ||
+                            //If Input is not just weapon, then
+                            ((Input.Count > 1 || !isWeapon(Item)) &&
+                                //If the Enhancement is for Classes
+                                (Enh.Name.Contains("Armor") && Item.Category == ItemCategory.Class) ||
+                                //If the Enhancement is for Helmets
+                                (Enh.Name.Contains("Helm") && Item.Category == ItemCategory.Helm) ||
+                                //If the Enhancement is for Capes
+                                (Enh.Name.Contains("Cape") && Item.Category == ItemCategory.Cape) ||
+                                //If the Enhancement is for Weapons
+                                (Enh.Name.Contains("Weapon") && isWeapon(Item)))))
+                        //Add to the list of selectable Enhancements
+                        AvailableEnh.Add(Enh);
                 }
 
                 List<ShopItem> ListMinToMax = AvailableEnh.OrderBy(x => x.Level).ToList();
                 List<ShopItem> BestTwo = ListMinToMax.Skip(ListMinToMax.Count - 2).ToList();
                 ShopItem SelectedEhn = new ShopItem();
+
+                Bot.Log($"{AvailableEnh.Count}");
 
                 if (BestTwo.First().Level == BestTwo.Last().Level)
                     if (Core.IsMember)
@@ -236,11 +241,14 @@ public class CoreAdvanced
 
     public void rankUpClass(string ClassName)
     {
+        Bot.Wait.ForPickup(ClassName);
+
         if (!Core.CheckInventory(ClassName))
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
 
         InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
         GearStore();
+
         if (itemInv == null)
         {
             Core.Logger($"\"{ClassName}\" is not a valid Class", messageBox: true, stopBot: true);
@@ -251,8 +259,11 @@ public class CoreAdvanced
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
+
         SmartEnhance(ClassName);
-        EnhanceItem(BestGear(GearBoost.cp), CurrentClassEnh(), CurrentWeaponSpecial());
+        string?[] CPBoost = BestGear(GearBoost.cp);
+        EnhanceItem(CPBoost, CurrentClassEnh(), CurrentWeaponSpecial());
+        Core.Equip(CPBoost);
         Farm.IcestormArena(1, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
         GearStore(true);
@@ -387,6 +398,11 @@ public class CoreAdvanced
     private List<string> ReEquippedItems = new List<string>();
     private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
     private WeaponSpecial ReWEnhanceAfter = WeaponSpecial.None;
+
+    public bool isWeapon(ItemBase Item)
+    {
+        return Item.ItemGroup == "Weapon";
+    }
 
     private void _RaceGear(string Monster)
     {
@@ -550,7 +566,7 @@ public class CoreAdvanced
         if (SelectedClass.EnhancementLevel == 0)
         {
             Core.Logger("Ignore the message about the Hybrid Enhancement");
-            EnhanceEquipped(EnhancementType.Hybrid);
+            EnhanceItem(Class, EnhancementType.Hybrid);
         }
         Core.Equip(Class);
         switch (Class)
@@ -708,10 +724,13 @@ public class CoreAdvanced
             case "Guardian":
             case "Heavy Metal Necro":
             case "Heavy Metal Rockstar":
+            case "Hobo Highlord":
             case "Lord of Order":
             case "Nechronomancer":
             case "Necrotic Chronomancer":
+            case "No Class":
             case "Nu Metal Necro":
+            case "Obsidian No Class":
             case "Oracle":
             case "ProtoSartorium":
             case "Shadow Dragon Shinobi":

@@ -99,22 +99,17 @@ public class BattleUnder
         Story.KillQuest(5928, "battleundere", "Hot Mama");
     }
 
-    public void Understone(int Quantity)
+    public void Understone()
     {
-        if (Core.CheckInventory("Understone", Quantity))
+        if (Core.CheckInventory("Understone"))
             return;
 
-        Core.Logger($"Farming {Quantity} Understone");
         Core.AddDrop("Understone");
-        int i = 1;
-        while (!Core.CheckInventory("Understone", Quantity))
-        {
-            Core.EnsureAccept(7289);
-            Core.KillMonster("battleunderc", "Enter", "Spawn", "*", "Fluorite Shard", 10);
-            Core.EnsureComplete(7289);
-            Bot.Wait.ForPickup("Understone");
-            Core.Logger($"Completed {i++}x");
-        }
-        Core.Logger($"Completed farming {Quantity} Understone");
+
+        Core.EnsureAccept(7289);
+        Bot.Quests.UpdateQuest(935);
+        Core.KillMonster("battleunderc", "Enter", "Spawn", "*", "Fluorite Shard", 10);
+        Core.EnsureComplete(7289);
+        Bot.Wait.ForPickup("Understone");
     }
 }

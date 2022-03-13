@@ -75,7 +75,7 @@ public class CoreBLOD
 
     public void UnlockMineCrafting()
     {
-        if(Bot.Quests.IsUnlocked(2091))
+        if (Bot.Quests.IsUnlocked(2091))
         {
             Core.Logger("Mine Crafting quest already unlocked, skipping.");
             return;
@@ -83,32 +83,32 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
 
-        if(!Bot.Quests.IsUnlocked(2067))
+        if (!Bot.Quests.IsUnlocked(2067))
         {
             Core.Logger("Quest: Reforging the Blinding Light of Destiny [2066]");
             Core.BuyItem("doomwood", 276, "Blinding Light of Destiny Handle");
             Core.ChainComplete(2066);
         }
-        if(!Bot.Quests.IsUnlocked(2082))
+        if (!Bot.Quests.IsUnlocked(2082))
         {
             Core.Logger("Quest: Secret Order of Undead Slayers [2067]");
             Farm.Gold(15000);
             Core.BuyItem("doomwood", 276, "Bonegrinder Medal");
             Core.ChainComplete(2067);
         }
-        if(!Bot.Quests.IsUnlocked(2083))
+        if (!Bot.Quests.IsUnlocked(2083))
         {
             Core.Logger("Quest: Essential Essences [2082]");
             Farm.BattleUnderB("Undead Essence", 25);
             Core.ChainComplete(2082);
         }
-        if(!Bot.Quests.IsUnlocked(2084))
+        if (!Bot.Quests.IsUnlocked(2084))
         {
             Core.Logger("Quest: Bust Some Dust [2083]");
             Farm.BattleUnderB("Bone Dust", 40);
             Core.ChainComplete(2083);
         }
-        if(!Bot.Quests.IsUnlocked(2091))
+        if (!Bot.Quests.IsUnlocked(2091))
         {
             Core.Logger("Quest: A Loyal Follower [2084]");
             SpiritOrb(100);
@@ -121,8 +121,8 @@ public class CoreBLOD
 
     public void SpiritOrb(int quant = 10500)
     {
-        if(Core.CheckInventory("Spirit Orb", quant))
-            return;        
+        if (Core.CheckInventory("Spirit Orb", quant))
+            return;
 
         Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
 
@@ -148,11 +148,11 @@ public class CoreBLOD
 
     public void BasicWK(int quant = 1)
     {
-        if(Core.CheckInventory("Basic Weapon Kit", quant))
+        if (Core.CheckInventory("Basic Weapon Kit", quant))
             return;
 
         Core.AddDrop(BLoDItems);
-        
+
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Basic Wepon Kit");
@@ -177,11 +177,11 @@ public class CoreBLOD
 
     public void AdvancedWK(int quant = 1)
     {
-        if(Core.CheckInventory("Advanced Weapon Kit", quant))
+        if (Core.CheckInventory("Advanced Weapon Kit", quant))
             return;
 
         Core.AddDrop(BLoDItems);
-        
+
 
         int i = 1;
         Core.Logger($"Farming {quant} Advanced Wepon Kit");
@@ -190,7 +190,7 @@ public class CoreBLOD
             Core.EnsureAccept(2162);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom : true);
+            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom: true);
             Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
             Core.HuntMonster("faerie", "Cyclops Warlord", "Brass Awl");
             Core.HuntMonster("darkoviaforest", "Lich of the Stone", "Slate Stone Sharpener");
@@ -209,10 +209,10 @@ public class CoreBLOD
 
     public void UltimateWK(string item = "Ultimate Weapon Kit", int quant = 1)
     {
-        if(Core.CheckInventory(item, quant))
+        if (Core.CheckInventory(item, quant))
             return;
 
-        Core.AddDrop(BLoDItems);        
+        Core.AddDrop(BLoDItems);
 
         Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
         int i = 1;
@@ -239,20 +239,20 @@ public class CoreBLOD
         }
     }
 
-    public void LightMerge(string item, int quant = 1) 
+    public void LightMerge(string item, int quant = 1)
         => Core.BuyItem("necropolis", 422, item, quant);
 
     public void BlindingMace()
     {
-        if(Core.CheckInventory("Blinding Mace of Destiny"))
+        if (Core.CheckInventory("Blinding Mace of Destiny"))
         {
             Core.Logger("Mace found, skipping.");
             return;
         }
 
-        Core.AddDrop(BLoDItems);        
+        Core.AddDrop(BLoDItems);
 
-        if(!Core.CheckInventory(new[] {"Mace of Destiny", "Bright Mace of Destiny", "Blinding Mace of Destiny"}, any: true))
+        if (!Core.CheckInventory(new[] { "Mace of Destiny", "Bright Mace of Destiny", "Blinding Mace of Destiny" }, any: true))
         {
             if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
                 && !Core.CheckInventory("Bright Aura", 2))
@@ -307,7 +307,7 @@ public class CoreBLOD
             LightMerge("Mace of Destiny");
         }
 
-        if(Core.CheckInventory("Mace of Destiny"))
+        if (Core.CheckInventory("Mace of Destiny"))
         {
             Core.Logger("Farming for Bright Mace of Destiny");
             AdvancedWK();
@@ -315,7 +315,7 @@ public class CoreBLOD
             LightMerge("Bright Mace of Destiny");
         }
 
-        if(Core.CheckInventory("Bright Mace of Destiny"))
+        if (Core.CheckInventory("Bright Mace of Destiny"))
         {
             Core.Logger("Blinding Mace of Destiny");
             UltimateWK();
@@ -325,15 +325,15 @@ public class CoreBLOD
 
     public void BlindingBow()
     {
-        if(Core.CheckInventory("Blinding Bow of Destiny"))
+        if (Core.CheckInventory("Blinding Bow of Destiny"))
         {
             Core.Logger("Bow found, skipping");
             return;
         }
 
         Core.AddDrop(BLoDItems);
-        
-        if(!Core.CheckInventory("Blinding Mace of Destiny"))
+
+        if (!Core.CheckInventory("Blinding Mace of Destiny"))
             BlindingMace();
 
         if (!Core.CheckInventory(new[] { "Blinding Bow of Destiny", "Bright Bow of Destiny", "Bow of Destiny" }, any: true))
@@ -384,15 +384,15 @@ public class CoreBLOD
 
     public void BlindingBlade()
     {
-        if(Core.CheckInventory("Blinding Blade of Destiny"))
+        if (Core.CheckInventory("Blinding Blade of Destiny"))
         {
             Core.Logger("Blade found, skipping.");
             return;
         }
 
         Core.AddDrop(BLoDItems);
-        
-        if(!Core.CheckInventory("Blinding Bow of Destiny"))
+
+        if (!Core.CheckInventory("Blinding Bow of Destiny"))
             BlindingBow();
 
         if (!Core.CheckInventory(new[] { "Blinding Blade of Destiny", "Bright Blade of Destiny", "Blade of Destiny" }, any: true))
@@ -442,11 +442,11 @@ public class CoreBLOD
 
     public void TheBlindingLightofDestiny()
     {
-        if(Core.CheckInventory("Blinding Light of Destiny"))
+        if (Core.CheckInventory("Blinding Light of Destiny"))
             return;
 
         Core.AddDrop(BLoDItems);
-        
+
         Core.Logger("Final part");
         FindingFragmentsBow(125);
         FindingFragmentsMace(75);
@@ -466,12 +466,12 @@ public class CoreBLOD
 
     public void FindingFragmentsMace(int quant = 1)
     {
-        if(Core.CheckInventory("Brilliant Aura", quant))
+        if (Core.CheckInventory("Brilliant Aura", quant))
             return;
-        if(!Core.CheckInventory("Blinding Mace of Destiny"))
+        if (!Core.CheckInventory("Blinding Mace of Destiny"))
             BlindingMace();
 
-        Core.AddDrop(BLoDItems);        
+        Core.AddDrop(BLoDItems);
 
         int i = 1;
         Core.EquipClass(ClassType.Farm);
@@ -491,7 +491,7 @@ public class CoreBLOD
         if (!Core.CheckInventory("Blinding Bow of Destiny"))
             BlindingBow();
 
-        Core.AddDrop(BLoDItems);        
+        Core.AddDrop(BLoDItems);
 
         int i = 1;
         Core.EquipClass(ClassType.Farm);
@@ -511,7 +511,7 @@ public class CoreBLOD
         if (!Core.CheckInventory("Blinding Blade of Destiny"))
             BlindingBlade();
 
-        Core.AddDrop(BLoDItems);        
+        Core.AddDrop(BLoDItems);
 
         int i = 1;
         Core.EquipClass(ClassType.Farm);

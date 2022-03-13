@@ -42,7 +42,7 @@ public class J6Saga
         Story.KillQuest(698, "forest", "Zardman Grunt");
 
         //Mission2
-        Story.KillQuest(699, "boxes", "Sneeviltron", AutoCompleteQuest: false);
+        Story.KillQuest(699, "boxes", "Sneeviltron");
 
         if (!Core.isCompletedBefore(1172))
         {
@@ -51,6 +51,9 @@ public class J6Saga
         }
         //A Gate and Terrible Monster
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
+
+        if (!Core.isCompletedBefore(1172))
+            Bot.Sleep(5000);
 
         //I'm on the Hunt, I'm after 58-Sr3
         Story.MapItemQuest(1172, "moonyard", 495);
@@ -70,12 +73,14 @@ public class J6Saga
         Story.KillQuest(1178, "marsh2", "Lesser Groglurk");
 
         //Planet Banzai!
-        if (!Story.QuestProgression(2168))
-        {
-            Core.Jump("R10");
-            Bot.Player.Join("banzai");
-            Story.MapItemQuest(2168, "banzai", 1259);
-        }
+        Story.ChainQuest(2168);
+        // if (!Story.QuestProgression(2168))
+        // {
+        //     Core.Jump("R10");
+        //     Bot.Player.Join("banzai");
+        //     Core.ChainComplete(2168);
+        // }
+
 
         //L.O.S.E.R. Battle!
         Story.ChainQuest(2169);
@@ -133,6 +138,7 @@ public class J6Saga
         }
 
         Farm.ChronoSpanREP(2);
+
         //Sweet Dreams for a Safe Flight
         Story.BuyQuest(2834, "thespan", 439, "Comfy Pillow");
 
@@ -178,18 +184,15 @@ public class J6Saga
         Story.KillQuest(2846, "alley", "Guard Dog Robot|Security Cam|Guard Robot");
 
         //Watch Chapter 1
-        Story.MapItemQuest(2850, "hyperspace", 1747);
-        if (Bot.Quests.IsInProgress(2850))
-            Core.EnsureComplete(2850);
+        Story.MapItemQuest(2850, "hyperspace", 1751);
 
+        //Watch Chaper 1
         if (!Core.isCompletedBefore(2851))
         {
             Core.Jump("R10");
             Bot.Player.Join("alley");
+            Bot.Sleep(2000);
         }
-
-        Bot.Sleep(2000);
-
         //Save the Girl
         Story.KillQuest(2851, "alley", "Thug Minion");
 

@@ -28,22 +28,9 @@ public class HelmOfAwe
         if (Core.CheckInventory("Helm of Awe"))
             return;
 
-        Core.AddDrop("Helm Fragment");
-        Awe.AwePass(4175, 4176, 4177);
-        Core.EquipClass(ClassType.Solo);
-        Story.UpdateQuest(3008);
-        Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-        Story.UpdateQuest(3004);
-        if (!Core.CheckInventory("Helm Relic"))
-            while (!Core.CheckInventory("Helm Fragment", 10))
-            {
-                Core.EnsureAccept(Awe.QuestID);
-                Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Helm Shard", 5, false);
-                Core.EnsureComplete(Awe.QuestID);
-                Bot.Wait.ForPickup("Helm Fragment");
-            }
-        Core.BuyItem("museum", 1129, "Helm Relic");
+        Awe.GetAweRelic("Helm", 4175, 10, 5, "doomvaultb", "Undead Raxgore");
         Core.BuyItem("museum", 1129, "Helm of Awe");
+
         Core.ToBank("Legendary Awe Pass", "Guardian Awe Pass", "Armor of Awe Pass");
     }
 }

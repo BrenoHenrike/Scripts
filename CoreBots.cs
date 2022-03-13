@@ -1,4 +1,4 @@
-﻿//Scripts v2.26.1
+﻿//Scripts v2.27
 using RBot;
 using RBot.Items;
 using RBot.Monsters;
@@ -10,6 +10,7 @@ using RBot.Shops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
@@ -32,7 +33,7 @@ public class CoreBots
     // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
-    public bool HardMonPublicRoom { get; set; } = true;
+    public bool PublicDifficult { get; set; } = true;
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
@@ -40,13 +41,13 @@ public class CoreBots
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
-    public string SoloClass { get; set; } = "Void Highlord";
+    public string SoloClass { get; set; } = "Generic";
     // [Can Change] Mode of soloing class, if it has multiple. 
     public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your soloing equipment
     public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Name of your farming class
-    public string FarmClass { get; set; } = "Dark Master of Moglins";
+    public string FarmClass { get; set; } = "Generic";
     // [Can Change] Mode of farminging class, if it has multiple. 
     public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your farming equipment
@@ -57,15 +58,16 @@ public class CoreBots
     // Whether the player is Member
     public bool IsMember => ScriptInterface.Instance.Player.IsMember;
 
-    private static CoreBots _instance;
-    public static CoreBots Instance => _instance ?? (_instance = new CoreBots());
+    private static CoreBots? _instance;
+    public static CoreBots Instance => _instance ??= new CoreBots();
     public ScriptInterface Bot => ScriptInterface.Instance;
 
-    public List<ItemBase> CurrentRequirements = new List<ItemBase>();
-    public List<string> BankingBlackList = new List<string>();
+    public List<ItemBase> CurrentRequirements = new();
+    public List<string> BankingBlackList = new();
     public string[] EmptyArray = { "" };
-    public List<InventoryItem> EmptyList = new List<InventoryItem>();
+    public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
+    public string? ExecutablePath = Path.GetDirectoryName(Application.ExecutablePath);
 
     /// <summary>
     /// Set commom bot options to desired value
@@ -74,6 +76,17 @@ public class CoreBots
     public void SetOptions(bool changeTo = true)
     {
         VersionChecker("4");
+
+        if (!Bot.Player.LoggedIn)
+        {
+            Logger("Auto Login triggered");
+            Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+            Bot.Sleep(1000);
+            Bot.Player.Connect(ServerList.Servers[2]);
+            while (!Bot.Player.LoggedIn)
+                Bot.Sleep(500);
+            Bot.Sleep(5000);
+        }
 
         // Common Options
         Bot.Options.PrivateRooms = false;
@@ -120,9 +133,9 @@ public class CoreBots
             Bot.Runtime.BankLoaded = true;
             if (BankMiscAC)
             {
-                List<string> Whitelisted = new List<string>() { "Note", "Item", "Resource", "QuestItem" };
-                List<string> WhitelistedSU = new List<string>() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
-                List<string> MiscForBank = new List<string>();
+                List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
+                List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
+                List<string> MiscForBank = new();
                 foreach (var item in Bot.Inventory.Items)
                 {
                     if (Bot.Boosts.Enabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
@@ -236,7 +249,7 @@ public class CoreBots
             else if (!any)
                 return false;
         }
-        return any ? false : true;
+        return !any;
     }
 
     /// <summary>
@@ -372,7 +385,9 @@ public class CoreBots
             Logger("Relogin to prevent ghost buy");
             Relogin();
         }
-        Logger($"Bought {quant}x{shopQuant} {item.Name}");
+        if (CheckInventory(item.Name, quant))
+            Logger($"Bought {quant}x{shopQuant} {item.Name}");
+        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
     }
 
     private int _CalcBuyQuantity(ShopItem item, int quant, int shopQuant)
@@ -954,6 +969,17 @@ public class CoreBots
         Bot.Sleep(ActionDelay * 2);
     }
 
+    public bool HasAchievement(int ID, string ia = "ia0")
+    {
+        return Bot.CallGameFunction<bool>("world.getAchievement", ia, ID);
+    }
+
+    public void SetAchievement(int ID, string ia = "ia0")
+    {
+        if (!HasAchievement(ID, ia))
+            Bot.SendPacket($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
+    }
+
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
     {
         if (log)
@@ -993,7 +1019,7 @@ public class CoreBots
                 Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
                 return;
             }
-            List<string> reqItems = new List<string>();
+            List<string> reqItems = new();
             quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest.Requirements.ForEach(item =>
             {
@@ -1107,26 +1133,16 @@ public class CoreBots
             return;
 
         if (map.ToLower() == "tercessuinotlim")
-            JoinTercessuinotlim();
+        {
+            Bot.Player.Jump("m22", "Left");
+            Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
+        }
         else
         {
             JumpWait();
-            Bot.Player.Join((publicRoom && HardMonPublicRoom) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-            Bot.Wait.ForMapLoad(map.ToLower());
+            Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
         }
-    }
-
-    /// <summary>
-    /// Joins Tercessuinotlim
-    /// </summary>
-    public void JoinTercessuinotlim()
-    {
-        if (Bot.Map.Name == "tercessuinotlim")
-            return;
-        if (Bot.Player.Cell != "m22")
-            Bot.Player.Jump("m22", "Left");
-        Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"));
-        Bot.Wait.ForMapLoad("tercessuinotlim");
+        Bot.Wait.ForMapLoad(map.ToLower());
     }
 
     /// <summary>

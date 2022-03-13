@@ -5,6 +5,7 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
+//cs_include Scripts/Story/SeraphicWar.cs
 using RBot;
 
 public class LegionFealty1

@@ -47,7 +47,7 @@ public class AQWZombies
 
         // Mythsong
         Story.ChainQuest(2121);
-        
+
         // Arcangrove
         Story.ChainQuest(2122);
 
@@ -79,6 +79,5 @@ public class AQWZombies
 
         // Dark Sepulchure Must be Slain!
         Story.KillQuest(2128, "sepulchure", "Dark Sepulchure");
-        //----------------------------------------
     }
 }

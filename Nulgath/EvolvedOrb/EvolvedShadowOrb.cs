@@ -14,12 +14,12 @@ public class EvolvedShadowOrb
         GetEvolvedShadowOrb();
         Core.SetOptions(false);
     }
-    
+
     public void GetEvolvedShadowOrb()
     {
-        if(!Core.IsMember)
+        if (!Core.IsMember)
             return;
-        else if(Core.CheckInventory("Evolved Shadow Orb"))
+        else if (Core.CheckInventory("Evolved Shadow Orb"))
             return;
         Nulgath.ApprovalAndFavor(200, 0);
         Nulgath.FarmUni13(3);

@@ -409,9 +409,9 @@ public class CoreFarms
 
         void Packet()
         {
-            Bot.Sleep(2000);
+            Bot.Sleep(3500);
             Bot.SendPacket($"%xt%zm%crafting%1%getAlchWait%11475%11478%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            Bot.Sleep(9000);
+            Bot.Sleep(11000);
             Bot.SendPacket($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
 
@@ -1552,6 +1552,7 @@ public class CoreFarms
 
     public void TrollREP(int rank = 10)
     {
+        UseBoost(0, RBot.Items.BoostType.Reputation, false);
         if (FactionRank("Troll") >= rank)
             return;
         if (Core.IsMember)
@@ -1604,6 +1605,7 @@ public class CoreFarms
         else
             Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
+        Bot.Quests.UpdateQuest(488);
         int i = 1;
         while (FactionRank("Yokai") < rank)
         {
@@ -1660,23 +1662,22 @@ public class CoreFarms
                     Core.Logger($"Completed x{i++}");
                 }
 
-                Core.Join("party");
-                Core.Logger("Bait Fishing");
+                Core.Join("fishing");
+                Core.Logger($"Bait Fishing");
 
-                while (Bot.Inventory.Contains("Fishing Bait", 1))
+                while (Bot.Inventory.Contains("Fishing Bait"))
                 {
-                    while (!Core.CheckInventory("Fishing Bait", 1))
+                    while (!Core.CheckInventory("Fishing Bait"))
                         return;
-                    Bot.SendPacket("%xt%zm%FishCast%1%Pole%1%");
-                    Bot.Sleep(5000);
-                    Bot.SendPacket("%xt%zm%getFish%1%false%");
-                    Bot.Sleep(1500);
+
+                    Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
+                    Bot.Sleep(10000);
                     Core.Logger($"Fished {i++} Times");
                 }
             }
 
 
-            while (Bot.Player.GetFactionRank("Fishing") > 2)
+            while (Bot.Player.GetFactionRank("Fishing") < 10)
             {
                 Core.Logger("Farming Dynamite");
                 while (!Bot.Inventory.Contains("Fishing Dynamite", 10))
@@ -1688,16 +1689,16 @@ public class CoreFarms
                 }
 
                 Core.Join("party");
-                Core.Logger("Dynamite Fishing");
+                Core.Logger($"Dynamite Fishing");
 
                 while (Bot.Inventory.Contains("Fishing Dynamite", 1))
                 {
                     while (!Core.CheckInventory("Fishing Dynamite", 1))
                         return;
-                    Bot.SendPacket("%xt%zm%FishCast%1%Dynamite%30%");
-                    Bot.Sleep(5000);
+
+                    Bot.SendPacket($"%xt%zm%FishCast%1%Dynamite%30%");
+                    Bot.Sleep(3500);
                     Bot.SendPacket("%xt%zm%getFish%1%false%");
-                    Bot.Sleep(1500);
                     Core.Logger($"Fished {i++} Times");
                 }
             }

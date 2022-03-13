@@ -53,7 +53,7 @@ public class DragonOfTime
             Core.EnsureAccept(7716);
 
             Core.EquipClass(ClassType.Farm);
-            Story.UpdateQuest(4614);
+            Bot.Quests.UpdateQuest(4614);
             Core.KillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
 
             Farm.LoremasterREP(4);
@@ -79,7 +79,7 @@ public class DragonOfTime
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("dragonchallenge", "Desoloth the Final", "Desoloth's Destructive Aura", isTemp: false, publicRoom: true);
 
-            Story.UpdateQuest(899);
+            Bot.Quests.UpdateQuest(899);
             Core.HuntMonster("blindingsnow", "Nythera", "Nythera's Patience", isTemp: false);
 
             Core.AddDrop("Key of Greed");
@@ -219,7 +219,7 @@ public class DragonOfTime
 
             Adv.BoostHuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, false, publicRoom: true);
 
-            Story.UpdateQuest(9, 159);
+            Bot.Quests.UpdateQuest(9, 159);
             Adv.BoostHuntMonster("towerofdoom9", "Dread Fang", "Cryostatic Essence", 20, false, publicRoom: true);
 
             Adv.BoostHuntMonster("castleroof", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false, publicRoom: true);
@@ -261,10 +261,10 @@ public class DragonOfTime
             Egg.GetMysteriousEgg();
 
             Core.EquipClass(ClassType.Solo);
-            Story.UpdateQuest(3880);
+            Bot.Quests.UpdateQuest(3880);
             Core.KillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false, publicRoom: true);
 
-            Story.UpdateQuest(10, 159);
+            Bot.Quests.UpdateQuest(10, 159);
             Adv.BoostHuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
 
             Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);

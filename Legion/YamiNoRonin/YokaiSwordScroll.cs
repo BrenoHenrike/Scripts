@@ -17,7 +17,7 @@ public class TheEdgeofanEra
     public CoreLegion Legion = new CoreLegion();
     public DarkAlly_Story DarkAlly = new DarkAlly_Story();
 
-     public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -42,13 +42,13 @@ public class TheEdgeofanEra
 
     public void Yami(int quant = 10)
     {
-        if (Core.CheckInventory("yami", quant))
+        if (Core.CheckInventory("Yami", quant))
             return;
-        Core.AddDrop("yami");
-        while (!Core.CheckInventory("yami", quant))
+        Core.AddDrop("Yami");
+        while (!Core.CheckInventory("Yami", quant))
         {
             Core.EnsureAccept(7409);
-            Core.KillMonster("darkally","r2","Left","*","Dark Wisp",444,false);
+            Core.KillMonster("darkally", "r2", "Left", "*", "Dark Wisp", 444, false);
             Core.EnsureComplete(7409);
         }
     }
@@ -61,7 +61,7 @@ public class TheEdgeofanEra
         Core.EnsureAccept(7444);
         Core.HuntMonster("fotia", "Amia the Cult Leader", "Eternity Flame", 1, false);
         Core.HuntMonster("shadowfortress", "Jaaku", "Shadow Katana Blueprint", 1, false);
-        Legion.SoulForgeHammer(1);
+        Legion.SoulForgeHammer();
         if (!Core.CheckInventory("Obsidian Rock", 108))
         {
             Legion.FarmLegionToken(220);
@@ -70,9 +70,9 @@ public class TheEdgeofanEra
         FlameForgedMetal(13);
         if (!Core.CheckInventory("Weapon Imprint", 15))
         {
-            Story.UpdateQuest(3008);
+            Bot.Quests.UpdateQuest(3008);
             Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Story.UpdateQuest(3004);
+            Bot.Quests.UpdateQuest(3004);
             Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
         }
 

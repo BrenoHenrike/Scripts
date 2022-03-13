@@ -2,22 +2,20 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Legion/Revenant/CoreLR.cs
-//cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
-//cs_include Scripts/Story/SeraphicWar.cs
+//cs_include Scripts/Darkon/CoreDarkon.cs
 using RBot;
 
-public class LegionFealty2
+public class AstravianMedal
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreLR LR = new CoreLR();
+    public CoreDarkon Darkon = new CoreDarkon();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        LR.ConquestWreath();
+        Darkon.AstravianMedal();
 
         Core.SetOptions(false);
     }

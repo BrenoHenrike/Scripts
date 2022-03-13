@@ -28,19 +28,9 @@ public class CapeOfAwe
         if (Core.CheckInventory("Cape of Awe"))
             return;
 
-        Core.AddDrop("Cape Fragment");
-        Awe.AwePass(4178, 4179, 4180);
-        Core.EquipClass(ClassType.Solo);
-        Story.UpdateQuest(3008);
-        while (!Core.CheckInventory("Cape Fragment", 10))
-        {
-            Core.EnsureAccept(Awe.QuestID);
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Cape Shard", 1, false);
-            Core.EnsureComplete(Awe.QuestID);
-            Bot.Wait.ForPickup("Cape Fragment");
-        }
-        Core.BuyItem("museum", 1129, "Cape Relic");
+        Awe.GetAweRelic("Cape", 4178, 1, 1, "doomvault", "Binky");
         Core.BuyItem("museum", 1129, "Cape of Awe");
+
         Core.ToBank("Legendary Awe Pass", "Guardian Awe Pass", "Armor of Awe Pass");
     }
 }

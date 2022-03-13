@@ -40,31 +40,32 @@ public class WillpowerExtraction
         {
             Core.EnsureAccept(5258);
 
+            Farm.EvilREP();
             if (!Core.CheckInventory("Shadow Lich"))
             {
-                Farm.EvilREP();
-                if (Bot.Player.Gold < 50000)
-                    Farm.BattleGroundE(60000);
+                Farm.Gold(60000);
                 Core.BuyItem("shadowfall", 89, "Shadow Lich");
             }
 
-            if (!Core.CheckInventory("Mystic Tribal Sword"))
-                Farm.ArcangroveREP();
+            Farm.ArcangroveREP();
             Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
             Nulgath.Supplies("Unidentified 19");
+
             Core.EquipClass(ClassType.Farm);
-            if (!Core.CheckInventory("Necrot", 5))
-                Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
+            Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
 
-            if (!Core.CheckInventory("Chaoroot", 5))
-                Core.HuntMonster("hydra", "Hydra Head", "Chaoroot", 5, false);
+            Core.HuntMonster("hydra", "Hydra Head", "Chaoroot", 5, false);
+
+            if (!Core.CheckInventory("Doomatter", 10))
+            {
+                Farm.Gold(300000);
+                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle");
+                Core.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 10);
+            }
+
             Core.EquipClass(ClassType.Solo);
-            if (!Core.CheckInventory("Doomatter", 5))
-                Core.HuntMonster("maul", "Creature Creation", "Doomatter", 5, false);
-
-            if (!Core.CheckInventory("King Klunk's Crown"))
-                Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
+            Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
 
             Nulgath.ApprovalAndFavor(0, 90);
 
@@ -97,13 +98,10 @@ public class WillpowerExtraction
             }
             Nulgath.FarmUni13();
 
-            if (!Bot.Quests.CanComplete(5258))
-                Bot.Player.Logout();
             Core.EnsureComplete(5258);
             Bot.Player.Pickup("Unidentified 34");
 
-            Core.Logger($"Completed x{i}");
-            i++;
+            Core.Logger($"Completed x{i++}");
         }
     }
 }

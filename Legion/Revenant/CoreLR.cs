@@ -10,6 +10,7 @@ public class CoreLR
     public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
+    public SeraphicWar_Story Seraph = new SeraphicWar_Story();
 
     public void GetLR(bool rankUpClass)
     {
@@ -83,7 +84,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
-        Story.UpdateQuest(2060);
+        Bot.Quests.UpdateQuest(2060);
         while (!Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Core.EnsureAccept(6897);
@@ -117,7 +118,7 @@ public class CoreLR
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
-        Story.UpdateQuest(4614);
+        Bot.Quests.UpdateQuest(4614);
         while (!Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);
@@ -146,6 +147,7 @@ public class CoreLR
             return;
 
         Legion.JoinLegion();
+        Seraph.SeraphicWar_Questline();
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.LR);
