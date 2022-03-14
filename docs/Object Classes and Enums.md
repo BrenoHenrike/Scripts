@@ -10,7 +10,6 @@ While scripting you might stumble uppon different classes and enums that are req
     - [ItemBase](#itembase)
     - [InventoryItem : ItemBase](#inventoryitem--itembase)
     - [ShopItem : ItemBase](#shopitem--itembase)
-    - [MergeItem : ShopItem](#mergeitem--shopitem)
     - [SimpleReward : ItemBase](#simplereward--itembase)
     - [Server](#server)
   - [Enums](#enums)
@@ -56,6 +55,7 @@ You can use the method `PlayerInfo#ToString()` to return a string formatted like
 | `Cell` | *string* | The name of the cell that contains this monster. |
 | `MapID` | *int* | The map id of the monster. This can be used to target specific monsters in a room when multiple monsters with the same name exist. |
 | `HP` | *int* | The health of the monster. |
+| `MaxHP` | *int* | The maximum health points of the monster. |
 | `State` | *int* | The state of the monster. When `State > 0`, the monster is alive, otherwise it is dead. |
 | `FileName` | *string* | The SWF file name of the monster. |
 | `Alive` | *bool* | Returns whether the monster is Alive by checking its `HP`. |
@@ -109,6 +109,7 @@ You can use the method `Quest#ToString()` to return a string formatted like `{Na
 | `Coins` | *bool* | Wether it is an AC item. |
 | `Category` | *ItemCategory* | The category of the item. (Sword, Armor, etc.) |
 | `Temp` | *bool* | Whether it is a temporary item. |
+| `ItemGroup` | *string* | The filter group of the item. co = Armor; ba = Cape; he = Helm; pe = Pet; Weapon = Weapon; None = usually bag items. |
 
 The item base class have commom properties through some other item objects that inherit from it.
 
@@ -123,6 +124,7 @@ The item base class have commom properties through some other item objects that 
 | `Meta` | *string* | The meta value of the item. This is where the boosts (XP, REP, etc.) are shown. |
 | `Level` | *int* | The level of the item. |
 | `EnhancementLevel` | *int* | The enhancement level of the item. |
+| `EnhancementPatternID` | *int* | A number that reflects which enhancement is currently applied to an item. |
 
 ### ShopItem : ItemBase
 
@@ -133,14 +135,9 @@ The item base class have commom properties through some other item objects that 
 | `ShopItemID` | *int* | The shop specific item ID of the item. |
 | `Cost` | *int* | The cost of the item. |
 | `Level` | *int* | The level of the item. |
-
-### MergeItem : ShopItem
-
-> From `RBot.Items`.
-
-| Property | Type | Description |
-|---|:---:|---|
-| `Requirements` | *List\<RBot.Items.ItemBase>* | A list of all there required items to merge the item. |
+| `Faction` | *string*| The faction needed to buy this item. |
+| `RequiredReputation` | *int* | The needed reputation amount to buy this item (goes from 0 to 302500). |
+| `Requirements`| *List\<RBot.Items.ItemBase>* | A list of all there required items to merge the item. |
 
 ### SimpleReward : ItemBase
 
