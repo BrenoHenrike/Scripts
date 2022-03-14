@@ -75,7 +75,7 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
     {
-        VersionChecker("4");
+        VersionChecker("4.0.0.1");
 
         if (!Bot.Player.LoggedIn)
         {
