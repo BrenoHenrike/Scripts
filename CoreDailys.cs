@@ -432,6 +432,23 @@ public class CoreDailys
             Core.ChainComplete(3075);
     }
 
-    
+    public void FreeDailyBoost()
+    {
+        if (!Core.IsMember)
+            return;
+
+        Quest quest = Core.EnsureLoad(4069);
+
+        List<ItemBase> QuestRewards = quest.Rewards;
+
+        List<string> Rewards = new();
+        foreach (ItemBase item in QuestRewards)
+            Rewards.Add(item.Name);
+
+        Core.AddDrop(Rewards.ToArray());
+
+        if (CheckDaily(4069))
+            Core.ChainComplete(4069);
+    }
 
 }
