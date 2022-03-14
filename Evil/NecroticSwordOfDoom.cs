@@ -34,6 +34,7 @@ public class NecroticSwordOfDoom
     public CoreSDKA SDKA = new CoreSDKA();
     public Necromancer Necro = new Necromancer();
     public BattleUnder BattleUnder = new BattleUnder();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -259,6 +260,7 @@ public class NecroticSwordOfDoom
 
         Core.Logger("Unenhanced Aura");
         Necro.GetNecromancer();
+        Adv.rankUpClass("Necromancer");
         Core.AddDrop("Unenhanced Aura");
         Core.EnsureAccept(4436);
         FindBlade();

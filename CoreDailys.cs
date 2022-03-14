@@ -1,5 +1,7 @@
 ﻿using RBot;
-
+using RBot.Items;
+using RBot.Shops;
+using RBot.Quests;
 public class CoreDailys
 {
     // [Can Change] Default metals to be acquired by MineCrafting quest
@@ -373,7 +375,7 @@ public class CoreDailys
     public void DagesScrollFragment()
     {
         if (!CheckDaily(3596, "Dage's Scroll Fragment"))
-            return;            
+            return;
 
         DailyRoutine(3596, "mountdoomskull", "*", "Chaos Power Increased", 6, cell: "b1", pad: "Left");
 
@@ -388,4 +390,48 @@ public class CoreDailys
         DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Enter", pad: "Spawn");
         Core.ToBank("Crypto Token");
     }
+
+    public void MonthlyTreasureChestKeys()
+    {
+        if (!CheckDaily(1239))
+            Core.Logger($"Next keys are available on {new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).ToLongDateString()}", stopBot: true);
+
+        while (CheckDaily(1239) && Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
+        {
+            Quest quest = Core.EnsureLoad(1238);
+
+            List<ItemBase> QuestRewards = quest.Rewards;
+
+            List<string> Rewards = new();
+            foreach (ItemBase item in QuestRewards)
+                Rewards.Add(item.Name);
+
+            Core.AddDrop(Rewards.ToArray());
+
+            Core.ChainComplete(1238);
+            Bot.Wait.ForPickup("*");
+        }
+    }
+
+    public void WheelofDoom()
+    {
+        if (!Core.IsMember)
+            return;
+
+        Quest quest = Core.EnsureLoad(3075);
+
+        List<ItemBase> QuestRewards = quest.Rewards;
+
+        List<string> Rewards = new();
+        foreach (ItemBase item in QuestRewards)
+            Rewards.Add(item.Name);
+
+        Core.AddDrop(Rewards.ToArray());
+
+        if (CheckDaily(3075))
+            Core.ChainComplete(3075);
+    }
+
+    
+
 }
