@@ -1,12 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Seasonal/LuckyDay/Pooka.cs
 using RBot;
 
 public class PookasGiftsMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public PookaStory Pooka = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -19,17 +20,11 @@ public class PookasGiftsMerge
 
     public void GetGiftItems()
     {
-        //Needed AddDrop
         Core.AddDrop("Golden Clover", "Golden Oak Leaf", "Enchanted Gold");
 
-        //Progress Check
-        if (!Core.isCompletedBefore(7962))
-            {
-                Core.Logger("Please run the Pooka Story bot before this one as you have not unlocked the required quests.");
-                return;
-            }
+        Pooka.CompletePooka();
 
-        while (!Core.CheckInventory(new[] {"Golden Clover", "Golden Oak Leaf", "Enchanted Gold"}, 100))
+        while (!Core.CheckInventory(new[] { "Golden Clover", "Golden Oak Leaf", "Enchanted Gold" }, 100))
         {
             //Golden Clover
             if (!Core.CheckInventory("Golden Clover", 100))
