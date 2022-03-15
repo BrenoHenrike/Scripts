@@ -1,5 +1,6 @@
 - ##### Versions
-  - [v2.27 - Latest](v227)
+  - [v2.28 - Latest](#v228)
+  - [v2.27](#v227)
     - [MAS v1.3](#mas-v13)
   - [v2.26](#v226)
     - [v2.26.1](v2261)
@@ -43,6 +44,57 @@
   - [v2.2](#v22)
   - [v2.1](#v21)
   - [v2.0](#v20)
+
+
+### v2.28
+**Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  
+· Released 3LittleWolvesHouses-BuyHouse (Vladimir)  
+· Released Anti-MatterGem(4DPyramidHouseShop)-FourDPyramid (Vladimir)  
+· Released ZealousBadge(DoomLegacyMerge)-TechDungeon (Vladimir)  
+· Released Pooka'sGiftsMergeShop(ItemFarm) (Vladimir)  
+· Released Pooka (Vladimir)  
+· Released DageRecruit (Vladimir)  
+· Released DarkVictorySealFarm(MergeShop) (Vladimir)  
+· Released Undervoid (Vladimir)  
+· Released VordredsArmor (Tato)  
+· Added FreeDailyBoost to CoreDailys (Tato)  
+· Added WheelofDoom to CoreDailys (Tato)  
+· Added MonthlyTreasureChestKey to CoreDailys (Tato)  
+· Added a Saved State Handler that triggers every 5 minutes  
+· Added a Auto Login feature that logs you into Twilly if you start the script without being logging in  
+· Added PreLoad to a bunch of scripts  
+· Improved cell check for KillUltra  
+· Added Paragon Fiend Quest Pet ID from the Dark Caster Collection Chest variant to Time for Spring Cleaning  
+· Added EvilRep to LF1  
+· Added Kimberly to StoneCrusher  
+· Added BrightOak to StoneCrusher  
+· Added AddDrop to DageChallengeMerge  
+· Added updateQuest to YokaiRep  
+· Added SeraphicWar to CoreLR  
+· Added publicRoom: true paramaters to DageChallengeMerge  
+· Added logging to DageChallengeMerge  
+· Added better logging to BuyItem  
+· Made the versionchecker requiere RBot 4.0.0.1  
+· Made all Story.UpdateQuest 's Bot.Quests.UpdateQuest 's  
+· Made LTShogunParagon farm Fotia Elemental's and Spirits  
+· Fixed CitadelRuins  
+· Fixed Collection  
+· Fixed Hunting methods killing a target twice  
+· Fixed ADK  
+· Fixed rankUpClass  
+· Fixed SmartEnhance for unenhanced items  
+· Fixed SeraphicWar  
+· Fixed EternalInversionist  
+· Fixed DageChallengeMerge  
+· Fixed Yami farm in YokaiSwordScroll  
+· Fixed Dage's Scroll Fragments Daily  
+· Fixed SepulchuresOriginalHelm  
+· Supposedly fixed Alchemy. But probably not cuz *****  
+· Supposedly fixed Fishing  
+· Cleaned up a bunch of scripts  
+· Moved some arrays from CoreLegion to CoreLR  
+· Removed rudendancies  
+[Back to top](#versions)
 
 ### v2.27
 **Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  

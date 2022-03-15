@@ -1,4 +1,4 @@
-﻿//Scripts v2.27
+﻿//Scripts v2.28
 using RBot;
 using RBot.Items;
 using RBot.Monsters;
