@@ -8,42 +8,6 @@ public class CoreLegion
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
 
-    public string[] LR =
-    {
-        "Exalted Crown",
-        "Revenant's Spellscroll",
-        "Conquest Wreath",
-        "Legion Revenant"
-    };
-    public string[] LF1 =
-    {
-        "Aeacus Empowered",
-        "Tethered Soul",
-        "Darkened Essence",
-        "Dracolich Contract"
-    };
-    public string[] LF2 =
-    {
-        "Grim Cohort Conquered",
-        "Ancient Cohort Conquered",
-        "Pirate Cohort Conquered",
-        "Battleon Cohort Conquered",
-        "Mirror Cohort Conquered",
-        "Darkblood Cohort Conquered",
-        "Vampire Cohort Conquered",
-        "Spirit Cohort Conquered",
-        "Dragon Cohort Conquered",
-        "Doomwood Cohort Conquered",
-    };
-    public string[] LF3 =
-    {
-        "Hooded Legion Cowl",
-        "Legion Token",
-        "Dage's Favor",
-        "Emblem of Dage",
-        "Diamond Token of Dage",
-        "Dark Token"
-    };
     public string[] legionMedals =
     {
         "Legion Round 1 Medal",
