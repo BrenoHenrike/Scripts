@@ -511,7 +511,7 @@ public class CoreAdvanced
             Bot.Events.MonsterKilled += b => i++;
             while (i < 1)
                 while (shouldAttack)
-                    Bot.Player.Hunt(monster);
+                    Bot.Player.Kill(monster);
             Core.Rest();
         }
         else
@@ -521,7 +521,7 @@ public class CoreAdvanced
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
                 while (shouldAttack)
-                    Bot.Player.Hunt(monster);
+                    Bot.Player.Kill(monster);
                 if (!isTemp && !Core.CheckInventory(item))
                 {
                     Bot.Sleep(Core.ActionDelay);
@@ -551,7 +551,7 @@ public class CoreAdvanced
         else
         {
             if (Target != "")
-                Bot.Player.Hunt(Target);
+                Bot.Player.Attack(Target);
             shouldAttack = true;
         }
     }
