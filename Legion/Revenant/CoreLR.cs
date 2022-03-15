@@ -12,6 +12,43 @@ public class CoreLR
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
     public SeraphicWar_Story Seraph = new SeraphicWar_Story();
 
+    public string[] LR =
+    {
+        "Exalted Crown",
+        "Revenant's Spellscroll",
+        "Conquest Wreath",
+        "Legion Revenant"
+    };
+    public string[] LF1 =
+    {
+        "Aeacus Empowered",
+        "Tethered Soul",
+        "Darkened Essence",
+        "Dracolich Contract"
+    };
+    public string[] LF2 =
+    {
+        "Grim Cohort Conquered",
+        "Ancient Cohort Conquered",
+        "Pirate Cohort Conquered",
+        "Battleon Cohort Conquered",
+        "Mirror Cohort Conquered",
+        "Darkblood Cohort Conquered",
+        "Vampire Cohort Conquered",
+        "Spirit Cohort Conquered",
+        "Dragon Cohort Conquered",
+        "Doomwood Cohort Conquered",
+    };
+    public string[] LF3 =
+    {
+        "Hooded Legion Cowl",
+        "Legion Token",
+        "Dage's Favor",
+        "Emblem of Dage",
+        "Diamond Token of Dage",
+        "Dark Token"
+    };
+
     public void GetLR(bool rankUpClass)
     {
         if (Core.CheckInventory("Legion Revenant"))
@@ -21,10 +58,10 @@ public class CoreLR
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(Legion.legionMedals);
-        Core.AddDrop(Legion.LR);
-        Core.AddDrop(Legion.LF1);
-        Core.AddDrop(Legion.LF2);
-        Core.AddDrop(Legion.LF3);
+        Core.AddDrop(LR);
+        Core.AddDrop(LF1);
+        Core.AddDrop(LF2);
+        Core.AddDrop(LF3);
 
         RevenantSpellscroll();
         ConquestWreath();
@@ -79,8 +116,10 @@ public class CoreLR
         }
 
         Core.AddDrop("Legion Token");
-        Core.AddDrop(Legion.LR);
-        Core.AddDrop(Legion.LF1);
+        Core.AddDrop(LR);
+        Core.AddDrop(LF1);
+
+        Farm.EvilREP();
 
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
@@ -112,8 +151,8 @@ public class CoreLR
         Legion.JoinLegion();
 
         Core.AddDrop("Legion Token");
-        Core.AddDrop(Legion.LR);
-        Core.AddDrop(Legion.LF2);
+        Core.AddDrop(LR);
+        Core.AddDrop(LF2);
 
         int i = 1;
         Core.EquipClass(ClassType.Farm);
@@ -150,8 +189,8 @@ public class CoreLR
         Seraph.SeraphicWar_Questline();
 
         Core.AddDrop("Legion Token");
-        Core.AddDrop(Legion.LR);
-        Core.AddDrop(Legion.LF3);
+        Core.AddDrop(LR);
+        Core.AddDrop(LF3);
 
         int i = 1;
         Core.Logger($"Farming {quant} Exalted Crown");
