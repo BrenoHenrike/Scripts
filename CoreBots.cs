@@ -82,7 +82,7 @@ public class CoreBots
             Logger("Auto Login triggered");
             Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
             Bot.Sleep(1000);
-            Bot.Player.Connect(ServerList.Servers[2]);
+            Bot.Player.Connect(ServerList.Servers[0]);
             while (!Bot.Player.LoggedIn)
                 Bot.Sleep(500);
             Bot.Sleep(5000);
