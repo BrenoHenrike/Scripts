@@ -494,7 +494,8 @@ public class CoreAdvanced
         if (!isTemp && item != "")
             Core.AddDrop(item);
 
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
+        if (Bot.Player.Cell != cell)
+            Core.Join(map, cell, pad, publicRoom: publicRoom);
 
         _RaceGear(monster);
 
