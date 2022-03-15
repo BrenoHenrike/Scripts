@@ -24,9 +24,11 @@ public class KillerCatacombs
 
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
-        else
-            // The Coward
-            Story.KillQuest(3660, "killercatacombs", "Tomb Robber ");
+
+        Story.PreLoad();
+
+        // The Coward
+        Story.KillQuest(3660, "killercatacombs", "Tomb Robber ");
         // Welcome Party
         Story.KillQuest(3661, "killercatacombs", "Tomb Robber ");
         // Scout Ahead

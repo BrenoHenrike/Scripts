@@ -22,23 +22,42 @@ public class HedgeMaze
         if (Core.isCompletedBefore(5313))
             return;
 
-        Story.MapItemQuest(QuestID: 5298, MapName: "hedgemaze", MapItemID: 4678);
-        Story.KillQuest(QuestID: 5298, MapName: "hedgemaze", MonsterName: "Knight's Reflection");
-        Story.MapItemQuest(QuestID: 5299, MapName: "hedgemaze", MapItemID: 4679);
-        Story.KillQuest(QuestID: 5299, MapName: "hedgemaze", MonsterNames: new[] { "Mirrored Shard", "Hedge Goblin", "Minotaur" });
-        Story.KillQuest(QuestID: 5300, MapName: "hedgemaze", MonsterName: "Knight's Reflection");
-        Story.MapItemQuest(QuestID: 5301, MapName: "hedgemaze", MapItemID: 4680);
-        Story.KillQuest(QuestID: 5302, MapName: "hedgemaze", MonsterName: "Hedge Goblin");
-        Story.MapItemQuest(QuestID: 5303, MapName: "hedgemaze", MapItemID: 4681, Amount: 12);
-        Story.KillQuest(QuestID: 5304, MapName: "hedgemaze", MonsterName: "Mirrored Shard");
-        Story.MapItemQuest(QuestID: 5305, MapName: "hedgemaze", MapItemID: 4682);
-        Story.KillQuest(QuestID: 5306, MapName: "hedgemaze", MonsterName: "Minotaur Prime");
-        Story.MapItemQuest(QuestID: 5307, MapName: "hedgemaze", MapItemID: 4683);
-        Story.MapItemQuest(QuestID: 5308, MapName: "hedgemaze", MapItemID: 4684);
-        Story.MapItemQuest(QuestID: 5309, MapName: "hedgemaze", MapItemID: 4685, Amount: 5);
-        Story.KillQuest(QuestID: 5310, MapName: "hedgemaze", MonsterName: "Hedge Goblin");
-        Story.MapItemQuest(QuestID: 5311, MapName: "hedgemaze", MapItemID: 4686);
-        Story.KillQuest(QuestID: 5312, MapName: "hedgemaze", MonsterName: "Shattered Knight");
-        Story.KillQuest(QuestID: 5313, MapName: "hedgemaze", MonsterName: "Resurrected Minotaur");
+        Story.PreLoad();
+
+        Story.MapItemQuest(5298, "hedgemaze", 4678);
+
+        Story.KillQuest(5298, "hedgemaze", "Knight's Reflection");
+
+        Story.MapItemQuest(5299, "hedgemaze", 4679);
+
+        Story.KillQuest(5299, "hedgemaze", new[] { "Mirrored Shard", "Hedge Goblin", "Minotaur" });
+
+        Story.KillQuest(5300, "hedgemaze", "Knight's Reflection");
+
+        Story.MapItemQuest(5301, "hedgemaze", 4680);
+
+        Story.KillQuest(5302, "hedgemaze", "Hedge Goblin");
+
+        Story.MapItemQuest(5303, "hedgemaze", 4681, 12);
+
+        Story.KillQuest(5304, "hedgemaze", "Mirrored Shard");
+
+        Story.MapItemQuest(5305, "hedgemaze", 4682);
+
+        Story.KillQuest(5306, "hedgemaze", "Minotaur Prime");
+
+        Story.MapItemQuest(5307, "hedgemaze", 4683);
+
+        Story.MapItemQuest(5308, "hedgemaze", 4684);
+
+        Story.MapItemQuest(5309, "hedgemaze", 4685, 5);
+
+        Story.KillQuest(5310, "hedgemaze", "Hedge Goblin");
+
+        Story.MapItemQuest(5311, "hedgemaze", 4686);
+
+        Story.KillQuest(5312, "hedgemaze", "Shattered Knight");
+
+        Story.KillQuest(5313, "hedgemaze", "Resurrected Minotaur");
     }
 }

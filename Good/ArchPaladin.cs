@@ -34,6 +34,8 @@ public class ArchPaladin
         if (Core.CheckInventory("ArchPaladin"))
             return;
 
+        Story.PreLoad();
+
         Farm.GoodREP();
         if (!Core.IsMember && !Bot.Quests.IsUnlocked(5467))
         {

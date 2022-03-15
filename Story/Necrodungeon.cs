@@ -23,6 +23,8 @@ public class NecroDungeon
         if (Core.isCompletedBefore(2061))
             return;
 
+        Story.PreLoad();
+
         //descent into darkness - 2044
         Story.KillQuest(QuestID: 2044, MapName: "necrodungeon", MonsterName: "Bellhop");
         //retrieve the past, room 1 - 2045

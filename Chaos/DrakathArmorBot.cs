@@ -61,7 +61,8 @@ public class DrakathArmorBot
     public void DrakathArmorQuest()
     {
         Core.AddDrop("Dage's Scroll Fragment", "Treasure Chest", "Face of Chaos", "Get Your Original Drakath's Armor");
-        if (!Core.CheckInventory("Dage's Scroll Fragment", 13)) {
+        if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
+        {
             Bot.Sleep(Core.ActionDelay);
             Daily.DagesScrollFragment();
         }

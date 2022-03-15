@@ -57,8 +57,6 @@ public class ArchDoomKnight
     };
     public string[] Combined = Q1items.Concat(Q2items).Concat(Q3items).Concat(Q4items).ToArray();
 
-
-
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();

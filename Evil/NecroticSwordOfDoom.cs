@@ -8,7 +8,6 @@
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
-using System;
 
 public class NecroticSwordOfDoom
 {
@@ -25,7 +24,6 @@ public class NecroticSwordOfDoom
     private int EssenceQuantity;
 
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailys Daily = new CoreDailys();
@@ -52,6 +50,8 @@ public class NecroticSwordOfDoom
             Core.Logger("You already own NSoD");
             return;
         }
+
+        Story.PreLoad();
 
         Barium();
         if (!OptimizeInv)

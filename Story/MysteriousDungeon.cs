@@ -28,6 +28,8 @@ public class MysteriousDungeon
         if (Core.isCompletedBefore(5451))
             return;
 
+        Story.PreLoad();
+
         //cursed artifact shop - 5428
         Story.MapItemQuest(5428, "cursedshop", MapItemID: 4803);
 

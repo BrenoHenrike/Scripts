@@ -24,9 +24,11 @@ public class DeadlyDungeon
 
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
-        else
-            // Floor 1
-            Story.KillQuest(3680, "deadlydungeon", "Dire Muncher ");
+
+        Story.PreLoad();
+
+        // Floor 1
+        Story.KillQuest(3680, "deadlydungeon", "Dire Muncher ");
         // Floor 2
         Story.KillQuest(3681, "deadlydungeon", "Hulking Dire Wolf");
         // Floor 3

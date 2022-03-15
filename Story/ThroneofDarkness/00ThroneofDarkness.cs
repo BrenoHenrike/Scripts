@@ -17,6 +17,7 @@ public class CompleteThroneOfDarknessSaga
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
     public CastleofBones s01 = new CastleofBones();
     public ParadoxPortal s02a = new ParadoxPortal();
     public FlyingBaconCatFortress s03a = new FlyingBaconCatFortress();
@@ -37,6 +38,8 @@ public class CompleteThroneOfDarknessSaga
 
     public void CompleteToD()
     {
+        Story.PreLoad();
+
         Core.Logger("Castle of Bones");
         s01.CastleofBonesSaga();
         Core.Logger("Paradox Portal");

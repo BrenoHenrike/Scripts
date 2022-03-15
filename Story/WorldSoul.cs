@@ -19,6 +19,11 @@ public class WorldSoul
 
     public void WorldSoulQuests()
     {
+        if (Core.isCompletedBefore(6245))
+            return;
+
+        Story.PreLoad();
+
         if (!Core.isCompletedBefore(6245))
         {
             Core.EnsureAccept(6238);

@@ -19,12 +19,12 @@ public class DageRecruitStory
 
     public void CompleteDageRecruit()
     {
-        //Progress Check
         if (Core.isCompletedBefore(8575))
             return;
 
-        //Needed AddDrop
-        Core.AddDrop("");
+        Story.PreLoad();
+
+        Bot.Drops.Start();
 
         //Pop Goes the Makai
         Story.KillQuest(8556, "dagerecruit", "Dark Makai");

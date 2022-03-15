@@ -28,6 +28,8 @@ public class WheeleOfLove
         if (Core.isCompletedBefore(5693))
             return;
 
+        Story.PreLoad();
+
         // The Golden Heart
         Story.KillQuest(5684, "wheeloflove", "Love Shrub");
 

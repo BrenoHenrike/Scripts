@@ -8,8 +8,8 @@ using RBot;
 public class HeadoftheLegionBeast
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     public CoreLegion Legion = new CoreLegion();
     public SevenCircles Circles = new SevenCircles();
 
@@ -44,6 +44,8 @@ public class HeadoftheLegionBeast
     {
         if (Core.CheckInventory("Head of the Legion Beast"))
             return;
+
+        Story.PreLoad();
 
         Circles.CirclesWar();
 

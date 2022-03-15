@@ -31,6 +31,8 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6300))
             return;
 
+        Story.PreLoad();
+
         // Fire Dragon Scales
         if (!Story.QuestProgression(6294))
         {
@@ -83,6 +85,8 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6307))
             return;
 
+        Story.PreLoad();
+
         // Getting a Feel for the Area
         Story.MapItemQuest(6301, "northmountain", 5812, 1);
         Story.KillQuest(6301, "northmountain", new[] { "Ice Elemental|Ice Spitter|Ursice Savage" });
@@ -111,6 +115,8 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6311))
             return;
 
+        Story.PreLoad();
+
         // The Fires of War
         Story.KillQuest(6308, "charredplains", new[] { "Fire Dragon|Fire Drakel|Inferno Dragon" });
 
@@ -127,6 +133,8 @@ public class DragonFableOrigins
     {
         if (Core.isCompletedBefore(6325))
             return;
+
+        Story.PreLoad();
 
         // Gathering the Pieces
         Story.MapItemQuest(6312, "drakonnan", 5827, 5);

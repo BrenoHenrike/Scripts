@@ -22,6 +22,8 @@ public class LivingDungeon
         if (Core.isCompletedBefore(4384))
             return;
 
+        Story.PreLoad();
+
         // Roots of all Evil
         Story.KillQuest(4349, "livingdungeon", "Root of Evil");
 

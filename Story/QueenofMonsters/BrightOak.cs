@@ -25,6 +25,11 @@ public class BrightOak
 
     public void doall()
     {
+        if (Core.isCompletedBefore(4810))
+            return;
+
+        Story.PreLoad();
+
         Ælfred();
         AvenGreywhorl();
         FlixSpiderwhisp();

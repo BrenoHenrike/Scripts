@@ -31,6 +31,8 @@ public class BattleUnder
         if (Core.isCompletedBefore(377))
             return;
 
+        Story.PreLoad();
+
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(374, "battleundera", "Skeletal Warrior");
         Story.KillQuest(375, "battleundera", "Skeletal Warrior");
@@ -44,6 +46,8 @@ public class BattleUnder
     {
         if (Core.isCompletedBefore(935))
             return;
+
+        Story.PreLoad();
 
         BattleUnderA();
 
@@ -60,6 +64,8 @@ public class BattleUnder
     {
         if (Core.isCompletedBefore(939))
             return;
+
+        Story.PreLoad();
 
         BattleUnderB();
 
@@ -81,6 +87,8 @@ public class BattleUnder
         if (!Core.IsMember || Core.isCompletedBefore(2215))
             return;
 
+        Story.PreLoad();
+
         BattleUnderC();
 
         Story.KillQuest(2211, "battleunderd", "Shivering Bones");
@@ -94,6 +102,11 @@ public class BattleUnder
 
     public void BattleUnderE()
     {
+        if (Core.isCompletedBefore(5928))
+            return;
+
+        Story.PreLoad();
+
         Story.KillQuest(5927, "battleundere", "Lava Guard");
         Story.MapItemQuest(5927, "battleundere", 5362);
         Story.KillQuest(5928, "battleundere", "Hot Mama");

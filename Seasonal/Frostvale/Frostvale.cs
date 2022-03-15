@@ -33,6 +33,8 @@ public class Frostvale
         if (Core.isCompletedBefore(906))
             return;
 
+        Story.PreLoad();
+
         // Rescue Blizzy
         Story.KillQuest(155, "icecave", "Frosty");
 
@@ -94,6 +96,8 @@ public class Frostvale
         if (Core.isCompletedBefore(1508))
             return;
 
+        Story.PreLoad();
+
         // Shaking the Globes
         Story.MapItemQuest(906, "snowglobe", 243, 10);
         Story.KillQuest(906, "snowglobe", "Snow Golem");
@@ -125,6 +129,8 @@ public class Frostvale
     {
         if (Core.isCompletedBefore(1521))
             return;
+
+        Story.PreLoad();
 
         // Snow Way to Know Where to Go
         Story.MapItemQuest(1508, "alpine", 758);
@@ -162,6 +168,8 @@ public class Frostvale
     {
         if (Core.isCompletedBefore(2576))
             return;
+
+        Story.PreLoad();
 
         Core.AddDrop("Ray of Hope", "Sands of Time");
 
@@ -258,6 +266,8 @@ public class Frostvale
         if (Core.isCompletedBefore(2582))
             return;
 
+        Story.PreLoad();
+
         // A Little Warmth and Light
         Story.MapItemQuest(2576, "icerise", 1592, 5);
 
@@ -284,6 +294,8 @@ public class Frostvale
     {
         if (Core.isCompletedBefore(6132))
             return;
+
+        Story.PreLoad();
 
         // Help Blizzy
         Story.MapItemQuest(6122, "coldwindvalley", 5547);

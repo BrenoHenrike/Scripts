@@ -24,6 +24,8 @@ public class J6Saga
         if (Core.isCompletedBefore(2858))
             return;
 
+        Story.PreLoad();
+
         //J6 Quiz Game
         Story.ChainQuest(674);
 

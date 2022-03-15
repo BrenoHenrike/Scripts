@@ -19,13 +19,13 @@ public class PookaStory
 
     public void CompletePooka()
     {
-        //Progress Check
         if (Core.isCompletedBefore(7962))
             return;
 
-        //Needed AddDrop
+        Story.PreLoad();
+
         Core.AddDrop("Amethyst Faerie Wings");
-        
+
         //Luck Boost
         Story.KillQuest(7959, "pooka", "Sneevilchaun");
 

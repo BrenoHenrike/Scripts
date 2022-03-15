@@ -31,6 +31,8 @@ public class DoomwoodPart3
             return;
         ///thorngarde > /stonewood > /techdungeon > /stonewooddeep > /techfortress
 
+        Story.PreLoad();
+
         //Part1
         //Map: Thorngarde
         // Bullies

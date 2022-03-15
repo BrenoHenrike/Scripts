@@ -42,6 +42,9 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory(PostSummoningItems))
             return;
+
+        Story.PreLoad();
+
         HB.HardcoreContract();
         HBShadowOfFate();
         Farm.IcestormArena();
@@ -62,12 +65,15 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory("Hollowborn Paladin"))
             return;
+
+        Story.PreLoad();
+
         HB.HardcoreContract();
         Farm.IcestormArena(75);
 
         Core.AddDrop("Sparrow's Blood", "Brilliant Aura", "Gem of Superiority", "Condensed Mana", "Hollowborn Paladin");
         Core.EnsureAccept(7557);
-        if (!Core.CheckInventory("Sparrow's Blood")) 
+        if (!Core.CheckInventory("Sparrow's Blood"))
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(803);
@@ -88,7 +94,7 @@ public class CoreHollowbornPaladin
             Core.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
         }
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("timevoid", "Unending Avatar", "Condensed Mana", 1, false, publicRoom : true);
+        Core.HuntMonster("timevoid", "Unending Avatar", "Condensed Mana", 1, false, publicRoom: true);
         HB.HumanSoul(200);
         Core.EnsureComplete(7557);
     }
@@ -97,6 +103,9 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory("Hollowborn Paladin Helmet"))
             return;
+
+        Story.PreLoad();
+
         HB.HardcoreContract();
         HBPaladin();
         Farm.IcestormArena(85);
@@ -125,7 +134,7 @@ public class CoreHollowbornPaladin
             Core.EnsureAccept(4812);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("graveyard", "Skeletal Warrior", "Broken Dream Catcher", 10);
-            Core.EnsureCompleteChoose(4812, new[] {"Dark Aura Gem"});
+            Core.EnsureCompleteChoose(4812, new[] { "Dark Aura Gem" });
         }
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("necrocavern", "Shadow Dragon", "Shadow Dragon Soul", 1, false);
@@ -139,6 +148,9 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory("Hollowborn Shadow of Fate"))
             return;
+
+        Story.PreLoad();
+
         HB.HardcoreContract();
         HBPaladin();
         HBPaladinHelmet();

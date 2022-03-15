@@ -24,6 +24,8 @@ public class Fiendshard_Story
         if (Core.isCompletedBefore(7898))
             return;
 
+        Story.PreLoad();
+
         Originul.Originul_Questline();
 
         // Sneak Attack

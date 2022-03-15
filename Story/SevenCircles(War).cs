@@ -22,6 +22,8 @@ public class SevenCircles
         if (Core.isCompletedBefore(7978))
             return;
 
+        Story.PreLoad();
+
         Core.AddDrop("Indulgence");
 
         //Canto IV

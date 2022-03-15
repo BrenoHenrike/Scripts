@@ -19,11 +19,11 @@ public class UndervoidStory
 
     public void CompleteUnderVoid()
     {
-        //Progress Check
         if (Core.isCompletedBefore(3406))
             return;
 
-        //Needed AddDrop
+        Story.PreLoad();
+
         Core.AddDrop("Hollowborn Soul Stealer");
 
         //Dark, Deadly Warmup
@@ -39,7 +39,6 @@ public class UndervoidStory
         Story.KillQuest(3402, "underworld", "Legion Fenrir");
 
         //Conquer Conquest
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(3403, "undervoid", "Conquest");
 
         //Conquer War

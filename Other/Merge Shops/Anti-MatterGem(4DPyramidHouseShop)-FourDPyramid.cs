@@ -1,5 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-
 using RBot;
 
 public class FourDPyramidHouseShop
@@ -18,7 +17,6 @@ public class FourDPyramidHouseShop
 
     public void GetMergeItems()
     {
-        //Needed AddDrop
         Core.AddDrop("Anti-Matter Gem");
 
         while (!Core.CheckInventory("Anti-Matter Gem", 500))
@@ -27,7 +25,6 @@ public class FourDPyramidHouseShop
             Core.EnsureAccept(5188);
             Core.HuntMonster("whitehole", "Dimensional Crystal", "Crystal Shards", 5);
             Core.EnsureComplete(5188);
-            
         }
     }
 }

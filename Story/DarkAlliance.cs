@@ -24,6 +24,8 @@ public class DarkAlliance_Story
         if (Core.isCompletedBefore(7460))
             return;
 
+        Story.PreLoad();
+
         //Clear the Shadows --DAGE--
         Story.MapItemQuest(7446, "darkalliance", 7224, 8);
         Story.KillQuest(7446, "darkalliance", "Shadow");

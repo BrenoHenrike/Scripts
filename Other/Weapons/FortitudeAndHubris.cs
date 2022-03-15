@@ -22,13 +22,11 @@ public class FandH
         if (Core.CheckInventory("Fortitude + Hubris"))
             return;
 
-        Core.AddDrop("Zorbak's Secret G-Rave Key", "Sword's Cost", "Shards of the Sword",
-        "Hubris's Final Blade Shard", "Hubris' Magic Essence", "Hubris", "Fortitude's Blade Shards",
-        "Fortitude's Magic Essence", "Fortitude", "Fortitude + Hubris");
+        Story.PreLoad();
 
+        Core.AddDrop("Zorbak's Secret G-Rave Key", "Sword's Cost", "Shards of the Sword", "Hubris's Final Blade Shard", "Hubris' Magic Essence", "Hubris", "Fortitude's Blade Shards", "Fortitude's Magic Essence", "Fortitude", "Fortitude + Hubris");
 
         // Qualifying Quest
-        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(6593, "stalagbite", "Balboa");
 
         // Rest for the Not Very Wicked

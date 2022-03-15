@@ -1,12 +1,10 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreStory.cs
 using RBot;
 
 public class EvolvedLeprechaun
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -45,10 +43,10 @@ public class EvolvedLeprechaun
             {
                 Core.SmartKillMonster(1759, "rainbow", "Lucky Harms ", 20, true);
             }
-            if (!Core.CheckInventory("Lucky Clover", 12))
-            {
-                Core.Logger($"Not enough \"Lucky Clovers\", please do the daily until you have 12. You can run it once a day (Server resets at 12am EST)");
-            }
+        if (!Core.CheckInventory("Lucky Clover", 12))
+        {
+            Core.Logger($"Not enough \"Lucky Clovers\", please do the daily until you have 12. You can run it once a day (Server resets at 12am EST)");
+        }
 
         //Buy Evolved Leprechaun
         if (Core.CheckInventory("Lucky Clover", 12) && (Core.CheckInventory("Rainbow Shard", 20) && (Core.CheckInventory("Golden Ticket", 2000))))

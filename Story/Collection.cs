@@ -20,7 +20,9 @@ public class Collection
     public void CollectionStory()
     {
         if (Core.isCompletedBefore(1348))
-            return;            
+            return;
+
+        Story.PreLoad();
 
         // This Town in a Desktop Globe
         Story.MapItemQuest(1293, "Terrarium", 586);

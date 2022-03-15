@@ -10,6 +10,7 @@ public class StoneCrusher
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public Core13LoC LOC => new Core13LoC();
 
@@ -26,6 +27,9 @@ public class StoneCrusher
     {
         if (Core.CheckInventory("StoneCrusher"))
             return;
+
+        Story.PreLoad();
+
         LOC.Kimberly();
         Farm.MythsongREP();
         Farm.ArcangroveREP();

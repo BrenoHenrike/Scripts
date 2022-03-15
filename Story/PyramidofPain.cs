@@ -24,9 +24,11 @@ public class PyramidofPain
 
         if (!Core.IsMember)
             Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
-        else
-            // Prove Your Worth
-            Story.KillQuest(3640, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab " });
+
+        Story.PreLoad();
+
+        // Prove Your Worth
+        Story.KillQuest(3640, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab " });
         // Still Not Impressed?
         Story.KillQuest(3641, "pyramidpain", "Pyramid Vase");
         // A Prickly Situation

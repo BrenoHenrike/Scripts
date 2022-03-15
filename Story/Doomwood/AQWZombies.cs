@@ -13,16 +13,16 @@ public class AQWZombies
         Core.SetOptions();
 
         Storyline();
-        Core.Logger("AQWZombies Finished");
 
         Core.SetOptions(false);
     }
-
 
     public void Storyline()
     {
         if (Core.isCompletedBefore(2128))
             return;
+
+        Story.PreLoad();
 
         // Undead Assault
         Story.KillQuest(2093, "battleundera", "Skeletal Soldier");

@@ -23,6 +23,9 @@ public class GetSDD
     {
         if (Core.CheckInventory("Shadow Dragon Defender"))
             return;
+
+        Story.PreLoad();
+
         Core.AddDrop("Shadow Dragon Defender", "Manticore Cub Pet");
 
         if (!Core.CheckInventory("Manticore Cub Pet"))

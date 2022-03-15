@@ -22,6 +22,8 @@ public class DarkAlly_Story
         if (Core.isCompletedBefore(7428))
             return;
 
+        Story.PreLoad();
+
         Story.MapItemQuest(7419, "darkally", 7179, 6);
         Story.KillQuest(7419, "darkally", "Shadow");
 

@@ -19,10 +19,14 @@ public class MysteriousEgg
 
     public void GetMysteriousEgg()
     {
-        Core.AddDrop("Mysterious Egg", "Key of Pride", "Key of Gluttony", "Key of Greed", "Key of Sloth",
-        "Key of Lust", "Key of Envy", "Key of Wrath");
+
         if (Core.CheckInventory("Mysterious Egg"))
             return;
+
+        Story.PreLoad();
+
+        Core.AddDrop("Mysterious Egg", "Key of Pride", "Key of Gluttony", "Key of Greed", "Key of Sloth", "Key of Lust", "Key of Envy", "Key of Wrath");
+
         Core.EnsureAccept(6171);
         Core.HuntMonster("pride", "Valsarian", "Key of Pride", isTemp: false);
         Core.KillMonster("gluttony", "Enter2", "Left", "*", "Key of Gluttony", isTemp: false);

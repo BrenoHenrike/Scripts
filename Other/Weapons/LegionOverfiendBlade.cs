@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 using RBot;
-using RBot.Items;
 using RBot.Quests;
 
 public class LegionBlade
@@ -9,7 +8,6 @@ public class LegionBlade
     public CoreBots Core => CoreBots.Instance;
 
     string[] Rewards = { "Legion Overfiend Blade", "Dark Caster's Tome", "Eternal Legion Sword" };
-
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -31,7 +29,6 @@ public class LegionBlade
         int quant1;
         int quant2;
         int questID;
-
 
         if (Core.CheckInventory("Paragon Fiend Quest Pet"))
         {

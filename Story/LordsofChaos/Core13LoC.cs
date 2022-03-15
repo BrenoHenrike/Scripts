@@ -11,6 +11,8 @@ public class Core13LoC
     {
         Adv.BestGear(GearBoost.Chaos);
 
+        Story.PreLoad();
+
         if (Core.IsMember)
         {
             Prologue();
@@ -39,6 +41,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(6219))
             return;
+
+        Story.PreLoad();
 
         //Enter the gates
         Story.KillQuest(183, "battleundera", "Skeletal Fire Mage");
@@ -94,6 +98,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(272))
             return;
+
+        Story.PreLoad();
 
         //Winged Spies
         Story.KillQuest(245, "mobius", "Chaos Sp-Eye");
@@ -183,6 +189,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(363))
             return;
+
+        Story.PreLoad();
 
         //Adorable Sisters
         Story.MapItemQuest(319, "tavern", 56, 7);
@@ -336,6 +344,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(488))
             return;
 
+        Story.PreLoad();
+
         //Turtle Power
         Story.KillQuest(380, "yokaiboat", "Kappa Ninja");
         Story.MapItemQuest(380, "yokaiboat", 64);
@@ -449,6 +459,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(598))
             return;
+
+        Story.PreLoad();
 
         Core.AddDrop("Red's Big Wolf Slaying Axe");
 
@@ -587,6 +599,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(710))
             return;
 
+        Story.PreLoad();
+
         //Stairway to Heaven
         Story.KillQuest(648, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
 
@@ -665,6 +679,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(847))
             return;
+
+        Story.PreLoad();
 
         //Observing the Observatory
         Story.MapItemQuest(805, "arcangrove", 139);
@@ -815,11 +831,12 @@ public class Core13LoC
         Story.KillQuest(847, "ledgermayne", "Ledgermayne");
     }
 
-
     public void Tibicenas()
     {
         if (Core.isCompletedBefore(1005))
             return;
+
+        Story.PreLoad();
 
         //Sandport and Starboard
         Story.MapItemQuest(930, "sandport", 251);
@@ -928,6 +945,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(1473))
             return;
+
+        Story.PreLoad();
 
         //Troll Stink!
         if (!Story.QuestProgression(1232))
@@ -1109,6 +1128,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(1468))
             return;
 
+        Story.PreLoad();
+
         //Horc Stink! 
         if (!Story.QuestProgression(1226))
         {
@@ -1270,6 +1291,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(2519))
             return;
+
+        Story.PreLoad();
 
         //Time to Learn the Truth
         Story.MapItemQuest(2239, "thespan", new[] { 1358, 1359, 1360, 1361, 1362, 1363 });
@@ -1486,6 +1509,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(2814))
             return;
 
+        Story.PreLoad();
+
         //Final Rest
         Story.KillQuest(2612, "blackhorn", "Restless Undead");
 
@@ -1689,6 +1714,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(3189))
             return;
 
+        Story.PreLoad();
+
         Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
 
         //Bright Idea
@@ -1849,6 +1876,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(3160))
             return;
 
+        Story.PreLoad();
+
         //Bandit Bounty
         Story.KillQuest(3077, "archives", "Chaos Bandit");
 
@@ -1956,6 +1985,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(3881))
             return;
+
+        Story.PreLoad();
 
         if (!Core.IsMember)
         {
@@ -2150,6 +2181,8 @@ public class Core13LoC
     {
         if (Core.isCompletedBefore(3824))
             return;
+
+        Story.PreLoad();
 
         //Arrive in DreadHaven
         Story.ChainQuest(3812);

@@ -23,6 +23,8 @@ public class DoomVaultA
             return;
         Core.AcceptandCompleteTries = 1;
 
+        Story.PreLoad();
+
         // the challenge begins
         Story.KillQuest(QuestID: 2952, MapName: "doomvault", MonsterName: "Grim Soldier");
         Bot.Quests.UpdateQuest(3008);
