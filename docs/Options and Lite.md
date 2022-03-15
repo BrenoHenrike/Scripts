@@ -14,6 +14,7 @@ Also there is `Lite` options that let you set the new **Advanced Options** in ga
 |---|:---:|---|  
 | `AggroAllMonsters` | *bool* | Causes all living monster in the MAP to attack the player. As a result, when any monster in the room is killed, the player gets the reward. |  
 | `AggroMonsters` | *bool* | Causes all living monsters in the room to attack the player. As a result, when any monster in the room is killed, the player gets the reward. |  
+| `RetryRelogin` | *bool* | If it will retry to relogin if it fails |
 | `AutoRelogin` | *bool* | Enables auto-relogin. When the player disconnects or the game is taking too long to load, the client will logout and relogin, and restart the loaded script. |  
 | `AutoReloginAny` | *bool* | When relogging in, the client will pick the first server that isn't the last server the player was connected to. This is typically unnecessary to use. |  
 | `DisableCollisions` | *bool* | Disables all collisions in game, allowing you to move anywhere in the screen. |  

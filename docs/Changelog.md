@@ -1,7 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
-  - [4 (Beta)](#4-beta)
+  - [4](#4)
     - [Problems](#problems)
     - [Auto menu](#auto-menu)
     - [Loader](#loader)
@@ -9,8 +9,9 @@
     - [Overall UI Changes](#overall-ui-changes)
     - [Scripting additions](#scripting-additions)
       - [Events](#events)
-      - [ScriptInterface](#scriptinterface)
-      - [Item information](#item-information)
+        - [CounterAttack](#counterattack)
+        - [RunToArea](#runtoarea)
+      - [New things (properties, options and more)](#new-things-properties-options-and-more)
     - [New VSCode setup](#new-vscode-setup)
   - [3.6.3.2 (Inventory fix)](#3632-inventory-fix)
   - [3.6.3.1 (Small Changes)](#3631-small-changes)
@@ -30,12 +31,12 @@
     - [Fixes](#fixes)
     - [Added](#added)
 
-## 4 (Beta)
+## 4
 
 The version 4 of RBot is a breakthrough for me, in it we can work with all the improvements that came with .NET 6. This includes faster compilation/recompilation and better performance overall out of the box.
 The changelog is big so if you want specific info use the table of contents above.
 
-> **Note:** to run this version of RBot you will need the **.NET 6 Desktop Runtime** which you can [download here for 64 bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x64-installer) and [download here for 32 bits](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.1-windows-x86-installer).
+> **Note:** to run this version of RBot you will need the **.NET 6 Desktop Runtime** and **ASP.NET Core Runtime** [which you can find here](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 
 ### Problems
 
@@ -120,7 +121,16 @@ You can also right click the list of packets to clear the current selections.
 
 #### Events
 
-There is a new event to be listened for, it's the `CounterAttack` and you can use it like:
+There is some new events to be listened for, you can access then in `ScriptInterface#Events`
+
+- `ScriptInterface#Events.ItemDropped`: Occurs when an item is dropped or added to your inventory;
+- `ScriptInterface#Events.ScriptStopping`: Occurs after the script is stopped, you can put any cleanup code in that event;
+
+Also, there is another 2 I will explain how to use:
+
+##### CounterAttack
+
+Some monsters have a counter attack mechanic that requires your player to stop attacking it so it doesn't die
 
 ```cs
 public void ScriptMain(ScriptInterface bot)
@@ -139,6 +149,10 @@ public void CounterAttackHandler(ScriptInterface bot, bool faded)
     // inside it you should handle what the bot should do.
     if(!faded)
     {
+        // We cancel the player attack as expected;
+        bot.Player.CancelAutoAttack();
+        bot.Player.CancelTarget();
+        // if there is anything more you wanna do when the counter attack starts you can add it here
         /*
         Code
         */
@@ -147,6 +161,9 @@ public void CounterAttackHandler(ScriptInterface bot, bool faded)
     // you can then tell the bot the specific actions after that.
     else
     {
+        // When the counter attack fades, we attack it again.
+        bot.Player.Attack("*");
+        // here we also can make it do anything we want.
         /*
         Code
         */
@@ -155,14 +172,61 @@ public void CounterAttackHandler(ScriptInterface bot, bool faded)
 
 ```
 
-#### ScriptInterface
+##### RunToArea
 
-You can use `ScriptInterface#Stop()` to stop the script, it works just like calling `ScriptManager.StopScript()`.
+The run to area mechanic is a very niche skill currently only in Ledgermayne and Ultra Dage, which require the player to run to a safe zone that is highlighted in the map. To make use of this event you can use just like the CounterAttack:
 
-#### Item information
+```cs
+public void ScriptMain(ScriptInterface bot)
+{
+    // You assign a method to be called when a run to area packet is detected
+    bot.Events.RunToArea += RunToAreaHandler;
+
+    /*
+    Code
+    */
+}
+
+public void RunToAreaHandler(ScriptInterface bot, string zone)
+{
+    // Here we will filter which zone is the highlighted one
+    switch (zone.ToLower())
+    {
+        // 'A' is the left zone, so we use a walk command to move our player to the desired coordinates:
+        case "a":
+            bot.Player.WalkTo(changeToXPosition, changeToYPosition, speed: 8); // The speed is optional with a max of 32, use with caution as it can ban you.
+            break;
+        // 'B" is the right zone;
+        case "b":
+            bot.Player.WalkTo(changeToXPosition, changeToYPosition, speed: 8);
+            break;
+        // By default (empty string) we can use it to center our character in the screen so we get time to run to the next highlighted area.
+        default:
+            bot.Player.WalkTo(changeToXPosition, changeToYPosition, speed: 8);
+            break;
+    }
+}
+
+```
+
+#### New things (properties, options and more)
 
 - `InventoryItem` now has an integer property to check the enhancement level of the item, you can access it by `InventoryItem#EnhancementLevel`;
 - `ShopItem` has a similar one for level, you can access it by `ShopItem#Level`.
+- `ItemBase#ItemGroup`: The filter group of the item. co = Armor; ba = Cape; he = Helm; pe = Pet; Weapon = Weapon;
+- `InventoryItem#EnhancementPatternID`: A number that reflects which enhancement is currently applied to an item;
+- `ShopItem#Faction`: The faction needed to buy this item;
+- `ShopItem#RequiredReputation`: The needed reputation amount to buy this item (goes from 0 to 302500);
+- `ShopItem#Requirements`: Requirements to buy merge items;
+- `Monster#MaxHP`: The maximum health points of the monster;
+
+- `ScriptInterface#Stop` method to stop the script, it works just like calling `ScriptManager.StopScript()`.
+- `ScriptInterface#Options.RetryRelogin`, it is true by default and will try to re-login 3 times;
+- `ScriptInterface#Inventory.GetTempItemById` method added;
+- `ScriptInterface#Quests.CanComplete` method now also checks if you have all the required items instead of only relying in a game property that is not being updated correctly;
+- `ScriptInterface#Player.Relogin` method added, it returns a whether the relogin was successful;
+- `ScriptManager.RestartScript` method work as intended;
+- `ShopCache.Loaded` list used to see the information of loaded shops inside scripts/plugins;
 
 ### New VSCode setup
 
@@ -177,28 +241,31 @@ VSCode has "built in" methods to create an project for .NET 6, here I will show 
 
 ```xml
 <ItemGroup>
-    <Reference Include="RBot">
-        <HintPath>$Path to your RBot exe$\RBot.exe</HintPath>
-    </Reference>
+  <Reference Include="RBot">
+    <HintPath>$Path to your RBot dll$\RBot.dll</HintPath>
+  </Reference>
 </ItemGroup>
 ```
 
-After replacing with your RBot exe path, it should look like this:
+After replacing with your RBot dll path, it should look like this:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <!--Change this to "disable" so the usings are explicit-->
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
   
-  <ItemGroup>
-    <Reference Include="RBot">
-      <HintPath>D:\Rbot-4\RBot.exe</HintPath>
-    </Reference>
-  </ItemGroup>
+    <ItemGroup>
+        <Reference Include="RBot">
+            <HintPath>D:\Rbot-4\RBot.dll</HintPath>
+        </Reference>
+        <!-- If you need to reference something from winforms, add this too. -->
+        <Reference Include="System.Windows.Forms">
+            <HintPath>C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Windows.Forms.dll</HintPath>
+        </Reference>
+    </ItemGroup>
 </Project>
 ```
 

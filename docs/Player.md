@@ -65,6 +65,7 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 | `SetSpawnPoint(string cell, string pad)` | *void* | Sets the player's spawn point to the given cell and pad. |
 | `LoadBank(bool waitForLoad = true)` | *void* | Loads the player's bank. If `waitForLoad = true`, will wait for the bank to load. |
 | `Login(string username, string password)` | *void* | Logs into the game with the specified username and password. |
+| `Relogin(RBot.Servers.Server server)` | *bool* | Re logs into the specified server, if no server is specified will re login to the last server. |
 | `Connect(string serverName)` | *void* | Connects to the game server with the specified name. |
 | `Connect(RBot.Servers.Server server)` | *void* | Connects to the specified game server. |
 | `ConnectIP(string ip)` | *void* | Connects to the game server with the specified IP address. |

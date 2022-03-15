@@ -129,6 +129,7 @@ public class CoreHollowbornPaladin
         }
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("necrocavern", "Shadow Dragon", "Shadow Dragon Soul", 1, false);
+        Bot.Quests.UpdateQuest(1144);
         Core.HuntMonster("temple", "Cryptkeeper Lich", "Cryptkeeper Lich's Head");
         HB.HumanSoul(200);
         Core.EnsureComplete(7558);

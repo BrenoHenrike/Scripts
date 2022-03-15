@@ -19,6 +19,10 @@ The following events can be listened for:
 | `ExtensionPacketReceived(dynamic packet)` | Extension packet is received from the server. |
 | `PlayerAFK()` | Player goes AFK. |
 | `TryBuyItem()` | Player attempts to buy an item from a shop. |
+| `ItemDropped(RBot.Items.ItemBase item, bool addedToInv, int quantityNow)` | Item drops or is added to the inventory. `quantityNow` will not be 0 only when added to the player inventory |
+| `ScriptStopping` | The script is finishing, you can place cleanup code here (like reset options and such). |
+| `CounterAttack` | A monster counter attack is detected. |
+| `RunToArea` | An safezone is setted (Ledgermayne mechanic). |
 
 Event handlers are cleared when a script stops or starts. To manually clear event handlers use `ScriptEvents#ClearHandlers()`, although this is typically not necessary. **(In current version [3.6] they aren't cleared as intended)**
 

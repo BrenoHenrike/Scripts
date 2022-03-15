@@ -23,8 +23,6 @@ public class DageRecruitStory
         if (Core.isCompletedBefore(8575))
             return;
 
-        Story.PreLoad();
-
         //Needed AddDrop
         Core.AddDrop("");
 
