@@ -52,6 +52,12 @@ public class CoreDailys
         MineCrafting();
         Core.Logger("Hard Core Metals (Arsenic/Chromium/Rhodium)");
         HardCoreMetals();
+        Core.Logger("Free Daily Boost (Member Only)");
+        FreeDailyBoost();
+        Core.Logger("Monthly Treasure Chest Key");
+        MonthlyTreasureChestKeys();
+        Core.Logger("Wheel of Doom");
+        WheelofDoom();
         Core.Logger("Dailys completed");
     }
 
