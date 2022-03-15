@@ -3,16 +3,18 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/QueenofMonsters/Brightoak.cs
 using RBot;
 
 public class StoneCrusher
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreStory Story = new CoreStory();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public Core13LoC LOC => new Core13LoC();
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
+    public Core13LoC LOC = new();
+    public BrightOak Oak = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -33,6 +35,7 @@ public class StoneCrusher
         LOC.Kimberly();
         Farm.MythsongREP();
         Farm.ArcangroveREP();
+        Oak.doall();
         Farm.BrightoakREP();
 
         Core.BuyItem("Gaiazor", 1210, "Earth's Song Token");
