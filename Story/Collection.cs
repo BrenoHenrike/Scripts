@@ -20,7 +20,7 @@ public class Collection
     public void CollectionStory()
     {
         if (Core.isCompletedBefore(1348))
-            return;
+            return;            
 
         // This Town in a Desktop Globe
         Story.MapItemQuest(1293, "Terrarium", 586);
@@ -94,6 +94,6 @@ public class Collection
         }
 
         // You're Not the Boss of Me Now
-        Story.KillQuest(1348, "Future", "The Collector");
+        Story.KillQuest(1348, "Future", "The Collector", AutoCompleteQuest: false);
     }
 }
