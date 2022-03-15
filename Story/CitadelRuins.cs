@@ -44,8 +44,15 @@ public class CitadelRuins
         Story.KillQuest(QuestID: 148, MapName: "Citadel", MonsterName: "Inquisitor Guard");
         Story.KillQuest(QuestID: 149, MapName: "Citadel", MonsterName: "Inquisitor Guard");
         Story.KillQuest(QuestID: 181, MapName: "Citadel", MonsterName: "Belrot The Fiend");
-        Story.KillQuest(QuestID: 151, MapName: "Citadel", MonsterName: "Grand Inquisitor");
-        Story.KillQuest(QuestID: 182, MapName: "Citadel", MonsterName: "Grand Inquisitor");
+        if (!Story.QuestProgression(182))
+        {
+            Core.EnsureAccept(151, 182);
+            Core.HuntMonster("Citadel", "Grand Inquisitor", "Grand Inquisitor's Gloves");
+            Core.EnsureAccept(151); 
+            Core.HuntMonster(map: "Citadel", monster: "Grand Inquisitor", item: "Ring of Evil Intent");
+            Core.EnsureComplete(182);
+        }
+
     }
 
     public void PolishsQuestsTercessuinotlim()
