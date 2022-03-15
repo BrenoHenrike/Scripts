@@ -248,7 +248,12 @@ public class CoreLegion
         else if (Core.CheckInventory("Shogun Dage Pet"))
             QuestID = 5756;
         else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
-            QuestID = 6750;
+        {
+            if (Bot.Inventory.GetItemByName("Paragon Fiend Quest Pet").ID == 47578)
+                QuestID = 6750;
+            else if (Bot.Inventory.GetItemByName("Paragon Fiend Quest Pet").ID == 47614)
+                QuestID = 6756;
+        }
         else if (Core.CheckInventory("Paragon Ringbearer"))
             QuestID = 7073;
 
