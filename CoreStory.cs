@@ -315,7 +315,7 @@ public class CoreStory
 
         for (int i = 0; i < QuestIDs.Count; i = i + 30)
         {
-            Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count < i ? QuestIDs.Count : i + 30)]);
+            Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count > i ? QuestIDs.Count : i + 30)]);
             Bot.Sleep(1500);
         }
 
