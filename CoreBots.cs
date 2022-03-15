@@ -146,6 +146,12 @@ public class CoreBots
                 ToBank(MiscForBank.ToArray());
             }
 
+            int SavedState = 1;
+            Bot.RegisterHandler(30000, s =>
+            {
+                Bot.SendWhisper(Bot.Player.Username, $"Saving Player-Data ({SavedState++})");
+            }, "Saved-State Handler");
+
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
             EquipClass(ClassType.Solo);
@@ -1057,6 +1063,7 @@ public class CoreBots
     {
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
         Join("battleon");
+        Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
         if (AntiLag)
         {
             Bot.SetGameObject("stage.frameRate", 60);
