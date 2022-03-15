@@ -499,7 +499,11 @@ public class CoreAdvanced
         _RaceGear(monster);
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
-        Core.Jump(cell, pad);
+        while (Bot.Player.Cell != cell)
+        {
+            Core.Jump(cell, pad);
+            Bot.Sleep(700);
+        }
 
         Bot.Events.CounterAttack += _KillUltra;
 
