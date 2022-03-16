@@ -1062,8 +1062,12 @@ public class CoreBots
     public bool StopBot()
     {
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
-        Join("battleon");
-        Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
+        Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
+        if (Bot.Player.LoggedIn)
+        {
+            Bot.Player.Join("battleon");
+            Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
+        }
         if (AntiLag)
         {
             Bot.SetGameObject("stage.frameRate", 60);
@@ -1072,7 +1076,8 @@ public class CoreBots
         }
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
-        Logger("Bot Stopped Successfully");
+        if (Bot.Player.LoggedIn)
+            Logger("Bot Stopped Successfully");
         return true;
     }
     #endregion
