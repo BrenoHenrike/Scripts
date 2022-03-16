@@ -10,12 +10,7 @@ Test.cs
 Standalone
 Rbot-Scripts
 Script.cs
-docs
 Snippets
-README.md
-README.pt-br.md
-.gitignore
-.gitattributes
 Plugins
 roslyn
 WIP

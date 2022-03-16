@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 public class CoreBots
 {
-    // [Can Change] Delay between commom actions, 700 is the safe number
+    // [Can Change] Delay between common actions, 700 is the safe number
     public int ActionDelay { get; set; } = 700;
     // [Can Change] Delay used to get out of combat, 1600 is the safe number
     public int ExitCombatDelay { get; set; } = 1600;
@@ -26,11 +26,11 @@ public class CoreBots
     public int AcceptandCompleteTries { get; set; } = 20;
     // [Can Change] Whether the bots should also log in AQW's chat
     public bool LoggerInChat { get; set; } = true;
-    // [Can Change] When enabled, no messagesboxes will be shown unless absolutely neccesary
+    // [Can Change] When enabled, no message boxes will be shown unless absolutely necessary
     public bool ForceOffMessageboxes { get; set; } = false;
     // [Can Change] Whether the bots will use private rooms
     public bool PrivateRooms { get; set; } = true;
-    // [Can Change] What privat roomnumber the bot should use, if > 99999 it will pick a random room
+    // [Can Change] What private room number the bot should use, if > 99999 it will pick a random room
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
     public bool PublicDifficult { get; set; } = true;
@@ -48,7 +48,7 @@ public class CoreBots
     public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
-    // [Can Change] Mode of farminging class, if it has multiple. 
+    // [Can Change] Mode of farming class, if it has multiple. 
     public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Names of your farming equipment
     public string[] FarmGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
@@ -70,7 +70,7 @@ public class CoreBots
     public string? ExecutablePath = Path.GetDirectoryName(Application.ExecutablePath);
 
     /// <summary>
-    /// Set commom bot options to desired value
+    /// Set common bot options to desired value
     /// </summary>
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
@@ -228,7 +228,7 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Check if the Bank/Inventory has atleast 1 of all listed items
+    /// Check if the Bank/Inventory has at least 1 of all listed items
     /// </summary>
     /// <param name="itemNames">Array of names of the items to be check</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
@@ -319,7 +319,7 @@ public class CoreBots
     /// <param name="itemName">Name of the item</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
-    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
         if (CheckInventory(itemName, quant))
@@ -339,9 +339,9 @@ public class CoreBots
                             != DialogResult.Yes)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
             else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You dont have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+                Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         if (!item.Coins && item.Cost > Bot.Player.Gold)
-            Logger($"You dont have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+            Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -374,9 +374,9 @@ public class CoreBots
                             != DialogResult.Yes)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
             else if (Bot.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You dont have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+                Logger($"You don't have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         if (!item.Coins && item.Cost > Bot.Player.Gold)
-            Logger($"You dont have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+            Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -388,7 +388,7 @@ public class CoreBots
         else
         {
             SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
-            Logger("Relogin to prevent ghost buy");
+            Logger("Re-login to prevent ghost buy");
             Relogin();
         }
         if (CheckInventory(item.Name, quant))
@@ -441,7 +441,7 @@ public class CoreBots
     #region Drops
 
     /// <summary>
-    /// Adds drops to the pickup list, unbank the items.
+    /// Adds drops to the pickup list, un-bank the items.
     /// </summary>
     /// <param name="items">Items to add</param>
     public void AddDrop(params string[] items)
@@ -497,7 +497,7 @@ public class CoreBots
     /// Ensures you are out of combat before completing the quest
     /// </summary>
     /// <param name="questID">ID of the quest to complete</param>
-    /// <param name="itemID">ID of the choosable reward item</param>
+    /// <param name="itemID">ID of the choose-able reward item</param>
     public bool EnsureComplete(int questID, int itemID = -1)
     {
         if (questID <= 0)
@@ -530,12 +530,12 @@ public class CoreBots
                     return completed;
                 }
             }
-        Logger($"Could not complete the quest {questID}. Maybe all items are already in your inv");
+        Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
         return false;
     }
 
     /// <summary>
-    /// Completes all the quests given but doesn't support quests with choosable rewards
+    /// Completes all the quests given but doesn't support quests with choose-able rewards
     /// </summary>
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureComplete(params int[] questIDs)
@@ -566,7 +566,7 @@ public class CoreBots
     /// Accepts and then completes the quest, used inside a loop
     /// </summary>
     /// <param name="questID">ID of the quest</param>
-    /// <param name="itemID">ID of the choosable reward item</param>
+    /// <param name="itemID">ID of the choose-able reward item</param>
     public void ChainComplete(int questID, int itemID = -1)
     {
         JumpWait();
@@ -876,10 +876,10 @@ public class CoreBots
         bool autoRelogSwitch = Bot.Options.AutoRelogin;
         Bot.Options.AutoRelogin = false;
         Bot.Sleep(2000);
-        Logger("Relogin started");
+        Logger("Re-login started");
         Bot.Player.Logout();
         Bot.Sleep(5000);
-        Server server = Bot.Options.AutoReloginAny
+        Server? server = Bot.Options.AutoReloginAny
                 ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP)
                 : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
@@ -888,12 +888,12 @@ public class CoreBots
         while (!Bot.Player.LoggedIn)
             Bot.Sleep(500);
         Bot.Sleep(5000);
-        Logger("Relogin finished");
+        Logger("Re-login finished");
         Bot.Options.AutoRelogin = autoRelogSwitch;
     }
 
     /// <summary>
-    /// Checks, and promps for the latest Rbot Version
+    /// Checks, and prompts for the latest RBot Version
     /// <param name="TargetVersion">Current RBot Version to Check against</param>
     /// </summary>
     public void VersionChecker(string TargetVersion)
