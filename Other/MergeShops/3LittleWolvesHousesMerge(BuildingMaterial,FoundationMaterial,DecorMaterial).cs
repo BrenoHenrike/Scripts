@@ -20,7 +20,7 @@ public class LittleWolvesHousesMerge
         //Needed AddDrop
         Core.AddDrop("Building Material", "Foundation Material", "Decor Material");
 
-        while (!Core.CheckInventory(new[] {"Building Material", "Foundation Material", "Decor Material"}, 100))
+        while (!Core.CheckInventory(new[] { "Building Material", "Foundation Material", "Decor Material" }, 100))
         {
             //Building Material - Building Supplies
             if (!Core.CheckInventory("Building Material", 100))

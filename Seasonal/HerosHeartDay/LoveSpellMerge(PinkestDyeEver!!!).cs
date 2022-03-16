@@ -27,6 +27,7 @@ public class PinkestDyeEver
         }
 
         Core.AddDrop("Pinkest Dye Ever!!!");
+
         LSS.LoveSpellScript();
 
         while (!Core.CheckInventory("Pinkest Dye Ever!!!", 200))

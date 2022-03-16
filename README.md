@@ -84,7 +84,7 @@ public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 **A:** All files starting with **"*Core*"** aren't bots, they are used by bots.
 
 **Q:** I'm running a bot and I get an error like *"The type or namespace 'CoreBots' could not be found"*, how do I fix it?  
-**A:** That's an installation problem, certify that you dropped the **"*Scripts*"** folder directly in the **"*RBot.exe*"** folder, this way it will update all previous bots that you downloaded from here. A commom error is your file path be like: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* or even *"\*/Rbot/**Scripts-master/Scripts**/FarmAllDailys.cs"* it should be *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
+**A:** That's an installation problem, certify that you dropped the **"*Scripts*"** folder directly in the **"*RBot.exe*"** folder, this way it will update all previous bots that you downloaded from here. A common error is your file path be like: *"\*/Rbot/Scripts/**Scripts**/FarmAllDailys.cs"* or even *"\*/Rbot/**Scripts-master/Scripts**/FarmAllDailys.cs"* it should be *"\*/Rbot/**Scripts**/FarmAllDailys.cs"*.
 > **Note:** If after you follow this answer the error persists, open the script you got an error and certify that the first lines with `//cs_include` have the right path/file name, typos happen.
 
 **Q:** Even after doing the solutions above my script doesn't run, what now?  
