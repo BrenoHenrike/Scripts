@@ -40,7 +40,7 @@ public class AlphaDOOMmega
 
         Dailys.WheelofDoom();
         if (!Core.CheckInventory("Alpha DOOMmega"))
-            Core.Logger("You're not Lucky, Sorry");
+            Core.Logger("You're not Lucky, Sorry", stopBot: true);
 
         if (Core.CheckInventory("Alpha DOOMmega"))
         {
