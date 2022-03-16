@@ -1,5 +1,6 @@
 - ##### Versions
-  - [v2.28 - Latest](#v228)
+  - [v2.29](#v229)
+  - [v2.28](#v228)
   - [v2.27](#v227)
     - [MAS v1.3](#mas-v13)
   - [v2.26](#v226)
@@ -45,9 +46,27 @@
   - [v2.1](#v21)
   - [v2.0](#v20)
 
+### v2.29
+**Released on Mar 16, 2022 at 15:30 / 03:30 PM (UTC)**  
+· Released Adam1a1Merge(FreshEctoplasm,IOUSlip) (Vladimir)  
+· Released AprilFools2019WarMerge(PunadinBadge) (Vladimir)  
+· Released AQWorldsWarZMerge(AngryZombieSkull) (Vladimir)  
+· Released ArcadiaMerge(PaintedButterfly) (Vladimir)  
+· Added summaries to CoreAdvanced  
+· Added Gear of Doom to Wheel of Doom  
+· Optimized PreLoad  
+· Made PreLoad have a 100% accuracy  
+· Made PreLoad more stable  
+· Made a couple funcitons in CoreAdvanced be non-Case-Sensitive  
+· Removed coding artifiacts from CoreAdvanced  
+· Fixed CitadelRuins  
+· Fixed spelling errors in comments, summaries, README and Loggers  
+· Fixed StopBot being funky on a disconnect  
+· Improved script stability by removing or fixing all nullable (according to VSC) things  
+[Back to top](#versions)
 
 ### v2.28
-**Released on Mar 11, 2022 at 00:55 / 12:55 AM (UTC)**  
+**Released on Mar 15, 2022 at 16:05 / 04:05 PM (UTC)**  
 · Released 3LittleWolvesHouses-BuyHouse (Vladimir)  
 · Released Anti-MatterGem(4DPyramidHouseShop)-FourDPyramid (Vladimir)  
 · Released ZealousBadge(DoomLegacyMerge)-TechDungeon (Vladimir)  
