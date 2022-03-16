@@ -136,7 +136,7 @@ public class DageChallengeMerge
     {
         if (Core.CheckInventory("Underworld Laurel", quantLaurel) && Core.CheckInventory("Underworld Medal", quantMedal) && Core.CheckInventory("Underworld Accolade", quantAccolade))
             return;
-            
+
         Core.AddDrop("Underworld Laurel", "Underworld Medal", "Underworld Accolade");
 
         if (!Core.CheckInventory("Underworld Laurel", quantLaurel))
@@ -190,10 +190,10 @@ public class DageChallengeMerge
             Bot.Shops.Load(2118);
             List<ShopItem> shopdata = Bot.Shops.ShopItems;
 
-            List<ItemBase> Requirements = shopdata.Find(i => i.Name == item).Requirements;
-            int Laurel = Requirements.Find(i => i.Name == "Underworld Laurel").Quantity;
-            int Medal = Requirements.Find(i => i.Name == "Underworld Medal").Quantity;
-            int Accolade = Requirements.Find(i => i.Name == "Underworld Accolade").Quantity;
+            List<ItemBase> Requirements = shopdata.First(i => i.Name == item).Requirements;
+            int Laurel = Requirements.First(i => i.Name == "Underworld Laurel").Quantity;
+            int Medal = Requirements.First(i => i.Name == "Underworld Medal").Quantity;
+            int Accolade = Requirements.First(i => i.Name == "Underworld Accolade").Quantity;
 
             MergeMats(Laurel, Medal, Accolade);
             Core.BuyItem("dage", 2118, item);
@@ -217,10 +217,10 @@ public class DageChallengeMerge
                         Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull", publicRoom: true);
                         Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood", publicRoom: true);
                     }
-                    List<ItemBase> Requirements = shopdata.Find(i => i.Name == MergeItem).Requirements;
-                    int Laurel = Requirements.Find(i => i.Name == "Underworld Laurel").Quantity;
-                    int Medal = Requirements.Find(i => i.Name == "Underworld Medal").Quantity;
-                    int Accolade = Requirements.Find(i => i.Name == "Underworld Accolade").Quantity;
+                    List<ItemBase> Requirements = shopdata.First(i => i.Name == MergeItem).Requirements;
+                    int Laurel = Requirements.First(i => i.Name == "Underworld Laurel").Quantity;
+                    int Medal = Requirements.First(i => i.Name == "Underworld Medal").Quantity;
+                    int Accolade = Requirements.First(i => i.Name == "Underworld Accolade").Quantity;
 
                     MergeMats(Laurel, Medal, Accolade);
                     Core.BuyItem("dage", 2118, MergeItem);

@@ -793,9 +793,9 @@ public class CoreBots
         if (item == null)
         {
             Logger("Killing Escherion");
-            while (Bot.Monsters.MapMonsters.Find(m => m.Name == "Escherion").Alive)
+            while (Bot.Monsters.MapMonsters.First(m => m.Name == "Escherion").Alive)
             {
-                if (Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -806,7 +806,7 @@ public class CoreBots
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
             while (!CheckInventory(item, quant))
             {
-                if (Bot.Monsters.MapMonsters.Find(m => m.Name == "Staff of Inversion").Alive)
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
                 Bot.Player.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -820,7 +820,7 @@ public class CoreBots
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
     /// </summary>
-    public void Logger(string message = "", [CallerMemberName] string caller = null, bool messageBox = false, bool stopBot = false)
+    public void Logger(string message = "", [CallerMemberName] string caller = "", bool messageBox = false, bool stopBot = false)
     {
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
         if (LoggerInChat)
@@ -1062,8 +1062,12 @@ public class CoreBots
     public bool StopBot()
     {
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
-        Join("battleon");
-        Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
+        Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
+        if (Bot.Player.LoggedIn)
+        {
+            Bot.Player.Join("battleon");
+            Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
+        }
         if (AntiLag)
         {
             Bot.SetGameObject("stage.frameRate", 60);
@@ -1072,7 +1076,8 @@ public class CoreBots
         }
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
-        Logger("Bot Stopped Successfully");
+        if (Bot.Player.LoggedIn)
+            Logger("Bot Stopped Successfully");
         return true;
     }
     #endregion

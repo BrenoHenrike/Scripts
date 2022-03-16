@@ -92,11 +92,12 @@ public class CoreDailys
     /// <param name="quest">ID of the quest</param>
     /// <param name="items">Items to add to drop grabber and unbank</param>
     /// <returns></returns>
-    public bool CheckDaily(int quest, params string?[] items)
+    public bool CheckDaily(int quest, params string[]? items)
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return false;
-        Core.AddDrop(items);
+        if (items != null)
+            Core.AddDrop(items);
         return true;
     }
 
@@ -105,7 +106,7 @@ public class CoreDailys
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void MineCrafting(string?[] metals = null, int quant = 2)
+    public void MineCrafting(string[]? metals = null, int quant = 2)
     {
         if (metals == null)
             metals = MineCraftingMetals;
@@ -138,7 +139,7 @@ public class CoreDailys
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void HardCoreMetals(string?[] metals = null, int quant = 1)
+    public void HardCoreMetals(string[]? metals = null, int quant = 1)
     {
         if (!Core.IsMember)
             return;
