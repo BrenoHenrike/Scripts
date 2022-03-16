@@ -9,8 +9,13 @@ public class CoreAdvanced
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
 
-    #region Enhancement 
+    #region Enhancement
 
+    /// <summary>
+    /// Enhances your currently equipped gear
+    /// </summary>
+    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
+    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
     public void EnhanceEquipped(EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
         List<InventoryItem> EquippedItems = Bot.Inventory.Items.FindAll(i => i.Equipped == true && EnhanceableCatagories.Contains(i.Category));
@@ -22,11 +27,19 @@ public class CoreAdvanced
         else _AutoEnhance(EquippedWeapon, EquippedOther, Type, Special);
     }
 
-    public void EnhanceItem(string ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
+    /// <summary>
+    /// Enhances a selected item
+    /// </summary>
+    /// <param name="ItemName">Name of the item you want to enhance</param>
+    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
+    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    public void EnhanceItem(string? ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
+        if (ItemName == null)
+            return;
         if (ItemName == "")
             return;
-        List<InventoryItem> SelectedItem = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => i.Name == ItemName && EnhanceableCatagories.Contains(i.Category));
+        List<InventoryItem> SelectedItem = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => i.Name.ToLower() == ItemName.ToLower() && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapon = SelectedItem.FindAll(i => WeaponCatagories.Contains(i.Category));
         List<InventoryItem> SelectedOther = SelectedItem.FindAll(i => !WeaponCatagories.Contains(i.Category));
 
@@ -43,7 +56,13 @@ public class CoreAdvanced
             _AutoEnhance(Core.EmptyList, SelectedOther, Type, Special);
     }
 
-    public void EnhanceItem(string?[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
+    /// <summary>
+    /// Enhances multiple selected items
+    /// </summary>
+    /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
+    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
+    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    public void EnhanceItem(string[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
         List<InventoryItem> SelectedItems = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => ItemNames.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapons = SelectedItems.FindAll(i => WeaponCatagories.Contains(i.Category));
@@ -62,6 +81,10 @@ public class CoreAdvanced
             _AutoEnhance(Core.EmptyList, SelectedOthers, Type, Special);
     }
 
+    /// <summary>
+    /// Determens what Enhancement Type the player has on their currently equipped class
+    /// </summary>
+    /// <returns>Returns the equipped Enhancement Type</returns>
     public EnhancementType CurrentClassEnh()
     {
         int EnhPatternID = Bot.Inventory.CurrentClass.EnhancementPatternID;
@@ -70,6 +93,10 @@ public class CoreAdvanced
         return (EnhancementType)EnhPatternID;
     }
 
+    /// <summary>
+    /// Determens what Weapon Special the player has on their currently equipped weapon
+    /// </summary>
+    /// <returns>Returns the equipped Weapon Special</returns>
     public WeaponSpecial CurrentWeaponSpecial()
     {
         InventoryItem EquippedWeapon = Bot.Inventory.Items.First(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
@@ -234,6 +261,10 @@ public class CoreAdvanced
 
     #region Gear
 
+    /// <summary>
+    /// Ranks up your class
+    /// </summary>
+    /// <param name="ClassName">Name of the class you want it to rank up</param>
     public void rankUpClass(string ClassName)
     {
         Bot.Wait.ForPickup(ClassName);
@@ -256,7 +287,7 @@ public class CoreAdvanced
         }
 
         SmartEnhance(ClassName);
-        string?[] CPBoost = BestGear(GearBoost.cp);
+        string[]? CPBoost = BestGear(GearBoost.cp);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
         Farm.IcestormArena(1, true);
@@ -268,7 +299,7 @@ public class CoreAdvanced
     /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
     /// </summary>
     /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    public string?[] BestGear(GearBoost BoostType, bool EquipItem = true)
+    public string[] BestGear(GearBoost BoostType, bool EquipItem = true)
     {
         if (BoostType == GearBoost.None)
             BoostType = GearBoost.dmgAll;
@@ -354,11 +385,17 @@ public class CoreAdvanced
             Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")}) & {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
             Core.Logger($"Combined they give a boost of " + (BestValue * BestValueDMGall - 1).ToString("+0.##%"));
             LastBestItemDMGall = BestItemDMGall ?? "";
-            return new[] { BestItem, BestItemDMGall };
+            if (BestItem == null)
+                return new[] { "" };
+            if (BestItemDMGall == null)
+                return new[] { "" };
+            return new string[] { BestItem, BestItemDMGall };
         }
         if (BestItem != null)
             Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
         else Core.Logger($"Best gear for [{BoostType.ToString()}] wasnt found!");
+        if (BestItem == null)
+            return new[] { "" };
         return new[] { BestItem };
     }
     private GearBoost[] RaceBoosts =
@@ -411,7 +448,7 @@ public class CoreAdvanced
         if (MonsterRace == null || MonsterRace == "")
             return;
 
-        string?[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
@@ -428,7 +465,7 @@ public class CoreAdvanced
         if (MonsterRace == null || MonsterRace == "")
             return;
 
-        string?[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
+        string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
