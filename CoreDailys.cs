@@ -432,11 +432,11 @@ public class CoreDailys
 
         Core.AddDrop(Rewards.ToArray());
 
-        if (Core.IsMember && CheckDaily(3076))
-            Core.ChainComplete(3076);
-
-        if (CheckDaily(3075) && Core.CheckInventory("Gear of Doom", 3))
+        if (Core.IsMember && CheckDaily(3075))
             Core.ChainComplete(3075);
+
+        if (CheckDaily(3076) && Core.CheckInventory("Gear of Doom", 3))
+            Core.ChainComplete(3076);
     }
 
     public void FreeDailyBoost()
