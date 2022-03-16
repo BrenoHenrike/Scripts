@@ -296,9 +296,10 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Equipts the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
+    /// Equips the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
     /// </summary>
     /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
+    /// <param name="EquipItem">To Equip the found item(s) or not</param>
     public string[] BestGear(GearBoost BoostType, bool EquipItem = true)
     {
         if (BoostType == GearBoost.None)
@@ -412,6 +413,10 @@ public class CoreAdvanced
     private string LastBestItemDMGall = "";
     private string LastBestItem = "";
 
+    /// <summary>
+    /// Stores the gear a player has so that it can later restore these
+    /// </summary>
+    /// <param name="Restore">Set true to restore previously stored gear</param>
     public void GearStore(bool Restore = false)
     {
         if (!Restore)
@@ -431,6 +436,12 @@ public class CoreAdvanced
     private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
     private WeaponSpecial ReWEnhanceAfter = WeaponSpecial.None;
 
+
+    /// <summary>
+    /// Find out if an item is a weapon or not
+    /// </summary>
+    /// <param name="Item">The ItemBase object of the item</param>
+    /// <returns>Returns if its a weapon or not</returns>
     public bool isWeapon(ItemBase Item)
     {
         return Item.ItemGroup == "Weapon";
@@ -477,6 +488,17 @@ public class CoreAdvanced
 
     #region Kill
 
+    /// <summary>
+    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="cell">Cell to jump to</param>
+    /// <param name="pad">Pad to jump to</param>
+    /// <param name="monster">Name of the monster to kill</param>
+    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log">Whether it will log that it is killing the monster</param>
     public void BoostKillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -491,6 +513,17 @@ public class CoreAdvanced
         GearStore(true);
     }
 
+    /// <summary>
+    /// Kills a monster using it's ID, with the specified monsters the best available race gear
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="cell">Cell to jump to</param>
+    /// <param name="pad">Pad to jump to</param>
+    /// <param name="monsterID">ID of the monster</param>
+    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log">Whether it will log that it is killing the monster</param>
     public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -505,6 +538,15 @@ public class CoreAdvanced
         GearStore(true);
     }
 
+    /// <summary>
+    /// Joins a map and hunt for the monster and kills the specified monster with the best available race gear
+    /// </summary>
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="monster">Name of the monster to kill</param>
+    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
     public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -519,6 +561,17 @@ public class CoreAdvanced
         GearStore(true);
     }
 
+    /// <summary>
+    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear. But also listens for Counter Attacks
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="cell">Cell to jump to</param>
+    /// <param name="pad">Pad to jump to</param>
+    /// <param name="monster">Name of the monster to kill</param>
+    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -596,16 +649,20 @@ public class CoreAdvanced
 
     #region SmartEnhance
 
+    /// <summary>
+    /// Automatically finds the best Enhancement for the given class and enhances all equipped gear with it too
+    /// </summary>
+    /// <param name="Class">Name of the class you wish to enhance</param>
     public void SmartEnhance(string Class)
     {
-        InventoryItem SelectedClass = Bot.Inventory.Items.First(i => i.Name == Class && i.Category == ItemCategory.Class);
+        InventoryItem SelectedClass = Bot.Inventory.Items.First(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class);
         if (SelectedClass.EnhancementLevel == 0)
         {
             Core.Logger("Ignore the message about the Hybrid Enhancement");
             EnhanceItem(Class, EnhancementType.Hybrid);
         }
-        Core.Equip(Class);
-        switch (Class)
+        Core.Equip(SelectedClass.Name);
+        switch (SelectedClass.Name)
         {
             //Lucky - Spiral Carve
             case "Abyssal Angel":
