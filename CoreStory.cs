@@ -243,16 +243,17 @@ public class CoreStory
 
         List<string> CSFile = File.ReadAllLines(ScriptManager.LoadedScript).ToList();
         string[] SearchParam = {
-            "KillQuest",
-            "MapItemQuest",
-            "BuyQuest",
-            "ChainQuest",
-            "QuestProgression",
-            "EnsureAccept",
-            "EnsureComplete",
-            "EnsureCompleteChoose",
-            "ChainComplete"
+            "Story.KillQuest",
+            "Story.MapItemQuest",
+            "Story.BuyQuest",
+            "Story.ChainQuest",
+            "Story.QuestProgression",
+            "Core.EnsureAccept",
+            "Core.EnsureComplete",
+            "Core.EnsureCompleteChoose",
+            "Core.ChainComplete"
         };
+
 
         List<string> CSIncludes = CSFile.Where(x => x.Contains("//cs_include ") && (x.Contains("Core13LoC") || !x.Contains("Core"))).ToList();
 
@@ -267,27 +268,25 @@ public class CoreStory
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         int t = 0;
+
         foreach (string Line in SelectedLines)
         {
-            int QuestID;
             if (!Line.Any(char.IsDigit))
                 continue;
 
-            if ((Line.Contains("Chain") || Line.Contains("Ensure")) && !Line.Contains("EnsureCompleteChoose"))
-            {
-                if (Line.Replace("  ", "").Replace("Story.", "").Replace("Core.", "").Length > 22)
-                    continue;
-                QuestID = int.Parse(Line.Split('(')[1].Replace(");", ""));
-            }
-            else if (Line.Contains("QuestProgression"))
-            {
-                if (Line.Replace("  ", "").Replace("if (", "").Replace("Story.", "").Length > 25)
-                    continue;
-                QuestID = int.Parse(Line.Replace("if (", "").Split('(')[1].Replace("))", ""));
-            }
-            else if (!Line.Contains(','))
-                QuestID = int.Parse(Line.Split('(')[1].Replace(");", ""));
-            else QuestID = int.Parse(Line.Split(',')[0].Split('(')[1]);
+            string EdittedLine = Line
+                                    .Replace(" ", "")
+                                    .Replace("!", "")
+                                    .Replace("(", "")
+                                    .Replace("if", "")
+                                    .Replace("else", "");
+
+            if (!SearchParam.Any(x => EdittedLine.StartsWith(x)))
+                continue;
+
+            var digits = Line.SkipWhile(c => !Char.IsDigit(c)).TakeWhile(Char.IsDigit).ToArray();
+            string sQuestID = new string(digits);
+            int QuestID = int.Parse(sQuestID);
 
             if (!QuestIDs.Contains(QuestID) && !Bot.Quests.QuestTree.Exists(x => x.ID == QuestID))
                 QuestIDs.Add(QuestID);
