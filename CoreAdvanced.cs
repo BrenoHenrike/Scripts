@@ -64,7 +64,7 @@ public class CoreAdvanced
 
     public EnhancementType CurrentClassEnh()
     {
-        int EnhPatternID = Bot.GetGameObject<int>($"world.invTree.{Bot.Inventory.CurrentClass.ID}.EnhPatternID");
+        int EnhPatternID = Bot.Inventory.CurrentClass.EnhancementPatternID;
         if (EnhPatternID == 1 || EnhPatternID == 23)
             EnhPatternID = 9;
         return (EnhancementType)EnhPatternID;
@@ -139,7 +139,7 @@ public class CoreAdvanced
         //Weapon Specials
         if (WeaponList.Count != 0 && Special != WeaponSpecial.None)
         {
-            if (Bot.Player.Level == WeaponList.First().EnhancementLevel && (int)Type == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.EnhPatternID") &&
+            if (Bot.Player.Level == WeaponList.First().EnhancementLevel && (int)Type == WeaponList.First().EnhancementPatternID &&
                    (WeaponCatagories.Contains(WeaponList.First().Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.ProcID") : true))
                 i++;
             else
@@ -178,7 +178,7 @@ public class CoreAdvanced
             {
                 Core.CheckInventory(Item.Name);
 
-                if (Bot.Player.Level == Item.EnhancementLevel && (int)Type == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhPatternID") &&
+                if (Bot.Player.Level == Item.EnhancementLevel && (int)Type == Item.EnhancementPatternID &&
                    (WeaponCatagories.Contains(Item.Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.ProcID") : true))
                 {
                     i++;
@@ -223,14 +223,9 @@ public class CoreAdvanced
                     else SelectedEhn = BestTwo.First(x => !x.Upgrade);
                 else SelectedEhn = BestTwo.OrderByDescending(x => x.Level).First();
 
-                if (Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == SelectedEhn.ID)
-                    Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Already applied]");
-                else
-                {
-                    Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{Item.ID}%{SelectedEhn.ID}%{ShopID}%");
-                    Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Applied]");
-                    Bot.Sleep(Core.ActionDelay);
-                }
+                Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{Item.ID}%{SelectedEhn.ID}%{ShopID}%");
+                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Applied]");
+                Bot.Sleep(Core.ActionDelay);
             }
         }
     }
