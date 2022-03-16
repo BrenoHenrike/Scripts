@@ -421,9 +421,6 @@ public class CoreDailys
 
     public void WheelofDoom()
     {
-        if (!Core.IsMember)
-            return;
-
         Quest quest = Core.EnsureLoad(3075);
 
         List<ItemBase> QuestRewards = quest.Rewards;
@@ -434,7 +431,10 @@ public class CoreDailys
 
         Core.AddDrop(Rewards.ToArray());
 
-        if (CheckDaily(3075))
+        if (Core.IsMember && CheckDaily(3076))
+            Core.ChainComplete(3076);
+
+        if (CheckDaily(3075) && Core.CheckInventory("Gear of Doom", 3))
             Core.ChainComplete(3075);
     }
 
