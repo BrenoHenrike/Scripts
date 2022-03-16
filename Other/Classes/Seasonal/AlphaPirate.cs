@@ -1,34 +1,39 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
+using RBot.Items;
+using RBot.Quests;
+using RBot.Shops;
 
-public class Arachnomancer
+public class AlphaPirate
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new CoreStory();
+    public CoreDailys Dailys = new CoreDailys();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        GetArach();
+        GetAlphaPirate();
 
         Core.SetOptions(false);
     }
 
-    public void GetArach(bool rankUpClass = true)
+    public void GetAlphaPirate(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Arachnomancer"))
+        if (!Core.CheckInventory("Alpha Pirate Class Token"))
             return;
 
-        Farm.RavenlossREP();
-
-        Core.BuyItem("ravenloss", 850, "Arachnomancer", shopItemID: 23292);
+        Core.BuyItem("blazebeard", 108, "Alpha Pirate");
 
         if (rankUpClass)
-            Adv.rankUpClass("Arachnomancer");
+            Adv.rankUpClass("Alpha Pirate");
     }
 }
