@@ -265,6 +265,7 @@ public class CoreStory
 
         Core.Logger($"Scanning {CSIncludes.Count + 1} Files ({SelectedLines.Count} Lines)");
 
+        List<Quest> QuestTree = Bot.Quests.QuestTree;
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         int t = 0;
@@ -288,7 +289,7 @@ public class CoreStory
             string sQuestID = new string(digits);
             int QuestID = int.Parse(sQuestID);
 
-            if (!QuestIDs.Contains(QuestID) && !Bot.Quests.QuestTree.Exists(x => x.ID == QuestID))
+            if (!QuestIDs.Contains(QuestID) && !QuestTree.Exists(x => x.ID == QuestID))
                 QuestIDs.Add(QuestID);
 
             if (t < 31)
