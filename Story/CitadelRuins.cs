@@ -38,20 +38,18 @@ public class CitadelRuins
 
         Story.PreLoad();
 
-        // Map: "Citadel";
-        Story.KillQuest(QuestID: 144, MapName: "Citadel", MonsterName: "Inquisitor Guard");
-        Story.KillQuest(QuestID: 145, MapName: "Citadel", MonsterName: "Crusader");
-        Story.KillQuest(QuestID: 146, MapName: "Citadel", MonsterName: "Inquisitor Captain");
-        Story.KillQuest(QuestID: 147, MapName: "Citadel", MonsterName: "Burning Witch");
-        Story.KillQuest(QuestID: 148, MapName: "Citadel", MonsterName: "Inquisitor Guard");
-        Story.KillQuest(QuestID: 149, MapName: "Citadel", MonsterName: "Inquisitor Guard");
-        Story.KillQuest(QuestID: 181, MapName: "Citadel", MonsterName: "Belrot The Fiend");
-        if (!Story.QuestProgression(182))
+        // "Citadel"
+        Story.KillQuest(144, "Citadel", "Inquisitor Guard");
+        Story.KillQuest(145, "Citadel", "Crusader");
+        Story.KillQuest(146, "Citadel", "Inquisitor Captain");
+        Story.KillQuest(147, "Citadel", "Burning Witch");
+        Story.KillQuest(148, "Citadel", "Inquisitor Guard");
+        Story.KillQuest(149, "Citadel", "Inquisitor Guard");
+        Story.KillQuest(181, "Citadel", "Belrot The Fiend");
+        if (!Story.QuestProgression(182)) // 151 dcs you when u try to load it, and can be skipped.. somehow idk itd break otherwise.
         {
-            Core.EnsureAccept(151, 182);
-            Core.HuntMonster("Citadel", "Grand Inquisitor", "Grand Inquisitor's Gloves");
-            Core.EnsureAccept(151);
-            Core.HuntMonster(map: "Citadel", monster: "Grand Inquisitor", item: "Ring of Evil Intent");
+            Core.EnsureAccept(182);
+            Core.HuntMonster("Citadel", "Grand Inquisitor", "Ring of Evil Intent");
             Core.EnsureComplete(182);
         }
 
@@ -66,21 +64,21 @@ public class CitadelRuins
 
         Core.AddDrop("Unidentified 9", "Unidentified 28", "Dark Crystal Shard", "Claw of Nulgath", "Relic of Chaos");
 
-        // Map: "Tercessuinotlim"
+        // "Tercessuinotlim"
 
         //iron wing helm enchant=
-        Nulgath.TheAssistant(item: "Unidentified 9");
-        Story.KillQuest(QuestID: 560, MapName: "underworld", MonsterName: "Undead Bruiser", GetReward: false);
+        Nulgath.TheAssistant("Unidentified 9");
+        Story.KillQuest(560, "underworld", "Undead Bruiser", GetReward: false);
 
         //cleansing of spinal tap=
         Nulgath.Supplies("Dark Crystal Shard", 5);
-        Nulgath.TheAssistant(item: "Unidentified 28");
-        Story.KillQuest(QuestID: 585, MapName: "Tercessuinotlim", MonsterName: "Legion Fenrir");
+        Nulgath.TheAssistant("Unidentified 28");
+        Story.KillQuest(585, "Tercessuinotlim", "Legion Fenrir");
 
         //purified claw
         Nulgath.Supplies("Tainted Gem", 7);
         Nulgath.Supplies("Claw of Nulgath");
-        Story.KillQuest(QuestID: 668, MapName: "Tercessuinotlim", MonsterName: "Dark Makai");
+        Story.KillQuest(668, "Tercessuinotlim", "Dark Makai");
     }
 
     public void PolishsQuestsCitadelRuins()
@@ -91,40 +89,58 @@ public class CitadelRuins
         Story.PreLoad();
 
         Core.AddDrop("Mage's Gratitude");
-        // Map: "citadelruins";
+        // "citadelruins";
+
         //get ready to amplify
-        Story.KillQuest(6172, MapName: "citadelruins", MonsterName: "Mana Sprites");
-        Story.MapItemQuest(6172, MapName: "citadelruins", MapItemID: 5592);
+        Story.KillQuest(6172, "citadelruins", "Mana Sprites");
+        Story.MapItemQuest(6172, "citadelruins", 5592);
+
         //break the seal
-        Story.MapItemQuest(6173, MapName: "citadelruins", MapItemID: 5602);
+        Story.MapItemQuest(6173, "citadelruins", 5602);
+
         //clear out the squatters
-        Story.KillQuest(6174, MapName: "citadelruins", MonsterName: "Inquisitor Hobo");
+        if(!Story.QuestProgression(6174))
+        {
+            Core.EnsureAccept(6174);
+            Core.HuntMonster("citadelruins", "Inquisitor Hobo", "Inquisitor Hobos Defeated", 8);
+            Core.HuntMonster("citadelruins", "Inquisitor Hobo", "Inquisitors' Manifesto", 5);
+            Core.EnsureComplete(6174);
+        }
+
         //grab a clue
-        Story.KillQuest(6175, MapName: "citadelruins", MonsterName: "Inquisitor Hobo");
-        Story.MapItemQuest(6175, MapName: "citadelruins", MapItemID: 5593, Amount: 5);
+        Story.KillQuest(6175, "citadelruins", "Inquisitor Hobo");
+        Story.MapItemQuest(6175, "citadelruins", 5593, Amount: 5);
         Bot.Sleep(2500);
+
         //unlock the door
-        Story.KillQuest(6176, MapName: "citadelruins", MonsterName: "Inquisitor Heavy");
-        Story.MapItemQuest(6176, MapName: "citadelruins", MapItemID: 5603);
+        if(!Story.QuestProgression(6176))
+        {
+            Core.EnsureAccept(6176);
+            Core.HuntMonster("citadelruins", "Inquisitor Heavy", "Heavies Beat Down", 2);
+            Core.HuntMonster("citadelruins", "Inquisitor Heavy", "Citadel Key");
+            Story.MapItemQuest(6176, "citadelruins", 5603);
+        }
+
         //search the labs
-        Story.KillQuest(6177, MapName: "citadelruins", MonsterName: "Inquisitor Hobo");
-        Story.MapItemQuest(6177, MapName: "citadelruins", MapItemID: 5594);
-        Story.MapItemQuest(6177, MapName: "citadelruins", MapItemID: 5595);
-        Story.MapItemQuest(6177, MapName: "citadelruins", MapItemID: 5596);
+        Story.KillQuest(6177, "citadelruins", "Inquisitor Hobo");
+        Story.MapItemQuest(6177, "citadelruins", new[] { 5594, 5595, 5596 });
+
         //break another seal
-        Story.KillQuest(6178, MapName: "citadelruins", MonsterName: "Mana Sprites");
-        Story.MapItemQuest(6178, MapName: "citadelruins", MapItemID: 5597);
+        Story.KillQuest(6178, "citadelruins", "Mana Sprites");
+        Story.MapItemQuest(6178, "citadelruins", 5597);
+
         //inspect time
-        Story.MapItemQuest(6179, MapName: "citadelruins", MapItemID: 5598);
+        Story.MapItemQuest(6179, "citadelruins", 5598);
+
         //find the parts
-        Story.KillQuest(6180, MapName: "citadelruins", MonsterName: "Inquisitor Hobo");
-        Story.MapItemQuest(6178, MapName: "citadelruins", MapItemID: 5599);
-        Story.MapItemQuest(6178, MapName: "citadelruins", MapItemID: 5600);
-        Story.MapItemQuest(6178, MapName: "citadelruins", MapItemID: 5601);
+        Story.KillQuest(6180, "citadelruins", "Inquisitor Hobo");
+        Story.MapItemQuest(6180, "citadelruins", new[] { 5599, 5600, 5601 });
+
         //defeat the grand inquisitor
-        Story.KillQuest(6181, MapName: "citadelruins", MonsterName: "Grand Inquisitor Murry");
+        Story.KillQuest(6181, "citadelruins", "Grand Inquisitor Murry");
+
         //defeat enn'tropy
-        Story.KillQuest(6182, MapName: "citadelruins", MonsterName: "Enn'tröpy");
+        Story.KillQuest(6182, "citadelruins", "Enn'tröpy");
         Core.ToBank(rewards);
     }
 }
