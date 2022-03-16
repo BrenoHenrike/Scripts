@@ -100,6 +100,7 @@ public class Bamboozle
         {
             if (!Core.CheckInventory("Understone"))
             {
+                Bot.Quests.UpdateQuest(935);
                 Under.Understone();
                 Bot.Wait.ForPickup("Understone");
                 Core.ChainComplete(7288);
