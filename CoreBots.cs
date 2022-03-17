@@ -911,7 +911,7 @@ public class CoreBots
                 DialogResult SendSite = MessageBox.Show($"This script requires RBot {TargetVersion} or above, click OK to open the download page of the latest release", "Outdated RBot detected", MessageBoxButtons.OKCancel);
                 if (SendSite == DialogResult.OK)
                 {
-                    System.Diagnostics.Process.Start("https://github.com/BrenoHenrike/RBot/releases");
+                    System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/RBot/releases");
                     StopBot();
                 }
                 else
