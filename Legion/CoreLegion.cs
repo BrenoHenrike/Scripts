@@ -27,6 +27,7 @@ public class CoreLegion
 
         Core.AddDrop("Legion Seal", "Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
         while (!Bot.Inventory.Contains("Emblem of Dage", quant))
@@ -49,6 +50,7 @@ public class CoreLegion
         Core.AddDrop("Dark Token");
         Core.Logger($"Farming {quant} Dark Tokens");
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.Human);
         while (!Bot.Inventory.Contains("Dark Token", quant))
         {
             Core.EnsureAccept(6248, 6249, 6251);
@@ -85,11 +87,14 @@ public class CoreLegion
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
             }
             Core.EquipClass(ClassType.Solo);
+            Adv.BestGear(GearBoost.Chaos);
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
-            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true);
-            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
+            Adv.BestGear(GearBoost.Dragonkin);
+            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
+            Adv.BestGear(GearBoost.Human);
+             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
 
             Core.EnsureComplete(4743);
             Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");
@@ -108,6 +113,7 @@ public class CoreLegion
         Core.AddDrop(legionMedals);
         Core.Logger("Farming Legion Round 4 Medal");
         Core.Join("shadowblast");
+        Adv.BestGear(GearBoost.dmgAll);
         while (!Bot.Inventory.Contains("Legion Round 4 Medal"))
         {
             if (!Core.CheckInventory("Legion Round 1 Medal") &&
@@ -161,6 +167,7 @@ public class CoreLegion
         Core.Logger($"Farming {quantApproval} Dage's Approval and {quantFavor} Dage's Favor");
         Core.Unbank("Dage's Approval", "Dage's Favor");
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.Undead);
         if (quantApproval > 0)
             Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false);
         if (quantFavor > 0)
@@ -173,6 +180,7 @@ public class CoreLegion
             return;
 
         Core.AddDrop("Bone Sigil");
+        Adv.BestGear(GearBoost.Undead);
         while (!Core.CheckInventory("Bone Sigil", quant))
         {
             Core.EnsureAccept(6739);
@@ -188,6 +196,7 @@ public class CoreLegion
             return;
 
         Core.AddDrop("SoulForge Hammer");
+        Adv.BestGear(GearBoost.dmgAll);
         Core.EnsureAccept(2741);
         Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", 1, false);
         Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", 1, false);
@@ -220,6 +229,7 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
 
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         int i = 1;
@@ -263,6 +273,7 @@ public class CoreLegion
         Core.Logger($"Farming Legion Tokens {Bot.Inventory.GetQuantity("Legion Token")}/{quant}");
         int i = 1;
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(QuestID);
@@ -281,6 +292,7 @@ public class CoreLegion
             return;
 
         JoinLegion();
+        Adv.BestGear(GearBoost.Undead);
 
         Core.AddDrop("Legion Token");
         Core.Join("legionarena", publicRoom: true);
@@ -313,6 +325,7 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.Human);
 
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.Join("dreadrock");
@@ -338,13 +351,14 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
 
         Core.Join("dragonheart");
+        Adv.BestGear(GearBoost.Dragonkin);
 
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(4896);
 
-            Adv.BoostHuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
+            Core.HuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Tempest Dracolich", "Tempest Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Inferno Dracolich", "Inferno Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Deluge Dracolich", "Deluge Dracolich Soul", 4, isTemp: false);
@@ -365,12 +379,13 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
 
         Core.Join("dragonheart");
+        Adv.BestGear(GearBoost.Dragonkin);
 
         int i = 1;
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(4100);
-            Adv.BoostKillMonster("dragonheart", "r6", "Right", "Zombie Dragon", "Elemental Dragon Soul", 20);
+            Core.KillMonster("dragonheart", "r6", "Right", "Zombie Dragon", "Elemental Dragon Soul", 20);
             Core.EnsureComplete(4100);
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}");
