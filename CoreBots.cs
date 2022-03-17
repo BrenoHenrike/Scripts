@@ -1190,6 +1190,7 @@ public class CoreBots
         CBOList = File.ReadAllLines(AppPath + @"\plugins\options\CBO_Storage.txt").ToList();
 
         //Generic
+        Bot.Log("Generic");
         PrivateRooms = CBOBool("PrivateRooms");
         PrivateRoomNumber = CBOInt("PrivateRoomNr");
         PublicDifficult = CBOBool("PublicDifficult");
@@ -1197,22 +1198,28 @@ public class CoreBots
         BankMiscAC = CBOBool("BankMiscAC");
         LoggerInChat = CBOBool("LoggerInChat");
 
+
+        Bot.Log("Solo");
         SoloClass = CBOString("SoloClassSelect");
         SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), CBOString("SoloModeSelect"));
 
+        Bot.Log("Farm");
         FarmClass = CBOString("FarmClassSelect");
         FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), CBOString("FarmModeSelect"));
 
         //Advanced
+        Bot.Log("Advanced");
         ForceOffMessageboxes = CBOBool("MessageBoxCheck");
         ShouldRest = CBOBool("RestCheck");
 
+        Bot.Log("Ints");
         ActionDelay = CBOInt("ActionDelayNr");
         ExitCombatDelay = CBOInt("ExitCombatNr");
         HuntDelay = CBOInt("HuntDelayNr");
         AcceptandCompleteTries = CBOInt("QuestTriesNr");
 
         //Class Equipment
+        Bot.Log("SoloGear");
         SoloGear = new[] {
             CBOString("Helm1Select"),
             CBOString("Helm1Select"),
@@ -1221,6 +1228,7 @@ public class CoreBots
             CBOString("Pet1Select"),
             CBOString("GroundItem1Select")
         };
+        Bot.Log("FarmGear");
         FarmGear = new[] {
             CBOString("Helm2Select"),
             CBOString("Armor2Select"),
