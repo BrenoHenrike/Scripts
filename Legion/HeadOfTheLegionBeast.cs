@@ -101,7 +101,7 @@ public class HeadoftheLegionBeast
         while (!Bot.Inventory.Contains("Essence of Wrath", quant))
         {
             Core.EnsureAccept(7979);
-            Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
+            Core.HuntMonster("sevencircleswar", "Wrath Guard", "Wrath Guards Defeated", 12);
             Core.JumpWait();
             Core.EnsureComplete(7979);
             Bot.Wait.ForPickup("Essence of Wrath");
@@ -123,7 +123,7 @@ public class HeadoftheLegionBeast
         while (!Bot.Inventory.Contains("Essence of Violence", quant))
         {
             Core.EnsureAccept(7985);
-            Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", "Violence Guards Defeated", 12);
+            Core.HuntMonster("sevencircleswar", "Violence Guard", "Violence Guards Defeated", 12);
             Core.EnsureComplete(7985);
             Bot.Wait.ForPickup("Essence of Violence");
             i++;
@@ -144,7 +144,7 @@ public class HeadoftheLegionBeast
         while (!Bot.Inventory.Contains("Essence of Treachery", quant))
         {
             Core.EnsureAccept(7988);
-            Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", "Treachery Guards Defeated", 12);
+            Core.HuntMonster("sevencircleswar", "Treachery Guard", "Treachery Guards Defeated", 12);
             Core.EnsureComplete(7988);
             Bot.Wait.ForPickup("Essence of Treachery");
             i++;
