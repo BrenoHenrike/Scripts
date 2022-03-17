@@ -206,6 +206,7 @@ public class CoreLegion
         LTShogunParagon(quant);
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
+        LTArcaneParagon(quant);
     }
 
     public void LTBrightParagon(int quant = 25000)
@@ -319,6 +320,32 @@ public class CoreLegion
             Core.EnsureAccept(4849);
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6);
             Core.EnsureComplete(4849);
+            Bot.Player.Pickup("Legion Token");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void LTArcaneParagon(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Arcane Paragon Pet"))
+            return;
+
+        JoinLegion();
+
+        Core.AddDrop("Legion Token", "Granite Dracolich Soul", "Tempest Dracolich Soul", "Deluge Dracolich Soul", "Inferno Dracolich Soul" );
+        Core.EquipClass(ClassType.Farm);
+
+        Core.Join("dragonheart");
+
+        int i = 1;
+        while (!Core.CheckInventory("Legion Token", quant))
+        {
+            Core.EnsureAccept(4896);
+            Core.HuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
+            Core.HuntMonster("dragonheart", "Tempest Dracolich", "Tempest Dracolich Soul", 4, isTemp: false);
+            Core.HuntMonster("dragonheart", "Inferno Dracolich", "Inferno Dracolich Soul", 4, isTemp: false);
+            Core.HuntMonster("dragonheart", "Deluge Dracolich", "Deluge Dracolich Soul", 4, isTemp: false);
+            Core.EnsureComplete(4896);
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}");
         }
