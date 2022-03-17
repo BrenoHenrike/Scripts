@@ -3,7 +3,6 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreAdvanced.cs
-public CoreAdvanced Adv = new CoreAdvanced();
 using RBot;
 
 public class AnotherOneBitesTheDust
@@ -11,6 +10,7 @@ public class AnotherOneBitesTheDust
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
