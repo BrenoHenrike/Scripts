@@ -64,6 +64,9 @@ public class DragonBladeofNulgath
         if (Core.CheckInventory($"Behemoth Blade of {blade}"))
             return;
 
+        if (Core.CBO_Active)
+            CanSoloPvPBoss = Core.CBOBool("DBON_SoloPvPBoss");
+
         Core.EquipClass(ClassType.Solo);
         if (!Core.CheckInventory("Basic War Sword"))
         {

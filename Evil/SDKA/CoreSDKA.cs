@@ -139,6 +139,9 @@ public class CoreSDKA
 
     public void FarmDSO(int quant = 10500)
     {
+        if (Core.CBO_Active)
+            DSOMethod = Core.CBOBool("SDKA_Quest");
+
         if (DSOMethod)
             DSO(quant);
         else

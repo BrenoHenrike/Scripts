@@ -50,6 +50,9 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
 
     public void WOOOOOOOOOOOOOOO()
     {
+        if (Core.CBO_Active)
+            GetNONac = Core.CBOBool("WOO_NonAC");
+
         string[] FocussedArray;
         if (GetNONac) FocussedArray = WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
         else FocussedArray = WOOOOODropsAC;

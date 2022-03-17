@@ -189,6 +189,13 @@ public class CoreStory
         if (QuestID != 0 && PreviousQuestID == QuestID)
             return PreviousQuestState;
 
+        if (!CBO_Checked)
+        {
+            if (Core.CBO_Active)
+                TestBot = Core.CBOBool("BCO_Story_TestBot");
+            CBO_Checked = true;
+        }
+
         PreviousQuestID = QuestID;
 
         Quest QuestData = Core.EnsureLoad(QuestID);
@@ -231,6 +238,7 @@ public class CoreStory
         PreviousQuestState = false;
         return false;
     }
+    private bool CBO_Checked = false;
 
     public void PreLoad()
     {

@@ -68,7 +68,7 @@ public class CoreBots
     public string[] EmptyArray = { "" };
     public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
-    public string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+    public static string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
 
     #endregion
 
@@ -110,7 +110,11 @@ public class CoreBots
         {
             Logger("Bot Started");
 
-            ReadCBO();
+            if (CBO_Active)
+            {
+                CBOList = File.ReadAllLines(AppPath + @"\plugins\options\CBO_Storage.txt").ToList();
+                ReadCBO();
+            }
 
             Bot.Options.HuntDelay = HuntDelay;
 
@@ -1184,11 +1188,6 @@ public class CoreBots
 
     private void ReadCBO()
     {
-        if (!File.Exists(AppPath + @"\plugins\options\CBO_Storage.txt"))
-            return;
-
-        CBOList = File.ReadAllLines(AppPath + @"\plugins\options\CBO_Storage.txt").ToList();
-
         //Generic
         PrivateRooms = CBOBool("PrivateRooms");
         PrivateRoomNumber = CBOInt("PrivateRoomNr");
@@ -1245,6 +1244,7 @@ public class CoreBots
     }
 
     public List<string> CBOList = new();
+    public bool CBO_Active = File.Exists(AppPath + @"\plugins\options\CBO_Storage.txt");
 
     #endregion
 }

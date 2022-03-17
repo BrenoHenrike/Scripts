@@ -36,6 +36,9 @@ public class CoreVHL
         if (Core.CheckInventory("Roentgenium of Nulgath", quant))
             return;
 
+        if (Core.CBO_Active)
+            UseSparrowMethod = Core.CBOBool("VHL_Sparrow");
+
         Core.Logger("Getting Void HighLord Challenge prerequisites");
         Farm.Experience(80);
         Core.AddDrop(Nulgath.bagDrops);
@@ -80,6 +83,9 @@ public class CoreVHL
     {
         if (Core.CheckInventory("Void Crystal A") && Core.CheckInventory("Void Crystal B"))
             return;
+
+        if (Core.CBO_Active)
+            UseSparrowMethod = Core.CBOBool("VHL_Sparrow");
 
         Core.Logger("Obtaining Void Crystal A & Void Crystal B");
         Core.AddDrop(Nulgath.bagDrops);
