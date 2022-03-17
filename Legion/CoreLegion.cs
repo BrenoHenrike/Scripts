@@ -362,7 +362,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.AddDrop("Legion Token");
-        Core.EquipClass(ClassType.Solo);
+        Core.EquipClass(ClassType.Farm);
 
         Core.Join("dragonheart");
 
@@ -370,7 +370,7 @@ public class CoreLegion
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(4100);
-            Adv.BoostHuntMonster("infirmary", "Zombie Dragon", "Elemental Dragon Soul", 20);
+            Adv.BoostKillMonster("dragonheart", "r6", "Right", "Zombie Dragon", "Elemental Dragon Soul", 20);
             Core.EnsureComplete(4100);
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}");
