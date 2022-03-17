@@ -1200,12 +1200,12 @@ public class CoreBots
 
 
         Bot.Log("Solo");
-        SoloClass = CBOString("SoloClassSelect");
-        SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), CBOString("SoloModeSelect"));
+        SoloClass = String.IsNullOrEmpty(CBOString("SoloClassSelect")) ? "Generic" : CBOString("SoloClassSelect");
+        SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("SoloModeSelect")) ? "Base" : CBOString("SoloModeSelect"));
 
         Bot.Log("Farm");
-        FarmClass = CBOString("FarmClassSelect");
-        FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), CBOString("FarmModeSelect"));
+        FarmClass = String.IsNullOrEmpty(CBOString("FarmClassSelect")) ? "Generic" : CBOString("FarmClassSelect");
+        FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("FarmModeSelect")) ? "Base" : CBOString("FarmModeSelect"));
 
         //Advanced
         Bot.Log("Advanced");
@@ -1222,8 +1222,8 @@ public class CoreBots
         Bot.Log("SoloGear");
         SoloGear = new[] {
             CBOString("Helm1Select"),
-            CBOString("Helm1Select"),
             CBOString("Armor1Select"),
+            //CBOString("Cape1Select"),
             CBOString("Weapon1Select"),
             CBOString("Pet1Select"),
             CBOString("GroundItem1Select")
@@ -1232,6 +1232,7 @@ public class CoreBots
         FarmGear = new[] {
             CBOString("Helm2Select"),
             CBOString("Armor2Select"),
+            //CBOString("Cape2Select"),
             CBOString("Weapon2Select"),
             CBOString("Pet2Select"),
             CBOString("GroundItem2Select")
