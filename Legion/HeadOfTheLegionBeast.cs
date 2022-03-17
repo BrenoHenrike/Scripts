@@ -96,10 +96,10 @@ public class HeadoftheLegionBeast
             return;
 
         Core.AddDrop(HeadLegionBeast);
-        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant}x Essence of Wrath");
         int i = 1;
         Bot.Player.Join("sevencircleswar");
+        Core.EquipClass(ClassType.Farm);
         while (!Bot.Inventory.Contains("Essence of Wrath", quant))
         {
             Core.EnsureAccept(7979);
