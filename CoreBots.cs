@@ -16,6 +16,7 @@ using System.Windows.Forms;
 
 public class CoreBots
 {
+    #region Declerations
     // [Can Change] Delay between common actions, 700 is the safe number
     public int ActionDelay { get; set; } = 700;
     // [Can Change] Delay used to get out of combat, 1600 is the safe number
@@ -67,7 +68,9 @@ public class CoreBots
     public string[] EmptyArray = { "" };
     public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
-    public string? ExecutablePath = Path.GetDirectoryName(Application.ExecutablePath);
+    public string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+
+    #endregion
 
     /// <summary>
     /// Set common bot options to desired value
@@ -106,6 +109,8 @@ public class CoreBots
         if (changeTo)
         {
             Logger("Bot Started");
+
+            ReadCBO();
 
             Bot.Options.HuntDelay = HuntDelay;
 
@@ -823,7 +828,7 @@ public class CoreBots
     public void Logger(string message = "", [CallerMemberName] string caller = "", bool messageBox = false, bool stopBot = false)
     {
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
-        if (LoggerInChat)
+        if (LoggerInChat && Bot.Player.LoggedIn)
             Bot.SendMSGPacket(message.Replace('[', '(').Replace(']', ')'), caller, "moderator");
         if (messageBox & !ForceOffMessageboxes)
             Message(message, caller);
@@ -1173,6 +1178,73 @@ public class CoreBots
             Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
     }
+    #endregion
+
+    #region CBO Plugin
+
+    private void ReadCBO()
+    {
+        if (!File.Exists(AppPath + @"\plugins\options\CBO_Storage.txt"))
+            return;
+
+        CBOList = File.ReadAllLines(AppPath + @"\plugins\options\CBO_Storage.txt").ToList();
+
+        //Generic
+        PrivateRooms = CBOBool("PrivateRooms");
+        PrivateRoomNumber = CBOInt("PrivateRoomNr");
+        PublicDifficult = CBOBool("PublicDifficult");
+        AntiLag = CBOBool("AntiLag");
+        BankMiscAC = CBOBool("BankMiscAC");
+        LoggerInChat = CBOBool("LoggerInChat");
+
+        SoloClass = CBOString("SoloClassSelect");
+        SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), CBOString("SoloModeSelect"));
+
+        FarmClass = CBOString("FarmClassSelect");
+        FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), CBOString("FarmModeSelect"));
+
+        //Advanced
+        ForceOffMessageboxes = CBOBool("MessageBoxCheck");
+        ShouldRest = CBOBool("RestCheck");
+
+        ActionDelay = CBOInt("ActionDelayNr");
+        ExitCombatDelay = CBOInt("ExitCombatNr");
+        HuntDelay = CBOInt("HuntDelayNr");
+        AcceptandCompleteTries = CBOInt("QuestTriesNr");
+
+        //Class Equipment
+        SoloGear = new[] {
+            CBOString("Helm1Select"),
+            CBOString("Helm1Select"),
+            CBOString("Armor1Select"),
+            CBOString("Weapon1Select"),
+            CBOString("Pet1Select"),
+            CBOString("GroundItem1Select")
+        };
+        FarmGear = new[] {
+            CBOString("Helm2Select"),
+            CBOString("Armor2Select"),
+            CBOString("Weapon2Select"),
+            CBOString("Pet2Select"),
+            CBOString("GroundItem2Select")
+        };
+    }
+
+    public string CBOString(string Name)
+    {
+        return CBOList.First(x => x.StartsWith(Name)).Split(": ")[1];
+    }
+    public bool CBOBool(string Name)
+    {
+        return CBOString(Name) == "True";
+    }
+    public int CBOInt(string Name)
+    {
+        return int.Parse(CBOString(Name));
+    }
+
+    public List<string> CBOList = new();
+
     #endregion
 }
 
