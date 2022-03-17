@@ -7,6 +7,7 @@ public class CoreLegion
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public string[] legionMedals =
     {
@@ -341,7 +342,8 @@ public class CoreLegion
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(4896);
-            Core.HuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
+
+            Adv.BoostHuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Tempest Dracolich", "Tempest Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Inferno Dracolich", "Inferno Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Deluge Dracolich", "Deluge Dracolich Soul", 4, isTemp: false);

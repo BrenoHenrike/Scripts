@@ -4,6 +4,7 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/Various/SoulSand.cs
 //cs_include Scripts/Legion/Various/LegionBonfire.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class LetItBurn
@@ -11,6 +12,7 @@ public class LetItBurn
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public AnotherOneBitesTheDust SSand = new AnotherOneBitesTheDust();
     public LegionBonfire Bon = new LegionBonfire();
 

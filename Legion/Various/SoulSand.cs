@@ -2,6 +2,8 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/CoreAdvanced.cs
+public CoreAdvanced Adv = new CoreAdvanced();
 using RBot;
 
 public class AnotherOneBitesTheDust
