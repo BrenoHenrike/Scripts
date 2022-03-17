@@ -203,10 +203,10 @@ public class CoreLegion
         JoinLegion();
 
         LTBrightParagon(quant);
+        LTArcaneParagon(quant);
         LTShogunParagon(quant);
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
-        LTArcaneParagon(quant);
     }
 
     public void LTBrightParagon(int quant = 25000)

@@ -43,20 +43,10 @@ public class NecroticSwordOfDoom
         Core.SetOptions(false);
     }
 
-    public void GetNSOD(bool dual = true)
+    public void GetNSOD()
     {
-        if (Core.CheckInventory("Necrotic Sword of Doom") && dual)
-        {
-            Core.Logger("Making 1 Sword Into 2");
-            NSODBadge();
-            DualWield();
-        }
-
         if (Core.CheckInventory("Necrotic Sword of Doom"))
-        {
-            Core.Logger("You already own NSoD");
-            return;
-        }
+        return;
 
         Story.PreLoad();
 
@@ -81,8 +71,6 @@ public class NecroticSwordOfDoom
         Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");
         Adv.EnhanceItem("Necrotic Sword of Doom", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
         NSODBadge();
-        if (dual && !Core.CheckInventory("Dual Necrotic Swords of Doom"))
-            DualWield();
     }
 
     public void VoidAuras(int Quantity)
@@ -408,30 +396,5 @@ public class NecroticSwordOfDoom
         Core.HuntMonster("graveyard", "Skeletal Warrior", "Arcane Parchment");
         Core.EnsureComplete(7652);
         Core.Relogin();
-    }
-
-    public void DualWield()
-    {
-        if (Core.CheckInventory("Dual Necrotic Swords of Doom"))
-            return;
-        Core.Logger("Checking if Your Acc is 8 Years Old");
-
-        Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
-        if (!Core.CheckInventory("Golden 8th Birthday Candle"))
-            return;
-
-
-        Core.AddDrop("Weapon Reflection");
-        if (!Core.CheckInventory("Weapon Reflection"))
-        {
-            Core.EnsureAccept(5518);
-            Core.HuntMonster("nostalgiaquest", "Skeletal Viking", "Reflected Glory", 5);
-            Core.HuntMonster("nostalgiaquest", "Skeletal Warrior", "Divided Light", 5);
-            Core.EnsureComplete(5518);
-            Bot.Wait.ForPickup("Weapon Reflection");
-        }
-
-        Core.BuyItem("nostalgiaquest", 1311, "Dual Necrotic Swords of Doom");
-        Adv.EnhanceItem("Dual Necrotic Swords of Doom", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
     }
 }
