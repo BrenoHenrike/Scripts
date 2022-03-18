@@ -8,12 +8,14 @@
 using RBot;
 public class GetAllRanks
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public FourthDimensionalPyramid FDP = new FourthDimensionalPyramid();
-    public FlyingBaconCatFortress BCF = new FlyingBaconCatFortress();
-    public Core13LoC LOC => new Core13LoC();
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
+    public FourthDimensionalPyramid FDP = new();
+    public FlyingBaconCatFortress BCF = new();
+    public Core13LoC LOC => new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -24,11 +26,33 @@ public class GetAllRanks
         LOC.Wolfwing();
         LOC.Kimberly();
         LOC.Lionfang();
+        UnlockDiabolical();
+        UnlockLoreMaster();
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, true);
 
         Farm.GetAllRanks();
 
         Core.SetOptions(false);
+    }
+
+    private void UnlockDiabolical()
+    {
+        if (!Bot.Quests.IsUnlocked(7877))
+        {
+            Story.KillQuest(7875, "timevoid", "Unending Avatar");
+            Story.KillQuest(7876, "twilightedge", "ChaosWeaver Warrior");
+        }
+    }
+
+    private void UnlockLoreMaster()
+    {
+        if (!Bot.Quests.IsUnlocked(3032))
+        {
+            // Rosetta Stones
+            Story.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);
+            Story.KillQuest(3030, "druids", "Void Larva");
+            Story.KillQuest(3031, "druids", "Void Ghast");
+        }
     }
 }

@@ -780,12 +780,6 @@ public class CoreFarms
         if (FactionRank("Diabolical") >= rank)
             return;
 
-        if (!Bot.Quests.IsUnlocked(7877))
-        {
-            ///Story.KillQuest(7875, "timevoid", "Unending Avatar");
-            ///Story.KillQuest(7876, "twilightedge", "ChaosWeaver Warrior");
-        }
-
         int i = 1;
         while (FactionRank("Diabolical") < rank)
         {
@@ -1127,13 +1121,6 @@ public class CoreFarms
             else if (Core.IsMember && FactionRank("Loremaster") >= 3)
             {
                 Core.EquipClass(ClassType.Solo);
-                if (!Bot.Quests.IsUnlocked(3032))
-                {
-                    // Rosetta Stones
-                    ///Story.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);
-                    ///Story.KillQuest(3030, "druids", "Void Larva");
-                    ///Story.KillQuest(3031, "druids", "Void Ghast");
-                }
                 while (FactionRank("Loremaster") < rank)
                 {
                     Core.EnsureAccept(3032);
