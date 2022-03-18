@@ -129,16 +129,19 @@ public class WarTraining
         Story.KillQuest(8187, "fireinvasion", "Shadefire Colonel");
 
         // Defense of Embersea
-        Story.KillQuest(8189, "fireinvasion", "Living Shadowflame");
+        Story.KillQuest(8188, "fireinvasion", "Living Shadowflame");
 
         // A Chilling Conflict
-        Story.KillQuest(8190, "fireinvasion", "Onslaught Knight");
+        Story.KillQuest(8189, "fireinvasion", "Onslaught Knight");
 
         // General Dismay
-        Story.KillQuest(8191, "fireinvasion", "Shadefire General");
+        Story.KillQuest(8190, "fireinvasion", "Shadefire General");
 
         //A Fallen Friend
-        Story.KillQuest(8192, "fireinvasion", "Shadowflame Kyron");
+        Story.KillQuest(8191, "fireinvasion", "Shadowflame Kyron");
+
+        // Fire Fighting
+        Story.KillQuest(8192, "fireinvasion", new[] { "Living Shadowflame|Onslaught Knight|Onslaught Knight|Shadowfire Corporal", "Shadefire Cavalry"});
 
         // Shadefires of War
         Story.KillQuest(8193, "wartraining", "Simulated Shadefire");
