@@ -40,9 +40,13 @@ public class Sloth
         // Let's Try That Again
         Story.MapItemQuest(5951, "sloth", 5389, 1);
         // One More Time
-        Core.BuyItem("dragonhame", 865, "Airther Vitae");
-        Core.BuyItem("arcangrove", 211, "Health Potion");
-        Story.MapItemQuest(5952, "sloth", 0, 0);
+        if (!Story.QuestProgression(5952))
+        {
+            Core.EnsureAccept(5952);
+            Core.BuyItem("dragonhame", 865, "Airther Vitae");
+            Core.BuyItem("arcangrove", 211, "Health Potion");
+            Core.EnsureComplete(5952);
+        }
         // Who’s Up for Round 3
         Story.MapItemQuest(5953, "sloth", 5391, 1);
         // Cure the Villagers
