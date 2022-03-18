@@ -1024,15 +1024,26 @@ public class CoreFarms
     {
         if (FactionRank("Faerie Court") >= rank)
             return;
-        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         while (FactionRank("Faerie Court") < rank)
         {
-            Core.EnsureAccept(6779);
-            Core.HuntMonster("faegrove", "Dark Sylphdrake", "Silver Sylph Feather", 1);
-            Core.EnsureComplete(6779);
-            Core.Logger($"Completed x{i++}");
+            if (FactionRank("Faerie Court") < 8)
+            {
+                Core.EquipClass(ClassType.Solo);
+                Core.EnsureAccept(6775);
+                Core.HuntMonster("rainbow", "Lucky Harms ", "Four Leaf Clover", 3);
+                Core.EnsureComplete(6775);
+                Core.Logger($"Completed x{i++}");
+            }
+            if (FactionRank("Faerie Court") >= 8)
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.EnsureAccept(6779);
+                Core.HuntMonster("faegrove", "Dark Sylphdrake", "Silver Sylph Feather", 1);
+                Core.EnsureComplete(6779);
+                Core.Logger($"Completed x{i++}");
+            }
         }
     }
 
