@@ -38,7 +38,7 @@ public class Greed
         Story.KillQuest(5940, "greed", new[] { "Ice Crystal", "Glacial Horror"});
         // Go-bolds?
         Story.KillQuest(5941, "greed", "Kobold");
-        Story.MapItemQuest(5941, "greed", 5375, 1);
+        Story.MapItemQuest(5941, "greed", 5375, 5);
         // Follow the Trail
         Story.MapItemQuest(5942, "greed", 5376, 3);
         // Get Rid of Greed
