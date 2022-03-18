@@ -49,7 +49,7 @@ public class NecroticSwordOfDoom
             return;
 
         if (Core.CBO_Active)
-            OptimizeInv = Core.CBOBool("NSOD_PreFarm");
+            OptimizeInv = !Core.CBOBool("NSOD_PreFarm");
 
         Story.PreLoad();
 
