@@ -13,6 +13,7 @@
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/Borgars.cs
+//cs_include Scripts/Story/Astravia/CoreAstravia.cs
 using RBot;
 
 public class DragonOfTime
