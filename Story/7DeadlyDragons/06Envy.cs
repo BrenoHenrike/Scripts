@@ -31,7 +31,7 @@ public class Envy
         // Round ‘em Up
         Story.KillQuest(5986, "dragoncrown", new[] {"Llama", "Rampaging Boar"});
         // Get Rockin’
-        Story.KillQuest(5987, "dragoncrown", new[] {"Rock Elemental", "Earth Elementa"});
+        Story.KillQuest(5987, "dragoncrown", new[] {"Rock Elemental", "Earth Elemental"});
         // Stop Fightin’
          Story.MapItemQuest(5988, "dragoncrown", 5423, 1);
         // Find Riddrug
