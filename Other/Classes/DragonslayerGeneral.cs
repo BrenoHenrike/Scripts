@@ -31,7 +31,11 @@ public class DragonslayerGeneral
         Farm.Gold(30000);
         EnchantedScaleandClaw(75, 100);
         Core.BuyItem("dragontown", 1286, 35996);
+
         Bot.Wait.ForPickup("Dragonslayer General");
+        Adv.GearStore();
+        Adv.rankUpClass("Dragonslayer General");
+        Adv.GearStore(true);
     }
 
     public void EnchantedScaleandClaw(int ScaleQuant, int CLawquant)
@@ -42,9 +46,10 @@ public class DragonslayerGeneral
             Adv.EnhanceItem("Dragonslayer", EnhancementType.Lucky);
             Adv.rankUpClass("Dragonslayer");
         }
-
+        Adv.GearStore();
         if (Core.CheckInventory("dragonslayer"))
             Adv.rankUpClass("Dragonslayer");
+        Adv.GearStore(true);
         Adv.BestGear(GearBoost.Dragonkin);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
 
