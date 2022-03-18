@@ -320,9 +320,9 @@ public class Core13LoC
         //Big Bada-Boom
         if (!Story.QuestProgression(357))
         {
-            Core.EnsureAccept(356);
             if (!Core.CheckInventory("Tee-En-Tee"))
             {
+                Core.EnsureAccept(356);
                 Core.HuntMonster("dwarfprison", "Albino Bat", "Nitrate Elements", 3);
                 Core.HuntMonster("dwarfprison", "Chaos Drow", "Drow Shoelaces", 3);
                 Core.HuntMonster("dwarfprison", "Balboa", "Flint Stone", 2);
