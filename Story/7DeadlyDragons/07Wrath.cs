@@ -31,11 +31,16 @@ public class Wrath
         // The Final Ingredient
         if (!Story.QuestProgression(6113))
         {
-            Core.EnsureAccept(1075);
-            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4, true);
-            Core.GetMapItem(428, 1, "lightguard");
-            Core.EnsureComplete(1075);
             Core.AddDrop("Holy Wasabi");
+            if (!Core.CheckInventory("Holy Wasabi", 1))
+            {
+                Core.EnsureAccept(1075);
+                Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4, true);
+                Core.GetMapItem(428, 1, "lightguard");
+                Core.EnsureComplete(1075);
+                Bot.Sleep(5000);
+            }
+                        
             Core.EnsureComplete(6113);
         }
         // Count Not to Four
