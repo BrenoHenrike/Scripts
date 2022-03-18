@@ -6,6 +6,7 @@ public class CoreDarkon
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
+    public CoreAstravia Astravia => new CoreAstravia();
 
     public void FarmReceipt(int Quantity = 222)
     {
@@ -89,6 +90,47 @@ public class CoreDarkon
         }
     }
 
+
+    public void Teeth(int Quantity = 300)
+    {
+        if (Core.CheckInventory("Teeth", Quantity))
+            return;
+
+        Core.AddDrop("Teeth");
+
+        Astravia.Eridani();
+
+        Core.EquipClass(ClassType.Farm);
+
+        while ((!Core.CheckInventory("Teeth", Quantity)))
+        {
+            Core.EnsureAccept(7780);
+            Core.KillMonster("eridani", "r8", "Right", "Wolf-Like Creature", "Tooth", 28, false);
+            Core.KillMonster("eridani", "r4", "Left", "Creature 15", "Wisdom Tooth", 4, false);
+            Core.EnsureComplete(7780);
+        }
+    }
+
+    public void LasGratitude(int Quantity = 300)
+    {
+        if (Core.CheckInventory("La's Gratitude", Quantity))
+            return;
+
+        Core.AddDrop("La's Gratitude");
+
+        Astravia.Astravia();
+
+        Core.EquipClass(ClassType.Farm);
+
+        while ((!Core.CheckInventory("La's Gratitude", Quantity)))
+        {
+            Core.EnsureAccept(8001);
+            Core.HuntMonster("astravia", "Creature 27|Creature 28", "Broken Dog Tag", 20);
+            Core.HuntMonster("astravia", "Creature 27|Creature 28", "Intact Dog Tag", 5);
+            Core.EnsureComplete(8001);
+        }
+    }
+
     public void AstravianMedal(int Quantity = 300)
     {
         if (Core.CheckInventory("Astravian Medal", Quantity))
@@ -96,20 +138,17 @@ public class CoreDarkon
 
         Core.AddDrop("Astravian Medal");
 
+        Astravia.AstraviaCastle();
+
         while ((!Core.CheckInventory("Astravian Medal", Quantity)))
         {
             Core.EnsureAccept(8257);
-
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("astraviacastle", "Creature 27|Creature 28", "Defaced Portrait", 10);
             Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4);
-
-            Core.JumpWait();
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviacastle", "The Sun", "Burned Banana");
-
             Core.EnsureComplete(8257);
-            Bot.Wait.ForPickup("Astravian Medal");
         }
     }
 }

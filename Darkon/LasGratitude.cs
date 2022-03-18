@@ -6,7 +6,7 @@
 //cs_include Scripts/Story/Astravia/CoreAstravia.cs
 using RBot;
 
-public class AstravianMedal
+public class LasGratitude
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,7 +16,7 @@ public class AstravianMedal
     {
         Core.SetOptions();
 
-        Darkon.AstravianMedal();
+        Darkon.LasGratitude();
 
         Core.SetOptions(false);
     }
