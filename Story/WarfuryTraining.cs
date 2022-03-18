@@ -80,14 +80,15 @@ public class WarTraining
         Story.KillQuest(8138, "shadowfireplane", "Onslaught Knight|Shadowfire Corporal");
 
         // Awaken Lady Fiamme
-        Story.MapItemQuest(8139, "shadowfireplane", 8545);
+        Story.MapItemQuest(8139, "shadowfireplane", 8542, AutoCompleteQuest: false);
+        Bot.Sleep(5000);
 
         // Destroy the Barrier
-        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner, Shadow Wing" });
+        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner", "Shadow Wing" });
         Story.MapItemQuest(8140, "shadowfireplane", 8543);
 
         // Blaze a Path
-        Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight, Shadowfire Corporal" });
+        Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight", "Shadowfire Corporal" });
 
         // Into the Tiger's Den
         Story.KillQuest(8142, "shadowfireplane", "Shadowfire Tiger");
@@ -119,7 +120,7 @@ public class WarTraining
         Story.KillQuest(8184, "fireinvasion", "Shadefire Major");
 
         // Darkness in Swordhaven
-        Story.KillQuest(8185, "fireinvasion", new[] { "Shadefire Elemental, Shadowfire Tiger" });
+        Story.KillQuest(8185, "fireinvasion", new[] { "Shadefire Elemental", "Shadowfire Tiger" });
 
         // Extinguish the Flames
         Story.KillQuest(8186, "fireinvasion", "Living Shadowflame");
