@@ -145,7 +145,7 @@ public class CoreHollowbornDoomKnight
         Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 1, false, publicRoom: true);
         Bot.Quests.UpdateQuest(3008);
         Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-        Bot.Quests.UpdateQuest(2999);
+        Bot.Quests.UpdateQuest(3004);
         Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 1, false);
 
         Core.EnsureComplete(8415);
