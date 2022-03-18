@@ -854,12 +854,10 @@ public class Core13LoC
         if (!Story.QuestProgression(934))
         {
             Core.EnsureAccept(934);
-            Core.Join("sandport", "r6", "Right");
-            Bot.Player.Kill("*");
-            Core.Jump("r5", "Right");
-            Bot.Player.Kill("*");
-            Bot.Player.Kill("*");
-            Bot.Player.Kill("*");
+            if (!Core.CheckInventory(29373, toInv: false))
+                Core.KillMonster("sandport", "r6", "Left", 2153, "Horc Sell-Swords Defeated", 1);
+            if (!Core.CheckInventory(6686, 3, toInv: false))
+                Core.KillMonster("sandport", "r5", "Left", 536, "Horc Sell-Swords Defeated", 4);
             Core.EnsureComplete(934);
         }
 
