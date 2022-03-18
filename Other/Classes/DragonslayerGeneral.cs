@@ -37,8 +37,14 @@ public class DragonslayerGeneral
     public void EnchantedScaleandClaw(int ScaleQuant, int CLawquant)
     {
         if (!Core.CheckInventory("dragonslayer"))
+        {
             Core.BuyItem("lair", 38, "Dragonslayer");
+            Adv.EnhanceItem("Dragonslayer", EnhancementType.Lucky);
+            Adv.rankUpClass("Dragonslayer");
+        }
 
+        if (Core.CheckInventory("dragonslayer"))
+            Adv.rankUpClass("Dragonslayer");
         Adv.BestGear(GearBoost.Dragonkin);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
 
