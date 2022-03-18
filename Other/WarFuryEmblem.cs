@@ -16,6 +16,7 @@ public class WarfuryEmblem
     public CoreDailys Dailys = new CoreDailys();
     public WarTraining WFT = new WarTraining();
 
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -37,7 +38,7 @@ public class WarfuryEmblem
         while (!Core.CheckInventory("Warfury Emblem", EmblemQuant))
         {
             Core.EnsureAccept(8204);
-            else Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
+            Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
             Core.EnsureComplete(8204);
             Bot.Wait.ForPickup("Warfury Emblem");
         }
