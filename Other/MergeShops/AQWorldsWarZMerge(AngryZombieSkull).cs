@@ -17,11 +17,7 @@ public class AQWorldsWarZMerge
 
     public void GetItems()
     {
-        //Needed AddDrop
-        Core.AddDrop("Angry Zombie Skull");
-
         Core.EquipClass(ClassType.Farm);
-
         Core.HuntMonster("doomwar", "Angry Zombie", "Angry Zombie Skull", 500, false);
     }
 }
