@@ -25,7 +25,7 @@ public class WarfuryEmblem
         Core.SetOptions(false);
     }
 
-    public void WarfuryEmblemFarm(int EmblemQuant = 60, bool CanSoloBoss = false)
+    public void WarfuryEmblemFarm(int EmblemQuant = 60)
     {
         if (Core.CheckInventory("Warfury Emblem", EmblemQuant))
             return;
@@ -36,21 +36,10 @@ public class WarfuryEmblem
         Adv.BestGear(GearBoost.Human);
         while (!Core.CheckInventory("Warfury Emblem", EmblemQuant))
         {
-            if (CanSoloBoss)
-            {
-                Core.EnsureAccept(8204);
-                Core.HuntMonster("wartraining", "Varga", "Warfury Training", 30);
-                Core.EnsureComplete(8204);
-                Bot.Wait.ForPickup("Warfury Emblem");
-            }
-
-            if (!CanSoloBoss)
-            {
-                Core.EnsureAccept(8204);
-                Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
-                Core.EnsureComplete(8204);
-                Bot.Wait.ForPickup("Warfury Emblem");
-            }
+            Core.EnsureAccept(8204);
+            else Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
+            Core.EnsureComplete(8204);
+            Bot.Wait.ForPickup("Warfury Emblem");
         }
     }
 }
