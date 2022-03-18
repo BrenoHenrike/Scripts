@@ -151,4 +151,23 @@ public class CoreDarkon
             Core.EnsureComplete(8257);
         }
     }
+
+    public void AMelody(int Quantity = 300)
+    {
+        if (Core.CheckInventory("A Melody", Quantity))
+            return;
+
+        Core.AddDrop("A Melody");
+
+        Astravia.AstraviaJudgement();
+
+        while ((!Core.CheckInventory("A Melody", Quantity)))
+        {
+            Core.EnsureAccept(8396);
+            Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10);
+            Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10);
+            Core.HuntMonster("astraviajudge", "La", "Knight's Favor");
+            Core.EnsureComplete(8396);
+        }
+    }
 }

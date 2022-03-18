@@ -11,7 +11,7 @@ public class CoreAstravia
     public void CompleteCoreAstravia()
     {
         //Progress Check
-        if (Core.isCompletedBefore(8256))
+        if (Core.isCompletedBefore(8395))
             return;
 
         //Preload Quests
@@ -20,6 +20,7 @@ public class CoreAstravia
         Eridani();
         Astravia();
         AstraviaCastle();
+        AstraviaJudgement();
 
     }
 
@@ -172,5 +173,60 @@ public class CoreAstravia
         //Mnemosyne, the Tormentor
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8256, "astraviacastle", "The Sun");
+    }
+
+    public void AstraviaJudgement()
+    {
+        //Progress Check
+        if (Core.isCompletedBefore(8395))
+            return;
+
+        //Preload Quests
+        Story.PreLoad();
+
+        //Atata
+        Story.MapItemQuest(8386, "astraviajudge", 9275, 6);
+
+        //Samghata
+        Story.KillQuest(8387, "astraviajudge", "Hand");
+
+        //Hahava
+        Story.KillQuest(8388, "astraviajudge", "Trumpeter");
+
+        //Sanjiva
+        if (!Core.isCompletedBefore(8389))
+        {
+            Core.EnsureAccept(8389);
+            Core.KillMonster("astraviajudge", "r4", "Left", "Juror", "Jurors Repelled", 9);
+            Core.EnsureComplete(8389);
+        }
+
+
+        //Kalasutra
+        Story.KillQuest(8390, "astraviajudge", "Trumpeter");
+        Story.MapItemQuest(8390, "astraviajudge", 9276);
+
+        //Padma
+        Story.KillQuest(8391, "astraviajudge", "Hand");
+        Story.MapItemQuest(8391, "astraviajudge", 9277, 8);
+
+        //Maharaurava
+        Story.KillQuest(8392, "astraviajudge", "Trumpeter");
+
+        //Raurava
+        if (!Core.isCompletedBefore(8393))
+        {
+            Core.EnsureAccept(8393);
+            Core.KillMonster("astraviajudge", "r4", "Left", "Juror", "Jurors Shoved", 9);
+            Core.EnsureComplete(8393);
+        }
+
+        //Avici
+        Story.KillQuest(8394, "astraviajudge", "Shades");
+        Story.MapItemQuest(8394, "astraviajudge", 9278);
+
+        //Mahapadma
+        Core.EquipClass(ClassType.Solo);
+        Story.KillQuest(8395, "astraviajudge", "La");
     }
 }
