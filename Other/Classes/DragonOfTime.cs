@@ -58,6 +58,14 @@ public class DragonOfTime
             Bot.Quests.UpdateQuest(4614);
             Core.KillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
 
+
+            if (!Bot.Quests.IsUnlocked(3032))
+            {
+                // Rosetta Stones
+                Story.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);
+                Story.KillQuest(3030, "druids", "Void Larva");
+                Story.KillQuest(3031, "druids", "Void Ghast");
+            }
             Farm.LoremasterREP(4);
             Core.BuyItem("Librarium", 651, "Myths of Lore");
 

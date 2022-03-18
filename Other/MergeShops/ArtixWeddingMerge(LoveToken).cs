@@ -17,9 +17,6 @@ public class ArtixWeddinMerge
 
     public void GetItems()
     {
-        //Needed AddDrop
-        Core.AddDrop("Love Token");
-
         Core.HuntMonster("grimskullannex", "Grim Mage|Grim Soldier|Grim Fighter", "Love Token", 1000, false);
     }
 }

@@ -112,7 +112,7 @@ public class CoreBots
 
             if (CBO_Active)
             {
-                CBOList = File.ReadAllLines(AppPath + @"\plugins\options\CBO_Storage.txt").ToList();
+                CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
                 ReadCBO();
             }
 
@@ -1244,7 +1244,7 @@ public class CoreBots
     }
 
     public List<string> CBOList = new();
-    public bool CBO_Active = File.Exists(AppPath + @"\plugins\options\CBO_Storage.txt");
+    public bool CBO_Active = File.Exists(AppPath + $@"\plugins\options\CBO_Storage({ScriptInterface.Instance.Player.Username}).txt");
 
     #endregion
 }

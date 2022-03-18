@@ -144,8 +144,8 @@ public class CoreHollowbornDoomKnight
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 1, false, publicRoom: true);
         Bot.Quests.UpdateQuest(3008);
-        Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-        Bot.Quests.UpdateQuest(2999);
+        Core.SetAchievement(18);
+        Bot.Quests.UpdateQuest(3004);
         Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 1, false);
 
         Core.EnsureComplete(8415);
@@ -174,6 +174,9 @@ public class CoreHollowbornDoomKnight
         Adv.BoostHuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 3, false, publicRoom: true);
         NSOD.BonesVoidRealm(1);
         Adv.BoostHuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", 1, false);
+        Bot.Quests.UpdateQuest(3008);
+        Core.SetAchievement(18);
+        Bot.Quests.UpdateQuest(3004);
         Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 12, false);
         Adv.BoostHuntMonster("Desolich", "Desolich", "Desolich's Dark Horn", 3, false, publicRoom: true);
 

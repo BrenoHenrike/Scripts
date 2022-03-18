@@ -273,7 +273,7 @@ public class BrightOak
                         if (!Core.CheckInventory("Ravinos Token I"))
                         {
                             Core.EnsureAccept(4799);
-                            Bot.Player.Join("Gaiazor");
+                            Core.Join("Gaiazor");
                             Core.GetMapItem(4204, 6);
                             Core.EnsureComplete(4799);
                             Bot.Wait.ForPickup("Ravinos Token I");
