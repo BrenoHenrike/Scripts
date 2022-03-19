@@ -16,7 +16,7 @@
 
 using RBot;
 
-public class BlindingEdgeofObsidian
+public class ObsidianLightofDestiny
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
@@ -39,7 +39,7 @@ public class BlindingEdgeofObsidian
     {
         Core.SetOptions();
 
-        CToD.CompleteToD();
+        //CToD.CompleteToD(); //if you want to do this, just un-// it, its not required the shop can just be loaded.
         Farm.MysteriousDungeonREP();
         Axe();
 
@@ -48,21 +48,24 @@ public class BlindingEdgeofObsidian
 
     public void Axe()
     {
-        if (Core.CheckInventory("Blinding Edge of Obsidian"))
+        if (Core.CheckInventory("Obsidian Light of Destiny"))
             return;
 
-        Core.AddDrop("Blinding Edge of Obsidian");
-
-        if (!Core.CheckInventory("Blinding Edge of Obsidian"))
+        //The Edge of Destiny
+        if (!Core.CheckInventory("Obsidian Light of Destiny"))
         {
-            BLOD.UltimateWK("Bright Aura", 120);
-            BLOD.FindingFragmentsMace(40);
-            BLOD.FindingFragments(2174);
-            while (!Core.CheckInventory("Spirit Orb", 5000))
-                BLOD.FindingFragments(2179);
-            while (!Core.CheckInventory("Loyal Spirit Orb", 750))
-                BLOD.FindingFragments(2179);
-            Bot.Wait.ForPickup("Blinding Edge of Obsidian");
+            if (!Core.CheckInventory("Blinding Edge of Obsidian"))
+            {
+                BLOD.FindingFragmentsBow(120);
+                BLOD.FindingFragmentsMace(40);
+                BLOD.FindingFragments(2174);
+                BLOD.fin
+                while (!Core.CheckInventory("Spirit Orb", 5000))
+                    BLOD.FindingFragments(2179);
+                while (!Core.CheckInventory("Loyal Spirit Orb", 750))
+                    BLOD.FindingFragments(2179);
+                Bot.Wait.ForPickup("Blinding Edge of Obsidian");
+            }
         }
     }
 }
