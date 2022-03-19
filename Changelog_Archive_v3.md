@@ -1,6 +1,16 @@
 - ##### Versions
-  - [v3.0 - Latest](#v30)
+  - [v3.0](#v30)
+    - [v3.0.1 - Latest](#v301)
   - [v2.0 till 2.29](Changelog_Archive_v2.md)
+
+### v3.0.1
+**Released on Mar 18, 2022 at 19:10 / 07:10 PM (UTC)**  
+· Released AMelody (Vladimir)  
+· Released 4AstraviaJudgement (Vladimir)  
+· Added import for CoreAstravia to DragonOfTime & DarkonsErrand1-3
+· Added GearStore to DragonSlayerGeneral
+· Fixed WarFuryEmblem
+[Back to top](#versions)
 
 ### v3.0
 **Released on Mar 18, 2022 at 17:30 / 05:30 PM (UTC)**  
