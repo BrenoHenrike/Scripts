@@ -38,9 +38,6 @@ public class ObsidianLightofDestiny
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
-        //CToD.CompleteToD(); //if you want to do this, just un-// it, its not required the shop can just be loaded.
-        Farm.MysteriousDungeonREP();
         Axe();
 
         Core.SetOptions(false);
@@ -54,18 +51,23 @@ public class ObsidianLightofDestiny
         //The Edge of Destiny
         if (!Core.CheckInventory("Obsidian Light of Destiny"))
         {
+            Core.EnsureAccept(7648);
+
             if (!Core.CheckInventory("Blinding Edge of Obsidian"))
             {
-                BLOD.FindingFragmentsBow(120);
-                BLOD.FindingFragmentsMace(40);
-                BLOD.FindingFragments(2174);
-                BLOD.fin
-                while (!Core.CheckInventory("Spirit Orb", 5000))
-                    BLOD.FindingFragments(2179);
-                while (!Core.CheckInventory("Loyal Spirit Orb", 750))
-                    BLOD.FindingFragments(2179);
+                Farm.MysteriousDungeonREP();
+                Core.BuyItem("darkthronehub", 1308, "Blinding Edge of Obsidian");
                 Bot.Wait.ForPickup("Blinding Edge of Obsidian");
             }
+            BLOD.FindingFragmentsBow(120); //Bright Aura x120
+            BLOD.FindingFragmentsMace(40); //Brilliant Aura x40
+            BLOD.FindingFragments(2174); //Blinding Aura 
+            while (!Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
+                BLOD.FindingFragments(2179);
+            while (!Core.CheckInventory("Loyal Spirit Orb", 750))
+                BLOD.FindingFragments(2179);
+            Core.EnsureComplete(7648);
+            Bot.Wait.ForPickup("Blinding Edge of Obsidian");
         }
     }
 }
