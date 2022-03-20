@@ -4,15 +4,6 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Story/ThroneofDarkness/00ThroneofDarkness.cs
-//cs_include Scripts/Story/ThroneofDarkness/01Vaden(CastleofBones).cs
-//cs_include Scripts/Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
-//cs_include Scripts/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs
-//cs_include Scripts/Story/ThroneofDarkness/04aPax(DeathPit).cs
-//cs_include Scripts/Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs
-//cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
-//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
-//cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
 
 using RBot;
 
@@ -25,15 +16,6 @@ public class ObsidianLightofDestiny
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreBLOD BLOD = new CoreBLOD();
-    public CompleteThroneOfDarknessSaga CToD = new CompleteThroneOfDarknessSaga();
-    public CastleofBones s01 = new CastleofBones();
-    public ParadoxPortal s02a = new ParadoxPortal();
-    public FlyingBaconCatFortress s03a = new FlyingBaconCatFortress();
-    public DeathPitArena s04a = new DeathPitArena();
-    public ShiftingPyramid s05a = new ShiftingPyramid();
-    public FourthDimensionalPyramid s05b = new FourthDimensionalPyramid();
-    public HedgeMaze s06a = new HedgeMaze();
-    public TowerofMirrors s06b = new TowerofMirrors();
 
     public void ScriptMain(ScriptInterface bot)
     {
