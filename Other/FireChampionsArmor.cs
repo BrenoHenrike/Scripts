@@ -41,7 +41,7 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm();
         DSG.GetDSGeneral();
         FlameForgedMetal();
-        VoidScale(13);
+        VoidScale();
     }
 
 
@@ -85,12 +85,12 @@ public class FireChampionsArmor
 
     }
 
-    public void VoidScale(int VoidScaleQuant)
+    public void VoidScale(int VoidScaleQuant = 13)
     {
         if (Core.CheckInventory("Void Scale", VoidScaleQuant))
             return;
 
-        Adv.BestGear(GearBoost.Dragonkin);
+        Adv.BestGear(GearBoost.Chaos);
 
         Core.HuntMonster("underlair", "Archfiend Dragonlord", "Void Scale", VoidScaleQuant, isTemp: false);
     }
