@@ -21,8 +21,8 @@ public class FireChampionsArmor
     public CoreAdvanced Adv = new CoreAdvanced();
     public DragonslayerGeneral DSG = new DragonslayerGeneral();
     public CoreLegion Legion = new CoreLegion();
-    public WarTraining WFT = new WarTraining(); 
-    public WarfuryEmblem WFE = new WarfuryEmblem(); 
+    public WarTraining WFT = new WarTraining();
+    public WarfuryEmblem WFE = new WarfuryEmblem();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -36,11 +36,11 @@ public class FireChampionsArmor
     public void Doall()
     {
         Story.PreLoad();
-        
+
         PolishedDragonSlayer();
         WFE.WarfuryEmblemFarm();
         DSG.GetDSGeneral();
-        FlameForgedMetal(10);
+        FlameForgedMetal();
         VoidScale(13);
     }
 
@@ -63,20 +63,25 @@ public class FireChampionsArmor
     }
 
 
-    public void FlameForgedMetal(int Metalquant)
+    public void FlameForgedMetal(int Metalquant = 10)
     {
-        if (Core.CheckInventory("Flame Forged Metal", Metalquant))
+        if (Core.CheckInventory("Flame-Forged Metal", Metalquant))
             return;
 
-        Legion.JoinLegion();
+        Adv.BestGear(GearBoost.Undead);
 
-        Adv.BestGear(GearBoost.Dragonkin);
-        
-        Story.KillQuest(6976, "Underworld", "Bloodfiend", false);
-        Story.KillQuest(6975, "underworld", "Frozen Pyromancer");
+        Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
 
-        while (!Core.CheckInventory("Flame Forged Metal", Metalquant))
-            Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame");
+        int i = 1;
+
+        while (!Core.CheckInventory("Flame-Forged Metal", Metalquant))
+        {
+            Core.EnsureAccept(6975);
+            Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame", log: false);
+            Core.EnsureComplete(6975);
+            Bot.Wait.ForDrop("Flame-Forged Metal");
+            Core.Logger($"Completed x{i++}, \"Flame-Forged Metal\": {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
+        }
 
     }
 
