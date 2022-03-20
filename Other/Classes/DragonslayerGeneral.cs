@@ -25,8 +25,11 @@ public class DragonslayerGeneral
 
     public void GetDSGeneral()
     {
-        if (Core.CheckInventory("Dragonslayer General"))
+        if (Core.CheckInventory(35996))
+        {
+            Adv.rankUpClass("Dragonslayer General");
             return;
+        }
 
         Farm.Gold(30000);
         EnchantedScaleandClaw(75, 100);
@@ -43,8 +46,10 @@ public class DragonslayerGeneral
         if (!Core.CheckInventory("Dragonslayer"))
         {
             Core.BuyItem("lair", 38, "Dragonslayer");
+            Adv.GearStore();
             Adv.EnhanceItem("Dragonslayer", EnhancementType.Lucky);
             Adv.rankUpClass("Dragonslayer");
+            Adv.GearStore(true);
         }
         Adv.GearStore();
         if (Core.CheckInventory("Dragonslayer"))
