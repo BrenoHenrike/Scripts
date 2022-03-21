@@ -93,6 +93,7 @@ public class FireChampionsArmor
 
         Adv.BestGear(GearBoost.Chaos);
         Core.EquipClass(ClassType.Solo);
+        Bot.Skills.StartAdvanced(Core.SoloClass, true, RBot.Skills.ClassUseMode.Def);
 
         Core.HuntMonster("underlair", "Archfiend Dragonlord", "Void Scale", VoidScaleQuant, isTemp: false);
     }
