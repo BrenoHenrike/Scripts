@@ -92,6 +92,7 @@ public class FireChampionsArmor
             return;
 
         Adv.BestGear(GearBoost.Chaos);
+        Core.EquipClass(ClassType.Solo);
 
         Core.HuntMonster("underlair", "Archfiend Dragonlord", "Void Scale", VoidScaleQuant, isTemp: false);
     }
