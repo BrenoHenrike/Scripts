@@ -58,16 +58,20 @@ public class DragonslayerGeneral
         Adv.BestGear(GearBoost.Dragonkin);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
 
+        Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
+        
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
             Core.EnsureAccept(5294);
-            Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12);
+            Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
             Core.EnsureComplete(5294);
             Bot.Wait.ForPickup("Enchanted Scale");
         }
 
+        Core.Logger($"Farming {CLawquant} Dragon Claw");
+
         while (!Core.CheckInventory("Dragon Claw", CLawquant))
-            Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", 100, isTemp: false);
+            Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", 100, isTemp: false, log: false);
 
     }
 }
