@@ -28,38 +28,39 @@ public class FireChampionsArmor
     {
         Core.SetOptions();
 
-        Doall();
+        GetFireChampsArmor();
 
         Core.SetOptions(false);
     }
 
-    public void Doall()
+    public void GetFireChampsArmor()
     {
+        if (Core.CheckInventory(62570))
+            return;
+
         Story.PreLoad();
 
         PolishedDragonSlayer();
-        WFE.WarfuryEmblemFarm();
-        DSG.GetDSGeneral();
-        FlameForgedMetal();
-        VoidScale();
+        DSG.EnchantedScaleandClaw(125, 0);
+        WFE.WarfuryEmblemFarm(60);
+        FlameForgedMetal(10);
+        VoidScale(13);
+        Core.BuyItem("dragontown", 2035, itemID: 61043, 50, shopItemID: 8759);
+        Core.BuyItem("dragontown", 2035, itemID: 62570, shopItemID: 8759);
     }
 
 
     public void PolishedDragonSlayer()
     {
-        // Merge the following:
+        if(Core.CheckInventory(58462))
+            return;
 
-        // Warfury Emblem x30
-        WFE.WarfuryEmblemFarm(30);
-
-        // Enchanted Scale x30
-        DSG.EnchantedScaleandClaw(30, 0);
-
-        // Dragon Scale (1) x30
-        Core.HuntMonster("lair", "Water Draconian", "Dragon Scale", 30, false);
-
-        // 1,000,000 Gold
+        DSG.GetDSGeneral();
         Farm.Gold(1000000);
+        WFE.WarfuryEmblemFarm(30);
+        DSG.EnchantedScaleandClaw(30, 0);
+        Core.HuntMonster("lair", "Water Draconian", "Dragon Scale", 30, false);
+        Core.BuyItem("wartraining", 2035, itemID: 58462, shopItemID: 8756);
     }
 
 
@@ -82,7 +83,6 @@ public class FireChampionsArmor
             Bot.Wait.ForDrop("Flame-Forged Metal");
             Core.Logger($"Completed x{i++}, \"Flame-Forged Metal\": {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
         }
-
     }
 
     public void VoidScale(int VoidScaleQuant = 13)
