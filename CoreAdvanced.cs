@@ -82,7 +82,7 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Determens what Enhancement Type the player has on their currently equipped class
+    /// Determines what Enhancement Type the player has on their currently equipped class
     /// </summary>
     /// <returns>Returns the equipped Enhancement Type</returns>
     public EnhancementType CurrentClassEnh()
@@ -94,7 +94,7 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Determens what Weapon Special the player has on their currently equipped weapon
+    /// Determines what Weapon Special the player has on their currently equipped weapon
     /// </summary>
     /// <returns>Returns the equipped Weapon Special</returns>
     public WeaponSpecial CurrentWeaponSpecial()
