@@ -84,8 +84,13 @@ public class WarTraining
         Bot.Sleep(5000);
 
         // Destroy the Barrier
-        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner", "Shadow Wing" });
-        Story.MapItemQuest(8140, "shadowfireplane", 8543);
+        if (!Story.QuestProgression(8140))
+        {
+            Core.EnsureAccept(8140);
+            Core.HuntMonster("shadowfireplane", "Shadowfire Summoner", "Shadowfire Summoner Defeated");
+            Core.HuntMonster("shadowfireplane", "Shadow Wing", "Shadow Flamewing Defeated", 2);
+            Story.MapItemQuest(8140, "shadowfireplane", 8543);
+        }
 
         // Blaze a Path
         Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight", "Shadowfire Corporal" });
