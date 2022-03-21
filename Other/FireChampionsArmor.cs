@@ -45,14 +45,15 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(60);
         FlameForgedMetal(10);
         VoidScale(13);
-        Core.BuyItem("dragontown", 2035, itemID: 61043, 50, shopItemID: 8759);
-        Core.BuyItem("dragontown", 2035, itemID: 62570, shopItemID: 8759);
+        Farm.Gold(25000000);
+        Core.BuyItem("wartraining", 2035, itemID: 61043, 50);
+        Core.BuyItem("wartraining", 2035, itemID: 62570, shopItemID: 8759);
     }
 
 
     public void PolishedDragonSlayer()
     {
-        if(Core.CheckInventory(58462))
+        if (Core.CheckInventory(58462))
             return;
 
         DSG.GetDSGeneral();
