@@ -17,7 +17,7 @@ public class WarTraining
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        
+
         Adv.BestGear(GearBoost.Human);
         DoALl();
 
@@ -80,17 +80,12 @@ public class WarTraining
         Story.KillQuest(8138, "shadowfireplane", "Onslaught Knight|Shadowfire Corporal");
 
         // Awaken Lady Fiamme
-        Story.MapItemQuest(8139, "shadowfireplane", 8542, AutoCompleteQuest: false);
+        Story.MapItemQuest(8139, "shadowfireplane", 8542);
         Bot.Sleep(5000);
 
         // Destroy the Barrier
-        if (!Story.QuestProgression(8140))
-        {
-            Core.EnsureAccept(8140);
-            Core.HuntMonster("shadowfireplane", "Shadowfire Summoner", "Shadowfire Summoner Defeated");
-            Core.HuntMonster("shadowfireplane", "Shadow Wing", "Shadow Flamewing Defeated", 2);
-            Story.MapItemQuest(8140, "shadowfireplane", 8543);
-        }
+        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner", "Shadow Wing" });
+        Story.MapItemQuest(8140, "shadowfireplane", 8543);
 
         // Blaze a Path
         Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight", "Shadowfire Corporal" });
@@ -146,7 +141,7 @@ public class WarTraining
         Story.KillQuest(8191, "fireinvasion", "Shadowflame Kyron");
 
         // Fire Fighting
-        Story.KillQuest(8192, "fireinvasion", new[] { "Living Shadowflame|Onslaught Knight|Onslaught Knight|Shadowfire Corporal", "Shadefire Cavalry"});
+        Story.KillQuest(8192, "fireinvasion", new[] { "Living Shadowflame|Onslaught Knight|Onslaught Knight|Shadowfire Corporal", "Shadefire Cavalry" });
 
         // Shadefires of War
         Story.KillQuest(8193, "wartraining", "Simulated Shadefire");
