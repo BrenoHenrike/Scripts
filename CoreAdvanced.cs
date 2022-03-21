@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using RBot;
 using RBot.Items;
 using RBot.Shops;
@@ -35,10 +36,9 @@ public class CoreAdvanced
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
     public void EnhanceItem(string? ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
-        if (ItemName == null)
+        if (string.IsNullOrEmpty(ItemName))
             return;
-        if (ItemName == "")
-            return;
+
         List<InventoryItem> SelectedItem = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => i.Name.ToLower() == ItemName.ToLower() && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapon = SelectedItem.FindAll(i => WeaponCatagories.Contains(i.Category));
         List<InventoryItem> SelectedOther = SelectedItem.FindAll(i => !WeaponCatagories.Contains(i.Category));

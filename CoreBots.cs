@@ -306,6 +306,11 @@ public class CoreBots
         Bot.Player.OpenBank();
         foreach (string item in items)
         {
+            if (Bot.Inventory.IsEquipped(item))
+            {
+                Logger("Can't bank an equipped item");
+                continue;
+            }
             if (Bot.Inventory.Contains(item))
             {
                 Bot.Sleep(ActionDelay);
