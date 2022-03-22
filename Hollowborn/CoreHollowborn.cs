@@ -44,6 +44,7 @@ public class CoreHollowborn
     {
         if (Core.CheckInventory("Fresh Soul", quant))
             return;
+        Core.AddDrop("Fresh Soul", "Unidentified 36");
 
         Farm.Experience(50);
         Core.Logger($"Farming x{quant} Fresh Soul");
@@ -52,6 +53,7 @@ public class CoreHollowborn
             Core.EnsureAccept(7293);
             Core.HuntMonster("ictadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);
             Core.EnsureComplete(7293);
+            Bot.Wait.ForPickup("Fresh Soul");
         }
     }
 }
