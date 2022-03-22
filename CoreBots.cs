@@ -1177,6 +1177,12 @@ public class CoreBots
             JumpWait();
             Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
         }
+
+        while (Bot.Player.Cell != cell)
+        {
+            Jump(cell, pad);
+            Bot.Sleep(ActionDelay);
+        }
         Bot.Wait.ForMapLoad(map.ToLower());
     }
 
