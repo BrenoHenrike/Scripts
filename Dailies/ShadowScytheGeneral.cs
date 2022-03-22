@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreDailies.cs
 using RBot;
 
-public class ShadowScytheClass
+public class ShadowScytheClassDaily
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
