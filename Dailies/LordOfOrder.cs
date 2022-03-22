@@ -68,7 +68,7 @@ public class LordOfOrder
         // Spirit of Justice
         if (!Story.QuestProgression(7157))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7157);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("dwarfprison", "Warden Elfis", "Warden Elfis Detained", isTemp: false);
@@ -76,14 +76,14 @@ public class LordOfOrder
             Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: true);
             Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7157);
             return;
         }
 
         // Purification of Chaos
         if (!Story.QuestProgression(7158))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7158);
             Core.AddDrop("The Supreme Arcane Staff");
 
             Core.EquipClass(ClassType.Solo);
@@ -92,14 +92,14 @@ public class LordOfOrder
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7158);
             return;
         }
 
         // Steadfast Will
         if (!Story.QuestProgression(7159))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7159);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("gaiazor", "Gaiazor", "Gaiazor's Cornerstone", isTemp: false, publicRoom: true);
@@ -108,14 +108,14 @@ public class LordOfOrder
             Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false);
             Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7159);
             return;
         }
 
         // Strike of Order
         if (!Story.QuestProgression(7160))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7160);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
@@ -133,14 +133,14 @@ public class LordOfOrder
                 Core.EnsureComplete(6319);
             }
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7160);
             return;
         }
 
         // Harmony
         if (!Story.QuestProgression(7161))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7161);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("elemental", "Tree of Destiny", "Unity of Life", isTemp: false);
@@ -150,14 +150,14 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("goose", "Queen's ArchSage", "Scroll of Enchantment", isTemp: false);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7161);
             return;
         }
 
         // Ordinance
         if (!Story.QuestProgression(7162))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7162);
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false);
@@ -168,14 +168,14 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("thevoid", "Xyfrag", "Strength of Resilience", isTemp: false);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7162);
             return;
         }
 
         // Axiom
         if (!Story.QuestProgression(7163))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7173);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("elfhame", "Guardian Spirit", "Law of Nature", isTemp: false);
@@ -185,14 +185,14 @@ public class LordOfOrder
             Core.HuntMonster("thunderfang", "Tonitru", "Law of Conservation of Energy", isTemp: false);
             Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7163);
             return;
         }
 
         // Blessing of Order
         if (!Story.QuestProgression(7164))
         {
-            Core.EnsureAccept(7156);
+            Core.EnsureAccept(7164);
 
             Bot.Quests.UpdateQuest(3008);
             Core.SetAchievement(18);
@@ -206,7 +206,7 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false);
 
-            Core.EnsureComplete(7156);
+            Core.EnsureComplete(7164);
             return;
         }
 
