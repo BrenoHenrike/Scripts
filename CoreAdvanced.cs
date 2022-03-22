@@ -661,263 +661,263 @@ public class CoreAdvanced
             EnhanceItem(Class, EnhancementType.Hybrid);
         }
         Core.Equip(SelectedClass.Name);
-        switch (SelectedClass.Name)
+        switch (SelectedClass.Name.ToLower())
         {
             //Lucky - Spiral Carve
-            case "Abyssal Angel":
-            case "Abyssal Angel’s Shadow":
-            case "ArchPaladin":
-            case "Artifact Hunter":
-            case "Assassin":
-            case "BeastMaster":
-            case "Berserker":
-            case "Beta Berserker":
-            case "BladeMaster Assassin":
-            case "BladeMaster":
-            case "Blood Titan":
-            case "CardClasher":
-            case "Chaos Avenger Member Preview":
-            case "Chaos Champion Prime":
-            case "Chaos Slayer":
-            case "Chaos Slayer Berserker":
-            case "Chaos Slayer Cleric":
-            case "Chaos Slayer Mystic":
-            case "Chaos Slayer Thief":
-            case "Chrono Chaorruptor":
-            case "Chrono Commandant":
-            case "ChronoCommander":
-            case "ChronoCorrupter":
-            case "Chunin":
-            case "Classic Alpha Pirate":
-            case "Classic Barber":
-            case "Classic DoomKnight":
-            case "Classic Exalted Soul Cleaver":
-            case "Classic Guardian":
-            case "Classic Legion DoomKnight":
-            case "Classic Paladin":
-            case "Classic Pirate":
-            case "Classic Soul Cleaver":
-            case "Continuum Chronomancer":
-            case "Corrupted Chronomancer":
-            case "Dark Chaos Berserker":
-            case "Dark Harbinger":
-            case "DoomKnight":
-            case "Empyrean Chronomancer":
-            case "Eternal Chronomancer":
-            case "Eternal Inversionist":
-            case "Evolved ClawSuit":
-            case "Evolved Dark Caster":
-            case "Evolved Leprechaun":
-            case "Exalted Harbinger":
-            case "Exalted Soul Cleaver":
-            case "Glacial Warlord":
-            case "Great Thief":
-            case "Immortal Chronomancer":
-            case "Imperial Chunin":
-            case "Infinite Dark Caster":
-            case "Infinite Legion Dark Caster":
-            case "Infinity Titan":
-            case "Legion BladeMaster Assassin":
-            case "Legion DoomKnight":
-            case "Legion Evolved Dark Caster":
-            case "Legion SwordMaster Assassin":
-            case "Leprechaun":
-            case "Lycan":
-            case "Master Ranger":
-            case "MechaJouster":
-            case "Necromancer":
-            case "Ninja":
-            case "Ninja Warrior":
-            case "NOT A MOD":
-            case "Overworld Chronomancer":
-            case "Pinkomancer":
-            case "Prismatic ClawSuit":
-            case "Ranger":
-            case "Renegade":
-            case "Rogue":
-            case "Scarlet Sorceress":
-            case "ShadowScythe General":
-            case "SkyCharged Grenadier":
-            case "SkyGuard Grenadier":
-            case "Soul Cleaver":
-            case "StarLord":
-            case "StoneCrusher":
-            case "SwordMaster Assassin":
-            case "SwordMaster":
-            case "TimeKeeper":
-            case "TimeKiller":
-            case "Timeless Chronomancer":
-            case "Undead Goat":
-            case "Undead Leperchaun":
-            case "UndeadSlayer":
-            case "Underworld Chronomancer":
-            case "Unlucky Leperchaun":
-            case "Void Highlord":
+            case "abyssal angel":
+            case "abyssal angel’s shadow":
+            case "archpaladin":
+            case "artifact hunter":
+            case "assassin":
+            case "beastmaster":
+            case "berserker":
+            case "beta berserker":
+            case "blademaster assassin":
+            case "blademaster":
+            case "blood titan":
+            case "cardclasher":
+            case "chaos avenger member preview":
+            case "chaos champion prime":
+            case "chaos slayer":
+            case "chaos slayer berserker":
+            case "chaos slayer cleric":
+            case "chaos slayer mystic":
+            case "chaos slayer thief":
+            case "chrono chaorruptor":
+            case "chrono commandant":
+            case "chronocommander":
+            case "chronocorrupter":
+            case "chunin":
+            case "classic alpha pirate":
+            case "classic barber":
+            case "classic doomknight":
+            case "classic exalted soul cleaver":
+            case "classic guardian":
+            case "classic legion doomknight":
+            case "classic paladin":
+            case "classic pirate":
+            case "classic soul cleaver":
+            case "continuum chronomancer":
+            case "corrupted chronomancer":
+            case "dark chaos berserker":
+            case "dark harbinger":
+            case "doomknight":
+            case "empyrean chronomancer":
+            case "eternal chronomancer":
+            case "eternal inversionist":
+            case "evolved clawsuit":
+            case "evolved dark caster":
+            case "evolved leprechaun":
+            case "exalted harbinger":
+            case "exalted soul cleaver":
+            case "glacial warlord":
+            case "great thief":
+            case "immortal chronomancer":
+            case "imperial chunin":
+            case "infinite dark caster":
+            case "infinite legion dark caster":
+            case "infinity titan":
+            case "legion blademaster assassin":
+            case "legion doomknight":
+            case "legion evolved dark caster":
+            case "legion swordmaster assassin":
+            case "leprechaun":
+            case "lycan":
+            case "master ranger":
+            case "mechajouster":
+            case "necromancer":
+            case "ninja":
+            case "ninja warrior":
+            case "not a mod":
+            case "overworld chronomancer":
+            case "pinkomancer":
+            case "prismatic clawsuit":
+            case "ranger":
+            case "renegade":
+            case "rogue":
+            case "scarlet sorceress":
+            case "shadowscythe general":
+            case "skycharged grenadier":
+            case "skyguard grenadier":
+            case "soul cleaver":
+            case "starlord":
+            case "stonecrusher":
+            case "swordmaster assassin":
+            case "swordmaster":
+            case "timekeeper":
+            case "timekiller":
+            case "timeless chronomancer":
+            case "undead goat":
+            case "undead leperchaun":
+            case "undeadslayer":
+            case "underworld chronomancer":
+            case "unlucky leperchaun":
+            case "void highlord":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
                 break;
             //Lucky - Mana Vamp
-            case "Alpha DOOMmega":
-            case "Alpha Omega":
-            case "Alpha Pirate":
-            case "Beast Warrior":
-            case "Blood Ancient":
-            case "Chaos Avenger":
-            case "Chaos Shaper":
-            case "Classic Defender":
-            case "ClawSuit":
-            case "Cryomancer Mini Pet Coming Soon":
-            case "Dark Legendary Hero":
-            case "Dark Ultra OmniNight":
-            case "DoomKnight OverLord":
-            case "Dragonslayer General":
-            case "Drakel Warlord":
-            case "Glacial Berserker Test":
-            case "Heroic Naval Commander":
-            case "Legendary Elemental Warrior":
-            case "Horc Evader":
-            case "Legendary Hero":
-            case "Legendary Naval Commander":
-            case "Legion DoomKnight Tester":
-            case "Legion Revenant Member Test":
-            case "Naval Commander":
-            case "Paladin High Lord":
-            case "Paladin":
-            case "PaladinSlayer":
-            case "Pirate":
-            case "Pumpkin Lord":
-            case "ShadowFlame DragonLord":
-            case "ShadowStalker of Time":
-            case "ShadowWalker of Time":
-            case "ShadowWeaver of Time":
-            case "Silver Paladin":
-            case "Thief of Hours":
-            case "Ultra Elemental Warrior":
-            case "Ultra OmniKnight":
-            case "Void Highlord Tester":
-            case "Warlord":
-            case "Warrior":
-            case "WarriorScythe General":
+            case "alpha doommega":
+            case "alpha omega":
+            case "alpha pirate":
+            case "beast warrior":
+            case "blood ancient":
+            case "chaos avenger":
+            case "chaos shaper":
+            case "classic defender":
+            case "clawsuit":
+            case "cryomancer mini pet coming soon":
+            case "dark legendary hero":
+            case "dark ultra omninight":
+            case "doomknight overlord":
+            case "dragonslayer general":
+            case "drakel warlord":
+            case "glacial berserker test":
+            case "heroic naval commander":
+            case "legendary elemental warrior":
+            case "horc evader":
+            case "legendary hero":
+            case "legendary naval commander":
+            case "legion doomknight tester":
+            case "legion revenant member test":
+            case "naval commander":
+            case "paladin high lord":
+            case "paladin":
+            case "paladinslayer":
+            case "pirate":
+            case "pumpkin lord":
+            case "shadowflame dragonlord":
+            case "shadowstalker of time":
+            case "shadowwalker of time":
+            case "shadowweaver of time":
+            case "silver paladin":
+            case "thief of hours":
+            case "ultra elemental warrior":
+            case "ultra omniknight":
+            case "void highlord tester":
+            case "warlord":
+            case "warrior":
+            case "warriorscythe general":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
                 break;
             //Lucky - Awe Blast
-            case "Arachnomancer":
-            case "Bard":
-            case "Chrono Assassin":
-            case "Chronomancer":
-            case "Chronomancer Prime":
-            case "Dark Metal Necro":
-            case "DeathKnight Lord":
-            case "Dragon Shinobi":
-            case "Dragonlord":
-            case "Evolved Pumpkin Lord":
-            case "DragonSoul Shinobi":
-            case "Glacial Berserker":
-            case "Grunge Rocker":
-            case "Guardian":
-            case "Heavy Metal Necro":
-            case "Heavy Metal Rockstar":
-            case "Hobo Highlord":
-            case "Lord Of Order":
-            case "Nechronomancer":
-            case "Necrotic Chronomancer":
-            case "No Class":
-            case "Nu Metal Necro":
-            case "Obsidian No Class":
-            case "Oracle":
-            case "ProtoSartorium":
-            case "Shadow Dragon Shinobi":
-            case "Shadow Ripper":
-            case "Shadow Rocker":
-            case "Star Captain":
-            case "Troubador of Love":
-            case "Unchained Rocker":
-            case "Unchained Rockstar":
-            case "Yami no Ronin":
+            case "arachnomancer":
+            case "bard":
+            case "chrono assassin":
+            case "chronomancer":
+            case "chronomancer prime":
+            case "dark metal necro":
+            case "deathknight lord":
+            case "dragon shinobi":
+            case "dragonlord":
+            case "evolved pumpkin lord":
+            case "dragonsoul shinobi":
+            case "glacial berserker":
+            case "grunge rocker":
+            case "guardian":
+            case "heavy metal necro":
+            case "heavy metal rockstar":
+            case "hobo highlord":
+            case "lord of order":
+            case "nechronomancer":
+            case "necrotic chronomancer":
+            case "no class":
+            case "nu metal necro":
+            case "obsidian no class":
+            case "oracle":
+            case "protosartorium":
+            case "shadow dragon shinobi":
+            case "shadow ripper":
+            case "shadow rocker":
+            case "star captain":
+            case "troubador of love":
+            case "unchained rocker":
+            case "unchained rockstar":
+            case "yami no ronin":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
                 break;
             //Lucky - Health Vamp
-            case "ArchFiend":
-            case "Barber":
-            case "Classic DragonLord":
-            case "Dragonslayer":
-            case "Enchanted Vampire Lord":
-            case "Enforcer":
-            case "Flame Dragon Warrior":
-            case "Royal Vampire Lord":
-            case "Rustbucket":
-            case "Sentinel":
-            case "Vampire":
-            case "Vampire Lord":
+            case "archfiend":
+            case "barber":
+            case "classic dragonlord":
+            case "dragonslayer":
+            case "enchanted vampire lord":
+            case "enforcer":
+            case "flame dragon warrior":
+            case "royal vampire lord":
+            case "rustbucket":
+            case "sentinel":
+            case "vampire":
+            case "vampire lord":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
                 break;
             //Wizard - Awe Blast
-            case "Acolyte":
-            case "Arcane Dark Caster":
-            case "BattleMage":
-            case "BattleMage of Love":
-            case "Blaze Binder":
-            case "Blood Sorceress":
-            case "Dark BattleMage":
-            case "Dark Master of Moglins":
-            case "Dragon Knight":
-            case "FireLord Summoner":
-            case "Grim Necromancer":
-            case "Healer":
-            case "HighSeas Commander":
-            case "Infinity Knight":
-            case "Interstellar Knight":
-            case "Master of Moglins":
-            case "Mystical Dark Caster":
-            case "Northlands Monk":
-            case "Royal BattleMage":
-            case "Timeless Dark Caster":
-            case "Witch":
+            case "acolyte":
+            case "arcane dark caster":
+            case "battlemage":
+            case "battlemage of love":
+            case "blaze binder":
+            case "blood sorceress":
+            case "dark battlemage":
+            case "dark master of moglins":
+            case "dragon knight":
+            case "firelord summoner":
+            case "grim necromancer":
+            case "healer":
+            case "highseas commander":
+            case "infinity knight":
+            case "interstellar knight":
+            case "master of moglins":
+            case "mystical dark caster":
+            case "northlands monk":
+            case "royal battlemage":
+            case "timeless dark caster":
+            case "witch":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
                 break;
             //Wizard - Spiral Carve
-            case "Chrono DataKnight":
-            case "Chrono DragonKnight":
-            case "Cryomancer":
-            case "Dark Caster":
-            case "Dark Cryomancer":
-            case "Dark Lord":
-            case "Darkblood StormKing":
-            case "Darkside":
-            case "Defender":
-            case "Frost SpiritReaver":
-            case "Immortal Dark Caster":
-            case "Legion Paladin":
-            case "Legion Revenant":
-            case "LightCaster":
-            case "Pink Romancer":
-            case "Psionic MindBreaker":
-            case "Pyromancer":
-            case "Sakura Cryomancer":
-            case "Troll Spellsmith":
+            case "chrono dataknight":
+            case "chrono dragonknight":
+            case "cryomancer":
+            case "dark caster":
+            case "dark cryomancer":
+            case "dark lord":
+            case "darkblood stormking":
+            case "darkside":
+            case "defender":
+            case "frost spiritreaver":
+            case "immortal dark caster":
+            case "legion paladin":
+            case "legion revenant":
+            case "lightcaster":
+            case "pink romancer":
+            case "psionic mindbreaker":
+            case "pyromancer":
+            case "sakura cryomancer":
+            case "troll spellsmith":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
                 break;
             //Wizard - Health Vamp
-            case "Daimon":
-            case "Evolved Shaman":
-            case "LightMage":
-            case "MindBreaker":
-            case "Shaman":
-            case "Vindicator of They":
-            case "Elemental Dracomancer":
-            case "LightCaster Test":
-            case "Love Caster":
-            case "Mage":
-            case "Sorcerer":
-            case "The Collector":
+            case "daimon":
+            case "evolved shaman":
+            case "lightmage":
+            case "mindbreaker":
+            case "shaman":
+            case "vindicator of they":
+            case "elemental dracomancer":
+            case "lightcaster test":
+            case "love caster":
+            case "mage":
+            case "sorcerer":
+            case "the collector":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
                 break;
             //Fighter - Awe Blast
-            case "DeathKnight":
-            case "Frostval Barbarian":
+            case "deathknight":
+            case "frostval barbarian":
                 EnhanceEquipped(EnhancementType.Fighter, WeaponSpecial.Awe_Blast);
                 break;
             //Healer - Health Vamp
-            case "Dragon of Time":
+            case "dragon of time":
                 EnhanceEquipped(EnhancementType.Healer, WeaponSpecial.Health_Vamp);
                 break;
             default:
