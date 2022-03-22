@@ -850,7 +850,7 @@ public class CoreBots
             Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
 
         if (ultra)
-            KillMonster("mirrorportal", "r6", "Right", "Ultra Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
+            KillMonster("mirrorportal", "r6", "Right", "Ultra Xiang", item, quant, isTemp, true, publicRoom);
         else
             KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
     }
