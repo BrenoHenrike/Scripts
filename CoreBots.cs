@@ -284,11 +284,6 @@ public class CoreBots
                 Bot.Sleep(ActionDelay);
                 if (Bot.Inventory.FreeSlots == 0)
                     Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: false);
-                if (Bot.Inventory.IsEquipped(item))
-                {
-                    Logger("Can't bank an equipped item");
-                    continue;
-                }
                 int i = 0;
                 while (!Bot.Inventory.Contains(item))
                 {
