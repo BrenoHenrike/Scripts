@@ -1,0 +1,205 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Story/CitadelRuins.cs
+//cs_include Scripts/Story/LivingDungeon.cs
+//cs_include Scripts/Story/DragonFableOrgins.cs
+using RBot;
+
+public class LordOfOrder
+{
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new();
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+    public CitadelRuins CR = new();
+    public LivingDungeon LD = new();
+    public DragonFableOrigins DFO = new();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        GetLoO();
+
+        Core.SetOptions(false);
+    }
+
+    public void GetLoO(bool rankUpClass = true)
+    {
+        if (Core.CheckInventory("Lord Of Order"))
+            return;
+
+        Core.Logger("Daily: Lord Of Order Class");
+        if (Bot.Quests.IsDailyComplete(7156))
+        {
+            Core.Logger("Daily Quest unavailable right now");
+            return;
+        }
+
+        // Heart of Servitude
+        if (!Story.QuestProgression(7156))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("watchtower", "Chaorrupted Knight", "Pristine Blades of Order", isTemp: false);
+            Core.BuyItem("dreadrock", 1221, "Dreadrock Donation Receipt");
+            Core.HuntMonster("deadmoor", "Banshee Mallora", "Deadmoor Spirits Helped", isTemp: false);
+            CR.DoAll();
+            if (!Core.CheckInventory("Mage's Gratitude"))
+            {
+                Core.AddDrop("Mage's Gratitude");
+                Core.EnsureAccept(6182);
+                Core.HuntMonster("citadelruins", "Enn'tröpy", "Enn'tröpy Defeated", isTemp: true);
+                Core.EnsureComplete(6182);
+            }
+            Core.BuyItem("ravenscar", 614, "Ravenscar's Truth");
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Spirit of Justice
+        if (!Story.QuestProgression(7157))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("dwarfprison", "Warden Elfis", "Warden Elfis Detained", isTemp: false);
+            Core.HuntMonster("prison", "Piggy Drake", "Piggy Drake Punished", isTemp: false);
+            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: true);
+            Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Purification of Chaos
+        if (!Story.QuestProgression(7158))
+        {
+            Core.EnsureAccept(7156);
+            Core.AddDrop("The Supreme Arcane Staff");
+
+            Core.HuntMonster("ledgermayne", "Ledgermayne", "Chaoroot", 15, false);
+            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
+            Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);
+            Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Steadfast Will
+        if (!Story.QuestProgression(7159))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("gaiazor", "Gaiazor", "Gaiazor's Cornerstone", isTemp: false, publicRoom: true);
+            LD.LivingDungeonStory();
+            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: true);
+            Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false);
+            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Strike of Order
+        if (!Story.QuestProgression(7160))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
+            Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: true);
+            if (!Core.CheckInventory("Safiria's Spirit Orb"))
+                Core.GetMapItem(5470, 1, "maxius");
+            DFO.DragonFableOriginsAll();
+            if (!Core.CheckInventory("Ice Katana"))
+            {
+                Core.AddDrop("Ice Katana");
+                Core.EnsureAccept(6319);
+                Core.HuntMonster("drakonnan", "Living Fire", "Inferno Heart");
+                Core.EnsureComplete(6319);
+            }
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Harmony
+        if (!Story.QuestProgression(7161))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("elemental", "Tree of Destiny", "Unity of Life", isTemp: false);
+            Core.HuntMonster("orchestra", "Faust", "Harmony of Solace", isTemp: false);
+            Core.HuntMonster("cathedral", "Pactagonal Knight", "Teamwork Observed", 100, false);
+            Core.HuntMonster("goose", "Queen's ArchSage", "Scroll of Enchantment", isTemp: false);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Ordinance
+        if (!Story.QuestProgression(7162))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false);
+            Core.HuntMonster("wardwarf", "Drow Assassin|Drow Soldier", "Suppressed Drows", 50, false);
+            Core.HuntMonster("warundead", "Skeletal Fire Mage|Undead Mage|Skeleton", "Suppressed Undead", 50, false);
+            Core.HuntMonster("warhorc", "Horc Warrior", "Suppressed Horcs", 50, false);
+            Core.HuntMonster("weaverwar", "Weaver Queen's Hound", "Suppressed Weavers", 50, false);
+            Core.HuntMonster("thevoid", "Xyfrag", "Strength of Resilience", isTemp: false);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Axiom
+        if (!Story.QuestProgression(7163))
+        {
+            Core.EnsureAccept(7156);
+
+            Core.HuntMonster("elfhame", "Guardian Spirit", "Law of Nature", isTemp: false);
+            Core.HuntMonster("deepchaos", "Kathool", "Law of Time", isTemp: false);
+            Core.HuntMonster("necrocavern", "Shadowstone Support", "Law of Gravity", isTemp: false);
+            Core.HuntMonster("blackholesun", "Reflecteract", "Law of Relativity", isTemp: false);
+            Core.HuntMonster("thunderfang", "Tonitru", "Law of Conservation of Energy", isTemp: false);
+            Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // Blessing of Order
+        if (!Story.QuestProgression(7164))
+        {
+            Core.EnsureAccept(7156);
+
+            Bot.Quests.UpdateQuest(3008);
+            Core.SetAchievement(18);
+            Bot.Quests.UpdateQuest(3004);
+
+            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
+            Farm.FishingREP(7);
+            Core.BuyItem("greenguardwest", 363, "Lure of Order");
+            Core.KillXiang("Quixotic Mana Essence", 10, true, false, true);
+            Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false);
+
+            Core.EnsureComplete(7156);
+            return;
+        }
+
+        // The Final Challenge
+        Core.AddDrop("Lord of Order");
+        Core.EnsureAccept(7165);
+        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: true);
+        Core.EnsureComplete(7165);
+
+        if (rankUpClass)
+            Adv.rankUpClass("Lord Of Order");
+    }
+}
