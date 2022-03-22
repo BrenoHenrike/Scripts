@@ -842,7 +842,7 @@ public class CoreBots
         }
     }
 
-    public void KillXiang(string? item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
+    public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool publicRoom = false)
     {
         if (item != null && CheckInventory(item, quant))
             return;
@@ -854,7 +854,10 @@ public class CoreBots
         else if (CheckInventory("Healer"))
             Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
 
-        KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
+        if (ultra)
+            KillMonster("mirrorportal", "r6", "Right", "Ultra Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
+        else
+            KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
     }
     #endregion
 
