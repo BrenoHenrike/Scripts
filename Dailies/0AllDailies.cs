@@ -50,6 +50,9 @@ public class FarmAllDailys
         Daily.FungiforaFunGuy();
         Daily.MineCrafting();
         Daily.HardCoreMetals();
+        Daily.MonthlyTreasureChestKeys();
+        Daily.WheelofDoom();
+        Daily.FreeDailyBoost();
 
         Core.Logger("Dailies completed");
     }
