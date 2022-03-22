@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
@@ -28,7 +28,7 @@ public class AscendedDrakathGear
 
     public void GetAll()
     {
-        if (Core.CheckInventory(new[] {"Ascended Blade of Awe", "Ascended Light of Destiny", "Ascended Face of Chaos"}))
+        if (Core.CheckInventory(new[] { "Ascended Blade of Awe", "Ascended Light of Destiny", "Ascended Face of Chaos" }))
             return;
 
         Core.AddDrop("Ascended Blade of Awe", "Ascended Light of Destiny", "Ascended Face of Chaos");

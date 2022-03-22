@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
@@ -25,7 +25,7 @@ public class project
     /// Enhances all non-leveled/non-user-level level enhanced items
     /// </summary>
     /// <param name="bank">Wether the bot should bank the enhanced items True/False, false by default</param>
-    public void Enhance(bool bank =false)
+    public void Enhance(bool bank = false)
     {
         List<string> InventoryItems = Bot.Inventory.Items.FindAll(x => x.EnhancementLevel < Bot.Player.Level && (x.ItemGroup != "None" && x.ItemGroup != "am" && x.ItemGroup != "co" && x.ItemGroup != "pe")).Select(x => x.Name).ToList();
         // List<string> BankItems = Bot.Bank.BankItems.FindAll(x => x.EnhancementLevel < Bot.Player.Level && (x.ItemGroup != "None" && x.ItemGroup != "am" && x.ItemGroup != "co" && x.ItemGroup != "pe")).Select(x => x.Name).ToList();

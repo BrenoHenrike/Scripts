@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Story/XansLair.cs
 using RBot;

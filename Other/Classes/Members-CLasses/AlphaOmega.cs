@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
@@ -30,7 +30,7 @@ public class AlphaOmega
     {
         if (Core.CheckInventory("Alpha Omega") || !Core.IsMember)
             return;
-            
+
         if (!Core.CheckInventory("Combat Trophy", 300))
             Farm.BludrutBrawlBoss("Combat Trophy", 300, false); // Change to true if u can solo the boss.
         Core.BuyItem("digitalmain", 561, "Alpha Omega");

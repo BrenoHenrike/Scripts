@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
