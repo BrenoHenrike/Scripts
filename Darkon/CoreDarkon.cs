@@ -54,8 +54,6 @@ public class CoreDarkon
             {
                 while (Bot.Player.Cell != "r5")
                 {
-
-
                     Core.Jump("r5", "Left");
                     Bot.Sleep(Core.ActionDelay);
                 }
