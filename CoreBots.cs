@@ -282,10 +282,19 @@ public class CoreBots
             if (Bot.Bank.Contains(item))
             {
                 Bot.Sleep(ActionDelay);
+                if (Bot.Inventory.FreeSlots == 0)
+                    Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: false);
+                int i = 0;
                 while (!Bot.Inventory.Contains(item))
                 {
                     Bot.Bank.ToInventory(item);
                     Bot.Wait.ForBankToInventory(item);
+                    i++;
+                    if (i == 30)
+                    {
+                        Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                        break;
+                    }
                     Bot.Sleep(ActionDelay);
                 }
                 Logger($"{item} moved from bank");
@@ -1167,6 +1176,12 @@ public class CoreBots
         {
             JumpWait();
             Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+        }
+
+        while (Bot.Player.Cell != cell)
+        {
+            Jump(cell, pad);
+            Bot.Sleep(ActionDelay);
         }
         Bot.Wait.ForMapLoad(map.ToLower());
     }

@@ -183,8 +183,6 @@ public class DoomwoodPart3
         // Signal Flare
         Story.KillQuest(7640, "techfortress", "NecroDrone");
         Story.MapItemQuest(7640, "techfortress", 7561);
-        // Medal Time
-        Story.KillQuest(7641, "techfortress", "NecroMech");
         // Hidden Data
         Story.KillQuest(7642, "techfortress", "NecroMech");
         // Pass the CPU
