@@ -284,10 +284,17 @@ public class CoreBots
                 Bot.Sleep(ActionDelay);
                 if (Bot.Inventory.FreeSlots == 0)
                     Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: false);
+                int i = 0;
                 while (!Bot.Inventory.Contains(item))
                 {
                     Bot.Bank.ToInventory(item);
                     Bot.Wait.ForBankToInventory(item);
+                    i++;
+                    if (i == 30)
+                    {
+                        Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                        break;
+                    }
                     Bot.Sleep(ActionDelay);
                 }
                 Logger($"{item} moved from bank");
