@@ -817,7 +817,7 @@ public class CoreAdvanced
             case "Heavy Metal Necro":
             case "Heavy Metal Rockstar":
             case "Hobo Highlord":
-            case "Lord of Order":
+            case "Lord Of Order":
             case "Nechronomancer":
             case "Necrotic Chronomancer":
             case "No Class":
