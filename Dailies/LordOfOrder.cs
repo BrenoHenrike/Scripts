@@ -2,9 +2,10 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Story/CitadelRuins.cs
 //cs_include Scripts/Story/LivingDungeon.cs
-//cs_include Scripts/Story/DragonFableOrgins.cs
+//cs_include Scripts/Story/DragonFableOrigins.cs
 using RBot;
 
 public class LordOfOrder
@@ -38,6 +39,8 @@ public class LordOfOrder
             Core.Logger("Daily Quest unavailable right now");
             return;
         }
+
+        Story.PreLoad();
 
         // Heart of Servitude
         if (!Story.QuestProgression(7156))
