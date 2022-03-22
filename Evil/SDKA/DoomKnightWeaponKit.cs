@@ -1,6 +1,6 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using RBot;
 public class DoomKnightWeaponKit
@@ -12,7 +12,7 @@ public class DoomKnightWeaponKit
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        
+
         SDKA.DoomKnightWK("Ominous Aura", 10000);
 
         Core.SetOptions(false);

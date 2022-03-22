@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
@@ -59,7 +59,7 @@ public class DragonslayerGeneral
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
 
         Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
-        
+
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
             Core.EnsureAccept(5294);

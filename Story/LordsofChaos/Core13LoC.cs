@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using RBot;
 
 public class Core13LoC
@@ -1852,20 +1853,14 @@ public class Core13LoC
         //Horror Takes Flight
         Story.KillQuest(3188, "mirrorportal", "Chaos Harpy");
 
-        //Good, Evil and Chaos Battle!]
-        string ClassReAfter = Bot.Inventory.CurrentClass.Name;
-
+        //Good, Evil and Chaos Battle!
         if (!Story.QuestProgression(3189))
         {
-            Core.Join("mirrorportal", "r4", "Left");
-            if (Core.CheckInventory("Void Highlord"))
-                Bot.Skills.StartAdvanced("Void Highlord", true, RBot.Skills.ClassUseMode.Def);
-            if (Core.CheckInventory("Healer"))
-                Bot.Skills.StartAdvanced("Healer", true, RBot.Skills.ClassUseMode.Base);
-            Core.Join("mirrorportal", "r4", "Left");
-            Story.KillQuest(3189, "mirrorportal", "Chaos Lord Xiang");
-            Bot.Sleep(Core.ActionDelay);
-            Core.Equip(ClassReAfter);
+            Adv.GearStore();
+            Core.EnsureAccept(3189);
+            Core.KillXiang("Chaos Lord Xiang Defeated", publicRoom: true);
+            Core.EnsureComplete(3189);
+            Adv.GearStore(true);
         }
     }
 

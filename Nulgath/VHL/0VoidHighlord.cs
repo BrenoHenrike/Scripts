@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Nulgath/AssistingCragAndBamboozle.cs
 //cs_include Scripts/Nulgath/VHL/CoreVHL.cs

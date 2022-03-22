@@ -8,7 +8,7 @@
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailys.cs
+//cs_include Scripts/CoreDailies.cs
 using RBot;
 
 public class CoreHollowbornPaladin

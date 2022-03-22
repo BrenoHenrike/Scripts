@@ -2,7 +2,8 @@
 using RBot.Items;
 using RBot.Shops;
 using RBot.Quests;
-public class CoreDailys
+
+public class CoreDailies
 {
     // [Can Change] Default metals to be acquired by MineCrafting quest
     public string[] MineCraftingMetals = { "Barium", "Copper", "Silver" };
@@ -10,7 +11,6 @@ public class CoreDailys
     public string[] HardCoreMetalsMetals = { "Arsenic", "Chromium", "Rhodium" };
 
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
 
     public void DoAllDailys()
