@@ -175,7 +175,7 @@ public class LordOfOrder
         // Axiom
         if (!Story.QuestProgression(7163))
         {
-            Core.EnsureAccept(7173);
+            Core.EnsureAccept(7163);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("elfhame", "Guardian Spirit", "Law of Nature", isTemp: false);
