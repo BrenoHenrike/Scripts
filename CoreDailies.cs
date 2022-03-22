@@ -497,7 +497,13 @@ public class CoreDailies
             Core.ChainComplete(3076);
 
         Bot.Wait.ForPickup("*");
-        Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
+
+        string[] Array = Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray();
+        if (Array.Length == 0)
+            return;
+
+        Core.Logger("New items: " + string.Join(" | ", Array));
+        Core.ToBank(Array);
     }
 
     public void FreeDailyBoost()
