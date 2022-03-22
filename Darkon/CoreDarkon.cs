@@ -53,7 +53,12 @@ public class CoreDarkon
             if (Bot.Map.Name == "doomvault")
             {
                 while (Bot.Player.Cell != "r5")
+                {
+
+
                     Core.Jump("r5", "Left");
+                    Bot.Sleep(Core.ActionDelay);
+                }
                 if (Bot.Map.CellPlayers.Count >= 3)
                     EnoughPeople = true;
                 else EnoughPeople = false;
