@@ -12,7 +12,7 @@ public class BrightOak
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
-    public CoreDailys Dailys = new CoreDailys();
+    public CoreDailies Daily = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -339,7 +339,7 @@ public class BrightOak
                 }
                 Core.EnsureAccept(4806);
                 if (!Core.CheckInventory("Sparrow's Blood"))
-                    Dailys.SparrowsBlood();
+                    Daily.SparrowsBlood();
                 Core.EnsureComplete(4806);
                 Bot.Wait.ForPickup("Lapis Token II");
             }
@@ -378,7 +378,7 @@ public class BrightOak
             return;
 
         // Catering to Craftsmanship
-        if (Dailys.CheckDaily(4471))
+        if (Daily.CheckDaily(4471))
         {
             Core.EnsureAccept(4471);
             Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
@@ -387,7 +387,7 @@ public class BrightOak
         }
 
         // Some Disassembly Required   
-        if (Dailys.CheckDaily(4472))
+        if (Daily.CheckDaily(4472))
         {
             Core.EnsureAccept(4472);
             Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);

@@ -16,7 +16,7 @@ public class FrostvalBarbarian
     public CoreAdvanced Adv = new CoreAdvanced();
     public Frostvale Frostvale = new Frostvale();
     public GlaceraStory Glacera = new GlaceraStory();
-    public CoreDailys Daily = new CoreDailys();
+    public CoreDailies Daily = new();
 
     public void ScriptMain(ScriptInterface bot)
     {

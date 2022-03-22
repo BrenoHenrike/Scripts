@@ -5,7 +5,7 @@ public class CoreBLOD
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
+    public CoreDailies Daily = new();
     public CoreStory Story = new CoreStory();
 
     public string[] BLoDItems =
@@ -281,7 +281,7 @@ public class CoreBLOD
                     Core.Logger("Farming for Celestial Copper");
                     Core.EnsureAccept(2107);
                     Farm.BattleUnderB("Undead Energy", 25);
-                    Dailys.MineCrafting(new[] { "Copper" });
+                    Daily.MineCrafting(new[] { "Copper" });
                     if (!Core.CheckInventory("Copper"))
                         Core.Logger("Can't complete Celestial Copper Enchantment (Missing Copper).", messageBox: true, stopBot: true);
                     SpiritOrb(5);
@@ -345,7 +345,7 @@ public class CoreBLOD
                     Core.Logger("Farming for Sanctified Silver");
                     Core.EnsureAccept(2108);
                     Farm.BattleUnderB("Undead Energy", 25);
-                    Dailys.MineCrafting(new[] { "Silver" });
+                    Daily.MineCrafting(new[] { "Silver" });
                     if (!Core.CheckInventory("Silver"))
                         Core.Logger("Can't complete Sanctified Silver Enchantment (Missing Silver).", messageBox: true, stopBot: true);
                     UltimateWK("Spirit Orb", 5);
@@ -404,7 +404,7 @@ public class CoreBLOD
                     Core.Logger("Farming for Blessed Barium");
                     Core.EnsureAccept(2104);
                     Farm.BattleUnderB("Undead Energy", 25);
-                    Dailys.MineCrafting(new[] { "Barium" });
+                    Daily.MineCrafting(new[] { "Barium" });
                     if (!Core.CheckInventory("Barium"))
                         Core.Logger("Can't complete Sanctified Barium Enchantment (Missing Barium).", messageBox: true, stopBot: true);
                     UltimateWK("Spirit Orb", 5);

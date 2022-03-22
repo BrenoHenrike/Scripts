@@ -9,7 +9,7 @@ public class CoreSDKA
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
+    public CoreDailies Daily = new();
     public string[] SDKAItems =
     {
         "Sepulchure's DoomKnight Armor",
@@ -115,7 +115,7 @@ public class CoreSDKA
         if (!Bot.Quests.IsUnlocked(2089))
         {
             Core.Logger("Toiling with Terror [2088]");
-            Dailys.EldersBlood();
+            Daily.EldersBlood();
             if (!Core.CheckInventory("Elders' Blood"))
                 Core.Logger("No Elders' Blood available.", messageBox: true, stopBot: true);
             Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
@@ -326,7 +326,7 @@ public class CoreSDKA
                     Core.Logger("Farming for Accursed Arsenic");
                     Core.EnsureAccept(2110);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
-                    Dailys.HardCoreMetals(new[] { "Arsenic" });
+                    Daily.HardCoreMetals(new[] { "Arsenic" });
                     if (!Core.CheckInventory("Arsenic"))
                         Core.Logger("Can't complete Accursed Arsenic Hex (Missing Arsenic).", messageBox: true, stopBot: true);
                     DSO(6);
@@ -384,7 +384,7 @@ public class CoreSDKA
                     Core.Logger("Farming for Calamitous Chromium");
                     Core.EnsureAccept(2112);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
-                    Dailys.HardCoreMetals(new[] { "Chromium" });
+                    Daily.HardCoreMetals(new[] { "Chromium" });
                     if (!Core.CheckInventory("Chromium"))
                         Core.Logger("Can't complete Calamitous Chromium Hex (Missing Chromium).", messageBox: true, stopBot: true);
                     DSO(6);
@@ -445,7 +445,7 @@ public class CoreSDKA
                     Core.Logger("Farming for Reprehensible Rhodium");
                     Core.EnsureAccept(2114);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
-                    Dailys.HardCoreMetals(new[] { "Rhodium" });
+                    Daily.HardCoreMetals(new[] { "Rhodium" });
                     if (!Core.CheckInventory("Rhodium"))
                         Core.Logger("Can't complete Reprehensible Rhodium Hex (Missing Rhodium).", messageBox: true, stopBot: true);
                     DSO(6);

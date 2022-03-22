@@ -15,7 +15,7 @@ public class AlphaPirate
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
-    public CoreDailys Dailys = new CoreDailys();
+    public CoreDailies Daily = new();
 
     public void ScriptMain(ScriptInterface bot)
     {

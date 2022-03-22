@@ -12,7 +12,7 @@ public class DrakathArmorBot
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Daily = new CoreDailys();
+    public CoreDailies Daily = new();
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
     public CoreNulgath Nulgath = new CoreNulgath();

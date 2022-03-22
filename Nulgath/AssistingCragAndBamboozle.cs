@@ -9,7 +9,7 @@ public class AssistingCragAndBamboozle
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreDailys Daily = new CoreDailys();
+    public CoreDailies Daily = new();
     public CoreNulgath Nulgath = new CoreNulgath();
 
     public void ScriptMain(ScriptInterface bot)
