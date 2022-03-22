@@ -1,15 +1,76 @@
 - ##### Versions
+  - [v3.1 - Latest](#v31)
   - [v3.0](#v30)
-    - [v3.0.1 - Latest](#v301)
+    - [v3.0.1](#v301)
   - [v2.0 till 2.29](Changelog_Archive_v2.md)
+
+### v3.1
+**Released on Mar 22, 2022 at 19:50 / 07:50 PM (UTC)**  
+· Released DarkWarNationMerge(VariousMaterials) (Vladimir)  
+· Released DarkWarLegionMerge(VariousMaterials) (Vladimir)  
+· Released InventoryEnhancer (Tato)  
+· Released LordOfOrder (Exelot)  
+· Sliced from CoreDailes => BeastMasterChallenge\[Mem\] (Exelot)  
+· Sliced from CoreDailes => BrightKnightArmor (Exelot)  
+· Sliced from CoreDailes => Cryomancer (Exelot)  
+· Sliced from CoreDailes => CryptoToken (Exelot)  
+· Sliced from CoreDailes => CyserosSuperHammer (Exelot)  
+· Sliced from CoreDailes => DagesScrollFragment (Exelot)  
+· Sliced from CoreDailes => DeathKnightLord\[Mem\] (Exelot)  
+· Sliced from CoreDailes => EldersBlood (Exelot)  
+· Sliced from CoreDailes => FreeDailyBoost\[Mem\] (Exelot)  
+· Sliced from CoreDailes => FungiforaFunGuy\[Mem\] (Exelot)  
+· Sliced from CoreDailes => GrumbleGrumble (Exelot)  
+· Sliced from CoreDailes => HardCoreMetals\[Mem\] (Exelot)  
+· Sliced from CoreDailes => MadWeaponSmith (Exelot)  
+· Sliced from CoreDailes => MineCrafting (Exelot)  
+· Sliced from CoreDailes => MonthlyTreasureChestKeys\[Mem\] (Exelot)  
+· Sliced from CoreDailes => Pyromancer (Exelot)  
+· Sliced from CoreDailes => ShadowScytheGeneral (Exelot)  
+· Sliced from CoreDailes => ShadowShroud (Exelot)  
+· Sliced from CoreDailes => SparrowsBlood (Exelot)  
+· Sliced from CoreDailes => TheCollector (Exelot)  
+· Sliced from CoreDailes => WheelofDoom (Exelot)  
+· Renamed CoreDailys to CoreDailies  
+· Moved and renamed DoAllDailys to Dailies\0AllDailies  
+· Changed FireChampionsArmor => VoidScale's BestGear to Chaos instead of Dragonkin  
+· Changed DragonslayerGeneral => EnchantedScaleandClaw's logging system so it doesnt spam  
+· Changed CoreBots => SevenCirclesWar + DoomwoodREP old Bot.Inventory.ContainsTempItem methods to `Core.CheckInventory`
+· Changed all mentions of CoreDailys to CoreDailies  
+· Updated a good chunk of CoreDailies, more to come  
+· Added enhancement to Burning Blade of Azebeth  
+· Added GearStore, EquipSolo and rankUpClass to Dragonslayer General  
+· Optimized null check in CoreAdvanced => EnhanceEquipped  
+· Added a IsEquipped check on CoreBots => ToBank  
+· Added a messageBox and stopBot if you are trying to unbank an item with a full inventory  
+· Added a while-escape to Unbank so the bot cant get stuck unbanking items anymore  
+· Added a cell jump spam in CoreBots => Join in the hopes to make it more stable  
+· Added CoreBots => KillXiang so that it can be easier to farm in the future  
+· Added LordOfOrder, FreeDailyBoost, MonthlyTreasureChestKeys and WheelofDoom to 0AllDailies  
+· Added new item logging to CoreDailies => WheelofDoom  
+· Added smart boost selector (quantity-based) for CoreDailies => FreeDailyBoost  
+· Made SmartEnhance not case-sensitive  
+· Removed a bunch of redundant bits in ObsidianLightofDestiny  
+· Removed multiple redundancies across multiple files, as per usual  
+· Dragonslayer General bot now actually Dragonslayer General  
+· Fixed missing //cs_include on StoneCrusher  
+· Fixed FireChampionsArmor => FlameForgedMetal  
+· Fixed WarfuryTraining => Destroy the Barrier  
+· Fixed WarfuryTraining => Awaken Lady Fiamme  
+· Fixed WarfuryTraining => Fire Fighting  
+· Fixed minor spelling errors in CoreAdvanced method summaries  
+· Fixed CoreDarkon => SecondErrand not going to a public room if Public on a difficult Monster is turned on  
+· Fixed CoreFarms => FishingREP  
+· Multiple fixes to FireChampionsArmor  
+[Back to top](#versions)
 
 ### v3.0.1
 **Released on Mar 18, 2022 at 19:10 / 07:10 PM (UTC)**  
 · Released AMelody (Vladimir)  
 · Released 4AstraviaJudgement (Vladimir)  
-· Added import for CoreAstravia to DragonOfTime & DarkonsErrand1-3
-· Added GearStore to DragonSlayerGeneral
-· Fixed WarFuryEmblem
+· Added import for CoreAstravia to DragonOfTime & DarkonsErrand1-3  
+· Added GearStore to DragonSlayerGeneral  
+· Fixed WarFuryEmblem  
 [Back to top](#versions)
 
 ### v3.0
