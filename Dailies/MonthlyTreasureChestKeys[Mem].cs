@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreDailies.cs
 using RBot;
 
-public class ShadowScytheClassDaily
+public class MonthlyTreasureChestKeys
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -12,7 +12,7 @@ public class ShadowScytheClassDaily
     {
         Core.SetOptions();
 
-        Daily.ShadowScytheClass();
+        Daily.MonthlyTreasureChestKeys();
 
         Core.SetOptions(false);
     }

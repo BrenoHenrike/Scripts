@@ -11,7 +11,7 @@ public class CoreVHL
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreDailys Daily = new CoreDailys();
+    public CoreDailies Daily = new();
     public CoreNulgath Nulgath = new CoreNulgath();
     public AssistingCragAndBamboozle ACAB = new AssistingCragAndBamboozle();
 

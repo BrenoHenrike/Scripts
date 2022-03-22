@@ -16,7 +16,7 @@ public class FireChampionsArmor
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
+    public CoreDailies Daily = new();
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public DragonslayerGeneral DSG = new DragonslayerGeneral();

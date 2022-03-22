@@ -23,7 +23,7 @@ public class CoreHollowbornPaladin
     public AscendedDrakathGear ADG = new AscendedDrakathGear();
     public CoreNulgath Nulgath = new CoreNulgath();
     public Artixpointe APointe = new Artixpointe();
-    public CoreDailys Daily = new CoreDailys();
+    public CoreDailies Daily = new();
 
     public string[] PostSummoningItems =
     {

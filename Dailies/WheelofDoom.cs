@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreDailies.cs
 using RBot;
 
-public class ShadowScytheClassDaily
+public class WheelofDoom
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -12,7 +12,7 @@ public class ShadowScytheClassDaily
     {
         Core.SetOptions();
 
-        Daily.ShadowScytheClass();
+        Daily.WheelofDoom();
 
         Core.SetOptions(false);
     }

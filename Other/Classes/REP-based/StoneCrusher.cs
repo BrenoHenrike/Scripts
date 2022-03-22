@@ -16,7 +16,6 @@ public class StoneCrusher
     public CoreAdvanced Adv = new();
     public Core13LoC LOC = new();
     public BrightOak Oak = new();
-    public CoreDailys Dailys = new();
 
     public void ScriptMain(ScriptInterface bot)
     {

@@ -17,7 +17,7 @@ public class SepulchuresOriginalHelm
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Dailys = new CoreDailys();
+    public CoreDailies Daily = new();
     public Core13LoC LOC => new Core13LoC();
     public MysteriousDungeon MystDung => new MysteriousDungeon();
     public AQWZombies Zombie = new AQWZombies();

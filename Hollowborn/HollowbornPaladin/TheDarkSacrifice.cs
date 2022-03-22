@@ -23,7 +23,7 @@ public class TheDarkSacrifice
     public CoreNulgath Nulgath = new CoreNulgath();
     public Artixpointe APointe = new Artixpointe();
     public CoreFarms Farm = new CoreFarms();
-    public CoreDailys Daily = new CoreDailys();
+    public CoreDailies Daily = new();
     public CoreStory Story = new CoreStory();
 
     public void ScriptMain(ScriptInterface bot)
