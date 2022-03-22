@@ -841,6 +841,21 @@ public class CoreBots
             }
         }
     }
+
+    public void KillXiang(string? item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
+    {
+        if (item != null && CheckInventory(item, quant))
+            return;
+
+        if (CheckInventory("Void Highlord"))
+            Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
+        else if (CheckInventory("Dragon of Time"))
+            Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
+        else if (CheckInventory("Healer"))
+            Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
+
+        KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
+    }
     #endregion
 
     #region Utils
