@@ -46,7 +46,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Bot.Quests.UpdateQuest(2954);
-        Core.Join("doomvault", "r5", "Left");
+        Core.Join("doomvault", "r5", "Left", true);
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))
         {
@@ -64,7 +64,7 @@ public class CoreDarkon
 
             if (!EnoughPeople && Core.IsMember)
                 Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true);
-            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false);
+            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true);
 
             Core.EnsureComplete(7325);
             Bot.Wait.ForPickup("Darkon's Receipt");
