@@ -40,4 +40,18 @@ public class CoreHollowborn
         Core.KillMonster("noxustower", "r14", "Left", "*", "Human Soul", quant, false);
     }
 
+    public void FreshSouls( int quant = 350)
+    {
+        if (Core.CheckInventory("Fresh Soul", quant))
+            return;
+
+        Farm.Experience(50);
+        Core.Logger($"Farming x{quant} Fresh Soul");
+        while (!Core.CheckInventory("Fresh Soul", quant))
+        {
+            Core.EnsureAccept(7293);
+            Core.HuntMonster("ictadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);
+            Core.EnsureComplete(7293);
+        }
+    }
 }
