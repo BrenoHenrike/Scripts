@@ -26,7 +26,7 @@ public class AssistingCragAndBamboozle
 
     public void AssistingCandB(string Reward = "any")
     {
-        if (!Core.IsMember || !Core.CheckInventory(Nulgath.CragName) || (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, "Sparrow's Blood")))
+        if (!Core.IsMember || !Core.CheckInventory(Nulgath.CragName) || (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, "Sparrow's Blood")))
             return;
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
