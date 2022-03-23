@@ -1626,7 +1626,7 @@ public class CoreFarms
         while (FactionRank("Dreadrock") < rank)
         {
             Core.EnsureAccept(4863, 4862, 4865, 4868);
-            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Goldfish Companion", quant: 1);
+            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Goldfish Companion", 1);
             Core.EnsureComplete(4868);
             if (Bot.Quests.CanComplete(4862))
                 Core.EnsureComplete(4862);
@@ -1642,6 +1642,7 @@ public class CoreFarms
     {
         if (FactionRank("Fishing") >= rank)
             return;
+
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
@@ -1650,13 +1651,20 @@ public class CoreFarms
         {
             Core.AddDrop("Fishing Bait", "Fishing Dynamite");
 
+            Core.Logger("Pre-Ranking XP");
+            {
+                Core.EnsureAccept(1682);
+                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+                Core.EnsureComplete(1682);
+            }
+
             while (Bot.Player.GetFactionRank("Fishing") < 2)
             {
                 Core.Logger("Farming Bait");
                 while (!Core.CheckInventory("Fishing Bait", 10))
                 {
                     Core.EnsureAccept(1682);
-                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", quant: 1, log: false);
+                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
                     Core.EnsureComplete(1682);
                     Core.Logger($"Completed x{i++}");
                 }
@@ -1676,23 +1684,16 @@ public class CoreFarms
             }
 
 
-            while (Bot.Player.GetFactionRank("Fishing") < 10)
+            while (Bot.Player.GetFactionRank("Fishing") <= rank)
             {
-
                 Core.Logger("Farming Dynamite");
                 while (!Core.CheckInventory("Fishing Dynamite", 10) && Core.CheckInventory("Fishing Bait", 1))
                 {
                     Core.EnsureAccept(1682);
-                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", quant: 1, log: false);
+                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
                     Core.EnsureComplete(1682);
                     Core.Logger($"Completed x{i++}");
                 }
-
-                Core.Join("fishing");
-                Core.Logger("Pre-Dynamite Bait Fish");
-                Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
-                Bot.Sleep(10000);
-                Core.Logger($"Pre-Dynamite Bait Fishing Finished, Starting Dynamite.");
 
                 Core.Logger($"Dynamite Fishing");
 
