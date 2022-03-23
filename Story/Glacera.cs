@@ -170,14 +170,23 @@ public class GlaceraStory
         // Glaera     
 
         //A Frost Welcome
-        Core.EnsureAccept(3947);
-        Story.MapItemQuest(3947, "glacera", 3048, 1);
+        if(!Story.QuestProgression(3947))
+        {
+            Core.EnsureAccept(3947);
+            Core.Join("glacera");
+            Core.GetMapItem(3048, 1, "glacera");
+            Core.EnsureComplete(3947);
+        }
+
         // Key to the Fortress
         Story.KillQuest(3948, "glacera", "Frost Invader");
+
         // Ravage the Reapers
         Story.MapItemQuest(3949, "glacera", 3049, 6);
+
         // Oh the Humanity
-        Story.MapItemQuest(3950, "glacera", 3047, 1);
+        Story.MapItemQuest(3950, "glacera", 3047);
+
     }
 
     public void FrozenRuins2()
@@ -189,10 +198,13 @@ public class GlaceraStory
 
         // Rescue the Refugees
         Story.KillQuest(3951, "frozenruins", new[] { "Frost Invader", "Frozen Moglinster" });
+
         // Defeat the Fangbeasts
         Story.KillQuest(3952, "frozenruins", "Frost Fangbeast");
+
         // Destroy the Frost Reapers
         Story.KillQuest(3953, "frozenruins", "Frost Reaper");
+
         // FrostSpawn General Takedown
         Story.KillQuest(3954, "frozenruins", "Frost General");
     }
@@ -206,23 +218,31 @@ public class GlaceraStory
 
         // From Refugee to Enemy
         Story.KillQuest(3958, "northstar", new[] { "Frost Invader", "Monstrous Refugee" });
+        
         // Fangs and Blades
         Story.KillQuest(3959, "northstar", new[] { "Frost Fangbeast", "Frost Invader" });
+
         // Reaping the Refugees
         Story.KillQuest(3960, "northstar", "Frost Reaper");
+
         // Saving Syrrus' Spirit
         Story.KillQuest(3961, "northstar", "Frost Reaper"); //loadstone peice
         Story.MapItemQuest(3961, "northstar", 3060, 5); //plush bear
         Story.MapItemQuest(3961, "northstar", 3061, 7); //snowdrop blossom
         Story.MapItemQuest(3961, "northstar", 3073, 5); //journal page
+
         // It's a Trap!
         Story.MapItemQuest(3972, "northstar", 3063, 10);
+
         // Feast or Famine
         Story.KillQuest(3973, "northstar", new[] { "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Frost Superreaper", "Monstrous Refugee" });
+
         // Decipher the Freezing
         Story.KillQuest(3974, "northstar", new[] { "Frost Fangbeast", "Monstrous Refugee", "Frost Fangbeast", "Frost Invader", "Frost Reaper", "Monstrous Refugee" });
+
         // A New Frost Monster
         Story.KillQuest(3970, "northstar", "The Queen's Gift");
+
         // Defeat Karok!
         Story.KillQuest(3971, "northstar", "Karok the Fallen");
     }
