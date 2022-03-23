@@ -1,8 +1,16 @@
 - ##### Versions
-  - [v3.1 - Latest](#v31)
+  - [v3.1](#v31)
+    - [v3.1.1 - Latest](#v311)
   - [v3.0](#v30)
     - [v3.0.1](#v301)
   - [v2.0 till 2.29](Changelog_Archive_v2.md)
+
+### v3.1.1
+**Released on Mar 23, 2022 at 07:50 / 07:50 AM (UTC)**  
+· Fixed CoreBots => KillXiang's Ultra name  
+· Fixed LordOfOrder Quest ID's  
+· Fixed CoreFarms => FishingREP  
+[Back to top](#versions)
 
 ### v3.1
 **Released on Mar 22, 2022 at 19:50 / 07:50 PM (UTC)**  
