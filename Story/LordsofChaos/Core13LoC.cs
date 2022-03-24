@@ -909,11 +909,15 @@ public class Core13LoC
         if (!Story.QuestProgression(978))
         {
             Core.EnsureAccept(978);
-            Core.Join("wanders", "r25", "Left");
-            Bot.Player.ApproachTarget();
-            Bot.Player.UseSkill(0);
-            Bot.Player.KillForItem("*", "Sek-Duat Defeated", 1, true);
+            Core.Join("wanders", "Boss", "Left");
+            if (!Core.CheckInventory("Sek-Duat Defeated", 1, toInv: false))
+            {
+                Core.SendPackets("%xt%zm%gar%0%aa>m");
+                Bot.Player.ApproachTarget();
+                Bot.Player.Kill("Sek-Duat");
+            }
             Core.EnsureComplete(978);
+            //Editors Note: PLEASE stop breaking this
         }
 
         //Sandsational Castle
