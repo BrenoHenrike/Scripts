@@ -36,6 +36,9 @@ public class HollowbornScythe
         Core.AddDrop(reqName);
 
         Core.Unbank(reqName);
+        
+        //Required R10 Rep
+        Farm.HollowbornREP();
 
         //Minion
         if (!Core.CheckInventory("Hollowborn Reaper's Minion"))
