@@ -7,13 +7,11 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
-
 using RBot;
 
 public class FireChampionsArmor
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailies Daily = new();
@@ -71,6 +69,7 @@ public class FireChampionsArmor
             return;
 
         Adv.BestGear(GearBoost.Undead);
+        Core.AddDrop("Flame-Forged Metal");
 
         Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
 
