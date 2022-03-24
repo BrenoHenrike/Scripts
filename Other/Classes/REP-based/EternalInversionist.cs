@@ -9,6 +9,7 @@ public class EternalInversionist
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public FourthDimensionalPyramid FDP = new FourthDimensionalPyramid();
