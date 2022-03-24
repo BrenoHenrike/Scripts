@@ -310,7 +310,10 @@ public class CoreFarms
 
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
+        Bot.Options.AggroMonsters = true;
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
+        Bot.Options.AggroMonsters = false;
+        Bot.Player.ExitCombat();
     }
 
     #endregion
