@@ -193,6 +193,8 @@ public class Core13LoC
 
         Story.PreLoad();
 
+        Core.AddDrop("Snowbeard's Gold");
+
         //Adorable Sisters
         Story.MapItemQuest(319, "tavern", 56, 7);
 
@@ -215,12 +217,20 @@ public class Core13LoC
         Story.KillQuest(326, "pines", "Leatherwing");
 
         //Follow your Nose!
-        if (!Core.CheckInventory("Snowbeard's Gold"))
-            Story.KillQuest(327, "pines", "Pine Troll");
+        Story.KillQuest(327, "pines", "Pine Troll");
 
         //Give Snowbeard His Gold
         if (!Story.QuestProgression(323))
-            Core.EnsureComplete(323);
+        {
+            if (!Core.CheckInventory("Snowbeard's Gold"))
+            {
+                Core.EnsureAccept(327);
+                Core.HuntMonster("pines", "Pine Troll");
+                Core.EnsureComplete(327);
+                Bot.Wait.ForPickup("Snowbeard's Gold");
+            }
+            Story.ChainQuest(323);
+        }
 
         //Bad Memory
         Story.MapItemQuest(344, "dwarfhold", 60);
@@ -515,7 +525,7 @@ public class Core13LoC
         if (!Story.QuestProgression(517))
         {
             Core.EnsureAccept(517);
-            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Blood", 2);
+            Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Blood", 3);
             Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Sweat", 2);
             Core.HuntMonster("darkoviaforest", "Blood Maggot", "Vial of Tears");
             Core.EnsureComplete(517);
