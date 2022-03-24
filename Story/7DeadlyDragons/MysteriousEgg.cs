@@ -29,7 +29,7 @@ public class MysteriousEgg
 
         Core.EnsureAccept(6171);
         Core.HuntMonster("pride", "Valsarian", "Key of Pride", isTemp: false);
-        Core.KillMonster("gluttony", "Enter2", "Left", "*", "Key of Gluttony", isTemp: false);
+        Core.HuntMonster("gluttony", "Deflated Glutus", "Key of Gluttony", isTemp: false);
         Core.HuntMonster("greed", "Goregold", "Key of Greed", isTemp: false);
         if (!Core.CheckInventory("Key of Sloth"))
         {
