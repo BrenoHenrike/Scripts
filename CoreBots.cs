@@ -154,18 +154,29 @@ public class CoreBots
                 }
                 ToBank(MiscForBank.ToArray());
             }
-            
-            /*
-            int SavedState = 1;
-            Bot.RegisterHandler(30000, s =>
+
+            Random rnd = new Random();
+            int MinumumDelay = 180;
+            int MaximumDelay = 300;
+            int timerInterval = rnd.Next(MinumumDelay, MaximumDelay + 1);
+            int SSH = 0;
+            Bot.RegisterHandler(5000, s =>
             {
-                Bot.SendWhisper(Bot.Player.Username, $"Saving Player-Data ({SavedState++})");
+                SSH++;
+                if (SSH >= (timerInterval / 5))
+                {
+                    int messageSelect = rnd.Next(1, _SavedStateRNG.Length + 1);
+                    Bot.SendMSGPacket("Ignore the whisper below, this is to save your player data", "Saved-State", "moderator");
+                    Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {rnd.Next(1000, 1000000)}");
+                    timerInterval = rnd.Next(MinumumDelay, MaximumDelay + 1);
+                    SSH = 0;
+                }
             }, "Saved-State Handler");
-            */
 
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
             EquipClass(ClassType.Solo);
+
             // Anti-lag option
             if (AntiLag)
             {
@@ -180,6 +191,8 @@ public class CoreBots
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
             Bot.Drops.Start();
+
+            Bot.SendMSGPacket("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages", "moderator");
 
             Logger("Bot Configured");
         }
@@ -1109,7 +1122,10 @@ public class CoreBots
         if (Bot.Player.LoggedIn)
         {
             Bot.Player.Join("battleon");
-            //Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
+            Random rnd = new Random();
+            int messageSelect = rnd.Next(1, _SavedStateRNG.Length + 1);
+            Bot.SendMSGPacket("Final Saved-State before ending the bot", "Saved-State", "moderator");
+            Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {rnd.Next(1000, 1000000)}");
         }
         if (AntiLag)
         {
@@ -1123,6 +1139,54 @@ public class CoreBots
             Logger("Bot Stopped Successfully");
         return true;
     }
+
+    private string[] _SavedStateRNG =
+    {
+        "battleon",
+        "hi",
+        "Hello",
+        $"I\'m using {ScriptInterface.Instance.Inventory.CurrentClass.Name}",
+        "I'm maidenless",
+        "You\'re maidenless",
+        "Drakath did nothing wrong!",
+        "Have you checked design notes?",
+        "dont spam heal. Time it properly",
+        "Make AQW great again",
+
+        $"I\'ve reached level {ScriptInterface.Instance.Player.Level}!!",
+        "hey, can you help me out with this boss?",
+        "Do u have scroll?",
+        "I\'m gonna play Elden Ring!",
+        "Imma play Minecraft",
+        "im gonna play gta",
+        "need 1 LOO championdrakath",
+        "what is 1+1?",
+        "It costs a lot of AC",
+        "I might buy membership",
+
+        "I\'m considering buying member",
+        "i dont think I'm going to buy legend",
+        "I should get Awescended",
+        "I love the latest AC chest",
+        "i dislike the new collection chest",
+        "It\'s on the wiki",
+        "Have you heard?",
+        "This is such a grind",
+        "Your mic is muted",
+        "you forgot to mute your mic",
+
+        "I like your armor",
+        "I like that helm",
+        "Nice weapon",
+        "Where did you get that cape?",
+        "is your pet rare?",
+        ".",
+        "test",
+        "ping",
+        "you there?",
+        "I\'m going AFK"
+
+    };
     #endregion
 
     #region Map
