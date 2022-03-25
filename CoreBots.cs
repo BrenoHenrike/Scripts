@@ -154,12 +154,14 @@ public class CoreBots
                 }
                 ToBank(MiscForBank.ToArray());
             }
-
+            
+            /*
             int SavedState = 1;
             Bot.RegisterHandler(30000, s =>
             {
                 Bot.SendWhisper(Bot.Player.Username, $"Saving Player-Data ({SavedState++})");
             }, "Saved-State Handler");
+            */
 
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
