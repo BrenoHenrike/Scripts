@@ -1109,7 +1109,7 @@ public class CoreBots
         if (Bot.Player.LoggedIn)
         {
             Bot.Player.Join("battleon");
-            Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
+            //Bot.SendWhisper(Bot.Player.Username, "Saving Player-Data (END)");
         }
         if (AntiLag)
         {
