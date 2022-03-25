@@ -1,9 +1,29 @@
 - ##### Versions
   - [v3.1](#v31)
-    - [v3.1.1 - Latest](#v311)
+    - [v3.1.2 - Latest](#v312)
+    - [v3.1.1](#v311)
   - [v3.0](#v30)
     - [v3.0.1](#v301)
   - [v2.0 till 2.29](Changelog_Archive_v2.md)
+
+### v3.1.2
+**Released on Mar 25, 2022 at 13:15 / 01:15 PM (UTC)**  
+· Mayor fix: Added multiple new variables that change up the save state messages you send. This is in order to prevent AE from spotting the messages!  
+· Added publicroom to Binky in ArchPaladin  
+· Added AddDrop to FireChampionsArmor => FlameForgedMetal  
+· Added AggroMonsters to CoreFarms => BattleUnderB  
+· Added EquipClass - Solo to HollowbornScythe  
+· Added HollowbornREP to HollowbornScythe  
+· Added UpdateQuest bypass to CoreDailies => Pyromancer  
+· Fixed Glacera => A Frost Welcome  
+· Fixed CoreHollowborn => FreshSouls  
+· Fixed Core13LoC => Vath => Follow your Nose!  
+· Fixed Core13LoC => Vath => Give Snowbeard His Gold  
+· Fixed Core13LoC => Tibecinas => Sell-Sword Sell-Outs  
+· Fixed Core13LoC => Tibecinas => I Dream Of...  
+· Fixed CoreDailies => WheelOfDoom unbanking everything  
+· Fixed MysteriousEgg => Key of Gluttony  
+[Back to top](#versions)
 
 ### v3.1.1
 **Released on Mar 23, 2022 at 07:50 / 07:50 AM (UTC)**  
