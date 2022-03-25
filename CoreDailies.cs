@@ -365,6 +365,7 @@ public class CoreDailies
         if (Core.IsMember && !CheckDaily(2210, true, "Shurpu Blaze Token"))
             return;
         Core.EquipClass(ClassType.Solo);
+        Bot.Quests.UpdateQuest(2157);
         if (Core.IsMember)
             DailyRoutine(2210, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
         else
