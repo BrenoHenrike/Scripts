@@ -87,7 +87,7 @@ public class LordOfOrder
             Core.AddDrop("The Supreme Arcane Staff");
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("orecavern", "Naga Baas", "Chaoroot", 15, false);
+            Core.HuntMonster("ledgermayne", "Ledgermayne", "Chaoroot", 15, false);
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true);
