@@ -121,7 +121,7 @@ Base = Imperial Chunin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Infinite Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Infinite Legion Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Infinity Knight = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = Infinity Titan = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Infinity Titan = 4 M>50S | 2S | 3 H<50S | 2S | 3 H<50S | 1 | 1 | Mode Optimistic | Timeout:250
 Base = Interstellar Knight = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legendary ArchFiend = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legendary Elemental Warrior = 1 | 2 | 3 | 4 |  Mode Optimistic
