@@ -50,10 +50,9 @@ public class LightCaster
         GOSB.GetGoSB();
         LOT.GetLoT();
         LM.GetLM(false);
-
+        
         Core.EnsureAccept(6495);
         Core.EquipClass(ClassType.Solo);
-        BBOA.GetBBoA(); //Put that in here because its basically both killing the same mod anyway
         Core.HuntMonster("celestialareand", "Aranx", "Aranx's Pure Light", isTemp: false);
         Core.EnsureComplete(6495);
         Bot.Wait.ForPickup("LightCaster");
