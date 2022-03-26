@@ -186,9 +186,9 @@ Base = Shadow Ripper = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Shadow Rocker = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = ShadowFlame DragonLord = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = ShadowScythe General = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = ShadowStalker of Time = 4 | 1 | 2 | 1 | 4 | 2 | 1 | 2 | Timeout: 250
-Base = ShadowWalker of Time = 4 | 1 | 2 | 1 | 4 | 2 | 1 | 2 | Timeout: 250
-Base = ShadowWeaver of Time = 4 | 1 | 2 | 1 | 4 | 2 | 1 | 2 | Timeout: 250
+Base = ShadowStalker of Time = 4 | 2 | 3 | 1 | 2 | Timeout: 250
+Base = ShadowWalker of Time = 4 | 2 | 3 | 1 | 2 | Timeout: 250
+Base = ShadowWeaver of Time = 4 | 2 | 3 | 1 | 2 | Timeout: 250
 Base = Shaman = 4 | 1| 2 | Timeout: 250
 Base = Silver Paladin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 |  Mode Optimistic
