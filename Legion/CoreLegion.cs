@@ -416,7 +416,7 @@ public class CoreLegion
             Core.HuntMonster("dwarfhold", "Chaos Drow", "Chaos Drow slain");
             Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Skeletal Soldier slain");
             Core.HuntMonster("pirates", "Fishman Soldier", "Fishman Soldier slain");
-            Core.HuntMonster("willowcreek", "Dwakel Soldier", "Dwarkel Soldier slain");
+            Core.HuntMonster("willowcreek", "Dwakel Soldier", "Dwakel Soldier slain");
             Core.EnsureComplete(790);
         }
 
