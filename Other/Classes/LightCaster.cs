@@ -36,31 +36,25 @@ public class LightCaster
         if (Core.CheckInventory("LightCaster"))
             return;
 
-        Core.AddDrop("LightCaster", "Aranx's Pure Light");
+        Core.AddDrop("LightCaster");
 
         Farm.Experience(80);
-        if (!Core.CheckInventory("Guardian of Spirits' Blade"))
-            GOSB.GetGoSB();
-        if (!Core.CheckInventory("Avatar Of Death's Scythe"))
-            AODS.GetAoDS();
-        if (!Core.CheckInventory("Lance of Time"))
-            LOT.GetLoT();
+        GOSB.GetGoSB();
+        AODS.GetAoDS();
+        LOT.GetLoT();
         if (!Core.CheckInventory(31058))
             BB.GetBurningBlade();
-        if (!Core.CheckInventory("Burning Blade of Abezeth"))
-            BBOA.GetBBoA();
-        if (!Core.CheckInventory("LightMage"))
-            LM.GetLM(false);
+        BBOA.GetBBoA();
+        LM.GetLM(false);
 
-        Core.EnsureAccept(6495);
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("celestialareand", "Aranx", "Aranx's Pure Light", isTemp: false);
+        Bot.Quests.UpdateQuest(6042);
+        Core.EnsureAccept(6495);
+        Adv.BoostHuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
         Core.EnsureComplete(6495);
         Bot.Wait.ForPickup("LightCaster");
 
         if (rankUpClass)
             Adv.rankUpClass("LightCaster");
-
-
     }
 }
