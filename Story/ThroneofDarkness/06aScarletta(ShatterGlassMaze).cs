@@ -52,7 +52,12 @@ public class HedgeMaze
 
         Story.MapItemQuest(5309, "hedgemaze", 4685, 5);
 
-        Story.KillQuest(5310, "hedgemaze", "Hedge Goblin");
+        if (!Story.QuestProgression(5310)) // needs to be in a specific part of the map.
+        {
+            Core.EnsureAccept(5310);
+            Core.KillMonster("hedgemaze", "r21", "Right", "*", "Maze Monster Killed", 8);
+            Core.EnsureComplete(5310);
+        }
 
         Story.MapItemQuest(5311, "hedgemaze", 4686);
 
