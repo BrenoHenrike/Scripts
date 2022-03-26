@@ -435,7 +435,7 @@ public class CoreLegion
         Story.KillQuest(793, "prison", "King Alteon's Knight");
 
         if (SellUW == DialogResult.Yes)
-            Core.SellItem("Undead Warrior");
+            Core.SellItem("Undead Warrior", all: true);
     }
 
     public void ObsidianRock(int quant)
