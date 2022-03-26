@@ -199,7 +199,7 @@ Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 | Timeout:300
 Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 | Timeout:300
 Solo = Star Captain = 1 | 1S | 2S | 3S | 4 | 1 | Timeout:300
 Base = StarLord = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = StoneCrusher = 2S | 3 H<50S | 2S | 3 H<50S | 1 | 1 | Mode Optimistic | Timeout:250
+Base = StoneCrusher = 4 M>50S | 2S | 3 H<50S | 2S | 3 H<50S | 1 | 1 | Mode Optimistic | Timeout:250
 Base = SwordMaster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = SwordMaster Assassin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = The Collector = 1 WW20000 | 3 | 4 | 1 | Timeout: 250
