@@ -165,10 +165,10 @@ public class CoreBots
                 SSH++;
                 if (SSH >= (timerInterval / 5))
                 {
-                    int messageSelect = rnd.Next(1, _SavedStateRNG.Length + 1);
+                    int messageSelect = rnd.Next(1, _SavedStateRNG.Length);
                     Bot.SendMSGPacket("Ignore the whisper below, this is to save your player data", "Saved-State", "moderator");
                     Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {rnd.Next(1000, 1000000)}");
-                    timerInterval = rnd.Next(MinumumDelay, MaximumDelay + 1);
+                    timerInterval = rnd.Next(MinumumDelay, MaximumDelay);
                     SSH = 0;
                 }
             }, "Saved-State Handler");
@@ -1123,7 +1123,7 @@ public class CoreBots
         {
             Bot.Player.Join("battleon");
             Random rnd = new Random();
-            int messageSelect = rnd.Next(1, _SavedStateRNG.Length + 1);
+            int messageSelect = rnd.Next(1, _SavedStateRNG.Length);
             Bot.SendMSGPacket("Final Saved-State before ending the bot", "Saved-State", "moderator");
             Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {rnd.Next(1000, 1000000)}");
         }
