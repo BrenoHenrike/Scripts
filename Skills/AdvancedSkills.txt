@@ -39,7 +39,7 @@ Base = Chaos Slayer Thief = 2 | 4 | 1 | 3 | Timeout:250
 Base = Chrono Assassin = 4 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 3 | 2 | 1 | 2 | Timeout:250
 Base = Chrono Chaorruptor = 4 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 3 | 2 | 1 | 2 | Timeout:250
 Base = Chrono Commandant = 4 | 1 | 1 | 1 | 1 | 2 | 3 | Timeout:250
-Base = Chrono DataKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 | Timeout:250
+Base = Chrono DataKnight = 1 | 2 | 3 | 1 | 2S | 3S | 1 | 2S | 3S | 1 | 4 | Timeout:250
 Base = Chrono DragonKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 | Timeout:250
 Base = Chunin = 1 | 2 | 4 | 3 | Timeout:250
 Base = Classic Alpha Pirate = 4 | 1 | 3 | 2 | Mode Optimistic
