@@ -71,6 +71,7 @@ public class NecroticSwordOfDoom
         NSHilt();
         NSAura();
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
+        VoidAuras(800);
         Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");
         Adv.EnhanceItem("Necrotic Sword of Doom", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
         NSODBadge();
