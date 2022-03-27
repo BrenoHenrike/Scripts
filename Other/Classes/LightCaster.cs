@@ -36,19 +36,19 @@ public class LightCaster
         if (Core.CheckInventory("LightCaster"))
             return;
 
-        Core.AddDrop("LightCaster");
+        Core.AddDrop("LightCaster", "Aranx's Pure Light");
 
         Farm.Experience(80);
         GOSB.GetGoSB();
         AODS.GetAoDS();
         LOT.GetLoT();
         BB.GetBurningBlade();
-        BBOA.GetBBoA();
         LM.GetLM(false);
 
         Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(6042);
         Core.EnsureAccept(6495);
+        BBOA.GetBBoA();
         Adv.BoostHuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
         Core.EnsureComplete(6495);
         Bot.Wait.ForPickup("LightCaster");
