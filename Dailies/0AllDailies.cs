@@ -8,6 +8,7 @@
 //cs_include Scripts/Story/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
+//cs_include Scripts/Story/Glacera.cs
 using RBot;
 
 public class FarmAllDailys
@@ -16,6 +17,7 @@ public class FarmAllDailys
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public LordOfOrder LOO = new();
+    public GlaceraStory Glac = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -36,6 +38,7 @@ public class FarmAllDailys
         Daily.CyserosSuperHammer();
         Daily.BrightKnightArmor();
         Daily.CollectorClass();
+        Glac.DoAll();
         Daily.Cryomancer();
         Daily.Pyromancer();
         Daily.DeathKnightLord();
