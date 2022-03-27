@@ -208,7 +208,7 @@ public class CoreStory
         }
 
         if (!Bot.Quests.IsUnlocked(QuestID))
-            Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, is your bot setup correctly?", messageBox: true, stopBot: true);
+            Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, please report the issue here https://discord.io/AQWBots (#rbot-questions-help)", messageBox: true, stopBot: true);
 
         if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
         {
