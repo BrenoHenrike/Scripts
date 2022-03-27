@@ -42,8 +42,7 @@ public class LightCaster
         GOSB.GetGoSB();
         AODS.GetAoDS();
         LOT.GetLoT();
-        if (!Core.CheckInventory(31058))
-            BB.GetBurningBlade();
+        BB.GetBurningBlade();
         BBOA.GetBBoA();
         LM.GetLM(false);
 
