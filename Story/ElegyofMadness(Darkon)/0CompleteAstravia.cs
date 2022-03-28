@@ -1,22 +1,19 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Darkon/CoreDarkon.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using RBot;
 
-public class AMelody
+public class CompleteAstravia
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreDarkon Darkon = new CoreDarkon();
-
+    public CoreStory Story = new CoreStory();
+    public CoreAstravia Astravia => new CoreAstravia();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Darkon.AMelody();
+        Astravia.CompleteCoreAstravia();
 
         Core.SetOptions(false);
     }

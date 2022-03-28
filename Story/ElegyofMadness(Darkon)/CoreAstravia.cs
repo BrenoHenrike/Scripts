@@ -21,6 +21,7 @@ public class CoreAstravia
         Astravia();
         AstraviaCastle();
         AstraviaJudgement();
+        EridaniPast();
 
     }
 
@@ -228,5 +229,48 @@ public class CoreAstravia
         //Mahapadma
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8395, "astraviajudge", "La");
+    }
+
+    public void EridaniPast()
+    {
+        //Progress Check
+        if (Core.isCompletedBefore(8530))
+            return;
+
+        //Preload Quests
+        Story.PreLoad();
+
+        //Dorian
+        Story.MapItemQuest(8521, "eridanipast", 9681);
+
+        //Hypophrygian
+        Story.KillQuest(8522, "eridanipast", new[] { "Bandit", "Dog" });
+
+        //Ionian
+        Story.MapItemQuest(8523, "eridanipast", 9676, 8);
+
+        //Lydian
+        Story.KillQuest(8524, "eridanipast", "Bandit");
+
+        //Mixolydian
+        Story.KillQuest(8525, "eridanipast", "Bat");
+        Story.MapItemQuest(8525, "eridanipast", 9677);
+
+        //Hypomixolydian
+        Story.MapItemQuest(8526, "eridanipast", 9678);
+        Story.MapItemQuest(8526, "eridanipast", 9679);
+
+        //Locrian
+        Story.KillQuest(8527, "eridanipast", new[] { "Bat", "Dog" });
+
+        //Aeolian
+        Story.KillQuest(8528, "eridanipast", "Bandit");
+
+        //Troubadour
+        Story.KillQuest(8529, "eridanipast", "Suki");
+
+        //Echoes
+        Story.KillQuest(8530, "eridanipast", "Bandit");
+        Story.MapItemQuest(8530, "eridanipast", 9680);
     }
 }

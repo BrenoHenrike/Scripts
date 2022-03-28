@@ -1,9 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Astravia/CoreAstravia.cs
+//cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using RBot;
 
-public class CompleteAstravia
+public class CompleteAstraviaCastle
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -13,7 +13,7 @@ public class CompleteAstravia
     {
         Core.SetOptions();
 
-        Astravia.CompleteCoreAstravia();
+        Astravia.AstraviaCastle();
 
         Core.SetOptions(false);
     }
