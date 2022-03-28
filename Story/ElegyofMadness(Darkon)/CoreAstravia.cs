@@ -270,7 +270,11 @@ public class CoreAstravia
         Story.KillQuest(8529, "eridanipast", "Suki");
 
         //Echoes
-        Story.KillQuest(8530, "eridanipast", "Bandit");
-        Story.MapItemQuest(8530, "eridanipast", 9680);
+        if (!Story.QuestProgression(8530))
+        {
+            Core.EnsureAccept(8530);
+            Core.HuntMonster("eridanipast", "Bandit", "Bandit Remnants", 7);
+            Story.MapItemQuest(8530, "eridanipast", 9680);
+        }
     }
 }
