@@ -2159,12 +2159,16 @@ public class Core13LoC
         Story.ChainQuest(3875);
 
         // Defeat Drakath! + Defeat Drakath... again!
-        if (!Story.QuestProgression(3876) || !Story.QuestProgression(3876))
+        if (!Story.QuestProgression(3876) || !Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3876, 3877);
             Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
-            Core.EnsureComplete(3876, 3877);
+            if (!Story.QuestProgression(3876))
+                Core.EnsureComplete(3876);
+            if (!Story.QuestProgression(3877))
+                Core.EnsureComplete(3877);
         }
+
 
         //Defeat Drakath!
         if (!Story.QuestProgression(3878))
