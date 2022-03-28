@@ -159,7 +159,13 @@ public class GlaceraStory
 
         Story.MapItemQuest(3945, "frozenruins", 3050, 10);
         // Glacera
-        Story.KillQuest(3946, "frozenruins", "Frost Reaper");
+        if (!Story.QuestProgression(3946))
+        {
+            Core.EnsureAccept(3946);
+            if (!Core.CheckInventory(27357))
+                Core.HuntMonster("frozenruins", "Frost Reaper", "Mercury");
+            Core.EnsureComplete(3946);
+        }
     }
 
     public void Glacera()
@@ -170,7 +176,7 @@ public class GlaceraStory
         // Glaera     
 
         //A Frost Welcome
-        if(!Story.QuestProgression(3947))
+        if (!Story.QuestProgression(3947))
         {
             Core.EnsureAccept(3947);
             Core.Join("glacera");
@@ -218,7 +224,7 @@ public class GlaceraStory
 
         // From Refugee to Enemy
         Story.KillQuest(3958, "northstar", new[] { "Frost Invader", "Monstrous Refugee" });
-        
+
         // Fangs and Blades
         Story.KillQuest(3959, "northstar", new[] { "Frost Fangbeast", "Frost Invader" });
 

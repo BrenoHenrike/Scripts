@@ -122,7 +122,11 @@ public class LordOfOrder
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: true);
             if (!Core.CheckInventory("Safiria's Spirit Orb"))
+            {
+                Core.AddDrop("Safiria's Spirit Orb");
                 Core.GetMapItem(5470, 1, "maxius");
+                Bot.Wait.ForPickup("Safiria's Spirit Orb");
+            }
             DFO.DragonFableOriginsAll();
             if (!Core.CheckInventory("Ice Katana"))
             {
