@@ -13,6 +13,7 @@ using System.Linq;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 public class CoreBots
 {
@@ -78,17 +79,23 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true)
     {
-        VersionChecker("4.0.0.1");
-
-        if (!Bot.Player.LoggedIn)
+        if (changeTo)
         {
-            Logger("Auto Login triggered");
-            Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
-            Bot.Sleep(1000);
-            Bot.Player.Connect(ServerList.Servers[0]);
-            while (!Bot.Player.LoggedIn)
-                Bot.Sleep(500);
-            Bot.Sleep(5000);
+            Logger("Bot Started");
+
+            RBotVersionChecker("4.0.0.1");
+            ScriptsVersionChecker();
+
+            if (!Bot.Player.LoggedIn)
+            {
+                Logger("Auto Login triggered");
+                Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+                Bot.Sleep(1000);
+                Bot.Player.Connect(ServerList.Servers[0]);
+                while (!Bot.Player.LoggedIn)
+                    Bot.Sleep(500);
+                Bot.Sleep(5000);
+            }
         }
 
         // Common Options
@@ -108,8 +115,6 @@ public class CoreBots
 
         if (changeTo)
         {
-            Logger("Bot Started");
-
             if (CBO_Active)
             {
                 CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
@@ -198,7 +203,11 @@ public class CoreBots
         }
     }
 
-    private bool StopBotEvent(ScriptInterface bot) => StopBot();
+    private bool StopBotEvent(ScriptInterface bot)
+    {
+        SetOptions(false);
+        return StopBot();
+    }
 
     #region Inventory, Bank and Shop
     /// <summary>
@@ -884,7 +893,7 @@ public class CoreBots
         if (messageBox & !ForceOffMessageboxes)
             Message(message, caller);
         if (stopBot)
-            StopBot();
+            Bot.Stop();
     }
 
     /// <summary>
@@ -952,7 +961,7 @@ public class CoreBots
     /// Checks, and prompts for the latest RBot Version
     /// <param name="TargetVersion">Current RBot Version to Check against</param>
     /// </summary>
-    public void VersionChecker(string TargetVersion)
+    private void RBotVersionChecker(string TargetVersion)
     {
         List<int> TargetVArray = Array.ConvertAll(TargetVersion.Split('.'), int.Parse).ToList();
         List<int> CurrentVArray = Array.ConvertAll(Forms.Main.Text.Replace("RBot ", "").Split('.'), int.Parse).ToList();
@@ -968,10 +977,49 @@ public class CoreBots
                 if (SendSite == DialogResult.OK)
                 {
                     System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/RBot/releases");
-                    StopBot();
+                    Bot.Stop();
                 }
                 else
                     Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
+            }
+        }
+    }
+
+    private void ScriptsVersionChecker()
+    {
+        ProcessStartInfo pInfo = new ProcessStartInfo("cmd", "/c curl -H \"Accept: application / vnd.github.v3 + json\" https://api.github.com/repos/brenohenrike/Scripts/releases/latest");
+        System.Diagnostics.Process p = new System.Diagnostics.Process();
+        p.StartInfo = pInfo;
+        p.StartInfo.RedirectStandardOutput = true;
+        p.StartInfo.UseShellExecute = false;
+        p.StartInfo.CreateNoWindow = true;
+
+        p.Start();
+        string output = p.StandardOutput.ReadToEnd();
+        p.WaitForExit();
+
+        string toBeSearched = "ScriptsBundle-v";
+        string version = output.Substring(output.IndexOf(toBeSearched) + toBeSearched.Length);
+        version = version.Substring(0, version.IndexOf(".zip"));
+
+        List<int> TargetVArray = Array.ConvertAll(version.Split('.'), int.Parse).ToList();
+        List<int> CurrentVArray = Array.ConvertAll(File.ReadAllLines(AppPath + "/Scripts/CoreBots.cs")[0].Replace("//Scripts v", "").Split('.'), int.Parse).ToList();
+        for (int i = 0; i < TargetVArray.Count; i++)
+        {
+            int Target = TargetVArray.Skip(i).First();
+            int Current = CurrentVArray.Skip(i).First();
+            if (Target < Current)
+                return;
+            else if (Target > Current)
+            {
+                DialogResult SendSite = MessageBox.Show($"Scripts Bundle v{version} has been released.\nDo you wish to go to the download page? (this stops the bot)",
+                                                        "New version of the Scripts Bundle",
+                                                        MessageBoxButtons.YesNo);
+                if (SendSite == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/Scripts/releases");
+                    Bot.Stop();
+                }
             }
         }
     }
@@ -1114,7 +1162,6 @@ public class CoreBots
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
     /// </summary>
-    /// <param name="removeStopHandler">Whether or not it should also stop the "Stop Handler" that is activated with SetOptions </param>
     public bool StopBot()
     {
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
