@@ -11,7 +11,7 @@ public class EnhanceEquippedSpellBreaker
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.SpellBreaker, Adv.CurrentWeaponSpecial());
 

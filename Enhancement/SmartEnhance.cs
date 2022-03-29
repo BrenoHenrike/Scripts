@@ -11,7 +11,7 @@ public class SmartEnhance
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.SmartEnhance(bot.Inventory.CurrentClass.Name);
 

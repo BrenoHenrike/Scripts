@@ -11,7 +11,7 @@ public class EnhanceEquippedThief
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.Thief, Adv.CurrentWeaponSpecial());
 

@@ -11,7 +11,7 @@ public class EnhanceEquippedHealer
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.Healer, Adv.CurrentWeaponSpecial());
 

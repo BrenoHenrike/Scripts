@@ -11,7 +11,7 @@ public class EnhanceEquippedHybrid
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.Hybrid, Adv.CurrentWeaponSpecial());
 

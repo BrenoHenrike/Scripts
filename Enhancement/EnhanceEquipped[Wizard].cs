@@ -11,7 +11,7 @@ public class EnhanceEquippedWizard
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.Wizard, Adv.CurrentWeaponSpecial());
 

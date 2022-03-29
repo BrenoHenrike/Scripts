@@ -11,7 +11,7 @@ public class EnhanceEquippedLucky
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.Lucky, Adv.CurrentWeaponSpecial());
 

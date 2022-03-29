@@ -78,7 +78,7 @@ public class CoreBots
     /// Set common bot options to desired value
     /// </summary>
     /// <param name="changeTo">Value the options will be changed to</param>
-    public void SetOptions(bool changeTo = true)
+    public void SetOptions(bool changeTo = true, bool disableClassSwap = false)
     {
         if (changeTo)
         {
@@ -181,7 +181,8 @@ public class CoreBots
 
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
-            EquipClass(ClassType.Solo);
+            if (!disableClassSwap)
+                EquipClass(ClassType.Solo);
 
             // Anti-lag option
             if (AntiLag)

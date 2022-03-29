@@ -11,7 +11,7 @@ public class EnhanceEquippedFighter
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         Adv.EnhanceEquipped(EnhancementType.Fighter, Adv.CurrentWeaponSpecial());
 

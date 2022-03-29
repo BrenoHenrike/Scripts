@@ -12,7 +12,7 @@ public class RankUpEquippedClass
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.CP, true);
         Adv.rankUpClass(Bot.Inventory.CurrentClass.Name);
