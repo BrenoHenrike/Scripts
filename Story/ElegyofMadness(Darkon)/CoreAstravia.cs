@@ -11,7 +11,7 @@ public class CoreAstravia
     public void CompleteCoreAstravia()
     {
         //Progress Check
-        if (Core.isCompletedBefore(8395))
+        if (Core.isCompletedBefore(8601))
             return;
 
         //Preload Quests
@@ -22,6 +22,7 @@ public class CoreAstravia
         AstraviaCastle();
         AstraviaJudgement();
         EridaniPast();
+        AstraviaPast();
 
     }
 
@@ -267,6 +268,7 @@ public class CoreAstravia
         Story.KillQuest(8528, "eridanipast", "Bandit");
 
         //Troubadour
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8529, "eridanipast", "Suki");
 
         //Echoes
@@ -276,5 +278,48 @@ public class CoreAstravia
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Remnants", 7);
             Story.MapItemQuest(8530, "eridanipast", 9680);
         }
+    }
+
+    public void AstraviaPast()
+    {
+        //Progress Check
+        if (Core.isCompletedBefore(8601))
+            return;
+
+        //Preload Quests
+        Story.PreLoad();
+
+        //Fantaisie-Impromptu
+        Story.MapItemQuest(8592, "astraviapast", 10017);
+        Story.MapItemQuest(8592, "astraviapast", 10018);
+
+        //Odile
+        Story.KillQuest(8593, "astraviapast", "Astravian Soldier");
+
+        //Revolutionary Etude
+        Story.MapItemQuest(8594, "astraviapast", 10019, 7);
+
+        //Tannhauser
+        Story.KillQuest(8595, "astraviapast", "Panicked Citizen");
+
+        //Tzigane
+        Story.KillQuest(8596, "astraviapast", "Astravian Soldier");
+        Story.MapItemQuest(8596, "astraviapast", 10020);
+
+        //Ride of the Valkyrie
+        Core.EquipClass(ClassType.Solo);
+        Story.KillQuest(8597, "astraviapast", "Regulus");
+
+        //Wedding March
+        Story.KillQuest(8598, "astraviapast", "Titania");
+
+        //From the New World
+        Story.KillQuest(8599, "astraviapast", "Aurola");
+
+        //Mov.VII Aquarium
+        Story.MapItemQuest(8600, "astraviapast", 10021);
+
+        //Liebestraume No. 3
+        Story.KillQuest(8601, "astraviapast", "Forsaken Husk");
     }
 }
