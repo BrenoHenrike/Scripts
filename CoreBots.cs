@@ -14,6 +14,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 public class CoreBots
 {
@@ -430,11 +431,15 @@ public class CoreBots
     private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant, int shopItemID)
     {
         if (shopItemID == 0)
+        {
             for (int i = 0; i < quant; i++)
                 Bot.Shops.BuyItem(shopID, item.Name);
+            Bot.Wait.ForItemBuy();
+        }
         else
         {
             SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
+            Bot.Wait.ForItemBuy();
             Logger("Re-login to prevent ghost buy");
             Relogin();
         }
