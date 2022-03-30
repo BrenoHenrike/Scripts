@@ -24,6 +24,9 @@ public class LoremasterREP
 
     private void UnlockLoreMaster()
     {
+        if (!Core.IsMember)
+            return;
+            
         if (!Bot.Quests.IsUnlocked(3032))
         {
             // Rosetta Stones
