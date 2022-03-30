@@ -1044,12 +1044,14 @@ public class CoreBots
         switch (classToUse)
         {
             case ClassType.Farm:
+                JumpWait();
                 Equip(FarmGear);
                 if (!usingFarmGeneric)
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
+                JumpWait();
                 Equip(SoloGear);
                 if (!usingSoloGeneric)
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
