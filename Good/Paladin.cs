@@ -24,12 +24,13 @@ public class Paladin
         if (Core.CheckInventory("Paladin"))
             return;
 
-        Farm.GoodREP(5);
-
         Core.BuyItem("necropolis", 26, "Warrior");
-        Adv.rankUpClass("Warrior");
         Core.BuyItem("necropolis", 26, "Healer");
+
+        Adv.rankUpClass("Warrior");
         Adv.rankUpClass("Healer");
+
+        Farm.GoodREP(5);
 
         Core.BuyItem("necropolis", 26, "Paladin");
 
