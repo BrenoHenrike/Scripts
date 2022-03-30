@@ -993,9 +993,9 @@ public class CoreBots
 
     private void ScriptsVersionChecker()
     {
-        ProcessStartInfo pInfo = new ProcessStartInfo("cmd", "/c curl -H \"Accept: application / vnd.github.v3 + json\" https://api.github.com/repos/brenohenrike/Scripts/releases/latest");
-        System.Diagnostics.Process p = new System.Diagnostics.Process();
-        p.StartInfo = pInfo;
+        Process p = new();
+        p.StartInfo.FileName = "cmd";
+        p.StartInfo.Arguments = "/c curl -H \"Accept: application / vnd.github.v3 + json\" https://api.github.com/repos/brenohenrike/Scripts/releases/latest";
         p.StartInfo.RedirectStandardOutput = true;
         p.StartInfo.UseShellExecute = false;
         p.StartInfo.CreateNoWindow = true;
@@ -1004,12 +1004,12 @@ public class CoreBots
         string output = p.StandardOutput.ReadToEnd();
         p.WaitForExit();
 
-        string toBeSearched = "ScriptsBundle-v";
-        string version = output.Substring(output.IndexOf(toBeSearched) + toBeSearched.Length);
-        version = version.Substring(0, version.IndexOf(".zip"));
+        dynamic? json = JsonConvert.DeserializeObject(output);
+        if (json == null)
+            return;
 
-        List<int> TargetVArray = Array.ConvertAll(version.Split('.'), int.Parse).ToList();
-        List<int> CurrentVArray = Array.ConvertAll(File.ReadAllLines(AppPath + "/Scripts/CoreBots.cs")[0].Replace("//Scripts v", "").Split('.'), int.Parse).ToList();
+        List<int> TargetVArray = ((string)json.name).Replace("Scripts Bundle v", "").Split('.').Select(x => int.Parse(x)).ToList();
+        List<int> CurrentVArray = File.ReadLines(AppPath + "/Scripts/CoreBots.cs").First().Replace("//Scripts v", "").Split('.').Select(x => int.Parse(x)).ToList();
         for (int i = 0; i < TargetVArray.Count; i++)
         {
             int Target = TargetVArray.Skip(i).First();
@@ -1018,12 +1018,12 @@ public class CoreBots
                 return;
             else if (Target > Current)
             {
-                DialogResult SendSite = MessageBox.Show($"Scripts Bundle v{version} has been released.\nDo you wish to go to the download page? (this stops the bot)",
+                DialogResult SendSite = MessageBox.Show($"Scripts Bundle v{((string)json.name).Replace("Scripts Bundle v", "")} has been released.\nDo you wish to go to the download page? (this stops the bot)",
                                                         "New version of the Scripts Bundle",
                                                         MessageBoxButtons.YesNo);
                 if (SendSite == DialogResult.Yes)
                 {
-                    System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/Scripts/releases");
+                    Process.Start("explorer", "https://github.com/BrenoHenrike/Scripts/releases");
                     Bot.Stop();
                 }
             }
