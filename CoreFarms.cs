@@ -1112,14 +1112,14 @@ public class CoreFarms
         {
             if (!Core.IsMember ? FactionRank("Loremaster") < 10 : FactionRank("Loremaster") < rank)
             {
+                Experience(15);
                 Core.EquipClass(ClassType.Farm);
                 while (Core.IsMember ? FactionRank("Loremaster") < 10 : FactionRank("Loremaster") < rank)
                 {
-                    Core.EnsureAccept(2956);
-                    Core.HuntMonster("forest", "Zardman Grunt", "Environmental Findings", 2);
-                    Core.HuntMonster("forest", "Zardman Grunt", "Habits Studied", 2);
-                    Core.HuntMonster("forest", "Zardman Grunt", "Itemized Item List");
-                    Core.EnsureComplete(2956);
+                    Core.EnsureAccept(7505);
+                    Core.HuntMonster("uppercity", "Drow Assassin", "Poisoned Dagge", 4);
+                    Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike");
+                    Core.EnsureComplete(7505);
                 }
             }
             else if (Core.IsMember ? FactionRank("Loremaster") < 3 : FactionRank("Loremaster") < rank)
