@@ -1,9 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs
+//cs_include Scripts/Story/QueenofMonsters/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs
 using RBot;
 
-public class CompleteExtrikiMap
+public class CompleteExtriki
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -13,7 +13,7 @@ public class CompleteExtrikiMap
     {
         Core.SetOptions();
 
-        Extriki.Extriki();
+        Extriki.CompleteCoreExtriki();
 
         Core.SetOptions(false);
     }

@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs
+//cs_include Scripts/Story/QueenofMonsters/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs
 using RBot;
 
 public class CompleteCharredPath
