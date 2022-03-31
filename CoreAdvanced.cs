@@ -735,6 +735,7 @@ public class CoreAdvanced
             case "ranger":
             case "renegade":
             case "rogue":
+            case "rogue (rare)":
             case "scarlet sorceress":
             case "shadowscythe general":
             case "skycharged grenadier":
@@ -796,6 +797,7 @@ public class CoreAdvanced
             case "void highlord tester":
             case "warlord":
             case "warrior":
+            case "warrior (rare)":
             case "warriorscythe general":
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
                 break;
@@ -863,6 +865,7 @@ public class CoreAdvanced
             case "firelord summoner":
             case "grim necromancer":
             case "healer":
+            case "healer (rare)":
             case "highseas commander":
             case "infinity knight":
             case "interstellar knight":
@@ -907,6 +910,7 @@ public class CoreAdvanced
             case "lightcaster test":
             case "love caster":
             case "mage":
+            case "mage (rare)":
             case "sorcerer":
             case "the collector":
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
