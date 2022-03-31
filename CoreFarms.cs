@@ -1117,7 +1117,7 @@ public class CoreFarms
                 while (Core.IsMember ? FactionRank("Loremaster") < 10 : FactionRank("Loremaster") < rank)
                 {
                     Core.EnsureAccept(7505);
-                    Core.HuntMonster("uppercity", "Drow Assassin", "Poisoned Dagge", 4);
+                    Core.HuntMonster("uppercity", "Drow Assassin", "Poisoned Dagger", 4);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike");
                     Core.EnsureComplete(7505);
                 }
