@@ -135,7 +135,7 @@ public class J6Saga
             Core.KillMonster("bamboo", "r3", "Left", "Tanuki", "Umeboshi Plum", 4);
             Core.KillMonster("yokaigrave", "Enter2", "Right", "*", "Ginger");
             Core.KillMonster("guru", "Field2", "Left", "*", "Peppermint Leaf", 3);
-            Core.BuyItem("yulgar", 16, "Absorbent Mop");
+            Core.BuyItem("digitalyulgar", 16, "Absorbent Mop");
             Core.EnsureComplete(2833);
         }
 
