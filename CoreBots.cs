@@ -89,7 +89,6 @@ public class CoreBots
             Logger("Bot Started");
 
             RBotVersionChecker("4.0.0.1");
-            ScriptsVersionChecker();
 
             if (!Bot.Player.LoggedIn)
             {
@@ -991,45 +990,6 @@ public class CoreBots
                 }
                 else
                     Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
-            }
-        }
-    }
-
-    private void ScriptsVersionChecker()
-    {
-        Process p = new();
-        p.StartInfo.FileName = "cmd";
-        p.StartInfo.Arguments = "/c curl -H \"Accept: application / vnd.github.v3 + json\" https://api.github.com/repos/brenohenrike/Scripts/releases/latest";
-        p.StartInfo.RedirectStandardOutput = true;
-        p.StartInfo.UseShellExecute = false;
-        p.StartInfo.CreateNoWindow = true;
-
-        p.Start();
-        string output = p.StandardOutput.ReadToEnd();
-        p.WaitForExit();
-
-        dynamic? json = JsonConvert.DeserializeObject(output);
-        if (json == null)
-            return;
-
-        List<int> TargetVArray = ((string)json.name).Replace("Scripts Bundle v", "").Split('.').Select(x => int.Parse(x)).ToList();
-        List<int> CurrentVArray = File.ReadLines(AppPath + "/Scripts/CoreBots.cs").First().Replace("//Scripts v", "").Split('.').Select(x => int.Parse(x)).ToList();
-        for (int i = 0; i < TargetVArray.Count; i++)
-        {
-            int Target = TargetVArray.Skip(i).First();
-            int Current = CurrentVArray.Skip(i).First();
-            if (Target < Current)
-                return;
-            else if (Target > Current)
-            {
-                DialogResult SendSite = MessageBox.Show($"Scripts Bundle v{((string)json.name).Replace("Scripts Bundle v", "")} has been released.\nDo you wish to go to the download page? (this stops the bot)",
-                                                        "New version of the Scripts Bundle",
-                                                        MessageBoxButtons.YesNo);
-                if (SendSite == DialogResult.Yes)
-                {
-                    Process.Start("explorer", "https://github.com/BrenoHenrike/Scripts/releases");
-                    Bot.Stop();
-                }
             }
         }
     }
