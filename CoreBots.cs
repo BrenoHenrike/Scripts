@@ -1,4 +1,4 @@
-﻿//Scripts v3.1.2
+﻿//Scripts v3.2
 using RBot;
 using RBot.Items;
 using RBot.Monsters;
