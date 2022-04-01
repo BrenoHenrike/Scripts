@@ -68,8 +68,7 @@ public class DragonOfTime
                 Story.KillQuest(3031, "druids", "Void Ghast");
             }
             Farm.LoremasterREP(4);
-            Core.Logger($"\"Acquiring Ancient Secrets\" [7716] is locked behind /librarium and is inaccessable during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
-            Core.BuyItem("Librarium", 651, "Myths of Lore");
+            Core.BuyItem("digitalmaintown", 651, "Myths of Lore");
 
             Core.KillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
 

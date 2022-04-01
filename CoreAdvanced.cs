@@ -127,10 +127,10 @@ public class CoreAdvanced
 
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
-        if (Special != WeaponSpecial.None)// && !Core.isCompletedBefore(2937))
+        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
         {
             Special = WeaponSpecial.None;
-            //Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
+            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
         }
 
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
@@ -172,17 +172,17 @@ public class CoreAdvanced
             {
                 Core.Logger($"Best Enhancement of: {Type.ToString()} + {Special.ToString().Replace('_', ' ')}");
                 if (Type == EnhancementType.Fighter)
-                    __AutoEnhance(WeaponList, 635, "museum");
+                    __AutoEnhance(WeaponList, 635);
                 else if (Type == EnhancementType.Thief)
-                    __AutoEnhance(WeaponList, 637, "museum");
+                    __AutoEnhance(WeaponList, 637);
                 else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
-                    __AutoEnhance(WeaponList, 636, "museum");
+                    __AutoEnhance(WeaponList, 636);
                 else if (Type == EnhancementType.Healer)
-                    __AutoEnhance(WeaponList, 638, "museum");
+                    __AutoEnhance(WeaponList, 638);
                 else if (Type == EnhancementType.Hybrid)
-                    __AutoEnhance(WeaponList, 633, "museum");
+                    __AutoEnhance(WeaponList, 633);
                 else if (Type == EnhancementType.Lucky)
-                    __AutoEnhance(WeaponList, 639, "museum");
+                    __AutoEnhance(WeaponList, 639);
             }
         }
 
@@ -191,10 +191,8 @@ public class CoreAdvanced
         if (i != WeaponList.Count + OtherList.Count)
             Core.Logger("Enhancements complete");
 
-        void __AutoEnhance(List<InventoryItem> Input, int ShopID, string Map = "")
+        void __AutoEnhance(List<InventoryItem> Input, int ShopID)
         {
-            if (Map != "")
-                Core.Join(Map);
             Core.JumpWait();
 
             Bot.Shops.Load(ShopID);
