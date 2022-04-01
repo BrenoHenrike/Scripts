@@ -47,12 +47,16 @@ public class CoreBots
     public string SoloClass { get; set; } = "Generic";
     // [Can Change] Mode of soloing class, if it has multiple. 
     public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
+    // [Can Change] Whether you wish to equip solo equipment
+    public bool SoloGearOn { get; set; } = true;
     // [Can Change] Names of your soloing equipment
     public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
     // [Can Change] Mode of farming class, if it has multiple. 
     public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
+    // [Can Change] Whether you wish to equip farm equipment
+    public bool FarmGearOn { get; set; } = true;
     // [Can Change] Names of your farming equipment
     public string[] FarmGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
@@ -1045,14 +1049,16 @@ public class CoreBots
         {
             case ClassType.Farm:
                 JumpWait();
-                Equip(FarmGear);
+                if (FarmGearOn)
+                    Equip(FarmGear);
                 if (!usingFarmGeneric)
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
                 JumpWait();
-                Equip(SoloGear);
+                if (SoloGearOn)
+                    Equip(SoloGear);
                 if (!usingSoloGeneric)
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
@@ -1356,9 +1362,11 @@ public class CoreBots
         LoggerInChat = CBOBool("LoggerInChat");
 
         SoloClass = String.IsNullOrEmpty(CBOString("SoloClassSelect")) ? "Generic" : CBOString("SoloClassSelect");
+        SoloGearOn = CBOBool("SoloEquipCheck");
         SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("SoloModeSelect")) ? "Base" : CBOString("SoloModeSelect"));
 
         FarmClass = String.IsNullOrEmpty(CBOString("FarmClassSelect")) ? "Generic" : CBOString("FarmClassSelect");
+        FarmGearOn = CBOBool("FarmEquipCheck");
         FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("FarmModeSelect")) ? "Base" : CBOString("FarmModeSelect"));
 
         //Advanced
