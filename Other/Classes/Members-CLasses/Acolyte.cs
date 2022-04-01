@@ -26,6 +26,7 @@ public class Acolyte
 
     public void GetAcolyte(bool rankUpClass = true)
     {
+        Core.Logger($"Acolyte is locked behind /trainers and is inaccessable during the April Fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (!Core.IsMember)
             return;
 
