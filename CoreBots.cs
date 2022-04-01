@@ -1312,6 +1312,18 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name == map.ToLower() && !ignoreCheck)
             return;
 
+        string[] disabledMaps =
+        {
+            "librarium",
+            "museum",
+            "yulgar",
+            "ariapet",
+            "trainers"
+        };
+
+        if (disabledMaps.Contains(map.ToLower()))
+            Logger($"Map {map} is disabled because of April Fools, bot cant continue. Please report to Lord Exelot", messageBox: true, stopBot: true);
+
         if (map.ToLower() == "tercessuinotlim")
         {
             Bot.Player.Jump("m22", "Left");
