@@ -596,6 +596,7 @@ public class CoreFarms
 
     public void BladeofAweREP(int rank = 10, bool farmBoA = true)
     {
+        Core.Logger("Blade of Awe is locked behind /museum and might be monitored during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (FactionRank("Blade of Awe") >= rank && !farmBoA)
             return;
         if (farmBoA && Core.CheckInventory("Blade of Awe"))

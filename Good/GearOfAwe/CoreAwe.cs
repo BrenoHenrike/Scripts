@@ -14,6 +14,7 @@ public class CoreAwe
 
     public void GetAweRelic(string Item, int LegendQuest, int FragmentAmount, int ShardAmount, string Map, string Monster)
     {
+        Core.Logger($"{Item} of Awe is locked behind /museum and might be monitored during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (Core.CheckInventory($"{Item} Relic"))
             return;
         Core.AddDrop($"{Item} Fragment");
