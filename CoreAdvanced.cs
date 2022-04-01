@@ -127,10 +127,10 @@ public class CoreAdvanced
 
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
-        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
+        if (Special != WeaponSpecial.None)// && !Core.isCompletedBefore(2937))
         {
             Special = WeaponSpecial.None;
-            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
+            //Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
         }
 
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
