@@ -76,6 +76,7 @@ public class FandH
         // Fortitude
         if (!Core.CheckInventory("Fortitude"))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6605);
             Core.HuntMonster("iceplane", "Enfield", "Fortitude's Handle");
             Bot.Quests.UpdateQuest(4616);
