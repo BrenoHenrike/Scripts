@@ -11,8 +11,6 @@ public class AAGiantChickenCow
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
 
-    public readonly int[] SkillOrder = { 2, 4, 3, 1 };
-
     public void ScriptMain(ScriptInterface Bot)
     {
         Core.SetOptions();
@@ -22,26 +20,23 @@ public class AAGiantChickenCow
         Core.SetOptions(false);
     }
 
-    private void KFC()
+    public void KFC()
     {
+        int Dice = Bot.Runtime.Random.Next(1, 999999);
+
         Core.AddDrop(Core.EnsureLoad(8605).Rewards.Select(x => x.Name).ToArray());
 
+        Story.MapItemQuest(8603, "battleontown", 10031);
 
-        if (!Story.QuestProgression(8603))
-        {
-            Core.EnsureAccept(8603);
-            Core.GetMapItem(10031, 1, "battleontown");
-            Core.EnsureComplete(8603);
-        }
         if (!Core.CheckInventory(Core.EnsureLoad(8605).Rewards.Select(x => x.Name).ToArray()))
         {
             Core.EnsureAccept(8605);
             Core.Join("battleontown", "r9", "Right");
             Bot.Player.SetSpawnPoint();
 
+            Core.Logger($"If you're reading this, I banged your mom {Dice} times last night.");
             Adv.BoostKillMonster("battleontown", "r9", "Right", "Giant ChickenCow", "Flaming Feather", 25);
             Core.EnsureComplete(8605);
         }
-
     }
 }
