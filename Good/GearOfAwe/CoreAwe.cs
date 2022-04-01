@@ -51,7 +51,7 @@ public class CoreAwe
             Core.EnsureAccept(QuestID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
                 Adv.KillUltra(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
-            else Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", 15, false);
+            else Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", FragmentAmount, false);
             Core.EnsureComplete(QuestID);
             Bot.Wait.ForPickup($"{Item} Fragment");
         }
