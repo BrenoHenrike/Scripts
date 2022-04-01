@@ -24,10 +24,7 @@ public class LoremasterREP
 
     private void UnlockLoreMaster()
     {
-        if (!Core.IsMember)
-            return;
-            
-        if (!Bot.Quests.IsUnlocked(3032))
+        if (Core.IsMember && !Bot.Quests.IsUnlocked(3032))
         {
             // Rosetta Stones
             Story.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);

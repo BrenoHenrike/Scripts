@@ -47,7 +47,7 @@ public class GetAllRanks
 
     private void UnlockLoreMaster()
     {
-        if (!Bot.Quests.IsUnlocked(3032))
+        if (Core.IsMember && !Bot.Quests.IsUnlocked(3032))
         {
             // Rosetta Stones
             Story.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);
