@@ -59,7 +59,7 @@ public class CoreVHL
                 Farm.Gold(2000000);
                 Core.BuyItem("citadel", 44, 38316);
             }
-            Core.BuyItem("yulgar", 16, "Aelita's Emerald");
+            Core.BuyItem("digitalyulgar", 16, "Aelita's Emerald");
             Nulgath.FarmUni13(1);
             Nulgath.FarmGemofNulgath(20);
             Nulgath.EmblemofNulgath(20);

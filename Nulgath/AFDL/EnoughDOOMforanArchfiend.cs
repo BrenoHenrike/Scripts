@@ -55,7 +55,7 @@ public class EnoughDOOMforanArchfiend
 
         Nulgath.FarmBloodGem(2);
 
-        Core.BuyItem("yulgar", 16, "Aelita's Emerald");
+        Core.BuyItem("digitalyulgar", 16, "Aelita's Emerald");
 
         while (!Core.CheckInventory("Essence Potion", 5))
         {
