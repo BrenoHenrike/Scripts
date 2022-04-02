@@ -31,10 +31,10 @@ public class LegionExercise1
         Core.AddDrop(item);
 
         Legion.JoinLegion();
-        Core.BuyItem("underworld", 216, "Undead Warrior");
+        Core.BuyItem("underworld", 216, "Undead Champion");
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
-        
+
         int Dice = Bot.Runtime.Random.Next(1, 101);   // creates a number from 1 to 100
         //-------------------------------------------------------------------------------------------------------
 
