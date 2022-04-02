@@ -47,7 +47,7 @@ public class LegionExercise4
         {
             Core.EnsureAccept(824);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("Doomhaven", "Skeletal Ice Mage", "Frostbit Skull", 15, isTemp: false, publicRoom: false);
+            Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frostbit Skull", 15, isTemp: false, publicRoom: false);
             Core.HuntMonster("Marsh2", "Lesser Shadow Serpent", "Potent Viper's Blood", publicRoom: false);
             Bot.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
