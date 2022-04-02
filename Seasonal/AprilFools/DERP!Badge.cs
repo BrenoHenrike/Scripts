@@ -24,11 +24,6 @@ public class DERPBadge
         if (Core.isCompletedBefore(8007))
             return;
 
-        // if (!Core.CheckInventory("Rainbow Derpicorn Guard (R)"))
-        // {
-        //     Core.HuntMonster("battlefools", "Rainbow Derpicorn", "Rainbow Derpicorn Guard (R)", isTemp: false);
-        // }
-
         Core.AddDrop(new[] { "Rainbow Derpicorn Guard (L)", "Rainbow Derpicorn Guard (R)" });
 
         while (!Bot.Inventory.ContainsHouseItem("Rainbow Derpicorn Guard (R)"))
