@@ -43,7 +43,7 @@ public class LegionExercise3
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Core.CheckInventory(new[] { "Undead Champion Blade", "Legendary Golden Death Blade" }))
+        while (!Core.CheckInventory(new[] { "Judgement Hammer" }))
         {
             Core.EnsureAccept(823);
             Core.EquipClass(ClassType.Farm);
