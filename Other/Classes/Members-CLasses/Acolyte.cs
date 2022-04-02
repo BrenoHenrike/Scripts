@@ -26,7 +26,6 @@ public class Acolyte
 
     public void GetAcolyte(bool rankUpClass = true)
     {
-        Core.Logger($"Acolyte is locked behind /trainers and is inaccessable during the April Fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (!Core.IsMember)
             return;
 
@@ -35,9 +34,9 @@ public class Acolyte
 
         if (Core.CheckInventory("Healer"))
         {
-            Core.BuyItem("trainers", 176, "Healer");
+            Core.BuyItem("digitaltrainers", 176, "Healer");
             Adv.rankUpClass("Healer");
-            Core.BuyItem("trainers", 177, "Acolyte");
+            Core.BuyItem("digitaltrainers", 177, "Acolyte");
             if (rankUpClass)
                 Adv.rankUpClass("Acolyte");
         }

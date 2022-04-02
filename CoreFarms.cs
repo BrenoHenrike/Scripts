@@ -596,7 +596,6 @@ public class CoreFarms
 
     public void BladeofAweREP(int rank = 10, bool farmBoA = true)
     {
-        Core.Logger("Blade of Awe is locked behind /museum and might be monitored during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (FactionRank("Blade of Awe") >= rank && !farmBoA)
             return;
         if (farmBoA && Core.CheckInventory("Blade of Awe"))
@@ -662,7 +661,7 @@ public class CoreFarms
                 Core.BuyItem("museum", 630, "Blade of Awe");
             }
             if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
-                Core.BuyItem("museum", 631, "Blade of Awe");
+                Core.BuyItem("battleontown", 631, "Blade of Awe"); //ChangePostEvent
         }
     }
 

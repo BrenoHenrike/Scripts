@@ -1,10 +1,71 @@
 - ##### Versions
+  - [v3.2 - Latest](#v32)
+      [MAS v1.4 - Latest](#mas-v14)
+      [SBAU v1.0 - Latest](#sbau-v10)
   - [v3.1](#v31)
-    - [v3.1.2 - Latest](#v312)
+    - [v3.1.2](#v312)
     - [v3.1.1](#v311)
   - [v3.0](#v30)
     - [v3.0.1](#v301)
   - [v2.0 till 2.29](Changelog_Archive_v2.md)
+
+### v3.2
+**Released on Apr 1, 2022 at 20:30 / 20:30 PM (UTC)**  
+· Included and released S.B.A.U. (Scripts Bundle Auto Updater), which is found in the plugins dropdown menu. Activate it to be kept up to date on updates.  
+· Released Seasonal/AutoAttackGiantChickencow.cs (Exelot)  
+· Released Evil/DoomKnight\[Mem\].cs (Exelot)  
+· Released Story/BookofMonstersTheDestroyer(Extriki)/0CompleteAll.cs (Vladimir)  
+· Released Story/BookofMonstersTheDestroyer(Extriki)/1TheRift.cs (Vladimir)  
+· Released Story/BookofMonstersTheDestroyer(Extriki)/2CharredPath.cs (Vladimir)  
+· Released Story/BookofMonstersTheDestroyer(Extriki)/3Underglade.cs (Vladimir)  
+· Released Story/BookofMonstersTheDestroyer(Extriki)/4Extriki.cs (Vladimir)  
+· Released Story/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs (Vladimir)  
+· Released Story/ElegyofMadness(Darkon)/6AstraviaPast.cs (Vladimir)  
+· Rewrote and renamed HollowbornScythe.cs -> HollowbornReapersScythe.cs (Exelot)  
+· Added a EquipClass(ClassType.Solo) to Fortitude and Hubris's Fortitude part  
+· Added JumpWait to EquipClass  
+· Added Bot.Wait.ForItemBuy to _BuyItem  
+· Added Glacera storyline to Cryomancer.cs and 0AllDailies.cs   
+· Added a missing quest to DoomwoodPart3.cs  
+· BurningBlade bot now uses item ID to prevent bugs  
+· Changed it so that Lightcaster now farms Aranx's Pure Light whilst farming BBoA  
+· Changed order of components in Paladin.cs  
+· Disabled auto equip solo class on startup for bots in the Enhancement catagory  
+· Disabled auto equip solo class on startup for rankUpCurrentClass.cs  
+· Changed "Astravia" Folder in Story to "ElegyofMadness(Darkon)"  
+· Changed "is your bot setup correctly?" message in storybot to "please report the issue here https://discord.io/AQWBots (#rbot-questions-help)"  
+· Fixed quest 5310 in ShatterGlassMaze  
+· Fixed the saved state random message giving an error  
+· Fixed a missing 800 void auras in NecroticSwordOfDoom if you had OptimizeInv on  
+· Fixed Safira's Orb not being picked up in LordOfOrder.cs  
+· Fixed missing import in Cryomancer.cs  
+· Fixed FrozenRuins => Glacera  
+· Fixed the stopBot: true paramater on CoreBots => Logger, now the script actually stops if it needs to  
+· Fixed Core13LoC => horc sell sword  
+· Fixed Core13LoC => Defeat Drakath! + Defeat Drakath... again!  
+· Fixed HB Reapers Scythe doing 10 HB rep instead of 9  
+· Fixed LoremasterREP using a mem-only option by adding a non-mem option too  
+· Fixed CoreAwe => GetAweRelic using a quantity of 15 on everything  
+· Fixed specify equipment off whilst having specified equipment in the past not stopping the equips on classchange (CBO)  
+· Fixed DoT and 0RankUpAll trying to join druids whilst you werent a member  
+· Did multiple changes as to be able to deal with the locking of maps from the April Fools event, either using different maps or stopping the bots  
+· Multiple fixes to LightCaster  
+· Fixed a couple typos  
+[Back to top](#versions)
+
+### M.A.S. v1.4
+**Released on Apr 1, 2022 at 20:30 / 20:30 PM (UTC)**  
+· Updated Chrono DataKnight Combo  
+· Updated SSoT and variants  
+· Updated Infinity Titan  
+· Updated StoneCrusher  
+[Back to top](#versions)  
+
+### S.B.A.U v1.0
+**Released on Apr 1, 2022 at 20:30 / 20:30 PM (UTC)**  
+· Released the Scripts Bundle Auto Update plugin  
+· This might be redundant in the future  
+[Back to top](#versions)  
 
 ### v3.1.2
 **Released on Mar 25, 2022 at 13:15 / 01:15 PM (UTC)**  
