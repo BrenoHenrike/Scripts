@@ -24,6 +24,9 @@ public class LivingDungeon
 
         Story.PreLoad();
 
+        // Titan Hollow
+        Story.ChainQuest(4348);
+
         // Roots of all Evil
         Story.KillQuest(4349, "livingdungeon", "Root of Evil");
 
