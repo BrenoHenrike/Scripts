@@ -79,7 +79,7 @@ public class CoreVHL
         }
 
 
-        Core.ToBank("Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap", "Roentgenium of Nulgath");
+        Core.ToBank("Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap");
     }
 
     public void VHLCrystals()
