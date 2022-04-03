@@ -1238,9 +1238,9 @@ public class CoreBots
         if (Bot.Player.X != 480 || Bot.Player.Y != 275 || !inPublicRoom())
             return;
 
-        if (cell == "Enter")
+        if (cell.Contains("Enter"))
         {
-            Bot.Player.Jump("Enter", "Spawn");
+            Bot.Player.Jump(cell, "Spawn");
             return;
         }
 
