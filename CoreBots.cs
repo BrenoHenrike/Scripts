@@ -1228,12 +1228,44 @@ public class CoreBots
     /// </summary>
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
-    public void Jump(string cell = "Enter", string pad = "Spawn")
+    public void Jump(string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         Bot.Player.SetSpawnPoint(cell, pad);
-        if (Bot.Player.Cell == cell)
+        if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
         Bot.Player.Jump(cell, pad);
+        Bot.Sleep(200);
+        if (Bot.Player.X != 480 || Bot.Player.Y != 275 || !inPublicRoom())
+            return;
+
+        if (cell == "Enter")
+        {
+            Bot.Player.Jump("Enter", "Spawn");
+            return;
+        }
+
+        string[] pads =
+        {
+            "Left",
+            "Right",
+            "Top",
+            "Bottom",
+            "Spawn",
+            "Up",
+            "Down",
+            "Center"
+        };
+
+        foreach (string _pad in pads)
+        {
+            if (_pad == pad)
+                continue;
+            Bot.Log(_pad);
+            Bot.Player.Jump(cell, _pad);
+            Bot.Sleep(200);
+            if (Bot.Player.X != 480 || Bot.Player.Y != 275)
+                break;
+        }
     }
 
     /// <summary>
@@ -1241,15 +1273,44 @@ public class CoreBots
     /// </summary>
     public void JumpWait()
     {
-        if (Bot.Player.Cell != "Wait")
-        {
-            if (Bot.Player.Cell == "Wait")
-                return;
+        List<string> MonsterCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToList();
 
-            Bot.Player.Jump("Wait", "Spawn");
-            Bot.Sleep(ExitCombatDelay);
-            Bot.Wait.ForCombatExit();
+        if (!MonsterCells.Contains(Bot.Player.Cell))
+            return;
+
+        bool Restore = Bot.Options.AggroMonsters;
+        Bot.Options.AggroMonsters = false;
+        bool jumped = false;
+
+        if (!MonsterCells.Contains("Enter"))
+        {
+            jumped = true;
+            Jump("Enter", "Spawn", true);
         }
+        else
+        {
+            foreach (string cell in Bot.Map.Cells)
+            {
+                if (cell == Bot.Player.Cell || new[] { "wait", "blank" }.Contains(cell.ToLower()) || cell.ToLower().Contains("cut"))
+                    continue;
+                if (!MonsterCells.Contains(cell))
+                {
+                    jumped = true;
+                    Jump(cell, "Left", true);
+                    break;
+                }
+            }
+        }
+        if (!jumped)
+        {
+            Jump(Bot.Player.Cell, Bot.Player.Pad, true);
+            Jump(Bot.Player.Cell, Bot.Player.Pad, true);
+        }
+
+        Bot.Sleep(ExitCombatDelay - 200);
+        Bot.Wait.ForCombatExit();
+        if (Restore)
+            Bot.Options.AggroMonsters = true;
     }
 
     /// <summary>
@@ -1311,6 +1372,12 @@ public class CoreBots
             Bot.Sleep(1500);
             Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
+    }
+
+    public bool inPublicRoom()
+    {
+        Bot.Wait.ForMapLoad(Bot.Map.Name);
+        return int.Parse(Bot.GetGameObject("ui.mcInterface.areaList.title.t1.text").Split(' ').Last().Split('-').Last().Replace("\"", "") ?? "1") < 1000;
     }
     #endregion
 
