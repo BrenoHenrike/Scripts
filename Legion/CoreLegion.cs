@@ -94,7 +94,7 @@ public class CoreLegion
             Adv.BestGear(GearBoost.Dragonkin);
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Adv.BestGear(GearBoost.Human);
-             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
 
             Core.EnsureComplete(4743);
             Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");
@@ -215,7 +215,7 @@ public class CoreLegion
         LTBrightParagon(quant);
         LTArcaneParagon(quant);
         LTShogunParagon(quant);
-        LTThanatosParagon();
+        LTThanatosParagon(quant);
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
     }

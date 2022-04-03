@@ -37,6 +37,7 @@ public class YamiNoRonin
         TPtP.BlademasterSwordScroll(1);
         TEoaE.YokaiSwordScroll(1);
         Core.EnsureComplete(7408);
+        Bot.Wait.ForPickup("Yami no Ronin");
 
         if (rankUpClass)
             Adv.rankUpClass("Yami no Ronin");

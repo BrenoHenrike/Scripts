@@ -77,6 +77,9 @@ public class CoreVHL
             Core.EnsureComplete(5660);
             Bot.Wait.ForPickup("Roentgenium of Nulgath");
         }
+
+
+        Core.ToBank("Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap");
     }
 
     public void VHLCrystals()

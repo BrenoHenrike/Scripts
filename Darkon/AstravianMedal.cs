@@ -14,6 +14,8 @@ public class AstravianMedal
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.Add("Astravian Medal");
+
         Core.SetOptions();
 
         Darkon.AstravianMedal();
