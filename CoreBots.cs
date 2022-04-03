@@ -528,7 +528,6 @@ public class CoreBots
             return true;
         if (questID <= 0)
             return false;
-        JumpWait();
         Bot.Sleep(ActionDelay);
         return Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
     }
@@ -539,7 +538,6 @@ public class CoreBots
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureAccept(params int[] questIDs)
     {
-        JumpWait();
         foreach (int quest in questIDs)
         {
             if (Bot.Quests.IsInProgress(quest) || quest <= 0)
@@ -558,7 +556,6 @@ public class CoreBots
     {
         if (questID <= 0)
             return false;
-        JumpWait();
         Bot.Sleep(ActionDelay);
         return Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
     }
@@ -572,7 +569,6 @@ public class CoreBots
     {
         if (questID <= 0)
             return false;
-        JumpWait();
         Bot.Sleep(ActionDelay);
         if (Bot.Quests.TryGetQuest(questID, out Quest quest))
             foreach (ItemBase item in quest.Rewards)
@@ -596,7 +592,6 @@ public class CoreBots
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureComplete(params int[] questIDs)
     {
-        JumpWait();
         foreach (int quest in questIDs)
         {
             if (quest <= 0)
@@ -612,7 +607,6 @@ public class CoreBots
 
         Quest _EnsureLoad(int questID)
         {
-            JumpWait();
             Bot.Sleep(ActionDelay);
             return Bot.Quests.EnsureLoad(questID);
         }
@@ -625,7 +619,6 @@ public class CoreBots
     /// <param name="itemID">ID of the choose-able reward item</param>
     public void ChainComplete(int questID, int itemID = -1)
     {
-        JumpWait();
         Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
         Bot.Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID, tries: AcceptandCompleteTries);
