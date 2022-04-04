@@ -68,9 +68,7 @@ public class ArchDoomKnight
 
     public void DoAll()
     {
-        Core.Logger($"Doing Wolfwing Saga");
         LOC.Wolfwing();
-        Core.Logger($"Evil Rep");
         Farm.EvilREP(7);
         GatheringPower();
         DeathsDoor();
@@ -81,7 +79,7 @@ public class ArchDoomKnight
 
     public void GatheringPower()
     {
-        if (Core.CheckInventory(new[] { "Arch DoomKnight Cape" }))
+        if (Core.CheckInventory("Arch DoomKnight Cape"))
             return;
 
         Core.AddDrop(Q1items);
@@ -104,8 +102,8 @@ public class ArchDoomKnight
         Core.EnsureAccept(6796);
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Death's Power", quant: 1, isTemp: false);
-        Core.HuntMonster(map: "shadowattack", monster: "Death", item: "Souls of the Dead", quant: 400, isTemp: false);
+        Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Death's Power", 1, false);
+        Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Souls of the Dead", 400, false);
         Core.EnsureComplete(6796);
         Core.ToBank(Q2items);
     }
