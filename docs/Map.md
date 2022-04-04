@@ -18,6 +18,10 @@ Information about the currently loaded map (room) can be obtained through the `S
 | `CellPlayers` | *List\<PlayerInfo>* | The list of players in the current cell. |
 | `Loaded` | *bool* | Indicates whether a map is currently loaded. |
 | `Cells` | *List\<string>* | An list of all the cell names in the map. |
+| `LastMap` | *string* | The name of the last map joined in the session. |
+| `MapFilePath` | *string* | The path of the last map file. |
+| `MapFileName` | *string* | The name of the map file, from the MapFilePath. |
+| `MapFileTown` | *string* | The town of the map (usually the region of the map, the first part of MapFilePath) |
 
 ## Methods
 

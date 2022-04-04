@@ -10,6 +10,7 @@ While scripting you might stumble uppon different classes and enums that are req
     - [ItemBase](#itembase)
     - [InventoryItem : ItemBase](#inventoryitem--itembase)
     - [ShopItem : ItemBase](#shopitem--itembase)
+    - [MapItem](#mapitem)
     - [SimpleReward : ItemBase](#simplereward--itembase)
     - [Server](#server)
   - [Enums](#enums)
@@ -138,6 +139,19 @@ The item base class have commom properties through some other item objects that 
 | `Faction` | *string*| The faction needed to buy this item. |
 | `RequiredReputation` | *int* | The needed reputation amount to buy this item (goes from 0 to 302500). |
 | `Requirements`| *List\<RBot.Items.ItemBase>* | A list of all there required items to merge the item. |
+
+### MapItem
+
+> From `RBot.Items`.
+
+| Property | Type | Description |
+|---|:---:|---|
+| `MapItemID` | *int* | The ID of the map item. |
+| `MapName` | *string* | The name of the map. |
+| `MapFilePath` | *string* | The path of the map file. |
+| `QuestID` | *int* | The quest where the map item is required. |
+
+You can use the method `MapItem#ToString()` to return a string formatted like `Item ID [{MapItemID}], Quest [{QuestID}]` with each respective variable filled with the map item info.
 
 ### SimpleReward : ItemBase
 

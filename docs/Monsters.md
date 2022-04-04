@@ -22,7 +22,8 @@ The class has the following methods (return values will be according to the curr
 
 | Method Definition | Return Type | Description |
 |---|---|---|
-| `Exists(string name)` | *bool* | Checks if a monster with the specified name exists (and is alive) in the current cell. |
+| `CurrentAvailableMonsters()` | *List\<Monster>* | Gets a list of all the monsters in the current cell that can be attacked. |
+| `Exists(string name)` | *bool* | Checks if a monster with the specified name exists (is alive and can be attacked) in the current cell. |
 | `GetCellMonsters()` | *Dictionary\<string, List\<RBot.Monsters.Monster>>* | Gets a dictionary mapping cell names to the monsters in that cell. |
 | `GetMonstersByCell(string cell)` | *List\<Monster>* | Gets a list of monsters in the given cell. |
 | `GetMonsterCells(string name)` | *List\<string>* | Gets a list of cells that contain a monster with the given name. |
