@@ -412,7 +412,6 @@ public class CoreFarms
 
         void Packet()
         {
-            Core.Join("party");
             Bot.Sleep(3500);
             Bot.SendPacket($"%xt%zm%crafting%1%getAlchWait%11475%11478%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
             Bot.Sleep(11000);
