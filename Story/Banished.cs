@@ -70,31 +70,8 @@ public class Banished
         // Vial of Antitoxins x1  
         if (!Story.QuestProgression(8462))
         {
-
-            Core.EquipClass(ClassType.Farm);
-            Bot.Options.LagKiller = false;
-
-            Core.EnsureAccept(8462);
-
-            Core.AddDrop("Vial of Antitoxins");
-
-            while (!Core.CheckInventory("Vial of Antitoxins"))
-            {
-                if (!Core.CheckInventory(new[] { "Arashtite Ore", "Fish Oil", "Dragon Runestone" }))
-                {
-                    if (!Core.CheckInventory("Dragon Runestone", 10))
-                    {
-                        Farm.Gold(1000000);
-                        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 10);
-                    }
-                    Core.BuyItem("alchemyacademy", 395, 7132, 10);
-                    Core.BuyItem("alchemyacademy", 397, 11473, 10, 2);
-                    Core.BuyItem("alchemyacademy", 397, 11467, 10, 3);
-                }
-                Farm.AlchemyPacket("Arashtite Ore", "Fish Oil", AlchemyRunes.Gebo, 10, loop: false);
-            }
-            Bot.Wait.ForPickup("Vial of Antitoxins");
-            Core.EnsureComplete(8462);
+            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 1);
+            Story.BuyQuest(8462, "alchemyacademy", 2114, "Vial of Antitoxins");
         }
 
         // A Guilty Conscience

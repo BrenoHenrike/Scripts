@@ -409,7 +409,7 @@ public class CoreFarms
     {
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
-
+            
         void Packet()
         {
             Bot.Sleep(3500);
@@ -417,7 +417,7 @@ public class CoreFarms
             Bot.Sleep(11000);
             Bot.SendPacket($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
-        
+
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
         Core.Logger($"Modifier: {modifier}.");
@@ -442,7 +442,7 @@ public class CoreFarms
         if (!Bot.Player.Factions.Exists(f => f.Name == "Alchemy"))
         {
             Core.Logger("Getting Pre-Ranking XP");
-            if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale" }))
+            if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale", "Dragon Runestone" }))
             {
                 if (!Core.CheckInventory("Dragon Runestone", 10))
                 {
@@ -452,12 +452,8 @@ public class CoreFarms
                 Core.BuyItem("alchemyacademy", 395, 7132, 3);
                 Core.BuyItem("alchemyacademy", 397, 11475, 1, 2);
                 Core.BuyItem("alchemyacademy", 397, 11478, 1, 2);
-                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera);
+                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false);
             }
-            // Bot.Sleep(3500);
-            // Core.SendPackets("%xt%zm%crafting%1%getAlchWait%11475%11478%true%Ready to Mix%Dragon Scale%Ice Vapor%Jera%Moose%");
-            // Bot.Sleep(11000);
-            // Core.SendPackets("%xt%zm%crafting%1%checkAlchComplete%11475%11478%true%Mix Complete%Dragon Scale%Ice Vapor%Jera%Moose%");
         }
 
 
@@ -468,7 +464,7 @@ public class CoreFarms
         {
             if (goldMethod)
             {
-                if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale" }))
+                if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale", "Dragon Runestone" }))
                 {
                     if (!Core.CheckInventory("Dragon Runestone", 10))
                     {
