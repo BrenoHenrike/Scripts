@@ -412,13 +412,13 @@ public class CoreFarms
 
         void Packet()
         {
+            Core.Join("party");
             Bot.Sleep(3500);
-            Bot.SendPacket($"%xt%zm%crafting%1%getAlchWait%11475%11478%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            Bot.SendPacket($"%xt%zm%crafting%1%getAlchWait%11475%11478%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
             Bot.Sleep(11000);
-            Bot.SendPacket($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            Bot.SendPacket($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
-
-        Core.Join("alchemy");
+        
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
         Core.Logger($"Modifier: {modifier}.");
@@ -439,8 +439,28 @@ public class CoreFarms
     {
         if (FactionRank("Alchemy") >= rank)
             return;
+
         if (!Bot.Player.Factions.Exists(f => f.Name == "Alchemy"))
-            Core.Logger("You need at least 1 point in Alchemy for the packets to work, make sure you do 1 potion first in /Join Alchemy. Bot Stopped", messageBox: true, stopBot: true);
+        {
+            Core.Logger("Getting Pre-Ranking XP");
+            if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale" }))
+            {
+                if (!Core.CheckInventory("Dragon Runestone", 10))
+                {
+                    Gold(1000000);
+                    Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 10);
+                }
+                Core.BuyItem("alchemyacademy", 395, 7132, 3);
+                Core.BuyItem("alchemyacademy", 397, 11475, 1, 2);
+                Core.BuyItem("alchemyacademy", 397, 11478, 1, 2);
+                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera);
+            }
+            // Bot.Sleep(3500);
+            // Core.SendPackets("%xt%zm%crafting%1%getAlchWait%11475%11478%true%Ready to Mix%Dragon Scale%Ice Vapor%Jera%Moose%");
+            // Bot.Sleep(11000);
+            // Core.SendPackets("%xt%zm%crafting%1%checkAlchComplete%11475%11478%true%Mix Complete%Dragon Scale%Ice Vapor%Jera%Moose%");
+        }
+
 
         Core.AddDrop("Dragon Scale", "Ice Vapor");
         Core.Logger($"Farming rank {rank} Alchemy");
@@ -1736,7 +1756,7 @@ public class CoreFarms
         {
             Core.Logger($"Farming Token A x {i}");
 
-            Core.Logger($"Farming Token C x { 200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C") }");
+            Core.Logger($"Farming Token C x {200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C")}");
 
             while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
             {
@@ -1751,7 +1771,7 @@ public class CoreFarms
                 Bot.Sleep(1500);
                 Core.BuyItem("collection", 325, 9393, Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
             }
-            Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A") } Left to Farm");
+            Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A")} Left to Farm");
         }
     }
 
