@@ -49,7 +49,7 @@ public class ObsidianLightofDestiny
             while (!Core.CheckInventory("Loyal Spirit Orb", 750))
                 BLOD.FindingFragments(2179);
             Core.EnsureComplete(7648);
-            Bot.Wait.ForPickup("Blinding Edge of Obsidian");
+            Bot.Wait.ForPickup("Obsidian Light of Destiny");
         }
     }
 }
