@@ -6,7 +6,7 @@
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using RBot;
 
-public class AMelody
+public class SukisPrestiege
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,11 +14,9 @@ public class AMelody
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.BankingBlackList.Add("A Melody");
-
         Core.SetOptions();
 
-        Darkon.AMelody();
+        Darkon.SukisPrestiege();
 
         Core.SetOptions(false);
     }
