@@ -55,7 +55,7 @@ public class WillpowerExtraction
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
 
-            if (Core.CheckInventory("chaoroot", 5))
+            if (!Core.CheckInventory("chaoroot", 5))
             {
                 Farm.Gold(300000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 1);
