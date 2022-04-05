@@ -12,6 +12,8 @@ Also there is `Lite` options that let you set the new **Advanced Options** in ga
 
 | Definition | Type | Description |  
 |---|:---:|---|  
+| `AttackWithoutTarget` | *bool* | Setting this to true will make it use the skills even without target. Use with caution. |
+| `AcceptACDrops` | *bool* | When enabled will pickup any AC item that drops, even when the drop should be rejected. |
 | `AggroAllMonsters` | *bool* | Causes all living monster in the MAP to attack the player. As a result, when any monster in the room is killed, the player gets the reward. |  
 | `AggroMonsters` | *bool* | Causes all living monsters in the room to attack the player. As a result, when any monster in the room is killed, the player gets the reward. |  
 | `RetryRelogin` | *bool* | If it will retry to relogin if it fails |

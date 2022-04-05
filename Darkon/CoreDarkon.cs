@@ -110,8 +110,10 @@ public class CoreDarkon
         while ((!Core.CheckInventory("Teeth", Quantity)))
         {
             Core.EnsureAccept(7780);
-            Core.KillMonster("eridani", "r8", "Right", "Wolf-Like Creature", "Tooth", 28, false);
+            Core.HuntMonster("eridani", "Wolf-Like Creature", "Tooth", 28, false);
+            Bot.Options.AttackWithoutTarget = true;
             Core.KillMonster("eridani", "r4", "Left", "Creature 15", "Wisdom Tooth", 4, false);
+            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7780);
         }
     }
@@ -144,6 +146,7 @@ public class CoreDarkon
         Core.AddDrop("Astravian Medal");
 
         Astravia.AstraviaCastle();
+        Core.Join("astraviacastle");
 
         while ((!Core.CheckInventory("Astravian Medal", Quantity)))
         {
@@ -173,6 +176,50 @@ public class CoreDarkon
             Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10);
             Core.HuntMonster("astraviajudge", "La", "Knight's Favor");
             Core.EnsureComplete(8396);
+        }
+    }
+
+    public void BanditsCorrespondence(int Quantity = 3000)
+    {
+        if (Core.CheckInventory("Bandit's Correspondence", Quantity))
+            return;
+
+        Core.AddDrop("Bandit's Correspondence");
+
+        Astravia.EridaniPast();
+
+        while ((!Core.CheckInventory("Bandit's Correspondence", Quantity)))
+        {
+            Core.EnsureAccept(8531);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12);
+            Bot.Options.AttackWithoutTarget = true;
+            Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Seraphic Sparred");
+            Bot.Options.AttackWithoutTarget = false;
+            Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12);
+            Core.EnsureComplete(8531);
+        }
+    }
+
+    public void SukisPrestiege(int Quantity = 300)
+    {
+        if (Core.CheckInventory("Suki's Prestige", Quantity))
+            return;
+
+        Core.AddDrop("Suki's Prestige");
+
+        Astravia.AstraviaJudgement();
+
+        while ((!Core.CheckInventory("Suki's Prestige", Quantity)))
+        {
+            Core.EnsureAccept(8602);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("astraviapast", "Regulus", "Regulus' Rematch Won");
+            Core.HuntMonster("astraviapast", "Titania", "Titania's Rematch Won");
+            Core.HuntMonster("astraviapast", "Aurola", "Aurola's Rematch Won");
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("astraviapast", "Astravian Soldier", "Soldiers Trained", 8);
+            Core.EnsureComplete(8602);
         }
     }
 }

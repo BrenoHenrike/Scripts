@@ -53,8 +53,11 @@ Most of the bot's functionality is called through `ScriptInterface#Player`. Ther
 
 | Method Definition | Return Type | Description |
 |---|:---:|---|
+| `GetDrop(string item)` | *void* | Sends a get drop packet for the desired item if it exists in the drop stack. |
+| `GetDrop(int id)` | *void* | Sends a get drop packet for the desired item if it exists in the drop stack. |
 | `Pickup(params string[] items)` | *void* | Picks up the specified items. |
 | `PickupFast(params string[] items)` | *void* | Picks up the specified items without waiting for them to be picked up (equivalent to `Pickup` without `SafeTimings`). |
+| `PickupACItems()` | *void* | Picks up all AC tagged items. |
 | `RejectExcept(params string[] items)` | *void* | Rejects all drops except for the given ones. |
 | `RejectExceptFast(params string[] items)` | *void* | Rejects all drops except for the given ones without waiting for the items to be picked up (equivalent to `Pickup` without `SafeTimings`). |
 | `DropExists(string name)` | *bool* | Checks whether the specified drop exists. |

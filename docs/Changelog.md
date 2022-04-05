@@ -1,6 +1,12 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [4.1](#41)
+    - [Find Map Items](#find-map-items)
+    - [Get Scripts is back](#get-scripts-is-back)
+    - [New Properties](#new-properties)
+    - [New Methods](#new-methods)
+    - [Fixes](#fixes)
   - [4](#4)
     - [Problems](#problems)
     - [Auto menu](#auto-menu)
@@ -28,8 +34,72 @@
     - [Multiple Options](#multiple-options)
     - [VSCode Setup for C# scripting](#vscode-setup-for-c-scripting)
   - [3.6.1](#361)
-    - [Fixes](#fixes)
+    - [Fixes](#fixes-1)
     - [Added](#added)
+
+## 4.1
+
+The new feature for version 4.1 is the ability to find the IDs for map items (the ones you click for some quests) in the grabber, it's functionality can be used in scripts too, returning a list with a new object that you will learn bellow.
+
+### Find Map Items
+
+> **Note:** This method uses [FFDec](https://github.com/jindrapetrik/jpexs-decompiler) which requires Java 8, which can be [found here](https://www.java.com/en/download/)
+In the Loader (Tools > Loaders) you can select the *"Map Item IDs"* and click grab from any map. This will download, read and parse the data to a list of **MapItem** object, which has the following properties:
+
+| Property | Type | Description |
+|---|:---:|---|
+| `MapItemID` | *int* | The ID of the map item. |
+| `MapName` | *string* | The name of the map. |
+| `MapFilePath` | *string* | The path of the map file. |
+| `QuestID` | *int* | The quest where the map item is required. |
+
+You can use the method `MapItem#ToString()` to return a string formatted like `Item ID [{MapItemID}], Quest [{QuestID}]` with each respective variable filled with the map item info.
+If you want to, you can also call the method **`ScriptInterface#Map.FindMapItems()`** that will return a list of map items while running a script.
+Additionally, this saves all data in a Json file inside the folder `Tools/Cache` so you don't need to keep downloading/reading/parsing the same file multiple times, I would also like to remember you can right click any item in the loader to see multiple options of what you can do with the grabbed data, you can also select multiple items and Ctrl click those buttons to pop up quantity prompts.
+
+### Get Scripts is back
+
+For those who weren't RBot users back then, there was a window where you could find scripts from all botmakers. This window was removed since most were outdated and the way it worked didn't allow what I had in mind for [how scripts should be](https://github.com/BrenoHenrike/Scripts), so I ditched the window and you have been downloading them directly from github. Well, this is fine, but with this reworked functionality you can update your scripts directly from the client using the *Get Scripts* window (click the button in the **Scripts window**). You can still open the github browser page by Ctrl clicking the Get Scripts button.
+
+### New Properties
+
+> From `ScriptInterface#Map`.
+
+| Property | Type | Description |
+|---|:---:|---|
+| `LastMap` | *string* | The name of the last map joined in the session. |
+| `MapFilePath` | *string* | The path of the last map file. |
+| `MapFileName` | *string* | The name of the map file, from the MapFilePath. |
+| `MapFileTown` | *string* | The town of the map (usually the region of the map, the first part of MapFilePath) |
+
+> From `ScriptInterface#Options`.
+
+| Property | Type | Description |
+|---|:---:|---|
+| `AttackWithoutTarget` | *bool* | Setting this to true will make it use the skills even without target. Use with caution. |
+| `AcceptACDrops` | *bool* | When enabled will pickup any AC item that drops, even when the drop should be rejected. |
+
+### New Methods
+
+> From `ScriptInterface#Monsters`.
+
+| Method Definition | Return Type | Description |
+|---|---|---|
+| `CurrentAvailableMonsters()` | *List\<Monster>* | Gets a list of all the monsters in the current cell that can be attacked. |
+
+> From `ScriptInterface#Player`.
+
+| Method Definition | Return Type | Description |
+|---|---|---|
+| `PickupACItems()` | *void* | Picks up all AC tagged items. |
+
+### Fixes
+
+- The Quest IDs window is able to save quests with any special character;
+- Fixed a bug where the skilltimer would enter an infinite loop and not using skills;
+- Links now open properly instead of throwing an exception;
+- Fixed Reject and Accept all from Bot Options causing lag;
+- Fixed a bug where starting the application from the taskbar threw an error;
 
 ## 4
 
