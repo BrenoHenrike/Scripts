@@ -57,7 +57,7 @@ public class WillpowerExtraction
 
             if (Core.CheckInventory("chaoroot", 5))
             {
-                Farm.Gold(600000);
+                Farm.Gold(300000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 1);
                 Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
             }
