@@ -663,7 +663,7 @@ public class CoreAdvanced
         {
             //Lucky - Spiral Carve
             case "abyssal angel":
-            case "abyssal angel’s shadow":
+            case "abyssal angel's shadow":
             case "archpaladin":
             case "artifact hunter":
             case "assassin":

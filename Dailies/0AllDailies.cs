@@ -9,6 +9,7 @@
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 using RBot;
 
 public class FarmAllDailys
@@ -18,6 +19,7 @@ public class FarmAllDailys
     public CoreDailies Daily = new();
     public LordOfOrder LOO = new();
     public GlaceraStory Glac = new();
+    public CoreBLOD BLOD = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -51,6 +53,7 @@ public class FarmAllDailys
         Daily.CryptoToken();
         Daily.BeastMasterChallenge();
         Daily.FungiforaFunGuy();
+        BLOD.UnlockMineCrafting();
         Daily.MineCrafting();
         Daily.HardCoreMetals();
         Daily.MonthlyTreasureChestKeys();
