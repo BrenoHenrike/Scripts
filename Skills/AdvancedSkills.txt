@@ -6,7 +6,8 @@ Base = Alpha Omega = 3 | 4 | 1 | 2 H<50 | Timeout:250
 Base = Alpha Pirate = 4 | 1 | 3 | 2 | Mode Optimistic
 Base = Arachnomancer = 1 | 1 | 1 | 1 | 1 | 1 | 2 | 4 | 3 | Timeout:250
 Base = Arcane Dark Caster = 4 WW5000 | 3 | 3 | 2 | 1 | Timeout:250
-Base = ArchFiend = 1 | 3 | 2 | 1 | 2 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout:250
+Solo = ArchFiend = 3S | 1S | 2S | 4S | Mode Optimistic | Timeout:250
+Farm = ArchFiend = 3S | 1S | 2S | Mode Optimistic | Timeout:250
 Base = ArchPaladin = 3 | 4 | 2 | 1 | 1 | 1 | 1 | Timeout:250
 Base = Artifact Hunter = 4 | 3 | 2 | 1 | Timeout:250
 Base = Assassin = 4 | 3 | 1 | 2 | Timeout:250
