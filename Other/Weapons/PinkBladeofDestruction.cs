@@ -47,7 +47,9 @@ public class PinkBladeOfDestruciton
         while (!Core.CheckInventory("Zealous Badge", 5))
         {
             Core.EnsureAccept(7616);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7);
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("techdungeon", "DoomBorg Guard", "Paladin Armor Scraps", 30);
             Core.EnsureComplete(7616);
         }
