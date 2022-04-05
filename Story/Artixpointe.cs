@@ -23,7 +23,7 @@ public class Artixpointe
         Core.EquipClass(ClassType.Solo);
         QuestProgress(3800, "artixpointe", "Corrupted Sushi Chef", "Unholy Wasabi");
         QuestMapItem(3801, "artixpointe", 2911, "Cysero's Doom Sock");
-        QuestProgress(3802, "battleontown", "Chickencow", "Chickencow Claw");
+        QuestProgress(3802, "battlefowl", "Chickencow", "Chickencow Claw");
         QuestProgress(3803, "graveyard", "Big Jack Sprat", "Zorbak's Staff Skull");
         QuestProgress(3804, "vendorbooths", "Dragon Khan", "Dragon Khan's Corrupt Scepter");
         QuestProgress(3805, "undergroundlabb", "Rabid Server Hamster", "Sir Ver's Broken Power Button");

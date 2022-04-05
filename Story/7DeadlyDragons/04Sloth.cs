@@ -24,11 +24,21 @@ public class Sloth
         // Protective Gear Required
         Story.MapItemQuest(5944, "sloth", 5380, 1);
         Story.MapItemQuest(5944, "sloth", 5381, 1);
+
+        if(!Core.CheckInventory(40710))
+        {
+            Core.EnsureAccept(5944);
+            Core.GetMapItem(5380, 1, "sloth");
+            Core.GetMapItem(5381, 1, "sloth");
+            Core.EnsureComplete(5944);
+        }
+        Core.Equip("Hazmat Suit(Temp)");
+
         // Are There Any Survivors?
         Story.KillQuest(5945, "sloth", "Plague Zombie");
         Story.MapItemQuest(5945, "sloth", 5382, 1);
         // Gathering Samples
-        Story.KillQuest(5946, "sloth", new[] { "Snotgoblin", "Wandering Plague"});
+        Story.KillQuest(5946, "sloth", new[] { "Snotgoblin", "Wandering Plague" });
         // Find a ‘Volunteer’
         Story.KillQuest(5947, "sloth", "Plague Zombie");
         // Cure the Volunteer
@@ -44,7 +54,8 @@ public class Sloth
         {
             Core.EnsureAccept(5952);
             Core.BuyItem("dragonhame", 865, "Airther Vitae");
-            Core.BuyItem("arcangrove", 211, "Health Potion");
+            if (!Core.CheckInventory(1749))
+                Core.BuyItem("arcangrove", 211, "Health Potion", shopItemID: 4711);
             Core.EnsureComplete(5952);
         }
         // Who’s Up for Round 3
@@ -63,6 +74,6 @@ public class Sloth
         // Actual Sloth Dragon
         Story.KillQuest(5960, "sloth", "Actual Sloth Dragon");
         // Mutated Plague
-        Story.KillQuest(5959, "sloth", "Mutated Plague");        
+        Story.KillQuest(5959, "sloth", "Mutated Plague");
     }
 }

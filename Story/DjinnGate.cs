@@ -36,6 +36,7 @@ public class DjinnGateStory
             Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
             Core.EnsureComplete(6153);
         }
+
         if (!Story.QuestProgression(6154))
         {
             Core.EnsureAccept(6154);
@@ -46,6 +47,7 @@ public class DjinnGateStory
             Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
             Core.EnsureComplete(6154);
         }
+
         if (!Story.QuestProgression(6155))
         {
             Core.EnsureAccept(6155);
@@ -56,6 +58,7 @@ public class DjinnGateStory
             Core.HuntMonster("palooza", "Mozard", "Fragment 15");
             Core.EnsureComplete(6155);
         }
+
         if (!Story.QuestProgression(6156))
         {
             Core.EnsureAccept(6156);
@@ -66,6 +69,7 @@ public class DjinnGateStory
             Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
             Core.EnsureComplete(6156);
         }
+
         if (!Story.QuestProgression(6157))
         {
             Core.EnsureAccept(6157);
@@ -76,6 +80,7 @@ public class DjinnGateStory
             Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
             Core.EnsureComplete(6157);
         }
+
         if (!Story.QuestProgression(6158))
         {
             Core.EnsureAccept(6158);
@@ -87,13 +92,21 @@ public class DjinnGateStory
             Core.KillMonster("thevoid", "r16", "Left", "*", "Potent Reaper Mana", publicRoom: true);
             Core.EnsureComplete(6158);
         }
+
         Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
+
         if (!Story.QuestProgression(6160))
         {
             Core.EquipClass(ClassType.Farm);
             Story.KillQuest(6160, "djinngate", "Harpy|Lamia");
         }
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(6161, "djinngate", "Gedoz the Malignant");
+
+        if (!Story.QuestProgression(6160))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(6161);
+            Core.HuntMonster("djinngate", "Gedoz", "Gedoz the Malignant Defeated");
+            Core.EnsureComplete(6161);
+        }
     }
 }
