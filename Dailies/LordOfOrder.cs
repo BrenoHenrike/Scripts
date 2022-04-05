@@ -73,7 +73,7 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("dwarfprison", "Warden Elfis", "Warden Elfis Detained", isTemp: false);
             Core.HuntMonster("prison", "Piggy Drake", "Piggy Drake Punished", isTemp: false);
-            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: true);
+            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: false);
             Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false);
 
             Core.EnsureComplete(7157);
