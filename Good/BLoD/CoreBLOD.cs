@@ -193,6 +193,7 @@ public class CoreBLOD
             Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom: true);
             Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
             Core.HuntMonster("faerie", "Cyclops Warlord", "Brass Awl");
+            Bot.Quests.UpdateQuest(597);
             Core.HuntMonster("darkoviaforest", "Lich of the Stone", "Slate Stone Sharpener");
 
             Core.EquipClass(ClassType.Farm);
