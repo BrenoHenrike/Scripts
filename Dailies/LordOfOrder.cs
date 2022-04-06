@@ -87,7 +87,7 @@ public class LordOfOrder
 
             Core.EquipClass(ClassType.Solo);
 
-            if!Core.CheckInventory("chaoroot", 15))
+            if (!Core.CheckInventory("Chaoroot", 15))
             {
                 Farm.Gold(600000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 2);
