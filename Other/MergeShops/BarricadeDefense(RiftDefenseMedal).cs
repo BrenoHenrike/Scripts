@@ -36,7 +36,7 @@ public class BarricadeDefenseMerge
         while (!Core.CheckInventory("Rift Defense Medal", 500))
         {
             Core.EnsureAccept(5825);
-            Core.HuntMonster("greenguardeast", "Infected Hare|Ravenous Parasite", "Invader Slain", 10, log: false);
+            Core.HuntMonster("charredpath", "Infected Hare|Ravenous Parasite", "Invader Slain", 10, log: false);
             Core.EnsureComplete(5825);
             Core.Logger($"Rift Defense Medal: {Bot.Inventory.GetQuantity("Rift Defense Medal")}/500");
         }
