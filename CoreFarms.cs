@@ -409,7 +409,7 @@ public class CoreFarms
     {
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
-            
+
         void Packet()
         {
             Bot.Sleep(3500);
@@ -1197,7 +1197,7 @@ public class CoreFarms
             Core.EnsureAccept(7553, 7555);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
-            Core.EnsureComplete(7553, 7555, 0);
+            Core.EnsureComplete(new[] { 7553, 7555 });
             Core.Logger($"Completed x{i++}");
         }
     }
