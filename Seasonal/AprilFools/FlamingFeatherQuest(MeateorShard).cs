@@ -40,6 +40,7 @@ public class FlamingFeatherQuest
     {
         Core.AddDrop(Drops);
         Core.AddDrop("Altar of Caladbacon");
+        Bot.Options.AttackWithoutTarget = true;
 
         while (!Core.CheckInventory(Drops) & !Bot.Inventory.ContainsHouseItem("Altar of Caladbacon"))
         {
@@ -48,5 +49,7 @@ public class FlamingFeatherQuest
             // Core.HuntMonster("battleontown", "ChickenCow", "Flaming Feather", 25);
             Core.EnsureComplete(8605);
         }
+
+        Bot.Options.AttackWithoutTarget = false;
     }
 }
