@@ -88,7 +88,7 @@ public class CoreBots
         {
             Logger("Bot Started");
 
-            RBotVersionChecker("4.0.0.1");
+            RBotVersionChecker("4.1");
 
             if (!Bot.Player.LoggedIn)
             {
