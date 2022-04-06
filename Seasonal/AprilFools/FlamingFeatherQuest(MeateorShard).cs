@@ -41,13 +41,18 @@ public class FlamingFeatherQuest
         Core.AddDrop(Drops);
         Core.AddDrop("Altar of Caladbacon");
         Bot.Options.AttackWithoutTarget = true;
+        Core.EquipClass(ClassType.Solo);
+
+        Core.EnsureAccept(8605);
 
         while (!Core.CheckInventory(Drops) & !Bot.Inventory.ContainsHouseItem("Altar of Caladbacon"))
         {
             Core.EnsureAccept(8605);
-            Core.KillMonster("battleontown", "r9", "Right", "ChickenCow", "Flaming Feather", 25);
-            // Core.HuntMonster("battleontown", "ChickenCow", "Flaming Feather", 25);
+            Core.Jump("r9", "Right");
+            while (!Core.CheckInventory("Flaming Feather", 25))
+                Bot.Player.Attack("*");
             Core.EnsureComplete(8605);
+            Bot.Wait.ForPickup("*");
         }
 
         Bot.Options.AttackWithoutTarget = false;
