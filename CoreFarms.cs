@@ -260,9 +260,10 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(item);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
+        Core.JumpWait();
         while (!Core.CheckInventory(item, quant))
         {
-            Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
+            Bot.Player.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
