@@ -78,7 +78,7 @@ public class CoreFarms
             Core.EnsureAccept(3991, 3992);
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
-            Core.EnsureComplete(3991, 3992, 0);
+            Core.EnsureComplete(new[] { 3991, 3992 });
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -828,7 +828,7 @@ public class CoreFarms
                 Core.HuntMonster("shadowfallwar", "*", "Skeleton Key");
                 if (Core.CheckInventory("Un-Dead Tag", 15))
                     Core.EnsureComplete(1151);
-                Core.EnsureComplete(1152, 1153, 0);
+                Core.EnsureComplete(new[] { 1152, 1153 });
             }
             else
             {
