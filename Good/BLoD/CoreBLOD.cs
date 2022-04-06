@@ -283,13 +283,15 @@ public class CoreBLOD
                     Core.EnsureAccept(2107);
                     Farm.BattleUnderB("Undead Energy", 25);
                     Daily.MineCrafting(new[] { "Copper" });
-                    if (!Core.CheckInventory("Copper"))
+                    if (!Core.CheckInventory(12297))
                         Core.Logger("Can't complete Celestial Copper Enchantment (Missing Copper).", messageBox: true, stopBot: true);
                     SpiritOrb(5);
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
                     Core.EnsureComplete(2107);
+                    Bot.Wait.ForPickup("Celestial Copper");
                 }
                 Core.BuyItem("dwarfhold", 434, "Celestial Copper of Destiny");
+                Bot.Wait.ForPickup("Celestial Copper of Destiny");
             }
 
             if (!Bot.Quests.IsUnlocked(2136))
