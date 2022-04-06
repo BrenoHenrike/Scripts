@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 
 using RBot;
 
@@ -16,12 +17,15 @@ public class ObsidianLightofDestiny
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreBLOD BLOD = new CoreBLOD();
+    public DoomwoodPart3 DW3 = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        Axe();
 
+        DW3.StoryLine();
+        Axe();
+        
         Core.SetOptions(false);
     }
 

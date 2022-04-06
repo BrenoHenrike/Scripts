@@ -141,15 +141,35 @@ public class DoomwoodPart3
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
 
         // Stuff for Dummies
-        Story.KillQuest(7626, "stonewooddeep", "Doomwood Treeant");
-        Story.MapItemQuest(7626, "stonewooddeep", 7530, 8);
+        if (!Story.QuestProgression(7626))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7626);
+            Core.KillMonster("stonewooddeep", "r2", "Right", "Doomwood Treeant", "Sturdy Wood", 8);
+            Story.MapItemQuest(7626, "stonewooddeep", 7530, 8);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         // Build the Dummies
-        Story.KillQuest(7627, "stonewooddeep", "Doomwood Slime");
-        Story.MapItemQuest(7627, "stonewooddeep", 7531, 6);
+        if (!Story.QuestProgression(7627))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7627);
+            Core.KillMonster("stonewooddeep", "r2", "Right", "*", "Area Cleared", 10);
+            Story.MapItemQuest(7627, "stonewooddeep", 7531, 6);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         // Battle the Dummies
-        Story.KillQuest(7628, "stonewooddeep", "Target Dummy");
+        if (!Story.QuestProgression(7628))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7628);
+            // Core.KillMonster("stonewooddeep", "r2", "Right", "Target Dummy", "Area Cleared", 10);
+            Story.KillQuest(7628, "stonewooddeep", "Target Dummy");
+            Core.EnsureComplete(7628);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         // Lesson 1: Bravery
         Story.KillQuest(7629, "stonewooddeep", "Doomwood Slime");
