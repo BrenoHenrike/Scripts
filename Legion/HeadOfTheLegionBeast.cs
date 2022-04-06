@@ -194,7 +194,8 @@ public class HeadoftheLegionBeast
             EssenceViolence(1);
             EssenceTreachery(1);
             SoulsHeresy(15);
-            Core.Join("sevencircleswar", "Wait", "Enter");
+            Core.Join("sevencircleswar");
+            Core.JumpWait();
             Bot.Shops.BuyItem(1984, "Penance");
             i++;
             Core.Logger($"Completed x{i}");
