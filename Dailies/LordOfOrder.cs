@@ -73,7 +73,7 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("dwarfprison", "Warden Elfis", "Warden Elfis Detained", isTemp: false);
             Core.HuntMonster("prison", "Piggy Drake", "Piggy Drake Punished", isTemp: false);
-            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: true);
+            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: false);
             Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false);
 
             Core.EnsureComplete(7157);
@@ -84,10 +84,16 @@ public class LordOfOrder
         if (!Story.QuestProgression(7158))
         {
             Core.EnsureAccept(7158);
-            Core.AddDrop("The Supreme Arcane Staff");
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("ledgermayne", "Ledgermayne", "Chaoroot", 15, false);
+
+            if!Core.CheckInventory("chaoroot", 15))
+            {
+                Farm.Gold(600000);
+                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 2);
+                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15, 10);
+            }
+            Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true);
