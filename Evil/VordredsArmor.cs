@@ -95,10 +95,10 @@ public class VordredArmor
         if (!Story.QuestProgression(8379))
         {
             Core.EnsureAccept(8379);
-            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", 5, publicRoom: false);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Undead Raxgore's Skull", 10, isTemp: false, publicRoom: false);
-            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Legion Lich Lord's Skull", 15, publicRoom: false);
-            Core.HuntMonster("thevoid", "Reaper", "Reaper's Skull", 20, publicRoom: false);
+            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", 5, publicRoom: true);
+            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Undead Raxgore's Skull", 10, isTemp: false, publicRoom: true);
+            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Legion Lich Lord's Skull", 15, publicRoom: true);
+            Core.HuntMonster("thevoid", "Reaper", "Reaper's Skull", 20, publicRoom: true);
             Core.EnsureComplete(8379);
         }
 
@@ -106,12 +106,12 @@ public class VordredArmor
         if (!Story.QuestProgression(8380))
         {
             Core.EnsureAccept(8380);
-            Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 1, isTemp: false, publicRoom: false);
-            Core.HuntMonster("lightguardwar", "Extreme Noxus", "Noxus Runes", isTemp: false, publicRoom: false);
+            Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 1, isTemp: false, publicRoom: true);
+            Core.HuntMonster("lightguardwar", "Extreme Noxus", "Noxus Runes", isTemp: false, publicRoom: true);
             Farm.Gold(20000000);
             Core.BuyItem("necrotower", 282, "Sally's Necronomicon");
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("necrodungeon", "r22", "Down", "*", "Ancient Evil of the Necropolis", isTemp: false, publicRoom: false);
+            Core.KillMonster("necrodungeon", "r22", "Down", "*", "Ancient Evil of the Necropolis", isTemp: false, publicRoom: true);
             Core.EnsureComplete(8380);
         }
 
