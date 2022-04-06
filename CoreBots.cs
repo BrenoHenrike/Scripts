@@ -780,7 +780,7 @@ public class CoreBots
             return;
         if (!isTemp && item != null)
             AddDrop(item);
-        Join(map, publicRoom: publicRoom);
+        Join(map, cell, pad, publicRoom: publicRoom);
         Jump(cell, pad);
         Monster? monster = Bot.Monsters.CurrentMonsters.Find(m => m.ID == monsterID);
         if (monster == null)
