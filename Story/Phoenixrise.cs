@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 using RBot;
 
-public class Phoenixrise
+public class PhoenixriseStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
