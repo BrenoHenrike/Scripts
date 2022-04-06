@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 using RBot;
 
-public class ScriptTemplate
+public class Phoenixrise
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -28,7 +28,7 @@ public class ScriptTemplate
 
     public void Kyron()
     {
-        if(Core.isCompletedBefore(4055))
+        if (Core.isCompletedBefore(4055))
             return;
 
         Story.PreLoad();
@@ -42,7 +42,7 @@ public class ScriptTemplate
 
     public void Pyralis()
     {
-        if(Core.isCompletedBefore(4075))
+        if (Core.isCompletedBefore(4075))
             return;
 
         Story.PreLoad();
@@ -64,7 +64,7 @@ public class ScriptTemplate
 
     public void AsherMurkblade()
     {
-        if(Core.isCompletedBefore(4080))
+        if (Core.isCompletedBefore(4080))
             return;
 
         Story.PreLoad();
@@ -81,52 +81,52 @@ public class ScriptTemplate
         //Spreading Like Wildfire
         Story.MapItemQuest(4080, "pyrewatch", 3162, 4);
     }
-public void Feverfew()
-{
-    if(Core.isCompletedBefore(4142))
+    public void Feverfew()
+    {
+        if (Core.isCompletedBefore(4142))
             return;
 
-    Story.PreLoad();
+        Story.PreLoad();
 
-    //Quench the Flames
-    Story.KillQuest(4128, "feverfew", "Firestorm Knight");
-    //Through the Fog and Flame
-    Story.KillQuest(4129, "feverfew", "Locked Chest");
-    //Restore the Lady of Waters
-    Story.MapItemQuest(4130, "feverfew", 3246);
-    Story.MapItemQuest(4130, "feverfew", 3247);
-    Story.KillQuest(4130, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander", "Firestorm Knight|Twisted Undine" });
-    //Rumors and Smoke
-    Story.MapItemQuest(4131, "feverfew", 3245);
-    Story.KillQuest(4131, "feverfew", new[] { "Firestorm Major", "Firestorm Knight", "Firestorm Knight", "Firestorm Major" });
-    //Dam the Flood
-    Story.MapItemQuest(4132, "feverfew", 3244, 5);
-    //Salvage Mission
-    Story.MapItemQuest(4133, "feverfew", 3243, 5);
-    Story.KillQuest(4133, "feverfew", "Twisted Undine");
-    //Fear the Fog
-    Story.KillQuest(4134, "feverfew", new[] { "Salamander", "Feverfew Vase", "Twisted Undine", "Coral Creeper", "Firestorm Knight" });
-    //When There's Smoke...
-    Story.MapItemQuest(4135, "feverfew", 3248);
-    //Firin' This Guy
-    Story.KillQuest(4136, "feverfew", "Blazebinder");
-    //Blessings of the Lady
-    Story.MapItemQuest(4137, "feverfew", 3242, 10);
-    //Parting the Waters
-    Story.KillQuest(4138, "feverfew", new[] { "Salamander", "Coral Creeper", "Firestorm Knight", "Twisted Undine" });
-    //The Power to Heal
-    Story.KillQuest(4139, "feverfew", new[] { "Locked Chest", "Feverfew Vase", "Twisted Undine" });
-    //The Deadsea Caverns
-    Story.KillQuest(4140, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander" });
-    //Open the Floodgates
-    Story.MapItemQuest(4141, "feverfew", 3241);
-    //Tiger, Tiger Burning Bright
-    Story.KillQuest(4142, "feverfew", "Major Thermas");
+        //Quench the Flames
+        Story.KillQuest(4128, "feverfew", "Firestorm Knight");
+        //Through the Fog and Flame
+        Story.KillQuest(4129, "feverfew", "Locked Chest");
+        //Restore the Lady of Waters
+        Story.MapItemQuest(4130, "feverfew", 3246);
+        Story.MapItemQuest(4130, "feverfew", 3247);
+        Story.KillQuest(4130, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander", "Firestorm Knight|Twisted Undine" });
+        //Rumors and Smoke
+        Story.MapItemQuest(4131, "feverfew", 3245);
+        Story.KillQuest(4131, "feverfew", new[] { "Firestorm Major", "Firestorm Knight", "Firestorm Knight", "Firestorm Major" });
+        //Dam the Flood
+        Story.MapItemQuest(4132, "feverfew", 3244, 5);
+        //Salvage Mission
+        Story.MapItemQuest(4133, "feverfew", 3243, 5);
+        Story.KillQuest(4133, "feverfew", "Twisted Undine");
+        //Fear the Fog
+        Story.KillQuest(4134, "feverfew", new[] { "Salamander", "Feverfew Vase", "Twisted Undine", "Coral Creeper", "Firestorm Knight" });
+        //When There's Smoke...
+        Story.MapItemQuest(4135, "feverfew", 3248);
+        //Firin' This Guy
+        Story.KillQuest(4136, "feverfew", "Blazebinder");
+        //Blessings of the Lady
+        Story.MapItemQuest(4137, "feverfew", 3242, 10);
+        //Parting the Waters
+        Story.KillQuest(4138, "feverfew", new[] { "Salamander", "Coral Creeper", "Firestorm Knight", "Twisted Undine" });
+        //The Power to Heal
+        Story.KillQuest(4139, "feverfew", new[] { "Locked Chest", "Feverfew Vase", "Twisted Undine" });
+        //The Deadsea Caverns
+        Story.KillQuest(4140, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander" });
+        //Open the Floodgates
+        Story.MapItemQuest(4141, "feverfew", 3241);
+        //Tiger, Tiger Burning Bright
+        Story.KillQuest(4142, "feverfew", "Major Thermas");
     }
 
     public void Phoenixrise()
     {
-        if(Core.isCompletedBefore(4213))
+        if (Core.isCompletedBefore(4213))
             return;
 
         Story.PreLoad();
