@@ -750,7 +750,7 @@ public class CoreBots
             return;
         if (!isTemp && item != null)
             AddDrop(item);
-        Join(map, publicRoom: publicRoom);
+        Join(map, cell, pad, publicRoom: publicRoom);
         Jump(cell, pad);
         if (item == null)
         {
@@ -1336,7 +1336,7 @@ public class CoreBots
         };
 
         if (disabledMaps.Contains(map.ToLower()))
-            Logger($"Map {map} is disabled because of April Fools, bot cant continue. Please report to Lord Exelot", messageBox: true, stopBot: true);
+            Logger($"Map {map} is disabled because of April Fools, bot cant continue", messageBox: true, stopBot: true);
 
         if (map.ToLower() == "tercessuinotlim")
         {
@@ -1348,13 +1348,13 @@ public class CoreBots
             JumpWait();
             Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
         }
+        Bot.Wait.ForMapLoad(map.ToLower());
 
-        while (Bot.Player.Cell != cell)
+        while (Bot.Player.Cell.ToLower() != cell.ToLower())
         {
             Jump(cell, pad);
             Bot.Sleep(ActionDelay);
         }
-        Bot.Wait.ForMapLoad(map.ToLower());
     }
 
     /// <summary>
