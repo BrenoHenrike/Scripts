@@ -223,9 +223,10 @@ public class CoreFarms
         if (Core.CheckInventory("The Secret 4"))
             return;
         Core.EquipClass(ClassType.Solo);
+        Core.JumpWait();
         while (!Core.CheckInventory("The Secret 4"))
         {
-            Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
+            Bot.Player.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
