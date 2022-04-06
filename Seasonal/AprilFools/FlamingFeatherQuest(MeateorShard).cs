@@ -47,9 +47,9 @@ public class FlamingFeatherQuest
         while (!Core.CheckInventory(Drops) & !Bot.Inventory.ContainsHouseItem("Altar of Caladbacon"))
         {
             Core.EnsureAccept(8605);
-            Core.Join("battleontown", "r9", "Right", publicRoom: true);
             while (!Core.CheckInventory("Flaming Feather", 25))
-                Bot.Player.Attack("*");
+                Core.Join("battleontown", "r9", "Right", publicRoom: true);
+            Bot.Player.Attack("*");
             Core.EnsureComplete(8605);
             Bot.Wait.ForPickup("*");
         }
