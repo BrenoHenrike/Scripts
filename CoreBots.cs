@@ -1024,11 +1024,11 @@ public class CoreBots
     {
         if (gear == null)
             return;
+        JumpWait();
         foreach (string? Item in gear)
         {
             if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
-                JumpWait();
                 Bot.Player.EquipItem(Item);
                 Bot.Sleep(ActionDelay);
                 Logger($"{Item} equipped");
