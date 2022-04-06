@@ -130,39 +130,39 @@ public class CoreFarms
         bool OptionRestore = Bot.Options.AggroMonsters;
         Bot.Options.AggroMonsters = true;
 
-        while ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 20 && Bot.Player.Level < level) || (Bot.Player.Level < 20 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 20 && Bot.Player.Level < level) || (Bot.Player.Level < 20 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r6", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 25 && Bot.Player.Level < level) || (Bot.Player.Level < 25 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 25 && Bot.Player.Level < level) || (Bot.Player.Level < 25 && rankUpClass && Bot.Player.Rank != 10)))
         {
             Core.EnsureAccept(6628);
             Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
             Core.EnsureComplete(6628);
         }
 
-        while ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 35 && Bot.Player.Level < level) || (Bot.Player.Level < 35 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 35 && Bot.Player.Level < level) || (Bot.Player.Level < 35 && rankUpClass && Bot.Player.Rank != 10)))
         {
             Core.EnsureAccept(6629);
             Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
             Core.EnsureComplete(6629);
         }
 
-        while ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level <= 100 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level <= 100 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
 
         Bot.Options.AggroMonsters = OptionRestore;
