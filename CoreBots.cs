@@ -1280,38 +1280,53 @@ public class CoreBots
 
         bool Restore = Bot.Options.AggroMonsters;
         Bot.Options.AggroMonsters = false;
-        bool jumped = false;
+        string cell = "";
+        string pad = "";
+        bool jumpTwice = false;
 
         if (!MonsterCells.Contains("Enter"))
         {
-            jumped = true;
-            Jump("Enter", "Spawn", true);
+            cell = "Enter";
+            pad = "Spawn";
         }
         else
         {
-            foreach (string cell in Bot.Map.Cells)
+            foreach (string _cell in Bot.Map.Cells)
             {
-                if (cell == Bot.Player.Cell || new[] { "wait", "blank" }.Contains(cell.ToLower()) || cell.ToLower().Contains("cut"))
+                if (_cell == Bot.Player.Cell || new[] { "wait", "blank" }.Contains(_cell.ToLower()) || _cell.ToLower().Contains("cut"))
                     continue;
                 if (!MonsterCells.Contains(cell))
                 {
-                    jumped = true;
-                    Jump(cell, "Left", true);
+                    cell = _cell;
+                    pad = "Left";
                     break;
                 }
             }
         }
-        if (!jumped)
+
+        if (cell == "" || pad == "")
         {
-            Jump(Bot.Player.Cell, Bot.Player.Pad, true);
-            Jump(Bot.Player.Cell, Bot.Player.Pad, true);
+            cell = Bot.Player.Cell;
+            pad = Bot.Player.Pad;
+            jumpTwice = true;
         }
 
-        Bot.Sleep(ExitCombatDelay - 200);
-        Bot.Wait.ForCombatExit();
+        if (lastJumpWait != $"{Bot.Map.Name} | {cell} | {pad}" || Bot.Player.InCombat)
+        {
+            Jump(cell, pad, true);
+            if (jumpTwice)
+                Jump(cell, pad, true);
+
+            lastJumpWait = $"{Bot.Map.Name} | {cell} | {pad}";
+
+            Bot.Sleep(ExitCombatDelay - 200);
+            Bot.Wait.ForCombatExit();
+        }
+
         if (Restore)
             Bot.Options.AggroMonsters = true;
     }
+    private string lastJumpWait = "";
 
     /// <summary>
     /// Joins a map
