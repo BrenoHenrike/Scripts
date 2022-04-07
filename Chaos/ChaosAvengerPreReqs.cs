@@ -138,7 +138,9 @@ public class ChaosAvengerClass
             Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Chaos Lord Alteon", isTemp: false, publicRoom: true);
 
             //Xiang Chaos
-            Core.HuntMonster("mirrorportal", "Chaos Lord Xiang", "Xiang Chaos", isTemp: false, publicRoom: true);
+            Adv.GearStore();
+            Core.KillXiang("Xiang Chaos", publicRoom: true);
+            Adv.GearStore(true);
 
             Core.BuyItem("championdrakath", 2055, "Fragments of the Lords B");
         }
