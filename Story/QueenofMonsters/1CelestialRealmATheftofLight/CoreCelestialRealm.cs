@@ -71,7 +71,7 @@ public class CoreCelestialRealm
         Story.KillQuest(4501, "lostruins", "Fallen Knight|Infernal Knight");
 
         //Find the Clues
-        Story.KillQuest(4502, "lostruins", new[] { "Underworld Hound|Infernal Imp", "Underworld Hound|Infernal Imp", "Fallen Knight", "Infernal Knight" });
+        Story.KillQuest(4502, "lostruins", new[] { "Infernal Imp|Underworld Hound", "Infernal Imp|Underworld Hound", "Fallen Knight", "Infernal Knight" });
 
         //Recover the Cage Key!
         if (!Story.QuestProgression(4503))
@@ -99,7 +99,7 @@ public class CoreCelestialRealm
 
         //Defeat the Infernal Warlord
         Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(8507, "lostruins", "Infernal Warlord");
+        Story.KillQuest(4507, "lostruins", "Infernal Warlord");
     }
 
     public void LostRuinsWar()
