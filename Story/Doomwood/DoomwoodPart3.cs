@@ -11,7 +11,7 @@ public class DoomwoodPart3
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        
+
         StoryLine();
 
         Core.SetOptions(false);
@@ -46,7 +46,14 @@ public class DoomwoodPart3
         Story.KillQuest(7592, "Thorngarde", "CryptHacker");
 
         // Reclaim the Supplies
-        Story.KillQuest(7593, "Thorngarde", new[] { "NecroDrone", "NecroMech", "CryptHacker" });
+        if (!Story.QuestProgression(7593))
+        {
+            Core.EnsureAccept(7593);
+            Core.HuntMonster("Thorngarde", "CryptHacker", "Cured Meat", 3);
+            Core.HuntMonster("Thorngarde", "NecroMech", "Bag of Grain", 3);
+            Core.HuntMonster("Thorngarde", "NecroDrone", "Jug of Water", 5);
+            Core.EnsureComplete(7593);
+        }
 
         // Who's That?
         Story.MapItemQuest(7594, "Thorngarde", 7486);
