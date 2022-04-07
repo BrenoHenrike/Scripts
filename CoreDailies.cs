@@ -131,7 +131,7 @@ public class CoreDailies
                 Core.AddDrop(metal);
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2091, metalID);
-                Bot.Wait.ForDrop(metal);
+                Bot.Wait.ForPickup(metal);
                 break;
             }
         }
