@@ -1130,7 +1130,12 @@ public class Core13LoC
         if (!Story.QuestProgression(1473))
         {
             Core.EnsureAccept(1473);
-            Adv.KillUltra("dreamnexus", "r17a", "Right", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
+            if(Bot.Player.Cell != "r17a" | Bot.Player.Pad != "Up")
+            {
+                Core.Join("dreamnexus", "r17a", "Up");
+                Core.Jump("r17a", "Up");
+            }            
+            Adv.KillUltra("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
             Core.EnsureComplete(1473);
         }
 
