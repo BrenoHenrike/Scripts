@@ -33,6 +33,8 @@ public class ObsidianLightofDestiny
     {
         if (Core.CheckInventory("Obsidian Light of Destiny"))
             return;
+            
+        Core.AddDrop("Obsidian Light of Destiny");
 
         //The Edge of Destiny
         if (!Core.CheckInventory("Obsidian Light of Destiny"))
