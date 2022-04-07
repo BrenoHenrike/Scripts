@@ -26,7 +26,7 @@ public class ScriptTemplate
     public void YourFunctionName()
     {
         //if (something)
-        //    return;
+        //   return;
 
         Core.AddDrop("ExampleItem1", "ExampleItem2", "ExampleItem3", "ExampleItem4");
 
