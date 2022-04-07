@@ -57,16 +57,15 @@ public class EnoughDOOMforanArchfiend
 
         Core.BuyItem("digitalyulgar", 16, "Aelita's Emerald");
 
-        while (!Core.CheckInventory("Essence Potion", 5))
+        if (!Core.CheckInventory("Essence Potion", 5))
         {
-            if (!Bot.Player.Factions.Exists(f => f.Name == "Alchemy"))
-                Core.Logger("You need at least 1 point in Alchemy for the packets to work, make sure you do 1 potion first in /Join Alchemy.", messageBox: true, stopBot: true);
-
-            Core.HuntMonster("orecavern", "Deathmole", "Arashtite Ore", 2, false);
-            Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 2, false);
-            Farm.AlchemyPacket("Necrot", "Arashtite Ore", AlchemyRunes.Uruz);
-            Bot.Player.Pickup("Essence Potion");
+            // Farm.AlchemyPacket("Necrot", "Arashtite Ore", AlchemyRunes.Uruz); //alchemy packets need fixed
+            Farm.Gold(2500000);
+            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 25);
+            Core.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 1, 9770);
         }
+        Bot.Wait.ForDrop("Essence Potion");
+
 
         Core.EnsureAccept(5260);
 
