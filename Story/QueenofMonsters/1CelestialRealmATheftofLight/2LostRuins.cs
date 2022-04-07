@@ -1,19 +1,19 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/QueenofMonsters/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs
+//cs_include Scripts/Story/QueenofMonsters/1CelestialRealmATheftofLight/CoreCelestialRealm.cs
 using RBot;
 
-public class CompleteCharredPath
+public class CompleteLostRuins
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
-    public CoreExtriki Extriki => new CoreExtriki();
+    public CoreCelestialRealm Celestial => new CoreCelestialRealm();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Extriki.CharredPath();
+        Celestial.LostRuins();
 
         Core.SetOptions(false);
     }

@@ -1,9 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/QueenofMonsters/CelestialRealmATheftofLight/CoreCelestialRealm.cs
+//cs_include Scripts/Story/QueenofMonsters/1CelestialRealmATheftofLight/CoreCelestialRealm.cs
 using RBot;
 
-public class CompleteLostRuins
+public class CompleteCelestialRealmMap
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -13,7 +13,7 @@ public class CompleteLostRuins
     {
         Core.SetOptions();
 
-        Celestial.LostRuins();
+        Celestial.CelestialRealm();
 
         Core.SetOptions(false);
     }

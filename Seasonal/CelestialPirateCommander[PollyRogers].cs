@@ -52,7 +52,7 @@ public class CelestialPirateCommander
             Core.HuntMonster("starsinc", "Empowered Prime", "Map of the Celestial Seas", 1, false, publicRoom: true);
             Core.HuntMonster("underlair", "ArchFiend DragonLord", "Coffer of the Stars", 1, false, publicRoom: true);
             if (!Core.CheckInventory("Polly Roger"))
-                Core.EnsureAccept(7713, 56776);
+                Core.EnsureComplete(7713, 56776);
             else Core.EnsureCompleteChoose(7713, Rewards);
             Bot.Sleep(Core.ActionDelay);
             if (OnlyPolly && Core.CheckInventory("Polly Roger"))
