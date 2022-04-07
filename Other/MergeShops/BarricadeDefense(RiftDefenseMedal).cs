@@ -1,5 +1,5 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Story/QueenofMonsters/BookofMonstersTheDestroyer(Extriki)/CoreExtriki.cs
+//cs_include Scripts/Story/QueenofMonsters/6TheDestroyer(Extriki)/CoreExtriki.cs
 //cs_include Scripts/CoreStory.cs
 
 using RBot;

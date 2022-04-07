@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/QueenofMonsters/CelestialRealmATheftofLight/CoreCelestialRealm.cs
+//cs_include Scripts/Story/QueenofMonsters/1CelestialRealmATheftofLight/CoreCelestialRealm.cs
 using RBot;
 
 public class CompleteLostRuinsWar
