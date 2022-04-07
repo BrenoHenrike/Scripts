@@ -19,6 +19,8 @@ public class GoldFarm
 
         Adv.BestGear(GearBoost.gold);
 
+        Core.AddDrop("");
+
         Farm.Gold();
 
         Core.SetOptions(false);
