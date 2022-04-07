@@ -32,7 +32,7 @@ public class DoomKnight
 
         Farm.EvilREP(5);
 
-        Core.BuyItem("shadowfall", 100, "DoomKnight");
+        Core.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
 
         if (rankUpClass)
             Adv.rankUpClass("DoomKnight");
