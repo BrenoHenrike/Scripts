@@ -11,7 +11,7 @@ public class DoomwoodPart3
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-        bot.Options.LagKiller = false;
+        
         StoryLine();
 
         Core.SetOptions(false);
@@ -32,8 +32,6 @@ public class DoomwoodPart3
 
         Story.PreLoad();
 
-        Bot.Drops.Start();
-        
         // Bullies
         Story.KillQuest(7589, "Thorngarde", new[] { "CryptHacker", "NecroMech", "NecroDrone" });
 
