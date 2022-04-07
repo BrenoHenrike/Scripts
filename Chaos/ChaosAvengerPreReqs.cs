@@ -92,6 +92,7 @@ public class ChaosAvengerClass
         if (!Core.CheckInventory("Fragments of the Lords A"))
         {
             Core.EquipClass(ClassType.Solo);
+            bool Ledgermayne = true;
 
             //Escherion's Robe
             Core.KillEscherion("Escherion's Robe", publicRoom: true);
@@ -109,7 +110,7 @@ public class ChaosAvengerClass
             Core.HuntMonster("palooza", "Chaos Lord Discordia", "Discordia Armor", isTemp: false, publicRoom: true);
 
             //Ledgermayne (Armor)
-            Core.HuntMonster("ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: false, publicRoom: true);
+            Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: !Ledgermayne, publicRoom: Ledgermayne);
 
             Core.BuyItem("championdrakath", 2055, "Fragments of the Lords A");
         }
