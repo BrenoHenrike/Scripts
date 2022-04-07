@@ -112,7 +112,7 @@ public class LordOfOrder
             LD.LivingDungeonStory();
             Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: false);
             Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false);
-            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false);
+            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: true);
 
             Core.EnsureComplete(7159);
             return;
