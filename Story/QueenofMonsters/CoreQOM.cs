@@ -659,7 +659,7 @@ public class CoreQOM
         Story.PreLoad();
 
         //Talk to Ravinos
-        Story.MapItemQuest(5837, "underglade", 5271, AutoCompleteQuest: false);
+        Story.MapItemQuest(5837, "underglade", 5271);
 
         //Into the Underglade
         Story.KillQuest(5838, "underglade", new[] { "Forest Spirit", "Tree Nymph" });
