@@ -288,7 +288,7 @@ public class CoreQOM
 
         //Emily
         Story.MapItemQuest(5411, "doompally", 4761);
-        Story.MapItemQuest(5411, "doompally", 4760, 5);
+        Story.MapItemQuest(5411, "doompally", 4760, 6);
 
         //Sage Advice
         Story.KillQuest(5412, "doompally", "Doomwood Treeant");
