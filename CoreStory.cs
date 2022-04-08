@@ -10,7 +10,7 @@ public class CoreStory
     // False = Bot does it's smart checks on all quest
     // Recommended: false
     // Used for testing bots, dont toggle this as a user
-    public bool TestBot { get; set; } = true;
+    public bool TestBot { get; set; } = false;
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
