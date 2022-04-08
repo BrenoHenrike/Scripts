@@ -1,19 +1,22 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/QueenofMonsters/6TheDestroyer(Extriki)/CoreExtriki.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
+
 using RBot;
 
-public class CompleteExtriki
+public class CompleteQOM
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
-    public CoreExtriki Extriki => new CoreExtriki();
+    public CoreFarms Farm = new CoreFarms();
+    public CoreQOM QOM => new();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Extriki.CompleteCoreExtriki();
+        QOM.CompleteEverything();
 
         Core.SetOptions(false);
     }

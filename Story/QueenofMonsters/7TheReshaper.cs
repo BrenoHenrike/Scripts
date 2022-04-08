@@ -1,22 +1,22 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story/QueenofMonsters/4ShadowfallDarknessRising/CoreDarknessRising.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 
 using RBot;
 
-public class CompleteDarknessRising
+public class CompleteTheReshaper
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
-    public CoreDarknessRising DarknessRising = new();
+    public CoreQOM QOM => new();
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        DarknessRising.ShadowfallInvasion();
+        QOM.CompleteTheReshaper();
 
         Core.SetOptions(false);
     }
