@@ -54,6 +54,12 @@ public class WillpowerExtraction
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
+            if(!Core.CheckInventory("Necrot", 5))
+            {
+                Farm.Gold(300000);
+                Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 1, 7132);
+                Core.BuyItem("alchemyacademy", 2114, "Necrot", 5, 2);
+            }
 
             if (!Core.CheckInventory("chaoroot", 5))
             {
