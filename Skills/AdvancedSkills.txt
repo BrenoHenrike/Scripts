@@ -137,8 +137,8 @@ Base = Legion Revenant = 3 | 4 | 1 | 2 | Mode Optimistic
 Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Mode Optimistic
 Base = Legion SwordMaster Assassin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Leprechaun = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout:250
-Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout: 250
+Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic | Timeout:250
+Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic | Timeout:250
 Base = LightMage = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Lord Of Order = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Love Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
