@@ -1,4 +1,3 @@
-using System.Globalization;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
