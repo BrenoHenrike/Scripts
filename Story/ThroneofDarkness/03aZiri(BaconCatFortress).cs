@@ -124,11 +124,16 @@ public class FlyingBaconCatFortress
 
         //Grody
         Story.KillQuest(5113, "baconcatlair", "Ice Cream Shark");
-        Story.MapItemQuest(5113, "baconcatlair", 4474, 4);
+        Story.MapItemQuest(5113, "baconcatlair", 4474, 6);
 
         //We're Gonna Need A Bigger Eraser
-        Story.BuyQuest(5114, "digitalmaintown", 651, "Really Big Pencil");
-        
+        if (!Story.QuestProgression(5114))
+        {
+            Core.EnsureAccept(5114);
+            Core.BuyItem("digitalmaintown", 651, 35184, shopItemID: 20849);
+            Core.EnsureComplete(5114);
+        }
+
         // Second Draft
         Story.KillQuest(5115, "baconcatlair", "Sketchy Shark");
         Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
