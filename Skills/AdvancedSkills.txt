@@ -133,8 +133,8 @@ Base = Legion DoomKnight = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legion DoomKnight Tester = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legion Evolved Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legion Paladin = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = Legion Revenant = 3 | 4 | 1 | 2 | Timeout: 250
-Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Timeout: 250
+Base = Legion Revenant = 3 | 4 | 1 | 2 | Mode Optimistic
+Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Mode Optimistic
 Base = Legion SwordMaster Assassin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Leprechaun = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout:250
@@ -152,7 +152,7 @@ Base = MindBreaker = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Naval Commander = 3 WW10000 | 4 | 2 | 1 | Timeout: 250
 Base = Nechronomancer = 1 | 2 | 3S | 4 |  Mode Optimistic
-Base = Necromancer = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Necromancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 |  Mode Optimistic
 Base = Necrotic Chronomancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 |  Mode Optimistic
 Base = Ninja = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Ninja Warrior = 1 | 2 | 3 | 4 |  Mode Optimistic
