@@ -80,6 +80,7 @@ public class WillpowerExtraction
 
             if (!Core.CheckInventory("Mortality Cape of Revontheus"))
             {
+                Farm.Gold(10000);
                 Nulgath.ApprovalAndFavor(0, 35);
                 Core.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
             }
