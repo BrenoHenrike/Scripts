@@ -40,7 +40,7 @@ public class WillpowerExtraction
         {
             Core.EnsureAccept(5258);
 
-            Farm.EvilREP();
+            Farm.evil();
             if (!Core.CheckInventory("Shadow Lich"))
             {
                 Farm.Gold(60000);
@@ -53,7 +53,7 @@ public class WillpowerExtraction
             Nulgath.Supplies("Unidentified 19");
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
+
             if(!Core.CheckInventory("Necrot", 5))
             {
                 Farm.Gold(300000);
