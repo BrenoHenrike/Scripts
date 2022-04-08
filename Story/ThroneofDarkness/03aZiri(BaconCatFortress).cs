@@ -23,9 +23,6 @@ public class FlyingBaconCatFortress
         if (Core.isCompletedBefore(5120))
             return;
 
-        Bot.Options.LagKiller = false;
-
-
         Core.EquipClass(ClassType.Farm);
 
         // How Rude!
