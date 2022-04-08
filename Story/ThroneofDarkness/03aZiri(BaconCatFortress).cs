@@ -23,7 +23,8 @@ public class FlyingBaconCatFortress
         if (Core.isCompletedBefore(5120))
             return;
 
-        Story.PreLoad();
+        Bot.Options.LagKiller = false;
+
 
         Core.EquipClass(ClassType.Farm);
 
@@ -62,10 +63,24 @@ public class FlyingBaconCatFortress
         Story.MapItemQuest(5097, "baconcat", 4469, 4);
 
         // Ghost Busting
-        Story.KillQuest(5098, "baconcat", new[] { "Oopy", "Bloopy", "Hoopy", "Frood" });
+        if (!Story.QuestProgression(5098))
+        {
+            Core.EnsureAccept(5098);
+            Core.KillMonster("baconcat", "r11a", "Left", "Oopy", "Oopy Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Bloopy", "Bloopy Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Hoopy", "Hoopy Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Frood", "OopFroody Defeated");
+            Core.EnsureComplete(5098);
+        }
 
         // Super Ziri Brothers
-        Story.KillQuest(5099, "baconcat", new[] { "Red Shell Turtle", "Snapper Shrub" });
+        if (!Story.QuestProgression(5099))
+        {
+            Core.EnsureAccept(5099);
+            Core.KillMonster("baconcat", "r12", "Left", "Red Shell Turtle", "Turtle Shells", 5);
+            Core.KillMonster("baconcat", "r12", "Left", "Snapper Shrub", "Power Flower", 3);
+            Core.EnsureComplete(5099);
+        }
 
         // It's-A-Me
         Story.KillQuest(5100, "baconcat", "Horcio");
@@ -112,8 +127,8 @@ public class FlyingBaconCatFortress
         Story.MapItemQuest(5113, "baconcatlair", 4474, 4);
 
         //We're Gonna Need A Bigger Eraser
-        Story.BuyQuest(5114, "battleontown", 651, "Really Big Pencil");
-
+        Story.BuyQuest(5114, "digitalmaintown", 651, "Really Big Pencil");
+        
         // Second Draft
         Story.KillQuest(5115, "baconcatlair", "Sketchy Shark");
         Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
