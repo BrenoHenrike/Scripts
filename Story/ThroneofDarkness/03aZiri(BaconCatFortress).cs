@@ -126,7 +126,7 @@ public class FlyingBaconCatFortress
         if (!Story.QuestProgression(5114))
         {
             Core.EnsureAccept(5114);
-            Core.BuyItem("digitalmaintown", 651, 35184, shopItemID: 20849);
+            Core.BuyItem("librarium", 651, 35184, shopItemID: 20849);
             Core.EnsureComplete(5114);
         }
 
@@ -135,7 +135,7 @@ public class FlyingBaconCatFortress
         Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
 
         // Game on!
-        if(!Story.QuestProgression(5116))
+        if (!Story.QuestProgression(5116))
         {
             Core.EnsureAccept(5116);
             Core.KillMonster("baconcat", "r12", "Left", "*", "Cheat Codes", 4);
@@ -147,7 +147,7 @@ public class FlyingBaconCatFortress
         Story.MapItemQuest(5117, "baconcatlair", 4476, 4);
 
         // Save the Kittarians
-        if(!Story.QuestProgression(5118))
+        if (!Story.QuestProgression(5118))
         {
             Core.EnsureAccept(5118);
             Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Clothes", 6);

@@ -68,7 +68,7 @@ public class DragonOfTime
                 Story.KillQuest(3031, "druids", "Void Ghast");
             }
             Farm.LoremasterREP(4);
-            Core.BuyItem("digitalmaintown", 651, "Myths of Lore");
+            Core.BuyItem("librarium", 651, "Myths of Lore");
 
             Core.KillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
 
