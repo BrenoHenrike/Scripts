@@ -1343,15 +1343,12 @@ public class CoreBots
 
         string[] disabledMaps =
         {
-            "librarium",
-            "museum",
-            "yulgar",
-            "ariapet",
-            "trainers"
+            "curio",
+            "tower"
         };
 
         if (disabledMaps.Contains(map.ToLower()))
-            Logger($"Map {map} is disabled because of April Fools, bot cant continue", messageBox: true, stopBot: true);
+            Logger($"Map {map} is (still) disabled because of April Fools, bot cant continue", messageBox: true, stopBot: true);
 
         if (map.ToLower() == "tercessuinotlim")
         {
