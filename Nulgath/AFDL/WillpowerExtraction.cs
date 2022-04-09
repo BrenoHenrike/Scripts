@@ -40,7 +40,7 @@ public class WillpowerExtraction
         {
             Core.EnsureAccept(5258);
 
-            Farm.evil();
+            Farm.EvilREP();
             if (!Core.CheckInventory("Shadow Lich"))
             {
                 Farm.Gold(60000);
@@ -57,6 +57,7 @@ public class WillpowerExtraction
             if(!Core.CheckInventory("Necrot", 5))
             {
                 Farm.Gold(300000);
+                Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1, 8777);
                 Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 1, 7132);
                 Core.BuyItem("alchemyacademy", 2114, "Necrot", 5, 2);
             }
