@@ -156,6 +156,8 @@ public class CoreHollowbornDoomKnight
         if (Core.CheckInventory(ADKReturnsItems))
             return;
 
+        Core.AddDrop(ADKReturnsItems);
+
         Core.EnsureAccept(8416);
 
         // Requirements 
