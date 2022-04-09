@@ -312,6 +312,11 @@ public class CoreFarms
 
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
+
+        Core.JumpWait();
+        Bot.Player.Join("battleunderb", "Enter", "Spawn", ignoreCheck: true);
+        Bot.Wait.ForMapLoad("battleunderb".ToLower());
+
         Bot.Options.AggroMonsters = true;
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
         Bot.Options.AggroMonsters = false;
