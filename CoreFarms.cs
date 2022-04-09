@@ -665,7 +665,7 @@ public class CoreFarms
                 Core.BuyItem("museum", 630, "Blade of Awe");
             }
             if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
-                Core.BuyItem("musuem", 631, "Blade of Awe");
+                Core.BuyItem("museum", 631, "Blade of Awe");
         }
     }
 
