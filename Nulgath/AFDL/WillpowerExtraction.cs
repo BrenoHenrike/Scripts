@@ -54,12 +54,20 @@ public class WillpowerExtraction
 
             Core.EquipClass(ClassType.Farm);
 
-            if(!Core.CheckInventory("Necrot", 5))
+
+            if (!Core.CheckInventory("Necrot", 5))
             {
                 Farm.Gold(300000);
-                Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1, 8777);
-                Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 1, 7132);
-                Core.BuyItem("alchemyacademy", 2114, "Necrot", 5, 2);
+
+                while (!Core.CheckInventory(7132, 3))
+                {
+                    if (!Core.CheckInventory("Gold Voucher 100k", 3))
+                        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1);
+                    Core.BuyItem("alchemyacademy", 395, 7132, 3);
+                    Bot.Wait.ForPickup("Dragon Runestone");
+                }
+                Core.BuyItem("alchemyacademy", 397, "Necrot", 5, 2);
+                Bot.Wait.ForPickup("Necrot");
             }
 
             if (!Core.CheckInventory("chaoroot", 5))

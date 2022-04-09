@@ -14,8 +14,10 @@ public class FarmerJoeOutfit
     {
         Core.SetOptions();
 
-        scythe.GetHBReapersScythe();
+        // scythe.GetHBReapersScythe();
         RagsandHat();
+        ServersAreDown();
+        // DeathsScythe();
         // BackItem();
         // Pet();
 
@@ -35,12 +37,26 @@ public class FarmerJoeOutfit
         Core.BuyItem("battlleontown", 16, "Scarecrow Hat");
     }
 
-    // public void BackItem()
-    // {
-    //     if (Core.CheckInventory("item"))
-    //         return;
+    public void ServersAreDown()
+    {
+        if (Core.CheckInventory("The Server is Down"))
+            return;
 
-    // }
+        Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false);
+        Bot.Wait.ForPickup("The Server is Down");
+    }
+
+    public void DeathsScythe()
+    {
+
+        if (Core.CheckInventory(25117))
+            return;
+
+
+        while (!Core.CheckInventory(25117))
+            Bot.Player.Hunt("Death");
+
+    }
 
     // public void Pet()
     // {
