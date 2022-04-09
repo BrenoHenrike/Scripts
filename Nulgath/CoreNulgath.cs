@@ -495,7 +495,7 @@ public class CoreNulgath
         {
             if (!Core.CheckInventory("War-Torn Memorabilia"))
             {
-                Core.Join("digitalyulgar");
+                Core.Join("yulgar");
                 while (Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
                 {
                     Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
