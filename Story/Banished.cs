@@ -52,7 +52,12 @@ public class Banished
         Story.KillQuest(7879, "thevoid", "Void Dragon");
 
         // The Sixth Task
-        Story.KillQuest(7880, "banished", "Desterrat Moya");
+        if(!Story.QuestProgression(7880))
+        {
+            Core.EnsureAccept(7880);
+            Core.HuntMonster("banished", "Desterrat Moya", "Infected Tentacle");
+            Core.EnsureComplete(7880);
+        }
 
         // Short of Reach
         Story.KillQuest(8458, "transformation", "Eldritch Abomination");

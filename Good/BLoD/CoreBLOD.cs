@@ -241,7 +241,10 @@ public class CoreBLOD
     }
 
     public void LightMerge(string item, int quant = 1)
-        => Core.BuyItem("necropolis", 422, item, quant);
+    {
+        Core.BuyItem("necropolis", 422, item, quant);
+        Bot.Wait.ForPickup(item, quant);
+    }
 
     public void BlindingMace()
     {
@@ -413,11 +416,13 @@ public class CoreBLOD
                     UltimateWK("Spirit Orb", 5);
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
                     Core.EnsureComplete(2104);
+                    Bot.Wait.ForPickup("Blessed Barium");
                 }
                 Core.Logger("Farming for Blessed Barium of Doom");
                 FindingFragmentsBow(2);
                 UltimateWK("Loyal Spirit Orb", 5);
                 Core.BuyItem("dwarfhold", 434, "Blessed Barium of Destiny");
+                Bot.Wait.ForPickup("Blessed Barium of Destiny");
             }
             Core.Logger("Farming for Blade of Destiny");
             FindingFragmentsMace();

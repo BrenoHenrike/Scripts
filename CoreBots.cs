@@ -1002,7 +1002,7 @@ public class CoreBots
         {
             case ClassType.Farm:
                 JumpWait();
-                if (FarmGearOn)
+                if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
                     Equip(FarmGear);
                 if (!usingFarmGeneric)
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
@@ -1010,7 +1010,7 @@ public class CoreBots
                 break;
             default:
                 JumpWait();
-                if (SoloGearOn)
+                if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
                     Equip(SoloGear);
                 if (!usingSoloGeneric)
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);

@@ -33,6 +33,9 @@ public class CoreAstravia
         //Preload Quests
         Story.PreLoad();
 
+        Core.Join("Garden");
+        Bot.Sleep(2000);
+
         //Lost Breadcrumbs
         Story.KillQuest(7769, "eridani", "Maggot-Like Creature");
         Story.MapItemQuest(7769, "eridani", 7783);
@@ -41,27 +44,60 @@ public class CoreAstravia
         Story.KillQuest(7770, "eridani", "Maggot-Like Creature");
 
         //Ergot Bread
-        Story.KillQuest(7771, "eridani", "Rat-Like Creature");
+        if (!Story.QuestProgression(7771))
+        {
+            Core.EnsureAccept(7771);
+            Core.KillMonster("eridani", "r10", "Right", "Rat-Like Creature", "Rats Exterminated", 5);
+            Core.EnsureComplete(7771);
+        }
 
         //Kids These Days
-        Story.KillQuest(7772, "eridani", "Bat-Like Creature");
+        if (!Story.QuestProgression(7772))
+        {
+            Core.EnsureAccept(7772);
+            Core.KillMonster("eridani", "r10", "Right", "Bat-Like Creature", "Meat Cuts", 5);
+            Core.EnsureComplete(7772);
+        }
 
         //No Good Dead
         Story.KillQuest(7773, "eridani", "Wolf-Like Creature");
 
         //A Worn Book's Cover
-        Story.KillQuest(7774, "eridani", new[] { "Rat-Like Creature", "Bat-Like Creature", "Maggot-Like Creature" });
-        Story.MapItemQuest(7774, "eridani", 7784);
+        if (!Story.QuestProgression(7774))
+        {
+            Core.EnsureAccept(7774);
+            Core.KillMonster("eridani", "r10", "Right", "Rat-Like Creature", "Rat-Like Creature Slain");
+            Core.KillMonster("eridani", "r10", "Right", "Bat-Like Creature", "Bat-Like Creature Slain");
+            Core.KillMonster("eridani", "Enter", "Spawn", "Maggot-Like Creature", "Maggot-Like Creatures Slain", 2);
+            Story.MapItemQuest(7774, "eridani", 7784);
+        }
 
         //No Good Dead
         Story.KillQuest(7775, "eridani", "Wolf-Like Creature");
         Story.MapItemQuest(7775, "eridani", 7785);
 
         //The Black Goat in The Dark
-        Story.KillQuest(7776, "eridani", new[] { "Creature 15", "Creature 16", "Creature 34" });
+        if (!Story.QuestProgression(7776))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7776);
+            Core.KillMonster("eridani", "r4", "Left", "Creature 15", "Creature 15 Hunted");
+            Core.KillMonster("eridani", "r5", "Left", "Creature 16", "Creature 16 Hunted");
+            Core.KillMonster("eridani", "r6", "Left", "Creature 34", "Creature 34 Hunted", 7);
+            Core.EnsureComplete(7776);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         //The Star Sinks into the Sea
-        Story.KillQuest(7777, "eridani", new[] { "Creature 30", "Creature 31" });
+        if (!Story.QuestProgression(7777))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7777);
+            Core.KillMonster("eridani", "r7", "Right", "Creature 30", "Creature 30 Hunted", 1);
+            Core.KillMonster("eridani", "r3", "Right", "Creature 31", "Creature 31 Hunted", 1);
+            Core.EnsureComplete(7777);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         //The Gentlest Truth
         Story.KillQuest(7778, "eridani", "Door");

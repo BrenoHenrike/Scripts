@@ -110,9 +110,9 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("gaiazor", "Gaiazor", "Gaiazor's Cornerstone", isTemp: false, publicRoom: true);
             LD.LivingDungeonStory();
-            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: true);
+            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: false);
             Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false);
-            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false);
+            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: true);
 
             Core.EnsureComplete(7159);
             return;
@@ -126,7 +126,7 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
-            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: true);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
             if (!Core.CheckInventory("Safiria's Spirit Orb"))
             {
                 Core.AddDrop("Safiria's Spirit Orb");

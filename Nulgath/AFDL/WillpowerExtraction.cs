@@ -53,7 +53,14 @@ public class WillpowerExtraction
             Nulgath.Supplies("Unidentified 19");
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 5, false);
+
+            if(!Core.CheckInventory("Necrot", 5))
+            {
+                Farm.Gold(300000);
+                Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1, 8777);
+                Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 1, 7132);
+                Core.BuyItem("alchemyacademy", 2114, "Necrot", 5, 2);
+            }
 
             if (!Core.CheckInventory("chaoroot", 5))
             {
@@ -80,6 +87,7 @@ public class WillpowerExtraction
 
             if (!Core.CheckInventory("Mortality Cape of Revontheus"))
             {
+                Farm.Gold(10000);
                 Nulgath.ApprovalAndFavor(0, 35);
                 Core.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
             }

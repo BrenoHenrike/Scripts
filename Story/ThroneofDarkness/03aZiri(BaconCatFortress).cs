@@ -19,10 +19,10 @@ public class FlyingBaconCatFortress
 
     public void FlyingBaconCatFortressSaga()
     {
-        if (Core.isCompletedBefore(5108))
+        if (Core.isCompletedBefore(5120))
             return;
 
-        Story.PreLoad();
+        Core.EquipClass(ClassType.Farm);
 
         // How Rude!
         Story.MapItemQuest(5087, "baconcat", 4466, 7);
@@ -59,10 +59,24 @@ public class FlyingBaconCatFortress
         Story.MapItemQuest(5097, "baconcat", 4469, 4);
 
         // Ghost Busting
-        Story.KillQuest(5098, "baconcat", new[] { "Oopy", "Bloopy", "Hoopy", "Frood" });
+        if (!Story.QuestProgression(5098))
+        {
+            Core.EnsureAccept(5098);
+            Core.KillMonster("baconcat", "r11a", "Left", "Oopy", "Oopy Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Bloopy", "Bloopy Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Hoopy", "Hoopy Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Frood", "OopFroody Defeated");
+            Core.EnsureComplete(5098);
+        }
 
         // Super Ziri Brothers
-        Story.KillQuest(5099, "baconcat", new[] { "Red Shell Turtle", "Snapper Shrub" });
+        if (!Story.QuestProgression(5099))
+        {
+            Core.EnsureAccept(5099);
+            Core.KillMonster("baconcat", "r12", "Left", "Red Shell Turtle", "Turtle Shells", 5);
+            Core.KillMonster("baconcat", "r12", "Left", "Snapper Shrub", "Power Flower", 3);
+            Core.EnsureComplete(5099);
+        }
 
         // It's-A-Me
         Story.KillQuest(5100, "baconcat", "Horcio");
@@ -97,5 +111,55 @@ public class FlyingBaconCatFortress
         // Stop Hitting Yourself!
         Story.KillQuest(5108, "baconcatyou", "*");
         Core.Join("farm");
+
+        // Cloud Sharks!
+        Story.KillQuest(5111, "baconcatlair", "Cloud Shark");
+
+        // Get Those Waffle Cones Ready
+        Story.KillQuest(5112, "baconcatlair", "Ice Cream Shark");
+
+        //Grody
+        Story.KillQuest(5113, "baconcatlair", "Ice Cream Shark");
+        Story.MapItemQuest(5113, "baconcatlair", 4474, 6);
+
+        //We're Gonna Need A Bigger Eraser
+        if (!Story.QuestProgression(5114))
+        {
+            Core.EnsureAccept(5114);
+            Core.BuyItem("digitalmaintown", 651, 35184, shopItemID: 20849);
+            Core.EnsureComplete(5114);
+        }
+
+        // Second Draft
+        Story.KillQuest(5115, "baconcatlair", "Sketchy Shark");
+        Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
+
+        // Game on!
+        if(!Story.QuestProgression(5116))
+        {
+            Core.EnsureAccept(5116);
+            Core.KillMonster("baconcat", "r12", "Left", "*", "Cheat Codes", 4);
+            Core.EnsureComplete(5116);
+        }
+
+        // Game Sharks
+        Story.KillQuest(5117, "baconcatlair", "8-bit Shark");
+        Story.MapItemQuest(5117, "baconcatlair", 4476, 4);
+
+        // Save the Kittarians
+        if(!Story.QuestProgression(5118))
+        {
+            Core.EnsureAccept(5118);
+            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Clothes", 6);
+            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Spoon", 4);
+            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Fork", 4);
+            Core.EnsureComplete(5118);
+        }
+
+        // Bacon Cat Force Needs YOU!
+        Story.KillQuest(5119, "baconcatlair", new[] { "Cloud Shark", "Ice Cream Shark", "Sketchy Shark", "8-bit Shark", "Cat Clothed Shark" });
+
+        // Ziri Is Also Tough
+        Story.KillQuest(5120, "baconcatlair", "Cloud Shark");
     }
 }
