@@ -1,5 +1,5 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Story/QueenofMonsters/6TheDestroyer(Extriki)/CoreExtriki.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/CoreStory.cs
 
 using RBot;
@@ -8,8 +8,8 @@ public class BarricadeDefenseMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreExtriki Extriki => new();
-    public CoreStory Story = new CoreStory();
+    public CoreQOM QOM => new();
+    public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -26,8 +26,8 @@ public class BarricadeDefenseMerge
     {
         if (!Story.QuestProgression(5824))
         {
-            Extriki.TheRift();
-            Extriki.CharredPath();
+            QOM.TheRift();
+            QOM.CharredPath();
         }
 
         Core.AddDrop("Rift Defense Medal");

@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 
 using RBot;
 
