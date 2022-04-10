@@ -21,7 +21,7 @@ public class FarmerJoeOutfit
         // BackItem();
         // Pet();
 
-        Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "Hollowborn Reaper's Scythe", "BackItem", "Pet" });
+        Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down"});
 
         Core.Logger("We are farmers, bum ba dum bum bum bum bum", messageBox: true);
 
