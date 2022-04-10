@@ -847,7 +847,7 @@ public class CoreFarms
         while (FactionRank("Dreadfire") < rank)
         {
             Core.EnsureAccept(5697);
-            Core.KillMonster("dreadfire", "Arcane Crystal", "r13", "Bottom", "Perfect Crystal Orb", 1);
+            Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb");
             Core.EnsureComplete(5697);
             Core.Logger($"Completed x{i++}");
         }
