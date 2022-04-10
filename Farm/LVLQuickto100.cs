@@ -1,43 +1,51 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
-
 using RBot;
+
 public class LVLQuick
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        bot.Drops.Start();
-
-        if (bot.Player.Level == 100)
-            return;
-
-        if (!Core.CheckInventory("Healer"))
-            Core.BuyItem("classhalla", 176, "Healer");
-
-        Core.Join("IceStormArena", publicRoom: true);
-
-        Core.Equip("Healer");
-
-        Adv.BestGear(GearBoost.exp);
-
-        Core.Jump("r4", "Bottom");
-
-        while (bot.Player.Level < 100)
-        {
-            Core.SendPackets("%xt%zm%aggroMon%134123%70%71%72%73%74%75%");
-            bot.Player.Attack("*");
-            bot.Player.UseSkill(4);
-            bot.Player.UseSkill(3);
-            bot.Player.UseSkill(2);
-            bot.Sleep(Core.ActionDelay);
-        }
+        QuickLvl();
 
         Core.SetOptions(false);
+    }
+
+    public void QuickLvl(int Level = 100)
+    {
+        if (Bot.Player.Level == Level)
+            return;
+
+        Bot.Drops.Start();
+
+        Core.BuyItem("classhalla", 176, "Healer");
+        Core.Equip("Healer");
+
+        Core.Join("IceStormArena", publicRoom: true);
+        Adv.BestGear(GearBoost.exp);
+        Core.Jump("r4", "Bottom");
+
+        while (Bot.Player.Level < Level)
+        {
+            Core.SendPackets($"%xt%zm%aggroMon%{Bot.Map.RoomID}%70%71%72%73%74%75%");
+            Bot.Player.Attack("*");
+
+            if (Bot.Player.CanUseSkill(4))
+                Bot.Player.UseSkill(4);
+            if (Bot.Player.CanUseSkill(3))
+                Bot.Player.UseSkill(3);
+            if (Bot.Player.CanUseSkill(2))
+                Bot.Player.UseSkill(2);
+
+            Bot.Sleep(Core.ActionDelay);
+        }
     }
 }
