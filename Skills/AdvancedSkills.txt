@@ -77,7 +77,7 @@ Base = DoomKnight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = DoomKnight OverLord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragon Knight = 1 | 2 | 3 | 4 | Mode Optimistic
 Farm = Dragon of Time = 1 | 2 | 3 | 2 | 4 | Timeout:250
-Solo = Dragon of Time = 1 | 2 | 4 | 2 | 3 | 2 | Timeout:250
+Solo = Dragon of Time = 1 | 2 | 4 | 3 | 2 | Timeout:250
 Base = Dragon Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonslayer = 1 | 2 | 3 | 4 | Mode Optimistic
