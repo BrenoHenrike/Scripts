@@ -12,7 +12,7 @@ public class LVLQuick
     {
         Core.SetOptions();
 
-
+        bot.Drops.Start();
 
         if (bot.Player.Level == 100)
             return;
