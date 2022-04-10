@@ -50,7 +50,7 @@ public class CoreDarkon
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))
         {
-            if (Bot.Map.Name == "doomvault")
+            if (Bot.Map.Name.ToLower() == "doomvault")
             {
                 while (Bot.Player.Cell != "r5")
                 {

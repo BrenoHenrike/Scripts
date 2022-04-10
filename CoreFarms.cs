@@ -312,6 +312,11 @@ public class CoreFarms
 
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
+
+        Core.JumpWait();
+        Bot.Player.Join("battleunderb", "Enter", "Spawn", ignoreCheck: true);
+        Bot.Wait.ForMapLoad("battleunderb".ToLower());
+
         Bot.Options.AggroMonsters = true;
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
         Bot.Options.AggroMonsters = false;
@@ -660,7 +665,7 @@ public class CoreFarms
                 Core.BuyItem("museum", 630, "Blade of Awe");
             }
             if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
-                Core.BuyItem("musuem", 631, "Blade of Awe");
+                Core.BuyItem("museum", 631, "Blade of Awe");
         }
     }
 
