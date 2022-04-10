@@ -12,7 +12,7 @@ public class LVLQuick
     {
         Core.SetOptions();
 
-
+        bot.Drops.Start();
 
         if (bot.Player.Level == 100)
             return;
@@ -35,6 +35,7 @@ public class LVLQuick
             bot.Player.UseSkill(4);
             bot.Player.UseSkill(3);
             bot.Player.UseSkill(2);
+            bot.Sleep(Core.ActionDelay);
         }
 
         Core.SetOptions(false);
