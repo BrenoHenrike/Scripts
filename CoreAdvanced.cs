@@ -239,8 +239,6 @@ public class CoreAdvanced
                 List<ShopItem> BestTwo = ListMinToMax.Skip(ListMinToMax.Count - 2).ToList();
                 ShopItem SelectedEhn = new ShopItem();
 
-                Bot.Log($"{AvailableEnh.Count}");
-
                 if (BestTwo.First().Level == BestTwo.Last().Level)
                     if (Core.IsMember)
                         SelectedEhn = BestTwo.First(x => x.Upgrade);
