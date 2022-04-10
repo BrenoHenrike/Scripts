@@ -24,7 +24,7 @@ public class LVLQuick
         if (Bot.Player.Level == Level)
             return;
 
-        Bot.Drops.Start();
+        Core.AddDrop("");
 
         Core.BuyItem("classhalla", 176, "Healer");
         Core.Equip("Healer");
