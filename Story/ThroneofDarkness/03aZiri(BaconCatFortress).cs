@@ -65,7 +65,7 @@ public class FlyingBaconCatFortress
             Core.KillMonster("baconcat", "r11a", "Left", "Oopy", "Oopy Defeated");
             Core.KillMonster("baconcat", "r11a", "Left", "Bloopy", "Bloopy Defeated");
             Core.KillMonster("baconcat", "r11a", "Left", "Hoopy", "Hoopy Defeated");
-            Core.KillMonster("baconcat", "r11a", "Left", "Frood", "OopFroody Defeated");
+            Core.KillMonster("baconcat", "r11a", "Left", "Frood", "Frood Defeated");
             Core.EnsureComplete(5098);
         }
 
