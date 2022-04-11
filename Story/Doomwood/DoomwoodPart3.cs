@@ -175,11 +175,12 @@ public class DoomwoodPart3
         // Build the Dummies
         if (!Story.QuestProgression(7627))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7627);
-            Core.KillMonster("stonewooddeep", "r2", "Right", "*", "Area Cleared", 10);
-            Story.MapItemQuest(7627, "stonewooddeep", 7531, 6);
+            Bot.Options.AttackWithoutTarget = true;
+            Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Treeant", "Area Cleared", 10);
             Bot.Options.AttackWithoutTarget = false;
+            Core.GetMapItem(7531, 6, "stonewooddeep");
+            Core.EnsureComplete(7627);
         }
 
         // Battle the Dummies
