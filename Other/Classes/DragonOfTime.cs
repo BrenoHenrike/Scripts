@@ -214,8 +214,8 @@ public class DragonOfTime
             Bot.Wait.ForPickup("Collectible Collector");
 
             Story.ChainQuest(7721);
-            
-            Bot.Wait.ForPickup(new[] { "Ascended Dragon of Time Runes", "Runes Of Time" });
+
+            Bot.Wait.ForPickup("*");
             Core.ToBank("Ascended Dragon of Time Runes", "Runes Of Time");
         }
 
