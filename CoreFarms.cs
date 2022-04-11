@@ -1187,6 +1187,7 @@ public class CoreFarms
         while (FactionRank("Hollowborn") < rank)
         {
             Core.EnsureAccept(7553, 7555);
+            Core.EquipClass(ClassType.Farm);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
             Core.EnsureComplete(new[] { 7553, 7555 });
