@@ -1343,7 +1343,6 @@ public class CoreBots
 
         string[] disabledMaps =
         {
-            "curio",
             "tower"
         };
 
