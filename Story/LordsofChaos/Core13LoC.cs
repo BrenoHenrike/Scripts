@@ -569,7 +569,7 @@ public class Core13LoC
         //Search and Report
         if (!Story.QuestProgression(564))
         {
-            Core.EnsureAccept(546);
+            Core.EnsureAccept(564);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
             Bot.Sleep(5000);
             Story.MapItemQuest(564, "chaoscave", 107);
