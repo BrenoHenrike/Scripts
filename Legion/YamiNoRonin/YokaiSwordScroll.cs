@@ -35,6 +35,7 @@ public class TheEdgeofanEra
         Core.EnsureAccept(7445);
         Core.HuntMonster("shadowfortress", "1st Head of Orochi", "Perfect Orochi Scales", 888, false);
         Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 600, false);
+        Farm.YokaiREP();
         Core.BuyItem("akiba", 131, "Oni Skull Charm", 1);
         ShadowKatanaBlade(1);
         Core.EnsureComplete(7445);
