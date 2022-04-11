@@ -1388,7 +1388,7 @@ public class CoreBots
         while (Bot.Player.Cell != cell)
         {
             Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
-            Bot.Sleep(1500);
+            Bot.Sleep(2500);
             Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
     }
