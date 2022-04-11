@@ -1,19 +1,26 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Farm/LVLQuickto100.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Enhancement/InventoryEnhancer.cs
 using RBot;
 
 public class FarmerJoeOutfit
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new();
+    public CoreFarms Farm = new();
     public HollowbornScythe scythe = new();
+    public LVLQuick LVL = new();
 
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
+        LVL.QuickLvl();
         scythe.GetHBReapersScythe();
         RagsandHat();
         ServersAreDown();
@@ -21,7 +28,7 @@ public class FarmerJoeOutfit
         // BackItem();
         // Pet();
 
-        Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe"});
+        Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
 
         Core.Logger("We are farmers, bum ba dum bum bum bum bum", messageBox: true);
 
@@ -32,13 +39,11 @@ public class FarmerJoeOutfit
     {
         if (Core.CheckInventory("Peasant Rags") | Core.CheckInventory("Scarecrow Hat"))
             return;
-        Core.Join("digitalyulgar");
-        Bot.Shops.BuyItem(41, "Peasant Rags");
+
+        Core.BuyItem("yulgar", 41, "Peasant Rags");
         Bot.Wait.ForPickup("Peasant Rags");
-        Bot.Shops.BuyItem(16, "Scarecrow Hat");
-        Bot.Wait.ForPickup("Scarecrow Hat");
-        // Core.BuyItem("digitalyulgar", 41, "Peasant Rags");
-        // Core.BuyItem("digitalyulgar", 16, "Scarecrow Hat");
+        Core.BuyItem("yulgar", 16, "Scarecrow Hat");
+        Bot.Wait.ForPickup("Scarecrow Hat");       
     }
 
     public void ServersAreDown()
