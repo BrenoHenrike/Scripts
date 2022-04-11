@@ -993,6 +993,7 @@ public class CoreFarms
         Core.ChangeAlignment(Alignment.Evil);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Evil);
         else
@@ -1036,7 +1037,7 @@ public class CoreFarms
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.EnsureAccept(6775);
-                Core.HuntMonster("rainbow", "Lucky Harms ", "Four Leaf Clover", 3);
+                Core.HuntMonster("rainbow", "Lucky Harms", "Four Leaf Clover", 3);
                 Core.EnsureComplete(6775);
                 Core.Logger($"Completed x{i++}");
             }
@@ -1080,6 +1081,7 @@ public class CoreFarms
         Core.ChangeAlignment(Alignment.Good);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Good);
         else
@@ -1114,6 +1116,7 @@ public class CoreFarms
             return;
 
         Experience(15);
+        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         while (FactionRank("Loremaster") < rank)
         {
@@ -1167,6 +1170,8 @@ public class CoreFarms
         }
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+
+        Core.EquipClass(ClassType.Solo);
         while (FactionRank("Lycan") < rank)
         {
             Core.EnsureAccept(537);
@@ -1236,6 +1241,7 @@ public class CoreFarms
     {
         if (FactionRank("Monster Hunter") >= rank)
             return;
+        Core.EquipClass(ClassType.Farm);
         if (!Bot.Quests.IsAvailable(5850))
         {
             Core.EnsureAccept(5849);
@@ -1266,6 +1272,7 @@ public class CoreFarms
             return;
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         if (!Bot.Quests.IsAvailable(5429))
         {
             Core.Join("cursedshop");
@@ -1466,6 +1473,7 @@ public class CoreFarms
             return;
         Core.AddDrop("Mystic Quills", "Mystic Parchment");
         Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
 
         if (FactionRank("SpellCrafting") == 0)
         {
