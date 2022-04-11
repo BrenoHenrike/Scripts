@@ -93,7 +93,6 @@ public class LordOfOrder
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 2);
                 Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15, 10);
             }
-            Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true);
