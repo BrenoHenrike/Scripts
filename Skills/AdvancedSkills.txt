@@ -142,7 +142,7 @@ Base = Leprechaun = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic | Timeout:250
 Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic | Timeout:250
 Base = LightMage = 3 | 4 | 1 | 2 | Timeout: 250
-Base = Lord Of Order = 3S | 4S | 1S | 2S | Mode Optimistic
+Base = Lord Of Order = 2S | 4S | 1S | 3S | Mode Optimistic
 Base = Love Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Lycan = 4 | 3 | 2 | 1 | 2 | 1 | Timeout: 250
 Base = Mage = 2 | 1 | 3 | 4 | Mode Optimistic
