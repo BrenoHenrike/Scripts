@@ -180,6 +180,7 @@ public class DragonOfTime
 
             Core.EquipClass(ClassType.Solo);
             Adv.BoostHuntMonster("ivoliss", "Ivoliss", "Sword of Voids", isTemp: false);
+            Bot.Wait.ForPickup("Sword of Voids");
 
             Darkon.FarmReceipt(100);
 
@@ -191,6 +192,7 @@ public class DragonOfTime
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("guardiantree", "Terrane", "Terrane Defeated");
                 Core.EnsureComplete(6286);
+                Bot.Wait.ForPickup("Semiramis Feather");
             }
 
             Core.EquipClass(ClassType.Farm);
@@ -204,13 +206,16 @@ public class DragonOfTime
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("whitehole", "Mehensi Serpent", "Mehen Slain");
                 Core.EnsureComplete(5186);
+                Bot.Wait.ForPickup("Starlight Singularity");
             }
 
             Coll.CollectionStory();
             Core.BuyItem("collection", 325, "Collectible Collector");
+            Bot.Wait.ForPickup("Collectible Collector");
 
             Story.ChainQuest(7721);
-            Bot.Wait.ForPickup("*");
+            
+            Bot.Wait.ForPickup(new[] { "Ascended Dragon of Time Runes", "Runes Of Time" });
             Core.ToBank("Ascended Dragon of Time Runes", "Runes Of Time");
         }
 
