@@ -575,15 +575,8 @@ public class CoreAdvanced
             Core.AddDrop(item);
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
-
         _RaceGear(monster);
-
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
-        while (Bot.Player.Cell != cell)
-        {
-            Core.Jump(cell, pad);
-            Bot.Sleep(700);
-        }
+        Core.Jump(cell, pad);
 
         Bot.Events.CounterAttack += _KillUltra;
 
