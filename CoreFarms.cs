@@ -266,60 +266,36 @@ public class CoreFarms
 
         while (!Core.CheckInventory(item, quant))
         {
-            int move = 0;
-            int end = 0;
-
             Core.AddDrop(item);
-            Core.Logger($"move {move++}");
             Core.Join("bludrutbrawl", "Enter0", "Spawn");
-            Core.Logger($"move {move++}");
             Bot.Wait.ForMapLoad("bludrutbrawl");
-            Core.Logger($"move {move++}");
             Core.BludrutMove(5, "Morale0C");
-            Core.Logger($"move {move++}");
             Core.BludrutMove(4, "Morale0B");
-            Core.Logger($"move {move++}");
             Core.BludrutMove(7, "Morale0A");
-            Core.Logger($"move {move++}");
             Core.BludrutMove(9, "Crosslower");
-            Core.Logger($"move {move++}");
             if (!canSoloBoss)
             {
                 Core.BludrutMove(14, "Crossupper", 528, 255);
-                Core.Logger($"move {move++}");
                 Core.BludrutMove(18, "Resource1A");
-                Core.Logger($"move {move++}");
                 Bot.Player.Kill("Team B Restorer");
-                Core.Logger($"move {move++}");
                 Bot.Player.Kill("Team B Restorer");
-                Core.Logger($"move {move++}");
                 Core.BludrutMove(20, "Resource1B");
-                Core.Logger($"move {move++}");
                 Bot.Player.Kill("Team B Restorer");
-                Core.Logger($"move {move++}");
                 Bot.Player.Kill("Team B Restorer");
-                Core.Logger($"move {move++}");
                 Core.BludrutMove(21, "Resource1A", 124);
-                Core.Logger($"move {move++}");
                 Core.BludrutMove(19, "Crossupper", 124);
-                Core.Logger($"move {move++}");
                 Core.BludrutMove(17, "Crosslower", 488, 483);
-                Core.Logger($"move {move++}");
             }
             Core.BludrutMove(15, "Morale1A");
-            Core.Logger($"move {move++}");
             if (!canSoloBoss)
                 Bot.Player.Kill("Team B Brawler");
             Core.BludrutMove(23, "Morale1B");
-            Core.Logger($"move {move++}");
             if (!canSoloBoss)
                 Bot.Player.Kill("Team B Brawler");
             Core.BludrutMove(25, "Morale1C");
-            Core.Logger($"move {move++}");
             if (!canSoloBoss)
                 Bot.Player.Kill("Team B Brawler");
             Core.BludrutMove(28, "Captain1", 528, 255);
-            Core.Logger($"move {move++}");
             Bot.Player.Kill("Team B Captain");
             Bot.Wait.ForPickup(item);
             while (Bot.Map.Name != "battleon")
