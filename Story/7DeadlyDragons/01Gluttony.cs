@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
@@ -36,7 +37,12 @@ public class Gluttony
         Story.KillQuest(5908, "gluttony", "Bowel Worm");
         Story.MapItemQuest(5908, "gluttony", 5347, 10);
         // Ossification Needed
-        Story.KillQuest(5909, "gluttony", "Bile");
+        if(!Story.QuestProgression(5909))
+        {
+            Core.EnsureAccept(5909);
+            Core.KillMonster("gluttony", "r6", "Left", "Bile", "Falgar's Bones", 9);
+            Core.EnsureComplete(5909);
+        }
         // Eye Need Bones
         Story.MapItemQuest(5910, "gluttony", 5348, 5);
         Story.KillQuest(5910, "gluttony", "Skeletal Slayer");

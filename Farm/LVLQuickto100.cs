@@ -24,10 +24,16 @@ public class LVLQuick
         if (Bot.Player.Level == Level)
             return;
 
-        Bot.Drops.Start();
+        Core.AddDrop("");
 
-        Core.BuyItem("classhalla", 176, "Healer");
-        Core.Equip("Healer");
+        if (Core.CheckInventory("Healer (rare)"))
+            Core.Equip("Healer (rare)");
+
+        else
+        {
+            Core.BuyItem("classhalla", 176, "Healer");
+            Core.Equip("Healer");
+        }
 
         Core.Join("IceStormArena", publicRoom: true);
         Adv.BestGear(GearBoost.exp);

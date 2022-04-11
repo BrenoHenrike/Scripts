@@ -71,6 +71,7 @@ public class CoreBLOD
         BlindingBow();
         BlindingBlade();
         TheBlindingLightofDestiny();
+        Core.BuyItem("battleon", 1415, "Blinding Light of Destiny");
     }
 
     public void UnlockMineCrafting()

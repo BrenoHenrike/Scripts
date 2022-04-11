@@ -98,7 +98,9 @@ public class DjinnGateStory
         if (!Story.QuestProgression(6160))
         {
             Core.EquipClass(ClassType.Farm);
-            Story.KillQuest(6160, "djinngate", "Harpy|Lamia");
+            Core.EnsureAccept(6160);
+            Core.HuntMonster("djinngate", "Harpy", "Djinn's Essence", 100, isTemp: false);
+            Core.EnsureComplete(6160);
         }
 
         if (!Story.QuestProgression(6160))

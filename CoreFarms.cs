@@ -258,13 +258,16 @@ public class CoreFarms
     {
         if (Core.CheckInventory(item, quant))
             return;
-        Core.EquipClass(ClassType.Solo);
+
         Core.AddDrop(item);
+
+        Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
-        Core.JumpWait();
+
         while (!Core.CheckInventory(item, quant))
         {
-            Bot.Player.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
+            Core.AddDrop(item);
+            Core.Join("bludrutbrawl", "Enter0", "Spawn");
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -294,14 +297,14 @@ public class CoreFarms
                 Bot.Player.Kill("Team B Brawler");
             Core.BludrutMove(28, "Captain1", 528, 255);
             Bot.Player.Kill("Team B Captain");
-            if (!Core.CheckInventory(item))
+            Bot.Wait.ForPickup(item);
+            while (Bot.Map.Name != "battleon")
             {
-                Bot.Wait.ForDrop(item, 30);
-                Bot.Player.Pickup(item);
-            }
-            else
                 Bot.Sleep(5000);
-            Core.Rest();
+                Core.Join("battleon");
+                Bot.Wait.ForMapLoad("battleon");
+            }
+
         }
     }
 
@@ -990,6 +993,7 @@ public class CoreFarms
         Core.ChangeAlignment(Alignment.Evil);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Evil);
         else
@@ -1033,7 +1037,7 @@ public class CoreFarms
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.EnsureAccept(6775);
-                Core.HuntMonster("rainbow", "Lucky Harms ", "Four Leaf Clover", 3);
+                Core.HuntMonster("rainbow", "Lucky Harms", "Four Leaf Clover", 3);
                 Core.EnsureComplete(6775);
                 Core.Logger($"Completed x{i++}");
             }
@@ -1077,6 +1081,7 @@ public class CoreFarms
         Core.ChangeAlignment(Alignment.Good);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Good);
         else
@@ -1111,6 +1116,7 @@ public class CoreFarms
             return;
 
         Experience(15);
+        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         while (FactionRank("Loremaster") < rank)
         {
@@ -1164,6 +1170,8 @@ public class CoreFarms
         }
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+
+        Core.EquipClass(ClassType.Solo);
         while (FactionRank("Lycan") < rank)
         {
             Core.EnsureAccept(537);
@@ -1184,6 +1192,7 @@ public class CoreFarms
         while (FactionRank("Hollowborn") < rank)
         {
             Core.EnsureAccept(7553, 7555);
+            Core.EquipClass(ClassType.Farm);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
             Core.EnsureComplete(new[] { 7553, 7555 });
@@ -1232,6 +1241,7 @@ public class CoreFarms
     {
         if (FactionRank("Monster Hunter") >= rank)
             return;
+        Core.EquipClass(ClassType.Farm);
         if (!Bot.Quests.IsAvailable(5850))
         {
             Core.EnsureAccept(5849);
@@ -1262,6 +1272,7 @@ public class CoreFarms
             return;
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
         if (!Bot.Quests.IsAvailable(5429))
         {
             Core.Join("cursedshop");
@@ -1462,6 +1473,7 @@ public class CoreFarms
             return;
         Core.AddDrop("Mystic Quills", "Mystic Parchment");
         Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
 
         if (FactionRank("SpellCrafting") == 0)
         {

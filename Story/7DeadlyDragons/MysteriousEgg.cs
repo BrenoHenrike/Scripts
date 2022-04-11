@@ -38,6 +38,14 @@ public class MysteriousEgg
             Core.GetMapItem(5381, map: "sloth");
             Core.EnsureComplete(5944);
         }
+        if (!Core.CheckInventory(40710))
+        {
+            Core.EnsureAccept(5944);
+            Core.GetMapItem(5380, 1, "sloth");
+            Core.GetMapItem(5381, 1, "sloth");
+            Core.EnsureComplete(5944);
+        }
+        Core.Equip("Hazmat Suit(Temp)");
         Core.HuntMonster("sloth", "Phlegnn", "Key of Sloth", isTemp: false);
         Core.HuntMonster("lust", "Lascivia", "Key of Lust", isTemp: false);
         Bot.Quests.UpdateQuest(6000);

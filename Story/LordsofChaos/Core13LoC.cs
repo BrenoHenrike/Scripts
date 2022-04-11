@@ -569,7 +569,7 @@ public class Core13LoC
         //Search and Report
         if (!Story.QuestProgression(564))
         {
-            Core.EnsureAccept(546);
+            Core.EnsureAccept(564);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
             Bot.Sleep(5000);
             Story.MapItemQuest(564, "chaoscave", 107);
@@ -1130,11 +1130,11 @@ public class Core13LoC
         if (!Story.QuestProgression(1473))
         {
             Core.EnsureAccept(1473);
-            if(Bot.Player.Cell != "r17a" | Bot.Player.Pad != "Up")
+            if (Bot.Player.Cell != "r17a" | Bot.Player.Pad != "Up")
             {
                 Core.Join("dreamnexus", "r17a", "Up");
                 Core.Jump("r17a", "Up");
-            }            
+            }
             Adv.KillUltra("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
             Core.EnsureComplete(1473);
         }
@@ -2144,8 +2144,8 @@ public class Core13LoC
         //Battle the Champion of Chaos!
         Story.MapItemQuest(3795, "drakathfight", 2894);
 
-        //REUSE
-        Story.KillQuest(3620, "shadowrise", "Broken Bones|Darkness Elemental|Dry Ice Mage");
+        //Arrive in the Underworld
+        Story.KillQuest(3620, "shadowrise", "Darkness Elemental|Dry Ice Mage");
 
         //Search for Death's Lair
         Story.MapItemQuest(3796, "shadowrise", 2895);

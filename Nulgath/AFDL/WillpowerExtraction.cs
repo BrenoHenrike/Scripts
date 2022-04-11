@@ -63,7 +63,7 @@ public class WillpowerExtraction
                 {
                     if (!Core.CheckInventory("Gold Voucher 100k", 3))
                         Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1);
-                    Core.BuyItem("alchemyacademy", 395, 7132, 3);
+                    Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3);
                     Bot.Wait.ForPickup("Dragon Runestone");
                 }
                 Core.BuyItem("alchemyacademy", 397, "Necrot", 5, 2);
