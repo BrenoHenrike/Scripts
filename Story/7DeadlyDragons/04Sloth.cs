@@ -21,18 +21,12 @@ public class Sloth
         if (Core.isCompletedBefore(5960))
             return;
 
-        // Protective Gear Required
+        // Protective Gear Required (Slot -1, will repeat even if completed before)
         Story.MapItemQuest(5944, "sloth", 5380, 1);
         Story.MapItemQuest(5944, "sloth", 5381, 1);
 
-        if(!Core.CheckInventory(40710))
-        {
-            Core.EnsureAccept(5944);
-            Core.GetMapItem(5380, 1, "sloth");
-            Core.GetMapItem(5381, 1, "sloth");
-            Core.EnsureComplete(5944);
-        }
-        Core.Equip("Hazmat Suit(Temp)");
+        Core.JumpWait();
+        Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
 
         // Are There Any Survivors?
         Story.KillQuest(5945, "sloth", "Plague Zombie");
