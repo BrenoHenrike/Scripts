@@ -584,7 +584,7 @@ public class CoreQOM
         Story.MapItemQuest(5809, "charredpath", 5252, 6);
 
         //I Said Yes, Yes, Yes
-        Story.MapItemQuest(5810, "charredpath", 5255, AutoCompleteQuest: false);
+        Story.MapItemQuest(5810, "charredpath", 5255);
 
         //Rally the Mages
         Story.KillQuest(5811, "therift", "Mana Chest");
@@ -594,7 +594,7 @@ public class CoreQOM
         Story.KillQuest(5812, "charredpath", "Toxic Wisteria");
 
         //Confront Extriki
-        Story.MapItemQuest(5813, "charredpath", 5254, AutoCompleteQuest: false);
+        Story.MapItemQuest(5813, "charredpath", 5254);
 
         //Remove the Bile
         Story.KillQuest(5819, "charredpath", "Toxic Bile|Noxious Fumes");
@@ -642,7 +642,7 @@ public class CoreQOM
         }
 
         //What's Next?
-        Story.MapItemQuest(5835, "charredpath", 5270, AutoCompleteQuest: false);
+        Story.MapItemQuest(5835, "charredpath", 5270);
 
         //Make a Bed
         Story.KillQuest(5836, "charredpath", "Pustulisk");
