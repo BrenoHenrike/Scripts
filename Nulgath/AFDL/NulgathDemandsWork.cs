@@ -72,8 +72,11 @@ public class NulgathDemandsWork
             {
                 Nulgath.ApprovalAndFavor(50, 200);
                 Farm.BattleGroundE(100000);
+                Nulgath.SwindleBulk(30);
+                Nulgath.TheAssistant("Dark Crystal Shard", 15);
+                Nulgath.FarmDiamondofNulgath(50);
                 Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
-                Core.Logger("Golden Hanzo Void bought");
+                Bot.Wait.ForPickup("Golden Hanzo Void");
             }
 
             Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());

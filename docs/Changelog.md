@@ -1,6 +1,7 @@
 # Changelog
 
 - [Changelog](#changelog)
+  - [4.1.1](#411)
   - [4.1](#41)
     - [Find Map Items](#find-map-items)
     - [Get Scripts is back](#get-scripts-is-back)
@@ -36,6 +37,18 @@
   - [3.6.1](#361)
     - [Fixes](#fixes-1)
     - [Added](#added)
+
+## 4.1.1
+
+Small update with some fixes and additions:
+
+- Wrong scaling of windows should be finally fixed;
+- Random crash caused by the Skill thread should not occur anymore;
+- Hunt reverted as the previous changes made it slower than it was presumed to;
+- New Options in Options > Application Options:
+  - Check for Script updates: on launch it will check if any updates can be made to your current scripts;
+  - Download Scripts on launch: as it states, will download updates on launch without prompting you to do so;
+  - Relogin Server: a constant server that has priority over other selected servers, be aware that it may fail to login to full servers.
 
 ## 4.1
 
@@ -302,12 +315,12 @@ public void RunToAreaHandler(ScriptInterface bot, string zone)
 
 VSCode has "built in" methods to create an project for .NET 6, here I will show you how to make VSC able to autocomplete your projects.
 
-1. First you need to [download the .NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0), in the left you will see the SDK, download it for your Windows version;
-2. You can follow the steps **1 to 4** [from the last VSCode setup](#vscode-setup-for-c-scripting), you will only need the **C# and Auto-Using for C# extensions**, the optional ones are... optional;
-3. After the initial setup, click **File > Open Folder...** and select the folder where your scripts are;
-4. With the folder open, press **Ctrl + ' (single quote)** to open the Terminal;
-5. In the terminal write `dotnet new classlib` and press enter, it will create the .csproj needed for the referencing;
-6. Open the newly created .csproj and add this lines:
+- **1:** First you need to [download the .NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0), in the left you will see the SDK, download it for your Windows version;
+- **2:** You can follow the steps **1 to 4** [from the last VSCode setup](#vscode-setup-for-c-scripting), you will only need the **C# and Auto-Using for C# extensions**, the optional ones are... optional;
+- **3:** After the initial setup, click **File > Open Folder...** and select the folder where your scripts are;
+- **4:** With the folder open, press **Ctrl + ' (single quote)** to open the Terminal;
+- **5:** In the terminal write `dotnet new classlib` and press enter, it will create the .csproj needed for the referencing;
+- **6:** Open the newly created .csproj and add this lines:
 
 ```xml
 <ItemGroup>
@@ -580,19 +593,19 @@ You edit scripts with the built in Editor but don't like the light theme of it? 
 
 > **Note:** you might need the [Developer Pack for .NET Framework 4.8 AND 4.7.2](https://docs.microsoft.com/en-us/dotnet/framework/install/guide-for-developers) to be able to open the VSCode-Scripts in VSCode.
 
-1. First, of course, you need to [download VSCode](https://code.visualstudio.com/download).
-2. When opening for the first time it will show you somethings that might be useful, but for the time being we don't need them. To continue, click in the **"Extensions"** button *(Ctrl + Shift + X)*:
+- **1:** First, of course, you need to [download VSCode](https://code.visualstudio.com/download).
+- **2:** When opening for the first time it will show you somethings that might be useful, but for the time being we don't need them. To continue, click in the **"Extensions"** button *(Ctrl + Shift + X)*:
 
 <p align="center"><img src="https://imgur.com/2cJVdur.png"></p>
 
-3. In the Extensions menu you will need to download the following extensions, to download use the search bar, click the extension and then in *"Install"*:
-   - C#;
-   - VS Code .csproj;
-   - vscode-icons (optional but very handy).
-   - Git Pull Requests and Issues (optional, [needs Git](https://git-scm.com/downloads));
-   - Git Lens - Git supercharged (optional);
+- **3:** In the Extensions menu you will need to download the following extensions, to download use the search bar, click the extension and then in *"Install"*:
+  - C#;
+  - VS Code .csproj;
+  - vscode-icons (optional but very handy).
+  - Git Pull Requests and Issues (optional, [needs Git](https://git-scm.com/downloads));
+  - Git Lens - Git supercharged (optional);
 
-4. With the extensions installed, press **Ctrl + , (comma)** to open the settings UI and click the button marked bellow (it is in the upper right corner):
+- **4:** With the extensions installed, press **Ctrl + , (comma)** to open the settings UI and click the button marked bellow (it is in the upper right corner):
 
 <p align="center"><img src="https://imgur.com/Kz0joIL.png"></p>
 
@@ -611,15 +624,14 @@ You edit scripts with the built in Editor but don't like the light theme of it? 
 
 The first 2 lines will set autosave to each 10 seconds (optional). The csproj ones will 1. set included files to be compiled (needed for autocomplete) and 2. automatically delete any file you delete from the csproj.
 
-5. Back in the [3.6.2 release](https://github.com/BrenoHenrike/RBot/releases), download the *VSCode-Scripts.zip*;
-6. Place the folder anywhere you want, for ease of use you can extract it inside your RBot Scripts folder;
-7. Back to VSCode, click File > Open Folder... > Select the folder were the **VSCode-Scripts.sln** is located;
-8. When the folder opens, click the *VSCode-Scripts.csproj* and search for \<HintPath> (should be at line 35) and change the path to where **your RBot.exe** is located (this might need VSCode to be restarted);
-9. You can then click the *"Script.cs"* file, wait a bit so Omnisharp can load all references et voi'la, your script has auto complete, but wait!
-10. There is 2 catches:
-
-    - You can't have 2 classes with the same name, normally all scripts have the main class called "Script", so every cs file you create remember to rename the **Script Class** to anything you want;
-    - Whenever creating a new file, the .csproj extension you downloaded will prompt you if you want to add the new file to the csproj, so **ATTENTION**, if you need auto complete in the file, you can either right click > csproj: Include in Project or click yes in the prompt:
+- **5:** Back in the [3.6.2 release](https://github.com/BrenoHenrike/RBot/releases), download the *VSCode-Scripts.zip*;
+- **6:** Place the folder anywhere you want, for ease of use you can extract it inside your RBot Scripts folder;
+- **7:** Back to VSCode, click File > Open Folder... > Select the folder were the **VSCode-Scripts.sln** is located;
+- **8:** When the folder opens, click the *VSCode-Scripts.csproj* and search for \<HintPath> (should be at line 35) and change the path to where **your RBot.exe** is located (this might need VSCode to be restarted);
+- **9:** You can then click the *"Script.cs"* file, wait a bit so Omnisharp can load all references et voi'la, your script has auto complete, but wait!
+- **10:** There is 2 catches:
+  - You can't have 2 classes with the same name, normally all scripts have the main class called "Script", so every cs file you create remember to rename the **Script Class** to anything you want;
+  - Whenever creating a new file, the .csproj extension you downloaded will prompt you if you want to add the new file to the csproj, so **ATTENTION**, if you need auto complete in the file, you can either right click > csproj: Include in Project or click yes in the prompt:
 
 <p align="center"><img src="https://imgur.com/b87R9bu.png"></p>
 

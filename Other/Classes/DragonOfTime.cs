@@ -8,7 +8,7 @@
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
-//cs_include Scripts/Story/QueenofMonsters/GuardianTree.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
 //cs_include Scripts/Story/Collection.cs
@@ -26,7 +26,7 @@ public class DragonOfTime
     public CoreDarkon Darkon = new CoreDarkon();
     public GoldenBladeOfFate GBoF = new GoldenBladeOfFate();
     public PinkBladeOfDestruciton PBoD = new PinkBladeOfDestruciton();
-    public GuardianTree GT = new GuardianTree();
+    public CoreQOM QOM = new();
     public ShiftingPyramid SP = new ShiftingPyramid();
     public MysteriousEgg Egg = new MysteriousEgg();
     public Collection Coll = new Collection();
@@ -68,7 +68,7 @@ public class DragonOfTime
                 Story.KillQuest(3031, "druids", "Void Ghast");
             }
             Farm.LoremasterREP(4);
-            Core.BuyItem("digitalmaintown", 651, "Myths of Lore");
+            Core.BuyItem("librarium", 651, "Myths of Lore");
 
             Core.KillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
 
@@ -183,7 +183,7 @@ public class DragonOfTime
 
             Darkon.FarmReceipt(100);
 
-            GT.GuardianTreeQuests();
+            QOM.GuardianTree();
             if (!Core.CheckInventory("Semiramis Feather"))
             {
                 Core.AddDrop("Semiramis Feather");

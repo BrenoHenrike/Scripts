@@ -50,7 +50,7 @@ public class CoreDarkon
 
         while (!Core.CheckInventory("Darkon's Receipt", Quantity))
         {
-            if (Bot.Map.Name == "doomvault")
+            if (Bot.Map.Name.ToLower() == "doomvault")
             {
                 while (Bot.Player.Cell != "r5")
                 {
@@ -152,8 +152,10 @@ public class CoreDarkon
         {
             Core.EnsureAccept(8257);
             Core.EquipClass(ClassType.Farm);
+            Bot.Options.AttackWithoutTarget = true;
             Core.HuntMonster("astraviacastle", "Creature 27|Creature 28", "Defaced Portrait", 10);
             Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4);
+            Bot.Options.AttackWithoutTarget = false;
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviacastle", "The Sun", "Burned Banana");
             Core.EnsureComplete(8257);

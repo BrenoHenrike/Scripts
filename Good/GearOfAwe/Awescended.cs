@@ -55,7 +55,6 @@ public class Awescended
 
     public void GetAwe()
     {
-        Core.Logger("Awescended is locked behind /museum and might be monitored during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (Core.CheckInventory(new[] { "Awescended", "Awescended Omni Armblades", "Awescended Omni Cowl", "Awescended Omni Wings" }))
             return;
 

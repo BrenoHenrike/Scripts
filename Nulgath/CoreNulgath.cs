@@ -151,7 +151,9 @@ public class CoreNulgath
                 Core.EnsureAccept(6183);
             else
                 Core.EnsureAccept(6697);
+            Bot.Options.AttackWithoutTarget = true;
             Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5);
+            Bot.Options.AttackWithoutTarget = false;
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
             Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3);
@@ -493,7 +495,7 @@ public class CoreNulgath
         {
             if (!Core.CheckInventory("War-Torn Memorabilia"))
             {
-                Core.Join("digitalyulgar");
+                Core.Join("yulgar");
                 while (Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
                 {
                     Bot.Shops.BuyItem(41, "War-Torn Memorabilia");

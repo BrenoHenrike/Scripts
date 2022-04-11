@@ -6,25 +6,6 @@ public class FlamingFeatherQuest
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    string[] Drops = {
-    "Meateor Shard",
-    "ChocoBlade of DOOM",
-    "Slice of Awe",
-    "Pocky Manslayer",
-    "Skull With Stick",
-    "Burger of Destiny",
-    "Boxadin",
-    "Boxadin Helm",
-    "Boxadin Winged Helm",
-    "Cardboard Cape",
-    "Cardboard of Awe",
-    "CAPuccino Hat",
-    "CAPuccino Hat + Locks",
-    "Chef's Toque",
-    "Chef's Toque + Bangs",
-    "Macintrobble Apple Pet"
-    };
-
     public void ScriptMain(ScriptInterface bot)
     {
         Core.BankingBlackList.Add("Meateor Shard");
@@ -38,19 +19,26 @@ public class FlamingFeatherQuest
 
     public void CompleteQuest()
     {
-        Core.AddDrop(Drops);
-        Core.AddDrop("Altar of Caladbacon");
+        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(8605).Rewards;
+        List<string> RewardsList = new List<string>();
+        foreach (RBot.Items.ItemBase Item in RewardOptions)
+            RewardsList.Add(Item.Name);
+
+        string[] Rewards = RewardsList.ToArray();
+
+        Core.AddDrop(Rewards);
         Bot.Options.AttackWithoutTarget = true;
         Core.EquipClass(ClassType.Solo);
 
-        Core.EnsureAccept(8605);
-
-        while (!Core.CheckInventory(Drops) & !Bot.Inventory.ContainsHouseItem("Altar of Caladbacon"))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory(Rewards) || !Bot.Inventory.ContainsHouseItem("Altar of Caladbacon")))
         {
             Core.EnsureAccept(8605);
-            Core.Jump("r9", "Right");
-            while (!Core.CheckInventory("Flaming Feather", 25))
+            Core.Join("battleontown", "r9", "Right", publicRoom: true);
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Flaming Feather", 25))
+            {
+                Core.Jump("r9", "Right");
                 Bot.Player.Attack("*");
+            }
             Core.EnsureComplete(8605);
             Bot.Wait.ForPickup("*");
         }

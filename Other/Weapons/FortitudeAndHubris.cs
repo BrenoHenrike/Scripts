@@ -54,7 +54,6 @@ public class FandH
         Story.KillQuest(6601, "northpointe", "Wyvern");
 
         // 3rd Trial
-        Core.Logger("Quest: \"3rd Trial\" [6602] is locked behind /museum and might be monitored during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         Story.BuyQuest(6602, "museum", 1653, "Sword's Cost");
 
         // 4th Trial

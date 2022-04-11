@@ -8,7 +8,7 @@ Base = Arachnomancer = 1 | 1 | 1 | 1 | 1 | 1 | 2 | 4 | 3 | Timeout:250
 Base = Arcane Dark Caster = 4 WW5000 | 3 | 3 | 2 | 1 | Timeout:250
 Solo = ArchFiend = 3S | 1S | 2S | 4S | Mode Optimistic | Timeout:250
 Farm = ArchFiend = 3S | 1S | 2S | Mode Optimistic | Timeout:250
-Base = ArchPaladin = 3 | 4 | 2 | 1 | 1 | 1 | 1 | Timeout:250
+Base = ArchPaladin = 3S | 4S | 1S | 2S | Mode Optimistic
 Base = Artifact Hunter = 4 | 3 | 2 | 1 | Timeout:250
 Base = Assassin = 4 | 3 | 1 | 2 | Timeout:250
 Base = Barber = 4 | 1 | 3 | 2 | Timeout:250
@@ -24,7 +24,7 @@ Base = Berserker = 4 | 3 | 1 | 2 | Timeout:250
 Base = Beta Berserker = 4 | 3 | 1 | 2 | Timeout:250
 Base = BladeMaster = 2 | 3 | 1 | 4 | Timeout:250
 Base = BladeMaster Assassin = 2 | 3 | 1 | 4 | Timeout:250
-Base = Blaze Binder = 1 | 2 | 4 | 3 H<50 | Timeout:250
+Base = Blaze Binder = 1 | 2 | 4 | 1 | 3 | 2 | 1 | 4 | 1 | 2 | 1 | 3 | 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 2 | Timeout:250
 Base = Blood Ancient = 4 | 3 | 2 | 1 | Timeout:250
 Base = Blood Sorceress = 4 | 4 | 4 | 2 | 1 | 3 | Timeout: 250
 Base = Blood Titan = 2 | 4 | 3 | 2 | Timeout:250
@@ -37,8 +37,9 @@ Base = Chaos Slayer Berserker = 2 | 4 | 1 | 3 | Timeout:250
 Base = Chaos Slayer Cleric = 2 | 4 | 1 | 3 | Timeout:250
 Base = Chaos Slayer Mystic = 2 | 4 | 1 | 3 | Timeout:250
 Base = Chaos Slayer Thief = 2 | 4 | 1 | 3 | Timeout:250
+Base = Corrupted Chronomancer = 5 | 2 | 3 | 1 | 1 | 1  | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | Timeout: 250
 Base = Chrono Assassin = 4 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 3 | 2 | 1 | 2 | Timeout:250
-Base = Chrono Chaorruptor = 4 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 3 | 2 | 1 | 2 | Timeout:250
+Base = Chrono Chaorruptor = 5 | 2 | 3 | 1 | 1 | 1  | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | Timeout: 250
 Base = Chrono Commandant = 4 | 1 | 1 | 1 | 1 | 2 | 3 | Timeout:250
 Base = Chrono DataKnight = 1 | 2 | 3 | 1 | 2S | 3S | 1 | 2S | 3S | 1 | 4 | Timeout:250
 Base = Chrono DragonKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 | Timeout:250
@@ -76,7 +77,8 @@ Base = Defender = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = DoomKnight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = DoomKnight OverLord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragon Knight = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Dragon of Time = 3 | 2 | 1 | 4 | 3 | 2 | 1 | 2 | Timeout: 250
+Farm = Dragon of Time = 1 | 2 | 3 | 2 | 4 | Timeout:250
+Solo = Dragon of Time = 1 | 2 | 4 | 3 | 2 | Timeout:250
 Base = Dragon Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonslayer = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -133,14 +135,14 @@ Base = Legion DoomKnight = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legion DoomKnight Tester = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legion Evolved Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Legion Paladin = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = Legion Revenant = 3 | 4 | 1 | 2 | Timeout: 250
-Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Timeout: 250
+Base = Legion Revenant = 3 | 4 | 1 | 2 | Mode Optimistic
+Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Mode Optimistic
 Base = Legion SwordMaster Assassin = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Leprechaun = 1 | 2 | 3 | 4 |  Mode Optimistic
-Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout:250
-Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Timeout: 250
+Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic | Timeout:250
+Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic | Timeout:250
 Base = LightMage = 3 | 4 | 1 | 2 | Timeout: 250
-Base = Lord Of Order = 3 | 4 | 1 | 2 | Timeout: 250
+Base = Lord Of Order = 2S | 4S | 1S | 3S | Mode Optimistic
 Base = Love Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Lycan = 4 | 3 | 2 | 1 | 2 | 1 | Timeout: 250
 Base = Mage = 2 | 1 | 3 | 4 | Mode Optimistic
@@ -152,7 +154,7 @@ Base = MindBreaker = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Naval Commander = 3 WW10000 | 4 | 2 | 1 | Timeout: 250
 Base = Nechronomancer = 1 | 2 | 3S | 4 |  Mode Optimistic
-Base = Necromancer = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Necromancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 |  Mode Optimistic
 Base = Necrotic Chronomancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 |  Mode Optimistic
 Base = Ninja = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Ninja Warrior = 1 | 2 | 3 | 4 |  Mode Optimistic
@@ -207,12 +209,13 @@ Base = The Collector = 1 WW20000 | 3 | 4 | 1 | Timeout: 250
 Base = Thief of Hours = 4 | 1 | 3 | 2 | Timeout: 250
 Base = TimeKeeper = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 1 | 2 | 4 | 1 | 1 | 1 | 4 | 3 | Timeout: 250
 Base = TimeKiller = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 1 | 2 | 4 | 1 | 1 | 1 | 4 | 3 | Timeout: 250
-Base = Timeless Chronomancer = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 1 | 2 | 4 | 1 | 1 | 1 | 4 | 3 | Timeout: 250
+Base = Timeless Chronomancer = 5 | 2 | 3 | 1 | 1 | 1  | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | Timeout: 250
 Base = Timeless Dark Caster = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Troll Spellsmith = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Troubador of Love = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Ultra Elemental Warrior = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Ultra OmniKnight = 1 | 2 | 3 | 4 |  Mode Optimistic
+Base = Underworld Chronomancer = 5 | 2 | 3 | 1 | 1 | 1  | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | Timeout: 250
 Base = Unchained Rocker = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Unchained Rockstar = 1 | 2 | 3 | 4 |  Mode Optimistic
 Base = Undead Goat = 1 | 2 | 3 | 4 |  Mode Optimistic

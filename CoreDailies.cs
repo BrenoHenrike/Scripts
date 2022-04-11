@@ -121,15 +121,17 @@ public class CoreDailies
             return;
 
         Core.EnsureAccept(2091);
+        Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
         foreach (string metal in metals)
         {
             if (!Core.CheckInventory(metal, quant, false))
             {
+                Core.AddDrop(metal);
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2091, metalID);
-                Bot.Player.Pickup(metal);
+                Bot.Wait.ForPickup(metal);
                 break;
             }
         }
@@ -164,9 +166,10 @@ public class CoreDailies
         {
             if (!Core.CheckInventory(metal, quant, false))
             {
+                Core.AddDrop(metal);
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2098, metalID);
-                Bot.Player.Pickup(metal);
+                Bot.Wait.ForDrop(metal);
                 break;
             }
         }

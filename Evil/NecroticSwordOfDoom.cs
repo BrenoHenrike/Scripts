@@ -36,6 +36,8 @@ public class NecroticSwordOfDoom
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Astral Ephemerite Essence", "Belrot the Fiend Essence", "Black Knight Essence", "Tiger Leech Essence", "Carnax Essence", "Chaos Vordred Essence", "Dai Tengu Essence", "Unending Avatar Essence", "Void Dragon Essence", "Creature Creation Essense", "Void Aura" });
+
         Core.SetOptions();
 
         GetNSOD();

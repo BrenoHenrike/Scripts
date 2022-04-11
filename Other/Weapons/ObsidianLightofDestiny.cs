@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 
 using RBot;
 
@@ -16,10 +17,13 @@ public class ObsidianLightofDestiny
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreBLOD BLOD = new CoreBLOD();
+    public DoomwoodPart3 DW3 = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
+
+        DW3.StoryLine();
         Axe();
 
         Core.SetOptions(false);
@@ -29,6 +33,8 @@ public class ObsidianLightofDestiny
     {
         if (Core.CheckInventory("Obsidian Light of Destiny"))
             return;
+
+        Core.AddDrop("Obsidian Light of Destiny");
 
         //The Edge of Destiny
         if (!Core.CheckInventory("Obsidian Light of Destiny"))
@@ -41,9 +47,15 @@ public class ObsidianLightofDestiny
                 Core.BuyItem("darkthronehub", 1308, "Blinding Edge of Obsidian");
                 Bot.Wait.ForPickup("Blinding Edge of Obsidian");
             }
-            BLOD.FindingFragmentsBow(120); //Bright Aura x120
+
+            BLOD.BlindingMace();
+            BLOD.BlindingBow();
+            BLOD.BlindingBlade();
+
             BLOD.FindingFragmentsMace(40); //Brilliant Aura x40
+            BLOD.FindingFragmentsBow(120); //Bright Aura x120
             BLOD.FindingFragments(2174); //Blinding Aura 
+            
             while (!Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
                 BLOD.FindingFragments(2179);
             while (!Core.CheckInventory("Loyal Spirit Orb", 750))

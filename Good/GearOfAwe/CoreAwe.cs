@@ -14,7 +14,6 @@ public class CoreAwe
 
     public void GetAweRelic(string Item, int LegendQuest, int FragmentAmount, int ShardAmount, string Map, string Monster)
     {
-        Core.Logger($"{Item} of Awe is locked behind /museum and might be monitored during the april fools event. Stopping bot out of safety", messageBox: true, stopBot: true);
         if (Core.CheckInventory($"{Item} Relic"))
             return;
         Core.AddDrop($"{Item} Fragment");
@@ -52,7 +51,7 @@ public class CoreAwe
             Core.EnsureAccept(QuestID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
                 Adv.KillUltra(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
-            else Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", FragmentAmount, false);
+            else Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", ShardAmount, false);
             Core.EnsureComplete(QuestID);
             Bot.Wait.ForPickup($"{Item} Fragment");
         }

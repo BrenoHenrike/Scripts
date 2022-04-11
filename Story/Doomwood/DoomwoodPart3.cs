@@ -46,7 +46,14 @@ public class DoomwoodPart3
         Story.KillQuest(7592, "Thorngarde", "CryptHacker");
 
         // Reclaim the Supplies
-        Story.KillQuest(7593, "Thorngarde", new[] { "NecroDrone", "NecroMech", "CryptHacker" });
+        if (!Story.QuestProgression(7593))
+        {
+            Core.EnsureAccept(7593);
+            Core.HuntMonster("Thorngarde", "CryptHacker", "Cured Meat", 3);
+            Core.HuntMonster("Thorngarde", "NecroMech", "Bag of Grain", 3);
+            Core.HuntMonster("Thorngarde", "NecroDrone", "Jug of Water", 5);
+            Core.EnsureComplete(7593);
+        }
 
         // Who's That?
         Story.MapItemQuest(7594, "Thorngarde", 7486);
@@ -69,13 +76,28 @@ public class DoomwoodPart3
         Story.KillQuest(7598, "Thorngarde", new[] { "CryptHacker", "NecroDrone" });
 
         // I Need a Distraction
-        Story.KillQuest(7599, "Thorngarde", new[] { "NecroDrone", "NecroMech", "CryptHacker" });
+        if (!Story.QuestProgression(7599))
+        {
+            Core.EnsureAccept(7599);
+            Core.HuntMonster("Thorngarde", "NecroMech", "NecroMech Slain", 5);
+            Core.HuntMonster("Thorngarde", "CryptHacker", "CryptHacker Slain", 5);
+            Core.HuntMonster("Thorngarde", "NecroDrone", "NecroDrone Slain", 5);
+            Core.EnsureComplete(7599);
+        }
 
         // Zyrus is Lost
         Story.KillQuest(7600, "Thorngarde", "Zyrus the BioKnight");
 
         // Investigate the Tech
-        Story.KillQuest(7601, "Thorngarde", new[] { "NecroDrone", "NecroMech", "CryptHacker", "Zyrus the BioKnight" });
+        if (!Story.QuestProgression(7601))
+        {
+            Core.EnsureAccept(7601);
+            Core.HuntMonster("Thorngarde", "NecroDrone", "Deadtech Power Core", 7);
+            Core.HuntMonster("Thorngarde", "NecroMech", "NecroMech Targeting Systems", 5);
+            Core.HuntMonster("Thorngarde", "CryptHacker", "CryptHacker Circuitry", 15);
+            Core.HuntMonster("Thorngarde", "Zyrus the BioKnight", "BioKnight Engine", 3);
+            Core.EnsureComplete(7601);
+        }
 
         // Defeat the Deadtech
         Story.KillQuest(7603, "Stonewood", "NecroDrone");
@@ -141,21 +163,48 @@ public class DoomwoodPart3
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
 
         // Stuff for Dummies
-        Story.KillQuest(7626, "stonewooddeep", "Doomwood Treeant");
-        Story.MapItemQuest(7626, "stonewooddeep", 7530, 8);
+        if (!Story.QuestProgression(7626))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7626);
+            Core.KillMonster("stonewooddeep", "r2", "Right", "Doomwood Treeant", "Sturdy Wood", 8);
+            Story.MapItemQuest(7626, "stonewooddeep", 7530, 8);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         // Build the Dummies
-        Story.KillQuest(7627, "stonewooddeep", "Doomwood Slime");
-        Story.MapItemQuest(7627, "stonewooddeep", 7531, 6);
+        if (!Story.QuestProgression(7627))
+        {
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(7627);
+            Core.KillMonster("stonewooddeep", "r2", "Right", "*", "Area Cleared", 10);
+            Story.MapItemQuest(7627, "stonewooddeep", 7531, 6);
+            Bot.Options.AttackWithoutTarget = false;
+        }
 
         // Battle the Dummies
-        Story.KillQuest(7628, "stonewooddeep", "Target Dummy");
+        if (!Story.QuestProgression(7628))
+        {
+            Core.EnsureAccept(7628);
+            Core.KillMonster("stonewooddeep", "r3", "Right", "Target Dummy", "Target Dummy Slain", 6);
+            Core.EnsureComplete(7628);
+        }
 
         // Lesson 1: Bravery
-        Story.KillQuest(7629, "stonewooddeep", "Doomwood Slime");
+        if (!Story.QuestProgression(7629))
+        {
+            Core.EnsureAccept(7629);
+            Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood SLime", "Slime Slain", 10);
+            Core.EnsureComplete(7629);
+        }
 
         // Lesson 2: Armor
-        Story.KillQuest(7630, "stonewooddeep", "Doomwood Slime");
+        if (!Story.QuestProgression(7630))
+        {
+            Core.EnsureAccept(7630);
+            Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood SLime", "Stolen Armor", 7);
+            Core.EnsureComplete(7630);
+        }
 
         // Lesson 3: Protection
         if (!Story.QuestProgression(7631))
@@ -170,7 +219,13 @@ public class DoomwoodPart3
         Story.KillQuest(7632, "stonewooddeep", "CryptHacker");
 
         // Lesson 5: Demolition
-        Story.KillQuest(7633, "stonewooddeep", new[] { "Doomwood Slime", "NecroDrone" });
+        if (!Story.QuestProgression(7633))
+        {
+            Core.EnsureAccept(7633);
+            Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood SLime", "Acid Ooze", 6);
+            Core.HuntMonster("stonewooddeep", "NecroDrone", "Explosive Tech", 6);
+            Core.EnsureComplete(7633);
+        }
 
         // Lesson 6: Searching
         Story.MapItemQuest(7634, "stonewooddeep", 7532);
@@ -195,7 +250,12 @@ public class DoomwoodPart3
         Story.MapItemQuest(7640, "techfortress", 7561);
 
         // Medal Time
-        Story.KillQuest(7641, "techfortress", "CryptHacker");
+        if (!Story.QuestProgression(7641))
+        {
+            Core.EnsureAccept(7641);
+            Core.HuntMonster("techfortress", "NecroDrone|DoomBorg Guard|NecroMech", "NecroMedals", 5);
+            Core.EnsureComplete(7641);
+        }
 
         // Hidden Data
         Story.KillQuest(7642, "techfortress", "NecroMech");

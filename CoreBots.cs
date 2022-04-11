@@ -1002,7 +1002,7 @@ public class CoreBots
         {
             case ClassType.Farm:
                 JumpWait();
-                if (FarmGearOn)
+                if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
                     Equip(FarmGear);
                 if (!usingFarmGeneric)
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
@@ -1010,7 +1010,7 @@ public class CoreBots
                 break;
             default:
                 JumpWait();
-                if (SoloGearOn)
+                if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
                     Equip(SoloGear);
                 if (!usingSoloGeneric)
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
@@ -1280,38 +1280,53 @@ public class CoreBots
 
         bool Restore = Bot.Options.AggroMonsters;
         Bot.Options.AggroMonsters = false;
-        bool jumped = false;
+        string cell = "";
+        string pad = "";
+        bool jumpTwice = false;
 
         if (!MonsterCells.Contains("Enter"))
         {
-            jumped = true;
-            Jump("Enter", "Spawn", true);
+            cell = "Enter";
+            pad = "Spawn";
         }
         else
         {
-            foreach (string cell in Bot.Map.Cells)
+            foreach (string _cell in Bot.Map.Cells)
             {
-                if (cell == Bot.Player.Cell || new[] { "wait", "blank" }.Contains(cell.ToLower()) || cell.ToLower().Contains("cut"))
+                if (_cell == Bot.Player.Cell || new[] { "wait", "blank" }.Contains(_cell.ToLower()) || _cell.ToLower().Contains("cut"))
                     continue;
                 if (!MonsterCells.Contains(cell))
                 {
-                    jumped = true;
-                    Jump(cell, "Left", true);
+                    cell = _cell;
+                    pad = "Left";
                     break;
                 }
             }
         }
-        if (!jumped)
+
+        if (cell == "" || pad == "")
         {
-            Jump(Bot.Player.Cell, Bot.Player.Pad, true);
-            Jump(Bot.Player.Cell, Bot.Player.Pad, true);
+            cell = Bot.Player.Cell;
+            pad = Bot.Player.Pad;
+            jumpTwice = true;
         }
 
-        Bot.Sleep(ExitCombatDelay - 200);
-        Bot.Wait.ForCombatExit();
+        if (lastJumpWait != $"{Bot.Map.Name} | {cell} | {pad}" || Bot.Player.InCombat)
+        {
+            Jump(cell, pad, true);
+            if (jumpTwice)
+                Jump(cell, pad, true);
+
+            lastJumpWait = $"{Bot.Map.Name} | {cell} | {pad}";
+
+            Bot.Sleep(ExitCombatDelay - 200);
+            Bot.Wait.ForCombatExit();
+        }
+
         if (Restore)
             Bot.Options.AggroMonsters = true;
     }
+    private string lastJumpWait = "";
 
     /// <summary>
     /// Joins a map
@@ -1323,20 +1338,17 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        if (Bot.Map.Name != null && Bot.Map.Name == map.ToLower() && !ignoreCheck)
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map.ToLower() && !ignoreCheck)
             return;
 
         string[] disabledMaps =
         {
-            "librarium",
-            "museum",
-            "yulgar",
-            "ariapet",
-            "trainers"
+            "curio",
+            "tower"
         };
 
         if (disabledMaps.Contains(map.ToLower()))
-            Logger($"Map {map} is disabled because of April Fools, bot cant continue", messageBox: true, stopBot: true);
+            Logger($"Map {map} is (still) disabled because of April Fools, bot cant continue", messageBox: true, stopBot: true);
 
         if (map.ToLower() == "tercessuinotlim")
         {

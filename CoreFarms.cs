@@ -130,39 +130,39 @@ public class CoreFarms
         bool OptionRestore = Bot.Options.AggroMonsters;
         Bot.Options.AggroMonsters = true;
 
-        while ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 5 && Bot.Player.Level < level) || (Bot.Player.Level < 5 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 10 && Bot.Player.Level < level) || (Bot.Player.Level < 10 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 20 && Bot.Player.Level < level) || (Bot.Player.Level < 20 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 20 && Bot.Player.Level < level) || (Bot.Player.Level < 20 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r6", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 25 && Bot.Player.Level < level) || (Bot.Player.Level < 25 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 25 && Bot.Player.Level < level) || (Bot.Player.Level < 25 && rankUpClass && Bot.Player.Rank != 10)))
         {
             Core.EnsureAccept(6628);
             Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
             Core.EnsureComplete(6628);
         }
 
-        while ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 35 && Bot.Player.Level < level) || (Bot.Player.Level < 35 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 35 && Bot.Player.Level < level) || (Bot.Player.Level < 35 && rankUpClass && Bot.Player.Rank != 10)))
         {
             Core.EnsureAccept(6629);
             Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
             Core.EnsureComplete(6629);
         }
 
-        while ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 75 && Bot.Player.Level < level) || (Bot.Player.Level < 75 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
 
-        while ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level <= 100 && rankUpClass && Bot.Player.Rank != 10))
+        while (!Bot.ShouldExit() && ((Bot.Player.Level < 100 && Bot.Player.Level < level) || (Bot.Player.Level <= 100 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
 
         Bot.Options.AggroMonsters = OptionRestore;
@@ -312,6 +312,11 @@ public class CoreFarms
 
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
+
+        Core.JumpWait();
+        Bot.Player.Join("battleunderb", "Enter", "Spawn", ignoreCheck: true);
+        Bot.Wait.ForMapLoad("battleunderb".ToLower());
+
         Bot.Options.AggroMonsters = true;
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
         Bot.Options.AggroMonsters = false;
@@ -525,38 +530,20 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
         int i = 1;
+        Core.EquipClass(ClassType.Farm);
+
+        if (!Bot.Quests.IsUnlocked(5120))
+            Core.Logger($"Quest [5120] \"Ziri Is Also Tough\", has yet to be completed, please run \"Farm/REP/BaconCatREP.cs\"", stopBot: true, messageBox: true);
+
         while (FactionRank("BaconCat") < rank)
         {
-            if (!Core.IsMember)
-            {
-                Core.EnsureAccept(5111, 5112, 5119, 5120);
-
-                Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloudy Hide", 6); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Moglinberry Ice Cream", 5); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Sprinkles", 3); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloud Shark Farts", 3); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "Sketchy Shark", "College-Ruled Paper", 3); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "8-Bit Shark", "Great White DLC", 3); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3); //these are all locked if the quests arent done
-                Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Shark Teeth", 10); //these are all locked if the quests arent done
-
-                Core.EnsureComplete(5111, 5112, 5119, 5120);
-            }
-            else
-            {
-                Core.EnsureAccept(5121, 5123, 5124);
-
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 1 Destroyed", 4); // 5121 rest are locked
-                Core.HuntMonster("baconcatlair", "Robo Shark", "Walking Shark 2 Destroyed", 4); // 5121 rest are locked
-                // Core.HuntMonster("baconcatlair", "Robo Shark", "Wheel of Bacon Token", 5, false);
-                // Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Legs Smashed", 10);
-                // Core.HuntMonster("baconcatlair", "Robo Shark", "Shark Quarters", 7);
-
-                Core.EnsureComplete(5121, 5123, 5124);
-            }
-            Core.Logger($"Completed x{i++}");
+            Core.EnsureAccept(5112, 5120);
+            Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Moglinberry Ice Cream", 5);
+            Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Teeth", 10);
+            Core.EnsureComplete(5112);
+            Core.EnsureComplete(5120);
         }
-
+        Core.Logger($"Completed x{i++}");
     }
 
     public void BeastMasterREP(int rank = 10)
@@ -678,7 +665,7 @@ public class CoreFarms
                 Core.BuyItem("museum", 630, "Blade of Awe");
             }
             if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
-                Core.BuyItem("battleontown", 631, "Blade of Awe"); //ChangePostEvent
+                Core.BuyItem("museum", 631, "Blade of Awe");
         }
     }
 
@@ -865,7 +852,7 @@ public class CoreFarms
         while (FactionRank("Dreadfire") < rank)
         {
             Core.EnsureAccept(5697);
-            Core.KillMonster("dreadfire", "Arcane Crystal", "r13", "Bottom", "Perfect Crystal Orb", 1);
+            Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb");
             Core.EnsureComplete(5697);
             Core.Logger($"Completed x{i++}");
         }
