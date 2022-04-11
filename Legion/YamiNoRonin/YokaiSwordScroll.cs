@@ -30,12 +30,17 @@ public class TheEdgeofanEra
     {
         if (Core.CheckInventory("Yokai Sword Scroll", quant))
             return;
+
+        Adv.GearStore();
         DarkAlly.DarkAlly_Questline();
         Core.AddDrop("Yami no Ronin Katana", "Yokai Sword Scroll");
         Core.EnsureAccept(7445);
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("shadowfortress", "1st Head of Orochi", "Perfect Orochi Scales", 888, false);
+        Core.EquipClass(ClassType.Farm);
         Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 600, false);
         Farm.YokaiREP();
+        Adv.GearStore(true);
         Core.BuyItem("akiba", 131, "Oni Skull Charm", 1);
         ShadowKatanaBlade(1);
         Core.EnsureComplete(7445);
