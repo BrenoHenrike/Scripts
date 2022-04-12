@@ -151,6 +151,7 @@ public class ChaosAvengerClass
         if (!Core.CheckInventory("Fragment of the Queen", 13))
         {
             Core.EquipClass(ClassType.Solo);
+            Bot.Quests.UpdateQuest(8094);
             Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false, publicRoom: true);
         }
 
