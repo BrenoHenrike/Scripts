@@ -644,7 +644,15 @@ public class CoreBots
     public bool isCompletedBefore(int QuestID)
     {
         Quest QuestData = EnsureLoad(QuestID);
-        return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
+        try
+        {
+            return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
+        }
+        catch
+        {
+            QuestData = Bot.Quests.EnsureLoad(QuestID);
+            return QuestData.Slot < 0 || Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
+        }
     }
 
     #endregion
