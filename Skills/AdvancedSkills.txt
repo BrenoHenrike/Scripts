@@ -110,8 +110,8 @@ Base = Great Thief = 2 | 3 | 4 | 2 | Timeout: 250
 Base = Grim Necromancer = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Grunge Rocker = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Guardian = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Healer = 1 | 2H<50S | 3 | 4 | Timeout: 250
-Base = Healer (Rare) = 1 | 2H<50S | 3 | 4 | Timeout: 250
+Base = Healer = 1 | 2H<50S | 3 | 4 | Mode Optimistic
+Base = Healer (Rare) = 1 | 2H<50S | 3 | 4 | Mode Optimistic
 Base = Heavy Metal Necro = 1 | 4H>50S | 2 | 3 | 2 | Timeout: 250
 Base = Heavy Metal Rockstar = 1 | 4H>50S | 2 | 3 | 2 | Timeout: 250
 Base = Heroic Naval Commander = 3WW10000 | 4 | 2 | 1 | Timeout: 250
