@@ -448,8 +448,8 @@ public class CoreAdvanced
 
         string MonsterRace = "";
         if (Monster != "*")
-            MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower()).Race;
-        else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race;
+            MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower()).Race ?? "";
+        else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race ?? "";
 
         if (MonsterRace == null || MonsterRace == "")
             return;

@@ -87,7 +87,7 @@ Base = DragonSoul Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Drakel Warlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 | Mode Optimistic
 Base = Empyrean Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 | Timeout: 250
-Base = Enchanted Vampire Lord = 2 | 4 | 3 | 1 | Timeout: 250
+Base = Enchanted Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Enforcer = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Eternal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 | Timeout: 250
 Base = Eternal Inversionist = 2 | 4 | 1S | 3S | Timeout: 250
@@ -110,8 +110,8 @@ Base = Great Thief = 2 | 3 | 4 | 2 | Timeout: 250
 Base = Grim Necromancer = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Grunge Rocker = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Guardian = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Healer = 1 | 2H<50S | 3 | 4 | Timeout: 250
-Base = Healer (Rare) = 1 | 2H<50S | 3 | 4 | Timeout: 250
+Base = Healer = 1 | 2H<50S | 3 | 4 | Mode Optimistic
+Base = Healer (Rare) = 1 | 2H<50S | 3 | 4 | Mode Optimistic
 Base = Heavy Metal Necro = 1 | 4H>50S | 2 | 3 | 2 | Timeout: 250
 Base = Heavy Metal Rockstar = 1 | 4H>50S | 2 | 3 | 2 | Timeout: 250
 Base = Heroic Naval Commander = 3WW10000 | 4 | 2 | 1 | Timeout: 250
@@ -179,7 +179,7 @@ Base = Renegade = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Rogue = 2 | 3 | 1 | 4 | Mode Optimistic
 Base = Rogue (Rare) = 2 | 3 | 1 | 4 | Mode Optimistic
 Base = Royal BattleMage = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Royal Vampire Lord = 2 | 4 | 3 | 1 | Timeout: 250
+Base = Royal Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Rustbucket = 4 | 1 | 3 | 2 | Timeout:250
 Base = Sakura Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
 Base = Scarlet Sorceress = 4 | 4 | 4 | 2 | 1 | 3 | Timeout: 250
@@ -223,7 +223,7 @@ Base = Undead Leperchaun = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = UndeadSlayer = 1 | 3 | 2H<50S | Timeout: 250
 Base = Unlucky Leperchaun = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Vampire = 2 | 4 | 3 | 1 | Timeout: 250
-Base = Vampire Lord = 2 | 4 | 3 | 1 | Timeout: 250
+Base = Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Vindicator Of They = 1WW20000 | 3 | 4 | 1 | Timeout: 250
 Atk = Void Highlord = 3H>25S | 4 | 2 | 3H>25S | 1H>25S | 2 | 1H>25S | Timeout: 250
 Def = Void Highlord = 1 | 2 | 4 | Mode Optimistic

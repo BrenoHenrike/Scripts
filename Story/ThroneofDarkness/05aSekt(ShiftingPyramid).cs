@@ -42,7 +42,14 @@ public class ShiftingPyramid
         Story.MapItemQuest(5171, "whitehole", 4539);
 
         // Stick to the Task
-        Story.KillQuest(5172, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
+        if(!Story.QuestProgression(5172))
+        {
+            Core.EnsureAccept(5172);
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Quartz", 4);
+            Core.HuntMonster("whitehole", "Gate Goblin", "Lime", 1);
+            Core.HuntMonster("whitehole", "Vortex Matter", "Ash", 3);
+            Core.EnsureComplete(5172);
+        }
 
         // Honor the Goddess Ma'at
         Story.MapItemQuest(5173, "whitehole", 4540, 4);
@@ -73,7 +80,14 @@ public class ShiftingPyramid
         Story.KillQuest(5181, "whitehole", "Vortex Guardian");
 
         // Stick with it
-        Story.KillQuest(5182, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
+        if(!Story.QuestProgression(5182))
+        {
+            Core.EnsureAccept(5182);
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Quartz", 2);
+            Core.HuntMonster("whitehole", "Gate Goblin", "Lime", 4);
+            Core.HuntMonster("whitehole", "Vortex Matter", "Ash", 1);
+            Core.EnsureComplete(5182);
+        }
 
         // Honor the God Thoth
         Story.MapItemQuest(5183, "whitehole", 4544);
