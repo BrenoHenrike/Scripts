@@ -73,7 +73,14 @@ public class ShiftingPyramid
         Story.KillQuest(5181, "whitehole", "Vortex Guardian");
 
         // Stick with it
-        Story.KillQuest(5182, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
+        if(Story.QuestProgression(5182))
+        {
+            Core.EnsureAccept(5182);
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Quartz", 2);
+            Core.HuntMonster("whitehole", "Gate Goblin", "Lime", 4);
+            Core.HuntMonster("whitehole", "Vortex Matter", "Ash", 1);
+            Core.EnsureComplete(5182);
+        }
 
         // Honor the God Thoth
         Story.MapItemQuest(5183, "whitehole", 4544);
