@@ -226,7 +226,7 @@ public class CoreFarms
         Core.JumpWait();
         while (!Core.CheckInventory("The Secret 4"))
         {
-            Bot.Player.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
+            Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
             Bot.Wait.ForMapLoad("bludrutbrawl");
             Core.BludrutMove(5, "Morale0C");
             Core.BludrutMove(4, "Morale0B");
@@ -317,7 +317,7 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
 
         Core.JumpWait();
-        Bot.Player.Join("battleunderb", "Enter", "Spawn", ignoreCheck: true);
+        Core.Join("battleunderb", "Enter", "Spawn", ignoreCheck: true);
         Bot.Wait.ForMapLoad("battleunderb".ToLower());
 
         Bot.Options.AggroMonsters = true;
