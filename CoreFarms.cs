@@ -1678,63 +1678,58 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         int z = 1;
-        while (FactionRank("Fishing") < rank)
-        {
-            Core.AddDrop("Fishing Bait", "Fishing Dynamite");
+        Core.AddDrop("Fishing Bait", "Fishing Dynamite");
 
-            Core.Logger("Pre-Ranking XP");
+        Core.Logger("Pre-Ranking XP");
+        Core.EnsureAccept(1682);
+        Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+        Core.EnsureComplete(1682);
+
+        while (FactionRank("Fishing") < 2)
+        {
+            Core.Logger("Farming Bait");
+            while (!Core.CheckInventory("Fishing Bait", 10))
             {
                 Core.EnsureAccept(1682);
                 Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
                 Core.EnsureComplete(1682);
+                Core.Logger($"Completed x{i++}");
             }
 
-            while (Bot.Player.GetFactionRank("Fishing") < 2)
+            Core.Join("fishing");
+            Core.Logger($"Bait Fishing");
+
+            while (Core.CheckInventory("Fishing Bait"))
             {
-                Core.Logger("Farming Bait");
-                while (!Core.CheckInventory("Fishing Bait", 10))
-                {
-                    Core.EnsureAccept(1682);
-                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-                    Core.EnsureComplete(1682);
-                    Core.Logger($"Completed x{i++}");
-                }
+                while (!Core.CheckInventory("Fishing Bait"))
+                    return;
 
-                Core.Join("fishing");
-                Core.Logger($"Bait Fishing");
+                Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
+                Bot.Sleep(10000);
+                Core.Logger($"Fished {z++} Times");
+            }
+        }
 
-                while (Core.CheckInventory("Fishing Bait"))
-                {
-                    while (!Core.CheckInventory("Fishing Bait"))
-                        return;
 
-                    Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
-                    Bot.Sleep(10000);
-                    Core.Logger($"Fished {z++} Times");
-                }
+        while (FactionRank("Fishing") < rank)
+        {
+            Core.Logger("Farming Dynamite");
+            while (!Core.CheckInventory("Fishing Dynamite", 10) && Core.CheckInventory("Fishing Bait", 1))
+            {
+                Core.EnsureAccept(1682);
+                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+                Core.EnsureComplete(1682);
+                Core.Logger($"Completed x{i++}");
             }
 
+            Core.Logger($"Dynamite Fishing");
 
-            while (Bot.Player.GetFactionRank("Fishing") <= rank)
+            while (Core.CheckInventory("Fishing Dynamite", 1))
             {
-                Core.Logger("Farming Dynamite");
-                while (!Core.CheckInventory("Fishing Dynamite", 10) && Core.CheckInventory("Fishing Bait", 1))
-                {
-                    Core.EnsureAccept(1682);
-                    Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-                    Core.EnsureComplete(1682);
-                    Core.Logger($"Completed x{i++}");
-                }
-
-                Core.Logger($"Dynamite Fishing");
-
-                while (Core.CheckInventory("Fishing Dynamite", 1))
-                {
-                    Bot.SendPacket($"%xt%zm%FishCast%1%Dynamite%30%");
-                    Bot.Sleep(3500);
-                    Core.SendPackets("%xt%zm%getFish%1%false%");
-                    Core.Logger($"Fished {z++} Times");
-                }
+                Bot.SendPacket($"%xt%zm%FishCast%1%Dynamite%30%");
+                Bot.Sleep(3500);
+                Core.SendPackets("%xt%zm%getFish%1%false%");
+                Core.Logger($"Fished {z++} Times");
             }
         }
     }
