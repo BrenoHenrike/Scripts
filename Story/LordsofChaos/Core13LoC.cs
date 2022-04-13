@@ -1742,7 +1742,7 @@ public class Core13LoC
         //Spare Parts
         Story.MapItemQuest(2910, "battleoff", 1780, 8);
 
-        //Power It Uo
+        //Power It Up
         Story.KillQuest(2911, "battleoff", "Evil Moglin");
 
         //Filthy Creatures
