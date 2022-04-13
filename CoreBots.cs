@@ -75,6 +75,7 @@ public class CoreBots
     public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
     public static string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+    private bool _detectCrash = false;
 
     #endregion
 
@@ -82,13 +83,14 @@ public class CoreBots
     /// Set common bot options to desired value
     /// </summary>
     /// <param name="changeTo">Value the options will be changed to</param>
-    public void SetOptions(bool changeTo = true, bool disableClassSwap = false)
+    public void SetOptions(bool changeTo = true, bool disableClassSwap = false, bool detectCrash = true)
     {
         if (changeTo)
         {
             Logger("Bot Started");
 
-            RBotVersionChecker("4.1");
+            RBotVersionChecker("4.1.2");
+            _detectCrash = true;
 
             if (!Bot.Player.LoggedIn)
             {
@@ -204,11 +206,13 @@ public class CoreBots
 
             Logger("Bot Configured");
         }
+        else if (detectCrash)
+            _detectCrash = false;
     }
 
     private bool StopBotEvent(ScriptInterface bot)
     {
-        SetOptions(false);
+        SetOptions(false, detectCrash: false);
         return StopBot();
     }
 
@@ -481,11 +485,8 @@ public class CoreBots
                 switch (str)
                 {
                     case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
-
                         Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
                         Relogin();
-
-
                         break;
                 }
             }
@@ -1017,7 +1018,7 @@ public class CoreBots
                 DialogResult SendSite = MessageBox.Show($"This script requires RBot {TargetVersion} or above, click OK to open the download page of the latest release", "Outdated RBot detected", MessageBoxButtons.OKCancel);
                 if (SendSite == DialogResult.OK)
                 {
-                    System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/RBot/releases");
+                    Process.Start("explorer", "https://github.com/BrenoHenrike/RBot/releases");
                     Bot.Stop();
                 }
                 else
@@ -1188,8 +1189,15 @@ public class CoreBots
         }
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = GuildRestore;
-        if (Bot.Player.LoggedIn)
+        if (Bot.Player.LoggedIn && !_detectCrash)
             Logger("Bot Stopped Successfully");
+        if (_detectCrash)
+        {
+            Logger("Script crash detected, please copy the crash log in the [Menu-Bar] > [Logs] > [Debug] via the RBot Scripts Form.\nDo you wish to be brought to the form?");
+            DialogResult response = MessageBox.Show("Script crash detected, please copy the crash log in the [Menu-Bar] > [Logs] > [Debug] via the RBot Scripts Form.\nDo you wish to be brought to the form?", "Script Crash Detected", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (response == DialogResult.Yes)
+                Process.Start("explorer", "https://forms.gle/sbp57LBQP5WvCH2B9");
+        }
         return scriptFinished;
     }
 
