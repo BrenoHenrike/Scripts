@@ -2,6 +2,7 @@ using RBot;
 using RBot.Items;
 using RBot.Quests;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 public class CoreStory
 {
@@ -208,7 +209,13 @@ public class CoreStory
         }
 
         if (!Bot.Quests.IsUnlocked(QuestID))
-            Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, please report the issue here https://discord.io/AQWBots (#rbot-questions-help)", messageBox: true, stopBot: true);
+        {
+            Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, please fill in the RBot Scripts Form to report this.\nDo you wish to be brought to the form?");
+            DialogResult response = MessageBox.Show($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, please fill in the RBot Scripts Form to report this.\nDo you wish to be brought to the form?", "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (response == DialogResult.Yes)
+                Process.Start("explorer", "https://forms.gle/sbp57LBQP5WvCH2B9");
+            Core.StopBot();
+        }
 
         if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
         {
@@ -261,7 +268,6 @@ public class CoreStory
             "Core.EnsureCompleteChoose",
             "Core.ChainComplete"
         };
-
 
         List<string> CSIncludes = CSFile.Where(x => x.Contains("//cs_include ") && (x.Contains("Core13LoC") || !x.Contains("Core"))).ToList();
 
