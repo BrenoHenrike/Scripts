@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using RBot;
 
 public class CoreQOM
@@ -621,7 +622,12 @@ public class CoreQOM
         Story.KillQuest(5822, "farm", "Treeant");
 
         //Sand sounds better than Litter...
-        Story.KillQuest(5823, "baconcat", "Litter Elemental");
+        if(!Story.QuestProgression(5823))
+        {
+            Core.EnsureAccept(5823);
+            Core.HuntMonster("baconcat", "Litter Elemental", "Absorbent \"Sand\"", 8);
+            Core.EnsureComplete(5823);
+        }
 
         //Destroy the Zognax
         Core.EquipClass(ClassType.Solo);
