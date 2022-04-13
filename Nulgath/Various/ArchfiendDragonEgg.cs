@@ -33,7 +33,7 @@ public class ArchfiendDragonEgg
         Core.AddDrop("ArchFiend Baby Dragon Pet");
 
         Core.EnsureAccept(7296);
-        Core.BuyItem("Airstorm", 357, "Breath of life");
+        Core.BuyItem("Airstorm", 357, "Breath of Life");
         Core.HuntMonster("queenspire", "Fire Guardian Dragon", "Fire Guardian Dragon Soul", isTemp: false);
         if (!Core.CheckInventory("Fresh Soul", 10) & !Core.CheckInventory("Unidentified 36"))
             HB.FreshSouls(10);
