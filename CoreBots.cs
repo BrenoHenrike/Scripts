@@ -205,7 +205,7 @@ public class CoreBots
             Logger("Bot Configured");
         }
     }
-    
+
     private bool StopBotEvent(ScriptInterface bot)
     {
         SetOptions(false);
@@ -450,6 +450,8 @@ public class CoreBots
 
     private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant, int shopItemID)
     {
+        Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
+
         if (shopItemID == 0)
         {
             for (int i = 0; i < quant; i++)
@@ -466,6 +468,28 @@ public class CoreBots
         if (CheckInventory(item.Name, quant))
             Logger($"Bought {quant}x{shopQuant} {item.Name}");
         else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
+
+        Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
+
+        void RelogRequieredListener(ScriptInterface Bot, dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type == "json")
+            {
+                string str = data.strMessage;
+                switch (str)
+                {
+                    case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
+
+                        Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
+                        Relogin();
+
+
+                        break;
+                }
+            }
+        }
     }
 
     private int _CalcBuyQuantity(ShopItem item, int quant, int shopQuant)
