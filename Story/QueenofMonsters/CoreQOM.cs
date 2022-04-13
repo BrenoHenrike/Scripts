@@ -99,11 +99,11 @@ public class CoreQOM
 
         //Summon Help
         Story.MapItemQuest(4495, "celestialrealm", 3698);
-        Story.KillQuest(4495, "celestialrealm", new[] { "Fallen Knight|Infernal Knight", "Celestial Bird of Paradise" });
+        Story.KillQuest(4495, "celestialrealm", new[] { "Fallen Knight", "Celestial Bird of Paradise" });
 
         //Power Up!
         Core.BuyItem("embersea", 1100, "Basic Guard Potion", 10);
-        Story.KillQuest(4496, "celestialrealm", new[] { "Celestial Bird of Paradise", "Fallen Knight|Infernal Knight" });
+        Story.KillQuest(4496, "celestialrealm", new[] { "Celestial Bird of Paradise", "Fallen Knight" });
 
         //The Final Spell Fragment
         Story.MapItemQuest(4497, "celestialrealm", 3696);
@@ -134,30 +134,42 @@ public class CoreQOM
         Story.KillQuest(4500, "lostruins", "Underworld Hound");
 
         //Take out the Knights
-        Story.KillQuest(4501, "lostruins", "Fallen Knight|Infernal Knight");
+        Story.KillQuest(4501, "lostruins", "Fallen Knight");
 
         //Find the Clues
-        Story.KillQuest(4502, "lostruins", new[] { "Infernal Imp|Underworld Hound", "Infernal Imp|Underworld Hound", "Fallen Knight", "Infernal Knight" });
+        if (!Story.QuestProgression(4502))
+        {
+            Core.EnsureAccept(4502);
+            Core.HuntMonster("lostruins", "Underworld Hound", "Clue 1");
+            Core.HuntMonster("lostruins", "Infernal Imp", "Clue 2");
+            Core.HuntMonster("lostruins", "Fallen Knight", "Clue 3");
+            Core.KillMonster("lostruins", "r5", "Left", "Infernal Knight", "Clue 4");
+            Core.EnsureComplete(4502);
+        }
 
         //Recover the Cage Key!
         if (!Story.QuestProgression(4503))
         {
+            Core.EnsureAccept(4503);
             Farm.FishingREP(2);
             if (!Core.CheckInventory("Holy Oil"))
                 Core.BuyItem("fishing", 356, "Holy Oil");
-            Story.KillQuest(4503, "lostruins", "Fallen Knight");
+            Core.HuntMonster("lostruins", "Fallen Knight", "Cage Key");
+            Core.EnsureComplete(4503);
         }
 
         //Protect Them
         if (!Story.QuestProgression(4504))
         {
+            Core.EnsureAccept(4504);
             if (!Core.CheckInventory("Potent Guard Potion", 10))
                 Core.BuyItem("embersea", 1100, "Potent Guard Potion", 10);
-            Story.KillQuest(4504, "lostruins", "Fallen Knight|Infernal Knight");
+            Core.HuntMonster("lostruins", "Fallen Knight", "Infernal Enemy Defeated", 15);
+            Core.EnsureComplete(4504);
         }
 
         //Break the Spell
-        Story.KillQuest(4505, "lostruins", new[] { "Fallen Knight|Infernal Knight", "Underworld Hound" });
+        Story.KillQuest(4505, "lostruins", new[] { "Fallen Knight", "Underworld Hound" });
         Story.MapItemQuest(4505, "lostruins", 3697, 5);
 
         //Open the Cage
@@ -178,7 +190,7 @@ public class CoreQOM
         Story.PreLoad();
 
         //Celestial Realm at War
-        Story.KillQuest(4509, "lostruinswar", "Fallen Knight|Infernal Knight");
+        Story.KillQuest(4509, "lostruinswar", "Fallen Knight");
 
         //Defeat the Diabolical Warlord!
         Core.EquipClass(ClassType.Solo);
@@ -207,7 +219,7 @@ public class CoreQOM
         Story.KillQuest(5376, "infernalspire", "Helzekiel");
 
         //Get the Keys
-        Story.KillQuest(5377, "infernalspire", new[] { "Dungeon Fiend|Infernal Hound", "Dungeon Fiend", "Infernal Hound" });
+        Story.KillQuest(5377, "infernalspire", new[] { "Infernal Hound", "Dungeon Fiend", "Infernal Hound" });
 
         //Free the Captives
         Story.MapItemQuest(5378, "infernalspire", 4731, 6);
@@ -277,13 +289,13 @@ public class CoreQOM
         Story.KillQuest(5407, "doompally", "Doomwood Soldier");
 
         //Slay BIGGER!!
-        Story.KillQuest(5408, "doompally", "Doomwood Soldier|Doomwood Ectomancer");
+        Story.KillQuest(5408, "doompally", "Doomwood Ectomancer");
 
         //Babe in the Woods
         Story.MapItemQuest(5409, "doompally", 4758);
 
         //The Dark Thicket
-        Story.KillQuest(5410, "doompally", "Doomwood Bonemuncher|Doomwood Treeant");
+        Story.KillQuest(5410, "doompally", "Doomwood Bonemuncher");
         Story.MapItemQuest(5410, "doompally", 4759, 5);
 
         //Emily
@@ -297,7 +309,7 @@ public class CoreQOM
         Story.KillQuest(5413, "doompally", "Doomwood Ectomancer");
 
         //A (Skele)TON of skulls
-        Story.KillQuest(5414, "doompally", "Doomwood Bonemuncher|Doomwood Ectomancer|Doomwood Soldier");
+        Story.KillQuest(5414, "doompally", "Doomwood Bonemuncher");
 
         //Summoning the Subjugator
         Story.MapItemQuest(5415, "doompally", 4762);
@@ -401,7 +413,7 @@ public class CoreQOM
         Story.PreLoad();
 
         //Follow Lady Solani
-        Story.KillQuest(5501, "SafiriaInvasion", "Fallen Knight|Infernal Knight");
+        Story.KillQuest(5501, "SafiriaInvasion", "Fallen Knight");
         Story.MapItemQuest(5501, "SafiriaInvasion", 4902);
 
         //Revenant Slayer
@@ -446,7 +458,7 @@ public class CoreQOM
         Story.MapItemQuest(5548, "ShadowfallInvasion", 5028);
 
         //Clear the Tower
-        Story.KillQuest(5549, "ShadowfallInvasion", "Bone Creeper|Undead Knight");
+        Story.KillQuest(5549, "ShadowfallInvasion", "Bone Creeper");
 
         //Find the Passage
         Story.MapItemQuest(5550, "ShadowfallInvasion", 5029);
@@ -561,7 +573,7 @@ public class CoreQOM
         Story.MapItemQuest(5803, "charredpath", 5248);
 
         //Follow the Pattern.. He Ne Ar Kr
-        Story.KillQuest(5804, "crashsite", "Dwakel Blaster|Dwakel Warrior|Flamethrower Dwakel");
+        Story.KillQuest(5804, "crashsite", "Dwakel Warrior");
         Story.MapItemQuest(5804, "crashsite", 5249);
 
         //The PTM is Ready!
@@ -597,13 +609,13 @@ public class CoreQOM
         Story.MapItemQuest(5813, "charredpath", 5254);
 
         //Remove the Bile
-        Story.KillQuest(5819, "charredpath", "Toxic Bile|Noxious Fumes");
+        Story.KillQuest(5819, "charredpath", "Noxious Fumes");
 
         //Get the Plague (Crystal)
         Story.KillQuest(5820, "charredpath", "Plague Spreader");
 
         //Grab the Growth
-        Story.KillQuest(5821, "charredpath", "Infected Hare|Ragewing");
+        Story.KillQuest(5821, "charredpath", "Infected Hare");
 
         //Treeants for Wood
         Story.KillQuest(5822, "farm", "Treeant");
@@ -733,7 +745,7 @@ public class CoreQOM
         Story.MapItemQuest(5853, "Pilgrimage", 5291);
 
         //Defeat the Parasites
-        Story.KillQuest(5854, "Pilgrimage", "Extrikiti|Ravenous Parasite");
+        Story.KillQuest(5854, "Pilgrimage", "Ravenous Parasite");
         Story.MapItemQuest(5854, "Pilgrimage", 5292);
 
         //Bad Dog
@@ -761,8 +773,12 @@ public class CoreQOM
         Story.KillQuest(6278, "guardiantree", "Corrupted Zard");
 
         //Plant the Seed
-        Story.KillQuest(6279, "guardiantree", "Seed Spitter");
-        Story.MapItemQuest(6279, "guardiantree", 5771);
+        if (!Story.QuestProgression(6279))
+        {
+            Core.EnsureAccept(6279);
+            Core.KillMonster("guardiantree", "r2a", "Bottom", "Seed Spitter", "Perfect Seed");
+            Story.MapItemQuest(6279, "guardiantree", 5771);
+        }
 
         //Reach the Top
         Story.MapItemQuest(6280, "guardiantree", 5772);
@@ -810,7 +826,14 @@ public class CoreQOM
         Story.KillQuest(5857, "TwistedCavern", "Infesting Swarm");
 
         //Face the Consequences
-        Story.KillQuest(5858, "TwistedCavern", new[] { "Fungal Lord", "Seed Stalker", "Fungal Lord|Seed Stalker" });
+        if (!Story.QuestProgression(5858))
+        {
+            Core.EnsureAccept(5858);
+            Core.HuntMonster("TwistedCavern", "Fungal Lord", "Fungal Lord Slain", 6);
+            Core.HuntMonster("TwistedCavern", "Seed Stalker", "Seed Stalker Slain", 6);
+            Core.HuntMonster("TwistedCavern", "Seed Stalker", "Scrap of Brown Cloth");
+            Core.EnsureComplete(5858);
+        }
 
         //Stalk This
         Story.KillQuest(5859, "TwistedCavern", "Seed Stalker");
@@ -846,9 +869,18 @@ public class CoreQOM
         Story.KillQuest(5866, "BrokenWoods", new[] { "Urstrix", "SpiderWing" });
 
         //Comparing Samples
-        Story.KillQuest(5867, "BrokenWoods", new[] { "Leatherwing", "SpiderWing", "Urstrix", "Hootbear" });
+        if (!Story.QuestProgression(5867))
+        {
+            Core.EnsureAccept(5867);
+            Core.HuntMonster("brightoak", "Hootbear", "Hootbear Feathers", 2);
+            Core.HuntMonster("BrokenWoods", "Urstrix", "Urstrix Feathers", 2);
+            Core.HuntMonster("pines", "Leatherwing", "Leatherwing Claws", 2);
+            Core.HuntMonster("BrokenWoods", "SpiderWing", "SpiderWing Claws", 2);
+            Core.EnsureComplete(5867);
+        }
 
         //Examine the Foliage
+        Story.KillQuest(5868, "BrokenWoods", "Fungal Lord");
         Story.MapItemQuest(5868, "BrokenWoods", 5296, 4);
         Story.MapItemQuest(5868, "BrokenWoods", 5297, 4);
 
@@ -859,15 +891,18 @@ public class CoreQOM
         Story.KillQuest(5870, "BrokenWoods", new[] { "Urstrix", "SpiderWing" });
 
         //Still Not Working
-        Story.KillQuest(5871, "BrokenWoods", new[] { "Ravenous Parasite", "Plague Spreader" });
+        Story.KillQuest(5871, "charredpath", new[] { "Ravenous Parasite", "Plague Spreader" });
 
         //Get the Final Ingredients
         if (!Story.QuestProgression(5872))
         {
+            Core.EnsureAccept(5872);
             if (!Core.CheckInventory("Health Potion"))
                 Core.BuyItem("Embersea", 1100, "Health Potion");
 
-            Story.KillQuest(5872, "BrokenWoods", new[] { "Seed Spitter", "Treeant" });
+            Core.HuntMonster("Arcangrove", "Seed Spitter", "Uncorrupted Spitter Seeds", 3);
+            Core.HuntMonster("poisonforest", "Treeant", "Treeant Berries", 4);
+            Core.EnsureComplete(5872);
         }
 
         //Smash the Hive
@@ -888,7 +923,7 @@ public class CoreQOM
         if (!Story.QuestProgression(5874))
         {
             Core.EnsureAccept(5874);
-            Core.HuntMonster("Kolyaban", "Tentacled Darkblood|Poisonous Darkblood", "Acolyte's Medallion", 4);
+            Core.HuntMonster("Kolyaban", "Poisonous Darkblood", "Acolyte's Medallion", 4);
             Core.EnsureComplete(5874);
         }
 
