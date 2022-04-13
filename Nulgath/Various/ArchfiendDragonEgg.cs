@@ -32,7 +32,6 @@ public class ArchfiendDragonEgg
 
         Core.AddDrop("ArchFiend Baby Dragon Pet");
 
-        //Your code here
         Core.EnsureAccept(7296);
         Core.BuyItem("Airstorm", 357, "Breath of life");
         Core.HuntMonster("queenspire", "Fire Guardian Dragon", "Fire Guardian Dragon Soul", isTemp: false);
