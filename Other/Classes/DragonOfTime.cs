@@ -196,7 +196,7 @@ public class DragonOfTime
             }
 
             Core.EquipClass(ClassType.Farm);
-            Adv.BoostKillMonster("aqw3d", "r13", "Bottom", "*", "Cross-Dimensional Weapons", 300, isTemp: false, publicRoom: true);
+            Core.KillMonster("aqw3d", "r13", "Bottom", "*", "Cross-Dimensional Weapons", 300, isTemp: false, publicRoom: true);
 
             SP.ShiftingPyramidSaga();
             if (!Core.CheckInventory("Starlight Singularity"))
