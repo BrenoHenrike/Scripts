@@ -27,6 +27,9 @@ public class ArchfiendDragonEgg
 
     public void GetAFDE()
     {
+        if(!Core.IsMember)
+            return;
+        
         if (Core.CheckInventory("ArchFiend Baby Dragon Pet"))
             return;
 
