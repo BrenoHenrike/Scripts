@@ -21,14 +21,12 @@ public class ChaorrupterUnlocked
 
     public void GetYourSword()
     {
-        Core.AddDrop("Chaorrupter Unlocked");
+        if (Core.CheckInventory("Chaorrupter Unlocked"))
+            return;
 
-        Core.AddDrop("Chaorrupter Unlocked", "ExampleItem2", "ExampleItem3", "ExampleItem4");
         if (Core.IsMember)
             Core.BuyItem("chaoswar", 641, "Chaorrupter Unlocked", shopItemID: 11172);
-        Adv.EnhanceItem("Chaorrupter Unlocked", EnhancementType.Lucky);
-        if (!Core.IsMember)
-            Core.HuntMonster("chaoswar", "High Chaos Knight", "Chaorrupter Unlocked");
+        else Core.HuntMonster("chaoswar", "High Chaos Knight", "Chaorrupter Unlocked");
         Adv.EnhanceItem("Chaorrupter Unlocked", EnhancementType.Lucky);
     }
 }
