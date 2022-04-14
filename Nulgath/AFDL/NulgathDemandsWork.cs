@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Nulgath/AFDL/WillpowerExtraction.cs
+//cs_include Scripts/Nulgath/Various/GoldenHanzoVoid.cs
 using RBot;
 
 public class NulgathDemandsWork
@@ -10,6 +11,7 @@ public class NulgathDemandsWork
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNulgath Nulgath = new CoreNulgath();
+    public GoldenHanzoVoid GHV = new();
 
     public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
     public void ScriptMain(ScriptInterface bot)
@@ -68,16 +70,7 @@ public class NulgathDemandsWork
                 Core.Logger("Uni 27 acquired");
             }
 
-            if (!Core.CheckInventory("Golden Hanzo Void"))
-            {
-                Nulgath.ApprovalAndFavor(50, 200);
-                Farm.BattleGroundE(100000);
-                Nulgath.SwindleBulk(30);
-                Nulgath.TheAssistant("Dark Crystal Shard", 15);
-                Nulgath.FarmDiamondofNulgath(50);
-                Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
-                Bot.Wait.ForPickup("Golden Hanzo Void");
-            }
+            GHV.GetGHV();
 
             Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
 
