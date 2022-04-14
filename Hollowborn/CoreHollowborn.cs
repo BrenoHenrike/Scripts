@@ -17,6 +17,7 @@ public class CoreHollowborn
 
         Core.AddDrop("Soul Potion", "Dried Slime", "Arashtite Ore", "Human Soul", "Fallen Soul", "Lae\'s Hardcore Contract");
         Core.Logger("Getting Lae's Hardcore Contract");
+        Core.EnsureAccept(7556);
         if (!Core.CheckInventory("Soul Potion"))
         {
             Core.Logger("Getting Soul Potion");
@@ -40,7 +41,7 @@ public class CoreHollowborn
         Core.KillMonster("noxustower", "r14", "Left", "*", "Human Soul", quant, false);
     }
 
-    public void FreshSouls( int quant = 350)
+    public void FreshSouls(int quant = 350)
     {
         if (Core.CheckInventory("Fresh Soul", quant))
             return;
