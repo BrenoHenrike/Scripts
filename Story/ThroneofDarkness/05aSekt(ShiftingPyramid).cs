@@ -45,9 +45,9 @@ public class ShiftingPyramid
         if(!Story.QuestProgression(5172))
         {
             Core.EnsureAccept(5172);
-            Core.HuntMonster("whitehole", "Dimensional Crystal", "Quartz", 4);
-            Core.HuntMonster("whitehole", "Gate Goblin", "Lime", 1);
-            Core.HuntMonster("whitehole", "Vortex Matter", "Ash", 3);
+            Core.KillMonster("whitehole", "r3", "Left", "Dimensional Crystal", "Quartz", 4);
+            Core.KillMonster("whitehole", "r6", "Left", "Gate Goblin", "Lime", 1);
+            Core.KillMonster("whitehole", "r10", "Left", "Vortex Matter", "Ash", 3);
             Core.EnsureComplete(5172);
         }
 
