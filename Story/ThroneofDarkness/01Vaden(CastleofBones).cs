@@ -76,7 +76,12 @@ public class CastleofBones
         Story.MapItemQuest(4980, "bonecastle", 4355, 1);
 
         // Do You Find This Humerus?
-        Story.KillQuest(4981, "bonecastle", "Skeletal Warrior|Undead Knight|Undead Guard");
+        if (!Story.QuestProgression(4981))
+        {
+            Core.EnsureAccept(4981);
+            Core.HuntMonster("bonecastle", "Skeletal Warrior", "Undead Humerus Bones", 5);
+            Core.EnsureComplete(4981);
+        }
 
         // Vaden Says
         Story.KillQuest(4982, "bonecastle", new[] { "Skeletal Warrior", "Undead Guard", "Undead Knight" });
