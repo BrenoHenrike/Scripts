@@ -27,16 +27,18 @@ public class MysteriousEgg
 
         Core.EnsureAccept(6171);
 
-        Core.HuntMonster("pride", "Valsarian", "Key of Pride", isTemp: false);
-        Core.HuntMonster("gluttony", "Deflated Glutus", "Key of Gluttony", isTemp: false);
-        Core.HuntMonster("greed", "Goregold", "Key of Greed", isTemp: false);
+        Core.KillMonster("pride", "Valsarian", "r13", "Left", "Key of Pride", isTemp: false);
+        Core.KillMonster("gluttony", "Enter2", "Top", "Deflated Glutus", "Key of Gluttony", isTemp: false);
+        Core.KillMonster("greed", "Goregold", "r16", "Left", "Key of Greed", isTemp: false);
 
         if (!Core.CheckInventory("Key of Sloth"))
         {
-            Story.MapItemQuest(5944, "sloth", new[] { 5380, 5381 });
+            Core.EnsureAccept(5944);
+            Core.GetMapItem(5380, "sloth");
+            Core.GetMapItem(5381, "sloth");
+            Core.EnsureComplete(5944);
             Core.JumpWait();
             Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
-
             Core.HuntMonster("sloth", "Phlegnn", "Key of Sloth", isTemp: false);
         }
 
