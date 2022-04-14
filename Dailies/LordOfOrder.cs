@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/LivingDungeon.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 using RBot;
 
