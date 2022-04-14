@@ -789,7 +789,8 @@ public class CoreQOM
         {
             Core.EnsureAccept(6279);
             Core.KillMonster("guardiantree", "r2a", "Bottom", "Seed Spitter", "Perfect Seed");
-            Story.MapItemQuest(6279, "guardiantree", 5771);
+            Core.GetMapItem("guardiantree", 5771);
+            Core.EnsureComplete(6279);
         }
 
         //Reach the Top
