@@ -228,6 +228,8 @@ public class LordOfOrder
         Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: true);
         Core.EnsureComplete(7165);
 
+        Bot.Wait.ForPickup("Lord of Order");
+
         if (rankUpClass)
             Adv.rankUpClass("Lord Of Order");
     }
