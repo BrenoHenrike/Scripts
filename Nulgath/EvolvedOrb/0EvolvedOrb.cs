@@ -3,7 +3,7 @@
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Nulgath/EvolvedOrb/EvolvedBloodOrb.cs
 //cs_include Scripts/Nulgath/EvolvedOrb/EvolvedHexOrb.cs
-//cs_include Scripts/Nulgath/EvolvedOrb/EvolvedShadowOrb.cs
+//cs_include Scripts/Nulgath/EvolvedOrb/EvolvedShadowOrb[Mem].cs
 using RBot;
 
 public class EvolvedOrb
