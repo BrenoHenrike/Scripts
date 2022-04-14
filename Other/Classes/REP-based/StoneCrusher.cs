@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Story/BrightOak.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 using RBot;
 
 public class StoneCrusher
