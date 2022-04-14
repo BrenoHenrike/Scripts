@@ -170,8 +170,14 @@ public class CoreQOM
         }
 
         //Break the Spell
-        Story.KillQuest(4505, "lostruins", new[] { "Fallen Knight", "Underworld Hound" });
-        Story.MapItemQuest(4505, "lostruins", 3697, 5);
+        if (!Story.QuestProgression(4505))
+        {
+            Core.EnsureAccept(4505);
+            Core.HuntMonster("lostruins", "Fallen Knight", "Brimstone-Stained Gauntlet", 5);
+            Core.HuntMonster("lostruins", "Underworld Hound", "Onyx Spike", 3);
+            Core.GetMapItem(3697, 5, "lostruins");
+            Core.EnsureComplete(4505);
+        }
 
         //Open the Cage
         Story.MapItemQuest(4506, "lostruins", 3695);
@@ -622,7 +628,7 @@ public class CoreQOM
         Story.KillQuest(5822, "farm", "Treeant");
 
         //Sand sounds better than Litter...
-        if(!Story.QuestProgression(5823))
+        if (!Story.QuestProgression(5823))
         {
             Core.EnsureAccept(5823);
             Core.HuntMonster("baconcat", "Litter Elemental", "Absorbent \"Sand\"", 8);
