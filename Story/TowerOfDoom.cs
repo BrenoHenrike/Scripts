@@ -11,6 +11,8 @@ public class TowerOfDoom
     {
         Core.SetOptions();
 
+        Bot.Options.LagKiller = false;
+
         TowerProgress();
 
         Core.SetOptions(false);
@@ -38,7 +40,7 @@ public class TowerOfDoom
             return;
         }
         Core.Logger($"Tower of Doom {Floor}");
-        Bot.SendClientPacket($"{{\"t\":\"xt\",\"b\":{{\"r\":-1,\"o\":{{\"cmd\":\"updateQuest\",\"iValue\":{Floor},\"iIndex\":159}}}}}}", "json");
+        Bot.Quests.UpdateQuest(3474 + Floor);
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(3474 + Floor);
         Core.KillMonster(Map, "r10", "Left", "*", publicRoom: true);
