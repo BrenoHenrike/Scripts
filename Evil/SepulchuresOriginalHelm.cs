@@ -5,7 +5,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
-//cs_include Scripts/Story/MysteriousDungeon.cs
+//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
 
 using RBot;
 
