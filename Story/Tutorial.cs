@@ -25,8 +25,6 @@ public class Tutorial
     {
         Core.AddDrop("Venom Head", "Brutal Battle Blade", "Bonehead Bludgeon");
 
-        Core.BuyItem("buyhouse", 71, "Ice House");
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
         Core.Join("oaklore");
         Core.Logger("Achievement - Combat");
         Core.SendPackets("%xt%zm%setAchievement%93430%ia0%22%1%");//combat-
