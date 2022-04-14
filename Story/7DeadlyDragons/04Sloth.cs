@@ -22,8 +22,7 @@ public class Sloth
             return;
 
         // Protective Gear Required (Slot -1, will repeat even if completed before)
-        Story.MapItemQuest(5944, "sloth", 5380, 1);
-        Story.MapItemQuest(5944, "sloth", 5381, 1);
+        Story.MapItemQuest(5944, "sloth", new[] { 5380, 5381 });
 
         Core.JumpWait();
         Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
