@@ -60,7 +60,7 @@ public class CoreHollowborn
         while (!Core.CheckInventory("Fresh Soul", quant))
         {
             Core.EnsureAccept(7293);
-            Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul", 10, log: false);
+            Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);
             Core.EnsureComplete(7293);
             Bot.Wait.ForPickup("Fresh Soul");
         }
