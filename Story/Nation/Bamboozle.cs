@@ -108,7 +108,7 @@ public class Bamboozle
         }
 
         //Rainbow Moonstone
-        if (Story.QuestProgression(7290) || !Core.CheckInventory("Floozer"))
+        if (!Story.QuestProgression(7290) || !Core.CheckInventory("Floozer"))
         {
             Core.EnsureAccept(7290);
             if (!Core.CheckInventory("Rainbow Moonstone"))

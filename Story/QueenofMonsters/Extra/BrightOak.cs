@@ -236,7 +236,7 @@ public class BrightOak
         Story.MapItemQuest(4697, "Darkheart", 4055, 7);
 
         // Cleanse the Grove
-        if (Story.QuestProgression(4698))
+        if (!Story.QuestProgression(4698))
         {
             Core.EnsureAccept(4698);
             Core.HuntMonster("Darkheart", "Tainted Earth", "Tainted Earth Removed", 8);
