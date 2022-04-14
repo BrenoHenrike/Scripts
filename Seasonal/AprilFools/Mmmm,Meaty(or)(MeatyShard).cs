@@ -42,7 +42,10 @@ public class MmmmMeatyQuest
 
         Core.Join("MeateorTown", publicRoom: true);
         while (Bot.Map.PlayerCount < 6)
+        {
+            Core.Join("Whitemap");
             Core.Join("MeateorTown", publicRoom: true, ignoreCheck: true);
+        }
 
         while (!Bot.ShouldExit() && (!Core.CheckInventory(Rewards)))
         {
