@@ -4,30 +4,31 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
 using RBot;
+using RBot.Items;
 
 public class EternalInversionist
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public FourthDimensionalPyramid FDP = new FourthDimensionalPyramid();
+    public CoreStory Story = new();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public FourthDimensionalPyramid FDP = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        GetEI(true);
+        GetEI();
 
         Core.SetOptions(false);
     }
 
-    public void GetEI(bool rankUpClass = true, string ClassName = "Eternal Inversionist")
+    public void GetEI(bool rankUpClass = true)
     {
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == "Eternal Inversionist".ToLower() && i.Category == ItemCategory.Class) ?? new();
 
-        if (Core.CheckInventory("Eternal Inversionist") & (itemInv.Quantity == 302500))
+        if (Core.CheckInventory("Eternal Inversionist") && (rankUpClass ? itemInv.Quantity == 302500 : true))
             return;
 
         FDP.FourthDimensionalPyramidSaga();
