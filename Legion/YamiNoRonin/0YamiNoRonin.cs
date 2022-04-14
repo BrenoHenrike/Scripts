@@ -5,7 +5,7 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/YamiNoRonin/YokaiSwordScroll.cs
 //cs_include Scripts/Legion/YamiNoRonin/BlademasterSwordScroll.cs
-//cs_include Scripts/Story/DarkAlly.cs
+//cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 using RBot;
 
@@ -32,7 +32,7 @@ public class YamiNoRonin
             return;
 
         Core.AddDrop("Yami no Ronin");
-        
+
         Core.EnsureAccept(7408);
         TPtP.BlademasterSwordScroll(1);
         TEoaE.YokaiSwordScroll(1);

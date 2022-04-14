@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/DarkAlly.cs
+//cs_include Scripts/Story/Legion/DarkAlly.cs
 using RBot;
 
 public class DarkAlliance_Story
