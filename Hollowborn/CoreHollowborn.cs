@@ -20,11 +20,10 @@ public class CoreHollowborn
         Core.EnsureAccept(7556);
         if (!Core.CheckInventory("Soul Potion"))
         {
-            Core.Logger("Getting Soul Potion");
-            Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("orecavern", "Crashroom", "Dried Slime", 1, false);
-            Core.HuntMonster("orecavern", "Deathmole", "Arashtite Ore", 1, false);
-            Farm.AlchemyPacket("Dried Slime", "Arashtite Ore", AlchemyRunes.Gebo, rank: 8, loop: false, modifier: "Man");
+            Farm.Gold(2500000);
+            Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", 5);
+            Core.BuyItem("alchemyacademy", 2036, "Soul Potion");
+            Bot.Wait.ForItemBuy();
         }
         HumanSoul(50);
         Core.EquipClass(ClassType.Solo);
