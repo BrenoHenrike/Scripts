@@ -1346,8 +1346,14 @@ public class Core13LoC
         }
 
         //After the Chaos
-        Story.KillQuest(2244, "timelibrary", new[] { "Queen's Lieutenant", "Queen's Recruit", "Queen's Knight" });
-        Story.MapItemQuest(2244, "timelibrary", 1368);
+        if (!Story.QuestProgression(2244))
+        {
+            Core.EnsureAccept(2244);
+            Core.HuntMonster("timelibrary", "Queen's Recruit", "The Future is Now", 3);
+            Core.HuntMonster("timelibrary", "Queen's Recruit", "Past Failures Brought Us Here", 2);
+            Core.HuntMonster("timelibrary", "Queen's Knight", "Princess Freed… but for what?", 2);
+            Story.MapItemQuest(2244, "timelibrary", 1368);
+        }
 
         //Trust is Not Ephemeral
         Story.KillQuest(2253, "timevoid", "Ephemerite");
