@@ -96,6 +96,11 @@ public class Collection
         }
 
         // You're Not the Boss of Me Now
-        Story.KillQuest(1348, "Future", "The Collector", AutoCompleteQuest: false);
+        if (!Story.QuestProgression(1348))
+        {
+            Core.EnsureAccept(1348);
+            Core.HuntMonster("Future", "The Collector", "Collector Vanquished");
+            Core.EnsureComplete(1348);
+        }
     }
 }
