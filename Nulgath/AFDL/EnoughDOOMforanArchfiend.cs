@@ -40,45 +40,32 @@ public class EnoughDOOMforanArchfiend
         WillpowerExtraction.Unidentified34(4);
 
         Nulgath.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
-
         Nulgath.FarmUni13(1);
-
         Nulgath.ApprovalAndFavor(0, 5000);
-
         Nulgath.EssenceofNulgath(100);
+
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", 1, false);
+
         Core.EquipClass(ClassType.Farm);
         Farm.BattleUnderB("Undead Essence", 1000);
 
         Nulgath.FarmVoucher(false);
-
         Nulgath.FarmBloodGem(2);
 
         Core.BuyItem("yulgar", 16, "Aelita's Emerald");
-
-        // while (!Core.CheckInventory("Essence Potion", 5))
-        // {
-        // Core.HuntMonster("orecavern", "Deathmole", "Arashtite Ore", 2, false);
-        // Core.HuntMonster("deathsrealm", "Skeleton Fighter", "Necrot", 2, false);
-        // Farm.AlchemyPacket("Necrot", "Arashtite Ore", AlchemyRunes.Uruz); //alchemy packets need fixed
-        // Bot.Player.Pickup("Essence Potion");
-        // }
-
 
         if (!Core.CheckInventory("Essence Potion", 5))
         {
             Farm.Gold(12500000);
             Core.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 25);
             Core.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 1, 9770);
+            Bot.Wait.ForItemBuy();
         }
-        Bot.Wait.ForDrop("Essence Potion");
-
 
         Core.EnsureAccept(5260);
 
         Core.KillMonster("orecavern", "r3", "Up", "*", "Chaorruption Essence", 75, false);
-
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
         if (!Bot.Quests.CanComplete(5260))
