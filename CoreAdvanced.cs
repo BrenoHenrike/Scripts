@@ -606,6 +606,7 @@ public class CoreAdvanced
                 }
                 if (!Bot.Player.InCombat)
                     Core.Rest();
+                Bot.Wait.ForDrop(item);
             }
         }
 
