@@ -50,6 +50,7 @@ public class CoreLegion
         Core.AddDrop("Dark Token");
         Core.Logger($"Farming {quant} Dark Tokens");
         Core.EquipClass(ClassType.Farm);
+        Adv.SmartEnhance(Bot.Inventory.CurrentClass.Name);
         Adv.BestGear(GearBoost.Human);
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         while (!Bot.Inventory.Contains("Dark Token", quant))
@@ -63,7 +64,7 @@ public class CoreLegion
             while (Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
                 Core.ChainComplete(6249);
             Bot.Player.Pickup("Dark Token");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens Total");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         }
     }
 
