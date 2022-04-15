@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Legion/SeraphicWar.cs
 using RBot;
 
 public class AnotherOneBitesTheDust
@@ -11,6 +12,7 @@ public class AnotherOneBitesTheDust
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
     public CoreAdvanced Adv = new CoreAdvanced();
+    public SeraphicWar_Story SeraphicWar = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -37,6 +39,7 @@ public class AnotherOneBitesTheDust
             Core.EnsureAccept(7991);
             Farm.BattleUnderB("Bone Dust", 333);
             Legion.ApprovalAndFavor(0, 400);
+            SeraphicWar.SeraphicWar_Questline();
             Legion.DarkToken(80);
             Core.EnsureComplete(7991);
             Core.Logger($"Completed x{i++}");
