@@ -35,10 +35,12 @@ public class CoreStory
         Core.SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
+            Bot.Sleep(Core.ActionDelay);
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
             Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+            Bot.Sleep(Core.ActionDelay);
         }
     }
 
@@ -62,10 +64,12 @@ public class CoreStory
         Core.SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
         if (Bot.Quests.CanComplete(QuestID))
         {
+            Bot.Sleep(Core.ActionDelay);
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
             Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+            Bot.Sleep(Core.ActionDelay);
         }
     }
 
@@ -88,13 +92,14 @@ public class CoreStory
 
         Core.EnsureAccept(QuestID);
         Core.GetMapItem(MapItemID, Amount, MapName);
-        Bot.Sleep(Core.ActionDelay);
         if (Bot.Quests.CanComplete(QuestID))
         {
+            Bot.Sleep(Core.ActionDelay);
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
             Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+            Bot.Sleep(Core.ActionDelay);
         }
     }
 
@@ -120,10 +125,12 @@ public class CoreStory
             Core.GetMapItem(MapItemID, Amount, MapName);
         if (Bot.Quests.CanComplete(QuestID))
         {
+            Bot.Sleep(Core.ActionDelay);
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
             Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+            Bot.Sleep(Core.ActionDelay);
         }
     }
 
@@ -148,10 +155,12 @@ public class CoreStory
         Core.BuyItem(MapName, ShopID, ItemName, Amount);
         if (Bot.Quests.CanComplete(QuestID))
         {
+            Bot.Sleep(Core.ActionDelay);
             if (AutoCompleteQuest)
                 Core.EnsureComplete(QuestID);
             Bot.Wait.ForQuestComplete(QuestID);
             Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+            Bot.Sleep(Core.ActionDelay);
         }
     }
 
@@ -169,6 +178,7 @@ public class CoreStory
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
+        Bot.Sleep(Core.ActionDelay);
         if (AutoCompleteQuest)
             Core.ChainComplete(QuestID);
         else
@@ -177,6 +187,7 @@ public class CoreStory
         }
         Bot.Wait.ForQuestComplete(QuestID);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
+        Bot.Sleep(Core.ActionDelay);
     }
 
     /// <summary>
