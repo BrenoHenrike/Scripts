@@ -167,7 +167,7 @@ public class CoreBots
             int MaximumDelay = 300;
             int timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay + 1);
             int SSH = 0;
-            Bot.RegisterHandler(5000, s =>
+            Bot.RegisterHandler(20, s =>
             {
                 SSH++;
                 if (SSH >= (timerInterval / 5))
