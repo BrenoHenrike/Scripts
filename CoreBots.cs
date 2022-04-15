@@ -1317,8 +1317,6 @@ public class CoreBots
         if (!MonsterCells.Contains(Bot.Player.Cell))
             return;
 
-        bool Restore = Bot.Options.AggroMonsters;
-        Bot.Options.AggroMonsters = false;
         string cell = "";
         string pad = "";
         bool jumpTwice = false;
@@ -1361,9 +1359,6 @@ public class CoreBots
             Bot.Sleep(ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
-
-        if (Restore)
-            Bot.Options.AggroMonsters = true;
     }
     private string lastJumpWait = "";
 
