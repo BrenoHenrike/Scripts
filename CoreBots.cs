@@ -1299,7 +1299,6 @@ public class CoreBots
         {
             if (_pad == pad)
                 continue;
-            Bot.Log(_pad);
             Bot.Player.Jump(cell, _pad);
             Bot.Sleep(200);
             if (Bot.Player.X != 480 || Bot.Player.Y != 275)
