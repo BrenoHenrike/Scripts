@@ -75,6 +75,11 @@ public class NulgathDemandsWork
             Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
 
             Core.EnsureCompleteChoose(5259, new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" });
+            if (Bot.Quests.IsInProgress(5259))
+            {
+                Core.Logger("Looks like the quest is still in progress. Turning it in now");
+                Core.EnsureComplete(5259);
+            }
 
             Core.Logger($"Completed x{i}");
             i++;
