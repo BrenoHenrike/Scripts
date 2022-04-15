@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Originul.cs
+//cs_include Scripts/Story/Nation/Originul.cs
 using RBot;
 
 public class Fiendshard_Story
