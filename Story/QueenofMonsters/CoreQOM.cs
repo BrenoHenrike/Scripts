@@ -789,7 +789,7 @@ public class CoreQOM
         {
             Core.EnsureAccept(6279);
             Core.KillMonster("guardiantree", "r2a", "Bottom", "Seed Spitter", "Perfect Seed");
-            Core.GetMapItem("guardiantree", 5771);
+            Core.GetMapItem(5771, map: "guardiantree");
             Core.EnsureComplete(6279);
         }
 
