@@ -34,8 +34,8 @@ public class MysteriousEgg
         if (!Core.CheckInventory("Key of Sloth"))
         {
             Core.EnsureAccept(5944);
-            Core.GetMapItem(5380, "sloth");
-            Core.GetMapItem(5381, "sloth");
+            Core.GetMapItem(5380, map: "sloth");
+            Core.GetMapItem(5381, map: "sloth");
             Core.EnsureComplete(5944);
             Core.JumpWait();
             Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
