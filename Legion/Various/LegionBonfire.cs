@@ -7,6 +7,7 @@ using RBot;
 
 public class LegionBonfire
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
@@ -23,7 +24,7 @@ public class LegionBonfire
 
     public void GetLegionBonfire()
     {
-        if (Core.CheckInventory("Legion Bonfire"))
+        if (Bot.Inventory.ContainsHouseItem("Legion Bonfire"))
             return;
 
         Legion.FarmLegionToken(10000);
