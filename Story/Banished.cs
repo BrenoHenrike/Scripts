@@ -52,7 +52,7 @@ public class Banished
         Story.KillQuest(7879, "thevoid", "Void Dragon");
 
         // The Sixth Task
-        if(!Story.QuestProgression(7880))
+        if (!Story.QuestProgression(7880))
         {
             Core.EnsureAccept(7880);
             Core.HuntMonster("banished", "Desterrat Moya", "Infected Tentacle");
@@ -91,7 +91,6 @@ public class Banished
         if (Core.isCompletedBefore(2027))
             return;
 
-        Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
         // Knave1's Route to the Void
