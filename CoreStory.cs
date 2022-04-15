@@ -88,6 +88,7 @@ public class CoreStory
 
         Core.EnsureAccept(QuestID);
         Core.GetMapItem(MapItemID, Amount, MapName);
+        Bot.Sleep(Core.ActionDelay);
         if (Bot.Quests.CanComplete(QuestID))
         {
             if (AutoCompleteQuest)
