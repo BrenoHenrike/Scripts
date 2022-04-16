@@ -42,6 +42,7 @@ public class PinkBladeOfDestruciton
             Core.EnsureComplete(1487);
         }
 
+        BLoD.UnlockMineCrafting();
         BLoD.SpiritOrb(500);
 
         while (!Core.CheckInventory("Zealous Badge", 5))
