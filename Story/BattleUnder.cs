@@ -69,8 +69,8 @@ public class BattleUnder
 
         BattleUnderB();
 
-        Story.KillQuest(936, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead");
-        Story.KillQuest(937, "battleunderc", "Blue Crystalized Undead|Green Crystalized Undead|Purple Crystalized Undead|Purple Crystalized Jellyfish");
+        Story.KillQuest(936, "battleunderc", "Blue Crystalized Undead");
+        Story.KillQuest(937, "battleunderc", "Blue Crystalized Undead");
         Story.KillQuest(938, "battleunderc", "Crystalized Jellyfish");
         if (!Story.QuestProgression(939))
         {
