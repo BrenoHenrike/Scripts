@@ -41,6 +41,13 @@ public class LVLQuick
 
         while (Bot.Player.Level < Level)
         {
+            if (Bot.Map.PlayerCount < 6)
+            {
+                Core.Join("WhiteMap");
+                Core.Join("IceStormArena", publicRoom: true);
+                Core.Jump("r4", "Bottom");
+            }
+
             Core.SendPackets($"%xt%zm%aggroMon%{Bot.Map.RoomID}%70%71%72%73%74%75%");
             Bot.Player.Attack("*");
 
