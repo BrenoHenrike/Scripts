@@ -167,7 +167,7 @@ public class CoreFarms
             Core.EnsureAccept(236);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
             Core.EnsureComplete(236);
-            Bot.Wait.ForPickUp("Berserker Bunny Armor");
+            Bot.Wait.ForPickup("Berserker Bunny Armor");
             return;
         }
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
