@@ -225,7 +225,7 @@ public class CoreNulgath
     /// </summary>
     /// <param name="quant">Desired Item quantity</param>
     /// <param name="item">Desired Item</param>
-    public void SwindleReturn(string item = "Any", int quant = 1000)
+    public void SwindleReturn(string item = "Any", int quant = 1000, bool sellMemVoucher = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -262,6 +262,8 @@ public class CoreNulgath
                     Core.EnsureComplete(7551, 4769);
                     break;
             }
+            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
+                Core.SellItem("Voucher of Nulgath");
         }
     }
 
