@@ -169,8 +169,7 @@ public class CoreFarms
             Core.EnsureComplete(236);
             Bot.Player.Pickup("Berserker Bunny");
             Bot.Sleep(Core.ActionDelay);
-            if (!KeepBBArmor)
-                Bot.Shops.SellItem("Berserker Bunny");
+            Bot.Shops.SellItem("Berserker Bunny");
             Core.Logger($"Completed x{i++}");
         }
     }
