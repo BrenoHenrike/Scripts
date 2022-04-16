@@ -116,7 +116,7 @@ public class CoreFarms
     /// Farms Gold in FireWar with the fire Dragon Scales & Hearts war turn-ins
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
-    public void FireWarGold(int goldQuant = 100000000)
+    public void FireWar(int goldQuant = 100000000)
     {
         if (Bot.Player.Gold >= goldQuant)
             return;
