@@ -262,8 +262,8 @@ public class CoreNulgath
                     Core.EnsureComplete(7551, 4769);
                     break;
             }
-            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-                Core.SellItem("Voucher of Nulgath");
+            if (item != "Voucher of Nulgath" && sellMemVoucher)
+                Core.SellItem("Voucher of Nulgath", all: true);
         }
     }
 
