@@ -154,7 +154,7 @@ public class CoreFarms
     /// Farms Gold by selling Berserker Bunny
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
-    public void BerserkerBunny(int goldQuant = 100000000, bool KeepBBArmor = false)
+    public void BerserkerBunny(int goldQuant = 100000000)
     {
         if (Bot.Player.Gold >= goldQuant)
             return;
@@ -162,14 +162,6 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {goldQuant}  using BerserkerBunny Method");
         int i = 1;
-        if (KeepBBArmor)
-        {
-            Core.EnsureAccept(236);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
-            Core.EnsureComplete(236);
-            Bot.Wait.ForPickup("Berserker Bunny Armor");
-            return;
-        }
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
             Core.EnsureAccept(236);
