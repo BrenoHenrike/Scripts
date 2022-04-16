@@ -58,8 +58,8 @@ public class CoreFarms
             return;
 
         HonorHall(quant);
-        BattleGroundE(quant);
-        FireWar(quant);
+        // BattleGroundE(quant);
+        FireWarGold(quant);
         BerserkerBunny(quant);
     }
 
@@ -116,7 +116,7 @@ public class CoreFarms
     /// Farms Gold in FireWar with the fire Dragon Scales & Hearts war turn-ins
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
-    public void FireWar(int goldQuant = 100000000)
+    public void FireWarGold(int goldQuant = 100000000)
     {
         if (Bot.Player.Gold >= goldQuant)
             return;
@@ -180,7 +180,7 @@ public class CoreFarms
     {
         if (Bot.Player.Level >= level)
             return;
-        IcestormArena(level);
+        FireWarXP();
     }
 
     /// <summary>
@@ -260,6 +260,43 @@ public class CoreFarms
             while (Core.CheckInventory("Mega War Medal", 3))
                 Core.ChainComplete(7981);
             Bot.Player.Pickup("Essence of Wrath", "Souls of Heresy");
+        }
+    }
+
+
+
+    /// <summary>
+    /// Farms Gold in FireWar with the fire Dragon Scales & Hearts war turn-ins
+    /// </summary>
+    /// <param name="goldQuant">How much gold to farm</param>
+    public void FireWarXP(int Level = 100)
+    {
+        if (Bot.Player.Level < 50)
+            IcestormArena(50);
+
+        Core.AddDrop("");
+        Core.EquipClass(ClassType.Farm);
+        int Scale = 1;
+        int Heart = 1;
+
+        Core.Join("firewar", "r2", "Bottom");
+        Bot.Player.SetSpawnPoint();
+        while (Bot.Player.Level < Level)
+        {
+            Bot.Player.Attack("*");
+
+            if (Core.CheckInventory("Fire Dragon Scale", 5))
+            {
+                Bot.Quests.Complete(6294);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed x{Scale++}");
+            }
+            if (Core.CheckInventory("Fire Dragon Heart", 3))
+            {
+                Bot.Quests.Complete(6295);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed x{Heart++}");
+            }
         }
     }
     #endregion
