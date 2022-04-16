@@ -77,11 +77,11 @@ public class WillpowerExtraction
                 Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
             }
 
-            if (!Core.CheckInventory("Doomatter", 10))
+            if (!Core.CheckInventory("Doomatter", 5))
             {
                 Farm.Gold(300000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle");
-                Core.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 10);
+                Core.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 1);
             }
 
             Core.EquipClass(ClassType.Solo);
