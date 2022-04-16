@@ -33,8 +33,7 @@ public class BerserkerBunnyArmorEaster
             Core.EnsureAccept(236);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
             Core.EnsureComplete(236);
-            Bot.Wait.ForPickup("Berserker Bunny Armor")
-            return;
+            Bot.Wait.ForPickup("Berserker Bunny Armor");
         }
     }
 }
