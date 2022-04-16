@@ -56,8 +56,37 @@ public class CoreFarms
     {
         if (Bot.Player.Gold >= quant)
             return;
+
+        HonorHall(quant);
         BattleGroundE(quant);
+        FireWarGold(quant);
         BerserkerBunny(quant);
+    }
+
+    /// <summary>
+    /// Farms Gold in HonorHall (members) with quests HonorHall Mobs and 61-75
+    /// </summary>
+    /// <param name="goldQuant">How much gold to farm</param>
+    public void HonorHall(int goldQuant = 100000000)
+    {
+        if (!Core.IsMember)
+            return;
+        if (Bot.Player.Level < 61)
+            return;
+        if (Bot.Player.Gold >= goldQuant)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {goldQuant} gold using HonorHall Method");
+        int i = 1;
+        while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
+        {
+            Core.EnsureAccept(3992, 3993);
+            Core.KillMonster("honorhall", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
+            Core.KillMonster("honorhall", "r1", "Center", "*", "HonorHall Opponent Defeated", 10, log: false);
+            Core.EnsureComplete(new[] { 3992, 3993 });
+            Core.Logger($"Completed x{i++}");
+        }
     }
 
     /// <summary>
@@ -71,7 +100,7 @@ public class CoreFarms
         if (Bot.Player.Level < 61)
             return;
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {goldQuant} gold");
+        Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
         int i = 1;
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
@@ -84,17 +113,63 @@ public class CoreFarms
     }
 
     /// <summary>
+    /// Farms Gold in FireWar with the fire Dragon Scales & Hearts war turn-ins
+    /// </summary>
+    /// <param name="goldQuant">How much gold to farm</param>
+    public void FireWarGold(int goldQuant = 100000000)
+    {
+        if (Bot.Player.Gold >= goldQuant)
+            return;
+        if (Bot.Player.Level < 50)
+            return;
+
+        Core.AddDrop("");
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {goldQuant} gold using FireWarGold Method");
+        int Scale = 1;
+        int Heart = 1;
+
+        Core.Join("firewar", "r2", "Bottom");
+        Bot.Player.SetSpawnPoint();
+        while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
+        {
+            Bot.Player.Attack("*");
+
+            if (Core.CheckInventory("Fire Dragon Scale", 5))
+            {
+                Bot.Quests.Complete(6294);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed x{Scale++}");
+            }
+            if (Core.CheckInventory("Fire Dragon Heart", 3))
+            {
+                Bot.Quests.Complete(6295);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed x{Heart++}");
+            }
+        }
+    }
+
+    /// <summary>
     /// Farms Gold by selling Berserker Bunny
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
-    public void BerserkerBunny(int goldQuant = 100000000)
+    public void BerserkerBunny(int goldQuant = 100000000, bool KeepBBArmor = false)
     {
         if (Bot.Player.Gold >= goldQuant)
             return;
         Core.AddDrop("Berserker Bunny");
         Core.EquipClass(ClassType.Solo);
-        Core.Logger($"Farming {goldQuant} gold");
+        Core.Logger($"Farming {goldQuant}  using BerserkerBunny Method");
         int i = 1;
+        if (KeepBBArmor)
+        {
+            Core.EnsureAccept(236);
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
+            Core.EnsureComplete(236);
+            Bot.Wait.ForPickUp("Berserker Bunny Armor");
+            return;
+        }
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
             Core.EnsureAccept(236);
@@ -102,7 +177,8 @@ public class CoreFarms
             Core.EnsureComplete(236);
             Bot.Player.Pickup("Berserker Bunny");
             Bot.Sleep(Core.ActionDelay);
-            Bot.Shops.SellItem("Berserker Bunny");
+            if (!KeepBBArmor)
+                Bot.Shops.SellItem("Berserker Bunny");
             Core.Logger($"Completed x{i++}");
         }
     }
