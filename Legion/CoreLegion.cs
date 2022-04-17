@@ -46,7 +46,6 @@ public class CoreLegion
         if (Core.CheckInventory("Dark Token", quant))
             return;
 
-        int i = 1;
         Core.AddDrop("Dark Token");
         Core.Logger($"Farming {quant} Dark Tokens");
         Core.EquipClass(ClassType.Farm);
