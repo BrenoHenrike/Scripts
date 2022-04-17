@@ -98,12 +98,13 @@ public class BattleUnder
         if (!Story.QuestProgression(2211))
         {
             Core.EnsureAccept(2211);
-            Core.KillMonster("battleunderd", "Enter", "Spawn", "Shivering Bones", "Shivering Bones", 10);
+            Core.KillMonster("battleunderd", "Enter", "Spawn", "Shivering Bones", "Shivering Bone", 10);
             Core.EnsureComplete(2211);
         }
 
         if (!Story.QuestProgression(2212))
         {
+            Core.EnsureAccept(2212);
             Core.KillMonster("battleunderd", "r2", "Left", "Icy Banshee", "Banshee Slain", 7);
             Story.MapItemQuest(2212, "battleunderd", 1286, 8);
         }
