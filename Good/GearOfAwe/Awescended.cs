@@ -69,6 +69,7 @@ public class Awescended
             Bot.Quests.UpdateQuest(537);
             Core.Join("lycanwar", "Boss", "Left");
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard", "Stone Mask");
+            Bot.Quests.UpdateQuest(4614);
             Core.KillMonster("pyramid", "r5", "Left", "Mummy", "Mummified Bone", 6);
             Core.KillMonster("ravinetemple", "r11", "Left", "*", "Iron Head", 4);
             Core.EnsureComplete(8035);
