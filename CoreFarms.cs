@@ -271,6 +271,10 @@ public class CoreFarms
     /// <param name="goldQuant">How much gold to farm</param>
     public void FireWarXP(int Level = 100)
     {
+        Bot.Lite.Set("dOptions[\"hideDrop\"]", true);
+        Bot.Lite.Set("dOptions[\"hideTemp\"]", true);
+        Bot.Lite.Set("bDisQPopup", true);
+
         if (Bot.Player.Level < 50)
             IcestormArena(50);
 
@@ -298,6 +302,9 @@ public class CoreFarms
                 Core.Logger($"Completed x{Heart++}");
             }
         }
+        Bot.Lite.Set("dOptions[\"hideDrop\"]", false);
+        Bot.Lite.Set("dOptions[\"hideTemp\"]", false);
+        Bot.Lite.Set("bDisQPopup", false);
     }
     #endregion
 
@@ -670,6 +677,7 @@ public class CoreFarms
         {
             Core.EnsureAccept(3757);
 
+            Bot.Quests.UpdateQuest(4614);
             Core.HuntMonster("pyramid", "Golden Scarab", "Gleaming Gems of Containment", 9);
             Core.HuntMonster("lair", "Golden Draconian", "Bright Binding of Submission", 8);
 

@@ -165,6 +165,7 @@ public class CoreBLOD
             Core.KillMonster("noobshire", "North", "Left", "Horc Noob", "Noob Blade Oil");
             Core.KillMonster("farm", "Crop1", "Right", "Scarecrow", "Burlap Cloth", 4);
 
+            Bot.Quests.UpdateQuest(4614);
             Core.HuntMonster("pyramid", "Mummy", "Triple Ply Mummy Wrap", 7);
             Core.HuntMonster("pyramid", "Golden Scarab", "Golden Lacquer Finish");
             Core.HuntMonster("lair", "Bronze Draconian", "Bronze Brush");

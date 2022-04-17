@@ -872,6 +872,8 @@ public class Core13LoC
             Core.EnsureComplete(934);
         }
 
+        Bot.Quests.UpdateQuest(4614);
+        
         //Sacred Scarabs
         Story.KillQuest(967, "pyramid", "Golden Scarab");
 
