@@ -104,7 +104,7 @@ public class BattleUnder
 
         if (!Story.QuestProgression(2212))
         {
-            Core.KillMonster("battleunderd", "r2", "Left, Icy Banshee", "Banshee Slain", 7);
+            Core.KillMonster("battleunderd", "r2", "Left", "Icy Banshee", "Banshee Slain", 7);
             Story.MapItemQuest(2212, "battleunderd", 1286, 8);
         }
 
