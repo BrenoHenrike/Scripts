@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class GoldFarm
+public class FireWarXP
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
