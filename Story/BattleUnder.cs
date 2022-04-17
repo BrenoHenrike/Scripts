@@ -98,27 +98,27 @@ public class BattleUnder
         if (!Story.QuestProgression(2211))
         {
             Core.EnsureAccept(2211);
-            core.KillMonster("battleunderd", "Enter", "Spawn", "Shivering Bones", "Shivering Bones", 10);
+            Core.KillMonster("battleunderd", "Enter", "Spawn", "Shivering Bones", "Shivering Bones", 10);
             Core.EnsureComplete(2211);
         }
 
         if (!Story.QuestProgression(2212))
         {
-            core.KillMonster("battleunderd", "r2", "Left, Icy Banshee", "Banshee Slain", 7);
+            Core.KillMonster("battleunderd", "r2", "Left, Icy Banshee", "Banshee Slain", 7);
             Story.MapItemQuest(2212, "battleunderd", 1286, 8);
         }
 
         if (!Story.QuestProgression(2213))
         {
             Core.EnsureAccept(2213);
-            core.KillMonster("battleunderd", "r5", "Left", "Skeletal Warrior", "Icy Pickaxe Found");
+            Core.KillMonster("battleunderd", "r5", "Left", "Skeletal Warrior", "Icy Pickaxe Found");
             Core.EnsureComplete(2213);
         }
 
         if (!Story.QuestProgression(2214))
         {
             Core.EnsureAccept(2214);
-            core.KillMonster("battleunderd", "r5", "Left", "Glacial Horror", "Glacial Slain");
+            Core.KillMonster("battleunderd", "r5", "Left", "Glacial Horror", "Glacial Slain");
             Story.MapItemQuest(2214, "battleunderd", 1287, 4);
         }
 
