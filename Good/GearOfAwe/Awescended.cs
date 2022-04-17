@@ -123,7 +123,7 @@ public class Awescended
             SRoD.ShadowReaperOfDoom();
             Farm.BladeofAweREP(10, true);
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("cornelis", "Side1", "Left", "*", "Mirror Shield Fragment", 50, false);
+            Core.KillMonster("cornelis", "Side1", "Left", "*", "Mirror Realm Token ", 50, false);
             Core.EnsureComplete(8040);
         }
 
