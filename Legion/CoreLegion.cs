@@ -219,6 +219,7 @@ public class CoreLegion
         LTArcaneParagon(quant);
         LTShogunParagon(quant);
         LTThanatosParagon(quant);
+        LTDreadnaughtParagon(quant);
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
     }
@@ -391,6 +392,29 @@ public class CoreLegion
             Core.KillMonster("dragonheart", "r6", "Right", "Zombie Dragon", "Elemental Dragon Soul", 20);
             Core.EnsureComplete(4100);
             Bot.Player.Pickup("Legion Token");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
+    public void LTDreadnaughtParagon(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Paragon Dreadnaught Pet"))
+            return;
+
+        Core.AddDrop("Legion Token");
+        Core.EquipClass(ClassType.Farm);
+        int i = 1;
+
+        Core.Logger($"Farming {quant} Legion Token");
+        while (!Core.CheckInventory("Legion Token", quant))
+        {
+            Core.EnsureAccept(5741);
+
+            Core.HuntMonster("laken", "Augmented Guard", "Stolen Guard", 5);
+            Core.HuntMonster("laken", "Cyborg Dog", "Stolen Dog", 6);
+            Core.HuntMonster("laken", "Mad Scientist", "Taken Axe", 10);
+
+            Core.EnsureComplete(5741);
             Core.Logger($"Completed x{i++}");
         }
     }
