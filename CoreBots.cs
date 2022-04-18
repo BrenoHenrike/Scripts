@@ -1475,10 +1475,7 @@ public class CoreBots
 
     public string CBOString(string Name)
     {
-        string toReturn = CBOList.First(x => x.StartsWith(Name)).Split(": ")[1] ?? "";
-        if (String.IsNullOrEmpty(toReturn))
-            return "False";
-        return toReturn;
+        return CBOList.First(x => x.StartsWith(Name)).Split(": ")[1];
     }
     public bool CBOBool(string Name)
     {
