@@ -567,7 +567,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true)
+    public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
             return;
@@ -575,7 +575,8 @@ public class CoreAdvanced
             Core.AddDrop(item);
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
-        _RaceGear(monster);
+        if (!forAuto)
+            _RaceGear(monster);
         Core.Jump(cell, pad);
 
         Bot.Events.CounterAttack += _KillUltra;
@@ -612,7 +613,8 @@ public class CoreAdvanced
 
         Bot.Events.CounterAttack -= _KillUltra;
 
-        GearStore(true);
+        if (!forAuto)
+            GearStore(true);
     }
 
     private bool shouldAttack = true;

@@ -19,6 +19,6 @@ public class AAKillUltra
             return;
         }
         while (!Bot.ShouldExit())
-            Adv.KillUltra(Bot.Map.Name, Bot.Player.Cell, Bot.Player.Pad, Target.Name);
+            Adv.KillUltra(Bot.Map.Name, Bot.Player.Cell, Bot.Player.Pad, Target.Name, log: false, forAuto: true);
     }
 }
