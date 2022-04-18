@@ -207,6 +207,7 @@ public class CoreLegion
         Bot.Wait.ForPickup("SoulForge Hammer");
     }
 
+    #region LegionTokens
     public void FarmLegionToken(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant))
@@ -393,6 +394,8 @@ public class CoreLegion
             Core.Logger($"Completed x{i++}");
         }
     }
+
+    #endregion
 
     public void JoinLegion()
     {
