@@ -32,6 +32,7 @@ public class AnotherOneBitesTheDust
         int i = 1;
 
         Farm.Experience(65);
+        SeraphicWar.SeraphicWar_Questline();
 
         Core.Logger($"Farming {quant} Soul Sand");
         while (!Core.CheckInventory("Soul Sand", quant))
@@ -39,7 +40,6 @@ public class AnotherOneBitesTheDust
             Core.EnsureAccept(7991);
             Farm.BattleUnderB("Bone Dust", 333);
             Legion.ApprovalAndFavor(0, 400);
-            SeraphicWar.SeraphicWar_Questline();
             Legion.DarkToken(80);
             Core.EnsureComplete(7991);
             Core.Logger($"Completed x{i++}");
