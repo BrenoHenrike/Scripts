@@ -239,27 +239,50 @@ public class CoreFarms
     /// Farms in Seven Circles War for level and items
     /// </summary>
     /// <param name="level">Desired level</param>
-    /// <param name="wrathEssence">Desired quantity of "Essence of Wrath"</param>
-    /// <param name="heresySouls">Desired quantity of "Souls of Heresy"</param>
-    public void SevenCirclesWar(int level = 100, int wrathEssence = 0, int heresySouls = 0)
+    public void SevenCirclesWar(int level = 100, int gold = 100000000)
     {
-        if (Bot.Player.Level >= level && wrathEssence == 0 && heresySouls == 0)
+        if (Bot.Player.Level >= level && Bot.Player.Gold >= gold)
             return;
 
         if (!Bot.Quests.IsAvailable(7979))
-            Core.Logger("Do the /Join SevenCircles history with the Farm/SevenCircles[History].cs", messageBox: true, stopBot: true);
+        {
+            Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs in order to use the SevenCircles method");
+            return;
+        }
 
         Core.AddDrop("Essence of Wrath", "Souls of Heresy");
-        while (Bot.Player.Level < level || (!Core.CheckInventory("Essence of Wrath", wrathEssence) && !Core.CheckInventory("Souls of Heresy", heresySouls)))
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {gold} gold using SCW Method");
+        int Guards = 1;
+        int Medal = 1;
+        int MegaMedal = 1;
+
+        Core.Join("sevencircleswar", "Enter", "Spawn");
+        Bot.Player.SetSpawnPoint();
+        Bot.Quests.Accept(7979);
+        while (Bot.Player.Level < level && Bot.Player.Gold < gold)
         {
-            Core.EnsureAccept(7979, 7980, 7981);
-            Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12, publicRoom: true);
-            Core.EnsureComplete(7979);
-            while (Core.CheckInventory("War Medal", 5))
-                Core.ChainComplete(7980);
-            while (Core.CheckInventory("Mega War Medal", 3))
-                Core.ChainComplete(7981);
-            Bot.Player.Pickup("Essence of Wrath", "Souls of Heresy");
+            Bot.Player.Attack("*");
+
+            if (Core.CheckInventory("Wrath Guards Defeated", 12))
+            {
+                Bot.Quests.Complete(7979);
+                Bot.Sleep(Core.ActionDelay);
+                Bot.Quests.Accept(7979);
+                Core.Logger($"Completed \"Guards of Wrath\" x{Guards++}");
+            }
+            if (Core.CheckInventory("War Medal", 5))
+            {
+                Bot.Quests.Complete(7980);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed \"War Medals\" x{Medal++}");
+            }
+            if (Core.CheckInventory("Mega War Medal", 3))
+            {
+                Bot.Quests.Complete(7981);
+                Bot.Sleep(Core.ActionDelay);
+                Core.Logger($"Completed \"Mega War Medals\" x{MegaMedal++}");
+            }
         }
     }
 
