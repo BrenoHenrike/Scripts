@@ -15,12 +15,12 @@ public class NecroticSwordOfDoom
     // True = Farms each boss for 100 essence in "Retreive Void Auras"
     // False = Farms each boss for 20 essence in "Retreive Void Auras"
     // Recommended: true
-    private bool MaxStack = true;
+    private bool MaxStack = false;
     // [Can Change]
     // True = Bot will try to keep your inventory as empty as possible by farming each individual piece one by one when they are needed in the merge shop.
     // False = Bot will farm all items first and then merge them all. Best used if you want overview of how far you are. And will also be faster because less /join's
     // Recommended: false
-    private bool OptimizeInv = true;
+    private bool OptimizeInv = false;
     private int EssenceQuantity;
 
     public ScriptInterface Bot => ScriptInterface.Instance;
@@ -36,7 +36,7 @@ public class NecroticSwordOfDoom
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Astral Ephemerite Essence", "Belrot the Fiend Essence", "Black Knight Essence", "Tiger Leech Essence", "Carnax Essence", "Chaos Vordred Essence", "Dai Tengu Essence", "Unending Avatar Essence", "Void Dragon Essence", "Creature Creation Essense", "Void Aura" });
+        Core.BankingBlackList.AddRange(new[] { "Astral Ephemerite Essence", "Belrot the Fiend Essence", "Black Knight Essence", "Tiger Leech Essence", "Carnax Essence", "Chaos Vordred Essence", "Dai Tengu Essence", "Unending Avatar Essence", "Void Dragon Essence", "Creature Creation Essence", "Void Aura", "Cavern Celestite", "Bone Dust" });
 
         Core.SetOptions();
 
