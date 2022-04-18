@@ -5,12 +5,10 @@ using RBot;
 
 public class DragonBladeofNulgath
 {
-    // [Can Change] Whether you can solo the PvP boss without killing restorers/brawlers
-    public bool CanSoloPvPBoss = true;
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreFarms Farm = new();
+    public CoreNulgath Nulgath = new();
 
     public readonly string[] TwistedItems =
     {
@@ -64,21 +62,18 @@ public class DragonBladeofNulgath
         if (Core.CheckInventory($"Behemoth Blade of {blade}"))
             return;
 
-        if (Core.CBO_Active)
-            CanSoloPvPBoss = Core.CBOBool("DBON_SoloPvPBoss");
-
         Core.EquipClass(ClassType.Solo);
         if (!Core.CheckInventory("Basic War Sword"))
         {
-            Farm.BludrutBrawlBoss(quant: 50, canSoloBoss: CanSoloPvPBoss);
+            Farm.BludrutBrawlBoss(quant: 50);
             Core.BuyItem("battleon", 222, "Basic War Sword");
         }
         if (!Core.CheckInventory("Steel Afterlife"))
         {
-            Farm.BludrutBrawlBoss(quant: 50, canSoloBoss: CanSoloPvPBoss);
+            Farm.BludrutBrawlBoss(quant: 50);
             Core.BuyItem("battleon", 222, "Steel Afterlife");
         }
-        Farm.BludrutBrawlBoss(canSoloBoss: CanSoloPvPBoss);
+        Farm.BludrutBrawlBoss();
         Core.BuyItem("battleon", 222, $"Behemoth Blade of {blade}");
     }
 }
