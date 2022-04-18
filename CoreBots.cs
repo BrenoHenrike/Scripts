@@ -1066,7 +1066,7 @@ public class CoreBots
         JumpWait();
         foreach (string? Item in gear)
         {
-            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
+            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape" && Item != "False") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
                 Bot.Player.EquipItem(Item);
                 Bot.Sleep(ActionDelay);
@@ -1475,7 +1475,7 @@ public class CoreBots
 
     public string CBOString(string Name)
     {
-        string toReturn = CBOList.First(x => x.StartsWith(Name)).Split(": ")[1];
+        string toReturn = CBOList.First(x => x.StartsWith(Name)).Split(": ")[1] ?? "";
         if (String.IsNullOrEmpty(toReturn))
             return "False";
         return toReturn;
