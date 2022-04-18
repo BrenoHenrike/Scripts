@@ -3,6 +3,9 @@ using RBot.Items;
 
 public class CoreFarms
 {
+    // [Can Change] Delay between common actions, 700 is the safe number
+    public bool canSoloInPvP { get; set; } = true;
+
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     //CLASS Boost! (60 min) -- 27555
@@ -392,6 +395,9 @@ public class CoreFarms
     {
         if (Core.CheckInventory(item, quant))
             return;
+
+        if (Core.CBO_Active)
+            canSoloBoss = Core.CBOBool("PVP_SoloPvPBoss");
 
         Core.AddDrop(item);
 
