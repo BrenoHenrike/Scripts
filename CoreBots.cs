@@ -858,7 +858,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != null && CheckInventory(item, quant) && isTemp == false)
             return;
         if (!isTemp && item != null)
             AddDrop(item);
