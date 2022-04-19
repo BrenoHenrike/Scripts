@@ -182,8 +182,9 @@ public class CoreBots
 
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
-            if (!disableClassSwap)
-                EquipClass(ClassType.Solo);
+            if (disableClassSwap)
+                usingSoloGeneric = true;
+            EquipClass(ClassType.Solo);
 
             // Anti-lag option
             if (AntiLag)
