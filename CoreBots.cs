@@ -182,8 +182,9 @@ public class CoreBots
 
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
-            if (!disableClassSwap)
-                EquipClass(ClassType.Solo);
+            if (disableClassSwap)
+                usingSoloGeneric = true;
+            EquipClass(ClassType.Solo);
 
             // Anti-lag option
             if (AntiLag)
@@ -1066,7 +1067,7 @@ public class CoreBots
         JumpWait();
         foreach (string? Item in gear)
         {
-            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
+            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape" && Item != "False") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
                 Bot.Player.EquipItem(Item);
                 Bot.Sleep(ActionDelay);
@@ -1475,7 +1476,7 @@ public class CoreBots
 
     public string CBOString(string Name)
     {
-        return CBOList.First(x => x.StartsWith(Name)).Split(": ")[1];
+        return (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $"{Name}: ").Split(": ")[1];
     }
     public bool CBOBool(string Name)
     {

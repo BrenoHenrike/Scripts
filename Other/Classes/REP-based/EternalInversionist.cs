@@ -26,24 +26,23 @@ public class EternalInversionist
 
     public void GetEI(bool rankUpClass = true)
     {
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == "Eternal Inversionist".ToLower() && i.Category == ItemCategory.Class) ?? new();
+        // InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == "Eternal Inversionist".ToLower() && i.Category == ItemCategory.Class);
 
-        if (Core.CheckInventory("Eternal Inversionist") && (rankUpClass ? itemInv.Quantity == 302500 : true))
-            return;
+        // if (Core.CheckInventory(35602)) //&& (rankUpClass ? itemInv.Quantity == 302500 : true))
+        //     return;
 
         FDP.FourthDimensionalPyramidSaga();
         Farm.EternalREP();
-
         Core.BuyItem("fourdpyramid", 1275, "Eternal Inversionist", shopItemID: 21138);
-        Bot.Wait.ForPickup("Eternal Inversionist");
+        // Adv.EnhanceItem("Eternal Inversionist", EnhancementType.Lucky);
 
         if (rankUpClass)
         {
             Adv.GearStore();
             Core.Equip("Eternal Inversionist");
-            Adv.EnhanceItem("Eternal Inversionist", EnhancementType.Lucky);
             Adv.rankUpClass("Eternal Inversionist");
             Adv.GearStore(true);
         }
+
     }
 }
