@@ -12,6 +12,8 @@ public class AAKillUltra
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.SetOptions(disableClassSwap: true);
+
         Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
         if (Target == null)
         {
@@ -20,5 +22,7 @@ public class AAKillUltra
         }
         while (!Bot.ShouldExit())
             Adv.KillUltra(Bot.Map.Name, Bot.Player.Cell, Bot.Player.Pad, Target.Name, log: false, forAuto: true);
+
+        Core.SetOptions(false);
     }
 }
