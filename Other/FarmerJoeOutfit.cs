@@ -1,7 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
-//cs_include Scripts/Farm/LVLQuickto100.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
 using RBot;
@@ -10,23 +9,24 @@ public class FarmerJoeOutfit
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new();
-    public CoreFarms Farm = new();
-    public HollowbornScythe scythe = new();
-    public LVLQuick LVL = new();
+    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new CoreFarms();
+    public HollowbornScythe Scythe = new HollowbornScythe();
 
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        LVL.QuickLvl();
-        scythe.GetHBReapersScythe();
+        Farm.FireWarXP();
+        Scythe.GetHBReapersScythe();
         RagsandHat();
         ServersAreDown();
         // DeathsScythe();
         // BackItem();
         // Pet();
+
+        Adv.EnhanceItem("Hollowborn Reaper's Scythe", EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
 
         Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
 
@@ -43,7 +43,7 @@ public class FarmerJoeOutfit
         Core.BuyItem("yulgar", 41, "Peasant Rags");
         Bot.Wait.ForPickup("Peasant Rags");
         Core.BuyItem("yulgar", 16, "Scarecrow Hat");
-        Bot.Wait.ForPickup("Scarecrow Hat");       
+        Bot.Wait.ForPickup("Scarecrow Hat");
     }
 
     public void ServersAreDown()
@@ -55,17 +55,16 @@ public class FarmerJoeOutfit
         Bot.Wait.ForPickup("The Server is Down");
     }
 
-    public void DeathsScythe()
-    {
+    // public void DeathsScythe()
+    // {
 
-        if (Core.CheckInventory(25117))
-            return;
+    //     if (Core.CheckInventory(25117))
+    //         return;
 
 
-        while (!Core.CheckInventory(25117))
-            Bot.Player.Hunt("Death");
-
-    }
+    //     while (!Core.CheckInventory(25117))
+    //         Bot.Player.Hunt("Death");
+    // }
 
     // public void Pet()
     // {
