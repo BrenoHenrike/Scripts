@@ -3,6 +3,7 @@
 //cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
+//cs_include Scripts/Farm/LVLQuickto100.cs
 using RBot;
 
 public class FarmerJoeOutfit
@@ -12,13 +13,24 @@ public class FarmerJoeOutfit
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreFarms Farm = new CoreFarms();
     public HollowbornScythe Scythe = new HollowbornScythe();
+    public LVLQuick LVL = new LVLQuick();
 
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Farm.FireWarXP();
+        Outfit();
+
+        Core.SetOptions(false);
+    }
+
+    public void Outfit(bool Quicklvl = true)
+    {
+        if (Quicklvl)
+            LVL.QuickLvl();
+        else Farm.FireWarXP();
+        
         Scythe.GetHBReapersScythe();
         RagsandHat();
         ServersAreDown();
@@ -32,7 +44,6 @@ public class FarmerJoeOutfit
 
         Core.Logger("We are farmers, bum ba dum bum bum bum bum", messageBox: true);
 
-        Core.SetOptions(false);
     }
 
     public void RagsandHat()
