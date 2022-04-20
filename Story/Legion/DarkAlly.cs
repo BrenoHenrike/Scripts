@@ -34,7 +34,7 @@ public class DarkAlly_Story
 
         Story.KillQuest(7422, "darkally", "Dark Makai");
 
-        Story.KillQuest(7423, "darkally", "Shadow|Creeping Shadow");
+        Story.KillQuest(7423, "darkally", "Shadow");
 
         Story.KillQuest(7424, "darkally", new[] { "Legion Defector", "Legion Defector" });
 

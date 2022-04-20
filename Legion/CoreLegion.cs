@@ -186,7 +186,7 @@ public class CoreLegion
         while (!Core.CheckInventory("Bone Sigil", quant))
         {
             Core.EnsureAccept(6739);
-            Core.HuntMonster("legionarena", "Legion Gladiator|Legion Sergeant", "Legion Grunt Defeated", 5);
+            Core.HuntMonster("legionarena", "Legion Gladiator", "Legion Grunt Defeated", 5);
             Core.EnsureComplete(6739);
             Bot.Wait.ForPickup("Bone Sigil");
         }
@@ -281,9 +281,9 @@ public class CoreLegion
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(QuestID);
-            Core.HuntMonster("fotia", "Fotia Elemental|Fotia Sprit", "Nothing Heard", 10);
-            Core.HuntMonster("fotia", "Fotia Elemental|Fotia Sprit", "Nothing To See", 10);
-            Core.HuntMonster("fotia", "Fotia Elemental|Fotia Sprit", "Area Secured and Quiet", 10);
+            Core.HuntMonster("fotia", "Fotia Elemental", "Nothing Heard", 10);
+            Core.HuntMonster("fotia", "Fotia Elemental", "Nothing To See", 10);
+            Core.HuntMonster("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
             Core.EnsureComplete(QuestID);
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}, Legion Tokens({Bot.Inventory.GetQuantity("Legion Token")}/{quant})");

@@ -35,7 +35,7 @@ public class FlyingBaconCatFortress
         Story.MapItemQuest(5089, "baconcat", 4467, 1);
 
         // Forget the Mess
-        Story.KillQuest(5090, "baconcat", "Slime|Spider");
+        Story.KillQuest(5090, "baconcat", "Slime");
 
         // The Chosen One!
         Story.MapItemQuest(5091, "baconcat", 4473, 1);

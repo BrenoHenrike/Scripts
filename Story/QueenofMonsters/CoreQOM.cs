@@ -398,7 +398,7 @@ public class CoreQOM
         Story.KillQuest(5497, "LycanInvasion", new[] { "Fallen Knight", "Infernal Knight" });
 
         //A Dire Situation
-        Story.KillQuest(5498, "LycanInvasion", "Dire Wolf|Hulking Dire Wolf");
+        Story.KillQuest(5498, "LycanInvasion", "Dire Wolf");
 
         //I'd Lycan To Go Now
         Story.MapItemQuest(5499, "LycanInvasion", 4901);
@@ -456,7 +456,7 @@ public class CoreQOM
         Story.MapItemQuest(5545, "ShadowfallInvasion", 5026, 4);
 
         //Arm the Archers
-        Story.KillQuest(5546, "ShadowfallInvasion", "Infernal Imp|Infernal Knight");
+        Story.KillQuest(5546, "ShadowfallInvasion", "Infernal Imp");
 
         //Reinforce the Walls
         Story.MapItemQuest(5547, "ShadowfallInvasion", 5027, 5);
@@ -483,7 +483,7 @@ public class CoreQOM
         Story.MapItemQuest(5554, "ShadowfallInvasion", 5031);
 
         //Soul Fuel
-        Story.KillQuest(5555, "ShadowfallInvasion", "Diabolical Scryer|Nethermage");
+        Story.KillQuest(5555, "ShadowfallInvasion", "Diabolical Scryer");
         Story.MapItemQuest(5555, "ShadowfallInvasion", 5032);
 
         //Time to Fly
@@ -694,7 +694,7 @@ public class CoreQOM
         Story.KillQuest(5839, "underglade", "Slime Spore");
 
         //Cleanse the Walls
-        Story.KillQuest(5840, "underglade", "Forest Spirit|Tree Nymph");
+        Story.KillQuest(5840, "underglade", "Forest Spirit");
         Story.MapItemQuest(5840, "underglade", 5272, 8);
 
         //Expose the Entrance
@@ -704,7 +704,7 @@ public class CoreQOM
         Story.KillQuest(5842, "underglade", "Luminous Fungus");
 
         //More Corruption Revealed
-        Story.KillQuest(5843, "underglade", "Forest Spirit|Tree Nymph");
+        Story.KillQuest(5843, "underglade", "Forest Spirit");
         Story.MapItemQuest(5843, "underglade", 5273, 6);
 
         //The Goblin Threat

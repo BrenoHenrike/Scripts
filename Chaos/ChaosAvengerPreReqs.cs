@@ -82,7 +82,7 @@ public class ChaosAvengerClass
         {
             Core.EquipClass(ClassType.Farm);
             Adv.BestGear(GearBoost.Chaos);
-            Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue|Chaos Drow|Chaorrupted Healer", "Fragment of Mount Doomskull", 1300, isTemp: false);
+            Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
         }
 
     }
@@ -98,7 +98,7 @@ public class ChaosAvengerClass
             Core.KillEscherion("Escherion's Robe", publicRoom: true);
 
             //Vath's Chaotic Dragonlord Armor
-            Core.HuntMonster("stalagbite", "Vath|Stalagbite", "Vath's Chaotic Dragonlord Armor", isTemp: false, publicRoom: true);
+            Core.HuntMonster("stalagbite", "Vath | Stalagbite", "Vath's Chaotic Dragonlord Armor", isTemp: false, publicRoom: true);
 
             //Chaos Shogun Armor
             Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Armor", isTemp: false, publicRoom: true);

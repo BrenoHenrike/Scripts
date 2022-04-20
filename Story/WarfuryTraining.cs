@@ -36,10 +36,10 @@ public class WarTraining
             return;
 
         //War Medals
-        Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier|Shadefire Onslaught");
+        Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier");
 
         // Mega War Medals
-        Story.KillQuest(8126, "fireplanewar", "Shadowflame Soldier|Shadefire Onslaught");
+        Story.KillQuest(8126, "fireplanewar", "Shadowflame Soldier");
 
         // Shadowflame Un - slaught
         Story.KillQuest(8127, "fireplanewar", "Shadefire Onslaught");
@@ -48,11 +48,11 @@ public class WarTraining
         Story.KillQuest(8128, "fireplanewar", "Shadowflame Soldier");
 
         // Fanning the Flames
-        Story.KillQuest(8129, "fireplanewar", "Shadowflame Soldier|Shadefire Onslaught");
+        Story.KillQuest(8129, "fireplanewar", "Shadowflame Soldier");
         Story.MapItemQuest(8129, "fireplanewar", 8523, 5);
 
         // Trailblazer
-        Story.KillQuest(8130, "fireplanewar", "Shadefire Onslaught|Shadowflame Soldier");
+        Story.KillQuest(8130, "fireplanewar", "Shadefire Onslaught");
 
         // ShadowClaw
         Story.KillQuest(8131, "fireplanewar", "ShadowClaw");
@@ -61,7 +61,7 @@ public class WarTraining
         Story.KillQuest(8132, "fireplanewar", "Shadefire Elemental");
 
         // Cure the Fire
-        Story.KillQuest(8133, "fireplanewar", "Living Shadowflame|Shadefire Elemental");
+        Story.KillQuest(8133, "fireplanewar", "Living Shadowflame");
         Story.MapItemQuest(8133, "fireplanewar", 8524, 5);
 
         // Human Torch
@@ -77,7 +77,7 @@ public class WarTraining
         Story.MapItemQuest(8137, "shadowfireplane", 8544, 5);
 
         // Sparks Will Fly
-        Story.KillQuest(8138, "shadowfireplane", "Onslaught Knight|Shadowfire Corporal");
+        Story.KillQuest(8138, "shadowfireplane", "Onslaught Knight");
 
         // Awaken Lady Fiamme
         Story.MapItemQuest(8139, "shadowfireplane", 8542);
@@ -141,7 +141,7 @@ public class WarTraining
         Story.KillQuest(8191, "fireinvasion", "Shadowflame Kyron");
 
         // Fire Fighting
-        Story.KillQuest(8192, "fireinvasion", new[] { "Living Shadowflame|Onslaught Knight|Onslaught Knight|Shadowfire Corporal", "Shadefire Cavalry" });
+        Story.KillQuest(8192, "fireinvasion", new[] { "Living Shadowflame", "Shadefire Cavalry" });
 
         // Shadefires of War
         Story.KillQuest(8193, "wartraining", "Simulated Shadefire");
@@ -162,7 +162,7 @@ public class WarTraining
         Story.KillQuest(8198, "wartraining", "Simulated Elemental");
 
         // A Dragonslayer's Past
-        Story.KillQuest(8199, "wartraining", "Simulated Fire|Simulated Elemental");
+        Story.KillQuest(8199, "wartraining", "Simulated Fire");
 
         // The Champion of Fire
         Story.KillQuest(8200, "wartraining", "Fire Champion");

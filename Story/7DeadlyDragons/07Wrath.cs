@@ -27,7 +27,7 @@ public class Wrath
         Story.KillQuest(6111, "wrath", "Dark Fire");
         // Grenades of AWE
         Story.MapItemQuest(6112, "wrath", 5541, 6);
-        Story.KillQuest(6112, "wrath", "Bone Terror|Fishbones|Undead Pirate");
+        Story.KillQuest(6112, "wrath", "Bone Terror");
         // The Final Ingredient
         if (!Story.QuestProgression(6113))
         {

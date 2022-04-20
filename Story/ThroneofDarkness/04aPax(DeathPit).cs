@@ -69,7 +69,7 @@ public class DeathPitArena
         Story.KillQuest(5147, "deathpit", "General Gall");
 
         // Velm's Minions
-        Story.KillQuest(5148, "deathpit", "Drakel Brawler|Drakel Gladiator");
+        Story.KillQuest(5148, "deathpit", "Drakel Brawler");
 
         // eneral Velm
         Story.KillQuest(5149, "deathpit", "General Velm");

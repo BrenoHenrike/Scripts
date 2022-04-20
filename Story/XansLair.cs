@@ -41,13 +41,13 @@ public class XansLair
         Story.KillQuest(1246, MapName: "volcano", MonsterName: "Fire Imp");
         Story.KillQuest(1247, MapName: "volcano", MonsterName: "Fire Imp");
         Story.MapItemQuest(1248, MapName: "volcano", MapItemID: 528, Amount: 12);
-        Story.KillQuest(1249, MapName: "volcano", MonsterName: "Flamethrower Dwakel|Lava Golem");
+        Story.KillQuest(1249, MapName: "volcano", MonsterName: "Flamethrower Dwakel");
         Story.KillQuest(1250, MapName: "volcano", MonsterName: "Fire Imp");
         Story.MapItemQuest(1250, MapName: "volcano", MapItemID: 529, Amount: 8);
         Story.KillQuest(1251, MapName: "volcano", MonsterName: "Flamethrower Dwakel");
         Story.KillQuest(1252, MapName: "volcano", MonsterName: "Fire Imp");
         Story.MapItemQuest(1252, MapName: "volcano", MapItemID: 530, Amount: 10);
-        Story.KillQuest(1253, MapName: "volcano", MonsterName: "Flame Elemental|Lava Golem");
+        Story.KillQuest(1253, MapName: "volcano", MonsterName: "Flame Elemental");
         Story.MapItemQuest(1254, MapName: "volcano", MapItemID: 531, Amount: 12);
         Story.KillQuest(1255, MapName: "volcano", MonsterName: "Fire Imp");
         Story.KillQuest(1256, MapName: "volcano", MonsterName: "Fire Imp");

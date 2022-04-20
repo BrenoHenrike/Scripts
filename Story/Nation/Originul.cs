@@ -35,7 +35,7 @@ public class Originul_Story
         // Fiend Training
         Story.KillQuest(7885, "Originul", "Bloodfiend");
         // Failed Fiend Shards
-        Story.KillQuest(7886, "Originul", "Bloodfiend|Dreadfiend");
+        Story.KillQuest(7886, "Originul", "Bloodfiend");
         // Executed Tasks
         Story.KillQuest(7887, "Originul", "Dreadfiend");
         // Champion Usurper

@@ -183,7 +183,7 @@ public class J6Saga
         Story.KillQuest(2845, "alley", "Guard Dog Robot");
 
         //Key to Winning
-        Story.KillQuest(2846, "alley", "Guard Dog Robot|Security Cam|Guard Robot");
+        Story.KillQuest(2846, "alley", "Guard Dog Robot");
 
         //Watch Chapter 1
         Story.MapItemQuest(2850, "hyperspace", 1751);

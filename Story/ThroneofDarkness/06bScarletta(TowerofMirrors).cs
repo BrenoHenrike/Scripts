@@ -28,7 +28,7 @@ public class TowerofMirrors
         HM.HedgeMaze_Questline();
 
         // Drink Me
-        Story.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle|Glass Serpent", "Glass Serpent" });
+        Story.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle", "Glass Serpent" });
 
         // The Key To Success
         Story.KillQuest(5315, "towerofmirrors", "Silver Elemental");

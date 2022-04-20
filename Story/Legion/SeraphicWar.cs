@@ -37,10 +37,10 @@ public class SeraphicWar_Story
         Story.KillQuest(6242, "worldsoul", "Radioactive Hydra");
         //Defeat the Undead
         Story.MapItemQuest(6243, "worldsoul", 5680);
-        Story.KillQuest(6243, "worldsoul", "Legion Dreadmarch|Legion Shadowpriest");
+        Story.KillQuest(6243, "worldsoul", "Legion Dreadmarch");
         //Remove the Ward
         Story.MapItemQuest(6244, "worldsoul", 5682);
-        Story.KillQuest(6244, "worldsoul", "Legion Dreadmarch|Legion Shadowpriest");
+        Story.KillQuest(6244, "worldsoul", "Legion Dreadmarch");
         //Defeat the Guardian
         Story.KillQuest(6245, "worldsoul", "Core Guardian");
     }

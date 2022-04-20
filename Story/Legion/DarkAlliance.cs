@@ -53,7 +53,7 @@ public class DarkAlliance_Story
         //Take the Flame
         Story.MapItemQuest(7457, "darkalliance", 7229, 1);
         //Remove the Shadows --dage--
-        Story.KillQuest(7458, "darkalliance", "Shadow|Shadow Makai");
+        Story.KillQuest(7458, "darkalliance", "Shadow");
         //Burn the Shadows
         Story.MapItemQuest(7459, "darkalliance", 7230, 1);
         //Defeat Shadow Nulgath

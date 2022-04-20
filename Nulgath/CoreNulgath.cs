@@ -430,7 +430,7 @@ public class CoreNulgath
             while (Bot.Inventory.Contains("Mana Energy for Nulgath"))
             {
                 Core.EnsureAccept(2566);
-                Core.HuntMonster("elemental", "Mana Imp|Mana Falcon", "Charged Mana Energy for Nulgath", 5);
+                Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5);
                 Core.EnsureComplete(2566);
                 Bot.Sleep(Core.ActionDelay);
                 Core.Logger($"Completed x{i++}");

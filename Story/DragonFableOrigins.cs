@@ -89,7 +89,7 @@ public class DragonFableOrigins
 
         // Getting a Feel for the Area
         Story.MapItemQuest(6301, "northmountain", 5812, 1);
-        Story.KillQuest(6301, "northmountain", new[] { "Ice Elemental|Ice Spitter|Ursice Savage" });
+        Story.KillQuest(6301, "northmountain", "Ice Elemental");
 
         // Finding the First Rune
         Story.KillQuest(6302, "northmountain", "Ice Elemental");
@@ -101,7 +101,7 @@ public class DragonFableOrigins
         Story.KillQuest(6304, "northmountain", "Ice Spitter");
 
         // The Final Rune
-        Story.KillQuest(6305, "northmountain", new[] { "Ice Elemental|Ice Spitter|Ursice Savage" });
+        Story.KillQuest(6305, "northmountain", "Ice Elemental");
 
         // Unlock the Cave
         Story.MapItemQuest(6306, "northmountain", 5813, 4);
@@ -118,7 +118,7 @@ public class DragonFableOrigins
         Story.PreLoad();
 
         // The Fires of War
-        Story.KillQuest(6308, "charredplains", new[] { "Fire Dragon|Fire Drakel|Inferno Dragon" });
+        Story.KillQuest(6308, "charredplains", "Fire Dragon");
 
         // Meet Up
         Story.MapItemQuest(6309, "charredplains", 5815, 1);
@@ -146,10 +146,10 @@ public class DragonFableOrigins
         Story.KillQuest(6314, "drakonnan", "Living Lava");
 
         // Claymore Shards
-        Story.KillQuest(6315, "drakonnan", new[] { "Fire Dragon|Fire Drakel|Inferno Dragon" });
+        Story.KillQuest(6315, "drakonnan", "Fire Dragon");
 
         // Keeping Cool
-        Story.KillQuest(6316, "northmountain", new[] { "Ice Elemental|Ice Spitter|Ursice Savage" });
+        Story.KillQuest(6316, "northmountain", "Ice Elemental");
 
         // Cryogenic Decacrystals
         Story.MapItemQuest(6317, "northmountain", 5826, 6);
@@ -167,7 +167,7 @@ public class DragonFableOrigins
         Story.KillQuest(6321, "drakonnan", "Living Lava");
 
         // Clearing Out the Fodder
-        Story.KillQuest(6322, "drakonnan", new[] { "Fire Elemental|Living Fire|Living Lava" });
+        Story.KillQuest(6322, "drakonnan", "Fire Elemental");
 
         // Unlocking the Door
         Story.KillQuest(6323, "drakonnan", "Fire Elemental");

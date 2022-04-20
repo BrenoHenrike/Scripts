@@ -254,7 +254,7 @@ public class DoomwoodPart3
         if (!Story.QuestProgression(7641))
         {
             Core.EnsureAccept(7641);
-            Core.HuntMonster("techfortress", "NecroDrone|DoomBorg Guard|NecroMech", "NecroMedals", 5);
+            Core.HuntMonster("techfortress", "NecroDrone", "NecroMedals", 5);
             Core.EnsureComplete(7641);
         }
 

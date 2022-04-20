@@ -68,7 +68,7 @@ public class CoreHollowbornDoomKnight
             Core.EnsureAccept(8413);
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("shadowrealmpast", "Shadow Guardian|Shadow Warrior", "Empowered Essence", 10, false);
+            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 10, false);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadowworn", 1, false);
             Farm.Gold(100000);

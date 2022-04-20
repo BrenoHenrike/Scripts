@@ -33,7 +33,7 @@ public class SevenCircles
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(7969, "sevencircles", "Luxuria Guard");
         //Gone With the Wind
-        Story.KillQuest(7970, "sevencircles", new[] { "Limbo Guard|Luxuria Guard", "Luxuria Guard", "Limbo Guard" });
+        Story.KillQuest(7970, "sevencircles", new[] { "Limbo Guard", "Luxuria Guard", "Limbo Guard" });
         //Lest Ye Be Destroyed
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7971, "sevencircles", "Luxuria");

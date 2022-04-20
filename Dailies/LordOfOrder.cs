@@ -170,8 +170,8 @@ public class LordOfOrder
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false);
-            Core.HuntMonster("wardwarf", "Drow Assassin|Drow Soldier", "Suppressed Drows", 50, false);
-            Core.HuntMonster("warundead", "Skeletal Fire Mage|Undead Mage|Skeleton", "Suppressed Undead", 50, false);
+            Core.HuntMonster("wardwarf", "Drow Assassin", "Suppressed Drows", 50, false);
+            Core.HuntMonster("warundead", "Skeletal Fire Mage", "Suppressed Undead", 50, false);
             Core.HuntMonster("warhorc", "Horc Warrior", "Suppressed Horcs", 50, false);
             Core.HuntMonster("weaverwar", "Weaver Queen's Hound", "Suppressed Weavers", 50, false);
             Core.EquipClass(ClassType.Solo);
