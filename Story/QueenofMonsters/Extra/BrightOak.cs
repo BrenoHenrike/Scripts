@@ -65,7 +65,7 @@ public class BrightOak
         Story.KillQuest(4640, "Rivensylth", "Mushroom");
 
         // Protect the Nest
-        Story.KillQuest(4641, "Pines", "Pine Grizzly");
+        Story.KillQuest(4641, "Straw", "Pine Grizzly");
         Story.MapItemQuest(4641, "Rivensylth", 3948, 4);
 
         // Night in Shining Armor
