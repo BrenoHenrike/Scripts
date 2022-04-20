@@ -60,16 +60,16 @@ public class DeadlyDungeon
         // Floor 14
         Story.KillQuest(3693, "deadlydungeon", "Giant Dungeon Spider");
         // Floor 15
-        Story.KillQuest(3694, "deadlydungeon", "Dire Draugr|DoomKitten|Giant Dungeon Spider|Undead Dungeon Crawler");
+        Story.KillQuest(3694, "deadlydungeon", "Dire Draugr");
         // Floor 16
-        Story.KillQuest(3695, "deadlydungeon", "Dire Draugr|DoomKitten|Giant Dungeon Spider|Undead Dungeon Crawler");
+        Story.KillQuest(3695, "deadlydungeon", "Dire Draugr");
         // Floor 17
         Story.KillQuest(3696, "deadlydungeon", "DoomKitten");
         Story.MapItemQuest(3696, "deadlydungeon", 2767, 1);
         // Floor 18
-        Story.KillQuest(3697, "deadlydungeon", "Giant Dungeon Spider|Hulking Dire Wolf|Undead Dungeon Crawler|Weeping Spyball");
+        Story.KillQuest(3697, "deadlydungeon", "Giant Dungeon Spider");
         // Floor 19
-        Story.KillQuest(3698, "deadlydungeon", "Dire Draugr|Dire Muncher ");
+        Story.KillQuest(3698, "deadlydungeon", "Dire Draugr");
         // Floor 20
         Story.KillQuest(3699, "deadlydungeon", "Chest Guardian");
     }
