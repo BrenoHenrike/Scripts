@@ -72,8 +72,11 @@ public class CoreHollowbornDoomKnight
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadowworn", 1, false);
             Farm.Gold(100000);
-            Core.BuyItem("shadowfall", 89, "Shadowscythe Venom Head", shopItemID: 23832);
+            // Core.BuyItem("shadowfall", 89, "Shadowscythe Venom Head", shopItemID: 23832);
+            Core.Join("shadowfall");
+            Bot.Shops.BuyItem(89, "Shadowscythe Venom Head");
             Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 10, false);
+            Core.Logger("Bought Shadowscythe Venom Head");
             if (Core.CheckInventory(ADKItems))
                 Core.EnsureComplete(8413);
             else
