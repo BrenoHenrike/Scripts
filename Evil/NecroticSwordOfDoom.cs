@@ -268,7 +268,8 @@ public class NecroticSwordOfDoom
 
         Core.Logger("Unenhanced Aura");
         Adv.GearStore();
-        Necro.GetNecromancer();
+        Necro.GetNecromancer(false);
+        Adv.rankUpClass("Necromancer");
         Adv.GearStore(true);
 
         Core.AddDrop("Unenhanced Aura");
