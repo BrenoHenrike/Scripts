@@ -538,7 +538,7 @@ public class CoreFarms
             Core.HuntMonster("skytower", "Seraphic Assassin", "Seraphic Assassin Dueled", 10);
             Core.HuntMonster("skytower", "Virtuous Warrior", "Warriors Dueled", 10);
             Core.HuntMonster("skytower", "Seraphic Assassin", "Assassins Handed To Them", 6);
-            Core.HuntMonster("skytower", "Virtuous Warrior", "Warrior Butt Beaten", 6);
+            Core.HuntMonster("skytower", "Virtuous Warrior|Seraphic Assassin", "Warrior Butt Beaten", 6);
 
             Core.EnsureComplete(4900, 4910, 4914);
             Core.Logger($"Completed x{i++}");
@@ -766,7 +766,7 @@ public class CoreFarms
         if (!Core.CheckInventory("Legendary Handle", toInv: false) && (!Bot.Quests.IsUnlocked(2935) || farmBoA))
         {
             Core.EnsureAccept(2934);
-            Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false);
+            Core.HuntMonster("gilead", "Fire Elemental|Water Elemental|Wind Elemental|Earth Elemental", "Handle Found!", 1, false);
             Core.EnsureComplete(2934);
             if (farmBoA)
                 Bot.Player.Pickup("Legendary Handle");
@@ -775,7 +775,7 @@ public class CoreFarms
         while (FactionRank("Blade of Awe") < rank)
         {
             Core.EnsureAccept(2935);
-            Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false);
+            Core.HuntMonster("castleundead", "Skeletal Viking|Skeletal Warrior", "Hilt Found!", 1, false);
             Core.EnsureComplete(2935);
             if (farmBoA)
             {
@@ -1354,9 +1354,9 @@ public class CoreFarms
             while (FactionRank("Horc") < rank)
             {
                 Core.EnsureAccept(1265);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant", 3);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", 5);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", 5);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant|Chaotic Rhison|Chaos Tigriff", "Chaorrupted Eye", 3);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar|Chaotic Vulture", "Chaorrupted Tentacle", 5);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard|Chaotic Rhison|Chaotic Koalion", "Chaorrupted Tusk", 5);
                 Core.EnsureComplete(1265);
                 Core.Logger($"Completed x{i++}");
             }
@@ -1467,7 +1467,7 @@ public class CoreFarms
         while (FactionRank("Necro Crypt") < rank)
         {
             Core.EnsureAccept(3048);
-            Core.HuntMonster("castleundead", "Skeletal Viking", "Old Bone", 5);
+            Core.HuntMonster("castleundead", "Skeletal Viking|Skeletal Warrior", "Old Bone", 5);
             Core.EnsureComplete(3048);
             Core.Logger($"Completed x{i++}");
         }
@@ -1546,7 +1546,7 @@ public class CoreFarms
             {
                 Core.EnsureAccept(916, 917, 919, 921, 922);
                 Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10);
-                Core.HuntMonster("sandsea", "Bupers Camel", 10);
+                Core.HuntMonster("sandsea", "Bupers Camel|Cactus Creeper", "Barrel of Desert Water", 10);
                 Core.HuntMonster("sandsea", "Bupers Camel", "Flexible Camel Spit", 7);
                 //Core.HuntMonster("sandsea", "Bupers Camel", "Camel Hide", 6);  Quest: 8044            
                 Core.HuntMonster("sandsea", "Bupers Camel", "Oasis Jewelry Piece", 4);
@@ -1734,9 +1734,9 @@ public class CoreFarms
         while (FactionRank("Troll") < rank)
         {
             Core.EnsureAccept(1263);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant", "Chaorrupted Eye", 3);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", 5);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant|Chaotic Rhison|Chaos Tigriff", "Chaorrupted Eye", 3);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar|Chaotic Vulture", "Chaorrupted Tentacle", 5);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard|Chaotic Rhison|Chaotic Koalion", "Chaorrupted Tusk", 5);
             Core.EnsureComplete(1263);
             Core.Logger($"Completed x{i++}");
         }
@@ -1893,7 +1893,7 @@ public class CoreFarms
             while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
             {
                 Core.EnsureAccept(1310);
-                Core.HuntMonster("collectorlab", "Dust Bunny of Doom", "Doppelganger Documents", log: false);
+                Core.HuntMonster("collectorlab", "Dust Bunny of Doom|Death on Wings", "Doppelganger Documents", log: false);
                 Core.EnsureComplete(1310);
             }
 
