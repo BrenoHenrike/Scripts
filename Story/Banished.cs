@@ -21,11 +21,17 @@ public class Banished
     {
         Core.SetOptions();
 
+        doall();
+        
+        Core.SetOptions(false);
+    }
+    
+    public void doall()
+    {
         Story.PreLoad();
         HikarisQuests();
         Knave1sQuests();
 
-        Core.SetOptions(false);
     }
 
     public void HikarisQuests()
