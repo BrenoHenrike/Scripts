@@ -5,7 +5,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class ScriptTemplate
+public class DefaultTemplate
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
