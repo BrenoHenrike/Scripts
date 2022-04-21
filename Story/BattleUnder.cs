@@ -119,8 +119,9 @@ public class BattleUnder
         if (!Story.QuestProgression(2214))
         {
             Core.EnsureAccept(2214);
-            Core.KillMonster("battleunderd", "r5", "Left", "Glacial Horror", "Glacial Slain");
-            Story.MapItemQuest(2214, "battleunderd", 1287, 4);
+            Core.KillMonster("battleunderd", "r5", "Left", "Glacial Horror", "Glacial Horror Slain");
+            Core.GetMapItem(1287, 4, "battleunderd");
+            Core.EnsureComplete(2214);
         }
 
         Story.MapItemQuest(2215, "battleunderd", 1288);
