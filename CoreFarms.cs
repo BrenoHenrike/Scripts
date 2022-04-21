@@ -61,8 +61,8 @@ public class CoreFarms
             return;
 
         HonorHall(quant);
-        // BattleGroundE(quant);
-        FireWarGold(quant);
+        BattleGroundE(quant);
+        // FireWarGold(quant);
         BerserkerBunny(quant);
     }
 
