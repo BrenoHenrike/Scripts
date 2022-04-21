@@ -1883,16 +1883,7 @@ public class Core13LoC
         //Good, Evil and Chaos Battle!
         if (!Story.QuestProgression(3189))
         {
-            InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
             Adv.GearStore();
-            // if(Core.CheckInventory("Dragon of Time"))
-            // index+2;
-            if (!Core.CheckInventory("Healer"))
-                Core.BuyItem("trainers", 176, "Healer");
-            Core.Equip("Healer");
-            if (itemInv.Quantity != 302500)
-
-                Adv.rankUpClass("Healer");
             Core.EnsureAccept(3189);
             Core.KillXiang("Chaos Lord Xiang Defeated", publicRoom: true);
             Core.EnsureComplete(3189);
