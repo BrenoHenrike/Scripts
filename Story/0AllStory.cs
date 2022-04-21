@@ -144,14 +144,15 @@ public class AllStory
         LOC.Complete13LOC(true);
         Adv.GearStore(true);
         Core.Logger($"LOC Complete");
-        
-        DeadlyDungeon.DeadlyDungeonQuest_Line();
-        Core.Logger($"DeadlyDungeon Complete");
-        KillerCatacombs.KillerCatacombs_Line();
-        Core.Logger($"KillerCatacombs Complete");
-        PyramidofPain.PyramidofPain_Line();
-        Core.Logger($"PyramidofPain Complete");
-
+        if (Core.IsMember)
+        {
+            DeadlyDungeon.DeadlyDungeonQuest_Line();
+            Core.Logger($"DeadlyDungeon Complete");
+            KillerCatacombs.KillerCatacombs_Line();
+            Core.Logger($"KillerCatacombs Complete");
+            PyramidofPain.PyramidofPain_Line();
+            Core.Logger($"PyramidofPain Complete");
+        }
         Bamboozle.BamboozleQuest();
         Core.Logger($"Bamboozle Complete");
         CitadelRuins.DoAll();
