@@ -1883,7 +1883,7 @@ public class Core13LoC
         //Good, Evil and Chaos Battle!
         if (!Story.QuestProgression(3189))
         {
-            InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+            InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == "healer" && i.Category == ItemCategory.Class);
             Adv.GearStore();
             // if(Core.CheckInventory("Dragon of Time"))
             // index+2;
