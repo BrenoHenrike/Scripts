@@ -53,11 +53,11 @@ public class VoidWarlock
         Core.Logger("Starting [Tools for the Job] Quest");
         while (!Core.CheckInventory(Rewards, toInv: false))
         {
-            Nulgath.FarmUni13(2);
             Nulgath.FarmVoucher(false);
             Nulgath.FarmBloodGem(90);
             Nulgath.SwindleBulk(100);
             Core.HuntMonster("northlands", "Aisha's Drake", "Brittney's Winter Diamond", 1, false);
+            Nulgath.FarmUni13(2);
 
             Core.EnsureAccept(6683);
             Core.EnsureCompleteChoose(6683);
