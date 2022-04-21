@@ -289,7 +289,7 @@ public class CoreStory
         SelectedLines.AddRange(CSFile.Where(x => SearchParam.Any(y => x.Contains(y))).ToList());
         SelectedLines.AddRange(CSIncFiles.Where(x => SearchParam.Any(y => x.Contains(y))).ToList());
 
-        Core.Logger($"Scanning {CSIncludes.Count + 1} Files ({SelectedLines.Count} Lines)");
+        Core.Logger($"Scanning {CSIncludes.Count + 1} Files ({CSIncFiles.Count + CSFile.Count} Lines)");
 
         List<Quest> QuestTree = Bot.Quests.QuestTree;
         Stopwatch stopWatch = new Stopwatch();
