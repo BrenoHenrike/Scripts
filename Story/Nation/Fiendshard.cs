@@ -29,8 +29,12 @@ public class Fiendshard_Story
         Originul.Originul_Questline();
 
         // Sneak Attack
-        Story.KillQuest(7892, "Fiendshard", "Rogue Fiend");
-        Story.MapItemQuest(7982, "Fiendshard", 7983);
+        if (!Story.QuestProgression(7892))
+        {
+            Core.EnsureAccept(7892);
+            Core.HuntMonster("Fiendshard", "Rogue Fiend", "Rogue Fiends Defeated", 4);
+            Story.MapItemQuest(7892, "Fiendshard", 7983);
+        }
         // Fiend-terrogation
         Story.KillQuest(7893, "Fiendshard", "Paladin Fiend");
         // Key Difference Between Human and Fiend
