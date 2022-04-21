@@ -8,7 +8,6 @@
 //cs_include Scripts/Story/7DeadlyDragons/05Lust.cs
 //cs_include Scripts/Story/7DeadlyDragons/06Envy.cs
 //cs_include Scripts/Story/7DeadlyDragons/07Wrath.cs
-//cs_include Scripts/Story/7DeadlyDragons/08WIP.cs
 using RBot;
 
 public class Complete7DeadlyDragons
@@ -24,7 +23,6 @@ public class Complete7DeadlyDragons
     public Lust s05 = new Lust();
     public Envy s06 = new Envy();
     public Wrath s07 = new Wrath();
-    //public WIP s08 = new WIP();
 
     public void ScriptMain(ScriptInterface bot)
     {
