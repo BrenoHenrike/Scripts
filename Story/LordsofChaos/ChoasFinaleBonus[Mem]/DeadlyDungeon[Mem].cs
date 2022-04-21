@@ -23,7 +23,10 @@ public class DeadlyDungeon
             return;
 
         if (!Core.IsMember)
-            Core.Logger("You need to be a member for complete this questline.", messageBox: true, stopBot: true);
+        {
+            Core.Logger("You need to be a member for complete this questline.");
+            return;
+        }
 
         Story.PreLoad();
 
