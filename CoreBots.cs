@@ -917,8 +917,6 @@ public class CoreBots
         if (item != null && CheckInventory(item, quant))
             return;
 
-        if (CheckInventory("Void Highlord"))
-            Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
         else if (CheckInventory("Dragon of Time"))
             Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
         else if (CheckInventory("Healer (Rare)"))
