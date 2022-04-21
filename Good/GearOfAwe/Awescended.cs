@@ -289,6 +289,6 @@ public class Awescended
 
         Core.EquipClass(ClassType.Farm);
         //Gauntlet of Generals
-        Story.KillQuest(6160, "djinngate", "Harpy|Lamia");
+        Story.KillQuest(6160, "djinngate", "Harpy");
     }
 }

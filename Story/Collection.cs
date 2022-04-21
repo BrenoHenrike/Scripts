@@ -78,7 +78,7 @@ public class Collection
         Story.KillQuest(1343, "prehistoric", "Mother TerrorDOOMKill");
 
         // More Aliens Than You Can Handle?
-        Story.KillQuest(1344, "Future", "Alien Dino|Alien Juggernaut|Furious 4-Eyed Guard|Red-Eyed Alien");
+        Story.KillQuest(1344, "Future", "Alien Dino");
 
         // Spy Eyes
         Story.MapItemQuest(1345, "Future", 632, 2);

@@ -31,7 +31,7 @@ public class ParadoxPortal
         Story.KillQuest(5035, "portalmaze", "Heavy Lab Guard");
 
         // Bugs... They Give Me Hives
-        Story.KillQuest(5036, "portalmaze", "Hatchling|Pillbug");
+        Story.KillQuest(5036, "portalmaze", "Hatchling");
 
         // Through the Delta V Portal!
         Story.KillQuest(5037, "portalmaze", "Time Wraith");
@@ -54,7 +54,7 @@ public class ParadoxPortal
         Story.KillQuest(5042, "portalmaze", "Time Wraith");
 
         // Ode to the Walkers
-        Story.KillQuest(5043, "portalmaze", "Bucket Zombie|Dancing Zombie|Tunneling Zombie");
+        Story.KillQuest(5043, "portalmaze", "Bucket Zombie");
 
         // Sonnet of the Undead
         Story.KillQuest(5044, "portalmaze", new[] { "Bucket Zombie", "Dancing Zombie", "Tunneling Zombie" });

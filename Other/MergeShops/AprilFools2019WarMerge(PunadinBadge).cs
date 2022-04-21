@@ -18,6 +18,6 @@ public class AprilFools2019WarMerge
     public void GetItems()
     {
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("pal9001", "Baby Sharkcaster|Doge The Bounty Hunter|Nekomancer", "Punadin Badge", 600, false);
+        Core.HuntMonster("pal9001", "Baby Sharkcaster", "Punadin Badge", 600, false);
     }
 }

@@ -17,19 +17,9 @@ public class ScriptTemplate
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
-        YourFunctionName();
+        Adv.BestGear(GearBoost.gold);
+        Farm.FireWarGold();
 
         Core.SetOptions(false);
-    }
-
-    public void YourFunctionName()
-    {
-        //if (something)
-        //   return;
-
-        Core.AddDrop("ExampleItem1", "ExampleItem2", "ExampleItem3", "ExampleItem4");
-
-        //Your code here
     }
 }

@@ -13,16 +13,18 @@ public class FireWarXP
     {
         Core.SetOptions(disableClassSwap: true);
 
-        //Core.ActionDelay = 1000; //if script is having issues turning in or is slow; un // this line ^_^
-
-        //Farm.UseBoost(BoostIDs.Gold20, RBot.Items.BoostType.Gold);
-
-        Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GearBoost.exp);
-        bot.Drops.Start();
-
-        Farm.FireWarXP();
+        Leveling();
 
         Core.SetOptions(false);
+    }
+
+    public void Leveling(int level = 100)
+    {
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
+        
+        Core.AddDrop("");
+        Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.exp);
+        Farm.FireWarXP();
     }
 }

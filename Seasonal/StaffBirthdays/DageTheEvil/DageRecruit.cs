@@ -44,14 +44,14 @@ public class DageRecruitStory
         Story.KillQuest(8560, "dagerecruit", "Graython");
 
         //Island Sightseeing
-        Story.KillQuest(8561, "dagerecruit", "Scared Wildcat|Spooked Eagle");
+        Story.KillQuest(8561, "dagerecruit", "Scared Wildcat");
         Story.MapItemQuest(8561, "dagerecruit", 9885);
 
         //Lure Crafted
         Story.KillQuest(8562, "dagerecruit", "Dreadfiend");
 
         //Lure Charged
-        Story.KillQuest(8563, "dagerecruit", "Scared Wildcat|Spooked Eagle");
+        Story.KillQuest(8563, "dagerecruit", "Scared Wildcat");
 
         //Place the Lure
         Story.MapItemQuest(8564, "dagerecruit", 9886);
@@ -63,7 +63,7 @@ public class DageRecruitStory
         Story.KillQuest(8566, "dagerecruit", "Bloodfiend");
 
         //Unstable Energies
-        Story.KillQuest(8567, "dagerecruit", "Bloodfiend|Infernal Fiend");
+        Story.KillQuest(8567, "dagerecruit", "Bloodfiend");
 
         //Plant the Bombs
         Story.MapItemQuest(8568, "dagerecruit", 9887, 4);
@@ -85,7 +85,7 @@ public class DageRecruitStory
         Story.KillQuest(8573, "dagerecruit", "Shadow Clone");
 
         //Last of the Defenses
-        Story.KillQuest(8574, "dagerecruit", "Funa-yurei|Shadow Clone");
+        Story.KillQuest(8574, "dagerecruit", "Funa-yurei");
 
         //Defeat Hebimaru
         Story.KillQuest(8575, "dagerecruit", "Hebimaru");

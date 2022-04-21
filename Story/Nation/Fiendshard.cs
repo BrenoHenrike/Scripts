@@ -32,15 +32,15 @@ public class Fiendshard_Story
         Story.KillQuest(7892, "Fiendshard", "Rogue Fiend");
         Story.MapItemQuest(7982, "Fiendshard", 7983);
         // Fiend-terrogation
-        Story.KillQuest(7893, "Fiendshard", "Paladin Fiend|Rogue Fiend");
+        Story.KillQuest(7893, "Fiendshard", "Paladin Fiend");
         // Key Difference Between Human and Fiend
-        Story.KillQuest(7894, "Fiendshard", "Paladin Fiend|Rogue Fiend");
+        Story.KillQuest(7894, "Fiendshard", "Paladin Fiend");
         // Unlock the Door
         Story.KillQuest(7895, "Fiendshard", new[] { "Rogue Fiend", "Paladin Fiend", "Void Knight" });
         /// Violence's Gatekeeper
         Core.GetMapItem(7984);
         // Dirtlicking Guards
-        Story.KillQuest(7896, "Fiendshard", "Paladin Fiend|Void Knight");
+        Story.KillQuest(7896, "Fiendshard", "Paladin Fiend");
         // Defeat Dirtlicker
         Story.KillQuest(7897, "Fiendshard", new[] { "Fiend Shard", "Dirtlicker" });
 

@@ -132,8 +132,8 @@ public class CoreDarkon
         while ((!Core.CheckInventory("La's Gratitude", Quantity)))
         {
             Core.EnsureAccept(8001);
-            Core.HuntMonster("astravia", "Creature 27|Creature 28", "Broken Dog Tag", 20);
-            Core.HuntMonster("astravia", "Creature 27|Creature 28", "Intact Dog Tag", 5);
+            Core.HuntMonster("astravia", "Creature 27", "Broken Dog Tag", 20);
+            Core.HuntMonster("astravia", "Creature 27", "Intact Dog Tag", 5);
             Core.EnsureComplete(8001);
         }
     }
@@ -153,7 +153,7 @@ public class CoreDarkon
             Core.EnsureAccept(8257);
             Core.EquipClass(ClassType.Farm);
             Bot.Options.AttackWithoutTarget = true;
-            Core.HuntMonster("astraviacastle", "Creature 27|Creature 28", "Defaced Portrait", 10);
+            Core.HuntMonster("astraviacastle", "Creature 27", "Defaced Portrait", 10);
             Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4);
             Bot.Options.AttackWithoutTarget = false;
             Core.EquipClass(ClassType.Solo);

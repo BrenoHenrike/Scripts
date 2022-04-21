@@ -22,7 +22,7 @@ public class GuardianOfSpiritsBlade
         Core.AddDrop("Guardian of Spirits' Blade");
         Core.EnsureAccept(4510);
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("celestialrealm", "Fallen Knight|Infernal Knight", "Trapped Spirits", 500, false);
+        Core.HuntMonster("celestialrealm", "Fallen Knight", "Trapped Spirits", 500, false);
         Core.EnsureComplete(4510);
         Bot.Wait.ForPickup("Guardian of Spirits' Blade");
     }

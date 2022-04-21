@@ -919,6 +919,8 @@ public class CoreBots
 
         else if (CheckInventory("Dragon of Time"))
             Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
+        else if (CheckInventory("Healer (Rare)"))
+            Bot.Skills.StartAdvanced("Healer (Rare)", true, ClassUseMode.Base);
         else if (CheckInventory("Healer"))
             Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
 

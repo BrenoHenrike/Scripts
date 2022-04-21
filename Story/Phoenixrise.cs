@@ -50,16 +50,16 @@ public class PhoenixriseStory
         //Flee the Flames
         Story.KillQuest(4070, "pyrewatch", new[] { "Fyreborn Tiger", "Caustocrush", "Lavazard" });
         //Taste of their own Medicine
-        Story.KillQuest(4071, "pyrewatch", "Fire Pikeman|Firestorm Knight|Flame Soldier|Fyreborn Tiger|Storm Scout");
+        Story.KillQuest(4071, "pyrewatch", "Fire Pikeman");
         //A Jarring Discovery
         Story.MapItemQuest(4072, "pyrewatch", 3159, 12);
         //Push on to Pyrewatch
-        Story.KillQuest(4073, "pyrewatch", new[] { "Fire Pikeman|Firestorm Knight|Flame Soldier|Storm Scout", "Firestorm Knight" });
+        Story.KillQuest(4073, "pyrewatch", "Fire Pikeman");
         //Friends of Pyrewatch Peak
-        Story.KillQuest(4074, "pyrewatch", new[] { "Caustocrush", "Fire Pikeman", "Flame Soldier", "Fire Pikeman|Firestorm Knight|Flame Soldier|Storm Scout" });
+        Story.KillQuest(4074, "pyrewatch", new[] { "Caustocrush", "Fire Pikeman", "Flame Soldier", "Fire Pikeman" });
         //A Salve to Soothe
         Story.MapItemQuest(4075, "pyrewatch", 3160, 5);
-        Story.KillQuest(4075, "pyrewatch", "Lavazard|Living Lava");
+        Story.KillQuest(4075, "pyrewatch", "Lavazard");
     }
 
     public void AsherMurkblade()
@@ -75,9 +75,9 @@ public class PhoenixriseStory
         Story.MapItemQuest(4077, "pyrewatch", 3161, 5);
         Story.KillQuest(4077, "pyrewatch", new[] { "Lavazard", "Living Lava", "Lavazard" });
         //Defend Pyrewatch Peak
-        Story.KillQuest(4078, "pyrewatch", "Fire Pikeman|Storm Scout");
+        Story.KillQuest(4078, "pyrewatch", "Fire Pikeman");
         //Signal Fire
-        Story.KillQuest(4079, "pyrewatch", new[] { "Storm Scout", "Flame Soldier", "Fyreborn Tiger", "Fire Pikeman|Flame Soldier" });
+        Story.KillQuest(4079, "pyrewatch", new[] { "Storm Scout", "Flame Soldier", "Fyreborn Tiger", "Fire Pikeman" });
         //Spreading Like Wildfire
         Story.MapItemQuest(4080, "pyrewatch", 3162, 4);
     }
@@ -95,7 +95,7 @@ public class PhoenixriseStory
         //Restore the Lady of Waters
         Story.MapItemQuest(4130, "feverfew", 3246);
         Story.MapItemQuest(4130, "feverfew", 3247);
-        Story.KillQuest(4130, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander", "Firestorm Knight|Twisted Undine" });
+        Story.KillQuest(4130, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander", "Firestorm Knight" });
         //Rumors and Smoke
         Story.MapItemQuest(4131, "feverfew", 3245);
         Story.KillQuest(4131, "feverfew", new[] { "Firestorm Major", "Firestorm Knight", "Firestorm Knight", "Firestorm Major" });

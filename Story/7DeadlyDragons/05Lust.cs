@@ -54,7 +54,7 @@ public class Lust
         // Lascivia Stunk Pretty
         Story.KillQuest(5972, "lust", new[] {"Golden Vase", "Golden Vase"});
         // You Broke It, You Fix It
-        Story.KillQuest(5973, "lust", "Devoted Admirer|Devoted Admirer|Enamored Guard|Elite Guard");
+        Story.KillQuest(5973, "lust", "Devoted Admirer");
         // Elite Energy
         Story.MapItemQuest(5974, "lust", 5415, 8);
         Story.KillQuest(5974, "lust", "Elite Guard");

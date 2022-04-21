@@ -32,8 +32,8 @@ public class DarkWarLegionMerge
             {
                 Core.EnsureAccept(8584);
                 Core.EnsureAccept(8585);
-                Core.HuntMonster("darkwarlegion", "Infernal Fiend|Void Fiend|Bloodfiend|Manslayer Fiend", "Nation Badge", 5);
-                Core.HuntMonster("darkwarlegion", "Infernal Fiend|Void Fiend|Bloodfiend|Manslayer Fiend", "Mega Nation Badge", 3);
+                Core.HuntMonster("darkwarlegion", "Infernal Fiend", "Nation Badge", 5);
+                Core.HuntMonster("darkwarlegion", "Infernal Fiend", "Mega Nation Badge", 3);
                 while (Core.CheckInventory("Nation Badge", 5))
                     Core.EnsureComplete(8584);
                 while (Core.CheckInventory("Mega Nation Badge", 3))
@@ -44,7 +44,7 @@ public class DarkWarLegionMerge
             if (!Core.CheckInventory("Legion Trophy", 300))
             {
                 Core.EnsureAccept(8586);
-                Core.HuntMonster("darkwarlegion", "Infernal Fiend|Dreadfiend", "Nation's Dread", 5);
+                Core.HuntMonster("darkwarlegion", "Infernal Fiend", "Nation's Dread", 5);
                 Core.EnsureComplete(8586);
             }
 

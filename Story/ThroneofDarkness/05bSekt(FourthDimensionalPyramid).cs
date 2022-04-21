@@ -64,7 +64,7 @@ public class FourthDimensionalPyramid
         Story.KillQuest(5200, "fourdpyramid", "Nega Mummy");
 
         // The Tesseract
-        Story.KillQuest(5201, "fourdpyramid", "Guardian of Anubyx|Negastri Hound");
+        Story.KillQuest(5201, "fourdpyramid", "Guardian of Anubyx");
 
         // Another Mystery To Solve
         Story.MapItemQuest(5202, "fourdpyramid", 4565, 1);

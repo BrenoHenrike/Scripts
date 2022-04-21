@@ -33,14 +33,14 @@ public class GetSDD
             Egg.GetMysteriousEgg();
             Story.KillQuest(6901, "volcano", "Lava Golem");
             Story.KillQuest(6902, "embersea", "Living Lava");
-            Story.KillQuest(6903, "ashfallcamp", "Lava Dragoblin|Lava Dravir");
+            Story.KillQuest(6903, "ashfallcamp", "Lava Dragoblin");
             Story.KillQuest(6904, "gilead", "Water Elemental");
             Story.KillQuest(6905, "crossroads", "Koalion");
             Story.KillQuest(6906, "mountain", "Giant Scorpion");
             Story.MapItemQuest(6907, "void", 6453);
             Story.KillQuest(6908, "void", "Void Elemental");
             Story.MapItemQuest(6909, "void", 6454);
-            Story.KillQuest(6910, "void", "Void Bear|Void Elemental|Void Larva");
+            Story.KillQuest(6910, "void", "Void Bear");
             Story.KillQuest(6911, "void", "Void Elemental");
             Story.KillQuest(6912, "void", "Void Dragon");
             Story.MapItemQuest(6913, "mysteriousegg", 6455, GetReward: false);

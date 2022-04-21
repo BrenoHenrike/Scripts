@@ -69,7 +69,7 @@ public class BrightOak
         Story.KillQuest(4641, "Pines", "Pine Grizzly");
 
         // Night in Shining Armor
-        Story.KillQuest(4642, "Rivensylth", "Cave Creeper|Draklet|Mushroom|Rivensylth Spider");
+        Story.KillQuest(4642, "Rivensylth", "Cave Creeper");
 
         // Finding Rivensylth
         Story.MapItemQuest(4643, "Rivensylth", 3946);
@@ -221,7 +221,7 @@ public class BrightOak
         Story.KillQuest(4693, "Darkheart", "Mutated Leech");
 
         // Perilous Supply Run
-        Story.KillQuest(4694, "Darkheart", "Mutated Leech|Tainted Earth|Toxic Grove Spider|Wisterrora");
+        Story.KillQuest(4694, "Darkheart", "Mutated Leech");
 
         // Purify Wisterrora
         Story.KillQuest(4695, "Darkheart", "Wisterrora");

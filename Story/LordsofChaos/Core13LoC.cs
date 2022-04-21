@@ -753,7 +753,7 @@ public class Core13LoC
             Core.HuntMonster("cloister", "Acornent", "Staghorns", 4);
             Core.HuntMonster("cloister", "Karasu", "Sea Fan", 3);
             Core.HuntMonster("cloister", "Wendigo", "Sea Whip");
-            Core.HuntMonster("mudluk", "Swamp Frogdrake|Swamp Lurker", "Anemones", 6);
+            Core.HuntMonster("mudluk", "Swamp Frogdrake", "Anemones", 6);
             Core.EnsureComplete(829);
         }
 
@@ -873,7 +873,7 @@ public class Core13LoC
         }
 
         Bot.Quests.UpdateQuest(4614);
-        
+
         //Sacred Scarabs
         Story.KillQuest(967, "pyramid", "Golden Scarab");
 
@@ -1058,7 +1058,7 @@ public class Core13LoC
         Story.MapItemQuest(1378, "alliance", 676);
 
         //Chaorruption Rejection
-        Story.KillQuest(1379, "alliance", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
+        Story.KillQuest(1379, "alliance", "Chaorrupted Evil Soldier");
 
         //Alliance Subdued
         if (!Story.QuestProgression(1380))
@@ -1245,20 +1245,20 @@ public class Core13LoC
         Story.MapItemQuest(1372, "alliance", 676);
 
         //Chaorruption Annihilation
-        Story.KillQuest(1373, "alliance", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
+        Story.KillQuest(1373, "alliance", "Chaorrupted Evil Soldier");
 
         //Alliance Demotion
         Story.KillQuest(1374, "alliance", new[] { "General Cynari", "General Tibias" });
 
         //Contain the Chaorruption
-        Story.KillQuest(1419, "ancienttemple", "Chaotic Vulture|Chaotic Horcboar");
+        Story.KillQuest(1419, "ancienttemple", "Chaotic Vulture");
 
         //Ancient Ointment
-        Story.KillQuest(1420, "ancienttemple", "Chaotic Vulture|Chaotic Horcboar");
+        Story.KillQuest(1420, "ancienttemple", "Chaotic Vulture");
         Story.MapItemQuest(1420, "ancienttemple", 706, 7);
 
         //Anoint the Ancients
-        Story.KillQuest(1421, "ancienttemple", "Chaos Troll Spirit|Chaos Horc Spirit");
+        Story.KillQuest(1421, "ancienttemple", "Chaos Troll Spirit");
 
         //Serpents Do No Harm
         Story.KillQuest(1422, "ancienttemple", "Serpentress");
@@ -1277,7 +1277,7 @@ public class Core13LoC
         Story.MapItemQuest(1453, "orecaveern", 718, 5);
 
         //Save Yourself, Save the Soldiers
-        Story.KillQuest(1454, "orecavern", "Chaorrupted Evil Soldier|Chaorrupted Good Soldier");
+        Story.KillQuest(1454, "orecavern", "Chaorrupted Evil Soldier");
 
         //Battle the Baas!
         Story.KillQuest(1455, "orecavern", "Naga Baas");
@@ -1572,10 +1572,10 @@ public class Core13LoC
         Story.MapItemQuest(2622, "onslaughttower", new[] { 1620, 1621, 1622, 1623 });
 
         //Secret Of The Death Fog
-        Story.KillQuest(2623, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
+        Story.KillQuest(2623, "onslaughttower", "Golden Caster");
 
         //The Key To Survival
-        Story.KillQuest(2624, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
+        Story.KillQuest(2624, "onslaughttower", "Golden Caster");
 
         //The Tools
         Story.MapItemQuest(2625, "onslaughttower", 1624, 8);
@@ -1587,7 +1587,7 @@ public class Core13LoC
         Story.MapItemQuest(2627, "onslaughttower", 1626, 4);
 
         //Who Holds The Key?
-        Story.KillQuest(2628, "onslaughttower", "Golden Caster|Golden Warrior|Golden Cavalry");
+        Story.KillQuest(2628, "onslaughttower", "Golden Caster");
 
         //Leave No Rug Unturned
         Story.MapItemQuest(2629, "onslaughttower", 1627);
@@ -1797,19 +1797,19 @@ public class Core13LoC
         Story.KillQuest(2925, "overworld", "Undead Bruiser");
 
         //A Stopping Block
-        Story.KillQuest(2926, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
+        Story.KillQuest(2926, "overworld", "Undead Minion");
 
         //Boost Morale
         Story.MapItemQuest(2927, "overworld", 1801, 8);
 
         //Alteon's Folly
-        Story.KillQuest(2928, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
+        Story.KillQuest(2928, "overworld", "Undead Minion");
 
         //DoomFire
-        Story.KillQuest(2929, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
+        Story.KillQuest(2929, "overworld", "Undead Minion");
 
         //Spoiled Souls
-        Story.KillQuest(2930, "overworld", "Undead Minion|Undead Mage|Undead Bruiser");
+        Story.KillQuest(2930, "overworld", "Undead Minion");
 
         //Purity of Bone
         Story.MapItemQuest(2931, "overworld", 1802, 10);
@@ -1818,7 +1818,7 @@ public class Core13LoC
         Story.KillQuest(2932, "overworld", "Undead Artix");
 
         //I Can't Touch This
-        Story.KillQuest(3166, "reddeath", "Fire Leech|Grim Widow|Reddeath Moglin|Swamp Wraith");
+        Story.KillQuest(3166, "reddeath", "Fire Leech");
 
         //Nope, Still a Ghost
         Story.KillQuest(3167, "reddeath", "Reddeath Moglin");
@@ -1883,7 +1883,16 @@ public class Core13LoC
         //Good, Evil and Chaos Battle!
         if (!Story.QuestProgression(3189))
         {
+            InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
             Adv.GearStore();
+            // if(Core.CheckInventory("Dragon of Time"))
+            // index+2;
+            if (!Core.CheckInventory("Healer"))
+                Core.BuyItem("trainers", 176, "Healer");
+            Core.Equip("Healer");
+            if (itemInv.Quantity != 302500)
+
+                Adv.rankUpClass("Healer");
             Core.EnsureAccept(3189);
             Core.KillXiang("Chaos Lord Xiang Defeated", publicRoom: true);
             Core.EnsureComplete(3189);
@@ -1908,7 +1917,7 @@ public class Core13LoC
         Story.KillQuest(3079, "archives", new[] { "Chaos Bandit", "Camouflaged Sp-Eye" });
 
         //Locate the Source
-        Story.KillQuest(3080, "archives", "Chaos Bandit|Camouflaged Sp-Eye");
+        Story.KillQuest(3080, "archives", "Chaos Bandit");
         Story.MapItemQuest(3080, "archives", 1937);
 
         //Plagued Rats
@@ -2086,19 +2095,19 @@ public class Core13LoC
         Story.KillQuest(3788, "newfinale", "Chaos Challenger");
 
         //Battle for Chaos in Doomwood!
-        Story.KillQuest(3783, "newfinale", "Chaotic Virago|Chaorrupted Healer|");
+        Story.KillQuest(3783, "newfinale", "Chaotic Virago");
 
         //Beat Chaorrupted Lycan Hunter
         Story.KillQuest(3789, "newfinale", "Chaorrupted Lycan Hunter");
 
         //Battle for Chaos in Darkovia!
-        Story.KillQuest(3785, "newfinale", "Shadow Slayer|Chaorrupted Healer|Mana Blaster");
+        Story.KillQuest(3785, "newfinale", "Shadow SlayerMana Blaster");
 
         //Defeat the Memory of Vampires
         Story.KillQuest(3790, "newfinale", "Memory of Vampires");
 
         //Battle for Chaos in the Lair!
-        Story.KillQuest(3787, "newfinale", "Chaotic Virago|Chaos Draconian|Chaos Crystal");
+        Story.KillQuest(3787, "newfinale", "Chaotic Virago");
 
         //1st Chaos Beast
         Story.ChainQuest(3608);
@@ -2153,7 +2162,7 @@ public class Core13LoC
         Story.MapItemQuest(3795, "drakathfight", 2894);
 
         //Arrive in the Underworld
-        Story.KillQuest(3620, "shadowrise", "Darkness Elemental|Dry Ice Mage");
+        Story.KillQuest(3620, "shadowrise", "Darkness Elemental");
 
         //Search for Death's Lair
         Story.MapItemQuest(3796, "shadowrise", 2895);
@@ -2218,22 +2227,22 @@ public class Core13LoC
         Story.ChainQuest(3814);
 
         //Up the Mountain
-        Story.KillQuest(3815, "falcontower", "Lady Knight|Sir Knight");
+        Story.KillQuest(3815, "falcontower", "Lady Knight");
 
         //Higher Up
-        Story.KillQuest(3816, "falcontower", "Lady Knight|Sir Knight");
+        Story.KillQuest(3816, "falcontower", "Lady Knight");
 
         //Even Higher
-        Story.KillQuest(3817, "falcontower", "Lady Knight|Sir Knight");
+        Story.KillQuest(3817, "falcontower", "Lady Knight");
 
         //Falconreach Tower
-        Story.KillQuest(3818, "falcontower", "Lady Knight|Sir Knight");
+        Story.KillQuest(3818, "falcontower", "Lady Knight");
 
         //Climb the Tower
-        Story.KillQuest(3819, "falcontower", "Lady Knight|Sir Knight");
+        Story.KillQuest(3819, "falcontower", "Lady Knight");
 
         //To the Dragonlord
-        Story.KillQuest(3820, "falcontower", "Lady Knight|Sir Knight");
+        Story.KillQuest(3820, "falcontower", "Lady Knight");
 
         //Defeat the Dragonlord
         Story.KillQuest(3821, "falcontower", "DragonLord");

@@ -32,8 +32,8 @@ public class DarkWarNationMerge
             {
                 Core.EnsureAccept(8578);
                 Core.EnsureAccept(8579);
-                Core.HuntMonster("darkwarnation", "Legion Doomknight|Legion Dreadmarch|High Legion Inquisitor", "Legion Badge", 5);
-                Core.HuntMonster("darkwarnation", "Legion Doomknight|Legion Dreadmarch|High Legion Inquisitor", "Mega Legion Badge", 3);
+                Core.HuntMonster("darkwarnation", "Legion Doomknight", "Legion Badge", 5);
+                Core.HuntMonster("darkwarnation", "Legion Doomknight", "Mega Legion Badge", 3);
                 while (Core.CheckInventory("Legion Badge", 5))
                     Core.EnsureComplete(8578);
                 while (Core.CheckInventory("Mega Legion Badge", 3))
@@ -44,7 +44,7 @@ public class DarkWarNationMerge
             if (!Core.CheckInventory("Nation Trophy", 300))
             {
                 Core.EnsureAccept(8580);
-                Core.HuntMonster("darkwarnation", "Legion Doomknight|Legion Fiend Rider", "Legion Doomed", 5);
+                Core.HuntMonster("darkwarnation", "Legion Doomknight", "Legion Doomed", 5);
                 Core.EnsureComplete(8580);
             }
 
