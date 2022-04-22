@@ -302,8 +302,11 @@ public class CoreAstravia
         Story.KillQuest(8528, "eridanipast", "Bandit");
 
         //Troubadour
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(8529, "eridanipast", "Suki");
+        if (!Core.isCompletedBefore(8529)))
+        {
+            Core.EnsureAccept(8529);
+            Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Paladin Dueled");
+        }
 
         //Echoes
         if (!Story.QuestProgression(8530))
