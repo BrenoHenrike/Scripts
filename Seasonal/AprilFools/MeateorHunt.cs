@@ -83,6 +83,7 @@ public class MeateorHunt
 
         //Cowissa
         Bot.Quests.UpdateQuest(8000);
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8623, "astravia", "The Moon");
 
         //Collection Dejection
@@ -93,8 +94,8 @@ public class MeateorHunt
 
         //Dumpster Diving
         Story.KillQuest(8626, "Junkhoard", new[] { "Magpie Junk Heap", "Junk Golem", "Magpie" });
-        //A Dreadful Dinner
 
+        //A Dreadful Dinner
         Story.KillQuest(8627, "Dreadspace", "Troblor");
 
         //Succeed or Fry Trying
