@@ -125,6 +125,7 @@ public class Bamboozle
             Bot.Wait.ForPickup("Floozer");
         }
 
-        Story.MapItemQuest(7292, "thespan", 6910, GetReward: false);
+        //Time Quartz
+        Story.MapItemQuest(7292, "thespan", 6910);
     }
 }
