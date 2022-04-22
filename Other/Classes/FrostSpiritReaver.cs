@@ -46,6 +46,8 @@ public class FrostSpiritReaver
         if (Core.isCompletedBefore(7920))
             return;
 
+        Core.AddDrop("Flame of Courage");
+
         Core.EnsureAccept(7920);
 
         if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
