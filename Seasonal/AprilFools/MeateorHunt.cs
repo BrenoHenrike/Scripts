@@ -35,7 +35,6 @@ public class MeateorHunt
         //Chick Your Surroundings
         if (!Story.QuestProgression(8614))
         {
-            Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(8614);
             Core.HuntMonster("EarthStorm", "Blue Chick", "Tiny Blue Freggment");
             Core.HuntMonster("Mythsong", "Pink Chick", "Tiny Pink Freggment");
