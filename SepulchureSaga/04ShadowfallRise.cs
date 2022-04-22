@@ -96,7 +96,6 @@ public class ShadowfallRise
 
         //Destroy the Shield 6567
         Story.KillQuest(6567, "lightguardwar", "Sigrid Sunshield");
-
         
         //Such a Mess 6581
         Story.MapItemQuest(6581, "lumafortress", 6098, 8);
