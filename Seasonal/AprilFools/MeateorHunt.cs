@@ -29,7 +29,6 @@ public class MeateorHunt
         Story.PreLoad();
 
         //Defeat the Giant ChickenCow
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8612, "MeateorTown", "Giant ChickenCow");
 
 
@@ -47,7 +46,6 @@ public class MeateorHunt
         }
 
         //PainFowl Recollection
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8615, "Battlefowl", "Chicken");
 
         //Empty Nest Syndrome
@@ -84,7 +82,6 @@ public class MeateorHunt
         Story.KillQuest(8622, "northlands", new[] { "Ice Symbiote", "Ice Symbiote" });
 
         //Cowissa
-        Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(8000);
         Story.KillQuest(8623, "astravia", "The Moon");
 
