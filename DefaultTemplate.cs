@@ -16,10 +16,19 @@ public class DefaultTemplate
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
-        Adv.BestGear(GearBoost.gold);
-        Farm.FireWarGold();
+        Core.SetOptions(); 
+        
+        Example();
 
         Core.SetOptions(false);
+    }
+    public void Example()
+    {
+        if(Core.CheckInventory("item"))
+        return;
+        
+        //INSERT CODE HERE      
+    
+        
     }
 }
