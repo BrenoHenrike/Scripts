@@ -19,21 +19,17 @@ public class Tyndarius
         Core.SetOptions();
 
         Adv.BestGear(GearBoost.Human);
-        DoALl();
+        StoryLine();
 
         Core.SetOptions(false);
-    }
-
-    public void DoALl()
-    {
-        Story.PreLoad();
-        StoryLine();
     }
 
     public void StoryLine()
     {
         if (Core.isCompletedBefore(8243))
             return;
+
+        Story.PreLoad();
 
         //War Medals
         Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier|Shadefire Onslaught");
