@@ -1,7 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 public class MeateorHunt
 {
@@ -9,8 +8,6 @@ public class MeateorHunt
 
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -32,15 +29,14 @@ public class MeateorHunt
         Story.PreLoad();
 
         //Defeat the Giant ChickenCow
-        Adv.GearStore();
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8612, "MeateorTown", "Giant ChickenCow");
-        Adv.GearStore(true);
 
 
         //Chick Your Surroundings
         if (!Story.QuestProgression(8614))
         {
+        Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(8614);
             Core.HuntMonster("EarthStorm", "Blue Chick", "Tiny Blue Freggment");
             Core.HuntMonster("Mythsong", "Pink Chick", "Tiny Pink Freggment");
@@ -51,6 +47,7 @@ public class MeateorHunt
         }
 
         //PainFowl Recollection
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8615, "Battlefowl", "Chicken");
 
         //Empty Nest Syndrome
@@ -87,6 +84,7 @@ public class MeateorHunt
         Story.KillQuest(8622, "northlands", new[] { "Ice Symbiote", "Ice Symbiote" });
 
         //Cowissa
+        Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(8000);
         Story.KillQuest(8623, "astravia", "The Moon");
 
