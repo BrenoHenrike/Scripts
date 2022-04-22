@@ -35,7 +35,7 @@ public class MeateorHunt
         //Chick Your Surroundings
         if (!Story.QuestProgression(8614))
         {
-        Core.EquipClass(ClassType.Farm);
+            Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(8614);
             Core.HuntMonster("EarthStorm", "Blue Chick", "Tiny Blue Freggment");
             Core.HuntMonster("Mythsong", "Pink Chick", "Tiny Pink Freggment");
@@ -57,7 +57,7 @@ public class MeateorHunt
         }
 
         //Comet-ted to Memory     
-        Story.KillQuest(8617, "Come", new[] { "Vaderix", "Vaderix" });
+        Story.KillQuest(8617, "Comet", new[] { "Vaderix", "Vaderix" });
 
         //Right Under Your Nose
         Story.KillQuest(8618, "BattleFowl", "ChickenCow");
