@@ -61,7 +61,7 @@ public class Banished
         if (!Story.QuestProgression(7880))
         {
             Core.EnsureAccept(7880);
-            Core.HuntMonster("banished", "Desterrat Moya", "Infected Tentacle");
+            Core.KillMonster("banished", "r14", "Left", "Desterrat Moya", "Infected Tentacle");
             Core.EnsureComplete(7880);
         }
 
