@@ -22,10 +22,10 @@ public class Banished
         Core.SetOptions();
 
         doall();
-        
+
         Core.SetOptions(false);
     }
-    
+
     public void doall()
     {
         Story.PreLoad();
@@ -81,8 +81,14 @@ public class Banished
         // Vial of Antitoxins x1  
         if (!Story.QuestProgression(8462))
         {
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 1);
-            Story.BuyQuest(8462, "alchemyacademy", 2114, "Vial of Antitoxins");
+            Core.EnsureAccept(8462);
+            if (!Core.CheckInventory("Vial of Antitoxins"))
+            {
+                Farm.Gold(100000);
+                Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k");
+                Core.BuyItem("alchemyacademy", 2114, "Vial of Antitoxins");
+            }
+            Core.EnsureComplete(8462);
         }
 
         // A Guilty Conscience
