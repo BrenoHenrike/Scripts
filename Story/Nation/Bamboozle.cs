@@ -26,7 +26,7 @@ public class Bamboozle
 
         Story.PreLoad();
 
-        Core.AddDrop("Floozer", "Ice Diamond", "Dark Bloodstone", "Songstone", "Butterfly Sapphire", "Understone", "Rainbow Moonstone");
+        Core.AddDrop("Floozer", "Ice Diamond", "Dark Bloodstone", "Songstone", "Butterfly Sapphire", "Understone", "Rainbow Moonstone", "Time Quartz");
 
         //Star of the Sandsea
         Story.KillQuest(7277, "wanders", "Kalestri Worshiper", GetReward: false);
@@ -126,6 +126,12 @@ public class Bamboozle
         }
 
         //Time Quartz
-        Story.MapItemQuest(7292, "thespan", 6910);
+        if(!Story.QuestProgression(7292))
+        {
+            Core.EnsureAccept(7292);
+            Core.GetMapItem(6910, 1, "Thespan");
+            Bot.Wait.ForPickup("Time Quartz");
+            Core.EnsureComplete(7292);
+        }
     }
 }
