@@ -302,7 +302,7 @@ public class CoreAstravia
         Story.KillQuest(8528, "eridanipast", "Bandit");
 
         //Troubadour
-        if (!Core.isCompletedBefore(8529)))
+        if (!Core.isCompletedBefore(8529))
         {
             Core.EnsureAccept(8529);
             Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Paladin Dueled");
