@@ -18,9 +18,9 @@ public class CandyshellMerge
     public void GetMergeItems()
     {
         //Needed AddDrop
-        Core.AddDrop("Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells");
+        Core.AddDrop("Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells");
 
-        while (!Core.CheckInventory(new[] { "Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells" }, 150))
+        while (!Core.CheckInventory(new[] { "Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells" }, 150))
         {
             Core.EquipClass(ClassType.Farm);
 
@@ -70,6 +70,14 @@ public class CandyshellMerge
                 Core.Join("Grenstory");
                 for (int i = 0; i < 10; i++)
                     Bot.Player.Hunt("Imposter Egg");
+            }
+
+            //Golden Eggshells
+            if (!Core.CheckInventory("Golden Eggshells", 150))
+            {
+                Core.Join("Greed");
+                for (int i = 0; i < 10; i++)
+                    Bot.Player.Hunt("Treasure Pile");
             }
 
             //Shadow Eggshells
