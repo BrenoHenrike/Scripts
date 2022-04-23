@@ -233,6 +233,8 @@ public class CoreBots
         }
         if (Bot.Inventory.Contains(item, quant))
             return true;
+        if (Bot.Inventory.ContainsHouseItem(item))
+            return true;
         return false;
     }
 
