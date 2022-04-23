@@ -34,7 +34,7 @@ public class EmpoweringItems
         Core.EnsureAccept(558);
         Nulgath.FarmUni13();
         Nulgath.FarmDiamondofNulgath(10);
-        Core.HuntMonster("udnerworld", "Undead Bruiser", "Undead Bruiser Sigil");
+        Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
         Core.EnsureComplete(558);
         Bot.Wait.ForPickup("Death Scythe of Nulgath");
     }
