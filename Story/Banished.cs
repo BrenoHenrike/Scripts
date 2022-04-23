@@ -122,7 +122,12 @@ public class Banished
         Story.MapItemQuest(2024, "banished", 980);
 
         // An Enemy Unblooded
-        Story.KillQuest(2025, "banished", new[] { "Desterrat Cruor", "Desterrat Crux" });
+        if (!Story.QuestProgression(2025))
+        {
+            Core.HuntMonster("banished", "Desterrat Crux", "item");
+            Core.HuntMonster("banished", "Desterrat Cruor");
+        }
+
 
         // Re - Open the Seal
         Story.MapItemQuest(2026, "banished", 981, 7);
