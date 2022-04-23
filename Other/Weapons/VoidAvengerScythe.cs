@@ -37,19 +37,28 @@ public class VoidAvengerScythe
     {
         SnowbeardsQuests();
         DonnaCharmersQuests();
-        
+
         if (Core.CheckInventory("Void Avenger Scythe"))
             return;
 
-        Core.AddDrop("Void Avenger Scythe");
+        Core.AddDrop("Void Avenger Scythe", "Batwing Scythe");
 
         Core.EnsureAccept(5025);
 
         //Eternal Rest
-        
+
         Farm.EvilREP();
         // Batwing Scythe - 
-        BatwingScythe();
+        if (!Bot.Quests.IsUnlocked(498))
+            BatwingScythe();
+
+        while (!Core.CheckInventory("Batwing Scythe"))
+        {
+            Core.EnsureAccept(498);
+            Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull");
+            Core.EnsureComplete(498);
+            Bot.Wait.ForPickup("Batwing Scythe");
+        }
         // Dark Crystal Shard - 
         Nulgath.FarmDarkCrystalShard(200);
         // Death Scythe of Nulgath - 
