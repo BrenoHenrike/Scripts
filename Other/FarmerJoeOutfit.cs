@@ -25,12 +25,10 @@ public class FarmerJoeOutfit
         Core.SetOptions(false);
     }
 
-    public void Outfit(bool Quicklvl = true)
+    public void Outfit()
     {
-        if (Quicklvl)
-            LVL.QuickLvl();
-        else Farm.FireWarXP();
-        
+        LVL.QuickLvl();
+
         Scythe.GetHBReapersScythe();
         RagsandHat();
         ServersAreDown();

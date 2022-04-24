@@ -62,7 +62,6 @@ public class CoreFarms
 
         HonorHall(quant);
         BattleGroundE(quant);
-        // FireWarGold(quant);
         BerserkerBunny(quant);
     }
 
@@ -116,44 +115,6 @@ public class CoreFarms
     }
 
     /// <summary>
-    /// Farms Gold in FireWar with the fire Dragon Scales & Hearts war turn-ins
-    /// </summary>
-    /// <param name="goldQuant">How much gold to farm</param>
-    public void FireWarGold(int goldQuant = 100000000)
-    {
-        if (Bot.Player.Gold >= goldQuant)
-            return;
-        if (Bot.Player.Level < 50)
-            return;
-
-        Core.AddDrop("");
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {goldQuant} gold using FireWarGold Method");
-        int Scale = 1;
-        int Heart = 1;
-
-        Core.Join("firewar", "r2", "Bottom");
-        Bot.Player.SetSpawnPoint();
-        while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
-        {
-            Bot.Player.Attack("*");
-
-            if (Core.CheckInventory("Fire Dragon Scale", 5))
-            {
-                Bot.Quests.Complete(6294);
-                Bot.Sleep(Core.ActionDelay);
-                Core.Logger($"Completed x{Scale++}");
-            }
-            if (Core.CheckInventory("Fire Dragon Heart", 3))
-            {
-                Bot.Quests.Complete(6295);
-                Bot.Sleep(Core.ActionDelay);
-                Core.Logger($"Completed x{Heart++}");
-            }
-        }
-    }
-
-    /// <summary>
     /// Farms Gold by selling Berserker Bunny
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
@@ -183,7 +144,7 @@ public class CoreFarms
     {
         if (Bot.Player.Level >= level)
             return;
-        FireWarXP();
+        IcestormArena();
     }
 
     /// <summary>
@@ -287,50 +248,6 @@ public class CoreFarms
                 Core.Logger($"Completed \"Mega War Medals\" x{MegaMedal++}");
             }
         }
-    }
-
-
-
-    /// <summary>
-    /// Farms Gold in FireWar with the fire Dragon Scales & Hearts war turn-ins
-    /// </summary>
-    /// <param name="goldQuant">How much gold to farm</param>
-    public void FireWarXP(int Level = 100)
-    {
-        Bot.Lite.Set("dOptions[\"hideDrop\"]", true);
-        Bot.Lite.Set("dOptions[\"hideTemp\"]", true);
-        Bot.Lite.Set("bDisQPopup", true);
-
-        if (Bot.Player.Level < 50)
-            IcestormArena(50);
-
-        Core.AddDrop("");
-        Core.EquipClass(ClassType.Farm);
-        int Scale = 1;
-        int Heart = 1;
-
-        Core.Join("firewar", "r2", "Bottom");
-        Bot.Player.SetSpawnPoint();
-        while (Bot.Player.Level < Level)
-        {
-            Bot.Player.Attack("*");
-
-            if (Core.CheckInventory("Fire Dragon Scale", 5))
-            {
-                Bot.Quests.Complete(6294);
-                Bot.Sleep(Core.ActionDelay);
-                Core.Logger($"Completed x{Scale++}");
-            }
-            if (Core.CheckInventory("Fire Dragon Heart", 3))
-            {
-                Bot.Quests.Complete(6295);
-                Bot.Sleep(Core.ActionDelay);
-                Core.Logger($"Completed x{Heart++}");
-            }
-        }
-        Bot.Lite.Set("dOptions[\"hideDrop\"]", false);
-        Bot.Lite.Set("dOptions[\"hideTemp\"]", false);
-        Bot.Lite.Set("bDisQPopup", false);
     }
     #endregion
 
