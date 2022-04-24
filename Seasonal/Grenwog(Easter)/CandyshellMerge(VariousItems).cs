@@ -83,7 +83,7 @@ public class CandyshellMerge
             //Shadow Eggshells
             if (!Core.CheckInventory("Shadow Eggshells", 150))
             {
-                Core.Join("Grenwog");
+                Core.Join("Grenwog", publicRoom: true);
                 Core.EquipClass(ClassType.Solo);
                 for (int i = 0; i < 10; i++)
                     Bot.Player.Hunt("Grenwog");
