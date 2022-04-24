@@ -542,4 +542,84 @@ public class CoreBLOD
         Farm.BattleUnderB("Blinding Light Fragments", 10);
         Core.EnsureComplete(quest);
     }
+
+    // ------------------------------------------------------------------------------------------------------------------------------ //
+    // Blinding Light of Destiny Extras Below
+    // ------------------------------------------------------------------------------------------------------------------------------ //
+
+    public void SanctifiedLightofDestiny()
+    {
+        if (Core.CheckInventory("Sanctified Light of Destiny"))
+            return;
+
+        Core.EnsureAccept(8112);
+
+        if (!Core.CheckInventory("Glorious Gold of Destiny"))
+        {
+            UltimateWK("Loyal Spirit Orb", 5);
+
+            while (!Core.CheckInventory("Bright Aura", 2))
+            {
+                FindingFragments(2174);
+                Bot.Player.Pickup("Bright Aura");
+            }
+
+            if (!Core.CheckInventory("Glorious Gold"))
+            {
+                Core.EnsureAccept(2105);
+
+                Farm.BattleUnderB("Undead Energy", 25);
+
+                if (!Core.CheckInventory("Gold"))
+                    Daily.MineCrafting(new[] { "Gold" });
+
+                UltimateWK("Spirit Orb", 5);
+                Core.HuntMonster("Marsh", "Marsh Tree", "Paladaffodil", 25);
+
+                Core.EnsureComplete(2105);
+            }
+
+            Core.BuyItem("Dwarfhold", 434, "Glorious Gold of Destiny");
+        }
+
+        if (!Core.CheckInventory("Pious Platinum of Destiny"))
+        {
+            UltimateWK("Loyal Spirit Orb", 5);
+
+            while (!Core.CheckInventory("Bright Aura", 2))
+            {
+                FindingFragments(2174);
+                Bot.Player.Pickup("Bright Aura");
+            }
+
+            if (!Core.CheckInventory("Pious Platinum"))
+            {
+                Core.EnsureAccept(2109);
+
+                Farm.BattleUnderB("Undead Energy", 25);
+                UltimateWK("Spirit Orb", 5);
+
+                if (!Core.CheckInventory("Platinum"))
+                    Daily.MineCrafting(new[] { "Platinum" });
+
+                if (!Core.CheckInventory("Platinum"))
+                {
+                    Core.Logger("This Daily has already been done today please re-run this script tomorrow.");
+                    return;
+                }
+
+                Core.HuntMonster("Marsh", "Marsh Tree", "Paladaffodil", 25);
+
+                Core.EnsureComplete(2109);
+            }
+
+            Core.BuyItem("Dwarfhold", 434, "Pious Platinum of Destiny");
+        }
+
+        Farm.BattleUnderB("Bone Dust", 300);
+        UltimateWK("Loyal Spirit Orb", 25);
+        Core.HuntMonster("Extinction", "Cyworg", "Refined Metal", 5);
+
+        Core.EnsureComplete(8112);
+    }
 }
