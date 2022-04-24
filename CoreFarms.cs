@@ -314,7 +314,7 @@ public class CoreFarms
             return;
 
         if (Core.CBO_Active)
-            canSoloBoss = Core.CBOBool("PVP_SoloPvPBoss");
+            canSoloBoss = !Core.CBOBool("PVP_SoloPvPBoss");
 
         Core.AddDrop(item);
 
