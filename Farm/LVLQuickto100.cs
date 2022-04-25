@@ -21,7 +21,7 @@ public class LVLQuick
 
     public void QuickLvl(int Level = 100)
     {
-        if (Bot.Player.Level == Level)
+        if (Bot.Player.Level >= Level)
             return;
 
         Core.AddDrop("");

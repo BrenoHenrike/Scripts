@@ -66,7 +66,7 @@ public class DageChallengeMerge
             Core.EquipClass(ClassType.Solo);
             //Training with Dage
             Core.EnsureAccept(8544);
-            Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled");
+            Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled", publicRoom: true);
             Core.EnsureComplete(8544);
             Bot.Wait.ForPickup("Underworld Laurel");
         }
@@ -79,7 +79,7 @@ public class DageChallengeMerge
             //Darkness for Darkness'Sake
             Core.EnsureAccept(8545);
             if (!Core.CheckInventory("Dage's Favor", 200))
-                Core.HuntMonster("underworld", "Legion Fenrir", "Dage's Favor", 200, isTemp: false);
+                Core.HuntMonster("underworld", "Dark Makai", "Dage's Favor", 200, isTemp: false);
             Legion.ObsidianRock(10);
             SoH();
             Core.EnsureComplete(8545);
