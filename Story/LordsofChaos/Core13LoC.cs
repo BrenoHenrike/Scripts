@@ -1845,37 +1845,54 @@ public class Core13LoC
         //Craft a Better Defense
         Story.MapItemQuest(3183, "battleontown", 2203);
 
+
+        Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
+
+        //Reflect the Damage
+        if (!Story.QuestProgression(3184))
+        {
+            Core.EnsureAccept(3184);
+            Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
+            Core.EnsureComplete(3184);
+            Bot.Wait.ForPickup("Perfect Prism");
+        }
+
+        //Pure Chaos
+        if (!Story.QuestProgression(3185))
+        {
+            Core.EnsureAccept(3185);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
+            Core.EnsureComplete(3185);
+            Bot.Wait.ForPickup("Unchaorrupted Sample");
+        }
+
+        //Enemies of a Feather Flock Together
+        if (!Story.QuestProgression(3186))
+        {
+            Core.EnsureAccept(3186);
+            Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
+            Core.EnsureComplete(3186);
+            Bot.Wait.ForPickup("Harpy Feather");
+        }
+
+        //Ward Off the Beast
         if (!Story.QuestProgression(3187))
         {
             Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
             Core.EnsureAccept(3187);
-            //Reflect the Damage
-            if (!Story.QuestProgression(3184) || !Core.CheckInventory("Perfect Prism"))
-            {
-                Core.EnsureAccept(3184);
-                Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
-                Core.EnsureComplete(3184);
-                Bot.Wait.ForDrop("Perfect Prism");
-            }
-            //Pure Chaos
-            if (!Story.QuestProgression(3185) || !Core.CheckInventory("Unchaorrupted Sample"))
-            {
-                Core.EnsureAccept(3185);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
-                Core.EnsureComplete(3185);
-                Bot.Wait.ForDrop("Unchaorrupted Sample");
-            }
-            //Enemies of a Feather Flock Together
-            if (!Story.QuestProgression(3186) || !Core.CheckInventory("Harpy Feather"))
-            {
-                Core.EnsureAccept(3186);
-                Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
-                Core.EnsureComplete(3186);
-                Bot.Wait.ForDrop("Harpy Feather");
-            }
 
-            //Ward Off the Beast
-            Core.Join("mirrorportal");
+            if (!Core.CheckInventory(new[] { "Perfect Prism", "Unchaorrupted Sample", "Harpy Feather" }))
+            {
+                Core.EnsureAccept(new[] { 3184, 3185, 3186 });
+                Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
+                Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
+                Core.EnsureComplete(new[] { 3184, 3185, 3186 });
+                Core.Join("mirrorportal");
+                Bot.Wait.ForPickup("Perfect Prism");
+                Bot.Wait.ForPickup("Unchaorrupted Sample");
+                Bot.Wait.ForPickup("Harpy Feather");
+            }
             Core.EnsureComplete(3187);
         }
 
