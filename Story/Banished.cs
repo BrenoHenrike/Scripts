@@ -124,8 +124,10 @@ public class Banished
         // An Enemy Unblooded
         if (!Story.QuestProgression(2025))
         {
+            Core.EnsureAccept(2025);
             Core.HuntMonster("banished", "Desterrat Crux", "item");
             Core.HuntMonster("banished", "Desterrat Cruor");
+            Core.EnsureComplete(2025);
         }
 
 
