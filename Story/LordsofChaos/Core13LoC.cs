@@ -639,13 +639,17 @@ public class Core13LoC
         //Dance with Great Godfather of Souls
         if (!Story.QuestProgression(661))
         {
-            Core.EnsureAccept(661);
             Core.Join("beehive");
-            Core.SendPackets("%xt%zm%tryQuestComplete%30004%661%-1%false%wvz%");
+            Core.ChainComplete(661);
         }
 
         //Bad Moon Rising
-        Story.KillQuest(675, "orchestra", "Mozard");
+        if (!Story.QuestProgression(675))
+        {
+            Core.EnsureAccept(675);
+            Core.KillMonster("orchestra", "R7", "Down", "Mozard", "Fire Flea", 15);
+            Core.EnsureComplete(675);
+        }
 
         //Burning Down The House
         if (!Story.QuestProgression(676))
@@ -1724,7 +1728,7 @@ public class Core13LoC
         Story.MapItemQuest(2811, "stormtemple", 1731);
 
         //Chaos Lightning Rods
-        Story.KillQuest(2812, "MastormtemplepName", "Chaonslaught Cavalry");
+        Story.KillQuest(2812, "stormtemple", "Chaonslaught Cavalry");
 
         //Barrier Buster
         Story.MapItemQuest(2813, "stormtemple", 1732);
