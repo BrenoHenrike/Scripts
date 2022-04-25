@@ -11,6 +11,7 @@ public class CoreHollowbornDoomKnight
     public CoreHollowbornPaladin HBP = new CoreHollowbornPaladin();
     public CoreSDKA SDKA = new CoreSDKA();
     public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
+    public SepulchuresOriginalHelm SOH = new SepulchuresOriginalHelm();
 
     public string[] ADKItems = {
         "Hollowborn Doom Visage",
@@ -165,6 +166,7 @@ public class CoreHollowbornDoomKnight
 
         // Requirements 
         SDKA.DoAll();
+        SOH.DoAll();
         NSOD.GetNSOD();
         HB.HardcoreContract();
         HBP.HBShadowOfFate();
