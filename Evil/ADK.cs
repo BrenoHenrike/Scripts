@@ -120,7 +120,7 @@ public class ArchDoomKnight
         Core.KillEscherion(item: "Escherion's Helm", publicRoom: true);
         Core.KillEscherion(item: "Chaotic Power", quant: 13, publicRoom: true);
 
-        Core.HuntMonster(map: "Stalagbite", monster: "Vath|Stalagbite", item: "Legendary Sword of Dragon Control", isTemp: false, publicRoom: true);
+        Core.HuntMonster(map: "Stalagbite", monster: "Vath", item: "Legendary Sword of Dragon Control", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "Kitsune", monster: "Kitsune", item: "Hanzamune Dragon Koi Blade", isTemp: false, publicRoom: true);
         Core.HuntMonster(map: "Wolfwing", monster: "Wolfwing", item: "Wolfwing Armor", isTemp: false);
         Core.HuntMonster(map: "palooza", monster: "Kimberly", item: "One Eyed Doll Breaker", isTemp: false);

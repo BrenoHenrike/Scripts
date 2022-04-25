@@ -21,7 +21,7 @@ public class CoreAstravia
         AstraviaJudgement();
         EridaniPast();
         AstraviaPast();
-
+        FirstObservatory();
     }
 
     public void Eridani()
@@ -140,7 +140,7 @@ public class CoreAstravia
         Story.KillQuest(7998, "astravia", "Ti");
 
         //Desperado
-        Story.KillQuest(7999, "astravia", "Creature 2");
+        Story.KillQuest(7999, "astravia", "Creature 27");
 
         //Zugzwang
         Story.KillQuest(8000, "astravia", "The Moon");
@@ -302,8 +302,11 @@ public class CoreAstravia
         Story.KillQuest(8528, "eridanipast", "Bandit");
 
         //Troubadour
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(8529, "eridanipast", "Suki");
+        if (!Core.isCompletedBefore(8529))
+        {
+            Core.EnsureAccept(8529);
+            Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Paladin Dueled");
+        }
 
         //Echoes
         if (!Story.QuestProgression(8530))
@@ -355,5 +358,53 @@ public class CoreAstravia
 
         //Liebestraume No. 3
         Story.KillQuest(8601, "astraviapast", "Forsaken Husk");
+    }
+
+    public void FirstObservatory()
+    {
+        //Progress Check
+        if (Core.isCompletedBefore(8641))
+            return;
+
+        //Preload Quests
+        Story.PreLoad();
+
+        //Aries Tammuz
+        Story.MapItemQuest(8630, "FirstObservatory", 10083);
+
+        //Scorpio
+        Story.KillQuest(8631, "FirstObservatory", "Astra Scorpio");
+
+        //Leo
+        Story.KillQuest(8632, "FirstObservatory", "Astra Leo");
+
+        //Lugal-irra Meslamta-ea
+        Story.MapItemQuest(8633, "FirstObservatory", 10084);
+        Story.KillQuest(8633, "FirstObservatory", "Ancient Turret");
+
+        //Virgo Shala
+        Story.MapItemQuest(8634, "FirstObservatory", 10085);
+
+        //Sagittarius Pabilsag
+        Story.KillQuest(8635, "FirstObservatory", "Ancient Creature");
+
+        //Libra Shamash
+        Story.MapItemQuest(8636, "FirstObservatory", new[] { 10086, 10087 });
+
+        //Auriga
+        Story.KillQuest(8637, "FirstObservatory", new[] { "Ancient Creature", "Ancient Turret" });
+
+        //Pisces Alrescha
+        Story.MapItemQuest(8638, "FirstObservatory", new[] { 10088, 10089 });
+
+        //Pisces Alpherg
+        Story.MapItemQuest(8639, "FirstObservatory", 10090);
+
+        //Pisces Ishtar
+        Story.KillQuest(8640, "FirstObservatory", "Empress’ Finger");
+
+        //Taurus Gugalanna
+        Story.KillQuest(8641, "FirstObservatory", new[] { "Ancient Creature", "Ancient Turret", "Empress’ Finger" });
+
     }
 }

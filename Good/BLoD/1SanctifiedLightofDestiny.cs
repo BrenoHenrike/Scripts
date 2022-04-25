@@ -3,32 +3,28 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
-public class DefaultTemplate
+public class SanctifiedLightofDestiny
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
+
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreBLOD BLOD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreAdvanced Adv = new();
+    public Core13LoC LOC => new Core13LoC();
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions(); 
-        
-        Example();
+        Core.SetOptions();
+
+        LOC.Wolfwing();
+        BLOD.DoAll();
+        BLOD.SanctifiedLightofDestiny();
 
         Core.SetOptions(false);
-    }
-    public void Example()
-    {
-        if(Core.CheckInventory("item"))
-        return;
-        
-        //INSERT CODE HERE      
-    
-        
     }
 }

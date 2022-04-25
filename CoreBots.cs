@@ -233,6 +233,8 @@ public class CoreBots
         }
         if (Bot.Inventory.Contains(item, quant))
             return true;
+        if (Bot.Inventory.ContainsHouseItem(item))
+            return true;
         return false;
     }
 
@@ -482,11 +484,8 @@ public class CoreBots
                 switch (str)
                 {
                     case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
-
                         Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
                         Relogin();
-
-
                         break;
                 }
             }

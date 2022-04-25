@@ -22,10 +22,10 @@ public class Banished
         Core.SetOptions();
 
         doall();
-        
+
         Core.SetOptions(false);
     }
-    
+
     public void doall()
     {
         Story.PreLoad();
@@ -61,7 +61,7 @@ public class Banished
         if (!Story.QuestProgression(7880))
         {
             Core.EnsureAccept(7880);
-            Core.HuntMonster("banished", "Desterrat Moya", "Infected Tentacle");
+            Core.KillMonster("banished", "r14", "Left", "Desterrat Moya", "Infected Tentacle");
             Core.EnsureComplete(7880);
         }
 
@@ -81,8 +81,14 @@ public class Banished
         // Vial of Antitoxins x1  
         if (!Story.QuestProgression(8462))
         {
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 1);
-            Story.BuyQuest(8462, "alchemyacademy", 2114, "Vial of Antitoxins");
+            Core.EnsureAccept(8462);
+            if (!Core.CheckInventory("Vial of Antitoxins"))
+            {
+                Farm.Gold(100000);
+                Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k");
+                Core.BuyItem("alchemyacademy", 2114, "Vial of Antitoxins");
+            }
+            Core.EnsureComplete(8462);
         }
 
         // A Guilty Conscience
@@ -116,7 +122,12 @@ public class Banished
         Story.MapItemQuest(2024, "banished", 980);
 
         // An Enemy Unblooded
-        Story.KillQuest(2025, "banished", new[] { "Desterrat Cruor", "Desterrat Crux" });
+        if (!Story.QuestProgression(2025))
+        {
+            Core.HuntMonster("banished", "Desterrat Crux", "item");
+            Core.HuntMonster("banished", "Desterrat Cruor");
+        }
+
 
         // Re - Open the Seal
         Story.MapItemQuest(2026, "banished", 981, 7);

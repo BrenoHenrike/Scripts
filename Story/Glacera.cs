@@ -24,6 +24,8 @@ public class GlaceraStory
         Glacera();
         FrozenRuins2();
         Northstar();
+        Glacera1();
+        FrostRuins1();
     }
 
     public void FrozenTower()
@@ -251,5 +253,37 @@ public class GlaceraStory
 
         // Defeat Karok!
         Story.KillQuest(3971, "northstar", "Karok the Fallen");
+    }
+    
+
+    public void Glacera1()
+    {
+        if (Core.isCompletedBefore(3950))
+            return;
+            
+        // Key to the Fortress
+        Story.KillQuest(3948, "Glacera", "mob");
+        // Breaking Boulders
+        Story.MapItemQuest(3949, "Glacera", 3049, 6);
+        // The Scythe of Vengeance
+        Story.MapItemQuest(3950, "Glacera", 3047);
+    }
+    
+    public void FrostRuins1()
+    {
+        if (Core.isCompletedBefore(3954))
+            return;
+
+        // Rescue the Refugees
+        Story.KillQuest(3951, "frozenruins", "Frost Invader|Frozen Moglinster");
+
+        // Defeat the Fangbeasts
+        Story.KillQuest(3952, "frozenruins", "Frost Fangbeast");
+
+        // Destroy the Frost Reapers
+        Story.KillQuest(3953, "frozenruins", "Frost Reaper");
+
+        // FrostSpawn General Takedown        
+        Story.KillQuest(3954, "frozenruins", "Frost General");
     }
 }

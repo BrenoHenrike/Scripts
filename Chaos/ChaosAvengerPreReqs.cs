@@ -98,7 +98,7 @@ public class ChaosAvengerClass
             Core.KillEscherion("Escherion's Robe", publicRoom: true);
 
             //Vath's Chaotic Dragonlord Armor
-            Core.HuntMonster("stalagbite", "Vath | Stalagbite", "Vath's Chaotic Dragonlord Armor", isTemp: false, publicRoom: true);
+            Core.HuntMonster("stalagbite", "Vath", "Vath's Chaotic Dragonlord Armor", isTemp: false, publicRoom: true);
 
             //Chaos Shogun Armor
             Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Armor", isTemp: false, publicRoom: true);
