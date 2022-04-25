@@ -85,7 +85,7 @@ public class SepulchuresOriginalHelm
                 Bot.Wait.ForPickup("Gravelyn's Blessing");
             }
             Core.EnsureAccept(5458, 5459, 5460, 5461);
-            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Doomed Memories", isTemp: false);
+            Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories", isTemp: false);
             Core.EnsureComplete(5458);
             Bot.Wait.ForPickup("Painful Memory Bubble");
             Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flam", isTemp: false);
