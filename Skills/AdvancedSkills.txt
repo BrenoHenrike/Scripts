@@ -98,7 +98,7 @@ Base = Evolved Leprechaun = 5 | 4 | 2 | 3 | Timeout: 250
 Base = Evolved Pumpkin Lord = 3 | 4 | 2 | 1 | Timeout: 250
 Base = Exalted Harbinger = 4 | 4 | 4 | 3 | 1 | 2H<30S | Timeout: 250
 Base = Exalted Soul Cleaver = 2 | 3 | 2 | 2 | 3 | Timeout: 250
-Base = FireLord Summoner = 1 | 2 | 4 | 3H<50S | Timeout:250
+Base = FireLord Summoner = 3 | 2 | 1 | 4 | Timeout:250
 Base = Flame Dragon Warrior = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Frost SpiritReaver = 1 | 2 | 3 | 4 | Mode Optimistic
 Supp = Frostval Barbarian = 3 | 1 | 2 | Mode Optimistic
@@ -140,7 +140,7 @@ Base = Legion Revenant = 3 | 4 | 1 | 2 | Mode Optimistic
 Base = Legion Revenant Member Test = 3 | 4 | 1 | 2 | Mode Optimistic
 Base = Legion SwordMaster Assassin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Leprechaun = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = LightCaster = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic
+Base = LightCaster = 3 | 1 | 2 | 4 | Mode Optimistic
 Base = LightCaster Test = 3 | 4 | 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic
 Base = LightMage = 3 | 4 | 1 | 2 | Timeout: 250
 Base = Lord Of Order = 2S | 4S | 1S | 3S | Mode Optimistic
@@ -183,7 +183,7 @@ Base = Royal BattleMage = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Royal Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Rustbucket = 4 | 1 | 3 | 2 | Timeout:250
 Base = Sakura Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
-Base = Scarlet Sorceress = 4 | 4 | 4 | 2 | 1 | 3 | Timeout: 250
+Base = Scarlet Sorceress = 4 | 1 | 2 | 3 | Timeout: 250
 Base = Sentinel = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Shadow Dragon Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Shadow Ripper = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -193,7 +193,7 @@ Base = ShadowScythe General = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ShadowStalker of Time = 4 | 2 | 3 | 1 | 2 | Timeout: 250
 Base = ShadowWalker of Time = 4 | 2 | 3 | 1 | 2 | Timeout: 250
 Base = ShadowWeaver of Time = 4 | 2 | 3 | 1 | 2 | Timeout: 250
-Base = Shaman = 4 | 1 | 2 | Timeout: 250
+Base = Shaman = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2| 3 | Timeout: 250
 Base = Silver Paladin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyGuard Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -203,7 +203,8 @@ Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 | Timeout:300
 Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 | Timeout:300
 Solo = Star Captain = 1 | 1S | 2S | 3S | 4 | 1 | Timeout:300
 Base = StarLord = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = StoneCrusher = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 | Mode Optimistic
+Solo = StoneCrusher = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 | Mode Optimistic
+Base = StoneCrusher = 2 | 3 | 1 | 4 | Timeout: 250
 Base = SwordMaster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SwordMaster Assassin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = The Collector = 1WW20000 | 3 | 4 | 1 | Timeout: 250
