@@ -1810,15 +1810,15 @@ public class CoreFarms
             while (!Core.CheckInventory("Super-Fan Swag Token C", 200))
             {
                 Core.EnsureAccept(1310);
-                Core.HuntMonster("collectorlab", "Dust Bunny of Doom", "Doppelganger Documents", log: false);
+                Core.KillMonster("collectorlab", "r2", "Right", "*", "Doppelganger Documents", log: false);
                 Core.EnsureComplete(1310);
             }
 
             if (!Core.CheckInventory("Super-Fan Swag Token A", quant))
             {
-                Core.BuyItem("collection", 325, 9394, 20);
+                Core.BuyItem("collection", 325, "Super-Fan Swag Token B", 20);
                 Bot.Sleep(1500);
-                Core.BuyItem("collection", 325, 9393, Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
+                Core.BuyItem("collection", 325, "Super-Fan Swag Token A", Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
             }
             Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A")} Left to Farm");
         }
