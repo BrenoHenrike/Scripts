@@ -79,13 +79,40 @@ public class LivingDungeon
         Story.KillQuest(4377, "livingdungeon", "Root of Evil");
 
         // Evil Plant Horrors
-        Story.KillQuest(4378, "livingdungeon", "Evil Plant Horror");
+        if (!Story.QuestProgression(4378))
+        {
+            Core.AddDrop("Wooden Ring");
+            Core.EnsureAccept(4378);
+            if (!Core.CheckInventory("Wooden Ring"))
+            {
+                Core.EnsureAccept(4377);
+                Core.HuntMonster("livingdungeon", "Root of Evil", "Wooden Ring Piece", 5);
+                Core.EnsureComplete(4377);
+                Bot.Wait.ForPickup("Wooden Ring");
+            }
+            Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
+            Core.EnsureComplete(4378);
+        }
 
         // Weeping Widowmakers!
         if (!Story.QuestProgression(4379))
         {
+            Core.AddDrop("Wooden Ring", "Salad!");
             Core.EnsureAccept(4379);
-            Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
+            if (!Core.CheckInventory("Salad!"))
+            {
+                Core.EnsureAccept(4378);
+                if (!Core.CheckInventory("Wooden Ring"))
+                {
+                    Core.EnsureAccept(4377);
+                    Core.HuntMonster("livingdungeon", "Root of Evil", "Wooden Ring Piece", 5);
+                    Core.EnsureComplete(4377);
+                    Bot.Wait.ForPickup("Wooden Ring");
+                }
+                Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
+                Core.EnsureComplete(4378);
+            }
+            Bot.Wait.ForPickup("Salad!");
             Core.EnsureComplete(4379);
         }
 
