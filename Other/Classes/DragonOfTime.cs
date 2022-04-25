@@ -165,7 +165,7 @@ public class DragonOfTime
 
             Core.HuntMonster("bosschallenge", "Grievous Inbunche", "Brutal Slash Studied", 10, isTemp: false, publicRoom: true);
 
-            Adv.BoostHuntMonster("hydrachallenge", "Hydra Head 90", "Epic Hydra Fang", 125, false);
+            Adv.BoostKillMonster("hydrachallenge", "h90", "Left", 3778, "Epic Hydra Fang", 125, false);
 
             Story.ChainQuest(7720);
             Bot.Wait.ForPickup("*");
