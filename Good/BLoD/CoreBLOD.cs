@@ -552,6 +552,8 @@ public class CoreBLOD
         if (Core.CheckInventory("Sanctified Light of Destiny"))
             return;
 
+        Core.AddDrop(new[] { "Sanctified Light of Destiny", "Pious Platinum" });
+
         Core.EnsureAccept(8112);
 
         if (!Core.CheckInventory("Glorious Gold of Destiny"))

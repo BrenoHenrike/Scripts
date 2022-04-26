@@ -3,6 +3,7 @@
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Nulgath/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nulgath/AFDL/NulgathDemandsWork.cs
+//cs_include Scripts/Nulgath\Various\GoldenHanzoVoid.cs
 using RBot;
 
 public class EnoughDOOMforanArchfiend
