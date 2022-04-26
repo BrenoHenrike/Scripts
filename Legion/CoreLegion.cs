@@ -1,5 +1,5 @@
-﻿using RBot;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using RBot;
 
 public class CoreLegion
 {
@@ -471,6 +471,8 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Obsidian Rock", quant))
             return;
+
+        SoulForgeHammer();
 
         Core.AddDrop("Obsidian Rock");
 
