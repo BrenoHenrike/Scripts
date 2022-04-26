@@ -337,7 +337,7 @@ public class CoreLegion
         while (!Core.CheckInventory("Legion Token", quant))
         {
             Core.EnsureAccept(4849);
-            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6);
+            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6, log: false);
             Core.EnsureComplete(4849);
             Bot.Player.Pickup("Legion Token");
             Core.Logger($"Completed x{i++}");
