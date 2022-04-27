@@ -311,100 +311,121 @@ public class CoreAdvanced
 
         if (BoostType == GearBoost.None)
             BoostType = GearBoost.dmgAll;
-
         if (LastBoostType == BoostType)
-        {
-            if (RaceBoosts.Contains(BoostType))
-                return new[] { LastBestItem, LastBestItemDMGall };
-            else return new[] { LastBestItem };
-        }
+            return LastBestGear ?? new[] { "" };
         LastBoostType = BoostType;
 
-        if (RaceBoosts.Contains(BoostType))
-            Core.Logger("Searching for the best available gear against: " + BoostType.ToString());
-        else Core.Logger("Searching for the best available gear to boost: " + BoostType.ToString());
+        Core.Logger("Searching for the best available gear " + (isRacial() ? "against " : "for ") + BoostType.ToString());
 
-        List<InventoryItem> InventoryData = Bot.Inventory.Items;
-        List<InventoryItem> BankData = Bot.Bank.BankItems;
-        List<InventoryItem> BankInvData = InventoryData.Concat(BankData).ToList();
-        Dictionary<string, float> BoostedGear = new Dictionary<string, float>();
-        ItemCategory BestItemCategory = ItemCategory.Unknown;
-        string BestItemDMGall = "";
-        float BestValueDMGall = 0F;
+        List<InventoryItem> BankInvData = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList();
+        float TotalBoostValue = 0F;
+        string[] ArrayOutput;
 
-        foreach (InventoryItem Item in BankInvData)
+        if (!isRacial())
         {
-            if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
-            {
-                string CorrectData = Item.Meta.Split(',').ToList().First(i => i.Contains(BoostType.ToString()));
-                float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
-                if (!BoostedGear.Values.Contains(BoostFloat))
-                    BoostedGear.Add(Item.Name, BoostFloat);
-            }
-        }
-        string BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
-        float BestValue = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Value;
-        if ((BankInvData.Find(x => x.Name == BestItem) != null))
-            BestItemCategory = BankInvData.First(x => x.Name == BestItem).Category;
-
-        if (RaceBoosts.Contains(BoostType))
-        {
-            Dictionary<string, float> BoostedGearDMGall = new Dictionary<string, float>();
+            Dictionary<string, float> BoostedGear = new();
+            string BestItem = "";
 
             foreach (InventoryItem Item in BankInvData)
             {
-                if (Item.Meta != null && Item.Meta.Contains("dmgAll") &&
-                   (WeaponCatagories.Contains(BestItemCategory) ^ WeaponCatagories.Contains(Item.Category)) &&
-                    Item.Category != BestItemCategory)
+                if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
                 {
-                    string CorrectData = Item.Meta.Split(',').ToList().First(i => i.Contains("dmgAll"));
-                    float BoostFloat = float.Parse(CorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
-                    BoostedGearDMGall.Add(Item.Name, BoostFloat);
+                    string CorrectData = Item.Meta.Split(',').ToList().First(i => i.Contains(BoostType.ToString()));
+                    float BoostFloat = float.Parse(CorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
+                    if (!BoostedGear.Values.Contains(BoostFloat))
+                        BoostedGear.Add(Item.Name, BoostFloat);
                 }
             }
-            BestItemDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Key;
-            BestValueDMGall = BoostedGearDMGall.FirstOrDefault(x => x.Value == BoostedGearDMGall.Values.Max()).Value;
-            if (EquipItem)
-                Core.Equip(BestItemDMGall);
-            Bot.Sleep(Core.ActionDelay);
-        }
-        if (EquipItem)
-            Core.Equip(BestItem);
-        LastBestItem = BestItem;
+            BestItem = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Key;
+            TotalBoostValue = BoostedGear.FirstOrDefault(x => x.Value == BoostedGear.Values.Max()).Value;
 
-        if (RaceBoosts.Contains(BoostType))
-        {
-            if (BestItem == null && BestItemDMGall == null)
-            {
-                Core.Logger($"Best gear for [{BoostType.ToString()}] wasnt found!");
-                return new[] { "" };
-            }
-            else if (BestItem == null && BestItemDMGall != null)
-            {
-                Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
-                LastBestItemDMGall = BestItemDMGall;
-                return new[] { BestItemDMGall };
-            }
-            else if (BestItem != null && BestItemDMGall == null)
-            {
-                Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
-                return new[] { BestItem };
-            }
-            Core.Logger($"Best gear against {BoostType.ToString()} found: {BestItem} ({(BestValue - 1).ToString("+0.##%")}) & {BestItemDMGall} ({(BestValueDMGall - 1).ToString("+0.##%")})");
-            Core.Logger($"Combined they give a boost of " + (BestValue * BestValueDMGall - 1).ToString("+0.##%"));
-            LastBestItemDMGall = BestItemDMGall ?? "";
-            if (BestItem == null)
-                return new[] { "" };
-            if (BestItemDMGall == null)
-                return new[] { "" };
-            return new string[] { BestItem, BestItemDMGall };
+            ArrayOutput = new[] { BestItem };
+
+            if (EquipItem)
+                Core.Equip(BestItem);
+            LastBestGear = ArrayOutput;
         }
-        if (BestItem != null)
-            Core.Logger($"Best gear for [{BoostType.ToString()}] found: {BestItem} ({(BestValue - 1).ToString("+0.##%")})");
-        else Core.Logger($"Best gear for [{BoostType.ToString()}] wasnt found!");
-        if (BestItem == null)
+        else
+        {
+            List<BestGearData> BestGearData = new();
+            List<InventoryItem> AllRaceItems = new();
+            List<InventoryItem> AllDMGallItems = new();
+            foreach (InventoryItem Item in BankInvData)
+            {
+                if (!String.IsNullOrEmpty(Item.Meta))
+                {
+                    if (Item.Meta.Contains(BoostType.ToString()))
+                        AllRaceItems.Add(Item);
+                    if (Item.Meta.Contains("dmgAll"))
+                        AllDMGallItems.Add(Item);
+                }
+            }
+
+            if (AllDMGallItems.Count != 0)
+                foreach (InventoryItem iRace in AllRaceItems)
+                {
+                    string iRaceCorrectData = iRace.Meta.Split(',').ToList().First(i => i.Contains(BoostType.ToString()));
+                    float iRaceBoostFloat = float.Parse(iRaceCorrectData.Replace($"{BoostType.ToString()}:", ""), CultureInfo.InvariantCulture.NumberFormat);
+
+                    BestGearData.Add(new(iRace.Name, "", iRaceBoostFloat));
+
+                    foreach (InventoryItem iAll in AllDMGallItems)
+                    {
+                        if (iRace.ID == iAll.ID || iRace.Category == iAll.Category || iRace.ItemGroup == iAll.ItemGroup)
+                            continue;
+
+                        string iAllCorrectData = iAll.Meta.Split(',').ToList().First(i => i.Contains("dmgAll"));
+                        float iAllBoostFloat = float.Parse(iAllCorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
+
+                        BestGearData.Add(new(iRace.Name, iAll.Name, (iRaceBoostFloat * iAllBoostFloat)));
+
+                        if (!BestGearData.Any(x => x.iDMGall == iAll.Name))
+                            BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
+                    }
+                }
+            else
+            {
+                foreach (InventoryItem iAll in AllDMGallItems)
+                {
+                    string iAllCorrectData = iAll.Meta.Split(',').ToList().First(i => i.Contains("dmgAll"));
+                    float iAllBoostFloat = float.Parse(iAllCorrectData.Replace("dmgAll:", ""), CultureInfo.InvariantCulture.NumberFormat);
+
+                    BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
+                }
+            }
+
+            BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
+            string BestRace = FinalCombo.iRace ?? "";
+            string BestDMGAll = FinalCombo.iDMGall ?? "";
+            List<string> ListOutput = new();
+
+            if (!String.IsNullOrEmpty(BestRace))
+                ListOutput.Add(BestRace);
+            if (!String.IsNullOrEmpty(BestDMGAll))
+                ListOutput.Add(BestDMGAll);
+            ArrayOutput = ListOutput.ToArray();
+            TotalBoostValue = FinalCombo.BoostValue;
+
+            if (EquipItem)
+                Core.Equip(ArrayOutput);
+            LastBestGear = ArrayOutput;
+        }
+
+        if (ArrayOutput.Length == 0)
+        {
+            Core.Logger("Best gear " + (isRacial() ? "against " : "for ") + $"{BoostType.ToString()} wasnt found!");
             return new[] { "" };
-        return new[] { BestItem };
+        }
+        else if (ArrayOutput.Length == 1)
+            Core.Logger("Best gear " + (isRacial() ? "against " : "for ") + $"{BoostType.ToString()} found: {ArrayOutput[0]} ({(TotalBoostValue - 1).ToString("+0.##%")})");
+        else if (ArrayOutput.Length == 2)
+            Core.Logger($"Best gear against {BoostType.ToString()} found: {ArrayOutput[0]} + {ArrayOutput[1]} ({(TotalBoostValue - 1).ToString("+0.##%")})");
+        return ArrayOutput;
+
+        bool isRacial()
+        {
+            return RaceBoosts.Contains(BoostType);
+        }
     }
     private GearBoost[] RaceBoosts =
     {
@@ -417,8 +438,19 @@ public class CoreAdvanced
         GearBoost.Undead
     };
     private GearBoost LastBoostType = GearBoost.None;
-    private string LastBestItemDMGall = "";
-    private string LastBestItem = "";
+    private string[]? LastBestGear;
+    private class BestGearData
+    {
+        public string? iRace { get; set; }
+        public string? iDMGall { get; set; }
+        public float BoostValue { get; set; }
+        public BestGearData(string iRace, string iDMGall, float BoostValue)
+        {
+            this.iRace = iRace;
+            this.iDMGall = iDMGall;
+            this.BoostValue = BoostValue;
+        }
+    }
 
     /// <summary>
     /// Stores the gear a player has so that it can later restore these
