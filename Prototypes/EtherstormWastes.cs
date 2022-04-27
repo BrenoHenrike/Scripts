@@ -5,7 +5,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class SepulchurePrequelAlden
+public class EtherStormWastes
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -27,7 +27,7 @@ public class SepulchurePrequelAlden
     {
         if (Core.isCompletedBefore(3535))
         {
-            
+
             Core.Logger("You have already completed SelpulchurePrequel Storyline");
             return;
         }
@@ -37,7 +37,7 @@ public class SepulchurePrequelAlden
         Core.EquipClass(ClassType.Solo);
 
         //Explore The DragonPlane 1384
-        Story.MapItemQuest(1384, "dragonplane", new[]{ 682, 683, 684, 685, 686 });
+        Story.MapItemQuest(1384, "dragonplane", new[] { 682, 683, 684, 685, 686 });
 
         //Lots Of Fiber 1385
         Story.KillQuest(1385, "dragonplane", new[] { "Earth Elemental", "Water Elemental", "Wind Elemental", "Fire Elemental" });
@@ -138,11 +138,11 @@ public class SepulchurePrequelAlden
 
         //Chrysalis of Flames 1634
         Story.MapItemQuest(1634, "earthstorm", 860, 3);
-        Story.KillQuest(1634, "earthstorm", new[]{ "Crystallized Living Fire", "Sapphire Golem" });
+        Story.KillQuest(1634, "earthstorm", new[] { "Crystallized Living Fire", "Sapphire Golem" });
 
         //Glittering Secrets of Old 1635
         Story.MapItemQuest(1635, "earthstorm", 862, 8);
-        Story.KillQuest(1635, "earthstorm", new[]{ "Crystalized Jellyfish", "Diamond Golem" });
+        Story.KillQuest(1635, "earthstorm", new[] { "Crystalized Jellyfish", "Diamond Golem" });
 
         //Aria of Great Significance 
         if (!Story.QuestProgression(1636))
@@ -157,7 +157,7 @@ public class SepulchurePrequelAlden
             Core.HuntMonster("earthstorm", "Emerald Golem", "Greenglass Bells", 8);
             Core.EnsureComplete(1636);
         }
-        
+
         //Rekindling a Pomegranate 1637
         Story.KillQuest(1637, "earthstorm", "Ruby Golem");
 
