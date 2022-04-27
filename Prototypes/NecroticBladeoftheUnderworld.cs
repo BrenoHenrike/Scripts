@@ -41,28 +41,19 @@ public class NecroticBladeoftheUnderworld
 
     public void Event_RunToArea(ScriptInterface bot, string zone)
     {
-        Random rd = new Random();
-
-        int Left = rd.Next(40, 175);
-        int Left1 = rd.Next(400, 410);
-        int Right = rd.Next(760, 930);
-        int Right1 = rd.Next(410, 415);
-        int Center = rd.Next(480, 500);
-        int Center1 = rd.Next(300, 420);
-        
             switch (zone.ToLower())
         {
             case "a":
                 //Move to the left
-                bot.Player.WalkTo(Left, Left1, speed: 8);
+                bot.Player.WalkTo(Bot.Runtime.Random.Next(40, 175), Bot.Runtime.Random.Next(400, 410), speed: 8);
                 break;
             case "b":
                 //Move to the right
-                bot.Player.WalkTo(Right, Right1, speed: 8);
+                bot.Player.WalkTo(Bot.Runtime.Random.Next(760, 930), Bot.Runtime.Random.Next(410, 415), speed: 8);
                 break;
             default:
                 //Move to the center
-                bot.Player.WalkTo(Center, Center1, speed: 8);
+                bot.Player.WalkTo(Bot.Runtime.Random.Next(480, 500), Bot.Runtime.Random.Next(300, 420), speed: 8);
                 break;
         }
     }
