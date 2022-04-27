@@ -560,6 +560,7 @@ public class CoreQOM
     {
         if (Core.isCompletedBefore(5791))
             return;
+
         //What Happened to Baldric?
         Story.MapItemQuest(5791, "therift", 5228);
     }
