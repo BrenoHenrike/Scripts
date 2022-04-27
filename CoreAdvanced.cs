@@ -394,8 +394,7 @@ public class CoreAdvanced
                 }
             }
 
-            foreach (BestGearData combo in BestGearData)
-                Bot.Log(combo.BoostValue.ToString());
+
 
             BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
             string BestRace = FinalCombo.iRace ?? "";
