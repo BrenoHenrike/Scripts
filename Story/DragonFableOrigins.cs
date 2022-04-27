@@ -88,8 +88,13 @@ public class DragonFableOrigins
         Story.PreLoad();
 
         // Getting a Feel for the Area
-        Story.MapItemQuest(6301, "northmountain", 5812);
-        Story.KillQuest(6301, "northmountain", "Ice Elemental");
+        if (!Story.QuestProgression(6301))
+        {
+            Core.EnsureAccept(6301);
+            Core.HuntMonster("northmountain", "Ice Elemental", "Monsters Defeated", 8);
+            Bot.Map.GetMapItem(5812);
+            Core.EnsureComplete(6301);
+        }
 
         // Finding the First Rune
         Story.KillQuest(6302, "northmountain", "Ice Elemental");
