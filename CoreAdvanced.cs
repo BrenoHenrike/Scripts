@@ -361,7 +361,7 @@ public class CoreAdvanced
                 }
             }
 
-            if (AllDMGallItems.Count != 0)
+            if (AllRaceItems.Count != 0)
                 foreach (InventoryItem iRace in AllRaceItems)
                 {
                     string iRaceCorrectData = iRace.Meta.Split(',').ToList().First(i => i.Contains(BoostType.ToString()));
@@ -379,8 +379,8 @@ public class CoreAdvanced
 
                         BestGearData.Add(new(iRace.Name, iAll.Name, (iRaceBoostFloat * iAllBoostFloat)));
 
-                        if (!BestGearData.Any(x => x.iDMGall == iAll.Name))
-                            BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
+                        //Still needs a good working check V
+                        BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
                     }
                 }
             else
@@ -393,6 +393,9 @@ public class CoreAdvanced
                     BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
                 }
             }
+
+            foreach (BestGearData combo in BestGearData)
+                Bot.Log(combo.BoostValue.ToString());
 
             BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
             string BestRace = FinalCombo.iRace ?? "";
