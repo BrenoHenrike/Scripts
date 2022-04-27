@@ -41,8 +41,9 @@ public class GetSDD
             if (!Story.QuestProgression(6908))
             {
                 Core.EnsureAccept(6908);
-                Core.HuntMonster("void", "Void Elemental", "Void Energy", 8);
-                Core.EnsureAccept(6908);
+                if (!Core.CheckInventory(48632, 8))
+                    Core.KillMonster("void", "r11", "Left", "Void Elemental", "Void Energy", 8);
+                Core.EnsureComplete(6908);
             }
             Story.MapItemQuest(6909, "void", 6454);
             Story.KillQuest(6910, "void", "Void Bear");
