@@ -32,31 +32,31 @@ public class XansLair
 
         Story.PreLoad();
 
-        Story.KillQuest(1242, MapName: "volcano", MonsterName: "Lava Golem");
-        Story.KillQuest(1243, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1243, MapName: "volcano", MapItemID: 526, Amount: 3);
-        Story.KillQuest(1244, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.KillQuest(1245, MapName: "volcano", MonsterName: "Lava Golem");
-        Story.MapItemQuest(1245, MapName: "volcano", MapItemID: 527, Amount: 8);
-        Story.KillQuest(1246, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.KillQuest(1247, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1248, MapName: "volcano", MapItemID: 528, Amount: 12);
-        Story.KillQuest(1249, MapName: "volcano", MonsterName: "Flamethrower Dwakel");
-        Story.KillQuest(1250, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1250, MapName: "volcano", MapItemID: 529, Amount: 8);
-        Story.KillQuest(1251, MapName: "volcano", MonsterName: "Flamethrower Dwakel");
-        Story.KillQuest(1252, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1252, MapName: "volcano", MapItemID: 530, Amount: 10);
-        Story.KillQuest(1253, MapName: "volcano", MonsterName: "Flame Elemental");
-        Story.MapItemQuest(1254, MapName: "volcano", MapItemID: 531, Amount: 12);
-        Story.KillQuest(1255, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.KillQuest(1256, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1257, MapName: "volcano", MapItemID: 532, Amount: 10);
-        Story.KillQuest(1258, MapName: "volcano", MonsterName: "Flamethrower Dwakel");
-        Story.KillQuest(1259, MapName: "volcano", MonsterNames: new[] { "Fire Imp", "Flame Elemental" });
-        Story.KillQuest(1260, MapName: "volcano", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1260, MapName: "volcano", MapItemID: 533, Amount: 6);
-        Story.KillQuest(1261, MapName: "volcano", MonsterName: "Magman");
+        Story.KillQuest(1242, "volcano", "Lava Golem");
+        Story.MapItemQuest(1243, "volcano", 526, 3);
+        Story.KillQuest(1243, "volcano", "Fire Imp");
+        Story.KillQuest(1244, "volcano", "Fire Imp");
+        Story.MapItemQuest(1245, "volcano", 527, 8);
+        Story.KillQuest(1245, "volcano", "Lava Golem");
+        Story.KillQuest(1246, "volcano", "Fire Imp");
+        Story.KillQuest(1247, "volcano", "Fire Imp");
+        Story.MapItemQuest(1248, "volcano", 528, 12);
+        Story.KillQuest(1249, "volcano", "Flamethrower Dwakel");
+        Story.KillQuest(1250, "volcano", "Fire Imp");
+        Story.MapItemQuest(1250, "volcano", 529, 8);
+        Story.KillQuest(1251, "volcano", "Flamethrower Dwakel");
+        Story.MapItemQuest(1252, "volcano", 530, 10);
+        Story.KillQuest(1252, "volcano", "Fire Imp");
+        Story.KillQuest(1253, "volcano", "Flame Elemental");
+        Story.MapItemQuest(1254, "volcano", 531, 12);
+        Story.KillQuest(1255, "volcano", "Fire Imp");
+        Story.KillQuest(1256, "volcano", "Fire Imp");
+        Story.MapItemQuest(1257, "volcano", 532, 10);
+        Story.KillQuest(1258, "volcano", "Flamethrower Dwakel");
+        Story.KillQuest(1259, "volcano", new[] { "Fire Imp", "Flame Elemental" });
+        Story.MapItemQuest(1260, "volcano", 533, 6);
+        Story.KillQuest(1260, "volcano", "Fire Imp");
+        Story.KillQuest(1261, "volcano", "Magman");
     }
 
     public void AndesisQuests()
@@ -66,13 +66,13 @@ public class XansLair
 
         Story.PreLoad();
 
-        Story.MapItemQuest(1733, MapName: "xantown", MapItemID: 922);
-        Story.KillQuest(1734, MapName: "xantown", MonsterName: "Fire Imp");
-        Story.KillQuest(1735, MapName: "xantown", MonsterName: "Fire Imp");
-        Story.KillQuest(1736, MapName: "xantown", MonsterName: "Fire Imp");
-        Story.MapItemQuest(1737, MapName: "xantown", MapItemID: 923, Amount: 4);
-        Story.MapItemQuest(1738, MapName: "xantown", MapItemID: 924);
-        Story.MapItemQuest(1739, MapName: "xantown", MapItemID: 925);
+        Story.MapItemQuest(1733, "xantown", 922);
+        Story.KillQuest(1734, "xantown", "Fire Imp");
+        Story.KillQuest(1735, "xantown", "Fire Imp");
+        Story.KillQuest(1736, "xantown", "Fire Imp");
+        Story.MapItemQuest(1737, "xantown", 923, 4);
+        Story.MapItemQuest(1738, "xantown", 924);
+        Story.MapItemQuest(1739, "xantown", 925);
     }
 
     public void ScoriasQuestsQuests()
@@ -82,7 +82,7 @@ public class XansLair
 
         Story.PreLoad();
 
-        Story.KillQuest(1740, MapName: "xantown", MonsterName: "Xan");
+        Story.KillQuest(1740, "xantown", "Xan");
     }
 
     public void WarlicsQuests()
@@ -92,14 +92,13 @@ public class XansLair
 
         Story.PreLoad();
 
-        Story.MapItemQuest(2151, MapName: "xancave", MapItemID: 1220);
-        Story.KillQuest(2152, MapName: "xancave", MonsterName: "Lava Goblin");
-        Story.MapItemQuest(2153, MapName: "xancave", MapItemID: 1221);
-        Story.KillQuest(2154, MapName: "xancave", MonsterName: "Lava Goblin");
-        Story.KillQuest(2155, MapName: "xancave", MonsterName: "Lava Goblin");
-        Story.KillQuest(2155, MapName: "xancave", MonsterName: "Lava Goblin");
-        Story.MapItemQuest(2155, MapName: "xancave", MapItemID: 1223, Amount: 8);
-        Story.KillQuest(2156, MapName: "xancave", MonsterName: "Shurpu Ring Guardian");
-        Story.MapItemQuest(2157, MapName: "xancave", MapItemID: 1222);
+        Story.MapItemQuest(2151, "xancave", 1220);
+        Story.KillQuest(2152, "xancave", "Lava Goblin");
+        Story.MapItemQuest(2153, "xancave", 1221);
+        Story.KillQuest(2154, "xancave", "Lava Goblin");
+        Story.MapItemQuest(2155, "xancave", 1223, 8);
+        Story.KillQuest(2155, "xancave", new[] { "Lava Goblin", "Lava Goblin" });
+        Story.KillQuest(2156, "xancave", "Shurpu Ring Guardian");
+        Story.MapItemQuest(2157, "xancave", 1222);
     }
 }
