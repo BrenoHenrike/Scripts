@@ -258,6 +258,7 @@ public class BrightOak
             return;
 
         Core.AddDrop("Ravinos Token I", "Ravinos Token II", "Ravinos Token III", "Ravinos Token IV", "Ravinos Token V");
+        Core.EquipClass(ClassType.Farm);
 
         // It's Too Bad I'm Poisonous Now
         // Ravinos Token V
@@ -325,45 +326,43 @@ public class BrightOak
             return;
 
         Core.AddDrop("Lapis Token I", "Lapis Token II", "Lapis Token III");
+        Core.EquipClass(ClassType.Farm);
 
+        // Return to Ravinos - Requires Lapis Token III
+        Core.EnsureAccept(4808);
 
-        // Return to Ravinos
-        if (!Story.QuestProgression(4808))
+        // Even a Noob Can Do It
+        // Lapis Token III
+        if (!Core.CheckInventory("Lapis Token III"))
         {
-            // Even a Noob Can Do It
-            // Lapis Token III
-            if (!Core.CheckInventory("Lapis Token III"))
+            // Outside Assistance
+            // Lapis Token II
+            if (!Core.CheckInventory("Lapis Token II"))
             {
-                // Outside Assistance
-                // Lapis Token II
-                if (!Core.CheckInventory("Lapis Token II"))
+                // Better Than A Magic 8-Ball
+                // Lapis Token I
+                if (!Core.CheckInventory("Lapis Token I"))
                 {
-                    // Better Than A Magic 8-Ball
-                    // Lapis Token I
-                    if (!Core.CheckInventory("Lapis Token I"))
-                    {
-                        Core.EnsureAccept(4805);
-                        Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Twigs", 7);
-                        Core.HuntMonster("Gaiazor", "Wisterrora", "Drop of Wisterrora Ichor");
-                        Core.EnsureComplete(4805);
-                        Bot.Wait.ForPickup("Lapis Token I");
-                    }
-                    Core.EnsureAccept(4806);
-                    if (!Core.CheckInventory("Sparrow's Blood"))
-                        Daily.SparrowsBlood();
-                    Core.EnsureComplete(4806);
-                    Bot.Wait.ForPickup("Lapis Token II");
+                    Core.EnsureAccept(4805);
+                    Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Twigs", 7);
+                    Core.HuntMonster("Gaiazor", "Wisterrora", "Drop of Wisterrora Ichor");
+                    Core.EnsureComplete(4805);
+                    Bot.Wait.ForPickup("Lapis Token I");
                 }
-                Core.EnsureAccept(4807);
-                Core.GetMapItem(4207, 1, "Gaiazor");
-                Core.GetMapItem(4208, 1, "Gaiazor");
-                Core.GetMapItem(4209, 1, "Gaiazor");
-                Core.EnsureComplete(4807);
-                Bot.Wait.ForPickup("Lapis Token III");
+                Core.EnsureAccept(4806);
+                if (!Core.CheckInventory("Sparrow's Blood"))
+                    Daily.SparrowsBlood();
+                Core.EnsureComplete(4806);
+                Bot.Wait.ForPickup("Lapis Token II");
             }
-            Story.MapItemQuest(4808, "Gaiazor", 4210);
+            Core.EnsureAccept(4807);
+            Core.GetMapItem(4207, 1, "Gaiazor");
+            Core.GetMapItem(4208, 1, "Gaiazor");
+            Core.GetMapItem(4209, 1, "Gaiazor");
+            Core.EnsureComplete(4807);
+            Bot.Wait.ForPickup("Lapis Token III");
         }
-
+        Story.MapItemQuest(4808, "Gaiazor", 4210);
     }
 
     public void RavinosBrightgladePart3()
@@ -381,6 +380,9 @@ public class BrightOak
     public void ExtraREP(bool Extra = true)
     {
         if (!Extra)
+            return;
+
+        if (Core.isCompletedBefore(4472))
             return;
 
         // Catering to Craftsmanship

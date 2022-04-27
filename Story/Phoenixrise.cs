@@ -54,7 +54,7 @@ public class PhoenixriseStory
         //A Jarring Discovery
         Story.MapItemQuest(4072, "pyrewatch", 3159, 12);
         //Push on to Pyrewatch
-        Story.KillQuest(4073, "pyrewatch", "Fire Pikeman");
+        Story.KillQuest(4073, "pyrewatch", new[] { "Firestorm Knight", "Firestorm Knight" });
         //Friends of Pyrewatch Peak
         Story.KillQuest(4074, "pyrewatch", new[] { "Caustocrush", "Fire Pikeman", "Flame Soldier", "Fire Pikeman" });
         //A Salve to Soothe

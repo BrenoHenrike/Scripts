@@ -81,6 +81,7 @@ public class DageChallengeMerge
             if (!Core.CheckInventory("Dage's Favor", 200))
                 Core.HuntMonster("underworld", "Dark Makai", "Dage's Favor", 200, isTemp: false);
             Legion.ObsidianRock(10);
+            
             SoH();
             Core.EnsureComplete(8545);
             Bot.Wait.ForPickup("Underworld Medal");
@@ -108,6 +109,8 @@ public class DageChallengeMerge
         Core.AddDrop("Souls of Heresy");
         Core.SendPackets($"%xt%zm%getQuests%{Bot.Map.RoomID}%7983%%7980%%7981%");
         Core.EquipClass(ClassType.Farm);
+        
+        Circles.CirclesWar();
 
         while (!Core.CheckInventory("Souls of Heresy", quant))
         {

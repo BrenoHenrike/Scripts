@@ -2111,7 +2111,7 @@ public class Core13LoC
         Story.KillQuest(3789, "newfinale", "Chaorrupted Lycan Hunter");
 
         //Battle for Chaos in Darkovia!
-        Story.KillQuest(3785, "newfinale", "Shadow SlayerMana Blaster");
+        Story.KillQuest(3785, "newfinale", "Shadow Slayer");
 
         //Defeat the Memory of Vampires
         Story.KillQuest(3790, "newfinale", "Memory of Vampires");

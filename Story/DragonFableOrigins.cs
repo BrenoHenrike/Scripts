@@ -61,7 +61,7 @@ public class DragonFableOrigins
         if (!Story.QuestProgression(6297))
         {
             Core.EnsureAccept(6297);
-            Core.KillMonster("firewar", "r7", "Left", "Inferno Dragon", "Perfect Pyritium", 1);
+            Core.KillMonster("firewar", "r7", "Left", "Inferno Dragon", "Perfect Pyritium");
             Core.EnsureComplete(6297);
         }
 
@@ -88,8 +88,13 @@ public class DragonFableOrigins
         Story.PreLoad();
 
         // Getting a Feel for the Area
-        Story.MapItemQuest(6301, "northmountain", 5812, 1);
-        Story.KillQuest(6301, "northmountain", "Ice Elemental");
+        if (!Story.QuestProgression(6301))
+        {
+            Core.EnsureAccept(6301);
+            Core.HuntMonster("northmountain", "Ice Elemental", "Monsters Defeated", 8);
+            Bot.Map.GetMapItem(5812);
+            Core.EnsureComplete(6301);
+        }
 
         // Finding the First Rune
         Story.KillQuest(6302, "northmountain", "Ice Elemental");
@@ -105,7 +110,7 @@ public class DragonFableOrigins
 
         // Unlock the Cave
         Story.MapItemQuest(6306, "northmountain", 5813, 4);
-        Story.MapItemQuest(6306, "northmountain", 5814, 1);
+        Story.MapItemQuest(6306, "northmountain", 5814);
 
         // The Guardian
         Story.KillQuest(6307, "northmountain", "Izotz");
@@ -121,7 +126,7 @@ public class DragonFableOrigins
         Story.KillQuest(6308, "charredplains", "Fire Dragon");
 
         // Meet Up
-        Story.MapItemQuest(6309, "charredplains", 5815, 1);
+        Story.MapItemQuest(6309, "charredplains", 5815);
 
         // Akriloth
         Story.KillQuest(6310, "charredplains", "Akriloth");
