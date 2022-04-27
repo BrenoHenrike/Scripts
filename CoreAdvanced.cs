@@ -659,12 +659,7 @@ public class CoreAdvanced
     public void SmartEnhance(string Class)
     {
         InventoryItem SelectedClass = Bot.Inventory.Items.First(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class);
-        if (SelectedClass.EnhancementLevel == 0)
-        {
-            Core.Logger("Ignore the message about the Hybrid Enhancement");
-            EnhanceItem(Class, EnhancementType.Hybrid);
-        }
-        Core.Equip(SelectedClass.Name);
+
         switch (SelectedClass.Name.ToLower())
         {
             //Lucky - Spiral Carve
@@ -758,6 +753,9 @@ public class CoreAdvanced
             case "underworld chronomancer":
             case "unlucky leperchaun":
             case "void highlord":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Lucky);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
                 break;
             //Lucky - Mana Vamp
@@ -803,6 +801,9 @@ public class CoreAdvanced
             case "warrior":
             case "warrior (rare)":
             case "warriorscythe general":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Lucky);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
                 break;
             //Lucky - Awe Blast
@@ -839,6 +840,9 @@ public class CoreAdvanced
             case "unchained rocker":
             case "unchained rockstar":
             case "yami no ronin":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Lucky);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
                 break;
             //Lucky - Health Vamp
@@ -854,6 +858,9 @@ public class CoreAdvanced
             case "sentinel":
             case "vampire":
             case "vampire lord":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Lucky);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
                 break;
             //Wizard - Awe Blast
@@ -879,6 +886,9 @@ public class CoreAdvanced
             case "royal battlemage":
             case "timeless dark caster":
             case "witch":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Wizard);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
                 break;
             //Wizard - Spiral Carve
@@ -901,6 +911,9 @@ public class CoreAdvanced
             case "pyromancer":
             case "sakura cryomancer":
             case "troll spellsmith":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Wizard);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
                 break;
             //Wizard - Health Vamp
@@ -917,15 +930,24 @@ public class CoreAdvanced
             case "mage (rare)":
             case "sorcerer":
             case "the collector":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Wizard);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
                 break;
             //Fighter - Awe Blast
             case "deathknight":
             case "frostval barbarian":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Fighter);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Fighter, WeaponSpecial.Awe_Blast);
                 break;
             //Healer - Health Vamp
             case "dragon of time":
+                if (SelectedClass.EnhancementLevel == 0)
+                    EnhanceItem(Class, EnhancementType.Healer);
+                Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Healer, WeaponSpecial.Health_Vamp);
                 break;
             default:
