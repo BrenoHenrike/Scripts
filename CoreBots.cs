@@ -1516,6 +1516,19 @@ public class CoreBots
             CBOString("Pet2Select"),
             CBOString("GroundItem2Select")
         };
+
+        //Best set order modification
+        string[] bestSet = {
+            "Necrotic Sword of Doom",
+            "Polly Roger",
+            "Head of the legion Beast",
+            "Fire Champion's Armor",
+            "Awescended Omni Wings"
+        };
+        if (FarmGear.All(x => bestSet.Contains(x)))
+            FarmGear = bestSet.Concat(new[] { CBOString("GroundItem1Select") }).ToArray();
+        if (SoloGear.All(x => bestSet.Contains(x)))
+            SoloGear = bestSet.Concat(new[] { CBOString("GroundItem2Select") }).ToArray();
     }
 
     public string CBOString(string Name)
