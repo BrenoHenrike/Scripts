@@ -701,8 +701,6 @@ public class CoreNulgath
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
         Core.AddDrop("Unidentified 10");
-        //if (Core.CheckInventory("Legion Revenant") || Core.CheckInventory("Void Highlord"))
-        //DirtyDeedsDoneDirtCheap(quant);
         BambloozevsDrudgen("Unidentified 10", quant);
         NulgathLarvae("unidentified 10", quant);
     }
