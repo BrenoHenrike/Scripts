@@ -26,6 +26,7 @@ public class GlaceraStory
         Northstar();
         Glacera1();
         FrostRuins1();
+        IceWindPass();
     }
 
     public void FrozenTower()
@@ -254,13 +255,13 @@ public class GlaceraStory
         // Defeat Karok!
         Story.KillQuest(3971, "northstar", "Karok the Fallen");
     }
-    
+
 
     public void Glacera1()
     {
         if (Core.isCompletedBefore(3950))
             return;
-            
+
         // Key to the Fortress
         Story.KillQuest(3948, "Glacera", "mob");
         // Breaking Boulders
@@ -268,7 +269,7 @@ public class GlaceraStory
         // The Scythe of Vengeance
         Story.MapItemQuest(3950, "Glacera", 3047);
     }
-    
+
     public void FrostRuins1()
     {
         if (Core.isCompletedBefore(3954))
@@ -285,5 +286,56 @@ public class GlaceraStory
 
         // FrostSpawn General Takedown        
         Story.KillQuest(3954, "frozenruins", "Frost General");
+    }
+
+    public void IceWindPass()
+    {
+        if (Core.isCompletedBefore(5601))
+            return;
+
+        // Where is Karok?
+        Story.MapItemQuest(5587, "IceWindPass", 5074, 5);
+
+        // Cloaking Spell
+        Story.KillQuest(5588, "IceWindPass", "Glacial Elemental");
+
+        // Splattered Mana
+        Story.MapItemQuest(5589, "IceWindPass", 5075, 5);
+        Story.KillQuest(5589, "IceWindPass", "Glacial Elemental");
+
+        // Dispell the Spell 
+        Story.KillQuest(5590, "IceWindPass", "Polar Golem");
+
+        // Catch Up to Karok 
+        Story.KillQuest(5591, "IceWindPass", "Frost Invader");
+
+        // Blast the Frostspawn Symbiote
+        Story.KillQuest(5592, "IceWindPass", "Frostspawn Symbiote");
+
+        // Keep Going!
+        Story.KillQuest(5593, "IceWindPass", "Frost Invader|Frostspawn Troll");
+
+        // Take it Down 
+        Story.KillQuest(5594, "IceWindPass", "Frostspawn Horror");
+
+        // Keep the Frostspawn Away!
+        Story.KillQuest(5595, "IceWindPass", new[] { "Frostspawn Troll", "Frost Invader" });
+
+        // Take a Break from Fighting
+        Story.KillQuest(5596, "IceWindPass", new[] { "Polar Golem", "Glacial Elemental" });
+
+        // Fight For Karok! & Fight For Kezeroth! + Mega   
+        if (!Bot.Quests.IsUnlocked(5601))
+        {
+            Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
+            Core.HuntMonster("icewindwar", "Glaceran Defender|Kezeroth's Blade", "FrostSpawn Medal", 10);
+            Core.HuntMonster("icewindwar", "Frost Invader|Frostspawn Troll", "World Ender Medal", 10);
+            Core.HuntMonster("icewindwar", "Glaceran Defender|Kezeroth's Blade", "Mega Frostspawn Medal", 5);
+            Core.HuntMonster("icewindwar", "Frost Invader|Frostspawn Troll", "Mega World Ender Medal", 5);
+            Core.EnsureComplete(new[] { 5597, 5598, 5599, 5600 });
+        }
+
+        // What is THAT?
+        Story.KillQuest(5601, "icewindwar", "Soricomorpha");
     }
 }
