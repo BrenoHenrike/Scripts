@@ -1115,7 +1115,7 @@ public class CoreFarms
         if (FactionRank("Glacera") >= rank)
             return;
 
-        if (!Bot.Quests.IsUnlocked(5597))
+        if (!Core.isCompletedBefore(5601))
             Core.Logger("Farming Quests are not unlocked, Please run: \"Story/Glacera.cs\"", stopBot: true);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
