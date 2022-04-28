@@ -334,6 +334,24 @@ public class CoreAdvanced
                 TotalBoostValue = BoostedGear.MaxBy(x => x.Value).Value;
                 ArrayOutput = new[] { BoostedGear.MaxBy(x => x.Value).Key };
 
+                Dictionary<string, float> BoostedGearMultiple = BoostedGear.Where(x => x.Value == TotalBoostValue).ToDictionary(x => x.Key, y => y.Value);
+                if (BoostedGearMultiple.Count() > 1)
+                {
+                    if (BoostedGearMultiple.Keys.Any(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x)))
+                        ArrayOutput = new[] { BoostedGearMultiple.First(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x.Key)).Key };
+                    else foreach (KeyValuePair<string, float> Gear in BoostedGearMultiple)
+                    {
+                        InventoryItem Item = BankInvData.First(x => x.Name == Gear.Key && x.Meta.Contains(BoostType.ToString()));
+                        InventoryItem equippedItem = BankInvData.First(x => x.Equipped && x.ItemGroup == Item.ItemGroup);
+                        if (Item != null && equippedItem != null
+                            && Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.GetGameObject<int>($"world.invTree.{equippedItem.ID}.EnhID"))
+                        {
+                            ArrayOutput = new[] { Item.Name };
+                            break;
+                        }
+                    }
+                }
+
                 if (EquipItem)
                     Core.Equip(ArrayOutput);
 
@@ -375,19 +393,38 @@ public class CoreAdvanced
                     }
                 }
             else foreach (InventoryItem iAll in AllDMGallItems)
-                    BestGearData.Add(new("", iAll.Name, getBoostFloat(iAll, "dmgAll")));
+                BestGearData.Add(new("", iAll.Name, getBoostFloat(iAll, "dmgAll")));
 
             BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
+            TotalBoostValue = FinalCombo.BoostValue;
             string BestRace = FinalCombo.iRace ?? "";
             string BestDMGAll = FinalCombo.iDMGall ?? "";
             List<string> ListOutput = new();
+
+            //List<BestGearData> BestBestGearData = BestGearData.Where(x => x.BoostValue == TotalBoostValue).ToList();
+            //if (BestBestGearData.Count() > 1)
+            //{
+            //    if (BestBestGearData.Any(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x.iRace)
+            //     || BestBestGearData.Any(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x.iDMGall))))
+            //        ArrayOutput = new[] { BestBestGearData.First(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x.Key)).Key };
+            //    foreach (BestGearData Gear in BestGearData.Where(x => x.BoostValue == TotalBoostValue))
+            //    {
+            //        InventoryItem Item = BankInvData.First(x => x.Name == Gear.iRace || x.Name == Gear.iDMGall);
+            //        InventoryItem equippedWeapon = BankInvData.First(x => x.Equipped == true && x.ItemGroup == "Weapon");
+            //        if (Item != null && equippedWeapon != null
+            //            && Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.GetGameObject<int>($"world.invTree.{equippedWeapon.ID}.EnhID"))
+            //        {
+            //            ArrayOutput = new[] { Item.Name };
+            //            break;
+            //        }
+            //    }
+            //}
 
             if (!String.IsNullOrEmpty(BestRace))
                 ListOutput.Add(BestRace);
             if (!String.IsNullOrEmpty(BestDMGAll))
                 ListOutput.Add(BestDMGAll);
             ArrayOutput = ListOutput.ToArray();
-            TotalBoostValue = FinalCombo.BoostValue;
 
             if (EquipItem)
                 Core.Equip(ArrayOutput);
