@@ -43,6 +43,7 @@ public class MysteriousEgg
         Core.HuntMonster("maloth", "Maloth", "Key of Envy", isTemp: false);
         Core.HuntMonster("wrath", "Gorgorath", "Key of Wrath", isTemp: false);
 
-        Core.EnsureCompleteChoose(6171, new[] { "Mysterious Egg" });
+        Core.EnsureComplete(6171, 42497);
+        Bot.Wait.ForPickup("Mysterious Egg");
     }
 }
