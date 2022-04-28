@@ -379,8 +379,8 @@ public class CoreAdvanced
 
                         BestGearData.Add(new(iRace.Name, iAll.Name, (iRaceBoostFloat * iAllBoostFloat)));
 
-                        //Still needs a good working check V
-                        BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
+                        if (!BestGearData.Any(x => x.iDMGall == iAll.Name && x.iRace == ""))
+                            BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
                     }
                 }
             else
@@ -393,8 +393,6 @@ public class CoreAdvanced
                     BestGearData.Add(new("", iAll.Name, iAllBoostFloat));
                 }
             }
-
-
 
             BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
             string BestRace = FinalCombo.iRace ?? "";
