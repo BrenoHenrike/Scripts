@@ -13,6 +13,8 @@ using System.Linq;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
@@ -557,6 +559,48 @@ public class CoreBots
     #endregion
 
     #region Quest
+
+    private CancellationTokenSource? questCTS = null;
+    
+    /// <summary>
+    /// This will register quests to be completed while doing something else, i.e. while in combat.
+    /// If it has quests already registered, it will cancel them first and then register the new quests.
+    /// </summary>
+    /// <param name="questIDs">ID of the quests to be completed.</param>
+    public void RegisterQuests(params int[] questIDs)
+    {
+        if(questCTS is not null)
+            CancelRegisteredQuests();
+
+        EnsureAccept(questIDs);
+        questCTS = new();
+        Task.Run(() =>
+        {
+            while(!questCTS.IsCancellationRequested)
+            {
+                Task.Delay(ActionDelay);
+                for (int i = 0; i < questIDs.Length; i++)
+                {
+                    if (Bot.Quests.CanComplete(questIDs[i]))
+                    {
+                        EnsureComplete(questIDs[i]);
+                        Task.Delay(ActionDelay);
+                        EnsureAccept(questIDs[i]);
+                    }
+                }
+            }
+            questCTS = null;
+        });
+    }
+
+    /// <summary>
+    /// Cancels the current registered quests.
+    /// </summary>
+    public void CancelRegisteredQuests()
+    {
+        questCTS?.Cancel();
+        Bot.Wait.ForTrue(() => questCTS == null, 20);
+    }
 
     /// <summary>
     /// Ensures you are out of combat before accepting the quest
@@ -1171,6 +1215,7 @@ public class CoreBots
     /// </summary>
     public bool StopBot()
     {
+        CancelRegisteredQuests();
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
         Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
         if (Bot.Player.LoggedIn)
