@@ -1117,13 +1117,13 @@ public class CoreFarms
 
         if (!Core.isCompletedBefore(5601))
             Core.Logger("Farming Quests are not unlocked, Please run: \"Story/Glacera.cs\"", stopBot: true);
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Farm);        
         Core.Logger($"Farming rank {rank}");
         int i = 1;
         while (FactionRank("Glacera") < rank)
         {
             Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
-            Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10);
+            Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10, log: false);
             if (Bot.Quests.CanComplete(5599))
                 Core.EnsureComplete(5599);
             if (Bot.Quests.CanComplete(5600))

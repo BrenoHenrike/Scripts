@@ -29,6 +29,7 @@ public class GlacialBerserker
             return;
             
         Glacera.IceWindPass();
+        Adv.BestGear(GearBoost.rep);
         Farm.GlaceraREP();
 
         Core.BuyItem("icewindpass", 1339, "Glacial Berserker", 22266);
