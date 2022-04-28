@@ -191,10 +191,9 @@ public class CoreStory
     }
 
     /// <summary>
-    /// Skeleton of KillQuest, MapItemQuest, BuyQuest and ChainQuest. Only needs to be used inside a script if there isnt a solid QuestID tied to an event. See Core13LoC for an example
+    /// Skeleton of KillQuest, MapItemQuest, BuyQuest and ChainQuest. Only needs to be used inside a script if the quest spans across multiple maps
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
-    /// <param name="QuestData">If you saved the QuestData here somewhere, it can be passed on to this function. Only for internal use</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
     public bool QuestProgression(int QuestID, bool GetReward = true, string Reward = "All")
@@ -259,6 +258,9 @@ public class CoreStory
     }
     private bool CBO_Checked = false;
 
+    /// <summary>
+    /// Put this at the start of your story script so that the bot will load all quests that are used in the bot. This will speed up any progression checks tremendiously.
+    /// </summary>
     public void PreLoad()
     {
         if (PreLoaded)
