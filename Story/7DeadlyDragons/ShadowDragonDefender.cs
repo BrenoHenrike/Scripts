@@ -49,7 +49,7 @@ public class GetSDD
             Story.KillQuest(6910, "void", "Void Bear");
             Story.KillQuest(6911, "void", "Void Elemental");
             Story.KillQuest(6912, "void", "Void Dragon");
-            Story.MapItemQuest(6913, "mysteriousegg", 6455, GetReward: false);
+            Story.MapItemQuest(6913, "mysteriousegg", 6455);
             Story.ChainQuest(6914);
         }
         Core.BuyItem("mysteriousegg", 1728, "Shadow Dragon Defender");
