@@ -22,8 +22,9 @@ public class SevenCirclesWarXP
         Adv.BestGear(GearBoost.exp);
         Adv.BestGear(GearBoost.gold);
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
-        // Change the level to 101 so it will run until you stop it.
-        Farm.SevenCirclesWar(level: 100, gold: 100000000);
+        // Change the level to 101 so it will run until you stop it. - (101, 100000000)
+        
+        Farm.SevenCirclesWar(100, 100000000);
 
         Core.SetOptions(false);
     }

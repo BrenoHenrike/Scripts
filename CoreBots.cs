@@ -568,7 +568,7 @@ public class CoreBots
     /// <param name="questIDs">ID of the quests to be completed.</param>
     public void RegisterQuests(params int[] questIDs)
     {
-        int x = 0;
+        int x = 1;
         if (questCTS is not null)
             CancelRegisteredQuests();
 
@@ -586,8 +586,8 @@ public class CoreBots
                         EnsureComplete(questIDs[i]);
                         Task.Delay(ActionDelay);
                         EnsureAccept(questIDs[i]);
-                        Logger($"Quest [{questIDs[i]}] Completed x{x++} Times ");
                     }
+                    Logger($"Quest [{questIDs[i]}] Completed x{x++} Times");
                 }
             }
             questCTS = null;
