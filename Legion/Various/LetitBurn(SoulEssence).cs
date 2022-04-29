@@ -41,9 +41,9 @@ public class LetItBurn
         Bon.GetLegionBonfire();
 
         Core.Logger($"Farming {quant} Soul Essence");
+        Core.EquipClass(ClassType.Solo);
         while (!Core.CheckInventory("Soul Essence", quant))
         {
-            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(7992);
             Core.HuntMonster("dagefortress", "Grrrberus", "Grrberus' Flame");
             SSand.SoulSand(3);
