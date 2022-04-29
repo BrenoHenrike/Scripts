@@ -586,8 +586,8 @@ public class CoreBots
                         EnsureComplete(questIDs[i]);
                         Task.Delay(ActionDelay);
                         EnsureAccept(questIDs[i]);
-                    }
                     Logger($"Quest [{questIDs[i]}] Completed x{x++} Times");
+                    }
                 }
             }
             questCTS = null;
