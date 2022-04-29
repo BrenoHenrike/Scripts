@@ -957,6 +957,7 @@ public class CoreFarms
         while (FactionRank("Embersea") < rank)
         {
             Core.HuntMonster("fireforge", "Blazebinder", "Defeated Blazebinder", 5);
+            Core.Logger($"Completed x{i++}");
         }
         Core.RegisterQuests(4228);
     }
