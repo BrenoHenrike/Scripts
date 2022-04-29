@@ -1,22 +1,22 @@
 ﻿//Scripts v3.2
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Newtonsoft.Json;
 using RBot;
+using RBot.Flash;
 using RBot.Items;
 using RBot.Monsters;
 using RBot.Quests;
-using RBot.Flash;
-using RBot.Skills;
 using RBot.Servers;
 using RBot.Shops;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using Newtonsoft.Json;
+using RBot.Skills;
 
 public class CoreBots
 {
@@ -561,7 +561,6 @@ public class CoreBots
     #region Quest
 
     private CancellationTokenSource? questCTS = null;
-    
     /// <summary>
     /// This will register quests to be completed while doing something else, i.e. while in combat.
     /// If it has quests already registered, it will cancel them first and then register the new quests.
@@ -569,14 +568,15 @@ public class CoreBots
     /// <param name="questIDs">ID of the quests to be completed.</param>
     public void RegisterQuests(params int[] questIDs)
     {
-        if(questCTS is not null)
+        int x = 0;
+        if (questCTS is not null)
             CancelRegisteredQuests();
 
         EnsureAccept(questIDs);
         questCTS = new();
         Task.Run(() =>
         {
-            while(!questCTS.IsCancellationRequested)
+            while (!questCTS.IsCancellationRequested)
             {
                 Task.Delay(ActionDelay);
                 for (int i = 0; i < questIDs.Length; i++)
@@ -586,6 +586,7 @@ public class CoreBots
                         EnsureComplete(questIDs[i]);
                         Task.Delay(ActionDelay);
                         EnsureAccept(questIDs[i]);
+                        Logger($"Quest [{questIDs[i]}] Completed x{x++} Times ");
                     }
                 }
             }
