@@ -328,10 +328,10 @@ public class GlaceraStory
         if (!Bot.Quests.IsUnlocked(5601))
         {
             Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
-            Core.HuntMonster("icewindwar", "Glaceran Defender|Kezeroth's Blade", "FrostSpawn Medal", 10);
-            Core.HuntMonster("icewindwar", "Frost Invader|Frostspawn Troll", "World Ender Medal", 10);
-            Core.HuntMonster("icewindwar", "Glaceran Defender|Kezeroth's Blade", "Mega Frostspawn Medal", 5);
-            Core.HuntMonster("icewindwar", "Frost Invader|Frostspawn Troll", "Mega World Ender Medal", 5);
+            Core.KillMonster("icewindwar", "r3", "Left", "*", "FrostSpawn Medal", 10);
+            Core.KillMonster("icewindwar", "r3", "Left", "*", "Mega Frostspawn Medal", 5);
+            Core.KillMonster("icewindwar", "r3", "Left", "*", "World Ender Medal", 10);
+            Core.KillMonster("icewindwar", "r3", "Left", "*", "Mega World Ender Medal", 5);
             Core.EnsureComplete(new[] { 5597, 5598, 5599, 5600 });
         }
 
