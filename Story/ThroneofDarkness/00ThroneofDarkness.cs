@@ -9,6 +9,7 @@
 //cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
 //cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
 //cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
+//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
 using RBot;
 
 public class CompleteThroneOfDarknessSaga
