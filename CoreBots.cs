@@ -42,7 +42,7 @@ public class CoreBots
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
-    public bool BankMiscAC { get; set; } = true;
+    public bool BankMiscAC { get; set; } = false;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
