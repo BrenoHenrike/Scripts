@@ -26,6 +26,7 @@ public class CompleteThroneOfDarknessSaga
     public FourthDimensionalPyramid s05b = new FourthDimensionalPyramid();
     public HedgeMaze s06a = new HedgeMaze();
     public TowerofMirrors s06b = new TowerofMirrors();
+    public MysteriousDungeon s07b = new MysteriousDungeon();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -56,5 +57,7 @@ public class CompleteThroneOfDarknessSaga
         s06a.HedgeMaze_Questline();
         Core.Logger("Tower of Mirrors");
         s06b.TowerofMirrorsSaga();
+        Core.Logger("Mysterious Dungeon");
+        s07b.Storyline();
     }
 }

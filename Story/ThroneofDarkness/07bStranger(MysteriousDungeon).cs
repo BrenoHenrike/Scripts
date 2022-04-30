@@ -31,7 +31,7 @@ public class MysteriousDungeon
         Story.PreLoad();
 
         //cursed artifact shop - 5428
-        Story.MapItemQuest(5428, "cursedshop", MapItemID: 4803);
+        Story.MapItemQuest(5428, "cursedshop", 4803);
 
         //lamps, painting and chairs, oh my!
         Story.KillQuest(5429, "cursedshop", "Antique Chair");
@@ -46,12 +46,11 @@ public class MysteriousDungeon
         Story.KillQuest(5432, "cursedshop", "Grandfather Clock");
 
         //Dr. Darkwood's Robe
-        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4804);
-        Story.MapItemQuest(5433, "cursedshop", MapItemID: 4805);
+        Story.MapItemQuest(5433, "cursedshop", new[] { 4804, 4805 });
 
         //defeat the arcane sentinel
+        Story.MapItemQuest(5434, "cursedshop", 4806);
         Story.KillQuest(5434, "cursedshop", "Arcane Sentinel");
-        Story.MapItemQuest(5434, "cursedshop", MapItemID: 4806);
 
         //Get Out Of Jail Free?
         Story.MapItemQuest(5438, "MysteriousDungeon", 4818);
@@ -60,22 +59,16 @@ public class MysteriousDungeon
         Story.KillQuest(5439, "MysteriousDungeon", "Skudly");
 
         //A Friend In Need
-        Story.MapItemQuest(5440, "MysteriousDungeon", MapItemID: 4808);
+        Story.MapItemQuest(5440, "MysteriousDungeon", 4808);
 
         //A Cryptic Messaage
-        Story.MapItemQuest(5441, "MysteriousDungeon", MapItemID: 4809);
+        Story.MapItemQuest(5441, "MysteriousDungeon", 4809);
 
         //seeking answers
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4810);
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4811);
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4812);
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4813);
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4814);
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4815);
-        Story.MapItemQuest(5442, "MysteriousDungeon", MapItemID: 4816);
+        Story.MapItemQuest(5442, "MysteriousDungeon", new[] { 4810, 4811, 4812, 4813, 4814, 4815, 4816 });
 
         //Curses!        
-        Story.MapItemQuest(5443, "MysteriousDungeon", MapItemID: 4817);
+        Story.MapItemQuest(5443, "MysteriousDungeon", 4817);
 
         //Skudly, Staaaahp!        
         Story.KillQuest(5444, "MysteriousDungeon", "Skudly");
