@@ -22,14 +22,14 @@ public class FireAvatarFavorFarm
 
         Core.SetOptions(false);
     }
-    public void FAFavor()
+    public void FAFavor(int quant = 300)
     {
-        if (Core.CheckInventory("Fire Avatar's Favor", 300))
+        if (Core.CheckInventory("Fire Avatar's Favor", quant))
             return;
 
         Core.AddDrop("Fire Avatar's Favor");
         Core.EquipClass(ClassType.Farm);
-        while (!Bot.ShouldExit() || !Core.CheckInventory("Fire Avatar's Favor", 300))
+        while (!Bot.ShouldExit() || !Core.CheckInventory("Fire Avatar's Favor", quant))
         {
             Core.EnsureAccept(8244);
 
