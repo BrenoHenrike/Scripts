@@ -59,12 +59,10 @@ public class DragonslayerGeneral
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
 
         Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
-
+        Core.RegisterQuests(5294);
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
-            Core.EnsureAccept(5294);
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
-            Core.EnsureComplete(5294);
             Bot.Wait.ForPickup("Enchanted Scale");
         }
 
