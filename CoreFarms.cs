@@ -86,7 +86,6 @@ public class CoreFarms
             Core.KillMonster("honorhall", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
             Core.KillMonster("honorhall", "r1", "Center", "*", "HonorHall Opponent Defeated", 10, log: false);
         }
-        Core.RegisterQuests(3992, 3993);
     }
 
     /// <summary>
@@ -107,7 +106,6 @@ public class CoreFarms
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
         }
-        Core.RegisterQuests(3992, 3993);
     }
 
     /// <summary>
@@ -129,7 +127,6 @@ public class CoreFarms
             Bot.Sleep(Core.ActionDelay);
             Bot.Shops.SellItem("Berserker Bunny");
         }
-        Core.RegisterQuests(236);
     }
     #endregion
 
@@ -169,7 +166,6 @@ public class CoreFarms
             Core.RegisterQuests(6628);
             Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
         }
-        Core.RegisterQuests(6628);
 
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
@@ -179,7 +175,6 @@ public class CoreFarms
             Core.RegisterQuests(6629);
             Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
         }
-        Core.RegisterQuests(6629);
 
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
