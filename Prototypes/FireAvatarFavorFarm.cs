@@ -22,14 +22,11 @@ public class FireAvatarFavorFarm
         Core.AddDrop("Fire Avatar's Favor");
         Core.RegisterQuests(8244);
         Core.EquipClass(ClassType.Farm);
-        while (!Bot.ShouldExit() || !Core.CheckInventory("Fire Avatar's Favor", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Fire Avatar's Favor", quant))
         {
-            Core.EnsureAccept(8244);
-
             Core.KillMonster("fireavatar", "r4", "Right", "*", "Onslaught Defeated", 6);
             Core.KillMonster("fireavatar", "r6", "Left", "*", "Elemental Defeated", 6);
 
-            Core.EnsureComplete(8244);
             Bot.Wait.ForPickup("Fire Avatar's Favor");
         }
     
