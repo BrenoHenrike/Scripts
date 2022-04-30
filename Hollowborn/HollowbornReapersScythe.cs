@@ -56,12 +56,12 @@ public class HollowbornScythe
 
             Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", 1, false, publicRoom: true);
+            Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", isTemp: false, publicRoom: true);
 
-            if (!Core.CheckInventory("Unmoulded Fiend Essence"))
+            if (!Core.CheckInventory(57447))
             {
                 Farm.Gold(15000000);
-                Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
+                Core.BuyItem("tercessuinotlim", 1951, 57447);
             }
 
             Core.BuyItem("shadowrealm", 1889, item);
