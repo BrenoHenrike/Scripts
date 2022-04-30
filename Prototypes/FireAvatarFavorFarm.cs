@@ -20,6 +20,7 @@ public class FireAvatarFavorFarm
             return;
 
         Core.AddDrop("Fire Avatar's Favor");
+        Core.RegisterQuests(8244);
         Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit() || !Core.CheckInventory("Fire Avatar's Favor", quant))
         {
