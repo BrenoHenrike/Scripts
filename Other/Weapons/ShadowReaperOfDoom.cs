@@ -28,6 +28,6 @@ public class SRoD
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("overworld", "boss1", "Left", "Undead Artix", "Undead Paladin Token", isTemp: false);
 
-        Core.BuyItem("overworld", 618, 17488);
+        Core.BuyItem("overworld", 618, "ShadowReaper Of Doom", shopItemID: 1806);
     }
 }

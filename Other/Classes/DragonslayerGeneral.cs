@@ -34,8 +34,7 @@ public class DragonslayerGeneral
         Farm.Gold(30000);
         EnchantedScaleandClaw(75, 100);
         Core.BuyItem("dragontown", 1286, itemID: 35996, shopItemID: 4644);
-
-        Bot.Wait.ForPickup("Dragonslayer General");
+                
         Adv.GearStore();
         Adv.rankUpClass("Dragonslayer General");
         Adv.GearStore(true);
