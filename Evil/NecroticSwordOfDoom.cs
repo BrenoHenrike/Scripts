@@ -276,7 +276,7 @@ public class NecroticSwordOfDoom
         Core.EnsureAccept(4436);
         FindBlade();
         FindHilt();
-        CHourglass(1);
+        CHourglass(2);
         ScrollDarkArts(1);
         TimeLordNecro(1);
         VoidAuras(10);
