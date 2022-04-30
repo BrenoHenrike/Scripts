@@ -44,8 +44,8 @@ public class FireChampionsArmor
         FlameForgedMetal(10);
         VoidScale(13);
         Farm.Gold(25000000);
-        Core.BuyItem("wartraining", 2035, itemID: 61043, 50);
-        Core.BuyItem("wartraining", 2035, itemID: 62570, shopItemID: 8759);
+        Core.BuyItem("wartraining", 2035, "Gold Voucher 500k", 50);
+        Core.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 62570);
     }
 
 
@@ -59,7 +59,7 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
         Core.HuntMonster("lair", "Water Draconian", "Dragon Scale", 30, false);
-        Core.BuyItem("wartraining", 2035, itemID: 58462, shopItemID: 8756);
+        Core.BuyItem("wartraining", 2035, "Polished DragonSlayer", shopItemID: 58462);
     }
 
 
@@ -73,16 +73,10 @@ public class FireChampionsArmor
 
         Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
 
-        int i = 1;
-
+        Core.RegisterQuests(6975);
         while (!Core.CheckInventory("Flame-Forged Metal", Metalquant))
-        {
-            Core.EnsureAccept(6975);
             Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame", log: false);
-            Core.EnsureComplete(6975);
-            Bot.Wait.ForDrop("Flame-Forged Metal");
-            Core.Logger($"Completed x{i++}, \"Flame-Forged Metal\": {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
-        }
+
     }
 
     public void VoidScale(int VoidScaleQuant = 13)
