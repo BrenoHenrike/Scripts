@@ -1,7 +1,7 @@
 ﻿using RBot;
 using RBot.Items;
-using RBot.Shops;
 using RBot.Quests;
+using RBot.Shops;
 
 public class CoreDailies
 {
@@ -280,6 +280,11 @@ public class CoreDailies
         if (Core.CheckInventory("Mad Weaponsmith", toInv: false))
         {
             Core.Logger("Skipped");
+            return;
+        }
+        if (!Core.CheckInventory("Mad Weaponsmith", toInv: false) && Core.CheckInventory("C-Armor Token", 90))
+        {
+            Core.BuyItem("deadmoor", 500, "Mad Weaponsmith");
             return;
         }
         if (!CheckDaily(4308, true, "C-Armor Token") && !Core.IsMember)
