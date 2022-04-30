@@ -295,7 +295,7 @@ public class NecroticSwordOfDoom
 
     public void BonesVoidRealm(int Quantity)
     {
-        if (Core.CheckInventory("Bones of the Void Realm", Quantity))
+        if (Core.CheckInventory("Bones from the Void Realm", Quantity))
             return;
 
         Core.AddDrop("Undead Energy");
