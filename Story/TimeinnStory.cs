@@ -24,6 +24,7 @@ public class TimeinnSTory
             return;
 
         Story.PreLoad();
+        
         Core.AddDrop("Exalted Node", "Exalted Forgemetal", "Exalted Relic Piece", "Exalted Artillery Shard");
         Core.EquipClass(ClassType.Solo);
 

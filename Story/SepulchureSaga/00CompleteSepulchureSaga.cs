@@ -1,8 +1,5 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Prototypes/SepulchureSaga/01SepulchurePrequelAlden.cs
 //cs_include Scripts/Prototypes/SepulchureSaga/02SepulchurePrequelLynaria.cs
 //cs_include Scripts/Prototypes/SepulchureSaga/03SepulchuresRise.cs
@@ -12,9 +9,7 @@ using RBot;
 public class CompleteSepulchureSaga
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
     public SepulchurePrequelAlden s01 = new SepulchurePrequelAlden();
     public SepulchurePrequelLynaria s02 = new SepulchurePrequelLynaria();
     public SepulchuresRise s03 = new SepulchuresRise();
