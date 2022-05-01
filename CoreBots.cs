@@ -559,7 +559,7 @@ public class CoreBots
     #endregion
 
     #region Quest
-
+    private int x = 1;
     private CancellationTokenSource? questCTS = null;
     /// <summary>
     /// This will register quests to be completed while doing something else, i.e. while in combat.
@@ -568,7 +568,6 @@ public class CoreBots
     /// <param name="questIDs">ID of the quests to be completed.</param>
     public void RegisterQuests(params int[] questIDs)
     {
-        int x = 1;
         if (questCTS is not null)
             CancelRegisteredQuests();
 
@@ -586,7 +585,7 @@ public class CoreBots
                         EnsureComplete(questIDs[i]);
                         Task.Delay(ActionDelay);
                         EnsureAccept(questIDs[i]);
-                    Logger($"Quest [{questIDs[i]}] Completed x{x++} Times");
+                        Logger($"Quest [{questIDs[i]}] Completed x{x++} Times");
                     }
                 }
             }
