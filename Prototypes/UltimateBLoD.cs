@@ -1,4 +1,8 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
@@ -7,8 +11,11 @@ public class UltimateBLoD
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new CoreStory();
     public CoreBLOD BLOD = new CoreBLOD();
     public Core13LoC LOC => new Core13LoC();
+    public CoreDailies Daily = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -38,7 +45,7 @@ public class UltimateBLoD
             Core.Logger($"Farming 1 Blinding Aura");
             while (!Core.CheckInventory("Blinding Aura"))
             {
-                FindingFragments(2174);
+                BLOD.FindingFragments(2174);
                 Core.Logger($"Completed x{i}");
             }
 
