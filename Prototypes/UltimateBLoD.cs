@@ -14,14 +14,12 @@ public class UltimateBLoD
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
     public CoreBLOD BLOD = new CoreBLOD();
-    public Core13LoC LOC => new Core13LoC();
     public CoreDailies Daily = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        LOC.Wolfwing();
         BLOD.DoAll();
         UltimateBlindingLightofDestiny();
 
