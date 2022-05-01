@@ -40,14 +40,10 @@ public class UltimateBLoD
             BLOD.FindingFragmentsBlade(250, 100);
             BLOD.FindingFragmentsMace(10);
 
-            int i = 1;
             Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
             Core.Logger($"Farming 1 Blinding Aura");
             while (!Core.CheckInventory("Blinding Aura"))
-            {
                 BLOD.FindingFragments(2174);
-                Core.Logger($"Completed x{i}");
-            }
 
             Core.BuyItem("techfortress", 1902, "Overwhelmed Axe", shopItemID: 7588);
         }
