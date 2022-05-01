@@ -1,8 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
@@ -11,10 +7,6 @@ public class UltimateBLoD
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
     public CoreBLOD BLOD = new CoreBLOD();
     public Core13LoC LOC => new Core13LoC();
 
@@ -41,7 +33,14 @@ public class UltimateBLoD
             BLOD.FindingFragmentsBlade(250, 100);
             BLOD.FindingFragmentsMace(10);
 
-            FindingFragments(2174, "Blinding Aura", 1);
+            int i = 1;
+            Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
+            Core.Logger($"Farming 1 Blinding Aura");
+            while (!Core.CheckInventory("Blinding Aura"))
+            {
+                FindingFragments(2174);
+                Core.Logger($"Completed x{i}");
+            }
 
             Core.BuyItem("techfortress", 1902, "Overwhelmed Axe", shopItemID: 7588);
         }
@@ -66,11 +65,10 @@ public class UltimateBLoD
             Core.EnsureAccept(7655);
 
             Core.KillMonster("doomwood", "r10", "Right", "Undead Paladin", "Purification Orb", 10, isTemp: false);
-            
+
             while (!Core.CheckInventory("Rainbow Moonstone", 5))
             {
                 Core.AddDrop("Rainbow Moonstone");
-                //Story.KillQuest(7291, "earthstorm", new[] { "Diamond Golem", "Emerald Golem", "Ruby Golem", "Sapphire Golem" });
                 Core.EnsureAccept(7291);
 
                 Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
@@ -89,21 +87,5 @@ public class UltimateBLoD
         }
 
         Core.BuyItem("techfortress", 1902, "Ultimate Blinding Light of Destiny", shopItemID: 7585);
-    }
-
-    private void FindingFragments(int quest, string item, int quant)
-    {
-        if (Core.CheckInventory(item, quant))
-            return;
-
-        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
-        
-        Core.EquipClass(ClassType.Farm);
-
-        Core.RegisterQuests(quest);
-        while (!Core.CheckInventory(item, quant))
-        {
-            Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Blinding Light Fragments", 10, false, publicRoom: true);
-        }
     }
 }
