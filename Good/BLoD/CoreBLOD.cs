@@ -461,13 +461,11 @@ public class CoreBLOD
         FindingFragmentsBow(125);
         FindingFragmentsMace(75);
         FindingFragmentsBlade(500, 250);
-        int i = 1;
         Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
         while (!Core.CheckInventory("Blinding Aura"))
         {
             FindingFragments(2174);
             Bot.Player.Pickup("Blinding Aura");
-            Core.Logger($"Completed x{i}");
         }
         UltimateWK();
         Core.ChainComplete(2180);
@@ -483,14 +481,12 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
 
-        int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Brilliant Aura");
         while (!Core.CheckInventory("Brilliant Aura", quant))
         {
             FindingFragments(2176);
             Bot.Player.Pickup("Brilliant Aura");
-            Core.Logger($"Completed x{i++}");
         }
     }
 
@@ -503,14 +499,12 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
 
-        int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Bright Aura");
         while (!Core.CheckInventory("Bright Aura", quant))
         {
             FindingFragments(2174);
             Bot.Player.Pickup("Bright Aura");
-            Core.Logger($"Completed x{i++}");
         }
     }
 
@@ -523,24 +517,21 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
 
-        int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quantSO} SOs and {quantLSO} LSOs");
         while (!Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
         {
             FindingFragments(2179);
             Bot.Player.Pickup("Spirit Orb", "Loyal Spirit Orb");
-            Core.Logger($"Completed x{i++}");
         }
     }
 
     public void FindingFragments(int quest)
     {
         Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
-
-        Core.EnsureAccept(quest);
+        
+        Core.RegisterQuests(quest);
         Farm.BattleUnderB("Blinding Light Fragments", 10);
-        Core.EnsureComplete(quest);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------ //
