@@ -343,7 +343,7 @@ public class CoreFarms
         Bot.Wait.ForMapLoad("battleunderb".ToLower());
 
         Bot.Options.AggroMonsters = true;
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true, log: false);
         Bot.Options.AggroMonsters = false;
         Bot.Player.ExitCombat();
     }
