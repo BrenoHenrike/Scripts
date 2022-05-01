@@ -21,8 +21,6 @@ public class SanctifiedLightofDestiny
     {
         Core.SetOptions();
 
-        LOC.Wolfwing();
-        BLOD.DoAll();
         BLOD.SanctifiedLightofDestiny();
 
         Core.SetOptions(false);

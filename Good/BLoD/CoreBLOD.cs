@@ -183,7 +183,7 @@ public class CoreBLOD
             return;
 
         Core.AddDrop(BLoDItems);
-
+        Bot.Quests.UpdateQuest(567);
 
         int i = 1;
         Core.Logger($"Farming {quant} Advanced Wepon Kit");
@@ -529,7 +529,7 @@ public class CoreBLOD
     public void FindingFragments(int quest)
     {
         Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
-        
+
         Core.RegisterQuests(quest);
         Farm.BattleUnderB("Blinding Light Fragments", 10);
     }
@@ -542,6 +542,8 @@ public class CoreBLOD
     {
         if (Core.CheckInventory("Sanctified Light of Destiny"))
             return;
+
+        DoAll();
 
         Core.AddDrop(new[] { "Sanctified Light of Destiny", "Pious Platinum" });
 

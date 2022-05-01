@@ -21,7 +21,6 @@ public class TheBlindingLightofDestiny
     {
         Core.SetOptions();
 
-        LOC.Wolfwing();
         BLOD.DoAll();
 
         Core.SetOptions(false);
