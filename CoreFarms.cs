@@ -617,7 +617,6 @@ public class CoreFarms
                 Bot.Player.Pickup("Legendary Handle");
             Core.Logger("Find the Handle! completed");
         }
-        Core.RegisterQuests(2933, 2934);
         Core.RegisterQuests(2935);
         while (FactionRank("Blade of Awe") < rank && !Bot.ShouldExit())
         {
@@ -630,7 +629,6 @@ public class CoreFarms
             }
             Core.Logger($"Completed Find the Hilt! x{i++}");
         }
-        Core.RegisterQuests(2935);
         if (farmBoA)
         {
             Core.RegisterQuests(2936, 2937);
