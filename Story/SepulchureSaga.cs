@@ -12,27 +12,20 @@ public class SepulchureSaga
     {
         Core.SetOptions();
 
-        DoALL();
+        StoryLine();
 
         Core.SetOptions(false);
-    }
-
-    public void DoALL()
-    {
-        Story.PreLoad();
-        StoryLine();
     }
 
     public void StoryLine()
     {
         if (Core.isCompletedBefore(6407))
         {
-
             Core.Logger("You have already completed Selpulchure's Saga");
             return;
         }
 
-        Core.EquipClass(ClassType.Solo);
+        Story.PreLoad();
 
         //Come On Get Ready! 6356
         // Core.BuyItem("valleyofdoom", 1599, "Valen Gear", 1, 1, 25994);
