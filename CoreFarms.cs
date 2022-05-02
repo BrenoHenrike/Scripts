@@ -1445,7 +1445,7 @@ public class CoreFarms
         }
     }
 
-    public void YokaiREP(int rank = 11)
+    public void YokaiREP(int rank = 10)
     {
         if (FactionRank("Yokai") >= rank)
             return;
