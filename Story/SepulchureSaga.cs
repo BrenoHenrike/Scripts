@@ -1,18 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class SepulchureSaga
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -33,7 +27,7 @@ public class SepulchureSaga
     {
         if (Core.isCompletedBefore(6407))
         {
-            
+
             Core.Logger("You have already completed Selpulchure's Saga");
             return;
         }
@@ -87,7 +81,7 @@ public class SepulchureSaga
 
         //Retrieve the Wand 6367
         Story.KillQuest(6367, "guardiantower", "Yargol Magebane");
-        
+
         //The Wedding 6368
         Core.Logger("Autocompleted");
 
@@ -110,7 +104,7 @@ public class SepulchureSaga
         //Get the Key 6374
         Story.MapItemQuest(6374, "ebonslate", 5897);
         Story.KillQuest(6374, "ebonslate", new[] { "Lycan Brute", "Lycan Brute" });
-        
+
         //Break Down the Door 6375
         Story.MapItemQuest(6375, "ebonslate", 5898);
 
@@ -151,7 +145,7 @@ public class SepulchureSaga
         Story.KillQuest(6385, "guardiantowerb", "Slime");
 
         //Garen's Key 6386
-        Story.KillQuest(6386, "guardiantowerb", new[] { "Guardian Selby", "Guardian Garen"});
+        Story.KillQuest(6386, "guardiantowerb", new[] { "Guardian Selby", "Guardian Garen" });
 
         //Selby's Key 6387
         Story.KillQuest(6387, "guardiantowerb", new[] { "Guardian Garen", "Guardian Selby" });
@@ -206,6 +200,6 @@ public class SepulchureSaga
         Story.KillQuest(6406, "darkplane", "Guardian Knight");
 
         //Destroy the Beast 6407
-        Story.KillQuest(6407, "darkplane", "Victorious");  
+        Story.KillQuest(6407, "darkplane", "Victorious");
     }
 }
