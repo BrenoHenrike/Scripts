@@ -33,8 +33,8 @@ public class DragonslayerGeneral
 
         Farm.Gold(30000);
         EnchantedScaleandClaw(75, 100);
-        Core.BuyItem("dragontown", 1286, itemID: 35996, shopItemID: 4644);
-                
+        Core.BuyItem("dragontown", 1286, 35996, shopItemID: 4644);
+
         Adv.GearStore();
         Adv.rankUpClass("Dragonslayer General");
         Adv.GearStore(true);
@@ -50,15 +50,18 @@ public class DragonslayerGeneral
             Adv.rankUpClass("Dragonslayer");
             Adv.GearStore(true);
         }
+
         Adv.GearStore();
+
         if (Core.CheckInventory("Dragonslayer"))
             Adv.rankUpClass("Dragonslayer");
+
         Adv.GearStore(true);
         Adv.BestGear(GearBoost.Dragonkin);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
-
         Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
         Core.RegisterQuests(5294);
+
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);

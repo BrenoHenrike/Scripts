@@ -59,7 +59,7 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
         Core.HuntMonster("lair", "Water Draconian", "Dragon Scale", 30, false);
-        Core.BuyItem("wartraining", 2035, "Polished DragonSlayer", shopItemID: 58462);
+        Core.BuyItem("wartraining", 2035, "Polished DragonSlayer");
     }
 
 
