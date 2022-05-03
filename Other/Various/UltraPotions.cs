@@ -26,6 +26,7 @@ public class PotionBuyer
 
     public void INeedYourStrongestPotions(int potionQuant = 50, List<string> potions = null)
     {
+        Farm.AlchemyREP();
         Core.Logger($"{Bot.Player.Username}: Hello potion seller, I’m going into battle and I want your strongest potions");
         if (potions is null)
             potions = new() { "Battle Elixir", "Potent Honor Potion", "Fate Tonic" };
