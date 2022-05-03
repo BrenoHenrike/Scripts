@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
@@ -9,31 +8,25 @@ public class WarTraining
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.Human);
-        DoALl();
+        StoryLine();
 
         Core.SetOptions(false);
-    }
-
-    public void DoALl()
-    {
-        Story.PreLoad();
-        StoryLine();
     }
 
     public void StoryLine()
     {
         if (Core.isCompletedBefore(8204))
             return;
+
+        Story.PreLoad();
+        Adv.BestGear(GearBoost.Human);
 
         //War Medals
         Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier");
