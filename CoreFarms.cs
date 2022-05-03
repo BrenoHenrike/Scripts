@@ -654,7 +654,7 @@ public class CoreFarms
         }
     }
 
-    public void BrightoakREP(int rank = 11)
+    public void BrightoakREP(int rank = 10)
     {
         if (FactionRank("Brightoak") >= rank)
             return;
