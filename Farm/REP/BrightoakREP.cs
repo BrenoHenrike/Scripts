@@ -1,5 +1,8 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story\QueenofMonsters\Extra\BrightOak.cs
 
 using RBot;
