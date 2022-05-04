@@ -1,8 +1,12 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Story/StarSinc.cs
+//cs_include Scripts/Nulgath/CoreNulgath.cs
+
 using RBot;
 
 public class EternalDrakath
@@ -13,6 +17,7 @@ public class EternalDrakath
     public CoreFarms Farm = new();
     public DrakathArmorBot Armor = new();
     public CoreBLOD BLOD = new();
+    public StarSinc Star = new();
 
     private string[] Rewards = new[] { "Drakath the Eternal", "Drakath the Eternal's Visor", "Eternal Chaos Tassels", "Eternal Chaos Tassels", "Dual Everlasting Blades of Chaos" };
 
@@ -48,7 +53,7 @@ public class EternalDrakath
 
         if (!Core.CheckInventory("Star Fragment", 33))
         {
-            //Starsinc storyline (HERE TATO)
+            Star.StarSincQuests();
             Core.EquipClass(ClassType.Farm);
             Core.AddDrop("Star Fragment");
             Core.RegisterQuests(4413);
