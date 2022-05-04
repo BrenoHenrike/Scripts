@@ -4,9 +4,8 @@ public class CoreBLOD
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreDailies Daily = new();
-    public CoreStory Story = new CoreStory();
 
     public string[] BLoDItems =
     {
