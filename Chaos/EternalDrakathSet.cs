@@ -49,7 +49,7 @@ public class EternalDrakath
 
         if (!Core.CheckInventory("Crystallized Chaos", 800))
             Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("chaoslab", "Chaorrupted Moglin", "Crystallized Chaos", 800, false);
+        Core.KillMonster("chaoslab", "r3", "Left", "Chaorrupted Moglin", "Crystallized Chaos", 800, false);
 
         if (!Core.CheckInventory("Star Fragment", 33))
         {
