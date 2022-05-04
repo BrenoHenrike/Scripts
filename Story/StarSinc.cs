@@ -146,6 +146,7 @@ public class StarSinc
         Core.EnsureComplete(4414);
 
         //4415 | Your Hardest Task
+        Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(4415);
         Core.HuntMonster("starsinc", "Empowered Prime", "Empowered Primed Defeated", 10);
         Core.EnsureComplete(4415);
