@@ -11,12 +11,13 @@ public class PrinceDarkonsPoleaxePreReqs
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreDarkon Darkon = new CoreDarkon();
+    public CoreDarkon Darkon = new();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions(); 
-        
+        Core.SetOptions();
+
         FarmPreReqs();
 
         Core.SetOptions(false);
@@ -31,7 +32,9 @@ public class PrinceDarkonsPoleaxePreReqs
         Darkon.Teeth(22);
         Darkon.LasGratitude(22);
         Darkon.AstravianMedal(22);
-        Darkon.InstantNoodle(22);
+
+        Farm.Gold(48888884);
+        Core.BuyItem("garden", 1831, "Darkon's Instant Noodle", 22);
         //BuyPoleaxe();
     }
 
@@ -44,7 +47,7 @@ public class PrinceDarkonsPoleaxePreReqs
                 Core.BuyItem("ultradrago", 2066, "Algie's Bow");
                 Bot.Wait.ForItemBuy();
             }
-                
+
             if (!Core.CheckInventory("Dene's Axe") && Core.CheckInventory("Ultra Drago Insignia", 5))
             {
                 Core.BuyItem("ultradrago", 2066, "Dene's Axe");
