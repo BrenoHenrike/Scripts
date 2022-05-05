@@ -52,10 +52,10 @@ public class DarkLord
         Core.HuntMonster("zorbaspalace", "Zorba the Bakk", "Dotty", 15);
 
         //Gold Voucher 25k x4
-        Core.BuyItem("murdermoon", SHOPID, "Gold Voucher", 4);
+        Core.BuyItem("murdermoon", 1998, "Gold Voucher", 4);
 
         //Buying the Dark Lord
-        Core.BuyItem("murdermoon", SHOPID, "Dark Lord");
+        Core.BuyItem("murdermoon", 1998, "Dark Lord");
         Bot.Wait.ForItemBuy();
 
         if (rankUpClass)
