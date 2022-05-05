@@ -14,6 +14,7 @@ public class ZorbasPalaceMerge
 
         Core.SetOptions(false);
     }
+
     public void Woopee(int quant = 300)
     {
         if (Core.CheckInventory("Woopee", quant))
