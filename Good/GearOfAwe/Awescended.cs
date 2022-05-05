@@ -66,11 +66,10 @@ public class Awescended
             Farm.Experience(25);
             Core.EnsureAccept(8035);
             Core.KillMonster("uppercity", "r3", "Left", "Chaos Egg", "Fossilized Egg Yolk", 12);
-            Bot.Quests.UpdateQuest(537);
-            Core.Join("lycanwar", "Boss", "Left");
+            Bot.Quests.UpdateQuest(567);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard", "Stone Mask");
             Bot.Quests.UpdateQuest(4614);
-            Core.KillMonster("pyramid", "r5", "Left", "Mummy", "Mummified Bone", 6);
+            Core.KillMonster("pyramid", "r5", "Left", "*", "Mummified Bone", 6);
             Core.KillMonster("ravinetemple", "r11", "Left", "*", "Iron Head", 4);
             Core.EnsureComplete(8035);
         }
@@ -105,7 +104,8 @@ public class Awescended
             Core.KillMonster("yokaiwar", "Boss", "Left", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false);
             Core.KillMonster("wardwarf", "r4", "Left", "D'wain Jonsen", "D'wain Jonsen's Stinger");
             Core.KillMonster("mythsongwar", "War2", "Left", "*", "Music Pirate's Instrument of War", 6);
-            Core.HuntMonster("shadowfallwar", "Noxus", "Noxus' Necromancy Robe");
+            Bot.Quests.UpdateQuest(1170);
+            Core.KillMonster("shadowfallwar", "Inside", "Right", "Noxus", "Noxus' Necromancy Robe");
             Core.EnsureComplete(8038);
         }
 

@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 using RBot;
 
