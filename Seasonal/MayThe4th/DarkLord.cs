@@ -42,7 +42,7 @@ public class DarkLord
         Core.HuntMonster("murdermoon", "Fifth Sepulchure", "S Ring", 15);
 
         //Fifth Lord's Filtrinator x15
-        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "Fifth Lord's Filtrinator", 15);
+        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15);
 
         //Dark Helmet x1
         Bot.Quests.UpdateQuest(7484);
