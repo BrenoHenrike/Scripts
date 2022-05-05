@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
-//cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge.cs
+//cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
 using RBot;
 
 public class DarkLord
