@@ -104,7 +104,8 @@ public class Awescended
             Core.KillMonster("yokaiwar", "Boss", "Left", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false);
             Core.KillMonster("wardwarf", "r4", "Left", "D'wain Jonsen", "D'wain Jonsen's Stinger");
             Core.KillMonster("mythsongwar", "War2", "Left", "*", "Music Pirate's Instrument of War", 6);
-            Core.HuntMonster("shadowfallwar", "Noxus", "Noxus' Necromancy Robe");
+            Bot.Quests.UpdateQuest(1170);
+            Core.KillMonster("shadowfallwar", "Inside", "Right", "Noxus", "Noxus' Necromancy Robe");
             Core.EnsureComplete(8038);
         }
 
