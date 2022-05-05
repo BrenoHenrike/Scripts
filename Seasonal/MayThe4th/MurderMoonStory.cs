@@ -27,7 +27,7 @@ public class MurderMoon
 
         //Murder Moon Plans
         Story.KillQuest(8063, "murdermoon", "Tempest Soldier");
-        Story.MapItemQuest(8063, "murdermoon", 8373);
+        Story.MapItemQuest(8063, "murdermoon", 8373, 5);
 
         //Revenge of the Fifth
         Story.KillQuest(8064, "murdermoon", "Fifth Sepulchure");

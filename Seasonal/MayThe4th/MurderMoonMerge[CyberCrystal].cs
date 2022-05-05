@@ -24,7 +24,7 @@ public class MurderMoonMerge
 
         Moon.MurderMoonStory();
 
-        int currentQuant = (Bot.Inventory.Items.First(x => x.Name == "Cyber Crystal") ?? new()).Quantity;
+        int currentQuant = Bot.Inventory.GetQuantity("Cyber Crystal");
         Core.Logger($"Farming Cyber Crystals ({currentQuant}/{quant})");
         Core.EquipClass(ClassType.Farm);
 
