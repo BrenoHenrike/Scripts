@@ -1419,6 +1419,13 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map.ToLower() && !ignoreCheck)
             return;
 
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
+
         string[] disabledMaps =
         {
             "tower"
@@ -1444,6 +1451,9 @@ public class CoreBots
             Jump(cell, pad);
             Bot.Sleep(ActionDelay);
         }
+
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
     }
 
     /// <summary>
