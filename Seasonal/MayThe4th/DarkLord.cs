@@ -39,17 +39,17 @@ public class DarkLord
 
         //S Ring x15
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "S Ring", 15);
+        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "S Ring", 15, false);
 
         //Fifth Lord's Filtrinator x15
-        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15);
+        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15, false);
 
         //Dark Helmet x1
         Bot.Quests.UpdateQuest(7484);
-        Core.HuntMonster("zorbaspalace", "Zorba the Bakk", "Dark Helmet", 1);
+        Core.HuntMonster("zorbaspalace", "Zorba the Bakk", "Dark Helmet", 1, false);
 
         //Dotty x15
-        Core.HuntMonster("zorbaspalace", "Zorba the Bakk", "Dotty", 15);
+        Core.HuntMonster("zorbaspalace", "Zorba the Bakk", "Dotty", 15, false);
 
         //Gold Voucher 25k x4
         Core.BuyItem("murdermoon", 1998, "Gold Voucher", 4);
