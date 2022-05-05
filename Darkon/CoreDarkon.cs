@@ -6,7 +6,9 @@ public class CoreDarkon
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
+    public CoreFarms Farm = new CoreFarms();
     public CoreAstravia Astravia => new CoreAstravia();
+    public DarkonGarden Garden => new DarkonGarden();
 
     public void FarmReceipt(int Quantity = 222)
     {
@@ -105,8 +107,9 @@ public class CoreDarkon
 
         Astravia.Eridani();
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
 
+        Core.Logger($"Farming {Quantity} Teeth");
         while ((!Core.CheckInventory("Teeth", Quantity)))
         {
             Core.EnsureAccept(7780);
@@ -127,8 +130,9 @@ public class CoreDarkon
 
         Astravia.Astravia();
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
 
+        Core.Logger($"Farming {Quantity} La's Gratitude");
         while ((!Core.CheckInventory("La's Gratitude", Quantity)))
         {
             Core.EnsureAccept(8001);
@@ -148,6 +152,7 @@ public class CoreDarkon
         Astravia.AstraviaCastle();
         Core.Join("astraviacastle");
 
+        Core.Logger($"Farming {Quantity} Astravian Medal");
         while ((!Core.CheckInventory("Astravian Medal", Quantity)))
         {
             Core.EnsureAccept(8257);
@@ -171,6 +176,7 @@ public class CoreDarkon
 
         Astravia.AstraviaJudgement();
 
+        Core.Logger($"Farming {Quantity} A Melody");
         while ((!Core.CheckInventory("A Melody", Quantity)))
         {
             Core.EnsureAccept(8396);
@@ -190,6 +196,7 @@ public class CoreDarkon
 
         Astravia.EridaniPast();
 
+        Core.Logger($"Farming {Quantity} Bandit's Correspondence");
         while ((!Core.CheckInventory("Bandit's Correspondence", Quantity)))
         {
             Core.EnsureAccept(8531);
@@ -212,6 +219,7 @@ public class CoreDarkon
 
         Astravia.AstraviaJudgement();
 
+        Core.Logger($"Farming {Quantity} Suki's Prestige");
         while ((!Core.CheckInventory("Suki's Prestige", Quantity)))
         {
             Core.EnsureAccept(8602);
@@ -223,5 +231,19 @@ public class CoreDarkon
             Core.HuntMonster("astraviapast", "Astravian Soldier", "Soldiers Trained", 8);
             Core.EnsureComplete(8602);
         }
+    }
+
+    public void InstantNoodle(int Quantity = 22)
+    {
+        if (Core.CheckInventory("Darkon's Instant Noodle", Quantity))
+            return;
+
+        Garden.StoryLine();
+
+        Farm.Gold(48888884);
+
+        Core.Logger($"Buying {Quantity} Darkon's Instant Noodle");
+        Core.BuyItem("garden", 1831, "Darkon's Instant Noodle", 22);
+        Bot.Wait.ForItemBuy();
     }
 }
