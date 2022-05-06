@@ -8,7 +8,6 @@ public class CoreDarkon
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
     public CoreAstravia Astravia => new CoreAstravia();
-    public DarkonGarden Garden => new DarkonGarden();
 
     public void FarmReceipt(int Quantity = 222)
     {
@@ -231,19 +230,5 @@ public class CoreDarkon
             Core.HuntMonster("astraviapast", "Astravian Soldier", "Soldiers Trained", 8);
             Core.EnsureComplete(8602);
         }
-    }
-
-    public void InstantNoodle(int Quantity = 22)
-    {
-        if (Core.CheckInventory("Darkon's Instant Noodle", Quantity))
-            return;
-
-        Garden.StoryLine();
-
-        Farm.Gold(48888884);
-
-        Core.Logger($"Buying {Quantity} Darkon's Instant Noodle");
-        Core.BuyItem("garden", 1831, "Darkon's Instant Noodle", 22);
-        Bot.Wait.ForItemBuy();
     }
 }
