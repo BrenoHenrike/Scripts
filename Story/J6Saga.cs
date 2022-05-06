@@ -97,7 +97,13 @@ public class J6Saga
         Story.KillQuest(2173, "djinn", "Harpy");
 
         //Mission 6
-        Story.KillQuest(2830, "xantown", "*", GetReward: false);
+        if (!Story.QuestProgression(2830))
+        {
+            Core.EnsureAccept(2830);
+            Core.KillMonster("xantown", "Enter", "Spawn", "*", "Flare Artifact");
+            Core.EnsureComplete(2830);
+            Core.Jump("Cut1", "Left"); // because xantown is aggressive and breaks trying to goto sandsea
+        }
 
         //Fuel For Flight
         if (!Story.QuestProgression(2831))
