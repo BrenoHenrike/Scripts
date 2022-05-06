@@ -48,6 +48,8 @@ public class GetSDD
             Story.MapItemQuest(6909, "void", 6454);
             Story.KillQuest(6910, "void", "Void Bear");
             Story.KillQuest(6911, "void", "Void Elemental");
+            
+            Bot.Quests.UpdateQuest(904);
             Story.KillQuest(6912, "void", "Void Dragon");
 
             if (!Story.QuestProgression(6913) || !Core.CheckInventory("Mysterious Egg"))
