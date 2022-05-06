@@ -381,6 +381,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
+        Bot.Sleep(1500);
         ShopItem? item = null;
         try
         {
@@ -424,7 +425,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
-        Bot.Sleep(ActionDelay);
+        Bot.Sleep(1500);
         ShopItem? item = null;
         try
         {
