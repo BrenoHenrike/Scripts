@@ -58,7 +58,7 @@ public class Awescended
         if (Core.CheckInventory(new[] { "Awescended", "Awescended Omni Armblades", "Awescended Omni Cowl", "Awescended Omni Wings" }))
             return;
 
-        Story.PreLoad();
+        // Story.PreLoad();
 
         //The Dawn of Lore
         if (!Story.QuestProgression(8035))
@@ -136,7 +136,7 @@ public class Awescended
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("bonecastlec", "r25", "Bottom", "Vaden", "Vaden Helm Token", 333, false);
-                Core.BuyItem("bonecastlec", 1242, "Vaden's Helm");
+                Core.BuyItem("bonecastlec", 1242, itemID: 34655);
             }
             Core.EquipClass(ClassType.Farm);
             ArmorOfZular();
