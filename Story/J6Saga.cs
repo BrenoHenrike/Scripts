@@ -36,7 +36,7 @@ public class J6Saga
         if (!Story.QuestProgression(694))
         {
             Core.Jump("R10");
-            Bot.Player.Join("zephyrus");
+            Core.Join("zephyrus");
             Story.MapItemQuest(694, "zephyrus", new[] { 116, 117 });
         }
 
@@ -49,7 +49,7 @@ public class J6Saga
         if (!Core.isCompletedBefore(1172))
         {
             Core.Jump("R10");
-            Bot.Player.Join("moonyard");
+            Core.Join("moonyard");
         }
         //A Gate and Terrible Monster
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
@@ -64,7 +64,7 @@ public class J6Saga
         if (!Story.QuestProgression(1173, GetReward: false))
         {
             Core.Jump("MoonCut", "Left");
-            Bot.Player.Join("moonyardb");
+            Core.Join("moonyardb");
             Story.KillQuest(1173, "moonyardb", "Robo Guard", GetReward: false);
         }
 
@@ -76,12 +76,6 @@ public class J6Saga
 
         //Planet Banzai!
         Story.ChainQuest(2168);
-        // if (!Story.QuestProgression(2168))
-        // {
-        //     Core.Jump("R10");
-        //     Bot.Player.Join("banzai");
-        //     Core.ChainComplete(2168);
-        // }
 
 
         //L.O.S.E.R. Battle!
@@ -114,9 +108,9 @@ public class J6Saga
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
                 Core.Jump("R10");
-                Bot.Player.Join("moonyard");
+                Core.Join("moonyard");
                 Core.Jump("MoonCut", "Left");
-                Bot.Player.Join("moonyardb");
+                Core.Join("moonyardb");
                 Core.KillMonster("moonyardb", "r4", "Left", "*", "Robo Dog Oil", 3);
             }
             Core.KillMonster("farm", "Crop1", "Left", "*", "Scarecrow Canola Oil", 3);
@@ -168,7 +162,7 @@ public class J6Saga
         if (!Core.isCompletedBefore(2846))
         {
             Core.Jump("R10");
-            Bot.Player.Join("alley");
+            Core.Join("alley");
         }
         //Reduce, Respawn, Recycle
         Story.KillQuest(2841, "alley", "Trash Can");
@@ -198,7 +192,7 @@ public class J6Saga
         if (!Core.isCompletedBefore(2851))
         {
             Core.Jump("R10");
-            Bot.Player.Join("alley");
+            Core.Join("alley");
             Bot.Sleep(2000);
         }
         //Save the Girl
