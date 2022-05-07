@@ -2223,13 +2223,28 @@ public class Core13LoC
         }
 
         //Defeat the 12 Lords of Chaos!
-        Story.KillQuest(3879, "chaosrealm", "Alteon");
+        if (!Story.QuestProgression(3879))
+        {
+            Core.EnsureAccept(3879);
+            Core.KillMonster("chaosrealm", "r24", "Left", "Alteon", "Chaos Lord Alteon Defeated");
+            Core.EnsureComplete(3879);
+        }
 
         //Defeat the 13th Lord of Chaos
-        Story.KillQuest(3880, "chaoslord", "*");
+        if (!Story.QuestProgression(3880))
+        {
+            Core.EnsureAccept(3880);
+            Core.KillMonster($"chaoslord", "r2", "Left", "*", "13th Lord of Chaos Defeated");
+            Core.EnsureComplete(3880);
+        }
 
         //The Final Showdown!
-        Story.KillQuest(3881, "finalshowdown", "Prince Drakath");
+        if (!Story.QuestProgression(3881))
+        {
+            Core.EnsureAccept(3881);
+            Core.KillMonster("finalshowdown", "r2", "Left", "Prince Drakath", "Prince Drakath Defeated");
+            Core.EnsureComplete(3881);
+        }
     }
 
     public void Extra()
