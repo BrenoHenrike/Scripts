@@ -52,7 +52,7 @@ public class EnoughDOOMforanArchfiend
         Farm.BattleUnderB("Undead Essence", 1000);
 
         Nulgath.FarmVoucher(false);
-        Nulgath.FarmBloodGem(2);
+        Nulgath.FarmBloodGem(10);
 
         Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
