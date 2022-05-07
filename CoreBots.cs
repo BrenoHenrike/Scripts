@@ -1221,6 +1221,7 @@ public class CoreBots
         Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
         if (Bot.Player.LoggedIn)
         {
+            Bot.Player.ExitCombat();
             Bot.Sleep(ActionDelay);
             SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
             if (Bot.Map.Name == "house")

@@ -919,9 +919,9 @@ public class CoreFarms
 
         Core.RegisterQuests(364);
         while (FactionRank("Evil") < 4)
-        {
-            Core.HuntMonster("newbie", "Slime", "Youthanize");
-        }
+            Core.HuntMonster("swordhavenbridge", "Slime", "Youthanize");
+
+        Core.CancelRegisteredQuests();
         Core.RegisterQuests(366, 367);
         while (FactionRank("Evil") < rank && !Bot.ShouldExit())
         {
@@ -937,6 +937,7 @@ public class CoreFarms
                 Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase");
             }
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void FaerieCourtREP(int rank = 10) // Seasonal
