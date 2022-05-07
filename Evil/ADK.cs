@@ -61,12 +61,13 @@ public class ArchDoomKnight
     {
         Core.SetOptions();
 
+        Core.BankingBlackList.Add("Arch DoomKnight");
         DoAll();
 
         Core.SetOptions(false);
     }
 
-    public void DoAll()
+    public void DoAll(bool BankRewards = false)
     {
         LOC.Wolfwing();
         Farm.EvilREP(7);
@@ -74,12 +75,14 @@ public class ArchDoomKnight
         DeathsDoor();
         ChaoticLords();
         AMeansToAnEnd();
+        if (BankRewards)
+            Core.ToBank(Combined);
     }
 
 
     public void GatheringPower()
     {
-        if (Core.CheckInventory("Arch DoomKnight Cape"))
+        if (Core.CheckInventory("Arch DoomKnight Cape", toInv: false))
             return;
 
         Core.AddDrop(Q1items);
@@ -95,7 +98,7 @@ public class ArchDoomKnight
 
     public void DeathsDoor()
     {
-        if (Core.CheckInventory(new[] { "Arch DoomKnight Cape Sword", "Arch DoomKnight Polearm" }))
+        if (Core.CheckInventory(new[] { "Arch DoomKnight Cape Sword", "Arch DoomKnight Polearm" }, toInv: false))
             return;
 
         Core.AddDrop(Q2items);
@@ -110,7 +113,7 @@ public class ArchDoomKnight
 
     public void ChaoticLords()
     {
-        if (Core.CheckInventory(new[] { "Arch DoomKnight Sword", "Arch DoomKnight's Edge" }))
+        if (Core.CheckInventory(new[] { "Arch DoomKnight Sword", "Arch DoomKnight's Edge" }, toInv: false))
             return;
 
         Core.AddDrop(Q3items);
@@ -138,7 +141,7 @@ public class ArchDoomKnight
 
     public void AMeansToAnEnd()
     {
-        if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }))
+        if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }, toInv: false))
             return;
 
         Core.AddDrop(Q4items);

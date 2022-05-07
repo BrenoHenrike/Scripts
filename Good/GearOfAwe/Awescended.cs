@@ -186,15 +186,14 @@ public class Awescended
         //Awe-scention
         if (!Story.QuestProgression(8042))
         {
-            Core.BankingBlackList.Add("Arch DoomKnight");
             Farm.Experience(100);
             Core.EnsureAccept(8042);
             AweArmor.GetArmor();
             Helm.GetHoA();
             Seppy.DoAll();
             Core.ToBank(Seppy.GravelynsDoomFireTokenItems);
-            ADK.DoAll();
-            Core.ToBank(ADK.Combined);
+            ADK.DoAll(true);
+            Core.Unbank("Arch DoomKnight");
             Armor.DrakathOriginalArmor();
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
             Core.EnsureComplete(8042);
@@ -204,6 +203,7 @@ public class Awescended
         Core.BuyItem("museum", 1994, "Awescended Omni Armblades");
         Core.BuyItem("museum", 1994, "Awescended Omni Cowl");
         Core.BuyItem("museum", 1994, "Awescended Omni Wings");
+        Core.Logger("Awescended Set Bought, Congratulations!");
     }
 
     public void ArmorOfZular()
