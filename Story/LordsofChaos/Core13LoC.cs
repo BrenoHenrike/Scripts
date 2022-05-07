@@ -1525,8 +1525,15 @@ public class Core13LoC
         //Chaos Beast Kathool
         Story.KillQuest(2517, "deepchaos", "Kathool");
 
+        Bot.Sleep(2500);
+
         //Starry, Starry Night
-        Story.KillQuest(2518, "timespace", "Astral Ephemerite");
+        if (!Story.QuestProgression(2518))
+        {
+            Core.EnsureAccept(2518);
+            Core.HuntMonster("timespace", "Astral Ephemerite", "Star Death", 6);
+            Core.EnsureComplete(2518);
+        }
 
         //Chaos Lord Iadoa
         if (!Story.QuestProgression(2519))
