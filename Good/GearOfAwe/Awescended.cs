@@ -186,12 +186,15 @@ public class Awescended
         //Awe-scention
         if (!Story.QuestProgression(8042))
         {
+            Core.BankingBlackList.Add("Arch DoomKnight");
             Farm.Experience(100);
             Core.EnsureAccept(8042);
             AweArmor.GetArmor();
             Helm.GetHoA();
             Seppy.DoAll();
+            Core.ToBank(Seppy.GravelynsDoomFireTokenItems);
             ADK.DoAll();
+            Core.ToBank(ADK.Combined);
             Armor.DrakathOriginalArmor();
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
             Core.EnsureComplete(8042);

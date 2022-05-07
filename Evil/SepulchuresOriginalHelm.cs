@@ -26,7 +26,8 @@ public class SepulchuresOriginalHelm
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
-
+        
+        Core.BankingBlackList.AddRange(new[] { "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor" });
         DoAll();
 
         Core.SetOptions(false);
