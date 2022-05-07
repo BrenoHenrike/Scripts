@@ -35,5 +35,6 @@ public class MurderMoonMerge
             Core.HuntMonster("murdermoon", "Tempest Soldier", "Tempest Soldier Badge", 5, log: false);
             Bot.Wait.ForPickup("Cyber Crystal");
         }
+        Core.CancelRegisteredQuests();
     }
 }
