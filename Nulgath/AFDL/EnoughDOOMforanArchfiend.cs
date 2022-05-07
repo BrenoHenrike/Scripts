@@ -70,7 +70,7 @@ public class EnoughDOOMforanArchfiend
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
         if (!Bot.Quests.CanComplete(5260))
-            Bot.Player.Logout();
+            Core.Relogin();
         Core.EnsureComplete(5260);
         Bot.Player.Pickup("ArchFiend DoomLord");
     }
