@@ -1221,7 +1221,15 @@ public class CoreBots
         Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
         if (Bot.Player.LoggedIn)
         {
-            Bot.Player.Join("battleon");
+            Bot.Sleep(ActionDelay);
+            SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
+            if (Bot.Map.Name == "house")
+                Logger($"(っ◔◡◔)っ ♥ Welcome Home ♥");
+            else if (Bot.Map.Name != "house")
+            {
+                Logger($"Sorry but your homeless (ಥ ̯ ಥ)");
+                Join("Whitemap");
+            }
             int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
             Bot.SendMSGPacket("Final Saved-State before ending the bot", "Saved-State", "moderator");
             Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
