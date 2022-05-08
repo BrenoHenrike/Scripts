@@ -83,7 +83,8 @@ public class NecroticSwordOfDoom
     {
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
-
+            
+        Daily.NSODDaily();
         CommandingShadowEssences(Quantity);
         RetrieveVoidAuras(Quantity);
     }
