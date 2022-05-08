@@ -517,8 +517,14 @@ public class CoreDailies
         Core.ToBank(Array);
     }
 
-    public void NSODDaily()
+    public void NSoDDaily()
     {
+        if (Core.CheckInventory(new[] { "Necrotic Sword of Doom", "Dual Necrotic Swords of Doom" }, any: true))
+            return;
+
+        if (Core.CheckInventory("Void Aura", 7500))
+            return;
+
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Void Aura", "(Necro) Scroll of Dark Arts");
 
