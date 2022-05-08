@@ -116,7 +116,7 @@ public class StarSinc
                     //4409 | Defeat the Prime Dominus
                     Core.EquipClass(ClassType.Solo);
                     Core.EnsureAccept(4409);
-                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated");
+                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false);
                     Core.EnsureComplete(4409);
                     Bot.Wait.ForPickup("Nova Badge 10.0");
                 }
@@ -134,21 +134,22 @@ public class StarSinc
         }
         //4413 | Become one with the Universe
         Core.EquipClass(ClassType.Farm);
-        Core.EnsureAccept(4413);
-        Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30);
-        Core.EnsureComplete(4413);
+        //Core.EnsureAccept(4413);
+        //Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30);
+        //Core.EnsureComplete(4413);
+        Story.KillQuest(4413, "starsinc", "Living Star");
 
         //4414 | Becoming the Star Dominus
         Core.EnsureAccept(4414);
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone dust", 15);
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 30, false);
-        Farm.BludrutBrawlBoss(quant: 15);
+        Farm.BludrutBrawlBoss(quant: 5);
         Core.EnsureComplete(4414);
 
         //4415 | Your Hardest Task
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(4415);
-        Core.HuntMonster("starsinc", "Empowered Prime", "Empowered Primed Defeated", 10);
+        Core.HuntMonster("starsinc", "Empowered Prime", "Empowered Primed Defeated", 10, false);
         Core.EnsureComplete(4415);
         Core.ToBank(RequiredItems);
     }
