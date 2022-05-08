@@ -531,6 +531,7 @@ public class CoreBLOD
 
         Core.RegisterQuests(quest);
         Farm.BattleUnderB("Blinding Light Fragments", 10);
+        Core.CancelRegisteredQuests();
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------ //

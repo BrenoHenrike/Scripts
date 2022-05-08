@@ -58,13 +58,14 @@ public class EternalDrakath
             Star.StarSincQuests();
             Core.EquipClass(ClassType.Farm);
             Core.AddDrop("Star Fragment");
-            Core.RegisterQuests(4413);
 
+            Core.RegisterQuests(4413);
             while (!Core.CheckInventory("Star Fragment", 33))
             {
-                Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30);
+                Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30, isTemp: false);
                 Bot.Wait.ForPickup("Star Fragment");
             }
+            Core.CancelRegisteredQuests();
         }
 
         if (!Core.CheckInventory("Death's Oversight", 5))
@@ -75,15 +76,15 @@ public class EternalDrakath
         {
             Core.EquipClass(ClassType.Solo);
             Core.AddDrop("Reality Shard");
-            Core.RegisterQuests(8455);
 
+            Core.RegisterQuests(8455);
             while (!Core.CheckInventory("Reality Shard", 200))
             {
                 Core.HuntMonster("eternalchaos", "Eternal Drakath", "Eternal Drakath Defeated", 1);
                 Bot.Wait.ForPickup("Reality Shard");
             }
+            Core.CancelRegisteredQuests();
         }
-
         Core.EnsureComplete(8457);
     }
 }

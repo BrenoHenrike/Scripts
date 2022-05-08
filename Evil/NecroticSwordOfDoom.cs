@@ -334,6 +334,7 @@ public class NecroticSwordOfDoom
             Bot.Wait.ForPickup("Cavern Celestite");
         }
         Core.Logger($"Farmed {Quantity} Cavern Celestite");
+        Core.CancelRegisteredQuests();
     }
 
     public void PrimarchHilt(int Quantity)
