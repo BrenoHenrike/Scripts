@@ -108,7 +108,7 @@ public class SepulchuresOriginalHelm
 
         Farm.Gold(1000000);
         Farm.EvilREP(10);
-        Core.BuyItem("shadowfall", 1639, "Royal ShadowScythe Blade");
+        Core.BuyItem("shadowfall", 1639, "Royal ShadowScythe Blade", shopItemID: 26666);
     }
 
 }
