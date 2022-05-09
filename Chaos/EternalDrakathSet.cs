@@ -68,9 +68,12 @@ public class EternalDrakath
             Core.CancelRegisteredQuests();
         }
 
-        if (!Core.CheckInventory("Death's Oversight", 5))
+        if (!Core.CheckInventory(61825, 5))
+        {
+            Bot.Quests.UpdateQuest(3799);
             Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("shadowattack", "Death", "Death's Oversight", 5, false);
+            Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Death's Oversight", 5, false);
+        }
 
         if (!Core.CheckInventory("Reality Shard", 300))
         {
