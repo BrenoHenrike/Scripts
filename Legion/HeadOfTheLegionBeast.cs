@@ -161,12 +161,12 @@ public class HeadoftheLegionBeast
 
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Souls of Heresy");
-        Core.RegisterQuests(7979, 7980, 7981);
+        Core.RegisterQuests(7983);
         if (Bot.Player.Gold < 100000000)
             Core.RegisterQuests(7980, 7981);
 
         while (!Core.CheckInventory("Souls of Heresy", quant))
-            Core.KillMonster("sevencircleswar", "r7", "Left", "Wrath Guard", "Wrath Guards Defeated", 12);
+            Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", "Heresy Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Souls of Heresy");
         Core.Logger($"Finished farming {quant} Souls of Heresy");
