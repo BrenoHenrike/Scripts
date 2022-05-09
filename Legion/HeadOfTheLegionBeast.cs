@@ -107,6 +107,7 @@ public class HeadoftheLegionBeast
             Core.HuntMonster("sevencircleswar", "Wrath Guard", "Wrath Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Wrath");
+        Core.Logger($"Finished farming {quant} Essence of Wrath");
         Core.CancelRegisteredQuests();
     }
 
@@ -142,8 +143,8 @@ public class HeadoftheLegionBeast
             Core.HuntMonster("sevencircleswar", "Treachery Guard", "Treachery Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Treachery");
-        Core.CancelRegisteredQuests();
         Core.Logger($"Finished farming {quant} Essence of Treachery");
+        Core.CancelRegisteredQuests();
     }
 
     public void SoulsHeresy(int quant = 300)
@@ -160,8 +161,8 @@ public class HeadoftheLegionBeast
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Souls of Heresy");
-        Core.CancelRegisteredQuests();
         Core.Logger($"Finished farming {quant} Souls of Heresy");
+        Core.CancelRegisteredQuests();
     }
 
     public void Penance(int quant)
@@ -186,8 +187,8 @@ public class HeadoftheLegionBeast
             Core.Logger($"Completed x{i}");
         }
         Bot.Wait.ForPickup("Penance");
-        Core.CancelRegisteredQuests();
         Core.Logger($"Finished farming {quant} Penance");
+        Core.CancelRegisteredQuests();
     }
 
     public void Indulgence(int quant = 100)
@@ -208,7 +209,7 @@ public class HeadoftheLegionBeast
             Core.KillMonster("sevencircles", "r7", "Left", "Avarice Guard", "Essence of Avarice", 1);
         }
         Bot.Wait.ForPickup("Indulgence");
-        Core.CancelRegisteredQuests();
         Core.Logger($"Finished farming {quant} Indulgence");
+        Core.CancelRegisteredQuests();
     }
 }
