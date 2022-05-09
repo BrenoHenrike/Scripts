@@ -68,28 +68,28 @@ public class HeadoftheLegionBeast
 
         Core.AddDrop(HeadLegionBeast);
         (string, int)[] HelmsCircle = { ("Aspect of Luxuria", 8233), ("Gluttony's Maw", 8234), ("Stare of Greed", 8234) };
-        foreach ((string Helm, int id) in HelmsCircle)
+        foreach ((string Helm, int shopItemID) in HelmsCircle)
         {
             if (!Core.CheckInventory(Helm))
             {
                 Core.AddDrop(Helm);
                 Legion.FarmLegionToken(1500);
                 Indulgence(10);
-                Core.BuyItem("sevencircles", 1980, Helm, shopItemID: id);
+                Core.BuyItem("sevencircles", 1980, Helm, shopItemID);
             }
         }
         (string, int)[] HelmsCircleWar = { ("Crown of Wrath", 8250), ("Face of Treachery", 8254), ("Faces of Violence", 8249) };
-        foreach ((string Helm, int id) in HelmsCircleWar)
+        foreach ((string Helm, int shopItemID) in HelmsCircleWar)
         {
             if (!Core.CheckInventory(Helm))
             {
                 Core.AddDrop(Helm);
                 Legion.FarmLegionToken(1500);
                 Penance(10);
-                Core.BuyItem("sevencircleswar", 1984, Helm, shopItemID: id);
+                Core.BuyItem("sevencircleswar", 1984, Helm, shopItemID);
             }
         }
-        Core.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles", shopItemID: 8255);
+        Core.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles");
     }
 
     public void EssenceWrath(int quant = 300)
