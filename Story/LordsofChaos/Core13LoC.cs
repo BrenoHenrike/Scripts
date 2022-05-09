@@ -1,4 +1,7 @@
-using System.ComponentModel.Design;
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreFarms.cs
 using RBot;
 
 public class Core13LoC
@@ -7,6 +10,11 @@ public class Core13LoC
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public void Complete13LOC(bool withExtras = false)
     {
