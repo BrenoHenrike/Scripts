@@ -173,20 +173,15 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Penance");
         Core.EquipClass(ClassType.Farm);
-        int i = 0;
+
         while (!Core.CheckInventory("Penance", quant))
         {
-            EssenceWrath(1);
-            EssenceViolence(1);
-            EssenceTreachery(1);
-            SoulsHeresy(15);
-            Core.Join("sevencircleswar");
-            Core.JumpWait();
-            Bot.Shops.BuyItem(1984, "Penance");
-            i++;
-            Core.Logger($"Completed x{i}");
+            EssenceWrath(quant);
+            EssenceViolence(quant);
+            EssenceTreachery(quant);
+            SoulsHeresy(15 * quant);
+            Core.BuyItem("sevencircleswar", 1984, "Penance", quant);
         }
-        Bot.Wait.ForPickup("Penance");
         Core.Logger($"Finished farming {quant} Penance");
         Core.CancelRegisteredQuests();
     }
