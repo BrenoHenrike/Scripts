@@ -517,7 +517,7 @@ public class CoreDailies
         Core.ToBank(Array);
     }
 
-    public void NSoDDaily()
+    public void NSODDaily()
     {
         if (Core.CheckInventory(new[] { "Necrotic Sword of Doom", "Dual Necrotic Swords of Doom" }, any: true))
             return;
