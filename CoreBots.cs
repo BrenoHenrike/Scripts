@@ -1306,7 +1306,7 @@ public class CoreBots
 
     public void RunCore()
     {
-        MessageBox.Show("Files that contain the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         StopBot();
     }
 
