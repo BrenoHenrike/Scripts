@@ -25,6 +25,11 @@ public class CoreHollowbornPaladin
     public Artixpointe APointe = new Artixpointe();
     public CoreDailies Daily = new();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
+
     public string[] PostSummoningItems =
     {
         "Classic Hollowborn Paladin Armor",

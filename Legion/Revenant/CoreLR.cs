@@ -1,3 +1,10 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
+//cs_include Scripts/Story/Legion/SeraphicWar.cs
 using RBot;
 using RBot.Items;
 
@@ -11,6 +18,11 @@ public class CoreLR
     public CoreLegion Legion = new CoreLegion();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
     public SeraphicWar_Story Seraph = new SeraphicWar_Story();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public string[] LR =
     {

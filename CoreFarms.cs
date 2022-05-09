@@ -1,3 +1,4 @@
+//cs_include Scripts/CoreBots.cs
 using RBot;
 using RBot.Items;
 
@@ -23,6 +24,11 @@ public class CoreFarms
     //XP Boost! (60 min) -- 27552
     //Daily XP Boost! (1 hr) -- 19189
     //XP Boost! (20 min) -- 22448
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     /// <summary>
     /// Uses a boost with the given ID.

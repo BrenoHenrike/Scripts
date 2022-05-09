@@ -80,6 +80,8 @@ public class CoreBots
 
     #endregion
 
+    #region Startup
+
     /// <summary>
     /// Set common bot options to desired value
     /// </summary>
@@ -214,6 +216,13 @@ public class CoreBots
         SetOptions(false);
         return StopBot();
     }
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        RunCore();
+    }
+
+    #endregion
 
     #region Inventory, Bank and Shop
     /// <summary>
@@ -1293,8 +1302,14 @@ public class CoreBots
         "ping",
         "you there?",
         "I\'m going AFK"
-
     };
+
+    public void RunCore()
+    {
+        MessageBox.Show("Files that contain the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        StopBot();
+    }
+
     #endregion
 
     #region Map

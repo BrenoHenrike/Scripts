@@ -12,6 +12,11 @@ public class CoreAwe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
+
     public void GetAweRelic(string Item, int LegendQuest, int FragmentAmount, int ShardAmount, string Map, string Monster)
     {
         if (Core.CheckInventory($"{Item} Relic"))

@@ -1,3 +1,9 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Darkon/CoreDarkon.cs
+//cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using RBot;
 
 public class CoreDarkon
@@ -8,6 +14,11 @@ public class CoreDarkon
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
     public CoreAstravia Astravia => new CoreAstravia();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public void FarmReceipt(int Quantity = 222)
     {

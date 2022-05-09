@@ -1,4 +1,8 @@
-﻿using System.Windows.Forms;
+﻿//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+using System.Windows.Forms;
 using RBot;
 
 public class CoreLegion
@@ -8,6 +12,11 @@ public class CoreLegion
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public string[] legionMedals =
     {

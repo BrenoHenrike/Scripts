@@ -1,3 +1,5 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 using RBot;
 using RBot.Items;
 using RBot.Shops;
@@ -8,6 +10,11 @@ public class CoreAdvanced
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     #region Enhancement
 
@@ -340,16 +347,16 @@ public class CoreAdvanced
                     if (BoostedGearMultiple.Keys.Any(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x)))
                         ArrayOutput = new[] { BoostedGearMultiple.First(x => BankInvData.Where(i => i.Equipped).Select(x => x.Name).Contains(x.Key)).Key };
                     else foreach (KeyValuePair<string, float> Gear in BoostedGearMultiple)
-                    {
-                        InventoryItem Item = BankInvData.First(x => x.Name == Gear.Key && x.Meta.Contains(BoostType.ToString()));
-                        InventoryItem equippedItem = BankInvData.First(x => x.Equipped && x.ItemGroup == Item.ItemGroup);
-                        if (Item != null && equippedItem != null
-                            && Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.GetGameObject<int>($"world.invTree.{equippedItem.ID}.EnhID"))
                         {
-                            ArrayOutput = new[] { Item.Name };
-                            break;
+                            InventoryItem Item = BankInvData.First(x => x.Name == Gear.Key && x.Meta.Contains(BoostType.ToString()));
+                            InventoryItem equippedItem = BankInvData.First(x => x.Equipped && x.ItemGroup == Item.ItemGroup);
+                            if (Item != null && equippedItem != null
+                                && Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.GetGameObject<int>($"world.invTree.{equippedItem.ID}.EnhID"))
+                            {
+                                ArrayOutput = new[] { Item.Name };
+                                break;
+                            }
                         }
-                    }
                 }
 
                 if (EquipItem)
@@ -393,7 +400,7 @@ public class CoreAdvanced
                     }
                 }
             else foreach (InventoryItem iAll in AllDMGallItems)
-                BestGearData.Add(new("", iAll.Name, getBoostFloat(iAll, "dmgAll")));
+                    BestGearData.Add(new("", iAll.Name, getBoostFloat(iAll, "dmgAll")));
 
             BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
             TotalBoostValue = FinalCombo.BoostValue;

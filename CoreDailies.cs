@@ -1,4 +1,5 @@
-﻿using RBot;
+﻿//cs_include Scripts/CoreBots.cs
+using RBot;
 using RBot.Items;
 using RBot.Quests;
 using RBot.Shops;
@@ -14,6 +15,11 @@ public class CoreDailies
 
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     /// <summary>
     /// Accepts the quest and kills the monster to complete, if no cell/pad is given will hunt for the monster.
