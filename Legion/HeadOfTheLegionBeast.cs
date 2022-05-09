@@ -68,25 +68,27 @@ public class HeadoftheLegionBeast
 
         Core.AddDrop(HeadLegionBeast);
         string[] HelmsCircle = { "Aspect of Luxuria", "Gluttony's Maw", "Stare of Greed" };
-        foreach (string Helm in HelmsCircle)
-        {
-            if (!Core.CheckInventory(Helm))
+        int[] HelmShopIDs = new[] { 8233, 8234, 8234 };
+        foreach (string Helm in HelmsCircle) foreach (int HelmShopID in HelmShopIDs)
             {
-                Legion.FarmLegionToken(1500);
-                Indulgence(10);
-                Core.BuyItem("sevencircles", 1980, Helm);
+                if (!Core.CheckInventory(Helm))
+                {
+                    Legion.FarmLegionToken(1500);
+                    Indulgence(10);
+                    Core.BuyItem("sevencircles", 1980, Helm, shopItemID: HelmShopID);
+                }
             }
-        }
         string[] HelmsCircleWar = { "Crown of Wrath", "Face of Treachery", "Faces of Violence" };
-        foreach (string Helm in HelmsCircleWar)
-        {
-            if (!Core.CheckInventory(Helm))
+        int[] HelmShop2IDs = new[] { 8250, 8254, 8249 };
+        foreach (string Helm in HelmsCircleWar) foreach (int HelmShop2ID in HelmShop2IDs)
             {
-                Legion.FarmLegionToken(1500);
-                Penance(10);
-                Core.BuyItem("sevencircleswar", 1984, Helm);
+                if (!Core.CheckInventory(Helm))
+                {
+                    Legion.FarmLegionToken(1500);
+                    Penance(10);
+                    Core.BuyItem("sevencircleswar", 1984, Helm, shopItemID: HelmShop2ID);
+                }
             }
-        }
         Core.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles");
     }
 
