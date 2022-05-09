@@ -550,7 +550,7 @@ public class CoreDailies
                     }
                     Core.CancelRegisteredQuests();
                 }
-                else Core.HuntMonster("chaoskraken", "Chaos Kraken", "Kraken Doubloon", 13, isTemp: false);
+                else Core.HuntMonster("chaoskraken", "Chaos Kraken", "Kraken Doubloon", 13, isTemp: false, publicRoom: true);
                 Core.HuntMonster($"ancienttrigoras", "Ancient Trigoras", "Ancient Trigora’s Horns", 3, isTemp: false);
                 Core.KillMonster("gravechallenge", "r19", "Left", "Graveclaw the Defiler", "Graveclaw's Broken Axe", isTemp: false); 
                 Core.EnsureComplete(8653);
@@ -561,9 +561,9 @@ public class CoreDailies
         if (CheckDaily(8653))
         {
             Core.EnsureAccept(8653);
-            Core.HuntMonster("icestormarena", "Warlord Icewing", "Glacial Pinion", isTemp: false);
+            Core.HuntMonster("icestormarena", "Warlord Icewing", "Glacial Pinion", isTemp: false, publicRoom: true);
             Core.HuntMonster("hydrachallenge", "Hydra Head 90", "Hydra Eyeball", 3, isTemp: false);
-            Core.HuntMonster("thevoid", "Flibbitiestgibbet", "Flibbitigiblets", isTemp: false);
+            Core.HuntMonster("thevoid", "Flibbitiestgibbet", "Flibbitigiblets", isTemp: false, publicRoom: true);
             Core.EnsureComplete(8653);
             Bot.Wait.ForPickup("Void Aura");
         }
