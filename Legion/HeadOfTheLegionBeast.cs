@@ -101,7 +101,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant}x Essence of Wrath");
         Core.Join("sevencircleswar");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7979);
+        Core.RegisterQuests(7979, 7980, 7981);
 
         while (!Bot.Inventory.Contains("Essence of Wrath", quant))
             Core.HuntMonster("sevencircleswar", "Wrath Guard", "Wrath Guards Defeated", 12);
@@ -119,7 +119,7 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Violence");
-        Core.RegisterQuests(7979);
+        Core.RegisterQuests(7985, 7980, 7981);
 
         while (!Bot.Inventory.Contains("Essence of Violence", quant))
             Core.HuntMonster("sevencircleswar", "Violence Guard", "Violence Guards Defeated", 12);
