@@ -67,28 +67,28 @@ public class HeadoftheLegionBeast
             return;
 
         Core.AddDrop(HeadLegionBeast);
-        string[] HelmsCircle = { "Aspect of Luxuria", "Gluttony's Maw", "Stare of Greed" };
-        int[] HelmShopIDs = new[] { 8233, 8234, 8234 };
-        foreach (string Helm in HelmsCircle) foreach (int HelmShopID in HelmShopIDs)
+        (string, int)[] HelmsCircle = { ("Aspect of Luxuria", 8233), ("Gluttony's Maw", 8234), ("Stare of Greed", 8234) };
+        foreach ((string Helm, int id) in HelmsCircle)
+        {
+            if (!Core.CheckInventory(Helm))
             {
-                if (!Core.CheckInventory(Helm))
-                {
-                    Legion.FarmLegionToken(1500);
-                    Indulgence(10);
-                    Core.BuyItem("sevencircles", 1980, Helm, shopItemID: HelmShopID);
-                }
+                Core.AddDrop(Helm);
+                Legion.FarmLegionToken(1500);
+                Indulgence(10);
+                Core.BuyItem("sevencircles", 1980, Helm, shopItemID: id);
             }
-        string[] HelmsCircleWar = { "Crown of Wrath", "Face of Treachery", "Faces of Violence" };
-        int[] HelmShop2IDs = new[] { 8250, 8254, 8249 };
-        foreach (string Helm in HelmsCircleWar) foreach (int HelmShop2ID in HelmShop2IDs)
+        }
+        (string, int)[] HelmsCircleWar = { ("Crown of Wrath", 8250), ("Face of Treachery", 8254), ("Faces of Violence", 8249) };
+        foreach ((string Helm, int id) in HelmsCircleWar)
+        {
+            if (!Core.CheckInventory(Helm))
             {
-                if (!Core.CheckInventory(Helm))
-                {
-                    Legion.FarmLegionToken(1500);
-                    Penance(10);
-                    Core.BuyItem("sevencircleswar", 1984, Helm, shopItemID: HelmShop2ID);
-                }
+                Core.AddDrop(Helm);
+                Legion.FarmLegionToken(1500);
+                Penance(10);
+                Core.BuyItem("sevencircleswar", 1984, Helm, shopItemID: id);
             }
+        }
         Core.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles", shopItemID: 8255);
     }
 
@@ -101,10 +101,12 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant}x Essence of Wrath");
         Core.Join("sevencircleswar");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7979, 7980, 7981);
+        Core.RegisterQuests(7979);
+        if (Bot.Player.Gold < 100000000)
+            Core.RegisterQuests(7980, 7981);
 
         while (!Bot.Inventory.Contains("Essence of Wrath", quant))
-            Core.HuntMonster("sevencircleswar", "Wrath Guard", "Wrath Guards Defeated", 12);
+            Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Wrath");
         Core.Logger($"Finished farming {quant} Essence of Wrath");
@@ -119,10 +121,12 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Violence");
-        Core.RegisterQuests(7985, 7980, 7981);
+        Core.RegisterQuests(7985);
+        if (Bot.Player.Gold < 100000000)
+            Core.RegisterQuests(7980, 7981);
 
         while (!Bot.Inventory.Contains("Essence of Violence", quant))
-            Core.HuntMonster("sevencircleswar", "Violence Guard", "Violence Guards Defeated", 12);
+            Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", "Violence Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Violence");
         Core.Logger($"Finished farming {quant} Essence of Violence");
@@ -138,9 +142,11 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Treachery");
         Core.RegisterQuests(7988);
+        if (Bot.Player.Gold < 100000000)
+            Core.RegisterQuests(7980, 7981);
 
         while (!Bot.Inventory.Contains("Essence of Treachery", quant))
-            Core.HuntMonster("sevencircleswar", "Treachery Guard", "Treachery Guards Defeated", 12);
+            Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", "Treachery Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Treachery");
         Core.Logger($"Finished farming {quant} Essence of Treachery");
@@ -156,9 +162,11 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Souls of Heresy");
         Core.RegisterQuests(7979, 7980, 7981);
+        if (Bot.Player.Gold < 100000000)
+            Core.RegisterQuests(7980, 7981);
 
         while (!Core.CheckInventory("Souls of Heresy", quant))
-            Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
+            Core.KillMonster("sevencircleswar", "r7", "Left", "Wrath Guard", "Wrath Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Souls of Heresy");
         Core.Logger($"Finished farming {quant} Souls of Heresy");
