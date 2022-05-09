@@ -89,7 +89,7 @@ public class SepulchuresOriginalHelm
             Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories", isTemp: false);
             Core.EnsureComplete(5458);
             Bot.Wait.ForPickup("Painful Memory Bubble");
-            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flame", isTemp: false);
+            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flame");
             Core.EnsureComplete(5459);
             Bot.Wait.ForPickup("Burning Passion Flame");
             Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger", isTemp: false);
