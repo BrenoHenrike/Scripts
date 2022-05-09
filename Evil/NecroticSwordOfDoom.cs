@@ -7,7 +7,6 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreDailies.cs
 
 using RBot;
 
