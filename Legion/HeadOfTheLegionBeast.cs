@@ -63,7 +63,7 @@ public class HeadoftheLegionBeast
 
     public void HelmSevenCircles()
     {
-        if (Core.CheckInventory("Helms of the Seven Circles"))
+        if (Core.CheckInventory(60137))
             return;
 
         Core.AddDrop(HeadLegionBeast);
