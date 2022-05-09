@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreFarms.cs
 using RBot;
 
-public class NSoDDaily
+public class NSODDaily
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,7 +14,7 @@ public class NSoDDaily
     {
         Core.SetOptions();
 
-        Daily.NSoDDaily();
+        Daily.NSODDaily();
 
         Core.SetOptions(false);
     }

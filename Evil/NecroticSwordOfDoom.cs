@@ -7,7 +7,7 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Dailies/NSoDDaily.cs
+//cs_include Scripts/Dailies/NSODDaily.cs
 
 using RBot;
 
@@ -35,7 +35,7 @@ public class NecroticSwordOfDoom
     public Necromancer Necro = new Necromancer();
     public BattleUnder BattleUnder = new BattleUnder();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public NSoDDaily NSODD = new();
+    public NSODDaily NSODD = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -87,7 +87,7 @@ public class NecroticSwordOfDoom
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
             
-        Daily.NSoDDaily();
+        Daily.NSODDaily();
         CommandingShadowEssences(Quantity);
         RetrieveVoidAuras(Quantity);
     }
