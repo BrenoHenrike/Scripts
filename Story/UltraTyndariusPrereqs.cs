@@ -90,7 +90,7 @@ public class Tyndarius
             Core.EnsureAccept(8140);
             Core.GetMapItem(8543);
             Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadow Flamewing Defeated", 2);
-            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadowfire Summoner Defeated");
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadowfire Summoner", "Shadowfire Summoner Defeated", 1);
             Core.EnsureComplete(8140);
         }
 
