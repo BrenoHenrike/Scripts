@@ -187,7 +187,7 @@ public class HeadoftheLegionBeast
             EssenceViolence(quant2);
             EssenceTreachery(quant2);
             SoulsHeresy(15 * quant2);
-            Core.BuyItem("sevencircleswar", 1984, "Penance", quant - (Bot.Inventory.GetQuantity("Penance") + quant2));
+            Core.BuyItem("sevencircleswar", 1984, "Penance", Bot.Inventory.GetQuantity("Penance")+5);
         }
         Core.Logger($"Finished farming {quant} Penance");
     }
