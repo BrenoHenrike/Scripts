@@ -86,9 +86,9 @@ public class Tyndarius
         // Destroy the Barrier
         if (!Story.QuestProgression(8140))
         {
-            Bot.Map.GetMapItem(8543);
+            Core.Join("shadowfireplane", "r6", "Left"); // for incase u start here
             Core.EnsureAccept(8140);
-            Story.MapItemQuest(8140, "shadowfireplane", 8543);
+            Core.GetMapItem(8543);
             Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadow Flamewing Defeated", 2);
             Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadowfire Summoner Defeated");
             Core.EnsureComplete(8140);
