@@ -75,10 +75,17 @@ public class WarTraining
         // Awaken Lady Fiamme
         Story.MapItemQuest(8139, "shadowfireplane", 8542);
         Bot.Sleep(5000);
-
+        
         // Destroy the Barrier
-        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner", "Shadow Wing" });
-        Story.MapItemQuest(8140, "shadowfireplane", 8543);
+        if (!Story.QuestProgression(8140))
+        {
+            Core.Join("shadowfireplane", "r6", "Left"); // for incase u start here
+            Core.EnsureAccept(8140);
+            Core.GetMapItem(8543);
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadow Flamewing Defeated", 2);
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadowfire Summoner", "Shadowfire Summoner Defeated", 1);
+            Core.EnsureComplete(8140);
+        }
 
         // Blaze a Path
         Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight", "Shadowfire Corporal" });
