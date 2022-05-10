@@ -173,25 +173,23 @@ public class HeadoftheLegionBeast
         Core.CancelRegisteredQuests();
     }
 
-    public void Penance(int quant)
+    public void Penance(int quant = 30)
     {
-        if (Core.CheckInventory("Penance", quant))
+        int quant2 = 5;
+        if (Core.CheckInventory(60137))
             return;
-
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Penance");
         Core.EquipClass(ClassType.Farm);
-
         while (!Core.CheckInventory("Penance", quant))
         {
-            EssenceWrath(quant);
-            EssenceViolence(quant);
-            EssenceTreachery(quant);
-            SoulsHeresy(15 * quant);
-            Core.BuyItem("sevencircleswar", 1984, "Penance", quant);
+            EssenceWrath(quant2);
+            EssenceViolence(quant2);
+            EssenceTreachery(quant2);
+            SoulsHeresy(15 * quant2);
+            Core.BuyItem("sevencircleswar", 1984, "Penance", quant - (Bot.Inventory.GetQuantity("Penance") + quant2));
         }
         Core.Logger($"Finished farming {quant} Penance");
-        Core.CancelRegisteredQuests();
     }
 
     public void Indulgence(int quant = 100)
