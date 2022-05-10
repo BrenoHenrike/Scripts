@@ -84,8 +84,15 @@ public class Tyndarius
         Bot.Sleep(5000);
 
         // Destroy the Barrier
-        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner", "Shadow Wing" });
-        Story.MapItemQuest(8140, "shadowfireplane", 8543);
+        if (!Story.QuestProgression(8140))
+        {
+            Bot.Map.GetMapItem(8543);
+            Core.EnsureAccept(8140);
+            Story.MapItemQuest(8140, "shadowfireplane", 8543);
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadow Flamewing Defeated", 2);
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadowfire Summoner Defeated");
+            Core.EnsureComplete(8140);
+        }
 
         // Blaze a Path
         Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight", "Shadowfire Corporal" });
