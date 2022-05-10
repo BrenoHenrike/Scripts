@@ -37,7 +37,7 @@ public class FireChampionsArmor
         VoidScale(13);
         Farm.Gold(25000000);
         Core.BuyItem("wartraining", 2035, "Gold Voucher 500k", 50);
-        Core.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 62570);
+        Core.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 8759);
     }
 
 
