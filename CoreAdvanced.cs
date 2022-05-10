@@ -360,7 +360,36 @@ public class CoreAdvanced
                 }
 
                 if (EquipItem)
+                {
+                    foreach (string Item in ArrayOutput)
+                    {
+                        InventoryItem invItem = BankInvData.First(x => x.Name == Item);
+                        if (!invItem.Equipped)
+                            continue;
+
+                        if (invItem.ItemGroup == "Weapon")
+                        {
+                            List<InventoryItem> theList = new();
+                            theList.AddRange(Bot.Inventory.Items.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
+                            if (theList.Count == 0)
+                                theList.AddRange(Bot.Bank.BankItems.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
+
+                            if (theList.Count != 0)
+                                Core.Equip(theList.First().Name);
+                            else
+                            {
+                                Core.BuyItem(Bot.Map.Name, 299, "Battle Oracle Battlestaff");
+                                Core.Equip("Battle Oracle Battlestaff");
+                            }
+                        }
+                        else
+                        {
+                            Core.JumpWait();
+                            Bot.SendPacket($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{invItem.ID}%");
+                        }
+                    }
                     Core.Equip(ArrayOutput);
+                }
 
                 LastBestGear = ArrayOutput;
             }
@@ -434,7 +463,36 @@ public class CoreAdvanced
             ArrayOutput = ListOutput.ToArray();
 
             if (EquipItem)
+            {
+                foreach (string Item in ArrayOutput)
+                {
+                    InventoryItem invItem = BankInvData.First(x => x.Name == Item);
+                    if (!invItem.Equipped)
+                        continue;
+
+                    if (invItem.ItemGroup == "Weapon")
+                    {
+                        List<InventoryItem> theList = new();
+                        theList.AddRange(Bot.Inventory.Items.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
+                        if (theList.Count == 0)
+                            theList.AddRange(Bot.Bank.BankItems.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
+
+                        if (theList.Count != 0)
+                            Core.Equip(theList.First().Name);
+                        else
+                        {
+                            Core.BuyItem(Bot.Map.Name, 299, "Battle Oracle Battlestaff");
+                            Core.Equip("Battle Oracle Battlestaff");
+                        }
+                    }
+                    else
+                    {
+                        Core.JumpWait();
+                        Bot.SendPacket($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{invItem.ID}%");
+                    }
+                }
                 Core.Equip(ArrayOutput);
+            }
             LastBestGear = ArrayOutput;
         }
 
