@@ -86,13 +86,13 @@ public class SepulchuresOriginalHelm
                 Bot.Wait.ForPickup("Gravelyn's Blessing");
             }
             Core.EnsureAccept(5458, 5459, 5460, 5461);
-            Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories", isTemp: false);
+            Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories");
             Core.EnsureComplete(5458);
             Bot.Wait.ForPickup("Painful Memory Bubble");
             Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flame");
             Core.EnsureComplete(5459);
             Bot.Wait.ForPickup("Burning Passion Flame");
-            Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger", isTemp: false);
+            Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger");
             Core.EnsureComplete(5460);
             Bot.Wait.ForPickup("Father's Sorrowful Tear");
             Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 13, isTemp: false);
@@ -108,7 +108,7 @@ public class SepulchuresOriginalHelm
 
         Farm.Gold(1000000);
         Farm.EvilREP(10);
-        Core.BuyItem("shadowfall", 1639, "Royal ShadowScythe Blade");
+        Core.BuyItem("shadowfall", 1639, "Royal ShadowScythe Blade", shopItemID: 26666);
     }
 
 }

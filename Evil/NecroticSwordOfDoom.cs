@@ -7,7 +7,6 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Dailies/NSODDaily.cs
 
 using RBot;
 
@@ -35,7 +34,6 @@ public class NecroticSwordOfDoom
     public Necromancer Necro = new Necromancer();
     public BattleUnder BattleUnder = new BattleUnder();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public NSODDaily NSODD = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
