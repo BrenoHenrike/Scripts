@@ -103,8 +103,10 @@ public class J6Saga
         if (!Story.QuestProgression(2831))
         {
             Core.EnsureAccept(2831);
+            Bot.Quests.UpdateQuest(811);  
             Core.KillMonster("sandsea", "r8", "Left", "*", "Cactus Creeper Oil", 3);
             Core.KillMonster("cloister", "r7", "Left", "Acornent", "Acornent Oil", 3);
+            Bot.Quests.UpdateQuest(1176);              
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
                 Core.Jump("R10");
