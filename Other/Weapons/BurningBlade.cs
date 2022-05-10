@@ -17,7 +17,7 @@ public class BurningBlade
 
     public void GetBurningBlade()
     {
-        if (!Core.CheckInventory(31058))
+        if (Core.CheckInventory(31058))
             return;
         
         Core.EquipClass(ClassType.Solo);
