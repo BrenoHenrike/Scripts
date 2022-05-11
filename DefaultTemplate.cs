@@ -16,6 +16,7 @@ public class DefaultTemplate
 
         Core.SetOptions(false);
     }
+
     public void Example()
     {
         if (Core.CheckInventory("item"))
