@@ -9,6 +9,7 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Dailies/NSoDDaily.cs
 using RBot;
 
 public class ArchFiend
