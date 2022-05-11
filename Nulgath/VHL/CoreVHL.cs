@@ -58,8 +58,10 @@ public class CoreVHL
 
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", 1, false);
 
-        Core.Logger($"Obtaining Roentgenium of Nulgath x{quant}");
-        int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
+		int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
+		
+        Core.Logger($"Obtaining Roentgenium of Nulgath x{quant - CurrentRoent}");
+		
         while (!Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
             Core.EnsureAccept(5660);
@@ -78,14 +80,18 @@ public class CoreVHL
             Nulgath.EssenceofNulgath(50);
             Nulgath.SwindleBulk(100);
             Nulgath.ApprovalAndFavor(300, 300);
-
-            if (!Core.CheckInventory("Elders' Blood", ((quant - CurrentRoent) > 5 ? 5 : (quant - CurrentRoent))))
-                Daily.EldersBlood();
-            _SparrowMethod(((quant - CurrentRoent) > 5 ? 5 : (quant - CurrentRoent)));
-
-            if (!Core.CheckInventory("Elders' Blood"))
-                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
-
+			
+			if(EldersBloodAmount == 0)
+			{
+				if (EldersBloodAmount < 5)
+					Daily.EldersBlood();
+				if(UseSparrowMethod)
+					if (EldersBloodAmount < 5)
+						SparrowMethod();
+				if (!Core.CheckInventory("Elders' Blood"))
+					Core.Logger($"Not enough \"Elders' Blood\", please do the daily {15 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
+			}
+			
             Core.EnsureComplete(5660);
             Bot.Wait.ForPickup("Roentgenium of Nulgath");
         }
@@ -113,34 +119,32 @@ public class CoreVHL
         Nulgath.FarmBloodGem(30);
         Nulgath.FarmTotemofNulgath(15);
         Nulgath.SwindleBulk(200);
-
-        if (!Core.CheckInventory("Elders' Blood", 2))
-            Daily.EldersBlood();
-        _SparrowMethod(2);
-
-        if (!Core.CheckInventory("Elders' Blood", 2))
-            Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
+		
+		if(EldersBloodAmount < 2)
+		{
+			Daily.EldersBlood();
+			
+			if(UseSparrowMethod)
+				if (EldersBloodAmount < 2)
+					SparrowMethod();
+				
+			if (!Core.CheckInventory("Elders' Blood", 2))
+				Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
+		}
 
         Core.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
         Core.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
     }
 
-    private void _SparrowMethod(int EldersBloodQuant)
+    private void SparrowMethod()
     {
-        if (!UseSparrowMethod || !Core.IsMember || !Core.CheckInventory(Nulgath.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
-            return;
+        Core.BankingBlackList.AddRange(new[] {"Nulgath Larvae",
+                     "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
+                     "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)"});
+        Core.SetOptions();
 
-        Core.AddDrop("Totem of Nulgath", "Blood Gem of Nulgath", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
-        Nulgath.FarmTotemofNulgath();
-        Nulgath.FarmBloodGem();
-        if (!Core.CheckInventory("Unidentified 19"))
-        {
-            while (!Core.CheckInventory("Receipt of Swindle", 6))
-                Nulgath.SwindleReturn();
-            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
-        }
-        Nulgath.FarmVoucher(false);
-        Nulgath.FarmVoucher(true);
         ACAB.AssistingCandB();
+
+        Core.SetOptions(false);
     }
 }
