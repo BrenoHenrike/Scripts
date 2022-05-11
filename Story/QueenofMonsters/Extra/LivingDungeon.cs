@@ -109,9 +109,9 @@ public class LivingDungeon
                     Core.EnsureComplete(4377);
                     Bot.Wait.ForPickup("Wooden Ring");
                 }
-                Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
                 Core.EnsureComplete(4378);
             }
+            Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
             Bot.Wait.ForPickup("Salad!");
             Core.EnsureComplete(4379);
         }
