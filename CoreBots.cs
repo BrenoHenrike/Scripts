@@ -90,9 +90,11 @@ public class CoreBots
     {
         if (changeTo)
         {
-            Logger("Bot Started");
+            if (AppPath != null)
+                Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "")}]");
+            else Logger($"Bot Started");
 
-            RBotVersionChecker("4.1.2");
+            RBotVersionChecker("4.1.2.1");
 
             if (!Bot.Player.LoggedIn)
             {
