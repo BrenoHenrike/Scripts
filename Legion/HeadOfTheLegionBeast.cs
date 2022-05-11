@@ -175,9 +175,9 @@ public class HeadoftheLegionBeast
 
     public void Penance(int quant = 30)
     {
-        int quant2 = 5;
-        if (Core.CheckInventory(60137))
+        if (Core.CheckInventory(60137, quant))
             return;
+        int quant2 = 5;
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Penance");
         Core.EquipClass(ClassType.Farm);
@@ -187,7 +187,7 @@ public class HeadoftheLegionBeast
             EssenceViolence(quant2);
             EssenceTreachery(quant2);
             SoulsHeresy(15 * quant2);
-            Core.BuyItem("sevencircleswar", 1984, "Penance", Bot.Inventory.GetQuantity("Penance")+5);
+            Core.BuyItem("sevencircleswar", 1984, "Penance", Bot.Inventory.GetQuantity("Penance") + 5);
         }
         Core.Logger($"Finished farming {quant} Penance");
     }
