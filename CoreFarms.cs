@@ -1217,17 +1217,17 @@ public class CoreFarms
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Mythsong);
 
-        if (!Bot.Quests.IsAvailable(710))
+        if (!Bot.Quests.IsAvailable(4829))
         {
-            Core.Logger("Can't do farming quest [Kimberly] (/palooza)", messageBox: true);
+            Core.Logger("Can't do farming quest [Stinger, Stinger] (/beehive)", messageBox: true);
             return;
         }
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming rank {rank}");
-        Core.RegisterQuests(710);
+        Core.RegisterQuests(4829);
         while (FactionRank("Mythsong") < rank && !Bot.ShouldExit())
         {
-            Core.HuntMonster("palooza", "Kimberly", "Kimberly Defeated");
+            Core.HuntMonster("beehive", "Stinger", "Honey Gathered");
         }
         Core.CancelRegisteredQuests();
     }
