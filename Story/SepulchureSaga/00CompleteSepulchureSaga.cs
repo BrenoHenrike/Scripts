@@ -3,10 +3,10 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Prototypes/SepulchureSaga/01SepulchurePrequelAlden.cs
-//cs_include Scripts/Prototypes/SepulchureSaga/02SepulchurePrequelLynaria.cs
-//cs_include Scripts/Prototypes/SepulchureSaga/03SepulchuresRise.cs
-//cs_include Scripts/Prototypes/SepulchureSaga/04ShadowfallRise.cs
+//cs_include Scripts/Story/SepulchureSaga/01SepulchurePrequelAlden.cs
+//cs_include Scripts/Story/SepulchureSaga/02SepulchurePrequelLynaria.cs
+//cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
+//cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
 using RBot;
 
 public class CompleteSepulchureSaga

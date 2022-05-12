@@ -1,10 +1,10 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Prototypes/Laguna/01DualPlane.cs
-//cs_include Scripts/Prototypes/Laguna/02ChaosAmulet.cs
-//cs_include Scripts/Prototypes/Laguna/03LagunaBeach.cs
-//cs_include Scripts/Prototypes/Laguna/04Laguna.cs
+//cs_include Scripts/Story/Laguna/01DualPlane.cs
+//cs_include Scripts/Story/Laguna/02ChaosAmulet.cs
+//cs_include Scripts/Story/Laguna/03LagunaBeach.cs
+//cs_include Scripts/Story/Laguna/04Laguna.cs
 using RBot;
 
 public class CompleteLaguna
