@@ -645,6 +645,7 @@ public class CoreFarms
                     break;
             }
             Core.Logger($"Completed Find the Hilt! x{i++}");
+            Bot.Sleep(1500);
         }
         if (farmBoA)
         {
