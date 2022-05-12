@@ -94,7 +94,7 @@ public class CoreBots
                 Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            RBotVersionChecker("4.1.2.1");
+            RBotVersionChecker("4.1.3");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -1001,7 +1001,7 @@ public class CoreBots
         if (stopBot)
         {
             scriptFinished = false;
-            Bot.Stop();
+            Bot.Stop(true);
         }
     }
 
@@ -1074,7 +1074,7 @@ public class CoreBots
                 if (SendSite == DialogResult.OK)
                 {
                     System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/RBot/releases");
-                    Bot.Stop();
+                    Bot.Stop(true);
                 }
                 else
                     Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
