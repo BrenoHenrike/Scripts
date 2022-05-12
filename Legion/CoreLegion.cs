@@ -223,14 +223,41 @@ public class CoreLegion
             return;
 
         JoinLegion();
-
+        
         LTBrightParagon(quant);
         LTArcaneParagon(quant);
         LTShogunParagon(quant);
         LTThanatosParagon(quant);
         LTDreadnaughtParagon(quant);
+        LTFestiveParagonDracolichRider();
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
+    }
+    
+    public void LTFestiveParagonDracolichRider(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Festive Paragon Dracolich Rider"))
+            return;
+
+        JoinLegion();
+
+        Core.AddDrop("Legion Token");
+        Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.RegisterQuests(3968, 3969);
+        
+        while (!Core.CheckInventory("Legion Token", quant))
+        {
+            Core.HuntMonster("frozenruins", "Frost Fangbeast", "Frost Heart", 10);
+            Core.HuntMonster("frozenruins", "Frost Fangbeast", "Blanket", 6);
+            Core.HuntMonster("frozenruins", "Frost Fangbeast", "Light", 6);
+            Core.HuntMonster("frozenruins", "Frost Fangbeast", "Pail of Water", 6);
+        }
+        Core.CancelRegisteredQuests();
+
+
     }
 
     public void LTBrightParagon(int quant = 25000)
