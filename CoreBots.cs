@@ -91,7 +91,7 @@ public class CoreBots
         if (changeTo)
         {
             if (AppPath != null)
-                Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "")}]");
+                Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
             RBotVersionChecker("4.1.2.1");

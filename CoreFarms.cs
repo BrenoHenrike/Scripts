@@ -1227,7 +1227,7 @@ public class CoreFarms
         Core.RegisterQuests(4829);
         while (FactionRank("Mythsong") < rank && !Bot.ShouldExit())
         {
-            Core.HuntMonster("beehive", "Stinger", "Honey Gathered");
+            Core.HuntMonster("beehive", "Stinger", "Honey Gathered", 10);
         }
         Core.CancelRegisteredQuests();
     }
