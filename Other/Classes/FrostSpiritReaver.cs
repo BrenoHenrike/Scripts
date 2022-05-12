@@ -155,7 +155,7 @@ public class FrostSpiritReaver
                 Core.HuntMonster("icedungeon", "Frosted Banshee", "Frosted Banshee Defeated", 10, log: false);
                 Core.HuntMonster("icedungeon", "Frozen Undead", "Frozen Undead Defeated", 10, log: false);
                 Core.HuntMonster("icedungeon", "Ice Symbiote", "Ice Symbiote Defeated", 10, log: false);
-                Core.EnsureComplete(7839);
+                Core.EnsureComplete(7838);
             }
         }
         if (Token2 > 0)
