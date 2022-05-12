@@ -129,7 +129,7 @@ public class CoreVHL
 					SparrowMethod();
 				
 			if (!Core.CheckInventory("Elders' Blood", 2))
-				Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - CurrentRoent} more times (not today)", messageBox: true, stopBot: true);
+				Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
 		}
 
         Core.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
