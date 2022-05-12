@@ -256,7 +256,7 @@ public class NecroticSwordOfDoom
         Core.AddDrop("Unenhanced Hilt", "Bone Dust");
         Core.EnsureAccept(4434);
         CavernCelestite(800);
-        Farm.BattleUnderB("Undead Energy", 800);
+        Farm.BattleUnderB("Undead Energy", 5000);
         PrimarchHilt(1);
         BonesVoidRealm(50);
         VoidAuras(10);
