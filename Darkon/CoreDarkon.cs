@@ -209,6 +209,7 @@ public class CoreDarkon
         Core.Logger($"Farming {Quantity} Bandit's Correspondence");
         while ((!Core.CheckInventory("Bandit's Correspondence", Quantity)))
         {
+            Bot.Quests.UpdateQuest(8531); //attempted fix
             Core.EnsureAccept(8531);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12);
