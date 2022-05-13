@@ -31,7 +31,6 @@ public class NecroticBladeoftheUnderworld
     public void ScriptMain(ScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Legion Token", "Beast Soul", "Soul Sand", "Dage the Evil Insignia" });
-
         Core.SetOptions();
 
         GetNBoU();
@@ -39,35 +38,16 @@ public class NecroticBladeoftheUnderworld
         Core.SetOptions(false);
     }
 
-    public void Event_RunToArea(ScriptInterface bot, string zone)
-    {
-            switch (zone.ToLower())
-        {
-            case "a":
-                //Move to the left
-                bot.Player.WalkTo(Bot.Runtime.Random.Next(40, 175), Bot.Runtime.Random.Next(400, 410), speed: 8);
-                break;
-            case "b":
-                //Move to the right
-                bot.Player.WalkTo(Bot.Runtime.Random.Next(760, 930), Bot.Runtime.Random.Next(410, 415), speed: 8);
-                break;
-            default:
-                //Move to the center
-                bot.Player.WalkTo(Bot.Runtime.Random.Next(480, 500), Bot.Runtime.Random.Next(300, 420), speed: 8);
-                break;
-        }
-    }
+
 
     public void GetNBoU()
     {
-        Bot.Events.RunToArea += Event_RunToArea;
-
-        //Necessary AddDrops
-        Core.AddDrop(new[] { "Necrotic Blade of the Underworld", "Underworld Blade of DOOM", "Necrotic Sword of Doom", "Legion Token", "Beast Soul", "Soul Sand", "Dage the Evil Insignia" });
-
         //Item Check
         if (Core.CheckInventory("Necrotic Blade of the Underworld"))
             return;
+
+        //Necessary AddDrops
+        Core.AddDrop(new[] { "Necrotic Blade of the Underworld", "Underworld Blade of DOOM", "Necrotic Sword of Doom", "Legion Token", "Beast Soul", "Soul Sand", "Dage the Evil Insignia" });
 
         //Story Preloading
         Story.PreLoad();
@@ -95,20 +75,20 @@ public class NecroticBladeoftheUnderworld
         }
 
         //Farm 25,000 Legion Tokens
-        if (!Core.CheckInventory("Legion Token", 25000))
-            Legion.FarmLegionToken();
+        Legion.FarmLegionToken(25000);
 
         //Beast Souls
-        if (!Core.CheckInventory("Beast Soul", 25))
-            Adv.BoostKillMonster("SevenCirclesWar", "r17", "Left", "The Beast", "Beast Soul", 25, isTemp: false, publicRoom: false);
+        Adv.BoostKillMonster("SevenCirclesWar", "r17", "Left", "The Beast", "Beast Soul", 25, isTemp: false, publicRoom: false);
 
         //Soul Sand
-        if (!Core.CheckInventory("Soul Sand", 7))
-            SoulSand.SoulSand(7);
+        SoulSand.SoulSand(7);
 
         //Dage the Evil Insignia
+        Bot.Events.RunToArea += Event_RunToArea;
         if (!Core.CheckInventory("Dage the Evil Insignia", 5))
         {
+            if (Bot.Quests.IsDailyComplete(8547))
+                Core.Logger("Can't accept quest 8547 because the weekly is complete", messageBox: true, stopBot: true);
             Core.EnsureAccept(8547);
             Core.EquipClass(ClassType.Solo);
 
@@ -117,10 +97,29 @@ public class NecroticBladeoftheUnderworld
             Core.EnsureComplete(8547);
             Bot.Wait.ForPickup("Dage the Evil Insignia");
         }
+        Bot.Events.RunToArea -= Event_RunToArea;
 
         Core.EnsureComplete(8548);
         Bot.Wait.ForPickup("Necrotic Blade of the Underworld");
 
-        Bot.Events.RunToArea -= Event_RunToArea;
+        void Event_RunToArea(ScriptInterface bot, string zone)
+        {
+            switch (zone.ToLower())
+            {
+                case "a":
+                    //Move to the left
+                    bot.Player.WalkTo(Bot.Runtime.Random.Next(40, 175), Bot.Runtime.Random.Next(400, 410), speed: 8);
+                    break;
+                case "b":
+                    //Move to the right
+                    bot.Player.WalkTo(Bot.Runtime.Random.Next(760, 930), Bot.Runtime.Random.Next(410, 415), speed: 8);
+                    break;
+                default:
+                    //Move to the center
+                    bot.Player.WalkTo(Bot.Runtime.Random.Next(480, 500), Bot.Runtime.Random.Next(300, 420), speed: 8);
+                    break;
+            }
+        }
+
     }
 }
