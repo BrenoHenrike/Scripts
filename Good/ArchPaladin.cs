@@ -46,7 +46,7 @@ public class ArchPaladin
                 Farm.Gold(500000);
                 Story.BuyQuest(5463, "darkthronehub", 1308, "Exalted Paladin Seal");
             }
-            
+
             // Proof of Valor
             if (!Story.QuestProgression(5464))
             {
@@ -87,7 +87,7 @@ public class ArchPaladin
                 Core.HuntMonster("vordredboss", "Vordred", "Vordred's Skull", isTemp: false, publicRoom: true);
                 Core.EnsureComplete(5464);
             }
-            
+
             // Mastering the Arcane
             if (!Story.QuestProgression(5465))
             {
@@ -103,7 +103,7 @@ public class ArchPaladin
                 Core.HuntMonster("farm", "Treeant", "Just the Perfect Stick", isTemp: false);
                 Core.EnsureComplete(5465);
             }
-            
+
             // For Those Who Have Fallen
             if (!Story.QuestProgression(5466))
             {
@@ -150,7 +150,7 @@ public class ArchPaladin
             Core.HuntMonster("alliance", "Good Lieutenant", "Radiant Blade Enhancement", isTemp: false);
             Core.EnsureComplete(5467);
         }
-        
+
         // Hymn of Light
         if (!Story.QuestProgression(5468))
         {
@@ -163,7 +163,7 @@ public class ArchPaladin
             Core.HuntMonster("skytower", "Dove", "Innocence", 25, false);
             Core.EnsureComplete(5468);
         }
-        
+
         // Righteous Seal
         if (!Story.QuestProgression(5469))
         {
@@ -190,9 +190,15 @@ public class ArchPaladin
                         Core.BuyItem("spellcraft", 622, "Archmage Ink", 1, 5);
                     }
                 }
+                if (!Core.CheckInventory("Archmage Ink"))
+                {
+                    Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 2, false);
+                    Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
+                }
                 Core.ChainComplete(2347);
                 Bot.Wait.ForPickup("Scroll of Ethereal Slumber");
                 Core.SellItem("Archmage Ink", all: true);
+                Core.SellItem("Mystic Shards", all: true);
             }
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("onslaughttower", "Golden Caster", "Holy Magic Attunement", isTemp: false);
@@ -200,7 +206,7 @@ public class ArchPaladin
             Core.HuntMonster("palace", "Pettivox", "Ring of Mana Transposition", isTemp: false);
             Core.EnsureComplete(5469);
         }
-                
+
         // Sacred Magic: Eden
         if (!Story.QuestProgression(5470))
         {
