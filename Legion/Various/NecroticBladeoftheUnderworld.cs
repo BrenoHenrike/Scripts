@@ -6,7 +6,7 @@
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
 //cs_include Scripts/Farm/LVLQuickto100.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Legion/Various/DageChallengeMerge.cs
+//cs_include Scripts/Story/Legion/DageChallengeStory.cs
 //cs_include Scripts/Legion/Various/SoulSand.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
@@ -25,7 +25,7 @@ public class NecroticBladeoftheUnderworld
     public NecroticSwordOfDoom NSoD = new();
     public LVLQuick LVL = new();
     public CoreLegion Legion = new();
-    public DageChallengeMerge DageChallengeMerge = new();
+    public DageChallengeStory DageChallenge = new();
     public AnotherOneBitesTheDust SoulSand = new();
 
     public void ScriptMain(ScriptInterface bot)
@@ -56,7 +56,7 @@ public class NecroticBladeoftheUnderworld
         LVL.QuickLvl(95);
 
         //Unlocking Quest
-        DageChallengeMerge.DageQuests();
+        DageChallenge.DageChallengeQuests();
 
         Core.EnsureAccept(8548);
 
