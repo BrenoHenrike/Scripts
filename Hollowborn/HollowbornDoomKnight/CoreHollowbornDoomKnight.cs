@@ -10,7 +10,7 @@
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/Artixpointe.cs

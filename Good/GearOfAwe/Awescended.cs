@@ -19,7 +19,7 @@
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
 //cs_include Scripts/Story/7DeadlyDragons/ShadowDragonDefender.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Evil/ADK.cs
 using RBot;
