@@ -2,8 +2,10 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
 public class DrakathArmorBot
@@ -11,11 +13,11 @@ public class DrakathArmorBot
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreDailies Daily = new();
-    public CoreBLOD BLOD = new CoreBLOD();
-    public CoreStory Story = new CoreStory();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreBLOD BLOD = new();
+    public Core13LoC LOC => new Core13LoC();
+    public CoreNulgath Nulgath = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -54,6 +56,7 @@ public class DrakathArmorBot
         Bot.Sleep(Core.ActionDelay);
         if (Core.CheckInventory("Original Drakath Armor"))
             return;
+        LOC.Complete13LOC();
         DrakathArmorQuest();
         Core.BuyItem("battleon", 994, "Original Drakath Armor");
     }
@@ -78,6 +81,7 @@ public class DrakathArmorBot
         Core.KillMonster("swordhavenundead", "Left", "Right", "*", "Treasure Chest", 100, false);
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("ultradrakath", "r1", "Left", "Champion of Chaos", "Face of Chaos", 1, false, publicRoom: true);
+        Core.Relogin();
         Core.EnsureComplete(3882);
     }
 }

@@ -19,7 +19,7 @@
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
 //cs_include Scripts/Story/7DeadlyDragons/ShadowDragonDefender.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Evil/ADK.cs
 using RBot;
@@ -66,11 +66,10 @@ public class Awescended
             Farm.Experience(25);
             Core.EnsureAccept(8035);
             Core.KillMonster("uppercity", "r3", "Left", "Chaos Egg", "Fossilized Egg Yolk", 12);
-            Bot.Quests.UpdateQuest(537);
-            Core.Join("lycanwar", "Boss", "Left");
+            Bot.Quests.UpdateQuest(567);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard", "Stone Mask");
             Bot.Quests.UpdateQuest(4614);
-            Core.KillMonster("pyramid", "r5", "Left", "Mummy", "Mummified Bone", 6);
+            Core.KillMonster("pyramid", "r5", "Left", "*", "Mummified Bone", 6);
             Core.KillMonster("ravinetemple", "r11", "Left", "*", "Iron Head", 4);
             Core.EnsureComplete(8035);
         }
@@ -105,7 +104,8 @@ public class Awescended
             Core.KillMonster("yokaiwar", "Boss", "Left", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false);
             Core.KillMonster("wardwarf", "r4", "Left", "D'wain Jonsen", "D'wain Jonsen's Stinger");
             Core.KillMonster("mythsongwar", "War2", "Left", "*", "Music Pirate's Instrument of War", 6);
-            Core.HuntMonster("shadowfallwar", "Noxus", "Noxus' Necromancy Robe");
+            Bot.Quests.UpdateQuest(1170);
+            Core.KillMonster("shadowfallwar", "Inside", "Right", "Noxus", "Noxus' Necromancy Robe");
             Core.EnsureComplete(8038);
         }
 
@@ -136,7 +136,7 @@ public class Awescended
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("bonecastlec", "r25", "Bottom", "Vaden", "Vaden Helm Token", 333, false);
-                Core.BuyItem("bonecastlec", 1242, "Vaden's Helm");
+                Core.BuyItem("bonecastlec", 1242, itemID: 34655);
             }
             Core.EquipClass(ClassType.Farm);
             ArmorOfZular();
@@ -191,7 +191,9 @@ public class Awescended
             AweArmor.GetArmor();
             Helm.GetHoA();
             Seppy.DoAll();
-            ADK.DoAll();
+            Core.ToBank(Seppy.GravelynsDoomFireTokenItems);
+            ADK.DoAll(true);
+            Core.Unbank("Arch DoomKnight");
             Armor.DrakathOriginalArmor();
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
             Core.EnsureComplete(8042);
@@ -201,6 +203,7 @@ public class Awescended
         Core.BuyItem("museum", 1994, "Awescended Omni Armblades");
         Core.BuyItem("museum", 1994, "Awescended Omni Cowl");
         Core.BuyItem("museum", 1994, "Awescended Omni Wings");
+        Core.Logger("Awescended Set Bought, Congratulations!");
     }
 
     public void ArmorOfZular()

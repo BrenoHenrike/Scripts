@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/WarTraining.cs
@@ -10,11 +9,8 @@ public class WarfuryEmblem
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
-    public WarTraining WFT = new WarTraining();
+    public CoreAdvanced Adv = new();
+    public WarTraining WFT = new();
 
 
     public void ScriptMain(ScriptInterface bot)
@@ -31,7 +27,7 @@ public class WarfuryEmblem
         if (Core.CheckInventory("Warfury Emblem", EmblemQuant))
             return;
 
-        WFT.DoALl();
+        WFT.StoryLine();
 
         Core.AddDrop("Warfury Emblem");
         Adv.BestGear(GearBoost.Human);

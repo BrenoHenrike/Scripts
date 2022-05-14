@@ -7,6 +7,7 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
+
 using RBot;
 
 public class NecroticSwordOfDoom
@@ -83,7 +84,8 @@ public class NecroticSwordOfDoom
     {
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
-
+            
+        // Daily.NSoDDaily()
         CommandingShadowEssences(Quantity);
         RetrieveVoidAuras(Quantity);
     }
@@ -254,7 +256,7 @@ public class NecroticSwordOfDoom
         Core.AddDrop("Unenhanced Hilt", "Bone Dust");
         Core.EnsureAccept(4434);
         CavernCelestite(800);
-        Farm.BattleUnderB("Undead Energy", 800);
+        Farm.BattleUnderB("Undead Energy", 5000);
         PrimarchHilt(1);
         BonesVoidRealm(50);
         VoidAuras(10);
@@ -333,6 +335,7 @@ public class NecroticSwordOfDoom
             Bot.Wait.ForPickup("Cavern Celestite");
         }
         Core.Logger($"Farmed {Quantity} Cavern Celestite");
+        Core.CancelRegisteredQuests();
     }
 
     public void PrimarchHilt(int Quantity)

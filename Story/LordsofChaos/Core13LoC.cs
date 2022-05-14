@@ -1,4 +1,7 @@
-using System.ComponentModel.Design;
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreFarms.cs
 using RBot;
 
 public class Core13LoC
@@ -7,6 +10,11 @@ public class Core13LoC
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public void Complete13LOC(bool withExtras = false)
     {
@@ -913,15 +921,20 @@ public class Core13LoC
         if (!Story.QuestProgression(978))
         {
             Core.EnsureAccept(978);
+            Bot.Quests.UpdateQuest(3773);
             Core.Join("wanders", "Boss", "Left");
             if (!Core.CheckInventory("Sek-Duat Defeated", 1, toInv: false))
             {
+                Bot.Options.AttackWithoutTarget = true;
                 Core.SendPackets("%xt%zm%gar%0%aa>m");
                 Bot.Player.ApproachTarget();
                 Bot.Player.Kill("Sek-Duat");
+                Bot.Options.AttackWithoutTarget = false;
             }
             Core.EnsureComplete(978);
             //Editors Note: PLEASE stop breaking this
+            //Editors Note2: for each new Sek-Duat Fix Please add 1 to this counter, Counter started 5/7/22 (not entirely acurate just when i made the counter.)
+            // Counter: 1
         }
 
         //Sandsational Castle
@@ -1520,8 +1533,15 @@ public class Core13LoC
         //Chaos Beast Kathool
         Story.KillQuest(2517, "deepchaos", "Kathool");
 
+        Bot.Sleep(2500);
+
         //Starry, Starry Night
-        Story.KillQuest(2518, "timespace", "Astral Ephemerite");
+        if (!Story.QuestProgression(2518))
+        {
+            Core.EnsureAccept(2518);
+            Core.HuntMonster("timespace", "Astral Ephemerite", "Star Death", 6);
+            Core.EnsureComplete(2518);
+        }
 
         //Chaos Lord Iadoa
         if (!Story.QuestProgression(2519))
@@ -2211,13 +2231,28 @@ public class Core13LoC
         }
 
         //Defeat the 12 Lords of Chaos!
-        Story.KillQuest(3879, "chaosrealm", "Alteon");
+        if (!Story.QuestProgression(3879))
+        {
+            Core.EnsureAccept(3879);
+            Core.KillMonster("chaosrealm", "r24", "Left", "Alteon", "Chaos Lord Alteon Defeated");
+            Core.EnsureComplete(3879);
+        }
 
         //Defeat the 13th Lord of Chaos
-        Story.KillQuest(3880, "chaoslord", "*");
+        if (!Story.QuestProgression(3880))
+        {
+            Core.EnsureAccept(3880);
+            Core.KillMonster($"chaoslord", "r2", "Left", "*", "13th Lord of Chaos Defeated");
+            Core.EnsureComplete(3880);
+        }
 
         //The Final Showdown!
-        Story.KillQuest(3881, "finalshowdown", "Prince Drakath");
+        if (!Story.QuestProgression(3881))
+        {
+            Core.EnsureAccept(3881);
+            Core.KillMonster("finalshowdown", "r2", "Left", "Prince Drakath", "Prince Drakath Defeated");
+            Core.EnsureComplete(3881);
+        }
     }
 
     public void Extra()

@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
@@ -24,6 +24,11 @@ public class CoreHollowbornPaladin
     public CoreNulgath Nulgath = new CoreNulgath();
     public Artixpointe APointe = new Artixpointe();
     public CoreDailies Daily = new();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public string[] PostSummoningItems =
     {

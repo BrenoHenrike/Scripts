@@ -59,6 +59,7 @@ public class FarmAllDailys
         Daily.MonthlyTreasureChestKeys();
         Daily.WheelofDoom();
         Daily.FreeDailyBoost();
+        // Daily.NSoDDaily();
 
         Core.Logger("Dailies completed");
     }

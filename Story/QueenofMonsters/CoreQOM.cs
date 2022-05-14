@@ -1,4 +1,6 @@
-using System.Runtime.CompilerServices;
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
 using RBot;
 
 public class CoreQOM
@@ -8,9 +10,13 @@ public class CoreQOM
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
+
     public void CompleteEverything()
     {
-
         //Preload Quests
         Story.PreLoad();
 
@@ -21,12 +27,10 @@ public class CoreQOM
         CompleteSwordhavenTheNewWorld();
         CompleteTheDestroyer();
         CompleteTheReshaper();
-
     }
 
     public void CompleteCelestialRealmATheftofLight()
     {
-
         CelestialRealm();
         LostRuins();
         LostRuinsWar();
@@ -35,54 +39,42 @@ public class CoreQOM
 
     public void CompleteDoomwoodPaladinsTrial()
     {
-
         DoomPally();
-
     }
 
     public void CompleteDarkoviaDarkDiaspora()
     {
-
         DarkoviaInvasion();
         SafiriaInvasion();
         LycanInvasion();
         SafiriaInvasion2();
-
     }
 
     public void CompleteShadowfallDarknessRising()
     {
-
         ShadowfallInvasion();
-
     }
 
     public void CompleteSwordhavenTheNewWorld()
     {
-
         CastleInvasion();
-
     }
 
     public void CompleteTheDestroyer()
     {
-
         TheRift();
         CharredPath();
         Underglade();
         Extriki();
-
     }
 
     public void CompleteTheReshaper()
     {
-
         Pilgrimage();
         GuardianTree();
         TwistedCaverns();
         BrokenWoods();
         Kolyaban();
-
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------ //

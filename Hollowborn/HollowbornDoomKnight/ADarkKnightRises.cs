@@ -10,16 +10,16 @@
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Evil\SepulchuresOriginalHelm.cs
-//cs_include Scripts/Story\Doomwood\AQWZombies.cs
-//cs_include Scripts/Story\LordsofChaos\Core13LoC.cs
-//cs_include Scripts/Story\ThroneofDarkness\07bStranger(MysteriousDungeon).cs
+//cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
+//cs_include Scripts/Story/Doomwood/AQWZombies.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
 using RBot;
 
 public class ADKRises

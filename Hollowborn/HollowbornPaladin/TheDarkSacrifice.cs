@@ -2,7 +2,7 @@
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs

@@ -1,4 +1,11 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nulgath/AssistingCragAndBamboozle[Mem].cs
 using RBot;
+
 public class CoreVHL
 {
     // [Can Change]
@@ -14,6 +21,11 @@ public class CoreVHL
     public CoreDailies Daily = new();
     public CoreNulgath Nulgath = new CoreNulgath();
     public AssistingCragAndBamboozle ACAB = new AssistingCragAndBamboozle();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     private int EldersBloodAmount = ScriptInterface.Instance.Inventory.GetQuantity("Elders' Blood");
 

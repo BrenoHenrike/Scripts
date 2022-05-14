@@ -1,3 +1,9 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Darkon/CoreDarkon.cs
+//cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using RBot;
 
 public class CoreDarkon
@@ -6,7 +12,13 @@ public class CoreDarkon
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
+    public CoreFarms Farm = new CoreFarms();
     public CoreAstravia Astravia => new CoreAstravia();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     public void FarmReceipt(int Quantity = 222)
     {
@@ -105,8 +117,9 @@ public class CoreDarkon
 
         Astravia.Eridani();
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
 
+        Core.Logger($"Farming {Quantity} Teeth");
         while ((!Core.CheckInventory("Teeth", Quantity)))
         {
             Core.EnsureAccept(7780);
@@ -127,8 +140,9 @@ public class CoreDarkon
 
         Astravia.Astravia();
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
 
+        Core.Logger($"Farming {Quantity} La's Gratitude");
         while ((!Core.CheckInventory("La's Gratitude", Quantity)))
         {
             Core.EnsureAccept(8001);
@@ -148,6 +162,7 @@ public class CoreDarkon
         Astravia.AstraviaCastle();
         Core.Join("astraviacastle");
 
+        Core.Logger($"Farming {Quantity} Astravian Medal");
         while ((!Core.CheckInventory("Astravian Medal", Quantity)))
         {
             Core.EnsureAccept(8257);
@@ -171,6 +186,7 @@ public class CoreDarkon
 
         Astravia.AstraviaJudgement();
 
+        Core.Logger($"Farming {Quantity} A Melody");
         while ((!Core.CheckInventory("A Melody", Quantity)))
         {
             Core.EnsureAccept(8396);
@@ -190,8 +206,10 @@ public class CoreDarkon
 
         Astravia.EridaniPast();
 
+        Core.Logger($"Farming {Quantity} Bandit's Correspondence");
         while ((!Core.CheckInventory("Bandit's Correspondence", Quantity)))
         {
+            Bot.Quests.UpdateQuest(8531); //attempted fix
             Core.EnsureAccept(8531);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12);
@@ -212,6 +230,7 @@ public class CoreDarkon
 
         Astravia.AstraviaJudgement();
 
+        Core.Logger($"Farming {Quantity} Suki's Prestige");
         while ((!Core.CheckInventory("Suki's Prestige", Quantity)))
         {
             Core.EnsureAccept(8602);

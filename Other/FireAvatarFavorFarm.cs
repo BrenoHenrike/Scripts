@@ -32,5 +32,6 @@ public class FireAvatarFavorFarm
 
             Bot.Wait.ForPickup("Fire Avatar's Favor");
         }
+        Core.CancelRegisteredQuests();
     }
 }

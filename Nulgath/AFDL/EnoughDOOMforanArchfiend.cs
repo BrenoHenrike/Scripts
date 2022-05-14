@@ -52,7 +52,7 @@ public class EnoughDOOMforanArchfiend
         Farm.BattleUnderB("Undead Essence", 1000);
 
         Nulgath.FarmVoucher(false);
-        Nulgath.FarmBloodGem(2);
+        Nulgath.FarmBloodGem(10);
 
         Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
@@ -70,7 +70,7 @@ public class EnoughDOOMforanArchfiend
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
         if (!Bot.Quests.CanComplete(5260))
-            Bot.Player.Logout();
+            Core.Relogin();
         Core.EnsureComplete(5260);
         Bot.Player.Pickup("ArchFiend DoomLord");
     }

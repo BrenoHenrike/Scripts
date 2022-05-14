@@ -1,7 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
@@ -9,10 +7,8 @@ public class DragonslayerGeneral
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -60,18 +56,21 @@ public class DragonslayerGeneral
         Adv.BestGear(GearBoost.Dragonkin);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
         Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
-        Core.RegisterQuests(5294);
 
+        Core.RegisterQuests(5294);
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
-            Bot.Wait.ForPickup("Enchanted Scale");
         }
+        Bot.Wait.ForPickup("Enchanted Scale");
+        Core.CancelRegisteredQuests();
 
         Core.Logger($"Farming {CLawquant} Dragon Claw");
 
         while (!Core.CheckInventory("Dragon Claw", CLawquant))
+        {
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", 100, isTemp: false, log: false);
-
+        }
+        Bot.Wait.ForPickup("Dragon Claw");
     }
 }

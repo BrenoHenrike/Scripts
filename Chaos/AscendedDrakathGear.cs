@@ -1,10 +1,11 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
-//cs_include Scripts/Chaos/DrakathArmorBot.cs
+//cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 using RBot;
 
@@ -45,7 +46,7 @@ public class AscendedDrakathGear
 
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
-        
+
         while (!Core.CheckInventory(Target))
         {
             Bot.Quests.UpdateQuest(159, 4);

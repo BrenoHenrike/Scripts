@@ -31,6 +31,7 @@ public class Bamboozle
         //Star of the Sandsea
         if (!Story.QuestProgression(7277))
         {
+            Bot.Quests.UpdateQuest(976);
             Core.EnsureAccept(7277);
             Core.HuntMonster("wanders", "Kalestri Worshiper", "Star of the Sandsea");
             Core.EnsureComplete(7277);

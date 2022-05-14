@@ -41,16 +41,34 @@ public class GetSDD
             if (!Story.QuestProgression(6908))
             {
                 Core.EnsureAccept(6908);
-                if (!Core.CheckInventory(48632, 8))
-                    Core.KillMonster("void", "r11", "Left", "Void Elemental", "Void Energy", 8);
+                while (!Core.CheckInventory(48632, 8))
+                {
+                    Core.Join("void", "r11", "Left");
+                    Bot.Player.Kill("Void Elemental");
+                }
                 Core.EnsureComplete(6908);
             }
             Story.MapItemQuest(6909, "void", 6454);
             Story.KillQuest(6910, "void", "Void Bear");
             Story.KillQuest(6911, "void", "Void Elemental");
+            Bot.Quests.UpdateQuest(904);
             Story.KillQuest(6912, "void", "Void Dragon");
-            Story.MapItemQuest(6913, "mysteriousegg", 6455);
-            Story.ChainQuest(6914);
+
+            if (!Story.QuestProgression(6913) || !Core.CheckInventory("Mysterious Egg"))
+            {
+                Core.EnsureAccept(6913);
+                Core.GetMapItem(6455, 1, "mysteriousegg");
+                Core.EnsureComplete(6913);
+                Bot.Wait.ForPickup("Mysterious Egg");
+            }
+
+            if (!Story.QuestProgression(6914) || !Core.CheckInventory("Manticore Cub Pet"))
+            {
+                Core.EnsureAccept(6914);
+                Core.ChainComplete(6914);
+                Core.EnsureComplete(6914);
+                Bot.Wait.ForPickup("Manticore Cub Pet");
+            }
         }
         Core.BuyItem("mysteriousegg", 1728, "Shadow Dragon Defender");
     }

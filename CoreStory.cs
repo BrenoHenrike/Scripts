@@ -1,3 +1,4 @@
+//cs_include Scripts/CoreBots.cs
 using RBot;
 using RBot.Items;
 using RBot.Quests;
@@ -14,6 +15,11 @@ public class CoreStory
     public bool TestBot { get; set; } = false;
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     /// <summary>
     /// Kills a monster for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.

@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
-public class TimeinnSTory
+
+public class ExaltiaTower
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -15,7 +15,6 @@ public class TimeinnSTory
         StoryLine();
 
         Core.SetOptions(false);
-
     }
 
     public void StoryLine()
@@ -24,9 +23,8 @@ public class TimeinnSTory
             return;
 
         Story.PreLoad();
-        
+
         Core.AddDrop("Exalted Node", "Exalted Forgemetal", "Exalted Relic Piece", "Exalted Artillery Shard");
-        Core.EquipClass(ClassType.Solo);
 
         //Unlocking the Antechamber 8146
         Story.KillQuest(8146, "timeinn", new[] { "Fire Elemental", "Ice Elemental" });

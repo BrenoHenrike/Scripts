@@ -1,3 +1,4 @@
+//cs_include Scripts/CoreBots.cs
 using RBot;
 using RBot.Items;
 
@@ -23,6 +24,11 @@ public class CoreFarms
     //XP Boost! (60 min) -- 27552
     //Daily XP Boost! (1 hr) -- 19189
     //XP Boost! (20 min) -- 22448
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
 
     /// <summary>
     /// Uses a boost with the given ID.
@@ -80,12 +86,13 @@ public class CoreFarms
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {goldQuant} gold using HonorHall Method");
+        Core.RegisterQuests(3992, 3993);
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
-            Core.RegisterQuests(3992, 3993);
             Core.KillMonster("honorhall", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
             Core.KillMonster("honorhall", "r1", "Center", "*", "HonorHall Opponent Defeated", 10, log: false);
         }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -100,12 +107,13 @@ public class CoreFarms
             return;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
+        Core.RegisterQuests(3992, 3993);
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
-            Core.RegisterQuests(3992, 3993);
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
         }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -119,14 +127,15 @@ public class CoreFarms
         Core.AddDrop("Berserker Bunny");
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {goldQuant}  using BerserkerBunny Method");
+        Core.RegisterQuests(236);
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
-            Core.RegisterQuests(236);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
             Bot.Player.Pickup("Berserker Bunny");
             Bot.Sleep(Core.ActionDelay);
             Bot.Shops.SellItem("Berserker Bunny");
         }
+        Core.CancelRegisteredQuests();
     }
     #endregion
 
@@ -161,20 +170,22 @@ public class CoreFarms
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 20 && Bot.Player.Level < level) || (Bot.Player.Level < 20 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r6", "Left", "*", log: false, publicRoom: true);
 
+        Core.RegisterQuests(6628);
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 25 && Bot.Player.Level < level) || (Bot.Player.Level < 25 && rankUpClass && Bot.Player.Rank != 10)))
         {
-            Core.RegisterQuests(6628);
             Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
         }
+        Core.CancelRegisteredQuests();
 
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 30 && Bot.Player.Level < level) || (Bot.Player.Level < 30 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
 
+        Core.RegisterQuests(6629);
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 35 && Bot.Player.Level < level) || (Bot.Player.Level < 35 && rankUpClass && Bot.Player.Rank != 10)))
         {
-            Core.RegisterQuests(6629);
             Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
         }
+        Core.CancelRegisteredQuests();
 
         while (!Bot.ShouldExit() && ((Bot.Player.Level < 50 && Bot.Player.Level < level) || (Bot.Player.Level < 50 && rankUpClass && Bot.Player.Rank != 10)))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
@@ -213,6 +224,7 @@ public class CoreFarms
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "War Medal", 5);
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Mega War Medal", 3);
         }
+        Core.CancelRegisteredQuests();
     }
     #endregion
 
@@ -420,6 +432,7 @@ public class CoreFarms
             Core.HuntMonster("skytower", "Seraphic Assassin", "Assassins Handed To Them", 6);
             Core.HuntMonster("skytower", "Virtuous Warrior", "Warrior Butt Beaten", 6);
         }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -533,6 +546,7 @@ public class CoreFarms
             Core.HuntMonster("arcangrove", "Gorillaphant", "Gorillaphant Tusk", 6);
             Core.HuntMonster("arcangrove", "Gorillaphant", "Batch of Mustard Seeds", 3);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void BaconCatREP(int rank = 10)
@@ -553,6 +567,7 @@ public class CoreFarms
             Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Moglinberry Ice Cream", 5);
             Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Teeth", 10);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void BeastMasterREP(int rank = 10)
@@ -574,6 +589,7 @@ public class CoreFarms
             Core.HuntMonster("pyramid", "Golden Scarab", "Gleaming Gems of Containment", 9);
             Core.HuntMonster("lair", "Golden Draconian", "Bright Binding of Submission", 8);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void BlacksmithingREP(int rank = 4)
@@ -588,6 +604,7 @@ public class CoreFarms
             Core.HuntMonster("greenguardeast", "Wolf", "Furry Lost Sock", 2);
             Core.HuntMonster("greenguardwest", "Slime", "Slimy Lost Sock", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void BladeofAweREP(int rank = 10, bool farmBoA = true)
@@ -652,6 +669,7 @@ public class CoreFarms
             if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
                 Core.BuyItem("museum", 631, "Blade of Awe");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void BrightoakREP(int rank = 10)
@@ -670,6 +688,7 @@ public class CoreFarms
         {
             Bot.Map.GetMapItem(3984);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void ChaosMilitiaREP(int rank = 10)
@@ -682,6 +701,7 @@ public class CoreFarms
         {
             Core.HuntMonster("citadel", "Inquisitor Guard", "Inquisitor's Tabard", 10);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void ChaosREP(int rank = 10)
@@ -697,6 +717,7 @@ public class CoreFarms
         {
             Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos Power Increased", 6);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void ChronoSpanREP(int rank = 10)
@@ -715,6 +736,7 @@ public class CoreFarms
             Core.HuntMonster("thespan", "Minx Fairy", "8 oz Fairy Glitter", 3);
             Core.HuntMonster("thespan", "Tog", "Tog Fang", 4);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void CraggleRockREP(int rank = 10)
@@ -728,6 +750,7 @@ public class CoreFarms
         {
             Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DeathPitArenaREP(int rank = 10)
@@ -746,6 +769,7 @@ public class CoreFarms
         {
             Core.HuntMonster("deathpit", "General Hun'Gar", "General Hun'Gar Defeated", 1);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DiabolicalREP(int rank = 10)
@@ -758,6 +782,7 @@ public class CoreFarms
         {
             Core.HuntMonster("mudluk", "Tiger Leech", "Swamped Leech Tooth");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DoomwoodREP(int rank = 10)
@@ -792,6 +817,7 @@ public class CoreFarms
         }
         if (Core.IsMember)
             Bot.Shops.SellItem("Light Tower Sword");
+        Core.CancelRegisteredQuests();
     }
 
     public void DreadFireREP(int rank = 10)
@@ -805,6 +831,7 @@ public class CoreFarms
         {
             Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", "Perfect Crystal Orb");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DruidGroveREP(int rank = 10)
@@ -818,6 +845,7 @@ public class CoreFarms
         {
             Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DwarfholdREP(int rank = 10)
@@ -835,6 +863,7 @@ public class CoreFarms
             Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5);
             Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void ElementalMasterREP(int rank = 10)
@@ -851,6 +880,7 @@ public class CoreFarms
             Core.HuntMonster("gilead", "Earth Elemental", "Earth Core");
             Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void EmberseaREP(int rank = 10)
@@ -867,6 +897,7 @@ public class CoreFarms
         {
             Core.HuntMonster("fireforge", "Blazebinder", "Defeated Blazebinder", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void EternalREP(int rank = 10)
@@ -886,6 +917,7 @@ public class CoreFarms
             Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "White Gem", 2);
             Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "Black Gem", 2);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void EtherStormREP(int rank = 10)
@@ -905,6 +937,7 @@ public class CoreFarms
             Core.HuntMonster("etherwardes", "Air Dragon Warrior", "Air Dragon Breaths", 3);
             Core.HuntMonster("etherwardes", "Earth Dragon Warrior", "Earth Dragon Claws", 3);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void EvilREP(int rank = 10)
@@ -919,9 +952,9 @@ public class CoreFarms
 
         Core.RegisterQuests(364);
         while (FactionRank("Evil") < 4)
-        {
-            Core.HuntMonster("newbie", "Slime", "Youthanize");
-        }
+            Core.HuntMonster("swordhavenbridge", "Slime", "Youthanize");
+
+        Core.CancelRegisteredQuests();
         Core.RegisterQuests(366, 367);
         while (FactionRank("Evil") < rank && !Bot.ShouldExit())
         {
@@ -937,6 +970,7 @@ public class CoreFarms
                 Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase");
             }
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void FaerieCourtREP(int rank = 10) // Seasonal
@@ -944,9 +978,9 @@ public class CoreFarms
         if (FactionRank("Faerie Court") >= rank)
             return;
         Core.Logger($"Farming rank {rank}");
+        Core.RegisterQuests(6775, 6779);
         while (FactionRank("Faerie Court") < rank && !Bot.ShouldExit())
         {
-            Core.RegisterQuests(6775, 6779);
             if (FactionRank("Faerie Court") < 8)
             {
                 Core.EquipClass(ClassType.Solo);
@@ -958,6 +992,7 @@ public class CoreFarms
                 Core.HuntMonster("faegrove", "Dark Sylphdrake", "Silver Sylph Feather");
             }
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void GlaceraREP(int rank = 10)
@@ -974,6 +1009,7 @@ public class CoreFarms
         {
             Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10, log: false);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void GoodREP(int rank = 10)
@@ -991,6 +1027,8 @@ public class CoreFarms
         {
             Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
         }
+        Core.CancelRegisteredQuests();
+
         Core.RegisterQuests(369, 371, 372);
         while (FactionRank("Good") < rank && !Bot.ShouldExit())
         {
@@ -1003,6 +1041,7 @@ public class CoreFarms
                 Core.HuntMonster("sewer", "Grumble", "Grumble's Fang");
             }
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void LoremasterREP(int rank = 10)
@@ -1025,24 +1064,28 @@ public class CoreFarms
                     Core.HuntMonster("uppercity", "Drow Assassin", "Poisoned Dagger", 4);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike");
                 }
+                Core.CancelRegisteredQuests();
             }
             else if (Core.IsMember ? FactionRank("Loremaster") < 3 : FactionRank("Loremaster") < rank && !Bot.ShouldExit())
             {
+                Core.RegisterQuests(7505);
                 Core.EquipClass(ClassType.Farm);
                 while (Core.IsMember ? FactionRank("Loremaster") < 3 : FactionRank("Loremaster") < rank && !Bot.ShouldExit())
                 {
                     Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", 1);
                 }
+                Core.CancelRegisteredQuests();
             }
             else if (Core.IsMember && FactionRank("Loremaster") >= 3)
             {
+                Core.RegisterQuests(3032);
                 Core.EquipClass(ClassType.Solo);
                 while (FactionRank("Loremaster") < rank && !Bot.ShouldExit())
                 {
-                    Core.RegisterQuests(3032);
                     Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", 1);
                 }
+                Core.CancelRegisteredQuests();
             }
         }
     }
@@ -1067,6 +1110,7 @@ public class CoreFarms
         {
             Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void HollowbornREP(int rank = 10)
@@ -1083,6 +1127,7 @@ public class CoreFarms
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
             Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void HorcREP(int rank = 10)
@@ -1101,6 +1146,7 @@ public class CoreFarms
             Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Chaorrupted Tentacle", 5);
             Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void InfernalArmyREP(int rank = 10)
@@ -1109,12 +1155,12 @@ public class CoreFarms
             return;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
+        Core.RegisterQuests(5707);
         while (FactionRank("Infernal Army") < rank && !Bot.ShouldExit())
         {
-            Core.RegisterQuests(5707);
             Core.KillMonster("dreadfire", "r10", "Left", "Living Brimstone", "Living Brimstone Defeated");
         }
-        Core.RegisterQuests(5707);
+        Core.CancelRegisteredQuests();
     }
 
     public void MonsterHunterREP(int rank = 10)
@@ -1137,6 +1183,7 @@ public class CoreFarms
             Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4);
             Core.KillMonster("pilgrimage", "r5", "Left", "Ravenous Parasite", "Ravenous Parasites Slain", 7);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void MysteriousDungeonREP(int rank = 10)
@@ -1160,6 +1207,7 @@ public class CoreFarms
         {
             Core.HuntMonster("cursedshop", "Antique Chair", "Antique Chair Defeated");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void MythsongREP(int rank = 10)
@@ -1169,18 +1217,19 @@ public class CoreFarms
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Mythsong);
 
-        if (!Bot.Quests.IsAvailable(710))
+        if (!Bot.Quests.IsAvailable(4829))
         {
-            Core.Logger("Can't do farming quest [Kimberly] (/palooza)", messageBox: true);
+            Core.Logger("Can't do farming quest [Stinger, Stinger] (/beehive)", messageBox: true);
             return;
         }
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming rank {rank}");
-        Core.RegisterQuests(710);
+        Core.RegisterQuests(4829);
         while (FactionRank("Mythsong") < rank && !Bot.ShouldExit())
         {
-            Core.HuntMonster("palooza", "Kimberly", "Kimberly Defeated");
+            Core.HuntMonster("beehive", "Stinger", "Honey Gathered", 10);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void NecroCryptREP(int rank = 10)
@@ -1194,6 +1243,7 @@ public class CoreFarms
         {
             Core.HuntMonster("castleundead", "Skeletal Viking", "Old Bone", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void NorthpointeREP(int rank = 10)
@@ -1210,6 +1260,7 @@ public class CoreFarms
         {
             Core.HuntMonster("northpointe", "Grim Stalker", "Bunch of Sage", 10);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void PetTamerREP(int rank = 10)
@@ -1223,6 +1274,7 @@ public class CoreFarms
         {
             Core.KillMonster("greenguardwest", "West7", "Down", "Mogzard", "Mogzard Captured");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void RavenlossREP(int rank = 10)
@@ -1244,6 +1296,7 @@ public class CoreFarms
         {
             Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void SandseaREP(int rank = 10)
@@ -1265,6 +1318,7 @@ public class CoreFarms
             Core.HuntMonster("sandsea", "Cactus Creeper", "Sandsea Cotton", 8);
             Core.HuntMonster("sandsea", "Cactus Creeper", "Cactus Creeper Head", 8);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void SkyguardREP(int rank = 10)
@@ -1288,6 +1342,7 @@ public class CoreFarms
             Core.HuntMonster("gilead", "Water Elemental", "Bucket of Water", 5);
             Core.HuntMonster("gilead", "Wind Elemental", "Beaker of Air", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void SomniaREP(int rank = 10)
@@ -1303,6 +1358,7 @@ public class CoreFarms
             Core.HuntMonster("somnia", "Orpheum Elemental", "Orphium Ore", 8);
             Core.HuntMonster("somnia", "Dream Larva", "Dreamsilk", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void SpellCraftingREP(int rank = 10)
@@ -1369,6 +1425,7 @@ public class CoreFarms
             Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Bow Tie", 5);
             Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Textiles", 2);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void ThunderForgeREP(int rank = 10)
@@ -1390,6 +1447,7 @@ public class CoreFarms
         {
             Core.HuntMonster("deathpits", "Wrathful Vestis", "Vestis's Chaos Eye");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void TreasureHunterREP(int rank = 10)
@@ -1403,6 +1461,7 @@ public class CoreFarms
         {
             Core.HuntMonster("stalagbite", "Balboa", "Super Specific Rock");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void TrollREP(int rank = 10)
@@ -1422,6 +1481,7 @@ public class CoreFarms
             Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Chaorrupted Tentacle", 5);
             Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void VampireREP(int rank = 10)
@@ -1443,6 +1503,7 @@ public class CoreFarms
         {
             Core.HuntMonster("safiria", "Twisted Paw", "Twisted Paw's Head");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void YokaiREP(int rank = 10)
@@ -1460,6 +1521,7 @@ public class CoreFarms
         {
             Core.HuntMonster("dragonkoiz", "Pockey Chew", "Piece of Pockey", 3);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DreadrockREP(int rank = 10)
@@ -1474,6 +1536,7 @@ public class CoreFarms
         {
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Goldfish Companion", 1);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void FishingREP(int rank = 10)
@@ -1499,6 +1562,7 @@ public class CoreFarms
             {
                 Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
             }
+            Core.CancelRegisteredQuests();
 
             Core.Join("fishing");
             Core.Logger($"Bait Fishing");
@@ -1523,6 +1587,7 @@ public class CoreFarms
             {
                 Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
             }
+            Core.CancelRegisteredQuests();
 
             Core.Logger($"Dynamite Fishing");
 
@@ -1565,6 +1630,7 @@ public class CoreFarms
             }
             Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A")} Left to Farm");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void MembershipDues(MemberShipsIDS faction, int rank = 10)

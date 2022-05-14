@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
@@ -9,31 +8,25 @@ public class WarTraining
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.Human);
-        DoALl();
+        StoryLine();
 
         Core.SetOptions(false);
-    }
-
-    public void DoALl()
-    {
-        Story.PreLoad();
-        StoryLine();
     }
 
     public void StoryLine()
     {
         if (Core.isCompletedBefore(8204))
             return;
+
+        Story.PreLoad();
+        Adv.BestGear(GearBoost.Human);
 
         //War Medals
         Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier");
@@ -82,10 +75,17 @@ public class WarTraining
         // Awaken Lady Fiamme
         Story.MapItemQuest(8139, "shadowfireplane", 8542);
         Bot.Sleep(5000);
-
+        
         // Destroy the Barrier
-        Story.KillQuest(8140, "shadowfireplane", new[] { "Shadowfire Summoner", "Shadow Wing" });
-        Story.MapItemQuest(8140, "shadowfireplane", 8543);
+        if (!Story.QuestProgression(8140))
+        {
+            Core.Join("shadowfireplane", "r6", "Left"); // for incase u start here
+            Core.EnsureAccept(8140);
+            Core.GetMapItem(8543);
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadow Wing", "Shadow Flamewing Defeated", 2);
+            Core.KillMonster("shadowfireplane", "r6", "Left", "Shadowfire Summoner", "Shadowfire Summoner Defeated", 1);
+            Core.EnsureComplete(8140);
+        }
 
         // Blaze a Path
         Story.KillQuest(8141, "shadowfireplane", new[] { "Onslaught Knight", "Shadowfire Corporal" });

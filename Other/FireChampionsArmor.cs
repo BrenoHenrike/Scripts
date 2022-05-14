@@ -1,10 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
-//cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
 using RBot;
@@ -13,14 +11,10 @@ public class FireChampionsArmor
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreDailies Daily = new();
-    public CoreStory Story = new CoreStory();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public DragonslayerGeneral DSG = new DragonslayerGeneral();
-    public CoreLegion Legion = new CoreLegion();
-    public WarTraining WFT = new WarTraining();
-    public WarfuryEmblem WFE = new WarfuryEmblem();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public DragonslayerGeneral DSG = new();
+    public WarfuryEmblem WFE = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -36,8 +30,6 @@ public class FireChampionsArmor
         if (Core.CheckInventory(62570))
             return;
 
-        Story.PreLoad();
-
         PolishedDragonSlayer();
         DSG.EnchantedScaleandClaw(125, 0);
         WFE.WarfuryEmblemFarm(60);
@@ -45,7 +37,7 @@ public class FireChampionsArmor
         VoidScale(13);
         Farm.Gold(25000000);
         Core.BuyItem("wartraining", 2035, "Gold Voucher 500k", 50);
-        Core.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 62570);
+        Core.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 8759);
     }
 
 
@@ -76,7 +68,7 @@ public class FireChampionsArmor
         Core.RegisterQuests(6975);
         while (!Core.CheckInventory("Flame-Forged Metal", Metalquant))
             Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame", log: false);
-
+        Core.CancelRegisteredQuests();
     }
 
     public void VoidScale(int VoidScaleQuant = 13)

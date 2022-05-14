@@ -32,5 +32,6 @@ public class DecorateYourSpace
         Core.RegisterQuests(7782);
         while (!Core.CheckInventory(Rewards) && !Bot.ShouldExit())
             Core.KillMonster("yokaigrave", "r2", "Left", "*", "Graves Cleared", 10, log: false);
+        Core.CancelRegisteredQuests();
     }
 }

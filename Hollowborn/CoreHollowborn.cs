@@ -9,6 +9,11 @@ public class CoreHollowborn
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
 
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.RunCore();
+    }
+
     public void HardcoreContract()
     {
         if (Core.CheckInventory("Lae\'s Hardcore Contract"))

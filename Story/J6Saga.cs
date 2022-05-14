@@ -36,7 +36,7 @@ public class J6Saga
         if (!Story.QuestProgression(694))
         {
             Core.Jump("R10");
-            Bot.Player.Join("zephyrus");
+            Core.Join("zephyrus");
             Story.MapItemQuest(694, "zephyrus", new[] { 116, 117 });
         }
 
@@ -49,7 +49,7 @@ public class J6Saga
         if (!Core.isCompletedBefore(1172))
         {
             Core.Jump("R10");
-            Bot.Player.Join("moonyard");
+            Core.Join("moonyard");
         }
         //A Gate and Terrible Monster
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
@@ -64,7 +64,7 @@ public class J6Saga
         if (!Story.QuestProgression(1173, GetReward: false))
         {
             Core.Jump("MoonCut", "Left");
-            Bot.Player.Join("moonyardb");
+            Core.Join("moonyardb");
             Story.KillQuest(1173, "moonyardb", "Robo Guard", GetReward: false);
         }
 
@@ -76,12 +76,6 @@ public class J6Saga
 
         //Planet Banzai!
         Story.ChainQuest(2168);
-        // if (!Story.QuestProgression(2168))
-        // {
-        //     Core.Jump("R10");
-        //     Bot.Player.Join("banzai");
-        //     Core.ChainComplete(2168);
-        // }
 
 
         //L.O.S.E.R. Battle!
@@ -97,20 +91,28 @@ public class J6Saga
         Story.KillQuest(2173, "djinn", "Harpy");
 
         //Mission 6
-        Story.KillQuest(2830, "xantown", "*", GetReward: false);
+        if (!Story.QuestProgression(2830))
+        {
+            Core.EnsureAccept(2830);
+            Core.KillMonster("xantown", "Enter", "Spawn", "*", "Flare Artifact");
+            Core.EnsureComplete(2830);
+            Core.Jump("Cut1", "Left"); // because xantown is aggressive and breaks trying to goto sandsea
+        }
 
         //Fuel For Flight
         if (!Story.QuestProgression(2831))
         {
             Core.EnsureAccept(2831);
+            Bot.Quests.UpdateQuest(811);  
             Core.KillMonster("sandsea", "r8", "Left", "*", "Cactus Creeper Oil", 3);
             Core.KillMonster("cloister", "r7", "Left", "Acornent", "Acornent Oil", 3);
+            Bot.Quests.UpdateQuest(1176);              
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
                 Core.Jump("R10");
-                Bot.Player.Join("moonyard");
+                Core.Join("moonyard");
                 Core.Jump("MoonCut", "Left");
-                Bot.Player.Join("moonyardb");
+                Core.Join("moonyardb");
                 Core.KillMonster("moonyardb", "r4", "Left", "*", "Robo Dog Oil", 3);
             }
             Core.KillMonster("farm", "Crop1", "Left", "*", "Scarecrow Canola Oil", 3);
@@ -135,8 +137,7 @@ public class J6Saga
             Core.KillMonster("bamboo", "r3", "Left", "Tanuki", "Umeboshi Plum", 4);
             Core.KillMonster("yokaigrave", "Enter2", "Right", "*", "Ginger");
             Core.KillMonster("guru", "Field2", "Left", "*", "Peppermint Leaf", 3);
-            Core.BuyItem("yulgar", 16, "Absorbent Mop");
-            Core.EnsureComplete(2833);
+            Story.BuyQuest(2833, "yulgar", 16, "Absorbent Mop");
         }
 
         Farm.ChronoSpanREP(2);
@@ -162,7 +163,7 @@ public class J6Saga
         if (!Core.isCompletedBefore(2846))
         {
             Core.Jump("R10");
-            Bot.Player.Join("alley");
+            Core.Join("alley");
         }
         //Reduce, Respawn, Recycle
         Story.KillQuest(2841, "alley", "Trash Can");
@@ -192,7 +193,7 @@ public class J6Saga
         if (!Core.isCompletedBefore(2851))
         {
             Core.Jump("R10");
-            Bot.Player.Join("alley");
+            Core.Join("alley");
             Bot.Sleep(2000);
         }
         //Save the Girl

@@ -80,6 +80,8 @@ public class CoreBots
 
     #endregion
 
+    #region Startup
+
     /// <summary>
     /// Set common bot options to desired value
     /// </summary>
@@ -88,9 +90,11 @@ public class CoreBots
     {
         if (changeTo)
         {
-            Logger("Bot Started");
+            if (AppPath != null)
+                Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "")}]");
+            else Logger($"Bot Started");
 
-            RBotVersionChecker("4.1.2");
+            RBotVersionChecker("4.1.3");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -214,6 +218,13 @@ public class CoreBots
         SetOptions(false);
         return StopBot();
     }
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        RunCore();
+    }
+
+    #endregion
 
     #region Inventory, Bank and Shop
     /// <summary>
@@ -381,6 +392,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
+        Bot.Sleep(1500);
         ShopItem? item = null;
         try
         {
@@ -424,7 +436,7 @@ public class CoreBots
             return;
         Join(map);
         Bot.Shops.Load(shopID);
-        Bot.Sleep(ActionDelay);
+        Bot.Sleep(1500);
         ShopItem? item = null;
         try
         {
@@ -960,7 +972,7 @@ public class CoreBots
         if (item != null && CheckInventory(item, quant))
             return;
 
-        else if (CheckInventory("Dragon of Time"))
+        if (CheckInventory("Dragon of Time"))
             Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
         else if (CheckInventory("Healer (Rare)"))
             Bot.Skills.StartAdvanced("Healer (Rare)", true, ClassUseMode.Base);
@@ -989,7 +1001,7 @@ public class CoreBots
         if (stopBot)
         {
             scriptFinished = false;
-            Bot.Stop();
+            Bot.Stop(true);
         }
     }
 
@@ -1062,7 +1074,7 @@ public class CoreBots
                 if (SendSite == DialogResult.OK)
                 {
                     System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/RBot/releases");
-                    Bot.Stop();
+                    Bot.Stop(true);
                 }
                 else
                     Logger($"This script requires RBot {TargetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
@@ -1220,7 +1232,16 @@ public class CoreBots
         Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
         if (Bot.Player.LoggedIn)
         {
-            Bot.Player.Join("battleon");
+            Bot.Player.ExitCombat();
+            Bot.Sleep(ActionDelay);
+            SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
+            if (Bot.Map.Name == "house")
+                Logger($"(っ◔◡◔)っ ♥ Welcome Home ♥");
+            else if (Bot.Map.Name != "house")
+            {
+                Logger($"Sorry but your homeless (ಥ ̯ ಥ)");
+                Join("Whitemap");
+            }
             int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
             Bot.SendMSGPacket("Final Saved-State before ending the bot", "Saved-State", "moderator");
             Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
@@ -1283,8 +1304,14 @@ public class CoreBots
         "ping",
         "you there?",
         "I\'m going AFK"
-
     };
+
+    public void RunCore()
+    {
+        MessageBox.Show("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        StopBot();
+    }
+
     #endregion
 
     #region Map
@@ -1419,6 +1446,13 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map.ToLower() && !ignoreCheck)
             return;
 
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
+
         string[] disabledMaps =
         {
             "tower"
@@ -1444,6 +1478,9 @@ public class CoreBots
             Jump(cell, pad);
             Bot.Sleep(ActionDelay);
         }
+
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
     }
 
     /// <summary>
