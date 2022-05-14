@@ -74,7 +74,6 @@ public class PotionBuyer
             }
 
             Core.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
-
         }
     }
 }
