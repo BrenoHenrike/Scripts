@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Oddities.cs
+//cs_include Scripts/Story/Oddities[Mem].cs
 using RBot;
 
 public class OdditiesMerge
