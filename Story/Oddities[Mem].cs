@@ -67,8 +67,15 @@ public class Oddities
         Story.KillQuest(8662, "Oddities", "Opera Glasses");
 
         // Teddy Tailor 8663
-        Story.KillQuest(8663, "Oddities", new[] { "Cursed Curio", "Creepy Baby", "Dready Bear", "Dready Bear" });
-
+        if (!Story.QuestProgression(8663))
+        {
+            Core.EnsureAccept(8663);
+            Core.HuntMonster("Oddities", "Cursed Curio", "Bow Tie");
+            Core.HuntMonster("Oddities", "Creepy Baby", "Button Eye", 2);
+            Core.HuntMonster("Oddities", "Dready Bear", "Party Hat");
+            Core.HuntMonster("Oddities", "Dready Bear", "Fur Scrap", 6);
+            Core.EnsureComplete(8663);
+        }
         // Immaterial Dowsing 8664
         Story.KillQuest(8664, "Oddities", "Dready Bear");
 
