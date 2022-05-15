@@ -93,7 +93,7 @@ public class ArchPaladin
             {
                 Core.EnsureAccept(5465);
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("xantown", "Xan", "Pyromancer Artifact", isTemp: false);
+                Core.KillMonster("xantown", "r8", "Left", "Xan", "Pyromancer Artifact", isTemp: false);
                 Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false);
                 Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
                 Core.EquipClass(ClassType.Farm);
