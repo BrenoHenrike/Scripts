@@ -781,7 +781,12 @@ public class CoreAdvanced
     /// <param name="Class">Name of the class you wish to enhance</param>
     public void SmartEnhance(string Class)
     {
-        InventoryItem SelectedClass = Bot.Inventory.Items.First(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class);
+        InventoryItem? SelectedClass = Bot.Inventory.Items.Where(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class).FirstOrDefault();
+        if (SelectedClass == null)
+        {
+            Core.Logger($"SmartEnhance: Class {Class} not found");
+            return;
+        }
 
         switch (SelectedClass.Name.ToLower())
         {
