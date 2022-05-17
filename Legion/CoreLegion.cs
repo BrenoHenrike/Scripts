@@ -36,7 +36,7 @@ public class CoreLegion
 
         Core.AddDrop("Legion Seal", "Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GearBoost.gold);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
         while (!Bot.Inventory.Contains("Emblem of Dage", quant))
@@ -485,7 +485,7 @@ public class CoreLegion
             Core.SellItem("Undead Warrior", all: true);
     }
 
-    public void ObsidianRock(int quant)
+    public void ObsidianRock(int quant = 10)
     {
         if (Core.CheckInventory("Obsidian Rock", quant))
             return;
@@ -495,12 +495,100 @@ public class CoreLegion
         Core.AddDrop("Obsidian Rock");
 
         Core.EquipClass(ClassType.Farm);
-        while (!Core.CheckInventory("Obsidian Rock", 10))
+
+        if (!Core.IsMember)
+            Core.Logger("Using Non-Member Method");
+        else Core.Logger("Using Members Method");
+        
+        if (!Core.IsMember || !Core.isCompletedBefore(1542))
         {
-            Core.EnsureAccept(2742);
-            Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10);
-            Core.EnsureComplete(2742);
-            Bot.Wait.ForPickup("Obsidian Rock");
+
+            // Something Smells Rotten in EtherStorm
+            Story.KillQuest(1532, "firestorm", new[] { "Sulfur Imp", "Sulfur Imp" });
+
+            // Play With Fire
+            Story.KillQuest(1533, "firestorm", "Living Fire");
+
+            // Set Me On Fire
+            Story.MapItemQuest(1542, "firestorm", 784, 13);
+        }
+
+        Core.RegisterQuests(2742);
+        while (!Core.CheckInventory("Obsidian Rock", quant))
+        {
+            if (Core.IsMember)
+                Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10, log: false);
+
+            else if (!Core.IsMember)
+                Core.HuntMonster("firestorm", "Firestorm Hatchling", "Obsidian Deposit", 10, log: false);
+
+        }
+        Bot.Wait.ForPickup("Obsidian Rock");
+        Core.CancelRegisteredQuests();
+    }
+
+    /// <summary>
+    /// This method is used to move between Bludrut Brawl rooms
+    /// </summary>
+    /// <param name="mtcid">Last number of the mtcid packet</param>
+    /// <param name="cell">Cell you want to be</param>
+    /// <param name="moveX">X position of the door</param>
+    /// <param name="moveY">Y position of the door</param>
+    public void DagePvPMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
+    {
+        while (Bot.Player.Cell != cell)
+        {
+            Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
+            Bot.Sleep(2500);
+            Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
+        }
+    }
+
+    public void DagePvP(int TrophyQuant, int TechniqueQuant, int ScrollQuant)
+    {
+        if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant) && Core.CheckInventory("Technique Observed", TechniqueQuant) && Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+            return;
+
+        // if (Core.CBO_Active)
+        //     canSoloBoss = !Core.CBOBool("PVP_SoloPvPBoss");
+
+        Core.EquipClass(ClassType.Solo);
+        // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
+
+        while (!Core.CheckInventory("Legion Combat Trophy", TrophyQuant) && !Core.CheckInventory("Technique Observed", TechniqueQuant) && !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+        {
+            Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
+            Core.Join("Dagepvp", "Enter0", "Spawn", ignoreCheck: true);
+            DagePvPMove(1, "r2", 475, 269);
+            DagePvPMove(4, "r4", 963, 351);
+            DagePvPMove(7, "r5", 849, 177);
+            DagePvPMove(9, "r6", 937, 389);
+            if (!Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+            {
+                Core.Logger($"Geting Scrolls: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")}/{ScrollQuant}");
+                DagePvPMove(11, "r7", 513, 286);
+                DagePvPMove(15, "r10", 832, 347);
+                Bot.Player.Kill("Blade Master");
+                Bot.Player.Kill("Blade Master");
+                DagePvPMove(20, "r11", 943, 391);
+                Bot.Player.Kill("Blade Master");
+                Bot.Player.Kill("Blade Master");
+                DagePvPMove(21, "r10", 9, 397);
+                DagePvPMove(19, "r7", 7, 392);
+                DagePvPMove(14, "r6", 482, 483);
+            }
+            DagePvPMove(12, "r12", 758, 338);
+            DagePvPMove(23, "r13", 933, 394);
+            DagePvPMove(25, "r14", 846, 181);
+            DagePvPMove(28, "r15", 941, 348);
+            Bot.Player.Kill("Dage the Evil");
+            Bot.Wait.ForPickup("*");
+            while (Bot.Map.Name != "battleon")
+            {
+                Bot.Sleep(5000);
+                Core.Join("battleon");
+                Bot.Wait.ForMapLoad("battleon");
+            }
         }
     }
 }
