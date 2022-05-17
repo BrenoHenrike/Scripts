@@ -9,6 +9,7 @@
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
 public class CoreHollowbornPaladin
