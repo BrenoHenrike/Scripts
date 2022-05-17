@@ -90,7 +90,6 @@ public class LivingDungeon
                 Core.EnsureComplete(4377);
                 Bot.Wait.ForPickup("Wooden Ring");
             }
-            Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
             Core.EnsureComplete(4378);
         }
 
@@ -109,10 +108,11 @@ public class LivingDungeon
                     Core.EnsureComplete(4377);
                     Bot.Wait.ForPickup("Wooden Ring");
                 }
-                Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
+                Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
                 Core.EnsureComplete(4378);
             }
             Bot.Wait.ForPickup("Salad!");
+            Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
             Core.EnsureComplete(4379);
         }
 
