@@ -11,6 +11,7 @@
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Story/Artixpointe.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
 public class HBPalAll
