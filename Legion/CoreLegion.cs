@@ -520,7 +520,7 @@ public class CoreLegion
                 Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10, log: false);
 
             else if (!Core.IsMember)
-                Core.HuntMonster("firestorm", "Firestorm Hatchling", "Obsidian Deposit", 10, log: false);
+                Core.KillMonster("firestorm", "r8", "Left", "Firestorm Hatchling", "Obsidian Deposit", 10, log: false);
 
         }
         Bot.Wait.ForPickup("Obsidian Rock");
