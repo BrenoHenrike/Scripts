@@ -222,13 +222,13 @@ public class LordOfOrder
         }
 
         // The Final Challenge
-        Core.AddDrop("Lord of Order");
+        Core.AddDrop("Lord Of Order");
         Core.EnsureAccept(7165);
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: true);
         Core.EnsureComplete(7165);
 
-        Bot.Wait.ForPickup("Lord of Order");
+        Bot.Wait.ForPickup("Lord Of Order");
 
         if (rankUpClass)
             Adv.rankUpClass("Lord Of Order");
