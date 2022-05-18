@@ -72,6 +72,7 @@ public class FrostSpiritReaver
         }
         Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
         Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
+        Core.AddDrop("Ice Diamond");
         while (!Core.CheckInventory("Ice Diamond", 3))
         {
             Core.EnsureAccept(7279);
