@@ -40,7 +40,7 @@ public class FrostSpiritReaver
         while (Core.CheckInventory("Ice-Ninth", IceNinthQuant) & Core.isCompletedBefore(7921))
             return;
 
-        Core.AddDrop("Flame of Courage");
+        Core.AddDrop("Flame of Courage", "Ice-Ninth", "Ice Diamond");
 
         Core.EnsureAccept(7920);
 
@@ -72,15 +72,15 @@ public class FrostSpiritReaver
         }
         Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
         Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
-        Core.AddDrop("Ice Diamond");
         while (!Core.CheckInventory("Ice Diamond", 3))
         {
             Core.EnsureAccept(7279);
             Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
             Core.EnsureComplete(7279);
+            Bot.Wait.ForPickup("Ice Diamond");
         }
-        Bot.Wait.ForPickup("Ice Diamond");
         Core.EnsureComplete(7920);
+        Bot.Wait.ForPickup("Ice-Ninth");
     }
 
     public void ColdBlooded(int AttunementQuant = 15)
@@ -88,6 +88,7 @@ public class FrostSpiritReaver
         while (Core.CheckInventory("Glaceran Attunement", AttunementQuant) & Core.isCompletedBefore(7921))
             return;
 
+        Core.AddDrop("Glaceran Attunement");
         Core.EnsureAccept(7921);
         if (!Core.CheckInventory("IceBreaker Mage"))
         {
@@ -97,6 +98,10 @@ public class FrostSpiritReaver
         {
             Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
         }
+        Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100);
+        Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20);
+        Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20);
+        Core.HuntMonster("frozenlair", "Legion Lich Lord ", "Sapphire Orb", 20);
         Core.EnsureComplete(7921);
     }
 
@@ -110,18 +115,12 @@ public class FrostSpiritReaver
         if (!Core.CheckInventory("Envoy of Kyanos"))
         {
             Farm.Gold(50000);
-            Tokens(50, 0, 0, 0);
-            Tokens(0, 30, 0, 0);
-            Tokens(0, 0, 20, 0);
-            Tokens(0, 0, 0, 10);
+            Tokens(50, 30, 20, 10);
 
             if (!Core.CheckInventory("Favored of Kyanos"))
             {
                 Farm.Gold(50000);
-                Tokens(25, 0, 0, 0);
-                Tokens(0, 15, 0, 0);
-                Tokens(0, 0, 10, 0);
-                Tokens(0, 0, 0, 5);
+                Tokens(25, 15, 10, 5);
                 if (!Core.CheckInventory("Warrior of Kyanos"))
                 {
                     Core.HuntMonster("IceDungeon", "Shade of Kyanos", "Warrior of Kyanos", isTemp: false);
