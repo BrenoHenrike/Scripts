@@ -30,7 +30,7 @@ public class MergeTemplate
 
     public void MergePreReqs()
     {
-        if (Core.isCompletedBefore(QuestID)) // <-- Insert Questid of last quest required to start farming.
+        if (Core.isCompletedBefore(1)) // <-- Insert Questid of last quest required to start farming.
             return;
         // Story Quests if any are Required:
         // {
@@ -47,11 +47,9 @@ public class MergeTemplate
 
     }
 
-
     public void Merge(string item = "all")
     {
         //------- FILLIN BELOW-------
-
         int ShopID = 0;
         string map = "mapname";
 
@@ -129,9 +127,9 @@ public class MergeTemplate
 
         // --------- Replace Items Below ---------
         Core.HuntMonster("map", "monster", "Item1", Item1Quant);
-        Core.HuntMonster("map", "monster", "item", Item2Quant);
-        Core.HuntMonster("map", "monster", "item", Item3Quant);
-        Core.HuntMonster("map", "monster", "item", Item4Quant);
+        Core.HuntMonster("map", "monster", "item2", Item2Quant);
+        Core.HuntMonster("map", "monster", "item3", Item3Quant);
+        Core.HuntMonster("map", "monster", "item4", Item4Quant);
         // --------- Replace Items Above ---------
         // More can be added depending how many items your merges require.
     }
