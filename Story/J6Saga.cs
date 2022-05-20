@@ -103,10 +103,10 @@ public class J6Saga
         if (!Story.QuestProgression(2831))
         {
             Core.EnsureAccept(2831);
-            Bot.Quests.UpdateQuest(811);  
+            Bot.Quests.UpdateQuest(811);
             Core.KillMonster("sandsea", "r8", "Left", "*", "Cactus Creeper Oil", 3);
             Core.KillMonster("cloister", "r7", "Left", "Acornent", "Acornent Oil", 3);
-            Bot.Quests.UpdateQuest(1176);              
+            Bot.Quests.UpdateQuest(1176);
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
                 Core.Jump("R10");
@@ -143,7 +143,12 @@ public class J6Saga
         Farm.ChronoSpanREP(2);
 
         //Sweet Dreams for a Safe Flight
-        Story.BuyQuest(2834, "thespan", 439, "Comfy Pillow");
+        if (!Story.QuestProgression(2834))
+        {
+            Core.EnsureAccept(2834);
+            Core.BuyItem("thespan", 439, "Comfy Pillow");
+            Core.EnsureComplete(2834);
+        }
 
         //Reach VR Room
         Story.MapItemQuest(2837, "hyperspace", 1742);
@@ -165,6 +170,7 @@ public class J6Saga
             Core.Jump("R10");
             Core.Join("alley");
         }
+        
         //Reduce, Respawn, Recycle
         Story.KillQuest(2841, "alley", "Trash Can");
 
