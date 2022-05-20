@@ -189,7 +189,7 @@ public class CoreQOM
         Story.PreLoad();
 
         //Celestial Realm at War
-        Story.KillQuest(4509, "lostruinswar", "Fallen Knight");
+        Story.KillQuest(4509, "lostruinswar", "Infernal Imp");
 
         //Defeat the Diabolical Warlord!
         Core.EquipClass(ClassType.Solo);
