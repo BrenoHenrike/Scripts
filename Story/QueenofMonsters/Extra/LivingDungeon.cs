@@ -19,8 +19,8 @@ public class LivingDungeon
 
     public void LivingDungeonStory()
     {
-        if (Core.isCompletedBefore(4384))
-            return;
+        // if (Core.isCompletedBefore(4384))
+        //     return;
 
         Story.PreLoad();
 
@@ -75,61 +75,83 @@ public class LivingDungeon
         // EPIC DROP!
         Story.KillQuest(4364, "livingdungeon", "Epic Drop");
 
-        // Re-Run Titan Hollow
-        Story.KillQuest(4377, "livingdungeon", "Root of Evil");
 
-        // Evil Plant Horrors
-        if (!Story.QuestProgression(4378))
-        {
-            Core.AddDrop("Wooden Ring");
-            Core.EnsureAccept(4378);
-            if (!Core.CheckInventory("Wooden Ring"))
-            {
-                Core.EnsureAccept(4377);
-                Core.HuntMonster("livingdungeon", "Root of Evil", "Wooden Ring Piece", 5);
-                Core.EnsureComplete(4377);
-                Bot.Wait.ForPickup("Wooden Ring");
-            }
-            Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
-            Core.EnsureComplete(4378);
-        }
-
-        // Weeping Widowmakers!
-        if (!Story.QuestProgression(4379))
-        {
-            Core.AddDrop("Wooden Ring", "Salad!");
-            Core.EnsureAccept(4379);
-            if (!Core.CheckInventory("Salad!"))
-            {
-                Core.EnsureAccept(4378);
-                if (!Core.CheckInventory("Wooden Ring"))
-                {
-                    Core.EnsureAccept(4377);
-                    Core.HuntMonster("livingdungeon", "Root of Evil", "Wooden Ring Piece", 5);
-                    Core.EnsureComplete(4377);
-                    Bot.Wait.ForPickup("Wooden Ring");
-                }
-                Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
-                Core.EnsureComplete(4378);
-            }
-            Bot.Wait.ForPickup("Salad!");
-            Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
-            Core.EnsureComplete(4379);
-        }
-
-        // Chia Warriors
-        Story.KillQuest(4380, "livingdungeon", "Chia Warrior");
-
-        // Evil Tree Faeries
-        Story.KillQuest(4381, "livingdungeon", "Evil Tree Faerie");
-
-        // Vulchurions
-        Story.KillQuest(4382, "livingdungeon", "Vulchurion");
-
+        Core.AddDrop("Wooden Ring", "Salad!", "Weeping Widowmaker Bone", "Chia in a pot!", "Fairy Phone", "Vulchurion Quill", "Drayko's Medallion", "Giant Dakka Fang");
+        // ------------------------------------------        
         // Drayko Battle!
-        Story.KillQuest(4383, "livingdungeon", "Drayko");
+        if (!Core.CheckInventory("Drayko's Medallion"))
+        {
+            Core.Logger("Drayko's Medallion not found, finding it for you");
+            Core.EnsureAccept(4383);
 
-        // DRAGON vs TITAN Rematch!
-        Story.KillQuest(4384, "treetitanbattle", "Dakka the Dire Dragon");
+            // Vulchurions
+            if (!Core.CheckInventory("Vulchurion Quill"))
+            {
+                Core.Logger("Vulchurion Quill not found, finding it for you");
+                Core.EnsureAccept(4382);
+
+                // Evil Tree Faeries
+                if (!Core.CheckInventory("Fairy Phone"))
+                {
+                    Core.Logger("Fairy Phone not found, finding it for you");
+                    Core.EnsureAccept(4381);
+
+                    // Chia Warriors
+                    if (!Core.CheckInventory("Chia in a pot!"))
+                    {
+                        Core.Logger("Chia in a pot! not found, finding it for you");
+                        Core.EnsureAccept(4380);
+
+                        if (!Core.CheckInventory("Weeping Widowmaker Bone"))
+                        {
+                            Core.Logger("Weeping Widowmaker Bone not found, finding it for you");
+                            Core.EnsureAccept(4379);
+
+                            if (!Core.CheckInventory("Salad!"))
+                            {
+                                Core.Logger("Salad! not found, finding it for you");
+                                Core.EnsureAccept(4378);
+
+                                if (!Core.CheckInventory("Wooden Ring"))
+                                {
+                                    Core.Logger("Wooden Ring not found, finding it for you");
+                                    Core.EnsureAccept(4377);
+                                    Core.HuntMonster("livingdungeon", "Root of Evil", "Wooden Ring Piece", 5);
+                                    Core.EnsureComplete(4377);
+                                    Bot.Wait.ForPickup("Wooden Ring");
+                                }
+                                Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
+                                Core.EnsureComplete(4378);
+                                Bot.Wait.ForPickup("Salad!");
+                            }
+                            Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
+                            Core.EnsureComplete(4379);
+                            Bot.Wait.ForPickup("Weeping Widowmaker Bone");
+                        }
+                        Core.HuntMonster("livingdungeon", "Chia Warrior", "Chia Warrior defeated", 3);
+                        Core.EnsureComplete(4380);
+                        Bot.Wait.ForPickup("Chia in a pot!");
+                    }
+                    Core.HuntMonster("livingdungeon", "Evil Tree Faerie", "Fairy Purse", 5);
+                    Core.EnsureComplete(4381);
+                    Bot.Wait.ForPickup("Fairy Phone");
+                }
+                Core.HuntMonster("livingdungeon", "Vulchurion", "Vulchurion Feather", 3);
+                Core.EnsureComplete(4382);
+                Bot.Wait.ForPickup("Vulchurion Quill");
+            }
+            Core.HuntMonster("livingdungeon", "Drayko", "Drayko Defeated... again");
+            Core.EnsureComplete(4383);
+            Bot.Wait.ForPickup("Drarko's Medalion");
+        }
+        // DRAGON vs TITAN Rematch! - 4384
+        if (!Story.QuestProgression(4384))
+        {
+            Core.Logger("Giant Dakka Fang not found, finding it for you");
+            Core.EnsureAccept(4384);
+            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka Defeated... again");
+            Core.EnsureComplete(4384);
+            // Bot.Wait.ForPickup("Giant Dakka Fang");
+        }
     }
 }
