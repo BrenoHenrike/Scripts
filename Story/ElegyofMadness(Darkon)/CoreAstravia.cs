@@ -313,14 +313,16 @@ public class CoreAstravia
         {
             Core.EnsureAccept(8529);
             Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Paladin Dueled");
+            Core.EnsureComplete(8529);
         }
 
         //Echoes
         if (!Story.QuestProgression(8530))
         {
             Core.EnsureAccept(8530);
-            Core.HuntMonster("eridanipast", "Bandit", "Bandit Remnants", 7);
             Story.MapItemQuest(8530, "eridanipast", 9680);
+            Core.HuntMonster("eridanipast", "Bandit", "Bandit Remnants", 7);
+            Core.EnsureComplete(8530);
         }
     }
 
