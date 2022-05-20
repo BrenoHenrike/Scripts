@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -620,10 +621,16 @@ public class CoreBots
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID)
     {
+        Quest QuestData = EnsureLoad(questID);
+
+        if (QuestData.Upgrade && !IsMember)
+            Logger($"\"{QuestData.Name}\" [{questID}] is member-only, stopping the bot.", stopBot: true);
+
         if (Bot.Quests.IsInProgress(questID))
             return true;
         if (questID <= 0)
             return false;
+
         Bot.Sleep(ActionDelay);
         return Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
     }
@@ -636,6 +643,11 @@ public class CoreBots
     {
         foreach (int quest in questIDs)
         {
+            Quest QuestData = EnsureLoad(quest);
+
+            if (QuestData.Upgrade && !IsMember)
+                Logger($"\"{QuestData.Name}\" [{quest}] is member-only, stopping the bot.", stopBot: true);
+                
             if (Bot.Quests.IsInProgress(quest) || quest <= 0)
                 continue;
             Bot.Sleep(ActionDelay);
