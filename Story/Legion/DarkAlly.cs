@@ -32,9 +32,21 @@ public class DarkAlly_Story
         Story.MapItemQuest(7421, "darkally", 7180, 1);
         Story.MapItemQuest(7421, "darkally", 7181, 8);
 
-        Story.KillQuest(7422, "darkally", "Dark Makai");
+        if (!Story.QuestProgression(7422))
+        {
+            Core.EnsureAccept(7422);
+            Core.Join("Darkally", "r2", "Left");
+            while (!Core.CheckInventory(53855, 10))
+                Bot.Player.Kill("Dark Makai");
+            Core.EnsureComplete(7422);
+        }
 
-        Story.KillQuest(7423, "darkally", "Shadow");
+        if (!Story.QuestProgression(7423))
+        {
+            Core.EnsureAccept(7423);
+            Core.KillMonster("Darkally", "r2", "Left", 4452, "Shredded Shadow", 9);
+            Core.EnsureComplete(7423);
+        }
 
         Story.KillQuest(7424, "darkally", new[] { "Legion Defector", "Legion Defector" });
 
