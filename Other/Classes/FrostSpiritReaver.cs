@@ -131,9 +131,6 @@ public class FrostSpiritReaver
             Core.BuyItem("icedungeon", 1948, "Favored of Kyanos");
         }
         Core.BuyItem("icedungeon", 1948, "Envoy of Kyanos");
-
-        ColdHearted();
-        ColdBlooded();
         Core.EnsureComplete(7922);
         Bot.Wait.ForPickup("Frost SpiritReaver");
     }
