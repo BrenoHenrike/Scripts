@@ -13,6 +13,7 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
+//cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 using RBot;
 
