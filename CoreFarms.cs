@@ -795,7 +795,10 @@ public class CoreFarms
         Core.AddDrop("Dark Tower Sword", "Light Tower Sword");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
-        Core.RegisterQuests(1151, 1152, 1153, 2100, 2101, 2012);
+        if (Bot.Player.IsMember)
+            Core.RegisterQuests(1200, 2101, 2102);
+        else
+            Core.RegisterQuests(1151, 1152, 1153);
         while (FactionRank("Doomwood") < rank && !Bot.ShouldExit())
         {
             if (!Core.IsMember)
@@ -955,7 +958,11 @@ public class CoreFarms
             Core.HuntMonster("swordhavenbridge", "Slime", "Youthanize");
 
         Core.CancelRegisteredQuests();
-        Core.RegisterQuests(366, 367);
+        if (Bot.Player.IsMember)
+            Core.RegisterQuests(366);
+        else
+            Core.RegisterQuests(367);
+
         while (FactionRank("Evil") < rank && !Bot.ShouldExit())
         {
             if (!Core.IsMember)
@@ -1022,14 +1029,17 @@ public class CoreFarms
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Good);
 
-        Core.RegisterQuests(369, 372, 371);
+        if (Bot.Player.IsMember)
+            Core.RegisterQuests(371);
+        else
+            Core.RegisterQuests(369, 372);
+
         while (FactionRank("Good") < 4)
         {
             Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
         }
         Core.CancelRegisteredQuests();
 
-        Core.RegisterQuests(369, 371, 372);
         while (FactionRank("Good") < rank && !Bot.ShouldExit())
         {
             if (!Core.IsMember)
