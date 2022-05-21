@@ -29,6 +29,7 @@ public class OdditiesMerge
         int tokenQuant = Bot.Inventory.GetQuantity("Ectoplasmic Token");
         Core.Logger($"Farming Odd Coins ({coinQuant}/{quant}) and Ectoplasmic Tokens ({tokenQuant}/{quant})");
         Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Odd Coin", "Ectoplasmic Token");
 
         Core.RegisterQuests(8674, 8675);
         while (!Core.CheckInventory("Odd Coin", quant) && !Core.CheckInventory("Ectoplasmic Token", quant))

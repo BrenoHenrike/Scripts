@@ -29,6 +29,7 @@ public class OdditiesMerge
         int eerieQuant = Bot.Inventory.GetQuantity("Eerie Embellishment");
         Core.Logger($"Farming Spooky Fabric Scraps ({scrapQuant}/{quant}) and Eerie Embellishments ({eerieQuant}/{quant})");
         Core.EquipClass(ClassType.Farm);
+        Core.AddDrop("Spooky Fabric Scrap", "Eerie Embellishment");
 
         Core.RegisterQuests(8676, 8677);
         while (!Core.CheckInventory("Spooky Fabric Scrap", quant) && !Core.CheckInventory("Eerie Embellishment", quant))
