@@ -29,6 +29,7 @@ public class MurderMoonMerge
         Core.Logger($"Farming Cyber Crystals ({currentQuant}/{quant})");
         Core.EquipClass(ClassType.Farm);
 
+        Core.AddDrop("Cyber Crystal");
         Core.RegisterQuests(8065);
         while (!Core.CheckInventory("Cyber Crystal", quant))
         {
