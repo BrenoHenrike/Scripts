@@ -28,6 +28,7 @@ public class OdditiesMerge
         int currentQuant = Bot.Inventory.GetQuantity("Cursed Doll Tassel");
         Core.Logger($"Farming Cursed Doll Tassels ({currentQuant}/{quant})");
         Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Cursed Doll Tassel");
 
         Core.RegisterQuests(8667);
         while (!Core.CheckInventory("Cursed Doll Tassel", quant))
