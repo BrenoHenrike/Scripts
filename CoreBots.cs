@@ -1,17 +1,7 @@
-﻿//Scripts v3.2
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿//Scripts autoupdate
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using RBot;
-using RBot.Flash;
 using RBot.Items;
 using RBot.Monsters;
 using RBot.Quests;
@@ -584,6 +574,26 @@ public class CoreBots
         if (questCTS is not null)
             CancelRegisteredQuests();
 
+        // Defining all the lists to be used=
+        List<Quest> questData = EnsureLoad(questIDs);
+        Dictionary<Quest, int> chooseQuests = new Dictionary<Quest, int>();
+        Dictionary<int, int> nonChooseQuests = new Dictionary<int, int>();
+
+        // Removing quests that you can't accept
+        foreach (Quest q in questData)
+            foreach (ItemBase req in q.AcceptRequirements)
+                if (!CheckInventory(req.Name))
+                {
+                    Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
+                    questData.Remove(q);
+                }
+
+        // Separating the quests into choose and non-choose
+        foreach (Quest q in questData)
+            if (q.SimpleRewards.Any(r => r.Type == 2))
+                chooseQuests.Add(q, 0);
+            else nonChooseQuests.Add(q.ID, 0);
+
         EnsureAccept(questIDs);
         questCTS = new();
         Task.Run(() =>
@@ -591,14 +601,41 @@ public class CoreBots
             while (!questCTS.IsCancellationRequested)
             {
                 Task.Delay(ActionDelay);
-                for (int i = 0; i < questIDs.Length; i++)
+
+                // Quests that dont need a choice
+                foreach (KeyValuePair<int, int> kvp in nonChooseQuests)
                 {
-                    if (Bot.Quests.CanComplete(questIDs[i]))
+                    if (Bot.Quests.CanComplete(kvp.Key))
                     {
-                        EnsureComplete(questIDs[i]);
+                        EnsureComplete(kvp.Key);
                         Task.Delay(ActionDelay);
-                        EnsureAccept(questIDs[i]);
-                        Logger($"Quest [{questIDs[i]}] Completed x{x++} Times");
+                        EnsureAccept(kvp.Key);
+                        Logger($"Quest [{kvp.Key}] Completed x{nonChooseQuests[kvp.Key]++} Times");
+                    }
+                }
+
+                // Quests that need a choice
+                foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
+                {
+                    if (Bot.Quests.CanComplete(kvp.Key.ID))
+                    {
+                        // Finding the next item that you dont have max stack of yet
+                        List<SimpleReward> simpleRewards = kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
+                                                                           (Bot.Inventory.IsMaxStack(r.Name) ||
+                                                                            r.MaxStack > Bot.Bank.GetItemByName(r.Name).Quantity)).ToList();
+                        if (simpleRewards.Count == 0)
+                        {
+                            nonChooseQuests.Add(kvp.Key.ID, kvp.Value);
+                            chooseQuests.Remove(kvp.Key);
+                            continue;
+                        }
+
+                        AddDrop(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
+                        EnsureComplete(kvp.Key.ID, simpleRewards.First().ID);
+                        Task.Delay(ActionDelay);
+                        EnsureAccept(kvp.Key.ID);
+                        Logger($"Quest [{kvp.Key.ID}, {kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}] Completed x{chooseQuests[kvp.Key]++} Times");
+
                     }
                 }
             }
@@ -647,7 +684,7 @@ public class CoreBots
 
             if (QuestData.Upgrade && !IsMember)
                 Logger($"\"{QuestData.Name}\" [{quest}] is member-only, stopping the bot.", stopBot: true);
-                
+
             if (Bot.Quests.IsInProgress(quest) || quest <= 0)
                 continue;
             Bot.Sleep(ActionDelay);
@@ -718,6 +755,22 @@ public class CoreBots
             Bot.Sleep(ActionDelay);
             return Bot.Quests.EnsureLoad(questID);
         }
+    }
+
+    public List<Quest> EnsureLoad(params int[] questIDs)
+    {
+        List<Quest> quests = Bot.Quests.QuestTree.Where(x => questIDs.Contains(x.ID)).ToList();
+        if (quests.Count == questIDs.Length)
+            return quests;
+        List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
+
+        Bot.Sleep(ActionDelay);
+        for (int i = 0; i < missing.Count; i = i + 30)
+        {
+            Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
+            Bot.Sleep(1500);
+        }
+        return Bot.Quests.QuestTree.Where(x => questIDs.Contains(x.ID)).ToList(); ;
     }
 
     /// <summary>
