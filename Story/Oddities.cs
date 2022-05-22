@@ -19,9 +19,6 @@ public class Oddities
 
     public void StoryLine()
     {
-        if (!Core.IsMember)
-            return;
-
         if (Core.isCompletedBefore(8667))
             return;
 
