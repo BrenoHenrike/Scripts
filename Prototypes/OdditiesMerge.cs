@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Oddities[Mem].cs
+//cs_include Scripts/Story/Oddities.cs
 
 using RBot;
 using RBot.Items;
