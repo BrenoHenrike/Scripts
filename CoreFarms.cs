@@ -777,6 +777,15 @@ public class CoreFarms
         if (FactionRank("Diabolical") >= rank)
             return;
 
+        if (!Bot.Quests.IsUnlocked(7877))
+        {
+            Core.EnsureAccept(7875, 7875);
+            Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale");
+            Core.EnsureComplete(7875);
+            Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid’s Flesh");
+            Core.EnsureComplete(7876);
+        }
+        
         Core.RegisterQuests(7877);
         while (FactionRank("Diabolical") < rank && !Bot.ShouldExit())
         {
@@ -1023,7 +1032,7 @@ public class CoreFarms
     {
         if (FactionRank("Good") >= rank)
             return;
-        Core.ChangeAlignment(Alignment.Good);   
+        Core.ChangeAlignment(Alignment.Good);
         Core.Logger($"Farming rank {rank}");
         Core.EquipClass(ClassType.Farm);
         if (Core.IsMember)
