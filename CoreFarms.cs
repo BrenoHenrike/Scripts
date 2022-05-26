@@ -351,7 +351,7 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
 
         Core.JumpWait();
-        Core.Join("battleunderb", "Enter", "Spawn", ignoreCheck: true);
+        Core.Join("battleunderb", "Enter", "Spawn", publicRoom: true, ignoreCheck: true);
         Bot.Wait.ForMapLoad("battleunderb".ToLower());
 
         Bot.Options.AggroMonsters = true;
