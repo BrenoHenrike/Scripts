@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
+using RBot.Items;
 
 public class DragonslayerGeneral
 {
@@ -38,7 +39,8 @@ public class DragonslayerGeneral
 
     public void EnchantedScaleandClaw(int ScaleQuant, int CLawquant)
     {
-        if (!Core.CheckInventory("Dragonslayer"))
+
+        if (!Core.CheckInventory(582))
         {
             Core.BuyItem("lair", 38, "Dragonslayer");
             Adv.GearStore();
@@ -47,30 +49,30 @@ public class DragonslayerGeneral
             Adv.GearStore(true);
         }
 
-        Adv.GearStore();
 
-        if (Core.CheckInventory("Dragonslayer"))
+        Adv.GearStore();
+        
+        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
+        
+        if (Core.CheckInventory(582) && itemInv.Quantity != 302500)
             Adv.rankUpClass("Dragonslayer");
 
         Adv.GearStore(true);
         Adv.BestGear(GearBoost.Dragonkin);
+        Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
-        Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
 
-        Core.RegisterQuests(5294);
+        Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
+            Core.EnsureAccept(5294);
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
+            Core.EnsureComplete(5294);
         }
-        Bot.Wait.ForPickup("Enchanted Scale");
-        Core.CancelRegisteredQuests();
 
         Core.Logger($"Farming {CLawquant} Dragon Claw");
-
-        while (!Core.CheckInventory("Dragon Claw", CLawquant))
-        {
+        if (!Core.CheckInventory("Dragon Claw", CLawquant))
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", 100, isTemp: false, log: false);
-        }
-        Bot.Wait.ForPickup("Dragon Claw");
+
     }
 }
