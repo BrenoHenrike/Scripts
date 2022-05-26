@@ -1023,28 +1023,29 @@ public class CoreFarms
     {
         if (FactionRank("Good") >= rank)
             return;
-        Core.ChangeAlignment(Alignment.Good);
+        Core.ChangeAlignment(Alignment.Good);   
         Core.Logger($"Farming rank {rank}");
         Core.EquipClass(ClassType.Farm);
         if (Core.IsMember)
             MembershipDues(MemberShipsIDS.Good);
 
-        if (Bot.Player.IsMember)
-            Core.RegisterQuests(371);
-        else
-            Core.RegisterQuests(369, 372);
-
+        Core.RegisterQuests(369);
         while (FactionRank("Good") < 4)
         {
             Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
         }
         Core.CancelRegisteredQuests();
 
+        if (Bot.Player.IsMember)
+            Core.RegisterQuests(371);
+        else
+            Core.RegisterQuests(372);
+
         while (FactionRank("Good") < rank && !Bot.ShouldExit())
         {
             if (!Core.IsMember)
             {
-                Core.HuntMonster("castleundead", "*", "Chaorrupted Skull", 5);
+                Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5);
             }
             else
             {
