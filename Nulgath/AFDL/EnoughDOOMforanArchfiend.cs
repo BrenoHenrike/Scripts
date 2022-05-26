@@ -30,6 +30,9 @@ public class EnoughDOOMforanArchfiend
 
     public void AFDL()
     {
+        if(Core.CheckInventory("ArchFiend DoomLord", toInv: false))
+        return;
+        
         NulgathDemandsWork.Unidentified35();
 
         Core.AddDrop(Nulgath.bagDrops);
