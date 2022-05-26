@@ -101,7 +101,7 @@ public class FrostSpiritReaver
         Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100);
         Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20);
         Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20);
-        Core.HuntMonster("frozenlair", "Legion Lich Lord ", "Sapphire Orb", 20);
+        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 20);
         Core.EnsureComplete(7921);
     }
 
