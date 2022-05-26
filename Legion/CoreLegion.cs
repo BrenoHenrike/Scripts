@@ -209,9 +209,10 @@ public class CoreLegion
         Core.AddDrop("SoulForge Hammer");
         Adv.BestGear(GearBoost.dmgAll);
         Core.EnsureAccept(2741);
-        Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", 1, false);
-        Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", 1, false);
-        Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Rock Hammer", 1, false);
+        Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", isTemp: false);
+        // Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", isTemp: false);
+        Core.BuyItem("swordhaven", 179, "Iron Hammer");
+        Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Rock Hammer", isTemp: false);
         Core.EnsureComplete(2741);
         Bot.Wait.ForPickup("SoulForge Hammer");
     }
