@@ -51,9 +51,9 @@ public class DragonslayerGeneral
 
 
         Adv.GearStore();
-        
+
         InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
-        
+
         if (Core.CheckInventory(582) && itemInv.Quantity != 302500)
             Adv.rankUpClass("Dragonslayer");
 
@@ -62,6 +62,9 @@ public class DragonslayerGeneral
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Enchanted Scale", "Dragon Claw");
 
+        Core.Logger($"Farming {CLawquant} Dragon Claw");
+        Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", CLawquant, isTemp: false, log: false);
+        
         Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
         while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
@@ -69,10 +72,5 @@ public class DragonslayerGeneral
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
             Core.EnsureComplete(5294);
         }
-
-        Core.Logger($"Farming {CLawquant} Dragon Claw");
-        if (!Core.CheckInventory("Dragon Claw", CLawquant))
-            Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", 100, isTemp: false, log: false);
-
     }
 }
