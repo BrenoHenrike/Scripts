@@ -1043,7 +1043,6 @@ public class CoreFarms
         {
             Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
         }
-        Core.CancelRegisteredQuests();
 
         if (Bot.Player.IsMember)
             Core.RegisterQuests(371);
