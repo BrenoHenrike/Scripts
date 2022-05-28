@@ -107,7 +107,7 @@ public class CoreFarms
             return;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
-        Core.RegisterQuests(3992, 3993);
+        Core.RegisterQuests(3992);
         while (Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
@@ -785,7 +785,7 @@ public class CoreFarms
             Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid’s Flesh");
             Core.EnsureComplete(7876);
         }
-        
+
         Core.RegisterQuests(7877);
         while (FactionRank("Diabolical") < rank && !Bot.ShouldExit())
         {
