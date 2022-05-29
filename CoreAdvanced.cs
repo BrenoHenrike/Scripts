@@ -722,8 +722,8 @@ public class CoreAdvanced
                 Core.Logger($"Killing Ultra-Boss {monster}");
             int i = 0;
             Bot.Events.MonsterKilled += b => i++;
-            while (i < 1)
-                while (shouldAttack)
+            while (!Bot.ShouldExit() && i < 1)
+                while (!Bot.ShouldExit() && shouldAttack)
                     Bot.Player.Kill(monster);
             Core.Rest();
         }
@@ -733,7 +733,7 @@ public class CoreAdvanced
                 Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
-                while (shouldAttack)
+                while (!Bot.ShouldExit() && shouldAttack)
                     Bot.Player.Kill(monster);
                 if (!isTemp && !Core.CheckInventory(item))
                 {
