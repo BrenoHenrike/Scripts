@@ -150,7 +150,7 @@ public class HollowbornJudgementMerge
         {
             Core.Logger($"{Bot.Inventory.GetQuantity("Hollowborn Writ")}/{Item1Quant} Hollowborn Writ");
             Bot.Sleep(Core.ActionDelay);
-            Core.KillMonster("hbchallenge", "r3", "Right", "Judge's Minion", "Judge's Minion Judged", 12);
+            Core.KillMonster("hbchallenge", "r3", "Right", "Judge's Minion", "Judge's Minion Judged", 12, log: false);
         }
         Core.CancelRegisteredQuests();
     }
