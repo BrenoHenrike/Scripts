@@ -61,10 +61,10 @@ public class PotionBuyer
             if (currentQuant >= potionQuant)
                 continue;
 
-            int shopQuant = shopItems.Find(p => p.Name.ToLower() == potion.ToLower()).Quantity;
+            int shopQuant = shopItems.First(p => p.Name.ToLower() == potion.ToLower()).Quantity;
             int purchaseQuant = (potionQuant - currentQuant) / shopQuant;
             purchaseQuant = purchaseQuant == 0 ? 1 : purchaseQuant;
-            int voucherQuant = shopItems.Find(p => p.Name.ToLower() == potion.ToLower()).Requirements[0].Quantity * purchaseQuant;
+            int voucherQuant = shopItems.First(p => p.Name.ToLower() == potion.ToLower()).Requirements[0].Quantity * purchaseQuant;
             voucherQuant = voucherQuant == 0 ? 1 : voucherQuant;
 
             if (!Core.CheckInventory("Gold Voucher 500k", voucherQuant))
