@@ -925,7 +925,7 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
         if (!isTemp && item != null)
             AddDrop(item);
@@ -955,7 +955,7 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, int monsterID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
         if (!isTemp && item != null)
             AddDrop(item);
@@ -988,7 +988,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
         if (!isTemp && item != null)
             AddDrop(item);
@@ -1012,7 +1012,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
         if (!isTemp && item != null)
             AddDrop(item);
@@ -1044,7 +1044,7 @@ public class CoreBots
 
     public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool publicRoom = false)
     {
-        if (item != null && CheckInventory(item, quant))
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
 
         if (CheckInventory("Dragon of Time"))
