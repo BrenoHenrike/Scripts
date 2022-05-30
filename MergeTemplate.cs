@@ -13,10 +13,31 @@ public class MergeTemplate
     public CoreFarms Farm = new();
     public CoreStory Story = new();
 
+    //Insert Item List Here  ↓
+
     string[] MergeItems =
     {
-        //Insert Item List Here
+        
+        // Merge items that Require other merge items add the required item in the "Refarm Section"
+        
+        
+        //Merge items that dont Require other Merge items
+        
+        
+        //Refarm Drops       
+        
+
     };
+    
+    // To get the entire list of mergeitems easily to copy, go ingame, and load the shop first,
+    // then goto loader > at the botton "Shopids", find teh shop id of current shop & copy it.
+
+    //bot.Shops.Load(shopid); 
+    //bot.Log($"\"{string.Join("\",\r\n\"", bot.Shops.ShopItems.Select(i => i.Name))}\"");
+
+    //^ insert shopid you copied(with shop loaded), then copy the 2 lines above (without the //'s)
+    //on the Client window: Tool > Consol > *paste* > "Run" (Make sure you have the Log open
+    //just click the scripts button it has a logger built in.) copy the entire list, and paste above inside teh {}'s and sort it for yourself ^_^
 
     public void ScriptMain(ScriptInterface bot)
     {
