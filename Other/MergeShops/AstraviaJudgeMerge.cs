@@ -24,20 +24,19 @@ public class AstraviaJudgeMerge
     //Insert Item List Here  ↓
 
     string[] MergeItems =
-    {        
-        "Gold Voucher 25k",
-        "Prince Drago's Royal Attire",
-        "Prince Drago's Royal Dark Attire",
-        "Prince Drago's Morph",
-        "Prince Drago's Scarred Morph",
-        "Suki's Armor",
-        "Suki's Morph",
-        "Suki's Gauntlets",
-        "Regulus' Morph",
-        "Titania's Morph",
+    {          
+        // Merge items that Require other merge items add the required item in the "Refarm Section"
+        "Mi's Attire",
+        "Mi's Sleeveless Attire",
+        "Mi's Hair",
+        "Mi's Antennae",
+        "Mi's Morph",
+        "Re's Party Arms",
+        "Astravian Officer's White Hat",
+        "Astravian Officer's White Hat + Locks",        
         
-        
-
+        //Refarm Drops       
+        "Mi's Sleeveless Attire"
     };
 
     // To get the entire list of mergeitems easily to copy, go ingame, and load the shop first,
