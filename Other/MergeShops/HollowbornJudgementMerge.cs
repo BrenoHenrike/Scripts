@@ -16,11 +16,17 @@ public class HollowbornJudgementMerge
 
     string[] MergeItems =
         {
+        // Merge items that Require other merge items add the required item in the "Refarm Section"
         "Hollowborn Judge",
         "Hollowborn Judge In Officio",
-        "Hollowborn Judge",
-        "Hel Fö In Officio",
+        "Hollowborn Punitio",
+        "Dual Hollowborn Punitio",
         "Hel Fö's Armor",
+        "Hel Fö In Officio",
+        "Hollowborn Remissio",
+        "Hollowborn Lex et Ordo",
+        
+        //Merge items that dont Require other Merge items
         "Hel Fö's Crown + Band",
         "Hel Fö's Morph",
         "Hel Fö's Morph + Band",
@@ -35,15 +41,16 @@ public class HollowbornJudgementMerge
         "Hollowborn Jurisdictio",
         "Hollowborn Judgement Ex Vi Legis",
         "Dual Hollowborn Judgement",
-        "Hollowborn Punitio",
-        "Dual Hollowborn Punitio",
-        "Hollowborn Punitio",
         "Hollowborn Virgam Luminum",
         "Hollowborn Consummatum Est",
         "Hollowborn Bis In Idem",
-        "Hollowborn Remissio",
         "Hollowborn Vade Mecum",
-        "Hollowborn Lex et Ordo"
+        
+        //Refarm Drops
+        "Hollowborn Judge",
+        "Hollowborn Punitio",
+        "Hel Fö's Armor",
+        "Hollowborn Remissio"
         };
 
     public void ScriptMain(ScriptInterface bot)
@@ -77,8 +84,36 @@ public class HollowbornJudgementMerge
             List<ItemBase> Requirements = shopdata.First(i => i.Name == item).Requirements;
             int Item1Quant = Requirements.First(i => i.Name == "Item1").Quantity;
 
+            if (item == "Dual Hollowborn Punitio" && !Core.CheckInventory("Dual Hollowborn Punitio", toInv: false))
+            {
+                Core.EquipClass(ClassType.Farm);
+                MergeMats(40);
+                Core.BuyItem(map, ShopID, "Hollowborn Punitio");
+                Bot.Sleep(Core.ActionDelay);
+                Core.BuyItem(map, ShopID, "Dual Hollowborn Punitio");
+                Core.ToBank(item);
+            }
+            if (item == "Hollowborn Lex et Ordo" && !Core.CheckInventory("Hollowborn Lex et Ordo", toInv: false))
+            {
+                Core.EquipClass(ClassType.Farm);
+                MergeMats(40);
+                Core.BuyItem(map, ShopID, "Hollowborn Remissio");
+                Bot.Sleep(Core.ActionDelay);
+                Core.BuyItem(map, ShopID, "Hollowborn Lex et Ordo");
+                Core.ToBank(item);
+            }
+            if (item == "Hollowborn Judge In Officio" && !Core.CheckInventory("Hollowborn Judge In Officio", toInv: false))
+            {
+                Core.EquipClass(ClassType.Farm);
+                MergeMats(150);
+                Core.BuyItem(map, ShopID, 65729);
+                Bot.Sleep(Core.ActionDelay);
+                Core.BuyItem(map, ShopID, 65728);
+                Core.ToBank(item);
+            }
+
             Core.Logger($"Farming Required Materials for {item}");
-            MergeMats(0);
+            MergeMats(Item1Quant);
             Core.BuyItem(map, ShopID, item);
             Core.ToBank(item);
         }
@@ -93,37 +128,6 @@ public class HollowbornJudgementMerge
             {
                 if (!Core.CheckInventory(MergeItem, toInv: false))
                 {
-
-                    if (MergeItem == "Dual Hollowborn Punitio" && !Core.CheckInventory("Dual Hollowborn Punitio", toInv: false))
-                    {
-                        Core.EquipClass(ClassType.Farm);
-                        MergeMats(40);
-                        Core.BuyItem(map, ShopID, "Hollowborn Punitio");
-                        Bot.Sleep(Core.ActionDelay);
-                        Core.BuyItem(map, ShopID, "Dual Hollowborn Punitio");
-                        Core.ToBank(MergeItem);
-                    }
-
-                    if (MergeItem == "Hollowborn Lex et Ordo" && !Core.CheckInventory("Hollowborn Lex et Ordo", toInv: false))
-                    {
-                        Core.EquipClass(ClassType.Farm);
-                        MergeMats(40);
-                        Core.BuyItem(map, ShopID, "Hollowborn Remissio");
-                        Bot.Sleep(Core.ActionDelay);
-                        Core.BuyItem(map, ShopID, "Hollowborn Lex et Ordo");
-                        Core.ToBank(MergeItem);
-                    }
-
-                    if (MergeItem == "Hollowborn Judge In Officio" && !Core.CheckInventory("Hollowborn Judge In Officio", toInv: false))
-                    {
-                        Core.EquipClass(ClassType.Farm);
-                        MergeMats(150);
-                        Core.BuyItem(map, ShopID, 65729);
-                        Bot.Sleep(Core.ActionDelay);
-                        Core.BuyItem(map, ShopID, 65728);
-                        Core.ToBank(MergeItem);
-                    }
-
                     List<ItemBase> Requirements = shopdata.First(i => i.Name == MergeItem).Requirements;
                     int Item1Quant = Requirements.First(i => i.Name == "Hollowborn Writ").Quantity;
 
