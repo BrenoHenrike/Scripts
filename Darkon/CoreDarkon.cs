@@ -41,7 +41,7 @@ public class CoreDarkon
         {
             Core.EnsureAccept(7324);
 
-            Core.KillMonster("portalmaze", "r8", "Left", "*", "Banana", 22, false);
+            Core.KillMonster("portalmaze", "r8", "Left", "*", "Banana", 22, false, log: false);
 
             Core.EnsureComplete(7324);
             Bot.Wait.ForPickup("Darkon's Receipt");
@@ -80,8 +80,8 @@ public class CoreDarkon
             Core.EnsureAccept(7325);
 
             if (!EnoughPeople && Core.IsMember)
-                Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true);
-            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true);
+                Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true, log: false);
+            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
 
             Core.EnsureComplete(7325);
             Bot.Wait.ForPickup("Darkon's Receipt");
@@ -123,9 +123,9 @@ public class CoreDarkon
         while ((!Core.CheckInventory("Teeth", Quantity)))
         {
             Core.EnsureAccept(7780);
-            Core.HuntMonster("eridani", "Wolf-Like Creature", "Tooth", 28, false);
+            Core.HuntMonster("eridani", "Wolf-Like Creature", "Tooth", 28, false, log: false);
             Bot.Options.AttackWithoutTarget = true;
-            Core.KillMonster("eridani", "r4", "Left", "Creature 15", "Wisdom Tooth", 4, false);
+            Core.KillMonster("eridani", "r4", "Left", "Creature 15", "Wisdom Tooth", 4, false, log: false);
             Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7780);
         }
@@ -146,8 +146,8 @@ public class CoreDarkon
         while ((!Core.CheckInventory("La's Gratitude", Quantity)))
         {
             Core.EnsureAccept(8001);
-            Core.HuntMonster("astravia", "Creature 27", "Broken Dog Tag", 20);
-            Core.HuntMonster("astravia", "Creature 27", "Intact Dog Tag", 5);
+            Core.HuntMonster("astravia", "Creature 27", "Broken Dog Tag", 20, log: false);
+            Core.HuntMonster("astravia", "Creature 27", "Intact Dog Tag", 5, log: false);
             Core.EnsureComplete(8001);
         }
     }
@@ -168,11 +168,11 @@ public class CoreDarkon
             Core.EnsureAccept(8257);
             Core.EquipClass(ClassType.Farm);
             Bot.Options.AttackWithoutTarget = true;
-            Core.HuntMonster("astraviacastle", "Creature 27", "Defaced Portrait", 10);
-            Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4);
+            Core.HuntMonster("astraviacastle", "Creature 27", "Defaced Portrait", 10, log: false);
+            Core.HuntMonster("astraviacastle", "Creature 20", "Smashed Sculpture", 4, log: false);
             Bot.Options.AttackWithoutTarget = false;
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("astraviacastle", "The Sun", "Burned Banana");
+            Core.HuntMonster("astraviacastle", "The Sun", "Burned Banana", log: false);
             Core.EnsureComplete(8257);
         }
     }
@@ -190,9 +190,9 @@ public class CoreDarkon
         while ((!Core.CheckInventory("A Melody", Quantity)))
         {
             Core.EnsureAccept(8396);
-            Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10);
-            Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10);
-            Core.HuntMonster("astraviajudge", "La", "Knight's Favor");
+            Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
+            Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10, log: false);
+            Core.HuntMonster("astraviajudge", "La", "Knight's Favor", log: false);
             Core.EnsureComplete(8396);
         }
     }
@@ -212,11 +212,11 @@ public class CoreDarkon
             Bot.Quests.UpdateQuest(8531); //attempted fix
             Core.EnsureAccept(8531);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12);
+            Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12, log: false);
             Bot.Options.AttackWithoutTarget = true;
-            Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Seraphic Sparred");
+            Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Seraphic Sparred", log: false);
             Bot.Options.AttackWithoutTarget = false;
-            Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12);
+            Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12, log: false);
             Core.EnsureComplete(8531);
         }
     }
@@ -235,11 +235,11 @@ public class CoreDarkon
         {
             Core.EnsureAccept(8602);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("astraviapast", "Regulus", "Regulus' Rematch Won");
-            Core.HuntMonster("astraviapast", "Titania", "Titania's Rematch Won");
-            Core.HuntMonster("astraviapast", "Aurola", "Aurola's Rematch Won");
+            Core.HuntMonster("astraviapast", "Regulus", "Regulus' Rematch Won", log: false);
+            Core.HuntMonster("astraviapast", "Titania", "Titania's Rematch Won", log: false);
+            Core.HuntMonster("astraviapast", "Aurola", "Aurola's Rematch Won", log: false);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("astraviapast", "Astravian Soldier", "Soldiers Trained", 8);
+            Core.HuntMonster("astraviapast", "Astravian Soldier", "Soldiers Trained", 8, log: false);
             Core.EnsureComplete(8602);
         }
     }
