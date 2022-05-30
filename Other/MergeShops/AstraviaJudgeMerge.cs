@@ -9,7 +9,7 @@ using RBot.Items;
 using RBot.Shops;
 
 
-public class AstraivaJudgeMerge
+public class AstraviaJudgeMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -25,18 +25,19 @@ public class AstraivaJudgeMerge
 
     string[] MergeItems =
     {        
-        // Merge items that Require other merge items add the required item in the "Refarm Section"
-        "Mi's Attire",
-        "Mi's Sleeveless Attire",
-        "Mi's Hair",
-        "Mi's Antennae",
-        "Mi's Morph",
-        "Re's Party Arms",
-        "Astravian Officer's White Hat",
-        "Astravian Officer's White Hat + Locks",        
+        "Gold Voucher 25k",
+        "Prince Drago's Royal Attire",
+        "Prince Drago's Royal Dark Attire",
+        "Prince Drago's Morph",
+        "Prince Drago's Scarred Morph",
+        "Suki's Armor",
+        "Suki's Morph",
+        "Suki's Gauntlets",
+        "Regulus' Morph",
+        "Titania's Morph",
         
-        //Refarm Drops       
-        "Mi's Sleeveless Attire"
+        
+
     };
 
     // To get the entire list of mergeitems easily to copy, go ingame, and load the shop first,
