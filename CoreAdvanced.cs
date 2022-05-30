@@ -1,9 +1,13 @@
+using System.Collections.Generic;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using RBot;
 using RBot.Items;
 using RBot.Shops;
+using RBot.Options;
 using System.Globalization;
+using System.Windows.Forms;
+using System.Reflection;
 
 public class CoreAdvanced
 {
@@ -613,6 +617,126 @@ public class CoreAdvanced
         Core.Equip(_BestGear);
         EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
     }
+
+    #endregion
+
+    #region Shop
+
+
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
+    {
+        matsOnly = (int)Bot.Config.Get<mergeOptionsEnum>("mode") == 2;
+
+        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
+        {
+            Core.Join(map);
+            Bot.Shops.Load(shopID);
+        }
+        Bot.Sleep(Core.ActionDelay);
+        List<ShopItem> shopItems = Bot.Shops.ShopItems;
+        List<ShopItem> items = new();
+
+        if ((int)Bot.Config.Get<mergeOptionsEnum>("mode") == 0 || matsOnly)
+            items.AddRange(shopItems.Where(x => !miscCatagories.Contains(x.Category.ToString()) && Core.IsMember ? true : !x.Upgrade));
+        else items.AddRange(shopItems.Where(x => x.Coins && !miscCatagories.Contains(x.Category.ToString()) && Core.IsMember ? true : !x.Upgrade));
+
+        int t = 1;
+        for (int i = 0; i < 2; i++)
+            foreach (ShopItem item in items)
+            {
+                getIngredients(item);
+                if (!matsOnly)
+                    Core.BuyItem(map, shopID, item.Name);
+                else i++;
+            }
+
+        void getIngredients(ShopItem item)
+        {
+            if (Core.CheckInventory(item.Name))
+                return;
+
+            if (!matsOnly)
+                Core.Logger($"Farming for item #{t++}: {item.Name}");
+
+            foreach (ItemBase req in item.Requirements)
+            {
+                externalQuant =
+                    matsOnly ?
+                        (Bot.Inventory.IsMaxStack(req.Name) ?
+                            req.MaxStack : ((req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name)) + req.Quantity)) : req.Quantity;
+                if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
+                    continue;
+
+                if (items.Select(x => x.Name).Contains(req.Name))
+                    getIngredients(shopItems.First(x => x.Name == req.Name));
+                else
+                {
+                    Core.AddDrop(req.Name);
+                    externalItem = req;
+                    findIngredients();
+                }
+            }
+        }
+    }
+    private List<string> miscCatagories = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
+    public ItemBase externalItem = new();
+    public int externalQuant = 0;
+    public bool matsOnly = false;
+
+    public void GetItemReq(ShopItem item)
+    {
+        if (item.Faction != null && item.RequiredReputation > 0)
+            runRep(item.Faction, RepCPLevel.First(x => x.Key == item.RequiredReputation).Value);
+        Farm.Experience(item.Level);
+        Farm.Gold(item.Cost);
+    }
+
+    private Dictionary<int, int> RepCPLevel = new()
+    {
+        { 0, 1 },
+        { 900, 2 },
+        { 3600, 3 },
+        { 10000, 4 },
+        { 22500, 5 },
+        { 44100, 6 },
+        { 78400, 7 },
+        { 129600, 8 },
+        { 202500, 9 },
+        { 302500, 10 }
+    };
+
+    private void runRep(string faction, int rank)
+    {
+        faction = faction.Replace(" ", "");
+        Type farmClass = Farm.GetType();
+        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
+        if (theMethod == null)
+        {
+            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
+            return;
+        }
+        theMethod.Invoke(Farm, new object[] { rank });
+    }
+
+    /// <summary>
+    /// The list of ScriptOptions for any merge script.
+    /// </summary>
+    public List<IOption> MergeOptions = new List<IOption>()
+    {
+        new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
+                                                                     "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
+        new Option<string>("blank", " ", "", ""),
+        new Option<string>(" ", "Mode Explanation [all]", "Mode [all]:\t\tYou get all the items from shop, even if non-AC ones if any exist.", "click here"),
+        new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]:\tYou get all the AC tagged items from the shop.", "click here"),
+        new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]:\tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
+    };
+
+    public enum mergeOptionsEnum
+    {
+        all = 0,
+        acOnly = 1,
+        mergeMats = 2
+    };
 
     #endregion
 
