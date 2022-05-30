@@ -601,8 +601,8 @@ public class CoreBots
         // Separating the quests into choose and non-choose
         foreach (Quest q in questData)
             if (q.SimpleRewards.Any(r => r.Type == 2))
-                chooseQuests.Add(q, 0);
-            else nonChooseQuests.Add(q.ID, 0);
+                chooseQuests.Add(q, 1);
+            else nonChooseQuests.Add(q.ID, 1);
 
         EnsureAccept(questIDs);
         questCTS = new();
