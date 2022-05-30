@@ -622,7 +622,6 @@ public class CoreAdvanced
 
     #region Shop
 
-
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
     {
         matsOnly = (int)Bot.Config.Get<mergeOptionsEnum>("mode") == 2;
@@ -667,8 +666,11 @@ public class CoreAdvanced
                 if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
                     continue;
 
-                if (items.Select(x => x.Name).Contains(req.Name))
-                    getIngredients(shopItems.First(x => x.Name == req.Name));
+                if (shopItems.Select(x => x.Name).Contains(req.Name))
+                {
+                    ShopItem selectedItem = shopItems.First(x => x.Name == req.Name)
+                    getIngredients(selectedItem);
+                }
                 else
                 {
                     Core.AddDrop(req.Name);
