@@ -1210,7 +1210,8 @@ public class CoreBots
             {
                 Bot.Player.EquipItem(Item);
                 Bot.Sleep(ActionDelay);
-                Logger($"{Item} equipped");
+                if (logEquip)
+                    Logger($"Equipped {Item}");
             }
         }
     }
