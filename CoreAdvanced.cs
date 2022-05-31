@@ -740,7 +740,7 @@ public class CoreAdvanced
         }
 
         ShopItem item = shopItem.First();
-        if (!String.IsNullOrEmpty(item.Faction))
+        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
         {
             int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
             if (reqRank > Farm.FactionRank(item.Faction))
