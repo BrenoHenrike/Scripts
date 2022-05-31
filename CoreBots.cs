@@ -1133,11 +1133,30 @@ public class CoreBots
     /// </summary>
     public void Relogin()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            if (Bot.Player.Relogin())
-                break;
-        }
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    if (Bot.Player.Relogin())
+        //        break;
+        //}
+
+        //Restored old relogin function untill Bot.Player.Relogin is fixed
+        bool autoRelogSwitch = Bot.Options.AutoRelogin;
+        Bot.Options.AutoRelogin = false;
+        Bot.Sleep(2000);
+        Logger("Re-login started");
+        Bot.Player.Logout();
+        Bot.Sleep(5000);
+        Server? server = Bot.Options.AutoReloginAny
+                ? ServerList.Servers.Find(x => x.IP != ServerList.LastServerIP)
+                : ServerList.Servers.Find(s => s.IP == ServerList.LastServerIP) ?? ServerList.Servers[0];
+        Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+        Bot.Sleep(1000);
+        Bot.Player.Connect(server);
+        while (!Bot.Player.LoggedIn)
+            Bot.Sleep(500);
+        Bot.Sleep(5000);
+        Logger("Re-login finished");
+        Bot.Options.AutoRelogin = autoRelogSwitch;
     }
 
     /// <summary>
