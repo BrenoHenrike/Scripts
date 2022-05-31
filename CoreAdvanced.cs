@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using RBot;
@@ -6,7 +5,6 @@ using RBot.Items;
 using RBot.Shops;
 using RBot.Options;
 using System.Globalization;
-using System.Windows.Forms;
 using System.Reflection;
 
 public class CoreAdvanced
@@ -635,27 +633,43 @@ public class CoreAdvanced
         List<ShopItem> shopItems = Bot.Shops.ShopItems;
         List<ShopItem> items = new();
 
-        if ((int)Bot.Config.Get<mergeOptionsEnum>("mode") == 0 || matsOnly)
-            items.AddRange(shopItems.Where(x => !miscCatagories.Contains(x.Category.ToString()) && Core.IsMember ? true : !x.Upgrade));
-        else items.AddRange(shopItems.Where(x => x.Coins && !miscCatagories.Contains(x.Category.ToString()) && Core.IsMember ? true : !x.Upgrade));
+        foreach (ShopItem item in shopItems)
+        {
+            //No clue why I have to do a double if instead of a &&, but otherwise it will not do this statement correctly
+            if (!miscCatagories.Contains(item.Category))
+                if (Core.IsMember ? true : !item.Upgrade)
+                {
+                    if ((int)Bot.Config.Get<mergeOptionsEnum>("mode") != 1)
+                        items.Add(item);
+                    else if (item.Coins)
+                        items.Add(item);
+                }
+        }
 
         int t = 1;
         for (int i = 0; i < 2; i++)
+        {
             foreach (ShopItem item in items)
             {
                 getIngredients(item);
                 if (!matsOnly)
+                {
+                    if (!Core.CheckInventory(item.Name))
+                        Core.Logger("Buying " + item.Name + " (#" + t + "/" + items.Count + ")");
                     Core.BuyItem(map, shopID, item.Name);
-                else i++;
+                }
             }
+            if (!matsOnly)
+                i++;
+        }
 
         void getIngredients(ShopItem item)
         {
-            if (Core.CheckInventory(item.Name))
+            if (Core.CheckInventory(item.Name) || item.Requirements == null)
                 return;
 
             if (!matsOnly)
-                Core.Logger($"Farming for item #{t++}: {item.Name}");
+                Core.Logger($"Farming to buy: {item.Name} (#{t++}/{items.Count})");
 
             foreach (ItemBase req in item.Requirements)
             {
@@ -680,10 +694,40 @@ public class CoreAdvanced
             }
         }
     }
-    private List<string> miscCatagories = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
+    private List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem, ItemCategory.ServerUse };
     public ItemBase externalItem = new();
     public int externalQuant = 0;
     public bool matsOnly = false;
+
+    public bool canBuyMerge(string map, int shopID, string itemName)
+    {
+        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
+        {
+            Core.Join(map);
+            Bot.Shops.Load(shopID);
+        }
+        Bot.Sleep(Core.ActionDelay);
+
+        List<ShopItem> shopItem = Bot.Shops.ShopItems.Where(x => x.Name == itemName).ToList();
+        if (shopItem.Count == 0)
+        {
+            Core.Logger($"Item {itemName} not found in shop {shopID}");
+            return false;
+        }
+        else if (shopItem.Count > 1)
+        {
+            Core.Logger($"Multiple items found for {itemName} in shop {shopID}");
+            return false;
+        }
+
+        if (shopItem.First().Requirements == null)
+            return true;
+
+        foreach (ShopItem item in shopItem.First().Requirements)
+            if (!Core.CheckInventory(item.Name, item.Quantity))
+                return false;
+        return true;
+    }
 
     public void GetItemReq(ShopItem item)
     {
