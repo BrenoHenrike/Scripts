@@ -758,7 +758,13 @@ public class CoreAdvanced
                     return false;
                 }
 
-        return item.Cost <= Bot.Player.Gold;
+        if (item.Cost > Bot.Player.Gold)
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
+            return false;
+        }
+
+        return true;
     }
 
     public void GetItemReq(ShopItem item)
