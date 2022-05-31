@@ -547,6 +547,17 @@ public class CoreBots
 
         Logger($"{(all ? "" : quant.ToString())} {itemName} sold");
     }
+
+    public List<ShopItem> GetShopItems(string map, int shopID)
+    {
+        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
+        {
+            Join(map);
+            Bot.Shops.Load(shopID);
+            Bot.Sleep(ActionDelay);
+        }
+        return Bot.Shops.ShopItems;
+    }
     #endregion
 
     #region Drops
