@@ -69,19 +69,13 @@ public class AtraviaPastMerge
                     break;
 
                 case "Prince Drago's Attire":
-                    Core.HuntMonster("astraviapast", "Forsaken Husk", req.Name, isTemp: false);
-                    break;
-
+                case "Prince Drago's Hair":
                 case "Prince Drago's Dark Attire":
                     Core.HuntMonster("astraviapast", "Forsaken Husk", req.Name, isTemp: false);
                     break;
 
                 case "Suki's Casual Armor":
                     Core.HuntMonster("astraviapast", "Aurola", req.Name, isTemp: false);
-                    break;
-
-                case "Prince Drago's Hair":
-                    Core.HuntMonster("astraviapast", "Forsaken Husk", req.Name, isTemp: false);
                     break;
 
                 case "Regulus' Hair":
