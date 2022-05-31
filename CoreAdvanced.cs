@@ -676,7 +676,6 @@ public class CoreAdvanced
                     if (canBuy(new List<ShopItem>() { item }, shopID))
                         Core.BuyItem(map, shopID, item.ID);
                 }
-                while (!Bot.ShouldExit()) { }
             }
             if (!matsOnly)
                 i++;
