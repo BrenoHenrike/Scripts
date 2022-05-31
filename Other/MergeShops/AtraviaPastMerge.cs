@@ -65,10 +65,7 @@ public class AtraviaPastMerge
                 case "Suki's Prestige":
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Core.CheckInventory(req.Name, quant))
-                    {
                         Darkon.SukisPrestiege(quant);
-                    }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Prince Drago's Attire":
