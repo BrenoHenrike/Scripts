@@ -668,7 +668,7 @@ public class CoreAdvanced
 
                 if (shopItems.Select(x => x.Name).Contains(req.Name))
                 {
-                    ShopItem selectedItem = shopItems.First(x => x.Name == req.Name)
+                    ShopItem selectedItem = shopItems.First(x => x.Name == req.Name);
                     getIngredients(selectedItem);
                 }
                 else
