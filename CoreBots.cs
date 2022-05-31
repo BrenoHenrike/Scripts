@@ -1173,7 +1173,11 @@ public class CoreBots
             case ClassType.Farm:
                 JumpWait();
                 if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
+                {
+                    logEquip = false;
                     Equip(FarmGear);
+                    logEquip = true;
+                }
                 if (!usingFarmGeneric)
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
@@ -1181,7 +1185,11 @@ public class CoreBots
             default:
                 JumpWait();
                 if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
+                {
+                    logEquip = false;
                     Equip(SoloGear);
+                    logEquip = true;
+                }
                 if (!usingSoloGeneric)
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
@@ -1189,6 +1197,7 @@ public class CoreBots
         }
         currentClass = classToUse;
     }
+    private bool logEquip = true;
 
     public void Equip(params string?[] gear)
     {
