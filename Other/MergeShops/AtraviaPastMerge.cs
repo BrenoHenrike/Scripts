@@ -75,15 +75,12 @@ public class AtraviaPastMerge
                     break;
 
                 case "Suki's Casual Armor":
+                case "Suki's Ponytail":
                     Core.HuntMonster("astraviapast", "Aurola", req.Name, isTemp: false);
                     break;
 
                 case "Regulus' Hair":
                     Core.HuntMonster("astraviapast", "Regulus", req.Name, isTemp: false);
-                    break;
-
-                case "Suki's Ponytail":
-                    Core.HuntMonster("astraviapast", "Aurola", req.Name, isTemp: false);
                     break;
 
                 case "Titania's Hair":
