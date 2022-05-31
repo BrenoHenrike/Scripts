@@ -704,7 +704,7 @@ public class CoreAdvanced
                 {
                     ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
                     getIngredients(selectedItem);
-                    if (canBuy(new List<ShopItem>() { selectedItem }, shopID))
+                    if (!matsOnly && canBuy(new List<ShopItem>() { selectedItem }, shopID))
                         Core.BuyItem(map, shopID, selectedItem.ID, req.Quantity);
                 }
                 else
