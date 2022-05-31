@@ -620,17 +620,34 @@ public class CoreAdvanced
 
     #region Shop
 
+    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    {
+        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.ID == itemID).ToList();
+        ShopItem? item = parseShopItem(shopItem, shopID, itemID.ToString());
+        if (item == null)
+            return;
+
+        GetItemReq(item);
+        if (canBuy(new List<ShopItem>() { item }, shopID, itemID.ToString()))
+            Core.BuyItem(map, shopID, itemID, quant, shopQuant, shopItemID);
+    }
+
+    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    {
+        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.Name == itemName).ToList();
+        ShopItem? item = parseShopItem(shopItem, shopID, itemName);
+        if (item == null)
+            return;
+
+        GetItemReq(item);
+        if (canBuy(new List<ShopItem>() { item }, shopID, itemName))
+            Core.BuyItem(map, shopID, itemName, quant, shopQuant, shopItemID);
+    }
+
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
     {
         matsOnly = (int)Bot.Config.Get<mergeOptionsEnum>("mode") == 2;
-
-        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
-        {
-            Core.Join(map);
-            Bot.Shops.Load(shopID);
-        }
-        Bot.Sleep(Core.ActionDelay);
-        List<ShopItem> shopItems = Bot.Shops.ShopItems;
+        List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         List<ShopItem> items = new();
 
         foreach (ShopItem item in shopItems)
@@ -655,10 +672,11 @@ public class CoreAdvanced
                 if (!matsOnly)
                 {
                     if (!Core.CheckInventory(item.ID))
-                        Core.Logger("Buying " + item.Name + " (#" + t + "/" + items.Count + ")");
+                        Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
                     if (canBuy(new List<ShopItem>() { item }, shopID))
                         Core.BuyItem(map, shopID, item.ID);
                 }
+                while (!Bot.ShouldExit()) { }
             }
             if (!matsOnly)
                 i++;
@@ -670,7 +688,7 @@ public class CoreAdvanced
                 return;
 
             if (!matsOnly)
-                Core.Logger($"Farming to buy: {item.Name} (#{t++}/{items.Count})");
+                Core.Logger($"Farming to buy {item.Name} (#{t}/{items.Count})");
 
             foreach (ItemBase req in item.Requirements)
             {
@@ -685,6 +703,8 @@ public class CoreAdvanced
                 {
                     ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
                     getIngredients(selectedItem);
+                    if (canBuy(new List<ShopItem>() { selectedItem }, shopID))
+                        Core.BuyItem(map, shopID, selectedItem.ID, req.Quantity);
                 }
                 else
                 {
@@ -702,44 +722,23 @@ public class CoreAdvanced
 
     public bool canBuy(string map, int shopID, string itemName)
     {
-        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
-        {
-            Core.Join(map);
-            Bot.Shops.Load(shopID);
-        }
-        Bot.Sleep(Core.ActionDelay);
-
-        List<ShopItem> shopItem = Bot.Shops.ShopItems.Where(x => x.Name == itemName).ToList();
+        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.Name == itemName).ToList();
         return canBuy(shopItem, shopID, itemName);
     }
 
     public bool canBuy(string map, int shopID, int itemID)
     {
-        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
-        {
-            Core.Join(map);
-            Bot.Shops.Load(shopID);
-        }
-        Bot.Sleep(Core.ActionDelay);
-
-        List<ShopItem> shopItem = Bot.Shops.ShopItems.Where(x => x.ID == itemID).ToList();
+        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.ID == itemID).ToList();
         return canBuy(shopItem, shopID, itemID.ToString());
     }
 
     public bool canBuy(List<ShopItem> shopItem, int shopID, string itemNameID = "")
     {
-        if (shopItem.Count == 0)
-        {
-            Core.Logger($"Item {itemNameID} not found in shop {shopID}.");
+        ShopItem? item = parseShopItem(shopItem, shopID, itemNameID);
+        if (item == null)
             return false;
-        }
-        else if (shopItem.Count > 1)
-        {
-            Core.Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the item ID.");
-            return false;
-        }
 
-        ShopItem item = shopItem.First();
+        //Rep check
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
         {
             int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
@@ -750,14 +749,20 @@ public class CoreAdvanced
             }
         }
 
+        //Merge item check
         if (item.Requirements != null)
-            foreach (ShopItem req in shopItem.First().Requirements)
+        {
+            foreach (ItemBase req in item.Requirements)
+            {
                 if (!Core.CheckInventory(req.Name, req.Quantity))
                 {
                     Core.Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
                     return false;
                 }
+            }
+        }
 
+        //Gold check
         if (item.Cost > Bot.Player.Gold)
         {
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
@@ -767,12 +772,41 @@ public class CoreAdvanced
         return true;
     }
 
+    private ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID)
+    {
+        if (shopItem.Count == 0)
+        {
+            Core.Logger($"Item {itemNameID} not found in shop {shopID}.");
+            return null;
+        }
+        else if (shopItem.Count > 1)
+        {
+            Core.Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the item ID.");
+            return null;
+        }
+
+        return shopItem.First();
+    }
+
     public void GetItemReq(ShopItem item)
     {
         if (item.Faction != null && item.RequiredReputation > 0)
             runRep(item.Faction, RepCPLevel.First(x => x.Key == item.RequiredReputation).Value);
         Farm.Experience(item.Level);
         Farm.Gold(item.Cost);
+    }
+
+    private void runRep(string faction, int rank)
+    {
+        faction = faction.Replace(" ", "");
+        Type farmClass = Farm.GetType();
+        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
+        if (theMethod == null)
+        {
+            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
+            return;
+        }
+        theMethod.Invoke(Farm, new object[] { rank });
     }
 
     private Dictionary<int, int> RepCPLevel = new()
@@ -788,19 +822,6 @@ public class CoreAdvanced
         { 202500, 9 },
         { 302500, 10 }
     };
-
-    private void runRep(string faction, int rank)
-    {
-        faction = faction.Replace(" ", "");
-        Type farmClass = Farm.GetType();
-        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
-        if (theMethod == null)
-        {
-            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
-            return;
-        }
-        theMethod.Invoke(Farm, new object[] { rank });
-    }
 
     /// <summary>
     /// The list of ScriptOptions for any merge script.
