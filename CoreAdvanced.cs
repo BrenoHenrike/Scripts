@@ -654,9 +654,10 @@ public class CoreAdvanced
                 getIngredients(item);
                 if (!matsOnly)
                 {
-                    if (!Core.CheckInventory(item.Name))
+                    if (!Core.CheckInventory(item.ID))
                         Core.Logger("Buying " + item.Name + " (#" + t + "/" + items.Count + ")");
-                    Core.BuyItem(map, shopID, item.Name);
+                    if (canBuy(new List<ShopItem>() { item }, shopID))
+                        Core.BuyItem(map, shopID, item.ID);
                 }
             }
             if (!matsOnly)
@@ -665,7 +666,7 @@ public class CoreAdvanced
 
         void getIngredients(ShopItem item)
         {
-            if (Core.CheckInventory(item.Name) || item.Requirements == null)
+            if (Core.CheckInventory(item.ID) || item.Requirements == null)
                 return;
 
             if (!matsOnly)
@@ -680,9 +681,9 @@ public class CoreAdvanced
                 if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
                     continue;
 
-                if (shopItems.Select(x => x.Name).Contains(req.Name))
+                if (shopItems.Select(x => x.ID).Contains(req.ID))
                 {
-                    ShopItem selectedItem = shopItems.First(x => x.Name == req.Name);
+                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
                     getIngredients(selectedItem);
                 }
                 else
@@ -699,7 +700,7 @@ public class CoreAdvanced
     public int externalQuant = 0;
     public bool matsOnly = false;
 
-    public bool canBuyMerge(string map, int shopID, string itemName)
+    public bool canBuy(string map, int shopID, string itemName)
     {
         if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
         {
@@ -709,24 +710,55 @@ public class CoreAdvanced
         Bot.Sleep(Core.ActionDelay);
 
         List<ShopItem> shopItem = Bot.Shops.ShopItems.Where(x => x.Name == itemName).ToList();
+        return canBuy(shopItem, shopID, itemName);
+    }
+
+    public bool canBuy(string map, int shopID, int itemID)
+    {
+        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
+        {
+            Core.Join(map);
+            Bot.Shops.Load(shopID);
+        }
+        Bot.Sleep(Core.ActionDelay);
+
+        List<ShopItem> shopItem = Bot.Shops.ShopItems.Where(x => x.ID == itemID).ToList();
+        return canBuy(shopItem, shopID, itemID.ToString());
+    }
+
+    public bool canBuy(List<ShopItem> shopItem, int shopID, string itemNameID = "")
+    {
         if (shopItem.Count == 0)
         {
-            Core.Logger($"Item {itemName} not found in shop {shopID}");
+            Core.Logger($"Item {itemNameID} not found in shop {shopID}.");
             return false;
         }
         else if (shopItem.Count > 1)
         {
-            Core.Logger($"Multiple items found for {itemName} in shop {shopID}");
+            Core.Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the item ID.");
             return false;
         }
 
-        if (shopItem.First().Requirements == null)
-            return true;
-
-        foreach (ShopItem item in shopItem.First().Requirements)
-            if (!Core.CheckInventory(item.Name, item.Quantity))
+        ShopItem item = shopItem.First();
+        if (!String.IsNullOrEmpty(item.Faction))
+        {
+            int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
+            if (reqRank > Farm.FactionRank(item.Faction))
+            {
+                Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.");
                 return false;
-        return true;
+            }
+        }
+
+        if (item.Requirements != null)
+            foreach (ShopItem req in shopItem.First().Requirements)
+                if (!Core.CheckInventory(req.Name, req.Quantity))
+                {
+                    Core.Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
+                    return false;
+                }
+
+        return item.Cost <= Bot.Player.Gold;
     }
 
     public void GetItemReq(ShopItem item)
