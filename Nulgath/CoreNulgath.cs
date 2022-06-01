@@ -824,6 +824,19 @@ public class CoreNulgath
             Core.Logger($"Completed x{i++}");
         }
     }
+    
+    public void HireNulgathLarvae()
+    {        
+        if (Core.CheckInventory("Nulgath Larvae"))
+            return;
+
+        Core.AddDrop("Nulgath Larvae");
+        Core.EnsureAccept(867);
+        FarmVoucher(true);
+        Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune");
+        Core.EnsureComplete(867);  
+        Bot.Wait.ForPickup("Nulgath Larvae");
+    }
 }
 public enum ChooseReward
 {
