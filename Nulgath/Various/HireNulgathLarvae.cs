@@ -24,7 +24,6 @@ public class HireNulgathLarvae
         if (Core.CheckInventory("Nulgath Larvae"))
             return;
 
-        Nulgath.FarmVoucher(true);
         Nulgath.HireNulgathLarvae();
     }
 }
