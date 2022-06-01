@@ -6,7 +6,7 @@ using RBot;
 using RBot.Items;
 using RBot.Options;
 
-public class newMergeTemplate
+public class ThreeLittleWolvesHousesMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
