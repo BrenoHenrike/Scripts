@@ -8,7 +8,7 @@ using RBot;
 using RBot.Items;
 using RBot.Options;
 
-public class AtraviaPastMerge
+public class AstraviaPastMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
