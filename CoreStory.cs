@@ -288,8 +288,13 @@ public class CoreStory
             "Core.EnsureCompleteChoose",
             "Core.ChainComplete"
         };
+        string[] IncludeCores = {
+            "Core13LoC",
+            "CoreAstravia",
+            "CoreQOM"
+        };
 
-        List<string> CSIncludes = CSFile.Where(x => x.Contains("//cs_include ") && (x.Contains("Core13LoC") || !x.Contains("Core"))).ToList();
+        List<string> CSIncludes = CSFile.Where(x => x.Contains("//cs_include ") && (IncludeCores.Any(y => x.Contains(x)) || !x.Contains("Core"))).ToList();
 
         foreach (string Include in CSIncludes)
             CSIncFiles.AddRange(File.ReadAllLines(Include.Replace("//cs_include ", "")));
