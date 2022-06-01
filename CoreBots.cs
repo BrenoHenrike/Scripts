@@ -583,7 +583,6 @@ public class CoreBots
     #endregion
 
     #region Quest
-    private int x = 1;
     private CancellationTokenSource? questCTS = null;
     /// <summary>
     /// This will register quests to be completed while doing something else, i.e. while in combat.
