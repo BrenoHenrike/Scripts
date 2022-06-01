@@ -622,26 +622,40 @@ public class CoreAdvanced
 
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
-        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.ID == itemID).ToList();
-        ShopItem? item = parseShopItem(shopItem, shopID, itemID.ToString());
+        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
 
-        GetItemReq(item);
-        if (canBuy(new List<ShopItem>() { item }, shopID, itemID.ToString()))
-            Core.BuyItem(map, shopID, itemID, quant, shopQuant, shopItemID);
+        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
     }
 
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
-        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.Name == itemName).ToList();
-        ShopItem? item = parseShopItem(shopItem, shopID, itemName);
+        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
 
+        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
+    }
+
+    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    {
         GetItemReq(item);
-        if (canBuy(new List<ShopItem>() { item }, shopID, itemName))
-            Core.BuyItem(map, shopID, itemName, quant, shopQuant, shopItemID);
+
+        if (item.Requirements != null)
+        {
+            foreach (ItemBase req in item.Requirements)
+            {
+                if (Core.CheckInventory(req.ID, req.Quantity))
+                    continue;
+
+                if (Core.GetShopItems(map, shopID).Contains(req))
+                    BuyItem(map, shopID, req.ID, req.Quantity, shopQuant, shopItemID);
+            }
+        }
+
+        if (canBuy(new List<ShopItem>() { item }, shopID, item.Name))
+            Core.BuyItem(map, shopID, item.Name, quant, shopQuant, shopItemID);
     }
 
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
