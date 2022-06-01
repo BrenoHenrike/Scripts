@@ -227,8 +227,7 @@ public class CoreDarkon
             return;
 
         Core.AddDrop("Suki's Prestige");
-
-        Astravia.AstraviaJudgement();
+        Astravia.CompleteCoreAstravia();
 
         Core.Logger($"Farming {Quantity} Suki's Prestige");
         while ((!Core.CheckInventory("Suki's Prestige", Quantity)))
