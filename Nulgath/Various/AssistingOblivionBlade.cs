@@ -24,19 +24,26 @@ public class AssistingOblivionBlade
     {
         if (!Core.IsMember)
             return;
+
         if (!Core.CheckInventory("The Secret 2"))
             return;
-            
+
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant");
-            
+
+        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
+        List<string> RewardsList = new List<string>();
+        foreach (RBot.Items.ItemBase Item in RewardOptions)
+            RewardsList.Add(Item.Name);
+
+        string[] Rewards = RewardsList.ToArray();
+
+        Core.AddDrop(Rewards);
+
         Core.RegisterQuests(5818);
-        foreach (string item in Nulgath.bagDrops)
+        foreach (string item in RewardsList)
         {
-            List<InventoryItem> invBank = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(x => Nulgath.bagDrops.ToList().Contains(x.Name));
-            InventoryItem? _item = invBank.Find(x => x.Name == item);
-            Core.AddDrop(item);
-            while (!Core.CheckInventory(item, _item.MaxStack))
+            while (!Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
             {
                 Farm.BludrutBrawlBoss("The Secret 4", 1, canSoloBoss: false);
                 Nulgath.EssenceofNulgath(20);
@@ -45,7 +52,7 @@ public class AssistingOblivionBlade
                 Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 10, false);
                 Farm.BattleUnderB(quant: 200);
             }
+            Core.CancelRegisteredQuests();
         }
-        Core.CancelRegisteredQuests();
     }
 }
