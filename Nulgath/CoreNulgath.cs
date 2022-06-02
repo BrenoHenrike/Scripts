@@ -837,29 +837,6 @@ public class CoreNulgath
         Core.EnsureComplete(867);
         Bot.Wait.ForPickup("Nulgath Larvae");
     }
-
-    public void CrimsonHanzoOrb()
-    {
-        if (Core.CheckInventory(bagDrops) && Core.CheckInventory("Blood Star Blade"))
-            return;
-                        
-        Core.AddDrop(bagDrops);
-        Core.AddDrop("Blood Star Blade");
-
-
-        Core.RegisterQuests(4019);
-        while (!Core.CheckInventory(bagDrops) && !Core.CheckInventory("Blood Star Blade"))
-        {
-            Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
-            Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
-            Core.HuntMonster("nulgath", "Dreadspider", "Dreadspider Silk");
-            if (Core.IsMember)
-                Core.HuntMonster("nulgath", "Dark Makai", "Makai Fang", 5);
-            else Core.HuntMonster("tercessuinotlim", "Dark Makai", "Makai Fang", 5);
-            Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
-        }
-        Core.CancelRegisteredQuests();
-    }
 }
 public enum ChooseReward
 {
