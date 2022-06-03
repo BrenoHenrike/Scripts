@@ -265,16 +265,16 @@ public class CoreFarms
             Core.BludrutMove(9, "Crosslower");
             Core.BludrutMove(14, "Crossupper", 528, 255);
             Core.BludrutMove(18, "Resource1A");
-            Bot.Player.Kill("Team B Restorer");
+            Bot.Player.Kill("(B) Defensive Restorer");
             Bot.Player.Pickup("The Secret 4");
-            Bot.Player.Kill("Team B Restorer");
+            Bot.Player.Kill("(B) Defensive Restorer");
             Bot.Player.Pickup("The Secret 4");
             if (Core.CheckInventory("The Secret 4"))
                 break;
             Core.BludrutMove(20, "Resource1B");
-            Bot.Player.Kill("Team B Restorer");
+            Bot.Player.Kill("(B) Defensive Restorer");
             Bot.Player.Pickup("The Secret 4");
-            Bot.Player.Kill("Team B Restorer");
+            Bot.Player.Kill("(B) Defensive Restorer");
             Bot.Player.Pickup("The Secret 4");
         }
     }
@@ -311,11 +311,11 @@ public class CoreFarms
             {
                 Core.BludrutMove(14, "Crossupper", 528, 255);
                 Core.BludrutMove(18, "Resource1A");
-                Bot.Player.Kill("Team B Restorer");
-                Bot.Player.Kill("Team B Restorer");
+                Bot.Player.Kill("(B) Defensive Restorer");
+                Bot.Player.Kill("(B) Defensive Restorer");
                 Core.BludrutMove(20, "Resource1B");
-                Bot.Player.Kill("Team B Restorer");
-                Bot.Player.Kill("Team B Restorer");
+                Bot.Player.Kill("(B) Defensive Restorer");
+                Bot.Player.Kill("(B) Defensive Restorer");
                 Core.BludrutMove(21, "Resource1A", 124);
                 Core.BludrutMove(19, "Crossupper", 124);
                 Core.BludrutMove(17, "Crosslower", 488, 483);

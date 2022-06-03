@@ -35,8 +35,7 @@ public class CrimsonHanzoOrbQuest
         foreach (string item in RewardsList)
         {
 
-            // Core.RegisterQuests(4019);
-            Bot.Quests.Accept(4019);
+            Core.RegisterQuests(4019);
             while (!Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
             {
                 Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);

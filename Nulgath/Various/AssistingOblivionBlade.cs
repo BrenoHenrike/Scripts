@@ -45,7 +45,7 @@ public class AssistingOblivionBlade
         {
             while (!Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
             {
-                Farm.BludrutBrawlBoss("The Secret 4", 1, canSoloBoss: false);
+                Farm.TheSecret4();
                 Nulgath.EssenceofNulgath(20);
                 Nulgath.ApprovalAndFavor(50, 50);
                 Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 50, false);
