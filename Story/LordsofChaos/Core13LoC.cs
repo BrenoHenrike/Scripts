@@ -923,18 +923,15 @@ public class Core13LoC
             Core.EnsureAccept(978);
             Bot.Quests.UpdateQuest(3773);
             Core.Join("wanders", "Boss", "Left");
-            if (!Core.CheckInventory("Sek-Duat Defeated", 1, toInv: false))
-            {
-                Bot.Options.AttackWithoutTarget = true;
-                Core.SendPackets("%xt%zm%gar%0%aa>m");
-                Bot.Player.ApproachTarget();
-                Bot.Player.Kill("Sek-Duat");
-                Bot.Options.AttackWithoutTarget = false;
-            }
+            Bot.Options.AttackWithoutTarget = true;
+            Core.SendPackets("%xt%zm%gar%0%aa>m");
+            Bot.Player.ApproachTarget();
+            Bot.Player.Kill("Sek-Duat");
+            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(978);
             //Editors Note: PLEASE stop breaking this
             //Editors Note2: for each new Sek-Duat Fix Please add 1 to this counter, Counter started 5/7/22 (not entirely acurate just when i made the counter.)
-            // Counter: 1
+            // Counter: 2
         }
 
         //Sandsational Castle
