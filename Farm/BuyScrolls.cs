@@ -28,9 +28,6 @@ public class BuyScrolls
 
     public void BuyScroll(Scrolls scroll, int quant)
     {
-        if (Bot.Player.GetFactionRank("SpellCraft") < 5)
-            Farm.SpellCraftingREP(5);
-            
         if (scroll.ToString() == "0")
             Core.Logger("No scroll selected, stopping the bot", messageBox: true, stopBot: true);
 
@@ -46,6 +43,7 @@ public class BuyScrolls
         Core.Logger($"Getting you {quant}x {_scroll}");
         Core.AddDrop(_scroll);
 
+        Farm.SpellCraftingREP(5);
         while (!Core.CheckInventory(_scroll, quant))
         {
             if (!Core.CheckInventory(ink))
