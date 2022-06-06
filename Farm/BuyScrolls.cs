@@ -52,7 +52,7 @@ public class BuyScrolls
                 {
                     if (!Core.CheckInventory("Gold Voucher 500k"))
                         Farm.Gold(500000);
-                    Core.BuyItem("spellcraft", 693, "Gold Voucher 500k");
+                    Core.BuyItem("spellcraft", 693, "Gold Voucher 500k", 2);
                     Core.BuyItem("spellcraft", 693, "Arcane Quill", shopQuant: 10, shopItemID: 8847);
                 }
                 Core.BuyItem("spellcraft", 622, ink, shopQuant: 5);
