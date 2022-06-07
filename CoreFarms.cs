@@ -788,7 +788,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Chaos);
+            MembershipDues(MemberShipsIDS.Chaos, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -810,7 +810,7 @@ public class CoreFarms
         if (FactionRank("ChronoSpan") >= rank)
             return;
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.ChronoSpan);
+            MembershipDues(MemberShipsIDS.ChronoSpan, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -903,7 +903,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Doomwood);
+            MembershipDues(MemberShipsIDS.Doomwood, rank);
         else
         {
             Core.AddDrop("Dark Tower Sword");
@@ -964,7 +964,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Dwarfhold);
+            MembershipDues(MemberShipsIDS.Dwarfhold, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1009,7 +1009,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Embersea);
+            MembershipDues(MemberShipsIDS.Embersea, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1057,7 +1057,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Etherstorm);
+            MembershipDues(MemberShipsIDS.Etherstorm, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1083,7 +1083,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Evil);
+            MembershipDues(MemberShipsIDS.Evil, rank);
         else
         {
             Core.ChangeAlignment(Alignment.Evil);
@@ -1176,7 +1176,7 @@ public class CoreFarms
         if (FactionRank("Good") >= rank)
             return;
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Good);
+            MembershipDues(MemberShipsIDS.Good, rank);
         else
         {
             Core.ChangeAlignment(Alignment.Good);
@@ -1263,7 +1263,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Lycan);
+            MembershipDues(MemberShipsIDS.Lycan, rank);
         else
         {
             if (!Bot.Quests.IsAvailable(537))
@@ -1312,7 +1312,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Horc);
+            MembershipDues(MemberShipsIDS.Horc, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1410,7 +1410,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Mythsong);
+            MembershipDues(MemberShipsIDS.Mythsong, rank);
         else
         {
             if (!Bot.Quests.IsAvailable(4829))
@@ -1455,7 +1455,7 @@ public class CoreFarms
         if (FactionRank("Northpointe") >= rank)
             return;
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Northpointe);
+            MembershipDues(MemberShipsIDS.Northpointe, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1494,8 +1494,9 @@ public class CoreFarms
     {
         if (FactionRank("Ravenloss") >= rank)
             return;
+
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Ravenloss);
+            MembershipDues(MemberShipsIDS.Ravenloss, rank);
         else
         {
             if (!Bot.Quests.IsAvailable(3445))
@@ -1523,7 +1524,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Sandsea);
+            MembershipDues(MemberShipsIDS.Sandsea, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1557,7 +1558,7 @@ public class CoreFarms
             return;
         }
 
-        MembershipDues(MemberShipsIDS.Skyguard);
+        MembershipDues(MemberShipsIDS.Skyguard, rank);
 
         //Core.RegisterQuests(1016);
         //while (FactionRank("Skyguard") < rank && !Bot.ShouldExit())
@@ -1637,7 +1638,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Swordhaven);
+            MembershipDues(MemberShipsIDS.Swordhaven, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1669,7 +1670,7 @@ public class CoreFarms
         if (FactionRank("ThunderForge") >= rank)
             return;
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Thunderforge);
+            MembershipDues(MemberShipsIDS.Thunderforge, rank);
         else
         {
             if (!Bot.Quests.IsAvailable(2733))
@@ -1713,7 +1714,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Troll);
+            MembershipDues(MemberShipsIDS.Troll, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
@@ -1737,7 +1738,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Vampire);
+            MembershipDues(MemberShipsIDS.Vampire, rank);
         else
         {
             if (!Bot.Quests.IsAvailable(522))
@@ -1764,7 +1765,7 @@ public class CoreFarms
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Yokai);
+            MembershipDues(MemberShipsIDS.Yokai, rank);
         else
         {
             Core.EquipClass(ClassType.Farm);
