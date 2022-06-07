@@ -649,7 +649,7 @@ public class CoreAdvanced
                 if (Core.CheckInventory(req.ID, req.Quantity))
                     continue;
 
-                if (Core.GetShopItems(map, shopID).Contains(req))
+                if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
                     BuyItem(map, shopID, req.ID, req.Quantity, shopQuant, shopItemID);
             }
         }
