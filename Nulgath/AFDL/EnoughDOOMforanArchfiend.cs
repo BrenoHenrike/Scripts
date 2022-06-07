@@ -1,5 +1,6 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Nulgath/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nulgath/AFDL/NulgathDemandsWork.cs
@@ -30,9 +31,9 @@ public class EnoughDOOMforanArchfiend
 
     public void AFDL()
     {
-        if(Core.CheckInventory("ArchFiend DoomLord", toInv: false))
-        return;
-        
+        if (Core.CheckInventory("ArchFiend DoomLord", toInv: false))
+            return;
+
         NulgathDemandsWork.Unidentified35();
 
         Core.AddDrop(Nulgath.bagDrops);
