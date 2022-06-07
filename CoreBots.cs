@@ -1315,8 +1315,10 @@ public class CoreBots
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
         if (Bot.Player.LoggedIn)
         {
+            JumpWait();
             Bot.Player.ExitCombat();
             Bot.Sleep(ActionDelay);
+
             if (Bot.Inventory.HouseItems.Any(x => x.Equipped && x.Category == ItemCategory.House))
             {
                 Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
