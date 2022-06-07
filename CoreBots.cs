@@ -172,22 +172,6 @@ public class CoreBots
                 }
                 ToBank(MiscForBank.ToArray());
             }
-            int MinumumDelay = 180;
-            int MaximumDelay = 300;
-            int timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay + 1);
-            int SSH = 0;
-            Bot.RegisterHandler(5000, s =>
-            {
-                SSH++;
-                if (SSH >= (timerInterval / 5))
-                {
-                    int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
-                    Bot.SendMSGPacket("Ignore the whisper below, this is to save your player data", "Saved-State", "moderator");
-                    Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
-                    timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay);
-                    SSH = 0;
-                }
-            }, "Saved-State Handler");
 
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
@@ -1071,6 +1055,60 @@ public class CoreBots
         else
             KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
     }
+
+    private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
+    {
+        if (log)
+        {
+            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+            Logger($"Killing {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
+        }
+        while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
+        {
+            Bot.Player.Attack(name);
+            Bot.Sleep(ActionDelay);
+            if (rejectElse)
+                Bot.Player.RejectExcept(item);
+            Rest();
+        }
+    }
+
+    private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
+    {
+        if (log)
+        {
+            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+            Logger($"Hunting {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
+        }
+        Bot.Player.HuntForItem(name, item, quantity, tempItem, rejectElse);
+    }
+
+    private int lastQuestID;
+    private void _AddRequirement(int questID)
+    {
+        if (questID > 0 && questID != lastQuestID)
+        {
+            lastQuestID = questID;
+            Quest quest = EnsureLoad(questID);
+            if (quest == null)
+            {
+                Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
+                return;
+            }
+            List<string> reqItems = new();
+            quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
+            quest.Requirements.ForEach(item =>
+            {
+                if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
+                {
+                    if (!item.Temp)
+                        reqItems.Add(item.Name);
+                    CurrentRequirements.Add(item);
+                }
+            });
+            AddDrop(reqItems.ToArray());
+        }
+    }
     #endregion
 
     #region Utils
@@ -1268,75 +1306,6 @@ public class CoreBots
             Bot.SendPacket($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
-    {
-        if (log)
-        {
-            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
-            Logger($"Killing {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
-        }
-        while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
-        {
-            Bot.Player.Attack(name);
-            Bot.Sleep(ActionDelay);
-            if (rejectElse)
-                Bot.Player.RejectExcept(item);
-            Rest();
-        }
-    }
-
-    private void _HuntForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
-    {
-        if (log)
-        {
-            int dynamicQuantity = tempItem ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
-            Logger($"Hunting {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
-        }
-        Bot.Player.HuntForItem(name, item, quantity, tempItem, rejectElse);
-    }
-
-    private int lastQuestID;
-    private void _AddRequirement(int questID)
-    {
-        if (questID > 0 && questID != lastQuestID)
-        {
-            lastQuestID = questID;
-            Quest quest = EnsureLoad(questID);
-            if (quest == null)
-            {
-                Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
-                return;
-            }
-            List<string> reqItems = new();
-            quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
-            quest.Requirements.ForEach(item =>
-            {
-                if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
-                {
-                    if (!item.Temp)
-                        reqItems.Add(item.Name);
-                    CurrentRequirements.Add(item);
-                }
-            });
-            AddDrop(reqItems.ToArray());
-        }
-    }
-
-    private void _EquipClass(string className)
-    {
-        if (className.ToLower() != "generic"
-            && Bot.Inventory.CurrentClass.Name.ToLower() != className.ToLower())
-        {
-            JumpWait();
-            while (!Bot.Inventory.IsEquipped(className))
-            {
-                Bot.Player.EquipItem(className);
-                Bot.Sleep(ActionDelay);
-            }
-            Logger($"{className} equipped");
-        }
-    }
-
     private bool scriptFinished = true;
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
@@ -1344,23 +1313,22 @@ public class CoreBots
     public bool StopBot()
     {
         CancelRegisteredQuests();
+        SavedState(false);
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
-        Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
         if (Bot.Player.LoggedIn)
         {
             Bot.Player.ExitCombat();
             Bot.Sleep(ActionDelay);
-            SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
-            if (Bot.Map.Name == "house")
-                Logger($"(っ◔◡◔)っ ♥ Welcome Home ♥");
-            else if (Bot.Map.Name != "house")
+            if (Bot.Inventory.HouseItems.Any(x => x.Equipped && x.Category == ItemCategory.House))
             {
-                Logger($"Sorry but your homeless (ಥ ̯ ಥ)");
-                Join("Whitemap");
+                Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
+                Logger($"(っ◔◡◔)っ ♥ Welcome Home ♥");
             }
-            int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
-            Bot.SendMSGPacket("Final Saved-State before ending the bot", "Saved-State", "moderator");
-            Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
+            else
+            {
+                Join("Whitemap");
+                Logger($"Sorry but your homeless (ಥ ̯ ಥ)");
+            }
         }
         if (AntiLag)
         {
@@ -1373,6 +1341,36 @@ public class CoreBots
         if (Bot.Player.LoggedIn)
             Logger("Bot Stopped Successfully");
         return scriptFinished;
+    }
+
+    public void SavedState(bool on = true)
+    {
+        if (on)
+        {
+            int MinumumDelay = 180;
+            int MaximumDelay = 300;
+            int timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay + 1);
+            int SSH = 0;
+            Bot.RegisterHandler(5000, s =>
+            {
+                SSH++;
+                if (SSH >= (timerInterval / 5))
+                {
+                    int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
+                    Bot.SendMSGPacket("Ignore the whisper below, this is to save your player data", "Saved-State", "moderator");
+                    Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
+                    timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay);
+                    SSH = 0;
+                }
+            }, "Saved-State Handler");
+        }
+        else if (Bot.Handlers.Any(handler => handler.Name == "Saved-State Handler"))
+        {
+            Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
+            int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
+            Bot.SendMSGPacket("Final Saved-State before the Saved State Handler is shut off", "Saved-State", "moderator");
+            Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
+        }
     }
 
     private string[] _SavedStateRNG =
@@ -1680,14 +1678,6 @@ public class CoreBots
             AggroMonsters = true;
             Bot.Options.AggroMonsters = false;
         }
-
-        string[] disabledMaps =
-        {
-            "tower"
-        };
-
-        if (disabledMaps.Contains(map.ToLower()))
-            Logger($"Map {map} is (still) disabled because of April Fools, bot cant continue", messageBox: true, stopBot: true);
 
         if (map.ToLower() == "tercessuinotlim")
         {
