@@ -1,6 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class WillpowerExtraction
@@ -8,6 +9,7 @@ public class WillpowerExtraction
     public ScriptInterface Bot = ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new();
     public CoreNulgath Nulgath = new CoreNulgath();
 
     public void ScriptMain(ScriptInterface bot)
@@ -44,17 +46,17 @@ public class WillpowerExtraction
             if (!Core.CheckInventory("Shadow Lich"))
             {
                 Farm.Gold(60000);
-                Core.BuyItem("shadowfall", 89, "Shadow Lich");
+                Adv.BuyItem("shadowfall", 89, "Shadow Lich");
             }
 
             Farm.ArcangroveREP();
-            Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
+            Adv.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
             if (!Core.CheckInventory("Unidentified 19"))
             {
                 while (!Core.CheckInventory("Receipt of Swindle", 6))
                     Nulgath.SwindleReturn();
-                Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+                Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
             }
 
             Core.EquipClass(ClassType.Farm);
@@ -67,26 +69,26 @@ public class WillpowerExtraction
                 while (!Core.CheckInventory(7132, 3))
                 {
                     if (!Core.CheckInventory("Gold Voucher 100k", 3))
-                        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1);
-                    Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3);
+                        Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 3, 1);
+                    Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3);
                     Bot.Wait.ForPickup("Dragon Runestone");
                 }
-                Core.BuyItem("alchemyacademy", 397, "Necrot", 5, 2);
+                Adv.BuyItem("alchemyacademy", 397, "Necrot", 5, 2);
                 Bot.Wait.ForPickup("Necrot");
             }
 
             if (!Core.CheckInventory("chaoroot", 5))
             {
                 Farm.Gold(300000);
-                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 1);
-                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
+                Adv.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 1);
+                Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
             }
 
             if (!Core.CheckInventory("Doomatter", 5))
             {
                 Farm.Gold(300000);
-                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle");
-                Core.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 1);
+                Adv.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle");
+                Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 1);
             }
 
             Core.EquipClass(ClassType.Solo);
@@ -102,7 +104,7 @@ public class WillpowerExtraction
             {
                 Farm.Gold(10000);
                 Nulgath.ApprovalAndFavor(0, 35);
-                Core.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
+                Adv.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
             }
 
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
