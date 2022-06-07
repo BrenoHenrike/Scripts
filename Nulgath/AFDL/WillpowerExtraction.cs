@@ -50,7 +50,12 @@ public class WillpowerExtraction
             Farm.ArcangroveREP();
             Core.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
-            Nulgath.Supplies("Unidentified 19");
+            if (!Core.CheckInventory("Unidentified 19"))
+            {
+                while (!Core.CheckInventory("Receipt of Swindle", 6))
+                    Nulgath.SwindleReturn();
+                Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+            }
 
             Core.EquipClass(ClassType.Farm);
 
