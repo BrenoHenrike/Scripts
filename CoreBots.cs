@@ -194,8 +194,6 @@ public class CoreBots
 
             Bot.Drops.Start();
 
-            Bot.SendMSGPacket("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages", "moderator");
-
             Logger("Bot Configured");
         }
     }
@@ -1351,6 +1349,8 @@ public class CoreBots
             int MaximumDelay = 300;
             int timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay + 1);
             int SSH = 0;
+            Logger("Saved State Handler enabled");
+            Bot.SendMSGPacket("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages", "moderator");
             Bot.RegisterHandler(5000, s =>
             {
                 SSH++;
@@ -1370,6 +1370,7 @@ public class CoreBots
             int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
             Bot.SendMSGPacket("Final Saved-State before the Saved State Handler is shut off", "Saved-State", "moderator");
             Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
+            Logger("Saved State Handler disabled");
         }
     }
 
