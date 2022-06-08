@@ -1686,18 +1686,33 @@ public class CoreBots
         {
             Bot.Player.Jump("m22", "Left");
             Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
+            Bot.Wait.ForMapLoad(map.ToLower());
         }
         else
         {
             JumpWait();
-            Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-        }
-        Bot.Wait.ForMapLoad(map.ToLower());
+            for (int i = 0; i < 20; i++)
+            {
+                Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                Bot.Wait.ForMapLoad(map.ToLower());
 
-        while (Bot.Player.Cell.ToLower() != cell.ToLower())
+                if ((Bot.Map.Name ?? "").ToLower() == map.ToLower())
+                    break;
+                if (i == 19)
+                    Logger($"Failed to join {map}");
+            }
+        }
+
+
+        for (int i = 0; i < 20; i++)
         {
             Jump(cell, pad);
             Bot.Sleep(ActionDelay);
+
+            if (Bot.Player.Cell.ToLower() != cell.ToLower())
+                break;
+            if (i == 19)
+                Logger($"Failed to jump to {cell}");
         }
 
         if (AggroMonsters)
