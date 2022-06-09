@@ -3,6 +3,7 @@
 using RBot;
 using RBot.Items;
 using RBot.Shops;
+using RBot.Monsters;
 using RBot.Options;
 using System.Globalization;
 using System.Reflection;
@@ -999,17 +1000,17 @@ public class CoreAdvanced
     private bool shouldAttack = true;
     private void _KillUltra(ScriptInterface bot, bool faded)
     {
-        string Target = "";
+        Monster? Target = null;
         if (!faded)
         {
-            Target = Bot.Player.Target.Name;
+            Target = Bot.Player.Target;
             shouldAttack = false;
             Bot.Player.CancelAutoAttack();
             Bot.Player.CancelTarget();
         }
         else
         {
-            if (Target != "")
+            if (Target != null)
                 Bot.Player.Attack(Target);
             shouldAttack = true;
         }
