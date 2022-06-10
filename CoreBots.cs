@@ -1703,17 +1703,8 @@ public class CoreBots
             }
         }
 
-
-        for (int i = 0; i < 20; i++)
-        {
-            Jump(cell, pad);
-            Bot.Sleep(ActionDelay);
-
-            if (Bot.Player.Cell.ToLower() != cell.ToLower())
-                break;
-            if (i == 19)
-                Logger($"Failed to jump to {cell}");
-        }
+        Jump(cell, pad);
+        Bot.Sleep(200);
 
         if (AggroMonsters)
             Bot.Options.AggroMonsters = true;
