@@ -75,6 +75,6 @@ public class CelestialArenaQuests
         Story.KillQuest(6039, "CelestialArenaD", "Avatar of Time");
         Story.KillQuest(6040, "CelestialArenaD", "Avatar of Life");
         Story.KillQuest(6041, "CelestialArenaD", "Fallen Abezeth");
-        Story.KillQuest(6042, "CelestialArenaD", "Aranx ");
+        Story.KillQuest(6042, "CelestialArenaD", "Aranx");
     }
 }
