@@ -34,15 +34,10 @@ public class StoneCrusher
         Story.PreLoad();
 
         LOC.Kimberly();
-        Farm.MythsongREP();
-        Farm.ArcangroveREP();
         Oak.doall();
-        Farm.BrightoakREP();
 
-        Core.BuyItem("Gaiazor", 1210, "Earth's Song Token");
-        Core.BuyItem("Gaiazor", 1210, "Shaman Armor");
-        Core.BuyItem("Gaiazor", 1210, "StoneCrusher");
-
+        Adv.BuyItem("Gaiazor", 1210, "StoneCrusher");
+        
         if (rankUpClass)
             Adv.rankUpClass("StoneCrusher");
     }
