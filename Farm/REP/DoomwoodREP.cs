@@ -12,7 +12,7 @@ public class DoomwoodREP
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-        Farm.DoomwoodREP();
+        Farm.DoomWoodREP();
 
         Core.SetOptions(false);
     }

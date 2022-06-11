@@ -63,7 +63,7 @@ public class VordredArmor
             Farm.ArcangroveREP();
             if (!Core.CheckInventory("Ancient Skull Blade"))
                 Core.BuyItem("arcangrove", 214, "Ancient Skull Blade");
-            Farm.DoomwoodREP();
+            Farm.DoomWoodREP();
             Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Scythe", isTemp: false);
             Core.HuntMonster("dragonbone", "Gorgorath", "Boneblade of Gorgorath", isTemp: false);
             Core.EnsureComplete(8377);
