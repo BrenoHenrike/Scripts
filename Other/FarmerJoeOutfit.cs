@@ -3,7 +3,10 @@
 //cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
-//cs_include Scripts/Farm/LVLQuickto100.cs
+//cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
+
 using RBot;
 
 public class FarmerJoeOutfit
@@ -13,7 +16,8 @@ public class FarmerJoeOutfit
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreFarms Farm = new CoreFarms();
     public HollowbornScythe Scythe = new HollowbornScythe();
-    public LVLQuick LVL = new LVLQuick();
+    public EternalInversionist EI = new();
+    public project InvEn = new();
 
 
     public void ScriptMain(ScriptInterface bot)
@@ -27,14 +31,20 @@ public class FarmerJoeOutfit
 
     public void Outfit()
     {
-        LVL.QuickLvl();
-
+        Farm.Experience(50);
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
+        EI.GetEI();
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
+        Farm.Experience(100);
         Scythe.GetHBReapersScythe();
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
         RagsandHat();
         ServersAreDown();
         // DeathsScythe();
         // BackItem();
         // Pet();
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
+
 
         Adv.EnhanceItem("Hollowborn Reaper's Scythe", EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
 

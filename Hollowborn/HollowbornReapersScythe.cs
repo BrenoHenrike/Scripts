@@ -1,5 +1,6 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class HollowbornScythe
@@ -7,6 +8,7 @@ public class HollowbornScythe
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -37,7 +39,7 @@ public class HollowbornScythe
             Core.EquipClass(ClassType.Solo);
             Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Death's Oversight", 2, false, publicRoom: true);
 
-            Core.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Minion");
+            Adv.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Minion");
         }
 
         foreach (string item in new[] { "Hollowborn Reaper's Daggers", "Hollowborn Reaper's Kamas", "Hollowborn Reaper's Kama" })
@@ -61,16 +63,16 @@ public class HollowbornScythe
             if (!Core.CheckInventory(57447))
             {
                 Farm.Gold(15000000);
-                Core.BuyItem("tercessuinotlim", 1951, 57447);
+                Adv.BuyItem("tercessuinotlim", 1951, 57447);
             }
 
-            Core.BuyItem("shadowrealm", 1889, item);
+            Adv.BuyItem("shadowrealm", 1889, item);
         }
 
         Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", 1, false, publicRoom: true);
 
-        Core.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Scythe");
+        Adv.BuyItem("shadowrealm", 1889, "Hollowborn Reaper's Scythe");
     }
 }

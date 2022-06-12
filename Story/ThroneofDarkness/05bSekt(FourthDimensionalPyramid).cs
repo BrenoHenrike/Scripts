@@ -101,5 +101,6 @@ public class FourthDimensionalPyramid
 
         // The Hero's Doom
         Story.MapItemQuest(5212, "fourdpyramid", 4574, 1);
+        Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
     }
 }
