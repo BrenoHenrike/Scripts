@@ -146,11 +146,11 @@ public class CoreAdvanced
 
     private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
     {
-        if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
-        {
-            Special = WeaponSpecial.None;
-            Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
-        }
+        //if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
+        //{
+        //    Special = WeaponSpecial.None;
+        //    Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
+        //}
 
         List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
         int i = 0;
@@ -213,7 +213,6 @@ public class CoreAdvanced
         void __AutoEnhance(List<InventoryItem> Input, int ShopID)
         {
             Core.JumpWait();
-
             Bot.Shops.Load(ShopID);
             List<ShopItem> ShopItems = Bot.Shops.ShopItems;
 
@@ -283,10 +282,9 @@ public class CoreAdvanced
     {
         Bot.Wait.ForPickup(ClassName);
 
-        if (!Core.CheckInventory(ClassName))
+        InventoryItem? itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+        if (itemInv == null)
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
-
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
         GearStore();
 
         if (itemInv == null)
