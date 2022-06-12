@@ -28,6 +28,7 @@ public class NecroticBladeoftheUnderworld
     public CoreLegion Legion = new();
     public DageChallengeStory DageChallenge = new();
     public AnotherOneBitesTheDust SoulSand = new();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -54,7 +55,7 @@ public class NecroticBladeoftheUnderworld
         Story.PreLoad();
 
         //Leveling to 95
-        LVL.QuickLvl(95);
+        Farm.Experience(95);
 
         //Unlocking Quest
         DageChallenge.DageChallengeQuests();
