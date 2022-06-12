@@ -91,7 +91,7 @@ public class CoreHollowbornPaladin
             Core.EnsureComplete(803);
         }
         BLOD.FindingFragmentsMace();
-        Farm.DoomwoodREP(3);
+        Farm.DoomWoodREP(3);
         Core.BuyItem("lightguard", 277, "Dark Arts Scholar");
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("shadowblast", "Legion Fenrir", "Gem of Superiority", 1, false);
@@ -121,7 +121,7 @@ public class CoreHollowbornPaladin
         Core.AddDrop("Dark Aura Gem", "Enchantment Rune", "Shadow Dragon Soul", "Hollowborn Paladin Helmet");
         Core.EnsureAccept(7558);
         Core.BuyItem("necropolis", 410, "Templar's Helm of Light");
-        Farm.DoomwoodREP(6);
+        Farm.DoomWoodREP(6);
         Core.BuyItem("necropolis", 408, "Destiny Cloak");
         if (!Core.CheckInventory("Dark Aura Gem"))
         {

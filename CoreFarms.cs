@@ -427,7 +427,7 @@ public class CoreFarms
         DeathPitArenaREP();
         //DeathPitBrawlREP();
         DiabolicalREP();
-        DoomwoodREP();
+        DoomWoodREP();
         DreadFireREP();
         DreadrockREP();
         DruidGroveREP();
@@ -897,13 +897,13 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void DoomwoodREP(int rank = 10)
+    public void DoomWoodREP(int rank = 10)
     {
-        if (FactionRank("Doomwood") >= rank)
+        if (FactionRank("DoomWood") >= rank)
             return;
 
         if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Doomwood, rank);
+            MembershipDues(MemberShipsIDS.DoomWood, rank);
         else
         {
             Core.AddDrop("Dark Tower Sword");
@@ -912,7 +912,7 @@ public class CoreFarms
             Core.Logger($"Farming rank {rank}");
 
             Core.RegisterQuests(1151, 1152, 1153);
-            while (FactionRank("Doomwood") < rank && !Bot.ShouldExit())
+            while (FactionRank("DoomWood") < rank && !Bot.ShouldExit())
             {
                 Core.HuntMonster("shadowfallwar", "*", "To Do List of Doom");
                 Core.HuntMonster("shadowfallwar", "*", "Skeleton Key");
@@ -1954,7 +1954,7 @@ public enum MemberShipsIDS
     Arcangrove = 1324,
     Sandsea = 1325,
     Skyguard = 1326,
-    Doomwood = 1327,
+    DoomWood = 1327,
     Troll = 1328,
     Horc = 1329,
     Etherstorm = 4340,

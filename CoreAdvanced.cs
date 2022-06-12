@@ -304,7 +304,7 @@ public class CoreAdvanced
         string[]? CPBoost = BestGear(GearBoost.cp);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
-        Farm.IcestormArena(1, true);
+        Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
         GearStore(true);
     }

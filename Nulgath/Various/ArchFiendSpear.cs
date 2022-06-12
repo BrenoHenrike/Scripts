@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Nulgath/AFDL/WillpowerExtraction.cs
@@ -10,6 +11,7 @@ public class ArchFiendSpear
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new CoreAdvanced();
     public CoreNulgath Nulgath = new();
     public CoreHollowborn HB = new();
     public WillpowerExtraction Will = new();

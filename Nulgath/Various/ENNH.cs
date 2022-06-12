@@ -49,7 +49,7 @@ public class EnhancedNulgathNationHouse
             BLOD.UnlockMineCrafting();
             Daily.MineCrafting(new[] { "Aluminum" });
 
-            Farm.DoomwoodREP();
+            Farm.DoomWoodREP();
             Farm.Gold(999);
             Core.BuyItem("lightguard", 277, "NUE Necronomicon");
 

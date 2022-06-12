@@ -26,7 +26,7 @@ public class UndeadSlayer
         if (!Core.IsMember)
             return;
 
-        Farm.DoomwoodREP();
+        Farm.DoomWoodREP();
 
         Core.BuyItem("necropolis", 408, "UndeadSlayer");
 

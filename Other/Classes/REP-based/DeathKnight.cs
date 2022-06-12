@@ -24,7 +24,7 @@ public class DeathKnight
         if (Core.CheckInventory("DeathKnight"))
             return;
 
-        Farm.DoomwoodREP();
+        Farm.DoomWoodREP();
 
         Core.BuyItem("necropolis", 408, "DeathKnight", shopItemID: 8079);
 
