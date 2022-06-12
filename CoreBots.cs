@@ -1,5 +1,4 @@
-﻿//Scripts autoupdate
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -1659,6 +1658,7 @@ public class CoreBots
             Bot.Sleep(ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
+        Bot.Player.ExitCombat();
     }
     private string lastJumpWait = "";
 
