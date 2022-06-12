@@ -60,11 +60,7 @@ public class HollowbornScythe
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", isTemp: false, publicRoom: true);
 
-            if (!Core.CheckInventory(57447))
-            {
-                Adv.BuyItem("tercessuinotlim", 1951, 57447);
-            }
-
+            Adv.BuyItem("tercessuinotlim", 1951, 57447);
             Adv.BuyItem("shadowrealm", 1889, item);
         }
 
