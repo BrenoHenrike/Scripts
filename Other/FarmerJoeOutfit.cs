@@ -31,22 +31,35 @@ public class FarmerJoeOutfit
 
     public void Outfit()
     {
-        Farm.Experience(50);
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
-        EI.GetEI();
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
-        Farm.Experience(100);
-        Scythe.GetHBReapersScythe();
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
         RagsandHat();
         ServersAreDown();
+        if (Bot.Player.Level < 50)
+        {
+            Adv.EnhanceEquipped(EnhancementType.Lucky);
+            Core.Logger($"{Bot.Player.Level} / 50, Leveling {100 - Bot.Player.Level} Levels");
+            Farm.Experience(50);
+        }
+        if (!Core.CheckInventory("Eternal Inversionist"))
+        {
+            Adv.EnhanceEquipped(EnhancementType.Lucky);
+            Core.Logger("Aquiring Eternal Inversionist");
+            EI.GetEI();
+        }
+        if (Bot.Player.Level < 100)
+        {
+            Adv.EnhanceEquipped(EnhancementType.Lucky);
+            Core.Logger($"{Bot.Player.Level} / 100, Leveling {100 - Bot.Player.Level} Levels");
+            Farm.Experience();
+        }
+        if (!Core.CheckInventory("Hollowborn Reaper's Scythe"))
+        {
+            Core.Logger("Aquiring Hollowborn Reaper's Scythe");
+            Scythe.GetHBReapersScythe();
+            Adv.EnhanceEquipped(EnhancementType.Lucky);
+        }
         // DeathsScythe();
         // BackItem();
         // Pet();
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
-
-
-        Adv.EnhanceItem("Hollowborn Reaper's Scythe", EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
 
         Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
 
@@ -59,9 +72,11 @@ public class FarmerJoeOutfit
         if (Core.CheckInventory("Peasant Rags") | Core.CheckInventory("Scarecrow Hat"))
             return;
 
-        Core.BuyItem("yulgar", 41, "Peasant Rags");
+        Core.Logger("Farming Rags & Hat");
+
+        Adv.BuyItem("yulgar", 41, "Peasant Rags");
         Bot.Wait.ForPickup("Peasant Rags");
-        Core.BuyItem("yulgar", 16, "Scarecrow Hat");
+        Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
         Bot.Wait.ForPickup("Scarecrow Hat");
     }
 
@@ -70,6 +85,7 @@ public class FarmerJoeOutfit
         if (Core.CheckInventory("The Server is Down"))
             return;
 
+        Core.Logger("Farming Servers Are Down Sign");
         Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false);
         Bot.Wait.ForPickup("The Server is Down");
     }

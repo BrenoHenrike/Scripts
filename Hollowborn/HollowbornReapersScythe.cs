@@ -62,7 +62,6 @@ public class HollowbornScythe
 
             if (!Core.CheckInventory(57447))
             {
-                Farm.Gold(15000000);
                 Adv.BuyItem("tercessuinotlim", 1951, 57447);
             }
 
