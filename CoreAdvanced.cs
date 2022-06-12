@@ -651,7 +651,7 @@ public class CoreAdvanced
                     continue;
 
                 if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                    BuyItem(map, shopID, req.ID, req.Quantity, shopQuant, shopItemID);
+                    BuyItem(map, shopID, req.ID, req.Quantity);
             }
         }
 
@@ -960,6 +960,7 @@ public class CoreAdvanced
         Core.Jump(cell, pad);
 
         Bot.Events.CounterAttack += _KillUltra;
+        bool shouldAttack = true;
 
         if (item == "")
         {
@@ -995,24 +996,24 @@ public class CoreAdvanced
 
         if (!forAuto)
             GearStore(true);
-    }
 
-    private bool shouldAttack = true;
-    private void _KillUltra(ScriptInterface bot, bool faded)
-    {
-        Monster? Target = null;
-        if (!faded)
+        void _KillUltra(ScriptInterface bot, bool faded)
         {
-            Target = Bot.Player.Target;
-            shouldAttack = false;
-            Bot.Player.CancelAutoAttack();
-            Bot.Player.CancelTarget();
-        }
-        else
-        {
-            if (Target != null)
-                Bot.Player.Attack(Target);
-            shouldAttack = true;
+            Monster? Target = null;
+            if (!faded)
+            {
+                Target = Bot.Player.Target;
+                shouldAttack = false;
+                Bot.Player.CancelAutoAttack();
+                Bot.Player.CancelTarget();
+            }
+            else
+            {
+                if (Target != null)
+                    Bot.Player.Attack(Target);
+                else Bot.Player.Attack("*");
+                shouldAttack = true;
+            }
         }
     }
 
