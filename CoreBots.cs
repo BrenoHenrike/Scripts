@@ -76,7 +76,7 @@ public class CoreBots
     public string[] EmptyArray = { "" };
     public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
-    public static string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+    public string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
 
     #endregion
 
@@ -1309,6 +1309,7 @@ public class CoreBots
     /// </summary>
     public bool StopBot()
     {
+        GC.KeepAlive(Instance);
         CancelRegisteredQuests();
         SavedState(false);
         Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
@@ -1380,7 +1381,7 @@ public class CoreBots
         "battleon",
         "hi",
         "Hello",
-        $"I\'m using {ScriptInterface.Instance.Inventory.CurrentClass.Name}",
+        //$"I\'m using {ScriptInterface.Instance.Inventory.CurrentClass.Name}",
         "I'm maidenless",
         "You\'re maidenless",
         "Drakath did nothing wrong!",
@@ -1388,7 +1389,7 @@ public class CoreBots
         "dont spam heal. Time it properly",
         "Make AQW great again",
 
-        $"I\'ve reached level {ScriptInterface.Instance.Player.Level}!!",
+        //$"I\'ve reached level {ScriptInterface.Instance.Player.Level}!!",
         "hey, can you help me out with this boss?",
         "Do u have scroll?",
         "I\'m gonna play Elden Ring!",
@@ -1537,7 +1538,7 @@ public class CoreBots
     public void RunCore()
     {
         MessageBox.Show("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        StopBot();
+        Bot.Stop(true);
     }
 
     #endregion
@@ -1809,7 +1810,8 @@ public class CoreBots
     }
 
     public List<string> CBOList = new();
-    public bool CBO_Active = File.Exists(AppPath + $@"\plugins\options\CBO_Storage({ScriptInterface.Instance.Player.Username}).txt");
+    public bool CBO_Active => File.Exists(AppPath + $@"\plugins\options\CBO_Storage({ScriptInterface.Instance.Player.Username}).txt");
+
 
     #endregion
 }
