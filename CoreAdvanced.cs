@@ -282,7 +282,7 @@ public class CoreAdvanced
     {
         Bot.Wait.ForPickup(ClassName);
 
-        InventoryItem? itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
         if (itemInv == null)
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
         GearStore();
