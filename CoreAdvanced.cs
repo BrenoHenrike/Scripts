@@ -804,7 +804,7 @@ public class CoreAdvanced
 
     public void GetItemReq(ShopItem item)
     {
-        if (item.Faction != null && item.RequiredReputation > 0)
+        if (item.Faction != null && item.Faction != "None" && item.RequiredReputation > 0)
             runRep(item.Faction, RepCPLevel.First(x => x.Key == item.RequiredReputation).Value);
         Farm.Experience(item.Level);
         Farm.Gold(item.Cost);
@@ -820,7 +820,9 @@ public class CoreAdvanced
             Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
             return;
         }
-        theMethod.Invoke(Farm, new object[] { rank });
+        if (faction != "Alchemy")
+            theMethod.Invoke(Farm, new object[] { rank });
+        else theMethod.Invoke(Farm, new object[] { rank, true });
     }
 
     private Dictionary<int, int> RepCPLevel = new()
