@@ -4,7 +4,6 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
-//cs_include Scripts/Farm/LVLQuickto100.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/DageChallengeStory.cs
 //cs_include Scripts/Legion/Various/SoulSand.cs
@@ -24,7 +23,6 @@ public class NecroticBladeoftheUnderworld
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public NecroticSwordOfDoom NSoD = new();
-    public LVLQuick LVL = new();
     public CoreLegion Legion = new();
     public DageChallengeStory DageChallenge = new();
     public AnotherOneBitesTheDust SoulSand = new();
@@ -39,8 +37,6 @@ public class NecroticBladeoftheUnderworld
 
         Core.SetOptions(false);
     }
-
-
 
     public void GetNBoU()
     {
