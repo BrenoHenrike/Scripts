@@ -1345,6 +1345,7 @@ public class CoreBots
 
     public void SavedState(bool on = true)
     {
+        string[] SavedStateRNG = _SavedStateRNG();
         if (on)
         {
             int MinumumDelay = 180;
@@ -1358,9 +1359,9 @@ public class CoreBots
                 SSH++;
                 if (SSH >= (timerInterval / 5))
                 {
-                    int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
+                    int messageSelect = Bot.Runtime.Random.Next(1, SavedStateRNG.Length);
                     Bot.SendMSGPacket("Ignore the whisper below, this is to save your player data", "Saved-State", "moderator");
-                    Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
+                    Bot.SendWhisper(Bot.Player.Username, SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
                     timerInterval = Bot.Runtime.Random.Next(MinumumDelay, MaximumDelay);
                     SSH = 0;
                 }
@@ -1369,59 +1370,62 @@ public class CoreBots
         else if (Bot.Handlers.Any(handler => handler.Name == "Saved-State Handler"))
         {
             Bot.Handlers.RemoveAll(handler => handler.Name == "Saved-State Handler");
-            int messageSelect = Bot.Runtime.Random.Next(1, _SavedStateRNG.Length);
-            Bot.SendMSGPacket("Final Saved-State before the Saved State Handler is shut off", "Saved-State", "moderator");
-            Bot.SendWhisper(Bot.Player.Username, _SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
+            int messageSelect = Bot.Runtime.Random.Next(1, SavedStateRNG.Length);
+            Bot.SendMSGPacket("Final Saved-State before the Saved State Handler is turned off", "Saved-State", "moderator");
+            Bot.SendWhisper(Bot.Player.Username, SavedStateRNG[messageSelect] + $" {Bot.Runtime.Random.Next(1000, 1000000)}");
             Logger("Saved State Handler disabled");
         }
     }
 
-    private string[] _SavedStateRNG =
+    private string[] _SavedStateRNG()
     {
-        "battleon",
-        "hi",
-        "Hello",
-        //$"I\'m using {ScriptInterface.Instance.Inventory.CurrentClass.Name}",
-        "I'm maidenless",
-        "You\'re maidenless",
-        "Drakath did nothing wrong!",
-        "Have you checked design notes?",
-        "dont spam heal. Time it properly",
-        "Make AQW great again",
+        return new[]
+        {
+            "battleon",
+            "hi",
+            "Hello",
+            $"I\'m using {Bot.Inventory.CurrentClass.Name}",
+            "I'm maidenless",
+            "You\'re maidenless",
+            "Drakath did nothing wrong!",
+            "Have you checked design notes?",
+            "dont spam heal. Time it properly",
+            "Make AQW great again",
 
-        //$"I\'ve reached level {ScriptInterface.Instance.Player.Level}!!",
-        "hey, can you help me out with this boss?",
-        "Do u have scroll?",
-        "I\'m gonna play Elden Ring!",
-        "Imma play Minecraft",
-        "im gonna play gta",
-        "need 1 LOO championdrakath",
-        "what is 1+1?",
-        "It costs a lot of AC",
-        "I might buy membership",
+            $"I\'ve reached level {Bot.Player.Level}!!",
+            "hey, can you help me out with this boss?",
+            "Do u have scroll?",
+            "I\'m gonna play Elden Ring!",
+            "Imma play Minecraft",
+            "im gonna play gta",
+            "need 1 LOO championdrakath",
+            "what is 1+1?",
+            "It costs a lot of AC",
+            "I might buy membership",
 
-        "I\'m considering buying member",
-        "i dont think I'm going to buy legend",
-        "I should get Awescended",
-        "I love the latest AC chest",
-        "i dislike the new collection chest",
-        "It\'s on the wiki",
-        "Have you heard?",
-        "This is such a grind",
-        "Your mic is muted",
-        "you forgot to mute your mic",
+            "I\'m considering buying member",
+            "i dont think I'm going to buy legend",
+            "I should get Awescended",
+            "I love the latest AC chest",
+            "i dislike the new collection chest",
+            "It\'s on the wiki",
+            "Have you heard?",
+            "This is such a grind",
+            "Your mic is muted",
+            "you forgot to mute your mic",
 
-        "I like your armor",
-        "I like that helm",
-        "Nice weapon",
-        "Where did you get that cape?",
-        "is your pet rare?",
-        ".",
-        "test",
-        "ping",
-        "you there?",
-        "I\'m going AFK"
-    };
+            "I like your armor",
+            "I like that helm",
+            "Nice weapon",
+            "Where did you get that cape?",
+            "is your pet rare?",
+            ".",
+            "test",
+            "ping",
+            "you there?",
+            "I\'m going AFK"
+        };
+    }
 
     private void ReadMe()
     {
