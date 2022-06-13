@@ -1,5 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 public class DoomVaultA
 {
@@ -7,6 +9,8 @@ public class DoomVaultA
 
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -20,10 +24,15 @@ public class DoomVaultA
     public void StoryLine()
     {
         if (Core.isCompletedBefore(3008))
+        {
+            Core.Logger("VaultA Complete");
             return;
+        }
+
         Core.AcceptandCompleteTries = 1;
 
         Story.PreLoad();
+
 
         // the challenge begins
         Story.KillQuest(QuestID: 2952, MapName: "doomvault", MonsterName: "Grim Soldier");
@@ -33,25 +42,31 @@ public class DoomVaultA
         Story.KillQuest(QuestID: 2953, MapName: "doomvault", MonsterName: "Grim Fighter");
         Bot.Quests.UpdateQuest(3008);
 
+
         // the battle's heating up
         Story.KillQuest(QuestID: 2954, MapName: "doomvault", MonsterName: "Grim Fire Mage");
         Bot.Quests.UpdateQuest(3008);
+
 
         // a close shave
         Story.KillQuest(QuestID: 2955, MapName: "doomvault", MonsterName: "Grim Shelleton");
         Bot.Quests.UpdateQuest(3008);
 
+
         // eye spy a victim
         Story.KillQuest(QuestID: 2965, MapName: "doomvault", MonsterName: "Flying Spyball");
         Bot.Quests.UpdateQuest(3008);
+
 
         // help me!
         Story.KillQuest(QuestID: 2966, MapName: "doomvault", MonsterName: "Princess Angler");
         Bot.Quests.UpdateQuest(3008);
 
+
         // get your hands dirty
         Story.KillQuest(QuestID: 2967, MapName: "doomvault", MonsterName: "Grim Ectomancer");
         Bot.Quests.UpdateQuest(3008);
+
 
         // a rocky battle
         Story.KillQuest(QuestID: 2968, MapName: "doomvault", MonsterName: "Fallen Light Statue");

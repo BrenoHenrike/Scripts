@@ -50,6 +50,7 @@
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DoomVault.cs
+//cs_include Scripts/Story/DoomVaultB.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/J6Saga.cs
@@ -100,6 +101,7 @@ public class AllStory
     public Collection Collection = new();
     public DjinnGateStory DjinnGateStory = new();
     public DoomVaultA DoomVaultA = new();
+    public DoomVaultB DoomVaultB = new();
     public DragonFableOrigins DragonFableOrigins = new();
     public GlaceraStory GlaceraStory = new();
     public J6Saga J6Saga = new();
@@ -181,6 +183,7 @@ public class AllStory
         DjinnGateStory.DjinnGate();
         Core.Logger($"DjinnGateStory Complete");
         DoomVaultA.StoryLine();
+        DoomVaultB.StoryLine();
         Core.Logger($"Questline Complete");
         DragonFableOrigins.DragonFableOriginsAll();
         Core.Logger($"DragonFableOrigins Complete");
