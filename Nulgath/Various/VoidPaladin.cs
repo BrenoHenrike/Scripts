@@ -73,7 +73,7 @@ public class VoidPaladin
 
             if (!Core.CheckInventory("Scroll of Underworld"))
             {
-                if (Core.CheckInventory("Archmage Ink"))
+                if (!Core.CheckInventory("Archmage Ink"))
                 {
                     Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 2, false);
                     Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
@@ -81,7 +81,6 @@ public class VoidPaladin
                 Core.ChainComplete(2346);
                 Bot.Player.Pickup("Scroll of Underworld");
             }
-
             Core.EnsureCompleteChoose(5826);
             Core.Logger($"Completed x{i++}");
         }
