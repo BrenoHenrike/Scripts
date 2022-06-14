@@ -40,7 +40,7 @@ public class UpgradeSepulchuresOriginalHelm
         Core.EnsureAccept(7069);
         DS.GetShard(1);
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("shadowfallwar", "Bonemuncher", "Ultimate Darkness Gem", 75);
+        Core.KillMonster("shadowfallwar", "Garden1", "Bottom", "Bonemuncher", "Ultimate Darkness Gem", 75);
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("frozenlair", "Lich Lord", "Necrotic Orb", 150);
         Core.HuntMonster("underworld", "Frozen Pyromancer", "Flaming Skull", 100);
