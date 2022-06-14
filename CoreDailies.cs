@@ -408,11 +408,20 @@ public class CoreDailies
             Core.Logger("Skipped");
             return;
         }
+        if (!Core.CheckInventory("ShadowScythe General") && Core.CheckInventory("Shadow Shield", 100))
+        {
+            Core.BuyItem("shadowfall", 1644, "ShadowScythe General");
+            return;
+        }
         if (!CheckDaily(3828, true, "Shadow Shield") && (Core.IsMember && !CheckDaily(3827, true, "Shadow Shield")))
             return;
         DailyRoutine(3828, "lightguardwar", "Citadel Crusader", "Broken Blade");
         if (Core.IsMember)
+        {
             DailyRoutine(3827, "lightguardwar", "Citadel Crusader", "Broken Blade");
+            if (Core.CheckInventory("Shadow Shield", 100))
+                Core.BuyItem("shadowfall", 1644, "ShadowScythe General");
+        }
     }
 
     public void GrumbleGrumble()
