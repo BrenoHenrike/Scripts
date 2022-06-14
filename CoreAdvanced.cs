@@ -621,6 +621,9 @@ public class CoreAdvanced
 
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
+        if (Core.CheckInventory(itemID, quant))
+            return;
+
         ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
@@ -630,6 +633,9 @@ public class CoreAdvanced
 
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
+        if (Core.CheckInventory(itemName, quant))
+            return;
+
         ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
