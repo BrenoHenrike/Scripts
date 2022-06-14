@@ -53,7 +53,7 @@ public class BlazingBeachMerge
         {
             Core.EnsureAccept(8705);
             Core.HuntMonster("blazingbeach", "Dao Treeant", "Cavern Wood", 12, log: false);
-            Core.HuntMonster("blazingbeach", "Burning Bombadier", "Redistributed Loot", 12, log: false);
+            Core.KillMonster("blazingbeach", "r2", "Right", "Burning Bombadier", "Redistributed Loot", 12, log: false);
             Core.HuntMonster("burningbeach", "Water Goblin", "Goblin Canteen", 5, log: false);
             Core.EnsureComplete(8705);
         }
@@ -108,9 +108,9 @@ public class BlazingBeachMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("blazingbeach", "Red-Hot Raider", "Raider Repelled", 10, log: false);
-                        Core.HuntMonster("blazingbeach", "Scalding Shooter", "Sharpshooter Shooed", 8, log: false);
-                        Core.HuntMonster("blazingbeach", "Burning Bombadier", "Bomber Bye-Byed", 6, log: false);
+                        Core.KillMonster("blazingbeach", "r5", "Right", "Red-Hot Raider", "Raider Repelled", 10, log: false);
+                        Core.KillMonster("blazingbeach", "r2", "Right", "Scalding Shooter", "Sharpshooter Shooed", 8, log: false);
+                        Core.KillMonster("blazingbeach", "r2", "Right", "Burning Bombadier", "Bomber Bye-Byed", 6, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
