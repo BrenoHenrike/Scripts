@@ -1,0 +1,50 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
+//cs_include Scripts/Other/Materials/DarknessShard.cs
+//cs_include Scripts/Story/Doomwood/AQWZombies.cs
+//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
+using RBot;
+
+public class UpgradeSepulchuresOriginalHelm
+{
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+    public DarknessShard DS = new();
+    public SepulchuresOriginalHelm Seppy = new();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        Core.BankingBlackList.AddRange(new[] { "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor", "Sepulchure's Original Helm" });
+        Upgrade();
+
+        Core.SetOptions(false);
+    }
+
+    public void Upgrade()
+    {
+        if (Core.CheckInventory("Reborn Sepulchure's Helm"))
+            return;
+
+        Seppy.DoAll();
+
+        Core.AddDrop("Reborn Sepulchure's Helm");
+
+        Core.EnsureAccept(7069);
+        DS.GetShard(1);
+        Core.EquipClass(ClassType.Farm);
+        Core.HuntMonster("shadowfallwar", "Bonemuncher", "Ultimate Darkness Gem", 75);
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("frozenlair", "Lich Lord", "Necrotic Orb", 150);
+        Core.HuntMonster("underworld", "Frozen Pyromancer", "Flaming Skull", 100);
+        Core.EnsureComplete(7069);
+        Bot.Wait.ForPickup("Reborn Sepulchure's Helm");
+    }
+}
