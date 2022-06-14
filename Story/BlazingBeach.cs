@@ -1,0 +1,64 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
+using RBot;
+
+public class BuringBeachStory
+{
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new();
+    public CoreFarms Farm = new();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        StoryLine();
+
+        Core.SetOptions(false);
+    }
+
+    public void StoryLine()
+    {
+        Story.PreLoad();
+        Core.EquipClass(ClassType.Farm);
+        // (Volca)No Trespassing
+        Story.KillQuest(8702, "blazingbeach", "Burning Bombadier");
+
+        // Piracy for Pyromancers
+        Story.KillQuest(8703, "blazingbeach", new[] { "Magma Pirate", "Burning Bombadier", "Red-Hot Raider" });
+
+        // Canned Heat
+        Story.KillQuest(8704, "blazingbeach", "Burning Bombadier");
+        Story.MapItemQuest(8704, "blazingbeach", 10252);
+
+        // Dau Go
+        if (!Story.QuestProgression(8705))
+        {
+            Core.EnsureAccept(8705);
+            Core.HuntMonster("blazingbeach", "Dao Treeant", "Cavern Wood", 12, log: false);
+            Core.KillMonster("blazingbeach", "r2", "Right", "Burning Bombadier", "Redistributed Loot", 12, log: false);
+            Core.HuntMonster("burningbeach", "Water Goblin", "Goblin Canteen", 5, log: false);
+            Core.EnsureComplete(8705);
+        }
+        // Bãi Cháy
+        if (!Story.QuestProgression(8706))
+        {
+            Core.EnsureAccept(8706);
+            Core.HuntMonster("burningbeach", "Lavazard", "Lizard Lava", 5, log: false);
+            Core.HuntMonster("burningbeach", "Lava Guardian", "Mage Magma", 5, log: false);
+            Core.HuntMonster("blazingbeach", "Ruby Golem", "Flame Ruby", 3, log: false);
+
+            Core.EnsureComplete(8706);
+        }
+
+        // Sung Sot
+        Story.MapItemQuest(8707, "blazingbeach", 10253);
+        Story.KillQuest(8707, "burningbeach", new[] { "Maladrite", "Shark" });
+
+        Core.EquipClass(ClassType.Solo);
+        // Ha Long   
+        Story.KillQuest(8708, "blazingbeach", "Magma Blazebeard");
+    }
+}
