@@ -60,6 +60,7 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("sevencircleswar", "r17", "Left", "The Beast", "Beast Soul", 15, false, publicRoom: true);
         Adv.BuyItem("sevencircleswar", 1984, "Head of the Legion Beast");
+        Bot.Wait.ForPickup("Head of the Legion Beast");
     }
 
     public void HelmSevenCircles()
@@ -73,10 +74,12 @@ public class HeadoftheLegionBeast
         {
             if (!Core.CheckInventory(Helm))
             {
+                Core.Logger($"Started Farm for: {Helm}");
                 Core.AddDrop(Helm);
                 Legion.FarmLegionToken(1500);
                 Indulgence(10);
-                Adv.BuyItem("sevencircles", 1980, Helm, shopItemID);
+                Core.BuyItem("sevencircles", 1980, Helm, shopItemID);
+                Bot.Wait.ForPickup(Helm);
             }
         }
         (string, int)[] HelmsCircleWar = { ("Crown of Wrath", 8250), ("Face of Treachery", 8254), ("Faces of Violence", 8249) };
@@ -84,13 +87,16 @@ public class HeadoftheLegionBeast
         {
             if (!Core.CheckInventory(Helm))
             {
+                Core.Logger($"Started Farm for: {Helm}");
                 Core.AddDrop(Helm);
                 Legion.FarmLegionToken(1500);
                 Penance(10);
                 Adv.BuyItem("sevencircleswar", 1984, Helm, shopItemID);
+                Bot.Wait.ForPickup(Helm);
             }
         }
         Adv.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles");
+        Bot.Wait.ForPickup("Helms of the Seven Circles");
     }
 
     public void EssenceWrath(int quant = 300)
@@ -192,7 +198,7 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Indulgence");
-        
+
         Core.RegisterQuests(7978);
         while (!Core.CheckInventory("Indulgence", quant))
         {
