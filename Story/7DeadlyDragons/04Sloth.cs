@@ -1,6 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
+using RBot.Items;
+
+
 public class Sloth
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
@@ -20,18 +23,8 @@ public class Sloth
     {
         if (Core.isCompletedBefore(5960))
             return;
-            
-        //that it didnt work anymore so keep this 👍 (tested it just says its already complete)
-        if (!Core.CheckInventory("Hazmat Suit"))
-        {
-            Core.JumpWait();
-            Core.EnsureAccept(5944);
-            Core.GetMapItem(5380, 1, "sloth");
-            Core.GetMapItem(5381, 1, "sloth");
-            Core.EnsureComplete(5944);
-            Bot.Sleep(Core.ActionDelay);
-            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
-        }
+
+        HazMatSuit();
 
         // Are There Any Survivors?
         Story.KillQuest(5945, "sloth", "Plague Zombie");
@@ -74,5 +67,24 @@ public class Sloth
         Story.KillQuest(5960, "sloth", "Actual Sloth Dragon");
         // Mutated Plague
         Story.KillQuest(5959, "sloth", "Mutated Plague");
+    }
+
+    void HazMatSuit()
+    {
+        if (!Core.CheckInventory(40710))
+        {
+            Core.Logger("Suit not found");
+            Core.JumpWait();
+            Core.EnsureAccept(5944);
+            Core.GetMapItem(5380, 1, "sloth");
+            Core.GetMapItem(5381, 1, "sloth");
+            Core.EnsureComplete(5944);
+            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+        }
+        else
+        {
+            Core.JumpWait();
+            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+        }
     }
 }
