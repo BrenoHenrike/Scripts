@@ -35,19 +35,19 @@ public class Complete7DeadlyDragons
 
     public void CompleteToD()
     {
-        Core.Logger("Gluttony");
         s01.GluttonySaga();
-        Core.Logger("Pride");
+        Core.Logger("Finished Gluttony");
         s02.PrideSaga();
-        Core.Logger("Greed");
+        Core.Logger("Finished Pride");
         s03.GreedSaga();
-        Core.Logger("Sloth");
+        Core.Logger("Finished Greed");
         s04.SlothSaga();
-        Core.Logger("Lust");
+        Core.Logger("Finished Sloth");
         s05.LustSaga();
-        Core.Logger("Envy");
+        Core.Logger("Finished Lust");
         s06.EnvySaga();
-        Core.Logger("Wrath");
+        Core.Logger("Finished Envy");
         s07.WrathSaga();
+        Core.Logger("Finished Wrath");
     }
 }

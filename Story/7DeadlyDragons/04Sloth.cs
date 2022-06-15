@@ -20,12 +20,18 @@ public class Sloth
     {
         if (Core.isCompletedBefore(5960))
             return;
-
-        // Protective Gear Required (Slot -1, will repeat even if completed before)
-        Story.MapItemQuest(5944, "sloth", new[] { 5380, 5381 });
-
-        Core.JumpWait();
-        Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+            
+        //that it didnt work anymore so keep this 👍 (tested it just says its already complete)
+        if (!Core.CheckInventory("Hazmat Suit"))
+        {
+            Core.JumpWait();
+            Core.EnsureAccept(5944);
+            Core.GetMapItem(5380, 1, "sloth");
+            Core.GetMapItem(5381, 1, "sloth");
+            Core.EnsureComplete(5944);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+        }
 
         // Are There Any Survivors?
         Story.KillQuest(5945, "sloth", "Plague Zombie");

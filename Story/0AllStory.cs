@@ -120,7 +120,7 @@ public class AllStory
         Core.SetOptions(false);
     }
     public void CompleteAll()
-    {
+    {            
         C7DD.CompleteToD();
         Core.Logger($"C7DD Complete");
         SDD.ShadowDragonDefender();
