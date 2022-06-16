@@ -116,7 +116,6 @@ public class Banished
             Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemerald Shard", 5);
             Core.EnsureComplete(2023);
         }
-        Core.SetOptions(false);
 
         // Know Thy Enemy
         Story.MapItemQuest(2024, "banished", 980);
