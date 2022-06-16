@@ -28,7 +28,7 @@ public class EnchantedFrozenClaymore
         Akriloth.Storyline();
         Core.EquipClass(ClassType.Solo);
 
-        Core.AddDrop('Ice Shard');
+        Core.AddDrop("Ice Shard");
         
         while (!Core.CheckInventory(43712, 50))
         {
