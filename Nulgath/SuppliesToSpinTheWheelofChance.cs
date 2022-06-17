@@ -10,7 +10,7 @@ public class SuppliesToSpinTheWheelofChance
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Nulgath.bagDrops[..^9]);
+        Core.BankingBlackList.AddRange(Nulgath.bagDrops[..^11]);
         Core.SetOptions();
 
         /*Core.AddDrop("Wicked Edge Cape", "ArchFiend's Spikes", "ArchFiend's Vampragon",

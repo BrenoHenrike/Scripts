@@ -26,15 +26,15 @@ public class CoreNulgath
     {
         "Dark Crystal Shard",
         "Diamond of Nulgath",
-        "Essence of Nulgath",
         "Gem of Nulgath",
         "Tainted Gem",
         "Unidentified 10",
         "Unidentified 13",
         "Unidentified 24",
-        "Unidentified 25",
         "Voucher of Nulgath",
         "Voucher of Nulgath (non-mem)",
+        "Essence of Nulgath",
+        "Unidentified 25",
         "Totem of Nulgath",
         "Fiend Token",
         "Blood Gem of the Archfiend",
@@ -462,7 +462,7 @@ public class CoreNulgath
             if (item != "Any")
                 Core.AddDrop(item);
             else
-                Core.AddDrop(bagDrops[..^9]);
+                Core.AddDrop(bagDrops[..^11]);
             Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
