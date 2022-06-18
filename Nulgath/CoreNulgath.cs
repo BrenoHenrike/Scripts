@@ -24,26 +24,26 @@ public class CoreNulgath
     /// </summary>
     public string[] bagDrops =
     {
-        "Blood Gem of the Archfiend",
         "Dark Crystal Shard",
         "Diamond of Nulgath",
-        "Essence of Nulgath",
-        "Fiend Token",
-        "Totem of Nulgath",
         "Gem of Nulgath",
         "Tainted Gem",
         "Unidentified 10",
         "Unidentified 13",
         "Unidentified 24",
-        "Unidentified 25",
-        "Unidentified 34",
         "Voucher of Nulgath",
         "Voucher of Nulgath (non-mem)",
+        "Essence of Nulgath",
+        "Unidentified 25",
+        "Totem of Nulgath",
+        "Fiend Token",
+        "Blood Gem of the Archfiend",
         "Emblem of Nulgath",
         "Receipt of Swindle",
         "Bone Dust",
         "Nulgath's Approval",
-        "Archfiend's Favor"
+        "Archfiend's Favor",
+        "Unidentified 34"
     };
 
     /// <summary>
@@ -462,7 +462,7 @@ public class CoreNulgath
             if (item != "Any")
                 Core.AddDrop(item);
             else
-                Core.AddDrop(bagDrops);
+                Core.AddDrop(bagDrops[..^11]);
             Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
