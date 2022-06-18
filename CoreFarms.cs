@@ -369,13 +369,13 @@ public class CoreFarms
             Core.BludrutMove(15, "Morale1A");
 
             if (!canSoloBoss)
-                Bot.Player.Kill("Team B Brawler");
+                Bot.Player.Kill("(B) Brawler");
             Core.BludrutMove(23, "Morale1B");
             if (!canSoloBoss)
-                Bot.Player.Kill("Team B Brawler");
+                Bot.Player.Kill("(B) Brawler");
             Core.BludrutMove(25, "Morale1C");
             if (!canSoloBoss)
-                Bot.Player.Kill("Team B Brawler");
+                Bot.Player.Kill("(B) Brawler");
             Core.BludrutMove(28, "Captain1", 528, 255);
 
             Bot.Player.Kill("Team B Captain");

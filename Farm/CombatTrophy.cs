@@ -14,7 +14,7 @@ public class CombatTrophy
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.gold);
+        Adv.BestGear(GearBoost.dmgAll);
         // Change to false if you need to kill the Restorers and Brawlers
         Farm.BludrutBrawlBoss(canSoloBoss: true);
 
