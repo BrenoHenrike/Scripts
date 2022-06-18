@@ -21,7 +21,7 @@ public class EnchantedRodofGreasedLightning
     {
         if (Core.CheckInventory("Enchanted Rod of Greased Lightning"))
             return;
-
-        Core.HuntMonster("crashruins", "CluckMoo Idol", "Enchanted Rod of Greased Lightning");
+            
+        Core.HuntMonster("crashruins", "CluckMoo Idol", "Enchanted Rod of Greased Lightning", isTemp: false);
     }
 }
