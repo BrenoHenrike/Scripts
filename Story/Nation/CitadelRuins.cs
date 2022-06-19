@@ -29,6 +29,116 @@ public class CitadelRuins
         MurrysQuests();
         PolishsQuestsTercessuinotlim();
         PolishsQuestsCitadelRuins();
+        CutieMakaisQuest();
+        CasparillasQuests();
+    }
+
+
+    public void CasparillasQuests()
+    {
+
+        if (Core.isCompletedBefore(6682))
+            return;
+
+        Story.PreLoad();
+
+        // Easy AND Breezy!
+        Story.KillQuest(6669, "forest", "Boss Zardman");
+
+        // Disguises and a Ruse
+        Story.KillQuest(6671, "bludrut2", "Shadow Creeper");
+
+        // Icky and Smelly
+        Story.KillQuest(6672, "marsh2", "Thrax Ironhide");
+
+        // Dress for the Occasion!
+        Story.KillQuest(6673, "sleuthhound", "Harmoire");
+
+        // Can't Play Games without A Lunch Break
+        Story.KillQuest(6674, "noobshire", "Kittarian Mouse Eater");
+
+        // She Needs a Hero
+        Story.KillQuest(6675, "doomvault", "Princess Angler");
+
+        // Sun and Fun
+        Story.KillQuest(6676, "beachparty", "Sun Flare");
+
+        // Heebie Jeebies
+        Story.KillQuest(6677, "marsh", "Dreadspider");
+
+        // A New Pet
+        Story.KillQuest(6678, "iceplane", "Enfield");
+
+        // Spoiled Dragon
+        Story.KillQuest(6679, "lair", "Red Dragon");
+
+        // The Unpredictable Element
+        Story.KillQuest(6680, "ledgermayne", "Ledgermayne");
+
+        // There, But Not There
+        Story.KillQuest(6681, "hyperium", "Invisible");
+
+        // Staying Humble
+        Core.AddDrop("Elite Void Sword Pet");
+        Story.KillQuest(6682, "underlair", "ArchFiend DragonLord");
+
+    }
+
+    public void CutieMakaisQuest()
+    {
+        if (Core.isCompletedBefore(4325))
+            return;
+
+        Story.PreLoad();
+
+        // Drearia On Demand
+        Story.MapItemQuest(4312, "drearia", 3485);
+        Story.KillQuest(4312, "drearia", new[] { "Dark Makai", "Evil Elemental", "Green Rat" });
+
+        // Plant a Little Seed and Nature Grows
+        Story.KillQuest(4313, "drearia", "Dark Makai");
+
+        // A Key Discovery
+        Story.MapItemQuest(4314, "drearia", 3466);
+        Story.KillQuest(4314, "drearia", "Green Rat");
+
+        // Creepy House... Yay!
+        Story.MapItemQuest(4315, "drearia", 3467);
+        Story.KillQuest(4315, "drearia", "Green Rat");
+
+        // Sparkling Books
+        Story.MapItemQuest(4316, "drearia", 3468);
+
+        // A Paladin in Peril
+        Story.MapItemQuest(4317, "swordhavenpink", 3469);
+
+        // Pink Stinks!
+        Story.MapItemQuest(4318, "swordhavenpink", 3486, 5);
+        Story.KillQuest(4318, "swordhavenpink", "Pink Slime");
+
+        // Rats, RATS!
+        Story.KillQuest(4319, "swordhavenpink", "Pink Rat");
+
+        // AdventureQuest Worm
+        Story.KillQuest(4320, "swordhavenpink", "Cutie Grumbley");
+
+        // UnBEARable Sight
+        Story.MapItemQuest(4321, "pinewoodpink", 3470);
+        Story.KillQuest(4321, "pinewoodpink", "Pink Grizzly");
+
+        // Too Much Pink in Pinewood!
+        Story.MapItemQuest(4322, "pinewoodpink", 3471, 5);
+        Story.KillQuest(4321, "pinewoodpink", "Pink Shell Turtle");
+
+        // Kill Sparkletooth
+        Story.KillQuest(4323, "pinewoodpink", "Sparkletooth");
+
+        // The Citadorable Plot   
+        Story.MapItemQuest(4324, "Citadel", 3472);
+
+        // Fuzzy Run Minigame        
+        Story.KillQuest(4325, "pinewoodpink", "Pink Grizzly");
+
     }
 
     public void MurrysQuests()
@@ -99,7 +209,7 @@ public class CitadelRuins
         Story.MapItemQuest(6173, "citadelruins", 5602);
 
         //clear out the squatters
-        if(!Story.QuestProgression(6174))
+        if (!Story.QuestProgression(6174))
         {
             Core.EnsureAccept(6174);
             Core.HuntMonster("citadelruins", "Inquisitor Hobo", "Inquisitor Hobos Defeated", 8);
@@ -113,7 +223,7 @@ public class CitadelRuins
         Bot.Sleep(2500);
 
         //unlock the door
-        if(!Story.QuestProgression(6176))
+        if (!Story.QuestProgression(6176))
         {
             Core.EnsureAccept(6176);
             Core.HuntMonster("citadelruins", "Inquisitor Heavy", "Heavies Beat Down", 2);
