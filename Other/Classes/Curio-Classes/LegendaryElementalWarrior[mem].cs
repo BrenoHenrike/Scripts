@@ -19,7 +19,7 @@ public class LegendaryElementalWarrior
         Core.SetOptions(false);
     }
 
-    public void GetLEW()
+    public void GetLEW(bool rankUpClass = true)
     {
         if (!Core.IsMember)
         {
@@ -40,9 +40,9 @@ public class LegendaryElementalWarrior
         Adv.BuyItem("Curio", 807, 22189);
         Bot.Wait.ForItemBuy();
 
-        Core.BuyItem("Curio", 809, "Legendary Elemental Warrior");
-        Bot.Wait.ForItemBuy();
+        Core.BuyItem("Curio", 809, "Legendary Elemental Warrior", shopItemID: 2412);
         
-        Adv.rankUpClass("Legendary Elemental Warrior"); //this is still broken D:
+        if (rankUpClass)
+            Adv.rankUpClass("Legendary Elemental Warrior");
     }
 }
