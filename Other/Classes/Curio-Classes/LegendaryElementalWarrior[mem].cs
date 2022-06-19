@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class UltraElementalWarrior
+public class LegendaryElementalWarrior
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,20 +14,20 @@ public class UltraElementalWarrior
     {
         Core.SetOptions();
 
-        GetUEW();
+        GetLEW();
 
         Core.SetOptions(false);
     }
 
-    public void GetUEW()
+    public void GetLEW()
     {
         if (!Core.IsMember)
         {
             Core.Logger("Class Requires member to buy without acs, sorry.");
             return;
         }
-        
-        if (Core.CheckInventory("Ultra Elemental Warrior"))
+
+        if (Core.CheckInventory("Legendary Elemental Warrior"))
             return;
 
         Adv.BuyItem("Curio", 807, 22190);
@@ -40,9 +40,9 @@ public class UltraElementalWarrior
         Adv.BuyItem("Curio", 807, 22189);
         Bot.Wait.ForItemBuy();
 
-        Core.BuyItem("Curio", 810, "Ultra Elemental Warrior");
+        Core.BuyItem("Curio", 809, "Legendary Elemental Warrior");
         Bot.Wait.ForItemBuy();
-
-        Adv.rankUpClass("Ultra Elemental Warrior");
+        
+        Adv.rankUpClass("Legendary Elemental Warrior"); //this is still broken D:
     }
 }
