@@ -250,9 +250,9 @@ public class CoreLegion
         Core.RegisterQuests(5738);
         while (!Core.CheckInventory("Legion Token", quant))
         {
-            Core.HuntMonster("udnerworld", "Bloodfiend", "Foreign Weapon", 20);
-            Core.HuntMonster("udnerworld", "Bloodfiend", "Foreign Equipment ", 20);
-            Core.HuntMonster("udnerworld", "Bloodfiend", "Unknown Substance ", 20);
+            Core.HuntMonster("underworld", "Bloodfiend", "Foreign Weapon", 20);
+            Core.HuntMonster("underworld", "Bloodfiend", "Foreign Equipment ", 20);
+            Core.HuntMonster("underworld", "Bloodfiend", "Unknown Substance ", 20);
         }
         Core.CancelRegisteredQuests();
     }

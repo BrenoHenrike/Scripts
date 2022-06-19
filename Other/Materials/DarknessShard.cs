@@ -26,12 +26,7 @@ public class DarknessShard
 
         if (!Core.CheckInventory("Crypto Token", 3))
         {
-            if (!Dailies.CheckDaily(6187))
-            {
-                Core.EnsureAccept(6187);
-                Core.HuntMonster("boxes", "Sneevil", "Metal Ore");
-                Core.EnsureComplete(6187);
-            }
+            Dailies.CryptoToken();
         }
         Core.BuyItem("curio", 1539, "Darkness Shard");
     }

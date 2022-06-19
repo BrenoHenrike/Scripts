@@ -12,16 +12,8 @@ public class EnchantedRodofGreasedLightning
     {
         Core.SetOptions();
 
-        Wep();
+        Core.HuntMonster("crashruins", "CluckMoo Idol", "Enchanted Rod of Greased Lightning", isTemp: false);
 
         Core.SetOptions(false);
-    }
-
-    public void Wep()
-    {
-        if (Core.CheckInventory("Enchanted Rod of Greased Lightning"))
-            return;
-            
-        Core.HuntMonster("crashruins", "CluckMoo Idol", "Enchanted Rod of Greased Lightning", isTemp: false);
     }
 }

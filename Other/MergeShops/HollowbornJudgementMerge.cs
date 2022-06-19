@@ -55,8 +55,9 @@ public class HollowbornJudgementMerge
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions();
         Core.BankingBlackList.Add("Hollowborn Writ");
+        Core.SetOptions();
+        
         Merge();
 
         Core.SetOptions(false);

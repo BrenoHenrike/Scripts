@@ -21,10 +21,7 @@ public class CtrlAltDelMemberBadge
 
     public void Badge()
     {
-        if (!Core.IsMember)
-            return;
-
-        if (Core.isCompletedBefore(953))
+        if (!Core.IsMember || Core.isCompletedBefore(953))
             return;
 
         // Map - GameHavaen:

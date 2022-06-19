@@ -22,7 +22,7 @@ public class BuringBeachStory
     public void StoryLine()
     {
         Story.PreLoad();
-        Core.EquipClass(ClassType.Farm);
+        
         // (Volca)No Trespassing
         Story.KillQuest(8702, "blazingbeach", "Burning Bombadier");
 

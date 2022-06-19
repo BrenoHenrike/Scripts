@@ -22,7 +22,6 @@ public class UpgradeSepulchuresOriginalHelm
     {
         Core.SetOptions();
 
-        Core.BankingBlackList.AddRange(new[] { "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor", "Sepulchure's Original Helm" });
         Upgrade();
 
         Core.SetOptions(false);

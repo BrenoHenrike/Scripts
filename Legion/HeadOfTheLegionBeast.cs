@@ -60,7 +60,8 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("sevencircleswar", "r17", "Left", "The Beast", "Beast Soul", 15, false, publicRoom: true);
         Adv.BuyItem("sevencircleswar", 1984, "Head of the Legion Beast");
-        Bot.Wait.ForPickup("Head of the Legion Beast");
+        Bot.Wait.ForItemBuy();
+        Adv.EnhanceItem("Head of the Legion Beast", EnhancementType.Lucky);
     }
 
     public void HelmSevenCircles()
@@ -79,7 +80,7 @@ public class HeadoftheLegionBeast
                 Legion.FarmLegionToken(1500);
                 Indulgence(10);
                 Core.BuyItem("sevencircles", 1980, Helm, shopItemID);
-                Bot.Wait.ForPickup(Helm);
+                Bot.Wait.ForItemBuy();
             }
         }
         (string, int)[] HelmsCircleWar = { ("Crown of Wrath", 8250), ("Face of Treachery", 8254), ("Faces of Violence", 8249) };
@@ -92,11 +93,11 @@ public class HeadoftheLegionBeast
                 Legion.FarmLegionToken(1500);
                 Penance(10);
                 Adv.BuyItem("sevencircleswar", 1984, Helm, shopItemID);
-                Bot.Wait.ForPickup(Helm);
+                Bot.Wait.ForItemBuy();
             }
         }
         Adv.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles");
-        Bot.Wait.ForPickup("Helms of the Seven Circles");
+        Bot.Wait.ForItemBuy();
     }
 
     public void EssenceWrath(int quant = 300)
@@ -187,6 +188,7 @@ public class HeadoftheLegionBeast
             SoulsHeresy(15 * quant2);
             Adv.BuyItem("sevencircleswar", 1984, "Penance", Bot.Inventory.GetQuantity("Penance") + 5);
         }
+        Bot.Wait.ForItemBuy();
         Core.Logger($"Finished farming {quant} Penance");
     }
 
