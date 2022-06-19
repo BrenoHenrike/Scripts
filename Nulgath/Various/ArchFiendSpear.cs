@@ -4,6 +4,7 @@
 //cs_include Scripts/Nulgath/CoreNulgath.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Nulgath/AFDL/WillpowerExtraction.cs
+//cs_include Scripts/Nulgath/Various/ArchFiendEnchantedOrbs.cs
 using RBot;
 
 public class ArchFiendSpear
@@ -15,6 +16,7 @@ public class ArchFiendSpear
     public CoreNulgath Nulgath = new();
     public CoreHollowborn HB = new();
     public WillpowerExtraction Will = new();
+    public ArchFiendEnchantedOrbs AFEO = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -43,11 +45,13 @@ public class ArchFiendSpear
             {
                 Farm.Gold(15000000);
                 Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-                Bot.Wait.ForPickup("Unmoulded Fiend Essence");
+                Bot.Wait.ForItemBuy();
             }
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+            Bot.Wait.ForItemBuy();
         }
-
+        
+        AFEO.GetAFEO();
         Will.Unidentified34(1);
         Nulgath.FarmDiamondofNulgath(200);
         HB.FreshSouls(100); // Also has the uni36

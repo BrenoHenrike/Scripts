@@ -39,9 +39,10 @@ public class ArchFiendEnchantedOrbs
             {
                 Farm.Gold(15000000);
                 Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-                Bot.Wait.ForPickup("Unmoulded Fiend Essence");
+                Bot.Wait.ForItemBuy();
             }
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+            Bot.Wait.ForItemBuy();
         }
 
         Nulgath.FarmUni13(1);
