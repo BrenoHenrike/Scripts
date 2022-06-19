@@ -8,6 +8,9 @@
 //cs_include Scripts/Nulgath\AFDL\WillpowerExtraction.cs
 //cs_include Scripts/Story\Nation\Originul.cs
 using RBot;
+using RBot.Items;
+using RBot.Options;
+
 
 public class ArchfiendDeathLord
 {
@@ -21,6 +24,12 @@ public class ArchfiendDeathLord
     public CoreNulgath Nulgath = new();
     public WillpowerExtraction Willpower = new();
 
+    public string OptionsStorage = "Class or All";
+    public List<IOption> Options = new List<IOption>()
+    {
+        new Option<bool>("OnlyClass", "Only get Class?", "Whether to only get the class or all quest rewards"),
+    };
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -29,22 +38,57 @@ public class ArchfiendDeathLord
 
         Core.SetOptions(false);
     }
-    public void GetArm()
+
+    public void GetArm(bool OnlyClass = true)
     {
+        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(7900).Rewards;
+        List<string> RewardsList = new List<string>();
+        foreach (RBot.Items.ItemBase Item in RewardOptions)
+            RewardsList.Add(Item.Name);
+
+        string[] Rewards = RewardsList.ToArray();
+
         if (Core.CheckInventory("Archfiend DeathLord"))
             return;
 
         fiendshard.Fiendshard_Questline();
 
-        Core.EnsureAccept(7900);
-        Nulgath.FarmBloodGem(20);
-        Nulgath.FarmUni13(5);
-        Nulgath.FarmTotemofNulgath(3);
-        Nulgath.FarmVoucher(false);
-        Nulgath.FarmDiamondofNulgath(150);
-        Nulgath.FarmGemofNulgath(50);
-        Willpower.Unidentified34(10);
-        Core.EnsureComplete(7900, 54366);
-        Bot.Wait.ForPickup("Archfiend DeathLord");
+        Core.AddDrop(Rewards);
+
+        Core.RegisterQuests(7900);
+
+        if (OnlyClass == true)
+        {
+            Core.Logger("only getting the class");
+            Nulgath.FarmBloodGem(20);
+            Nulgath.FarmUni13(5);
+            Nulgath.FarmTotemofNulgath(3);
+            Nulgath.FarmVoucher(false);
+            Nulgath.FarmDiamondofNulgath(150);
+            Nulgath.FarmGemofNulgath(50);
+            Willpower.Unidentified34(10);
+            Bot.Wait.ForPickup("Archfiend DeathLord");
+        }
+        else
+        {
+            foreach (string item in RewardsList)
+            {
+                Core.Logger($"Farming for {item}");
+
+                while (!Core.CheckInventory(item))
+                {
+
+                    Nulgath.FarmBloodGem(20);
+                    Nulgath.FarmUni13(5);
+                    Nulgath.FarmTotemofNulgath(3);
+                    Nulgath.FarmVoucher(false);
+                    Nulgath.FarmDiamondofNulgath(150);
+                    Nulgath.FarmGemofNulgath(50);
+                    Willpower.Unidentified34(10);
+                    Bot.Wait.ForPickup(item);
+                }
+            }
+        }
+        Core.CancelRegisteredQuests();
     }
 }
