@@ -59,7 +59,6 @@ public class ArchDoomKnight
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.BankingBlackList.Add("Arch DoomKnight");
         Core.SetOptions();
 
         DoAll();
