@@ -136,7 +136,7 @@ public class Awescended
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("bonecastlec", "r25", "Bottom", "Vaden", "Vaden Helm Token", 333, false);
-                Core.BuyItem("bonecastlec", 1242, itemID: 34655);
+                Core.BuyItem("bonecastlec", 1242, "Vaden's Helm", shopItemID: 4363);
             }
             Core.EquipClass(ClassType.Farm);
             ArmorOfZular();

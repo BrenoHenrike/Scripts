@@ -117,10 +117,10 @@ public class CitadelRuins
         Story.KillQuest(4318, "swordhavenpink", "Pink Slime");
 
         // Rats, RATS!
-        Story.KillQuest(4319, "swordhavenpink", "Pink Rat");
+        Story.KillQuest(4319, "sewerpink", "Pink Rat");
 
         // AdventureQuest Worm
-        Story.KillQuest(4320, "swordhavenpink", "Cutie Grumbley");
+        Story.KillQuest(4320, "sewerpink", "Cutie Grumbley");
 
         // UnBEARable Sight
         Story.MapItemQuest(4321, "pinewoodpink", 3470);
@@ -128,7 +128,7 @@ public class CitadelRuins
 
         // Too Much Pink in Pinewood!
         Story.MapItemQuest(4322, "pinewoodpink", 3471, 5);
-        Story.KillQuest(4321, "pinewoodpink", "Pink Shell Turtle");
+        Story.KillQuest(4322, "pinewoodpink", "Pink Shell Turtle");
 
         // Kill Sparkletooth
         Story.KillQuest(4323, "pinewoodpink", "Sparkletooth");
