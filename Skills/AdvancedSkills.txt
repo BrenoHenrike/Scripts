@@ -128,7 +128,7 @@ Base = Infinity Knight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Infinity Titan = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 | Mode Optimistic
 Base = Interstellar Knight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Legendary ArchFiend = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Legendary Elemental Warrior = 1 | 2 | 3 | 4 | Mode Optimistic
+Atk = Legendary Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 3 | 1 | 4 | 2 | 1 | 2 | 4 | 1 | 2 | 4 | Timeout: 250
 Base = Legendary Hero = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Legendary Naval Commander = 3WW10000 | 4 | 2 | 1 | Timeout: 250
 Base = Legion BladeMaster Assassin = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -173,8 +173,8 @@ Base = Prismatic ClawSuit = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ProtoSartorium = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Psionic MindBreaker = 1 | 2M<25S | 3 | 1 | 4 | Timeout: 250
 Base = Pumpkin Lord = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = PvP Test - Bard = 4 | 1 | 3 | 2 | Timeout:250
-Base = PvP Test - Healer = 4 | 1 | 3 | 2 | Timeout:250
+Base = PvP Test  |  Bard = 4 | 1 | 3 | 2 | Timeout:250
+Base = PvP Test  |  Healer = 4 | 1 | 3 | 2 | Timeout:250
 Base = Pyromancer = 2WW20000 | 1 | 4 | 1 | 2 | Timeout: 250
 Base = Renegade = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Rogue = 2 | 3 | 1 | 4 | Mode Optimistic
@@ -219,7 +219,7 @@ Farm = Timeless Chronomancer = 5 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 Timeout
 Base = Timeless Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Troll Spellsmith = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Troubador of Love = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Ultra Elemental Warrior = 1 | 2 | 3 | 4 | Mode Optimistic
+Atk = Ultra Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 3 | 1 | 4 | 2 | 1 | 2 | 4 | 1 | 2 | 4 | Timeout: 250
 Base = Ultra OmniKnight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Underworld Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | Timeout: 250
 Base = Unchained Rocker = 1 | 2 | 3 | 4 | Mode Optimistic
