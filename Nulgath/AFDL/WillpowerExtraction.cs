@@ -43,7 +43,9 @@ public class WillpowerExtraction
             Core.EnsureAccept(5258);
 
             Adv.BuyItem("shadowfall", 89, "Shadow Lich");
+            Bot.Wait.ForItemBuy();
             Adv.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
+            Bot.Wait.ForItemBuy();
 
             if (!Core.CheckInventory("Unidentified 19"))
             {
@@ -52,6 +54,7 @@ public class WillpowerExtraction
                     while (!Core.CheckInventory("Receipt of Swindle", 6))
                         Nulgath.SwindleReturn();
                     Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+                    Bot.Wait.ForItemBuy();
                 }
                 else Nulgath.Supplies("Unidentified 19");
             }
@@ -59,12 +62,14 @@ public class WillpowerExtraction
             Core.EquipClass(ClassType.Farm);
             if (!Core.CheckInventory("Necrot", 5))
             {
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 10, 8845);
+                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 1);
                 Adv.BuyItem("alchemyacademy", 397, "Necrot", 5, 2);
             }
 
             Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
-            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 1);
+            Bot.Wait.ForItemBuy();
+            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 5, 10);
+            Bot.Wait.ForItemBuy();
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
@@ -79,6 +84,7 @@ public class WillpowerExtraction
             {
                 Nulgath.ApprovalAndFavor(0, 35);
                 Adv.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
+                Bot.Wait.ForItemBuy();
             }
 
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
