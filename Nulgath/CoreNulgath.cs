@@ -562,58 +562,24 @@ public class CoreNulgath
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             Core.AddDrop("Tainted Soul");
 
-        int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
 
         while (!Core.CheckInventory(item, quant))
         {
-            Core.EnsureAccept(2857, 609);
+            Core.RegisterQuests(2857, 609);
             if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                Core.EnsureAccept(599);
+                Core.RegisterQuests(599);
             else if (OBoNPet)
-                Core.EnsureAccept(2561);
+                Core.RegisterQuests(2561);
 
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
-
-            while (Core.CheckInventory("Tainted Core"))
-            {
-                Core.ChainComplete(609);
-                Core.Logger($"Completed x{i++}");
-            }
-
-            while (Core.CheckInventory("Relic of Chaos", 1))
-            {
-                Core.ChainComplete(2857);
-                Core.Logger($"Completed x{i++}");
-            }
-
-            if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-            {
-                while (Core.CheckInventory("Tainted Soul"))
-                {
-                    if (OBoNPet)
-                    {
-                        Core.ChainComplete(2561);
-                        Core.Logger($"Completed x{i++}");
-                    }
-                    else if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
-                    {
-                        Core.ChainComplete(599);
-                        Core.Logger($"Completed x{i++}");
-                    }
-                    else if (Core.CheckInventory("Relic of Chaos", 1))
-                    {
-                        Core.ChainComplete(2857);
-                        Core.Logger($"Completed x{i++}");
-                    }
-                }
-            }
         }
 
         Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
         if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
             Core.SellItem("Voucher of Nulgath");
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
