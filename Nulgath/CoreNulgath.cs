@@ -479,12 +479,14 @@ public class CoreNulgath
             BambloozevsDrudgen(item, quant, sellMemVoucher);
         else
         {
-            Core.AddDrop("Relic of Chaos");
             if (item != "Any")
+            {
                 Core.AddDrop(item);
+                if (sellMemVoucher)
+                    Core.AddDrop("Voucher of Nulgath");
+            }
             else
                 Core.AddDrop(bagDrops[..^11]);
-            Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
 
@@ -493,10 +495,12 @@ public class CoreNulgath
                 Core.EnsureAccept(2857);
                 Core.KillEscherion("Relic of Chaos", publicRoom: true);
                 Core.EnsureComplete(2857);
+
                 Bot.Player.Pickup(item);
-                if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-                {
+                if (sellMemVoucher)
                     Bot.Player.Pickup("Voucher of Nulgath");
+                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+                {
                     Core.SellItem("Voucher of Nulgath");
                 }
                 Core.Logger($"Completed x{i++}");
