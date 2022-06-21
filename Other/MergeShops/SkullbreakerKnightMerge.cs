@@ -59,7 +59,7 @@ public class SkullbreakerKnightMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(!Core.IsMember ? 8411 : 8412);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("warundead", "r3", "Left", "*", "Unbroken Skulls", 100);
                         Core.HuntMonster("warundead", "Summon Lich", "Summon Lich's Orb");
