@@ -67,9 +67,9 @@ public class CoreLegion
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6, log: false);
             Core.EnsureComplete(6251);
 
-            while (!Bot.ShouldExit() && Core.Checkitem"Seraphic Medals", 5))
+            while (!Bot.ShouldExit() && Core.CheckInventory("Seraphic Medals", 5))
                 Core.ChainComplete(6248);
-            while (!Bot.ShouldExit() && Core.Checkitem"Mega Seraphic Medals", 3))
+            while (!Bot.ShouldExit() && Core.CheckInventory("Mega Seraphic Medals", 3))
                 Core.ChainComplete(6249);
             Bot.Player.Pickup("Dark Token");
             Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
