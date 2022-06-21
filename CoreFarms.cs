@@ -940,6 +940,25 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
+    public void DreadrockREP(int rank = 10)
+    {
+        if (FactionRank("Dreadrock") >= rank)
+            return;
+
+        Core.AddDrop("Ghastly Dreadrock Blade");
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+
+        Core.Logger($"Farming rank {rank}");
+        Core.RegisterQuests(4863, 4862, 4865, 4868);
+        while (!Bot.ShouldExit() && FactionRank("Dreadrock") < rank)
+        {
+            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Goldfish Companion", 1);
+        }
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
+    }
+
     public void DruidGroveREP(int rank = 10)
     {
         if (FactionRank("Druid Grove") >= rank)
@@ -1117,6 +1136,70 @@ public class CoreFarms
         }
     }
 
+    public void FishingREP(int rank = 10)
+    {
+        if (FactionRank("Fishing") >= rank)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming rank {rank}");
+        int z = 1;
+        Core.AddDrop("Fishing Bait", "Fishing Dynamite");
+        Core.SavedState();
+
+        Core.Logger("Pre-Ranking XP");
+        Core.EnsureAccept(1682);
+        Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+        Core.EnsureComplete(1682);
+
+        while (!Bot.ShouldExit() && FactionRank("Fishing") < (rank > 2 ? 2 : rank))
+        {
+            Core.Logger("Farming Bait");
+            Core.RegisterQuests(1682);
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Fishing Bait", 10))
+            {
+                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+            }
+            Core.CancelRegisteredQuests();
+
+            Core.Join("fishing");
+            Core.Logger($"Bait Fishing");
+
+            while (!Bot.ShouldExit() && Core.CheckInventory("Fishing Bait"))
+            {
+                while (!Bot.ShouldExit() && !Core.CheckInventory("Fishing Bait"))
+                    return;
+
+                Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
+                Bot.Sleep(10000);
+                Core.Logger($"Fished {z++} Times");
+            }
+        }
+
+
+        while (!Bot.ShouldExit() && FactionRank("Fishing") < rank)
+        {
+            Core.Logger("Farming Dynamite");
+            Core.RegisterQuests(1682);
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Fishing Dynamite", 10) && Core.CheckInventory("Fishing Bait", 1))
+            {
+                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+            }
+            Core.CancelRegisteredQuests();
+
+            Core.Logger($"Dynamite Fishing");
+
+            while (!Bot.ShouldExit() && Core.CheckInventory("Fishing Dynamite", 1))
+            {
+                Bot.SendPacket($"%xt%zm%FishCast%1%Dynamite%30%");
+                Bot.Sleep(3500);
+                Core.SendPackets("%xt%zm%getFish%1%false%");
+                Core.Logger($"Fished {z++} Times");
+            }
+        }
+        Core.SavedState(false);
+    }
+
     public void FaerieCourtREP(int rank = 10) // Seasonal
     {
         if (FactionRank("Faerie Court") >= rank)
@@ -1208,6 +1291,50 @@ public class CoreFarms
         }
     }
 
+    public void HollowbornREP(int rank = 10)
+    {
+        if (FactionRank("Hollowborn") >= rank)
+            return;
+
+        Core.AddDrop("Hollow Soul");
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(7553, 7555);
+        while (!Bot.ShouldExit() && FactionRank("Hollowborn") < rank)
+        {
+            Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
+            Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
+        }
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
+    }
+
+    public void HorcREP(int rank = 10)
+    {
+        if (FactionRank("Horc") >= rank)
+            return;
+
+        if (Core.IsMember)
+            MembershipDues(MemberShipsIDS.Horc, rank);
+        else
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.SavedState();
+            Core.Logger($"Farming rank {rank}");
+            Core.RegisterQuests(1265);
+            while (!Bot.ShouldExit() && FactionRank("Horc") < rank)
+            {
+                Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant", "Chaorrupted Eye", 3);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Chaorrupted Tentacle", 5);
+                Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5);
+            }
+            Core.CancelRegisteredQuests();
+            Core.SavedState(false);
+        }
+    }
+
     public void LoremasterREP(int rank = 10)
     {
         if (FactionRank("Loremaster") >= rank)
@@ -1280,50 +1407,6 @@ public class CoreFarms
             while (!Bot.ShouldExit() && FactionRank("Lycan") < rank)
             {
                 Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask");
-            }
-            Core.CancelRegisteredQuests();
-            Core.SavedState(false);
-        }
-    }
-
-    public void HollowbornREP(int rank = 10)
-    {
-        if (FactionRank("Hollowborn") >= rank)
-            return;
-
-        Core.AddDrop("Hollow Soul");
-        Core.EquipClass(ClassType.Farm);
-        Core.SavedState();
-        Core.Logger($"Farming rank {rank}");
-
-        Core.RegisterQuests(7553, 7555);
-        while (!Bot.ShouldExit() && FactionRank("Hollowborn") < rank)
-        {
-            Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
-            Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
-        }
-        Core.CancelRegisteredQuests();
-        Core.SavedState(false);
-    }
-
-    public void HorcREP(int rank = 10)
-    {
-        if (FactionRank("Horc") >= rank)
-            return;
-
-        if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Horc, rank);
-        else
-        {
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            Core.Logger($"Farming rank {rank}");
-            Core.RegisterQuests(1265);
-            while (!Bot.ShouldExit() && FactionRank("Horc") < rank)
-            {
-                Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant", "Chaorrupted Eye", 3);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Chaorrupted Tentacle", 5);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5);
             }
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
@@ -1780,89 +1863,6 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
         }
-    }
-
-    public void DreadrockREP(int rank = 10)
-    {
-        if (FactionRank("Dreadrock") >= rank)
-            return;
-
-        Core.AddDrop("Ghastly Dreadrock Blade");
-        Core.EquipClass(ClassType.Farm);
-        Core.SavedState();
-
-        Core.Logger($"Farming rank {rank}");
-        Core.RegisterQuests(4863, 4862, 4865, 4868);
-        while (!Bot.ShouldExit() && FactionRank("Dreadrock") < rank)
-        {
-            Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Goldfish Companion", 1);
-        }
-        Core.CancelRegisteredQuests();
-        Core.SavedState(false);
-    }
-
-    public void FishingREP(int rank = 10)
-    {
-        if (FactionRank("Fishing") >= rank)
-            return;
-
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming rank {rank}");
-        int z = 1;
-        Core.AddDrop("Fishing Bait", "Fishing Dynamite");
-        Core.SavedState();
-
-        Core.Logger("Pre-Ranking XP");
-        Core.EnsureAccept(1682);
-        Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-        Core.EnsureComplete(1682);
-
-        while (!Bot.ShouldExit() && FactionRank("Fishing") < (rank > 2 ? 2 : rank))
-        {
-            Core.Logger("Farming Bait");
-            Core.RegisterQuests(1682);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Fishing Bait", 10))
-            {
-                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-            }
-            Core.CancelRegisteredQuests();
-
-            Core.Join("fishing");
-            Core.Logger($"Bait Fishing");
-
-            while (!Bot.ShouldExit() && Core.CheckInventory("Fishing Bait"))
-            {
-                while (!Bot.ShouldExit() && !Core.CheckInventory("Fishing Bait"))
-                    return;
-
-                Bot.SendPacket("%xt%zm%FishCast%1%Net%30%");
-                Bot.Sleep(10000);
-                Core.Logger($"Fished {z++} Times");
-            }
-        }
-
-
-        while (!Bot.ShouldExit() && FactionRank("Fishing") < rank)
-        {
-            Core.Logger("Farming Dynamite");
-            Core.RegisterQuests(1682);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Fishing Dynamite", 10) && Core.CheckInventory("Fishing Bait", 1))
-            {
-                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-            }
-            Core.CancelRegisteredQuests();
-
-            Core.Logger($"Dynamite Fishing");
-
-            while (!Bot.ShouldExit() && Core.CheckInventory("Fishing Dynamite", 1))
-            {
-                Bot.SendPacket($"%xt%zm%FishCast%1%Dynamite%30%");
-                Bot.Sleep(3500);
-                Core.SendPackets("%xt%zm%getFish%1%false%");
-                Core.Logger($"Fished {z++} Times");
-            }
-        }
-        Core.SavedState(false);
     }
 
     public void SwagTokenA(int quant = 100)
