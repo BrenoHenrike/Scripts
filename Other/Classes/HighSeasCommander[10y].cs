@@ -1,5 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class HighSeasCommander
@@ -7,6 +9,7 @@ public class HighSeasCommander
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
+    public CoreAdvanced Adv => new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -17,7 +20,7 @@ public class HighSeasCommander
         Core.SetOptions(false);
     }
 
-    public void GetHSC()
+    public void GetHSC(bool rankUpClass = true)
     {
         if (Core.CheckInventory("HighSeas Commander"))
             return;
@@ -29,7 +32,7 @@ public class HighSeasCommander
 
         Core.Logger("Farming for HighSeas Commander");
         Core.BuyItem(Bot.Map.Name, 1647, "Enchanted Pirate");
-        Core.AddDrop("HighSeas Commander");
+        Core.AddDrop("HighSeas Commander", "Enchanted Token");
         Core.EnsureAccept(6921);
         if (!Core.CheckInventory("Enchanted Token", 50))
         {
@@ -45,8 +48,11 @@ public class HighSeasCommander
             }
             Core.CancelRegisteredQuests();
         }
-
-        Core.EnsureAccept(6921);
+        Core.EnsureComplete(6921);
+        Bot.Wait.ForPickup("HighSeas Commander");
+        
+        if (rankUpClass)
+            Adv.rankUpClass("HighSeas Commander");
     }
 
     public void UnlockFarm()
