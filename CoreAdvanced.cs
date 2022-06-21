@@ -117,7 +117,12 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Weapon Special</returns>
     public WeaponSpecial CurrentWeaponSpecial()
     {
-        InventoryItem EquippedWeapon = Bot.Inventory.Items.First(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        if (EquippedWeapon == null)
+        {
+            Core.Logger("Failed to find equipped weapon", messageBox: true, stopBot: true);
+            return WeaponSpecial.None;
+        }
         int ProcID = Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
         return (WeaponSpecial)ProcID;
     }
@@ -186,7 +191,9 @@ public class CoreAdvanced
         {
             if (Bot.Player.Level == WeaponList.First().EnhancementLevel && (int)Type == WeaponList.First().EnhancementPatternID &&
                    (WeaponCatagories.Contains(WeaponList.First().Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.ProcID") : true))
+            {
                 i++;
+            }
             else
             {
                 Core.Logger($"Best Enhancement of: {Type.ToString()} + {Special.ToString().Replace('_', ' ')}");
@@ -212,9 +219,12 @@ public class CoreAdvanced
 
         void __AutoEnhance(List<InventoryItem> Input, int ShopID)
         {
-            Core.JumpWait();
-            Bot.Shops.Load(ShopID);
-            List<ShopItem> ShopItems = Bot.Shops.ShopItems;
+            List<ShopItem> ShopItems = Core.GetShopItems(Bot.Map.Name, ShopID);
+            if (!ShopItems.All(x => x.Category == ItemCategory.Enhancement))
+            {
+                Core.Logger("Failed to find enhancement shop");
+                return;
+            }
 
             foreach (InventoryItem Item in Input)
             {
@@ -255,13 +265,21 @@ public class CoreAdvanced
 
                 List<ShopItem> ListMinToMax = AvailableEnh.OrderBy(x => x.Level).ToList();
                 List<ShopItem> BestTwo = ListMinToMax.Skip(ListMinToMax.Count - 2).ToList();
-                ShopItem SelectedEhn = new ShopItem();
+                ShopItem? SelectedEhn = new();
 
                 if (BestTwo.First().Level == BestTwo.Last().Level)
+                {
                     if (Core.IsMember)
                         SelectedEhn = BestTwo.First(x => x.Upgrade);
                     else SelectedEhn = BestTwo.First(x => !x.Upgrade);
+                }
                 else SelectedEhn = BestTwo.OrderByDescending(x => x.Level).First();
+
+                if (SelectedEhn == null)
+                {
+                    Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Not Found]");
+                    continue;
+                }
 
                 Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{Item.ID}%{SelectedEhn.ID}%{ShopID}%");
                 Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Applied]");
