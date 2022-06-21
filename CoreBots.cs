@@ -294,6 +294,18 @@ public class CoreBots
         return !any;
     }
 
+    public void CheckSpaces(ref int counter, params string[] array)
+    {
+        int count = 0;
+        foreach (string s in array)
+        {
+            if (CheckInventory(s, toInv: false))
+                count++;
+        }
+        if (Bot.Inventory.FreeSlots < (array.Count() - count))
+            Logger($"Not enough free slots, please clear {(array.Count() - count)} slot" + ((array.Count() - count) > 1 ? "s" : ""), messageBox: true, stopBot: true);
+    }
+
     /// <summary>
     /// Move items from bank to inventory
     /// </summary>
