@@ -1715,8 +1715,10 @@ public class CoreBots
                 Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
                 Bot.Wait.ForMapLoad(map.ToLower());
 
-                if ((Bot.Map.Name ?? "").ToLower() == map.ToLower())
+                string? currentMap = Bot.Map.Name;
+                if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map.ToLower())
                     break;
+
                 if (i == 19)
                     Logger($"Failed to join {map}");
             }
