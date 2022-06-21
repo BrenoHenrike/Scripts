@@ -58,7 +58,7 @@ public class CoreHollowbornPaladin
         Farm.IcestormArena();
 
         Core.AddDrop(PostSummoningItems);
-        while (!Core.CheckInventory(PostSummoningItems))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(PostSummoningItems))
         {
             Core.EnsureAccept(7560);
             Core.HuntMonster("shadowblast", "Carnage", "Shadow Seal", 1, false);

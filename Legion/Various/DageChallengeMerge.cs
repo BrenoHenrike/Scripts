@@ -65,7 +65,7 @@ public class DageChallengeMerge
 
         if (!Core.CheckInventory("Underworld Laurel", quantLaurel))
             Core.Logger($"Farming \"Underworld Laurel\" x{quantLaurel}");
-        while (!Core.CheckInventory("Underworld Laurel", quantLaurel))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Underworld Laurel", quantLaurel))
         {
             Core.EnsureAccept(8544);
             Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled", publicRoom: true);
@@ -75,7 +75,7 @@ public class DageChallengeMerge
 
         if (!Core.CheckInventory("Underworld Medal", quantMedal))
             Core.Logger($"Farming \"Underworld Medal\" x{quantMedal}");
-        while (!Core.CheckInventory("Underworld Medal", quantMedal))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Underworld Medal", quantMedal))
         {
             Core.EquipClass(ClassType.Farm);
 
@@ -89,7 +89,7 @@ public class DageChallengeMerge
 
         if (!Core.CheckInventory("Underworld Accolade", quantAccolade))
             Core.Logger($"Farming \"Underworld Accolade\" x{quantAccolade}))");
-        while (!Core.CheckInventory("Underworld Accolade", quantAccolade))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Underworld Accolade", quantAccolade))
         {
             Core.EnsureAccept(8546);
             Core.HuntMonster("legionarena", "legion fiend rider", "Fiend Rider's Approval");

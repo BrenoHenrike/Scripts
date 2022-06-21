@@ -38,7 +38,7 @@ public class WillpowerExtraction
             "King Klunk's Crown", "Golden Shadow Breaker", "Shadow Terror Axe");
 
         int i = 1;
-        while (!Core.CheckInventory("Unidentified 34", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Unidentified 34", quant))
         {
             Core.EnsureAccept(5258);
 
@@ -51,7 +51,7 @@ public class WillpowerExtraction
             {
                 if (Core.IsMember)
                 {
-                    while (!Core.CheckInventory("Receipt of Swindle", 6))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory("Receipt of Swindle", 6))
                         Nulgath.SwindleReturn();
                     Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
                     Bot.Wait.ForItemBuy();
@@ -89,7 +89,7 @@ public class WillpowerExtraction
 
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
             {
-                while (!Bot.Inventory.Contains("Facebreakers of Nulgath"))
+                while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Facebreakers of Nulgath"))
                 {
                     Core.EnsureAccept(3046);
                     Core.EquipClass(ClassType.Solo);

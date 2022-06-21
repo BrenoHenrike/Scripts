@@ -41,7 +41,7 @@ public class GetSDD
             if (!Story.QuestProgression(6908))
             {
                 Core.EnsureAccept(6908);
-                while (!Core.CheckInventory(48632, 8))
+                while (!Bot.ShouldExit() && !Core.CheckInventory(48632, 8))
                 {
                     Core.Join("void", "r11", "Left");
                     Bot.Player.Kill("Void Elemental");

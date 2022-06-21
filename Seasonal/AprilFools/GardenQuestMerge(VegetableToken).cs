@@ -21,9 +21,9 @@ public class GardenQuestMerge
     {
         Core.AddDrop("Vegetable Token");
         Core.Logger($"Hunting For: Vegetable Token, {Bot.Inventory.GetQuantity("Vegetable Token")}/300");
-        while (!Core.CheckInventory("Vegetable Token", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Vegetable Token", 300))
         {
-            
+
             Core.EnsureAccept(8002);
             Core.HuntMonster("GardenQuest", "Angry Broccoli", "Roasted Broccoli", log: false);
             Core.EnsureComplete(8002);

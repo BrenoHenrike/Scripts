@@ -30,7 +30,7 @@ public class UltimateBLoD
         if (Core.CheckInventory("Ultimate Blinding Light of Destiny"))
             return;
 
-        Core.AddDrop(new[] { "Ultimate Blinding Light of Destiny", "Overwhelmed Axe", "Shard of An Orb", "Purified Undead Dragon Essence" });  
+        Core.AddDrop(new[] { "Ultimate Blinding Light of Destiny", "Overwhelmed Axe", "Shard of An Orb", "Purified Undead Dragon Essence" });
 
         // Getting Overwhelmed Axe
         if (!Core.CheckInventory("Overwhelmed Axe"))
@@ -40,7 +40,7 @@ public class UltimateBLoD
 
             Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
             Core.Logger($"Farming 1 Blinding Aura");
-            while (!Core.CheckInventory("Blinding Aura"))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Blinding Aura"))
                 BLOD.FindingFragments(2174);
 
             Core.BuyItem("techfortress", 1902, "Overwhelmed Axe", shopItemID: 7588);
@@ -48,11 +48,11 @@ public class UltimateBLoD
 
         // Farming Shard of An Orb
         Core.EquipClass(ClassType.Solo);
-        while (!Core.CheckInventory("Shard of An Orb", 5))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Shard of An Orb", 5))
         {
             Core.EnsureAccept(7654);
 
-            Core.KillMonster($"dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy’s Bones", 10, isTemp: false);
+            Core.KillMonster($"dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffyï¿½s Bones", 10, isTemp: false);
             Core.KillMonster("dflesson", "r3", "Right", "Fire Elemental", "Fire Elemental's Bracer", 5, isTemp: false);
             Core.KillMonster("dflesson", "r6", "Right", "Tog", "Tog Claw", 5, isTemp: false);
 
@@ -67,7 +67,7 @@ public class UltimateBLoD
 
             Core.KillMonster("doomwood", "r10", "Right", "Undead Paladin", "Purification Orb", 10, isTemp: false);
 
-            while (!Core.CheckInventory("Rainbow Moonstone", 5))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Rainbow Moonstone", 5))
             {
                 Core.AddDrop("Rainbow Moonstone");
                 Core.EnsureAccept(7291);

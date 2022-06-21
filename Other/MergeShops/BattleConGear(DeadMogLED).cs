@@ -22,7 +22,7 @@ public class BattleConGear
         Core.AddDrop("DeadMog LED");
 
         Core.Logger($"Hunting For: DeadMog LED, {Bot.Inventory.GetQuantity("DeadMog LED")}/1000");
-        while (!Core.CheckInventory("DeadMog LED", 1000))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("DeadMog LED", 1000))
         {
             Core.EnsureAccept(4576);
             Core.HuntMonster("arena", "Deadmoglinster", "DeadMoglinster Defeated");

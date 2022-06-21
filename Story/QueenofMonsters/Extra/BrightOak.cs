@@ -168,7 +168,7 @@ public class BrightOak
 
             Core.AddDrop("Restoration of Nature Potion");
 
-            while (!Core.CheckInventory("Restoration of Nature Potion", quant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Restoration of Nature Potion", quant))
             {
                 Core.EnsureAccept(4660);
                 Core.BuyItem("sandsea", 245, "Water of Life");

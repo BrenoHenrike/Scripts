@@ -43,7 +43,7 @@ public class Originul_Story
         // Break their Muti-kneecaps
         Core.EnsureAccept(7889);
         Core.Join("Originul", "r10", "Top");
-        while (!Bot.Quests.CanComplete(7889))
+        while (!Bot.ShouldExit() && !Bot.Quests.CanComplete(7889))
         {
             Bot.Player.Kill("Bloodfiend");
             Bot.Player.Kill("Dreadfiend");

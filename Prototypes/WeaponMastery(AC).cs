@@ -33,7 +33,7 @@ public class WeaponMasteryAC
                 return;
             }
             int i = 1;
-            while (!Core.CheckInventory("Evolved Warlord Hammer") || !Core.CheckInventory("Evolved Warlord Axe"))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Evolved Warlord Hammer") || !Core.CheckInventory("Evolved Warlord Axe"))
             {
                 Core.EnsureAccept(4784);
 

@@ -64,7 +64,7 @@ public class AstraviaPastMerge
                 // Add how to get items here
                 case "Suki's Prestige":
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Darkon.SukisPrestiege(quant);
                     break;
 

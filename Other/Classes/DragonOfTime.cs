@@ -297,7 +297,7 @@ public class DragonOfTime
         //I'm Loving It My Way
         if (doExtra)
         {
-            while (!Core.CheckInventory(Extras, toInv: false))
+            while (!Bot.ShouldExit() && !Core.CheckInventory(Extras, toInv: false))
             {
                 Farm.Experience(75);
                 Core.EnsureAccept(7725);
@@ -309,7 +309,7 @@ public class DragonOfTime
                 if (!Core.CheckInventory("Borgar"))
                 {
                     bool LoggedBefore = false;
-                    while (!Core.CheckInventory("Burger Buns", 5))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory("Burger Buns", 5))
                     {
                         Core.EnsureAccept(7522);
                         Core.HuntMonster("borgars", "Burglinster", "Burglinster Cured", log: !LoggedBefore);

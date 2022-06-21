@@ -20,13 +20,13 @@ public class DarkVictorySeal
 
         //Progress Check
         if (!Core.isCompletedBefore(8575))
-            {
-                Core.Logger("Please run the DageRecruit Story bot before this one as you have not unlocked the required quests.");
-                return;
-            }
+        {
+            Core.Logger("Please run the DageRecruit Story bot before this one as you have not unlocked the required quests.");
+            return;
+        }
 
         //Dark Victory Seal
-        while (!Core.CheckInventory("Dark Victory Seal", 1000))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Victory Seal", 1000))
         {
             Core.EnsureAccept(8576);
             Core.HuntMonster("dagerecruit", "Dark Makai", "Dark Makai Defeated", 6);

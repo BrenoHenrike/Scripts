@@ -42,7 +42,7 @@ public class LetItBurn
 
         Core.Logger($"Farming {quant} Soul Essence");
         Core.EquipClass(ClassType.Solo);
-        while (!Core.CheckInventory("Soul Essence", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Soul Essence", quant))
         {
             Core.EnsureAccept(7992);
             Core.HuntMonster("dagefortress", "Grrrberus", "Grrberus' Flame");

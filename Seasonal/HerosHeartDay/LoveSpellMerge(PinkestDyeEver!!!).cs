@@ -30,7 +30,7 @@ public class PinkestDyeEver
 
         LSS.LoveSpellScript();
 
-        while (!Core.CheckInventory("Pinkest Dye Ever!!!", 200))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Pinkest Dye Ever!!!", 200))
         {
             Core.EnsureAccept(7935);
             Core.HuntMonster("lovespell", "Mood Slime", "Mood Slime Hearts", 10);

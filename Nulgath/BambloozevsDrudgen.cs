@@ -25,13 +25,13 @@ public class BambloozevsDrudgen
         Nulgath.BambloozevsDrudgen("Diamond of Nulgath", 1000);
         if (Core.CheckInventory("Drudgen the Assistant"))
         {
-            while (!Core.CheckInventory("Tainted Gem", 1000))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Tainted Gem", 1000))
                 Nulgath.ContractExchange(ChooseReward.TaintedGem);
-            while (!Core.CheckInventory("Dark Crystal Shard", 1000))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Crystal Shard", 1000))
                 Nulgath.ContractExchange(ChooseReward.DarkCrystalShard);
-            while (!Core.CheckInventory("Gem of Nulgath", 300))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Gem of Nulgath", 300))
                 Nulgath.ContractExchange(ChooseReward.GemofNulgath);
-            while (!Core.CheckInventory("Blood Gem of the Archfiend", 100))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Blood Gem of the Archfiend", 100))
                 Nulgath.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         }
         Nulgath.BambloozevsDrudgen("Diamond of Nulgath", 1000);

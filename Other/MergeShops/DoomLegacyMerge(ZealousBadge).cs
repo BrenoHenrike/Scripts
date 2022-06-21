@@ -19,7 +19,7 @@ public class ZealousBadge
     {
         Core.AddDrop("Zealous Badge");
 
-        while (!Core.CheckInventory("Zealous Badge", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Zealous Badge", 300))
         {
             Core.EnsureAccept(7616);
             Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7);

@@ -24,7 +24,7 @@ public class BeleensChaosFuzzyShop
 
         Beleen.BeleenQuests(true);
 
-        while (!Core.CheckInventory("Chaos Fuzzies", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Chaos Fuzzies", 300))
             Core.GetMapItem(3481, map: "Citadel");
     }
 }

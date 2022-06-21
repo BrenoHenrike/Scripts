@@ -31,7 +31,7 @@ public class GenesisMerge
         Core.AddDrop("Mourning Flower");
 
         Core.RegisterQuests(8688);
-        while (!Core.CheckInventory("Mourning Flower", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Mourning Flower", quant))
         {
             Core.KillMonster("genesisgarden", "r6", "Left", "*", "Beast Subject", 7);
             Core.KillMonster("genesisgarden", "r9", "Left", "*", "Humanoid Subject", 7);

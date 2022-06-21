@@ -25,7 +25,7 @@ public class DarkWarNationMerge
         //Needed AddDrop
         Core.AddDrop("Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War");
 
-        while (!Core.CheckInventory(new[] { "Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War" }, 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War" }, 300))
         {
             //Nation Defender Medal - Legion Badges, Mega Legion Badges
             if (!Core.CheckInventory("Nation Defender Medal", 300))
@@ -34,9 +34,9 @@ public class DarkWarNationMerge
                 Core.EnsureAccept(8579);
                 Core.HuntMonster("darkwarnation", "Legion Doomknight", "Legion Badge", 5);
                 Core.HuntMonster("darkwarnation", "Legion Doomknight", "Mega Legion Badge", 3);
-                while (Core.CheckInventory("Legion Badge", 5))
+                while (!Bot.ShouldExit() && Core.CheckInventory("Legion Badge", 5))
                     Core.EnsureComplete(8578);
-                while (Core.CheckInventory("Mega Legion Badge", 3))
+                while (!Bot.ShouldExit() && Core.CheckInventory("Mega Legion Badge", 3))
                     Core.EnsureComplete(8579);
             }
 

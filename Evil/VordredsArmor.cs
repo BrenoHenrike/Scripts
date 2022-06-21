@@ -145,7 +145,7 @@ public class VordredArmor
 
         // UNBROKEN SKULLS (Mem) - 8342
         if (Core.IsMember)
-            while (!Core.CheckInventory("Especially Unbroken Skull", quant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Especially Unbroken Skull", quant))
             {
                 Core.EnsureAccept(8411);
                 Core.HuntMonster("warundead", "Undead Mage", "Unbroken Skulls", 100, isTemp: false);
@@ -155,7 +155,7 @@ public class VordredArmor
             }
         else
             // UNBROKEN SKULLS - 8341
-            while (!Core.CheckInventory("Especially Unbroken Skull", quant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Especially Unbroken Skull", quant))
             {
                 Core.EnsureAccept(8411);
                 Core.HuntMonster("warundead", "Undead Mage", "Unbroken Skulls", 100, isTemp: false);

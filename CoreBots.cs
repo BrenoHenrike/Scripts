@@ -102,7 +102,7 @@ public class CoreBots
                 Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
                 Bot.Sleep(1000);
                 Bot.Player.Connect(ServerList.Servers[0]);
-                while (!Bot.Player.LoggedIn)
+                while (!Bot.ShouldExit() && !Bot.Player.LoggedIn)
                     Bot.Sleep(500);
                 Bot.Sleep(5000);
             }
@@ -312,7 +312,7 @@ public class CoreBots
                 if (Bot.Inventory.FreeSlots == 0)
                     Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: false);
                 int i = 0;
-                while (!Bot.Inventory.Contains(item))
+                while (!Bot.ShouldExit() && !Bot.Inventory.Contains(item))
                 {
                     Bot.Bank.ToInventory(item);
                     Bot.Wait.ForBankToInventory(item);
@@ -350,7 +350,7 @@ public class CoreBots
             if (Bot.Inventory.Contains(item))
             {
                 Bot.Sleep(ActionDelay);
-                while (!Bot.Bank.Contains(item))
+                while (!Bot.ShouldExit() && !Bot.Bank.Contains(item))
                 {
                     Bot.Inventory.ToBank(item);
                     Bot.Wait.ForInventoryToBank(item);
@@ -522,7 +522,7 @@ public class CoreBots
                 Bot.Sleep(ActionDelay);
             }
         else
-            while (Bot.Inventory.GetQuantity(itemName) != 0)
+            while (!Bot.ShouldExit() && Bot.Inventory.GetQuantity(itemName) != 0)
             {
                 Bot.Shops.SellItem(itemName);
                 Bot.Sleep(ActionDelay);
@@ -601,7 +601,7 @@ public class CoreBots
         questCTS = new();
         Task.Run(() =>
         {
-            while (!questCTS.IsCancellationRequested)
+            while (!Bot.ShouldExit() && !questCTS.IsCancellationRequested)
             {
                 Task.Delay(ActionDelay);
 
@@ -1014,7 +1014,7 @@ public class CoreBots
         if (item == null)
         {
             Logger("Killing Escherion");
-            while (Bot.Monsters.MapMonsters.First(m => m.Name == "Escherion").Alive)
+            while (!Bot.ShouldExit() && Bot.Monsters.MapMonsters.First(m => m.Name == "Escherion").Alive)
             {
                 if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
@@ -1025,7 +1025,7 @@ public class CoreBots
         else
         {
             Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
-            while (!CheckInventory(item, quant))
+            while (!Bot.ShouldExit() && !CheckInventory(item, quant))
             {
                 if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
                     Bot.Player.Hunt("Staff of Inversion");
@@ -1188,7 +1188,7 @@ public class CoreBots
         Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
         Bot.Sleep(1000);
         Bot.Player.Connect(server);
-        while (!Bot.Player.LoggedIn)
+        while (!Bot.ShouldExit() && !Bot.Player.LoggedIn)
             Bot.Sleep(500);
         Bot.Sleep(5000);
         Logger("Re-login finished");
@@ -1724,7 +1724,7 @@ public class CoreBots
     /// <param name="moveY">Y position of the door</param>
     public void BludrutMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
     {
-        while (Bot.Player.Cell != cell)
+        while (!Bot.ShouldExit() && Bot.Player.Cell != cell)
         {
             Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
             Bot.Sleep(2500);

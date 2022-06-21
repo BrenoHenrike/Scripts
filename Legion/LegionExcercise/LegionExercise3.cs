@@ -43,14 +43,14 @@ public class LegionExercise3
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Core.CheckInventory(new[] { "Judgement Hammer" }))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Judgement Hammer" }))
         {
             Core.EnsureAccept(823);
             Core.EquipClass(ClassType.Farm);
             if (!Core.CheckInventory(54257, 24))
             {
                 Core.Logger($"Hunting Chaos Egg for Chaos Egg, (24) [Temp = true");
-                while (!Core.CheckInventory(54257, 24))
+                while (!Bot.ShouldExit() && !Core.CheckInventory(54257, 24))
                     Core.HuntMonster("Uppercity", "Chaos Egg", publicRoom: false, log: false);
             }
             Core.HuntMonster("Mobius", "Chaos Sp-Eye", "Chaorrupted Essence", 50, isTemp: false, publicRoom: false);

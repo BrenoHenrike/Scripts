@@ -43,7 +43,7 @@ public class VoidSpartan
         Core.AddDrop("Zee's Red Jasper", "Fiend Cloak of Nulgath");
 
         int i = 1;
-        while (!Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(5982);
 

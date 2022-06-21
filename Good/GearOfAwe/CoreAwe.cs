@@ -51,7 +51,7 @@ public class CoreAwe
         }
 
         Core.EquipClass(ClassType.Solo);
-        while (!Core.CheckInventory($"{Item} Fragment", FragmentAmount))
+        while (!Bot.ShouldExit() && !Core.CheckInventory($"{Item} Fragment", FragmentAmount))
         {
             Core.EnsureAccept(QuestID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")

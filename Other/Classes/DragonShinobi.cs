@@ -36,7 +36,7 @@ public class DragonShinobi
 
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(7924);
-        while (!Core.CheckInventory("Dragon Shinobi Token", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Dragon Shinobi Token", 300))
             Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
         Core.CancelRegisteredQuests();
 

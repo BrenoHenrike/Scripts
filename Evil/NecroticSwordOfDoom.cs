@@ -84,7 +84,7 @@ public class NecroticSwordOfDoom
     {
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
-            
+
         // Daily.NSoDDaily()
         CommandingShadowEssences(Quantity);
         RetrieveVoidAuras(Quantity);
@@ -101,7 +101,7 @@ public class NecroticSwordOfDoom
         Core.AddDrop("Void Aura", "Empowered Essence", "Malignant Essence");
         Core.Logger($"Gathering {Quantity} Void Aura's with SDKA Method");
 
-        while (!Core.CheckInventory("Void Aura", Quantity))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.EnsureAccept(4439);
             Core.EquipClass(ClassType.Farm);
@@ -142,7 +142,7 @@ public class NecroticSwordOfDoom
             Core.AddDrop("Creature Shard");
         Core.Logger($"Gathering {Quantity} Void Aura's with Non-SDKA Method");
 
-        while (!Core.CheckInventory("Void Aura", Quantity))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.EnsureAccept(4432);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
@@ -327,7 +327,7 @@ public class NecroticSwordOfDoom
             BattleUnder.BattleUnderC();
         Core.Logger("Cavern Celestite");
         Core.RegisterQuests(939);
-        while (!Core.CheckInventory("Cavern Celestite", Quantity))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Cavern Celestite", Quantity))
         {
             Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
             Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");

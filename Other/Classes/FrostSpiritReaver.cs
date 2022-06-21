@@ -37,7 +37,7 @@ public class FrostSpiritReaver
 
     public void ColdHearted(int IceNinthQuant = 9)
     {
-        while (Core.CheckInventory("Ice-Ninth", IceNinthQuant) & Core.isCompletedBefore(7921))
+        while (!Bot.ShouldExit() && Core.CheckInventory("Ice-Ninth", IceNinthQuant) & Core.isCompletedBefore(7921))
             return;
 
         Core.AddDrop("Flame of Courage", "Ice-Ninth", "Ice Diamond");
@@ -52,7 +52,7 @@ public class FrostSpiritReaver
                 {
                     if (!Core.CheckInventory("Scythe of Vengeance"))
                     {
-                        while (!Core.CheckInventory("Flame of Courage", 25))
+                        while (!Bot.ShouldExit() && !Core.CheckInventory("Flame of Courage", 25))
                         {
                             Core.EnsureAccept(3955);
                             Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage");
@@ -76,7 +76,7 @@ public class FrostSpiritReaver
         }
         Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
         Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
-        while (!Core.CheckInventory("Ice Diamond", 3))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Ice Diamond", 3))
         {
             Core.EnsureAccept(7279);
             Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
@@ -89,7 +89,7 @@ public class FrostSpiritReaver
 
     public void ColdBlooded(int AttunementQuant = 15)
     {
-        while (Core.CheckInventory("Glaceran Attunement", AttunementQuant) & Core.isCompletedBefore(7921))
+        while (!Bot.ShouldExit() && Core.CheckInventory("Glaceran Attunement", AttunementQuant) & Core.isCompletedBefore(7921))
             return;
 
         Core.AddDrop("Glaceran Attunement");
@@ -153,7 +153,7 @@ public class FrostSpiritReaver
         {
             Core.Logger($"Getting Token I x {Token1}");
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Icy Token I", Token1))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token I", Token1))
             {
                 Core.EnsureAccept(7838);
                 Core.HuntMonster("icedungeon", "Frosted Banshee", "Frosted Banshee Defeated", 10, log: false);
@@ -167,7 +167,7 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Farm);
             Core.Logger($"Getting Token II x {Token2}");
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Icy Token II", Token2))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token II", Token2))
             {
                 Core.EnsureAccept(7839);
                 Core.HuntMonster("icedungeon", "Spirit of Ice", "Spirit of Ice Defeated", 10, log: false);
@@ -180,7 +180,7 @@ public class FrostSpiritReaver
         {
             Core.Logger($"Getting Token III x {Token3}");
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Icy Token III", Token3))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token III", Token3))
             {
                 Core.EnsureAccept(7840);
                 Core.HuntMonster("icedungeon", "Living Ice", "Living Ice Defeated", 5, log: false);
@@ -194,7 +194,7 @@ public class FrostSpiritReaver
         {
             Core.Logger($"Getting Token IV x {Token4}");
             Core.EquipClass(ClassType.Solo);
-            while (!Core.CheckInventory("Icy Token IV", Token4))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token IV", Token4))
             {
                 Core.EnsureAccept(7841);
                 Core.HuntMonster("icedungeon", "Image of Glace", "Glace's Approval");

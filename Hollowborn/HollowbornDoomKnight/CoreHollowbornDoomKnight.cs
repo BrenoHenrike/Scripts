@@ -91,7 +91,7 @@ public class CoreHollowbornDoomKnight
         Farm.EvilREP();
 
         // Quest
-        while (!Core.CheckInventory("Dark Fragment", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Fragment", quant))
         {
             Core.EnsureAccept(8413);
 
@@ -124,7 +124,7 @@ public class CoreHollowbornDoomKnight
         HB.HardcoreContract();
 
         // Quest
-        while (!Core.CheckInventory("Doom Fragment", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Doom Fragment", quant))
         {
             Core.EnsureAccept(8414);
 

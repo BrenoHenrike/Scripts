@@ -22,7 +22,7 @@ public class CrimsonHanzoOrbQuest
 
     public void CrimsonHanzoOrb()
     {
-        
+
         List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (RBot.Items.ItemBase Item in RewardOptions)
@@ -31,12 +31,12 @@ public class CrimsonHanzoOrbQuest
         string[] Rewards = RewardsList.ToArray();
 
         Core.AddDrop(Rewards);
-        
+
         foreach (string item in RewardsList)
         {
 
             Core.RegisterQuests(4019);
-            while (!Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
+            while (!Bot.ShouldExit() && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
             {
                 Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
                 Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");

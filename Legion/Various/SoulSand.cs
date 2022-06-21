@@ -35,7 +35,7 @@ public class AnotherOneBitesTheDust
         SeraphicWar.SeraphicWar_Questline();
 
         Core.Logger($"Farming {quant} Soul Sand");
-        while (!Core.CheckInventory("Soul Sand", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Soul Sand", quant))
         {
             Core.EnsureAccept(7991);
             Farm.BattleUnderB("Bone Dust", 333);

@@ -25,7 +25,7 @@ public class FiendEmblem
 
         Core.AddDrop("Fiend Emblem");
 
-        while (!Bot.ShouldExit() || !Core.CheckInventory("Fiend Emblem", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Fiend Emblem", 300))
         {
             Core.EnsureAccept(7890);
 

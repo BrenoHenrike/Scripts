@@ -20,7 +20,7 @@ public class FarmPaintedButterfly
     {
         Core.AddDrop("Painted Butterfly");
 
-        while (!Core.CheckInventory("Painted Butterfly", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Painted Butterfly", 300))
         {
             Core.EnsureAccept(8520);
             Core.HuntMonster("arcadia", "Agape", "Agape Petal", 1);

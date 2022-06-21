@@ -26,7 +26,7 @@ public class DERPBadge
 
         Core.AddDrop(new[] { "Rainbow Derpicorn Guard (L)", "Rainbow Derpicorn Guard (R)" });
         Core.Logger("Hunting For Item: \"Rainbow Derpicorn Guard(R)\"");
-        while (!Bot.Inventory.ContainsHouseItem("Rainbow Derpicorn Guard (R)"))
+        while (!Bot.ShouldExit() && !Bot.Inventory.ContainsHouseItem("Rainbow Derpicorn Guard (R)"))
         {
             Core.HuntMonster("battlefools", "Rainbow Derpicorn", log: false);
         }

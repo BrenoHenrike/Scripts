@@ -66,7 +66,7 @@ public class BlazingBeachMerge
                     Core.RegisterQuests(8709);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("blazingbeach", "r5", "Right", "Red-Hot Raider", "Raider Repelled", 10, log: false);
                         Core.KillMonster("blazingbeach", "r2", "Right", "Scalding Shooter", "Sharpshooter Shooed", 8, log: false);

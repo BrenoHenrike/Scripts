@@ -61,7 +61,7 @@ public class ThreeLittleWolvesHousesMerge
                 case "Building Material":
                     Core.RegisterQuests(6915);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("farm", "Treeant", "Wooden Planks", 5);
                         Core.HuntMonster("bloodtusk", "Rhison", "Glue");
@@ -74,7 +74,7 @@ public class ThreeLittleWolvesHousesMerge
                 case "Foundation Material":
                     Core.RegisterQuests(6916);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("river", "Zardman Fisher", "River Stones", 5);
                         Core.HuntMonster("dwarfprison", "Balboa", "Boulder", 3);
@@ -88,7 +88,7 @@ public class ThreeLittleWolvesHousesMerge
                 case "Decor Material":
                     Core.RegisterQuests(6917);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("farm", "Scarecrow", "Fabric", 5);
                         Core.HuntMonster("goose", "Can of Paint", "Paint", 5);

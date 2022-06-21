@@ -28,7 +28,7 @@ public class WaterWarMerge
             Story.KillQuest(6814, "WaterWar", "Solar Elemental");
 
         //Water Drop - Sploosh Some Solars! / Sploosh Some Bigger Solars!
-        while (!Core.CheckInventory("Water Drop", Quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Water Drop", Quant))
         {
             Core.EnsureAccept(6814);
             Core.EnsureAccept(6816);
@@ -36,10 +36,10 @@ public class WaterWarMerge
             Core.HuntMonster("WaterWar", "Solar Elemental", "Solar Sploosh", 30);
             Core.HuntMonster("WaterWar", "Solar Elemental", "Mega Solar Sploosh", 18);
 
-            while (Core.CheckInventory("Solar Sploosh", 5))
+            while (!Bot.ShouldExit() && Core.CheckInventory("Solar Sploosh", 5))
                 Core.EnsureComplete(6814);
 
-            while (Core.CheckInventory("Mega Solar Sploosh", 3))
+            while (!Bot.ShouldExit() && Core.CheckInventory("Mega Solar Sploosh", 3))
                 Core.EnsureComplete(6816);
         }
 

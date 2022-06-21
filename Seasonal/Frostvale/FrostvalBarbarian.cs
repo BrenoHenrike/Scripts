@@ -48,7 +48,7 @@ public class FrostvalBarbarian
         if (!Core.CheckInventory("Sassafras' War Helm"))
         {
             Core.AddDrop("Sassafras' War Helm");
-            while (!Core.CheckInventory("Sassafras' War Helm"))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Sassafras' War Helm"))
             {
                 Core.EnsureAccept(2570);
                 Core.EquipClass(ClassType.Farm);

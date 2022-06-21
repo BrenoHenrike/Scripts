@@ -46,7 +46,7 @@ public class ChronoAssassin
         Core.Logger($"Farming {GemQuant} Saeculum Gem");
         int i = 1;
 
-        while (!Core.CheckInventory("Saeculum Gem", GemQuant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Saeculum Gem", GemQuant))
         {
             Core.EnsureAccept(5085);
             Core.HuntMonster("tachyon", "Svelgr the Devourer", "Svelgr Fang", isTemp: false);

@@ -75,7 +75,7 @@ public class ArchfiendDeathLord
             {
                 Core.Logger($"Farming for {item}");
 
-                while (!Core.CheckInventory(item))
+                while (!Bot.ShouldExit() && !Core.CheckInventory(item))
                 {
 
                     Nulgath.FarmBloodGem(20);

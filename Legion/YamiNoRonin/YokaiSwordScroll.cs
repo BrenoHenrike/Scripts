@@ -51,7 +51,7 @@ public class TheEdgeofanEra
         if (Core.CheckInventory("Yami", quant))
             return;
         Core.AddDrop("Yami");
-        while (!Core.CheckInventory("Yami", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Yami", quant))
         {
             Core.EnsureAccept(7409);
             Core.KillMonster("darkally", "r2", "Left", "*", "Dark Wisp", 444, false);
@@ -90,7 +90,7 @@ public class TheEdgeofanEra
         if (Core.CheckInventory("Flame-Forged Metal", quant))
             return;
         Core.AddDrop("Flame-Forged Metal");
-        while (!Core.CheckInventory("Flame-Forged Metal", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Flame-Forged Metal", quant))
         {
             Core.EnsureAccept(6975);
             Core.HuntMonster("Underworld", "Frozen Pyromancer", "Stolen Flame", 1, true);

@@ -19,7 +19,7 @@ public class FourDPyramidHouseShop
     {
         Core.AddDrop("Anti-Matter Gem");
 
-        while (!Core.CheckInventory("Anti-Matter Gem", 500))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Anti-Matter Gem", 500))
         {
             //Reflections of Victory
             Core.EnsureAccept(5188);

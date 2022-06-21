@@ -62,7 +62,7 @@ public class CoreHollowborn
 
         Core.Logger($"Farming x{quant} Fresh Soul");
 
-        while (!Core.CheckInventory("Fresh Soul", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Fresh Soul", quant))
         {
             Core.EnsureAccept(7293);
             Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);

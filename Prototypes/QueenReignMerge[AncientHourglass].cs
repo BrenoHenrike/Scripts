@@ -30,7 +30,7 @@ public class QueenReignMerge
         Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(8326);
-        while (!Core.CheckInventory("Ancient Hourglass", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Ancient Hourglass", quant))
         {
             Core.HuntMonster("queenreign", "Sa-Laatan", "Sa-Lataan Defeated");
             Core.HuntMonster("queenreign", "Grou'luu", "Grou'luu Defeated");

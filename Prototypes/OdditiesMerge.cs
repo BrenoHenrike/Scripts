@@ -182,7 +182,7 @@ public class OdditiesMerge
 
             Core.RegisterQuests(8667);
             Core.EquipClass(ClassType.Solo);
-            while (!Core.CheckInventory("Cursed Doll Tassel", CursedDollQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Cursed Doll Tassel", CursedDollQuant))
             {
                 Core.KillMonster("Oddities", "r2", "Left", "*", "Chipped Wood", 7);
                 Core.KillMonster("Oddities", "r6", "Left", "*", "Fuzz Tuff", 7);
@@ -192,7 +192,7 @@ public class OdditiesMerge
             Core.CancelRegisteredQuests();
 
             Core.RegisterQuests(8674);
-            while (!Core.CheckInventory("Odd Coin", OldCoinQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Odd Coin", OldCoinQuant))
             {
                 Core.KillMonster("Oddities", "r6", "Left", "*", "Frankensteined Teddy");
                 Bot.Wait.ForPickup("Odd Coin");
@@ -200,7 +200,7 @@ public class OdditiesMerge
             Core.CancelRegisteredQuests();
 
             Core.RegisterQuests(8675);
-            while (!Core.CheckInventory("Ectoplasmic Token", EctoplasmicTokenQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Ectoplasmic Token", EctoplasmicTokenQuant))
             {
                 Core.KillMonster("Oddities", "r10", "Left", "Cursed Spirit", "Doll Eye", 5);
                 Bot.Wait.ForPickup("Ectoplasmic Token");
@@ -209,7 +209,7 @@ public class OdditiesMerge
 
             Core.RegisterQuests(8676);
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Spooky Fabric Scrap", SpookyFabricScrapQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Spooky Fabric Scrap", SpookyFabricScrapQuant))
             {
                 Core.KillMonster("Oddities", "r4", "Left", "*", "Cursed Cloth Roll", 13);
                 Bot.Wait.ForPickup("Spooky Fabric Scrap");
@@ -218,14 +218,14 @@ public class OdditiesMerge
 
             Core.RegisterQuests(8677);
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Eerie Embellishment", EerieEmbellishmentQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Eerie Embellishment", EerieEmbellishmentQuant))
             {
                 Core.KillMonster("Oddities", "r4", "Left", "*", "Freaky Fripperies", 13);
                 Bot.Wait.ForPickup("Eerie Embellishment");
             }
             Core.CancelRegisteredQuests();
 
-            while (!Core.CheckInventory("Gold Voucher 100k", VoucherQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Gold Voucher 100k", VoucherQuant))
                 Core.BuyItem("Oddities", 2135, "Gold Voucher 100k", VoucherQuant);
         }
     }
@@ -270,11 +270,11 @@ public class OdditiesMerge
 
             Core.RegisterQuests(8667);
             Core.EquipClass(ClassType.Solo);
-            while (!Core.CheckInventory("Cursed Doll Tassel", CursedDollQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Cursed Doll Tassel", CursedDollQuant))
             {
                 Core.KillMonster("Oddities", "r2", "Left", "*", "Chipped Wood", 7);
                 Core.KillMonster("Oddities", "r6", "Left", "*", "Fuzz Tuff", 7);
-                while (Bot.Player.Cell != "r10") //cutscene fuckery
+                while (!Bot.ShouldExit() && Bot.Player.Cell != "r10") //cutscene fuckery
                 {
                     Bot.Sleep(Core.ActionDelay);
                     Core.Jump("r10");
@@ -285,7 +285,7 @@ public class OdditiesMerge
             Core.CancelRegisteredQuests();
 
             Core.RegisterQuests(8674);
-            while (!Core.CheckInventory("Odd Coin", OldCoinQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Odd Coin", OldCoinQuant))
             {
                 Core.KillMonster("Oddities", "r6", "Left", "*", "Frankensteined Teddy");
                 Bot.Wait.ForPickup("Odd Coin");
@@ -293,7 +293,7 @@ public class OdditiesMerge
             Core.CancelRegisteredQuests();
 
             Core.RegisterQuests(8675);
-            while (!Core.CheckInventory("Ectoplasmic Token", EctoplasmicTokenQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Ectoplasmic Token", EctoplasmicTokenQuant))
             {
                 Core.KillMonster("Oddities", "r10", "Left", "Cursed Spirit", "Doll Eye", 5);
                 Bot.Wait.ForPickup("Ectoplasmic Token");
@@ -302,7 +302,7 @@ public class OdditiesMerge
 
             Core.RegisterQuests(8676);
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Spooky Fabric Scrap", SpookyFabricScrapQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Spooky Fabric Scrap", SpookyFabricScrapQuant))
             {
                 Core.KillMonster("Oddities", "r4", "Left", "*", "Cursed Cloth Roll", 13);
                 Bot.Wait.ForPickup("Spooky Fabric Scrap");
@@ -311,14 +311,14 @@ public class OdditiesMerge
 
             Core.RegisterQuests(8677);
             Core.EquipClass(ClassType.Farm);
-            while (!Core.CheckInventory("Eerie Embellishment", EerieEmbellishmentQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Eerie Embellishment", EerieEmbellishmentQuant))
             {
                 Core.KillMonster("Oddities", "r4", "Left", "*", "Freaky Fripperies", 13);
                 Bot.Wait.ForPickup("Eerie Embellishment");
             }
             Core.CancelRegisteredQuests();
 
-            while (!Core.CheckInventory("Gold Voucher 100k", VoucherQuant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Gold Voucher 100k", VoucherQuant))
                 Core.BuyItem("Oddities", 2135, "Gold Voucher 100k", VoucherQuant);
         }
     }

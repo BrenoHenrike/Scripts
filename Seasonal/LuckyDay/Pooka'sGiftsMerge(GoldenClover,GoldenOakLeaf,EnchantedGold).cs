@@ -24,7 +24,7 @@ public class PookasGiftsMerge
 
         Pooka.CompletePooka();
 
-        while (!Core.CheckInventory(new[] { "Golden Clover", "Golden Oak Leaf", "Enchanted Gold" }, 100))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Golden Clover", "Golden Oak Leaf", "Enchanted Gold" }, 100))
         {
             //Golden Clover
             if (!Core.CheckInventory("Golden Clover", 100))

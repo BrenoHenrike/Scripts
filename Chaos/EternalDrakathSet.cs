@@ -60,7 +60,7 @@ public class EternalDrakath
             Core.AddDrop("Star Fragment");
 
             Core.RegisterQuests(4413);
-            while (!Core.CheckInventory("Star Fragment", 33))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Star Fragment", 33))
             {
                 Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30, isTemp: false);
                 Bot.Wait.ForPickup("Star Fragment");
@@ -81,7 +81,7 @@ public class EternalDrakath
             Core.AddDrop("Reality Shard");
 
             Core.RegisterQuests(8455);
-            while (!Core.CheckInventory("Reality Shard", 200))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Reality Shard", 200))
             {
                 Core.HuntMonster("eternalchaos", "Eternal Drakath", "Eternal Drakath Defeated", 1);
                 Bot.Wait.ForPickup("Reality Shard");

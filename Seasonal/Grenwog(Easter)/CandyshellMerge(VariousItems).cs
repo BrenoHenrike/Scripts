@@ -20,7 +20,7 @@ public class CandyshellMerge
         //Needed AddDrop
         Core.AddDrop("Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells");
 
-        while (!Core.CheckInventory(new[] { "Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells" }, 150))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells" }, 150))
         {
             Core.EquipClass(ClassType.Farm);
 

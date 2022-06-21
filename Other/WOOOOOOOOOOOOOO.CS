@@ -56,7 +56,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
         string[] FocussedArray;
         if (GetNONac) FocussedArray = WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
         else FocussedArray = WOOOOODropsAC;
-        while (!Core.CheckInventory(FocussedArray))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(FocussedArray))
         {
             Core.EnsureAccept(8497);
             Core.HuntMonster("Mverse", "Major Mushroom", "Dark Caster Card", 1, isTemp: true);

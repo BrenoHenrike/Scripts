@@ -503,7 +503,7 @@ public class CoreDailies
         if (Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
             Bot.Drops.Add(Core.EnsureLoad(1238).Rewards.Select(x => x.Name).ToArray());
 
-        while (Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
+        while (!Bot.ShouldExit() && Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
         {
             Core.ChainComplete(1238);
             Bot.Wait.ForPickup("*");
@@ -550,7 +550,7 @@ public class CoreDailies
                 {
                     Core.AddDrop("Kraken Doubloon");
                     Core.RegisterQuests(3119);
-                    while (!Core.CheckInventory("Kraken Doubloon", 13))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory("Kraken Doubloon", 13))
                     {
                         Core.HuntMonster("chaoskraken", "Chaos Kraken", "Kraken Keelhauled");
                     }

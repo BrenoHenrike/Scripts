@@ -34,14 +34,14 @@ public class VoidDestroyer
     public void GetDestroyer()
     {
         int i = 1;
-        while(!Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
         {
             Nulgath.Supplies("Unidentified 4");
             Nulgath.SwindleBulk(1);
             Nulgath.FarmDarkCrystalShard(1);
             Nulgath.EssenceofNulgath(1);
             Nulgath.FarmGemofNulgath(1);
-            
+
             Core.ChainComplete(5661);
             Bot.Player.Pickup(Rewards);
             Core.Logger($"Completed x{i++}");

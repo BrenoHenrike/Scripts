@@ -60,7 +60,7 @@ public class CoreVHL
 
         Core.Logger($"Obtaining Roentgenium of Nulgath x{quant}");
         int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
-        while (!Core.CheckInventory("Roentgenium of Nulgath", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
             Core.EnsureAccept(5660);
 
@@ -135,7 +135,7 @@ public class CoreVHL
         Nulgath.FarmBloodGem();
         if (!Core.CheckInventory("Unidentified 19"))
         {
-            while (!Core.CheckInventory("Receipt of Swindle", 6))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Receipt of Swindle", 6))
                 Nulgath.SwindleReturn();
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
         }

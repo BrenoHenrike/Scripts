@@ -52,7 +52,7 @@ public class VoidAvengerScythe
         if (!Bot.Quests.IsUnlocked(498))
             BatwingScythe();
 
-        while (!Core.CheckInventory("Batwing Scythe"))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Batwing Scythe"))
         {
             Core.EnsureAccept(498);
             Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull");

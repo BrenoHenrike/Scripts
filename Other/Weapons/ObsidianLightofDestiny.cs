@@ -55,10 +55,10 @@ public class ObsidianLightofDestiny
             BLOD.FindingFragmentsMace(40); //Brilliant Aura x40
             BLOD.FindingFragmentsBow(120); //Bright Aura x120
             BLOD.FindingFragments(2174); //Blinding Aura 
-            
-            while (!Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
+
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
                 BLOD.FindingFragments(2179);
-            while (!Core.CheckInventory("Loyal Spirit Orb", 750))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Loyal Spirit Orb", 750))
                 BLOD.FindingFragments(2179);
             Core.EnsureComplete(7648);
             Bot.Wait.ForPickup("Obsidian Light of Destiny");

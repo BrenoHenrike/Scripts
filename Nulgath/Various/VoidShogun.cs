@@ -55,7 +55,7 @@ public class VoidShogun
         Nulgath.FarmVoucher(false);
 
         int i = 1;
-        while (!Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(6484);
 

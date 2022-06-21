@@ -877,7 +877,7 @@ public class Core13LoC
             Core.EnsureAccept(934);
             if (!Core.CheckInventory(29373, toInv: false))
                 Core.KillMonster("sandport", "r6", "Left", 2153, "Horc Sell-Swords Defeated", 1);
-            while (!Core.CheckInventory(6686, 3, toInv: false))
+            while (!Bot.ShouldExit() && !Core.CheckInventory(6686, 3, toInv: false))
                 Core.KillMonster("sandport", "r5", "Left", 536, "Horc Sell-Swords Defeated", 3);
             Core.EnsureComplete(934);
         }

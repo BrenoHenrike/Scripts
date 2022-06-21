@@ -34,7 +34,7 @@ public class MeateorHuntMerge
 
         Core.EquipClass(ClassType.Solo);
 
-        while (!Core.CheckInventory("Unoriginal Recipe", Quant) && !Bot.ShouldExit())
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Unoriginal Recipe", Quant))
         {
             Core.EnsureAccept(8629);
 

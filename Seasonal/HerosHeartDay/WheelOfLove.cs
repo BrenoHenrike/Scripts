@@ -48,7 +48,7 @@ public class WheeleOfLove
         {
             Core.EnsureAccept(5688);
             Core.Join("wheeloflove", "r6", "Left");
-            while (!Bot.Quests.CanComplete(5688))
+            while (!Bot.ShouldExit() && !Bot.Quests.CanComplete(5688))
             {
                 Core.SendPackets("%xt%zm%ia%1%rval%game%%");
             }
@@ -83,7 +83,7 @@ public class WheeleOfLove
         if (Core.CheckInventory(Rewards))
             return;
         Core.AddDrop(Rewards);
-        while (!Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(5694);
             Core.HuntMonster("wheeloflove", "Undead Cherub", "Unlove Dart", 13);

@@ -43,7 +43,7 @@ public class AssistingOblivionBlade
         Core.RegisterQuests(5818);
         foreach (string item in RewardsList)
         {
-            while (!Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
+            while (!Bot.ShouldExit() && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
             {
                 Farm.TheSecret4();
                 Nulgath.EssenceofNulgath(20);

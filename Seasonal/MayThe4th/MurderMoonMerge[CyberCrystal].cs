@@ -31,7 +31,7 @@ public class MurderMoonMerge
 
         Core.AddDrop("Cyber Crystal");
         Core.RegisterQuests(8065);
-        while (!Core.CheckInventory("Cyber Crystal", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Cyber Crystal", quant))
         {
             Core.HuntMonster("murdermoon", "Tempest Soldier", "Tempest Soldier Badge", 5, log: false);
             Bot.Wait.ForPickup("Cyber Crystal");

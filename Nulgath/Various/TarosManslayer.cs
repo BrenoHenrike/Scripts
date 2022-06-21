@@ -20,7 +20,7 @@ public class TarosManslayer
         Core.SetOptions(false);
     }
 
-    private string[] Rewards = {"Taro's Manslayer", "Taro Blademaster Guardian"};
+    private string[] Rewards = { "Taro's Manslayer", "Taro Blademaster Guardian" };
 
     public void GuardianTaro()
     {
@@ -32,7 +32,7 @@ public class TarosManslayer
         Farm.GoodREP();
         PCoD.GetPCoD();
 
-        while (!Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(1111);
             Nulgath.FarmGemofNulgath(10);

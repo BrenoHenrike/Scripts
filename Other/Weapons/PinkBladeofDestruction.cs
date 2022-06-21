@@ -34,7 +34,7 @@ public class PinkBladeOfDestruciton
 
         Core.EnsureAccept(7650);
 
-        while (!Core.CheckInventory("Fuchsia Dye", 50))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Fuchsia Dye", 50))
         {
             Core.EnsureAccept(1487);
             Core.HuntMonster("natatorium", "Anglerfish", "Pink Coral", 3);
@@ -45,7 +45,7 @@ public class PinkBladeOfDestruciton
         BLoD.UnlockMineCrafting();
         BLoD.SpiritOrb(500);
 
-        while (!Core.CheckInventory("Zealous Badge", 5))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Zealous Badge", 5))
         {
             Core.EnsureAccept(7616);
             Core.EquipClass(ClassType.Solo);

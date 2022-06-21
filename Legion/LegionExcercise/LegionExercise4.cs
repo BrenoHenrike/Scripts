@@ -43,7 +43,7 @@ public class LegionExercise4
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Core.CheckInventory(new[] { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced" }))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced" }))
         {
             Core.EnsureAccept(824);
             Core.EquipClass(ClassType.Farm);

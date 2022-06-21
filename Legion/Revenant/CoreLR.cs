@@ -136,7 +136,7 @@ public class CoreLR
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
         Bot.Quests.UpdateQuest(2060);
-        while (!Core.CheckInventory("Revenant's Spellscroll", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Core.EnsureAccept(6897);
 
@@ -173,7 +173,7 @@ public class CoreLR
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
         Bot.Quests.UpdateQuest(4614);
-        while (!Core.CheckInventory("Conquest Wreath", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);
             Adv.BestGear(GearBoost.Undead);
@@ -213,7 +213,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Exalted Crown");
-        while (!Core.CheckInventory("Exalted Crown", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Exalted Crown", quant))
         {
             Core.EnsureAccept(6899);
 

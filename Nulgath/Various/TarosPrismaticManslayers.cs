@@ -21,7 +21,7 @@ public class TarosPrismaticManslayers
         Core.SetOptions(false);
     }
 
-    private string[] Rewards = {"Taro's Prismatic Manslayer", "Taro's Dual Prismatic Manslayers", "Taro's BattleBlade"};
+    private string[] Rewards = { "Taro's Prismatic Manslayer", "Taro's Dual Prismatic Manslayers", "Taro's BattleBlade" };
 
     public void TemptationTest()
     {
@@ -34,7 +34,7 @@ public class TarosPrismaticManslayers
         Farm.GoodREP();
         Taro.GuardianTaro();
 
-        while (!Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(8496);
             Nulgath.SwindleBulk(200);

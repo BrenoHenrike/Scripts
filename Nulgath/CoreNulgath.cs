@@ -104,7 +104,7 @@ public class CoreNulgath
         Core.AddDrop(bagDrops);
         int i = 1;
         Core.Logger($"Farming {quant} Dark Crystal Shard");
-        while (!Bot.Inventory.Contains("Dark Crystal Shard", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Dark Crystal Shard", quant))
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(570);
@@ -151,7 +151,7 @@ public class CoreNulgath
             Core.AddDrop(bagDrops);
         Core.Logger($"Farming for {item}({quant})");
         int i = 1;
-        while (!Bot.Inventory.Contains(item, quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains(item, quant))
         {
             if (Bot.Inventory.Contains("Bounty Hunter's Drone Pet"))
                 Core.EnsureAccept(6183);
@@ -186,7 +186,7 @@ public class CoreNulgath
         Core.Logger($"Farming {quant} Diamonds");
         int i = 1;
         Core.Join("evilwarnul");
-        while (!Bot.Inventory.Contains("Diamond of Nulgath", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Diamond of Nulgath", quant))
         {
             if (Core.IsMember)
                 Core.EnsureAccept(2221);
@@ -241,7 +241,7 @@ public class CoreNulgath
         else
             Core.AddDrop(bagDrops);
         Core.AddDrop(Receipt);
-        while (!Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(7551);
             Supplies("Unidentified 1");
@@ -287,7 +287,7 @@ public class CoreNulgath
         int i = 1;
         Core.AddDrop("Cubes", "Tainted Gem");
         Core.AddDrop(bagDrops);
-        while (!Bot.Inventory.Contains("Tainted Gem", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
             Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false);
@@ -314,7 +314,7 @@ public class CoreNulgath
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
-        while (!Bot.Inventory.Contains("Emblem of Nulgath", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Emblem of Nulgath", quant))
         {
             Core.EnsureAccept(4748);
             Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false);
@@ -333,7 +333,7 @@ public class CoreNulgath
         Core.AddDrop(nationMedals);
         Core.Logger("Farming Nation Round 4 Medal");
         Core.Join("shadowblast");
-        while (!Bot.Inventory.Contains("Nation Round 4 Medal"))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Nation Round 4 Medal"))
         {
             if (!Core.CheckInventory("Nation Round 1 Medal") &&
                 !Core.CheckInventory("Nation Round 2 Medal") &&
@@ -428,12 +428,12 @@ public class CoreNulgath
         int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
-        while (!Bot.Inventory.Contains(item, quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains(item, quant))
         {
             Core.EnsureAccept(2566);
             if (!Core.CheckInventory("Mana Energy for Nulgath"))
                 Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 1, false);
-            while (Bot.Inventory.Contains("Mana Energy for Nulgath"))
+            while (!Bot.ShouldExit() && Bot.Inventory.Contains("Mana Energy for Nulgath"))
             {
                 Core.EnsureAccept(2566);
                 Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5);
@@ -466,7 +466,7 @@ public class CoreNulgath
             Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
-            while (!Bot.Inventory.Contains(item, quant))
+            while (!Bot.ShouldExit() && !Bot.Inventory.Contains(item, quant))
             {
                 Core.EnsureAccept(2857);
                 Core.KillEscherion("Relic of Chaos", publicRoom: true);
@@ -504,14 +504,14 @@ public class CoreNulgath
             if (!Core.CheckInventory("War-Torn Memorabilia"))
             {
                 Core.Join("yulgar");
-                while (Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
+                while (!Bot.ShouldExit() && Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
                 {
                     Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
                     Bot.Sleep(Core.ActionDelay);
                 }
             }
             Core.EnsureAccept(2859);
-            while (Core.CheckInventory("War-Torn Memorabilia") && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit() && Core.CheckInventory("War-Torn Memorabilia") && !Core.CheckInventory(item, quant))
             {
                 Core.ChainComplete(2859);
                 Bot.Player.Pickup(bagDrops);
@@ -522,7 +522,7 @@ public class CoreNulgath
         Core.Logger($"Farming {quant} {item}");
         if (farmGold)
         {
-            while (!Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
                 AssistantLoop();
                 if (Bot.Player.Gold < 100000 && !Core.CheckInventory(item, quant))
@@ -531,7 +531,7 @@ public class CoreNulgath
         }
         else
         {
-            while (Bot.Player.Gold > 100000)
+            while (!Bot.ShouldExit() && Bot.Player.Gold > 100000)
                 AssistantLoop();
 
             if (!Core.CheckInventory(item, quant))
@@ -565,7 +565,7 @@ public class CoreNulgath
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
 
-        while (!Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.RegisterQuests(2857, 609);
             if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
@@ -636,7 +636,7 @@ public class CoreNulgath
             Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
         Core.EquipClass(ClassType.Solo);
         int i = 1;
-        while (!Core.CheckInventory("Unidentified 10", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Unidentified 10", quant))
         {
             Core.EnsureAccept(7818);
             Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom: true);
@@ -658,7 +658,7 @@ public class CoreNulgath
         Core.AddDrop("Unidentified 13");
         quant = quant > 13 ? 13 : quant;
         if (Core.CheckInventory(CragName))
-            while (!Bot.Inventory.Contains("Unidentified 13", quant))
+            while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Unidentified 13", quant))
                 DiamondExchange();
         NewWorldsNewOpportunities("Unidentified 13", quant);
         NulgathLarvae("Unidentified 13", quant);
@@ -715,7 +715,7 @@ public class CoreNulgath
             return;
         Core.AddDrop("Gem of Nulgath");
         NewWorldsNewOpportunities("Gem of Nulgath", quant);
-        while (!Core.CheckInventory("Gem of Nulgath", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Gem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
     }
 
@@ -729,7 +729,7 @@ public class CoreNulgath
             return;
         Core.AddDrop("Blood Gem of the Archfiend");
         if (Core.CheckInventory("Drudgen the Assistant"))
-            while (!Core.CheckInventory("Blood Gem of the Archfiend", quant))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         KisstheVoid(quant);
@@ -743,7 +743,7 @@ public class CoreNulgath
     {
         Core.AddDrop("Totem of Nulgath");
         NewWorldsNewOpportunities("Totem of Nulgath", quant);
-        while (!Core.CheckInventory("Totem of Nulgath", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Totem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
     }
 
@@ -775,7 +775,7 @@ public class CoreNulgath
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Blood Gems");
         int i = 1;
-        while (!Bot.Inventory.Contains("Blood Gem of the Archfiend", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Blood Gem of the Archfiend", quant))
         {
             Core.EnsureAccept(3743);
             if (!Core.CheckInventory("Tendurrr The Assistant"))

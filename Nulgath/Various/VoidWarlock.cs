@@ -51,7 +51,7 @@ public class VoidWarlock
 
         int i = 1;
         Core.Logger("Starting [Tools for the Job] Quest");
-        while (!Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
         {
             Nulgath.FarmVoucher(false);
             Nulgath.FarmBloodGem(90);
@@ -66,7 +66,7 @@ public class VoidWarlock
         Core.Logger("All drops acquired from [Tools for the Job] Quest");
         i = 1;
         Core.Logger("Starting [Corrupted Touch] Quest");
-        while (!Core.CheckInventory(Rewards2, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards2, toInv: false))
         {
             Nulgath.FarmUni13();
             Nulgath.FarmVoucher(true);

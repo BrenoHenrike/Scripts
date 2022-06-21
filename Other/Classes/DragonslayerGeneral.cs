@@ -64,9 +64,9 @@ public class DragonslayerGeneral
 
         Core.Logger($"Farming {CLawquant} Dragon Claw");
         Core.HuntMonster("dragontown", "Tempest Dracolich", "Dragon Claw", CLawquant, isTemp: false, log: false);
-        
+
         Core.Logger($"Farming {ScaleQuant} Enchanted Scales");
-        while (!Core.CheckInventory("Enchanted Scale", ScaleQuant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
         {
             Core.EnsureAccept(5294);
             Core.HuntMonster("dragontown", "Tempest Dracolich", "Dracolich Slain", 12, log: false);

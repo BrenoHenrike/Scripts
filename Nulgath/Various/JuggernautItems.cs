@@ -53,7 +53,7 @@ public class JuggernautItemsofNulgath
         Nulgath.FarmUni13();
 
         int i = 1;
-        while (!Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
         {
             Nulgath.FarmDiamondofNulgath(13);
             Nulgath.FarmDarkCrystalShard(50);

@@ -57,7 +57,7 @@ public class HollowbornJudgementMerge
     {
         Core.BankingBlackList.Add("Hollowborn Writ");
         Core.SetOptions();
-        
+
         Merge();
 
         Core.SetOptions(false);
@@ -151,7 +151,7 @@ public class HollowbornJudgementMerge
         Core.Logger($"this will take {(Item1Quant - Bot.Inventory.GetQuantity("Hollowborn Writ")) / 3} Turnins [counter starts at 0]");
 
         Core.RegisterQuests(8418);
-        while (!Core.CheckInventory("Hollowborn Writ", Item1Quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Hollowborn Writ", Item1Quant))
         {
             Core.Logger($"{Bot.Inventory.GetQuantity("Hollowborn Writ")}/{Item1Quant} Hollowborn Writ");
             Bot.Sleep(Core.ActionDelay);

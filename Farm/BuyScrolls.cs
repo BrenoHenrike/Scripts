@@ -44,7 +44,7 @@ public class BuyScrolls
         Core.AddDrop(_scroll);
 
         Farm.SpellCraftingREP(5);
-        while (!Core.CheckInventory(_scroll, quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(_scroll, quant))
         {
             if (!Core.CheckInventory(ink))
             {

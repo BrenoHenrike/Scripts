@@ -27,7 +27,7 @@ public class SepulchuresOriginalHelm
     {
         Core.BankingBlackList.AddRange(new[] { "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor" });
         Core.SetOptions();
-        
+
         DoAll();
 
         Core.SetOptions(false);
@@ -72,9 +72,9 @@ public class SepulchuresOriginalHelm
 
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
-        while (!Core.CheckInventory("Gravelyn's DoomFire Token", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Gravelyn's DoomFire Token", quant))
         {
-            while (!Core.CheckInventory("Gravelyn's Blessing"))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Gravelyn's Blessing"))
             {
                 if (Core.CheckInventory("Necrotic Sword of Doom"))
                     Core.ChainComplete(5455);

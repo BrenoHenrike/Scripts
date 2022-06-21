@@ -20,7 +20,7 @@ public class Adam1a1Merge
         //Needed AddDrop
         Core.AddDrop("Fresh Ectoplasm", "IOU Slip");
 
-        while (!Core.CheckInventory("IOU Slip", 100) | !Core.CheckInventory("Fresh Ectoplasm", 300))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("IOU Slip", 100) | !Core.CheckInventory("Fresh Ectoplasm", 300))
         {
             //Fresh Ecotplasm & IOU Slip
             Core.EnsureAccept(8009);

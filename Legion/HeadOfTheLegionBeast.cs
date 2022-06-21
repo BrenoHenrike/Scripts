@@ -110,7 +110,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant}x Essence of Wrath");
 
         Core.RegisterQuests(7979);
-        while (!Bot.Inventory.Contains("Essence of Wrath", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Essence of Wrath", quant))
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Wrath");
@@ -128,7 +128,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant} Essence of Violence");
 
         Core.RegisterQuests(7985);
-        while (!Bot.Inventory.Contains("Essence of Violence", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Essence of Violence", quant))
             Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", "Violence Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Violence");
@@ -146,7 +146,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant} Essence of Treachery");
 
         Core.RegisterQuests(7988);
-        while (!Bot.Inventory.Contains("Essence of Treachery", quant))
+        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Essence of Treachery", quant))
             Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", "Treachery Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Treachery");
@@ -164,7 +164,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant} Souls of Heresy");
 
         Core.RegisterQuests(7983);
-        while (!Core.CheckInventory("Souls of Heresy", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Souls of Heresy", quant))
             Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", "Heresy Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Souls of Heresy");
@@ -180,7 +180,7 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Penance");
         Core.EquipClass(ClassType.Farm);
-        while (!Core.CheckInventory("Penance", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Penance", quant))
         {
             EssenceWrath(quant2);
             EssenceViolence(quant2);
@@ -202,7 +202,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant} Indulgence");
 
         Core.RegisterQuests(7978);
-        while (!Core.CheckInventory("Indulgence", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Indulgence", quant))
         {
             Core.KillMonster("sevencircles", "r2", "Left", "Limbo Guard", "Souls of Limbo", 25);
             Core.KillMonster("sevencircles", "r3", "Left", "Luxuria Guard", "Essence of Luxuria", 1);

@@ -76,7 +76,7 @@ public class ChaosQueenBeleen
         if (!Core.isCompletedBefore(4325))
         {
             Core.EnsureAccept(4325);
-            while (!Core.CheckInventory("Chaos Fuzzies", 30))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Chaos Fuzzies", 30))
                 Core.GetMapItem(3481, map: "Citadel");
             Core.EnsureComplete(4325);
         }

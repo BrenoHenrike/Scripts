@@ -66,7 +66,7 @@ public class FireChampionsArmor
         Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
 
         Core.RegisterQuests(6975);
-        while (!Core.CheckInventory("Flame-Forged Metal", Metalquant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Flame-Forged Metal", Metalquant))
             Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame", log: false);
         Core.CancelRegisteredQuests();
     }

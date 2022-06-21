@@ -52,7 +52,7 @@ public class FiendofLight
         ////Farming rewards\\\\
         Core.AddDrop(Rewards);
         Core.RegisterQuests(6408);
-        while (!Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
             Core.HuntMonster("darkplane", "*", "Crystallized Memory", 10);
         ////If you want the bot to bank the items after farming them all un "//" the following lines.\\\\
         //Core.Logger($"banking Fiend of Light");

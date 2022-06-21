@@ -36,7 +36,7 @@ public class DarkAlly_Story
         {
             Core.EnsureAccept(7422);
             Core.Join("Darkally", "r2", "Left");
-            while (!Core.CheckInventory(53855, 10))
+            while (!Bot.ShouldExit() && !Core.CheckInventory(53855, 10))
                 Bot.Player.Kill("Dark Makai");
             Core.EnsureComplete(7422);
         }

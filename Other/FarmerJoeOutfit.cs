@@ -97,7 +97,7 @@ public class FarmerJoeOutfit
     //         return;
 
 
-    //     while (!Core.CheckInventory(25117))
+    //     while (!Bot.ShouldExit() && !Core.CheckInventory(25117))
     //         Bot.Player.Hunt("Death");
     // }
 

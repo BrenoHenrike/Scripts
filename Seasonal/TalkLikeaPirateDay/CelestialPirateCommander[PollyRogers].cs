@@ -40,7 +40,7 @@ public class CelestialPirateCommander
             return;
 
         Core.AddDrop(Rewards);
-        while (!Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(7713);
             Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 5, false, publicRoom: true);

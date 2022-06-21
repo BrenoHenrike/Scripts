@@ -75,7 +75,7 @@ public class LegionBlade
 
         int i = 1;
 
-        while (!Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(questID);

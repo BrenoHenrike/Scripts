@@ -47,7 +47,7 @@ public class AscendedDrakathGear
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
 
-        while (!Core.CheckInventory(Target))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(Target))
         {
             Bot.Quests.UpdateQuest(159, 4);
             Core.EnsureAccept(3767);

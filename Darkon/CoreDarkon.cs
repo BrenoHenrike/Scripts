@@ -37,7 +37,7 @@ public class CoreDarkon
         Core.AddDrop("Darkon's Receipt");
         Core.EquipClass(ClassType.Farm);
 
-        while (!Core.CheckInventory("Darkon's Receipt", Quantity))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
             Core.EnsureAccept(7324);
 
@@ -60,11 +60,11 @@ public class CoreDarkon
         Bot.Quests.UpdateQuest(2954);
         Core.Join("doomvault", "r5", "Left", true);
 
-        while (!Core.CheckInventory("Darkon's Receipt", Quantity))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
             if (Bot.Map.Name.ToLower() == "doomvault")
             {
-                while (Bot.Player.Cell != "r5")
+                while (!Bot.ShouldExit() && Bot.Player.Cell != "r5")
                 {
                     Core.Jump("r5", "Left");
                     Bot.Sleep(Core.ActionDelay);
@@ -96,7 +96,7 @@ public class CoreDarkon
         Core.AddDrop("Darkon's Receipt");
         Core.EquipClass(ClassType.Solo);
 
-        while (!Core.CheckInventory("Darkon's Receipt", Quantity))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
             Core.EnsureAccept(7326);
 
@@ -120,7 +120,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Core.Logger($"Farming {Quantity} Teeth");
-        while ((!Core.CheckInventory("Teeth", Quantity)))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory("Teeth", Quantity)))
         {
             Core.EnsureAccept(7780);
             Core.HuntMonster("eridani", "Wolf-Like Creature", "Tooth", 28, false, log: false);
@@ -143,7 +143,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Core.Logger($"Farming {Quantity} La's Gratitude");
-        while ((!Core.CheckInventory("La's Gratitude", Quantity)))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory("La's Gratitude", Quantity)))
         {
             Core.EnsureAccept(8001);
             Core.HuntMonster("astravia", "Creature 27", "Broken Dog Tag", 20, log: false);
@@ -163,7 +163,7 @@ public class CoreDarkon
         Core.Join("astraviacastle");
 
         Core.Logger($"Farming {Quantity} Astravian Medal");
-        while ((!Core.CheckInventory("Astravian Medal", Quantity)))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory("Astravian Medal", Quantity)))
         {
             Core.EnsureAccept(8257);
             Core.EquipClass(ClassType.Farm);
@@ -187,7 +187,7 @@ public class CoreDarkon
         Astravia.AstraviaJudgement();
 
         Core.Logger($"Farming {Quantity} A Melody");
-        while ((!Core.CheckInventory("A Melody", Quantity)))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory("A Melody", Quantity)))
         {
             Core.EnsureAccept(8396);
             Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
@@ -207,7 +207,7 @@ public class CoreDarkon
         Astravia.EridaniPast();
 
         Core.Logger($"Farming {Quantity} Bandit's Correspondence");
-        while ((!Core.CheckInventory("Bandit's Correspondence", Quantity)))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory("Bandit's Correspondence", Quantity)))
         {
             Bot.Quests.UpdateQuest(8531); //attempted fix
             Core.EnsureAccept(8531);
@@ -230,7 +230,7 @@ public class CoreDarkon
         Astravia.CompleteCoreAstravia();
 
         Core.Logger($"Farming {Quantity} Suki's Prestige");
-        while ((!Core.CheckInventory("Suki's Prestige", Quantity)))
+        while (!Bot.ShouldExit() && (!Core.CheckInventory("Suki's Prestige", Quantity)))
         {
             Core.EnsureAccept(8602);
             Core.EquipClass(ClassType.Solo);

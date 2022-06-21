@@ -31,7 +31,7 @@ public class WarfuryEmblem
 
         Core.AddDrop("Warfury Emblem");
         Adv.BestGear(GearBoost.Human);
-        while (!Core.CheckInventory("Warfury Emblem", EmblemQuant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Warfury Emblem", EmblemQuant))
         {
             Core.EnsureAccept(8204);
             Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);

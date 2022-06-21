@@ -60,7 +60,7 @@ public class VoidPaladin
 
         int i = 1;
         Core.Logger("Starting [A Dark Temptation] Quest");
-        while (!Core.CheckInventory(ADKRewards, toInv: false))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(ADKRewards, toInv: false))
         {
             Core.EnsureAccept(5826);
 

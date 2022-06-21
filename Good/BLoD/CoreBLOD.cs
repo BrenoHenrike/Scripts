@@ -140,15 +140,15 @@ public class CoreBLOD
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Spirit Orb");
-        while (!Core.CheckInventory("Spirit Orb", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quant))
         {
             Farm.BattleUnderB("Undead Essence", 900);
-            while (Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
+            while (!Bot.ShouldExit() && Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
             {
                 Core.ChainComplete(2082);
                 Core.Logger($"Completed x{i++}");
             }
-            while (Core.CheckInventory("Bone Dust", 40) && !Core.CheckInventory("Spirit Orb", quant))
+            while (!Bot.ShouldExit() && Core.CheckInventory("Bone Dust", 40) && !Core.CheckInventory("Spirit Orb", quant))
             {
                 Core.ChainComplete(2083);
                 Core.Logger($"Completed x{i++}");
@@ -167,7 +167,7 @@ public class CoreBLOD
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Basic Wepon Kit");
-        while (!Core.CheckInventory("Basic Weapon Kit", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Basic Weapon Kit", quant))
         {
             Core.EnsureAccept(2136);
 
@@ -197,7 +197,7 @@ public class CoreBLOD
 
         int i = 1;
         Core.Logger($"Farming {quant} Advanced Wepon Kit");
-        while (!Core.CheckInventory("Advanced Weapon Kit", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Advanced Weapon Kit", quant))
         {
             Core.EnsureAccept(2162);
 
@@ -230,7 +230,7 @@ public class CoreBLOD
         Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
         int i = 1;
         Core.Logger($"Farming {quant} {item}");
-        while (!Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(2163);
 
@@ -472,7 +472,7 @@ public class CoreBLOD
         FindingFragmentsMace(75);
         FindingFragmentsBlade(500, 250);
         Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
-        while (!Core.CheckInventory("Blinding Aura"))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Blinding Aura"))
         {
             FindingFragments(2174);
             Bot.Player.Pickup("Blinding Aura");
@@ -493,7 +493,7 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Brilliant Aura");
-        while (!Core.CheckInventory("Brilliant Aura", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Brilliant Aura", quant))
         {
             FindingFragments(2176);
             Bot.Player.Pickup("Brilliant Aura");
@@ -511,7 +511,7 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Bright Aura");
-        while (!Core.CheckInventory("Bright Aura", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", quant))
         {
             FindingFragments(2174);
             Bot.Player.Pickup("Bright Aura");
@@ -529,7 +529,7 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quantSO} SOs and {quantLSO} LSOs");
-        while (!Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
         {
             FindingFragments(2179);
             Bot.Player.Pickup("Spirit Orb", "Loyal Spirit Orb");
@@ -564,7 +564,7 @@ public class CoreBLOD
         {
             UltimateWK("Loyal Spirit Orb", 5);
 
-            while (!Core.CheckInventory("Bright Aura", 2))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", 2))
             {
                 FindingFragments(2174);
                 Bot.Player.Pickup("Bright Aura");
@@ -592,7 +592,7 @@ public class CoreBLOD
         {
             UltimateWK("Loyal Spirit Orb", 5);
 
-            while (!Core.CheckInventory("Bright Aura", 2))
+            while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", 2))
             {
                 FindingFragments(2174);
                 Bot.Player.Pickup("Bright Aura");

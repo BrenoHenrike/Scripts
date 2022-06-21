@@ -61,7 +61,7 @@ public class MergeTemplate
                 case "YourItemHere1":
                     Core.RegisterQuests(0000);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("map", "monster", "item", 99999999);
                         Core.HuntMonster("map", "monster", "item", 99999999);

@@ -41,7 +41,7 @@ public class DragonBladeofNulgath
         BehemothBladeof("Shadow");
         BehemothBladeof("Light");
 
-        while (!Core.CheckInventory(TwistedItems))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(TwistedItems))
         {
             Core.EnsureAccept(765);
             Nulgath.FarmTotemofNulgath(3);
