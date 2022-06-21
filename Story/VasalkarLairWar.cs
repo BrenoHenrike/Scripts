@@ -47,14 +47,14 @@ public class LairWar
         //6687 | SoulSucking Enemy
         Story.KillQuest(6687, "lairdefend", "Soul Wyvern", GetReward: false);
 
-        //6688 | The Dragon Summoner
+        // 6688 | The Dragon Summoner
         if (!Story.QuestProgression(6688, GetReward: false))
         {
             Core.EnsureAccept(6688);
-            while (!Core.CheckInventory(46997, 3))
-                Core.HuntMonster("lairdefend", "Dragon Summoner");
+                Core.HuntMonster("lairdefend", "Dragon Summoner", "Dragon Claw", 3, isTemp: true);
             Core.EnsureComplete(6688);
         }
+        
         //6689 | The Flame Dragon
         Story.KillQuest(6689, "lairdefend", "Flame Dragon General", GetReward: false);
 
