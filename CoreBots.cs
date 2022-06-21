@@ -1015,7 +1015,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool publicRoom = false)
+    public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
@@ -1025,7 +1025,8 @@ public class CoreBots
         Jump("Boss", "Left");
         if (item == null)
         {
-            Logger("Killing Escherion");
+            if (log)
+                Logger("Killing Escherion");
             while (!Bot.ShouldExit() && Bot.Monsters.MapMonsters.First(m => m.Name == "Escherion").Alive)
             {
                 if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
@@ -1036,7 +1037,8 @@ public class CoreBots
         }
         else
         {
-            Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
+            if (log)
+                Logger($"Killing Escherion for {item} ({quant}) [Temp = {isTemp}]");
             while (!Bot.ShouldExit() && !CheckInventory(item, quant))
             {
                 if (Bot.Monsters.MapMonsters.First(m => m.Name == "Staff of Inversion").Alive)
@@ -1047,7 +1049,7 @@ public class CoreBots
         }
     }
 
-    public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool publicRoom = false)
+    public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
             return;
@@ -1060,9 +1062,9 @@ public class CoreBots
             Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
 
         if (ultra)
-            KillMonster("mirrorportal", "r6", "Right", "Ultra Xiang", item, quant, isTemp, true, publicRoom);
+            KillMonster("mirrorportal", "r6", "Right", "Ultra Xiang", item, quant, isTemp, log, publicRoom);
         else
-            KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, true, publicRoom);
+            KillMonster("mirrorportal", "r4", "Right", "Chaos Lord Xiang", item, quant, isTemp, log, publicRoom);
     }
 
     private void _KillForItem(string name, string item, int quantity, bool tempItem = false, bool rejectElse = false, bool log = true)
