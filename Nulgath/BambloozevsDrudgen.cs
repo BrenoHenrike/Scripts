@@ -5,6 +5,7 @@ using RBot;
 
 public class BambloozevsDrudgen
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreNulgath Nulgath = new CoreNulgath();
 

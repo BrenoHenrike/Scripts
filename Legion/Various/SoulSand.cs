@@ -8,6 +8,7 @@ using RBot;
 
 public class AnotherOneBitesTheDust
 {
+    public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
