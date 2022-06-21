@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using RBot;
-public class DreadFireREP
+public class DreadfireREP
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -12,7 +12,7 @@ public class DreadFireREP
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-        Farm.DreadFireREP();
+        Farm.DreadfireREP();
 
         Core.SetOptions(false);
     }

@@ -428,7 +428,7 @@ public class CoreFarms
         //DeathPitBrawlREP();
         DiabolicalREP();
         DoomWoodREP();
-        DreadFireREP();
+        DreadfireREP();
         DreadrockREP();
         DruidGroveREP();
         DwarfholdREP();
@@ -922,7 +922,7 @@ public class CoreFarms
         }
     }
 
-    public void DreadFireREP(int rank = 10)
+    public void DreadfireREP(int rank = 10)
     {
         if (FactionRank("Dreadfire") >= rank)
             return;
