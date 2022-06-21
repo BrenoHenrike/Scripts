@@ -100,10 +100,12 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
+
         Core.AddDrop(tercessBags);
         Core.AddDrop(bagDrops);
         int i = 1;
         Core.Logger($"Farming {quant} Dark Crystal Shard");
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Crystal Shard", quant))
         {
             Core.EquipClass(ClassType.Solo);
@@ -151,6 +153,7 @@ public class CoreNulgath
             Core.AddDrop(bagDrops);
         Core.Logger($"Farming for {item}({quant})");
         int i = 1;
+
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             if (Core.CheckInventory("Bounty Hunter's Drone Pet"))
@@ -181,11 +184,13 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Diamond of Nulgath", quant))
             return;
+
         Core.AddDrop("Legion Blade", "Dessicated Heart", "Diamond of Nulgath");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Diamonds");
         int i = 1;
         Core.Join("evilwarnul");
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Diamond of Nulgath", quant))
         {
             if (Core.IsMember)
@@ -215,9 +220,11 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
             return;
+
         Core.Logger($"Farming {quantApproval} Nulgath's Approval and {quantFavor} Archfiend's Favor");
         Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
         Core.EquipClass(ClassType.Farm);
+
         if (quantApproval > 0)
             Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
         if (quantFavor > 0)
@@ -241,6 +248,7 @@ public class CoreNulgath
         else
             Core.AddDrop(bagDrops);
         Core.AddDrop(Receipt);
+
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(7551);
@@ -287,6 +295,7 @@ public class CoreNulgath
         int i = 1;
         Core.AddDrop("Cubes", "Tainted Gem");
         Core.AddDrop(bagDrops);
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
@@ -306,6 +315,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Emblem of Nulgath", quant))
             return;
+
         if (!Core.CheckInventory("Nation Round 4 Medal"))
             NationRound4Medal();
 
@@ -313,6 +323,7 @@ public class CoreNulgath
         Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Emblems");
+
         int i = 1;
         while (!Bot.ShouldExit() && !Core.CheckInventory("Emblem of Nulgath", quant))
         {
@@ -330,9 +341,13 @@ public class CoreNulgath
     /// </summary>
     public void NationRound4Medal()
     {
+        if (Core.CheckInventory("Nation Round 4 Medal"))
+            return;
+
         Core.AddDrop(nationMedals);
         Core.Logger("Farming Nation Round 4 Medal");
         Core.Join("shadowblast");
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Nation Round 4 Medal"))
         {
             if (!Core.CheckInventory("Nation Round 1 Medal") &&
@@ -391,6 +406,7 @@ public class CoreNulgath
         Core.AddDrop(bagDrops);
         Core.Logger($"Reward selected: {reward}");
         Core.EnsureAccept(4778);
+
         EssenceofNulgath();
         if (!Bot.Quests.CanComplete(4778))
             EssenceofNulgath(65);
@@ -406,8 +422,10 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Essence of Nulgath", quant))
             return;
+
         Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
+
         Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
     }
 
@@ -420,6 +438,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory(item, quant))
             return;
+
         Core.AddDrop("Mana Energy for Nulgath");
         if (item != "Any")
             Core.AddDrop(item);
@@ -428,6 +447,7 @@ public class CoreNulgath
         int i = 1;
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
+
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(2566);
@@ -454,6 +474,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory(item, quant))
             return;
+
         if (Core.CheckInventory(CragName))
             BambloozevsDrudgen(item, quant, sellMemVoucher);
         else
@@ -466,6 +487,7 @@ public class CoreNulgath
             Core.CheckInventory("Relic of Chaos");
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
+
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
                 Core.EnsureAccept(2857);
@@ -497,8 +519,8 @@ public class CoreNulgath
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
-
         int i = 1;
+
         void AssistantLoop()
         {
             if (!Core.CheckInventory("War-Torn Memorabilia"))
@@ -550,7 +572,6 @@ public class CoreNulgath
             return;
 
         Core.AddDrop("Relic of Chaos", "Tainted Core");
-
         if (item != "Any")
             Core.AddDrop(item);
         else
@@ -590,7 +611,9 @@ public class CoreNulgath
     {
         if ((!Core.CheckInventory("Diamond of Nulgath", 15) && !farmDiamond) || !Core.CheckInventory(CragName))
             return;
+
         Core.AddDrop("Diamond of Nulgath");
+
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
@@ -608,7 +631,9 @@ public class CoreNulgath
     {
         if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
             return;
+
         Core.AddDrop(bagDrops);
+
         if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
             FarmUni13();
         Core.EquipClass(ClassType.Solo);
@@ -627,6 +652,7 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
+
         Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
@@ -655,8 +681,10 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Unidentified 13", quant))
             return;
+
         Core.AddDrop("Unidentified 13");
         quant = quant > 13 ? 13 : quant;
+
         if (Core.CheckInventory(CragName))
             while (!Bot.ShouldExit() && !Core.CheckInventory("Unidentified 13", quant))
                 DiamondExchange();
@@ -672,7 +700,9 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Unidentified 10", quant))
             return;
+
         Core.AddDrop("Unidentified 10");
+
         BambloozevsDrudgen("Unidentified 10", quant);
         NulgathLarvae("unidentified 10", quant);
     }
@@ -685,7 +715,9 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
+
         Core.AddDrop("Dark Crystal Shard");
+
         NewWorldsNewOpportunities("Dark Crystal Shard", quant);
         Supplies("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
@@ -699,7 +731,9 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Diamond of Nulgath", quant))
             return;
+
         Core.AddDrop("Diamond of Nulgath");
+
         NewWorldsNewOpportunities("Diamond of Nulgath", quant);
         Supplies("Diamond of Nulgath", quant);
         DiamondEvilWar(quant);
@@ -713,7 +747,9 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Gem of Nulgath", quant))
             return;
+
         Core.AddDrop("Gem of Nulgath");
+
         NewWorldsNewOpportunities("Gem of Nulgath", quant);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Gem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
@@ -727,7 +763,9 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
             return;
+
         Core.AddDrop("Blood Gem of the Archfiend");
+
         if (Core.CheckInventory("Drudgen the Assistant"))
             while (!Bot.ShouldExit() && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend);
@@ -741,7 +779,11 @@ public class CoreNulgath
     /// <param name="quant">Desired quantity, 100 = max stack</param>
     public void FarmTotemofNulgath(int quant = 100)
     {
+        if (Core.CheckInventory("Totem of Nulgath", quant))
+            return;
+
         Core.AddDrop("Totem of Nulgath");
+
         NewWorldsNewOpportunities("Totem of Nulgath", quant);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Totem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
@@ -753,11 +795,11 @@ public class CoreNulgath
     /// <param name="member">If true will farm Voucher of Nulgath; false Voucher of Nulgath (nom-mem)</param>
     public void FarmVoucher(bool member)
     {
-        if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && !member)
+        if ((Core.CheckInventory("Voucher of Nulgath (non-mem)") && !member) || (Core.CheckInventory("Voucher of Nulgath") && member))
             return;
-        if (Core.CheckInventory("Voucher of Nulgath") && member)
-            return;
+
         Core.AddDrop(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+
         BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
@@ -771,10 +813,12 @@ public class CoreNulgath
     {
         if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
             return;
+
         Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Blood Gems");
         int i = 1;
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
             Core.EnsureAccept(3743);
@@ -798,6 +842,7 @@ public class CoreNulgath
 
         Core.AddDrop("Nulgath Larvae");
         Core.EnsureAccept(867);
+
         FarmVoucher(true);
         Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune");
         Core.EnsureComplete(867);
