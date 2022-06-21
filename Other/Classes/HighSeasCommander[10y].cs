@@ -1,4 +1,3 @@
-using System.Data;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
