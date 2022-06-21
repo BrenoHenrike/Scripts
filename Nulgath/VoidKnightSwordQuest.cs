@@ -28,7 +28,7 @@ public class VoidKnightSword
 
         Core.Logger($"Farming for {item}({quant})");
         int i = 1;
-        while (!Bot.ShouldExit() && !Bot.Inventory.Contains(item, quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             if (Core.CheckInventory(38275))
                 Core.EnsureAccept(5662);

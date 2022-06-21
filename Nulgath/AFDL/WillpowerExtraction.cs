@@ -89,7 +89,7 @@ public class WillpowerExtraction
 
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
             {
-                while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Facebreakers of Nulgath"))
+                while (!Bot.ShouldExit() && !Core.CheckInventory("Facebreakers of Nulgath"))
                 {
                     Core.EnsureAccept(3046);
                     Core.EquipClass(ClassType.Solo);

@@ -39,7 +39,7 @@ public class CoreLegion
         Adv.BestGear(GearBoost.gold);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
-        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Emblem of Dage", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Emblem of Dage", quant))
         {
             Core.EnsureAccept(4742);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
@@ -61,15 +61,15 @@ public class CoreLegion
         Adv.SmartEnhance(Bot.Inventory.CurrentClass.Name);
         Adv.BestGear(GearBoost.Human);
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
-        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Dark Token", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Token", quant))
         {
             Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6, log: false);
             Core.EnsureComplete(6251);
 
-            while (!Bot.ShouldExit() && Bot.Inventory.ContainsTempItem("Seraphic Medals", 5))
+            while (!Bot.ShouldExit() && Core.Checkitem"Seraphic Medals", 5))
                 Core.ChainComplete(6248);
-            while (!Bot.ShouldExit() && Bot.Inventory.ContainsTempItem("Mega Seraphic Medals", 3))
+            while (!Bot.ShouldExit() && Core.Checkitem"Mega Seraphic Medals", 3))
                 Core.ChainComplete(6249);
             Bot.Player.Pickup("Dark Token");
             Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
@@ -89,7 +89,7 @@ public class CoreLegion
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
-        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Diamond Token of Dage", quant))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
             Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
@@ -125,7 +125,7 @@ public class CoreLegion
         Core.Logger("Farming Legion Round 4 Medal");
         Core.Join("shadowblast");
         Adv.BestGear(GearBoost.dmgAll);
-        while (!Bot.ShouldExit() && !Bot.Inventory.Contains("Legion Round 4 Medal"))
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Round 4 Medal"))
         {
             if (!Core.CheckInventory("Legion Round 1 Medal") &&
                 !Core.CheckInventory("Legion Round 2 Medal") &&

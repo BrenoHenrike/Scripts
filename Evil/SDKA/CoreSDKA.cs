@@ -174,7 +174,7 @@ public class CoreSDKA
         {
             Core.EnsureAccept(2089);
             Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false);
-            while (!Bot.ShouldExit() && Bot.Inventory.Contains("DoomCoin", 20))
+            while (!Bot.ShouldExit() && Core.CheckInventory("DoomCoin", 20))
             {
                 Core.ChainComplete(2089);
                 Core.Logger($"Completed {i++}");
