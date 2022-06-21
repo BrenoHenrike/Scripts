@@ -578,7 +578,7 @@ public class CoreAdvanced
         return Item.ItemGroup == "Weapon";
     }
 
-    private void _RaceGear(string Monster)
+    public void _RaceGear(string Monster)
     {
         GearStore();
 
@@ -598,7 +598,7 @@ public class CoreAdvanced
         EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
     }
 
-    private void _RaceGear(int MonsterID)
+    public void _RaceGear(int MonsterID)
     {
         GearStore();
 

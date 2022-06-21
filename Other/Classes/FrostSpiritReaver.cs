@@ -55,7 +55,7 @@ public class FrostSpiritReaver
                         while (!Core.CheckInventory("Flame of Courage", 25))
                         {
                             Core.EnsureAccept(3955);
-                            Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage", log: false);
+                            Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage");
                             Core.EnsureComplete(3955);
                         }
                         if (!Core.CheckInventory("Karok's Glaceran Gem"))
@@ -63,12 +63,16 @@ public class FrostSpiritReaver
                             Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
                         }
                         Core.BuyItem("Glacera", 1055, "Scythe of Vengeance");
+                        Bot.Wait.ForItemBuy();
                     }
                     Core.BuyItem("Glacera", 1055, "Cold Scythe of Vengeance");
+                    Bot.Wait.ForItemBuy();
                 }
                 Core.BuyItem("Glacera", 1055, "Frigid Scythe of Vengeance");
+                Bot.Wait.ForItemBuy();
             }
             Core.BuyItem("Glacera", 1055, "Fallen Scythe of Vengeance");
+            Bot.Wait.ForItemBuy();
         }
         Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
         Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
@@ -98,10 +102,10 @@ public class FrostSpiritReaver
         {
             Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
         }
-        Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100);
-        Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20);
-        Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20);
-        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 20);
+        Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100, isTemp: false);
+        Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20, isTemp: false);
+        Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20, isTemp: false);
+        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 20, isTemp: false);
         Core.EnsureComplete(7921);
     }
 
@@ -127,10 +131,13 @@ public class FrostSpiritReaver
                     Bot.Wait.ForPickup("Warrior of Kyanos");
                 }
                 Core.BuyItem("icedungeon", 1948, "Warrior of Kyanos");
+                Bot.Wait.ForItemBuy();
             }
             Core.BuyItem("icedungeon", 1948, "Favored of Kyanos");
+            Bot.Wait.ForItemBuy();
         }
         Core.BuyItem("icedungeon", 1948, "Envoy of Kyanos");
+        Bot.Wait.ForItemBuy();
         Core.EnsureComplete(7922);
         Bot.Wait.ForPickup("Frost SpiritReaver");
     }
