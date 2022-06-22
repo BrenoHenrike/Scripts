@@ -5,7 +5,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
-//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
 using RBot;
 
@@ -14,13 +14,13 @@ public class SepulchuresOriginalHelm
     public ScriptInterface Bot => ScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
+    public CoreFarms Farm = new();
     public CoreDailies Daily = new();
-    public Core13LoC LOC => new Core13LoC();
-    public MysteriousDungeon MystDung => new MysteriousDungeon();
-    public AQWZombies Zombie = new AQWZombies();
+    public Core13LoC LOC = new();
+    public CoreToD TOD = new();
+    public AQWZombies Zombie = new();
     public string[] GravelynsDoomFireTokenItems = { "Empowered Essence", "Gravelyn's Blessing", "Painful Memory Bubble", "Burning Passion Flame", "Father's Sorrowful Tear", "Gravelyn's DoomFire Token", "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor" };
 
     public void ScriptMain(ScriptInterface bot)
@@ -51,7 +51,7 @@ public class SepulchuresOriginalHelm
         Farm.EvilREP(10);
         Farm.Experience(70);
         Zombie.Storyline();
-        MystDung.Storyline();
+        TOD.MysteriousDungeon();
         LOC.Hero();
         Core.EnsureAccept(6555);
         if (!Core.CheckInventory(new[] { "Lore's Champion Seal", "Gravelyns DoomFire Token", "Royal ShadowScythe Blade" }))

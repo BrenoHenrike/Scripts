@@ -9,7 +9,7 @@
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
-//cs_include Scripts/Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/Borgars.cs
@@ -20,17 +20,17 @@ public class DragonOfTime
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDarkon Darkon = new CoreDarkon();
-    public GoldenBladeOfFate GBoF = new GoldenBladeOfFate();
-    public PinkBladeOfDestruciton PBoD = new PinkBladeOfDestruciton();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
+    public CoreDarkon Darkon = new();
+    public GoldenBladeOfFate GBoF = new();
+    public PinkBladeOfDestruciton PBoD = new();
     public CoreQOM QOM = new();
-    public ShiftingPyramid SP = new ShiftingPyramid();
-    public MysteriousEgg Egg = new MysteriousEgg();
-    public Collection Coll = new Collection();
-    public Borgars Borg = new Borgars();
+    public CoreToD TOD = new();
+    public MysteriousEgg Egg = new();
+    public Collection Coll = new();
+    public Borgars Borg = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -198,7 +198,7 @@ public class DragonOfTime
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("aqw3d", "r13", "Bottom", "*", "Cross-Dimensional Weapons", 300, isTemp: false, publicRoom: true);
 
-            SP.ShiftingPyramidSaga();
+            TOD.ShiftingPyramid();
             if (!Core.CheckInventory("Starlight Singularity"))
             {
                 Core.AddDrop("Starlight Singularity");

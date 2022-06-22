@@ -14,7 +14,7 @@
 //cs_include Scripts/Story/J6Saga.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Nation/Bamboozle.cs
-//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs

@@ -19,7 +19,7 @@
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 using RBot;
 
 public class HDKAll

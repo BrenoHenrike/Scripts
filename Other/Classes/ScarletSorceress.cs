@@ -2,8 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
-//cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 using RBot;
 
@@ -11,10 +10,10 @@ public class ScarletSorceress
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm => new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public TowerofMirrors TOM = new TowerofMirrors();
-    public BloodSorceress BS = new BloodSorceress();
+    public CoreFarms Farm => new();
+    public CoreAdvanced Adv = new();
+    public CoreToD TOD = new();
+    public BloodSorceress BS = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -32,7 +31,7 @@ public class ScarletSorceress
 
         Core.AddDrop("Scarlet Sorceress");
 
-        TOM.TowerofMirrorsSaga();
+        TOD.TowerofMirrors();
         BS.GetBSorc(false);
         Farm.Experience(50);
 

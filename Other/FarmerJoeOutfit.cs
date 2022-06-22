@@ -5,7 +5,7 @@
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
 using RBot;
 
@@ -13,12 +13,11 @@ public class FarmerJoeOutfit
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreFarms Farm = new CoreFarms();
-    public HollowbornScythe Scythe = new HollowbornScythe();
+    public CoreAdvanced Adv = new();
+    public CoreFarms Farm = new();
+    public HollowbornScythe Scythe = new();
     public EternalInversionist EI = new();
     public project InvEn = new();
-
 
     public void ScriptMain(ScriptInterface bot)
     {

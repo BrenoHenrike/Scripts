@@ -2,8 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
-//cs_include Scripts/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 public class GetAllRanks
@@ -13,16 +12,15 @@ public class GetAllRanks
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
-    public FourthDimensionalPyramid FDP = new();
-    public FlyingBaconCatFortress BCF = new();
+    public CoreToD TOD = new();
     public Core13LoC LOC => new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        FDP.FourthDimensionalPyramidSaga();
-        BCF.FlyingBaconCatFortressSaga();
+        TOD.FourthDimensionalPyramid();
+        TOD.BaconCatFortress();
         LOC.Wolfwing();
         LOC.Kimberly();
         LOC.Lionfang();
