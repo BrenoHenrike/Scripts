@@ -51,10 +51,10 @@ public class LairWar
         if (!Story.QuestProgression(6688, GetReward: false))
         {
             Core.EnsureAccept(6688);
-                Core.HuntMonster("lairdefend", "Dragon Summoner", "Dragon Claw", 3, isTemp: true);
+            Core.HuntMonster("lairdefend", "Dragon Summoner", "Dragon Claw", 3, isTemp: true);
             Core.EnsureComplete(6688);
         }
-        
+
         //6689 | The Flame Dragon
         Story.KillQuest(6689, "lairdefend", "Flame Dragon General", GetReward: false);
 

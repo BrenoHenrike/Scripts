@@ -59,7 +59,7 @@ Base = Classic Soul Cleaver = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ClawSuit = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
 Base = Cryomancer Mini Pet Coming Soon = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
-Base = Daimon = 1 | 2 | 3 | 4 | Mode Optimistic
+Farm = Daimon = 1 | 3 | 2H<50S | Mode Optimistic
 Base = Dark BattleMage = 2 | 3 | 4 | 2 | 3 | 4 | Timeout:250
 Base = Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dark Chaos Berserker = 4 | 3 | 1 | 2 | Timeout:250
