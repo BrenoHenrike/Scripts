@@ -48,7 +48,7 @@ public class SkyPirateQuests
         Story.KillQuest(887, "airship", new[] { "Sky Pirate Draconian", "Rehydrated Gell Oh No", "Sky Pirate Dragon" });
 
         // Don't Get Mad, Get Gladius            
-        Story.KillQuest(888, "anders", "Gladius");
+        Story.KillQuest(888, "airship", "Gladius");
 
         // School's Out for the Invasion 1038
         Story.MapItemQuest(1038, "academy", 399);
