@@ -20,7 +20,7 @@ public class CoreToD
         int[] questIDs = { 4992, 5050, 5108, 5120, 5154, /*DeathPitPVP, */ 5187, 5212, 5313, 5332, 5434, 5451 };
         if (Core.IsMember)
             questIDs = questIDs.Concat(new[] { 5008, 5022 /*, DeepSpace*/ }).ToArray();
-
+        Core.EnsureLoad(questIDs);
         if (questIDs.All(qID => Core.isCompletedBefore(qID)))
             return;
 
