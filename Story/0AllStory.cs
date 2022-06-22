@@ -33,16 +33,7 @@
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
-//cs_include Scripts/Story/ThroneofDarkness/00ThroneofDarkness.cs
-//cs_include Scripts/Story/ThroneofDarkness/01Vaden(CastleofBones).cs
-//cs_include Scripts/Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
-//cs_include Scripts/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs
-//cs_include Scripts/Story/ThroneofDarkness/04aPax(DeathPit).cs
-//cs_include Scripts/Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs
-//cs_include Scripts/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
-//cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
-//cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
-//cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
@@ -66,11 +57,8 @@ public class AllStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
-    public CoreDailies Daily = new();
-    public CoreNulgath Nulgath = new();
     public Complete7DeadlyDragons C7DD = new();
     public GetSDD SDD = new GetSDD();
     public AQWZombies AQWZombies = new();
@@ -93,7 +81,7 @@ public class AllStory
     public CoreQOM QOM => new();
     public BrightOak BrightOak = new();
     public LivingDungeon LivingDungeon = new();
-    public CompleteThroneOfDarknessSaga CompleteThroneOfDarknessSaga = new();
+    public CoreToD TOD = new();
     public Artixpointe Artixpointe = new();
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
@@ -119,85 +107,119 @@ public class AllStory
 
         Core.SetOptions(false);
     }
+
     public void CompleteAll()
-    {            
+    {
         C7DD.CompleteToD();
-        Core.Logger($"C7DD Complete");
-        SDD.ShadowDragonDefender();
-        Core.Logger($"SDD Complete");
+        Core.Logger($"Saga: 7 Deadly Dragons - Complete");
+
         AQWZombies.Storyline();
-        Core.Logger($"AQWZombies Complete");
+        Core.Logger($"Story: AQW Zombies - Complete");
+
         DoomwoodPart3.StoryLine();
-        Core.Logger($"DoomwoodPart3 Complete");
+        Core.Logger($"Story: Doomwood Part 3 - Complete");
+
         NecroDungeon.NecrodungeonStoryLine();
-        Core.Logger($"NecroDungeon Complete");
+        Core.Logger($"Story: Necro Dungeon - Complete");
+
         CoreAstravia.CompleteCoreAstravia();
-        Core.Logger($"CoreAstravia Complete");
+        Core.Logger($"Saga: Astravia - Complete");
+
         DarkAlliance_Story.DarkAlliance_Questline();
-        Core.Logger($"DarkAlliance_Story Complete");
+        Core.Logger($"Story: Dark Alliance - Complete");
+
         DarkAlly_Story.DarkAlly_Questline();
-        Core.Logger($"DarkAlly_Story Complete");
+        Core.Logger($"Story: Dark Ally - Complete");
+
         SeraphicWar_Story.SeraphicWar_Questline();
-        Core.Logger($"SeraphicWar_Story Complete");
+        Core.Logger($"Story: Seraphic War - Complete");
+
         SevenCircles.CirclesWar();
-        Core.Logger($"SevenCircles Complete");
+        Core.Logger($"Story: Seven Circles - Complete");
+
         WorldSoul.WorldSoulQuests();
-        Core.Logger($"WorldSoul Complete");
+        Core.Logger($"Story: World Soul - Complete");
+
         Adv.GearStore();
         LOC.Complete13LOC(true);
         Adv.GearStore(true);
-        Core.Logger($"LOC Complete");
+        Core.Logger($"Saga: The 13 Lords of Chaos - Complete");
         if (Core.IsMember)
         {
             DeadlyDungeon.DeadlyDungeonQuest_Line();
-            Core.Logger($"DeadlyDungeon Complete");
+            Core.Logger($"Story: Deadly Dungeon - Complete");
+
             KillerCatacombs.KillerCatacombs_Line();
-            Core.Logger($"KillerCatacombs Complete");
+            Core.Logger($"Story: Killer Catacombs - Complete");
+
             PyramidofPain.PyramidofPain_Line();
-            Core.Logger($"PyramidofPain Complete");
+            Core.Logger($"Story: Pyramid of Pain - Complete");
         }
+        Core.Logger($"Saga: The 13 Lords of Chaos (Extra) - Complete");
+
         Bamboozle.BamboozleQuest();
-        Core.Logger($"Bamboozle Complete");
+        Core.Logger($"Story: Bamboozle - Complete");
+
         CitadelRuins.DoAll();
-        Core.Logger($"CitadelRuins Complete");
+        Core.Logger($"Story: Citadel Ruins - Complete");
+
         Fiendshard_Story.Fiendshard_Questline();
-        Core.Logger($"Fiendshard_Story Complete");
+        Core.Logger($"Story: Fiendshard - Complete");
+
         QOM.CompleteEverything();
-        Core.Logger($"QOM Complete");
+        Core.Logger($"Saga: Queen of Monsters - Complete");
+
         BrightOak.doall();
         Core.Logger($"BrightOak Complete");
+
         LivingDungeon.LivingDungeonStory();
         Core.Logger($"LivingDungeon Complete");
-        CompleteThroneOfDarknessSaga.CompleteToD();
-        Core.Logger($"CompleteThroneOfDarknessSaga Complete");
+
+        TOD.CompleteToD();
+        Core.Logger($"Throne of Darkness Complete");
+
         Artixpointe.OmniArtifact();
         Core.Logger($"Artixpointe Complete");
+
         Banished.doall();
         Core.Logger($"Banished Complete");
+
         BattleUnder.BattleUnderAll();
-        Core.Logger($"BattleUnder Complete");
+        Core.Logger($"Story: BattleUnder - Complete");
+
         Borgars.BorgarQuests();
-        Core.Logger($"Borgars Complete");
+        Core.Logger($"Story: Borgars - Complete");
+
         Collection.CollectionStory();
-        Core.Logger($"Collection Complete");
+        Core.Logger($"Story: Collection - Complete");
+
         DjinnGateStory.DjinnGate();
-        Core.Logger($"DjinnGateStory Complete");
+        Core.Logger($"Story: Djinn Gate - Complete");
+
         DoomVaultA.StoryLine();
+        Core.Logger($"Story: Doom Vault B - Complete");
         DoomVaultB.StoryLine();
-        Core.Logger($"Questline Complete");
+        Core.Logger($"Story: Doom Vault A - Complete");
+
         DragonFableOrigins.DragonFableOriginsAll();
-        Core.Logger($"DragonFableOrigins Complete");
+        Core.Logger($"Saga: Dragon Fable Origins - Complete");
+
         GlaceraStory.DoAll();
-        Core.Logger($"GlaceraStory Complete");
+        Core.Logger($"Story: Glacera - Complete");
+
         J6Saga.J6();
-        Core.Logger($"J6Saga Complete");
+        Core.Logger($"Sage: J6 - Complete");
+
         PhoenixriseStory.PhoenixAll();
-        Core.Logger($"PhoenixriseStory Complete");
+        Core.Logger($"Story: Phoenixrise - Complete");
+
         TowerOfDoom.TowerProgress();
-        Core.Logger($"TowerOfDoom Complete");
+        Core.Logger($"Story: Tower Of Doom - Complete");
+
         WarTraining.StoryLine();
-        Core.Logger($"WarTraining Complete");
+        Core.Logger($"Story: WarTraining - Complete");
+
         Xans.DoAll();
-        Core.Logger($"Xans Complete");
+        Core.Logger($"Story: Xans Lair - Complete");
     }
 }

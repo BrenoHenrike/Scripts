@@ -3,7 +3,7 @@
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 using RBot;
 
-public class MysteriousDungeon
+public class LaserSharkInvasion
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -13,7 +13,7 @@ public class MysteriousDungeon
     {
         Core.SetOptions();
 
-        TOD.MysteriousDungeon();
+        TOD.LaserSharkInvasion();
 
         Core.SetOptions(false);
     }
