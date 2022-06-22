@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/SepulchureSaga.cs
+//cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
 using RBot;
 
 public class FiendofLight
@@ -9,7 +9,7 @@ public class FiendofLight
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
-    public SepulchureSaga SepulchureSaga = new();
+    public SepulchuresRise SepulchureSaga = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
