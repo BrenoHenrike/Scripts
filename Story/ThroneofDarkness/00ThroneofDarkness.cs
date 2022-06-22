@@ -10,6 +10,7 @@
 //cs_include Scripts/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
 //cs_include Scripts/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
 //cs_include Scripts/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
+//cs_include Scripts/Story\ThroneofDarkness\08TheTowers[mem].cs
 using RBot;
 
 public class CompleteThroneOfDarknessSaga
@@ -28,6 +29,7 @@ public class CompleteThroneOfDarknessSaga
     public HedgeMaze s06a = new HedgeMaze();
     public TowerofMirrors s06b = new TowerofMirrors();
     public MysteriousDungeon s07b = new MysteriousDungeon();
+    public TheTowersQuests s08a = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -60,5 +62,10 @@ public class CompleteThroneOfDarknessSaga
         s06b.TowerofMirrorsSaga();
         Core.Logger("Mysterious Dungeon");
         s07b.Storyline();
+        if (Core.IsMember)
+        {
+            Core.Logger("Tower Gold & Silver");
+            s08a.DoAll();
+        }
     }
 }

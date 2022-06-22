@@ -14,10 +14,14 @@ public class TheTowersQuests
     {
         Core.SetOptions();
 
-        StoryLineSilver();
-        StoryLineGold();
+        DoAll();
 
         Core.SetOptions(false);
+    }
+    public void DoAll()
+    {
+        StoryLineSilver();
+        StoryLineGold();
     }
 
     public void StoryLineSilver()
