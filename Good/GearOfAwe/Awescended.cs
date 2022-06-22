@@ -17,8 +17,10 @@
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
-//cs_include Scripts/Story/7DeadlyDragons/ShadowDragonDefender.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Story/7DeadlyDragons/Extra/HatchTheEgg.cs
+//cs_include Scripts/Other/MysteriousEgg.cs
+//cs_include Scripts/Other/ShadowDragonDefender.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Evil/ADK.cs

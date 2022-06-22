@@ -1,10 +1,13 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 using RBot;
 
 public class MysteriousEgg
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public Core7DD DD = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -29,12 +32,7 @@ public class MysteriousEgg
 
         if (!Core.CheckInventory("Key of Sloth"))
         {
-            Core.EnsureAccept(5944);
-            Core.GetMapItem(5380, map: "sloth");
-            Core.GetMapItem(5381, map: "sloth");
-            Core.EnsureComplete(5944);
-            Core.JumpWait();
-            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+            DD.HazMatSuit();
             Core.HuntMonster("sloth", "Phlegnn", "Key of Sloth", isTemp: false);
         }
 

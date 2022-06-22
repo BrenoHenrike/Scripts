@@ -3,16 +3,10 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/7DeadlyDragons/00SevenDeadlyDragons.cs
-//cs_include Scripts/Story/7DeadlyDragons/01Gluttony.cs
-//cs_include Scripts/Story/7DeadlyDragons/02Pride.cs
-//cs_include Scripts/Story/7DeadlyDragons/03Greed.cs
-//cs_include Scripts/Story/7DeadlyDragons/04Sloth.cs
-//cs_include Scripts/Story/7DeadlyDragons/05Lust.cs
-//cs_include Scripts/Story/7DeadlyDragons/06Envy.cs
-//cs_include Scripts/Story/7DeadlyDragons/07Wrath.cs
-//cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
-//cs_include Scripts/Story/7DeadlyDragons/ShadowDragonDefender.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Story/7DeadlyDragons/Extra/HatchTheEgg.cs
+//cs_include Scripts/Other/MysteriousEgg.cs
+//cs_include Scripts/Other/ShadowDragonDefender.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Story/Doomwood/Necrodungeon.cs
@@ -59,8 +53,9 @@ public class AllStory
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
-    public Complete7DeadlyDragons C7DD = new();
-    public GetSDD SDD = new GetSDD();
+    public Core7DD DD = new();
+    public HatchTheEgg Egg = new();
+    public GetSDD SDD = new();
     public AQWZombies AQWZombies = new();
     public DoomwoodPart3 DoomwoodPart3 = new();
     public NecroDungeon NecroDungeon = new();
@@ -110,35 +105,8 @@ public class AllStory
 
     public void CompleteAll()
     {
-        C7DD.CompleteToD();
-        Core.Logger($"Saga: 7 Deadly Dragons - Complete");
-
-        AQWZombies.Storyline();
-        Core.Logger($"Story: AQW Zombies - Complete");
-
-        DoomwoodPart3.StoryLine();
-        Core.Logger($"Story: Doomwood Part 3 - Complete");
-
-        NecroDungeon.NecrodungeonStoryLine();
-        Core.Logger($"Story: Necro Dungeon - Complete");
-
-        CoreAstravia.CompleteCoreAstravia();
-        Core.Logger($"Saga: Astravia - Complete");
-
-        DarkAlliance_Story.DarkAlliance_Questline();
-        Core.Logger($"Story: Dark Alliance - Complete");
-
-        DarkAlly_Story.DarkAlly_Questline();
-        Core.Logger($"Story: Dark Ally - Complete");
-
-        SeraphicWar_Story.SeraphicWar_Questline();
-        Core.Logger($"Story: Seraphic War - Complete");
-
-        SevenCircles.CirclesWar();
-        Core.Logger($"Story: Seven Circles - Complete");
-
-        WorldSoul.WorldSoulQuests();
-        Core.Logger($"Story: World Soul - Complete");
+        Tutorial.Badges();
+        Core.Logger($"Story: Tutorial - Complete");
 
         Adv.GearStore();
         LOC.Complete13LOC(true);
@@ -156,6 +124,38 @@ public class AllStory
             Core.Logger($"Story: Pyramid of Pain - Complete");
         }
         Core.Logger($"Saga: The 13 Lords of Chaos (Extra) - Complete");
+
+        DD.Complete7DD();
+        Core.Logger($"Saga: 7 Deadly Dragons - Complete");
+        Egg.Hatch();
+        Core.Logger($"Saga: 7 Deadly Dragons (Extra) - Complete");
+
+        AQWZombies.Storyline();
+        Core.Logger($"Story: AQW Zombies - Complete");
+
+        NecroDungeon.NecrodungeonStoryLine();
+        Core.Logger($"Story: Necro Dungeon - Complete");
+
+        DoomwoodPart3.StoryLine();
+        Core.Logger($"Story: Doomwood Part 3 - Complete");
+
+        CoreAstravia.CompleteCoreAstravia();
+        Core.Logger($"Saga: Elergy of Madness - Complete");
+
+        DarkAlliance_Story.DarkAlliance_Questline();
+        Core.Logger($"Story: Dark Alliance - Complete");
+
+        DarkAlly_Story.DarkAlly_Questline();
+        Core.Logger($"Story: Dark Ally - Complete");
+
+        SeraphicWar_Story.SeraphicWar_Questline();
+        Core.Logger($"Story: Seraphic War - Complete");
+
+        SevenCircles.CirclesWar();
+        Core.Logger($"Story: Seven Circles - Complete");
+
+        WorldSoul.WorldSoulQuests();
+        Core.Logger($"Story: World Soul - Complete");
 
         Bamboozle.BamboozleQuest();
         Core.Logger($"Story: Bamboozle - Complete");

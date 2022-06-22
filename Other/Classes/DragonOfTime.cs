@@ -10,7 +10,8 @@
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-//cs_include Scripts/Story/7DeadlyDragons/MysteriousEgg.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
