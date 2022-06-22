@@ -78,11 +78,13 @@ public class CoreToD
         Story.KillQuest(4970, "bonecastle", "Undead Knight");
 
         // Help! I'm a Fallen Lord and I Can't Get Up!
+        if (Bot.Player.Cell != "r4")
+            Core.Jump("r4", "Left"); //cutscene issues...?
         Story.KillQuest(4971, "bonecastle", "Fallen Deathknight");
 
         // Gem-nastics
-        Story.KillQuest(4972, "bonecastle", "Fallen Deathknight");
         Story.MapItemQuest(4972, "bonecastle", 4342, 3);
+        Story.KillQuest(4972, "bonecastle", "Fallen Deathknight");
 
         // Bone Appetit
         Story.KillQuest(4973, "bonecastle", "Undead Waiter");
@@ -115,9 +117,9 @@ public class CoreToD
         Story.KillQuest(4979, "bonecastle", "Skeletal Warrior");
 
         // Paladin Rock
-        Story.KillQuest(4980, "bonecastle", new[] { "Grateful Undead", "That 70's Zombie" });
         Story.MapItemQuest(4980, "bonecastle", 4354, 1);
         Story.MapItemQuest(4980, "bonecastle", 4355, 1);
+        Story.KillQuest(4980, "bonecastle", new[] { "Grateful Undead", "That 70's Zombie" });
 
         // Do You Find This Humerus?
         if (!Story.QuestProgression(4981))
@@ -425,8 +427,8 @@ public class CoreToD
         Story.KillQuest(5088, "baconcat", "Yulgar Regular");
 
         // Number Two
-        Story.KillQuest(5089, "baconcat", "Yulgar Regular");
         Story.MapItemQuest(5089, "baconcat", 4467, 1);
+        Story.KillQuest(5089, "baconcat", "Yulgar Regular");
 
         // Forget the Mess
         Story.KillQuest(5090, "baconcat", "Slime");
@@ -523,8 +525,8 @@ public class CoreToD
         Story.KillQuest(5112, "baconcatlair", "Ice Cream Shark");
 
         //Grody
-        Story.KillQuest(5113, "baconcatlair", "Ice Cream Shark");
         Story.MapItemQuest(5113, "baconcatlair", 4474, 6);
+        Story.KillQuest(5113, "baconcatlair", "Ice Cream Shark");
 
         //We're Gonna Need A Bigger Eraser
         if (!Story.QuestProgression(5114))
@@ -535,8 +537,8 @@ public class CoreToD
         }
 
         // Second Draft
-        Story.KillQuest(5115, "baconcatlair", "Sketchy Shark");
         Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
+        Story.KillQuest(5115, "baconcatlair", "Sketchy Shark");
 
         // Game on!
         if (!Story.QuestProgression(5116))
@@ -547,8 +549,8 @@ public class CoreToD
         }
 
         // Game Sharks
-        Story.KillQuest(5117, "baconcatlair", "8-bit Shark");
         Story.MapItemQuest(5117, "baconcatlair", 4476, 4);
+        Story.KillQuest(5117, "baconcatlair", "8-bit Shark");
 
         // Save the Kittarians
         if (!Story.QuestProgression(5118))
@@ -655,7 +657,7 @@ public class CoreToD
         if (doAll)
             Core.Logger("Pax - The Warlord: Death Pit");
         Story.PreLoad();
-        
+
         DeathPit();
 
         // Do You Even Brawl
@@ -879,8 +881,8 @@ public class CoreToD
         Story.MapItemQuest(5195, "fourdpyramid", 4559, 1);
 
         // A Jarring Solution
-        Story.KillQuest(5196, "fourdpyramid", new[] { "Nega Mummy", "Guardian of Anubyx" });
         Story.MapItemQuest(5196, "fourdpyramid", 4560, 1);
+        Story.KillQuest(5196, "fourdpyramid", new[] { "Nega Mummy", "Guardian of Anubyx" });
 
         // Ra of Light
         Story.MapItemQuest(5197, "fourdpyramid", 4561, 1);
@@ -915,8 +917,8 @@ public class CoreToD
         Story.MapItemQuest(5206, "fourdpyramid", 4569, 1);
 
         // 4D Goblins?
-        Story.KillQuest(5207, "fourdpyramid", "Tesseract Goblin");
         Story.MapItemQuest(5207, "fourdpyramid", 4570, 1);
+        Story.KillQuest(5207, "fourdpyramid", "Tesseract Goblin");
 
         // Stone Sphynx Gems
         Story.KillQuest(5208, "fourdpyramid", new[] { "Stone Sphynx", "Stone Sphynx" });
@@ -1005,8 +1007,8 @@ public class CoreToD
         Story.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle", "Glass Serpent" });
 
         // The Key To Success
-        Story.KillQuest(5315, "towerofmirrors", "Silver Elemental");
         Story.MapItemQuest(5315, "towerofmirrors", new[] { 4691, 4692 });
+        Story.KillQuest(5315, "towerofmirrors", "Silver Elemental");
 
         // Phanatics
         Story.KillQuest(5316, "towerofmirrors", new[] { "Phans", "Phans" });
@@ -1025,8 +1027,8 @@ public class CoreToD
         Story.KillQuest(5320, "towerofmirrors", "Lukcrisio the Buffed");
 
         // Or Maybe THIS Is True Love
-        Story.KillQuest(5321, "towerofmirrors", "Silver Elemental");
         Story.MapItemQuest(5321, "towerofmirrors", new[] { 4688, 4694 });
+        Story.KillQuest(5321, "towerofmirrors", "Silver Elemental");
 
         // Those Harpies!
         Story.KillQuest(5322, "towerofmirrors", new[] { "Pageant Mom", "Pageant Mom" });
@@ -1035,8 +1037,8 @@ public class CoreToD
         Story.KillQuest(5323, "towerofmirrors", "Medeskar the Smudged");
 
         // Oh Sure, Why Not
-        Story.KillQuest(5324, "towerofmirrors", "Silver Elemental");
         Story.MapItemQuest(5324, "towerofmirrors", new[] { 4689, 4695 });
+        Story.KillQuest(5324, "towerofmirrors", "Silver Elemental");
 
         // Behind the Scenes
         Story.KillQuest(5325, "towerofmirrors", new[] { "Stage Tech", "Stage Tech" });
@@ -1045,8 +1047,8 @@ public class CoreToD
         Story.KillQuest(5326, "towerofmirrors", "Atticus the Warped");
 
         // Oh, I Give Up
-        Story.KillQuest(5327, "towerofmirrors", "Silver Elemental");
         Story.MapItemQuest(5327, "towerofmirrors", new[] { 4690, 4696 });
+        Story.KillQuest(5327, "towerofmirrors", "Silver Elemental");
 
         // We Gotta Wendi-GO
         Story.KillQuest(5328, "towerofmirrors", new[] { "Sasquatch", "Sasquatch" });
