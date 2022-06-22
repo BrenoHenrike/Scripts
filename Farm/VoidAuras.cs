@@ -7,7 +7,7 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Evil\NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
 using RBot;
 
 public class VoidAurasForIdiots
@@ -19,9 +19,9 @@ public class VoidAurasForIdiots
 
     public void ScriptMain(ScriptInterface bot)
     {
-        
+
         Core.SetOptions();
-        Core.Logger($"{Bot.Player.Username} ty for being retarted enough to run this👍, your the {Bot.Runtime.Random.Next(0,9999999)} 'th person to Request/run this.");
+        Core.Logger($"{Bot.Player.Username} ty for being retarted enough to run this👍, your the {Bot.Runtime.Random.Next(0, 9999999)} 'th person to Request/run this.");
         NSoD.RetrieveVoidAuras(7500);
         Core.SetOptions(false);
 

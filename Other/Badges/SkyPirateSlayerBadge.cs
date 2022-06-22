@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story\SkyPirate.cs
+//cs_include Scripts/Story/SkyPirate.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
 
@@ -29,11 +29,11 @@ public class SkyPirateBadge
 
         Core.AddDrop("SkyPirate Annhilator Recognition");
         Core.EquipClass(ClassType.Farm);
-        
+
         Core.EnsureAccept(1291);
         Core.KillMonster("strategy", "r22", "Left", "*", "SkyPirate Annihilator Token", 100);
         Core.EnsureComplete(1291);
-        
+
         Core.JumpWait();
     }
 }

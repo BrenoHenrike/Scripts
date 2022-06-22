@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\QueenofMonsters\Extra\BrightOak.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 
 using RBot;
 public class BrightoakREP
@@ -17,7 +17,7 @@ public class BrightoakREP
         Core.SetOptions();
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
-        
+
         BrightOak.doall();
         Farm.BrightoakREP();
 

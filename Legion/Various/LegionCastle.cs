@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Legion\CoreLegion.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 
 using RBot;
 
