@@ -44,7 +44,7 @@
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Story/XansLair.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using RBot;
 
 public class AllStory

@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
@@ -17,7 +17,7 @@ public class DrakathArmorBot
     public CoreDailies Daily = new();
     public CoreBLOD BLOD = new();
     public Core13LoC LOC => new Core13LoC();
-    public CoreNulgath Nulgath = new();
+    public CoreNation Nation = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -74,7 +74,7 @@ public class DrakathArmorBot
         Core.EnsureAccept(3882);
         Farm.BladeofAweREP(farmBoA: true);
         BLOD.DoAll();
-        Nulgath.FarmUni13(3);
+        Nation.FarmUni13(3);
         Farm.Gold(3750000);
         Core.BuyItem("hyperspace", 194, "Le Chocolat");
         Core.EquipClass(ClassType.Farm);

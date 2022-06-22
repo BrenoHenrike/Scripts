@@ -3,10 +3,10 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
-//cs_include Scripts/Nulgath/Various/JuggernautItems.cs
-//cs_include Scripts/Nulgath/EmpoweringItems.cs
+//cs_include Scripts/Nation/Various/JuggernautItems.cs
+//cs_include Scripts/Nation/EmpoweringItems.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
@@ -20,7 +20,7 @@ public class VoidAvengerScythe
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreNation Nation = new();
     public NecroticSwordOfDoom NSOD = new();
     public JuggernautItemsofNulgath juggernaut = new();
     public EmpoweringItems Empower = new();
@@ -60,19 +60,19 @@ public class VoidAvengerScythe
             Bot.Wait.ForPickup("Batwing Scythe");
         }
         // Dark Crystal Shard - 
-        Nulgath.FarmDarkCrystalShard(200);
+        Nation.FarmDarkCrystalShard(200);
         // Death Scythe of Nulgath - 
         Empower.EmpoweringStuff();
         // Ungodly Reavers of Nulgath - 
         if (!Core.CheckInventory("Ungodly Reavers of Nulgath"))
         {
-            Nulgath.FarmUni13();
-            Nulgath.FarmDiamondofNulgath(13);
-            Nulgath.FarmDarkCrystalShard(50);
-            Nulgath.FarmTotemofNulgath(3);
-            Nulgath.FarmGemofNulgath(20);
-            Nulgath.FarmVoucher(false);
-            Nulgath.SwindleBulk(50);
+            Nation.FarmUni13();
+            Nation.FarmDiamondofNulgath(13);
+            Nation.FarmDarkCrystalShard(50);
+            Nation.FarmTotemofNulgath(3);
+            Nation.FarmGemofNulgath(20);
+            Nation.FarmVoucher(false);
+            Nation.SwindleBulk(50);
             Core.EnsureAccept(837, 4939);
             Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
             Core.EnsureComplete(837);
@@ -84,7 +84,7 @@ public class VoidAvengerScythe
         // The Scythe of Eternal Rest - 
         Core.HuntMonster("sepulchure", "Dark Sepulchure", "The Scythe of Eternal Rest", isTemp: false);
         // Nulgath's Approval -
-        Nulgath.ApprovalAndFavor(1000, 0);
+        Nation.ApprovalAndFavor(1000, 0);
         // Dracolich Destroyer Scythe - 
         Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Scythe", isTemp: false);
         // Void Aura - 

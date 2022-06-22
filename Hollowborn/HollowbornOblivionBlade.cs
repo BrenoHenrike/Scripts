@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 
 using RBot;
 
@@ -15,7 +15,7 @@ public class HollowbornOblivionBlade
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreHollowborn HB = new CoreHollowborn();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreNation Nation = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -36,10 +36,10 @@ public class HollowbornOblivionBlade
 
         Core.EnsureAccept(7294);
         Farm.Experience(80);
-        Nulgath.FarmVoucher(false);
+        Nation.FarmVoucher(false);
         ArchFiendEnchantedOrbs();
-        Nulgath.FarmUni13();
-        Nulgath.DiamondEvilWar(500);
+        Nation.FarmUni13();
+        Nation.DiamondEvilWar(500);
         if (!Core.CheckInventory("Unidentified 25"))
         {
             Farm.Gold(15000000);
@@ -47,8 +47,8 @@ public class HollowbornOblivionBlade
             Bot.Wait.ForPickup("Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nulgath.ApprovalAndFavor(0, 1000);
-        Nulgath.FarmBloodGem(50);
+        Nation.ApprovalAndFavor(0, 1000);
+        Nation.FarmBloodGem(50);
         Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Diabolical Minion's Seed", isTemp: false);
         if (!Core.CheckInventory("4th Dimension Gem"))
         {
@@ -70,7 +70,7 @@ public class HollowbornOblivionBlade
     {
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
-            
+
         if (!Core.CheckInventory("Unidentified 36"))
             HB.FreshSouls(1);
         if (!Core.CheckInventory("Unidentified 25"))
@@ -79,11 +79,11 @@ public class HollowbornOblivionBlade
             Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nulgath.FarmUni13();
-        Nulgath.DiamondEvilWar(150);
+        Nation.FarmUni13();
+        Nation.DiamondEvilWar(150);
         HB.FreshSouls(100);
-        Nulgath.FarmBloodGem(10);
-        Nulgath.FarmVoucher(false);
+        Nation.FarmBloodGem(10);
+        Nation.FarmVoucher(false);
         Core.BuyItem("tercessuinotlim", 1820, "ArchFiend Enchanted Orbs");
         Bot.Wait.ForPickup("ArchFiend Enchanted Orbs");
     }

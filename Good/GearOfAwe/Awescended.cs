@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/GearOfAwe/ArmorOfAwe.cs

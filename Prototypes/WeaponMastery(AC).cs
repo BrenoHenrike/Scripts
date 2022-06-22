@@ -1,18 +1,18 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using RBot;
 
 public class WeaponMasteryAC
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreNation Nation = new();
     public CoreFarms Farm = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Nulgath.bagDrops);
+        Core.BankingBlackList.AddRange(Nation.bagDrops);
 
         Core.SetOptions();
 
@@ -23,7 +23,7 @@ public class WeaponMasteryAC
 
     public void GetWM()
     {
-        Core.AddDrop(Nulgath.bagDrops);
+        Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Evolved Warlord Axe", "Evolved Warlord Hammer");
         if (Core.CheckInventory("Evolved Warlord Orb"))
         {
@@ -37,15 +37,15 @@ public class WeaponMasteryAC
             {
                 Core.EnsureAccept(4784);
 
-                Nulgath.FarmUni13(1);
+                Nation.FarmUni13(1);
 
-                Nulgath.SwindleBulk(10);
+                Nation.SwindleBulk(10);
 
-                Nulgath.FarmDarkCrystalShard(10);
+                Nation.FarmDarkCrystalShard(10);
 
-                Nulgath.FarmTotemofNulgath(1);
+                Nation.FarmTotemofNulgath(1);
 
-                Nulgath.FarmGemofNulgath(10);
+                Nation.FarmGemofNulgath(10);
 
                 if (!Core.CheckInventory("Underfriend Blade of Nulgath"))
                 {

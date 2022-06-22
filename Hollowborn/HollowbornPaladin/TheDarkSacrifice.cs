@@ -9,7 +9,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
@@ -22,7 +22,7 @@ public class TheDarkSacrifice
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
     public AscendedDrakathGear ADG = new AscendedDrakathGear();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreNation Nation = new();
     public Artixpointe APointe = new Artixpointe();
     public CoreFarms Farm = new CoreFarms();
     public CoreDailies Daily = new();

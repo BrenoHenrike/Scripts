@@ -9,7 +9,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;

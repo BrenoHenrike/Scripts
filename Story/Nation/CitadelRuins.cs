@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using RBot;
 
 public class CitadelRuins
@@ -9,7 +9,7 @@ public class CitadelRuins
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreNation Nation = new();
     public CoreStory Story = new CoreStory();
 
     public string[] rewards = { "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath", "Mage's Gratitude" };
@@ -177,17 +177,17 @@ public class CitadelRuins
         // "Tercessuinotlim"
 
         //iron wing helm enchant=
-        Nulgath.TheAssistant("Unidentified 9");
+        Nation.TheAssistant("Unidentified 9");
         Story.KillQuest(560, "underworld", "Undead Bruiser", GetReward: false);
 
         //cleansing of spinal tap=
-        Nulgath.Supplies("Dark Crystal Shard", 5);
-        Nulgath.TheAssistant("Unidentified 28");
+        Nation.Supplies("Dark Crystal Shard", 5);
+        Nation.TheAssistant("Unidentified 28");
         Story.KillQuest(585, "Tercessuinotlim", "Legion Fenrir");
 
         //purified claw
-        Nulgath.Supplies("Tainted Gem", 7);
-        Nulgath.Supplies("Claw of Nulgath");
+        Nation.Supplies("Tainted Gem", 7);
+        Nation.Supplies("Claw of Nulgath");
         Story.KillQuest(668, "Tercessuinotlim", "Dark Makai");
     }
 

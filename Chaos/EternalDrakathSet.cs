@@ -7,7 +7,7 @@
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
+//cs_include Scripts/Nation/CoreNation.cs
 
 using RBot;
 

@@ -3,8 +3,8 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Nulgath/CoreNulgath.cs
-//cs_include Scripts/Nulgath/Various/JuggernautItems.cs
+//cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Nation/Various/JuggernautItems.cs
 using RBot;
 
 public class ScriptTemplate
@@ -15,7 +15,7 @@ public class ScriptTemplate
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new CoreDailies();
-    public CoreNulgath Nulgath = new CoreNulgath();
+    public CoreNation Nation = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -31,12 +31,12 @@ public class ScriptTemplate
         if (Core.CheckInventory("Wrath of Nulgath"))
             return;
 
-        Nulgath.FarmUni13();
-        Nulgath.TheAssistant("Tainted Gem", 80);
-        Nulgath.FarmDarkCrystalShard(60);
-        Nulgath.FarmDiamondofNulgath(100);
-        Nulgath.FarmVoucher(true);
-        Nulgath.FarmVoucher(false);
+        Nation.FarmUni13();
+        Nation.TheAssistant("Tainted Gem", 80);
+        Nation.FarmDarkCrystalShard(60);
+        Nation.FarmDiamondofNulgath(100);
+        Nation.FarmVoucher(true);
+        Nation.FarmVoucher(false);
         OverfiendBlade();
         if (!Core.isCompletedBefore(8580))
         {
@@ -59,13 +59,13 @@ public class ScriptTemplate
         Core.AddDrop("Overfiend Blade of Nulgath");
 
         Farm.Experience(30);
-        Nulgath.FarmUni13();
-        Nulgath.FarmDiamondofNulgath(13);
-        Nulgath.FarmDarkCrystalShard(50);
-        Nulgath.FarmTotemofNulgath(3);
-        Nulgath.FarmGemofNulgath(20);
-        Nulgath.FarmVoucher(false);
-        Nulgath.SwindleBulk(50);
+        Nation.FarmUni13();
+        Nation.FarmDiamondofNulgath(13);
+        Nation.FarmDarkCrystalShard(50);
+        Nation.FarmTotemofNulgath(3);
+        Nation.FarmGemofNulgath(20);
+        Nation.FarmVoucher(false);
+        Nation.SwindleBulk(50);
 
         Core.EnsureAccept(837);
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
