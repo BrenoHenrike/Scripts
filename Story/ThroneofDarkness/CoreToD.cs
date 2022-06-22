@@ -686,7 +686,7 @@ public class CoreToD
         }
     }
 
-    void DeathPitToken(string item = "Death Pit Token", int quant = 500, bool temp = false)
+    void DeathPitToken(string item = "Death Pit Token", int quant = 30, bool temp = false)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -721,6 +721,9 @@ public class CoreToD
             Bot.Player.Kill("Velm's Brawler");
             DeathPitMove(28, "Captain1", 943, 404);
             Bot.Player.Kill("General Velm (B)");
+            Bot.Wait.ForDrop(item);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
         }
     }
 
