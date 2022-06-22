@@ -17,9 +17,9 @@ public class CoreToD
 
     public void CompleteToD()
     {
-        int[] questIDs = { 4992, 5050, 5108, 5120, 5154, /*DeathPitPVP, */ 5187, 5212, 5313, 5332, 5434, 5451 };
+        int[] questIDs = { 4992, 5050, 5108, 5120, 5154, 5165, 5187, 5212, 5313, 5332, 5434, 5451 };
         if (Core.IsMember)
-            questIDs = questIDs.Concat(new[] { 5008, 5022 /*, DeepSpace*/ }).ToArray();
+            questIDs = questIDs.Concat(new[] { 5010, 5022, 5083 }).ToArray();
         Core.EnsureLoad(questIDs);
         if (questIDs.All(qID => Core.isCompletedBefore(qID)))
             return;
@@ -33,7 +33,7 @@ public class CoreToD
 
         //Xeven - The Time Assassin
         ParadoxPortal();
-        //DeepSpace();
+        DeepSpace();
 
         //Ziri - The Daimon
         BaconCatFortress();
@@ -41,7 +41,7 @@ public class CoreToD
 
         //Pax - The Warlord
         DeathPit();
-        //DeathPitPVP();
+        DeathPitPVP();
 
         //Sekt - The Eternal
         ShiftingPyramid();
@@ -169,12 +169,14 @@ public class CoreToD
 
     public void BoneTowerSilver()
     {
-        if (!Core.IsMember || Core.isCompletedBefore(5008))
+        if (!Core.IsMember || Core.isCompletedBefore(5010))
             return;
 
         if (doAll)
             Core.Logger("Vaden - The DeathKnight: Bone Tower (Silver)");
         Story.PreLoad();
+
+        CastleofBones();
 
         // Eye Sp-eye
         Story.KillQuest(4996, "towersilver", "Flying Spyball");
@@ -216,10 +218,10 @@ public class CoreToD
         Story.KillQuest(5008, "towersilver", "Flester The Silver");
 
         // Get my Stuff
-        Story.KillQuest(5008, "towersilver", new[] { "Fallen DeathKnight", "Undead Knight", "Undead Warrior", "Ghoul", "Undead Guard" });
+        Story.KillQuest(5009, "towersilver", new[] { "Fallen DeathKnight", "Undead Knight", "Undead Warrior", "Ghoul", "Undead Guard" });
 
         // In the Mix        
-        Story.KillQuest(5008, "towersilver", "Bloody Scary");
+        Story.KillQuest(5010, "towersilver", "Bloody Scary");
 
     }
 
@@ -231,6 +233,8 @@ public class CoreToD
         if (doAll)
             Core.Logger("Vaden - The DeathKnight: Bone Tower (Gold)");
         Story.PreLoad();
+
+        BoneTowerSilver();
 
         // They Know We're Coming
         Story.KillQuest(5011, "towergold", "Grim Souldier");
@@ -338,7 +342,68 @@ public class CoreToD
         Story.KillQuest(5050, "portalmaze", "Mors Temporis");
     }
 
-    //public void DeepSpace()
+    public void DeepSpace()
+    {
+        if (!Core.IsMember || Core.isCompletedBefore(5083))
+            return;
+
+        if (doAll)
+            Core.Logger("Xeven - The Time Assassin: Paradox Portal");
+        Story.PreLoad();
+
+        ParadoxPortal();
+
+        // The Western Portal
+        Story.MapItemQuest(5068, "tachyon", 4446);
+        Story.KillQuest(5068, "tachyon", new[] { "Time Wraith", "Timestream Rider" });
+
+
+        // This Thing Needs A Bigger Battery
+        Story.KillQuest(5069, "tachyon", "Spacetime Anomaly");
+
+        // Deserted
+        Story.MapItemQuest(5072, "tachyon", 4447, 4);
+        Story.KillQuest(5072, "tachyon", new[] { "Sandshark", "Bupers Camel" });
+
+        // Getting Sand In Your Boots
+        Story.MapItemQuest(5073, "tachyon", 4448);
+
+        // The Eastern Portal
+        Story.MapItemQuest(5074, "tachyon", 4449);
+        Story.KillQuest(5074, "tachyon", new[] { "Time Wraith", "Timestream Rider" });
+
+        // Time for a Tune-Up
+        Story.KillQuest(5075, "tachyon", "Medusoid");
+
+        // Time Void Archaeology
+        Story.MapItemQuest(5076, "tachyon", 4450, 3);
+        Story.MapItemQuest(5076, "tachyon", 4451, 3);
+        Story.KillQuest(5076, "tachyon", new[] { "Jungle Tog", "Jungle Fury" });
+
+        // Going With the Flow
+        Story.MapItemQuest(5077, "tachyon", 4452);
+
+        // The Central Portal
+        Story.MapItemQuest(5078, "tachyon", 4453);
+        Story.KillQuest(5078, "tachyon", new[] { "Time Wraith", "Timestream Rider" });
+
+
+        // Is There Tech Support For This Thing?
+        Story.KillQuest(5079, "tachyon", "Void Serpent");
+
+        // Shovelling Snow
+        Story.MapItemQuest(5080, "tachyon", 4454, 5);
+        Story.KillQuest(5080, "tachyon", new[] { "Ice Wolf", "Polar Elemental" });
+
+        // Winter Winds
+        Story.MapItemQuest(5081, "tachyon", 4455);
+
+        // Opening the Megaportal
+        Story.MapItemQuest(5082, "tachyon", 4456);
+
+        // Svelgr the Devourer
+        Story.KillQuest(5083, "tachyon", "Svelgr the Devourer");
+    }
 
     #endregion
 
@@ -450,6 +515,7 @@ public class CoreToD
             Core.Logger("Ziri - The Daimon: Laser Shark Invasion");
         Story.PreLoad();
 
+
         // Cloud Sharks!
         Story.KillQuest(5111, "baconcatlair", "Cloud Shark");
 
@@ -515,73 +581,168 @@ public class CoreToD
         Story.PreLoad();
 
         // Mingle
-        Story.MapItemQuest(5133, "deathpit", new[] { 4484, 4485, 4486, 4487, 4488, 4489, 4490, 4491 });
+        Story.MapItemQuest(5133, "DeathPit", new[] { 4484, 4485, 4486, 4487, 4488, 4489, 4490, 4491 });
 
         // Those Dummies
-        Story.KillQuest(5134, "deathpit", "Training Dummy");
+        Story.KillQuest(5134, "DeathPit", "Training Dummy");
 
         // Round 1: You vs Omar the Meek!
-        Story.KillQuest(5135, "deathpit", "Omar the Meek");
+        Story.KillQuest(5135, "DeathPit", "Omar the Meek");
 
         // Round 2: You vs a Bunch of Sneevils!
-        Story.KillQuest(5136, "deathpit", "Sneevil");
+        Story.KillQuest(5136, "DeathPit", "Sneevil");
 
         // Battle: You vs Hattori!
-        Story.KillQuest(5137, "deathpit", "Hattori");
+        Story.KillQuest(5137, "DeathPit", "Hattori");
 
         // Battle: You vs the Slime Horde!
-        Story.KillQuest(5138, "deathpit", new[] { "Slime", "Giant Green Slime" });
+        Story.KillQuest(5138, "DeathPit", new[] { "Slime", "Giant Green Slime" });
 
         // Battle: You vs the Sludge Lord!
-        Story.KillQuest(5139, "deathpit", "Sludgelord");
+        Story.KillQuest(5139, "DeathPit", "Sludgelord");
 
         // Battle: You vs Some Salamanders!
-        Story.KillQuest(5140, "deathpit", "Salamander");
+        Story.KillQuest(5140, "DeathPit", "Salamander");
 
         // Battle: You vs a Trobble!
-        Story.KillQuest(5141, "deathpit", "Trobble");
+        Story.KillQuest(5141, "DeathPit", "Trobble");
 
         // Trouble Battle
-        Story.KillQuest(5142, "deathpit", "Trobble");
+        Story.KillQuest(5142, "DeathPit", "Trobble");
 
         // Horc Battle
-        Story.KillQuest(5143, "deathpit", "Horc Gladiator");
+        Story.KillQuest(5143, "DeathPit", "Horc Gladiator");
 
         // Battle: You vs the Brawlers!
-        Story.KillQuest(5144, "deathpit", "Drakel Brawler");
+        Story.KillQuest(5144, "DeathPit", "Drakel Brawler");
 
         // Battle: You vs the Gladiators!
-        Story.KillQuest(5145, "deathpit", "Drakel Gladiator");
+        Story.KillQuest(5145, "DeathPit", "Drakel Gladiator");
 
         // Battle: You vs the Battlemasters!
-        Story.KillQuest(5146, "deathpit", "Drakel Battlemaster");
+        Story.KillQuest(5146, "DeathPit", "Drakel Battlemaster");
 
         // Battle: You vs General Gall!
-        Story.KillQuest(5147, "deathpit", "General Gall");
+        Story.KillQuest(5147, "DeathPit", "General Gall");
 
         // Velm's Minions
-        Story.KillQuest(5148, "deathpit", "Drakel Brawler");
+        Story.KillQuest(5148, "DeathPit", "Drakel Brawler");
 
         // eneral Velm
-        Story.KillQuest(5149, "deathpit", "General Velm");
+        Story.KillQuest(5149, "DeathPit", "General Velm");
 
         // Chud's Minions
-        Story.KillQuest(5150, "deathpit", "Drakel Battlemaster");
+        Story.KillQuest(5150, "DeathPit", "Drakel Battlemaster");
 
         // General Chud
-        Story.KillQuest(5151, "deathpit", "General Chud");
+        Story.KillQuest(5151, "DeathPit", "General Chud");
 
         // Hun'Gar's Minions
-        Story.KillQuest(5152, "deathpit", "Drakel Battlemaster");
+        Story.KillQuest(5152, "DeathPit", "Drakel Battlemaster");
 
         // Hun'Gar Defeated
-        Story.KillQuest(5153, "deathpit", "General Hun'Gar");
+        Story.KillQuest(5153, "DeathPit", "General Hun'Gar");
 
         // Pax Defeated
-        Story.KillQuest(5154, "deathpit", "Warlord Pax");
+        Story.KillQuest(5154, "DeathPit", "Warlord Pax");
     }
 
-    //public void DeathPitPVP()
+    public void DeathPitPVP()
+    {
+        if (Core.isCompletedBefore(5165))
+            return;
+
+        if (doAll)
+            Core.Logger("Pax - The Warlord: Death Pit");
+        Story.PreLoad();
+        
+        DeathPit();
+
+        // Do You Even Brawl
+        if (!Story.QuestProgression(5155))
+        {
+            Core.EnsureAccept(5155);
+            DeathPitToken("Death Pit Token", 1);
+            Core.EnsureComplete(5155);
+        }
+        // Flex For Hun'Gar
+        if (!Story.QuestProgression(5156))
+        {
+            Core.EnsureAccept(5156);
+            DeathPitToken("Death Pit Token", 15);
+            Core.EnsureComplete(5156);
+        }
+        // Pummel For Hun'Gar
+        if (!Story.QuestProgression(5157))
+        {
+            Core.EnsureAccept(5157);
+            DeathPitToken("Brawler Token", 3, true);
+            DeathPitToken("Restorer Token", 3, true);
+            Core.EnsureComplete(5157);
+        }
+        // Destroy For Hun'Gar
+        if (!Story.QuestProgression(5165))
+        {
+            Core.EnsureAccept(5165);
+            DeathPitToken("Death Pit Victory", 1, true);
+            Core.EnsureComplete(5165);
+        }
+    }
+
+    void DeathPitToken(string item = "Death Pit Token", int quant = 500, bool temp = false)
+    {
+        if (Core.CheckInventory(item, quant))
+            return;
+
+        Core.EquipClass(ClassType.Solo);
+        Core.Logger($"Farming {quant} {item}");
+
+        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+        {
+            Core.AddDrop(item);
+            Core.Join("DeathPitbrawl", "Enter0", "Spawn");
+
+            DeathPitMove(5, "Morale0C", 228, 291);
+            DeathPitMove(4, "Morale0B", 936, 397);
+            DeathPitMove(7, "Morale0A", 946, 394);
+            DeathPitMove(9, "Crosslower", 948, 400);
+            DeathPitMove(14, "Crossupper", 903, 324);
+            DeathPitMove(18, "Resource1A", 482, 295);
+            Bot.Player.Kill("Velm's Restorer");
+            Bot.Player.Kill("Velm's Restorer");
+            DeathPitMove(20, "Resource1B", 938, 400);
+            Bot.Player.Kill("Velm's Restorer");
+            Bot.Player.Kill("Velm's Restorer");
+            DeathPitMove(21, "Resource1A", 9, 435);
+            DeathPitMove(19, "Crossupper", 461, 315);
+            DeathPitMove(17, "Crosslower", 54, 339);
+            DeathPitMove(15, "Morale1A", 522, 286);
+            Bot.Player.Kill("Velm's Brawler");
+            DeathPitMove(23, "Morale1B", 948, 403);
+            Bot.Player.Kill("Velm's Brawler");
+            DeathPitMove(25, "Morale1C", 945, 397);
+            Bot.Player.Kill("Velm's Brawler");
+            DeathPitMove(28, "Captain1", 943, 404);
+            Bot.Player.Kill("General Velm (B)");
+        }
+    }
+
+    /// <summary>
+    /// This method is used to move between Bludrut Brawl rooms
+    /// </summary>
+    /// <param name="mtcid">Last number of the mtcid packet</param>
+    /// <param name="cell">Cell you want to be</param>
+    /// <param name="moveX">X position of the door</param>
+    /// <param name="moveY">Y position of the door</param>
+    void DeathPitMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
+    {
+        while (!Bot.ShouldExit() && Bot.Player.Cell != cell)
+        {
+            Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
+            Bot.Sleep(2500);
+            Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
+        }
+    }
 
     #endregion
 
