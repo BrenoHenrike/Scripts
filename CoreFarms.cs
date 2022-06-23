@@ -820,9 +820,9 @@ public class CoreFarms
             Core.RegisterQuests(2204);
             while (!Bot.ShouldExit() && FactionRank("ChronoSpan") < rank)
             {
-                Core.HuntMonster("thespan", "Moglin Ghost", "Tin of Ghost Dust", 2);
-                Core.HuntMonster("thespan", "Minx Fairy", "8 oz Fairy Glitter", 3);
-                Core.HuntMonster("thespan", "Tog", "Tog Fang", 4);
+                Core.KillMonster("thespan", "r6", "Left", "Moglin Ghost", "Tin of Ghost Dust", 2);
+                Core.KillMonster("thespan", "Enter", "Spawn", "Minx Fairy", "8 oz Fairy Glitter", 3);
+                Core.KillMonster("thespan", "Enter", "Spawn", "Tog", "Tog Fang", 4);
             }
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
