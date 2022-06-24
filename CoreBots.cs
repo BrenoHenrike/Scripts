@@ -211,6 +211,8 @@ public class CoreBots
     #endregion
 
     #region Inventory, Bank and Shop
+
+    private int _lastBankOpenTick;
     /// <summary>
     /// Check the Bank, Inventory and Temp Inventory for the item
     /// </summary>
@@ -315,7 +317,8 @@ public class CoreBots
         if (items == null)
             return;
         JumpWait();
-        Bot.Player.OpenBank();
+        if (Bot.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+            Bot.Player.OpenBank();
         foreach (string? item in items)
         {
             if (Bot.Bank.Contains(item))
@@ -351,7 +354,8 @@ public class CoreBots
             return;
 
         JumpWait();
-        Bot.Player.OpenBank();
+        if(Bot.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+            Bot.Player.OpenBank();
         foreach (string item in items)
         {
             if (Bot.Inventory.IsEquipped(item))
