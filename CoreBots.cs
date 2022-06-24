@@ -212,7 +212,6 @@ public class CoreBots
 
     #region Inventory, Bank and Shop
 
-    private int _lastBankOpenTick;
     /// <summary>
     /// Check the Bank, Inventory and Temp Inventory for the item
     /// </summary>
