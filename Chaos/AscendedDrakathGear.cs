@@ -6,6 +6,7 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using RBot;
 
 public class AscendedDrakathGear
