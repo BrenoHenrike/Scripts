@@ -708,12 +708,10 @@ public class CoreAdvanced
             foreach (ShopItem item in items)
             {
                 getIngredients(item);
-                if (!matsOnly)
+                if (!matsOnly && !Core.CheckInventory(item.ID))
                 {
-                    if (!Core.CheckInventory(item.ID))
-                        Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    if (canBuy(new List<ShopItem>() { item }, shopID))
-                        Core.BuyItem(map, shopID, item.ID);
+                    Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
+                    BuyItem(map, shopID, item.ID);
                 }
             }
             if (!matsOnly)
@@ -742,7 +740,7 @@ public class CoreAdvanced
                     ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
                     getIngredients(selectedItem);
                     if (!matsOnly && canBuy(new List<ShopItem>() { selectedItem }, shopID))
-                        Core.BuyItem(map, shopID, selectedItem.ID, req.Quantity);
+                        BuyItem(map, shopID, selectedItem.ID, req.Quantity);
                 }
                 else
                 {
@@ -753,7 +751,7 @@ public class CoreAdvanced
             }
         }
     }
-    private List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem, ItemCategory.ServerUse };
+    public List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem, ItemCategory.ServerUse };
     public ItemBase externalItem = new();
     public int externalQuant = 0;
     public bool matsOnly = false;
@@ -875,6 +873,7 @@ public class CoreAdvanced
         new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]:\tYou get all the AC tagged items from the shop.", "click here"),
         new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]:\tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
     };
+    public string OptionsStorage = "MergeOptionStorage";
 
     public enum mergeOptionsEnum
     {
