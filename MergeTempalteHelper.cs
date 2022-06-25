@@ -107,7 +107,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find startIndex");
             return;
         }
-        MergeTemplate[startIndex] = $"        Adv.StartBuyAllMerge(\"{map}\", {shopID}, findIngredients);";
+        MergeTemplate[startIndex] = $"        Adv.StartBuyAllMerge(\"{map.ToLower()}\", {shopID}, findIngredients);";
 
         int endIndex = MergeTemplate.Count() - 4;
         string[] content = MergeTemplate[..index].Concat(new[] { output }).Concat(MergeTemplate[endIndex..]).ToArray();
