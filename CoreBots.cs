@@ -353,7 +353,7 @@ public class CoreBots
             return;
 
         JumpWait();
-        if(Bot.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+        if (Bot.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
             Bot.Player.OpenBank();
         foreach (string item in items)
         {
@@ -1143,6 +1143,9 @@ public class CoreBots
             Bot.Stop(true);
         }
     }
+
+    public void FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")
+        => Logger($"Farming {item} ({Bot.Inventory.GetQuantity(item)}/{quant})", caller);
 
     /// <summary>
     /// Creates a Message Box with the desired text and caption
