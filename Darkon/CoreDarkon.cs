@@ -183,7 +183,7 @@ public class CoreDarkon
         Astravia.AstraviaJudgement();
         Core.FarmingLogger("A Melody", Quantity);
 
-        Core.RegisterQuests(8369);
+        Core.RegisterQuests(8396);
         while (!Bot.ShouldExit() && (!Core.CheckInventory("A Melody", Quantity)))
         {
             Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
