@@ -89,10 +89,6 @@ public class MergeTemplateHelper
             return;
         }
 
-        Bot.Log("-");
-        Bot.Log(output);
-        Bot.Log("-");
-
         string AppPath = Core.AppPath ?? "";
         string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\MergeTemplate.cs");
 
