@@ -68,7 +68,7 @@ public class MergeTemplateHelper
                     else
                     {
                         output += $"\n                case \"{req.Name}\":\n";
-                        output += "                    Core.FarmingLogger($\"{req.Name}\", {quant});\n";
+                        output += "                    Core.FarmingLogger($\"{req.Name}\", quant);\n";
                         output += "                    Core.EquipClass(ClassType.Farm);\n";
                         output += "                    Core.RegisterQuests(0000);";
                         output += "                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))\n";
