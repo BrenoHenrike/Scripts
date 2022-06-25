@@ -69,8 +69,7 @@ public class MergeTemplateHelper
                     {
                         output += $"\n                case \"{req.Name}\":\n";
                         output += "                    Core.Logger(\"This item is not setup yet\");\n";
-                        output += "                    break;\n";
-                        output += "\n";
+                        output += "                    break;";
                     }
                 }
             }
@@ -81,6 +80,10 @@ public class MergeTemplateHelper
             MessageBox.Show("Please add the following cases to the merge bots:\n" + output);
             return;
         }
+
+        Bot.Log("-");
+        Bot.Log(output);
+        Bot.Log("-");
 
         string AppPath = Core.AppPath ?? "";
         string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\MergeTemplate.cs");
