@@ -4,7 +4,7 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
-//cs_include Scripts/Nulgath/Various/GoldenHanzoVoid.cs
+//cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
 using RBot;
 
 public class EnoughDOOMforanArchfiend
