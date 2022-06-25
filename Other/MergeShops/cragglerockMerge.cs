@@ -123,10 +123,10 @@ public class cragglerockMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("safiria", "Diamond Golem", "Chip of Diamond");
-                        Core.HuntMonster("safiria", "Emerald Golem", "Chip of Emerald");
-                        Core.HuntMonster("safiria", "Ruby Golem", "Chip of Ruby");
-                        Core.HuntMonster("safiria", "Sapphire Golem", "Chip of Sapphire");
+                        Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
+                        Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
+                        Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
+                        Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
