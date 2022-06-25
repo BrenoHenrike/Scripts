@@ -1707,27 +1707,34 @@ public class CoreBots
             Bot.Options.AggroMonsters = false;
         }
 
-        if (map.ToLower() == "tercessuinotlim")
+        switch (map.ToLower())
         {
-            Bot.Player.Jump("m22", "Left");
-            Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
-            Bot.Wait.ForMapLoad(map.ToLower());
-        }
-        else
-        {
-            JumpWait();
-            for (int i = 0; i < 20; i++)
-            {
-                Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+            default:
+                JumpWait();
+                for (int i = 0; i < 20; i++)
+                {
+                    Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                    Bot.Wait.ForMapLoad(map.ToLower());
+
+                    string? currentMap = Bot.Map.Name;
+                    if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map.ToLower())
+                        break;
+
+                    if (i == 19)
+                        Logger($"Failed to join {map}");
+                }
+                break;
+
+            case "tercessuinotlim":
+                Bot.Player.Jump("m22", "Left");
+                Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
                 Bot.Wait.ForMapLoad(map.ToLower());
+                break;
 
-                string? currentMap = Bot.Map.Name;
-                if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map.ToLower())
-                    break;
-
-                if (i == 19)
-                    Logger($"Failed to join {map}");
-            }
+            case "hyperium":
+                JumpWait();
+                Bot.SendPacket($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%hyperium%");
+                break;
         }
 
         Jump(cell, pad);
