@@ -15,13 +15,6 @@ public class CoreAstravia
 
     public void CompleteCoreAstravia()
     {
-        //Progress Check
-        if (Core.isCompletedBefore(8601))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
-
         Eridani();
         Astravia();
         AstraviaCastle();
@@ -29,6 +22,8 @@ public class CoreAstravia
         EridaniPast();
         AstraviaPast();
         FirstObservatory();
+        GenesisGarden();
+        TheWorld();
     }
 
     public void Eridani()
@@ -424,6 +419,85 @@ public class CoreAstravia
 
         //Taurus Gugalanna
         Story.KillQuest(8641, "FirstObservatory", new[] { "Ancient Creature", "Ancient Turret", "Empress’ Finger" });
+    }
 
+    public void GenesisGarden()
+    {
+        if (Core.isCompletedBefore(8687))
+            return;
+
+        Story.PreLoad();
+
+        //The Fool 8678
+        Story.MapItemQuest(8678, "genesisgarden", 10196, 6);
+
+        //The Magician 8679
+        Story.KillQuest(8679, "genesisgarden", "Drago's Soldier");
+
+        //The High Priestess 8680
+        Story.MapItemQuest(8680, "genesisgarden", MapItemIDs: new[] { 10197, 10198, 10199 });
+
+        //The Empress, Reversed 8681
+        Story.KillQuest(8681, "genesisgarden", "Drago's Soldier");
+
+        //The Emperor 8682
+        Story.MapItemQuest(8682, "genesisgarden", MapItemIDs: new[] { 10200, 10201 });
+
+        //The Hierophant 8683
+        Story.MapItemQuest(8683, "genesisgarden", 10202, 5);
+
+        //The Lovers, Reversed 8684
+        Story.KillQuest(8684, "genesisgarden", new[] { "Ancient Creature", "Plant Beast" });
+
+        //The Chariot 8685
+        Story.MapItemQuest(8685, "genesisgarden", 10203);
+        Story.KillQuest(8685, "genesisgarden", "Ancient Turret");
+
+        //Strength 8686
+        Story.KillQuest(8686, "genesisgarden", "Undead Humanoid");
+
+        //The Hermit 8687
+        Story.KillQuest(8687, "genesisgarden", "Ancient Mecha");
+    }
+
+    public void TheWorld()
+    {
+        if (Core.isCompletedBefore(8733))
+            return;
+
+        Story.PreLoad();
+
+        //8723|Justice, Reversed
+        Story.MapItemQuest(8723, "theworld", 10289);
+
+        //8724|The Hanged Man, Reversed
+        Story.KillQuest(8724, "theworld", "Nothingness");
+
+        //8725|Death
+        Story.KillQuest(8725, "theworld", "Re");
+
+        //8726|Temperance, Reversed
+        Story.KillQuest(8726, "theworld", "Fa");
+
+        //8727|Temptation, Reversed
+        Story.KillQuest(8727, "theworld", "Ti");
+
+        //8728|The Tower
+        Story.KillQuest(8728, "theworld", "So");
+
+        //8729|The Star
+        Story.KillQuest(8729, "theworld", "Nothingness");
+
+        //8730|The Moon, Reversed
+        Story.KillQuest(8730, "theworld", "So");
+
+        //8731|The Sun, Reversed
+        Story.KillQuest(8731, "theworld", "So");
+
+        //8732|Judgement
+        Story.KillQuest(8732, "theworld", "Darkon");
+
+        //8733|The World
+        Story.KillQuest(8733, "theworld", "Encore Darkon");
     }
 }
