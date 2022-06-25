@@ -68,13 +68,13 @@ public class MergeTemplateHelper
                     else
                     {
                         output += $"\n                case \"{req.Name}\":\n";
-                        output += "                    Core.Logger(\"This item is not setup yet\");\n";
-                        output += "                    Core.RegisterQuests(0000);";
                         output += "                    Core.FarmingLogger($\"{req.Name}\", {quant});\n";
                         output += "                    Core.EquipClass(ClassType.Farm);\n";
+                        output += "                    Core.RegisterQuests(0000);";
                         output += "                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))\n";
                         output += "                    {\n";
-                        output += "                    Core.Logger(\"This item is not setup yet\");\n";
+                        output += "                        Core.Logger(\"This item is not setup yet\");\n";
+                        output += "                        Bot.Wait.ForPickup(req.Name);\n";
                         output += "                    }\n";
                         output += "                    Core.CancelRegisteredQuests();\n";
                         output += "                    break;\n";
