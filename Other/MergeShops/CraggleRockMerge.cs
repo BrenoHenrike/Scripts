@@ -6,7 +6,7 @@ using RBot;
 using RBot.Items;
 using RBot.Options;
 
-public class cragglerockMerge
+public class CraggleRockMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -65,9 +65,7 @@ public class cragglerockMerge
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
-
                     break;
-
 
                 case "Ice Diamond":
                     Core.RegisterQuests(7279);
@@ -80,7 +78,6 @@ public class cragglerockMerge
                     }
                     break;
 
-
                 case "Dark Bloodstone":
                     Core.RegisterQuests(7281);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
@@ -91,7 +88,6 @@ public class cragglerockMerge
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
-
 
                 case "Butterfly Sapphire":
                     Core.RegisterQuests(7287);
@@ -104,7 +100,6 @@ public class cragglerockMerge
                     }
                     break;
 
-
                 case "Understone":
                     Core.RegisterQuests(7289);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
@@ -115,7 +110,6 @@ public class cragglerockMerge
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
-
 
                 case "Rainbow Moonstone":
                     Core.RegisterQuests(7291);
@@ -130,8 +124,6 @@ public class cragglerockMerge
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
-
-
             }
         }
     }
