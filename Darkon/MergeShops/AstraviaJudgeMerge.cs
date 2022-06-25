@@ -8,7 +8,7 @@ using RBot;
 using RBot.Items;
 using RBot.Options;
 
-public class AstraviaPastMerge
+public class AstraviaJudgeMerge
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,13 +16,10 @@ public class AstraviaPastMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public CoreDarkon Darkon = new CoreDarkon();
-    public CoreAstravia CoreAstravia = new();
+    public CoreDarkon Darkon = new();
 
     public List<IOption> Options = sAdv.MergeOptions;
-    // [Can Change] This should only be changed by the author.
-    //              Just name this the same as the script (without the .cs)
-    public string OptionsStorage = "AtraviaPastMerge";
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
@@ -39,7 +36,7 @@ public class AstraviaPastMerge
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("astraviapast", 2126, findIngredients);
+        Adv.StartBuyAllMerge("astraviajudge", 2065, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -62,31 +59,11 @@ public class AstraviaPastMerge
                 #endregion
 
                 // Add how to get items here
-                case "Suki's Prestige":
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                        Darkon.SukisPrestiege(quant);
-                    break;
-
-                case "Prince Drago's Attire":
-                case "Prince Drago's Hair":
-                case "Prince Drago's Dark Attire":
-                    Core.HuntMonster("astraviapast", "Forsaken Husk", req.Name, isTemp: false);
-                    break;
-
-                case "Suki's Casual Armor":
-                case "Suki's Ponytail":
-                    Core.HuntMonster("astraviapast", "Aurola", req.Name, isTemp: false);
-                    break;
-
-                case "Regulus' Hair":
-                    Core.HuntMonster("astraviapast", "Regulus", req.Name, isTemp: false);
-                    break;
-
-                case "Titania's Hair":
-                    Core.HuntMonster("astraviapast", "Titania", req.Name, isTemp: false);
+                case "A Melody":
+                    Darkon.AMelody(quant);
                     break;
             }
         }
     }
 }
+
