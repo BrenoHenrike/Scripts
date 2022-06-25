@@ -48,7 +48,12 @@ public class CoreAstravia
         Story.MapItemQuest(7769, "eridani", 7783);
 
         //Dirty Laundry
-        Story.KillQuest(7770, "eridani", "Maggot-Like Creature");
+        if (!Story.QuestProgression(7770))
+        {
+            Core.EnsureAccept(7770);
+            Core.KillMonster("eridani", "Enter", "Spawn", "Maggot-Like Creature", "Dress Scraps", 5);
+            Core.EnsureComplete(7770);
+        }
 
         //Ergot Bread
         if (!Story.QuestProgression(7771))
@@ -137,10 +142,10 @@ public class CoreAstravia
         Story.MapItemQuest(7995, "astravia", 8266);
 
         //Principle of Weakness
-        if(!Story.QuestProgression(7996))
+        if (!Story.QuestProgression(7996))
         {
             Core.EnsureAccept(7996);
-        Core.KillMonster("astravia", "r6", "Bottom", "Creature 27", "Creature 27 Slain", 8);
+            Core.KillMonster("astravia", "r6", "Bottom", "Creature 27", "Creature 27 Slain", 8);
             Core.EnsureComplete(7996);
         }
 

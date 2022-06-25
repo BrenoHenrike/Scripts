@@ -13,7 +13,7 @@ public class DeathPitPvP
     {
         Core.SetOptions();
 
-        TOD.DeathPitPvP();
+        TOD.DeathPitPVP();
 
         Core.SetOptions(false);
     }
