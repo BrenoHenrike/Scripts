@@ -208,7 +208,7 @@ public class BrightOak
 
     public void RavinosBrightgladePart1()
     {
-        if (!Core.isCompletedBefore(4700))
+        if (Core.isCompletedBefore(4700))
             return;
 
         // Cleanse the Grove
