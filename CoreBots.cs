@@ -76,7 +76,7 @@ public class CoreBots
     public string[] EmptyArray = { "" };
     public List<InventoryItem> EmptyList = new();
     public string? GuildRestore = null;
-    public string? AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+    public string AppPath = Path.GetDirectoryName(Application.ExecutablePath) ?? "";
 
     #endregion
 
