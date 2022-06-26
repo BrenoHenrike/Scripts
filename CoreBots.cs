@@ -1147,6 +1147,46 @@ public class CoreBots
     public void FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")
         => Logger($"Farming {item} ({Bot.Inventory.GetQuantity(item)}/{quant})", caller);
 
+    public void DebugLogger(object _this, string marker = "Checkpoint", [CallerMemberName] string? callerMemberName = null, [CallerLineNumber] int callerLineNumber = 0)
+    {
+        if (!enableDebugLogger)
+            return;
+
+        string _class = _this.GetType().ToString();
+        string[] compiledScript = ScriptManager.CompiledScript.Split(
+                                                                new string[] { "\r\n", "\r", "\n" },
+                                                                StringSplitOptions.None);
+        int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+
+        string[] currentScript = File.ReadAllLines(ScriptManager.LoadedScript);
+        int seperateClassLine = -1;
+
+        if (currentScript.Any(line => line.Trim() == $"public class {_class}"))
+            seperateClassLine = Array.IndexOf(currentScript, currentScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+        else
+        {
+            string[] cs_includes = currentScript.Where(x => x.StartsWith("//cs_include")).ToArray();
+            foreach (string cs in cs_includes)
+            {
+                string[] includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
+                if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
+                {
+                    seperateClassLine = Array.IndexOf(includedScript, includedScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+                    break;
+                }
+            }
+        }
+
+        if (seperateClassLine == -1)
+        {
+            Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
+            return;
+        }
+
+        Logger($"{marker}, {_class} => {callerMemberName}, line {callerLineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
+    }
+    public bool enableDebugLogger { get; set; } = false;
+
     /// <summary>
     /// Creates a Message Box with the desired text and caption
     /// </summary>
