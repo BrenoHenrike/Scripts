@@ -39,18 +39,7 @@ public class ArchFiendSpear
 
         Core.AddDrop("ArchFiend Spear");
 
-        if (!Core.CheckInventory("Unidentified 25"))
-        {
-            if (!Core.CheckInventory("Unmoulded Fiend Essence"))
-            {
-                Farm.Gold(15000000);
-                Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-                Bot.Wait.ForItemBuy();
-            }
-            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
-            Bot.Wait.ForItemBuy();
-        }
-
+        Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         AFEO.GetAFEO();
         Will.Unidentified34(1);
         Nation.FarmDiamondofNulgath(200);
