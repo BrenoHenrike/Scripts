@@ -76,7 +76,7 @@ public class CitadelRuins
         Story.KillQuest(6680, "ledgermayne", "Ledgermayne");
 
         // There, But Not There
-        Story.KillQuest(6681, "hyperium", "Invisible");
+        Story.KillQuest(6681, "palace", "Invisible");
 
         // Staying Humble
         Core.AddDrop("Elite Void Sword Pet");
