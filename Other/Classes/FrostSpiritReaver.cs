@@ -28,6 +28,7 @@ public class FrostSpiritReaver
     {
         if (Core.CheckInventory("Frost SpiritReaver"))
             return;
+            
         Story.PreLoad();
         Glacera.DoAll();
         ColdHearted();
@@ -44,7 +45,7 @@ public class FrostSpiritReaver
 
         Core.EnsureAccept(7920);
 
-        if (!Core.CheckInventory("Fallen Scythe of Vengeance "))
+        if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
         {
             if (!Core.CheckInventory("Frigid Scythe of Vengeance"))
             {
