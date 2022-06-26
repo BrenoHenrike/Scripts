@@ -128,7 +128,7 @@ Base = Infinity Knight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Infinity Titan = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 | Mode Optimistic
 Base = Interstellar Knight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Legendary ArchFiend = 1 | 2 | 3 | 4 | Mode Optimistic
-Atk = Legendary Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 1 | 3 | 1 | 2 | Timeout: 250
+Atk = Legendary Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 4 | 1 | 3 | 2 | 1 | 4 | 2 | Timeout:250
 Def = Legendary Elemental Warrior = 1 | 3 | 2 | 1 | 2 | 3 | 
 Base = Legendary Hero = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Legendary Naval Commander = 3WW10000 | 4 | 2 | 1 | Timeout: 250
@@ -220,7 +220,7 @@ Farm = Timeless Chronomancer = 5 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 Timeout
 Base = Timeless Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Troll Spellsmith = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Troubador of Love = 1 | 2 | 3 | 4 | Mode Optimistic
-Atk = Ultra Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 1 | 3 | 1 | 2 | Timeout: 250
+Atk = Ultra Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 4 | 1 | 3 | 2 | 1 | 4 | 2 | Timeout:250
 Def = Ultra Elemental Warrior = 1 | 3 | 2 | 1 | 2 | 3 | 
 Base = Ultra OmniKnight = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Underworld Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | Timeout: 250
