@@ -16,18 +16,16 @@ public class CoreVHL
 
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
-    public AssistingCragAndBamboozle ACAB = new AssistingCragAndBamboozle();
+    public AssistingCragAndBamboozle ACAB = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.RunCore();
     }
-
-    private int EldersBloodAmount = ScriptInterface.Instance.Inventory.GetQuantity("Elders' Blood");
 
     public void GetVHL(bool rankUpClass = true)
     {
@@ -54,11 +52,13 @@ public class CoreVHL
         Core.Logger("Getting Void HighLord Challenge prerequisites");
         Farm.Experience(80);
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop("Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap", "Roentgenium of Nulgath");
+        if (!Core.CheckInventory(ChallengeRewards, toInv: false))
+            Core.AddDrop(ChallengeRewards);
+        Core.AddDrop("Roentgenium of Nulgath");
 
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", 1, false);
 
-        Core.Logger($"Obtaining Roentgenium of Nulgath x{quant}");
+        Core.FarmingLogger("Roentgenium of Nulgath", quant);
         int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
         while (!Bot.ShouldExit() && !Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
@@ -84,15 +84,15 @@ public class CoreVHL
             _SparrowMethod(((quant - CurrentRoent) > 5 ? 5 : (quant - CurrentRoent)));
 
             if (!Core.CheckInventory("Elders' Blood"))
-                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
+                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Bot.Inventory.GetQuantity("Elders' Blood")} more times (not today)", messageBox: true, stopBot: true);
 
             Core.EnsureComplete(5660);
             Bot.Wait.ForPickup("Roentgenium of Nulgath");
         }
 
-
-        Core.ToBank("Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap");
+        Core.ToBank(ChallengeRewards);
     }
+    private string[] ChallengeRewards = { "Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap" };
 
     public void VHLCrystals()
     {
@@ -119,7 +119,7 @@ public class CoreVHL
         _SparrowMethod(2);
 
         if (!Core.CheckInventory("Elders' Blood", 2))
-            Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - EldersBloodAmount} more times (not today)", messageBox: true, stopBot: true);
+            Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Bot.Inventory.GetQuantity("Elders' Blood")} more times (not today)", messageBox: true, stopBot: true);
 
         Core.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
         Core.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
@@ -129,6 +129,8 @@ public class CoreVHL
     {
         if (!UseSparrowMethod || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
             return;
+
+        Core.Logger("Sparrow Method is enabled, the bot will now max out Totems, BloodGems, Uni19 and Vouchers in order to get another Elders' Blood. This may take a while");
 
         Core.AddDrop("Totem of Nulgath", "Blood Gem of Nulgath", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
         Nation.FarmTotemofNulgath();
