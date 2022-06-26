@@ -47,7 +47,7 @@ public class EternalDrakath
 
         Core.EnsureAccept(8457);
 
-        BLOD.SpiritOrb(2000);
+        BLOD.FindingFragmentsBlade(2000, 0);
 
         if (!Core.CheckInventory("Crystallized Chaos", 800))
             Core.EquipClass(ClassType.Farm);
