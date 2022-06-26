@@ -1286,7 +1286,7 @@ public class Core13LoC
         Story.MapItemQuest(1452, "orecavern", 719, 5);
 
         //Shine a Light on Deception
-        Story.MapItemQuest(1453, "orecaveern", 718, 5);
+        Story.MapItemQuest(1453, "orecavern", 718, 5);
 
         //Save Yourself, Save the Soldiers
         Story.KillQuest(1454, "orecavern", "Chaorrupted Evil Soldier");
@@ -1365,7 +1365,7 @@ public class Core13LoC
             Core.EnsureAccept(2244);
             Core.HuntMonster("timelibrary", "Queen's Recruit", "The Future is Now", 3);
             Core.HuntMonster("timelibrary", "Queen's Recruit", "Past Failures Brought Us Here", 2);
-            Core.HuntMonster("timelibrary", "Queen's Knight", "Princess Freed… but for what?", 2);
+            Core.HuntMonster("timelibrary", "Queen's Knight", "Princess Freed... but for what?", 2);
             Story.MapItemQuest(2244, "timelibrary", 1368);
         }
 
