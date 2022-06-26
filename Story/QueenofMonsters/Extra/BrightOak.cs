@@ -90,8 +90,8 @@ public class BrightOak
 
         // Map: Elfhame
         // Corruption of Elfhame
-        Story.KillQuest(4659, "elfhame", "Ruin Stalker");
         Story.MapItemQuest(4659, "elfhame", 3983);
+        Story.KillQuest(4659, "elfhame", "Ruin Stalker");
 
         // Restoring Nature
         if (!Story.QuestProgression(4660))
@@ -189,8 +189,8 @@ public class BrightOak
         Story.KillQuest(4469, "Brightoak", "Hootbear");
 
         // Guardians Gone Bad
-        Story.KillQuest(4470, "Brightoak", "Brightpool Guardian");
         Story.MapItemQuest(4470, "Brightoak", 3667, 5);
+        Story.KillQuest(4470, "Brightoak", "Brightpool Guardian");
     }
 
     public void LapisPart1()
@@ -199,8 +199,8 @@ public class BrightOak
             return;
 
         // That's So Lapis
-        Story.KillQuest(4467, "Brightoak", "Grove Spore");
         Story.MapItemQuest(4467, "Brightoak", 3666, 10);
+        Story.KillQuest(4467, "Brightoak", "Grove Spore");
 
         // Guts for a Greater Mind     
         Story.KillQuest(4468, "Brightoak", "Twisted Goblin");
@@ -208,11 +208,18 @@ public class BrightOak
 
     public void RavinosBrightgladePart1()
     {
-        if (Core.isCompletedBefore(4700))
+        if (!Core.isCompletedBefore(4700))
             return;
 
         // Cleanse the Grove
-        Story.KillQuest(4463, "Darkheart", new[] { "Wolfwood", "Hootbear", "Tainted Earth" });
+        if (!Story.QuestProgression(4463))
+        {
+            Core.EnsureAccept(4463);
+            Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Corrupted Fang", 2);
+            Core.KillMonster("brightoak", "r3", "Left", "Hootbear", "Shriveled Claw", 4);
+            Core.KillMonster("brightoak", "r6", "Left", "Tainted Earth", "Muddy Vial", 2);
+            Core.EnsureComplete(4463);
+        }
 
         // Survey the Landscape
         Story.MapItemQuest(4692, "Darkheart", 4052);
@@ -224,26 +231,27 @@ public class BrightOak
         Story.KillQuest(4694, "Darkheart", "Mutated Leech");
 
         // Purify Wisterrora
-        Story.KillQuest(4695, "Darkheart", "Wisterrora");
         Story.MapItemQuest(4695, "Darkheart", 4053, 6);
+        Story.KillQuest(4695, "Darkheart", "Wisterrora");
 
         // Arachnophobia
-        Story.KillQuest(4696, "Darkheart", "Toxic Grove Spider");
         Story.MapItemQuest(4696, "Darkheart", 4054, 6);
+        Story.KillQuest(4696, "Darkheart", "Toxic Grove Spider");
 
         // Brighten up your Day
-        Story.KillQuest(4697, "Brightoak", "Brightpool Guardian");
         Story.MapItemQuest(4697, "Darkheart", 4055, 7);
+        Story.KillQuest(4697, "Brightoak", "Brightpool Guardian");
 
         // Cleanse the Grove
-        if (!Story.QuestProgression(4698))
-        {
-            Core.EnsureAccept(4698);
-            Core.HuntMonster("Darkheart", "Tainted Earth", "Tainted Earth Removed", 8);
-            Core.HuntMonster("Darkheart", "Toxic Grove Spider", "Toxic Grove Spider Dispatched", 5);
-            Core.HuntMonster("Darkheart", "Mutated Leech", "Mutated Leech Slain", 6);
-            Core.EnsureComplete(4698);
-        }
+        Story.KillQuest(4698, "Darkheart", new[] { "Tainted Earth", "Toxic Grove Spider", "Mutated Leech" });
+        // if (!Story.QuestProgression(4698))
+        // {
+        //     Core.EnsureAccept(4698);
+        //     Core.KillMonster("Darkheart", "Enter", "Spawn", "Tainted Earth", "Tainted Earth Removed", 8);
+        //     Core.KillMonster("Darkheart", "r2", "Left", "Toxic Grove Spider", "Toxic Grove Spider Dispatched", 5);
+        //     Core.KillMonster("Darkheart", "Enter", "Spawn", "Mutated Leech", "Mutated Leech Slain", 6);
+        //     Core.EnsureComplete(4698);
+        // }
 
         // X Marks the Spot
         Story.MapItemQuest(4699, "Darkheart", 4056);
