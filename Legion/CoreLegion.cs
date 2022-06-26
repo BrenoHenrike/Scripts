@@ -96,6 +96,8 @@ public class CoreLegion
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
+                Core.Jump();
+                Core.Join("aqlesson");
             }
             Core.EquipClass(ClassType.Solo);
             Adv.BestGear(GearBoost.Chaos);
