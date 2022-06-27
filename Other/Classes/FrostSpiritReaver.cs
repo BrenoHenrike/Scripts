@@ -30,6 +30,9 @@ public class FrostSpiritReaver
 
         if (!Core.CheckInventory("Envoy of Kyanos"))
         {
+            if (!Core.CheckInventory("Envoy of Kyanos"))
+                Core.Logger("Getting Quest Item Requirements for \"Ice See You\"");
+                
             if (!Core.CheckInventory("Favored of Kyanos"))
             {
                 Core.Logger("Farming the requirements to buy \"Favored of Kyanos\"");
@@ -63,6 +66,7 @@ public class FrostSpiritReaver
 
         if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
         {
+            Core.Logger("Getting Quest Item Requirements for \"Cold Hearted\"");
             Core.AddDrop("Flame of Courage");
             while (!Bot.ShouldExit() && !Core.CheckInventory("Flame of Courage", 25))
             {
@@ -101,6 +105,9 @@ public class FrostSpiritReaver
         Core.FarmingLogger("Glaceran Attunement", quant);
 
         Core.EquipClass(ClassType.Solo);
+        if (!Core.CheckInventory("IceBreaker Mage") | !Core.CheckInventory("FrostSlayer"))
+            Core.Logger("Getting Quest Item Requirements for \"Cold Blooded\"");
+
         Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", isTemp: false);
         Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
 

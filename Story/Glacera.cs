@@ -27,6 +27,7 @@ public class GlaceraStory
         Glacera1();
         FrostRuins1();
         IceWindPass();
+        IceDungeon();
     }
 
     public void FrozenTower()
@@ -218,6 +219,7 @@ public class GlaceraStory
         Story.KillQuest(3954, "frozenruins", "Frost General");
     }
 
+
     public void Northstar()
     {
         if (Core.isCompletedBefore(3971))
@@ -337,5 +339,41 @@ public class GlaceraStory
 
         // What is THAT?
         Story.KillQuest(5601, "icewindwar", "Soricomorpha");
+    }
+
+    public void IceDungeon()
+    {
+        if (Core.isCompletedBefore(7481))
+            return;
+
+        // Cold Open
+        Story.KillQuest(7832, "IceDungeon", new[] { "Frosted Banshee", "Frozen Undead", "Ice Symbiote" });
+
+        // Frost Fight
+        Story.KillQuest(7833, "IceDungeon", new[] { "Spirit of Ice", "Ice Crystal", "Frigid Spirit" });
+
+        // Freeze Frame
+        Story.KillQuest(7834, "IceDungeon", new[] { "Living Ice", "Crystallized Elemental", "Frozen Demon" });
+
+        // Glace's Trial
+        Story.KillQuest(7835, "IceDungeon", "Image of Glace");
+
+        // Abel's Trial
+        Story.KillQuest(7836, "IceDungeon", "Abel");
+
+        // The Final Trial   
+        Story.KillQuest(7837, "IceDungeon", "Shade of Kyanos");
+
+        // Basic Ingredients
+        Story.KillQuest(7838, "IceDungeon", new[] { "Frosted Banshee", "Frozen Undead", "Ice Symbiote" });
+
+        // Cool Flavor
+        Story.KillQuest(7839, "IceDungeon", new[] { "Spirit of Ice", "Ice Crystal", "Frigid Spirit" });
+
+        // Chilled to Perfection
+        Story.KillQuest(7840, "IceDungeon", new[] { "Living Ice", "Crystallized Elemental", "Frozen Demon" });
+
+        // Icing on the Cake  
+        Story.KillQuest(7841, "IceDungeon", new[] { "Image of Glace", "Abel", "Shade of Kyanos" });
     }
 }
