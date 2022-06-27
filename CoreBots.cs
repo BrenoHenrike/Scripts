@@ -1147,9 +1147,9 @@ public class CoreBots
     public void FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")
         => Logger($"Farming {item} ({Bot.Inventory.GetQuantity(item)}/{quant})", caller);
 
-    public void DebugLogger(object _this, string marker = "Checkpoint", [CallerMemberName] string? callerMemberName = null, [CallerLineNumber] int callerLineNumber = 0)
+    public void DebugLogger(object _this, string marker = "Checkpoint", [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
-        if (!enableDebugLogger)
+        if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
             return;
 
         string _class = _this.GetType().ToString();
@@ -1183,9 +1183,16 @@ public class CoreBots
             return;
         }
 
-        Logger($"{marker}, {_class} => {callerMemberName}, line {callerLineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
+        Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
     }
-    public bool enableDebugLogger { get; set; } = false;
+    private bool DL_Enabled { get; set; } = false;
+    public string? DL_CallerFilter { get; set; } = null;
+    public string? DL_MarkerFilter { get; set; } = null;
+    public void DL_Enable()
+    {
+        DL_Enabled = true;
+        LoggerInChat = false;
+    }
 
     /// <summary>
     /// Creates a Message Box with the desired text and caption
