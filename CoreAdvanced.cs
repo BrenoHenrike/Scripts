@@ -708,10 +708,11 @@ public class CoreAdvanced
             foreach (ShopItem item in items)
             {
                 getIngredients(item);
-                if (!matsOnly && !Core.CheckInventory(item.ID))
+                if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
                     BuyItem(map, shopID, item.ID);
+                    Core.ToBank(item.Name);
                 }
             }
             if (!matsOnly)
