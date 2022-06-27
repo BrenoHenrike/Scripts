@@ -22,7 +22,7 @@ public class VoidAurasForIdiots
 
         Core.SetOptions();
         Core.Logger($"{Bot.Player.Username} ty for being retarted enough to run this👍, your the {Bot.Runtime.Random.Next(0, 9999999)} 'th person to Request/run this.");
-        NSoD.RetrieveVoidAuras(7500);
+        NSoD.VoidAuras(7500);
         Core.SetOptions(false);
 
     }
