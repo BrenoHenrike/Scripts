@@ -41,7 +41,7 @@ public class TechfortressWarMerge
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("techfortresswar", 1902, findIngredients);
+        Adv.StartBuyAllMerge("techfortress", 1902, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
