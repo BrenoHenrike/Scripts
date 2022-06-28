@@ -61,7 +61,7 @@ public class EridaniPastMerge
                     break;
 
                 case "Suki's Sword":
-                    Core.KillMonster("eridanipast", "r10", "Left", "*", req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("eridanipast", 19, req.Name, isTemp: false);
                     break;
             }
         }

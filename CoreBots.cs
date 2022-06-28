@@ -1012,6 +1012,45 @@ public class CoreBots
             _HuntForItem(monster, item, quant, isTemp, log: log);
     }
 
+    public void HuntMonsterMapID(string map, int monsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    {
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
+            return;
+        if (!isTemp && item != null)
+            AddDrop(item);
+        Join(map, publicRoom: publicRoom);
+
+        Monster? monster = Bot.Monsters.MapMonsters.Find(m => m.MapID == monsterMapID);
+        if (monster == null)
+        {
+            Logger($"Failed to find monsterMapID {monsterMapID} in {map}");
+            return;
+        }
+        Jump(monster.Cell, "Left");
+
+        if (item == null)
+        {
+            if (log)
+                Logger($"Killing {monster.Name}");
+            Bot.Player.Kill(monster);
+            Rest();
+        }
+        else
+        {
+            if (log)
+            {
+                int dynamicQuantity = isTemp ? Bot.Inventory.GetTempQuantity(item) : Bot.Inventory.GetQuantity(item);
+                Logger($"Killing {monster.Name} for {item}, ({dynamicQuantity}/{quant}) [Temp = {isTemp}]");
+            }
+            while (!Bot.ShouldExit() && !CheckInventory(item, quant))
+            {
+                Bot.Player.Attack(monster);
+                Bot.Sleep(ActionDelay);
+                Rest();
+            }
+        }
+    }
+
     /// <summary>
     /// Kill Escherion for the desired item
     /// </summary>

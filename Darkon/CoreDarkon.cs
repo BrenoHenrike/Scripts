@@ -210,7 +210,7 @@ public class CoreDarkon
         {
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12, log: false);
             Bot.Options.AttackWithoutTarget = true;
-            Core.KillMonster("eridanipast", "r10", "Left", "Suki", "Seraphic Sparred", log: false);
+            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred", log: false);
             Bot.Options.AttackWithoutTarget = false;
             Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12, log: false);
             Bot.Wait.ForPickup("Bandit's Correspondence");
