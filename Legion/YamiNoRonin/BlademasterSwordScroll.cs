@@ -32,6 +32,21 @@ public class ThePathtoPower
             return;
         DarkAlly.DarkAlly_Questline();
         Core.AddDrop("Blademaster Sword Scroll");
+        Core.EnsureAccept(7443);
+        Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 13, false, publicRoom: true);
+        Legion.FarmLegionToken(17500);
+        Core.KillMonster("Judgement", "r10a", "Spawn", "Ultra Aeacus", "Aeacus Empowered", 50, false, publicRoom: true);
+        Meditation(1);
+        Core.EnsureComplete(7443);
+    }
+    
+  
+    public void BlademasterSwordScrollNL(int quant = 1)
+    {
+        if (Core.CheckInventory("Blademaster Sword Scroll", quant))
+            return;
+        DarkAlly.DarkAlly_Questline();
+        Core.AddDrop("Blademaster Sword Scroll");
         Core.EnsureAccept(7410);
         Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 26, false, publicRoom: true);
         Core.KillMonster("Judgement", "r10a", "Spawn", "Ultra Aeacus", "Aeacus Empowered", 100, false, publicRoom: true);
@@ -42,7 +57,7 @@ public class ThePathtoPower
         Legion.DagePvP(400, 50, 1000);
         Core.EnsureComplete(7410);
     }
-
+    
     public void Meditation(int quant = 1)
     {
         if (Core.CheckInventory("Meditation", quant))

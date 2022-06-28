@@ -9,7 +9,7 @@
 //cs_include Scripts/Legion/SwordMaster.cs
 using RBot;
 
-public class YamiNoRonin
+public class YamiNoRoninNonLegion
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -33,8 +33,8 @@ public class YamiNoRonin
 
         Core.AddDrop("Yami no Ronin");
 
-        Core.EnsureAccept(7408);        
-        TPtP.BlademasterSwordScroll();        
+        Core.EnsureAccept(7408);
+        TPtP.BlademasterSwordScrollNL();
         TEoaE.YokaiSwordScroll(1);
         Core.EnsureComplete(7408);
         Bot.Wait.ForPickup("Yami no Ronin");
