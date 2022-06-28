@@ -46,6 +46,7 @@ public class MergeTemplateHelper
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         string output = "";
         List<string> itemsToLearn = new();
+        string className = Bot.Shops.ShopName.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "");
 
         foreach (ShopItem item in shopItems)
         {
@@ -104,7 +105,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find classIndex");
             return;
         }
-        MergeTemplate[classIndex] = $"public class {map}Merge";
+        MergeTemplate[classIndex] = $"public class {className}Merge";
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients);");
         if (startIndex < 0)
         {
@@ -116,7 +117,7 @@ public class MergeTemplateHelper
         int endIndex = MergeTemplate.Count() - 4;
         string[] content = MergeTemplate[..index].Concat(new[] { output }).Concat(MergeTemplate[endIndex..]).ToArray();
 
-        string path = AppPath + $@"\Scripts\WIP\{map}Merge.cs";
+        string path = AppPath + $@"\Scripts\WIP\{className}Merge.cs";
         Directory.CreateDirectory(AppPath + @"\Scripts\WIP");
         File.WriteAllLines(path, content);
         DialogResult result = MessageBox.Show($"File has been generated. Path is {path}\n\nPress OK to open the file",
