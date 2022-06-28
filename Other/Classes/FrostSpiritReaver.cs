@@ -23,7 +23,7 @@ public class FrostSpiritReaver
 
     public void GetFSR(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Frost SpiritReaver"))
+        if (Core.CheckInventory(59178))
             return;
 
         Glacera.DoAll();
@@ -32,7 +32,7 @@ public class FrostSpiritReaver
         {
             if (!Core.CheckInventory("Envoy of Kyanos"))
                 Core.Logger("Getting Quest Item Requirements for \"Ice See You\"");
-                
+
             if (!Core.CheckInventory("Favored of Kyanos"))
             {
                 Core.Logger("Farming the requirements to buy \"Favored of Kyanos\"");
