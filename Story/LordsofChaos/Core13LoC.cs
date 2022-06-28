@@ -922,16 +922,11 @@ public class Core13LoC
         {
             Core.EnsureAccept(978);
             Bot.Quests.UpdateQuest(3773);
-            Core.Join("wanders", "Boss", "Left");
-            Bot.Options.AttackWithoutTarget = true;
-            Core.SendPackets("%xt%zm%gar%0%aa>m");
-            Bot.Player.ApproachTarget();
-            Bot.Player.Kill("Sek-Duat");
-            Bot.Options.AttackWithoutTarget = false;
+            Core.HuntMonsterMapID("wanders", 46, "Sek-Duat Defeated");
             Core.EnsureComplete(978);
             //Editors Note: PLEASE stop breaking this
             //Editors Note2: for each new Sek-Duat Fix Please add 1 to this counter, Counter started 5/7/22 (not entirely acurate just when i made the counter.)
-            // Counter: 2
+            // Counter: 3
         }
 
         //Sandsational Castle
