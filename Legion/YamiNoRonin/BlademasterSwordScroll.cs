@@ -34,7 +34,7 @@ public class ThePathtoPower
         Core.AddDrop("Blademaster Sword Scroll");
         Core.EnsureAccept(7410);
         Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 13, false, publicRoom: true);
-        Core.KillMonster("Judgement", "r10a", "Spawn", "Ultra Aeacus", "Aeacus Empowered", 50, false, publicRoom: true);
+        Core.KillMonster("Judgement", "r10a", "Spawn", "Ultra Aeacus", "Aeacus Empowered", 100, false, publicRoom: true);
         Core.HuntMonster("darkally", "Underfiend", "Traitor's Tract", 250, false);
         Core.HuntMonster("shadowsong", "Oh'Garr", "Ogre Titan's Resonance", 250, false);
         Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "Shadow Dragonlord's Shroud", 250, false);
