@@ -208,7 +208,16 @@ public class CoreStory
             Core.Logger(message.Replace("|", " "));
             DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (response == DialogResult.Yes)
-                Process.Start("explorer", "https://forms.gle/sbp57LBQP5WvCH2B9");
+            {
+                string path = ScriptManager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
+                Process.Start("explorer", $"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                                             "entry.2118425091=Bug+Report&" +
+                                            $"entry.290078150={path}.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
+                                            $"entry.1918245848={QuestData.ID}&" +
+                                            $"entry.1809007115={QuestData.Value}/{QuestData.Slot}&" +
+                                            $"entry.493943632={currentValue}/{QuestData.Slot}&" +
+                                            $"entry.148016785={QuestData.Name}");
+            }
             Core.StopBot();
         }
 
