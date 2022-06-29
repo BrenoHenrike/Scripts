@@ -556,49 +556,74 @@ public class CoreLegion
 
     public void DagePvP(int TrophyQuant, int TechniqueQuant, int ScrollQuant)
     {
-        if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant) && Core.CheckInventory("Technique Observed", TechniqueQuant) && Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+        if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant) &&
+            Core.CheckInventory("Technique Observed", TechniqueQuant) &&
+            Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
             return;
 
-        // if (Core.CBO_Active)
-        //     canSoloBoss = !Core.CBOBool("PVP_SoloPvPBoss");
+        bool canSoloBoss = true;
+        if (Core.CBO_Active)
+            canSoloBoss = !Core.CBOBool("PVP_SoloPvPBoss");
 
+        Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
         Core.EquipClass(ClassType.Solo);
         // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) && !Core.CheckInventory("Technique Observed", TechniqueQuant) && !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+        while (!Bot.ShouldExit() &&
+                !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) &&
+                !Core.CheckInventory("Technique Observed", TechniqueQuant) &&
+                !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
         {
-            Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
             Core.Join("Dagepvp", "Enter0", "Spawn", ignoreCheck: true);
+
             DagePvPMove(1, "r2", 475, 269);
             DagePvPMove(4, "r4", 963, 351);
             DagePvPMove(7, "r5", 849, 177);
             DagePvPMove(9, "r6", 937, 389);
+
             if (!Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
             {
-                Core.Logger($"Geting Scrolls: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")}/{ScrollQuant}");
+                Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
+
                 DagePvPMove(11, "r7", 513, 286);
                 DagePvPMove(15, "r10", 832, 347);
+
                 Bot.Player.Kill("Blade Master");
                 Bot.Player.Kill("Blade Master");
+
                 DagePvPMove(20, "r11", 943, 391);
+
                 Bot.Player.Kill("Blade Master");
                 Bot.Player.Kill("Blade Master");
+
                 DagePvPMove(21, "r10", 9, 397);
                 DagePvPMove(19, "r7", 7, 392);
                 DagePvPMove(14, "r6", 482, 483);
             }
             DagePvPMove(12, "r12", 758, 338);
+            if (!canSoloBoss)
+            {
+                Bot.Player.Kill("Legion Guard");
+                Bot.Player.Kill("Legion Guard");
+            }
             DagePvPMove(23, "r13", 933, 394);
+            if (!canSoloBoss)
+            {
+                Bot.Player.Kill("Legion Guard");
+                Bot.Player.Kill("Legion Guard");
+            }
             DagePvPMove(25, "r14", 846, 181);
+            if (!canSoloBoss)
+            {
+                Bot.Player.Kill("Legion Guard");
+                Bot.Player.Kill("Legion Guard");
+            }
             DagePvPMove(28, "r15", 941, 348);
+
             Bot.Player.Kill("Dage the Evil");
             Bot.Wait.ForPickup("*");
-            while (!Bot.ShouldExit() && Bot.Map.Name != "battleon")
-            {
-                Bot.Sleep(5000);
-                Core.Join("battleon");
-                Bot.Wait.ForMapLoad("battleon");
-            }
+
+            Core.Join("battleon");
         }
     }
 }
