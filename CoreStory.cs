@@ -218,7 +218,7 @@ public class CoreStory
                                             $"entry.493943632={currentValue}/{QuestData.Slot}&" +
                                             $"entry.148016785={QuestData.Name}");
             }
-            Core.StopBot();
+            Bot.Stop(true);
         }
 
         if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
