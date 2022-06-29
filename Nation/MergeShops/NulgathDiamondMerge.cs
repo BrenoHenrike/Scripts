@@ -4,7 +4,6 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Nation/Various/JuggernautItems.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nation/Various/TarosManslayer.cs
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
@@ -17,15 +16,12 @@ public class NulgathDiamondMerge
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public CoreDailies Dailies = new();
     public static CoreAdvanced sAdv = new();
     public CoreNation Nation = new();
     public TarosManslayer Taro = new();
-    public JuggernautItemsofNulgath JuggItems = new();
     public CoreBLOD BLOD = new();
-    public PurifiedClaymoreOfDestiny Claymore = new();
 
     public List<IOption> Options = sAdv.MergeOptions;
     public string OptionsStorage = sAdv.OptionsStorage;
@@ -80,7 +76,7 @@ public class NulgathDiamondMerge
                     break;
 
                 case "Taro's Manslayer":
-                    Taro.GuardianTaro();
+                    Taro.GuardianTaro(true);
                     break;
 
                 case "Dark Crystal Shard":

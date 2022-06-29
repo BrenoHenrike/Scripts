@@ -22,8 +22,10 @@ public class TarosManslayer
 
     private string[] Rewards = { "Taro's Manslayer", "Taro Blademaster Guardian" };
 
-    public void GuardianTaro()
+    public void GuardianTaro(bool ManslayerOnly = false)
     {
+        if (ManslayerOnly)
+            Rewards = new[] { "Taro's Manslayer" };
         if (Core.CheckInventory(Rewards))
             return;
 
