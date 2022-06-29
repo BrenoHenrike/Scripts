@@ -22,12 +22,12 @@ public class BuringBeachStory
     public void StoryLine()
     {
         Story.PreLoad();
-        
+
         // (Volca)No Trespassing
         Story.KillQuest(8702, "blazingbeach", "Burning Bombadier");
 
         // Piracy for Pyromancers
-        Story.KillQuest(8703, "blazingbeach", new[] { "Magma Pirate", "Scalding Shooter", "Red-Hot Raider" });
+        Story.KillQuest(8703, "blazingbeach", new[] { "Burning Bombadier", "Magma Pirate", "Red-Hot Raider" });
 
         // Canned Heat
         Story.KillQuest(8704, "blazingbeach", "Burning Bombadier");
