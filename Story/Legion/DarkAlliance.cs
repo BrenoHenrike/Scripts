@@ -13,7 +13,6 @@ public class DarkAlliance_Story
     {
         Core.SetOptions();
 
-        DarkAlly.DarkAlly_Questline();
         DarkAlliance_Questline();
 
         Core.SetOptions(false);
@@ -24,6 +23,7 @@ public class DarkAlliance_Story
         if (Core.isCompletedBefore(7460))
             return;
 
+        DarkAlly.DarkAlly_Questline();
         Story.PreLoad();
 
         //Clear the Shadows --DAGE--
