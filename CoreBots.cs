@@ -597,20 +597,23 @@ public class CoreBots
         Dictionary<Quest, int> chooseQuests = new Dictionary<Quest, int>();
         Dictionary<int, int> nonChooseQuests = new Dictionary<int, int>();
 
-        // Removing quests that you can't accept
         foreach (Quest q in questData)
+        {
+            // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
+            {
                 if (!CheckInventory(req.Name))
                 {
                     Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
                     questData.Remove(q);
                 }
+            }
 
-        // Separating the quests into choose and non-choose
-        foreach (Quest q in questData)
+            // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
                 chooseQuests.Add(q, 1);
             else nonChooseQuests.Add(q.ID, 1);
+        }
 
         EnsureAccept(questIDs);
         questCTS = new();
@@ -696,17 +699,19 @@ public class CoreBots
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureAccept(params int[] questIDs)
     {
-        foreach (int quest in questIDs)
+        List<Quest> QuestData = EnsureLoad(questIDs);
+        foreach (Quest quest in QuestData)
         {
-            Quest QuestData = EnsureLoad(quest);
 
-            if (QuestData.Upgrade && !IsMember)
-                Logger($"\"{QuestData.Name}\" [{quest}] is member-only, stopping the bot.", stopBot: true);
+            if (quest.Upgrade && !IsMember)
+                Logger($"\"{quest.Name}\" [{quest.ID}] is member-only, stopping the bot.", stopBot: true);
 
-            if (Bot.Quests.IsInProgress(quest) || quest <= 0)
+            if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
+
+            AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
             Bot.Sleep(ActionDelay);
-            Bot.Quests.EnsureAccept(quest, tries: AcceptandCompleteTries);
+            Bot.Quests.EnsureAccept(quest.ID, tries: AcceptandCompleteTries);
         }
     }
 
