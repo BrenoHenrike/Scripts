@@ -6,7 +6,12 @@ public class CoreNation
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
+
+    //CanChange: If enabled will sell the "Voucher of Nulgath" item during farms if it's not needed.
+    bool sellMemVoucher = true;
+    //CanChange: If enabled will do "Swindles Return Policy" passively during "Supplies To Spin The Wheels of Fate".
+    bool returnPolicyDuringSupplies = true;
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -90,6 +95,19 @@ public class CoreNation
         "Blood Gem of the Archfiend"
     };
 
+    public string[] Uni()
+    {
+        if (_Uni != null)
+            return _Uni;
+
+        List<string> _uni = new();
+        for (int i = 0; i < 50; i++)
+            _uni.Add($"Unidentified {i}");
+
+        _Uni = _uni.ToArray();
+        return _Uni;
+    }
+    private string[]? _Uni = null;
 
     /// <summary>
     /// Does Essence of Defeat Reagent quest for Dark Crystal Shards
@@ -237,7 +255,7 @@ public class CoreNation
     /// </summary>
     /// <param name="quant">Desired Item quantity</param>
     /// <param name="item">Desired Item</param>
-    public void SwindleReturn(string item = "Any", int quant = 1000, bool sellMemVoucher = true)
+    public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -469,13 +487,13 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void Supplies(string item = "Any", int quant = 1, bool sellMemVoucher = true)
+    public void Supplies(string item = "Any", int quant = 1)
     {
         if (Core.CheckInventory(item, quant))
             return;
 
         if (Core.CheckInventory(CragName))
-            BambloozevsDrudgen(item, quant, sellMemVoucher);
+            BambloozevsDrudgen(item, quant);
         else
         {
             if (item != "Any")
@@ -486,6 +504,14 @@ public class CoreNation
             }
             else
                 Core.AddDrop(bagDrops[..^11]);
+            string[]? rPDSuni = null;
+            if (returnPolicyDuringSupplies)
+            {
+                rPDSuni = new[] { Uni()[1], Uni()[6], Uni()[9], Uni()[16], Uni()[20] };
+                Core.AddDrop(rPDSuni);
+                Core.AddDrop("Blood Gem of Nulgath");
+                Core.RegisterQuests(7551);
+            }
             Core.Logger($"Farming {quant} {item}");
             int i = 1;
 
@@ -496,14 +522,15 @@ public class CoreNation
                 Core.EnsureComplete(2857);
 
                 Bot.Player.Pickup(item);
-                if (sellMemVoucher)
-                    Bot.Player.Pickup("Voucher of Nulgath");
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                 {
+                    Bot.Player.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath");
                 }
                 Core.Logger($"Completed x{i++}");
             }
+            if (returnPolicyDuringSupplies)
+                Core.CancelRegisteredQuests();
         }
     }
 
@@ -569,7 +596,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void BambloozevsDrudgen(string item = "Any", int quant = 1, bool sellMemVoucher = true)
+    public void BambloozevsDrudgen(string item = "Any", int quant = 1)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
