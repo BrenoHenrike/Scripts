@@ -200,8 +200,13 @@ public class CoreStory
 
         if (!Bot.Quests.IsUnlocked(QuestID))
         {
-            Core.Logger($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, please fill in the RBot Scripts Form to report this. Do you wish to be brought to the form?");
-            DialogResult response = MessageBox.Show($"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked, please fill in the RBot Scripts Form to report this.\nDo you wish to be brought to the form?", "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
+            string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
+                             $"Expected value = [{QuestData.Value}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
+                              "Please fill in the RBot Scripts Form to report this.|" +
+                              "Do you wish to be brought to the form?";
+            Core.Logger(message.Replace("|", " "));
+            DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (response == DialogResult.Yes)
                 Process.Start("explorer", "https://forms.gle/sbp57LBQP5WvCH2B9");
             Core.StopBot();
