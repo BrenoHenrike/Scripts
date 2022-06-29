@@ -39,15 +39,7 @@ public class CoreStory
             return;
 
         Core.SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
-        if (Bot.Quests.CanComplete(QuestID))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            if (AutoCompleteQuest)
-                Core.EnsureComplete(QuestID);
-            Bot.Wait.ForQuestComplete(QuestID);
-            Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-            Bot.Sleep(Core.ActionDelay);
-        }
+        TryComplete(QuestData, AutoCompleteQuest);
     }
 
     /// <summary>
@@ -68,15 +60,7 @@ public class CoreStory
             return;
 
         Core.SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
-        if (Bot.Quests.CanComplete(QuestID))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            if (AutoCompleteQuest)
-                Core.EnsureComplete(QuestID);
-            Bot.Wait.ForQuestComplete(QuestID);
-            Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-            Bot.Sleep(Core.ActionDelay);
-        }
+        TryComplete(QuestData, AutoCompleteQuest);
     }
 
     /// <summary>
@@ -98,15 +82,7 @@ public class CoreStory
 
         Core.EnsureAccept(QuestID);
         Core.GetMapItem(MapItemID, Amount, MapName);
-        if (Bot.Quests.CanComplete(QuestID))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            if (AutoCompleteQuest)
-                Core.EnsureComplete(QuestID);
-            Bot.Wait.ForQuestComplete(QuestID);
-            Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-            Bot.Sleep(Core.ActionDelay);
-        }
+        TryComplete(QuestData, AutoCompleteQuest);
     }
 
     /// <summary>
@@ -129,15 +105,7 @@ public class CoreStory
         Core.EnsureAccept(QuestID);
         foreach (int MapItemID in MapItemIDs)
             Core.GetMapItem(MapItemID, Amount, MapName);
-        if (Bot.Quests.CanComplete(QuestID))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            if (AutoCompleteQuest)
-                Core.EnsureComplete(QuestID);
-            Bot.Wait.ForQuestComplete(QuestID);
-            Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-            Bot.Sleep(Core.ActionDelay);
-        }
+        TryComplete(QuestData, AutoCompleteQuest);
     }
 
     /// <summary>
@@ -159,15 +127,7 @@ public class CoreStory
 
         Core.EnsureAccept(QuestID);
         Core.BuyItem(MapName, ShopID, ItemName, Amount);
-        if (Bot.Quests.CanComplete(QuestID))
-        {
-            Bot.Sleep(Core.ActionDelay);
-            if (AutoCompleteQuest)
-                Core.EnsureComplete(QuestID);
-            Bot.Wait.ForQuestComplete(QuestID);
-            Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-            Bot.Sleep(Core.ActionDelay);
-        }
+        TryComplete(QuestData, AutoCompleteQuest);
     }
 
     /// <summary>
@@ -194,6 +154,19 @@ public class CoreStory
         Bot.Wait.ForQuestComplete(QuestID);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
         Bot.Sleep(Core.ActionDelay);
+    }
+
+    private void TryComplete(Quest QuestData, bool AutoCompleteQuest)
+    {
+        if (!Bot.Quests.CanComplete(QuestData.ID))
+            return;
+
+        Bot.Sleep(Core.ActionDelay);
+        if (AutoCompleteQuest)
+            Core.EnsureComplete(QuestData.ID);
+        Bot.Wait.ForQuestComplete(QuestData.ID);
+        Core.Logger($"Completed \"{QuestData.Name}\" [{QuestData.ID}]");
+        Bot.Sleep(1000);
     }
 
     /// <summary>
