@@ -516,37 +516,24 @@ public class CoreLegion
         SoulForgeHammer();
 
         Core.AddDrop("Obsidian Rock");
-
         Core.EquipClass(ClassType.Farm);
 
         if (!Core.IsMember)
-            Core.Logger("Using Non-Member Method");
-        else Core.Logger("Using Members Method");
-
-        if (!Core.IsMember || !Core.isCompletedBefore(1542))
         {
-
-            // Something Smells Rotten in EtherStorm
-            Story.KillQuest(1532, "firestorm", new[] { "Sulfur Imp", "Sulfur Imp" });
-
-            // Play With Fire
-            Story.KillQuest(1533, "firestorm", "Living Fire");
-
-            // Set Me On Fire
-            Story.MapItemQuest(1542, "firestorm", 784, 13);
+            Core.Logger("Using Non-Member Method");
+            Bot.Quests.UpdateQuest(1542);
         }
+        else Core.Logger("Using Members Method");
 
         Core.RegisterQuests(2742);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Obsidian Rock", quant))
         {
             if (Core.IsMember)
                 Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10, log: false);
+            else Core.KillMonster("firestorm", "r8", "Left", "Firestorm Hatchling", "Obsidian Deposit", 10, log: false);
 
-            else if (!Core.IsMember)
-                Core.KillMonster("firestorm", "r8", "Left", "Firestorm Hatchling", "Obsidian Deposit", 10, log: false);
-
+            Bot.Wait.ForPickup("Obsidian Rock");
         }
-        Bot.Wait.ForPickup("Obsidian Rock");
         Core.CancelRegisteredQuests();
     }
 
