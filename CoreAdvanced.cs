@@ -689,7 +689,7 @@ public class CoreAdvanced
 
         foreach (ShopItem item in shopItems)
         {
-            if (Core.CheckInventory(item.ID))
+            if (Core.CheckInventory(item.ID, toInv: false))
                 continue;
             //No clue why I have to do a double if instead of a &&, but otherwise it will not do this statement correctly
             if (!miscCatagories.Contains(item.Category))
