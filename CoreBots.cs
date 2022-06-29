@@ -1811,10 +1811,40 @@ public class CoreBots
                 }
                 break;
 
+            case "tercess":
             case "tercessuinotlim":
                 Bot.Player.Jump("m22", "Left");
-                Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
-                Bot.Wait.ForMapLoad(map.ToLower());
+                for (int i = 0; i < 20; i++)
+                {
+                    Bot.Player.Join((!PrivateRooms ? "tercessuinotlim" : $"tercessuinotlim-{PrivateRoomNumber}"), cell, pad, ignoreCheck);
+                    Bot.Wait.ForMapLoad("tercessuinotlim");
+
+                    string? currentMap = Bot.Map.Name;
+                    if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == "tercessuinotlim")
+                        break;
+
+                    if (i == 19)
+                        Logger($"Failed to join tercessuinotlim");
+                }
+                break;
+
+            case "doomvaultb":
+                JumpWait();
+                Bot.Quests.UpdateQuest(3008);
+                SetAchievement(18);
+                Bot.Quests.UpdateQuest(3004);
+                for (int i = 0; i < 20; i++)
+                {
+                    Bot.Player.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map.ToLower() : $"{map.ToLower()}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                    Bot.Wait.ForMapLoad(map.ToLower());
+
+                    string? currentMap = Bot.Map.Name;
+                    if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map.ToLower())
+                        break;
+
+                    if (i == 19)
+                        Logger($"Failed to join {map}");
+                }
                 break;
 
             case "hyperium":
