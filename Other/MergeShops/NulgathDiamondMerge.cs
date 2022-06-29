@@ -71,207 +71,147 @@ public class NulgathDiamondMerge
                 case "Diamond of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.FarmDiamondofNulgath(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Archfiend's Favor":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.ApprovalAndFavor(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Nulgath's Approval":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.ApprovalAndFavor(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Taro's Manslayer":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Taro.GuardianTaro();
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Dark Crystal Shard":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.SwindleReturn();
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Tainted Gem":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.SwindleBulk(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Blade of Holy Might":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("northlands", "Aisha's Drake", "Blade of Holy Might", isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Blood Gem of the Archfiend":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.FarmBloodGem(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Unidentified 13":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.ContractExchange();
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Iron":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         BLOD.UnlockMineCrafting();
                         Dailies.MineCrafting(new[] { "Iron" });
-                        Bot.Wait.ForPickup(req.Name);
                     }
                     break;
 
                 case "Gem of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.FarmGemofNulgath();
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Totem of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.FarmTotemofNulgath(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Bone Dust":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Farm.BattleUnderB("Bone Dust", quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Cloak of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        if (!Core.IsMember)
-                            break;
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Core.BuyItem("tercessuinotlim", 4667, "Cloak of Nulgath");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Staff of Imp Fire":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("bludrut2", "Fire Elemental", "Staff of Imp Fire", isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Cool Head":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        if (!Core.IsMember)
-                            break;
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Core.BuyItem("tercessuinotlim", 4826, "Cool Head");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Primal Dread Fang":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.Supplies("Primal Dread Fang", quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Random Weapon of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.Supplies("Random Weapon of Nulgath", quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Voucher of Nulgath (non-mem)":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         Nation.FarmVoucher(false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Unidentified 27":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(584);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
                         Nation.Supplies("Unidentified 26");
                         Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
-                        Core.Logger(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
@@ -279,11 +219,8 @@ public class NulgathDiamondMerge
                 case "Crystal Phoenix Blade of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
+                    if (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                         JuggItems.JuggItems();
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
             }
