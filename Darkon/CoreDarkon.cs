@@ -202,17 +202,17 @@ public class CoreDarkon
         Core.AddDrop("Bandit's Correspondence");
         Astravia.EridaniPast();
         Core.FarmingLogger("Bandit's Correspondence", Quantity);
-        Bot.Quests.UpdateQuest(8531); //attempted fix
-        Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(8531);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Bandit's Correspondence", Quantity))
         {
+
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12, log: false);
-            Bot.Options.AttackWithoutTarget = true;
-            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred", log: false);
-            Bot.Options.AttackWithoutTarget = false;
             Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12, log: false);
+
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred", log: false);
             Bot.Wait.ForPickup("Bandit's Correspondence");
         }
         Core.CancelRegisteredQuests();
@@ -257,7 +257,7 @@ public class CoreDarkon
             Core.HuntMonster("firstobservatory", "Ancient Creature", "Creature Samples", 6);
             Core.HuntMonster("firstobservatory", "Ancient Turret", "Turret Pieces", 12);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("firstobservatory", "Empress' Finger", "Alprecha Observed");
+            Core.HuntMonster("firstobservatory", "Empress’ Finger", "Alprecha Observed");
             Bot.Wait.ForPickup("Ancient Remnant");
         }
         Core.CancelRegisteredQuests();
