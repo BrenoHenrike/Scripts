@@ -37,8 +37,6 @@ public class ArchFiendSpear
         if (Core.CheckInventory("ArchFiend Spear"))
             return;
 
-        Core.AddDrop("ArchFiend Spear");
-
         Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         AFEO.GetAFEO();
         Will.Unidentified34(1);

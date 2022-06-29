@@ -31,8 +31,6 @@ public class ArchFiendEnchantedOrbs
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
 
-        Core.AddDrop("ArchFiend Enchanted Orbs");
-
         Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmUni13(1);
         Nation.FarmDiamondofNulgath(150);
