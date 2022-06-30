@@ -903,8 +903,7 @@ public class CoreQOM
         if (!Story.QuestProgression(5872))
         {
             Core.EnsureAccept(5872);
-            if (!Core.CheckInventory("Health Potion"))
-                Core.BuyItem("Embersea", 1100, "Health Potion");
+            Core.BuyItem("Embersea", 1100, 1749);
 
             Core.HuntMonster("Arcangrove", "Seed Spitter", "Uncorrupted Spitter Seeds", 3);
             Core.HuntMonster("poisonforest", "Treeant", "Treeant Berries", 4);
