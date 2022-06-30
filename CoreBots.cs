@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
 using Newtonsoft.Json;
 using RBot;
 using RBot.Flash;
@@ -90,6 +91,12 @@ public class CoreBots
     {
         if (changeTo)
         {
+            if (CBO_Active)
+            {
+                CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
+                ReadCBO();
+            }
+
             if (AppPath != null)
                 Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
@@ -125,16 +132,11 @@ public class CoreBots
         Bot.Lite.CharacterSelectScreen = false;
         Bot.Lite.Set("dOptions[\"disRed\"]", true);
 
+        CollectData(changeTo);
+
         if (changeTo)
         {
-            if (CBO_Active)
-            {
-                CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
-                ReadCBO();
-            }
-
             Bot.Options.HuntDelay = HuntDelay;
-
             Bot.Events.ScriptStopping += StopBotEvent;
 
             Bot.SendPacket("%xt%zm%afk%1%false%");
@@ -1538,119 +1540,6 @@ public class CoreBots
         };
     }
 
-    private void ReadMe()
-    {
-        string readMePath = AppPath + @"\ReadMeV1.txt";
-        if (File.Exists(readMePath))
-            return;
-
-        // Popup
-        DialogResult result = MessageBox.Show(
-            "Welcome to RBot's Master Bots!\n" +
-            "These bots are a tad different from what you might be used to with Grimoire or other botting clients.\n\n" +
-            "Its highly recommended to read the ReadMe.txt file if this is your first time running one of our bots, or if you just started.\n" +
-            "There are plenty of things that are useful to know there, which arent imidiantly obvious.\n\n" +
-            "This messagebox will not appear again after you close it.\n" +
-            $"You will still be able to read the file later by going to [{readMePath}]\n" +
-            "If you do see it again at a later moment, there might have just been a update to the ReadMe, in which case you can ignore this message.\n\n" +
-            "Click OK to open the ReadMe.txt",
-
-            "READ ME",
-            MessageBoxButtons.OKCancel,
-            MessageBoxIcon.Information
-            );
-
-
-        // Creating ReadMe.txt
-        string[] ReadMe =
-        {
-            "Welcome and thank you for using RBot's Master Bots!",
-            "",
-            "=== Basic Information ===",
-                "These bots are a tad different from what you might be used to with Grimoire or other botting clients.",
-                "All our bots are \"Master Bots\" and thus will do everything you might need it to do in order to farm the item of your choice.",
-                "This includes but is not limited to:",
-                "· Finishing questlines to unlock farms, maps or get a specific items.",
-                "· Using bypasses so you dont have to do questlines in order to continue farming.",
-                "· Do other farms that you might need to do in order to farm the item of your choice (I.E. Get NSoD as well when farming for HBSoD).",
-                "",
-                "== Skills ==",
-                    "We also have a big file that contains 95% of all classes with one or multiple skill combinations for different scenarios.",
-                    "So you'll know that your class will use a optimized combo without you having to set the skills yourself.",
-                    "These combos are ofcourse always up for debate and we are happy to change them based off of community input.",
-                    "If you wish to play with these for yourself, the easiest way to do so is to use the \"Advanced Skills\" window, which can be found in the top row of RBot and then Skills.",
-                    "",
-                "== File Naming ==",
-                    "Whilst using our bots, you might notice that there are files that start with the word \"Core\", these files are storage for methods that we use in our bots.",
-                    "These bots are not meant to be run and wont do anything usefull for you. If you do, expect a pop-up that tells you the exact same thing.",
-                    "Another file naming convention is files that start with a \"0\" (zero), these files are usually inside a folder.",
-                    "These files can be run and will usually do everything in the folder for you, as a sort of combo bot. Like farming everything for VHL and buying + leveling it too.",
-                    "",
-                "== Bugs and Bot Requests ==",
-                    "As much as we try, bugs pop up from time to time.",
-                    "If you find one, please report it to us via the form which can be found near the bottom of the Scripts menu.",
-                    "This same form will also be used to request new features or bots.",
-                    "",
-                "== GitHub Prompt ==",
-                    "You might have noticed how RBot asks you to authorize with a GitHub account when you first run RBot.",
-                    "This is so that RBot can update the bots from our GitHub repository.",
-                    "Without this you are bound to a 50 requests p/h limiter that is shared with everyone else who didn't authortize.",
-                    "Considering that you already send 3 requests on startup, you can see how this can be reached quickly.",
-                    "Therefore it's highly recommended to do the authorization, as you will then have your own limiter instead of a shared one.",
-                    "",
-                    "",
-            "=== Plugins ===",
-                "== CoreBots Options ==",
-                    "Now, this plugin is where you customize a lot of the things that happen for all the bots. It's highly recommended to open this one up and set some options.",
-                    "I highly recommend setting all your preffered options in the Generic tab, as this houses the important ones.",
-                    "You can ofcourse also check our the other options and set them to what you want too.",
-                    "It's recommended to stay in private rooms, as public rooms have a higher chance of getting you banned.",
-                    "It should also be noted that RBot version 4.1.3, comes with a outdated version of the \"CoreBots Options\" plugin.",
-                    "You can find the latest here https://github.com/LordExelot/RBot-CBO/releases/tag/v1",
-                        "Within the discord this plugin is often reffered to as CBO.",
-                    "",
-                "== Wait Timeout Override ==",
-                    "This is a plugin that allows you to override some default data for RBot, it's used to modify how long RBot waits before it considers a task to be failed.",
-                    "You don't have to touch these values in most cases, it's mostly used for debugging.",
-                    "",
-                    "",
-                "=== The End ===",
-                    "Thanks for reading, I hope it wasn't too much of a bore!",
-                    "",
-                "== Contact ==",
-                    "If you wish to contact us, you can find us on our discord server: https://discord.io/AQWBots/",
-                    "",
-                "== Credits ==",
-                    "Active:",
-                        "· BrenoHenrike\t- He took over RBot development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
-                        "· Lord Exelot\t- Lead Developer/Head of the RBot Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
-                        "· Tato\t\t\t- Major contributor to the Master Bots and a lot of bug fixes.",
-                        "· Bogajl\t\t- Major contributor to the Master Bots.",
-                        "· Hao\t\t\t- Considerable contributor to the Master Bots.",
-                        "· [S] Elune\t\t- Contributor to the Master Bots, bug fixes and primary bug hunter.",
-                        "· SunnyD\t\t- Contributor to the Master Bots.",
-                        "· Novar\t\t\t- Minor Contributor to the Master Bots.",
-                        "· FishingKing\t- Minor Contributor the the Master Bots",
-                    "Inactive:",
-                        "· Rodit\t\t\t- Creator of RBot.",
-                        "· Purple\t\t- Contributor to RBot.",
-                        "· Vladimir\t\t- Major contributor to the Master Bots and bug fixes.",
-                        "· usuckshit\t\t- Considerable contributor to the Master Bots.",
-                        "· Hadmos\t\t- Considerable contributor to the Master Bots.",
-                        "· Eso\t\t\t- Minor bug fixes to the Master Bots.",
-                        "· .Richie\t\t- Minor contributor to the Master Bots.",
-                        "· ToxlcChain\t- Minor contributor to the Master Bots.",
-                        "· Ferdy\t\t\t- Minor contributor to the Master Bots.",
-                    "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
-                    "And thanks to everyone who has put time and effort RBot and the Master Bots! ~ Exelot",
-        };
-        File.WriteAllLines(readMePath, ReadMe);
-
-        // Opening ReadMe.txt
-        if (result == DialogResult.OK)
-            Process.Start("explorer", readMePath);
-    }
-
     public void RunCore()
     {
         MessageBox.Show("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1890,7 +1779,297 @@ public class CoreBots
     }
     #endregion
 
-    #region CBO Plugin
+    #region Using Local Files
+
+    private void ReadMe()
+    {
+        string readMePath = AppPath + @"\ReadMeV1.txt";
+        if (File.Exists(readMePath))
+            return;
+
+        // Popup
+        DialogResult result = MessageBox.Show(
+            "Welcome to RBot's Master Bots!\n" +
+            "These bots are a tad different from what you might be used to with Grimoire or other botting clients.\n\n" +
+            "Its highly recommended to read the ReadMe.txt file if this is your first time running one of our bots, or if you just started.\n" +
+            "There are plenty of things that are useful to know there, which arent imidiantly obvious.\n\n" +
+            "This messagebox will not appear again after you close it.\n" +
+            $"You will still be able to read the file later by going to [{readMePath}]\n" +
+            "If you do see it again at a later moment, there might have just been a update to the ReadMe, in which case you can ignore this message.\n\n" +
+            "Click OK to open the ReadMe.txt",
+
+            "READ ME",
+            MessageBoxButtons.OKCancel,
+            MessageBoxIcon.Information
+            );
+
+        // Creating ReadMe.txt
+        string[] ReadMe =
+        {
+            "Welcome and thank you for using RBot's Master Bots!",
+            "",
+            "=== Basic Information ===",
+                "These bots are a tad different from what you might be used to with Grimoire or other botting clients.",
+                "All our bots are \"Master Bots\" and thus will do everything you might need it to do in order to farm the item of your choice.",
+                "This includes but is not limited to:",
+                "· Finishing questlines to unlock farms, maps or get a specific items.",
+                "· Using bypasses so you dont have to do questlines in order to continue farming.",
+                "· Do other farms that you might need to do in order to farm the item of your choice (I.E. Get NSoD as well when farming for HBSoD).",
+                "",
+                "== Skills ==",
+                    "We also have a big file that contains 95% of all classes with one or multiple skill combinations for different scenarios.",
+                    "So you'll know that your class will use a optimized combo without you having to set the skills yourself.",
+                    "These combos are ofcourse always up for debate and we are happy to change them based off of community input.",
+                    "If you wish to play with these for yourself, the easiest way to do so is to use the \"Advanced Skills\" window, which can be found in the top row of RBot and then Skills.",
+                    "",
+                "== File Naming ==",
+                    "Whilst using our bots, you might notice that there are files that start with the word \"Core\", these files are storage for methods that we use in our bots.",
+                    "These bots are not meant to be run and wont do anything usefull for you. If you do, expect a pop-up that tells you the exact same thing.",
+                    "Another file naming convention is files that start with a \"0\" (zero), these files are usually inside a folder.",
+                    "These files can be run and will usually do everything in the folder for you, as a sort of combo bot. Like farming everything for VHL and buying + leveling it too.",
+                    "",
+                "== Bugs and Bot Requests ==",
+                    "As much as we try, bugs pop up from time to time.",
+                    "If you find one, please report it to us via the form which can be found near the bottom of the Scripts menu.",
+                    "This same form will also be used to request new features or bots.",
+                    "",
+                "== GitHub Prompt ==",
+                    "You might have noticed how RBot asks you to authorize with a GitHub account when you first run RBot.",
+                    "This is so that RBot can update the bots from our GitHub repository.",
+                    "Without this you are bound to a 50 requests p/h limiter that is shared with everyone else who didn't authortize.",
+                    "Considering that you already send 3 requests on startup, you can see how this can be reached quickly.",
+                    "Therefore it's highly recommended to do the authorization, as you will then have your own limiter instead of a shared one.",
+                    "",
+                    "",
+            "=== Plugins ===",
+                "== CoreBots Options ==",
+                    "Now, this plugin is where you customize a lot of the things that happen for all the bots. It's highly recommended to open this one up and set some options.",
+                    "I highly recommend setting all your preffered options in the Generic tab, as this houses the important ones.",
+                    "You can ofcourse also check our the other options and set them to what you want too.",
+                    "It's recommended to stay in private rooms, as public rooms have a higher chance of getting you banned.",
+                    "It should also be noted that RBot version 4.1.3, comes with a outdated version of the \"CoreBots Options\" plugin.",
+                    "You can find the latest here https://github.com/LordExelot/RBot-CBO/releases/tag/v1",
+                        "Within the discord this plugin is often reffered to as CBO.",
+                    "",
+                "== Wait Timeout Override ==",
+                    "This is a plugin that allows you to override some default data for RBot, it's used to modify how long RBot waits before it considers a task to be failed.",
+                    "You don't have to touch these values in most cases, it's mostly used for debugging.",
+                    "",
+                    "",
+                "=== The End ===",
+                    "Thanks for reading, I hope it wasn't too much of a bore!",
+                    "",
+                "== Contact ==",
+                    "If you wish to contact us, you can find us on our discord server: https://discord.io/AQWBots/",
+                    "",
+                "== Credits ==",
+                    "Active:",
+                        "· BrenoHenrike\t- He took over RBot development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
+                        "· Lord Exelot\t- Lead Developer/Head of the RBot Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
+                        "· Tato\t\t\t- Major contributor to the Master Bots and a lot of bug fixes.",
+                        "· Bogajl\t\t- Major contributor to the Master Bots.",
+                        "· Hao\t\t\t- Considerable contributor to the Master Bots.",
+                        "· [S] Elune\t\t- Contributor to the Master Bots, bug fixes and primary bug hunter.",
+                        "· SunnyD\t\t- Contributor to the Master Bots.",
+                        "· Novar\t\t\t- Minor Contributor to the Master Bots.",
+                        "· FishingKing\t- Minor Contributor the the Master Bots",
+                    "Inactive:",
+                        "· Rodit\t\t\t- Creator of RBot.",
+                        "· Purple\t\t- Contributor to RBot.",
+                        "· Vladimir\t\t- Major contributor to the Master Bots and bug fixes.",
+                        "· usuckshit\t\t- Considerable contributor to the Master Bots.",
+                        "· Hadmos\t\t- Considerable contributor to the Master Bots.",
+                        "· Eso\t\t\t- Minor bug fixes to the Master Bots.",
+                        "· .Richie\t\t- Minor contributor to the Master Bots.",
+                        "· ToxlcChain\t- Minor contributor to the Master Bots.",
+                        "· Ferdy\t\t\t- Minor contributor to the Master Bots.",
+                    "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
+                    "And thanks to everyone who has put time and effort RBot and the Master Bots! ~ Exelot",
+        };
+        File.WriteAllLines(readMePath, ReadMe);
+
+        // Opening ReadMe.txt
+        if (result == DialogResult.OK)
+            Process.Start("explorer", readMePath);
+    }
+
+    private void CollectData(bool onStartup)
+    {
+        string UserID = "null";
+        bool genericData = false;
+        bool scriptNameData = false;
+        bool stopTimeData = false;
+        FileSetup();
+
+        if (!genericData || UserID == "null")
+        {
+            if (scriptNameData || stopTimeData)
+                Logger("Invalid Consent form detect, please delete the consent file");
+            return;
+        }
+
+        // If on stop and it's not allowed, return
+        if (!onStartup && !stopTimeData)
+            return;
+
+        // Init HttpClient to send the request
+        HttpClient client = new HttpClient();
+
+        // Build the Field Ids and Answers dictionary object
+        var bodyValues = new Dictionary<string, string>
+        {
+            {"entry.1700030786", UserID},
+            {"entry.942504290", onStartup ? "Start" : "Stop"},
+        };
+
+        // If allowed, send scriptNameData
+        if (scriptNameData)
+        {
+            string botPath = ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "");
+            bodyValues.Add("entry.1597948191", botPath);
+        }
+
+        // If allowed, send scriptInstanceData
+        if (stopTimeData)
+        {
+            if (ScriptInstanceID == 0)
+                ScriptInstanceID = Bot.Runtime.Random.Next(1, 1000001);
+
+            bodyValues.Add("entry.1361306892", ScriptInstanceID.ToString());
+        }
+
+        // Encode object to application/x-www-form-urlencoded MIME type
+        var content = new FormUrlEncodedContent(bodyValues);
+
+        // Post the request
+        // https://docs.google.com/forms/u/0/d/e/1FAIpQLScnPg16-vSFJHrTbS2-Ryt8LEcbVFKLH4i7n4U-7BGPRwDv0w/formResponse
+        client.PostAsync(
+            "https://docs.google.com/forms/d/e/" +
+            "1FAIpQLScnPg16-vSFJHrTbS2-Ryt8LEcbVFKLH4i7n4U-7BGPRwDv0w" +
+            "/formResponse",
+            content);
+
+        void FileSetup()
+        {
+            string path = AppPath + @"/DataCollectionSettings.txt";
+            if (!File.Exists(path))
+            {
+                DialogResult consent = MessageBox.Show(
+                    "We wish to gather data, in an effort to keep us motivated, knowing people use what we make.\n\n" +
+                    "We would gather the following things:\n" +
+                    "· An anon userID we generate which will allows us to know our active user count.\n" +
+                    "· Start time of scripts.\n" +
+                    "· What script is being run.\n" +
+                    "· Stop time of scripts, this would be paired with the point below\n" +
+                    "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
+                    "Consent for this is requiered, and puts my mind at ease. " +
+                    "So you will be able to select what data is being send and what is not.\n\n" +
+                    "Select \"Yes\" to give full consent.\n" +
+                    "Select \"No\" to give partial consent, you will then get a couple more pop-up boxes where you can select your preferences.\n" +
+                    "Select \"Cancel\" to not consent, we will then gather no data whatsoever.",
+
+                    "Data Collection",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information
+                );
+
+                if (consent == DialogResult.Yes)
+                {
+                    genericData = true;
+                    scriptNameData = true;
+                    stopTimeData = true;
+                }
+                else if (consent == DialogResult.Cancel)
+                {
+                    genericData = false;
+                    scriptNameData = false;
+                    stopTimeData = false;
+                }
+                else if (consent == DialogResult.No)
+                {
+                    DialogResult nonOptional = MessageBox.Show(
+                        "The following two points are not optional:\n" +
+                        "· An anon userID we generate which will allows us to know our active user count.\n" +
+                        "· Start time of scripts.\n\n" +
+                        "If you accept this, select \"Yes\".\n" +
+                        "If you dont accept this, select \"No\", and we will not gather data whatsoever.",
+
+                        "Non-Optional Data",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                    );
+
+                    if (nonOptional == DialogResult.No)
+                    {
+                        genericData = false;
+                        scriptNameData = false;
+                        stopTimeData = false;
+                    }
+                    else if (nonOptional == DialogResult.Yes)
+                    {
+                        DialogResult scriptName = MessageBox.Show(
+                            "Do you give consent to send us the following data-point:\n" +
+                            "· What script is being run.\n\n" +
+                            "This allows us to know what scripts are populair",
+
+                            "Script Name",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                        );
+
+                        DialogResult stopTime = MessageBox.Show(
+                            "Do you give consent to send us the following data-points:\n" +
+                            "· Stop time of scripts, this would be paired with the point below" +
+                            "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
+                            "Allowing us to have this data means we'll know how long a script has been running.",
+
+                            "Stop Time & Script Instance ID",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                        );
+
+                        genericData = true;
+                        scriptNameData = scriptName == DialogResult.Yes;
+                        stopTimeData = stopTime == DialogResult.Yes;
+                    }
+                }
+
+                if (genericData)
+                {
+                    UserID = Bot.Runtime.Random.Next(100000001, Int32.MaxValue).ToString();
+                }
+
+                string[] fileContent =
+                {
+                    $"UserID: {UserID}",
+                    $"genericDataConsent: {genericData}",
+                    $"scriptNameConsent: {scriptNameData}",
+                    $"stopTimeConsent: {stopTimeData}"
+                };
+
+                File.WriteAllLines(path, fileContent);
+
+                MessageBox.Show(
+                    "If you wish to change these settings, you can easily modify them in the following file:\n" +
+                    $"[{path}]",
+
+                    "File Location",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                string[] savedSettings = File.ReadAllLines(path);
+
+                UserID = ConsentString("UserID");
+                genericData = ConsentBool("genericDataConsent");
+                scriptNameData = ConsentBool("scriptNameConsent");
+                stopTimeData = ConsentBool("stopTimeConsent");
+
+                string ConsentString(string input)
+                    => (savedSettings.FirstOrDefault(x => x.StartsWith(input)) ?? $"{input}: ").Split(": ").Last();
+                bool ConsentBool(string input)
+                    => ConsentString(input) == "True";
+            }
+        }
+    }
+    private int ScriptInstanceID = 0;
 
     private void ReadCBO()
     {
@@ -1966,7 +2145,6 @@ public class CoreBots
 
     public List<string> CBOList = new();
     public bool CBO_Active => File.Exists(AppPath + $@"\plugins\options\CBO_Storage({ScriptInterface.Instance.Player.Username}).txt");
-
 
     #endregion
 }
