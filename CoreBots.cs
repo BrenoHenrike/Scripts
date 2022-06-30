@@ -1925,7 +1925,7 @@ public class CoreBots
         // If allowed, send scriptNameData
         if (scriptNameData)
         {
-            string botPath = ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "");
+            string botPath = ScriptManager.LoadedScript.Split("\\Scripts\\").Last();
             bodyValues.Add("entry.1597948191", botPath);
         }
 
