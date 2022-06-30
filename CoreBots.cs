@@ -1902,11 +1902,7 @@ public class CoreBots
         FileSetup();
 
         if (!genericData || UserID == "null")
-        {
-            if (scriptNameData || stopTimeData)
-                Logger("Invalid Consent form detect, please delete the consent file");
             return;
-        }
 
         // If on stop and it's not allowed, return
         if (!onStartup && !stopTimeData)
