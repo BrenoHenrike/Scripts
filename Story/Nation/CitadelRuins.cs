@@ -58,7 +58,12 @@ public class CitadelRuins
         Story.KillQuest(6674, "noobshire", "Kittarian Mouse Eater");
 
         // She Needs a Hero
-        Story.KillQuest(6675, "doomvault", "Princess Angler");
+        if (!Story.QuestProgression(6675))
+        {
+            Core.EnsureAccept(6675);
+            Core.HuntMonster("doomvault", "Princess Angler", "Your Princess is Not in This Castle");
+            Core.EnsureComplete(6675);
+        }
 
         // Sun and Fun
         Story.KillQuest(6676, "beachparty", "Sun Flare");
