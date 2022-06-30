@@ -1933,7 +1933,7 @@ public class CoreBots
         if (stopTimeData)
         {
             if (ScriptInstanceID == 0)
-                ScriptInstanceID = Bot.Runtime.Random.Next(1, 1000001);
+                ScriptInstanceID = Bot.Runtime.Random.Next(1, Int32.MaxValue);
 
             bodyValues.Add("entry.1361306892", ScriptInstanceID.ToString());
         }
