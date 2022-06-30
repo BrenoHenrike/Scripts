@@ -1256,16 +1256,42 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
-
         Core.RegisterQuests(5597, 5598, 5599, 5600);
+        Bot.Events.CellChanged += CutSceneFixer;
+        
         while (!Bot.ShouldExit() && FactionRank("Glacera") < rank)
         {
             Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10, log: false);
-            Bot.Wait.ForQuestComplete(5599);
+            Bot.Wait.ForQuestComplete(5597);
+            Bot.Events.CellChanged -= CutSceneFixer;
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
+
+    private void CutSceneFixer(ScriptInterface bot, string map, string cell, string pad)
+    {
+        if (map == "icewindwar" && cell != "r2")
+        {
+            while (!Bot.ShouldExit() && Bot.Player.Cell != "r2")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("r2", "Left");
+                Bot.Sleep(2500);
+            }
+        }
+        //if more maps get stuck, just fillin the bit below.
+        if (map == "Map" && cell != "Cell")
+        {
+            while (!Bot.ShouldExit() && Bot.Player.Cell != "InsertCell")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("Cell", "pad");
+                Bot.Sleep(2500);
+            }
+        }
+    }
+
 
     public void GoodREP(int rank = 10)
     {
