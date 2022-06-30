@@ -16,8 +16,6 @@ public class PotionBuyer
     {
         Core.SetOptions();
 
-        Bot.Options.LagKiller = false;
-
         INeedYourStrongestPotions();
 
         Core.SetOptions(false);
