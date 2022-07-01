@@ -1922,6 +1922,10 @@ public class CoreBots
         if (scriptNameData)
         {
             string botPath = ScriptManager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1);
+
+            if (botPath.StartsWith("Nulgath\\"))
+                botPath.Replace("Nulgath\\", "Nation\\");
+
             string[] allowedPathStarters =
             {
                 "ArmyOnly",
@@ -1934,7 +1938,6 @@ public class CoreBots
                 "Good",
                 "Hollowborn",
                 "Nation",
-                "Nulgath",
                 "Other",
                 "Prototypes",
                 "Seasonal",
