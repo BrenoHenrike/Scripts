@@ -1560,11 +1560,30 @@ public class CoreBots
         if (map != null)
             Join(map);
         Bot.Sleep(ActionDelay);
+        List<ItemBase> tempItems = Bot.Inventory.TempItems;
+        ItemBase? newItem = null;
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
             Bot.Sleep(1000);
+            if (i == 1)
+                newItem = Bot.Inventory.TempItems.Except(tempItems).First();
         }
+        if (newItem != null)
+        {
+            int t = 0;
+            while (Bot.Inventory.GetTempQuantity(newItem.Name) < quant ||
+                (Bot.Inventory.GetTempQuantity(newItem.Name) < Bot.Inventory.GetTempItemByName(newItem.Name).MaxStack))
+            {
+                Bot.Map.GetMapItem(itemID);
+                Bot.Sleep(1000);
+                t++;
+
+                if (t > (quant + 10))
+                    break;
+            }
+        }
+
         Logger($"Map item {itemID}({quant}) acquired");
     }
 
