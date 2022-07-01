@@ -202,7 +202,7 @@ public class CoreStory
         {
             int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
             string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
-                             $"Expected value = [{QuestData.Value}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
+                             $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
                               "Please fill in the RBot Scripts Form to report this.|" +
                               "Do you wish to be brought to the form?";
             Core.Logger(message.Replace("|", " "));
@@ -215,7 +215,7 @@ public class CoreStory
                                             $"entry.290078150={path}&" +
                                              "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
                                             $"entry.1918245848={QuestData.ID}&" +
-                                            $"entry.1809007115={QuestData.Value}/{QuestData.Slot}&" +
+                                            $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
                                             $"entry.493943632={currentValue}/{QuestData.Slot}&" +
                                             $"entry.148016785={QuestData.Name}\"");
             }
