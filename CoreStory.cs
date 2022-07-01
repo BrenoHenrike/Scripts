@@ -338,12 +338,12 @@ public class CoreStory
 
         if (QuestIDs.Count > 150)
         {
-            Core.Logger($"Found {QuestIDs.Count} Quests, to many for PreLoad to be beneficial, no quests will be loaded");
+            Core.Logger($"Found {QuestIDs.Count} Quests, to many for PreLoad to be beneficial. No quests will be loaded.");
             PreLoaded = true;
             return;
         }
 
-        Core.Logger($"Loading {QuestIDs.Count} Quests");
+        Core.Logger($"Loading {QuestIDs.Count} Quests.");
         if (QuestIDs.Count > 30)
             Core.Logger($"Estimated Loading Time: {Convert.ToInt32(QuestIDs.Count / 30 * 1.6)}s");
 
