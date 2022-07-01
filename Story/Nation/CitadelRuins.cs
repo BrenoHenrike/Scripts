@@ -61,7 +61,7 @@ public class CitadelRuins
         if (!Story.QuestProgression(6675))
         {
             Core.EnsureAccept(6675);
-            Core.HuntMonster("doomvault", "Princess Angler", "Your Princess is Not in This Castle");
+            Core.KillMonster("doomvault", "r24", "Left", 1216, "Your Princess is Not in This Castle");
             Core.EnsureComplete(6675);
         }
 
