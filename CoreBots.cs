@@ -1922,6 +1922,29 @@ public class CoreBots
         if (scriptNameData)
         {
             string botPath = ScriptManager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1);
+            string[] allowedPathStarters =
+            {
+                "ArmyOnly",
+                "Chaos",
+                "Dailies",
+                "Darkon",
+                "Enhancement",
+                "Evil",
+                "Farm",
+                "Good",
+                "Hollowborn",
+                "Nation",
+                "Nulgath",
+                "Other",
+                "Prototypes",
+                "Seasonal",
+                "Story",
+                "WIP"
+            };
+
+            if (!allowedPathStarters.Any(x => botPath.StartsWith(x)))
+                botPath = "CustomPath\\" + botPath.Split("\\").Last();
+
             bodyValues.Add("entry.1597948191", botPath);
         }
 
