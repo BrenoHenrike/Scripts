@@ -42,7 +42,7 @@ public class CoreBots
     // [Can Change] What private room number the bot should use, if > 99999 it will pick a random room
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
-    public bool PublicDifficult { get; set; } = true;
+    public bool PublicDifficult { get; set; } = false;
     // [Can Change] Where to go once the bot is stopped
     public StopLocations StopLocation { get; set; } = StopLocations.Whitemap;
     // [Can Change] If StopLocations.Custom is selected, where to go
