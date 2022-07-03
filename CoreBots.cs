@@ -105,13 +105,17 @@ public class CoreBots
 
             if (!Bot.Player.LoggedIn)
             {
-                Logger("Auto Login triggered");
-                Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
-                Bot.Sleep(1000);
-                Bot.Player.Connect(ServerList.Servers[0]);
-                while (!Bot.ShouldExit() && !Bot.Player.LoggedIn)
-                    Bot.Sleep(500);
-                Bot.Sleep(5000);
+                if (ServerList.Servers.Count() > 0)
+                {
+                    Logger("Auto Login triggered");
+                    Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+                    Bot.Sleep(1000);
+                    Bot.Player.Connect(ServerList.Servers[0]);
+                    while (!Bot.ShouldExit() && !Bot.Player.LoggedIn)
+                        Bot.Sleep(500);
+                    Bot.Sleep(5000);
+                }
+                else Logger("Please log-in before starting the bot.", MessageBox: true, stopBot: true);
             }
 
             ReadMe();
