@@ -1125,7 +1125,7 @@ public class CoreBots
         }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
-            Bot.Player.Attack(name);
+            Bot.Player.Attack(Bot.Monsters.CurrentAvailableMonsters().First(m => m.Name == name));
             Bot.Sleep(ActionDelay);
             if (rejectElse)
                 Bot.Player.RejectExcept(item);
