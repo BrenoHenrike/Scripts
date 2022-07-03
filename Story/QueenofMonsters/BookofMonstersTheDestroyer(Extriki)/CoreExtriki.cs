@@ -125,7 +125,7 @@ public class CoreExtriki
         }
 
         //What's Next?
-        Story.MapItemQuest(5835, "charredpath", 5270, AutoCompleteQuest: false);
+        Story.MapItemQuest(5835, "charredpath", 5270);
 
         //Make a Bed
         Story.KillQuest(5836, "charredpath", "Pustulisk");
@@ -144,7 +144,7 @@ public class CoreExtriki
         Story.PreLoad();
 
         //Talk to Ravinos
-        Story.MapItemQuest(5837, "underglade", 5271, AutoCompleteQuest: false);
+        Story.MapItemQuest(5837, "underglade", 5271);
 
         //Into the Underglade
         Story.KillQuest(5838, "underglade", new[] { "Forest Spirit", "Tree Nymph" });
