@@ -115,7 +115,7 @@ public class CoreBots
                         Bot.Sleep(500);
                     Bot.Sleep(5000);
                 }
-                else Logger("Please log-in before starting the bot.", MessageBox: true, stopBot: true);
+                else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
             }
 
             ReadMe();
