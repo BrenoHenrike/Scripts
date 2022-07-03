@@ -1125,8 +1125,9 @@ public class CoreBots
         }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
-            if (Bot.Monsters.CurrentAvailableMonsters().Count(m => m.Alive) > 0 && name.ToLower().Trim() == name.ToLower().Trim() || name.Trim() == "*")
-                Bot.Player.Attack(Bot.Monsters.CurrentAvailableMonsters().First(m => m.Name.ToLower().Trim() == name.ToLower().Trim() || name.Trim() == "*" && m.Alive ));
+            //if (Bot.Monsters.CurrentAvailableMonsters().Count(m => m.Alive) > 0 && name.ToLower().Trim() == name.ToLower().Trim() || name.Trim() == "*")
+            //    Bot.Player.Attack(Bot.Monsters.CurrentAvailableMonsters().First(m => m.Name.ToLower().Trim() == name.ToLower().Trim() || name.Trim() == "*" && m.Alive ));
+            Bot.Player.Attack(name);
             Bot.Sleep(ActionDelay);
             if (rejectElse)
                 Bot.Player.RejectExcept(item);
@@ -1957,7 +1958,9 @@ public class CoreBots
                 "Farm",
                 "Good",
                 "Hollowborn",
+                "Legion",
                 "Nation",
+                "Nulgath",
                 "Other",
                 "Prototypes",
                 "Seasonal",
