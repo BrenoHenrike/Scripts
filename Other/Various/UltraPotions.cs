@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreAdvanced.cs
 
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ public class PotionBuyer
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new();
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -40,6 +43,7 @@ public class PotionBuyer
             Bot.Shops.Load(2036);
             shopItems = Bot.Shops.ShopItems;
         }
+
         Core.Logger($"Potion Seller: My potions are too strong for you, traveller.");
         Bot.Sleep(2500);
         Core.Logger($"{Bot.Player.Username}: Potion Seller! I tell you, I’m going into battle and I want only your strongest potions.");
@@ -65,13 +69,7 @@ public class PotionBuyer
             int voucherQuant = shopItems.First(p => p.Name.ToLower() == potion.ToLower()).Requirements[0].Quantity * purchaseQuant;
             voucherQuant = voucherQuant == 0 ? 1 : voucherQuant;
 
-            if (!Core.CheckInventory("Gold Voucher 500k", voucherQuant))
-            {
-                Farm.Gold(500000 * voucherQuant);
-                Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", voucherQuant);
-            }
-
-            Core.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
+            Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
         }
     }
 }

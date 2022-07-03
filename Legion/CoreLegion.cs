@@ -233,10 +233,12 @@ public class CoreLegion
         LTThanatosParagon(quant);
         LTDreadnaughtParagon(quant);
         LTFestiveParagonDracolichRider();
+        LTHolidayParagon(quant);
         LTUW3017(quant);
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
     }
+    
     public void LTUW3017(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("UW3017 Pet"))
@@ -253,8 +255,31 @@ public class CoreLegion
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("underworld", "Bloodfiend", "Foreign Weapon", 20);
-            Core.HuntMonster("underworld", "Bloodfiend", "Foreign Equipment ", 20);
-            Core.HuntMonster("underworld", "Bloodfiend", "Unknown Substance ", 20);
+            Core.HuntMonster("underworld", "Bloodfiend", "Foreign Equipment", 20);
+            Core.HuntMonster("underworld", "Bloodfiend", "Unknown Substance", 20);
+        }
+        Core.CancelRegisteredQuests();
+    }
+    
+    public void LTHolidayParagon(int quant)
+    {
+        
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Holiday Paragon Pet"))
+            return;
+
+        JoinLegion();
+
+        Core.AddDrop("Legion Token");
+        Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
+
+        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.RegisterQuests(3256);
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        {
+            Core.HuntMonster("prison", "King Alteon's Knight", "Spirit of Loyalty", 6);
+            Core.HuntMonster("battlewedding", "Silver Knight", "Spirit of Love", 6);
+            Core.HuntMonster("lycan", "Lycan Knight", "Spirit of Good Will", 6);
         }
         Core.CancelRegisteredQuests();
     }
