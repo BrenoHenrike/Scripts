@@ -336,9 +336,9 @@ public class CoreStory
         if (stopWatch.IsRunning)
             stopWatch.Stop();
 
-        if (QuestIDs.Count > 150)
+        if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.QuestTree.Count()))
         {
-            Core.Logger($"Found {QuestIDs.Count} Quests, to many for PreLoad to be beneficial. No quests will be loaded.");
+            Core.Logger($"Found {QuestIDs.Count} Quests, this exceeds the max amount of loaded quests. No quests will be loaded.");
             PreLoaded = true;
             return;
         }

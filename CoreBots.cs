@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
+using System.Dynamic;
 using Newtonsoft.Json;
 using RBot;
 using RBot.Flash;
@@ -30,6 +31,8 @@ public class CoreBots
     public int HuntDelay { get; set; } = 1000;
     // [Can Change] How many tries to accept/complete the quest will be sent
     public int AcceptandCompleteTries { get; set; } = 20;
+    // [Can Change] How many quests the bot should be able to have loaded at once
+    public int LoadedQuestLimit { get; set; } = 150;
     // [Can Change] Whether the bots should also log in AQW's chat
     public bool LoggerInChat { get; set; } = true;
     // [Can Change] When enabled, no message boxes will be shown unless absolutely necessary
@@ -40,6 +43,10 @@ public class CoreBots
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
     public bool PublicDifficult { get; set; } = true;
+    // [Can Change] Where to go once the bot is stopped
+    public StopLocations StopLocation { get; set; } = StopLocations.Whitemap;
+    // [Can Change] If StopLocations.Custom is selected, where to go
+    public string CustomStopLocation { get; set; } = "whitemap";
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
@@ -81,7 +88,7 @@ public class CoreBots
 
     #endregion
 
-    #region Startup
+    #region Start/Stop
 
     /// <summary>
     /// Set common bot options to desired value
@@ -161,6 +168,14 @@ public class CoreBots
                 }
             }, "AFK Handler");
 
+            Bot.RegisterHandler(3000, b =>
+            {
+                if (Bot.Quests.QuestTree.Count() > LoadedQuestLimit)
+                {
+                    Bot.SetGameObject("world.questTree", new ExpandoObject());
+                }
+            }, "Quest-Limit Handler");
+
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
             if (BankMiscAC)
@@ -201,6 +216,61 @@ public class CoreBots
 
             Logger("Bot Configured");
         }
+    }
+
+    private bool scriptFinished = true;
+    /// <summary>
+    /// Stops the bot and moves you back to /Battleon
+    /// </summary>
+    public bool StopBot()
+    {
+        GC.KeepAlive(Instance);
+        CancelRegisteredQuests();
+        SavedState(false);
+        Bot.Handlers.RemoveAll(x => true);
+
+        if (Bot.Player.LoggedIn)
+        {
+            JumpWait();
+            Bot.Player.ExitCombat();
+            Bot.Sleep(ActionDelay);
+
+            switch (StopLocation.ToString().ToLower())
+            {
+                case "off":
+                    break;
+
+                case "home":
+                    if (Bot.Inventory.HouseItems.Any(x => x.Equipped && x.Category == ItemCategory.House))
+                        Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
+                    else Join("Whitemap");
+                    break;
+
+                case "custom":
+                    Join(CustomStopLocation);
+                    break;
+
+                default:
+                    Join(StopLocation.ToString());
+                    break;
+            }
+
+        }
+        if (AntiLag)
+        {
+            Bot.SetGameObject("stage.frameRate", 60);
+            if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                Bot.CallGameFunction("world.toggleMonsters");
+        }
+
+        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
+        Bot.Options.CustomGuild = GuildRestore;
+
+        if (Bot.Player.LoggedIn)
+            Logger("Bot Stopped Successfully");
+        else Logger("Auto Relogin appears to have failed");
+
+        return scriptFinished;
     }
 
     private bool StopBotEvent(ScriptInterface bot)
@@ -1422,46 +1492,6 @@ public class CoreBots
             Bot.SendPacket($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    private bool scriptFinished = true;
-    /// <summary>
-    /// Stops the bot and moves you back to /Battleon
-    /// </summary>
-    public bool StopBot()
-    {
-        GC.KeepAlive(Instance);
-        CancelRegisteredQuests();
-        SavedState(false);
-        Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
-        if (Bot.Player.LoggedIn)
-        {
-            JumpWait();
-            Bot.Player.ExitCombat();
-            Bot.Sleep(ActionDelay);
-
-            if (Bot.Inventory.HouseItems.Any(x => x.Equipped && x.Category == ItemCategory.House))
-            {
-                Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
-                Logger($"(っ◔◡◔)っ ♥ Welcome Home ♥");
-            }
-            else
-            {
-                Join("Whitemap");
-                Logger($"Sorry but your homeless (ಥ ̯ ಥ)");
-            }
-        }
-        if (AntiLag)
-        {
-            Bot.SetGameObject("stage.frameRate", 60);
-            if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-                Bot.CallGameFunction("world.toggleMonsters");
-        }
-        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
-        Bot.Options.CustomGuild = GuildRestore;
-        if (Bot.Player.LoggedIn)
-            Logger("Bot Stopped Successfully");
-        return scriptFinished;
-    }
-
     public void SavedState(bool on = true)
     {
         string[] SavedStateRNG = _SavedStateRNG();
@@ -2210,4 +2240,14 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum StopLocations
+{
+    Off,
+    Home,
+    Battleon,
+    Whitemap,
+    Yulgar,
+    Custom
 }
