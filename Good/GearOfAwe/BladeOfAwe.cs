@@ -22,9 +22,7 @@ public class BladeOfAwe
     {
         if (Core.CheckInventory("Blade of Awe"))
             return;
-        else Core.BuyItem("museum", 631, "Blade of Awe");
-        if (Core.CheckInventory("Blade of Awe"))
-            return;
-        Farm.BladeofAweREP(6, true);
+            
+        Farm.BladeofAweREP(6, true);        
     }
 }
