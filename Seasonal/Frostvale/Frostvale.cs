@@ -20,12 +20,19 @@ public class Frostvale
 
     public void DoAll()
     {
-        IceCave();
-        SnowGlobe();
-        Alpine();
-        SnowyVale();
-        IceRise();
-        ColdWindValley();
+        int month = DateTime.Now.Month;
+        if (month == 12) //December
+        {
+            IceCave();
+            SnowGlobe();
+            Alpine();
+            SnowyVale();
+            IceRise();
+            ColdWindValley();
+            //BrightLights();
+        }
+        else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.", stopBot: true);
+        //https://www.aq.com/gamedesignnotes/aqw-july16-frostvaljuly-8412 <--
     }
 
     public void IceCave()
@@ -339,6 +346,15 @@ public class Frostvale
         Story.KillQuest(6132, "coldwindvalley", "Snow Golem");
         Story.MapItemQuest(6132, "coldwindvalley", 5557, 8);
     }
+
+
+    // public void BrightLights()
+    // {
+    //     if (Core.isCompletedBefore(QuestID))
+    //         return;
+
+    //     Story.PreLoad();
+    // }
 
     // --------------------------------------------------------------------------------------------------------------------------
 
