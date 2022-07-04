@@ -238,7 +238,7 @@ public class CoreLegion
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
     }
-    
+
     public void LTUW3017(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("UW3017 Pet"))
@@ -260,10 +260,10 @@ public class CoreLegion
         }
         Core.CancelRegisteredQuests();
     }
-    
+
     public void LTHolidayParagon(int quant)
     {
-        
+
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Holiday Paragon Pet"))
             return;
 
@@ -588,8 +588,8 @@ public class CoreLegion
             return;
 
         bool canSoloBoss = true;
-        if (Core.CBO_Active)
-            canSoloBoss = !Core.CBOBool("PVP_SoloPvPBoss");
+        if (Core.CBOBool("PVP_SoloPvPBoss", out bool _canSoloBoss))
+            canSoloBoss = !_canSoloBoss;
 
         Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
         Core.EquipClass(ClassType.Solo);

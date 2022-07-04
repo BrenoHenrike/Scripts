@@ -182,8 +182,8 @@ public class CoreStory
 
         if (!CBO_Checked)
         {
-            if (Core.CBO_Active)
-                TestBot = Core.CBOBool("BCO_Story_TestBot");
+            if (Core.CBOBool("BCO_Story_TestBot", out bool _TestBot))
+                TestBot = _TestBot;
             CBO_Checked = true;
         }
 

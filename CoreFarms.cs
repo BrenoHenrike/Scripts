@@ -331,8 +331,8 @@ public class CoreFarms
         if (Core.CheckInventory(item, quant))
             return;
 
-        if (Core.CBO_Active)
-            canSoloBoss = !Core.CBOBool("PVP_SoloPvPBoss");
+        if (Core.CBOBool("PVP_SoloPvPBoss", out bool _canSoloBoss))
+            canSoloBoss = !_canSoloBoss;
 
         Core.AddDrop(item);
 
@@ -1258,7 +1258,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         Core.RegisterQuests(5597, 5598, 5599, 5600);
         Bot.Events.CellChanged += CutSceneFixer;
-        
+
         while (!Bot.ShouldExit() && FactionRank("Glacera") < rank)
         {
             Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10, log: false);

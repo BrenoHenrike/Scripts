@@ -66,8 +66,8 @@ public class CoreHollowbornDoomKnight
 
     public void GetAll(bool prefarm)
     {
-        if (Core.CBO_Active)
-            prefarm = Core.CBOBool("HBDK_PreFarm");
+        if (Core.CBOBool("HBDK_PreFarm", out bool _HBDK_PreFarm))
+            prefarm = _HBDK_PreFarm;
 
         if (prefarm)
         {

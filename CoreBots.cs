@@ -2153,47 +2153,95 @@ public class CoreBots
     private void ReadCBO()
     {
         //Generic
-        PrivateRooms = CBOBool("PrivateRooms");
-        PrivateRoomNumber = CBOInt("PrivateRoomNr");
-        PublicDifficult = CBOBool("PublicDifficult");
-        AntiLag = CBOBool("AntiLag");
-        BankMiscAC = CBOBool("BankMiscAC");
-        LoggerInChat = CBOBool("LoggerInChat");
+        if (CBOBool("PrivateRooms", out bool _PrivateRooms))
+            PrivateRooms = _PrivateRooms;
+        if (CBOInt("PrivateRoomNr", out int _PrivateRoomNumber))
+            PrivateRoomNumber = _PrivateRoomNumber;
+        if (CBOBool("PublicDifficult", out bool _PublicDifficult))
+            PublicDifficult = _PublicDifficult;
+        if (CBOBool("BankMiscAC", out bool _BankMiscAC))
+            BankMiscAC = _BankMiscAC;
+        if (CBOBool("LoggerInChat", out bool _LoggerInChat))
+            LoggerInChat = _LoggerInChat;
 
-        SoloClass = String.IsNullOrEmpty(CBOString("SoloClassSelect")) ? "Generic" : CBOString("SoloClassSelect");
-        SoloGearOn = CBOBool("SoloEquipCheck");
-        SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("SoloModeSelect")) ? "Base" : CBOString("SoloModeSelect"));
+        if (CBOString("StopLocationSelect", out string _StopLocationSelect))
+        {
+            if (Enum.TryParse(typeof(StopLocations), _StopLocationSelect, out object? _StopLocation))
+            {
+                if (_StopLocation != null)
+                    StopLocation = (StopLocations)_StopLocation;
+            }
+            else
+            {
+                StopLocation = StopLocations.Custom;
+                CustomStopLocation = _StopLocationSelect;
+            }
 
-        FarmClass = String.IsNullOrEmpty(CBOString("FarmClassSelect")) ? "Generic" : CBOString("FarmClassSelect");
-        FarmGearOn = CBOBool("FarmEquipCheck");
-        FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("FarmModeSelect")) ? "Base" : CBOString("FarmModeSelect"));
+        }
+
+        if (CBOString("SoloClassSelect", out string _SoloClassSelect))
+            SoloClass = String.IsNullOrEmpty(_SoloClassSelect) ? "Generic" : _SoloClassSelect;
+        if (CBOBool("SoloEquipCheck", out bool _SoloGearOn))
+            SoloGearOn = _SoloGearOn;
+        if (CBOString("SoloModeSelect", out string _SoloModeSelect))
+            SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(_SoloModeSelect) ? "Base" : _SoloModeSelect);
+
+        if (CBOString("FarmClassSelect", out string _FarmClassSelect))
+            FarmClass = String.IsNullOrEmpty(_FarmClassSelect) ? "Generic" : _FarmClassSelect;
+        if (CBOBool("FarmEquipCheck", out bool _FarmGearOn))
+            FarmGearOn = _FarmGearOn;
+        if (CBOString("FarmModeSelect", out string _FarmModeSelect))
+            FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(_FarmModeSelect) ? "Base" : _FarmModeSelect);
 
         //Advanced
-        ForceOffMessageboxes = CBOBool("MessageBoxCheck");
-        ShouldRest = CBOBool("RestCheck");
+        if (CBOBool("MessageBoxCheck", out bool _ForceOffMessageboxes))
+            ForceOffMessageboxes = _ForceOffMessageboxes;
+        if (CBOBool("RestCheck", out bool _ShouldRest))
+            ShouldRest = _ShouldRest;
+        if (CBOBool("AntiLag", out bool _AntiLag))
+            AntiLag = _AntiLag;
 
-        ActionDelay = CBOInt("ActionDelayNr");
-        ExitCombatDelay = CBOInt("ExitCombatNr");
-        HuntDelay = CBOInt("HuntDelayNr");
-        AcceptandCompleteTries = CBOInt("QuestTriesNr");
+        if (CBOInt("ActionDelay", out int _ActionDelay))
+            ActionDelay = _ActionDelay;
+        if (CBOInt("ExitCombatNr", out int _ExitCombatDelay))
+            ExitCombatDelay = _ExitCombatDelay;
+        if (CBOInt("HuntDelayNr", out int _HuntDelay))
+            HuntDelay = _HuntDelay;
+        if (CBOInt("QuestTriesNr", out int _AcceptandCompleteTries))
+            AcceptandCompleteTries = _AcceptandCompleteTries;
+        if (CBOInt("QuestMaxNr", out int _LoadedQuestLimit))
+            LoadedQuestLimit = _LoadedQuestLimit;
 
         //Class Equipment
-        SoloGear = new[] {
-            CBOString("Helm1Select"),
-            CBOString("Armor1Select"),
-            CBOString("Cape1Select"),
-            CBOString("Weapon1Select"),
-            CBOString("Pet1Select"),
-            CBOString("GroundItem1Select")
-        };
-        FarmGear = new[] {
-            CBOString("Helm2Select"),
-            CBOString("Armor2Select"),
-            CBOString("Cape2Select"),
-            CBOString("Weapon2Select"),
-            CBOString("Pet2Select"),
-            CBOString("GroundItem2Select")
-        };
+        List<string> _SoloGear = new List<string>();
+        if (CBOString("Helm1Select", out string _Helm1))
+            _SoloGear.Add(_Helm1);
+        if (CBOString("Armor1Select", out string _Armor1))
+            _SoloGear.Add(_Armor1);
+        if (CBOString("Cape1Select", out string _Cape1))
+            _SoloGear.Add(_Cape1);
+        if (CBOString("Weapon1Select", out string _Weapon1))
+            _SoloGear.Add(_Weapon1);
+        if (CBOString("Pet1Select", out string _Pet1))
+            _SoloGear.Add(_Pet1);
+        if (CBOString("GroundItem1Select", out string _GroundItem1))
+            _SoloGear.Add(_GroundItem1);
+        SoloGear = _SoloGear.ToArray();
+
+        List<string> _FarmGear = new List<string>();
+        if (CBOString("Helm2Select", out string _Helm2))
+            _FarmGear.Add(_Helm2);
+        if (CBOString("Armor2Select", out string _Armor2))
+            _FarmGear.Add(_Armor2);
+        if (CBOString("Cape2Select", out string _Cape2))
+            _FarmGear.Add(_Cape2);
+        if (CBOString("Weapon2Select", out string _Weapon2))
+            _FarmGear.Add(_Weapon2);
+        if (CBOString("Pet2Select", out string _Pet2))
+            _FarmGear.Add(_Pet2);
+        if (CBOString("GroundItem2Select", out string _GroundItem2))
+            _FarmGear.Add(_GroundItem2);
+        FarmGear = _FarmGear.ToArray();
 
         //Best set order modification
         string[] bestSet = {
@@ -2203,23 +2251,41 @@ public class CoreBots
             "Fire Champion's Armor",
             "Awescended Omni Wings"
         };
-        if (FarmGear.All(x => bestSet.Contains(x)))
-            FarmGear = bestSet.Concat(new[] { CBOString("GroundItem1Select") }).ToArray();
         if (SoloGear.All(x => bestSet.Contains(x)))
-            SoloGear = bestSet.Concat(new[] { CBOString("GroundItem2Select") }).ToArray();
+            SoloGear = bestSet.Concat(new[] { _GroundItem1 }).ToArray();
+        if (FarmGear.All(x => bestSet.Contains(x)))
+            FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
-    public string CBOString(string Name)
+    public bool CBOString(string Name, out string output)
     {
-        return (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $"{Name}: ").Split(": ")[1];
+        if (!CBO_Active)
+        {
+            output = "";
+            return false;
+        }
+        output = (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $".: fail").Split(": ")[1];
+        return output != "fail";
     }
-    public bool CBOBool(string Name)
+    public bool CBOBool(string Name, out bool output)
     {
-        return CBOString(Name) == "True";
+        if (!CBOString(Name, out string str))
+        {
+            output = false;
+            return false;
+        }
+        output = str == "True";
+        return true;
     }
-    public int CBOInt(string Name)
+    public bool CBOInt(string Name, out int output)
     {
-        return int.Parse(CBOString(Name));
+        if (!CBOString(Name, out string str) || !int.TryParse(str, out int toReturn))
+        {
+            output = 0;
+            return false;
+        }
+        output = toReturn;
+        return true;
     }
 
     public List<string> CBOList = new();

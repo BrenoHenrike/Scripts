@@ -51,8 +51,8 @@ public class NecroticSwordOfDoom
         if (Core.CheckInventory("Necrotic Sword of Doom"))
             return;
 
-        if (Core.CBO_Active)
-            OptimizeInv = !Core.CBOBool("NSOD_PreFarm");
+        if (Core.CBOBool("NSOD_PreFarm", out bool _PreFarm))
+            OptimizeInv = !_PreFarm;
 
         Story.PreLoad();
 
@@ -117,8 +117,8 @@ public class NecroticSwordOfDoom
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
 
-        if (Core.CBO_Active)
-            MaxStack = Core.CBOBool("NSOD_MaxStack");
+        if (Core.CBOBool("NSOD_MaxStack", out bool _MaxStack))
+            MaxStack = _MaxStack;
 
         if (MaxStack)
             EssenceQuantity = 100;

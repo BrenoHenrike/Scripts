@@ -28,8 +28,9 @@ public class CoreAdvanced
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
     public void EnhanceEquipped(EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
-        if (Core.CBO_Active && Core.CBOBool("DisableAutoEnhance"))
-            return;
+        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance))
+            if (_disableAutoEnhance)
+                return;
 
         List<InventoryItem> EquippedItems = Bot.Inventory.Items.FindAll(i => i.Equipped == true && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> EquippedWeapon = EquippedItems.FindAll(i => WeaponCatagories.Contains(i.Category));
@@ -48,8 +49,9 @@ public class CoreAdvanced
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
     public void EnhanceItem(string? ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
-        if (Core.CBO_Active && Core.CBOBool("DisableAutoEnhance"))
-            return;
+        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance))
+            if (_disableAutoEnhance)
+                return;
 
         if (string.IsNullOrEmpty(ItemName))
             return;
@@ -79,8 +81,9 @@ public class CoreAdvanced
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
     public void EnhanceItem(string[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
     {
-        if (Core.CBO_Active && Core.CBOBool("DisableAutoEnhance"))
-            return;
+        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance))
+            if (_disableAutoEnhance)
+                return;
 
         List<InventoryItem> SelectedItems = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => ItemNames.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
         List<InventoryItem> SelectedWeapons = SelectedItems.FindAll(i => WeaponCatagories.Contains(i.Category));
@@ -332,8 +335,9 @@ public class CoreAdvanced
     /// <param name="EquipItem">To Equip the found item(s) or not</param>
     public string[] BestGear(GearBoost BoostType, bool EquipItem = true)
     {
-        if (Core.CBO_Active && Core.CBOBool("DisableBestGear"))
-            return new[] { "" };
+        if (Core.CBOBool("DisableBestGear", out bool _DisableBestGear))
+            if (_DisableBestGear)
+                return new string[0];
 
         if (BoostType == GearBoost.None)
             BoostType = GearBoost.dmgAll;

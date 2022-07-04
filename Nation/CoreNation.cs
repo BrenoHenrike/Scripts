@@ -266,6 +266,9 @@ public class CoreNation
             Core.AddDrop(bagDrops);
         Core.AddDrop(Receipt);
 
+        if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
+            sellMemVoucher = _sellMemVoucher;
+
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(7551);
@@ -496,6 +499,8 @@ public class CoreNation
             BambloozevsDrudgen(item, quant);
         else
         {
+            if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
+                sellMemVoucher = _sellMemVoucher;
             if (item != "Any")
             {
                 Core.AddDrop(item);
@@ -504,6 +509,8 @@ public class CoreNation
             }
             else
                 Core.AddDrop(bagDrops[..^11]);
+            if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
+                returnPolicyDuringSupplies = _returnSupplies;
             string[]? rPDSuni = null;
             if (returnPolicyDuringSupplies)
             {
@@ -606,6 +613,9 @@ public class CoreNation
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
+
+        if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
+            sellMemVoucher = _sellMemVoucher;
 
         bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
