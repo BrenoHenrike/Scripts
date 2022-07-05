@@ -1315,7 +1315,7 @@ public class CoreFarms
             Core.RegisterQuests(369);
             while (!Bot.ShouldExit() && FactionRank("Good") < 4)
             {
-                Core.HuntMonster("swordhavenbridge", "Slime", "Slime in a Jar", 6);
+                Core.KillMonster("swordhavenbridge", "Bridge", "Left", "Slime", "Slime in a Jar", 6, log: false);
                 Bot.Wait.ForQuestComplete(369);
             }
 
@@ -1325,12 +1325,12 @@ public class CoreFarms
             {
                 if (!Core.IsMember)
                 {
-                    Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5);
+                    Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5, log: false);
                     Bot.Wait.ForQuestComplete(372);
                 }
                 else
                 {
-                    Core.HuntMonster("sewer", "Grumble", "Grumble's Fang");
+                    Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", log: false);
                     Bot.Wait.ForQuestComplete(371);
                 }
             }
