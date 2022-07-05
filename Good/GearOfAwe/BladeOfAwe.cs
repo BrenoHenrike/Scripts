@@ -20,9 +20,6 @@ public class BladeOfAwe
 
     public void GetBoA()
     {
-        if (Core.CheckInventory("Blade of Awe"))
-            return;
-            
-        Farm.BladeofAweREP(6, true);        
+        Farm.BladeofAweREP();        
     }
 }
