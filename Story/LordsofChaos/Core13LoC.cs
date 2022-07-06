@@ -70,7 +70,7 @@ public class Core13LoC
         Story.KillQuest(180, "castleundead", "*");
 
         //The Arrival of Drakath cutscene
-        if (!Story.QuestProgression(196))
+        if (!Bot.Quests.IsUnlocked(196))
         {
             Core.Join("castleundead", "King2", "Center");
             Core.Join("Shadowfall");
@@ -82,11 +82,11 @@ public class Core13LoC
 
             //ShadowFall Quest1
             Story.ChainQuest(195);
-
-            //Recover Sepulchure's Cursed Armor!
-            Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");
         }
-
+        
+        //Recover Sepulchure's Cursed Armor!
+        Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");
+        
         //Unlife Insurance
         Story.MapItemQuest(6216, "prison", 39, 5);
         Story.BuyQuest(6216, "prison", 1559, "Unlife Insurance Bond");
