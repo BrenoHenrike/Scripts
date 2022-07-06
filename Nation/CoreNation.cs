@@ -131,8 +131,7 @@ public class CoreNation
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false);
             if (!Core.CheckInventory("Strand of Vath's Hair"))
             {
-                Core.Join("stalagbite");
-                Core.Jump("r2", "Left");
+                Core.Join("stalagbite", "r2", "Left");
                 Bot.Player.Kill("Vath");
                 Core.JumpWait();
                 if (Bot.Player.DropExists("Strand of Vath's Hair"))
