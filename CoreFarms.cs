@@ -108,7 +108,7 @@ public class CoreFarms
         Core.SavedState(false);
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
-        Core.RegisterQuests(3991,3992);
+        Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit() && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
             Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
@@ -686,32 +686,38 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(2933, 2934);
-        if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) || (!Bot.Quests.IsAvailable(2934)))
+        if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) || (!Bot.Quests.IsUnlocked(2934)))
         {
+            Core.EnsureAccept(2933);
             Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
+            Core.EnsureComplete(2933);
             if (farmBoA)
                 Bot.Player.Pickup("Legendary Stonewrit");
             Core.Logger("Find the Stonewrit! completed");
         }
 
-        if (!Core.CheckInventory("Legendary Handle", toInv: false) || (!Bot.Quests.IsAvailable(2935)))
+        if (!Core.CheckInventory("Legendary Handle", toInv: false) || (!Bot.Quests.IsUnlocked(2935)))
         {
+            Core.EnsureAccept(2934);
             Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
+            Core.EnsureComplete(2934);
             if (farmBoA)
                 Bot.Player.Pickup("Legendary Handle");
             Core.Logger("Find the Handle! completed");
         }
-        Core.CancelRegisteredQuests();
 
         Core.RegisterQuests(2935);
         while (!Bot.ShouldExit() && FactionRank("Blade of Awe") < 10 || !Core.CheckInventory("Legendary Hilt", toInv: false))
         {
             Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
-            if (farmBoA && FactionRank("Blade of Awe") >= 6)
+            if (farmBoA)
             {
-                Bot.Player.Pickup("Legendary Hilt");
-                break;
+                if (FactionRank("Blade of Awe") >= 6)
+                {
+                    Bot.Player.Pickup("Legendary Hilt");
+                    break;
+                }
+                Core.CancelRegisteredQuests();
             }
         }
         Core.CancelRegisteredQuests();
