@@ -1159,7 +1159,7 @@ public class Core13LoC
             while (!Bot.ShouldExit() && Bot.Player.Cell != "r17a")
             {
                 Bot.Sleep(2500);
-                Core.Jump("r17a", "Left");
+                Core.Jump("r17a", "Up");
                 Bot.Sleep(2500);
             }
         }
