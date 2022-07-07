@@ -83,10 +83,10 @@ public class Core13LoC
             //ShadowFall Quest1
             Story.ChainQuest(195);
         }
-        
+
         //Recover Sepulchure's Cursed Armor!
         Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");
-        
+
         //Unlife Insurance
         Story.MapItemQuest(6216, "prison", 39, 5);
         Story.BuyQuest(6216, "prison", 1559, "Unlife Insurance Bond");
@@ -1135,6 +1135,7 @@ public class Core13LoC
             Core.EnsureComplete(1472);
         }
 
+        Bot.Events.CellChanged += CutSceneFixer;
         //Choose: Khasaanda Confrontation?
         if (!Story.QuestProgression(1473))
         {
@@ -1145,9 +1146,33 @@ public class Core13LoC
                 Core.Jump("r17a", "Up");
             }
             Adv.KillUltra("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
+            Bot.Events.CellChanged -= CutSceneFixer;
             Core.EnsureComplete(1473);
         }
 
+    }
+
+    private void CutSceneFixer(ScriptInterface bot, string map, string cell, string pad)
+    {
+        if (map == "icewindwar" && cell != "r17a")
+        {
+            while (!Bot.ShouldExit() && Bot.Player.Cell != "r17a")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("r17a", "Left");
+                Bot.Sleep(2500);
+            }
+        }
+        //if more maps get stuck, just fillin the bit below.
+        if (map == "Map" && cell != "Cell")
+        {
+            while (!Bot.ShouldExit() && Bot.Player.Cell != "InsertCell")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("Cell", "pad");
+                Bot.Sleep(2500);
+            }
+        }
     }
 
     public void KhasaandaTroll()
