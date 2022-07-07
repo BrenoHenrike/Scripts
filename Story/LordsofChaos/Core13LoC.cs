@@ -1019,7 +1019,7 @@ public class Core13LoC
             Core.HuntMonster("crossroads", "Koalion", "Skin of the Mountain", 10);
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Tusks", 5);
             Story.MapItemQuest(1237, "crossroads", 524, 5);
-            Story.MapItemQuest(1237, "crossroads", 522, 10);
+            Story.MapItemQuest(1237, "crossroads", 522, 5);
             Core.EnsureComplete(1237);
         }
 
