@@ -652,7 +652,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void BlacksmithingREP(int rank = 4)
+    public void BlacksmithingREP(int rank = 10)
     {
         if (FactionRank("Blacksmithing") >= rank)
             return;
