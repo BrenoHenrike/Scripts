@@ -704,6 +704,7 @@ public class CoreNation
         while (!Bot.ShouldExit() && !Core.CheckInventory("Unidentified 10", quant))
         {
             Core.EnsureAccept(7818);
+            Bot.Quests.UpdateQuest(3484);
             Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom: true);
             Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
             Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);

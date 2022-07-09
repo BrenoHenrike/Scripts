@@ -652,7 +652,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void BlacksmithingREP(int rank = 10)
+    public void BlacksmithingREP(int rank = 10, bool UseGold = false)
     {
         if (FactionRank("Blacksmithing") >= rank)
             return;
@@ -661,11 +661,44 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
 
+        if (!UseGold)
+        {
+            Core.Logger("Using Non-Gold Method");
+            Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
+        }
+
+        if (UseGold)
+        {
+            Core.Logger("using Gold Method");
+            Core.RegisterQuests(8737);
+            while (!Bot.ShouldExit() && FactionRank("Blacksmithing") < rank)
+            {
+                if (Bot.Player.Gold > 500000)
+                    Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k");
+                else Gold(500000);
+                if (FactionRank("Blacksmithing") >= rank)
+                    break;
+            }
+            Core.CancelRegisteredQuests();
+        }
+
         Core.RegisterQuests(2777);
-        while (!Bot.ShouldExit() && FactionRank("Blacksmithing") < rank)
+        while (!Bot.ShouldExit() && FactionRank("Blacksmithing") < 4 && !UseGold)
         {
             Core.HuntMonster("greenguardeast", "Wolf", "Furry Lost Sock", 2);
             Core.HuntMonster("greenguardwest", "Slime", "Slimy Lost Sock", 5);
+        }
+        Core.CancelRegisteredQuests();
+
+
+        Core.EquipClass(ClassType.Solo);
+        Core.RegisterQuests(8736);
+        Bot.Quests.UpdateQuest(3484);
+        while (!Bot.ShouldExit() && FactionRank("Blacksmithing") < rank && !UseGold)
+        {
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Monster Trophy", 15, isTemp: false);
+            Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false);
+            Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false);
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
