@@ -2231,11 +2231,9 @@ public class Core13LoC
         if (!Story.QuestProgression(3876) || !Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3876, 3877);
-            Core.KillMonster("finalbattle", "r1", "Right", "Drakath", "Drakath Defeated");
-            if (!Story.QuestProgression(3876))
-                Core.EnsureComplete(3876);
-            if (!Story.QuestProgression(3877))
-                Core.EnsureComplete(3877);
+            Core.Join("finalbattle", "r1", "Left");
+            Bot.Player.Kill("Drakath");
+            Core.EnsureComplete(3876, 3877);
         }
 
 
@@ -2243,10 +2241,10 @@ public class Core13LoC
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
-            Core.KillMonster("finalbattle", "r9", "Right", "Drakath", "Drakath Defeated");
+            Core.Join("finalbattle", "r9", "Left");
+            Bot.Player.Kill("Drakath");
             Core.EnsureComplete(3878);
         }
-
         //Defeat the 12 Lords of Chaos!
         if (!Story.QuestProgression(3879))
         {
