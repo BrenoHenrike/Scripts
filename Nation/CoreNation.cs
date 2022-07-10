@@ -524,6 +524,12 @@ public class CoreNation
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
                 Core.EnsureAccept(2857);
+                if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
+                {
+                    if (Core.IsMember)
+                        Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Rune");
+                    Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune");
+                }
                 Core.KillEscherion("Relic of Chaos", publicRoom: true);
                 Core.EnsureComplete(2857);
 
