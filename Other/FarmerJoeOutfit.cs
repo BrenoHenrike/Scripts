@@ -30,7 +30,6 @@ public class FarmerJoeOutfit
 
     public void Outfit()
     {
-        Bot.Events.MonsterKilled += LevelChecker;
         RagsandHat();
         ServersAreDown();
         if (Bot.Player.Level < 50)
@@ -64,7 +63,6 @@ public class FarmerJoeOutfit
         Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
 
         Core.Logger("We are farmers, bum ba dum bum bum bum bum");
-        Bot.Events.MonsterKilled -= LevelChecker;
 
     }
 
@@ -108,19 +106,5 @@ public class FarmerJoeOutfit
     //         return;
 
     // }
-
-
-    public void LevelChecker(ScriptInterface bot)
-    {
-        int LVL = Bot.Player.Level;
-
-        Bot.RegisterHandler(100, b =>
-                    {
-                        if (LVL == LVL + 1)
-                        {
-                            Core.Logger($"{LVL}/100, {100 - LVL} Left Till Max Level.");
-                        }
-                    });
-    }
 
 }
