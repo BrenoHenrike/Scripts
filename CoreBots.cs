@@ -1172,6 +1172,27 @@ public class CoreBots
         }
     }
 
+    public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        while (!CheckInventory(item, quant))
+        {
+            if (item != null)
+                AddDrop(item);
+
+            if (Bot.Map.Name != "stalagbite")
+                Join("stalagbite", "r2", "Left");
+
+            while (!Bot.ShouldExit() && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
+            {
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
+                    Bot.Player.Hunt("Vath");
+                Bot.Player.Attack("Stalagbite");
+                Bot.Sleep(1000);
+            }
+        }
+        Bot.Wait.ForPickup(item, quant);
+    }
+
     public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
