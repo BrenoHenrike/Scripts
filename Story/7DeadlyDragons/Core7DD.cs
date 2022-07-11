@@ -219,7 +219,9 @@ public class Core7DD
         {
             Core.EnsureAccept(5952);
             Core.BuyItem("dragonhame", 865, "Airther Vitae");
-            Core.BuyItem("arcangrove", 211, "Health Potion", shopItemID: 4711);
+            Core.Join("arcangrove", "Potion", "Right");
+            Bot.Shops.Load(211);
+            Bot.Shops.BuyItem("Health Potion");
             Core.EnsureComplete(5952);
         }
 

@@ -96,7 +96,30 @@ public class SevenCircles
         //Hanged for Treason
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7989, "sevencircleswar", "Treachery");
+
+        Bot.Events.CellChanged += CutSceneFixer;
         //The Beast
-        Story.KillQuest(7990, "sevencircleswar", "The Beast");
+        if (!Story.QuestProgression(7990))
+        {
+            Core.EnsureAccept(7990);
+            Core.KillMonster("sevencircleswar", "r17", "Left", "The Beast", "The Beast Defeated");
+            Core.EnsureComplete(7990);
+        }
+        Bot.Events.CellChanged -= CutSceneFixer;
+
+        void CutSceneFixer(ScriptInterface bot, string map, string cell, string pad)
+        {
+            if (map == "sevencircleswar" && cell != "r17")
+            {
+                while (!Bot.ShouldExit() && Bot.Player.Cell != "r17")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r17", "Left");
+                    Bot.Sleep(2500);
+                }
+            }
+        }
     }
+
+
 }

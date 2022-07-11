@@ -28,15 +28,12 @@ public class ChaosAmulet
 
         Story.PreLoad();
 
-        // Shadow Medals 7685 && Mega Shadow Medals 7686
-        if (!Core.isCompletedBefore(7687))
-        {
-            Core.EnsureAccept(7685, 7686);
-            Core.HuntMonster("chaosamulet", "Shadowflame Berserker", "Shadow Medal", 5);
-            Core.HuntMonster("chaosamulet", "Shadowflame Berserker", "Mega Shadow Medal", 3);
-            Core.EnsureComplete(7685, 7686);
-        }
+        // Shadow Medals 7685 && 
+        Story.KillQuest(7685, "chaosamulet", "Shadowflame Berserker");
         
+        // Mega Shadow Medals 7686
+        Story.KillQuest(7686, "chaosamulet", "Shadowflame Berserker");
+
         //Defeat Goldun 7687
         Story.KillQuest(7687, "chaosamulet", "Goldun");
 
@@ -45,3 +42,4 @@ public class ChaosAmulet
 
     }
 }
+
