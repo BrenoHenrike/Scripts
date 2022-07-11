@@ -25,53 +25,85 @@ public class NecroDungeon
 
         Story.PreLoad();
 
+
         //descent into darkness - 2044
-        Story.KillQuest(QuestID: 2044, MapName: "necrodungeon", MonsterName: "Bellhop");
+        if (!Story.QuestProgression(2044))
+        {
+            Core.EnsureAccept(2044);
+            Core.KillMonster("necrodungeon", "r6", "Down", "Bellhop", "1 Floor Descended", 10);
+            Core.EnsureComplete(2044);
+        }
+
         //retrieve the past, room 1 - 2045
-        Story.KillQuest(QuestID: 2045, MapName: "necrodungeon", MonsterName: "Necropolis Soldier");
-        Story.MapItemQuest(QuestID: 2045, MapName: "necrodungeon", MapItemID: 1001);
+        Story.MapItemQuest(2045, "necrodungeon", 1001);
+        Story.KillQuest(2045, "necrodungeon", "Necropolis Soldier");
+
         //retrieve the past, room 2 - 2046
-        Story.MapItemQuest(QuestID: 2046, MapName: "necrodungeon", MapItemID: 1015, Amount: 5);
-        Story.MapItemQuest(QuestID: 2046, MapName: "necrodungeon", MapItemID: 1002);
+        Story.MapItemQuest(2046, "necrodungeon", 1015, 5);
+        Story.MapItemQuest(2046, "necrodungeon", 1002);
+
         //retrieve the past, room 3 - 2047
-        Story.KillQuest(QuestID: 2047, MapName: "necrodungeon", MonsterName: "SlimeSkull");
-        Story.MapItemQuest(QuestID: 2047, MapName: "necrodungeon", MapItemID: 1003);
+        Story.MapItemQuest(2047, "necrodungeon", 1003);
+        Story.KillQuest(2047, "necrodungeon", "SlimeSkull");
+
         //retrieve the past, room 4 - 2048
-        Story.KillQuest(QuestID: 2048, MapName: "necrodungeon", MonsterNames: new[] { "Necropolis Soldier", "Ghoul" });
-        Story.MapItemQuest(QuestID: 2048, MapName: "necrodungeon", MapItemID: 1004);
+        Story.MapItemQuest(2048, "necrodungeon", 1004);
+        Story.KillQuest(2048, "necrodungeon", new[] { "Necropolis Soldier", "Ghoul" });
+
         //deeper into darkness - 2049
-        Story.KillQuest(QuestID: 2049, MapName: "necrodungeon", MonsterName: "Bellhop");
+        if (!Story.QuestProgression(2049))
+        {
+            Core.EnsureAccept(2049);
+            Core.KillMonster("necrodungeon", "r11", "Down", "Bellhop", "F1 Floor Descended", 10);
+            Core.EnsureComplete(2049);
+        }
+
         //retrieve the past, room 5 - 2050
-        Story.KillQuest(QuestID: 2050, MapName: "necrodungeon", MonsterNames: new[] { "SlimeSkull", "Necropolis Soldier" });
-        Story.MapItemQuest(QuestID: 2050, MapName: "necrodungeon", MapItemID: 1016, Amount: 3);
-        Story.MapItemQuest(QuestID: 2050, MapName: "necrodungeon", MapItemID: 1005);
+        Story.MapItemQuest(2050, "necrodungeon", 1005);
+        Story.MapItemQuest(2050, "necrodungeon", 1016, 3);
+        Story.KillQuest(2050, "necrodungeon", new[] { "SlimeSkull", "Necropolis Soldier" });
+
         //retrieve the past, room 6 - 2051
-        Story.MapItemQuest(QuestID: 2051, MapName: "necrodungeon", MapItemID: 1017, Amount: 5);
-        Story.MapItemQuest(QuestID: 2051, MapName: "necrodungeon", MapItemID: 1006);
+        Story.MapItemQuest(2051, "necrodungeon", 1017, 5);
+        Story.MapItemQuest(2051, "necrodungeon", 1006);
+
         //retrieve the past, room 7 - 2052
-        Story.KillQuest(QuestID: 2052, MapName: "necrodungeon", MonsterName: "SlimeSkull");
-        Story.MapItemQuest(QuestID: 2052, MapName: "necrodungeon", MapItemID: 1007);
+        Story.MapItemQuest(2052, "necrodungeon", 1007);
+        Story.KillQuest(2052, "necrodungeon", "SlimeSkull");
+
         //monter subway ahead - 2053
-        Story.KillQuest(QuestID: 2053, MapName: "necrodungeon", MonsterName: "Doom Crawler");
-        Story.MapItemQuest(QuestID: 2053, MapName: "necrodungeon", MapItemID: 1008);
+        Story.MapItemQuest(2053, "necrodungeon", 1008);
+        Story.KillQuest(2053, "necrodungeon", "Doom Crawler");
+
         //underground railroad to... DOOM! - 2054
-        Story.KillQuest(QuestID: 2054, MapName: "necrodungeon", MonsterName: "Ghoul");
-        Story.MapItemQuest(QuestID: 2054, MapName: "necrodungeon", MapItemID: 1018, Amount: 8);
-        Story.MapItemQuest(QuestID: 2054, MapName: "necrodungeon", MapItemID: 1009);
+        Story.KillQuest(2054, "necrodungeon", "Ghoul");
+        Story.MapItemQuest(2054, "necrodungeon", 1009);
+        Story.MapItemQuest(2054, "necrodungeon", 1018, 8);
+
         //retrieve the past, room 10 - 2055
-        Story.KillQuest(QuestID: 2055, MapName: "necrodungeon", MonsterName: "Necropolis Soldier");
-        Story.MapItemQuest(QuestID: 2055, MapName: "necrodungeon", MapItemID: 1010);
+        Story.MapItemQuest(2055, "necrodungeon", 1010);
+        Story.KillQuest(2055, "necrodungeon", "Necropolis Soldier");
+
         //the deepest descent - 2056
-        Story.KillQuest(QuestID: 2056, MapName: "necrodungeon", MonsterName: "Bellhop");
+        if (!Story.QuestProgression(2056))
+        {
+            Core.EnsureAccept(2056);
+            Core.KillMonster("necrodungeon", "r18", "Down", "Bellhop", "1 Floor Descended", 10);
+            Core.EnsureComplete(2056);
+        }
+
         //retrieve the past, room 11 - 2057
-        Story.MapItemQuest(QuestID: 2057, MapName: "necrodungeon", MapItemID: 1016, Amount: 5);
-        Story.MapItemQuest(QuestID: 2057, MapName: "necrodungeon", MapItemID: 1011);
+        Story.MapItemQuest(2057, "necrodungeon", 1016, 5);
+        Story.MapItemQuest(2057, "necrodungeon", 1011);
+
         //retrieve the past, room 12 - 2058
-        Story.KillQuest(QuestID: 2058, MapName: "necrodungeon", MonsterName: "Necropolis Soldier");
-        Story.MapItemQuest(QuestID: 2058, MapName: "necrodungeon", MapItemID: 1012);
+        Story.MapItemQuest(2058, "necrodungeon", 1012);
+        Story.KillQuest(2058, "necrodungeon", "Necropolis Soldier");
+
         //retrieve the past, room 13 - 2059
-        Story.MapItemQuest(QuestID: 2059, MapName: "necrodungeon", MapItemID: 1019, Amount: 5);
-        Story.MapItemQuest(QuestID: 2059, MapName: "necrodungeon", MapItemID: 1013);
+        Story.MapItemQuest(2059, "necrodungeon", 1019, 5);
+        Story.MapItemQuest(2059, "necrodungeon", 1013);
+
         //five times the fury - 2060
         if (!Bot.Quests.IsUnlocked(2061))
         {
@@ -83,7 +115,8 @@ public class NecroDungeon
             Core.KillMonster("necrodungeon", "r22", "Down", 893);
             Core.EnsureComplete(2060);
         }
+
         //the past will haunt you - 2061
-        Story.MapItemQuest(QuestID: 2061, MapName: "necrodungeon", MapItemID: 1020);
+        Story.MapItemQuest(2061, "necrodungeon", 1020);
     }
 }

@@ -156,7 +156,7 @@ public class PhoenixriseStory
         Story.MapItemQuest(4208, "phoenixrise", 3284, 7);
         Story.KillQuest(4208, "phoenixrise", "Infernal Goblin");
         //Clear out the Caverns
-        Story.KillQuest(4209, "phoenixrise", new[] { "Infernal Goblin", "Lava Troll", "Firestorm Tiger", "Pyrric Ursus" }); //issue line
+        Story.KillQuest(4209, "phoenixrise", new[] { "Infernal Goblin", "Lava Troll", "Firestorm Tiger", "Pyrric Ursus" });
         //Strengthen the Survivors
         Story.KillQuest(4210, "phoenixrise", new[] { "Lava Troll", "Infernal Goblin", "Firestorm Tiger", "Pyrric Ursus" });
         //Bridge to Salvation
