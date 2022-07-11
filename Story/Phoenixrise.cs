@@ -92,13 +92,20 @@ public class PhoenixriseStory
         Story.KillQuest(4128, "feverfew", "Firestorm Knight");
         //Through the Fog and Flame
         Story.KillQuest(4129, "feverfew", "Locked Chest");
-        //Restore the Lady of Waters
-        Story.MapItemQuest(4130, "feverfew", 3246);
-        Story.MapItemQuest(4130, "feverfew", 3247);
-        Story.KillQuest(4130, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander", "Firestorm Knight" });
+        if (!Story.QuestProgression(4130))
+        {
+            //Restore the Lady of Waters
+            Story.MapItemQuest(4130, "feverfew", 3246);
+            Story.MapItemQuest(4130, "feverfew", 3247);
+            Core.HuntMonster("feverfew", "Coral Creeper", "Statue Torso");
+            Core.HuntMonster("feverfew", "Twisted Undine", "Statue Base");
+            Core.HuntMonster("feverfew", "Salamander", "Statue Core");
+            Core.HuntMonster("feverfew", "Firestorm Knight", "Statue Plaque");
+            Core.EnsureComplete(4130);
+        }
         //Rumors and Smoke
         Story.MapItemQuest(4131, "feverfew", 3245);
-        Story.KillQuest(4131, "feverfew", new[] { "Firestorm Major", "Firestorm Knight", "Firestorm Knight", "Firestorm Major" });
+        Story.KillQuest(4131, "feverfew", new[] { "Firestorm Knight", "Firestorm Major", "Firestorm Knight", "Firestorm Major" });
         //Dam the Flood
         Story.MapItemQuest(4132, "feverfew", 3244, 5);
         //Salvage Mission
@@ -149,7 +156,7 @@ public class PhoenixriseStory
         Story.MapItemQuest(4208, "phoenixrise", 3284, 7);
         Story.KillQuest(4208, "phoenixrise", "Infernal Goblin");
         //Clear out the Caverns
-        Story.KillQuest(4209, "phoenixrise", new[] { "Infernal Goblin", "Lava Troll", "Firestorm Tiger", "Pyrric Ursus" });
+        Story.KillQuest(4209, "phoenixrise", new[] { "Infernal Goblin", "Lava Troll", "Firestorm Tiger", "Pyrric Ursus" }); //issue line
         //Strengthen the Survivors
         Story.KillQuest(4210, "phoenixrise", new[] { "Lava Troll", "Infernal Goblin", "Firestorm Tiger", "Pyrric Ursus" });
         //Bridge to Salvation
