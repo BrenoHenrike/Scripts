@@ -219,8 +219,7 @@ public class Core7DD
         {
             Core.EnsureAccept(5952);
             Core.BuyItem("dragonhame", 865, "Airther Vitae");
-            if (!Core.CheckInventory(1749))
-                Core.BuyItem("arcangrove", 211, "Health Potion", shopItemID: 4711);
+            Core.BuyItem("arcangrove", 211, "Health Potion", shopItemID: 4711);
             Core.EnsureComplete(5952);
         }
 
