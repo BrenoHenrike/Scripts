@@ -60,8 +60,9 @@ public class CitadelRuins
         // She Needs a Hero
         if (!Story.QuestProgression(6675))
         {
+            Bot.Quests.UpdateQuest(3008);
             Core.EnsureAccept(6675);
-            Core.KillMonster("doomvault", "r24", "Left", 1216, "Your Princess is Not in This Castle");
+            Core.HuntMonsterMapID("doomvault", 21, "Your Princess is Not in This Castle");
             Core.EnsureComplete(6675);
         }
 
