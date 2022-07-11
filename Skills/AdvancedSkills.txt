@@ -84,7 +84,7 @@ Base = Dragon Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonslayer = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Dragonslayer General = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = DragonSoul Shinobi = 1 | 2 | 4 | Mode Optimistic
+Base = DragonSoul Shinobi = 1 | 2H<50S | 3M<10S| 4 | Mode Optimistic
 Base = Drakel Warlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 | Mode Optimistic
 Base = Empyrean Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 | Timeout: 250
