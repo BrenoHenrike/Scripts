@@ -379,7 +379,7 @@ public class CoreFarms
             Core.BludrutMove(28, "Captain1", 528, 255);
 
             Bot.Player.Kill("Team B Captain");
-            Bot.Wait.ForPickup(item);
+            Bot.Wait.ForDrop(item);
 
             while (!Bot.ShouldExit() && Bot.Map.Name != "battleon")
             {
