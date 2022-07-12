@@ -89,8 +89,11 @@ public class DoomVaultB
         Story.KillQuest(2993, "Doomvaultb", "Grimmer Lich");
 
         // Grim Underdungeon XIX      
-        Story.KillQuest(2995, "Doomvaultb", "Grimmer Lich");
+        Story.KillQuest(2994, "Doomvaultb", "Grimmer Lich");
 
+        // Grim Underdungeon XX     
+        Story.ChainQuest(2955);
+        
         // Grim Underdungeon XXI        
         Story.KillQuest(2996, "Doomvaultb", "Grimmer Fire Mage");
 
