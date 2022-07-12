@@ -18,7 +18,6 @@ public class Core13LoC
 
     public void Complete13LOC(bool withExtras = false)
     {
-        Story.PreLoad();
 
         if (Core.IsMember)
         {
