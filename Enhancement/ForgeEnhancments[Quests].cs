@@ -179,10 +179,10 @@ public class ForgeEnhancments
         if (!Story.QuestProgression(8758))
         {
             Core.EnsureAccept(8758);
-            Core.KillEscherion("1st Lord Of Chaos Helm");
-            Core.KillVath("Chaos Dragonlord Helm");
-            Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
-            Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
+            Core.KillEscherion("1st Lord Of Chaos Staff");
+            Core.KillVath("Chaos Dragonlord Axe");
+            Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
+            Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
             Core.EnsureComplete(8758);
         }
 
@@ -200,9 +200,9 @@ public class ForgeEnhancments
             if (!Core.CheckInventory("Ascended Paladin"))
             {
                 Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
-                Adv.BuyItem("therift", 1399, 39091);
-                Adv.BuyItem("therift", 1399, 39093);
-                Adv.BuyItem("therift", 1399, 39094);
+                Core.BuyItem("therift", 1399, 39091);
+                Core.BuyItem("therift", 1399, 39093);
+                Core.BuyItem("therift", 1399, 39094);
             }
             Core.EnsureComplete(8743);
         }
