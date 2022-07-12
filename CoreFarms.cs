@@ -675,7 +675,7 @@ public class CoreFarms
             {
                 if (Bot.Player.Gold > 500000)
                     Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k");
-                else Gold(500000);
+                Gold(500000);
                 if (FactionRank("Blacksmithing") >= rank)
                     break;
             }
