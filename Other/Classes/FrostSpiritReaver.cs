@@ -105,12 +105,13 @@ public class FrostSpiritReaver
         Core.FarmingLogger("Glaceran Attunement", quant);
 
         Core.EquipClass(ClassType.Solo);
-        if (!Core.CheckInventory("IceBreaker Mage") | !Core.CheckInventory("FrostSlayer"))
+        if (!Core.CheckInventory("IceBreaker Mage") && !Core.CheckInventory("FrostSlayer"))
+        {
             Core.Logger("Getting Quest Item Requirements for \"Cold Blooded\"");
-
-        Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", isTemp: false);
-        Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
-
+            Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", isTemp: false);
+            Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
+        }
+        
         Core.RegisterQuests(7921);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Glaceran Attunement", quant))
         {
