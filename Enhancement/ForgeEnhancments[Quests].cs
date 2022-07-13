@@ -111,27 +111,38 @@ public class ForgeEnhancments
 
             case "Lacerate":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                ForgeWeaponEnhancement();
                 Lacerate();
                 break;
 
             case "Smite":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                ForgeWeaponEnhancement();
+                Lacerate();
                 Smite();
                 break;
 
 
             case "HerosValiance":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                ForgeWeaponEnhancement();
+                Lacerate();
+                Smite();
                 HerosValiance();
                 break;
 
             case "ArcanasConcertoWIP":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                ForgeWeaponEnhancement();
+                Lacerate();
+                Smite();
+                HerosValiance();
                 ArcanasConcertoWIP();
                 break;
 
             case "All":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                ForgeWeaponEnhancement();
                 Lacerate();
                 Smite();
                 HerosValiance();
@@ -153,14 +164,20 @@ public class ForgeEnhancments
                 break;
 
             case "Absolution":
+                ForgeCapeEnhancement();
                 Absolution();
                 break;
 
             case "Vainglory":
+                ForgeCapeEnhancement();
+                Absolution();
                 Vainglory();
                 break;
 
             case "Avarice":
+                ForgeCapeEnhancement();
+                Absolution();
+                Vainglory();
                 Avarice();
                 break;
 
@@ -183,8 +200,9 @@ public class ForgeEnhancments
     public void ForgeCapeEnhancement()
     {
         // Forge Cape Enhancement
-        if (!Story.QuestProgression(8758))
+        if (!Bot.Quests.IsUnlocked(8743))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8758);
             Core.KillEscherion("1st Lord Of Chaos Staff");
             Core.KillVath("Chaos Dragonlord Axe");
@@ -199,7 +217,7 @@ public class ForgeEnhancments
     {
 
         // Absolution
-        if (!Story.QuestProgression(8743))
+        if (!Bot.Quests.IsUnlocked(8744))
         {
             Core.EnsureAccept(8743);
             Farm.GoodREP();
@@ -220,7 +238,7 @@ public class ForgeEnhancments
     {
 
         // Vainglory
-        if (!Story.QuestProgression(8744))
+        if (!Bot.Quests.IsUnlocked(8745))
         {
             Core.EnsureAccept(8744);
             // Pauldron Relic
@@ -242,7 +260,7 @@ public class ForgeEnhancments
     {
 
         // Avarice      
-        if (!Story.QuestProgression(8745))
+        if (Bot.Quests.IsUnlocked(8745))
         {
             Core.EnsureAccept(8745);
             // Indulgence x75 
@@ -259,11 +277,14 @@ public class ForgeEnhancments
     {
 
         // Forge Weapon Enhancement
-        if (!Story.QuestProgression(8738))
+        if (!Bot.Quests.IsAvailable(8739))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8738);
-            Core.KillEscherion("1st Lord Of Chaos Helm");
-            Core.KillVath("Chaos Dragonlord Helm");
+            if (!Core.CheckInventory("1st Lord Of Chaos Helm"))
+                Core.KillEscherion("1st Lord Of Chaos Helm");
+            if (!Core.CheckInventory("Chaos Dragonlord Helm"))
+                Core.KillVath("Chaos Dragonlord Helm");
             Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
             Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
             Core.EnsureComplete(8738);
@@ -274,25 +295,32 @@ public class ForgeEnhancments
     {
 
         // Lacerate
-        if (!Story.QuestProgression(8739))
+        if (!Bot.Quests.IsUnlocked(8740))
         {
             Core.AddDrop("Massive Horc Cleaver", "Sword in the Stone", "Forest Axe");
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8739);
-            if (Story.QuestProgression(92))
+            // Hit Job   
+            if (!Bot.Quests.IsUnlocked(92))
             {
                 // Ninja Grudge
-                Story.KillQuest(90, "pirates", "Shark Bait");
-                // Without a Trace
-                if (Story.QuestProgression(91))
+                if (!Bot.Quests.IsUnlocked(91))
                 {
-                    Story.KillQuest(91, "greenguardwest", "Kittarian");
-                    Story.KillQuest(91, "river", "River Fishman");
-                    Story.KillQuest(91, "swordhavenbridge", "Slime ");
-                    Story.KillQuest(91, "greenguardwest", new[] { "Frogzard", "Big Bad Boar" });
+                    Core.EnsureAccept(90);
+                    Core.HuntMonster("pirates", "Shark Bait", "Pirate Pegleg", 5);
+                    Core.EnsureComplete(90);
                 }
-                // Hit Job   
-                Story.KillQuest(92, "greenguardwest", new[] { "Breken the Vile", "Ogug Stoneaxe" });
+                // Without a Trace
+                Core.EnsureAccept(91);
+                Core.KillMonster("greenguardwest", "West1", "Left", "Kittarian", "Kittarian's Wallet", 2);
+                Core.KillMonster("greenguardwest", "West9", "Left", "River Fishman", "River Fishman's Wallet", 2);
+                Core.KillMonster("greenguardwest", "West2", "Left", "Slime", "Slime-Soaked Wallet", 2);
+                Core.KillMonster("greenguardwest", "West1", "Left", "Frogzard", "Frogzard's Lint Hoard", 2);
+                Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Big Bad Boar's Wallet");
+                Core.EnsureComplete(91);
             }
+            Story.KillQuest(92, "greenguardwest", new[] { "Breken the Vile", "Ogug Stoneaxe" });
+
             Core.HuntMonster("graveyard", "Big Jack Sprat", "Undead Plague Spear", isTemp: false);
             Core.HuntMonster("river", "Kuro", "Kuro's Wrath", isTemp: false);
 
@@ -330,7 +358,7 @@ public class ForgeEnhancments
     {
 
         // Smite
-        if (!Story.QuestProgression(8740))
+        if (!Bot.Quests.IsUnlocked(8741))
         {
             Core.EnsureAccept(8740);
             SFR.StoryLine();
@@ -349,7 +377,7 @@ public class ForgeEnhancments
     {
 
         // Hero's Valiance
-        if (!Story.QuestProgression(8741))
+        if (!Bot.Quests.IsUnlocked(8742))
         {
             Core.EnsureAccept(8741);
             //         Must have completed the 'The Final Challenge' quest.
@@ -383,7 +411,7 @@ public class ForgeEnhancments
     {
 
         // Arcana's Concerto   
-        if (!Story.QuestProgression(8742))
+        if (Bot.Quests.IsUnlocked(8742))
         {
             Core.EnsureAccept(8742);
             // Must have completed the 'Darkon, the Conductor' quest.
