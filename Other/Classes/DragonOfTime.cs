@@ -320,7 +320,7 @@ public class DragonOfTime
                     }
                 }
 
-                Core.BuyItem("borgars", 1884, "Borgar");
+                Core.BuyItem("borgars", 1884, 54650, shopItemID: 7387);
 
                 Core.EnsureCompleteChoose(7725, Extras);
                 Bot.Wait.ForPickup("*");

@@ -91,11 +91,11 @@ public class ForgeEnhancments
 
     public void ForgeUnlocks()
     {
-       
+
         if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
-            
-             if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None)
+
+        if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None)
             return;
 
         Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
@@ -115,32 +115,22 @@ public class ForgeEnhancments
 
             case "Lacerate":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                ForgeWeaponEnhancement();
                 Lacerate();
                 break;
 
             case "Smite":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                ForgeWeaponEnhancement();
-                Lacerate();
                 Smite();
                 break;
 
 
             case "HerosValiance":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                ForgeWeaponEnhancement();
-                Lacerate();
-                Smite();
                 HerosValiance();
                 break;
 
             case "ArcanasConcertoWIP":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                ForgeWeaponEnhancement();
-                Lacerate();
-                Smite();
-                HerosValiance();
                 ArcanasConcertoWIP();
                 break;
 
@@ -168,20 +158,14 @@ public class ForgeEnhancments
                 break;
 
             case "Absolution":
-                ForgeCapeEnhancement();
                 Absolution();
                 break;
 
             case "Vainglory":
-                ForgeCapeEnhancement();
-                Absolution();
                 Vainglory();
                 break;
 
             case "Avarice":
-                ForgeCapeEnhancement();
-                Absolution();
-                Vainglory();
                 Avarice();
                 break;
 
@@ -190,8 +174,8 @@ public class ForgeEnhancments
                 Absolution();
                 Vainglory();
                 Avarice();
+                Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape").ToString();
                 break;
-
 
             case "None":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape")}");
@@ -203,29 +187,21 @@ public class ForgeEnhancments
 
     public void ForgeCapeEnhancement()
     {
-        // Forge Cape Enhancement
-        if (!Bot.Quests.IsUnlocked(8743))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Core.EnsureAccept(8758);
-            Core.KillEscherion("1st Lord Of Chaos Staff");
-            Core.KillVath("Chaos Dragonlord Axe");
-            Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
-            Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
-            Core.EnsureComplete(8758);
-        }
-
+        Core.EquipClass(ClassType.Solo);
+        Core.EnsureAccept(8758);
+        Core.KillEscherion("1st Lord Of Chaos Staff");
+        Core.KillVath("Chaos Dragonlord Axe");
+        Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
+        Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
+        Core.EnsureComplete(8758);
     }
 
     public void Absolution()
     {
-
-        // Absolution
-        if (!Bot.Quests.IsUnlocked(8744))
+        if (!Bot.Quests.IsUnlocked(8743))
         {
             Core.EnsureAccept(8743);
             Farm.GoodREP();
-            // Ascended Paladin, Ascended Paladin Staff, Ascended Paladin Sword 
             if (!Core.CheckInventory("Ascended Paladin"))
             {
                 Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
@@ -240,16 +216,9 @@ public class ForgeEnhancments
 
     public void Vainglory()
     {
-
-        // Vainglory
-        if (!Bot.Quests.IsUnlocked(8745))
+        if (!Bot.Quests.IsUnlocked(8744))
         {
             Core.EnsureAccept(8744);
-            // Pauldron Relic
-            // Breastplate Relic
-            // Vambrace Relic
-            // Gauntlet Relic
-            // Greaves Relic    
             Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
             Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
             Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
@@ -262,14 +231,10 @@ public class ForgeEnhancments
 
     public void Avarice()
     {
-
-        // Avarice      
         if (Bot.Quests.IsUnlocked(8745))
         {
             Core.EnsureAccept(8745);
-            // Indulgence x75 
             HOTLB.Indulgence(75);
-            // Penance x75 
             HOTLB.Penance(75);
             Core.EnsureComplete(8745);
         }
@@ -279,42 +244,31 @@ public class ForgeEnhancments
 
     public void ForgeWeaponEnhancement()
     {
+        Core.EquipClass(ClassType.Solo);
+        Core.EnsureAccept(8738);
+        Core.KillEscherion("1st Lord Of Chaos Helm");
+        Core.KillVath("Chaos Dragonlord Helm");
+        Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
+        Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
+        Core.EnsureComplete(8738);
 
-        // Forge Weapon Enhancement
-        if (!Bot.Quests.IsAvailable(8739))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Core.EnsureAccept(8738);
-            if (!Core.CheckInventory("1st Lord Of Chaos Helm"))
-                Core.KillEscherion("1st Lord Of Chaos Helm");
-            if (!Core.CheckInventory("Chaos Dragonlord Helm"))
-                Core.KillVath("Chaos Dragonlord Helm");
-            Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
-            Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
-            Core.EnsureComplete(8738);
-        }
     }
 
     public void Lacerate()
     {
-
-        // Lacerate
-        if (!Bot.Quests.IsUnlocked(8740))
+        if (!Bot.Quests.IsUnlocked(8739))
         {
             Core.AddDrop("Massive Horc Cleaver", "Sword in the Stone", "Forest Axe");
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8739);
-            // Hit Job   
             if (!Bot.Quests.IsUnlocked(92))
             {
-                // Ninja Grudge
                 if (!Bot.Quests.IsUnlocked(91))
                 {
                     Core.EnsureAccept(90);
                     Core.HuntMonster("pirates", "Shark Bait", "Pirate Pegleg", 5);
                     Core.EnsureComplete(90);
                 }
-                // Without a Trace
                 Core.EnsureAccept(91);
                 Core.KillMonster("greenguardwest", "West1", "Left", "Kittarian", "Kittarian's Wallet", 2);
                 Core.KillMonster("greenguardwest", "West9", "Left", "River Fishman", "River Fishman's Wallet", 2);
@@ -337,7 +291,6 @@ public class ForgeEnhancments
             }
             if (!Core.CheckInventory("Sword in the Stone"))
             {
-                // (Reward from the 'Landing Swords!' quest)
                 Core.EnsureAccept(316);
                 Core.GetMapItem(54, 7, "greenguardeast");
                 Core.HuntMonster("greenguardeast", "Spider", "Tiny Sword");
@@ -346,7 +299,6 @@ public class ForgeEnhancments
             }
             if (!Core.CheckInventory("Forest Axe"))
             {
-                // (Reward from the 'warm MILK!' quest)
                 Core.EnsureAccept(301);
                 Core.GetMapItem(55, 4, "farm");
                 Core.HuntMonster("farm", "Mosquito", "Mosquito Juice");
@@ -360,9 +312,7 @@ public class ForgeEnhancments
 
     public void Smite()
     {
-
-        // Smite
-        if (!Bot.Quests.IsUnlocked(8741))
+        if (!Bot.Quests.IsUnlocked(8740))
         {
             Core.EnsureAccept(8740);
             SFR.StoryLine();
@@ -371,7 +321,6 @@ public class ForgeEnhancments
             Core.KillEscherion("Chaotic Power", 7);
             Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 50, isTemp: false);
             Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 25, false);
-            // Power Tonic x10           
             Adv.BuyItem("alchemyacademy", 2036, "Power Tonic", 10);
             Core.EnsureComplete(8740);
         }
@@ -379,21 +328,12 @@ public class ForgeEnhancments
 
     public void HerosValiance()
     {
-
-        // Hero's Valiance
-        if (!Bot.Quests.IsUnlocked(8742))
+        if (!Bot.Quests.IsUnlocked(8741))
         {
-            Core.EnsureAccept(8741);
-            //         Must have completed the 'The Final Challenge' quest.
             LOC.Complete13LOC();
-            // Must have the following items in your inventory:
-            // Fire Champion's Armor
             FCA.GetFireChampsArmor();
-            // Dragon of Time
             DOT.GetDoT();
-            // Drakath the Eternal
             ED.getSet();
-            // Eternity Blade
             if (!Core.CheckInventory("Eternity Blade"))
             {
                 Core.EnsureAccept(3485);
@@ -401,10 +341,8 @@ public class ForgeEnhancments
                 Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade");
                 Core.EnsureComplete(3485);
             }
-            // Gravelyn's DoomFire Token 
+            Core.EnsureAccept(8741);
             Seppy.GravelynsDoomFireToken();
-            // ArchPaladin Armor      
-            // TOD.CompleteToD();
             AP.GetAP(false); //purely for the last quest "Sacred Magic: Eden"
             Adv.BuyItem("darkthronehub", 1303, "ArchPaladin");
             Core.EnsureComplete(8741);
