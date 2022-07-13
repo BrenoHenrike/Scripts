@@ -109,16 +109,6 @@ public class ForgeEnhancments
                 ForgeWeaponEnhancement();
                 break;
 
-            case "ArcanasConcertoWIP":
-                Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                ArcanasConcertoWIP();
-                break;
-
-            case "HerosValiance":
-                Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                HerosValiance();
-                break;
-
             case "Lacerate":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
                 Lacerate();
@@ -129,12 +119,22 @@ public class ForgeEnhancments
                 Smite();
                 break;
 
+
+            case "HerosValiance":
+                Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                HerosValiance();
+                break;
+
+            case "ArcanasConcertoWIP":
+                Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
+                ArcanasConcertoWIP();
+                break;
+
             case "All":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon")}");
-                ForgeWeaponEnhancement();
-                HerosValiance();
                 Lacerate();
                 Smite();
+                HerosValiance();
                 ArcanasConcertoWIP();
                 break;
 
@@ -152,10 +152,6 @@ public class ForgeEnhancments
                 ForgeCapeEnhancement();
                 break;
 
-            case "Avarice":
-                Avarice();
-                break;
-
             case "Absolution":
                 Absolution();
                 break;
@@ -163,6 +159,18 @@ public class ForgeEnhancments
             case "Vainglory":
                 Vainglory();
                 break;
+
+            case "Avarice":
+                Avarice();
+                break;
+
+            case "All":
+                ForgeCapeEnhancement();
+                Absolution();
+                Vainglory();
+                Avarice();
+                break;
+
 
             case "None":
                 Core.Logger($"Farming {Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape")}");
@@ -174,7 +182,6 @@ public class ForgeEnhancments
 
     public void ForgeCapeEnhancement()
     {
-
         // Forge Cape Enhancement
         if (!Story.QuestProgression(8758))
         {
