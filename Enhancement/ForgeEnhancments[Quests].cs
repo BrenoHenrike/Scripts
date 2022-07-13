@@ -277,8 +277,8 @@ public class ForgeEnhancments
                 Core.EnsureAccept(91);
                 Core.KillMonster("greenguardwest", "West1", "Left", "Kittarian", "Kittarian's Wallet", 2);
                 Core.KillMonster("greenguardwest", "West9", "Left", "River Fishman", "River Fishman's Wallet", 2);
-                Core.KillMonster("greenguardwest", "West2", "Left", "Slime", "Slime-Soaked Wallet", 2);
-                Core.KillMonster("greenguardwest", "West1", "Left", "Frogzard", "Frogzard's Lint Hoard", 2);
+                Core.KillMonster("greenguardwest", "West10", "Left", "Slime", "Slime-Soaked Wallet", 2);
+                Core.KillMonster("greenguardwest", "West3", "Left", "Frogzard", "Frogzard's Lint Hoard", 2);
                 Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Big Bad Boar's Wallet");
                 Core.EnsureComplete(91);
             }
