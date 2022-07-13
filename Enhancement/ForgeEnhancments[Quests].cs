@@ -91,7 +91,11 @@ public class ForgeEnhancments
 
     public void ForgeUnlocks()
     {
-        if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None)
+       
+        if (!Bot.Config.Get<bool>("SkipOption"))
+            Bot.Config.Configure();
+            
+             if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None)
             return;
 
         Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
@@ -327,7 +331,7 @@ public class ForgeEnhancments
             if (!Core.CheckInventory("Massive Horc Cleaver"))
             {
                 Core.EnsureAccept(279);
-                Core.HuntMonster("warhorc", "Horc Master", "Boss Prize", isTemp: false);
+                Core.HuntMonster("warhorc", "General Drox", "Boss Prize");
                 Core.EnsureComplete(279);
                 Bot.Wait.ForPickup("Massive Horc Cleaver");
             }
@@ -336,7 +340,7 @@ public class ForgeEnhancments
                 // (Reward from the 'Landing Swords!' quest)
                 Core.EnsureAccept(316);
                 Core.GetMapItem(54, 7, "greenguardeast");
-                Core.HuntMonster("greenguardeast", "Spider", "Tiny Sword", isTemp: false);
+                Core.HuntMonster("greenguardeast", "Spider", "Tiny Sword");
                 Core.EnsureComplete(316);
                 Bot.Wait.ForPickup("Sword in the Stone");
             }
@@ -345,7 +349,7 @@ public class ForgeEnhancments
                 // (Reward from the 'warm MILK!' quest)
                 Core.EnsureAccept(301);
                 Core.GetMapItem(55, 4, "farm");
-                Core.HuntMonster("farm", "Mosquito", "Mosquito Juice", isTemp: false);
+                Core.HuntMonster("farm", "Mosquito", "Mosquito Juice");
                 Core.EnsureComplete(301);
                 Bot.Wait.ForPickup("Forest Axe");
             }
