@@ -327,7 +327,7 @@ public class ForgeEnhancments
             if (!Core.CheckInventory("Massive Horc Cleaver"))
             {
                 Core.EnsureAccept(279);
-                Core.HuntMonster("warhorc", "Horc Master", isTemp: false);
+                Core.HuntMonster("warhorc", "Horc Master", "Boss Prize", isTemp: false);
                 Core.EnsureComplete(279);
                 Bot.Wait.ForPickup("Massive Horc Cleaver");
             }
