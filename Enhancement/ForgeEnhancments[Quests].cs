@@ -68,7 +68,7 @@ public class ForgeEnhancments
     public HeadoftheLegionBeast HOTLB = new();
 
 
-    public bool DontPreconfigure = false;
+    public bool DontPreconfigure = true;
 
     public string OptionsStorage = "Forge Ehn Unlocks";
 
@@ -369,7 +369,7 @@ public class ForgeEnhancments
             Farm.Experience(60);
             Core.HuntMonster("shadowattack", "Death", "Death's Power", 3, isTemp: false);
             Core.KillEscherion("Chaotic Power", 7);
-            Core.HuntMonster("map", "mob", "Empowered Essence", 50, isTemp: false);
+            Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 50, isTemp: false);
             Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 25, false);
             // Power Tonic x10           
             Adv.BuyItem("alchemyacademy", 2036, "Power Tonic", 10);
