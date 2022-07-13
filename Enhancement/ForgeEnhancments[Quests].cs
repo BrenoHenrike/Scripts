@@ -187,13 +187,16 @@ public class ForgeEnhancments
 
     public void ForgeCapeEnhancement()
     {
-        Core.EquipClass(ClassType.Solo);
-        Core.EnsureAccept(8758);
-        Core.KillEscherion("1st Lord Of Chaos Staff");
-        Core.KillVath("Chaos Dragonlord Axe");
-        Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
-        Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
-        Core.EnsureComplete(8758);
+        if (!Story.QuestProgression(8758))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(8758);
+            Core.KillEscherion("1st Lord Of Chaos Staff");
+            Core.KillVath("Chaos Dragonlord Axe");
+            Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
+            Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
+            Core.EnsureComplete(8758);
+        }
     }
 
     public void Absolution()
@@ -244,14 +247,16 @@ public class ForgeEnhancments
 
     public void ForgeWeaponEnhancement()
     {
-        Core.EquipClass(ClassType.Solo);
-        Core.EnsureAccept(8738);
-        Core.KillEscherion("1st Lord Of Chaos Helm");
-        Core.KillVath("Chaos Dragonlord Helm");
-        Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
-        Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
-        Core.EnsureComplete(8738);
-
+        if (!Story.QuestProgression(8738))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(8738);
+            Core.KillEscherion("1st Lord Of Chaos Helm");
+            Core.KillVath("Chaos Dragonlord Helm");
+            Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
+            Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
+            Core.EnsureComplete(8738);
+        }
     }
 
     public void Lacerate()

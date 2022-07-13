@@ -319,7 +319,6 @@ public class DragonOfTime
                         LoggedBefore = true;
                     }
                 }
-
                 Core.BuyItem("borgars", 1884, 54650, shopItemID: 7387);
 
                 Core.EnsureCompleteChoose(7725, Extras);
