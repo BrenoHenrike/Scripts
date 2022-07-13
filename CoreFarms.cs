@@ -673,10 +673,9 @@ public class CoreFarms
             Core.RegisterQuests(8737);
             while (!Bot.ShouldExit() && FactionRank("Blacksmithing") < rank)
             {
-                if (Bot.Player.Gold > 500000 && FactionRank("Blacksmithing") < rank)
-                    Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k");
-                else if (Bot.Player.Gold < 500000 && FactionRank("Blacksmithing") < rank)
-                    Gold(500000);
+                Gold(500000);
+                Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k");
+                Bot.Sleep(Core.ActionDelay);
             }
             Core.CancelRegisteredQuests();
         }
