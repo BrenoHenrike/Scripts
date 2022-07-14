@@ -68,8 +68,6 @@ public class ForgeEnhancments
     public HeadoftheLegionBeast HOTLB = new();
 
 
-    public bool DontPreconfigure = true;
-
     public string OptionsStorage = "Forge Ehn Unlocks";
 
     public List<IOption> Options = new List<IOption>()
