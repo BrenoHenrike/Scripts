@@ -365,9 +365,8 @@ public class CoreQOM
         Story.MapItemQuest(5493, "SafiriaInvasion", 4897, 9);
 
         //Here, Doggy Doggy
+        Story.MapItemQuest(5494, "SafiriaInvasion", new[] {4898, 4899});
         Story.KillQuest(5494, "SafiriaInvasion", "Blood Maggot");
-        Story.MapItemQuest(5494, "SafiriaInvasion", 4898);
-        Story.MapItemQuest(5494, "SafiriaInvasion", 4899);
 
         //Ma'alech
         Story.KillQuest(5495, "SafiriaInvasion", "Ma'alech");
@@ -412,8 +411,8 @@ public class CoreQOM
         Story.PreLoad();
 
         //Follow Lady Solani
-        Story.KillQuest(5501, "SafiriaInvasion", "Fallen Knight");
         Story.MapItemQuest(5501, "SafiriaInvasion", 4902);
+        Story.KillQuest(5501, "SafiriaInvasion", "Fallen Knight");
 
         //Revenant Slayer
         Story.KillQuest(5502, "SafiriaInvasion", new[] { "Revenant", "Shadow Imp" });
@@ -475,8 +474,8 @@ public class CoreQOM
         Story.MapItemQuest(5554, "ShadowfallInvasion", 5031);
 
         //Soul Fuel
-        Story.KillQuest(5555, "ShadowfallInvasion", "Diabolical Scryer");
         Story.MapItemQuest(5555, "ShadowfallInvasion", 5032);
+        Story.KillQuest(5555, "ShadowfallInvasion", "Diabolical Scryer");
 
         //Time to Fly
         Story.MapItemQuest(5556, "ShadowfallInvasion", 5033);
@@ -573,34 +572,34 @@ public class CoreQOM
         Story.MapItemQuest(5803, "charredpath", 5248);
 
         //Follow the Pattern.. He Ne Ar Kr
-        Story.KillQuest(5804, "crashsite", "Dwakel Warrior");
         Story.MapItemQuest(5804, "crashsite", 5249);
+        Story.KillQuest(5804, "crashsite", "Dwakel Warrior");
 
         //The PTM is Ready!
-        Story.KillQuest(5805, "charredpath", new[] { "Noxious Fumes", "Toxic Bile" });
         Story.MapItemQuest(5805, "charredpath", 5256);
+        Story.KillQuest(5805, "charredpath", new[] { "Noxious Fumes", "Toxic Bile" });
 
         //Save the Creatures
-        Story.KillQuest(5806, "charredpath", "Ragewing");
         Story.MapItemQuest(5806, "charredpath", 5250, 6);
+        Story.KillQuest(5806, "charredpath", "Ragewing");
 
         //Clear the Treeants
-        Story.KillQuest(5807, "charredpath", "Toxic Treeant");
         Story.MapItemQuest(5807, "charredpath", 5251, 3);
+        Story.KillQuest(5807, "charredpath", "Toxic Treeant");
 
         //Excise the Infection
         Story.KillQuest(5808, "charredpath", "Infected Hare");
 
         //Root out the Plague
-        Story.KillQuest(5809, "charredpath", "Plague Spreader");
         Story.MapItemQuest(5809, "charredpath", 5252, 6);
+        Story.KillQuest(5809, "charredpath", "Plague Spreader");
 
         //I Said Yes, Yes, Yes
         Story.MapItemQuest(5810, "charredpath", 5255);
 
         //Rally the Mages
-        Story.KillQuest(5811, "therift", "Mana Chest");
         Story.MapItemQuest(5811, "therift", 5253, 4);
+        Story.KillQuest(5811, "therift", "Mana Chest");
 
         //Wisteria Hysteria
         Story.KillQuest(5812, "charredpath", "Toxic Wisteria");
@@ -687,8 +686,8 @@ public class CoreQOM
         Story.KillQuest(5839, "underglade", "Slime Spore");
 
         //Cleanse the Walls
-        Story.KillQuest(5840, "underglade", "Forest Spirit");
         Story.MapItemQuest(5840, "underglade", 5272, 8);
+        Story.KillQuest(5840, "underglade", "Forest Spirit");
 
         //Expose the Entrance
         Story.KillQuest(5841, "underglade", "Blackened Earth");
@@ -697,8 +696,8 @@ public class CoreQOM
         Story.KillQuest(5842, "underglade", "Luminous Fungus");
 
         //More Corruption Revealed
-        Story.KillQuest(5843, "underglade", "Forest Spirit");
         Story.MapItemQuest(5843, "underglade", 5273, 6);
+        Story.KillQuest(5843, "underglade", "Forest Spirit");
 
         //The Goblin Threat
         Story.KillQuest(5844, "underglade", "Twisted Goblin");
@@ -741,17 +740,17 @@ public class CoreQOM
         Story.KillQuest(5851, "Pilgrimage", "Extrikiti");
 
         //Find Lucky!
-        Story.KillQuest(5852, "Pilgrimage", new[] { "Extrikiti", "Extrikiti" });
-        Story.MapItemQuest(5852, "Pilgrimage", 5288, 3);
         Story.MapItemQuest(5852, "Pilgrimage", 5289);
+        Story.MapItemQuest(5852, "Pilgrimage", 5288, 3);
+        Story.KillQuest(5852, "Pilgrimage", new[] { "Extrikiti", "Extrikiti" });
 
         //Gather a Scouting Party
         Story.MapItemQuest(5853, "Pilgrimage", 5290, 6);
         Story.MapItemQuest(5853, "Pilgrimage", 5291);
 
         //Defeat the Parasites
-        Story.KillQuest(5854, "Pilgrimage", "Ravenous Parasite");
         Story.MapItemQuest(5854, "Pilgrimage", 5292);
+        Story.KillQuest(5854, "Pilgrimage", "Ravenous Parasite");
 
         //Bad Dog
         Story.KillQuest(5855, "Pilgrimage", "Lucky");
@@ -767,8 +766,8 @@ public class CoreQOM
         Story.PreLoad();
 
         //Connect to the Earth
-        Story.KillQuest(6276, "guardiantree", "Blossoming Treeant");
         Story.MapItemQuest(6276, "guardiantree", 5769, 5);
+        Story.KillQuest(6276, "guardiantree", "Blossoming Treeant");
 
         //Help the Hedgies
         Story.MapItemQuest(6277, "guardiantree", 5776, 5);
@@ -793,8 +792,8 @@ public class CoreQOM
         Story.KillQuest(6281, "guardiantree", "Blossoming Treeant");
 
         //Pass Through the Pollen
-        Story.KillQuest(6282, "guardiantree", "Pollen Cloud");
         Story.MapItemQuest(6282, "guardiantree", 5773);
+        Story.KillQuest(6282, "guardiantree", "Pollen Cloud");
 
         //Reinvigorate the Sprout
         if (!Story.QuestProgression(6283))
@@ -808,8 +807,8 @@ public class CoreQOM
         Story.MapItemQuest(6284, "guardiantree", 5774);
 
         //Grow a Bridge
-        Story.KillQuest(6285, "guardiantree", "Myconid");
         Story.MapItemQuest(6285, "guardiantree", 5775, 2);
+        Story.KillQuest(6285, "guardiantree", "Myconid");
 
         //Take Down Terrane
         Story.KillQuest(6286, "guardiantree", "Terrane");
@@ -825,8 +824,8 @@ public class CoreQOM
         Story.PreLoad();
 
         //Explore the Cavern
-        Story.KillQuest(5856, "TwistedCavern", "Extrikiti");
         Story.MapItemQuest(5856, "TwistedCavern", 5293);
+        Story.KillQuest(5856, "TwistedCavern", "Extrikiti");
 
         //Capture the Insects
         Story.KillQuest(5857, "TwistedCavern", "Infesting Swarm");
@@ -886,9 +885,9 @@ public class CoreQOM
         }
 
         //Examine the Foliage
-        Story.KillQuest(5868, "BrokenWoods", "Fungal Lord");
         Story.MapItemQuest(5868, "BrokenWoods", 5296, 4);
         Story.MapItemQuest(5868, "BrokenWoods", 5297, 4);
+        Story.KillQuest(5868, "BrokenWoods", "Fungal Lord");
 
         //Investigate the Goo
         Story.KillQuest(5869, "BrokenWoods", "Extrikiti");
