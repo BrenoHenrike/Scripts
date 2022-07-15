@@ -343,7 +343,7 @@ public class GlaceraStory
 
     public void IceDungeon()
     {
-        if (Core.isCompletedBefore(7481))
+        if (Core.isCompletedBefore(7841))
             return;
 
         // Cold Open
