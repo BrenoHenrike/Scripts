@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/StarFestival.cs
+//cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
 using RBot;
 using RBot.Items;
 using RBot.Options;
