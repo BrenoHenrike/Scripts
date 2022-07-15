@@ -198,7 +198,13 @@ public class Awescended
             Core.Unbank("Arch DoomKnight");
             Armor.DrakathOriginalArmor();
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
+            
+            Core.Unbank("GOLD Boost! (60 min)", "Doom GOLD Boost! (60 min)", "GOLD Boost! (20 min)");
+            Bot.Boosts.UseGoldBoost = true;
+            Adv.BestGear(GearBoost.gold);
+
             Core.EnsureComplete(8042);
+            Bot.Boosts.UseGoldBoost = false;
         }
 
         Core.BuyItem("museum", 1994, "Awescended");
