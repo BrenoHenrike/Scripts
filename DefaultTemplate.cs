@@ -19,10 +19,8 @@ public class DefaultTemplate
 
     public void Example()
     {
-        if (Core.CheckInventory("item"))
-            return;
+        Core.HuntMonsterMapID("eridanipast", 19|18, "Paladin Dueled");
 
-        //INSERT CODE HERE      
 
 
     }
