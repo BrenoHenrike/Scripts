@@ -1531,6 +1531,8 @@ public class CoreBots
 
     public void SavedState(bool on = true)
     {
+        return;
+        //Disabled to see if it lowers bans
         string[] SavedStateRNG = _SavedStateRNG();
         if (on)
         {
