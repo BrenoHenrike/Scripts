@@ -1179,8 +1179,7 @@ public class CoreBots
         if (item != null)
             AddDrop(item);
 
-        if (Bot.Map.Name != "stalagbite")
-            Join("stalagbite", "r2", "Left");
+        Join("stalagbite", "r2", "Left");
 
         if (item == null)
         {
