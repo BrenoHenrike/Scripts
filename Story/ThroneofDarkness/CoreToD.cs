@@ -165,19 +165,12 @@ public class CoreToD
 
     public void BoneTowerAll()
     {
-        BoneTowerSilver();
-        BoneTowerGold();
-    }
-
-    public void BoneTowerSilver()
-    {
-        if (!Core.IsMember || Core.isCompletedBefore(5010))
+        if (!Core.IsMember || Core.isCompletedBefore(5022))
             return;
 
         if (doAll)
             Core.Logger("Vaden - The DeathKnight: Bone Tower (Silver)");
         Story.PreLoad();
-
         CastleofBones();
 
         // Eye Sp-eye
@@ -199,7 +192,7 @@ public class CoreToD
         Story.MapItemQuest(5001, "towersilver", new[] { 4368, 4369, 4370, 4371, 4372, });
 
         // Mirror, Mirror
-        Story.MapItemQuest(5002, "towersilver", 437, 3);
+        Story.MapItemQuest(5002, "towersilver", 4373, 3);
 
         // Bloody Scary
         Story.KillQuest(5003, "towersilver", "Bloody Scary");
@@ -224,19 +217,6 @@ public class CoreToD
 
         // In the Mix        
         Story.KillQuest(5010, "towersilver", "Bloody Scary");
-
-    }
-
-    public void BoneTowerGold()
-    {
-        if (!Core.IsMember || Core.isCompletedBefore(5022))
-            return;
-
-        if (doAll)
-            Core.Logger("Vaden - The DeathKnight: Bone Tower (Gold)");
-        Story.PreLoad();
-
-        BoneTowerSilver();
 
         // They Know We're Coming
         Story.KillQuest(5011, "towergold", "Grim Souldier");
