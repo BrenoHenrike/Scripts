@@ -218,11 +218,6 @@ public class ForgeEnhancments
     public void Vainglory()
     {
 
-        if (!Bot.Quests.IsUnlocked(8744))
-        {
-            Absolution();
-        }
-
         Core.EnsureAccept(8744);
         Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
         Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
@@ -235,9 +230,6 @@ public class ForgeEnhancments
 
     public void Avarice()
     {
-        Absolution();
-        Vainglory();
-
         Core.EnsureAccept(8745);
         HOTLB.Indulgence(75);
         HOTLB.Penance(75);
