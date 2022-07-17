@@ -596,8 +596,8 @@ public class CoreLegion
         // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
         while (!Bot.ShouldExit() &&
-                !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) &&
-                !Core.CheckInventory("Technique Observed", TechniqueQuant) &&
+                !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) ||
+                !Core.CheckInventory("Technique Observed", TechniqueQuant) ||
                 !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
         {
             Core.Join("Dagepvp", "Enter0", "Spawn", ignoreCheck: true);
