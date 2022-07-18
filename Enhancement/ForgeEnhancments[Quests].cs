@@ -188,6 +188,9 @@ public class ForgeEnhancments
 
     public void ForgeCapeEnhancement()
     {
+        if(Core.isCompletedBefore(8758))
+        return;
+
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8758);
         Core.KillEscherion("1st Lord Of Chaos Staff");
@@ -201,6 +204,9 @@ public class ForgeEnhancments
 
     public void Absolution()
     {
+        if(Core.isCompletedBefore(8743))
+            return;
+
         Core.EnsureAccept(8743);
         Farm.GoodREP(9);
         if (!Core.CheckInventory("Ascended Paladin"))
@@ -217,6 +223,8 @@ public class ForgeEnhancments
 
     public void Vainglory()
     {
+        if(Core.isCompletedBefore(8744))
+            return;
 
         Core.EnsureAccept(8744);
         Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
@@ -230,6 +238,9 @@ public class ForgeEnhancments
 
     public void Avarice()
     {
+        if(Core.isCompletedBefore(8745))
+            return;
+
         Core.EnsureAccept(8745);
         HOTLB.Indulgence(75);
         HOTLB.Penance(75);
@@ -241,6 +252,9 @@ public class ForgeEnhancments
 
     public void ForgeWeaponEnhancement()
     {
+        if(Core.isCompletedBefore(8738))
+            return;
+
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8738);
         Core.KillEscherion("1st Lord Of Chaos Helm");
@@ -254,6 +268,9 @@ public class ForgeEnhancments
 
     public void Lacerate()
     {
+        if(Core.isCompletedBefore(8739))
+            return;
+
         if (!Bot.Quests.IsUnlocked(8739))
         {
             Core.AddDrop("Massive Horc Cleaver", "Sword in the Stone", "Forest Axe");
@@ -311,7 +328,10 @@ public class ForgeEnhancments
 
     public void Smite()
     {
-        SFR.StoryLine();
+        if(Core.isCompletedBefore(8740))
+            return;
+
+            SFR.StoryLine();
 
         Core.EnsureAccept(8740);
         Core.HuntMonster("shadowattack", "Death", "Death's Power", 3, isTemp: false);
@@ -326,6 +346,9 @@ public class ForgeEnhancments
 
     public void HerosValiance()
     {
+        if(Core.isCompletedBefore(8741))
+            return;
+
         LOC.Complete13LOC();
         FCA.GetFireChampsArmor();
         DOT.GetDoT();
@@ -349,8 +372,11 @@ public class ForgeEnhancments
 
     public void ArcanasConcertoWIP()
     {
+        if(Core.isCompletedBefore(8742))
+            return;
+
         // Arcana's Concerto   
-        if (Bot.Quests.IsUnlocked(8742))
+        if (!Bot.Quests.IsUnlocked(8742))
         {
             // Must have completed the 'Darkon, the Conductor' quest.
             //8746|Darkon, the Conductor
