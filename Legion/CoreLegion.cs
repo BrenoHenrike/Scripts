@@ -654,6 +654,7 @@ public class CoreLegion
             DagePvPMove(28, "r15", 941, 348);
 
             Bot.Player.Kill("Dage the Evil");
+            Bot.Sleep(5000);
             Bot.Wait.ForDrop("Legion Combat Trophy");
 
             Core.Join("battleon");

@@ -1,0 +1,86 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
+using RBot;
+
+public class TitanAttackStory
+{
+    public ScriptInterface Bot => ScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+
+    public void ScriptMain(ScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        StoryLine();
+
+        Core.SetOptions(false);
+    }
+
+    public void StoryLine()
+    {
+        if (Core.isCompletedBefore(8772))
+            return;
+
+        // Those Who Remain
+        Story.MapItemQuest(8759, "titanattack", new[] { 10345, 10346, 10347, 10348, 10349 });
+
+        // Who Helps the Healer? 8760
+        Story.KillQuest(8760, "titanattack", new[] { "Corrosive Crawler", "Chaorrupted Bandit" });
+
+        // Supply in Demand 8761
+        Story.KillQuest(8761, "titanattack", "Supply Caravan");
+
+        // Creature Comforts 8762
+        Story.KillQuest(8762, "titanattack", new[] { "Chaos Wyvern", "Corrosive Crawler" });
+
+        // Infernal Investigation 8763
+        Story.KillQuest(8763, "titanattack", new[] { "AntiTitan Corps", "Chaorrupted Bandit" });
+
+        // Another Brick in the Wall 8764        
+        Story.MapItemQuest(8764, "titanattack", 10350, 3);
+        Story.KillQuest(8764, "titanattack", new[] { "Supply Caravan", "Corrosive Crawler", "Chaos Dweller" });
+
+        // Rotten to the Corps 8765
+        Story.KillQuest(8765, "titanattack", "AntiTitan Corps");
+
+        // A Fighting Chance 8766
+        Story.MapItemQuest(8766, "titanattack", 10351, 8);
+        Story.KillQuest(8766, "titanattack", new[] { "Corrosive Crawler", "Supply Caravan" });
+
+        // Flash of the Titans 8767
+        if (!Story.QuestProgression(8767))
+        {
+            Core.EnsureAccept(8767);
+            Core.HuntMonster("titanattack", "Supply Caravan", "Shine Powder", 5);
+            Core.HuntMonster("titanattack", "Supply Caravan", "Explosive Casing", 10);
+            Core.HuntMonster("titanattack", "Chaotic Beholder", "Smoke Sac", 5);
+            Core.EnsureComplete(8767);
+        }
+
+        // Vein Ambition 8768
+        Story.KillQuest(8768, "titanattack", "Corrosive Crawler");
+
+        // Asset Acquisition 8769
+        if (!Story.QuestProgression(8769))
+        {
+            Core.EnsureAccept(8769);
+            Core.HuntMonster("titanattack", "Supply Caravan", "Food Crate", 5);
+            Core.HuntMonster("titanattack", "Supply Caravan", "Medicine Vial", 15);
+            Core.HuntMonster("titanattack", "Chaorrupted Bandit", "Bandit Blade", 15);
+            Core.EnsureComplete(8769);
+        }
+        
+        // Enemy at the Gate 8770
+        Story.MapItemQuest(8770, "titanattack", 10352);
+
+        // Titanic Terror 8771
+        Story.KillQuest(8771, "titanattack", "Titanic Vindicator");
+
+        // Titanic Terror Times Two 8772
+        Story.KillQuest(8772, "titanattack", new[] { "Titanic Paladin", "Titanic DoomKnight" });
+
+    }
+}
