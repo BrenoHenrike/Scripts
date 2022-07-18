@@ -5,7 +5,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Nation/Fiendshard.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/AFDL.WillpowerExtraction.cs
+//cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Story/Nation/Originul.cs
 using RBot;
 using RBot.Items;
