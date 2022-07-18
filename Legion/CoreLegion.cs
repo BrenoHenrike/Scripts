@@ -600,6 +600,13 @@ public class CoreLegion
                 !Core.CheckInventory("Technique Observed", TechniqueQuant) ||
                 !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
         {
+            if (TrophyQuant > 0)
+                Core.Logger($"Trophy: {Bot.Inventory.GetQuantity("Legion Combat Trophy")} / {TrophyQuant}");
+            if (TechniqueQuant > 0)
+                Core.Logger($"Technique: {Bot.Inventory.GetQuantity("Technique Observed")} / {TechniqueQuant}");
+            if (ScrollQuant > 0)
+                Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
+
             Core.Join("Dagepvp", "Enter0", "Spawn", ignoreCheck: true);
 
             DagePvPMove(1, "r2", 475, 269);
@@ -647,7 +654,8 @@ public class CoreLegion
             DagePvPMove(28, "r15", 941, 348);
 
             Bot.Player.Kill("Dage the Evil");
-            Bot.Wait.ForPickup("*");
+            Bot.Sleep(5000);
+            Bot.Wait.ForDrop("legion Combat Trophy");
 
             Core.Join("battleon");
         }
