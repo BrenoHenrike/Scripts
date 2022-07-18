@@ -670,12 +670,14 @@ public class CoreFarms
         if (UseGold)
         {
             Core.Logger("using Gold Method");
-            Core.RegisterQuests(8737);
+            // Core.RegisterQuests(8737);
             while (!Bot.ShouldExit() && FactionRank("Blacksmithing") < rank)
             {
+                Core.EnsureAccept(8737);
                 Gold(500000);
                 Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k");
                 Bot.Sleep(Core.ActionDelay);
+                Core.EnsureComplete(8737);
             }
             Core.CancelRegisteredQuests();
         }
