@@ -1245,7 +1245,7 @@ public class CoreAdvanced
                 if (SelectedClass.EnhancementLevel == 0)
                     EnhanceItem(Class, EnhancementType.Lucky);
                 Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
+                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
                 break;
             //Lucky - Health Vamp
             case "archfiend":
@@ -1351,7 +1351,6 @@ public class CoreAdvanced
                     EnhanceItem(Class, EnhancementType.Healer);
                 Core.Equip(SelectedClass.Name);
                 EnhanceEquipped(EnhancementType.Healer, WeaponSpecial.Health_Vamp);
-                //when able add "Valiance" for vhl if unlocked in forge, script is already made
                 break;
             default:
                 Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
