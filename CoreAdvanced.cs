@@ -1203,6 +1203,7 @@ public class CoreAdvanced
             case "warrior":
             case "warrior (rare)":
             case "warriorscythe general":
+            case "yami no ronin":
                 if (SelectedClass.EnhancementLevel == 0)
                     EnhanceItem(Class, EnhancementType.Lucky);
                 Core.Equip(SelectedClass.Name);
@@ -1241,7 +1242,6 @@ public class CoreAdvanced
             case "troubador of love":
             case "unchained rocker":
             case "unchained rockstar":
-            case "yami no ronin":
                 if (SelectedClass.EnhancementLevel == 0)
                     EnhanceItem(Class, EnhancementType.Lucky);
                 Core.Equip(SelectedClass.Name);
