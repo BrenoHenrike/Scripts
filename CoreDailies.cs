@@ -347,7 +347,7 @@ public class CoreDailies
         }
     }
 
-public void Cryomancer()
+    public void Cryomancer()
     {
         Core.Logger("Daily: Cryomancer Class");
         if (Core.CheckInventory("Cryomancer", toInv: false))
@@ -355,25 +355,25 @@ public void Cryomancer()
             Core.Logger("You already own Cryomancer, Skipped");
             return;
         }
-        
+
         if (Core.IsMember && CheckDaily(3965, true, "Glacera Ice Token"))
         {
             Core.EquipClass(ClassType.Farm);
             DailyRoutine(3965, "frozentower", "Frost Invader", "Dark Ice");
-            Core.Logger($"Glacera Ice Token {Bot.Inventory.GetQuantity("Glacera Ice Token")} / 84");
+            Core.FarmingLogger("Glacera Ice Token", 84, "Glacera Ice Token");
             Core.ToBank("Glacera Ice Token");
         }
-        
+
         if (CheckDaily(3966, true, "Glacera Ice Token"))
         {
             Core.EquipClass(ClassType.Farm);
             DailyRoutine(3966, "frozentower", "Frost Invader", "Dark Ice");
-            Core.Logger($"Glacera Ice Token {Bot.Inventory.GetQuantity("Glacera Ice Token")} / 84");
+            Core.FarmingLogger("Glacera Ice Token", 84, "Glacera Ice Token");
             Core.ToBank("Glacera Ice Token");
-        }        
+        }
         if (Core.CheckInventory("Glacera Ice Token", 84))
             Core.BuyItem("frozenruins", 1056, "Cryomancer", shopItemID: 3041);
-            Core.ToBank("Glacera Ice Token");
+        Core.ToBank("Glacera Ice Token");
     }
 
     public void Pyromancer()
@@ -385,11 +385,11 @@ public void Cryomancer()
             return;
         }
         Bot.Quests.UpdateQuest(2157);
-        if (!Core.IsMember && !CheckDaily(2210, true, "Shurpu Blaze Token"))
+        if (Core.IsMember && CheckDaily(2210, true, "Shurpu Blaze Token"))
         {
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(2210, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
-            Core.Logger($"Shurpu Blaze Token {Bot.Inventory.GetQuantity("Shurpu Blaze Token")} / 84");
+            Core.FarmingLogger("Shurpu Blaze Token", 84, "Shurpu Blaze Token");
             Core.ToBank("Shurpu Blaze Token");
         }
 
@@ -397,13 +397,13 @@ public void Cryomancer()
         {
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(2209, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
-            Core.Logger($"Shurpu Blaze Token {Bot.Inventory.GetQuantity("Shurpu Blaze Token")} / 84");
-            Core.ToBank("Shurpu Blaze Token"); 
-        }     
-        
+            Core.FarmingLogger("Shurpu Blaze Token", 84, "Shurpu Blaze Token");
+            Core.ToBank("Shurpu Blaze Token");
+        }
+
         if (Core.CheckInventory("Shurpu Blaze Token", 84))
             Core.BuyItem("xancave", 447, "Pyromancer", shopItemID: 1278);
-            Core.ToBank("Shurpu Blaze Token");
+        Core.ToBank("Shurpu Blaze Token");
     }
 
     public void DeathKnightLord()
