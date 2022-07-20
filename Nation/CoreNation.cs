@@ -537,7 +537,7 @@ public class CoreNation
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                 {
                     Bot.Player.Pickup("Voucher of Nulgath");
-                    Core.SellItem("Voucher of Nulgath");
+                    Core.SellItem("Voucher of Nulgath", all: true);
                 }
                 Core.Logger($"Completed x{i++}");
             }
@@ -644,7 +644,7 @@ public class CoreNation
 
         Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
         if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-            Core.SellItem("Voucher of Nulgath");
+            Core.SellItem("Voucher of Nulgath", all: true);
         Core.CancelRegisteredQuests();
     }
 
