@@ -187,7 +187,7 @@ public class DoomwoodPart3
         if (!Story.QuestProgression(7628))
         {
             Core.EnsureAccept(7628);
-            Core.KillMonster("stonewooddeep", "r3", "Right", "Target Dummy", "Target Dummy Slain", 6);
+            Core.HuntMonsterMapID("stonewooddeep", 4|5, "Target Dummy Slain", 6);
             Core.EnsureComplete(7628);
         }
 
