@@ -418,7 +418,7 @@ public class CoreFarms
         BaconCatREP();
         BeastMasterREP();
         BlacksmithingREP();
-        BladeofAweREP();
+        BladeofAweREP(farmBoA: false);
         BrightoakREP();
         ChaosMilitiaREP();
         ChaosREP();
