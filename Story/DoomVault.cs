@@ -29,86 +29,77 @@ public class DoomVaultA
             return;
         }
 
-        Core.AcceptandCompleteTries = 1;
-
         Story.PreLoad();
 
+        Bot.Quests.UpdateQuest(3008);
 
         // the challenge begins
-        Story.KillQuest(QuestID: 2952, MapName: "doomvault", MonsterName: "Grim Soldier");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2952, "doomvault", "Grim Soldier");
 
         //fight to survive
-        Story.KillQuest(QuestID: 2953, MapName: "doomvault", MonsterName: "Grim Fighter");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2953, "doomvault", "Grim Fighter");
 
 
         // the battle's heating up
-        Story.KillQuest(QuestID: 2954, MapName: "doomvault", MonsterName: "Grim Fire Mage");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2954, "doomvault", "Grim Fire Mage");
 
 
         // a close shave
-        Story.KillQuest(QuestID: 2955, MapName: "doomvault", MonsterName: "Grim Shelleton");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2955, "doomvault", "Grim Shelleton");
 
 
         // eye spy a victim
-        Story.KillQuest(QuestID: 2965, MapName: "doomvault", MonsterName: "Flying Spyball");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2965, "doomvault", "Flying Spyball");
 
 
         // help me!
-        Story.KillQuest(QuestID: 2966, MapName: "doomvault", MonsterName: "Princess Angler");
-        Bot.Quests.UpdateQuest(3008);
-
+        if (!Story.QuestProgression(2966))
+        {
+            Core.EnsureAccept(2966);
+            Core.HuntMonsterMapID("doomvault", 21, "Hand of the Princess");
+            Core.EnsureComplete(2966);
+        }
 
         // get your hands dirty
-        Story.KillQuest(QuestID: 2967, MapName: "doomvault", MonsterName: "Grim Ectomancer");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2967, "doomvault", "Grim Ectomancer");
 
 
         // a rocky battle
-        Story.KillQuest(QuestID: 2968, MapName: "doomvault", MonsterName: "Fallen Light Statue");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2968, "doomvault", "Fallen Light Statue");
 
         //soul-d of defeat
-        Story.KillQuest(QuestID: 2969, MapName: "doomvault", MonsterName: "Grim Soldier");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2969, "doomvault", "Grim Soldier");
 
         //the key to help me
-        Story.KillQuest(QuestID: 2970, MapName: "doomvault", MonsterName: "Grim Shelleton");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2970, "doomvault", "Grim Shelleton");
 
         //help me again!
-        Story.KillQuest(QuestID: 2971, MapName: "doomvault", MonsterName: "Princess Angler");
-        Bot.Quests.UpdateQuest(3008);
+        if (!Story.QuestProgression(2971))
+        {
+            Core.EnsureAccept(2971);
+            Core.HuntMonsterMapID("doomvault", 37, "Angler Slain");
+            Core.EnsureComplete(2971);
+        }
 
         //overheated hero
-        Story.KillQuest(QuestID: 2974, MapName: "doomvault", MonsterName: "Grim Fire Mage");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2974, "doomvault", "Grim Fire Mage");
 
         //the blade-breaker
-        Story.KillQuest(QuestID: 2981, MapName: "doomvault", MonsterName: "Grim Lich");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2981, "doomvault", "Grim Lich");
 
         //anti-magic warrior
-        Story.KillQuest(QuestID: 2982, MapName: "doomvault", MonsterName: "Grim Fighter");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2982, "doomvault", "Grim Fighter");
 
         //elemental destroyer
-        Story.KillQuest(QuestID: 2983, MapName: "doomvault", MonsterName: "Grim Ectomancer");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(2983, "doomvault", "Grim Ectomancer");
 
         //the unkillable
-        Story.KillQuest(QuestID: 3006, MapName: "doomvault", MonsterName: "Grim Shelleton");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(3006, "doomvault", "Grim Shelleton");
 
         //key to victory
-        Story.KillQuest(QuestID: 3007, MapName: "doomvault", MonsterName: "Fallen Light Statue");
-        Bot.Quests.UpdateQuest(3008);
+        Story.KillQuest(3007, "doomvault", "Fallen Light Statue");
 
         //i command you, help me!
-        Story.KillQuest(QuestID: 3008, MapName: "doomvault", MonsterName: "Ghost King Angler");
+        Story.KillQuest(3008, "doomvault", "Ghost King Angler");
     }
 }
