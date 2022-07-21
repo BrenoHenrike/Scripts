@@ -81,7 +81,7 @@ public class SepulchuresOriginalHelm
                 else if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
                     Core.ChainComplete(5456);
                 else Core.EnsureAccept(5457);
-                Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord", isTemp: false);
+                Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord");
                 Core.EnsureComplete(5457);
                 Bot.Wait.ForPickup("Gravelyn's Blessing");
             }
