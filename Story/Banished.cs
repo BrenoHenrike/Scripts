@@ -129,7 +129,6 @@ public class Banished
             Core.EnsureComplete(2025);
         }
 
-
         // Re - Open the Seal
         Story.MapItemQuest(2026, "banished", 981, 7);
 
