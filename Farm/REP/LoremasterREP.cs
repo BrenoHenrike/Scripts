@@ -13,23 +13,10 @@ public class LoremasterREP
     {
         Core.SetOptions();
 
-        UnlockLoreMaster();
-
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
         Farm.LoremasterREP();
 
         Core.SetOptions(false);
-    }
-
-    private void UnlockLoreMaster()
-    {
-        if (Core.IsMember && !Bot.Quests.IsUnlocked(3032))
-        {
-            // Rosetta Stones
-            Story.KillQuest(3029, "druids", new[] { "Void Bear", "Void Larva", "Void Ghast" }, false);
-            Story.KillQuest(3030, "druids", "Void Larva");
-            Story.KillQuest(3031, "druids", "Void Ghast");
-        }
     }
 }

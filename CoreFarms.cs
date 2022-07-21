@@ -1456,11 +1456,29 @@ public class CoreFarms
             }
             else if (Core.IsMember && FactionRank("Loremaster") >= 3)
             {
+                if (!Bot.Quests.IsUnlocked(3032))
+                {
+                    // Rosetta Stones
+                    Core.EnsureAccept(3029);
+                    Core.HuntMonster("druids", "Void Bear", "Voidstone ", 6);
+                    Core.EnsureComplete(3029);
+
+                    // Cull the Foot Soldiers
+                    Core.EnsureAccept(3030);
+                    Core.HuntMonster("druids", "Void Larva", "Void Larvae Death Cry", 4);
+                    Core.EnsureComplete(3030);
+
+                    // Bad Vibes
+                    Core.EnsureAccept(3031);
+                    Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
+                    Core.EnsureComplete(3031);
+                }
+                // Quite the Problem
                 Core.RegisterQuests(3032);
                 Core.EquipClass(ClassType.Solo);
                 while (!Bot.ShouldExit() && FactionRank("Loremaster") < rank)
                 {
-                    Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", 1);
+                    Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell");
                 }
                 Core.CancelRegisteredQuests();
             }
