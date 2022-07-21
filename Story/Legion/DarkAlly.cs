@@ -23,10 +23,14 @@ public class DarkAlly_Story
             return;
 
         Story.PreLoad();
-
-        Story.MapItemQuest(7419, "darkally", 7179, 6);
-        Story.KillQuest(7419, "darkally", "Shadow");
-
+        
+        if (!Story.QuestProgression(7419))
+        {
+            Story.MapItemQuest(7419, "darkally", 7179, 6);
+            Core.KillMonster("darkally", "r2", "Left", "Shadow", "Shadow Destroyed", 10);
+            Core.EnsureComplete(7419);
+        }
+        
         Story.KillQuest(7420, "darkally", new[] { "Underworld Golem", "Underworld Golem" });
 
         Story.MapItemQuest(7421, "darkally", 7180, 1);

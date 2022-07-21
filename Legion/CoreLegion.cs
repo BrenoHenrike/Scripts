@@ -414,10 +414,11 @@ public class CoreLegion
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.Join("dreadrock");
         Core.RegisterQuests(4849);
-
+        Bot.Options.AggroMonsters = true;
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6, log: false);
 
+        Bot.Options.AggroMonsters = false;
         Core.CancelRegisteredQuests();
     }
 
