@@ -463,23 +463,15 @@ public class CoreNation
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
-        int i = 1;
-        Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
-
+        Bot.Quests.UpdateQuest(847);
+        Core.RegisterQuests(2566);
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
-            Core.EnsureAccept(2566);
-            if (!Core.CheckInventory("Mana Energy for Nulgath"))
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 1, false);
-            while (!Bot.ShouldExit() && Core.CheckInventory("Mana Energy for Nulgath"))
-            {
-                Core.EnsureAccept(2566);
-                Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5);
-                Core.EnsureComplete(2566);
-                Bot.Sleep(Core.ActionDelay);
-                Core.Logger($"Completed x{i++}");
-            }
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonsterMapID("elemental", 7, "Mana Energy for Nulgath", isTemp: false);
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5);
             Bot.Player.Pickup(item);
         }
     }

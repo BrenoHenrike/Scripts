@@ -845,6 +845,7 @@ public class Core13LoC
         }
 
         //The Great Mana Golem
+        Bot.Quests.UpdateQuest(847);
         Story.KillQuest(846, "elemental", "Mana Golem");
 
         //Chaos Lord Ledgermayne
