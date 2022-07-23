@@ -20,7 +20,7 @@ public class TitanAttackStory
 
         Core.SetOptions(false);
     }
-    
+
     public void DoAll()
     {
         if (Core.isCompletedBefore(8777))
@@ -42,9 +42,15 @@ public class TitanAttackStory
         Story.KillQuest(8763, "titanattack", new[] { "AntiTitan Corps", "Chaorrupted Bandit" });
 
         // Another Brick in the Wall 8764        
-        Story.MapItemQuest(8764, "titanattack", 10350, 3);
-        Story.KillQuest(8764, "titanattack", new[] { "Supply Caravan", "Corrosive Crawler", "Chaos Dweller" });
-        
+        if (!Story.QuestProgression(8764))
+        {
+            Story.MapItemQuest(8764, "titanattack", 10350, 3);
+            Core.HuntMonster("titanattack", "Supply Caravan", "Building Brick", 15);
+            Core.HuntMonster("titanattack", "Corrosive Crawler", "Chitin Coating", 8);
+            Core.HuntMonster("titanattack", "Chaos Dweller", "Adhesive Saliva", 7);
+            Core.EnsureComplete(8764);
+        }
+
         // Rotten to the Corps 8765
         Story.KillQuest(8765, "titanattack", "AntiTitan Corps");
 
@@ -84,7 +90,7 @@ public class TitanAttackStory
         // Titanic Terror Times Two 8772
         Story.KillQuest(8772, "titanattack", new[] { "Titanic Paladin", "Titanic DoomKnight" });
 
-        // A Little Light... 8776
+        // A Little Light... 8773
         Story.KillQuest(8773, "titanstrike", "Titanic Paladin");
 
         // A Dose of Darkness... 8774
@@ -94,11 +100,12 @@ public class TitanAttackStory
         Story.KillQuest(8775, "titanstrike", "Titanic Destroyer");
 
         // Topple Some Titans! 8776
-        Story.KillQuest(8776, "titanstrike", new[] { "Titanic Paladin", "Titanic DoomKnight", "Titanic Destroyer" }, GetReward: true, Reward: "Heroic Titan's Greatsword");
+        Story.KillQuest(8776, "titanstrike", new[] { "Titanic Paladin", "Titanic DoomKnight", "Titanic Destroyer" });
 
         // The BIG Finish 8777
-        //Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, WeaponSpecial.None);
-        //Adv.BestGear(GearBoost.Drakath);
+        Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
+        Adv.BestGear(GearBoost.Drakath);
+
         Story.KillQuest(8777, "titandrakath", "Titan Drakath");
 
     }
