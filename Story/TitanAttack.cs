@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
 public class TitanAttackStory
@@ -9,22 +10,23 @@ public class TitanAttackStory
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        StoryLine();
+        DoAll();
 
         Core.SetOptions(false);
     }
-
-    public void StoryLine()
+    
+    public void DoAll()
     {
-        if (Core.isCompletedBefore(8772))
+        if (Core.isCompletedBefore(8777))
             return;
 
-        // Those Who Remain
+        // Those Who Remain 8759
         Story.MapItemQuest(8759, "titanattack", new[] { 10345, 10346, 10347, 10348, 10349 });
 
         // Who Helps the Healer? 8760
@@ -42,7 +44,7 @@ public class TitanAttackStory
         // Another Brick in the Wall 8764        
         Story.MapItemQuest(8764, "titanattack", 10350, 3);
         Story.KillQuest(8764, "titanattack", new[] { "Supply Caravan", "Corrosive Crawler", "Chaos Dweller" });
-
+        
         // Rotten to the Corps 8765
         Story.KillQuest(8765, "titanattack", "AntiTitan Corps");
 
@@ -72,7 +74,7 @@ public class TitanAttackStory
             Core.HuntMonster("titanattack", "Chaorrupted Bandit", "Bandit Blade", 15);
             Core.EnsureComplete(8769);
         }
-        
+
         // Enemy at the Gate 8770
         Story.MapItemQuest(8770, "titanattack", 10352);
 
@@ -81,6 +83,23 @@ public class TitanAttackStory
 
         // Titanic Terror Times Two 8772
         Story.KillQuest(8772, "titanattack", new[] { "Titanic Paladin", "Titanic DoomKnight" });
+
+        // A Little Light... 8776
+        Story.KillQuest(8773, "titanstrike", "Titanic Paladin");
+
+        // A Dose of Darkness... 8774
+        Story.KillQuest(8774, "titanstrike", "Titanic DoomKnight");
+
+        // And A Cup of Chaos 8775
+        Story.KillQuest(8775, "titanstrike", "Titanic Destroyer");
+
+        // Topple Some Titans! 8776
+        Story.KillQuest(8776, "titanstrike", new[] { "Titanic Paladin", "Titanic DoomKnight", "Titanic Destroyer" }, GetReward: true, Reward: "Heroic Titan's Greatsword");
+
+        // The BIG Finish 8777
+        //Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, WeaponSpecial.None);
+        //Adv.BestGear(GearBoost.Drakath);
+        Story.KillQuest(8777, "titandrakath", "Titan Drakath");
 
     }
 }
