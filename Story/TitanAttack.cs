@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class TitanSaga
+public class TitanAttackStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,21 +16,15 @@ public class TitanSaga
     {
         Core.SetOptions();
 
-        TSDoAll();
+        DoAll();
 
         Core.SetOptions(false);
     }
-
-    public void TSDoAll()
+    
+    public void DoAll()
     {
-        TitanAttack();
-        TitanStrike();
-        TitanBattle();
-    }
-    public void TitanAttack()
-    {
-        if (Core.isCompletedBefore(8772))
-            return;
+        //if (Core.isCompletedBefore(8777))
+        //    return;
 
         // Those Who Remain 8759
         Story.MapItemQuest(8759, "titanattack", new[] { 10345, 10346, 10347, 10348, 10349 });
@@ -50,7 +44,7 @@ public class TitanSaga
         // Another Brick in the Wall 8764        
         Story.MapItemQuest(8764, "titanattack", 10350, 3);
         Story.KillQuest(8764, "titanattack", new[] { "Supply Caravan", "Corrosive Crawler", "Chaos Dweller" });
-
+        
         // Rotten to the Corps 8765
         Story.KillQuest(8765, "titanattack", "AntiTitan Corps");
 
@@ -90,14 +84,6 @@ public class TitanSaga
         // Titanic Terror Times Two 8772
         Story.KillQuest(8772, "titanattack", new[] { "Titanic Paladin", "Titanic DoomKnight" });
 
-    }
-    public void TitanStrike()
-    {
-        if (Core.isCompletedBefore(8776))
-            return;
-
-        Story.PreLoad();
-
         // A Little Light... 8776
         Story.KillQuest(8773, "titanstrike", "Titanic Paladin");
 
@@ -109,15 +95,6 @@ public class TitanSaga
 
         // Topple Some Titans! 8776
         Story.KillQuest(8776, "titanstrike", new[] { "Titanic Paladin", "Titanic DoomKnight", "Titanic Destroyer" }, GetReward: true, Reward: "Heroic Titan's Greatsword");
-
-    }
-
-    public void TitanBattle()
-    {
-        if (Core.isCompletedBefore(8777))
-            return;
-
-        Story.PreLoad();
 
         // The BIG Finish 8777
         //Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, WeaponSpecial.None);
