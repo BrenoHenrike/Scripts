@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Dynamic;
 using Newtonsoft.Json;
 using RBot;
 using RBot.Flash;
@@ -29,6 +31,8 @@ public class CoreBots
     public int HuntDelay { get; set; } = 1000;
     // [Can Change] How many tries to accept/complete the quest will be sent
     public int AcceptandCompleteTries { get; set; } = 20;
+    // [Can Change] How many quests the bot should be able to have loaded at once
+    public int LoadedQuestLimit { get; set; } = 150;
     // [Can Change] Whether the bots should also log in AQW's chat
     public bool LoggerInChat { get; set; } = true;
     // [Can Change] When enabled, no message boxes will be shown unless absolutely necessary
@@ -38,7 +42,11 @@ public class CoreBots
     // [Can Change] What private room number the bot should use, if > 99999 it will pick a random room
     public int PrivateRoomNumber { get; set; } = 100000;
     // [Can Change] Use public rooms if the enemy is tough
-    public bool PublicDifficult { get; set; } = true;
+    public bool PublicDifficult { get; set; } = false;
+    // [Can Change] Where to go once the bot is stopped
+    public StopLocations StopLocation { get; set; } = StopLocations.Whitemap;
+    // [Can Change] If StopLocations.Custom is selected, where to go
+    public string CustomStopLocation { get; set; } = "whitemap";
     // [Can Change] Whether the player should rest after killing a monster
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
@@ -80,7 +88,7 @@ public class CoreBots
 
     #endregion
 
-    #region Startup
+    #region Start/Stop
 
     /// <summary>
     /// Set common bot options to desired value
@@ -90,6 +98,12 @@ public class CoreBots
     {
         if (changeTo)
         {
+            if (CBO_Active)
+            {
+                CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
+                ReadCBO();
+            }
+
             if (AppPath != null)
                 Logger($"Bot Started [{ScriptManager.LoadedScript.Replace(AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
@@ -98,13 +112,17 @@ public class CoreBots
 
             if (!Bot.Player.LoggedIn)
             {
-                Logger("Auto Login triggered");
-                Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
-                Bot.Sleep(1000);
-                Bot.Player.Connect(ServerList.Servers[0]);
-                while (!Bot.ShouldExit() && !Bot.Player.LoggedIn)
-                    Bot.Sleep(500);
-                Bot.Sleep(5000);
+                if (ServerList.Servers.Count() > 0)
+                {
+                    Logger("Auto Login triggered");
+                    Bot.Player.Login(Bot.Player.Username, Bot.Player.Password);
+                    Bot.Sleep(1000);
+                    Bot.Player.Connect(ServerList.Servers[0]);
+                    while (!Bot.ShouldExit() && !Bot.Player.LoggedIn)
+                        Bot.Sleep(500);
+                    Bot.Sleep(5000);
+                }
+                else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
             }
 
             ReadMe();
@@ -125,16 +143,11 @@ public class CoreBots
         Bot.Lite.CharacterSelectScreen = false;
         Bot.Lite.Set("dOptions[\"disRed\"]", true);
 
+        CollectData(changeTo);
+
         if (changeTo)
         {
-            if (CBO_Active)
-            {
-                CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
-                ReadCBO();
-            }
-
             Bot.Options.HuntDelay = HuntDelay;
-
             Bot.Events.ScriptStopping += StopBotEvent;
 
             Bot.SendPacket("%xt%zm%afk%1%false%");
@@ -154,6 +167,14 @@ public class CoreBots
                     TimerRunning = false;
                 }
             }, "AFK Handler");
+
+            Bot.RegisterHandler(3000, b =>
+            {
+                if (Bot.Quests.QuestTree.Count() > LoadedQuestLimit)
+                {
+                    Bot.SetGameObject("world.questTree", new ExpandoObject());
+                }
+            }, "Quest-Limit Handler");
 
             Bot.Player.LoadBank();
             Bot.Runtime.BankLoaded = true;
@@ -195,6 +216,61 @@ public class CoreBots
 
             Logger("Bot Configured");
         }
+    }
+
+    private bool scriptFinished = true;
+    /// <summary>
+    /// Stops the bot and moves you back to /Battleon
+    /// </summary>
+    public bool StopBot()
+    {
+        GC.KeepAlive(Instance);
+        CancelRegisteredQuests();
+        SavedState(false);
+        Bot.Handlers.RemoveAll(x => true);
+
+        if (Bot.Player.LoggedIn)
+        {
+            JumpWait();
+            Bot.Player.ExitCombat();
+            Bot.Sleep(ActionDelay);
+
+            switch (StopLocation.ToString().ToLower())
+            {
+                case "off":
+                    break;
+
+                case "home":
+                    if (Bot.Inventory.HouseItems.Any(x => x.Equipped && x.Category == ItemCategory.House))
+                        Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
+                    else Join("Whitemap");
+                    break;
+
+                case "custom":
+                    Join(CustomStopLocation);
+                    break;
+
+                default:
+                    Join(StopLocation.ToString());
+                    break;
+            }
+
+        }
+        if (AntiLag)
+        {
+            Bot.SetGameObject("stage.frameRate", 60);
+            if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                Bot.CallGameFunction("world.toggleMonsters");
+        }
+
+        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
+        Bot.Options.CustomGuild = GuildRestore;
+
+        if (Bot.Player.LoggedIn)
+            Logger("Bot Stopped Successfully");
+        else Logger("Auto Relogin appears to have failed");
+
+        return scriptFinished;
     }
 
     private bool StopBotEvent(ScriptInterface bot)
@@ -395,7 +471,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.Name == itemName : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -439,7 +515,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.ID == itemID : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -597,20 +673,23 @@ public class CoreBots
         Dictionary<Quest, int> chooseQuests = new Dictionary<Quest, int>();
         Dictionary<int, int> nonChooseQuests = new Dictionary<int, int>();
 
-        // Removing quests that you can't accept
         foreach (Quest q in questData)
+        {
+            // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
+            {
                 if (!CheckInventory(req.Name))
                 {
                     Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
                     questData.Remove(q);
                 }
+            }
 
-        // Separating the quests into choose and non-choose
-        foreach (Quest q in questData)
+            // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
                 chooseQuests.Add(q, 1);
             else nonChooseQuests.Add(q.ID, 1);
+        }
 
         EnsureAccept(questIDs);
         questCTS = new();
@@ -696,17 +775,19 @@ public class CoreBots
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureAccept(params int[] questIDs)
     {
-        foreach (int quest in questIDs)
+        List<Quest> QuestData = EnsureLoad(questIDs);
+        foreach (Quest quest in QuestData)
         {
-            Quest QuestData = EnsureLoad(quest);
 
-            if (QuestData.Upgrade && !IsMember)
-                Logger($"\"{QuestData.Name}\" [{quest}] is member-only, stopping the bot.", stopBot: true);
+            if (quest.Upgrade && !IsMember)
+                Logger($"\"{quest.Name}\" [{quest.ID}] is member-only, stopping the bot.", stopBot: true);
 
-            if (Bot.Quests.IsInProgress(quest) || quest <= 0)
+            if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
+
+            AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
             Bot.Sleep(ActionDelay);
-            Bot.Quests.EnsureAccept(quest, tries: AcceptandCompleteTries);
+            Bot.Quests.EnsureAccept(quest.ID, tries: AcceptandCompleteTries);
         }
     }
 
@@ -1091,6 +1172,42 @@ public class CoreBots
         }
     }
 
+    public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
+            return;
+        if (item != null)
+            AddDrop(item);
+
+        Join("stalagbite", "r2", "Left");
+
+        if (item == null)
+        {
+            if (log)
+                Logger("Killing Escherion");
+            while (!Bot.ShouldExit() && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
+            {
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
+                    Bot.Player.Hunt("Vath");
+                Bot.Player.Attack("Stalagbite");
+                Bot.Sleep(1000);
+            }
+            Bot.Wait.ForPickup(item, quant);
+        }
+        else
+        {
+            if (log)
+                Logger($"Killing Vath for {item} ({quant}) [Temp = {isTemp}]");
+            while (!Bot.ShouldExit() && !CheckInventory(item, quant))
+            {
+                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
+                    Bot.Player.Hunt("Vath");
+                Bot.Player.Attack("Stalagbite");
+                Bot.Sleep(1000);
+            }
+        }
+    }
+
     public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
@@ -1118,6 +1235,8 @@ public class CoreBots
         }
         while (!Bot.ShouldExit() && !CheckInventory(item, quantity))
         {
+            //if (Bot.Monsters.CurrentAvailableMonsters().Count(m => m.Alive) > 0 && name.ToLower().Trim() == name.ToLower().Trim() || name.Trim() == "*")
+            //    Bot.Player.Attack(Bot.Monsters.CurrentAvailableMonsters().First(m => m.Name.ToLower().Trim() == name.ToLower().Trim() || name.Trim() == "*" && m.Alive ));
             Bot.Player.Attack(name);
             Bot.Sleep(ActionDelay);
             if (rejectElse)
@@ -1409,48 +1528,10 @@ public class CoreBots
             Bot.SendPacket($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    private bool scriptFinished = true;
-    /// <summary>
-    /// Stops the bot and moves you back to /Battleon
-    /// </summary>
-    public bool StopBot()
-    {
-        GC.KeepAlive(Instance);
-        CancelRegisteredQuests();
-        SavedState(false);
-        Bot.Handlers.RemoveAll(handler => handler.Name == "AFK Handler");
-        if (Bot.Player.LoggedIn)
-        {
-            JumpWait();
-            Bot.Player.ExitCombat();
-            Bot.Sleep(ActionDelay);
-
-            if (Bot.Inventory.HouseItems.Any(x => x.Equipped && x.Category == ItemCategory.House))
-            {
-                Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
-                Logger($"(っ◔◡◔)っ ♥ Welcome Home ♥");
-            }
-            else
-            {
-                Join("Whitemap");
-                Logger($"Sorry but your homeless (ಥ ̯ ಥ)");
-            }
-        }
-        if (AntiLag)
-        {
-            Bot.SetGameObject("stage.frameRate", 60);
-            if (Bot.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-                Bot.CallGameFunction("world.toggleMonsters");
-        }
-        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
-        Bot.Options.CustomGuild = GuildRestore;
-        if (Bot.Player.LoggedIn)
-            Logger("Bot Stopped Successfully");
-        return scriptFinished;
-    }
-
     public void SavedState(bool on = true)
     {
+        return;
+        //Disabled to see if it lowers bans
         string[] SavedStateRNG = _SavedStateRNG();
         if (on)
         {
@@ -1533,118 +1614,6 @@ public class CoreBots
         };
     }
 
-    private void ReadMe()
-    {
-        string readMePath = AppPath + @"\ReadMeV1.txt";
-        if (File.Exists(readMePath))
-            return;
-
-        // Popup
-        DialogResult result = MessageBox.Show(
-            "Welcome to RBot's Master Bots!\n" +
-            "These bots are a tad different from what you might be used to with Grimoire or other botting clients.\n\n" +
-            "Its highly recommended to read the ReadMe.txt file if this is your first time running one of our bots, or if you just started.\n" +
-            "There are plenty of things that are useful to know there, which arent imidiantly obvious.\n\n" +
-            "This messagebox will not appear again after you close it.\n" +
-            $"You will still be able to read the file later by going to [{readMePath}]\n" +
-            "If you do see it again at a later moment, there might have just been a update to the ReadMe, in which case you can ignore this message.\n\n" +
-            "Click OK to open the ReadMe.txt",
-
-            "READ ME",
-            MessageBoxButtons.OKCancel,
-            MessageBoxIcon.Information
-            );
-
-
-        // Creating ReadMe.txt
-        string[] ReadMe =
-        {
-            "Welcome and thank you for using RBot's Master Bots!",
-            "",
-            "=== Basic Information ===",
-            "These bots are a tad different from what you might be used to with Grimoire or other botting clients.",
-            "All our bots are \"Master Bots\" and thus will do everything you might need it to do in order to farm the item of your choice.",
-            "This includes but is not limited to:",
-            "· Finishing questlines to unlock farms, maps or get a specific items.",
-            "· Using bypasses so you dont have to do questlines in order to continue farming.",
-            "· Do other farms that you might need to do in order to farm the item of your choice (I.E. Get NSoD as well when farming for HBSoD).",
-            "",
-            "== Skills ==",
-            "We also have a big file that contains 95% of all classes with one or multiple skill combinations for different scenarios.",
-            "So you'll know that your class will use a optimized combo without you having to set the skills yourself.",
-            "These combos are ofcourse always up for debate and we are happy to change them based off of community input.",
-            "If you wish to play with these for yourself, the easiest way to do so is to use the \"Advanced Skills\" window, which can be found in the top row of RBot and then Skills.",
-            "",
-            "== File Naming ==",
-            "Whilst using our bots, you might notice that there are files that start with the word \"Core\", these files are storage for methods that we use in our bots.",
-            "These bots are not meant to be run and wont do anything usefull for you. If you do, expect a pop-up that tells you the exact same thing.",
-            "Another file naming convention is files that start with a \"0\" (zero), these files are usually inside a folder.",
-            "These files can be run and will usually do everything in the folder for you, as a sort of combo bot. Like farming everything for VHL and buying + leveling it too.",
-            "",
-            "== Bugs and Bot Requests ==",
-            "As much as we try, bugs pop up from time to time.",
-            "If you find one, please report it to us via the form which can be found near the bottom of the Scripts menu.",
-            "This same form will also be used to request new features or bots.",
-            "",
-            "== GitHub Prompt ==",
-            "You might have noticed how RBot asks you to authorize with a GitHub account when you first run RBot.",
-            "This is so that RBot can update the bots from our GitHub repository.",
-            "Without this you are bound to a 50 requests p/h limiter that is shared with everyone else who didn't authortize.",
-            "Considering that you already send 3 requests on startup, you can see how this can be reached quickly.",
-            "Therefore it's highly recommended to do the authorization, as you will then have your own limiter instead of a shared one.",
-            "",
-            "",
-            "=== Plugins ===",
-            "== CoreBots Options ==",
-            "Now, this plugin is where you customize a lot of the things that happen for all the bots. It's highly recommended to open this one up and set some options.",
-            "I highly recommend setting all your preffered options in the Generic tab, as this houses the important ones.",
-            "You can ofcourse also check our the other options and set them to what you want too.",
-            "It's recommended to stay in private rooms, as public rooms have a higher chance of getting you banned.",
-            "It should also be noted that RBot version 4.1.3, comes with a outdated version of the \"CoreBots Options\" plugin.",
-            "You can find the latest here https://github.com/LordExelot/RBot-CBO/releases/tag/v1",
-            "Within the discord this plugin is often reffered to as CBO.",
-            "",
-            "== Wait Timeout Override ==",
-            "This is a plugin that allows you to override some default data for RBot, it's used to modify how long RBot waits before it considers a task to be failed.",
-            "You don't have to touch these values in most cases, it's mostly used for debugging.",
-            "",
-            "",
-            "=== The End ===",
-            "Thanks for reading, I hope it wasn't too much of a bore!",
-            "",
-            "== Contact ==",
-            "If you wish to contact us, you can find us on our discord server: https://discord.io/AQWBots/",
-            "",
-            "== Credits ==",
-            "Active:",
-            "· BrenoHenrike\t- He took over RBot development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
-            "· Lord Exelot\t- Lead Developer/Head of the RBot Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
-            "· Tato\t\t\t- Major contributor to the Master Bots and a lot of bug fixes.",
-            "· Vladimir\t\t- Major contributor to the Master Bots and bug fixes.",
-            "· Bogajl\t\t- Major contributor to the Master Bots.",
-            "· Hao\t\t\t- Considerable contributor to the Master Bots.",
-            "· [S] Elune\t\t- Contributor to the Master Bots, bug fixes and primary bug hunter.",
-            "· SunnyD\t\t- Contributor to the Master Bots.",
-            "· Novar\t\t\t- Minor Contributor to the Master Bots.",
-            "· Eso\t\t\t- Minor bug fixes to the Master Bots.",
-            "Inactive:",
-            "· Rodit\t\t\t- Creator of RBot.",
-            "· Purple\t\t- Contributor to RBot.",
-            "· usuckshit\t\t- Considerable contributor to the Master Bots.",
-            "· Hadmos\t\t- Considerable contributor to the Master Bots.",
-            "· .Richie\t\t- Minor contributor to the Master Bots.",
-            "· ToxlcChain\t- Minor contributor to the Master Bots.",
-            "· Ferdy\t\t\t- Minor contributor to the Master Bots.",
-            "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
-            "And thanks to everyone who has put time and effort RBot and the Master Bots! ~ Exelot",
-        };
-        File.WriteAllLines(readMePath, ReadMe);
-
-        // Opening ReadMe.txt
-        if (result == DialogResult.OK)
-            Process.Start("explorer", readMePath);
-    }
-
     public void RunCore()
     {
         MessageBox.Show("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1665,11 +1634,30 @@ public class CoreBots
         if (map != null)
             Join(map);
         Bot.Sleep(ActionDelay);
+        List<ItemBase> tempItems = Bot.Inventory.TempItems;
+        ItemBase? newItem = null;
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
             Bot.Sleep(1000);
+            if (i == 1)
+                newItem = Bot.Inventory.TempItems.Except(tempItems).First();
         }
+        if (newItem != null)
+        {
+            int t = 0;
+            while (Bot.Inventory.GetTempQuantity(newItem.Name) < quant ||
+                (Bot.Inventory.GetTempQuantity(newItem.Name) < Bot.Inventory.GetTempItemByName(newItem.Name).MaxStack))
+            {
+                Bot.Map.GetMapItem(itemID);
+                Bot.Sleep(1000);
+                t++;
+
+                if (t > (quant + 10))
+                    break;
+            }
+        }
+
         Logger($"Map item {itemID}({quant}) acquired");
     }
 
@@ -1884,52 +1872,414 @@ public class CoreBots
     }
     #endregion
 
-    #region CBO Plugin
+    #region Using Local Files
+
+    private void ReadMe()
+    {
+        string readMePath = AppPath + @"\ReadMeV1.txt";
+        if (File.Exists(readMePath))
+            return;
+
+        // Popup
+        DialogResult result = MessageBox.Show(
+            "Welcome to RBot's Master Bots!\n" +
+            "These bots are a tad different from what you might be used to with Grimoire or other botting clients.\n\n" +
+            "Its highly recommended to read the ReadMe.txt file if this is your first time running one of our bots, or if you just started.\n" +
+            "There are plenty of things that are useful to know there, which arent imidiantly obvious.\n\n" +
+            "This messagebox will not appear again after you close it.\n" +
+            $"You will still be able to read the file later by going to [{readMePath}]\n" +
+            "If you do see it again at a later moment, there might have just been a update to the ReadMe, in which case you can ignore this message.\n\n" +
+            "Click OK to open the ReadMe.txt",
+
+            "READ ME",
+            MessageBoxButtons.OKCancel,
+            MessageBoxIcon.Information
+            );
+
+        // Creating ReadMe.txt
+        string[] ReadMe =
+        {
+            "Welcome and thank you for using RBot's Master Bots!",
+            "",
+            "=== Basic Information ===",
+                "These bots are a tad different from what you might be used to with Grimoire or other botting clients.",
+                "All our bots are \"Master Bots\" and thus will do everything you might need it to do in order to farm the item of your choice.",
+                "This includes but is not limited to:",
+                "· Finishing questlines to unlock farms, maps or get a specific items.",
+                "· Using bypasses so you dont have to do questlines in order to continue farming.",
+                "· Do other farms that you might need to do in order to farm the item of your choice (I.E. Get NSoD as well when farming for HBSoD).",
+                "",
+                "== Skills ==",
+                    "We also have a big file that contains 95% of all classes with one or multiple skill combinations for different scenarios.",
+                    "So you'll know that your class will use a optimized combo without you having to set the skills yourself.",
+                    "These combos are ofcourse always up for debate and we are happy to change them based off of community input.",
+                    "If you wish to play with these for yourself, the easiest way to do so is to use the \"Advanced Skills\" window, which can be found in the top row of RBot and then Skills.",
+                    "",
+                "== File Naming ==",
+                    "Whilst using our bots, you might notice that there are files that start with the word \"Core\", these files are storage for methods that we use in our bots.",
+                    "These bots are not meant to be run and wont do anything usefull for you. If you do, expect a pop-up that tells you the exact same thing.",
+                    "Another file naming convention is files that start with a \"0\" (zero), these files are usually inside a folder.",
+                    "These files can be run and will usually do everything in the folder for you, as a sort of combo bot. Like farming everything for VHL and buying + leveling it too.",
+                    "",
+                "== Bugs and Bot Requests ==",
+                    "As much as we try, bugs pop up from time to time.",
+                    "If you find one, please report it to us via the form which can be found near the bottom of the Scripts menu.",
+                    "This same form will also be used to request new features or bots.",
+                    "",
+                "== GitHub Prompt ==",
+                    "You might have noticed how RBot asks you to authorize with a GitHub account when you first run RBot.",
+                    "This is so that RBot can update the bots from our GitHub repository.",
+                    "Without this you are bound to a 50 requests p/h limiter that is shared with everyone else who didn't authortize.",
+                    "Considering that you already send 3 requests on startup, you can see how this can be reached quickly.",
+                    "Therefore it's highly recommended to do the authorization, as you will then have your own limiter instead of a shared one.",
+                    "",
+                    "",
+            "=== Plugins ===",
+                "== CoreBots Options ==",
+                    "Now, this plugin is where you customize a lot of the things that happen for all the bots. It's highly recommended to open this one up and set some options.",
+                    "I highly recommend setting all your preffered options in the Generic tab, as this houses the important ones.",
+                    "You can ofcourse also check our the other options and set them to what you want too.",
+                    "It's recommended to stay in private rooms, as public rooms have a higher chance of getting you banned.",
+                    "It should also be noted that RBot version 4.1.3, comes with a outdated version of the \"CoreBots Options\" plugin.",
+                    "You can find the latest here https://github.com/LordExelot/RBot-CBO/releases/tag/v1",
+                        "Within the discord this plugin is often reffered to as CBO.",
+                    "",
+                "== Wait Timeout Override ==",
+                    "This is a plugin that allows you to override some default data for RBot, it's used to modify how long RBot waits before it considers a task to be failed.",
+                    "You don't have to touch these values in most cases, it's mostly used for debugging.",
+                    "",
+                    "",
+                "=== The End ===",
+                    "Thanks for reading, I hope it wasn't too much of a bore!",
+                    "",
+                "== Contact ==",
+                    "If you wish to contact us, you can find us on our discord server: https://discord.io/AQWBots/",
+                    "",
+                "== Credits ==",
+                    "Active:",
+                        "· BrenoHenrike\t- He took over RBot development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
+                        "· Lord Exelot\t- Lead Developer/Head of the RBot Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
+                        "· Tato\t\t\t- Major contributor to the Master Bots and a lot of bug fixes.",
+                        "· Bogajl\t\t- Major contributor to the Master Bots.",
+                        "· Hao\t\t\t- Considerable contributor to the Master Bots.",
+                        "· [S] Elune\t\t- Contributor to the Master Bots, bug fixes and primary bug hunter.",
+                        "· SunnyD\t\t- Contributor to the Master Bots.",
+                        "· Novar\t\t\t- Minor Contributor to the Master Bots.",
+                        "· FishingKing\t- Minor Contributor the the Master Bots",
+                    "Inactive:",
+                        "· Rodit\t\t\t- Creator of RBot.",
+                        "· Purple\t\t- Contributor to RBot.",
+                        "· Vladimir\t\t- Major contributor to the Master Bots and bug fixes.",
+                        "· usuckshit\t\t- Considerable contributor to the Master Bots.",
+                        "· Hadmos\t\t- Considerable contributor to the Master Bots.",
+                        "· Eso\t\t\t- Minor bug fixes to the Master Bots.",
+                        "· .Richie\t\t- Minor contributor to the Master Bots.",
+                        "· ToxlcChain\t- Minor contributor to the Master Bots.",
+                        "· Ferdy\t\t\t- Minor contributor to the Master Bots.",
+                    "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
+                    "And thanks to everyone who has put time and effort RBot and the Master Bots! ~ Exelot",
+        };
+        File.WriteAllLines(readMePath, ReadMe);
+
+        // Opening ReadMe.txt
+        if (result == DialogResult.OK)
+            Process.Start("explorer", readMePath);
+    }
+
+    private void CollectData(bool onStartup)
+    {
+        string UserID = "null";
+        bool genericData = false;
+        bool scriptNameData = false;
+        bool stopTimeData = false;
+        FileSetup();
+
+        if (!genericData || UserID == "null")
+            return;
+
+        // If on stop and it's not allowed, return
+        if (!onStartup && !stopTimeData)
+            return;
+
+        // Init HttpClient to send the request
+        HttpClient client = new HttpClient();
+
+        // Build the Field Ids and Answers dictionary object
+        var bodyValues = new Dictionary<string, string>
+        {
+            {"entry.1700030786", UserID},
+            {"entry.942504290", onStartup ? "Start" : "Stop"},
+        };
+
+        // If allowed, send scriptNameData
+        if (scriptNameData)
+        {
+            string botPath = ScriptManager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1);
+
+            if (botPath.StartsWith("Nulgath\\"))
+                botPath.Replace("Nulgath\\", "Nation\\");
+
+            string[] allowedPathStarters =
+            {
+                "ArmyOnly",
+                "Chaos",
+                "Dailies",
+                "Darkon",
+                "Enhancement",
+                "Evil",
+                "Farm",
+                "Good",
+                "Hollowborn",
+                "Legion",
+                "Nation",
+                "Nulgath",
+                "Other",
+                "Prototypes",
+                "Seasonal",
+                "Story",
+                "WIP"
+            };
+
+            if (!allowedPathStarters.Any(x => botPath.StartsWith(x)))
+                botPath = "CustomPath\\" + botPath.Split("\\").Last();
+
+            bodyValues.Add("entry.1597948191", botPath);
+        }
+
+        // If allowed, send scriptInstanceData
+        if (stopTimeData)
+        {
+            if (ScriptInstanceID == 0)
+                ScriptInstanceID = Bot.Runtime.Random.Next(1, Int32.MaxValue);
+
+            bodyValues.Add("entry.1361306892", ScriptInstanceID.ToString());
+        }
+
+        // Encode object to application/x-www-form-urlencoded MIME type
+        var content = new FormUrlEncodedContent(bodyValues);
+
+        // Post the request
+        // https://docs.google.com/forms/u/0/d/e/1FAIpQLScnPg16-vSFJHrTbS2-Ryt8LEcbVFKLH4i7n4U-7BGPRwDv0w/formResponse
+        client.PostAsync(
+            "https://docs.google.com/forms/d/e/" +
+            "1FAIpQLScnPg16-vSFJHrTbS2-Ryt8LEcbVFKLH4i7n4U-7BGPRwDv0w" +
+            "/formResponse",
+            content);
+
+        void FileSetup()
+        {
+            string path = AppPath + @"/DataCollectionSettings.txt";
+            if (!File.Exists(path))
+            {
+                DialogResult consent = MessageBox.Show(
+                    "We wish to gather data, in an effort to keep us motivated, knowing people use what we make.\n\n" +
+                    "We would gather the following things:\n" +
+                    "· An anon userID we generate which will allows us to know our active user count.\n" +
+                    "· Start time of scripts.\n" +
+                    "· What script is being run.\n" +
+                    "· Stop time of scripts, this would be paired with the point below\n" +
+                    "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
+                    "Consent for this is requiered, and puts my mind at ease. " +
+                    "So you will be able to select what data is being send and what is not.\n\n" +
+                    "Select \"Yes\" to give full consent.\n" +
+                    "Select \"No\" to give partial consent, you will then get a couple more pop-up boxes where you can select your preferences.\n" +
+                    "Select \"Cancel\" to not consent, we will then gather no data whatsoever.",
+
+                    "Data Collection",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information
+                );
+
+                if (consent == DialogResult.Yes)
+                {
+                    genericData = true;
+                    scriptNameData = true;
+                    stopTimeData = true;
+                }
+                else if (consent == DialogResult.Cancel)
+                {
+                    genericData = false;
+                    scriptNameData = false;
+                    stopTimeData = false;
+                }
+                else if (consent == DialogResult.No)
+                {
+                    DialogResult nonOptional = MessageBox.Show(
+                        "The following two points are not optional:\n" +
+                        "· An anon userID we generate which will allows us to know our active user count.\n" +
+                        "· Start time of scripts.\n\n" +
+                        "If you accept this, select \"Yes\".\n" +
+                        "If you dont accept this, select \"No\", and we will not gather data whatsoever.",
+
+                        "Non-Optional Data",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                    );
+
+                    if (nonOptional == DialogResult.No)
+                    {
+                        genericData = false;
+                        scriptNameData = false;
+                        stopTimeData = false;
+                    }
+                    else if (nonOptional == DialogResult.Yes)
+                    {
+                        DialogResult scriptName = MessageBox.Show(
+                            "Do you give consent to send us the following data-point:\n" +
+                            "· What script is being run.\n\n" +
+                            "This allows us to know what scripts are populair",
+
+                            "Script Name",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                        );
+
+                        DialogResult stopTime = MessageBox.Show(
+                            "Do you give consent to send us the following data-points:\n" +
+                            "· Stop time of scripts, this would be paired with the point below" +
+                            "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
+                            "Allowing us to have this data means we'll know how long a script has been running.",
+
+                            "Stop Time & Script Instance ID",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Information
+                        );
+
+                        genericData = true;
+                        scriptNameData = scriptName == DialogResult.Yes;
+                        stopTimeData = stopTime == DialogResult.Yes;
+                    }
+                }
+
+                if (genericData)
+                {
+                    UserID = Bot.Runtime.Random.Next(100000001, Int32.MaxValue).ToString();
+                }
+
+                string[] fileContent =
+                {
+                    $"UserID: {UserID}",
+                    $"genericDataConsent: {genericData}",
+                    $"scriptNameConsent: {scriptNameData}",
+                    $"stopTimeConsent: {stopTimeData}"
+                };
+
+                File.WriteAllLines(path, fileContent);
+
+                MessageBox.Show(
+                    "If you wish to change these settings, you can easily modify them in the following file:\n" +
+                    $"[{path}]",
+
+                    "File Location",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                string[] savedSettings = File.ReadAllLines(path);
+
+                UserID = ConsentString("UserID");
+                genericData = ConsentBool("genericDataConsent");
+                scriptNameData = ConsentBool("scriptNameConsent");
+                stopTimeData = ConsentBool("stopTimeConsent");
+
+                string ConsentString(string input)
+                    => (savedSettings.FirstOrDefault(x => x.StartsWith(input)) ?? $"{input}: ").Split(": ").Last();
+                bool ConsentBool(string input)
+                    => ConsentString(input) == "True";
+            }
+        }
+    }
+    private int ScriptInstanceID = 0;
 
     private void ReadCBO()
     {
         //Generic
-        PrivateRooms = CBOBool("PrivateRooms");
-        PrivateRoomNumber = CBOInt("PrivateRoomNr");
-        PublicDifficult = CBOBool("PublicDifficult");
-        AntiLag = CBOBool("AntiLag");
-        BankMiscAC = CBOBool("BankMiscAC");
-        LoggerInChat = CBOBool("LoggerInChat");
+        if (CBOBool("PrivateRooms", out bool _PrivateRooms))
+            PrivateRooms = _PrivateRooms;
+        if (CBOInt("PrivateRoomNr", out int _PrivateRoomNumber))
+            PrivateRoomNumber = _PrivateRoomNumber;
+        if (CBOBool("PublicDifficult", out bool _PublicDifficult))
+            PublicDifficult = _PublicDifficult;
+        if (CBOBool("BankMiscAC", out bool _BankMiscAC))
+            BankMiscAC = _BankMiscAC;
+        if (CBOBool("LoggerInChat", out bool _LoggerInChat))
+            LoggerInChat = _LoggerInChat;
 
-        SoloClass = String.IsNullOrEmpty(CBOString("SoloClassSelect")) ? "Generic" : CBOString("SoloClassSelect");
-        SoloGearOn = CBOBool("SoloEquipCheck");
-        SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("SoloModeSelect")) ? "Base" : CBOString("SoloModeSelect"));
+        if (CBOString("StopLocationSelect", out string _StopLocationSelect))
+        {
+            if (Enum.TryParse(typeof(StopLocations), _StopLocationSelect, out object? _StopLocation))
+            {
+                if (_StopLocation != null)
+                    StopLocation = (StopLocations)_StopLocation;
+            }
+            else
+            {
+                StopLocation = StopLocations.Custom;
+                CustomStopLocation = _StopLocationSelect;
+            }
 
-        FarmClass = String.IsNullOrEmpty(CBOString("FarmClassSelect")) ? "Generic" : CBOString("FarmClassSelect");
-        FarmGearOn = CBOBool("FarmEquipCheck");
-        FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(CBOString("FarmModeSelect")) ? "Base" : CBOString("FarmModeSelect"));
+        }
+
+        if (CBOString("SoloClassSelect", out string _SoloClassSelect))
+            SoloClass = String.IsNullOrEmpty(_SoloClassSelect) ? "Generic" : _SoloClassSelect;
+        if (CBOBool("SoloEquipCheck", out bool _SoloGearOn))
+            SoloGearOn = _SoloGearOn;
+        if (CBOString("SoloModeSelect", out string _SoloModeSelect))
+            SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(_SoloModeSelect) ? "Base" : _SoloModeSelect);
+
+        if (CBOString("FarmClassSelect", out string _FarmClassSelect))
+            FarmClass = String.IsNullOrEmpty(_FarmClassSelect) ? "Generic" : _FarmClassSelect;
+        if (CBOBool("FarmEquipCheck", out bool _FarmGearOn))
+            FarmGearOn = _FarmGearOn;
+        if (CBOString("FarmModeSelect", out string _FarmModeSelect))
+            FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(_FarmModeSelect) ? "Base" : _FarmModeSelect);
 
         //Advanced
-        ForceOffMessageboxes = CBOBool("MessageBoxCheck");
-        ShouldRest = CBOBool("RestCheck");
+        if (CBOBool("MessageBoxCheck", out bool _ForceOffMessageboxes))
+            ForceOffMessageboxes = _ForceOffMessageboxes;
+        if (CBOBool("RestCheck", out bool _ShouldRest))
+            ShouldRest = _ShouldRest;
+        if (CBOBool("AntiLag", out bool _AntiLag))
+            AntiLag = _AntiLag;
 
-        ActionDelay = CBOInt("ActionDelayNr");
-        ExitCombatDelay = CBOInt("ExitCombatNr");
-        HuntDelay = CBOInt("HuntDelayNr");
-        AcceptandCompleteTries = CBOInt("QuestTriesNr");
+        if (CBOInt("ActionDelay", out int _ActionDelay))
+            ActionDelay = _ActionDelay;
+        if (CBOInt("ExitCombatNr", out int _ExitCombatDelay))
+            ExitCombatDelay = _ExitCombatDelay;
+        if (CBOInt("HuntDelayNr", out int _HuntDelay))
+            HuntDelay = _HuntDelay;
+        if (CBOInt("QuestTriesNr", out int _AcceptandCompleteTries))
+            AcceptandCompleteTries = _AcceptandCompleteTries;
+        if (CBOInt("QuestMaxNr", out int _LoadedQuestLimit))
+            LoadedQuestLimit = _LoadedQuestLimit;
 
         //Class Equipment
-        SoloGear = new[] {
-            CBOString("Helm1Select"),
-            CBOString("Armor1Select"),
-            CBOString("Cape1Select"),
-            CBOString("Weapon1Select"),
-            CBOString("Pet1Select"),
-            CBOString("GroundItem1Select")
-        };
-        FarmGear = new[] {
-            CBOString("Helm2Select"),
-            CBOString("Armor2Select"),
-            CBOString("Cape2Select"),
-            CBOString("Weapon2Select"),
-            CBOString("Pet2Select"),
-            CBOString("GroundItem2Select")
-        };
+        List<string> _SoloGear = new List<string>();
+        if (CBOString("Helm1Select", out string _Helm1))
+            _SoloGear.Add(_Helm1);
+        if (CBOString("Armor1Select", out string _Armor1))
+            _SoloGear.Add(_Armor1);
+        if (CBOString("Cape1Select", out string _Cape1))
+            _SoloGear.Add(_Cape1);
+        if (CBOString("Weapon1Select", out string _Weapon1))
+            _SoloGear.Add(_Weapon1);
+        if (CBOString("Pet1Select", out string _Pet1))
+            _SoloGear.Add(_Pet1);
+        if (CBOString("GroundItem1Select", out string _GroundItem1))
+            _SoloGear.Add(_GroundItem1);
+        SoloGear = _SoloGear.ToArray();
+
+        List<string> _FarmGear = new List<string>();
+        if (CBOString("Helm2Select", out string _Helm2))
+            _FarmGear.Add(_Helm2);
+        if (CBOString("Armor2Select", out string _Armor2))
+            _FarmGear.Add(_Armor2);
+        if (CBOString("Cape2Select", out string _Cape2))
+            _FarmGear.Add(_Cape2);
+        if (CBOString("Weapon2Select", out string _Weapon2))
+            _FarmGear.Add(_Weapon2);
+        if (CBOString("Pet2Select", out string _Pet2))
+            _FarmGear.Add(_Pet2);
+        if (CBOString("GroundItem2Select", out string _GroundItem2))
+            _FarmGear.Add(_GroundItem2);
+        FarmGear = _FarmGear.ToArray();
 
         //Best set order modification
         string[] bestSet = {
@@ -1939,28 +2289,45 @@ public class CoreBots
             "Fire Champion's Armor",
             "Awescended Omni Wings"
         };
-        if (FarmGear.All(x => bestSet.Contains(x)))
-            FarmGear = bestSet.Concat(new[] { CBOString("GroundItem1Select") }).ToArray();
         if (SoloGear.All(x => bestSet.Contains(x)))
-            SoloGear = bestSet.Concat(new[] { CBOString("GroundItem2Select") }).ToArray();
+            SoloGear = bestSet.Concat(new[] { _GroundItem1 }).ToArray();
+        if (FarmGear.All(x => bestSet.Contains(x)))
+            FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
-    public string CBOString(string Name)
+    public bool CBOString(string Name, out string output)
     {
-        return (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $"{Name}: ").Split(": ")[1];
+        if (!CBO_Active)
+        {
+            output = "";
+            return false;
+        }
+        output = (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $".: fail").Split(": ")[1];
+        return output != "fail";
     }
-    public bool CBOBool(string Name)
+    public bool CBOBool(string Name, out bool output)
     {
-        return CBOString(Name) == "True";
+        if (!CBOString(Name, out string str))
+        {
+            output = false;
+            return false;
+        }
+        output = str == "True";
+        return true;
     }
-    public int CBOInt(string Name)
+    public bool CBOInt(string Name, out int output)
     {
-        return int.Parse(CBOString(Name));
+        if (!CBOString(Name, out string str) || !int.TryParse(str, out int toReturn))
+        {
+            output = 0;
+            return false;
+        }
+        output = toReturn;
+        return true;
     }
 
     public List<string> CBOList = new();
     public bool CBO_Active => File.Exists(AppPath + $@"\plugins\options\CBO_Storage({ScriptInterface.Instance.Player.Username}).txt");
-
 
     #endregion
 }
@@ -1977,4 +2344,14 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum StopLocations
+{
+    Off,
+    Home,
+    Battleon,
+    Whitemap,
+    Yulgar,
+    Custom
 }
