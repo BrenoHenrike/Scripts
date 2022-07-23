@@ -23,8 +23,8 @@ public class TitanAttackStory
     
     public void DoAll()
     {
-        //if (Core.isCompletedBefore(8777))
-        //    return;
+        if (Core.isCompletedBefore(8777))
+            return;
 
         // Those Who Remain 8759
         Story.MapItemQuest(8759, "titanattack", new[] { 10345, 10346, 10347, 10348, 10349 });
