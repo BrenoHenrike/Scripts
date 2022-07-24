@@ -6,6 +6,7 @@
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/Good/ArchPaladin.cs
 
 using RBot;
 
@@ -18,6 +19,7 @@ public class FarmerJoeOutfit
     public HollowbornScythe Scythe = new();
     public EternalInversionist EI = new();
     public project InvEn = new();
+    public ArchPaladin AP = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -32,24 +34,15 @@ public class FarmerJoeOutfit
     {
         RagsandHat();
         ServersAreDown();
-        if (Bot.Player.Level < 50)
-        {
-            Adv.EnhanceEquipped(EnhancementType.Lucky);
-            Core.Logger($"{Bot.Player.Level} / 50, Leveling {100 - Bot.Player.Level} Levels");
-            Farm.Experience(50);
-        }
-        if (!Core.CheckInventory("Eternal Inversionist"))
-        {
-            Adv.EnhanceEquipped(EnhancementType.Lucky);
-            Core.Logger("Aquiring Eternal Inversionist");
-            EI.GetEI();
-        }
-        if (Bot.Player.Level < 100)
-        {
-            Adv.EnhanceEquipped(EnhancementType.Lucky);
-            Core.Logger($"{Bot.Player.Level} / 100, Leveling {100 - Bot.Player.Level} Levels");
-            Farm.Experience();
-        }
+        Farm.Experience(50);
+
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
+        Core.Logger("Aquiring Eternal Inversionist");
+        EI.GetEI();
+        AP.GetAP();
+
+        Farm.Experience();
+        
         if (!Core.CheckInventory("Hollowborn Reaper's Scythe"))
         {
             Core.Logger("Aquiring Hollowborn Reaper's Scythe");
