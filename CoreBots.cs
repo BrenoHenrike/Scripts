@@ -471,7 +471,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.Name == itemName : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -515,7 +515,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.ID == itemID : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -1463,30 +1463,26 @@ public class CoreBots
         {
             case ClassType.Farm:
                 JumpWait();
-                if (!usingFarmGeneric)
+                if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
                 {
-                    if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
-                    {
-                        logEquip = false;
-                        Equip(FarmGear);
-                        logEquip = true;
-                    }
-                    Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
+                    logEquip = false;
+                    Equip(FarmGear);
+                    logEquip = true;
                 }
+                if (!usingFarmGeneric)
+                    Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
                 JumpWait();
-                if (!usingSoloGeneric)
+                if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
                 {
-                    if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
-                    {
-                        logEquip = false;
-                        Equip(SoloGear);
-                        logEquip = true;
-                    }
-                    Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
+                    logEquip = false;
+                    Equip(SoloGear);
+                    logEquip = true;
                 }
+                if (!usingSoloGeneric)
+                    Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
         }
