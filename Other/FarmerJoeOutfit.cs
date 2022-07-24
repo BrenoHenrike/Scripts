@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
@@ -7,6 +8,9 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Good/ArchPaladin.cs
+//cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Good/Paladin.cs
 
 using RBot;
 
