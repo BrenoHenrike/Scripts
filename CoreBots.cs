@@ -1463,26 +1463,30 @@ public class CoreBots
         {
             case ClassType.Farm:
                 JumpWait();
-                if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
-                {
-                    logEquip = false;
-                    Equip(FarmGear);
-                    logEquip = true;
-                }
                 if (!usingFarmGeneric)
+                {
+                    if (FarmGearOn & Bot.Inventory.CurrentClass.Name != FarmClass)
+                    {
+                        logEquip = false;
+                        Equip(FarmGear);
+                        logEquip = true;
+                    }
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
+                }
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
             default:
                 JumpWait();
-                if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
-                {
-                    logEquip = false;
-                    Equip(SoloGear);
-                    logEquip = true;
-                }
                 if (!usingSoloGeneric)
+                {
+                    if (SoloGearOn & Bot.Inventory.CurrentClass.Name != SoloClass)
+                    {
+                        logEquip = false;
+                        Equip(SoloGear);
+                        logEquip = true;
+                    }
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
+                }
                 else Bot.Skills.StartAdvanced(Bot.Inventory.CurrentClass.Name, false);
                 break;
         }
