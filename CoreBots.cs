@@ -471,7 +471,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopitem.Name == itemName);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.Name == itemName : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -515,7 +515,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopitem.ID == itemID);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.ID == itemID : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
