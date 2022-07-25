@@ -62,9 +62,10 @@ public class TitanGearMerge
                         Core.HuntMonster("titanattack", "Chaorrupted Bandit", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
+                case "Vindicator Titan's Axe":
+                case "Vindicator Titan":
                 case "Titanic Fluid":
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
@@ -72,7 +73,6 @@ public class TitanGearMerge
                         Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Titan Paladin's Blade":
@@ -82,27 +82,6 @@ public class TitanGearMerge
                         Adv.BoostHuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Vindicator Titan":
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Vindicator Titan's Axe":
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
                     break;
 
             }
