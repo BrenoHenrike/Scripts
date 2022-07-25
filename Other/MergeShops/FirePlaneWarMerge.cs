@@ -76,7 +76,7 @@ public class FirePlaneWarMerge
                     Core.RegisterQuests(8131);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("fireplanewar", "ShadowFlame Phedra", "ShadowClaw Defeated", quant);
+                        Core.HuntMonster("fireplanewar", "ShadowClaw", "ShadowClaw Defeated", quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

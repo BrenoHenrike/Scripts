@@ -12,12 +12,12 @@ public class ZorbasPalace
     {
         Core.SetOptions();
 
-        MurderMoonStory();
+        ZorbasPalaceStory();
 
         Core.SetOptions(false);
     }
 
-    public void MurderMoonStory()
+    public void ZorbasPalaceStory()
     {
         if (Core.isCompletedBefore(7484))
             return;
