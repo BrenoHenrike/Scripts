@@ -76,6 +76,7 @@ public class TitanGearIIMerge
                     Core.EquipClass(ClassType.Solo);
                         Core.EnsureAccept(8776);
                         Core.HuntMonster("titanstrike", "Titanic Paladin", "Paladin Punished");
+                    Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("titanstrike", "Titanic Doomknight", "Doomknight Decimated");
                         Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Destroyed");
                         Core.EnsureComplete(8776);
@@ -86,6 +87,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 40, false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
                     break;
@@ -94,6 +96,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 40, false);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Vindicator Titan", isTemp: false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
@@ -103,6 +106,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 50, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 20, false);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Vindicator Titan's Axe", isTemp: false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
@@ -112,6 +116,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 50, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 20, false);
                     Core.HuntMonster("titanattack", "Titanic Paladin", "Titan Paladin's Blade", isTemp: false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
@@ -126,6 +131,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 10, false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
                     break;
@@ -134,6 +140,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 10, false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
                     break;
@@ -147,6 +154,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 10, false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
                     break;
@@ -155,6 +163,7 @@ public class TitanGearIIMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 10, false);
                     Adv.BuyItem("titanattack", 2149, req.Name);
                     break;
