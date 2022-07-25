@@ -31,7 +31,7 @@ public class Frostvale
             ColdWindValley();
             //BrightLights();
         }
-        else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.", stopBot: true);
+        else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
         //https://www.aq.com/gamedesignnotes/aqw-july16-frostvaljuly-8412 <--
     }
 
