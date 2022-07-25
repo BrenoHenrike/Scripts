@@ -27,8 +27,6 @@ public class TitanGearIIMerge
     {
         Core.SetOptions();
 
-        TAS.DoAll();
-
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -36,6 +34,8 @@ public class TitanGearIIMerge
 
     public void BuyAllMerge()
     {
+
+        TAS.DoAll();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("titanstrike", 2154, findIngredients);
 
@@ -74,15 +74,12 @@ public class TitanGearIIMerge
                 case "Heroic Titan's Greatsword":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
                         Core.EnsureAccept(8776);
                         Core.HuntMonster("titanstrike", "Titanic Paladin", "Paladin Punished");
                         Core.HuntMonster("titanstrike", "Titanic Doomknight", "Doomknight Decimated");
                         Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Destroyed");
                         Core.EnsureComplete(8776);
                         Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Titan Paladin":
@@ -123,7 +120,6 @@ public class TitanGearIIMerge
                 case "Titan Drakath's Blade":
                     Core.EquipClass(ClassType.Solo);
                     Adv.BoostHuntMonster("titandrakath", "Titan Drakath", req.Name, quant, false);
-                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Titan Paladin's Helm":
@@ -145,7 +141,6 @@ public class TitanGearIIMerge
                 case "Titan Drakath's Morph":
                     Core.EquipClass(ClassType.Solo);
                     Adv.BoostHuntMonster("titandrakath", "Titan Drakath", req.Name, isTemp: false);
-                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Titan Paladin's Cloak":
@@ -165,17 +160,12 @@ public class TitanGearIIMerge
                     break;
 
                 case "Chaorrupted AntiTitan Corps":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "AntiTitan Corps", req.Name, quant, false);
-                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Titan Hunter":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
                     Adv.BuyItem("artistalley", 729, req.Name);
-                    Core.CancelRegisteredQuests();
                     break;
 
             }
