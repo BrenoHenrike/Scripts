@@ -161,92 +161,6 @@ public class UnlockForgeEnhancments
         }
     }
 
-    public void ForgeCapeEnhancement()
-    {
-        if (Core.isCompletedBefore(8758))
-            return;
-
-        Core.Logger("Unlocking Enhancement: Forge (Cape)");
-
-        LOC.Escherion();
-        Farm.Experience(30);
-        Farm.BlacksmithingREP(3, Bot.Config.Get<bool>("UseGold"));
-
-        Core.EquipClass(ClassType.Solo);
-        Core.EnsureAccept(8758);
-
-        Core.KillEscherion("1st Lord Of Chaos Staff");
-        Core.KillVath("Chaos Dragonlord Axe");
-        Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
-        Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
-
-        Core.EnsureComplete(8758);
-        Core.Logger($"Enhancement Unlocked: Forge (Cape)");
-    }
-
-    public void Absolution()
-    {
-        if (Core.isCompletedBefore(8743))
-            return;
-
-        Core.Logger("Unlocking Enhancement: Absolution");
-
-        Farm.Experience(90);
-        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"));
-
-        Core.EnsureAccept(8743);
-
-        Farm.GoodREP(9);
-        if (!Core.CheckInventory("Ascended Paladin"))
-        {
-            Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
-            Core.BuyItem("therift", 1399, 39091);
-            Core.BuyItem("therift", 1399, 39093);
-            Core.BuyItem("therift", 1399, 39094);
-        }
-
-        Core.EnsureComplete(8743);
-        Core.Logger("Enhancement Unlocked: Absolution");
-    }
-
-    public void Vainglory()
-    {
-        if (Core.isCompletedBefore(8744))
-            return;
-
-        Absolution();
-        Core.Logger("Unlocking Enhancement: Vaingory");
-
-        Core.EnsureAccept(8744);
-
-        Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
-        Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
-        Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
-        Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "Ultra Alteon");
-        Awe.GetAweRelic("Greaves", 4172, 10, 15, "bosschallenge", "Mutated Void Dragon");
-
-        Core.EnsureComplete(8744);
-        Core.Logger("Enhancement Unlocked: Vainglory");
-    }
-
-    public void Avarice()
-    {
-        if (Core.isCompletedBefore(8745))
-            return;
-
-        Vainglory();
-        Core.Logger("Unlocking Enhancement: Avarice");
-
-        Core.EnsureAccept(8745);
-
-        HOTLB.Indulgence(75);
-        HOTLB.Penance(75);
-
-        Core.EnsureComplete(8745);
-        Core.Logger("Enhancement Unlocked: Avarice");
-
-    }
-
     public void ForgeWeaponEnhancement()
     {
         if (Core.isCompletedBefore(8738))
@@ -442,17 +356,92 @@ public class UnlockForgeEnhancments
         Core.ChainComplete(8742);
         Core.Logger("Enhancement Unlocked: Arcana's Concerto");
     }
-}
 
-public enum ForgeQuestCape
-{
-    ForgeCapeEnhancement,
-    Absolution,
-    Vainglory,
-    Avarice,
-    None,
-    All
-};
+    public void ForgeCapeEnhancement()
+    {
+        if (Core.isCompletedBefore(8758))
+            return;
+
+        Core.Logger("Unlocking Enhancement: Forge (Cape)");
+
+        LOC.Escherion();
+        Farm.Experience(30);
+        Farm.BlacksmithingREP(3, Bot.Config.Get<bool>("UseGold"));
+
+        Core.EquipClass(ClassType.Solo);
+        Core.EnsureAccept(8758);
+
+        Core.KillEscherion("1st Lord Of Chaos Staff");
+        Core.KillVath("Chaos Dragonlord Axe");
+        Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
+        Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
+
+        Core.EnsureComplete(8758);
+        Core.Logger($"Enhancement Unlocked: Forge (Cape)");
+    }
+
+    public void Absolution()
+    {
+        if (Core.isCompletedBefore(8743))
+            return;
+
+        Core.Logger("Unlocking Enhancement: Absolution");
+
+        Farm.Experience(90);
+        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"));
+
+        Core.EnsureAccept(8743);
+
+        Farm.GoodREP(9);
+        if (!Core.CheckInventory("Ascended Paladin"))
+        {
+            Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
+            Core.BuyItem("therift", 1399, 39091);
+            Core.BuyItem("therift", 1399, 39093);
+            Core.BuyItem("therift", 1399, 39094);
+        }
+
+        Core.EnsureComplete(8743);
+        Core.Logger("Enhancement Unlocked: Absolution");
+    }
+
+    public void Vainglory()
+    {
+        if (Core.isCompletedBefore(8744))
+            return;
+
+        Absolution();
+        Core.Logger("Unlocking Enhancement: Vaingory");
+
+        Core.EnsureAccept(8744);
+
+        Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
+        Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
+        Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
+        Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "Ultra Alteon");
+        Awe.GetAweRelic("Greaves", 4172, 10, 15, "bosschallenge", "Mutated Void Dragon");
+
+        Core.EnsureComplete(8744);
+        Core.Logger("Enhancement Unlocked: Vainglory");
+    }
+
+    public void Avarice()
+    {
+        if (Core.isCompletedBefore(8745))
+            return;
+
+        Vainglory();
+        Core.Logger("Unlocking Enhancement: Avarice");
+
+        Core.EnsureAccept(8745);
+
+        HOTLB.Indulgence(75);
+        HOTLB.Penance(75);
+
+        Core.EnsureComplete(8745);
+        Core.Logger("Enhancement Unlocked: Avarice");
+    }
+}
 
 public enum ForgeQuestWeapon
 {
@@ -461,6 +450,15 @@ public enum ForgeQuestWeapon
     Smite,
     HerosValiance,
     ArcanasConcertoWIP,
+    None,
+    All
+};
+public enum ForgeQuestCape
+{
+    ForgeCapeEnhancement,
+    Absolution,
+    Vainglory,
+    Avarice,
     None,
     All
 };
