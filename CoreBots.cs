@@ -470,7 +470,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.Name == itemName : shopitem.ShopItemID == shopItemID);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ? shopitem.Name == itemName : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -514,7 +514,7 @@ public class CoreBots
         ShopItem? item = null;
         try
         {
-            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ?  shopitem.ID == itemID : shopitem.ShopItemID == shopItemID);
+            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ? shopitem.ID == itemID : shopitem.ShopItemID == shopItemID);
         }
         catch
         {
@@ -627,7 +627,7 @@ public class CoreBots
         {
             Join(map);
             Bot.Shops.Load(shopID);
-            Bot.Sleep(ActionDelay);
+            Bot.Sleep(ActionDelay * 2);
         }
         return Bot.Shops.ShopItems;
     }
