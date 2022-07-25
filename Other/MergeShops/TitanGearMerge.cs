@@ -56,7 +56,6 @@ public class TitanGearMerge
                 #endregion
 
                 case "AntiTitan Supplies":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
@@ -67,44 +66,40 @@ public class TitanGearMerge
                     break;
 
                 case "Titanic Fluid":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
+                        Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Titan Paladin's Blade":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
+                        Adv.BoostHuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Vindicator Titan":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
+                        Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Vindicator Titan's Axe":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
+                        Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
