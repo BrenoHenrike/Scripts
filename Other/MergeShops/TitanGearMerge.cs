@@ -70,7 +70,7 @@ public class TitanGearMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BoostHuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
+                        Core.HuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -79,7 +79,7 @@ public class TitanGearMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BoostHuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
+                        Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
