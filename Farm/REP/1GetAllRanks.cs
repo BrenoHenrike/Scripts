@@ -21,6 +21,7 @@ public class GetAllRanks
 
         TOD.FourthDimensionalPyramid();
         TOD.BaconCatFortress();
+        TOD.LaserSharkInvasion();
         LOC.Wolfwing();
         LOC.Kimberly();
         LOC.Lionfang();
