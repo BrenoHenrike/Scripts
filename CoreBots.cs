@@ -140,7 +140,6 @@ public class CoreBots
         Bot.Lite.UntargetDead = changeTo;
         Bot.Lite.UntargetSelf = changeTo;
         Bot.Lite.ReacceptQuest = false;
-        Bot.Lite.CharacterSelectScreen = false;
         Bot.Lite.Set("dOptions[\"disRed\"]", true);
 
         CollectData(changeTo);
