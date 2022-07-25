@@ -40,7 +40,7 @@
 using RBot;
 using RBot.Options;
 
-public class UnlockForgeEnhancments
+public class UnlockForgeEnhancements
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
