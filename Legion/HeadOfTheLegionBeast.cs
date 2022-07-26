@@ -127,10 +127,12 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Violence");
 
-        Core.RegisterQuests(7985);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Essence of Violence", quant))
+        {
+            Core.EnsureAccept(7985);
             Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", "Violence Guards Defeated", 12);
-
+            Core.EnsureComplete(7985);
+        }
         Bot.Wait.ForPickup("Essence of Violence");
         Core.Logger($"Finished farming {quant} Essence of Violence");
         Core.CancelRegisteredQuests();
@@ -145,10 +147,12 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Treachery");
 
-        Core.RegisterQuests(7988);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Essence of Treachery", quant))
+        {
+            Core.EnsureAccept(7988);
             Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", "Treachery Guards Defeated", 12);
-
+            Core.EnsureComplete(7988);
+        }
         Bot.Wait.ForPickup("Essence of Treachery");
         Core.Logger($"Finished farming {quant} Essence of Treachery");
         Core.CancelRegisteredQuests();
@@ -163,10 +167,12 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Souls of Heresy");
 
-        Core.RegisterQuests(7983);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Souls of Heresy", quant))
+        {
+            Core.EnsureAccept(7983);
             Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", "Heresy Guards Defeated", 12);
-
+            Core.EnsureComplete(7983);
+        }
         Bot.Wait.ForPickup("Souls of Heresy");
         Core.Logger($"Finished farming {quant} Souls of Heresy");
         Core.CancelRegisteredQuests();
