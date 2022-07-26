@@ -166,7 +166,7 @@ public class CoreStory
             Core.EnsureComplete(QuestData.ID);
         Bot.Wait.ForQuestComplete(QuestData.ID);
         Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"");
-        Bot.Sleep(1000);
+        Bot.Sleep(1500);
     }
 
     /// <summary>
