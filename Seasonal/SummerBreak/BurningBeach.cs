@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 using RBot;
 
-public class BurningBeach
+public class BurningBeachStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;

@@ -15,7 +15,7 @@ public class BlazingBeachMerge
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
-    public BuringBeachStory BBS = new();
+    public BlazingBeachStory BBS = new();
     public static CoreAdvanced sAdv = new();
 
     public List<IOption> Options = sAdv.MergeOptions;
