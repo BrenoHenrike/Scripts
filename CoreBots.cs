@@ -1207,6 +1207,44 @@ public class CoreBots
         }
     }
 
+    public void KillDoomKitten(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        string[] DOTClasses = {
+                    "ShadowStalker of Time",
+                    "ShadowWeaver of Time",
+                    "ShadowWalker of Time",
+                    "Infinity Knight",
+                    "Interstellar Knight",
+                    "Void Highlord",
+                    "Dragon of Time",
+                    "Timeless Dark Caster",
+                    "Frostval Barbarian",
+                    "Blaze Binder",
+                    "DeathKnight"
+                };
+
+        if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
+            return;
+        if (item != null)
+            AddDrop(item);
+        while (!Bot.ShouldExit() && !CheckInventory(item))
+        {
+            if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
+                Logger($" {DOTClasses.ToString()} not found, stopping.", messageBox: true, stopBot: true);
+
+            foreach (string Class in DOTClasses)
+            {
+                if (CheckInventory(Class))
+                {
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    break;
+                }
+            }
+            HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+        }
+    }
+
+
     public void KillXiang(string? item = null, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
