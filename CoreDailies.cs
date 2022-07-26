@@ -2,7 +2,6 @@
 using RBot;
 using RBot.Items;
 using RBot.Quests;
-using RBot.Shops;
 
 public class CoreDailies
 {
@@ -501,7 +500,7 @@ public class CoreDailies
 
     public void CryptoToken()
     {
-        Core.Logger("Daily: Crypto Token (/Curio)");
+        Core.Logger("Daily: Crypto Token (/curio)");
         if (!CheckDaily(6187, true, "Crypto Token"))
             return;
         DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Enter", pad: "Spawn");
@@ -513,6 +512,7 @@ public class CoreDailies
         if (!Core.IsMember)
             return;
 
+        Core.Logger("Montly: Treasure Chest Keys");
         if (!CheckDaily(1239))
             Core.Logger($"Next keys are available on {new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).ToLongDateString()}");
         else Core.ChainComplete(1239);
@@ -533,6 +533,7 @@ public class CoreDailies
 
     public void WheelofDoom()
     {
+        Core.Logger($"{(Core.IsMember ? "Daily" : "Weekly")}: Wheel of Doom");
         List<string> PreQuestInv = Bot.Inventory.Items.Select(x => x.Name).ToList();
 
         if (Core.IsMember && CheckDaily(3075))
@@ -556,6 +557,7 @@ public class CoreDailies
         if (!IgnoreSwords && Core.CheckInventory(new[] { "Necrotic Sword of Doom", "Dual Necrotic Swords of Doom" }, any: true) && Core.CheckInventory("Void Aura", 7500))
             return;
 
+        Core.Logger("Daily: Void Auras");
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Void Aura", "(Necro) Scroll of Dark Arts");
 
@@ -599,6 +601,8 @@ public class CoreDailies
         if (!Core.IsMember)
             return;
 
+        Core.Logger("Daily: Free Boost");
+
         if (!CheckDaily(4069))
             return;
 
@@ -613,7 +617,6 @@ public class CoreDailies
             if (Core.CheckInventory(item.ID))
                 CompareDict.Add(item.ID, InventoryData.First(x => x.ID == item.ID).Quantity);
             else CompareDict.Add(item.ID, 0);
-
         }
         int LowestQuant = CompareDict.FirstOrDefault(x => x.Value == CompareDict.Values.Min()).Key;
 
@@ -622,5 +625,120 @@ public class CoreDailies
         Core.EnsureComplete(4069, LowestQuant);
         Bot.Wait.ForPickup(quest.Rewards.First(x => x.ID == LowestQuant).Name);
         Core.ToBank(quest.Rewards.First(x => x.ID == LowestQuant).Name);
+    }
+
+    public void BallyhooAdRewards()
+    {
+        if (AdCount() >= 3)
+            return;
+
+        Core.Logger($"Obtaining {3 - AdCount()} Ballyhoo Ad Reward{(AdCount() == 1 ? "" : "s")}");
+        while (AdCount() < 3)
+        {
+            int PreGold = Bot.Player.Gold;
+            int PreAC = PlayerAC();
+            Bot.SendPacket($"%xt%zm%getAdReward%{Bot.Map.RoomID}%");
+            Bot.Sleep(Core.ActionDelay);
+            Bot.SendPacket($"%xt%zm%getAdData%{Bot.Map.RoomID}%");
+            Bot.Sleep(1000);
+            if (Bot.Player.Gold != PreGold)
+                Core.Logger($"You received {Bot.Player.Gold - PreGold} Gold");
+            else if (PlayerAC() != PreAC)
+                Core.Logger($"You received {PlayerAC() - PreAC} AC!", messageBox: true);
+        }
+
+        int PlayerAC() => Bot.GetGameObject<int>("world.myAvatar.objData.intCoins");
+        int AdCount() => Bot.GetGameObject<int>("world.myAvatar.objData.iDailyAds");
+    }
+
+    public void PowerGem()
+    {
+        Core.Logger("Weekly: Power Gems");
+        if (Core.CheckInventory("Power Gem", 1000, false))
+        {
+            Core.Logger("You have the maximum amount of Power Gems");
+            return;
+        }
+
+        Core.JumpWait();
+        int PreQuant = Bot.Inventory.GetQuantity("Power Gem");
+        Bot.SendPacket($"%xt%zm%powergem%{Bot.Map.RoomID}%");
+        Bot.Sleep(Core.ActionDelay);
+        if (Bot.Inventory.GetQuantity("Power Gem") != PreQuant)
+            Core.Logger($"You received {Bot.Inventory.GetQuantity("Power Gem") - PreQuant} Power Gem");
+        else Core.Logger("You received no Power Gem");
+        Core.ToBank("Power Gem");
+    }
+
+    public void GoldenInquisitor()
+    {
+        string[] rewards =
+        {
+            "Golden Inquisitor of Shadowfall",
+            "Gilded Inquisitor's Female Morph",
+            "Gilded Inquisitor's Male Morph",
+            "Golden Inquisitor's Locks",
+            "Golden Inquisitor's Hair",
+            "Golden Inquisitor's Helm",
+            "Golden Inquisitor's Crested Helm",
+            "Golden Inquisitor's Spear",
+            "Golden Inquisitor's Blade",
+            "Golden Inquisitor's Wrap",
+            "Golden Inquisitor's Back Blade",
+            "Golden Inquisitor's Back Blade + Wrap"
+        };
+
+        Core.Logger("Daily: Golden Inquisitor of Shadowfall");
+        if (Core.CheckInventory(rewards, toInv: false) || CheckDaily(491))
+            return;
+
+        Core.EnsureAccept(491);
+        Bot.Drops.Add(Core.EnsureLoad(491).Rewards.Select(x => x.Name).ToArray());
+        Core.EquipClass(ClassType.Farm);
+        Core.HuntMonster("citadel", "Inquisitor Guard", "Inquisitor Contract", 7);
+        Core.EnsureComplete(491);
+        Bot.Wait.ForPickup("*");
+        Core.ToBank(rewards);
+    }
+
+    public void DesignNotes()
+    {
+        Core.Logger("Weekly: Read the Design Notes!");
+
+        if (Bot.Player.GetFactionRank("Loremaster") != 10 || CheckDaily(1213))
+            Core.ChainComplete(1213);
+    }
+
+    public void MoglinPets()
+    {
+        Core.Logger("Daily: Moglin Pets");
+        string[] pets = { "Twig Pet", "Twiggy Pet", "Zorbak Pet" };
+        if (Core.CheckInventory(pets, toInv: false))
+            return;
+
+        foreach (string pet in pets)
+        {
+            if (Core.CheckInventory(pet, toInv: false))
+                continue;
+
+            Core.Logger("Dedicating daily to " + pet);
+            bool dailyDone = !CheckDaily(4159);
+
+            if (!Core.CheckInventory("Moglin MEAL", 30) && !dailyDone)
+            {
+                Core.AddDrop("Moglin MEAL");
+                Core.EnsureAccept(4159);
+                Core.HuntMonster("nexus", "Frogzard", "Frogzard Meat", 3);
+                Core.EnsureComplete(4159);
+                Bot.Wait.ForPickup("Moglin MEAL");
+                dailyDone = true;
+            }
+
+            if (Core.CheckInventory("Moglin MEAL", 30))
+                Core.BuyItem("ariapet", 1081, pet);
+
+            if (dailyDone)
+                break;
+        }
     }
 }

@@ -60,7 +60,12 @@ public class FarmAllDailys
         Daily.WheelofDoom();
         Daily.FreeDailyBoost();
         // Daily.NSoDDaily();
+        Daily.BallyhooAdRewards();
+        Daily.PowerGem();
+        Daily.GoldenInquisitor();
+        Daily.DesignNotes();
+        Daily.MoglinPets();
 
-        Core.Logger("Dailies completed");
+        Core.Logger("All dailies are completed");
     }
 }
