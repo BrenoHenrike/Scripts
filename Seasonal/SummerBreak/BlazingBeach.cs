@@ -57,7 +57,6 @@ public class BuringBeachStory
         Story.MapItemQuest(8707, "blazingbeach", 10253);
         Story.KillQuest(8707, "burningbeach", new[] { "Maladrite", "Shark" });
 
-        Core.EquipClass(ClassType.Solo);
         // Ha Long   
         Story.KillQuest(8708, "blazingbeach", "Magma Blazebeard");
     }

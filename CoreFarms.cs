@@ -1190,7 +1190,7 @@ public class CoreFarms
         }
     }
 
-    public void FishingREP(int rank = 10)
+    public void FishingREP(int rank = 10, bool shouldDerp = false)
     {
         if (FactionRank("Fishing") >= rank)
             return;
@@ -1206,7 +1206,7 @@ public class CoreFarms
         Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
         Core.EnsureComplete(1682);
 
-        while (!Bot.ShouldExit() && FactionRank("Fishing") < (rank > 2 ? 2 : rank))
+        while (!Bot.ShouldExit() && FactionRank("Fishing") < (rank > 2 ? 2 : rank) && (shouldDerp ? !Core.HasAchievement(14) : true))
         {
             Core.Logger("Farming Bait");
             Core.RegisterQuests(1682);
@@ -1231,7 +1231,7 @@ public class CoreFarms
         }
 
 
-        while (!Bot.ShouldExit() && FactionRank("Fishing") < rank)
+        while (!Bot.ShouldExit() && FactionRank("Fishing") < rank && (shouldDerp ? !Core.HasAchievement(14) : true))
         {
             Core.Logger("Farming Dynamite");
             Core.RegisterQuests(1682);
