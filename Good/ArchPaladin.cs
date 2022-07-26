@@ -58,31 +58,9 @@ public class ArchPaladin
                 Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
                 Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom: true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
-
-                string[] DOTClasses = {
-                    "ShadowStalker of Time",
-                    "ShadowWeaver of Time",
-                    "ShadowWalker of Time",
-                    "Infinity Knight",
-                    "Interstellar Knight",
-                    "Void Highlord",
-                    "Dragon of Time",
-                    "Timeless Dark Caster",
-                    "Frostval Barbarian",
-                    "Blaze Binder",
-                    "DeathKnight"
-                };
-                foreach (string Class in DOTClasses)
-                {
-                    if (Core.CheckInventory(Class))
-                    {
-                        Adv.rankUpClass(Class);
-                        Bot.Player.EquipItem(Class);
-                        break;
-                    }
-                }
-                Core.HuntMonster("doomkitten", "DoomKitten", "DoomKitten Claw", publicRoom: true);
-
+                Adv.GearStore();
+                Core.KillDoomKitten("DoomKitten Claw", isTemp: true);
+                Adv.GearStore(true);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("vordredboss", "Vordred", "Vordred's Skull", isTemp: false, publicRoom: true);
                 Core.EnsureComplete(5464);
