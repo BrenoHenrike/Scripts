@@ -57,31 +57,22 @@ public class TitanGearMerge
 
                 case "AntiTitan Supplies":
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("titanattack", "Chaorrupted Bandit", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.KillMonster("titanattack", "r9", "Left", "*", req.Name, quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Vindicator Titan's Axe":
                 case "Vindicator Titan":
                 case "Titanic Fluid":
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("titanattack", "Titanic Vindicator", req.Name, quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Titan Paladin's Blade":
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }
