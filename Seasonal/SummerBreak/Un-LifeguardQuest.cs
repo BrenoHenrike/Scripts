@@ -10,12 +10,12 @@ public class UnLifeGuardQuest
     {
         Core.SetOptions();
 
-        GetTreats();
+        GetItems();
 
         Core.SetOptions(false);
     }
 
-    public void GetTreats()
+    public void GetItems()
     {
         string[] nonMemrewards = { "LifeGuard", "LifeGuard Cap + Locks", "LifeGuard Cap", "LifeGuard Tube" };
         string[] memRewards = { "LifeGuard", "LifeGuard Cap + Locks", "LifeGuard Cap", "LifeGuard Tube", "LifeGuard Tube of DOOM" };

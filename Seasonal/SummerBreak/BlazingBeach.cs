@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreFarms.cs
 using RBot;
 
-public class BuringBeachStory
+public class BlazingBeachStory
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
