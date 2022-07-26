@@ -1677,12 +1677,16 @@ public class CoreBots
         Bot.Sleep(ActionDelay);
         List<ItemBase> tempItems = Bot.Inventory.TempItems;
         ItemBase? newItem = null;
+        bool found = false;
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
             Bot.Sleep(1000);
-            if (i == 1)
+            if (!found && Bot.Inventory.TempItems.Except(tempItems).Count() > 0)
+            {
                 newItem = Bot.Inventory.TempItems.Except(tempItems).First();
+                found = true;
+            }
         }
         if (newItem != null)
         {

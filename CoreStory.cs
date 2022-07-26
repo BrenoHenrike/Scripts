@@ -165,7 +165,7 @@ public class CoreStory
         if (AutoCompleteQuest)
             Core.EnsureComplete(QuestData.ID);
         Bot.Wait.ForQuestComplete(QuestData.ID);
-        Core.Logger($"Completed \"{QuestData.Name}\" [{QuestData.ID}]");
+        Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"");
         Bot.Sleep(1000);
     }
 
@@ -179,6 +179,7 @@ public class CoreStory
     {
         if (QuestID != 0 && PreviousQuestID == QuestID)
             return PreviousQuestState;
+        PreviousQuestID = QuestID;
 
         if (!CBO_Checked)
         {
@@ -187,9 +188,7 @@ public class CoreStory
             CBO_Checked = true;
         }
 
-        PreviousQuestID = QuestID;
-
-        Quest QuestData = Core.EnsureLoad(QuestID);
+        Quest? QuestData = Core.EnsureLoad(QuestID);
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
         if (QuestData == null)
@@ -198,35 +197,42 @@ public class CoreStory
             return true;
         }
 
-        if (!Bot.Quests.IsUnlocked(QuestID))
+        int timeout = 0;
+        while (!Bot.Quests.IsUnlocked(QuestID))
         {
-            int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
-            string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
-                             $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
-                              "Please fill in the RBot Scripts Form to report this.|" +
-                              "Do you wish to be brought to the form?";
-            Core.Logger(message.Replace("|", " "));
-            DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-            if (response == DialogResult.Yes)
+            Bot.Sleep(1000);
+            timeout++;
+
+            if (timeout > 15)
             {
-                string path = ScriptManager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
-                Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
-                                             "entry.2118425091=Bug+Report&" +
-                                            $"entry.290078150={path}&" +
-                                             "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
-                                            $"entry.1918245848={QuestData.ID}&" +
-                                            $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
-                                            $"entry.493943632={currentValue}/{QuestData.Slot}&" +
-                                            $"entry.148016785={QuestData.Name}\"");
+                int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
+                string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
+                                 $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
+                                  "Please fill in the RBot Scripts Form to report this.|" +
+                                  "Do you wish to be brought to the form?";
+                Core.Logger(message.Replace("|", " "));
+                DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (response == DialogResult.Yes)
+                {
+                    string path = ScriptManager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
+                    Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                                                 "entry.2118425091=Bug+Report&" +
+                                                $"entry.290078150={path}&" +
+                                                 "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
+                                                $"entry.1918245848={QuestData.ID}&" +
+                                                $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
+                                                $"entry.493943632={currentValue}/{QuestData.Slot}&" +
+                                                $"entry.148016785={QuestData.Name}\"");
+                }
+                Bot.Stop(true);
             }
-            Bot.Stop(true);
         }
 
         if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
         {
             if (TestBot)
-                Core.Logger($"\"{QuestData.Name}\" [{QuestID}] skipped, TestBot with Once = true");
-            else Core.Logger($"\"{QuestData.Name}\" [{QuestID}] already completed, skipping it.");
+                Core.Logger($"Skipped (Once = true): [{QuestID}] - \"{QuestData.Name}\"");
+            else Core.Logger($"Already Completed: [{QuestID}] - \"{QuestData.Name}\"");
             PreviousQuestState = true;
             return true;
         }
@@ -245,7 +251,7 @@ public class CoreStory
             foreach (ItemBase Item in Rewards)
                 Core.AddDrop(Item.Name);
 
-        Core.Logger($"Doing \"{QuestData.Name}\" [{QuestID}]");
+        Core.Logger($"Doing Quest: [{QuestID}] \"{QuestData.Name}\"");
         Core.EquipClass(ClassType.Solo);
         PreviousQuestState = false;
         return false;

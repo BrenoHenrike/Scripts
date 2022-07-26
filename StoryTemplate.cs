@@ -19,7 +19,7 @@ public class StoryTemplate
 
     public void SagaName()
     {
-        if (Story.QuestProgression(000))
+        if (Core.isCompletedBefore(000))
             return;
 
         Story.PreLoad();
