@@ -34,7 +34,7 @@ public class ArchfiendDragonEgg
         Core.HuntMonster("queenspire", "Fire Guardian Dragon", "Fire Guardian Dragon Soul", isTemp: false);
         if (!Core.CheckInventory("Fresh Soul", 10) & !Core.CheckInventory("Unidentified 36"))
             HB.FreshSouls(10);
-        Core.HuntMonster("Underlair", "ArchFiend DragonLord", "Fiendish Brimstone");
+        Core.HuntMonster("Underlair", "ArchFiend DragonLord", "Fiendish Brimstone", isTemp: false);
         Core.BuyItem("Ariapet", 12, "ArchFiend Dragon Egg");
         Core.EnsureComplete(7296);
         Bot.Wait.ForPickup("ArchFiend Baby Dragon Pet");
