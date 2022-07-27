@@ -22,15 +22,24 @@ public class HanzoOrbQuest
 
     public void HanzoOrb()
     {
-        if (!Core.CheckInventory("Astral Hanzo Orb") && Core.CheckInventory("Crimson Hanzo Orb"))
+        if (!Core.CheckInventory("Astral Hanzo Orb") || Core.CheckInventory("Crimson Hanzo Orb"))
+        {
+            Core.Logger("Neither orb owned, stopping");
             return;
-            
-        int questID = 0;
-        
+        }
+
+        int questID = 1;
+
         if (Core.CheckInventory("Astral Hanzo Orb"))
+        {
+            Core.Logger("using Astral Hanzo Orb Quest");
             questID = 4020;
+        }
         if (Core.CheckInventory("Crimson Hanzo Orb"))
+        {
+            Core.Logger("using Crimson Hanzo Orb Quest");
             questID = 4019;
+        }
 
         List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
