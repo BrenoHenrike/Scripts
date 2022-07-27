@@ -54,7 +54,7 @@ public class FarmAllDailys
         Daily.BeastMasterChallenge();
         Daily.FungiforaFunGuy();
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting();
+        Daily.MineCrafting(ToBank: true);
         Daily.HardCoreMetals();
         Daily.MonthlyTreasureChestKeys();
         Daily.WheelofDoom();

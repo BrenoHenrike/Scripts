@@ -17,7 +17,7 @@ public class MineCrafting
         Core.SetOptions();
 
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting();
+        Daily.MineCrafting(ToBank: true);
 
         Core.SetOptions(false);
     }

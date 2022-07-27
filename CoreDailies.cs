@@ -112,7 +112,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void MineCrafting(string[]? metals = null, int quant = 2)
+    public void MineCrafting(string[]? metals = null, int quant = 2, bool ToBank = false)
     {
         if (metals == null)
             metals = MineCraftingMetals;
@@ -137,6 +137,8 @@ public class CoreDailies
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2091, metalID);
                 Bot.Wait.ForPickup(metal);
+                if (ToBank)
+                    Core.ToBank(MineCraftingMetals);
                 break;
             }
         }
