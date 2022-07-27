@@ -5,6 +5,7 @@
 //cs_include Scripts/Other/Badges/CtrlAltDelMemberBadge.cs
 //cs_include Scripts/Other/Badges/SkyPirateSlayerBadge.cs
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
+//cs_include Scripts/Other\Badges\DerpMoosefishBadge.cs
 using RBot;
 
 public class AllBadges
@@ -16,6 +17,7 @@ public class AllBadges
     public CtrlAltDelMemberBadge CADB = new();
     public SkyPirateBadge SPB = new();
     public YouMadBroBadge YMBB = new();
+    public DerpMoosefishBadge DMF = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -24,6 +26,7 @@ public class AllBadges
         CADB.Badge();
         SPB.Badge();
         YMBB.Badge();
+        DMF.Badge();
         //add more as they are made.
 
         Core.SetOptions(false);
