@@ -24,11 +24,11 @@ public class DoomVaultB
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(3004))
-        {
-            Core.Logger("VaultB Complete");
-            return;
-        }
+        // if (Core.isCompletedBefore(3004))
+        // {
+        //     Core.Logger("VaultB Complete");
+        //     return;
+        // }
             
         Core.AcceptandCompleteTries = 1;
 
@@ -92,7 +92,7 @@ public class DoomVaultB
         Story.KillQuest(2994, "Doomvaultb", "Grimmer Lich");
 
         // Grim Underdungeon XX     
-        Story.ChainQuest(2955);
+        Story.ChainQuest(2995);
         
         // Grim Underdungeon XXI        
         Story.KillQuest(2996, "Doomvaultb", "Grimmer Fire Mage");
