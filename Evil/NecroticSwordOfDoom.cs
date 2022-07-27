@@ -86,18 +86,19 @@ public class NecroticSwordOfDoom
             return;
 
         // Daily.NSoDDaily()
-        CommandingShadowEssences(Quantity);
-        RetrieveVoidAuras(Quantity);
+        if (Core.IsMember)
+        {
+            SDKA.DoAll();
+            CommandingShadowEssences(Quantity);
+        }
+        else RetrieveVoidAuras(Quantity);
     }
 
     public void CommandingShadowEssences(int Quantity)
     {
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
-        if (!Core.CheckInventory("Sepulchure's DoomKnight Armor") && Core.IsMember)
-            SDKA.DoAll();
-        if (!Core.CheckInventory("Sepulchure's DoomKnight Armor") && !Core.IsMember)
-            return;
+            
         Core.AddDrop("Void Aura", "Empowered Essence", "Malignant Essence");
         Core.Logger($"Gathering {Quantity} Void Aura's with SDKA Method");
 
