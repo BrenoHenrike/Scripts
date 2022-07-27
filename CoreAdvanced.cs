@@ -1379,6 +1379,17 @@ public class CoreAdvanced
                 break;
             #endregion
 
+            #region Lucky - Vainglory - Valiance
+            case "archfiend":
+                if (!Core.isCompletedBefore(8744) || !Core.isCompletedBefore(8741))
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Vainglory;
+                wSpecial = WeaponSpecial.Valiance;
+                break;
+            #endregion
+
             #endregion
             #region Awe Enhancement Library
             default:
