@@ -45,44 +45,41 @@ public class OrbHunt
 
         // 8308|The Wind Orb
         Story.KillQuest(8308, "queenreign", "Jaaku");
-<<<<<<< HEAD
-=======
-        
+
         // 8309|Super Spreaders
         Story.KillQuest(8309, "queenreign", "Plague Spreader");
-        
+
         // 8310|Sample Size
         Story.MapItemQuest(8310, "queenreign", 9121, 4);
-        
+
         // 8311|Moss You Be This Nasty
         Story.KillQuest(8311, "queenreign", "Plaguemoss");
-        
+
         // 8312|Infected With The Cure
         Story.MapItemQuest(8312, "queenreign", 9122, 4);
         Story.KillQuest(8312, "queenreign", "Plaguemoss");
-        
+
         // 8313|Hurtful Healing
         Story.KillQuest(8313, "queenreign", "Plaguemoss");
-        
+
         // 8314|The Energy Orb
         Story.KillQuest(8314, "queenreign", "Extriki");
-        
+
         // 8315|Amethite, Am I Right?
         Story.KillQuest(8315, "queenreign", "Calcified Amethite");
-        
+
         // 8316|Reinforcements Deployed
         Story.MapItemQuest(8316, "queenreign", 9123, 4);
-        
+
         // 8317|Wyrms Below
         Story.KillQuest(8317, "queenreign", "Calcified Wyrm");
-        
+
         // 8318|Lair Located
         Story.MapItemQuest(8318, "queenreign", 9124);
         Story.KillQuest(8318, "queenreign", "Calcified Remains");
-        
+
         // 8319|The Earth Orb
         Story.KillQuest(8319, "queenreign", "Grou'luu");
->>>>>>> 59052fbeb9401da584ca12f228ec20d7f8d6d225
 
         // 8320|Goblin Down Water
         Story.KillQuest(8320, "queenreign", "Water Goblin");
@@ -144,11 +141,7 @@ public class OrbHunt
         Story.KillQuest(8339, "orbhunt", "Nax Beast");
 
         // 8340|Children of the Night
-<<<<<<< HEAD
-        Story.MapItemQuest(83834041, "orbhunt", 9160, 4);
-=======
         Story.MapItemQuest(8340, "orbhunt", 9160, 4);
->>>>>>> 59052fbeb9401da584ca12f228ec20d7f8d6d225
         Story.KillQuest(8340, "orbhunt", "Hive");
 
         // 8341|We've Woken The Hive
@@ -156,11 +149,7 @@ public class OrbHunt
 
         // 8342|Ritual Disruption
         Story.MapItemQuest(8342, "orbhunt", 9161, 4);
-<<<<<<< HEAD
-        Story.MapItemQuest(8342, "orbhunt", 1);
-=======
         Story.MapItemQuest(8342, "orbhunt", 9162);
->>>>>>> 59052fbeb9401da584ca12f228ec20d7f8d6d225
         Story.KillQuest(8342, "orbhunt", "Hive");
 
         // 8343|The Darkness Orb
@@ -184,8 +173,4 @@ public class OrbHunt
         // 8349|A Hymn of Ice and Fire, and Light and Dark  
         Story.KillQuest(8349, "orbhunt", new[] { "Chamat", "Horothotep", "Kolyaban", "Quetzal" });
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 59052fbeb9401da584ca12f228ec20d7f8d6d225
 }
