@@ -8,6 +8,11 @@ public class DjinnGateStory
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
+    private string[] drops =
+    {
+     "Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun"
+    };
+
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -24,7 +29,7 @@ public class DjinnGateStory
 
         Story.PreLoad();
 
-        Core.AddDrop("Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun");
+        Core.AddDrop(drops);
 
         if (!Story.QuestProgression(6153))
         {
@@ -110,5 +115,7 @@ public class DjinnGateStory
             Core.HuntMonster("djinngate", "Gedoz", "Gedoz the Malignant Defeated");
             Core.EnsureComplete(6161);
         }
+
+        Core.ToBank(drops);
     }
 }
