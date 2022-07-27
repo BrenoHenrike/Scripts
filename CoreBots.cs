@@ -626,13 +626,14 @@ public class CoreBots
 
     public List<ShopItem> GetShopItems(string map, int shopID)
     {
-        if (!Bot.Shops.IsShopLoaded || Bot.Shops.ShopID != shopID)
+        Bot.Wait.ForTrue(() => Bot.Shops.ShopID == shopID, () =>
         {
+            JumpWait();
             Join(map);
             Bot.Shops.Load(shopID);
-            Bot.Sleep(ActionDelay * 2);
-        }
-        return Bot.Shops.ShopItems;
+            Bot.Sleep(ActionDelay);
+        }, 20);
+        return ShopCache.Loaded.First(shop => shop.ID == shopID).Items;
     }
     #endregion
 
