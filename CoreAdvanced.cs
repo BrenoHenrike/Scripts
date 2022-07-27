@@ -12,490 +12,462 @@ public class CoreAdvanced
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.RunCore();
     }
 
-    #region Enhancement
+    #region Shop
 
     /// <summary>
-    /// Enhances your currently equipped gear
+    /// Buys a item from a shop, but also try to obtain stuff like XP, Rep, Gold, and merge items (where possible)
     /// </summary>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
+    /// <param name="map">Map of the shop</param>
+    /// <param name="shopID">ID of the shop</param>
+    /// <param name="itemName">Name of the item</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="shopQuant">How many items you get for 1 buy</param>
+    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
-        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
+        if (Core.CheckInventory(itemName, quant))
             return;
 
-        List<InventoryItem> EquippedItems = Bot.Inventory.Items.FindAll(i => i.Equipped == true && EnhanceableCatagories.Contains(i.Category));
-        AutoEnhance(EquippedItems, type, wSpecial, cSpecial);
-    }
-
-    /// <summary>
-    /// Enhances a selected item
-    /// </summary>
-    /// <param name="ItemName">Name of the item you want to enhance</param>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
-    {
-        if (string.IsNullOrEmpty(item) || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
+        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
+        if (item == null)
             return;
 
-        if (!Core.CheckInventory(item))
-        {
-            Core.Logger($"Enhancement Failed: Could not find \"{item}\"");
-            return;
-        }
-
-        InventoryItem? SelectedItem = Bot.Inventory.Items.Find(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)); ;
-        if (SelectedItem == null)
-        {
-            if (Bot.Inventory.Items.Any(i => i.Name == item))
-                Core.Logger($"Enhancement Failed: {item} cannot be enhanced");
-            return;
-        }
-
-        AutoEnhance(new() { SelectedItem }, type, wSpecial, cSpecial);
+        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
     }
 
     /// <summary>
-    /// Enhances multiple selected items
+    /// Buys a item from a shop, but also try to obtain stuff like XP, Rep, Gold, and merge items (where possible)
     /// </summary>
-    /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
+    /// <param name="map">Map of the shop</param>
+    /// <param name="shopID">ID of the shop</param>
+    /// <param name="itemID">ID of the item</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="shopQuant">How many items you get for 1 buy</param>
+    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
-        if (items.Count() == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
+        if (Core.CheckInventory(itemID, quant))
             return;
 
-        // If any of the items in the items array cant be found, return
-        List<string>? notFound = new();
-        foreach (string item in items)
-            if (!Core.CheckInventory(item))
-                notFound.Add(item);
-
-        if (notFound.Count > 0)
-        {
-            if (notFound.Count == 1)
-                Core.Logger($"Enhancement Failed: Could not find {notFound.First()}");
-            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", notFound)}");
+        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
+        if (item == null)
             return;
-        }
-        notFound = null;
 
-        // Find all the items in the items array
-        List<InventoryItem>? SelectedItems = Bot.Inventory.Items.FindAll(i => items.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
-
-        // If any of the items in the items array cant be enhanced, return
-        if (SelectedItems.Count != items.Count())
-        {
-            List<string>? unEnhanceable = new();
-
-            foreach (string item in items)
-                if (!Bot.Inventory.Items.Any(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)))
-                    unEnhanceable.Add(item);
-
-            if (unEnhanceable.Count == 1)
-                Core.Logger($"Enhancement Failed: Could not find {unEnhanceable.First()}");
-            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", unEnhanceable)}");
-
-            return;
-        }
-
-        AutoEnhance(SelectedItems, type, wSpecial, cSpecial);
+        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
     }
 
-    /// <summary>
-    /// Determines what Enhancement Type the player has on their currently equipped class
-    /// </summary>
-    /// <returns>Returns the equipped Enhancement Type</returns>
-    public EnhancementType CurrentClassEnh()
+    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
-        int EnhPatternID = Bot.Inventory.CurrentClass.EnhancementPatternID;
-        if (EnhPatternID == 1 || EnhPatternID == 23)
-            EnhPatternID = 9;
-        return (EnhancementType)EnhPatternID;
-    }
+        GetItemReq(item);
 
-    /// <summary>
-    /// Determines what Weapon Special the player has on their currently equipped weapon
-    /// </summary>
-    /// <returns>Returns the equipped Weapon Special</returns>
-    public WeaponSpecial CurrentWeaponSpecial()
-    {
-        InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
-        if (EquippedWeapon == null)
+        if (item.Requirements != null)
         {
-            Core.Logger("Failed to find equipped weapon", messageBox: true, stopBot: true);
-            return WeaponSpecial.None;
-        }
-        return (WeaponSpecial)Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
-    }
-
-    public CapeSpecial CurrentCapeSpecial()
-    {
-        InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Cape);
-        if (EquippedCape == null)
-        {
-            Core.Logger("Failed to find equipped Cape", messageBox: true, stopBot: true);
-            return CapeSpecial.None;
-        }
-        return (CapeSpecial)EquippedCape.EnhancementPatternID;
-    }
-
-    private static ItemCategory[] EnhanceableCatagories =
-    {
-        ItemCategory.Sword,
-        ItemCategory.Axe,
-        ItemCategory.Dagger,
-        ItemCategory.Gun,
-        ItemCategory.HandGun,
-        ItemCategory.Rifle,
-        ItemCategory.Bow,
-        ItemCategory.Mace,
-        ItemCategory.Gauntlet,
-        ItemCategory.Polearm,
-        ItemCategory.Staff,
-        ItemCategory.Wand,
-        ItemCategory.Whip,
-        ItemCategory.Class,
-        ItemCategory.Helm,
-        ItemCategory.Cape,
-
-    };
-    private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
-
-    private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, WeaponSpecial wSpecial, CapeSpecial cSpecial)
-    {
-        // Empty check
-        if (ItemList.Count == 0)
-        {
-            Core.Logger("Enhancement Failed: ItemList is empty");
-            return;
-        }
-
-        // Defining weapon and cape
-        InventoryItem? cape = null;
-        if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
-        {
-            cape = ItemList.Find(i => i.Category == ItemCategory.Cape);
-
-            // Removing cape from the list because it needs to be enhanced seperately
-            if (cape != null)
-                ItemList.Remove(cape);
-        }
-
-        InventoryItem? weapon = null;
-        if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
-        {
-            Core.DebugLogger(this);
-            weapon = ItemList.Find(i => i.ItemGroup == "Weapon");
-
-            // Removing weapon from the list because it needs to be enhanced seperately
-            if (weapon != null)
-                ItemList.Remove(weapon);
-        }
-
-        int skipCounter = 0;
-
-        // Setting the shop ID for the enhancement type
-        if (ItemList.Count > 0)
-        {
-            int shopID = 0;
-
-            switch (type)
+            foreach (ItemBase req in item.Requirements)
             {
-                case EnhancementType.Fighter:
-                    shopID = Bot.Player.Level >= 50 ? 768 : 141;
-                    break;
-                case EnhancementType.Thief:
-                    shopID = Bot.Player.Level >= 50 ? 767 : 142;
-                    break;
-                case EnhancementType.Hybrid:
-                    shopID = Bot.Player.Level >= 50 ? 766 : 143;
-                    break;
-                case EnhancementType.Wizard:
-                    shopID = Bot.Player.Level >= 50 ? 765 : 144;
-                    break;
-                case EnhancementType.Healer:
-                    shopID = Bot.Player.Level >= 50 ? 762 : 145;
-                    break;
-                case EnhancementType.SpellBreaker:
-                    shopID = Bot.Player.Level >= 50 ? 764 : 146;
-                    break;
-                case EnhancementType.Lucky:
-                    shopID = Bot.Player.Level >= 50 ? 763 : 147;
-                    break;
-            }
-
-            // Enhancing the remaining items
-            foreach (InventoryItem item in ItemList)
-            {
-                _AutoEnhance(item, shopID);
-                Core.DebugLogger(this);
-            }
-        }
-
-        Core.DebugLogger(this);
-        // Enhancing the cape with the cape special
-        if (cape != null)
-        {
-            bool canEnhance = true;
-
-            switch (cSpecial)
-            {
-                case CapeSpecial.Forge:
-                    if (!Core.isCompletedBefore(8758))
-                    {
-                        Core.Logger("Enhancement Failed: You did not unlock the Forge (Cape) Enhancement yet");
-                        canEnhance = false;
-                    }
-                    break;
-                case CapeSpecial.Absolution:
-                    if (!Core.isCompletedBefore(8743))
-                    {
-                        Core.Logger("Enhancement Failed: You did not unlock the Absolution Enhancement yet");
-                        canEnhance = false;
-                    }
-                    break;
-                case CapeSpecial.Avarice:
-                    if (!Core.isCompletedBefore(8744))
-                    {
-                        Core.Logger("Enhancement Failed: You did not unlock the Avarice Enhancement yet");
-                        canEnhance = false;
-                    }
-                    break;
-                case CapeSpecial.Vainglory:
-                    if (!Core.isCompletedBefore(8745))
-                    {
-                        Core.Logger("Enhancement Failed: You did not unlock the Vainglory Enhancement yet");
-                        canEnhance = false;
-                    }
-                    break;
-            }
-
-            if (canEnhance)
-                _AutoEnhance(cape, 2143, "forge");
-            else skipCounter++;
-        }
-        Core.DebugLogger(this);
-
-        // Enhancing the weapon with the weapon special
-        if (weapon != null)
-        {
-            Core.DebugLogger(this);
-            int shopID = 0;
-            bool canEnhance = true;
-
-            if ((int)wSpecial <= 6)
-            {
-                Core.DebugLogger(this);
-                switch (type)
-                {
-                    case EnhancementType.Fighter:
-                        shopID = 635;
-                        break;
-                    case EnhancementType.Thief:
-                        shopID = 637;
-                        break;
-                    case EnhancementType.Hybrid:
-                        shopID = 633;
-                        break;
-                    case EnhancementType.Wizard:
-                    case EnhancementType.SpellBreaker:
-                        shopID = 636;
-                        break;
-                    case EnhancementType.Healer:
-                        shopID = 638;
-                        break;
-                    case EnhancementType.Lucky:
-                        shopID = 639;
-                        break;
-                }
-            }
-            else
-            {
-                Core.DebugLogger(this);
-                switch (wSpecial)
-                {
-                    case WeaponSpecial.Forge:
-                        if (!Core.isCompletedBefore(8738))
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Forge (Weapon) Enhancement yet");
-                            canEnhance = false;
-                        }
-                        break;
-                    case WeaponSpecial.Lacerate:
-                        if (!Core.isCompletedBefore(8739))
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Lacerate Enhancement yet");
-                            canEnhance = false;
-                        }
-                        break;
-                    case WeaponSpecial.Smite:
-                        if (!Core.isCompletedBefore(8740))
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Smite Enhancement yet");
-                            canEnhance = false;
-                        }
-                        break;
-                    case WeaponSpecial.Valiance:
-                        if (!Core.isCompletedBefore(8741))
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Valiance Enhancement yet");
-                            canEnhance = false;
-                        }
-                        break;
-                    case WeaponSpecial.Arcanas_Concerto:
-                        if (!Core.isCompletedBefore(8739))
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Arcana's Concerto Enhancement yet");
-                            canEnhance = false;
-                        }
-                        break;
-                }
-
-                Core.DebugLogger(this);
-                shopID = 2142;
-            }
-
-            if (canEnhance)
-                _AutoEnhance(weapon, shopID, "forge");
-            else skipCounter++;
-        }
-
-        if (skipCounter > 0)
-            Core.Logger($"Skipped enhancement for {skipCounter} item{(skipCounter > 1 ? 's' : null)}");
-
-        void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
-        {
-            bool specialOnCape = item.Category == ItemCategory.Cape && cSpecial != CapeSpecial.None;
-            bool specialOnWeapon = item.ItemGroup == "Weapon" && wSpecial.ToString() != "None";
-            List<ShopItem> shopItems = Core.GetShopItems(map != null ? map : Bot.Map.Name, shopID);
-
-            // Shopdata complete check
-            if (!shopItems.Any(x => x.Category == ItemCategory.Enhancement) || shopItems.Count == 0)
-            {
-                Core.Logger($"Enhancement Failed: Couldn't find enhancements in shop {shopID}");
-                return;
-            }
-
-            // Checking if the item is already optimally enhanced
-            Core.DebugLogger(this, item.Name);
-            if (Bot.Player.Level == item.EnhancementLevel)
-            {
-                Core.DebugLogger(this);
-                if (specialOnCape)
-                {
-                    if ((int)cSpecial == getEnhPatternID(item))
-                    {
-                        skipCounter++;
-                        return;
-                    }
-                }
-                else if (specialOnWeapon)
-                {
-                    Core.DebugLogger(this);
-                    if (((int)wSpecial <= 6 ? (int)type : 10) == getEnhPatternID(item) && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
-                    {
-                        Core.DebugLogger(this);
-                        skipCounter++;
-                        return;
-                    }
-                }
-                else if ((int)type == getEnhPatternID(item))
-                {
-                    skipCounter++;
-                    return;
-                }
-            }
-
-            // Logging
-            if (specialOnCape)
-                Core.Logger($"Searching Enhancement:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
-            else if (specialOnWeapon)
-                Core.Logger($"Searching Enhancement:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
-            else
-                Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
-
-            List<ShopItem> availableEnh = new();
-
-            // Filters
-            foreach (ShopItem enh in shopItems)
-            {
-                // Remove enhancments that you dont have access to
-                if ((!Core.IsMember && enh.Upgrade) || (enh.Level > Bot.Player.Level))
+                if (Core.CheckInventory(req.ID, req.Quantity))
                     continue;
 
-                string enhName = enh.Name.Replace(" ", "").Replace("\'", "").ToLower();
-
-                // Cape if cSpecial
-                if (specialOnCape && enhName.Contains(cSpecial.ToString().Replace("_", "").ToLower()))
-                    availableEnh.Add(enh);
-                // Weapon if wSpecial
-                else if (specialOnWeapon && enhName.Contains(wSpecial.ToString().Replace("_", "").ToLower()))
-                    availableEnh.Add(enh);
-                // Class
-                else if (item.Category == ItemCategory.Class && enhName.Contains("armor"))
-                    availableEnh.Add(enh);
-                // Helm
-                else if (item.Category == ItemCategory.Helm && enhName.Contains("helm"))
-                    availableEnh.Add(enh);
-                // Cape if not cSpecial
-                else if (item.Category == ItemCategory.Cape && enhName.Contains("cape"))
-                    availableEnh.Add(enh);
-                // Weapon2 if not wSpecial
-                else if (item.ItemGroup == "Weapon" && enhName.Contains("weapon"))
-                    availableEnh.Add(enh);
+                if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                    BuyItem(map, shopID, req.ID, req.Quantity);
             }
-
-            // Empty check
-            if (availableEnh.Count == 0)
-            {
-                Core.Logger($"Enhancement Failed: availableEnh is empty");
-                return;
-            }
-
-            // Sorting by level (ascending)
-            List<ShopItem> sortedList = availableEnh.OrderBy(x => x.Level).ToList();
-
-            // Grabbing the two best enhancements
-            List<ShopItem> bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
-
-            // Getting the best enhancement out of the two
-            ShopItem? bestEnhancement =
-                bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
-                    bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
-
-            // Null check
-            if (bestEnhancement == null)
-            {
-                Core.Logger($"Enhancement Failed: Could not find the best enhancement for \"{item.Name}\"");
-                return;
-            }
-            // Enhancing the item
-            Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
-
-            // Final logging
-            if (specialOnCape)
-                Core.Logger($"Enhancement Applied:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
-            else if (specialOnWeapon)
-                Core.Logger($"Enhancement Applied:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
-            else
-                Core.Logger($"Enhancement Applied:\t{type} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
-
-            Bot.Sleep(Core.ActionDelay);
         }
+
+        if (canBuy(new List<ShopItem>() { item }, shopID, item.Name))
+            Core.BuyItem(map, shopID, item.Name, quant, shopQuant, shopItemID);
     }
 
-    private int getProcID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
-    private int getEnhPatternID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
+    /// <summary>
+    /// Buys all merge from a shop based on the script options selected setting. Will read where to get the ingredients from from the findIngredients param
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
+    {
+        matsOnly = (int)Bot.Config.Get<mergeOptionsEnum>("mode") == 2;
+        List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
+        List<ShopItem> items = new();
+
+        foreach (ShopItem item in shopItems)
+        {
+            if (Core.CheckInventory(item.ID, toInv: false))
+                continue;
+            //No clue why I have to do a double if instead of a &&, but otherwise it will not do this statement correctly
+            if (!miscCatagories.Contains(item.Category))
+                if (Core.IsMember ? true : !item.Upgrade)
+                {
+                    if ((int)Bot.Config.Get<mergeOptionsEnum>("mode") != 1)
+                        items.Add(item);
+                    else if (item.Coins)
+                        items.Add(item);
+                }
+        }
+
+        int t = 1;
+        for (int i = 0; i < 2; i++)
+        {
+            foreach (ShopItem item in items)
+            {
+                getIngredients(item);
+                if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
+                {
+                    Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
+                    BuyItem(map, shopID, item.ID);
+                    Core.ToBank(item.Name);
+                }
+            }
+            if (!matsOnly)
+                i++;
+        }
+
+        void getIngredients(ShopItem item)
+        {
+            if (Core.CheckInventory(item.ID) || item.Requirements == null)
+                return;
+
+            if (!matsOnly)
+                Core.Logger($"Farming to buy {item.Name} (#{t}/{items.Count})");
+
+            foreach (ItemBase req in item.Requirements)
+            {
+                externalQuant =
+                    matsOnly ?
+                        (Bot.Inventory.IsMaxStack(req.Name) ?
+                            req.MaxStack : ((req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name)) + req.Quantity)) : req.Quantity;
+                if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
+                    continue;
+
+                if (shopItems.Select(x => x.ID).Contains(req.ID))
+                {
+                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
+                    getIngredients(selectedItem);
+                    if (!matsOnly && canBuy(new List<ShopItem>() { selectedItem }, shopID))
+                        BuyItem(map, shopID, selectedItem.ID, req.Quantity);
+                }
+                else
+                {
+                    Core.AddDrop(req.Name);
+                    externalItem = req;
+                    findIngredients();
+                }
+            }
+        }
+    }
+    public List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem, ItemCategory.ServerUse };
+    public ItemBase externalItem = new();
+    public int externalQuant = 0;
+    public bool matsOnly = false;
+
+    /// <summary>
+    /// Checks if everything needed to buy the item is present, if not, it will log and return false
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="itemName">The name of the item you're gonna check</param>
+    public bool canBuy(string map, int shopID, string itemName)
+    {
+        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.Name == itemName).ToList();
+        return canBuy(shopItem, shopID, itemName);
+    }
+
+    /// <summary>
+    /// Checks if everything needed to buy the item is present, if not, it will log and return false
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="itemID">The ID of the item you're gonna check</param>
+    public bool canBuy(string map, int shopID, int itemID)
+    {
+        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.ID == itemID).ToList();
+        return canBuy(shopItem, shopID, itemID.ToString());
+    }
+
+    private bool canBuy(List<ShopItem> shopItem, int shopID, string itemNameID = "")
+    {
+        ShopItem? item = parseShopItem(shopItem, shopID, itemNameID);
+        if (item == null)
+            return false;
+
+        //Rep check
+        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
+        {
+            int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
+            if (reqRank > Farm.FactionRank(item.Faction))
+            {
+                Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.");
+                return false;
+            }
+        }
+
+        //Merge item check
+        if (item.Requirements != null)
+        {
+            foreach (ItemBase req in item.Requirements)
+            {
+                if (!Core.CheckInventory(req.Name, req.Quantity))
+                {
+                    Core.Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
+                    return false;
+                }
+            }
+        }
+
+        //Gold check
+        if (item.Cost > Bot.Player.Gold)
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID)
+    {
+        if (shopItem.Count == 0)
+        {
+            Core.Logger($"Item {itemNameID} not found in shop {shopID}.");
+            return null;
+        }
+        else if (shopItem.Count > 1)
+        {
+            Core.Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the item ID.");
+            return null;
+        }
+
+        return shopItem.First();
+    }
+
+    /// <summary>
+    /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
+    /// </summary>
+    /// <param name="item">The ShopItem object containing all the information</param>
+    public void GetItemReq(ShopItem item)
+    {
+        if (item.Faction != null && item.Faction != "None" && item.RequiredReputation > 0)
+            runRep(item.Faction, RepCPLevel.First(x => x.Key == item.RequiredReputation).Value);
+        Farm.Experience(item.Level);
+        Farm.Gold(item.Cost);
+    }
+
+    private void runRep(string faction, int rank)
+    {
+        faction = faction.Replace(" ", "");
+        Type farmClass = Farm.GetType();
+        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
+        if (theMethod == null)
+        {
+            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
+            return;
+        }
+        if (faction != "Alchemy")
+            theMethod.Invoke(Farm, new object[] { rank });
+        else theMethod.Invoke(Farm, new object[] { rank, true });
+    }
+
+    private Dictionary<int, int> RepCPLevel = new()
+    {
+        { 0, 1 },
+        { 900, 2 },
+        { 3600, 3 },
+        { 10000, 4 },
+        { 22500, 5 },
+        { 44100, 6 },
+        { 78400, 7 },
+        { 129600, 8 },
+        { 202500, 9 },
+        { 302500, 10 }
+    };
+
+    /// <summary>
+    /// The list of ScriptOptions for any merge script.
+    /// </summary>
+    public List<IOption> MergeOptions = new List<IOption>()
+    {
+        new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
+                                                                     "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
+        new Option<string>("blank", " ", "", ""),
+        new Option<string>(" ", "Mode Explanation [all]", "Mode [all]:\t\tYou get all the items from shop, even if non-AC ones if any exist.", "click here"),
+        new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]:\tYou get all the AC tagged items from the shop.", "click here"),
+        new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]:\tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
+    };
+
+    /// <summary>
+    /// The name of ScriptOptions for any merge script.
+    /// </summary>
+    public string OptionsStorage = "MergeOptionStorage";
+
+    private enum mergeOptionsEnum
+    {
+        all = 0,
+        acOnly = 1,
+        mergeMats = 2
+    };
+
+    #endregion
+
+    #region Kill
+
+    /// <summary>
+    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="cell">Cell to jump to</param>
+    /// <param name="pad">Pad to jump to</param>
+    /// <param name="monster">Name of the monster to kill</param>
+    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log">Whether it will log that it is killing the monster</param>
+    public void BoostKillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    {
+        if (item != "" && Core.CheckInventory(item, quant))
+            return;
+
+        Core.Join(map, cell, pad, publicRoom: publicRoom);
+
+        _RaceGear(monster);
+
+        Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
+
+        GearStore(true);
+    }
+
+    /// <summary>
+    /// Kills a monster using it's ID, with the specified monsters the best available race gear
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="cell">Cell to jump to</param>
+    /// <param name="pad">Pad to jump to</param>
+    /// <param name="monsterID">ID of the monster</param>
+    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log">Whether it will log that it is killing the monster</param>
+    public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    {
+        if (item != "" && Core.CheckInventory(item, quant))
+            return;
+
+        Core.Join(map, cell, pad, publicRoom: publicRoom);
+
+        _RaceGear(monsterID);
+
+        Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
+
+        GearStore(true);
+    }
+
+    /// <summary>
+    /// Joins a map and hunt for the monster and kills the specified monster with the best available race gear
+    /// </summary>
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="monster">Name of the monster to kill</param>
+    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    {
+        if (item != "" && Core.CheckInventory(item, quant))
+            return;
+
+        Core.Join(map, publicRoom: publicRoom);
+
+        _RaceGear(monster);
+
+        Core.HuntMonster(map, monster, item, quant, isTemp, log, publicRoom);
+
+        GearStore(true);
+    }
+
+    /// <summary>
+    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear. But also listens for Counter Attacks
+    /// </summary>
+    /// <param name="map">Map to join</param>
+    /// <param name="cell">Cell to jump to</param>
+    /// <param name="pad">Pad to jump to</param>
+    /// <param name="monster">Name of the monster to kill</param>
+    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log">Whether it will log that it is killing the monster</param>
+    public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
+    {
+        if (item != "" && Core.CheckInventory(item, quant))
+            return;
+        if (!isTemp && item != "")
+            Core.AddDrop(item);
+
+        Core.Join(map, cell, pad, publicRoom: publicRoom);
+        if (!forAuto)
+            _RaceGear(monster);
+        Core.Jump(cell, pad);
+
+        Bot.Events.CounterAttack += _KillUltra;
+        bool shouldAttack = true;
+
+        if (item == "")
+        {
+            if (log)
+                Core.Logger($"Killing Ultra-Boss {monster}");
+            int i = 0;
+            Bot.Events.MonsterKilled += b => i++;
+            while (!Bot.ShouldExit() && i < 1)
+                while (!Bot.ShouldExit() && shouldAttack)
+                    Bot.Player.Kill(monster);
+            Core.Rest();
+        }
+        else
+        {
+            if (log)
+                Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
+            while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+            {
+                while (!Bot.ShouldExit() && shouldAttack)
+                    Bot.Player.Kill(monster);
+                if (!isTemp && !Core.CheckInventory(item))
+                {
+                    Bot.Sleep(Core.ActionDelay);
+                    Bot.Player.RejectExcept(item);
+                }
+                if (!Bot.Player.InCombat)
+                    Core.Rest();
+                Bot.Wait.ForDrop(item);
+            }
+        }
+
+        Bot.Events.CounterAttack -= _KillUltra;
+
+        if (!forAuto)
+            GearStore(true);
+
+        void _KillUltra(ScriptInterface bot, bool faded)
+        {
+            Monster? Target = null;
+            if (!faded)
+            {
+                Target = Bot.Player.Target;
+                shouldAttack = false;
+                Bot.Player.CancelAutoAttack();
+                Bot.Player.CancelTarget();
+            }
+            else
+            {
+                if (Target != null)
+                    Bot.Player.Attack(Target);
+                else Bot.Player.Attack("*");
+                shouldAttack = true;
+            }
+        }
+    }
 
     #endregion
 
@@ -804,6 +776,10 @@ public class CoreAdvanced
     /// <returns>Returns if its a weapon or not</returns>
     public bool isWeapon(ItemBase Item) => Item.ItemGroup == "Weapon";
 
+    /// <summary>
+    /// Will do GearStore() and then figure out the race of the monster paramater and equip bestGear on it
+    /// </summary>
+    /// <param name="Monster">The Monster object of the monster</param>
     public void _RaceGear(string Monster)
     {
         GearStore();
@@ -824,6 +800,10 @@ public class CoreAdvanced
         EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
     }
 
+    /// <summary>
+    /// Will do GearStore() and then figure out the race of the monster paramater and equip bestGear on it
+    /// </summary>
+    /// <param name="MonsterID">The MonsterID of the monster</param>
     public void _RaceGear(int MonsterID)
     {
         GearStore();
@@ -843,411 +823,497 @@ public class CoreAdvanced
 
     #endregion
 
-    #region Shop
+    #region Enhancement
 
-    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    /// <summary>
+    /// Enhances your currently equipped gear
+    /// </summary>
+    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
+    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
-        if (Core.CheckInventory(itemID, quant))
+        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             return;
 
-        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
-        if (item == null)
+        List<InventoryItem> EquippedItems = Bot.Inventory.Items.FindAll(i => i.Equipped == true && EnhanceableCatagories.Contains(i.Category));
+        AutoEnhance(EquippedItems, type, wSpecial, cSpecial);
+    }
+
+    /// <summary>
+    /// Enhances a selected item
+    /// </summary>
+    /// <param name="ItemName">Name of the item you want to enhance</param>
+    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
+    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
+    {
+        if (string.IsNullOrEmpty(item) || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
             return;
 
-        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
-    }
-
-    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
-    {
-        if (Core.CheckInventory(itemName, quant))
-            return;
-
-        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
-        if (item == null)
-            return;
-
-        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
-    }
-
-    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopQuant = 1, int shopItemID = 0)
-    {
-        GetItemReq(item);
-
-        if (item.Requirements != null)
+        if (!Core.CheckInventory(item))
         {
-            foreach (ItemBase req in item.Requirements)
-            {
-                if (Core.CheckInventory(req.ID, req.Quantity))
-                    continue;
-
-                if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                    BuyItem(map, shopID, req.ID, req.Quantity);
-            }
-        }
-
-        if (canBuy(new List<ShopItem>() { item }, shopID, item.Name))
-            Core.BuyItem(map, shopID, item.Name, quant, shopQuant, shopItemID);
-    }
-
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
-    {
-        matsOnly = (int)Bot.Config.Get<mergeOptionsEnum>("mode") == 2;
-        List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
-        List<ShopItem> items = new();
-
-        foreach (ShopItem item in shopItems)
-        {
-            if (Core.CheckInventory(item.ID, toInv: false))
-                continue;
-            //No clue why I have to do a double if instead of a &&, but otherwise it will not do this statement correctly
-            if (!miscCatagories.Contains(item.Category))
-                if (Core.IsMember ? true : !item.Upgrade)
-                {
-                    if ((int)Bot.Config.Get<mergeOptionsEnum>("mode") != 1)
-                        items.Add(item);
-                    else if (item.Coins)
-                        items.Add(item);
-                }
-        }
-
-        int t = 1;
-        for (int i = 0; i < 2; i++)
-        {
-            foreach (ShopItem item in items)
-            {
-                getIngredients(item);
-                if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
-                {
-                    Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    BuyItem(map, shopID, item.ID);
-                    Core.ToBank(item.Name);
-                }
-            }
-            if (!matsOnly)
-                i++;
-        }
-
-        void getIngredients(ShopItem item)
-        {
-            if (Core.CheckInventory(item.ID) || item.Requirements == null)
-                return;
-
-            if (!matsOnly)
-                Core.Logger($"Farming to buy {item.Name} (#{t}/{items.Count})");
-
-            foreach (ItemBase req in item.Requirements)
-            {
-                externalQuant =
-                    matsOnly ?
-                        (Bot.Inventory.IsMaxStack(req.Name) ?
-                            req.MaxStack : ((req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name)) + req.Quantity)) : req.Quantity;
-                if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
-                    continue;
-
-                if (shopItems.Select(x => x.ID).Contains(req.ID))
-                {
-                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
-                    getIngredients(selectedItem);
-                    if (!matsOnly && canBuy(new List<ShopItem>() { selectedItem }, shopID))
-                        BuyItem(map, shopID, selectedItem.ID, req.Quantity);
-                }
-                else
-                {
-                    Core.AddDrop(req.Name);
-                    externalItem = req;
-                    findIngredients();
-                }
-            }
-        }
-    }
-    public List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem, ItemCategory.ServerUse };
-    public ItemBase externalItem = new();
-    public int externalQuant = 0;
-    public bool matsOnly = false;
-
-    public bool canBuy(string map, int shopID, string itemName)
-    {
-        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.Name == itemName).ToList();
-        return canBuy(shopItem, shopID, itemName);
-    }
-
-    public bool canBuy(string map, int shopID, int itemID)
-    {
-        List<ShopItem> shopItem = Core.GetShopItems(map, shopID).Where(x => x.ID == itemID).ToList();
-        return canBuy(shopItem, shopID, itemID.ToString());
-    }
-
-    public bool canBuy(List<ShopItem> shopItem, int shopID, string itemNameID = "")
-    {
-        ShopItem? item = parseShopItem(shopItem, shopID, itemNameID);
-        if (item == null)
-            return false;
-
-        //Rep check
-        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
-        {
-            int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
-            if (reqRank > Farm.FactionRank(item.Faction))
-            {
-                Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.");
-                return false;
-            }
-        }
-
-        //Merge item check
-        if (item.Requirements != null)
-        {
-            foreach (ItemBase req in item.Requirements)
-            {
-                if (!Core.CheckInventory(req.Name, req.Quantity))
-                {
-                    Core.Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
-                    return false;
-                }
-            }
-        }
-
-        //Gold check
-        if (item.Cost > Bot.Player.Gold)
-        {
-            Core.Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
-            return false;
-        }
-
-        return true;
-    }
-
-    private ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID)
-    {
-        if (shopItem.Count == 0)
-        {
-            Core.Logger($"Item {itemNameID} not found in shop {shopID}.");
-            return null;
-        }
-        else if (shopItem.Count > 1)
-        {
-            Core.Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the item ID.");
-            return null;
-        }
-
-        return shopItem.First();
-    }
-
-    public void GetItemReq(ShopItem item)
-    {
-        if (item.Faction != null && item.Faction != "None" && item.RequiredReputation > 0)
-            runRep(item.Faction, RepCPLevel.First(x => x.Key == item.RequiredReputation).Value);
-        Farm.Experience(item.Level);
-        Farm.Gold(item.Cost);
-    }
-
-    private void runRep(string faction, int rank)
-    {
-        faction = faction.Replace(" ", "");
-        Type farmClass = Farm.GetType();
-        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
-        if (theMethod == null)
-        {
-            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
+            Core.Logger($"Enhancement Failed: Could not find \"{item}\"");
             return;
         }
-        if (faction != "Alchemy")
-            theMethod.Invoke(Farm, new object[] { rank });
-        else theMethod.Invoke(Farm, new object[] { rank, true });
+
+        InventoryItem? SelectedItem = Bot.Inventory.Items.Find(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)); ;
+        if (SelectedItem == null)
+        {
+            if (Bot.Inventory.Items.Any(i => i.Name == item))
+                Core.Logger($"Enhancement Failed: {item} cannot be enhanced");
+            return;
+        }
+
+        AutoEnhance(new() { SelectedItem }, type, wSpecial, cSpecial);
     }
 
-    private Dictionary<int, int> RepCPLevel = new()
+    /// <summary>
+    /// Enhances multiple selected items
+    /// </summary>
+    /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
+    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
+    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
-        { 0, 1 },
-        { 900, 2 },
-        { 3600, 3 },
-        { 10000, 4 },
-        { 22500, 5 },
-        { 44100, 6 },
-        { 78400, 7 },
-        { 129600, 8 },
-        { 202500, 9 },
-        { 302500, 10 }
+        if (items.Count() == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
+            return;
+
+        // If any of the items in the items array cant be found, return
+        List<string>? notFound = new();
+        foreach (string item in items)
+            if (!Core.CheckInventory(item))
+                notFound.Add(item);
+
+        if (notFound.Count > 0)
+        {
+            if (notFound.Count == 1)
+                Core.Logger($"Enhancement Failed: Could not find {notFound.First()}");
+            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", notFound)}");
+            return;
+        }
+        notFound = null;
+
+        // Find all the items in the items array
+        List<InventoryItem>? SelectedItems = Bot.Inventory.Items.FindAll(i => items.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
+
+        // If any of the items in the items array cant be enhanced, return
+        if (SelectedItems.Count != items.Count())
+        {
+            List<string>? unEnhanceable = new();
+
+            foreach (string item in items)
+                if (!Bot.Inventory.Items.Any(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)))
+                    unEnhanceable.Add(item);
+
+            if (unEnhanceable.Count == 1)
+                Core.Logger($"Enhancement Failed: Could not find {unEnhanceable.First()}");
+            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", unEnhanceable)}");
+
+            return;
+        }
+
+        AutoEnhance(SelectedItems, type, wSpecial, cSpecial);
+    }
+
+    /// <summary>
+    /// Determines what Enhancement Type the player has on their currently equipped class
+    /// </summary>
+    /// <returns>Returns the equipped Enhancement Type</returns>
+    public EnhancementType CurrentClassEnh()
+    {
+        int EnhPatternID = Bot.Inventory.CurrentClass.EnhancementPatternID;
+        if (EnhPatternID == 1 || EnhPatternID == 23)
+            EnhPatternID = 9;
+        return (EnhancementType)EnhPatternID;
+    }
+
+    /// <summary>
+    /// Determines what Cape Special the player has on their currently equipped cape
+    /// </summary>
+    /// <returns>Returns the equipped Cape Special</returns>
+    public CapeSpecial CurrentCapeSpecial()
+    {
+        InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Cape);
+        if (EquippedCape == null)
+        {
+            Core.Logger("Failed to find equipped Cape", messageBox: true, stopBot: true);
+            return CapeSpecial.None;
+        }
+        return (CapeSpecial)EquippedCape.EnhancementPatternID;
+    }
+
+    /// <summary>
+    /// Determines what Weapon Special the player has on their currently equipped weapon
+    /// </summary>
+    /// <returns>Returns the equipped Weapon Special</returns>
+    public WeaponSpecial CurrentWeaponSpecial()
+    {
+        InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        if (EquippedWeapon == null)
+        {
+            Core.Logger("Failed to find equipped weapon", messageBox: true, stopBot: true);
+            return WeaponSpecial.None;
+        }
+        return (WeaponSpecial)Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
+    }
+
+    private static ItemCategory[] EnhanceableCatagories =
+    {
+        ItemCategory.Sword,
+        ItemCategory.Axe,
+        ItemCategory.Dagger,
+        ItemCategory.Gun,
+        ItemCategory.HandGun,
+        ItemCategory.Rifle,
+        ItemCategory.Bow,
+        ItemCategory.Mace,
+        ItemCategory.Gauntlet,
+        ItemCategory.Polearm,
+        ItemCategory.Staff,
+        ItemCategory.Wand,
+        ItemCategory.Whip,
+        ItemCategory.Class,
+        ItemCategory.Helm,
+        ItemCategory.Cape,
+
     };
+    private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
 
-    /// <summary>
-    /// The list of ScriptOptions for any merge script.
-    /// </summary>
-    public List<IOption> MergeOptions = new List<IOption>()
+    private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, WeaponSpecial wSpecial, CapeSpecial cSpecial)
     {
-        new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
-                                                                     "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
-        new Option<string>("blank", " ", "", ""),
-        new Option<string>(" ", "Mode Explanation [all]", "Mode [all]:\t\tYou get all the items from shop, even if non-AC ones if any exist.", "click here"),
-        new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]:\tYou get all the AC tagged items from the shop.", "click here"),
-        new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]:\tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
-    };
-    public string OptionsStorage = "MergeOptionStorage";
-
-    public enum mergeOptionsEnum
-    {
-        all = 0,
-        acOnly = 1,
-        mergeMats = 2
-    };
-
-    #endregion
-
-    #region Kill
-
-    /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void BoostKillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
-    {
-        if (item != "" && Core.CheckInventory(item, quant))
-            return;
-
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
-
-        _RaceGear(monster);
-
-        Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
-
-        GearStore(true);
-    }
-
-    /// <summary>
-    /// Kills a monster using it's ID, with the specified monsters the best available race gear
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monsterID">ID of the monster</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
-    {
-        if (item != "" && Core.CheckInventory(item, quant))
-            return;
-
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
-
-        _RaceGear(monsterID);
-
-        Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
-
-        GearStore(true);
-    }
-
-    /// <summary>
-    /// Joins a map and hunt for the monster and kills the specified monster with the best available race gear
-    /// </summary>
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
-    {
-        if (item != "" && Core.CheckInventory(item, quant))
-            return;
-
-        Core.Join(map, publicRoom: publicRoom);
-
-        _RaceGear(monster);
-
-        Core.HuntMonster(map, monster, item, quant, isTemp, log, publicRoom);
-
-        GearStore(true);
-    }
-
-    /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear. But also listens for Counter Attacks
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
-    {
-        if (item != "" && Core.CheckInventory(item, quant))
-            return;
-        if (!isTemp && item != "")
-            Core.AddDrop(item);
-
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
-        if (!forAuto)
-            _RaceGear(monster);
-        Core.Jump(cell, pad);
-
-        Bot.Events.CounterAttack += _KillUltra;
-        bool shouldAttack = true;
-
-        if (item == "")
+        // Empty check
+        if (ItemList.Count == 0)
         {
-            if (log)
-                Core.Logger($"Killing Ultra-Boss {monster}");
-            int i = 0;
-            Bot.Events.MonsterKilled += b => i++;
-            while (!Bot.ShouldExit() && i < 1)
-                while (!Bot.ShouldExit() && shouldAttack)
-                    Bot.Player.Kill(monster);
-            Core.Rest();
+            Core.Logger("Enhancement Failed: ItemList is empty");
+            return;
         }
-        else
+
+        // Defining weapon and cape
+        InventoryItem? cape = null;
+        if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
         {
-            if (log)
-                Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
-            while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+            cape = ItemList.Find(i => i.Category == ItemCategory.Cape);
+
+            // Removing cape from the list because it needs to be enhanced seperately
+            if (cape != null)
+                ItemList.Remove(cape);
+        }
+
+        InventoryItem? weapon = null;
+        if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
+        {
+            Core.DebugLogger(this);
+            weapon = ItemList.Find(i => i.ItemGroup == "Weapon");
+
+            // Removing weapon from the list because it needs to be enhanced seperately
+            if (weapon != null)
+                ItemList.Remove(weapon);
+        }
+
+        int skipCounter = 0;
+
+        // Setting the shop ID for the enhancement type
+        if (ItemList.Count > 0)
+        {
+            int shopID = 0;
+
+            switch (type)
             {
-                while (!Bot.ShouldExit() && shouldAttack)
-                    Bot.Player.Kill(monster);
-                if (!isTemp && !Core.CheckInventory(item))
-                {
-                    Bot.Sleep(Core.ActionDelay);
-                    Bot.Player.RejectExcept(item);
-                }
-                if (!Bot.Player.InCombat)
-                    Core.Rest();
-                Bot.Wait.ForDrop(item);
+                case EnhancementType.Fighter:
+                    shopID = Bot.Player.Level >= 50 ? 768 : 141;
+                    break;
+                case EnhancementType.Thief:
+                    shopID = Bot.Player.Level >= 50 ? 767 : 142;
+                    break;
+                case EnhancementType.Hybrid:
+                    shopID = Bot.Player.Level >= 50 ? 766 : 143;
+                    break;
+                case EnhancementType.Wizard:
+                    shopID = Bot.Player.Level >= 50 ? 765 : 144;
+                    break;
+                case EnhancementType.Healer:
+                    shopID = Bot.Player.Level >= 50 ? 762 : 145;
+                    break;
+                case EnhancementType.SpellBreaker:
+                    shopID = Bot.Player.Level >= 50 ? 764 : 146;
+                    break;
+                case EnhancementType.Lucky:
+                    shopID = Bot.Player.Level >= 50 ? 763 : 147;
+                    break;
+            }
+
+            // Enhancing the remaining items
+            foreach (InventoryItem item in ItemList)
+            {
+                _AutoEnhance(item, shopID);
+                Core.DebugLogger(this);
             }
         }
 
-        Bot.Events.CounterAttack -= _KillUltra;
-
-        if (!forAuto)
-            GearStore(true);
-
-        void _KillUltra(ScriptInterface bot, bool faded)
+        Core.DebugLogger(this);
+        // Enhancing the cape with the cape special
+        if (cape != null)
         {
-            Monster? Target = null;
-            if (!faded)
+            bool canEnhance = true;
+
+            switch (cSpecial)
             {
-                Target = Bot.Player.Target;
-                shouldAttack = false;
-                Bot.Player.CancelAutoAttack();
-                Bot.Player.CancelTarget();
+                case CapeSpecial.Forge:
+                    if (!Core.isCompletedBefore(8758))
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Forge (Cape) Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+                case CapeSpecial.Absolution:
+                    if (!uAbsolution())
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Absolution Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+                case CapeSpecial.Avarice:
+                    if (!uAvarice())
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Avarice Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+                case CapeSpecial.Vainglory:
+                    if (!uVainglory())
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Vainglory Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+            }
+
+            if (canEnhance)
+                _AutoEnhance(cape, 2143, "forge");
+            else skipCounter++;
+        }
+        Core.DebugLogger(this);
+
+        // Enhancing the weapon with the weapon special
+        if (weapon != null)
+        {
+            Core.DebugLogger(this);
+            int shopID = 0;
+            bool canEnhance = true;
+
+            if ((int)wSpecial <= 6)
+            {
+                Core.DebugLogger(this);
+                switch (type)
+                {
+                    case EnhancementType.Fighter:
+                        shopID = 635;
+                        break;
+                    case EnhancementType.Thief:
+                        shopID = 637;
+                        break;
+                    case EnhancementType.Hybrid:
+                        shopID = 633;
+                        break;
+                    case EnhancementType.Wizard:
+                    case EnhancementType.SpellBreaker:
+                        shopID = 636;
+                        break;
+                    case EnhancementType.Healer:
+                        shopID = 638;
+                        break;
+                    case EnhancementType.Lucky:
+                        shopID = 639;
+                        break;
+                }
             }
             else
             {
-                if (Target != null)
-                    Bot.Player.Attack(Target);
-                else Bot.Player.Attack("*");
-                shouldAttack = true;
+                Core.DebugLogger(this);
+                switch (wSpecial)
+                {
+                    case WeaponSpecial.Forge:
+                        if (!uForgeWeapon())
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Forge (Weapon) Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Lacerate:
+                        if (!uLaceratey())
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Lacerate Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Smite:
+                        if (!uSmite())
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Smite Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Valiance:
+                        if (!uValiance())
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Valiance Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Arcanas_Concerto:
+                        if (!uArcanasConcerto())
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Arcana's Concerto Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                }
+
+                Core.DebugLogger(this);
+                shopID = 2142;
             }
+
+            if (canEnhance)
+                _AutoEnhance(weapon, shopID, "forge");
+            else skipCounter++;
+        }
+
+        if (skipCounter > 0)
+            Core.Logger($"Skipped enhancement for {skipCounter} item{(skipCounter > 1 ? 's' : null)}");
+
+        void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
+        {
+            bool specialOnCape = item.Category == ItemCategory.Cape && cSpecial != CapeSpecial.None;
+            bool specialOnWeapon = item.ItemGroup == "Weapon" && wSpecial.ToString() != "None";
+            List<ShopItem> shopItems = Core.GetShopItems(map != null ? map : Bot.Map.Name, shopID);
+
+            // Shopdata complete check
+            if (!shopItems.Any(x => x.Category == ItemCategory.Enhancement) || shopItems.Count == 0)
+            {
+                Core.Logger($"Enhancement Failed: Couldn't find enhancements in shop {shopID}");
+                return;
+            }
+
+            // Checking if the item is already optimally enhanced
+            Core.DebugLogger(this, item.Name);
+            if (Bot.Player.Level == item.EnhancementLevel)
+            {
+                Core.DebugLogger(this);
+                if (specialOnCape)
+                {
+                    if ((int)cSpecial == getEnhPatternID(item))
+                    {
+                        skipCounter++;
+                        return;
+                    }
+                }
+                else if (specialOnWeapon)
+                {
+                    Core.DebugLogger(this);
+                    if (((int)wSpecial <= 6 ? (int)type : 10) == getEnhPatternID(item) && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
+                    {
+                        Core.DebugLogger(this);
+                        skipCounter++;
+                        return;
+                    }
+                }
+                else if ((int)type == getEnhPatternID(item))
+                {
+                    skipCounter++;
+                    return;
+                }
+            }
+
+            // Logging
+            if (specialOnCape)
+                Core.Logger($"Searching Enhancement:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+            else if (specialOnWeapon)
+                Core.Logger($"Searching Enhancement:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+            else
+                Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
+
+            List<ShopItem> availableEnh = new();
+
+            // Filters
+            foreach (ShopItem enh in shopItems)
+            {
+                // Remove enhancments that you dont have access to
+                if ((!Core.IsMember && enh.Upgrade) || (enh.Level > Bot.Player.Level))
+                    continue;
+
+                string enhName = enh.Name.Replace(" ", "").Replace("\'", "").ToLower();
+
+                // Cape if cSpecial
+                if (specialOnCape && enhName.Contains(cSpecial.ToString().Replace("_", "").ToLower()))
+                    availableEnh.Add(enh);
+                // Weapon if wSpecial
+                else if (specialOnWeapon && enhName.Contains(wSpecial.ToString().Replace("_", "").ToLower()))
+                    availableEnh.Add(enh);
+                // Class
+                else if (item.Category == ItemCategory.Class && enhName.Contains("armor"))
+                    availableEnh.Add(enh);
+                // Helm
+                else if (item.Category == ItemCategory.Helm && enhName.Contains("helm"))
+                    availableEnh.Add(enh);
+                // Cape if not cSpecial
+                else if (item.Category == ItemCategory.Cape && enhName.Contains("cape"))
+                    availableEnh.Add(enh);
+                // Weapon2 if not wSpecial
+                else if (item.ItemGroup == "Weapon" && enhName.Contains("weapon"))
+                    availableEnh.Add(enh);
+            }
+
+            // Empty check
+            if (availableEnh.Count == 0)
+            {
+                Core.Logger($"Enhancement Failed: availableEnh is empty");
+                return;
+            }
+
+            // Sorting by level (ascending)
+            List<ShopItem> sortedList = availableEnh.OrderBy(x => x.Level).ToList();
+
+            // Grabbing the two best enhancements
+            List<ShopItem> bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
+
+            // Getting the best enhancement out of the two
+            ShopItem? bestEnhancement =
+                bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
+                    bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+
+            // Null check
+            if (bestEnhancement == null)
+            {
+                Core.Logger($"Enhancement Failed: Could not find the best enhancement for \"{item.Name}\"");
+                return;
+            }
+            // Enhancing the item
+            Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
+
+            // Final logging
+            if (specialOnCape)
+                Core.Logger($"Enhancement Applied:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
+            else if (specialOnWeapon)
+                Core.Logger($"Enhancement Applied:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
+            else
+                Core.Logger($"Enhancement Applied:\t{type} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
+
+            Bot.Sleep(Core.ActionDelay);
         }
     }
+
+    private int getProcID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
+    private int getEnhPatternID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
+
+    private bool uForgeWeapon() => Core.isCompletedBefore(8738);
+    private bool uLaceratey() => Core.isCompletedBefore(8739);
+    private bool uSmite() => Core.isCompletedBefore(8740);
+    private bool uValiance() => Core.isCompletedBefore(8741);
+    private bool uArcanasConcerto() => Core.isCompletedBefore(8742);
+    private bool uAbsolution() => Core.isCompletedBefore(8743);
+    private bool uVainglory() => Core.isCompletedBefore(8744);
+    private bool uAvarice() => Core.isCompletedBefore(8745);
+    private bool uForgeCape() => Core.isCompletedBefore(8758);
 
     #endregion
 
@@ -1296,7 +1362,7 @@ public class CoreAdvanced
             case "chaos slayer cleric":
             case "chaos slayer mystic":
             case "chaos slayer thief":
-                if (!Core.isCompletedBefore(8758))
+                if (!uForgeCape())
                     goto default;
 
                 type = EnhancementType.Lucky;
@@ -1324,7 +1390,7 @@ public class CoreAdvanced
             case "legendary elemental warrior":
             case "ultra elemental warrior":
             case "chaos avenger":
-                if (!Core.isCompletedBefore(8758))
+                if (!uForgeCape())
                     goto default;
 
                 type = EnhancementType.Lucky;
@@ -1337,7 +1403,7 @@ public class CoreAdvanced
             case "legion revenant":
             case "legion revenant (ioda)":
             case "lightcaster":
-                if (!Core.isCompletedBefore(8758))
+                if (!uForgeCape())
                     goto default;
 
                 type = EnhancementType.Wizard;
@@ -1348,7 +1414,7 @@ public class CoreAdvanced
 
             #region Wizard - Forge - Awe Blast
             case "infinity knight":
-                if (!Core.isCompletedBefore(8758))
+                if (!uForgeCape())
                     goto default;
 
                 type = EnhancementType.Wizard;
@@ -1359,7 +1425,7 @@ public class CoreAdvanced
 
             #region Wizard - Forge - Health Vamp
             case "shaman":
-                if (!Core.isCompletedBefore(8758))
+                if (!uForgeCape())
                     goto default;
 
                 type = EnhancementType.Wizard;
@@ -1370,7 +1436,7 @@ public class CoreAdvanced
 
             #region Healer - Forge - Health Vamp
             case "dragon of time":
-                if (!Core.isCompletedBefore(8758))
+                if (!uForgeCape())
                     goto default;
 
                 type = EnhancementType.Healer;
@@ -1381,7 +1447,7 @@ public class CoreAdvanced
 
             #region Lucky - Vainglory - Valiance
             case "archfiend":
-                if (!Core.isCompletedBefore(8744) || !Core.isCompletedBefore(8741))
+                if (!uVainglory() || !uValiance())
                     goto default;
 
                 type = EnhancementType.Lucky;
@@ -1715,6 +1781,23 @@ public class CoreAdvanced
     #endregion
 }
 
+public enum GearBoost
+{
+    None,
+    cp,
+    gold,
+    rep,
+    exp,
+    dmgAll,
+    Chaos,
+    Dragonkin,
+    Drakath,
+    Elemental,
+    Human,
+    Orc,
+    Undead
+}
+
 public enum EnhancementType // Enhancement Pattern ID
 {
     Fighter = 2,
@@ -1748,21 +1831,4 @@ public enum WeaponSpecial // Proc ID
     Smite = 8,
     Valiance = 9,
     Arcanas_Concerto = 10
-}
-
-public enum GearBoost
-{
-    None,
-    cp,
-    gold,
-    rep,
-    exp,
-    dmgAll,
-    Chaos,
-    Dragonkin,
-    Drakath,
-    Elemental,
-    Human,
-    Orc,
-    Undead
 }
