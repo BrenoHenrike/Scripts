@@ -3,7 +3,7 @@
 //cs_include Scripts/Nation/CoreNation.cs
 using RBot;
 
-public class CrimsonHanzoOrbQuest
+public class HanzoOrbQuest
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,16 +14,23 @@ public class CrimsonHanzoOrbQuest
     {
         Core.SetOptions();
 
-        CrimsonHanzoOrb();
+        HanzoOrb();
 
         Core.SetOptions(false);
     }
 
 
-    public void CrimsonHanzoOrb()
+    public void HanzoOrb(int questID = 1)
     {
+        if (!Core.CheckInventory("Astral Hanzo Orb") && Core.CheckInventory("Crimson Hanzo Orb"))
+            return;
 
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
+        if (Core.CheckInventory("Astral Hanzo Orb"))
+            questID = 4020;
+        if (Core.CheckInventory("Crimson Hanzo Orb"))
+            questID = 4019;
+
+        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (RBot.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
@@ -35,7 +42,7 @@ public class CrimsonHanzoOrbQuest
         foreach (string item in RewardsList)
         {
 
-            Core.RegisterQuests(4019);
+            Core.RegisterQuests(questID);
             while (!Bot.ShouldExit() && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
             {
                 Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
