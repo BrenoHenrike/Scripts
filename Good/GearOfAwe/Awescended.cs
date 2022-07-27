@@ -24,6 +24,7 @@
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Evil/ADK.cs
+//cs_include Scripts/Story\DjinnGate.cs
 using RBot;
 
 public class Awescended
@@ -45,6 +46,7 @@ public class Awescended
     public J6Saga J6 = new J6Saga();
     public BattleUnder Under = new BattleUnder();
     public Bamboozle Bam = new Bamboozle();
+    public DjinnGateStory Djinn = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -198,7 +200,7 @@ public class Awescended
             Core.Unbank("Arch DoomKnight");
             Armor.DrakathOriginalArmor();
             Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
-            
+
             Core.Unbank("GOLD Boost! (60 min)", "Doom GOLD Boost! (60 min)", "GOLD Boost! (20 min)");
             Bot.Boosts.UseGoldBoost = true;
             Adv.BestGear(GearBoost.gold);
@@ -221,85 +223,6 @@ public class Awescended
 
         Core.AddDrop("Armor of Zular", "Djinn's Essence");
         Core.EquipClass(ClassType.Farm);
-
-        //Recovering the Fangs of the Lion
-        if (!Story.QuestProgression(6153))
-        {
-            Core.EnsureAccept(6153);
-            Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
-            Core.KillMonster("faerie", "TopRock", "Left", "*", "Fragment 2");
-            Core.KillMonster("faerie", "Side4", "Right", "*", "Fragment 3");
-            Core.KillMonster("faerie", "End", "Center", "Cyclops Warlord", "Fragment 4");
-            Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
-            Core.EnsureComplete(6153);
-        }
-
-        //Recovering the Claws of the Daeva
-        if (!Story.QuestProgression(6154))
-        {
-            Core.EnsureAccept(6154);
-            Core.KillMonster("arcangrove", "Left", "Left", "*", "Fragment 6");
-            Core.KillMonster("cloister", "r8", "Left", "*", "Fragment 7");
-            Core.KillMonster("gilead", "r5", "Right", "Bubblin", "Fragment 8");
-            Core.KillMonster("natatorium", "r2", "Left", "Merdraconian", "Fragment 9");
-            Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
-            Core.EnsureComplete(6154);
-        }
-
-        //Recovering the Light of the Serpent
-        if (!Story.QuestProgression(6155))
-        {
-            Core.EnsureAccept(6155);
-            Core.KillMonster("mythsong", "Hill", "Left", "*", "Fragment 11");
-            Core.KillMonster("palooza", "Act3", "Left", "Rock Lobster", "Fragment 12");
-            Core.KillMonster("palooza", "Act2", "Left", "Stinger", "Fragment 13");
-            Core.KillMonster("palooza", "Act3", "Left", "Mozard", "Fragment 15");
-            Core.KillMonster("beehive", "r5", "Left", "*", "Fragment 14");
-            Core.EnsureComplete(6155);
-        }
-
-        //Recovering the Pike of the Shimmering Sands
-        if (!Story.QuestProgression(6156))
-        {
-            Core.EnsureAccept(6156);
-            Core.KillMonster("forestchaos", "Boss", "Left", "*", "Fragment 16");
-            Core.KillMonster("guru", "Field2", "Left", "*", "Fragment 17");
-            Core.KillMonster("marsh", "Forest3", "Left", "Dark Witch", "Fragment 18");
-            Core.KillMonster("marsh", "Forest3", "Left", "Spider", "Fragment 19");
-            Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
-            Core.EnsureComplete(6156);
-        }
-
-        //Recovering the Reavers of the Gilded Sun
-        if (!Story.QuestProgression(6157))
-        {
-            Core.EnsureAccept(6157);
-            Core.KillMonster("pirates", "End", "Left", "Shark Bait", "Fragment 21");
-            Core.KillMonster("pirates", "End", "Left", "Fishwing", "Fragment 25");
-            Core.KillMonster("yokairiver", "r2", "Left", "Kappa Ninja", "Fragment 22");
-            Core.KillMonster("bamboo", "Enter", "Spawn", "*", "Fragment 23");
-            Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
-            Core.EnsureComplete(6157);
-        }
-
-        //Gauntlet of Monsters
-        if (!Story.QuestProgression(6158))
-        {
-            Core.EnsureAccept(6158);
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("doomkitten", "Enter", "Spawn", "*", "Potent DoomKitten Mana", publicRoom: true);
-            Core.KillMonster("bloodtitan", "Ultra", "Left", "*", "Potent Blood Titan Mana");
-            Core.HuntMonster("trigoras", "Trigoras", "Potent Trigoras Mana");
-            Core.KillMonster("phoenixrise", "r8", "Left", "*", "Potent CinderClaw Mana");
-            Core.KillMonster("thevoid", "r16", "Left", "*", "Potent Reaper Mana", publicRoom: true);
-            Core.EnsureComplete(6158);
-        }
-
-        //Gauntlet of Drakels
-        Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
-
-        Core.EquipClass(ClassType.Farm);
-        //Gauntlet of Generals
-        Story.KillQuest(6160, "djinngate", "Harpy");
+        Djinn.DjinnGate();
     }
 }

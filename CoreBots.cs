@@ -551,9 +551,7 @@ public class CoreBots
         }
         else
         {
-            if (!Bot.Shops.IsShopLoaded)
-                SendPackets($"%xt%zm%loadShop%{Bot.Map.RoomID}%{shopID}%");
-            else if (Bot.Shops.IsShopLoaded)
+            if (Bot.Shops.ShopID == shopID)
                 SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
             Bot.Wait.ForItemBuy();
             Logger("Re-login to prevent ghost buy");
