@@ -76,7 +76,7 @@ public class NecroticSwordOfDoom
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
         VoidAuras(800);
         Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");
-        Adv.EnhanceItem("Necrotic Sword of Doom", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
+        Adv.EnhanceItem("Necrotic Sword of Doom", EnhancementType.Lucky, CapeSpecial.None, WeaponSpecial.Spiral_Carve);
         NSODBadge();
     }
 
@@ -98,7 +98,7 @@ public class NecroticSwordOfDoom
     {
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
-            
+
         Core.AddDrop("Void Aura", "Empowered Essence", "Malignant Essence");
         Core.Logger($"Gathering {Quantity} Void Aura's with SDKA Method");
 

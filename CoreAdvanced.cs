@@ -26,19 +26,13 @@ public class CoreAdvanced
     /// </summary>
     /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceEquipped(EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
+    public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
-        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance))
-            if (_disableAutoEnhance)
-                return;
+        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
+            return;
 
         List<InventoryItem> EquippedItems = Bot.Inventory.Items.FindAll(i => i.Equipped == true && EnhanceableCatagories.Contains(i.Category));
-        List<InventoryItem> EquippedWeapon = EquippedItems.FindAll(i => WeaponCatagories.Contains(i.Category));
-        List<InventoryItem> EquippedOther = EquippedItems.FindAll(i => !WeaponCatagories.Contains(i.Category));
-
-        if (Special == WeaponSpecial.None)
-            _AutoEnhance(Core.EmptyList, EquippedItems, Type, Special);
-        else _AutoEnhance(EquippedWeapon, EquippedOther, Type, Special);
+        AutoEnhance(EquippedItems, type, wSpecial, cSpecial);
     }
 
     /// <summary>
@@ -47,30 +41,26 @@ public class CoreAdvanced
     /// <param name="ItemName">Name of the item you want to enhance</param>
     /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceItem(string? ItemName, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
+    public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
-        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance))
-            if (_disableAutoEnhance)
-                return;
-
-        if (string.IsNullOrEmpty(ItemName))
+        if (string.IsNullOrEmpty(item) || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
             return;
 
-        List<InventoryItem> SelectedItem = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => i.Name.ToLower() == ItemName.ToLower() && EnhanceableCatagories.Contains(i.Category));
-        List<InventoryItem> SelectedWeapon = SelectedItem.FindAll(i => WeaponCatagories.Contains(i.Category));
-        List<InventoryItem> SelectedOther = SelectedItem.FindAll(i => !WeaponCatagories.Contains(i.Category));
-
-        if (SelectedItem.Count == 0)
+        if (!Core.CheckInventory(item))
         {
-            if (!SelectedItem.Any(x => x.Name == ""))
-                Core.Logger($"You do not own \"{ItemName}\", enhancement failed");
+            Core.Logger($"Enhancement Failed: Could not find \"{item}\"");
             return;
         }
 
-        if (SelectedWeapon.Count != 0)
-            _AutoEnhance(SelectedWeapon, Core.EmptyList, Type, Special);
-        if (SelectedOther.Count != 0)
-            _AutoEnhance(Core.EmptyList, SelectedOther, Type, Special);
+        InventoryItem? SelectedItem = Bot.Inventory.Items.Find(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)); ;
+        if (SelectedItem == null)
+        {
+            if (Bot.Inventory.Items.Any(i => i.Name == item))
+                Core.Logger($"Enhancement Failed: {item} cannot be enhanced");
+            return;
+        }
+
+        AutoEnhance(new() { SelectedItem }, type, wSpecial, cSpecial);
     }
 
     /// <summary>
@@ -79,27 +69,46 @@ public class CoreAdvanced
     /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
     /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceItem(string[] ItemNames, EnhancementType Type, WeaponSpecial Special = WeaponSpecial.None)
+    public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
-        if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance))
-            if (_disableAutoEnhance)
-                return;
+        if (items.Count() == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
+            return;
 
-        List<InventoryItem> SelectedItems = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(i => ItemNames.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
-        List<InventoryItem> SelectedWeapons = SelectedItems.FindAll(i => WeaponCatagories.Contains(i.Category));
-        List<InventoryItem> SelectedOthers = SelectedItems.FindAll(i => !WeaponCatagories.Contains(i.Category));
+        // If any of the items in the items array cant be found, return
+        List<string>? notFound = new();
+        foreach (string item in items)
+            if (!Core.CheckInventory(item))
+                notFound.Add(item);
 
-        if (SelectedItems.Count == 0)
+        if (notFound.Count > 0)
         {
-            if (!SelectedItems.Any(x => x.Name == ""))
-                Core.Logger($"You do not own \"{ItemNames[0]}\", enhancement failed");
+            if (notFound.Count == 1)
+                Core.Logger($"Enhancement Failed: Could not find {notFound.First()}");
+            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", notFound)}");
+            return;
+        }
+        notFound = null;
+
+        // Find all the items in the items array
+        List<InventoryItem>? SelectedItems = Bot.Inventory.Items.FindAll(i => items.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
+
+        // If any of the items in the items array cant be enhanced, return
+        if (SelectedItems.Count != items.Count())
+        {
+            List<string>? unEnhanceable = new();
+
+            foreach (string item in items)
+                if (!Bot.Inventory.Items.Any(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)))
+                    unEnhanceable.Add(item);
+
+            if (unEnhanceable.Count == 1)
+                Core.Logger($"Enhancement Failed: Could not find {unEnhanceable.First()}");
+            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", unEnhanceable)}");
+
             return;
         }
 
-        if (SelectedWeapons.Count != 0)
-            _AutoEnhance(SelectedWeapons, Core.EmptyList, Type, Special);
-        if (SelectedOthers.Count != 0)
-            _AutoEnhance(Core.EmptyList, SelectedOthers, Type, Special);
+        AutoEnhance(SelectedItems, type, wSpecial, cSpecial);
     }
 
     /// <summary>
@@ -126,8 +135,18 @@ public class CoreAdvanced
             Core.Logger("Failed to find equipped weapon", messageBox: true, stopBot: true);
             return WeaponSpecial.None;
         }
-        int ProcID = Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
-        return (WeaponSpecial)ProcID;
+        return (WeaponSpecial)Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
+    }
+
+    public CapeSpecial CurrentCapeSpecial()
+    {
+        InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Cape);
+        if (EquippedCape == null)
+        {
+            Core.Logger("Failed to find equipped Cape", messageBox: true, stopBot: true);
+            return CapeSpecial.None;
+        }
+        return (CapeSpecial)EquippedCape.EnhancementPatternID;
     }
 
     private static ItemCategory[] EnhanceableCatagories =
@@ -152,144 +171,331 @@ public class CoreAdvanced
     };
     private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
 
-    private void _AutoEnhance(List<InventoryItem> WeaponList, List<InventoryItem> OtherList, EnhancementType Type, WeaponSpecial Special)
+    private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, WeaponSpecial wSpecial, CapeSpecial cSpecial)
     {
-        //if (Special != WeaponSpecial.None && !Core.isCompletedBefore(2937))
-        //{
-        //    Special = WeaponSpecial.None;
-        //    Core.Logger("Awe enhancements are not unlocked yet. Using a normal enhancement");
-        //}
-
-        List<InventoryItem> FlexibleList = Special == WeaponSpecial.None ? WeaponList.Concat(OtherList).ToList() : OtherList;
-        int i = 0;
-
-        if (WeaponList.Count == 0 && OtherList.Count == 0)
+        // Empty check
+        if (ItemList.Count == 0)
         {
-            Core.Logger("Please report what you were trying to enhance to Lord Exelot#9674, enchantment failed");
+            Core.Logger("Enhancement Failed: ItemList is empty");
             return;
         }
 
-        //Gear
-        if (FlexibleList.Count != 0)
+        // Defining weapon and cape
+        InventoryItem? cape = null;
+        if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
         {
-            Core.Logger($"Best Enhancement of: {Type.ToString()}");
-            if (Type == EnhancementType.Fighter)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 768 : 141);
-            else if (Type == EnhancementType.Thief)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 767 : 142);
-            else if (Type == EnhancementType.Wizard)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 765 : 144);
-            else if (Type == EnhancementType.Healer)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 762 : 145);
-            else if (Type == EnhancementType.Hybrid)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 766 : 143);
-            else if (Type == EnhancementType.Lucky)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 763 : 147);
-            else if (Type == EnhancementType.SpellBreaker)
-                __AutoEnhance(FlexibleList, Bot.Player.Level >= 50 ? 764 : 146);
+            cape = ItemList.Find(i => i.Category == ItemCategory.Cape);
+
+            // Removing cape from the list because it needs to be enhanced seperately
+            if (cape != null)
+                ItemList.Remove(cape);
         }
 
-        //Weapon Specials
-        if (WeaponList.Count != 0 && Special != WeaponSpecial.None)
+        InventoryItem? weapon = null;
+        if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
         {
-            if (Bot.Player.Level == WeaponList.First().EnhancementLevel && (int)Type == WeaponList.First().EnhancementPatternID &&
-                   (WeaponCatagories.Contains(WeaponList.First().Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{WeaponList.First().ID}.ProcID") : true))
+            Core.DebugLogger(this);
+            weapon = ItemList.Find(i => i.ItemGroup == "Weapon");
+
+            // Removing weapon from the list because it needs to be enhanced seperately
+            if (weapon != null)
+                ItemList.Remove(weapon);
+        }
+
+        int skipCounter = 0;
+
+        // Setting the shop ID for the enhancement type
+        if (ItemList.Count > 0)
+        {
+            int shopID = 0;
+
+            switch (type)
             {
-                i++;
+                case EnhancementType.Fighter:
+                    shopID = Bot.Player.Level >= 50 ? 768 : 141;
+                    break;
+                case EnhancementType.Thief:
+                    shopID = Bot.Player.Level >= 50 ? 767 : 142;
+                    break;
+                case EnhancementType.Hybrid:
+                    shopID = Bot.Player.Level >= 50 ? 766 : 143;
+                    break;
+                case EnhancementType.Wizard:
+                    shopID = Bot.Player.Level >= 50 ? 765 : 144;
+                    break;
+                case EnhancementType.Healer:
+                    shopID = Bot.Player.Level >= 50 ? 762 : 145;
+                    break;
+                case EnhancementType.SpellBreaker:
+                    shopID = Bot.Player.Level >= 50 ? 764 : 146;
+                    break;
+                case EnhancementType.Lucky:
+                    shopID = Bot.Player.Level >= 50 ? 763 : 147;
+                    break;
+            }
+
+            // Enhancing the remaining items
+            foreach (InventoryItem item in ItemList)
+            {
+                _AutoEnhance(item, shopID);
+                Core.DebugLogger(this);
+            }
+        }
+
+        Core.DebugLogger(this);
+        // Enhancing the cape with the cape special
+        if (cape != null)
+        {
+            bool canEnhance = true;
+
+            switch (cSpecial)
+            {
+                case CapeSpecial.Forge:
+                    if (!Core.isCompletedBefore(8758))
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Forge (Cape) Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+                case CapeSpecial.Absolution:
+                    if (!Core.isCompletedBefore(8743))
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Absolution Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+                case CapeSpecial.Avarice:
+                    if (!Core.isCompletedBefore(8744))
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Avarice Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+                case CapeSpecial.Vainglory:
+                    if (!Core.isCompletedBefore(8745))
+                    {
+                        Core.Logger("Enhancement Failed: You did not unlock the Vainglory Enhancement yet");
+                        canEnhance = false;
+                    }
+                    break;
+            }
+
+            if (canEnhance)
+                _AutoEnhance(cape, 2143, "forge");
+            else skipCounter++;
+        }
+        Core.DebugLogger(this);
+
+        // Enhancing the weapon with the weapon special
+        if (weapon != null)
+        {
+            Core.DebugLogger(this);
+            int shopID = 0;
+            bool canEnhance = true;
+
+            if ((int)wSpecial <= 6)
+            {
+                Core.DebugLogger(this);
+                switch (type)
+                {
+                    case EnhancementType.Fighter:
+                        shopID = 635;
+                        break;
+                    case EnhancementType.Thief:
+                        shopID = 637;
+                        break;
+                    case EnhancementType.Hybrid:
+                        shopID = 633;
+                        break;
+                    case EnhancementType.Wizard:
+                    case EnhancementType.SpellBreaker:
+                        shopID = 636;
+                        break;
+                    case EnhancementType.Healer:
+                        shopID = 638;
+                        break;
+                    case EnhancementType.Lucky:
+                        shopID = 639;
+                        break;
+                }
             }
             else
             {
-                Core.Logger($"Best Enhancement of: {Type.ToString()} + {Special.ToString().Replace('_', ' ')}");
-                if (Type == EnhancementType.Fighter)
-                    __AutoEnhance(WeaponList, 635);
-                else if (Type == EnhancementType.Thief)
-                    __AutoEnhance(WeaponList, 637);
-                else if (Type == EnhancementType.Wizard || Type == EnhancementType.SpellBreaker)
-                    __AutoEnhance(WeaponList, 636);
-                else if (Type == EnhancementType.Healer)
-                    __AutoEnhance(WeaponList, 638);
-                else if (Type == EnhancementType.Hybrid)
-                    __AutoEnhance(WeaponList, 633);
-                else if (Type == EnhancementType.Lucky)
-                    __AutoEnhance(WeaponList, 639);
+                Core.DebugLogger(this);
+                switch (wSpecial)
+                {
+                    case WeaponSpecial.Forge:
+                        if (!Core.isCompletedBefore(8738))
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Forge (Weapon) Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Lacerate:
+                        if (!Core.isCompletedBefore(8739))
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Lacerate Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Smite:
+                        if (!Core.isCompletedBefore(8740))
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Smite Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Valiance:
+                        if (!Core.isCompletedBefore(8741))
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Valiance Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                    case WeaponSpecial.Arcanas_Concerto:
+                        if (!Core.isCompletedBefore(8739))
+                        {
+                            Core.Logger("Enhancement Failed: You did not unlock the Arcana's Concerto Enhancement yet");
+                            canEnhance = false;
+                        }
+                        break;
+                }
+
+                Core.DebugLogger(this);
+                shopID = 2142;
             }
+
+            if (canEnhance)
+                _AutoEnhance(weapon, shopID, "forge");
+            else skipCounter++;
         }
 
-        if (i > 0)
-            Core.Logger($"Skipped enhancement for {i} item{(i > 1 ? 's' : null)}");
-        if (i != WeaponList.Count + OtherList.Count)
-            Core.Logger("Enhancements complete");
+        if (skipCounter > 0)
+            Core.Logger($"Skipped enhancement for {skipCounter} item{(skipCounter > 1 ? 's' : null)}");
 
-        void __AutoEnhance(List<InventoryItem> Input, int ShopID)
+        void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
         {
-            List<ShopItem> ShopItems = Core.GetShopItems(Bot.Map.Name, ShopID);
-            if (!ShopItems.All(x => x.Category == ItemCategory.Enhancement))
+            bool specialOnCape = item.Category == ItemCategory.Cape && cSpecial != CapeSpecial.None;
+            bool specialOnWeapon = item.ItemGroup == "Weapon" && wSpecial.ToString() != "None";
+            List<ShopItem> shopItems = Core.GetShopItems(map != null ? map : Bot.Map.Name, shopID);
+
+            // Shopdata complete check
+            if (!shopItems.Any(x => x.Category == ItemCategory.Enhancement) || shopItems.Count == 0)
             {
-                Core.Logger("Failed to find enhancement shop");
+                Core.Logger($"Enhancement Failed: Couldn't find enhancements in shop {shopID}");
                 return;
             }
 
-            foreach (InventoryItem Item in Input)
+            // Checking if the item is already optimally enhanced
+            Core.DebugLogger(this, item.Name);
+            if (Bot.Player.Level == item.EnhancementLevel)
             {
-                Core.CheckInventory(Item.Name);
-
-                if (Bot.Player.Level == Item.EnhancementLevel && (int)Type == Item.EnhancementPatternID &&
-                   (WeaponCatagories.Contains(Item.Category) ? (int)Special == Bot.GetGameObject<int>($"world.invTree.{Item.ID}.ProcID") : true))
+                Core.DebugLogger(this);
+                if (specialOnCape)
                 {
-                    i++;
-                    continue;
+                    if ((int)cSpecial == getEnhPatternID(item))
+                    {
+                        skipCounter++;
+                        return;
+                    }
                 }
-
-                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Searching]");
-
-                List<ShopItem> AvailableEnh = new List<ShopItem>();
-
-                foreach (ShopItem Enh in ShopItems)
+                else if (specialOnWeapon)
                 {
-                    //Filtering out Member if you're non Member
-                    if ((Core.IsMember || (!Core.IsMember && !Enh.Upgrade)) &&
-                        //Filtering out the ones you're not high enough level for
-                        Enh.Level <= Bot.Player.Level &&
-                        //If Input is just the weapon, and if the name of the Special is seen in the items
-                        ((Input.Count == 1 && isWeapon(Item) && Enh.Name.Contains(Special.ToString().Replace('_', ' '))) ||
-                            //If Input is not just weapon, then
-                            ((Input.Count > 1 || !isWeapon(Item)) &&
-                                //If the Enhancement is for Classes
-                                (Enh.Name.Contains("Armor") && Item.Category == ItemCategory.Class) ||
-                                //If the Enhancement is for Helmets
-                                (Enh.Name.Contains("Helm") && Item.Category == ItemCategory.Helm) ||
-                                //If the Enhancement is for Capes
-                                (Enh.Name.Contains("Cape") && Item.Category == ItemCategory.Cape) ||
-                                //If the Enhancement is for Weapons
-                                (Enh.Name.Contains("Weapon") && isWeapon(Item)))))
-                        //Add to the list of selectable Enhancements
-                        AvailableEnh.Add(Enh);
+                    Core.DebugLogger(this);
+                    if (((int)wSpecial <= 6 ? (int)type : 10) == getEnhPatternID(item) && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
+                    {
+                        Core.DebugLogger(this);
+                        skipCounter++;
+                        return;
+                    }
                 }
-
-                List<ShopItem> ListMinToMax = AvailableEnh.OrderBy(x => x.Level).ToList();
-                List<ShopItem> BestTwo = ListMinToMax.Skip(ListMinToMax.Count - 2).ToList();
-                ShopItem? SelectedEhn = new();
-
-                if (BestTwo.First().Level == BestTwo.Last().Level)
+                else if ((int)type == getEnhPatternID(item))
                 {
-                    if (Core.IsMember)
-                        SelectedEhn = BestTwo.First(x => x.Upgrade);
-                    else SelectedEhn = BestTwo.First(x => !x.Upgrade);
+                    skipCounter++;
+                    return;
                 }
-                else SelectedEhn = BestTwo.OrderByDescending(x => x.Level).First();
-
-                if (SelectedEhn == null)
-                {
-                    Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Not Found]");
-                    continue;
-                }
-
-                Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{Item.ID}%{SelectedEhn.ID}%{ShopID}%");
-                Core.Logger($"Best Enhancement for: \"{Item.Name}\" [Applied]");
-                Bot.Sleep(Core.ActionDelay);
             }
+
+            // Logging
+            if (specialOnCape)
+                Core.Logger($"Searching Enhancement:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+            else if (specialOnWeapon)
+                Core.Logger($"Searching Enhancement:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+            else
+                Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
+
+            List<ShopItem> availableEnh = new();
+
+            // Filters
+            foreach (ShopItem enh in shopItems)
+            {
+                // Remove enhancments that you dont have access to
+                if ((!Core.IsMember && enh.Upgrade) || (enh.Level > Bot.Player.Level))
+                    continue;
+
+                string enhName = enh.Name.Replace(" ", "").Replace("\'", "").ToLower();
+
+                // Cape if cSpecial
+                if (specialOnCape && enhName.Contains(cSpecial.ToString().Replace("_", "").ToLower()))
+                    availableEnh.Add(enh);
+                // Weapon if wSpecial
+                else if (specialOnWeapon && enhName.Contains(wSpecial.ToString().Replace("_", "").ToLower()))
+                    availableEnh.Add(enh);
+                // Class
+                else if (item.Category == ItemCategory.Class && enhName.Contains("armor"))
+                    availableEnh.Add(enh);
+                // Helm
+                else if (item.Category == ItemCategory.Helm && enhName.Contains("helm"))
+                    availableEnh.Add(enh);
+                // Cape if not cSpecial
+                else if (item.Category == ItemCategory.Cape && enhName.Contains("cape"))
+                    availableEnh.Add(enh);
+                // Weapon2 if not wSpecial
+                else if (item.ItemGroup == "Weapon" && enhName.Contains("weapon"))
+                    availableEnh.Add(enh);
+            }
+
+            // Empty check
+            if (availableEnh.Count == 0)
+            {
+                Core.Logger($"Enhancement Failed: availableEnh is empty");
+                return;
+            }
+
+            // Sorting by level (ascending)
+            List<ShopItem> sortedList = availableEnh.OrderBy(x => x.Level).ToList();
+
+            // Grabbing the two best enhancements
+            List<ShopItem> bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
+
+            // Getting the best enhancement out of the two
+            ShopItem? bestEnhancement =
+                bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
+                    bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+
+            // Null check
+            if (bestEnhancement == null)
+            {
+                Core.Logger($"Enhancement Failed: Could not find the best enhancement for \"{item.Name}\"");
+                return;
+            }
+            // Enhancing the item
+            Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
+
+            // Final logging
+            if (specialOnCape)
+                Core.Logger($"Enhancement Applied:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
+            else if (specialOnWeapon)
+                Core.Logger($"Enhancement Applied:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
+            else
+                Core.Logger($"Enhancement Applied:\t{type} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
+
+            Bot.Sleep(Core.ActionDelay);
         }
     }
+
+    private int getProcID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
+    private int getEnhPatternID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
 
     #endregion
 
@@ -321,7 +527,7 @@ public class CoreAdvanced
 
         SmartEnhance(ClassName);
         string[]? CPBoost = BestGear(GearBoost.cp);
-        EnhanceItem(CPBoost, CurrentClassEnh(), CurrentWeaponSpecial());
+        EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
         Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
@@ -577,28 +783,26 @@ public class CoreAdvanced
             foreach (InventoryItem Item in Bot.Inventory.Items.FindAll(i => i.Equipped == true))
                 ReEquippedItems.Add(Item.Name);
             ReEnhanceAfter = CurrentClassEnh();
+            ReCEnhanceAfter = CurrentCapeSpecial();
             ReWEnhanceAfter = CurrentWeaponSpecial();
         }
         else
         {
             Core.Equip(ReEquippedItems.ToArray());
-            EnhanceEquipped(ReEnhanceAfter, ReWEnhanceAfter);
+            EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReWEnhanceAfter);
         }
     }
     private List<string> ReEquippedItems = new List<string>();
     private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
+    private CapeSpecial ReCEnhanceAfter = CapeSpecial.None;
     private WeaponSpecial ReWEnhanceAfter = WeaponSpecial.None;
-
 
     /// <summary>
     /// Find out if an item is a weapon or not
     /// </summary>
     /// <param name="Item">The ItemBase object of the item</param>
     /// <returns>Returns if its a weapon or not</returns>
-    public bool isWeapon(ItemBase Item)
-    {
-        return Item.ItemGroup == "Weapon";
-    }
+    public bool isWeapon(ItemBase Item) => Item.ItemGroup == "Weapon";
 
     public void _RaceGear(string Monster)
     {
@@ -615,9 +819,9 @@ public class CoreAdvanced
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
-        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
     }
 
     public void _RaceGear(int MonsterID)
@@ -632,9 +836,9 @@ public class CoreAdvanced
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
-        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentWeaponSpecial());
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-        EnhanceEquipped(CurrentClassEnh(), CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
     }
 
     #endregion
@@ -1055,313 +1259,452 @@ public class CoreAdvanced
     /// <param name="Class">Name of the class you wish to enhance</param>
     public void SmartEnhance(string Class)
     {
-        InventoryItem? SelectedClass = Bot.Inventory.Items.Where(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class).FirstOrDefault();
-        if (SelectedClass == null)
+        if (!Core.CheckInventory(Class))
         {
-            Core.Logger($"SmartEnhance: Class {Class} not found");
+            Core.Logger($"SmartEnhance Failed: Class {Class} was not found in inventory");
             return;
         }
 
+        InventoryItem? SelectedClass = Bot.Inventory.Items.Where(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class).FirstOrDefault();
+
+        if (SelectedClass == null)
+        {
+            Core.Logger($"SmartEnhance Failed: Class {Class} was not found in inventory");
+            return;
+        }
+
+        EnhancementType? type = null;
+        CapeSpecial? cSpecial = null;
+        WeaponSpecial? wSpecial = null;
+
+        #region Forge Enhancement Library
         switch (SelectedClass.Name.ToLower())
         {
-            //Lucky - Spiral Carve
-            case "abyssal angel":
-            case "abyssal angel's shadow":
-            case "archpaladin":
-            case "artifact hunter":
-            case "assassin":
-            case "beastmaster":
-            case "berserker":
-            case "beta berserker":
-            case "blademaster assassin":
-            case "blademaster":
-            case "blood titan":
-            case "cardclasher":
-            case "chaos avenger member preview":
-            case "chaos champion prime":
+            #region Lucky - Forge - Spiral Carve
+            case "corrupted chronomancer":
+            case "underworld chronomancer":
+            case "timekeeper":
+            case "timekiller":
+            case "eternal chronomancer":
+            case "immortal chronomancer":
+            case "dark metal necro":
+            case "great thief":
+            case "legion doomknight":
+            case "void highlord":
             case "chaos slayer":
             case "chaos slayer berserker":
             case "chaos slayer cleric":
             case "chaos slayer mystic":
             case "chaos slayer thief":
-            case "chrono chaorruptor":
-            case "chrono commandant":
-            case "chronocommander":
-            case "chronocorrupter":
-            case "chunin":
-            case "classic alpha pirate":
-            case "classic barber":
-            case "classic doomknight":
-            case "classic exalted soul cleaver":
-            case "classic guardian":
-            case "classic legion doomknight":
-            case "classic paladin":
-            case "classic pirate":
-            case "classic soul cleaver":
-            case "continuum chronomancer":
-            case "corrupted chronomancer":
-            case "dark chaos berserker":
-            case "dark harbinger":
-            case "doomknight":
-            case "empyrean chronomancer":
-            case "eternal chronomancer":
-            case "eternal inversionist":
-            case "evolved clawsuit":
-            case "evolved dark caster":
-            case "evolved leprechaun":
-            case "exalted harbinger":
-            case "exalted soul cleaver":
-            case "glacial warlord":
-            case "great thief":
-            case "immortal chronomancer":
-            case "imperial chunin":
-            case "infinite dark caster":
-            case "infinite legion dark caster":
-            case "infinity titan":
-            case "legion blademaster assassin":
-            case "legion doomknight":
-            case "legion evolved dark caster":
-            case "legion swordmaster assassin":
-            case "leprechaun":
-            case "lycan":
-            case "master ranger":
-            case "mechajouster":
-            case "necromancer":
-            case "ninja":
-            case "ninja warrior":
-            case "not a mod":
-            case "overworld chronomancer":
-            case "pinkomancer":
-            case "prismatic clawsuit":
-            case "ranger":
-            case "renegade":
-            case "rogue":
-            case "rogue (rare)":
-            case "scarlet sorceress":
-            case "shadowscythe general":
-            case "skycharged grenadier":
-            case "skyguard grenadier":
-            case "soul cleaver":
-            case "starlord":
-            case "stonecrusher":
-            case "swordmaster assassin":
-            case "swordmaster":
-            case "timekeeper":
-            case "timekiller":
-            case "timeless chronomancer":
-            case "undead goat":
-            case "undead leperchaun":
-            case "undeadslayer":
-            case "underworld chronomancer":
-            case "unlucky leperchaun":
-            case "void highlord":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Lucky);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Spiral_Carve;
                 break;
-            //Lucky - Mana Vamp
-            case "alpha doommega":
-            case "alpha omega":
-            case "alpha pirate":
-            case "beast warrior":
-            case "blood ancient":
-            case "chaos avenger":
-            case "chaos shaper":
-            case "classic defender":
-            case "clawsuit":
-            case "cryomancer mini pet coming soon":
-            case "dark legendary hero":
-            case "dark ultra omninight":
-            case "doomknight overlord":
-            case "dragonslayer general":
-            case "drakel warlord":
-            case "glacial berserker test":
-            case "heroic naval commander":
-            case "legendary elemental warrior":
-            case "horc evader":
-            case "legendary hero":
-            case "legendary naval commander":
-            case "legion doomknight tester":
-            case "legion revenant member test":
-            case "naval commander":
-            case "paladin high lord":
-            case "paladin":
-            case "paladinslayer":
-            case "pirate":
-            case "pumpkin lord":
-            case "shadowflame dragonlord":
-            case "shadowstalker of time":
-            case "shadowwalker of time":
-            case "shadowweaver of time":
-            case "silver paladin":
-            case "thief of hours":
-            case "ultra elemental warrior":
-            case "ultra omniknight":
-            case "void highlord tester":
-            case "warlord":
-            case "warrior":
-            case "warrior (rare)":
-            case "warriorscythe general":
-            case "yami no ronin":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Lucky);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Mana_Vamp);
-                break;
-            //Lucky - Awe Blast
-            case "arachnomancer":
-            case "bard":
-            case "chrono assassin":
-            case "chronomancer":
-            case "chronomancer prime":
-            case "dark metal necro":
-            case "deathknight lord":
-            case "dragon shinobi":
-            case "dragonlord":
-            case "evolved pumpkin lord":
-            case "dragonsoul shinobi":
+            #endregion
+
+            #region Lucky - Forge - Awe Blast
             case "glacial berserker":
-            case "grunge rocker":
-            case "guardian":
-            case "heavy metal necro":
-            case "heavy metal rockstar":
-            case "hobo highlord":
-            case "lord of order":
-            case "nechronomancer":
-            case "necrotic chronomancer":
-            case "no class":
-            case "nu metal necro":
-            case "obsidian no class":
-            case "oracle":
-            case "protosartorium":
-            case "shadow dragon shinobi":
-            case "shadow ripper":
-            case "shadow rocker":
-            case "star captain":
-            case "troubador of love":
-            case "unchained rocker":
-            case "unchained rockstar":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Lucky);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Awe_Blast);
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Awe_Blast;
                 break;
-            //Lucky - Health Vamp
-            case "archfiend":
-            case "barber":
-            case "classic dragonlord":
-            case "dragonslayer":
-            case "enchanted vampire lord":
-            case "enforcer":
-            case "flame dragon warrior":
-            case "royal vampire lord":
-            case "rustbucket":
-            case "sentinel":
-            case "vampire":
-            case "vampire lord":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Lucky);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Lucky, WeaponSpecial.Health_Vamp);
+            #endregion 
+
+            #region Lucky - Forge - Mana Vamp
+            case "shadowwalker of time":
+            case "shadowstalker of time":
+            case "shadowweaver of time":
+            case "yami no ronin":
+            case "legendary elemental warrior":
+            case "ultra elemental warrior":
+            case "chaos avenger":
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Mana_Vamp;
                 break;
-            //Wizard - Awe Blast
-            case "acolyte":
-            case "arcane dark caster":
-            case "battlemage":
-            case "battlemage of love":
-            case "blaze binder":
-            case "blood sorceress":
-            case "dark battlemage":
-            case "dark master of moglins":
-            case "dragon knight":
-            case "firelord summoner":
-            case "grim necromancer":
-            case "healer":
-            case "healer (rare)":
-            case "highseas commander":
-            case "infinity knight":
-            case "interstellar knight":
-            case "master of moglins":
-            case "mystical dark caster":
-            case "northlands monk":
-            case "royal battlemage":
-            case "timeless dark caster":
-            case "witch":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Wizard);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Awe_Blast);
-                break;
-            //Wizard - Spiral Carve
-            case "chrono dataknight":
-            case "chrono dragonknight":
-            case "cryomancer":
-            case "dark caster":
-            case "dark cryomancer":
-            case "dark lord":
-            case "darkblood stormking":
-            case "darkside":
-            case "defender":
-            case "frost spiritreaver":
-            case "immortal dark caster":
-            case "legion paladin":
+            #endregion
+
+            #region Wizard - Forge - Spiral Carve
             case "legion revenant":
+            case "legion revenant (ioda)":
             case "lightcaster":
-            case "pink romancer":
-            case "psionic mindbreaker":
-            case "pyromancer":
-            case "sakura cryomancer":
-            case "troll spellsmith":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Wizard);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Spiral_Carve);
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Wizard;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Spiral_Carve;
                 break;
-            //Wizard - Health Vamp
-            case "daimon":
-            case "evolved shaman":
-            case "lightmage":
-            case "mindbreaker":
+            #endregion
+
+            #region Wizard - Forge - Awe Blast
+            case "infinity knight":
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Wizard;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Awe_Blast;
+                break;
+            #endregion
+
+            #region Wizard - Forge - Health Vamp
             case "shaman":
-            case "vindicator of they":
-            case "elemental dracomancer":
-            case "lightcaster test":
-            case "love caster":
-            case "mage":
-            case "mage (rare)":
-            case "sorcerer":
-            case "the collector":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Wizard);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Wizard, WeaponSpecial.Health_Vamp);
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Wizard;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Health_Vamp;
                 break;
-            //Fighter - Awe Blast
-            case "deathknight":
-            case "frostval barbarian":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Fighter);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Fighter, WeaponSpecial.Awe_Blast);
-                break;
-            //Healer - Health Vamp
+            #endregion
+
+            #region Healer - Forge - Health Vamp
             case "dragon of time":
-                if (SelectedClass.EnhancementLevel == 0)
-                    EnhanceItem(Class, EnhancementType.Healer);
-                Core.Equip(SelectedClass.Name);
-                EnhanceEquipped(EnhancementType.Healer, WeaponSpecial.Health_Vamp);
+                if (!Core.isCompletedBefore(8758))
+                    goto default;
+
+                type = EnhancementType.Healer;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Health_Vamp;
                 break;
+            #endregion
+
+            #endregion
+            #region Awe Enhancement Library
             default:
-                Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
+                switch (SelectedClass.Name.ToLower())
+                {
+                    #region Lucky - None - Spiral Carve
+                    case "abyssal angel":
+                    case "abyssal angel's shadow":
+                    case "archpaladin":
+                    case "artifact hunter":
+                    case "assassin":
+                    case "beastmaster":
+                    case "berserker":
+                    case "beta berserker":
+                    case "blademaster assassin":
+                    case "blademaster":
+                    case "blood titan":
+                    case "cardclasher":
+                    case "chaos avenger member preview":
+                    case "chaos champion prime":
+                    case "chaos slayer":
+                    case "chaos slayer berserker":
+                    case "chaos slayer cleric":
+                    case "chaos slayer mystic":
+                    case "chaos slayer thief":
+                    case "chrono chaorruptor":
+                    case "chrono commandant":
+                    case "chronocommander":
+                    case "chronocorrupter":
+                    case "chunin":
+                    case "classic alpha pirate":
+                    case "classic barber":
+                    case "classic doomknight":
+                    case "classic exalted soul cleaver":
+                    case "classic guardian":
+                    case "classic legion doomknight":
+                    case "classic paladin":
+                    case "classic pirate":
+                    case "classic soul cleaver":
+                    case "continuum chronomancer":
+                    case "corrupted chronomancer":
+                    case "dark chaos berserker":
+                    case "dark harbinger":
+                    case "doomknight":
+                    case "empyrean chronomancer":
+                    case "eternal chronomancer":
+                    case "eternal inversionist":
+                    case "evolved clawsuit":
+                    case "evolved dark caster":
+                    case "evolved leprechaun":
+                    case "exalted harbinger":
+                    case "exalted soul cleaver":
+                    case "glacial warlord":
+                    case "great thief":
+                    case "immortal chronomancer":
+                    case "imperial chunin":
+                    case "infinite dark caster":
+                    case "infinite legion dark caster":
+                    case "infinity titan":
+                    case "legion blademaster assassin":
+                    case "legion doomknight":
+                    case "legion evolved dark caster":
+                    case "legion swordmaster assassin":
+                    case "leprechaun":
+                    case "lycan":
+                    case "master ranger":
+                    case "mechajouster":
+                    case "necromancer":
+                    case "ninja":
+                    case "ninja warrior":
+                    case "not a mod":
+                    case "overworld chronomancer":
+                    case "pinkomancer":
+                    case "prismatic clawsuit":
+                    case "ranger":
+                    case "renegade":
+                    case "rogue":
+                    case "rogue (rare)":
+                    case "scarlet sorceress":
+                    case "shadowscythe general":
+                    case "skycharged grenadier":
+                    case "skyguard grenadier":
+                    case "soul cleaver":
+                    case "starlord":
+                    case "stonecrusher":
+                    case "swordmaster assassin":
+                    case "swordmaster":
+                    case "timekeeper":
+                    case "timekiller":
+                    case "timeless chronomancer":
+                    case "undead goat":
+                    case "undead leperchaun":
+                    case "undeadslayer":
+                    case "underworld chronomancer":
+                    case "unlucky leperchaun":
+                    case "void highlord":
+                    case "void highlord (ioda)":
+                        type = EnhancementType.Lucky;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Spiral_Carve;
+                        break;
+                    #endregion
+
+                    #region Lucky - None - Mana Vamp
+                    case "alpha doommega":
+                    case "alpha omega":
+                    case "alpha pirate":
+                    case "beast warrior":
+                    case "blood ancient":
+                    case "chaos avenger":
+                    case "chaos shaper":
+                    case "classic defender":
+                    case "clawsuit":
+                    case "cryomancer mini pet coming soon":
+                    case "dark legendary hero":
+                    case "dark ultra omninight":
+                    case "doomknight overlord":
+                    case "dragonslayer general":
+                    case "drakel warlord":
+                    case "glacial berserker test":
+                    case "heroic naval commander":
+                    case "legendary elemental warrior":
+                    case "horc evader":
+                    case "legendary hero":
+                    case "legendary naval commander":
+                    case "legion doomknight tester":
+                    case "legion revenant member test":
+                    case "naval commander":
+                    case "paladin high lord":
+                    case "paladin":
+                    case "paladinslayer":
+                    case "pirate":
+                    case "pumpkin lord":
+                    case "shadowflame dragonlord":
+                    case "shadowstalker of time":
+                    case "shadowwalker of time":
+                    case "shadowweaver of time":
+                    case "silver paladin":
+                    case "thief of hours":
+                    case "ultra elemental warrior":
+                    case "ultra omniknight":
+                    case "void highlord tester":
+                    case "warlord":
+                    case "warrior":
+                    case "warrior (rare)":
+                    case "warriorscythe general":
+                    case "yami no ronin":
+                        type = EnhancementType.Lucky;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Mana_Vamp;
+                        break;
+                    #endregion
+
+                    #region Lucky - None - Awe Blast
+                    case "arachnomancer":
+                    case "bard":
+                    case "chrono assassin":
+                    case "chronomancer":
+                    case "chronomancer prime":
+                    case "dark metal necro":
+                    case "deathknight lord":
+                    case "dragon shinobi":
+                    case "dragonlord":
+                    case "evolved pumpkin lord":
+                    case "dragonsoul shinobi":
+                    case "glacial berserker":
+                    case "grunge rocker":
+                    case "guardian":
+                    case "heavy metal necro":
+                    case "heavy metal rockstar":
+                    case "hobo highlord":
+                    case "lord of order":
+                    case "nechronomancer":
+                    case "necrotic chronomancer":
+                    case "no class":
+                    case "nu metal necro":
+                    case "obsidian no class":
+                    case "oracle":
+                    case "protosartorium":
+                    case "shadow dragon shinobi":
+                    case "shadow ripper":
+                    case "shadow rocker":
+                    case "star captain":
+                    case "troubador of love":
+                    case "unchained rocker":
+                    case "unchained rockstar":
+                        type = EnhancementType.Lucky;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Awe_Blast;
+                        break;
+                    #endregion
+
+                    #region Lucky - None - Health Vamp
+                    case "archfiend":
+                    case "barber":
+                    case "classic dragonlord":
+                    case "dragonslayer":
+                    case "enchanted vampire lord":
+                    case "enforcer":
+                    case "flame dragon warrior":
+                    case "royal vampire lord":
+                    case "rustbucket":
+                    case "sentinel":
+                    case "vampire":
+                    case "vampire lord":
+                        type = EnhancementType.Lucky;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Health_Vamp;
+                        break;
+                    #endregion
+
+                    #region Wizard - None - Awe Blast
+                    case "acolyte":
+                    case "arcane dark caster":
+                    case "battlemage":
+                    case "battlemage of love":
+                    case "blaze binder":
+                    case "blood sorceress":
+                    case "dark battlemage":
+                    case "dark master of moglins":
+                    case "dragon knight":
+                    case "firelord summoner":
+                    case "grim necromancer":
+                    case "healer":
+                    case "healer (rare)":
+                    case "highseas commander":
+                    case "infinity knight":
+                    case "interstellar knight":
+                    case "master of moglins":
+                    case "mystical dark caster":
+                    case "northlands monk":
+                    case "royal battlemage":
+                    case "timeless dark caster":
+                    case "witch":
+                        type = EnhancementType.Wizard;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Awe_Blast;
+                        break;
+                    #endregion
+
+                    #region Wizard - None - Spiral Carve
+                    case "chrono dataknight":
+                    case "chrono dragonknight":
+                    case "cryomancer":
+                    case "dark caster":
+                    case "dark cryomancer":
+                    case "dark lord":
+                    case "darkblood stormking":
+                    case "darkside":
+                    case "defender":
+                    case "frost spiritreaver":
+                    case "immortal dark caster":
+                    case "legion paladin":
+                    case "legion revenant":
+                    case "legion revenant (ioda)":
+                    case "lightcaster":
+                    case "pink romancer":
+                    case "psionic mindbreaker":
+                    case "pyromancer":
+                    case "sakura cryomancer":
+                    case "troll spellsmith":
+                        type = EnhancementType.Wizard;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Spiral_Carve;
+                        EnhanceEquipped(EnhancementType.Wizard, CapeSpecial.None, WeaponSpecial.Spiral_Carve);
+                        break;
+                    #endregion
+
+                    #region Wizard - None - Health Vamp
+                    case "daimon":
+                    case "evolved shaman":
+                    case "lightmage":
+                    case "mindbreaker":
+                    case "shaman":
+                    case "vindicator of they":
+                    case "elemental dracomancer":
+                    case "lightcaster test":
+                    case "love caster":
+                    case "mage":
+                    case "mage (rare)":
+                    case "sorcerer":
+                    case "the collector":
+                        type = EnhancementType.Wizard;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Health_Vamp;
+                        break;
+                    #endregion
+
+                    #region Fighter - None - Awe Blast
+                    case "deathknight":
+                    case "frostval barbarian":
+                        type = EnhancementType.Fighter;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Awe_Blast;
+                        break;
+                    #endregion
+
+                    #region Healer - None - Health Vamp
+                    case "dragon of time":
+                        type = EnhancementType.Healer;
+                        cSpecial = CapeSpecial.None;
+                        wSpecial = WeaponSpecial.Health_Vamp;
+                        break;
+                    #endregion
+                    default:
+                        Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
+                        return;
+                }
                 break;
+                #endregion
         }
+
+        if (SelectedClass.EnhancementLevel == 0 && type != null)
+            EnhanceItem(Class, (EnhancementType)type);
+        Core.Equip(SelectedClass.Name);
+
+        if (type == null || cSpecial == null || wSpecial == null)
+            return;
+
+        EnhanceEquipped((EnhancementType)type, (CapeSpecial)cSpecial, (WeaponSpecial)wSpecial);
     }
 
     #endregion
 }
 
-public enum EnhancementType
+public enum EnhancementType // Enhancement Pattern ID
 {
     Fighter = 2,
     Thief = 3,
@@ -1372,14 +1715,28 @@ public enum EnhancementType
     Lucky = 9,
 }
 
-public enum WeaponSpecial
+public enum CapeSpecial // Enhancement Pattern ID
+{
+    None = 0,
+    Forge = 10,
+    Absolution = 11,
+    Avarice = 12,
+    Vainglory = 24
+}
+
+public enum WeaponSpecial // Proc ID
 {
     None = 0,
     Spiral_Carve = 2,
     Awe_Blast = 3,
     Health_Vamp = 4,
     Mana_Vamp = 5,
-    Powerword_Die = 6
+    Powerword_Die = 6,
+    Forge = 99,
+    Lacerate = 7,
+    Smite = 8,
+    Valiance = 9,
+    Arcanas_Concerto = 10
 }
 
 public enum GearBoost
