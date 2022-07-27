@@ -22,7 +22,7 @@ public class HanzoOrbQuest
 
     public void HanzoOrb()
     {
-        if (!Core.CheckInventory("Astral Hanzo Orb") && !Core.CheckInventory("Crimson Hanzo Orb"))
+        if (!Core.CheckInventory("Astral Orb Pet") || !Core.CheckInventory("Crimson Orb Pet"))
         {
             Core.Logger("Neither orb owned, stopping");
             return;
@@ -30,14 +30,14 @@ public class HanzoOrbQuest
 
         int questID = 1;
 
-        if (Core.CheckInventory("Astral Hanzo Orb"))
+        if (Core.CheckInventory("Astral Orb Pet"))
         {
-            Core.Logger("using Astral Hanzo Orb Quest");
+            Core.Logger("using Astral Orb Pet Quest");
             questID = 4020;
         }
-        if (Core.CheckInventory("Crimson Hanzo Orb"))
+        if (Core.CheckInventory("Crimson Orb Pet"))
         {
-            Core.Logger("using Crimson Hanzo Orb Quest");
+            Core.Logger("using Crimson Orb Pet Quest");
             questID = 4019;
         }
 
