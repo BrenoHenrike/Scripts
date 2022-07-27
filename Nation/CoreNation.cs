@@ -127,8 +127,8 @@ public class CoreNation
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(570);
-            Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", 1, false);
-            Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false);
+            Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", 1, false, log: false);
+            Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false, log: false);
             if (!Core.CheckInventory("Strand of Vath's Hair"))
             {
                 Core.Join("stalagbite", "r2", "Left");
@@ -137,26 +137,29 @@ public class CoreNation
                 if (Bot.Player.DropExists("Strand of Vath's Hair"))
                     Bot.Player.Pickup("Strand of Vath's Hair");
             }
-            Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false);
+            Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false, log: false);
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
             if (!Core.CheckInventory("Defeated Makai", 50))
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false);
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false, log: false);
                 Core.JumpWait();
             }
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom: true);
+            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom: true, log: false);
             Core.EnsureComplete(570);
             Bot.Wait.ForPickup("Dark Crystal Shard");
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Dark Crystal Shard"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Dark Crystal Shard: {Bot.Inventory.GetQuantity("Dark Crystal Shard")}/{quant}");
         }
     }
 
     /// <summary>
     /// Does NWNO from Nulgath's Birthday Gift/Bounty Hunter's Drone Pet
     /// </summary>
-    /// <param name="item">Desired item to get</param>
+    /// <param name=item>Desired item to get</param>
     /// <param name="quant">Desired quantity to get</param>
     public void NewWorldsNewOpportunities(string item = "Any", int quant = 1)
     {
@@ -177,18 +180,21 @@ public class CoreNation
             else
                 Core.EnsureAccept(6697);
             Bot.Options.AttackWithoutTarget = true;
-            Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5);
+            Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5, log: false);
             Bot.Options.AttackWithoutTarget = false;
-            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5);
-            Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
-            Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2);
+            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
+            Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3, log: false);
+            Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
             if (Core.CheckInventory("Bounty Hunter's Drone Pet"))
                 Core.EnsureComplete(6183);
             else
                 Core.EnsureComplete(6697);
             Bot.Player.Pickup(bagDrops);
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack(item))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
     }
 
@@ -213,17 +219,20 @@ public class CoreNation
                 Core.EnsureAccept(2221);
             else
                 Core.EnsureAccept(2219);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Blade", 1, false);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Dessicated Heart", 22, false);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Helm", 5);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Undead Skull", 3);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Champion Medal", 5);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Blade", 1, false, log: false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Dessicated Heart", 22, false, log: false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Helm", 5, log: false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Undead Skull", 3, log: false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Champion Medal", 5, log: false);
             if (Core.IsMember)
                 Core.EnsureComplete(2221);
             else
                 Core.EnsureComplete(2219);
             Bot.Player.Pickup("Diamond of Nulgath");
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Diamond of Nulgath"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Diamond of Nulgath: {Bot.Inventory.GetQuantity("Diamond of Nulgath")}/{quant}");
         }
     }
 
@@ -242,9 +251,9 @@ public class CoreNation
         Core.EquipClass(ClassType.Farm);
 
         if (quantApproval > 0)
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false, log: false);
         if (quantFavor > 0)
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, log: false);
         Core.Logger($"Finished");
     }
 
@@ -253,7 +262,7 @@ public class CoreNation
     /// Farms specific item with Swindles Return Policy quest
     /// </summary>
     /// <param name="quant">Desired Item quantity</param>
-    /// <param name="item">Desired Item</param>
+    /// <param name=item>Desired Item</param>
     public void SwindleReturn(string item = "Any", int quant = 1000)
     {
         if (Core.CheckInventory(item, quant))
@@ -276,7 +285,7 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
-            Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune");
+            Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune", log: false);
             switch (item)
             {
                 case "Dark Crystal Shard":
@@ -297,6 +306,9 @@ public class CoreNation
             }
             if (item != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
+            if (Bot.Inventory.IsMaxStack(item))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
     }
 
@@ -318,11 +330,14 @@ public class CoreNation
         while (!Bot.ShouldExit() && !Core.CheckInventory("Tainted Gem", quant))
         {
             Core.EnsureAccept(7817);
-            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false);
-            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", 6);
+            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false, log: false);
+            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", 6, log: false);
             Core.EnsureComplete(7817);
             Bot.Player.Pickup("Tainted Gem");
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Tainted Gem"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Tainted Gem: {Bot.Inventory.GetQuantity("Tainted Gem")}/{quant}");
         }
     }
 
@@ -347,11 +362,14 @@ public class CoreNation
         while (!Bot.ShouldExit() && !Core.CheckInventory("Emblem of Nulgath", quant))
         {
             Core.EnsureAccept(4748);
-            Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false);
-            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 25, false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false, log: false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 25, false, log: false);
             Core.EnsureComplete(4748);
             Bot.Player.Pickup("Emblem of Nulgath");
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Emblem of Nulgath"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Emblem of Nulgath: {Bot.Inventory.GetQuantity("Emblem of Nulgath")}/{quant}");
         }
     }
 
@@ -374,8 +392,8 @@ public class CoreNation
                 !Core.CheckInventory("Nation Round 3 Medal"))
             {
                 Core.EnsureAccept(4744);
-                Core.HuntMonster("shadowblast", "Legion Airstrike", "Legion Rookie Defeated", 5, true);
-                Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true);
+                Core.HuntMonster("shadowblast", "Legion Airstrike", "Legion Rookie Defeated", 5, true, log: false);
+                Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true, log: false);
                 Core.EnsureComplete(4744);
                 Bot.Player.Pickup("Nation Round 1 Medal");
                 Core.Logger("Medal 1 acquired");
@@ -384,8 +402,8 @@ public class CoreNation
             if (Core.CheckInventory("Nation Round 1 Medal"))
             {
                 Core.EnsureAccept(4745);
-                Core.HuntMonster("shadowblast", "Legion Fenrir", "Legion Veteran Defeated", 7, true);
-                Core.HuntMonster("shadowblast", "Doombringer", "Shadowscythe Veteran Defeated", 7, true);
+                Core.HuntMonster("shadowblast", "Legion Fenrir", "Legion Veteran Defeated", 7, true, log: false);
+                Core.HuntMonster("shadowblast", "Doombringer", "Shadowscythe Veteran Defeated", 7, true, log: false);
                 Core.EnsureComplete(4745);
                 Bot.Player.Pickup("Nation Round 2 Medal");
                 Core.Logger("Medal 2 acquired");
@@ -394,8 +412,8 @@ public class CoreNation
             if (Core.CheckInventory("Nation Round 2 Medal"))
             {
                 Core.EnsureAccept(4746);
-                Core.HuntMonster("shadowblast", "Legion Cannon", "Legion Elite Defeated", 10, true);
-                Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true);
+                Core.HuntMonster("shadowblast", "Legion Cannon", "Legion Elite Defeated", 10, true, log: false);
+                Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true, log: false);
                 Core.EnsureComplete(4746);
                 Bot.Player.Pickup("Nation Round 3 Medal");
                 Core.Logger("Medal 3 acquired");
@@ -404,7 +422,7 @@ public class CoreNation
             if (Core.CheckInventory("Nation Round 3 Medal"))
             {
                 Core.EnsureAccept(4747);
-                Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true);
+                Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true, log: false);
                 Core.EnsureComplete(4747);
                 Bot.Player.Pickup("Nation Round 4 Medal");
                 Core.Logger("Medal 4 acquired");
@@ -445,13 +463,13 @@ public class CoreNation
         Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
 
-        Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
+        Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false, log: false);
     }
 
     /// <summary>
     /// Does Nulgath Larvae quest for the desired item
     /// </summary>
-    /// <param name="item">Desired item name</param>
+    /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string item = "Any", int quant = 1)
     {
@@ -469,17 +487,20 @@ public class CoreNation
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("elemental", 7, "Mana Energy for Nulgath", isTemp: false);
+            Core.HuntMonsterMapID("elemental", 7, "Mana Energy for Nulgath", isTemp: false, log: false);
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5);
+            Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5, log: false);
             Bot.Player.Pickup(item);
+            if (Bot.Inventory.IsMaxStack(item))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
     }
 
     /// <summary>
     /// Does Supplies to Spin the Whell of Chance for the desired item with the best method available
     /// </summary>
-    /// <param name="item">Desired item name</param>
+    /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     public void Supplies(string item = "Any", int quant = 1)
     {
@@ -519,8 +540,8 @@ public class CoreNation
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
                 {
                     if (Core.IsMember)
-                        Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Rune");
-                    Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune");
+                        Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Rune", log: false);
+                    Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune", log: false);
                 }
                 Core.KillEscherion("Relic of Chaos", publicRoom: true);
                 Core.EnsureComplete(2857);
@@ -532,6 +553,9 @@ public class CoreNation
                     Core.SellItem("Voucher of Nulgath", all: true);
                 }
                 Core.Logger($"Completed x{i++}");
+                if (Bot.Inventory.IsMaxStack(item))
+                    Core.Logger("Max Stack Hit.");
+                else Core.Logger($"item: {Bot.Inventory.GetQuantity(item)}/{quant}");
             }
             if (returnPolicyDuringSupplies)
                 Core.CancelRegisteredQuests();
@@ -541,7 +565,7 @@ public class CoreNation
     /// <summary>
     /// Does The Assistant quest for the desired item
     /// </summary>
-    /// <param name="item">Desired item name</param>
+    /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     /// <param name="farmGold"></param>
     public void TheAssistant(string item = "Any", int quant = 1, bool farmGold = true)
@@ -572,6 +596,9 @@ public class CoreNation
                 Core.ChainComplete(2859);
                 Bot.Player.Pickup(bagDrops);
                 Core.Logger($"Completed x{i++}");
+                if (Bot.Inventory.IsMaxStack(item))
+                    Core.Logger("Max Stack Hit.");
+                else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
             }
         }
 
@@ -583,6 +610,9 @@ public class CoreNation
                 AssistantLoop();
                 if (Bot.Player.Gold < 100000 && !Core.CheckInventory(item, quant))
                     Farm.Gold(1000000);
+                if (Bot.Inventory.IsMaxStack(item))
+                    Core.Logger("Max Stack Hit.");
+                else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
             }
         }
         else
@@ -598,7 +628,7 @@ public class CoreNation
     /// <summary>
     /// Does Bamblooze vs Drudgen quest for the desired item
     /// </summary>
-    /// <param name="item">Desired item name</param>
+    /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     public void BambloozevsDrudgen(string item = "Any", int quant = 1)
     {
@@ -631,7 +661,10 @@ public class CoreNation
             else if (OBoNPet)
                 Core.RegisterQuests(2561);
 
-            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false);
+            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false, log: false);
+            if (Bot.Inventory.IsMaxStack(item))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
 
         Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
@@ -654,7 +687,7 @@ public class CoreNation
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
-        Core.KillMonster("evilmarsh", "Field1", "Left", "Dark Makai");
+        Core.KillMonster("evilmarsh", "Field1", "Left", "Dark Makai", log: false);
         Core.EnsureComplete(869);
         Core.Logger("Completed");
     }
@@ -675,7 +708,7 @@ public class CoreNation
             FarmUni13();
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(870);
-        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune");
+        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune", log: false);
         Core.EnsureComplete(870, (int)reward);
         Bot.Player.Pickup(bagDrops);
         Core.Logger($"Exchanged for {reward}");
@@ -696,18 +729,21 @@ public class CoreNation
             Core.KillEscherion("Emerald Pickaxe", publicRoom: true);
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
-            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false);
+            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false, log: false);
         Core.EquipClass(ClassType.Solo);
         int i = 1;
         while (!Bot.ShouldExit() && !Core.CheckInventory("Unidentified 10", quant))
         {
             Core.EnsureAccept(7818);
             Bot.Quests.UpdateQuest(3484);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom: true);
-            Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2);
-            Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3);
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Digging Advice", publicRoom: true, log: false);
+            Core.HuntMonster("crownsreach", "Chaos Tunneler", "Chaotic Tunneling Techniques", 2, log: false);
+            Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3, log: false);
             Core.EnsureComplete(7818);
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Unidentified 10"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Unidentified 10: {Bot.Inventory.GetQuantity("Unidentified 10")}/{quant}");
         }
     }
 
@@ -825,6 +861,9 @@ public class CoreNation
         NewWorldsNewOpportunities("Totem of Nulgath", quant);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Totem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
+        if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
+            Core.Logger("Max Stack Hit.");
+        else Core.Logger($"Totem of Nulgath: {Bot.Inventory.GetQuantity("Totem of Nulgath")}/{quant}");
     }
 
     /// <summary>
@@ -862,14 +901,17 @@ public class CoreNation
             Core.EnsureAccept(3743);
             if (!Core.CheckInventory("Tendurrr The Assistant"))
             {
-                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false);
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false, log: false);
                 Core.JumpWait();
             }
-            Core.HuntMonster("lair", "Water Draconian", "Fragment of Chaos", 80, false);
-            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8);
+            Core.HuntMonster("lair", "Water Draconian", "Fragment of Chaos", 80, false, log: false);
+            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, log: false);
             Core.EnsureComplete(3743);
             Bot.Wait.ForPickup("Blood Gem of the Archfiend");
             Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Blood Gem of the Archfiend"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
         }
     }
 
@@ -882,7 +924,7 @@ public class CoreNation
         Core.EnsureAccept(867);
 
         FarmVoucher(true);
-        Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune");
+        Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
         Core.EnsureComplete(867);
         Bot.Wait.ForPickup("Nulgath Larvae");
     }

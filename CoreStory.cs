@@ -39,6 +39,7 @@ public class CoreStory
             return;
 
         Core.SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
+        Bot.Wait.ForPickup(Requirements.ToString());
         TryComplete(QuestData, AutoCompleteQuest);
     }
 
