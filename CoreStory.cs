@@ -38,7 +38,8 @@ public class CoreStory
             return;
 
         Core.SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
-        Bot.Wait.ForPickup(Requirements.ToString());
+        if (AutoCompleteQuest)
+            Bot.Wait.ForPickup(Requirements.ToString());
         TryComplete(QuestData, AutoCompleteQuest);
     }
 
@@ -60,7 +61,8 @@ public class CoreStory
             return;
 
         Core.SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
-        Bot.Wait.ForPickup(Requirements.ToString());
+        if (AutoCompleteQuest)
+            Bot.Wait.ForPickup(Requirements.ToString());
         TryComplete(QuestData, AutoCompleteQuest);
     }
 
@@ -160,7 +162,7 @@ public class CoreStory
     private void TryComplete(Quest QuestData, bool AutoCompleteQuest)
     {
         if (!Bot.Quests.CanComplete(QuestData.ID))
-            return;           
+            return;
 
         Bot.Sleep(Core.ActionDelay);
         if (AutoCompleteQuest)
