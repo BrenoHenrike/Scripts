@@ -22,7 +22,7 @@ public class HanzoOrbQuest
 
     public void HanzoOrb()
     {
-        if (!Core.CheckInventory("Astral Hanzo Orb") || Core.CheckInventory("Crimson Hanzo Orb"))
+        if (!Core.CheckInventory("Astral Hanzo Orb") && Core.CheckInventory("Crimson Hanzo Orb"))
         {
             Core.Logger("Neither orb owned, stopping");
             return;
