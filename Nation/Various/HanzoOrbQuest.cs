@@ -20,11 +20,13 @@ public class HanzoOrbQuest
     }
 
 
-    public void HanzoOrb(int questID = 1)
+    public void HanzoOrb()
     {
         if (!Core.CheckInventory("Astral Hanzo Orb") && Core.CheckInventory("Crimson Hanzo Orb"))
             return;
-
+            
+        int questID = 0;
+        
         if (Core.CheckInventory("Astral Hanzo Orb"))
             questID = 4020;
         if (Core.CheckInventory("Crimson Hanzo Orb"))
