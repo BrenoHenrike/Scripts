@@ -103,7 +103,7 @@ public class TitanAttackStory
         Story.KillQuest(8776, "titanstrike", new[] { "Titanic Paladin", "Titanic DoomKnight", "Titanic Destroyer" });
 
         // The BIG Finish 8777
-        Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, CapeSpecial.None, WeaponSpecial.Spiral_Carve);
+        Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
         Adv.BestGear(GearBoost.Drakath);
 
         Story.KillQuest(8777, "titandrakath", "Titan Drakath");

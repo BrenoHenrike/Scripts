@@ -22,7 +22,7 @@ public class HollowbornOblivionBlade
         Core.SetOptions();
 
         GetBlade();
-        Adv.EnhanceItem("Hollowborn Oblivion Blade", EnhancementType.Lucky, CapeSpecial.None, WeaponSpecial.Spiral_Carve);
+        Adv.EnhanceItem("Hollowborn Oblivion Blade", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
 
         Core.SetOptions(false);
     }
