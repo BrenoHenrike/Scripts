@@ -48,7 +48,7 @@ public class ScriptTemplate
         }
         Core.BuyItem("darkwarnation", 2123, "Wrath of Nulgath");
         Bot.Wait.ForPickup("Wrath of Nulgath");
-        Adv.EnhanceItem("Wrath of Nulgath", EnhancementType.Lucky, WeaponSpecial.Spiral_Carve);
+        Adv.EnhanceItem("Wrath of Nulgath", EnhancementType.Lucky, CapeSpecial.None, WeaponSpecial.Spiral_Carve);
     }
 
     public void OverfiendBlade()
