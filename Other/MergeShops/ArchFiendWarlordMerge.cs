@@ -64,169 +64,94 @@ public class ArchFiendWarlordMerge
                 case "Unidentified 36":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        HB.FreshSouls(1);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    HB.FreshSouls(1);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Diamond of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmDiamondofNulgath(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmDiamondofNulgath(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Bone Dust":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Farm.BattleUnderB("Bone Dust", quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Farm.BattleUnderB("Bone Dust", quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Gem of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmGemofNulgath(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmGemofNulgath(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Blood Gem of the Archfiend":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmBloodGem(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmBloodGem(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Fresh Soul":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        HB.FreshSouls(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    HB.FreshSouls(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Unidentified 13":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmUni13(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmUni13(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Unidentified 34":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        WPE.Unidentified34(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    WPE.Unidentified34(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Voucher of Nulgath (non-mem)":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmVoucher(false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmVoucher(false);
+                    Bot.Wait.ForPickup(req.Name);=
                     break;
 
                 case "Dark Crystal Shard":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmDarkCrystalShard(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmDarkCrystalShard(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Totem of Nulgath":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Nation.FarmTotemofNulgath(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.FarmTotemofNulgath(quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Strand of Vath's Hair":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        if (Bot.Map.Name != "stalagbite")
-                            Core.Join("stalagbite", "r2", "Left");
-
-                        while (!Bot.ShouldExit() && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-                        {
-                            if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-                                Bot.Player.Hunt("Vath");
-                            Bot.Player.Attack("Stalagbite");
-                            Bot.Sleep(1000);
-                        }
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.KillVath(req.Name, quant);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Unidentified 25":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
-                    {
-                        if (Bot.Player.Gold >= 15000000)
-                            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
-                        else Nation.TheAssistant(req.Name, quant); //low drop rate may take awhile.
-
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    if (Bot.Player.Gold >= 15000000)
+                        Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+                    else Nation.TheAssistant(req.Name, quant); //low drop rate may take awhile.
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }
