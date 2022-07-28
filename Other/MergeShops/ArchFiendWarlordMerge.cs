@@ -121,7 +121,7 @@ public class ArchFiendWarlordMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmVoucher(false);
-                    Bot.Wait.ForPickup(req.Name);=
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Dark Crystal Shard":
