@@ -52,22 +52,30 @@ public class CoreHollowborn
         Core.KillMonster("noxustower", "r14", "Left", "*", "Human Soul", quant, false);
     }
 
-    public void FreshSouls(int quant = 350)
+    public void FreshSouls(int Uni36Quant = 1, int FSQuant = 350)
     {
-        if (Core.CheckInventory("Fresh Soul", quant))
+        if (Core.CheckInventory("Unidentified 36", Uni36Quant) && Core.CheckInventory("Fresh Soul", FSQuant))
             return;
 
-        Core.AddDrop("Fresh Soul", "Unidentified 36");
+        if (Uni36Quant > 0)
+            Core.AddDrop("Unidentified 36");
+        if (FSQuant > 0)
+            Core.AddDrop("Fresh Soul");
         Farm.Experience(50);
 
-        Core.Logger($"Farming x{quant} Fresh Soul");
+        Core.Logger($"Farming x{FSQuant} Fresh Soul");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Fresh Soul", quant))
+        while (!Bot.ShouldExit() && FSQuant > 0 && Uni36Quant > 0)
         {
             Core.EnsureAccept(7293);
             Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);
             Core.EnsureComplete(7293);
             Bot.Wait.ForPickup("Fresh Soul");
+            if (Uni36Quant > 0)
+            {
+                Bot.Wait.ForPickup("Unidentified 36");
+                break;
+            }
         }
     }
 }
