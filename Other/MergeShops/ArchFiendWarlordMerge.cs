@@ -64,7 +64,7 @@ public class ArchFiendWarlordMerge
                 case "Unidentified 36":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    HB.FreshSouls(1);
+                    HB.FreshSouls(1, 0);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
@@ -99,7 +99,7 @@ public class ArchFiendWarlordMerge
                 case "Fresh Soul":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    HB.FreshSouls(quant);
+                    HB.FreshSouls(0, quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 

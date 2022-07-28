@@ -41,7 +41,7 @@ public class ArchFiendSpear
         AFEO.GetAFEO();
         Will.Unidentified34(1);
         Nation.FarmDiamondofNulgath(200);
-        HB.FreshSouls(100); // Also has the uni36
+        HB.FreshSouls(1, 100); // Also has the uni36
         Nation.FarmBloodGem(20);
         Nation.FarmVoucher(false);
 

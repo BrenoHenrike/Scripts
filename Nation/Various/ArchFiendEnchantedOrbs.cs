@@ -34,7 +34,7 @@ public class ArchFiendEnchantedOrbs
         Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmUni13(1);
         Nation.FarmDiamondofNulgath(150);
-        HB.FreshSouls(100); // Also has the uni36
+        HB.FreshSouls(1,100); // Also has the uni36
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);
 

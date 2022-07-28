@@ -59,9 +59,7 @@ public class HollowbornOblivionBlade
         }
         Core.HuntMonster("goldenarena", "Blessed Dragon", "Celestial Seal", isTemp: false);
         Core.HuntMonster("shadowattack", "Death", "Death's Power", isTemp: false);
-        HB.FreshSouls(350);
-        if (!Core.CheckInventory("Unidentified 36"))
-            HB.FreshSouls(1);
+        HB.FreshSouls(1, 350);
         Core.EnsureComplete(7294);
         Bot.Wait.ForPickup("Hollowborn Oblivion Blade");
     }
@@ -71,8 +69,7 @@ public class HollowbornOblivionBlade
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
 
-        if (!Core.CheckInventory("Unidentified 36"))
-            HB.FreshSouls(1);
+        HB.FreshSouls(1, 100);
         if (!Core.CheckInventory("Unidentified 25"))
         {
             Farm.Gold(15000000);
@@ -81,7 +78,6 @@ public class HollowbornOblivionBlade
         }
         Nation.FarmUni13();
         Nation.DiamondEvilWar(150);
-        HB.FreshSouls(100);
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);
         Core.BuyItem("tercessuinotlim", 1820, "ArchFiend Enchanted Orbs");

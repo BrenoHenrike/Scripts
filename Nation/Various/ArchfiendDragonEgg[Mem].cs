@@ -21,9 +21,9 @@ public class ArchfiendDragonEgg
 
     public void GetAFDE()
     {
-        if(!Core.IsMember)
+        if (!Core.IsMember)
             return;
-        
+
         if (Core.CheckInventory("ArchFiend Baby Dragon Pet"))
             return;
 
@@ -32,8 +32,7 @@ public class ArchfiendDragonEgg
         Core.EnsureAccept(7296);
         Core.BuyItem("Airstorm", 357, "Breath of Life");
         Core.HuntMonster("queenspire", "Fire Guardian Dragon", "Fire Guardian Dragon Soul", isTemp: false);
-        if (!Core.CheckInventory("Fresh Soul", 10) & !Core.CheckInventory("Unidentified 36"))
-            HB.FreshSouls(10);
+        HB.FreshSouls(1, 10);
         Core.HuntMonster("Underlair", "ArchFiend DragonLord", "Fiendish Brimstone", isTemp: false);
         Core.BuyItem("Ariapet", 12, "ArchFiend Dragon Egg");
         Core.EnsureComplete(7296);
