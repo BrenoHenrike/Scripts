@@ -55,21 +55,22 @@ public class NulgathDemandsWork
 
             Nation.FarmDarkCrystalShard(45);
 
-            Nation.FarmVoucher(false);
-
-            Nation.FarmGemofNulgath(15);
-
-            Nation.SwindleBulk(50);
-
             if (!Core.CheckInventory("Unidentified 27"))
             {
-                Nation.Supplies("Unidentified 26");
+                Nation.Supplies("Unidentified 26", 1, true);
                 Core.EnsureAccept(584);
                 Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
                 Core.EnsureComplete(584);
                 Bot.Player.Pickup("Unidentified 27");
                 Core.Logger("Uni 27 acquired");
             }
+
+            Nation.FarmVoucher(false);
+
+            Nation.FarmGemofNulgath(15);
+
+            Nation.SwindleBulk(50);
+
 
             GHV.GetGHV();
 

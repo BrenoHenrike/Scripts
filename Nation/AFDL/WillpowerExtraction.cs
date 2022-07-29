@@ -66,6 +66,13 @@ public class WillpowerExtraction
             Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
             Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 5, 10);
 
+            if (!Core.CheckInventory("Mortality Cape of Revontheus"))
+            {
+                Nation.ApprovalAndFavor(0, 35);
+                Adv.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
+                Bot.Wait.ForItemBuy();
+            }
+
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
 
@@ -75,12 +82,6 @@ public class WillpowerExtraction
 
             Nation.EssenceofNulgath(10);
 
-            if (!Core.CheckInventory("Mortality Cape of Revontheus"))
-            {
-                Nation.ApprovalAndFavor(0, 35);
-                Adv.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
-                Bot.Wait.ForItemBuy();
-            }
 
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
             {
