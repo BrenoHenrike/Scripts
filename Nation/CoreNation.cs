@@ -547,7 +547,7 @@ public class CoreNation
                 Core.EnsureComplete(2857);
 
                 Bot.Player.Pickup(item);
-                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && voucherNeeded)
+                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                 {
                     Bot.Player.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
