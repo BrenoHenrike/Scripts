@@ -156,6 +156,7 @@ public class AllSeasonal
 
                 case 7:
                     Core.Logger("Starting Scripts for July");
+                    Frostvale.DoAll();
                     BeachParty.Storyline();
                     BeachPartyTokenItems.TokenItems();
                     BlazingBeach.StoryLine();
