@@ -38,8 +38,6 @@ public class Frostvale
             Winterhorror();
             Gifthulu();
             cryostorm();
-            cryostorm();
-            cryowar();
             icewindpass();
             icepike();
         }
@@ -562,8 +560,7 @@ public class Frostvale
         }
         //avaiable
         Core.Logger("map: \"cryostorm\" is available, but not finished");
-        // http://aqwwiki.wikidot.com/abel-s-quests
-        if (Core.isCompletedBefore(6132))
+        if (Core.isCompletedBefore(4716))
             return;
 
         Story.PreLoad();
@@ -602,40 +599,20 @@ public class Frostvale
         Story.KillQuest(4711, "cryostorm", "Behemoth");
 
         // War Medal Quest
-        if (!Story.QuestProgression(4716))
+        if (!Core.isCompletedBefore(4716))
         {
             Core.EnsureAccept(4712);
             Core.HuntMonster("cryowar", "Frost Reaper", "Cryo War Medal", 10);
             Core.EnsureComplete(4712);
         }
 
-        //Story.KillQuest(4712, "cryowar", "Frost Reaper");
-
-        // Mega War Medal Quest
-        //Story.KillQuest(4713, "cryowar", "Frost Reaper");
-
         // Defeat Ultra Karok
         Story.KillQuest(4716, "cryowar", "Super-Charged Karok");
     }
 
-
-    public void cryowar()
-    {
-        Bot.Player.Join("cryowar");
-        if (Bot.Map.Name != "cryowar")
-        {
-            Core.Logger("map: \"cryowar\" is not available");
-            return;
-        }
-        //avaiable
-        Core.Logger("map: \"cryowar\" is available, but not finished");
-        // http://aqwwiki.wikidot.com/abel-s-quests#3
-    }
-
-
     public void icewindpass()
     {
-        Bot.Player.Join("icewindpassap");
+        Bot.Player.Join("icewindpass");
         if (Bot.Map.Name != "icewindpass")
         {
             Core.Logger("map: \"icewindpass\" is not available");
@@ -643,11 +620,42 @@ public class Frostvale
         }
         //avaiable
         Core.Logger("map: \"icewindpass\" is available, but not finished");
-        // http://aqwwiki.wikidot.com/abel-s-quests#4
-        // http://aqwwiki.wikidot.com/chilly-s-quests#2
-        // http://aqwwiki.wikidot.com/syrrus-quests#7
-    }
+        if (Core.isCompletedBefore(5596))
+            return;
 
+        Story.PreLoad();
+
+        // Where is Karok?
+        Story.MapItemQuest(5587, "icewindpass", 5074, 5);
+
+        // Cloaking Spell
+        Story.KillQuest(5588, "icewindpass", "Glacial Elemental");
+
+        // Splattered Mana
+        Story.MapItemQuest(5589, "icewindpass", 5075, 5);
+        Story.KillQuest(5589, "icewindpass", "Glacial Elemental");
+
+        // Dispell the Spell
+        Story.KillQuest(5590, "icewindpass", "Living Snow");
+
+        // Catch Up to Karok
+        Story.KillQuest(5591, "icewindpass", "Frost Invader");
+
+        // Blast the Frostspawn Symbiote
+        Story.KillQuest(5592, "icewindpass", "Frostspawn Symbiote");
+
+        // Keep Going!
+        Story.KillQuest(5593, "icewindpass", "Frost Invader");
+
+        // Take it Down!
+        Story.KillQuest(5594, "icewindpass", "Frostspawn Horror");
+
+        // Keep the Frostspawn Away!
+        Story.KillQuest(5595, "icewindpass", new[] { "Frostspawn Troll", "Frost Invader" });
+
+        // Take a Break from Fighting 
+        Story.KillQuest(5596, "icewindpass", new[] { "Polar Golem", "Glacial Elemental" });
+    }
 
     public void icepike()
     {
@@ -659,7 +667,56 @@ public class Frostvale
         }
         //avaiable
         Core.Logger("map: \"icepike\" is available, but not finished");
-        // http://aqwwiki.wikidot.com/syrrus-quests#10
+        if (Core.isCompletedBefore(5617))
+            return;
+
+        Story.PreLoad();
+
+        // Fight For Kezeroth!
+        if (!Bot.Quests.IsUnlocked(5606))
+        {
+            Core.EnsureAccept(5597);
+            Core.HuntMonster("icewindwar", "Kezeroth's Blade", "Frostspawn Medal", 10);
+            Core.EnsureComplete(5597);
+        }
+
+        // WHAT is THAT?
+        Story.KillQuest(5601, "icewindwar", "Soricomorpha");
+
+        // Take a Look Around
+        Story.MapItemQuest(5606, "icepike", 5085, 2);
+        Story.KillQuest(5606, "icepike", "Living Ice");
+
+        // The Stars Have Foretold
+        Story.MapItemQuest(5607, "icepike", new[] { 5086, 5087});
+
+        // Continue this Path
+        Story.MapItemQuest(5608, "icepike", 5088, 5);
+        Story.KillQuest(5608, "icepike", "Ice Lord");
+
+        // Cross the Ice Bridge
+        Story.MapItemQuest(5609, "icepike", 5089);
+
+        // Free The Moglins
+        Story.KillQuest(5610, "icepike", "Frozen Moglin");
+
+        // Get the Moglinsters
+        Story.KillQuest(5612, "icepike", "Frozen Moglinster");
+
+        // Take the Crystal
+        Story.MapItemQuest(5613, "icepike", 5090);
+
+        // You have to Fight
+        Story.KillQuest(5614, "icepike", "Crystal of Glacera");
+
+        // Fight your way Clear
+        Story.MapItemQuest(5615, "icepike", 5091);
+
+        // Take down Kezeroth!
+        Story.KillQuest(5616, "icepike", "Chained Kezeroth");
+
+        // Karok still Stands
+        Story.KillQuest(5617, "icepike", "Karok the Fallen");
     }
 
 
