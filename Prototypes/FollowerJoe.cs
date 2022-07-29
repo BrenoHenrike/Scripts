@@ -23,10 +23,8 @@ public class FollowerJoe
     {
         new Option<string>("playerName", "Player Name", "Insert the name of the player to follow", "Insert Name"),
         new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
-        new Option<LockedZones>("LockedZone", "Locked Zone", "Insert the name of the Possible Locked Zone", LockedZones.tercessuinotlim),
         new Option<string>("RoomNumber", "Room Number", "Insert the Room# of the Possible Locked Zone", "Room#"),
     };
-
 
 
     public void ScriptMain(ScriptInterface bot)
@@ -38,61 +36,23 @@ public class FollowerJoe
 
         while (!Bot.ShouldExit())
         {
+            // Bot.Events.PlayerAFK += LockedMap;
             Bot.Events.CellChanged += Jumper;
             Bot.Player.Goto((Bot.Config.Get<string>("playerName")));
             Bot.Sleep(2500);
             if (Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-            {
-                if (Bot.Map.Name == "Mobius") //map is broke for some reason \o/
-                {
-                    Core.Logger($"Map: \"Mobius\" is broke, and i dont feel like fixing it >.>");
-                    Bot.Sleep(2500);
-                    Core.Relogin();
-                    Bot.Sleep(2500);
-                    Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
-                    Bot.Sleep(2500);
-                    Core.Logger("Sleeping for 15 seconds to wait for Followee to be finished with mobius.");
-                    Bot.Sleep(15000);
-                    if (Bot.Map.Name != "Mobius")
-                        break;
-                }
-
-                if (Bot.Map.Name == "shadowattack")
-                {
-                    Core.Jump("Boss", "Left");
-                    Bot.Options.AttackWithoutTarget = true;
-                    Bot.Player.Kill("Death");
-                    Bot.Options.AttackWithoutTarget = false;
-                }
-
-                if (Bot.Map.Name == "DoomVault" && Bot.Map.Name == "DoomVaultb")
-                {
-                    Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                    if (Target == null)
-                    {
-                        Core.Logger("No monsters found", messageBox: true);
-                        return;
-                    }
-
-                    Core.SetOptions(disableClassSwap: true);
-
-                    Core.Logger("Target: " + Target.Name);
-                    while (!Bot.ShouldExit())
-                        Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
-                }
-                // Core.KillMonster(Bot.Map.Name, Bot.Player.Cell, Bot.Player.Pad, "*", null, 1, false, log: false);
                 Bot.Player.Attack("*");
-            }
-            Bot.Sleep(1500);
+            Bot.Sleep(Core.ActionDelay);
             Bot.Wait.ForCombatExit();
         }
+        // Bot.Events.PlayerAFK -= LockedMap;
+        Bot.Events.CellChanged -= Jumper;
+        Core.SetOptions(false);
     }
-
 
     public void Jumper(ScriptInterface bot, string? map = null, string? cell = null, string? pad = null)
     {
-        Bot.Events.ExtensionPacketReceived += CantGotoPlayer;
-        while (!Bot.ShouldExit() && !Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
+        if (!Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
         {
             Core.Logger($"Teleporting to {Bot.Config.Get<string>("playerName")}");
             Core.JumpWait();
@@ -101,7 +61,7 @@ public class FollowerJoe
             Bot.Sleep(Core.ActionDelay);
         }
 
-        while (!Bot.ShouldExit() && Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))) != null && Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell != Bot.Player.Cell)
+        if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))) != null && Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell != Bot.Player.Cell)
         {
             Core.Logger($"Cant Find {Bot.Config.Get<string>("playerName")}, Jumping");
             Core.JumpWait();
@@ -109,30 +69,121 @@ public class FollowerJoe
             Bot.Player.Jump(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad);
             Bot.Sleep(Core.ActionDelay);
         }
+        bot.Wait.ForCellChange(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell);
+        Bot.Events.CellChanged -= Jumper;
     }
 
-    public void CantGotoPlayer(ScriptInterface Bot, dynamic packet)
+    public void LockedMap(ScriptInterface bot)
     {
-        int i = 0;
-        string type = packet["params"].type;
-        dynamic data = packet["params"].dataObj;
-        if (type == "packet")
+        //still not working sorry -- 🥔
+        string[] Maps =
         {
-            string str = data.strMessage;
-            switch (str)
+        "banzai",
+        "battlegrounda",
+        "battlegroundb",
+        "battlegroundc",
+        "battlegroundd",
+        "battlegrounde",
+        "battlegroundf",
+        "binky",
+        "chaoslord",
+        "darkoviaforest",
+        "doomvault",
+        "doomvaultb",
+        "doomwoodforest",
+        "hollowdeep",
+        "hyperiumstarship",
+        "ledgermayne",
+        "moonyard",
+        "moonyardb",
+        "shadowlordpast",
+        "shadowrealm",
+        "shadowrealmpast",
+        "superlowe",
+        "tercessuinotlim",
+        "lair",
+        "willowcreek",
+        "zephyrus"
+        };
+
+        while (!Bot.ShouldExit() && !Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+        {
+            foreach (string Map in Maps)
             {
-                case "Cannot goto to player in a Locked zone.":
-                    Core.Logger("Player is in a Locked Map.");
-                    Core.Logger($"Joining {Bot.Config.Get<LockedZones>("LockedZone").ToString()}");
-                    Core.JumpWait();
-                    Bot.Wait.ForCombatExit();
-                    Bot.Sleep(Core.ActionDelay);
-                    Core.Logger($"Waiting for {Bot.Config.Get<string>("playerName")} Delayed(in seconds): {2 + (i++)}");
-                    Core.Join(Bot.Config.Get<LockedZones>("LockedZone").ToString());
-                    break;
+                switch (Map.ToLower())
+                {
+                    case "shadowattack":
+                        Core.Join(Map);
+                        Bot.Sleep(1500);
+                        if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+                            break;
+                        Core.Jump("Boss", "Left");
+                        Bot.Options.AttackWithoutTarget = true;
+                        Bot.Player.Kill("Death");
+                        Bot.Options.AttackWithoutTarget = false;
+                        break;
+
+                    case "Mobius":
+                        Core.Join(Map);
+                        Bot.Sleep(1500);
+                        if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+                            break;
+                        Bot.Map.Reload();
+                        Bot.Player.Kill("*");
+                        break;
+
+                    case "DoomVault":
+                        {
+                            Core.Join(Map);
+                            Bot.Sleep(1500);
+                            if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+                                break;
+                            if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r26" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+                            {
+                                Bot.Quests.UpdateQuest(3004);
+                                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                                if (Target == null)
+                                {
+                                    Core.Logger("No monsters found");
+                                    return;
+                                }
+                                Core.SetOptions(disableClassSwap: true);
+                                Core.Logger("Target: " + Target.Name);
+
+                                Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
+                            }
+                            else Bot.Player.Attack("*");
+                            break;
+                        }
+
+                    case "Doomvaultb":
+                        {
+                            Core.Join(Map);
+                            Bot.Sleep(1500);
+                            if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+                                break;
+                            if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r5" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+                            {
+                                Bot.Quests.UpdateQuest(3008);
+
+                                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                                if (Target == null)
+                                {
+                                    Core.Logger("No monsters found");
+                                    return;
+                                }
+                                Core.SetOptions(disableClassSwap: true);
+                                Core.Logger("Target: " + Target.Name);
+
+                                Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
+                            }
+                            else Bot.Player.Attack("*");
+                            break;
+                        }
+                }
             }
+            Bot.Events.PlayerAFK -= LockedMap;
         }
-        Bot.Events.ExtensionPacketReceived -= CantGotoPlayer;
     }
 
     public enum LockedZones
