@@ -21,7 +21,7 @@ public class Frostvale
     public void DoAll()
     {
         int month = DateTime.Now.Month;
-        if (month == 12) //December
+        if (month == 8 || month == 7) //July / August
         {
             IceCave();
             SnowGlobe();
@@ -29,7 +29,16 @@ public class Frostvale
             SnowyVale();
             IceRise();
             ColdWindValley();
-            //BrightLights();
+            BrightLights();
+            Battlefield();
+            Darkwinter();
+            Frozensoul();
+            Howardshill();
+            Icerisepast();
+            Winterhorror();
+            Gifthulu();
+            cryostorm();
+            cryostorm();
         }
         else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
         //https://www.aq.com/gamedesignnotes/aqw-july16-frostvaljuly-8412 <--
@@ -37,6 +46,13 @@ public class Frostvale
 
     public void IceCave()
     {
+        Bot.Player.Join("icecave");
+        if (Bot.Map.Name != "icecave")
+        {
+            Core.Logger("map: \"icecave\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(906))
             return;
 
@@ -94,12 +110,19 @@ public class Frostvale
         Story.KillQuest(461, "icecave", "Frozen Moglin");
 
         // Spirit Abducted 
-        Core.Join("frostvale");
+        Bot.Player.Join("Map");
         Core.ChainComplete(905);
     }
 
     public void SnowGlobe()
     {
+        Bot.Player.Join("snowglobe");
+        if (Bot.Map.Name != "snowglobe")
+        {
+            Core.Logger("map: \"snowglobe\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(1508))
             return;
 
@@ -134,6 +157,13 @@ public class Frostvale
 
     public void Alpine()
     {
+        Bot.Player.Join("Alpine");
+        if (Bot.Map.Name != "Alpine")
+        {
+            Core.Logger("map: \"Alpine\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(1521))
             return;
 
@@ -173,6 +203,13 @@ public class Frostvale
 
     public void SnowyVale()
     {
+        Bot.Player.Join("snowyvale");
+        if (Bot.Map.Name != "snowyvale")
+        {
+            Core.Logger("map: \"SnowyVale\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(2576))
             return;
 
@@ -196,7 +233,7 @@ public class Frostvale
         if (!Story.QuestProgression(2527))
         {
             Core.EnsureAccept(2526);
-            Core.Join("frostdeep", "Enter", "Spawn");
+            Bot.Player.Join("Map");
             Bot.Sleep(2500);
             Core.EnsureComplete(2526);
         }
@@ -270,6 +307,13 @@ public class Frostvale
 
     public void IceRise()
     {
+        Bot.Player.Join("icerise");
+        if (Bot.Map.Name != "icerise")
+        {
+            Core.Logger("map: \"IceRise\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(2582))
             return;
 
@@ -299,6 +343,13 @@ public class Frostvale
 
     public void ColdWindValley()
     {
+        Bot.Player.Join("coldwindvalley");
+        if (Bot.Map.Name != "coldwindvalley")
+        {
+            Core.Logger("map: \"ColdWindValley\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(6132))
             return;
 
@@ -350,6 +401,13 @@ public class Frostvale
 
     public void BrightLights()
     {
+        Bot.Player.Join("brightlights");
+        if (Bot.Map.Name != "brightlights")
+        {
+            Core.Logger("map: \"BrightLights\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(8176))
             return;
 
@@ -382,7 +440,7 @@ public class Frostvale
             Core.HuntMonster("icestorm", "Earth Dragonling", "Earth Dragonling Evacuated", 4);
             Core.EnsureComplete(6428);
         }
-        
+
         // 6429|The Ultimate Party Pooper
         Story.KillQuest(6429, "icestorm", "Duncan");
 
@@ -401,7 +459,7 @@ public class Frostvale
             Core.EnsureAccept(8175);
             Core.HuntMonster("kingcoal", "Frost King", "Gold Powder", 2);
             Core.HuntMonster("blindingsnow", "Nythera", "Indigo Powder", 5);
-            Core.HuntMonster("northlandlight", "Santy Claws", "Red Powder", 5); 
+            Core.HuntMonster("northlandlight", "Santy Claws", "Red Powder", 5);
             Core.HuntMonster("brightlights", "Water Draconian", "Blue Powder", 15);
             Core.HuntMonster("brightlights", "HoliDrake", "Silver Powder", 2);
             Core.EnsureComplete(8175);
@@ -411,6 +469,144 @@ public class Frostvale
         Story.KillQuest(8176, "brightlights", "Chaos Gemrald", GetReward: false);
 
     }
+
+    public void Battlefield()
+    {
+        Bot.Player.Join("battlefield");
+        if (Bot.Map.Name != "battlefield")
+        {
+            Core.Logger("map: \"Battlefield\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+
+    public void Darkwinter()
+    {
+        Bot.Player.Join("darkwinter");
+        if (Bot.Map.Name != "darkwinter")
+        {
+            Core.Logger("map: \"Darkwinter\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Frozensoul()
+    {
+        Bot.Player.Join("frozensoul");
+        if (Bot.Map.Name != "frozensoul")
+        {
+            Core.Logger("map: \"Frozensoul\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Howardshill()
+    {
+        Bot.Player.Join("howardshill");
+        if (Bot.Map.Name != "howardshill")
+        {
+            Core.Logger("map: \"Howardshill\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Icerisepast()
+    {
+        Bot.Player.Join("icerisepast");
+        if (Bot.Map.Name != "icerisepast")
+        {
+            Core.Logger("map: \"Icerisepast\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Winterhorror()
+    {
+        Bot.Player.Join("winterhorror");
+        if (Bot.Map.Name != "winterhorror")
+        {
+            Core.Logger("map: \"Winterhorror\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Gifthulu()
+    {
+        Bot.Player.Join("gifthulu");
+        if (Bot.Map.Name != "gifthulu")
+        {
+            Core.Logger("map: \"Gifthulu\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+
+    public void cryostorm()
+    {
+        Bot.Player.Join("cryostorm");
+        if (Bot.Map.Name != "cryostorm")
+        {
+            Core.Logger("map: \"cryostorm\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"cryostorm\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/abel-s-quests
+    }
+
+
+    public void cryowar()
+    {
+        Bot.Player.Join("cryowar");
+        if (Bot.Map.Name != "cryowar")
+        {
+            Core.Logger("map: \"cryowar\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"cryowar\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/abel-s-quests#3
+    }
+
+
+    public void icewindpass()
+    {
+        Bot.Player.Join("icewindpassap");
+        if (Bot.Map.Name != "icewindpass")
+        {
+            Core.Logger("map: \"icewindpass\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"icewindpass\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/abel-s-quests#4
+        // http://aqwwiki.wikidot.com/chilly-s-quests#2
+        // http://aqwwiki.wikidot.com/syrrus-quests#7
+    }
+
+
+    public void icepike()
+    {
+        Bot.Player.Join("icepike");
+        if (Bot.Map.Name != "icepike")
+        {
+            Core.Logger("map: \"icepike\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"icepike\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/syrrus-quests#10
+    }
+
+
 
     // --------------------------------------------------------------------------------------------------------------------------
 
