@@ -39,6 +39,9 @@ public class Frostvale
             Gifthulu();
             cryostorm();
             cryostorm();
+            cryowar();
+            icewindpass();
+            icepike();
         }
         else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
         //https://www.aq.com/gamedesignnotes/aqw-july16-frostvaljuly-8412 <--
