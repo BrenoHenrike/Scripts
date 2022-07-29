@@ -123,6 +123,13 @@ public class ArchFiendWarlordMerge
                     Nation.FarmVoucher(false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
+                    
+                case "Voucher of Nulgath":
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Nation.FarmVoucher(true);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
 
                 case "Dark Crystal Shard":
                     Core.FarmingLogger($"{req.Name}", quant);
