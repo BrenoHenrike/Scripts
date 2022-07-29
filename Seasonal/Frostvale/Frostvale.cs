@@ -599,7 +599,7 @@ public class Frostvale
         Story.KillQuest(4711, "cryostorm", "Behemoth");
 
         // War Medal Quest
-        if (!Bot.Quests.IsUnlocked(4716))
+        if (!Core.isCompletedBefore(4716))
         {
             Core.EnsureAccept(4712);
             Core.HuntMonster("cryowar", "Frost Reaper", "Cryo War Medal", 10);
