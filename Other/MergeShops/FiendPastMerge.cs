@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/FiendPast.cs
 using RBot;
 using RBot.Items;
 using RBot.Options;
@@ -13,6 +14,7 @@ public class FiendPastMerge
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
+    public FiendPast Fiend = new();
     public static CoreAdvanced sAdv = new();
 
     public List<IOption> Options = sAdv.MergeOptions;
@@ -25,6 +27,7 @@ public class FiendPastMerge
     {
         Core.SetOptions();
 
+        Fiend.DoAll();
         BuyAllMerge();
 
         Core.SetOptions(false);
