@@ -62,98 +62,84 @@ public class ArchFiendWarlordMerge
                 #endregion
 
                 case "Unidentified 36":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     HB.FreshSouls(1, 0);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Diamond of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmDiamondofNulgath(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Bone Dust":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Farm.BattleUnderB("Bone Dust", quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Gem of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmGemofNulgath(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Blood Gem of the Archfiend":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmBloodGem(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Fresh Soul":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     HB.FreshSouls(0, quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Unidentified 13":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmUni13(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Unidentified 34":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     WPE.Unidentified34(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Voucher of Nulgath (non-mem)":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmVoucher(false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
                     
                 case "Voucher of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmVoucher(true);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Dark Crystal Shard":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmDarkCrystalShard(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Totem of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Nation.FarmTotemofNulgath(quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Strand of Vath's Hair":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.KillVath(req.Name, quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Unidentified 25":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     if (Bot.Player.Gold >= 15000000)
                         Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
