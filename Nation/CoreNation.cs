@@ -502,7 +502,7 @@ public class CoreNation
     /// </summary>
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void Supplies(string item = "Any", int quant = 1)
+    public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = false)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -547,7 +547,7 @@ public class CoreNation
                 Core.EnsureComplete(2857);
 
                 Bot.Player.Pickup(item);
-                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && voucherNeeded)
                 {
                     Bot.Player.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);

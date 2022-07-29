@@ -29,6 +29,7 @@ public class GoldenHanzoVoid
         Nation.SwindleBulk(30);
         Nation.TheAssistant("Dark Crystal Shard", 15);
         Nation.FarmDiamondofNulgath(50);
+        Nation.FarmVoucher(false);
 
         Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
         Bot.Wait.ForItemBuy();
