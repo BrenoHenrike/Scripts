@@ -21,7 +21,7 @@ public class Frostvale
     public void DoAll()
     {
         int month = DateTime.Now.Month;
-        if (month == 12) //December
+        if (month == 8 || month == 7) //July / August
         {
             IceCave();
             SnowGlobe();
@@ -29,14 +29,30 @@ public class Frostvale
             SnowyVale();
             IceRise();
             ColdWindValley();
-            //BrightLights();
+            BrightLights();
+            Battlefield();
+            Darkwinter();
+            Frozensoul();
+            Howardshill();
+            Icerisepast();
+            Winterhorror();
+            Gifthulu();
+            cryostorm();
+            cryostorm();
         }
-        else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.", stopBot: true);
+        else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
         //https://www.aq.com/gamedesignnotes/aqw-july16-frostvaljuly-8412 <--
     }
 
     public void IceCave()
     {
+        Bot.Player.Join("icecave");
+        if (Bot.Map.Name != "icecave")
+        {
+            Core.Logger("map: \"icecave\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(906))
             return;
 
@@ -94,12 +110,19 @@ public class Frostvale
         Story.KillQuest(461, "icecave", "Frozen Moglin");
 
         // Spirit Abducted 
-        Core.Join("frostvale");
+        Bot.Player.Join("Map");
         Core.ChainComplete(905);
     }
 
     public void SnowGlobe()
     {
+        Bot.Player.Join("snowglobe");
+        if (Bot.Map.Name != "snowglobe")
+        {
+            Core.Logger("map: \"snowglobe\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(1508))
             return;
 
@@ -134,6 +157,13 @@ public class Frostvale
 
     public void Alpine()
     {
+        Bot.Player.Join("Alpine");
+        if (Bot.Map.Name != "Alpine")
+        {
+            Core.Logger("map: \"Alpine\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(1521))
             return;
 
@@ -173,6 +203,13 @@ public class Frostvale
 
     public void SnowyVale()
     {
+        Bot.Player.Join("snowyvale");
+        if (Bot.Map.Name != "snowyvale")
+        {
+            Core.Logger("map: \"SnowyVale\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(2576))
             return;
 
@@ -196,7 +233,7 @@ public class Frostvale
         if (!Story.QuestProgression(2527))
         {
             Core.EnsureAccept(2526);
-            Core.Join("frostdeep", "Enter", "Spawn");
+            Bot.Player.Join("Map");
             Bot.Sleep(2500);
             Core.EnsureComplete(2526);
         }
@@ -270,6 +307,13 @@ public class Frostvale
 
     public void IceRise()
     {
+        Bot.Player.Join("icerise");
+        if (Bot.Map.Name != "icerise")
+        {
+            Core.Logger("map: \"IceRise\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(2582))
             return;
 
@@ -299,13 +343,20 @@ public class Frostvale
 
     public void ColdWindValley()
     {
+        Bot.Player.Join("coldwindvalley");
+        if (Bot.Map.Name != "coldwindvalley")
+        {
+            Core.Logger("map: \"ColdWindValley\" is not available");
+            return;
+        }
+
         if (Core.isCompletedBefore(6132))
             return;
 
         Story.PreLoad();
 
         // Help Blizzy
-        Story.MapItemQuest(6122, "coldwindvalley", 5547);
+        Story.MapItemQuest(6112, "coldwindvalley", 5547);
         Story.MapItemQuest(6122, "coldwindvalley", 5548);
         Story.MapItemQuest(6122, "coldwindvalley", 5549);
         Story.MapItemQuest(6122, "coldwindvalley", 5550);
@@ -348,17 +399,253 @@ public class Frostvale
     }
 
 
-    // public void BrightLights()
-    // {
-    //     if (Core.isCompletedBefore(QuestID))
-    //         return;
+    public void BrightLights()
+    {
+        Bot.Player.Join("brightlights");
+        if (Bot.Map.Name != "brightlights")
+        {
+            Core.Logger("map: \"BrightLights\" is not available");
+            return;
+        }
 
-    //     Story.PreLoad();
-    // }
+        if (Core.isCompletedBefore(8176))
+            return;
+
+        Story.PreLoad();
+
+        // 6423|Gathering Information
+        Story.MapItemQuest(6423, "icestorm", new[] { 5925, 5926, 5927 });
+
+        // 6424|A Test of Alliance
+        Story.MapItemQuest(6424, "lair", 5928);
+        Story.KillQuest(6424, "lair", "Wyvern");
+
+        // 6425|Inspiring the Young
+        Story.KillQuest(6425, "icestorm", new[] { "Earth Dragonling", "Earth Dragonling" });
+
+        // 6426|Following the Path
+        Story.MapItemQuest(6426, "icestorm", 5929);
+        Story.MapItemQuest(6426, "icestorm", 5930, 6);
+
+        // 6427|Party Crashers
+        Story.KillQuest(6427, "icestorm", "Dragon Hunter");
+
+        // 6428|Protect the Dragonlings
+        if (!Story.QuestProgression(6428))
+        {
+            Core.EnsureAccept(6428);
+            Core.HuntMonster("icestorm", "Fire Dragonling", "Fire Dragonling Evacuated", 4);
+            Core.HuntMonster("icestorm", "Wind Dragonling", "Wind Dragonling Evacuated", 4);
+            Core.HuntMonster("icestorm", "Water Dragonling", "Water Dragonling Evacuated", 4);
+            Core.HuntMonster("icestorm", "Earth Dragonling", "Earth Dragonling Evacuated", 4);
+            Core.EnsureComplete(6428);
+        }
+
+        // 6429|The Ultimate Party Pooper
+        Story.KillQuest(6429, "icestorm", "Duncan");
+
+        // 6430|Returning the Gifts
+        Story.MapItemQuest(6430, "icestorm", 5931, 4);
+
+        // 8173|Bang, Smash, BOOM
+        Story.KillQuest(8173, "brightlights", "Chaos Gemrald");
+
+        // 8174|Fire and Fuses
+        Story.KillQuest(8174, "brightlights", new[] { "Fire Imp", "Water Goblin" });
+
+        // 8175|Light up the Night
+        if (!Story.QuestProgression(8175))
+        {
+            Core.EnsureAccept(8175);
+            Core.HuntMonster("kingcoal", "Frost King", "Gold Powder", 2);
+            Core.HuntMonster("blindingsnow", "Nythera", "Indigo Powder", 5);
+            Core.HuntMonster("northlandlight", "Santy Claws", "Red Powder", 5);
+            Core.HuntMonster("brightlights", "Water Draconian", "Blue Powder", 15);
+            Core.HuntMonster("brightlights", "HoliDrake", "Silver Powder", 2);
+            Core.EnsureComplete(8175);
+        }
+
+        // 8176|Bright Lights Festival Rewards
+        Story.KillQuest(8176, "brightlights", "Chaos Gemrald", GetReward: false);
+
+    }
+
+    public void Battlefield()
+    {
+        Bot.Player.Join("battlefield");
+        if (Bot.Map.Name != "battlefield")
+        {
+            Core.Logger("map: \"Battlefield\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+
+    public void Darkwinter()
+    {
+        Bot.Player.Join("darkwinter");
+        if (Bot.Map.Name != "darkwinter")
+        {
+            Core.Logger("map: \"Darkwinter\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Frozensoul()
+    {
+        Bot.Player.Join("frozensoul");
+        if (Bot.Map.Name != "frozensoul")
+        {
+            Core.Logger("map: \"Frozensoul\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Howardshill()
+    {
+        Bot.Player.Join("howardshill");
+        if (Bot.Map.Name != "howardshill")
+        {
+            Core.Logger("map: \"Howardshill\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Icerisepast()
+    {
+        Bot.Player.Join("icerisepast");
+        if (Bot.Map.Name != "icerisepast")
+        {
+            Core.Logger("map: \"Icerisepast\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Winterhorror()
+    {
+        Bot.Player.Join("winterhorror");
+        if (Bot.Map.Name != "winterhorror")
+        {
+            Core.Logger("map: \"Winterhorror\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+    public void Gifthulu()
+    {
+        Bot.Player.Join("gifthulu");
+        if (Bot.Map.Name != "gifthulu")
+        {
+            Core.Logger("map: \"Gifthulu\" is not available");
+            return;
+        }
+        //Not avaiable
+    }
+
+
+    public void cryostorm()
+    {
+        Bot.Player.Join("cryostorm");
+        if (Bot.Map.Name != "cryostorm")
+        {
+            Core.Logger("map: \"cryostorm\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"cryostorm\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/abel-s-quests
+        if (Core.isCompletedBefore(6132))
+            return;
+
+        Story.PreLoad();
+
+        // Plans for Frostval
+        Story.MapItemQuest(4705, "cryostorm", 4069);
+        Story.MapItemQuest(4705, "cryostorm", 4070);
+        Story.KillQuest(4705, "cryostorm", "Glacial Elemental");
+
+        // Find the Missing Presents
+        Story.MapItemQuest(4706, "cryostorm", 4067, 8);
+
+        // More Gifts
+        Story.KillQuest(4707, "cryostorm", new[] { "Glacial Wolf", "Cryo Mammoth", "Glacial Elemental" });
+
+        // Warmth for the Small
+        Story.KillQuest(4708, "cryostorm", "Glacial Wolf");
+
+        // Cut Down the Tree
+        Story.MapItemQuest(4709, "cryostorm", 4068);
+        Story.KillQuest(4709, "cryostorm", "Glacial Wolf");
+
+        // Decorate the Tree
+        if (!Story.QuestProgression(4710))
+        {
+            Core.EnsureAccept(4710);
+            Core.HuntMonster("cryostorm", "Cryo Mammoth", "Gilded Moglin Ornament", 2);
+            Core.HuntMonster("cryostorm", "Glacial Elemental", "Frosty Wreath", 3);
+            Core.HuntMonster("cryostorm", "Glacial Wolf", "Frostval Cane", 5);
+            Core.HuntMonster("cryostorm", "Cryo Mammoth", "Frostval Bells", 7);
+            Core.HuntMonster("cryostorm", "Glacial Elemental", "Frostval Lights", 10);
+            Core.EnsureComplete(4710);
+        }
+
+        // Find the Ice StarStone
+        Story.KillQuest(4711, "cryostorm", "Behemoth");
+
+        // War Medal Quest
+        if (!Bot.Quests.IsUnlocked(4716))
+        {
+            Core.EnsureAccept(4712);
+            Core.HuntMonster("cryowar", "Frost Reaper", "Cryo War Medal", 10);
+            Core.EnsureComplete(4712);
+        }
+
+        //Story.KillQuest(4712, "cryowar", "Frost Reaper");
+
+        // Defeat Ultra Karok
+        Story.KillQuest(4716, "cryowar", "Super-Charged Karok");
+    }
+
+    public void icewindpass()
+    {
+        Bot.Player.Join("icewindpassap");
+        if (Bot.Map.Name != "icewindpass")
+        {
+            Core.Logger("map: \"icewindpass\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"icewindpass\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/abel-s-quests#4
+        // http://aqwwiki.wikidot.com/chilly-s-quests#2
+        // http://aqwwiki.wikidot.com/syrrus-quests#7
+    }
+
+
+    public void icepike()
+    {
+        Bot.Player.Join("icepike");
+        if (Bot.Map.Name != "icepike")
+        {
+            Core.Logger("map: \"icepike\" is not available");
+            return;
+        }
+        //avaiable
+        Core.Logger("map: \"icepike\" is available, but not finished");
+        // http://aqwwiki.wikidot.com/syrrus-quests#10
+    }
+
+
 
     // --------------------------------------------------------------------------------------------------------------------------
 
-    // The rest of the Frostval quests are not necessary for Frostval Barbaria. Can skip and farm Frozen Orb directly using jump.
+    // The rest of the Frostval quests are not necessary for Frostval Barbarian. Can skip and farm Frozen Orb directly using jump.
 
     // --------------------------------------------------------------------------------------------------------------------------
 }
