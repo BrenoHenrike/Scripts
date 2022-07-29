@@ -563,7 +563,7 @@ public class Frostvale
         //avaiable
         Core.Logger("map: \"cryostorm\" is available, but not finished");
         // http://aqwwiki.wikidot.com/abel-s-quests
-        if (Core.isCompletedBefore(6132))
+        if (Core.isCompletedBefore(4716))
             return;
 
         Story.PreLoad();
@@ -602,17 +602,12 @@ public class Frostvale
         Story.KillQuest(4711, "cryostorm", "Behemoth");
 
         // War Medal Quest
-        if (!Story.QuestProgression(4716))
+        if (!Bot.Quests.IsUnlocked(4716))
         {
             Core.EnsureAccept(4712);
             Core.HuntMonster("cryowar", "Frost Reaper", "Cryo War Medal", 10);
             Core.EnsureComplete(4712);
         }
-
-        //Story.KillQuest(4712, "cryowar", "Frost Reaper");
-
-        // Mega War Medal Quest
-        //Story.KillQuest(4713, "cryowar", "Frost Reaper");
 
         // Defeat Ultra Karok
         Story.KillQuest(4716, "cryowar", "Super-Charged Karok");
@@ -635,7 +630,7 @@ public class Frostvale
 
     public void icewindpass()
     {
-        Bot.Player.Join("icewindpassap");
+        Bot.Player.Join("icewindpass");
         if (Bot.Map.Name != "icewindpass")
         {
             Core.Logger("map: \"icewindpass\" is not available");
@@ -643,9 +638,41 @@ public class Frostvale
         }
         //avaiable
         Core.Logger("map: \"icewindpass\" is available, but not finished");
-        // http://aqwwiki.wikidot.com/abel-s-quests#4
-        // http://aqwwiki.wikidot.com/chilly-s-quests#2
-        // http://aqwwiki.wikidot.com/syrrus-quests#7
+        if (Core.isCompletedBefore(5596))
+            return;
+
+        Story.PreLoad();
+
+        // Where is Karok?
+        Story.MapItemQuest(5587, "icewindpass", 5074, 5);
+
+        // Cloaking Spell
+        Story.KillQuest(5588, "icewindpass", "Glacial Elemental");
+
+        // Splattered Mana
+        Story.MapItemQuest(5589, "icewindpass", 5075, 5);
+        Story.KillQuest(5589, "icewindpass", "Glacial Elemental");
+
+        // Dispell the Spell
+        Story.KillQuest(5590, "icewindpass", "Living Snow");
+
+        // Catch Up to Karok
+        Story.KillQuest(5591, "icewindpass", "Frost Invader");
+
+        // Blast the Frostspawn Symbiote
+        Story.KillQuest(5592, "icewindpass", "Frostspawn Symbiote");
+
+        // Keep Going!
+        Story.KillQuest(5593, "icewindpass", "Frost Invader");
+
+        // Take it Down!
+        Story.KillQuest(5594, "icewindpass", "Frostspawn Horror");
+
+        // Keep the Frostspawn Away!
+        Story.KillQuest(5595, "icewindpass", new[] { "Frostspawn Troll", "Frost Invader" });
+
+        // Take a Break from Fighting 
+        Story.KillQuest(5596, "icewindpass", new[] { "Polar Golem", "Glacial Elemental" });
     }
 
 
