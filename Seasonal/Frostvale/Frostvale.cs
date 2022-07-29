@@ -563,6 +563,59 @@ public class Frostvale
         //avaiable
         Core.Logger("map: \"cryostorm\" is available, but not finished");
         // http://aqwwiki.wikidot.com/abel-s-quests
+        if (Core.isCompletedBefore(6132))
+            return;
+
+        Story.PreLoad();
+
+        // Plans for Frostval
+        Story.MapItemQuest(4705, "cryostorm", 4069);
+        Story.MapItemQuest(4705, "cryostorm", 4070);
+        Story.KillQuest(4705, "cryostorm", "Glacial Elemental");
+
+        // Find the Missing Presents
+        Story.MapItemQuest(4706, "cryostorm", 4067, 8);
+
+        // More Gifts
+        Story.KillQuest(4707, "cryostorm", new[] { "Glacial Wolf", "Cryo Mammoth", "Glacial Elemental" });
+
+        // Warmth for the Small
+        Story.KillQuest(4708, "cryostorm", "Glacial Wolf");
+
+        // Cut Down the Tree
+        Story.MapItemQuest(4709, "cryostorm", 4068);
+        Story.KillQuest(4709, "cryostorm", "Glacial Wolf");
+
+        // Decorate the Tree
+        if (!Story.QuestProgression(4710))
+        {
+            Core.EnsureAccept(4710);
+            Core.HuntMonster("cryostorm", "Cryo Mammoth", "Gilded Moglin Ornament", 2);
+            Core.HuntMonster("cryostorm", "Glacial Elemental", "Frosty Wreath", 3);
+            Core.HuntMonster("cryostorm", "Glacial Wolf", "Frostval Cane", 5);
+            Core.HuntMonster("cryostorm", "Cryo Mammoth", "Frostval Bells", 7);
+            Core.HuntMonster("cryostorm", "Glacial Elemental", "Frostval Lights", 10);
+            Core.EnsureComplete(4710);
+        }
+
+        // Find the Ice StarStone
+        Story.KillQuest(4711, "cryostorm", "Behemoth");
+
+        // War Medal Quest
+        if (!Story.QuestProgression(4716))
+        {
+            Core.EnsureAccept(4712);
+            Core.HuntMonster("cryowar", "Frost Reaper", "Cryo War Medal", 10);
+            Core.EnsureComplete(4712);
+        }
+
+        //Story.KillQuest(4712, "cryowar", "Frost Reaper");
+
+        // Mega War Medal Quest
+        //Story.KillQuest(4713, "cryowar", "Frost Reaper");
+
+        // Defeat Ultra Karok
+        Story.KillQuest(4716, "cryowar", "Super-Charged Karok");
     }
 
 
