@@ -91,6 +91,7 @@ public class CoreAdvanced
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null)
     {
+        Bot.Config.Configure();
         int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
         matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
