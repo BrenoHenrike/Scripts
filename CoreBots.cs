@@ -134,7 +134,6 @@ public class CoreBots
         Bot.Options.RestPackets = changeTo;
         Bot.Options.AutoRelogin = changeTo;
         Bot.Options.InfiniteRange = changeTo;
-        Bot.Options.ExitCombatBeforeQuest = changeTo;
         Bot.Options.SkipCutscenes = changeTo;
         Bot.Drops.RejectElse = changeTo;
         Bot.Lite.UntargetDead = changeTo;
