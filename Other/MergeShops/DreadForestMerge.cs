@@ -15,7 +15,8 @@ public class DreadForestMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -186,4 +187,24 @@ public class DreadForestMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("70484", "Runed Knight", "Mode: [select] only\nShould the bot buy \"Runed Knight\" ?", false),
+        new Option<bool>("70486", "Runed Knight's Morph", "Mode: [select] only\nShould the bot buy \"Runed Knight's Morph\" ?", false),
+        new Option<bool>("70488", "Runed Knight's Horned Helm", "Mode: [select] only\nShould the bot buy \"Runed Knight's Horned Helm\" ?", false),
+        new Option<bool>("70490", "Runed Knight's Wings + Cape", "Mode: [select] only\nShould the bot buy \"Runed Knight's Wings + Cape\" ?", false),
+        new Option<bool>("70491", "Runed Knight's Portal Cape", "Mode: [select] only\nShould the bot buy \"Runed Knight's Portal Cape\" ?", false),
+        new Option<bool>("70507", "Enchanted Blade of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Blade of Dread\" ?", false),
+        new Option<bool>("70508", "Enchanted Greatsword of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Greatsword of Dread\" ?", false),
+        new Option<bool>("70509", "Enchanted Dagger of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Dagger of Dread\" ?", false),
+        new Option<bool>("70510", "Enchanted Daggers of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Daggers of Dread\" ?", false),
+        new Option<bool>("70512", "Enchanted High Axe of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted High Axe of Dread\" ?", false),
+        new Option<bool>("70513", "Enchanted Greataxe of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Greataxe of Dread\" ?", false),
+        new Option<bool>("70514", "Enchanted Poleaxe of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Poleaxe of Dread\" ?", false),
+        new Option<bool>("70517", "Enchanted Axe of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Axe of Dread\" ?", false),
+        new Option<bool>("70518", "Enchanted Axes of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Axes of Dread\" ?", false),
+        new Option<bool>("70519", "Enchanted Handaxe of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Handaxe of Dread\" ?", false),
+        new Option<bool>("70520", "Enchanted Handaxes of Dread", "Mode: [select] only\nShould the bot buy \"Enchanted Handaxes of Dread\" ?", false),
+    };
 }

@@ -15,7 +15,8 @@ public class BlackHoleSunMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -69,4 +70,19 @@ public class BlackHoleSunMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("35490", "Golden Anubyx Warrior", "Mode: [select] only\nShould the bot buy \"Golden Anubyx Warrior\" ?", false),
+        new Option<bool>("35491", "Anubyx Headdress", "Mode: [select] only\nShould the bot buy \"Anubyx Headdress\" ?", false),
+        new Option<bool>("35485", "Nega Mummy", "Mode: [select] only\nShould the bot buy \"Nega Mummy\" ?", false),
+        new Option<bool>("35486", "Nega Mummy Head", "Mode: [select] only\nShould the bot buy \"Nega Mummy Head\" ?", false),
+        new Option<bool>("35420", "Dimension Shard", "Mode: [select] only\nShould the bot buy \"Dimension Shard\" ?", false),
+        new Option<bool>("35494", "Inverse Hound", "Mode: [select] only\nShould the bot buy \"Inverse Hound\" ?", false),
+        new Option<bool>("35493", "Nega Hound", "Mode: [select] only\nShould the bot buy \"Nega Hound\" ?", false),
+        new Option<bool>("35492", "High Nega Commander Spear", "Mode: [select] only\nShould the bot buy \"High Nega Commander Spear\" ?", false),
+        new Option<bool>("35488", "Nega Anubyx Headdress", "Mode: [select] only\nShould the bot buy \"Nega Anubyx Headdress\" ?", false),
+        new Option<bool>("35487", "Nega Anubyx Warrior", "Mode: [select] only\nShould the bot buy \"Nega Anubyx Warrior\" ?", false),
+        new Option<bool>("35489", "Nega Warrior Blade", "Mode: [select] only\nShould the bot buy \"Nega Warrior Blade\" ?", false),
+    };
 }

@@ -15,7 +15,8 @@ public class LunaCoveMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -63,4 +64,15 @@ public class LunaCoveMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("30397", "Beachin' Werewolf", "Mode: [select] only\nShould the bot buy \"Beachin' Werewolf\" ?", false),
+        new Option<bool>("30398", "Were-diver Morph", "Mode: [select] only\nShould the bot buy \"Were-diver Morph\" ?", false),
+        new Option<bool>("30399", "Snorkling Wolf", "Mode: [select] only\nShould the bot buy \"Snorkling Wolf\" ?", false),
+        new Option<bool>("30400", "Wolf on the Beach Morph", "Mode: [select] only\nShould the bot buy \"Wolf on the Beach Morph\" ?", false),
+        new Option<bool>("30391", "Spiralling Stars Hair", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Hair\" ?", false),
+        new Option<bool>("30392", "Spiralling Stars Locks", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Locks\" ?", false),
+        new Option<bool>("30402", "Crescent Moon Staff", "Mode: [select] only\nShould the bot buy \"Crescent Moon Staff\" ?", false),
+    };
 }

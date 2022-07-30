@@ -16,7 +16,8 @@ public class TheWorldMerge
     public static CoreAdvanced sAdv = new();
     public CoreDarkon Darkon = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -62,4 +63,12 @@ public class TheWorldMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("70876", "Darkon's Debris 1", "Mode: [select] only\nShould the bot buy \"Darkon's Debris 1\" ?", false),
+        new Option<bool>("70879", "Darkon's Debris 2 (Recovered)", "Mode: [select] only\nShould the bot buy \"Darkon's Debris 2 (Recovered)\" ?", false),
+        new Option<bool>("70877", "Darkon's Hair", "Mode: [select] only\nShould the bot buy \"Darkon's Hair\" ?", false),
+        new Option<bool>("70878", "Darkon's Morph", "Mode: [select] only\nShould the bot buy \"Darkon's Morph\" ?", false),
+    };
 }

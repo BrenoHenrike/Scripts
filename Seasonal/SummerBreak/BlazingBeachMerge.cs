@@ -18,10 +18,9 @@ public class BlazingBeachMerge
     public BlazingBeachStory BBS = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
-    // [Can Change] This should only be changed by the author.
-    //              Just name this the same as the script (without the .cs)
-    public string OptionsStorage = "Blazing Beach Merge";
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
@@ -78,4 +77,20 @@ public class BlazingBeachMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("70495", "Magma BlazeBeard", "Mode: [select] only\nShould the bot buy \"Magma BlazeBeard\" ?", false),
+        new Option<bool>("70496", "Magma BlazeBeard Morph", "Mode: [select] only\nShould the bot buy \"Magma BlazeBeard Morph\" ?", false),
+        new Option<bool>("70497", "Magma BlazeBeard Female Morph", "Mode: [select] only\nShould the bot buy \"Magma BlazeBeard Female Morph\" ?", false),
+        new Option<bool>("70498", "Magma BlazeBeard Flames", "Mode: [select] only\nShould the bot buy \"Magma BlazeBeard Flames\" ?", false),
+        new Option<bool>("70499", "Magma BlazeBeard Cutlass", "Mode: [select] only\nShould the bot buy \"Magma BlazeBeard Cutlass\" ?", false),
+        new Option<bool>("70661", "Dual Magma BlazeBeard Cutlasses", "Mode: [select] only\nShould the bot buy \"Dual Magma BlazeBeard Cutlasses\" ?", false),
+        new Option<bool>("68640", "Magmagilt Odachi", "Mode: [select] only\nShould the bot buy \"Magmagilt Odachi\" ?", false),
+        new Option<bool>("68641", "Magmagilt Odachis", "Mode: [select] only\nShould the bot buy \"Magmagilt Odachis\" ?", false),
+        new Option<bool>("68643", "Magmagilt Kama", "Mode: [select] only\nShould the bot buy \"Magmagilt Kama\" ?", false),
+        new Option<bool>("68644", "Magmagilt Kamas", "Mode: [select] only\nShould the bot buy \"Magmagilt Kamas\" ?", false),
+        new Option<bool>("68647", "Magmagilt Tabar", "Mode: [select] only\nShould the bot buy \"Magmagilt Tabar\" ?", false),
+        new Option<bool>("68648", "Magmagilt Tabars", "Mode: [select] only\nShould the bot buy \"Magmagilt Tabars\" ?", false),
+    };
 }

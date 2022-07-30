@@ -23,7 +23,8 @@ public class NulgathDiamondMerge
     public TarosManslayer Taro = new();
     public CoreBLOD BLOD = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -169,4 +170,41 @@ public class NulgathDiamondMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("13347", "Abyssal Priest of Nulgath", "Mode: [select] only\nShould the bot buy \"Abyssal Priest of Nulgath\" ?", false),
+        new Option<bool>("25215", "Loyalty Blade of the Nation", "Mode: [select] only\nShould the bot buy \"Loyalty Blade of the Nation\" ?", false),
+        new Option<bool>("25239", "Oversoul Witch of Nulgath", "Mode: [select] only\nShould the bot buy \"Oversoul Witch of Nulgath\" ?", false),
+        new Option<bool>("25240", "OverSoul Witch's Hat", "Mode: [select] only\nShould the bot buy \"OverSoul Witch's Hat\" ?", false),
+        new Option<bool>("25198", "Staff of Soul-Stealing", "Mode: [select] only\nShould the bot buy \"Staff of Soul-Stealing\" ?", false),
+        new Option<bool>("25241", "OverSoul Paladin", "Mode: [select] only\nShould the bot buy \"OverSoul Paladin\" ?", false),
+        new Option<bool>("25252", "Bearded Axe of Nulgath", "Mode: [select] only\nShould the bot buy \"Bearded Axe of Nulgath\" ?", false),
+        new Option<bool>("25251", "Dual Bearded Axe of Nulgath", "Mode: [select] only\nShould the bot buy \"Dual Bearded Axe of Nulgath\" ?", false),
+        new Option<bool>("25266", "Oversoul Dire Monk", "Mode: [select] only\nShould the bot buy \"Oversoul Dire Monk\" ?", false),
+        new Option<bool>("25264", "OverSoul Cleric Cape", "Mode: [select] only\nShould the bot buy \"OverSoul Cleric Cape\" ?", false),
+        new Option<bool>("25263", "OverSoul Witch Cape", "Mode: [select] only\nShould the bot buy \"OverSoul Witch Cape\" ?", false),
+        new Option<bool>("25256", "OverSoul Cleric Locks", "Mode: [select] only\nShould the bot buy \"OverSoul Cleric Locks\" ?", false),
+        new Option<bool>("25267", "OverSoul Dire Monk Head", "Mode: [select] only\nShould the bot buy \"OverSoul Dire Monk Head\" ?", false),
+        new Option<bool>("25265", "OverSoul Paladin Head", "Mode: [select] only\nShould the bot buy \"OverSoul Paladin Head\" ?", false),
+        new Option<bool>("25255", "Oversoul Cleric of Nulgath", "Mode: [select] only\nShould the bot buy \"Oversoul Cleric of Nulgath\" ?", false),
+        new Option<bool>("27849", "Golden Hanzo Void Katana", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void Katana\" ?", false),
+        new Option<bool>("27850", "Dual Golden Hanzo Void Katanas", "Mode: [select] only\nShould the bot buy \"Dual Golden Hanzo Void Katanas\" ?", false),
+        new Option<bool>("27843", "Golden Hanzo Void", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void\" ?", false),
+        new Option<bool>("27851", "Golden Hanzo Void Mask", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void Mask\" ?", false),
+        new Option<bool>("27852", "Golden Hanzo Void Horns", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void Horns\" ?", false),
+        new Option<bool>("28031", "Golden Hanzo Katana Cape", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Katana Cape\" ?", false),
+        new Option<bool>("27848", "Golden Hanzo Void Cape", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void Cape\" ?", false),
+        new Option<bool>("30208", "Cyber Crystal Phoenix Blade", "Mode: [select] only\nShould the bot buy \"Cyber Crystal Phoenix Blade\" ?", false),
+        new Option<bool>("52883", "Horned Worshipper Face of Nulgath", "Mode: [select] only\nShould the bot buy \"Horned Worshipper Face of Nulgath\" ?", false),
+        new Option<bool>("52884", "Horned Worshipper Visage of Nulgath", "Mode: [select] only\nShould the bot buy \"Horned Worshipper Visage of Nulgath\" ?", false),
+        new Option<bool>("69968", "Blood Ranger", "Mode: [select] only\nShould the bot buy \"Blood Ranger\" ?", false),
+        new Option<bool>("69973", "Blood Ranger Sword and Sheath", "Mode: [select] only\nShould the bot buy \"Blood Ranger Sword and Sheath\" ?", false),
+        new Option<bool>("69972", "Blood Ranger Bow", "Mode: [select] only\nShould the bot buy \"Blood Ranger Bow\" ?", false),
+        new Option<bool>("69969", "Blood Ranger Morph", "Mode: [select] only\nShould the bot buy \"Blood Ranger Morph\" ?", false),
+        new Option<bool>("69971", "Blood Ranger Cape", "Mode: [select] only\nShould the bot buy \"Blood Ranger Cape\" ?", false),
+        new Option<bool>("69970", "Blood Ranger Quiver", "Mode: [select] only\nShould the bot buy \"Blood Ranger Quiver\" ?", false),
+        new Option<bool>("70001", "Storm Knight", "Mode: [select] only\nShould the bot buy \"Storm Knight\" ?", false),
+        new Option<bool>("70002", "Storm Knight Helm", "Mode: [select] only\nShould the bot buy \"Storm Knight Helm\" ?", false),
+    };
 }

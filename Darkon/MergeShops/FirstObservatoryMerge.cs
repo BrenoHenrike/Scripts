@@ -18,7 +18,8 @@ public class FirstObservatoryMerge
     public static CoreAdvanced sAdv = new();
     public CoreDarkon Darkon = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -64,4 +65,15 @@ public class FirstObservatoryMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("69703", "Aurola's Armor", "Mode: [select] only\nShould the bot buy \"Aurola's Armor\" ?", false),
+        new Option<bool>("69704", "Aurola's Coat", "Mode: [select] only\nShould the bot buy \"Aurola's Coat\" ?", false),
+        new Option<bool>("69705", "Princess Suki's Armor", "Mode: [select] only\nShould the bot buy \"Princess Suki's Armor\" ?", false),
+        new Option<bool>("69706", "Princess Suki's Cut", "Mode: [select] only\nShould the bot buy \"Princess Suki's Cut\" ?", false),
+        new Option<bool>("69707", "Princess Suki's Hair", "Mode: [select] only\nShould the bot buy \"Princess Suki's Hair\" ?", false),
+        new Option<bool>("69708", "Princess Suki's Morph", "Mode: [select] only\nShould the bot buy \"Princess Suki's Morph\" ?", false),
+        new Option<bool>("69709", "Princess Suki's Gauntlets", "Mode: [select] only\nShould the bot buy \"Princess Suki's Gauntlets\" ?", false),
+    };
 }

@@ -18,10 +18,9 @@ public class TowersMerge
     public static CoreAdvanced sAdv = new();
     public CoreToD TOD = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
-    // [Can Change] This should only be changed by the author.
-    //              Just name this the same as the script (without the .cs)
-    public string OptionsStorage = "testMerge";
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
@@ -259,4 +258,18 @@ public class TowersMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("34717", "DeathKnight Lord", "Mode: [select] only\nShould the bot buy \"DeathKnight Lord\" ?", false),
+        new Option<bool>("34726", "DeathKnight's Blade", "Mode: [select] only\nShould the bot buy \"DeathKnight's Blade\" ?", false),
+        new Option<bool>("34729", "DeathKnight Helm", "Mode: [select] only\nShould the bot buy \"DeathKnight Helm\" ?", false),
+        new Option<bool>("34724", "Silver DeathKnight Lord", "Mode: [select] only\nShould the bot buy \"Silver DeathKnight Lord\" ?", false),
+        new Option<bool>("34727", "Silver DeathKnight's Blade", "Mode: [select] only\nShould the bot buy \"Silver DeathKnight's Blade\" ?", false),
+        new Option<bool>("34730", "Silver DeathKnight Helm", "Mode: [select] only\nShould the bot buy \"Silver DeathKnight Helm\" ?", false),
+        new Option<bool>("34725", "Golden DeathKnight Lord", "Mode: [select] only\nShould the bot buy \"Golden DeathKnight Lord\" ?", false),
+        new Option<bool>("34728", "Golden DeathKnight's Blade", "Mode: [select] only\nShould the bot buy \"Golden DeathKnight's Blade\" ?", false),
+        new Option<bool>("34731", "Golden DeathKnight Helm", "Mode: [select] only\nShould the bot buy \"Golden DeathKnight Helm\" ?", false),
+        new Option<bool>("34744", "DeathKnight Lord Cape", "Mode: [select] only\nShould the bot buy \"DeathKnight Lord Cape\" ?", false),
+    };
 }

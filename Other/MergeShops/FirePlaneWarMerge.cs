@@ -17,7 +17,8 @@ public class FirePlaneWarMerge
     public WarTraining WT = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -144,4 +145,25 @@ public class FirePlaneWarMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("60979", "Infernus Guardian", "Mode: [select] only\nShould the bot buy \"Infernus Guardian\" ?", false),
+        new Option<bool>("60980", "Infernus Guardian's Helm", "Mode: [select] only\nShould the bot buy \"Infernus Guardian's Helm\" ?", false),
+        new Option<bool>("60981", "Infernus Guardian's Wings", "Mode: [select] only\nShould the bot buy \"Infernus Guardian's Wings\" ?", false),
+        new Option<bool>("60982", "Infernus Guardian's Mace", "Mode: [select] only\nShould the bot buy \"Infernus Guardian's Mace\" ?", false),
+        new Option<bool>("61398", "Shadowflame Firebender", "Mode: [select] only\nShould the bot buy \"Shadowflame Firebender\" ?", false),
+        new Option<bool>("61399", "ShadowFlame Firebender Morph", "Mode: [select] only\nShould the bot buy \"ShadowFlame Firebender Morph\" ?", false),
+        new Option<bool>("61400", "ShadowFlame Firebender Guard", "Mode: [select] only\nShould the bot buy \"ShadowFlame Firebender Guard\" ?", false),
+        new Option<bool>("61401", "Shadow of Malgor", "Mode: [select] only\nShould the bot buy \"Shadow of Malgor\" ?", false),
+        new Option<bool>("61402", "ShadowFlame Firebender Tail", "Mode: [select] only\nShould the bot buy \"ShadowFlame Firebender Tail\" ?", false),
+        new Option<bool>("61403", "ShadowFlame Firebender Daggers", "Mode: [select] only\nShould the bot buy \"ShadowFlame Firebender Daggers\" ?", false),
+        new Option<bool>("61404", "ShadowFlame Firebender Claws", "Mode: [select] only\nShould the bot buy \"ShadowFlame Firebender Claws\" ?", false),
+        new Option<bool>("61405", "ShadowFlame Firebender Blade", "Mode: [select] only\nShould the bot buy \"ShadowFlame Firebender Blade\" ?", false),
+        new Option<bool>("61334", "Enchanted ShadowDrake's Lance", "Mode: [select] only\nShould the bot buy \"Enchanted ShadowDrake's Lance\" ?", false),
+        new Option<bool>("61335", "Enchanted ShadowFlame Flamberge", "Mode: [select] only\nShould the bot buy \"Enchanted ShadowFlame Flamberge\" ?", false),
+        new Option<bool>("61336", "Enchanted ShadowFlame Great Harp", "Mode: [select] only\nShould the bot buy \"Enchanted ShadowFlame Great Harp\" ?", false),
+        new Option<bool>("61337", "Enchanted FireDrake's Lance", "Mode: [select] only\nShould the bot buy \"Enchanted FireDrake's Lance\" ?", false),
+        new Option<bool>("61595", "Dual ShadowFlame Firebender Blades", "Mode: [select] only\nShould the bot buy \"Dual ShadowFlame Firebender Blades\" ?", false),
+    };
 }

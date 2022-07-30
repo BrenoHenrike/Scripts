@@ -17,10 +17,9 @@ public class CelestialChampion
     public static CoreAdvanced sAdv = new();
     public CelestialArenaQuests CAQ = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
-    // [Can Change] This should only be changed by the author.
-    //              Just name this the same as the script (without the .cs)
-    public string OptionsStorage = "CelestialChampionMerge";
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
@@ -88,4 +87,35 @@ public class CelestialChampion
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("41454", "Viltusial", "Mode: [select] only\nShould the bot buy \"Viltusial\" ?", false),
+        new Option<bool>("41461", "Bow of Viltusial", "Mode: [select] only\nShould the bot buy \"Bow of Viltusial\" ?", false),
+        new Option<bool>("41460", "Cape Of Viltusial", "Mode: [select] only\nShould the bot buy \"Cape Of Viltusial\" ?", false),
+        new Option<bool>("41457", "Hair Of Viltusial", "Mode: [select] only\nShould the bot buy \"Hair Of Viltusial\" ?", false),
+        new Option<bool>("41455", "Helm Of Viltusial", "Mode: [select] only\nShould the bot buy \"Helm Of Viltusial\" ?", false),
+        new Option<bool>("41458", "Locks Of Viltusial", "Mode: [select] only\nShould the bot buy \"Locks Of Viltusial\" ?", false),
+        new Option<bool>("41456", "Helm of Viltusial + Locks", "Mode: [select] only\nShould the bot buy \"Helm of Viltusial + Locks\" ?", false),
+        new Option<bool>("41459", "Wings Of Viltusial", "Mode: [select] only\nShould the bot buy \"Wings Of Viltusial\" ?", false),
+        new Option<bool>("41466", "Scythe Of Blessings", "Mode: [select] only\nShould the bot buy \"Scythe Of Blessings\" ?", false),
+        new Option<bool>("41465", "Staff Of Blessings", "Mode: [select] only\nShould the bot buy \"Staff Of Blessings\" ?", false),
+        new Option<bool>("41447", "Cursed Abezeth", "Mode: [select] only\nShould the bot buy \"Cursed Abezeth\" ?", false),
+        new Option<bool>("41450", "Abezeth Cape", "Mode: [select] only\nShould the bot buy \"Abezeth Cape\" ?", false),
+        new Option<bool>("41448", "Helm Of Abezeth", "Mode: [select] only\nShould the bot buy \"Helm Of Abezeth\" ?", false),
+        new Option<bool>("41449", "Hood Of Abezeth", "Mode: [select] only\nShould the bot buy \"Hood Of Abezeth\" ?", false),
+        new Option<bool>("41451", "Wings Of Abezeth", "Mode: [select] only\nShould the bot buy \"Wings Of Abezeth\" ?", false),
+        new Option<bool>("41564", "Runes of Viltusial", "Mode: [select] only\nShould the bot buy \"Runes of Viltusial\" ?", false),
+        new Option<bool>("41565", "Runed Cape of Viltusial", "Mode: [select] only\nShould the bot buy \"Runed Cape of Viltusial\" ?", false),
+        new Option<bool>("50360", "Infernal Slayer", "Mode: [select] only\nShould the bot buy \"Infernal Slayer\" ?", false),
+        new Option<bool>("50366", "Infernal Slayer's Wing", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Wing\" ?", false),
+        new Option<bool>("50367", "Infernal Slayer's Wings", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Wings\" ?", false),
+        new Option<bool>("50365", "Infernal Slayer's Rune + Wrap", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Rune + Wrap\" ?", false),
+        new Option<bool>("50362", "Infernal Slayer's Halo", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Halo\" ?", false),
+        new Option<bool>("50361", "Infernal Slayer's Halo + Locks", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Halo + Locks\" ?", false),
+        new Option<bool>("50364", "Infernal Slayer's Hat", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Hat\" ?", false),
+        new Option<bool>("50363", "Infernal Slayer's Hat + Locks", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Hat + Locks\" ?", false),
+        new Option<bool>("50409", "Infernal Slayer's Armored Wing", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Armored Wing\" ?", false),
+        new Option<bool>("50408", "Slayer's Wings", "Mode: [select] only\nShould the bot buy \"Slayer's Wings\" ?", false),
+    };
 }

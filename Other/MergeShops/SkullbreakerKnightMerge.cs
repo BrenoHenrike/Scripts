@@ -12,10 +12,9 @@ public class SkullbreakerKnightMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
-    // [Can Change] This should only be changed by the author.
-    //              Just name this the same as the script (without the .cs)
-    public string OptionsStorage = "SkullbreakerKnightmerge";
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
@@ -70,4 +69,22 @@ public class SkullbreakerKnightMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("65444", "Skullbreaker Knight", "Mode: [select] only\nShould the bot buy \"Skullbreaker Knight\" ?", false),
+        new Option<bool>("65445", "Skullbreaker Knight's Hood", "Mode: [select] only\nShould the bot buy \"Skullbreaker Knight's Hood\" ?", false),
+        new Option<bool>("65446", "Skullbreaker's Shadow Hood", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Shadow Hood\" ?", false),
+        new Option<bool>("65447", "Skullbreaker's Hooded Skull", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Hooded Skull\" ?", false),
+        new Option<bool>("65448", "Skullbreaker's Spikes", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Spikes\" ?", false),
+        new Option<bool>("65449", "Skullbreaker's Cloak", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Cloak\" ?", false),
+        new Option<bool>("65450", "Skullbreaker's Spiked Cloak", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Spiked Cloak\" ?", false),
+        new Option<bool>("65451", "Skullbreaker's Blade", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Blade\" ?", false),
+        new Option<bool>("65452", "Skullbreaker's Spear", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Spear\" ?", false),
+        new Option<bool>("65453", "Skullbreaker's Reaver", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Reaver\" ?", false),
+        new Option<bool>("65454", "Dual Skullbreaker's Reaver", "Mode: [select] only\nShould the bot buy \"Dual Skullbreaker's Reaver\" ?", false),
+        new Option<bool>("65455", "Skullbreaker's Dagger", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Dagger\" ?", false),
+        new Option<bool>("65456", "Skullbreaker's Blade + Axe", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Blade + Axe\" ?", false),
+        new Option<bool>("65457", "Skullbreaker's Axe", "Mode: [select] only\nShould the bot buy \"Skullbreaker's Axe\" ?", false),
+    };
 }

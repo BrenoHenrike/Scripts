@@ -19,7 +19,8 @@ public class AstraviaPastMerge
     public CoreDarkon Darkon = new CoreDarkon();
     public CoreAstravia CoreAstravia = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -87,4 +88,17 @@ public class AstraviaPastMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("69155", "Prince Drago's Royal Attire", "Mode: [select] only\nShould the bot buy \"Prince Drago's Royal Attire\" ?", false),
+        new Option<bool>("69156", "Prince Drago's Royal Dark Attire", "Mode: [select] only\nShould the bot buy \"Prince Drago's Royal Dark Attire\" ?", false),
+        new Option<bool>("69158", "Prince Drago's Morph", "Mode: [select] only\nShould the bot buy \"Prince Drago's Morph\" ?", false),
+        new Option<bool>("69159", "Prince Drago's Scarred Morph", "Mode: [select] only\nShould the bot buy \"Prince Drago's Scarred Morph\" ?", false),
+        new Option<bool>("69160", "Suki's Armor", "Mode: [select] only\nShould the bot buy \"Suki's Armor\" ?", false),
+        new Option<bool>("69163", "Suki's Morph", "Mode: [select] only\nShould the bot buy \"Suki's Morph\" ?", false),
+        new Option<bool>("69164", "Suki's Gauntlets", "Mode: [select] only\nShould the bot buy \"Suki's Gauntlets\" ?", false),
+        new Option<bool>("69166", "Regulus' Morph", "Mode: [select] only\nShould the bot buy \"Regulus' Morph\" ?", false),
+        new Option<bool>("69168", "Titania's Morph", "Mode: [select] only\nShould the bot buy \"Titania's Morph\" ?", false),
+    };
 }
