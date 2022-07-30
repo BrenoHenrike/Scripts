@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/LoveSpellStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class PinkestDyeEver
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public LoveSpell LSS = new LoveSpell();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -30,7 +30,7 @@ public class PinkestDyeEver
 
         LSS.LoveSpellScript();
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Pinkest Dye Ever!!!", 200))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Pinkest Dye Ever!!!", 200))
         {
             Core.EnsureAccept(7935);
             Core.HuntMonster("lovespell", "Mood Slime", "Mood Slime Hearts", 10);

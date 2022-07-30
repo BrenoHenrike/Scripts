@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DoomwoodPart3
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -187,7 +187,7 @@ public class DoomwoodPart3
         if (!Story.QuestProgression(7628))
         {
             Core.EnsureAccept(7628);
-            Core.HuntMonsterMapID("stonewooddeep", 4|5, "Target Dummy Slain", 6);
+            Core.HuntMonsterMapID("stonewooddeep", 4 | 5, "Target Dummy Slain", 6);
             Core.EnsureComplete(7628);
         }
 

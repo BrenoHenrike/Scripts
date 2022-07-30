@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class JuggernautItemsofNulgath
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(Rewards);
@@ -53,7 +53,7 @@ public class JuggernautItemsofNulgath
         Nation.FarmUni13();
 
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             Nation.FarmDiamondofNulgath(13);
             Nation.FarmDarkCrystalShard(50);

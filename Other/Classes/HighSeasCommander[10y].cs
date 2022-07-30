@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class HighSeasCommander
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public CoreAdvanced Adv => new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -50,7 +50,7 @@ public class HighSeasCommander
         }
         Core.EnsureComplete(6921);
         Bot.Wait.ForPickup("HighSeas Commander");
-        
+
         if (rankUpClass)
             Adv.rankUpClass("HighSeas Commander");
     }

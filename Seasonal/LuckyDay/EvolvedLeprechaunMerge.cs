@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class EvolvedLeprechaun
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -24,7 +24,7 @@ public class EvolvedLeprechaun
         Core.AddDrop("Lucky Clover", "Rainbow Shard", "Golden Ticket");
 
         //Rainbow Shard
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Rainbow Shard", 20))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Shard", 20))
         {
             Core.EnsureAccept(1758);
             Core.HuntMonster("rainbow", "Rainbow Rat", "Prismatic Rainbow Fur", 5);
@@ -32,7 +32,7 @@ public class EvolvedLeprechaun
         }
 
         //Golden Ticket
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Golden Ticket", 2000))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Golden Ticket", 2000))
         {
             Core.GetMapItem(101, 1, "luck");
         }

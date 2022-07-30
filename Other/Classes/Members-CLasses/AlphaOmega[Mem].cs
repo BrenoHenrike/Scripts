@@ -3,21 +3,21 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Items;
-using RBot.Quests;
-using RBot.Shops;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 
 public class AlphaOmega
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

@@ -3,12 +3,12 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using System.Collections.Generic;
-using RBot;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class PinpointthePieces_Any
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
 
@@ -18,7 +18,7 @@ public class PinpointthePieces_Any
     {
         new Option<PinpointIDs>("questID", "Quest ID", "ID of the desired Pinpoint quest to do.", PinpointIDs.Dagger)
     };
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -32,7 +32,7 @@ public class PinpointthePieces_Any
         Core.EquipClass(ClassType.Farm);
         int i = 1;
         int questID = (int)Bot.Config.Get<PinpointIDs>("questID");
-        while (!Bot.ShouldExit())
+        while (!Bot.ShouldExit)
         {
             SDKA.PinpointthePieces(questID);
             Core.Logger($"Completed x{i++}");

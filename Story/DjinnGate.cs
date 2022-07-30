@@ -1,10 +1,10 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DjinnGateStory
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
@@ -13,7 +13,7 @@ public class DjinnGateStory
      "Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun"
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

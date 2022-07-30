@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/SummerBreak/BeachParty.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class BeachPartyTokenItems
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public BeachPartyStory BP = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -29,7 +29,7 @@ public class BeachPartyTokenItems
         BP.Storyline();
 
         Core.RegisterQuests(7010);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(rewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(rewards, toInv: false))
         {
             Core.KillMonster("beachparty", "r3", "Left", "*", "Tiki Tokens", 5, false);
             Bot.Sleep(Core.ActionDelay);

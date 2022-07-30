@@ -4,18 +4,18 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ScarletSorceress
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm => new();
     public CoreAdvanced Adv = new();
     public CoreToD TOD = new();
     public BloodSorceress BS = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

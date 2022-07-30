@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DarkAlliance_Story
 {
@@ -9,7 +9,7 @@ public class DarkAlliance_Story
     public DarkAlly_Story DarkAlly = new DarkAlly_Story();
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

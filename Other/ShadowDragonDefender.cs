@@ -3,16 +3,16 @@
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Story/7DeadlyDragons/Extra/HatchTheEgg.cs
 //cs_include Scripts/Other/MysteriousEgg.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class GetSDD
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public HatchTheEgg Egg = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

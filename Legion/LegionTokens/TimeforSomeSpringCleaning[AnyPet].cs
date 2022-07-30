@@ -3,14 +3,14 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class TimeforSomeSpringCleaning_AnyPet_
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new CoreLegion();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

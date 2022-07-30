@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/VasalkarLairWar.cs
-using RBot;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class VoidBattleMageSet
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public LairWar War = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -59,7 +59,7 @@ public class VoidBattleMageSet
 
         Bot.Events.ItemDropped -= ItemDropped;
 
-        void ItemDropped(ScriptInterface bot, ItemBase item, bool addedToInv, int quantityNow)
+        void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
         {
             if (rewards.Contains(item.Name))
             {

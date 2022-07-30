@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class BurningBlade
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
         GetBurningBlade();
-        
+
         Core.SetOptions(false);
     }
 
@@ -19,7 +19,7 @@ public class BurningBlade
     {
         if (Core.CheckInventory(31058))
             return;
-        
+
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("lostruinswar", "r7", "Left", "Diabolical Warlord", "Burning Blade", isTemp: false, publicRoom: true);
         Bot.Wait.ForPickup("Burning Blade");

@@ -12,11 +12,11 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LetsGetYouASuit
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreHollowborn HB = new CoreHollowborn();
@@ -25,7 +25,7 @@ public class LetsGetYouASuit
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

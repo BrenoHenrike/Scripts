@@ -3,17 +3,17 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ChaosAvengerClass
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public Core13LoC LOC => new();
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -103,12 +103,12 @@ public class ChaosAvengerClass
                 Core.AddDrop("Vath's Chaotic Dragonlord Armor");
                 if (Bot.Map.Name != "stalagbite")
                     Core.Join("stalagbite", "r2", "Left");
-                    
-                while (!Bot.ShouldExit() && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
+
+                while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
                 {
                     if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-                        Bot.Player.Hunt("Vath");
-                    Bot.Player.Attack("Stalagbite");
+                        Bot.Hunt.Monster("Vath");
+                    Bot.Combat.Attack("Stalagbite");
                     Bot.Sleep(1000);
                 }
             }

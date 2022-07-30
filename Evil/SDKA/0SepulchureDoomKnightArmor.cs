@@ -2,15 +2,15 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class SepulchureDoomKnightArmor
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

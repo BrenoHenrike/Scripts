@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class BattleConGear
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.Add("DeadMog LED");
 
@@ -22,7 +22,7 @@ public class BattleConGear
         Core.AddDrop("DeadMog LED");
 
         Core.Logger($"Hunting For: DeadMog LED, {Bot.Inventory.GetQuantity("DeadMog LED")}/1000");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("DeadMog LED", 1000))
+        while (!Bot.ShouldExit && !Core.CheckInventory("DeadMog LED", 1000))
         {
             Core.EnsureAccept(4576);
             Core.HuntMonster("arena", "Deadmoglinster", "DeadMoglinster Defeated");

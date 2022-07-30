@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class HanzoOrbQuest
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -41,9 +41,9 @@ public class HanzoOrbQuest
             questID = 4019;
         }
 
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -54,7 +54,7 @@ public class HanzoOrbQuest
         {
 
             Core.RegisterQuests(questID);
-            while (!Bot.ShouldExit() && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
             {
                 Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
                 Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");

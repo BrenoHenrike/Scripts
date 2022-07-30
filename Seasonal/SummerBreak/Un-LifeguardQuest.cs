@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class UnLifeGuardQuest
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -25,7 +25,7 @@ public class UnLifeGuardQuest
 
         Core.AddDrop(rewards);
         Core.RegisterQuests(7579);
-        while (!Bot.ShouldExit() && Core.CheckInventory(rewards))
+        while (!Bot.ShouldExit && Core.CheckInventory(rewards))
         {
             Core.HuntMonster("summerbreak", "Cyborg Shark", "Cyborg Shark Tooth", 7, false);
             Bot.Sleep(Core.ActionDelay);

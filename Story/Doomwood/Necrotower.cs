@@ -3,28 +3,28 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class NecroTowerStory
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions(); 
-        
+        Core.SetOptions();
+
         DoAll();
 
         Core.SetOptions(false);
     }
     public void DoAll()
     {
-        if(Core.isCompletedBefore(1101))
+        if (Core.isCompletedBefore(1101))
         {
             Core.Logger("Necrotower storyline has already been completed.");
             return;
@@ -33,8 +33,8 @@ public class NecroTowerStory
         Story.PreLoad();
 
         //A Brutal Mistake (1077)
-        
-        if(!Story.QuestProgression(1077))
+
+        if (!Story.QuestProgression(1077))
         {
             Core.EnsureAccept(1077);
             Core.GetMapItem(429, 6, "lightguard");
@@ -49,7 +49,7 @@ public class NecroTowerStory
         Story.MapItemQuest(1065, "doomwood", 423, 5);
 
         //Bone-tired Backup (1066)
-        if(!Story.QuestProgression(1066))
+        if (!Story.QuestProgression(1066))
         {
             Core.EnsureAccept(1066);
             Core.KillMonster("doomwood", "r6", "Right", "*", "Warrior Reinforced");
@@ -66,7 +66,7 @@ public class NecroTowerStory
         Story.KillQuest(1069, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer", "Doomwood Soldier" });
 
         //De(ad)ception (1070)
-        if(!Story.QuestProgression(1070))
+        if (!Story.QuestProgression(1070))
         {
             Core.EnsureAccept(1070);
             Core.GetMapItem(427, map: "doomundead");
@@ -87,7 +87,7 @@ public class NecroTowerStory
         Story.KillQuest(1083, "maul", new[] { "Slimeskull", "Personal Chopper" });
 
         //Chopping Spree (1084)
-        if(!Story.QuestProgression(1084))
+        if (!Story.QuestProgression(1084))
         {
             Core.EnsureAccept(1084);
             Core.KillMonster("maul", "r2", "Left", "*", "Body Part Donation", 10);
@@ -111,7 +111,7 @@ public class NecroTowerStory
         Story.MapItemQuest(1091, "necrotower", 438);
 
         //Necro Tower Elevator Minigame
-        for(int i = 1092; i <= 1101; i++)
-        Story.ChainQuest(i);
+        for (int i = 1092; i <= 1101; i++)
+            Story.ChainQuest(i);
     }
 }

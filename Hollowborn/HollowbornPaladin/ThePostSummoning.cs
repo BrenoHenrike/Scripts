@@ -12,11 +12,11 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ThePostSummoning
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreHollowborn HB = new CoreHollowborn();
@@ -24,10 +24,10 @@ public class ThePostSummoning
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Bot.Player.LoadBank();
+        Bot.Bank.Load();
 
         HBPal.GetAll();
 

@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class GardenQuestMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.Add("Vegetable Token");
 
@@ -21,7 +21,7 @@ public class GardenQuestMerge
     {
         Core.AddDrop("Vegetable Token");
         Core.Logger($"Hunting For: Vegetable Token, {Bot.Inventory.GetQuantity("Vegetable Token")}/300");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Vegetable Token", 300))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Vegetable Token", 300))
         {
 
             Core.EnsureAccept(8002);

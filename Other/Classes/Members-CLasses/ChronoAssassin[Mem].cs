@@ -3,18 +3,18 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ChronoAssassin
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -46,7 +46,7 @@ public class ChronoAssassin
         Core.Logger($"Farming {GemQuant} Saeculum Gem");
         int i = 1;
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Saeculum Gem", GemQuant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Saeculum Gem", GemQuant))
         {
             Core.EnsureAccept(5085);
             Core.HuntMonster("tachyon", "Svelgr the Devourer", "Svelgr Fang", isTemp: false);

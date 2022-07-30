@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FiendEmblem
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -25,7 +25,7 @@ public class FiendEmblem
 
         Core.AddDrop("Fiend Emblem");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Fiend Emblem", 300))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Fiend Emblem", 300))
         {
             Core.EnsureAccept(7890);
 

@@ -5,11 +5,11 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreYnR
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreLegion Legion = new();
@@ -18,7 +18,7 @@ public class CoreYnR
 
     private bool nonLegion = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -79,7 +79,7 @@ public class CoreYnR
         Core.AddDrop("Yami");
 
         Core.RegisterQuests(7409);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Yami", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Yami", quant))
         {
             Core.KillMonster("darkally", "r2", "Left", "*", "Dark Wisp", 444, false);
             Bot.Wait.ForPickup("Yami");
@@ -125,7 +125,7 @@ public class CoreYnR
         Core.AddDrop("Flame-Forged Metal");
 
         Core.RegisterQuests(6975);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Flame-Forged Metal", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Flame-Forged Metal", quant))
         {
             Core.HuntMonster("Underworld", "Frozen Pyromancer", "Stolen Flame", 1, true);
             Bot.Wait.ForPickup("Flame-Forged Metal");

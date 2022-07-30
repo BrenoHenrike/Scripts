@@ -1,11 +1,11 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DarkVictorySeal
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -26,7 +26,7 @@ public class DarkVictorySeal
         }
 
         //Dark Victory Seal
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Victory Seal", 1000))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Victory Seal", 1000))
         {
             Core.EnsureAccept(8576);
             Core.HuntMonster("dagerecruit", "Dark Makai", "Dark Makai Defeated", 6);

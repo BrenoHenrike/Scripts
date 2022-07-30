@@ -4,16 +4,16 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/UltraTyndariusPrereqs.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class RuinedCrown
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public Tyndarius Tyn = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -31,7 +31,7 @@ public class RuinedCrown
     public void StoryLine()
     {
         if (Core.isCompletedBefore(8787))
-           return;
+            return;
 
         Story.PreLoad();
 

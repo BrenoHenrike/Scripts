@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class SepulchuresRise
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -21,7 +21,7 @@ public class SepulchuresRise
     {
         if (Core.isCompletedBefore(6408))
         {
-            
+
             Core.Logger("You have already completed SelpulchuresRise Storyline");
             return;
         }
@@ -75,7 +75,7 @@ public class SepulchuresRise
 
         //Retrieve the Wand 6367
         Story.KillQuest(6367, "guardiantower", "Yargol Magebane");
-        
+
         //The Wedding 6368
         Core.Logger("Autocompleted");
 
@@ -98,7 +98,7 @@ public class SepulchuresRise
         //Get the Key 6374
         Story.MapItemQuest(6374, "ebonslate", 5897);
         Story.KillQuest(6374, "ebonslate", new[] { "Lycan Brute", "Lycan Brute" });
-        
+
         //Break Down the Door 6375
         Story.MapItemQuest(6375, "ebonslate", 5898);
 
@@ -122,7 +122,7 @@ public class SepulchuresRise
         {
             Core.EnsureAccept(6381);
             Core.Join("ebonslate", "r11", "Left");
-            Bot.Player.Attack("Dethrix");
+            Bot.Combat.Attack("Dethrix");
             Bot.Sleep(10000);
         }
 
@@ -139,7 +139,7 @@ public class SepulchuresRise
         Story.KillQuest(6385, "guardiantowerb", "Slime");
 
         //Garen's Key 6386
-        Story.KillQuest(6386, "guardiantowerb", new[] { "Guardian Selby", "Guardian Garen"});
+        Story.KillQuest(6386, "guardiantowerb", new[] { "Guardian Selby", "Guardian Garen" });
 
         //Selby's Key 6387
         Story.KillQuest(6387, "guardiantowerb", new[] { "Guardian Garen", "Guardian Selby" });
@@ -147,7 +147,7 @@ public class SepulchuresRise
         //Get Rid of Bolton 6388
         Story.MapItemQuest(6388, "guardiantowerb", 5901);
         Story.KillQuest(6388, "guardiantowerb", "Guardian Bolton");
-        
+
         //Get Rid of the Imps 6389
         Story.KillQuest(6389, "ebondungeon", "Ebonslate Imp");
 

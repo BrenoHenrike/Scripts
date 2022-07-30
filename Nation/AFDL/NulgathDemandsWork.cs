@@ -4,18 +4,18 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class NulgathDemandsWork
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public GoldenHanzoVoid GHV = new();
 
     public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(new[] {"Unidentified 35", "Archfiend Essence Fragment", "Unidentified 27", "Unidentified 26",
@@ -37,7 +37,7 @@ public class NulgathDemandsWork
             "Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
         int i = 0;
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction", "Unidentified 35" }, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction", "Unidentified 35" }, toInv: false))
         {
             if (Core.CheckInventory("Archfiend Essence Fragment", 9)
                 && Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" }))
@@ -61,7 +61,7 @@ public class NulgathDemandsWork
                 Core.EnsureAccept(584);
                 Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
                 Core.EnsureComplete(584);
-                Bot.Player.Pickup("Unidentified 27");
+                Bot.Drops.Pickup("Unidentified 27");
                 Core.Logger("Uni 27 acquired");
             }
 
@@ -74,7 +74,7 @@ public class NulgathDemandsWork
 
             GHV.GetGHV();
 
-            Bot.Player.Pickup(Bot.Drops.Pickup.ToArray());
+            Bot.Drops.PickupAll();
 
             Core.EnsureCompleteChoose(5259, new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" });
             if (Bot.Quests.IsInProgress(5259))

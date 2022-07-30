@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class SweetSummerTreats
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -23,7 +23,7 @@ public class SweetSummerTreats
 
         Core.AddDrop(rewards);
         Core.RegisterQuests(7578);
-        while (!Bot.ShouldExit() && Core.CheckInventory(rewards))
+        while (!Bot.ShouldExit && Core.CheckInventory(rewards))
         {
             Core.HuntMonster("summerbreak", "Ice Cream Shark", "Icecream Shark", 3, false);
             Core.HuntMonster("summerbreak", "MMMirage", "MMMirage", 3, false);

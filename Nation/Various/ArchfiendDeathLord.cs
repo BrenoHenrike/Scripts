@@ -7,14 +7,14 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Story/Nation/Originul.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 
 public class ArchfiendDeathLord
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -30,7 +30,7 @@ public class ArchfiendDeathLord
         new Option<bool>("OnlyArmor", "Only get the Armor?", "Whether to only get the Armor or all quest rewards"),
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -41,9 +41,9 @@ public class ArchfiendDeathLord
 
     public void GetArm(bool OnlyArmor = true)
     {
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(7900).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7900).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -75,7 +75,7 @@ public class ArchfiendDeathLord
             {
                 Core.Logger($"Farming for {item}");
 
-                while (!Bot.ShouldExit() && !Core.CheckInventory(item))
+                while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
 
                     Nation.FarmBloodGem(20);

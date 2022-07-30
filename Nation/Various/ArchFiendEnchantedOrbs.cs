@@ -2,17 +2,17 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ArchFiendEnchantedOrbs
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
     public CoreHollowborn HB = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(Nation.tercessBags);
@@ -34,7 +34,7 @@ public class ArchFiendEnchantedOrbs
         Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmUni13(1);
         Nation.FarmDiamondofNulgath(150);
-        HB.FreshSouls(1,100); // Also has the uni36
+        HB.FreshSouls(1, 100); // Also has the uni36
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);
 

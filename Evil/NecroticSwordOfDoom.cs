@@ -8,7 +8,7 @@
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class NecroticSwordOfDoom
 {
@@ -24,7 +24,7 @@ public class NecroticSwordOfDoom
     private bool OptimizeInv = true;
     private int EssenceQuantity;
 
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailies Daily = new();
@@ -35,7 +35,7 @@ public class NecroticSwordOfDoom
     public BattleUnder BattleUnder = new BattleUnder();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Astral Ephemerite Essence", "Belrot the Fiend Essence", "Black Knight Essence", "Tiger Leech Essence", "Carnax Essence", "Chaos Vordred Essence", "Dai Tengu Essence", "Unending Avatar Essence", "Void Dragon Essence", "Creature Creation Essence", "Void Aura", "Cavern Celestite", "Bone Dust" });
 
@@ -102,7 +102,7 @@ public class NecroticSwordOfDoom
         Core.AddDrop("Void Aura", "Empowered Essence", "Malignant Essence");
         Core.Logger($"Gathering {Quantity} Void Aura's with SDKA Method");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Void Aura", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.EnsureAccept(4439);
             Core.EquipClass(ClassType.Farm);
@@ -143,7 +143,7 @@ public class NecroticSwordOfDoom
             Core.AddDrop("Creature Shard");
         Core.Logger($"Gathering {Quantity} Void Aura's with Non-SDKA Method");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Void Aura", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.EnsureAccept(4432);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
@@ -328,7 +328,7 @@ public class NecroticSwordOfDoom
             BattleUnder.BattleUnderC();
         Core.Logger("Cavern Celestite");
         Core.RegisterQuests(939);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Cavern Celestite", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Cavern Celestite", Quantity))
         {
             Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
             Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");

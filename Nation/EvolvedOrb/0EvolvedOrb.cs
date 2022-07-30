@@ -4,7 +4,7 @@
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedBloodOrb.cs
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedHexOrb.cs
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrb[Mem].cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class EvolvedOrb
 {
@@ -14,7 +14,7 @@ public class EvolvedOrb
     public EvolvedHexOrb EHO = new EvolvedHexOrb();
     public EvolvedShadowOrb ESO = new EvolvedShadowOrb();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
         GetAllOrb();

@@ -4,18 +4,18 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class AnotherOneBitesTheDust
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
     public CoreAdvanced Adv = new CoreAdvanced();
     public SeraphicWar_Story SeraphicWar = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -36,7 +36,7 @@ public class AnotherOneBitesTheDust
         SeraphicWar.SeraphicWar_Questline();
 
         Core.Logger($"Farming {quant} Soul Sand");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Soul Sand", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Soul Sand", quant))
         {
             Core.EnsureAccept(7991);
             Farm.BattleUnderB("Bone Dust", 333);

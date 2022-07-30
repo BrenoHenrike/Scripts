@@ -6,11 +6,11 @@
 //cs_include Scripts/Other/Badges/SkyPirateSlayerBadge.cs
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
 //cs_include Scripts/Other\Badges\DerpMoosefishBadge.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class AllBadges
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 
@@ -19,7 +19,7 @@ public class AllBadges
     public YouMadBroBadge YMBB = new();
     public DerpMoosefishBadge DMF = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

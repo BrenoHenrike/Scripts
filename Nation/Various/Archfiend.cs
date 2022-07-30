@@ -9,18 +9,18 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Evil/NecroticSwordOfDoom.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ArchFiend
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreNation Nation = new();
     public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();

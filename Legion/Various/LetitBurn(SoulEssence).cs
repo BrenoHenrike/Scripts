@@ -6,11 +6,11 @@
 //cs_include Scripts/Legion/Various/LegionBonfire.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LetItBurn
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
@@ -18,7 +18,7 @@ public class LetItBurn
     public AnotherOneBitesTheDust SSand = new AnotherOneBitesTheDust();
     public LegionBonfire Bon = new LegionBonfire();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -43,7 +43,7 @@ public class LetItBurn
 
         Core.Logger($"Farming {quant} Soul Essence");
         Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Soul Essence", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Soul Essence", quant))
         {
             Core.EnsureAccept(7992);
             Core.HuntMonster("dagefortress", "Grrrberus", "Grrberus' Flame");

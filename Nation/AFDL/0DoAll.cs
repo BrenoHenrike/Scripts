@@ -6,11 +6,11 @@
 //cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
 //cs_include Scripts/Nation/AFDL/EnoughDOOMforanArchfiend.cs
 //cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ADFL
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
@@ -18,7 +18,7 @@ public class ADFL
     public NulgathDemandsWork NulgathDemandsWork = new();
     public EnoughDOOMforanArchfiend DOOM = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(new[] {"ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",

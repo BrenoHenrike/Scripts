@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class WeaponMasteryAC
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreNation Nation = new();
     public CoreFarms Farm = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
 
@@ -33,7 +33,7 @@ public class WeaponMasteryAC
                 return;
             }
             int i = 1;
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Evolved Warlord Hammer") || !Core.CheckInventory("Evolved Warlord Axe"))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Evolved Warlord Hammer") || !Core.CheckInventory("Evolved Warlord Axe"))
             {
                 Core.EnsureAccept(4784);
 

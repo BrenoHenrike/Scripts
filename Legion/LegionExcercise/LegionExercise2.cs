@@ -4,11 +4,11 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/JoinLegion[UndeadWarrior].cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegionExercise2
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
@@ -16,7 +16,7 @@ public class LegionExercise2
 
     private string[] Rewards = { "Executioner's Judgement", "legion Token" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -36,7 +36,7 @@ public class LegionExercise2
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
 
-        int Dice = Bot.Runtime.Random.Next(1, 101);
+        int Dice = Bot.Random.Next(1, 101);
         //-------------------------------------------------------------------------------------------------------
 
         int i = 1;
@@ -44,7 +44,7 @@ public class LegionExercise2
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Executioner's Judgement" }))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Executioner's Judgement" }))
         {
             Core.EnsureAccept(822);
             Core.EquipClass(ClassType.Farm);

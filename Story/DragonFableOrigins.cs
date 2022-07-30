@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DragonFableOrigins
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface Bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.AcceptandCompleteTries = 5;
         Core.SetOptions();

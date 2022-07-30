@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegendaryElementalWarrior
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -41,7 +41,7 @@ public class LegendaryElementalWarrior
         Bot.Wait.ForItemBuy();
 
         Core.BuyItem("Curio", 809, "Legendary Elemental Warrior", shopItemID: 2412);
-        
+
         if (rankUpClass)
             Adv.rankUpClass("Legendary Elemental Warrior");
     }

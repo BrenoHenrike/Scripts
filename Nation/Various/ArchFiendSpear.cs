@@ -5,11 +5,11 @@
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nation/Various/ArchFiendEnchantedOrbs.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ArchFiendSpear
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -18,7 +18,7 @@ public class ArchFiendSpear
     public WillpowerExtraction Will = new();
     public ArchFiendEnchantedOrbs AFEO = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(Nation.tercessBags);

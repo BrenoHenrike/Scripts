@@ -5,11 +5,11 @@
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/CoreDailies.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FrostvalBarbarian
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -18,7 +18,7 @@ public class FrostvalBarbarian
     public GlaceraStory Glacera = new GlaceraStory();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -48,7 +48,7 @@ public class FrostvalBarbarian
         if (!Core.CheckInventory("Sassafras' War Helm"))
         {
             Core.AddDrop("Sassafras' War Helm");
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Sassafras' War Helm"))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Sassafras' War Helm"))
             {
                 Core.EnsureAccept(2570);
                 Core.EquipClass(ClassType.Farm);

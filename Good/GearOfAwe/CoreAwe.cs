@@ -2,17 +2,17 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreAwe
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -51,7 +51,7 @@ public class CoreAwe
         }
 
         Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit() && !Core.CheckInventory($"{Item} Fragment", FragmentAmount))
+        while (!Bot.ShouldExit && !Core.CheckInventory($"{Item} Fragment", FragmentAmount))
         {
             Core.EnsureAccept(QuestID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")

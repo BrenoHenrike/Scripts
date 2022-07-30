@@ -5,18 +5,18 @@
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FireChampionsArmor
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public DragonslayerGeneral DSG = new();
     public WarfuryEmblem WFE = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -66,7 +66,7 @@ public class FireChampionsArmor
         Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
 
         Core.RegisterQuests(6975);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Flame-Forged Metal", Metalquant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Flame-Forged Metal", Metalquant))
             Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame", log: false);
         Core.CancelRegisteredQuests();
     }
@@ -78,7 +78,7 @@ public class FireChampionsArmor
 
         Adv.BestGear(GearBoost.Chaos);
         Core.EquipClass(ClassType.Solo);
-        Bot.Skills.StartAdvanced(Core.SoloClass, true, RBot.Skills.ClassUseMode.Def);
+        Bot.Skills.StartAdvanced(Core.SoloClass, true, Skua.Core.Models.Skills.ClassUseMode.Def);
 
         Core.HuntMonster("underlair", "Archfiend Dragonlord", "Void Scale", VoidScaleQuant, isTemp: false);
     }

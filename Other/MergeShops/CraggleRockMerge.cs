@@ -2,13 +2,13 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class CraggleRockMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -22,7 +22,7 @@ public class CraggleRockMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -41,7 +41,7 @@ public class CraggleRockMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -60,7 +60,7 @@ public class CraggleRockMerge
                     Core.RegisterQuests(7277);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("wanders", "Kalestri Worshiper", "Star of the Sandsea");
                         Bot.Wait.ForPickup(req.Name);
@@ -72,7 +72,7 @@ public class CraggleRockMerge
                     Core.RegisterQuests(7279);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
                         Bot.Wait.ForPickup(req.Name);
@@ -83,7 +83,7 @@ public class CraggleRockMerge
                     Core.RegisterQuests(7281);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("safiria", "Blood Maggot", "Blood Gem", 10);
                         Bot.Wait.ForPickup(req.Name);
@@ -94,7 +94,7 @@ public class CraggleRockMerge
                     Core.RegisterQuests(7287);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("bloodtusk", "Trollola Plant", "Butterfly Bloom", 15);
                         Bot.Wait.ForPickup(req.Name);
@@ -105,7 +105,7 @@ public class CraggleRockMerge
                     Core.RegisterQuests(7289);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("battleunderc", "Enter", "Spawn", "*", "Fluorite Shard", 10);
                         Bot.Wait.ForPickup(req.Name);
@@ -116,7 +116,7 @@ public class CraggleRockMerge
                     Core.RegisterQuests(7291);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
                         Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");

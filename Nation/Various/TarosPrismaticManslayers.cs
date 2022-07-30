@@ -3,16 +3,16 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
 //cs_include Scripts/Nation/Various/TarosManslayer.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class TarosPrismaticManslayers
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public TarosManslayer Taro = new TarosManslayer();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -34,7 +34,7 @@ public class TarosPrismaticManslayers
         Farm.GoodREP();
         Taro.GuardianTaro();
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(8496);
             Nation.SwindleBulk(200);

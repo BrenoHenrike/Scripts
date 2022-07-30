@@ -20,15 +20,15 @@
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ADKFalls
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreHollowbornDoomKnight HDK = new CoreHollowbornDoomKnight();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

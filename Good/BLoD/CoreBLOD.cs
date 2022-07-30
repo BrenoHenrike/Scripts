@@ -4,16 +4,16 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreBLOD
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -126,7 +126,7 @@ public class CoreBLOD
             Core.EnsureAccept(2084);
             Core.HuntMonster("timevoid", "Ephemerite", "Celestial Compass");
             Core.EnsureComplete(2084);
-            Bot.Player.Pickup("Loyal Spirit Orb");
+            Bot.Drops.Pickup("Loyal Spirit Orb");
         }
     }
 
@@ -140,20 +140,20 @@ public class CoreBLOD
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Spirit Orb");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
         {
             Farm.BattleUnderB("Undead Essence", 900);
-            while (!Bot.ShouldExit() && Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
+            while (!Bot.ShouldExit && Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
             {
                 Core.ChainComplete(2082);
                 Core.Logger($"Completed x{i++}");
             }
-            while (!Bot.ShouldExit() && Core.CheckInventory("Bone Dust", 40) && !Core.CheckInventory("Spirit Orb", quant))
+            while (!Bot.ShouldExit && Core.CheckInventory("Bone Dust", 40) && !Core.CheckInventory("Spirit Orb", quant))
             {
                 Core.ChainComplete(2083);
                 Core.Logger($"Completed x{i++}");
             }
-            Bot.Player.Pickup("Spirit Orb");
+            Bot.Drops.Pickup("Spirit Orb");
         }
     }
 
@@ -167,7 +167,7 @@ public class CoreBLOD
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Basic Wepon Kit");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Basic Weapon Kit", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Basic Weapon Kit", quant))
         {
             Core.EnsureAccept(2136);
 
@@ -182,7 +182,7 @@ public class CoreBLOD
             Core.HuntMonster("bloodtusk", "Rock", "Rocky Stone Sharpener");
 
             Core.EnsureComplete(2136);
-            Bot.Player.Pickup("Basic Weapon Kit");
+            Bot.Drops.Pickup("Basic Weapon Kit");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -197,7 +197,7 @@ public class CoreBLOD
 
         int i = 1;
         Core.Logger($"Farming {quant} Advanced Wepon Kit");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Advanced Weapon Kit", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Advanced Weapon Kit", quant))
         {
             Core.EnsureAccept(2162);
 
@@ -215,7 +215,7 @@ public class CoreBLOD
             Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10);
 
             Core.EnsureComplete(2162);
-            Bot.Player.Pickup("Advanced Weapon Kit");
+            Bot.Drops.Pickup("Advanced Weapon Kit");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -230,7 +230,7 @@ public class CoreBLOD
         Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
         int i = 1;
         Core.Logger($"Farming {quant} {item}");
-        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(2163);
 
@@ -247,7 +247,7 @@ public class CoreBLOD
             Core.KillMonster("roc", "Enter", "Spawn", "Rock Roc", "Sharp Stone Sharpener");
 
             Core.EnsureComplete(2163);
-            Bot.Player.Pickup(item);
+            Bot.Drops.Pickup(item);
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -472,14 +472,14 @@ public class CoreBLOD
         FindingFragmentsMace(75);
         FindingFragmentsBlade(500, 250);
         Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Blinding Aura"))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
         {
             FindingFragments(2174);
-            Bot.Player.Pickup("Blinding Aura");
+            Bot.Drops.Pickup("Blinding Aura");
         }
         UltimateWK();
         Core.ChainComplete(2180);
-        Bot.Player.Pickup("Get Your Blinding Light of Destiny");
+        Bot.Drops.Pickup("Get Your Blinding Light of Destiny");
     }
 
     public void FindingFragmentsMace(int quant = 1)
@@ -493,10 +493,10 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Brilliant Aura");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Brilliant Aura", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Brilliant Aura", quant))
         {
             FindingFragments(2176);
-            Bot.Player.Pickup("Brilliant Aura");
+            Bot.Drops.Pickup("Brilliant Aura");
         }
     }
 
@@ -511,10 +511,10 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Bright Aura");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", quant))
         {
             FindingFragments(2174);
-            Bot.Player.Pickup("Bright Aura");
+            Bot.Drops.Pickup("Bright Aura");
         }
     }
 
@@ -529,10 +529,10 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quantSO} SOs and {quantLSO} LSOs");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
         {
             FindingFragments(2179);
-            Bot.Player.Pickup("Spirit Orb", "Loyal Spirit Orb");
+            Bot.Drops.Pickup("Spirit Orb", "Loyal Spirit Orb");
         }
     }
 
@@ -564,10 +564,10 @@ public class CoreBLOD
         {
             UltimateWK("Loyal Spirit Orb", 5);
 
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", 2))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", 2))
             {
                 FindingFragments(2174);
-                Bot.Player.Pickup("Bright Aura");
+                Bot.Drops.Pickup("Bright Aura");
             }
 
             if (!Core.CheckInventory("Glorious Gold"))
@@ -592,10 +592,10 @@ public class CoreBLOD
         {
             UltimateWK("Loyal Spirit Orb", 5);
 
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", 2))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", 2))
             {
                 FindingFragments(2174);
-                Bot.Player.Pickup("Bright Aura");
+                Bot.Drops.Pickup("Bright Aura");
             }
 
             if (!Core.CheckInventory("Pious Platinum"))

@@ -3,15 +3,15 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class UnlockMineCrafting_ArtixQuests
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
         Core.AddDrop("BLinding Light of Destiny Handle", "Bonegrinder Medal",

@@ -4,10 +4,10 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class GetAllRanks
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -15,7 +15,7 @@ public class GetAllRanks
     public CoreToD TOD = new();
     public Core13LoC LOC => new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

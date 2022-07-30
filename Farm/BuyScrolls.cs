@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
-using RBot.Options;
-using RBot.Quests;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
+using Skua.Core.Models.Quests;
 
 public class BuyScrolls
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 
@@ -17,7 +17,7 @@ public class BuyScrolls
         new Option<int>("scrollAmount", "How many", "Write -1 to buy up to max. stack", -1),
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -44,7 +44,7 @@ public class BuyScrolls
         Core.AddDrop(_scroll);
 
         Farm.SpellCraftingREP(5);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(_scroll, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(_scroll, quant))
         {
             if (!Core.CheckInventory(ink))
             {

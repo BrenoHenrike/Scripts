@@ -3,17 +3,17 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 using System.Windows.Forms;
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreLegion
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -39,7 +39,7 @@ public class CoreLegion
         Adv.BestGear(GearBoost.gold);
         Core.Logger($"Farming {quant} Emblems");
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Emblem of Dage", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
             Core.EnsureAccept(4742);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
@@ -58,20 +58,20 @@ public class CoreLegion
         Core.AddDrop("Dark Token");
         Core.Logger($"Farming {quant} Dark Tokens");
         Core.EquipClass(ClassType.Farm);
-        Adv.SmartEnhance(Bot.Inventory.CurrentClass.Name);
+        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
         Adv.BestGear(GearBoost.Human);
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
             Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6, log: false);
             Core.EnsureComplete(6251);
 
-            while (!Bot.ShouldExit() && Core.CheckInventory("Seraphic Medals", 5))
+            while (!Bot.ShouldExit && Core.CheckInventory("Seraphic Medals", 5))
                 Core.ChainComplete(6248);
-            while (!Bot.ShouldExit() && Core.CheckInventory("Mega Seraphic Medals", 3))
+            while (!Bot.ShouldExit && Core.CheckInventory("Mega Seraphic Medals", 3))
                 Core.ChainComplete(6249);
-            Bot.Player.Pickup("Dark Token");
+            Bot.Drops.Pickup("Dark Token");
             Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         }
     }
@@ -89,7 +89,7 @@ public class CoreLegion
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Diamond Token of Dage", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
             Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
@@ -110,7 +110,7 @@ public class CoreLegion
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
 
             Core.EnsureComplete(4743);
-            Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");
+            Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -127,7 +127,7 @@ public class CoreLegion
         Core.Logger("Farming Legion Round 4 Medal");
         Core.Join("shadowblast");
         Adv.BestGear(GearBoost.dmgAll);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Round 4 Medal"))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Round 4 Medal"))
         {
             if (!Core.CheckInventory("Legion Round 1 Medal") &&
                 !Core.CheckInventory("Legion Round 2 Medal") &&
@@ -194,7 +194,7 @@ public class CoreLegion
 
         Core.AddDrop("Bone Sigil");
         Adv.BestGear(GearBoost.Undead);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Bone Sigil", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bone Sigil", quant))
         {
             Core.EnsureAccept(6739);
             Core.HuntMonster("legionarena", "Legion Gladiator", "Legion Grunt Defeated", 5);
@@ -252,7 +252,7 @@ public class CoreLegion
 
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.RegisterQuests(5738);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("underworld", "Bloodfiend", "Foreign Weapon", 20);
             Core.HuntMonster("underworld", "Bloodfiend", "Foreign Equipment", 20);
@@ -275,7 +275,7 @@ public class CoreLegion
 
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.RegisterQuests(3256);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("prison", "King Alteon's Knight", "Spirit of Loyalty", 6);
             Core.HuntMonster("battlewedding", "Silver Knight", "Spirit of Love", 6);
@@ -298,7 +298,7 @@ public class CoreLegion
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.RegisterQuests(3968, 3969);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("frozenruins", "Frost Fangbeast", "Frost Heart", 10);
             Core.HuntMonster("frozenruins", "Frost Fangbeast", "Blanket", 6);
@@ -322,7 +322,7 @@ public class CoreLegion
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.RegisterQuests(4704);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Loyalty", 10);
             Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Corruption", 8);
@@ -348,9 +348,9 @@ public class CoreLegion
             QuestID = 5756;
         else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
         {
-            if (Bot.Inventory.GetItemByName("Paragon Fiend Quest Pet").ID == 47578)
+            if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet").ID == 47578)
                 QuestID = 6750;
-            else if (Bot.Inventory.GetItemByName("Paragon Fiend Quest Pet").ID == 47614)
+            else if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet").ID == 47614)
                 QuestID = 6756;
         }
         else if (Core.CheckInventory("Paragon Ringbearer"))
@@ -361,7 +361,7 @@ public class CoreLegion
         Adv.BestGear(GearBoost.dmgAll);
         Core.RegisterQuests(QuestID);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("fotia", "Fotia Elemental", "Nothing Heard", 10);
             Core.HuntMonster("fotia", "Fotia Elemental", "Nothing To See", 10);
@@ -389,10 +389,10 @@ public class CoreLegion
 
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.EquipClass(ClassType.Solo);
-        Bot.Player.Jump("Boss", "Left");
+        Bot.Map.Jump("Boss", "Left");
         Core.RegisterQuests(6742, 6743);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch");
 
         Core.CancelRegisteredQuests();
@@ -415,7 +415,7 @@ public class CoreLegion
         Core.Join("dreadrock");
         Core.RegisterQuests(4849);
         Bot.Options.AggroMonsters = true;
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6, log: false);
 
         Bot.Options.AggroMonsters = false;
@@ -437,7 +437,7 @@ public class CoreLegion
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.RegisterQuests(4896);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
             Core.HuntMonster("dragonheart", "Tempest Dracolich", "Tempest Dracolich Soul", 4, isTemp: false);
@@ -462,7 +462,7 @@ public class CoreLegion
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
         Core.RegisterQuests(4100);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dragonheart", "r6", "Right", "Zombie Dragon", "Elemental Dragon Soul", 20);
 
         Core.CancelRegisteredQuests();
@@ -478,7 +478,7 @@ public class CoreLegion
         Core.Logger($"Farming {quant} Legion Token");
 
         Core.RegisterQuests(5741);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("laken", "Augmented Guard", "Stolen Guard", 5);
             Core.HuntMonster("laken", "Cyborg Dog", "Stolen Dog", 6);
@@ -553,7 +553,7 @@ public class CoreLegion
         else Core.Logger("Using Members Method");
 
         Core.RegisterQuests(2742);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Obsidian Rock", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Obsidian Rock", quant))
         {
             if (Core.IsMember)
                 Core.HuntMonster("hydra", "Fire Imp", "Obsidian Deposit", 10, log: false);
@@ -573,11 +573,11 @@ public class CoreLegion
     /// <param name="moveY">Y position of the door</param>
     public void DagePvPMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
     {
-        while (!Bot.ShouldExit() && Bot.Player.Cell != cell)
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
-            Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
+            Bot.Send.Packet($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
             Bot.Sleep(2500);
-            Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
+            Bot.Send.Packet($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
     }
 
@@ -596,7 +596,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Solo);
         // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
-        while (!Bot.ShouldExit() &&
+        while (!Bot.ShouldExit &&
                 !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) ||
                 !Core.CheckInventory("Technique Observed", TechniqueQuant) ||
                 !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
@@ -622,13 +622,13 @@ public class CoreLegion
                 DagePvPMove(11, "r7", 513, 286);
                 DagePvPMove(15, "r10", 832, 347);
 
-                Bot.Player.Kill("Blade Master");
-                Bot.Player.Kill("Blade Master");
+                Bot.Kill.Monster("Blade Master");
+                Bot.Kill.Monster("Blade Master");
 
                 DagePvPMove(20, "r11", 943, 391);
 
-                Bot.Player.Kill("Blade Master");
-                Bot.Player.Kill("Blade Master");
+                Bot.Kill.Monster("Blade Master");
+                Bot.Kill.Monster("Blade Master");
 
                 DagePvPMove(21, "r10", 9, 397);
                 DagePvPMove(19, "r7", 7, 392);
@@ -637,24 +637,24 @@ public class CoreLegion
             DagePvPMove(12, "r12", 758, 338);
             if (!canSoloBoss)
             {
-                Bot.Player.Kill("Legion Guard");
-                Bot.Player.Kill("Legion Guard");
+                Bot.Kill.Monster("Legion Guard");
+                Bot.Kill.Monster("Legion Guard");
             }
             DagePvPMove(23, "r13", 933, 394);
             if (!canSoloBoss)
             {
-                Bot.Player.Kill("Legion Guard");
-                Bot.Player.Kill("Legion Guard");
+                Bot.Kill.Monster("Legion Guard");
+                Bot.Kill.Monster("Legion Guard");
             }
             DagePvPMove(25, "r14", 846, 181);
             if (!canSoloBoss)
             {
-                Bot.Player.Kill("Legion Guard");
-                Bot.Player.Kill("Legion Guard");
+                Bot.Kill.Monster("Legion Guard");
+                Bot.Kill.Monster("Legion Guard");
             }
             DagePvPMove(28, "r15", 941, 348);
 
-            Bot.Player.Kill("Dage the Evil");
+            Bot.Kill.Monster("Dage the Evil");
             Bot.Sleep(5000);
             Bot.Wait.ForDrop("Legion Combat Trophy");
 

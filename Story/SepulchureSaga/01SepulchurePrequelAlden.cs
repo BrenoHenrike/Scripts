@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class SepulchurePrequelAlden
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -21,7 +21,7 @@ public class SepulchurePrequelAlden
     {
         if (Core.isCompletedBefore(6342))
         {
-            
+
             Core.Logger("You have already completed SelpulchurePrequel Storyline");
             return;
         }
@@ -48,10 +48,10 @@ public class SepulchurePrequelAlden
         Story.KillQuest(6336, "Scarsgarde", new[] { "Garde Watch", "Garde Pikeman" });
 
         //False Hoods 6337
-        Story.KillQuest(6337, "Scarsgarde", new[]{ "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
+        Story.KillQuest(6337, "Scarsgarde", new[] { "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
 
         //Pass for Real 6338
-        Story.MapItemQuest(6338, "Scarsgarde", new[] {5866, 5867});
+        Story.MapItemQuest(6338, "Scarsgarde", new[] { 5866, 5867 });
         Story.KillQuest(6338, "Scarsgarde", new[] { "Garde Knight", "Garde Pikeman", "Garde Knight" });
 
         //Hidden in Plain Sight 6339
@@ -65,6 +65,6 @@ public class SepulchurePrequelAlden
         Story.KillQuest(6341, "Scarsgarde", "Garde Captain");
 
         //Arm the Army 6342
-        Story.KillQuest(6342, "Scarsgarde", new[] { "Garde Watch", "Garde Pikeman", "Garde Knight" }); 
+        Story.KillQuest(6342, "Scarsgarde", new[] { "Garde Watch", "Garde Pikeman", "Garde Knight" });
     }
 }

@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Akriloth.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class EnchantedFrozenClaymore
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public Akriloth Akriloth = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -30,7 +30,7 @@ public class EnchantedFrozenClaymore
 
         Core.AddDrop("Ice Shard");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(43712, 50))
+        while (!Bot.ShouldExit && !Core.CheckInventory(43712, 50))
         {
             Core.EnsureAccept(6311);
             Core.HuntMonster("northmountain", "Izotz", "Ice Crystal");

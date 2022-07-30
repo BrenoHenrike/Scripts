@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class YouMadBroBadge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -21,7 +21,7 @@ public class YouMadBroBadge
 
     public void Badge()
     {
-        while (!Bot.ShouldExit() && !Core.HasAchievement(15))
+        while (!Bot.ShouldExit && !Core.HasAchievement(15))
         {
             Farm.AlchemyREP(10);
             {

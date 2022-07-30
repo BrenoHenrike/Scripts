@@ -4,18 +4,18 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class EnhancedNulgathNationHouse
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
@@ -56,7 +56,7 @@ public class EnhancedNulgathNationHouse
             Core.EnsureAccept(4779);
             if (!Core.EnsureComplete(4779))
                 Core.Logger("Could not complete the quest, stopping bot", messageBox: true, stopBot: true);
-            Bot.Player.Pickup("Nulgath Nation House");
+            Bot.Drops.Pickup("Nulgath Nation House");
         }
 
         Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);

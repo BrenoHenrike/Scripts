@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class WheeleOfLove
 {
     public CoreBots Core => CoreBots.Instance;
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface Bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -48,7 +48,7 @@ public class WheeleOfLove
         {
             Core.EnsureAccept(5688);
             Core.Join("wheeloflove", "r6", "Left");
-            while (!Bot.ShouldExit() && !Bot.Quests.CanComplete(5688))
+            while (!Bot.ShouldExit && !Bot.Quests.CanComplete(5688))
             {
                 Core.SendPackets("%xt%zm%ia%1%rval%game%%");
             }
@@ -73,9 +73,9 @@ public class WheeleOfLove
 
     public void WheelOfLoveQuest()
     {
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5694).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5694).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -83,7 +83,7 @@ public class WheeleOfLove
         if (Core.CheckInventory(Rewards))
             return;
         Core.AddDrop(Rewards);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(5694);
             Core.HuntMonster("wheeloflove", "Undead Cherub", "Unlove Dart", 13);

@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Table
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions(); 
-        
+        Core.SetOptions();
+
         DoAll();
 
         Core.SetOptions(false);
@@ -45,7 +45,7 @@ public class Table
         //There Is No Spoon (725)
         Story.KillQuest(725, "smuurvil", "Papa Smuurvil");
         //Spare Parts (737)
-        if(!Story.QuestProgression(737))
+        if (!Story.QuestProgression(737))
         {
             Core.EnsureAccept(737);
             for (int i = 123; i <= 128; i++)

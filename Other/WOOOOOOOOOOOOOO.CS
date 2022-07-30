@@ -1,10 +1,10 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
     public string OptionsStorage = "WOOO";
@@ -13,7 +13,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
         new Option<bool>("AConly", "AC Only", "True = Only get AC items.\nFalse = Get both AC and non-AC items.", true),
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -54,7 +54,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
         string[] FocussedArray = Bot.Config.Get<bool>("AConly") ? WOOOOODropsAC : WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
 
         Core.RegisterQuests(8497);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(FocussedArray))
+        while (!Bot.ShouldExit && !Core.CheckInventory(FocussedArray))
         {
             Core.HuntMonster("Mverse", "Major Mushroom", "Dark Caster Card", 1, isTemp: true);
             Core.HuntMonster("Mverse", "Major Mushroom", "Green-Eyes Red Dragon Card", 1, isTemp: true);

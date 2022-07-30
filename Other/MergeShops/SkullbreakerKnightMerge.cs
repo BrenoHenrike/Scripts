@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class SkullbreakerKnightMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
@@ -19,7 +19,7 @@ public class SkullbreakerKnightMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -38,7 +38,7 @@ public class SkullbreakerKnightMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -58,7 +58,7 @@ public class SkullbreakerKnightMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(!Core.IsMember ? 8411 : 8412);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("warundead", "r3", "Left", "*", "Unbroken Skulls", 100);
                         Core.HuntMonster("warundead", "Summon Lich", "Summon Lich's Orb");

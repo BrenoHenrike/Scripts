@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/AprilFools/MeateorHunt.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class MeateorHuntMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public MeateorHunt MH = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -34,7 +34,7 @@ public class MeateorHuntMerge
 
         Core.EquipClass(ClassType.Solo);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Unoriginal Recipe", Quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Unoriginal Recipe", Quant))
         {
             Core.EnsureAccept(8629);
 

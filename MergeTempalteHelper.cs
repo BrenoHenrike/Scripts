@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Options;
-using RBot.Shops;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
+using Skua.Core.Models.Shops;
+using Skua.Core.Models.Items;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
 public class MergeTemplateHelper
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
@@ -26,14 +26,14 @@ public class MergeTemplateHelper
         new Option<bool>("genFile", "Generate File", "Generate a MergeTemplate based bot, output will be in \\Scripts\\WIP\\", true)
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Helper();
     }
 
     public void Helper()
     {
-        string? map = Bot.Config.Get<string>("mapName");
+        string map = Bot.Config.Get<string>("mapName");
         int shopID = Bot.Config.Get<int>("shopID");
         bool genFile = Bot.Config.Get<bool>("genFile");
 
@@ -46,7 +46,7 @@ public class MergeTemplateHelper
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         string output = "";
         List<string> itemsToLearn = new();
-        string className = Bot.Shops.ShopName.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "");
+        string className = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "");
 
         List<string> shopItemNames = new();
         if (genFile)
@@ -83,7 +83,7 @@ public class MergeTemplateHelper
                         output += "                    Core.FarmingLogger($\"{req.Name}\", quant);\n";
                         output += "                    Core.EquipClass(ClassType.Farm);\n";
                         output += "                    Core.RegisterQuests(0000);\n";
-                        output += "                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))\n";
+                        output += "                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))\n";
                         output += "                    {\n";
                         output += "                        Core.Logger(\"This item is not setup yet\");\n";
                         output += "                        Bot.Wait.ForPickup(req.Name);\n";

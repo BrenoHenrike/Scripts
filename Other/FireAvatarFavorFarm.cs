@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FireAvatarFavorFarm
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -25,7 +25,7 @@ public class FireAvatarFavorFarm
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(8244);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Fire Avatar's Favor", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Fire Avatar's Favor", quant))
         {
             Core.KillMonster("fireavatar", "r4", "Right", "*", "Onslaught Defeated", 6);
             Core.KillMonster("fireavatar", "r6", "Left", "*", "Elemental Defeated", 6);

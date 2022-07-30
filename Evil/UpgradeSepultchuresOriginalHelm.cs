@@ -8,17 +8,17 @@
 //cs_include Scripts/Other/Materials/DarknessShard.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class UpgradeSepulchuresOriginalHelm
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public DarknessShard DS = new();
     public SepulchuresOriginalHelm Seppy = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

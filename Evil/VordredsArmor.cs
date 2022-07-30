@@ -6,11 +6,11 @@
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VordredArmor
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
@@ -19,7 +19,7 @@ public class VordredArmor
     public CoreAdvanced Adv = new();
     public CoreSDKA SDKA = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -145,7 +145,7 @@ public class VordredArmor
 
         // UNBROKEN SKULLS (Mem) - 8342
         if (Core.IsMember)
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Especially Unbroken Skull", quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Especially Unbroken Skull", quant))
             {
                 Core.EnsureAccept(8411);
                 Core.HuntMonster("warundead", "Undead Mage", "Unbroken Skulls", 100, isTemp: false);
@@ -155,7 +155,7 @@ public class VordredArmor
             }
         else
             // UNBROKEN SKULLS - 8341
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Especially Unbroken Skull", quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Especially Unbroken Skull", quant))
             {
                 Core.EnsureAccept(8411);
                 Core.HuntMonster("warundead", "Undead Mage", "Unbroken Skulls", 100, isTemp: false);

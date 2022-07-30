@@ -12,11 +12,11 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreHollowbornPaladin
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -28,7 +28,7 @@ public class CoreHollowbornPaladin
     public Artixpointe APointe = new Artixpointe();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -58,7 +58,7 @@ public class CoreHollowbornPaladin
         Farm.IcestormArena();
 
         Core.AddDrop(PostSummoningItems);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(PostSummoningItems))
+        while (!Bot.ShouldExit && !Core.CheckInventory(PostSummoningItems))
         {
             Core.EnsureAccept(7560);
             Core.HuntMonster("shadowblast", "Carnage", "Shadow Seal", 1, false);

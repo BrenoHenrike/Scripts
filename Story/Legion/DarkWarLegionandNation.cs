@@ -3,17 +3,17 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DarkWarLegionandNation
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public Core13LoC LOC => new();
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -81,7 +81,7 @@ public class DarkWarLegionandNation
         // Covering Our Scent
         Story.KillQuest(8572, "darkwarlegion", "Funa-yurei");
         Story.MapItemQuest(8572, "darkwarlegion", 9888, 4);
- 
+
         // Can't Escape the Shadows
         Story.KillQuest(8573, "darkwarlegion", "Shadow Clone");
 

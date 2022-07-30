@@ -11,11 +11,11 @@
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VoidAvengerScythe
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -25,7 +25,7 @@ public class VoidAvengerScythe
     public JuggernautItemsofNulgath juggernaut = new();
     public EmpoweringItems Empower = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -52,7 +52,7 @@ public class VoidAvengerScythe
         if (!Bot.Quests.IsUnlocked(498))
             BatwingScythe();
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Batwing Scythe"))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Batwing Scythe"))
         {
             Core.EnsureAccept(498);
             Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull");

@@ -5,11 +5,11 @@
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
 //cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class EnoughDOOMforanArchfiend
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
@@ -17,7 +17,7 @@ public class EnoughDOOMforanArchfiend
     public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
     public NulgathDemandsWork NulgathDemandsWork = new NulgathDemandsWork();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(new[] {"ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",
@@ -76,6 +76,6 @@ public class EnoughDOOMforanArchfiend
         if (!Bot.Quests.CanComplete(5260))
             Core.Relogin();
         Core.EnsureComplete(5260);
-        Bot.Player.Pickup("ArchFiend DoomLord");
+        Bot.Drops.Pickup("ArchFiend DoomLord");
     }
 }

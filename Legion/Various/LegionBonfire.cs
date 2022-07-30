@@ -3,17 +3,17 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegionBonfire
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreLegion Legion = new CoreLegion();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -24,7 +24,7 @@ public class LegionBonfire
 
     public void GetLegionBonfire()
     {
-        if (Bot.Inventory.ContainsHouseItem("Legion Bonfire"))
+        if (Bot.House.Contains("Legion Bonfire"))
             return;
 
         Legion.FarmLegionToken(10000);

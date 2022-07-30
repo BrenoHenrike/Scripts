@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class MmmmMeatyQuest
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.Add("Meaty Shard");
 
@@ -21,9 +21,9 @@ public class MmmmMeatyQuest
 
     public void CompleteQuests()
     {
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(8613).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8613).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -40,7 +40,7 @@ public class MmmmMeatyQuest
             Core.EnsureComplete(8612);
         }
 
-        while (!Bot.ShouldExit() && (!Core.CheckInventory(Rewards)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory(Rewards)))
         {
             Core.EnsureAccept(8613);
             Core.KillMonster("MeateorTown", "r9", "Right", "Giant ChickenCow", "Meaty Shard", publicRoom: true);

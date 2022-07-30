@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Other/MysteriousEgg.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class HatchTheEgg
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public MysteriousEgg Egg = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -54,10 +54,10 @@ public class HatchTheEgg
         if (!Story.QuestProgression(6908))
         {
             Core.EnsureAccept(6908);
-            while (!Bot.ShouldExit() && !Core.CheckInventory(48632, 8))
+            while (!Bot.ShouldExit && !Core.CheckInventory(48632, 8))
             {
                 Core.Join("void", "r11", "Left");
-                Bot.Player.Kill("Void Elemental");
+                Bot.Kill.Monster("Void Elemental");
             }
             Core.EnsureComplete(6908);
         }

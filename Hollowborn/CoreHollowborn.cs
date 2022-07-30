@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreHollowborn
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -61,7 +61,7 @@ public class CoreHollowborn
 
         Core.AddDrop("Unidentified 36", "Fresh Soul");
 
-        while (!Bot.ShouldExit() && (!Core.CheckInventory("Unidentified 36", Uni36Quant) || !Core.CheckInventory("Fresh Soul", FSQuant)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Unidentified 36", Uni36Quant) || !Core.CheckInventory("Fresh Soul", FSQuant)))
         {
             Core.EnsureAccept(7293);
             Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);

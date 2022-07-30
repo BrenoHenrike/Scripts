@@ -5,12 +5,12 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
-using RBot;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class CoreLR
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -19,7 +19,7 @@ public class CoreLR
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
     public SeraphicWar_Story Seraph = new SeraphicWar_Story();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -110,7 +110,7 @@ public class CoreLR
 
             if (!hasDarkCaster)
             {
-                List<InventoryItem> BankData = Bot.Bank.BankItems;
+                List<InventoryItem> BankData = Bot.Bank.Items;
                 foreach (InventoryItem Item in BankData)
                 {
                     if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
@@ -136,7 +136,7 @@ public class CoreLR
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
         Bot.Quests.UpdateQuest(2060);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Revenant's Spellscroll", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Core.EnsureAccept(6897);
 
@@ -152,7 +152,7 @@ public class CoreLR
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false, publicRoom: true);
 
             Core.EnsureComplete(6897);
-            Bot.Player.Pickup("Revenant's Spellscroll");
+            Bot.Drops.Pickup("Revenant's Spellscroll");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -173,7 +173,7 @@ public class CoreLR
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
         Bot.Quests.UpdateQuest(4614);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Conquest Wreath", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
             Core.EnsureAccept(6898);
             Adv.BestGear(GearBoost.Undead);
@@ -193,7 +193,7 @@ public class CoreLR
             Core.KillMonster("doomwood", "r6", "Right", "*", "Doomwood Cohort Conquered", 500, false);
 
             Core.EnsureComplete(6898);
-            Bot.Player.Pickup("Conquest Wreath");
+            Bot.Drops.Pickup("Conquest Wreath");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -213,7 +213,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Exalted Crown");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Exalted Crown", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", quant))
         {
             Core.EnsureAccept(6899);
 
@@ -231,7 +231,7 @@ public class CoreLR
             Legion.DarkToken(100);
 
             Core.EnsureComplete(6899);
-            Bot.Player.Pickup("Exalted Crown");
+            Bot.Drops.Pickup("Exalted Crown");
             Core.Logger($"Completed x{i++}");
         }
     }

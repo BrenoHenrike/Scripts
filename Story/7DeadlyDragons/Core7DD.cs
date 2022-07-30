@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Core7DD
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
     bool doAll = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -260,12 +260,12 @@ public class Core7DD
             Core.GetMapItem(5380, 1, "sloth");
             Core.GetMapItem(5381, 1, "sloth");
             Core.EnsureComplete(5944);
-            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+            Bot.Send.Packet($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
         }
         else
         {
             Core.JumpWait();
-            Bot.SendPacket($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
+            Bot.Send.Packet($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
         }
     }
 

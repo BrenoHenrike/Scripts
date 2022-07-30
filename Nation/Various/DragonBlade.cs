@@ -1,11 +1,11 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DragonBladeofNulgath
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
@@ -17,7 +17,7 @@ public class DragonBladeofNulgath
         "Crimson Face Plate of Nulgath"
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(TwistedItems);
@@ -41,7 +41,7 @@ public class DragonBladeofNulgath
         BehemothBladeof("Shadow");
         BehemothBladeof("Light");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(TwistedItems))
+        while (!Bot.ShouldExit && !Core.CheckInventory(TwistedItems))
         {
             Core.EnsureAccept(765);
             Nation.FarmTotemofNulgath(3);
@@ -54,7 +54,7 @@ public class DragonBladeofNulgath
         Core.EnsureAccept(766);
         Core.HuntMonster("underworld", "Legion Fenrir", "Legion Fenrir Rune");
         Core.EnsureComplete(766, 5483);
-        Bot.Player.Pickup("DragonBlade of Nulgath");
+        Bot.Drops.Pickup("DragonBlade of Nulgath");
     }
 
     public void BehemothBladeof(string blade)

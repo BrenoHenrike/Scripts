@@ -2,17 +2,17 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 using System.Collections.Generic;
 
 public class AssistingCragAndBamboozle
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] {"Nulgath Larvae",
                      "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
@@ -61,7 +61,7 @@ public class AssistingCragAndBamboozle
         }
         else
         {
-            List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
+            List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
             Core.EnsureComplete(5817, RewardOptions.First(x => x.Name == Reward).ID);
         }
         Bot.Wait.ForPickup("*");

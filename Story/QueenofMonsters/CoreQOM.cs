@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreQOM
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -365,7 +365,7 @@ public class CoreQOM
         Story.MapItemQuest(5493, "SafiriaInvasion", 4897, 9);
 
         //Here, Doggy Doggy
-        Story.MapItemQuest(5494, "SafiriaInvasion", new[] {4898, 4899});
+        Story.MapItemQuest(5494, "SafiriaInvasion", new[] { 4898, 4899 });
         Story.KillQuest(5494, "SafiriaInvasion", "Blood Maggot");
 
         //Ma'alech

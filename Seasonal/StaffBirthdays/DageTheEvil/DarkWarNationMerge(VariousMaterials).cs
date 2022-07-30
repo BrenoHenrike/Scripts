@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DarkWarNationMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public DageRecruitStory DageRecruit => new DageRecruitStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -25,7 +25,7 @@ public class DarkWarNationMerge
         //Needed AddDrop
         Core.AddDrop("Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War" }, 300))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War" }, 300))
         {
             //Nation Defender Medal - Legion Badges, Mega Legion Badges
             if (!Core.CheckInventory("Nation Defender Medal", 300))
@@ -34,9 +34,9 @@ public class DarkWarNationMerge
                 Core.EnsureAccept(8579);
                 Core.HuntMonster("darkwarnation", "Legion Doomknight", "Legion Badge", 5);
                 Core.HuntMonster("darkwarnation", "Legion Doomknight", "Mega Legion Badge", 3);
-                while (!Bot.ShouldExit() && Core.CheckInventory("Legion Badge", 5))
+                while (!Bot.ShouldExit && Core.CheckInventory("Legion Badge", 5))
                     Core.EnsureComplete(8578);
-                while (!Bot.ShouldExit() && Core.CheckInventory("Mega Legion Badge", 3))
+                while (!Bot.ShouldExit && Core.CheckInventory("Mega Legion Badge", 3))
                     Core.EnsureComplete(8579);
             }
 

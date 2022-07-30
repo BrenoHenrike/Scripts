@@ -6,15 +6,15 @@
 //cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class YamiNoRonin
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreYnR YNR = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

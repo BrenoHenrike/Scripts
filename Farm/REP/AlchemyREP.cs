@@ -1,7 +1,7 @@
 ﻿//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
 using System.Collections.Generic;
 
 public class AlchemyREP
@@ -21,7 +21,7 @@ public class AlchemyREP
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

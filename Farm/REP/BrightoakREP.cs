@@ -5,14 +5,14 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 public class BrightoakREP
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public BrightOak BrightOak = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

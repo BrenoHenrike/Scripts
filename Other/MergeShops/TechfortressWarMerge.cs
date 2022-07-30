@@ -6,13 +6,13 @@
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class TechfortressWarMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -30,7 +30,7 @@ public class TechfortressWarMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -49,7 +49,7 @@ public class TechfortressWarMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -68,7 +68,7 @@ public class TechfortressWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(7638, 7638, 7639, 7641);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("techfortress", "Enter", "Spawn", "*", log: false);
                     }
@@ -97,7 +97,7 @@ public class TechfortressWarMerge
                     Core.EquipClass(ClassType.Farm);
                     if (!Core.CheckInventory("Blinding Bow of Destiny"))
                         BLOD.BlindingBow();
-                    while (!Bot.ShouldExit() && !Core.CheckInventory("Blinding Aura"))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
                     {
                         BLOD.FindingFragments(2174);
                         Bot.Wait.ForPickup("Blinding Aura");
@@ -133,7 +133,7 @@ public class TechfortressWarMerge
                     BLOD.DoAll();
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(7654);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster($"dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy’s Bones", 10, isTemp: false);
                         Core.KillMonster("dflesson", "r3", "Right", "Fire Elemental", "Fire Elemental's Bracer", 5, isTemp: false);
@@ -147,12 +147,12 @@ public class TechfortressWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.RegisterQuests(7655, 7291);
                     Core.AddDrop("Rainbow Moonstone");
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         if (!Core.CheckInventory("Rainbow Moonstone", 5))
                         {
                             Core.EquipClass(ClassType.Farm);
-                            while (!Bot.ShouldExit() && !Core.CheckInventory("Rainbow Moonstone", 5))
+                            while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Moonstone", 5))
                             {
                                 Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
                                 Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");

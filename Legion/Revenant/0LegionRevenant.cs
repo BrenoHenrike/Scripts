@@ -6,14 +6,14 @@
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegionFealty4
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreLR LR = new CoreLR();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

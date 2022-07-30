@@ -5,18 +5,18 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class UltimateBLoD
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new CoreStory();
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -40,7 +40,7 @@ public class UltimateBLoD
 
             Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
             Core.Logger($"Farming 1 Blinding Aura");
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Blinding Aura"))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
                 BLOD.FindingFragments(2174);
 
             Core.BuyItem("techfortress", 1902, "Overwhelmed Axe", shopItemID: 7588);
@@ -48,7 +48,7 @@ public class UltimateBLoD
 
         // Farming Shard of An Orb
         Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Shard of An Orb", 5))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Shard of An Orb", 5))
         {
             Core.EnsureAccept(7654);
 
@@ -67,7 +67,7 @@ public class UltimateBLoD
 
             Core.KillMonster("doomwood", "r10", "Right", "Undead Paladin", "Purification Orb", 10, isTemp: false);
 
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Rainbow Moonstone", 5))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Moonstone", 5))
             {
                 Core.AddDrop("Rainbow Moonstone");
                 Core.EnsureAccept(7291);

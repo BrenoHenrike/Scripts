@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class TarosManslayer
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public PurifiedClaymoreOfDestiny PCoD = new PurifiedClaymoreOfDestiny();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -34,7 +34,7 @@ public class TarosManslayer
         Farm.GoodREP();
         PCoD.GetPCoD();
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
         {
             Core.EnsureAccept(1111);
             Nation.FarmGemofNulgath(10);

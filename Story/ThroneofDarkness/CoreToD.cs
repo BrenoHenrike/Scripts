@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreToD
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
     bool doAll = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -674,7 +674,7 @@ public class CoreToD
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
             Core.Join("DeathPitbrawl", "Enter0", "Spawn");
@@ -685,25 +685,25 @@ public class CoreToD
             DeathPitMove(9, "Crosslower", 948, 400);
             DeathPitMove(14, "Crossupper", 903, 324);
             DeathPitMove(18, "Resource1A", 482, 295);
-            Bot.Player.Kill("Velm's Restorer");
-            Bot.Player.Kill("Velm's Restorer");
+            Bot.Kill.Monster("Velm's Restorer");
+            Bot.Kill.Monster("Velm's Restorer");
             DeathPitMove(20, "Resource1B", 938, 400);
-            Bot.Player.Kill("Velm's Restorer");
-            Bot.Player.Kill("Velm's Restorer");
+            Bot.Kill.Monster("Velm's Restorer");
+            Bot.Kill.Monster("Velm's Restorer");
             DeathPitMove(21, "Resource1A", 9, 435);
             DeathPitMove(19, "Crossupper", 461, 315);
             DeathPitMove(17, "Crosslower", 54, 339);
             DeathPitMove(15, "Morale1A", 522, 286);
-            Bot.Player.Kill("Velm's Brawler");
+            Bot.Kill.Monster("Velm's Brawler");
             DeathPitMove(23, "Morale1B", 948, 403);
-            Bot.Player.Kill("Velm's Brawler");
+            Bot.Kill.Monster("Velm's Brawler");
             DeathPitMove(25, "Morale1C", 945, 397);
-            Bot.Player.Kill("Velm's Brawler");
+            Bot.Kill.Monster("Velm's Brawler");
             DeathPitMove(28, "Captain1", 943, 404);
-            Bot.Player.Kill("General Velm (B)");
+            Bot.Kill.Monster("General Velm (B)");
             Bot.Wait.ForDrop(item);
             Bot.Sleep(Core.ActionDelay);
-            Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
+            Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
         }
     }
 
@@ -716,11 +716,11 @@ public class CoreToD
     /// <param name="moveY">Y position of the door</param>
     void DeathPitMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
     {
-        while (!Bot.ShouldExit() && Bot.Player.Cell != cell)
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
-            Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
+            Bot.Send.Packet($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
             Bot.Sleep(2500);
-            Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
+            Bot.Send.Packet($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
     }
 

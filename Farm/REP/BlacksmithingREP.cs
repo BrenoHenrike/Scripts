@@ -1,8 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class BlacksmithingREP
 {
@@ -22,7 +22,7 @@ public class BlacksmithingREP
     };
 
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

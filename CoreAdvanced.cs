@@ -1,20 +1,20 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
-using RBot.Items;
-using RBot.Shops;
-using RBot.Monsters;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Shops;
+using Skua.Core.Models.Monsters;
+using Skua.Core.Options;
 using System.Globalization;
 using System.Reflection;
 
 public class CoreAdvanced
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -29,13 +29,13 @@ public class CoreAdvanced
     /// <param name="itemName">Name of the item</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
-    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
         if (Core.CheckInventory(itemName, quant))
             return;
 
-        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
+        ShopItem item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
 
@@ -50,13 +50,13 @@ public class CoreAdvanced
     /// <param name="itemID">ID of the item</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
-    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of RBot</param>
+    /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
     {
         if (Core.CheckInventory(itemID, quant))
             return;
 
-        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
+        ShopItem item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
 
@@ -89,7 +89,7 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string buyOnlyThis = null)
     {
         Bot.Config.Configure();
         int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
@@ -146,7 +146,7 @@ public class CoreAdvanced
                 externalQuant =
                     matsOnly ?
                         (Bot.Inventory.IsMaxStack(req.Name) ?
-                            req.MaxStack : ((req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name)) + req.Quantity)) : req.Quantity;
+                            req.MaxStack : ((req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name)) + req.Quantity)) : req.Quantity;
                 if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
                     continue;
 
@@ -197,7 +197,7 @@ public class CoreAdvanced
 
     private bool canBuy(List<ShopItem> shopItem, int shopID, string itemNameID = "")
     {
-        ShopItem? item = parseShopItem(shopItem, shopID, itemNameID);
+        ShopItem item = parseShopItem(shopItem, shopID, itemNameID);
         if (item == null)
             return false;
 
@@ -235,7 +235,7 @@ public class CoreAdvanced
         return true;
     }
 
-    private ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID)
+    private ShopItem parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID)
     {
         if (shopItem.Count == 0)
         {
@@ -267,7 +267,7 @@ public class CoreAdvanced
     {
         faction = faction.Replace(" ", "");
         Type farmClass = Farm.GetType();
-        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
+        MethodInfo theMethod = farmClass.GetMethod(faction + "REP");
         if (theMethod == null)
         {
             Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
@@ -429,23 +429,23 @@ public class CoreAdvanced
                 Core.Logger($"Killing Ultra-Boss {monster}");
             int i = 0;
             Bot.Events.MonsterKilled += b => i++;
-            while (!Bot.ShouldExit() && i < 1)
-                while (!Bot.ShouldExit() && shouldAttack)
-                    Bot.Player.Kill(monster);
+            while (!Bot.ShouldExit && i < 1)
+                while (!Bot.ShouldExit && shouldAttack)
+                    Bot.Kill.Monster(monster);
             Core.Rest();
         }
         else
         {
             if (log)
                 Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
-            while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                while (!Bot.ShouldExit() && shouldAttack)
-                    Bot.Player.Kill(monster);
+                while (!Bot.ShouldExit && shouldAttack)
+                    Bot.Kill.Monster(monster);
                 if (!isTemp && !Core.CheckInventory(item))
                 {
                     Bot.Sleep(Core.ActionDelay);
-                    Bot.Player.RejectExcept(item);
+                    Bot.Drops.RejectExcept(item);
                 }
                 if (!Bot.Player.InCombat)
                     Core.Rest();
@@ -458,21 +458,21 @@ public class CoreAdvanced
         if (!forAuto)
             GearStore(true);
 
-        void _KillUltra(ScriptInterface bot, bool faded)
+        void _KillUltra(bool faded)
         {
-            Monster? Target = null;
+            Monster Target = null;
             if (!faded)
             {
                 Target = Bot.Player.Target;
                 shouldAttack = false;
-                Bot.Player.CancelAutoAttack();
-                Bot.Player.CancelTarget();
+                Bot.Combat.CancelAutoAttack();
+                Bot.Combat.CancelTarget();
             }
             else
             {
                 if (Target != null)
-                    Bot.Player.Attack(Target);
-                else Bot.Player.Attack("*");
+                    Bot.Combat.Attack(Target);
+                else Bot.Combat.Attack("*");
                 shouldAttack = true;
             }
         }
@@ -490,7 +490,7 @@ public class CoreAdvanced
     {
         Bot.Wait.ForPickup(ClassName);
 
-        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class);
+        InventoryItem itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class);
         if (itemInv == null)
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
         GearStore();
@@ -507,7 +507,7 @@ public class CoreAdvanced
         }
 
         SmartEnhance(ClassName);
-        string[]? CPBoost = BestGear(GearBoost.cp);
+        string[] CPBoost = BestGear(GearBoost.cp);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
         Farm.IcestormArena(Bot.Player.Level, true);
@@ -534,7 +534,7 @@ public class CoreAdvanced
 
         Core.Logger("Searching for the best available gear " + (isRacial() ? "against " : "for ") + BoostType.ToString());
 
-        List<InventoryItem> BankInvData = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList();
+        List<InventoryItem> BankInvData = Bot.Inventory.Items.Concat(Bot.Bank.Items).ToList();
         float TotalBoostValue = 0F;
         string[] ArrayOutput = new string[0];
 
@@ -561,7 +561,7 @@ public class CoreAdvanced
                             InventoryItem Item = BankInvData.First(x => x.Name == Gear.Key && x.Meta.Contains(BoostType.ToString()));
                             InventoryItem equippedItem = BankInvData.First(x => x.Equipped && x.ItemGroup == Item.ItemGroup);
                             if (Item != null && equippedItem != null
-                                && Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.GetGameObject<int>($"world.invTree.{equippedItem.ID}.EnhID"))
+                                && Bot.Flash.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.Flash.GetGameObject<int>($"world.invTree.{equippedItem.ID}.EnhID"))
                             {
                                 ArrayOutput = new[] { Item.Name };
                                 break;
@@ -582,7 +582,7 @@ public class CoreAdvanced
                     //        List<InventoryItem> theList = new();
                     //        theList.AddRange(Bot.Inventory.Items.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
                     //        if (theList.Count == 0)
-                    //            theList.AddRange(Bot.Bank.BankItems.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
+                    //            theList.AddRange(Bot.Bank.Items.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
 
                     //        if (theList.Count != 0)
                     //            Core.Equip(theList.First().Name);
@@ -595,7 +595,7 @@ public class CoreAdvanced
                     //    else
                     //    {
                     //        Core.JumpWait();
-                    //        Bot.SendPacket($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{invItem.ID}%");
+                    //        Bot.Send.Packet($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{invItem.ID}%");
                     //    }
                     //}
                     Core.Equip(ArrayOutput);
@@ -658,7 +658,7 @@ public class CoreAdvanced
             //        InventoryItem Item = BankInvData.First(x => x.Name == Gear.iRace || x.Name == Gear.iDMGall);
             //        InventoryItem equippedWeapon = BankInvData.First(x => x.Equipped == true && x.ItemGroup == "Weapon");
             //        if (Item != null && equippedWeapon != null
-            //            && Bot.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.GetGameObject<int>($"world.invTree.{equippedWeapon.ID}.EnhID"))
+            //            && Bot.Flash.GetGameObject<int>($"world.invTree.{Item.ID}.EnhID") == Bot.Flash.GetGameObject<int>($"world.invTree.{equippedWeapon.ID}.EnhID"))
             //        {
             //            ArrayOutput = new[] { Item.Name };
             //            break;
@@ -685,7 +685,7 @@ public class CoreAdvanced
                 //        List<InventoryItem> theList = new();
                 //        theList.AddRange(Bot.Inventory.Items.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
                 //        if (theList.Count == 0)
-                //            theList.AddRange(Bot.Bank.BankItems.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
+                //            theList.AddRange(Bot.Bank.Items.Where(x => x.Name != Item && x.ItemGroup == "Weapon" && x.EnhancementLevel > 0 && Core.IsMember ? true : !x.Upgrade));
 
                 //        if (theList.Count != 0)
                 //            Core.Equip(theList.First().Name);
@@ -698,7 +698,7 @@ public class CoreAdvanced
                 //    else
                 //    {
                 //        Core.JumpWait();
-                //        Bot.SendPacket($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{invItem.ID}%");
+                //        Bot.Send.Packet($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{invItem.ID}%");
                 //    }
                 //}
                 Core.Equip(ArrayOutput);
@@ -739,11 +739,11 @@ public class CoreAdvanced
         GearBoost.Undead
     };
     private GearBoost LastBoostType = GearBoost.None;
-    private string[]? LastBestGear;
+    private string[] LastBestGear;
     private class BestGearData
     {
-        public string? iRace { get; set; }
-        public string? iDMGall { get; set; }
+        public string iRace { get; set; }
+        public string iDMGall { get; set; }
         public float BoostValue { get; set; }
         public BestGearData(string iRace, string iDMGall, float BoostValue)
         {
@@ -865,7 +865,7 @@ public class CoreAdvanced
             return;
         }
 
-        InventoryItem? SelectedItem = Bot.Inventory.Items.Find(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)); ;
+        InventoryItem SelectedItem = Bot.Inventory.Items.Find(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)); ;
         if (SelectedItem == null)
         {
             if (Bot.Inventory.Items.Any(i => i.Name == item))
@@ -888,7 +888,7 @@ public class CoreAdvanced
             return;
 
         // If any of the items in the items array cant be found, return
-        List<string>? notFound = new();
+        List<string> notFound = new();
         foreach (string item in items)
             if (!Core.CheckInventory(item))
                 notFound.Add(item);
@@ -903,12 +903,12 @@ public class CoreAdvanced
         notFound = null;
 
         // Find all the items in the items array
-        List<InventoryItem>? SelectedItems = Bot.Inventory.Items.FindAll(i => items.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
+        List<InventoryItem> SelectedItems = Bot.Inventory.Items.FindAll(i => items.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
 
         // If any of the items in the items array cant be enhanced, return
         if (SelectedItems.Count != items.Count())
         {
-            List<string>? unEnhanceable = new();
+            List<string> unEnhanceable = new();
 
             foreach (string item in items)
                 if (!Bot.Inventory.Items.Any(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)))
@@ -930,7 +930,7 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Enhancement Type</returns>
     public EnhancementType CurrentClassEnh()
     {
-        int EnhPatternID = Bot.Inventory.CurrentClass.EnhancementPatternID;
+        int EnhPatternID = Bot.Player.CurrentClass.EnhancementPatternID;
         if (EnhPatternID == 1 || EnhPatternID == 23)
             EnhPatternID = 9;
         return (EnhancementType)EnhPatternID;
@@ -942,7 +942,7 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Cape Special</returns>
     public CapeSpecial CurrentCapeSpecial()
     {
-        InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Cape);
+        InventoryItem EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
         {
             Core.Logger("Failed to find equipped Cape", messageBox: true, stopBot: true);
@@ -957,13 +957,13 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Weapon Special</returns>
     public WeaponSpecial CurrentWeaponSpecial()
     {
-        InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        InventoryItem EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
         if (EquippedWeapon == null)
         {
             Core.Logger("Failed to find equipped weapon", messageBox: true, stopBot: true);
             return WeaponSpecial.None;
         }
-        return (WeaponSpecial)Bot.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
+        return (WeaponSpecial)Bot.Flash.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
     }
 
     private static ItemCategory[] EnhanceableCatagories =
@@ -998,7 +998,7 @@ public class CoreAdvanced
         }
 
         // Defining weapon and cape
-        InventoryItem? cape = null;
+        InventoryItem cape = null;
         if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
         {
             cape = ItemList.Find(i => i.Category == ItemCategory.Cape);
@@ -1008,7 +1008,7 @@ public class CoreAdvanced
                 ItemList.Remove(cape);
         }
 
-        InventoryItem? weapon = null;
+        InventoryItem weapon = null;
         if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
         {
             Core.DebugLogger(this);
@@ -1190,7 +1190,7 @@ public class CoreAdvanced
         if (skipCounter > 0)
             Core.Logger($"Skipped enhancement for {skipCounter} item{(skipCounter > 1 ? 's' : null)}");
 
-        void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
+        void _AutoEnhance(InventoryItem item, int shopID, string map = null)
         {
             bool specialOnCape = item.Category == ItemCategory.Cape && cSpecial != CapeSpecial.None;
             bool specialOnWeapon = item.ItemGroup == "Weapon" && wSpecial.ToString() != "None";
@@ -1286,7 +1286,7 @@ public class CoreAdvanced
             List<ShopItem> bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
 
             // Getting the best enhancement out of the two
-            ShopItem? bestEnhancement =
+            ShopItem bestEnhancement =
                 bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
                     bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
 
@@ -1297,7 +1297,7 @@ public class CoreAdvanced
                 return;
             }
             // Enhancing the item
-            Bot.SendPacket($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
+            Bot.Send.Packet($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
 
             // Final logging
             if (specialOnCape)
@@ -1311,8 +1311,8 @@ public class CoreAdvanced
         }
     }
 
-    private int getProcID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
-    private int getEnhPatternID(InventoryItem? item) => item == null ? 0 : Bot.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
+    private int getProcID(InventoryItem item) => item == null ? 0 : Bot.Flash.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
+    private int getEnhPatternID(InventoryItem item) => item == null ? 0 : Bot.Flash.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
 
     private bool uForgeWeapon() => Core.isCompletedBefore(8738);
     private bool uLaceratey() => Core.isCompletedBefore(8739);
@@ -1340,7 +1340,7 @@ public class CoreAdvanced
             return;
         }
 
-        InventoryItem? SelectedClass = Bot.Inventory.Items.Where(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class).FirstOrDefault();
+        InventoryItem SelectedClass = Bot.Inventory.Items.Where(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class).FirstOrDefault();
 
         if (SelectedClass == null)
         {

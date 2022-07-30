@@ -8,18 +8,18 @@
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class AscendedDrakathGear
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public DrakathArmorBot DA = new DrakathArmorBot();
     public TowerOfDoom TOD = new TowerOfDoom();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -48,7 +48,7 @@ public class AscendedDrakathGear
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Target))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Target))
         {
             Bot.Quests.UpdateQuest(159, 4);
             Core.EnsureAccept(3767);

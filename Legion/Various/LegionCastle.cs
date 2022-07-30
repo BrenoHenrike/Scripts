@@ -5,16 +5,16 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class GetLegionCastle
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public CoreLegion Legion = new CoreLegion();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

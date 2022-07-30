@@ -3,11 +3,11 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegionExercise1
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
@@ -15,7 +15,7 @@ public class LegionExercise1
 
     private string[] Rewards = { "Undead Champion Blade", "Legendary Golden Death Blade" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -35,7 +35,7 @@ public class LegionExercise1
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
 
-        int Dice = Bot.Runtime.Random.Next(1, 101);   // creates a number from 1 to 100
+        int Dice = Bot.Random.Next(1, 101);   // creates a number from 1 to 100
         //-------------------------------------------------------------------------------------------------------
 
         int i = 1;
@@ -43,7 +43,7 @@ public class LegionExercise1
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Undead Champion Blade", "Legendary Golden Death Blade" }))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Undead Champion Blade", "Legendary Golden Death Blade" }))
         {
             Core.EnsureAccept(821);
             Core.EquipClass(ClassType.Farm);

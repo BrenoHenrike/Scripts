@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class DragonslayerGeneral
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -73,7 +73,7 @@ public class DragonslayerGeneral
             Core.AddDrop("Enchanted Scale");
             Core.Logger($"Farming {ScaleQuant} Enchanted Scale, {Bot.Inventory.GetQuantity("Enchanted Scale")} / {ScaleQuant}");
             Core.RegisterQuests(5294);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
                 Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
 
             Core.CancelRegisteredQuests();

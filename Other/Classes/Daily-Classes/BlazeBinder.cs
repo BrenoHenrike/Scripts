@@ -3,18 +3,18 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class BlazeBinder
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreDailies Dailies = new();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -44,7 +44,7 @@ public class BlazeBinder
                 Core.Equip("Pyromancer");
                 Core.Logger("Getting *1* point in Pyro for Blaze Binder");
                 Core.Join("Noobshire");
-                Bot.Player.Kill("*");
+                Bot.Kill.Monster("*");
                 Adv.GearStore(true);
             }
             Adv.BuyItem("fireforge", 1142, "Darkness Sigil");

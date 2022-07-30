@@ -3,18 +3,18 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class BrightOak
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -168,7 +168,7 @@ public class BrightOak
 
             Core.AddDrop("Restoration of Nature Potion");
 
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Restoration of Nature Potion", quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
             {
                 Core.EnsureAccept(4660);
                 Core.BuyItem("sandsea", 245, "Water of Life");
@@ -301,7 +301,7 @@ public class BrightOak
                         Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Slain", 4);
                         Core.EnsureComplete(4800);
                         Bot.Wait.ForPickup("Ravinos Token II");
-            Bot.Sleep(1000);
+                        Bot.Sleep(1000);
                     }
                     Core.EnsureAccept(4801);
                     Core.HuntMonster("Gaiazor", "Tree Golem", "Lapis' Runestones");
@@ -368,7 +368,7 @@ public class BrightOak
                     Daily.SparrowsBlood();
                 Core.EnsureComplete(4806);
                 Bot.Wait.ForPickup("Lapis Token II");
-            Bot.Sleep(1000);
+                Bot.Sleep(1000);
             }
             Core.EnsureAccept(4807);
             Core.GetMapItem(4207, 1, "Gaiazor");

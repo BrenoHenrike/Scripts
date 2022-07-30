@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class WarTraining
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -75,7 +75,7 @@ public class WarTraining
         // Awaken Lady Fiamme
         Story.MapItemQuest(8139, "shadowfireplane", 8542);
         Bot.Sleep(5000);
-        
+
         // Destroy the Barrier
         if (!Story.QuestProgression(8140))
         {

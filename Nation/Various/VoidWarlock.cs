@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VoidWarlock
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(Rewards);
@@ -51,7 +51,7 @@ public class VoidWarlock
 
         int i = 1;
         Core.Logger("Starting [Tools for the Job] Quest");
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             Nation.FarmVoucher(false);
             Nation.FarmBloodGem(90);
@@ -66,7 +66,7 @@ public class VoidWarlock
         Core.Logger("All drops acquired from [Tools for the Job] Quest");
         i = 1;
         Core.Logger("Starting [Corrupted Touch] Quest");
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards2, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards2, toInv: false))
         {
             Nation.FarmUni13();
             Nation.FarmVoucher(true);

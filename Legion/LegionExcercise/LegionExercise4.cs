@@ -3,11 +3,11 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegionExercise4
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
@@ -15,7 +15,7 @@ public class LegionExercise4
 
     private string[] Rewards = { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced", "Legion Token" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -35,7 +35,7 @@ public class LegionExercise4
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
 
-        int Dice = Bot.Runtime.Random.Next(1, 101);
+        int Dice = Bot.Random.Next(1, 101);
         //-------------------------------------------------------------------------------------------------------
 
         int i = 1;
@@ -43,7 +43,7 @@ public class LegionExercise4
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced" }))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Corrupted Dragon Slayer", "Judgement Scythe", "PainSaw of Eidolon", "Soul Eater Advanced" }))
         {
             Core.EnsureAccept(824);
             Core.EquipClass(ClassType.Farm);

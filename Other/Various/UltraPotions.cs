@@ -4,18 +4,18 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using RBot;
-using RBot.Items;
-using RBot.Shops;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Shops;
 
 public class PotionBuyer
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -25,7 +25,7 @@ public class PotionBuyer
     }
 
 
-    public void INeedYourStrongestPotions(int potionQuant = 50, List<string>? potions = null)
+    public void INeedYourStrongestPotions(int potionQuant = 50, List<string> potions = null)
     {
         Farm.AlchemyREP();
         Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I’m going into battle and I want your strongest potions.");
@@ -33,15 +33,15 @@ public class PotionBuyer
             potions = new() { "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Potent Malevolence Elixir", "Sage Tonic" };
         List<ShopItem> shopItems;
         Core.Logger($"Potion Seller: You can’t handle my potions, they are too strong for you!");
-        if (ShopCache.Loaded.Any(s => s.ID == 2036))
+        if (Bot.Shops.LoadedCache.Any(s => s.ID == 2036))
         {
-            shopItems = ShopCache.Loaded.First(s => s.ID == 2036).Items;
+            shopItems = Bot.Shops.LoadedCache.First(s => s.ID == 2036).Items;
         }
         else
         {
             Core.Join("alchemyacademy");
             Bot.Shops.Load(2036);
-            shopItems = Bot.Shops.ShopItems;
+            shopItems = Bot.Shops.Items;
         }
 
         Core.Logger($"Potion Seller: My potions are too strong for you, traveller.");

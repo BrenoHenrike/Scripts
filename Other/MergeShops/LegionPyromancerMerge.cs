@@ -5,13 +5,13 @@
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Other/Materials/DarknessShard.cs
 //cs_include Scripts/CoreDailies.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class LegionPyromancerMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -27,7 +27,7 @@ public class LegionPyromancerMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -46,7 +46,7 @@ public class LegionPyromancerMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -67,7 +67,7 @@ public class LegionPyromancerMerge
                         return;
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6976);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("underworld", "Bloodfiend", "Fiend Blood", 10);
                         Bot.Wait.ForPickup(req.Name);
@@ -78,7 +78,7 @@ public class LegionPyromancerMerge
                 case "Legion Token":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Legion.FarmLegionToken(quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -89,7 +89,7 @@ public class LegionPyromancerMerge
                 case "Flaming Skull":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("underworld", "Frozen Pyromancer", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -100,7 +100,7 @@ public class LegionPyromancerMerge
                 case "Darkness Shard":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         DShard.GetShard(quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -114,7 +114,7 @@ public class LegionPyromancerMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6975);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("underworld", "Frozen Pyromancer", "Stolen Flame");
                         Bot.Wait.ForPickup(req.Name);
@@ -128,7 +128,7 @@ public class LegionPyromancerMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6977);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("underworld", "Frozen Pyromancer", "Pyromancer Soul Shard");
                         Bot.Wait.ForPickup(req.Name);

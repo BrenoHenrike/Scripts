@@ -14,11 +14,11 @@
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class NecroticBladeoftheUnderworld
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -28,7 +28,7 @@ public class NecroticBladeoftheUnderworld
     public AnotherOneBitesTheDust SoulSand = new();
     public CoreFarms Farm = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Legion Token", "Beast Soul", "Soul Sand", "Dage the Evil Insignia" });
         Core.SetOptions();
@@ -100,21 +100,21 @@ public class NecroticBladeoftheUnderworld
         Core.EnsureComplete(8548);
         Bot.Wait.ForPickup("Necrotic Blade of the Underworld");
 
-        void Event_RunToArea(ScriptInterface bot, string zone)
+        void Event_RunToArea(string zone)
         {
             switch (zone.ToLower())
             {
                 case "a":
                     //Move to the left
-                    bot.Player.WalkTo(Bot.Runtime.Random.Next(40, 175), Bot.Runtime.Random.Next(400, 410), speed: 8);
+                    Bot.Player.WalkTo(Bot.Random.Next(40, 175), Bot.Random.Next(400, 410), speed: 8);
                     break;
                 case "b":
                     //Move to the right
-                    bot.Player.WalkTo(Bot.Runtime.Random.Next(760, 930), Bot.Runtime.Random.Next(410, 415), speed: 8);
+                    Bot.Player.WalkTo(Bot.Random.Next(760, 930), Bot.Random.Next(410, 415), speed: 8);
                     break;
                 default:
                     //Move to the center
-                    bot.Player.WalkTo(Bot.Runtime.Random.Next(480, 500), Bot.Runtime.Random.Next(300, 420), speed: 8);
+                    Bot.Player.WalkTo(Bot.Random.Next(480, 500), Bot.Random.Next(300, 420), speed: 8);
                     break;
             }
         }

@@ -7,11 +7,11 @@
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class SepulchuresOriginalHelm
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
@@ -23,7 +23,7 @@ public class SepulchuresOriginalHelm
     public AQWZombies Zombie = new();
     public string[] GravelynsDoomFireTokenItems = { "Empowered Essence", "Gravelyn's Blessing", "Painful Memory Bubble", "Burning Passion Flame", "Father's Sorrowful Tear", "Gravelyn's DoomFire Token", "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor" });
         Core.SetOptions();
@@ -72,9 +72,9 @@ public class SepulchuresOriginalHelm
 
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Gravelyn's DoomFire Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Gravelyn's DoomFire Token", quant))
         {
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Gravelyn's Blessing"))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Gravelyn's Blessing"))
             {
                 if (Core.CheckInventory("Necrotic Sword of Doom"))
                     Core.ChainComplete(5455);

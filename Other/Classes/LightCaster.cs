@@ -8,10 +8,10 @@
 //cs_include Scripts/Other/Weapons/LanceOfTime.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class LightCaster
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -22,7 +22,7 @@ public class LightCaster
     public BurningBlade BB = new BurningBlade();
     public BurningBladeOfAbezeth BBOA = new BurningBladeOfAbezeth();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

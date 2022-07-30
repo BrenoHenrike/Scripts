@@ -15,11 +15,11 @@
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DragonOfTime
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
@@ -33,7 +33,7 @@ public class DragonOfTime
     public Collection Coll = new();
     public Borgars Borg = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -61,7 +61,7 @@ public class DragonOfTime
             Core.KillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
 
             Farm.LoremasterREP(4);
-            
+
             Core.BuyItem("librarium", 651, "Myths of Lore");
 
             Core.KillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
@@ -291,7 +291,7 @@ public class DragonOfTime
         //I'm Loving It My Way
         if (doExtra)
         {
-            while (!Bot.ShouldExit() && !Core.CheckInventory(Extras, toInv: false))
+            while (!Bot.ShouldExit && !Core.CheckInventory(Extras, toInv: false))
             {
                 Farm.Experience(75);
                 Core.EnsureAccept(7725);
@@ -303,7 +303,7 @@ public class DragonOfTime
                 if (!Core.CheckInventory("Borgar"))
                 {
                     bool LoggedBefore = false;
-                    while (!Bot.ShouldExit() && !Core.CheckInventory("Burger Buns", 5))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Burger Buns", 5))
                     {
                         Core.EnsureAccept(7522);
                         Core.HuntMonster("borgars", "Burglinster", "Burglinster Cured", log: !LoggedBefore);

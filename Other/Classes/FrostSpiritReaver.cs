@@ -3,16 +3,16 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Glacera.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FrostSpiritReaver
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public GlaceraStory Glacera = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -68,7 +68,7 @@ public class FrostSpiritReaver
         {
             Core.Logger("Getting Quest Item Requirements for \"Cold Hearted\"");
             Core.AddDrop("Flame of Courage");
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Flame of Courage", 25))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Flame of Courage", 25))
             {
                 Core.EnsureAccept(3955);
                 Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage");
@@ -80,11 +80,11 @@ public class FrostSpiritReaver
         }
 
         Core.RegisterQuests(7920);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Ice-Ninth", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Ice-Ninth", quant))
         {
             Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
             Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Ice Diamond", 3))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 3))
             {
                 Core.EnsureAccept(7279);
                 Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
@@ -111,9 +111,9 @@ public class FrostSpiritReaver
             Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", isTemp: false);
             Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
         }
-        
+
         Core.RegisterQuests(7921);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Glaceran Attunement", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Glaceran Attunement", quant))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100, isTemp: false);
@@ -137,7 +137,7 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Farm);
 
             Core.RegisterQuests(7840);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token I", Token1))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Icy Token I", Token1))
             {
                 Core.EnsureAccept(7838);
                 Core.HuntMonster("icedungeon", "Frosted Banshee", "Frosted Banshee Defeated", 10, log: false);
@@ -154,7 +154,7 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Farm);
 
             Core.RegisterQuests(7839);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token II", Token2))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Icy Token II", Token2))
             {
                 Core.HuntMonster("icedungeon", "Spirit of Ice", "Spirit of Ice Defeated", 10, log: false);
                 Core.HuntMonster("icedungeon", "Ice Crystal", "Ice Crystal Defeated", 10, log: false);
@@ -172,7 +172,7 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Farm);
 
             Core.RegisterQuests(7840);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token III", Token3))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Icy Token III", Token3))
             {
                 Core.HuntMonster("icedungeon", "Living Ice", "Living Ice Defeated", 5, log: false);
                 Core.HuntMonster("icedungeon", "Crystallized Elemental", "Crystallized Elemental Defeated", 5, log: false);
@@ -190,7 +190,7 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Solo);
 
             Core.RegisterQuests(7841);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Icy Token IV", Token4))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Icy Token IV", Token4))
             {
                 Core.HuntMonster("icedungeon", "Image of Glace", "Glace's Approval");
                 Core.HuntMonster("icedungeon", "Abel", "Abel's Approval");

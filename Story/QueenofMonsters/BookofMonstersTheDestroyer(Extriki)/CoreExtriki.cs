@@ -1,8 +1,8 @@
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreExtriki
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 

@@ -4,17 +4,17 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Glacera.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class GlacialBerserker
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public GlaceraStory Glacera = new GlaceraStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -27,7 +27,7 @@ public class GlacialBerserker
     {
         if (Core.CheckInventory("Glacial Berserker"))
             return;
-            
+
         Glacera.IceWindPass();
         Adv.BestGear(GearBoost.rep);
         Farm.GlaceraREP();

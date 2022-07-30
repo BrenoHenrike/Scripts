@@ -4,11 +4,11 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class HeadoftheLegionBeast
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreFarms Farm = new CoreFarms();
@@ -16,7 +16,7 @@ public class HeadoftheLegionBeast
     public CoreAdvanced Adv = new CoreAdvanced();
     public SevenCircles Circles = new SevenCircles();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -110,7 +110,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant}x Essence of Wrath");
 
         Core.RegisterQuests(7979);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Essence of Wrath", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Wrath", quant))
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
 
         Bot.Wait.ForPickup("Essence of Wrath");
@@ -127,7 +127,7 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Violence");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Essence of Violence", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Violence", quant))
         {
             Core.EnsureAccept(7985);
             Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", "Violence Guards Defeated", 12);
@@ -147,7 +147,7 @@ public class HeadoftheLegionBeast
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Essence of Treachery");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Essence of Treachery", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Treachery", quant))
         {
             Core.EnsureAccept(7988);
             Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", "Treachery Guards Defeated", 12);
@@ -167,7 +167,7 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Souls of Heresy");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Souls of Heresy", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Souls of Heresy", quant))
         {
             Core.EnsureAccept(7983);
             Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", "Heresy Guards Defeated", 12);
@@ -186,7 +186,7 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         Core.Logger($"Farming {quant} Penance");
         Core.EquipClass(ClassType.Farm);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Penance", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Penance", quant))
         {
             EssenceWrath(quant2);
             EssenceViolence(quant2);
@@ -208,7 +208,7 @@ public class HeadoftheLegionBeast
         Core.Logger($"Farming {quant} Indulgence");
 
         Core.RegisterQuests(7978);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Indulgence", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Indulgence", quant))
         {
             Core.KillMonster("sevencircles", "r2", "Left", "Limbo Guard", "Souls of Limbo", 25);
             Core.KillMonster("sevencircles", "r3", "Left", "Luxuria Guard", "Essence of Luxuria", 1);

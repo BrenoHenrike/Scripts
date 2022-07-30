@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VoidKnightSword
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
@@ -28,7 +28,7 @@ public class VoidKnightSword
 
         Core.Logger($"Farming for {item}({quant})");
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             if (Core.CheckInventory(38275))
                 Core.EnsureAccept(5662);
@@ -43,7 +43,7 @@ public class VoidKnightSword
                 Core.EnsureComplete(5662);
             else
                 Core.EnsureComplete(5659);
-            Bot.Player.Pickup(Nation.bagDrops);
+            Bot.Drops.Pickup(Nation.bagDrops);
             Core.Logger($"Completed x{i++}");
         }
     }

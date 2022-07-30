@@ -1,11 +1,11 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VoidDestroyer
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
@@ -22,7 +22,7 @@ public class VoidDestroyer
         "Toxic Void Katana",
         "Dual Toxic Void Katanas"
     };
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -34,7 +34,7 @@ public class VoidDestroyer
     public void GetDestroyer()
     {
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             Nation.Supplies("Unidentified 4");
             Nation.SwindleBulk(1);
@@ -43,7 +43,7 @@ public class VoidDestroyer
             Nation.FarmGemofNulgath(1);
 
             Core.ChainComplete(5661);
-            Bot.Player.Pickup(Rewards);
+            Bot.Drops.Pickup(Rewards);
             Core.Logger($"Completed x{i++}");
         }
     }

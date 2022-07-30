@@ -4,17 +4,17 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DarkLord
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public MurderMoonMerge Merge = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

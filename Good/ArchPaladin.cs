@@ -6,11 +6,11 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Story/XansLair.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ArchPaladin
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -20,7 +20,7 @@ public class ArchPaladin
     public Paladin Pal = new Paladin();
     public XansLair Xan = new XansLair();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

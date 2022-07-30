@@ -6,11 +6,11 @@
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ObsidianLightofDestiny
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -19,7 +19,7 @@ public class ObsidianLightofDestiny
     public CoreBLOD BLOD = new CoreBLOD();
     public DoomwoodPart3 DW3 = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -56,9 +56,9 @@ public class ObsidianLightofDestiny
             BLOD.FindingFragmentsBow(120); //Bright Aura x120
             BLOD.FindingFragments(2174); //Blinding Aura 
 
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
+            while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
                 BLOD.FindingFragments(2179);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Loyal Spirit Orb", 750))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Loyal Spirit Orb", 750))
                 BLOD.FindingFragments(2179);
             Core.EnsureComplete(7648);
             Bot.Wait.ForPickup("Obsidian Light of Destiny");

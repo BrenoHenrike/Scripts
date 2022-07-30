@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class TowerOfDoom
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -18,7 +18,7 @@ public class TowerOfDoom
 
     public void TowerProgress(int Floor = 10)
     {
-        if (!Bot.Quests.QuestTree.Any(x => x.ID == 3474 + Floor))
+        if (!Bot.Quests.Tree.Any(x => x.ID == 3474 + Floor))
             Bot.Quests.Load(3475, 3476, 3477, 3478, 3479, 3480, 3481, 3482, 3483, 3484);
         if (Core.isCompletedBefore(3474 + Floor))
             return;

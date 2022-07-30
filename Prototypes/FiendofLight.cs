@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FiendofLight
 {
 
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public SepulchuresRise SepulchureSaga = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -52,7 +52,7 @@ public class FiendofLight
         ////Farming rewards\\\\
         Core.AddDrop(Rewards);
         Core.RegisterQuests(6408);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
             Core.HuntMonster("darkplane", "*", "Crystallized Memory", 10);
         ////If you want the bot to bank the items after farming them all un "//" the following lines.\\\\
         //Core.Logger($"banking Fiend of Light");

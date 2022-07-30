@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreVHL
 {
@@ -14,7 +14,7 @@ public class CoreVHL
     // Recommended: true
     private bool UseSparrowMethod = true;
 
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
@@ -22,7 +22,7 @@ public class CoreVHL
     public CoreNation Nation = new();
     public AssistingCragAndBamboozle ACAB = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -60,7 +60,7 @@ public class CoreVHL
 
         Core.FarmingLogger("Roentgenium of Nulgath", quant);
         int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Roentgenium of Nulgath", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
             Core.EnsureAccept(5660);
 
@@ -137,7 +137,7 @@ public class CoreVHL
         Nation.FarmBloodGem();
         if (!Core.CheckInventory("Unidentified 19"))
         {
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Receipt of Swindle", 6))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Swindle", 6))
                 Nation.SwindleReturn();
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
         }

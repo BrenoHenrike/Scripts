@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class GreenEggs
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -17,9 +17,9 @@ public class GreenEggs
 
     public void GetGreenEggs()
     {
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(5785).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5785).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -32,7 +32,7 @@ public class GreenEggs
             return;
         }
 
-        while (!Bot.ShouldExit() && (!Core.CheckInventory(Rewards)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory(Rewards)))
         {
             Core.EnsureAccept(5785);
             Core.HuntMonster("GreenGuardWest", "Green Chick", "Green Chick");

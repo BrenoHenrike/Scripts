@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FiendPast
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -42,7 +42,7 @@ public class FiendPast
         Story.KillQuest(8485, "fiendpast", "Scarvitas");
         //Seal Maintenance 8486
         Story.MapItemQuest(8486, "fiendpast", 9557, 4);
-        Story.KillQuest(8486, "fiendpast", "Avarice Guard");        
+        Story.KillQuest(8486, "fiendpast", "Avarice Guard");
         //Traitors Are Null And Void 8487
         Story.KillQuest(8487, "fiendpast", "Void Fiend");
         //Greedy Imprisonment 8488
@@ -57,17 +57,17 @@ public class FiendPast
         Story.MapItemQuest(8492, "fiendpast", 9558, 6);
         //The Traitor’s Path 8493
         if (!Story.QuestProgression(8493))
-        {           
+        {
             Core.EnsureAccept(8493);
             Story.MapItemQuest(8493, "fiendpast", 9559);
             Core.HuntMonster("fiendpast", "Nation Defector", "Forces Defeated", 12);
             Core.HuntMonster("fiendpast", "Proto-Legion Knight", "Dage's Key");
-            Core.EnsureComplete(8493);           
+            Core.EnsureComplete(8493);
         }
         //Defeat Dage the Lich 8494
         Story.KillQuest(8494, "fiendpast", "Dage the Lich");
 
-        
+
 
     }
 }

@@ -6,13 +6,13 @@
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 //cs_include Scripts/Story/Legion/DageChallengeStory.cs
-using RBot;
-using RBot.Shops;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Shops;
+using Skua.Core.Models.Items;
 
 public class DageChallengeMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
@@ -38,7 +38,7 @@ public class DageChallengeMerge
         "Wrath of the Legion's Cloak"
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -65,7 +65,7 @@ public class DageChallengeMerge
 
         if (!Core.CheckInventory("Underworld Laurel", quantLaurel))
             Core.Logger($"Farming \"Underworld Laurel\" x{quantLaurel}");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Underworld Laurel", quantLaurel))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Underworld Laurel", quantLaurel))
         {
             Core.EnsureAccept(8544);
             Core.HuntMonster("Dage", "Dage the Evil", "Dage Dueled", publicRoom: true);
@@ -75,7 +75,7 @@ public class DageChallengeMerge
 
         if (!Core.CheckInventory("Underworld Medal", quantMedal))
             Core.Logger($"Farming \"Underworld Medal\" x{quantMedal}");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Underworld Medal", quantMedal))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Underworld Medal", quantMedal))
         {
             Core.EquipClass(ClassType.Farm);
 
@@ -89,7 +89,7 @@ public class DageChallengeMerge
 
         if (!Core.CheckInventory("Underworld Accolade", quantAccolade))
             Core.Logger($"Farming \"Underworld Accolade\" x{quantAccolade}))");
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Underworld Accolade", quantAccolade))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Underworld Accolade", quantAccolade))
         {
             Core.EnsureAccept(8546);
             Core.HuntMonster("legionarena", "legion fiend rider", "Fiend Rider's Approval");
@@ -112,7 +112,7 @@ public class DageChallengeMerge
         {
             Core.Join("dage");
             Bot.Shops.Load(2118);
-            List<ShopItem> shopdata = Bot.Shops.ShopItems;
+            List<ShopItem> shopdata = Bot.Shops.Items;
 
             List<ItemBase> Requirements = shopdata.First(i => i.Name == item).Requirements;
             int Laurel = Requirements.First(i => i.Name == "Underworld Laurel").Quantity;
@@ -128,7 +128,7 @@ public class DageChallengeMerge
         {
             Core.Join("dage");
             Bot.Shops.Load(2118);
-            List<ShopItem> shopdata = Bot.Shops.ShopItems;
+            List<ShopItem> shopdata = Bot.Shops.Items;
 
             foreach (string MergeItem in MergeItems)
             {

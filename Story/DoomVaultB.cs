@@ -2,18 +2,18 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DoomVaultB
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
-    
+    public IScriptInterface Bot => IScriptInterface.Instance;
+
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
-    
-    public void ScriptMain(ScriptInterface bot)
+
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -29,7 +29,7 @@ public class DoomVaultB
         //     Core.Logger("VaultB Complete");
         //     return;
         // }
-            
+
         Core.AcceptandCompleteTries = 1;
 
         Story.PreLoad();
@@ -93,7 +93,7 @@ public class DoomVaultB
 
         // Grim Underdungeon XX     
         Story.ChainQuest(2995);
-        
+
         // Grim Underdungeon XXI        
         Story.KillQuest(2996, "Doomvaultb", "Grimmer Fire Mage");
 

@@ -3,11 +3,11 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LegionExercise3
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreLegion Legion = new CoreLegion();
@@ -15,7 +15,7 @@ public class LegionExercise3
 
     private string[] Rewards = { "Judgement Hammer", "Legion Token" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -35,7 +35,7 @@ public class LegionExercise3
 
         Core.Logger("Disclaimer: Percentages are randomized, just made purely for fun. i cba making it an actualy %age");
 
-        int Dice = Bot.Runtime.Random.Next(1, 101);
+        int Dice = Bot.Random.Next(1, 101);
         //-------------------------------------------------------------------------------------------------------
 
         int i = 1;
@@ -43,14 +43,14 @@ public class LegionExercise3
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Judgement Hammer" }))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Judgement Hammer" }))
         {
             Core.EnsureAccept(823);
             Core.EquipClass(ClassType.Farm);
             if (!Core.CheckInventory(54257, 24))
             {
                 Core.Logger($"Hunting Chaos Egg for Chaos Egg, (24) [Temp = true");
-                while (!Bot.ShouldExit() && !Core.CheckInventory(54257, 24))
+                while (!Bot.ShouldExit && !Core.CheckInventory(54257, 24))
                     Core.HuntMonster("Uppercity", "Chaos Egg", publicRoom: false, log: false);
             }
             Core.HuntMonster("Mobius", "Chaos Sp-Eye", "Chaorrupted Essence", 50, isTemp: false, publicRoom: false);

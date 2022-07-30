@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DarkAlly_Story
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -23,14 +23,14 @@ public class DarkAlly_Story
             return;
 
         Story.PreLoad();
-        
+
         if (!Story.QuestProgression(7419))
         {
             Story.MapItemQuest(7419, "darkally", 7179, 6);
             Core.KillMonster("darkally", "r2", "Left", "Shadow", "Shadow Destroyed", 10);
             Core.EnsureComplete(7419);
         }
-        
+
         Story.KillQuest(7420, "darkally", new[] { "Underworld Golem", "Underworld Golem" });
 
         Story.MapItemQuest(7421, "darkally", 7180, 1);
@@ -40,8 +40,8 @@ public class DarkAlly_Story
         {
             Core.EnsureAccept(7422);
             Core.Join("Darkally", "r2", "Left");
-            while (!Bot.ShouldExit() && !Core.CheckInventory(53855, 10))
-                Bot.Player.Kill("Dark Makai");
+            while (!Bot.ShouldExit && !Core.CheckInventory(53855, 10))
+                Bot.Kill.Monster("Dark Makai");
             Core.EnsureComplete(7422);
         }
 

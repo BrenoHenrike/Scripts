@@ -2,14 +2,14 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class EternalREP
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreToD TOD = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

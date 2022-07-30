@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class MurderMoonMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public MurderMoon Moon = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -31,7 +31,7 @@ public class MurderMoonMerge
 
         Core.AddDrop("Cyber Crystal");
         Core.RegisterQuests(8065);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Cyber Crystal", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Cyber Crystal", quant))
         {
             Core.HuntMonster("murdermoon", "Tempest Soldier", "Tempest Soldier Badge", 5, log: false);
             Bot.Wait.ForPickup("Cyber Crystal");

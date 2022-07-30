@@ -2,17 +2,17 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class WillpowerExtraction
 {
-    public ScriptInterface Bot = ScriptInterface.Instance;
+    public IScriptInterface Bot = IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(Nation.tercessBags);
@@ -38,7 +38,7 @@ public class WillpowerExtraction
             "King Klunk's Crown", "Golden Shadow Breaker", "Shadow Terror Axe");
 
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Unidentified 34", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 34", quant))
         {
             Core.EnsureAccept(5258);
 
@@ -49,7 +49,7 @@ public class WillpowerExtraction
             {
                 if (Core.IsMember)
                 {
-                    while (!Bot.ShouldExit() && !Core.CheckInventory("Receipt of Swindle", 6))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Swindle", 6))
                         Nation.SwindleReturn();
                     Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
                 }
@@ -85,7 +85,7 @@ public class WillpowerExtraction
 
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
             {
-                while (!Bot.ShouldExit() && !Core.CheckInventory("Facebreakers of Nulgath"))
+                while (!Bot.ShouldExit && !Core.CheckInventory("Facebreakers of Nulgath"))
                 {
                     Core.EnsureAccept(3046);
                     Core.EquipClass(ClassType.Solo);
@@ -96,14 +96,14 @@ public class WillpowerExtraction
                     Nation.SwindleBulk(5);
                     Nation.FarmDiamondofNulgath(1);
                     Core.EnsureComplete(3046);
-                    Bot.Player.Pickup("Facebreakers of Nulgath", "SightBlinder Axes of Nulgath");
+                    Bot.Drops.Pickup("Facebreakers of Nulgath", "SightBlinder Axes of Nulgath");
                     Bot.Sleep(Core.ActionDelay);
                 }
             }
             Nation.FarmUni13();
 
             Core.EnsureComplete(5258);
-            Bot.Player.Pickup("Unidentified 34");
+            Bot.Drops.Pickup("Unidentified 34");
 
             Core.Logger($"Completed x{i++}");
         }

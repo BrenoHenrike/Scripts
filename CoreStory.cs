@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
-using RBot.Items;
-using RBot.Quests;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -13,10 +13,10 @@ public class CoreStory
     // Recommended: false
     // Used for testing bots, dont toggle this as a user
     public bool TestBot { get; set; } = false;
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -191,7 +191,7 @@ public class CoreStory
             CBO_Checked = true;
         }
 
-        Quest? QuestData = Core.EnsureLoad(QuestID);
+        Quest QuestData = Core.EnsureLoad(QuestID);
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
         if (QuestData == null)
@@ -208,16 +208,16 @@ public class CoreStory
 
             if (timeout > 15)
             {
-                int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
+                int currentValue = Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
                 string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
                                  $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
-                                  "Please fill in the RBot Scripts Form to report this.|" +
+                                  "Please fill in the Skua Scripts Form to report this.|" +
                                   "Do you wish to be brought to the form?";
                 Core.Logger(message.Replace("|", " "));
                 DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (response == DialogResult.Yes)
                 {
-                    string path = ScriptManager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
+                    string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
                     Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
                                                  "entry.2118425091=Bug+Report&" +
                                                 $"entry.290078150={path}&" +
@@ -273,7 +273,7 @@ public class CoreStory
         List<string> SelectedLines = new();
         List<string> CSIncFiles = new();
 
-        List<string> CSFile = File.ReadAllLines(ScriptManager.LoadedScript).ToList();
+        List<string> CSFile = File.ReadAllLines(Bot.Manager.LoadedScript).ToList();
         string[] SearchParam = {
             "Story.KillQuest",
             "Story.MapItemQuest",
@@ -301,7 +301,7 @@ public class CoreStory
 
         Core.Logger($"Scanning {CSIncludes.Count + 1} Files ({CSIncFiles.Count + CSFile.Count} Lines)");
 
-        List<Quest> QuestTree = Bot.Quests.QuestTree;
+        List<Quest> QuestTree = Bot.Quests.Tree;
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         int t = 0;
@@ -345,7 +345,7 @@ public class CoreStory
         if (stopWatch.IsRunning)
             stopWatch.Stop();
 
-        if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.QuestTree.Count()))
+        if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count()))
         {
             Core.Logger($"Found {QuestIDs.Count} Quests, this exceeds the max amount of loaded quests. No quests will be loaded.");
             PreLoaded = true;

@@ -3,13 +3,13 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/WarfuryTraining.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class FirePlaneWarMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -24,7 +24,7 @@ public class FirePlaneWarMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -43,7 +43,7 @@ public class FirePlaneWarMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -62,7 +62,7 @@ public class FirePlaneWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8125, 8126);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("fireplanewar", "r5", "Right", "*", "War Medal", 5);
                         Bot.Wait.ForPickup(req.Name);
@@ -75,7 +75,7 @@ public class FirePlaneWarMerge
                     Core.EquipClass(ClassType.Farm);
                     WT.StoryLine();
                     Core.RegisterQuests(8131);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("fireplanewar", "ShadowClaw", "ShadowClaw Defeated", quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -87,7 +87,7 @@ public class FirePlaneWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("fireplanewar", "ShadowFlame Phedra", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -99,7 +99,7 @@ public class FirePlaneWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.BuyItem("fireplanewar", 2007, req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -111,7 +111,7 @@ public class FirePlaneWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("fireplanewar", "Shadowflame Soldier", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -123,7 +123,7 @@ public class FirePlaneWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.BuyItem("fireplanewar", 2007, req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);
@@ -135,7 +135,7 @@ public class FirePlaneWarMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("fireplanewar", "Shadefire Onslaught", req.Name, quant);
                         Bot.Wait.ForPickup(req.Name);

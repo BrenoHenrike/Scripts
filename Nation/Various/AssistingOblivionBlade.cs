@@ -1,17 +1,17 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class AssistingOblivionBlade
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -31,9 +31,9 @@ public class AssistingOblivionBlade
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant");
 
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -43,7 +43,7 @@ public class AssistingOblivionBlade
         Core.RegisterQuests(5818);
         foreach (string item in RewardsList)
         {
-            while (!Bot.ShouldExit() && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
             {
                 Farm.TheSecret4();
                 Nation.EssenceofNulgath(20);

@@ -1,11 +1,11 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VoidShogun
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
@@ -26,7 +26,7 @@ public class VoidShogun
         "Dual Void Shogun Katanas"
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(Rewards);
@@ -55,7 +55,7 @@ public class VoidShogun
         Nation.FarmVoucher(false);
 
         int i = 1;
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(6484);
 
@@ -69,7 +69,7 @@ public class VoidShogun
             Core.HuntMonster("necrocavern", "Shadowstone Support", "ShadowStone Rune");
 
             Core.EnsureCompleteChoose(6484, Rewards);
-            Bot.Player.Pickup(Rewards);
+            Bot.Drops.Pickup(Rewards);
             Core.Logger($"Completed x{i++}");
         }
     }

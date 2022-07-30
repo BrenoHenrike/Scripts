@@ -7,11 +7,11 @@
 //cs_include Scripts/Story/SepulchureSaga/02SepulchurePrequelLynaria.cs
 //cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
 //cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CompleteSepulchureSaga
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -20,7 +20,7 @@ public class CompleteSepulchureSaga
     public SepulchuresRise s03 = new SepulchuresRise();
     public ShadowfallRise s04 = new ShadowfallRise();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

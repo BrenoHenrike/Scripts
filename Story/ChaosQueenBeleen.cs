@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class ChaosQueenBeleen
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -76,7 +76,7 @@ public class ChaosQueenBeleen
         if (!Core.isCompletedBefore(4325))
         {
             Core.EnsureAccept(4325);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Chaos Fuzzies", 30))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Chaos Fuzzies", 30))
                 Core.GetMapItem(3481, map: "Citadel");
             Core.EnsureComplete(4325);
         }

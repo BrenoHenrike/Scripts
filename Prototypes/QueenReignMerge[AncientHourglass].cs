@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Prototypes/QueenReign.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class QueenReignMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public QueenReign QR => new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -30,7 +30,7 @@ public class QueenReignMerge
         Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(8326);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Ancient Hourglass", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Hourglass", quant))
         {
             Core.HuntMonster("queenreign", "Sa-Laatan", "Sa-Lataan Defeated");
             Core.HuntMonster("queenreign", "Grou'luu", "Grou'luu Defeated");

@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class DecorateYourSpace
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -18,9 +18,9 @@ public class DecorateYourSpace
 
     public void Getthestuff()
     {
-        List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(7782).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7782).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (RBot.Items.ItemBase Item in RewardOptions)
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -30,7 +30,7 @@ public class DecorateYourSpace
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(7782);
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
             Core.KillMonster("yokaigrave", "r2", "Left", "*", "Graves Cleared", 10, log: false);
         Core.CancelRegisteredQuests();
     }

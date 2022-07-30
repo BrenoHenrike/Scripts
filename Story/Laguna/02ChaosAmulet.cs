@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class ChaosAmulet
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -30,7 +30,7 @@ public class ChaosAmulet
 
         // Shadow Medals 7685 && 
         Story.KillQuest(7685, "chaosamulet", "Shadowflame Berserker");
-        
+
         // Mega Shadow Medals 7686
         Story.KillQuest(7686, "chaosamulet", "Shadowflame Berserker");
 

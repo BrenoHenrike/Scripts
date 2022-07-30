@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
-using RBot.Quests;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Quests;
 
 public class LegionBlade
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
     string[] Rewards = { "Legion Overfiend Blade", "Dark Caster's Tome", "Eternal Legion Sword" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -75,7 +75,7 @@ public class LegionBlade
 
         int i = 1;
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(questID);

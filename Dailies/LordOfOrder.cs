@@ -6,11 +6,11 @@
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class LordOfOrder
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
@@ -19,7 +19,7 @@ public class LordOfOrder
     public LivingDungeon LD = new();
     public DragonFableOrigins DFO = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

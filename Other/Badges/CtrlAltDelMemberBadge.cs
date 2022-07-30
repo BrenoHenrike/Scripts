@@ -1,16 +1,16 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CtrlAltDelMemberBadge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -26,10 +26,10 @@ public class CtrlAltDelMemberBadge
 
         // Map - GameHavaen:
         Core.EquipClass(ClassType.Farm);
-        
+
         // Agree to help Ethan
         Story.ChainQuest(940);
-        
+
         // Clues for the Clueless
         Story.MapItemQuest(941, "gamehaven", 267, 10);
 

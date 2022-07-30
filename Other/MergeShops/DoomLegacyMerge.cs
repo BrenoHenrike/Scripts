@@ -3,13 +3,13 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
-using RBot;
-using RBot.Items;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class DoomLegacyMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -25,7 +25,7 @@ public class DoomLegacyMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -44,7 +44,7 @@ public class DoomLegacyMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.Inventory.GetTempQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -69,7 +69,7 @@ public class DoomLegacyMerge
                 case "Salvaged Deadtech Node":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.RegisterQuests(7601);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("thorngarde", "CryptHacker|NecroDrone", "Deadtech Power Core", 7);
@@ -115,7 +115,7 @@ public class DoomLegacyMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     DWp3.StoryLine();
                     Core.RegisterQuests(7616);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7);

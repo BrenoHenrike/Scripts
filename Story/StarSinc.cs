@@ -2,10 +2,10 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 public class StarSinc
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public CoreFarms Farm = new();
@@ -13,7 +13,7 @@ public class StarSinc
 
     public string[] RequiredItems = { "Nova Badge 1.0", "Nova Badge 2.0", "Nova Badge 3.0", "Nova Badge 3.0", "Nova Badge 4.0", "Nova Badge 5.0", "Nova Badge 6.0", "Nova Badge 7.0", "Nova Badge 8.0", "Nova Badge 9.0", "Nova Badge 10.0", "Nova Badge 11.0", "SuperNova Badge" };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

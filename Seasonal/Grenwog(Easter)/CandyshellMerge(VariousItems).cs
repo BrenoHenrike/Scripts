@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CandyshellMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -20,7 +20,7 @@ public class CandyshellMerge
         //Needed AddDrop
         Core.AddDrop("Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells" }, 150))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Caramel Eggshells", "Anti-Neggshells", "Shadow Eggshells", "Creme Eggshells", "Chocolate Eggshells", "Rainbow Eggshells", "Chaotic Eggshells", "Golden Eggshells" }, 150))
         {
             Core.EquipClass(ClassType.Farm);
 
@@ -29,7 +29,7 @@ public class CandyshellMerge
             {
                 Core.Join("GreenguardWest");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Kittarian");
+                    Bot.Hunt.Monster("Kittarian");
             }
 
             //Anti-Neggshells
@@ -37,7 +37,7 @@ public class CandyshellMerge
             {
                 Core.Join("Greymoor");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Spooky Treeant");
+                    Bot.Hunt.Monster("Spooky Treeant");
             }
 
             //Creme Eggshells
@@ -45,7 +45,7 @@ public class CandyshellMerge
             {
                 Core.Join("GreenShell");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Tsukumogami");
+                    Bot.Hunt.Monster("Tsukumogami");
             }
 
             //Chocolate Eggshells
@@ -53,7 +53,7 @@ public class CandyshellMerge
             {
                 Core.Join("GreenguardEast");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Gurushroom");
+                    Bot.Hunt.Monster("Gurushroom");
             }
 
             //Rainbow Eggshells
@@ -61,7 +61,7 @@ public class CandyshellMerge
             {
                 Core.Join("Greendragon");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Greenguard Dragon");
+                    Bot.Hunt.Monster("Greenguard Dragon");
             }
 
             //Chaotic Eggshells
@@ -69,7 +69,7 @@ public class CandyshellMerge
             {
                 Core.Join("Grenstory");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Imposter Egg");
+                    Bot.Hunt.Monster("Imposter Egg");
             }
 
             //Golden Eggshells
@@ -77,7 +77,7 @@ public class CandyshellMerge
             {
                 Core.Join("Greed");
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Treasure Pile");
+                    Bot.Hunt.Monster("Treasure Pile");
             }
 
             //Shadow Eggshells
@@ -86,7 +86,7 @@ public class CandyshellMerge
                 Core.Join("Grenwog", publicRoom: true);
                 Core.EquipClass(ClassType.Solo);
                 for (int i = 0; i < 10; i++)
-                    Bot.Player.Hunt("Grenwog");
+                    Bot.Hunt.Monster("Grenwog");
             }
         }
     }

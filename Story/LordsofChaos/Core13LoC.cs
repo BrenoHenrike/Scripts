@@ -2,16 +2,16 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Core13LoC
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -74,7 +74,7 @@ public class Core13LoC
             Core.Join("castleundead", "King2", "Center");
             Core.Join("Shadowfall");
             Core.SendPackets("%xt%zm%updateQuest%73922%43%1%");
-            Bot.SendPacket($"%xt%zm%updateQuest%188220%41%{(Core.HeroAlignment > 1 ? 1 : Core.HeroAlignment)}%");
+            Bot.Send.Packet($"%xt%zm%updateQuest%188220%41%{(Core.HeroAlignment > 1 ? 1 : Core.HeroAlignment)}%");
             Bot.Sleep(2000);
             Core.Join("shadowfall");
             Bot.Sleep(2000);
@@ -877,7 +877,7 @@ public class Core13LoC
             Core.EnsureAccept(934);
             if (!Core.CheckInventory(29373, toInv: false))
                 Core.KillMonster("sandport", "r6", "Left", 2153, "Horc Sell-Swords Defeated", 1);
-            while (!Bot.ShouldExit() && !Core.CheckInventory(6686, 3, toInv: false))
+            while (!Bot.ShouldExit && !Core.CheckInventory(6686, 3, toInv: false))
                 Core.KillMonster("sandport", "r5", "Left", 536, "Horc Sell-Swords Defeated", 3);
             Core.EnsureComplete(934);
         }
@@ -1148,11 +1148,11 @@ public class Core13LoC
 
     }
 
-    private void CutSceneFixer(ScriptInterface bot, string map, string cell, string pad)
+    private void CutSceneFixer(string map, string cell, string pad)
     {
         if (map == "icewindwar" && cell != "r17a")
         {
-            while (!Bot.ShouldExit() && Bot.Player.Cell != "r17a")
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r17a")
             {
                 Bot.Sleep(2500);
                 Core.Jump("r17a", "Up");
@@ -1162,7 +1162,7 @@ public class Core13LoC
         //if more maps get stuck, just fillin the bit below.
         if (map == "Map" && cell != "Cell")
         {
-            while (!Bot.ShouldExit() && Bot.Player.Cell != "InsertCell")
+            while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
             {
                 Bot.Sleep(2500);
                 Core.Jump("Cell", "pad");
@@ -2228,7 +2228,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3876, 3877);
             Core.Join("finalbattle", "r1", "Left");
-            Bot.Player.Kill("Drakath");
+            Bot.Kill.Monster("Drakath");
             Core.EnsureComplete(3876, 3877);
         }
 
@@ -2238,7 +2238,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3878);
             Core.Join("finalbattle", "r9", "Left");
-            Bot.Player.Kill("Drakath");
+            Bot.Kill.Monster("Drakath");
             Core.EnsureComplete(3878);
         }
         //Defeat the 12 Lords of Chaos!

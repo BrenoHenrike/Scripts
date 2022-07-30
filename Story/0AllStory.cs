@@ -45,11 +45,11 @@
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Nation/CoreNation.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class AllStory
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
@@ -94,7 +94,7 @@ public class AllStory
     public WarTraining WarTraining = new();
     public XansLair Xans = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

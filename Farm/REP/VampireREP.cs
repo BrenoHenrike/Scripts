@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-using RBot;
+using Skua.Core.Interfaces;
 public class VampireREP
 {
     public CoreBots Core => CoreBots.Instance;
@@ -11,7 +11,7 @@ public class VampireREP
     public Core13LoC LOC = new Core13LoC();
     public CoreAdvanced Adv = new CoreAdvanced();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

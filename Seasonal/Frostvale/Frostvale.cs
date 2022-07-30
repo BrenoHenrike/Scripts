@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Frostvale
 {
     public CoreBots Core => CoreBots.Instance;
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface Bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
@@ -47,7 +47,7 @@ public class Frostvale
 
     public void IceCave()
     {
-        Bot.Player.Join("icecave");
+        Bot.Map.Join("icecave");
         if (Bot.Map.Name != "icecave")
         {
             Core.Logger("map: \"icecave\" is not available");
@@ -111,13 +111,13 @@ public class Frostvale
         Story.KillQuest(461, "icecave", "Frozen Moglin");
 
         // Spirit Abducted 
-        Bot.Player.Join("Map");
+        Bot.Map.Join("Map");
         Core.ChainComplete(905);
     }
 
     public void SnowGlobe()
     {
-        Bot.Player.Join("snowglobe");
+        Bot.Map.Join("snowglobe");
         if (Bot.Map.Name != "snowglobe")
         {
             Core.Logger("map: \"snowglobe\" is not available");
@@ -158,7 +158,7 @@ public class Frostvale
 
     public void Alpine()
     {
-        Bot.Player.Join("Alpine");
+        Bot.Map.Join("Alpine");
         if (Bot.Map.Name != "Alpine")
         {
             Core.Logger("map: \"Alpine\" is not available");
@@ -204,7 +204,7 @@ public class Frostvale
 
     public void SnowyVale()
     {
-        Bot.Player.Join("snowyvale");
+        Bot.Map.Join("snowyvale");
         if (Bot.Map.Name != "snowyvale")
         {
             Core.Logger("map: \"SnowyVale\" is not available");
@@ -234,7 +234,7 @@ public class Frostvale
         if (!Story.QuestProgression(2527))
         {
             Core.EnsureAccept(2526);
-            Bot.Player.Join("Map");
+            Bot.Map.Join("Map");
             Bot.Sleep(2500);
             Core.EnsureComplete(2526);
         }
@@ -308,7 +308,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        Bot.Player.Join("icerise");
+        Bot.Map.Join("icerise");
         if (Bot.Map.Name != "icerise")
         {
             Core.Logger("map: \"IceRise\" is not available");
@@ -344,7 +344,7 @@ public class Frostvale
 
     public void ColdWindValley()
     {
-        Bot.Player.Join("coldwindvalley");
+        Bot.Map.Join("coldwindvalley");
         if (Bot.Map.Name != "coldwindvalley")
         {
             Core.Logger("map: \"ColdWindValley\" is not available");
@@ -402,7 +402,7 @@ public class Frostvale
 
     public void BrightLights()
     {
-        Bot.Player.Join("brightlights");
+        Bot.Map.Join("brightlights");
         if (Bot.Map.Name != "brightlights")
         {
             Core.Logger("map: \"BrightLights\" is not available");
@@ -473,7 +473,7 @@ public class Frostvale
 
     public void Battlefield()
     {
-        Bot.Player.Join("battlefield");
+        Bot.Map.Join("battlefield");
         if (Bot.Map.Name != "battlefield")
         {
             Core.Logger("map: \"Battlefield\" is not available");
@@ -485,7 +485,7 @@ public class Frostvale
 
     public void Darkwinter()
     {
-        Bot.Player.Join("darkwinter");
+        Bot.Map.Join("darkwinter");
         if (Bot.Map.Name != "darkwinter")
         {
             Core.Logger("map: \"Darkwinter\" is not available");
@@ -496,7 +496,7 @@ public class Frostvale
 
     public void Frozensoul()
     {
-        Bot.Player.Join("frozensoul");
+        Bot.Map.Join("frozensoul");
         if (Bot.Map.Name != "frozensoul")
         {
             Core.Logger("map: \"Frozensoul\" is not available");
@@ -507,7 +507,7 @@ public class Frostvale
 
     public void Howardshill()
     {
-        Bot.Player.Join("howardshill");
+        Bot.Map.Join("howardshill");
         if (Bot.Map.Name != "howardshill")
         {
             Core.Logger("map: \"Howardshill\" is not available");
@@ -518,7 +518,7 @@ public class Frostvale
 
     public void Icerisepast()
     {
-        Bot.Player.Join("icerisepast");
+        Bot.Map.Join("icerisepast");
         if (Bot.Map.Name != "icerisepast")
         {
             Core.Logger("map: \"Icerisepast\" is not available");
@@ -529,7 +529,7 @@ public class Frostvale
 
     public void Winterhorror()
     {
-        Bot.Player.Join("winterhorror");
+        Bot.Map.Join("winterhorror");
         if (Bot.Map.Name != "winterhorror")
         {
             Core.Logger("map: \"Winterhorror\" is not available");
@@ -540,7 +540,7 @@ public class Frostvale
 
     public void Gifthulu()
     {
-        Bot.Player.Join("gifthulu");
+        Bot.Map.Join("gifthulu");
         if (Bot.Map.Name != "gifthulu")
         {
             Core.Logger("map: \"Gifthulu\" is not available");
@@ -552,7 +552,7 @@ public class Frostvale
 
     public void cryostorm()
     {
-        Bot.Player.Join("cryostorm");
+        Bot.Map.Join("cryostorm");
         if (Bot.Map.Name != "cryostorm")
         {
             Core.Logger("map: \"cryostorm\" is not available");
@@ -612,7 +612,7 @@ public class Frostvale
 
     public void icewindpass()
     {
-        Bot.Player.Join("icewindpass");
+        Bot.Map.Join("icewindpass");
         if (Bot.Map.Name != "icewindpass")
         {
             Core.Logger("map: \"icewindpass\" is not available");
@@ -659,7 +659,7 @@ public class Frostvale
 
     public void icepike()
     {
-        Bot.Player.Join("icepike");
+        Bot.Map.Join("icepike");
         if (Bot.Map.Name != "icepike")
         {
             Core.Logger("map: \"icepike\" is not available");
@@ -688,7 +688,7 @@ public class Frostvale
         Story.KillQuest(5606, "icepike", "Living Ice");
 
         // The Stars Have Foretold
-        Story.MapItemQuest(5607, "icepike", new[] { 5086, 5087});
+        Story.MapItemQuest(5607, "icepike", new[] { 5086, 5087 });
 
         // Continue this Path
         Story.MapItemQuest(5608, "icepike", 5088, 5);

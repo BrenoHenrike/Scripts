@@ -3,17 +3,17 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/WarTraining.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class WarfuryEmblem
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public WarTraining WFT = new();
 
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -31,7 +31,7 @@ public class WarfuryEmblem
 
         Core.AddDrop("Warfury Emblem");
         Adv.BestGear(GearBoost.Human);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Warfury Emblem", EmblemQuant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Warfury Emblem", EmblemQuant))
         {
             Core.EnsureAccept(8204);
             Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);

@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
-using RBot.Items;
-using RBot.Quests;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class CoreDailies
 {
@@ -12,10 +12,10 @@ public class CoreDailies
     // [Can Change] Skip daily if you own max stack of reward
     public bool SkipOnMaxStack = true;
 
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -31,7 +31,7 @@ public class CoreDailies
     /// <param name="isTemp">Whether it is temporary</param>
     /// <param name="cell">Cell where the monster is (optional)</param>
     /// <param name="pad">Pad where the monster is</param>
-    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string? cell = null, string pad = "Left", bool publicRoom = false)
+    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = "Left", bool publicRoom = false)
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return;
@@ -61,14 +61,14 @@ public class CoreDailies
 
         if (items != null)
         {
-            List<InventoryItem> invBank = Bot.Inventory.Items.Concat(Bot.Bank.BankItems).ToList().FindAll(x => items.ToList().Contains(x.Name));
+            List<InventoryItem> invBank = Bot.Inventory.Items.Concat(Bot.Bank.Items).ToList().FindAll(x => items.ToList().Contains(x.Name));
             int i = 0;
 
             if (any)
             {
                 foreach (string item in items)
                 {
-                    InventoryItem? _item = invBank.Find(x => x.Name == item);
+                    InventoryItem _item = invBank.Find(x => x.Name == item);
                     if (_item == null)
                         continue;
 
@@ -83,7 +83,7 @@ public class CoreDailies
             {
                 foreach (string item in items)
                 {
-                    InventoryItem? _item = invBank.Find(x => x.Name == item);
+                    InventoryItem _item = invBank.Find(x => x.Name == item);
                     if (_item == null)
                         continue;
 
@@ -112,7 +112,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void MineCrafting(string[]? metals = null, int quant = 2, bool ToBank = false)
+    public void MineCrafting(string[] metals = null, int quant = 2, bool ToBank = false)
     {
         if (metals == null)
             metals = MineCraftingMetals;
@@ -151,7 +151,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void HardCoreMetals(string[]? metals = null, int quant = 1)
+    public void HardCoreMetals(string[] metals = null, int quant = 1)
     {
         if (!Core.IsMember)
             return;
@@ -226,7 +226,7 @@ public class CoreDailies
         if (!Core.IsMember)
             return;
         Core.Logger("Daily: Fungi for a Fun Guy (BrightOak Reputation)");
-        if (Bot.Player.GetFactionRank("Brightoak") == 10)
+        if (Bot.Reputation.GetRank("Brightoak") == 10)
         {
             Core.Logger("BrightOak is already rank 10. Skipped");
             return;
@@ -246,7 +246,7 @@ public class CoreDailies
         if (!Core.IsMember)
             return;
         Core.Logger("Daily: Beast Master Class");
-        if (Bot.Player.GetFactionRank("BeastMaster") == 10)
+        if (Bot.Reputation.GetRank("BeastMaster") == 10)
         {
             Core.Logger("BeastMaster is already rank 10. Skipped");
             return;
@@ -524,7 +524,7 @@ public class CoreDailies
         if (Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
             Bot.Drops.Add(Core.EnsureLoad(1238).Rewards.Select(x => x.Name).ToArray());
 
-        while (!Bot.ShouldExit() && Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
+        while (!Bot.ShouldExit && Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
         {
             Core.ChainComplete(1238);
             Bot.Wait.ForPickup("*");
@@ -573,7 +573,7 @@ public class CoreDailies
                 {
                     Core.AddDrop("Kraken Doubloon");
                     Core.RegisterQuests(3119);
-                    while (!Bot.ShouldExit() && !Core.CheckInventory("Kraken Doubloon", 13))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Kraken Doubloon", 13))
                     {
                         Core.HuntMonster("chaoskraken", "Chaos Kraken", "Kraken Keelhauled");
                     }
@@ -639,9 +639,9 @@ public class CoreDailies
         {
             int PreGold = Bot.Player.Gold;
             int PreAC = PlayerAC();
-            Bot.SendPacket($"%xt%zm%getAdReward%{Bot.Map.RoomID}%");
+            Bot.Send.Packet($"%xt%zm%getAdReward%{Bot.Map.RoomID}%");
             Bot.Sleep(Core.ActionDelay);
-            Bot.SendPacket($"%xt%zm%getAdData%{Bot.Map.RoomID}%");
+            Bot.Send.Packet($"%xt%zm%getAdData%{Bot.Map.RoomID}%");
             Bot.Sleep(1000);
             if (Bot.Player.Gold != PreGold)
                 Core.Logger($"You received {Bot.Player.Gold - PreGold} Gold");
@@ -649,8 +649,8 @@ public class CoreDailies
                 Core.Logger($"You received {PlayerAC() - PreAC} AC!", messageBox: true);
         }
 
-        int PlayerAC() => Bot.GetGameObject<int>("world.myAvatar.objData.intCoins");
-        int AdCount() => Bot.GetGameObject<int>("world.myAvatar.objData.iDailyAds");
+        int PlayerAC() => Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
+        int AdCount() => Bot.Flash.GetGameObject<int>("world.myAvatar.objData.iDailyAds");
     }
 
     public void PowerGem()
@@ -664,7 +664,7 @@ public class CoreDailies
 
         Core.JumpWait();
         int PreQuant = Bot.Inventory.GetQuantity("Power Gem");
-        Bot.SendPacket($"%xt%zm%powergem%{Bot.Map.RoomID}%");
+        Bot.Send.Packet($"%xt%zm%powergem%{Bot.Map.RoomID}%");
         Bot.Sleep(Core.ActionDelay);
         if (Bot.Inventory.GetQuantity("Power Gem") != PreQuant)
             Core.Logger($"You received {Bot.Inventory.GetQuantity("Power Gem") - PreQuant} Power Gem");
@@ -691,7 +691,7 @@ public class CoreDailies
         };
 
         Core.Logger("Daily: Golden Inquisitor of Shadowfall");
-        if (Core.CheckInventory(rewards, toInv: false) || CheckDaily(491))
+        if (Core.CheckInventory(rewards, toInv: false) || !CheckDaily(491))
             return;
 
         Core.EnsureAccept(491);
@@ -707,7 +707,7 @@ public class CoreDailies
     {
         Core.Logger("Weekly: Read the Design Notes!");
 
-        if (Bot.Player.GetFactionRank("Loremaster") != 10 || CheckDaily(1213))
+        if (Bot.Reputation.GetRank("Loremaster") != 10 && CheckDaily(1213))
             Core.ChainComplete(1213);
     }
 

@@ -3,19 +3,19 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
-using RBot;
-using RBot.Items;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class CoreDarkon
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
     public CoreFarms Farm = new();
     public CoreAstravia Astravia => new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -40,7 +40,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(7324);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Darkon's Receipt", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
             Core.KillMonster("portalmaze", "r8", "Left", "*", "Banana", 22, false, log: false);
             Bot.Wait.ForPickup("Darkon's Receipt");
@@ -61,11 +61,11 @@ public class CoreDarkon
         Core.Join("doomvault", "r5", "Left", true);
 
         Core.RegisterQuests(7325);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Darkon's Receipt", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
             if (Bot.Map.Name.ToLower() == "doomvault")
             {
-                while (!Bot.ShouldExit() && Bot.Player.Cell != "r5")
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                 {
                     Core.Jump("r5", "Left");
                     Bot.Sleep(Core.ActionDelay);
@@ -100,7 +100,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(7326);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Darkon's Receipt", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
             Core.HuntMonster("tercessuinotlim", "Nulgath", "Nulgath's mask", 1, false, publicRoom: true);
             Bot.Wait.ForPickup("Darkon's Receipt");
@@ -119,7 +119,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(7780);
-        while (!Bot.ShouldExit() && (!Core.CheckInventory("Teeth", Quantity)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Teeth", Quantity)))
         {
             Core.HuntMonster("eridani", "Wolf-Like Creature", "Tooth", 28, false, log: false);
             Bot.Options.AttackWithoutTarget = true;
@@ -141,7 +141,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(8001);
-        while (!Bot.ShouldExit() && (!Core.CheckInventory("La's Gratitude", Quantity)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("La's Gratitude", Quantity)))
         {
             Core.HuntMonster("astravia", "Creature 27", "Broken Dog Tag", 20, log: false);
             Core.HuntMonster("astravia", "Creature 27", "Intact Dog Tag", 5, log: false);
@@ -160,7 +160,7 @@ public class CoreDarkon
         Core.FarmingLogger("Astravian Medal", Quantity);
 
         Core.RegisterQuests(8257);
-        while (!Bot.ShouldExit() && (!Core.CheckInventory("Astravian Medal", Quantity)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Astravian Medal", Quantity)))
         {
             Core.EquipClass(ClassType.Farm);
             Bot.Options.AttackWithoutTarget = true;
@@ -184,7 +184,7 @@ public class CoreDarkon
         Core.FarmingLogger("A Melody", Quantity);
 
         Core.RegisterQuests(8396);
-        while (!Bot.ShouldExit() && (!Core.CheckInventory("A Melody", Quantity)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("A Melody", Quantity)))
         {
             Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
             Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10, log: false);
@@ -204,7 +204,7 @@ public class CoreDarkon
         Core.FarmingLogger("Bandit's Correspondence", Quantity);
 
         Core.RegisterQuests(8531);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Bandit's Correspondence", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bandit's Correspondence", Quantity))
         {
 
             Core.EquipClass(ClassType.Farm);
@@ -228,7 +228,7 @@ public class CoreDarkon
         Core.FarmingLogger("Suki's Prestige", Quantity);
 
         Core.RegisterQuests(8602);
-        while (!Bot.ShouldExit() && (!Core.CheckInventory("Suki's Prestige", Quantity)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Suki's Prestige", Quantity)))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviapast", "Regulus", "Regulus' Rematch Won", log: false);
@@ -251,7 +251,7 @@ public class CoreDarkon
         Core.FarmingLogger("Ancient Remnant", Quantity);
 
         Core.RegisterQuests(8641);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Ancient Remnant", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", Quantity))
         {
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("firstobservatory", "Ancient Creature", "Creature Samples", 6);
@@ -276,7 +276,7 @@ public class CoreDarkon
         Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(8688);
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Mourning Flower", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", Quantity))
         {
             Core.KillMonster("genesisgarden", "r6", "Left", "*", "Beast Subject", 7);
             Core.KillMonster("genesisgarden", "r9", "Left", "*", "Humanoid Subject", 7);

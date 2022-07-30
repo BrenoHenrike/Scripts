@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class EasterEggHouse
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -17,7 +17,7 @@ public class EasterEggHouse
 
     public void GetMulticoloredEggs()
     {
-        if (Bot.Inventory.ContainsHouseItem("Easter Egg House"))
+        if (Bot.House.Contains("Easter Egg House"))
         {
             Core.Logger("You already own this House, Stopping Bot.");
             return;

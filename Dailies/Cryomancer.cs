@@ -2,17 +2,17 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Glacera.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Cryomancer
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public GlaceraStory Glac = new();
     public CoreStory Story = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

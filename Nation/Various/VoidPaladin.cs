@@ -9,17 +9,17 @@
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class VoidPaladin
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(ADKRewards);
@@ -60,7 +60,7 @@ public class VoidPaladin
 
         int i = 1;
         Core.Logger("Starting [A Dark Temptation] Quest");
-        while (!Bot.ShouldExit() && !Core.CheckInventory(ADKRewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(ADKRewards, toInv: false))
         {
             Core.EnsureAccept(5826);
 
@@ -79,7 +79,7 @@ public class VoidPaladin
                     Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
                 }
                 Core.ChainComplete(2346);
-                Bot.Player.Pickup("Scroll of Underworld");
+                Bot.Drops.Pickup("Scroll of Underworld");
             }
             Core.EnsureCompleteChoose(5826);
             Core.Logger($"Completed x{i++}");
@@ -111,7 +111,7 @@ public class VoidPaladin
         NSOD.VoidAuras(2);
 
         Core.EnsureComplete(5827);
-        Bot.Player.Pickup("Void Paladin");
+        Bot.Drops.Pickup("Void Paladin");
     }
 
     public void Sacrifice()
@@ -134,7 +134,7 @@ public class VoidPaladin
             Core.ChainComplete(5828);
         else if (Core.CheckInventory("Ascended Light of Destiny"))
             Core.ChainComplete(5829);
-        Bot.Player.Pickup("Void Light of Destiny");
+        Bot.Drops.Pickup("Void Light of Destiny");
     }
 
     public readonly string[] CyberVoidSet =
@@ -155,6 +155,6 @@ public class VoidPaladin
         Core.EnsureAccept(6625);
         Core.HuntMonster("dreadspace", "Dread Space Warrior", "Powerpack", 5);
         Core.EnsureComplete(6625);
-        Bot.Player.Pickup(CyberVoidSet);
+        Bot.Drops.Pickup(CyberVoidSet);
     }
 }

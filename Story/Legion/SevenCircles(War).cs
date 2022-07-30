@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class SevenCircles
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -107,11 +107,11 @@ public class SevenCircles
         }
         Bot.Events.CellChanged -= CutSceneFixer;
 
-        void CutSceneFixer(ScriptInterface bot, string map, string cell, string pad)
+        void CutSceneFixer(string map, string cell, string pad)
         {
             if (map == "sevencircleswar" && cell != "r17")
             {
-                while (!Bot.ShouldExit() && Bot.Player.Cell != "r17")
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r17")
                 {
                     Bot.Sleep(2500);
                     Core.Jump("r17", "Left");

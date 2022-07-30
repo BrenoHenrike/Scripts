@@ -20,11 +20,11 @@
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CoreHollowbornDoomKnight
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
@@ -35,7 +35,7 @@ public class CoreHollowbornDoomKnight
     public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
     public SepulchuresOriginalHelm SOH = new SepulchuresOriginalHelm();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
@@ -91,7 +91,7 @@ public class CoreHollowbornDoomKnight
         Farm.EvilREP();
 
         // Quest
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Fragment", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Fragment", quant))
         {
             Core.EnsureAccept(8413);
 
@@ -124,7 +124,7 @@ public class CoreHollowbornDoomKnight
         HB.HardcoreContract();
 
         // Quest
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Doom Fragment", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Doom Fragment", quant))
         {
             Core.EnsureAccept(8414);
 

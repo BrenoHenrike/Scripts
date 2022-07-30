@@ -37,12 +37,12 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/XansLair.cs
-using RBot;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class UnlockForgeEnhancements
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -74,7 +74,7 @@ public class UnlockForgeEnhancements
         new Option<bool>("UseGold", "Use Gold", "Speed the BlacksmithingREP grind up with Gold?", false)
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

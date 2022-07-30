@@ -3,16 +3,16 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Example
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -28,9 +28,9 @@ public class Example
 
         Story.PreLoad();
         Core.EquipClass(ClassType.Farm);
-        
+
         Core.AddDrop("Unicorn Essence");
-        
+
         // Hunt for the Brutal Intruder
         Story.MapItemQuest(3148, "undergroundlab", new[] { 2144, 2145, 2146, 2147, 2148 });
 

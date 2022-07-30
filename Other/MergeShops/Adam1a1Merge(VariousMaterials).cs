@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Adam1a1Merge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -20,7 +20,7 @@ public class Adam1a1Merge
         //Needed AddDrop
         Core.AddDrop("Fresh Ectoplasm", "IOU Slip");
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("IOU Slip", 100) | !Core.CheckInventory("Fresh Ectoplasm", 300))
+        while (!Bot.ShouldExit && !Core.CheckInventory("IOU Slip", 100) | !Core.CheckInventory("Fresh Ectoplasm", 300))
         {
             //Fresh Ecotplasm & IOU Slip
             Core.EnsureAccept(8009);

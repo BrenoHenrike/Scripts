@@ -3,12 +3,12 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class FindingFragments_Any
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
@@ -19,7 +19,7 @@ public class FindingFragments_Any
         new Option<FindingFragmentsIDs>("questID", "Quest ID", "ID of the desired Finding Fragments quest to do.", FindingFragmentsIDs.Blade)
     };
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -33,7 +33,7 @@ public class FindingFragments_Any
         Core.EquipClass(ClassType.Farm);
         int i = 1;
         int questID = (int)Bot.Config.Get<FindingFragmentsIDs>("questID");
-        while (!Bot.ShouldExit())
+        while (!Bot.ShouldExit)
         {
             BLOD.FindingFragments(questID);
             Core.Logger($"Completed x{i++}");

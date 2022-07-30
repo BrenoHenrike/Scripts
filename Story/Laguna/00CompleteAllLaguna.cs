@@ -5,11 +5,11 @@
 //cs_include Scripts/Story/Laguna/02ChaosAmulet.cs
 //cs_include Scripts/Story/Laguna/03LagunaBeach.cs
 //cs_include Scripts/Story/Laguna/04Laguna.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class CompleteLaguna
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -18,7 +18,7 @@ public class CompleteLaguna
     public LagunaBeach s03 = new LagunaBeach();
     public Laguna s04 = new Laguna();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

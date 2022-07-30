@@ -2,15 +2,15 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Farm/AutoAttackKillUltra.cs
-using RBot;
-using RBot.Monsters;
-using RBot.Options;
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
+using Skua.Core.Options;
 
 // Bot by: 🥔 Tato 🥔
 
 public class FollowerJoe
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv => new();
     public AAKillUltra AAKA => new();
@@ -27,21 +27,21 @@ public class FollowerJoe
     };
 
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
 
-        while (!Bot.ShouldExit())
+        while (!Bot.ShouldExit)
         {
             // Bot.Events.PlayerAFK += LockedMap;
             Bot.Events.CellChanged += Jumper;
             Bot.Player.Goto((Bot.Config.Get<string>("playerName")));
             Bot.Sleep(2500);
             if (Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-                Bot.Player.Attack("*");
+                Bot.Combat.Attack("*");
             Bot.Sleep(Core.ActionDelay);
             Bot.Wait.ForCombatExit();
         }
@@ -50,7 +50,7 @@ public class FollowerJoe
         Core.SetOptions(false);
     }
 
-    public void Jumper(ScriptInterface bot, string? map = null, string? cell = null, string? pad = null)
+    public void Jumper(string map = null, string cell = null, string pad = null)
     {
         if (!Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
         {
@@ -66,13 +66,13 @@ public class FollowerJoe
             Core.Logger($"Cant Find {Bot.Config.Get<string>("playerName")}, Jumping");
             Core.JumpWait();
             Bot.Sleep(Core.ActionDelay);
-            Bot.Player.Jump(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad);
+            Bot.Map.Jump(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad);
             Bot.Sleep(Core.ActionDelay);
         }
-        bot.Wait.ForCellChange(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell);
+        Bot.Wait.ForCellChange(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell);
     }
 
-    public void LockedMap(ScriptInterface bot)
+    public void LockedMap()
     {
         //still not working sorry -- 🥔
         string[] Maps =
@@ -105,7 +105,7 @@ public class FollowerJoe
         "zephyrus"
         };
 
-        while (!Bot.ShouldExit() && !Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+        while (!Bot.ShouldExit && !Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
         {
             foreach (string Map in Maps)
             {
@@ -118,7 +118,7 @@ public class FollowerJoe
                             break;
                         Core.Jump("Boss", "Left");
                         Bot.Options.AttackWithoutTarget = true;
-                        Bot.Player.Kill("Death");
+                        Bot.Kill.Monster("Death");
                         Bot.Options.AttackWithoutTarget = false;
                         break;
 
@@ -128,7 +128,7 @@ public class FollowerJoe
                         if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
                             break;
                         Bot.Map.Reload();
-                        Bot.Player.Kill("*");
+                        Bot.Kill.Monster("*");
                         break;
 
                     case "DoomVault":
@@ -140,7 +140,7 @@ public class FollowerJoe
                             if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r26" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
                             {
                                 Bot.Quests.UpdateQuest(3004);
-                                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                                Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
                                 if (Target == null)
                                 {
                                     Core.Logger("No monsters found");
@@ -151,7 +151,7 @@ public class FollowerJoe
 
                                 Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
                             }
-                            else Bot.Player.Attack("*");
+                            else Bot.Combat.Attack("*");
                             break;
                         }
 
@@ -165,7 +165,7 @@ public class FollowerJoe
                             {
                                 Bot.Quests.UpdateQuest(3008);
 
-                                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                                Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
                                 if (Target == null)
                                 {
                                     Core.Logger("No monsters found");
@@ -176,7 +176,7 @@ public class FollowerJoe
 
                                 Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
                             }
-                            else Bot.Player.Attack("*");
+                            else Bot.Combat.Attack("*");
                             break;
                         }
                 }

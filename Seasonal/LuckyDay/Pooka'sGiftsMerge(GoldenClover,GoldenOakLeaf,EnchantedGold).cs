@@ -1,15 +1,15 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/LuckyDay/Pooka.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class PookasGiftsMerge
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public PookaStory Pooka = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -24,7 +24,7 @@ public class PookasGiftsMerge
 
         Pooka.CompletePooka();
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory(new[] { "Golden Clover", "Golden Oak Leaf", "Enchanted Gold" }, 100))
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Golden Clover", "Golden Oak Leaf", "Enchanted Gold" }, 100))
         {
             //Golden Clover
             if (!Core.CheckInventory("Golden Clover", 100))

@@ -1,14 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class Originul_Story
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -43,10 +43,10 @@ public class Originul_Story
         // Break their Muti-kneecaps
         Core.EnsureAccept(7889);
         Core.Join("Originul", "r10", "Top");
-        while (!Bot.ShouldExit() && !Bot.Quests.CanComplete(7889))
+        while (!Bot.ShouldExit && !Bot.Quests.CanComplete(7889))
         {
-            Bot.Player.Kill("Bloodfiend");
-            Bot.Player.Kill("Dreadfiend");
+            Bot.Kill.Monster("Bloodfiend");
+            Bot.Kill.Monster("Dreadfiend");
         }
         Core.EnsureComplete(7889);
 

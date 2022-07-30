@@ -12,11 +12,11 @@
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Good/Paladin.cs
 
-using RBot;
+using Skua.Core.Interfaces;
 
 public class FarmerJoeOutfit
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
@@ -25,7 +25,7 @@ public class FarmerJoeOutfit
     public project InvEn = new();
     public ArchPaladin AP = new();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -46,7 +46,7 @@ public class FarmerJoeOutfit
         AP.GetAP();
 
         Farm.Experience();
-        
+
         if (!Core.CheckInventory("Hollowborn Reaper's Scythe"))
         {
             Core.Logger("Aquiring Hollowborn Reaper's Scythe");
@@ -93,8 +93,8 @@ public class FarmerJoeOutfit
     //         return;
 
 
-    //     while (!Bot.ShouldExit() && !Core.CheckInventory(25117))
-    //         Bot.Player.Hunt("Death");
+    //     while (!Bot.ShouldExit && !Core.CheckInventory(25117))
+    //         Bot.Hunt.Monster("Death");
     // }
 
     // public void Pet()

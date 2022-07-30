@@ -32,11 +32,11 @@
 //cs_include Scripts/Seasonal/SummerBreak/Un-LifeguardQuest.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs
 //cs_include Scripts/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class AllSeasonal
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public DERPBadge Derp = new();
@@ -72,7 +72,7 @@ public class AllSeasonal
     public MmmmMeatyQuest Meaty = new();
 
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 

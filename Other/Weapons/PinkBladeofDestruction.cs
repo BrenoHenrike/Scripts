@@ -4,17 +4,17 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
-using RBot;
+using Skua.Core.Interfaces;
 
 public class PinkBladeOfDestruciton
 {
-    public ScriptInterface Bot => ScriptInterface.Instance;
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLoD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
     public DoomwoodPart3 P3 = new DoomwoodPart3();
 
-    public void ScriptMain(ScriptInterface bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
@@ -34,7 +34,7 @@ public class PinkBladeOfDestruciton
 
         Core.EnsureAccept(7650);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Fuchsia Dye", 50))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Fuchsia Dye", 50))
         {
             Core.EnsureAccept(1487);
             Core.HuntMonster("natatorium", "Anglerfish", "Pink Coral", 3);
@@ -45,7 +45,7 @@ public class PinkBladeOfDestruciton
         BLoD.UnlockMineCrafting();
         BLoD.SpiritOrb(500);
 
-        while (!Bot.ShouldExit() && !Core.CheckInventory("Zealous Badge", 5))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Zealous Badge", 5))
         {
             Core.EnsureAccept(7616);
             Core.EquipClass(ClassType.Solo);
