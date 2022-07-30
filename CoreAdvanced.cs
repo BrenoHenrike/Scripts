@@ -1502,7 +1502,6 @@ public class CoreAdvanced
                     case "doomknight":
                     case "empyrean chronomancer":
                     case "eternal chronomancer":
-                    case "eternal inversionist":
                     case "evolved clawsuit":
                     case "evolved dark caster":
                     case "evolved leprechaun":
@@ -1649,6 +1648,7 @@ public class CoreAdvanced
                     #endregion
 
                     #region Lucky - None - Health Vamp
+                    case "eternal inversionist":
                     case "archfiend":
                     case "barber":
                     case "classic dragonlord":
