@@ -1,5 +1,9 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/UltraTyndariusPrereqs.cs
 using RBot;
 
 public class RuinedCrown
@@ -7,14 +11,21 @@ public class RuinedCrown
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
+    public Tyndarius Tyn = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        StoryLine();
+        DoAll();
 
         Core.SetOptions(false);
+    }
+
+    public void DoAll()
+    {
+        Tyn.DoALl();
+        StoryLine();
     }
 
     public void StoryLine()
