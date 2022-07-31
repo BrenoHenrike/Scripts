@@ -70,6 +70,7 @@ public class FollowerJoe
             Bot.Sleep(Core.ActionDelay);
         }
         bot.Wait.ForCellChange(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell);
+        Bot.Events.CellChanged -= Jumper;
     }
 
     public void LockedMap(ScriptInterface bot)
