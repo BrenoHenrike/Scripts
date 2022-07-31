@@ -17,7 +17,8 @@ public class TitanGearIIMerge
     public static CoreAdvanced sAdv = new();
     public TitanAttackStory TAS = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -74,13 +75,13 @@ public class TitanGearIIMerge
                 case "Heroic Titan's Greatsword":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Solo);
-                        Core.EnsureAccept(8776);
-                        Core.HuntMonster("titanstrike", "Titanic Paladin", "Paladin Punished");
+                    Core.EnsureAccept(8776);
+                    Core.HuntMonster("titanstrike", "Titanic Paladin", "Paladin Punished");
                     Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("titanstrike", "Titanic Doomknight", "Doomknight Decimated");
-                        Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Destroyed");
-                        Core.EnsureComplete(8776);
-                        Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonster("titanstrike", "Titanic Doomknight", "Doomknight Decimated");
+                    Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Destroyed");
+                    Core.EnsureComplete(8776);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Titan Paladin":
@@ -180,4 +181,21 @@ public class TitanGearIIMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("68002", "Titanic Destroyer", "Mode: [select] only\nShould the bot buy \"Titanic Destroyer\" ?", false),
+        new Option<bool>("68007", "Titanic Destroyer Blades", "Mode: [select] only\nShould the bot buy \"Titanic Destroyer Blades\" ?", false),
+        new Option<bool>("68003", "Titanic Destroyer Helm", "Mode: [select] only\nShould the bot buy \"Titanic Destroyer Helm\" ?", false),
+        new Option<bool>("68005", "Titanic Destroyer Tentacles", "Mode: [select] only\nShould the bot buy \"Titanic Destroyer Tentacles\" ?", false),
+        new Option<bool>("71242", "Heroic Titan", "Mode: [select] only\nShould the bot buy \"Heroic Titan\" ?", false),
+        new Option<bool>("71243", "Heroic Titan's Helm", "Mode: [select] only\nShould the bot buy \"Heroic Titan's Helm\" ?", false),
+        new Option<bool>("71244", "Heroic Titan's Cape", "Mode: [select] only\nShould the bot buy \"Heroic Titan's Cape\" ?", false),
+        new Option<bool>("71246", "Heroic Titan's Greatswords", "Mode: [select] only\nShould the bot buy \"Heroic Titan's Greatswords\" ?", false),
+        new Option<bool>("68008", "Titan Drakath", "Mode: [select] only\nShould the bot buy \"Titan Drakath\" ?", false),
+        new Option<bool>("68013", "Titan Drakath's Blades", "Mode: [select] only\nShould the bot buy \"Titan Drakath's Blades\" ?", false),
+        new Option<bool>("68009", "Titan Drakath's Helm", "Mode: [select] only\nShould the bot buy \"Titan Drakath's Helm\" ?", false),
+        new Option<bool>("68011", "Titan Drakath's Tentacles", "Mode: [select] only\nShould the bot buy \"Titan Drakath's Tentacles\" ?", false),
+        new Option<bool>("71496", "AntiTitan Corps", "Mode: [select] only\nShould the bot buy \"AntiTitan Corps\" ?", false),
+    };
 }

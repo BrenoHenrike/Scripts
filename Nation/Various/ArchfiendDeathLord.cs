@@ -27,7 +27,7 @@ public class ArchfiendDeathLord
     public string OptionsStorage = "Class or All";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("OnlyClass", "Only get Class?", "Whether to only get the class or all quest rewards"),
+        new Option<bool>("OnlyArmor", "Only get the Armor?", "Whether to only get the Armor or all quest rewards"),
     };
 
     public void ScriptMain(ScriptInterface bot)
@@ -39,7 +39,7 @@ public class ArchfiendDeathLord
         Core.SetOptions(false);
     }
 
-    public void GetArm(bool OnlyClass = true)
+    public void GetArm(bool OnlyArmor = true)
     {
         List<RBot.Items.ItemBase> RewardOptions = Core.EnsureLoad(7900).Rewards;
         List<string> RewardsList = new List<string>();
@@ -57,7 +57,7 @@ public class ArchfiendDeathLord
 
         Core.RegisterQuests(7900);
 
-        if (OnlyClass == true)
+        if (OnlyArmor == true)
         {
             Core.Logger("only getting the class");
             Nation.FarmBloodGem(20);

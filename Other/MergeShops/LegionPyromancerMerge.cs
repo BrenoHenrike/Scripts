@@ -20,7 +20,8 @@ public class LegionPyromancerMerge
     public DarknessShard DShard = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -138,4 +139,25 @@ public class LegionPyromancerMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("48692", "Legion Pyromancer", "Mode: [select] only\nShould the bot buy \"Legion Pyromancer\" ?", false),
+        new Option<bool>("48693", "Darkflame Hair", "Mode: [select] only\nShould the bot buy \"Darkflame Hair\" ?", false),
+        new Option<bool>("48694", "Darkflame Morph", "Mode: [select] only\nShould the bot buy \"Darkflame Morph\" ?", false),
+        new Option<bool>("48696", "Darkflame Denizen Morph", "Mode: [select] only\nShould the bot buy \"Darkflame Denizen Morph\" ?", false),
+        new Option<bool>("48695", "Darkflame Horned Morph", "Mode: [select] only\nShould the bot buy \"Darkflame Horned Morph\" ?", false),
+        new Option<bool>("48697", "Darkflame Ponytail", "Mode: [select] only\nShould the bot buy \"Darkflame Ponytail\" ?", false),
+        new Option<bool>("48698", "Darkflame Morph Locks", "Mode: [select] only\nShould the bot buy \"Darkflame Morph Locks\" ?", false),
+        new Option<bool>("48700", "Infernal Legion Athame", "Mode: [select] only\nShould the bot buy \"Infernal Legion Athame\" ?", false),
+        new Option<bool>("48701", "Reversed Legion Athame", "Mode: [select] only\nShould the bot buy \"Reversed Legion Athame\" ?", false),
+        new Option<bool>("48702", "Dark Flame of Fury", "Mode: [select] only\nShould the bot buy \"Dark Flame of Fury\" ?", false),
+        new Option<bool>("48703", "Dark Flames of Fury", "Mode: [select] only\nShould the bot buy \"Dark Flames of Fury\" ?", false),
+        new Option<bool>("48704", "Legion Invocation Tome", "Mode: [select] only\nShould the bot buy \"Legion Invocation Tome\" ?", false),
+        new Option<bool>("48705", "Inferno's Legion Staff", "Mode: [select] only\nShould the bot buy \"Inferno's Legion Staff\" ?", false),
+        new Option<bool>("48699", "Infernal Legion Minion", "Mode: [select] only\nShould the bot buy \"Infernal Legion Minion\" ?", false),
+        new Option<bool>("48706", "Legion Moglin Minion", "Mode: [select] only\nShould the bot buy \"Legion Moglin Minion\" ?", false),
+        new Option<bool>("48707", "Legion Moglin Minion Battlepet", "Mode: [select] only\nShould the bot buy \"Legion Moglin Minion Battlepet\" ?", false),
+        new Option<bool>("49143", "Chanky Pet", "Mode: [select] only\nShould the bot buy \"Chanky Pet\" ?", false),
+    };
 }

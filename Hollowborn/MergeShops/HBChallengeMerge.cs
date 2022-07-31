@@ -15,7 +15,8 @@ public class HBChallengeMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -79,4 +80,16 @@ public class HBChallengeMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("54655", "Hollowborn Executioner", "Mode: [select] only\nShould the bot buy \"Hollowborn Executioner\" ?", false),
+        new Option<bool>("54657", "Hollowborn Executioner's Hood", "Mode: [select] only\nShould the bot buy \"Hollowborn Executioner's Hood\" ?", false),
+        new Option<bool>("54660", "Hollowborn Gas Mask + Locks", "Mode: [select] only\nShould the bot buy \"Hollowborn Gas Mask + Locks\" ?", false),
+        new Option<bool>("54661", "Hollowborn Gas Mask", "Mode: [select] only\nShould the bot buy \"Hollowborn Gas Mask\" ?", false),
+        new Option<bool>("54663", "Hollowborn Scarves", "Mode: [select] only\nShould the bot buy \"Hollowborn Scarves\" ?", false),
+        new Option<bool>("54664", "Hollowborn Executioner's Bite", "Mode: [select] only\nShould the bot buy \"Hollowborn Executioner's Bite\" ?", false),
+        new Option<bool>("54955", "Dual Hollowborn Cleavers", "Mode: [select] only\nShould the bot buy \"Dual Hollowborn Cleavers\" ?", false),
+        new Option<bool>("54973", "Hollowborn Executioner's Bite + Axe", "Mode: [select] only\nShould the bot buy \"Hollowborn Executioner's Bite + Axe\" ?", false),
+    };
 }

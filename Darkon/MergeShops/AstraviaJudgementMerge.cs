@@ -18,7 +18,8 @@ public class AstraviaJudgeMerge
     public static CoreAdvanced sAdv = new();
     public CoreDarkon Darkon = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -62,8 +63,24 @@ public class AstraviaJudgeMerge
                 case "A Melody":
                     Darkon.AMelody(quant);
                     break;
+
+                case "Re's Party Attire":
+                    Core.HuntMonster("astraviajudgement", "La", req.Name, quant);
+                    break;
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("65302", "Mi's Attire", "Mode: [select] only\nShould the bot buy \"Mi's Attire\" ?", false),
+        new Option<bool>("65303", "Mi's Sleeveless Attire", "Mode: [select] only\nShould the bot buy \"Mi's Sleeveless Attire\" ?", false),
+        new Option<bool>("65304", "Mi's Hair", "Mode: [select] only\nShould the bot buy \"Mi's Hair\" ?", false),
+        new Option<bool>("65305", "Mi's Antennae", "Mode: [select] only\nShould the bot buy \"Mi's Antennae\" ?", false),
+        new Option<bool>("65306", "Mi's Morph", "Mode: [select] only\nShould the bot buy \"Mi's Morph\" ?", false),
+        new Option<bool>("66332", "Re's Party Arms", "Mode: [select] only\nShould the bot buy \"Re's Party Arms\" ?", false),
+        new Option<bool>("66334", "Astravian Officer's White Hat", "Mode: [select] only\nShould the bot buy \"Astravian Officer's White Hat\" ?", false),
+        new Option<bool>("66335", "Astravian Officer's White Hat + Locks", "Mode: [select] only\nShould the bot buy \"Astravian Officer's White Hat + Locks\" ?", false),
+    };
 }
 

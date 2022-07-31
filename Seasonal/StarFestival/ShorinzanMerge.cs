@@ -17,7 +17,8 @@ public class ShorinzanMerge
     public static CoreAdvanced sAdv = new();
     public StarFestival SF = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -115,4 +116,16 @@ public class ShorinzanMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("71290", "Starry Samurai", "Mode: [select] only\nShould the bot buy \"Starry Samurai\" ?", false),
+        new Option<bool>("71291", "Starry Samurai's Mask", "Mode: [select] only\nShould the bot buy \"Starry Samurai's Mask\" ?", false),
+        new Option<bool>("71292", "Starry Samurai's BackSwords", "Mode: [select] only\nShould the bot buy \"Starry Samurai's BackSwords\" ?", false),
+        new Option<bool>("71293", "Starry Samurai's Sword", "Mode: [select] only\nShould the bot buy \"Starry Samurai's Sword\" ?", false),
+        new Option<bool>("71294", "Starry Samurai's Swords", "Mode: [select] only\nShould the bot buy \"Starry Samurai's Swords\" ?", false),
+        new Option<bool>("69473", "Aurelian Sword", "Mode: [select] only\nShould the bot buy \"Aurelian Sword\" ?", false),
+        new Option<bool>("69474", "Aurelian Swords", "Mode: [select] only\nShould the bot buy \"Aurelian Swords\" ?", false),
+        new Option<bool>("69479", "Aurous Staff of Hope", "Mode: [select] only\nShould the bot buy \"Aurous Staff of Hope\" ?", false),
+    };
 }

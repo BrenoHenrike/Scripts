@@ -15,10 +15,9 @@ public class ThreeLittleWolvesHousesMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
-    // [Can Change] This should only be changed by the author.
-    //              Just name this the same as the script (without the .cs)
-    public string OptionsStorage = "3LittleWolvesHousesMerge";
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = true;
@@ -100,5 +99,19 @@ public class ThreeLittleWolvesHousesMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("48516", "Dragonrune House", "Mode: [select] only\nShould the bot buy \"Dragonrune House\" ?", false),
+        new Option<bool>("48517", "Dragonrune Hall", "Mode: [select] only\nShould the bot buy \"Dragonrune Hall\" ?", false),
+        new Option<bool>("48518", "Arcangrove Tower House", "Mode: [select] only\nShould the bot buy \"Arcangrove Tower House\" ?", false),
+        new Option<bool>("48765", "Tower of Magic House", "Mode: [select] only\nShould the bot buy \"Tower of Magic House\" ?", false),
+        new Option<bool>("48766", "Falcontower House", "Mode: [select] only\nShould the bot buy \"Falcontower House\" ?", false),
+        new Option<bool>("48767", "Citadel Caverns House", "Mode: [select] only\nShould the bot buy \"Citadel Caverns House\" ?", false),
+        new Option<bool>("48771", "Citadel House", "Mode: [select] only\nShould the bot buy \"Citadel House\" ?", false),
+        new Option<bool>("48768", "Seraphic Fortress", "Mode: [select] only\nShould the bot buy \"Seraphic Fortress\" ?", false),
+        new Option<bool>("48769", "Hachiko Hotel", "Mode: [select] only\nShould the bot buy \"Hachiko Hotel\" ?", false),
+        new Option<bool>("48770", "Clubhouse", "Mode: [select] only\nShould the bot buy \"Clubhouse\" ?", false),
+    };
 }
 

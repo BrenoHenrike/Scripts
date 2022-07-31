@@ -17,7 +17,8 @@ public class DarkwarlegionMerge
     public static CoreAdvanced sAdv = new();
     public CoreLegion Legion = new CoreLegion();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -79,4 +80,12 @@ public class DarkwarlegionMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("68773", "Wretched Blades of Evil", "Mode: [select] only\nShould the bot buy \"Wretched Blades of Evil\" ?", false),
+        new Option<bool>("68769", "Wretched Blade of the Underworld", "Mode: [select] only\nShould the bot buy \"Wretched Blade of the Underworld\" ?", false),
+        new Option<bool>("68770", "Wretched Blades of the Underworld", "Mode: [select] only\nShould the bot buy \"Wretched Blades of the Underworld\" ?", false),
+        new Option<bool>("5278", "Dage's DeathKnight Helm", "Mode: [select] only\nShould the bot buy \"Dage's DeathKnight Helm\" ?", false),
+    };
 }

@@ -16,7 +16,8 @@ public class AstraviaMerge
     public static CoreAdvanced sAdv = new();
     public CoreDarkon Darkon = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -67,4 +68,19 @@ public class AstraviaMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("60172", "The Moon's Amalgamation", "Mode: [select] only\nShould the bot buy \"The Moon's Amalgamation\" ?", false),
+        new Option<bool>("60175", "The Moon's Hallowed Cloak", "Mode: [select] only\nShould the bot buy \"The Moon's Hallowed Cloak\" ?", false),
+        new Option<bool>("60156", "Astravian Officer", "Mode: [select] only\nShould the bot buy \"Astravian Officer\" ?", false),
+        new Option<bool>("60166", "Astravian Officer's Hat + Locks", "Mode: [select] only\nShould the bot buy \"Astravian Officer's Hat + Locks\" ?", false),
+        new Option<bool>("60165", "Astravian Officer's Hat", "Mode: [select] only\nShould the bot buy \"Astravian Officer's Hat\" ?", false),
+        new Option<bool>("60161", "Carlton's Hair", "Mode: [select] only\nShould the bot buy \"Carlton's Hair\" ?", false),
+        new Option<bool>("60164", "Talis's Hair", "Mode: [select] only\nShould the bot buy \"Talis's Hair\" ?", false),
+        new Option<bool>("60162", "Kasper's Hair", "Mode: [select] only\nShould the bot buy \"Kasper's Hair\" ?", false),
+        new Option<bool>("60163", "Rosa's Hair", "Mode: [select] only\nShould the bot buy \"Rosa's Hair\" ?", false),
+        new Option<bool>("58078", "Astravian Mercenary's Dagger", "Mode: [select] only\nShould the bot buy \"Astravian Mercenary's Dagger\" ?", false),
+        new Option<bool>("58082", "Astravia Mercenary's Boomstick", "Mode: [select] only\nShould the bot buy \"Astravia Mercenary's Boomstick\" ?", false),
+    };
 }

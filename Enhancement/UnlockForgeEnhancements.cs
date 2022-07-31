@@ -280,7 +280,7 @@ public class UnlockForgeEnhancements
         Core.KillEscherion("Chaotic Power", 7);
         Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 50, isTemp: false);
         Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 25, false);
-        Adv.BuyItem("alchemyacademy", 2036, "Power Tonic", 10);
+        Adv.BuyItem("alchemyacademy", 2116, "Power Tonic", 10);
 
         Core.EnsureComplete(8740);
         Core.Logger("Enhancement Unlocked: Smite");
@@ -392,7 +392,7 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8743);
 
-        Farm.GoodREP(9);
+        Farm.GoodREP(10);
         if (!Core.CheckInventory("Ascended Paladin"))
         {
             Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);

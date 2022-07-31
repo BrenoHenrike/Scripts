@@ -17,7 +17,8 @@ public class OrbHuntMerge
     public static CoreAdvanced sAdv = new();
     public OrbHunt OH = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -76,4 +77,33 @@ public class OrbHuntMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("64276", "Luminomancer", "Mode: [select] only\nShould the bot buy \"Luminomancer\" ?", false),
+        new Option<bool>("64277", "Luminomancer's Helm", "Mode: [select] only\nShould the bot buy \"Luminomancer's Helm\" ?", false),
+        new Option<bool>("64278", "Luminomancer's Rune Cape", "Mode: [select] only\nShould the bot buy \"Luminomancer's Rune Cape\" ?", false),
+        new Option<bool>("64279", "Luminous Beam Blade", "Mode: [select] only\nShould the bot buy \"Luminous Beam Blade\" ?", false),
+        new Option<bool>("64639", "Dual Luminous Beam Blades", "Mode: [select] only\nShould the bot buy \"Dual Luminous Beam Blades\" ?", false),
+        new Option<bool>("64280", "Tenebral Warrior", "Mode: [select] only\nShould the bot buy \"Tenebral Warrior\" ?", false),
+        new Option<bool>("64281", "Tenebral Warrior's Helm", "Mode: [select] only\nShould the bot buy \"Tenebral Warrior's Helm\" ?", false),
+        new Option<bool>("64282", "Tenebral Warrior's Rune Cape", "Mode: [select] only\nShould the bot buy \"Tenebral Warrior's Rune Cape\" ?", false),
+        new Option<bool>("64283", "Tenebral Beam Sword", "Mode: [select] only\nShould the bot buy \"Tenebral Beam Sword\" ?", false),
+        new Option<bool>("64640", "Dual Tenebral Beam Swords", "Mode: [select] only\nShould the bot buy \"Dual Tenebral Beam Swords\" ?", false),
+        new Option<bool>("64506", "Pyroclastic Mage", "Mode: [select] only\nShould the bot buy \"Pyroclastic Mage\" ?", false),
+        new Option<bool>("64507", "Pyroclastic Mage Hair", "Mode: [select] only\nShould the bot buy \"Pyroclastic Mage Hair\" ?", false),
+        new Option<bool>("64508", "Pyroclastic Mage Hood", "Mode: [select] only\nShould the bot buy \"Pyroclastic Mage Hood\" ?", false),
+        new Option<bool>("64509", "Pyroclastic Guardian Cape", "Mode: [select] only\nShould the bot buy \"Pyroclastic Guardian Cape\" ?", false),
+        new Option<bool>("64510", "Pyroclastic Mage Staff", "Mode: [select] only\nShould the bot buy \"Pyroclastic Mage Staff\" ?", false),
+        new Option<bool>("64511", "Dual Pyroclastic Mage Staves", "Mode: [select] only\nShould the bot buy \"Dual Pyroclastic Mage Staves\" ?", false),
+        new Option<bool>("64512", "Pyroclastic Blaze Hands", "Mode: [select] only\nShould the bot buy \"Pyroclastic Blaze Hands\" ?", false),
+        new Option<bool>("64645", "Elegant Eternal Ice Outfit", "Mode: [select] only\nShould the bot buy \"Elegant Eternal Ice Outfit\" ?", false),
+        new Option<bool>("64648", "Elegant Eternal Ice Crown", "Mode: [select] only\nShould the bot buy \"Elegant Eternal Ice Crown\" ?", false),
+        new Option<bool>("64649", "Elegant Ice Crown + Locks", "Mode: [select] only\nShould the bot buy \"Elegant Ice Crown + Locks\" ?", false),
+        new Option<bool>("64650", "Elegant Ice Veil + Locks", "Mode: [select] only\nShould the bot buy \"Elegant Ice Veil + Locks\" ?", false),
+        new Option<bool>("64652", "The Cold Shoulder", "Mode: [select] only\nShould the bot buy \"The Cold Shoulder\" ?", false),
+        new Option<bool>("64653", "Frozen Ring Wand", "Mode: [select] only\nShould the bot buy \"Frozen Ring Wand\" ?", false),
+        new Option<bool>("64646", "Elegant Ice Cut", "Mode: [select] only\nShould the bot buy \"Elegant Ice Cut\" ?", false),
+        new Option<bool>("64647", "Elegant Ice Locks", "Mode: [select] only\nShould the bot buy \"Elegant Ice Locks\" ?", false),
+    };
 }

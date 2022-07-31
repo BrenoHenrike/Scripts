@@ -89,25 +89,31 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null)
     {
-        matsOnly = (int)Bot.Config.Get<mergeOptionsEnum>("mode") == 2;
+        Bot.Config.Configure();
+        int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
+        matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         List<ShopItem> items = new();
 
         foreach (ShopItem item in shopItems)
         {
-            if (Core.CheckInventory(item.ID, toInv: false))
+            if (Core.CheckInventory(item.ID, toInv: false) || miscCatagories.Contains(item.Category) || (String.IsNullOrEmpty(buyOnlyThis) ? false : buyOnlyThis == item.Name))
                 continue;
-            //No clue why I have to do a double if instead of a &&, but otherwise it will not do this statement correctly
-            if (!miscCatagories.Contains(item.Category))
-                if (Core.IsMember ? true : !item.Upgrade)
+
+            if (Core.IsMember ? true : !item.Upgrade)
+            {
+                if (mode == 3)
                 {
-                    if ((int)Bot.Config.Get<mergeOptionsEnum>("mode") != 1)
-                        items.Add(item);
-                    else if (item.Coins)
+                    if (Bot.Config.Get<bool>("Select", $"{item.ID}"))
                         items.Add(item);
                 }
+                else if (mode != 1)
+                    items.Add(item);
+                else if (item.Coins)
+                    items.Add(item);
+            }
         }
 
         int t = 1;
@@ -289,14 +295,16 @@ public class CoreAdvanced
     /// <summary>
     /// The list of ScriptOptions for any merge script.
     /// </summary>
-    public List<IOption> MergeOptions = new List<IOption>()
+    public List<IOption> MergeOptions = new()
     {
         new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
                                                                      "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
         new Option<string>("blank", " ", "", ""),
-        new Option<string>(" ", "Mode Explanation [all]", "Mode [all]:\t\tYou get all the items from shop, even if non-AC ones if any exist.", "click here"),
-        new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]:\tYou get all the AC tagged items from the shop.", "click here"),
-        new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]:\tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
+        new Option<string>(" ", "Mode Explanation [all]", "Mode [all]: \t\tYou get all the items from shop, even if non-AC ones if any.", "click here"),
+        new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]: \tYou get all the AC tagged items from the shop.", "click here"),
+        new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]: \tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
+        new Option<string>(" ", "Mode Explanation [select]", "Mode [select]: \tYou are able to select what items you get and which ones you dont in the Select Category below.", "click here"),
+        new Option<string>("blank", " ", "", ""),
     };
 
     /// <summary>
@@ -308,7 +316,8 @@ public class CoreAdvanced
     {
         all = 0,
         acOnly = 1,
-        mergeMats = 2
+        mergeMats = 2,
+        select = 3
     };
 
     #endregion

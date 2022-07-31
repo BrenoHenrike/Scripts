@@ -15,7 +15,8 @@ public class TitanGearMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public List<IOption> Options = sAdv.MergeOptions;
+    public List<IOption> Generic = sAdv.MergeOptions;
+    public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
@@ -57,7 +58,7 @@ public class TitanGearMerge
 
                 case "AntiTitan Supplies":
                     Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("titanattack", "r9", "Left", "*", req.Name, quant,  isTemp: false);
+                    Core.KillMonster("titanattack", "r9", "Left", "*", req.Name, quant, isTemp: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
@@ -78,4 +79,17 @@ public class TitanGearMerge
             }
         }
     }
+
+    public List<IOption> Select = new()
+    {
+        new Option<bool>("68025", "Titan Paladin", "Mode: [select] only\nShould the bot buy \"Titan Paladin\" ?", false),
+        new Option<bool>("68026", "Titan Paladin's Helm", "Mode: [select] only\nShould the bot buy \"Titan Paladin's Helm\" ?", false),
+        new Option<bool>("68027", "Titan Paladin's Cloak", "Mode: [select] only\nShould the bot buy \"Titan Paladin's Cloak\" ?", false),
+        new Option<bool>("68028", "Titan Paladin's Cloak + Blade", "Mode: [select] only\nShould the bot buy \"Titan Paladin's Cloak + Blade\" ?", false),
+        new Option<bool>("71441", "Titan Paladin's Blades", "Mode: [select] only\nShould the bot buy \"Titan Paladin's Blades\" ?", false),
+        new Option<bool>("68036", "Vindicator Titan XL", "Mode: [select] only\nShould the bot buy \"Vindicator Titan XL\" ?", false),
+        new Option<bool>("68037", "Vindicator Titan's Helm", "Mode: [select] only\nShould the bot buy \"Vindicator Titan's Helm\" ?", false),
+        new Option<bool>("68038", "Vindicator Titan's Cloak", "Mode: [select] only\nShould the bot buy \"Vindicator Titan's Cloak\" ?", false),
+        new Option<bool>("68040", "Vindicator Titan's Axes", "Mode: [select] only\nShould the bot buy \"Vindicator Titan's Axes\" ?", false),
+    };
 }

@@ -48,10 +48,21 @@ public class MergeTemplateHelper
         List<string> itemsToLearn = new();
         string className = Bot.Shops.ShopName.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "");
 
+        List<string> shopItemNames = new();
+        if (genFile)
+        {
+            shopItemNames.Add("");
+            shopItemNames.Add("    public List<IOption> Select = new()");
+            shopItemNames.Add("    {");
+        }
+
+
         foreach (ShopItem item in shopItems)
         {
             if (Adv.miscCatagories.Contains(item.Category) || item.Requirements == null)
                 continue;
+
+            shopItemNames.Add($"        new Option<bool>(\"{item.ID}\", \"{item.Name}\", \"Mode: [select] only\\nShould the bot buy \\\"{item.Name}\\\" ?\", false),");
 
             foreach (ItemBase req in item.Requirements)
             {
@@ -90,11 +101,13 @@ public class MergeTemplateHelper
             return;
         }
 
+        shopItemNames.Add("    };");
+
         string AppPath = Core.AppPath ?? "";
         string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\MergeTemplate.cs");
 
-        int index = Array.IndexOf(MergeTemplate, "                // Add how to get items here") - 1;
-        if (index < 0)
+        int itemsIndex = Array.IndexOf(MergeTemplate, "                // Add how to get items here") - 1;
+        if (itemsIndex < 0)
         {
             Core.Logger("Failed to find index");
             return;
@@ -105,7 +118,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find classIndex");
             return;
         }
-        MergeTemplate[classIndex] = $"public class {className}Merge";
+        MergeTemplate[classIndex] = $"public class {className}MergeTemp";
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients);");
         if (startIndex < 0)
         {
@@ -114,8 +127,12 @@ public class MergeTemplateHelper
         }
         MergeTemplate[startIndex] = $"        Adv.StartBuyAllMerge(\"{map.ToLower()}\", {shopID}, findIngredients);";
 
-        int endIndex = MergeTemplate.Count() - 4;
-        string[] content = MergeTemplate[..index].Concat(new[] { output }).Concat(MergeTemplate[endIndex..]).ToArray();
+        string[] content = MergeTemplate[..itemsIndex]
+                            .Concat(new[] { output })
+                            .Concat(MergeTemplate[(MergeTemplate.Count() - 4)..(MergeTemplate.Count() - 1)])
+                            .Concat(shopItemNames.ToArray())
+                            .Concat(new[] { "}" })
+                            .ToArray();
 
         string path = AppPath + $@"\Scripts\WIP\{className}Merge.cs";
         Directory.CreateDirectory(AppPath + @"\Scripts\WIP");
