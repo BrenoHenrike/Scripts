@@ -94,11 +94,11 @@ public class BloodMoon
         //Get Him! 6064
         if (!Story.QuestProgression(6064))
         {
-            Core.EnsureAccept(6064);
             Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(6064);
             Core.KillMonster("maxius","r3", "Right", "Count Maxius", "Count Maxius Defeated");
-            Core.EquipClass(ClassType.Farm);
             Core.EnsureComplete(6064);
+            Core.EquipClass(ClassType.Farm);
         }
 
         //Minions Everywhere 6065
@@ -114,8 +114,8 @@ public class BloodMoon
         //An End To This Threat 6067
          if (!Story.QuestProgression(6067))
         {
-            Core.EnsureAccept(6067);
             Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(6067);
             Core.KillMonster("maxius","r6", "Left", "Count Maxius", "Count Maxius Slain");
             Core.EnsureComplete(6067);
         }
