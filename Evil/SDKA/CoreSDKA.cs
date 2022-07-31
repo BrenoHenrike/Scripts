@@ -111,14 +111,28 @@ public class CoreSDKA
         if (!Bot.Quests.IsUnlocked(2088))
         {
             Core.Logger("The Doom that Looms [2087]");
-            if (!Core.CheckInventory(2083) || Core.CheckInventory(8523))
-                Core.Logger("You don't have the DoomKnight Class.", messageBox: true, stopBot: true);
-            
-            if (Core.CheckInventory(2083) || Core.CheckInventory(8523)) //&& Bot.Inventory.GetQuantity("DoomKnight") != 302500) 
+            if (!Core.CheckInventory(2083))
             {
-                Bot.Player.EquipItem(8523);
+                Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
+                Farm.EvilREP(5);
+                Core.BuyItem("trainers", 176, "Healer");
+                Core.BuyItem("trainers", 170, "Warrior");
+                Bot.Player.EquipItem("Warrior");
+                Farm.IcestormArena(rankUpClass: true);
+                Core.JumpWait();
+                Bot.Player.EquipItem("Healer");
+                Farm.IcestormArena(rankUpClass: true);
+                Core.BuyItem("shadowfall", 100, "Doomknight", shopItemID: 6309);
                 Bot.Player.EquipItem(2083);
                 Farm.IcestormArena(rankUpClass: true);
+                Core.EquipClass(ClassType.Solo);
+            }
+
+            if (Core.CheckInventory(2083) && Bot.Inventory.GetQuantity("DoomKnight") != 302500)
+            {
+                Bot.Player.EquipItem(2083);
+                Farm.IcestormArena(rankUpClass: true);
+                Core.EquipClass(ClassType.Solo);
             }
             Core.ChainComplete(2087);
             Core.ToBank("DoomKnight");
