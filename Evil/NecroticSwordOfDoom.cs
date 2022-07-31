@@ -101,15 +101,13 @@ public class NecroticSwordOfDoom
 
         Core.AddDrop("Void Aura", "Empowered Essence", "Malignant Essence");
         Core.Logger($"Gathering {Quantity} Void Aura's with SDKA Method");
-
+        Core.RegisterQuests(4439);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Void Aura", Quantity))
         {
-            Core.EnsureAccept(4439);
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false, publicRoom: true);
-            Core.EnsureComplete(4439);
         }
     }
 
@@ -143,9 +141,9 @@ public class NecroticSwordOfDoom
             Core.AddDrop("Creature Shard");
         Core.Logger($"Gathering {Quantity} Void Aura's with Non-SDKA Method");
 
+Core.RegisterQuests(4432);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Void Aura", Quantity))
         {
-            Core.EnsureAccept(4432);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
             Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", EssenceQuantity, false, publicRoom: true);
             Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", EssenceQuantity, false, publicRoom: true);
@@ -157,7 +155,6 @@ public class NecroticSwordOfDoom
             Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", EssenceQuantity, false, publicRoom: true);
             Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", EssenceQuantity, false, publicRoom: true);
             for (int i = 20; i <= EssenceQuantity; i = i + 20)
-                Core.ChainComplete(4432);
             Bot.Wait.ForPickup("Void Aura");
         }
     }

@@ -47,13 +47,11 @@ public class AscendedDrakathGear
 
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
-
+        Core.RegisterQuests(3767);
         while (!Bot.ShouldExit() && !Core.CheckInventory(Target))
         {
             Bot.Quests.UpdateQuest(159, 4);
-            Core.EnsureAccept(3767);
             Core.HuntMonster("towerofdoom4", "Dread Stranglerfish", "Holy Wasabi");
-            Core.EnsureComplete(3767);
             Bot.Wait.ForPickup(Target);
         }
     }

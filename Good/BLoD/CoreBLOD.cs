@@ -137,24 +137,11 @@ public class CoreBLOD
 
         Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
 
-        int i = 1;
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Spirit Orb");
+        Core.Logger($"Farming {quant - Bot.Inventory.GetQuantity("Spirit Orb")} Spirit Orb");
+        Core.RegisterQuests(2082, 2083);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quant))
-        {
-            Farm.BattleUnderB("Undead Essence", 900);
-            while (!Bot.ShouldExit() && Core.CheckInventory("Undead Essence", 25) && !Core.CheckInventory("Spirit Orb", quant))
-            {
-                Core.ChainComplete(2082);
-                Core.Logger($"Completed x{i++}");
-            }
-            while (!Bot.ShouldExit() && Core.CheckInventory("Bone Dust", 40) && !Core.CheckInventory("Spirit Orb", quant))
-            {
-                Core.ChainComplete(2083);
-                Core.Logger($"Completed x{i++}");
-            }
-            Bot.Player.Pickup("Spirit Orb");
-        }
+            Core.KillMonster("Battleunderb", "Enter", "Spawn", "Skeleton Warrior", log: false);
     }
 
     public void BasicWK(int quant = 1)
