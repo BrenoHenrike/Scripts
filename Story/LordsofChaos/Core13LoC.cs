@@ -1492,7 +1492,7 @@ public class Core13LoC
         Story.KillQuest(2476, "dflesson", "Chaorrupted Evil Soldier");
 
         //Defend the Town!
-        Story.KillQuest(2477, "dflesson", new[] { "Fire Elemental", "Lava Golem" });
+        Story.KillQuest(2477, "dflesson", new[] { "Lava Golem", "Fire Elemental" });
 
         //ChickenCows, Bacon, and Battle!
         Story.KillQuest(2478, "dflesson", new[] { "Chaotic Chicken", "Chaotic Horcboar" });
