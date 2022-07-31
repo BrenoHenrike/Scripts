@@ -75,7 +75,7 @@ public class CoreSDKA
 
     public void DoAll()
     {
-        if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+        if (Core.CheckInventory(14474))
             return;
 
         Core.AddDrop(SDKAItems);
@@ -111,11 +111,13 @@ public class CoreSDKA
         if (!Bot.Quests.IsUnlocked(2088))
         {
             Core.Logger("The Doom that Looms [2087]");
-            if (!Core.CheckInventory(2083))
+            if (!Core.CheckInventory(2083) && Core.CheckInventory(8523))
                 Core.Logger("You don't have the DoomKnight Class.", messageBox: true, stopBot: true);
-            if (Core.CheckInventory(2083) && Bot.Inventory.GetQuantity("DoomKnight") != 302500)
+            
+            if (Core.CheckInventory(2083) && Core.CheckInventory(8523) && Bot.Inventory.GetQuantity("DoomKnight") != 302500) 
             {
                 Bot.Player.EquipItem(2083);
+                Bot.Player.EquipItem(8523);
                 Farm.IcestormArena(rankUpClass: true);
             }
             Core.ChainComplete(2087);
