@@ -114,7 +114,7 @@ public class CoreSDKA
             if (!Core.CheckInventory(2083) || Core.CheckInventory(8523))
                 Core.Logger("You don't have the DoomKnight Class.", messageBox: true, stopBot: true);
             
-            if (Core.CheckInventory(2083) || Core.CheckInventory(8523) && Bot.Inventory.GetQuantity("DoomKnight") != 302500) 
+            if (Core.CheckInventory(2083) || Core.CheckInventory(8523)) //&& Bot.Inventory.GetQuantity("DoomKnight") != 302500) 
             {
                 Bot.Player.EquipItem(8523);
                 Bot.Player.EquipItem(2083);
