@@ -118,7 +118,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find classIndex");
             return;
         }
-        MergeTemplate[classIndex] = $"public class {className}MergeTemp";
+        MergeTemplate[classIndex] = $"public class {className}Merge";
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients);");
         if (startIndex < 0)
         {
