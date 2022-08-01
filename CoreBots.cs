@@ -843,7 +843,8 @@ public class CoreBots
                 continue;
             Bot.Sleep(ActionDelay);
             Bot.Quests.EnsureComplete(quest, tries: AcceptandCompleteTries);
-            Bot.Wait.ForPickup(Core.EnsureLoad(quest).Rewards);
+            foreach (ItemBase item in Core.EnsureLoad(quest).Rewards)
+                Bot.Wait.ForPickup(item.Name);
         }
     }
 
