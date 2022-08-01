@@ -35,7 +35,7 @@ public class CoreAdvanced
         if (Core.CheckInventory(itemName, quant))
             return;
 
-        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
+        ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
 
@@ -56,7 +56,7 @@ public class CoreAdvanced
         if (Core.CheckInventory(itemID, quant))
             return;
 
-        ShopItem? item = parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
+        ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
 
@@ -92,6 +92,7 @@ public class CoreAdvanced
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null)
     {
         Bot.Config.Configure();
+
         int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
         matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
@@ -154,6 +155,7 @@ public class CoreAdvanced
                 {
                     ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
                     getIngredients(selectedItem);
+                    Core.DebugLogger(this);
                     if (!matsOnly && canBuy(new List<ShopItem>() { selectedItem }, shopID))
                         BuyItem(map, shopID, selectedItem.ID, req.Quantity);
                 }
@@ -197,7 +199,7 @@ public class CoreAdvanced
 
     private bool canBuy(List<ShopItem> shopItem, int shopID, string itemNameID = "")
     {
-        ShopItem? item = parseShopItem(shopItem, shopID, itemNameID);
+        ShopItem? item = Core.parseShopItem(shopItem, shopID, itemNameID);
         if (item == null)
             return false;
 
@@ -233,22 +235,6 @@ public class CoreAdvanced
         }
 
         return true;
-    }
-
-    private ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID)
-    {
-        if (shopItem.Count == 0)
-        {
-            Core.Logger($"Item {itemNameID} not found in shop {shopID}.");
-            return null;
-        }
-        else if (shopItem.Count > 1)
-        {
-            Core.Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the item ID.");
-            return null;
-        }
-
-        return shopItem.First();
     }
 
     /// <summary>
@@ -1068,7 +1054,7 @@ public class CoreAdvanced
             switch (cSpecial)
             {
                 case CapeSpecial.Forge:
-                    if (!Core.isCompletedBefore(8758))
+                    if (!uForgeCape())
                     {
                         Core.Logger("Enhancement Failed: You did not unlock the Forge (Cape) Enhancement yet");
                         canEnhance = false;
