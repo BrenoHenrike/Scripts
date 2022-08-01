@@ -1030,7 +1030,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void DwarfholdREP(int rank = 11)
+    public void DwarfholdREP(int rank = 10)
     {
         if (FactionRank("Dwarfhold") >= rank)
             return;
