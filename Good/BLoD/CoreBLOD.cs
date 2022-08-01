@@ -142,6 +142,7 @@ public class CoreBLOD
         Core.RegisterQuests(2082, 2083);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quant))
             Core.KillMonster("Battleunderb", "Enter", "Spawn", "Skeleton Warrior", log: false);
+        Core.CancelRegisteredQuests();
     }
 
     public void BasicWK(int quant = 1)

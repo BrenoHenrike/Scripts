@@ -54,5 +54,6 @@ public class AscendedDrakathGear
             Core.HuntMonster("towerofdoom4", "Dread Stranglerfish", "Holy Wasabi");
             Bot.Wait.ForPickup(Target);
         }
+        Core.CancelRegisteredQuests();
     }
 }
