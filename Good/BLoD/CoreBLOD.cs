@@ -70,58 +70,70 @@ public class CoreBLOD
 
     public void DoAll()
     {
-        if (Core.CheckInventory("Get Your Blinding Light of Destiny"))
-            Core.BuyItem("battleon", 1415, "Blinding Light of Destiny");
         if (Core.CheckInventory("Blinding Light of Destiny"))
             return;
 
+        if (Core.CheckInventory("Get Your Blinding Light of Destiny"))
+        {
+            Core.BuyItem("battleon", 1415, "Blinding Light of Destiny");
+            return;
+        }
+
         Core.AddDrop(BLoDItems);
+
         UnlockMineCrafting();
         BlindingMace();
         BlindingBow();
         BlindingBlade();
         TheBlindingLightofDestiny();
+
         Core.BuyItem("battleon", 1415, "Blinding Light of Destiny");
     }
 
     public void UnlockMineCrafting()
     {
         if (Bot.Quests.IsUnlocked(2091))
-        {
-            Core.Logger("Mine Crafting quest already unlocked, skipping.");
             return;
-        }
 
         Core.AddDrop(BLoDItems);
 
-        if (!Bot.Quests.IsUnlocked(2067))
+        //Reforging the Blinding Light
+        if (!Core.isCompletedBefore(2066))
         {
-            Core.Logger("Quest: Reforging the Blinding Light of Destiny [2066]");
+            Core.Logger("Doing Quest: [2066] \"Reforging the Blinding Light\"");
             Core.BuyItem("doomwood", 276, "Blinding Light of Destiny Handle");
             Core.ChainComplete(2066);
         }
-        if (!Bot.Quests.IsUnlocked(2082))
+
+        //Secret Order of Undead Slayers
+        if (!Core.isCompletedBefore(2067))
         {
-            Core.Logger("Quest: Secret Order of Undead Slayers [2067]");
+            Core.Logger("Doing Quest: [2067] \"Secret Order of Undead Slayers\"");
             Farm.Gold(15000);
             Core.BuyItem("doomwood", 276, "Bonegrinder Medal");
             Core.ChainComplete(2067);
         }
-        if (!Bot.Quests.IsUnlocked(2083))
+
+        //Essential Essences
+        if (!Core.isCompletedBefore(2082))
         {
-            Core.Logger("Quest: Essential Essences [2082]");
+            Core.Logger("Doing Quest: [2082] \"Essential Essences\"");
             Farm.BattleUnderB("Undead Essence", 25);
             Core.ChainComplete(2082);
         }
-        if (!Bot.Quests.IsUnlocked(2084))
+
+        //Bust some Dust
+        if (!Core.isCompletedBefore(2083))
         {
-            Core.Logger("Quest: Bust Some Dust [2083]");
+            Core.Logger("Doing Quest: [2083] \"Bust some Dust\"");
             Farm.BattleUnderB("Bone Dust", 40);
             Core.ChainComplete(2083);
         }
-        if (!Bot.Quests.IsUnlocked(2091))
+
+        //A Loyal Follower        
+        if (!Core.isCompletedBefore(2084))
         {
-            Core.Logger("Quest: A Loyal Follower [2084]");
+            Core.Logger("Doing Quest: [2084] \"A Loyal Follower\"");
             SpiritOrb(100);
             Core.EnsureAccept(2084);
             Core.HuntMonster("timevoid", "Ephemerite", "Celestial Compass");
@@ -136,12 +148,12 @@ public class CoreBLOD
             return;
 
         Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
-
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant - Bot.Inventory.GetQuantity("Spirit Orb")} Spirit Orb");
+        Core.FarmingLogger("Spirit Orb", quant);
+
         Core.RegisterQuests(2082, 2083);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Spirit Orb", quant))
-            Core.KillMonster("Battleunderb", "Enter", "Spawn", "Skeleton Warrior", log: false);
+            Core.KillMonster("battleunderb", "Enter", "Spawn", "Skeleton Warrior", log: false);
         Core.CancelRegisteredQuests();
     }
 
@@ -152,13 +164,12 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
 
-        int i = 1;
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Basic Wepon Kit");
+        Core.FarmingLogger("Basic Wepon Kit", quant);
+
+        Core.RegisterQuests(2136);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Basic Weapon Kit", quant))
         {
-            Core.EnsureAccept(2136);
-
             Core.KillMonster("forest", "Forest3", "Left", "*", "Zardman's StoneHammer", 1, false);
             Core.KillMonster("noobshire", "North", "Left", "Horc Noob", "Noob Blade Oil");
             Core.KillMonster("farm", "Crop1", "Right", "Scarecrow", "Burlap Cloth", 4);
@@ -169,10 +180,9 @@ public class CoreBLOD
             Core.HuntMonster("lair", "Bronze Draconian", "Bronze Brush");
             Core.HuntMonster("bloodtusk", "Rock", "Rocky Stone Sharpener");
 
-            Core.EnsureComplete(2136);
-            Bot.Player.Pickup("Basic Weapon Kit");
-            Core.Logger($"Completed x{i++}");
+            Bot.Wait.ForPickup("Basic Weapon Kit");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void AdvancedWK(int quant = 1)
@@ -182,13 +192,11 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
         Bot.Quests.UpdateQuest(567);
+        Core.FarmingLogger("Advanced Wepon Kit", quant);
 
-        int i = 1;
-        Core.Logger($"Farming {quant} Advanced Wepon Kit");
+        Core.RegisterQuests(2162);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Advanced Weapon Kit", quant))
         {
-            Core.EnsureAccept(2162);
-
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom: true);
             Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
@@ -202,9 +210,7 @@ public class CoreBLOD
             Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case");
             Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10);
 
-            Core.EnsureComplete(2162);
-            Bot.Player.Pickup("Advanced Weapon Kit");
-            Core.Logger($"Completed x{i++}");
+            Bot.Wait.ForPickup("Advanced Weapon Kit");
         }
     }
 
@@ -216,12 +222,12 @@ public class CoreBLOD
         Core.AddDrop(BLoDItems);
 
         Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb", "Great Ornate Warhammer");
-        int i = 1;
-        Core.Logger($"Farming {quant} {item}");
+
+        Core.FarmingLogger(item, quant);
+
+        Core.RegisterQuests(2163);
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
-            Core.EnsureAccept(2163);
-
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("dragonplane", "r2", "Right", "Earth Elemental", "Great Ornate Warhammer", 1, false);
 
@@ -234,16 +240,13 @@ public class CoreBLOD
             Core.HuntMonster("djinn", "Harpy", "Suede Travel Case");
             Core.KillMonster("roc", "Enter", "Spawn", "Rock Roc", "Sharp Stone Sharpener");
 
-            Core.EnsureComplete(2163);
-            Bot.Player.Pickup(item);
-            Core.Logger($"Completed x{i++}");
+            Bot.Wait.ForPickup(item);
         }
     }
 
     public void LightMerge(string item, int quant = 1)
     {
         Core.BuyItem("necropolis", 422, item, quant);
-        Bot.Wait.ForPickup(item, quant);
     }
 
     public void BlindingMace()
@@ -480,7 +483,8 @@ public class CoreBLOD
         Core.AddDrop(BLoDItems);
 
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Brilliant Aura");
+        Core.FarmingLogger("Brilliant Aura", quant);
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Brilliant Aura", quant))
         {
             FindingFragments(2176);
@@ -498,7 +502,8 @@ public class CoreBLOD
         Core.AddDrop(BLoDItems);
 
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Bright Aura");
+        Core.FarmingLogger("Bright Aura", quant);
+
         while (!Bot.ShouldExit() && !Core.CheckInventory("Bright Aura", quant))
         {
             FindingFragments(2174);
@@ -532,6 +537,26 @@ public class CoreBLOD
         Farm.BattleUnderB("Blinding Light Fragments", 10);
         Core.CancelRegisteredQuests();
     }
+
+    //public void SpiritOrbs(int quant = 65000)
+    //{
+
+    //}
+
+    //public void LoyalSpiritOrbs(int quant = 10000)
+    //{
+
+    //}
+
+    //public void BrightAura(int quant = 10000)
+    //{
+
+    //}
+
+    //public void BlindingAura()
+    //{
+
+    //}
 
     // ------------------------------------------------------------------------------------------------------------------------------ //
     // Blinding Light of Destiny Extras Below
