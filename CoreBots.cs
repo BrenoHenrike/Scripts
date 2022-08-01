@@ -1232,7 +1232,11 @@ public class CoreBots
         while (!Bot.ShouldExit() && !CheckInventory(item))
         {
             if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
+            {
+                Logger("Damage over Time Classes:")
+                DOTClasses.ForEach(x => Logger(" - "+ x));
                 Logger($"No DoT Classes found, stopping.", messageBox: true, stopBot: true);
+            }
 
             foreach (string Class in DOTClasses)
             {
