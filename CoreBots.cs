@@ -824,6 +824,7 @@ public class CoreBots
                     Logger($"Completed [{quest.Name}] for {item.Name}");
                     bool completed = Bot.Quests.EnsureComplete(questID, item.ID, tries: AcceptandCompleteTries);
                     Bot.Player.Pickup(item.Name);
+                    Bot.Wait.ForPickup(item.Name);
                     return completed;
                 }
             }
