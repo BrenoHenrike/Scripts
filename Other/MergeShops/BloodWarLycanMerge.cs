@@ -36,10 +36,7 @@ public class BloodWarLycanMerge
 
     public void BuyAllMerge()
     {
-        if (!Core.isCompletedBefore(6067))
-        {
             BloodMoonQuests.BloodMoonSaga();
-        }
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("bloodwarlycan", 1488, findIngredients);
         #region Dont edit this part

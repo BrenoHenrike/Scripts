@@ -27,7 +27,6 @@ public class BloodMoon
     {
         if (Core.isCompletedBefore(6067))
         {
-            Core.Logger("You have already completed this Storyline");
             return;
         }
 

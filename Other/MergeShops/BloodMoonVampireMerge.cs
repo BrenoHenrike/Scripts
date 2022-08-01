@@ -36,11 +36,7 @@ public class BloodMoonVampireMergeTemp
 
     public void BuyAllMerge()
     {
-
-        if (!Core.isCompletedBefore(6067))
-        {
-            BloodMoonQuests.BloodMoonSaga();
-        }
+        BloodMoonQuests.BloodMoonSaga();
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("bloodwarvamp", 1489, findIngredients);
