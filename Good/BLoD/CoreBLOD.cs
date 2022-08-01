@@ -192,7 +192,7 @@ public class CoreBLOD
 
         Core.AddDrop(BLoDItems);
         Bot.Quests.UpdateQuest(567);
-        Core.FarmingLogger("Advanced Wepon Kit", quant);
+        Core.FarmingLogger("Advanced Weapon Kit", quant);
 
         Core.RegisterQuests(2162);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Advanced Weapon Kit", quant))
