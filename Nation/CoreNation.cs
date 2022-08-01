@@ -644,7 +644,7 @@ public class CoreNation
         if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
             sellMemVoucher = _sellMemVoucher;
 
-        bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
+        bool OBoNPet = (Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == RBot.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
 
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
