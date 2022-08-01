@@ -1221,7 +1221,8 @@ public class CoreBots
                     "Timeless Dark Caster",
                     "Frostval Barbarian",
                     "Blaze Binder",
-                    "DeathKnight"
+                    "DeathKnight",
+                    "DragonSoul Shinobi",
                 };
 
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
@@ -1231,7 +1232,7 @@ public class CoreBots
         while (!Bot.ShouldExit() && !CheckInventory(item))
         {
             if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
-                Logger($" {DOTClasses.ToString()} not found, stopping.", messageBox: true, stopBot: true);
+                Logger($"No DoT Classes found, stopping.", messageBox: true, stopBot: true);
 
             foreach (string Class in DOTClasses)
             {
