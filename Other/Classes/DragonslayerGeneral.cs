@@ -37,7 +37,7 @@ public class DragonslayerGeneral
         Adv.GearStore(true);
     }
 
-    public void EnchantedScaleandClaw(int ScaleQuant, int ClawqQant)
+    public void EnchantedScaleandClaw(int ScaleQuant, int ClawQuant)
     {
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
@@ -52,7 +52,7 @@ public class DragonslayerGeneral
             Core.RegisterQuests(5294);
         }
 
-        Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dragon Claw", ClawqQant, isTemp: false);
+        Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dragon Claw", ClawQuant, isTemp: false);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
             Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
