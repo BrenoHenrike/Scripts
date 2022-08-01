@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -1235,7 +1235,8 @@ public class CoreBots
             if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
             {
                 Logger("Damage over Time Classes:");
-                DOTClasses.ForEach(x => Logger(" - "+ x));
+                foreach (string s in DOTClasses)
+                    Logger($" - {s}");
                 Logger($"No DoT Classes found, stopping.", messageBox: true, stopBot: true);
             }
 
