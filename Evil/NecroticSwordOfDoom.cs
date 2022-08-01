@@ -26,14 +26,16 @@ public class NecroticSwordOfDoom
 
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     public CoreDailies Daily = new();
-    public CoreBLOD BLOD = new CoreBLOD();
-    public CoreStory Story = new CoreStory();
-    public CoreSDKA SDKA = new CoreSDKA();
-    public Necromancer Necro = new Necromancer();
-    public BattleUnder BattleUnder = new BattleUnder();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreStory Story = new();
+
+    public CoreBLOD BLOD = new();
+    public CoreSDKA SDKA = new();
+    public Necromancer Necro = new();
+    public BattleUnder BattleUnder = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -86,19 +88,16 @@ public class NecroticSwordOfDoom
             return;
 
         // Daily.NSoDDaily()
-        if (Core.IsMember)
-        {
-            SDKA.DoAll();
-            CommandingShadowEssences(Quantity);
-        }
-        else RetrieveVoidAuras(Quantity);
+        SDKA.DoAll();
+        CommandingShadowEssences(Quantity);
+        RetrieveVoidAuras(Quantity);
     }
 
     public void CommandingShadowEssences(int Quantity)
     {
-        if (Core.CheckInventory("Void Aura", Quantity))
+        if (Core.CheckInventory("Void Aura", Quantity) || !Core.CheckInventory(14474))
             return;
-
+        
         Core.AddDrop("Void Aura", "Empowered Essence", "Malignant Essence");
         Core.Logger($"Gathering {Quantity} Void Aura's with SDKA Method");
         Core.RegisterQuests(4439);

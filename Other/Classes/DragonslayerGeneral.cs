@@ -39,15 +39,13 @@ public class DragonslayerGeneral
 
     public void EnchantedScaleandClaw(int ScaleQuant, int ClawqQant)
     {
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
-
         Adv.GearStore();
 
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
-        Bot.Wait.ForItemBuy();
-
-        if (Core.CheckInventory(582) && itemInv.Quantity != 302500)
+            
+        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
+        if (itemInv.Quantity != 302500)
             Adv.rankUpClass("Dragonslayer");
 
         Adv.GearStore(true);
@@ -58,11 +56,11 @@ public class DragonslayerGeneral
         {
             if (ScaleQuant > 0)
             {
-                Core.AddDrop("Enchanted Scale", "Dragon Claw");
+                Core.AddDrop("Enchanted Scale");
                 Core.RegisterQuests(5294);
                 Core.Logger($"Farming {ScaleQuant} Enchanted Scale, {Bot.Inventory.GetQuantity("Enchanted Scale")} / {ScaleQuant}");
             }
-            else Core.AddDrop("Dragon Claw");
+            Core.AddDrop("Dragon Claw");
             Core.Logger($"Farming {ClawqQant} Dragon Claw, {Bot.Inventory.GetQuantity("Enchanted Scale")} / {ClawqQant}");
             Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dragon Claw", ClawqQant, isTemp: false);
             Core.CancelRegisteredQuests();
@@ -75,7 +73,6 @@ public class DragonslayerGeneral
             Core.RegisterQuests(5294);
             while (!Bot.ShouldExit() && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
                 Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
-
             Core.CancelRegisteredQuests();
         }
     }

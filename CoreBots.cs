@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -19,6 +19,7 @@ using RBot.Quests;
 using RBot.Servers;
 using RBot.Shops;
 using RBot.Skills;
+using RBot.Utils;
 
 public class CoreBots
 {
@@ -823,6 +824,7 @@ public class CoreBots
                     Logger($"Completed [{quest.Name}] for {item.Name}");
                     bool completed = Bot.Quests.EnsureComplete(questID, item.ID, tries: AcceptandCompleteTries);
                     Bot.Player.Pickup(item.Name);
+                    Bot.Wait.ForPickup(item.Name);
                     return completed;
                 }
             }
@@ -842,6 +844,8 @@ public class CoreBots
                 continue;
             Bot.Sleep(ActionDelay);
             Bot.Quests.EnsureComplete(quest, tries: AcceptandCompleteTries);
+            foreach (ItemBase item in EnsureLoad(quest).Rewards)
+                Bot.Wait.ForPickup(item.Name);
         }
     }
 
@@ -1221,7 +1225,8 @@ public class CoreBots
                     "Timeless Dark Caster",
                     "Frostval Barbarian",
                     "Blaze Binder",
-                    "DeathKnight"
+                    "DeathKnight",
+                    "DragonSoul Shinobi",
                 };
 
         if (item != null && isTemp ? Bot.Inventory.ContainsTempItem(item, quant) : CheckInventory(item, quant))
@@ -1231,7 +1236,12 @@ public class CoreBots
         while (!Bot.ShouldExit() && !CheckInventory(item))
         {
             if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
-                Logger($" {DOTClasses.ToString()} not found, stopping.", messageBox: true, stopBot: true);
+            {
+                Logger("Damage over Time Classes:");
+                foreach (string s in DOTClasses)
+                    Logger($" - {s}");
+                Logger($"No DoT Classes found, stopping.", messageBox: true, stopBot: true);
+            }
 
             foreach (string Class in DOTClasses)
             {

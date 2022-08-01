@@ -656,7 +656,7 @@ public class CoreNation
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
             Core.RegisterQuests(2857, 609);
-            if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)") && Core.IsMember)
                 Core.RegisterQuests(599);
             else if (OBoNPet)
                 Core.RegisterQuests(2561);

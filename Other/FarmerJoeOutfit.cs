@@ -11,6 +11,9 @@
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Story/Yokai.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Other/Classes/DragonShinobi.cs
 
 using RBot;
 
@@ -24,6 +27,7 @@ public class FarmerJoeOutfit
     public EternalInversionist EI = new();
     public project InvEn = new();
     public ArchPaladin AP = new();
+    public DragonShinobi DS = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -43,6 +47,7 @@ public class FarmerJoeOutfit
         Adv.EnhanceEquipped(EnhancementType.Lucky);
         Core.Logger("Aquiring Eternal Inversionist");
         EI.GetEI();
+        DS.GetDSS();
         AP.GetAP();
 
         Farm.Experience();

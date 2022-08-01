@@ -61,5 +61,6 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
             Core.HuntMonster("Mverse", "Major Mushroom", "Mirror Realm's Force Card", 1, isTemp: true);
             Core.HuntMonster("Mverse", "Major Mushroom", "Drakath The Outlawed One Card", 1, isTemp: true);
         }
+        Core.CancelRegisteredQuests();
     }
 }

@@ -142,10 +142,7 @@ public class ArchFiendWarlordMerge
 
                 case "Unidentified 25":
                     Core.EquipClass(ClassType.Farm);
-                    if (Bot.Player.Gold >= 15000000)
-                        Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
-                    else Nation.TheAssistant(req.Name, quant); //low drop rate may take awhile.
-                    Bot.Wait.ForPickup(req.Name);
+                    Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
                     break;
 
             }

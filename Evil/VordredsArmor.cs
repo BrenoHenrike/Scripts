@@ -155,6 +155,7 @@ public class VordredArmor
                 Core.EnsureComplete(8411);
                 Bot.Wait.ForPickup("Especially Unbroken Skull");
             }
+            Core.CancelRegisteredQuests();
         }
         else
         {

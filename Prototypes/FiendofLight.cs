@@ -57,7 +57,7 @@ public class FiendofLight
         ////If you want the bot to bank the items after farming them all un "//" the following lines.\\\\
         //Core.Logger($"banking Fiend of Light");
         //Core.ToBank(Rewards); 
-
+        Core.CancelRegisteredQuests();
     }
 }
 ////Made by ToxlcChain\\\\
