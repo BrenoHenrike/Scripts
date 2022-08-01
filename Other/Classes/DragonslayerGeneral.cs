@@ -39,15 +39,13 @@ public class DragonslayerGeneral
 
     public void EnchantedScaleandClaw(int ScaleQuant, int ClawqQant)
     {
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
-
         Adv.GearStore();
 
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
-        Bot.Wait.ForItemBuy();
-
-        if (Core.CheckInventory(582) && itemInv.Quantity != 302500)
+            
+        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
+        if (itemInv.Quantity != 302500)
             Adv.rankUpClass("Dragonslayer");
 
         Adv.GearStore(true);
