@@ -209,12 +209,23 @@ public class CoreStory
             if (timeout > 15)
             {
                 int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
-                string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
+                if (QuestData.Value - currentValue <= 1)
+                {
+                    string message1 = $"A server/client desync happened (common) for your quest progress, the bot cannot continue.|" +
+                                        "Please relog and restart the bot in order to continue.|" +
+                                        "Once Skua is out this popup will be replaced with a automatic relog.|" +
+                                        "No report is neccessary at this time.";
+                    Core.Logger(message1.Replace("|", " "));
+                    MessageBox.Show(message1.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Bot.Stop(true);
+                }
+
+                string message2 = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
                                  $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
                                   "Please fill in the RBot Scripts Form to report this.|" +
                                   "Do you wish to be brought to the form?";
-                Core.Logger(message.Replace("|", " "));
-                DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                Core.Logger(message2.Replace("|", " "));
+                DialogResult response = MessageBox.Show(message2.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (response == DialogResult.Yes)
                 {
                     string path = ScriptManager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
