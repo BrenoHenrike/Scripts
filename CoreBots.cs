@@ -464,22 +464,15 @@ public class CoreBots
     {
         if (CheckInventory(itemName, quant))
             return;
-        Join(map);
-        Bot.Shops.Load(shopID);
-        Bot.Sleep(1500);
-        ShopItem? item = null;
-        try
-        {
-            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ? shopitem.Name == itemName : shopitem.ShopItemID == shopItemID);
-        }
-        catch
-        {
-            Logger($"The bot didn't find the item [{itemName}] in the shop [{shopID}]. Map: {map}.", messageBox: true, stopBot: true);
+
+        ShopItem item = parseShopItem(GetShopItems(map, shopID), shopID, itemName, shopItemID);
+        if (item == new ShopItem())
             return;
-        }
+
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
+
         if (item.Coins && item.Cost > 0)
             if (MessageBox.Show(
                                 $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
@@ -508,22 +501,15 @@ public class CoreBots
     {
         if (CheckInventory(itemID, quant))
             return;
-        Join(map);
-        Bot.Shops.Load(shopID);
-        Bot.Sleep(1500);
-        ShopItem? item = null;
-        try
-        {
-            item = Bot.Shops.ShopItems.First(shopitem => shopItemID == 0 ? shopitem.ID == itemID : shopitem.ShopItemID == shopItemID);
-        }
-        catch
-        {
-            Logger($"The bot didn't find the item with ID [{itemID}] in the shop [{shopID}]. Map: {map}.", messageBox: true, stopBot: true);
+
+        ShopItem item = parseShopItem(GetShopItems(map, shopID), shopID, $"{itemID}", shopItemID);
+        if (item == new ShopItem())
             return;
-        }
+
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
+
         if (item.Coins && item.Cost > 0)
             if (MessageBox.Show(
                                 $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
@@ -620,6 +606,31 @@ public class CoreBots
             }
 
         Logger($"{(all ? "" : quant.ToString())} {itemName} sold");
+    }
+
+    public ShopItem parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID, int shopItemID = 0)
+    {
+        if (shopItem.Count == 0)
+        {
+            Logger($"Item {itemNameID} not found in shop {shopID}.");
+            return new();
+        }
+        else if (shopItem.Count > 1)
+        {
+            if (shopItemID > 0)
+            {
+                if (!shopItem.Any(x => x.ShopItemID == shopItemID))
+                {
+                    Logger($"Item {itemNameID} with ShopItemID {shopItemID} was not in {shopID}. The developer needs to correc the Shop Item ID");
+                    return new();
+                }
+                return shopItem.First(x => x.ShopItemID == shopItemID);
+            }
+            Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the Shop Item ID.");
+            return new();
+        }
+
+        return shopItem.First();
     }
 
     public List<ShopItem> GetShopItems(string map, int shopID)
