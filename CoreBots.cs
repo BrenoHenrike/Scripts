@@ -84,7 +84,6 @@ public class CoreBots
     public List<string> BankingBlackList = new();
     public string[] EmptyArray = { "" };
     public List<InventoryItem> EmptyList = new();
-    public string? GuildRestore = null;
     public string AppPath = Path.GetDirectoryName(Application.ExecutablePath) ?? "";
 
     #endregion
@@ -207,7 +206,6 @@ public class CoreBots
                     Bot.CallGameFunction("world.toggleMonsters");
             }
 
-            GuildRestore =
             Bot.Options.CustomName = "AUQW RBOT MASTER";
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
