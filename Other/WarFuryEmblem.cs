@@ -31,11 +31,12 @@ public class WarfuryEmblem
 
         Core.AddDrop("Warfury Emblem");
         Adv.BestGear(GearBoost.Human);
-        Core.RegisterQuests(8204);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Warfury Emblem", EmblemQuant))
+        {
+            Core.EnsureAccept(8204);
             Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
-        Bot.Wait.ForPickup("Warfury Emblem");
-
-        Core.CancelRegisteredQuests();
+            Core.EnsureComplete(8204);
+            Bot.Wait.ForPickup("Warfury Emblem");
+        }
     }
 }
