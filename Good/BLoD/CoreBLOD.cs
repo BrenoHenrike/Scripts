@@ -285,7 +285,7 @@ public class CoreBLOD
             {
                 if (!Core.CheckInventory("Celestial Copper"))
                 {
-                    Core.Logger("Farming for Celestial Copper");
+                    Core.FarmingLogger("Celestial Copper", 1);
                     Core.EnsureAccept(2107);
                     Farm.BattleUnderB("Undead Energy", 25);
                     Daily.MineCrafting(new[] { "Copper" });
@@ -318,7 +318,7 @@ public class CoreBLOD
 
         if (Core.CheckInventory("Mace of Destiny"))
         {
-            Core.Logger("Farming for Bright Mace of Destiny");
+            Core.FarmingLogger("Mace of Destiny", 1);
             AdvancedWK();
             UltimateWK("Bright Aura", 2);
             LightMerge("Bright Mace of Destiny");
@@ -331,6 +331,8 @@ public class CoreBLOD
             LightMerge("Blinding Mace of Destiny");
         }
     }
+
+    //Weapon Upgrades can be optimized with functions that upgrade the shit, as they are basically the same
 
     public void BlindingBow()
     {
@@ -351,7 +353,7 @@ public class CoreBLOD
             {
                 if (!Core.CheckInventory("Sanctified Silver"))
                 {
-                    Core.Logger("Farming for Sanctified Silver");
+                    Core.FarmingLogger("Sanctified Silver", 1);
                     Core.EnsureAccept(2108);
                     Farm.BattleUnderB("Undead Energy", 25);
                     Daily.MineCrafting(new[] { "Silver" });
@@ -361,12 +363,12 @@ public class CoreBLOD
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
                     Core.EnsureComplete(2108);
                 }
-                Core.Logger("Farming for Sanctified Silver of Destiny");
+                Core.FarmingLogger("Sanctified Silver of Destiny", 1);
                 UltimateWK("Loyal Spirit Orb", 5);
                 UltimateWK("Bright Aura", 2);
                 Core.BuyItem("dwarfhold", 434, "Sanctified Silver of Destiny");
             }
-            Core.Logger("Farming for Bow of Destiny");
+            Core.FarmingLogger("Bow of Destiny", 1);
             FindingFragmentsMace();
             Farm.BattleUnderB("Undead Energy", 17);
             UltimateWK("Loyal Spirit Orb");
@@ -377,7 +379,7 @@ public class CoreBLOD
 
         if (Core.CheckInventory("Bow of Destiny"))
         {
-            Core.Logger("Farming for Bright Bow of Destiny");
+            Core.FarmingLogger("Bright Bow of Destiny", 1);
             UltimateWK("Loyal Spirit Orb", 3);
             AdvancedWK();
             LightMerge("Bright Bow of Destiny");
@@ -385,7 +387,7 @@ public class CoreBLOD
 
         if (Core.CheckInventory("Bright Bow of Destiny"))
         {
-            Core.Logger("Farming for Blinding Bow of Destiny");
+            Core.FarmingLogger("Blinding Bow of Destiny", 1);
             UltimateWK();
             LightMerge("Blinding Bow of Destiny");
         }
@@ -410,7 +412,7 @@ public class CoreBLOD
             {
                 if (!Core.CheckInventory("Blessed Barium"))
                 {
-                    Core.Logger("Farming for Blessed Barium");
+                    Core.FarmingLogger("Blessed Barium", 1);
                     Core.EnsureAccept(2104);
                     Farm.BattleUnderB("Undead Energy", 25);
                     Daily.MineCrafting(new[] { "Barium" });
@@ -421,13 +423,13 @@ public class CoreBLOD
                     Core.EnsureComplete(2104);
                     Bot.Wait.ForPickup("Blessed Barium");
                 }
-                Core.Logger("Farming for Blessed Barium of Doom");
+                Core.FarmingLogger("Blessed Barium of Destiny", 1);
                 FindingFragmentsBow(2);
                 UltimateWK("Loyal Spirit Orb", 5);
                 Core.BuyItem("dwarfhold", 434, "Blessed Barium of Destiny");
                 Bot.Wait.ForPickup("Blessed Barium of Destiny");
             }
-            Core.Logger("Farming for Blade of Destiny");
+            Core.FarmingLogger("Blade of Destiny", 1);
             FindingFragmentsMace();
             UltimateWK("Loyal Spirit Orb");
             UltimateWK("Spirit Orb", 15);
@@ -437,7 +439,7 @@ public class CoreBLOD
 
         if (Core.CheckInventory("Blade of Destiny"))
         {
-            Core.Logger("Farming for Bright Blade of Destiny");
+            Core.FarmingLogger("Bright Blade of Destiny", 1);
             FindingFragmentsMace();
             AdvancedWK();
             LightMerge("Bright Blade of Destiny");
@@ -445,7 +447,7 @@ public class CoreBLOD
 
         if (Core.CheckInventory("Bright Blade of Destiny"))
         {
-            Core.Logger("Farming for Blinding Blade of Destiny");
+            Core.FarmingLogger("Blinding Blade of Destiny", 1);
             UltimateWK();
             LightMerge("Blinding Blade of Destiny");
         }
