@@ -143,7 +143,7 @@ public class ArchFiendWarlordMerge
                 case "Unidentified 25":
                     Core.EquipClass(ClassType.Farm);
                     Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
-                    Bot.Wait.ForPickup("Unidentified 25");
+                    Bot.Wait.ForItemBuy("Unidentified 25");
                     break;
 
             }
