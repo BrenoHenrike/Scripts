@@ -19,6 +19,7 @@ using RBot.Quests;
 using RBot.Servers;
 using RBot.Shops;
 using RBot.Skills;
+using RBot.Utils;
 
 public class CoreBots
 {

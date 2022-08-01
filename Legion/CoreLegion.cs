@@ -61,19 +61,13 @@ public class CoreLegion
         Adv.SmartEnhance(Bot.Inventory.CurrentClass.Name);
         Adv.BestGear(GearBoost.Human);
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
+        Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6, log: false);
-            Core.EnsureComplete(6251);
-
-            while (!Bot.ShouldExit() && Core.CheckInventory("Seraphic Medals", 5))
-                Core.ChainComplete(6248);
-            while (!Bot.ShouldExit() && Core.CheckInventory("Mega Seraphic Medals", 3))
-                Core.ChainComplete(6249);
             Bot.Player.Pickup("Dark Token");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DiamondTokenofDage(int quant = 300)
@@ -89,9 +83,9 @@ public class CoreLegion
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
+        Core.RegisterQuests(4743);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -108,8 +102,6 @@ public class CoreLegion
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Adv.BestGear(GearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-
-            Core.EnsureComplete(4743);
             Bot.Player.Pickup("Legion Token", "Diamond Token of Dage");
             Core.Logger($"Completed x{i++}");
         }
