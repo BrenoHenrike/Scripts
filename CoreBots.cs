@@ -463,7 +463,7 @@ public class CoreBots
         if (CheckInventory(itemName, quant))
             return;
 
-        ShopItem item = parseShopItem(GetShopItems(map, shopID), shopID, itemName, shopItemID);
+        ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
         if (item == new ShopItem())
             return;
 
@@ -500,7 +500,7 @@ public class CoreBots
         if (CheckInventory(itemID, quant))
             return;
 
-        ShopItem item = parseShopItem(GetShopItems(map, shopID), shopID, $"{itemID}", shopItemID);
+        ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
         if (item == new ShopItem())
             return;
 
