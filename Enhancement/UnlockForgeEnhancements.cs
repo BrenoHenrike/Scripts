@@ -294,7 +294,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
 
         FCA.GetFireChampsArmor();
-        DOT.GetDoT();
+        DOT.GetDoT(doExtra: false);
         ED.getSet();
 
         if (!Core.CheckInventory("Eternity Blade"))

@@ -117,7 +117,7 @@ public class CoreAdvanced
         }
 
         int t = 1;
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 5; i++)
         {
             foreach (ShopItem item in items)
             {
