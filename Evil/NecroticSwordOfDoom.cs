@@ -86,18 +86,16 @@ public class NecroticSwordOfDoom
             return;
 
         // Daily.NSoDDaily()
-        if (Core.IsMember)
-        {
-            SDKA.DoAll();
-            CommandingShadowEssences(Quantity);
-        }
-        else if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
-            CommandingShadowEssences(Quantity);
-        else RetrieveVoidAuras(Quantity);
+           SDKA.DoAll();
+           CommandingShadowEssences(Quantity);
+           RetrieveVoidAuras(Quantity);
     }
 
     public void CommandingShadowEssences(int Quantity)
     {
+        if (!Core.CheckInventory(14474))
+            return;
+        
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
 
