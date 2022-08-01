@@ -312,7 +312,7 @@ public class CoreLegion
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
-        Core.RegisterQuests(4704);
+        Core.RegisterQuests(4704, 4703);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
         {
