@@ -1030,7 +1030,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void DwarfholdREP(int rank = 10)
+    public void DwarfholdREP(int rank = 11)
     {
         if (FactionRank("Dwarfhold") >= rank)
             return;
@@ -1988,24 +1988,16 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         int i = quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
 
-        Core.RegisterQuests(1310);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
-            Core.Logger($"Farming Token A x {i}");
-            Core.Logger($"Farming Token C x {200 - Bot.Inventory.GetQuantity("Super-Fan Swag Token C")}");
+            Core.FarmingLogger($"Super-Fan Swag Token A", 1);
 
+            Core.RegisterQuests(1310);
             while (!Bot.ShouldExit() && !Core.CheckInventory("Super-Fan Swag Token C", 200))
-            {
                 Core.KillMonster("collectorlab", "r2", "Right", "*", "Doppelganger Documents", log: false);
-            }
 
-            if (!Core.CheckInventory("Super-Fan Swag Token A", quant))
-            {
-                Core.BuyItem("collection", 325, "Super-Fan Swag Token B", 20);
-                Bot.Sleep(1500);
-                Core.BuyItem("collection", 325, "Super-Fan Swag Token A", Bot.Inventory.GetQuantity("Super-Fan Swag Token A") + 1);
-            }
-            Core.Logger($"Token A {quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A")} Left to Farm");
+            Core.BuyItem("collection", 325, "Super-Fan Swag Token B", 20);
+            Core.BuyItem("collection", 325, "Super-Fan Swag Token A", quant);
         }
         Core.CancelRegisteredQuests();
     }
