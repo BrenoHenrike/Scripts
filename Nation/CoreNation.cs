@@ -179,9 +179,7 @@ public class CoreNation
                 Core.EnsureAccept(6183);
             else
                 Core.EnsureAccept(6697);
-            Bot.Options.AttackWithoutTarget = true;
-            Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5, log: false);
-            Bot.Options.AttackWithoutTarget = false;
+            Core.HuntMonsterMapID("mobius", 10, "Slugfit Horn", 5, log: false);
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3, log: false);
             Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
