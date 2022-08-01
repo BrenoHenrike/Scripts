@@ -75,10 +75,7 @@ public class CoreSDKA
 
     public void DoAll()
     {
-        if (Core.CheckInventory(14474))
-            return;
-        
-        if (!Core.IsMember)
+        if (Core.CheckInventory(14474) || !Core.IsMember)
             return;
 
         Core.AddDrop(SDKAItems);
