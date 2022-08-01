@@ -142,15 +142,8 @@ public class ArchFiendWarlordMerge
 
                 case "Unidentified 25":
                     Core.EquipClass(ClassType.Farm);
-                    if (Bot.Player.Gold < 15000100)
-                        Farm.Gold(15000100);
-                    else
-                    {
-                        Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-                        Bot.Wait.ForPickup("Unmoulded Fiend Essence");
-                        Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+                    Bot.Wait.ForPickup("Unidentified 25");
                     break;
 
             }
