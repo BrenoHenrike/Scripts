@@ -91,6 +91,8 @@ public class NecroticSwordOfDoom
             SDKA.DoAll();
             CommandingShadowEssences(Quantity);
         }
+        else if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+            CommandingShadowEssences(Quantity);
         else RetrieveVoidAuras(Quantity);
     }
 
