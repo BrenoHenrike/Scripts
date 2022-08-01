@@ -416,7 +416,8 @@ public class CoreFarms
         AlchemyREP();
         ArcangroveREP();
         BaconCatREP();
-        BeastMasterREP();
+        if (Core.IsMember)
+            BeastMasterREP();
         BlacksmithingREP();
         BladeofAweREP(farmBoA: false);
         BrightoakREP();
@@ -454,7 +455,8 @@ public class CoreFarms
         PetTamerREP();
         RavenlossREP();
         SandseaREP();
-        SkyguardREP();
+        if (Core.IsMember)
+            SkyguardREP();
         SomniaREP();
         SpellCraftingREP();
         SwordhavenREP();
