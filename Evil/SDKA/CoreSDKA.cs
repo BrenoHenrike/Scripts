@@ -77,6 +77,9 @@ public class CoreSDKA
     {
         if (Core.CheckInventory(14474))
             return;
+        
+        if (!Core.IsMember)
+            return;
 
         Core.AddDrop(SDKAItems);
         UnlockHardCoreMetals();
