@@ -207,7 +207,7 @@ public class CoreBots
                     Bot.CallGameFunction("world.toggleMonsters");
             }
 
-            GuildRestore = Bot.GetGameObject<string>("world.myAvatar.pMC.pname.tg.text").Replace("&lt; ", "< ").Replace(" &gt;", " >");
+            GuildRestore =
             Bot.Options.CustomName = "AUQW RBOT MASTER";
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
@@ -263,7 +263,7 @@ public class CoreBots
         }
 
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
-        Bot.Options.CustomGuild = GuildRestore;
+        Bot.Options.CustomGuild = $"< {(Bot.GetGameObject<string>("world.myAvatar.objData.guild.Name").Replace("&lt; ", "< ").Replace(" &gt;", " >"))} >";
 
         if (Bot.Player.LoggedIn)
             Logger("Bot Stopped Successfully");
