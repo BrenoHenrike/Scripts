@@ -39,41 +39,23 @@ public class DragonslayerGeneral
 
     public void EnchantedScaleandClaw(int ScaleQuant, int ClawqQant)
     {
-        Adv.GearStore();
-
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
-            
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ("DragonSlayer").ToLower() && i.Category == ItemCategory.Class);
-        if (itemInv.Quantity != 302500)
-            Adv.rankUpClass("Dragonslayer");
-
-        Adv.GearStore(true);
+        Adv.rankUpClass("Dragonslayer");
 
         Core.EquipClass(ClassType.Farm);
 
-        if (ClawqQant > 0)
-        {
-            if (ScaleQuant > 0)
-            {
-                Core.AddDrop("Enchanted Scale");
-                Core.RegisterQuests(5294);
-                Core.Logger($"Farming {ScaleQuant} Enchanted Scale, {Bot.Inventory.GetQuantity("Enchanted Scale")} / {ScaleQuant}");
-            }
-            Core.AddDrop("Dragon Claw");
-            Core.Logger($"Farming {ClawqQant} Dragon Claw, {Bot.Inventory.GetQuantity("Enchanted Scale")} / {ClawqQant}");
-            Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dragon Claw", ClawqQant, isTemp: false);
-            Core.CancelRegisteredQuests();
-        }
-
-        if (ScaleQuant > 0 && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
+        if (ScaleQuant > 0)
         {
             Core.AddDrop("Enchanted Scale");
             Core.Logger($"Farming {ScaleQuant} Enchanted Scale, {Bot.Inventory.GetQuantity("Enchanted Scale")} / {ScaleQuant}");
             Core.RegisterQuests(5294);
-            while (!Bot.ShouldExit() && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
-                Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
-            Core.CancelRegisteredQuests();
         }
+
+        Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dragon Claw", ClawqQant, isTemp: false);
+
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Enchanted Scale", ScaleQuant))
+            Core.KillMonster("dragontown", "r4", "Right", "Tempest Dracolich", "Dracolich Slain", 12, log: false);
+        Core.CancelRegisteredQuests();
     }
 }
