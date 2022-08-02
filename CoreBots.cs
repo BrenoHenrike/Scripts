@@ -777,7 +777,7 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
-        AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+        Bot.Drops.Add(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
         Bot.Sleep(ActionDelay);
         return Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
     }
@@ -797,7 +797,7 @@ public class CoreBots
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
 
-            AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+            Bot.Drops.Add(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
             Bot.Sleep(ActionDelay);
             Bot.Quests.EnsureAccept(quest.ID, tries: AcceptandCompleteTries);
         }
