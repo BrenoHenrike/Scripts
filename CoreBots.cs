@@ -737,7 +737,8 @@ public class CoreBots
                             continue;
                         }
 
-                        AddDrop(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
+
+                        Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
                         EnsureComplete(kvp.Key.ID, simpleRewards.First().ID);
                         Task.Delay(ActionDelay);
                         EnsureAccept(kvp.Key.ID);

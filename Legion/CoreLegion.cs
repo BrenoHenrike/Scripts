@@ -379,13 +379,12 @@ public class CoreLegion
                 return;
         }
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Tokens", quant);
         Core.EquipClass(ClassType.Solo);
-        Bot.Player.Jump("Boss", "Left");
         Core.RegisterQuests(6742, 6743);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
-            Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch");
+            Core.KillMonster("legionarena", "Boss", "Left", "Legion Fiend Rider", log: false);
 
         Core.CancelRegisteredQuests();
         Core.ToBank("Bone Sigil");
