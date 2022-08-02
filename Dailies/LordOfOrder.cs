@@ -30,7 +30,7 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true)
     {
-        if (Core.CheckInventory(50741))
+        if (Core.CheckInventory(50741) && Core.CheckInventory(50576))
             return;
 
         Core.Logger("Daily: Lord Of Order Class");
