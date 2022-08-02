@@ -296,14 +296,14 @@ public class CoreBots
     {
         if (Bot.Inventory.ContainsTempItem(item, quant))
             return true;
+        if (Bot.Inventory.Contains(item, quant))
+            return true;
         if (Bot.Bank.Contains(item))
         {
             if (!toInv)
                 return true;
             Unbank(item);
         }
-        if (Bot.Inventory.Contains(item, quant))
-            return true;
         if (Bot.Inventory.ContainsHouseItem(item))
             return true;
         return false;
@@ -325,14 +325,14 @@ public class CoreBots
             return false;
         if (itemTempInv != null && Bot.Inventory.ContainsTempItem(itemTempInv.Name, quant))
             return true;
+        if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
+            return true;
         if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
         {
             if (!toInv)
                 return true;
             Unbank(itemBank.Name);
         }
-        if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
-            return true;
 
         return false;
     }
@@ -350,6 +350,13 @@ public class CoreBots
             return true;
         foreach (string? name in itemNames)
         {
+            if (Bot.Inventory.Contains(name, quant) && any)
+                return true;
+            else if (Bot.Inventory.Contains(name, quant) && !any)
+                continue;
+            else if (!any)
+                return false;
+
             if (Bot.Bank.Contains(name, quant))
             {
                 if (!toInv && !any)
@@ -358,12 +365,6 @@ public class CoreBots
                     return true;
                 Unbank(name);
             }
-            if (Bot.Inventory.Contains(name, quant) && any)
-                return true;
-            else if (Bot.Inventory.Contains(name, quant) && !any)
-                continue;
-            else if (!any)
-                return false;
         }
         return !any;
     }
