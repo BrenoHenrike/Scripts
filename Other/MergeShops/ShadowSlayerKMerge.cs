@@ -1,7 +1,3 @@
-using System.ComponentModel;
-using System.IO.Compression;
-using System.Diagnostics;
-using System.Reflection.PortableExecutable;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
