@@ -775,6 +775,7 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
+        AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
         Bot.Sleep(ActionDelay);
         return Bot.Quests.EnsureAccept(questID, tries: AcceptandCompleteTries);
     }
@@ -788,7 +789,6 @@ public class CoreBots
         List<Quest> QuestData = EnsureLoad(questIDs);
         foreach (Quest quest in QuestData)
         {
-
             if (quest.Upgrade && !IsMember)
                 Logger($"\"{quest.Name}\" [{quest.ID}] is member-only, stopping the bot.", stopBot: true);
 
