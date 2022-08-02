@@ -57,6 +57,7 @@ public class SwirlingTheAbyss
 
             Core.EnsureAccept(7899);
             Core.EnsureCompleteChoose(7899);
+            Core.ToBank(Rewards);
             Core.Logger($"Completed x{i++}");
         }
     }
