@@ -242,7 +242,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(5738);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
         {
@@ -265,7 +265,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(3256);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
         {
@@ -287,7 +287,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(3968, 3969);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
@@ -311,7 +311,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4704, 4703);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
@@ -348,7 +348,7 @@ public class CoreLegion
         else if (Core.CheckInventory("Paragon Ringbearer"))
             QuestID = 7073;
 
-        Core.Logger($"Farming Legion Tokens {Bot.Inventory.GetQuantity("Legion Token")}/{quant}");
+        Core.FarmingLogger("Legion Token", quant);
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
         Core.RegisterQuests(QuestID);
@@ -379,7 +379,7 @@ public class CoreLegion
                 return;
         }
 
-        Core.FarmingLogger("Legion Tokens", quant);
+        Core.FarmingLogger("Legion Token", quant);
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(6742, 6743);
 
@@ -402,7 +402,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Human);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.Join("dreadrock");
         Core.RegisterQuests(4849);
         Bot.Options.AggroMonsters = true;
@@ -425,7 +425,7 @@ public class CoreLegion
         Core.Join("dragonheart");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Dragonkin);
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4896);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
@@ -450,7 +450,7 @@ public class CoreLegion
         Core.Join("dragonheart");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Dragonkin);
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4100);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
@@ -466,7 +466,7 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Legion Token");
+        Core.FarmingLogger("Legion Token", quant);
 
         Core.RegisterQuests(5741);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
