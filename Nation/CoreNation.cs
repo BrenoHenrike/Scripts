@@ -890,6 +890,7 @@ public class CoreNation
         if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
             return;
         
+        Core.AddDrop("Blood Gem of the Archfiend");
         Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
         Core.RegisterQuests(7816);
         Bot.Quests.UpdateQuest(363);
