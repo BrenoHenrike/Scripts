@@ -64,7 +64,7 @@ public class ShorinzanMerge
                     Core.RegisterQuests(8753);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("Tercessuinotlim", "Tainted Elemental", "Tainted Essence Collected", 10);
+                        Core.HuntMonster("Tercessuinotlim", "Evil Elemental", "Tainted Essence Collected", 10);
                         Core.HuntMonster("Tercessuinotlim", "Dark Makai", "Makai Essence Collected", 20);
                         Core.HuntMonster("necrodungeon", "SlimeSkull", "Necropolis Soul Collected", 15);
                         Core.EquipClass(ClassType.Solo);
