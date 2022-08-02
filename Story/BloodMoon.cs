@@ -26,9 +26,7 @@ public class BloodMoon
     public void BloodMoonMap()
     {
         if (Core.isCompletedBefore(6067))
-        {
             return;
-        }
 
         Story.PreLoad();
 
@@ -95,7 +93,7 @@ public class BloodMoon
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6064);
-            Core.KillMonster("maxius","r3", "Right", "Count Maxius", "Count Maxius Defeated");
+            Core.KillMonster("maxius", "r3", "Right", "Count Maxius", "Count Maxius Defeated");
             Core.EnsureComplete(6064);
             Core.EquipClass(ClassType.Farm);
         }
@@ -111,11 +109,11 @@ public class BloodMoon
         }
 
         //An End To This Threat 6067
-         if (!Story.QuestProgression(6067))
+        if (!Story.QuestProgression(6067))
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6067);
-            Core.KillMonster("maxius","r6", "Left", "Count Maxius", "Count Maxius Slain");
+            Core.KillMonster("maxius", "r6", "Left", "Count Maxius", "Count Maxius Slain");
             Core.EnsureComplete(6067);
         }
     }
