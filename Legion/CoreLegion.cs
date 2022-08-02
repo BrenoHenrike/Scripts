@@ -369,7 +369,8 @@ public class CoreLegion
 
         JoinLegion();
         Adv.BestGear(GearBoost.Undead);
-        Core.AddDrop("Legion Token");
+
+        Core.AddDrop("Legion Token", "Bone Sigil");
         Core.Join("legionarena", publicRoom: true);
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
@@ -378,14 +379,15 @@ public class CoreLegion
                 return;
         }
 
-        Core.FarmingLogger("Legion Token", quant);
+        Core.FarmingLogger("Legion Tokens", quant);
         Core.EquipClass(ClassType.Solo);
-        Core.RegisterQuests(6743);
+        Core.RegisterQuests(6742, 6743);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory("Legion Token", quant))
-            Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch", log: false);
-            
+            Core.KillMonster("legionarena", "Boss", "Left", "Legion Fiend Rider", log: false);
+
         Core.CancelRegisteredQuests();
+        Core.ToBank("Bone Sigil");
     }
 
     public void LTDreadrock(int quant = 25000)
