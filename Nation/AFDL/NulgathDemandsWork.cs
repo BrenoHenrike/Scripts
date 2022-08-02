@@ -59,7 +59,7 @@ public class NulgathDemandsWork
             {
                 Nation.Supplies("Unidentified 26", 1, true);
                 Core.EnsureAccept(584);
-                Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
+                Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
                 Core.EnsureComplete(584);
                 Bot.Player.Pickup("Unidentified 27");
                 Core.Logger("Uni 27 acquired");
