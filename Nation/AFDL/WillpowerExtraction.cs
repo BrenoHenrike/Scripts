@@ -57,12 +57,7 @@ public class WillpowerExtraction
             }
 
             Core.EquipClass(ClassType.Farm);
-            if (!Core.CheckInventory("Necrot", 5))
-            {
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 1, shopItemID: 8844);
-                Adv.BuyItem("alchemyacademy", 397, "Necrot", 5, 2);
-            }
-
+            Adv.BuyItem("tercess", 1951, "Necrot", 5, 10);
             Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
             Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 5, 10);
 
