@@ -472,14 +472,15 @@ public class CoreAdvanced
     /// Ranks up your class
     /// </summary>
     /// <param name="ClassName">Name of the class you want it to rank up</param>
-    public void rankUpClass(string ClassName)
+    public void rankUpClass(string ClassName, bool GearRestore = true)
     {
         Bot.Wait.ForPickup(ClassName);
 
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class);
         if (itemInv == null)
             Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
-        GearStore();
+        if (GearRestore)
+            GearStore();
 
         if (itemInv == null)
         {
@@ -498,7 +499,8 @@ public class CoreAdvanced
         Core.Equip(CPBoost);
         Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-        GearStore(true);
+        if (GearRestore)
+            GearStore(true);
     }
 
     /// <summary>
