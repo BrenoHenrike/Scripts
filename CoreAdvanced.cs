@@ -1084,7 +1084,7 @@ public class CoreAdvanced
             }
 
             if (canEnhance)
-                _AutoEnhance(cape, 2143, "forge");
+                _AutoEnhance(cape, 2143, ((int)cSpecial > 0) ? "forge" : null);
             else skipCounter++;
         }
         Core.DebugLogger(this);
@@ -1169,7 +1169,7 @@ public class CoreAdvanced
             }
 
             if (canEnhance)
-                _AutoEnhance(weapon, shopID, "forge");
+                _AutoEnhance(weapon, shopID, ((int)wSpecial > 6) ? "forge" : null);
             else skipCounter++;
         }
 
@@ -1715,7 +1715,6 @@ public class CoreAdvanced
                         type = EnhancementType.Wizard;
                         cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Spiral_Carve;
-                        EnhanceEquipped(EnhancementType.Wizard, CapeSpecial.None, WeaponSpecial.Spiral_Carve);
                         break;
                     #endregion
 
