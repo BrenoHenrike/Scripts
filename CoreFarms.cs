@@ -1988,11 +1988,11 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         int i = quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
 
+        Core.RegisterQuests(1310);
         while (!Bot.ShouldExit() && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
             Core.FarmingLogger($"Super-Fan Swag Token A", 1);
 
-            Core.RegisterQuests(1310);
             while (!Bot.ShouldExit() && !Core.CheckInventory("Super-Fan Swag Token C", 200))
                 Core.KillMonster("collectorlab", "r2", "Right", "*", "Doppelganger Documents", log: false);
 
