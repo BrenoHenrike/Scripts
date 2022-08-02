@@ -887,7 +887,7 @@ public class CoreNation
     /// <param name="quant">Desired quantity, 100 = max stack</param>
     public void BloodyChaos(int quant = 100)
     {
-        if (Core.CheckInventory("Blood Gem Of The Archfiend", quant))
+        if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
             return;
         
         Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
