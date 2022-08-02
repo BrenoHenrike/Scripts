@@ -922,6 +922,7 @@ public class CoreQOM
             Core.EnsureAccept(8107);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("downbelow", "Living Rage|Earthwyrm|Creeping Shadow", "Anka's Followers Slain", 1000, false);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("downbelow", "Anka", "Soul of Vengeance", 25, false);
             Core.EnsureComplete(8107);
         }
