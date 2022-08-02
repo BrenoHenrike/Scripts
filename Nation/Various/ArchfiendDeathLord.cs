@@ -41,11 +41,11 @@ public class ArchfiendDeathLord
 
     public void GetArm(bool OnlyArmor = true)
     {
-        if (Core.CheckInventory("Archfiend DeathLord"))
-            return;
-
         OnlyArmor = Bot.Config.Get<bool>("OnlyArmor");
         string[] RewardsList = OnlyArmor ? new[] { "Archfiend DeathLord" } : Core.EnsureLoad(7900).Rewards.Select(x => x.Name).ToList().ToArray();
+        if (Core.CheckInventory(RewardsList))
+            return;
+
         Core.AddDrop(RewardsList.ToArray());
 
         fiendshard.Fiendshard_Questline();
