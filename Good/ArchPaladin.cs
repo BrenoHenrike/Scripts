@@ -31,7 +31,7 @@ public class ArchPaladin
 
     public void GetAP(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("ArchPaladin"))
+        if (Core.CheckInventory(36920))
             return;
 
         Story.PreLoad();
