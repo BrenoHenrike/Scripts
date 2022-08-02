@@ -682,7 +682,7 @@ public class CoreBots
         // Defining all the lists to be used=
         List<Quest> questData = EnsureLoad(questIDs);
         Dictionary<Quest, int> chooseQuests = new Dictionary<Quest, int>();
-        Dictionary<int, int> nonChooseQuests = new Dictionary<int, int>();
+        Dictionary<Quest, int> nonChooseQuests = new Dictionary<Quest, int>();
 
         foreach (Quest q in questData)
         {
@@ -699,7 +699,7 @@ public class CoreBots
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
                 chooseQuests.Add(q, 1);
-            else nonChooseQuests.Add(q.ID, 1);
+            else nonChooseQuests.Add(q, 1);
         }
 
         EnsureAccept(questIDs);
@@ -711,14 +711,14 @@ public class CoreBots
                 Task.Delay(ActionDelay);
 
                 // Quests that dont need a choice
-                foreach (KeyValuePair<int, int> kvp in nonChooseQuests)
+                foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
                 {
-                    if (Bot.Quests.CanComplete(kvp.Key))
+                    if (Bot.Quests.CanComplete(kvp.Key.ID))
                     {
-                        EnsureComplete(kvp.Key);
+                        EnsureComplete(kvp.Key.ID);
                         Task.Delay(ActionDelay);
-                        EnsureAccept(kvp.Key);
-                        Logger($"Quest [{kvp.Key}] Completed x{nonChooseQuests[kvp.Key]++} Times");
+                        EnsureAccept(kvp.Key.ID);
+                        Logger($"Quest completed x{nonChooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                     }
                 }
 
@@ -733,7 +733,7 @@ public class CoreBots
                                                                             r.MaxStack > Bot.Bank.GetItemByName(r.Name).Quantity)).ToList();
                         if (simpleRewards.Count == 0)
                         {
-                            nonChooseQuests.Add(kvp.Key.ID, kvp.Value);
+                            nonChooseQuests.Add(kvp.Key, kvp.Value);
                             chooseQuests.Remove(kvp.Key);
                             continue;
                         }
@@ -743,7 +743,7 @@ public class CoreBots
                         EnsureComplete(kvp.Key.ID, simpleRewards.First().ID);
                         Task.Delay(ActionDelay);
                         EnsureAccept(kvp.Key.ID);
-                        Logger($"Quest [{kvp.Key.ID}, {kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}] Completed x{chooseQuests[kvp.Key]++} Times");
+                        Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID} \"{kvp.Key.Name}\" (got {kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}])");
 
                     }
                 }
