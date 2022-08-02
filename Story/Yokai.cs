@@ -166,9 +166,8 @@ public class YokaiQuests
 
 
         // Feel the Heat 6478
-        Story.KillQuest(6478, "heiwavalley", "Kosenjobi", AutoCompleteQuest: false);
         Story.BuyQuest(6478, "heiwavalley", 1608, "Wasabi");
-
+        Story.KillQuest(6478, "heiwavalley", "Kosenjobi", AutoCompleteQuest: false);
 
         // Get Some Fur 6479
         Story.KillQuest(6479, "heiwavalley", "Abumi Guchi");
