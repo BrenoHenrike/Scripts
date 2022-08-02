@@ -168,7 +168,7 @@ public class CoreStory
         if (AutoCompleteQuest)
             Core.EnsureComplete(QuestData.ID);
         Bot.Wait.ForQuestComplete(QuestData.ID);
-        Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"");
+        Core.Logger($"Completed Quest: [{QuestData.ID}] \"{QuestData.Name}\"");
         Bot.Sleep(1500);
     }
 
@@ -209,7 +209,7 @@ public class CoreStory
             if (timeout > 15)
             {
                 int currentValue = Bot.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
-                if (QuestData.Value - currentValue <= 1)
+                if (QuestData.Value - currentValue <= 2)
                 {
                     string message1 = $"A server/client desync happened (common) for your quest progress, the bot cannot continue.|" +
                                         "Please relog and restart the bot in order to continue.|" +
