@@ -842,6 +842,7 @@ public class CoreNation
             while (!Bot.ShouldExit() && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
+        BloodyChaos(quant);
         KisstheVoid(quant);
     }
 
@@ -880,6 +881,28 @@ public class CoreNation
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
     }
 
+    /// <summary>
+    /// Do Bloody Chaos quest for Blood Gems
+    /// </summary>
+    /// <param name="quant">Desired quantity, 100 = max stack</param>
+    public void BloodyChaos(int quant = 100)
+    {
+        if (Core.CheckInventory("Blood Gem Of The Archfiend", quant))
+            return;
+        
+        Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
+        Core.RegisterQuests(7816);
+        Bot.Quests.UpdateQuest(363);
+        Core.EquipClass(ClassType.Solo);
+        while (!Bot.ShouldExit() && !Core.CheckInventory("Blood Gem Of The Archfiend", quant))
+        {
+            Core.KillEscherion("Escherion's Helm", isTemp: false);
+            Core.KillVath("Shattered Legendary Sword of Dragon Control", isTemp: false);
+            Core.HuntMonster("hydrachallenge", "Hydra Head 85", "Hydra Scale Piece", 200, false);
+        }
+        Core.CancelRegisteredQuests();
+    }
+    
     /// <summary>
     /// Do Kiss the Void quest for Blood Gems
     /// </summary>
