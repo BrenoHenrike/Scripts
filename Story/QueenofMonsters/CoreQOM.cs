@@ -917,6 +917,13 @@ public class CoreQOM
         Story.KillQuest(8106, "downbelow", "Anka");
 
         //8107 | Undying Rage
-        Story.KillQuest(8107, "downbelow", new[] { "Living Rage|Earthwyrm", "Anka" });
+        if (!Story.QuestProgression(8107))
+        {
+            Core.EnsureAccept(8107);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("downbelow", "Living Rage|Earthwyrm|Creeping Shadow", "Anka's Followers Slain", 1000, false);
+            Core.HuntMonster("downbelow", "Anka", "Soul of Vengeance", 25, false);
+            Core.EnsureComplete(8107);
+        }
     }
 }
