@@ -1710,7 +1710,7 @@ public class CoreBots
                 found = true;
             }
         }
-        if (newItem != null)
+        if (quant > 1 && newItem != null)
         {
             int t = 0;
             while (Bot.Inventory.GetTempQuantity(newItem.Name) < quant ||

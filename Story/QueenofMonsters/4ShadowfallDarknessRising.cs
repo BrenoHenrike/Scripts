@@ -16,7 +16,7 @@ public class CompleteDarknessRising
     {
         Core.SetOptions();
 
-        QOM.CompleteShadowfallDarknessRising();
+        QOM.ShadowfallDarknessRising();
 
         Core.SetOptions(false);
     }

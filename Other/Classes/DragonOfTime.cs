@@ -61,7 +61,7 @@ public class DragonOfTime
             Core.KillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
 
             Farm.LoremasterREP(4);
-            
+
             Core.BuyItem("librarium", 651, "Myths of Lore");
 
             Core.KillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
@@ -178,7 +178,7 @@ public class DragonOfTime
 
             Darkon.FarmReceipt(100);
 
-            QOM.GuardianTree();
+            QOM.TheReshaper();
             if (!Core.CheckInventory("Semiramis Feather"))
             {
                 Core.AddDrop("Semiramis Feather");

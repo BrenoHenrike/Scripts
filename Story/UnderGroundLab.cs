@@ -5,7 +5,7 @@
 
 using RBot;
 
-public class Example
+public class UnderGroundLab
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
 
@@ -28,9 +28,9 @@ public class Example
 
         Story.PreLoad();
         Core.EquipClass(ClassType.Farm);
-        
+
         Core.AddDrop("Unicorn Essence");
-        
+
         // Hunt for the Brutal Intruder
         Story.MapItemQuest(3148, "undergroundlab", new[] { 2144, 2145, 2146, 2147, 2148 });
 

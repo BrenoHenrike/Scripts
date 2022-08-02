@@ -168,7 +168,7 @@ public class CoreStory
         if (AutoCompleteQuest)
             Core.EnsureComplete(QuestData.ID);
         Bot.Wait.ForQuestComplete(QuestData.ID);
-        Core.Logger($"Completed Quest: [{QuestData.ID}] \"{QuestData.Name}\"");
+        Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"");
         Bot.Sleep(1500);
     }
 
@@ -265,7 +265,7 @@ public class CoreStory
             foreach (ItemBase Item in Rewards)
                 Core.AddDrop(Item.Name);
 
-        Core.Logger($"Doing Quest: [{QuestID}] \"{QuestData.Name}\"");
+        Core.Logger($"Doing Quest: [{QuestID}] - \"{QuestData.Name}\"");
         Core.EquipClass(ClassType.Solo);
         PreviousQuestState = false;
         return false;

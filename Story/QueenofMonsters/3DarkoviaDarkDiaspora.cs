@@ -16,7 +16,7 @@ public class CompleteDarkDiaspora
     {
         Core.SetOptions();
 
-        QOM.CompleteDarkoviaDarkDiaspora();
+        QOM.DarkoviaDarkDiaspora();
 
         Core.SetOptions(false);
     }

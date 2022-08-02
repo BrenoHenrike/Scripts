@@ -15,7 +15,7 @@ public class CompleteCelestialRealm
     {
         Core.SetOptions();
 
-        QOM.CompleteCelestialRealmATheftofLight();
+        QOM.aTheftofLight();
 
         Core.SetOptions(false);
     }
