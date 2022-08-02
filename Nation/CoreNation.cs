@@ -479,7 +479,7 @@ public class CoreNation
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
         Bot.Quests.UpdateQuest(847);
         Core.RegisterQuests(2566);
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
@@ -529,12 +529,10 @@ public class CoreNation
                 Core.AddDrop("Blood Gem of Nulgath");
                 Core.RegisterQuests(7551);
             }
-            Core.Logger($"Farming {quant} {item}");
-            int i = 1;
-
+            Core.FarmingLogger(item, quant);
+            Core.RegisterQuests(2857);
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
-                Core.EnsureAccept(2857);
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
                 {
                     if (Core.IsMember)
@@ -542,7 +540,6 @@ public class CoreNation
                     Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune", log: false);
                 }
                 Core.KillEscherion("Relic of Chaos", publicRoom: true);
-                Core.EnsureComplete(2857);
 
                 Bot.Player.Pickup(item);
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
@@ -550,7 +547,6 @@ public class CoreNation
                     Bot.Player.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
                 }
-                Core.Logger($"Completed x{i++}");
                 if (Bot.Inventory.IsMaxStack(item))
                     Core.Logger("Max Stack Hit.");
                 else Core.Logger($"item: {Bot.Inventory.GetQuantity(item)}/{quant}");
@@ -600,7 +596,7 @@ public class CoreNation
             }
         }
 
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
         if (farmGold)
         {
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
@@ -649,7 +645,7 @@ public class CoreNation
             Core.AddDrop("Tainted Soul");
 
         Core.EquipClass(ClassType.Solo);
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
 
         while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
         {
@@ -659,7 +655,7 @@ public class CoreNation
             else if (OBoNPet)
                 Core.RegisterQuests(2561);
 
-            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false, log: false);
+            Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Core", 10, false, log: false);
             if (Bot.Inventory.IsMaxStack(item))
                 Core.Logger("Max Stack Hit.");
             else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
@@ -889,7 +885,7 @@ public class CoreNation
     {
         if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
             return;
-        
+
         Core.AddDrop("Blood Gem of the Archfiend");
         Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
         Core.RegisterQuests(7816);
@@ -903,7 +899,7 @@ public class CoreNation
         }
         Core.CancelRegisteredQuests();
     }
-    
+
     /// <summary>
     /// Do Kiss the Void quest for Blood Gems
     /// </summary>
