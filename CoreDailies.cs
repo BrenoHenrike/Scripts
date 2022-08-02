@@ -144,6 +144,7 @@ public class CoreDailies
         }
         if (Bot.Quests.IsInProgress(2091))
             Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");
+        Bot.Sleep(Core.ActionDelay);
     }
 
     /// <summary>
