@@ -57,6 +57,8 @@ public class Caladbogl
             Adv.BuyItem("underworld", 238, "Legion Titan");
         }
 
+        Core.AddDrop(Core.EnsureLoad(Core.CheckInventory(11953) ? 1960 : 3419).Rewards.Select(x => x.Name).ToArray());
+
         Core.RegisterQuests((Core.CheckInventory(11953) ? 1960 : 3419));
         while (!Bot.ShouldExit() && !Core.CheckInventory(target))
         {
