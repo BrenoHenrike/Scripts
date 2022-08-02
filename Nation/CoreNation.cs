@@ -659,7 +659,7 @@ public class CoreNation
             else if (OBoNPet)
                 Core.RegisterQuests(2561);
 
-            Core.KillMonster("evilmarsh", "End", "Left", "Evil Elemental", "Tainted Core", 10, false, log: false);
+            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false, log: false);
             if (Bot.Inventory.IsMaxStack(item))
                 Core.Logger("Max Stack Hit.");
             else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
