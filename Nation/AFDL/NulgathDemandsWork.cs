@@ -65,7 +65,7 @@ public class NulgathDemandsWork
                 Core.Logger("Uni 27 acquired");
             }
 
-            Nation.FarmVoucher(false);
+            Nation.FarmVoucher(true);
 
             Nation.FarmGemofNulgath(15);
 
