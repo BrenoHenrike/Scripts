@@ -22,6 +22,7 @@
 //cs_include Scripts/Story/Laguna/03LagunaBeach.cs
 //cs_include Scripts/Story/Laguna/04Laguna.cs
 
+//cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/DageChallengeStory.cs
 //cs_include Scripts/Story/Legion/DarkAlliance.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
@@ -29,6 +30,7 @@
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/Legion/WorldSoul.cs
+//cs_include Scripts/Story/Legion/HeadOfTheLegionBeast.cs
 
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs
