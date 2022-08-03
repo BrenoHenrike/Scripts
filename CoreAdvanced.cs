@@ -751,8 +751,10 @@ public class CoreAdvanced
         {
             foreach (InventoryItem Item in Bot.Inventory.Items.FindAll(i => i.Equipped == true))
                 ReEquippedItems.Add(Item.Name);
+
             ReEnhanceAfter = CurrentClassEnh();
-            ReCEnhanceAfter = CurrentCapeSpecial();
+            if (Bot.Inventory.Items.Any(x => x.Category == ItemCategory.Cape && x.Equipped))
+                ReCEnhanceAfter = CurrentCapeSpecial();
             ReWEnhanceAfter = CurrentWeaponSpecial();
         }
         else
