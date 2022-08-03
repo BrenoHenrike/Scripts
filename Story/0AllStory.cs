@@ -83,6 +83,8 @@
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
+//cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Story/SepulchureSaga/00CompleteSepulchureSaga.cs
 using RBot;
 
 public class AllStory
