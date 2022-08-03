@@ -27,8 +27,14 @@ public class YulgathsInn
             return;
 
         // Merge the following:
-        Core.HuntMonster("originul", "Fiend Champion", "Yulgath's Hut", isTemp: false);
-        Bot.Wait.ForPickup("Yulgath's Hut");
+        if (!Core.CheckInventory("Yulgath's Hut"))
+        {
+            Core.AddDrop("Yulgath's Hut");
+            Core.Logger($"Hunting Fiend Champion for Yulgath's Hut, (0/1) [Temp = False]");
+
+            while (!Core.CheckInventory("Yulgath's Hut"))
+                Core.HuntMonster("originul", "Fiend Champion", log: false);
+        }
         Nation.FarmUni10(400);
         Nation.TheAssistant("Tainted Gem", 200);
         Nation.FarmDarkCrystalShard(250);

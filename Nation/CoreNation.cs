@@ -527,10 +527,10 @@ public class CoreNation
                 rPDSuni = new[] { Uni()[1], Uni()[6], Uni()[9], Uni()[16], Uni()[20] };
                 Core.AddDrop(rPDSuni);
                 Core.AddDrop("Blood Gem of Nulgath");
-                Core.RegisterQuests(7551);
+                Core.RegisterQuests();
             }
             Core.FarmingLogger(item, quant);
-            Core.RegisterQuests(2857);
+            Core.RegisterQuests(returnPolicyDuringSupplies ? new[] { 2857, 7551 } : new[] { 2857 });
             while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
             {
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
@@ -551,8 +551,7 @@ public class CoreNation
                     Core.Logger("Max Stack Hit.");
                 else Core.Logger($"item: {Bot.Inventory.GetQuantity(item)}/{quant}");
             }
-            if (returnPolicyDuringSupplies)
-                Core.CancelRegisteredQuests();
+            Core.CancelRegisteredQuests();
         }
     }
 
