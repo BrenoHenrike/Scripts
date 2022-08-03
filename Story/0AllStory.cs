@@ -72,6 +72,7 @@
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Story/ExaltiaTower.cs
 //cs_include Scripts/Story/FiendPast.cs
+//cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/J6Saga.cs
 //cs_include Scripts/Story/Oddities.cs
@@ -156,6 +157,7 @@ public class AllStory
     public DreadForest DreadForest = new();
     public EtherStormWastes EtherStormWastes = new();
     public ExaltiaTower ExaltiaTower = new();
+    public Gamehaven Gamehaven = new();
     public FiendPast FiendPast = new();
     public GlaceraStory GlaceraStory = new();
     public J6Saga J6Saga = new();
@@ -345,6 +347,9 @@ public class AllStory
         Core.Logger($"Story: Exaltia Tower - Complete");
 
         FiendPast.DoAll();
+        Core.Logger($"Story: Fiend Past - Complete");
+
+        Gamehaven.Storyline();
         Core.Logger($"Story: Fiend Past - Complete");
 
         GlaceraStory.DoAll();

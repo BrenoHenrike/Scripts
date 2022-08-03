@@ -1,35 +1,32 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 using RBot;
 
-public class CtrlAltDelMemberBadge
+public class Gamehaven
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
     public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        Badge();
+        Storyline();
 
         Core.SetOptions(false);
     }
 
-    public void Badge()
+    public void Storyline()
     {
         if (!Core.IsMember || Core.isCompletedBefore(953))
             return;
 
-        // Map - GameHavaen:
-        Core.EquipClass(ClassType.Farm);
-        
+        Story.PreLoad();
+
         // Agree to help Ethan
         Story.ChainQuest(940);
-        
+
         // Clues for the Clueless
         Story.MapItemQuest(941, "gamehaven", 267, 10);
 
@@ -42,23 +39,17 @@ public class CtrlAltDelMemberBadge
         // Investigate the Storage Room
         Story.MapItemQuest(944, "gamehaven", 269);
 
-        // Map - WareHouse: 
-
         // Inventory In Your Inventory
-        Story.MapItemQuest(945, "WareHouse", 270, 10);
+        Story.MapItemQuest(945, "warehouse", 270, 10);
 
         // Sneevil Sabotage
-        Story.KillQuest(946, "WareHouse", "Delivery Sneevil");
+        Story.KillQuest(946, "warehouse", "Delivery Sneevil");
 
         // A Bribe for the Bride
-        Story.KillQuest(947, "WareHouse", "Snapper Shrub");
+        Story.KillQuest(947, "warehouse", "Snapper Shrub");
 
         // Hey There Lie-lah
-        Story.MapItemQuest(948, "WareHouse", 272);
-
-
-        // Map - Arcadion:
-        Core.EquipClass(ClassType.Solo);
+        Story.MapItemQuest(948, "warehouse", 272);
 
         // Fuel for Fought
         Story.MapItemQuest(950, "arcadion", 271, 8);
