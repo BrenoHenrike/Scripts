@@ -22,12 +22,12 @@
 //cs_include Scripts/Seasonal/SummerBreak/BeachParty.cs
 //cs_include Scripts/Seasonal/SummerBreak/BeachPartyTokenItems.cs
 //cs_include Scripts/Seasonal/SummerBreak/BlazingBeach.cs
-// cs_include Scripts/Seasonal/SummerBreak/BlazingBeachMerge.cs
+//cs_include Scripts/Seasonal/SummerBreak/BlazingBeachMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/BurningBeach.cs
-// cs_include Scripts/Seasonal/SummerBreak/CoralBeachMerge.cs
+//cs_include Scripts/Seasonal/SummerBreak/CoralBeachMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/FreakiTiki.cs
 //cs_include Scripts/Seasonal/SummerBreak/LunaCove.cs
-// cs_include Scripts/Seasonal/SummerBreak/LunaCoveMerge.cs
+//cs_include Scripts/Seasonal/SummerBreak/LunaCoveMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/SweetSummerTreats.cs
 //cs_include Scripts/Seasonal/SummerBreak/Un-LifeguardQuest.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs
