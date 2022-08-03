@@ -66,7 +66,7 @@ public class CoreFarms
     {
         if (Bot.Player.Gold >= quant)
             return;
-
+        SevenCirclesWar(quant);
         HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
