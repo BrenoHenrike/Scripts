@@ -6,7 +6,7 @@ public class EtherStormWastes
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -20,15 +20,9 @@ public class EtherStormWastes
     public void StoryLine()
     {
         if (Core.isCompletedBefore(3535))
-        {
-
-            Core.Logger("You have already completed SelpulchurePrequel Storyline");
             return;
-        }
 
         Story.PreLoad();
-
-        Core.EquipClass(ClassType.Solo);
 
         //Explore The DragonPlane 1384
         Story.MapItemQuest(1384, "dragonplane", new[] { 682, 683, 684, 685, 686 });

@@ -5,6 +5,8 @@
 //cs_include Scripts/Story/SkyPirate.cs
 //cs_include Scripts/Other/Badges/CornelisReboron.cs
 //cs_include Scripts/Other/Badges/DerpMoosefishBadge.cs
+//cs_include Scripts/Other/Badges/DesolothFreed.cs
+//cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Other/Badges/SkyPirateSlayerBadge.cs
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
 using RBot;
@@ -17,6 +19,7 @@ public class AllBadges
 
     public CornelisRebornbadge Cornelis = new();
     public DerpMoosefishBadge DMF = new();
+    public DesolothFreedBadge Deso = new();
     public SkyPirateBadge SPB = new();
     public YouMadBroBadge YMBB = new();
 
@@ -26,6 +29,7 @@ public class AllBadges
 
         Cornelis.Badge();
         SPB.Badge();
+        Deso.Badge();
         DMF.Badge();
         YMBB.Badge();
         //add more as they are made.
