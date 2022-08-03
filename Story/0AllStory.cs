@@ -72,6 +72,7 @@
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Story/ExaltiaTower.cs
 //cs_include Scripts/Story/FiendPast.cs
+//cs_include Scripts/Story/FireHouse[SeasonalOrMem].cs
 //cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/J6Saga.cs
@@ -158,6 +159,7 @@ public class AllStory
     public EtherStormWastes EtherStormWastes = new();
     public ExaltiaTower ExaltiaTower = new();
     public Gamehaven Gamehaven = new();
+    public FireHouse FireHouse = new();
     public FiendPast FiendPast = new();
     public GlaceraStory GlaceraStory = new();
     public J6Saga J6Saga = new();
@@ -348,6 +350,9 @@ public class AllStory
 
         FiendPast.DoAll();
         Core.Logger($"Story: Fiend Past - Complete");
+
+        FireHouse.Storyline();
+        Core.Logger($"Story: Fire House - {(Core.isCompletedBefore(1564) ? "Complete" : "Skipped")}");
 
         Gamehaven.Storyline();
         Core.Logger($"Story: Fiend Past - Complete");
