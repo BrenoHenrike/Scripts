@@ -30,7 +30,7 @@
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/Legion/WorldSoul.cs
-//cs_include Scripts/Story/Legion/HeadOfTheLegionBeast.cs
+//cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs
@@ -47,6 +47,12 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
+
+//cs_include Scripts/Story/SepulchureSaga/00CompleteSepulchureSaga.cs
+//cs_include Scripts/Story/SepulchureSaga/01SepulchurePrequelAlden.cs
+//cs_include Scripts/Story/SepulchureSaga/02SepulchurePrequelLynaria.cs
+//cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
+//cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
@@ -85,8 +91,6 @@
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
-//cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Story/SepulchureSaga/00CompleteSepulchureSaga.cs
 using RBot;
 
 public class AllStory
