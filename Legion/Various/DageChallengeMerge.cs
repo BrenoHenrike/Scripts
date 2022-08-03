@@ -138,8 +138,8 @@ public class DageChallengeMerge
                     if (MergeItem == "Avarice of the Legion's Helm")
                     {
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull", publicRoom: true);
-                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood", publicRoom: true);
+                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Skull", isTemp: false, publicRoom: true);
+                        Core.HuntMonster("dage", "Dage the Evil", "Avarice of the Legion's Hood", isTemp: false, publicRoom: true);
                     }
                     List<ItemBase> Requirements = shopdata.First(i => i.Name == MergeItem).Requirements;
                     int Laurel = Requirements.First(i => i.Name == "Underworld Laurel").Quantity;
