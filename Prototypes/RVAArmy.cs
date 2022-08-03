@@ -148,7 +148,7 @@ public class RVAArmy
         Core.Jump(cell, pad);
         while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) != Bot.Config.Get<int>("armysize"))
         {
-            Core.Logger($"[{Bot.Map.CellPlayers.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
+            Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
             Bot.Sleep(Core.ActionDelay);
         }
         if (item == null)
