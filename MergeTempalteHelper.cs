@@ -5,7 +5,6 @@ using Skua.Core.Interfaces;
 using Skua.Core.Options;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Items;
-using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
@@ -97,7 +96,7 @@ public class MergeTemplateHelper
 
         if (!genFile)
         {
-            MessageBox.Show("Please add the following cases to the merge bots:\n" + output);
+            Bot.ShowMessageBox("Please add the following cases to the merge bots:\n" + output, "Merge Template Helper");
             return;
         }
 
@@ -137,9 +136,8 @@ public class MergeTemplateHelper
         string path = AppPath + $@"\Scripts\WIP\{className}Merge.cs";
         Directory.CreateDirectory(AppPath + @"\Scripts\WIP");
         File.WriteAllLines(path, content);
-        DialogResult result = MessageBox.Show($"File has been generated. Path is {path}\n\nPress OK to open the file",
-                                                "File Generated", MessageBoxButtons.OKCancel);
-        if (result == DialogResult.OK)
+        if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",
+                                                "File Generated") == true)
             Process.Start("explorer", path);
     }
 }

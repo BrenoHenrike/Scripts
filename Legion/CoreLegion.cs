@@ -2,7 +2,6 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-using System.Windows.Forms;
 using Skua.Core.Interfaces;
 
 public class CoreLegion
@@ -495,11 +494,9 @@ public class CoreLegion
             return;
 
         Core.BuyItem("underworld", 215, "Undead Warrior");
-        DialogResult SellUW = MessageBox.Show(
+        bool? sellUW = Bot.ShowMessageBox(
                                 "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
-                                "Sell \"Undead Warrior\"?",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Question);
+                                "Sell \"Undead Warrior\"?");
 
         Core.AddDrop("Ravaged Champion Soul");
 
@@ -531,7 +528,7 @@ public class CoreLegion
         // Fail to the King
         Story.KillQuest(793, "prison", "King Alteon's Knight");
 
-        if (SellUW == DialogResult.Yes)
+        if (sellUW == true)
             Core.SellItem("Undead Warrior", all: true);
     }
 

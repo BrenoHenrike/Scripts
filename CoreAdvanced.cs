@@ -408,11 +408,11 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillUltra(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
+    public void KillUltra(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
     {
-        if (item != "" && Core.CheckInventory(item, quant))
+        if (item != null && Core.CheckInventory(item, quant))
             return;
-        if (!isTemp && item != "")
+        if (item != null && !isTemp)
             Core.AddDrop(item);
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
@@ -420,62 +420,26 @@ public class CoreAdvanced
             _RaceGear(monster);
         Core.Jump(cell, pad);
 
-        Bot.Events.CounterAttack += _KillUltra;
-        bool shouldAttack = true;
-
-        if (item == "")
+        if (item == null)
         {
             if (log)
                 Core.Logger($"Killing Ultra-Boss {monster}");
-            int i = 0;
-            Bot.Events.MonsterKilled += b => i++;
-            while (!Bot.ShouldExit && i < 1)
-                while (!Bot.ShouldExit && shouldAttack)
-                    Bot.Kill.Monster(monster);
+            bool ded = false;
+            Bot.Events.MonsterKilled += b => ded = true;
+            while (!Bot.ShouldExit && !ded)
+                while (!Bot.ShouldExit)
+                    Bot.Combat.Attack(monster);
             Core.Rest();
-        }
-        else
-        {
-            if (log)
-                Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            {
-                while (!Bot.ShouldExit && shouldAttack)
-                    Bot.Kill.Monster(monster);
-                if (!isTemp && !Core.CheckInventory(item))
-                {
-                    Bot.Sleep(Core.ActionDelay);
-                    Bot.Drops.RejectExcept(item);
-                }
-                if (!Bot.Player.InCombat)
-                    Core.Rest();
-                Bot.Wait.ForDrop(item);
-            }
+            return;
         }
 
-        Bot.Events.CounterAttack -= _KillUltra;
+        if (log)
+            Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
+
+        Bot.Kill.ForItem(monster, item, quant, isTemp);
 
         if (!forAuto)
             GearStore(true);
-
-        void _KillUltra(bool faded)
-        {
-            Monster Target = null;
-            if (!faded)
-            {
-                Target = Bot.Player.Target;
-                shouldAttack = false;
-                Bot.Combat.CancelAutoAttack();
-                Bot.Combat.CancelTarget();
-            }
-            else
-            {
-                if (Target != null)
-                    Bot.Combat.Attack(Target);
-                else Bot.Combat.Attack("*");
-                shouldAttack = true;
-            }
-        }
     }
 
     #endregion

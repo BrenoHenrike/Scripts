@@ -3,7 +3,6 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using System.Diagnostics;
-using System.Windows.Forms;
 
 public class CoreStory
 {
@@ -214,8 +213,7 @@ public class CoreStory
                                   "Please fill in the Skua Scripts Form to report this.|" +
                                   "Do you wish to be brought to the form?";
                 Core.Logger(message.Replace("|", " "));
-                DialogResult response = MessageBox.Show(message.Replace("|", "\n"), "Quest not unlocked", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                if (response == DialogResult.Yes)
+                if (Bot.ShowMessageBox(message.Replace("|", "\n"), "Quest not unlocked") == true)
                 {
                     string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
                     Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
