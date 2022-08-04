@@ -405,7 +405,7 @@ public class CoreAdvanced
         if (!forAuto)
             _RaceGear(monster);
 
-        if (Bot.Map.Name.ToLower() == map.ToLower())
+        if (Bot.Map.Name.ToLower() != map.ToLower())
             Core.Join(map, cell, pad, publicRoom: publicRoom);
 
         Core.Jump(cell, pad);
