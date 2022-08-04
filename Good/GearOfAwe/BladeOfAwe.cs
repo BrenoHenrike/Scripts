@@ -20,6 +20,6 @@ public class BladeOfAwe
 
     public void GetBoA()
     {
-        Farm.BladeofAweREP();        
+        Farm.BladeofAweREP(6, true);      
     }
 }
