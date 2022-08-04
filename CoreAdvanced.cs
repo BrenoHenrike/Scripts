@@ -404,7 +404,11 @@ public class CoreAdvanced
         Core.Join(map, cell, pad, publicRoom: publicRoom);
         if (!forAuto)
             _RaceGear(monster);
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
+
+        if (Bot.Map.Name.ToLower() == map.ToLower())
+            Core.Join(map, cell, pad, publicRoom: publicRoom);
+
+        Core.Jump(cell, pad);
 
         Bot.Events.CounterAttack += _KillUltra;
         bool shouldAttack = true;
