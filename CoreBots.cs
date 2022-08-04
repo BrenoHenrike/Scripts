@@ -106,7 +106,7 @@ public class CoreBots
                 Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            SkuaVersionChecker("0.2.0.0");
+            SkuaVersionChecker("0.3.0.0");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -1368,7 +1368,7 @@ public class CoreBots
     /// </summary>
     private void SkuaVersionChecker(string targetVersion)
     {
-        if(Version.Parse(targetVersion).CompareTo(Bot.Version) >= 0)
+        if(Version.Parse(targetVersion).CompareTo(Bot.Version) <= 0)
             return;
 
         if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, click OK to open the download page of the latest release", "Outdated Skua detected") == true)
