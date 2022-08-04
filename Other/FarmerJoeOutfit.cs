@@ -77,8 +77,10 @@ public class FarmerJoeOutfit
 
         Adv.BuyItem("yulgar", 41, "Peasant Rags");
         Bot.Wait.ForPickup("Peasant Rags");
+        Core.Equip("Peasant Rags");
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
         Bot.Wait.ForPickup("Scarecrow Hat");
+        Core.Equip("Scarecrow Hat");
     }
 
     public void ServersAreDown()
@@ -89,6 +91,7 @@ public class FarmerJoeOutfit
         Core.Logger("Farming Servers Are Down Sign");
         Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false);
         Bot.Wait.ForPickup("The Server is Down");
+        Core.Equip("The Server is Down");
     }
 
     // public void DeathsScythe()
