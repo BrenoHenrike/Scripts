@@ -709,16 +709,18 @@ public class CoreFarms
         if (FactionRank("Blade of Awe") >= rank && !farmBoA)
             return;
 
-        if (farmBoA && Core.CheckInventory("Blade of Awe"))
+        if (farmBoA && Core.CheckInventory(17585))
+        {
+            Core.Logger("You already own Blade of Awe - getting desired REP only");
             farmBoA = false;
+        }
 
         if (farmBoA)
             Core.AddDrop("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
         Core.AddDrop("Stonewrit Found!", "Handle Found!", "Hilt Found!", "Blade Found!", "Runes Found!");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
-        Core.Logger($"Farming rank {rank}");
-
+     
         if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) || (!Bot.Quests.IsUnlocked(2934)))
         {
             Core.EnsureAccept(2933);
