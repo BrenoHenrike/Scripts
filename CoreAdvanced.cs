@@ -1,12 +1,12 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-using RBot;
-using RBot.Items;
-using RBot.Shops;
-using RBot.Monsters;
-using RBot.Options;
 using System.Globalization;
 using System.Reflection;
+using RBot;
+using RBot.Items;
+using RBot.Monsters;
+using RBot.Options;
+using RBot.Shops;
 
 public class CoreAdvanced
 {
@@ -329,7 +329,6 @@ public class CoreAdvanced
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
         _RaceGear(monster);
-
         Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
 
         GearStore(true);
@@ -782,7 +781,7 @@ public class CoreAdvanced
     public void _RaceGear(string Monster)
     {
         GearStore();
-
+        string Map = Bot.Map.LastMap;
         string MonsterRace = "";
         if (Monster != "*")
             MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower()).Race ?? "";
@@ -797,6 +796,7 @@ public class CoreAdvanced
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
         EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        Core.Join(Map);
     }
 
     /// <summary>
@@ -806,7 +806,7 @@ public class CoreAdvanced
     public void _RaceGear(int MonsterID)
     {
         GearStore();
-
+        string Map = Bot.Map.LastMap;
         string MonsterRace = Bot.Monsters.MapMonsters.First(x => x.ID == MonsterID).Race;
 
         if (MonsterRace == null || MonsterRace == "")
@@ -818,6 +818,7 @@ public class CoreAdvanced
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
         EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        Core.Join(Map);
     }
 
     #endregion
