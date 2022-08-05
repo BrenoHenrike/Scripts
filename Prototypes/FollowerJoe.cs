@@ -36,10 +36,16 @@ public class FollowerJoe
 
         while (!Bot.ShouldExit())
         {
-            // Bot.Events.PlayerAFK += LockedMap;
-            Bot.Events.CellChanged += Jumper;
             Bot.Player.Goto((Bot.Config.Get<string>("playerName")));
             Bot.Sleep(2500);
+
+            if (!Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
+            {
+                Core.Logger($" {Bot.Config.Get<string>("playerName")} Not found in {Bot.Map.Name}, LockedZoneHandler Started");
+                Bot.Events.CellChanged -= Jumper;
+                LockedMap();
+            }
+
             if (Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
                 Bot.Player.Attack("*");
             Bot.Sleep(Core.ActionDelay);
@@ -73,156 +79,194 @@ public class FollowerJoe
         Bot.Events.CellChanged -= Jumper;
     }
 
-    public void LockedMap(ScriptInterface bot)
+    public void LockedMap()
     {
-        //still not working sorry -- 🥔
-        string[] Maps =
+        string[] NonMemMaps =
         {
-        "banzai",
+        "tercessuinotlim",
+        "doomvault",
+        "doomvaultb",
+        "ledgermayne",
+        "lair",
+        "shadowrealmpast",
+        "shadowrealm",
         "battlegrounda",
         "battlegroundb",
         "battlegroundc",
         "battlegroundd",
         "battlegrounde",
         "battlegroundf",
-        "binky",
         "chaoslord",
         "darkoviaforest",
-        "doomvault",
-        "doomvaultb",
         "doomwoodforest",
         "hollowdeep",
         "hyperiumstarship",
-        "ledgermayne",
         "moonyard",
         "moonyardb",
-        "shadowlordpast",
-        "shadowrealm",
-        "shadowrealmpast",
         "superlowe",
-        "tercessuinotlim",
-        "lair",
         "willowcreek",
         "zephyrus"
         };
 
-        while (!Bot.ShouldExit() && !Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
+        string[] MemMaps =
         {
-            foreach (string Map in Maps)
+        "shadowlordpast",
+            "Binky"
+        };
+
+        int maptry = 1;
+        Core.Join("whitemap");
+
+        foreach (string Map in NonMemMaps)
+        {
+            switch (Map.ToLower())
             {
-                switch (Map.ToLower())
-                {
-                    case "shadowattack":
-                        Core.Join(Map);
-                        Bot.Sleep(1500);
-                        if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
-                            break;
+                default:
+                    Bot.Quests.UpdateQuest(3881);
+                    Bot.Quests.UpdateQuest(3008);
+                    Bot.Quests.UpdateQuest(3004);
+                    Core.Logger($"LockedZoneHandler Try {maptry++}, Joining Map: {Map}");
+                    Core.JumpWait();
+                    Bot.Sleep(Core.ActionDelay);
+                    Core.Join(Map);
+                    Bot.Wait.ForMapLoad(Map);
+
+                    if (Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
+                    {
+                        Core.Logger($"{Bot.Config.Get<string>("playerName")} found in Map: {Map}, Jumper Re-Initialized");
+                        Bot.Events.CellChanged += Jumper;
+                        return;
+                    }
+
+                    if (Bot.Map.Name == "ledgermayne")
+                    {
+                        if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "Boss" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+                        {
+                            Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                            if (Target == null)
+                            {
+                                Core.Logger("No monsters found");
+                                return;
+                            }
+                            Core.SetOptions(disableClassSwap: true);
+                            Core.Logger("Target: " + Target.Name);
+
+                            Adv.KillUltra("ledgermayne", Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad, Target.Name, log: true, forAuto: true);
+                        }
+                        else Bot.Player.Attack("*");
+                    }
+
+                    if (Bot.Map.Name == "chaoslord")
+                    {
+                        Bot.Wait.ForCellChange(Bot.Player.Cell);
+                        Bot.Sleep(2500);
+                        if (Bot.Map.Name == "confrontaion")
+                        {
+                            Bot.Wait.ForCellChange(Bot.Player.Cell);
+                            Bot.Sleep(2500);
+                            if (Bot.Map.Name == "Shadowattack")
+                            {
+                                Bot.Wait.ForCellChange(Bot.Player.Cell);
+                                Bot.Sleep(2500);
+                            }
+                            Core.Join("chaosLord");
+                        }
+                    }
+
+
+                    if (Bot.Map.Name == "shadowattack" && Bot.Player.Cell == "cell")
+                    {
                         Core.Jump("Boss", "Left");
                         Bot.Options.AttackWithoutTarget = true;
                         Bot.Player.Kill("Death");
                         Bot.Options.AttackWithoutTarget = false;
-                        break;
+                    }
 
-                    case "Mobius":
-                        Core.Join(Map);
-                        Bot.Sleep(1500);
-                        if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
-                            break;
+
+                    if (Bot.Map.Name == "Mobius" && Bot.Player.Cell == "cell")
+                    {
                         Bot.Map.Reload();
                         Bot.Player.Kill("*");
-                        break;
+                    }
 
-                    case "DoomVault":
+
+                    if (Bot.Map.Name == "DoomVault")
+                    {
+                        if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r26" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
                         {
-                            Core.Join(Map);
-                            Bot.Sleep(1500);
-                            if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
-                                break;
-                            if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r26" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+                            Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                            if (Target == null)
                             {
-                                Bot.Quests.UpdateQuest(3004);
-                                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                                if (Target == null)
-                                {
-                                    Core.Logger("No monsters found");
-                                    return;
-                                }
-                                Core.SetOptions(disableClassSwap: true);
-                                Core.Logger("Target: " + Target.Name);
-
-                                Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
+                                Core.Logger("No monsters found");
+                                return;
                             }
-                            else Bot.Player.Attack("*");
-                            break;
-                        }
+                            Core.SetOptions(disableClassSwap: true);
+                            Core.Logger("Target: " + Target.Name);
 
-                    case "Doomvaultb":
+                            Adv.KillUltra("doomvault", Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad, Target.Name, log: true, forAuto: true);
+                        }
+                        else Bot.Player.Attack("*");
+                    }
+
+
+                    if (Bot.Map.Name == "Doomvaultb")
+                    {
+                        if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r5" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
                         {
-                            Core.Join(Map);
-                            Bot.Sleep(1500);
-                            if (!Bot.Map.PlayerExists(Bot.Config.Get<string>("playerName")))
-                                break;
-                            if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "r5" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+
+                            Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                            if (Target == null)
                             {
-                                Bot.Quests.UpdateQuest(3008);
-
-                                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                                if (Target == null)
-                                {
-                                    Core.Logger("No monsters found");
-                                    return;
-                                }
-                                Core.SetOptions(disableClassSwap: true);
-                                Core.Logger("Target: " + Target.Name);
-
-                                Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
+                                Core.Logger("No monsters found");
+                                return;
                             }
-                            else Bot.Player.Attack("*");
-                            break;
+                            Core.SetOptions(disableClassSwap: true);
+                            Core.Logger("Target: " + Target.Name);
+
+                            Adv.KillUltra("doomvaultb", Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad, Target.Name, log: true, forAuto: true);
                         }
-                }
+                        else Bot.Player.Attack("*");
+                    }
+                    break;
             }
-            Bot.Events.PlayerAFK -= LockedMap;
+        }
+        foreach (string Map in MemMaps)
+        {
+            if (!Core.IsMember)
+                return;
+            switch (Map.ToLower())
+            {
+                case "Binky":
+                    Core.Logger($"LockedZoneHandler Try {maptry++}, Joining Map: {Map}");
+                    Core.JumpWait();
+                    Bot.Sleep(Core.ActionDelay);
+                    Core.Join(Map);
+                    Bot.Wait.ForMapLoad(Map);
+
+                    while (Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
+                    {
+                        if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell == "Binky" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+                        {
+                            Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                            if (Target == null)
+                            {
+                                Core.Logger("No monsters found");
+                                return;
+                            }
+                            Core.SetOptions(disableClassSwap: true);
+                            Core.Logger("Target: " + Target.Name);
+
+                            Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
+                        }
+                        Bot.Player.Attack("*");
+                    }
+                    Bot.Events.CellChanged += Jumper;
+                    break;
+            }
         }
     }
-
-    public enum LockedZones
-    {
-        banzai,
-        battlegrounda,
-        battlegroundb,
-        battlegroundc,
-        battlegroundd,
-        battlegrounde,
-        battlegroundf,
-        binky,
-        chaoslord,
-        darkoviaforest,
-        doomvault,
-        doomvaultb,
-        doomwoodforest,
-        hollowdeep,
-        hyperiumstarship,
-        ledgermayne,
-        moonyard,
-        moonyardb,
-        shadowlordpast,
-        shadowrealm,
-        shadowrealmpast,
-        superlowe,
-        tercessuinotlim,
-        lair,
-        willowcreek,
-        zephyrus
-    }
-
-    public enum IssueMaps
-    {
-        Mobius,
-        Shadowattack
-        //add maps here if they softlock.
-    }
 }
+
 //
 //                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░                    
 //                              ▓▓▓▓████████████████▓▓▓▓▒▒              
