@@ -27,12 +27,12 @@ public class RVAArmy
         "Dai Tengu Essence",
         "Unending Avatar Essence",
         "Void Dragon Essence",
-        "Creature Creation Essence",
-        "Creature Shard"
+        "Creature Creation Essence"
     };
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
 
@@ -65,20 +65,9 @@ public class RVAArmy
             return;
 
         EssenceQuantity = 100;
-        //Farm.EvilREP(); - Can't get anti afk to work so EvilRep will take too long
+        Farm.EvilREP(); //Anti-AFK should work now so yeah - though who doesn't have Evil Rank 10 if you're going for NSOD
         Core.EquipClass(ClassType.Solo);
-        Core.AddDrop(
-            "Void Aura",
-            "Astral Ephemerite Essence",
-            "Belrot the Fiend Essence",
-            "Black Knight Essence",
-            "Tiger Leech Essence",
-            "Carnax Essence",
-            "Chaos Vordred Essence",
-            "Dai Tengu Essence",
-            "Unending Avatar Essence",
-            "Void Dragon Essence",
-            "Creature Creation Essence");
+        Core.AddDrop(VA);
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
             Core.AddDrop("Creature Shard");
         Core.FarmingLogger($"Void Auras", Quantity);
@@ -124,7 +113,7 @@ public class RVAArmy
                 Bot.Wait.ForPickup("Void Aura");
             }
         }
-        Core.Logger("All done! THANKS FOR RIDING THE PAIN TRAIN!");
+        Core.Logger("THANKS FOR RIDING THE PAIN TRAIN!");
     }
 
     /// <summary>
@@ -149,7 +138,7 @@ public class RVAArmy
         while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) != Bot.Config.Get<int>("armysize"))
         {
             Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
-            Bot.Sleep(Core.ActionDelay);
+            Bot.Sleep(1500);
         }
         if (item == null)
         {
@@ -164,6 +153,13 @@ public class RVAArmy
             Bot.Options.AggroMonsters = true;
             Core._KillForItem(monster, item, quant, isTemp, log: log);
         }
+    }
+    
+    public void PlayerAFK(ScriptInterface bot)
+    {
+        Core.Logger("Anti-AFK engaged");
+        Bot.Sleep(1500);
+        Bot.SendPacket("%xt%zm%afk%1%false%");
     }
 }
 
@@ -198,6 +194,3 @@ public class RVAArmy
 //             i = 0;
 //         }
 //     }
-
-
-
