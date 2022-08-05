@@ -22,7 +22,7 @@ public class FireHouse
         if (Core.isCompletedBefore(1564))
             return;
 
-        if (!Core.IsMember && CalculateFriday13())
+        if (!Core.IsMember || CalculateFriday13())
         {
             Core.Logger("/firehouse and other maps of this storyline are only accessable with Membership or during a Friday the 13th event.");
             return;
