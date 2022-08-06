@@ -16,7 +16,7 @@ public class CoreHollowborn
 
     public void HardcoreContract()
     {
-        if (Core.CheckInventory("Lae\'s Hardcore Contract"))
+        if (Core.CheckInventory(55157))
             return;
 
         Core.AddDrop("Human Soul", "Fallen Soul", "Lae\'s Hardcore Contract");
