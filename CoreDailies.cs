@@ -414,10 +414,19 @@ public class CoreDailies
             return;
         Core.Logger("Daily: Death KnightLord Class");
         if (Core.CheckInventory("DeathKnight Lord", toInv: false))
+        {
+            Core.Logger("You already own DeathKnight Lord Class, Skipped");
             return;
+        }
         if (!CheckDaily(492, true, "Shadow Skull"))
-            return;
-        DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
+         
+            DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
+            Core.FarmingLogger("Shadow Skull", 30, "Shadow Skull");
+
+        if (Core.CheckInventory("Shadow Skull", 30))
+            Core.Logger("Purchase Class"); 
+           Core.BuyItem("bonecastle", 1242, "DeathKnight Lord", shopItemID: 4397);
+        
         Core.ToBank("Shadow Skull");
     }
 
