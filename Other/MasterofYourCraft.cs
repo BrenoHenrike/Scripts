@@ -37,8 +37,10 @@ public class MasterofYourCraft
         Core.AddDrop(Rewards);
 
         if (Core.CheckInventory("Dragon of Time"))
+            {
             Bot.Player.EquipItem("Dragon of Time");
             Adv.SmartEnhance("Dragon of Time");
+            }
 
         int i = 1;
         while (!Bot.ShouldExit() && !Core.CheckInventory(Rewards, toInv: false))
