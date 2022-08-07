@@ -66,7 +66,7 @@ public class CoreFarms
     {
         if (Bot.Player.Gold >= quant)
             return;
-        SevenCirclesWar(quant);
+        SevenCirclesWar(1, quant);
         HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
@@ -251,7 +251,7 @@ public class CoreFarms
         Core.Logger($"Farming {gold} gold using SCW Method");
 
         Core.RegisterQuests(7979, 7980, 7981);
-        while (!Bot.ShouldExit() && Bot.Player.Level < level && Bot.Player.Gold < gold)
+        while (!Bot.ShouldExit() && (Bot.Player.Level < level || Bot.Player.Gold < gold))
         {
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Wrath Guards Defeated", 12);
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "War Medal", 5);
@@ -426,7 +426,7 @@ public class CoreFarms
         ChronoSpanREP();
         CraggleRockREP();
         DeathPitArenaREP();
-        //DeathPitBrawlREP();
+        DeathPitBrawlREP();
         DiabolicalREP();
         DoomWoodREP();
         DreadfireREP();
@@ -720,7 +720,6 @@ public class CoreFarms
         Core.AddDrop("Stonewrit Found!", "Handle Found!", "Hilt Found!", "Blade Found!", "Runes Found!");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
-     
         if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) || (!Bot.Quests.IsUnlocked(2934)))
         {
             Core.EnsureAccept(2933);
@@ -926,7 +925,7 @@ public class CoreFarms
     {
         if (FactionRank("Diabolical") >= rank)
             return;
-
+        Bot.Quests.UpdateQuest(3428);
         if (!Bot.Quests.IsUnlocked(7877))
         {
             Core.EnsureAccept(7875, 7875);
@@ -1232,7 +1231,6 @@ public class CoreFarms
             }
         }
 
-
         while (!Bot.ShouldExit() && FactionRank("Fishing") < rank && (shouldDerp ? !Core.HasAchievement(14) : true))
         {
             Core.Logger("Farming Dynamite");
@@ -1254,6 +1252,83 @@ public class CoreFarms
             }
         }
         Core.SavedState(false);
+    }
+
+
+    public void DeathPitBrawlREP(int rank = 10)
+    {
+        if (FactionRank("Death Pit Brawl") >= rank)
+            return;
+        if (Core.isCompletedBefore(5165))
+            return;
+
+        Core.EquipClass(ClassType.Solo);
+        Core.Logger($"Farming rank {rank}");
+        Core.SavedState();
+        Core.RegisterQuests(5155, 5156, 5157, 5165);
+
+        while (!Bot.ShouldExit() && FactionRank("Death Pit Brawl") < rank)
+            DeathPitToken();
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
+    }
+
+    void DeathPitToken(string item = "Death Pit Token", int quant = 30, bool temp = false)
+    {
+        if (Core.CheckInventory(item, quant))
+            return;
+
+        Core.EquipClass(ClassType.Solo);
+        Core.Logger($"Farming {quant} {item}");
+
+        while (!Bot.ShouldExit() && !Core.CheckInventory(item, quant))
+        {
+            Core.AddDrop(item);
+            Core.Join("DeathPitbrawl", "Enter0", "Spawn");
+
+            DeathPitMove(5, "Morale0C", 228, 291);
+            DeathPitMove(4, "Morale0B", 936, 397);
+            DeathPitMove(7, "Morale0A", 946, 394);
+            DeathPitMove(9, "Crosslower", 948, 400);
+            DeathPitMove(14, "Crossupper", 903, 324);
+            DeathPitMove(18, "Resource1A", 482, 295);
+            Bot.Player.Kill("Velm's Restorer");
+            Bot.Player.Kill("Velm's Restorer");
+            DeathPitMove(20, "Resource1B", 938, 400);
+            Bot.Player.Kill("Velm's Restorer");
+            Bot.Player.Kill("Velm's Restorer");
+            DeathPitMove(21, "Resource1A", 9, 435);
+            DeathPitMove(19, "Crossupper", 461, 315);
+            DeathPitMove(17, "Crosslower", 54, 339);
+            DeathPitMove(15, "Morale1A", 522, 286);
+            Bot.Player.Kill("Velm's Brawler");
+            DeathPitMove(23, "Morale1B", 948, 403);
+            Bot.Player.Kill("Velm's Brawler");
+            DeathPitMove(25, "Morale1C", 945, 397);
+            Bot.Player.Kill("Velm's Brawler");
+            DeathPitMove(28, "Captain1", 943, 404);
+            Bot.Player.Kill("General Velm (B)");
+            Bot.Wait.ForDrop(item);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.SendPacket($"%xt%zm%house%1%{Bot.Player.Username}%");
+        }
+    }
+
+    /// <summary>
+    /// This method is used to move between Bludrut Brawl rooms
+    /// </summary>
+    /// <param name="mtcid">Last number of the mtcid packet</param>
+    /// <param name="cell">Cell you want to be</param>
+    /// <param name="moveX">X position of the door</param>
+    /// <param name="moveY">Y position of the door</param>
+    void DeathPitMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
+    {
+        while (!Bot.ShouldExit() && Bot.Player.Cell != cell)
+        {
+            Bot.SendPacket($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
+            Bot.Sleep(2500);
+            Bot.SendPacket($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
+        }
     }
 
     public void FaerieCourtREP(int rank = 10) // Seasonal
