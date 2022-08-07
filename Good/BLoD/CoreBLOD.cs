@@ -467,7 +467,7 @@ public class CoreBLOD
         Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
         while (!Bot.ShouldExit() && !Core.CheckInventory("Blinding Aura"))
         {
-            FindingFragments(2174);
+            FindingFragments(Core.CheckInventory("Blinding Scythe of Destiny") ? 2177 : 2174);
             Bot.Player.Pickup("Blinding Aura");
         }
         UltimateWK();
