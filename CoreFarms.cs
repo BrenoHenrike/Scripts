@@ -1257,7 +1257,7 @@ public class CoreFarms
 
     public void DeathPitBrawlREP(int rank = 10)
     {
-        if (FactionRank("DeathPitBrawl") >= rank)
+        if (FactionRank("Death Pit Brawl") >= rank)
             return;
         if (Core.isCompletedBefore(5165))
             return;
@@ -1267,7 +1267,7 @@ public class CoreFarms
         Core.SavedState();
         Core.RegisterQuests(5155, 5156, 5157, 5165);
 
-        while (!Bot.ShouldExit() && FactionRank("DeathPitBrawl") < rank)
+        while (!Bot.ShouldExit() && FactionRank("Death Pit Brawl") < rank)
             DeathPitToken();
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
