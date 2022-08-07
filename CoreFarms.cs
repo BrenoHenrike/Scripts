@@ -925,7 +925,7 @@ public class CoreFarms
     {
         if (FactionRank("Diabolical") >= rank)
             return;
-
+        Bot.Quests.UpdateQuest(3428);
         if (!Bot.Quests.IsUnlocked(7877))
         {
             Core.EnsureAccept(7875, 7875);
