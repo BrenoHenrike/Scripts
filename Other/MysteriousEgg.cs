@@ -20,7 +20,7 @@ public class MysteriousEgg
 
     public void GetMysteriousEgg()
     {
-        if (Core.CheckInventory("Mysterious Egg"))
+        if (Core.CheckInventory("Mysterious Egg") || Core.CheckInventory("Manticore Cub Pet"))
             return;
 
         Core.AddDrop("Mysterious Egg");
