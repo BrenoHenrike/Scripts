@@ -303,6 +303,7 @@ public class CoreBots
             if (!toInv)
                 return true;
             Unbank(item);
+            return true;
         }
         if (Bot.Inventory.ContainsHouseItem(item))
             return true;
@@ -332,6 +333,7 @@ public class CoreBots
             if (!toInv)
                 return true;
             Unbank(itemBank.Name);
+            return true;
         }
 
         return false;
@@ -364,6 +366,7 @@ public class CoreBots
                 if (!toInv && any)
                     return true;
                 Unbank(name);
+                return true;
             }
         }
         return !any;

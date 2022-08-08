@@ -22,7 +22,7 @@ public class HatchTheEgg
 
     public void Hatch()
     {
-        if (Core.isCompletedBefore(6914) && Core.CheckInventory("Manticore Cub Pet"))
+        if (Core.isCompletedBefore(6914) || Core.CheckInventory("Manticore Cub Pet"))
             return;
 
         Egg.GetMysteriousEgg();
