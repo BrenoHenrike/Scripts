@@ -83,96 +83,18 @@ public class SummerBreakMerge
                     break;
 
                 case "Volleyball Captain":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's Hat + Glasses":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Heroine's Hat + Glasses":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Team A Mascot":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Team B Mascot":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Team C Mascot":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's Board Cape":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's Rod":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's Surfboard":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's Foam Spear":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's Foam Gauntlets":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's WaterGun":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.EnsureAccept(8794);
-                    Core.HuntMonster("summerbreak", "MMMirage", "Gum Ball", 6);
-                    Core.EnsureCompleteChoose(8794, new[] { req.Name });
-                    break;
-
                 case "Volleyball Hero's WaterGuns":
                     Core.EquipClass(ClassType.Farm);
                     Core.EnsureAccept(8794);
