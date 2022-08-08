@@ -62,12 +62,10 @@ public class SummerBreakMerge
                 #endregion
 
                 case "Diamond of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Nation.FarmDiamondofNulgath(quant);
                     break;
 
                 case "Legion Token":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     if (Core.isCompletedBefore(793))
                         Legion.FarmLegionToken(quant);
                     else
