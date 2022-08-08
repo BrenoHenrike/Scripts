@@ -339,6 +339,7 @@ public class CoreDailies
         {
             Core.EquipClass(ClassType.Farm);
             DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
+            Core.FarmingLogger("Token of Collection", 90);
         }
         if (Core.IsMember)
         {
@@ -346,7 +347,13 @@ public class CoreDailies
                 DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
             if (CheckDaily(1332, true, "Tokens of Collection"))
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
+            Core.FarmingLogger("Token of Collection", 90);
+            Core.ToBank("Token of Collection");
         }
+        if (Core.CheckInventory("Token of Collection", 90))
+            Core.Unbank("Token of Collection");
+            Core.BuyItem("Collection", 324, "The Collector");
+        Core.ToBank("Token of Collection");
     }
 
     public void Cryomancer()
