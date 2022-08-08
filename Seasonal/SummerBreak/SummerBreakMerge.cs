@@ -62,10 +62,12 @@ public class SummerBreakMerge
                 #endregion
 
                 case "Diamond of Nulgath":
+                    Core.FarmingLogger($"{req.Name}", quant);
                     Nation.FarmDiamondofNulgath(quant);
                     break;
 
                 case "Legion Token":
+                    Core.FarmingLogger($"{req.Name}", quant);
                     if (Core.isCompletedBefore(793))
                         Legion.FarmLegionToken(quant);
                     else
@@ -73,6 +75,7 @@ public class SummerBreakMerge
                     break;
 
                 case "Summer Sizzle Lotion":
+                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8794);
                     while (!Bot.ShouldExit() && !Core.CheckInventory(req.Name, quant))
