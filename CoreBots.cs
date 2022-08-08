@@ -298,7 +298,7 @@ public class CoreBots
             return true;
         if (Bot.Inventory.Contains(item, quant))
             return true;
-        if (Bot.Bank.Contains(item, quant))
+        if (Bot.Bank.Contains(item))
         {
             if (!toInv)
                 return true;
@@ -328,7 +328,7 @@ public class CoreBots
             return true;
         if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
             return true;
-        if (itemBank != null && Bot.Bank.Contains(itemBank.Name, quant))
+        if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
         {
             if (!toInv)
                 return true;
