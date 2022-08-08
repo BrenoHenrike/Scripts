@@ -300,10 +300,11 @@ public class CoreBots
             return true;
         if (Bot.Bank.Contains(item))
         {
-            if (!toInv)
+            if (Bot.Bank.Contains(item, quant) & (!toInv))
                 return true;
             Unbank(item);
-            return true;
+            if (Bot.Inventory.Contains(item, quant))
+                return true;
         }
         if (Bot.Inventory.ContainsHouseItem(item))
             return true;
@@ -330,12 +331,13 @@ public class CoreBots
             return true;
         if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
         {
-            if (!toInv)
+            if (Bot.Bank.Contains(itemBank.Name, quant) & (!toInv))
                 return true;
-            Unbank(itemBank.Name);
-            return true;
-        }
 
+            Unbank(itemBank.Name);
+            if (Bot.Inventory.Contains(itemBank.Name, quant))
+                return true;
+        }
         return false;
     }
 
@@ -366,7 +368,6 @@ public class CoreBots
                 if (!toInv && any)
                     return true;
                 Unbank(name);
-                return true;
             }
         }
         return !any;
