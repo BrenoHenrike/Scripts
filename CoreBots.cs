@@ -302,11 +302,11 @@ public class CoreBots
 
         if (Bot.Bank.Contains(item))
         {
-            if (Bot.Bank.Contains(item, quant) & (!toInv))
-                return true;
+            if (toInv)
+                Unbank(item);
 
-            Unbank(item);
-            if (Bot.Inventory.Contains(item, quant))
+            if ((toInv && Bot.Inventory.GetQuantity(item) >= quant) ||
+               (!toInv && Bot.Bank.GetItemByName(item).Quantity >= quant))
                 return true;
         }
 
@@ -340,11 +340,10 @@ public class CoreBots
 
         if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
         {
-            if (Bot.Bank.Contains(itemBank.Name, quant) & (!toInv))
-                return true;
+            if (toInv)
+                Unbank(itemBank.Name);
 
-            Unbank(itemBank.Name);
-            if (Bot.Inventory.Contains(itemBank.Name, quant))
+            if (itemBank.Quantity >= quant)
                 return true;
         }
 
