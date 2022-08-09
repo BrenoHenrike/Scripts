@@ -452,6 +452,14 @@ public class CoreAdvanced
                 shouldAttack = false;
                 Bot.Player.CancelAutoAttack();
                 Bot.Player.CancelTarget();
+                Bot.Sleep(30000);
+                if (!shouldAttack && Bot.Map.Name == map && Bot.Player.Cell == cell)
+                {
+                    if (Target != null)
+                        Bot.Player.Attack(Target);
+                    else Bot.Player.Attack("*");
+                    shouldAttack = true;
+                }
             }
             else
             {
