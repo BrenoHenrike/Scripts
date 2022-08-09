@@ -758,7 +758,7 @@ public class CoreBots
                         // Finding the next item that you dont have max stack of yet
                         List<SimpleReward> simpleRewards = kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
                                                                            (!Bot.Inventory.IsMaxStack(r.Name) ||
-                                                                            r.MaxStack > Bot.Bank.GetItemByName(r.Name).Quantity)).ToList();
+                                                                            !(Bot.Bank.GetItemByName(r.Name).Quantity >= r.MaxStack))).ToList();
                         if (simpleRewards.Count == 0)
                         {
                             nonChooseQuests.Add(kvp.Key, kvp.Value);
