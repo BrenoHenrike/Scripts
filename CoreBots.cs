@@ -296,18 +296,23 @@ public class CoreBots
     {
         if (Bot.Inventory.ContainsTempItem(item, quant))
             return true;
+
         if (Bot.Inventory.Contains(item, quant))
             return true;
+
         if (Bot.Bank.Contains(item))
         {
             if (Bot.Bank.Contains(item, quant) & (!toInv))
                 return true;
+
             Unbank(item);
             if (Bot.Inventory.Contains(item, quant))
                 return true;
         }
+
         if (Bot.Inventory.ContainsHouseItem(item))
             return true;
+
         return false;
     }
 
@@ -320,15 +325,19 @@ public class CoreBots
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
     public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
     {
-        InventoryItem? itemBank = Bot.Bank.BankItems.Find(i => i.ID == itemID);
-        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
         ItemBase? itemTempInv = Bot.Inventory.TempItems.Find(i => i.ID == itemID);
-        if (itemBank == null && itemInv == null && itemTempInv == null)
+        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
+        InventoryItem? itemBank = Bot.Bank.BankItems.Find(i => i.ID == itemID);
+
+        if (itemTempInv == null && itemInv == null && itemBank == null)
             return false;
+
         if (itemTempInv != null && Bot.Inventory.ContainsTempItem(itemTempInv.Name, quant))
             return true;
+
         if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
             return true;
+
         if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
         {
             if (Bot.Bank.Contains(itemBank.Name, quant) & (!toInv))
@@ -338,6 +347,7 @@ public class CoreBots
             if (Bot.Inventory.Contains(itemBank.Name, quant))
                 return true;
         }
+
         return false;
     }
 
@@ -352,24 +362,34 @@ public class CoreBots
     {
         if (itemNames == null)
             return true;
+
         foreach (string? name in itemNames)
         {
-            if (Bot.Inventory.Contains(name, quant) && any)
-                return true;
-            else if (Bot.Inventory.Contains(name, quant) && !any)
-                continue;
-            else if (!any)
-                return false;
-
-            if (Bot.Bank.Contains(name, quant))
+            if (Bot.Inventory.Contains(name, quant))
             {
-                if (!toInv && !any)
-                    continue;
-                if (!toInv && any)
+                if (any)
                     return true;
-                Unbank(name);
+                else
+                    continue;
             }
+
+            else if (Bot.Bank.Contains(name))
+            {
+                if (toInv)
+                    Unbank(name);
+
+                if (Bot.Inventory.TryGetItem(name, out InventoryItem item) && item.Quantity >= quant)
+                {
+                    if (any)
+                        return true;
+                    else continue;
+                }
+            }
+
+            if (!any)
+                return false;
         }
+
         return !any;
     }
 
