@@ -169,14 +169,21 @@ public class CoreLegion
         if (Core.CheckInventory("Dage's Approval", quantApproval) && Core.CheckInventory("Dage's Favor", quantFavor))
             return;
 
-        Core.Logger($"Farming {quantApproval} Dage's Approval and {quantFavor} Dage's Favor");
-        Core.Unbank("Dage's Approval", "Dage's Favor");
+        Core.AddDrop("Dage's Approval", "Dage's Favor");
+
+        if (quantApproval > 0 && quantFavor > 0)
+            Core.Logger($"Farming Dage's Approval ({Bot.Inventory.GetQuantity("Dage's Approval")}/{quantApproval}) " +
+                            $"and Dage's Favor ({Bot.Inventory.GetQuantity("Dage's Favor")}/{quantFavor})");
+        else if (quantApproval > 0)
+            Core.FarmingLogger("Dage's Approval", quantApproval);
+        else if (quantFavor > 0)
+            Core.FarmingLogger("Dage's Favor", quantFavor);
+
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Undead);
-        if (quantApproval > 0)
-            Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false);
-        if (quantFavor > 0)
-            Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false);
+
+        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false);
+        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false);
     }
 
     public void BoneSigil(int quant = 1)

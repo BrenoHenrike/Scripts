@@ -244,15 +244,20 @@ public class CoreNation
         if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
             return;
 
-        Core.Logger($"Farming {quantApproval} Nulgath's Approval and {quantFavor} Archfiend's Favor");
         Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
+
+        if (quantApproval > 0 && quantFavor > 0)
+            Core.Logger($"Farming Nulgath's Approval ({Bot.Inventory.GetQuantity("Nulgath's Approval")}/{quantApproval}) " +
+                            $"and Archfiend's Favor ({Bot.Inventory.GetQuantity("Archfiend's Favor")}/{quantFavor})");
+        else if (quantApproval > 0)
+            Core.FarmingLogger("Nulgath's Approval", quantApproval);
+        else if (quantFavor > 0)
+            Core.FarmingLogger("Archfiend's Favor", quantFavor);
+
         Core.EquipClass(ClassType.Farm);
 
-        if (quantApproval > 0)
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false, log: false);
-        if (quantFavor > 0)
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, log: false);
-        Core.Logger($"Finished");
+        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false, log: false);
+        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, log: false);
     }
 
 
