@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
@@ -41,16 +42,19 @@ public class Shinkansen
         // Get a Ticket 8119 & Buy Tickets 8120
         if (!Story.QuestProgression(8119))
         {
-            while (!Core.CheckInventory("Shinkansen Tickets", 2))
+            if (!Core.CheckInventory("Shinkansen Tickets", 2))
             {
+                Core.AddDrop("Shinkansen Tickets");
+
                 Core.RegisterQuests(8118);
                 while (!Core.CheckInventory("Credits", 8))
-                {
                     Core.HuntMonster("Shinkansen", "Civilian", "Credits \"Donated\"", 4);
-                }
-                Core.ChainComplete(8120, 8119);
+                Core.CancelRegisteredQuests();
+
+                Core.ChainComplete(8120);
+                Bot.Wait.ForPickup("Shinkansen Tickets");
             }
-            Core.CancelRegisteredQuests();
+            Core.ChainComplete(8119);
         }
 
         // Defeat the Soldiers  8121
