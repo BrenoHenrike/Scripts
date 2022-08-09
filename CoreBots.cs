@@ -378,7 +378,8 @@ public class CoreBots
                 if (toInv)
                     Unbank(name);
 
-                if (Bot.Inventory.TryGetItem(name, out InventoryItem item) && item.Quantity >= quant)
+                if ((toInv && Bot.Inventory.GetQuantity(name) >= quant) ||
+                   (!toInv && Bot.Bank.GetItemByName(name).Quantity >= quant))
                 {
                     if (any)
                         return true;
@@ -489,9 +490,9 @@ public class CoreBots
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
-        if (item == new ShopItem())
+        if (item.ID == 0)
             return;
-        Join(map);
+
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
@@ -508,6 +509,8 @@ public class CoreBots
                 Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         if (!item.Coins && item.Cost > Bot.Player.Gold)
             Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+
+        Join(map);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
@@ -528,7 +531,7 @@ public class CoreBots
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
         if (item == new ShopItem())
             return;
-        Join(map);
+
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
@@ -545,6 +548,8 @@ public class CoreBots
                 Logger($"You don't have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         if (!item.Coins && item.Cost > Bot.Player.Gold)
             Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+
+        Join(map);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
     }
 
