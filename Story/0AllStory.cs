@@ -355,7 +355,7 @@ public class AllStory
         Core.Logger($"Story: Fire House - {(Core.isCompletedBefore(1564) ? "Complete" : "Skipped")}");
 
         Gamehaven.Storyline();
-        Core.Logger($"Story: Fiend Past - Complete");
+        Core.Logger($"Story: Game Haven - Complete");
 
         GlaceraStory.DoAll();
         Core.Logger($"Story: Glacera - Complete");
