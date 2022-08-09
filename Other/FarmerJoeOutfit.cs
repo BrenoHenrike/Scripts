@@ -45,7 +45,6 @@ public class FarmerJoeOutfit
         Farm.Experience(50);
 
         Adv.EnhanceEquipped(EnhancementType.Lucky);
-        Core.Logger("Aquiring Eternal Inversionist");
         EI.GetEI();
         DS.GetDSS();
         AP.GetAP();
