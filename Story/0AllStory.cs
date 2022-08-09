@@ -364,7 +364,7 @@ public class AllStory
         Core.Logger($"Sage: J6 - Complete");
 
         Oddities.StoryLine();
-        Core.Logger($"Story: Oddities - Complete");
+        Core.Logger($"Story: Oddities - {(Core.isCompletedBefore(8667) ? "Complete" : "Member Only")}");
 
         OrbHunt.SagaName();
         Core.Logger($"Story: Orb Hunt - Complete");
