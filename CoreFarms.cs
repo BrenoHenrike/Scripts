@@ -537,8 +537,8 @@ public class CoreFarms
             {
                 if (!Core.CheckInventory("Dragon Runestone", 10))
                 {
-                    Gold(500000);
-                    Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k");
+                    Gold(1000000);
+                    Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
                 }
                 Core.BuyItem("alchemyacademy", 395, 7132, 10, 10, 8845);
                 Core.BuyItem("alchemyacademy", 397, 11475, 1, 2, 1232);
@@ -560,8 +560,8 @@ public class CoreFarms
                 {
                     if (!Core.CheckInventory("Dragon Runestone", 10))
                     {
-                        Gold(500000);
-                        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k");
+                        Gold(1000000);
+                        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
                     }
                     Core.BuyItem("alchemyacademy", 395, 7132, 10, 10, 8845);
                     Core.BuyItem("alchemyacademy", 397, 11475, 10, 2, 1232);
