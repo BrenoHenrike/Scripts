@@ -21,7 +21,7 @@ public class DefaultTemplate
     {
         if (Core.CheckInventory("item"))
             return;
-            
+
         //INSERT CODE HERE      
     }
 }
