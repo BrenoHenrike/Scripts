@@ -30,7 +30,7 @@ public class NecroticSwordOfDoom
         if (!Bot.Config.Get<bool>("SkipOption") && !Core.CheckInventory(14474, toInv: false) && Core.IsMember)
             Bot.Config.Configure();
 
-        if (!Bot.Config.Get<bool>("getSDKA") && !Core.CheckInventory(14474, toInv: false) && !Core.IsMember)
+        if ((!Bot.Config.Get<bool>("getSDKA") && !Core.IsMember) || (!Core.CheckInventory(14474, toInv: false) && !Core.IsMember))
             Core.BankingBlackList.AddRange(NSoD.Essences);
 
         Core.SetOptions();
