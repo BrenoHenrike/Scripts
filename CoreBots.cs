@@ -511,6 +511,10 @@ public class CoreBots
 
         Join(map);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
+
+        if (CheckInventory(item.Name, quant))
+            Logger($"Bought {quant}x{shopQuant} {item.Name}");
+        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
     }
 
     /// <summary>
@@ -550,6 +554,10 @@ public class CoreBots
 
         Join(map);
         _BuyItem(shopID, item, quant, shopQuant, shopItemID);
+
+        if (CheckInventory(item.Name, quant))
+            Logger($"Bought {quant}x{shopQuant} {item.Name}");
+        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
     }
 
     private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant, int shopItemID)
@@ -564,15 +572,17 @@ public class CoreBots
         }
         else
         {
-            if (Bot.Shops.ShopID == shopID)
-                SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
+            if (Bot.Shops.ShopID != shopID)
+            {
+                Bot.Shops.Load(shopID);
+                Bot.Sleep(ActionDelay);
+            }
+            SendPackets($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{shopItemID}%", quant);
+
             Bot.Wait.ForItemBuy();
             Logger("Re-login to prevent ghost buy");
             Relogin();
         }
-        if (CheckInventory(item.Name, quant))
-            Logger($"Bought {quant}x{shopQuant} {item.Name}");
-        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
@@ -1279,7 +1289,7 @@ public class CoreBots
                 Logger("Damage over Time Classes:");
                 foreach (string s in DOTClasses)
                     Logger($" - {s}");
-                Logger($"No DoT Classes found, stopping.", messageBox: true, stopBot: true);
+                Logger($"No Damage over Time Classes found, stopping.", messageBox: true, stopBot: true);
             }
 
             foreach (string Class in DOTClasses)

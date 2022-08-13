@@ -7,23 +7,23 @@
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 using RBot;
 
-public class VoidAurasForIdiots
+public class RetrieveVoidAuras
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public NecroticSwordOfDoom NSoD = new();
+    public CoreNSOD NSoD = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(NSoD.Essences);
 
         Core.SetOptions();
-        Core.Logger($"{Bot.Player.Username} ty for being retarted enough to run this👍, your the {Bot.Runtime.Random.Next(0, 9999999)} 'th person to Request/run this.");
-        NSoD.VoidAuras(7500);
-        Core.SetOptions(false);
 
+        NSoD.RetrieveVoidAuras();
+
+        Core.SetOptions(false);
     }
 }

@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
 //cs_include Scripts/Nation/EmpoweringItems.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
@@ -21,7 +21,7 @@ public class VoidAvengerScythe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreNation Nation = new();
-    public NecroticSwordOfDoom NSOD = new();
+    public CoreNSOD NSoD = new();
     public JuggernautItemsofNulgath juggernaut = new();
     public EmpoweringItems Empower = new();
 
@@ -88,7 +88,7 @@ public class VoidAvengerScythe
         // Dracolich Destroyer Scythe - 
         Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Scythe", isTemp: false);
         // Void Aura - 
-        NSOD.VoidAuras(15);
+        NSoD.VoidAuras(15);
         // Letter from Asuka and Tendou -    
         Core.HuntMonster("Citadel", "Burning Witch", "Letter from Asuka and Tendou", isTemp: false);
         Core.EnsureComplete(5025);

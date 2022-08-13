@@ -7,7 +7,7 @@
 //cs_include Scripts/Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
@@ -32,7 +32,7 @@ public class CoreHollowbornDoomKnight
     public CoreHollowborn HB = new CoreHollowborn();
     public CoreHollowbornPaladin HBP = new CoreHollowbornPaladin();
     public CoreSDKA SDKA = new CoreSDKA();
-    public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
+    public CoreNSOD NSoD = new();
     public SepulchuresOriginalHelm SOH = new SepulchuresOriginalHelm();
 
     public void ScriptMain(ScriptInterface bot)
@@ -190,7 +190,7 @@ public class CoreHollowbornDoomKnight
         // Requirements 
         SDKA.DoAll();
         SOH.DoAll();
-        NSOD.GetNSOD();
+        NSoD.GetNSOD();
         HB.HardcoreContract();
         HBP.HBShadowOfFate();
         Farm.Experience();
@@ -202,7 +202,7 @@ public class CoreHollowbornDoomKnight
         Core.KillMonster("dwarfhold", "r2", "Left", "Chaos Drow", "Dark Energy", 10000, false);
         Core.EquipClass(ClassType.Solo);
         Adv.BoostHuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 3, false, publicRoom: true);
-        NSOD.BonesVoidRealm(1);
+        NSoD.BonesVoidRealm(1);
         Adv.BoostHuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", 1, false);
         Bot.Quests.UpdateQuest(3008);
         Core.SetAchievement(18);

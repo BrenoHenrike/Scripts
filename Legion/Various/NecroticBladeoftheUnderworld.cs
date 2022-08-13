@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/DageChallengeStory.cs
 //cs_include Scripts/Legion/Various/SoulSand.cs
@@ -22,7 +22,7 @@ public class NecroticBladeoftheUnderworld
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public NecroticSwordOfDoom NSoD = new();
+    public CoreNSOD NSoD = new();
     public CoreLegion Legion = new();
     public DageChallengeStory DageChallenge = new();
     public AnotherOneBitesTheDust SoulSand = new();
