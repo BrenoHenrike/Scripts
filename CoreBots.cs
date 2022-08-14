@@ -1289,7 +1289,7 @@ public class CoreBots
                 Logger("Damage over Time Classes:");
                 foreach (string s in DOTClasses)
                     Logger($" - {s}");
-                Logger($"No DoT Classes found, stopping.", messageBox: true, stopBot: true);
+                Logger($"No Damage over Time Classes found, stopping.", messageBox: true, stopBot: true);
             }
 
             foreach (string Class in DOTClasses)
