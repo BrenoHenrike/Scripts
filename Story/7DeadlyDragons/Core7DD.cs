@@ -420,17 +420,17 @@ public class Core7DD
 
     public void Wrath()
     {
-        if (Core.isCompletedBefore(6120))
+        if (Core.isCompletedBefore(6170))
             return;
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Wrath");
         Story.PreLoad();
 
-        // Decimate the Horder
+        // Decimate the Horde
         Story.KillQuest(6110, "wrath", new[] { "Bone Terror", "Fishbones" });
 
-        // Douse the Flames
+        // Douse with Flames
         Story.KillQuest(6111, "wrath", "Dark Fire");
 
         // Grenades of AWE
@@ -474,5 +474,31 @@ public class Core7DD
 
         // Defeat Gorhorath!
         Story.KillQuest(6120, "wrath", "Gorgorath");
+
+        //Navigate the Maze (6163)
+        Story.MapItemQuest(6163, "dragonbone", 5587);
+        Story.KillQuest(6163, "dragonbone", new[] { "Bone Dragonling", "Dark Fire" });
+
+        //Get a Clue (6164)
+        Story.KillQuest(6164, "dragonbone", "Bone Terror");
+
+        //Heart of a Dracolich (6165)
+        Story.KillQuest(6165, "dragonbone", "Bone Wyvern");
+
+        //Open the Door (6166)
+        Story.MapItemQuest(6166, "dragonbone", 5588);
+
+        //Find the Jewel (6167)
+        Story.MapItemQuest(6167, "dragonbone", 5589);
+
+        //Get to the Lair (6168)
+        Story.MapItemQuest(6168, "dragonbone", 5590);
+
+        //Unlock the Door (6169)
+        Story.KillQuest(6169, "dragonbone", "Dragonshade");
+        Story.MapItemQuest(6169, "dragonbone", 5591);
+
+        //Slay Gorgorath (6170)
+        Story.KillQuest(6170, "dragonbone", "Gorgorath");
     }
 }
