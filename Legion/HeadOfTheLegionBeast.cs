@@ -69,33 +69,35 @@ public class HeadoftheLegionBeast
 
         Core.AddDrop(HeadLegionBeast);
 
-        (string, int)[] HelmsCircle = { ("Aspect of Luxuria", 8233), ("Gluttony's Maw", 8234), ("Stare of Greed", 8234) };
-        foreach ((string Helm, int shopItemID) in HelmsCircle)
-        {
-            if (!Core.CheckInventory(Helm))
-                continue;
+        CircleHelm("Aspect of Luxuria");
+        CircleHelm("Gluttony's Maw");
+        CircleHelm("Stare of Greed");
 
-            Core.Logger($"Started farm for: {Helm}");
-            Legion.FarmLegionToken(1500);
-            Indulgence(10);
-            Adv.BuyItem("sevencircles", 1980, Helm, shopItemID);
-
-        }
-
-        (string, int)[] HelmsCircleWar = { ("Crown of Wrath", 8250), ("Face of Treachery", 8254), ("Faces of Violence", 8249) };
-        foreach ((string Helm, int shopItemID) in HelmsCircleWar)
-        {
-            if (Core.CheckInventory(Helm))
-                continue;
-
-            Core.Logger($"Started farm for: {Helm}");
-            Legion.FarmLegionToken(1500);
-            Penance(10);
-            Adv.BuyItem("sevencircleswar", 1984, Helm, shopItemID);
-
-        }
+        CircleHelm("Crown of Wrath", true);
+        CircleHelm("Face of Treachery", true);
+        CircleHelm("Faces of Violence", true);
 
         Adv.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles");
+
+        void CircleHelm(string helm, bool war = false)
+        {
+            if (!Core.CheckInventory(helm))
+                return;
+
+            Core.FarmingLogger(helm, 1);
+            Legion.FarmLegionToken(1500);
+
+            if (war)
+            {
+                Penance(10);
+                Adv.BuyItem("sevencircleswar", 1984, helm);
+            }
+            else
+            {
+                Indulgence(10);
+                Adv.BuyItem("sevencircles", 1980, helm);
+            }
+        }
     }
 
     public void EssenceWrath(int quant = 300)
