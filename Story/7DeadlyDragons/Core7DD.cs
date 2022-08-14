@@ -340,7 +340,7 @@ public class Core7DD
 
     public void Envy()
     {
-        if (Core.isCompletedBefore(6000))
+        if (Core.isCompletedBefore(6005))
             return;
 
         if (doAll)
@@ -401,6 +401,21 @@ public class Core7DD
 
         // Argo’s Not Stopping Us!
         Story.KillQuest(6000, "dragoncrown", "Argo");
+
+        //Defeat Ukki, The 1st Sentinel (6001)
+        Story.KillQuest(6001, "maloth", "Ukki");
+
+        //Defeat Kagan, The 2nd Guardian (6002)
+        Story.KillQuest(6002, "maloth", "Kagan");
+
+        //Defeat Golgar, The 3rd Guardian (6003)
+        Story.KillQuest(6003, "maloth", "Golgar");
+
+        //Hand over the Entry Code (6004)
+        Story.KillQuest(6004, "maloth", new[] { "Golgar", "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest" });
+
+        //Confront the Dragon King (6005)
+        Story.KillQuest(6005, "maloth", "Maloth");
     }
 
     public void Wrath()
