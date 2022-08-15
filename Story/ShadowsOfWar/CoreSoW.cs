@@ -112,8 +112,7 @@ public class SOW
         Story.MapItemQuest(6874, "granitecove", 6433);
 
         //Gather Information (6875)
-        for (int i = 6434; i <= 6436; i++)
-            Story.MapItemQuest(6875, "granitecove", i);
+        Story.MapItemQuest(6875, "granitecove", new[] { 6434, 6435, 6436 });
 
         //Find the Missing Pages (6876)
         Story.KillQuest(6876, "granitecove", "Blacksea Pirate|Jungle Treeant|Island Monkey");

@@ -6,21 +6,18 @@
 //cs_include Scripts/Story/Legion/DarkAlliance.cs
 using RBot;
 
-public class ShadowlordKeep
+public class AozoraHills
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public SOW SoW = new();
-    public ShadowWar SW = new();
-    public DarkAlly_Story DAlly = new();
-    public DarkAlliance_Story DAlliance = new();
 
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
 
-        SoW.ShadowlordKeep();
+        SoW.AozoraHills();
 
         Core.SetOptions(false);
     }
