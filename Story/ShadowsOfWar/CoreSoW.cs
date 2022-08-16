@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Story/ShadowWar.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Story/Legion/DarkAlliance.cs
