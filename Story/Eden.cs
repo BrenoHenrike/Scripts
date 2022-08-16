@@ -33,15 +33,27 @@ public class Eden
         Story.KillQuest(8795, "eden", "Harmless Choir");
         
         //The Fashion and Arcade District 8796
-        Story.KillQuest(8796, "eden", new[] {"Cosplayer", "Klawaii Machine"});
+        if (!Story.QuestProgression(8796))
+        {           
+            Core.EnsureAccept(8796);
+            Core.HuntMonster("eden", "Cosplayer", "Salarymen Pictures Taken", 6);
+            Core.HuntMonster("eden", "Klawaii Machine", "Prize Won");
+            Core.EnsureComplete(8496);           
+        }
 
         //Eden City KotaMart 8797
         Story.KillQuest(8797, "eden", "SalaryMan");
 
         //Save the Citizens! 8798
-        Story.MapItemQuest(8798, "eden", 10448, 5);
-        Story.KillQuest(8798, "eden", new[] {"SalaryMan Anomaly", "Cosplayer Anomaly", "Police Anomaly"});
-        
+        if (!Story.QuestProgression(8798))
+        {           
+            Core.EnsureAccept(8798);
+            Story.MapItemQuest(8798, "eden", 10448, 5);
+            Core.HuntMonster("eden", "SalaryMan Anomaly", "Salarymen Anomalies Slain", 7);
+            Core.HuntMonster("eden", "Cosplayer Anomaly", "Cosplayer Anomalies Slain", 7);
+            Core.HuntMonster("eden", "Police Anomaly", "Police Anomalies Slain", 7);
+            Core.EnsureComplete(8493);           
+        }
         //Armorchy 8799
         Story.KillQuest(8799, "eden", "CRC Power Armor");
 
