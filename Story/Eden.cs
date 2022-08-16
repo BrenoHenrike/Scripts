@@ -36,7 +36,7 @@ public class Eden
         if (!Story.QuestProgression(8796))
         {           
             Core.EnsureAccept(8796);
-            Core.HuntMonster("eden", "Cosplayer", "Salarymen Pictures Taken", 6);
+            Core.HuntMonster("eden", "Cosplayer", "Pictures Taken", 6);
             Core.HuntMonster("eden", "Klawaii Machine", "Prize Won");
             Core.EnsureComplete(8496);           
         }
