@@ -33,8 +33,10 @@ public class Eden
         Story.KillQuest(8795, "eden", "Harmless Choir");
         //The Fashion and Arcade District 8796
         Story.KillQuest(8796, "eden", "Cosplayer");
+        Story.KillQuest(8796, "eden", "Klawaii Machine");
         //Eden City KotaMart 8797
         Story.KillQuest(8797, "eden", "Cosplayer");
+        Story.KillQuest(8796, "eden", "SalaryMan");
         //Save the Citizens! 8798
         Story.MapItemQuest(8798, "eden", 10448, 5);
         Story.KillQuest(8798, "eden", "SalaryMan Anomaly");
