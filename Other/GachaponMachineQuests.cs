@@ -105,7 +105,6 @@ public class GachaponMachine
             Core.Logger($"Completed x{i++}");
         }
         Core.Logger("All drops acquired from [Kotapon II: Get'cha Gear] Quest");
-        Bot.Player.Join("whitemap","Enter", "Spawn");
     }
         
 }
