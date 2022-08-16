@@ -16,25 +16,25 @@ public class NecroTowerStory
 
     public void ScriptMain(ScriptInterface bot)
     {
-        Core.SetOptions(); 
-        
+        Core.SetOptions();
+
         DoAll();
 
         Core.SetOptions(false);
     }
     public void DoAll()
     {
-        if(Core.isCompletedBefore(1101))
+        if (Core.isCompletedBefore(1101))
         {
-            Core.Logger("Necrotower storyline has already been completed.");
+            Core.Logger($"Story: Necro Tower - Complete");
             return;
         }
 
         Story.PreLoad();
 
         //A Brutal Mistake (1077)
-        
-        if(!Story.QuestProgression(1077))
+
+        if (!Story.QuestProgression(1077))
         {
             Core.EnsureAccept(1077);
             Core.GetMapItem(429, 6, "lightguard");
@@ -49,7 +49,7 @@ public class NecroTowerStory
         Story.MapItemQuest(1065, "doomwood", 423, 5);
 
         //Bone-tired Backup (1066)
-        if(!Story.QuestProgression(1066))
+        if (!Story.QuestProgression(1066))
         {
             Core.EnsureAccept(1066);
             Core.KillMonster("doomwood", "r6", "Right", "*", "Warrior Reinforced");
@@ -66,7 +66,7 @@ public class NecroTowerStory
         Story.KillQuest(1069, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer", "Doomwood Soldier" });
 
         //De(ad)ception (1070)
-        if(!Story.QuestProgression(1070))
+        if (!Story.QuestProgression(1070))
         {
             Core.EnsureAccept(1070);
             Core.GetMapItem(427, map: "doomundead");
@@ -87,7 +87,7 @@ public class NecroTowerStory
         Story.KillQuest(1083, "maul", new[] { "Slimeskull", "Personal Chopper" });
 
         //Chopping Spree (1084)
-        if(!Story.QuestProgression(1084))
+        if (!Story.QuestProgression(1084))
         {
             Core.EnsureAccept(1084);
             Core.KillMonster("maul", "r2", "Left", "*", "Body Part Donation", 10);
@@ -99,8 +99,14 @@ public class NecroTowerStory
         Story.KillQuest(1085, "maul", "Creature Creation");
 
         //ID What You Did There (1087)
-        Story.KillQuest(1087, "necrotower", new[] { "Doomwood Treeant", "Slimeskull" });
-
+        if (!Story.QuestProgression(1087))
+        {
+            Core.EnsureAccept(1087);
+            Core.KillMonster("necrotower", "r2", "Left", "Doomwood Treeant", "Pain-per", 5);
+            Core.KillMonster("necrotower", "r2", "Left", "Slimeskull", "Toxic Goo", 5);
+            Core.EnsureComplete(1087);
+        }
+        
         //The Ego and the ID (1088)
         Story.KillQuest(1088, "necrotower", new[] { "DoomWood Soldier", "DoomWood Soldier" });
 
@@ -111,7 +117,7 @@ public class NecroTowerStory
         Story.MapItemQuest(1091, "necrotower", 438);
 
         //Necro Tower Elevator Minigame
-        for(int i = 1092; i <= 1101; i++)
-        Story.ChainQuest(i);
+        for (int i = 1092; i <= 1101; i++)
+            Story.ChainQuest(i);
     }
 }

@@ -28,7 +28,10 @@ public class DoomwoodPart3
     public void StoryLine()
     {
         if (Core.isCompletedBefore(7653))
+        {
+            Core.Logger($"Story: Doomwood Part 3 - Complete");
             return;
+        }
 
         Story.PreLoad();
 
@@ -187,7 +190,7 @@ public class DoomwoodPart3
         if (!Story.QuestProgression(7628))
         {
             Core.EnsureAccept(7628);
-            Core.HuntMonsterMapID("stonewooddeep", 4|5, "Target Dummy Slain", 6);
+            Core.HuntMonsterMapID("stonewooddeep", 4 | 5, "Target Dummy Slain", 6);
             Core.EnsureComplete(7628);
         }
 

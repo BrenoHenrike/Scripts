@@ -21,7 +21,10 @@ public class NecroDungeon
     public void NecrodungeonStoryLine()
     {
         if (Core.isCompletedBefore(2061))
+        {
+            Core.Logger($"Story: Necro Dungeon - Complete");
             return;
+        }
 
         Story.PreLoad();
 
