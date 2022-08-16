@@ -2027,10 +2027,10 @@ public class CoreBots
                     "So you will be able to select what data is being send and what is not.\n\n" +
                     "Select \"Full\" to give full consent.\n" +
                     "Select \"Partial\" to give partial consent, you will then get a couple more pop-up boxes where you can select your preferences.\n" +
-                    "Select \"Cancel\" to not consent, we will then gather no data whatsoever.",
+                    "Select \"None\" to not consent, we will then gather no data whatsoever.",
 
                     "Data Collection",
-                    "Full", "Partial"
+                    "Full", "Partial", "None"
                 );
 
                 if (consent.Text == "Full")
@@ -2039,7 +2039,7 @@ public class CoreBots
                     scriptNameData = true;
                     stopTimeData = true;
                 }
-                else if (consent.Text == "Cancel")
+                else if (consent.Text is "Cancel" or "None")
                 {
                     genericData = false;
                     scriptNameData = false;
