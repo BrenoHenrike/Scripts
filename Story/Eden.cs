@@ -11,7 +11,6 @@ public class Eden
     public CoreStory Story = new();
     public Shinkansen Shin = new();
 
-
     public void ScriptMain(ScriptInterface bot)
     {
         Core.SetOptions();
@@ -26,8 +25,8 @@ public class Eden
         if (Core.isCompletedBefore(8801))
             return;
 
-        Story.PreLoad();
         Shin.Storyline();
+        Story.PreLoad();
 
         //Welcome to Eden! 8795
         Story.KillQuest(8795, "eden", "Harmless Choir");
@@ -37,8 +36,8 @@ public class Eden
         {
             Core.EnsureAccept(8796);
             Core.HuntMonster("eden", "Cosplayer", "Pictures Taken", 6);
-            Core.HuntMonster("eden", "Klawaii Machine", "Prize Won");
-            Core.EnsureComplete(8496);
+            Core.HuntMonster("eden", "Klawaii Machine", "Prize Won
+            Core.EnsureComplete(8796);
         }
 
         //Eden City KotaMart 8797
@@ -52,8 +51,9 @@ public class Eden
             Core.HuntMonster("eden", "SalaryMan Anomaly", "Salarymen Anomalies Slain", 7);
             Core.HuntMonster("eden", "Cosplayer Anomaly", "Cosplayer Anomalies Slain", 7);
             Core.HuntMonster("eden", "Police Anomaly", "Police Anomalies Slain", 7);
-            Core.EnsureComplete(8798);
+            Core.EnsureComplete(8798);           
         }
+        
         //Armorchy 8799
         Story.KillQuest(8799, "eden", "CRC Power Armor");
 
