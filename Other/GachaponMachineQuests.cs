@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Shinkansen.cs
+//cs_include Scripts/Story/Eden.cs
 using RBot;
 
 public class GachaponMachine
@@ -10,7 +11,7 @@ public class GachaponMachine
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public Shinkansen Shin = new();
+    public Eden ES = new();
 
     public CoreAdvanced Adv = new CoreAdvanced();
 
@@ -73,7 +74,7 @@ public class GachaponMachine
     };
     public void Gacha()
     {
-        Shin.Storyline();
+        ES.EdenStoryline();
         Core.AddDrop(Rewards);
         Core.AddDrop(Rewards2);
         
