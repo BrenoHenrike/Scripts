@@ -71,3 +71,4 @@ public class GoldenBladeOfFate
             Bot.Wait.ForPickup("Golden Blade of Fate");
         }
     }
+}
