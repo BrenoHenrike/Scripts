@@ -338,20 +338,19 @@ public class CoreDailies
         if (CheckDaily(1316, true, "Tokens of Collection"))
         {
             Core.EquipClass(ClassType.Farm);
-            DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
             Core.FarmingLogger("Token of Collection", 90);
+            DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
         }
         if (Core.IsMember)
         {
+            Core.FarmingLogger("Token of Collection", 90);
             if (CheckDaily(1331, true, "Tokens of Collection"))
                 DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
             if (CheckDaily(1332, true, "Tokens of Collection"))
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
-            Core.FarmingLogger("Token of Collection", 90);
             Core.ToBank("Token of Collection");
         }
         if (Core.CheckInventory("Token of Collection", 90))
-            Core.Unbank("Token of Collection");
             Core.BuyItem("Collection", 324, "The Collector");
         Core.ToBank("Token of Collection");
     }
@@ -428,11 +427,10 @@ public class CoreDailies
         if (!CheckDaily(492, true, "Shadow Skull"))
          
             DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
-            Core.FarmingLogger("Shadow Skull", 30, "Shadow Skull");
+            Core.FarmingLogger("Shadow Skull", 30);
 
         if (Core.CheckInventory("Shadow Skull", 30))
-            Core.Logger("Purchase Class"); 
-           Core.BuyItem("bonecastle", 1242, "DeathKnight Lord", shopItemID: 4397);
+            Core.BuyItem("bonecastle", 1242, "DeathKnight Lord", shopItemID: 4397);
         
         Core.ToBank("Shadow Skull");
     }
