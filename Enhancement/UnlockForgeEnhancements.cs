@@ -345,7 +345,8 @@ public class UnlockForgeEnhancements
             Darkon.AncientRemnant(22);
             Darkon.MourningFlower(22);
             if (!Core.CheckInventory("Darkon Insignia", 20))
-                Core.Logger(" x5 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+            else Core.BuyItem("ultradarkon", 2147, "Darkon's Debris 2 (Reconstructed)");
         }
 
         if (!Core.CheckInventory("King Drago Insignia", 5))
