@@ -56,7 +56,7 @@ public class CoreVHL
             Core.AddDrop(ChallengeRewards);
         Core.AddDrop("Roentgenium of Nulgath");
 
-        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", 1, false);
+        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
 
         Core.FarmingLogger("Roentgenium of Nulgath", quant);
         int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
