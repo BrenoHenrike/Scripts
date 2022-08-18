@@ -55,7 +55,7 @@ public class KalaSeasonal
             Bot.Quests.UpdateQuest(7622);
             Bot.Sleep(2000);
             Core.EnsureAccept(8209);
-            Core.KillMonster("rangda", "r4", "Left", "Rangda", "Rangda Defeated");
+            Core.KillMonster("rangda", "r4", "Left", "Rangda", "Sacred Keris");
             Core.EnsureComplete(8209);
         }
 
