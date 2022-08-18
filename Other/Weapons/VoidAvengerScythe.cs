@@ -24,6 +24,7 @@ public class VoidAvengerScythe
     public CoreNSOD NSoD = new();
     public JuggernautItemsofNulgath juggernaut = new();
     public EmpoweringItems Empower = new();
+    public bool DontPreconfigure = true;
 
     public void ScriptMain(ScriptInterface bot)
     {
@@ -64,19 +65,7 @@ public class VoidAvengerScythe
         // Death Scythe of Nulgath - 
         Empower.EmpoweringStuff();
         // Ungodly Reavers of Nulgath - 
-        if (!Core.CheckInventory("Ungodly Reavers of Nulgath"))
-        {
-            Nation.FarmUni13();
-            Nation.FarmDiamondofNulgath(13);
-            Nation.FarmDarkCrystalShard(50);
-            Nation.FarmTotemofNulgath(3);
-            Nation.FarmGemofNulgath(20);
-            Nation.FarmVoucher(false);
-            Nation.SwindleBulk(50);
-            Core.EnsureAccept(837, 4939);
-            Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
-            Core.EnsureComplete(837);
-        }
+        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.UngodlyReavers_of_Nulgath);
         // Scythe of Sisyphean - 
         Core.HuntMonster("dragonplane", "Wind Elemental", "Scythe of Sisyphean", isTemp: false);
         // Heart of the Void - 

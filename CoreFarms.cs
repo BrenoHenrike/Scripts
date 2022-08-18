@@ -924,7 +924,7 @@ public class CoreFarms
         Bot.Quests.UpdateQuest(3428);
         if (!Bot.Quests.IsUnlocked(7877))
         {
-            Core.EnsureAccept(7875, 7875);
+            Core.EnsureAccept(7875, 7876);
             Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale");
             Core.EnsureComplete(7875);
             Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid’s Flesh");
