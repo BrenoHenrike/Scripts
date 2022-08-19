@@ -20,7 +20,7 @@ public class CoreHollowborn
             return;
 
         Core.AddDrop("Human Soul", "Fallen Soul", "Lae\'s Hardcore Contract");
-        Farm.IcestormArena(65);
+        Farm.Experience(65);
 
         Core.Logger("Getting Lae's Hardcore Contract");
         Core.EnsureAccept(7556);

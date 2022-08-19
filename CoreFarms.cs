@@ -151,7 +151,10 @@ public class CoreFarms
         if (Bot.Player.Level >= level)
             return;
 
-        IcestormArena();
+        if (Bot.Player.Level < 70)
+            FireWarxp(level);
+        IcestormArena(level);
+
     }
 
     /// <summary>
@@ -260,7 +263,29 @@ public class CoreFarms
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
+
+
+    /// <summary>
+    /// Farms level in FireWar Turnins
+    /// </summary>
+    /// <param name="level">Desired level</param>
+    public void FireWarxp(int level = 70)
+    {
+        if (Bot.Player.Level >= level)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        
+        Core.RegisterQuests(6494, 6495);        
+        while (!Bot.ShouldExit() && Bot.Player.Level < level)
+            Core.KillMonster("Firewar", "r2", "Left", "*");
+
+        Core.CancelRegisteredQuests();
+    }
     #endregion
+
+
 
     #region Misc
     /// <summary>
