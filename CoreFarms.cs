@@ -276,10 +276,10 @@ public class CoreFarms
 
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
-        
-        Core.RegisterQuests(6494, 6495);        
+
+        Core.RegisterQuests(6294, 6295);
         while (!Bot.ShouldExit() && Bot.Player.Level < level)
-            Core.KillMonster("Firewar", "r2", "Left", "*");
+            Core.KillMonster("Firewar", "r2", "Right", "*");
 
         Core.CancelRegisteredQuests();
     }

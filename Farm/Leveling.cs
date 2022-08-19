@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class IcestormArenaXP
+public class Leveling
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,7 +16,7 @@ public class IcestormArenaXP
 
         Adv.BestGear(GearBoost.exp);
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
-        Farm.IcestormArena();
+        Farm.Experience();
 
         Core.SetOptions(false);
     }
