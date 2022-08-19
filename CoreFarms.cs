@@ -279,7 +279,7 @@ public class CoreFarms
 
         Core.RegisterQuests(6294, 6295);
         while (!Bot.ShouldExit() && Bot.Player.Level < level)
-            Core.KillMonster("Firewar", "r2", "Right", "*");
+            Core.KillMonster("Firewar", "r2", "Right", "*", log: false);
 
         Core.CancelRegisteredQuests();
     }
