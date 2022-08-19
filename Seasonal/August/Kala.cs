@@ -49,7 +49,15 @@ public class KalaSeasonal
         }
 
         // 8209 Keris-tal Clear
-        Story.KillQuest(8209, "rangda", "Rangda");
+        if (!Story.QuestProgression(8209))
+        {
+            Core.Join("rangda");
+            Bot.Quests.UpdateQuest(7622);
+            Bot.Sleep(2000);
+            Core.EnsureAccept(8209);
+            Core.KillMonster("rangda", "r4", "Left", "Rangda", "Sacred Keris");
+            Core.EnsureComplete(8209);
+        }
 
         // 8210 Ceremonial Reflection
         Story.KillQuest(8210, "kala", "Jelangkung");
