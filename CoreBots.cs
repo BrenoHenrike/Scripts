@@ -103,7 +103,7 @@ public class CoreBots
                 Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            SkuaVersionChecker("1.0.0.0");
+            //SkuaVersionChecker("1.0.0.0");
 
             if (!Bot.Player.LoggedIn)
             {
