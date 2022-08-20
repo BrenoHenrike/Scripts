@@ -58,6 +58,7 @@ public class FarmerJoeOutfit
         //Pre-Farm Enh
         Adv.EnhanceEquipped(EnhancementType.Lucky);
         InvEn.EnhanceInventory();
+        Farm.BladeofAweREP(6, true);
 
         //Easy Difficulty Stuff
         RagsandHat();
