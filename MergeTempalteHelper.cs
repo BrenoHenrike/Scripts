@@ -45,7 +45,7 @@ public class MergeTemplateHelper
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         string output = "";
         List<string> itemsToLearn = new();
-        string className = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "");
+        string className = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "").Replace("'", "");
 
         List<string> shopItemNames = new();
         if (genFile)
@@ -117,7 +117,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find classIndex");
             return;
         }
-        MergeTemplate[classIndex] = $"public class {className}MergeTemp";
+        MergeTemplate[classIndex] = $"public class {className}Merge";
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients);");
         if (startIndex < 0)
         {

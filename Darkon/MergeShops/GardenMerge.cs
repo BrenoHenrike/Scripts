@@ -63,10 +63,51 @@ public class GardenMerge
                     break;
 
                 case "Debris Fragment":
+                    Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("garden", "r2", "Left", "*", req.Name, quant, isTemp: false);
                     break;
 
+                case "Darkon's Debris 1952":
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.AddDrop("Darkon's Receipt");
+
+                    bool EnoughPeople = false;
+                    Core.Join("doomvault", "r5", "Left", true);
+
+                    Core.RegisterQuests(7325);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name))
+                    {
+                        if (Bot.Map.Name.ToLower() == "doomvault")
+                        {
+                            while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
+                            {
+                                Core.Jump("r5", "Left");
+                                Bot.Sleep(Core.ActionDelay);
+                            }
+                            if (Bot.Map.CellPlayers.Count >= 3)
+                                EnoughPeople = true;
+                            else EnoughPeople = false;
+                        }
+
+                        if (!EnoughPeople && Core.IsMember)
+                            Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true, log: false);
+                        else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
+
+                        Bot.Wait.ForPickup("Darkon's Receipt");
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Darkon's Debris 1935.1":
+                case "Darkon's Debris 66 Angel Wing":
+                case "Darkon's Debris 66 Fallen Wing":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("garden", "Creature 12", req.Name, isTemp: false);
+                    break;
+
                 case "Fa's Gamer Fuel":
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("garden", "Fa", req.Name, quant, isTemp: false);
                     break;
             }
