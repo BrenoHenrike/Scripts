@@ -39,6 +39,7 @@ public class FarmerJoeOutfit
         RagsandHat();
         ServersAreDown();
         Farm.Experience(50);
+        Farm.BladeofAweREP(6, true);
 
         Adv.EnhanceEquipped(EnhancementType.Lucky);
         Core.Logger("Aquiring Eternal Inversionist");
