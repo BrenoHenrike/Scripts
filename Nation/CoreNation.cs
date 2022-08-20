@@ -516,6 +516,7 @@ public class CoreNation
         {
             if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
                 sellMemVoucher = _sellMemVoucher;
+
             if (item != "Any")
             {
                 Core.AddDrop(item);
@@ -524,6 +525,7 @@ public class CoreNation
             }
             else
                 Core.AddDrop(bagDrops[..^11]);
+
             if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
                 returnPolicyDuringSupplies = _returnSupplies;
             string[] rPDSuni = null;
@@ -534,7 +536,9 @@ public class CoreNation
                 Core.AddDrop("Blood Gem of Nulgath");
                 Core.RegisterQuests();
             }
+
             Core.FarmingLogger(item, quant);
+
             Core.RegisterQuests(returnPolicyDuringSupplies ? new[] { 2857, 7551 } : new[] { 2857 });
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
@@ -544,17 +548,19 @@ public class CoreNation
                         Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Rune", log: false);
                     Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune", log: false);
                 }
-                Core.KillEscherion("Relic of Chaos", publicRoom: true);
 
+                Core.KillEscherion("Relic of Chaos", publicRoom: true);
                 Bot.Drops.Pickup(item);
+
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                 {
                     Bot.Drops.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
                 }
+
                 if (Bot.Inventory.IsMaxStack(item))
-                    Core.Logger("Max Stack Hit.");
-                else Core.Logger($"item: {Bot.Inventory.GetQuantity(item)}/{quant}");
+                    Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item).MaxStack})");
+                else Core.FarmingLogger(item, quant);
             }
             Core.CancelRegisteredQuests();
         }
