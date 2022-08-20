@@ -213,7 +213,7 @@ public class FollowerJoe
             if (!Core.IsMember)
                 break;
 
-            Core.Logger($"LockedZoneHandler Try {maptry++}, Joining Map: {Map}");
+            Core.Logger($"Try {maptry++}, Joining Map: {Map}", "LockedZoneHandler");
             Core.Join(Map);
 
             while (Bot.Map.TryGetPlayer((Bot.Config.Get<string>("playerName")), out PlayerInfo player))
