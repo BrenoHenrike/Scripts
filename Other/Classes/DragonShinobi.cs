@@ -18,13 +18,12 @@ public class DragonShinobi
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Yokai.Quests();
-        GetClass();
+        GetDSS();
 
         Core.SetOptions(false);
     }
 
-    public void GetClass()
+    public void GetDSS(bool rankUpClass = true)
     {
         if (Core.CheckInventory(59476))
         {
@@ -32,6 +31,7 @@ public class DragonShinobi
             return;
         }
 
+        Yokai.Quests();
         Core.AddDrop("Dragon Shinobi Token");
 
         Core.EquipClass(ClassType.Solo);
@@ -41,6 +41,12 @@ public class DragonShinobi
         Core.CancelRegisteredQuests();
 
         Core.BuyItem("shadowfortress", 1968, 59476);
-        Adv.rankUpClass("DragonSoul Shinobi");
+        if (rankUpClass)
+        {
+            Adv.GearStore();
+            Core.Equip("DragonSoul Shinobi");
+            Adv.rankUpClass("DragonSoul Shinobi");
+            Adv.GearStore(true);
+        }
     }
 }

@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 
 public class DarkSpiritOrbs
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
     public void ScriptMain(IScriptInterface bot)

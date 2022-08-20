@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class AlchemyREP
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public string OptionsStorage = "AlchemyREP";
     public List<IOption> Options = new List<IOption>()
     {

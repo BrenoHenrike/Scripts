@@ -8,7 +8,7 @@
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 using Skua.Core.Interfaces;
 
 public class ArchFiend
@@ -18,7 +18,7 @@ public class ArchFiend
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreNation Nation = new();
-    public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
+    public CoreNSOD NSoD = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -63,8 +63,8 @@ public class ArchFiend
                 Nation.FarmBloodGem(20);
                 Nation.FarmTotemofNulgath(8);
                 if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
-                    NSOD.RetrieveVoidAuras(2);
-                else NSOD.VoidAuras(2);
+                    NSoD.RetrieveVoidAuras(2);
+                else NSoD.VoidAuras(2);
                 Nation.ApprovalAndFavor(0, 999);
                 Core.BuyItem("shadowblast", 1206, "Blood Star of the Archfiend");
             }

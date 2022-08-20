@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
 //cs_include Scripts/Nation/EmpoweringItems.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
@@ -21,9 +21,10 @@ public class VoidAvengerScythe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreNation Nation = new();
-    public NecroticSwordOfDoom NSOD = new();
+    public CoreNSOD NSoD = new();
     public JuggernautItemsofNulgath juggernaut = new();
     public EmpoweringItems Empower = new();
+    public bool DontPreconfigure = true;
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -64,19 +65,7 @@ public class VoidAvengerScythe
         // Death Scythe of Nulgath - 
         Empower.EmpoweringStuff();
         // Ungodly Reavers of Nulgath - 
-        if (!Core.CheckInventory("Ungodly Reavers of Nulgath"))
-        {
-            Nation.FarmUni13();
-            Nation.FarmDiamondofNulgath(13);
-            Nation.FarmDarkCrystalShard(50);
-            Nation.FarmTotemofNulgath(3);
-            Nation.FarmGemofNulgath(20);
-            Nation.FarmVoucher(false);
-            Nation.SwindleBulk(50);
-            Core.EnsureAccept(837, 4939);
-            Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
-            Core.EnsureComplete(837);
-        }
+        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.UngodlyReavers_of_Nulgath);
         // Scythe of Sisyphean - 
         Core.HuntMonster("dragonplane", "Wind Elemental", "Scythe of Sisyphean", isTemp: false);
         // Heart of the Void - 
@@ -88,7 +77,7 @@ public class VoidAvengerScythe
         // Dracolich Destroyer Scythe - 
         Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Scythe", isTemp: false);
         // Void Aura - 
-        NSOD.VoidAuras(15);
+        NSoD.VoidAuras(15);
         // Letter from Asuka and Tendou -    
         Core.HuntMonster("Citadel", "Burning Witch", "Letter from Asuka and Tendou", isTemp: false);
         Core.EnsureComplete(5025);

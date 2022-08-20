@@ -28,7 +28,10 @@ public class DoomwoodPart3
     public void StoryLine()
     {
         if (Core.isCompletedBefore(7653))
+        {
+            Core.Logger($"Story: Doomwood Part 3 - Complete");
             return;
+        }
 
         Story.PreLoad();
 

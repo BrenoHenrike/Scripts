@@ -19,7 +19,7 @@ public class Oddities
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(8667))
+        if (Core.isCompletedBefore(8667) || !Core.IsMember)
             return;
 
         Core.EquipClass(ClassType.Farm);

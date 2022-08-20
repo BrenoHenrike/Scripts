@@ -55,7 +55,7 @@ public class CoreHollowbornPaladin
 
         HB.HardcoreContract();
         HBShadowOfFate();
-        Farm.IcestormArena();
+        Farm.Experience();
 
         Core.AddDrop(PostSummoningItems);
         while (!Bot.ShouldExit && !Core.CheckInventory(PostSummoningItems))
@@ -77,7 +77,7 @@ public class CoreHollowbornPaladin
         Story.PreLoad();
 
         HB.HardcoreContract();
-        Farm.IcestormArena(75);
+        Farm.Experience(75);
 
         Core.AddDrop("Sparrow's Blood", "Brilliant Aura", "Gem of Superiority", "Condensed Mana", "Hollowborn Paladin");
         Core.EnsureAccept(7557);
@@ -116,7 +116,7 @@ public class CoreHollowbornPaladin
 
         HB.HardcoreContract();
         HBPaladin();
-        Farm.IcestormArena(85);
+        Farm.Experience(85);
 
         Core.AddDrop("Dark Aura Gem", "Enchantment Rune", "Shadow Dragon Soul", "Hollowborn Paladin Helmet");
         Core.EnsureAccept(7558);
@@ -163,7 +163,7 @@ public class CoreHollowbornPaladin
         HBPaladin();
         HBPaladinHelmet();
         ADG.AscendedGear("Ascended Light of Destiny");
-        Farm.IcestormArena(95);
+        Farm.Experience(95);
 
         Core.AddDrop("Undead Skull", "Hollowborn Shadow of Fate");
         Core.EnsureAccept(7559);

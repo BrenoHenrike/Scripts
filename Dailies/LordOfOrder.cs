@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 
 public class LordOfOrder
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();

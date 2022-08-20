@@ -5,7 +5,7 @@
 
 using Skua.Core.Interfaces;
 
-public class Example
+public class UnderGroundLab
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
 

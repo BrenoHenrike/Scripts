@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
+using Skua.Core.Models;
 using Skua.Core.Interfaces;
 
 public class CoreLegion
@@ -60,19 +61,13 @@ public class CoreLegion
         Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
         Adv.BestGear(GearBoost.Human);
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
+        Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.EnsureAccept(6248, 6249, 6251);
             Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6, log: false);
-            Core.EnsureComplete(6251);
-
-            while (!Bot.ShouldExit && Core.CheckInventory("Seraphic Medals", 5))
-                Core.ChainComplete(6248);
-            while (!Bot.ShouldExit && Core.CheckInventory("Mega Seraphic Medals", 3))
-                Core.ChainComplete(6249);
             Bot.Drops.Pickup("Dark Token");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DiamondTokenofDage(int quant = 300)
@@ -88,9 +83,9 @@ public class CoreLegion
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
+        Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -107,8 +102,6 @@ public class CoreLegion
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Adv.BestGear(GearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-
-            Core.EnsureComplete(4743);
             Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
             Core.Logger($"Completed x{i++}");
         }
@@ -176,14 +169,21 @@ public class CoreLegion
         if (Core.CheckInventory("Dage's Approval", quantApproval) && Core.CheckInventory("Dage's Favor", quantFavor))
             return;
 
-        Core.Logger($"Farming {quantApproval} Dage's Approval and {quantFavor} Dage's Favor");
-        Core.Unbank("Dage's Approval", "Dage's Favor");
+        Core.AddDrop("Dage's Approval", "Dage's Favor");
+
+        bool shouldLog = true;
+        if (quantApproval > 0 && quantFavor > 0)
+        {
+            Core.Logger($"Farming Dage's Approval ({Bot.Inventory.GetQuantity("Dage's Approval")}/{quantApproval}) " +
+                            $"and Dage's Favor ({Bot.Inventory.GetQuantity("Dage's Favor")}/{quantFavor})");
+            shouldLog = false;
+        }
+
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Undead);
-        if (quantApproval > 0)
-            Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false);
-        if (quantFavor > 0)
-            Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false);
+
+        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false, shouldLog);
+        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false, shouldLog);
     }
 
     public void BoneSigil(int quant = 1)
@@ -249,7 +249,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(5738);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -272,7 +272,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(3256);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -294,7 +294,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(3968, 3969);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -318,8 +318,8 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
-        Core.RegisterQuests(4704);
+        Core.FarmingLogger("Legion Token", quant);
+        Core.RegisterQuests(4704, 4703);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -355,7 +355,7 @@ public class CoreLegion
         else if (Core.CheckInventory("Paragon Ringbearer"))
             QuestID = 7073;
 
-        Core.Logger($"Farming Legion Tokens {Bot.Inventory.GetQuantity("Legion Token")}/{quant}");
+        Core.FarmingLogger("Legion Token", quant);
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
         Core.RegisterQuests(QuestID);
@@ -386,13 +386,12 @@ public class CoreLegion
                 return;
         }
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.EquipClass(ClassType.Solo);
-        Bot.Map.Jump("Boss", "Left");
         Core.RegisterQuests(6742, 6743);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            Core.HuntMonster("legionarena", "Legion Fiend Rider", "Axeros' Brooch");
+            Core.KillMonster("legionarena", "Boss", "Left", "Legion Fiend Rider", log: false);
 
         Core.CancelRegisteredQuests();
         Core.ToBank("Bone Sigil");
@@ -410,7 +409,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Human);
 
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.Join("dreadrock");
         Core.RegisterQuests(4849);
         Bot.Options.AggroMonsters = true;
@@ -433,7 +432,7 @@ public class CoreLegion
         Core.Join("dragonheart");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Dragonkin);
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4896);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -458,7 +457,7 @@ public class CoreLegion
         Core.Join("dragonheart");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Dragonkin);
-        Core.Logger($"Farming Legion Tokens {quant - Bot.Inventory.GetQuantity("Legion Token")}/{quant} Legion Tokens");
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4100);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -474,7 +473,7 @@ public class CoreLegion
 
         Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Legion Token");
+        Core.FarmingLogger("Legion Token", quant);
 
         Core.RegisterQuests(5741);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -494,9 +493,10 @@ public class CoreLegion
             return;
 
         Core.BuyItem("underworld", 215, "Undead Warrior");
-        bool? sellUW = Bot.ShowMessageBox(
+        DialogResult SellUW = Bot.ShowMessageBox(
                                 "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
-                                "Sell \"Undead Warrior\"?");
+                                "Sell \"Undead Warrior\"?",
+                                "Yes", "No");
 
         Core.AddDrop("Ravaged Champion Soul");
 
@@ -528,7 +528,7 @@ public class CoreLegion
         // Fail to the King
         Story.KillQuest(793, "prison", "King Alteon's Knight");
 
-        if (sellUW == true)
+        if (SellUW.Text == "Yes")
             Core.SellItem("Undead Warrior", all: true);
     }
 

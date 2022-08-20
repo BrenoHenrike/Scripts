@@ -36,7 +36,7 @@ public class FrostSpiritReaver
             if (!Core.CheckInventory("Favored of Kyanos"))
             {
                 Core.Logger("Farming the requirements to buy \"Favored of Kyanos\"");
-                Core.HuntMonster("IceDungeon", "Shade of Kyanos", "Warrior of Kyanos", isTemp: false);
+                Core.HuntMonster("icedungeon", "Shade of Kyanos", "Warrior of Kyanos", isTemp: false);
                 Tokens(25, 15, 10, 5);
 
                 Core.BuyItem("icedungeon", 1948, "Favored of Kyanos");
@@ -49,6 +49,7 @@ public class FrostSpiritReaver
 
         IceNinth(9);
         GlaceranAttunement(15);
+        Core.AddDrop("Frost SpiritReaver");
         Core.ChainComplete(7922);
         Bot.Wait.ForPickup("Frost SpiritReaver");
 
@@ -66,14 +67,13 @@ public class FrostSpiritReaver
 
         if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
         {
-            Core.Logger("Getting Quest Item Requirements for \"Cold Hearted\"");
+            Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
             Core.AddDrop("Flame of Courage");
+
+            Core.RegisterQuests(3955);
             while (!Bot.ShouldExit && !Core.CheckInventory("Flame of Courage", 25))
-            {
-                Core.EnsureAccept(3955);
                 Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage");
-                Core.EnsureComplete(3955);
-            }
+            Core.CancelRegisteredQuests();
 
             Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Fallen Scythe of Vengeance");
@@ -107,7 +107,7 @@ public class FrostSpiritReaver
         Core.EquipClass(ClassType.Solo);
         if (!Core.CheckInventory("IceBreaker Mage") && !Core.CheckInventory("FrostSlayer"))
         {
-            Core.Logger("Getting Quest Item Requirements for \"Cold Blooded\"");
+            Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
             Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", isTemp: false);
             Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
         }
@@ -117,7 +117,7 @@ public class FrostSpiritReaver
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100, isTemp: false);
-            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 20, isTemp: false);
+            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 2, isTemp: false);
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20, isTemp: false);
@@ -136,15 +136,14 @@ public class FrostSpiritReaver
             Core.FarmingLogger("Icy Token I", Token1);
             Core.EquipClass(ClassType.Farm);
 
-            Core.RegisterQuests(7840);
+            Core.RegisterQuests(7840, 7838);
             while (!Bot.ShouldExit && !Core.CheckInventory("Icy Token I", Token1))
             {
-                Core.EnsureAccept(7838);
                 Core.HuntMonster("icedungeon", "Frosted Banshee", "Frosted Banshee Defeated", 10, log: false);
                 Core.HuntMonster("icedungeon", "Frozen Undead", "Frozen Undead Defeated", 10, log: false);
                 Core.HuntMonster("icedungeon", "Ice Symbiote", "Ice Symbiote Defeated", 10, log: false);
-                Core.EnsureComplete(7838);
             }
+            Core.CancelRegisteredQuests();
         }
 
         if (!Core.CheckInventory("Icy Token II", Token2))

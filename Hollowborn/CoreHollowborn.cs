@@ -16,11 +16,11 @@ public class CoreHollowborn
 
     public void HardcoreContract()
     {
-        if (Core.CheckInventory("Lae\'s Hardcore Contract"))
+        if (Core.CheckInventory(55157))
             return;
 
         Core.AddDrop("Human Soul", "Fallen Soul", "Lae\'s Hardcore Contract");
-        Farm.IcestormArena(65);
+        Farm.Experience(65);
 
         Core.Logger("Getting Lae's Hardcore Contract");
         Core.EnsureAccept(7556);
@@ -60,13 +60,12 @@ public class CoreHollowborn
         Farm.Experience(50);
 
         Core.AddDrop("Unidentified 36", "Fresh Soul");
-
+        Core.RegisterQuests(7293);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Unidentified 36", Uni36Quant) || !Core.CheckInventory("Fresh Soul", FSQuant)))
         {
-            Core.EnsureAccept(7293);
             Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);
-            Core.EnsureComplete(7293);
             Bot.Wait.ForPickup("Fresh Soul");
         }
+        Core.CancelRegisteredQuests();
     }
 }

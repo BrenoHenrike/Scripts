@@ -16,7 +16,7 @@ public class CompleteTheReshaper
     {
         Core.SetOptions();
 
-        QOM.CompleteTheReshaper();
+        QOM.TheReshaper();
 
         Core.SetOptions(false);
     }

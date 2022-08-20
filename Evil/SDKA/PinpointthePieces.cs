@@ -8,7 +8,7 @@ using Skua.Core.Options;
 
 public class PinpointthePieces_Any
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
 

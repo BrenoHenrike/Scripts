@@ -20,7 +20,10 @@ public class AQWZombies
     public void Storyline()
     {
         if (Core.isCompletedBefore(2128))
+        {
+            Core.Logger($"Story: AQW Zombies - Complete");
             return;
+        }
 
         Story.PreLoad();
 

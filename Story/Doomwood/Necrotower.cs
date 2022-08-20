@@ -26,7 +26,7 @@ public class NecroTowerStory
     {
         if (Core.isCompletedBefore(1101))
         {
-            Core.Logger("Necrotower storyline has already been completed.");
+            Core.Logger($"Story: Necro Tower - Complete");
             return;
         }
 
@@ -99,7 +99,13 @@ public class NecroTowerStory
         Story.KillQuest(1085, "maul", "Creature Creation");
 
         //ID What You Did There (1087)
-        Story.KillQuest(1087, "necrotower", new[] { "Doomwood Treeant", "Slimeskull" });
+        if (!Story.QuestProgression(1087))
+        {
+            Core.EnsureAccept(1087);
+            Core.KillMonster("necrotower", "r2", "Left", "Doomwood Treeant", "Pain-per", 5);
+            Core.KillMonster("necrotower", "r2", "Left", "Slimeskull", "Toxic Goo", 5);
+            Core.EnsureComplete(1087);
+        }
 
         //The Ego and the ID (1088)
         Story.KillQuest(1088, "necrotower", new[] { "DoomWood Soldier", "DoomWood Soldier" });

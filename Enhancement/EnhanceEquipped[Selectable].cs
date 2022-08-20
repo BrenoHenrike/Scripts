@@ -6,7 +6,7 @@ using Skua.Core.Options;
 
 public class EnhanceEquippedSelect
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();

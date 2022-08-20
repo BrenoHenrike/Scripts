@@ -340,7 +340,7 @@ public class Core7DD
 
     public void Envy()
     {
-        if (Core.isCompletedBefore(6000))
+        if (Core.isCompletedBefore(6005))
             return;
 
         if (doAll)
@@ -401,21 +401,36 @@ public class Core7DD
 
         // Argo’s Not Stopping Us!
         Story.KillQuest(6000, "dragoncrown", "Argo");
+
+        //Defeat Ukki, The 1st Sentinel (6001)
+        Story.KillQuest(6001, "maloth", "Ukki");
+
+        //Defeat Kagan, The 2nd Guardian (6002)
+        Story.KillQuest(6002, "maloth", "Kagan");
+
+        //Defeat Golgar, The 3rd Guardian (6003)
+        Story.KillQuest(6003, "maloth", "Golgar");
+
+        //Hand over the Entry Code (6004)
+        Story.KillQuest(6004, "maloth", new[] { "Golgar", "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest" });
+
+        //Confront the Dragon King (6005)
+        Story.KillQuest(6005, "maloth", "Maloth");
     }
 
     public void Wrath()
     {
-        if (Core.isCompletedBefore(6120))
+        if (Core.isCompletedBefore(6170))
             return;
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Wrath");
         Story.PreLoad();
 
-        // Decimate the Horder
+        // Decimate the Horde
         Story.KillQuest(6110, "wrath", new[] { "Bone Terror", "Fishbones" });
 
-        // Douse the Flames
+        // Douse with Flames
         Story.KillQuest(6111, "wrath", "Dark Fire");
 
         // Grenades of AWE
@@ -459,5 +474,31 @@ public class Core7DD
 
         // Defeat Gorhorath!
         Story.KillQuest(6120, "wrath", "Gorgorath");
+
+        //Navigate the Maze (6163)
+        Story.MapItemQuest(6163, "dragonbone", 5587);
+        Story.KillQuest(6163, "dragonbone", new[] { "Bone Dragonling", "Dark Fire" });
+
+        //Get a Clue (6164)
+        Story.KillQuest(6164, "dragonbone", "Bone Terror");
+
+        //Heart of a Dracolich (6165)
+        Story.KillQuest(6165, "dragonbone", "Bone Wyvern");
+
+        //Open the Door (6166)
+        Story.MapItemQuest(6166, "dragonbone", 5588);
+
+        //Find the Jewel (6167)
+        Story.MapItemQuest(6167, "dragonbone", 5589);
+
+        //Get to the Lair (6168)
+        Story.MapItemQuest(6168, "dragonbone", 5590);
+
+        //Unlock the Door (6169)
+        Story.KillQuest(6169, "dragonbone", "Dragonshade");
+        Story.MapItemQuest(6169, "dragonbone", 5591);
+
+        //Slay Gorgorath (6170)
+        Story.KillQuest(6170, "dragonbone", "Gorgorath");
     }
 }

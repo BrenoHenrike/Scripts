@@ -7,7 +7,7 @@ using Skua.Core.Interfaces;
 
 public class ArchDoomKnight
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();

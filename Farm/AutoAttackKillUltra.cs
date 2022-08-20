@@ -6,7 +6,7 @@ using Skua.Core.Models.Monsters;
 
 public class AAKillUltra
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
 

@@ -5,7 +5,7 @@ using Skua.Core.Options;
 
 public class RVAArmy
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public string OptionsStorage = "RVAArmy";

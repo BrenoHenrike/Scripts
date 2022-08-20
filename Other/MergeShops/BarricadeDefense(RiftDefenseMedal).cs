@@ -24,11 +24,7 @@ public class BarricadeDefenseMerge
 
     public void GetItems()
     {
-        if (!Story.QuestProgression(5824))
-        {
-            QOM.TheRift();
-            QOM.CharredPath();
-        }
+        QOM.TheDestroyer();
 
         Core.AddDrop("Rift Defense Medal");
 

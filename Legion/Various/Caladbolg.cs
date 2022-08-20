@@ -1,0 +1,70 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Legion/CoreLegion.cs
+using Skua.Core.Interfaces;
+using Skua.Core.Options;
+
+public class Caladbogl
+{
+    public IScriptInterface Bot => IScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+    public CoreLegion Legion = new();
+    public CoreAdvanced Adv = new();
+
+    public List<IOption> Options = new()
+    {
+        new Option<bool>("other", "Other Rewards", "If True, the bot will also get the Dual Caladbogls and Caladboogly", false)
+    };
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        GetCaladbogl(Bot.Config.Get<bool>("other"));
+
+        Core.SetOptions(false);
+    }
+
+    public void GetCaladbogl(bool otherRewards = true)
+    {
+        string[] target = otherRewards ? new[] { "Caladbogl", "Caladboogly", "Dual Caladbolgs" } : new[] { "Caladbogl" };
+        if (Core.CheckInventory(target))
+            return;
+
+        if (!Core.CheckInventory("Altar Of Caladbogl"))
+            Core.Logger("This bot requiers you to have a \"Altar Of Caladbogl\". Stopping the bot.", messageBox: true, stopBot: true);
+
+        if (!Core.CheckInventory("Legion Titan"))
+        {
+            if (!Core.CheckInventory("Essence of the Undead Legend"))
+                Core.Logger("This bot requiers you to have a \"Essence of the Undead Legend\" (Seasonal - March). Stopping the bot.", messageBox: true, stopBot: true);
+
+            if (!Core.CheckInventory("Undead Legend"))
+            {
+                if (!Core.CheckInventory("Undead Legion Overlord"))
+                {
+                    Legion.FarmLegionToken(300);
+                    Adv.BuyItem("underworld", 238, "Undead Legion Overlord");
+                }
+
+                Legion.FarmLegionToken(200);
+                Adv.BuyItem("underworld", 238, "Undead Legend");
+            }
+
+            Adv.BuyItem("underworld", 238, "Legion Titan");
+        }
+
+        Core.AddDrop(Core.EnsureLoad(Core.CheckInventory(11953) ? 1960 : 3419).Rewards.Select(x => x.Name).ToArray());
+
+        Core.RegisterQuests((Core.CheckInventory(11953) ? 1960 : 3419));
+        while (!Bot.ShouldExit && !Core.CheckInventory(target))
+        {
+            Legion.FarmLegionToken(5);
+            Core.HuntMonster("underworld", "Dark Makai", "Soul Shard");
+        }
+        Core.CancelRegisteredQuests();
+    }
+}

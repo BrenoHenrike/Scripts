@@ -34,7 +34,7 @@ public class BeachPartyTokenItems
             Core.KillMonster("beachparty", "r3", "Left", "*", "Tiki Tokens", 5, false);
             Bot.Sleep(Core.ActionDelay);
         }
-        Core.RegisterQuests();
+        Core.CancelRegisteredQuests();
         Core.ToBank(rewards);
     }
 }

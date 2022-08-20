@@ -9,10 +9,16 @@
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Story/Yokai.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Other/Classes/DragonShinobi.cs
+//cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class FarmerJoeOutfit
 {
@@ -22,8 +28,18 @@ public class FarmerJoeOutfit
     public CoreFarms Farm = new();
     public HollowbornScythe Scythe = new();
     public EternalInversionist EI = new();
-    public project InvEn = new();
+    public InventoryEnhancer InvEn = new();
     public ArchPaladin AP = new();
+    public DragonShinobi DS = new();
+    public CapeOfAwe COA = new();
+
+    public string OptionsStorage = "FarmerJoePet";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new List<IOption>()
+    {
+        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -36,32 +52,60 @@ public class FarmerJoeOutfit
 
     public void Outfit()
     {
+        if (!Bot.Config.Get<bool>("SkipOption"))
+            Bot.Config.Configure();
+
+        //Pre-Farm Enh
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
+        InvEn.EnhanceInventory();
+        Farm.BladeofAweREP(6, true);
+
+        //Easy Difficulty Stuff
         RagsandHat();
         ServersAreDown();
         Farm.Experience(50);
-        Farm.BladeofAweREP(6, true);
-
         Adv.EnhanceEquipped(EnhancementType.Lucky);
-        Core.Logger("Aquiring Eternal Inversionist");
+
+        //Medium Difficulty Stuff
+        DS.GetDSS();
         EI.GetEI();
         AP.GetAP();
+        COA.GetCoA();
+        Farm.Experience(80);
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
 
+        //Hard Difficulty Stuff
+        Scythe.GetHBReapersScythe();
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
         Farm.Experience();
 
-        if (!Core.CheckInventory("Hollowborn Reaper's Scythe"))
-        {
-            Core.Logger("Aquiring Hollowborn Reaper's Scythe");
-            Scythe.GetHBReapersScythe();
-            Adv.EnhanceEquipped(EnhancementType.Lucky);
-        }
-        // DeathsScythe();
-        // BackItem();
-        // Pet();
+        //Extra Stuff
+        Pets();
 
         Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
 
         Core.Logger("We are farmers, bum ba dum bum bum bum bum");
 
+    }
+
+    public void Pets()
+    {
+        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.None)
+            return;
+
+        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))
+        {
+            Core.HuntMonster("battleundere", "Hot Mama", "Hot Mama", isTemp: false);
+            Bot.Wait.ForPickup("Hot Mama");
+            Core.Equip("Hot Mama");
+        }
+
+        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.Akriloth && !Core.CheckInventory("Akriloth Pet"))
+        {
+            Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false);
+            Bot.Wait.ForPickup("Akriloth Pet");
+            Core.Equip("Akriloth Pet");
+        }
     }
 
     public void RagsandHat()
@@ -73,8 +117,10 @@ public class FarmerJoeOutfit
 
         Adv.BuyItem("yulgar", 41, "Peasant Rags");
         Bot.Wait.ForPickup("Peasant Rags");
+        Core.Equip("Peasant Rags");
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
         Bot.Wait.ForPickup("Scarecrow Hat");
+        Core.Equip("Scarecrow Hat");
     }
 
     public void ServersAreDown()
@@ -85,24 +131,13 @@ public class FarmerJoeOutfit
         Core.Logger("Farming Servers Are Down Sign");
         Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false);
         Bot.Wait.ForPickup("The Server is Down");
+        Core.Equip("The Server is Down");
     }
 
-    // public void DeathsScythe()
-    // {
-
-    //     if (Core.CheckInventory(25117))
-    //         return;
-
-
-    //     while (!Bot.ShouldExit && !Core.CheckInventory(25117))
-    //         Bot.Hunt.Monster("Death");
-    // }
-
-    // public void Pet()
-    // {
-    //     if (Core.CheckInventory("item"))
-    //         return;
-
-    // }
-
+    public enum PetChoice
+    {
+        None,
+        HotMama,
+        Akriloth
+    };
 }

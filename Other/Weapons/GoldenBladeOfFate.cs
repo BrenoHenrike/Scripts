@@ -59,10 +59,16 @@ public class GoldenBladeOfFate
             Story.KillQuest(5677, "cellar", "GreenRat");
 
             // Doom... Or Redemption?
-            Story.KillQuest(5678, "sepulchure", "Dark Sepulchure");
-        }
+            if (!Story.QuestProgression(5678))
+            {
+                Core.EnsureAccept(5678);
+                if (!Core.CheckInventory(54131))
+                    Core.HuntMonster("sepulchure", "Dark Sepulchure");
+                Core.EnsureComplete(5678);
+            }
 
-        Story.MapItemQuest(5679, "yulgar", 5145);
-        Bot.Wait.ForPickup("Golden Blade of Fate");
+            Story.MapItemQuest(5679, "yulgar", 5145);
+            Bot.Wait.ForPickup("Golden Blade of Fate");
+        }
     }
 }

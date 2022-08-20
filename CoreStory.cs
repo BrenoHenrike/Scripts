@@ -208,12 +208,22 @@ public class CoreStory
             if (timeout > 15)
             {
                 int currentValue = Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
-                string message = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
+                if (QuestData.Value - currentValue <= 2)
+                {
+                    string message1 = $"A server/client desync happened (common) for your quest progress, the bot cannot continue.|" +
+                                        "Please relog and restart the bot in order to continue.|" +
+                                        "Once Skua is out this popup will be replaced with a automatic relog.|" +
+                                        "No report is neccessary at this time.";
+                    Core.Logger(message1.Replace("|", " "));
+                    Bot.ShowMessageBox(message1.Replace("|", "\n"), "Quest not unlocked", "OK");
+                    Bot.Stop(true);
+                }
+                string message2 = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
                                  $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
                                   "Please fill in the Skua Scripts Form to report this.|" +
                                   "Do you wish to be brought to the form?";
-                Core.Logger(message.Replace("|", " "));
-                if (Bot.ShowMessageBox(message.Replace("|", "\n"), "Quest not unlocked") == true)
+                Core.Logger(message2.Replace("|", " "));
+                if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked") == true)
                 {
                     string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
                     Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
@@ -252,7 +262,7 @@ public class CoreStory
             foreach (ItemBase Item in Rewards)
                 Core.AddDrop(Item.Name);
 
-        Core.Logger($"Doing Quest: [{QuestID}] \"{QuestData.Name}\"");
+        Core.Logger($"Doing Quest: [{QuestID}] - \"{QuestData.Name}\"");
         Core.EquipClass(ClassType.Solo);
         PreviousQuestState = false;
         return false;

@@ -16,7 +16,7 @@ public class CompleteTheNewWorld
     {
         Core.SetOptions();
 
-        QOM.CompleteSwordhavenTheNewWorld();
+        QOM.SwordhavenTheNewWorld();
 
         Core.SetOptions(false);
     }

@@ -179,9 +179,7 @@ public class CoreNation
                 Core.EnsureAccept(6183);
             else
                 Core.EnsureAccept(6697);
-            Bot.Options.AttackWithoutTarget = true;
-            Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5, log: false);
-            Bot.Options.AttackWithoutTarget = false;
+            Core.HuntMonsterMapID("mobius", 10, "Slugfit Horn", 5, log: false);
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3, log: false);
             Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
@@ -246,15 +244,20 @@ public class CoreNation
         if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
             return;
 
-        Core.Logger($"Farming {quantApproval} Nulgath's Approval and {quantFavor} Archfiend's Favor");
         Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
+
+        bool shouldLog = true;
+        if (quantApproval > 0 && quantFavor > 0)
+        {
+            Core.Logger($"Farming Nulgath's Approval ({Bot.Inventory.GetQuantity("Nulgath's Approval")}/{quantApproval}) " +
+                            $"and Archfiend's Favor ({Bot.Inventory.GetQuantity("Archfiend's Favor")}/{quantFavor})");
+            shouldLog = false;
+        }
+
         Core.EquipClass(ClassType.Farm);
 
-        if (quantApproval > 0)
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false, log: false);
-        if (quantFavor > 0)
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, log: false);
-        Core.Logger($"Finished");
+        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false, shouldLog);
+        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, shouldLog);
     }
 
 
@@ -481,7 +484,7 @@ public class CoreNation
             Core.AddDrop(item);
         else
             Core.AddDrop(bagDrops);
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
         Bot.Quests.UpdateQuest(847);
         Core.RegisterQuests(2566);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -529,14 +532,12 @@ public class CoreNation
                 rPDSuni = new[] { Uni()[1], Uni()[6], Uni()[9], Uni()[16], Uni()[20] };
                 Core.AddDrop(rPDSuni);
                 Core.AddDrop("Blood Gem of Nulgath");
-                Core.RegisterQuests(7551);
+                Core.RegisterQuests();
             }
-            Core.Logger($"Farming {quant} {item}");
-            int i = 1;
-
+            Core.FarmingLogger(item, quant);
+            Core.RegisterQuests(returnPolicyDuringSupplies ? new[] { 2857, 7551 } : new[] { 2857 });
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                Core.EnsureAccept(2857);
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
                 {
                     if (Core.IsMember)
@@ -544,7 +545,6 @@ public class CoreNation
                     Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune", log: false);
                 }
                 Core.KillEscherion("Relic of Chaos", publicRoom: true);
-                Core.EnsureComplete(2857);
 
                 Bot.Drops.Pickup(item);
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
@@ -552,13 +552,11 @@ public class CoreNation
                     Bot.Drops.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
                 }
-                Core.Logger($"Completed x{i++}");
                 if (Bot.Inventory.IsMaxStack(item))
                     Core.Logger("Max Stack Hit.");
                 else Core.Logger($"item: {Bot.Inventory.GetQuantity(item)}/{quant}");
             }
-            if (returnPolicyDuringSupplies)
-                Core.CancelRegisteredQuests();
+            Core.CancelRegisteredQuests();
         }
     }
 
@@ -602,7 +600,7 @@ public class CoreNation
             }
         }
 
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
         if (farmGold)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -644,24 +642,24 @@ public class CoreNation
         if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
             sellMemVoucher = _sellMemVoucher;
 
-        bool OBoNPet = (Core.CheckInventory("Oblivion Blade of Nulgath")
+        bool OBoNPet = (Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
 
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
             Core.AddDrop("Tainted Soul");
 
         Core.EquipClass(ClassType.Solo);
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.RegisterQuests(2857, 609);
-            if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+            if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)") && Core.IsMember)
                 Core.RegisterQuests(599);
             else if (OBoNPet)
                 Core.RegisterQuests(2561);
 
-            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", "Tainted Core", 10, false, log: false);
+            Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Core", 10, false, log: false);
             if (Bot.Inventory.IsMaxStack(item))
                 Core.Logger("Max Stack Hit.");
             else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
@@ -844,6 +842,7 @@ public class CoreNation
             while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
+        BloodyChaos(quant);
         KisstheVoid(quant);
     }
 
@@ -880,6 +879,29 @@ public class CoreNation
         BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+    }
+
+    /// <summary>
+    /// Do Bloody Chaos quest for Blood Gems
+    /// </summary>
+    /// <param name="quant">Desired quantity, 100 = max stack</param>
+    public void BloodyChaos(int quant = 100)
+    {
+        if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
+            return;
+
+        Core.AddDrop("Blood Gem of the Archfiend");
+        Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
+        Core.RegisterQuests(7816);
+        Bot.Quests.UpdateQuest(363);
+        Core.EquipClass(ClassType.Solo);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem Of The Archfiend", quant))
+        {
+            Core.KillEscherion("Escherion's Helm", isTemp: false);
+            Core.KillVath("Shattered Legendary Sword of Dragon Control", isTemp: false);
+            Core.HuntMonster("hydrachallenge", "Hydra Head 85", "Hydra Scale Piece", 200, false);
+        }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>

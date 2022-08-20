@@ -16,7 +16,7 @@ public class CompleteTheDestroyer
     {
         Core.SetOptions();
 
-        QOM.CompleteTheDestroyer();
+        QOM.TheDestroyer();
 
         Core.SetOptions(false);
     }

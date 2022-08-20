@@ -6,11 +6,10 @@ using Skua.Core.Options;
 
 public class BlacksmithingREP
 {
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
-
-
 
     public bool DontPreconfigure = false;
 
@@ -29,7 +28,7 @@ public class BlacksmithingREP
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
         Adv.BestGear(GearBoost.rep);
-        Farm.BlacksmithingREP(10, bot.Config.Get<bool>("UseGold"));
+        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
 
         Core.SetOptions(false);
     }

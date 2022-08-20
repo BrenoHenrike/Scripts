@@ -14,7 +14,7 @@ using Skua.Core.Interfaces;
 
 public class FarmAllDailys
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public LordOfOrder LOO = new();

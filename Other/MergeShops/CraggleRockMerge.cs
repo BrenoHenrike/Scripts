@@ -77,6 +77,7 @@ public class CraggleRockMerge
                         Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Dark Bloodstone":
@@ -88,6 +89,7 @@ public class CraggleRockMerge
                         Core.HuntMonster("safiria", "Blood Maggot", "Blood Gem", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Butterfly Sapphire":
@@ -99,6 +101,7 @@ public class CraggleRockMerge
                         Core.HuntMonster("bloodtusk", "Trollola Plant", "Butterfly Bloom", 15);
                         Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Understone":
@@ -110,6 +113,7 @@ public class CraggleRockMerge
                         Core.KillMonster("battleunderc", "Enter", "Spawn", "*", "Fluorite Shard", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Rainbow Moonstone":
@@ -124,6 +128,7 @@ public class CraggleRockMerge
                         Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
                         Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
             }
         }

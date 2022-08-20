@@ -5,7 +5,7 @@ using Skua.Core.Interfaces;
 
 public class SmartEnhance
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();

@@ -121,6 +121,8 @@ public class CoreAstravia
         if (Core.isCompletedBefore(8000))
             return;
 
+        Eridani();
+
         //Preload Quests
         Story.PreLoad();
 
@@ -164,6 +166,8 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8256))
             return;
+
+        Astravia();
 
         //Preload Quests
         Story.PreLoad();
@@ -284,6 +288,8 @@ public class CoreAstravia
         if (Core.isCompletedBefore(8530))
             return;
 
+        AstraviaJudgement();
+
         //Preload Quests
         Story.PreLoad();
 
@@ -336,6 +342,8 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8601))
             return;
+
+        EridaniPast();
 
         //Preload Quests
         Story.PreLoad();
@@ -426,6 +434,8 @@ public class CoreAstravia
         if (Core.isCompletedBefore(8687))
             return;
 
+        FirstObservatory();
+
         Story.PreLoad();
 
         //The Fool 8678
@@ -464,6 +474,8 @@ public class CoreAstravia
     {
         if (Core.isCompletedBefore(8733))
             return;
+
+        GenesisGarden();
 
         Story.PreLoad();
 

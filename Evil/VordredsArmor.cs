@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 
 public class VordredArmor
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();

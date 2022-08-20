@@ -7,7 +7,7 @@ public class CoreQOM
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
     public CoreFarms Farm = new CoreFarms();
 
     public void ScriptMain(IScriptInterface bot)
@@ -17,74 +17,21 @@ public class CoreQOM
 
     public void CompleteEverything()
     {
-        //Preload Quests
-        Story.PreLoad();
-
-        CompleteCelestialRealmATheftofLight();
-        CompleteDoomwoodPaladinsTrial();
-        CompleteDarkoviaDarkDiaspora();
-        CompleteShadowfallDarknessRising();
-        CompleteSwordhavenTheNewWorld();
-        CompleteTheDestroyer();
-        CompleteTheReshaper();
+        aTheftofLight();
+        DoomwoodPaladinsTrial();
+        DarkoviaDarkDiaspora();
+        ShadowfallDarknessRising();
+        SwordhavenTheNewWorld();
+        TheDestroyer();
+        TheReshaper();
+        TheBook();
+        TheQueensSecrets();
     }
 
-    public void CompleteCelestialRealmATheftofLight()
-    {
-        CelestialRealm();
-        LostRuins();
-        LostRuinsWar();
-        InfernalSpire();
-    }
-
-    public void CompleteDoomwoodPaladinsTrial()
-    {
-        DoomPally();
-    }
-
-    public void CompleteDarkoviaDarkDiaspora()
-    {
-        DarkoviaInvasion();
-        SafiriaInvasion();
-        LycanInvasion();
-        SafiriaInvasion2();
-    }
-
-    public void CompleteShadowfallDarknessRising()
-    {
-        ShadowfallInvasion();
-    }
-
-    public void CompleteSwordhavenTheNewWorld()
-    {
-        CastleInvasion();
-    }
-
-    public void CompleteTheDestroyer()
-    {
-        TheRift();
-        CharredPath();
-        Underglade();
-        Extriki();
-    }
-
-    public void CompleteTheReshaper()
-    {
-        Pilgrimage();
-        GuardianTree();
-        TwistedCaverns();
-        BrokenWoods();
-        Kolyaban();
-    }
-
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 1 Celestial Realm: A Theft of Light
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void CelestialRealm()
+    public void aTheftofLight()
     {
         //Progress Check
-        if (Core.isCompletedBefore(4499))
+        if (Core.isCompletedBefore(5387))
             return;
 
         //Preload Quests
@@ -111,16 +58,6 @@ public class CoreQOM
 
         //Reveal the Portal!
         Story.MapItemQuest(4499, "celestialrealm", 3693);
-    }
-
-    public void LostRuins()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(4507))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Investigate the Ruins
         Story.MapItemQuest(4500, "lostruins", 3694, 3);
@@ -177,16 +114,6 @@ public class CoreQOM
         //Defeat the Infernal Warlord
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4507, "lostruins", "Infernal Warlord");
-    }
-
-    public void LostRuinsWar()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(4508))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Celestial Realm at War
         Story.KillQuest(4509, "lostruinswar", "Infernal Imp");
@@ -194,16 +121,6 @@ public class CoreQOM
         //Defeat the Diabolical Warlord!
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4508, "lostruinswar", "Diabolical Warlord");
-    }
-
-    public void InfernalSpire()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(5387))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Infernal Destruction
         Story.KillQuest(5374, "infernalspire", new[] { "Fallen Knight", "Underworld Hound" });
@@ -260,12 +177,14 @@ public class CoreQOM
         Story.KillQuest(5387, "infernalspire", "Malxas");
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 2 Doomwood: Paladin's Trial
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void DoomPally()
+    public void DoomwoodPaladinsTrial()
     {
+        //Progress Check
+        if (Core.isCompletedBefore(5416))
+            return;
+
+        //Preload Quests
+        Story.PreLoad();
 
         //A New Recruit
         if (!Story.QuestProgression(5404))
@@ -317,13 +236,8 @@ public class CoreQOM
         Story.KillQuest(5416, "doompally", "Skeletal Subjugator");
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 3 Darkovia: Dark Diaspora
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void DarkoviaInvasion()
+    public void DarkoviaDarkDiaspora()
     {
-
         //Progress Check
         if (Core.isCompletedBefore(5503))
             return;
@@ -342,17 +256,6 @@ public class CoreQOM
 
         //Undead Investigation
         Story.MapItemQuest(5490, "SafiriaInvasion", 4904);
-    }
-
-    public void SafiriaInvasion()
-    {
-
-        //Progress Check
-        if (Core.isCompletedBefore(5496))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //What We Need Is A Big Can Of Raid
         Story.KillQuest(5491, "SafiriaInvasion", new[] { "Fallen Knight", "Infernal Knight" });
@@ -373,17 +276,6 @@ public class CoreQOM
 
         //I'm Not Lycan This Situation
         Story.MapItemQuest(5496, "LycanInvasion", 4900);
-    }
-
-    public void LycanInvasion()
-    {
-
-        //Progress Check
-        if (Core.isCompletedBefore(5500))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //The Best Way To Slay An Infernal
         Story.KillQuest(5497, "LycanInvasion", new[] { "Fallen Knight", "Infernal Knight" });
@@ -396,19 +288,7 @@ public class CoreQOM
         Story.MapItemQuest(5499, "LycanInvasion", 4903, 6);
 
         //Lord Balax'el
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5500, "LycanInvasion", "Lord Balax'el");
-    }
-
-    public void SafiriaInvasion2()
-    {
-
-        //Progress Check
-        if (Core.isCompletedBefore(5503))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Follow Lady Solani
         Story.MapItemQuest(5501, "SafiriaInvasion", 4902);
@@ -418,17 +298,11 @@ public class CoreQOM
         Story.KillQuest(5502, "SafiriaInvasion", new[] { "Revenant", "Shadow Imp" });
 
         //Noddharath
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5503, "SafiriaInvasion", "Noddharath");
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 4 Shadowfall: Darkness Rising
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void ShadowfallInvasion()
+    public void ShadowfallDarknessRising()
     {
-
         //Progress Check
         if (Core.isCompletedBefore(5557))
             return;
@@ -484,11 +358,7 @@ public class CoreQOM
         Story.KillQuest(5557, "ShadowfallInvasion", "Lord Balax'el");
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 5 Swordhaven: The New World
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void CastleInvasion()
+    public void SwordhavenTheNewWorld()
     {
         //Progress Check
         if (Core.isCompletedBefore(5586))
@@ -543,30 +413,19 @@ public class CoreQOM
         Story.KillQuest(5586, "CastleInvasion", "Lord Balax'el");
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 6 The Destroyer
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void TheRift()
+    public void TheDestroyer()
     {
-        if (Core.isCompletedBefore(5791))
+        if (Core.isCompletedBefore(5847))
             return;
-
-        //What Happened to Baldric?
-        Story.MapItemQuest(5791, "therift", 5228);
-    }
-
-    public void CharredPath()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(5836))
-            return;
-
-        //Quests Here Bug Out So This is Needed.
-        Core.AcceptandCompleteTries = 3;
 
         //Preload Quests
         Story.PreLoad();
+
+        //What Happened to Baldric?
+        Story.MapItemQuest(5791, "therift", 5228);
+
+        //Quests Here Bug Out So This is Needed.
+        Core.AcceptandCompleteTries = 3;
 
         //Get a Monitor
         Story.MapItemQuest(5803, "charredpath", 5248);
@@ -662,19 +521,6 @@ public class CoreQOM
 
         //Make a Bed
         Story.KillQuest(5836, "charredpath", "Pustulisk");
-    }
-
-    public void Underglade()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(5846))
-            return;
-
-        //Quests Here Bug Out So This is Needed.
-        Core.AcceptandCompleteTries = 3;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Talk to Ravinos
         Story.MapItemQuest(5837, "underglade", 5271);
@@ -706,25 +552,16 @@ public class CoreQOM
         Story.KillQuest(5845, "underglade", "Gemstone Elemental");
 
         //The Heart of the Glade
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5846, "underglade", "Lunamoss");
-    }
 
-    public void Extriki()
-    {
         //Defeat Extriki
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5847, "extriki", "Extriki");
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-    // 7 The Reshaper
-    // ------------------------------------------------------------------------------------------------------------------------------ //
-
-    public void Pilgrimage()
+    public void TheReshaper()
     {
         //Progress Check
-        if (Core.isCompletedBefore(5855))
+        if (Core.isCompletedBefore(5877))
             return;
 
         //Preload Quests
@@ -754,16 +591,6 @@ public class CoreQOM
 
         //Bad Dog
         Story.KillQuest(5855, "Pilgrimage", "Lucky");
-    }
-
-    public void GuardianTree()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(6286))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Connect to the Earth
         Story.MapItemQuest(6276, "guardiantree", 5769, 5);
@@ -812,16 +639,6 @@ public class CoreQOM
 
         //Take Down Terrane
         Story.KillQuest(6286, "guardiantree", "Terrane");
-    }
-
-    public void TwistedCaverns()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(5864))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Explore the Cavern
         Story.MapItemQuest(5856, "TwistedCavern", 5293);
@@ -859,16 +676,6 @@ public class CoreQOM
         //Defeat the Golem
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5864, "TwistedCavern", "Lore Golem");
-    }
-
-    public void BrokenWoods()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(5873))
-            return;
-
-        //Preload Quests
-        Story.PreLoad();
 
         //Time for a Dose
         Story.KillQuest(5866, "BrokenWoods", new[] { "Urstrix", "SpiderWing" });
@@ -910,17 +717,7 @@ public class CoreQOM
         }
 
         //Smash the Hive
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5873, "BrokenWoods", "Hive");
-    }
-
-    public void Kolyaban()
-    {
-        //Progress Check
-        if (Core.isCompletedBefore(5877))
-            return;
-
-        //Preload Quests
         Story.PreLoad();
 
         //Acolyte's Medallions
@@ -932,10 +729,202 @@ public class CoreQOM
         }
 
         //Let's Hope This Works
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5876, "Kolyaban", "Twisted Aria");
 
         //Defeat Kolyaban
         Story.KillQuest(5877, "Kolyaban", "Kolyaban");
+    }
+
+    public void TheBook()
+    {
+        if (Core.isCompletedBefore(8080))
+            return;
+
+        Story.PreLoad();
+
+        //8048 | Time to Study
+        Story.KillQuest(8048, "forestreach", new[] { "Monstrous Imp", "Eldritch Parasite" });
+
+        //8049 | Calm Them Down
+        Story.KillQuest(8049, "forestreach", "Chaos Spitter");
+
+        //8050 | Get the Reagents
+        Story.KillQuest(8050, "forestreach", "Chaos Sp-eye");
+        Story.MapItemQuest(8050, "forestreach", 8362, 5);
+
+        //8051 | Samples for Comparison
+        Story.KillQuest(8051, "forestreach", "Chaos Spitter");
+        Story.MapItemQuest(8051, "forestreach", 8363, 5);
+
+        //8052 | More Testing Required
+        Story.KillQuest(8052, "forestreach", new[] { "EldritchWing", "Chaos Sp-eye" });
+
+        //8053 | Tidy Up
+        Story.KillQuest(8053, "forestreach", new[] { "Eldritch Parasite", "Monstrous Imp" });
+
+        //8054 | We Need Neutralizer
+        Story.KillQuest(8054, "forestreach", new[] { "Chaos Spitter", "Chaos Sp-eye" });
+
+        //8055 | Neutralize 'Em
+        Story.MapItemQuest(8055, "forestreach", 8364, 5);
+
+        //8056 | Vermin Clearing
+        Story.KillQuest(8056, "backroom", "Chaos Rat");
+
+        //8057 | Find the Book
+        Story.MapItemQuest(8057, "backroom", 8365);
+
+        //8058 | Get the Key
+        Story.KillQuest(8058, "backroom", "Chaos Rat");
+
+        //8059 | Get the Book
+        Story.MapItemQuest(8059, "backroom", 8366);
+
+        //8060 | It's a Book Wyrm!
+        Story.KillQuest(8060, "backroom", "Book Wyrm");
+
+        //8067 | The Eye of the Beholder
+        Story.KillQuest(8067, "deepforest", "Creeping Gaze");
+
+        //8068 | The Double - Edged Sword
+        Story.KillQuest(8068, "deepforest", "Eldritch Stalker");
+
+        //8069 | So Ichor - y
+        Story.KillQuest(8069, "deepforest", "Terrarsite");
+
+        //8070 | Reveal the Words
+        Story.MapItemQuest(8070, "deepforest", 8415);
+
+        //8071 | Shining Time
+        Story.KillQuest(8071, "deepforest", "Deep Truffle");
+
+        //8072 | Light the Way
+        Story.MapItemQuest(8072, "deepforest", 8416, 8);
+
+        //8073 | Chaos Gathers
+        Story.KillQuest(8073, "deepforest", "Creeping Gaze");
+
+        //8074 | Hold your Breath
+        Story.KillQuest(8074, "deepforest", "Terrarsite");
+
+        //8075 | Disperse the Mist
+        Story.MapItemQuest(8075, "deepforest", 8418, 8);
+
+        //8076 | Monsters in the Mist
+        Story.KillQuest(8076, "deepforest", "Deep Truffle");
+
+        //8077 | Truffle Hunting
+        Story.KillQuest(8077, "deepforest", "Deep Truffle");
+
+        //8078 | Bribe 'Em All
+        Story.KillQuest(8078, "deepforest", "Cthulhoid");
+
+        //8079 | Heading Back Home
+        Story.MapItemQuest(8079, "deepforest", 8419, 4);
+        Story.MapItemQuest(8079, "deepforest", 8420, 1);
+
+        //8080 | The Aberration
+        Story.KillQuest(8080, "deepforest", "Aberrant Horror");
+    }
+
+    public void TheQueensSecrets()
+    {
+        if (Core.isCompletedBefore(8107))
+            return;
+
+        Story.PreLoad();
+
+        //8083 | Crystal Tears
+        Story.KillQuest(8083, "transformation", "Monstrite");
+
+        //8084 | That Which Grows
+        Story.KillQuest(8084, "transformation", "Chaos Spitter");
+
+        //8085 | That Which Flies
+        Story.KillQuest(8085, "transformation", "Tentastrike");
+
+        //8086 | That Which Flames
+        Story.KillQuest(8086, "transformation", "Tentaflame");
+
+        //8087 | A Caustic Oil
+        Story.KillQuest(8087, "transformation", "Chaos Spitter");
+
+        //8088 | Tools of the Trade
+        if (!Story.QuestProgression(8088))
+        {
+            Core.EnsureAccept(8088);
+            Core.HuntMonster("transformation", "Monstrite", "Mortar Stone");
+            Core.HuntMonster("transformation", "Monstrite", "Pestle Stone");
+            Core.EnsureComplete(8088);
+        }
+
+        //8089 | Burn it!
+        Story.MapItemQuest(8089, "transformation", 8435);
+        Story.MapItemQuest(8089, "transformation", 8436);
+        Story.MapItemQuest(8089, "transformation", 8437, AutoCompleteQuest: false);
+
+        //8090 | Find the Tributes
+        Story.KillQuest(8090, "transformation", "Deep Tunneler");
+
+        //8091 | Compare the Crystal
+        Story.KillQuest(8091, "transformation", "Monstrite");
+
+        //8092 | Acid and Scratch Test
+        Story.KillQuest(8092, "transformation", new[] { "Tentastrike", "Deep Tunneler" });
+
+        //8093 | The Largest Monstrite
+        Story.KillQuest(8093, "transformation", "Eldritch Abomination");
+
+        //8094 | Tame the Queen
+        Story.KillQuest(8094, "transformation", "Queen of Monsters");
+
+        //8096 | Worms of Earth
+        Story.KillQuest(8096, "downbelow", "Earthwyrm");
+
+        //8097 | Find the Trail
+        Story.KillQuest(8097, "downbelow", "Rumbling Rubble");
+
+        //8098 | Open the Way
+        Story.KillQuest(8098, "downbelow", "Monstrous Flame");
+        Story.MapItemQuest(8098, "downbelow", 8491);
+
+        //8099 | Follow the Trail
+        Story.MapItemQuest(8099, "downbelow", 8492);
+        Story.KillQuest(8099, "downbelow", "Earthwyrm");
+
+        //8100 | Tentarachnid Horde
+        Story.KillQuest(8100, "downbelow", "Tentarachnid");
+
+        //8101 | The Shadows
+        Story.KillQuest(8101, "downbelow", "Creeping Shadow");
+
+        //8102 | Keep up the Search
+        Story.MapItemQuest(8102, "downbelow", 8493);
+        Story.KillQuest(8102, "downbelow", "Creeping Shadow");
+
+        //8103 | Defeat the Guardian
+        Story.KillQuest(8103, "downbelow", "Guardian Golem");
+
+        //8104 | Wall of Rage
+        Story.MapItemQuest(8104, "downbelow", 8494);
+        Story.KillQuest(8104, "downbelow", "Living Rage");
+
+        //8105 | Through the Fire
+        Story.KillQuest(8105, "downbelow", "Living Rage");
+        Story.MapItemQuest(8105, "downbelow", 8495);
+
+        //8106 | Heart of the Power
+        Story.KillQuest(8106, "downbelow", "Anka");
+
+        //8107 | Undying Rage
+        if (!Story.QuestProgression(8107))
+        {
+            Core.EnsureAccept(8107);
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("downbelow", "Enter", "Spawn", "Earthwyrm", "Anka's Followers Slain", 1000, false);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("downbelow", "Anka", "Soul of Vengeance", 25, false);
+            Core.EnsureComplete(8107);
+        }
     }
 }

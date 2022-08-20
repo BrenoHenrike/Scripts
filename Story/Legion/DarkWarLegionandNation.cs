@@ -79,8 +79,8 @@ public class DarkWarLegionandNation
         Story.KillQuest(8571, "dagerecruit", "Funa-yurei");
 
         // Covering Our Scent
-        Story.KillQuest(8572, "darkwarlegion", "Funa-yurei");
-        Story.MapItemQuest(8572, "darkwarlegion", 9888, 4);
+        Story.KillQuest(8572, "dagerecruit", "Funa-yurei");
+        Story.MapItemQuest(8572, "dagerecruit", 9888, 4);
 
         // Can't Escape the Shadows
         Story.KillQuest(8573, "darkwarlegion", "Shadow Clone");
@@ -95,7 +95,7 @@ public class DarkWarLegionandNation
         Story.KillQuest(8576, "dagerecruit", "mob");
 
         // Nation Badges / Mega Nation BadgesDreadfiend
-        Story.KillQuest(8585, "darkwarlegion", new[] { "Dark Makai", "Dreadfiend", "Bloodfiend", "Infernal Fiend" });
+        Story.KillQuest(8585, "darkwarlegion", "Dreadfiend|Bloodfiend|Infernal Fiend");
 
         // A Nation Defeated
         Story.KillQuest(8586, "darkwarlegion", "Dreadfiend");

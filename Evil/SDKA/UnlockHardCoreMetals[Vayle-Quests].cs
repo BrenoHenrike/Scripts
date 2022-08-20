@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 
 public class UnlockHardCoreMetals_Vayle_Quests
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
     public void ScriptMain(IScriptInterface bot)

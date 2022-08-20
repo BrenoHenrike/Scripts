@@ -122,6 +122,7 @@ public class StarFestival
         if (!Story.QuestProgression(8755))
         {
             Core.EnsureAccept(8755);
+            Bot.Quests.UpdateQuest(8094);
             Adv.BoostHuntMonster($"transformation", "Queen of Monsters", "Queen’s Remnant");
             Core.HuntMonster("transformation", "Chaos Spitter", "Terrestrial Chaos", 30);
             Core.HuntMonster($"dreadforest", "Lord Reignolds", "Traitor’s Remnant");

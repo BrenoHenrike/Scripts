@@ -41,25 +41,19 @@ public class ArchfiendDeathLord
 
     public void GetArm(bool OnlyArmor = true)
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7900).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
-
-        string[] Rewards = RewardsList.ToArray();
-
-        if (Core.CheckInventory("Archfiend DeathLord"))
+        OnlyArmor = Bot.Config.Get<bool>("OnlyArmor");
+        string[] RewardsList = OnlyArmor ? new[] { "Archfiend DeathLord" } : Core.EnsureLoad(7900).Rewards.Select(x => x.Name).ToList().ToArray();
+        if (Core.CheckInventory(RewardsList))
             return;
+
+        Core.AddDrop(RewardsList.ToArray());
 
         fiendshard.Fiendshard_Questline();
 
-        Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(7900);
-
-        if (OnlyArmor == true)
+        while (!Bot.ShouldExit && !Core.CheckInventory(RewardsList))
         {
-            Core.Logger("only getting the class");
+            Core.EnsureAccept(7900);
+
             Nation.FarmBloodGem(20);
             Nation.FarmUni13(5);
             Nation.FarmTotemofNulgath(3);
@@ -67,28 +61,10 @@ public class ArchfiendDeathLord
             Nation.FarmDiamondofNulgath(150);
             Nation.FarmGemofNulgath(50);
             Willpower.Unidentified34(10);
-            Bot.Wait.ForPickup("Archfiend DeathLord");
-        }
-        else
-        {
-            foreach (string item in RewardsList)
-            {
-                Core.Logger($"Farming for {item}");
 
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
-
-                    Nation.FarmBloodGem(20);
-                    Nation.FarmUni13(5);
-                    Nation.FarmTotemofNulgath(3);
-                    Nation.FarmVoucher(false);
-                    Nation.FarmDiamondofNulgath(150);
-                    Nation.FarmGemofNulgath(50);
-                    Willpower.Unidentified34(10);
-                    Bot.Wait.ForPickup(item);
-                }
-            }
+            Core.EnsureCompleteChoose(7900, RewardsList);
+            Bot.Wait.ForPickup("*");
         }
-        Core.CancelRegisteredQuests();
+
     }
 }

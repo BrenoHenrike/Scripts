@@ -16,7 +16,7 @@ public class CompletePaladinsTrial
     {
         Core.SetOptions();
 
-        QOM.CompleteDoomwoodPaladinsTrial();
+        QOM.DoomwoodPaladinsTrial();
 
         Core.SetOptions(false);
     }

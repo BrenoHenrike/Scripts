@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Evil/NecroticSwordOfDoom.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
@@ -17,7 +17,7 @@ public class VoidPaladin
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
-    public NecroticSwordOfDoom NSOD = new NecroticSwordOfDoom();
+    public CoreNSOD NSoD = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -108,7 +108,7 @@ public class VoidPaladin
             Farm.Gold(2000000);
             Core.BuyItem("citadel", 44, "Nulgath Shaped Chocolate");
         }
-        NSOD.VoidAuras(2);
+        NSoD.VoidAuras(2);
 
         Core.EnsureComplete(5827);
         Bot.Drops.Pickup("Void Paladin");
@@ -128,7 +128,7 @@ public class VoidPaladin
         Nation.FarmGemofNulgath(20);
         Nation.EmblemofNulgath(3);
         Nation.FarmTotemofNulgath(1);
-        NSOD.VoidAuras(6);
+        NSoD.VoidAuras(6);
 
         if (Core.CheckInventory("Blinding Light of Destiny"))
             Core.ChainComplete(5828);

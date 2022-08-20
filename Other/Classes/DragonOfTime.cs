@@ -178,7 +178,7 @@ public class DragonOfTime
 
             Darkon.FarmReceipt(100);
 
-            QOM.GuardianTree();
+            QOM.TheReshaper();
             if (!Core.CheckInventory("Semiramis Feather"))
             {
                 Core.AddDrop("Semiramis Feather");

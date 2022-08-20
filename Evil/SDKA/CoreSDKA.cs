@@ -9,7 +9,7 @@ public class CoreSDKA
     // True = does the Dark Spirit Orbs quest
     // False = does the Penny for your Foughts quest
     public bool DSOMethod = false;
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreDailies Daily = new();

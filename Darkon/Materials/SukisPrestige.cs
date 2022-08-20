@@ -8,7 +8,7 @@ using Skua.Core.Interfaces;
 
 public class SukisPrestiege
 {
-    public IScriptInterface Bot { get; set; }
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDarkon Darkon = new CoreDarkon();
 
