@@ -2,8 +2,6 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
-using RBot.Items;
-using System.Collections;
 
 public class project
 {

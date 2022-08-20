@@ -15,7 +15,8 @@
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
-//cs_include Scripts/Good\GearOfAwe\CapeOfAwe.cs
+//cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
+//cs_include Scripts/Enhancement/InventoryEnhancer.cs
 
 using RBot;
 using RBot.Options;
@@ -32,13 +33,14 @@ public class FarmerJoeOutfit
     public ArchPaladin AP = new();
     public DragonShinobi DS = new();
     public CapeOfAwe COA = new();
+    public project project = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
-        new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm \"Tato\"", PetChoice.None),
+        new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
     };
 
     public void ScriptMain(ScriptInterface bot)
@@ -51,9 +53,13 @@ public class FarmerJoeOutfit
     }
 
     public void Outfit()
-    {        
+    {
         if (!Bot.Config.Get<bool>("SkipOption"))
-           Bot.Config.Configure();
+            Bot.Config.Configure();
+
+        //Pre-Farm Enh
+        Adv.EnhanceEquipped(EnhancementType.Lucky);
+        project.EnhanceInventory();
 
         //Easy Difficulty Stuff
         RagsandHat();
@@ -128,30 +134,11 @@ public class FarmerJoeOutfit
         Bot.Wait.ForPickup("The Server is Down");
         Core.Equip("The Server is Down");
     }
-
-    // public void DeathsScythe()
-    // {
-
-    //     if (Core.CheckInventory(25117))
-    //         return;
-
-
-    //     while (!Bot.ShouldExit() && !Core.CheckInventory(25117))
-    //         Bot.Player.Hunt("Death");
-    // }
-
-    // public void Pet()
-    // {
-    //     if (Core.CheckInventory("item"))
-    //         return;
-
-    // }
-
+    
     public enum PetChoice
     {
         None,
         HotMama,
         Akriloth
     };
-
 }
