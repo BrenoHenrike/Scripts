@@ -199,7 +199,7 @@ public class CoreBots
                     Bot.Flash.CallGameFunction("world.toggleMonsters");
             }
 
-            Bot.Options.CustomName = "AUQW RBOT MASTER";
+            Bot.Options.CustomName = "SKUA BOT";
             Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
             Bot.Drops.Start();
@@ -1971,7 +1971,7 @@ public class CoreBots
                         "Within the discord this plugin is often reffered to as CBO.",
                     "",
                 "== Wait Timeout Override ==",
-                    "This is a plugin that allows you to override some default data for Skua, it's used to modify how long RBot waits before it considers a task to be failed.",
+                    "This is a plugin that allows you to override some default data for Skua, it's used to modify how long Skua waits before it considers a task to be failed.",
                     "You don't have to touch these values in most cases, it's mostly used for debugging.",
                     "",
                     "",
@@ -1983,8 +1983,8 @@ public class CoreBots
                     "",
                 "== Credits ==",
                     "Active:",
-                        "· BrenoHenrike\t- He took over RBot development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
-                        "· Lord Exelot\t- Lead Developer/Head of the RBot Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
+                        "· BrenoHenrike\t- He took over Skua development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
+                        "· Lord Exelot\t- Lead Developer/Head of the Skua Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
                         "· Tato\t\t\t- Major contributor to the Master Bots and a lot of bug fixes.",
                         "· Bogajl\t\t- Major contributor to the Master Bots.",
                         "· Hao\t\t\t- Considerable contributor to the Master Bots.",
@@ -2003,7 +2003,7 @@ public class CoreBots
                         "· ToxlcChain\t- Minor contributor to the Master Bots.",
                         "· Ferdy\t\t\t- Minor contributor to the Master Bots.",
                     "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
-                    "And thanks to everyone who has put time and effort RBot and the Master Bots! ~ Exelot",
+                    "And thanks to everyone who has put time and effort RBot/Skua and the Master Bots! ~ Exelot",
         };
         File.WriteAllLines(readMePath, ReadMe);
 
