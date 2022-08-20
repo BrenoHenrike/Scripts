@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using RBot;
 
-public class project
+public class InventoryEnhancer
 {
     public ScriptInterface Bot => ScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;

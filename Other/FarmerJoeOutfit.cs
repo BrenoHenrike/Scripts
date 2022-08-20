@@ -16,7 +16,6 @@
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
-//cs_include Scripts/Enhancement/InventoryEnhancer.cs
 
 using RBot;
 using RBot.Options;
@@ -29,11 +28,10 @@ public class FarmerJoeOutfit
     public CoreFarms Farm = new();
     public HollowbornScythe Scythe = new();
     public EternalInversionist EI = new();
-    public project InvEn = new();
+    public InventoryEnhancer InvEn = new();
     public ArchPaladin AP = new();
     public DragonShinobi DS = new();
     public CapeOfAwe COA = new();
-    public project project = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -59,7 +57,7 @@ public class FarmerJoeOutfit
 
         //Pre-Farm Enh
         Adv.EnhanceEquipped(EnhancementType.Lucky);
-        project.EnhanceInventory();
+        InvEn.EnhanceInventory();
 
         //Easy Difficulty Stuff
         RagsandHat();
