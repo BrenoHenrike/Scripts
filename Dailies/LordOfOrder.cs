@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 
 public class LordOfOrder
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
@@ -30,7 +30,7 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Lord Of Order"))
+        if (Core.CheckInventory(50741))
             return;
 
         Core.Logger("Daily: Lord Of Order Class");

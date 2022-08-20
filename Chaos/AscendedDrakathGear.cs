@@ -12,7 +12,7 @@ using Skua.Core.Interfaces;
 
 public class AscendedDrakathGear
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
@@ -47,14 +47,13 @@ public class AscendedDrakathGear
 
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
-
+        Core.RegisterQuests(3767);
         while (!Bot.ShouldExit && !Core.CheckInventory(Target))
         {
             Bot.Quests.UpdateQuest(159, 4);
-            Core.EnsureAccept(3767);
             Core.HuntMonster("towerofdoom4", "Dread Stranglerfish", "Holy Wasabi");
-            Core.EnsureComplete(3767);
             Bot.Wait.ForPickup(Target);
         }
+        Core.CancelRegisteredQuests();
     }
 }

@@ -8,7 +8,7 @@ using Skua.Core.Interfaces;
 
 public class SecondErrand
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreDarkon Darkon = new CoreDarkon();
 

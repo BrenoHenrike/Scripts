@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 
 public class VordredArmor
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
@@ -145,6 +145,8 @@ public class VordredArmor
 
         // UNBROKEN SKULLS (Mem) - 8342
         if (Core.IsMember)
+        {
+            Core.RegisterQuests(8411);
             while (!Bot.ShouldExit && !Core.CheckInventory("Especially Unbroken Skull", quant))
             {
                 Core.EnsureAccept(8411);
@@ -153,14 +155,18 @@ public class VordredArmor
                 Core.EnsureComplete(8411);
                 Bot.Wait.ForPickup("Especially Unbroken Skull");
             }
+            Core.CancelRegisteredQuests();
+        }
         else
+        {
             // UNBROKEN SKULLS - 8341
+            Core.RegisterQuests(8341);
             while (!Bot.ShouldExit && !Core.CheckInventory("Especially Unbroken Skull", quant))
             {
-                Core.EnsureAccept(8411);
                 Core.HuntMonster("warundead", "Undead Mage", "Unbroken Skulls", 100, isTemp: false);
-                Core.EnsureComplete(8411);
                 Bot.Wait.ForPickup("Especially Unbroken Skull");
             }
+        }
+        Core.CancelRegisteredQuests();
     }
 }

@@ -6,13 +6,14 @@ using Skua.Core.Models.Monsters;
 
 public class AAKillUltra
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+#nullable enable
+        Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
         if (Target == null)
         {
             Core.Logger("No monsters found", messageBox: true);

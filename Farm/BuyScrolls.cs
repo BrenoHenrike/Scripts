@@ -6,7 +6,7 @@ using Skua.Core.Models.Quests;
 
 public class BuyScrolls
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 

@@ -42,7 +42,7 @@ using Skua.Core.Options;
 
 public class UnlockForgeEnhancements
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
@@ -294,7 +294,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
 
         FCA.GetFireChampsArmor();
-        DOT.GetDoT();
+        DOT.GetDoT(doExtra: false);
         ED.getSet();
 
         if (!Core.CheckInventory("Eternity Blade"))
@@ -344,14 +344,15 @@ public class UnlockForgeEnhancements
             Darkon.SukisPrestiege(22);
             Darkon.AncientRemnant(22);
             Darkon.MourningFlower(22);
-            if (!Core.CheckInventory("Darkon Insignia Insignia", 20))
-                Core.Logger(" x5 \"Darkon Insignia Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+            if (!Core.CheckInventory("Darkon Insignia", 20))
+                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+            else Core.BuyItem("ultradarkon", 2147, "Darkon's Debris 2 (Reconstructed)");
         }
 
         if (!Core.CheckInventory("King Drago Insignia", 5))
             Core.Logger(" x5 \"King Drago Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
-        if (!Core.CheckInventory("Darkon Insignia Insignia", 5))
-            Core.Logger(" x5 \"Darkon Insignia Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+        if (!Core.CheckInventory("Darkon Insignia", 5))
+            Core.Logger(" x5 \"Darkon Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
 
         Core.ChainComplete(8742);
         Core.Logger("Enhancement Unlocked: Arcana's Concerto");

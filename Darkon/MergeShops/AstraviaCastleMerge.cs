@@ -9,7 +9,7 @@ using Skua.Core.Options;
 
 public class AstraviaCastleMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();

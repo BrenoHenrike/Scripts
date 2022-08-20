@@ -8,7 +8,7 @@ using Skua.Core.Options;
 
 public class FindingFragments_Any
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLOD = new CoreBLOD();
     public CoreStory Story = new CoreStory();

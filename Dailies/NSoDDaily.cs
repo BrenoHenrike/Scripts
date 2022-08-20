@@ -5,7 +5,7 @@ using Skua.Core.Interfaces;
 
 public class NSODDaily
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public CoreFarms Farm = new();

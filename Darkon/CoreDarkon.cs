@@ -8,7 +8,7 @@ using Skua.Core.Models.Items;
 
 public class CoreDarkon
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();

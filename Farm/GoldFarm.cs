@@ -5,6 +5,7 @@ using Skua.Core.Interfaces;
 
 public class GoldFarm
 {
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
@@ -19,7 +20,7 @@ public class GoldFarm
 
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.gold);
-        bot.Drops.Start();
+        Bot.Drops.Start();
 
         Farm.Gold();
 

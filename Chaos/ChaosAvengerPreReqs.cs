@@ -7,7 +7,7 @@ using Skua.Core.Interfaces;
 
 public class ChaosAvengerClass
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public CoreFarms Farm = new();

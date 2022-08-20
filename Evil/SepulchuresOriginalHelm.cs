@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 
 public class SepulchuresOriginalHelm
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
 
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();

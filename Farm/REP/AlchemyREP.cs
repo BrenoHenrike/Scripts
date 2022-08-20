@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class AlchemyREP
 {
+    public IScriptInterface Bot { get; set; }
     public string OptionsStorage = "AlchemyREP";
     public List<IOption> Options = new List<IOption>()
     {
@@ -27,7 +28,7 @@ public class AlchemyREP
 
         //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
 
-        Farm.AlchemyREP(10, bot.Config.Get<bool>("goldMethod"));
+        Farm.AlchemyREP(10, Bot.Config.Get<bool>("goldMethod"));
 
         Core.SetOptions(false);
     }

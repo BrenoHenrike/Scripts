@@ -5,7 +5,7 @@
 using Skua.Core.Interfaces;
 public class DoomKnightWeaponKit
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreSDKA SDKA = new CoreSDKA();
 

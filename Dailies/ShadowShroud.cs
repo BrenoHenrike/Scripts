@@ -4,7 +4,7 @@ using Skua.Core.Interfaces;
 
 public class ShadowShroud
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
 

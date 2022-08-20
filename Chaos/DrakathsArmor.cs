@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 
 public class DrakathArmorBot
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
@@ -72,7 +72,7 @@ public class DrakathArmorBot
         if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
             Core.Logger("You dont have Dage's Scroll Fragment x13", stopBot: true);
         Core.EnsureAccept(3882);
-        Farm.BladeofAweREP(farmBoA: true);
+        Farm.BladeofAweREP(6, farmBoA: true);
         BLOD.DoAll();
         Nation.FarmUni13(3);
         Farm.Gold(3750000);

@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 
 public class Cryomancer
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public GlaceraStory Glac = new();

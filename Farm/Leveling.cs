@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 
-public class CombatTrophy
+public class Leveling
 {
     public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
@@ -14,9 +14,9 @@ public class CombatTrophy
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.dmgAll);
-        // Change to false if you need to kill the Restorers and Brawlers
-        Farm.BludrutBrawlBoss(canSoloBoss: true);
+        Adv.BestGear(GearBoost.exp);
+        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
+        Farm.Experience();
 
         Core.SetOptions(false);
     }

@@ -10,7 +10,7 @@ using Skua.Core.Options;
 
 public class TheWorldMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public IScriptInterface Bot { get; set; }
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
