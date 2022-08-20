@@ -98,6 +98,14 @@ public class CoreBots
     {
         if (changeTo)
         {
+            DialogResult result = MessageBox.Show("RBot has reached the end of its support. All scripts have been migrated to our newest client called Skua. To continue enjoying our maintained scripts, please change clients.\n\nDo you wish to be brougth to the download page?",
+                                    "Important Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
+            {
+                Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases/latest");
+                Bot.Stop(true);
+            }
+
             if (CBO_Active)
             {
                 CBOList = File.ReadAllLines(AppPath + $@"\plugins\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
