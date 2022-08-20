@@ -55,8 +55,12 @@ public class SepulchuresRise
         if (!Story.QuestProgression(6363))
         {
             Core.EnsureAccept(6363);
-            Core.KillMonster("valleyofdoom", "r8", "Left", 3800);
-            Story.KillQuest(6363, "valleyofdoom", new[] { "Doom Star", "Doom Scythe", "Doom Axe", "Doom Blade" });
+            Core.KillMonster("valleyofdoom", "r7", "Left", "Doom Star", "Doomstar Destroyed");
+            Core.KillMonster("valleyofdoom", "r7", "Left", "Doom Scythe", "Doomscythe Destroyed");
+            Core.KillMonster("valleyofdoom", "r7", "Left", "Doom Axe", "Doomaxe Destroyed");
+            Core.KillMonster("valleyofdoom", "r8", "Left", "Doom Blade", "Doom Blade Destroyed");
+            Core.KillMonster("valleyofdoom", "r8", "Left", "Doom Knight Armor", "");
+            Core.EnsureComplete(6363);
         }
 
         //Defeat the Armor 6364
