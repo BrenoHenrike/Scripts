@@ -171,12 +171,12 @@ public class CoreBots
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
             {
-                ItemCategory whiteListedFlags = ItemCategory.Note | ItemCategory.Item | ItemCategory.Resource | ItemCategory.QuestItem;
-                ItemCategory serverUseFlag = whiteListedFlags | ItemCategory.ServerUse;
+                List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
+                List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
                 List<string> MiscForBank = new();
                 foreach (var item in Bot.Inventory.Items)
                 {
-                    if (Bot.Boosts.Enabled ? serverUseFlag.HasFlag(item.Category) : whiteListedFlags.HasFlag(item.Category))
+                    if (Bot.Boosts.Enabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
                         continue;
                     if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
                         MiscForBank.Add(item.Name);
