@@ -103,7 +103,7 @@ public class CoreBots
                 Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            SkuaVersionChecker("0.3.0.0");
+            SkuaVersionChecker("1.0.0.0");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -250,14 +250,14 @@ public class CoreBots
         return scriptFinished;
     }
 
-    private bool StopBotEvent()
+    private bool StopBotEvent(Exception e)
     {
         SetOptions(false);
-        //if (e != null)
-        //{
-        //    Logger("A crash has been detected, please report: " + e.ToString());
-        //    Bot.ShowMessageBox("A crash has been detected, please report:\n" + e.ToString(), "Script Crashed");
-        //}
+        if (e != null)
+        {
+            Logger("A crash has been detected, please report: " + e.ToString());
+            Bot.ShowMessageBox("A crash has been detected, please report:\n" + e.ToString(), "Script Crashed");
+        }
         return StopBot();
     }
 
