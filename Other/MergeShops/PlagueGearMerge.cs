@@ -60,7 +60,6 @@ public class PlagueGearMerge
                 #endregion
 
                 case "Dragon's Plague Scythe":
-                case "Slime Scale":
                 case "Sloth Gem":
                 case "Slime Claw":
                 case "Slime Fang":
@@ -78,6 +77,9 @@ public class PlagueGearMerge
                     Core.HuntMonster("sloth", "Cured Phlegnn", req.Name, quant, false);
                     break;
 
+                case "Slime Scale":
+                    Core.KillMonster("sloth", "r2", "Bottom", "*", req.Name, quant, false);
+                    break;
             }
         }
     }
