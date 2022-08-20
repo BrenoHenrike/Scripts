@@ -64,8 +64,7 @@ public class CoreLegion
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.KillMonster("seraphicwardage", "r3", "Right", "*", "Seraphic Commanders Slain", 6, log: false);
-            Bot.Drops.Pickup("Dark Token");
+            Core.KillMonster("seraphicwardage", "r3", "Right", "*", log: false);
         }
         Core.CancelRegisteredQuests();
     }
