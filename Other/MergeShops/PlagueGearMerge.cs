@@ -78,6 +78,7 @@ public class PlagueGearMerge
                     break;
 
                 case "Slime Scale":
+                    Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("sloth", "r2", "Bottom", "*", req.Name, quant, false);
                     break;
             }
