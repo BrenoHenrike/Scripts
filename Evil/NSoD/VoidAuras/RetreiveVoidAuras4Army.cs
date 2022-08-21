@@ -105,9 +105,9 @@ public class RVAArmy
             //if (!Core.CheckInventory("Creature Creation Essence", EssenceQuantity))
             Core.DebugLogger(this, "Creature Creation Essence");
             ArmyKillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", EssenceQuantity, false);
-            while (Bot.Quests.CanComplete(4432))
+            while (Bot.Quests.CanCompleteFullCheck(4432))
             {
-                Core.DebugLogger(this, "Quest Turn In");
+                Core.Logger("Quest Turn In");
                 Bot.Options.AggroMonsters = false;
                 Core.ChainComplete(4432);
                 Bot.Wait.ForPickup("Void Aura");
