@@ -487,6 +487,11 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Balor's Cruelty":
+                    if (!Core.IsMember)
+                    {
+                        Core.Logger($"{req.Name} requires Membership to obtain");
+                        return;
+                    }
                     Core.EquipClass(ClassType.Solo);
                     if (!Core.CheckInventory(req.Name))
                         Core.HuntMonster("twilight", "Abaddon", req.Name, isTemp: false);
