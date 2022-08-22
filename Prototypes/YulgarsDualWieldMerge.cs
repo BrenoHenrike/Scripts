@@ -70,10 +70,20 @@ public class YulgarsDualWieldMerge
                 #endregion
 
                 case "Weapon Reflection":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    DW.WeaponReflection();
-                    if (!Core.CheckInventory("Weapon Reflection"))
+                    if (!Core.CheckInventory("Golden 8th Birthday Candle"))
+                        Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
+                    Bot.Sleep(1500);
+                    if (!Core.CheckInventory("Golden 8th Birthday Candle"))
                         Core.StopBot();
+                    Core.AddDrop(req.Name);
+                    if (!Core.CheckInventory(req.Name))
+                    {
+                        Core.EnsureAccept(5518);
+                        Core.HuntMonster("nostalgiaquest", "Skeletal Viking", "Reflected Glory", 5);
+                        Core.HuntMonster("nostalgiaquest", "Skeletal Warrior", "Divided Light", 5);
+                        Core.EnsureComplete(5518);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
                     break;
 
                 case "Boom Went The Dynamite":
