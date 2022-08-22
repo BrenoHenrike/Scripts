@@ -363,8 +363,12 @@ public class Core13LoC
         Story.PreLoad();
 
         //Turtle Power
-        Story.KillQuest(380, "yokaiboat", "Kappa Ninja");
-        Story.MapItemQuest(380, "yokaiboat", 64);
+        if (!Story.QuestProgression(380))
+        {
+            Story.MapItemQuest(380, "yokaiboat", 64);
+            Core.HuntMonster("yokaiboat", "Kappa Ninja", "Kappa Ninja Slain", 7);
+            Core.EnsureComplete(380);
+        }
 
         //Setting Sail to Yokai
         if (!Story.QuestProgression(381))
