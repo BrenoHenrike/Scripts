@@ -238,18 +238,20 @@ public class YulgarsDualWieldMerge
                         Core.Logger($"You don't own Undead Champion - go and complete the Legion intro (requires 1200 AC)");
                         return;
                     }
-                    if (Core.CheckInventory(req.Name))
-                        return;
-
-                    Core.AddDrop("PainSaw of Eidolon", "Judgement Scythe", "Soul Eater Advanced");
+                    Core.AddDrop("PainSaw of Eidolon", "Judgement Scythe", "Soul Eater Advanced", "Legion Token");
                     Core.RegisterQuests(824);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && (!Core.CheckInventory(req.Name)))
                     {
-                        Core.HuntMonster("marsh2", "Soulseeker", "Soul Scythe", isTemp: false);
-                        Core.HuntMonster("marsh2", "Lesser Shadow Serpent", "Potent Viper's Blood");
-                        Core.HuntMonster("battlundera", "Skeletal Ice Mage", "Frostbit Skull", 15);
+                        Core.KillMonster("marsh2", "End", "Left", 72, "Soul Scythe", 1, false);
+                        Core.KillMonster("marsh2", "End", "Left", "Lesser Shadow Serpent", "Potent Viper's Blood");
+                        Core.HuntMonster("battleundera", "Skeletal Ice Mage", "Frostbit Skull", 15);
                     }
+                    if (Core.CheckInventory("Judgement Scythe"))
+                        Core.ToBank("Judgement Scythe");
+                    if (Core.CheckInventory("Soul Eater Advanced"))
+                        Core.ToBank("Soul Eater Advanced");
+                    Core.ToBank("Legion Token");
                     break;
 
                 case "Hanzamune Dragon Koi Blade":
