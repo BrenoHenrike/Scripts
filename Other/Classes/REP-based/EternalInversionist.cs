@@ -30,8 +30,7 @@ public class EternalInversionist
             return;
 
         TOD.FourthDimensionalPyramid();
-        Farm.EternalREP();
-        Core.BuyItem("fourdpyramid", 1275, "Eternal Inversionist", shopItemID: 21138);
+        Adv.BuyItem("fourdpyramid", 1275, "Eternal Inversionist", shopItemID: 21138);
         if (rankUpClass)
         {
             Adv.GearStore();
