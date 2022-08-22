@@ -45,6 +45,11 @@ public class YulgarsDualWieldMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.CheckInventory("Golden 8th Birthday Candle"))
+            Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
+        Bot.Sleep(1500);
+        if (!Core.CheckInventory("Golden 8th Birthday Candle"))
+            Core.Logger("Golden Candle not found - stopping bot.", messageBox: true, stopBot: true);
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("nostalgiaquest", 1311, findIngredients);
 
@@ -69,11 +74,6 @@ public class YulgarsDualWieldMerge
                 #endregion
 
                 case "Weapon Reflection":
-                    if (!Core.CheckInventory("Golden 8th Birthday Candle"))
-                        Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
-                    Bot.Sleep(1500);
-                    if (!Core.CheckInventory("Golden 8th Birthday Candle"))
-                        Core.StopBot();
                     Core.AddDrop(req.Name);
                     if (!Core.CheckInventory(req.Name))
                     {
