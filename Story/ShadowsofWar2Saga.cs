@@ -292,7 +292,7 @@ public class ShadowFlame2Saga
         Story.MapItemQuest(8806, "Timekeep", 10458, 6);
 
         // 8807|Canaries on Edge
-        Story.KillQuest(0880700, "Timekeep", "Mana-Burdened Mage");
+        Story.KillQuest(8807, "Timekeep", "Mana-Burdened Mage");
 
         // 8808|Caution! Wet Floor
         Story.MapItemQuest(8808, "Timekeep", new[] { 10459, 10460 });
