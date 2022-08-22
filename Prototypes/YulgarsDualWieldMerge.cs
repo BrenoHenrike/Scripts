@@ -122,7 +122,7 @@ public class YulgarsDualWieldMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5405);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("sandsea", "Sand Monkey", "Pally Luwak Beans");
+                        Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans");
                     Core.CancelRegisteredQuests();
                     break;
 
