@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Other/WeaponReflection.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
 //cs_include Scripts/Nation/Various/DragonBlade.cs
@@ -26,6 +27,7 @@ public class YulgarsDualWieldMerge
     public DragonBladeofNulgath DBoN = new();
     public SRoD SRoD = new();
     public JuggernautItemsofNulgath juggernaut = new();
+    public CoreLegion Legion = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -88,10 +90,8 @@ public class YulgarsDualWieldMerge
                 case "Boom Went The Dynamite":
                     if (!Core.IsMember)
                         return;
-
                     Core.EquipClass(ClassType.Solo);
-                    if (!Core.CheckInventory(req.Name))
-                        Core.HuntMonster("banished", "Desterrat Moya", req.Name, quant, false);
+                    Core.HuntMonster("banished", "Desterrat Moya", req.Name, quant, false);
                     break;
 
                 case "TheWicked":
@@ -103,18 +103,14 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Oblivion of Nulgath":
-                    if (!Core.CheckInventory(req.Name))
-                        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Oblivion_of_Nulgath);
+                    juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Oblivion_of_Nulgath);
                     break;
 
                 case "Overlord's DoomBlade":
-                    if (!Core.CheckInventory(req.Name))
-                    {
-                        if (Core.HasAchievement(27))
-                            Adv.BuyItem(Bot.Map.Name, 340, req.Name);
-                        else
-                            Core.Logger($"You don't have access to this shop for {req.Name}");
-                    }
+                    if (Core.HasAchievement(27))
+                        Core.BuyItem(Bot.Map.Name, 340, req.Name);
+                    else
+                        Core.Logger($"You don't have access to this shop for {req.Name}");
                     break;
 
                 case "Blessed Coffee Cup":
@@ -136,22 +132,28 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Unarmed":
-                    if (!Core.CheckInventory(req.Name) && (Core.IsMember))
-                        Adv.BuyItem(Bot.Map.Name, 1536, req.Name);
+                    if (!Core.IsMember)
+                    {
+                        Core.Logger($"{req.Name} requires Membership to Obtain");
+                        return;
+                    }
+                    Adv.BuyItem(Bot.Map.Name, 1536, req.Name);
                     break;
 
                 case "Frostbite":
-                    if (!Core.CheckInventory(req.Name) && !Core.IsMember)
+                    if (!Core.IsMember || (!Core.isCompletedBefore(793)))
                     {
-                        Core.Logger($"You require Membership for {req.Name}");
+                        Core.Logger($"You require Membership for {req.Name}, or you're not part of the Legion");
                         return;
                     }
-                    if (!Core.CheckInventory(req.Name) && Core.IsMember)
-                        Adv.BuyItem("blindingsnow", 236, req.Name);
+                    if (!Core.CheckInventory("Frosted Falchion"))
+                        Adv.BuyItem("blindingsnow", 236, "Frosted Falchion");
+                    Legion.FarmLegionToken(70);
+                    Adv.BuyItem("underworld", 238, req.Name);
                     break;
 
                 case "A Rock":
-                    if (!Core.CheckInventory(req.Name))
+                    if (!Bot.Inventory.Contains(req.Name))
                     {
                         Core.Logger($"You don't own {req.Name} (Rare)");
                         return;
@@ -261,13 +263,11 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Balrog Blade":
-                    if (!Core.CheckInventory(req.Name))
-                    {
-                        if (Core.HasAchievement(5))
-                            Adv.BuyItem(Bot.Map.Name, 5, req.Name);
-                        else
-                            Core.Logger($"You don't have access to this shop for {req.Name}");
-                    }
+                    if (Core.HasAchievement(5))
+                        Adv.BuyItem(Bot.Map.Name, 5, req.Name);
+                    else
+                        Core.Logger($"You don't have access to this shop for {req.Name}");
+
                     break;
 
                 case "Legendary Magma Sword":
