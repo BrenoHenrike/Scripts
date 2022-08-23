@@ -95,11 +95,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "TheWicked":
-                    if (!Core.CheckInventory(req.Name))
-                    {
-                        Core.Logger($"You don't own {req.Name} (Rare)");
-                        return;
-                    }
+                    Core.Logger($"You don't own {req.Name} (Rare)");
                     break;
 
                 case "Oblivion of Nulgath":
@@ -107,7 +103,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Overlord's DoomBlade":
-                    if (Core.HasAchievement(27))
+                    if (Core.HasAchievement(27, "ip0"))
                         Core.BuyItem(Bot.Map.Name, 340, req.Name);
                     else
                         Core.Logger($"You don't have access to this shop for {req.Name}");
@@ -124,11 +120,7 @@ public class YulgarsDualWieldMerge
 
                 case "Party Slasher Birthday Sword":
                 case "Rapier of Skulls":
-                    if (!Core.CheckInventory(req.Name))
-                    {
-                        Core.Logger($"You don't own {req.Name} (Rare)");
-                        return;
-                    }
+                    Core.Logger($"You don't own {req.Name} (Rare)");
                     break;
 
                 case "Unarmed":
@@ -501,18 +493,14 @@ public class YulgarsDualWieldMerge
 
                 case "Default Sword":
                 case "Iron Spear":
-                    if (!Core.CheckInventory(req.Name))
-                        Adv.BuyItem("yulgar", 16, req.Name);
+                    Adv.BuyItem("yulgar", 16, req.Name);
                     break;
 
                 case "Undead Plague Spear":
-                    if (!Core.CheckInventory(req.Name))
-                    {
-                        if (Core.HasAchievement(5))
-                            Adv.BuyItem(Bot.Map.Name, 5, req.Name);
-                        else
-                            Core.HuntMonster("graveyard", "Big Jack Sprat", req.Name, isTemp: false);
-                    }
+                    if (Core.HasAchievement(5))
+                        Adv.BuyItem(Bot.Map.Name, 5, req.Name);
+                    else
+                        Core.HuntMonster("graveyard", "Big Jack Sprat", req.Name, isTemp: false);
                     break;
 
                 case "Mighty Sword Of The Dragons":
@@ -521,41 +509,31 @@ public class YulgarsDualWieldMerge
                         Core.Logger($"{req.Name} requires Membership to obtain");
                         return;
                     }
-                    if (!Core.CheckInventory(req.Name))
+                    Core.EquipClass(ClassType.Solo);
+                    Core.AddDrop("Zellare's Death Scale", "Moganth's Death Scale", "Udaroth's Death Scale", "Cellot's Death Scale", "Mighty Sword Of The Dragons");
+                    Core.RegisterQuests(3343);
+                    Bot.Quests.UpdateQuest(1416);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name))
                     {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.AddDrop("Zellare's Death Scale", "Moganth's Death Scale", "Udaroth's Death Scale", "Cellot's Death Scale", "Mighty Sword Of The Dragons");
-                        Core.RegisterQuests(3343);
-                        Bot.Quests.UpdateQuest(1416);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name))
-                        {
-                            Core.HuntMonster("wind", "Cellot", "Cellot's Death Scale", isTemp: false);
-                            Core.HuntMonster("fire", "Zellare", "Zellare's Death Scale", isTemp: false);
-                            Core.HuntMonster("water", "Udaroth", "Udaroth's Death Scale", isTemp: false);
-                            Core.HuntMonster("dragonplane", "Moganth", "Moganth's Death Scale", isTemp: false);
-                        }
+                        Core.HuntMonster("wind", "Cellot", "Cellot's Death Scale", isTemp: false);
+                        Core.HuntMonster("fire", "Zellare", "Zellare's Death Scale", isTemp: false);
+                        Core.HuntMonster("water", "Udaroth", "Udaroth's Death Scale", isTemp: false);
+                        Core.HuntMonster("dragonplane", "Moganth", "Moganth's Death Scale", isTemp: false);
                     }
                     break;
 
                 case "Necrotic Sword of Doom":
-                    if (!Core.CheckInventory(req.Name))
-                    {
-                        Core.Logger($"Go and get {req.Name} yourself.");
-                        return;
-                    }
+                    Core.Logger($"Go and get {req.Name} yourself.");
                     break;
 
                 case "Burning Blade Of Abezeth":
-                    if (Core.CheckInventory(req.Name))
-                        return;
                     Core.EquipClass(ClassType.Solo);
                     Bot.Quests.UpdateQuest(6042);
                     Core.HuntMonster("celestialarenad", "Aranx", req.Name, isTemp: false);
                     break;
 
                 case "Blade of Awe":
-                    if (!Core.CheckInventory(req.Name))
-                        Farm.BladeofAweREP(6, true);
+                    Farm.BladeofAweREP(6, true);
                     break;
 
                 case "Abaddon's Terror":
@@ -565,18 +543,16 @@ public class YulgarsDualWieldMerge
                         return;
                     }
                     Core.EquipClass(ClassType.Solo);
-                    if (!Core.CheckInventory(req.Name))
-                        Core.HuntMonster("twilight", "Abaddon", req.Name, isTemp: false);
+                    Core.HuntMonster("twilight", "Abaddon", req.Name, isTemp: false);
                     break;
 
                 case "Krom's Brutality":
                     Core.EquipClass(ClassType.Solo);
-                    if (!Core.CheckInventory(req.Name))
-                        Core.HuntMonster("forest", "Boss Zardman", req.Name, isTemp: false);
+                    Core.HuntMonster("forest", "Boss Zardman", req.Name, isTemp: false);
                     break;
 
                 case "Burn it Down":
-                    if (Core.CheckInventory(req.Name) || (!Daily.CheckDaily(187, true, req.Name)))
+                    if (!Daily.CheckDaily(187, true, req.Name))
                     {
                         Core.Logger($"{req.Name} owned, or daily unavailable");
                         return;
@@ -591,18 +567,15 @@ public class YulgarsDualWieldMerge
 
                 case "Shadow Terror Axe":
                     Core.EquipClass(ClassType.Solo);
-                    if (!Core.CheckInventory(req.Name))
-                        Core.HuntMonster("battleundera", "Bone Terror", req.Name, isTemp: false);
+                    Core.HuntMonster("battleundera", "Bone Terror", req.Name, isTemp: false);
                     break;
 
                 case "DragonBlade of Nulgath":
-                    if (!Core.CheckInventory(req.Name))
-                        DBoN.GetDragonBlade();
+                    DBoN.GetDragonBlade();
                     break;
 
                 case "ShadowReaper Of Doom":
-                    if (!Core.CheckInventory(req.Name))
-                        SRoD.ShadowReaperOfDoom();
+                    SRoD.ShadowReaperOfDoom();
                     break;
 
             }
