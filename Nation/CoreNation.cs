@@ -795,7 +795,8 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
-
+        if (Bot.Player.Gold > 30000000)
+            TheAssistant("Gem of Nulgath", quant);
         NewWorldsNewOpportunities("Dark Crystal Shard", quant);
         Supplies("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
@@ -827,7 +828,8 @@ public class CoreNation
             return;
 
         Core.AddDrop("Gem of Nulgath");
-
+        if (Bot.Player.Gold > 30000000)
+            TheAssistant("Gem of Nulgath", quant);
         NewWorldsNewOpportunities("Gem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
