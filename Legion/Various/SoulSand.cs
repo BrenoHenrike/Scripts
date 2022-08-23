@@ -34,12 +34,13 @@ public class AnotherOneBitesTheDust
 
         Core.AddDrop("Soul Sand");
         Core.FarmingLogger("Soul Sand", quant);
-        Core.RegisterQuests(7991);
         while (!Bot.ShouldExit && !Core.CheckInventory("Soul Sand", quant))
         {
+            Core.EnsureAccept(7991);
             Farm.BattleUnderB("Bone Dust", 333);
             Legion.ApprovalAndFavor(0, 400);
             Legion.DarkToken(80);
+            Core.EnsureComplete(7991);
         }
     }
 }
