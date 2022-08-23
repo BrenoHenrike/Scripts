@@ -47,10 +47,10 @@ public class LegionExercise3
         {
             Core.EnsureAccept(823);
             Core.EquipClass(ClassType.Farm);
-            if (!Core.CheckInventory(54257, 24))
+            if (!Core.CheckInventory("Chaos Egg", 24))
             {
-                Core.Logger($"Hunting Chaos Egg for Chaos Egg, (24) [Temp = true");
-                while (!Bot.ShouldExit && !Core.CheckInventory(54257, 24))
+                Core.Logger($"Hunting Chaos Egg for Chaos Egg, (24) [Temp = false]");
+                while (!Core.CheckInventory("Chaos Egg", 24))
                     Core.HuntMonster("Uppercity", "Chaos Egg", publicRoom: false, log: false);
             }
             Core.HuntMonster("Mobius", "Chaos Sp-Eye", "Chaorrupted Essence", 50, isTemp: false, publicRoom: false);
