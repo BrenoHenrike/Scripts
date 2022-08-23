@@ -1794,7 +1794,7 @@ public class CoreFarms
         {
             if (!Bot.Quests.IsAvailable(3445))
             {
-                Core.Logger("Can't do farming quest [Slay the Spiderkin] (/twilightedge)", messageBox: true);
+                Core.Logger("Quest Locked \"Slay the Spiderkin\" (/twilightedge)", messageBox: true);
                 return;
             }
             Core.EquipClass(ClassType.Farm);

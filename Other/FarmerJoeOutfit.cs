@@ -1,26 +1,40 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
-//cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Enhancement/InventoryEnhancer.cs
-//cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Enhancement/InventoryEnhancer.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Story/XansLair.cs
-//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
+//cs_include Scripts/Dailies/LordOfOrder.cs
+//cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
+//cs_include Scripts/Nation/VHL/CoreVHL.cs
+//cs_include Scripts/Dailies/0AllDailies.cs
+//cs_include Scripts/Story/Nation/CitadelRuins.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
+//cs_include Scripts/Story/DragonFableOrigins.cs
+//cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
+//cs_include Scripts/Other/Weapons/BurningBlade.cs
+//cs_include Scripts/Other/Classes/REP-based/EvolvedShaman.cs
+//cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
+//cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
+//cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
+//cs_include Scripts/Good/Paladin.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
-public class FarmerJoeOutfit
+public class FarmerJoeStartingTheAcc
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -32,12 +46,24 @@ public class FarmerJoeOutfit
     public ArchPaladin AP = new();
     public DragonShinobi DS = new();
     public CapeOfAwe COA = new();
+    public Core13LoC LOC => new Core13LoC();
+    public CoreDailies Daily = new();
+    public LordOfOrder LOO = new();
+    public CoreVHL VHL = new CoreVHL();
+    public CoreNation Nation = new();
+    public FarmAllDailys FAD = new();
+    public BurningBlade BB = new();
+    public EvolvedShaman ES = new();
+    public GlacialBerserker GB = new();
+    public StoneCrusher SC = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        new Option<bool>("OutFit", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),
+        new Option<bool>("EquipOutfit", "Equip outfit at the end?", "Yay or Nay", false),
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
     };
 
@@ -45,21 +71,84 @@ public class FarmerJoeOutfit
     {
         Core.SetOptions();
 
-        Outfit();
+        Core.BankingBlackList.AddRange(Nation.bagDrops);
+        StartingTheAcc();
 
         Core.SetOptions(false);
     }
 
-    public void Outfit()
+    public void StartingTheAcc()
     {
         if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
+        #region starting out the acc
+        Core.BuyItem("classhalla", 176, "Healer");
+        Farm.Experience(30);
+
+        #endregion starting out the acc
+
+        #region Obtain the Silver Victory Blade
+
+        Core.BuyItem("river", 1213, "Silver Victory Blade");
+        Core.Equip("Silver Victory Blade");
+        InvEn.EnhanceInventory();
+        #endregion Obtain the Silver Victory Blade
+
+        #region Level to 75
+        Farm.Experience(75);
+        #endregion Level to 75
+
+        #region Prepare for Lvl100
+        //step 1 Farming Class:
+        LOC.Complete13LOC();
+        Adv.BuyItem("Confrontation", 891, "Chaos Slayer Berserker", shopItemID: 24359);
+        AP.GetAP();
+
+        //Step 2 Solo CLass:
+        LOO.GetLoO();
+
+        //Step 3 Dailies for Classes:
+        FAD.DoAllDailys();
+
+        //Step 4 Blade and Cape of Awe:
+        Farm.BladeofAweREP(6, true);
+        COA.GetCoA();
+
+        //Step 5 Burning Blade:
+        Core.EquipClass(ClassType.Solo);
+        BB.GetBurningBlade();
+
+        //Step 6 Improving Efficiency:
+        EI.GetEI();
+        ES.GetES();
+        GB.GetGB();
+        SC.GetSC();
+        Adv.GearStore();
+        Adv.BuyItem("Classhalla", 178, "Ninja");
+        Core.Equip("Ninja");
+        Adv.rankUpClass("Ninja");
+        Adv.GearStore(true);
+        #endregion Prepare for Lvl100
+
+        #region Leveling to 100
+        Farm.Experience();
+        #endregion Leveling to 100
+
+        #region Ending & Extras 
         //Pre-Farm Enh
         Adv.EnhanceEquipped(EnhancementType.Lucky);
         InvEn.EnhanceInventory();
-        Farm.BladeofAweREP(6, true);
+        Scythe.GetHBReapersScythe();
+        #endregion Ending & Extras
 
+        if (Bot.Config.Get<bool>("OutFit"))
+            Outfit();
+
+    }
+
+    public void Outfit()
+    {
         //Easy Difficulty Stuff
         RagsandHat();
         ServersAreDown();
@@ -68,25 +157,27 @@ public class FarmerJoeOutfit
 
         //Medium Difficulty Stuff
         DS.GetDSS();
-        EI.GetEI();
-        AP.GetAP();
         COA.GetCoA();
         Farm.Experience(80);
         Adv.EnhanceEquipped(EnhancementType.Lucky);
 
         //Hard Difficulty Stuff
-        Scythe.GetHBReapersScythe();
         Adv.EnhanceEquipped(EnhancementType.Lucky);
         Farm.Experience();
 
         //Extra Stuff
         Pets();
 
-        Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
-
+        if (Bot.Config.Get<bool>("EquipOutfit"))
+        {
+            Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
+            Core.Equip(Bot.Config.Get<PetChoice>("PetChoice").ToString());
+        }
+        
         Core.Logger("We are farmers, bum ba dum bum bum bum bum");
-
     }
+
+    #region other stuff
 
     public void Pets()
     {
@@ -140,4 +231,6 @@ public class FarmerJoeOutfit
         HotMama,
         Akriloth
     };
+    #endregion other stuff
+
 }
