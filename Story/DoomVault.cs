@@ -24,10 +24,7 @@ public class DoomVaultA
     public void StoryLine()
     {
         if (Core.isCompletedBefore(3008))
-        {
-            Core.Logger("VaultA Complete");
             return;
-        }
 
         Story.PreLoad();
 

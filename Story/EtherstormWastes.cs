@@ -19,7 +19,7 @@ public class EtherStormWastes
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(3535))
+        if (Core.isCompletedBefore(1639))
             return;
 
         Story.PreLoad();

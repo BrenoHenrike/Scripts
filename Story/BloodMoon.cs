@@ -19,15 +19,15 @@ public class BloodMoon
 
     public void BloodMoonSaga()
     {
+        if (Core.isCompletedBefore(6067))
+            return;
+
         BloodMoonMap();
         Maxius();
     }
 
     public void BloodMoonMap()
     {
-        if (Core.isCompletedBefore(6067))
-            return;
-
         Story.PreLoad();
 
         Core.EquipClass(ClassType.Farm);

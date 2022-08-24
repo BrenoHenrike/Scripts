@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/DoomVault.cs
 using Skua.Core.Interfaces;
 
 public class DoomVaultB
@@ -12,6 +13,7 @@ public class DoomVaultB
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
+    public DoomVaultA DV = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -24,11 +26,14 @@ public class DoomVaultB
 
     public void StoryLine()
     {
-        // if (Core.isCompletedBefore(3004))
-        // {
-        //     Core.Logger("VaultB Complete");
-        //     return;
-        // }
+        if (!Bot.Quests.IsUnlocked(2972))
+        {
+            Core.Logger("DoomVaultB not unlocked, Completing DoomVault");
+            DV.StoryLine();
+        }
+        
+        if (Core.isCompletedBefore(3004))
+            return;
 
         Core.AcceptandCompleteTries = 1;
 
