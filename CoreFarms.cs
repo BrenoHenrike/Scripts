@@ -241,7 +241,7 @@ public class CoreFarms
         if (Bot.Player.Level >= level && Bot.Player.Gold >= gold)
             return;
 
-        if (!Bot.Quests.IsAvailable(7979))
+        if (!Bot.Quests.IsUnlocked(7979))
         {
             Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs in order to use the SevenCircles method");
             return;
