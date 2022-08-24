@@ -159,21 +159,20 @@ public class YulgarsDualWieldMerge
                         Core.Logger($"You don't own any of the pets/Membership to get {req.Name}");
                         return;
                     }
-                    if (Core.CheckInventory("Phoenix Blade of Nulgath"))
-                        return;
+
                     if (Core.CheckInventory(5373))
-                        Core.EnsureAccept(1122);
+                        Core.EnsureAccept(2558);
                     else if (Core.CheckInventory(4809))
-                        Core.EnsureAccept(1109);
+                        Core.EnsureAccept(558);
                     Core.AddDrop(Nation.bagDrops);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("lair", "Red Dragon", req.Name, isTemp: false);
+                    Core.HuntMonster("lair", "Red Dragon", "Phoenix Blade", isTemp: false);
                     Nation.FarmDarkCrystalShard(5);
                     Nation.FarmDiamondofNulgath(10);
                     Nation.SwindleBulk(5);
                     Nation.FarmUni13(1);
                     Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
-                    Core.AddDrop("Phoenix Blade of Nulgath");
+                    Core.AddDrop(req.Name);
                     if (Core.CheckInventory(5373))
                         Core.EnsureComplete(2558);
                     else if (Core.CheckInventory(4809))
@@ -551,6 +550,11 @@ public class YulgarsDualWieldMerge
                     Core.HuntMonster("forest", "Boss Zardman", req.Name, isTemp: false);
                     break;
 
+                case "Phoenix Blade":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("lair", "Red Dragon", "Phoenix Blade", isTemp: false);
+                    break;
+
                 case "Burn it Down":
                     if (!Daily.CheckDaily(187, true, req.Name))
                     {
@@ -560,7 +564,7 @@ public class YulgarsDualWieldMerge
                     Core.AddDrop(req.Name);
                     Core.EnsureAccept(187);
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("portalundead", "*", "Fire Gem");
+                    Core.KillMonster("portalundead", "Enter", "Spawn", "*", "Fire Gem");
                     Core.EnsureComplete(187);
                     Bot.Wait.ForPickup(req.Name);
                     break;
