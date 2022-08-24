@@ -74,16 +74,16 @@ public class GlaceraStory
         Story.MapItemQuest(3918, "frozentower", 3013);
 
         // Polar Penetration and Progress
-        Story.KillQuest(3919, "frozentower", "Polar Elemental");
         Story.MapItemQuest(3919, "frozentower", 3008, 6);
+        Story.KillQuest(3919, "frozentower", "Polar Elemental");
 
         // Save the Astronomer Apprentice
-        Story.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" });
         Story.MapItemQuest(3920, "frozentower", 3020);
+        Story.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" });
 
         // Glacial Elixir
-        Story.KillQuest(3921, "frozentower", "FrostDeep Dweller");
         Story.MapItemQuest(3921, "frozentower", 3017, 6);
+        Story.KillQuest(3921, "frozentower", "FrostDeep Dweller");
 
         // Retrieve the Energy Starstone
         Story.KillQuest(3922, "frozentower", "Polar Elemental");
@@ -95,9 +95,9 @@ public class GlaceraStory
         Story.MapItemQuest(3924, "frozentower", 3009, 6);
 
         // Divination Draft
-        Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
         Story.MapItemQuest(3925, "frozentower", 3012, 4);
         Story.MapItemQuest(3925, "frozentower", 3011, 4);
+        Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
 
         // Retrieve the Light StarStone
         Story.MapItemQuest(3926, "frozentower", 3021, 4);
@@ -127,8 +127,8 @@ public class GlaceraStory
         Story.KillQuest(3934, "frozentower", "Rotten Ice");
 
         // Create the Gate
-        Story.KillQuest(3935, "frozentower", "Ice Wolf");
         Story.MapItemQuest(3935, "frozentower", 3018, 13);
+        Story.KillQuest(3935, "frozentower", "Ice Wolf");
 
         // Drive Back the Invaders
         Story.KillQuest(3936, "frozentower", "Frost Invader");
@@ -237,10 +237,10 @@ public class GlaceraStory
         Story.KillQuest(3960, "northstar", "Frost Reaper");
 
         // Saving Syrrus' Spirit
-        Story.KillQuest(3961, "northstar", "Frost Reaper"); //loadstone peice
         Story.MapItemQuest(3961, "northstar", 3060, 5); //plush bear
         Story.MapItemQuest(3961, "northstar", 3061, 7); //snowdrop blossom
         Story.MapItemQuest(3961, "northstar", 3073, 5); //journal page
+        Story.KillQuest(3961, "northstar", "Frost Reaper"); //loadstone peice
 
         // It's a Trap!
         Story.MapItemQuest(3972, "northstar", 3063, 10);

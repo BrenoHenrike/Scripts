@@ -68,7 +68,6 @@ public class CoreFarms
             return;
 
         HonorHall(quant);
-        SevenCirclesWar(1, quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
     }

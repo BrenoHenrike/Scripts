@@ -121,7 +121,7 @@ public class FollowerJoe
         foreach (string Map in NonMemMaps)
         {
             Bot.Quests.UpdateQuest(3881);
-            Core.Logger($"Try #{maptry++}, Joining Map: {Map}", "LockedZoneHandler");
+            Core.Logger($"Searching for {playerName} in {Map}", "LockedZoneHandler");
             Core.Join(Map);
 
             switch (Map.ToLower())
