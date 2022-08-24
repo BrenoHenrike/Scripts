@@ -1965,10 +1965,10 @@ public class Core13LoC
         Story.KillQuest(3077, "archives", "Chaos Bandit");
 
         //Thwarting the Spies
-        Story.KillQuest(3078, "archives", "Camouflaged Sp-Eye");
+        Story.KillQuest(3078, "archives", "Camouflaged Sp-eye");
 
         //Fight Chaos With Clerics
-        Story.KillQuest(3079, "archives", new[] { "Chaos Bandit", "Camouflaged Sp-Eye" });
+        Story.KillQuest(3079, "archives", new[] { "Chaos Bandit", "Camouflaged Sp-eye" });
 
         //Locate the Source
         Story.KillQuest(3080, "archives", "Chaos Bandit");
