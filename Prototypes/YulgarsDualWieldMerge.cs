@@ -575,6 +575,11 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "DragonBlade of Nulgath":
+                    if (!Core.IsMember)
+                    {
+                        Core.Logger($"{req.Name} requires Membership to obtain");
+                        return;
+                    }
                     DBoN.GetDragonBlade();
                     break;
 
