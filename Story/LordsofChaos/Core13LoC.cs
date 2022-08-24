@@ -1698,7 +1698,7 @@ public class Core13LoC
         Story.MapItemQuest(2730, "deathpits", 1693, 9);
 
         //Honor The Dead
-        Story.KillQuest(2731, "deathpits", new[] { "Sundered Darkblood", "Ghastly Darkblood", "Rotting Darkblood" });
+        Story.KillQuest(2731, "deathpits", new[] { "Sundered Darkblood", "Rotting Darkblood", "Ghastly Darkblood" });
 
         //Ties to Life
         Story.MapItemQuest(2732, "deathpits", 1694, 12);
