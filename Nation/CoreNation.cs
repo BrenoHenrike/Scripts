@@ -559,9 +559,12 @@ public class CoreNation
                 }
 
                 if (Bot.Inventory.IsMaxStack(item))
+                {
                     Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item).MaxStack})");
-                else Core.FarmingLogger(item, quant);
+                    break;
+                }
             }
+            
             Core.CancelRegisteredQuests();
         }
     }
