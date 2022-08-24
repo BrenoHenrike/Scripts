@@ -13,7 +13,7 @@ public class BuyScrolls
     public string OptionsStorage = "BuyScrolls";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("UseMysticParchment", "use Mystic Parchment instead of gold To Buy Ink", "", false),
+        new Option<bool>("UseMysticParchment", "Use Mystic Parchment", "Use Mystic Parchment instead of gold To Buy Ink", false),
         new Option<Scrolls>("scrollSelect", "Scroll of", "Select the scroll of your choise"),
         new Option<int>("scrollAmount", "How many", "Write -1 to buy up to max. stack", -1),
     };
