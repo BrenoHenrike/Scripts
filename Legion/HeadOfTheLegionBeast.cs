@@ -158,14 +158,12 @@ public class HeadoftheLegionBeast
             return;
 
         Core.AddDrop(HeadLegionBeast);
-        if (!Story.QuestProgression(7983))
+        if (!Bot.Quests.IsUnlocked(7983))
             Circles.CirclesWar();
         Core.Logger($"Farming {quant} Souls of Heresy");
         Core.RegisterQuests(7983);
         while (!Bot.ShouldExit && !Core.CheckInventory("Souls of Heresy", quant))
-        {
             Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", log: false);
-        }
         Core.CancelRegisteredQuests();
     }
 
