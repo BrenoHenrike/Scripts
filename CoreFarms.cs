@@ -1702,9 +1702,9 @@ public class CoreFarms
             MembershipDues(MemberShipsIDS.Mythsong, rank);
         else
         {
-            if (!Bot.Quests.IsAvailable(4829))
+            if (!Bot.Quests.IsUnlocked(4829))
             {
-                Core.Logger("Can't do farming quest [Stinger, Stinger] (/beehive)", messageBox: true);
+                Core.Logger("Can't do farming quest [Sugar, Sugar] (/beehive)", messageBox: true);
                 return;
             }
             Core.EquipClass(ClassType.Solo);

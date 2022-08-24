@@ -258,9 +258,27 @@ public class CoreAdvanced
             Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
             return;
         }
-        if (faction != "Alchemy")
-            theMethod.Invoke(Farm, new object[] { rank });
-        else theMethod.Invoke(Farm, new object[] { rank, true });
+        
+        try
+        {
+            switch (faction.ToLower())
+            {
+                case "alchemy":
+                case "blacksmith":
+                    theMethod.Invoke(Farm, new object[] { rank, true });
+                    break;
+                case "bladeofawe":
+                    theMethod.Invoke(Farm, new object[] { rank, false });
+                    break;
+                default:
+                    theMethod.Invoke(Farm, new object[] { rank });
+                    break;
+            }
+        }
+        catch
+        {
+            Core.Logger($"Faction {faction} has invalid paramaters, please report", messageBox: true, stopBot: true);
+        }
     }
 
     private Dictionary<int, int> RepCPLevel = new()

@@ -1,4 +1,4 @@
-﻿//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
@@ -796,7 +796,7 @@ public class CoreNation
 
         Core.AddDrop("Dark Crystal Shard");
         if (Bot.Player.Gold > 30000000)
-            TheAssistant("Dark Crystal Shard", quant);
+            TheAssistant("Gem of Nulgath", quant);
         NewWorldsNewOpportunities("Dark Crystal Shard", quant);
         Supplies("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
@@ -828,7 +828,6 @@ public class CoreNation
             return;
 
         Core.AddDrop("Gem of Nulgath");
-
         if (Bot.Player.Gold > 30000000)
             TheAssistant("Gem of Nulgath", quant);
         NewWorldsNewOpportunities("Gem of Nulgath", quant);
@@ -853,6 +852,54 @@ public class CoreNation
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         BloodyChaos(quant);
         KisstheVoid(quant);
+    }
+
+    /// <summary>
+    /// Completes the lair questline to unlock Nation mats if not completed
+    /// </summary>
+    public void DragonSlayerReward()
+    {
+        if (Core.isCompletedBefore(169))
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        if (!Core.isCompletedBefore(169))
+        {
+            if (!Core.isCompletedBefore(168))
+            {
+                if (!Core.isCompletedBefore(167))
+                {
+                    if (!Core.isCompletedBefore(166))
+                    {
+                        if (!Core.isCompletedBefore(165))
+                        {
+                            // 165 - DragonSlayer Veteran
+                            Core.EnsureAccept(165);
+                            Core.HuntMonster("lair", "Water Draconian", "Dragonslayer Veteran Medal", 8);
+                            Core.EnsureComplete(165);
+                        }
+                        // 166 - DragonSlayer Sergeant
+                        Core.EnsureAccept(166);
+                        Core.KillMonster("lair", "Hole", "Down", "*", "Dragonslayer Sergeant Medal", 8);
+                        Core.EnsureComplete(166);
+                    }
+                    // 167 - DragonSlayer Captain
+                    Core.EnsureAccept(167);
+                    Core.KillMonster("lair", "Ledge", "Right", "*", "Dragonslayer Captain Medal", 8);
+                    Core.EnsureComplete(167);
+                }
+                // 168 - DragonSlayer Marshal
+                Core.EquipClass(ClassType.Solo);
+                Core.EnsureAccept(168);
+                Core.HuntMonster("lair", "Red Dragon", "Dragonslayer Marshal Medal", 8);
+                Core.EnsureComplete(168);
+            }
+            // 169 - DragonSlayer Reward
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(169);
+            Core.KillMonster("lair", "Hole", "Down", "*", "Wisp of Dragonspirit", 12);
+            Core.EnsureComplete(169);
+        }
     }
 
     /// <summary>
