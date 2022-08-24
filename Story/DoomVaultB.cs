@@ -24,11 +24,8 @@ public class DoomVaultB
 
     public void StoryLine()
     {
-        // if (Core.isCompletedBefore(3004))
-        // {
-        //     Core.Logger("VaultB Complete");
-        //     return;
-        // }
+        if (Core.isCompletedBefore(3004))
+             return;
             
         Core.AcceptandCompleteTries = 1;
 
