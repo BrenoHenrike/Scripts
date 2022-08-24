@@ -1698,8 +1698,15 @@ public class Core13LoC
         Story.MapItemQuest(2730, "deathpits", 1693, 9);
 
         //Honor The Dead
-        Story.KillQuest(2731, "deathpits", new[] { "Sundered Darkblood", "Rotting Darkblood", "Ghastly Darkblood" });
-
+        if (!Story.QuestProgression(2731))
+        {
+            Core.EnsureAccept(2731);
+            Core.HuntMonster("deathpits", "Sundered Darkblood", "Primarch Mace");
+            Core.HuntMonster("deathpits", "Rotting Darkblood", "Primarch Trident");
+            Core.HuntMonster("deathpits", "Ghastly Darkblood", "Primarch Spear");
+            Core.EnsureComplete(2731);
+        }
+        
         //Ties to Life
         Story.MapItemQuest(2732, "deathpits", 1694, 12);
 
