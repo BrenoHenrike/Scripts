@@ -2234,19 +2234,13 @@ public class Core13LoC
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
-        // Defeat Drakath!
+        // Defeat Drakath! + Defeat Drakath... again!
         if (!Story.QuestProgression(3876) || !Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3876, 3877);
             Core.HuntMonsterMapID("finalbattle", 1, "Drakath Defeated");
             Core.EnsureComplete(3876);
-        }
-        
-        // Defeat Drakath... again!        
-        if (!Story.QuestProgression(3876) || !Story.QuestProgression(3877))
-        {
-            Core.EnsureAccept(3877);
-            Core.HuntMonsterMapID("finalbattle", 14, "Drakath Defeated");
+            Bot.Wait.ForQuestComplete(3876);
             Core.EnsureComplete(3877);
         }
 
