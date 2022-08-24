@@ -2234,24 +2234,30 @@ public class Core13LoC
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
-        // Defeat Drakath! + Defeat Drakath... again!
+        // Defeat Drakath!
         if (!Story.QuestProgression(3876) || !Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3876, 3877);
-            Core.Join("finalbattle", "r1", "Left");
-            Bot.Kill.Monster("Drakath");
-            Core.EnsureComplete(3876, 3877);
+            Core.HuntMonsterMapID("finalbattle", 1, "Drakath Defeated");
+            Core.EnsureComplete(3876);
         }
-
+        
+        // Defeat Drakath... again!        
+        if (!Story.QuestProgression(3876) || !Story.QuestProgression(3877))
+        {
+            Core.EnsureAccept(3877);
+            Core.HuntMonsterMapID("finalbattle", 14, "Drakath Defeated");
+            Core.EnsureComplete(3877);
+        }
 
         //Defeat Drakath!
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
-            Core.Join("finalbattle", "r9", "Left");
-            Bot.Kill.Monster("Drakath");
+            Core.HuntMonsterMapID("finalbattle", 23, "Drakath Defeated");
             Core.EnsureComplete(3878);
         }
+        
         //Defeat the 12 Lords of Chaos!
         if (!Story.QuestProgression(3879))
         {
