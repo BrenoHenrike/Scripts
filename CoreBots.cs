@@ -538,7 +538,7 @@ public class CoreBots
         for (int i = 0; i < quant; i++)
         {
             Bot.Shops.BuyItem(item.ID, item.ShopItemID);
-            Bot.Wait.ForItemBuy(item.ID);
+            Bot.Sleep(ActionDelay);
         }
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
