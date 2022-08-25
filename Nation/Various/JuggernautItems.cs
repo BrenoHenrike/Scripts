@@ -43,7 +43,7 @@ public class JuggernautItemsofNulgath
 
         var Count = 0;
         int x = 1;
-        Quest jugg = Bot.Quests.EnsureLoad(837);
+        Quest jugg = /*Bot.Quests.EnsureLoad*/Core.EnsureLoad(837);
         var item = jugg.Rewards.Find(i => i.ID == (int)reward) ?? null;
         Count = Rewards.Count();
 

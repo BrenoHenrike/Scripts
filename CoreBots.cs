@@ -862,7 +862,9 @@ public class CoreBots
         Quest _EnsureLoad(int questID)
         {
             Bot.Sleep(ActionDelay);
-            return Bot.Quests.EnsureLoad(questID);
+            Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(x => x.ID == questID), () => Bot.Quests.Load(questID), 20);
+            return Bot.Quests.Tree.Find(q => q.ID == questID)!;
+            // return Bot.Quests.EnsureLoad(questID);
         }
     }
 
