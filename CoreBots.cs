@@ -857,7 +857,7 @@ public class CoreBots
 
     public Quest EnsureLoad(int questID)
     {
-        return Bot.Quests.Tree?.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
+        return Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
 
         Quest _EnsureLoad(int questID)
         {
@@ -899,7 +899,7 @@ public class CoreBots
     /// <param name="QuestID">ID of the quest</param>
     public bool isCompletedBefore(int QuestID)
     {
-        Quest QuestData = EnsureLoad(QuestID);
+        Quest? QuestData = EnsureLoad(QuestID);
         try
         {
             return QuestData.Slot < 0 || Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
@@ -907,7 +907,7 @@ public class CoreBots
         catch
         {
             QuestData = Bot.Quests.EnsureLoad(QuestID);
-            return QuestData.Slot < 0 || Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot) >= QuestData.Value;
+            return QuestData?.Slot < 0 || Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData!.Slot) >= QuestData.Value;
         }
     }
 
