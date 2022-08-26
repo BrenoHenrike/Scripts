@@ -192,7 +192,7 @@ public class CoreQOM
             {
                 Core.AddDrop("Blessed Coffee of the Lightguard");
                 Core.EnsureAccept(5405);
-                Core.HuntMonster("sandsea", "Sand Monkey", "Pally Luwak Beans");
+                Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans");
                 Core.EnsureComplete(5405);
             }
             Core.EnsureComplete(5404);
