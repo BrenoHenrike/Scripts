@@ -20,7 +20,6 @@ public class SoC
             Core.Logger("You have already completed Shadows Of Chaos storyline");
             return;
         }
-        CrownsReach();
         DualPlane();
         ChaosAmulet();
         LagunaBeach();
@@ -31,12 +30,6 @@ public class SoC
         BrightForest();
         BrightForestPast();
         BrightForestExtra();
-    }
-
-    public void CrownsReach()
-    {
-        //This Map have no story quests
-        return;
     }
 
     public void DualPlane()
@@ -276,8 +269,8 @@ public class SoC
         Story.KillQuest(7743, "BrightChaos", "Shadow Flame");
 
         //Scared of the Dark 7744
-        Story.KillQuest(7744, "BrightChaos", "Hidden Monster");
         Story.MapItemQuest(7744, "BrightChaos", 7732, 5);
+        Story.KillQuest(7744, "BrightChaos", "Hidden Monster");
 
         //Go Bye-Bye 7745
         Story.KillQuest(7745, "BrightChaos", "Shadow Trap");

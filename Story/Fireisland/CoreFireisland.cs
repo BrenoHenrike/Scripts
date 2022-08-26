@@ -54,8 +54,7 @@ public class Fireisland
         Story.KillQuest(4055, "Embersea", "Living Lava");
 
         //Kill It With Fire [Member] 4056
-        if (!Core.IsMember)
-            return;
+        if (Core.IsMember)
         Story.KillQuest(4056, "Embersea", new[] { "Coal Creeper", "Pyradon", "Fyresyn" });
     }
 
@@ -70,9 +69,7 @@ public class Fireisland
         Story.PreLoad();
 
         if (Story.QuestProgression(4070))
-        {
             PhoenixriseStory.Pyralis();
-        }
 
         //Protect the Plague Sufferers 4076
         Story.KillQuest(4076, "Pyrewatch", new[] { "Coal Creeper", "Lavazard", "Caustocrush" });
@@ -138,7 +135,6 @@ public class Fireisland
         Story.KillQuest(4226, "Fireforge", "Flamewing");
 
         //Final Round: Tyndarius Tigermaster 4230
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4230, "Fireforge", "Tyndarius");
     }
 
@@ -153,11 +149,9 @@ public class Fireisland
         Story.PreLoad();
 
         //Defeat Phedra 4231
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4231, "Lavarun", "Phedra");
 
         //Defeat Mega Tyndarius 4232
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4232, "Lavarun", "Mega Tyndarius");
 
         //The Onslaught Fights On 4235
