@@ -26,7 +26,7 @@ public class Deadmoor
 
         // 4296 A Walking Nightmare
         Story.MapItemQuest(4296, "deadmoor", 3457);
-        
+
         // 4297 A Ritual is Required
         Story.KillQuest(4297, "deadmoor", "Deadmoor Wraith");
 
@@ -43,12 +43,7 @@ public class Deadmoor
         Story.MapItemQuest(4301, "deadmoor", 3459);
 
         // 4302 Bone Breaking Bonds
-        Story.MapItemQuest(4302, "deadmoor", 3449);
-        Story.MapItemQuest(4302, "deadmoor", 3450);
-        Story.MapItemQuest(4302, "deadmoor", 3451);
-        Story.MapItemQuest(4302, "deadmoor", 3452);
-        Story.MapItemQuest(4302, "deadmoor", 3453);
-        Story.MapItemQuest(4302, "deadmoor", 3454);
+        Story.MapItemQuest(4302, "deadmoor", new[] { 3449, 3450, 3451, 3452, 3453, 3454 });
 
         // 4303 Last Shreds of Humanity
         Story.KillQuest(4303, "deadmoor", "Toxic Souleater");
@@ -60,13 +55,7 @@ public class Deadmoor
         Story.KillQuest(4305, "deadmoor", "Geist");
 
         // 4306 The Last Caretaker
-        Story.MapItemQuest(4306, "deadmoor", 3458);
-        Story.MapItemQuest(4306, "deadmoor", 3460);
-        Story.MapItemQuest(4306, "deadmoor", 3461);
-        Story.MapItemQuest(4306, "deadmoor", 3462);
-        Story.MapItemQuest(4306, "deadmoor", 3463);
-        Story.MapItemQuest(4306, "deadmoor", 3464);
-        Story.MapItemQuest(4306, "deadmoor", 3465);
+        Story.MapItemQuest(4306, "deadmoor", new[] { 3458, 3460, 3461, 3462, 3463, 3464, 3465 });
 
         // 4307 The Confrontation
         Story.KillQuest(4307, "deadmoor", "Banshee Mallora");
