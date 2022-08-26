@@ -42,7 +42,8 @@ public class CoreQOM
         Story.KillQuest(4495, "celestialrealm", new[] { "Fallen Knight", "Celestial Bird of Paradise" });
 
         //Power Up!
-        Core.BuyItem("embersea", 1100, "Basic Guard Potion", 10);
+        if (!Story.QuestProgression(4496))
+            Core.BuyItem("embersea", 1100, "Basic Guard Potion", 10);
         Story.KillQuest(4496, "celestialrealm", new[] { "Celestial Bird of Paradise", "Fallen Knight" });
 
         //The Final Spell Fragment
@@ -112,14 +113,12 @@ public class CoreQOM
         Story.MapItemQuest(4506, "lostruins", 3695);
 
         //Defeat the Infernal Warlord
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4507, "lostruins", "Infernal Warlord");
 
         //Celestial Realm at War
         Story.KillQuest(4509, "lostruinswar", "Infernal Imp");
 
         //Defeat the Diabolical Warlord!
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4508, "lostruinswar", "Diabolical Warlord");
 
         //Infernal Destruction
@@ -131,11 +130,10 @@ public class CoreQOM
         Story.MapItemQuest(5375, "infernalspire", 4730);
 
         //Helzekiel
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5376, "infernalspire", "Helzekiel");
 
         //Get the Keys
-        Story.KillQuest(5377, "infernalspire", new[] { "Infernal Hound", "Dungeon Fiend", "Infernal Hound" });
+        Story.KillQuest(5377, "infernalspire", new[] { "Infernal Hound", "Dungeon Fiend", "Dungeon Fiend" });
 
         //Free the Captives
         Story.MapItemQuest(5378, "infernalspire", 4731, 6);
@@ -409,7 +407,6 @@ public class CoreQOM
         Story.KillQuest(5585, "CastleInvasion", "Giant Worm of Teeth");
 
         //Him Again???
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5586, "CastleInvasion", "Lord Balax'el");
     }
 
