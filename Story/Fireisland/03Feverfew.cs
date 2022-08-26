@@ -9,7 +9,7 @@ public class Feverfew
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Phoenixrise Phoenixrise = new();
+    public PhoenixriseStory PhoenixriseStory = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
