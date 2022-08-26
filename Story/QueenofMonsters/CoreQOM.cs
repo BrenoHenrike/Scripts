@@ -861,7 +861,7 @@ public class CoreQOM
         //8089 | Burn it!
         Story.MapItemQuest(8089, "transformation", 8435);
         Story.MapItemQuest(8089, "transformation", 8436);
-        Story.MapItemQuest(8089, "transformation", 8437, AutoCompleteQuest: false);
+        Story.MapItemQuest(8089, "transformation", 8437);
 
         //8090 | Find the Tributes
         Story.KillQuest(8090, "transformation", "Deep Tunneler");
