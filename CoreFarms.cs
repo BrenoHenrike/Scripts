@@ -726,86 +726,108 @@ public class CoreFarms
 
     public void BladeofAweREP(int rank = 10, bool farmBoA = true)
     {
-        if (FactionRank("Blade of Awe") >= rank && !farmBoA)
+        if (!farmBoA && FactionRank("Blade of Awe") >= rank)
+        {
+            Core.Logger($" Faction: \"Blade of Awe\" is already Rank: [{rank}]");
             return;
+        }
 
-        if (farmBoA && Core.CheckInventory(17585))
+        if (farmBoA && Core.CheckInventory(17585) && FactionRank("Blade of Awe") >= rank)
         {
-            Core.Logger("You already own Blade of Awe - getting desired REP only");
-            farmBoA = false;
+            Core.Logger($" Faction: \"Blade of Awe\" is already Rank: [{rank}]");
+            Core.Logger("Blade of Awe Already in Inventory.");
+            return;
         }
 
         if (farmBoA)
-            Core.AddDrop("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
-        Core.AddDrop("Stonewrit Found!", "Handle Found!", "Hilt Found!", "Blade Found!", "Runes Found!");
-        Core.EquipClass(ClassType.Farm);
-        Core.SavedState();
-
-        if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) || (!Bot.Quests.IsUnlocked(2934)))
         {
-            Core.EnsureAccept(2933);
-            Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
-            Core.EnsureComplete(2933);
-            if (farmBoA)
-                Bot.Drops.Pickup("Legendary Stonewrit");
-            Core.Logger("Find the Stonewrit! completed");
+            Core.Logger("Getting Your Blade of Awe, One Moment ( ͡° ͜ʖ ͡°)");
+            GetBoA();
         }
+        else RepFarm(rank);
 
-        if (!Core.CheckInventory("Legendary Handle", toInv: false) || (!Bot.Quests.IsUnlocked(2935)))
+        void BoaQuests()
         {
-            Core.EnsureAccept(2934);
-            Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
-            Core.EnsureComplete(2934);
-            if (farmBoA)
-                Bot.Drops.Pickup("Legendary Handle");
-            Core.Logger("Find the Handle! completed");
-        }
+            if (!farmBoA && Core.isCompletedBefore(2937))
+                return;
 
-        Core.RegisterQuests(2935);
-        while (!Bot.ShouldExit && FactionRank("Blade of Awe") < 10 || !Core.CheckInventory("Legendary Hilt", toInv: false))
-        {
-            Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
-            if (farmBoA)
+            if (farmBoA && !Core.isCompletedBefore(2937))
+                Core.Logger("Doing Quests For Blade of Awe Quest Shop");
+
+            Core.AddDrop("Stonewrit Found!", "Handle Found!", "Hilt Found!", "Blade Found!", "Runes Found!");
+            Core.EquipClass(ClassType.Farm);
+            if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) && (!Bot.Quests.IsUnlocked(2934)))
             {
-                if (FactionRank("Blade of Awe") >= 6)
-                {
-                    Bot.Drops.Pickup("Legendary Hilt");
-                    break;
-                }
-                Core.CancelRegisteredQuests();
+                Core.EnsureAccept(2933);
+                Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
+                Core.EnsureComplete(2933);
+                Core.Logger("Find the Stonewrit! completed");
             }
-        }
-        Core.CancelRegisteredQuests();
 
-        if (farmBoA)
-        {
-            Core.RegisterQuests(2936, 2937);
-            if (FactionRank("Blade of Awe") < 6 || !Bot.Quests.IsAvailable(2939))
+            if (!Core.CheckInventory("Legendary Handle", toInv: false) && (!Bot.Quests.IsUnlocked(2935)))
             {
-                if (!Core.CheckInventory("Legendary Blade", toInv: false))
-                {
-                    Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false, log: false);
-                    Bot.Drops.Pickup("Legendary Blade");
-                    Core.Logger("Find the Blade! completed");
-                }
-                if (!Core.CheckInventory("Legendary Runes", toInv: false))
-                {
-                    Core.KillEscherion("Runes Found!", publicRoom: true, log: false);
-                    Bot.Drops.Pickup("Legendary Runes");
-                    Core.Logger("Find the Runes! completed");
-                }
-                Core.Unbank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
-                Core.Logger("Buying From Merge Shop");
-                Core.BuyItem("museum", 630, "Blade of Awe");
+                Core.EnsureAccept(2934);
+                Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
+                Core.EnsureComplete(2934);
+                Core.Logger("Find the Handle! completed");
             }
-            if (FactionRank("Blade of Awe") >= 6 && Bot.Quests.IsAvailable(2939))
+
+            if (!Core.CheckInventory("Legendary Hilt", toInv: false) && (!Bot.Quests.IsUnlocked(2936)))
             {
-                Core.Logger("Buying From Quest Shop");
-                Core.BuyItem("museum", 631, "Blade of Awe");
+                Core.EnsureAccept(2935);
+                Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
+                Core.EnsureComplete(2935);
+                Core.Logger("Find the Hilt! completed");
             }
+
+            if (!Core.CheckInventory("Legendary Blade", toInv: false) && (!Bot.Quests.IsUnlocked(2937)))
+            {
+                Core.EnsureAccept(2936);
+                Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false, log: false);
+                Core.EnsureComplete(2936);
+                Core.Logger("Find the Blade! completed");
+            }
+
+            if (!Core.CheckInventory("Legendary Runes", toInv: false) && (!Bot.Quests.IsUnlocked(8757)))
+            {
+                Core.EnsureAccept(2937);
+                Core.KillEscherion("Runes Found!", publicRoom: true, log: false);
+                Core.EnsureComplete(2937);
+                Core.Logger("Find the Runes! completed");
+            }
+            Core.ToBank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
         }
-        Core.CancelRegisteredQuests();
-        Core.SavedState(false);
+
+        void GetBoA()
+        {
+            if (!Core.isCompletedBefore(8757))
+                BoaQuests();
+            if (FactionRank("Blade of Awe") < 6)
+                RepFarm(6);
+
+            // Core.Logger("Buying From Quest Shop");
+            Core.BuyItem("museum", 631, 17585);
+            // Core.Relogin();
+        }
+
+        void RepFarm(int rank)
+        {
+            if (FactionRank("Blade of Awe") >= rank)
+                return;
+
+            if (!Core.isCompletedBefore(2937))
+                BoaQuests();
+
+            Core.SavedState();
+            Core.EquipClass(ClassType.Farm);
+            Core.Logger($"Farming rank {rank}");
+
+            Core.RegisterQuests(2935);
+            while (!Bot.ShouldExit && FactionRank("Blade of Awe") < rank)
+                Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
+            Core.CancelRegisteredQuests();
+            Core.SavedState(false);
+        }
     }
 
     public void BrightoakREP(int rank = 10)
