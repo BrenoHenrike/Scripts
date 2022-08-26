@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreFarm.cs
+//cs_include Scripts/CoreFarms.cs
 
 using Skua.Core.Interfaces;
 
