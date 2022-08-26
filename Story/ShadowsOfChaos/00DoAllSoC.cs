@@ -7,7 +7,7 @@ public class DoAllSoC
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-
+    public SoC SoC = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -16,6 +16,5 @@ public class DoAllSoC
         SoC.CompleteCoreSoC();
 
         Core.SetOptions(false);
-
     }
 }

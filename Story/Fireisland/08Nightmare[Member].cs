@@ -8,6 +8,7 @@ public class Nightmare
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public Fireisland Fireisland = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

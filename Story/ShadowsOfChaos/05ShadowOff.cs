@@ -8,6 +8,7 @@ public class ShadowOff
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public SoC SoC = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
