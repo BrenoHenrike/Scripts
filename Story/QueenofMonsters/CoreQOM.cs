@@ -42,7 +42,8 @@ public class CoreQOM
         Story.KillQuest(4495, "celestialrealm", new[] { "Fallen Knight", "Celestial Bird of Paradise" });
 
         //Power Up!
-        Core.BuyItem("embersea", 1100, "Basic Guard Potion", 10);
+        if (!Story.QuestProgression(4496))
+            Core.BuyItem("embersea", 1100, "Basic Guard Potion", 10);
         Story.KillQuest(4496, "celestialrealm", new[] { "Celestial Bird of Paradise", "Fallen Knight" });
 
         //The Final Spell Fragment
@@ -135,7 +136,7 @@ public class CoreQOM
         Story.KillQuest(5376, "infernalspire", "Helzekiel");
 
         //Get the Keys
-        Story.KillQuest(5377, "infernalspire", new[] { "Infernal Hound", "Dungeon Fiend", "Infernal Hound" });
+        Story.KillQuest(5377, "infernalspire", new[] { "Infernal Hound", "Dungeon Fiend", "Dungeon Fiend" });
 
         //Free the Captives
         Story.MapItemQuest(5378, "infernalspire", 4731, 6);
@@ -194,7 +195,7 @@ public class CoreQOM
             {
                 Core.AddDrop("Blessed Coffee of the Lightguard");
                 Core.EnsureAccept(5405);
-                Core.HuntMonster("sandsea", "Sand Monkey", "Pally Luwak Beans");
+                Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans");
                 Core.EnsureComplete(5405);
             }
             Core.EnsureComplete(5404);
