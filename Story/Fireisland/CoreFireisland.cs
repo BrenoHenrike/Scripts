@@ -18,11 +18,14 @@ public class Fireisland
         Core.SetOptions(false);
     }
 
-        public void CompleteFireIsland()
+    public void CompleteFireIsland()
+    {
+        if (Core.isCompletedBefore(4235))
         {
-            if (Core.isCompletedBefore(4235))
-            {Core.Logger("You have already completed FireIsland storyline");
-                return;}
+            Core.Logger("You have already completed FireIsland storyline");
+            return;
+        }
+
         Embersea();
         Pyrewatch();
         PhoenixriseStory.Feverfew();
@@ -30,21 +33,26 @@ public class Fireisland
         Fireforge();
         Lavarun();
         Brimstone();
-        Nightmare();   
-        }
+        Nightmare();
+    }
+
     public void Embersea()
     {
         if (Core.isCompletedBefore(4055))
-        {Core.Logger("You have already completed Embersea storyline");
-            return;}
+        {
+            Core.Logger("You have already completed Embersea storyline");
+            return;
+        }
 
         Story.PreLoad();
 
         //Heat of Battle 4054
         Story.KillQuest(4054, "Embersea", new[] { "Flame Soldier", "Storm Scout" });
+
         //Light the Flame 4055
         Story.MapItemQuest(4055, "Embersea", 3153, 22);
         Story.KillQuest(4055, "Embersea", "Living Lava");
+
         //Kill It With Fire [Member] 4056
         if (!Core.IsMember)
             return;
@@ -54,13 +62,17 @@ public class Fireisland
     public void Pyrewatch()
     {
         if (Core.isCompletedBefore(4081))
-        {Core.Logger("You have already completed Pyrewatch storyline");
-            return;}
+        {
+            Core.Logger("You have already completed Pyrewatch storyline");
+            return;
+        }
 
         Story.PreLoad();
 
         if (Story.QuestProgression(4070))
-        {PhoenixriseStory.Pyralis();}
+        {
+            PhoenixriseStory.Pyralis();
+        }
 
         //Protect the Plague Sufferers 4076
         Story.KillQuest(4076, "Pyrewatch", new[] { "Coal Creeper", "Lavazard", "Caustocrush" });
@@ -85,8 +97,10 @@ public class Fireisland
     public void Fireforge()
     {
         if (Core.isCompletedBefore(4226))
-        {Core.Logger("You have already completed Fireforge storyline");
-            return;}
+        {
+            Core.Logger("You have already completed Fireforge storyline");
+            return;
+        }
 
         Story.PreLoad();
 
@@ -131,9 +145,13 @@ public class Fireisland
     public void Lavarun()
     {
         if (Core.isCompletedBefore(4235))
-        {Core.Logger("You have already completed Lavarun storyline");
-            return;}
+        {
+            Core.Logger("You have already completed Lavarun storyline");
+            return;
+        }
+
         Story.PreLoad();
+
         //Defeat Phedra 4231
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4231, "Lavarun", "Phedra");
@@ -149,11 +167,15 @@ public class Fireisland
     public void Brimstone()
     {
         if (Core.isCompletedBefore(4115))
-        {Core.Logger("You have already completed Brimstone storyline");
-            return;}
-        if ((!Core.IsMember))
-            {Core.Logger("You need to be a member for complete Brimestone questline.");
-            return;}
+        {
+            Core.Logger("You have already completed Brimstone storyline");
+            return;
+        }
+        if (!Core.IsMember)
+        {
+            Core.Logger("You need to be a member for complete Brimestone questline.");
+            return;
+        }
 
         //The Hard Way 4107
         Story.KillQuest( 4107, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" } );
@@ -186,11 +208,16 @@ public class Fireisland
     public void Nightmare()
     {
         if (Core.isCompletedBefore(4157))
-        {Core.Logger("You have already completed Nightmare storyline");
-            return;}
-        if ((!Core.IsMember))
-            {Core.Logger("You need to be a member for complete Nightmare questline.");
-        return;}
+        {
+            Core.Logger("You have already completed Nightmare storyline");
+            return;
+        }
+        if (!Core.IsMember)
+        {
+            Core.Logger("You need to be a member for complete Nightmare questline.");
+            return;
+        }
+        Story.PreLoad();
 
         //Fear of Clowns? 4143
         Story.KillQuest(4143, "Nightmare", "Bobble Clown");
@@ -205,7 +232,7 @@ public class Fireisland
         Story.KillQuest(4146, "Nightmare", new[] { "Wrasp", "Sneak" });
 
         //Fear of Falling? 4147
-        Story.MapItemQuest(4147, "Nightmare", 3262); 
+        Story.MapItemQuest(4147, "Nightmare", 3262);
 
         //Fear of Germs? 4148
         Story.KillQuest(4148, "Nightmare", "Germs|Sewage Elemental");

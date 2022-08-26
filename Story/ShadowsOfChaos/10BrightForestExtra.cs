@@ -8,13 +8,13 @@ public class BrightForestExtra
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
-    public SoC SoC = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+
         SoC.BrightForestExtra();
+
         Core.SetOptions(false);
     }
 }

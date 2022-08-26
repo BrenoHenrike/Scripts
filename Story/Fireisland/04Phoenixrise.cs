@@ -12,19 +12,12 @@ public class Phoenixrise
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
-    public Fireisland Fireisland = new();
-    public PhoenixriseStory PhoenixriseStory = new();
-
-
-
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        Fireisland.PhoenixriseStory.Phoenixrise();
+        PhoenixriseStory.Phoenixrise();
 
         Core.SetOptions(false);
     }
-
-
 }
