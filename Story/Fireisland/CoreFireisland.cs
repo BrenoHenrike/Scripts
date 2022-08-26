@@ -205,7 +205,7 @@ public class Fireisland
         Story.KillQuest(4146, "Nightmare", new[] { "Wrasp", "Sneak" });
 
         //Fear of Falling? 4147
-        Story.MapItemQuest(4147, "Nightmare", 0000000); ///////// Neeeds to be later edited to the correct map item id
+        Story.MapItemQuest(4147, "Nightmare", 3262); 
 
         //Fear of Germs? 4148
         Story.KillQuest(4148, "Nightmare", "Germs|Sewage Elemental");
