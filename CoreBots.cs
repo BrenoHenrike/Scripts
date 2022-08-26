@@ -516,7 +516,7 @@ public class CoreBots
         if (item.Coins && item.Cost > 0)
             if (Bot.ShowMessageBox(
                                 $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
-                                "Warning: Costs AC!")
+                                "Warning: Costs AC!", true)
                             != true)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
             else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
