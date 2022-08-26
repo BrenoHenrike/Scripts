@@ -78,8 +78,8 @@ public class Fireisland
         Story.KillQuest(4076, "Pyrewatch", new[] { "Coal Creeper", "Lavazard", "Caustocrush" });
 
         //Ease the Ill 4077
-        Story.KillQuest(4077, "Pyrewatch", new[] { "Lavazard", "Living Lava" });
         Story.MapItemQuest(4077, "Pyrewatch", 3161, 5);
+        Story.KillQuest(4077, "Pyrewatch", new[] { "Lavazard", "Living Lava" });
 
         //Defend Pyrewatch Peak 4078
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
