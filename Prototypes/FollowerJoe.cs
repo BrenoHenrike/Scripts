@@ -87,8 +87,6 @@ public class FollowerJoe
             "tercessuinotlim",
             "doomvault",
             "doomvaultb",
-            "ledgermayne",
-            "lair",
             "shadowrealmpast",
             "shadowrealm",
             "battlegrounda",
@@ -97,21 +95,19 @@ public class FollowerJoe
             "battlegroundd",
             "battlegrounde",
             "battlegroundf",
+            "confrontation",
             "chaoslord",
             "darkoviaforest",
-            "doomwoodforest",
+            "doomwood",
             "hollowdeep",
-            "hyperiumstarship",
-            "moonyard",
-            "moonyardb",
-            "superlowe",
-            "willowcreek",
-            "zephyrus"
+            "hyperium",
+            "willowcreek"
         };
         string[] MemMaps =
         {
             "shadowlordpast",
-            "binky"
+            "binky",
+            "superlowe"
         };
         string playerName = Bot.Config.Get<string>("playerName");
 
