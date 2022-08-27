@@ -54,7 +54,7 @@
 
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 
-//cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
+//cs_include Scripts/Story/DageTheEvilIsland/CoreDageTheEvilIsland.cs
 
 //cs_include Scripts/Story/Akriloth.cs
 //cs_include Scripts/Story/Artixpointe.cs
@@ -177,7 +177,6 @@ public class AllStory
     public RuinedCrown RuinedCrown = new();
     public Shinkansen Shinkansen = new();
     public ShadowVoid ShadowVoid = new();
-
     public SkyPirateQuests SkyPirateQuests = new();
     public StarSinc StarSinc = new();
     public Table Table = new();
@@ -325,6 +324,7 @@ public class AllStory
         CoreFireIsland.CompleteFireIsland();
         Core.Logger($"Story: Fireisland Maps - Complete");
         #endregion
+
         #region CoreDageTheEvilIsland
         CoreDageTheEvilIsland.CompleteDageTheEvilIslandStory();
         Core.Logger($"Story: DageTheEvil island Maps - Complete");
