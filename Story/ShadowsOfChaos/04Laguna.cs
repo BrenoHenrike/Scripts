@@ -8,13 +8,13 @@ public class Laguna
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public SoC SoC = new();
+    public CoreSoC CoreSoC = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        SoC.Laguna();
+        CoreSoC.Laguna();
 
         Core.SetOptions(false);
     }

@@ -8,13 +8,13 @@ public class BrightChaos
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public SoC SoC = new();
+    public CoreSoC CoreSoC = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        SoC.BrightChaos();
+        CoreSoC.BrightChaos();
 
         Core.SetOptions(false);
     }

@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class SoC
+public class CoreSoC
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;

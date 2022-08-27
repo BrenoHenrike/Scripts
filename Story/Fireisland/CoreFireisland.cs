@@ -4,7 +4,7 @@
 
 using Skua.Core.Interfaces;
 
-public class Fireisland
+public class CoreFireIsland
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -68,8 +68,7 @@ public class Fireisland
 
         Story.PreLoad();
 
-        if (Story.QuestProgression(4070))
-            PhoenixriseStory.Pyralis();
+        PhoenixriseStory.Pyralis();
 
         //Protect the Plague Sufferers 4076
         Story.KillQuest(4076, "Pyrewatch", new[] { "Coal Creeper", "Lavazard", "Caustocrush" });
@@ -145,8 +144,6 @@ public class Fireisland
             Core.Logger("You have already completed Lavarun storyline");
             return;
         }
-
-        Story.PreLoad();
 
         //Defeat Phedra 4231
         Story.KillQuest(4231, "Lavarun", "Phedra");
