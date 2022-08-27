@@ -31,7 +31,7 @@ public class DragonBladeofNulgath
 
     public void GetDragonBlade()
     {
-        if (Core.CheckInventory("DragonBlade of Nulgath"))
+        if (Core.CheckInventory("DragonBlade of Nulgath") || (!Core.IsMember))
             return;
 
         Core.AddDrop(Nation.bagDrops);
