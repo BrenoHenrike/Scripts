@@ -77,7 +77,7 @@ public class PhoenixriseStory
         //Defend Pyrewatch Peak
         Story.KillQuest(4078, "pyrewatch", "Fire Pikeman");
         //Signal Fire
-        Story.KillQuest(4079, "pyrewatch", new[] { "Storm Scout", "Flame Soldier", "Fyreborn Tiger", "Fire Pikeman" });
+        Story.KillQuest(4079, "pyrewatch", new[] {"Flame Soldier", "Storm Scout", "Fyreborn Tiger" });
         //Spreading Like Wildfire
         Story.MapItemQuest(4080, "pyrewatch", 3162, 4);
     }
@@ -105,14 +105,14 @@ public class PhoenixriseStory
         }
         //Rumors and Smoke
         Story.MapItemQuest(4131, "feverfew", 3245);
-        Story.KillQuest(4131, "feverfew", new[] { "Firestorm Knight", "Firestorm Major", "Firestorm Knight", "Firestorm Major" });
+        Story.KillQuest(4131, "feverfew", new[] { "Firestorm Knight", "Firestorm Knight", "Firestorm Major", "Firestorm Major" });
         //Dam the Flood
         Story.MapItemQuest(4132, "feverfew", 3244, 5);
         //Salvage Mission
         Story.MapItemQuest(4133, "feverfew", 3243, 5);
         Story.KillQuest(4133, "feverfew", "Twisted Undine");
         //Fear the Fog
-        Story.KillQuest(4134, "feverfew", new[] { "Salamander", "Feverfew Vase", "Twisted Undine", "Coral Creeper", "Firestorm Knight" });
+        Story.KillQuest(4134, "feverfew", new[] {"Firestorm Knight" ,"Twisted Undine", "Feverfew Vase", "Coral Creeper", "Salamander" });
         //When There's Smoke...
         Story.MapItemQuest(4135, "feverfew", 3248);
         //Firin' This Guy
@@ -120,7 +120,7 @@ public class PhoenixriseStory
         //Blessings of the Lady
         Story.MapItemQuest(4137, "feverfew", 3242, 10);
         //Parting the Waters
-        Story.KillQuest(4138, "feverfew", new[] { "Salamander", "Coral Creeper", "Firestorm Knight", "Twisted Undine" });
+        Story.KillQuest(4138, "feverfew", new[] {"Firestorm Knight", "Twisted Undine", "Coral Creeper", "Salamander"});
         //The Power to Heal
         Story.KillQuest(4139, "feverfew", new[] { "Locked Chest", "Feverfew Vase", "Twisted Undine" });
         //The Deadsea Caverns
@@ -156,9 +156,9 @@ public class PhoenixriseStory
         Story.MapItemQuest(4208, "phoenixrise", 3284, 7);
         Story.KillQuest(4208, "phoenixrise", "Infernal Goblin");
         //Clear out the Caverns
-        Story.KillQuest(4209, "phoenixrise", new[] { "Infernal Goblin", "Lava Troll", "Firestorm Tiger", "Pyrric Ursus" });
+        Story.KillQuest(4209, "phoenixrise", new[] {"Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger" });
         //Strengthen the Survivors
-        Story.KillQuest(4210, "phoenixrise", new[] { "Lava Troll", "Infernal Goblin", "Firestorm Tiger", "Pyrric Ursus" });
+        Story.KillQuest(4210, "phoenixrise", new[] {"Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger", });
         //Bridge to Salvation
         Story.KillQuest(4211, "phoenixrise", "Lava Troll");
         //Growling Pains

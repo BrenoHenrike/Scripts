@@ -16,12 +16,6 @@
 
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
-//cs_include Scripts/Story/Laguna/00CompleteAllLaguna.cs
-//cs_include Scripts/Story/Laguna/01DualPlane.cs
-//cs_include Scripts/Story/Laguna/02ChaosAmulet.cs
-//cs_include Scripts/Story/Laguna/03LagunaBeach.cs
-//cs_include Scripts/Story/Laguna/04Laguna.cs
-
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/DageChallengeStory.cs
 //cs_include Scripts/Story/Legion/DarkAlliance.cs
@@ -56,6 +50,12 @@
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
+//cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
+
+//cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
+
+//cs_include Scripts/Story/DageTheEvilIsland/CoreDageTheEvilIsland.cs
+
 //cs_include Scripts/Story/Akriloth.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/Banished.cs
@@ -75,12 +75,14 @@
 //cs_include Scripts/Story/FireHouse[SeasonalOrMem].cs
 //cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Story/LightoviaCave.cs
 //cs_include Scripts/Story/J6Saga.cs
 //cs_include Scripts/Story/Oddities.cs
 //cs_include Scripts/Story/OrbHunt.cs
 //cs_include Scripts/Story/Phoenixrise.cs
 //cs_include Scripts/Story/Ruinedcrown.cs
 //cs_include Scripts/Story/Shinkansen.cs
+//cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/SkyPirate.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/Table.cs
@@ -113,8 +115,7 @@ public class AllStory
     public NecroTowerStory NecroTower = new();
     // Elergy of Madness - Darkon
     public CoreAstravia CoreAstravia = new();
-    // Laguna
-    public CompleteLaguna Laguna = new();
+
     // Legion
     public DageChallengeStory DageChallengeStory = new();
     public DarkAlliance_Story DarkAlliance_Story = new();
@@ -142,6 +143,12 @@ public class AllStory
     public CompleteSepulchureSaga SeppySaga = new();
     // Throne of Darkness
     public CoreToD TOD = new();
+    // Shadows of Chaos
+    public CoreSoC CoreSoC = new();
+    //FireIsland
+    public CoreFireIsland CoreFireIsland = new();
+    // DageTheEvil land
+    public CoreDageTheEvilIsland CoreDageTheEvilIsland = new();
     // Standalone
     public Akriloth Akriloth = new();
     public Artixpointe Artixpointe = new();
@@ -162,12 +169,14 @@ public class AllStory
     public FireHouse FireHouse = new();
     public FiendPast FiendPast = new();
     public GlaceraStory GlaceraStory = new();
+    public LightoviaCave LightoviaCave = new();
     public J6Saga J6Saga = new();
     public Oddities Oddities = new();
     public OrbHunt OrbHunt = new();
     public PhoenixriseStory PhoenixriseStory = new();
     public RuinedCrown RuinedCrown = new();
     public Shinkansen Shinkansen = new();
+    public ShadowVoid ShadowVoid = new();
     public SkyPirateQuests SkyPirateQuests = new();
     public StarSinc StarSinc = new();
     public Table Table = new();
@@ -306,6 +315,22 @@ public class AllStory
         Core.Logger($"Saga: Throne of Darkness - Complete");
         #endregion
 
+        #region CoreSoc
+        CoreSoC.CompleteCoreSoC();
+        Core.Logger($"Saga: Shadows of Chaos - Complete");
+        #endregion
+
+        #region CoreFireIsland
+        CoreFireIsland.CompleteFireIsland();
+        Core.Logger($"Story: Fireisland Maps - Complete");
+        #endregion
+
+        #region CoreDageTheEvilIsland
+        CoreDageTheEvilIsland.CompleteDageTheEvilIslandStory();
+        Core.Logger($"Story: DageTheEvil island Maps - Complete");
+        #endregion
+
+
         #region Standalone
         Akriloth.Storyline();
         Core.Logger($"Story: Akriloth - Complete");
@@ -360,6 +385,9 @@ public class AllStory
         GlaceraStory.DoAll();
         Core.Logger($"Story: Glacera - Complete");
 
+        LightoviaCave.LightoviacaveQuests();
+        Core.Logger($"Story: LightoviaCave - Complete");
+
         J6Saga.J6();
         Core.Logger($"Sage: J6 - Complete");
 
@@ -377,6 +405,9 @@ public class AllStory
 
         Shinkansen.Storyline();
         Core.Logger($"Story: Shinkansen - Complete");
+
+        ShadowVoid.ShadowVoidQuests();
+        Core.Logger($"Story: ShadowVoid - Complete");
 
         SkyPirateQuests.Storyline();
         Core.Logger($"Story: Sky Pirate - Complete");
