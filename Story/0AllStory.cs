@@ -249,11 +249,6 @@ public class AllStory
         Core.Logger($"Saga: Elergy of Madness - Complete");
         #endregion
 
-        #region Laguna
-        Laguna.CompleteALL();
-        Core.Logger($"Story: Laguna - Complete");
-        #endregion
-
         #region Legion
         DageChallengeStory.DageChallengeQuests();
         Core.Logger($"Story: Dage Challenge - Complete");
@@ -385,7 +380,7 @@ public class AllStory
         GlaceraStory.DoAll();
         Core.Logger($"Story: Glacera - Complete");
 
-        LightoviaCave.LightoviacaveQuests();
+        LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
 
         J6Saga.J6();
