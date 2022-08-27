@@ -196,38 +196,26 @@ public class CoreDageTheEvilIsland
                         }
                         //Her Biggest Fans 4886
                         Core.EnsureAccept(4886);
-                        while (!Bot.TempInv.Contains("Sycophant Hood"))
                             Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Hood");
-                        while (!Bot.TempInv.Contains("Sycophant Tunic"))
                             Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Tunic");
-                        while (!Bot.TempInv.Contains("Sycophant Medallion"))
                             Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Medallion");
-                        while (!Bot.TempInv.Contains("Sycophant Boots"))
                             Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Boots");
                         Core.EnsureComplete(4886);
                         Bot.Wait.ForPickup("Envy Token III");
                     }
                     //Squee for Envy 4887
                     Core.EnsureAccept(4887);
-                    while (!Bot.TempInv.Contains("Clue"))
                         Core.HuntMonster("Envy", "Fawning Sycophant", "Clue");
-                    while (!Bot.TempInv.Contains("Secret"))
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Secret ");
-                    while (!Bot.TempInv.Contains("Gossip"))
+                        Core.HuntMonster("Envy", "Fawning Sycophant", "Secret");
                         Core.HuntMonster("Envy", "Fawning Sycophant", "Gossip");
-                    while (!Bot.TempInv.Contains("Sincere but Unhelpful Praise"))
                         Core.HuntMonster( "Envy", "Fawning Sycophant", "Sincere but Unhelpful Praise" );
                     Core.EnsureComplete(4887);
 
                     //Higher Up The Totem Pole 4888
                     Core.EnsureAccept(4888);
-                    while (!Bot.TempInv.Contains("Disciple Helm"))
                         Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Helm");
-                    while (!Bot.TempInv.Contains("Disciple Chestplate"))
                         Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Chestplate");
-                    while (!Bot.TempInv.Contains("Disciple Leggings"))
                         Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Leggings");
-                    while (!Bot.TempInv.Contains("Disciple Blade"))
                         Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Blade");
                     Core.EnsureComplete(4888);
                     Bot.Wait.ForPickup("Envy Token IV");
@@ -241,13 +229,9 @@ public class CoreDageTheEvilIsland
 
                 //Where’s That Employee Lounge Again? 4890
                 Core.EnsureAccept(4890);
-                while (!Bot.TempInv.Contains("Semi-Useful Information"))
                     Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
-                while (!Bot.TempInv.Contains("Cult Propaganda"))
                     Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
-                while (!Bot.TempInv.Contains("Another Clue"))
                     Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
-                while (!Bot.TempInv.Contains("Bad Puns"))
                     Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
                 Core.EnsureComplete(4890);
             }
