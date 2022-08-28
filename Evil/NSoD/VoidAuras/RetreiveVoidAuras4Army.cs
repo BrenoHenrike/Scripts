@@ -8,10 +8,12 @@ public class RVAArmy
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
+    public bool DontPreconfigure = true;
     public string OptionsStorage = "RVAArmy";
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 1),
+        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false)
     };
     private int EssenceQuantity;
 
@@ -35,7 +37,8 @@ public class RVAArmy
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
-
+        if (!Bot.Config.Get<bool>("skipSetup"))
+            Bot.Config.Configure();
         Core.Unbank(VA);
         WaitingRoom();
 
@@ -70,7 +73,7 @@ public class RVAArmy
         Core.AddDrop(VA);
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
             Core.AddDrop("Creature Shard");
-        Core.FarmingLogger($"Void Auras", Quantity);
+        Core.FarmingLogger($"Void Aura", Quantity);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.DebugLogger(this, "Accept Quest");
