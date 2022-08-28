@@ -25,7 +25,8 @@ public class CoreYnR
 
     public void GetYnR(bool rankUpClass = true, bool nonLegionMethod = false)
     {
-        if (Core.CheckInventory("Yami no Ronin"))
+        // There is an armor called YNR.
+        if (Core.CheckInventory(53841))
             return;
 
         nonLegion = nonLegionMethod;
