@@ -73,6 +73,7 @@ public class RVAArmy
         Core.AddDrop(VA);
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
             Core.AddDrop("Creature Shard");
+        Core.RegisterQuests(4432);
         Core.FarmingLogger($"Void Aura", Quantity);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
@@ -108,14 +109,8 @@ public class RVAArmy
             //if (!Core.CheckInventory("Creature Creation Essence", EssenceQuantity))
             Core.DebugLogger(this, "Creature Creation Essence");
             ArmyKillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", EssenceQuantity, false);
-            while (Bot.Quests.CanCompleteFullCheck(4432))
-            {
-                Core.Logger("Quest Turn In");
-                Bot.Options.AggroMonsters = false;
-                Core.ChainComplete(4432);
-                Bot.Wait.ForPickup("Void Aura");
-            }
         }
+        Core.CancelRegisteredQuests();
         Core.Logger("THANKS FOR RIDING THE PAIN TRAIN!");
     }
 
