@@ -56,6 +56,8 @@
 
 //cs_include Scripts/Story/DageTheEvilIsland/CoreDageTheEvilIsland.cs
 
+//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
+
 //cs_include Scripts/Story/Akriloth.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/Banished.cs
@@ -80,7 +82,6 @@
 //cs_include Scripts/Story/Oddities.cs
 //cs_include Scripts/Story/OrbHunt.cs
 //cs_include Scripts/Story/Phoenixrise.cs
-//cs_include Scripts/Story/Ruinedcrown.cs
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/SkyPirate.cs
@@ -89,7 +90,6 @@
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/Tutorial.cs
-//cs_include Scripts/Story/UltraTyndariusPrereqs.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
 //cs_include Scripts/Story/VasalkarLairWar.cs
 //cs_include Scripts/Story/WarfuryTraining.cs
@@ -174,7 +174,6 @@ public class AllStory
     public Oddities Oddities = new();
     public OrbHunt OrbHunt = new();
     public PhoenixriseStory PhoenixriseStory = new();
-    public RuinedCrown RuinedCrown = new();
     public Shinkansen Shinkansen = new();
     public ShadowVoid ShadowVoid = new();
     public SkyPirateQuests SkyPirateQuests = new();
@@ -189,6 +188,7 @@ public class AllStory
     public WarTraining WarTraining = new();
     public XansLair Xans = new();
     public YokaiQuests YokaiQuests = new();
+    public SoW2 SoW2 = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -302,7 +302,7 @@ public class AllStory
 
         #region Seppy
         SeppySaga.CompleteALL();
-        Core.Logger($"Story: Sepulchure Saga - Complete");
+        Core.Logger($"Saga: Sepulchure - Complete");
         #endregion
 
         #region ToD
@@ -317,14 +317,18 @@ public class AllStory
 
         #region CoreFireIsland
         CoreFireIsland.CompleteFireIsland();
-        Core.Logger($"Story: Fireisland Maps - Complete");
+        Core.Logger($"Saga: Fireisland Maps - Complete");
         #endregion
 
         #region CoreDageTheEvilIsland
         CoreDageTheEvilIsland.CompleteDageTheEvilIslandStory();
-        Core.Logger($"Story: DageTheEvil island Maps - Complete");
+        Core.Logger($"Saga: DageTheEvil island Maps - Complete");
         #endregion
 
+        #region CoreShadowOfWar2
+        SoW2.DoAll();
+        Core.Logger($"Saga: Shadow of War 2 - Complete");
+        #endregion
 
         #region Standalone
         Akriloth.Storyline();
@@ -395,9 +399,6 @@ public class AllStory
         PhoenixriseStory.PhoenixAll();
         Core.Logger($"Story: Phoenixrise - Complete");
 
-        RuinedCrown.DoAll();
-        Core.Logger($"Story: Ruined Crown - Complete");
-
         Shinkansen.Storyline();
         Core.Logger($"Story: Shinkansen - Complete");
 
@@ -418,9 +419,6 @@ public class AllStory
 
         TowerOfDoom.TowerProgress();
         Core.Logger($"Story: Tower Of Doom - Complete");
-
-        Tyndarius.DoALl();
-        Core.Logger($"Story: Tyndarius - Complete");
 
         UnderGroundLab.partofundergroundlabb();
         Core.Logger($"Story: Underground Lab - Complete?");

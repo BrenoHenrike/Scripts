@@ -5,35 +5,34 @@
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 
-public class Tyndarius
+public class SoW2
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
-
-        Adv.BestGear(GearBoost.Human);
-        DoALl();
-
-        Core.SetOptions(false);
+        Core.RunCore();
     }
 
-    public void DoALl()
+    public void DoAll()
     {
         Story.PreLoad();
-        StoryLine();
+
+        Tyndarius();
+        RuinedCrown();
+        Timekeep();
+        TimestreamWar();
     }
 
-    public void StoryLine()
+    public void Tyndarius()
     {
         if (Core.isCompletedBefore(8243))
             return;
+
+        Adv.BestGear(GearBoost.Human);
 
         //War Medals
         Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier");
@@ -218,5 +217,108 @@ public class Tyndarius
 
         //Avatar of Fire 8243
         Story.KillQuest(8243, "fireavatar", new[] { "Avatar Tyndarius", "Fire Orb" });
+    }
+
+    public void RuinedCrown()
+    {
+        if (Core.isCompletedBefore(8787))
+            return;
+
+        // 8778 Mental Damage Sponge
+        Story.MapItemQuest(8778, "ruinedcrown", new[] { 10380, 10382, 10383 });
+
+        // 8779 Scraping the Barrel
+        Story.KillQuest(8779, "ruinedcrown", new[] { "Mana-Burdened Minion", "Mana-Burdened Knight" });
+
+        // 8780 Fractals
+        Story.MapItemQuest(8780, "ruinedcrown", 10384, 6);
+
+        // 8781 Blind Retaliation
+        Story.KillQuest(8781, "ruinedcrown", "Mana-Burdened Mage");
+
+        // 8782 Deafening Silence
+        Story.KillQuest(8782, "ruinedcrown", new[] { "Mana-Burdened Minion", "Mana-Burdened Knight" });
+
+        // 8784 Stilled Mind (Yes 8784 before 8783)
+        Story.MapItemQuest(8784, "ruinedcrown", 10385, 6);
+
+        // 8783 Volatile Nature
+        Story.KillQuest(8783, "ruinedcrown", "Frenzied Mana");
+
+        // 8785 Heartache
+        Story.KillQuest(8785, "ruinedcrown", "Mana-Burdened Mage");
+
+        // 8786 Clouded Vision
+        Story.MapItemQuest(8786, "ruinedcrown", 10386);
+        Story.KillQuest(8786, "ruinedcrown", "Frenzied Mana");
+
+        // 8787 Guilt Complex
+        Story.KillQuest(8787, "ruinedcrown", "Calamitous Warlic");
+
+        // 8788 Em-pathetic Connection (Merge Shop Quest)
+        Core.EnsureAccept(8788);
+        Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
+        Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
+        Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
+        Core.EnsureComplete(8788);
+    }
+
+    public void Timekeep()
+    {
+        if (Core.isCompletedBefore(8813))
+            return;
+
+        // 8803|Mood Pendulum
+        Story.MapItemQuest(8803, "Timekeep", new[] { 10455, 10456, 10457 });
+
+        // 8804|Bug Issue
+        Story.KillQuest(8804, "Timekeep", "Decaying Locust");
+
+        // 8805|Advanced Age
+        Story.KillQuest(8805, "Timekeep", "Distorted Imp");
+
+        // 8806|One Singularity
+        Story.MapItemQuest(8806, "Timekeep", 10458, 6);
+
+        // 8807|Canaries on Edge
+        Story.KillQuest(8807, "Timekeep", "Mana-Burdened Mage");
+
+        // 8808|Caution! Wet Floor
+        Story.MapItemQuest(8808, "Timekeep", new[] { 10459, 10460 });
+
+        // 8809|Reflection in the Puddle
+        Story.KillQuest(8809, "Timekeep", "Mumbler");
+
+        // 8810|Meniscus Point
+        Story.KillQuest(8810, "Timekeep", new[] { "Distorted Imp", "Mana-Burdened Mage" });
+
+        // 8811|Distractions
+        Story.KillQuest(8811, "Timekeep", new[] { "Mumbler", "Decaying Locust" });
+
+        // 8812|Dog Bites Back
+        Story.KillQuest(8812, "Timekeep", "Mal-formed Gar");
+
+        // 8813|Janitorial Duties
+        Story.KillQuest(8813, "Timekeep", new[] { "Mal-formed Gar", "Mumbler", "Decaying Locust" });
+    }
+
+    public void TimestreamWar()
+    {
+        if (Core.isCompletedBefore(8817))
+            return;
+
+        // 8814|Timestream Medals (dont need to do the mega metals)
+        if(!Bot.Quests.IsUnlocked(8816))
+        {
+            Core.EnsureAccept(8814);
+            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5);
+            Core.EnsureComplete(8814);
+        }
+        
+        // 8816|Teary Components
+        Story.KillQuest(8816, "Streamwar", "Mumbler");
+        
+        // 8817|Proportional Retaliation         
+        Story.KillQuest(8817, "Streamwar", "Decaying Locust");
     }
 }
