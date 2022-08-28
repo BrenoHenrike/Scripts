@@ -138,7 +138,7 @@ public class RVAArmy
             Core.AddDrop(item);
         Core.Join(map, cell, pad, publicRoom: publicRoom);
         Core.Jump(cell, pad);
-        while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) != Bot.Config.Get<int>("armysize"))
+        while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
         {
             Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
             Bot.Sleep(1500);
