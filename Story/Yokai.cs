@@ -164,10 +164,9 @@ public class YokaiQuests
         // Goryuken 6477
         Story.KillQuest(6477, "heiwavalley", "Goryo");
 
-
         // Feel the Heat 6478
         Story.BuyQuest(6478, "heiwavalley", 1608, "Wasabi");
-        Story.KillQuest(6478, "heiwavalley", "Kosenjobi", AutoCompleteQuest: false);
+        Story.KillQuest(6478, "heiwavalley", "Kosenjobi");
 
         // Get Some Fur 6479
         Story.KillQuest(6479, "heiwavalley", "Abumi Guchi");
