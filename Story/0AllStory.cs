@@ -182,7 +182,6 @@ public class AllStory
     public TitanAttackStory TitanAttackStory = new();
     public TowerOfDoom TowerOfDoom = new();
     public Tutorial Tutorial = new();
-    public Tyndarius Tyndarius = new();
     public UnderGroundLab UnderGroundLab = new();
     public LairWar LairWar = new();
     public WarTraining WarTraining = new();
