@@ -89,9 +89,10 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string buyOnlyThis = null)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string buyOnlyThis = null, string[] itemBlackList = null)
     {
-        Bot.Config.Configure();
+        if (buyOnlyThis == null)
+            Bot.Config.Configure();
 
         int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
         matsOnly = mode == 2;
@@ -100,7 +101,10 @@ public class CoreAdvanced
 
         foreach (ShopItem item in shopItems)
         {
-            if (Core.CheckInventory(item.ID, toInv: false) || miscCatagories.Contains(item.Category) || (String.IsNullOrEmpty(buyOnlyThis) ? false : buyOnlyThis == item.Name))
+            if (Core.CheckInventory(item.ID, toInv: false) ||
+                miscCatagories.Contains(item.Category) ||
+                (String.IsNullOrEmpty(buyOnlyThis) ? false : buyOnlyThis == item.Name) ||
+                itemBlackList.Any(b => b.ToLower() == item.Name.ToLower()))
                 continue;
 
             if (Core.IsMember ? true : !item.Upgrade)
@@ -258,7 +262,7 @@ public class CoreAdvanced
             Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
             return;
         }
-        
+
         try
         {
             switch (faction.ToLower())
