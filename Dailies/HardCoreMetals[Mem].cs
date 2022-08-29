@@ -12,7 +12,7 @@ public class HardCoreMetals
     {
         Core.SetOptions();
 
-        Daily.HardCoreMetals();
+        Daily.HardCoreMetals(ToBank: true);
 
         Core.SetOptions(false);
     }

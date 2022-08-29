@@ -120,6 +120,8 @@ public class CoreDailies
         if (Core.CheckInventory(metals, quant))
         {
             Core.Logger($"All metals were found with the needed quantity ({quant}). Skipped");
+            if (ToBank)
+                Core.ToBank(MineCraftingMetals);
             return;
         }
         if (!CheckDaily(2091, false, metals))
@@ -152,7 +154,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void HardCoreMetals(string[] metals = null, int quant = 1)
+    public void HardCoreMetals(string[] metals = null, int quant = 1, bool ToBank = false)
     {
         if (!Core.IsMember)
             return;
@@ -162,6 +164,8 @@ public class CoreDailies
         if (Core.CheckInventory(metals, quant))
         {
             Core.Logger($"All metals were found with the needed quantity ({quant}). Skipped");
+            if (ToBank)
+                Core.ToBank(HardCoreMetalsMetals);
             return;
         }
         if (!CheckDaily(2098, false, metals))
@@ -178,6 +182,8 @@ public class CoreDailies
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2098, metalID);
                 Bot.Wait.ForDrop(metal);
+                if (ToBank)
+                    Core.ToBank(HardCoreMetalsMetals);
                 break;
             }
         }
