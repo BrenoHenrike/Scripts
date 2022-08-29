@@ -170,8 +170,9 @@ public class CoreBots
             Bot.Events.MapChanged += PrisonDetector;
             void PrisonDetector(string map)
             {
-                if (map.ToLower() == "prison" && !joinedPrison)
+                if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
                 {
+                    prisonListernerActive = true;
                     Bot.Options.AutoRelogin = false;
                     Bot.Servers.Logout();
                     string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
@@ -224,6 +225,7 @@ public class CoreBots
         }
     }
     private bool joinedPrison = false;
+    private bool prisonListernerActive = false;
 
     private bool scriptFinished = true;
     /// <summary>
