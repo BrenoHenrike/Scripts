@@ -438,7 +438,7 @@ public class CoreDailies
     public void ShadowScytheClass()
     {
         Core.Logger("Daily: ShadowScythe General Class");
-        if (Core.CheckInventory("ShadowScythe General"))
+        if (Core.CheckInventory("ShadowScythe General", toInv: false))
         {
             Core.Logger("Skipped");
             return;
