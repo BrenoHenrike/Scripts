@@ -75,7 +75,7 @@ public class CoreAdvanced
                     continue;
 
                 if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                    BuyItem(map, shopID, req.ID, req.Quantity);
+                    BuyItem(map, shopID, req.ID, req.Quantity * quant);
             }
         }
 
