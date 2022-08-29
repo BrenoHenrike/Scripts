@@ -331,6 +331,7 @@ public class CoreDailies
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(3825, "sepulchurebattle", "Ultra Sepulchure", "Sepulchure Defeated");
         }
+        Core.JumpWait();
     }
 
     public void CollectorClass()
@@ -354,11 +355,9 @@ public class CoreDailies
                 DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
             if (CheckDaily(1332, true, "Tokens of Collection"))
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
-            Core.ToBank("Token of Collection");
         }
         if (Core.CheckInventory("Token of Collection", 90))
             Core.BuyItem("Collection", 324, "The Collector");
-        Core.ToBank("Token of Collection");
     }
 
     public void Cryomancer()
