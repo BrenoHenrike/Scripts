@@ -81,7 +81,6 @@ public class BeleensMerge
                         Core.Logger("This item requires Good Faction Rank 7. starting GoodREP script");
                         Farm.GoodREP(7);
                     }
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Adv.BuyItem("Castle", 88, req.Name);
                     break;
 
@@ -119,7 +118,6 @@ public class BeleensMerge
                         Core.Logger("This item requires Evil Faction Rank 7. starting EvilREP script");
                         Farm.EvilREP(8);
                     }
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Adv.BuyItem("ShadowFall", 89, req.Name);
                     break;
 
@@ -129,11 +127,7 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("AriaPet", 12, req.Name);
-                    }
+                    Adv.BuyItem("AriaPet", 12, req.Name);
                     break;
 
                 case "Zealith Reavers":
@@ -167,7 +161,6 @@ public class BeleensMerge
                     break;
 
                 case "Star Caster Staff":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Adv.BuyItem("Castle", 48, req.Name);
                     break;
 
@@ -177,11 +170,7 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("Sleuthhound", 65, req.Name);
-                    }
+                    Adv.BuyItem("Sleuthhound", 65, req.Name);
                     break;
 
                 case "Infernal Dark Blade of Cruelty":
@@ -190,11 +179,7 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("Battleon", 10, req.Name);
-                    }
+                    Adv.BuyItem("Battleon", 10, req.Name);
                     break;
                 case "Chaos Dragonlord Helm":
                     Core.FarmingLogger($"{req.Name}", quant);
@@ -216,7 +201,6 @@ public class BeleensMerge
                     break;
 
                 case "Prismatic Dye":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Adv.BuyItem("Tower", 1966, req.Name);
                     break;
 
@@ -282,10 +266,7 @@ public class BeleensMerge
 
                 case "Demonhuntress Horns":
                     if (Core.CheckInventory("Blindfolded Pink Demonhuntress Horns") || Core.CheckInventory("Pink Demonhuntress Horns"))
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
                         Adv.BuyItem("Curio", 1070, req.Name);
-                    }
                     else
                     {
                         Core.Logger($"{req.Name} is pseudo-Rare, you don't have the Rare item to merge this material");
@@ -297,15 +278,9 @@ public class BeleensMerge
                     if (Core.CheckInventory("Blindfolded Pink Demonhunter Horns") || Core.CheckInventory("Pink Demonhunter Horns"))
                     {
                         if (Core.CheckInventory("Blindfolded Pink Demonhunter Horns"))
-                        {
-                            Core.FarmingLogger($"{req.Name}", quant);
                             Adv.BuyItem("Curio", 1214, req.Name);
-                        }
                         else
-                        {
-                            Core.FarmingLogger($"{req.Name}", quant);
                             Adv.BuyItem("Curio", 52, req.Name);
-                        }
                     }
                     else
                     {
@@ -316,14 +291,10 @@ public class BeleensMerge
 
                 case "DOOMFire Warrior":
                     if (Core.HasAchievement(19, "ip6"))
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
                         Adv.BuyItem("Battleon", 1306, req.Name);
-                    }
                     else
                         return;
                     break;
-
 
                 case "Fire Imp Tail":
                     if (!Core.IsMember)
@@ -359,11 +330,7 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("FearFeast", 1190, req.Name);
-                    }
+                    Adv.BuyItem("FearFeast", 1190, req.Name);
                     break;
 
                 case "Valor High Halo":
@@ -404,11 +371,7 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("BlindingSnow", 236, req.Name);
-                    }
+                    Adv.BuyItem("BlindingSnow", 236, req.Name);
                     break;
 
                 case "Red Rose":
@@ -429,11 +392,7 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("FearFeast", 1190, req.Name);
-                    }
+                    Adv.BuyItem("FearFeast", 1190, req.Name);
                     break;
 
                 case "Shadowslayer Armor":
@@ -442,16 +401,11 @@ public class BeleensMerge
                         Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
                     }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Adv.BuyItem("DarkoviaForest ", 138, req.Name);
-                    }
+                    Adv.BuyItem("DarkoviaForest ", 138, req.Name);
                     break;
 
                 case "ShadowSlayer Hat":
                 case "Shadow Z Hat":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Adv.BuyItem("DarkoviaForest ", 138, req.Name);
                     break;
 
