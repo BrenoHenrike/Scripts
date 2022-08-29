@@ -178,7 +178,7 @@ public class CoreBots
                                      "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
                                      (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
                     Logger(message);
-                    Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!");
+                    Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
                     Bot.Stop(true);
                 }
             }
