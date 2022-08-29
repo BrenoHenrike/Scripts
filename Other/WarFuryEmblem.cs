@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/WarTraining.cs
+//cs_include Scripts/Story/WarfuryTraining.cs
 using Skua.Core.Interfaces;
 
 public class WarfuryEmblem
