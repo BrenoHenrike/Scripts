@@ -25,7 +25,8 @@ public class CoreYnR
 
     public void GetYnR(bool rankUpClass = true, bool nonLegionMethod = false)
     {
-        if (Core.CheckInventory("Yami no Ronin"))
+        // There is an armor called YNR.
+        if (Core.CheckInventory(53841))
             return;
 
         nonLegion = nonLegionMethod;
@@ -169,16 +170,44 @@ public class CoreYnR
             {
                 Core.AddDrop("Meditation");
 
-                if (!Core.CheckInventory("SwordMaster"))
+                int m_questID = -1;
+                if (Core.CheckInventory(22933))
                 {
-                    SM.GetSwordMaster();
+                    // BM LT
+                    Core.Logger("Using LT BladeMaster for Meditation");
+                    m_questID = 7412;
+                    Adv.rankUpClass("BladeMaster");
+                }
+                else if (Core.CheckInventory(22859))
+                {
+                    // BM AC
+                    Core.Logger("Using AC BladeMaster for Meditation");
+                    m_questID = 7411;
+                    Adv.rankUpClass("BladeMaster");
+                }
+                else if (Core.CheckInventory(53837))
+                {
+                    // SM AC
+                    Core.Logger("Using AC SwordMaster for Meditation");
+                    m_questID = 7413;
+                    Adv.rankUpClass("SwordMaster");
+                }
+                else
+                {
+                    Core.Logger("Using LT BladeMaster for Meditation");
+                    if (!Core.CheckInventory("SwordMaster"))
+                    {
+                        Core.Logger("Farming LT BladeMaster for Meditation");
+                        SM.GetSwordMaster();
+                    }
+                    m_questID = 7414;
                     Adv.rankUpClass("SwordMaster");
                 }
                 Core.EquipClass(ClassType.Solo);
 
-                Core.EnsureAccept(7414);
+                Core.EnsureAccept(m_questID);
                 Legion.BoneSigil(1);
-                Core.EnsureComplete(7414);
+                Core.EnsureComplete(m_questID);
                 Bot.Wait.ForPickup("Meditation");
             }
         }
