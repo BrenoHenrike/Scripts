@@ -225,7 +225,7 @@ public class CoreAdvanced
         }
 
         //Quest Check
-        //string questName = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        //string questName = Bot.Flash.GetGameObject<string>($"world.shopinfo.items[{item.ID}].sQuest");
         //List<QuestData> cache = Bot.Quests.Cached;
         //Bot.Quests.Cached.Count;
 

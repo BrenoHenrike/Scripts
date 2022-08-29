@@ -167,6 +167,22 @@ public class CoreBots
                 }
             }, "Quest-Limit Handler");
 
+            Bot.Events.MapChanged += PrisonDetector;
+            void PrisonDetector(string map)
+            {
+                if (map.ToLower() == "prison" && !joinedPrison)
+                {
+                    Bot.Options.AutoRelogin = false;
+                    Bot.Servers.Logout();
+                    string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
+                                     "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
+                                     (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                    Logger(message);
+                    Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!");
+                    Bot.Stop(true);
+                }
+            }
+
             Bot.Bank.Load();
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
@@ -207,6 +223,7 @@ public class CoreBots
             Logger("Bot Configured");
         }
     }
+    private bool joinedPrison = false;
 
     private bool scriptFinished = true;
     /// <summary>
@@ -1848,6 +1865,13 @@ public class CoreBots
                 SetAchievement(18);
                 Bot.Quests.UpdateQuest(3004);
                 tryJoin();
+                break;
+
+            case "prison":
+                joinedPrison = true;
+                JumpWait();
+                tryJoin();
+                joinedPrison = false;
                 break;
 
             case "hyperium":
