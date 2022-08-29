@@ -5,6 +5,7 @@ using System.Reflection;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Shops;
+using Skua.Core.Models.Quests;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
@@ -208,7 +209,7 @@ public class CoreAdvanced
 
         //Achievement Check
         int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
-        string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        string io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
         if (achievementID > 0 && io != null && !Core.HasAchievement(achievementID, io))
         {
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of catagory {io}.");
@@ -222,6 +223,11 @@ public class CoreAdvanced
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}");
             return false;
         }
+
+        //Quest Check
+        //string questName = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        //List<QuestData> cache = Bot.Quests.Cached;
+        //Bot.Quests.Cached.Count;
 
         //Rep check
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
