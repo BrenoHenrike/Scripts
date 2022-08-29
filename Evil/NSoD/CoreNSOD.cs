@@ -56,7 +56,7 @@ public class CoreNSOD
 
         Core.SetOptions();
 
-        GetNSOD();
+        Core.RunCore();
 
         Core.SetOptions(false);
     }
