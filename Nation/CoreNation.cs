@@ -654,7 +654,7 @@ public class CoreNation
         bool OBoNPet = (Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath")
                     & Bot.Inventory.Items.Where(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
 
-        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath (Rare)"))
+        if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
             Core.AddDrop("Tainted Soul");
 
         Core.EquipClass(ClassType.Solo);
@@ -663,7 +663,7 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.RegisterQuests(2857, 609);
-            if (Core.CheckInventory("Oblivion Blade of Nulgath (Rare)") && Core.IsMember)
+            if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
                 Core.RegisterQuests(599);
             else if (OBoNPet)
                 Core.RegisterQuests(2561);
