@@ -206,6 +206,23 @@ public class CoreAdvanced
         if (item == null)
             return false;
 
+        //Achievement Check
+        int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
+        string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        if (achievementID > 0 && io != null && !Core.HasAchievement(achievementID, io))
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of catagory {io}.");
+            return false;
+        }
+
+        //Requiered-Item Check
+        int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
+        if (reqItemID > 0 && !Core.CheckInventory(reqItemID))
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}");
+            return false;
+        }
+
         //Rep check
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
         {
