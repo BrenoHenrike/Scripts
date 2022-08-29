@@ -304,21 +304,24 @@ public class SoW2
 
     public void TimestreamWar()
     {
-        if (Core.isCompletedBefore(8817))
+        if (Core.isCompletedBefore(8818))
             return;
 
         // 8814|Timestream Medals (dont need to do the mega metals)
-        if(!Bot.Quests.IsUnlocked(8816))
+        if (!Bot.Quests.IsUnlocked(8816))
         {
             Core.EnsureAccept(8814);
             Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5);
             Core.EnsureComplete(8814);
         }
-        
+
         // 8816|Teary Components
         Story.KillQuest(8816, "Streamwar", "Mumbler");
-        
+
         // 8817|Proportional Retaliation         
         Story.KillQuest(8817, "Streamwar", "Decaying Locust");
+
+        //Growing Pains (8818)
+        Story.KillQuest(8818, "streamwar", "False Wyvern");
     }
 }

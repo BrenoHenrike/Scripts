@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/ShadowsOfWar2/ShadowsofWar2Saga.cs
+//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

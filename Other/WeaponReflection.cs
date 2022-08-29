@@ -24,9 +24,9 @@ public class DualWield
     }
 
 
-    public void WeaponReflection()
+    public void WeaponReflection(int quant = 200)
     {
-        if (Core.CheckInventory("Weapon Reflection"))
+        if (Core.CheckInventory("Weapon Reflection", quant))
             return;
 
         Core.Logger("Checking if Your Acc is 8 Years Old");
@@ -39,7 +39,7 @@ public class DualWield
         }
 
         Core.AddDrop("Weapon Reflection");
-        if (!Core.CheckInventory("Weapon Reflection"))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Weapon Reflection", quant)))
         {
             Core.EnsureAccept(5518);
             Core.HuntMonster("nostalgiaquest", "Skeletal Viking", "Reflected Glory", 5);
