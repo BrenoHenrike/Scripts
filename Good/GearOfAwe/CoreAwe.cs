@@ -24,7 +24,7 @@ public class CoreAwe
         Core.AddDrop($"{Item} Fragment");
         int QuestID;
 
-        if ((Core.IsMember || Core.CheckInventory("Legendary Awe Pass")) && LegendQuest != 4160)
+        if (Core.IsMember)
         {
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
             QuestID = LegendQuest;
