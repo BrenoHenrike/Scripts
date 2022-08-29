@@ -760,6 +760,8 @@ public class CoreDailies
             if (Core.CheckInventory("Moglin MEAL", 30))
                 Core.BuyItem("ariapet", 1081, pet);
 
+            Core.ToBank("Moglin MEAL");
+
             if (dailyDone)
                 break;
         }
