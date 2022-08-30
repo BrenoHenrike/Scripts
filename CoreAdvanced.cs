@@ -5,6 +5,7 @@ using System.Reflection;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Shops;
+using Skua.Core.Models.Quests;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
@@ -75,7 +76,7 @@ public class CoreAdvanced
                     continue;
 
                 if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                    BuyItem(map, shopID, req.ID, req.Quantity);
+                    BuyItem(map, shopID, req.ID, req.Quantity * quant);
             }
         }
 
@@ -205,6 +206,28 @@ public class CoreAdvanced
         ShopItem item = Core.parseShopItem(shopItem, shopID, itemNameID);
         if (item == null)
             return false;
+
+        //Achievement Check
+        int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
+        string io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        if (achievementID > 0 && io != null && !Core.HasAchievement(achievementID, io))
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.");
+            return false;
+        }
+
+        //Requiered-Item Check
+        int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
+        if (reqItemID > 0 && !Core.CheckInventory(reqItemID))
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}");
+            return false;
+        }
+
+        //Quest Check
+        //string questName = Bot.Flash.GetGameObject<string>($"world.shopinfo.items[{item.ID}].sQuest");
+        //List<QuestData> cache = Bot.Quests.Cached;
+        //Bot.Quests.Cached.Count;
 
         //Rep check
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
