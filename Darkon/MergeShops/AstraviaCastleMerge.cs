@@ -18,6 +18,7 @@ public class AstraviaCastleMerge
     public static CoreAdvanced sAdv = new();
 
     public CoreDarkon Darkon = new();
+    public CoreAstravia Astravia = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -60,23 +61,10 @@ public class AstraviaCastleMerge
                     break;
                 #endregion
 
-                case "A Melody":
+                case "Astravian Medal":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.Logger("This item is not setup yet");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Darkon.AstravianMedal(quant);
                     break;
-
-                case "Re's Party Attire":
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("astraviajudgement", "La", req.Name, quant, false);
-                    break;
-
             }
         }
     }
