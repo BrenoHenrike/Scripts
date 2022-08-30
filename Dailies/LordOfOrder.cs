@@ -51,7 +51,8 @@ public class LordOfOrder
             Core.HuntMonster("watchtower", "Chaorrupted Knight", "Pristine Blades of Order", isTemp: false);
             Core.BuyItem("dreadrock", 1221, "Dreadrock Donation Receipt");
             Core.HuntMonster("deadmoor", "Banshee Mallora", "Deadmoor Spirits Helped", isTemp: false);
-            CR.DoAll();
+            CR.MurrysQuests();
+            CR.PolishsQuestsCitadelRuins();
             if (!Core.CheckInventory("Mage's Gratitude"))
             {
                 Core.AddDrop("Mage's Gratitude");
