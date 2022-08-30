@@ -8,14 +8,14 @@ public class IceWingLevelingArmy
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-
-    public int level = 75;
     public bool DontPreconfigure = true;
+    public string OptionsStorage = "ArmyIceWing";
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
         new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
     };
+    public int level = 75;
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
