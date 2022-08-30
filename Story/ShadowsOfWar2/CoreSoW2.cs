@@ -304,7 +304,7 @@ public class SoW2
 
     public void TimestreamWar()
     {
-        if (Core.isCompletedBefore(8818))
+        if (Core.isCompletedBefore(8819))
             return;
 
         // 8814|Timestream Medals (dont need to do the mega metals)
@@ -323,5 +323,8 @@ public class SoW2
 
         //Growing Pains (8818)
         Story.KillQuest(8818, "streamwar", "False Wyvern");
+
+        //Middle Child (8819)
+        Story.KillQuest(8819, "streamwar", "Second Speaker");
     }
 }
