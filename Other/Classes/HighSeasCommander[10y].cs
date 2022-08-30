@@ -69,7 +69,7 @@ public class HighSeasCommander
         Story.KillQuest(6919, "highseas", "Pirate Crew");
 
         //6920 | The Captain Wants a Word
-        Story.KillQuest(6918, "highseas", "Capt. Beard");
+        Story.KillQuest(6920, "highseas", "Capt. Beard");
 
     }
 }
