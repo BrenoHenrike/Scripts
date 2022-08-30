@@ -105,7 +105,7 @@ public class CoreAdvanced
             if (Core.CheckInventory(item.ID, toInv: false) ||
                 miscCatagories.Contains(item.Category) ||
                 (String.IsNullOrEmpty(buyOnlyThis) ? false : buyOnlyThis == item.Name) ||
-                (item blacklist != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
+                (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
                 continue;
 
             if (Core.IsMember ? true : !item.Upgrade)
