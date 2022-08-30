@@ -212,7 +212,7 @@ public class CoreAdvanced
         string io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
         if (achievementID > 0 && io != null && !Core.HasAchievement(achievementID, io))
         {
-            Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of catagory {io}.");
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.");
             return false;
         }
 
