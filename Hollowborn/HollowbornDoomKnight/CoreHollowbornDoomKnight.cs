@@ -26,14 +26,14 @@ public class CoreHollowbornDoomKnight
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreHollowborn HB = new CoreHollowborn();
-    public CoreHollowbornPaladin HBP = new CoreHollowbornPaladin();
-    public CoreSDKA SDKA = new CoreSDKA();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
+    public CoreHollowborn HB = new();
+    public CoreHollowbornPaladin HBP = new();
+    public CoreSDKA SDKA = new();
     public CoreNSOD NSoD = new();
-    public SepulchuresOriginalHelm SOH = new SepulchuresOriginalHelm();
+    public SepulchuresOriginalHelm SOH = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -100,9 +100,7 @@ public class CoreHollowbornDoomKnight
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadowworn", 1, false);
             Farm.Gold(100000);
-            // Core.BuyItem("shadowfall", 89, "Shadowscythe Venom Head", shopItemID: 23832);
-            Core.Join("shadowfall");
-            Bot.Shops.BuyItem(89, "Shadowscythe Venom Head");
+            Adv.BuyItem("shadowfall", 89, "Shadowscythe Venom Head");
             Core.HuntMonster("shadowrealm", "Hollowborn Sentinel", "Hollow Soul", 10, false);
             Core.Logger("Bought Shadowscythe Venom Head");
             if (Core.CheckInventory(ADKItems))
