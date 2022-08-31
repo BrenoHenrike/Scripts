@@ -232,7 +232,7 @@ public class CoreBots
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
     /// </summary>
-    public bool StopBot()
+    public bool StopBot(bool crashed)
     {
         CancelRegisteredQuests();
         SavedState(false);
@@ -261,10 +261,12 @@ public class CoreBots
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = $"< {(Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name").Replace("&lt; ", "< ").Replace(" &gt;", " >"))} >"; ;
 
-        if (Bot.Player.LoggedIn)
-            Logger("Bot Stopped Successfully");
-        else
+        if (crashed)
+            Logger("Bot Stopped due to crash");
+        else if (!Bot.Player.LoggedIn)
             Logger("Auto Relogin appears to have failed");
+        else
+            Logger("Bot Stopped Successfully");
 
         GC.KeepAlive(Instance);
         return scriptFinished;
@@ -297,7 +299,7 @@ public class CoreBots
             }
             Logger("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice);
         }
-        return StopBot();
+        return StopBot(e != null);
     }
 
     public void ScriptMain(IScriptInterface bot)
@@ -901,7 +903,14 @@ public class CoreBots
 
     public Quest EnsureLoad(int questID)
     {
-        return Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
+        var toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
+        if (toReturn == null)
+        {
+            Logger("Failed to get the Quest Object, please reinstall Clean-Flash", messageBox: true, stopBot: true);
+            return new();
+        }
+
+        return toReturn;
 
         Quest _EnsureLoad(int questID)
         {
@@ -925,7 +934,13 @@ public class CoreBots
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
             Bot.Sleep(1500);
         }
-        return Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList(); ;
+        var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        if (toReturn.Count() <= 0 || toReturn == null)
+        {
+            Logger("Failed to get the Quest Object, please reinstall Clean-Flash", messageBox: true, stopBot: true);
+            return new();
+        }
+        return toReturn;
     }
 
     /// <summary>
