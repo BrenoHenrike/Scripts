@@ -846,21 +846,28 @@ public class CoreBots
         if (questID <= 0)
             return false;
         Bot.Sleep(ActionDelay);
+        DebugLogger(this);
         if (Bot.Quests.TryGetQuest(questID, out Quest? quest) && quest is not null)
         {
+            DebugLogger(this);
             foreach (ItemBase item in quest.Rewards)
             {
+                DebugLogger(this, "in foreach loop");
                 if (!CheckInventory(item.Name, toInv: false)
                     && (itemList == null || (itemList != null && itemList.Contains(item.Name))))
                 {
+                    DebugLogger(this, "in foreach loop");
                     Logger($"Completed [{quest.Name}] for {item.Name}");
                     bool completed = Bot.Quests.EnsureComplete(questID, item.ID);
+                    DebugLogger(this, "in foreach loop");
                     Bot.Drops.Pickup(item.Name);
                     Bot.Wait.ForPickup(item.Name);
+                    DebugLogger(this, "in foreach loop");
                     return completed;
                 }
             }
         }
+        DebugLogger(this, "in foreach loop");
         Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
         return false;
     }
@@ -1389,38 +1396,41 @@ public class CoreBots
         if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
             return;
 
-        string _class = _this.GetType().ToString();
-        string[] compiledScript = Bot.Manager.CompiledScript.Split(
-                                                                new string[] { "\r\n", "\r", "\n" },
-                                                                StringSplitOptions.None);
-        int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+        Logger("Debug Logger is currently not functional because it cant read the compiled script properly");
+        DL_Enabled = false;
+        //string _class = _this.GetType().ToString();
+        //string[] compiledScript = Bot.Manager.CompiledScript.Split(
+        //                                                        new string[] { "\r\n", "\r", "\n" },
+        //                                                        StringSplitOptions.None);
 
-        string[] currentScript = File.ReadAllLines(Bot.Manager.LoadedScript);
-        int seperateClassLine = -1;
+        //int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
 
-        if (currentScript.Any(line => line.Trim() == $"public class {_class}"))
-            seperateClassLine = Array.IndexOf(currentScript, currentScript.First(line => line.Trim() == $"public class {_class}")) + 1;
-        else
-        {
-            string[] cs_includes = currentScript.Where(x => x.StartsWith("//cs_include")).ToArray();
-            foreach (string cs in cs_includes)
-            {
-                string[] includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
-                if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
-                {
-                    seperateClassLine = Array.IndexOf(includedScript, includedScript.First(line => line.Trim() == $"public class {_class}")) + 1;
-                    break;
-                }
-            }
-        }
+        //string[] currentScript = File.ReadAllLines(Bot.Manager.LoadedScript);
+        //int seperateClassLine = -1;
 
-        if (seperateClassLine == -1)
-        {
-            Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
-            return;
-        }
+        //if (currentScript.Any(line => line.Trim() == $"public class {_class}"))
+        //    seperateClassLine = Array.IndexOf(currentScript, currentScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+        //else
+        //{
+        //    string[] cs_includes = currentScript.Where(x => x.StartsWith("//cs_include")).ToArray();
+        //    foreach (string cs in cs_includes)
+        //    {
+        //        string[] includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
+        //        if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
+        //        {
+        //            seperateClassLine = Array.IndexOf(includedScript, includedScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+        //            break;
+        //        }
+        //    }
+        //}
 
-        Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
+        //if (seperateClassLine == -1)
+        //{
+        //    Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
+        //    return;
+        //}
+
+        //Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
     }
     private bool DL_Enabled { get; set; } = false;
     public string? DL_CallerFilter { get; set; } = null;
