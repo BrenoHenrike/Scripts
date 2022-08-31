@@ -323,7 +323,9 @@ public class CoreAstravia
         if (!Core.isCompletedBefore(8529))
         {
             Core.EnsureAccept(8529);
-            Core.HuntMonsterMapID("eridanipast", 19, "Paladin Dueled");
+            Core.Join("eridanipast");
+            Core.Jump("r10", "Left");
+            Bot.Kill.Monster("*");
             Core.EnsureComplete(8529);
         }
 
