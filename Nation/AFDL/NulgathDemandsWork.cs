@@ -13,35 +13,49 @@ public class NulgathDemandsWork
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public GoldenHanzoVoid GHV = new();
-
     public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
+
+    string[] NDWItems =
+    {   "Unidentified 35",
+        "Unidentified 27",
+        "Unidentified 26",
+        "Golden Hanzo Void",
+        "DoomLord's War Mask",
+        "ShadowFiend Cloak",
+        "Locks of the DoomLord",
+        "Doomblade of Destruction",
+        "Archfiend Essence Fragment"
+    };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
-        Core.BankingBlackList.AddRange(new[] {"Unidentified 35", "Archfiend Essence Fragment", "Unidentified 27", "Unidentified 26",
-            "Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction"});
+        Core.BankingBlackList.Add("Archfiend Essence Fragment");
         Core.SetOptions();
 
-        Unidentified35();
+        Uni35(1);
 
         Core.SetOptions(false);
     }
 
-    public void Unidentified35()
+    public void NDWQuest(string item = "any", int quant = 1)
     {
-        if (Core.CheckInventory(new[] { "Unidentified 35", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" }))
+        if (Core.CheckInventory(item, quant))
             return;
 
+        if (item == null)
+        {
+            Core.Logger("No Item Input");
+            return;
+        }
+
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop("Unidentified 35", "Archfiend Essence Fragment", "Unidentified 27", "Unidentified 26",
-            "Golden Hanzo Void", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
+        Core.AddDrop(NDWItems);
 
         int i = 0;
-        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction", "Unidentified 35" }, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            if (Core.CheckInventory("Archfiend Essence Fragment", 9)
-                && Core.CheckInventory(new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" }))
-                break;
+            Core.EnsureAccept(5259);
 
             WillpowerExtraction.Unidentified34(10);
 
@@ -55,15 +69,7 @@ public class NulgathDemandsWork
 
             Nation.FarmDarkCrystalShard(45);
 
-            if (!Core.CheckInventory("Unidentified 27"))
-            {
-                Nation.Supplies("Unidentified 26", 1, true);
-                Core.EnsureAccept(584);
-                Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
-                Core.EnsureComplete(584);
-                Bot.Drops.Pickup("Unidentified 27");
-                Core.Logger("Uni 27 acquired");
-            }
+            Uni27();
 
             Nation.FarmVoucher(true);
 
@@ -71,25 +77,41 @@ public class NulgathDemandsWork
 
             Nation.SwindleBulk(50);
 
-
             GHV.GetGHV();
-
-            Bot.Drops.PickupAll();
-
-            Core.EnsureCompleteChoose(5259, new[] { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" });
-            if (Bot.Quests.IsInProgress(5259))
-            {
-                Core.Logger("Looks like the quest is still in progress. Turning it in now");
-                Core.EnsureComplete(5259);
-            }
+            if (item == "Archfiend Essence Fragment")
+                Core.EnsureComplete(5259, 58397);
+            else Core.EnsureCompleteChoose(5259);
+            Core.ToBank(NDWItems[..^8]);
 
             Core.Logger($"Completed x{i}");
             i++;
+
         }
 
-        if (Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35"))
-        {
-            Core.BuyItem("tercessuinotlim", 1951, 35770);
-        }
+
+    }
+
+    public void Uni35(int quant = 1)
+    {
+        if (Core.CheckInventory("Unidentified 35", quant))
+            return;
+
+        NDWQuest("Archfiend Essence Fragment", 9);
+        Core.BuyItem("tercessuinotlim", 1951, 35770);
+
+    }
+
+    public void Uni27(int quant = 1)
+    {
+        if (Core.CheckInventory("Unidentified 27"))
+            return;
+
+        Nation.Supplies("Unidentified 26", 1, true);
+        Core.EnsureAccept(584);
+        Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
+        Core.EnsureComplete(584);
+        Bot.Drops.Pickup("Unidentified 27");
+        Core.Logger("Uni 27 acquired");
+
     }
 }
