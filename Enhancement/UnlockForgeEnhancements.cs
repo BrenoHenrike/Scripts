@@ -3,17 +3,24 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Chaos/EternalDrakathSet.cs
-//cs_include Scripts/Chaos/DrakathsArmor.cs
-//cs_include Scripts/Good/ArchPaladin.cs
-//cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Darkon/CoreDarkon.cs
-//cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
-//cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Chaos/EternalDrakathSet.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+
+//cs_include Scripts/Chaos/DrakathsArmor.cs
+//cs_include Scripts/Good/ArchPaladin.cs
+//cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
+//cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
 //cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
@@ -22,10 +29,6 @@
 //cs_include Scripts/Other/FireChampionsArmor.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
-//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
@@ -37,6 +40,23 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Good/GearOfAwe/Awescended.cs
+//cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
+//cs_include Scripts/Other/Classes/Necromancer.cs
+//cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
+//cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
+//cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/Good/GearOfAwe/ArmorOfAwe.cs
+//cs_include Scripts/Good/GearOfAwe/HelmOfAwe.cs
+//cs_include Scripts/Good/SilverExaltedPaladin.cs
+//cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
+//cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
+//cs_include Scripts/Story/J6Saga.cs
+//cs_include Scripts/Story/Nation/Bamboozle.cs
+//cs_include Scripts/Story/7DeadlyDragons/Extra/HatchTheEgg.cs
+//cs_include Scripts/Other/ShadowDragonDefender.cs
+//cs_include Scripts/Evil/ADK.cs
+//cs_include Scripts/Story/DjinnGate.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -51,11 +71,12 @@ public class UnlockForgeEnhancements
     public CoreLegion Legion = new();
     public CoreDarkon Darkon = new();
     public CoreAwe Awe = new();
-
     public Core13LoC LOC => new();
+    public CoreNSOD CorNSOD = new();
     public CoreAstravia Astravia => new();
-    public ShadowfallRise SFR = new();
+    public CoreDailies Daily = new();
 
+    public ShadowfallRise SFR = new();
     public ArchPaladin AP = new();
     public DragonOfTime DOT = new();
     public FireChampionsArmor FCA = new();
@@ -63,6 +84,8 @@ public class UnlockForgeEnhancements
     public SepulchuresOriginalHelm Seppy = new();
     public PrinceDarkonsPoleaxePreReqs PDPPR = new();
     public HeadoftheLegionBeast HOTLB = new();
+    public Awescended Awescended = new();
+    public NulgathDemandsWork NDW = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -71,6 +94,7 @@ public class UnlockForgeEnhancements
         new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
         new Option<ForgeQuestWeapon>("ForgeQuestWeapon", "Weapon Enhancement", "Forge Quests to unlock Weapon Enhancement, change to none to unselect", ForgeQuestWeapon.None),
         new Option<ForgeQuestCape>("ForgeQuestCape", "Cape Enhancement", "Forge Quests to unlock Cape Enhancement, change to none to unselect", ForgeQuestCape.None),
+        new Option<ForgeQuestHelm>("ForgeQuestHelm", "Helm Enhancement", "Forge Quests to unlock Helm Enhancement, change to none to unselect", ForgeQuestHelm.None),
         new Option<bool>("UseGold", "Use Gold", "Speed the BlacksmithingREP grind up with Gold?", false)
     };
 
@@ -88,8 +112,8 @@ public class UnlockForgeEnhancements
         if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
-        if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None)
-            Core.Logger("Both settings are set to None, no Forge Quest to do. Stopping script.", messageBox: true, stopBot: true);
+        if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None && Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") == ForgeQuestHelm.None)
+            Core.Logger("all settings are set to None, no Forge Quest to do. Stopping script.", messageBox: true, stopBot: true);
 
         if (Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") != ForgeQuestWeapon.None)
         {
@@ -117,6 +141,46 @@ public class UnlockForgeEnhancements
                 case "ArcanasConcertoWIP":
                     ArcanasConcertoWIP();
                     break;
+
+                case "Elysium":
+                    {
+                        Core.Logger("Placeholder : \"The Divine Will\" - cant find it yet");
+                        NDW.NDWQuest("Archfiend Essence Fragment", 3);
+                        CorNSOD.BonesVoidRealm(20);
+                        Awescended.GetAwe();
+                        break;
+                    }
+
+                case "Acheron":
+                    {
+                        // have the Shadows of War II questline completed 
+
+                        // have the Dark Box and Dark Key mini-saga completed 
+
+                        // Quest complete will require you to turn in the Power of Darkness, 
+                        NothingAcess();
+                        Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
+                        //20 Dark Potions,
+                        Daily.MonthlyTreasureChestKeys();
+                        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+                        {
+                            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
+                            break;
+                        }
+
+                        Core.RegisterQuests(5710);
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+                        {
+                            if (Core.IsMember)
+                                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
+                            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+                        }
+                        Core.CancelRegisteredQuests();
+
+                        //The Mortal Coil (a new misc item)   
+                        Core.Logger("Placeholder : \"The Mortal Coil\" - cant find it yet");
+                        break;
+                    }
 
                 case "All":
                     Core.Logger("Selected to unlock all Forge Weapon Enhancements");
@@ -156,6 +220,48 @@ public class UnlockForgeEnhancements
                     Core.Logger("Selected to unlock all Forge Cape Enhancements");
                     ForgeCapeEnhancement();
                     Avarice(); //Calls on to the other functions internally
+                    break;
+            }
+        }
+
+
+
+        if (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") != ForgeQuestHelm.None)
+        {
+            if (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") != ForgeQuestHelm.All)
+                Core.Logger($"Selected Forge Cape Enhancement: {Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm")}");
+            DateTime dt = System.DateTime.Now;
+            if (DateTime.Now.Month != 9 && DateTime.Now.Day != 2)
+                Core.Logger($" Helm Enh will be avaiable on: {new DateTime(DateTime.Now.Year, 9, 2)}", stopBot: true);
+
+            switch (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm").ToString())
+            {
+                case "Vim":
+                    Core.BuyItem("Classhalla", 172, "Rouge");
+                    Adv.rankUpClass("Rouge");
+                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
+                    break;
+
+                case "Examen":
+                    Core.BuyItem("Classhalla", 176, "Healer");
+                    Adv.rankUpClass("Healer");
+                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
+                    break;
+
+                case "Anima":
+                    Core.BuyItem("Classhalla", 170, "Warrior");
+                    Adv.rankUpClass("Warrior");
+                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
+                    break;
+
+                case "Pneuma":
+                    Core.BuyItem("Classhalla", 174, "Mage");
+                    Adv.rankUpClass("Mage");
+                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
+                    break;
+
+                case "All":
+                    Core.Logger("Selected to unlock all Forge Helm Enhancements");
                     break;
             }
         }
@@ -442,6 +548,84 @@ public class UnlockForgeEnhancements
         Core.EnsureComplete(8745);
         Core.Logger("Enhancement Unlocked: Avarice");
     }
+
+    public void NothingAcess()
+    {
+        if (Core.CheckInventory("Void Lodestone"))
+            return;
+
+        // Arcane Lodestone
+        if (!Core.CheckInventory("Arcane Lodestone"))
+        {
+            //(Reward from the 'Open Ebony Chest' quest
+            //Requires: ???(38565) to acess quest
+            if (!Core.CheckInventory(38565))
+                TheDarkBox(38565);
+
+            if (Core.CheckInventory(38565))
+            {
+                Core.EnsureAccept(5723);
+                Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
+                Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
+                Core.BuyItem("map", 336, "Golden Key");
+                Core.EnsureComplete(5723);
+            }
+            else
+            {
+                Core.Logger("Cannot Accept Quest Without Item \"???\"");
+                return;
+            }
+        }
+        // Mercury Elixir
+        if (!Core.CheckInventory("Mercury Elixir"))
+        {
+            //Reward from the 'Mercury Elixir' quest
+            Core.EnsureAccept(5757);
+            Core.HuntMonster("Battleunderb", "The Lost", "Mercury Elixir");
+            Core.EnsureComplete(5757);
+        }
+        Core.BuyItem("doomwood", 1381, "Void Lodestone");
+    }
+
+    public void TheDarkBox(string Item = "any", int quant = 1)
+    {
+        Daily.MonthlyTreasureChestKeys();
+        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
+            return;
+        }
+
+        Core.Logger("Pray to RNGsus for your item");
+        if (!Bot.ShouldExit && !Core.CheckInventory(Item, quant) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            Core.EnsureAccept(5710);
+            if (Core.IsMember)
+                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
+            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+            Core.EnsureComplete(5710);
+        }
+    }
+
+    public void TheDarkBox(int itemID, int quant = 1)
+    {
+        Daily.MonthlyTreasureChestKeys();
+        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
+            return;
+        }
+
+        Core.Logger("Pray to RNGsus for your item");
+        if (!Bot.ShouldExit && !Core.CheckInventory(itemID, quant) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            Core.EnsureAccept(5710);
+            if (Core.IsMember)
+                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
+            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+            Core.EnsureComplete(5710);
+        }
+    }
 }
 
 public enum ForgeQuestWeapon
@@ -451,15 +635,27 @@ public enum ForgeQuestWeapon
     Smite,
     HerosValiance,
     ArcanasConcertoWIP,
+    Elysium,
     None,
     All
 };
+
 public enum ForgeQuestCape
 {
     ForgeCapeEnhancement,
     Absolution,
     Vainglory,
     Avarice,
+    None,
+    All
+};
+
+public enum ForgeQuestHelm
+{
+    Vim,
+    Examen,
+    Anima,
+    Pneuma,
     None,
     All
 };
