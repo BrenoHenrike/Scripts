@@ -15,7 +15,7 @@ public class IcestormArenaXP
         Core.SetOptions();
 
         Adv.BestGear(GearBoost.exp);
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
         Farm.IcestormArena();
 
         Core.SetOptions(false);

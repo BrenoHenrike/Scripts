@@ -17,7 +17,7 @@ public class ThunderForgeREP
 
         LOC.Lionfang();
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
         Farm.ThunderForgeREP();
 

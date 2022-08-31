@@ -14,7 +14,7 @@ public class RankUpEquippedClass
     {
         Core.SetOptions(disableClassSwap: true);
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.CP, true);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.CP, true);
         Adv.rankUpClass(Bot.Player.CurrentClass.Name);
 
         Core.SetOptions(false);

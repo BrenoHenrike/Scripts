@@ -25,7 +25,7 @@ public class BlacksmithingREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
         Adv.BestGear(GearBoost.rep);
         Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
