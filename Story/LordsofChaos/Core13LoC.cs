@@ -1402,8 +1402,8 @@ public class Core13LoC
         }
 
         //Time to Prove Yourself
-        Story.KillQuest(2255, "timevoid", new[] { "Time-Travel Fairy", "Ephemerite" });
         Story.MapItemQuest(2255, "timevoid", 1439, 15);
+        Story.KillQuest(2255, "timevoid", new[] { "Time-Travel Fairy", "Ephemerite" });
 
 
         //Fill the Empty Hours

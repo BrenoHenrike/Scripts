@@ -462,7 +462,7 @@ public class CoreDailies
             if (Core.CheckInventory("Shadow Shield", 100))
                 Core.BuyItem("shadowfall", 1644, "ShadowScythe General");
         }
-        Core.JumpWait();
+        Core.Jump("Cut1", "Left");
     }
 
     public void GrumbleGrumble()
