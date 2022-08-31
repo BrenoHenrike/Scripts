@@ -15,7 +15,7 @@ public class NulgathDemandsWork
     public GoldenHanzoVoid GHV = new();
     public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
 
-    string[] NDWItems =
+    public string[] NDWItems =
     {   "Unidentified 35",
         "Unidentified 27",
         "Unidentified 26",
@@ -38,12 +38,12 @@ public class NulgathDemandsWork
         Core.SetOptions(false);
     }
 
-    public void NDWQuest(string item = "any", int quant = 1)
+    public void NDWQuest(string[] items = null, int quant = 1)
     {
-        if (Core.CheckInventory(item, quant))
+        if (Core.CheckInventory(items, quant))
             return;
 
-        if (item == null)
+        if (items == null)
         {
             Core.Logger("No Item Input");
             return;
@@ -53,34 +53,22 @@ public class NulgathDemandsWork
         Core.AddDrop(NDWItems);
 
         int i = 0;
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(items, quant))
         {
             Core.EnsureAccept(5259);
 
             WillpowerExtraction.Unidentified34(10);
-
             Nation.FarmUni13(2);
-
             Core.EnsureAccept(5259);
-
             Nation.FarmBloodGem(2);
-
             Nation.FarmDiamondofNulgath(60);
-
             Nation.FarmDarkCrystalShard(45);
-
             Uni27();
-
             Nation.FarmVoucher(true);
-
             Nation.FarmGemofNulgath(15);
-
             Nation.SwindleBulk(50);
-
             GHV.GetGHV();
-            if (item == "Archfiend Essence Fragment")
-                Core.EnsureComplete(5259, 58397);
-            else Core.EnsureCompleteChoose(5259);
+            Core.EnsureCompleteChoose(5259, items);
             Core.ToBank(NDWItems[..^8]);
 
             Core.Logger($"Completed x{i}");
@@ -96,7 +84,7 @@ public class NulgathDemandsWork
         if (Core.CheckInventory("Unidentified 35", quant))
             return;
 
-        NDWQuest("Archfiend Essence Fragment", 9);
+        NDWQuest(new[] { "Archfiend Essence Fragment" }, 9);
         Core.BuyItem("tercessuinotlim", 1951, 35770);
 
     }
