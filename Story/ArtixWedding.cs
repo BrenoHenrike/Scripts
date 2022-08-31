@@ -30,6 +30,7 @@ public class ArtixWedding
         Story.PreLoad();
 
         //Battle Through the Dungeon 3232
+        Core.Join("ArtixWedding");
         Story.KillQuest(3232, "GrimskullAnnex", "Grim Fighter");
 
         //The Way is Blocked 3233
