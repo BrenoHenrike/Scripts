@@ -2189,7 +2189,7 @@ public class CoreFarms
             MembershipDues(MemberShipsIDS.Vampire, rank);
         else
         {
-            if (!Bot.Quests.IsAvailable(522))
+            if (!Bot.Quests.IsUnlocked(522))
             {
                 Core.Logger("Can't do farming quest [Twisted Paw] (/safiria)", messageBox: true);
                 return;
