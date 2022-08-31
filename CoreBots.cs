@@ -19,6 +19,7 @@ using Skua.Core.Models.Shops;
 using Skua.Core.Models.Skills;
 using Skua.Core.Models;
 using Skua.Core.Utils;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class CoreBots
 {
@@ -274,8 +275,27 @@ public class CoreBots
         SetOptions(false);
         if (e != null)
         {
-            Logger("A crash has been detected, please report: " + e.ToString());
-            Bot.ShowMessageBox("A crash has been detected, please report:\n" + e.ToString(), "Script Crashed");
+            string eSlice = e.Message + "\n" + e.InnerException;
+            if (Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice,
+                                   "Script Crashed", "Open Form", "Close Window").Text == "Open Form")
+            {
+                List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
+                logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
+                string url = "\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                    "entry.2118425091=Bug+Report&" +
+                   $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1).Replace(".cs", "")}&" +
+                    "entry.1803231651=It+stopped+at+the+wrong+time+(crash)&" +
+                   $"entry.1954840906={logs.Join("%0A")}&" +
+                   $"entry.285894207={eSlice}&\"";
+                url = url.Replace("\r\n", "%0A").Replace("\n", "").Replace(" ", "%20");
+
+                Process p = new();
+                p.StartInfo.FileName = "rundll32";
+                p.StartInfo.Arguments = "url,OpenURL " + url;
+                p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
+                p.Start();
+            }
+            Logger("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice);
         }
         return StopBot();
     }
@@ -1495,7 +1515,7 @@ public class CoreBots
 
         if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, click OK to open the download page of the latest release", "Outdated Skua detected") == true)
         {
-            System.Diagnostics.Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases");
+            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases");
             Bot.Stop(true);
             return;
         }
