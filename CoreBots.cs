@@ -1969,7 +1969,9 @@ public class CoreBots
     public bool inPublicRoom()
     {
         Bot.Wait.ForMapLoad(Bot.Map.Name);
-        return int.Parse(Bot.Map.FullName.Split('-').Last() ?? "1") < 1000;
+        if (!Int32.TryParse(Bot.Map.FullName.Split('-').Last(), out int nr))
+            nr = 1;
+        return nr < 1000;
     }
     #endregion
 
