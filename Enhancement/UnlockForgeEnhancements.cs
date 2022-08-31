@@ -145,7 +145,7 @@ public class UnlockForgeEnhancements
                 case "Elysium":
                     {
                         Core.Logger("Placeholder : \"The Divine Will\" - cant find it yet");
-                        NDW.NDWQuest("Archfiend Essence Fragment", 3);
+                        NDW.NDWQuest(new[] {"Archfiend Essence Fragment"}, 3);
                         CorNSOD.BonesVoidRealm(20);
                         Awescended.GetAwe();
                         break;
