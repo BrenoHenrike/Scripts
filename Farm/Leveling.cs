@@ -15,7 +15,7 @@ public class Leveling
         Core.SetOptions();
 
         Adv.BestGear(GearBoost.exp);
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
         Farm.Experience();
 
         Core.SetOptions(false);

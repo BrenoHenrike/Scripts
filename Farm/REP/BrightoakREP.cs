@@ -16,7 +16,7 @@ public class BrightoakREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
         BrightOak.doall();
         Farm.BrightoakREP();

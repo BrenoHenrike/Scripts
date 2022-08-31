@@ -21,7 +21,7 @@ public class SevenCirclesWarXP
 
         Adv.BestGear(GearBoost.exp);
         Adv.BestGear(GearBoost.gold);
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Experience, true);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
 
         Farm.SevenCirclesWar(Bot.Player.Level == 100 ? 101 : 100, 100000000);
 

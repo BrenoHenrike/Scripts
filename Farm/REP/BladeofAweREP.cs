@@ -10,7 +10,7 @@ public class BladeofAweREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
         Farm.BladeofAweREP(10, false);
 

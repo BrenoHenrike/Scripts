@@ -26,7 +26,7 @@ public class GetAllRanks
         LOC.Kimberly();
         LOC.Lionfang();
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, true);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, true);
 
         Farm.GetAllRanks();
 

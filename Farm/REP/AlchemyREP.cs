@@ -26,7 +26,7 @@ public class AlchemyREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, RBot.Items.BoostType.Reputation, false);
+        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
         Farm.AlchemyREP(10, Bot.Config.Get<bool>("goldMethod"));
 
