@@ -726,97 +726,20 @@ public class CoreFarms
 
     public void BladeofAweREP(int rank = 10, bool farmBoA = true)
     {
-        if (!farmBoA && FactionRank("Blade of Awe") >= rank)
+        if (farmBoA && !Core.CheckInventory(17585))
         {
-            Core.Logger($" Faction: \"Blade of Awe\" is already Rank: [{rank}]");
-            return;
-        }
-
-        if (farmBoA && Core.CheckInventory(17585) && FactionRank("Blade of Awe") >= rank)
-        {
-            Core.Logger($" Faction: \"Blade of Awe\" is already Rank: [{rank}]");
-            Core.Logger("Blade of Awe Already in Inventory.");
-            return;
-        }
-
-        if (farmBoA)
-        {
-            Core.Logger("Getting Your Blade of Awe, One Moment ( ͡° ͜ʖ ͡°)");
-            GetBoA();
-        }
-        else RepFarm(rank);
-
-        void BoaQuests()
-        {
-            if (!farmBoA && Core.isCompletedBefore(2937))
-                return;
-
-            if (farmBoA && !Core.isCompletedBefore(2937))
-                Core.Logger("Doing Quests For Blade of Awe Quest Shop");
-
-            Core.AddDrop("Stonewrit Found!", "Handle Found!", "Hilt Found!", "Blade Found!", "Runes Found!");
-            Core.EquipClass(ClassType.Farm);
-            if (!Core.CheckInventory("Legendary Stonewrit", toInv: false) && (!Bot.Quests.IsUnlocked(2934)))
-            {
-                Core.EnsureAccept(2933);
-                Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
-                Core.EnsureComplete(2933);
-                Core.Logger("Find the Stonewrit! completed");
-            }
-
-            if (!Core.CheckInventory("Legendary Handle", toInv: false) && (!Bot.Quests.IsUnlocked(2935)))
-            {
-                Core.EnsureAccept(2934);
-                Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
-                Core.EnsureComplete(2934);
-                Core.Logger("Find the Handle! completed");
-            }
-
-            if (!Core.CheckInventory("Legendary Hilt", toInv: false) && (!Bot.Quests.IsUnlocked(2936)))
-            {
-                Core.EnsureAccept(2935);
-                Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
-                Core.EnsureComplete(2935);
-                Core.Logger("Find the Hilt! completed");
-            }
-
-            if (!Core.CheckInventory("Legendary Blade", toInv: false) && (!Bot.Quests.IsUnlocked(2937)))
-            {
-                Core.EnsureAccept(2936);
-                Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false, log: false);
-                Core.EnsureComplete(2936);
-                Core.Logger("Find the Blade! completed");
-            }
-
-            if (!Core.CheckInventory("Legendary Runes", toInv: false) && (!Bot.Quests.IsUnlocked(8757)))
-            {
-                Core.EnsureAccept(2937);
-                Core.KillEscherion("Runes Found!", publicRoom: true, log: false);
-                Core.EnsureComplete(2937);
-                Core.Logger("Find the Runes! completed");
-            }
-            Core.ToBank("Legendary Stonewrit", "Legendary Handle", "Legendary Hilt", "Legendary Blade", "Legendary Runes");
-        }
-
-        void GetBoA()
-        {
-            if (!Core.isCompletedBefore(8757))
-                BoaQuests();
-            if (FactionRank("Blade of Awe") < 6)
-                RepFarm(6);
-
-            // Core.Logger("Buying From Quest Shop");
+            UnlockBoA();
+            RepFarm(6);
             Core.BuyItem("museum", 631, 17585);
-            // Core.Relogin();
         }
+        RepFarm(rank);
 
         void RepFarm(int rank)
         {
             if (FactionRank("Blade of Awe") >= rank)
                 return;
 
-            if (!Core.isCompletedBefore(2937))
-                BoaQuests();
+            UnlockBoA();
 
             Core.SavedState();
             Core.EquipClass(ClassType.Farm);
@@ -827,6 +750,67 @@ public class CoreFarms
                 Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
+        }
+
+        void UnlockBoA()
+        {
+            if (Core.isCompletedBefore(2937))
+                return;
+
+            if (!Core.isCompletedBefore(2933))
+            {
+                Core.Logger($"Doing Quest: [2933] - \"Find the Stonewrit!\"");
+                Core.EquipClass(ClassType.Solo);
+                Core.EnsureAccept(2933);
+                Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
+                Core.EnsureComplete(2933);
+                Core.Logger($"Completed Quest: [2933] - \"Find the Stonewrit!\"");
+            }
+            else Core.Logger($"Already Completed: [2933] - \"Find the Stonewrit!\"");
+
+            if (!Core.isCompletedBefore(2934))
+            {
+                Core.Logger($"Doing Quest: [2934] - \"Find the Handle!\"");
+                Core.EquipClass(ClassType.Solo);
+                Core.EnsureAccept(2934);
+                Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
+                Core.EnsureComplete(2934);
+                Core.Logger($"Completed Quest: [2934] - \"Find the Handle!\"");
+            }
+            else Core.Logger($"Already Completed: [2934] - \"Find the Handle!\"");
+
+            if (!Core.isCompletedBefore(2935))
+            {
+                Core.Logger($"Doing Quest: [2935] - \"Find the Hilt!\"");
+                Core.EquipClass(ClassType.Farm);
+                Core.EnsureAccept(2935);
+                Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
+                Core.EnsureComplete(2935);
+                Core.Logger($"Completed Quest: [2935] - \"Find the Hilt!\"");
+            }
+            else Core.Logger($"Already Completed: [2935] - \"Find the Hilt!\"");
+
+            if (!Core.isCompletedBefore(2936))
+            {
+                Core.Logger($"Doing Quest: [2936] - \"Find the Blade!\"");
+                Core.EquipClass(ClassType.Farm);
+                Core.EnsureAccept(2936);
+                Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false, log: false);
+                Core.EnsureComplete(2936);
+                Core.Logger($"Completed Quest: [2936] - \"Find the Blade!\"");
+            }
+            else Core.Logger($"Already Completed: [2936] - \"Find the Blade!\"");
+
+            if (!Core.isCompletedBefore(2937))
+            {
+                Core.Logger($"Doing Quest: [2937] - \"Find the Runes!\"");
+                Core.EquipClass(ClassType.Solo);
+                Core.EnsureAccept(2937);
+                Core.KillEscherion("Runes Found!", publicRoom: true, log: false);
+                Core.EnsureComplete(2937);
+                Core.Logger($"Completed Quest: [2937] - \"Find the Runes!\"");
+            }
+            else Core.Logger($"Already Completed: [2937] - \"Find the Runes!\"");
         }
     }
 
