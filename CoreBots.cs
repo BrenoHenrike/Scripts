@@ -846,28 +846,26 @@ public class CoreBots
         if (questID <= 0)
             return false;
         Bot.Sleep(ActionDelay);
-        DebugLogger(this);
-        if (Bot.Quests.TryGetQuest(questID, out Quest? quest) && quest is not null)
+        Quest quest = EnsureLoad(questID);
+        if (quest is not null)
         {
-            DebugLogger(this);
             foreach (ItemBase item in quest.Rewards)
             {
-                DebugLogger(this, "in foreach loop");
                 if (!CheckInventory(item.Name, toInv: false)
                     && (itemList == null || (itemList != null && itemList.Contains(item.Name))))
                 {
-                    DebugLogger(this, "in foreach loop");
-                    Logger($"Completed [{quest.Name}] for {item.Name}");
                     bool completed = Bot.Quests.EnsureComplete(questID, item.ID);
-                    DebugLogger(this, "in foreach loop");
                     Bot.Drops.Pickup(item.Name);
                     Bot.Wait.ForPickup(item.Name);
-                    DebugLogger(this, "in foreach loop");
                     return completed;
                 }
             }
         }
-        DebugLogger(this, "in foreach loop");
+        else
+        {
+            Logger($"Failed to load Quest {questID}, EnsureCompleteChoose failed");
+            return false;
+        }
         Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
         return false;
     }
