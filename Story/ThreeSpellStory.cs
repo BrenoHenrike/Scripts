@@ -175,7 +175,7 @@ public class ThreeSpellStory
             }
             Core.EnsureComplete(4493);
         }
-        Core.ToBank("Sun Token VIII");
+        Core.ToBank("Sun Token VIII", "Heart of the Sun");
         Core.Logger("All Quests Complete");
     }
 }

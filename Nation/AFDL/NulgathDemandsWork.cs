@@ -38,12 +38,12 @@ public class NulgathDemandsWork
         Core.SetOptions(false);
     }
 
-    public void NDWQuest(string[] items = null, int quant = 1)
+    public void NDWQuest(string item = null, int quant = 1)
     {
-        if (Core.CheckInventory(items, quant))
+        if (Core.CheckInventory(item, quant))
             return;
 
-        if (items == null)
+        if (item == null)
         {
             Core.Logger("No Item Input");
             return;
@@ -53,7 +53,7 @@ public class NulgathDemandsWork
         Core.AddDrop(NDWItems);
 
         int i = 0;
-        while (!Bot.ShouldExit && !Core.CheckInventory(items, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(5259);
 
@@ -68,12 +68,11 @@ public class NulgathDemandsWork
             Nation.FarmGemofNulgath(15);
             Nation.SwindleBulk(50);
             GHV.GetGHV();
-            Core.EnsureCompleteChoose(5259, items);
+            Core.EnsureComplete(5259);
             Core.ToBank(NDWItems[..^8]);
 
             Core.Logger($"Completed x{i}");
             i++;
-
         }
 
 
@@ -84,7 +83,7 @@ public class NulgathDemandsWork
         if (Core.CheckInventory("Unidentified 35", quant))
             return;
 
-        NDWQuest(new[] { "Archfiend Essence Fragment" }, 9);
+        NDWQuest("Archfiend Essence Fragment", 9);
         Core.BuyItem("tercessuinotlim", 1951, 35770);
 
     }
