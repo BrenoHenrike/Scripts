@@ -66,11 +66,11 @@ public class FireandIceMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("drakonnan", "Fire Dragon", "Dragon Scale");
-                        Core.HuntMonster("drakonnan", "Living Fire", "Living Flame");
+                        Core.HuntMonster("drakonnan", "Living Fire", "Ember of a Living Flame");
                         Core.HuntMonster("drakonnan", "Fire Elemental", "Fire Elemental's Gauntlet");
-                        Core.HuntMonster("drakonnan", "Living Lava", "Lava Rock");
+                        Core.HuntMonster("drakonnan", "Living Lava", "Lava Rock");                     
                     }
-                    Core.CancelRegisteredQuests();
+                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Ice Katana":
