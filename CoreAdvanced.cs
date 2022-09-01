@@ -127,7 +127,9 @@ public class CoreAdvanced
         {
             foreach (ShopItem item in items)
             {
-                getIngredients(item);
+                if (!matsOnly)
+                    Core.Logger($"Farming to buy {item.Name} (#{t}/{items.Count})");
+                getIngredients(item, 1);
                 if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
@@ -139,28 +141,38 @@ public class CoreAdvanced
                 i++;
         }
 
-        void getIngredients(ShopItem item)
+        void getIngredients(ShopItem item, int craftingQ)
         {
-            if (Core.CheckInventory(item.ID) || item.Requirements == null)
+            if (Core.CheckInventory(item.ID, craftingQ) || item.Requirements == null)
                 return;
 
-            if (!matsOnly)
-                Core.Logger($"Farming to buy {item.Name} (#{t}/{items.Count})");
+            Core.FarmingLogger(item.Name, craftingQ);
 
             foreach (ItemBase req in item.Requirements)
             {
-                externalQuant =
-                    matsOnly ?
-                        (Bot.Inventory.IsMaxStack(req.Name) ?
-                            req.MaxStack : ((req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name)) + req.Quantity)) : req.Quantity;
+                if (matsOnly)
+                {
+                    if (Bot.Inventory.IsMaxStack(req.Name))
+                        externalQuant = req.MaxStack;
+                    else
+                    {
+                        if (req.Temp)
+                            externalQuant = Bot.TempInv.GetQuantity(req.Name) + req.Quantity;
+                        else externalQuant = Bot.Inventory.GetQuantity(req.Name) + req.Quantity;
+                    }
+                }
+                else
+                    externalQuant = req.Quantity * (craftingQ - Bot.Inventory.GetQuantity(item.ID));
+
                 if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
                     continue;
 
                 if (shopItems.Select(x => x.ID).Contains(req.ID))
                 {
                     ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
-                    getIngredients(selectedItem);
-                    if (!matsOnly && canBuy(new List<ShopItem>() { selectedItem }, shopID))
+
+                    getIngredients(selectedItem, req.Quantity);
+                    if (!matsOnly)
                         BuyItem(map, shopID, selectedItem.ID, req.Quantity);
                 }
                 else
@@ -245,8 +257,13 @@ public class CoreAdvanced
         {
             foreach (ItemBase req in item.Requirements)
             {
-                if (!Core.CheckInventory(req.Name, req.Quantity))
+                if (!Core.CheckInventory(req.ID, req.Quantity))
                 {
+                    if (Core.CheckInventory(req.ID))
+                    {
+                        Core.Logger($"Cannot buy {item.Name} from {shopID}. You own {Bot.Inventory.GetQuantity(item.ID)}x {req.Name} but need {req.Quantity} .");
+                        return false;
+                    }
                     Core.Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
                     return false;
                 }
