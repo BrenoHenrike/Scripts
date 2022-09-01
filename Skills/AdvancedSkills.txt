@@ -8,7 +8,7 @@ Base = Arachnomancer = 1 | 1 | 1 | 1 | 1 | 1 | 2 | 4 | 3 | Timeout:250
 Base = Arcane Dark Caster = 4WW5000 | 3 | 3 | 2 | 1 | Timeout:250
 Solo = ArchFiend = 3S | 1S | 2S | 4S | Mode Optimistic
 Farm = ArchFiend = 3S | 1S | 2S | Mode Optimistic
-Base = ArchPaladin = 3S | 4S | 1S | 2S | Mode Optimistic
+Base = ArchPaladin = 1 | 2 | 3 | 4 | 1 | 1 | 2 | 1 | Timeout:250
 Base = Artifact Hunter = 4 | 3 | 2 | 1 | Timeout:250
 Base = Assassin = 4 | 3 | 1 | 2 | Timeout:250
 Base = Barber = 4 | 1 | 3 | 2 | Timeout:250
@@ -102,7 +102,7 @@ Base = Exalted Harbinger = 4 | 4 | 4 | 3 | 1 | 2H<30S | Timeout: 250
 Base = Exalted Soul Cleaver = 2 | 3 | 2 | 2 | 3 | Timeout: 250
 Base = FireLord Summoner = 3 | 2 | 1 | 4 | Timeout:250
 Base = Flame Dragon Warrior = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Frost SpiritReaver = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Frost SpiritReaver = 1 | 3 | 4 | 2 | 1 | 3 | 1 | 3 | 1 | 2 | 1 | 3 | 1 | 3 | 1 | 3 | 2 | 1 | 3 | 4 | 1 | 3 | Timeout:250
 Supp = Frostval Barbarian = 3 | 1 | 2 | Mode Optimistic
 Farm = Frostval Barbarian = 4 | 1 | 4 | 2 | 4 | Mode Optimistic
 Base = Giftbox = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -118,10 +118,10 @@ Base = Healer (Rare) = 1 | 2H<50S | 3 | 4 | Mode Optimistic
 Base = Heavy Metal Necro = 1 | 4H>50S | 2 | 3 | 2 | Timeout: 250
 Base = Heavy Metal Rockstar = 1 | 4H>50S | 2 | 3 | 2 | Timeout: 250
 Base = Heroic Naval Commander = 3WW10000 | 4 | 2 | 1 | Timeout: 250
-Base = HighSeas Commander = 1 | 4WW15000 | 3 | 2 | Timeout: 250
+Base = HighSeas Commander = 1 | 3 | 1 | 4 | 2 | 1 | 1 | Timeout:250
 Base = Hobo Highlord = 1 | Mode Optimistic
 Base = Horc Evader = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Immortal Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Immortal Dark Caster = 1 | 2 | 3 | 2 | 1 | 2 | 1 | 3 | 4 | Timeout:250
 Base = Immortal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 | Timeout: 250
 Base = Imperial Chunin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Infinite Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -158,7 +158,7 @@ Base = MindBreaker = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Naval Commander = 3WW10000 | 4 | 2 | 1 | Timeout: 250
 Base = Nechronomancer = 1 | 2 | 3S | 4 | Mode Optimistic
-Base = Necromancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 | Mode Optimistic
+Base = Nechronomancer = 1 | 2 | 4 | 1 | 2 | 1 | 1 | 2 | 1 | 1 | 3 | Timeout:250
 Base = Necrotic Chronomancer = 1 | 2 | 4 | 1 | 2 | 1 | 3 | 1 | 1 | 3 | Mode Optimistic
 Base = Ninja = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Ninja Warrior = 1 | 2 | 3 | 4 | Mode Optimistic
