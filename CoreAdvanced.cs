@@ -503,7 +503,7 @@ public class CoreAdvanced
 
         SmartEnhance(ClassName);
         string[]? CPBoost = BestGear(GearBoost.cp);
-        EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
         Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
@@ -763,17 +763,20 @@ public class CoreAdvanced
             ReEnhanceAfter = CurrentClassEnh();
             if (Bot.Inventory.Items.Any(x => x.Category == ItemCategory.Cape && x.Equipped))
                 ReCEnhanceAfter = CurrentCapeSpecial();
+            if (Bot.Inventory.Items.Any(x => x.Category == ItemCategory.Helm && x.Equipped))
+                ReCEnhanceAfter = CurrentCapeSpecial();
             ReWEnhanceAfter = CurrentWeaponSpecial();
         }
         else
         {
             Core.Equip(ReEquippedItems.ToArray());
-            EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReWEnhanceAfter);
+            EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
         }
     }
     private List<string> ReEquippedItems = new List<string>();
     private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
     private CapeSpecial ReCEnhanceAfter = CapeSpecial.None;
+    private HelmSpecial ReHEnhanceAfter = HelmSpecial.None;
     private WeaponSpecial ReWEnhanceAfter = WeaponSpecial.None;
 
     /// <summary>
@@ -802,9 +805,9 @@ public class CoreAdvanced
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
-        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Join(Map);
     }
 
@@ -824,9 +827,9 @@ public class CoreAdvanced
         string[] _BestGear = BestGear((GearBoost)Enum.Parse(typeof(GearBoost), MonsterRace));
         if (_BestGear.Length == 0)
             return;
-        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentWeaponSpecial());
+        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Join(Map);
     }
 
@@ -839,13 +842,13 @@ public class CoreAdvanced
     /// </summary>
     /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
+    public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             return;
 
         List<InventoryItem> EquippedItems = Bot.Inventory.Items.FindAll(i => i.Equipped == true && EnhanceableCatagories.Contains(i.Category));
-        AutoEnhance(EquippedItems, type, wSpecial, cSpecial);
+        AutoEnhance(EquippedItems, type, cSpecial, hSpecial, wSpecial);
     }
 
     /// <summary>
@@ -854,7 +857,7 @@ public class CoreAdvanced
     /// <param name="ItemName">Name of the item you want to enhance</param>
     /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
+    public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (string.IsNullOrEmpty(item) || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
             return;
@@ -873,7 +876,7 @@ public class CoreAdvanced
             return;
         }
 
-        AutoEnhance(new() { SelectedItem }, type, wSpecial, cSpecial);
+        AutoEnhance(new() { SelectedItem }, type, cSpecial, hSpecial, wSpecial);
     }
 
     /// <summary>
@@ -882,7 +885,7 @@ public class CoreAdvanced
     /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
     /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
-    public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
+    public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (items.Count() == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
             return;
@@ -921,7 +924,7 @@ public class CoreAdvanced
             return;
         }
 
-        AutoEnhance(SelectedItems, type, wSpecial, cSpecial);
+        AutoEnhance(SelectedItems, type, cSpecial, hSpecial, wSpecial);
     }
 
     /// <summary>
@@ -949,6 +952,21 @@ public class CoreAdvanced
             return CapeSpecial.None;
         }
         return (CapeSpecial)EquippedCape.EnhancementPatternID;
+    }
+
+    /// <summary>
+    /// Determines what Helm Special the player has on their currently equipped helm
+    /// </summary>
+    /// <returns>Returns the equipped Helm Special</returns>
+    public HelmSpecial CurrentHelmSpecial()
+    {
+        InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Helm);
+        if (EquippedHelm == null)
+        {
+            Core.Logger("Failed to find equipped Helm", messageBox: true, stopBot: true);
+            return HelmSpecial.None;
+        }
+        return (HelmSpecial)EquippedHelm.EnhancementPatternID;
     }
 
     /// <summary>
@@ -988,7 +1006,7 @@ public class CoreAdvanced
     };
     private ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
 
-    private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, WeaponSpecial wSpecial, CapeSpecial cSpecial)
+    private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, CapeSpecial cSpecial, HelmSpecial hSpecial, WeaponSpecial wSpecial)
     {
         // Empty check
         if (ItemList.Count == 0)
@@ -997,7 +1015,13 @@ public class CoreAdvanced
             return;
         }
 
-        // Defining weapon and cape
+        // Post Release: Remove this bit
+        // It's to prevent the user from attempting to do a unlocked one
+        cSpecial = (int)cSpecial >= 100 ? CapeSpecial.None : cSpecial;
+        hSpecial = (int)hSpecial >= 100 ? HelmSpecial.None : hSpecial;
+        wSpecial = (int)wSpecial >= 100 ? WeaponSpecial.None : wSpecial;
+
+        // Defining cape
         InventoryItem? cape = null;
         if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
         {
@@ -1008,6 +1032,19 @@ public class CoreAdvanced
                 ItemList.Remove(cape);
         }
 
+        // Defining helm
+        InventoryItem? helm = null;
+        if (hSpecial.ToString() != "None" && ItemList.Any(i => i.Category == ItemCategory.Helm))
+        {
+            Core.DebugLogger(this);
+            helm = ItemList.Find(i => i.Category == ItemCategory.Helm);
+
+            // Removing helm from the list because it needs to be enhanced seperately
+            if (helm != null)
+                ItemList.Remove(helm);
+        }
+
+        // Defining weapon
         InventoryItem? weapon = null;
         if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
         {
@@ -1076,29 +1113,72 @@ public class CoreAdvanced
                     break;
                 case CapeSpecial.Absolution:
                     if (!uAbsolution())
-                    {
-                        Core.Logger("Enhancement Failed: You did not unlock the Absolution Enhancement yet");
-                        canEnhance = false;
-                    }
+                        Fail();
                     break;
                 case CapeSpecial.Avarice:
                     if (!uAvarice())
-                    {
-                        Core.Logger("Enhancement Failed: You did not unlock the Avarice Enhancement yet");
-                        canEnhance = false;
-                    }
+                        Fail();
                     break;
                 case CapeSpecial.Vainglory:
                     if (!uVainglory())
+                        Fail();
+                    break;
+                case CapeSpecial.Penitence:
+                    if (!uPenitence())
+                        Fail();
+                    break;
+                case CapeSpecial.Lament:
+                    if (!uLament())
+                        Fail();
+                    break;
+
+                    void Fail()
                     {
-                        Core.Logger("Enhancement Failed: You did not unlock the Vainglory Enhancement yet");
+                        Core.Logger($"Enhancement Failed: You did not unlock the {cSpecial} Enhancement yet");
                         canEnhance = false;
                     }
-                    break;
             }
 
             if (canEnhance)
                 _AutoEnhance(cape, 2143, ((int)cSpecial > 0) ? "forge" : null);
+            else skipCounter++;
+        }
+        Core.DebugLogger(this);
+
+        // Enhancing the helm with the helm special
+        if (helm != null)
+        {
+            bool canEnhance = true;
+
+            switch (hSpecial)
+            {
+                case HelmSpecial.Vim:
+                    if (!uVim())
+                        Fail();
+                    break;
+                case HelmSpecial.Examen:
+                    if (!uExamen())
+                        Fail();
+                    break;
+                case HelmSpecial.Anima:
+                    if (!uAnima())
+                        Fail();
+                    break;
+                case HelmSpecial.Pneuma:
+                    if (!uPneuma())
+                        Fail();
+                    break;
+
+                    void Fail()
+                    {
+                        Core.Logger($"Enhancement Failed: You did not unlock the {hSpecial} Enhancement yet");
+                        canEnhance = false;
+                    }
+            }
+
+            if (canEnhance)
+                // Post Release: Fill in the real Shop ID, use loader
+                _AutoEnhance(helm, 0000, ((int)hSpecial > 0) ? "forge" : null);
             else skipCounter++;
         }
         Core.DebugLogger(this);
@@ -1150,24 +1230,15 @@ public class CoreAdvanced
                         break;
                     case WeaponSpecial.Lacerate:
                         if (!uLaceratey())
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Lacerate Enhancement yet");
-                            canEnhance = false;
-                        }
+                            Fail();
                         break;
                     case WeaponSpecial.Smite:
                         if (!uSmite())
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Smite Enhancement yet");
-                            canEnhance = false;
-                        }
+                            Fail();
                         break;
                     case WeaponSpecial.Valiance:
                         if (!uValiance())
-                        {
-                            Core.Logger("Enhancement Failed: You did not unlock the Valiance Enhancement yet");
-                            canEnhance = false;
-                        }
+                            Fail();
                         break;
                     case WeaponSpecial.Arcanas_Concerto:
                         if (!uArcanasConcerto())
@@ -1176,6 +1247,20 @@ public class CoreAdvanced
                             canEnhance = false;
                         }
                         break;
+                    case WeaponSpecial.Elysium:
+                        if (!uElysium())
+                            Fail();
+                        break;
+                    case WeaponSpecial.Acheron:
+                        if (!uArchon())
+                            Fail();
+                        break;
+
+                        void Fail()
+                        {
+                            Core.Logger($"Enhancement Failed: You did not unlock the {wSpecial} Enhancement yet");
+                            canEnhance = false;
+                        }
                 }
 
                 Core.DebugLogger(this);
@@ -1323,6 +1408,15 @@ public class CoreAdvanced
     private bool uVainglory() => Core.isCompletedBefore(8744);
     private bool uAvarice() => Core.isCompletedBefore(8745);
     private bool uForgeCape() => Core.isCompletedBefore(8758);
+    // Post Release: Fill in the real quest IDs, use loader (not 0000)
+    private bool uElysium() => Core.isCompletedBefore(0000);
+    private bool uArchon() => Core.isCompletedBefore(0000);
+    private bool uPenitence() => Core.isCompletedBefore(0000);
+    private bool uLament() => Core.isCompletedBefore(0000);
+    private bool uVim() => Core.isCompletedBefore(0000);
+    private bool uExamen() => Core.isCompletedBefore(0000);
+    private bool uAnima() => Core.isCompletedBefore(0000);
+    private bool uPneuma() => Core.isCompletedBefore(0000);
 
     #endregion
 
@@ -1349,8 +1443,9 @@ public class CoreAdvanced
         }
 
         EnhancementType? type = null;
-        CapeSpecial? cSpecial = null;
-        WeaponSpecial? wSpecial = null;
+        CapeSpecial cSpecial = CapeSpecial.None;
+        HelmSpecial hSpecial = HelmSpecial.None;
+        WeaponSpecial wSpecial = WeaponSpecial.None;
 
         #region Forge Enhancement Library
         switch (SelectedClass.Name.ToLower())
@@ -1562,7 +1657,6 @@ public class CoreAdvanced
                     case "void highlord":
                     case "void highlord (ioda)":
                         type = EnhancementType.Lucky;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Spiral_Carve;
                         break;
                     #endregion
@@ -1612,7 +1706,6 @@ public class CoreAdvanced
                     case "warriorscythe general":
                     case "yami no ronin":
                         type = EnhancementType.Lucky;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
                     #endregion
@@ -1651,7 +1744,6 @@ public class CoreAdvanced
                     case "unchained rocker":
                     case "unchained rockstar":
                         type = EnhancementType.Lucky;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Awe_Blast;
                         break;
                     #endregion
@@ -1671,7 +1763,6 @@ public class CoreAdvanced
                     case "vampire":
                     case "vampire lord":
                         type = EnhancementType.Lucky;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Health_Vamp;
                         break;
                     #endregion
@@ -1700,7 +1791,6 @@ public class CoreAdvanced
                     case "timeless dark caster":
                     case "witch":
                         type = EnhancementType.Wizard;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Awe_Blast;
                         break;
                     #endregion
@@ -1727,7 +1817,6 @@ public class CoreAdvanced
                     case "sakura cryomancer":
                     case "troll spellsmith":
                         type = EnhancementType.Wizard;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Spiral_Carve;
                         break;
                     #endregion
@@ -1747,7 +1836,6 @@ public class CoreAdvanced
                     case "sorcerer":
                     case "the collector":
                         type = EnhancementType.Wizard;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Health_Vamp;
                         break;
                     #endregion
@@ -1756,7 +1844,6 @@ public class CoreAdvanced
                     case "deathknight":
                     case "frostval barbarian":
                         type = EnhancementType.Fighter;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Awe_Blast;
                         break;
                     #endregion
@@ -1764,7 +1851,6 @@ public class CoreAdvanced
                     #region Healer - None - Health Vamp
                     case "dragon of time":
                         type = EnhancementType.Healer;
-                        cSpecial = CapeSpecial.None;
                         wSpecial = WeaponSpecial.Health_Vamp;
                         break;
                     #endregion
@@ -1780,10 +1866,10 @@ public class CoreAdvanced
             EnhanceItem(Class, (EnhancementType)type);
         Core.Equip(SelectedClass.Name);
 
-        if (type == null || cSpecial == null || wSpecial == null)
+        if (type == null)
             return;
 
-        EnhanceEquipped((EnhancementType)type, (CapeSpecial)cSpecial, (WeaponSpecial)wSpecial);
+        EnhanceEquipped((EnhancementType)type, (CapeSpecial)cSpecial, (HelmSpecial)hSpecial, (WeaponSpecial)wSpecial);
     }
 
     #endregion
@@ -1792,10 +1878,12 @@ public class CoreAdvanced
 public enum GearBoost
 {
     None,
+
     cp,
     gold,
     rep,
     exp,
+
     dmgAll,
     Chaos,
     Dragonkin,
@@ -1820,23 +1908,46 @@ public enum EnhancementType // Enhancement Pattern ID
 public enum CapeSpecial // Enhancement Pattern ID
 {
     None = 0,
+
     Forge = 10,
     Absolution = 11,
     Avarice = 12,
-    Vainglory = 24
+    Vainglory = 24,
+    // Post Release: Fill in the real Enh Patt ID, use loader (not 100 or above)
+    Penitence = 100,
+    Lament = 101,
 }
 
 public enum WeaponSpecial // Proc ID
 {
     None = 0,
+
     Spiral_Carve = 2,
     Awe_Blast = 3,
     Health_Vamp = 4,
     Mana_Vamp = 5,
     Powerword_Die = 6,
-    Forge = 99,
+
+    Forge = 99, // Not really 99, but cant have 0 twice
     Lacerate = 7,
     Smite = 8,
     Valiance = 9,
-    Arcanas_Concerto = 10
+    Arcanas_Concerto = 10,
+    // Post Release: Fill in the real Proc ID (not 100 or above)
+    // Console : bot.Log(bot.Flash.GetGameObject<int>($"world.invTree.{Item ID}.ProcID").ToString());
+    // Dont forget to replace the Item ID
+    // Or look in the shop loading packet
+    Elysium = 100,
+    Acheron = 101,
+}
+
+public enum HelmSpecial //Enhancement Pattern ID
+{
+    None = 0,
+
+    // Post Release: Fill in the real Enh Patt ID, use loader (not 100 or above)
+    Vim = 100,
+    Examen = 101,
+    Anima = 102,
+    Pneuma = 103,
 }

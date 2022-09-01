@@ -16,6 +16,7 @@ public class EnhanceEquippedSelect
     {
         new Option<EnhancementType>("type", "Enhancement Type", "The type of enhancement to use", EnhancementType.Lucky),
         new Option<CapeSpecial>("cSpecial", "Cape Special", "The special enhancement to use on the cape", CapeSpecial.None),
+        new Option<HelmSpecial>("hSpecial", "Helm Special", "The special enhancement to use on the helm", HelmSpecial.None),
         new Option<WeaponSpecial>("wSpecial", "Weapon Special", "The special enhancement to use on the weapon", WeaponSpecial.None)
     };
 
@@ -23,7 +24,7 @@ public class EnhanceEquippedSelect
     {
         Core.SetOptions(disableClassSwap: true);
 
-        Adv.EnhanceEquipped(Bot.Config.Get<EnhancementType>("type"), Bot.Config.Get<CapeSpecial>("cSpecial"), Bot.Config.Get<WeaponSpecial>("wSpecial"));
+        Adv.EnhanceEquipped(Bot.Config.Get<EnhancementType>("type"), Bot.Config.Get<CapeSpecial>("cSpecial"), Bot.Config.Get<HelmSpecial>("hSpecial"), Bot.Config.Get<WeaponSpecial>("wSpecial"));
 
         Core.SetOptions(false);
     }
