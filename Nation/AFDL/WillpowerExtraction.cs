@@ -45,16 +45,7 @@ public class WillpowerExtraction
             Adv.BuyItem("shadowfall", 89, "Shadow Lich");
             Adv.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
-            if (!Core.CheckInventory("Unidentified 19"))
-            {
-                if (Core.IsMember)
-                {
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Swindle", 6))
-                        Nation.SwindleReturn();
-                    Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
-                }
-                else Nation.Supplies("Unidentified 19");
-            }
+            uni19(1);
 
             Core.EquipClass(ClassType.Farm);
             Adv.BuyItem("tercess", 1951, "Necrot", 5, 10);
@@ -102,5 +93,19 @@ public class WillpowerExtraction
 
             Core.Logger($"Completed x{i++}");
         }
+    }
+
+    public void uni19(int quant = 1)
+    {
+        if (Core.CheckInventory("Unidentified 19"))
+            return;
+
+        if (Core.IsMember)
+        {
+            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Swindle", 6))
+                Nation.SwindleReturn();
+            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+        }
+        else Nation.Supplies("Unidentified 19");
     }
 }
