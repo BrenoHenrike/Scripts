@@ -77,6 +77,7 @@ public class FireandIceMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.EnsureAccept(6319);
                     Core.HuntMonster("drakonnan", "Living Fire", "Inferno Heart");
+                    Core.EnsureComplete(6319);
                     break;
 
             }
