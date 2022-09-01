@@ -33,7 +33,7 @@ public class LightCaster
 
     public void GetLC(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("LightCaster"))
+        if (Core.CheckInventory(38153))
             return;
 
         Core.AddDrop("LightCaster", "Aranx's Pure Light");
