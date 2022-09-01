@@ -24,6 +24,7 @@ public class MergeTemplate
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] {""});
         Core.SetOptions();
 
         BuyAllMerge();

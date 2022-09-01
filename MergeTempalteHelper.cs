@@ -89,6 +89,7 @@ public class MergeTemplateHelper
                         output += "                    }\n";
                         output += "                    Core.CancelRegisteredQuests();\n";
                         output += "                    break;\n";
+                        itemsToLearn.Add(req.Name);
                     }
                 }
             }
@@ -100,7 +101,6 @@ public class MergeTemplateHelper
             return;
         }
 
-        shopItemNames.Add("    };");
 
         string AppPath = Core.AppPath ?? "";
         string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\MergeTemplate.cs");
@@ -118,6 +118,15 @@ public class MergeTemplateHelper
             return;
         }
         MergeTemplate[classIndex] = $"public class {className}Merge";
+
+        int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] {\"\"});");
+        if (blackListIndex < 0)
+        {
+            Core.Logger("Failed to find blackListIndex");
+            return;
+        }
+        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + String.Join("\", \"", itemsToLearn) + " \"});";
+
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients);");
         if (startIndex < 0)
         {
@@ -125,6 +134,8 @@ public class MergeTemplateHelper
             return;
         }
         MergeTemplate[startIndex] = $"        Adv.StartBuyAllMerge(\"{map.ToLower()}\", {shopID}, findIngredients);";
+
+        shopItemNames.Add("    };");
 
         string[] content = MergeTemplate[..itemsIndex]
                             .Concat(new[] { output })
