@@ -66,7 +66,7 @@ public class StreamwarMerge
                 case "Avatar's Flame":
                 case "Avatar's Flame Guard":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("Streamwar", "Second Speaker", req.Name, isTemp: false, log: false);
