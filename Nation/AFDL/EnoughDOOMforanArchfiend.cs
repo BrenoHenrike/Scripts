@@ -34,7 +34,7 @@ public class EnoughDOOMforanArchfiend
         if (Core.CheckInventory("ArchFiend DoomLord", toInv: false))
             return;
 
-        NulgathDemandsWork.NDWQuest(NulgathDemandsWork.NDWItems[..^8]);
+        NulgathDemandsWork.NDWQuest();
 
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",
