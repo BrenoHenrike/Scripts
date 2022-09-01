@@ -65,7 +65,7 @@ public class FireandIceMerge
                     Core.RegisterQuests(6326);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("firewar", "Fire Dragon", "Dragon Scale");
+                        Core.HuntMonster("drakonnan", "Fire Dragon", "Dragon Scale");
                         Core.HuntMonster("drakonnan", "Living Fire", "Living Flame");
                         Core.HuntMonster("drakonnan", "Fire Elemental", "Fire Elemental's Gauntlet");
                         Core.HuntMonster("drakonnan", "Living Lava", "Lava Rock");
