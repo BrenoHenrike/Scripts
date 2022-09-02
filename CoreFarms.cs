@@ -1314,7 +1314,11 @@ public class CoreFarms
     public void FishingREP(int rank = 10, bool shouldDerp = false)
     {
         if (FactionRank("Fishing") >= rank)
+        {
+            Core.SellItem("Fishing Bait", all: true);
+            Core.SellItem("Fishing Dynamite", all: true);
             return;
+        }
 
         Core.AddDrop("Fishing Bait", "Fishing Dynamite");
         Core.EquipClass(ClassType.Farm);
@@ -1323,29 +1327,20 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         int z = 1;
 
-        Core.Logger("Pre-Ranking XP");
+        Core.Logger("Pre-Ranking XP(This is Required)");
         Core.EnsureAccept(1682);
         Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
         Core.EnsureComplete(1682);
+        Core.Join("fishing");
 
         while (!Bot.ShouldExit && FactionRank("Fishing") < (rank > 2 ? 2 : rank) && (shouldDerp ? !Core.HasAchievement(14) : true))
         {
-            Core.Logger("Farming Bait");
-            Core.RegisterQuests(1682);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Fishing Bait", 10))
-            {
-                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-            }
-            Core.CancelRegisteredQuests();
-
-            Core.Join("fishing");
-            Core.Logger($"Bait Fishing");
+            GetBaitandDynamite(50, 0);
+            Core.Logger($"Fishing With: Fishing Bait");
+            Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (non)Faction ranks");
 
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Bait"))
             {
-                while (!Bot.ShouldExit && !Core.CheckInventory("Fishing Bait"))
-                    return;
-
                 Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
                 Bot.Sleep(10000);
                 Core.Logger($"Fished {z++} Times");
@@ -1354,17 +1349,10 @@ public class CoreFarms
 
         while (!Bot.ShouldExit && FactionRank("Fishing") < rank && (shouldDerp ? !Core.HasAchievement(14) : true))
         {
-            Core.Logger("Farming Dynamite");
-            Core.RegisterQuests(1682);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Fishing Dynamite", 10) && Core.CheckInventory("Fishing Bait", 1))
-            {
-                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-            }
-            Core.CancelRegisteredQuests();
+            GetBaitandDynamite(0, 20);
+            Core.Logger($"Fishing With: Dynamite");
 
-            Core.Logger($"Dynamite Fishing");
-
-            while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite", 1))
+            while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite"))
             {
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
                 Bot.Sleep(3500);
@@ -1374,6 +1362,26 @@ public class CoreFarms
         }
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
+
+        void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
+        {
+            if (Core.CheckInventory("Fishing Bait", FishingBaitQuant) && Core.CheckInventory("Fishing Dynamite", FishingDynamiteQuant))
+                return;
+
+            Core.RegisterQuests(1682);
+
+            Core.FarmingLogger("Fishing Bait", FishingBaitQuant);
+            while (!Bot.ShouldExit && FishingBaitQuant != 0 && !Core.CheckInventory("Fishing Bait", FishingBaitQuant))
+                Core.KillMonster("greenguardwest", "West3", "Right", "Frogzard", "Fishing Bait", FishingBaitQuant, isTemp: false, log: false);
+
+            Core.FarmingLogger("Fishing Dynamite", FishingDynamiteQuant);
+            while (!Bot.ShouldExit && FishingDynamiteQuant != 0 && !Core.CheckInventory("Fishing Dynamite", FishingDynamiteQuant))
+                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+
+            Core.CancelRegisteredQuests();
+            Core.Logger("Returing to Fishing Map");
+            Core.Join("fishing");
+        }
     }
 
 
@@ -2166,7 +2174,7 @@ public class CoreFarms
             Core.SavedState();
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
-            
+
             Core.RegisterQuests(1263);
             while (!Bot.ShouldExit && FactionRank("Troll") < rank)
             {
