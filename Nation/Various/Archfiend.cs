@@ -15,8 +15,8 @@ public class ArchFiend
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
     public CoreNSOD NSoD = new();
 
@@ -51,13 +51,7 @@ public class ArchFiend
                 Nation.FarmGemofNulgath(200);
                 Core.BuyItem("evilwarnul", 456, "Abyssal Star");
             }
-            if (!Core.CheckInventory("Gold Star of Avarice"))
-            {
-                Farm.Gold(19800000);
-                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 16);
-                Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-                Core.BuyItem("tercessuinotlim", 1951, "Gold Star of Avarice");
-            }
+            Adv.BuyItem("tercessuinotlim", 1951, "Gold Star of Avarice");
             if (!Core.CheckInventory("Blood Star of the Archfiend"))
             {
                 Nation.FarmBloodGem(20);
