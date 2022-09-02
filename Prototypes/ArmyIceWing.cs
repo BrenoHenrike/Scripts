@@ -18,10 +18,10 @@ public class IceWingLevelingArmy
     public int level = 75;
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
-
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
+        
+        Core.SetOptions();
 
         ArmyIceWing();
 
