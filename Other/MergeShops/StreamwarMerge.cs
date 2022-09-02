@@ -91,7 +91,7 @@ public class StreamwarMerge
 
                 case "Garish Remnant":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8813);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
