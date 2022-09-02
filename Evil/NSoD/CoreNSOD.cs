@@ -8,20 +8,11 @@
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class CoreNSOD
 {
-    // [Can Change]
-    // True = Farms each boss for 100 essence in "Retreive Void Auras"
-    // False = Farms each boss for 20 essence in "Retreive Void Auras"
-    // Recommended: true
-    private bool MaxStack = true;
-    // [Can Change]
-    // True = Bot will try to keep your inventory as empty as possible by farming each individual piece one by one when they are needed in the merge shop.
-    // False = Bot will farm all items first and then merge them all. Best used if you want overview of how far you are. And will also be faster because less /join's
-    // Recommended: false
     private bool OptimizeInv = true;
-    private int Essencequant;
 
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -35,6 +26,12 @@ public class CoreNSOD
     public CoreSDKA SDKA = new();
     public Necromancer Necro = new();
     public BattleUnder BattleUnder = new();
+
+    public string OptionsStorage = "NecroticSwordOfDoomOptions";
+    public bool DontPreconfigure = true;
+    public Option<bool> MaxStack = new Option<bool>("MaxStack", "Max Stack", "Max Stack Monster Essences in \"Retreive Void Auras\"\nRecommended setting: True", true);
+    public Option<bool> PreFarm = new Option<bool>("PreFarm", "Pre Farm Materials", "Farm all requiered items before merging everything. Not recommended if you already did a merge yourself.\nRecommended setting: False", false);
+    public Option<bool> GetSDKA = new Option<bool>("getSDKA", "Get SDKA first [Mem]", "If true, the bot will attempt to get SDKA first, so that it can use the fastest Void Aura farm available\nMember-Only\nRecommended setting: True", true);
 
     public string[] Essences =
     {
@@ -52,27 +49,18 @@ public class CoreNSOD
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Void Aura", "Cavern Celestite", "Bone Dust" });
-
-        Core.SetOptions();
-
         Core.RunCore();
-
-        Core.SetOptions(false);
     }
 
     public void GetNSOD()
     {
-        if (Core.CheckInventory("Necrotic Sword of Doom"))
+        if (Core.CheckInventory("Necrotic Sword of Doom") /*&& Core.hasAchievement(nosd badge?)*/)
             return;
-
-        if (Core.CBOBool("NSOD_PreFarm", out bool _PreFarm))
-            OptimizeInv = !_PreFarm;
 
         if (!Core.CheckInventory("Necrotic Sword of Doom"))
         {
             Barium();
-            if (!OptimizeInv)
+            if (Bot.Config.Get<bool>("PreFarm"))
             {
                 VoidAuras(7500);
                 CavernCelestite(1600);
@@ -167,9 +155,7 @@ public class CoreNSOD
         if (Core.CheckInventory("Void Aura", quant))
             return;
 
-        if (Core.CBOBool("NSOD_MaxStack", out bool _MaxStack))
-            MaxStack = _MaxStack;
-        Essencequant = MaxStack ? 100 : 20;
+        int Essencequant = Bot.Config.Get<bool>("MaxStack") ? 100 : 20;
 
         Farm.EvilREP();
         Core.EquipClass(ClassType.Solo);

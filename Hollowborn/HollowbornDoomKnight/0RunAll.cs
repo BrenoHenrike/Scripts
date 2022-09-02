@@ -24,21 +24,20 @@ using Skua.Core.Interfaces;
 
 public class HDKAll
 {
-    // [Can Change]
-    // True = Farms 125 Dark Fragments and 15 Doom Fragments before moving on.
-    // False = Farms Dark and Doom fragments when needed.
-    // Recommended: false
-    private bool prefarm = false;
-
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreHollowbornDoomKnight HDK = new CoreHollowbornDoomKnight();
+    public CoreHollowbornDoomKnight HDK = new();
+    public static CoreHollowbornDoomKnight sHDK = new();
+
+    public string OptionsStorage = sHDK.OptionsStorage;
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = sHDK.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        HDK.GetAll(prefarm);
+        HDK.GetAll();
 
         Core.SetOptions(false);
     }

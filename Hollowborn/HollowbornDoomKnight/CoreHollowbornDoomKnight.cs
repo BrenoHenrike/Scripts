@@ -21,6 +21,7 @@
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class CoreHollowbornDoomKnight
 {
@@ -34,6 +35,14 @@ public class CoreHollowbornDoomKnight
     public CoreSDKA SDKA = new();
     public CoreNSOD NSoD = new();
     public SepulchuresOriginalHelm SOH = new();
+
+    public string OptionsStorage = "HollowbornDoomKnightOptions";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new List<IOption>()
+    {
+        new Option<bool>("PreFarm", "Pre Farm Dark-/Doom Fragments", "Recommended setting: False", false),
+        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -64,12 +73,16 @@ public class CoreHollowbornDoomKnight
         "Hollowborn Sword of Doom"
     };
 
-    public void GetAll(bool prefarm)
+    public void GetAll()
     {
-        if (Core.CBOBool("HBDK_PreFarm", out bool _HBDK_PreFarm))
-            prefarm = _HBDK_PreFarm;
+        if (Core.CheckInventory(ADKItems, toInv: false) && Core.CheckInventory("Classic Hollowborn DoomKnight", toInv: false) &&
+            Core.CheckInventory(ADKFallsItems, toInv: false) && Core.CheckInventory(ADKReturnsItems, toInv: false))
+            return;
 
-        if (prefarm)
+        if (!Bot.Config.Get<bool>("SkipOption"))
+            Bot.Config.Configure();
+
+        if (Bot.Config.Get<bool>("PreFarm"))
         {
             ADK();
             ADKRises();

@@ -2,17 +2,24 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class CoreSDKA
 {
-    // [Can Change]
-    // True = does the Dark Spirit Orbs quest
-    // False = does the Penny for your Foughts quest
-    public bool DSOMethod = false;
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public static CoreBots sCore => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreDailies Daily = new();
+
+    public string OptionsStorage = "SupulchuresDoomKnightArmorOptions";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new()
+    {
+        new Option<SDKA_Quest>("SelectedQuest", "Dark Spirit Orbs Quest",
+            "Which quest should the bot use to farm Dark Spirit Orbs with?\nRecommended setting: A Penny for Your Foughts", SDKA_Quest.A_Penny_for_Your_Foughts),
+        sCore.SkipOptions,
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -79,6 +86,10 @@ public class CoreSDKA
             return;
 
         Core.AddDrop(SDKAItems);
+
+        if (!Bot.Config.Get<bool>("SkipOption"))
+            Bot.Config.Configure();
+
         UnlockHardCoreMetals();
         NecroticDaggers();
         NecroticBroadsword();
@@ -164,10 +175,10 @@ public class CoreSDKA
 
     public void FarmDSO(int quant = 10500)
     {
-        if (Core.CBOBool("SDKA_Quest", out bool _DSOMethod))
-            DSOMethod = _DSOMethod;
+        if (Core.CheckInventory("Dark Spirit Orb", quant))
+            return;
 
-        if (DSOMethod)
+        if (Bot.Config.Get<SDKA_Quest>("SelectedQuest") == SDKA_Quest.Dark_Spirit_Orbs)
             DSO(quant);
         else
             Penny(quant);
@@ -589,4 +600,10 @@ public class CoreSDKA
         Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10);
         Core.EnsureComplete(quest);
     }
+}
+
+public enum SDKA_Quest
+{
+    A_Penny_for_Your_Foughts,
+    Dark_Spirit_Orbs,
 }

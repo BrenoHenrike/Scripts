@@ -19,6 +19,7 @@ using Skua.Core.Models.Shops;
 using Skua.Core.Models.Skills;
 using Skua.Core.Models;
 using Skua.Core.Utils;
+using Skua.Core.Options;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class CoreBots
@@ -81,6 +82,7 @@ public class CoreBots
     public List<ItemBase> CurrentRequirements = new();
     public List<string> BankingBlackList = new();
     public string AppPath = Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty;
+    public bool DontPreconfigure = true;
 
     #endregion
 
@@ -1715,6 +1717,10 @@ public class CoreBots
             "I\'m going AFK"
         };
     }
+
+    public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false);
+
+
     #endregion
 
     public void RunCore()

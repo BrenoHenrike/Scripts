@@ -15,14 +15,18 @@ public class NecroticSwordOfDoom
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public static CoreBots sCore => CoreBots.Instance;
     public CoreNSOD NSoD = new();
+    public static CoreNSOD sNSoD = new();
 
     public bool DontPreconfigure = true;
-    public string OptionsStorage = "NSoD_OptionsV1";
+    public string OptionsStorage = sNSoD.OptionsStorage;
     public List<IOption> Options = new()
     {
-        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
-        new Option<bool>("getSDKA", "Get SDKA first [Mem]", "If true, the bot will attempt to get SDKA first, so that it can use the fastest Void Aura farm available\nMember-Only", true),
+        sNSoD.MaxStack,
+        sNSoD.PreFarm,
+        sNSoD.GetSDKA,
+        sCore.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

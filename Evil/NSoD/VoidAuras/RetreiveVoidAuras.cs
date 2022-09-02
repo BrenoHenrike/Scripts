@@ -9,15 +9,28 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class RetrieveVoidAuras
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public static CoreBots sCore => CoreBots.Instance;
     public CoreNSOD NSoD = new();
+    public static CoreNSOD sNSoD = new();
+
+    public bool DontPreconfigure = true;
+    public string OptionsStorage = sNSoD.OptionsStorage;
+    public List<IOption> Options = new()
+    {
+        sNSoD.MaxStack,
+        sCore.SkipOptions,
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
+        if (!Bot.Config.Get<bool>("SkipOption"))
+            Bot.Config.Configure();
         Core.BankingBlackList.AddRange(NSoD.Essences);
 
         Core.SetOptions();

@@ -6,6 +6,7 @@ public class CoreFarms
 {
     // [Can Change] Can you solo the boss without killing the ads
     public bool canSoloInPvP { get; set; } = true;
+
     // [Can Change] Use boosts on Gold farming
     public bool doGoldBoost { get; set; } = false;
     // [Can Change] Use boosts on Class farming
@@ -27,6 +28,15 @@ public class CoreFarms
     {
         if (enabled)
         {
+            if (Core.CBOBool("doGoldBoost", out bool _doGoldBoost))
+                doGoldBoost = _doGoldBoost;
+            if (Core.CBOBool("doClassBoost", out bool _doClassBoost))
+                doClassBoost = _doClassBoost;
+            if (Core.CBOBool("doRepBoost", out bool _doRepBoost))
+                doRepBoost = _doRepBoost;
+            if (Core.CBOBool("doExpBoost", out bool _doExpBoost))
+                doExpBoost = _doExpBoost;
+
             switch (type)
             {
                 case BoostType.Gold:
@@ -64,25 +74,25 @@ public class CoreFarms
             switch (type)
             {
                 case BoostType.Gold:
-                    if (!doGoldBoost || !Bot.Boosts.UseGoldBoost)
+                    if (!Bot.Boosts.UseGoldBoost)
                         return;
                     Bot.Boosts.UseGoldBoost = false;
                     break;
 
                 case BoostType.Class:
-                    if (!doClassBoost || !Bot.Boosts.UseClassBoost)
+                    if (!Bot.Boosts.UseClassBoost)
                         return;
                     Bot.Boosts.UseClassBoost = false;
                     break;
 
                 case BoostType.Reputation:
-                    if (!doRepBoost || !Bot.Boosts.UseReputationBoost)
+                    if (!Bot.Boosts.UseReputationBoost)
                         return;
                     Bot.Boosts.UseReputationBoost = false;
                     break;
 
                 case BoostType.Experience:
-                    if (!doExpBoost || !Bot.Boosts.UseExperienceBoost)
+                    if (!Bot.Boosts.UseExperienceBoost)
                         return;
                     Bot.Boosts.UseExperienceBoost = false;
                     break;

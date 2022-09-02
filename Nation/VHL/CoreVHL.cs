@@ -5,22 +5,36 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class CoreVHL
 {
     // [Can Change]
-    // True = When possible, it will use "Assisting Crag and Bamboozle" to get an additional Elders' Blood per day. Needs Crag and Bamboozle and is Legend-Only.
+    // True = 
     // False = It will automatically check if you got the things, but if you want to turn this off either way, heres the option.
     // Recommended: true
-    private bool UseSparrowMethod = true;
+    public bool UseSparrowMethod = true;
 
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public static CoreBots sCore => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
     public AssistingCragAndBamboozle ACAB = new();
+
+    public string OptionsStorage = "VoidHighLordOptions";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new()
+    {
+        new Option<bool>("SparrowMethod", "Use Sparrow's Blood Method",
+            "When possible, it will use \"Assisting Crag and Bamboozle\" to get an additional Elders' Blood per day.\n" +
+            "Needs Crag and Bamboozle and is Legend-Only.\n" +
+            "Will not be done if you don't meed the conditions\n" +
+            "Recommended setting: True", true),
+        sCore.SkipOptions,
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -45,9 +59,6 @@ public class CoreVHL
     {
         if (Core.CheckInventory("Roentgenium of Nulgath", quant))
             return;
-
-        if (Core.CBOBool("VHL_Sparrow", out bool _UseSparrowMethod))
-            UseSparrowMethod = _UseSparrowMethod;
 
         Core.Logger("Getting Void HighLord Challenge prerequisites");
         Farm.Experience(80);
@@ -99,9 +110,6 @@ public class CoreVHL
         if (Core.CheckInventory("Void Crystal A") && Core.CheckInventory("Void Crystal B"))
             return;
 
-        if (Core.CBOBool("VHL_Sparrow", out bool _UseSparrowMethod))
-            UseSparrowMethod = _UseSparrowMethod;
-
         Core.Logger("Obtaining Void Crystal A & Void Crystal B");
         Core.AddDrop(Nation.bagDrops);
 
@@ -127,7 +135,7 @@ public class CoreVHL
 
     private void _SparrowMethod(int EldersBloodQuant)
     {
-        if (!UseSparrowMethod || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
+        if (!Bot.Config.Get<bool>("SparrowMethod") || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
             return;
 
         Core.Logger("Sparrow Method is enabled, the bot will now max out Totems, BloodGems, Uni19 and Vouchers in order to get another Elders' Blood. This may take a while");
