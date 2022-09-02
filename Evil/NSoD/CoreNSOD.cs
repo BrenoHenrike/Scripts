@@ -151,7 +151,7 @@ public class CoreNSOD
         Core.Logger($"Farming Void Aura's ({Bot.Inventory.GetQuantity("Void Aura")}/{quant}) with Member-Only Method");
 
         Core.RegisterQuests(4438);
-        while (!Core.CheckInventory("Void Aura", 500))
+        while (!Core.CheckInventory("Void Aura", quant))
         {
             Core.KillMonster("reddeath", "r2", "Left", "*", "Mirror Essence", 175, false);
             Core.KillMonster("neverworldb", "r2", "Left", "*", "Twisted Essence", 25, false);
