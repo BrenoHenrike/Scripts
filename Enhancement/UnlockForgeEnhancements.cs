@@ -549,6 +549,31 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Avarice");
     }
 
+    public void Vim()
+    {
+        if (Core.isCompletedBefore(1))
+            return;
+
+        Core.EnsureAccept(1);
+
+        Core.EnsureComplete(1);
+    }
+
+    public void Examen()
+    {
+
+    }
+
+    public void Anima()
+    {
+
+    }
+
+    public void Pneuma()
+    {
+
+    }
+
     public void NothingAcess()
     {
         if (Core.CheckInventory("Void Lodestone"))

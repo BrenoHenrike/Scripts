@@ -1335,7 +1335,7 @@ public class CoreFarms
 
         while (!Bot.ShouldExit && FactionRank("Fishing") < (rank > 2 ? 2 : rank) && (shouldDerp ? !Core.HasAchievement(14) : true))
         {
-            GetBaitandDynamite(50, 0);
+            GetBaitandDynamite(20, 0);
             Core.Logger($"Fishing With: Fishing Bait");
             Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (non)Faction ranks");
 
