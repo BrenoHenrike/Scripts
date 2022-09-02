@@ -237,31 +237,31 @@ public class UnlockForgeEnhancements
             switch (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm").ToString())
             {
                 case "Vim":
-                    Core.BuyItem("Classhalla", 172, "Rouge");
-                    Adv.rankUpClass("Rouge");
-                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
+                    Core.Logger("Selected to unlock Vim Helm Enh");
+                    Vim();
                     break;
 
                 case "Examen":
-                    Core.BuyItem("Classhalla", 176, "Healer");
-                    Adv.rankUpClass("Healer");
-                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
+                    Core.Logger("Selected to unlock Examen Helm Enh");
+                    Examen();
                     break;
 
                 case "Anima":
-                    Core.BuyItem("Classhalla", 170, "Warrior");
-                    Adv.rankUpClass("Warrior");
-                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
+                    Core.Logger("Selected to unlock Anima Helm Enh");
+                    Anima();
                     break;
 
                 case "Pneuma":
-                    Core.BuyItem("Classhalla", 174, "Mage");
-                    Adv.rankUpClass("Mage");
-                    Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
+                    Core.Logger("Selected to unlock Pneuma Helm Enh");
+                    Pneuma();
                     break;
 
                 case "All":
                     Core.Logger("Selected to unlock all Forge Helm Enhancements");
+                    Vim();
+                    Examen();
+                    Anima();
+                    Pneuma();
                     break;
             }
         }
@@ -547,6 +547,54 @@ public class UnlockForgeEnhancements
 
         Core.EnsureComplete(8745);
         Core.Logger("Enhancement Unlocked: Avarice");
+    }
+
+    public void Vim()
+    {
+        if (Core.isCompletedBefore(1))
+            return;
+
+        Core.EnsureAccept(1);
+        Core.BuyItem("Classhalla", 172, "Rouge");
+        Adv.rankUpClass("Rouge");
+        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
+        Core.EnsureComplete(1);
+    }
+
+    public void Examen()
+    {
+        if (Core.isCompletedBefore(1))
+            return;
+
+        Core.EnsureAccept(1);
+        Core.BuyItem("Classhalla", 176, "Healer");
+        Adv.rankUpClass("Healer");
+        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
+        Core.EnsureComplete(1);
+    }
+
+    public void Anima()
+    {
+        if (Core.isCompletedBefore(1))
+            return;
+
+        Core.EnsureAccept(1);
+        Core.BuyItem("Classhalla", 170, "Warrior");
+        Adv.rankUpClass("Warrior");
+        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
+        Core.EnsureComplete(1);
+    }
+
+    public void Pneuma()
+    {
+        if (Core.isCompletedBefore(1))
+            return;
+
+        Core.EnsureAccept(1);
+        Core.BuyItem("Classhalla", 174, "Mage");
+        Adv.rankUpClass("Mage");
+        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
+        Core.EnsureComplete(1);
     }
 
     public void NothingAcess()
