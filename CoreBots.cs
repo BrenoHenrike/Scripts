@@ -676,12 +676,17 @@ public class CoreBots
     {
         Bot.Wait.ForTrue(() => Bot.Shops.ID == shopID, () =>
         {
-            JumpWait();
             Join(map);
             Bot.Shops.Load(shopID);
             Bot.Sleep(ActionDelay);
-        }, 20);
-        return Bot.Shops.LoadedCache.First(shop => shop.ID == shopID).Items;
+        }, 20, 1000);
+        var toReturn = Bot.Shops.LoadedCache.First(shop => shop.ID == shopID);
+        if (toReturn == null)
+        {
+            Bot.ShowMessageBox("Failed to load shop the shop and get it's data, please restart the client.", "Shop Data Loading Failed");
+            return new();
+        }
+        return toReturn.Items;
     }
     #endregion
 
@@ -939,7 +944,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
-            Logger("Failed to get the Quest Object, please reinstall Clean-Flash", messageBox: true, stopBot: true);
+            Logger("Failed to get the Quest Object, please restart the client.", messageBox: true, stopBot: true);
             return new();
         }
         return toReturn;
