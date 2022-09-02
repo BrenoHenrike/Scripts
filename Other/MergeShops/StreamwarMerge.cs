@@ -91,11 +91,12 @@ public class StreamwarMerge
 
                 case "Garish Remnant":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8813);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("Timekeep", "Mal-formed Gar", "Gar's Resignation Letter");
+                        Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("Timekeep", "Mumbler", "Mumbler Drool", 8);
                         Core.HuntMonster("Timekeep", "Decaying Locust", "Locust Wings", 8);
                         Bot.Wait.ForPickup(req.Name);
