@@ -185,7 +185,7 @@ public class CoreYnR
                     m_questID = 7411;
                     Adv.rankUpClass("BladeMaster");
                 }
-                else if (Core.CheckInventory(53837))
+                else if (Core.CheckInventory(53836))
                 {
                     // SM AC
                     Core.Logger("Using AC SwordMaster for Meditation");
@@ -194,10 +194,10 @@ public class CoreYnR
                 }
                 else
                 {
-                    Core.Logger("Using LT BladeMaster for Meditation");
+                    Core.Logger("Using LT SwordMaster for Meditation");
                     if (!Core.CheckInventory("SwordMaster"))
                     {
-                        Core.Logger("Farming LT BladeMaster for Meditation");
+                        Core.Logger("Farming LT SwordMaster for Meditation");
                         SM.GetSwordMaster();
                     }
                     m_questID = 7414;
