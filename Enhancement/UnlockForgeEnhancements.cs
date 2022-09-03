@@ -93,6 +93,7 @@ public class UnlockForgeEnhancements
     public HeadoftheLegionBeast HOTLB = new();
     public Awescended Awescended = new();
     public NulgathDemandsWork NDW = new();
+    public ThreeSpellStory TSS = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -168,8 +169,8 @@ public class UnlockForgeEnhancements
                     Smite();
                     HerosValiance();
                     ArcanasConcertoWIP();
-                    Elysium();
                     Acheron();
+                    Elysium();
                     break;
             }
         }
@@ -204,8 +205,6 @@ public class UnlockForgeEnhancements
                     break;
             }
         }
-
-
 
         if (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") != ForgeQuestHelm.None)
         {
@@ -456,7 +455,6 @@ public class UnlockForgeEnhancements
         SoW2.Tyndarius();
         // have the Dark Box and Dark Key mini-saga completed 
         // Quest complete will require you to turn in the Power of Darkness, 
-        NothingAcess();
         Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
         //20 Dark Potions,
         Daily.MonthlyTreasureChestKeys();
@@ -584,6 +582,58 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Avarice");
     }
 
+    public void Penitence()
+    {
+        Avarice();
+
+        if (Core.isCompletedBefore(8822))
+            return;
+
+        Core.EnsureAccept(8822);
+        //Night Mare Scythe
+        Bot.Quests.UpdateQuest(3008);
+        Core.RegisterQuests(3270);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
+        Core.CancelRegisteredQuests();
+
+        //Sapphire Orb x100
+        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", isTemp: false);
+
+        //Boreal Cavalier Bardiche
+        Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
+
+        //Void Scale x13
+        Core.Logger("Not setup yet -- didnt have time before work, Tato");
+        Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", isTemp: false);
+        Core.EnsureAccept(8822);
+        Core.Logger("Enhancement Unlocked: Penitence");
+    }
+
+    public void Lament()
+    {
+        if (Core.isCompletedBefore(8823))
+            Core.EnsureAccept(8823);
+        //Doom Hearts
+        Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
+
+        //Heart of the Sun
+        TSS.StoryLine(true);
+
+        //Flame Heart
+        Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", isTemp: false);
+
+        //Bloodless Heart
+        DD.Sloth();
+        Adv.GearStore();
+        DD.HazMatSuit();
+        Core.HuntMonster("sloth", "Mutated Plague", "Bloodless Heart", isTemp: false);
+        Adv.GearStore(true);
+
+        Core.Logger("Not setup yet -- didnt have time before work, Tato");
+        Core.EnsureComplete(8823);
+        Core.Logger("Enhancement Unlocked: Lament");
+    }
 
     public void ForgeHelmEnhancement()
     {
@@ -634,6 +684,8 @@ public class UnlockForgeEnhancements
 
     public void Anima()
     {
+        Examen();
+
         if (Core.isCompletedBefore(8826))
             return;
 
@@ -662,43 +714,43 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Pneuma");
     }
 
-    public void NothingAcess()
-    {
-        if (Core.CheckInventory("Void Lodestone"))
-            return;
+    // public void NothingAcess()
+    // {
+    //     if (Core.CheckInventory("Void Lodestone"))
+    //         return;
 
-        // Arcane Lodestone
-        if (!Core.CheckInventory("Arcane Lodestone"))
-        {
-            //(Reward from the 'Open Ebony Chest' quest
-            //Requires: ???(38565) to acess quest
-            if (!Core.CheckInventory(38565))
-                TheDarkBox(38565);
+    //     // Arcane Lodestone
+    //     if (!Core.CheckInventory("Arcane Lodestone"))
+    //     {
+    //         //(Reward from the 'Open Ebony Chest' quest
+    //         //Requires: ???(38565) to acess quest
+    //         if (!Core.CheckInventory(38565))
+    //             TheDarkBox(38565);
 
-            if (Core.CheckInventory(38565))
-            {
-                Core.EnsureAccept(5723);
-                Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
-                Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
-                Core.BuyItem("map", 336, "Golden Key");
-                Core.EnsureComplete(5723);
-            }
-            else
-            {
-                Core.Logger("Cannot Accept Quest Without Item \"???\"");
-                return;
-            }
-        }
-        // Mercury Elixir
-        if (!Core.CheckInventory("Mercury Elixir"))
-        {
-            //Reward from the 'Mercury Elixir' quest
-            Core.EnsureAccept(5757);
-            Core.HuntMonster("Battleunderb", "The Lost", "Mercury Elixir");
-            Core.EnsureComplete(5757);
-        }
-        Core.BuyItem("doomwood", 1381, "Void Lodestone");
-    }
+    //         if (Core.CheckInventory(38565))
+    //         {
+    //             Core.EnsureAccept(5723);
+    //             Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
+    //             Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
+    //             Core.BuyItem(Bot.Map.Name, 336, "Golden Key");
+    //             Core.EnsureComplete(5723);
+    //         }
+    //         else
+    //         {
+    //             Core.Logger("Cannot Accept Quest Without Item \"???\"");
+    //             return;
+    //         }
+    //     }
+    //     // Mercury Elixir
+    //     if (!Core.CheckInventory("Mercury Elixir"))
+    //     {
+    //         //Reward from the 'Mercury Elixir' quest
+    //         Core.EnsureAccept(5757);
+    //         Core.HuntMonster("Battleunderb", "The Lost", "Mercury Elixir");
+    //         Core.EnsureComplete(5757);
+    //     }
+    //     Core.BuyItem("doomwood", 1381, "Void Lodestone");
+    // } // no longer needed, can load shop from any map.
 
     public void TheDarkBox(string Item = "any", int quant = 1)
     {
@@ -748,6 +800,7 @@ public enum ForgeQuestWeapon
     Smite,
     HerosValiance,
     ArcanasConcertoWIP,
+    Acheron,
     Elysium,
     None,
     All
@@ -759,6 +812,8 @@ public enum ForgeQuestCape
     Absolution,
     Vainglory,
     Avarice,
+    Penitence,
+    Lament,
     None,
     All
 };
