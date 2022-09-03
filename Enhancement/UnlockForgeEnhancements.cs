@@ -555,8 +555,8 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(1);
-        Core.BuyItem("Classhalla", 172, "Rouge");
-        Adv.rankUpClass("Rouge");
+        Core.BuyItem("Classhalla", 172, "Rogue");
+        Adv.rankUpClass("Rogue");
         Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(1);
     }
