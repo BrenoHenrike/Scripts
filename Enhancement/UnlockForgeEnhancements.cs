@@ -61,6 +61,7 @@
 //cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
+//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
