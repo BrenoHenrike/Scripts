@@ -83,7 +83,7 @@ public class DarkWarLegionandNation
         Story.MapItemQuest(8572, "dagerecruit", 9888, 4);
 
         // Can't Escape the Shadows
-        Story.KillQuest(8573, "darkwarlegion", "Shadow Clone");
+        Story.KillQuest(8573, "dagerecruit", "Shadow Clone");
 
         // Last of the Defenses
         Story.KillQuest(8574, "darkwarlegion", "Shadow Clone");
