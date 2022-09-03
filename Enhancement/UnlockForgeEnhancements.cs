@@ -679,6 +679,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8824);
         Adv.BuyItem("Classhalla", 172, "Rouge");
         Adv.rankUpClass("Rouge");
+            Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8824);
         Core.Logger("Enhancement Unlocked: Vim");
@@ -694,6 +695,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8825);
         Adv.BuyItem("Classhalla", 176, "Healer");
         Adv.rankUpClass("Healer");
+            Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8825);
         Core.Logger("Enhancement Unlocked: Examen");
@@ -707,6 +709,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8826);
         Adv.BuyItem("Classhalla", 170, "Warrior");
         Adv.rankUpClass("Warrior");
+            Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8826);
         Core.Logger("Enhancement Unlocked: Anima");
@@ -722,6 +725,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8827);
         Adv.BuyItem("Classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
+            Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8827);
         Core.Logger("Enhancement Unlocked: Pneuma");
