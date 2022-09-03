@@ -71,6 +71,9 @@ public class NulgathDemandsWork
             Core.EnsureComplete(5259);
             Core.ToBank(NDWItems[..^8]);
 
+            if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
+                Core.BuyItem("tercessuinotlim", 1951, 35770);
+
             Core.Logger($"Completed x{i}");
             i++;
         }
@@ -83,9 +86,7 @@ public class NulgathDemandsWork
         if (Core.CheckInventory("Unidentified 35", quant))
             return;
 
-        NDWQuest("Archfiend Essence Fragment", 9);
-        Core.BuyItem("tercessuinotlim", 1951, 35770);
-
+        NDWQuest("Unidentified 35");
     }
 
     public void Uni27(int quant = 1)
