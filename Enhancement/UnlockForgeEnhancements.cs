@@ -677,7 +677,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8824);
-        Core.BuyItem("Classhalla", 172, "Rouge");
+        Adv.BuyItem("Classhalla", 172, "Rouge");
         Adv.rankUpClass("Rouge");
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8824);
@@ -692,7 +692,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8825);
-        Core.BuyItem("Classhalla", 176, "Healer");
+        Adv.BuyItem("Classhalla", 176, "Healer");
         Adv.rankUpClass("Healer");
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8825);
@@ -705,7 +705,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8826);
-        Core.BuyItem("Classhalla", 170, "Warrior");
+        Adv.BuyItem("Classhalla", 170, "Warrior");
         Adv.rankUpClass("Warrior");
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8826);
@@ -720,7 +720,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8827);
-        Core.BuyItem("Classhalla", 174, "Mage");
+        Adv.BuyItem("Classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8827);
@@ -745,7 +745,7 @@ public class UnlockForgeEnhancements
                 Core.EnsureAccept(5723);
                 Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
                 Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
-                Core.BuyItem("map", 336, "Golden Key");
+                Adv.BuyItem(Bot.Map.Name, 336, "Golden Key");
                 Core.EnsureComplete(5723);
             }
             else
