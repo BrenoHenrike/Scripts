@@ -59,7 +59,7 @@
 //cs_include Scripts/Evil/ADK.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/ThreeSpellStory.cs
-//cs_include Scripts/Story/Story/ShadowsOfWar2/CoreSoW2.cs
+//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 using Skua.Core.Interfaces;
