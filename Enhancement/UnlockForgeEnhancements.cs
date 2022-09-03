@@ -144,41 +144,13 @@ public class UnlockForgeEnhancements
 
                 case "Elysium":
                     {
-                        Core.Logger("Placeholder : \"The Divine Will\" - cant find it yet");
-                        NDW.NDWQuest("Archfiend Essence Fragment", 3);
-                        CorNSOD.BonesVoidRealm(20);
-                        Awescended.GetAwe();
+                        Elysium();
                         break;
                     }
 
                 case "Acheron":
                     {
-                        // have the Shadows of War II questline completed 
-
-                        // have the Dark Box and Dark Key mini-saga completed 
-
-                        // Quest complete will require you to turn in the Power of Darkness, 
-                        NothingAcess();
-                        Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
-                        //20 Dark Potions,
-                        Daily.MonthlyTreasureChestKeys();
-                        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
-                        {
-                            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
-                            break;
-                        }
-
-                        Core.RegisterQuests(5710);
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
-                        {
-                            if (Core.IsMember)
-                                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
-                            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
-                        }
-                        Core.CancelRegisteredQuests();
-
-                        //The Mortal Coil (a new misc item)   
-                        Core.Logger("Placeholder : \"The Mortal Coil\" - cant find it yet");
+                        Acheron();
                         break;
                     }
 
@@ -189,6 +161,8 @@ public class UnlockForgeEnhancements
                     Smite();
                     HerosValiance();
                     ArcanasConcertoWIP();
+                    Elysium();
+                    Acheron();
                     break;
             }
         }
@@ -215,6 +189,15 @@ public class UnlockForgeEnhancements
                 case "Avarice":
                     Avarice();
                     break;
+                    
+                    case "Penitence":
+                    Penitence();
+                    break;
+                    
+                    case " Lament":
+                    Lament();
+                    break;
+                    
 
                 case "All":
                     Core.Logger("Selected to unlock all Forge Cape Enhancements");
@@ -236,6 +219,11 @@ public class UnlockForgeEnhancements
 
             switch (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm").ToString())
             {
+                case "ForgeHelmEnhancement":
+                    Core.Logger("Selected to unlock Forge Helm Enhancement Helm Enh");
+                    ForgeHelmEnhancement();
+                    break;
+
                 case "Vim":
                     Core.Logger("Selected to unlock Vim Helm Enh");
                     Vim();
@@ -290,6 +278,7 @@ public class UnlockForgeEnhancements
         Core.EnsureComplete(8738);
         Core.Logger("Enhancement Unlocked: Forge (Weapon)");
     }
+
 
     public void Lacerate()
     {
@@ -548,6 +537,65 @@ public class UnlockForgeEnhancements
         Core.EnsureComplete(8745);
         Core.Logger("Enhancement Unlocked: Avarice");
     }
+    
+    public void Penitence()
+    {
+        //Night Mare Scythe
+        //Sapphire Orb x100
+        //Boreal Cavalier Bardiche
+        //Void Scale x13
+       Core.Logger("Not setup yet -- didnt have time before work, Tato");
+    }
+    
+    public void Lament()
+    {
+        //Doom Hearts
+        //Heart of the Sun
+        //Flame Heart
+        //Boodless Heart
+       Core.Logger("Not setup yet -- didnt have time before work, Tato");
+    }
+
+    public void Acheron()
+    {
+        // have the Shadows of War II questline completed 
+        // have the Dark Box and Dark Key mini-saga completed 
+        // Quest complete will require you to turn in the Power of Darkness, 
+        NothingAcess();
+        Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
+        //20 Dark Potions,
+        Daily.MonthlyTreasureChestKeys();
+        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
+            return;
+        }
+
+        Core.RegisterQuests(5710);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            if (Core.IsMember)
+                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
+            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+        }
+        Core.CancelRegisteredQuests();
+
+        //The Mortal Coil (a new misc item)   
+        Core.Logger("Placeholder : \"The Mortal Coil\" - cant find it yet");
+    }
+
+    public void Elysium()
+    {
+        Core.Logger("Placeholder : \"The Divine Will\" - cant find it yet");
+        NDW.NDWQuest("Archfiend Essence Fragment", 3);
+        CorNSOD.BonesVoidRealm(20);
+        Awescended.GetAwe();
+    }
+
+    public void ForgeHelmEnhancement()
+    {
+        Core.Logger("Not setup yet - will get to it in the morning");
+    }
 
     public void Vim()
     {
@@ -694,12 +742,15 @@ public enum ForgeQuestCape
     Absolution,
     Vainglory,
     Avarice,
+    Penitence,
+    Lament,
     None,
     All
 };
 
 public enum ForgeQuestHelm
 {
+    ForgeHelmEnhancement,
     Vim,
     Examen,
     Anima,

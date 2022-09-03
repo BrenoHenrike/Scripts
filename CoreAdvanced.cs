@@ -1032,12 +1032,6 @@ public class CoreAdvanced
             return;
         }
 
-        // Post Release: Remove this bit
-        // It's to prevent the user from attempting to do a unlocked one
-        cSpecial = (int)cSpecial >= 100 ? CapeSpecial.None : cSpecial;
-        hSpecial = (int)hSpecial >= 100 ? HelmSpecial.None : hSpecial;
-        wSpecial = (int)wSpecial >= 100 ? WeaponSpecial.None : wSpecial;
-
         // Defining cape
         InventoryItem? cape = null;
         if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
@@ -1194,8 +1188,7 @@ public class CoreAdvanced
             }
 
             if (canEnhance)
-                // Post Release: Fill in the real Shop ID, use loader
-                _AutoEnhance(helm, 0000, ((int)hSpecial > 0) ? "forge" : null);
+                _AutoEnhance(helm, 2164, ((int)hSpecial > 0) ? "forge" : null);
             else skipCounter++;
         }
         Core.DebugLogger(this);
@@ -1425,15 +1418,14 @@ public class CoreAdvanced
     private bool uVainglory() => Core.isCompletedBefore(8744);
     private bool uAvarice() => Core.isCompletedBefore(8745);
     private bool uForgeCape() => Core.isCompletedBefore(8758);
-    // Post Release: Fill in the real quest IDs, use loader (not 0000)
-    private bool uElysium() => Core.isCompletedBefore(0000);
-    private bool uArchon() => Core.isCompletedBefore(0000);
-    private bool uPenitence() => Core.isCompletedBefore(0000);
-    private bool uLament() => Core.isCompletedBefore(0000);
-    private bool uVim() => Core.isCompletedBefore(0000);
-    private bool uExamen() => Core.isCompletedBefore(0000);
-    private bool uAnima() => Core.isCompletedBefore(0000);
-    private bool uPneuma() => Core.isCompletedBefore(0000);
+    private bool uElysium() => Core.isCompletedBefore(8821);
+    private bool uArchon() => Core.isCompletedBefore(8820);
+    private bool uPenitence() => Core.isCompletedBefore(8822);
+    private bool uLament() => Core.isCompletedBefore(8823);
+    private bool uVim() => Core.isCompletedBefore(8824);
+    private bool uExamen() => Core.isCompletedBefore(8825);
+    private bool uAnima() => Core.isCompletedBefore(8826);
+    private bool uPneuma() => Core.isCompletedBefore(8827);
 
     #endregion
 
@@ -1930,9 +1922,8 @@ public enum CapeSpecial // Enhancement Pattern ID
     Absolution = 11,
     Avarice = 12,
     Vainglory = 24,
-    // Post Release: Fill in the real Enh Patt ID, use loader (not 100 or above)
-    Penitence = 100,
-    Lament = 101,
+    Penitence = 29,
+    Lament = 30,
 }
 
 public enum WeaponSpecial // Proc ID
@@ -1950,21 +1941,16 @@ public enum WeaponSpecial // Proc ID
     Smite = 8,
     Valiance = 9,
     Arcanas_Concerto = 10,
-    // Post Release: Fill in the real Proc ID (not 100 or above)
-    // Console : bot.Log(bot.Flash.GetGameObject<int>($"world.invTree.{Item ID}.ProcID").ToString());
-    // Dont forget to replace the Item ID
-    // Or look in the shop loading packet
-    Elysium = 100,
-    Acheron = 101,
+    Elysium = 12,
+    Acheron = 11,
 }
 
 public enum HelmSpecial //Enhancement Pattern ID
 {
     None = 0,
 
-    // Post Release: Fill in the real Enh Patt ID, use loader (not 100 or above)
-    Vim = 100,
-    Examen = 101,
-    Anima = 102,
-    Pneuma = 103,
+    Vim = 25,
+    Examen = 26,
+    Anima = 28,
+    Pneuma = 27,
 }
