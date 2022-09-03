@@ -19,7 +19,7 @@ public class ThreeSpellStory
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void StoryLine(bool HoTS = false)
     {
         if (Core.CheckInventory("Sun Token VIII", toInv: false))
             return;
@@ -172,10 +172,15 @@ public class ThreeSpellStory
                 Core.EnsureAccept(4491);
                 Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
                 Core.EnsureComplete(4491);
+                if (!HoTS)
+                    Core.EnsureComplete(4493);
+                else return;
             }
             Core.EnsureComplete(4493);
         }
-        Core.ToBank("Sun Token VIII", "Heart of the Sun");
+        if (!HoTS)
+            Core.ToBank("Sun Token VIII", "Heart of the Sun");
+        Core.ToBank("Sun Token VIII");
         Core.Logger("All Quests Complete");
     }
 }
