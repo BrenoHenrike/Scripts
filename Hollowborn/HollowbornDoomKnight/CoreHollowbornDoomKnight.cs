@@ -144,6 +144,7 @@ public class CoreHollowbornDoomKnight
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadow DoomReaver", 1, false);
             Core.HuntMonster("lumafortress", "Corrupted Luma", "Worshipper of Doom", 1, false);
+            Bot.Quests.UpdateQuest(3008);
             if (Core.IsMember)
                 Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 10, false, log: false);
             else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 10, false, log: false);
