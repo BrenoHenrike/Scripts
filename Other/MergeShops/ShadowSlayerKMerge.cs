@@ -3,10 +3,11 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Story/ShadowSlayerK.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
-using Skua.Core.Models;
 
 public class ShadowSlayerKMerge
 {
@@ -15,6 +16,7 @@ public class ShadowSlayerKMerge
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
+    public ShadowSlayerK SSK = new();
     public static CoreAdvanced sAdv = new();
 
     public CoreDailies Dailies = new();
@@ -30,6 +32,7 @@ public class ShadowSlayerKMerge
     {
         Core.SetOptions();
 
+        SSK.Storyline();
         BuyAllMerge();
 
         Core.SetOptions(false);

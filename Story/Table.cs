@@ -33,7 +33,12 @@ public class Table
         //Dust Busting (719)
         Story.KillQuest(719, "giant", "Dust Bunny");
         //Cat-astrophe (720)
-        Story.KillQuest(720, "giant", "Giant Cat");
+        if (!Story.QuestProgression(720))
+        {
+            Core.EnsureAccept(720);
+            Core.HuntMonster("giant", "Giant Cat", "Giant Cat Defeated");
+            Core.EnsureComplete(720);
+        }
         //Skynner's List (721)
         Story.KillQuest(721, "smuurvil", "Smuurvil");
         //A Mushy Situation (722)
