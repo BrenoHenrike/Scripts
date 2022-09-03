@@ -15,6 +15,7 @@
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Good/ArchPaladin.cs
@@ -57,6 +58,10 @@
 //cs_include Scripts/Other/ShadowDragonDefender.cs
 //cs_include Scripts/Evil/ADK.cs
 //cs_include Scripts/Story/DjinnGate.cs
+//cs_include Scripts/Story/ThreeSpellStory.cs
+//cs_include Scripts/Story/Story/ShadowsOfWar2/CoreSoW2.cs
+//cs_include Scripts/Story/Legion/DarkAlly.cs
+//cs_include Scripts/Legion/SwordMaster.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -75,7 +80,10 @@ public class UnlockForgeEnhancements
     public CoreNSOD CorNSOD = new();
     public CoreAstravia Astravia => new();
     public CoreDailies Daily = new();
+    public Core7DD DD = new();
+    public CoreYnR YNR = new();
 
+    public SoW2 SoW2 = new();
     public ShadowfallRise SFR = new();
     public ArchPaladin AP = new();
     public DragonOfTime DOT = new();
@@ -86,6 +94,7 @@ public class UnlockForgeEnhancements
     public HeadoftheLegionBeast HOTLB = new();
     public Awescended Awescended = new();
     public NulgathDemandsWork NDW = new();
+    public ThreeSpellStory TSS = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -189,15 +198,15 @@ public class UnlockForgeEnhancements
                 case "Avarice":
                     Avarice();
                     break;
-                    
-                    case "Penitence":
+
+                case "Penitence":
                     Penitence();
                     break;
-                    
-                    case " Lament":
+
+                case " Lament":
                     Lament();
                     break;
-                    
+
 
                 case "All":
                     Core.Logger("Selected to unlock all Forge Cape Enhancements");
@@ -213,9 +222,6 @@ public class UnlockForgeEnhancements
         {
             if (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") != ForgeQuestHelm.All)
                 Core.Logger($"Selected Forge Cape Enhancement: {Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm")}");
-            DateTime dt = System.DateTime.Now;
-            if (DateTime.Now.Month != 9 && DateTime.Now.Day != 2)
-                Core.Logger($" Helm Enh will be avaiable on: {new DateTime(DateTime.Now.Year, 9, 2)}", stopBot: true);
 
             switch (Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm").ToString())
             {
@@ -246,6 +252,7 @@ public class UnlockForgeEnhancements
 
                 case "All":
                     Core.Logger("Selected to unlock all Forge Helm Enhancements");
+                    ForgeHelmEnhancement();
                     Vim();
                     Examen();
                     Anima();
@@ -453,6 +460,58 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Arcana's Concerto");
     }
 
+    public void Acheron()
+    {
+        if (Core.isCompletedBefore(8820))
+            return;
+
+        Core.EnsureAccept(8820);
+        SoW2.Tyndarius();
+        // have the Dark Box and Dark Key mini-saga completed 
+        // Quest complete will require you to turn in the Power of Darkness, 
+        NothingAcess();
+        Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
+        //20 Dark Potions,
+        Daily.MonthlyTreasureChestKeys();
+        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
+            return;
+        }
+
+        Core.RegisterQuests(5710);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        {
+            if (Core.IsMember)
+                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
+            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+        }
+        Core.CancelRegisteredQuests();
+
+        Core.HuntMonster("tercessuinotlim", "Nulgass", "The Mortal Coil", isTemp: false);
+        Core.EnsureComplete(8820);
+        Core.Logger("Enhancement Unlocked: Acheron");
+    }
+
+    public void Elysium()
+    {
+        if (Core.isCompletedBefore(8821))
+            return;
+
+        Core.EnsureAccept(8821);
+        CorNSOD.BonesVoidRealm(20);
+        YNR.BlademasterSwordScroll();
+        NDW.NDWQuest("Archfiend Essence Fragment", 3);
+        Awescended.GetAwe();
+        if (!Core.CheckInventory("The Divine Will"))
+        {
+            Core.Logger("\"Azalith\" is not Soloable, please go kill it otherwise for the Drop \"The Divine Will\", and return here and re-run the script.");
+            return;
+        }
+        Core.EnsureComplete(8821);
+        Core.Logger("Enhancement Unlocked: insert");
+    }
+
     public void ForgeCapeEnhancement()
     {
         if (Core.isCompletedBefore(8758))
@@ -537,112 +596,135 @@ public class UnlockForgeEnhancements
         Core.EnsureComplete(8745);
         Core.Logger("Enhancement Unlocked: Avarice");
     }
-    
+
     public void Penitence()
     {
-        //Night Mare Scythe
-        //Sapphire Orb x100
-        //Boreal Cavalier Bardiche
-        //Void Scale x13
-       Core.Logger("Not setup yet -- didnt have time before work, Tato");
-    }
-    
-    public void Lament()
-    {
-        //Doom Hearts
-        //Heart of the Sun
-        //Flame Heart
-        //Boodless Heart
-       Core.Logger("Not setup yet -- didnt have time before work, Tato");
-    }
+        Avarice();
 
-    public void Acheron()
-    {
-        // have the Shadows of War II questline completed 
-        // have the Dark Box and Dark Key mini-saga completed 
-        // Quest complete will require you to turn in the Power of Darkness, 
-        NothingAcess();
-        Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
-        //20 Dark Potions,
-        Daily.MonthlyTreasureChestKeys();
-        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
-        {
-            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
+        if (Core.isCompletedBefore(8822))
             return;
-        }
 
-        Core.RegisterQuests(5710);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        Core.EnsureAccept(8822);
+        //Night Mare Scythe
+        Bot.Quests.UpdateQuest(3008);
+        Core.RegisterQuests(3270);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
         {
-            if (Core.IsMember)
-                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
-            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
         }
         Core.CancelRegisteredQuests();
 
-        //The Mortal Coil (a new misc item)   
-        Core.Logger("Placeholder : \"The Mortal Coil\" - cant find it yet");
+        //Sapphire Orb x100
+        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", isTemp: false);
+
+        //Boreal Cavalier Bardiche
+        Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
+
+        //Void Scale x13
+        Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", isTemp: false);
+        Core.EnsureAccept(8822);
+        Core.Logger("Enhancement Unlocked: Penitence");
     }
 
-    public void Elysium()
+    public void Lament()
     {
-        Core.Logger("Placeholder : \"The Divine Will\" - cant find it yet");
-        NDW.NDWQuest("Archfiend Essence Fragment", 3);
-        CorNSOD.BonesVoidRealm(20);
-        Awescended.GetAwe();
+        Penitence();
+
+        if (Core.isCompletedBefore(8823))
+            return;
+
+        Core.EnsureAccept(8823);
+        //Doom Hearts
+        Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
+
+        //Heart of the Sun
+        TSS.StoryLine(true);
+
+        //Flame Heart
+        Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", isTemp: false);
+
+        //Bloodless Heart
+        DD.Sloth();
+        Adv.GearStore();
+        DD.HazMatSuit();
+        Core.HuntMonster("sloth", "Mutated Plague", "Bloodless Heart", isTemp: false);
+        Adv.GearStore(true);
+
+        Core.Logger("Not setup yet -- didnt have time before work, Tato");
+        Core.EnsureComplete(8823);
+        Core.Logger("Enhancement Unlocked: Lament");
     }
 
     public void ForgeHelmEnhancement()
     {
-        Core.Logger("Not setup yet - will get to it in the morning");
+        if (Core.isCompletedBefore(8828))
+            return;
+
+        Core.EnsureAccept(8828);
+        Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Prismatic Celestial Wings", isTemp: false);
+        Core.HuntMonster("lostruins", "Infernal Warlord", "Broken Wings", isTemp: false);
+        Core.HuntMonster("infernalspire", "Azkorath", "Shadow's Wings", isTemp: false);
+        Core.HuntMonster("infernalspire", "Malxas", "Wings Of Destruction", isTemp: false);
+        Core.EnsureComplete(8828);
+        Core.Logger("Enhancement Unlocked: ForgeHelmEnhancement");
     }
 
     public void Vim()
     {
-        if (Core.isCompletedBefore(1))
+        ForgeHelmEnhancement();
+
+        if (Core.isCompletedBefore(8824))
             return;
 
-        Core.EnsureAccept(1);
+        Core.EnsureAccept(8824);
         Core.BuyItem("Classhalla", 172, "Rouge");
         Adv.rankUpClass("Rouge");
-        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
-        Core.EnsureComplete(1);
+        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
+        Core.EnsureComplete(8824);
+        Core.Logger("Enhancement Unlocked: Vim");
     }
 
     public void Examen()
     {
-        if (Core.isCompletedBefore(1))
+        Vim();
+
+        if (Core.isCompletedBefore(8825))
             return;
 
-        Core.EnsureAccept(1);
+        Core.EnsureAccept(8825);
         Core.BuyItem("Classhalla", 176, "Healer");
         Adv.rankUpClass("Healer");
-        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 250, isTemp: false);
-        Core.EnsureComplete(1);
+        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
+        Core.EnsureComplete(8825);
+        Core.Logger("Enhancement Unlocked: Examen");
     }
 
     public void Anima()
     {
-        if (Core.isCompletedBefore(1))
+        if (Core.isCompletedBefore(8826))
             return;
 
-        Core.EnsureAccept(1);
+        Core.EnsureAccept(8826);
         Core.BuyItem("Classhalla", 170, "Warrior");
         Adv.rankUpClass("Warrior");
-        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
-        Core.EnsureComplete(1);
+        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
+        Core.EnsureComplete(8826);
+        Core.Logger("Enhancement Unlocked: Anima");
     }
 
     public void Pneuma()
     {
-        if (Core.isCompletedBefore(1))
+        Anima();
+
+        if (Core.isCompletedBefore(8827))
             return;
 
-        Core.EnsureAccept(1);
+        Core.EnsureAccept(8827);
         Core.BuyItem("Classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
-        Core.HuntMonster("Towerofdoom1", "*", "Ethereal Essence", 650, isTemp: false);
-        Core.EnsureComplete(1);
+        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
+        Core.EnsureComplete(8827);
+        Core.Logger("Enhancement Unlocked: Pneuma");
     }
 
     public void NothingAcess()
