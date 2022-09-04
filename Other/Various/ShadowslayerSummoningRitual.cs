@@ -8,7 +8,6 @@
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
 
 public class ShadowslayerSummoningRitual
 {
@@ -21,50 +20,29 @@ public class ShadowslayerSummoningRitual
     public Core7DD DD = new();
     public BuyScrolls Scroll = new();
 
-
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
+        ShadowStory.Storyline();
         GetAll();
 
         Core.SetOptions(false);
     }
-    private string[] rewards =
-        {
-            "Ardent Familiar Raiment",
-            "Ardent Familiar Visage",
-            "Auspicious Arch Mammona Raiment",
-            "Auspicious Arch Mammona Visage",
-            "Dark Infernal Raiment",
-            "Dark Infernal Visage",
-            "Maid Lilim Raiment",
-            "Maid Lilim Visage",
-            "Maid Lilim Familiar",
-            "Mail Lilim Combat Companion",
-            "Maid Lilim Companion",
-            "Eldritch Malarkey",
-            "Eldritch Malarkeys",
-            "Sparkly Shadowslayer Relic",
-            "Shadowslayer Relic Armblade",
-            "Shadowslayer Relic Armblades",
-            "Shadowslayer Relic Bow",
-            "Shadowslayer Relic Shield",
-            "Shadowslayer Relic Spear",
-            "Shadowslayer Relic Sword",
-            "Shadowslayer Estoc"
-        };
 
     public void GetAll()
     {
-        if (Core.CheckInventory(rewards))
-            return;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
+        List<string> RewardsList = new List<string>();
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
+            RewardsList.Add(Item.Name);
+
+        string[] Rewards = RewardsList.ToArray();
+
+        Core.AddDrop(Rewards);
 
         int count = 0;
-        Core.CheckSpaces(ref count, rewards);
-        Core.AddDrop(rewards);
-        ShadowStory.Storyline();
-
+        Core.CheckSpaces(ref count, Rewards);
         if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
         {
             Core.AddDrop("Shadowslayer Apprentice Badge");
@@ -90,51 +68,44 @@ public class ShadowslayerSummoningRitual
             Core.EnsureComplete(8266);
             Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
         }
+
         Core.RegisterQuests(8835);
-        Bot.Events.ItemDropped += ItemDropped;
-        Core.Logger($"Farm for the Shadowslayer Summoning Ritual items has started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
-
-        while (!Core.CheckInventory(rewards))
+        foreach (string item in Rewards)
         {
-            Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
-            Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
-            Scroll.BuyScroll(BuyScrolls.Scrolls.BlessedShard, 30);
-            if (!Core.CheckInventory("Meat Ration"))
+            if (!Core.CheckInventory(item))
             {
-                Core.AddDrop("Meat Ration");
-                Core.EnsureAccept(8263);
-                Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10);
-                Core.EnsureComplete(8263);
-                Bot.Wait.ForPickup("Meat Ration");
-            }
-            if (!Core.CheckInventory("Grain Ration", 2))
-            {
-                Core.AddDrop("Grain Ration");
-                Core.EnsureAccept(8264);
-                Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3);
-                Core.EnsureComplete(8264);
-                Bot.Wait.ForPickup("Grain Ration");
-            }
-            if (!Core.CheckInventory("Dairy Ration"))
-            {
-                Core.AddDrop("Dairy Ration");
-                Core.EnsureAccept(8265);
-                Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
-                Core.EnsureComplete(8265);
-                Bot.Wait.ForPickup("Dairy Ration");
+                Core.Logger($"Farm for the Shadowslayer Summoning Ritual items has started. Farming to get {Rewards.Count() - count} more item" + ((Rewards.Count() - count) > 1 ? "s" : ""));
+
+                Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
+                Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
+                Scroll.BuyScroll(BuyScrolls.Scrolls.BlessedShard, 30);
+                if (!Core.CheckInventory("Meat Ration"))
+                {
+                    Core.AddDrop("Meat Ration");
+                    Core.EnsureAccept(8263);
+                    Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10);
+                    Core.EnsureComplete(8263);
+                    Bot.Wait.ForPickup("Meat Ration");
+                }
+                if (!Core.CheckInventory("Grain Ration", 2))
+                {
+                    Core.AddDrop("Grain Ration");
+                    Core.EnsureAccept(8264);
+                    Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3);
+                    Core.EnsureComplete(8264);
+                    Bot.Wait.ForPickup("Grain Ration");
+                }
+                if (!Core.CheckInventory("Dairy Ration"))
+                {
+                    Core.AddDrop("Dairy Ration");
+                    Core.EnsureAccept(8265);
+                    Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
+                    Core.EnsureComplete(8265);
+                    Bot.Wait.ForPickup("Dairy Ration");
+                }
+                Core.ToBank(item);
             }
         }
-
-        Bot.Events.ItemDropped -= ItemDropped;
-
-        void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
-        {
-            if (rewards.Contains(item.Name))
-            {
-                count++;
-                Core.Logger($"Got {item.Name}, {rewards.Length - count} items to go");
-            }
-        }
-    }    
+        Core.CancelRegisteredQuests();
+    }
 }
-
