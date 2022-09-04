@@ -560,23 +560,6 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    /// <summary>
-    /// This method is used to move between Bludrut Brawl rooms
-    /// </summary>
-    /// <param name="mtcid">Last number of the mtcid packet</param>
-    /// <param name="cell">Cell you want to be</param>
-    /// <param name="moveX">X position of the door</param>
-    /// <param name="moveY">Y position of the door</param>
-    public void DagePvPMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
-    {
-        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-        {
-            Bot.Send.Packet($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
-            Bot.Sleep(2500);
-            Bot.Send.Packet($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
-        }
-    }
-
     public void DagePvP(int TrophyQuant, int TechniqueQuant, int ScrollQuant)
     {
         if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant) &&
@@ -606,49 +589,49 @@ public class CoreLegion
 
             Core.Join("Dagepvp", "Enter0", "Spawn", ignoreCheck: true);
 
-            DagePvPMove(1, "r2", 475, 269);
-            DagePvPMove(4, "r4", 963, 351);
-            DagePvPMove(7, "r5", 849, 177);
-            DagePvPMove(9, "r6", 937, 389);
+            Core.PvPMove(1, "r2", 475, 269);
+            Core.PvPMove(4, "r4", 963, 351);
+            Core.PvPMove(7, "r5", 849, 177);
+            Core.PvPMove(9, "r6", 937, 389);
 
             if (!Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
             {
                 Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
 
-                DagePvPMove(11, "r7", 513, 286);
-                DagePvPMove(15, "r10", 832, 347);
+                Core.PvPMove(11, "r7", 513, 286);
+                Core.PvPMove(15, "r10", 832, 347);
 
                 Bot.Kill.Monster("Blade Master");
                 Bot.Kill.Monster("Blade Master");
 
-                DagePvPMove(20, "r11", 943, 391);
+                Core.PvPMove(20, "r11", 943, 391);
 
                 Bot.Kill.Monster("Blade Master");
                 Bot.Kill.Monster("Blade Master");
 
-                DagePvPMove(21, "r10", 9, 397);
-                DagePvPMove(19, "r7", 7, 392);
-                DagePvPMove(14, "r6", 482, 483);
+                Core.PvPMove(21, "r10", 9, 397);
+                Core.PvPMove(19, "r7", 7, 392);
+                Core.PvPMove(14, "r6", 482, 483);
             }
-            DagePvPMove(12, "r12", 758, 338);
+            Core.PvPMove(12, "r12", 758, 338);
             if (!canSoloBoss)
             {
                 Bot.Kill.Monster("Legion Guard");
                 Bot.Kill.Monster("Legion Guard");
             }
-            DagePvPMove(23, "r13", 933, 394);
+            Core.PvPMove(23, "r13", 933, 394);
             if (!canSoloBoss)
             {
                 Bot.Kill.Monster("Legion Guard");
                 Bot.Kill.Monster("Legion Guard");
             }
-            DagePvPMove(25, "r14", 846, 181);
+            Core.PvPMove(25, "r14", 846, 181);
             if (!canSoloBoss)
             {
                 Bot.Kill.Monster("Legion Guard");
                 Bot.Kill.Monster("Legion Guard");
             }
-            DagePvPMove(28, "r15", 941, 348);
+            Core.PvPMove(28, "r15", 941, 348);
 
             Bot.Kill.Monster("Dage the Evil");
             Bot.Sleep(5000);

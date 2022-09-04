@@ -679,48 +679,31 @@ public class CoreToD
             Core.AddDrop(item);
             Core.Join("DeathPitbrawl", "Enter0", "Spawn");
 
-            DeathPitMove(5, "Morale0C", 228, 291);
-            DeathPitMove(4, "Morale0B", 936, 397);
-            DeathPitMove(7, "Morale0A", 946, 394);
-            DeathPitMove(9, "Crosslower", 948, 400);
-            DeathPitMove(14, "Crossupper", 903, 324);
-            DeathPitMove(18, "Resource1A", 482, 295);
+            Core.PvPMove(5, "Morale0C", 228, 291);
+            Core.PvPMove(4, "Morale0B", 936, 397);
+            Core.PvPMove(7, "Morale0A", 946, 394);
+            Core.PvPMove(9, "Crosslower", 948, 400);
+            Core.PvPMove(14, "Crossupper", 903, 324);
+            Core.PvPMove(18, "Resource1A", 482, 295);
             Bot.Kill.Monster("Velm's Restorer");
             Bot.Kill.Monster("Velm's Restorer");
-            DeathPitMove(20, "Resource1B", 938, 400);
+            Core.PvPMove(20, "Resource1B", 938, 400);
             Bot.Kill.Monster("Velm's Restorer");
             Bot.Kill.Monster("Velm's Restorer");
-            DeathPitMove(21, "Resource1A", 9, 435);
-            DeathPitMove(19, "Crossupper", 461, 315);
-            DeathPitMove(17, "Crosslower", 54, 339);
-            DeathPitMove(15, "Morale1A", 522, 286);
+            Core.PvPMove(21, "Resource1A", 9, 435);
+            Core.PvPMove(19, "Crossupper", 461, 315);
+            Core.PvPMove(17, "Crosslower", 54, 339);
+            Core.PvPMove(15, "Morale1A", 522, 286);
             Bot.Kill.Monster("Velm's Brawler");
-            DeathPitMove(23, "Morale1B", 948, 403);
+            Core.PvPMove(23, "Morale1B", 948, 403);
             Bot.Kill.Monster("Velm's Brawler");
-            DeathPitMove(25, "Morale1C", 945, 397);
+            Core.PvPMove(25, "Morale1C", 945, 397);
             Bot.Kill.Monster("Velm's Brawler");
-            DeathPitMove(28, "Captain1", 943, 404);
+            Core.PvPMove(28, "Captain1", 943, 404);
             Bot.Kill.Monster("General Velm (B)");
             Bot.Wait.ForDrop(item);
             Bot.Sleep(Core.ActionDelay);
             Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
-        }
-    }
-
-    /// <summary>
-    /// This method is used to move between Bludrut Brawl rooms
-    /// </summary>
-    /// <param name="mtcid">Last number of the mtcid packet</param>
-    /// <param name="cell">Cell you want to be</param>
-    /// <param name="moveX">X position of the door</param>
-    /// <param name="moveY">Y position of the door</param>
-    void DeathPitMove(int mtcid, string cell, int moveX = 828, int moveY = 276)
-    {
-        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-        {
-            Bot.Send.Packet($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
-            Bot.Sleep(2500);
-            Bot.Send.Packet($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
     }
 
