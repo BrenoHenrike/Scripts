@@ -53,6 +53,7 @@ public class ShadowSlayerK
             Core.EnsureAccept(8830);
             Adv.BuyItem("Northpointe", 1085, "Dark Book");
             Core.HuntMonster("Maxius", "Ghoul Minion", "Crimson BoneLord Tome", isTemp: false);
+            Bot.Quests.UpdateQuest(8060);
             Core.HuntMonster("backroom", "Book Wyrm", "Book of Monsters Mace", isTemp: false);
             Adv.BuyItem("chronohub", 2024, "Chronomancer's Opus");
             Core.EnsureComplete(8830);
