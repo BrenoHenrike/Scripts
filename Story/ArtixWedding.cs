@@ -40,6 +40,7 @@ public class ArtixWedding
         Story.KillQuest(3234, "GrimskullAnnex", "Grim Soldier");
 
     }
+    
     public void ArtixWeddingQuests()
     {
         if (Core.isCompletedBefore(3253))
