@@ -194,11 +194,11 @@ Base = Shadow Rocker = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ShadowFlame DragonLord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ShadowScythe General = 1 | 2 | 3 | 4 | Mode Optimistic
 Solo = ShadowStalker of Time = 3 | 2 | 4 | 1 | 2 | 1 | 2 | 1 | 4 | 2 | 3 | 1 | 2 | 1 | 2 | Timeout: 250
-Def = ShadowStalker of Time = 3 | 2 | 1 | 4 | 2 | 1 | 1 | 2 | Timeout: 250
+Def = ShadowStalker of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
 Solo = ShadowWalker of Time = 3 | 2 | 4 | 1 | 2 | 1 | 2 | 1 | 4 | 2 | 3 | 1 | 2 | 1 | 2 | Timeout: 250
-Def = ShadowWalker of Time = 3 | 2 | 1 | 4 | 2 | 1 | 1 | 2 | Timeout: 250
+Def = ShadowWalker of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
 Solo = ShadowWeaver of Time = 3 | 2 | 4 | 1 | 2 | 1 | 2 | 1 | 4 | 2 | 3 | 1 | 2 | 1 | 2 | Timeout: 250
-Def = ShadowWeaver of Time = 3 | 2 | 1 | 4 | 2 | 1 | 1 | 2 | Timeout: 250
+Def = ShadowWeaver of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
 Base = Shaman = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | Timeout: 250
 Base = Silver Paladin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
