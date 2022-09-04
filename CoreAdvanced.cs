@@ -1032,12 +1032,6 @@ public class CoreAdvanced
             return;
         }
 
-        // Post Release: Remove this bit
-        // It's to prevent the user from attempting to do a unlocked one
-        cSpecial = (int)cSpecial >= 100 ? CapeSpecial.None : cSpecial;
-        hSpecial = (int)hSpecial >= 100 ? HelmSpecial.None : hSpecial;
-        wSpecial = (int)wSpecial >= 100 ? WeaponSpecial.None : wSpecial;
-
         // Defining cape
         InventoryItem? cape = null;
         if (cSpecial != CapeSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Cape))
@@ -1194,8 +1188,7 @@ public class CoreAdvanced
             }
 
             if (canEnhance)
-                // Post Release: Fill in the real Shop ID, use loader
-                _AutoEnhance(helm, 0000, ((int)hSpecial > 0) ? "forge" : null);
+                _AutoEnhance(helm, 2164, ((int)hSpecial > 0) ? "forge" : null);
             else skipCounter++;
         }
         Core.DebugLogger(this);
@@ -1954,7 +1947,7 @@ public enum WeaponSpecial // Proc ID
 public enum HelmSpecial //Enhancement Pattern ID
 {
     None = 0,
-    Forge = 98, // Not really 98, but cant have 0 3 times
+    Forge = 99, // Not really 99, but cant have 0 3 times
     Vim = 25,
     Examen = 26,
     Anima = 28,
