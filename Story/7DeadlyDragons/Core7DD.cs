@@ -255,11 +255,12 @@ public class Core7DD
         if (!Core.CheckInventory(40710))
         {
             Core.Logger("Suit not found");
-            Core.JumpWait();
+            Core.Join("Sloth");
             Core.EnsureAccept(5944);
             Core.GetMapItem(5380, 1, "sloth");
             Core.GetMapItem(5381, 1, "sloth");
             Core.EnsureComplete(5944);
+            Bot.Wait.ForDrop("Hazmat Suit (Temp)");
             Bot.Send.Packet($"%xt%zm%equipItem%{Bot.Map.RoomID}%40710%");
         }
         else
