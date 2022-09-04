@@ -8,6 +8,7 @@
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class ShadowslayerSummoningRitual
 {
@@ -132,10 +133,6 @@ public class ShadowslayerSummoningRitual
                 Core.Logger($"Got {item.Name}, {rewards.Length - count} items to go");
             }
         }
-    }
-
-
-
-    //INSERT CODE HERE      
+    }    
 }
 
