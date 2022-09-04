@@ -54,11 +54,11 @@ public class ShadowSlayerK
             Adv.BuyItem("Northpointe", 1085, "Dark Book");
             Core.HuntMonster("Maxius", "Ghoul Minion", "Crimson BoneLord Tome", isTemp: false);
             Bot.Quests.UpdateQuest(8060);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("backroom", "Book Wyrm", "Book of Monsters Mace", isTemp: false);
             Adv.BuyItem("chronohub", 2024, "Chronomancer's Opus");
             Core.EnsureComplete(8830);
         }
-
         // 8831 | Shadow Slayer Slayer
         Story.KillQuest(8831, "newfinale", "Shadow Slayer");
 
@@ -82,6 +82,8 @@ public class ShadowSlayerK
         Story.BuyQuest(8833, "arcangrove", 211, "Mana Potion", Amount: 25);
         Story.KillQuest(8833, "cleric", "Chaos Dragon");
 
+        Core.EquipClass(ClassType.Farm);
+        
         // 8834 | Quality Tea Time
         if (!Story.QuestProgression(8834))
         {
@@ -105,7 +107,33 @@ public class ShadowSlayerK
 
         // 8835 | Shadowslayer Summoning Ritual
         if (!Story.QuestProgression(8835))
-        {
+        {            
+            if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
+            {
+                Core.AddDrop("Shadowslayer Apprentice Badge");
+                Core.HuntMonster("chaosbeast", "Kathool", "Chibi Eldritch Yume", isTemp: false);
+                Core.EnsureAccept(8266);
+                Daily.EldersBlood();
+                if (!Core.CheckInventory("Holy Wasabi"))
+                {
+                    Core.AddDrop("Holy Wasabi");
+                    Core.EnsureAccept(1075);
+
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4);
+                    Core.GetMapItem(428, 1, "lightguard");
+
+                    Core.EnsureComplete(1075);
+                    Bot.Wait.ForPickup("Holy Wasabi");
+                }
+                Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
+                DD.HazMatSuit();
+                Core.HuntMonster("sloth", "Phlegnn", "Unnatural Ooze", 8);
+                Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");
+                Core.EnsureComplete(8266);
+                Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
+            }
+            
             Core.EnsureAccept(8835);
             Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
             Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
@@ -133,31 +161,6 @@ public class ShadowSlayerK
                 Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
                 Core.EnsureComplete(8265);
                 Bot.Wait.ForPickup("Dairy Ration");
-            }
-            if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
-            {
-                Core.AddDrop("Shadowslayer Apprentice Badge");
-                Core.HuntMonster("chaosbeast", "Kathool", "Chibi Eldritch Yume", isTemp: false);
-                Core.EnsureAccept(8266);
-                Daily.EldersBlood();
-                if (!Core.CheckInventory("Holy Wasabi"))
-                {
-                    Core.AddDrop("Holy Wasabi");
-                    Core.EnsureAccept(1075);
-
-                    Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4);
-                    Core.GetMapItem(428, 1, "lightguard");
-
-                    Core.EnsureComplete(1075);
-                    Bot.Wait.ForPickup("Holy Wasabi");
-                }
-                Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
-                DD.HazMatSuit();
-                Core.HuntMonster("sloth", "Phlegnn", "Unnatural Ooze", 8);
-                Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");
-                Core.EnsureComplete(8266);
-                Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
             }
             Core.EnsureComplete(8835);
         }

@@ -43,31 +43,8 @@ public class ShadowslayerSummoningRitual
 
         int count = 0;
         Core.CheckSpaces(ref count, Rewards);
-        if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
-        {
-            Core.AddDrop("Shadowslayer Apprentice Badge");
-            Core.HuntMonster("chaosbeast", "Kathool", "Chibi Eldritch Yume", isTemp: false);
-            Core.EnsureAccept(8266);
-            Daily.EldersBlood();
-            if (!Core.CheckInventory("Holy Wasabi"))
-            {
-                Core.AddDrop("Holy Wasabi");
-                Core.EnsureAccept(1075);
 
-                Core.EquipClass(ClassType.Farm);
-                Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4);
-                Core.GetMapItem(428, 1, "lightguard");
-
-                Core.EnsureComplete(1075);
-                Bot.Wait.ForPickup("Holy Wasabi");
-            }
-            Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
-            DD.HazMatSuit();
-            Core.HuntMonster("sloth", "Phlegnn", "Unnatural Ooze", 8);
-            Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");
-            Core.EnsureComplete(8266);
-            Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
-        }
+        ShadowSlayersApprentice();
 
         Core.RegisterQuests(8835);
         foreach (string item in Rewards)
@@ -103,9 +80,39 @@ public class ShadowslayerSummoningRitual
                     Core.EnsureComplete(8265);
                     Bot.Wait.ForPickup("Dairy Ration");
                 }
+                Core.ToBank(item);
             }
-            Core.ToBank(item);
         }
         Core.CancelRegisteredQuests();
+    }
+
+    void ShadowSlayersApprentice()
+    {
+        if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
+        {
+            Core.FarmingLogger("ShadowSlayer's Apprentice", 1);
+            Core.AddDrop("Shadowslayer Apprentice Badge");
+            Core.HuntMonster("chaosbeast", "Kathool", "Chibi Eldritch Yume", isTemp: false);
+            Core.EnsureAccept(8266);
+            Daily.EldersBlood();
+            if (!Core.CheckInventory("Holy Wasabi"))
+            {
+                Core.AddDrop("Holy Wasabi");
+                Core.EnsureAccept(1075);
+
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4);
+                Core.GetMapItem(428, 1, "lightguard");
+
+                Core.EnsureComplete(1075);
+                Bot.Wait.ForPickup("Holy Wasabi");
+            }
+            Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
+            DD.HazMatSuit();
+            Core.HuntMonster("sloth", "Phlegnn", "Unnatural Ooze", 8);
+            Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");
+            Core.EnsureComplete(8266);
+            Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
+        }
     }
 }
