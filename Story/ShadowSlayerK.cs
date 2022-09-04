@@ -93,14 +93,27 @@ public class ShadowSlayerK
         Story.KillQuest(8831, "newfinale", "Shadow Slayer");
 
         // 8832 | Dinner for Two
-        Story.KillQuest(8832, "dragonchallenge", "Greenguard Dragon");
-        Story.KillQuest(8832, "battlefowl", "ChickenCow");
-        Story.KillQuest(8832, "pirates", "Shark Bait");
-        Story.KillQuest(8832, "greenguardwest", "Big Bad Boar");
-        Story.KillQuest(8832, "trunk", "Greenguard Basilisk");
-        Story.KillQuest(8832, "Well", "Gell Oh No");
-        Story.KillQuest(8832, "deathgazer", "Deathgazer");
-        Story.KillQuest(8832, "river", "Kuro");
+        // Story.KillQuest(8832, "dragonchallenge", "Greenguard Dragon");
+        // Story.KillQuest(8832, "battlefowl", "ChickenCow");
+        // Story.KillQuest(8832, "pirates", "Shark Bait");
+        // Story.KillQuest(8832, "greenguardwest", "Big Bad Boar");
+        // Story.KillQuest(8832, "trunk", "Greenguard Basilisk");
+        // Story.KillQuest(8832, "Well", "Gell Oh No");
+        // Story.KillQuest(8832, "deathgazer", "Deathgazer");
+        // Story.KillQuest(8832, "river", "Kuro");
+        if (!Story.QuestProgression(8832))
+        {
+            Core.EnsureAccept(8832);
+            Core.HuntMonster("dragonchallenge", "Greenguard Dragon", "Greenguard Dragon Ribs");
+            Core.HuntMonster("battlefowl", "ChickenCow", "Chickencow Wings");
+            Core.HuntMonster("pirates", "Shark Bait", "Shark Bait Fillet");
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Big Bad Boar Sausage");
+            Core.HuntMonster("trunk", "Greenguard Basilisk", "Greenguard Basilisk Tail");
+            Core.HuntMonster("Well", "Gell Oh No", "Gell Oh No Jello");
+            Core.HuntMonster("deathgazer", "Deathgazer", "Deathgazer Takoyaki");
+            Core.HuntMonster("river", "Kuro", "Kuro Geso Karaage");
+            Core.EnsureComplete(8832);
+        }
 
         // 8833 | Preparedness Awareness
         Story.BuyQuest(8833, "arcangrove", 211, "Health Potion");
