@@ -20,6 +20,7 @@ public class CoreStory
         Core.RunCore();
     }
 
+
     /// <summary>
     /// Kills a monster for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
@@ -36,10 +37,21 @@ public class CoreStory
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
-        Core.SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
+        SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
         if (AutoCompleteQuest)
             Bot.Wait.ForPickup(Requirements.ToString());
         TryComplete(QuestData, AutoCompleteQuest);
+
+        void SmartKillMonster(int questID, string map, string monster, int iterations = 20, bool completeQuest = false, bool publicRoom = false)
+        {
+            Core.EnsureAccept(questID);
+            _AddRequirement(questID);
+            Core.Join(map, publicRoom: publicRoom);
+            _SmartKill(monster, iterations);
+            if (completeQuest)
+                Core.EnsureComplete(questID);
+            CurrentRequirements.Clear();
+        }
     }
 
     /// <summary>
@@ -59,10 +71,22 @@ public class CoreStory
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
-        Core.SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
+        SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
         if (AutoCompleteQuest)
             Bot.Wait.ForPickup(Requirements.ToString());
         TryComplete(QuestData, AutoCompleteQuest);
+
+        void SmartKillMonster(int questID, string map, string[] monsters, int iterations = 20, bool completeQuest = false, bool publicRoom = false)
+        {
+            Core.EnsureAccept(questID);
+            _AddRequirement(questID);
+            Core.Join(map, publicRoom: publicRoom);
+            foreach (string monster in monsters)
+                _SmartKill(monster, iterations);
+            if (completeQuest)
+                Core.EnsureComplete(questID);
+            CurrentRequirements.Clear();
+        }
     }
 
     /// <summary>
@@ -373,7 +397,91 @@ public class CoreStory
         PreLoaded = true;
     }
     private bool PreLoaded = false;
-
     private int PreviousQuestID = 0;
     private bool PreviousQuestState = false;
+
+    private void _SmartKill(string monster, int iterations = 20)
+    {
+        bool repeat = true;
+        for (int j = 0; j < iterations; j++)
+        {
+            if (CurrentRequirements.Count == 0)
+                break;
+            if (CurrentRequirements.Count == 1)
+            {
+                if (_RepeatCheck(ref repeat, 0))
+                    break;
+                _MonsterHunt(ref repeat, monster, CurrentRequirements[0].Name, CurrentRequirements[0].Quantity, CurrentRequirements[0].Temp, 0);
+                break;
+            }
+            else
+            {
+                for (int i = CurrentRequirements.Count - 1; i >= 0; i--)
+                {
+                    if (j == 0 && (Core.CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity)))
+                    {
+                        CurrentRequirements.RemoveAt(i);
+                        continue;
+                    }
+                    if (j != 0 && Core.CheckInventory(CurrentRequirements[i].Name))
+                    {
+                        if (_RepeatCheck(ref repeat, i))
+                            break;
+                        _MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
+                        break;
+                    }
+                }
+            }
+            if (!repeat)
+                break;
+
+            Bot.Hunt.Monster(monster);
+            Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
+            Bot.Sleep(Core.ActionDelay);
+        }
+    }
+    private List<ItemBase> CurrentRequirements = new();
+    private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
+    {
+        Bot.Hunt.ForItem(monster, itemName, quantity, isTemp);
+        CurrentRequirements.RemoveAt(index);
+        shouldRepeat = false;
+    }
+    private bool _RepeatCheck(ref bool shouldRepeat, int index)
+    {
+        if (Core.CheckInventory(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity))
+        {
+            CurrentRequirements.RemoveAt(index);
+            shouldRepeat = false;
+            return true;
+        }
+        return false;
+    }
+    private int lastQuestID;
+    private void _AddRequirement(int questID)
+    {
+        if (questID > 0 && questID != lastQuestID)
+        {
+            lastQuestID = questID;
+            Quest quest = Core.EnsureLoad(questID);
+            if (quest == null)
+            {
+                Core.Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
+                return;
+            }
+            List<string> reqItems = new();
+            quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
+            quest.Requirements.ForEach(item =>
+            {
+                if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
+                {
+                    if (!item.Temp)
+                        reqItems.Add(item.Name);
+                    CurrentRequirements.Add(item);
+                }
+            });
+            Core.AddDrop(reqItems.ToArray());
+        }
+    }
+
 }
