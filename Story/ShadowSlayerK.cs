@@ -118,8 +118,8 @@ public class ShadowSlayerK
         }
 
         // 8833 | Preparedness Awareness
-        Story.BuyQuest(8833, "arcangrove", 211, "Health Potion");
-        Story.BuyQuest(8833, "arcangrove", 211, "Mana Potion");
+        Story.BuyQuest(8833, "arcangrove", 211, "Health Potion", Amount: 25);
+        Story.BuyQuest(8833, "arcangrove", 211, "Mana Potion", Amount: 25);
         Story.KillQuest(8833, "cleric", "Chaos Dragon");
 
         // 8834 | Quality Tea Time
