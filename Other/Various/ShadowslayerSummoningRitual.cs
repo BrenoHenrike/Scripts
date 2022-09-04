@@ -103,8 +103,8 @@ public class ShadowslayerSummoningRitual
                     Core.EnsureComplete(8265);
                     Bot.Wait.ForPickup("Dairy Ration");
                 }
-                Core.ToBank(item);
             }
+            Core.ToBank(item);
         }
         Core.CancelRegisteredQuests();
     }
