@@ -72,10 +72,12 @@ public class ShadowSlayerK
         // 8829 | Lend an Ear
         if (!Story.QuestProgression(8829))
         {
+            Core.EnsureAccept(8829);
             Core.HuntMonster("arcangrove", "Gorillaphant", "Gorillaphant Ear");
             Core.HuntMonster("boxes", "Sneevil", "Sneevil Ear");
             Core.HuntMonster("terrarium", "Dustbunny of Doom", "Dustbunny of Doom Ear");
             Core.HuntMonster("uppercity", "Drow Assassin", "Drow Ear");
+            Core.EnsureComplete(8829);
         }
 
         // 8830 | The Voice from Yesterday
