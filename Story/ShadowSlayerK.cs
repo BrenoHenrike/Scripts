@@ -85,7 +85,6 @@ public class ShadowSlayerK
             Adv.BuyItem("Northpointe", 1085, "Dark Book");
             Core.HuntMonster("Maxius", "Ghoul Minion", "Crimson BoneLord Tome", isTemp: false);
             Core.HuntMonster("backroom", "Book Wyrm", "Book of Monsters Mace", isTemp: false);
-            Core.HuntMonster("boxes", "Sneevil", "Sneevil Ear");
             Adv.BuyItem("chronohub", 2024, "Chronomancer's Opus");
             Core.EnsureComplete(8830);
         }
