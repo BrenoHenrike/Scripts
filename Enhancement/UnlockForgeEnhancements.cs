@@ -203,6 +203,8 @@ public class UnlockForgeEnhancements
                     Core.Logger("Selected to unlock all Forge Cape Enhancements");
                     ForgeCapeEnhancement();
                     Avarice(); //Calls on to the other functions internally
+                    Penitence();
+                    Lament();
                     break;
             }
         }
@@ -607,14 +609,16 @@ public class UnlockForgeEnhancements
         //Void Scale x13
         Core.Logger("Not setup yet -- didnt have time before work, Tato");
         Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", isTemp: false);
-        Core.EnsureAccept(8822);
+        Core.EnsureComplete(8822);
         Core.Logger("Enhancement Unlocked: Penitence");
     }
 
     public void Lament()
     {
         if (Core.isCompletedBefore(8823))
-            Core.EnsureAccept(8823);
+            return;
+
+        Core.EnsureAccept(8823);
         //Doom Hearts
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
 
