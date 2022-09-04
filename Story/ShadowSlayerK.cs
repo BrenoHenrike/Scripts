@@ -59,6 +59,7 @@ public class ShadowSlayerK
             Adv.BuyItem("chronohub", 2024, "Chronomancer's Opus");
             Core.EnsureComplete(8830);
         }
+        
         // 8831 | Shadow Slayer Slayer
         Story.KillQuest(8831, "newfinale", "Shadow Slayer");
 
