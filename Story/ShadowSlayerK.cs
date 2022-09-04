@@ -18,6 +18,7 @@ public class ShadowSlayerK
     public CoreAdvanced Adv = new();
     public Core7DD DD = new();
     public Table Table = new();
+    public BuyScrolls Scroll = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -34,40 +35,6 @@ public class ShadowSlayerK
             return;
 
         Story.PreLoad();
-
-        // 8263 | Knee Jerk Reaction
-        Story.KillQuest(8263, "cellar", "GreenRat");
-
-        // 8264 | Nice, But Not Quite...
-        Story.KillQuest(8264, "castletunnels", "Blood Maggot");
-
-        // 8265 | Alternative Solution
-        Story.KillQuest(8265, "Odokuro", "O-dokuro");
-
-        // 8266 | Compassion For A Companion
-        if (!Story.QuestProgression(8266))
-        {
-            Core.EnsureAccept(8266);
-            Daily.EldersBlood();
-            if (!Core.CheckInventory("Holy Wasabi"))
-            {
-                Core.AddDrop("Holy Wasabi");
-                Core.EnsureAccept(1075);
-
-                Core.EquipClass(ClassType.Farm);
-                Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4);
-                Core.GetMapItem(428, 1, "lightguard");
-
-                Core.EnsureComplete(1075);
-                Bot.Wait.ForPickup("Holy Wasabi");
-            }
-            Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
-            DD.HazMatSuit();
-            Core.HuntMonster("sloth", "Cured Phlegnn", "Unnatural Ooze", 8);
-            Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");
-            Core.EnsureComplete(8266);
-        }
-
 
         // 8829 | Lend an Ear
         if (!Story.QuestProgression(8829))
@@ -95,14 +62,6 @@ public class ShadowSlayerK
         Story.KillQuest(8831, "newfinale", "Shadow Slayer");
 
         // 8832 | Dinner for Two
-        // Story.KillQuest(8832, "dragonchallenge", "Greenguard Dragon");
-        // Story.KillQuest(8832, "battlefowl", "ChickenCow");
-        // Story.KillQuest(8832, "pirates", "Shark Bait");
-        // Story.KillQuest(8832, "greenguardwest", "Big Bad Boar");
-        // Story.KillQuest(8832, "trunk", "Greenguard Basilisk");
-        // Story.KillQuest(8832, "Well", "Gell Oh No");
-        // Story.KillQuest(8832, "deathgazer", "Deathgazer");
-        // Story.KillQuest(8832, "river", "Kuro");
         if (!Story.QuestProgression(8832))
         {
             Core.EnsureAccept(8832);
@@ -147,15 +106,58 @@ public class ShadowSlayerK
         if (!Story.QuestProgression(8835))
         {
             Core.EnsureAccept(8835);
-            Core.HuntMonster("tercessuinotlim", "Dark makai", "Mystic Parchment", 4, isTemp: false);
-            Core.BuyItem("spellcraft", 549, "fading Ink", 45, 5);
-            Core.BuyItem("spellcraft", 549, "Elemenatal Ink", 30, 5);
-            while (!Bot.ShouldExit && Core.CheckInventory("Scroll of Spirit Rend", 30) && Core.CheckInventory("Scroll of Eclipse", 15) && Core.CheckInventory("Scroll of Blessed Shard", 30))
-                Core.ChainComplete(2309);
-            while (!Bot.ShouldExit && Core.CheckInventory("Scroll of Eclipse", 15))
-                Core.ChainComplete(2312);
-            while (!Bot.ShouldExit && Core.CheckInventory("Scroll of Blessed Shard", 30))
-                Core.ChainComplete(2317);
+            Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
+            Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
+            Scroll.BuyScroll(BuyScrolls.Scrolls.BlessedShard, 30);
+            if (!Core.CheckInventory("Meat Ration"))
+            {
+                Core.AddDrop("Meat Ration");
+                Core.EnsureAccept(8263);
+                Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10);
+                Core.EnsureComplete(8263);
+                Bot.Wait.ForPickup("Meat Ration");
+            }
+            Core.RegisterQuests(8264);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
+            {
+                Core.AddDrop("Grain Ration");
+                Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3);
+                Bot.Wait.ForPickup("Grain Ration");
+            }
+            Core.CancelRegisteredQuests();
+            if (!Core.CheckInventory("Dairy Ration"))
+            {
+                Core.AddDrop("Dairy Ration");
+                Core.EnsureAccept(8265);
+                Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
+                Core.EnsureComplete(8265);
+                Bot.Wait.ForPickup("Dairy Ration");
+            }
+            if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
+            {
+                Core.AddDrop("Shadowslayer Apprentice Badge");
+                Core.HuntMonster("chaosbeast", "Kathool", "Chibi Eldritch Yume", isTemp: false);
+                Core.EnsureAccept(8266);
+                Daily.EldersBlood();
+                if (!Core.CheckInventory("Holy Wasabi"))
+                {
+                    Core.AddDrop("Holy Wasabi");
+                    Core.EnsureAccept(1075);
+
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4);
+                    Core.GetMapItem(428, 1, "lightguard");
+
+                    Core.EnsureComplete(1075);
+                    Bot.Wait.ForPickup("Holy Wasabi");
+                }
+                Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
+                DD.HazMatSuit();
+                Core.HuntMonster("sloth", "Phlegnn", "Unnatural Ooze", 8);
+                Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");
+                Core.EnsureComplete(8266);
+                Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
+            }
             Core.EnsureComplete(8835);
         }
     }
