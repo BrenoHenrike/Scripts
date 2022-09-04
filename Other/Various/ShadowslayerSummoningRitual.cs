@@ -16,6 +16,7 @@ public class ShadowslayerSummoningRitual
     public CoreFarms Farm = new();
     public CoreDailies Daily = new();
     public CoreAdvanced Adv = new();
+    public ShadowSlayerK ShadowStory = new();
     public Core7DD DD = new();
     public BuyScrolls Scroll = new();
 
@@ -61,6 +62,7 @@ public class ShadowslayerSummoningRitual
         int count = 0;
         Core.CheckSpaces(ref count, rewards);
         Core.AddDrop(rewards);
+        ShadowStory.Storyline();
 
         if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
         {
