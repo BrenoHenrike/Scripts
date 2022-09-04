@@ -72,7 +72,7 @@ public class ShadowslayerSummoningRitual
         Core.RegisterQuests(8835);
         foreach (string item in Rewards)
         {
-            if (!Core.CheckInventory(item))
+            if (!Core.CheckInventory(item, toInv: false))
             {
                 Core.Logger($"Getting {item}. Rewards Left: {Rewards.Count() - count} more item" + ((Rewards.Count() - count) > 1 ? "s" : ""));
 
