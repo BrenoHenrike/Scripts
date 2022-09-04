@@ -132,7 +132,8 @@ public class ShadowSlayerK
                 Core.AddDrop("Racing Trophy");
                 while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 100))
                     Core.ChainComplete(746);
-                Core.HuntMonster("table", "Roach", "Gold Roach Wing", 4);
+                Core.EnsureAccept(741);
+                Core.HuntMonster("table", "Roach", "Gold Roach Leg", 10);
                 Core.EnsureComplete(741, 5401);
             }
             Story.KillQuest(8834, "sleuthhound", "Chair");
