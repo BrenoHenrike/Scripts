@@ -63,7 +63,7 @@ public class AstraviaMerge
 
                 case "The Moon's Head":
                 case "The Moon's Cloak":
-                    Core.HuntMonster("astravia", "The Moon", req.Name);
+                    Core.HuntMonster("astravia", "The Moon", req.Name, isTemp: false);
                     break;
             }
         }
