@@ -125,9 +125,9 @@ public class ShadowSlayerK
         // 8834 | Quality Tea Time
         if (!Story.QuestProgression(8834))
         {
+            Core.EnsureAccept(8834);
             if (!Core.CheckInventory("Tea Cup (Mem)"))
             {
-                Core.EnsureAccept(8834);
                 Table.DoAll();
                 Core.AddDrop("Racing Trophy");
                 while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 100))
@@ -136,10 +136,10 @@ public class ShadowSlayerK
                 Core.HuntMonster("table", "Roach", "Gold Roach Leg", 10);
                 Core.EnsureComplete(741, 5401);
             }
-            Story.KillQuest(8834, "sleuthhound", "Chair");
-            Story.KillQuest(8834, "guru", "Wisteria");
-            Story.KillQuest(8834, "hachiko", "Samurai Nopperabo");
-            Story.KillQuest(8834, "elemental", "Tree of Destiny");
+            Core.HuntMonster("sleuthhound", "Chair", "Rich Tea Leaves");
+            Core.HuntMonster("guru", "Wisteria", "Fragrant Wisteria Bloom");
+            Core.HuntMonster("hachiko", "Samurai Nopperabo", "Bitter Matcha");
+            Core.HuntMonster("elemental", "Tree of Destiny", "Fruit of Destiny");
             Core.EnsureComplete(8834);
         }
 
