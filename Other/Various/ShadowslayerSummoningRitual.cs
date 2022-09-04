@@ -74,7 +74,7 @@ public class ShadowslayerSummoningRitual
         {
             if (!Core.CheckInventory(item))
             {
-                Core.Logger($"Farm for the Shadowslayer Summoning Ritual items has started. Farming to get {Rewards.Count() - count} more item" + ((Rewards.Count() - count) > 1 ? "s" : ""));
+                Core.Logger($"Getting {item}. Rewards Left: {Rewards.Count() - count} more item" + ((Rewards.Count() - count) > 1 ? "s" : ""));
 
                 Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
                 Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
