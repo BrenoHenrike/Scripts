@@ -129,6 +129,7 @@ public class ShadowSlayerK
             {
                 Core.EnsureAccept(8834);
                 Table.DoAll();
+                Core.AddDrop("Racing Trophy");
                 while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 100))
                     Core.ChainComplete(746);
                 Core.HuntMonster("table", "Roach", "Gold Roach Wing", 4);
