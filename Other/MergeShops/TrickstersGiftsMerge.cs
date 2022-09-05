@@ -89,13 +89,13 @@ public class TrickstersGiftsMerge
                 case "Pink Gem of the Sea":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("mythperception", "Cuca", req.Name, quant);
+                    Core.HuntMonster("mythperception", "Boto", req.Name, quant);
                     break;
 
                 case "Cuca's Dye":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("mythperception", "Boto", req.Name, quant);
+                    Core.HuntMonster("mythperception", "Cuca", req.Name, quant);
                     break;
 
             }
