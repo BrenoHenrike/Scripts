@@ -86,9 +86,9 @@ public class PotionBuyer
                             if (!Core.CheckInventory(reagent1, potionQuant) && !Core.CheckInventory(reagent2, potionQuant))
                             {
                                 Core.EquipClass(ClassType.Solo);
-                                Core.HuntMonster("maul", "Creature Creation", reagent1, potionQuant);
+                                Core.HuntMonster("maul", "Creature Creation", reagent1, potionQuant, isTemp: false);
                                 Core.EquipClass(ClassType.Farm);
-                                Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant);
+                                Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
                             }
                             Farm.AlchemyPacket(reagent1, reagent2);
                         }
@@ -132,7 +132,7 @@ public class PotionBuyer
                             Core.AddDrop(reagent1, reagent2);
                             Core.EquipClass(ClassType.Farm);
                             Core.HuntMonster("Bloodtusk", "Trollola Plant", reagent1, potionQuant, isTemp: false);
-                            Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant);
+                            Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
 
                             Farm.AlchemyPacket(reagent1, reagent2, rank: 8);
                         }
@@ -152,9 +152,9 @@ public class PotionBuyer
                         {
                             Core.AddDrop(reagent1, reagent2);
                             Core.EquipClass(ClassType.Solo);
-                            Core.HuntMonster("maul", "Creature Creation", reagent1, potionQuant);
+                            Core.HuntMonster("maul", "Creature Creation", reagent1, potionQuant, isTemp: false);
                             Core.EquipClass(ClassType.Farm);
-                            Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant);
+                            Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
 
                             Farm.AlchemyPacket(reagent1, reagent2);
                         }
@@ -174,7 +174,7 @@ public class PotionBuyer
                         {
                             Core.AddDrop(reagent1, reagent2);
                             Core.EquipClass(ClassType.Farm);
-                            Core.HuntMonster("orecavern", "Deathmole", reagent1, potionQuant);
+                            Core.HuntMonster("orecavern", "Deathmole", reagent1, potionQuant, isTemp: false);
                             if (!Core.CheckInventory(11475))
                                 Core.KillMonster("lair", "Enter", "Spawn", "*", reagent2, potionQuant, false);
 
