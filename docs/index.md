@@ -1,14 +1,14 @@
 <details>
-    <summary><a href="Skua/Documentation">Skua Documentation</a> ↨</summary>
+    <summary><a href="Skua/index">Skua Documentation</a> ↨</summary>
     <ul>
         <details>
-            <summary><a href="Skua/Core/Documentation">Core Documentation</a> ↨</summary>
+            <summary><a href="Skua/Core/index">Core Documentation</a> ↨</summary>
             <ul>
                 <p>This page is under construction.</p>
             </ul>
         </details>
         <details>
-            <summary><a href="Skua/IScriptInterface/Documentation">IScriptInterface Documentation</a> ↨</summary>
+            <summary><a href="Skua/IScriptInterface/index">IScriptInterface Documentation</a> ↨</summary>
             <ul>
                 <p>Yet to be made, click <a href="https://github.com/BrenoHenrike/Skua">here</a> to go to the source code</p>
             </ul>
@@ -17,7 +17,7 @@
 </details>
 
 <details>
-    <summary><a href="RBot/Documentation">RBot Documentation (Legacy)</a> ↨</summary>
+    <summary><a href="RBot/index">RBot Documentation (Legacy)</a> ↨</summary>
     <ol>
 
 <details>

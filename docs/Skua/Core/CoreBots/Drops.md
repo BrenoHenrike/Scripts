@@ -1,5 +1,7 @@
 # Drops
 
+As with any [property](#properties) or [method](#methods) from the `CoreBots.cs` file, you can call upon them by starting with `Core.` (*Core Dot*)
+
 - [Drops](#drops)
   - [Methods](#methods)
 
@@ -13,6 +15,6 @@
 ---------
 <center>
     <a href="Inventory, Bank and Shop" title="Inventory, Bank and Shop">◄ Previous</a> 
-    — <a href="Documentation" title="Back to Index">Index</a> — 
+    — <a href="index" title="Back to Index">Index</a> — 
     <a href="Quest" title="Quest">Next ►</a>
 </center>

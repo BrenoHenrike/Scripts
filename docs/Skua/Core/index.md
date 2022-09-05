@@ -1,5 +1,5 @@
 <details>
-    <summary><a href="CoreBots/Documentation">CoreBots</a> ↨</summary>
+    <summary><a href="CoreBots/index">CoreBots</a> ↨</summary>
     <ul>
         <a href="CoreBots/Start and Stop">Start/Stop</a><br>
         <a href="CoreBots/Inventory, Bank and Shop">Inventory, Bank and Shop</a><br>

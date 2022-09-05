@@ -1,5 +1,7 @@
 # Utility
 
+As with any [property](#properties) or [method](#methods) from the `CoreBots.cs` file, you can call upon them by starting with `Core.` (*Core Dot*)
+
 - [Utility](#utility)
   - [Properties](#properties)
   - [Methods](#methods)
@@ -18,7 +20,7 @@
 | Method Definition                                                                                                                          | Return Type | Description                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | :---------: | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `Logger(string message = "", [CallerMemberName] string caller = "", bool messageBox = false, bool stopBot = false)`                        |   *void*    | Logs a line of text to the script log with time, method from where it's called and a message                                          |
-| `FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")`                                                             |   *void*    |  Will output a specific logger<br>Example: `[00:00:00] (MethodName) Farming ITEM (69/420)`                                                                                                                                     |
+| `FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")`                                                             |   *void*    | Will output a specific logger<br>Example: `[00:00:00] (MethodName) Farming ITEM (69/420)`                                             |
 | `DebugLogger(object _this, string marker = "Checkpoint", [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)` |   *void*    | Will tell you the exact line number that it's on, allowing you to use it as check points to see where something is broken.            |
 | `DL_Enable()`                                                                                                                              |   *void*    | Requiered to make Debug Logger work, if absent, Debug Logger will be disabled.                                                        |
 | `Message(string message, string caption)`                                                                                                  |   *void*    | Creates a Message Box with the desired text and caption                                                                               |
@@ -36,6 +38,6 @@
 ---------
 <center>
     <a href="Kill" title="Kill">◄ Previous</a> 
-    — <a href="Documentation" title="Back to Index">Index</a> — 
+    — <a href="index" title="Back to Index">Index</a> — 
     <a href="Map" title="Map">Next ►</a>
 </center>
