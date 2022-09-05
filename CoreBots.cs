@@ -446,7 +446,7 @@ public class CoreBots
             {
                 Bot.Sleep(ActionDelay);
                 if (Bot.Inventory.FreeSlots == 0)
-                    Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: false);
+                    Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
 
                 if (!Bot.Bank.EnsureToInventory(item))
                 {
