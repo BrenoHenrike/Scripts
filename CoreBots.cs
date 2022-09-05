@@ -910,7 +910,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
         if (toReturn == null)
         {
-            Logger("Failed to get the Quest Object, please reinstall Clean-Flash", messageBox: true, stopBot: true);
+            Logger("Failed to get the Quest Object, please restart the client.", messageBox: true, stopBot: true);
             return new();
         }
 
