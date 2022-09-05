@@ -1,7 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Farm/AutoAttackKillUltra.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
@@ -14,7 +13,6 @@ public class FollowerJoe
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv => new();
-    public AAKillUltra AAKA => new();
 
     public bool DontPreconfigure = true;
 
