@@ -63,4 +63,4 @@ bot.Events.PlayerAFK += AFKHandler;
 which will log `"Player AFK, triggering logout"`, unsubscribe the event handler (this is needed because when the script starts again, it will create another handler which can cause memory problems) and then logging out to trigger the auto-relogin feature.
 
 ---------
-<center><a href="Inventory and Bank" title="Inventory & Bank">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="/Rbot-Scripts/Packets" title="Packets">Next ►</a></center>
+<center><a href="Inventory and Bank" title="Inventory & Bank">◄ Previous</a> — <a href="/Rbot-Scripts/" title="Back to Index">Index</a> — <a href="Packets" title="Packets">Next ►</a></center>
