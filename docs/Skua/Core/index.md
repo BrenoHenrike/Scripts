@@ -12,7 +12,7 @@
     </ul>
 </details>
 <details>
-    <summary>To-Do List</a> ↨</summary>
+    <summary>To-Do List ↨</summary>
     <ul>
         <li>CoreFarms</li>
         <li>CoreStory</li>
