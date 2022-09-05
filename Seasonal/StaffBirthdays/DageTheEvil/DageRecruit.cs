@@ -85,7 +85,7 @@ public class DageRecruitStory
         Story.KillQuest(8573, "dagerecruit", "Shadow Clone");
 
         //Last of the Defenses
-        Story.KillQuest(8574, "dagerecruit", "Funa-yurei");
+        Story.KillQuest(8574, "dagerecruit", "Shadow Clone");
 
         //Defeat Hebimaru
         Story.KillQuest(8575, "dagerecruit", "Hebimaru");

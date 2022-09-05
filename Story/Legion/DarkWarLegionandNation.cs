@@ -86,13 +86,13 @@ public class DarkWarLegionandNation
         Story.KillQuest(8573, "dagerecruit", "Shadow Clone");
 
         // Last of the Defenses
-        Story.KillQuest(8574, "darkwarlegion", "Shadow Clone");
+        Story.KillQuest(8574, "dagerecruit", "Shadow Clone");
 
         // Defeat Hebimaru
-        Story.KillQuest(8575, "darkwarlegion", "Hebimaru");
+        Story.KillQuest(8575, "dagerecruit", "Hebimaru");
 
         // Scorched Earth
-        Story.KillQuest(8576, "dagerecruit", new[] {"Dark Makai", "Dreadfiend", "Bloodfiend", "Infernal Fiend"});
+        Story.KillQuest(8576, "dagerecruit", new[] { "Dark Makai", "Dreadfiend", "Bloodfiend", "Infernal Fiend" });
 
         // Nation Badges / Mega Nation BadgesDreadfiend
         Story.KillQuest(8585, "darkwarlegion", "Dreadfiend|Bloodfiend|Infernal Fiend");
