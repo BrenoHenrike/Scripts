@@ -95,7 +95,7 @@ public class DarkWarLegionandNation
         Story.KillQuest(8576, "dagerecruit", new[] { "Dark Makai", "Dreadfiend", "Bloodfiend", "Infernal Fiend" });
 
         // Nation Badges / Mega Nation BadgesDreadfiend
-        Story.KillQuest(8585, "darkwarlegion", "Dreadfiend|Bloodfiend|Infernal Fiend");
+        Story.KillQuest(8585, "darkwarlegion", "Dreadfiend");
 
         // A Nation Defeated
         Story.KillQuest(8586, "darkwarlegion", "Dreadfiend");
