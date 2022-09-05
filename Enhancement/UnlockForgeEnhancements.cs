@@ -455,6 +455,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8820);
+        VoidLodestone();
         SoW2.Tyndarius();
         // have the Dark Box and Dark Key mini-saga completed 
         // Quest complete will require you to turn in the Power of Darkness, 
@@ -719,43 +720,43 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Pneuma");
     }
 
-    // public void NothingAcess()
-    // {
-    //     if (Core.CheckInventory("Void Lodestone"))
-    //         return;
+    public void VoidLodestone()
+    {
+        if (Core.CheckInventory("Void Lodestone"))
+            return;
 
-    //     // Arcane Lodestone
-    //     if (!Core.CheckInventory("Arcane Lodestone"))
-    //     {
-    //         //(Reward from the 'Open Ebony Chest' quest
-    //         //Requires: ???(38565) to acess quest
-    //         if (!Core.CheckInventory(38565))
-    //             TheDarkBox(38565);
+        // Arcane Lodestone
+        if (!Core.CheckInventory("Arcane Lodestone"))
+        {
+            //(Reward from the 'Open Ebony Chest' quest
+            //Requires: ???(38565) to acess quest
+            if (!Core.CheckInventory(38565))
+                TheDarkBox(38565);
 
-    //         if (Core.CheckInventory(38565))
-    //         {
-    //             Core.EnsureAccept(5723);
-    //             Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
-    //             Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
-    //             Core.BuyItem(Bot.Map.Name, 336, "Golden Key");
-    //             Core.EnsureComplete(5723);
-    //         }
-    //         else
-    //         {
-    //             Core.Logger("Cannot Accept Quest Without Item \"???\"");
-    //             return;
-    //         }
-    //     }
-    //     // Mercury Elixir
-    //     if (!Core.CheckInventory("Mercury Elixir"))
-    //     {
-    //         //Reward from the 'Mercury Elixir' quest
-    //         Core.EnsureAccept(5757);
-    //         Core.HuntMonster("Battleunderb", "The Lost", "Mercury Elixir");
-    //         Core.EnsureComplete(5757);
-    //     }
-    //     Core.BuyItem("doomwood", 1381, "Void Lodestone");
-    // } // no longer needed, can load shop from any map.
+            if (Core.CheckInventory(38565))
+            {
+                Core.EnsureAccept(5723);
+                Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
+                Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
+                Core.BuyItem(Bot.Map.Name, 336, "Golden Key");
+                Core.EnsureComplete(5723);
+            }
+            else
+            {
+                Core.Logger("Cannot Accept Quest Without Item \"???\"");
+                return;
+            }
+        }
+        // Mercury Elixir
+        if (!Core.CheckInventory("Mercury Elixir"))
+        {
+            //Reward from the 'Mercury Elixir' quest
+            Core.EnsureAccept(5757);
+            Core.HuntMonster("Battleunderb", "The Lost", "Mercury Elixir");
+            Core.EnsureComplete(5757);
+        }
+        Core.BuyItem("doomwood", 1381, "Void Lodestone");
+    }
 
     public void TheDarkBox(string Item = "any", int quant = 1)
     {
