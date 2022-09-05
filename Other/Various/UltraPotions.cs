@@ -74,6 +74,7 @@ public class PotionBuyer
             switch (potion)
             {
                 case "Potent Battle Elixir":
+                    Core.FarmingLogger("Potent Battle Elixir", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         string reagent1 = "Doomatter";
@@ -99,6 +100,7 @@ public class PotionBuyer
 
 
                 case "Potent Honor Potion": //200k/pot vs 500k non-alchemy
+                    Core.FarmingLogger("Potent Honor Potion", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         string reagent1 = "Chaos Entity";
@@ -120,6 +122,7 @@ public class PotionBuyer
                     break;
 
                 case "Fate Tonic":
+                    Core.FarmingLogger("Fate Tonic", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         string reagent1 = "Trollola Nectar";
@@ -140,6 +143,7 @@ public class PotionBuyer
                     break;
 
                 case "Potent Malevolence Elixir":
+                    Core.FarmingLogger("Potent Malevolence Elixir", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         string reagent1 = "Doomatter";
@@ -161,6 +165,7 @@ public class PotionBuyer
                     break;
 
                 case "Sage Tonic":
+                    Core.FarmingLogger("Sage Tonic", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         string reagent1 = "Arashtite Ore";
