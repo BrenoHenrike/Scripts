@@ -29,7 +29,7 @@ Base = Blood Ancient = 4 | 3 | 2 | 1 | Timeout:250
 Base = Blood Sorceress = 4 | 4 | 4 | 2 | 1 | 3 | Timeout: 250
 Base = Blood Titan = 2 | 4 | 3 | 2 | Timeout:250
 Base = CardClasher = 4 | 3 | 1 | 2 | Timeout:250
-Base = Chaos Avenger = 4 | 3 | 1 | 2 | Mode Optimistic
+Base = Chaos Avenger = 4 | 3 | 1 | 2 | Timeout:250
 Base = Chaos Avenger Member Preview = 4 | 3 | 1 | 2 | Timeout:250
 Base = Chaos Champion Prime = 2 | 4 | 1 | 3 | Timeout:250
 Base = Chaos Shaper = 2 | 1 | 3 | 4 | Timeout:250
