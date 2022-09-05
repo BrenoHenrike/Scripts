@@ -11,3 +11,14 @@
         <a href="CoreBots/Using Local Files">Using Local Files</a><br>
     </ul>
 </details>
+<details>
+    <summary>To-Do List</a> ↨</summary>
+    <ul>
+        <li>CoreFarms</li>
+        <li>CoreStory</li>
+        <li>CoreAdvanced</li>
+        <li>CoreDailies</li>
+        <li>CoreNation</li>
+        <li>CoreLegion</li>
+    </ul>
+</details>
