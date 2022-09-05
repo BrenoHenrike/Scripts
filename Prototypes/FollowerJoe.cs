@@ -1,7 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Farm/AutoAttackKillUltra.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
@@ -14,7 +13,6 @@ public class FollowerJoe
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv => new();
-    public AAKillUltra AAKA => new();
 
     public bool DontPreconfigure = true;
 
@@ -24,6 +22,7 @@ public class FollowerJoe
     {
         new Option<string>("playerName", "Player Name", "Insert the name of the player to follow", "Insert Name"),
         new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        new Option<bool>("LockedMaps", "Try Locked maps?", "If Following an acc thats doing scripts and can potentialy goto a locked map, swap this to true.", false),
         new Option<string>("RoomNumber", "Room Number", "Insert the Room# of the Possible Locked Zone", "Room#"),
     };
 
@@ -32,6 +31,15 @@ public class FollowerJoe
     {
         Core.SetOptions();
 
+        FollowJoe(bot, Bot.Config.Get<bool>("LockedMaps"));
+
+        Bot.Events.PlayerAFK -= LockedMap;
+        Bot.Events.CellChanged -= Jumper;
+        Core.SetOptions(false);
+    }
+
+    public void FollowJoe(IScriptInterface bot, bool LockedMaps)
+    {
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
 
@@ -44,7 +52,8 @@ public class FollowerJoe
             {
                 Core.Logger($" {Bot.Config.Get<string>("playerName")} Not found in {Bot.Map.Name}, LockedZoneHandler Started");
                 Bot.Events.CellChanged -= Jumper;
-                LockedMap();
+                if (LockedMaps)
+                    LockedMap();
             }
 
             if (Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)

@@ -1,14 +1,37 @@
 <details>
-    <summary><a href="Skua/Documentation">Skua Documentation</a> ↨</summary>
+    <summary><a href="Skua/index">Skua Documentation</a> ↨</summary>
     <ul>
         <details>
-            <summary><a href="Skua/Core/Documentation">Core Documentation</a> ↨</summary>
-            <ul>
-                <p>This page is under construction.</p>
+        <summary><a href="Skua/Core/index">Core Documentation</a> ↨</summary>
+        <ul>
+            <details>
+                <summary><a href="Skua/Core/CoreBots/index">CoreBots</a> ↨</summary>
+                <ul>
+                    <a href="Skua/Core/CoreBots/Start and Stop">Start/Stop</a><br>
+                    <a href="Skua/Core/CoreBots/Inventory, Bank and Shop">Inventory, Bank and Shop</a><br>
+                    <a href="Skua/Core/CoreBots/Drops">Drops</a><br>
+                    <a href="Skua/Core/CoreBots/Quest">Quest</a><br>
+                    <a href="Skua/Core/CoreBots/Kill">Kill</a><br>
+                    <a href="Skua/Core/CoreBots/Utility">Utility</a><br>
+                    <a href="Skua/Core/CoreBots/Map">Map</a><br>
+                    <a href="Skua/Core/CoreBots/Using Local Files">Using Local Files</a><br>
+                </ul>
+            </details>
+            <details>
+                <summary>To-Do List ↨</summary>
+                <ul>
+                    <li>CoreFarms</li>
+                    <li>CoreStory</li>
+                    <li>CoreAdvanced</li>
+                    <li>CoreDailies</li>
+                    <li>CoreNation</li>
+                    <li>CoreLegion</li>
+                </ul>
+            </details>
             </ul>
         </details>
         <details>
-            <summary><a href="Skua/IScriptInterface/Documentation">IScriptInterface Documentation</a> ↨</summary>
+            <summary><a href="Skua/IScriptInterface/index">IScriptInterface Documentation</a> ↨</summary>
             <ul>
                 <p>Yet to be made, click <a href="https://github.com/BrenoHenrike/Skua">here</a> to go to the source code</p>
             </ul>
@@ -17,7 +40,7 @@
 </details>
 
 <details>
-    <summary><a href="RBot/Documentation">RBot Documentation (Legacy)</a> ↨</summary>
+    <summary><a href="RBot/index">RBot Documentation (Legacy)</a> ↨</summary>
     <ol>
 
 <details>

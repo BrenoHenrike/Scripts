@@ -594,7 +594,6 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8822);
-        //Night Mare Scythe
         Bot.Quests.UpdateQuest(3008);
         Core.RegisterQuests(3270);
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
@@ -605,15 +604,9 @@ public class UnlockForgeEnhancements
         Core.CancelRegisteredQuests();
         Bot.Events.CellChanged -= CutSceneFixer;
 
-        //Sapphire Orb x100
-        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", isTemp: false);
-
-        //Boreal Cavalier Bardiche
+        Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);
         Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
-
-        //Void Scale x13
-        Core.Logger("Not setup yet -- didnt have time before work, Tato");
-        Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", isTemp: false);
+        Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", 13, isTemp: false);
         Core.EnsureComplete(8822);
         Core.Logger("Enhancement Unlocked: Penitence");
 
@@ -637,16 +630,9 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8823);
-        //Doom Hearts
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
-
-        //Heart of the Sun
         TSS.StoryLine(true);
-
-        //Flame Heart
         Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", isTemp: false);
-
-        //Bloodless Heart
         DD.Sloth();
         Adv.GearStore();
         DD.HazMatSuit();

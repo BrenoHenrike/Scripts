@@ -1,5 +1,7 @@
 # Inventory, Bank and Shop
 
+As with any [property](#properties) or [method](#methods) from the `CoreBots.cs` file, you can call upon them by starting with `Core.` (*Core Dot*)
+
 - [Inventory, Bank and Shop](#inventory-bank-and-shop)
   - [Methods](#methods)
 
@@ -22,6 +24,6 @@
 ---------
 <center>
     <a href="Start and Stop" title="Start/Stop">◄ Previous</a> 
-    — <a href="Documentation" title="Back to Index">Index</a> — 
+    — <a href="index" title="Back to Index">Index</a> — 
     <a href="Drops" title="Drops">Next ►</a>
 </center>

@@ -1,5 +1,7 @@
 # Quest
 
+As with any [property](#properties) or [method](#methods) from the `CoreBots.cs` file, you can call upon them by starting with `Core.` (*Core Dot*)
+
 - [Quest](#quest)
   - [Methods](#methods)
 
@@ -22,6 +24,6 @@
 ---------
 <center>
     <a href="Drops" title="Drops">◄ Previous</a> 
-    — <a href="Documentation" title="Back to Index">Index</a> — 
+    — <a href="index" title="Back to Index">Index</a> — 
     <a href="Kill" title="Kill">Next ►</a>
 </center>
