@@ -5,16 +5,16 @@
         <summary><a href="Skua/Core/index">Core Documentation</a> ↨</summary>
         <ul>
             <details>
-                <summary><a href="Core/CoreBots/index">CoreBots</a> ↨</summary>
+                <summary><a href="Skua/Core/CoreBots/index">CoreBots</a> ↨</summary>
                 <ul>
-                    <a href="Core/CoreBots/Start and Stop">Start/Stop</a><br>
-                    <a href="Core/CoreBots/Inventory, Bank and Shop">Inventory, Bank and Shop</a><br>
-                    <a href="Core/CoreBots/Drops">Drops</a><br>
-                    <a href="Core/CoreBots/Quest">Quest</a><br>
-                    <a href="Core/CoreBots/Kill">Kill</a><br>
-                    <a href="Core/CoreBots/Utility">Utility</a><br>
-                    <a href="Core/CoreBots/Map">Map</a><br>
-                    <a href="Core/CoreBots/Using Local Files">Using Local Files</a><br>
+                    <a href="Skua/Core/CoreBots/Start and Stop">Start/Stop</a><br>
+                    <a href="Skua/Core/CoreBots/Inventory, Bank and Shop">Inventory, Bank and Shop</a><br>
+                    <a href="Skua/Core/CoreBots/Drops">Drops</a><br>
+                    <a href="Skua/Core/CoreBots/Quest">Quest</a><br>
+                    <a href="Skua/Core/CoreBots/Kill">Kill</a><br>
+                    <a href="Skua/Core/CoreBots/Utility">Utility</a><br>
+                    <a href="Skua/Core/CoreBots/Map">Map</a><br>
+                    <a href="Skua/Core/CoreBots/Using Local Files">Using Local Files</a><br>
                 </ul>
             </details>
             <details>
