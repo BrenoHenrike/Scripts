@@ -910,7 +910,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
         if (toReturn == null)
         {
-            Logger("Failed to get the Quest Object, please reinstall Clean-Flash", messageBox: true, stopBot: true);
+            Logger("Failed to get the Quest Object, please restart the client.", messageBox: true, stopBot: true);
             return new();
         }
 
@@ -1630,48 +1630,6 @@ public class CoreBots
     #endregion
 
     #region Map
-    /// <summary>
-    /// Sends a getMapItem packet for the specified item
-    /// </summary>
-    /// <param name="itemID">ID of the item</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="map">Map where the item is</param>
-    public void GetMapItem(int itemID, int quant = 1, string? map = null)
-    {
-        if (map != null)
-            Join(map);
-        Bot.Sleep(ActionDelay);
-        List<ItemBase> tempItems = Bot.TempInv.Items;
-        ItemBase? newItem = null;
-        bool found = false;
-        for (int i = 0; i < quant; i++)
-        {
-            Bot.Map.GetMapItem(itemID);
-            Bot.Sleep(1000);
-            if (!found && Bot.TempInv.Items.Except(tempItems).Count() > 0)
-            {
-                newItem = Bot.TempInv.Items.Except(tempItems).First();
-                found = true;
-            }
-        }
-        if (quant > 1 && newItem != null)
-        {
-            int t = 0;
-            while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
-                (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
-                (Bot.TempInv.GetQuantity(newItem.Name) < _item.MaxStack)))
-            {
-                Bot.Map.GetMapItem(itemID);
-                Bot.Sleep(1000);
-                t++;
-
-                if (t > (quant + 10))
-                    break;
-            }
-        }
-
-        Logger($"Map item {itemID}({quant}) acquired");
-    }
 
     /// <summary>
     /// Jumps to the desired cell and set spawn point
@@ -1718,7 +1676,7 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Jump to wait room and wait <see cref="ExitCombatDelay"/>
+    /// Searches for a cell without monsters and jumps to it. If non is found it jumps twice in its current cell. <see cref="ExitCombatDelay"/>
     /// </summary>
     public void JumpWait()
     {
@@ -1777,7 +1735,7 @@ public class CoreBots
     private string lastJumpWait = "";
 
     /// <summary>
-    /// Joins a map
+    /// Joins a map and does bonus steps for said map if needed
     /// </summary>
     /// <param name="map">The name of the map</param>
     /// <param name="cell">The cell to jump to</param>
@@ -1861,6 +1819,49 @@ public class CoreBots
     }
 
     /// <summary>
+    /// Sends a getMapItem packet for the specified item
+    /// </summary>
+    /// <param name="itemID">ID of the item</param>
+    /// <param name="quant">Desired quantity of the item</param>
+    /// <param name="map">Map where the item is</param>
+    public void GetMapItem(int itemID, int quant = 1, string? map = null)
+    {
+        if (map != null)
+            Join(map);
+        Bot.Sleep(ActionDelay);
+        List<ItemBase> tempItems = Bot.TempInv.Items;
+        ItemBase? newItem = null;
+        bool found = false;
+        for (int i = 0; i < quant; i++)
+        {
+            Bot.Map.GetMapItem(itemID);
+            Bot.Sleep(1000);
+            if (!found && Bot.TempInv.Items.Except(tempItems).Count() > 0)
+            {
+                newItem = Bot.TempInv.Items.Except(tempItems).First();
+                found = true;
+            }
+        }
+        if (quant > 1 && newItem != null)
+        {
+            int t = 0;
+            while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
+                (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
+                (Bot.TempInv.GetQuantity(newItem.Name) < _item.MaxStack)))
+            {
+                Bot.Map.GetMapItem(itemID);
+                Bot.Sleep(1000);
+                t++;
+
+                if (t > (quant + 10))
+                    break;
+            }
+        }
+
+        Logger($"Map item {itemID}({quant}) acquired");
+    }
+
+    /// <summary>
     /// This method is used to move between PvP rooms
     /// </summary>
     /// <param name="mtcid">Last number of the mtcid packet</param>
@@ -1877,6 +1878,10 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Checks if the room you're in is a public room or not
+    /// </summary>
+    /// <returns>If room number is less than 1000</returns>
     public bool inPublicRoom()
     {
         Bot.Wait.ForMapLoad(Bot.Map.Name);
@@ -1884,10 +1889,14 @@ public class CoreBots
             nr = 1;
         return nr < 1000;
     }
+
     #endregion
 
     #region Using Local Files
 
+    /// <summary>
+    /// Returns the file path the user has Skua stored in.
+    /// </summary>
     public string AppPath = Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty;
 
     private void ReadMe()
@@ -2295,6 +2304,8 @@ public class CoreBots
             FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
+    public bool CBO_Active() => File.Exists(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt");
+
     public bool CBOString(string Name, out string output)
     {
         if (!CBO_Active())
@@ -2326,8 +2337,7 @@ public class CoreBots
         return true;
     }
 
-    public List<string> CBOList = new();
-    public bool CBO_Active() => File.Exists(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt");
+    private List<string> CBOList = new();
 
     #endregion
 }
