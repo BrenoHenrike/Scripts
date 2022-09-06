@@ -20,7 +20,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 KillQuest(<br>
                 &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
                 &emsp;string&nbsp;MonsterName,<br>
-                <span style="color:gray">
+                <span style="color:lightgray">
                     &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
                     &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
@@ -40,7 +40,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 KillQuest(<br>
                 &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
                 &emsp;string[]&nbsp;MonsterNames,<br>
-                <span style="color:gray">
+                <span style="color:white">
                     &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
                     &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
