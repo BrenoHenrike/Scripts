@@ -124,7 +124,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 &emsp;int QuestID,<br>
                 <span style="color:gray">
                     &emsp;bool GetReward&nbsp;=&nbsp;true,<br>
-                    &emsp;string&nbsp;Reward&nbsp&nbsp;"All"<br>
+                    &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All"<br>
                 </span>
                 )
             </code>
