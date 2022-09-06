@@ -9,7 +9,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
 ## Methods
 
 | Method Definition | Return Type | Description |
-| --- | :---: | --- |
+| ------------------------------------------------------- | :---: | --- |
 | `KillQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`string MonsterName,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)` | *void*| Kills a monster for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one. |
 | `KillQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`string[] MonsterNames,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)` | *void* | Kills an array of monsters for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one. |
 | `MapItemQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`int MapItemID, int Amount = 1,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)` | *void* | Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one. |
