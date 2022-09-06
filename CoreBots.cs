@@ -778,8 +778,7 @@ public class CoreBots
                                                             (!Bot.Inventory.IsMaxStack(r.Name) ||
                                                                             !(Bot.Bank.TryGetItem(r.Name, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList(); if (simpleRewards.Count == 0)
                             {
-                                nonChooseQuests.Add(kvp.Key, kvp.Value);
-                                chooseQuests.Remove(kvp.Key);
+                                EnsureComplete(kvp.Key.ID);
                                 continue;
                             }
 
