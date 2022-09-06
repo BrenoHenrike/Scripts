@@ -17,11 +17,11 @@
                     <a href="Skua/Core/CoreBots/Using Local Files">Using Local Files</a><br>
                 </ul>
             </details>
+            <a href="Skua/Core/CoreStory">CoreStory</a>
             <details>
                 <summary>To-Do List ↨</summary>
                 <ul>
                     <li>CoreFarms</li>
-                    <li>CoreStory</li>
                     <li>CoreAdvanced</li>
                     <li>CoreDailies</li>
                     <li>CoreNation</li>
