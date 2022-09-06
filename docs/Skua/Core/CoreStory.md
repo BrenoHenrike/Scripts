@@ -8,14 +8,129 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
 
 ## Methods
 
-| Method Definition                                                                                                                                                                                                                                                              | Return Type | Description                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <code>KillQuest(<br>&emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>&emsp;string&nbsp;MonsterName,<br>&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>)</code> |   *void*    | Kills a monster for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.              |
-| `KillQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`string[] MonsterNames,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)`                                                                     |   *void*    | Kills an array of monsters for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.   |
-| `MapItemQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`int MapItemID, int Amount = 1,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)`                                                          |   *void*    | Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.       |
-| `MapItemQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`int[] MapItemIDs, int Amount = 1,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)`                                                       |   *void*    | Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.       |
-| `BuyQuest(`<br>&emsp;`int QuestID, string MapName,`<br>&emsp;`int ShopID, string ItemName,`<br>&emsp;`int Amount = 1,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All",`<br>&emsp;`bool AutoCompleteQuest = true`<br>`)`                                     |   *void*    | Accepts a quest and then turns it in again                                                                                                                         |
-| `QuestProgression(`<br>&emsp;`int QuestID,`<br>&emsp;`bool GetReward = true,`<br>&emsp;`string Reward = "All"`<br>`)`                                                                                                                                                          |   *bool*    | Skeleton of KillQuest, MapItemQuest, BuyQuest and ChainQuest. Only needs to be used inside a script if the quest spans across multiple maps                        |
-| `PreLoad()`                                                                                                                                                                                                                                                                    |   *void*    | Put this at the start of your story script so that the bot will load all quests that are used in the bot. This will speed up any progression checks tremendiously. |
+<table>
+    <tr>
+        <th>Method Definition</th>
+        <th>Return Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                KillQuest(<br>
+                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;string&nbsp;MonsterName,<br>
+                &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
+                &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                )
+            </code>
+        </td>
+        <td><i>void</i></td>
+        <td>
+            Kills a monster for a Quest, and turns in the quest if possible. 
+            Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                KillQuest(<br>
+                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;string[]&nbsp;MonsterNames,<br>
+                &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
+                &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                )
+            </code>
+        </td>
+        <td><i>void</i></td>
+        <td>
+            Kills an array of monsters for a Quest, and turns in the quest if possible. 
+            Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                MapItemQuest(<br>
+                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;int&nbsp;MapItemID, int&nbsp;Amount&nbsp&nbsp;1,<br>
+                &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
+                &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                )
+            </code>
+        </td>
+        <td><i>void</i></td>
+        <td>
+            Gets MapItems X times for a Quest, and turns in the quest if possible. 
+            Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                MapItemQuest(<br>
+                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;int[]&nbsp;MapItemIDs, int&nbsp;Amount&nbsp;=&nbsp;1,<br>
+                &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                &emsp;string&nbsp;Reward&nbsp;"All",<br>
+                &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                )
+            </code>
+        </td>
+        <td><i>void</i></td>
+        <td>
+            Gets MapItems X times for a Quest, and turns in the quest if possible. 
+            Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                BuyQuest(<br>
+                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;int&nbsp;ShopID, string&nbsp;ItemName,<br>
+                &emsp;int&nbsp;Amount&nbsp;=&nbsp;1,<br>
+                &emsp;bool GetReward = true,<br>
+                &emsp;string&nbsp;Reward&nbsp&nbsp;"All",<br>
+                &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                )
+            </code>
+        </td>
+        <td><i>void</i></td>
+        <td>
+            Buys an item X times for a quest, and turns in the quest if possible. 
+            Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>
+                QuestProgression(<br>
+                &emsp;int QuestID,<br>
+                &emsp;bool GetReward&nbsp;=&nbsp;true,<br>
+                &emsp;string&nbsp;Reward&nbsp&nbsp;"All"<br>
+                )
+            </code>
+        </td>
+        <td><i>bool</i></td>
+        <td>
+            Accepts a quest and then turns it in again.
+            Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>PreLoad()</code>
+        </td>
+        <td><i>void</i></td>
+        <td>
+            Put this at the start of your story script so that the bot will load all quests that are used in the bot. 
+            This will speed up any progression checks tremendiously.
+        </td>
+    </tr>
+</table>
 
 ---------
