@@ -10,7 +10,7 @@ public class AlchemyREP
     public string OptionsStorage = "AlchemyREP";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("goldMethod", "Use gold (cost 7.000.000 without boosts rank 1 to 10)", "If true, will use the gold method which buys the reagents.", true)
+        new Option<bool>("goldMethod", "use Gold?", "Using gold (cost 7.000.000 without boosts rank 1 to 10)", false)
     };
 
     //Gold Voucher 500k x6 (3.000.000 Gold) => 30x Dragon Runestone => Dragon Scale & Ice Vapor x30
@@ -28,7 +28,7 @@ public class AlchemyREP
 
         //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
-        Farm.AlchemyREP(10, Bot.Config.Get<bool>("goldMethod"));
+        Farm.AlchemyREP(11, Bot.Config.Get<bool>("goldMethod"));
 
         Core.SetOptions(false);
     }
