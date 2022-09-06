@@ -935,8 +935,8 @@ public class CoreAdvanced
                     unEnhanceable.Add(item);
 
             if (unEnhanceable.Count == 1)
-                Core.Logger($"Enhancement Failed: Could not find {unEnhanceable.First()}");
-            else Core.Logger($"Enhancement Failed: Could not find the following items: {string.Join(", ", unEnhanceable)}");
+                Core.Logger($"Enhancement Failed: Unenhanceable item found, {unEnhanceable.First()}");
+            else Core.Logger($"Enhancement Failed: The following items are unenhanceable, {string.Join(", ", unEnhanceable)}");
 
             return;
         }
