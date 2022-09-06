@@ -1,4 +1,4 @@
-//cs_include Scripts/CoreBots.cs
+///cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
@@ -9,7 +9,6 @@
 //cs_include Scripts/Nation/Various/TarosManslayer.cs
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
 //cs_include Scripts/Story/ArtixWedding.cs
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -38,6 +37,7 @@ public class BeleensMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Platinum Wings", "Fuchsia Dye", "Plague Strike Scythe", "Baby Red Dragon", "Zealith Reavers", "Great Astral Wings", "Wave Cutter", "Star Caster Staff", "Scarlet's Costume", "Infernal Dark Blade of Cruelty", "Chaos Dragonlord Helm", "Rose Aura of the Ascended", "Prismatic Dye", "Iron Dreadsaw", "Taro's Manslayer", "Dual Manslayer of Taro", "Demonhuntress Horns", "Demonhunter Horns", "DOOMFire Warrior", "Fire Imp Tail", "Unarmed", "Scarbucks Latte", "Valor High Halo", "Doge the Evil", "Shimmering Flakes", "Red Rose", "Scarbucks Espresso Cup", "Shadowslayer Armor", "ShadowSlayer Hat", "Shadow Z Hat", "Slayer's Neophyte Broadsword", "Reavers Of Good", "Slithering ShadowSlayer", "Slithering Hunter's Hat", "Slithering Hunter's Hat + Locks", "Slithering Hunter's Knife", "Slayer's Wooden Pistol", "Slayer's Wooden Rifle " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -71,16 +71,6 @@ public class BeleensMerge
                 #endregion
 
                 case "Platinum Wings":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
-                    if (Farm.FactionRank("Good") < 7)
-                    {
-                        Core.Logger("This item requires Good Faction Rank 7. starting GoodREP script");
-                        Farm.GoodREP(7);
-                    }
                     Adv.BuyItem("Castle", 88, req.Name);
                     break;
 
@@ -113,20 +103,10 @@ public class BeleensMerge
                     break;
 
                 case "Plague Strike Scythe":
-                    if (Farm.FactionRank("Evil") < 8)
-                    {
-                        Core.Logger("This item requires Evil Faction Rank 7. starting EvilREP script");
-                        Farm.EvilREP(8);
-                    }
                     Adv.BuyItem("ShadowFall", 89, req.Name);
                     break;
 
                 case "Baby Red Dragon":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
                     Adv.BuyItem("AriaPet", 12, req.Name);
                     break;
 
@@ -142,22 +122,12 @@ public class BeleensMerge
                     break;
 
                 case "Great Astral Wings":
-                    Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Elemental", "Mana Falcon", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("Elemental", "Mana Falcon", req.Name, isTemp: false);
                     break;
 
                 case "Wave Cutter":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Pirates", "Shark Bait", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("Pirates", "Shark Bait", req.Name, isTemp: false);
                     break;
 
                 case "Star Caster Staff":
@@ -165,39 +135,21 @@ public class BeleensMerge
                     break;
 
                 case "Scarlet's Costume":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
                     Adv.BuyItem("Sleuthhound", 65, req.Name);
                     break;
 
                 case "Infernal Dark Blade of Cruelty":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
                     Adv.BuyItem("Battleon", 10, req.Name);
                     break;
+
                 case "Chaos Dragonlord Helm":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Stalagbite", "Vath", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.EquipClass(ClassType.Solo);
+                    Core.KillVath(req.Name, isTemp: false);
                     break;
 
                 case "Rose Aura of the Ascended":
                     Core.Logger($"{req.Name} is seasonal AC item and only available Beleen's Birthday event.");
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.Logger("This item is not setup yet"); //needs to be edited later as i couldn't find ShopID for it
-                    }
+                    Adv.BuyItem(Bot.Map.Name, 1966, req.Name);
                     break;
 
                 case "Prismatic Dye":
@@ -222,114 +174,72 @@ public class BeleensMerge
                     break;
 
                 case "Taro's Manslayer":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.IsMember)
-                        {
-                            TarosManslayer.GuardianTaro(ManslayerOnly: true);
-                            Bot.Wait.ForPickup(req.Name);
-                        }
-                    }
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    TarosManslayer.GuardianTaro(ManslayerOnly: true);
                     break;
 
                 case "Dual Manslayer of Taro":
                     if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
-                    }
-                    else
+
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(625);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Core.EquipClass(ClassType.Farm);
-                        Core.RegisterQuests(625);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.IsMember)
-                        {
-                            TarosManslayer.GuardianTaro(ManslayerOnly: true);
-                            CoreNation.FarmDiamondofNulgath(7);
-                            CoreNation.FarmDarkCrystalShard(13);
-                            CoreNation.SwindleBulk(13);
-                            CoreNation.FarmUni13(1);
-                            CoreNation.FarmVoucher(member: true);
-                            Core.HuntMonster("Underworld", "Undead Bruiser", "Undead Bruiser Rune");
-                            Bot.Wait.ForPickup(req.Name);
-                        }
-                        Core.CancelRegisteredQuests();
+                        TarosManslayer.GuardianTaro(ManslayerOnly: true);
+                        CoreNation.FarmDiamondofNulgath(7);
+                        CoreNation.FarmDarkCrystalShard(13);
+                        CoreNation.SwindleBulk(13);
+                        CoreNation.FarmUni13(1);
+                        CoreNation.FarmVoucher(member: true);
+                        Core.HuntMonster("Underworld", "Undead Bruiser", "Undead Bruiser Rune");
+                        Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Demonhuntress Horns":
-                    if (Core.CheckInventory("Blindfolded Pink Demonhuntress Horns") || Core.CheckInventory("Pink Demonhuntress Horns"))
-                        Adv.BuyItem("Curio", 1070, req.Name);
-                    else
+                    if (!Core.CheckInventory("Blindfolded Pink Demonhuntress Horns") || !Core.CheckInventory("Pink Demonhuntress Horns"))
                     {
                         Core.Logger($"{req.Name} is pseudo-Rare, you don't have the Rare item to merge this material");
                         return;
                     }
+                    Adv.BuyItem("Curio", 1070, req.Name);
                     break;
 
                 case "Demonhunter Horns":
-                    if (Core.CheckInventory("Blindfolded Pink Demonhunter Horns") || Core.CheckInventory("Pink Demonhunter Horns"))
-                    {
-                        if (Core.CheckInventory("Blindfolded Pink Demonhunter Horns"))
-                            Adv.BuyItem("Curio", 1214, req.Name);
-                        else
-                            Adv.BuyItem("Curio", 52, req.Name);
-                    }
-                    else
+                    if (!Core.CheckInventory("Blindfolded Pink Demonhunter Horns") || !Core.CheckInventory("Pink Demonhunter Horns"))
                     {
                         Core.Logger($"{req.Name} is pseudo-Rare, you don't have the Rare item to merge this material");
                         return;
                     }
+                    if (Core.CheckInventory("Blindfolded Pink Demonhunter Horns"))
+                        Adv.BuyItem("Curio", 1214, req.Name);
+                    else
+                        Adv.BuyItem("Curio", 52, req.Name);
                     break;
 
                 case "DOOMFire Warrior":
                     if (Core.HasAchievement(19, "ip6"))
                         Adv.BuyItem("Battleon", 1306, req.Name);
-                    else
-                        return;
                     break;
 
                 case "Fire Imp Tail":
                     if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
-                    }
-                    else
-                    {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Core.EquipClass(ClassType.Farm);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.IsMember)
-                        {
-                            Core.HuntMonster("Mobius", "Fire Imp", req.Name, isTemp: false);
-                            Bot.Wait.ForPickup(req.Name);
-                        }
-                        break;
-                    }
+
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("Mobius", "Fire Imp", req.Name, isTemp: false);
+                    break;
 
                 case "Unarmed":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
                     Adv.BuyItem(Bot.Map.Name, 1536, req.Name);
                     break;
 
                 case "Scarbucks Latte":
                     Core.Logger($"{req.Name} is Member & Seasonal item");
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
                     Adv.BuyItem("FearFeast", 1190, req.Name);
                     break;
 
@@ -343,36 +253,27 @@ public class BeleensMerge
 
                 case "Doge the Evil":
                     if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
                         return;
-                    }
-                    else
+
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.EnsureAccept(2951);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.IsMember)
                     {
-                        Core.FarmingLogger($"{req.Name}", quant);
-                        Core.EquipClass(ClassType.Farm);
-                        Core.EnsureAccept(2951);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.IsMember)
-                        {
-                            //Legion Armored Daimyo [Member] 2951
-                            Core.HuntMonster("Ruins", "Dark Elemental", "Souls of the Destroyed", 15);
-                            Core.HuntMonster("DarkDungeon", "Shadow Serpent", "Shadow Essence", 4);
-                            Core.HuntMonster("GreenguardWest", "Black Knight", "Black Metal Armor", 4);
-                        }
-                        Core.EnsureCompleteChoose(2951, new[] { req.Name });
-                        Bot.Wait.ForPickup(req.Name);
+                        //Legion Armored Daimyo [Member] 2951
+                        Core.HuntMonster("Ruins", "Dark Elemental", "Souls of the Destroyed", 15);
+                        Core.HuntMonster("DarkDungeon", "Shadow Serpent", "Shadow Essence", 4);
+                        Core.HuntMonster("GreenguardWest", "Black Knight", "Black Metal Armor", 4);
                     }
+                    Core.EnsureCompleteChoose(2951, new[] { req.Name });
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
 
                 case "Shimmering Flakes":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
-                    Adv.BuyItem("BlindingSnow", 236, req.Name);
+                        Adv.BuyItem("BlindingSnow", 236, req.Name);
                     break;
+
 
                 case "Red Rose":
                     Core.FarmingLogger($"{req.Name}", quant);
@@ -387,21 +288,11 @@ public class BeleensMerge
 
                 case "Scarbucks Espresso Cup":
                     Core.Logger($"{req.Name} is Member & Seasonal item");
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
-                    Adv.BuyItem("FearFeast", 1190, req.Name);
+                        Adv.BuyItem("FearFeast", 1190, req.Name);
                     break;
 
                 case "Shadowslayer Armor":
-                    if (!Core.IsMember)
-                    {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
-                    Adv.BuyItem("DarkoviaForest ", 138, req.Name);
+                        Adv.BuyItem("DarkoviaForest ", 138, req.Name);
                     break;
 
                 case "ShadowSlayer Hat":
@@ -425,26 +316,16 @@ public class BeleensMerge
                 case "Slayer's Wooden Pistol":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
                         Core.HuntMonster("DarkoviaForest", "Lich of the Stone", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Slithering Hunter's Knife":
                 case "Slayer's Wooden Rifle":
-                    if (!Core.IsMember)
+                    if (Core.IsMember)
                     {
-                        Core.Logger($"{req.Name} requires Membership to Obtain");
-                        return;
-                    }
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.IsMember)
-                    {
-                        Core.HuntMonster("DarkoviaForest", "Lich of the Stone", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.FarmingLogger($"{req.Name}", quant);
+                        Core.EquipClass(ClassType.Farm);
+                            Core.HuntMonster("DarkoviaForest", "Lich of the Stone", req.Name, isTemp: false);
                     }
                     break;
             }
