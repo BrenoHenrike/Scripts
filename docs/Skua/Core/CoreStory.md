@@ -10,7 +10,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
 
 <table style="width:100%">
     <tr>
-        <th style="width:25%">Method Definition</th>
+        <th style="width:35%">Method Definition</th>
         <th>Return Type</th>
         <th>Description</th>
     </tr>
