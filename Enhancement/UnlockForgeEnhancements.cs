@@ -631,12 +631,13 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8823);
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
-        TSS.StoryLine(true); //sun heart thing
-        Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", 10,  isTemp: false);
+        if (!Core.CheckInventory("Heart of the Sun"))
+            TSS.StoryLine(true); //sun heart thing
+        Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", 10, isTemp: false);
         DD.Sloth();
         Adv.GearStore();
         DD.HazMatSuit();
-        Core.HuntMonster("sloth", "Mutated Plague", "Bloodless Heart", 3,  isTemp: false);
+        Core.HuntMonster("sloth", "Mutated Plague", "Bloodless Heart", 3, isTemp: false);
         Adv.GearStore(true);
         Core.EnsureComplete(8823);
         Core.Logger("Enhancement Unlocked: Lament");
