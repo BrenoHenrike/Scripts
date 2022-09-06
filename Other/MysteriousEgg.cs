@@ -20,8 +20,15 @@ public class MysteriousEgg
 
     public void GetMysteriousEgg()
     {
-        if (Core.CheckInventory("Mysterious Egg") || Core.CheckInventory("Manticore Cub Pet"))
+        if (Core.CheckInventory("Mysterious Egg"))
             return;
+
+        if (Core.CheckInventory("Manticore Cub Pet"))
+        {
+            Core.Logger("You own the \"Manticore Cub Pet\" and thus dont need to farm for the \"Mysterious Egg\"." +
+                        "It's a lot quicker to use AQW's BuyBack function. Please do so before continueing the bot",
+                        messageBox: true, stopBot: true);
+        }
 
         Core.AddDrop("Mysterious Egg");
         Core.EnsureAccept(6171);

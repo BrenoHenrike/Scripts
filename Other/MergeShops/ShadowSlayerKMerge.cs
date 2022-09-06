@@ -102,7 +102,7 @@ public class ShadowSlayerKMerge
                     Core.RegisterQuests(8265);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5, log: false);
+                        Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

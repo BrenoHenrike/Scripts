@@ -76,7 +76,7 @@ public class ShadowslayerSummoningRitual
                 {
                     Core.AddDrop("Dairy Ration");
                     Core.EnsureAccept(8265);
-                    Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
+                    Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5);
                     Core.EnsureComplete(8265);
                     Bot.Wait.ForPickup("Dairy Ration");
                 }
