@@ -10,7 +10,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
 
 <table style="width:100%">
     <tr>
-        <th style="width:22%">Method Definition</th>
+        <th style="width:25%">Method Definition</th>
         <th>Return Type</th>
         <th>Description</th>
     </tr>
@@ -18,12 +18,12 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
         <td>
             <code>
                 KillQuest(<br>
-                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;string&nbsp;MonsterName,<br>
+                &emsp;&emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;&emsp;string&nbsp;MonsterName,<br>
                 <span style="color:lightgray">
-                    &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
-                    &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                    &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
+                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -38,12 +38,12 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
         <td>
             <code>
                 KillQuest(<br>
-                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;string[]&nbsp;MonsterNames,<br>
+                &emsp;&emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;&emsp;string[]&nbsp;MonsterNames,<br>
                 <span style="color:white">
-                    &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
-                    &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                    &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
+                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -58,11 +58,11 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
         <td>
             <code>
                 MapItemQuest(<br>
-                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;int&nbsp;MapItemID, <span style="color:gray">int&nbsp;Amount&nbsp&nbsp;1,<br>
-                    &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
-                    &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                &emsp;&emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;&emsp;int&nbsp;MapItemID, <span style="color:gray">int&nbsp;Amount&nbsp&nbsp;1,<br>
+                    &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                    &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
+                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -77,11 +77,11 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
         <td>
             <code>
                 MapItemQuest(<br>
-                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;int[]&nbsp;MapItemIDs, <span style="color:gray">int&nbsp;Amount&nbsp;=&nbsp;1,<br>
-                    &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
-                    &emsp;string&nbsp;Reward&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                &emsp;&emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;&emsp;int[]&nbsp;MapItemIDs, <span style="color:gray">int&nbsp;Amount&nbsp;=&nbsp;1,<br>
+                    &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
+                    &emsp;&emsp;string&nbsp;Reward&nbsp;"All",<br>
+                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -96,13 +96,13 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
         <td>
             <code>
                 BuyQuest(<br>
-                &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;int&nbsp;ShopID, string&nbsp;ItemName,<br>
+                &emsp;&emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
+                &emsp;&emsp;int&nbsp;ShopID, string&nbsp;ItemName,<br>
                 <span style="color:gray">
-                    &emsp;int&nbsp;Amount&nbsp;=&nbsp;1,<br>
-                    &emsp;bool GetReward = true,<br>
-                    &emsp;string&nbsp;Reward&nbsp&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;&emsp;int&nbsp;Amount&nbsp;=&nbsp;1,<br>
+                    &emsp;&emsp;bool GetReward = true,<br>
+                    &emsp;&emsp;string&nbsp;Reward&nbsp&nbsp;"All",<br>
+                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -117,10 +117,10 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
         <td>
             <code>
                 QuestProgression(<br>
-                &emsp;int QuestID,<br>
+                &emsp;&emsp;int QuestID,<br>
                 <span style="color:gray">
-                    &emsp;bool GetReward&nbsp;=&nbsp;true,<br>
-                    &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All"<br>
+                    &emsp;&emsp;bool GetReward&nbsp;=&nbsp;true,<br>
+                    &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All"<br>
                 </span>
                 )
             </code>
