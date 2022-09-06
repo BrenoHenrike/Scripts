@@ -987,7 +987,7 @@ public class CoreFarms
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-
+        Core.AddDrop("Empowered Voidstone");
         Core.RegisterQuests(7277);
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
         {
