@@ -2226,21 +2226,23 @@ public class CoreFarms
 
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
         Core.EquipClass(ClassType.Farm);
-        int i = quant - Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
 
-        Core.RegisterQuests(1310);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
-            Core.FarmingLogger($"Super-Fan Swag Token A", 1);
+            Core.FarmingLogger($"Super-Fan Swag Token A", quant);
 
+            Core.RegisterQuests(1310);
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 200))
                 Core.KillMonster("collectorlab", "r2", "Right", "*", "Doppelganger Documents", log: false);
+            Core.CancelRegisteredQuests();
 
+            Core.Join("Collection", "Begin", "Spawn");
             Core.BuyItem("collection", 325, "Super-Fan Swag Token B", 20);
-            Core.BuyItem("collection", 325, "Super-Fan Swag Token A", quant);
+            Bot.Shops.Load(325);
+            Bot.Shops.BuyItem("Super-Fan Swag Token A");
         }
-        Core.CancelRegisteredQuests();
     }
+
 
     public void MembershipDues(MemberShipsIDS faction, int rank = 10)
     {
