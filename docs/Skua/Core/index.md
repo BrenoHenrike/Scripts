@@ -13,7 +13,7 @@
 </details>
 <a href="CoreStory">CoreStory</a>
 <details>
-    <summary>To-Do List ↨</summary>
+    <summary><u>To-Do List</u> ↨</summary>
     <ul>
         <li>CoreFarms</li>
         <li>CoreAdvanced</li>
