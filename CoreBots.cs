@@ -294,7 +294,7 @@ public class CoreBots
                 p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
                 p.Start();
             }
-            Logger("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice);
+            Logger("A crash has been detected, see the popup for more information");
         }
         return StopBot(e != null);
     }
