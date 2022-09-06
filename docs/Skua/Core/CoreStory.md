@@ -8,9 +8,9 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
 
 ## Methods
 
-<table>
+<table style="width:100%">
     <tr>
-        <th>Method Definition</th>
+        <th style="width:22%">Method Definition</th>
         <th>Return Type</th>
         <th>Description</th>
     </tr>
@@ -59,9 +59,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
             <code>
                 MapItemQuest(<br>
                 &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;int&nbsp;MapItemID, 
-                <span style="color:gray">
-                    int&nbsp;Amount&nbsp&nbsp;1,<br>
+                &emsp;int&nbsp;MapItemID, <span style="color:gray">int&nbsp;Amount&nbsp&nbsp;1,<br>
                     &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
                     &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
@@ -80,9 +78,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
             <code>
                 MapItemQuest(<br>
                 &emsp;int&nbsp;QuestID, string&nbsp;MapName,<br>
-                &emsp;int[]&nbsp;MapItemIDs, 
-                <span style="color:gray">
-                    int&nbsp;Amount&nbsp;=&nbsp;1,<br>
+                &emsp;int[]&nbsp;MapItemIDs, <span style="color:gray">int&nbsp;Amount&nbsp;=&nbsp;1,<br>
                     &emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;string&nbsp;Reward&nbsp;"All",<br>
                     &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
