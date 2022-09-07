@@ -162,7 +162,6 @@ public class ThreeSpellStory
                     Core.EnsureAccept(4491);
                     Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
                     Core.EnsureComplete(4491);
-                    Core.EnsureComplete(4493);
                     if (HoTS)
                     {
                         Core.ToBank("Sun Token VI");
@@ -182,9 +181,7 @@ public class ThreeSpellStory
                 }
                 Core.EnsureComplete(4493);
             }
-            if (HoTS)
-                Core.ToBank("Sun Token VIII", "Heart of the Sun");
-            Core.ToBank("Sun Token VIII");
+            Core.ToBank("Sun Token VIII", "Heart of the Sun");
             Core.Logger("All Quests Complete");
         }
     }
