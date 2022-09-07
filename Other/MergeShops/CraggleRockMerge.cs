@@ -105,6 +105,7 @@ public class CraggleRockMerge
                     break;
 
                 case "Understone":
+                    Bot.Quests.UpdateQuest(939);
                     Core.RegisterQuests(7289);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
