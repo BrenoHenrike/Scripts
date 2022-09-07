@@ -147,7 +147,7 @@ public class CoreYnR
         int questID = nonLegion ? 7410 : 7443;
         Core.EnsureAccept(questID);
         Core.EquipClass(ClassType.Solo);
-        if (nonLegion)
+        if (nonLegion && !Core.isCompletedBefore(793))
         {
             Core.Logger("Using Non-Legion variant for the Blademaster Sword Scroll");
             Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 26, false, publicRoom: true);
