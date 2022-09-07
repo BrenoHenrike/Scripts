@@ -21,21 +21,27 @@ public class ThreeSpellStory
 
     public void StoryLine(bool HoTS = false)
     {
-        if (Core.CheckInventory("Sun Token VIII", toInv: false))
+        if (!HoTS)
+        {
+            if (Core.CheckInventory("Sun Token VIII", toInv: false))
+                return;
+        }
+        else if (Core.CheckInventory("Heart of the Sun"))
             return;
+
 
         Story.PreLoad();
 
         Core.AddDrop(RequiredItems);
 
         // 4493|See the Hero Run        
-        if (!Core.CheckInventory("Sun Token VIII"))
+        if (!Core.CheckInventory("Sun Token VIII") || HoTS)
         {
             // 4492|Selfishness
-            if (!Core.CheckInventory("Sun Token VII"))
+            if (!Core.CheckInventory("Sun Token VII") || HoTS)
             {
                 // 4491|Mother Knows The Sun
-                if (!Core.CheckInventory("Sun Token VI"))
+                if (!Core.CheckInventory("Sun Token VI") || HoTS)
                 {
                     if (HoTS && Core.CheckInventory("Heart of the Sun"))
                         return;
