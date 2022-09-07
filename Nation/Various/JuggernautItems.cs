@@ -19,7 +19,7 @@ public class JuggernautItemsofNulgath
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
-        new Option<RewardsSelection>("RewardsSelection", "Select Your Quest Reward", "Select Your Quest Reward for The JuggerNaught items of Nulgath quest.", RewardsSelection.Oblivion_of_Nulgath),
+        new Option<RewardsSelection>("RewardsSelection", "Select Your Quest Reward", "Select Your Quest Reward for The JuggerNaught items of Nulgath quest.", RewardsSelection.OblivionofNulgath),
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -96,26 +96,26 @@ public class JuggernautItemsofNulgath
 
     public enum RewardsSelection
     {
-        Oblivion_of_Nulgath = 2232,
-        UngodlyReavers_of_Nulgath = 4939,
-        Warlord_of_Nulgath = 5527,
-        Arcane_of_Nulgath = 5530,
-        Dimensional_Champion_of_Nulgath = 5531,
-        Crystal_Phoenix_Blade_of_Nulgath = 6137,
-        Overfiend_Blade_of_Nulgath = 6138,
-        Battle_fiend_Blade_of_Nulgath = 6141,
-        Dark_Makai_of_Nulgath = 6142,
-        Nulgath_Armor = 6375,
-        Polish_Hussar = 42596,
-        Polish_Hussar_Helm = 42597,
-        Polish_Hussar_Spear = 42598,
-        Polish_Hussar_Wings = 42599,
-        VoidCowboy_ = 52799,
-        VoidCowboy_Hat = 52800,
-        VoidCowboy_Morph = 52801,
-        VoidCowboys_MaskLocks = 52802,
-        VoidCowboys_Pistol = 52803,
-        Dual_VoidCowboy_Pistols = 52818,
+        OblivionofNulgath = 2232,
+        UngodlyReaversofNulgath = 4939,
+        WarlordofNulgath = 5527,
+        ArcaneofNulgath = 5530,
+        DimensionalChampionofNulgath = 5531,
+        CrystalPhoenixBladeofNulgath = 6137,
+        OverfiendBladeofNulgath = 6138,
+        BattlefiendBladeofNulgath = 6141,
+        DarkMakaiofNulgath = 6142,
+        NulgathArmor = 6375,
+        PolishHussar = 42596,
+        PolishHussarHelm = 42597,
+        PolishHussarSpear = 42598,
+        PolishHussarWings = 42599,
+        VoidCowboy = 52799,
+        VoidCowboyHat = 52800,
+        VoidCowboyMorph = 52801,
+        VoidCowboysMaskLocks = 52802,
+        VoidCowboysistol = 52803,
+        DualVoidCowboyPistols = 52818,
         All
     };
 }
