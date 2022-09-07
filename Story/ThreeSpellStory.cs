@@ -21,21 +21,25 @@ public class ThreeSpellStory
 
     public void StoryLine(bool HoTS = false)
     {
-        if (Core.CheckInventory("Sun Token VIII", toInv: false))
-            return;
+        if (HoTS == false)
+        {
+            if (Core.CheckInventory("Sun Token VIII", toInv: false))
+                return;
+        }
+
 
         Story.PreLoad();
 
         Core.AddDrop(RequiredItems);
 
         // 4493|See the Hero Run        
-        if (!Core.CheckInventory("Sun Token VIII"))
+        if (!Core.CheckInventory("Sun Token VIII") || HoTS == true)
         {
             // 4492|Selfishness
-            if (!Core.CheckInventory("Sun Token VII"))
+            if (!Core.CheckInventory("Sun Token VII") || HoTS == true)
             {
                 // 4491|Mother Knows The Sun
-                if (!Core.CheckInventory("Sun Token VI"))
+                if (!Core.CheckInventory("Sun Token VI") || HoTS == true)
                 {
                     // 4490|Assault With a Deadly Shadow
                     if (!Core.CheckInventory("Sun Token V"))
@@ -157,28 +161,39 @@ public class ThreeSpellStory
                         Core.GetMapItem(3674, map: "thirdspell");
                         Core.EnsureComplete(4490);
                     }
+
                     Core.EnsureAccept(4491);
                     Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
                     Core.EnsureComplete(4491);
                 }
-                Core.EnsureAccept(4492);
-                Core.GetMapItem(3676, map: "thirdspell");
-                Core.EnsureComplete(4492);
+                if (HoTS == true)
+                    return;
+                else
+                {
+                    Core.EnsureAccept(4492);
+                    Core.GetMapItem(3676, map: "thirdspell");
+                    Core.EnsureComplete(4492);
+                }
             }
-            Core.EnsureAccept(4493);
-            Core.GetMapItem(3677, map: "thirdspell");
-            if (!Core.CheckInventory("Heart of the Sun"))
+            if (HoTS == true)
+                return;
+            else
             {
-                Core.EnsureAccept(4491);
-                Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
-                Core.EnsureComplete(4491);
-                if (!HoTS)
-                    Core.EnsureComplete(4493);
-                else return;
+                Core.EnsureAccept(4493);
+                Core.GetMapItem(3677, map: "thirdspell");
+                if (!Core.CheckInventory("Heart of the Sun"))
+                {
+                    Core.EnsureAccept(4491);
+                    Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
+                    Core.EnsureComplete(4491);
+                    if (!HoTS)
+                        Core.EnsureComplete(4493);
+                    else return;
+                }
+                Core.EnsureComplete(4493);
             }
-            Core.EnsureComplete(4493);
         }
-        if (HoTS)
+        if (HoTS == true)
             Core.ToBank("Sun Token VIII", "Heart of the Sun");
         Core.ToBank("Sun Token VIII");
         Core.Logger("All Quests Complete");
