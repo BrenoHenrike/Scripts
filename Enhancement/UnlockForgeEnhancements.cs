@@ -602,31 +602,14 @@ public class UnlockForgeEnhancements
         Bot.Quests.UpdateQuest(3008);
         Core.RegisterQuests(3270);
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
-        {
-            Bot.Events.CellChanged += CutSceneFixer;
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe", publicRoom: true);
-        }
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe");
         Core.CancelRegisteredQuests();
-        Bot.Events.CellChanged -= CutSceneFixer;
 
         Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);
         Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
         Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", 13, isTemp: false);
         Core.EnsureComplete(8822);
         Core.Logger("Enhancement Unlocked: Penitence");
-
-        void CutSceneFixer(string map, string cell, string pad)
-        {
-            if (map == "doomvault" && cell != "r5")
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
-                {
-                    Bot.Sleep(2500);
-                    Core.Jump("r5", "Left");
-                    Bot.Sleep(2500);
-                }
-            }
-        }
     }
 
     public void Lament()

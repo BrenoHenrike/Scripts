@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Reflection;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using Skua.Core.Models.Shops;
-using Skua.Core.Models.Quests;
 using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 using Skua.Core.Options;
 
 public class CoreAdvanced
@@ -483,11 +483,13 @@ public class CoreAdvanced
         if (log)
             Core.Logger($"Killing Ultra-Boss {monster} for {item} ({quant}) [Temp = {isTemp}]");
 
-        Bot.Kill.ForItem(monster, item, quant, isTemp);
+        Bot.Hunt.ForItem(monster, item, quant, isTemp);
 
         if (!forAuto)
             GearStore(true);
     }
+
+
 
     #endregion
 
