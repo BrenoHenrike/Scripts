@@ -597,14 +597,31 @@ public class UnlockForgeEnhancements
         Bot.Quests.UpdateQuest(3008);
         Core.RegisterQuests(3270);
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
+        {
+            Bot.Events.CellChanged += CutSceneFixer;
+            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe", publicRoom: true);
+        }
         Core.CancelRegisteredQuests();
+        Bot.Events.CellChanged -= CutSceneFixer;
 
         Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);
         Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
         Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", 13, isTemp: false);
         Core.EnsureComplete(8822);
         Core.Logger("Enhancement Unlocked: Penitence");
+
+        void CutSceneFixer(string map, string cell, string pad)
+        {
+            if (map == "doomvault" && cell != "r5")
+            {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r5", "Left");
+                    Bot.Sleep(2500);
+                }
+            }
+        }
     }
 
     public void Lament()
@@ -614,15 +631,14 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8823);
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
-        TSS.StoryLine(true);
-        Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", isTemp: false);
+        if (!Core.CheckInventory("Heart of the Sun"))
+            TSS.StoryLine(true); //sun heart thing
+        Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", 10, isTemp: false);
         DD.Sloth();
         Adv.GearStore();
         DD.HazMatSuit();
-        Core.HuntMonster("sloth", "Mutated Plague", "Bloodless Heart", isTemp: false);
+        Core.HuntMonster("sloth", "Mutated Plague", "Bloodless Heart", 3, isTemp: false);
         Adv.GearStore(true);
-
-        Core.Logger("Not setup yet -- didnt have time before work, Tato");
         Core.EnsureComplete(8823);
         Core.Logger("Enhancement Unlocked: Lament");
     }

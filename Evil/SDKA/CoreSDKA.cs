@@ -16,8 +16,8 @@ public class CoreSDKA
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        new Option<SDKA_Quest>("SelectedQuest", "Dark Spirit Orbs Quest",
-            "Which quest should the bot use to farm Dark Spirit Orbs with?\nRecommended setting: A Penny for Your Foughts", SDKA_Quest.A_Penny_for_Your_Foughts),
+        new Option<SDKAQuest>("SelectedQuest", "Dark Spirit Orbs Quest",
+            "Which quest should the bot use to farm Dark Spirit Orbs with?\nRecommended setting: A Penny for Your Foughts", SDKAQuest.APennyforYourFoughts),
         sCore.SkipOptions,
     };
 
@@ -178,7 +178,7 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quant))
             return;
 
-        if (Bot.Config.Get<SDKA_Quest>("SelectedQuest") == SDKA_Quest.Dark_Spirit_Orbs)
+        if (Bot.Config.Get<SDKAQuest>("SelectedQuest") == SDKAQuest.DarkSpiritOrbs)
             DSO(quant);
         else
             Penny(quant);
@@ -602,8 +602,8 @@ public class CoreSDKA
     }
 }
 
-public enum SDKA_Quest
+public enum SDKAQuest
 {
-    A_Penny_for_Your_Foughts,
-    Dark_Spirit_Orbs,
+    APennyforYourFoughts,
+    DarkSpiritOrbs,
 }

@@ -68,7 +68,7 @@ public class ShadowslayerSummoningRitual
                 {
                     Core.AddDrop("Grain Ration");
                     Core.EnsureAccept(8264);
-                    Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3);
+                    Core.KillMonster("castletunnels", "Enter", "Left", "Blood Maggot", "Bundle of Rice", 3);
                     Core.EnsureComplete(8264);
                     Bot.Wait.ForPickup("Grain Ration");
                 }
@@ -76,7 +76,7 @@ public class ShadowslayerSummoningRitual
                 {
                     Core.AddDrop("Dairy Ration");
                     Core.EnsureAccept(8265);
-                    Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
+                    Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5);
                     Core.EnsureComplete(8265);
                     Bot.Wait.ForPickup("Dairy Ration");
                 }

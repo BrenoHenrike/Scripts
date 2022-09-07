@@ -294,7 +294,7 @@ public class CoreBots
                 p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
                 p.Start();
             }
-            Logger("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice);
+            Logger("A crash has been detected, see the popup for more information");
         }
         return StopBot(e != null);
     }
@@ -778,8 +778,7 @@ public class CoreBots
                                                             (!Bot.Inventory.IsMaxStack(r.Name) ||
                                                                             !(Bot.Bank.TryGetItem(r.Name, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList(); if (simpleRewards.Count == 0)
                             {
-                                nonChooseQuests.Add(kvp.Key, kvp.Value);
-                                chooseQuests.Remove(kvp.Key);
+                                EnsureComplete(kvp.Key.ID);
                                 continue;
                             }
 

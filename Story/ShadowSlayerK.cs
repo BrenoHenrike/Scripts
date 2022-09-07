@@ -56,35 +56,31 @@ public class ShadowSlayerK
             Bot.Quests.UpdateQuest(8060);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("backroom", "Book Wyrm", "Book of Monsters Mace", isTemp: false);
-            Adv.BuyItem("chronohub", 2024, "Chronomancer's Opus");
+            Core.BuyItem("chronohub", 2024, "Chronomancer's Opus");
             Core.EnsureComplete(8830);
         }
-        
+
         // 8831 | Shadow Slayer Slayer
         Story.KillQuest(8831, "newfinale", "Shadow Slayer");
 
         // 8832 | Dinner for Two
-        if (!Story.QuestProgression(8832))
-        {
-            Core.EnsureAccept(8832);
-            Core.HuntMonster("dragonchallenge", "Greenguard Dragon", "Greenguard Dragon Ribs");
-            Core.HuntMonster("battlefowl", "ChickenCow", "Chickencow Wings");
-            Core.HuntMonster("pirates", "Shark Bait", "Shark Bait Fillet");
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Big Bad Boar Sausage");
-            Core.HuntMonster("trunk", "Greenguard Basilisk", "Greenguard Basilisk Tail");
-            Core.HuntMonster("Well", "Gell Oh No", "Gell Oh No Jello");
-            Core.HuntMonster("deathgazer", "Deathgazer", "Deathgazer Takoyaki");
-            Core.HuntMonster("river", "Kuro", "Kuro Geso Karaage");
-            Core.EnsureComplete(8832);
-        }
+        Story.KillQuest(8832, "dragonchallenge", "Greenguard Dragon");
+        Story.KillQuest(8832, "battlefowl", "ChickenCow");
+        Story.KillQuest(8832, "pirates", "Shark Bait");
+        Story.KillQuest(8832, "greenguardwest", "Big Bad Boar");
+        Story.KillQuest(8832, "trunk", "Greenguard Basilisk");
+        Story.KillQuest(8832, "Well", "Gell Oh No");
+        Story.KillQuest(8832, "deathgazer", "Deathgazer");
+        Story.KillQuest(8832, "river", "Kuro", false);
+
 
         // 8833 | Preparedness Awareness
-        Story.BuyQuest(8833, "arcangrove", 211, "Health Potion", Amount: 25);
-        Story.BuyQuest(8833, "arcangrove", 211, "Mana Potion", Amount: 25);
-        Story.KillQuest(8833, "cleric", "Chaos Dragon");
+        Story.BuyQuest(8833, "arcangrove", 211, "Health Potion", 25);
+        Story.BuyQuest(8833, "arcangrove", 211, "Mana Potion", 25);
+        Story.KillQuest(8833, "cleric", "Chaos Dragon", false);
 
         Core.EquipClass(ClassType.Farm);
-        
+
         // 8834 | Quality Tea Time
         if (!Story.QuestProgression(8834))
         {
@@ -102,13 +98,13 @@ public class ShadowSlayerK
             Core.HuntMonster("sleuthhound", "Chair", "Rich Tea Leaves");
             Core.HuntMonster("guru", "Wisteria", "Fragrant Wisteria Bloom");
             Core.HuntMonster("hachiko", "Samurai Nopperabo", "Bitter Matcha");
-            Core.HuntMonster("elemental", "Tree of Destiny", "Fruit of Destiny");
-            Core.EnsureComplete(8834);
+            Story.KillQuest(8834, "elemental", "Tree of Destiny", false);
         }
+
 
         // 8835 | Shadowslayer Summoning Ritual
         if (!Story.QuestProgression(8835))
-        {            
+        {
             if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
             {
                 Core.AddDrop("Shadowslayer Apprentice Badge");
@@ -134,7 +130,7 @@ public class ShadowSlayerK
                 Core.EnsureComplete(8266);
                 Core.BuyItem("safiria", 2044, "ShadowSlayer's Apprentice");
             }
-            
+
             Core.EnsureAccept(8835);
             Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
             Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
@@ -143,7 +139,7 @@ public class ShadowSlayerK
             {
                 Core.AddDrop("Meat Ration");
                 Core.EnsureAccept(8263);
-                Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10);
+                Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10, log: false);
                 Core.EnsureComplete(8263);
                 Bot.Wait.ForPickup("Meat Ration");
             }
@@ -151,7 +147,7 @@ public class ShadowSlayerK
             while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
             {
                 Core.AddDrop("Grain Ration");
-                Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3);
+                Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3, log: false);
                 Bot.Wait.ForPickup("Grain Ration");
             }
             Core.CancelRegisteredQuests();
@@ -159,7 +155,7 @@ public class ShadowSlayerK
             {
                 Core.AddDrop("Dairy Ration");
                 Core.EnsureAccept(8265);
-                Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5);
+                Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5);
                 Core.EnsureComplete(8265);
                 Bot.Wait.ForPickup("Dairy Ration");
             }

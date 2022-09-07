@@ -17,11 +17,11 @@
                     <a href="Skua/Core/CoreBots/Using Local Files">Using Local Files</a><br>
                 </ul>
             </details>
+            <a href="Skua/Core/CoreStory">CoreStory</a>
             <details>
-                <summary>To-Do List ↨</summary>
+                <summary><u>To-Do List</u> ↨</summary>
                 <ul>
                     <li>CoreFarms</li>
-                    <li>CoreStory</li>
                     <li>CoreAdvanced</li>
                     <li>CoreDailies</li>
                     <li>CoreNation</li>
@@ -33,7 +33,7 @@
         <details>
             <summary><a href="Skua/IScriptInterface/index">IScriptInterface Documentation</a> ↨</summary>
             <ul>
-                <p>Yet to be made, click <a href="https://github.com/BrenoHenrike/Skua">here</a> to go to the source code</p>
+                <p>Yet to be made, <a href="https://github.com/BrenoHenrike/Skua">click here</a> to go to the source code</p>
             </ul>
         </details>
     </ul>

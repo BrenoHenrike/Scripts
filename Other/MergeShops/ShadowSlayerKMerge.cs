@@ -3,7 +3,10 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Story/Table.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
+//cs_Include Scripts/Farm/BuyScrolls.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models;
 using Skua.Core.Models.Items;
@@ -99,7 +102,7 @@ public class ShadowSlayerKMerge
                     Core.RegisterQuests(8265);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("odokuro", "O-dokuro", "Bone Hurt Juice", 5, log: false);
+                        Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

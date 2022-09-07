@@ -69,7 +69,7 @@ public class TrickstersGiftsMerge
                 case "Ossos do Corpo-Seco":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
+                    Core.RegisterQuests(7683);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("mythperception", "Corpo-Seco", "Corpo-Seco's Nails", 5);
                     Bot.Wait.ForPickup(req.Name);
@@ -79,7 +79,7 @@ public class TrickstersGiftsMerge
                 case "Escamas da Cuca":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
+                    Core.RegisterQuests(7684);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("mythperception", "Cuca", "Cuca's Hat", quant);
                     Bot.Wait.ForPickup(req.Name);
