@@ -158,11 +158,11 @@ public class JirabinChallenge
 
     public void VoidBattle()
     {
-        DetherTombs();
-        Core.AddDrop(Drops);
         if(Core.CheckInventory(Drops, toInv:false))
         return;
-
+        DetherTombs();
+        Core.AddDrop(Drops);       
+        
         Core.Logger($"Hunting Jir'abin Challenge for drop items.");
         while (!Bot.ShouldExit && !Core.CheckInventory(Drops, toInv: false))
         {
