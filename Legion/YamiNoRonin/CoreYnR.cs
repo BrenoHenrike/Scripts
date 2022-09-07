@@ -135,11 +135,15 @@ public class CoreYnR
         Core.CancelRegisteredQuests();
     }
 
-    public void BlademasterSwordScroll()
+    public void BlademasterSwordScroll(bool nonLegionMethod = false)
     {
         if (Core.CheckInventory("Blademaster Sword Scroll"))
             return;
 
+
+        if (!Core.isCompletedBefore(793))
+            nonLegionMethod = true;
+        else nonLegionMethod = true;
         DAlly.DarkAlly_Questline();
         Core.FarmingLogger("Blademaster Sword Scroll", 1);
         Core.AddDrop("Blademaster Sword Scroll");
@@ -147,7 +151,7 @@ public class CoreYnR
         int questID = nonLegion ? 7410 : 7443;
         Core.EnsureAccept(questID);
         Core.EquipClass(ClassType.Solo);
-        if (nonLegion)
+        if (nonLegionMethod)
         {
             Core.Logger("Using Non-Legion variant for the Blademaster Sword Scroll");
             Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 26, false, publicRoom: true);
@@ -159,7 +163,8 @@ public class CoreYnR
             Core.HuntMonster("evilwardage", "Blade Master", "Discipline", isTemp: false);
             Legion.DagePvP(400, 50, 1000);
         }
-        else
+
+        if (!nonLegionMethod)
         {
             Core.Logger("Using Legion variant for the Blademaster Sword Scroll");
             Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 13, false, publicRoom: true);
