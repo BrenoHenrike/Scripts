@@ -152,16 +152,13 @@ public class UnlockForgeEnhancements
                     break;
 
                 case "Elysium":
-                    {
-                        Elysium();
-                        break;
-                    }
+                    Elysium();
+                    break;
+
 
                 case "Acheron":
-                    {
-                        Acheron();
-                        break;
-                    }
+                    Acheron();
+                    break;
 
                 case "All":
                     Core.Logger("Selected to unlock all Forge Weapon Enhancements");
@@ -197,6 +194,14 @@ public class UnlockForgeEnhancements
 
                 case "Avarice":
                     Avarice();
+                    break;
+
+                case "Penitence":
+                    Penitence();
+                    break;
+
+                case "Lament":
+                    Lament();
                     break;
 
                 case "All":
@@ -626,6 +631,8 @@ public class UnlockForgeEnhancements
 
     public void Lament()
     {
+        Penitence();
+
         if (Core.isCompletedBefore(8823))
             return;
 
