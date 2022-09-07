@@ -19,7 +19,7 @@ public class FrozenNorthlands
 
     public void Storyline()
     {
-        if (!Core.isMember)
+        if (!Core.IsMember)
         {
             Core.Logger("This is a member-only storyline.");
             return;
