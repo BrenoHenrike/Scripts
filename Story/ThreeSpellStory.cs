@@ -37,6 +37,8 @@ public class ThreeSpellStory
                 // 4491|Mother Knows The Sun
                 if (!Core.CheckInventory("Sun Token VI"))
                 {
+                    if (HoTS && Core.CheckInventory("Heart of the Sun"))
+                        return;
                     // 4490|Assault With a Deadly Shadow
                     if (!Core.CheckInventory("Sun Token V"))
                     {
@@ -160,27 +162,30 @@ public class ThreeSpellStory
                     Core.EnsureAccept(4491);
                     Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
                     Core.EnsureComplete(4491);
-                }
-                Core.EnsureAccept(4492);
-                Core.GetMapItem(3676, map: "thirdspell");
-                Core.EnsureComplete(4492);
-            }
-            Core.EnsureAccept(4493);
-            Core.GetMapItem(3677, map: "thirdspell");
-            if (!Core.CheckInventory("Heart of the Sun"))
-            {
-                Core.EnsureAccept(4491);
-                Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
-                Core.EnsureComplete(4491);
-                if (!HoTS)
                     Core.EnsureComplete(4493);
-                else return;
+                    if (HoTS)
+                    {
+                        Core.ToBank("Sun Token VI");
+                        return;
+                    }
+                    Core.EnsureAccept(4492);
+                    Core.GetMapItem(3676, map: "thirdspell");
+                    Core.EnsureComplete(4492);
+                }
+                Core.EnsureAccept(4493);
+                Core.GetMapItem(3677, map: "thirdspell");
+                if (!Core.CheckInventory("Heart of the Sun"))
+                {
+                    Core.EnsureAccept(4491);
+                    Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
+                    Core.EnsureComplete(4491);
+                }
+                Core.EnsureComplete(4493);
             }
-            Core.EnsureComplete(4493);
+            if (HoTS)
+                Core.ToBank("Sun Token VIII", "Heart of the Sun");
+            Core.ToBank("Sun Token VIII");
+            Core.Logger("All Quests Complete");
         }
-        if (HoTS)
-            Core.ToBank("Sun Token VIII", "Heart of the Sun");
-        Core.ToBank("Sun Token VIII");
-        Core.Logger("All Quests Complete");
     }
 }
