@@ -60,6 +60,7 @@
 
 //cs_include Scripts/Story/Akriloth.cs
 //cs_include Scripts/Story/Artixpointe.cs
+//cs_include Scripts/Story/ArtixWedding.cs
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/BloodMoon.cs
@@ -152,6 +153,7 @@ public class AllStory
     // Standalone
     public Akriloth Akriloth = new();
     public Artixpointe Artixpointe = new();
+    public ArtixWedding ArtixWedding = new();
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
     public BloodMoon BloodMoon = new();
@@ -335,6 +337,9 @@ public class AllStory
 
         Artixpointe.OmniArtifact();
         Core.Logger($"Story: Artixpointe - Complete");
+
+        ArtixWedding.ArtixWeddingComplete();
+        Core.Logger($"Story: ArtixWedding - Complete");
 
         Banished.doall();
         Core.Logger($"Story: Banished - Complete");
