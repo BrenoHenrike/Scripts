@@ -393,7 +393,7 @@ public class UnlockForgeEnhancements
         DOT.GetDoT(doExtra: false);
         ED.getSet();
 
-        if (!Core.CheckInventory("Eternity Blade"))
+        if (!Core.CheckInventory(23689))
         {
             Core.EnsureAccept(3485);
             Bot.Quests.UpdateQuest(3484);
