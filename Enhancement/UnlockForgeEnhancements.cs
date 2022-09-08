@@ -397,7 +397,7 @@ public class UnlockForgeEnhancements
         {
             Core.EnsureAccept(3485);
             Bot.Quests.UpdateQuest(3484);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade", isTemp: false);
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade");
             Core.EnsureComplete(3485);
         }
 
