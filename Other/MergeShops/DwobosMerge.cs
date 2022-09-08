@@ -71,9 +71,7 @@ public class DwobosMerge
                             Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 7);
                         else Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 5);
 
-                        if (!Core.IsMember)
                             Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
-                        else Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
 
                         Bot.Wait.ForPickup(req.Name);
                     }
