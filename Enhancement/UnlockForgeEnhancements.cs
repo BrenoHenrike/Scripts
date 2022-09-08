@@ -607,11 +607,13 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8822);
         Bot.Quests.UpdateQuest(3008);
-        Core.RegisterQuests(3270);
+        Core.AddDrop("Night Mare Scythe");
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
+        {
+            Core.EnsureAccept(3270);
             Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe");
-        Core.CancelRegisteredQuests();
-
+            Core.EnsureComplete(3270);
+        }
         Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);
         Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
         Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", 13, isTemp: false);
