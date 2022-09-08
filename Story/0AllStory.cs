@@ -67,7 +67,10 @@
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/ChaosQueenBeleen.cs
 //cs_include Scripts/Story/Collection.cs
+//cs_include Scripts/Story/CelestialPast.cs
 //cs_include Scripts/Story/DjinnGate.cs
+//cs_include Scripts/Story/DjinnGuard.cs
+//cs_include Scripts/Story/DreamPalace.cs
 //cs_include Scripts/Story/DoomVault.cs
 //cs_include Scripts/Story/DoomVaultB.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
@@ -160,7 +163,10 @@ public class AllStory
     public Borgars Borgars = new();
     public ChaosQueenBeleen ChaosQueenBeleen = new();
     public Collection Collection = new();
+    public CelestialPast CelestialPast = new();
     public DjinnGateStory DjinnGateStory = new();
+    public DjinnGuard DjinnGuard = new();
+    public DreamPalace DreamPalace = new();
     public DoomVaultA DoomVaultA = new();
     public DoomVaultB DoomVaultB = new();
     public DragonFableOrigins DragonFableOrigins = new();
@@ -356,8 +362,17 @@ public class AllStory
         Collection.CollectionStory();
         Core.Logger($"Story: Collection - Complete");
 
+        CelestialPast.CompleteCeletialPast();
+        Core.Logger($"Story: CelestialPast - Complete");
+
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
+        
+        DjinnGuard.CompleteDjinnGuard();
+        Core.Logger($"Story: Djinn Guard - Complete");
+        
+        DreamPalace.CompleteDreamPalace();
+        Core.Logger($"Story: Djinn Palace - Complete");
 
         DoomVaultA.StoryLine();
         Core.Logger($"Story: Doom Vault B - Complete");

@@ -24,13 +24,14 @@ public class DjinnGateStory
 
     public void DjinnGate()
     {
-        if (Core.isCompletedBefore(6161))
+        if (Core.isCompletedBefore(7312))
             return;
 
         Story.PreLoad();
 
         Core.AddDrop(drops);
 
+        //Recovering the Fangs of the Lion 6153
         if (!Story.QuestProgression(6153))
         {
             Core.EnsureAccept(6153);
@@ -42,6 +43,7 @@ public class DjinnGateStory
             Core.EnsureComplete(6153);
         }
 
+        //Recovering the Claws of the Daeva 6154
         if (!Story.QuestProgression(6154))
         {
             Core.EnsureAccept(6154);
@@ -53,6 +55,7 @@ public class DjinnGateStory
             Core.EnsureComplete(6154);
         }
 
+        //Recovering the Light of the Serpent 6155
         if (!Story.QuestProgression(6155))
         {
             Core.EnsureAccept(6155);
@@ -64,6 +67,7 @@ public class DjinnGateStory
             Core.EnsureComplete(6155);
         }
 
+        //Recovering the Pike of the Shimmering Sands 6156
         if (!Story.QuestProgression(6156))
         {
             Core.EnsureAccept(6156);
@@ -75,6 +79,7 @@ public class DjinnGateStory
             Core.EnsureComplete(6156);
         }
 
+        //Recovering the Reavers of the Gilded Sun 6157
         if (!Story.QuestProgression(6157))
         {
             Core.EnsureAccept(6157);
@@ -85,7 +90,7 @@ public class DjinnGateStory
             Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
             Core.EnsureComplete(6157);
         }
-
+        //Potent Mana 6158
         if (!Story.QuestProgression(6158))
         {
             Core.EnsureAccept(6158);
@@ -98,7 +103,9 @@ public class DjinnGateStory
             Core.EnsureComplete(6158);
         }
 
+        //Break the Seal 6159
         Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
+
 
         if (!Story.QuestProgression(6160))
         {
@@ -108,6 +115,7 @@ public class DjinnGateStory
             Core.EnsureComplete(6160);
         }
 
+        //Armor of Zular 6160
         if (!Story.QuestProgression(6160))
         {
             Core.EquipClass(ClassType.Solo);
@@ -115,6 +123,48 @@ public class DjinnGateStory
             Core.HuntMonster("djinngate", "Gedoz", "Gedoz the Malignant Defeated");
             Core.EnsureComplete(6161);
         }
+
+        //Gedoz, Geddout! 6161
+        Story.KillQuest(6161, "DjinnGate", "Gedoz");
+
+        //Quest for Resources 6162
+        Story.KillQuest(6162, "DjinnGate", new[] { "Harpy", "Lamia" });
+
+        //The Key of Smoke 7301
+        Story.KillQuest(7301, "AshfallCamp", "Smoldur");
+
+        //The Key of Flame 7302
+        Story.KillQuest(7302, "LavaRun", "Phedra");
+
+        //The Key of Mist 7303
+        Story.KillQuest(7303, "Marsh", "Dark Witch");
+
+        //The Key of Air 7304
+        Story.KillQuest(7304, "AirStorm", "Energy Tornado");
+
+        //The Key of Earth 7305
+        Story.KillQuest(7305, "DragonPlane", "Moganth");
+
+        //The Key of Stone 7306
+        Story.KillQuest(7306, "MountainPath", "Balboa");
+
+        //The Key of Water 7307
+        Story.KillQuest(7307, "Natatorium", "Marianus");
+
+        //The Key of Ice 7308
+        Story.KillQuest(7308, "IcePlane", "Frostblade");
+
+        //The Key of Sand 7309
+        Story.KillQuest(7309, "Pyramid", "Mummy");
+
+        //The Key of Metal 7310
+        Story.KillQuest(7310, "DreadSpace", "Dread Space");
+
+        //The Key of Shadow 7311
+        Story.KillQuest(7311, "ShadowVault", "Ancient Doomknight");
+
+        //The Key of Light 7312
+        Story.KillQuest(7312, "CelestialArenaD", "Queen of Hope");
 
         Core.ToBank(drops);
     }
