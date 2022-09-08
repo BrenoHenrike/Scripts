@@ -45,7 +45,3 @@ public class DjinnGuard
 
     }
 }
-// Story.KillQuest(000, "mapname", "MonsterName");
-// Story.KillQuest(000, "mapname", new[] { "Monstername", "Monstername" });
-// Story.MapItemQuest(000, "mapname", 1, 1);
-// Story.ChainQuest(000);
