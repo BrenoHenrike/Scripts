@@ -50,17 +50,7 @@ public class CelestialPast
         Story.KillQuest(7680, "CelestialPast", "Infernal Soldier");
 
         //Azalith Faced 7681    [Confront Quest]
-        if (!Story.QuestProgression(7681))
-        {
-            Core.EnsureAccept(7681);
-            Core.Join("CelestialPast", "r11a", "Left");
-            Bot.Sleep(5000);
-            while (Bot.Player.Cell != "r11a" && Bot.Player.Cell != "Left")
-                Bot.Map.Jump("r11a", "Left");
-            Bot.Combat.Attack("Azalith");
-            Bot.Sleep(10000);
-            Core.EnsureComplete(7681);
-        }
+        Story.KillQuest(7681, "CelestialPast", "Azalith");
 
     }
 }
