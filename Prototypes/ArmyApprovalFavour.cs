@@ -12,8 +12,6 @@ public class ArmyApprovalFavour
     public CoreAdvanced Adv => new();
     public string OptionsStorage = "ArmyApprovalFavour";
     public bool DontPreconfigure = true;
-    public int a = 0;
-    public int f = 0;
     public List<IOption> Options = new List<IOption>()
     {
         new Option<string>("", "Don't use capitals", "Don't capitalize any names - won't work if you do."),
