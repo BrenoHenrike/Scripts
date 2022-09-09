@@ -109,7 +109,10 @@ public class ArmyTotemAndGem
             }
             cts.Cancel();
             Core.Jump(Bot.Player.Cell);
-            Gems();
+            if (!Core.CheckInventory(6136, 300))
+                Gems();
+            else
+                Army();
         }
 
         void Gems()
