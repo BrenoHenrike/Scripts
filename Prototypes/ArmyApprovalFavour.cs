@@ -70,9 +70,7 @@ public class ArmyApprovalFavour
             Bot.Combat.Attack("*");
             Packet();
         }
-            
     }
-
     public void Packet()
     {
         if (Bot.Map.PlayerCount <= 3)
