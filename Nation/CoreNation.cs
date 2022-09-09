@@ -1,7 +1,7 @@
+using System.Runtime.Versioning;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/BattleUnder.cs
+
 using Skua.Core.Interfaces;
 
 public class CoreNation
@@ -9,7 +9,7 @@ public class CoreNation
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new();
+
 
     public BattleUnder BattleUnder = new();
     //CanChange: If enabled will sell the "Voucher of Nulgath" item during farms if it's not needed.
@@ -999,7 +999,7 @@ public class CoreNation
             else Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
         }
     }
-    
+
     /// <summary>
     /// [Member] Does Demanding Approval from Nulgath [Quest] to get You Gemstone Receipt of Nulgath with your specific quantities
     /// </summary>
@@ -1022,8 +1022,10 @@ public class CoreNation
             while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath", 1))
             {
                 //Receipt of Nulgath [Member] 4924
+                if (Farm.FactionRank("Vampire") < 10)
+                    Farm.VampireREP();
                 Core.EnsureAccept(4924);
-                Adv.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
+                Core.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
                 EssenceofNulgath(10);
                 ApprovalAndFavor(0, 100);
                 Core.HuntMonster("Extinction", "Control Panel", "Coal", 15, isTemp: false);
@@ -1077,7 +1079,11 @@ public class CoreNation
             //Forge Gemstones for Nulgath [Member] 4918
             Core.EnsureAccept(4918);
             Core.HuntMonster("Twilight", "Abaddon", "Balor's Cruelty", isTemp: false);
-            BattleUnder.BattleUnderAll();
+            if (Core.isCompletedBefore(377))
+            {
+            Core.Logger("please use BattleUnder.cs to complete story line first");
+                return;
+            }
             Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Sword", isTemp: false);
             Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", 1, isTemp: false);
             Core.EnsureComplete(4918);
@@ -1241,26 +1247,26 @@ public class CoreNation
         }
     }
 
-        public void HireNulgathLarvae()
-        {
-            if (Core.CheckInventory("Nulgath Larvae"))
-                return;
-
-            Core.AddDrop("Nulgath Larvae");
-            Core.EnsureAccept(867);
-
-            FarmVoucher(true);
-            Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
-            Core.EnsureComplete(867);
-            Bot.Wait.ForPickup("Nulgath Larvae");
-        }
-    }
-    public enum ChooseReward
+    public void HireNulgathLarvae()
     {
-        TaintedGem = 4769,
-        DarkCrystalShard = 4770,
-        DiamondofNulgath = 4771,
-        GemofNulgath = 6136,
-        BloodGemoftheArchfiend = 22332,
-        TotemofNulgath = 5357
+        if (Core.CheckInventory("Nulgath Larvae"))
+            return;
+
+        Core.AddDrop("Nulgath Larvae");
+        Core.EnsureAccept(867);
+
+        FarmVoucher(true);
+        Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
+        Core.EnsureComplete(867);
+        Bot.Wait.ForPickup("Nulgath Larvae");
     }
+}
+public enum ChooseReward
+{
+    TaintedGem = 4769,
+    DarkCrystalShard = 4770,
+    DiamondofNulgath = 4771,
+    GemofNulgath = 6136,
+    BloodGemoftheArchfiend = 22332,
+    TotemofNulgath = 5357
+}
