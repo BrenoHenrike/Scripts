@@ -1,5 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/BattleUnder.cs
 using Skua.Core.Interfaces;
 
 public class CoreNation
@@ -7,7 +9,9 @@ public class CoreNation
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
 
+    public BattleUnder BattleUnder = new();
     //CanChange: If enabled will sell the "Voucher of Nulgath" item during farms if it's not needed.
     bool sellMemVoucher = true;
     //CanChange: If enabled will do "Swindles Return Policy" passively during "Supplies To Spin The Wheels of Fate".
@@ -564,7 +568,7 @@ public class CoreNation
                     break;
                 }
             }
-            
+
             Core.CancelRegisteredQuests();
         }
     }
@@ -995,27 +999,268 @@ public class CoreNation
             else Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
         }
     }
-
-    public void HireNulgathLarvae()
+    
+    /// <summary>
+    /// [Member] Does Demanding Approval from Nulgath [Quest] to get You Gemstone Receipt of Nulgath with your specific quantities
+    /// </summary>
+    public void GemStoneReceiptOfNulgath(int quant = 10)
     {
-        if (Core.CheckInventory("Nulgath Larvae"))
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+        if (Core.CheckInventory("Gemstone Receipt of Nulgath", quant))
+            return;
+        Core.AddDrop("Gemstone Receipt of Nulgath");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Gemstone Receipt of Nulgath", quant))
+        {
+            //Demanding Approval from Nulgath [Member] 4917
+            Core.EnsureAccept(4917);
+            FarmUni13(3);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath", 1))
+            {
+                //Receipt of Nulgath [Member] 4924
+                Core.EnsureAccept(4924);
+                Adv.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
+                EssenceofNulgath(10);
+                ApprovalAndFavor(0, 100);
+                Core.HuntMonster("Extinction", "Control Panel", "Coal", 15, isTemp: false);
+                Core.RegisterQuests(Core.IsMember ? 4798 : 4797);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Dwobo Coin", 10))
+                {
+                    if (!Core.IsMember)
+                        Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 10);
+                    else Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 8);
+
+                    if (!Core.IsMember)
+                        Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 7);
+                    else Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 5);
+
+                    Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
+
+                    Bot.Wait.ForPickup("Dwobo Coin");
+                }
+                Core.CancelRegisteredQuests();
+                Core.EnsureComplete(4924);
+            }
+            FarmVoucher(member: true);
+            FarmVoucher(member: false);
+            EssenceofNulgath(100);
+            FarmTotemofNulgath(1);
+            Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", 5, isTemp: false);
+            Core.EnsureComplete(4917);
+        }
+    }
+
+    /// <summary>
+    /// [Member] Does Forge Gemstones for Nulgath [Quest] to get You Bloodstone|Quartz|Tanzanite|Unidentified GemStone of Nulgath with your specific quantities
+    /// </summary>
+    public void GemStonesOfnulgath(int BloodStone = 15, int Quartz = 20, int Tanzanite = 10, int UniGemStone = 1)
+    {
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+
+        FarmUni13(1);
+        GemStoneReceiptOfNulgath(1);
+        Supplies("Unidentified 4");
+        Core.AddDrop("Gem of Nulgath", "Bloodstone of Nulgath", "Quartz of Nulgath", "Tanzanite of Nulgath", "Unidentified Gemstone of Nulgath");
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bloodstone of Nulgath", BloodStone)
+        && !Core.CheckInventory("Quartz of Nulgath", Quartz)
+        && !Core.CheckInventory("Tanzanite of Nulgath", Tanzanite)
+        && !Core.CheckInventory("Unidentified Gemstone of Nulgath", UniGemStone))
+        {
+            //Forge Gemstones for Nulgath [Member] 4918
+            Core.EnsureAccept(4918);
+            Core.HuntMonster("Twilight", "Abaddon", "Balor's Cruelty", isTemp: false);
+            BattleUnder.BattleUnderAll();
+            Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Sword", isTemp: false);
+            Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", 1, isTemp: false);
+            Core.EnsureComplete(4918);
+        }
+    }
+
+    /// <summary>
+    /// [Member] Does Forge Tainted Gems for Nulgath [Quest] to get You Tainted Gems with your specific quantities
+    /// </summary>
+    public void ForgeTaintedGems(int quant = 1000)
+    {
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+        GemStoneReceiptOfNulgath(1);
+        Supplies("Unidentified 5");
+
+        Core.AddDrop("Tainted Gem", "Unidentified Gemstone of Nulgath");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
+        {
+            //Forge Gemstones for Nulgath [Member] 4918
+            Core.EnsureAccept(4919);
+            FarmGemofNulgath(1);
+            GemStonesOfnulgath(0, 1, 1, 0);
+            Core.EnsureComplete(4919);
+        }
+
+    }
+
+    /// <summary>
+    /// [Member] Does Forge Dark Crystal Shards for Nulgath [Quest] to get You Dark Crystal Shards with your specific quantities
+    /// </summary>
+    public void ForgeDarkCrystalShards(int quant = 1000)
+    {
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+        GemStoneReceiptOfNulgath(1);
+        Supplies("Unidentified 5");
+
+        Core.AddDrop("Dark Crystal Shards", "Unidentified Gemstone of Nulgath");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Crystal Shards", quant))
+        {
+            //Forge Dark Crystal Shards for Nulgath [Member] 4920
+            Core.EnsureAccept(4920);
+            FarmGemofNulgath(1);
+            GemStonesOfnulgath(0, 5, 2, 0);
+            Core.EnsureComplete(4920);
+        }
+
+    }
+
+    /// <summary>
+    /// [Member] Does Forge Diamonds for Nulgath [Quest] to get You Diamonds for Nulgath with your specific quantities
+    /// </summary>
+    public void ForgeDiamondsOfNulgath(int quant = 1000)
+    {
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+        GemStoneReceiptOfNulgath(1);
+        Supplies("Unidentified 5");
+
+        Core.AddDrop("Diamonds for Nulgath", "Unidentified Gemstone of Nulgath");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Diamonds for Nulgath", quant))
+        {
+            //Forge Diamonds for Nulgath [Member] 4921
+            Core.EnsureAccept(4921);
+            FarmGemofNulgath(1);
+            GemStonesOfnulgath(0, 2, 0, 0);
+            Core.EnsureComplete(4921);
+        }
+    }
+
+    /// <summary>
+    /// [Member] Does Forge Blood Gems for Nulgath [Quest] to get You Blood Gem of the Archfiend with your specific quantities
+    /// </summary>
+    public void ForgeBloodGems(int quant = 100)
+    {
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+        GemStoneReceiptOfNulgath(1);
+        Supplies("Unidentified 5");
+
+        Core.AddDrop("Blood Gem of the Archfiend", "Unidentified Gemstone of Nulgath");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
+        {
+            //Forge Blood Gems for Nulgath [Member] 4922
+            Core.EnsureAccept(4922);
+            FarmGemofNulgath(7);
+            GemStonesOfnulgath(3, 5, 0, 0);
+            Core.EnsureComplete(4922);
+        }
+
+    }
+    public string[] QuestDrops = { "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Gem of Nulgath", "Blood Gem of the Archfiend" };
+
+    /// <summary>
+    /// [Member] Does Carve the Unidentified Gemstone [Quest] to get You number of nation supply drops
+    /// </summary>
+    public void CarveUniGemStone(string item = "Any", int quant = 1000)
+    {
+        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        {
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            return;
+        }
+        if (Core.CheckInventory(item, quant))
             return;
 
-        Core.AddDrop("Nulgath Larvae");
-        Core.EnsureAccept(867);
+        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", 1, false);
+        GemStoneReceiptOfNulgath(1);
+        Supplies("Unidentified 5");
 
-        FarmVoucher(true);
-        Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
-        Core.EnsureComplete(867);
-        Bot.Wait.ForPickup("Nulgath Larvae");
+        if (item != "Any")
+            Core.AddDrop(item);
+        else
+            Core.AddDrop(QuestDrops);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            //Carve the Unidentified Gemstone [Member] 4923
+            Core.EnsureAccept(4923);
+            Core.HuntMonster("WillowCreek", "Hidden Spy", "The Secret 1");
+            FarmGemofNulgath(7);
+            GemStonesOfnulgath(1, 3, 1, 1);
+            switch (item)
+            {
+                case "Dark Crystal Shard":
+                    Core.EnsureComplete(4923, 4770);
+                    break;
+                case "Diamond of Nulgath":
+                    Core.EnsureComplete(4923, 4771);
+                    break;
+                case "Gem of Nulgath":
+                    Core.EnsureComplete(4923, 6136);
+                    break;
+                case "Blood Gem of the Archfiend":
+                    Core.EnsureComplete(4923, 22332);
+                    break;
+                default: //Tainted Gem
+                    Core.EnsureComplete(4923, 4769);
+                    break;
+            }
+            if (Bot.Inventory.IsMaxStack(item))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+        }
     }
-}
-public enum ChooseReward
-{
-    TaintedGem = 4769,
-    DarkCrystalShard = 4770,
-    DiamondofNulgath = 4771,
-    GemofNulgath = 6136,
-    BloodGemoftheArchfiend = 22332,
-    TotemofNulgath = 5357
-}
+
+        public void HireNulgathLarvae()
+        {
+            if (Core.CheckInventory("Nulgath Larvae"))
+                return;
+
+            Core.AddDrop("Nulgath Larvae");
+            Core.EnsureAccept(867);
+
+            FarmVoucher(true);
+            Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
+            Core.EnsureComplete(867);
+            Bot.Wait.ForPickup("Nulgath Larvae");
+        }
+    }
+    public enum ChooseReward
+    {
+        TaintedGem = 4769,
+        DarkCrystalShard = 4770,
+        DiamondofNulgath = 4771,
+        GemofNulgath = 6136,
+        BloodGemoftheArchfiend = 22332,
+        TotemofNulgath = 5357
+    }
