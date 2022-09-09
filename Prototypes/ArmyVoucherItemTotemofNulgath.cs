@@ -10,7 +10,6 @@ public class ArmyTotemAndGem
     public CoreFarms Farm = new();
     public string OptionsStorage = "ArmyTotemAndGem";
     public bool DontPreconfigure = true;
-    CancellationTokenSource cts = new();
     public int t = 0;
     public int g = 0;
     public List<IOption> Options = new List<IOption>()
@@ -22,9 +21,6 @@ public class ArmyTotemAndGem
         new Option<string>("player4", "Account #4", "Name of one of your accounts.", ""),
         new Option<string>("player5", "Account #5", "Name of one of your accounts.", ""),
         new Option<string>("player6", "Account #6", "Name of one of your accounts.", ""),
-        new Option<int>("PacketDelay", "Delay for Packet Spam", "Sets the delay for the Packet Spam \n" +
-        "Increase if spamming too much - Decrease if missing kills\n" +
-        "Recommended setting: 500 or 1000)", 500),
         new Option<Rewards>("QuestReward", "Totems or Gems?", "Select the reward to farm first"),
         new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
     };
@@ -87,7 +83,7 @@ public class ArmyTotemAndGem
                 Core.Logger("You already own Max Totems - farming Gems instead");
                 Gems();
             }
-            var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%2%3%4%5%6%7%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token).ContinueWith(_ => cts.Dispose());
+
             while (!Bot.ShouldExit && !Core.CheckInventory(5357, 100))
             {
                 Core.SendPackets("%xt%zm%aggroMon%1%2%3%4%5%6%7%");
@@ -101,7 +97,6 @@ public class ArmyTotemAndGem
                     Core.Logger($"Quest for Totems completed x{t} times");
                 }
             }
-            cts.Cancel();
             Gems();
         }
 
@@ -117,9 +112,10 @@ public class ArmyTotemAndGem
                 }
                 Totems();
             }
-            var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%2%3%4%5%6%7%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token).ContinueWith(_ => cts.Dispose());
+
             while (!Bot.ShouldExit && !Core.CheckInventory(6136, 300))
             {
+                Core.SendPackets("%xt%zm%aggroMon%1%2%3%4%5%6%7%");
                 Bot.Combat.Attack("*");
                 if (Bot.Inventory.Contains("Essence of Nulgath", 65))
                 {
@@ -130,15 +126,15 @@ public class ArmyTotemAndGem
                     Core.Logger($"Quest for Gems completed x{g} times");
                 }
             }
-            cts.Cancel();
         }
 
         void Army()
         {
-            var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%2%3%4%5%6%7%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token).ContinueWith(_ => cts.Dispose());
             while (!Bot.ShouldExit)
+            {
+                Core.SendPackets("%xt%zm%aggroMon%1%2%3%4%5%6%7%");
                 Bot.Combat.Attack("*");
-            cts.Cancel();
+            }
         }
     }
 
@@ -147,6 +143,9 @@ public class ArmyTotemAndGem
         TotemofNulgath = 5357,
         GemofNulgath = 6136,
     }
+
+
+
 }
 
 // public void ArmyTotemGem(string monster)
