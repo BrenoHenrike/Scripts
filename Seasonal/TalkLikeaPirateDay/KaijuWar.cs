@@ -88,7 +88,7 @@ public class KaijuWar
             Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(6006, 6007, 6008);
             while (!Bot.ShouldExit && (!Core.CheckInventory(Booty, toInv: false)))
-                Core.HuntMonster("kaijuwar", "Kaiju Cannoneer", "Pilfered Cannon Balls", 5);
+                Core.KillMonster("kaijuwar", "r5", "Left", "*", log: false);
             Core.CancelRegisteredQuests();
             Core.ToBank(Booty);
         }

@@ -87,6 +87,11 @@ public class DragonPirateMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("dragonpirate", "Dragon Pirate", req.Name);
                     break;
+
+                case "Lightning Pirate":
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("dragonpirate", "Scalebeard", req.Name);
+                break;
             }
         }
     }
