@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 
@@ -1076,12 +1077,34 @@ public class CoreNation
             //Forge Gemstones for Nulgath [Member] 4918
             Core.EnsureAccept(4918);
             Core.HuntMonster("Twilight", "Abaddon", "Balor's Cruelty", isTemp: false);
-            if (Core.isCompletedBefore(377))
+            if (!Core.isCompletedBefore(376))
             {
-            Core.Logger("please use BattleUnder.cs to complete story line first");
-                return;
+                if (!Core.isCompletedBefore(374))
+                {
+                    Core.EnsureAccept(374);
+                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Ring");
+                    Core.EnsureComplete(374);
+                }
+                if (!Core.isCompletedBefore(375))
+                {
+                    Core.EnsureAccept(375);
+                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Skeletal Claymore", 6);
+                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Bony Chestplate", 3);
+                    Core.EnsureComplete(375);
+                }
+                if (!Core.isCompletedBefore(376))
+                {
+                    Core.EnsureAccept(376);
+                    Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror's Head");
+                    Core.EnsureComplete(376);
+                }
             }
-            Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Sword", isTemp: false);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Yara's Sword "))
+            {
+                Core.EnsureAccept(377);
+                Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon");
+                Core.EnsureComplete(377);
+            }
             Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", isTemp: false);
             Core.EnsureComplete(4918);
         }
