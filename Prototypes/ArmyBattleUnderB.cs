@@ -14,7 +14,6 @@ public class ArmyBoneDust
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<string>("", "Don't use capitals", "Don't capitalize any names - won't work if you do."),
         new Option<string>("player1", "Account #1", "Name of one of your accounts.", ""),
         new Option<string>("player2", "Account #2", "Name of one of your accounts.", ""),
         new Option<string>("player3", "Account #3", "Name of one of your accounts.", ""),
@@ -53,11 +52,11 @@ public class ArmyBoneDust
         Bot.Sleep(1500);
         Core.EquipClass(ClassType.Farm);
         Core.Join("battleunderb");
-        if ((Bot.Player.Username == Bot.Config.Get<string>("player1")) || (Bot.Player.Username == Bot.Config.Get<string>("player4")))
+        if ((Bot.Player.Username == Bot.Config.Get<string>("player1").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player4").ToLower()))
             Core.Jump("Enter", "Spawn");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player2")) || (Bot.Player.Username == Bot.Config.Get<string>("player5")))
+        else if ((Bot.Player.Username == Bot.Config.Get<string>("player2").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player5").ToLower()))
             Core.Jump("r1", "Right");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player3")) || (Bot.Player.Username == Bot.Config.Get<string>("player6")))
+        else if ((Bot.Player.Username == Bot.Config.Get<string>("player3").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player6").ToLower()))
             Core.Jump("r2", "Right");
         else
             Core.Jump("Enter", "Spawn");
