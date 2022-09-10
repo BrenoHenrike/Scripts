@@ -1,4 +1,3 @@
-using System.Reflection.PortableExecutable;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 
@@ -1020,8 +1019,7 @@ public class CoreNation
             while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath"))
             {
                 //Receipt of Nulgath [Member] 4924
-                if (Farm.FactionRank("Vampire") < 10)
-                    Farm.VampireREP();
+                Farm.VampireREP();
                 Core.EnsureAccept(4924);
                 Core.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
                 EssenceofNulgath(10);
@@ -1099,7 +1097,7 @@ public class CoreNation
                     Core.EnsureComplete(376);
                 }
             }
-            while (!Bot.ShouldExit && !Core.CheckInventory("Yara's Sword "))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Yara's Sword"))
             {
                 Core.EnsureAccept(377);
                 Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon");
