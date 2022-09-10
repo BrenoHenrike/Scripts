@@ -37,14 +37,14 @@ public class LowTideStory
         if (!Story.QuestProgression(8839))
         {
             Core.EnsureAccept(8839);
-            Core.Logger("Doing Quest: [8839] - \"Committed to the Sea\"");
+            Core.Logger("Doing Quest: [8839] - \"Committed to the Sea\"", "QuestProgression");
             Core.HuntMonster("lowtide", "Ghostly Eel", "Eels Exorcized", 6);
             Core.HuntMonster("lowtide", "Lone Pirate", "Pirates Apprehended", 8);
             Core.GetMapItem(10521, 5, "lowtide");
             Core.EnsureComplete(8839);
-            Core.Logger("Completed Quest: [8839] - \"Committed to the Sea\"");
+            Core.Logger("Completed Quest: [8839] - \"Committed to the Sea\"", "TryComplete");
         }
-        else Core.Logger("Already Completed: [8839] - \"Committed to the Sea\"");
+        else Core.Logger("Already Completed: [8839] - \"Committed to the Sea\"", "QuestProgression");
 
         //Briny Gelatin 8840
         Story.KillQuest(8840, "lowtide", "Spectral Jellyfish");
