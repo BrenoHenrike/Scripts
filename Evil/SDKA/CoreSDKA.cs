@@ -198,7 +198,7 @@ public class CoreSDKA
         Core.Logger($"Farming {quant} DSOs");
 
         Core.RegisterQuests(2089);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
             Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false);
             Bot.Drops.Pickup("Dark Spirit Orb");
@@ -217,7 +217,7 @@ public class CoreSDKA
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} DSOs");
         Core.RegisterQuests(2065);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
             Core.HuntMonster("bludrut2", "Shadow Creeper", "Shadow Creeper Enchant", 1, false);
             Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Serpent Scythe", 1, false);
@@ -241,7 +241,7 @@ public class CoreSDKA
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} DoomSquire Weapon Kit");
         Core.RegisterQuests(2144);
-        while (!Bot.ShouldExit && !Core.CheckInventory("DoomSquire Weapon Kit", quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("DoomSquire Weapon Kit", quant)))
         {
             Core.BuyItem("swordhaven", 179, "Iron Hammer");
 
@@ -265,7 +265,7 @@ public class CoreSDKA
 
         Core.Logger($"Farming {quant} DoomSoldier Weapon Kit");
         Core.RegisterQuests(2164);
-        while (!Bot.ShouldExit && !Core.CheckInventory("DoomSoldier Weapon Kit", quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("DoomSoldier Weapon Kit", quant)))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cornelis", "Stone Golem", "Stone Hammer", 1, false);
@@ -293,7 +293,7 @@ public class CoreSDKA
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}");
         Core.RegisterQuests(2165);
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant)))
         {
             Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", 1, false);
             Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true);
@@ -515,7 +515,7 @@ public class CoreSDKA
         PinpointBroadsword(75);
         int i = 1;
         Core.Logger(Core.CheckInventory("Doom Aura") ? "Doom Aura found." : "Farming for Doom Aura");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Doom Aura"))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Doom Aura")))
         {
             PinpointthePieces(2181);
             Bot.Drops.Pickup("Doom Aura");
@@ -546,7 +546,7 @@ public class CoreSDKA
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Ominous Aura");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Ominous Aura", quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Ominous Aura", quant)))
         {
             PinpointthePieces(2181);
             Bot.Drops.Pickup("Ominous Aura");
@@ -565,7 +565,7 @@ public class CoreSDKA
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Diabolical Aura");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Diabolical Aura", quant))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Diabolical Aura", quant)))
         {
             PinpointthePieces(2183);
             Bot.Drops.Pickup("Diabolical Aura");
@@ -584,7 +584,7 @@ public class CoreSDKA
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quantDSO} DSOs and {quantCSO} CSOs");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", quantDSO) || !Core.CheckInventory("Corrupt Spirit Orb", quantDSO))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quantDSO)) || (!Core.CheckInventory("Corrupt Spirit Orb", quantDSO)))
         {
             PinpointthePieces(2186);
             Bot.Drops.Pickup("Dark Spirit Orb", "Corrupt Spirit Orb");

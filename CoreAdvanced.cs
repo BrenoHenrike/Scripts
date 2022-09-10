@@ -134,7 +134,9 @@ public class CoreAdvanced
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
                     BuyItem(map, shopID, item.ID);
-                    Core.ToBank(item.Name);
+                    if (item.Coins)
+                        Core.ToBank(item.Name);
+                    else Core.Logger($"{item} Culd not be banked");
                 }
             }
             if (!matsOnly)

@@ -1242,7 +1242,7 @@ public class CoreBots
         AddDrop(item);
 
         if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
-            Logger($" {DOTClasses.ToString()} not found, stopping.", messageBox: true, stopBot: true);
+            Logger($" \'Damage over Time\' Class / VHL not found, stopping.", messageBox: true, stopBot: true);
 
         foreach (string Class in DOTClasses)
         {

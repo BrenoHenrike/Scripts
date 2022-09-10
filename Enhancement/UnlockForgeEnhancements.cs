@@ -15,6 +15,7 @@
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Good/ArchPaladin.cs
@@ -61,7 +62,10 @@
 //cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
 //cs_include Scripts/Story/Legion/DarkAlly.cs
 //cs_include Scripts/Legion/SwordMaster.cs
-//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
+//cs_include Scripts/Dailies/LordOfOrder.cs
+//cs_include Scripts/Story/Nation/CitadelRuins.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
+//cs_include Scripts/Story/DragonFableOrigins.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -95,6 +99,7 @@ public class UnlockForgeEnhancements
     public Awescended Awescended = new();
     public NulgathDemandsWork NDW = new();
     public ThreeSpellStory TSS = new();
+    public LordOfOrder LOO = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -388,16 +393,18 @@ public class UnlockForgeEnhancements
             return;
 
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
-
+        LOO.GetLoO();
+        if (!Core.isCompletedBefore(7165))
+            Core.Logger("Quest Progrestion not Available For LOO (requires last quest to be complete and these are dailies)", stopBot: true);
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
         ED.getSet();
 
-        if (!Core.CheckInventory("Eternity Blade"))
+        if (!Core.CheckInventory(23689))
         {
             Core.EnsureAccept(3485);
             Bot.Quests.UpdateQuest(3484);
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade", isTemp: false);
+            Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade");
             Core.EnsureComplete(3485);
         }
 
@@ -600,11 +607,13 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8822);
         Bot.Quests.UpdateQuest(3008);
-        Core.RegisterQuests(3270);
+        Core.AddDrop("Night Mare Scythe");
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
+        {
+            Core.EnsureAccept(3270);
             Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe");
-        Core.CancelRegisteredQuests();
-
+            Core.EnsureComplete(3270);
+        }
         Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);
         Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
         Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", 13, isTemp: false);
