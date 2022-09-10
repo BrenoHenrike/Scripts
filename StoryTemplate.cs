@@ -27,6 +27,7 @@ public class StoryTemplate
         Story.KillQuest(000, "mapname", "MonsterName");
         Story.KillQuest(000, "mapname", new[] { "Monstername", "Monstername" });
         Story.MapItemQuest(000, "mapname", 1, 1);
+        Story.MapItemQuest(000, "mapname", new[] { 000, 000, 000, });
         Story.ChainQuest(000);
     }
 }
