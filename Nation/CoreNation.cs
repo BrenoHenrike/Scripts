@@ -1,4 +1,3 @@
-using System.Runtime.Versioning;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 
@@ -10,8 +9,6 @@ public class CoreNation
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 
-
-    public BattleUnder BattleUnder = new();
     //CanChange: If enabled will sell the "Voucher of Nulgath" item during farms if it's not needed.
     bool sellMemVoucher = true;
     //CanChange: If enabled will do "Swindles Return Policy" passively during "Supplies To Spin The Wheels of Fate".
@@ -1019,7 +1016,7 @@ public class CoreNation
             //Demanding Approval from Nulgath [Member] 4917
             Core.EnsureAccept(4917);
             FarmUni13(3);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath", 1))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath"))
             {
                 //Receipt of Nulgath [Member] 4924
                 if (Farm.FactionRank("Vampire") < 10)
@@ -1085,7 +1082,7 @@ public class CoreNation
                 return;
             }
             Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Sword", isTemp: false);
-            Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", 1, isTemp: false);
+            Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", isTemp: false);
             Core.EnsureComplete(4918);
         }
     }
@@ -1207,7 +1204,7 @@ public class CoreNation
         if (Core.CheckInventory(item, quant))
             return;
 
-        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", 1, false);
+        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
         GemStoneReceiptOfNulgath(1);
         Supplies("Unidentified 5");
 
