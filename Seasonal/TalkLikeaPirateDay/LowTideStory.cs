@@ -57,10 +57,10 @@ public class LowTideStory
 
         //Myriad Andromeda 8843
         Story.KillQuest(8843, "lowtide", "Lone Pirate");
-        Story.MapItemQuest(8841, "lowtide", 10523);
+        Story.MapItemQuest(8843, "lowtide", 10523);
 
         //Ebbing Grudge 8844
-        Story.MapItemQuest(8841, "lowtide", 10524);
+        Story.MapItemQuest(8844, "lowtide", 10524);
 
         //Honeyed Apologies 8845
         Story.KillQuest(8845, "lowtide", "Exiled General Miel");
