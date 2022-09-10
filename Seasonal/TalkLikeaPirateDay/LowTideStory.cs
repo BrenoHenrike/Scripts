@@ -56,8 +56,8 @@ public class LowTideStory
         Story.KillQuest(8842, "lowtide", new[] { "Ghostly Eel", "Spectral Jellyfish" });
 
         //Myriad Andromeda 8843
-        Story.KillQuest(8843, "lowtide", "Lone Pirate");
         Story.MapItemQuest(8843, "lowtide", 10523);
+        Story.KillQuest(8843, "lowtide", "Lone Pirate");
 
         //Ebbing Grudge 8844
         Story.MapItemQuest(8844, "lowtide", 10524);
