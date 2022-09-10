@@ -25,7 +25,7 @@ public class ArmyTotemAndGem
         new Option<int>("PacketDelay", "Delay for Packet Spam", "Sets the delay for the Packet Spam \n" +
         "Increase if spamming too much - Decrease if missing kills\n" +
         "Recommended setting: 500 or 1000)", 500),
-        new Option<Rewards>("QuestReward", "Totems, Gems or Essences?", "Select the reward to farm first - if you pick Essences it will just Army while picking them up", Rewards.EssenceOfNulgath),
+        new Option<Rewards>("QuestReward", "Totems, Gems or Essences?", "Select the reward to farm first - if you pick Essences it will just Army while picking them up", Rewards.EssenceofNulgath),
         new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
     };
 
@@ -68,12 +68,12 @@ public class ArmyTotemAndGem
     public void TotemAndGem(Rewards reward)
     {
         Core.EnsureAccept(4778);
-        if (reward.ToString() == "TotemOfNulgath")
+        if (reward.ToString() == "TotemofNulgath")
         {
             Core.Logger("Totems Of Nulgath selected, farming max Totems first - then Gems");
             Totems();
         }
-        else if (reward.ToString() == "GemOfNulgath")
+        else if (reward.ToString() == "GemofNulgath")
         {
             Core.Logger("Gems Of Nulgath selected, farming max Gems first - then Totems");
             Gems();
@@ -102,7 +102,7 @@ public class ArmyTotemAndGem
                 Bot.Combat.Attack("*");
                 if (Bot.Inventory.Contains("Essence of Nulgath", 65))
                 {
-                    Bot.Quests.EnsureComplete(4778, (int)Rewards.TotemOfNulgath);
+                    Bot.Quests.EnsureComplete(4778, (int)Rewards.TotemofNulgath);
                     Bot.Sleep(Core.ActionDelay);
                     Bot.Quests.EnsureAccept(4778);
                     t++;
@@ -137,7 +137,7 @@ public class ArmyTotemAndGem
                 Bot.Combat.Attack("*");
                 if (Bot.Inventory.Contains("Essence of Nulgath", 65))
                 {
-                    Bot.Quests.EnsureComplete(4778, (int)Rewards.GemOfNulgath);
+                    Bot.Quests.EnsureComplete(4778, (int)Rewards.GemofNulgath);
                     Bot.Sleep(Core.ActionDelay);
                     Bot.Quests.EnsureAccept(4778);
                     g++;
@@ -162,8 +162,8 @@ public class ArmyTotemAndGem
     }
     public enum Rewards
     {
-        TotemOfNulgath = 5357,
-        GemOfNulgath = 6136,
-        EssenceOfNulgath = 0
+        TotemofNulgath = 5357,
+        GemofNulgath = 6136,
+        EssenceofNulgath = 0
     }
 }
