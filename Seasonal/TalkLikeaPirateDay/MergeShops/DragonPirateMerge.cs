@@ -89,7 +89,7 @@ public class DragonPirateMerge
                     break;
 
                 case "Lightning Pirate":
-                Core.EquipClass(ClassType.Farm);
+                Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("dragonpirate", "Scalebeard", req.Name);
                 break;
             }
