@@ -81,7 +81,7 @@ public class HeadoftheLegionBeast
 
         void CircleHelm(string helm, bool war = false)
         {
-            if (!Core.CheckInventory(helm))
+            if (Core.CheckInventory(helm))
                 return;
 
             Core.FarmingLogger(helm, 1);
