@@ -10,9 +10,6 @@ public class SecondFirstMate
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (Bot.Inventory.FreeSlots < 12)
-            Core.Logger("Your inventory needs a minimum of 12 slots, please clean it and restart the bot", messageBox: true, stopBot: true);
-
         Core.SetOptions();
 
         FirstMate();
