@@ -18,7 +18,7 @@ public class YamiNoRoninNonLegion
     {
         Core.SetOptions();
 
-        YNR.GetYnR(nonLegionMethod: true);
+        YNR.GetYnR();
 
         Core.SetOptions(false);
     }

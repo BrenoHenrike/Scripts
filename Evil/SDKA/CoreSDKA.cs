@@ -195,7 +195,7 @@ public class CoreSDKA
             Core.Logger($"Farming {quant} DSOs");
             Core.EquipClass(ClassType.Farm);
         }
-        Core.Logger($"Farming {quant} DSOs");
+        else Core.Logger($"Farming {quant} DSOs");
 
         Core.RegisterQuests(2089);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
