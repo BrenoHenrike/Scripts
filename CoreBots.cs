@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Net.Http;
-using System.Dynamic;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Servers;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Skills;
-using Skua.Core.Models;
-using Skua.Core.Utils;
 using Skua.Core.Options;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using Skua.Core.Utils;
 
 public class CoreBots
 {
@@ -1859,6 +1859,51 @@ public class CoreBots
 
         Logger($"Map item {itemID}({quant}) acquired");
     }
+
+
+    /// <summary>
+    /// <param name="item">Item to Trash/Bank</param>
+    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
+    /// </summary>
+    public void TrashCan(string item = "any")
+    {
+        InventoryItem? TrashItem = Bot.Inventory.GetItem(item);
+
+        if (item == null || TrashItem == null)
+            return;
+
+            if (!TrashItem.Coins && CheckInventory(item))
+        {
+            Logger($"Trashing {TrashItem}");
+            Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
+        }
+        else ToBank(item);
+    }
+
+
+    /// <summary>
+    /// <param name="items">Items to Trash/Bank</param>
+    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
+    /// </summary>
+    public void TrashCan(params string[] items)
+    {
+        foreach (string item in items)
+        {
+            InventoryItem? TrashItem = Bot.Inventory.GetItem(item);
+
+            if (item == null || TrashItem == null)
+                return;
+
+            if (!TrashItem.Coins && CheckInventory(items))
+            {
+                Logger($"Trashing: {TrashItem}");
+                Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
+            }
+            else ToBank(item);
+        }
+    }
+    //     }
+    // }
 
     /// <summary>
     /// This method is used to move between PvP rooms

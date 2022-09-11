@@ -1307,8 +1307,7 @@ public class CoreFarms
     {
         if (FactionRank("Fishing") >= rank)
         {
-            Core.SellItem("Fishing Bait", all: true);
-            Core.SellItem("Fishing Dynamite", all: true);
+            Core.TrashCan("Fishing Bait", "Fishing Dynamite");
             return;
         }
 
