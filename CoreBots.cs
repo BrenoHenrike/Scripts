@@ -1885,7 +1885,7 @@ public class CoreBots
     /// <param name="items">Items to Trash/Bank</param>
     /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
     /// </summary>
-    public void TrashCan(string[] items)
+    public void TrashCan(params string[] items)
     {
         foreach (string item in items)
         {
@@ -1894,7 +1894,7 @@ public class CoreBots
             if (item == null || TrashItem == null)
                 return;
 
-            if (!TrashItem.Coins && CheckInventory(items, toInv: false))
+            if (!TrashItem.Coins && CheckInventory(item))
             {
                 Logger($"Trashing: {TrashItem}");
                 Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
