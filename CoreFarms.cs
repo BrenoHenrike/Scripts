@@ -1307,8 +1307,7 @@ public class CoreFarms
     {
         if (FactionRank("Fishing") >= rank)
         {
-            Core.SellItem("Fishing Bait", all: true);
-            Core.SellItem("Fishing Dynamite", all: true);
+            Core.TrashCan("Fishing Bait", "Fishing Dynamite");
             return;
         }
 
@@ -1344,7 +1343,7 @@ public class CoreFarms
             GetBaitandDynamite(0, 20);
             Core.Logger($"Fishing With: Dynamite");
 
-            while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite"))
+            while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && FactionRank("Fishing") < rank && (shouldDerp ? !Core.HasAchievement(14) : true))
             {
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
                 Bot.Sleep(3500);
@@ -1352,6 +1351,7 @@ public class CoreFarms
                 Core.Logger($"Fished {z++} Times");
             }
         }
+        Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
 
