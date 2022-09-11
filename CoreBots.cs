@@ -650,7 +650,7 @@ public class CoreBots
             Bot.Shops.Load(shopID);
             Bot.Sleep(ActionDelay);
         }, 20, 1000);
-        var toReturn = Bot.Shops.LoadedCache.First(shop => shop.ID == shopID);
+        var toReturn = Bot.Shops.LoadedCache.Find(shop => shop.ID == shopID);
         if (toReturn == null)
         {
             Bot.ShowMessageBox("Failed to load shop the shop and get it's data, please restart the client.", "Shop Data Loading Failed");
@@ -1872,7 +1872,7 @@ public class CoreBots
         if (item == null || TrashItem == null)
             return;
 
-            if (!TrashItem.Coins && CheckInventory(item))
+        if (!TrashItem.Coins && CheckInventory(item))
         {
             Logger($"Trashing {TrashItem}");
             Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
