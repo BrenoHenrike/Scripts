@@ -83,12 +83,12 @@ public class DragonCapitalMerge
                 case "Formal Pirate Fleet":
                 case "Formal Pirate Leggings":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("dragonpirate", "Leviathanius", req.Name, isTemp: false);
+                    Core.HuntMonster("dragoncapital", "Leviathanius", req.Name, isTemp: false);
                     break;
                 case "Regal Pirate's Wheel":
                 case "Regal Pirate's Cape + Wheel":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("dragonpirate", "Leviathanius", req.Name, isTemp: false);
+                    Core.HuntMonster("dragoncapital", "Empowered Scalebeard", req.Name, isTemp: false);
                     break;
             }
         }
