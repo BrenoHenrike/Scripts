@@ -18,42 +18,161 @@ public class CetoleonWarStory
 
         Core.SetOptions(false);
     }
+    public string[] AllLoot =
+    {
+        "Skull-n-Bones Bandana",
+        "Supernatural Skull Bandana",
+        "Vampire Commander's Backblades",
+        "Grislyfang Pirate's Tools",
+        "Forgotten Cutlass",
+        "Vampire Commander's Top Hat",
+        "Vampire Commander's Top Hat + Locks",
+        "Shaggy Vampire Commander's Top Hat",
+        "Shaggy Vampire Commander's Top Hat + Locks",
+        "Dual Forgotten Cutlasses",
+        "Golden Naval Commander Hook",
+        "Arachnid Commander's Sword",
+        "Shipwrecked Captain's Rune",
+        "Vampire Commander's Black Cutlass",
+        "Golden Pirate Monkey",
+        "Wrapped Captain's Tricorn",
+        "Wrapped Captain's Tricorn + Locks",
+        "Guncraft Commander's Hair",
+        "Guncraft Commander's Locks",
+        "Guncraft Commander's Flintlock",
+        "Golden Commander's Rapier",
+        "Golden Commander's Bandana",
+        "Golden Commander's Back Cutlass",
+        "Golden Commander's Cutlass",
+        "Golden Commander's Reavers",
+        "Skull-n-Ghostbones Flag",
+        "Vampire Commander's Shaggy Hair",
+        "Vampire Commander's Shaggy Locks"
+    };
+
+    public string[] GrislyFangLoot = { "Skull-n-Bones Bandana", "Supernatural Skull Bandana", "Vampire Commander's Backblades", "Grislyfang Pirate's Tools" };
+    public string[] WreckersLoot = { "Forgotten Cutlass", "Vampire Commander's Top Hat", "Vampire Commander's Top Hat + Locks", "Shaggy Vampire Commander's Top Hat", "Shaggy Vampire Commander's Top Hat + Locks" };
+    public string[] EngineersLoot = { "Dual Forgotten Cutlasses", "Golden Naval Commander Hook", "Arachnid Commander's Sword", "Shipwrecked Captain's Rune" };
+    public string[] GunPowderLoot = { "Vampire Commander's Black Cutlass", "Golden Pirate Monkey", "Wrapped Captain's Tricorn", "Wrapped Captain's Tricorn + Locks" };
+    public string[] SawLoot = { "Guncraft Commander's Hair", "Guncraft Commander's Locks", "Guncraft Commander's Flintlock", "Golden Commander's Rapier" };
+    public string[] TentaclesLoot = { "Golden Commander's Bandana", "Golden Commander's Back Cutlass", "Golden Commander's Cutlass", "Golden Commander's Reavers" };
+    public string[] RoachesLoot = { "Skull-n-Ghostbones Flag", "Vampire Commander's Shaggy Hair", "Vampire Commander's Shaggy Locks" };
 
     public void CetoleonWar()
     {
-        if (Core.isCompletedBefore(6530))
+        if (Core.CheckInventory(AllLoot, toInv: false))
             return;
 
         HeartOfTheSeaStory.HeartOfTheSea();
 
-        Story.PreLoad();
-        //Grislyfang Doubloons 6523
-        Story.KillQuest(6523, "CetoleonWar", "Grislyfang Pirate");
+        if (!Core.CheckInventory(GrislyFangLoot, toInv: false))
+            Grislyfang();
 
-        //Stop the Wreckers, Fix the Ship 6524
-        if (!Story.QuestProgression(6524))
+        if (!Core.CheckInventory(WreckersLoot, toInv: false))
+            Wreckers();
+
+        if (!Core.CheckInventory(EngineersLoot, toInv: false))
+            Engineers();
+
+        if (!Core.CheckInventory(GunPowderLoot, toInv: false))
+            GunPowder();
+
+        if (!Core.CheckInventory(SawLoot, toInv: false))
+            Saw();
+
+        if (!Core.CheckInventory(TentaclesLoot, toInv: false))
+            Tentacles();
+
+        if (!Core.CheckInventory(RoachesLoot, toInv: false))
+            Roaches();
+
+        void Grislyfang()
         {
-            Core.EnsureAccept(6524);
-            Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Hammer");
-            Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Plank", 5);
-            Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Nails", 25);
-            Core.EnsureComplete(6524);
+            //Grislyfang Doubloons 6523
+            Core.AddDrop(GrislyFangLoot);
+            Core.EquipClass(ClassType.Farm);
+            Core.RegisterQuests(6523, 6524);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(GrislyFangLoot, toInv: false)))
+                Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Grislyfang Doubloon", 5, log: false);
+            Core.CancelRegisteredQuests();
+            Core.ToBank(GrislyFangLoot);
         }
 
-        //Boil the Engineers 6525
-        Story.KillQuest(6525, "CetoleonWar", "Grislyfang Engineer");
+        void Wreckers()
+        {
+            //Stop the Wreckers, Fix the Ship 6524
+            Core.AddDrop(WreckersLoot);
+            Core.EquipClass(ClassType.Farm);
+            Core.RegisterQuests(6524);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(WreckersLoot, toInv: false)))
+            {
+                Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Hammer", log: false);
+                Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Plank", 5, log: false);
+                Core.HuntMonster("CetoleonWar", "Grislyfang Wrecker", "Nails", 25, log: false);
+            }
+            Core.CancelRegisteredQuests();
+            Core.ToBank(WreckersLoot);
+        }
 
-        //Grab the Gunpowder 6526
-        Story.KillQuest(6526, "CetoleonWar", "Grislyfang Musketeer");
+        void Engineers()
+        {
+            //Boil the Engineers 6525
+            Core.AddDrop(EngineersLoot);
+            Core.EquipClass(ClassType.Farm);
+            Core.RegisterQuests(6525);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(EngineersLoot, toInv: false)))
+                Core.HuntMonster("CetoleonWar", "Grislyfang Engineer", "Engineers Slain", 3, log: false);
+            Core.CancelRegisteredQuests();
+            Core.ToBank(EngineersLoot);
+        }
 
-        //Saw THIS! 6527
-        Story.KillQuest(6527, "CetoleonWar", "Captain Sawtooth");
+        void GunPowder()
+        {
+            //Grab the Gunpowder 6526
+            Core.AddDrop(GunPowderLoot);
+            Core.EquipClass(ClassType.Farm);
+            Core.RegisterQuests(6526);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(GunPowderLoot, toInv: false)))
+                Core.HuntMonster("CetoleonWar", "Grislyfang Musketeer", "Grislyfang Gunpowder", 5, log: false);
+            Core.CancelRegisteredQuests();
+            Core.ToBank(GunPowderLoot);
+        }
 
-        //Remove the Tentacles 6528
-        Story.KillQuest(6528, "CetoleonWar", "Nomura's Sting");
+        void Saw()
+        {
+            //Saw THIS! 6527
+            Core.AddDrop(SawLoot);
+            Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(6527);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(SawLoot, toInv: false)))
+                Core.HuntMonster("CetoleonWar", "Captain Sawtooth", "Captain Sawtooth Defeated");
+            Core.CancelRegisteredQuests();
+            Core.ToBank(SawLoot);
+        }
 
-        //Ugh, Roaches 6529
-        Story.KillQuest(6529, "CetoleonWar", "Sea Roach");
+        void Tentacles()
+        {
+            //Remove the Tentacles 6528
+            Core.AddDrop(TentaclesLoot);
+            Core.EquipClass(ClassType.Farm);
+            Core.RegisterQuests(6528);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(TentaclesLoot, toInv: false)))
+                Core.HuntMonster("CetoleonWar", "Nomura's Sting", "Tentacle Slain", 5, log: false);
+            Core.CancelRegisteredQuests();
+            Core.ToBank(TentaclesLoot);
+        }
+
+        void Roaches()
+        {
+            //Ugh, Roaches 6529
+            Core.AddDrop(RoachesLoot);
+            Core.EquipClass(ClassType.Farm);
+            Core.RegisterQuests(6529);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(RoachesLoot, toInv: false)))
+                Core.HuntMonster("CetoleonWar", "Sea Roach", "Sea Roach Slain", 5, log: false);
+            Core.CancelRegisteredQuests();
+            Core.ToBank(RoachesLoot);
+        }
 
         //Gel the Jellyfish 6530
         Story.KillQuest(6530, "CetoleonWar", "Nomura");
