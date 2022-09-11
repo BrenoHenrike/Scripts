@@ -58,6 +58,8 @@
 
 //cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
 
+//cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
+
 //cs_include Scripts/Story/Akriloth.cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/ArtixWedding.cs
@@ -153,6 +155,8 @@ public class AllStory
     public CoreFireIsland CoreFireIsland = new();
     // DageTheEvil land
     public CoreDageTheEvilIsland CoreDageTheEvilIsland = new();
+    // Isle Of Fotia
+    public CoreIsleOfFotia CoreIsleOfFotia = new();
     // Standalone
     public Akriloth Akriloth = new();
     public Artixpointe Artixpointe = new();
@@ -337,6 +341,11 @@ public class AllStory
         Core.Logger($"Saga: Shadow of War 2 - Complete");
         #endregion
 
+        #region IsleOfFotia
+        CoreIsleOfFotia.CompleteALL();
+        Core.Logger($"Saga: Isle of Fotia - Complete");
+        #endregion
+
         #region Standalone
         Akriloth.Storyline();
         Core.Logger($"Story: Akriloth - Complete");
@@ -367,10 +376,10 @@ public class AllStory
 
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
-        
+
         DjinnGuard.CompleteDjinnGuard();
         Core.Logger($"Story: Djinn Guard - Complete");
-        
+
         DreamPalace.CompleteDreamPalace();
         Core.Logger($"Story: Djinn Palace - Complete");
 
