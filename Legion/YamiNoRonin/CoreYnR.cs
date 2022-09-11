@@ -27,8 +27,8 @@ public class CoreYnR
     {
         // There is an armor called YNR.
         if (Core.CheckInventory(53841))
-            return;      
-        
+            return;
+
         Core.AddDrop("Yami no Ronin");
 
         Core.EnsureAccept(7408);
@@ -139,7 +139,7 @@ public class CoreYnR
         if (Core.CheckInventory("Blademaster Sword Scroll"))
             return;
 
-
+        Core.Logger("Checking which method to use");
         if (!Core.isCompletedBefore(793))
             nonLegionMethod = true;
         else nonLegionMethod = false;
@@ -163,7 +163,7 @@ public class CoreYnR
             Legion.DagePvP(400, 50, 1000);
         }
 
-        else 
+        else
         {
             Core.Logger("Using Legion variant for the Blademaster Sword Scroll");
             Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 13, false, publicRoom: true);
