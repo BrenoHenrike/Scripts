@@ -208,7 +208,7 @@ public class CoreIsleOfFotia
 
             Core.AddDrop("Compass Stone");
             Core.EnsureAccept(4251);
-            Core.KillMonster("DageFortress", "r2", "Bottom", 29922);
+            Core.KillMonster("DageFortress", "r2", "Bottom", "Scorned Knight");
             Core.GetMapItem(3405, 4, "DageFortress");
             Core.EnsureComplete(4251);
         }
