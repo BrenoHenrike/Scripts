@@ -142,7 +142,7 @@ public class CoreIsleOfFotia
         Story.KillQuest(3035, "Judgement", "Raven");
 
         //The Power of Flowers  3036
-        if (Story.QuestProgression(3036))
+        if (!Story.QuestProgression(3036))
         {
         Core.EnsureAccept(3036);
         Core.HuntMonster("judgement", Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "M" ? "Female Mourner" : "Male Mourner", "Delivered Asphodel Flower", 8);
