@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class CoreAwe
@@ -11,6 +12,7 @@ public class CoreAwe
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
+    public CoreDailies Daily = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -23,7 +25,8 @@ public class CoreAwe
             return;
         Core.AddDrop($"{Item} Fragment");
         int QuestID;
-
+        if (LegendQuest == 4160 && !Daily.CheckDaily(4160))
+            return;
         if (Core.IsMember)
         {
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
@@ -37,6 +40,7 @@ public class CoreAwe
         }
         else
         {
+
             Farm.BladeofAweREP(10, false);
             Farm.Experience(55);
             Core.BuyItem("museum", 1130, "Armor of Awe Pass");
