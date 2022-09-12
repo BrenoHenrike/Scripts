@@ -507,7 +507,7 @@ public class CoreFarms
         EternalREP();
         EtherStormREP();
         EvilREP();
-        FaerieCourtREP();
+        //FaerieCourtREP();
         FishingREP();
         GlaceraREP();
         GoodREP();
