@@ -581,8 +581,8 @@ public class CoreFarms
         {
             Bot.Sleep(3500);
             Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%11477%11469%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            Bot.Sleep(15000);
-            Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            Bot.Sleep(11000);
+            Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%11469%11477%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
@@ -598,6 +598,7 @@ public class CoreFarms
             }
         }
         else Packet();
+        //Times alchemy was fixed: TO FUCKING MANY I HATE ARTIX
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)
