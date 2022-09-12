@@ -86,15 +86,17 @@ public class PotionBuyer
                             if (!Core.CheckInventory(reagent1, potionQuant) && !Core.CheckInventory(reagent2, potionQuant))
                             {
                                 Core.EquipClass(ClassType.Solo);
-                                Core.HuntMonster("maul", "Creature Creation", reagent1, potionQuant, isTemp: false);
+                                if (Core.IsMember)
+                                    Core.HuntMonster("Creepy", "Fear Feeder", reagent1, potionQuant, isTemp: false);
+                                else Core.HuntMonster("VordredBoss", "Vordred|Enraged Vordred", reagent1, potionQuant, isTemp: false);
                                 Core.EquipClass(ClassType.Farm);
                                 Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
                             }
                             Farm.AlchemyPacket(reagent1, reagent2);
                         }
                         else Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
-                        Core.SellItem(reagent1, all: true);
-                        Core.SellItem(reagent2, all: true);
+                        Core.TrashCan(reagent1);
+                        Core.TrashCan(reagent2);
                     }
                     break;
 
@@ -116,8 +118,8 @@ public class PotionBuyer
 
                             Farm.AlchemyPacket(reagent1, reagent2);
                         }
-                        Core.SellItem(reagent1, all: true);
-                        Core.SellItem(reagent2, all: true);
+                        Core.TrashCan(reagent1);
+                        Core.TrashCan(reagent2);
                     }
                     break;
 
@@ -137,8 +139,8 @@ public class PotionBuyer
                             Farm.AlchemyPacket(reagent1, reagent2, rank: 8);
                         }
                         else Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
-                        Core.SellItem(reagent1, all: true);
-                        Core.SellItem(reagent2, all: true);
+                        Core.TrashCan(reagent1);
+                        Core.TrashCan(reagent2);
                     }
                     break;
 
@@ -152,15 +154,17 @@ public class PotionBuyer
                         {
                             Core.AddDrop(reagent1, reagent2);
                             Core.EquipClass(ClassType.Solo);
-                            Core.HuntMonster("maul", "Creature Creation", reagent1, potionQuant, isTemp: false);
+                                if (Core.IsMember)
+                                    Core.HuntMonster("Creepy", "Fear Feeder", reagent1, potionQuant, isTemp: false);
+                                else Core.HuntMonster("VordredBoss", "Vordred|Enraged Vordred", reagent1, potionQuant, isTemp: false);
                             Core.EquipClass(ClassType.Farm);
                             Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
 
                             Farm.AlchemyPacket(reagent1, reagent2);
                         }
                         else Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
-                        Core.SellItem(reagent1, all: true);
-                        Core.SellItem(reagent2, all: true);
+                        Core.TrashCan(reagent1);
+                        Core.TrashCan(reagent2);
                     }
                     break;
 
@@ -181,8 +185,8 @@ public class PotionBuyer
                             Farm.AlchemyPacket(reagent1, reagent2);
                         }
                         else Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant, shopQuant);
-                        Core.SellItem(reagent1, all: true);
-                        Core.SellItem(reagent2, all: true);
+                        Core.TrashCan(reagent1);
+                        Core.TrashCan(reagent2);
                     }
                     break;
             }
