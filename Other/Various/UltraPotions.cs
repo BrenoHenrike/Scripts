@@ -126,7 +126,7 @@ public class PotionBuyer
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         string reagent1 = "Trollola Nectar";
-                        string reagent2 = "Swamp Frogdrake";
+                        string reagent2 = "Nimblestem";
                         if (Alchemy)
                         {
                             Core.AddDrop(reagent1, reagent2);
