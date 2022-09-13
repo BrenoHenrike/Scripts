@@ -56,6 +56,8 @@
 
 //cs_include Scripts/Story/DageTheEvilIsland/CoreDageTheEvilIsland.cs
 
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+
 //cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
 
 //cs_include Scripts/Story/Akriloth.cs
@@ -99,6 +101,7 @@
 //cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
+//cs_include Scripts/Story/ShadowWar.cs
 using Skua.Core.Interfaces;
 
 public class AllStory
@@ -196,6 +199,7 @@ public class AllStory
     public XansLair Xans = new();
     public YokaiQuests YokaiQuests = new();
     public SoW2 SoW2 = new();
+    public SOW SOW = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -332,9 +336,15 @@ public class AllStory
         Core.Logger($"Saga: DageTheEvil island Maps - Complete");
         #endregion
 
+        #region CoreShadowOfWar
+        SOW.CompleteCoreSoW();
+        Core.Logger($"Saga: Shadow of War [Part1] - Complete");
+        #endregion CoreShadowOfWar
+
+
         #region CoreShadowOfWar2
         SoW2.DoAll();
-        Core.Logger($"Saga: Shadow of War 2 - Complete");
+        Core.Logger($"Saga: Shadow of War [Part2]- Complete");
         #endregion
 
         #region Standalone
@@ -367,10 +377,10 @@ public class AllStory
 
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
-        
+
         DjinnGuard.CompleteDjinnGuard();
         Core.Logger($"Story: Djinn Guard - Complete");
-        
+
         DreamPalace.CompleteDreamPalace();
         Core.Logger($"Story: Djinn Palace - Complete");
 
