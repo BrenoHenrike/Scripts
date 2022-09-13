@@ -79,7 +79,7 @@ public class PotionBuyer
 
                         if (Core.IsMember)
                             Core.HuntMonster("Creepy", "Fear Feeder", reagent2, potionQuant, isTemp: false);
-                        else Core.HuntMonster("VordredBoss", "Vordred|Enraged Vordred", reagent2, potionQuant, isTemp: false);
+                        else Core.HuntMonster("VordredBoss", "Vordred", reagent2, potionQuant, isTemp: false);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
 
@@ -137,7 +137,7 @@ public class PotionBuyer
                         Core.HuntMonster("orecavern", "Deathmole", reagent1, potionQuant, isTemp: false);
                         if (Core.IsMember)
                             Core.HuntMonster("Creepy", "Fear Feeder", reagent2, potionQuant, isTemp: false);
-                        else Core.HuntMonster("VordredBoss", "Vordred|Enraged Vordred", reagent2, potionQuant, isTemp: false);
+                        else Core.HuntMonster("VordredBoss", "Vordred", reagent2, potionQuant, isTemp: false);
 
                         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { reagent1, reagent2 }))
                             Farm.AlchemyPacket(reagent1, reagent2);
