@@ -1782,7 +1782,6 @@ public class CoreFarms
             Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4, log: false);
             Core.Logger($"Completed Quest Capture the Misshapen");
         }
-        Core.CancelRegisteredQuests();
 
         while (!Bot.ShouldExit && FactionRank("Monster Hunter") < rank)
         {

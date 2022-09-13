@@ -680,6 +680,41 @@ public class CoreNation
     }
 
     /// <summary>
+    /// Does the "AssistingDrudgen" Quest for Fiend Tokens (and other possible drops).
+    /// Requires either "Drudgen the Assistant" or "Twin Blade of Nulgath" to accept.
+    /// </summary>
+    /// <param name="farmDiamond">Whether or not farm Diamonds</param>
+    public void AssistingDrudgen(string item = "Any", int quant = 1)
+    {
+        if (!Bot.Quests.IsAvailable(3826) && !Bot.Player.IsMember)
+        {
+            Core.Logger("Player is Either not a Member, or Quest \"Seal of Light\"[Daily] is Not Available yet today.");
+            return;
+        }
+        if ((Core.CheckInventory(item, quant) || !Core.CheckInventory("Drudgen the Assistant") || !Core.CheckInventory("Twin Blade of Nulgath")))
+            return;
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            Core.EnsureAccept(5816);
+            //the sercret 1
+            Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
+            EssenceofNulgath(20);
+            ApprovalAndFavor(50, 50);
+            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 50, false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 10, false);
+            Bot.Quests.UpdateQuest(3824);
+            if (Bot.Quests.IsAvailable(3826) && !Core.CheckInventory(25026))
+            {
+                Core.EnsureAccept(3826);
+                Core.HuntMonster("alteonbattle", "*", "Seal of Light");
+                Core.EnsureComplete(3826);
+            }
+            Core.EnsureComplete(5816);
+        }
+    }
+
+    /// <summary>
     /// Do Diamond Exchange quest 1 time, if farmDiamond is true, will farm 15 Diamonds before if needed
     /// </summary>
     /// <param name="farmDiamond">Whether or not farm Diamonds</param>
@@ -819,6 +854,16 @@ public class CoreNation
         Supplies("Diamond of Nulgath", quant);
         DiamondEvilWar(quant);
     }
+
+    public void FarmFiendToken(int quant = 30)
+    {
+        if (Core.CheckInventory("Fiend Token", quant))
+            return;
+            
+            NewWorldsNewOpportunities("Fiend Token", quant);
+            AssistingDrudgen("Fiend Token", quant);
+    }
+
 
     /// <summary>
     /// Farms Gem of Nulgath with the best method available
