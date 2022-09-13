@@ -127,7 +127,7 @@ public class CoreFarms
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Core.SavedState(false);
+        Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using HonorHall Method");
 
         Core.RegisterQuests(3992, 3993);
@@ -150,7 +150,7 @@ public class CoreFarms
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Core.SavedState(false);
+        Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
         Core.RegisterQuests(3991, 3992);
@@ -174,7 +174,7 @@ public class CoreFarms
 
         Core.AddDrop("Berserker Bunny");
         Core.EquipClass(ClassType.Solo);
-        Core.SavedState(false);
+        Core.SavedState();
         Core.Logger($"Farming {goldQuant}  using BerserkerBunny Method");
 
         Core.RegisterQuests(236);
@@ -185,6 +185,26 @@ public class CoreFarms
             Bot.Sleep(Core.ActionDelay);
             Bot.Shops.SellItem("Berserker Bunny");
         }
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
+    }
+
+    // <summary>
+    // Farms Gold by Kill mobs in "darkwarlegion" for Badges and turning the quest in. (ignore the missign turning reqs.. its to quick)
+    // </summary>
+    // <param name="goldQuant">How much gold to farm</param>
+    public void DarkWarLegion(int goldQuant = 100000000) //Slower then BattleGroundE
+    {
+        if (Bot.Player.Gold >= goldQuant)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        Core.Logger($"Farming {goldQuant}  using DarkWarLegion Method");
+
+        Core.RegisterQuests(8584, 8585);
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
+            Core.KillMonster("darkwarlegion", "r2", "Left", "*", "Nation Badge", 5, log: false);
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
