@@ -20,6 +20,8 @@ public class CelestialPirateCommander
     {
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
+        
+        Core.SetOptions();
 
         GetCPC(Bot.Config.Get<bool>("PetOnly"));
 
