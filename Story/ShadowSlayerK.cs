@@ -35,6 +35,7 @@ public class ShadowSlayerK
             return;
 
         Story.PreLoad();
+        Core.AddDrop("Shadowslayer Apprentice Badge", "Dairy Ration", "Grain Ration", "Meat Ration", "Holy Wasabi", "Racing Trophy", );
 
         // 8829 | Lend an Ear
         if (!Story.QuestProgression(8829))
@@ -83,8 +84,8 @@ public class ShadowSlayerK
         {
             Core.EnsureAccept(8833);
             Core.BuyItem("arcangrove", 211, "Health Potion", 25);
-             Core.BuyItem("arcangrove", 211, "Mana Potion", 25);
-             Core.HuntMonster("cleric", "Chaos Dragon", "Medicinal Unguent");
+            Core.BuyItem("arcangrove", 211, "Mana Potion", 25);
+            Core.HuntMonster("cleric", "Chaos Dragon", "Medicinal Unguent");
             Core.EnsureComplete(8833);
         }
 
@@ -96,7 +97,6 @@ public class ShadowSlayerK
             if (!Core.CheckInventory("Tea Cup (Mem)"))
             {
                 Table.DoAll();
-                Core.AddDrop("Racing Trophy");
                 while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 100))
                     Core.ChainComplete(746);
                 Core.EnsureAccept(741);
@@ -115,13 +115,11 @@ public class ShadowSlayerK
         {
             if (!Core.CheckInventory("ShadowSlayer's Apprentice"))
             {
-                Core.AddDrop("Shadowslayer Apprentice Badge");
                 Core.HuntMonster("chaosbeast", "Kathool", "Chibi Eldritch Yume", isTemp: false);
                 Core.EnsureAccept(8266);
                 Daily.EldersBlood();
                 if (!Core.CheckInventory("Holy Wasabi"))
                 {
-                    Core.AddDrop("Holy Wasabi");
                     Core.EnsureAccept(1075);
 
                     Core.EquipClass(ClassType.Farm);
@@ -145,7 +143,6 @@ public class ShadowSlayerK
             Scroll.BuyScroll(BuyScrolls.Scrolls.BlessedShard, 30);
             if (!Core.CheckInventory("Meat Ration"))
             {
-                Core.AddDrop("Meat Ration");
                 Core.EnsureAccept(8263);
                 Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10, log: false);
                 Core.EnsureComplete(8263);
@@ -154,14 +151,12 @@ public class ShadowSlayerK
             Core.RegisterQuests(8264);
             while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
             {
-                Core.AddDrop("Grain Ration");
                 Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3, log: false);
                 Bot.Wait.ForPickup("Grain Ration");
             }
             Core.CancelRegisteredQuests();
             if (!Core.CheckInventory("Dairy Ration"))
             {
-                Core.AddDrop("Dairy Ration");
                 Core.EnsureAccept(8265);
                 Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5);
                 Core.EnsureComplete(8265);
