@@ -35,7 +35,7 @@ public class ShadowSlayerK
             return;
 
         Story.PreLoad();
-        Core.AddDrop("Shadowslayer Apprentice Badge", "Dairy Ration", "Grain Ration", "Meat Ration", "Holy Wasabi", "Racing Trophy", );
+        Core.AddDrop("Shadowslayer Apprentice Badge", "Dairy Ration", "Grain Ration", "Meat Ration", "Holy Wasabi", "Racing Trophy");
 
         // 8829 | Lend an Ear
         if (!Story.QuestProgression(8829))

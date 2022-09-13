@@ -2,10 +2,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs
 
-using System.Collections.Generic;
-using System.Linq;
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
 using Skua.Core.Models.Shops;
 
 public class PotionBuyer
