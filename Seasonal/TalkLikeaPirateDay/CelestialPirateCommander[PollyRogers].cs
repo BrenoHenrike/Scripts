@@ -1,23 +1,32 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class CelestialPirateCommander
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
+    public bool DontPreconfigure = true;
+    public string OptionsStorage = "Pet only or All";
+    public List<IOption> Options = new List<IOption>()
+    {
+        new Option<bool>("PetOnly", "Do you want to get the pet only?", "Whether to farm only the pet or everthing", false),
+        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false)
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
+        if (!Bot.Config.Get<bool>("skipSetup"))
+            Bot.Config.Configure();
 
-        GetCPC(true);
+        GetCPC(Bot.Config.Get<bool>("PetOnly"));
 
         Core.SetOptions(false);
     }
 
-    private string[] Rewards = {
+    public string[] Rewards = {
         "Celestial Pirate Commander",
         "Celestial Commander's Hat",
         "Celestial Commander's Locks",
@@ -32,15 +41,17 @@ public class CelestialPirateCommander
         "Polly Roger"
     };
 
-    public void GetCPC(bool OnlyPolly)
+    public void GetCPC(bool PetOnly = true)
     {
-        if (OnlyPolly && Core.CheckInventory("Polly Roger"))
+        if (PetOnly && Core.CheckInventory("Polly Roger"))
+        {
+            Core.Logger($"You already have Polly Roger");
             return;
-        if (!OnlyPolly && Core.CheckInventory(Rewards))
-            return;
-
+        }
+        int i = 1;
         Core.AddDrop(Rewards);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
+        Core.EquipClass(ClassType.Solo);
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(7713);
             Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 5, false, publicRoom: true);
@@ -51,12 +62,19 @@ public class CelestialPirateCommander
             Core.HuntMonster("extinction", "Ultra SN.O.W.", "Starlit Journal Page 4 Scraps", 10, false, publicRoom: true);
             Core.HuntMonster("starsinc", "Empowered Prime", "Map of the Celestial Seas", 1, false, publicRoom: true);
             Core.HuntMonster("underlair", "ArchFiend DragonLord", "Coffer of the Stars", 1, false, publicRoom: true);
-            if (!Core.CheckInventory("Polly Roger"))
-                Core.EnsureComplete(7713, 56776);
-            else Core.EnsureCompleteChoose(7713, Rewards);
-            Bot.Sleep(Core.ActionDelay);
-            if (OnlyPolly && Core.CheckInventory("Polly Roger"))
-                break;
+
+            if (Bot.Config.Get<bool>("PetOnly"))
+            {
+                Core.EnsureCompleteChoose(7713, new[] { "Polly Roger" });
+                return; 
+            }
+            else
+            {
+                Core.EnsureCompleteChoose(7713);
+                Core.ToBank(Rewards);
+                Core.Logger($"Completed x{i++}");
+            }
         }
+        Core.Logger($"You already have all the drops");
     }
 }
