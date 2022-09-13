@@ -139,7 +139,7 @@ public class PotionBuyer
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         reagent1 = "Nimblestem";
-                        reagent2 = "Doomatter";
+                        reagent2 = "Doommatter";
                         
                         if (Alchemy)
                         {
