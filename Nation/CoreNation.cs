@@ -564,7 +564,6 @@ public class CoreNation
                     break;
                 }
             }
-            
             Core.CancelRegisteredQuests();
         }
     }
@@ -660,14 +659,14 @@ public class CoreNation
         Core.EquipClass(ClassType.Solo);
         Core.FarmingLogger(item, quant);
 
+        if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
+            Core.RegisterQuests(2857, 609, 599);
+        else if (OBoNPet)
+            Core.RegisterQuests(2857, 609, 2561);
+        else
+            Core.RegisterQuests(2857, 609);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.RegisterQuests(2857, 609);
-            if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
-                Core.RegisterQuests(599);
-            else if (OBoNPet)
-                Core.RegisterQuests(2561);
-
             Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Core", 10, false, log: false);
             if (Bot.Inventory.IsMaxStack(item))
                 Core.Logger("Max Stack Hit.");
