@@ -697,7 +697,6 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.EnsureAccept(5816);
-            //the sercret 1
             Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
             EssenceofNulgath(20);
             ApprovalAndFavor(50, 50);
