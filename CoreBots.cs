@@ -803,7 +803,7 @@ public class CoreBots
     public void CancelRegisteredQuests()
     {
         questCTS?.Cancel();
-        Bot.Wait.ForTrue(() => questCTS == null, 20);
+        Bot.Wait.ForTrue(() => questCTS == null, 30);
     }
 
     /// <summary>
