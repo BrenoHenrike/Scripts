@@ -78,8 +78,8 @@ public class PotionBuyer
                         reagent2 = "Nimblestem";
 
                         if (Core.IsMember)
-                            Core.HuntMonster("Creepy", "Fear Feeder", reagent2, potionQuant, isTemp: false);
-                        else Core.HuntMonster("VordredBoss", "Vordred", reagent2, potionQuant, isTemp: false);
+                            Core.HuntMonster("Creepy", "Fear Feeder", reagent1, potionQuant, isTemp: false);
+                        else Core.HuntMonster("VordredBoss", "Vordred", reagent1, potionQuant, isTemp: false);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
 
@@ -99,7 +99,7 @@ public class PotionBuyer
 
                         Adv.BuyItem("alchemyacademy", 2114, reagent1, potionQuant, shopQuant);
                         if (!Core.CheckInventory(11467, potionQuant))
-                            Adv.BuyItem("alchemyacademy", 397, reagent1, potionQuant, shopQuant);
+                            Adv.BuyItem("alchemyacademy", 397, reagent2, potionQuant, shopQuant);
 
                         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { reagent1, reagent2 }))
                             Farm.AlchemyPacket(reagent1, reagent2);
