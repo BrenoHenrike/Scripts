@@ -593,7 +593,7 @@ public class CoreNation
                 while (!Bot.ShouldExit && Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
                 {
                     Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
-                    Bot.Sleep(Core.ActionDelay);
+                    Bot.Wait.ForItemBuy();
                 }
             }
             Core.EnsureAccept(2859);
