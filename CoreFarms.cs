@@ -576,13 +576,19 @@ public class CoreFarms
             AlchemyREP(rank);
 
         Core.Join("Alchemy");
+        InventoryItem reagentid1 = Bot.Inventory.GetItem(reagent1);
+        InventoryItem reagentid2 = Bot.Inventory.GetItem(reagent2);
 
         void Packet()
         {
             Bot.Sleep(3500);
-            Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%11477%11469%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if ((AlchemyRunes)rune == AlchemyRunes.Dragon)
+                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%APw%");
+            else Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
             Bot.Sleep(11000);
-            Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%11469%11477%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if ((AlchemyRunes)rune == AlchemyRunes.Dragon)
+                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%APw%");
+            else Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");

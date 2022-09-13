@@ -25,7 +25,7 @@ public class PotionBuyer
     }
 
     //potionQuant is set to 30, due to reagents max quant being 30
-    public void INeedYourStrongestPotions(int potionQuant = 30, List<string> potions = null, bool Alchemy = true)
+    public void INeedYourStrongestPotions(int potionQuant = 30, List<string> potions = null, bool Alchemy = true, string reagent1 = null, string reagent2 = null)
     {
         Farm.AlchemyREP();
         Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I'm going into battle and I want your strongest potions.");
@@ -67,6 +67,7 @@ public class PotionBuyer
             purchaseQuant = purchaseQuant == 0 ? 1 : purchaseQuant;
             int voucherQuant = shopItems.First(p => p.Name.ToLower() == potion.ToLower()).Requirements[0].Quantity * purchaseQuant;
             voucherQuant = voucherQuant == 0 ? 1 : voucherQuant;
+            Core.AddDrop(potion, reagent1, reagent2);
 
             switch (potion)
             {
@@ -74,11 +75,11 @@ public class PotionBuyer
                     Core.FarmingLogger("Potent Battle Elixir", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
-                        string reagent1 = "Rhison Blood";
-                        string reagent2 = "Nimblestem";
+                        reagent1 = "Rhison Blood";
+                        reagent2 = "Nimblestem";
+                        
                         if (Alchemy)
                         {
-                            Core.AddDrop(reagent1, reagent2);
                             Core.AddDrop(reagent1, reagent2);
                             if (!Core.CheckInventory(reagent1, potionQuant) && !Core.CheckInventory(reagent2, potionQuant))
                             {
@@ -99,10 +100,8 @@ public class PotionBuyer
                     Core.FarmingLogger("Potent Honor Potion", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
-                        string reagent1 = "Fish Oil";
-                        string reagent2 = "Chaoroot";
-
-                        Core.AddDrop(reagent1, reagent2);
+                        reagent1 = "Fish Oil";
+                        reagent2 = "Chaoroot";
 
                         if (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                         {
@@ -121,10 +120,9 @@ public class PotionBuyer
                     Core.FarmingLogger("Fate Tonic", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
-                        string reagent1 = "Dried Slime";
-                        string reagent2 = "Trollola Nectar";
-
-                        Core.AddDrop(reagent1, reagent2);
+                        reagent1 = "Dried Slime";
+                        reagent2 = "Trollola Nectar";
+                        
                         Core.EquipClass(ClassType.Farm);
                         Bot.Quests.UpdateQuest(2060); // puts you back to start otherwise.
                         Core.HuntMonster("necrodungeon", "SlimeSkull", reagent1, potionQuant, isTemp: false);
@@ -140,8 +138,9 @@ public class PotionBuyer
                     Core.FarmingLogger("Potent Malevolence Elixir", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
-                        string reagent1 = "Nimblestem";
-                        string reagent2 = "Doomatter";
+                        reagent1 = "Nimblestem";
+                        reagent2 = "Doomatter";
+                        
                         if (Alchemy)
                         {
                             Core.AddDrop(reagent1, reagent2);
@@ -164,8 +163,9 @@ public class PotionBuyer
                     Core.FarmingLogger("Sage Tonic", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
-                        string reagent1 = "Arashtite Ore";
-                        string reagent2 = "Doommatter";
+                        reagent1 = "Arashtite Ore";
+                        reagent2 = "Doommatter";
+                        
                         if (Alchemy)
                         {
                             Core.AddDrop(reagent1, reagent2);
