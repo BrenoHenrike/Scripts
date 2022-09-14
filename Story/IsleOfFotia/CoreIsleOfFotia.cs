@@ -144,9 +144,9 @@ public class CoreIsleOfFotia
         //The Power of Flowers  3036
         if (!Story.QuestProgression(3036))
         {
-        Core.EnsureAccept(3036);
-        Core.HuntMonster("judgement", Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "M" ? "Female Mourner" : "Male Mourner", "Delivered Asphodel Flower", 8);
-        Core.EnsureComplete(3036);
+            Core.EnsureAccept(3036);
+            Core.HuntMonster("judgement", Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "M" ? "Female Mourner" : "Male Mourner", "Delivered Asphodel Flower", 8);
+            Core.EnsureComplete(3036);
         }
 
         //The Time for Judgment 3038
@@ -208,7 +208,7 @@ public class CoreIsleOfFotia
 
             Core.AddDrop("Compass Stone");
             Core.EnsureAccept(4251);
-            Core.KillMonster("DageFortress", "r2", "Bottom", "Scorned Knight");
+            Core.KillMonster("DageFortress", "r2", "Bottom", "Scorned Knight", "Compass Stone Piece Found");
             Core.GetMapItem(3405, 4, "DageFortress");
             Core.EnsureComplete(4251);
         }
