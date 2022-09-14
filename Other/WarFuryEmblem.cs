@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/WarfuryTraining.cs
+//cs_include Scripts/Story/ShadowOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
 public class WarfuryEmblem
@@ -10,8 +10,7 @@ public class WarfuryEmblem
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
-    public WarTraining WFT = new();
-
+    public CoreSoW SoW = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,7 +26,7 @@ public class WarfuryEmblem
         if (Core.CheckInventory("Warfury Emblem", EmblemQuant))
             return;
 
-        WFT.StoryLine();
+        SoW.Tyndarius();
 
         Core.AddDrop("Warfury Emblem");
         Adv.BestGear(GearBoost.Human);

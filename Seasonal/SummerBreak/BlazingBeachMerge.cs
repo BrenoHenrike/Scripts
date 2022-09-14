@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/BlazingBeach.cs
+//cs_include Scripts/Seasonal/SummerBreak/BlazingBeach.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Story/Legion/DarkAlly.cs
+//cs_include Scripts/Story/ShadowOfWar/CoreSoW.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 using Skua.Core.Interfaces;
 
@@ -13,7 +13,7 @@ public class CoreYnR
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreLegion Legion = new();
-    public DarkAlly_Story DAlly = new();
+    public CoreSoW SOW = new();
     public SwordMaster SM = new();
 
     private bool nonLegion = false;
@@ -46,7 +46,7 @@ public class CoreYnR
         if (Core.CheckInventory("Yokai Sword Scroll"))
             return;
 
-        DAlly.DarkAlly_Questline();
+        SOW.DarkAlly();
         Core.FarmingLogger("Yokai Sword Scroll", 1);
         Core.AddDrop("Yami no Ronin Katana", "Yokai Sword Scroll");
 
@@ -143,7 +143,8 @@ public class CoreYnR
         if (!Core.isCompletedBefore(793))
             nonLegionMethod = true;
         else nonLegionMethod = false;
-        DAlly.DarkAlly_Questline();
+
+        SOW.DarkAlly();
         Core.FarmingLogger("Blademaster Sword Scroll", 1);
         Core.AddDrop("Blademaster Sword Scroll");
 

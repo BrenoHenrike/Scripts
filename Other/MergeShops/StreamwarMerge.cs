@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -14,7 +14,7 @@ public class StreamwarMerge
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
-    public SoW2 SoW2 = new();
+    public CoreSoW SoW = new();
     public static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -28,7 +28,6 @@ public class StreamwarMerge
     {
         Core.SetOptions();
 
-        SoW2.DoAll();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -36,6 +35,7 @@ public class StreamwarMerge
 
     public void BuyAllMerge()
     {
+        SoW.CompleteCoreSoW();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("streamwar", 2163, findIngredients);
 

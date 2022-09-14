@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Story/Legion/DarkAlly.cs
+//cs_include Scripts/Story/ShadowOfWar/CoreSoW.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 using Skua.Core.Interfaces;

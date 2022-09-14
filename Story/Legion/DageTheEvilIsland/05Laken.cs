@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/DageTheEvilIsland/CoreDageTheEvilIsland.cs
+//cs_include Scripts/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs
 
 using Skua.Core.Interfaces;
 

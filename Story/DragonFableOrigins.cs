@@ -6,7 +6,7 @@ public class DragonFableOrigins
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -34,36 +34,27 @@ public class DragonFableOrigins
         Story.PreLoad();
 
         // Fire Dragon Scales
-        if (!Story.QuestProgression(6294))
-        {
-            Core.EnsureAccept(6294);
-            Core.KillMonster("firewar", "r7", "Left", "Fire Dragon", "Fire Dragon Scale", 5);
-            Core.EnsureComplete(6294);
-        }
+        Story.KillQuest(6294, "firewar", "Fire Dragon");
 
         // Fire Dragon Hearts
-        if (!Story.QuestProgression(6295))
-        {
-            Core.EnsureAccept(6295);
-            Core.KillMonster("firewar", "r7", "Left", "Fire Dragon", "Fire Dragon Heart", 3);
-            Core.EnsureComplete(6295);
-        }
+        Story.KillQuest(6295, "firewar", "Fire Dragon");
 
         // Pyritium Shards
-        if (!Story.QuestProgression(6296))
+        if (!Core.isCompletedBefore(6296))
         {
             Core.EnsureAccept(6296);
-            Core.KillMonster("firewar", "r7", "Left", "Inferno Dragon", "Pyritium Shards", 5);
+            Core.KillMonster("firewar", "r8", "Right", "Inferno Dragon", "Pyritium Shards", 5);
             Core.EnsureComplete(6296);
         }
 
         // Perfect Pyritium
-        if (!Story.QuestProgression(6297))
+        if (!Core.isCompletedBefore(6297))
         {
-            Core.EnsureAccept(6297);
-            Core.KillMonster("firewar", "r7", "Left", "Inferno Dragon", "Perfect Pyritium");
+            Core.EnsureAccept(6296);
+            Core.KillMonster("firewar", "r8", "Right", "Inferno Dragon", "Perfect Pyritium");
             Core.EnsureComplete(6297);
         }
+        Core.EquipClass(ClassType.Solo);
 
         // Uriax, Inferno of Akriloth
         Story.KillQuest(6298, "firewar", "Uriax");
@@ -71,15 +62,16 @@ public class DragonFableOrigins
         // Confront Akriloth
         Story.KillQuest(6299, "firewar", "Akriloth");
 
-        //Clear out the Dragons
-        if (!Story.QuestProgression(6300))
+        // Clear out the Dragons
+        if (!Core.isCompletedBefore(6300))
         {
             Core.EnsureAccept(6300);
-            Core.KillMonster("firewar", "r7", "Left", "Fire Dragon", "Fire Dragon Slain", 3);
-            Core.KillMonster("firewar", "r7", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
+            Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
+            Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
             Core.EnsureComplete(6300);
         }
     }
+
     public void NorthMountain()
     {
         if (Core.isCompletedBefore(6307))
@@ -115,6 +107,7 @@ public class DragonFableOrigins
         // The Guardian
         Story.KillQuest(6307, "northmountain", "Izotz");
     }
+
     public void CharredPlains()
     {
         if (Core.isCompletedBefore(6311))
@@ -134,6 +127,7 @@ public class DragonFableOrigins
         // Enchanted Ice Shards
         Story.KillQuest(6311, "northmountain", "Izotz");
     }
+
     public void Drakonnan()
     {
         if (Core.isCompletedBefore(6325))

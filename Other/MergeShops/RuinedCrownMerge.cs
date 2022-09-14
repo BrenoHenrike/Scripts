@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,7 +16,7 @@ public class RuinedCrownMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public SoW2 SoW2 = new();
+    public CoreSoW SoW = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -36,7 +36,7 @@ public class RuinedCrownMerge
 
     public void BuyAllMerge()
     {
-        SoW2.RuinedCrown();
+        SoW.RuinedCrown();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("ruinedcrown", 2156, findIngredients);
 

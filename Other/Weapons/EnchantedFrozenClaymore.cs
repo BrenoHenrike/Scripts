@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Akriloth.cs
+//cs_include Scripts/Story/DragonFableOrgins.cs
 using Skua.Core.Interfaces;
 
 public class EnchantedFrozenClaymore
@@ -9,7 +9,7 @@ public class EnchantedFrozenClaymore
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public Akriloth Akriloth = new();
+    public DragonFableOrigins DFO = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -25,7 +25,7 @@ public class EnchantedFrozenClaymore
         if (Core.CheckInventory("Enchanted Frozen Claymore"))
             return;
 
-        Akriloth.Storyline();
+        DFO.DragonFableOriginsAll();
         Core.EquipClass(ClassType.Solo);
 
         Core.AddDrop("Ice Shard");

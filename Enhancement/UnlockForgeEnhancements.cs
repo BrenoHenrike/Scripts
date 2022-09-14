@@ -35,7 +35,6 @@
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
-//cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/StarSinc.cs
@@ -58,9 +57,9 @@
 //cs_include Scripts/Other/ShadowDragonDefender.cs
 //cs_include Scripts/Evil/ADK.cs
 //cs_include Scripts/Story/DjinnGate.cs
-//cs_include Scripts/Story/ThreeSpellStory.cs
-//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
-//cs_include Scripts/Story/Legion/DarkAlly.cs
+//cs_include Scripts/Story/ThirdSpell.cs
+//cs_include Scripts/Story/ShadowOfWar/CoreSoW.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
@@ -87,7 +86,7 @@ public class UnlockForgeEnhancements
     public Core7DD DD = new();
     public CoreYnR YNR = new();
 
-    public SoW2 SoW2 = new();
+    public CoreSoW SoW = new();
     public ShadowfallRise SFR = new();
     public ArchPaladin AP = new();
     public DragonOfTime DOT = new();
@@ -98,7 +97,7 @@ public class UnlockForgeEnhancements
     public HeadoftheLegionBeast HOTLB = new();
     public Awescended Awescended = new();
     public NulgathDemandsWork NDW = new();
-    public ThreeSpellStory TSS = new();
+    public ThirdSpell TSS = new();
     public LordOfOrder LOO = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
@@ -468,7 +467,7 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8820);
         VoidLodestone();
-        SoW2.Tyndarius();
+        SoW.Tyndarius();
         // have the Dark Box and Dark Key mini-saga completed 
         // Quest complete will require you to turn in the Power of Darkness, 
         Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");

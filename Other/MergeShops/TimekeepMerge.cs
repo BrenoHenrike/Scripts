@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/ShadowsOfWar2/CoreSoW2.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -15,7 +15,7 @@ public class TimekeepMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public SoW2 SoW2 = new();
+    public CoreSoW SoW = new();
 
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -35,8 +35,8 @@ public class TimekeepMerge
     }
 
     public void BuyAllMerge()
-    {   
-        SoW2.Timekeep();
+    {
+        SoW.Timekeep();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("timekeep", 2161, findIngredients);
 

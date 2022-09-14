@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/WarfuryTraining.cs
+//cs_include Scripts/Story/ShadowOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -14,7 +14,7 @@ public class FirePlaneWarMerge
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
-    public WarTraining WT = new();
+    public CoreSoW SoW = new();
     public static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -73,7 +73,7 @@ public class FirePlaneWarMerge
                 case "Burnt Cinders":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    WT.StoryLine();
+                    SoW.Tyndarius();
                     Core.RegisterQuests(8131);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

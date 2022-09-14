@@ -1,7 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Phoenixrise.cs
-
 using Skua.Core.Interfaces;
 
 public class CoreFireIsland
@@ -9,27 +7,25 @@ public class CoreFireIsland
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
-    public PhoenixriseStory PhoenixriseStory = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+
         Core.RunCore();
+
         Core.SetOptions(false);
     }
 
     public void CompleteFireIsland()
     {
         if (Core.isCompletedBefore(4235))
-        {
-            Core.Logger("You have already completed FireIsland storyline");
             return;
-        }
 
         Embersea();
         Pyrewatch();
-        PhoenixriseStory.Feverfew();
-        PhoenixriseStory.Phoenixrise();
+        Feverfew();
+        Phoenixrise();
         Fireforge();
         Lavarun();
         Brimstone();
@@ -39,10 +35,7 @@ public class CoreFireIsland
     public void Embersea()
     {
         if (Core.isCompletedBefore(4055))
-        {
-            Core.Logger("You have already completed Embersea storyline");
             return;
-        }
 
         Story.PreLoad();
 
@@ -55,20 +48,34 @@ public class CoreFireIsland
 
         //Kill It With Fire [Member] 4056
         if (Core.IsMember)
-        Story.KillQuest(4056, "Embersea", new[] { "Coal Creeper", "Pyradon", "Fyresyn" });
+            Story.KillQuest(4056, "Embersea", new[] { "Coal Creeper", "Pyradon", "Fyresyn" });
     }
 
     public void Pyrewatch()
     {
         if (Core.isCompletedBefore(4081))
-        {
-            Core.Logger("You have already completed Pyrewatch storyline");
             return;
-        }
 
         Story.PreLoad();
 
-        PhoenixriseStory.Pyralis();
+        //Flee the Flames
+        Story.KillQuest(4070, "pyrewatch", new[] { "Fyreborn Tiger", "Caustocrush", "Lavazard" });
+
+        //Taste of their own Medicine
+        Story.KillQuest(4071, "pyrewatch", "Fire Pikeman");
+
+        //A Jarring Discovery
+        Story.MapItemQuest(4072, "pyrewatch", 3159, 12);
+
+        //Push on to Pyrewatch
+        Story.KillQuest(4073, "pyrewatch", new[] { "Firestorm Knight", "Firestorm Knight" });
+
+        //Friends of Pyrewatch Peak
+        Story.KillQuest(4074, "pyrewatch", new[] { "Caustocrush", "Fire Pikeman", "Flame Soldier", "Fire Pikeman" });
+
+        //A Salve to Soothe
+        Story.MapItemQuest(4075, "pyrewatch", 3160, 5);
+        Story.KillQuest(4075, "pyrewatch", "Lavazard");
 
         //Protect the Plague Sufferers 4076
         Story.KillQuest(4076, "Pyrewatch", new[] { "Coal Creeper", "Lavazard", "Caustocrush" });
@@ -81,22 +88,130 @@ public class CoreFireIsland
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
 
         //Signal Fire 4079
-        Story.KillQuest( 4079, "Pyrewatch", new[] { "Storm Scout", "Fire Pikeman", "Flame Soldier", "Fyreborn Tiger" } );
+        Story.KillQuest(4079, "Pyrewatch", new[] { "Storm Scout", "Fire Pikeman", "Flame Soldier", "Fyreborn Tiger" });
 
         //Spreading Like Wildfire 4080
         Story.MapItemQuest(4080, "Pyrewatch", 3162, 4);
 
         //Pyrewatch Defender Badge 4081
-        Story.KillQuest( 4081, "Pyrewatch", new[] { "Fire Pikeman", "Firestorm Knight", "Flame Soldier", "Storm Scout" } );
+        Story.KillQuest(4081, "Pyrewatch", new[] { "Fire Pikeman", "Firestorm Knight", "Flame Soldier", "Storm Scout" });
+    }
+
+    public void Feverfew()
+    {
+        if (Core.isCompletedBefore(4142))
+            return;
+
+        Story.PreLoad();
+
+        //Quench the Flames
+        Story.KillQuest(4128, "feverfew", "Firestorm Knight");
+
+        //Through the Fog and Flame
+        Story.KillQuest(4129, "feverfew", "Locked Chest");
+
+        //Restore the Lady of Waters
+        if (!Story.QuestProgression(4130))
+        {
+            Story.MapItemQuest(4130, "feverfew", new[] { 3246, 3247 });
+            Core.HuntMonster("feverfew", "Coral Creeper", "Statue Torso");
+            Core.HuntMonster("feverfew", "Twisted Undine", "Statue Base");
+            Core.HuntMonster("feverfew", "Salamander", "Statue Core");
+            Core.HuntMonster("feverfew", "Firestorm Knight", "Statue Plaque");
+            Core.EnsureComplete(4130);
+        }
+
+        //Rumors and Smoke
+        Story.MapItemQuest(4131, "feverfew", 3245);
+        Story.KillQuest(4131, "feverfew", new[] { "Firestorm Knight", "Firestorm Knight", "Firestorm Major", "Firestorm Major" });
+
+        //Dam the Flood
+        Story.MapItemQuest(4132, "feverfew", 3244, 5);
+
+        //Salvage Mission
+        Story.MapItemQuest(4133, "feverfew", 3243, 5);
+        Story.KillQuest(4133, "feverfew", "Twisted Undine");
+
+        //Fear the Fog
+        Story.KillQuest(4134, "feverfew", new[] { "Firestorm Knight", "Twisted Undine", "Feverfew Vase", "Coral Creeper", "Salamander" });
+
+        //When There's Smoke...
+        Story.MapItemQuest(4135, "feverfew", 3248);
+
+        //Firin' This Guy
+        Story.KillQuest(4136, "feverfew", "Blazebinder");
+
+        //Blessings of the Lady
+        Story.MapItemQuest(4137, "feverfew", 3242, 10);
+
+        //Parting the Waters
+        Story.KillQuest(4138, "feverfew", new[] { "Firestorm Knight", "Twisted Undine", "Coral Creeper", "Salamander" });
+
+        //The Power to Heal
+        Story.KillQuest(4139, "feverfew", new[] { "Locked Chest", "Feverfew Vase", "Twisted Undine" });
+
+        //The Deadsea Caverns
+        Story.KillQuest(4140, "feverfew", new[] { "Coral Creeper", "Twisted Undine", "Salamander" });
+
+        //Open the Floodgates
+        Story.MapItemQuest(4141, "feverfew", 3241);
+
+        //Tiger, Tiger Burning Bright
+        Story.KillQuest(4142, "feverfew", "Major Thermas");
+    }
+
+    public void Phoenixrise()
+    {
+        if (Core.isCompletedBefore(4213))
+            return;
+
+        Story.PreLoad();
+
+        //Stonecold Defense
+        Story.KillQuest(4201, "phoenixrise", new[] { "Lava Troll", "Infernal Goblin" });
+
+        //Preying for a Good Offense
+        Story.KillQuest(4202, "phoenixrise", new[] { "Gargrowl", "Infernal Goblin", "Lava Troll" });
+
+        //Red Alert
+        Story.MapItemQuest(4203, "phoenixrise", 3283, 4);
+
+        //Disguise Fur a Good Cause
+        Story.KillQuest(4204, "phoenixrise", new[] { "Firestorm Tiger", "Lava Troll", "Infernal Goblin" });
+
+        //Hunt for the Stolen
+        Story.MapItemQuest(4205, "phoenixrise", 3285);
+
+        //Rescue Run
+        Story.MapItemQuest(4206, "phoenixrise", 3282, 6);
+
+        //Recover the Remainder
+        Story.KillQuest(4207, "phoenixrise", "Pyrric Ursus");
+
+        //Rune Chances of a Backstab
+        Story.MapItemQuest(4208, "phoenixrise", 3284, 7);
+        Story.KillQuest(4208, "phoenixrise", "Infernal Goblin");
+
+        //Clear out the Caverns
+        Story.KillQuest(4209, "phoenixrise", new[] { "Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger" });
+
+        //Strengthen the Survivors
+        Story.KillQuest(4210, "phoenixrise", new[] { "Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger", });
+
+        //Bridge to Salvation
+        Story.KillQuest(4211, "phoenixrise", "Lava Troll");
+
+        //Growling Pains
+        Story.KillQuest(4212, "phoenixrise", "Gargrowl");
+
+        //Defeat Cinderclaw
+        Story.KillQuest(4213, "phoenixrise", "Cinderclaw");
     }
 
     public void Fireforge()
     {
         if (Core.isCompletedBefore(4226))
-        {
-            Core.Logger("You have already completed Fireforge storyline");
             return;
-        }
 
         Story.PreLoad();
 
@@ -140,10 +255,7 @@ public class CoreFireIsland
     public void Lavarun()
     {
         if (Core.isCompletedBefore(4235))
-        {
-            Core.Logger("You have already completed Lavarun storyline");
             return;
-        }
 
         //Defeat Phedra 4231
         Story.KillQuest(4231, "Lavarun", "Phedra");
@@ -158,27 +270,25 @@ public class CoreFireIsland
     public void Brimstone()
     {
         if (Core.isCompletedBefore(4115))
-        {
-            Core.Logger("You have already completed Brimstone storyline");
             return;
-        }
+
         if (!Core.IsMember)
         {
-            Core.Logger("You need to be a member for complete Brimestone questline.");
+            Core.Logger("You need to be a member for complete the /brimestone questline.");
             return;
         }
 
         //The Hard Way 4107
-        Story.KillQuest( 4107, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" } );
+        Story.KillQuest(4107, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
 
         //Encrypt Keepers 4108
-        Story.KillQuest( 4108, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" } );
+        Story.KillQuest(4108, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
 
         //Catching Couriers  4109
-        Story.KillQuest( 4109, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" } );
+        Story.KillQuest(4109, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
 
         //Steppe Quickly 4110
-        Story.KillQuest( 4110, "Brimstone", new[] { "Brimstone Marauder", "Fyreborn Tiger", "Fyresyn", "Brimstone Looter", "Brimstone Bandit" } );
+        Story.KillQuest(4110, "Brimstone", new[] { "Brimstone Marauder", "Fyreborn Tiger", "Fyresyn", "Brimstone Looter", "Brimstone Bandit" });
 
         //Reclamation 4111
         Story.KillQuest(4111, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter" });
@@ -190,7 +300,7 @@ public class CoreFireIsland
         Story.KillQuest(4113, "Brimstone", new[] { "Fyresyn", "Fyreborn Tiger", "Pyradon" });
 
         //One Last Push 4114
-        Story.KillQuest( 4114, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" } );
+        Story.KillQuest(4114, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
 
         //Redemption 4115
         Story.KillQuest(4115, "Brimstone", "Chief Talmin");
@@ -199,13 +309,11 @@ public class CoreFireIsland
     public void Nightmare()
     {
         if (Core.isCompletedBefore(4157))
-        {
-            Core.Logger("You have already completed Nightmare storyline");
             return;
-        }
+
         if (!Core.IsMember)
         {
-            Core.Logger("You need to be a member for complete Nightmare questline.");
+            Core.Logger("You need to be a member for complete the /nightmare questline.");
             return;
         }
         Story.PreLoad();
