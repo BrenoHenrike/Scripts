@@ -565,7 +565,6 @@ public class CoreNation
                     break;
                 }
             }
-
             Core.CancelRegisteredQuests();
         }
     }
@@ -595,7 +594,7 @@ public class CoreNation
                 while (!Bot.ShouldExit && Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
                 {
                     Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
-                    Bot.Sleep(Core.ActionDelay);
+                    Bot.Wait.ForItemBuy();
                 }
             }
             Core.EnsureAccept(2859);
@@ -661,14 +660,14 @@ public class CoreNation
         Core.EquipClass(ClassType.Solo);
         Core.FarmingLogger(item, quant);
 
+        if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
+            Core.RegisterQuests(2857, 609, 599);
+        else if (OBoNPet)
+            Core.RegisterQuests(2857, 609, 2561);
+        else
+            Core.RegisterQuests(2857, 609);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.RegisterQuests(2857, 609);
-            if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
-                Core.RegisterQuests(599);
-            else if (OBoNPet)
-                Core.RegisterQuests(2561);
-
             Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Core", 10, false, log: false);
             if (Bot.Inventory.IsMaxStack(item))
                 Core.Logger("Max Stack Hit.");
@@ -679,6 +678,40 @@ public class CoreNation
         if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
             Core.SellItem("Voucher of Nulgath", all: true);
         Core.CancelRegisteredQuests();
+    }
+
+    /// <summary>
+    /// Does the "AssistingDrudgen" Quest for Fiend Tokens (and other possible drops).
+    /// Requires either "Drudgen the Assistant" or "Twin Blade of Nulgath" to accept.
+    /// </summary>
+    /// <param name="farmDiamond">Whether or not farm Diamonds</param>
+    public void AssistingDrudgen(string item = "Any", int quant = 1)
+    {
+        if (!Bot.Quests.IsAvailable(3826) && !Bot.Player.IsMember)
+        {
+            Core.Logger("Player is Either not a Member, or Quest \"Seal of Light\"[Daily] is Not Available yet today.");
+            return;
+        }
+        if ((Core.CheckInventory(item, quant) || !Core.CheckInventory("Drudgen the Assistant") || !Core.CheckInventory("Twin Blade of Nulgath")))
+            return;
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            Core.EnsureAccept(5816);
+            Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
+            EssenceofNulgath(20);
+            ApprovalAndFavor(50, 50);
+            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 50, false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 10, false);
+            Bot.Quests.UpdateQuest(3824);
+            if (Bot.Quests.IsAvailable(3826) && !Core.CheckInventory(25026))
+            {
+                Core.EnsureAccept(3826);
+                Core.HuntMonster("alteonbattle", "*", "Seal of Light");
+                Core.EnsureComplete(3826);
+            }
+            Core.EnsureComplete(5816);
+        }
     }
 
     /// <summary>
@@ -821,6 +854,16 @@ public class CoreNation
         Supplies("Diamond of Nulgath", quant);
         DiamondEvilWar(quant);
     }
+
+    public void FarmFiendToken(int quant = 30)
+    {
+        if (Core.CheckInventory("Fiend Token", quant))
+            return;
+            
+            NewWorldsNewOpportunities("Fiend Token", quant);
+            AssistingDrudgen("Fiend Token", quant);
+    }
+
 
     /// <summary>
     /// Farms Gem of Nulgath with the best method available

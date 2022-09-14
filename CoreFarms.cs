@@ -127,7 +127,7 @@ public class CoreFarms
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Core.SavedState(false);
+        Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using HonorHall Method");
 
         Core.RegisterQuests(3992, 3993);
@@ -150,7 +150,7 @@ public class CoreFarms
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Core.SavedState(false);
+        Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
         Core.RegisterQuests(3991, 3992);
@@ -174,7 +174,7 @@ public class CoreFarms
 
         Core.AddDrop("Berserker Bunny");
         Core.EquipClass(ClassType.Solo);
-        Core.SavedState(false);
+        Core.SavedState();
         Core.Logger($"Farming {goldQuant}  using BerserkerBunny Method");
 
         Core.RegisterQuests(236);
@@ -185,6 +185,26 @@ public class CoreFarms
             Bot.Sleep(Core.ActionDelay);
             Bot.Shops.SellItem("Berserker Bunny");
         }
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
+    }
+
+    // <summary>
+    // Farms Gold by Kill mobs in "darkwarlegion" for Badges and turning the quest in. (ignore the missign turning reqs.. its to quick)
+    // </summary>
+    // <param name="goldQuant">How much gold to farm</param>
+    public void DarkWarLegion(int goldQuant = 100000000) //Slower then BattleGroundE
+    {
+        if (Bot.Player.Gold >= goldQuant)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        Core.Logger($"Farming {goldQuant}  using DarkWarLegion Method");
+
+        Core.RegisterQuests(8584, 8585);
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
+            Core.KillMonster("darkwarlegion", "r2", "Left", "*", "Nation Badge", 5, log: false);
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
@@ -507,7 +527,7 @@ public class CoreFarms
         EternalREP();
         EtherStormREP();
         EvilREP();
-        FaerieCourtREP();
+        //FaerieCourtREP();
         FishingREP();
         GlaceraREP();
         GoodREP();
@@ -576,13 +596,19 @@ public class CoreFarms
             AlchemyREP(rank);
 
         Core.Join("Alchemy");
+        InventoryItem reagentid1 = Bot.Inventory.GetItem(reagent1);
+        InventoryItem reagentid2 = Bot.Inventory.GetItem(reagent2);
 
         void Packet()
         {
             Bot.Sleep(3500);
-            Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%11477%11469%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            Bot.Sleep(15000);
-            Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%11475%11478%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if ((AlchemyRunes)rune == AlchemyRunes.Dragon)
+                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%APw%");
+            else Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            Bot.Sleep(11000);
+            if ((AlchemyRunes)rune == AlchemyRunes.Dragon)
+                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%APw%");
+            else Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
@@ -598,6 +624,7 @@ public class CoreFarms
             }
         }
         else Packet();
+        //Times alchemy was fixed: TO FUCKING MANY I HATE ARTIX
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)
@@ -1307,8 +1334,7 @@ public class CoreFarms
     {
         if (FactionRank("Fishing") >= rank)
         {
-            Core.SellItem("Fishing Bait", all: true);
-            Core.SellItem("Fishing Dynamite", all: true);
+            Core.TrashCan("Fishing Bait", "Fishing Dynamite");
             return;
         }
 
@@ -1344,7 +1370,7 @@ public class CoreFarms
             GetBaitandDynamite(0, 20);
             Core.Logger($"Fishing With: Dynamite");
 
-            while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite"))
+            while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && FactionRank("Fishing") < rank && (shouldDerp ? !Core.HasAchievement(14) : true))
             {
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
                 Bot.Sleep(3500);
@@ -1352,6 +1378,7 @@ public class CoreFarms
                 Core.Logger($"Fished {z++} Times");
             }
         }
+        Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
 
@@ -1755,7 +1782,6 @@ public class CoreFarms
             Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4, log: false);
             Core.Logger($"Completed Quest Capture the Misshapen");
         }
-        Core.CancelRegisteredQuests();
 
         while (!Bot.ShouldExit && FactionRank("Monster Hunter") < rank)
         {

@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class CapeOfAwe

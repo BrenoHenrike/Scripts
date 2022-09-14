@@ -46,7 +46,7 @@ public class MasterofYourCraft
         while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             Core.EnsureAccept(3051);
-            Core.KillMonster("classhall", "r4b", "Right", "Training Golem", "Rounds Won", publicRoom: true);
+            Core.HuntMonster("chchallenge", "Training Golem", "Rounds Won");
             Core.EnsureComplete(3051);
             Core.ToBank(Rewards);
             Core.Logger($"Completed x{i++}");

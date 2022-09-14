@@ -230,6 +230,13 @@ public class CoreAdvanced
             return false;
         }
 
+        //Member Check
+        if (item.Upgrade)
+        {
+            Core.Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.");
+            return false;
+        }
+        
         //Requiered-Item Check
         int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
         if (reqItemID > 0 && !Core.CheckInventory(reqItemID))
@@ -278,7 +285,7 @@ public class CoreAdvanced
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
             return false;
         }
-
+        
         return true;
     }
 

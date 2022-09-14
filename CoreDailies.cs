@@ -630,24 +630,24 @@ public class CoreDailies
             return;
 
         Quest quest = Core.EnsureLoad(4069);
-
-        Dictionary<int, int> CompareDict = new();
+        Dictionary<ItemBase, int> CompareDict = new();
         List<InventoryItem> InventoryData = Bot.Inventory.Items;
+
         foreach (ItemBase item in quest.Rewards)
         {
             if (item.ID == 27552 && Bot.Player.Level == 100)
                 continue;
-            if (Core.CheckInventory(item.ID))
-                CompareDict.Add(item.ID, InventoryData.First(x => x.ID == item.ID).Quantity);
-            else CompareDict.Add(item.ID, 0);
+            if (Core.CheckInventory(item.ID) && Bot.Inventory.TryGetItem(item.ID, out InventoryItem _item))
+                CompareDict.Add(item, _item.Quantity);
+            else CompareDict.Add(item, 0);
         }
-        int LowestQuant = CompareDict.FirstOrDefault(x => x.Value == CompareDict.Values.Min()).Key;
+        // IWLQ = ItemWithLowestQuant
+        ItemBase IWLQ = CompareDict.FirstOrDefault(x => x.Value == CompareDict.Values.Min()).Key;
 
-        Core.AddDrop(quest.Rewards.First(x => x.ID == LowestQuant).Name);
-        Core.EnsureAccept(4069);
-        Core.EnsureComplete(4069, LowestQuant);
-        Bot.Wait.ForPickup(quest.Rewards.First(x => x.ID == LowestQuant).Name);
-        Core.ToBank(quest.Rewards.First(x => x.ID == LowestQuant).Name);
+        Core.AddDrop(IWLQ.Name);
+        Core.ChainComplete(4069, IWLQ.ID);
+        Bot.Wait.ForPickup(IWLQ.Name);
+        Core.ToBank(IWLQ.Name);
     }
 
     public void BallyhooAdRewards()

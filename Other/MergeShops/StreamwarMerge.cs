@@ -107,7 +107,7 @@ public class StreamwarMerge
                 case "Prismatic Seams":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(8814);
+                    Core.RegisterQuests(8814, 8815);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
                     Core.CancelRegisteredQuests();

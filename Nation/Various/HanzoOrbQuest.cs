@@ -20,7 +20,7 @@ public class HanzoOrbQuest
     }
 
 
-    public void HanzoOrb()
+    public void HanzoOrb(string Reward = "Any", int quant = 1, bool AnyReward = false)
     {
         if (!Core.CheckInventory("Astral Orb Pet") && !Core.CheckInventory("Crimson Orb Pet"))
         {
@@ -49,12 +49,27 @@ public class HanzoOrbQuest
         string[] Rewards = RewardsList.ToArray();
 
         Core.AddDrop(Rewards);
-
-        foreach (string item in RewardsList)
+        if (AnyReward)
         {
+            foreach (string item in RewardsList)
+            {
 
+                Core.RegisterQuests(questID);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
+                {
+                    Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
+                    Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
+                    Core.HuntMonster("nulgath", "Dreadspider", "Dreadspider Silk");
+                    Core.HuntMonster(Core.IsMember ? "nulgath" : "tercessuinotlim", "Dark Makai", "Makai Fang", 5);
+                    Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
+                }
+            }
+            Core.CancelRegisteredQuests();
+        }
+        else
+        {
             Core.RegisterQuests(questID);
-            while (!Bot.ShouldExit && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item) && !Core.CheckInventory("Blood Star Blade"))
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward, quant))
             {
                 Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
                 Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
@@ -62,7 +77,7 @@ public class HanzoOrbQuest
                 Core.HuntMonster(Core.IsMember ? "nulgath" : "tercessuinotlim", "Dark Makai", "Makai Fang", 5);
                 Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
             }
+            Core.CancelRegisteredQuests();
         }
-        Core.CancelRegisteredQuests();
     }
 }
