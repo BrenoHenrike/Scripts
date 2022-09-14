@@ -58,7 +58,6 @@
 //cs_include Scripts/Evil/ADK.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/ThirdSpell.cs
-//cs_include Scripts/Story/ShadowOfWar/CoreSoW.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
