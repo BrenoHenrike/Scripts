@@ -13,6 +13,7 @@ public class CoreAwe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
+    private int QuestID;
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -24,26 +25,27 @@ public class CoreAwe
         if (Core.CheckInventory($"{Item} Relic"))
             return;
         Core.AddDrop($"{Item} Fragment");
-        int QuestID;
-        
-        if (Core.IsMember)
+        if (!Core.CheckInventory(new[] { "Legendary Awe Pass", "Armor of Awe Pass", "Guardian of Awe Pass" }, any: true))
         {
-            Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            QuestID = LegendQuest + 2;
-        }
-        else if (_GuardianCheck())
-        {
-            Farm.BladeofAweREP(5, false);
-            Farm.Experience(35);
-            QuestID = LegendQuest + 1;
-        }
-        else
-        {
+            if (Core.IsMember)
+            {
+                Core.BuyItem("museum", 1130, "Legendary Awe Pass");
+                QuestID = LegendQuest + 2;
+            }
+            else if (_GuardianCheck())
+            {
+                Farm.BladeofAweREP(5, false);
+                Farm.Experience(35);
+                QuestID = LegendQuest + 1;
+            }
+            else
+            {
 
-            Farm.BladeofAweREP(10, false);
-            Farm.Experience(55);
-            Core.BuyItem("museum", 1130, "Armor of Awe Pass");
-            QuestID = LegendQuest + 2;
+                Farm.BladeofAweREP(10, false);
+                Farm.Experience(55);
+                Core.BuyItem("museum", 1130, "Armor of Awe Pass");
+                QuestID = LegendQuest + 2;
+            }
         }
 
         if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
