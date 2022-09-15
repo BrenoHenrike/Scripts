@@ -25,6 +25,7 @@ public class CoreAwe
         if (Core.CheckInventory($"{Item} Relic"))
             return;
         Core.AddDrop($"{Item} Fragment");
+        
         if (!Core.CheckInventory(new[] { "Legendary Awe Pass", "Armor of Awe Pass", "Guardian of Awe Pass" }, any: true))
         {
             if (Core.IsMember)
@@ -40,7 +41,6 @@ public class CoreAwe
             }
             else
             {
-
                 Farm.BladeofAweREP(10, false);
                 Farm.Experience(55);
                 Core.BuyItem("museum", 1130, "Armor of Awe Pass");
