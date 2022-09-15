@@ -70,6 +70,7 @@
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Borgars.cs
 
+//cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/ChaosQueenBeleen.cs
 //cs_include Scripts/Story/Collection.cs
 
@@ -206,6 +207,7 @@ public class AllStories
     public BloodMoon BloodMoon = new();
     public Borgars Borgars = new();
 
+    public CastleTunnels CastleTunnels = new();
     public ChaosQueenBeleen ChaosQueenBeleen = new();
     public Collection Collection = new();
 
@@ -426,6 +428,9 @@ public class AllStories
         Borgars.BorgarQuests();
         Core.Logger($"Story: Borgars - Complete");
 
+
+        CastleTunnels.StoryLine();
+        Core.Logger($"Story: CastleTunnels - Complete");
 
         Collection.CollectionStory();
         Core.Logger($"Story: Collection - Complete");
