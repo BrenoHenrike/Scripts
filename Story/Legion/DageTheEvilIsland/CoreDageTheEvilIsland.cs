@@ -100,6 +100,9 @@ public class CoreDageTheEvilIsland
             Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
             Core.EnsureComplete(4185);
         }
+        
+        Core.Logger("if the quest \"Finders Keepers\" [4186] is not Unlocked, the Bot will then do the previous Quest \"It's War!\" 10x");
+
         Core.RegisterQuests(4185);
         while (!Bot.ShouldExit && !Bot.Quests.IsUnlocked(4186))
             Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
