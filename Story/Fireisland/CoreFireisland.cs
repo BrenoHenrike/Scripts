@@ -82,7 +82,7 @@ public class CoreFireIsland
 
         //Ease the Ill 4077
         Story.MapItemQuest(4077, "Pyrewatch", 3161, 5);
-        Story.KillQuest(4077, "Pyrewatch", new[] { "Lavazard", "Living Lava" });
+        Story.KillQuest(4077, "Pyrewatch", new[] { "Lavazard", "Lavazard", "Living Lava" });
 
         //Defend Pyrewatch Peak 4078
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
