@@ -27,6 +27,7 @@ public class Artixpointe
         if (!Core.CheckInventory("Unholy Wasabi"))
         {
             //Find the Unholy Wasabi 3800
+            Core.AddDrop("Unholy Wasabi");
             Core.EnsureAccept(3800);
             Core.HuntMonster("artixpointe", "Corrupted Sushi Chef", "Find Unholy Wasabi");
             Core.EnsureComplete(3800);
@@ -36,6 +37,7 @@ public class Artixpointe
         if (!Core.CheckInventory("Cysero's Doom Sock"))
         {
             //Find Cysero's Doom Sock 3801
+            Core.AddDrop("Cysero's Doom Sock");
             Core.EnsureAccept(3801);
             Core.GetMapItem(2911, 1, "artixpointe");
             Core.EnsureComplete(3801);
@@ -45,6 +47,7 @@ public class Artixpointe
         if (!Core.CheckInventory("Chickencow Claw"))
         {
             //Recover Cursed ChickenCow Claw 3802
+            Core.AddDrop("Chickencow Claw");
             Core.EnsureAccept(3802);
             Core.HuntMonster("battlefowl", "Chickencow", "Cursed Claw Found");
             Core.EnsureComplete(3802);
@@ -54,6 +57,7 @@ public class Artixpointe
         if (!Core.CheckInventory("Zorbak's Staff Skull"))
         {
             //Find Zorbak’s Haunted Staff 3803
+            Core.AddDrop("Zorbak's Staff Skull");
             Core.EnsureAccept(3803);
             Core.HuntMonster("graveyard", "Big Jack Sprat", "Zorbak's Skull");
             Core.EnsureComplete(3803);
@@ -63,6 +67,7 @@ public class Artixpointe
         if (!Core.CheckInventory("Dragon Khan's Corrupt Scepter"))
         {
             //The Dragon Khan’s Corrupt Scepter 3804
+            Core.AddDrop("Dragon Khan's Corrupt Scepter");
             Core.EnsureAccept(3804);
             Core.HuntMonster("vendorbooths", "Dragon Khan", "Corrupt Scepter Found");
             Core.EnsureComplete(3804);
@@ -72,6 +77,7 @@ public class Artixpointe
         if (!Core.CheckInventory("Sir Ver's Broken Power Button"))
         {
             //Locate Sir Ver’s Power Button 3805
+            Core.AddDrop("Sir Ver's Broken Power Button");
             Core.EnsureAccept(3805);
             Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "Cursed Power Button");
             Core.EnsureComplete(3805);
@@ -88,6 +94,7 @@ public class Artixpointe
                 Core.EnsureComplete(3806);
             }
             //Recover Death's Hourglass 3807
+            Core.AddDrop("Death's Cursed Hourglass");
             Core.EnsureAccept(3807);
             Core.GetMapItem(2912, 1, "artixpointe");
             Core.EnsureComplete(3807);
