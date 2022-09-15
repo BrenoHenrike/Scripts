@@ -29,7 +29,27 @@ public class ArmorOfAwe
         if (Core.CheckInventory("Armor of Awe"))
             return;
 
-        Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
+        if (Core.IsMember)
+        {
+            if (!Core.CheckInventory("Pauldron Relic"))
+            {
+                Core.AddDrop("Pauldron Fragment");
+                Core.EquipClass(ClassType.Solo);
+
+                Core.RegisterQuests(4162);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Pauldron Fragment", 15))
+                {
+                    Adv.BoostHuntMonster("gravestrike", "Ultra Akriloth", "Pauldron Shard", 15, false);
+                    Bot.Wait.ForPickup("Pauldron Fragment");
+                }
+                Core.CancelRegisteredQuests();
+
+                Core.BuyItem("museum", 1129, "Pauldron Relic");
+            }
+        }
+        else
+            Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
+            
         Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
         Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
         Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "Ultra Alteon");

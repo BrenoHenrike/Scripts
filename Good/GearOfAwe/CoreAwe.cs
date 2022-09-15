@@ -25,11 +25,11 @@ public class CoreAwe
             return;
         Core.AddDrop($"{Item} Fragment");
         int QuestID;
-        
+
         if (Core.IsMember)
         {
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            QuestID = LegendQuest + 2;
+            QuestID = LegendQuest;
         }
         else if (_GuardianCheck())
         {
