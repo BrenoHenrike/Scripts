@@ -70,7 +70,7 @@ public class CoreAwe
 
     private bool _GuardianCheck()
     {
-        if (Core.CheckInventory("Guardian of Awe Pass"))
+        if (Core.CheckInventory("Guardian Awe Pass"))
             return true;
 
         Core.Logger("Checking AQ Guardian");
