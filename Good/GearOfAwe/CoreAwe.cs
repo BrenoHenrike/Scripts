@@ -13,6 +13,7 @@ public class CoreAwe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
+    private int QuestID;
 
     public void ScriptMain(IScriptInterface bot)
     {

@@ -98,6 +98,7 @@
 //cs_include Scripts/Story/Oddities.cs
 
 //cs_include Scripts/Story/ShadowSlayerK.cs
+//cs_Include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/SkyPirate.cs
@@ -116,6 +117,8 @@
 //cs_include Scripts/Story/XansLair.cs
 
 //cs_include Scripts/Story/Yokai.cs
+
+
 using Skua.Core.Interfaces;
 
 public class AllStories

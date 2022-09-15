@@ -14,18 +14,15 @@
 //cs_include Scripts/Seasonal/MayThe4th/DarkLord.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
-//cs_include Scripts/Seasonal/MayThe4th/ZorbasPalaceStory.cs
 //cs_include Scripts/Seasonal/Mogloween/BloodMoonToken.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
 //cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
-//cs_include Scripts/Seasonal/SummerBreak/BeachParty.cs
 //cs_include Scripts/Seasonal/SummerBreak/BeachPartyTokenItems.cs
 //cs_include Scripts/Seasonal/SummerBreak/BlazingBeach.cs
 //cs_include Scripts/Seasonal/SummerBreak/BlazingBeachMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/BurningBeach.cs
 //cs_include Scripts/Seasonal/SummerBreak/CoralBeachMerge.cs
-//cs_include Scripts/Seasonal/SummerBreak/FreakiTiki.cs
 //cs_include Scripts/Seasonal/SummerBreak/LunaCove.cs
 //cs_include Scripts/Seasonal/SummerBreak/LunaCoveMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/SweetSummerTreats.cs
@@ -50,19 +47,16 @@ public class AllSeasonal
     public PookaStory Pooka = new();
     public DarkLord DarkLord = new();
     public MurderMoon MurderMoon = new();
-    public ZorbasPalace ZorbasPalace = new();
     public BloodMoonToken BMToken = new();
     public DageRecruitStory DageRecruit = new();
     public UndervoidStory Undervoid = new();
     public StarFestival StarFestival = new();
 
-    public BeachPartyStory BeachParty = new();
     public BeachPartyTokenItems BeachPartyTokenItems = new();
     public BlazingBeachStory BlazingBeach = new();
     // public BlazingBeachMerge BlazingBeachMerge = new();
     public BurningBeachStory BurningBeach = new();
     // public CoralBeachMerge CoralBeachMerge = new();
-    public FreakiTikiStory FreakiTiki = new();
     public LunaCoveStory LunaCove = new();
     // public LunaCoveMerge LunaCoveMerge = new();
     public SweetSummerTreats SweetSummerTreats = new();
@@ -116,7 +110,6 @@ public class AllSeasonal
                     Pooka.CompletePooka();
                     DarkLord.GetDL();
                     MurderMoon.MurderMoonStory();
-                    ZorbasPalace.ZorbasPalaceStory();
                     Undervoid.CompleteUnderVoid();
                     Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
 
@@ -140,13 +133,11 @@ public class AllSeasonal
 
                 case 6:
                     Core.Logger("Starting Scripts for June");
-                    BeachParty.Storyline();
                     // BeachPartyTokenItems.TokenItems();
                     BlazingBeach.StoryLine();
                     // BlazingBeachMerge.BuyAllMerge();
                     BurningBeach.Storyline();
                     // CoralBeachMerge.BuyAllMerge();
-                    FreakiTiki.Storyline();
                     LunaCove.Storyline();
                     // LunaCoveMerge.BuyAllMerge();
                     // SweetSummerTreats.GetTreats();
@@ -157,13 +148,11 @@ public class AllSeasonal
                 case 7:
                     Core.Logger("Starting Scripts for July");
                     Frostvale.DoAll();
-                    BeachParty.Storyline();
                     // BeachPartyTokenItems.TokenItems();
                     BlazingBeach.StoryLine();
                     // BlazingBeachMerge.BuyAllMerge();
                     BurningBeach.Storyline();
                     // CoralBeachMerge.BuyAllMerge();
-                    FreakiTiki.Storyline();
                     LunaCove.Storyline();
                     // LunaCoveMerge.BuyAllMerge();
                     // SweetSummerTreats.GetTreats();

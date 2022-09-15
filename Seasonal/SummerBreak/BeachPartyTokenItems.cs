@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal/SummerBreak/BeachParty.cs
+//cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
 using Skua.Core.Interfaces;
 
 public class BeachPartyTokenItems
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public BeachPartyStory BP = new();
+    public MemetsRealm Memet = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -26,7 +26,7 @@ public class BeachPartyTokenItems
 
         Core.AddDrop("Tiki Tokens");
         Core.AddDrop(rewards);
-        BP.Storyline();
+        Memet.BeachParty();
 
         Core.RegisterQuests(7010);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, toInv: false))
