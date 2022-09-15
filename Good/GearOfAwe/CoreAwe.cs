@@ -25,27 +25,26 @@ public class CoreAwe
         if (Core.CheckInventory($"{Item} Relic"))
             return;
         Core.AddDrop($"{Item} Fragment");
-        
-        if (!Core.CheckInventory(new[] { "Legendary Awe Pass", "Armor of Awe Pass", "Guardian of Awe Pass" }, any: true))
+        int QuestID;
+
+        if (Core.IsMember)
         {
-            if (Core.IsMember)
-            {
-                Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-                QuestID = LegendQuest + 2;
-            }
-            else if (_GuardianCheck())
-            {
-                Farm.BladeofAweREP(5, false);
-                Farm.Experience(35);
-                QuestID = LegendQuest + 1;
-            }
-            else
-            {
-                Farm.BladeofAweREP(10, false);
-                Farm.Experience(55);
-                Core.BuyItem("museum", 1130, "Armor of Awe Pass");
-                QuestID = LegendQuest + 2;
-            }
+            Core.BuyItem("museum", 1130, "Legendary Awe Pass");
+            QuestID = LegendQuest;
+        }
+        else if (_GuardianCheck())
+        {
+            Farm.BladeofAweREP(5, false);
+            Farm.Experience(35);
+            QuestID = LegendQuest + 1;
+        }
+        else
+        {
+
+            Farm.BladeofAweREP(10, false);
+            Farm.Experience(55);
+            Core.BuyItem("museum", 1130, "Armor of Awe Pass");
+            QuestID = LegendQuest + 2;
         }
 
         if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
@@ -71,7 +70,7 @@ public class CoreAwe
 
     private bool _GuardianCheck()
     {
-        if (Core.CheckInventory("Guardian of Awe Pass"))
+        if (Core.CheckInventory("Guardian Awe Pass"))
             return true;
 
         Core.Logger("Checking AQ Guardian");
