@@ -43,15 +43,17 @@ public class ArmyBattlegroundE
         Core.EquipClass(ClassType.Farm);
         if (mapname.ToString() == "BattleGroundE")
         {
+            if (Bot.Player.Level <= 60)
+                Core.Logger("Minimum level 61 required for this map", messageBox: true, stopBot: true);
             Core.Join("battlegrounde");
             battleground();
-        }  
+        }
         else
         {
             Core.Join("honorhall");
             honorhall();
         }
-            
+
 
         void battleground()
         {
