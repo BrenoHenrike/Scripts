@@ -73,6 +73,7 @@
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/ChaosQueenBeleen.cs
 //cs_include Scripts/Story/Collection.cs
+//cs_include Scripts/Story/CruxShip.cs
 
 //cs_include Scripts/Story/Deadmoor.cs
 //cs_include Scripts/Story/DjinnGate.cs
@@ -210,6 +211,7 @@ public class AllStories
     public CastleTunnels CastleTunnels = new();
     public ChaosQueenBeleen ChaosQueenBeleen = new();
     public Collection Collection = new();
+    public CruxShip CruxShip = new();
 
     public Deadmoor Deadmoor = new();
     public DjinnGateStory DjinnGateStory = new();
@@ -437,6 +439,9 @@ public class AllStories
 
         CelestialPast.CompleteCeletialPast();
         Core.Logger($"Story: CelestialPast - Complete");
+
+        CruxShip.StoryLine();
+        Core.Logger($"Story: CruxShip - Complete");
 
 
         Deadmoor.StoryLine();
