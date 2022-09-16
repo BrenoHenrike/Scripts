@@ -105,7 +105,6 @@ public class UndeadLegionMerge
                 case "Essence of the Undead Legend":
                     Core.Logger($"{req.Name} Is seasonal item from Dage's Dark Birthday Shop");
                     Core.FarmingLogger(req.Name, quant);
-                    //This Item Is seasonal from Dage's Dark Birthday Shop
                     Adv.BuyItem("DarkBirthday", 376, req.Name);
                     break;
 
