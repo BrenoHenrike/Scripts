@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_Include Scripts/Farm/BuyScrolls.cs
 
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Story/7DeadlyDragons/Extra/HatchTheEgg.cs
@@ -116,6 +117,10 @@
 //cs_include Scripts/Story/XansLair.cs
 
 //cs_include Scripts/Story/Yokai.cs
+
+//cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
+
+
 using Skua.Core.Interfaces;
 
 public class AllStories
@@ -187,6 +192,9 @@ public class AllStories
     // Throne of Darkness
     public CoreToD TOD = new();
 
+    //MemetsRealm
+    public MemetsRealm MemetsRealm = new();
+    
     #endregion
 
     #region Standalone (sorted alphabetically)

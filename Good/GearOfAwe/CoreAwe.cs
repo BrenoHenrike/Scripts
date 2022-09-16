@@ -13,6 +13,7 @@ public class CoreAwe
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
+    private int QuestID;
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -25,11 +26,11 @@ public class CoreAwe
             return;
         Core.AddDrop($"{Item} Fragment");
         int QuestID;
-        
+
         if (Core.IsMember)
         {
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            QuestID = LegendQuest + 2;
+            QuestID = LegendQuest;
         }
         else if (_GuardianCheck())
         {
@@ -69,7 +70,7 @@ public class CoreAwe
 
     private bool _GuardianCheck()
     {
-        if (Core.CheckInventory("Guardian of Awe Pass"))
+        if (Core.CheckInventory("Guardian Awe Pass"))
             return true;
 
         Core.Logger("Checking AQ Guardian");

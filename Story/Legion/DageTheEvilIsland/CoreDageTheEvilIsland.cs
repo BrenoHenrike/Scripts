@@ -38,39 +38,30 @@ public class CoreDageTheEvilIsland
             Core.Logger("You have already completed DarkFortress storyline");
             return;
         }
+        Story.PreLoad();
 
         Core.AddDrop("Ultra Dark Mystery Stone Of Evil Animosity");
-
-        Story.PreLoad();
 
         //Test 1: Proving Ground 4084
         Story.KillQuest(4084, "DarkFortress", new[] { "Cloaked Fiend", "Dark Makai" });
 
         //Test 2: Nulgath's Disdain 4085
-        Story.KillQuest( 4085, "DarkFortress", new[] { "Ninja Spy", "Dark Elemental", "Cloaked Fiend" } );
+        Story.KillQuest(4085, "DarkFortress", new[] { "Ninja Spy", "Dark Elemental", "Cloaked Fiend" });
 
-        if (!Core.CheckInventory("Ultra Dark Mystery Stone Of Evil Animosity"))
+        //Test 3: Bonesaw Break 4086
+        if (!Story.QuestProgression(4088) || !Core.CheckInventory("Ultra Dark Mystery Stone Of Evil Animosity"))
         {
-            //Test 3: Bonesaw Break 4086
             Core.EnsureAccept(4086);
-            Core.HuntMonster( "DarkFortress", "Dark Makai|Infernalfiend", "Ultra Dark Mystery Stone", 1 );
+            Core.HuntMonster("DarkFortress", "Infernalfiend", "Ultra Dark Mystery Stone");
             Core.EnsureComplete(4086);
             Bot.Wait.ForPickup("Ultra Dark Mystery Stone Of Evil Animosity");
         }
-        else if (!Bot.Quests.IsUnlocked(4089))
-        {
-            //Test 4: Dark Battleground 4088
-            Core.EnsureAccept(4088);
-            Core.HuntMonster( "DarkFortress", "Dark Elemental|Dark Makai|Infernalfiend|Cloaked Fiend", "Guard Slain", 13 );
-            Core.EnsureComplete(4088);
-        }
-        else
-        {
-            //Test 5: Shadows Within Shadows 4089
-            Core.EnsureAccept(4089);
-            Core.HuntMonster( "DarkFortress", "Dark Elemental", "Darker Shadow Gem of Tenebrous Tenebration", 1 );
-            Core.EnsureComplete(4089);
-        }
+
+        //Test 4: Dark Battleground 4088
+        Story.KillQuest(4088, "DarkFortress", new[] { "Cloaked Fiend|Dark Elemental|Dark Makai|Infernalfiend" });
+
+        //Test 5: Shadows Within Shadows 4089
+        Story.KillQuest(4089, "DarkFortress", "Dark Elemental");
 
         //Test 6: Runed Fiends 4090
         Story.KillQuest(4090, "DarkFortress", new[] { "Dark Elemental", "Cloaked Fiend" });
@@ -98,7 +89,7 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4182, "Seraph", "Seraphic Recruit");
 
         //Whispers Rumors and Seraphic Scrolls 4183
-        Story.KillQuest( 4183, "Seraph", new[] { "Legion Infiltrator", "Seraphic Recruit", "Legion Augur" } );
+        Story.KillQuest(4183, "Seraph", new[] { "Legion Infiltrator", "Seraphic Recruit", "Legion Augur" });
         //Me? A Spy? 4184
         Story.KillQuest(4184, "Seraph", "Legion Augur");
 
@@ -106,12 +97,15 @@ public class CoreDageTheEvilIsland
         if (!Story.QuestProgression(4185))
         {
             Core.EnsureAccept(4185);
-            Core.KillMonster( "Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false );
+            Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
             Core.EnsureComplete(4185);
         }
+        
+        Core.Logger("if the quest \"Finders Keepers\" [4186] is not Unlocked, the Bot will then do the previous Quest \"It's War!\" 10x");
+
         Core.RegisterQuests(4185);
         while (!Bot.ShouldExit && !Bot.Quests.IsUnlocked(4186))
-            Core.KillMonster( "Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false );
+            Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
         Core.CancelRegisteredQuests();
     }
 
@@ -145,7 +139,7 @@ public class CoreDageTheEvilIsland
         Story.MapItemQuest(4191, "LegionCrypt", 3297);
 
         //Spiky Situation 4192
-        Story.KillQuest( 4192, "LegionCrypt", new[] { "Gravedigger", "Undead Infantry|Legion Doomknight" } );
+        Story.KillQuest(4192, "LegionCrypt", new[] { "Gravedigger", "Undead Infantry|Legion Doomknight" });
         //Run it Back Again 4193
         Story.KillQuest(4193, "LegionCrypt", "Legion Doomknight");
 
@@ -183,8 +177,8 @@ public class CoreDageTheEvilIsland
                             {
                                 //An Enviable Army 4884
                                 Core.EnsureAccept(4884);
-                                Core.HuntMonster( "Envy", "Legion Defector", "Legion Defectors Beaten", 3 );
-                                Core.HuntMonster( "Envy", "Fawning Sycophant", "Fawning Sycophants Beaten", 4 );
+                                Core.HuntMonster("Envy", "Legion Defector", "Legion Defectors Beaten", 3);
+                                Core.HuntMonster("Envy", "Fawning Sycophant", "Fawning Sycophants Beaten", 4);
                                 Core.EnsureComplete(4884);
                                 Bot.Wait.ForPickup("Envy Token I");
                             }
@@ -196,27 +190,27 @@ public class CoreDageTheEvilIsland
                         }
                         //Her Biggest Fans 4886
                         Core.EnsureAccept(4886);
-                            Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Hood");
-                            Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Tunic");
-                            Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Medallion");
-                            Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Boots");
+                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Hood");
+                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Tunic");
+                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Medallion");
+                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Boots");
                         Core.EnsureComplete(4886);
                         Bot.Wait.ForPickup("Envy Token III");
                     }
                     //Squee for Envy 4887
                     Core.EnsureAccept(4887);
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Clue");
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Secret");
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Gossip");
-                        Core.HuntMonster( "Envy", "Fawning Sycophant", "Sincere but Unhelpful Praise" );
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Clue");
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Secret");
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Gossip");
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Sincere but Unhelpful Praise");
                     Core.EnsureComplete(4887);
 
                     //Higher Up The Totem Pole 4888
                     Core.EnsureAccept(4888);
-                        Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Helm");
-                        Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Chestplate");
-                        Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Leggings");
-                        Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Blade");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Helm");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Chestplate");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Leggings");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Blade");
                     Core.EnsureComplete(4888);
                     Bot.Wait.ForPickup("Envy Token IV");
                 }
@@ -229,15 +223,15 @@ public class CoreDageTheEvilIsland
 
                 //Where’s That Employee Lounge Again? 4890
                 Core.EnsureAccept(4890);
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
+                Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
+                Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
+                Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
+                Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
                 Core.EnsureComplete(4890);
             }
         }
         //Group Effort 4891
-        Story.KillQuest( 4891, "Envy", new[] { "Legion Defector", "Fawning Sycophant", "Disciple of Envy" } );
+        Story.KillQuest(4891, "Envy", new[] { "Legion Defector", "Fawning Sycophant", "Disciple of Envy" });
 
         //Defeat Envy 4892
         Story.KillQuest(4892, "Envy", "Envy");

@@ -109,6 +109,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(6867))
             return;
 
+        ShadowlordKeep();
+
         Story.PreLoad();
 
         //Fuel for the Cell (6865)
@@ -253,6 +255,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(6974))
             return;
 
+        Junkhoard();
+
         Story.PreLoad();
 
         //Whispering Walls (6961)
@@ -386,6 +390,8 @@ public class CoreSoW
     {
         if (Core.isCompletedBefore(7118))
             return;
+
+        AozoraHills();
 
         Story.PreLoad();
 
