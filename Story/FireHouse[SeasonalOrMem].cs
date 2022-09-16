@@ -40,8 +40,13 @@ public class FireHouse
         Story.MapItemQuest(1554, "firetown", 790, 10);
 
         //1555 | Under Orders
-        Story.KillQuest(1555, "fireriver", "Swamp Thing");
-
+        if (!Story.QuestProgression(1555)) //--map cutscene fucks the kill
+        {
+            Core.EnsureAccept(1555);
+            Core.HuntMonster("fireriver", "Swamp Thing", "Wet Sheet of Paper", 13);
+            Core.EnsureComplete(1555);
+        }
+        
         //1556 | Locket Holds the Key
         Story.KillQuest(1556, "fireriver", "Lava Bat|Lava Garou");
 
