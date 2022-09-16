@@ -915,6 +915,7 @@ public class CoreQOM
         Story.MapItemQuest(8105, "downbelow", 8495);
 
         //8106 | Heart of the Power
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8106, "downbelow", "Anka");
 
         //8107 | Undying Rage
