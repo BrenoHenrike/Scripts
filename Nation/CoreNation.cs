@@ -1142,6 +1142,7 @@ public class CoreNation
             }
             while (!Bot.ShouldExit && !Core.CheckInventory("Yara's Sword"))
             {
+                Core.AddDrop("Yara's Sword");
                 Core.EnsureAccept(377);
                 Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon");
                 Core.EnsureComplete(377);
