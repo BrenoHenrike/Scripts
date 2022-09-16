@@ -684,6 +684,48 @@ public class CoreBots
         return shopItem.First();
     }
 
+    /// <summary>
+    /// <param name="item">Item to Trash/Bank</param>
+    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
+    /// </summary>
+    public void TrashCan(string item)
+    {
+        InventoryItem? TrashItem = Bot.Inventory.GetItem(item);
+
+        if (item == null || TrashItem == null)
+            return;
+
+        if (!TrashItem.Coins && CheckInventory(item))
+        {
+            Logger($"Trashing {TrashItem}");
+            Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
+        }
+        else ToBank(item);
+    }
+
+
+    /// <summary>
+    /// <param name="items">Items to Trash/Bank</param>
+    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
+    /// </summary>
+    public void TrashCan(params string[] items)
+    {
+        foreach (string item in items)
+        {
+            InventoryItem? TrashItem = Bot.Inventory.GetItem(item);
+
+            if (item == null || TrashItem == null)
+                return;
+
+            if (!TrashItem.Coins && CheckInventory(item))
+            {
+                Logger($"Trashing: {TrashItem}");
+                Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
+            }
+            else ToBank(item);
+        }
+    }
+
     #endregion
 
     #region Drops
@@ -1532,87 +1574,39 @@ public class CoreBots
     #region Save State
     public void SavedState(bool on = true)
     {
-        //Disabled to see if it lowers bans
-        // string[] SavedStateRNG = _SavedStateRNG();
-        // if (on)
-        // {
-        //     int MinumumDelay = 180;
-        //     int MaximumDelay = 300;
-        //     int timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay + 1);
-        //     int SSH = 0;
-        //     Logger("Saved State Handler enabled");
-        //     Bot.Send.ClientModerator("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages");
-        //     Bot.Handlers.RegisterHandler(5000, s =>
-        //     {
-        //         SSH++;
-        //         if (SSH >= (timerInterval / 5))
-        //         {
-        //             int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-        //             Bot.Send.ClientModerator("Ignore the whisper below, this is to save your player data", "Saved-State");
-        //             Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect] + $" {Bot.Random.Next(1000, 1000000)}");
-        //             timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay);
-        //             SSH = 0;
-        //         }
-        //     }, "Saved-State Handler");
-        // }
-        // else if (Bot.Handlers.CurrentHandlers.Any(handler => handler.Name == "Saved-State Handler"))
-        // {
-        //     Bot.Handlers.Remove("Saved-State Handler");
-        //     int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-        //     Bot.Send.ClientModerator("Final Saved-State before the Saved State Handler is turned off", "Saved-State");
-        //     Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect] + $" {Bot.Random.Next(1000, 1000000)}");
-        //     Logger("Saved State Handler disabled");
-        // }
-    }
+        string[] Files = Directory.GetFiles(@"Scripts\SavedState");
+        string file = Files[Bot.Random.Next(0, Files.Count() - 1)];
+        string[] SavedStateRNG = File.ReadAllLines(file);
 
-    private string[] _SavedStateRNG()
-    {
-        return new[]
+        if (on)
         {
-            "battleon",
-            "hi",
-            "Hello",
-            $"I\'m using {Bot.Player.CurrentClass?.Name ?? "an electric toothbrush"}",
-            "I'm maidenless",
-            "You\'re maidenless",
-            "Drakath did nothing wrong!",
-            "Have you checked design notes?",
-            "dont spam heal. Time it properly",
-            "Make AQW great again",
-
-            $"I\'ve reached level {Bot.Player.Level}!!",
-            "hey, can you help me out with this boss?",
-            "Do u have scroll?",
-            "I\'m gonna play Elden Ring!",
-            "Imma play Minecraft",
-            "im gonna play gta",
-            "need 1 LOO championdrakath",
-            "what is 1+1?",
-            "It costs a lot of AC",
-            "I might buy membership",
-
-            "I\'m considering buying member",
-            "i dont think I'm going to buy legend",
-            "I should get Awescended",
-            "I love the latest AC chest",
-            "i dislike the new collection chest",
-            "It\'s on the wiki",
-            "Have you heard?",
-            "This is such a grind",
-            "Your mic is muted",
-            "you forgot to mute your mic",
-
-            "I like your armor",
-            "I like that helm",
-            "Nice weapon",
-            "Where did you get that cape?",
-            "is your pet rare?",
-            ".",
-            "test",
-            "ping",
-            "you there?",
-            "I\'m going AFK"
-        };
+            int MinumumDelay = 180;
+            int MaximumDelay = 300;
+            int timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay + 1);
+            int SSH = 0;
+            Logger("Saved State Handler enabled");
+            Bot.Send.ClientModerator("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages");
+            Bot.Handlers.RegisterHandler(5000, s =>
+            {
+                SSH++;
+                if (SSH >= (timerInterval / 5))
+                {
+                    int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
+                    Bot.Send.ClientModerator($"Ignore the whisper below, this is to save your player data ({file.Split('\\').Last().Split('/').Last()})", "Saved-State");
+                    Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
+                    timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay);
+                    SSH = 0;
+                }
+            }, "Saved-State Handler");
+        }
+        else if (Bot.Handlers.CurrentHandlers.Any(handler => handler.Name == "Saved-State Handler"))
+        {
+            Bot.Handlers.Remove("Saved-State Handler");
+            int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
+            Bot.Send.ClientModerator("Final Saved-State before the Saved State Handler is turned off", "Saved-State");
+            Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
+            Logger("Saved State Handler disabled");
+        }
     }
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false);
@@ -1860,51 +1854,6 @@ public class CoreBots
         Logger($"Map item {itemID}({quant}) acquired");
     }
 
-
-    /// <summary>
-    /// <param name="item">Item to Trash/Bank</param>
-    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
-    /// </summary>
-    public void TrashCan(string item)
-    {
-        InventoryItem? TrashItem = Bot.Inventory.GetItem(item);
-
-        if (item == null || TrashItem == null)
-            return;
-
-        if (!TrashItem.Coins && CheckInventory(item))
-        {
-            Logger($"Trashing {TrashItem}");
-            Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
-        }
-        else ToBank(item);
-    }
-
-
-    /// <summary>
-    /// <param name="items">Items to Trash/Bank</param>
-    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
-    /// </summary>
-    public void TrashCan(params string[] items)
-    {
-        foreach (string item in items)
-        {
-            InventoryItem? TrashItem = Bot.Inventory.GetItem(item);
-
-            if (item == null || TrashItem == null)
-                return;
-
-            if (!TrashItem.Coins && CheckInventory(item))
-            {
-                Logger($"Trashing: {TrashItem}");
-                Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
-            }
-            else ToBank(item);
-        }
-    }
-    //     }
-    // }
-
     /// <summary>
     /// This method is used to move between PvP rooms
     /// </summary>
@@ -1933,6 +1882,63 @@ public class CoreBots
             nr = 1;
         return nr < 1000;
     }
+
+    //public bool isSeasonalMapActive(string map, bool log = true)
+    //{
+    //    map = map.ToLower().Replace(" ", "");
+    //    if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
+    //        return true;
+
+    //    bool AggroMonsters = false;
+    //    if (Bot.Options.AggroMonsters)
+    //    {
+    //        AggroMonsters = true;
+    //        Bot.Options.AggroMonsters = false;
+    //    }
+
+    //    JumpWait();
+    //    Bot.Events.ExtensionPacketReceived += PacketListener;
+    //    bool seasonalMessageProc = false;
+
+    //    for (int i = 0; i < 20; i++)
+    //    {
+    //        Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}");
+    //        Bot.Wait.ForMapLoad(map);
+
+    //        string? currentMap = Bot.Map.Name;
+    //        if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
+    //            break;
+
+    //        if (seasonalMessageProc)
+    //        {
+    //            Bot.Events.ExtensionPacketReceived -= PacketListener;
+    //            return false;
+    //        }
+
+    //        if (i == 19)
+    //            Logger($"Failed to join {map}");
+    //    }
+
+    //    if (AggroMonsters)
+    //        Bot.Options.AggroMonsters = true;
+
+    //    Bot.Events.ExtensionPacketReceived -= PacketListener;
+    //    return true;
+
+    //    void PacketListener(dynamic packet)
+    //    {
+    //        string type = packet;
+    //        switch (type)
+    //        {
+    //            case "%xt%warning%-1%\"mogloween\" is not available.%":
+    //                if (log)
+    //                    Logger($"Map \"map\" is currently disabled.");
+    //                seasonalMessageProc = true;
+    //                break;
+    //        }
+
+    //    }
+    //}
 
     #endregion
 
