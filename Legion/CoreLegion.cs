@@ -2,8 +2,8 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-using Skua.Core.Models;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 
 public class CoreLegion
 {
@@ -233,8 +233,31 @@ public class CoreLegion
         LTFestiveParagonDracolichRider();
         LTHolidayParagon(quant);
         LTUW3017(quant);
+        LTInfernalLegionBetrayal(quant);
         LTFirstClassEntertainment(quant, true, 3);
         LTDreadrock(quant);
+    }
+
+    public void LTInfernalLegionBetrayal(int quant = 25000)
+    {
+
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Infernal Caladbolg"))
+            return;
+
+        JoinLegion();
+
+        Core.AddDrop("Legion Token");
+        Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
+
+        Core.FarmingLogger("Legion Token", quant);
+        Core.RegisterQuests(5738);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+        {
+            Core.HuntMonster("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
+            Core.HuntMonster("evilwardage", "Dreadfiend of Nulgath", "Fiend Felled", 2);
+        }
+        Core.CancelRegisteredQuests();
     }
 
     public void LTUW3017(int quant = 25000)
