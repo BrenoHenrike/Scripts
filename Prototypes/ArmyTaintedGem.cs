@@ -17,7 +17,6 @@ public class ArmyTaintedGem
         new Option<string>("player2", "Account #2", "Name of one of your accounts.", ""),
         new Option<string>("player3", "Account #3", "Name of one of your accounts.", ""),
         new Option<string>("player4", "Account #4", "Name of one of your accounts.", ""),
-        new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 1),
         new Option<int>("PacketDelay", "Delay for Packet Spam", "Sets the delay for the Packet Spam \n" +
         "Increase if spamming too much (disconnect) - Decrease if missing kills\n" +
         "Recommended setting: 100 to 500)", 100),
@@ -87,11 +86,6 @@ public class ArmyTaintedGem
         }
         else
             Core.Logger("Current map not found", messageBox: true, stopBot: true);
-        while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
-        {
-            Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-            Bot.Sleep(1500);
-        }
     }
 
     public void boxes()
