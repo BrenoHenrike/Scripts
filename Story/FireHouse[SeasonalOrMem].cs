@@ -31,7 +31,7 @@ public class FireHouse
         Story.PreLoad();
 
         //1552 | Gaining Trust
-        Story.KillQuest(1552, "firetown", "Obsidian Golem|Fire Elemental");
+        Story.KillQuest(1552, "firetown", new[] { "Obsidian Golem", "Obsidian Golem", "Obsidian Golem" });
 
         //1553 | If You Can't Stand the Heat...
         Story.KillQuest(1553, "firetown", "Fire Elemental");
