@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
+using Skua.Core.Options;
 
 public class CoreArmyLite
 {
@@ -186,4 +187,53 @@ public class CoreArmyLite
     //    List<string> cellsWithPlayers = (Bot.Map.Players ?? new()).Select(p => p.Cell).ToList();
     //    return availableCells.First(c => !Bot.Map.Players.Any(p => p.Cell == c && Bot.Monsters.MapMonsters.Where(m => m.Cell == c).Count() > 0)) ?? "Enter";
     //}
+
+    public void DevideOnCells(params string[] cells)
+    {
+        // Parsing all the player names from an unspecified amount of player name options
+        List<string> players = new();
+        int i = 1;
+        while (!Bot.ShouldExit)
+        {
+            try
+            {
+                if (Bot.Config == null)
+                    break;
+
+                string? player = Bot.Config.Get<string>("player" + i++);
+                if (String.IsNullOrEmpty(player))
+                    break;
+
+                players.Add(player.ToLower().Replace(" ", ""));
+            }
+            catch
+            {
+                break;
+            }
+        }
+
+        // If no paramaters are given, select all cells that have monsters in them
+        if ((cells == null || cells.Count() == 0))
+        {
+            List<Monster> monsters = Bot.Monsters.MapMonsters;
+            if (monsters == null || monsters.Count() == 0)
+                return;
+
+            List<string> _cells = new();
+            foreach (string cell in monsters.Select(m => m.Cell))
+                if (!_cells.Contains(cell))
+                    _cells.Add(cell);
+            cells = _cells.OrderBy(x => x).ToArray();
+        }
+
+        //Deviding the players amongst the cells
+        int cellCount = 0;
+        string username = Bot.Player.Username.ToLower();
+        foreach (string p in players)
+        {
+            if (username == p)
+                Core.Jump(cells[cellCount]);
+            cellCount = cellCount == cells.Count() - 1 ? 0 : cellCount + 1;
+        }
+    }
 }
