@@ -70,10 +70,7 @@
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Borgars.cs
 
-//cs_include Scripts/Story/ChaosQueenBeleen.cs
-//cs_include Scripts/Story/Collection.cs
 
-//cs_include Scripts/Story/Deadmoor.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
@@ -194,7 +191,7 @@ public class AllStories
 
     //MemetsRealm
     public MemetsRealm MemetsRealm = new();
-    
+
     #endregion
 
     #region Standalone (sorted alphabetically)
@@ -206,10 +203,6 @@ public class AllStories
     public BloodMoon BloodMoon = new();
     public Borgars Borgars = new();
 
-    public ChaosQueenBeleen ChaosQueenBeleen = new();
-    public Collection Collection = new();
-
-    public Deadmoor Deadmoor = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -427,15 +420,10 @@ public class AllStories
         Core.Logger($"Story: Borgars - Complete");
 
 
-        Collection.CollectionStory();
-        Core.Logger($"Story: Collection - Complete");
 
         CelestialPast.CompleteCeletialPast();
         Core.Logger($"Story: CelestialPast - Complete");
 
-
-        Deadmoor.StoryLine();
-        Core.Logger($"Story: Deadmoor - Complete");
 
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
