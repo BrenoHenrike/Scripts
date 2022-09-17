@@ -2,11 +2,13 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/LowTideStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNurseryStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class LowTideMerge
+public class AluteaNurseryMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -22,6 +24,8 @@ public class LowTideMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
+    public AluteaNurseryStory AN = new();
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Sea Salt", "Naval Guard", "Naval Guard's Tricorn + Hair", "Naval Guard's Tricorn + Locks", "Naval Guard's Cutlass", "Naval Guard's Cutlasses", "Naval Guard's Rapier", "Naval Guard's Rapiers", "DeepSea Star Pirate", "DeepSea Star Pirate's Hair", "DeepSea Star Pirate's Locks", "DeepSea Star Pirate's Morph", "DeepSea Star Pirate's Morph + Locks", "DeepSea Star Pirate's Light Gun", "DeepSea Star Pirate's Light Guns", "Naval Guard's ArmBlade", "DeepSea Smol Wave "});
@@ -35,7 +39,7 @@ public class LowTideMerge
 
     public void BuyAllMerge()
     {
-        // LT.Storyline();
+        AN.Storyline();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("aluteanursery", 2168, findIngredients);
 
