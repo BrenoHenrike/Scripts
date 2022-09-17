@@ -76,16 +76,15 @@ public class AluteaNursery
     {
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8858).Rewards;
         List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
+        List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
 
         string[] Rewards = RewardsList.ToArray();
 
+        if (Core.CheckInventory(Rewards, toInv: false))
+            return;
+
         int count = 0;
         Core.CheckSpaces(ref count, Rewards);
-
-        if (!Core.CheckInventory(Rewards, toInv: false))
-            AluteaNurseryRewards();
 
         Core.AddDrop(Rewards);
         Core.RegisterQuests(8858);
