@@ -535,7 +535,6 @@ public class CoreNation
                 rPDSuni = new[] { Uni()[1], Uni()[6], Uni()[9], Uni()[16], Uni()[20] };
                 Core.AddDrop(rPDSuni);
                 Core.AddDrop("Blood Gem of Nulgath");
-                Core.RegisterQuests();
             }
 
             Core.FarmingLogger(item, quant);
