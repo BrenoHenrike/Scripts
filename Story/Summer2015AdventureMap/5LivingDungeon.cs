@@ -5,7 +5,7 @@
 //cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 using Skua.Core.Interfaces;
 
-public class LivingDungeon
+public class LivingDungeonStory
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
