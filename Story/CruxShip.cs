@@ -77,7 +77,6 @@ public class CruxShip
             Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100, false);
             Core.EnsureComplete(4616);
         }
-        //Story.KillQuest(4616, "Mummies", "Mummy");
 
     }
 }

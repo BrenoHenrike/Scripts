@@ -61,6 +61,5 @@ public class CastleTunnels
         //Defeat the Blood Dragon! 5255
         Story.KillQuest(5255, "CastleTunnels", "Blood Dragon");
 
-
     }
 }

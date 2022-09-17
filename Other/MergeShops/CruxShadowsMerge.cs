@@ -72,7 +72,6 @@ public class CruxShadowsMerge
 
                         }
                         Core.CancelRegisteredQuests();
-
                     }
                     else
                     {

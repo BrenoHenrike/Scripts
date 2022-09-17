@@ -78,7 +78,6 @@ public class UndeadLegionMerge
                 #endregion
 
                 case "Legion Token":
-                    Core.FarmingLogger(req.Name, quant);
                     Legion.FarmLegionToken(quant);
                     break;
 
@@ -88,12 +87,10 @@ public class UndeadLegionMerge
                     break;
 
                 case "Judgement Scythe":
-                    Core.FarmingLogger(req.Name, quant);
                     LegionExercise4.Exercise(new[] { "Judgement Scythe", "Legion Token" });
                     break;
 
                 case "Judgement Hammer":
-                    Core.FarmingLogger(req.Name, quant);
                     LegionExercise3.Exercise(new[] { "Judgement Hammer", "Legion Token" });
                     break;
 
@@ -116,7 +113,6 @@ public class UndeadLegionMerge
                     break;
 
                 case "DragonBlade of Nulgath":
-                    Core.FarmingLogger(req.Name, quant);
                     DBoN.GetDragonBlade();
                     break;
 
@@ -133,7 +129,6 @@ public class UndeadLegionMerge
                     break;
 
                 case "Exalted Crown":
-                    Core.FarmingLogger(req.Name, quant);
                     LR.ExaltedCrown();
                     break;
 
