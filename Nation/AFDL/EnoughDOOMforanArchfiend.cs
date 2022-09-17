@@ -34,32 +34,28 @@ public class EnoughDOOMforanArchfiend
         if (Core.CheckInventory("ArchFiend DoomLord", toInv: false))
             return;
 
-        NulgathDemandsWork.NDWQuest();
-
+        string[] NDWRequiredItems = { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" };
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",
-            "Essence Potion", "Essence of Klunk", "Living Star Essence", "Bone Dust", "Undead Energy");
+            "Essence Potion", "Essence of Klunk", "Living Star Essence", "Bone Dust",
+            "Undead Energy", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
-        Core.Unbank("DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
+        // Quest Accept Requirements:
+        NulgathDemandsWork.NDWQuest(NDWRequiredItems);
 
+        //Quest Turnin Items:
         WillpowerExtraction.Unidentified34(4);
-
         Nation.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
-        Nation.FarmUni13(1);
+        Nation.FarmUni13();
         Nation.ApprovalAndFavor(0, 5000);
         Nation.EssenceofNulgath(100);
-
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", 1, false);
-
         Core.EquipClass(ClassType.Farm);
         Farm.BattleUnderB("Undead Essence", 1000);
-
         Nation.FarmVoucher(false);
         Nation.FarmBloodGem(10);
-
         Core.BuyItem("yulgar", 16, "Aelita's Emerald");
-
         if (!Core.CheckInventory("Essence Potion", 5))
         {
             Farm.Gold(12500000);
@@ -67,15 +63,13 @@ public class EnoughDOOMforanArchfiend
             Core.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 1, 9770);
             Bot.Wait.ForItemBuy();
         }
-
-        Core.EnsureAccept(5260);
-
         Core.KillMonster("orecavern", "r3", "Up", "*", "Chaorruption Essence", 75, false);
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
+        //Quest Turnin
         if (!Bot.Quests.CanComplete(5260))
             Core.Relogin();
-        Core.EnsureComplete(5260);
-        Bot.Drops.Pickup("ArchFiend DoomLord");
+        Core.ChainComplete(5260);
+        Bot.Wait.ForPickup("ArchFiend DoomLord");
     }
 }
