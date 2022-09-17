@@ -240,7 +240,6 @@ public class CoreLegion
 
     public void LTInfernalLegionBetrayal(int quant = 25000)
     {
-
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Infernal Caladbolg"))
             return;
 
@@ -251,7 +250,7 @@ public class CoreLegion
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
-        Core.RegisterQuests(5738);
+        Core.RegisterQuests(3722);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);

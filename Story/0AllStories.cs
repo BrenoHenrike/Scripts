@@ -75,7 +75,6 @@
 //cs_include Scripts/Story/Collection.cs
 //cs_include Scripts/Story/CruxShip.cs
 
-//cs_include Scripts/Story/Deadmoor.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
@@ -447,9 +446,6 @@ public class AllStories
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
 
-
-        Deadmoor.StoryLine();
-        Core.Logger($"Story: Deadmoor - Complete");
 
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");

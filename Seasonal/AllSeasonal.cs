@@ -23,7 +23,7 @@
 //cs_include Scripts/Seasonal/SummerBreak/BlazingBeachMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/BurningBeach.cs
 //cs_include Scripts/Seasonal/SummerBreak/CoralBeachMerge.cs
-//cs_include Scripts/Seasonal/SummerBreak/LunaCove.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Seasonal/SummerBreak/LunaCoveMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/SweetSummerTreats.cs
 //cs_include Scripts/Seasonal/SummerBreak/Un-LifeguardQuest.cs
@@ -57,7 +57,7 @@ public class AllSeasonal
     // public BlazingBeachMerge BlazingBeachMerge = new();
     public BurningBeachStory BurningBeach = new();
     // public CoralBeachMerge CoralBeachMerge = new();
-    public LunaCoveStory LunaCove = new();
+    public CoreSummer LunaCove = new();
     // public LunaCoveMerge LunaCoveMerge = new();
     public SweetSummerTreats SweetSummerTreats = new();
     public UnLifeGuardQuest UnLifeguardQuest = new();
@@ -138,7 +138,7 @@ public class AllSeasonal
                     // BlazingBeachMerge.BuyAllMerge();
                     BurningBeach.Storyline();
                     // CoralBeachMerge.BuyAllMerge();
-                    LunaCove.Storyline();
+                    LunaCove.LunaCove();
                     // LunaCoveMerge.BuyAllMerge();
                     // SweetSummerTreats.GetTreats();
                     // UnLifeguardQuest.GetItems();
@@ -153,7 +153,7 @@ public class AllSeasonal
                     // BlazingBeachMerge.BuyAllMerge();
                     BurningBeach.Storyline();
                     // CoralBeachMerge.BuyAllMerge();
-                    LunaCove.Storyline();
+                    LunaCove.LunaCove();
                     // LunaCoveMerge.BuyAllMerge();
                     // SweetSummerTreats.GetTreats();
                     // UnLifeguardQuest.GetItems();
