@@ -770,15 +770,19 @@ public class CoreBots
 
         foreach (Quest q in questData)
         {
+            bool shouldBreak = false;
             // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
             {
                 if (!CheckInventory(req.Name))
                 {
                     Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
-                    questData.Remove(q);
+                    shouldBreak = true;
+                    break;
                 }
             }
+            if (shouldBreak)
+                break;
 
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
