@@ -98,6 +98,8 @@
 
 //cs_include Scripts/Story/LightoviaCave.cs
 
+//cs_include Scripts/Story/NytheraSaga.cs
+
 //cs_include Scripts/Story/Oddities.cs
 
 //cs_include Scripts/Story/ShadowSlayerK.cs
@@ -196,7 +198,7 @@ public class AllStories
 
     //MemetsRealm
     public MemetsRealm MemetsRealm = new();
-    
+
     #endregion
 
     #region Standalone (sorted alphabetically)
@@ -234,6 +236,8 @@ public class AllStories
     public GlaceraStory GlaceraStory = new();
 
     public LightoviaCave LightoviaCave = new();
+
+    public NytheraSaga NytheraSaga = new();
 
     public J6Saga J6Saga = new();
 
@@ -497,6 +501,10 @@ public class AllStories
 
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
+
+
+        NytheraSaga.DoAll();
+        Core.Logger($"Saga: Nythera - Complete");
 
 
         Oddities.StoryLine();
