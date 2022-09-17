@@ -36,7 +36,7 @@ public class CelestialStarMageSet
 
         while (!Core.CheckInventory(rewards))
         {
-            Core.KillMonster("lairdefend", "Eggs", "Left", "Flame Dragon General", log: false);
+            Core.HuntMonster("lumafortress", "Light Elemental", log: false);
             Bot.Wait.ForPickup("*");
         }
 
