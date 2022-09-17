@@ -821,6 +821,8 @@ public class CoreBots
                                                                             !(Bot.Bank.TryGetItem(r.Name, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList(); if (simpleRewards.Count == 0)
                             {
                                 EnsureComplete(kvp.Key.ID);
+                                await Task.Delay(ActionDelay);
+                                EnsureAccept(kvp.Key.ID);
                                 continue;
                             }
 
