@@ -500,7 +500,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8821);
         CorNSOD.BonesVoidRealm(20);
         YNR.BlademasterSwordScroll();
-        NDW.NDWQuest("Archfiend Essence Fragment", 3);
+        NDW.NDWQuest(new[] {"Archfiend Essence Fragment"}, 3);
         Awescended.GetAwe();
         if (!Core.CheckInventory("The Divine Will"))
         {
