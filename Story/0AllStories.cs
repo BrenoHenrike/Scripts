@@ -70,6 +70,10 @@
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Borgars.cs
 
+//cs_include Scripts/Story/CastleTunnels.cs
+//cs_include Scripts/Story/ChaosQueenBeleen.cs
+//cs_include Scripts/Story/Collection.cs
+//cs_include Scripts/Story/CruxShip.cs
 
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
@@ -92,6 +96,8 @@
 //cs_include Scripts/Story/J6Saga.cs
 
 //cs_include Scripts/Story/LightoviaCave.cs
+
+//cs_include Scripts/Story/NytheraSaga.cs
 
 //cs_include Scripts/Story/Oddities.cs
 
@@ -203,6 +209,12 @@ public class AllStories
     public BloodMoon BloodMoon = new();
     public Borgars Borgars = new();
 
+    public CastleTunnels CastleTunnels = new();
+    public ChaosQueenBeleen ChaosQueenBeleen = new();
+    public Collection Collection = new();
+    public CruxShip CruxShip = new();
+
+    public Deadmoor Deadmoor = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -223,6 +235,8 @@ public class AllStories
     public GlaceraStory GlaceraStory = new();
 
     public LightoviaCave LightoviaCave = new();
+
+    public NytheraSaga NytheraSaga = new();
 
     public J6Saga J6Saga = new();
 
@@ -420,9 +434,17 @@ public class AllStories
         Core.Logger($"Story: Borgars - Complete");
 
 
+        CastleTunnels.StoryLine();
+        Core.Logger($"Story: CastleTunnels - Complete");
+
+        Collection.CollectionStory();
+        Core.Logger($"Story: Collection - Complete");
 
         CelestialPast.CompleteCeletialPast();
         Core.Logger($"Story: CelestialPast - Complete");
+
+        CruxShip.StoryLine();
+        Core.Logger($"Story: CruxShip - Complete");
 
 
         DjinnGateStory.DjinnGate();
@@ -475,6 +497,10 @@ public class AllStories
 
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
+
+
+        NytheraSaga.DoAll();
+        Core.Logger($"Saga: Nythera - Complete");
 
 
         Oddities.StoryLine();
