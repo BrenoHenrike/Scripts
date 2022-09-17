@@ -136,7 +136,5 @@ public class ProofOFRecruitmentQuest
                 }
             }
         }
-        //if the player got max stacks for all items and out of the for loop
-        Core.Logger("You got max stacks of all \"Proof of Recruitment\" Quest's Rewards, Stopping the bot", stopBot: true);
     }
 }

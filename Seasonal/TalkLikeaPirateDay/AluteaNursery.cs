@@ -15,10 +15,15 @@ public class AluteaNursery
     {
         Core.SetOptions();
 
-        AluteaNurseryStory();
-        AluteaNurseryRewards();
+        DoAll();
 
         Core.SetOptions(false);
+    }
+
+    public void DoAll()
+    {
+        AluteaNurseryStory();
+        AluteaNurseryRewards();
     }
 
     public void AluteaNurseryStory()

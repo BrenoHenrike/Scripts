@@ -82,7 +82,6 @@ public class UndeadLegionMerge
                     break;
 
                 case "Frosted Falchion":
-                    Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("BlindingSnow", 236, req.Name);
                     break;
 
@@ -95,20 +94,17 @@ public class UndeadLegionMerge
                     break;
 
                 case "Cursed Scimitar":
-                    Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("SandSea", 242, req.Name);
                     break;
 
                 case "Essence of the Undead Legend":
                     Core.Logger($"{req.Name} Is seasonal item from Dage's Dark Birthday Shop");
-                    Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("DarkBirthday", 376, req.Name);
                     break;
 
                 case "Shadow Shroud":
+                    Daily.ShadowShroud();
                     if (!Core.CheckInventory(req.Name, quant))
-                        Daily.ShadowShroud();
-                    else if (!Core.CheckInventory(req.Name, quant))
                         Core.Logger($"Not enough \"Shadow Shroud\", please do the daily {15 - Bot.Inventory.GetQuantity("Shadow Shroud")} more times (not today)", messageBox: true);
                     break;
 
@@ -121,11 +117,7 @@ public class UndeadLegionMerge
                 case "Fallen MonsterHunter Cape":
                 case "Fallen MonsterHunter Sword":
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("DeepForest", "Aberrant Horror", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("DeepForest", "Aberrant Horror", req.Name, isTemp: false);
                     break;
 
                 case "Exalted Crown":

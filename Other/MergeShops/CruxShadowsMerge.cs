@@ -59,27 +59,26 @@ public class CruxShadowsMerge
                 #endregion
 
                 case "Glowing Pumpkinseed":
-                    Core.AddDrop(req.Name);
                     if (Core.IsMember)
                     {
+                        Core.EquipClass(ClassType.Solo);
                         Core.RegisterQuests(4617);
+
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         {
                             //ULTRA Pumpkinseed Farming Quest 4617 [Member]
-                            Core.EquipClass(ClassType.Solo);
                             Core.HuntMonster("CruxShip", "Apephryx", "Otherworld Sigil", isTemp: false);
                             Bot.Wait.ForPickup(req.Name);
-
                         }
                         Core.CancelRegisteredQuests();
                     }
                     else
                     {
+                        Core.EquipClass(ClassType.Farm);
                         Core.RegisterQuests(4615);
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         {
                             //Gather the Gold Debns 4615
-                            Core.EquipClass(ClassType.Farm);
                             Core.HuntMonster("CruxShip", "Treasure Hunter", "Debns Gathered", 6);
                             Bot.Wait.ForPickup(req.Name);
                         }
