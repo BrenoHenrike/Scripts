@@ -23,6 +23,9 @@ public class AluteaNurseryStory
     public void Storyline()
     {
         LowTideStory.Storyline();
+        
+        if (Core.isCompletedBefore(8857))
+            return;
 
         Story.PreLoad();
 
