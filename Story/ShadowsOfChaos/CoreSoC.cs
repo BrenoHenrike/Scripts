@@ -86,11 +86,20 @@ public class CoreSoC
 
         Story.PreLoad();
 
-        // Shadow Medals 7685 &&
-        Story.KillQuest(7685, "chaosamulet", "Shadowflame Berserker");
-
-        // Mega Shadow Medals 7686
-        Story.KillQuest( 7686, "chaosamulet", new[] { "Shadowflame Berserker", "Shadowflame Scout", "Shadowflame Warlock", "Shadowflame Warrior" } );
+        //Mega Shadow Medals
+        if (!Bot.Quests.IsUnlocked(7687))
+        {
+            // Shadow Medals 7685
+            if (!Bot.Quests.IsUnlocked(7686))
+            {
+                Core.EnsureAccept(7685);
+                Core.HuntMonster("chaosamulet", "Shadowflame Scout", "Shadow Medal", 5);
+                Core.EnsureComplete(7685);
+            }
+            Core.EnsureAccept(7686);
+            Core.HuntMonster("chaosamulet", "Shadowflame Scout", "Mega Shadow Medal", 3);
+            Core.EnsureComplete(7686);
+        }
 
         //Defeat Goldun 7687
         Story.KillQuest(7687, "chaosamulet", "Goldun");
@@ -137,7 +146,7 @@ public class CoreSoC
         //Blow it up! 7698
         Story.MapItemQuest(7698, "lagunabeach", 7640);
         Story.KillQuest(7698, "lagunabeach", "ShadowChaos Gunner");
-        
+
         //The Heart of the Matter 7699
         Story.KillQuest(7697, "lagunabeach", "Heart of Chaos");
 
@@ -202,17 +211,17 @@ public class CoreSoC
         Story.PreLoad();
 
         // Invasion!
-        Story.KillQuest( 7728, "Shadowoff", new[] { "Shadowflame Militia", "Shadowflame Paladin", "Shadowflame Scout", "Shadowflame Sorcerer" } );
+        Story.KillQuest(7728, "Shadowoff", new[] { "Shadowflame Militia", "Shadowflame Paladin", "Shadowflame Scout", "Shadowflame Sorcerer" });
 
         //Rescue Needed
         Story.MapItemQuest(7729, "Shadowoff", 7699, 6);
         Story.KillQuest(7729, "Shadowoff", "Shadowflame Sorcerer");
-        
+
         //Get their Intel
         Story.KillQuest(7730, "Shadowoff", "Shadowflame Militia");
 
         //Clue me in
-        Story.KillQuest( 7731, "Shadowoff", new[] { "Shadowflame Sorcerer", "Shadowflame Militia", "Shadowflame Scout" } );
+        Story.KillQuest(7731, "Shadowoff", new[] { "Shadowflame Sorcerer", "Shadowflame Militia", "Shadowflame Scout" });
 
         //So Familiar
         Story.KillQuest(7732, "Shadowoff", "Shadowflame Paladin");
@@ -243,7 +252,7 @@ public class CoreSoC
         Story.KillQuest(7737, "BrightShadow", "Gravelyn the Good");
 
         //Restoring Order 7738
-        Story.KillQuest( 7738, "BrightShadow", new[] { "Brightfall light", "Brightfall Guard", "Shadowflame Paladin" } );
+        Story.KillQuest(7738, "BrightShadow", new[] { "Brightfall light", "Brightfall Guard", "Shadowflame Paladin" });
     }
 
     public void BrightChaos()
@@ -262,7 +271,7 @@ public class CoreSoC
         Story.KillQuest(7741, "BrightChaos", "Shadowflame Sorcerer");
 
         //Percision Strike 7742
-        Story.KillQuest( 7742, "BrightChaos", new[] { "Shadowflame Militia", "Shadowflame Sorcerer" } );
+        Story.KillQuest(7742, "BrightChaos", new[] { "Shadowflame Militia", "Shadowflame Sorcerer" });
 
         //Pants On Fire 7743
         Story.MapItemQuest(7743, "BrightChaos", 7731, 6);
@@ -325,7 +334,7 @@ public class CoreSoC
         //Spacetime 7760
         Story.MapItemQuest(7760, "BrightForestPast", 7753);
         Story.KillQuest(7760, "BrightForestPast", "Spacetime Energy");
-        
+
         //Find Khasaanda 7761
         Story.MapItemQuest(7761, "BrightForestPast", 7756);
 
@@ -353,7 +362,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightForest Extra storyline");
             return;
         }
-        
+
         Story.PreLoad();
 
         //The Dragon 7767

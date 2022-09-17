@@ -1505,9 +1505,11 @@ public class CoreBots
                     if (FarmGearOn & Bot.Player.CurrentClass?.Name != FarmClass)
                     {
                         logEquip = false;
+                        Bot.Sleep(ActionDelay);
                         Equip(FarmGear);
                         logEquip = true;
                     }
+                    Bot.Wait.ForItemEquip(FarmClass);
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                     break;
                 }
@@ -1520,9 +1522,11 @@ public class CoreBots
                     if (SoloGearOn & Bot.Player.CurrentClass?.Name != SoloClass)
                     {
                         logEquip = false;
+                        Bot.Sleep(ActionDelay);
                         Equip(SoloGear);
                         logEquip = true;
                     }
+                    Bot.Wait.ForItemEquip(SoloClass);
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                     break;
                 }

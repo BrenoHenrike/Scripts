@@ -31,7 +31,7 @@ public class FireHouse
         Story.PreLoad();
 
         //1552 | Gaining Trust
-        Story.KillQuest(1552, "firetown", "Obsidian Golem|Fire Elemental");
+        Story.KillQuest(1552, "firetown", new[] { "Obsidian Golem", "Obsidian Golem", "Obsidian Golem" });
 
         //1553 | If You Can't Stand the Heat...
         Story.KillQuest(1553, "firetown", "Fire Elemental");
@@ -40,8 +40,13 @@ public class FireHouse
         Story.MapItemQuest(1554, "firetown", 790, 10);
 
         //1555 | Under Orders
-        Story.KillQuest(1555, "fireriver", "Swamp Thing");
-
+        if (!Story.QuestProgression(1555)) //--map cutscene fucks the kill
+        {
+            Core.EnsureAccept(1555);
+            Core.HuntMonster("fireriver", "Swamp Thing", "Wet Sheet of Paper", 13);
+            Core.EnsureComplete(1555);
+        }
+        
         //1556 | Locket Holds the Key
         Story.KillQuest(1556, "fireriver", "Lava Bat|Lava Garou");
 
