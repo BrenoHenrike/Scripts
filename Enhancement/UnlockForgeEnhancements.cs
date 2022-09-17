@@ -35,7 +35,7 @@
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
-//cs_include Scripts/Story/SummerAdventure2015Map/CoreSummer.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
