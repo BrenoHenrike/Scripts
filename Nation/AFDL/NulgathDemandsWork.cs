@@ -55,7 +55,7 @@ public class NulgathDemandsWork
         
         foreach (string item in items)
         {
-            if (!Core.CheckInventory(items, quant))
+            if (Core.CheckInventory(items, quant))
                 break;
             else Core.FarmingLogger(item, quant);
 
@@ -85,8 +85,6 @@ public class NulgathDemandsWork
                 i++;
             }
         }
-
-
     }
 
     public void Uni35(int quant = 1)
