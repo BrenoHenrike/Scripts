@@ -88,7 +88,7 @@ public class ArmyLegionFealty2
             else if (Bot.Player.Username == Bot.Config.Get<string>("player2").ToLower())
                 Core.Jump("r3", "Left");
             else if (Bot.Player.Username == Bot.Config.Get<string>("player3").ToLower())
-                Core.Jump("r24", "Left");
+                Core.Jump("r26", "Left");
             else if (Bot.Player.Username == Bot.Config.Get<string>("player4").ToLower())
                 Core.Jump("r18", "Left");
             else
