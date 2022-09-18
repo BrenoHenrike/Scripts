@@ -92,7 +92,7 @@ public class AluteaNurseryMerge
                 case "DeepSea Star Pirate's Light Guns":
                 case "DeepSea Smol Wave":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("aluteanursery", "Last Alutian", req.Name);
+                    Core.HuntMonster("aluteanursery", "Last Alutian", req.Name, isTemp:false);
                     break;
 
             }
