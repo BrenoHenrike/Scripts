@@ -66,9 +66,11 @@ public class CoreArmyLite
     /// <summary>
     /// Stops/Pauses the Aggro Mon Task.
     /// </summary>
-    public void AggroMonStop()
+    public void AggroMonStop(bool clear = false)
     {
         aggroCTS?.Cancel();
+        if (clear)
+            AggroMonClear();
         Bot.Wait.ForTrue(() => aggroCTS == null, 30);
     }
 
@@ -91,6 +93,21 @@ public class CoreArmyLite
 
     public string AggroMonPacket(params int[] MonsterMapIDs)
         => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
+
+    #region Script Options
+
+    public Option<string> player1 = new("player1", "Account #1", "Name of one of your accounts.", "");
+    public Option<string> player2 = new("player2", "Account #2", "Name of one of your accounts.", "");
+    public Option<string> player3 = new("player3", "Account #3", "Name of one of your accounts.", "");
+    public Option<string> player4 = new("player4", "Account #4", "Name of one of your accounts.", "");
+    public Option<string> player5 = new("player5", "Account #5", "Name of one of your accounts.", "");
+    public Option<string> player6 = new("player6", "Account #6", "Name of one of your accounts.", "");
+    public Option<string> player7 = new("player7", "Account #7", "Name of one of your accounts.", "");
+    public Option<string> player8 = new("player8", "Account #8", "Name of one of your accounts.", "");
+    public Option<string> player9 = new("player9", "Account #9", "Name of one of your accounts.", "");
+    public Option<string> player10 = new("player10", "Account #10", "Name of one of your accounts.", "");
+
+    #endregion
 
     #endregion
 
@@ -187,7 +204,7 @@ public class CoreArmyLite
     //    List<string> cellsWithPlayers = (Bot.Map.Players ?? new()).Select(p => p.Cell).ToList();
     //    return availableCells.First(c => !Bot.Map.Players.Any(p => p.Cell == c && Bot.Monsters.MapMonsters.Where(m => m.Cell == c).Count() > 0)) ?? "Enter";
     //}
-    
+
     /// <summary>
     /// Spreads players around the input cells, if no cells are set - will spread with any cell that has a monster in it.
     /// </summary>

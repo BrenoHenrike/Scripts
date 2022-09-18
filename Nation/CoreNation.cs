@@ -96,19 +96,8 @@ public class CoreNation
         "Blood Gem of the Archfiend"
     };
 
-    public string[] Uni()
-    {
-        if (_Uni != null)
-            return _Uni;
-
-        List<string> _uni = new();
-        for (int i = 0; i < 50; i++)
-            _uni.Add($"Unidentified {i}");
-
-        _Uni = _uni.ToArray();
-        return _Uni;
-    }
-    private string[] _Uni = null;
+    public string Uni(int nr)
+        => $"Unidentified {nr}";
 
     /// <summary>
     /// Does Essence of Defeat Reagent quest for Dark Crystal Shards
@@ -532,7 +521,7 @@ public class CoreNation
             string[] rPDSuni = null;
             if (returnPolicyDuringSupplies)
             {
-                rPDSuni = new[] { Uni()[1], Uni()[6], Uni()[9], Uni()[16], Uni()[20] };
+                rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
                 Core.AddDrop(rPDSuni);
                 Core.AddDrop("Blood Gem of Nulgath");
             }
@@ -644,20 +633,39 @@ public class CoreNation
         Core.AddDrop("Relic of Chaos", "Tainted Core");
         if (item != "Any")
             Core.AddDrop(item);
-        else
-            Core.AddDrop(bagDrops);
-
-        if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
-            sellMemVoucher = _sellMemVoucher;
+        else Core.AddDrop(bagDrops);
 
         bool OBoNPet = (Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath")
-                    & Bot.Inventory.Items.Where(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath").Any());
-
+            & Bot.Inventory.Items.Where(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet
+            && obon.Name == "Oblivion Blade of Nulgath").Any());
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
             Core.AddDrop("Tainted Soul");
 
-        Core.EquipClass(ClassType.Solo);
-        Core.FarmingLogger(item, quant);
+        string[] rPDSuni = null;
+        if (returnPolicyDuringSupplies)
+        {
+            rPDSuni = new[]
+            {
+                "Unidentified 1",
+                "Unidentified 6",
+                "Unidentified 9",
+                "Unidentified 16",
+                "Unidentified 20"
+            };
+            Core.AddDrop(rPDSuni);
+            Core.AddDrop("Blood Gem of Nulgath");
+        }
+
+        if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
+        {
+            Core.Logger("Sell Voucher of Nulgath: true");
+            sellMemVoucher = _sellMemVoucher;
+        }
+        if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
+            returnPolicyDuringSupplies = _returnSupplies;
+
+        if (item != "Any")
+            Core.FarmingLogger(item, quant);
 
         if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
             Core.RegisterQuests(2857, 609, 599);
@@ -665,17 +673,71 @@ public class CoreNation
             Core.RegisterQuests(2857, 609, 2561);
         else
             Core.RegisterQuests(2857, 609);
+
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Core", 10, false, log: false);
-            if (Bot.Inventory.IsMaxStack(item))
-                Core.Logger("Max Stack Hit.");
-            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
-        }
+            Core.HuntMonster("evilmarsh", "Tainted Elemental", log: false);
 
-        Bot.Drops.PickupAll();
-        if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
-            Core.SellItem("Voucher of Nulgath", all: true);
+            if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
+                Core.SellItem("Voucher of Nulgath", all: true);
+
+            if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.EnsureAccept(7551);
+
+                Core.HuntMonster("Tercessuinotlim", "dark makai", "Dark Makai Rune");
+
+                switch (item)
+                {
+                    case "Tainted Gem":
+                        Core.EnsureComplete(7551, 4769);
+                        break;
+                    case "Dark Crystal Shard":
+                        Core.EnsureComplete(7551, 4770);
+                        break;
+                    case "Gem of Nulgath":
+                        Core.EnsureComplete(7551, 6136);
+                        break;
+                    case "Blood Gem of the Archfiend":
+                        Core.EnsureComplete(7551, 22332);
+                        break;
+                    default: // Diamond of Nulgath
+                        Core.EnsureComplete(7551, 4771);
+                        break;
+                }
+            }
+
+            if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && item != "Voucher of Nulgath (non-mem)")
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.EnsureAccept(605);
+
+                Core.HuntMonster("cloister", "Acornent", "Diamonds of Time", isTemp: false);
+                Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Rune of Evil");
+
+                switch (item)
+                {
+                    case "Tainted Gem":
+                        Core.EnsureComplete(605, 4769);
+                        break;
+                    case "Dark Crystal Shard":
+                        Core.EnsureComplete(605, 4770);
+                        break;
+                    case "Gem of Nulgath":
+                        Core.EnsureComplete(605, 6136);
+                        break;
+                    case "Blood Gem of the Archfiend":
+                        Core.EnsureComplete(605, 22332);
+                        break;
+                    default: // Diamond of Nulgath
+                        Core.EnsureComplete(605, 4771);
+                        break;
+                }
+            }
+            if (item != "Any")
+                Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+        }
         Core.CancelRegisteredQuests();
     }
 
@@ -858,9 +920,9 @@ public class CoreNation
     {
         if (Core.CheckInventory("Fiend Token", quant))
             return;
-            
-            NewWorldsNewOpportunities("Fiend Token", quant);
-            AssistingDrudgen("Fiend Token", quant);
+
+        NewWorldsNewOpportunities("Fiend Token", quant);
+        AssistingDrudgen("Fiend Token", quant);
     }
 
 
