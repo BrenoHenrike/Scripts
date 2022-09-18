@@ -187,8 +187,11 @@ public class CoreArmyLite
     //    List<string> cellsWithPlayers = (Bot.Map.Players ?? new()).Select(p => p.Cell).ToList();
     //    return availableCells.First(c => !Bot.Map.Players.Any(p => p.Cell == c && Bot.Monsters.MapMonsters.Where(m => m.Cell == c).Count() > 0)) ?? "Enter";
     //}
-
-    public void DevideOnCells(params string[] cells)
+    
+    /// <summary>
+    /// Spreads players around the input cells, if no cells are set - will spread with any cell that has a monster in it.
+    /// </summary>
+    public void DivideOnCells(params string[] cells)
     {
         // Parsing all the player names from an unspecified amount of player name options
         List<string> players = new();
