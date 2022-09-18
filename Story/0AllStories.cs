@@ -72,7 +72,6 @@
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Borgars.cs
 
-
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/CruxShip.cs
 
@@ -213,7 +212,6 @@ public class AllStories
     public BloodMoon BloodMoon = new();
     public Borgars Borgars = new();
 
-    public CoreSummer Coll = new();
     public CastleTunnels CastleTunnels = new();
     public CruxShip CruxShip = new();
 
@@ -406,7 +404,7 @@ public class AllStories
         SOW.CompleteCoreSoW();
         Core.Logger($"Saga: Shadow of War [Part1&2] - Complete");
         #endregion
-        
+
         #region Summer 2015 AdventureMap
         CoreSummer.DoAll();
         Core.Logger($"Saga: Summer 2015 AdventureMap - Complete");
@@ -443,9 +441,6 @@ public class AllStories
 
         CastleTunnels.StoryLine();
         Core.Logger($"Story: CastleTunnels - Complete");
-
-        Coll.Collector();
-        Core.Logger($"Story: Collection - Complete");
 
         CelestialPast.CompleteCeletialPast();
         Core.Logger($"Story: CelestialPast - Complete");
