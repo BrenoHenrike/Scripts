@@ -66,7 +66,7 @@ public class ArmyBattlegroundE
             else if ((Bot.Player.Username == Bot.Config.Get<string>("player4").ToLower()))
                 Core.Jump("r5", "Left");
             else
-                Core.Jump("r2", "Center");
+                Core.Jump("r4", "Left");
             Core.RegisterQuests(3992);
             Army();
         }
