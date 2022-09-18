@@ -101,6 +101,8 @@
 
 //cs_include Scripts/Story/Oddities.cs
 
+//cs_include Scripts/Story/RavenlossSaga.cs
+
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
@@ -241,6 +243,8 @@ public class AllStories
     public J6Saga J6Saga = new();
 
     public Oddities Oddities = new();
+
+    public RavenlossSaga RavenlossSaga = new();
 
     public ShadowSlayerK ShadowSlayerK = new();
     public ShadowVoid ShadowVoid = new();
@@ -507,6 +511,10 @@ public class AllStories
 
         Oddities.StoryLine();
         Core.Logger($"Story: Oddities - {(Core.isCompletedBefore(8667) ? "Complete" : "Member Only")}");
+
+
+        RavenlossSaga.DoAll();
+        Core.Logger($"Saga: RavenLoss - Complete");
 
 
         ShadowSlayerK.Storyline();
