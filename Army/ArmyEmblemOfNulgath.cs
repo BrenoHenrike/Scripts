@@ -12,22 +12,26 @@ public class ArmyEmblemOfNulgath
     public CoreFarms Farm = new();
     public CoreArmyLite Army = new();
     public CoreNation Nation = new();
-    public string OptionsStorage = "ArmyEmblemOfNulgath";
+
+    public static CoreBots sCore = new();
+    public static CoreArmyLite sArmy = new();
+
+    public string OptionsStorage = "ArmyEmblemOfNulgathV2";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<string>("player1", "Account #1", "Name of one of your accounts.", ""),
-        new Option<string>("player2", "Account #2", "Name of one of your accounts.", ""),
-        new Option<string>("player3", "Account #3", "Name of one of your accounts.", ""),
-        new Option<string>("player4", "Account #4", "Name of one of your accounts.", ""),
-        new Option<string>("player5", "Account #5", "Name of one of your accounts.", ""),
-        new Option<string>("player6", "Account #6", "Name of one of your accounts.", ""),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
+        if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
         Core.BankingBlackList.AddRange(Loot);
@@ -53,21 +57,17 @@ public class ArmyEmblemOfNulgath
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop(Loot);
         Core.RegisterQuests(4748);
+
         if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-        {
             Army.AggroMonCells("r13", "r14", "r15", "r16");
-            Army.AggroMonStart("shadowblast");
-        }
-        else
-        {
-            Army.AggroMonCells("r13", "r14", "r15", "r16", "r17", "r4");
-            Army.AggroMonStart("shadowblast");
-        }
+        else Army.AggroMonCells("r13", "r14", "r15", "r16", "r17", "r4");
+        Army.AggroMonStart("shadowblast");
         Army.DivideOnCells("r13", "r14", "r15", "r16", "r17", "r4");
+
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
-        Army.AggroMonStop();
-        Army.AggroMonClear();
+
+        Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
 }
