@@ -207,7 +207,7 @@ public class CoreArmyLite
                 if (String.IsNullOrEmpty(player))
                     break;
 
-                players.Add(player.ToLower().Replace(" ", ""));
+                players.Add(player.ToLower().Trim());
             }
             catch
             {
