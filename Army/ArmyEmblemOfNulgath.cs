@@ -57,14 +57,13 @@ public class ArmyEmblemOfNulgath
         {
             Army.AggroMonCells("r13", "r14", "r15", "r16");
             Army.AggroMonStart("shadowblast");
-            Army.DivideOnCells("r13", "r14", "r15", "r16");
         }
         else
         {
             Army.AggroMonCells("r13", "r14", "r15", "r16", "r17", "r4");
             Army.AggroMonStart("shadowblast");
-            Army.DivideOnCells("r13", "r14", "r15", "r16", "r17", "r4");
         }
+        Army.DivideOnCells("r13", "r14", "r15", "r16", "r17", "r4");
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Army.AggroMonStop();
