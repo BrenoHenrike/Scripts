@@ -14,7 +14,8 @@
 //cs_include Scripts/Seasonal/MayThe4th/DarkLord.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
-//cs_include Scripts/Seasonal/Mogloween/BloodMoonToken.cs
+//cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
+//cs_include Scripts/Other\BloodMoonToken.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
 //cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
