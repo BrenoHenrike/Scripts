@@ -587,9 +587,9 @@ public class CoreDailies
         // Glimpse Into the Dark[Mem] - 8652
         if (Core.IsMember)
         {
-            if (CheckDaily(8653))
+            if (CheckDaily(8652))
             {
-                Core.EnsureAccept(8653);
+                Core.EnsureAccept(8652);
                 if (Core.isCompletedBefore(3119))
                 {
                     Core.AddDrop("Kraken Doubloon");
@@ -603,7 +603,7 @@ public class CoreDailies
                 else Core.HuntMonster("chaoskraken", "Chaos Kraken", "Kraken Doubloon", 13, isTemp: false, publicRoom: true);
                 Core.HuntMonster($"ancienttrigoras", "Ancient Trigoras", "Ancient Trigora’s Horns", 3, isTemp: false);
                 Core.KillMonster("gravechallenge", "r19", "Left", "Graveclaw the Defiler", "Graveclaw's Broken Axe", isTemp: false);
-                Core.EnsureComplete(8653);
+                Core.EnsureComplete(8652);
                 Bot.Wait.ForPickup("Void Aura");
             }
         }
