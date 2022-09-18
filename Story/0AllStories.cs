@@ -59,6 +59,8 @@
 
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
+
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
 
@@ -70,7 +72,7 @@
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Borgars.cs
 
-//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
+
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/CruxShip.cs
 
@@ -191,6 +193,9 @@ public class AllStories
     // Shadow of War
     public CoreSoW SOW = new();
 
+    //Summer 2015 AdventureMap
+    public CoreSummer CoreSummer = new();
+
     // Throne of Darkness
     public CoreToD TOD = new();
 
@@ -212,7 +217,6 @@ public class AllStories
     public CastleTunnels CastleTunnels = new();
     public CruxShip CruxShip = new();
 
-    public Deadmoor Deadmoor = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -400,7 +404,12 @@ public class AllStories
 
         #region Shadow Of War
         SOW.CompleteCoreSoW();
-        Core.Logger($"Saga: Shadow of War [Part1] - Complete");
+        Core.Logger($"Saga: Shadow of War [Part1&2] - Complete");
+        #endregion
+        
+        #region Summer 2015 AdventureMap
+        CoreSummer.DoAll();
+        Core.Logger($"Saga: Summer 2015 AdventureMap - Complete");
         #endregion
 
         #region ToD
