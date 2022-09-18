@@ -604,7 +604,7 @@ public class CoreSoW
         Story.KillQuest(7472, "innershadows", "Krahen");
     }
 
-    public void Tyndarius()
+    public void Tyndarius(bool WarTrainingMerge = false)
     {
         if (Core.isCompletedBefore(8243))
             return;
@@ -758,6 +758,8 @@ public class CoreSoW
 
         //The Goddess of War
         Story.KillQuest(8203, "wartraining", "Varga");
+        if (WarTrainingMerge)
+            return;
 
         // Warfury Training
         Story.KillQuest(8204, "wartraining", "Warfury Soldier");
