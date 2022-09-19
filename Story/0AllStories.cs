@@ -383,7 +383,7 @@ public class AllStories
 
 
         BrightOak.doall();
-        Core.Logger($"BrightOak Complete");
+        Core.Logger($"Story: BrightOak - Complete");
 
         CelestialArena.Arena1to10();
         CelestialArena.Arena11to20();
@@ -397,7 +397,7 @@ public class AllStories
         Core.Logger($"Story: GoldenArena - Complete");
 
         LivingDungeon.LivingDungeonStory();
-        Core.Logger($"LivingDungeon Complete");
+        Core.Logger($"Story: LivingDungeon - Complete");
 
         OrbHunt.SagaName();
         Core.Logger($"Story: Orb Hunt - Complete");
