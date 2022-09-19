@@ -96,6 +96,22 @@ public class CoreNation
         "Blood Gem of the Archfiend"
     };
 
+    /// <summary>
+    /// Misc items to accept during Bloody Chaos if turned on
+    /// </summary>
+    public string[] BloodyChaosSupplies = 
+    {
+        "Tainted Gem",
+        "Dark Crystal Shard",
+        "Diamond of Nulgath",
+        "Voucher of Nulgath",
+        "Voucher of Nulgath (non-mem)",
+        "Unidentified 10",
+        "Unidentified 13",
+        "Gem of Nulgath",
+        "Relic of Chaos"
+    };
+
     public string Uni(int nr)
         => $"Unidentified {nr}";
 
@@ -958,7 +974,7 @@ public class CoreNation
             while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
-        BloodyChaos(quant);
+        BloodyChaos(quant, true);
         KisstheVoid(quant);
     }
 
@@ -1049,14 +1065,16 @@ public class CoreNation
     /// Do Bloody Chaos quest for Blood Gems
     /// </summary>
     /// <param name="quant">Desired quantity, 100 = max stack</param>
-    public void BloodyChaos(int quant = 100)
+    public void BloodyChaos(int quant = 100, bool Relic = false)
     {
         if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
             return;
 
         Core.AddDrop("Blood Gem of the Archfiend");
+        if (Relic)
+            Core.AddDrop(BloodyChaosSupplies);
         Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
-        Core.RegisterQuests(7816);
+        Core.RegisterQuests(Relic ? new[] { 7816, 2857 } : new[] { 7816 });
         Bot.Quests.UpdateQuest(363);
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem Of The Archfiend", quant))

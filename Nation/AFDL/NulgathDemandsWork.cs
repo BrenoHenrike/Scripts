@@ -75,7 +75,7 @@ public class NulgathDemandsWork
                 Nation.FarmGemofNulgath(15);
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
-                Core.EnsureComplete(5259);
+                Core.EnsureCompleteChoose(5259, items);
                 Core.ToBank(item);
 
                 if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
