@@ -27,7 +27,7 @@ public class CoreSummer
         CyserosSecret();
     }
 
-    public void DreadSpace()
+    public void DreadSpace(bool ReplicatorMerge = false)
     {
         if (Core.isCompletedBefore(4286))
             return;
@@ -69,6 +69,8 @@ public class CoreSummer
 
         //Recover J6's Head! (4272)
         Story.KillQuest(4272, "dreadspace", "Holo Gunslinger|Holo Outlaw");
+        if (ReplicatorMerge)
+            return;
 
         //Titanic II (4274)
         Story.KillQuest(4274, "dreadspace", "Jack|Rosie");
