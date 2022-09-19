@@ -54,8 +54,8 @@ public class CoreSummer
         {
             Core.EnsureAccept(4269);
             Core.HuntMonster("dreadspace", "Cyber Horg", "Holodeck Power Source");
-            Core.HuntMonster("dreadspace", "Undead Space Marine", "Holodeck Force Field", 7);
-            Core.HuntMonster("dreadspace", "Undead Space Marine", "Holodeck EbilCorp AI");
+            Core.HuntMonster("dreadspace", "Undead Space Warrior", "Holodeck Force Field", 7);
+            Core.HuntMonster("dreadspace", "Undead Star Ranger", "Holodeck EbilCorp AI");
             Core.HuntMonster("dreadspace", "Undead Space Marine", "Holodeck Projector", 7);
             Core.EnsureComplete(4269);
         }
