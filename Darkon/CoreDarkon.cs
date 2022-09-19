@@ -27,7 +27,7 @@ public class CoreDarkon
 
         Core.Join("tercessuinotlim");
         Bot.Sleep(10000);
-        if (Bot.Map.PlayerCount >= 5)
+        if (Bot.Map.PlayerNames.Count >= 5)
             ThirdErrand(Quantity);
         SecondErrand(Quantity, true);
         FirstErrand(Quantity);
