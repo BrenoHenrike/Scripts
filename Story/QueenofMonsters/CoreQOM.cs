@@ -706,11 +706,11 @@ public class CoreQOM
         //Still Not Working
         Story.KillQuest(5871, "charredpath", new[] { "Ravenous Parasite", "Plague Spreader" });
 
-        //Get the Final Ingredients
+        //Get the Final Ingredients       
         if (!Story.QuestProgression(5872))
         {
             Core.EnsureAccept(5872);
-            Core.BuyItem("Embersea", 1100, 1749);
+            Core.BuyItem("arcangrove", 211, "Health Potion", 25);
 
             Core.HuntMonster("Arcangrove", "Seed Spitter", "Uncorrupted Spitter Seeds", 3);
             Core.HuntMonster("poisonforest", "Treeant", "Treeant Berries", 4);
