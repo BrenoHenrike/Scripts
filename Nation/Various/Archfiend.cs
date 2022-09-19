@@ -42,7 +42,12 @@ public class ArchFiend
             Farm.Experience(50);
             Core.EnsureAccept(8476);
             Nation.FarmUni13(3);
-            Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
+            if (Bot.Player.Gold >= 2000000)
+            {
+                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 6);
+                Core.BuyItem("tercessuinotlim", 1951, "Pink Star Diamond of Nulgath");
+            }
+            else Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
             Core.HuntMonster("mercutio", "Mercutio", "Immortal Joe's Black Star", 1, false);
             if (!Core.CheckInventory("Abyssal Star"))
             {
