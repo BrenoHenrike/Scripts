@@ -34,7 +34,6 @@ public class CoreDarkon
     }
 
     public void FirstErrand(int Quantity = 222)
-
     {
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
