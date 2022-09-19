@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/SkyPirate.cs
+//cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Other/Badges/CornelisReborn.cs
 //cs_include Scripts/Other/Badges/DerpMoosefishBadge.cs
 //cs_include Scripts/Other/Badges/DesolothFreed.cs

@@ -46,6 +46,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialPast.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
 
@@ -106,7 +107,7 @@
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
-//cs_include Scripts/Story/SkyPirate.cs
+//cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/StarSinc.cs
 
 //cs_include Scripts/Story/Table.cs
@@ -182,6 +183,7 @@ public class AllStories
     public BrightOak BrightOak = new();
     public CelestialArenaQuests CelestialArena = new();
     public CelestialPast CelestialPast = new();
+    public GoldenArena GoldenArena = new();
     public LivingDungeon LivingDungeon = new();
     public OrbHunt OrbHunt = new();
 
@@ -249,7 +251,7 @@ public class AllStories
     public ShadowSlayerK ShadowSlayerK = new();
     public ShadowVoid ShadowVoid = new();
     public Shinkansen Shinkansen = new();
-    public SkyPirateQuests SkyPirateQuests = new();
+    public SkyGuardSaga SkyGuardSaga = new();
     public StarSinc StarSinc = new();
 
     public Table Table = new();
@@ -379,6 +381,7 @@ public class AllStories
         QOM.CompleteEverything();
         Core.Logger($"Saga: Queen of Monsters - Complete");
 
+
         BrightOak.doall();
         Core.Logger($"BrightOak Complete");
 
@@ -386,6 +389,12 @@ public class AllStories
         CelestialArena.Arena11to20();
         CelestialArena.Arena21to29();
         Core.Logger($"Story: Celestial Arena - Complete");
+
+        CelestialPast.CompleteCeletialPast();
+        Core.Logger($"Story: Celestial Past - Complete");
+
+        GoldenArena.StoryLine();
+        Core.Logger($"Story: GoldenArena - Complete");
 
         LivingDungeon.LivingDungeonStory();
         Core.Logger($"LivingDungeon Complete");
@@ -526,8 +535,8 @@ public class AllStories
         Shinkansen.Storyline();
         Core.Logger($"Story: Shinkansen - Complete");
 
-        SkyPirateQuests.Storyline();
-        Core.Logger($"Story: Sky Pirate - Complete");
+        SkyGuardSaga.DoAll();
+        Core.Logger($"Saga: SkyGuard Saga - Complete");
 
         StarSinc.StarSincQuests();
         Core.Logger($"Story: Star Sinc - Complete");
