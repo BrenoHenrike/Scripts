@@ -51,8 +51,6 @@ public class CoreHollowbornPaladin
         if (Core.CheckInventory(PostSummoningItems))
             return;
 
-        Story.PreLoad();
-
         HB.HardcoreContract();
         HBShadowOfFate();
         Farm.Experience();
@@ -73,8 +71,6 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory("Hollowborn Paladin"))
             return;
-
-        Story.PreLoad();
 
         HB.HardcoreContract();
         Farm.Experience(75);
@@ -111,8 +107,6 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory("Hollowborn Paladin Helmet"))
             return;
-
-        Story.PreLoad();
 
         HB.HardcoreContract();
         HBPaladin();
@@ -156,8 +150,6 @@ public class CoreHollowbornPaladin
     {
         if (Core.CheckInventory("Hollowborn Shadow of Fate"))
             return;
-
-        Story.PreLoad();
 
         HB.HardcoreContract();
         HBPaladin();

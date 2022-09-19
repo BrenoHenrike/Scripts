@@ -26,7 +26,7 @@ public class DragonCapitalStory
 
         DPS.DragonPirate();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 8279 Dracon-you Not
         Story.KillQuest(8279, "dragoncapital", "Pirate Draconian");

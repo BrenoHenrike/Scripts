@@ -28,7 +28,7 @@ public class BloodMoon
 
     public void BloodMoonMap()
     {
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Farm);
 

@@ -1,11 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
 public class Artixpointe
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
-
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -21,8 +22,7 @@ public class Artixpointe
         if (Core.CheckInventory("Omni Artifact"))
             return;
 
-        Core.EquipClass(ClassType.Solo);
-
+        Story.PreLoad(this);
 
         if (!Core.CheckInventory("Unholy Wasabi"))
         {

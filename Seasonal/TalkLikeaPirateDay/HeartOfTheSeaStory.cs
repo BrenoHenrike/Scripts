@@ -22,7 +22,7 @@ public class HeartOfTheSeaStory
         if (Core.isCompletedBefore(6520))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Puff Those Fish 6511
         Story.KillQuest(6511, "HeartOfTheSea", "Pufferfish");

@@ -22,7 +22,7 @@ public class RangdaSeasonal
         if (Core.isCompletedBefore(7622))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 7617 Gather Flowers
         if (!Story.QuestProgression(7617))

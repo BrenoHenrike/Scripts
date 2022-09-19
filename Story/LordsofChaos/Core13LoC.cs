@@ -48,7 +48,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(6219))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Enter the gates
         Story.KillQuest(183, "battleundera", "Skeletal Fire Mage");
@@ -105,7 +105,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(272))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Winged Spies
         Story.KillQuest(245, "mobius", "Chaos Sp-Eye");
@@ -196,7 +196,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(363))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Snowbeard's Gold");
 
@@ -360,7 +360,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(488))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Turtle Power
         if (!Story.QuestProgression(380))
@@ -480,7 +480,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(598))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Red's Big Wolf Slaying Axe");
 
@@ -619,7 +619,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(710))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Stairway to Heaven
         Story.KillQuest(648, "stairway", new[] { "Rock Lobster", "Grateful Undead" });
@@ -704,7 +704,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(847))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Observing the Observatory
         Story.MapItemQuest(805, "arcangrove", 139);
@@ -861,7 +861,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(1005))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Sandport and Starboard
         Story.MapItemQuest(930, "sandport", 251);
@@ -972,7 +972,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(1473))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Troll Stink!
         if (!Story.QuestProgression(1232))
@@ -1180,7 +1180,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(1468))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Horc Stink! 
         if (!Story.QuestProgression(1226))
@@ -1344,7 +1344,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(2519))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Time to Learn the Truth
         Story.MapItemQuest(2239, "thespan", new[] { 1358, 1359, 1360, 1361, 1362, 1363 });
@@ -1574,7 +1574,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(2814))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Final Rest
         Story.KillQuest(2612, "blackhorn", "Restless Undead");
@@ -1706,7 +1706,7 @@ public class Core13LoC
             Core.HuntMonster("deathpits", "Ghastly Darkblood", "Primarch Spear");
             Core.EnsureComplete(2731);
         }
-        
+
         //Ties to Life
         Story.MapItemQuest(2732, "deathpits", 1694, 12);
 
@@ -1786,7 +1786,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(3189))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
 
@@ -1959,7 +1959,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(3160))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Bandit Bounty
         Story.KillQuest(3077, "archives", "Chaos Bandit");
@@ -2069,7 +2069,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(3881))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         if (!Core.IsMember)
         {
@@ -2251,7 +2251,7 @@ public class Core13LoC
             Core.HuntMonsterMapID("finalbattle", 23, "Drakath Defeated");
             Core.EnsureComplete(3878);
         }
-        
+
         //Defeat the 12 Lords of Chaos!
         if (!Story.QuestProgression(3879))
         {
@@ -2282,7 +2282,7 @@ public class Core13LoC
         if (Core.isCompletedBefore(3824))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Arrive in DreadHaven
         Story.ChainQuest(3812);

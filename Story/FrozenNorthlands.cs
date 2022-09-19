@@ -28,7 +28,7 @@ public class FrozenNorthlands
         if (Core.isCompletedBefore(3638))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Cleanse the Chaorruption (3634)
         Story.KillQuest(3634, "chaosnorth", new[] { "Chaotic Symbiote", "Chaorruption" });

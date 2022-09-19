@@ -60,7 +60,7 @@ public class HighSeasCommander
         if (Core.isCompletedBefore(6920))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //6918 | Sweep the Deck
         Story.KillQuest(6918, "highseas", "Skeleton Crew");

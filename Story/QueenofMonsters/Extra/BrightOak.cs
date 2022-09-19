@@ -28,7 +28,7 @@ public class BrightOak
         if (Core.isCompletedBefore(4810))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Ælfred();
         AvenGreywhorl();

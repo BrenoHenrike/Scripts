@@ -33,7 +33,7 @@ public class CoreAstravia
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.Join("Garden");
         Bot.Sleep(2000);
@@ -124,7 +124,7 @@ public class CoreAstravia
         Eridani();
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Caro-Kann Defense
         Story.KillQuest(7993, "astravia", "Monstrous Dove");
@@ -170,7 +170,7 @@ public class CoreAstravia
         Astravia();
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Terpsichore, the Chained
         if (!Core.isCompletedBefore(8247))
@@ -234,7 +234,7 @@ public class CoreAstravia
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Atata
         Story.MapItemQuest(8386, "astraviajudge", 9275, 6);
@@ -291,7 +291,7 @@ public class CoreAstravia
         AstraviaJudgement();
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Dorian
         Story.MapItemQuest(8521, "eridanipast", 9681);
@@ -348,7 +348,7 @@ public class CoreAstravia
         EridaniPast();
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Fantaisie-Impromptu
         Story.MapItemQuest(8592, "astraviapast", 10017);
@@ -391,7 +391,7 @@ public class CoreAstravia
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Aries Tammuz
         Story.MapItemQuest(8630, "FirstObservatory", 10083);
@@ -438,7 +438,7 @@ public class CoreAstravia
 
         FirstObservatory();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //The Fool 8678
         Story.MapItemQuest(8678, "genesisgarden", 10196, 6);
@@ -479,7 +479,7 @@ public class CoreAstravia
 
         GenesisGarden();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //8723|Justice, Reversed
         Story.MapItemQuest(8723, "theworld", 10289);

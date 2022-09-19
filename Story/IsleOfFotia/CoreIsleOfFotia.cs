@@ -31,7 +31,7 @@ public class CoreIsleOfFotia
         if (Core.isCompletedBefore(2949))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Feeding the Frozen Flame 2942
         Story.KillQuest(2942, "fotia", "Fotia Elemental");
@@ -71,7 +71,7 @@ public class CoreIsleOfFotia
 
         Fotia();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Soul Searching 3010
         Story.KillQuest(3010, "UnderRealm", "Underworld Soul");
@@ -111,7 +111,7 @@ public class CoreIsleOfFotia
 
         UnderRealm();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Sullen Souls Survival  3022
         Story.KillQuest(3022, "Styx", "Sullen Soul");
@@ -133,7 +133,7 @@ public class CoreIsleOfFotia
 
         Styx();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //IMPressive  3034
         Story.KillQuest(3034, "Judgement", "Underworld Imp");
@@ -172,7 +172,7 @@ public class CoreIsleOfFotia
 
         Judgement();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Defend Against the Scorned 4249
         Story.KillQuest(4249, "DageFortress", "Sullied Master");

@@ -43,7 +43,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(6852))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Shadow Medals: Defend the Village! 6846
         Story.KillQuest(6846, "shadowwar", "Shadowflame Slasher");
@@ -72,7 +72,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(6864))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Defeat the Minions (6856)
         Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner|Shadow Mage");
@@ -111,7 +111,7 @@ public class CoreSoW
 
         ShadowlordKeep();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Fuel for the Cell (6865)
         Story.KillQuest(6865, "timestream", "Spacetime Energy");
@@ -128,7 +128,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(6883))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Get A Disguise (6873)
         Story.KillQuest(6873, "granitecove", "Blacksea Pirate");
@@ -169,7 +169,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(6896))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Get the Keys (6886)
         Story.KillQuest(6886, "blackseakeep", "Blacksea Scallywag");
@@ -211,7 +211,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(6960))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //"Salute" the Magpie (6949)
         Story.KillQuest(6949, "junkhoard", "Magpie");
@@ -257,7 +257,7 @@ public class CoreSoW
 
         Junkhoard();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Whispering Walls (6961)
         Story.MapItemQuest(6961, "junkheap", 6500, 5);
@@ -309,7 +309,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(6999))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Dragonlord Medals: Defend Arcangrove! (6993)
         Story.KillQuest(6993, "shadowgrove", "Shadow Dragonlord");
@@ -338,7 +338,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(7062))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Gather Offerings (7050)
         Story.MapItemQuest(7050, "aozorahills", 6643, 5);
@@ -393,7 +393,7 @@ public class CoreSoW
 
         AozoraHills();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //What's That I Hear? (7106)
         Story.MapItemQuest(7106, "ghostnexus", 6700);
@@ -440,7 +440,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(7348))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Shadow Medal (7340)
         Story.KillQuest(7340, "shadowsong", "Shadowflame Troll");
@@ -475,7 +475,7 @@ public class CoreSoW
         if (Core.isCompletedBefore(7428))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         if (!Story.QuestProgression(7419))
         {
@@ -522,7 +522,7 @@ public class CoreSoW
             return;
 
         DarkAlly();
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Clear the Shadows --DAGE--
         Story.MapItemQuest(7446, "darkalliance", 7224, 8);
@@ -564,7 +564,7 @@ public class CoreSoW
             return;
 
         DarkAlliance();
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Gather the Shadows (7461)
         Story.KillQuest(7461, "innershadows", "Infected Minion|Shadowcrow");

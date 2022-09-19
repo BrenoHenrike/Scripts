@@ -32,7 +32,7 @@ public class AvastBadge
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 2389|Aye for an Aye
         if (!Story.QuestProgression(2389))

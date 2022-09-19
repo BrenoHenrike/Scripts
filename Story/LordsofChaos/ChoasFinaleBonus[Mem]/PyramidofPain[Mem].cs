@@ -28,7 +28,7 @@ public class PyramidofPain
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Prove Your Worth
         Story.KillQuest(3640, "pyramidpain", new[] { "Cactus Creeper ", "Golden Scarab " });

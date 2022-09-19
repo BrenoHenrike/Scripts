@@ -38,7 +38,7 @@ public class CoreDageTheEvilIsland
             Core.Logger("You have already completed DarkFortress storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Ultra Dark Mystery Stone Of Evil Animosity");
 
@@ -80,7 +80,7 @@ public class CoreDageTheEvilIsland
             Core.Logger("You have already completed Seraph storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Explore the Order's Headquarters 4181
         Story.MapItemQuest(4181, "Seraph", 3280);
@@ -100,7 +100,7 @@ public class CoreDageTheEvilIsland
             Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
             Core.EnsureComplete(4185);
         }
-        
+
         Core.Logger("if the quest \"Finders Keepers\" [4186] is not Unlocked, the Bot will then do the previous Quest \"It's War!\" 10x");
 
         Core.RegisterQuests(4185);
@@ -116,7 +116,7 @@ public class CoreDageTheEvilIsland
             Core.Logger("You have already completed LegionCrypt storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Finders Keepers 4186
         Story.KillQuest(4186, "LegionCrypt", "Gravedigger");
@@ -159,7 +159,7 @@ public class CoreDageTheEvilIsland
             Core.Logger("You have already completed Envy storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop(RequiredItems);
 
@@ -247,7 +247,7 @@ public class CoreDageTheEvilIsland
             Core.Logger("You have already completed Laken storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Get Rid of the Guards 5648
         Story.KillQuest(5648, "Laken", new[] { "Cyborg Dog", "Augmented Guard" });

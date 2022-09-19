@@ -30,7 +30,7 @@ public class NecroTowerStory
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //A Brutal Mistake (1077)
 

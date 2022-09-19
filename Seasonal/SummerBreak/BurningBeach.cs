@@ -22,7 +22,7 @@ public class BurningBeachStory
         if (Core.isCompletedBefore(7577))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //7573 | Suited to Shield
         Story.KillQuest(7573, "burningbeach", new[] { "Shark", "Water Goblin" });

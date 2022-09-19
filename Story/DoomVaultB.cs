@@ -31,13 +31,13 @@ public class DoomVaultB
             Core.Logger("DoomVaultB not unlocked, Completing DoomVault");
             DV.StoryLine();
         }
-        
+
         if (Core.isCompletedBefore(3004))
             return;
 
         Core.AcceptandCompleteTries = 1;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Grim Underdungeon I        
         Story.KillQuest(2972, "Doomvaultb", "Grimmer Soldier");

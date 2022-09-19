@@ -1383,12 +1383,8 @@ public class CoreBots
         if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
             return;
 
-        Logger("Debug Logger is currently not functional because it cant read the compiled script properly");
-        DL_Enabled = false;
         string _class = _this.GetType().ToString();
-        string[] compiledScript = Bot.Manager.CompiledScript.Split(
-                                                                new string[] { "\r\n", "\r", "\n" },
-                                                                StringSplitOptions.None);
+        string[] compiledScript = CompiledScript();
 
         int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
 
@@ -1427,6 +1423,9 @@ public class CoreBots
         DL_Enabled = true;
         LoggerInChat = false;
     }
+    public string[] CompiledScript() => Bot.Manager.CompiledScript.Split(
+                                                                new string[] { "\r\n", "\r", "\n" },
+                                                                StringSplitOptions.None);
 
     /// <summary>
     /// Creates a Message Box with the desired text and caption

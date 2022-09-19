@@ -40,7 +40,7 @@ public class CoreSoC
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Check their Teeth 7561
         Story.KillQuest(7561, "dualplane", "Terrarsite");
@@ -84,7 +84,7 @@ public class CoreSoC
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Mega Shadow Medals
         if (!Bot.Quests.IsUnlocked(7687))
@@ -115,7 +115,7 @@ public class CoreSoC
             Core.Logger("You have already completed Laguna Beach storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Eyes on You 7690
         Story.KillQuest(7690, "lagunabeach", "Flying Fisheye");
@@ -162,7 +162,7 @@ public class CoreSoC
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Fight the Crew 7702
         Story.KillQuest(7702, "laguna", "ShadowChaos Brigand");
@@ -208,7 +208,7 @@ public class CoreSoC
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Invasion!
         Story.KillQuest(7728, "Shadowoff", new[] { "Shadowflame Militia", "Shadowflame Paladin", "Shadowflame Scout", "Shadowflame Sorcerer" });
@@ -234,7 +234,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightShadow storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Protect the Light 7733
         Story.KillQuest(7733, "BrightShadow", "BrightFall light");
@@ -262,7 +262,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightChaos storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //The Situation 7740
         Story.KillQuest(7740, "BrightChaos", "Shadowflame Militia");
@@ -307,7 +307,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightForest storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
         //Blood And Ashes 7756
         Story.KillQuest(7756, "BrightForest", new[] { "Shadow Flame", "ShadowFlame Scout" });
 
@@ -326,7 +326,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightForestPast storyline");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Slay the Wraiths 7759
         Story.KillQuest(7759, "BrightForestPast", "Time Wraith");
@@ -363,7 +363,7 @@ public class CoreSoC
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //The Dragon 7767
         Story.KillQuest(7767, "BrightForest", "ShadowFlame Dragon");

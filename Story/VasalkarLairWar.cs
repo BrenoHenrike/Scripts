@@ -31,7 +31,7 @@ public class LairWar
         if (Core.isCompletedBefore(6689))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //6685 | Flamefang Medals
         Core.RegisterQuests(6685, 6686);
@@ -66,7 +66,7 @@ public class LairWar
         if (Core.isCompletedBefore(6694))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //6690 | Defender Medals
         Core.RegisterQuests(6690, 6691);

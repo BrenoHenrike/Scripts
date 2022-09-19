@@ -22,7 +22,7 @@ public class DreamPalace
         if (Core.isCompletedBefore(7874))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Potent Ruby 7869
         Story.KillQuest(7869, "DreamPalace", new[] { "Flaming Harpy|Mote of Power", "Golmoth" });

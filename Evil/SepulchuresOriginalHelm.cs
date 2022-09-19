@@ -38,7 +38,7 @@ public class SepulchuresOriginalHelm
         if (Core.CheckInventory("Sepulchure's Original Helm"))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Sepulchure's Original Helm");
         if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))

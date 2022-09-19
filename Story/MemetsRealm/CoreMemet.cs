@@ -30,7 +30,7 @@ public class MemetsRealm
         if (Core.isCompletedBefore(7010))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //7000 | Sweat - tastic
         Story.KillQuest(7000, "beachparty", "Solar Elemental");
@@ -79,7 +79,7 @@ public class MemetsRealm
         if (Core.isCompletedBefore(5571))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //5558 | Drink #1: the Blue Moglin
         Story.MapItemQuest(5558, "yulgar", 5034);
@@ -149,7 +149,7 @@ public class MemetsRealm
         if (Core.isCompletedBefore(6103))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Needle in a Cedar Stack (6091)
         Story.MapItemQuest(6091, "moonlab", 5523);
@@ -202,7 +202,7 @@ public class MemetsRealm
         if (Core.isCompletedBefore(6661))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //No More Tears (6656)
         Story.KillQuest(6656, "spookeasy", "Happy Cloud");
@@ -230,7 +230,7 @@ public class MemetsRealm
 
         Spookeasy();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Jailbreak! (6662)
         Story.KillQuest(6662, "dreammaster", "Prison Wall");
@@ -265,7 +265,7 @@ public class MemetsRealm
             Core.Logger("You need to be a member for complete the /nightmare questline.");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Fear of Clowns? 4143
         Story.KillQuest(4143, "Nightmare", "Bobble Clown");
@@ -357,7 +357,7 @@ public class MemetsRealm
         if (Core.isCompletedBefore(7535))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Hack the System (7523)
         Story.MapItemQuest(7523, "byrodax", 7395);

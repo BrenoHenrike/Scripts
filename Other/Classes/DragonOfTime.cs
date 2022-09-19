@@ -49,7 +49,7 @@ public class DragonOfTime
         if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(Extras)))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Acquiring Ancient Secrets
         if (!Story.QuestProgression(7716))

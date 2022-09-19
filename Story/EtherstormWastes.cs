@@ -22,7 +22,7 @@ public class EtherStormWastes
         if (Core.isCompletedBefore(1639))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Explore The DragonPlane 1384
         Story.MapItemQuest(1384, "dragonplane", new[] { 682, 683, 684, 685, 686 });

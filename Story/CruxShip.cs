@@ -22,7 +22,7 @@ public class CruxShip
         if (Core.isCompletedBefore(4616))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //By the Power of the Moon 4598
         Story.KillQuest(4598, "CruxShip", "Shadow Locust");

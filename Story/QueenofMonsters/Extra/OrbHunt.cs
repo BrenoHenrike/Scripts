@@ -22,7 +22,7 @@ public class OrbHunt
         if (Core.isCompletedBefore(8349))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 8302|Fallen Nopperabo
         Story.KillQuest(8302, "queenreign", "Samurai Nopperabo");

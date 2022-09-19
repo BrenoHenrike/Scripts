@@ -44,7 +44,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(888))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Fiends in High Places
         Story.KillQuest(883, "airship", "Sky Pirate Draconian");
@@ -75,7 +75,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(1041))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // School's Out for the Invasion 1038
         Story.MapItemQuest(1038, "academy", 399);
@@ -96,7 +96,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(1107))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Banditing Together  
         Story.KillQuest(1104, "anders", new[] { "Dravir", "Copper Sky Pirate" });
@@ -131,7 +131,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(1288))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // SkyPirates Slaying Strategies
         Story.KillQuest(1286, "strategy", "Dravir Pirate");
@@ -155,7 +155,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(1700))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Deserter in the Ranks 1696
         Story.KillQuest(1696, "Lair", "Golden Draconian");
@@ -181,7 +181,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(2042))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Bridge the Gap 2038
         Story.MapItemQuest(2038, "HighCommand", 997, 4);
@@ -210,7 +210,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(2252))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Hoof it til it Beaks 2248
         while (!Story.QuestProgression(2248) || !Core.CheckInventory("Bag of Gross Supplies") || !Core.CheckInventory(new[] { "Tanned Skin", "Hootbeak Piercer" }))
@@ -266,7 +266,7 @@ public class SkyGuardSaga
         if (Core.isCompletedBefore(2488))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Break the Chains 2484
         if (!Story.QuestProgression(2484) || !Core.CheckInventory("All the Guards Defeated"))

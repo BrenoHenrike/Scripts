@@ -30,7 +30,7 @@ public class XansLair
         if (Core.isCompletedBefore(1261))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.KillQuest(1242, "volcano", "Lava Golem");
         Story.MapItemQuest(1243, "volcano", 526, 3);
@@ -64,7 +64,7 @@ public class XansLair
         if (Core.isCompletedBefore(1739))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.MapItemQuest(1733, "xantown", 922);
         Story.KillQuest(1734, "xantown", "Fire Imp");
@@ -80,7 +80,7 @@ public class XansLair
         if (Core.isCompletedBefore(1740))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.KillQuest(1740, "xantown", "Xan");
     }
@@ -90,7 +90,7 @@ public class XansLair
         if (Core.isCompletedBefore(2157))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.MapItemQuest(2151, "xancave", 1220);
         Story.KillQuest(2152, "xancave", "Lava Goblin");

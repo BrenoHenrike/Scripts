@@ -22,7 +22,7 @@ public class GoldenArena
         if (Core.isCompletedBefore(6085))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Greenguard Champion Badge 6076
         Story.KillQuest(6076, "DragonChallenge", "Greenguard Dragon");

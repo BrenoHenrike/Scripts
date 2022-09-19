@@ -22,7 +22,7 @@ public class SeraphicWar_Story
         if (Core.isCompletedBefore(6245))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Get the Parts
         Story.KillQuest(6238, "worldsoul", new[] { "Dwakel Infiltrator", "Dwakel Infiltrator", "Dwakel Infiltrator", "Dwakel Infiltrator" });

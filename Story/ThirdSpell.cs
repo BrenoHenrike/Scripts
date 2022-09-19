@@ -30,7 +30,7 @@ public class ThirdSpell
             return;
 
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop(RequiredItems);
 

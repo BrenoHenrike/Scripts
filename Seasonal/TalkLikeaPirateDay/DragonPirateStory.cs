@@ -22,7 +22,7 @@ public class DragonPirateStory
         if (Core.isCompletedBefore(8275))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 8268 They Be Draconian
         Story.KillQuest(8268, "dragonpirate", "Pirate Draconian");

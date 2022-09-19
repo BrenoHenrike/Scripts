@@ -24,7 +24,7 @@ public class SuperSLAYINBadge
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Bot.Drops.Start();
 

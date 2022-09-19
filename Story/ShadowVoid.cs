@@ -31,7 +31,7 @@ public class ShadowVoid
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Pieces of Light 7123
         Story.KillQuest(7123, "ShadowVoid", "Light Matter");

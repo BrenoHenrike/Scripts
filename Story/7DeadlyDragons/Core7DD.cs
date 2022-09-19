@@ -22,7 +22,7 @@ public class Core7DD
         if (questIDs.All(qID => Core.isCompletedBefore(qID)))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
         doAll = true;
 
         Gluttony();
@@ -41,7 +41,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Gluttony");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Guts for Glutes
         Story.KillQuest(5903, "gluttony", "Glutus");
@@ -99,7 +99,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Pride");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Defeat the Drakel
         Story.KillQuest(5917, "pride", "Storm Drakel");
@@ -145,7 +145,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Greed");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Looting is for Sneevils
         Story.KillQuest(5934, "greed", "Sneevil Looter");
@@ -188,7 +188,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Sloth");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         HazMatSuit();
 
@@ -277,7 +277,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Lust");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Hopelessly Devoted
         Story.KillQuest(5961, "lust", "Devoted Admirer");
@@ -346,7 +346,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Envy");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Talk to the Guard
         Story.MapItemQuest(5983, "dragoncrown", 5420, 1);
@@ -426,7 +426,7 @@ public class Core7DD
 
         if (doAll)
             Core.Logger("7 Deadly Dragons - Wrath");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Decimate the Horde
         Story.KillQuest(6110, "wrath", new[] { "Bone Terror", "Fishbones" });

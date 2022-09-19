@@ -22,7 +22,7 @@ public class Originul_Story
         if (Core.isCompletedBefore(7889))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Inquisite the Inquisitors
         Story.KillQuest(7881, "Originul", "Inquisitor Guard");

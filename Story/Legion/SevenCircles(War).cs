@@ -22,7 +22,7 @@ public class SevenCircles
         if (Core.isCompletedBefore(7978))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Indulgence");
 

@@ -31,7 +31,7 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6300))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Fire Dragon Scales
         Story.KillQuest(6294, "firewar", "Fire Dragon");
@@ -77,7 +77,7 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6307))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Getting a Feel for the Area
         if (!Story.QuestProgression(6301))
@@ -113,7 +113,7 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6311))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // The Fires of War
         Story.KillQuest(6308, "charredplains", "Fire Dragon");
@@ -133,7 +133,7 @@ public class DragonFableOrigins
         if (Core.isCompletedBefore(6325))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Gathering the Pieces
         Story.MapItemQuest(6312, "drakonnan", 5827, 5);

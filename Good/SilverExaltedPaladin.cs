@@ -23,7 +23,7 @@ public class SEP
         if (Core.CheckInventory("Silver Exalted Paladin"))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Silver Exalted Paladin");
 

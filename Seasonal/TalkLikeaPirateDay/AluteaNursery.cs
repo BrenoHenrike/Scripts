@@ -33,7 +33,7 @@ public class AluteaNursery
         if (Core.isCompletedBefore(8857))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Carefree Drifters 8848
         Story.KillQuest(8848, "AluteaNursery", "Spectral Jellyfish");

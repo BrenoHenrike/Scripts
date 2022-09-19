@@ -21,7 +21,7 @@ public class NytheraSaga
     {
         if (Core.isCompletedBefore(904))
             return;
-        
+
         Northlands();
         KingCoal();
         Swallowed();
@@ -34,7 +34,7 @@ public class NytheraSaga
         if (Core.isCompletedBefore(444))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Element of Surprise 437
         Story.MapItemQuest(437, "NorthLands", 77);
@@ -83,7 +83,7 @@ public class NytheraSaga
         if (Core.isCompletedBefore(455))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Defeat 10 Viruses 450
         Story.KillQuest(450, "Swallowed", "Germs");
@@ -110,7 +110,7 @@ public class NytheraSaga
         if (Core.isCompletedBefore(900))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Chasing After a Girl 898
         if (!Story.QuestProgression(898))
@@ -138,7 +138,7 @@ public class NytheraSaga
         if (Core.isCompletedBefore(904))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //A-Void-ing The Larva 901
         Story.KillQuest(901, "Void", "Void Larva");

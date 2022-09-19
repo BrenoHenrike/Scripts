@@ -28,7 +28,7 @@ public class FireHouse
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //1552 | Gaining Trust
         Story.KillQuest(1552, "firetown", new[] { "Obsidian Golem", "Obsidian Golem", "Obsidian Golem" });
@@ -46,7 +46,7 @@ public class FireHouse
             Core.HuntMonster("fireriver", "Swamp Thing", "Wet Sheet of Paper", 13);
             Core.EnsureComplete(1555);
         }
-        
+
         //1556 | Locket Holds the Key
         Story.KillQuest(1556, "fireriver", "Lava Bat|Lava Garou");
 

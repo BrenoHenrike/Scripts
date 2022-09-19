@@ -24,7 +24,7 @@ public class Fiendshard_Story
         if (Core.isCompletedBefore(7898))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Originul.Originul_Questline();
 

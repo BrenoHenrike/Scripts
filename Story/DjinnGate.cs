@@ -27,7 +27,7 @@ public class DjinnGateStory
         if (Core.isCompletedBefore(7312))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop(drops);
 

@@ -30,7 +30,7 @@ public class ChaosAvengerClass
 
         //Preload Quests
         if (!Core.isCompletedBefore(3881))
-            Story.PreLoad();
+            Story.PreLoad(this);
 
         //Complete 13LoC Saga
         LOC.Hero();

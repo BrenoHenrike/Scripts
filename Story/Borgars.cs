@@ -22,7 +22,7 @@ public class Borgars
         if (Core.isCompletedBefore(7522))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Slice of Cake");
 

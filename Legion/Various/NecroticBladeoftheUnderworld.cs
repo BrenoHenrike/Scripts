@@ -47,9 +47,6 @@ public class NecroticBladeoftheUnderworld
         //Necessary AddDrops
         Core.AddDrop(new[] { "Necrotic Blade of the Underworld", "Underworld Blade of DOOM", "Necrotic Sword of Doom", "Legion Token", "Beast Soul", "Soul Sand", "Dage the Evil Insignia" });
 
-        //Story Preloading
-        Story.PreLoad();
-
         //Leveling to 95
         Farm.Experience(95);
 

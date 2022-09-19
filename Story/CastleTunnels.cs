@@ -22,7 +22,7 @@ public class CastleTunnels
         if (Core.isCompletedBefore(5255))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Explore the Tunnels 5244
         Story.MapItemQuest(5244, "CastleTunnels", 4597);

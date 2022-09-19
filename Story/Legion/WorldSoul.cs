@@ -22,7 +22,7 @@ public class WorldSoul
         if (Core.isCompletedBefore(6245))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         if (!Core.isCompletedBefore(6245))
         {

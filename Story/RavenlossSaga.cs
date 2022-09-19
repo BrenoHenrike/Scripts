@@ -41,7 +41,7 @@ public class RavenlossSaga
         if (Core.isCompletedBefore(3439))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Cleanse Swordhaven 3429
         if (!Story.QuestProgression(3429))
@@ -142,7 +142,7 @@ public class RavenlossSaga
         if (Core.isCompletedBefore(3460))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Chaos Weavers' Magic  3450
         Story.KillQuest(3450, "RavenLoss", "ChaosWeaver Magi");

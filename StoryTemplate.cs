@@ -22,7 +22,7 @@ public class StoryTemplate
         if (Core.isCompletedBefore(000))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.KillQuest(000, "mapname", "MonsterName");
         Story.KillQuest(000, "mapname", new[] { "Monstername", "Monstername" });

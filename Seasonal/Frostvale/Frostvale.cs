@@ -57,7 +57,7 @@ public class Frostvale
         if (Core.isCompletedBefore(906))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Rescue Blizzy
         Story.KillQuest(155, "icecave", "Frosty");
@@ -127,7 +127,7 @@ public class Frostvale
         if (Core.isCompletedBefore(1508))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Shaking the Globes
         Story.MapItemQuest(906, "snowglobe", 243, 10);
@@ -168,7 +168,7 @@ public class Frostvale
         if (Core.isCompletedBefore(1521))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Snow Way to Know Where to Go
         Story.MapItemQuest(1508, "alpine", 758);
@@ -214,7 +214,7 @@ public class Frostvale
         if (Core.isCompletedBefore(2576))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Ray of Hope", "Sands of Time");
 
@@ -318,7 +318,7 @@ public class Frostvale
         if (Core.isCompletedBefore(2582))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // A Little Warmth and Light
         Story.MapItemQuest(2576, "icerise", 1592, 5);
@@ -354,7 +354,7 @@ public class Frostvale
         if (Core.isCompletedBefore(6132))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Help Blizzy
         Story.MapItemQuest(6122, "coldwindvalley", 5547);
@@ -412,7 +412,7 @@ public class Frostvale
         if (Core.isCompletedBefore(8176))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 6423|Gathering Information
         Story.MapItemQuest(6423, "icestorm", new[] { 5925, 5926, 5927 });
@@ -563,7 +563,7 @@ public class Frostvale
         if (Core.isCompletedBefore(4716))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Plans for Frostval
         Story.MapItemQuest(4705, "cryostorm", 4069);
@@ -623,7 +623,7 @@ public class Frostvale
         if (Core.isCompletedBefore(5596))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Where is Karok?
         Story.MapItemQuest(5587, "icewindpass", 5074, 5);
@@ -670,7 +670,7 @@ public class Frostvale
         if (Core.isCompletedBefore(5617))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Fight For Kezeroth!
         if (!Bot.Quests.IsUnlocked(5606))

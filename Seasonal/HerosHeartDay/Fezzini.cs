@@ -22,7 +22,7 @@ public class FezziniStory
         if (Core.isCompletedBefore(7389))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Bot.Drops.Start();
 

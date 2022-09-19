@@ -26,7 +26,7 @@ public class Eden
             return;
 
         Shin.Storyline();
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Welcome to Eden! 8795
         Story.KillQuest(8795, "eden", "Harmless Choir");

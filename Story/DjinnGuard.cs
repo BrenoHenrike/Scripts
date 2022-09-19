@@ -26,7 +26,7 @@ public class DjinnGuard
         if (Core.isCompletedBefore(6274))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Trial of Water 6270
         Story.KillQuest(6270, "DjinnGuard", "Jaan al Bahar");

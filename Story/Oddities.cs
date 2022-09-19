@@ -22,7 +22,7 @@ public class Oddities
         if (Core.isCompletedBefore(8667) || !Core.IsMember)
             return;
 
-        Core.EquipClass(ClassType.Farm);
+        Story.PreLoad(this);
 
         // Shop of Vandalized Horrors 8654
         if (!Story.QuestProgression(8654))

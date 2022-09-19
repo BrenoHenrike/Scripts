@@ -25,7 +25,7 @@ public class AQWZombies
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Undead Assault
         Story.KillQuest(2093, "battleundera", "Skeletal Soldier");

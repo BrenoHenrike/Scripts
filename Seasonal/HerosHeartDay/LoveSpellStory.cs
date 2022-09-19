@@ -22,7 +22,7 @@ public class LoveSpell
         if (Core.isCompletedBefore(7934))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Something Soft
         Story.KillQuest(7925, "lovespell", "Chinchilla");

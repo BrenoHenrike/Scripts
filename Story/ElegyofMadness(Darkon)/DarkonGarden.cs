@@ -22,7 +22,7 @@ public class DarkonGarden
         if (Core.isCompletedBefore(7494))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Picking Flowers 7485
         Story.MapItemQuest(7485, "garden", 7324, 10);

@@ -40,7 +40,7 @@ public class LordOfOrder
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Heart of Servitude
         if (!Story.QuestProgression(7156))

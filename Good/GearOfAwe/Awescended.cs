@@ -62,7 +62,7 @@ public class Awescended
         if (Core.CheckInventory(new[] { "Awescended", "Awescended Omni Armblades", "Awescended Omni Cowl", "Awescended Omni Wings" }))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //The Dawn of Lore
         if (!Story.QuestProgression(8035))
