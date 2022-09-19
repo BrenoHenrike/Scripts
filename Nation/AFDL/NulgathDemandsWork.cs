@@ -34,6 +34,7 @@ public class NulgathDemandsWork
         Core.SetOptions();
 
         Uni35(1);
+        NDWQuest(NDWItems);
 
         Core.SetOptions(false);
     }
