@@ -68,9 +68,9 @@ public class CoreDarkon
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                 {
                     Core.Jump("r5", "Left");
-                    Bot.Sleep(Core.ActionDelay);
+                    Bot.Sleep(5000);
                 }
-                if (Bot.Map.CellPlayers.Count >= 3)
+                if (Bot.Map.PlayerCount >= 3)
                     EnoughPeople = true;
                 else EnoughPeople = false;
             }
