@@ -1407,13 +1407,13 @@ public class CoreBots
             }
         }
 
-        // if (seperateClassLine == -1)
-        // {
-        //     Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
-        //     return;
-        // }
+        if (seperateClassLine == -1)
+        {
+            Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
+            return;
+        }
 
-        // Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
+        Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
     }
     private bool DL_Enabled { get; set; } = false;
     public string? DL_CallerFilter { get; set; } = null;

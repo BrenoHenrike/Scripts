@@ -300,7 +300,6 @@ public class CoreStory
     /// </summary>
     public void PreLoad(Object _this, [CallerMemberName] string caller = "")
     {
-        Core.DL_Enable();
         List<int> QuestIDs = new();
         string[] ScriptSlice = Core.CompiledScript();
 
