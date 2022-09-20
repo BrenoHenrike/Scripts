@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/FireIsland/FI.cs
+//cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 
 using Skua.Core.Interfaces;
 
