@@ -37,7 +37,7 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4055))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Heat of Battle 4054
         Story.KillQuest(4054, "Embersea", new[] { "Flame Soldier", "Storm Scout" });
@@ -56,7 +56,7 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4081))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Flee the Flames
         Story.KillQuest(4070, "pyrewatch", new[] { "Fyreborn Tiger", "Caustocrush", "Lavazard" });
@@ -102,7 +102,7 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4142))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Quench the Flames
         Story.KillQuest(4128, "feverfew", "Firestorm Knight");
@@ -165,7 +165,7 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4213))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Stonecold Defense
         Story.KillQuest(4201, "phoenixrise", new[] { "Lava Troll", "Infernal Goblin" });
@@ -213,7 +213,7 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4226))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Round 1: Firestorm Scouts 4216
         Story.KillQuest(4216, "Fireforge", "Firestorm Scout");
@@ -316,7 +316,7 @@ public class CoreFireIsland
             Core.Logger("You need to be a member for complete the /nightmare questline.");
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Fear of Clowns? 4143
         Story.KillQuest(4143, "Nightmare", "Bobble Clown");

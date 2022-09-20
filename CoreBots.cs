@@ -770,15 +770,19 @@ public class CoreBots
 
         foreach (Quest q in questData)
         {
+            bool shouldBreak = false;
             // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
             {
                 if (!CheckInventory(req.Name))
                 {
                     Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
-                    questData.Remove(q);
+                    shouldBreak = true;
+                    break;
                 }
             }
+            if (shouldBreak)
+                break;
 
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
@@ -821,6 +825,8 @@ public class CoreBots
                                                                             !(Bot.Bank.TryGetItem(r.Name, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList(); if (simpleRewards.Count == 0)
                             {
                                 EnsureComplete(kvp.Key.ID);
+                                await Task.Delay(ActionDelay);
+                                EnsureAccept(kvp.Key.ID);
                                 continue;
                             }
 
@@ -1377,12 +1383,8 @@ public class CoreBots
         if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
             return;
 
-        Logger("Debug Logger is currently not functional because it cant read the compiled script properly");
-        DL_Enabled = false;
         string _class = _this.GetType().ToString();
-        string[] compiledScript = Bot.Manager.CompiledScript.Split(
-                                                                new string[] { "\r\n", "\r", "\n" },
-                                                                StringSplitOptions.None);
+        string[] compiledScript = CompiledScript();
 
         int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
 
@@ -1421,6 +1423,9 @@ public class CoreBots
         DL_Enabled = true;
         LoggerInChat = false;
     }
+    public string[] CompiledScript() => Bot.Manager.CompiledScript.Split(
+                                                                new string[] { "\r\n", "\r", "\n" },
+                                                                StringSplitOptions.None);
 
     /// <summary>
     /// Creates a Message Box with the desired text and caption
@@ -1505,9 +1510,11 @@ public class CoreBots
                     if (FarmGearOn & Bot.Player.CurrentClass?.Name != FarmClass)
                     {
                         logEquip = false;
+                        Bot.Sleep(ActionDelay);
                         Equip(FarmGear);
                         logEquip = true;
                     }
+                    Bot.Wait.ForItemEquip(FarmClass);
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                     break;
                 }
@@ -1520,9 +1527,11 @@ public class CoreBots
                     if (SoloGearOn & Bot.Player.CurrentClass?.Name != SoloClass)
                     {
                         logEquip = false;
+                        Bot.Sleep(ActionDelay);
                         Equip(SoloGear);
                         logEquip = true;
                     }
+                    Bot.Wait.ForItemEquip(SoloClass);
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                     break;
                 }

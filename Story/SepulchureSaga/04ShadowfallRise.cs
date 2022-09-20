@@ -26,7 +26,7 @@ public class ShadowfallRise
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Solo);
 

@@ -24,7 +24,7 @@ public class Table
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Property Appraiser (717)
         Story.MapItemQuest(717, "giant", 119);

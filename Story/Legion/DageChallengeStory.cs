@@ -30,6 +30,8 @@ public class DageChallengeStory
         if (Core.isCompletedBefore(8546))
             return;
 
+        Story.PreLoad(this);
+
         Core.AddDrop("Underworld Medal", "Underworld Laurel", "Underworld Accolade");
 
         if (!Story.QuestProgression(8544))

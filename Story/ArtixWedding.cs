@@ -27,7 +27,7 @@ public class ArtixWedding
         if (Core.isCompletedBefore(3234))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Artix Needs a Girlfriend
         Story.ChainQuest(3231);
@@ -49,7 +49,7 @@ public class ArtixWedding
         if (Core.isCompletedBefore(3253))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Prove Your Worth 3235
         Story.KillQuest(3235, "BattleWedding", "Silver Knight");

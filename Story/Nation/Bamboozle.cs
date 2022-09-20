@@ -24,7 +24,7 @@ public class Bamboozle
         if (Core.isCompletedBefore(7292))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Floozer", "Ice Diamond", "Dark Bloodstone", "Songstone", "Butterfly Sapphire", "Understone", "Rainbow Moonstone", "Time Quartz");
 

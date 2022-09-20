@@ -33,7 +33,7 @@ public class VordredArmor
         if (Core.CheckInventory("Empowered Vordred's Armor"))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         DW3.StoryLine();
         Farm.Experience(60);

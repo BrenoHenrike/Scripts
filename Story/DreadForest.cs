@@ -24,7 +24,7 @@ public class DreadForest
         if (Core.isCompletedBefore(8722))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Story.KillQuest(quest, "map", "mob");
         // Story.MapItemQuest(quest, "map", mapitemid, quant);

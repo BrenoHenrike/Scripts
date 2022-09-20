@@ -19,27 +19,9 @@ public class VoidBattleMageSet
         Core.SetOptions(false);
     }
 
-    private string[] rewards =
-    {
-        "Void BattleMage",
-        "Void BattleMage Stare",
-        "Void BattleMage Male Morph",
-        "Void BattleMage Male Hood",
-        "Void BattleMage Locks",
-        "Void BattleMage Female Morph",
-        "Void BattleMage Female Hood",
-        "Void BattleMage Male Crown",
-        "Void BattleMage Female Crown",
-        "Void BattleMage Crown",
-        "Void BattleMage Runes",
-        "Void BattleMage Wrap",
-        "Void BattleMage Wrap Runes",
-        "Void BattleMage Spear",
-        "Void BattleMage Nation Staff"
-    };
-
     public void GetSet()
     {
+        string[] rewards = Core.EnsureLoad(6694).Rewards.Select(i => i.Name).ToArray();
         if (Core.CheckInventory(rewards))
             return;
 
@@ -47,6 +29,7 @@ public class VoidBattleMageSet
         Core.CheckSpaces(ref count, rewards);
         Core.AddDrop(rewards);
         War.Attack();
+
         Core.RegisterQuests(6694);
         Bot.Events.ItemDropped += ItemDropped;
         Core.Logger($"Farm for Void BattleMage set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
@@ -58,6 +41,7 @@ public class VoidBattleMageSet
         }
 
         Bot.Events.ItemDropped -= ItemDropped;
+        Core.CancelRegisteredQuests();
 
         void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
         {

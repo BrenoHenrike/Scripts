@@ -40,7 +40,7 @@ public class CitadelRuins
         if (Core.isCompletedBefore(6682))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Easy AND Breezy!
         Story.KillQuest(6669, "forest", "Boss Zardman");
@@ -95,7 +95,7 @@ public class CitadelRuins
         if (Core.isCompletedBefore(4325))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Drearia On Demand
         Story.MapItemQuest(4312, "drearia", 3485);
@@ -152,7 +152,7 @@ public class CitadelRuins
         if (Core.isCompletedBefore(182))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // "Citadel"
         Story.KillQuest(144, "Citadel", "Inquisitor Guard");
@@ -176,7 +176,7 @@ public class CitadelRuins
         if (Core.isCompletedBefore(668))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Unidentified 9", "Unidentified 28", "Dark Crystal Shard", "Claw of Nulgath", "Relic of Chaos");
 
@@ -202,7 +202,7 @@ public class CitadelRuins
         if (Core.isCompletedBefore(6182))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Mage's Gratitude");
         // "citadelruins";

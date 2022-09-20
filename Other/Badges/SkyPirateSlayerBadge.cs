@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Story/SkyPirate.cs
+//cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
@@ -9,7 +9,7 @@ public class SkyPirateBadge
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public SkyPirateQuests SkyPirate = new();
+    public SkyGuardSaga SkyGuardSaga = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -25,7 +25,7 @@ public class SkyPirateBadge
         if (!Core.IsMember)
             return;
 
-        SkyPirate.Storyline();
+        SkyGuardSaga.DoAll();
 
         Core.AddDrop("SkyPirate Annhilator Recognition");
         Core.EquipClass(ClassType.Farm);

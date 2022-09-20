@@ -28,7 +28,7 @@ public class DeadlyDungeon
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Floor 1
         Story.KillQuest(3680, "deadlydungeon", "Dire Muncher ");

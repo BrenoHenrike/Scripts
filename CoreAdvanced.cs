@@ -236,7 +236,7 @@ public class CoreAdvanced
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.");
             return false;
         }
-        
+
         //Requiered-Item Check
         int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
         if (reqItemID > 0 && !Core.CheckInventory(reqItemID))
@@ -285,7 +285,7 @@ public class CoreAdvanced
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
             return false;
         }
-        
+
         return true;
     }
 
@@ -792,7 +792,7 @@ public class CoreAdvanced
             if (Bot.Inventory.Items.Any(x => x.Category == ItemCategory.Cape && x.Equipped))
                 ReCEnhanceAfter = CurrentCapeSpecial();
             if (Bot.Inventory.Items.Any(x => x.Category == ItemCategory.Helm && x.Equipped))
-                ReCEnhanceAfter = CurrentCapeSpecial();
+                ReHEnhanceAfter = CurrentHelmSpecial();
             ReWEnhanceAfter = CurrentWeaponSpecial();
         }
         else
@@ -973,12 +973,9 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Cape Special</returns>
     public CapeSpecial CurrentCapeSpecial()
     {
-        InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Cape);
+        InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
-        {
-            Core.Logger("Failed to find equipped Cape", messageBox: true, stopBot: true);
             return CapeSpecial.None;
-        }
         return (CapeSpecial)EquippedCape.EnhancementPatternID;
     }
 
@@ -988,12 +985,9 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Helm Special</returns>
     public HelmSpecial CurrentHelmSpecial()
     {
-        InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped == true && i.Category == ItemCategory.Helm);
+        InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Helm);
         if (EquippedHelm == null)
-        {
-            Core.Logger("Failed to find equipped Helm", messageBox: true, stopBot: true);
             return HelmSpecial.None;
-        }
         return (HelmSpecial)EquippedHelm.EnhancementPatternID;
     }
 
@@ -1003,12 +997,9 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Weapon Special</returns>
     public WeaponSpecial CurrentWeaponSpecial()
     {
-        InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped == true && WeaponCatagories.Contains(i.Category));
+        InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped && WeaponCatagories.Contains(i.Category));
         if (EquippedWeapon == null)
-        {
-            Core.Logger("Failed to find equipped weapon", messageBox: true, stopBot: true);
             return WeaponSpecial.None;
-        }
         return (WeaponSpecial)Bot.Flash.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
     }
 

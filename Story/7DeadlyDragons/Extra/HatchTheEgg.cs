@@ -27,7 +27,7 @@ public class HatchTheEgg
 
         Egg.GetMysteriousEgg();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //6901 | Feel the Heat
         Story.KillQuest(6901, "volcano", "Lava Golem");

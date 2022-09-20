@@ -30,20 +30,22 @@ public class NulgathDemandsWork
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
+        Core.BankingBlackList.AddRange(NDWItems);
         Core.BankingBlackList.Add("Archfiend Essence Fragment");
         Core.SetOptions();
 
         Uni35(1);
+        NDWQuest(NDWItems);
 
         Core.SetOptions(false);
     }
 
-    public void NDWQuest(string item = null, int quant = 1)
+    public void NDWQuest(string[] items = null, int quant = 1)
     {
-        if (Core.CheckInventory(item, quant))
+        if (Core.CheckInventory(items, quant))
             return;
 
-        if (item == null)
+        if (items == null)
         {
             Core.Logger("No Item Input");
             return;
@@ -51,34 +53,40 @@ public class NulgathDemandsWork
 
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(NDWItems);
+        Core.AddDrop("unidentified 27");
 
-        int i = 0;
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        foreach (string item in items)
         {
-            Core.EnsureAccept(5259);
+            if (Core.CheckInventory(items, quant))
+                break;
+            else Core.FarmingLogger(item, quant);
 
-            WillpowerExtraction.Unidentified34(10);
-            Nation.FarmUni13(2);
-            Core.EnsureAccept(5259);
-            Nation.FarmBloodGem(2);
-            Nation.FarmDiamondofNulgath(60);
-            Nation.FarmDarkCrystalShard(45);
-            Uni27();
-            Nation.FarmVoucher(true);
-            Nation.FarmGemofNulgath(15);
-            Nation.SwindleBulk(50);
-            GHV.GetGHV();
-            Core.EnsureComplete(5259);
-            Core.ToBank(NDWItems[..^8]);
+            int i = 0;
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            {
+                Core.EnsureAccept(5259);
 
-            if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
-                Core.BuyItem("tercessuinotlim", 1951, 35770);
+                WillpowerExtraction.Unidentified34(10);
+                Nation.FarmUni13(2);
+                Core.EnsureAccept(5259);
+                Nation.FarmBloodGem(2);
+                Nation.FarmDiamondofNulgath(60);
+                Nation.FarmDarkCrystalShard(45);
+                Uni27();
+                Nation.FarmVoucher(true);
+                Nation.FarmGemofNulgath(15);
+                Nation.SwindleBulk(50);
+                GHV.GetGHV();
+                Core.EnsureCompleteChoose(5259, items);
+                Core.ToBank(item);
 
-            Core.Logger($"Completed x{i}");
-            i++;
+                if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
+                    Core.BuyItem("tercessuinotlim", 1951, 35770);
+
+                Core.Logger($"Completed x{i}");
+                i++;
+            }
         }
-
-
     }
 
     public void Uni35(int quant = 1)
@@ -86,7 +94,7 @@ public class NulgathDemandsWork
         if (Core.CheckInventory("Unidentified 35", quant))
             return;
 
-        NDWQuest("Unidentified 35");
+        NDWQuest(new[] { "Unidentified 35" });
     }
 
     public void Uni27(int quant = 1)
@@ -98,7 +106,7 @@ public class NulgathDemandsWork
         Core.EnsureAccept(584);
         Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
         Core.EnsureComplete(584);
-        Bot.Drops.Pickup("Unidentified 27");
+        Bot.Wait.ForPickup("Unidentified 27");
         Core.Logger("Uni 27 acquired");
 
     }

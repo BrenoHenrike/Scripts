@@ -24,9 +24,7 @@ public class Shinkansen
         if (Core.isCompletedBefore(8124))
             return;
 
-        // Story.MapItemQuest(questID, "Shinkansen", mapitemid, Amount);
-        // Story.KillQuest(questID, "Shinkansen", "mob");
-
+        Story.PreLoad(this);
 
         // Snack Run 8116
         Story.MapItemQuest(8116, "Shinkansen", 8496, 3);

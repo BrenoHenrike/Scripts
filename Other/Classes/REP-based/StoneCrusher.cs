@@ -31,8 +31,6 @@ public class StoneCrusher
         if (Core.CheckInventory("StoneCrusher"))
             return;
 
-        Story.PreLoad();
-
         LOC.Kimberly();
         Oak.doall();
 

@@ -26,7 +26,7 @@ public class DoomVaultA
         if (Core.isCompletedBefore(3008))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Bot.Quests.UpdateQuest(3008);
 

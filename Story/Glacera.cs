@@ -35,7 +35,7 @@ public class GlaceraStory
         if (Core.isCompletedBefore(3941))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Seek the Tower
         Story.MapItemQuest(3907, "frozentower", 3022);
@@ -145,7 +145,7 @@ public class GlaceraStory
         if (Core.isCompletedBefore(3946))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // FrozenRuins
 

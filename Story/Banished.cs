@@ -28,7 +28,7 @@ public class Banished
 
     public void doall()
     {
-        Story.PreLoad();
+        Story.PreLoad(this);
         HikarisQuests();
         Knave1sQuests();
 

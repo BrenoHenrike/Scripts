@@ -26,7 +26,7 @@ public class KalaSeasonal
         if (Core.isCompletedBefore(8214))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // 8205 Thirst Quencher
         Story.KillQuest(8205, "kala", "Coconut Treeant");

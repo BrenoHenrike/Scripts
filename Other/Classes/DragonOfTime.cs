@@ -12,7 +12,7 @@
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Other/MysteriousEgg.cs
-//cs_include Scripts/Story/Collection.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using Skua.Core.Interfaces;
@@ -30,7 +30,7 @@ public class DragonOfTime
     public CoreQOM QOM = new();
     public CoreToD TOD = new();
     public MysteriousEgg Egg = new();
-    public Collection Coll = new();
+    public CoreSummer Coll = new();
     public Borgars Borg = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -49,7 +49,7 @@ public class DragonOfTime
         if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(Extras)))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Acquiring Ancient Secrets
         if (!Story.QuestProgression(7716))
@@ -203,7 +203,7 @@ public class DragonOfTime
                 Bot.Wait.ForPickup("Starlight Singularity");
             }
 
-            Coll.CollectionStory();
+            Coll.Collector();
             Core.BuyItem("collection", 325, "Collectible Collector");
             Bot.Wait.ForPickup("Collectible Collector");
 

@@ -34,7 +34,7 @@ public class ShadowSlayerK
         if (Core.isCompletedBefore(8835))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
         Core.AddDrop("Shadowslayer Apprentice Badge", "Dairy Ration", "Grain Ration", "Meat Ration", "Holy Wasabi", "Racing Trophy");
 
         // 8829 | Lend an Ear

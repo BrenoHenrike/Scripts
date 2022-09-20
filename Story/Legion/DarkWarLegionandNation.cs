@@ -28,6 +28,8 @@ public class DarkWarLegionandNation
         if (Core.isCompletedBefore(8588))
             return;
 
+        Story.PreLoad(this);
+
         // Pop Goes the Makai
         Story.KillQuest(8556, "dagerecruit", "Dark Makai");
 

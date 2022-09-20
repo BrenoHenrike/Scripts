@@ -26,7 +26,7 @@ public class NecroDungeon
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
 
         //descent into darkness - 2044

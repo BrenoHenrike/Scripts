@@ -33,7 +33,7 @@ public class DoomwoodPart3
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Bullies
         Story.KillQuest(7589, "Thorngarde", new[] { "CryptHacker", "NecroMech", "NecroDrone" });

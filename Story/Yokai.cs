@@ -36,7 +36,7 @@ public class YokaiQuests
         if (Core.isCompletedBefore(6459))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.Logger("ShogunWar Quest line");
 
@@ -86,7 +86,7 @@ public class YokaiQuests
         if (Core.isCompletedBefore(6472))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
 
         Core.Logger("ShinrinGrove Quest line");
@@ -144,7 +144,7 @@ public class YokaiQuests
         if (Core.isCompletedBefore(6494))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
 
         Core.Logger("Shadowfortress Quest line");

@@ -33,7 +33,7 @@ public class JirabinChallenge
         if (Core.isCompletedBefore(3986))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Void Dragon Invasion
         Story.ChainQuest(3976);
@@ -81,12 +81,12 @@ public class JirabinChallenge
 
     public void DetherTombs()
     {
-        RunedWoods();
-        Story.PreLoad();
         if (Core.isCompletedBefore(4005))
             return;
+            
+        RunedWoods();
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Enter the Tomb 3996
         Story.KillQuest(3996, "dethertombs", "Sand Frask");

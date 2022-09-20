@@ -26,6 +26,8 @@ public class TitanAttackStory
         if (Core.isCompletedBefore(8777))
             return;
 
+        Story.PreLoad(this);
+
         // Those Who Remain 8759
         Story.MapItemQuest(8759, "titanattack", new[] { 10345, 10346, 10347, 10348, 10349 });
 

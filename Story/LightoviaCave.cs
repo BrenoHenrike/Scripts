@@ -26,13 +26,13 @@ public class LightoviaCave
             if (Bot.Quests.IsUnlocked(7123))
             {
                 Core.Logger(
-                    "Quests are locked Shadowvoid quests should be completed first. Starting Shadowvoid script" );
+                    "Quests are locked Shadowvoid quests should be completed first. Starting Shadowvoid script");
                 ShadowVoid.ShadowVoidQuests();
             }
             else
             {
                 Core.Logger(
-                    "Quests are locked You Should Finish Lords Of Chaos story script first" );
+                    "Quests are locked You Should Finish Lords Of Chaos story script first");
                 return;
             }
         }
@@ -40,7 +40,7 @@ public class LightoviaCave
         if (Core.isCompletedBefore(7136))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Defeat the Imbalanced 7132
         Story.KillQuest(7132, "LightoviaCave", "Imbalanced Knight|Imbalanced Mage");

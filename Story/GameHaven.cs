@@ -22,7 +22,7 @@ public class Gamehaven
         if (!Core.IsMember || Core.isCompletedBefore(953))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Agree to help Ethan
         Story.ChainQuest(940);

@@ -22,7 +22,7 @@ public class UndervoidStory
         if (Core.isCompletedBefore(3406))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Hollowborn Soul Stealer");
 

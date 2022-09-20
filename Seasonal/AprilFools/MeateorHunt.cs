@@ -26,7 +26,7 @@ public class MeateorHunt
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Defeat the Giant ChickenCow
         Story.KillQuest(8612, "MeateorTown", "Giant ChickenCow");

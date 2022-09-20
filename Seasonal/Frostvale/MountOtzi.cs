@@ -21,7 +21,7 @@ public class MountOtzi
         if (Core.isCompletedBefore(8444))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Light Midnight
         Story.MapItemQuest(8434, "MountOtzi", 9437, 7);

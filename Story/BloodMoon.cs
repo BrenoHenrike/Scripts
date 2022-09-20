@@ -28,7 +28,7 @@ public class BloodMoon
 
     public void BloodMoonMap()
     {
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Farm);
 
@@ -93,7 +93,7 @@ public class BloodMoon
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6064);
-            Core.KillMonster("maxius", "r3", "Right", "Count Maxius", "Count Maxius Defeated");
+            Core.HuntMonsterMapID("maxius", 6, "Count Maxius Defeated");
             Core.EnsureComplete(6064);
             Core.EquipClass(ClassType.Farm);
         }
@@ -108,31 +108,13 @@ public class BloodMoon
             Story.KillQuest(6066, "maxius", "Barnabus");
         }
 
-        Bot.Events.CellChanged += CutSceneFixer;
-
         //An End To This Threat 6067
         if (!Story.QuestProgression(6067))
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6067);
-            Core.KillMonster("maxius", "r6", "Left", "Count Maxius", "Count Maxius Slain");
+            Core.HuntMonsterMapID("maxius", 13, "Count Maxius Slain");
             Core.EnsureComplete(6067);
-        }
-
-        Bot.Events.CellChanged -= CutSceneFixer;
-
-
-        void CutSceneFixer(string map, string cell, string pad)
-        {
-            if (map == "maxius" && cell != "r6")
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r6")
-                {
-                    Bot.Sleep(2500);
-                    Core.Jump("r6", "Left");
-                    Bot.Sleep(2500);
-                }
-            }
         }
     }
 }

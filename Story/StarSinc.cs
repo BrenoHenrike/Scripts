@@ -27,7 +27,7 @@ public class StarSinc
         if (Core.CheckInventory("SuperNova Badge"))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop(RequiredItems);
 

@@ -22,7 +22,7 @@ public class PookaStory
         if (Core.isCompletedBefore(7962))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Amethyst Faerie Wings");
 

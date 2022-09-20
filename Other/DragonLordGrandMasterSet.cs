@@ -19,27 +19,9 @@ public class DragonLordGrandMasterSet
         Core.SetOptions(false);
     }
 
-    private string[] rewards =
-    {
-        "DragonLord Grandmaster",
-        "GrandMaster Helm",
-        "GrandMaster Glowing Helm",
-        "GrandMaster Plume",
-        "GrandMaster Glowing Plume",
-        "DragonLord GrandMaster Cape",
-        "GrandMaster Back Blade",
-        "GrandMaster Hip Katana",
-        "GrandMaster Hip Blade",
-        "GrandMaster Enchanted Axe",
-        "GrandMaster Enchanted Bow",
-        "GrandMaster Enchanted Katana",
-        "GrandMaster Enchanted Spear",
-        "GrandMaster Enchanted Sword",
-        "GrandMaster Enchanted Blade"
-    };
-
     public void GetSet()
     {
+        string[] rewards = Core.EnsureLoad(6689).Rewards.Select(i => i.Name).ToArray();
         if (Core.CheckInventory(rewards))
             return;
 
@@ -47,6 +29,7 @@ public class DragonLordGrandMasterSet
         Core.CheckSpaces(ref count, rewards);
         Core.AddDrop(rewards);
         War.Defend();
+
         Core.RegisterQuests(6689);
         Bot.Events.ItemDropped += ItemDropped;
         Core.Logger($"Farm for the DragonLord GrandMaster set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
@@ -58,6 +41,7 @@ public class DragonLordGrandMasterSet
         }
 
         Bot.Events.ItemDropped -= ItemDropped;
+        Core.CancelRegisteredQuests();
 
         void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
         {

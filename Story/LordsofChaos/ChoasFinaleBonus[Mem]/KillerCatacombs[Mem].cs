@@ -28,7 +28,7 @@ public class KillerCatacombs
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // The Coward
         Story.KillQuest(3660, "killercatacombs", "Tomb Robber ");

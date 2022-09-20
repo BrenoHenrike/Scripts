@@ -22,7 +22,7 @@ public class CelestialPast
         if (Core.isCompletedBefore(7681))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Wayfarer Potion 7674
         Story.KillQuest(7674, "CelestialPast", new[] { "Blessed Deer", "Blessed Bear", "Blessed Centaur", "Blessed Hydra" });

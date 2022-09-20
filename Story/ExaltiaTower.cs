@@ -22,7 +22,7 @@ public class ExaltiaTower
         if (Core.isCompletedBefore(8151))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Exalted Node", "Exalted Forgemetal", "Exalted Relic Piece", "Exalted Artillery Shard");
 

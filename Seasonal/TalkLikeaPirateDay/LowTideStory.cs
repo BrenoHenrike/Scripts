@@ -22,7 +22,7 @@ public class LowTideStory
         if (Core.isCompletedBefore(8845))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Precious Rocks 8836
         Story.KillQuest(8836, "lowtide", "Lone Pirate");

@@ -22,7 +22,7 @@ public class LivingDungeon
         if (Core.isCompletedBefore(4384))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Titan Hollow
         Story.ChainQuest(4348);

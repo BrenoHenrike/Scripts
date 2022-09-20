@@ -35,7 +35,7 @@
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
-//cs_include Scripts/Story/Collection.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
@@ -500,7 +500,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8821);
         CorNSOD.BonesVoidRealm(20);
         YNR.BlademasterSwordScroll();
-        NDW.NDWQuest("Archfiend Essence Fragment", 3);
+        NDW.NDWQuest(new[] {"Archfiend Essence Fragment"}, 3);
         Awescended.GetAwe();
         if (!Core.CheckInventory("The Divine Will"))
         {

@@ -26,7 +26,7 @@ public class SepulchurePrequelAlden
             return;
         }
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Solo);
 

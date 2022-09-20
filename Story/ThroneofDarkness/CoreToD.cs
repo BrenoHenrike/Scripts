@@ -24,7 +24,7 @@ public class CoreToD
         if (questIDs.All(qID => Core.isCompletedBefore(qID)))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
         doAll = true;
 
         //Vaden - The DeathKnight
@@ -66,7 +66,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Vaden - The DeathKnight: Castle of Bones");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Enter the Castle of Bone
         Story.KillQuest(4968, "bonecastle", "Undead Guard");
@@ -170,7 +170,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Vaden - The DeathKnight: Bone Tower (Silver)");
-        Story.PreLoad();
+        Story.PreLoad(this);
         CastleofBones();
 
         // Eye Sp-eye
@@ -268,7 +268,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Xeven - The Time Assassin: Paradox Portal");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Through the Portal!
         Story.KillQuest(5034, "portalmaze", "Time Wraith");
@@ -331,7 +331,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Xeven - The Time Assassin: Paradox Portal");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         ParadoxPortal();
 
@@ -398,7 +398,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Ziri - The Daimon: BaconCat Fortress");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // How Rude!
         Story.MapItemQuest(5087, "baconcat", 4466, 7);
@@ -495,7 +495,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Ziri - The Daimon: Laser Shark Invasion");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
 
         // Cloud Sharks!
@@ -555,7 +555,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Pax - The Warlord: Death Pit");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Mingle
         Story.MapItemQuest(5133, "DeathPit", new[] { 4484, 4485, 4486, 4487, 4488, 4489, 4490, 4491 });
@@ -631,7 +631,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Pax - The Warlord: Death Pit");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         DeathPit();
 
@@ -718,7 +718,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Sekt - The Eternal: Shifting Pyramid");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Hunt for the Infinity Codex
         Story.KillQuest(5166, "whitehole", "Vortex Mage");
@@ -817,7 +817,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Sekt - The Eternal: Fourth Dimensional Pyramid");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Eye for an Eye of the Old Gods
         Story.KillQuest(5189, "fourdpyramid", "Sekt");
@@ -909,7 +909,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Scarletta - The Sorceress: ShatterGlass Maze");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.MapItemQuest(5298, "hedgemaze", 4678);
 
@@ -962,7 +962,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("Scarletta - The Sorceress: Tower of Mirrors");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // Drink Me
         Story.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle", "Glass Serpent" });
@@ -1038,7 +1038,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("??? - The Stranger: Antique Shop");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //cursed artifact shop - 5428
         Story.MapItemQuest(5428, "cursedshop", 4803);
@@ -1072,7 +1072,7 @@ public class CoreToD
 
         if (doAll)
             Core.Logger("??? - The Stranger: Mysterious Dungeon");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //cursed artifact shop - 5428
         Story.MapItemQuest(5428, "cursedshop", 4803);

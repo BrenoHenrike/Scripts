@@ -21,7 +21,7 @@ public class BlazingBeachStory
 
     public void StoryLine()
     {
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         // (Volca)No Trespassing
         Story.KillQuest(8702, "blazingbeach", "Burning Bombadier");

@@ -31,7 +31,7 @@ public class BattleUnder
         if (Core.isCompletedBefore(377))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(374, "battleundera", "Skeletal Warrior");
@@ -47,7 +47,7 @@ public class BattleUnder
         if (Core.isCompletedBefore(935))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         BattleUnderA();
 
@@ -65,7 +65,7 @@ public class BattleUnder
         if (Core.isCompletedBefore(939))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         BattleUnderB();
 
@@ -87,7 +87,7 @@ public class BattleUnder
         if (!Core.IsMember || Core.isCompletedBefore(2215))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Core.AddDrop("Battle Pickaxe");
         BattleUnderC();
@@ -132,7 +132,7 @@ public class BattleUnder
         if (Core.isCompletedBefore(5928))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Story.KillQuest(5927, "battleundere", "Lava Guard");
         Story.MapItemQuest(5927, "battleundere", 5362);

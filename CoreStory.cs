@@ -3,6 +3,8 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Dynamic;
 
 public class CoreStory
 {
@@ -296,16 +298,41 @@ public class CoreStory
     /// <summary>
     /// Put this at the start of your story script so that the bot will load all quests that are used in the bot. This will speed up any progression checks tremendiously.
     /// </summary>
-    public void PreLoad()
+    public void PreLoad(Object _this, [CallerMemberName] string caller = "")
     {
-        if (PreLoaded)
-            return;
-
         List<int> QuestIDs = new();
-        List<string> SelectedLines = new();
-        List<string> CSIncFiles = new();
+        string[] ScriptSlice = Core.CompiledScript();
 
-        List<string> CSFile = File.ReadAllLines(Bot.Manager.LoadedScript).ToList();
+        int classStartIndex = Array.IndexOf(ScriptSlice, $"public class {_this}");
+        int classEndIndex = Array.IndexOf(ScriptSlice[(classStartIndex)..], "}") + classStartIndex + 1;
+        ScriptSlice = ScriptSlice[(classStartIndex)..classEndIndex];
+
+        int methodStartIndex = -1;
+        foreach (string p in new string[] { "public", "private" })
+        {
+            foreach (string s in new string[] { "void", "bool", "string", "int" })
+            {
+                methodStartIndex = Array.FindIndex(ScriptSlice, l => l.Contains($"{p} {s} {caller}"));
+                if (methodStartIndex > -1)
+                    break;
+            }
+            if (methodStartIndex > -1)
+                break;
+        }
+        if (methodStartIndex == -1)
+        {
+            Core.Logger("Failed to parse methodStartIndex, no quests will be pre-loaded");
+            return;
+        }
+
+        int methodIndentCount = ScriptSlice[methodStartIndex + 1].IndexOf('{');
+        string indent = "";
+        for (int i = 0; i < methodIndentCount; i++)
+            indent += " ";
+        int methodEndIndex = Array.FindIndex(ScriptSlice, methodStartIndex, l => l == indent + "}") + 1;
+
+        ScriptSlice = ScriptSlice[methodStartIndex..methodEndIndex];
+
         string[] SearchParam = {
             "Story.KillQuest",
             "Story.MapItemQuest",
@@ -317,28 +344,8 @@ public class CoreStory
             "Core.EnsureCompleteChoose",
             "Core.ChainComplete"
         };
-        string[] IncludeCores = {
-            "Core13LoC",
-            "CoreAstravia",
-            "CoreQOM"
-        };
 
-        List<string> CSIncludes = CSFile.Where(x => x.Contains("//cs_include ") && (IncludeCores.Any(y => x.Contains(x)) || !x.Contains("Core"))).ToList();
-
-        foreach (string Include in CSIncludes)
-            CSIncFiles.AddRange(File.ReadAllLines(Include.Replace("//cs_include ", "")));
-
-        SelectedLines.AddRange(CSFile.Where(x => SearchParam.Any(y => x.Contains(y))).ToList());
-        SelectedLines.AddRange(CSIncFiles.Where(x => SearchParam.Any(y => x.Contains(y))).ToList());
-
-        Core.Logger($"Scanning {CSIncludes.Count + 1} Files ({CSIncFiles.Count + CSFile.Count} Lines)");
-
-        List<Quest> QuestTree = Bot.Quests.Tree;
-        Stopwatch stopWatch = new Stopwatch();
-        stopWatch.Start();
-        int t = 0;
-
-        foreach (string Line in SelectedLines)
+        foreach (string Line in ScriptSlice)
         {
             if (!Line.Any(char.IsDigit))
                 continue;
@@ -357,30 +364,18 @@ public class CoreStory
             string sQuestID = new string(digits);
             int QuestID = int.Parse(sQuestID);
 
-            if (!QuestIDs.Contains(QuestID) && !QuestTree.Exists(x => x.ID == QuestID))
+            if (!QuestIDs.Contains(QuestID) && !Bot.Quests.Tree.Exists(x => x.ID == QuestID))
                 QuestIDs.Add(QuestID);
-
-            if (t < 31)
-                t++;
-            if (t == 30)
-            {
-                stopWatch.Stop();
-                TimeSpan sw = stopWatch.Elapsed;
-                TimeSpan ts = TimeSpan.FromSeconds(Convert.ToInt32((SelectedLines.Count / (30 / sw.TotalSeconds)) - sw.TotalSeconds));
-                string Estimate;
-                if (ts.TotalSeconds > 60)
-                    Estimate = string.Format("{0:D2}m{1:D2}s", ts.Minutes, ts.Seconds);
-                else Estimate = string.Format("{0:D2}s", ts.Seconds);
-                Core.Logger($"Estimated Scanning Time: {Estimate}");
-            }
         }
-        if (stopWatch.IsRunning)
-            stopWatch.Stop();
 
-        if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count()))
+        if (QuestIDs.Count() + Bot.Quests.Tree.Count() > Core.LoadedQuestLimit
+            && QuestIDs.Count < Core.LoadedQuestLimit)
         {
-            Core.Logger($"Found {QuestIDs.Count} Quests, this exceeds the max amount of loaded quests. No quests will be loaded.");
-            PreLoaded = true;
+            Bot.Flash.SetGameObject("world.questTree", new ExpandoObject());
+        }
+        else if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count()))
+        {
+            Core.Logger($"Found {QuestIDs.Count} Quests, this exceeds the max amount of loaded quests ({Core.LoadedQuestLimit}). No quests will be loaded.");
             return;
         }
 
@@ -393,10 +388,7 @@ public class CoreStory
             Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count > i ? QuestIDs.Count : i + 30)]);
             Bot.Sleep(1500);
         }
-
-        PreLoaded = true;
     }
-    private bool PreLoaded = false;
     private int PreviousQuestID = 0;
     private bool PreviousQuestState = false;
 
@@ -483,5 +475,4 @@ public class CoreStory
             Core.AddDrop(reqItems.ToArray());
         }
     }
-
 }

@@ -22,7 +22,7 @@ public class DageRecruitStory
         if (Core.isCompletedBefore(8575))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         Bot.Drops.Start();
 

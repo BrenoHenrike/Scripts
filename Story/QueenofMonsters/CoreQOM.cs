@@ -35,7 +35,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Summon Help
         Story.MapItemQuest(4495, "celestialrealm", 3698);
@@ -185,7 +185,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //A New Recruit
         if (!Story.QuestProgression(5404))
@@ -244,7 +244,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Hounds and Infernals and Imp, Oh my!
         Story.KillQuest(5487, "DarkoviaInvasion", new[] { "Underworld Hound", "Infernal Imp" });
@@ -309,7 +309,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Commander Tibias
         Story.MapItemQuest(5543, "ShadowfallInvasion", 5024);
@@ -366,7 +366,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Stand for Swordhaven
         Story.KillQuest(5575, "LycanInvasion", new[] { "Fallen Knight", "Infernal Knight" });
@@ -420,7 +420,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //What Happened to Baldric?
         Story.MapItemQuest(5791, "therift", 5228);
@@ -566,7 +566,7 @@ public class CoreQOM
             return;
 
         //Preload Quests
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Capture the Misshapen
         Story.KillQuest(5849, "Pilgrimage", new[] { "SpiderWing", "Urstrix" });
@@ -706,11 +706,11 @@ public class CoreQOM
         //Still Not Working
         Story.KillQuest(5871, "charredpath", new[] { "Ravenous Parasite", "Plague Spreader" });
 
-        //Get the Final Ingredients
+        //Get the Final Ingredients       
         if (!Story.QuestProgression(5872))
         {
             Core.EnsureAccept(5872);
-            Core.BuyItem("Embersea", 1100, 1749);
+            Core.BuyItem("arcangrove", 211, "Health Potion", 25);
 
             Core.HuntMonster("Arcangrove", "Seed Spitter", "Uncorrupted Spitter Seeds", 3);
             Core.HuntMonster("poisonforest", "Treeant", "Treeant Berries", 4);
@@ -719,7 +719,7 @@ public class CoreQOM
 
         //Smash the Hive
         Story.KillQuest(5873, "BrokenWoods", "Hive");
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Acolyte's Medallions
         if (!Story.QuestProgression(5874))
@@ -741,7 +741,7 @@ public class CoreQOM
         if (Core.isCompletedBefore(8080))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //8048 | Time to Study
         Story.KillQuest(8048, "forestreach", new[] { "Monstrous Imp", "Eldritch Parasite" });
@@ -833,7 +833,7 @@ public class CoreQOM
         if (Core.isCompletedBefore(8107))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //8083 | Crystal Tears
         Story.KillQuest(8083, "transformation", "Monstrite");

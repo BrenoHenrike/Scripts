@@ -26,7 +26,7 @@ public class UnderGroundLab
         if (Core.isCompletedBefore(3157))
             return;
 
-        Story.PreLoad();
+        Story.PreLoad(this);
         Core.EquipClass(ClassType.Farm);
 
         Core.AddDrop("Unicorn Essence");

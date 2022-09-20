@@ -46,6 +46,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialPast.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
 
@@ -59,6 +60,8 @@
 
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
+
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
 
@@ -70,10 +73,9 @@
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Borgars.cs
 
-//cs_include Scripts/Story/ChaosQueenBeleen.cs
-//cs_include Scripts/Story/Collection.cs
+//cs_include Scripts/Story/CastleTunnels.cs
+//cs_include Scripts/Story/CruxShip.cs
 
-//cs_include Scripts/Story/Deadmoor.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
@@ -96,12 +98,16 @@
 
 //cs_include Scripts/Story/LightoviaCave.cs
 
+//cs_include Scripts/Story/NytheraSaga.cs
+
 //cs_include Scripts/Story/Oddities.cs
+
+//cs_include Scripts/Story/RavenlossSaga.cs
 
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
-//cs_include Scripts/Story/SkyPirate.cs
+//cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/StarSinc.cs
 
 //cs_include Scripts/Story/Table.cs
@@ -177,6 +183,7 @@ public class AllStories
     public BrightOak BrightOak = new();
     public CelestialArenaQuests CelestialArena = new();
     public CelestialPast CelestialPast = new();
+    public GoldenArena GoldenArena = new();
     public LivingDungeon LivingDungeon = new();
     public OrbHunt OrbHunt = new();
 
@@ -189,12 +196,15 @@ public class AllStories
     // Shadow of War
     public CoreSoW SOW = new();
 
+    //Summer 2015 AdventureMap
+    public CoreSummer CoreSummer = new();
+
     // Throne of Darkness
     public CoreToD TOD = new();
 
     //MemetsRealm
     public MemetsRealm MemetsRealm = new();
-    
+
     #endregion
 
     #region Standalone (sorted alphabetically)
@@ -206,10 +216,9 @@ public class AllStories
     public BloodMoon BloodMoon = new();
     public Borgars Borgars = new();
 
-    public ChaosQueenBeleen ChaosQueenBeleen = new();
-    public Collection Collection = new();
+    public CastleTunnels CastleTunnels = new();
+    public CruxShip CruxShip = new();
 
-    public Deadmoor Deadmoor = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -231,14 +240,18 @@ public class AllStories
 
     public LightoviaCave LightoviaCave = new();
 
+    public NytheraSaga NytheraSaga = new();
+
     public J6Saga J6Saga = new();
 
     public Oddities Oddities = new();
 
+    public RavenlossSaga RavenlossSaga = new();
+
     public ShadowSlayerK ShadowSlayerK = new();
     public ShadowVoid ShadowVoid = new();
     public Shinkansen Shinkansen = new();
-    public SkyPirateQuests SkyPirateQuests = new();
+    public SkyGuardSaga SkyGuardSaga = new();
     public StarSinc StarSinc = new();
 
     public Table Table = new();
@@ -368,16 +381,23 @@ public class AllStories
         QOM.CompleteEverything();
         Core.Logger($"Saga: Queen of Monsters - Complete");
 
+
         BrightOak.doall();
-        Core.Logger($"BrightOak Complete");
+        Core.Logger($"Story: BrightOak - Complete");
 
         CelestialArena.Arena1to10();
         CelestialArena.Arena11to20();
         CelestialArena.Arena21to29();
         Core.Logger($"Story: Celestial Arena - Complete");
 
+        CelestialPast.CompleteCeletialPast();
+        Core.Logger($"Story: Celestial Past - Complete");
+
+        GoldenArena.StoryLine();
+        Core.Logger($"Story: GoldenArena - Complete");
+
         LivingDungeon.LivingDungeonStory();
-        Core.Logger($"LivingDungeon Complete");
+        Core.Logger($"Story: LivingDungeon - Complete");
 
         OrbHunt.SagaName();
         Core.Logger($"Story: Orb Hunt - Complete");
@@ -395,7 +415,12 @@ public class AllStories
 
         #region Shadow Of War
         SOW.CompleteCoreSoW();
-        Core.Logger($"Saga: Shadow of War [Part1] - Complete");
+        Core.Logger($"Saga: Shadow of War [Part1&2] - Complete");
+        #endregion
+
+        #region Summer 2015 AdventureMap
+        CoreSummer.DoAll();
+        Core.Logger($"Saga: Summer 2015 AdventureMap - Complete");
         #endregion
 
         #region ToD
@@ -427,15 +452,15 @@ public class AllStories
         Core.Logger($"Story: Borgars - Complete");
 
 
-        Collection.CollectionStory();
-        Core.Logger($"Story: Collection - Complete");
+        CastleTunnels.StoryLine();
+        Core.Logger($"Story: CastleTunnels - Complete");
 
         CelestialPast.CompleteCeletialPast();
         Core.Logger($"Story: CelestialPast - Complete");
 
+        CruxShip.StoryLine();
+        Core.Logger($"Story: CruxShip - Complete");
 
-        Deadmoor.StoryLine();
-        Core.Logger($"Story: Deadmoor - Complete");
 
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
@@ -489,8 +514,16 @@ public class AllStories
         Core.Logger($"Story: LightoviaCave - Complete");
 
 
+        NytheraSaga.DoAll();
+        Core.Logger($"Saga: Nythera - Complete");
+
+
         Oddities.StoryLine();
         Core.Logger($"Story: Oddities - {(Core.isCompletedBefore(8667) ? "Complete" : "Member Only")}");
+
+
+        RavenlossSaga.DoAll();
+        Core.Logger($"Saga: RavenLoss - Complete");
 
 
         ShadowSlayerK.Storyline();
@@ -502,8 +535,8 @@ public class AllStories
         Shinkansen.Storyline();
         Core.Logger($"Story: Shinkansen - Complete");
 
-        SkyPirateQuests.Storyline();
-        Core.Logger($"Story: Sky Pirate - Complete");
+        SkyGuardSaga.DoAll();
+        Core.Logger($"Saga: SkyGuard Saga - Complete");
 
         StarSinc.StarSincQuests();
         Core.Logger($"Story: Star Sinc - Complete");
