@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -10,22 +11,27 @@ public class ArmyApprovalFavour
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
+    private CoreArmyLite Army = new();
+
+    private static CoreBots sCore = new();
+    private static CoreArmyLite sArmy = new();
+
     public string OptionsStorage = "ArmyApprovalFavour";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<string>("player1", "Account #1", "Name of one of your accounts.", ""),
-        new Option<string>("player2", "Account #2", "Name of one of your accounts.", ""),
-        new Option<string>("player3", "Account #3", "Name of one of your accounts.", ""),
-        new Option<string>("player4", "Account #4", "Name of one of your accounts.", ""),
-        new Option<string>("player5", "Account #5", "Name of one of your accounts.", ""),
-        new Option<string>("player6", "Account #6", "Name of one of your accounts.", ""),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
+        if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
         Core.BankingBlackList.AddRange(Loot);
@@ -38,41 +44,24 @@ public class ArmyApprovalFavour
         Core.SetOptions(false);
     }
 
-    public string[] Loot = { "Archfiend's Favor", "Nulgath's Approval" };
-
     public void Setup()
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-        Core.Join("evilwarnul");
-        if ((Bot.Player.Username == Bot.Config.Get<string>("player1").ToLower()))
-            Core.Jump("r2", "Down");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player2").ToLower()))
-            Core.Jump("r3", "Right");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player3").ToLower()))
-            Core.Jump("r4", "Right");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player4").ToLower()))
-            Core.Jump("r5", "Right");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player5").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player6").ToLower()))
-            Core.Jump("r6", "Left");
-        else
-            Core.Jump("r2", "Down");
-        Army();
+
+        if (String.IsNullOrEmpty(Bot.Config.Get<string>("player4")))
+            Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        else Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        Army.AggroMonStart("evilwarnul");
+        Army.DivideOnCells("r2", "r3", "r4", "r5", "r6");
+
+        while (!Bot.ShouldExit)
+            Bot.Combat.Attack("*");
+        Army.AggroMonStop(true);
     }
 
-    public void Army()
-    {
-        while (!Bot.ShouldExit)
-        {
-            Bot.Combat.Attack("*");
-            Packet();
-        }
-    }
-    public void Packet()
-    {
-        if (Bot.Map.PlayerCount <= 3)
-            Core.SendPackets("%xt%zm%aggroMon%1%1%2%3%4%5%6%7%8%9%");
-        else
-            Core.SendPackets("%xt%zm%aggroMon%1%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%");
-    }
+    private string[] Loot = { "Archfiend's Favor", "Nulgath's Approval" };
 }

@@ -1,36 +1,41 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
 public class ArmyTotemAndGem
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreArmyLite Army = new();
+
+    private static CoreBots sCore = new();
+    private static CoreArmyLite sArmy = new();
+
     public string OptionsStorage = "ArmyTotemAndGem";
     public bool DontPreconfigure = true;
     CancellationTokenSource cts = new();
-    public int t = 0;
-    public int g = 0;
+
+    private int t = 0;
+    private int g = 0;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<string>("player1", "Account #1", "Name of one of your accounts.", ""),
-        new Option<string>("player2", "Account #2", "Name of one of your accounts.", ""),
-        new Option<string>("player3", "Account #3", "Name of one of your accounts.", ""),
-        new Option<string>("player4", "Account #4", "Name of one of your accounts.", ""),
-        new Option<string>("player5", "Account #5", "Name of one of your accounts.", ""),
-        new Option<string>("player6", "Account #6", "Name of one of your accounts.", ""),
-        new Option<int>("PacketDelay", "Delay for Packet Spam", "Sets the delay for the Packet Spam \n" +
-        "Increase if spamming too much - Decrease if missing kills\n" +
-        "Recommended setting: 500 or 1000)", 500),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.packetDelay,
         new Option<Rewards>("QuestReward", "Totems, Gems or Essences?", "Select the reward to farm first - if you pick Essences it will just Army while picking them up", Rewards.EssenceofNulgath),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
+        if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
         Core.BankingBlackList.AddRange(Loot);
@@ -43,12 +48,15 @@ public class ArmyTotemAndGem
         Core.SetOptions(false);
     }
 
-    public string[] Loot = { "Totem of Nulgath", "Gem of Nulgath", "Essence of Nulgath" };
+    private string[] Loot = { "Totem of Nulgath", "Gem of Nulgath", "Essence of Nulgath" };
 
     public void Setup()
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
             Core.Logger("Voucher of Nulgath (non-mem) not found - go get one before running this", messageBox: true, stopBot: true);
+
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

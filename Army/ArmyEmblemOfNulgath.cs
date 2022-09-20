@@ -7,14 +7,14 @@ using Skua.Core.Options;
 
 public class ArmyEmblemOfNulgath
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreArmyLite Army = new();
-    public CoreNation Nation = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreArmyLite Army = new();
+    private CoreNation Nation = new();
 
-    public static CoreBots sCore = new();
-    public static CoreArmyLite sArmy = new();
+    private static CoreBots sCore = new();
+    private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyEmblemOfNulgathV2";
     public bool DontPreconfigure = true;
@@ -44,10 +44,11 @@ public class ArmyEmblemOfNulgath
         Core.SetOptions(false);
     }
 
-    public string[] Loot = { "Fiend Seal", "Gem of Domination", "Emblem of Nulgath" };
-
     public void FarmingTime()
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         if (!Core.CheckInventory("Nation Round 4 Medal"))
         {
             Core.Logger("Nation Round 4 Medal not found, getting it for you");
@@ -66,10 +67,11 @@ public class ArmyEmblemOfNulgath
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
-
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
+
+    private string[] Loot = { "Fiend Seal", "Gem of Domination", "Emblem of Nulgath" };
 }
 
 // public enum Rewards
