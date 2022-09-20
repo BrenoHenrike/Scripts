@@ -1070,17 +1070,18 @@ public class CoreNation
         if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
             return;
 
-        Core.AddDrop("Blood Gem of the Archfiend");
+        Core.AddDrop("Blood Gem of the Archfiend", "Hydra Scale Piece");
         if (Relic)
             Core.AddDrop(BloodyChaosSupplies);
         Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
         Core.RegisterQuests(Relic ? new[] { 7816, 2857 } : new[] { 7816 });
         Bot.Quests.UpdateQuest(363);
-        Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem Of The Archfiend", quant))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.KillEscherion("Escherion's Helm", isTemp: false);
             Core.KillVath("Shattered Legendary Sword of Dragon Control", isTemp: false);
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("hydrachallenge", "Hydra Head 85", "Hydra Scale Piece", 200, false);
         }
         Core.CancelRegisteredQuests();
