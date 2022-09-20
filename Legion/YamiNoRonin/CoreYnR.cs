@@ -58,7 +58,7 @@ public class CoreYnR
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 600, false);
 
-        Core.BuyItem("akiba", 131, "Oni Skull Charm", 1);
+        Adv.BuyItem("akiba", 131, "Oni Skull Charm");
         if (!Core.CheckInventory("Shadow Blade Katana"))
         {
             Yami(10);
