@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Models.Shops;
 
 public class PotionBuyer
@@ -15,7 +16,7 @@ public class PotionBuyer
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
+        Core.BankingBlackList.Add("Dragon Runestone");
         INeedYourStrongestPotions();
 
         Core.SetOptions(false);
@@ -24,127 +25,132 @@ public class PotionBuyer
     //potionQuant is set to 30, due to reagents max quant being 30
     public void INeedYourStrongestPotions(int potionQuant = 30, List<string> potions = null, string reagent1 = null, string reagent2 = null)
     {
+        #region Potion Seller
+        // Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I'm going into battle and I want your strongest potions.");
+        // Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
+        // Core.Logger($"Potion Seller: My potions are too strong for you, traveller.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"{Bot.Player.Username}: Potion Seller! I tell you, I'm going into battle and I want only your strongest potions.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
+        // Bot.Sleep(2500);
+        // Core.Logger($"{Bot.Player.Username}: Potion Seller, listen to me, I want only your strongest potions.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"Potion Seller: My potions would kill you traveller, you cannot handle my potions.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"{Bot.Player.Username}: POTION SELLER! I require your strongest potions!");
+        // Bot.Sleep(2500);
+        // Core.Logger($"Potion Seller: My strongest potions would kill you traveller, you can't handle my strongest potions. You better go to a seller that sells weaker potions.");
+        #endregion
+
+        #region Starting Requirements
         Farm.AlchemyREP();
         Farm.GoodREP();
-        Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I'm going into battle and I want your strongest potions.");
+        Farm.AlchemyREP();
+        #endregion
+
+        #region Potion Gathering
         if (potions is null)
             potions = new() { "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Potent Malevolence Elixir", "Sage Tonic" };
-        List<ShopItem> shopItems;
-        Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
-        if (Bot.Shops.LoadedCache.Any(s => s.ID == 2036))
-        {
-            shopItems = Bot.Shops.LoadedCache.First(s => s.ID == 2036).Items;
-        }
-        else
-        {
-            Core.Join("alchemyacademy");
-            Bot.Shops.Load(2036);
-            shopItems = Bot.Shops.Items;
-        }
-        Core.Logger($"Potion Seller: My potions are too strong for you, traveller.");
-        Bot.Sleep(2500);
-        Core.Logger($"{Bot.Player.Username}: Potion Seller! I tell you, I'm going into battle and I want only your strongest potions.");
-        Bot.Sleep(2500);
-        Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
-        Bot.Sleep(2500);
-        Core.Logger($"{Bot.Player.Username}: Potion Seller, listen to me, I want only your strongest potions.");
-        Bot.Sleep(2500);
-        Core.Logger($"Potion Seller: My potions would kill you traveller, you cannot handle my potions.");
-        Bot.Sleep(2500);
-        Core.Logger($"{Bot.Player.Username}: POTION SELLER! I require your strongest potions!");
-        Bot.Sleep(2500);
-        Core.Logger($"Potion Seller: My strongest potions would kill you traveller, you can't handle my strongest potions. You better go to a seller that sells weaker potions.");
         foreach (string potion in potions)
         {
             int currentQuant = Bot.Inventory.GetQuantity(potion);
+            int PurchaseQuant = potionQuant - currentQuant;
+            if (PurchaseQuant < 0)
+                PurchaseQuant = 0;
             if (currentQuant >= potionQuant)
                 continue;
 
-            int shopQuant = shopItems.First(p => p.Name.ToLower() == potion.ToLower()).Quantity;
-            int purchaseQuant = (potionQuant - currentQuant) / shopQuant;
-            purchaseQuant = purchaseQuant == 0 ? 1 : purchaseQuant;
-            int voucherQuant = shopItems.First(p => p.Name.ToLower() == potion.ToLower()).Requirements[0].Quantity * purchaseQuant;
-            voucherQuant = voucherQuant == 0 ? 1 : voucherQuant;
+            InventoryItem reagentstuffs1 = Bot.Inventory.GetItem(reagent1);
+            InventoryItem reagentstuffs2 = Bot.Inventory.GetItem(reagent2);
+
             Core.AddDrop(potion, reagent1, reagent2);
 
             switch (potion)
             {
                 case "Potent Malevolence Elixir":
                 case "Potent Battle Elixir":
+                    if (Core.CheckInventory(potion, potionQuant))
+                        return;
+
                     Core.FarmingLogger("Potent Battle Elixir", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         reagent1 = "Doomatter";
                         reagent2 = "Nimblestem";
 
-                        if (Core.IsMember)
-                            Core.HuntMonster("Creepy", "Fear Feeder", reagent1, potionQuant, isTemp: false);
-                        else Core.HuntMonster("VordredBoss", "Vordred", reagent1, potionQuant, isTemp: false);
+                        Core.HuntMonster("VordredBoss", "Vordred", reagent1, potionQuant, isTemp: false);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
 
-                        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { reagent1, reagent2 }))
-                            Farm.AlchemyPacket(reagent1, reagent2);
+                        Farm.DragonRunestone(PurchaseQuant);
+                        Farm.AlchemyPacket(reagent1, reagent2, trait: "APw", P2w: true);
                     }
-                    Core.TrashCan(reagent2, reagent1);
+                    Core.TrashCan(reagent1, "Dragon Runestone");
                     break;
 
 
                 case "Potent Honor Potion": //200k/pot vs 500k non-alchemy
+                    if (Core.CheckInventory(potion, potionQuant))
+                        return;
                     Core.FarmingLogger("Potent Honor Potion", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         reagent1 = "Chaos Entity";
-                        reagent2 = "Fish Oil";
-
-                        Adv.BuyItem("alchemyacademy", 2114, reagent1, potionQuant, shopQuant);
-                        if (!Core.CheckInventory(11467, potionQuant))
-                            Adv.BuyItem("alchemyacademy", 397, reagent2, potionQuant, shopQuant);
-
-                        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { reagent1, reagent2 }))
-                            Farm.AlchemyPacket(reagent1, reagent2);
+                        reagent2 = "Nimblestem";
+                        Farm.Gold(PurchaseQuant * 100000);
+                        Core.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", PurchaseQuant);
+                        Core.BuyItem("alchemyacademy", 2114, reagent1, PurchaseQuant);
+                        Core.HuntMonster("mudluk", "Swamp Frogdrake", reagent2, potionQuant, isTemp: false);
+                        Farm.DragonRunestone(PurchaseQuant);
+                        Farm.AlchemyPacket(reagent1, reagent2, trait: "Dam", P2w: true);
                     }
-                    Core.TrashCan(reagent2, reagent1);
+
+                    Core.TrashCan(reagent2, "Dragon Runestone");
                     break;
 
                 case "Fate Tonic":
+                    if (Core.CheckInventory(potion, potionQuant))
+                        return;
                     Core.FarmingLogger("Fate Tonic", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
-                        reagent1 = "Dried Slime";
-                        reagent2 = "Trollola Nectar";
+                        reagent1 = "Trollola Nectar";
+                        reagent2 = "Arashtite Ore";
 
                         Core.EquipClass(ClassType.Farm);
-                        Bot.Quests.UpdateQuest(2060); // puts you back to start otherwise.
-                        Core.HuntMonster("necrodungeon", "SlimeSkull", reagent1, potionQuant, isTemp: false);
-                        Core.HuntMonster("Bloodtusk", "Trollola Plant", reagent2, potionQuant, isTemp: false);
+                        Core.HuntMonster("Bloodtusk", "Trollola Plant", reagent1, potionQuant, isTemp: false);
+                        Core.HuntMonster("orecavern", "Deathmole", reagent2, potionQuant, isTemp: false);
 
-                        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { reagent1, reagent2 }))
-                            Farm.AlchemyPacket(reagent1, reagent2, rank: 8);
+                        Farm.DragonRunestone(PurchaseQuant);
+                        Farm.AlchemyPacket(reagent1, reagent2, trait: "Luc", P2w: true);
+                        Farm.AlchemyPacket(reagent1, reagent2, trait: "Luc", P2w: true);
                     }
-                    Core.TrashCan(reagent2, reagent1);
+                    Core.TrashCan("Dragon Runestone");
                     break;
 
+
                 case "Sage Tonic":
+                    if (Core.CheckInventory(potion, potionQuant))
+                        return;
                     Core.FarmingLogger("Sage Tonic", potionQuant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                     {
                         reagent1 = "Arashtite Ore";
-                        reagent2 = "Doomatter";
+                        reagent2 = "Trollola Nectar";
 
                         Core.AddDrop(reagent1, reagent2);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("orecavern", "Deathmole", reagent1, potionQuant, isTemp: false);
-                        if (Core.IsMember)
-                            Core.HuntMonster("Creepy", "Fear Feeder", reagent2, potionQuant, isTemp: false);
-                        else Core.HuntMonster("VordredBoss", "Vordred", reagent2, potionQuant, isTemp: false);
+                        Core.HuntMonster("Bloodtusk", "Trollola Plant", reagent2, potionQuant, isTemp: false);
 
-                        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { reagent1, reagent2 }))
-                            Farm.AlchemyPacket(reagent1, reagent2);
+                        Farm.DragonRunestone(PurchaseQuant);
+                        Farm.AlchemyPacket(reagent1, reagent2, trait: "Int", P2w: true);
                     }
-                    Core.TrashCan(reagent2, reagent1);
                     break;
             }
+            Core.TrashCan("Arashtite Ore", "Trollola Nectar", "Chaos Entity", "Nimblestem", "Doomatter", "Dragon Runestone");
+            #endregion
         }
     }
 }
