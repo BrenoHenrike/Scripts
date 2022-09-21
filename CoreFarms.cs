@@ -590,7 +590,7 @@ public class CoreFarms
     /// <param name="rank">The minimum rank to make the misture, use 0 for any rank.</param>
     /// <param name="loop">Whether loop till you run out of reagents</param>
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
-    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose")
+    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", string trait = "", bool P2w = false)
     {
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
@@ -602,13 +602,15 @@ public class CoreFarms
         void Packet()
         {
             Bot.Sleep(3500);
-            if ((AlchemyRunes)rune == AlchemyRunes.Dragon)
-                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%APw%");
-            else Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if (P2w && Core.CheckInventory("Dragon Runestone"))
+                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
+            else if (!P2w)
+                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
             Bot.Sleep(11000);
-            if ((AlchemyRunes)rune == AlchemyRunes.Dragon)
-                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%APw%");
-            else Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if (P2w && Core.CheckInventory("Dragon Runestone"))
+                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
+            else if (!P2w)
+                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
@@ -619,12 +621,26 @@ public class CoreFarms
             int i = 1;
             while (!Bot.ShouldExit && Core.CheckInventory(new[] { reagent1, reagent2 }))
             {
+                if (P2w && !Core.CheckInventory("Dragon Runestone"))
+                    break;
                 Packet();
                 Core.Logger($"Completed alchemy x{i++}");
             }
         }
         else Packet();
         //Times alchemy was fixed: TO FUCKING MANY I HATE ARTIX
+    }
+
+    public void DragonRunestone(int quant)
+    {
+        if (Core.CheckInventory("Dragon Runestone", quant))
+            return;
+
+        Gold(100000 * quant);
+        Core.FarmingLogger("Gold Voucher 100k", quant);
+        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
+        Core.FarmingLogger("Dragon Rune", quant);
+        Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 1, 1, 8844);
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)

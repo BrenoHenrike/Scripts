@@ -50,7 +50,7 @@ public class EnoughDOOMforanArchfiend
         Nation.ApprovalAndFavor(0, 5000);
         Nation.EssenceofNulgath(100);
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", 1, false);
+        Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", isTemp: false);
         Core.EquipClass(ClassType.Farm);
         Farm.BattleUnderB("Undead Essence", 1000);
         Nation.FarmVoucher(false);
@@ -63,6 +63,7 @@ public class EnoughDOOMforanArchfiend
             Core.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 1, 9770);
             Bot.Wait.ForItemBuy();
         }
+        Core.EnsureAccept(5260);
         Core.KillMonster("orecavern", "r3", "Up", "*", "Chaorruption Essence", 75, false);
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 

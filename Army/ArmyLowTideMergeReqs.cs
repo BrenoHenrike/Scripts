@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -10,26 +11,29 @@ public class ArmyLowTideMergeReqs
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
+    public CoreArmyLite Army = new();
+
+    public static CoreBots sCore = new();
+    public static CoreArmyLite sArmy = new();
+
     public string OptionsStorage = "ArmyLowTideMergeReqs";
     public bool DontPreconfigure = true;
     CancellationTokenSource cts = new();
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<string>("player1", "Account #1", "Name of one of your accounts.", ""),
-        new Option<string>("player2", "Account #2", "Name of one of your accounts.", ""),
-        new Option<string>("player3", "Account #3", "Name of one of your accounts.", ""),
-        new Option<string>("player4", "Account #4", "Name of one of your accounts.", ""),
-        new Option<string>("player5", "Account #5", "Name of one of your accounts.", ""),
-        new Option<string>("player6", "Account #6", "Name of one of your accounts.", ""),
-        new Option<int>("PacketDelay", "Delay for Packet Spam", "Sets the delay for the Packet Spam \n" +
-        "Increase if spamming too much - Decrease if missing kills\n" +
-        "Recommended setting: 500 or 1000)", 500),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.packetDelay,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
+        if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
         Core.BankingBlackList.AddRange(Loot);
@@ -42,35 +46,26 @@ public class ArmyLowTideMergeReqs
         Core.SetOptions(false);
     }
 
-    public string[] Loot = { "Evidence Tag" };
-
     public void Setup()
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+        Army.AggroMonPacketDelay = Bot.Config.Get<int>("PacketDelay");
+
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-        Core.Join("lowtide");
-        if ((Bot.Player.Username == Bot.Config.Get<string>("player1").ToLower()))
-            Core.Jump("r4", "Left");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player2").ToLower()))
-            Core.Jump("r5", "Left");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player3").ToLower()))
-            Core.Jump("r6", "Left");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player4").ToLower()))
-            Core.Jump("r6", "Left");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player5").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player6").ToLower()))
-            Core.Jump("r6", "Left");
-        else
-            Core.Jump("r4", "Left");
-        Army();
-    }
 
-    public void Army()
-    {
+        Army.AggroMonMIDs(5, 6, 7, 8, 9, 10);
+        Army.AggroMonStart("lowtide");
+        Army.DivideOnCells("r4", "r5", "r6");
+
         Core.RegisterQuests(8846);
-        var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%5%6%7%8%9%10%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token);
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
-        cts.Cancel();
+
+        Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
+
+    private string[] Loot = { "Evidence Tag" };
 }

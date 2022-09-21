@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -8,6 +9,8 @@ public class IceWingLevelingArmy
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
+    public CoreArmyLite Army = new();
+
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmyIceWing";
     public List<IOption> Options = new List<IOption>()
@@ -15,12 +18,14 @@ public class IceWingLevelingArmy
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
         new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
     };
+
     public int level = 75;
+
     public void ScriptMain(IScriptInterface bot)
     {
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
-        
+
         Core.SetOptions();
 
         ArmyIceWing();
@@ -30,6 +35,9 @@ public class IceWingLevelingArmy
 
     public void ArmyIceWing()
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
         while (!Bot.ShouldExit)
             KillIceWing("icestormarena", "r23", "Left", "*");
@@ -38,7 +46,7 @@ public class IceWingLevelingArmy
 
     public void KillIceWing(string map, string cell, string pad, string monster)
     {
-        Core.Join(map);
+        Core.Join(map, cell, pad);
         if (Bot.Player.Cell != cell)
         {
             if (Bot.Player.Level < level)

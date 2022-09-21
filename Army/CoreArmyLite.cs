@@ -28,7 +28,7 @@ public class CoreArmyLite
         List<string> _AggroMonCells = this._AggroMonCells;
         List<string> _AggroMonNames = this._AggroMonNames;
         List<int> _AggroMonIDs = this._AggroMonIDs;
-        List<int> AggroMonMapIDs = new(); //MMIDs = Monster Map IDs
+        List<int> AggroMonMapIDs = this._AggroMonMIDs; //MMIDs = Monster Map IDs
 
         foreach (string cell in _AggroMonCells)
             AddMapIDs(GetMapIDs(Bot.Monsters.GetMonstersByCell(cell)));
@@ -78,11 +78,14 @@ public class CoreArmyLite
         => _AggroMonCells = cells.ToList();
     public void AggroMonNames(params string[] names)
         => _AggroMonNames = names.ToList();
-    public void AggroMonIDs(params int[] IDs)
-        => _AggroMonIDs = IDs.ToList();
+    public void AggroMonIDs(params int[] monsterIDs)
+        => _AggroMonIDs = monsterIDs.ToList();
+    public void AggroMonMIDs(params int[] monsterMapIDs)
+        => _AggroMonMIDs = monsterMapIDs.ToList();
     private List<string> _AggroMonCells = new();
     private List<string> _AggroMonNames = new();
     private List<int> _AggroMonIDs = new();
+    private List<int> _AggroMonMIDs = new();
 
     public void AggroMonClear()
     {
@@ -106,6 +109,12 @@ public class CoreArmyLite
     public Option<string> player8 = new("player8", "Account #8", "Name of one of your accounts.", "");
     public Option<string> player9 = new("player9", "Account #9", "Name of one of your accounts.", "");
     public Option<string> player10 = new("player10", "Account #10", "Name of one of your accounts.", "");
+
+    public Option<int> packetDelay = new(
+        "PacketDelay", "Delay for Packet Spam", "Sets the delay for the Packet Spam\n" +
+        "Increase if spamming too much - Decrease if missing kills\n" +
+        "Recommended setting: 500 or 1000)", 500
+    );
 
     #endregion
 
@@ -196,14 +205,37 @@ public class CoreArmyLite
 
     #endregion
 
-    //WIP
-    //public string AvailableCell(params string[] cells)
-    //{
-    //    List<string> availableCells = cells.ToList() ?? Bot.Map.Cells;
+    public int getRoomNr()
+    {
+        string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string combinedDigits = "";
 
-    //    List<string> cellsWithPlayers = (Bot.Map.Players ?? new()).Select(p => p.Cell).ToList();
-    //    return availableCells.First(c => !Bot.Map.Players.Any(p => p.Cell == c && Bot.Monsters.MapMonsters.Where(m => m.Cell == c).Count() > 0)) ?? "Enter";
-    //}
+        foreach (char c in (Core.AppPath ?? "").ToUpper())
+        {
+            if (char.IsDigit(c))
+                combinedDigits += c;
+            else if (char.IsLetter(c))
+                combinedDigits += Alphabet.IndexOf(c);
+
+            if (combinedDigits.Length >= 36)
+                break;
+        }
+
+        while (!Bot.ShouldExit && combinedDigits.Length < 4)
+        {
+            combinedDigits = (int.Parse(combinedDigits) * (DateTime.Now.Hour - DateTimeOffset.UtcNow.Hour) * DateTime.Today.Day).ToString();
+        }
+
+        while (!Bot.ShouldExit && combinedDigits.Length >= 6)
+        {
+            long firstHalf = long.Parse(combinedDigits.Substring(0, (combinedDigits.Length / 2)));
+            long secondHalf = long.Parse(combinedDigits.Substring(combinedDigits.Length / 2));
+            combinedDigits = (firstHalf + secondHalf).ToString();
+            if (combinedDigits.Length <= 4)
+                combinedDigits = (long.Parse(combinedDigits) * DateTime.Today.Day).ToString();
+        }
+        return int.Parse(combinedDigits);
+    }
 
     /// <summary>
     /// Spreads players around the input cells, if no cells are set - will spread with any cell that has a monster in it.
