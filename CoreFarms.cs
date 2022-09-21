@@ -631,15 +631,26 @@ public class CoreFarms
         //Times alchemy was fixed: TO FUCKING MANY I HATE ARTIX
     }
 
-    public void DragonRunestone(int quant)
+
+
+    public enum AlchemyTraits
+    {
+        Dam = 1, // Potent Honor Potion
+        APw = 2, // Potent Battle Elixir
+        Luc = 3, // Fate Tonic
+        Int = 4, // Sage Tonic
+        SPw = 5 // Potent Malevolence Elixir        
+    };
+
+    public void DragonRunestone(int quant = 1)
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
 
+        Core.FarmingLogger("Dragon Rune", quant);
         Gold(100000 * quant);
         Core.FarmingLogger("Gold Voucher 100k", quant);
         Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
-        Core.FarmingLogger("Dragon Rune", quant);
         Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 1, 1, 8844);
     }
 
