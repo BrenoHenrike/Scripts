@@ -590,7 +590,7 @@ public class CoreFarms
     /// <param name="rank">The minimum rank to make the misture, use 0 for any rank.</param>
     /// <param name="loop">Whether loop till you run out of reagents</param>
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
-    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", string trait = "", bool P2w = false)
+    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool P2w = false)
     {
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
@@ -635,7 +635,7 @@ public class CoreFarms
 
     public enum AlchemyTraits
     {
-        Dam = 1, // Potent Honor Potion
+        Dam = 1, // Potent Honor Potion (trait, itemID)
         APw = 2, // Potent Battle Elixir
         Luc = 3, // Fate Tonic
         Int = 4, // Sage Tonic
