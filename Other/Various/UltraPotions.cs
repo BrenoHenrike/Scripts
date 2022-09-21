@@ -23,7 +23,7 @@ public class PotionBuyer
     }
 
     //potionQuant is set to 30, due to reagents max quant being 30
-    public void INeedYourStrongestPotions(int potionQuant = 20, List<string> potions = null, string reagent1 = null, string reagent2 = null)
+    public void INeedYourStrongestPotions(int potionQuant = 30, List<string> potions = null, string reagent1 = null, string reagent2 = null)
     {
         #region Potion Seller
         // Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I'm going into battle and I want your strongest potions.");
