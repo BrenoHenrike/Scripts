@@ -112,6 +112,8 @@ public class CoreBots
                 else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
             }
 
+            IsMember = Bot.Player.IsMember;
+
             ReadMe();
         }
 
@@ -1361,8 +1363,8 @@ public class CoreBots
 
     #region Utility
 
-    // Whether the player is Member
-    public bool IsMember => IScriptInterface.Instance.Player.IsMember;
+    // Whether the player is Member (set to true if neccessary during setOptions)
+    public bool IsMember = false;
 
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
