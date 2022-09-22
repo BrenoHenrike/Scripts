@@ -3,7 +3,6 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
-//cs_include Scripts/Story/WarfuryTraining.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
