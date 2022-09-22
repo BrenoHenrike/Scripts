@@ -24,14 +24,13 @@ public class DarkRanger
         if (Core.CheckInventory("Dark Ranger"))
             return;
 
-        Adv.BuyItem("whitemap", 1317, "Golden 8th Birthday Candle");
-
-        if (!Core.CheckInventory("Golden 8th Birthday Candle"))
+        if (!Core.HasAchievement(24, "ip9"))
         {
-            Core.Logger("You need to have \"8 years played\" badge.");
+            Core.Logger("You need to have \"8 years played\" badge in order to use this bot.");
             return;
         }
 
+        Adv.BuyItem("whitemap", 1317, "Golden 8th Birthday Candle");
         Farm.SandseaREP();
         Core.AddDrop("Dark Ranger");
 
