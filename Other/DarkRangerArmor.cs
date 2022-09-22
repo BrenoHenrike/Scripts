@@ -33,6 +33,7 @@ public class DarkRanger
         }
 
         Farm.SandseaREP();
+        Core.AddDrop("Dark Ranger");
 
         Core.RegisterQuests(5517);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Ranger"))
