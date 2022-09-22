@@ -88,6 +88,10 @@ public class TechfortressWarMerge
                     Dailies.MineCrafting(new[] { "Silver" }, quant);
                     break;
 
+                case "Spirit Orb":
+                    BLOD.SpiritOrb(quant);
+                    break;
+
                 case "Loyal Spirit Orb":
                     BLOD.FindingFragmentsBlade(0, quant);
                     break;
