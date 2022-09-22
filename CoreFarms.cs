@@ -595,18 +595,22 @@ public class CoreFarms
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
 
-        Core.Join("Alchemy");
+        // Core.Join("Alchemy");
         InventoryItem reagentid1 = Bot.Inventory.GetItem(reagent1);
         InventoryItem reagentid2 = Bot.Inventory.GetItem(reagent2);
 
         void Packet()
         {
-            Bot.Sleep(3500);
+            if (!P2w)
+                Bot.Sleep(3500);
+            else Bot.Sleep(Core.ActionDelay);
             if (P2w && Core.CheckInventory("Dragon Runestone"))
                 Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
             else if (!P2w)
                 Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            Bot.Sleep(11000);
+            if (P2w)
+                Bot.Sleep(1500);
+            else Bot.Sleep(11000);
             if (P2w && Core.CheckInventory("Dragon Runestone"))
                 Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
             else if (!P2w)
@@ -632,14 +636,22 @@ public class CoreFarms
     }
 
 
-
+    /// <summary>
+    /// Uses the Jera:hOu in the alchemy packet for starting rep.
+    /// to find teh correct trait for a specific pot, goto /join alchemy with the correct reagents
+    /// and open packet logger, enable it, start "help me", "use dragon stones"
+    /// slect the level/type/kind(atk, int, spell, etc), and start it, grab the packet(copy it)
+    /// make request with that and the Potion's name+itemid(from tools > grabber > inventory > grab)
+    /// </summary>
     public enum AlchemyTraits
     {
-        Dam = 1, // Potent Honor Potion (trait, itemID)
-        APw = 2, // Potent Battle Elixir
-        Luc = 3, // Fate Tonic
-        Int = 4, // Sage Tonic
-        SPw = 5 // Potent Malevolence Elixir        
+        Dam = 11736, // Potent Honor Potion (trait, itemID)
+        APw = 11741, // Potent Battle Elixir
+        Luc = 11683, // Fate Tonic
+        Int = 11635, // Sage Tonic
+        SPw = 11745, // Potent Malevolence Elixir    
+        hOu = 11761 // Healer Elixer / Potent Guard Potion / Unstable Healer Elixer // rep spam with jerra
+        //more to be added by request
     };
 
     public void DragonRunestone(int quant = 1)
@@ -662,7 +674,7 @@ public class CoreFarms
         if (!Bot.Reputation.FactionList.Exists(f => f.Name == "Alchemy"))
         {
             Core.Logger("Getting Pre-Ranking XP");
-            if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale", "Dragon Runestone" }))
+            if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Runestone" }) || !Core.CheckInventory(11475)) //there are 2 dagon scales.
             {
                 if (!Core.CheckInventory("Dragon Runestone", 10))
                 {
@@ -672,7 +684,8 @@ public class CoreFarms
                 Core.BuyItem("alchemyacademy", 395, 7132, 10, 10, 8845);
                 Core.BuyItem("alchemyacademy", 397, 11475, 1, 2, 1232);
                 Core.BuyItem("alchemyacademy", 397, 11478, 1, 2, 1235);
-                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false);
+
+                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
             }
         }
 
@@ -686,7 +699,7 @@ public class CoreFarms
         {
             if (goldMethod)
             {
-                if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Scale", "Dragon Runestone" }))
+                if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Runestone" }) || !Core.CheckInventory(11475)) //there are 2 dagon scales.
                 {
                     if (!Core.CheckInventory("Dragon Runestone", 10))
                     {
@@ -697,14 +710,36 @@ public class CoreFarms
                     Core.BuyItem("alchemyacademy", 397, 11475, 10, 2, 1232);
                     Core.BuyItem("alchemyacademy", 397, 11478, 10, 2, 1235);
                 }
-                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Gebo);
+
+                if (FactionRank("Alchemy") < 3)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
+
+                else if (FactionRank("Alchemy") < 5)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Uruz, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
+
+                else if (FactionRank("Alchemy") < 8)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Fehu, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
+
+                else if (FactionRank("Alchemy") >= 8)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Gebo, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
             }
             else
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.KillMonster("lair", "Enter", "Spawn", "*", "Dragon Scale", 10, false, log: false);
                 Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, false, log: false);
-                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Gebo);
+
+                if (FactionRank("Alchemy") < 3)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
+
+                if (FactionRank("Alchemy") < 5)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Uruz, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
+
+                if (FactionRank("Alchemy") < 8)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Fehu, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
+
+                if (FactionRank("Alchemy") >= 8)
+                    AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Gebo, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
             }
             Core.Logger($"Iteration {i++} completed");
         }

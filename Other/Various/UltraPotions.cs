@@ -46,7 +46,6 @@ public class PotionBuyer
         #region Starting Requirements
         Farm.AlchemyREP();
         Farm.GoodREP();
-        Farm.AlchemyREP();
         #endregion
 
         #region Potion Gathering
