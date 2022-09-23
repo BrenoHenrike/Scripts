@@ -36,8 +36,8 @@ public class PolishedBLOD
 
         Farm.BattleUnderB("Undead Energy", 3000);
         Adv.BuyItem("alchemyacademy", 2114, "Bright Tonic", 10, 10);
-        Core.HuntMonster("doomforest", "Undead Paladin", "Purification Orb", 10, false);
-        Core.KillMonster("doomforest", "r7", "Up", "*", "Shoelace of a Fallen Paladin", 3, false);
+        Core.HuntMonster("doomwoodforest", "Undead Paladin", "Purification Orb", 10, false);
+        Core.KillMonster("doomwoodforest", "r7", "Up", "*", "Shoelace of a Fallen Paladin", 3, false);
         Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 75, false);
         Core.HuntMonster("lightguardwar", "Sigrid Sunshield", "Medal of Justice", 150, false);
 

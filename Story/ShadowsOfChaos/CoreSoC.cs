@@ -234,6 +234,9 @@ public class CoreSoC
             Core.Logger("You have already completed BrightShadow storyline");
             return;
         }
+
+        ShadowOff();
+
         Story.PreLoad(this);
 
         //Protect the Light 7733

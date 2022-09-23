@@ -112,6 +112,8 @@ public class CoreBots
                 else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
             }
 
+            IsMember = Bot.Player.IsMember;
+
             ReadMe();
         }
 
@@ -196,6 +198,9 @@ public class CoreBots
                 ToBank(MiscForBank.ToArray());
             }
 
+            foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
+                EquipmentBeforeBot.Add(item.Name);
+
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
             if (disableClassSwap)
@@ -220,6 +225,7 @@ public class CoreBots
         }
     }
     public List<string> BankingBlackList = new();
+    private List<string> EquipmentBeforeBot = new();
     private bool joinedPrison = false;
     private bool prisonListernerActive = false;
 
@@ -237,6 +243,8 @@ public class CoreBots
             JumpWait();
             Bot.Combat.Exit();
             Bot.Sleep(ActionDelay);
+            if (EquipmentBeforeBot.Count() > 0)
+                Equip(EquipmentBeforeBot.ToArray());
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
                 if (CustomStopLocation.ToLower() == "home")
@@ -1355,8 +1363,8 @@ public class CoreBots
 
     #region Utility
 
-    // Whether the player is Member
-    public bool IsMember => IScriptInterface.Instance.Player.IsMember;
+    // Whether the player is Member (set to true if neccessary during setOptions)
+    public bool IsMember = false;
 
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message

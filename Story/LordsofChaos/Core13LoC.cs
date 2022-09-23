@@ -2288,6 +2288,8 @@ public class Core13LoC
         if (Core.isCompletedBefore(3824))
             return;
 
+        Hero();
+
         Story.PreLoad(this);
 
         //Arrive in DreadHaven
