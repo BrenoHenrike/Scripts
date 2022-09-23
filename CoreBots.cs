@@ -310,10 +310,10 @@ public class CoreBots
 
             Logger("-----------------------");
             Logger("Last 5 Logs:");
-            Logger(logs.Join('\n'));
+            Bot.Log(logs.Join('\n'));
             Logger("-----------------------");
             Logger("Crash (Debug)");
-            Logger(eSlice);
+            Bot.Log(eSlice);
             Logger("-----------------------");
         }
         return StopBot(e != null);

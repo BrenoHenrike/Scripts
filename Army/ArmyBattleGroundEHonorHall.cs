@@ -26,6 +26,7 @@ public class ArmyBattlegroundE
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        new Option<Method>("mapname", "BGE or Honour Hall?", "Farm BGE or Honourhall(member)?", Method.BattleGroundE),
         sCore.SkipOptions
     };
 
