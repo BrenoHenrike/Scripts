@@ -25,11 +25,11 @@ public class CurrentDailyGifts
         Core.Logger("Last update to this bot was on: " + lastUpdate.ToString(formatInfo)[..10]);
 
         #region Old Permanent Gifts
-        //Any Gifts before this are either permanent or are gone. You guys can add more permanent ones if you feel like doing grunt work.
+        //Any gifts before this are either permanent or are gone. You guys can add more permanent ones if you feel like doing grunt work.
         //GetGift(Permanent, "map", "monster", new[] { "" });
         GetGift(Permanent, "legionarena", "Blade Master", new[] { "Soulfire Scarf", "Soulfire Sheath", "Soulfire Sheath + Scarf" });
         GetGift(Permanent, "maul", "Vending Machine", new[] { "Carmel Sandwich Cookie", "Carmel Sandwich Cookies", "Chocolate Sandwich Cookie", "Dual Sandwich Cookies", "Grilled Provolone Sandwich", "Milanesa And Mashed Potatoes", "Sweet Tart", "Sweet Tart with Coconut" });
-        GetGift(Permanent, "garde", "Fa", "Re and Fa House Guest Duo");
+        GetGift(Permanent, "garden", "Fa", "Re and Fa House Guest Duo");
 
         #endregion
 
@@ -67,10 +67,10 @@ public class CurrentDailyGifts
     /// </summary>
     private void GetGift(DateTime expiresAt, string map, string monster, string item)
     {
-        if ((expiresAt == Permanent ? false : expiresAt < DateTime.Now) || Core.CheckInventory(item, toInv: false))
+        if ((expiresAt == Permanent ? false : expiresAt.AddDays(1) < DateTime.Now) || Core.CheckInventory(item, toInv: false))
             return;
 
-        Core.Logger($"Daily Drop from {monster} in /{map}, " +
+        Core.Logger($"Daily Drop from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "it's permanent. " :
             $"available untill {new DateTime(expiresAt.Year, expiresAt.Month, expiresAt.Day).ToString(formatInfo)[..10]}. ") +
             $"This monster gifts the following item:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"{item}\"");
@@ -82,11 +82,11 @@ public class CurrentDailyGifts
     /// </summary>
     private void GetGift(DateTime expiresAt, string map, string monster, string[] items)
     {
-        if ((expiresAt == Permanent ? false : expiresAt < DateTime.Now) || Core.CheckInventory(items, toInv: false))
+        if ((expiresAt == Permanent ? false : expiresAt.AddDays(1) < DateTime.Now) || Core.CheckInventory(items, toInv: false))
             return;
 
         Core.AddDrop(items);
-        Core.Logger($"Daily Drop from {monster} in /{map}, " +
+        Core.Logger($"Daily Drop from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "they're permanent. " :
             $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +
             $"This monster gifts the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + String.Join("\" | \"", items) + "\"");
