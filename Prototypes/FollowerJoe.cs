@@ -23,6 +23,7 @@ public class FollowerJoe
         new Option<string>("playerName", "Player Name", "Insert the name of the player to follow", "Insert Name"),
         new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
         new Option<bool>("LockedMaps", "Try Locked maps?", "If Following an acc thats doing scripts and can potentialy goto a locked map, swap this to true.", false),
+        new Option<bool>("Solo?", "Use Solo Class?", "Set to true for Solo Class, False for Farm Class", false),
         new Option<string>("RoomNumber", "Room Number", "Insert the Room# of the Possible Locked Zone", "Room#"),
     };
 
@@ -43,6 +44,10 @@ public class FollowerJoe
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
 
+        if (Bot.Config.Get<bool>("Solo?"))
+            Core.EquipClass(ClassType.Solo);
+        else Core.EquipClass(ClassType.Farm);
+
         while (!Bot.ShouldExit)
         {
             Bot.Player.Goto((Bot.Config.Get<string>("playerName")));
@@ -61,7 +66,7 @@ public class FollowerJoe
             Bot.Sleep(Core.ActionDelay);
             Bot.Wait.ForCombatExit();
         }
-        // Bot.Events.PlayerAFK -= LockedMap;
+        Bot.Events.PlayerAFK -= LockedMap;
         Bot.Events.CellChanged -= Jumper;
         Core.SetOptions(false);
     }
