@@ -2237,15 +2237,15 @@ public class Core13LoC
         // Defeat Drakath! && //Defeat Drakath.. again!
         if (!Story.QuestProgression(3877))
         {
-            Core.EnsureAccept(3877);
             if (!Bot.Quests.IsUnlocked(3877))
             {
-                Core.EnsureAccept(3876);
+                Core.EnsureAccept(3876, 3877);
                 if (!Core.CheckInventory(26875))
                     Core.KillMonster("finalbattle", "r1", "Left", "*");
                 Core.EnsureComplete(3876);
                 Bot.Wait.ForQuestComplete(3876);
             }
+            else Core.EnsureAccept(3877);
             if (!Core.CheckInventory(26876))
                 Core.KillMonster("finalbattle", "r4", "Left", "*");
             Core.EnsureComplete(3877);
