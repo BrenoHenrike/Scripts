@@ -308,13 +308,13 @@ public class CoreBots
             }
             else Logger("A crash has occurred. Please report it in the form with the details below");
 
-            Logger("-----------------------");
+            Bot.Log("--------------------------------------");
             Logger("Last 5 Logs:");
             Bot.Log(logs.Join('\n'));
-            Logger("-----------------------");
+            Bot.Log("--------------------------------------");
             Logger("Crash (Debug)");
             Bot.Log(eSlice);
-            Logger("-----------------------");
+            Bot.Log("--------------------------------------");
         }
         return StopBot(e != null);
     }
