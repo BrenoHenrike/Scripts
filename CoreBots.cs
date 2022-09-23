@@ -98,7 +98,7 @@ public class CoreBots
                 Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            //SkuaVersionChecker("1.0.0.0");
+            SkuaVersionChecker("1.1.1.0");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -1148,7 +1148,14 @@ public class CoreBots
             int dynamicQuantity = isTemp ? Bot.TempInv.GetQuantity(item) : Bot.Inventory.GetQuantity(item);
             Logger($"Hunting {monster} for {item}, ({dynamicQuantity}/{quant}) [Temp = {isTemp}]");
         }
-        Bot.Hunt.ForItem(monster, item, quant, isTemp);
+
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+        {
+            if (!Bot.Combat.StopAttacking)
+                Bot.Hunt.Monster(monster);
+            Bot.Sleep(ActionDelay);
+            Rest();
+        }
     }
 
     /// <summary>
@@ -1192,7 +1199,7 @@ public class CoreBots
             int dynamicQuantity = isTemp ? Bot.TempInv.GetQuantity(item) : Bot.Inventory.GetQuantity(item);
             Logger($"Killing {monster.Name} for {item}, ({dynamicQuantity}/{quant}) [Temp = {isTemp}]");
         }
-        while (!Bot.ShouldExit && !CheckInventory(item, quant))
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
         {
             if (!Bot.Combat.StopAttacking)
                 Bot.Combat.Attack(monster);
@@ -1501,12 +1508,9 @@ public class CoreBots
         if (Version.Parse(targetVersion).CompareTo(Bot.Version) <= 0)
             return;
 
-        if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, click OK to open the download page of the latest release", "Outdated Skua detected") == true)
-        {
-            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases");
-            Bot.Stop(true);
-            return;
-        }
+        if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, " +
+        "click OK to open the download page of the latest release", "Outdated Skua detected") == true)
+            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases/latest");
         Logger($"This script requires Skua {targetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
     }
 
