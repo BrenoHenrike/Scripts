@@ -61,10 +61,6 @@ public class RewardSelectTemplate
         if (!Bot.Config.Get<bool>("SkipOption"))
             Bot.Config.Configure();
 
-        if (Core.CheckInventory((int)Bot.Config.Get<Template>("RewardSelect")))
-            return;
-
-
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
@@ -74,6 +70,9 @@ public class RewardSelectTemplate
         
         if (item == null)
         Core.Logger($"{item.Name} not found in Quest Rewards", stopBot: true);
+
+        if (Core.CheckInventory(item.Name))
+            return;
         
         while (!Core.CheckInventory(item.Name))
         {
