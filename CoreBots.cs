@@ -280,14 +280,15 @@ public class CoreBots
     private bool StopBotEvent(Exception e)
     {
         SetOptions(false);
+
         if (e != null)
         {
             string eSlice = e.Message + "\n" + e.InnerException;
+            List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
+            logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
             if (Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice,
                                    "Script Crashed", "Open Form", "Close Window").Text == "Open Form")
             {
-                List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
-                logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
                 string url = "\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
                     "entry.2118425091=Bug+Report&" +
                    $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1).Replace(".cs", "")}&" +
@@ -301,8 +302,19 @@ public class CoreBots
                 p.StartInfo.Arguments = "url,OpenURL " + url;
                 p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
                 p.Start();
+
+                Logger("Thank you for reporting the crash. Below you will find the information you will need to report, in case it isn't being auto filled");
+
             }
-            Logger("A crash has been detected, see the popup for more information");
+            else Logger("A crash has occurred. Please report it in the form with the details below");
+
+            Logger("-----------------------");
+            Logger("Last 5 Logs:");
+            Logger(logs.Join('\n'));
+            Logger("-----------------------");
+            Logger("Crash (Debug)");
+            Logger(eSlice);
+            Logger("-----------------------");
         }
         return StopBot(e != null);
     }
