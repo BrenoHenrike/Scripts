@@ -22,46 +22,54 @@ public class WheelOfDoomSpam
         if (accept != true)
             return;
 
+        var goForbroke = Bot.ShowMessageBox("Do you wish to use select how many tickets to use?\n" +
+        "Or maybe you wanna go for broke",
+        "Mode Selector", "Select Amount", "GO FOR BROKE!");
+
         int amount = 0;
-        InputDialogViewModel diag = new("Input Amount", "How many tickts would you like to buy and use?", true);
-        while (!Bot.ShouldExit)
+        int currentAC = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
+        if (goForbroke.Text == "Select Amount")
         {
-            if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) == true)
+            InputDialogViewModel diag = new("Input Amount", "How many tickts would you like to buy and use?", true);
+            while (!Bot.ShouldExit)
             {
-                amount = Int32.Parse(diag.DialogTextInput);
-                if (amount <= 0)
-                    Bot.ShowMessageBox("Please provide a number greater than zero (0) in order to continue.", "Invalid input");
-                else
+                if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) == true)
                 {
-                    int currentAC = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
-                    int afterAC = currentAC - (amount * 200);
-                    if (afterAC < 0)
-                    {
-                        Bot.ShowMessageBox(
-                            $"Your input: {amount} tickets\n" +
-                            $"This will cost you {amount * 200} ACs. (200 ACs per ticket)\n" +
-                            $"This would leave you with {afterAC} ACs afterwards, which is impossible.\n\n" +
-                            "Please choose a different amount of tickets",
-                            $"Calculating based on {amount} tickets"
-                        );
-                    }
+                    amount = Int32.Parse(diag.DialogTextInput);
+                    if (amount <= 0)
+                        Bot.ShowMessageBox("Please provide a number greater than zero (0) in order to continue.", "Invalid input");
                     else
                     {
-                        bool? acceptResult = Bot.ShowMessageBox(
-                            $"Your input: {amount} tickets\n" +
-                            $"This will cost you {amount * 200} ACs. (200 ACs per ticket)\n" +
-                            $"This would leave you with {afterAC} ACs afterwards.\n\n" +
-                            "Do you wish to proceed?",
-                            $"Calculating based on {amount} tickets", true
-                        );
-                        if (acceptResult == true)
-                            break;
+                        int afterAC = currentAC - (amount * 200);
+                        if (afterAC < 0)
+                        {
+                            Bot.ShowMessageBox(
+                                $"Your input: {amount} tickets\n" +
+                                $"This will cost you {amount * 200} ACs. (200 ACs per ticket)\n" +
+                                $"This would leave you with {afterAC} ACs afterwards, which is impossible.\n\n" +
+                                "Please choose a different amount of tickets",
+                                $"Calculating based on {amount} tickets"
+                            );
+                        }
+                        else
+                        {
+                            bool? acceptResult = Bot.ShowMessageBox(
+                                $"Your input: {amount} tickets\n" +
+                                $"This will cost you {amount * 200} ACs. (200 ACs per ticket)\n" +
+                                $"This would leave you with {afterAC} ACs afterwards.\n\n" +
+                                "Do you wish to proceed?",
+                                $"Calculating based on {amount} tickets", true
+                            );
+                            if (acceptResult == true)
+                                break;
+                        }
                     }
                 }
+                else Bot.Stop(false);
             }
-            else Bot.Stop(false);
         }
-
+        else if (goForbroke.Text == "GO FOR BROKE!")
+            amount = currentAC % 200;
 
         Core.Join("doom");
         Bot.Shops.Load(707);
