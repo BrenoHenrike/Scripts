@@ -240,6 +240,7 @@ public class CoreStory
                     {
                         Core.Logger("A server/client desync happened (common) for your quest progress, the bot will now restart");
                         lastFailedQuestID = QuestData.ID;
+                        timeout = 0;
                         Core.Relogin();
                     }
                 }
