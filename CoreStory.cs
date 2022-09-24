@@ -306,6 +306,11 @@ public class CoreStory
     {
         List<int> QuestIDs = new();
         string[] ScriptSlice = Core.CompiledScript();
+        if (ScriptSlice.Count() == 0)
+        {
+            Core.Logger("PreLoad failed, cannot read Compiled Script. You might not be on the latest version of Skua");
+            return;
+        }
 
         int classStartIndex = Array.IndexOf(ScriptSlice, $"public class {_this}");
         int classEndIndex = Array.IndexOf(ScriptSlice[(classStartIndex)..], "}") + classStartIndex + 1;
