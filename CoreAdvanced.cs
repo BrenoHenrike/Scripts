@@ -1383,7 +1383,7 @@ public class CoreAdvanced
             List<ShopItem> bestTwoEnhancements = new();
             bestTwoEnhancements.Add(sortedList.First());
             if (sortedList.Count >= 2)
-                bestTwoEnhancements.Add(sortedList.First(x => !bestTwoEnhancements.Contact(x)));
+                bestTwoEnhancements.Add(sortedList.First(x => !bestTwoEnhancements.Contains(x)));
             bestTwoEnhancements = bestTwoEnhancements.OrderBy(x => x.Level).ToList();
 
             // Getting the best enhancement out of the two
