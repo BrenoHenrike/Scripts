@@ -219,7 +219,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Experience);
 
         FireWarxp(level);
-        IcestormArena();
+        IcestormArena(level);
 
         ToggleBoost(BoostType.Experience, false);
     }

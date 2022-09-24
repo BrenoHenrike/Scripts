@@ -98,7 +98,7 @@ public class CoreBots
                 Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            //SkuaVersionChecker("1.0.0.0");
+            SkuaVersionChecker("1.1.1.0");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -280,14 +280,15 @@ public class CoreBots
     private bool StopBotEvent(Exception e)
     {
         SetOptions(false);
+
         if (e != null)
         {
             string eSlice = e.Message + "\n" + e.InnerException;
+            List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
+            logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
             if (Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice,
                                    "Script Crashed", "Open Form", "Close Window").Text == "Open Form")
             {
-                List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
-                logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
                 string url = "\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
                     "entry.2118425091=Bug+Report&" +
                    $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1).Replace(".cs", "")}&" +
@@ -301,8 +302,19 @@ public class CoreBots
                 p.StartInfo.Arguments = "url,OpenURL " + url;
                 p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
                 p.Start();
+
+                Logger("Thank you for reporting the crash. Below you will find the information you will need to report, in case it isn't being auto filled");
+
             }
-            Logger("A crash has been detected, see the popup for more information");
+            else Logger("A crash has occurred. Please report it in the form with the details below");
+
+            Bot.Log("--------------------------------------");
+            Logger("Last 5 Logs:");
+            Bot.Log(logs.Join('\n'));
+            Bot.Log("--------------------------------------");
+            Logger("Crash (Debug)");
+            Bot.Log(eSlice);
+            Bot.Log("--------------------------------------");
         }
         return StopBot(e != null);
     }
@@ -1136,7 +1148,14 @@ public class CoreBots
             int dynamicQuantity = isTemp ? Bot.TempInv.GetQuantity(item) : Bot.Inventory.GetQuantity(item);
             Logger($"Hunting {monster} for {item}, ({dynamicQuantity}/{quant}) [Temp = {isTemp}]");
         }
-        Bot.Hunt.ForItem(monster, item, quant, isTemp);
+
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+        {
+            if (!Bot.Combat.StopAttacking)
+                Bot.Hunt.Monster(monster);
+            Bot.Sleep(ActionDelay);
+            Rest();
+        }
     }
 
     /// <summary>
@@ -1180,7 +1199,7 @@ public class CoreBots
             int dynamicQuantity = isTemp ? Bot.TempInv.GetQuantity(item) : Bot.Inventory.GetQuantity(item);
             Logger($"Killing {monster.Name} for {item}, ({dynamicQuantity}/{quant}) [Temp = {isTemp}]");
         }
-        while (!Bot.ShouldExit && !CheckInventory(item, quant))
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
         {
             if (!Bot.Combat.StopAttacking)
                 Bot.Combat.Attack(monster);
@@ -1489,12 +1508,9 @@ public class CoreBots
         if (Version.Parse(targetVersion).CompareTo(Bot.Version) <= 0)
             return;
 
-        if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, click OK to open the download page of the latest release", "Outdated Skua detected") == true)
-        {
-            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases");
-            Bot.Stop(true);
-            return;
-        }
+        if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, " +
+        "click OK to open the download page of the latest release", "Outdated Skua detected") == true)
+            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases/latest");
         Logger($"This script requires Skua {targetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
     }
 

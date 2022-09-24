@@ -36,6 +36,7 @@ public class CoreSoW
         RuinedCrown();
         Timekeep();
         TimestreamWar();
+        DeadLines();
     }
 
     public void ShadowWar()
@@ -609,6 +610,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(8243))
             return;
 
+        InnerShadows();
+
         Adv.BestGear(GearBoost.Human);
 
         //War Medals
@@ -803,6 +806,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(8787))
             return;
 
+        Tyndarius();
+
         // 8778 Mental Damage Sponge
         Story.MapItemQuest(8778, "ruinedcrown", new[] { 10380, 10382, 10383 });
 
@@ -847,6 +852,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(8813))
             return;
 
+        RuinedCrown();
+
         // 8803|Mood Pendulum
         Story.MapItemQuest(8803, "Timekeep", new[] { 10455, 10456, 10457 });
 
@@ -886,6 +893,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(8819))
             return;
 
+        Timekeep();
+
         // 8814|Timestream Medals (dont need to do the mega metals)
         if (!Bot.Quests.IsUnlocked(8816))
         {
@@ -905,5 +914,59 @@ public class CoreSoW
 
         //Middle Child (8819)
         Story.KillQuest(8819, "streamwar", "Second Speaker");
+    }
+
+    public void DeadLines()
+    {
+        if (Core.isCompletedBefore(8868))
+            return;
+
+        TimestreamWar();
+
+        Story.PreLoad(this);
+
+        //Falling Apart 8859
+        Story.MapItemQuest(8859, "DeadLines", 10601, 6);
+
+        //Baby Steps 8860
+        Story.MapItemQuest(8860, "DeadLines", 10602);
+        Story.KillQuest(8860, "DeadLines", "Frenzied Mana");
+
+        //Eternal Flame 8861
+        Story.MapItemQuest(8861, "DeadLines", 10603);
+        Story.MapItemQuest(8861, "DeadLines", 10604);
+        Story.KillQuest(8861, "DeadLines", "Shadowfall Warrior");
+
+        //The Wolf Cries 8862
+        Story.MapItemQuest(8862, "DeadLines", 10605);
+        Story.MapItemQuest(8862, "DeadLines", 10606);
+        Story.KillQuest(8862, "DeadLines", "Swordhaven Knight");
+
+        //Breaking Down 8863
+        Story.MapItemQuest(8863, "DeadLines", 10607);
+        Story.MapItemQuest(8863, "DeadLines", 10608);
+        Story.KillQuest(8863, "DeadLines", "Shadowfall Warrior");
+
+        //Growth Through Hardship 8864
+        Story.MapItemQuest(8864, "DeadLines", 10609);
+        Story.MapItemQuest(8864, "DeadLines", 10610);
+        Story.KillQuest(8864, "DeadLines", "Swordhaven Knight");
+
+        //Arteries 8865
+        Story.MapItemQuest(8865, "DeadLines", 10611);
+        Story.MapItemQuest(8865, "DeadLines", 10612);
+        Story.KillQuest(8865, "DeadLines", "Frenzied Mana");
+
+        //Paranoiac 8866
+        Story.MapItemQuest(8866, "DeadLines", 10613);
+        Story.KillQuest(8866, "DeadLines", "Chaos Mage");
+
+        //A Hard Swerve 8867
+        Story.MapItemQuest(8867, "DeadLines", 10614);
+        Story.KillQuest(8867, "DeadLines", "Frenzied Mana");
+
+        //Nigh Invincible 8868
+        Story.KillQuest(8868, "DeadLines", "Eternal Dragon");
+
     }
 }

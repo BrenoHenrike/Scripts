@@ -99,7 +99,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Oblivion of Nulgath":
-                    juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.OblivionofNulgath);
+                    juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Oblivion_of_Nulgath);
                     break;
 
                 case "Overlord's DoomBlade":
@@ -278,7 +278,7 @@ public class YulgarsDualWieldMerge
 
                 case "Overfiend Blade of Nulgath":
                     if (!Core.CheckInventory(req.Name))
-                        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.OverfiendBladeofNulgath);
+                        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Overfiend_Blade_of_Nulgath);
                     break;
 
                 case "Bone Sword":
@@ -381,7 +381,7 @@ public class YulgarsDualWieldMerge
 
                 case "Crystal Phoenix Blade of Nulgath":
                     if (!Core.CheckInventory(req.Name))
-                        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.CrystalPhoenixBladeofNulgath);
+                        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Crystal_Phoenix_Blade_of_Nulgath);
                     break;
 
                 case "Maximillian's Whip":

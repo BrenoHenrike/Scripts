@@ -19,7 +19,7 @@ public class JuggernautItemsofNulgath
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
-        new Option<RewardsSelection>("RewardsSelection", "Select Your Quest Reward", "Select Your Quest Reward for The JuggerNaught items of Nulgath quest.", RewardsSelection.OblivionofNulgath),
+        new Option<RewardsSelection>("RewardsSelection", "Select Your Quest Reward", "Select Your Quest Reward for The JuggerNaught items of Nulgath quest.", RewardsSelection.Oblivion_of_Nulgath),
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -43,13 +43,16 @@ public class JuggernautItemsofNulgath
 
         var Count = 0;
         int x = 1;
-        Quest jugg = /*Bot.Quests.EnsureLoad*/Core.EnsureLoad(837);
-        var item = jugg.Rewards.Find(i => i.ID == (int)reward) ?? null;
-        Count = Rewards.Count();
+      
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
+        List<string> RewardsList = new List<string>();
+        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
+            RewardsList.Add(Item.Name);
+        Count = RewardsList.Count();       
 
+        ItemBase item = Core.EnsureLoad(837).Rewards.Find(x => x.ID == (int)reward) ?? null;
 
-
-        while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
         {
             if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
                 Core.Logger($"Farming All {x++}/{Count}");
@@ -96,26 +99,26 @@ public class JuggernautItemsofNulgath
 
     public enum RewardsSelection
     {
-        OblivionofNulgath = 2232,
-        UngodlyReaversofNulgath = 4939,
-        WarlordofNulgath = 5527,
-        ArcaneofNulgath = 5530,
-        DimensionalChampionofNulgath = 5531,
-        CrystalPhoenixBladeofNulgath = 6137,
-        OverfiendBladeofNulgath = 6138,
-        BattlefiendBladeofNulgath = 6141,
-        DarkMakaiofNulgath = 6142,
-        NulgathArmor = 6375,
-        PolishHussar = 42596,
-        PolishHussarHelm = 42597,
-        PolishHussarSpear = 42598,
-        PolishHussarWings = 42599,
-        VoidCowboy = 52799,
-        VoidCowboyHat = 52800,
-        VoidCowboyMorph = 52801,
-        VoidCowboysMaskLocks = 52802,
-        VoidCowboysistol = 52803,
-        DualVoidCowboyPistols = 52818,
+        Oblivion_of_Nulgath = 2232,
+        Ungodly_Reavers_of_Nulgath = 4939,
+        Warlor_dof_Nulgath = 5527,
+        Arcane_of_Nulgath = 5530,
+        Dimensional_Championof_Nulgath = 5531,
+        Crystal_Phoenix_Blade_of_Nulgath = 6137,
+        Overfiend_Blade_of_Nulgath = 6138,
+        Battlefiend_Blade_of_Nulgath = 6141,
+        Dark_Makaiof_Nulgath = 6142,
+        Nulgath_Armor = 6375,
+        Polish_Hussar = 42596,
+        Polish_Hussar_Helm = 42597,
+        Polish_Hussar_Spear = 42598,
+        Polish_Hussar_Wings = 42599,
+        Void_Cowboy = 52799,
+        Void_CowboyHat = 52800,
+        Void_CowboyMorph = 52801,
+        Void_Cowboys_Mask_Locks = 52802,
+        Void_Cowboy_Pistol = 52803,
+        Dual_Void_Cowboy_Pistols = 52818,
         All
     };
 }
