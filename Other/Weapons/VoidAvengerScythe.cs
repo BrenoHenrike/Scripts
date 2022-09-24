@@ -65,7 +65,7 @@ public class VoidAvengerScythe
         // Death Scythe of Nulgath - 
         Empower.EmpoweringStuff();
         // Ungodly Reavers of Nulgath - 
-        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.UngodlyReaversofNulgath);
+        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Ungodly_Reavers_of_Nulgath);
         // Scythe of Sisyphean - 
         Core.HuntMonster("dragonplane", "Wind Elemental", "Scythe of Sisyphean", isTemp: false);
         // Heart of the Void - 
