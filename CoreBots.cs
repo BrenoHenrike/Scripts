@@ -501,7 +501,7 @@ public class CoreBots
             {
                 if (!Bot.Inventory.EnsureToBank(item))
                 {
-                    Logger($"Failed to b {item}, skipping it", messageBox: true);
+                    Logger($"Failed to bank {item}, skipping it");
                     continue;
                 }
                 Logger($"{item} moved to bank");
