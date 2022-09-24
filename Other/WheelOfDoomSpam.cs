@@ -22,10 +22,9 @@ public class WheelOfDoomSpam
         if (accept != true)
             return;
 
-        bool shouldContinue = false;
         int amount = 0;
         InputDialogViewModel diag = new("Input Amount", "How many tickts would you like to buy and use?", true);
-        while (!Bot.ShouldExit && !shouldContinue)
+        while (!Bot.ShouldExit)
         {
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) == true)
             {
@@ -55,7 +54,8 @@ public class WheelOfDoomSpam
                             "Do you wish to proceed?",
                             $"Calculating based on {amount} tickets", true
                         );
-                        shouldContinue = acceptResult == true;
+                        if (acceptResult == true)
+                            break;
                     }
                 }
             }
