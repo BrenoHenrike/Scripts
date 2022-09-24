@@ -98,11 +98,14 @@
 
 //cs_include Scripts/Story/LightoviaCave.cs
 
+//cs_include Scripts/Story/Manor.cs
 //cs_include Scripts/Story/MustyCave.cs
 
 //cs_include Scripts/Story/NytheraSaga.cs
 
 //cs_include Scripts/Story/Oddities.cs
+
+//cs_include Scripts/Story/PoisonForest.cs
 
 //cs_include Scripts/Story/RavenlossSaga.cs
 
@@ -242,6 +245,7 @@ public class AllStories
 
     public LightoviaCave LightoviaCave = new();
 
+    public Manor Manor = new();
     public MustyCave MustyCave = new();
 
     public NytheraSaga NytheraSaga = new();
@@ -249,6 +253,8 @@ public class AllStories
     public J6Saga J6Saga = new();
 
     public Oddities Oddities = new();
+
+    public PoisonForest PoisonForest = new();
 
     public RavenlossSaga RavenlossSaga = new();
 
@@ -517,6 +523,10 @@ public class AllStories
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
 
+
+        Manor.StoryLine();
+        Core.Logger($"Story: Manor - Complete");
+
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
 
@@ -527,6 +537,10 @@ public class AllStories
 
         Oddities.StoryLine();
         Core.Logger($"Story: Oddities - {(Core.isCompletedBefore(8667) ? "Complete" : "Member Only")}");
+
+
+        PoisonForest.StoryLine();
+        Core.Logger($"Story: PoisonForest - Complete");
 
 
         RavenlossSaga.DoAll();
