@@ -98,7 +98,7 @@ public class CoreBots
                 Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
             else Logger($"Bot Started");
 
-            SkuaVersionChecker("1.1.1.0");
+            //SkuaVersionChecker("1.1.1.0");
 
             if (!Bot.Player.LoggedIn)
             {
@@ -501,7 +501,7 @@ public class CoreBots
             {
                 if (!Bot.Inventory.EnsureToBank(item))
                 {
-                    Logger($"Failed to b {item}, skipping it", messageBox: true);
+                    Logger($"Failed to bank {item}, skipping it");
                     continue;
                 }
                 Logger($"{item} moved to bank");

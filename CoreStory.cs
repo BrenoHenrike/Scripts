@@ -234,34 +234,37 @@ public class CoreStory
             if (timeout > 15)
             {
                 int currentValue = Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
-                if (QuestData.Value - currentValue <= 2)
+                if (lastFailedQuestID != QuestData.ID)
                 {
-                    string message1 = $"A server/client desync happened (common) for your quest progress, the bot cannot continue.|" +
-                                        "Please relog and restart the bot in order to continue.|" +
-                                        "Once Skua is out this popup will be replaced with a automatic relog.|" +
-                                        "No report is neccessary at this time.";
-                    Core.Logger(message1.Replace("|", " "));
-                    Bot.ShowMessageBox(message1.Replace("|", "\n"), "Quest not unlocked", "OK");
+                    if (QuestData.Value - currentValue <= 2)
+                    {
+                        Core.Logger("A server/client desync happened (common) for your quest progress, the bot will now restart");
+                        lastFailedQuestID = QuestData.ID;
+                        timeout = 0;
+                        Core.Relogin();
+                    }
+                }
+                else
+                {
+                    string message2 = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
+                                     $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
+                                      "Please fill in the Skua Scripts Form to report this.|" +
+                                      "Do you wish to be brought to the form?";
+                    Core.Logger(message2.Replace("|", " "));
+                    if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked") == true)
+                    {
+                        string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
+                        Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                                                     "entry.2118425091=Bug+Report&" +
+                                                    $"entry.290078150={path}&" +
+                                                     "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
+                                                    $"entry.1918245848={QuestData.ID}&" +
+                                                    $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
+                                                    $"entry.493943632={currentValue}/{QuestData.Slot}&" +
+                                                    $"entry.148016785={QuestData.Name}\"");
+                    }
                     Bot.Stop(true);
                 }
-                string message2 = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
-                                 $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
-                                  "Please fill in the Skua Scripts Form to report this.|" +
-                                  "Do you wish to be brought to the form?";
-                Core.Logger(message2.Replace("|", " "));
-                if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked") == true)
-                {
-                    string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
-                    Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
-                                                 "entry.2118425091=Bug+Report&" +
-                                                $"entry.290078150={path}&" +
-                                                 "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
-                                                $"entry.1918245848={QuestData.ID}&" +
-                                                $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
-                                                $"entry.493943632={currentValue}/{QuestData.Slot}&" +
-                                                $"entry.148016785={QuestData.Name}\"");
-                }
-                Bot.Stop(true);
             }
         }
 
@@ -294,6 +297,7 @@ public class CoreStory
         return false;
     }
     private bool CBO_Checked = false;
+    private int lastFailedQuestID = 0;
 
     /// <summary>
     /// Put this at the start of your story script so that the bot will load all quests that are used in the bot. This will speed up any progression checks tremendiously.
@@ -302,6 +306,11 @@ public class CoreStory
     {
         List<int> QuestIDs = new();
         string[] ScriptSlice = Core.CompiledScript();
+        if (ScriptSlice.Count() == 0)
+        {
+            Core.Logger("PreLoad failed, cannot read Compiled Script. You might not be on the latest version of Skua");
+            return;
+        }
 
         int classStartIndex = Array.IndexOf(ScriptSlice, $"public class {_this}");
         int classEndIndex = Array.IndexOf(ScriptSlice[(classStartIndex)..], "}") + classStartIndex + 1;
