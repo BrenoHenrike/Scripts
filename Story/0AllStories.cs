@@ -98,6 +98,7 @@
 
 //cs_include Scripts/Story/LightoviaCave.cs
 
+//cs_include Scripts/Story/Manor.cs
 //cs_include Scripts/Story/MustyCave.cs
 
 //cs_include Scripts/Story/NytheraSaga.cs
@@ -242,6 +243,7 @@ public class AllStories
 
     public LightoviaCave LightoviaCave = new();
 
+    public Manor Manor = new();
     public MustyCave MustyCave = new();
 
     public NytheraSaga NytheraSaga = new();
@@ -516,6 +518,10 @@ public class AllStories
 
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
+
+
+        Manor.StoryLine();
+        Core.Logger($"Story: Manor - Complete");
 
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
