@@ -30,6 +30,7 @@ public class ArmyLegionToken
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        sArmy.packetDelay,
         new Option<Method>("Method", "Which method to get LTs?", "Choose your method", Method.Dreadrock),
         sCore.SkipOptions
     };
@@ -49,32 +50,15 @@ public class ArmyLegionToken
         Core.SetOptions(false);
     }
 
-    public string[] Loot = { "Legion Token" };
 
     public void Setup(Method Method)
     {
         Core.EquipClass(ClassType.Farm);
-        Core.AddDrop(Loot);
+        Core.AddDrop("Legion Token");
         if (Method.ToString() == "Dreadrock")
         {
             Core.Join("dreadrock");
-            dreadrock();
-        }
-        else if (Method.ToString() == "Shogun_Paragon_Pet")
-        {
-            Core.Join("fotia");
-            shogunparagonpet();
-        }
-        else
-        {
-            Core.Join("legionarena");
-            legionarena();
-        }
-
-
-        void dreadrock()
-        {
-        Core.RegisterQuests(4850);
+            Core.RegisterQuests(4850);
         if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
             Army.AggroMonCells("r3", "r4", "r5", "r6");
         else Army.AggroMonCells("r3", "r4", "r5", "r6", "r7");
@@ -87,11 +71,10 @@ public class ArmyLegionToken
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
         }
-
-        void shogunparagonpet()
+        else if (Method.ToString() == "Shogun_Paragon_Pet")
         {
-        Core.RegisterQuests(5755);
-        if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
+            Core.Join("fotia");
+            Core.RegisterQuests(5755);
             Army.AggroMonCells("Enter", "r2", "r3", "r4");
         Army.AggroMonStart("fotia");
         Army.DivideOnCells("Enter", "r2", "r3", "r4");
@@ -102,16 +85,15 @@ public class ArmyLegionToken
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
         }
-
-        void legionarena()
+        else
         {
-        Core.AddDrop("Legion Token", "Bone Sigil");
+            Core.Join("legionarena");
+            Core.AddDrop("Bone Sigil");
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(6742, 6743);
-        if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-            Army.AggroMonCells("Boss");
+        Army.AggroMonCells("Boss");
         Army.AggroMonStart("legionarena");
-        Army.DivideOnCells("Boss");
+        Core.Jump("Boss", "Left");
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
@@ -121,6 +103,7 @@ public class ArmyLegionToken
         }
     }
 
+    private string[] Loot = { "Legion Token" };
     public enum Method
     {
         Dreadrock = 0,
