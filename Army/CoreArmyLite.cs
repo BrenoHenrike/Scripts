@@ -18,6 +18,9 @@ public class CoreArmyLite
 
     public int AggroMonPacketDelay { get; set; } = 500;
 
+    /// <summary>
+    /// Starts the AggroMon. Jumps to the specified map and starts sending the AggroPacket.
+    /// </summary>
     public void AggroMonStart(string map)
     {
         if (aggroCTS is not null)
@@ -64,7 +67,7 @@ public class CoreArmyLite
     private CancellationTokenSource? aggroCTS = null;
 
     /// <summary>
-    /// Stops/Pauses the Aggro Mon Task.
+    /// Stops/Pauses the Aggro Mon Task. Clear will clear the stored settings like AggroMonClear so you can set a new one.
     /// </summary>
     public void AggroMonStop(bool clear = false)
     {
@@ -74,12 +77,24 @@ public class CoreArmyLite
         Bot.Wait.ForTrue(() => aggroCTS == null, 30);
     }
 
+    /// <summary>
+    /// Set the AggroMon using Cells. Aggros everything in the Cell.
+    /// </summary>
     public void AggroMonCells(params string[] cells)
         => _AggroMonCells = cells.ToList();
+    /// <summary>
+    /// Set the AggroMon using Monster Names. Aggros everything with the specified name.
+    /// </summary>
     public void AggroMonNames(params string[] names)
         => _AggroMonNames = names.ToList();
+    /// <summary>
+    /// Set the AggroMon using Monster IDs. Aggros everything using the specified ID.
+    /// </summary>    
     public void AggroMonIDs(params int[] monsterIDs)
         => _AggroMonIDs = monsterIDs.ToList();
+    /// <summary>
+    /// Set the AggroMon using Monster Map IDs. Aggros everything using the specified Map ID.
+    /// </summary>
     public void AggroMonMIDs(params int[] monsterMapIDs)
         => _AggroMonMIDs = monsterMapIDs.ToList();
     private List<string> _AggroMonCells = new();
@@ -87,6 +102,9 @@ public class CoreArmyLite
     private List<int> _AggroMonIDs = new();
     private List<int> _AggroMonMIDs = new();
 
+    /// <summary>
+    /// Clears the stored Monster Cells/Names/IDs so you can set another AggroMon.
+    /// </summary>
     public void AggroMonClear()
     {
         _AggroMonCells.Clear();
@@ -94,6 +112,9 @@ public class CoreArmyLite
         _AggroMonIDs.Clear();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public string AggroMonPacket(params int[] MonsterMapIDs)
         => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
 
@@ -205,6 +226,9 @@ public class CoreArmyLite
 
     #endregion
 
+    /// <summary>
+    /// Sets a random Room Number to ensure armies join the same room.
+    /// </summary>
     public int getRoomNr()
     {
         string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -238,7 +262,8 @@ public class CoreArmyLite
     }
 
     /// <summary>
-    /// Spreads players around the input cells, if no cells are set - will spread with any cell that has a monster in it.
+    /// Spreads players around the input cells, if no cells are set - will spread to any cell that has a monster in it. 
+    /// If player count is more than cell count, will add players to the cells listed in order. Example: c1: P1 + P4, c2: P2, c3: P3
     /// </summary>
     public void DivideOnCells(params string[] cells)
     {
@@ -278,7 +303,7 @@ public class CoreArmyLite
             cells = _cells.OrderBy(x => x).ToArray();
         }
 
-        //Deviding the players amongst the cells
+        //Dividing the players amongst the cells
         int cellCount = 0;
         string username = Bot.Player.Username.ToLower();
         foreach (string p in players)

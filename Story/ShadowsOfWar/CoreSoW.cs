@@ -806,8 +806,6 @@ public class CoreSoW
         if (Core.isCompletedBefore(8787))
             return;
 
-        Tyndarius();
-
         // 8778 Mental Damage Sponge
         Story.MapItemQuest(8778, "ruinedcrown", new[] { 10380, 10382, 10383 });
 
