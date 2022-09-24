@@ -38,7 +38,7 @@ public class CurrentDailyGifts
         //Pitiless Privateer Gear is in Trickster's Merge
         GetGift(AvailableUntil(30, 09), "mythperception", "Corpo-Seco", new[] { "Cangaceiro's Carabina", "Cangaceiro's Crossed Peixeira", "Cangaceiro's Dual Peixeira", "Cangaceiro's Peixeira" });
         GetGift(AvailableUntil(30, 09), "mythperception", "Saci", new[] { "Cangaceira's Chapéu", "Cangaceira's Locks", "Cangaceiro Vitorioso", "Cangaceiro's Chapéu", "Cangaceiro's Chapéu + Beard", "Cangaceiro's Chapéu + Glasses", });
-        GetGift(AvailableUntil(30, 09), "blazebeard", "Aquamancer", "Crystal Staff of the Deep");
+        GetGift(AvailableUntil(30, 09), "hiddendepths", "Aquamancer", "Crystal Staff of the Deep");
         GetGift(AvailableUntil(30, 09), "blazebeard", "Pirate Captain", new[] { "Broken Split Blade of the Deep", "Split Blade of the Deep", "Split Blades of the Deep" });
         GetGift(AvailableUntil(30, 09), "celestialarenad", "The Queen of Hope", new[] { "Arch Lich", "Arch Lich's Blessed Scrolls", "Arch Lich's Hood", "Arch Lich's Orb", "Arch Lich's Runes", "Arch Lich's Scrolls", "Arch Lich's Spear", "Arch Lich's Spears" });
         GetGift(AvailableUntil(30, 09), "deadmoor", "Nightmare", new[] { "Huasa's Cabello Elegante", "Huasa's Cabello Festejo", "Huasa's Cabello Oscuro", "Huasa's Rostro Elegante", "Huaso's Atuendo Elegante", "Huaso's Atuendo Escabroso", "Huaso's Atuendo Festejo", "Huaso's Atuendo Oscuro", "Huaso's Cabello Elegante", "Huaso's Cabello Festejo", "Huaso's Cabello Oscuro", "Huaso's Rostro Elegante" });
