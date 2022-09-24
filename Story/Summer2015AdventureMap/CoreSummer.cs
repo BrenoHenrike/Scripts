@@ -34,6 +34,10 @@ public class CoreSummer
 
         Story.PreLoad(this);
 
+        // Ebil Dread Space (4263)
+        Core.Join("dreadspace");
+        Story.ChainQuest(4263);
+
         //1st Contact (4264)
         Story.KillQuest(4264, "dreadspace", "Undead Space Marine|Undead Space Warrior");
 
