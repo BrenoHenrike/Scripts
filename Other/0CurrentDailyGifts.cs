@@ -70,10 +70,10 @@ public class CurrentDailyGifts
         if ((expiresAt == Permanent ? false : expiresAt.AddDays(1) < DateTime.Now) || Core.CheckInventory(item, toInv: false))
             return;
 
-        Core.Logger($"Daily Drop from {monster} in /{map.ToLower()}, " +
+        Core.Logger($"Daily Gift from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "it's permanent. " :
             $"available untill {new DateTime(expiresAt.Year, expiresAt.Month, expiresAt.Day).ToString(formatInfo)[..10]}. ") +
-            $"This monster gifts the following item:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"{item}\"");
+            $"This monster drops the following item:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"{item}\"");
         Core.HuntMonster(map, monster, item, 1, false, log: false);
         Core.ToBank(item);
     }
@@ -86,10 +86,10 @@ public class CurrentDailyGifts
             return;
 
         Core.AddDrop(items);
-        Core.Logger($"Daily Drop from {monster} in /{map.ToLower()}, " +
+        Core.Logger($"Daily Gift from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "they're permanent. " :
             $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +
-            $"This monster gifts the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + String.Join("\" | \"", items) + "\"");
+            $"This monster drops the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + String.Join("\" | \"", items) + "\"");
         foreach (string item in items)
         {
             Core.HuntMonster(map, monster, item, 1, false, log: false);
