@@ -29,6 +29,7 @@ public class ArmyTaintedGem
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        sArmy.packetDelay,
         sCore.SkipOptions
     };
 
@@ -95,7 +96,7 @@ public class ArmyTaintedGem
         if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
         Army.AggroMonCells("War");
         Army.AggroMonStart("mountfrost");
-        Army.DivideOnCells("War");
+        Core.Jump("War", "Left");
 
         while (!Bot.ShouldExit && (!Core.CheckInventory("Ice Cubes", 6)))
             Bot.Combat.Attack("*");
