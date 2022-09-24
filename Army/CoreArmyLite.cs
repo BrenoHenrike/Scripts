@@ -238,7 +238,8 @@ public class CoreArmyLite
     }
 
     /// <summary>
-    /// Spreads players around the input cells, if no cells are set - will spread with any cell that has a monster in it.
+    /// Spreads players around the input cells, if no cells are set - will spread to any cell that has a monster in it. 
+    /// If player count is more than cell count, will add players to the cells listed in order. Example: c1: P1 + P4, c2: P2, c3: P3
     /// </summary>
     public void DivideOnCells(params string[] cells)
     {
