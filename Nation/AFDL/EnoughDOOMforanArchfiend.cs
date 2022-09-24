@@ -45,17 +45,22 @@ public class EnoughDOOMforanArchfiend
 
         //Quest Turnin Items:
         WillpowerExtraction.Unidentified34(4);
+        NulgathDemandsWork.Uni35(1);
         Nation.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         Nation.FarmUni13();
         Nation.ApprovalAndFavor(0, 5000);
         Nation.EssenceofNulgath(100);
+
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", isTemp: false);
         Core.EquipClass(ClassType.Farm);
         Farm.BattleUnderB("Undead Essence", 1000);
+
         Nation.FarmVoucher(false);
         Nation.FarmBloodGem(10);
+
         Core.BuyItem("yulgar", 16, "Aelita's Emerald");
+
         if (!Core.CheckInventory("Essence Potion", 5))
         {
             Farm.Gold(12500000);
@@ -64,6 +69,7 @@ public class EnoughDOOMforanArchfiend
             Bot.Wait.ForItemBuy();
         }
         Core.EnsureAccept(5260);
+
         Core.KillMonster("orecavern", "r3", "Up", "*", "Chaorruption Essence", 75, false);
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
