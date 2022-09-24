@@ -19,6 +19,7 @@ public class ArmyTaintedGem
     public static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyTaintedGem";
+    public int q = 0;
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -68,6 +69,8 @@ public class ArmyTaintedGem
             mountfrost();
             Bot.Sleep(1500);
             Core.EnsureComplete(7817);
+            q++;
+            Core.Logger($"Quest completed x{q} times");
         }
     }
 
