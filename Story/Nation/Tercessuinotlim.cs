@@ -63,12 +63,12 @@ public class Tercessuinotlim
         {
             Core.EnsureAccept(8472);
             Core.HuntMonster($"Fiendshard", "Dirtlicker", "Dirtlicker’s Dignity Decimated");
-            Core.HuntMonster("Tercessuinotlim", "Death's Head", "Death's Head Demolished");
+            Core.HuntMonster($"Tercessuinotlim", "Death's Head", "Death’s Head Demolished");
             Core.HuntMonster("ShadowBlast", "CaesarIsTheDark|Carnage", "Shadowblaster Shamed", 10);
             Core.HuntMonster("QuibbleHunt", "Skew", "Skew Straightened Out");
             Core.HuntMonster("ShadowBlast", "Crag and Bamboozle", "Crag and Bamboozle Cowering");
             Core.HuntMonster("ShadowBlast", "Grimlord Boss", "Grimlord Left Groveling");
-            Core.HuntMonster("8472", "Void Monk", "Void Warrior Vanquished", 10);
+            Core.HuntMonster("tercessuinotlim", "Void Monk", "Void Warrior Vanquished", 10);
             Core.EnsureComplete(8472);
         }
 
@@ -76,8 +76,8 @@ public class Tercessuinotlim
         if (!Story.QuestProgression(8473))
         {
             Core.EnsureAccept(8473);
-            Core.HuntMonster("Fiendshard", "Fiend Shard", "Dirtlicker's Shard Shaving", 3);
-            Core.HuntMonster("Fiendshard", "Nulgath's Fiend Shard", "Nulgath's Shard Shaving", 3);
+            Core.HuntMonster($"Fiendshard", "Fiend Shard", "Dirtlicker’s Shard Shaving", 3);
+            Core.HuntMonster($"Fiendshard", "Nulgath's Fiend Shard", "Nulgath’s Shard Shaving", 3);
             Core.HuntMonster("QuibbleHunt", "RogueFiend", "Roguefiend Crystal Shaving", 5);
             Core.EnsureComplete(8473);
         }
@@ -86,7 +86,7 @@ public class Tercessuinotlim
         if (!Story.QuestProgression(8474))
         {
             Core.EnsureAccept(8474);
-            Core.HuntMonster("Fiendshard", "Dai Tengu", "101 Proof Blade Oil");
+            Core.HuntMonster("hachiko", "Dai Tengu", "101 Proof Blade Oil");
             Core.HuntMonster("Kitsune", "Kitsune", "Private Reserve Sake");
             Core.HuntMonster("Tercessuinotlim", "Taro Blademaster", "The Tale of Taro");
             Core.EnsureComplete(8474);
