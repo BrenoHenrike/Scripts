@@ -21,34 +21,25 @@ public class YouMadBroBadge
 
     public void Badge()
     {
+        Farm.AlchemyREP();
+
         while (!Bot.ShouldExit && !Core.HasAchievement(15))
         {
-            Farm.AlchemyREP(10);
-            {
-                Core.Logger($"Buying Reagents");
-                GetRunestones();
-                // 1 Runestone = 2 Reagents, 30 Runestones = 30 of each reagent
-                Core.BuyItem("alchemyacademy", 397, 11475, 30, 2, 1232);
-                Core.BuyItem("alchemyacademy", 397, 11478, 30, 2, 1235);
-                Core.Logger($"Buying Runestones");
-                GetRunestones();
-                Core.Join("alchemy");
-                Core.Logger($"Beginning RNG");
-                Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: true);
-            }
-        }
-    }
-
-    private void GetRunestones()
-    {
-        if (!Core.CheckInventory("Dragon Runestone", 30))
-        {
-            int count = Bot.Inventory.GetQuantity("Dragon Runestone");
-            int missing = 30 - count;
-            Core.Logger($"Currently have {count} runestones, missing {missing} runestones.");
-            Farm.Gold(100000 * missing);
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", missing);
-            Core.BuyItem("alchemyacademy", 395, 7132, missing, 1, 8845);
+            Core.AddDrop("Dragon Scale", "Ice Vapor");
+            Core.Logger("Farming Reagents.\n" +
+            "buying takes 60m / 30 achemy Packets.\n" +
+            "meaning youd have to Farm gold each go around.");
+            Core.FarmingLogger("Dragon Scale", 30);
+            Core.FarmingLogger("Ice Vapor", 30);
+            while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory(11478, 30))
+                Core.KillMonster("lair", "Enter", "Spawn", "*", log: false);
+            Core.Logger($"Buying Runestones");
+            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 10, 8845);
+            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 1, 8844);
+            //the 2nd buy is for if its close but not at max stack, it wont buy the full 30.
+            Core.Join("alchemy");
+            Core.Logger($"Beginning RNG");
+            Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
         }
     }
 }

@@ -1332,11 +1332,11 @@ public class CoreAdvanced
 
             // Logging
             if (specialOnCape)
-                Core.Logger($"Searching Enhancement:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement: \tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
             else if (specialOnWeapon)
-                Core.Logger($"Searching Enhancement:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement: \t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
             else
-                Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement: \t{type} - \"{item.Name}\"");
 
             List<ShopItem> availableEnh = new();
 
@@ -1380,10 +1380,14 @@ public class CoreAdvanced
             List<ShopItem> sortedList = availableEnh.OrderBy(x => x.Level).ToList();
 
             // Grabbing the two best enhancements
-            List<ShopItem> bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
+            List<ShopItem> bestTwoEnhancements = new();
+            bestTwoEnhancements.Add(sortedList.First());
+            if (sortedList.Count >= 2)
+                bestTwoEnhancements.Add(sortedList.First(x => !bestTwoEnhancements.Contains(x)));
+            bestTwoEnhancements = bestTwoEnhancements.OrderBy(x => x.Level).ToList();
 
             // Getting the best enhancement out of the two
-            ShopItem bestEnhancement =
+            ShopItem? bestEnhancement =
                 bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
                     bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
 

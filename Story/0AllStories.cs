@@ -41,6 +41,7 @@
 //cs_include Scripts/Story/Nation/Fiendshard.cs
 //cs_include Scripts/Story/Nation/FiendPast.cs
 //cs_include Scripts/Story/Nation/Originul.cs
+//cs_include Scripts/Story/Nation/Tercessuinotlim.cs
 
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
@@ -182,6 +183,8 @@ public class AllStories
     public FiendPast FiendPast = new();
     public Fiendshard_Story Fiendshard_Story = new();
     public Originul_Story Originul_Story = new();
+
+    public Tercessuinotlim Tercessuinotlim = new();
 
     // Queen of Monsters
     public CoreQOM QOM => new();
@@ -385,6 +388,9 @@ public class AllStories
 
         FiendPast.DoAll();
         Core.Logger($"Story: Fiend Past - Complete");
+
+        Tercessuinotlim.JadziaQuests();
+        Core.Logger($"Story: Tercessuinotlim - Complete");
         #endregion
 
         #region QoM

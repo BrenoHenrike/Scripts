@@ -68,8 +68,13 @@ public class PoisonForest
         Story.KillQuest(1952, "PoisonForest", "Burning Loyalist");
 
         //Storm the Fort 1953
-        Story.MapItemQuest(1953, "PoisonForest", 968);
-        Story.KillQuest(1953, "PoisonForest", "Traitor Knight");
+        if (!Story.QuestProgression(1953) || (!Core.CheckInventory("Flakes of Rust") && !Core.isCompletedBefore(1954)))
+        {
+            Core.EnsureAccept(1953);
+            Core.GetMapItem(968, 1, "PoisonForest");
+            Core.HuntMonster("PoisonForest", "Traitor Knightt", "Guard Slain", 8);
+            Core.EnsureComplete(1953);
+        }
 
         //Termination Tonic 1954
         Story.MapItemQuest(1954, "PoisonForest", 970);
