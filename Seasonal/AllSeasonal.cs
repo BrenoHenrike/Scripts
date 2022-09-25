@@ -5,6 +5,7 @@
 //cs_include Scripts/Seasonal/AprilFools/DERP!Badge.cs
 //cs_include Scripts/Seasonal/AprilFools/MeateorHunt.cs
 //cs_include Scripts/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs
+//cs_include Scripts/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/MountOtzi.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/Fezzini.cs
@@ -29,7 +30,13 @@
 //cs_include Scripts/Seasonal/SummerBreak/SweetSummerTreats.cs
 //cs_include Scripts/Seasonal/SummerBreak/Un-LifeguardQuest.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs
-//cs_include Scripts/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/KaijuWar.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/HeartOfTheSeaStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/CetoleonWarStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
 using Skua.Core.Interfaces;
 
 public class AllSeasonal
@@ -46,13 +53,13 @@ public class AllSeasonal
     public LoveSpell LoveSpell = new();
     public WheeleOfLove WheeleOfLove = new();
     public PookaStory Pooka = new();
+    public MmmmMeatyQuest Meaty = new();
     public DarkLord DarkLord = new();
     public MurderMoon MurderMoon = new();
     public BloodMoonToken BMToken = new();
     public DageRecruitStory DageRecruit = new();
     public UndervoidStory Undervoid = new();
     public StarFestival StarFestival = new();
-
     public BeachPartyTokenItems BeachPartyTokenItems = new();
     public BlazingBeachStory BlazingBeach = new();
     // public BlazingBeachMerge BlazingBeachMerge = new();
@@ -62,10 +69,14 @@ public class AllSeasonal
     // public LunaCoveMerge LunaCoveMerge = new();
     public SweetSummerTreats SweetSummerTreats = new();
     public UnLifeGuardQuest UnLifeguardQuest = new();
-
     public CelestialPirateCommander CelestialPirateCommander = new();
-    public MmmmMeatyQuest Meaty = new();
-
+    public KaijuWar KaijuWar = new();
+    public HeartOfTheSeaStory HeartOfTheSeaStory = new();
+    public CetoleonWarStory CetoleonWarStory = new();
+    public DragonPirateStory DragonPirateStory = new();
+    public DragonCapitalStory DragonCapitalStory = new();
+    public LowTideStory LowTideStory = new();
+    public AluteaNursery AluteaNursery = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -119,11 +130,11 @@ public class AllSeasonal
                 case 4:
                     Core.Logger("Starting Scripts for April");
                     //insert script voids here
-                    Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
                     Derp.GetBadge();
                     MeateorHunt.StoryLine();
                     SSB.GetBadgeANDDoStory();
                     Meaty.CompleteQuests();
+                    Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
                     break;
 
                 case 5:
@@ -174,6 +185,13 @@ public class AllSeasonal
                     Core.Logger("Starting Scripts for September");
                     //insert script voids here
                     CelestialPirateCommander.GetCPC(true);
+                    KaijuWar.KaijuItems();
+                    HeartOfTheSeaStory.HeartOfTheSea();
+                    CetoleonWarStory.CetoleonWar();
+                    DragonPirateStory.DragonPirate();
+                    DragonCapitalStory.DragonCapital();
+                    LowTideStory.Storyline();
+                    AluteaNursery.DoAll();
                     Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
                     break;
 
