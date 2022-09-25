@@ -120,6 +120,7 @@
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
+//cs_include Scripts/Story/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
 
 //cs_include Scripts/Story/UnderGroundLab.cs
@@ -271,6 +272,7 @@ public class AllStories
     public ThirdSpell ThirdSpell = new();
     public TitanAttackStory TitanAttackStory = new();
     public TowerOfDoom TowerOfDoom = new();
+    public Trygve Trygve = new();
     public Tutorial Tutorial = new();
 
     public UnderGroundLab UnderGroundLab = new();
@@ -580,6 +582,10 @@ public class AllStories
 
         TowerOfDoom.TowerProgress();
         Core.Logger($"Story: Tower Of Doom - Complete");
+
+        Trygve.Storyline();
+        Core.Logger($"Story: Trygve - Complete");
+
 
 
         UnderGroundLab.partofundergroundlabb();
