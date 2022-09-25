@@ -30,7 +30,7 @@ public class MindBreakingItIn
         if (Core.CheckInventory(Rewards))
             return;
 
-        if (Core.CheckInventory("Mind Breaker"))
+        if (!Core.CheckInventory("Mind Breaker"))
         {
             //Member Bonus 12k AC Shop will check if the player have the achievment
             Adv.BuyItem("Battleon", 373, "Mind Breaker");
