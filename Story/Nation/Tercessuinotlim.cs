@@ -62,7 +62,7 @@ public class Tercessuinotlim
         if (!Story.QuestProgression(8472))
         {
             Core.EnsureAccept(8472);
-            Core.HuntMonster("Fiendshard", "Dirtlicker", "Dirtlicker's Dignity Decimated");
+            Core.HuntMonster($"Fiendshard", "Dirtlicker", "Dirtlicker’s Dignity Decimated");
             Core.HuntMonster("Tercessuinotlim", "Death's Head", "Death's Head Demolished");
             Core.HuntMonster("ShadowBlast", "CaesarIsTheDark|Carnage", "Shadowblaster Shamed", 10);
             Core.HuntMonster("QuibbleHunt", "Skew", "Skew Straightened Out");
