@@ -30,11 +30,11 @@ public class MindBreakingItIn
         if (Core.CheckInventory(Rewards))
             return;
 
-        if (!Core.CheckInventory("Mind Breaker"))
+        if (!Core.CheckInventory("MindBreaker"))
         {
             //Member Bonus 12k AC Shop will check if the player have the achievment
-            Adv.BuyItem("Battleon", 373, "Mind Breaker");
-            Adv.rankUpClass("Mind Breaker");
+            Adv.BuyItem("Battleon", 373, "MindBreaker");
+            Adv.rankUpClass("MindBreaker");
         }
 
         for (int i = 0; i < Rewards.Count(); i++)
@@ -51,6 +51,7 @@ public class MindBreakingItIn
                 Core.EnsureCompleteChoose(7672, new[] { Rewards[i] });
             }
         }
+        Core.ToBank(Rewards);
 
     }
 }
