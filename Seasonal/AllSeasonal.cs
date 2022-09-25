@@ -36,7 +36,7 @@
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
-//cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs
 using Skua.Core.Interfaces;
 
 public class AllSeasonal
@@ -77,6 +77,7 @@ public class AllSeasonal
     public DragonCapitalStory DragonCapitalStory = new();
     public LowTideStory LowTideStory = new();
     public AluteaNursery AluteaNursery = new();
+    public BlazeBeard BlazeBeard = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -192,6 +193,7 @@ public class AllSeasonal
                     DragonCapitalStory.DragonCapital();
                     LowTideStory.Storyline();
                     AluteaNursery.DoAll();
+                    BlazeBeard.TokenQuests();
                     Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
                     break;
 
