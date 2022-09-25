@@ -25,7 +25,7 @@ public class MindBreakingItIn
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7672).Rewards;
         List<string> RewardsList = new List<string>();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
-        string[] Rewards = RewardsList.ToArray();
+        string[] Rewards = RewardList.ToArray();
 
         if (Core.CheckInventory(Rewards))
             return;
