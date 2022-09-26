@@ -265,6 +265,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightChaos storyline");
             return;
         }
+        BrightShadow();
         Story.PreLoad(this);
 
         //The Situation 7740
@@ -310,6 +311,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightForest storyline");
             return;
         }
+        BrightChaos();
         Story.PreLoad(this);
         //Blood And Ashes 7756
         Story.KillQuest(7756, "BrightForest", new[] { "Shadow Flame", "ShadowFlame Scout" });
@@ -329,6 +331,7 @@ public class CoreSoC
             Core.Logger("You have already completed BrightForestPast storyline");
             return;
         }
+        BrightForest();
         Story.PreLoad(this);
 
         //Slay the Wraiths 7759
