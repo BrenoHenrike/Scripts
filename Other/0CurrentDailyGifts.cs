@@ -30,6 +30,7 @@ public class CurrentDailyGifts
         GetGift(Permanent, "legionarena", "Blade Master", new[] { "Soulfire Scarf", "Soulfire Sheath", "Soulfire Sheath + Scarf" });
         GetGift(Permanent, "maul", "Vending Machine", new[] { "Carmel Sandwich Cookie", "Carmel Sandwich Cookies", "Chocolate Sandwich Cookie", "Dual Sandwich Cookies", "Grilled Provolone Sandwich", "Milanesa And Mashed Potatoes", "Sweet Tart", "Sweet Tart with Coconut" });
         GetGift(Permanent, "garden", "Fa", "Re and Fa House Guest Duo");
+        GetGift(Permanent, "garden", "Creature 83", new[] { "Creature 83 Bat", "Bag of Creature 83 Fluffles", "Creature 83 Bats", "Creature 83 Hoodie", "Creature 83 Hood + Locks", "Creature 83 Hood" });
 
         #endregion
 
