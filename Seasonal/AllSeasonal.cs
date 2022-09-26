@@ -37,6 +37,7 @@
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/LowTideStory.cs
 using Skua.Core.Interfaces;
 
 public class AllSeasonal
