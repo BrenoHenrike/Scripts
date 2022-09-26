@@ -51,10 +51,10 @@ public class CurrentDailyGifts
         #region Expires 14-10-2022
         GetGift(Permanent, "eden", "Klawaii Machine", new[] { "Apa's Tour Guide Morph", "Crystallis Megaphone", "Eden City Tour Flag", "Eden Tour Guide's Vest", "Eta's Tour Guide Morph", "Furled Eden City Umbrella", "Key to Eden City", "Keys to Eden City", "Rainy Day Tour Guide" });
         GetGift(AvailableUntil(14, 10), "battleontown", "Zard", new[] { "Chibi Plushie Teka", "Chibi Teka Pet", "GIANT Haunted Teka Plushie", "Haunted Teka Plushie", "Teka's Birthday Hat" });
-        //GetGift(AvailableUntil(14, 10), "lowtide", "Spectral Jellyfish", new[] { "items are to be announced" });
-        //GetGift(Permanent, "garden", "Creature 83", new[] { "item are to be announced" });
-        //GetGift(Permanent, "garden", "Creature 72", new[] { "item are to be announced" });
-        //GetGift(AvailableUntil(14, 10), "mystcroftforest", "Barghest", new[] { "item are to be announced" });
+        GetGift(AvailableUntil(14, 10), "lowtide", "Spectral Jellyfish", new[] { "Lance of the Depths", "Spear of the Depths", "Staff of the Depths", "Trident of the Depths" });
+        // GetGift(Permanent, "garden", "Creature 83", new[] { "item are to be announced" });
+        // GetGift(Permanent, "garden", "Creature 72", new[] { "item are to be announced" });
+        // GetGift(AvailableUntil(14, 10), "mystcroftforest", "Barghest", new[] { "item are to be announced" });
 
         #endregion
 
