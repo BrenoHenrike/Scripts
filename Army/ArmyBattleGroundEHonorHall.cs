@@ -52,7 +52,12 @@ public class ArmyBattlegroundE
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests((int)mapname == 0 ? 3992 : 3993);
+        if (((int)mapname == 0 && Core.IsMember))
+            Core.RegisterQuests(3991, 3992, 3993);
+        else if (((int)mapname == 1))
+            Core.RegisterQuests(3992, 3993);
+        else
+            Core.RegisterQuests(3991, 3992);
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
         Army.AggroMonStart(mapname.ToString());
 
