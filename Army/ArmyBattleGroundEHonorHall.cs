@@ -38,7 +38,7 @@ public class ArmyBattlegroundE
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 
-        Setup(Bot.Config.Get<Method>("MapName"));
+        Setup(Bot.Config.Get<Method>("mapname"));
 
         Core.SetOptions(false);
     }
@@ -52,12 +52,13 @@ public class ArmyBattlegroundE
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests((int)mapname == 0 ? 3992 : 3993);
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
         Army.AggroMonStart(mapname.ToString());
 
         if ((int)mapname == 0)
-            Army.DivideOnCells("r2", "r3", "r4", "r5");
-        else Army.DivideOnCells("r1", "r2", "r3", "r4");
+            Army.DivideOnCells("r5", "r4", "r3", "r2");
+        else Army.DivideOnCells("r4", "r3", "r2", "r1");
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
