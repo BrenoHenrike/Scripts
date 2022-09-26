@@ -89,10 +89,10 @@ public class FarmerJoeStartingTheAcc
 
         #endregion starting out the acc
 
-        #region Obtain the Silver Victory Blade
+        #region Obtain the Enchanted Victory Blade
 
-        Core.BuyItem("river", 1213, "Silver Victory Blade");
-        Core.Equip("Silver Victory Blade");
+        EVBW.EnchantedVictoryBlade();
+        Core.Equip("Enchanted Victory Blade");
         InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade
 
@@ -140,9 +140,8 @@ public class FarmerJoeStartingTheAcc
         #region Ending & Extras 
         //Pre-Farm Enh
         Adv.EnhanceEquipped(EnhancementType.Lucky);
-        InvEn.EnhanceInventory();
-        EVBW.EnchantedVictoryBlade();
         Scythe.GetHBReapersScythe();
+        InvEn.EnhanceInventory();
         #endregion Ending & Extras
 
         if (Bot.Config.Get<bool>("OutFit"))
