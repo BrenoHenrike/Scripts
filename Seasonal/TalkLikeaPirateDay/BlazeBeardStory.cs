@@ -124,7 +124,7 @@ public class BlazeBeard
                     }
                     //Conquer His Crew 4525 [Pirate Booty XIII] 
                     Core.EnsureAccept(4525);
-                    Core.HuntMonster("ManaCannon", "Pirate Crew|Pirate Plunderer", "Crew Defeated", 15);
+                    Core.HuntMonster("ManaCannon", "Pirate Crew", "Crew Defeated", 15);
                     Core.EnsureComplete(4525);
                 }
                 //Pirates With Magic? 4526 [Pirate Booty XIV]
