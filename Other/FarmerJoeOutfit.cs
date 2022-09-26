@@ -30,7 +30,7 @@
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/Good/Paladin.cs
-
+//cs_include Scripts/Other\Weapons\EnchantedVictoryBladeWeapons.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -56,6 +56,7 @@ public class FarmerJoeStartingTheAcc
     public EvolvedShaman ES = new();
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
+    public EnchantedVictoryBladeWeapons EVBW = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -140,6 +141,7 @@ public class FarmerJoeStartingTheAcc
         //Pre-Farm Enh
         Adv.EnhanceEquipped(EnhancementType.Lucky);
         InvEn.EnhanceInventory();
+        EVBW.EnchantedVictoryBlade();
         Scythe.GetHBReapersScythe();
         #endregion Ending & Extras
 
