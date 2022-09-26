@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -14,6 +15,7 @@ public class ShadowScytheGeneralMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    public CoreDailies Daily = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -59,6 +61,10 @@ public class ShadowScytheGeneralMerge
 
                 case "Shadow Shield":
                     Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Daily.DailyRoutine(3828, "lightguardwar", "Citadel Crusader", "Broken Blade");
+                    if (Core.IsMember)
+                        Daily.DailyRoutine(3827, "lightguardwar", "Citadel Crusader", "Broken Blade");
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
