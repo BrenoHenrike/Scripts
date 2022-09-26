@@ -29,6 +29,7 @@ public class SunkenTreasure
             return;
 
         Bot.Drops.Add(Rewards);
+        Bot.Drops.Add("Hidden Pirate Base");
 
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(7715);
