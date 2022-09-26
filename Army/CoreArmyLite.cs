@@ -110,6 +110,7 @@ public class CoreArmyLite
         _AggroMonCells.Clear();
         _AggroMonNames.Clear();
         _AggroMonIDs.Clear();
+        _AggroMonMIDs.Clear();
     }
 
     /// <summary>
