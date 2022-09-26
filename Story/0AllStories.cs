@@ -111,6 +111,7 @@
 //cs_include Scripts/Story/RavenlossSaga.cs
 
 //cs_include Scripts/Story/ShadowSlayerK.cs
+//cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
@@ -263,6 +264,7 @@ public class AllStories
     public RavenlossSaga RavenlossSaga = new();
 
     public ShadowSlayerK ShadowSlayerK = new();
+    public ShadowVault ShadowVault = new();
     public ShadowVoid ShadowVoid = new();
     public Shinkansen Shinkansen = new();
     public SkyGuardSaga SkyGuardSaga = new();
@@ -557,6 +559,9 @@ public class AllStories
 
         ShadowSlayerK.Storyline();
         Core.Logger($"Story: Shadow Slayer K - Complete");
+
+        ShadowVault.StoryLine();
+        Core.Logger($"Story: ShadowVault - Complete");
 
         ShadowVoid.ShadowVoidQuests();
         Core.Logger($"Story: ShadowVoid - Complete");
