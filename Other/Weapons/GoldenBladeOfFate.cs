@@ -62,7 +62,7 @@ public class GoldenBladeOfFate
             if (!Story.QuestProgression(5678))
             {
                 Core.EnsureAccept(5678);
-                if (!Core.CheckInventory(54131))
+                if (!Core.CheckInventory(38354))
                     Core.HuntMonster("sepulchure", "Dark Sepulchure");
                 Core.EnsureComplete(5678);
             }
