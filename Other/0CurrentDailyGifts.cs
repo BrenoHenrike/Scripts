@@ -18,7 +18,7 @@ public class CurrentDailyGifts
 
     public void GetAllGifts()
     {
-        int Day = 23;
+        int Day = 26;
         int Month = 09;
         int Year = 2022;
         DateTime lastUpdate = new(Year, Month, Day);
