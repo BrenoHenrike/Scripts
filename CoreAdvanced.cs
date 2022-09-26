@@ -1381,15 +1381,17 @@ public class CoreAdvanced
 
             // Grabbing the two best enhancements
             List<ShopItem> bestTwoEnhancements = new();
-            bestTwoEnhancements.Add(sortedList.First());
-            if (sortedList.Count >= 2)
-                bestTwoEnhancements.Add(sortedList.First(x => !bestTwoEnhancements.Contains(x)));
-            bestTwoEnhancements = bestTwoEnhancements.OrderBy(x => x.Level).ToList();
+            if (sortedList.Count >= 4)
+                bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
+            else if (sortedList.Count == 3)
+                bestTwoEnhancements = sortedList.Skip(sortedList.Count - 1).OrderBy(x => x.Level).ToList();
+            else if (sortedList.Count == 2)
+                bestTwoEnhancements = sortedList.Skip(sortedList.Count - 0).OrderBy(x => x.Level).ToList();
 
             // Getting the best enhancement out of the two
-            ShopItem? bestEnhancement =
-                bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
-                    bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+            ShopItem bestEnhancement =
+               bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
+                   bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
 
             // Null check
             if (bestEnhancement == null)
