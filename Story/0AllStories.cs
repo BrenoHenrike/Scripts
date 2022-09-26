@@ -50,6 +50,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/QueenBattle.cs
 
 //cs_include Scripts/Story/SepulchureSaga/00CompleteSepulchureSaga.cs
 //cs_include Scripts/Story/SepulchureSaga/01SepulchurePrequelAlden.cs
@@ -197,6 +198,7 @@ public class AllStories
     public GoldenArena GoldenArena = new();
     public LivingDungeon LivingDungeon = new();
     public OrbHunt OrbHunt = new();
+    public QueenBattle QueenBattle = new();
 
     // Sepulchure Saga
     public CompleteSepulchureSaga SeppySaga = new();
@@ -423,6 +425,9 @@ public class AllStories
 
         OrbHunt.SagaName();
         Core.Logger($"Story: Orb Hunt - Complete");
+
+        QueenBattle.StoryLine();
+        Core.Logger($"Story: QueenBattle - Complete");
         #endregion
 
         #region Seppy
