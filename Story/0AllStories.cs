@@ -116,6 +116,7 @@
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/StarSinc.cs
+//cs_include Scripts/Story/SuperDeath.cs
 
 //cs_include Scripts/Story/Table.cs
 //cs_include Scripts/Story/ThirdSpell.cs
@@ -269,6 +270,7 @@ public class AllStories
     public Shinkansen Shinkansen = new();
     public SkyGuardSaga SkyGuardSaga = new();
     public StarSinc StarSinc = new();
+    public SuperDeath SuperDeath = new();
 
     public Table Table = new();
     public ThirdSpell ThirdSpell = new();
@@ -574,6 +576,9 @@ public class AllStories
 
         StarSinc.StarSincQuests();
         Core.Logger($"Story: Star Sinc - Complete");
+
+        SuperDeath.StoryLine();
+        Core.Logger($"Story: SuperDeath - Complete");
 
 
         Table.DoAll();
