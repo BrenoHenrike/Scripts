@@ -50,6 +50,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/QueenBattle.cs
 
 //cs_include Scripts/Story/SepulchureSaga/00CompleteSepulchureSaga.cs
 //cs_include Scripts/Story/SepulchureSaga/01SepulchurePrequelAlden.cs
@@ -111,10 +112,12 @@
 //cs_include Scripts/Story/RavenlossSaga.cs
 
 //cs_include Scripts/Story/ShadowSlayerK.cs
+//cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/StarSinc.cs
+//cs_include Scripts/Story/SuperDeath.cs
 
 //cs_include Scripts/Story/Table.cs
 //cs_include Scripts/Story/ThirdSpell.cs
@@ -195,6 +198,7 @@ public class AllStories
     public GoldenArena GoldenArena = new();
     public LivingDungeon LivingDungeon = new();
     public OrbHunt OrbHunt = new();
+    public QueenBattle QueenBattle = new();
 
     // Sepulchure Saga
     public CompleteSepulchureSaga SeppySaga = new();
@@ -263,10 +267,12 @@ public class AllStories
     public RavenlossSaga RavenlossSaga = new();
 
     public ShadowSlayerK ShadowSlayerK = new();
+    public ShadowVault ShadowVault = new();
     public ShadowVoid ShadowVoid = new();
     public Shinkansen Shinkansen = new();
     public SkyGuardSaga SkyGuardSaga = new();
     public StarSinc StarSinc = new();
+    public SuperDeath SuperDeath = new();
 
     public Table Table = new();
     public ThirdSpell ThirdSpell = new();
@@ -419,6 +425,9 @@ public class AllStories
 
         OrbHunt.SagaName();
         Core.Logger($"Story: Orb Hunt - Complete");
+
+        QueenBattle.StoryLine();
+        Core.Logger($"Story: QueenBattle - Complete");
         #endregion
 
         #region Seppy
@@ -558,6 +567,9 @@ public class AllStories
         ShadowSlayerK.Storyline();
         Core.Logger($"Story: Shadow Slayer K - Complete");
 
+        ShadowVault.StoryLine();
+        Core.Logger($"Story: ShadowVault - Complete");
+
         ShadowVoid.ShadowVoidQuests();
         Core.Logger($"Story: ShadowVoid - Complete");
 
@@ -569,6 +581,9 @@ public class AllStories
 
         StarSinc.StarSincQuests();
         Core.Logger($"Story: Star Sinc - Complete");
+
+        SuperDeath.StoryLine();
+        Core.Logger($"Story: SuperDeath - Complete");
 
 
         Table.DoAll();
