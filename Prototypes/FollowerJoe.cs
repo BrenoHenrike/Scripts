@@ -15,9 +15,7 @@ public class FollowerJoe
     public CoreAdvanced Adv => new();
 
     public bool DontPreconfigure = true;
-
     public string OptionsStorage = "Follower Joe";
-
     public List<IOption> Options = new List<IOption>()
     {
         new Option<string>("playerName", "Player Name", "Insert the name of the player to follow", "Insert Name"),
@@ -27,19 +25,16 @@ public class FollowerJoe
         new Option<string>("RoomNumber", "Room Number", "Insert the Room# of the Possible Locked Zone", "Room#"),
     };
 
-
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        FollowJoe(bot, Bot.Config.Get<bool>("LockedMaps"));
+        FollowJoe(Bot.Config.Get<bool>("LockedMaps"));
 
-        Bot.Events.PlayerAFK -= LockedMap;
-        Bot.Events.CellChanged -= Jumper;
         Core.SetOptions(false);
     }
 
-    public void FollowJoe(IScriptInterface bot, bool LockedMaps)
+    public void FollowJoe(bool LockedMaps)
     {
         if (!Bot.Config.Get<bool>("skipSetup"))
             Bot.Config.Configure();
@@ -48,17 +43,18 @@ public class FollowerJoe
             Core.EquipClass(ClassType.Solo);
         else Core.EquipClass(ClassType.Farm);
 
+        playerName = Bot.Config.Get<string>("playerName");
+
         while (!Bot.ShouldExit)
         {
-            Bot.Player.Goto((Bot.Config.Get<string>("playerName")));
+            Bot.Player.Goto((playerName));
             Bot.Sleep(2500);
 
-            if (!Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
+            if (!Bot.Map.PlayerExists(playerName) && LockedMaps)
             {
-                Core.Logger($" {Bot.Config.Get<string>("playerName")} Not found in {Bot.Map.Name}, LockedZoneHandler Started");
+                Core.Logger($"{playerName} not found in {Bot.Map.Name}, initiating LockedZoneHandler");
                 Bot.Events.CellChanged -= Jumper;
-                if (LockedMaps)
-                    LockedMap();
+                LockedMap();
             }
 
             if (Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
@@ -70,31 +66,32 @@ public class FollowerJoe
         Bot.Events.CellChanged -= Jumper;
         Core.SetOptions(false);
     }
+    private string playerName = null;
 
-    public void Jumper(string map = null, string cell = null, string pad = null)
+    private void Jumper(string map = null, string cell = null, string pad = null)
     {
-        if (!Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))))
+        if (!Bot.Map.PlayerExists(playerName))
         {
-            Core.Logger($"Teleporting to {Bot.Config.Get<string>("playerName")}");
+            Core.Logger($"Teleporting to {playerName}");
             Core.JumpWait();
             Bot.Sleep(Core.ActionDelay);
-            Bot.Player.Goto((Bot.Config.Get<string>("playerName")));
+            Bot.Player.Goto(playerName);
             Bot.Sleep(Core.ActionDelay);
         }
 
-        if (Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))) != null && Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell != Bot.Player.Cell)
+        if (Bot.Map.GetPlayer(playerName) != null && Bot.Map.GetPlayer(playerName).Cell != Bot.Player.Cell)
         {
-            Core.Logger($"Cant Find {Bot.Config.Get<string>("playerName")}, Jumping");
+            Core.Logger($"Cant Find {playerName}, Jumping");
             Core.JumpWait();
             Bot.Sleep(Core.ActionDelay);
-            Bot.Map.Jump(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad);
+            Bot.Map.Jump(Bot.Map.GetPlayer(playerName).Cell, Bot.Map.GetPlayer(playerName).Pad);
             Bot.Sleep(Core.ActionDelay);
         }
-        Bot.Wait.ForCellChange(Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell);
+        Bot.Wait.ForCellChange(Bot.Map.GetPlayer(playerName).Cell);
         Bot.Events.CellChanged -= Jumper;
     }
 
-    public void LockedMap()
+    private void LockedMap()
     {
         string[] NonMemMaps =
         {
@@ -123,36 +120,23 @@ public class FollowerJoe
             "binky",
             "superlowe"
         };
-        string playerName = Bot.Config.Get<string>("playerName");
 
         int maptry = 1;
         Core.Join("whitemap");
+        Bot.Quests.UpdateQuest(3881);
+
+        int mapCount = Core.IsMember ? (NonMemMaps.Count() + MemMaps.Count()) : NonMemMaps.Count();
 
         foreach (string Map in NonMemMaps)
         {
-            Bot.Quests.UpdateQuest(3881);
-            Core.Logger($"Searching for {playerName} in {Map}", "LockedZoneHandler");
+            Core.Logger($"Searching for {playerName} in /{Map} ({maptry}/{mapCount++})", "LockedZoneHandler");
             Core.Join(Map);
+
+            //if (!Bot.Map.PlayerExists(playerName))
+            //    continue;
 
             switch (Map.ToLower())
             {
-                case "ledgermayne":
-                    if (Bot.Map.TryGetPlayer(playerName, out PlayerInfo player1) && player1.Cell == "Boss" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-                    {
-                        Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                        if (Target == null)
-                        {
-                            Core.Logger("No monsters found");
-                            return;
-                        }
-                        Core.SetOptions(disableClassSwap: true);
-                        Core.Logger("Target: " + Target.Name);
-
-                        Adv.KillUltra("ledgermayne", Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad, Target.Name, log: true, forAuto: true);
-                    }
-                    else Bot.Combat.Attack("*");
-                    break;
-
                 case "chaoslord":
                     Bot.Wait.ForCellChange(Bot.Player.Cell);
                     Bot.Sleep(2500);
@@ -172,77 +156,69 @@ public class FollowerJoe
                 case "shadowattack":
                     Core.Jump("Boss", "Left");
                     Bot.Options.AttackWithoutTarget = true;
-                    Bot.Kill.Monster("Death");
+                    Bot.Combat.Attack("Death");
                     Bot.Options.AttackWithoutTarget = false;
                     break;
 
                 case "mobius":
                     Bot.Map.Reload();
-                    Bot.Kill.Monster("*");
+                    Bot.Combat.Attack("*");
+                    break;
+
+                case "ledgermayne":
+                    _killTheUltra("Boss");
                     break;
 
                 case "doomvault":
-                    if (Bot.Map.TryGetPlayer(playerName, out PlayerInfo player2) && player2.Cell == "r26" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-                    {
-                        Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                        if (Target == null)
-                        {
-                            Core.Logger("No monsters found");
-                            return;
-                        }
-                        Adv.KillUltra("doomvault", Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad, Target.Name, log: true, forAuto: true);
-                    }
-                    else Bot.Combat.Attack("*");
+                    _killTheUltra("r26");
                     break;
 
                 case "doomvaultb":
-                    if (Bot.Map.TryGetPlayer(playerName, out PlayerInfo player3) && player3.Cell == "r5" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-                    {
-                        Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                        if (Target == null)
-                        {
-                            Core.Logger("No monsters found");
-                            return;
-                        }
-                        Adv.KillUltra("doomvaultb", Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell, Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Pad, Target.Name, log: true, forAuto: true);
-                    }
-                    else Bot.Combat.Attack("*");
+                    _killTheUltra("r5");
                     break;
             }
 
             if (Bot.Map.PlayerExists(playerName))
             {
-                Core.Logger($"{playerName} found in Mmp: {Map}, Jumper Re-Initialized");
+                Core.Logger($"{playerName} found in /{Map}, Jumper Re-Initialized");
                 Bot.Events.CellChanged += Jumper;
                 return;
             }
         }
 
-        foreach (string Map in MemMaps)
+        if (Core.IsMember)
         {
-            if (!Core.IsMember)
-                break;
-
-            Core.Logger($"Try {maptry++}, Joining Map: {Map}", "LockedZoneHandler");
-            Core.Join(Map);
-
-            while (Bot.Map.TryGetPlayer((Bot.Config.Get<string>("playerName")), out PlayerInfo player))
+            foreach (string Map in MemMaps)
             {
-                if (player.Cell.ToLower() == "binky" && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-                {
-                    Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                    if (Target == null)
-                    {
-                        Core.Logger("No monsters found");
-                        return;
-                    }
-                    Adv.KillUltra(Bot.Map.Name, Target.Cell, "Left", Target.Name, log: false, forAuto: true);
-                }
-                else Bot.Combat.Attack("*");
-            }
-            Bot.Events.CellChanged += Jumper;
-            break;
+                Core.Logger($"Searching for {playerName} in /{Map} ({maptry}/{mapCount++})", "LockedZoneHandler");
+                Core.Join(Map);
 
+                if (!Bot.Map.PlayerExists(playerName))
+                    continue;
+
+                switch (Map.ToLower())
+                {
+                    case "binky":
+                        _killTheUltra("binky");
+                        break;
+                }
+            }
+        }
+        Bot.Events.CellChanged += Jumper;
+
+        void _killTheUltra(string cell)
+        {
+            if (Bot.Map.TryGetPlayer(playerName, out PlayerInfo player) && player.Cell == cell && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+            {
+                Monster Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+                if (Target == null)
+                {
+                    Core.Logger("No monsters found");
+                    return;
+                }
+                Adv.KillUltra(Bot.Map.Name, player.Cell, player.Pad, Target.Name, log: true, forAuto: true);
+            }
+            else Bot.Combat.Attack("*");
         }
     }
 }
