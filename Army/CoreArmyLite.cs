@@ -111,6 +111,7 @@ public class CoreArmyLite
         _AggroMonNames.Clear();
         _AggroMonIDs.Clear();
         _AggroMonMIDs.Clear();
+        _SmartAggroMonCells.Clear();
     }
 
     /// <summary>
@@ -118,6 +119,33 @@ public class CoreArmyLite
     /// </summary>
     public string AggroMonPacket(params int[] MonsterMapIDs)
         => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
+
+    public void SmartAggroMonStart(string map, params string[] monsters)
+    {
+        Core.Join(map);
+
+        //Devining variables
+        var _monsters = Bot.Monsters.MapMonsters.Where(m => monsters.Contains(m.Name)).ToList();
+        var cellComparison = new Dictionary<string, int>();
+
+        //Finding highest count of monsters
+        foreach (Monster m in _monsters)
+            if (!cellComparison.ContainsKey(m.Cell))
+                cellComparison.Add(m.Cell, _monsters.Count(t => t.Cell == m.Cell));
+        var SortedDict = cellComparison.OrderByDescending(kvp => kvp.Value).ToDictionary(pair => pair.Key, pair => pair.Value).Keys.ToArray();
+        cellComparison = null;
+
+        //Special option on DivideOnCells, which will have it store all cells that it divides people to
+        _getCellsForSmartAggroMon = true;
+        DivideOnCells(SortedDict);
+        _getCellsForSmartAggroMon = false;
+
+        AggroMonCells(_SmartAggroMonCells.ToArray());
+        AggroMonStart(map);
+    }
+    private bool _getCellsForSmartAggroMon = false;
+    private List<string> _SmartAggroMonCells = new();
+
 
     #region Script Options
 
@@ -269,6 +297,39 @@ public class CoreArmyLite
     public void DivideOnCells(params string[] cells)
     {
         // Parsing all the player names from an unspecified amount of player name options
+        string[] _players = Players();
+
+        // If no paramaters are given, select all cells that have monsters in them
+        if ((cells == null || cells.Count() == 0))
+        {
+            List<Monster> monsters = Bot.Monsters.MapMonsters;
+            if (monsters == null || monsters.Count() == 0)
+                return;
+
+            List<string> _cells = new();
+            foreach (string cell in monsters.Select(m => m.Cell))
+                if (!_cells.Contains(cell))
+                    _cells.Add(cell);
+            cells = _cells.OrderBy(x => x).ToArray();
+        }
+
+        //Dividing the players amongst the cells
+        int cellCount = 0;
+        string username = Bot.Player.Username.ToLower();
+        foreach (string p in _players)
+        {
+            string cell = cells[cellCount];
+            if (_getCellsForSmartAggroMon && !_SmartAggroMonCells.Contains(cell))
+                _SmartAggroMonCells.Add(cell);
+
+            if (username == p)
+                Core.Jump(cell);
+            cellCount = cellCount == cells.Count() - 1 ? 0 : cellCount + 1;
+        }
+    }
+
+    public string[] Players()
+    {
         List<string> players = new();
         int i = 1;
         while (!Bot.ShouldExit)
@@ -289,29 +350,6 @@ public class CoreArmyLite
                 break;
             }
         }
-
-        // If no paramaters are given, select all cells that have monsters in them
-        if ((cells == null || cells.Count() == 0))
-        {
-            List<Monster> monsters = Bot.Monsters.MapMonsters;
-            if (monsters == null || monsters.Count() == 0)
-                return;
-
-            List<string> _cells = new();
-            foreach (string cell in monsters.Select(m => m.Cell))
-                if (!_cells.Contains(cell))
-                    _cells.Add(cell);
-            cells = _cells.OrderBy(x => x).ToArray();
-        }
-
-        //Dividing the players amongst the cells
-        int cellCount = 0;
-        string username = Bot.Player.Username.ToLower();
-        foreach (string p in players)
-        {
-            if (username == p)
-                Core.Jump(cells[cellCount]);
-            cellCount = cellCount == cells.Count() - 1 ? 0 : cellCount + 1;
-        }
+        return players.ToArray();
     }
 }
