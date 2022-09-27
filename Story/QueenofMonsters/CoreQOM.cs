@@ -559,7 +559,7 @@ public class CoreQOM
         Story.KillQuest(5847, "extriki", "Extriki");
     }
 
-    public void TheReshaper()
+    public void TheReshaper(bool TerraneMerge = false)
     {
         //Progress Check
         if (Core.isCompletedBefore(5877))
@@ -640,6 +640,8 @@ public class CoreQOM
 
         //Take Down Terrane
         Story.KillQuest(6286, "guardiantree", "Terrane");
+        if (TerraneMerge)
+            return;
 
         //Explore the Cavern
         Story.MapItemQuest(5856, "TwistedCavern", 5293);
