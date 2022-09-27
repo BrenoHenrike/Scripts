@@ -61,7 +61,7 @@ public class ShadowfallDefenseMerge
                 #endregion
 
                 case "Dark Heart Medal":
-                    ShadowGates.StoeyLine();
+                    ShadowGates.StoryLine();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(3294);

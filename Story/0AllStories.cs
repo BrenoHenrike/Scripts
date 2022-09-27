@@ -582,7 +582,7 @@ public class AllStories
             Core.Logger($"Story: Safiria - Complete");
         }
 
-        ShadowGates.StoeyLine();
+        ShadowGates.StoryLine();
         Core.Logger($"Story: ShadowGates - Complete");
 
         ShadowSlayerK.Storyline();

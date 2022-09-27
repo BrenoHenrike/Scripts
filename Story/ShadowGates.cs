@@ -16,15 +16,15 @@ public class ShadowGates
     {
         Core.SetOptions();
 
-        StoeyLine();
+        StoryLine();
 
         Core.SetOptions(false);
     }
 
-    public void StoeyLine()
+    public void StoryLine()
     {
         Loc.Prologue();
-        
+
         if (Core.isCompletedBefore(3292))
             return;
 
