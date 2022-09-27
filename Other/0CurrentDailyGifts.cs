@@ -18,7 +18,7 @@ public class CurrentDailyGifts
 
     public void GetAllGifts()
     {
-        int Day = 23;
+        int Day = 26;
         int Month = 09;
         int Year = 2022;
         DateTime lastUpdate = new(Year, Month, Day);
@@ -30,6 +30,7 @@ public class CurrentDailyGifts
         GetGift(Permanent, "legionarena", "Blade Master", new[] { "Soulfire Scarf", "Soulfire Sheath", "Soulfire Sheath + Scarf" });
         GetGift(Permanent, "maul", "Vending Machine", new[] { "Carmel Sandwich Cookie", "Carmel Sandwich Cookies", "Chocolate Sandwich Cookie", "Dual Sandwich Cookies", "Grilled Provolone Sandwich", "Milanesa And Mashed Potatoes", "Sweet Tart", "Sweet Tart with Coconut" });
         GetGift(Permanent, "garden", "Fa", "Re and Fa House Guest Duo");
+        GetGift(Permanent, "garden", "Creature 83", new[] { "Creature 83 Bat", "Bag of Creature 83 Fluffles", "Creature 83 Bats", "Creature 83 Hoodie", "Creature 83 Hood + Locks", "Creature 83 Hood" });
 
         #endregion
 
@@ -51,10 +52,10 @@ public class CurrentDailyGifts
         #region Expires 14-10-2022
         GetGift(Permanent, "eden", "Klawaii Machine", new[] { "Apa's Tour Guide Morph", "Crystallis Megaphone", "Eden City Tour Flag", "Eden Tour Guide's Vest", "Eta's Tour Guide Morph", "Furled Eden City Umbrella", "Key to Eden City", "Keys to Eden City", "Rainy Day Tour Guide" });
         GetGift(AvailableUntil(14, 10), "battleontown", "Zard", new[] { "Chibi Plushie Teka", "Chibi Teka Pet", "GIANT Haunted Teka Plushie", "Haunted Teka Plushie", "Teka's Birthday Hat" });
-        //GetGift(AvailableUntil(14, 10), "lowtide", "Spectral Jellyfish", new[] { "items are to be announced" });
-        //GetGift(Permanent, "garden", "Creature 83", new[] { "item are to be announced" });
-        //GetGift(Permanent, "garden", "Creature 72", new[] { "item are to be announced" });
-        //GetGift(AvailableUntil(14, 10), "mystcroftforest", "Barghest", new[] { "item are to be announced" });
+        GetGift(AvailableUntil(14, 10), "lowtide", "Spectral Jellyfish", new[] { "Lance of the Depths", "Spear of the Depths", "Staff of the Depths", "Trident of the Depths" });
+        // GetGift(Permanent, "garden", "Creature 83", new[] { "item are to be announced" });
+        // GetGift(Permanent, "garden", "Creature 72", new[] { "item are to be announced" });
+        // GetGift(AvailableUntil(14, 10), "mystcroftforest", "Barghest", new[] { "item are to be announced" });
 
         #endregion
 

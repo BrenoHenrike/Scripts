@@ -72,7 +72,7 @@ public class PoisonForest
         {
             Core.EnsureAccept(1953);
             Core.GetMapItem(968, 1, "PoisonForest");
-            Core.HuntMonster("PoisonForest", "Traitor Knightt", "Guard Slain", 8);
+            Core.HuntMonster("PoisonForest", "Traitor Knight", "Guard Slain", 8);
             Core.EnsureComplete(1953);
         }
 

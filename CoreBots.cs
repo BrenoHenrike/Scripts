@@ -1267,7 +1267,7 @@ public class CoreBots
         if (item == null)
         {
             if (log)
-                Logger("Killing Escherion");
+                Logger("Killing Vath");
             while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
             {
                 if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)

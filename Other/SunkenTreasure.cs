@@ -29,10 +29,11 @@ public class SunkenTreasure
             return;
 
         Bot.Drops.Add(Rewards);
+        Bot.Drops.Add("Hidden Pirate Base");
 
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(7715);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Rewards", toInv: false) && !Bot.House.Contains("Hidden Pirate Base"))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false) && !Bot.House.Contains("Hidden Pirate Base"))
         {
             //Sunken Treasure? 7715
             Core.HuntMonster("Pirates", "Shark Bait", "Waterlogged Chest");

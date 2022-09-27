@@ -29,7 +29,7 @@ public class SuperDeath
 
         //Cold Open the Portal 8016
         Story.MapItemQuest(8016, "SuperDeath", 8330);
-        Story.KillQuest(8016, "SuperDeath", new[] { "Shadow Cave Yeti|Shadow Collector", "Shadow Collector", "Shadow Lava Crab", "Shadow Cave Yeti" });
+        Story.KillQuest(8016, "SuperDeath", new[] { "Shadow Cave Yeti|Shadow Collector", "Shadow Lava Crab", "Shadow Collector", "Shadow Cave Yeti" });
 
         //VolcaNO Thank You 8017
         Story.KillQuest(8017, "SuperDeath", "Igneous Lava Crab");

@@ -78,6 +78,7 @@
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/CruxShip.cs
 
+//cs_include Scripts/Story/DeadFly[Member].cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
@@ -111,6 +112,7 @@
 
 //cs_include Scripts/Story/RavenlossSaga.cs
 
+//cs_include Scripts/Story/Safiria[Member].cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/ShadowVoid.cs
@@ -232,6 +234,7 @@ public class AllStories
     public CastleTunnels CastleTunnels = new();
     public CruxShip CruxShip = new();
 
+    public DeadFly DeadFly = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -266,6 +269,7 @@ public class AllStories
 
     public RavenlossSaga RavenlossSaga = new();
 
+    public Safiria Safiria = new();
     public ShadowSlayerK ShadowSlayerK = new();
     public ShadowVault ShadowVault = new();
     public ShadowVoid ShadowVoid = new();
@@ -489,6 +493,12 @@ public class AllStories
         Core.Logger($"Story: CruxShip - Complete");
 
 
+        if (Core.IsMember)
+        {
+            DeadFly.StoryLine();
+            Core.Logger($"Story: DeadFly - Complete");
+        }
+
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
 
@@ -563,6 +573,12 @@ public class AllStories
         RavenlossSaga.DoAll();
         Core.Logger($"Saga: RavenLoss - Complete");
 
+
+        if (Core.IsMember)
+        {
+            Safiria.StoryLine();
+            Core.Logger($"Story: Safiria - Complete");
+        }
 
         ShadowSlayerK.Storyline();
         Core.Logger($"Story: Shadow Slayer K - Complete");

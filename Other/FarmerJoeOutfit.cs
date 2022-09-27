@@ -30,7 +30,7 @@
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/Good/Paladin.cs
-
+//cs_include Scripts/Other\Weapons\EnchantedVictoryBladeWeapons.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -56,6 +56,7 @@ public class FarmerJoeStartingTheAcc
     public EvolvedShaman ES = new();
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
+    public EnchantedVictoryBladeWeapons EVBW = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -88,10 +89,10 @@ public class FarmerJoeStartingTheAcc
 
         #endregion starting out the acc
 
-        #region Obtain the Silver Victory Blade
+        #region Obtain the Enchanted Victory Blade
 
-        Core.BuyItem("river", 1213, "Silver Victory Blade");
-        Core.Equip("Silver Victory Blade");
+        EVBW.EnchantedVictoryBlade();
+        Core.Equip("Enchanted Victory Blade");
         InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade
 
@@ -139,8 +140,8 @@ public class FarmerJoeStartingTheAcc
         #region Ending & Extras 
         //Pre-Farm Enh
         Adv.EnhanceEquipped(EnhancementType.Lucky);
-        InvEn.EnhanceInventory();
         Scythe.GetHBReapersScythe();
+        InvEn.EnhanceInventory();
         #endregion Ending & Extras
 
         if (Bot.Config.Get<bool>("OutFit"))

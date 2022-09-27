@@ -61,7 +61,7 @@ public class PotionBuyer
                 PurchaseQuant = 0;
             else Core.FarmingLogger(potion, potionQuant);
 
-            Core.AddDrop(reagent1, reagent2, "Potent Malevolence Elixir", "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Sage Tonic");
+            Core.AddDrop(reagent1, reagent2, "Potent Malevolence Elixir", "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Sage Tonic", "Potent Malice Potion");
 
             switch (potion)
             {
