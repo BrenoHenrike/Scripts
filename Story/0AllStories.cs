@@ -113,6 +113,7 @@
 //cs_include Scripts/Story/RavenlossSaga.cs
 
 //cs_include Scripts/Story/Safiria[Member].cs
+//cs_include Scripts/Story/ShadowGates.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/ShadowVoid.cs
@@ -270,6 +271,7 @@ public class AllStories
     public RavenlossSaga RavenlossSaga = new();
 
     public Safiria Safiria = new();
+    public ShadowGates ShadowGates = new();
     public ShadowSlayerK ShadowSlayerK = new();
     public ShadowVault ShadowVault = new();
     public ShadowVoid ShadowVoid = new();
@@ -579,6 +581,9 @@ public class AllStories
             Safiria.StoryLine();
             Core.Logger($"Story: Safiria - Complete");
         }
+
+        ShadowGates.StoryLine();
+        Core.Logger($"Story: ShadowGates - Complete");
 
         ShadowSlayerK.Storyline();
         Core.Logger($"Story: Shadow Slayer K - Complete");

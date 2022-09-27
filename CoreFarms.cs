@@ -1618,42 +1618,39 @@ public class CoreFarms
     {
         if (FactionRank("Good") >= rank)
             return;
-        if (Core.IsMember)
-            MembershipDues(MemberShipsIDS.Good, rank);
-        else
+
+        Core.ChangeAlignment(Alignment.Good);
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(369);
+        while (!Bot.ShouldExit && FactionRank("Good") < 4)
         {
-            Core.ChangeAlignment(Alignment.Good);
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
-
-            Core.RegisterQuests(369);
-            while (!Bot.ShouldExit && FactionRank("Good") < 4)
-            {
-                Core.KillMonster("swordhavenbridge", "Bridge", "Left", "Slime", "Slime in a Jar", 6, log: false);
-                Bot.Wait.ForQuestComplete(369);
-            }
-
-            Core.CancelRegisteredQuests();
-            Core.RegisterQuests(Core.IsMember ? 371 : 372);
-            while (!Bot.ShouldExit && FactionRank("Good") < rank)
-            {
-                if (!Core.IsMember)
-                {
-                    Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5, log: false);
-                    Bot.Wait.ForQuestComplete(372);
-                }
-                else
-                {
-                    Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", log: false);
-                    Bot.Wait.ForQuestComplete(371);
-                }
-            }
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+            Core.KillMonster("swordhavenbridge", "Bridge", "Left", "Slime", "Slime in a Jar", 6, log: false);
+            Bot.Wait.ForQuestComplete(369);
         }
+
+        Core.CancelRegisteredQuests();
+        Core.RegisterQuests(Core.IsMember ? 371 : 372);
+        while (!Bot.ShouldExit && FactionRank("Good") < rank)
+        {
+            if (!Core.IsMember)
+            {
+                Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5, log: false);
+                Bot.Wait.ForQuestComplete(372);
+            }
+            else
+            {
+                Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", log: false);
+                Bot.Wait.ForQuestComplete(371);
+            }
+        }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
+
     }
 
     public void HollowbornREP(int rank = 10)
