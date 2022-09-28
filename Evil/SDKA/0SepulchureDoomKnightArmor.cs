@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class SepulchureDoomKnightArmor
 {

@@ -8,6 +8,7 @@
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Story/Nation/Originul.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 

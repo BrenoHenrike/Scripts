@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class DragonslayerGeneral
 {

@@ -4,6 +4,9 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 
 public class AlphaPirate
 {

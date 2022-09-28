@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class EternalInversionist
 {

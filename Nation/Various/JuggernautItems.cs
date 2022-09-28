@@ -4,6 +4,7 @@
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class JuggernautItemsofNulgath
 {

@@ -9,6 +9,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class NecroticSwordOfDoom
 {

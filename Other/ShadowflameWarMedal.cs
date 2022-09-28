@@ -5,6 +5,7 @@
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class ShadowflameWarMedal
 {
