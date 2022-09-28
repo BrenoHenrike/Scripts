@@ -19,7 +19,7 @@ public class BankAllItems
             Bot.Sleep(Core.ActionDelay);
             if (item.Coins)
                 Core.ToBank(item.Name);
-            if (!item.Coins && Bot.Bank.FreeSlots < 1)
+            if (!item.Coins || Bot.Bank.FreeSlots < 1)
                 Core.Logger($"Failed to bank {item.Name}");
             else
                 Core.ToBank(item.Name);
