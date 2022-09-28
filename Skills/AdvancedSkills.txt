@@ -199,7 +199,8 @@ Solo = ShadowWalker of Time = 3 | 2 | 4 | 1 | 2 | 1 | 2 | 1 | 4 | 2 | 3 | 1 | 2 
 Def = ShadowWalker of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
 Solo = ShadowWeaver of Time = 3 | 2 | 4 | 1 | 2 | 1 | 2 | 1 | 4 | 2 | 3 | 1 | 2 | 1 | 2 | Timeout: 250
 Def = ShadowWeaver of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
-Base = Shaman = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | Timeout: 250
+Base = Shaman = 4 | 1 | 2 | 3 | Mode Optimistic
+Base = Shaman = 1 | 2 | Mode Optimistic
 Base = Silver Paladin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyGuard Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
