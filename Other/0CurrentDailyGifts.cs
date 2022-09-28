@@ -87,7 +87,7 @@ public class CurrentDailyGifts
         if ((expiresAt == Permanent ? false : expiresAt.AddDays(1) < DateTime.Now) || Core.CheckInventory(items, toInv: false))
             return;
 
-        Core.AddDrop(items);
+        Bot.Drops.Add(items); 
         Core.Logger($"Daily Gift from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "they're permanent. " :
             $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +

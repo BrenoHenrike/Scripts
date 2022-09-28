@@ -84,6 +84,7 @@
 //cs_include Scripts/Story/DoomVault.cs
 //cs_include Scripts/Story/DoomVaultB.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
+//cs_include Scripts/Story/DragonRoad[Upholader].cs
 //cs_include Scripts/Story/DreadForest.cs
 //cs_include Scripts/Story/DreamPalace.cs
 
@@ -242,6 +243,7 @@ public class AllStories
     public DoomVaultA DoomVaultA = new();
     public DoomVaultB DoomVaultB = new();
     public DragonFableOrigins DragonFableOrigins = new();
+    public DragonRoad DragonRoad = new();
     public DreadForest DreadForest = new();
     public DreamPalace DreamPalace = new();
 
@@ -516,6 +518,12 @@ public class AllStories
 
         DragonFableOrigins.DragonFableOriginsAll();
         Core.Logger($"Saga: Dragon Fable Origins - Complete");
+
+        if (Core.HasAchievement(22, "ip9") || Core.HasAchievement(15, "ip11") || Core.HasAchievement(8, "ip14") || !Core.HasAchievement(10, "ip16") || !Core.HasAchievement(12, "ip17") || !Core.HasAchievement(18, "ip18"))
+        {
+            DragonRoad.StoryLine();
+            Core.Logger($"Story: DragonRoad  - Complete");
+        }
 
         DreadForest.Storyline();
         Core.Logger($"Story: Dread Forest - Complete");
