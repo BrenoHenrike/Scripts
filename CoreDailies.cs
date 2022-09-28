@@ -430,10 +430,9 @@ public class CoreDailies
             return;
         }
         if (!CheckDaily(492, true, "Shadow Skull"))
-
             DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
-        Core.FarmingLogger("Shadow Skull", 30);
 
+        Core.FarmingLogger("Shadow Skull", 30);
         if (Core.CheckInventory("Shadow Skull", 30))
             Core.BuyItem("bonecastle", 1242, "DeathKnight Lord", shopItemID: 4397);
 
