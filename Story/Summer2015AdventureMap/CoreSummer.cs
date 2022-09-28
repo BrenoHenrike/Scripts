@@ -107,7 +107,7 @@ public class CoreSummer
         Story.KillQuest(4283, "dreadspace", new[] { "Vaderix", "Undead Space Marine", "Undead Space Warrior", "Cyber Horg" });
 
         //Restore Life Support (4284)
-        Story.KillQuest(4284, "dreadspace", "Trobble|Cyber Horg");
+        Story.KillQuest(4284, "dreadspace", "Cyber Horg");
 
         //DREAD SPACE BOSS (4285)
         Story.KillQuest(4285, "dreadspace", "Dread Space");

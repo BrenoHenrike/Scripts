@@ -265,12 +265,15 @@ public class CoreBots
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
         Bot.Options.CustomGuild = $"< {(Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name").Replace("&lt; ", "< ").Replace(" &gt;", " >"))} >"; ;
 
+        if (File.Exists($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt"))
+            File.Delete($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt");
+
         if (crashed)
-            Logger("Bot Stopped due to crash");
+            Logger("Bot Stopped due to crash.");
         else if (!Bot.Player.LoggedIn)
-            Logger("Auto Relogin appears to have failed");
+            Logger("Auto Relogin appears to have failed.");
         else
-            Logger("Bot Stopped Successfully");
+            Logger("Bot Stopped Successfully.");
 
         GC.KeepAlive(Instance);
         return scriptFinished;
@@ -1770,8 +1773,11 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower(); map = map.Replace(" ", "");
-        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map && !ignoreCheck)
+        map = map.Replace(" ", "");
+        map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
+        string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
         bool AggroMonsters = false;
@@ -1781,7 +1787,7 @@ public class CoreBots
             Bot.Options.AggroMonsters = false;
         }
 
-        switch (map)
+        switch (strippedMap)
         {
             default:
                 JumpWait();
@@ -1820,27 +1826,63 @@ public class CoreBots
                 break;
         }
 
-        Jump(cell, pad);
-        Bot.Sleep(200);
+        if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
+        {
+            if (Directory.Exists("options/FollowerJoe") &&
+                Directory.GetFiles("options/FollowerJoe").Any(x => x.Contains('-') && x.Split('-').Last() == Bot.Player.Username.ToLower() + ".txt"))
+            {
+                string[] lockedMaps =
+                {
+                    "tercessuinotlim",
+                    "doomvaultb",
+                    "doomvault",
+                    "shadowrealmpast",
+                    "shadowrealm",
+                    "battlegrounda",
+                    "battlegroundb",
+                    "battlegroundc",
+                    "battlegroundd",
+                    "battlegrounde",
+                    "battlegroundf",
+                    "confrontation",
+                    "darkoviaforest",
+                    "doomwood",
+                    "hollowdeep",
+                    "hyperium",
+                    "willowcreek",
+                    "shadowlordpast",
+                    "binky",
+                    "superlowe"
+                };
+                if (lockedMaps.Contains(strippedMap))
+                    File.WriteAllText($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
+            }
+            Jump(cell, pad);
+            Bot.Sleep(200);
+        }
 
         if (AggroMonsters)
             Bot.Options.AggroMonsters = true;
 
         void tryJoin()
         {
+            bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
             for (int i = 0; i < 20; i++)
             {
-                Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-                Bot.Wait.ForMapLoad(map);
+                if (hasMapNumber)
+                    Bot.Map.Join(map, cell, pad, ignoreCheck);
+                else Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                Bot.Wait.ForMapLoad(strippedMap);
 
                 string? currentMap = Bot.Map.Name;
-                if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
+                if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
                     break;
 
                 if (i == 19)
                     Logger($"Failed to join {map}");
             }
         }
+
     }
 
     /// <summary>
