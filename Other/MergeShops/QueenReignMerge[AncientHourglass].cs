@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Prototypes/QueenReign.cs
+//cs_include Scripts/Story/QueenReign.cs
 using Skua.Core.Interfaces;
 
 public class QueenReignMerge
