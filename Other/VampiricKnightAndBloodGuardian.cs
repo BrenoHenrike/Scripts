@@ -34,7 +34,7 @@ public class VampiricKnightAndBloodGuardian
 
         Core.RegisterQuests(6068, 6069, 6070);
         while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
-            //Lycan Medals 6068
+            //Lycan Medals 6068 //Mega Lycan Medals 6069 //Vampire Medals 6070
             Core.KillMonster("BloodWarVamp", "r5", "Left", "*", log: false);
         Core.JumpWait();
         Core.ToBank(AllRewards);
