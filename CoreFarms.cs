@@ -1472,7 +1472,7 @@ public class CoreFarms
 
         if (!Core.isCompletedBefore(5165))
         {
-            Core.Logger("Story not Finished, Please Run the \"Farm/REP/DeathPitBrawlRep.cs\", or \"\"");
+            Core.Logger("Story not Finished, Please Run the \"Farm/REP/DeathPitBrawlRep.cs\"");
             return;
         }
 
