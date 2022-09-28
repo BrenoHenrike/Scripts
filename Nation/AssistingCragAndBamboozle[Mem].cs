@@ -3,7 +3,6 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
-using System.Collections.Generic;
 
 public class AssistingCragAndBamboozle
 {

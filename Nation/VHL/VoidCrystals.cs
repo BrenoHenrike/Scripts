@@ -6,7 +6,6 @@
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
 
 public class VoidCrystals
 {

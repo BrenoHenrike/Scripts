@@ -3,7 +3,6 @@
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
 
 public class ArmyEmblemOfNulgath
 {

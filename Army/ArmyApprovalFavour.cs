@@ -3,7 +3,6 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
 
 public class ArmyApprovalFavour
 {

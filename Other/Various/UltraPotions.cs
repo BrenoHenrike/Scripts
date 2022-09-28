@@ -4,7 +4,6 @@
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using Skua.Core.Models.Shops;
 
 public class PotionBuyer
 {

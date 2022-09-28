@@ -4,7 +4,6 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
 
 public class CoreDarkon
 {
