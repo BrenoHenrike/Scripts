@@ -129,6 +129,7 @@
 //cs_include Scripts/Story/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
 
+//cs_include Scripts/Story/Ubear.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
 
 //cs_include Scripts/Story/VasalkarLairWar.cs
@@ -287,6 +288,7 @@ public class AllStories
     public Trygve Trygve = new();
     public Tutorial Tutorial = new();
 
+    public Ubear Ubear = new();
     public UnderGroundLab UnderGroundLab = new();
 
     public LairWar LairWar = new(); //VasalkarLairWar.cs
@@ -623,6 +625,8 @@ public class AllStories
         Core.Logger($"Story: Trygve - Complete");
 
 
+        Ubear.StoryLine();
+        Core.Logger($"Story: Ubear - Complete?");
 
         UnderGroundLab.partofundergroundlabb();
         Core.Logger($"Story: Underground Lab - Complete?");
