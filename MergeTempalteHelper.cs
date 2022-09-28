@@ -5,7 +5,6 @@ using Skua.Core.Interfaces;
 using Skua.Core.Options;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Items;
-using System.IO;
 using System.Diagnostics;
 
 public class MergeTemplateHelper

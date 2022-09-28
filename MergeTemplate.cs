@@ -4,7 +4,6 @@
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using Skua.Core.Options;
 
 public class MergeTemplate
 {
