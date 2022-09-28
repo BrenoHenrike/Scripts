@@ -5,6 +5,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
+using System.IO;
 
 // Bot by: 🥔 Tato 🥔
 
@@ -39,7 +40,14 @@ public class FollowerJoe
 
     public void FollowJoe(string playerName, bool LockedMaps)
     {
-        this.playerName = playerName;
+        this.playerName = playerName.Trim().ToLower();
+        playerName = playerName.Trim().ToLower();
+
+        if (!Directory.Exists("options/FollowerJoe"))
+            Directory.CreateDirectory("options/FollowerJoe");
+        File.Create($"options/FollowerJoe/{Bot.Player.Username.ToLower()}-{playerName}.txt");
+
+        Bot.Events.ScriptStopping += ScriptStopping;
 
         string RoomNumber = Bot.Config.Get<string>("RoomNumber");
         if (!String.IsNullOrEmpty(RoomNumber) && Int32.TryParse(RoomNumber, out int RoomNR))
@@ -67,6 +75,8 @@ public class FollowerJoe
 
             Bot.Sleep(Core.ActionDelay);
         }
+
+        Bot.Events.MapChanged -= MapNumberParses;
     }
     private string playerName = null;
 
@@ -113,6 +123,14 @@ public class FollowerJoe
     private int allocRoomNr = 0;
     private string prevRoom = null;
 
+    private bool ScriptStopping(Exception e)
+    {
+        Bot.Events.MapChanged -= MapNumberParses;
+        if (File.Exists($"options/FollowerJoe/{Bot.Player.Username.ToLower()}-{playerName}.txt"))
+            File.Delete($"options/FollowerJoe/{Bot.Player.Username.ToLower()}-{playerName}.txt");
+        return true;
+    }
+
     //private void Jumper(string map = null, string cell = null, string pad = null)
     //{
     //    if (!Bot.Map.PlayerExists(playerName))
@@ -137,6 +155,16 @@ public class FollowerJoe
 
     private void LockedMap()
     {
+        if (File.Exists($"options/FollowerJoe/{playerName}.txt"))
+        {
+            string targetMap = File.ReadAllLines($"options/FollowerJoe/{playerName}.txt").FirstOrDefault();
+            if (targetMap != null)
+            {
+                Core.Join(targetMap);
+                return;
+            }
+        }
+
         string[] NonMemMaps =
         {
             "tercessuinotlim",
