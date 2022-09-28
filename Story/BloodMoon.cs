@@ -28,6 +28,9 @@ public class BloodMoon
 
     public void BloodMoonMap()
     {
+        if (Core.isCompletedBefore(6058))
+            return;
+
         Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Farm);
