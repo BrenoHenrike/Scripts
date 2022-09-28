@@ -35,18 +35,18 @@ public class VampiricKnightAndBloodGuardian
 
         Core.EquipClass(ClassType.Farm);
 
-        Core.RegisterQuests(6068);
+        Core.RegisterQuests(6068, 6069, 6070);
         while (!Bot.ShouldExit && !Core.CheckInventory(Quest1Rewards, toInv: false))
             //Lycan Medals 6068
             Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Lycan Medal", 5);
-        Core.CancelRegisteredQuests();
+        Core.JumpWait();
         Core.ToBank(Quest1Rewards);
 
         Core.RegisterQuests(6069);
         while (!Bot.ShouldExit && !Core.CheckInventory(Quest2Rewards, toInv: false))
             //Mega Lycan Medals 6069
             Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Mega Lycan Medal", 3);
-        Core.CancelRegisteredQuests();
+        Core.JumpWait();
         Core.ToBank(Quest2Rewards);
 
         Core.RegisterQuests(6070);
@@ -54,6 +54,7 @@ public class VampiricKnightAndBloodGuardian
             //Blackened Incense 6072
             Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Blackened Incense", 5);
         Core.CancelRegisteredQuests();
+        Core.JumpWait();
         Core.ToBank(Quest3Rewards);
 
 
