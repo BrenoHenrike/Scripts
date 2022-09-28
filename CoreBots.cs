@@ -1816,7 +1816,6 @@ public class CoreBots
 
             case "hyperium":
                 JumpWait();
-                tryJoin();
                 Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%hyperium%");
                 break;
         }

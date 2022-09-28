@@ -53,6 +53,8 @@ public class FollowerJoe
             Core.EquipClass(ClassType.Solo);
         else Core.EquipClass(ClassType.Farm);
 
+        Bot.Events.MapChanged += MapNumberParses;
+
         while (!Bot.ShouldExit)
         {
             if (!tryGoto(playerName) && LockedMaps)
@@ -88,6 +90,29 @@ public class FollowerJoe
         return false;
     }
 
+    private void MapNumberParses(string map)
+    {
+        if (Bot.Map.FullName == null || !Int32.TryParse(Bot.Map.FullName.Split('-').Last(), out int mapNr) || map == prevRoom || !Bot.Map.PlayerExists(playerName))
+            return;
+
+        if (allocRoomNr == mapNr)
+        {
+            if (Core.PrivateRoomNumber != mapNr)
+            {
+                Core.Logger("Static room number detected. PrivateRoomNumber is now " + mapNr);
+                Core.PrivateRoomNumber = mapNr;
+            }
+            Core.PrivateRooms = true;
+            Bot.Events.MapChanged -= MapNumberParses;
+            return;
+        }
+
+        prevRoom = map;
+        allocRoomNr = mapNr;
+    }
+    private int allocRoomNr = 0;
+    private string prevRoom = null;
+
     //private void Jumper(string map = null, string cell = null, string pad = null)
     //{
     //    if (!Bot.Map.PlayerExists(playerName))
@@ -112,7 +137,6 @@ public class FollowerJoe
 
     private void LockedMap()
     {
-
         string[] NonMemMaps =
         {
             "tercessuinotlim",
