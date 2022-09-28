@@ -2,6 +2,8 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -13,6 +15,7 @@ public class ArmyLegionFealty2
     private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
+    public CoreLegion Legion = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -67,6 +70,8 @@ public class ArmyLegionFealty2
         if (Core.CheckInventory("Conquest Wreath", quant))
             return;
 
+        Legion.JoinLegion();
+        
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger($"Conquest Wreath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))

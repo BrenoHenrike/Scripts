@@ -54,7 +54,7 @@ public class ArmyTemplate
         Core.SetOptions(false);
     }
 
-    public void GetItems(string map = null, string[] Monsters = null, int questID = 000, string[] Loot = null)
+    public void GetItems(string map = null, string[] Monsters = null, int questID = 000, string[] Loot = null, bool isTemp = false)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -88,7 +88,7 @@ public class ArmyTemplate
     }
     
     
-    public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, int quant = 0)
+    public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, bool isTemp = false, int quant = 0)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
