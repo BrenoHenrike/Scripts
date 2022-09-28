@@ -509,8 +509,13 @@ public class CoreToD
         Story.KillQuest(5113, "baconcatlair", "Ice Cream Shark");
 
         // We're Gonna Need A Bigger Eraser
-        Story.BuyQuest(5114, "librarium", 651, "Really Big Pencil");
-
+        if (!Story.QuestProgression(5114))
+        {
+            Core.EnsureAccept(5114);
+            Core.BuyItem("librarium", 651, "Really Big Pencil");
+            Core.EnsureComplete(5114);
+        }
+        
         // Second Draft
         Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
         Story.KillQuest(5115, "baconcatlair", "Sketchy Shark");
