@@ -15,31 +15,33 @@ public class TarosManslayer
     {
         Core.SetOptions();
 
-        GuardianTaro();
+        GuardianTaro(!Core.IsMember);
 
         Core.SetOptions(false);
     }
 
     private string[] Rewards = { "Taro's Manslayer", "Taro Blademaster Guardian" };
 
-    public void GuardianTaro(bool ManslayerOnly = false)
+    public void GuardianTaro(bool ManslayerOnly = true)
     {
         if (ManslayerOnly)
         {
             Rewards = new[] { "Taro's Manslayer" };
-            if (Core.CheckInventory(Rewards))
-                return;
+        }
 
-            Core.AddDrop(Rewards);
+        if (Core.CheckInventory(Rewards))
+            return;
 
+        Core.AddDrop(Rewards);
+
+        if (ManslayerOnly)
+        {
+            Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
+        }
+        else
+        {
             Farm.GoodREP();
             PCoD.GetPCoD();
-
-            if (ManslayerOnly & !Core.IsMember)
-            {
-                Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-                return;
-            }
 
             while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
             {
