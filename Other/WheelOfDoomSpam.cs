@@ -69,7 +69,7 @@ public class WheelOfDoomSpam
             }
         }
         else if (goForbroke.Text == "GO FOR BROKE!")
-            amount = currentAC % 200;
+            amount = currentAC / 200;
 
         Core.Join("doom");
         Bot.Shops.Load(707);
