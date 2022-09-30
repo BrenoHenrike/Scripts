@@ -35,44 +35,59 @@ public class ArchFiend
         if (Core.CheckInventory("ArchFiend"))
             return;
 
-        if (!Core.CheckInventory("Abyssal Contract"))
-        {
-            Core.AddDrop(Nation.bagDrops);
-            Core.AddDrop("Abyssal Contract");
-            Farm.Experience(50);
-            Core.EnsureAccept(8476);
-            Nation.FarmUni13(3);
-            if (Bot.Player.Gold >= 2000000)
-            {
-                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 6);
-                Core.BuyItem("tercessuinotlim", 1951, "Pink Star Diamond of Nulgath");
-            }
-            else Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
-            Core.HuntMonster("mercutio", "Mercutio", "Immortal Joe's Black Star", 1, false);
-            if (!Core.CheckInventory("Abyssal Star"))
-            {
-                Nation.FarmDarkCrystalShard(200);
-                Nation.SwindleBulk(300);
-                Nation.FarmGemofNulgath(200);
-                Core.BuyItem("evilwarnul", 456, "Abyssal Star");
-            }
-            Adv.BuyItem("tercessuinotlim", 1951, "Gold Star of Avarice");
-            if (!Core.CheckInventory("Blood Star of the Archfiend"))
-            {
-                Nation.FarmBloodGem(20);
-                Nation.FarmTotemofNulgath(8);
-                if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
-                    NSoD.RetrieveVoidAuras(2);
-                else NSoD.VoidAuras(2);
-                Nation.ApprovalAndFavor(0, 999);
-                Core.BuyItem("shadowblast", 1206, "Blood Star of the Archfiend");
-            }
-            Core.HuntMonster("fiendshard", "Dirtlicker", "Dirtlicker Demoted", 1, false);
-            Core.EnsureComplete(8476);
-            Bot.Wait.ForPickup("Abyssal Contract");
-        }
+
         Core.BuyItem("tercessuinotlim", 695, "ArchFiend");
         if (rankUp)
             Adv.rankUpClass("ArchFiend");
+    }
+
+    public void AbyssalContract()
+    {
+        if (Core.CheckInventory("Abyssal Contract"))
+            return;
+
+        Core.AddDrop(Nation.bagDrops);
+        Core.AddDrop("Abyssal Contract");
+
+        Farm.Experience(50);
+        Core.EnsureAccept(8476);
+
+        Nation.FarmUni13(3);
+
+        if (Bot.Player.Gold >= 2000000)
+        {
+            Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 6);
+            Core.BuyItem("tercessuinotlim", 1951, "Pink Star Diamond of Nulgath");
+        }
+        else Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
+
+        Core.HuntMonster("mercutio", "Mercutio", "Immortal Joe's Black Star", 1, false);
+
+        if (!Core.CheckInventory("Abyssal Star"))
+        {
+            Nation.FarmDarkCrystalShard(200);
+            Nation.SwindleBulk(300);
+            Nation.FarmGemofNulgath(200);
+            Core.BuyItem("evilwarnul", 456, "Abyssal Star");
+        }
+
+        Adv.BuyItem("tercessuinotlim", 1951, "Gold Star of Avarice");
+
+        if (!Core.CheckInventory("Blood Star of the Archfiend"))
+        {
+            Nation.FarmBloodGem(20);
+            Nation.FarmTotemofNulgath(8);
+            if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+                NSoD.RetrieveVoidAuras(2);
+            else NSoD.VoidAuras(2);
+            Nation.ApprovalAndFavor(0, 999);
+            Core.BuyItem("shadowblast", 1206, "Blood Star of the Archfiend");
+        }
+
+        Core.HuntMonster("fiendshard", "Dirtlicker", "Dirtlicker Demoted", 1, false);
+
+        Core.EnsureComplete(8476);
+        Bot.Wait.ForPickup("Abyssal Contract");
+
     }
 }
