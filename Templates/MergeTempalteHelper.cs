@@ -119,7 +119,7 @@ public class MergeTemplateHelper
         }
         MergeTemplate[classIndex] = $"public class {className}Merge";
 
-        int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] {\"\"});");
+        int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] { \"\" });");
         if (blackListIndex < 0)
         {
             Core.Logger("Failed to find blackListIndex");
