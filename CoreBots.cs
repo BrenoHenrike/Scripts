@@ -1596,15 +1596,37 @@ public class CoreBots
         Bot.Sleep(ActionDelay * 2);
     }
 
-    public bool HasAchievement(int ID, string ia = "ia0")
-    {
-        return Bot.Flash.CallGameFunction<bool>("world.getAchievement", ia, ID);
-    }
+    public bool HasAchievement(int ID, string ia = "ia0") => Bot.Flash.CallGameFunction<bool>("world.getAchievement", ia, ID);
 
     public void SetAchievement(int ID, string ia = "ia0")
     {
         if (!HasAchievement(ID, ia))
             Bot.Send.Packet($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
+    }
+
+    public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
+    public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
+
+    // To find the 
+    private async Task<string> GetBadgeJSON()
+    {
+        string toReturn = string.Empty;
+        int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
+        if (ccid <= 0)
+            return toReturn;
+
+        HttpClient client = new HttpClient();
+        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+
+        await Task.Run(async () =>
+        {
+            try
+            {
+                toReturn = await client.GetStringAsync($"https://account.aq.com/CharPage/Badges?ccid={ccid}");
+            }
+            catch { }
+        });
+        return toReturn;
     }
 
     #region Save State

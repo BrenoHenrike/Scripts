@@ -1,18 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class CoreAwe
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     private int QuestID;
 
     public void ScriptMain(IScriptInterface bot)
