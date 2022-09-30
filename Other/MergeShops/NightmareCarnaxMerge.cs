@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/DarkCarnax.cs
 //cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
@@ -10,8 +11,7 @@
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Nation/Various/Archfiend.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Good/BLoD/2UltimateBlindignLightofDestiny.cs
+//cs_include Scripts/Good/BLoD/2UltimateBlindingLightofDestiny.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
