@@ -544,10 +544,15 @@ public class CoreDailies
             Core.Logger($"Next keys are available on {new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).ToLongDateString()}");
         else Core.ChainComplete(1239);
 
+
+        var questData = Core.EnsureLoad(1238);
+        if (Core.CheckInventory(questData.Rewards.Select(x => x.Name).ToArray(), toInv: false))
+            return;
+
         List<string> PreQuestInv = Bot.Inventory.Items.Select(x => x.Name).ToList();
 
         if (Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
-            Bot.Drops.Add(Core.EnsureLoad(1238).Rewards.Select(x => x.Name).ToArray());
+            Bot.Drops.Add(questData.Rewards.Select(x => x.Name).ToArray());
 
         while (!Bot.ShouldExit && Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
         {
