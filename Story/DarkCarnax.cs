@@ -43,7 +43,7 @@ public class DarkCarnaxStory
         }
 
         //8872 The Last Stand
-        if (!Story.QuestProgression(8871))
+        if (!Story.QuestProgression(8872))
         {
             SyntheticViscera(1);
         }
