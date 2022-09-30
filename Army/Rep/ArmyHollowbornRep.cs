@@ -40,7 +40,7 @@ public class ArmyHollowbornRep
 
         Core.SetOptions();
         bot.Options.RestPackets = false;
-        bot.Options.LagKiller = false;
+        //bot.Options.LagKiller = false;
 
         Setup();
 
