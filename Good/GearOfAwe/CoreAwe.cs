@@ -28,7 +28,7 @@ public class CoreAwe
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
             QuestID = LegendQuest;
         }
-        else if (_GuardianCheck())
+        else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
             Farm.BladeofAweREP(5, false);
             Farm.Experience(35);
@@ -62,21 +62,5 @@ public class CoreAwe
         }
 
         Core.BuyItem("museum", 1129, $"{Item} Relic");
-    }
-
-    private bool _GuardianCheck()
-    {
-        if (Core.CheckInventory("Guardian Awe Pass"))
-            return true;
-
-        Core.Logger("Checking AQ Guardian");
-        Core.BuyItem("museum", 53, "Guardian Awe Pass");
-        if (Core.CheckInventory("Guardian Awe Pass"))
-        {
-            Core.Logger("You own the Guardian Awe Pass! You're AQ Guardian!");
-            return true;
-        }
-        Core.Logger("You're not AQ Guardian.");
-        return false;
     }
 }
