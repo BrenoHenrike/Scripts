@@ -27,7 +27,8 @@ public class DragonRoad
         Upholder.Add(10, "ip16"); //11th Upholder
         Upholder.Add(12, "ip17"); //12th Upholder
         Upholder.Add(18, "ip18"); //13th Upholder
-        
+        Upholder.Add(2, "ip20");  //14th Upholder
+
         foreach (KeyValuePair<int, string> Id in Upholder)
         {
             if (!Core.HasAchievement(Id.Key, Id.Value))
