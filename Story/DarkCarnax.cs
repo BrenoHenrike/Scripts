@@ -45,8 +45,11 @@ public class DarkCarnaxStory
         //8872 The Last Stand
         if (!Story.QuestProgression(8872))
         {
+            Core.Logger($"Doing Quest: [8872] - \"The Last Stand\"");
             SyntheticViscera(1);
+            Core.Logger($"Completed Quest: [8872] - \"The Last Stand\"");
         }
+        else Core.Logger($"Already Completed: [8872] - \"The Last Stand\"");
     }
 
     public void SyntheticViscera(int quant = 1000)
