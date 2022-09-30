@@ -77,8 +77,7 @@ public class ArmyTemplate
 
         else Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-        if (Core.IsMember)
-            Core.RegisterQuests(questID);
+        Core.RegisterQuests(questID);
 
         Army.SmartAggroMonStart(map, Monsters);
 
