@@ -74,7 +74,7 @@ public class DarkCarnaxStory
         Adv.GearStore();
         Adv.EnhanceEquipped(EnhancementType.Healer, wSpecial: WeaponSpecial.Health_Vamp);
 
-        Core.Join("darkcarnax", "Boss", "Bottom", publicRoom: true);
+        Core.Join("darkcarnax", "Boss", "Right", publicRoom: true);
 
         Core.RegisterQuests(8872);
         while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera"))
