@@ -78,6 +78,7 @@
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/CruxShip.cs
 
+//cs_include Scripts/Story/DarkCarnax.cs
 //cs_include Scripts/Story/DeadFly[Member].cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
@@ -237,6 +238,7 @@ public class AllStories
     public CastleTunnels CastleTunnels = new();
     public CruxShip CruxShip = new();
 
+    public DarkCarnaxStory DarkCarnax = new();
     public DeadFly DeadFly = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
@@ -498,6 +500,9 @@ public class AllStories
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
 
+
+        DarkCarnax.Storyline();
+        Core.Logger($"Story: Nightmare Carnax - Complete");
 
         if (Core.IsMember)
         {
