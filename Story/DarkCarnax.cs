@@ -66,6 +66,7 @@ public class DarkCarnaxStory
             Bot.Skills.StartAdvanced("Healer (Rare)", true, ClassUseMode.Base);
         else if (Core.CheckInventory("Healer"))
             Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
+        else Core.EquipClass(ClassType.Solo);
 
         Adv.GearStore();
         Adv.EnhanceEquipped(EnhancementType.Healer, wSpecial: WeaponSpecial.Health_Vamp);
