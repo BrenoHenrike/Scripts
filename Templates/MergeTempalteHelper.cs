@@ -103,7 +103,7 @@ public class MergeTemplateHelper
 
 
         string AppPath = Core.AppPath ?? "";
-        string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\MergeTemplate.cs");
+        string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\Templates\MergeTemplate.cs");
 
         int itemsIndex = Array.IndexOf(MergeTemplate, "                // Add how to get items here") - 1;
         if (itemsIndex < 0)
