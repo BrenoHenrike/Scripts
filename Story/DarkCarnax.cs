@@ -64,7 +64,10 @@ public class DarkCarnaxStory
         Bot.Events.RunToArea += DarkCarnaxMove;
 
         if (Core.CheckInventory("Dragon of Time"))
-            Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
+        {
+            Core.Equip("Dragon of Time");
+            Bot.Skills.StartAdvanced("3|2|4|2|1|2", 250, SkillUseMode.WaitForCooldown);
+        }
         else if (Core.CheckInventory("Healer (Rare)"))
             Bot.Skills.StartAdvanced("Healer (Rare)", true, ClassUseMode.Base);
         else if (Core.CheckInventory("Healer"))
@@ -72,9 +75,10 @@ public class DarkCarnaxStory
         else Core.EquipClass(ClassType.Solo);
 
         Adv.GearStore();
-        Adv.EnhanceEquipped(EnhancementType.Healer, wSpecial: WeaponSpecial.Health_Vamp);
+        Adv.EnhanceEquipped(EnhancementType.Healer, wSpecial: WeaponSpecial.Elysium);
 
         Core.Join("darkcarnax", "Boss", "Right", publicRoom: true);
+        Core.Jump("Boss", "Right");
 
         Core.RegisterQuests(8872);
         while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera"))
