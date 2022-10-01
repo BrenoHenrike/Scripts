@@ -73,6 +73,7 @@
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/BloodMoon.cs
+//cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/Borgars.cs
 
 //cs_include Scripts/Story/CastleTunnels.cs
@@ -233,6 +234,7 @@ public class AllStories
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
     public BloodMoon BloodMoon = new();
+    public Bludrut Bludrut = new();
     public Borgars Borgars = new();
 
     public CastleTunnels CastleTunnels = new();
@@ -487,6 +489,9 @@ public class AllStories
         BloodMoon.BloodMoonSaga();
         Core.Logger($"Story: Blood Moon - Complete");
 
+        Bludrut.StoryLine();
+        Core.Logger($"Story: Bludrut - Complete");
+        
         Borgars.BorgarQuests();
         Core.Logger($"Story: Borgars - Complete");
 
