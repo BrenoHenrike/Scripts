@@ -89,12 +89,12 @@ public class DarkCarnaxStory
             switch (zone.ToLower())
             {
                 case "a":
-                    //Move to the left
-                    Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
-                    break;
-                case "b":
                     //Move to the right
                     Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
+                    break;
+                case "b":
+                    //Move to the left
+                    Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
                     break;
                 default:
                     //Move to the center
