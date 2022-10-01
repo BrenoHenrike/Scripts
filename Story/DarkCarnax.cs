@@ -81,7 +81,7 @@ public class DarkCarnaxStory
         Core.Jump("Boss", "Right");
 
         Core.RegisterQuests(8872);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera"))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera", quant))
             Bot.Combat.Attack("*");
 
         Core.CancelRegisteredQuests();
@@ -93,12 +93,12 @@ public class DarkCarnaxStory
             switch (zone.ToLower())
             {
                 case "a":
-                    //Move to the left
-                    Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
-                    break;
-                case "b":
                     //Move to the right
                     Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
+                    break;
+                case "b":
+                    //Move to the left
+                    Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
                     break;
                 default:
                     //Move to the center

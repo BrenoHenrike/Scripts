@@ -1632,6 +1632,7 @@ public class CoreBots
     #region Save State
     public void SavedState(bool on = true)
     {
+        return;
         string[] Files = Directory.GetFiles(@"Scripts\SavedState");
         string file = Files[Bot.Random.Next(0, Files.Count() - 1)];
         string[] SavedStateRNG = File.ReadAllLines(file);
