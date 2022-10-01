@@ -64,7 +64,7 @@ public class DarkCarnaxStory
         Bot.Events.RunToArea += DarkCarnaxMove;
 
         if (Core.CheckInventory("Dragon of Time"))
-            Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
+            Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
         else if (Core.CheckInventory("Healer (Rare)"))
             Bot.Skills.StartAdvanced("Healer (Rare)", true, ClassUseMode.Base);
         else if (Core.CheckInventory("Healer"))
