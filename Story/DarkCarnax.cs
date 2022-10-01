@@ -77,7 +77,7 @@ public class DarkCarnaxStory
         Core.Join("darkcarnax", "Boss", "Right", publicRoom: true);
 
         Core.RegisterQuests(8872);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera"))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera", quant))
             Bot.Combat.Attack("*");
 
         Core.CancelRegisteredQuests();
