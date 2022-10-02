@@ -126,12 +126,16 @@ public class CoreSDKA
             {
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
                 Farm.EvilREP(5);
+                
+                Core.Logger("Ranking up Healer.");
                 Core.BuyItem("trainers", 176, "Healer");
-                Core.BuyItem("trainers", 170, "Warrior");
-                Bot.Inventory.EquipItem("Warrior");
-                Farm.IcestormArena(rankUpClass: true);
                 Core.JumpWait();
                 Bot.Inventory.EquipItem("Healer");
+                Farm.IcestormArena(rankUpClass: true);
+                
+                Core.Logger("Ranking up Warrior.");
+                Core.BuyItem("trainers", 170, "Warrior");
+                Bot.Inventory.EquipItem("Warrior");
                 Farm.IcestormArena(rankUpClass: true);
                 Core.BuyItem("shadowfall", 100, "Doomknight", shopItemID: 6309);
                 Bot.Inventory.EquipItem(2083);

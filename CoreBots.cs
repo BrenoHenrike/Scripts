@@ -1267,23 +1267,9 @@ public class CoreBots
 
         Join("stalagbite", "r2", "Left");
 
-        if (item == null)
-        {
-            if (log)
-                Logger("Killing Vath");
-            while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-            {
-                if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-                    Bot.Hunt.Monster("Vath");
-                Bot.Combat.Attack("Stalagbite");
-                Bot.Sleep(1000);
-            }
-            return;
-        }
-
         if (log)
             Logger($"Killing Vath for {item} ({quant}) [Temp = {isTemp}]");
-        while (!Bot.ShouldExit && !CheckInventory(item, quant))
+        while (!Bot.ShouldExit && item != null && !CheckInventory(item, quant))
         {
             if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Stalagbite")?.Alive ?? false)
                 Bot.Kill.Monster("Stalagbite");
