@@ -25,23 +25,23 @@ public class PotionBuyer
     //potionQuant is set to 30, due to reagents max quant being 30
     public void INeedYourStrongestPotions(int potionQuant = 30, List<string> potions = null, string reagent1 = null, string reagent2 = null)
     {
-        #region Potion Seller
-        Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I'm going into battle and I want your strongest potions.");
-        Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
-        Core.Logger($"Potion Seller: My potions are too strong for you, traveller.");
-        Bot.Sleep(2500);
-        Core.Logger($"{Bot.Player.Username}: Potion Seller! I tell you, I'm going into battle and I want only your strongest potions.");
-        Bot.Sleep(2500);
-        Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
-        Bot.Sleep(2500);
-        Core.Logger($"{Bot.Player.Username}: Potion Seller, listen to me, I want only your strongest potions.");
-        Bot.Sleep(2500);
-        Core.Logger($"Potion Seller: My potions would kill you traveller, you cannot handle my potions.");
-        Bot.Sleep(2500);
-        Core.Logger($"{Bot.Player.Username}: POTION SELLER! I require your strongest potions!");
-        Bot.Sleep(2500);
-        Core.Logger($"Potion Seller: My strongest potions would kill you traveller, you can't handle my strongest potions. You better go to a seller that sells weaker potions.");
-        #endregion
+        // #region Potion Seller
+        // Core.Logger($"{Bot.Player.Username}: Hello Potion Seller, I'm going into battle and I want your strongest potions.");
+        // Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
+        // Core.Logger($"Potion Seller: My potions are too strong for you, traveller.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"{Bot.Player.Username}: Potion Seller! I tell you, I'm going into battle and I want only your strongest potions.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"Potion Seller: You can't handle my potions, they are too strong for you!");
+        // Bot.Sleep(2500);
+        // Core.Logger($"{Bot.Player.Username}: Potion Seller, listen to me, I want only your strongest potions.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"Potion Seller: My potions would kill you traveller, you cannot handle my potions.");
+        // Bot.Sleep(2500);
+        // Core.Logger($"{Bot.Player.Username}: POTION SELLER! I require your strongest potions!");
+        // Bot.Sleep(2500);
+        // Core.Logger($"Potion Seller: My strongest potions would kill you traveller, you can't handle my strongest potions. You better go to a seller that sells weaker potions.");
+        // #endregion
 
         #region Starting Requirements
         Farm.AlchemyREP();
