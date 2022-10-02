@@ -77,13 +77,9 @@ public class DarkCarnaxStory
         Adv.GearStore();
         Adv.EnhanceEquipped(EnhancementType.Healer, wSpecial: WeaponSpecial.Elysium);
 
-        Core.Join("darkcarnax", "Boss", "Right", publicRoom: true);
-        Core.Jump("Boss", "Right");
-
         Core.RegisterQuests(8872);
         while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera", quant))
-            Bot.Combat.Attack("*");
-
+            Adv.KillUltra("DarkCarnax", "Boss", "Up", "Nightmare Carnax");
         Core.CancelRegisteredQuests();
         Bot.Options.AttackWithoutTarget = false;
         Adv.GearStore(true);
