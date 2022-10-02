@@ -1633,39 +1633,39 @@ public class CoreBots
     public void SavedState(bool on = true)
     {
         return;
-        string[] Files = Directory.GetFiles(@"Scripts\SavedState");
-        string file = Files[Bot.Random.Next(0, Files.Count() - 1)];
-        string[] SavedStateRNG = File.ReadAllLines(file);
+        //string[] Files = Directory.GetFiles(@"Scripts\SavedState");
+        //string file = Files[Bot.Random.Next(0, Files.Count() - 1)];
+        //string[] SavedStateRNG = File.ReadAllLines(file);
 
-        if (on)
-        {
-            int MinumumDelay = 180;
-            int MaximumDelay = 300;
-            int timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay + 1);
-            int SSH = 0;
-            Logger("Saved State Handler enabled");
-            Bot.Send.ClientModerator("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages");
-            Bot.Handlers.RegisterHandler(5000, s =>
-            {
-                SSH++;
-                if (SSH >= (timerInterval / 5))
-                {
-                    int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-                    Bot.Send.ClientModerator($"Ignore the whisper below, this is to save your player data ({file.Split('\\').Last().Split('/').Last()})", "Saved-State");
-                    Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
-                    timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay);
-                    SSH = 0;
-                }
-            }, "Saved-State Handler");
-        }
-        else if (Bot.Handlers.CurrentHandlers.Any(handler => handler.Name == "Saved-State Handler"))
-        {
-            Bot.Handlers.Remove("Saved-State Handler");
-            int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-            Bot.Send.ClientModerator("Final Saved-State before the Saved State Handler is turned off", "Saved-State");
-            Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
-            Logger("Saved State Handler disabled");
-        }
+        //if (on)
+        //{
+        //    int MinumumDelay = 180;
+        //    int MaximumDelay = 300;
+        //    int timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay + 1);
+        //    int SSH = 0;
+        //    Logger("Saved State Handler enabled");
+        //    Bot.Send.ClientModerator("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages");
+        //    Bot.Handlers.RegisterHandler(5000, s =>
+        //    {
+        //        SSH++;
+        //        if (SSH >= (timerInterval / 5))
+        //        {
+        //            int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
+        //            Bot.Send.ClientModerator($"Ignore the whisper below, this is to save your player data ({file.Split('\\').Last().Split('/').Last()})", "Saved-State");
+        //            Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
+        //            timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay);
+        //            SSH = 0;
+        //        }
+        //    }, "Saved-State Handler");
+        //}
+        //else if (Bot.Handlers.CurrentHandlers.Any(handler => handler.Name == "Saved-State Handler"))
+        //{
+        //    Bot.Handlers.Remove("Saved-State Handler");
+        //    int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
+        //    Bot.Send.ClientModerator("Final Saved-State before the Saved State Handler is turned off", "Saved-State");
+        //    Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
+        //    Logger("Saved State Handler disabled");
+        //}
     }
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false);
