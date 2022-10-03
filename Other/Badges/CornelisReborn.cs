@@ -17,7 +17,7 @@ public class CornelisRebornbadge
 
     public void Badge()
     {
-        if (Core.HasAchievement(13))
+        if (!Core.HasAchievement(13))
             return;
 
         Core.EnsureAccept(1632);
