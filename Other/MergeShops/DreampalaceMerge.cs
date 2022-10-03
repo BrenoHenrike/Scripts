@@ -78,7 +78,7 @@ public class DreampalaceMerge
                 case "Zahad's Ancient Gem":
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("DreamPalace", "Zahad", req.Name, isTemp: false);
+                        Core.HuntMonster("DreamPalace", "Zahad", req.Name, quant, isTemp: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
@@ -97,7 +97,7 @@ public class DreampalaceMerge
                         Core.HuntMonster("DreamPalace", "Zelkur", req.Name, isTemp: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
-                    
+
                 case "Feathers of Zal":
                 case "Scimitar of Zal":
                     Core.EquipClass(ClassType.Solo);
