@@ -33,6 +33,7 @@ public class NecroDungeon
         if (!Story.QuestProgression(2044))
         {
             Core.EnsureAccept(2044);
+            Core.HuntMonsterMapID("necrodungeon", 10 | 11, "F1 Floor Descended", 10);
             Core.KillMonster("necrodungeon", "r6", "Down", "Bellhop", "1 Floor Descended", 10);
             Core.EnsureComplete(2044);
         }
@@ -57,7 +58,7 @@ public class NecroDungeon
         if (!Story.QuestProgression(2049))
         {
             Core.EnsureAccept(2049);
-            Core.KillMonster("necrodungeon", "r11", "Down", "Bellhop", "F1 Floor Descended", 10);
+            Core.HuntMonsterMapID("necrodungeon", 24 | 25, "F1 Floor Descended", 10);
             Core.EnsureComplete(2049);
         }
 
@@ -91,7 +92,7 @@ public class NecroDungeon
         if (!Story.QuestProgression(2056))
         {
             Core.EnsureAccept(2056);
-            Core.KillMonster("necrodungeon", "r18", "Down", "Bellhop", "1 Floor Descended", 10);
+            Core.HuntMonsterMapID("necrodungeon", 36 | 37, "F1 Floor Descended", 10);
             Core.EnsureComplete(2056);
         }
 

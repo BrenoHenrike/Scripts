@@ -38,8 +38,8 @@ public class QueenReign
         Story.KillQuest(8303, "queenreign", "Shadow Samurai");
 
         //Constructing the Portal
-        Story.KillQuest(8304, "queenreign", new[] { "Samurai Nopperabo", "Shadow Samurai" });
         Story.MapItemQuest(8304, "queenreign", 9120);
+        Story.KillQuest(8304, "queenreign", new[] { "Samurai Nopperabo", "Shadow Samurai" });
 
         //Into the Yokai Realm
         Story.KillQuest(8305, "queenreign", "Tsukumo-Gami");
@@ -109,7 +109,6 @@ public class QueenReign
         if (Core.isCompletedBefore(8325))
             return;
 
-        //8320 - 8324
         //Goblin Down Water
         Story.KillQuest(8320, "queenreign", "Water Goblin");
 

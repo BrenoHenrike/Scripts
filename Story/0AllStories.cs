@@ -73,17 +73,20 @@
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/BloodMoon.cs
+//cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/Borgars.cs
 
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/CruxShip.cs
 
+//cs_include Scripts/Story/DarkCarnax.cs
 //cs_include Scripts/Story/DeadFly[Member].cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
 //cs_include Scripts/Story/DoomVaultB.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
+//cs_include Scripts/Story/DragonRoad[Upholader].cs
 //cs_include Scripts/Story/DreadForest.cs
 //cs_include Scripts/Story/DreamPalace.cs
 
@@ -129,6 +132,7 @@
 //cs_include Scripts/Story/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
 
+//cs_include Scripts/Story/Ubear.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
 
 //cs_include Scripts/Story/VasalkarLairWar.cs
@@ -230,17 +234,20 @@ public class AllStories
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
     public BloodMoon BloodMoon = new();
+    public Bludrut Bludrut = new();
     public Borgars Borgars = new();
 
     public CastleTunnels CastleTunnels = new();
     public CruxShip CruxShip = new();
 
+    public DarkCarnaxStory DarkCarnax = new();
     public DeadFly DeadFly = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
     public DoomVaultB DoomVaultB = new();
     public DragonFableOrigins DragonFableOrigins = new();
+    public DragonRoad DragonRoad = new();
     public DreadForest DreadForest = new();
     public DreamPalace DreamPalace = new();
 
@@ -287,6 +294,7 @@ public class AllStories
     public Trygve Trygve = new();
     public Tutorial Tutorial = new();
 
+    public Ubear Ubear = new();
     public UnderGroundLab UnderGroundLab = new();
 
     public LairWar LairWar = new(); //VasalkarLairWar.cs
@@ -481,6 +489,9 @@ public class AllStories
         BloodMoon.BloodMoonSaga();
         Core.Logger($"Story: Blood Moon - Complete");
 
+        Bludrut.StoryLine();
+        Core.Logger($"Story: Bludrut - Complete");
+        
         Borgars.BorgarQuests();
         Core.Logger($"Story: Borgars - Complete");
 
@@ -494,6 +505,9 @@ public class AllStories
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
 
+
+        DarkCarnax.Storyline();
+        Core.Logger($"Story: Nightmare Carnax - Complete");
 
         if (Core.IsMember)
         {
@@ -514,6 +528,12 @@ public class AllStories
 
         DragonFableOrigins.DragonFableOriginsAll();
         Core.Logger($"Saga: Dragon Fable Origins - Complete");
+
+        if (Core.HasAchievement(22, "ip9") || Core.HasAchievement(15, "ip11") || Core.HasAchievement(8, "ip14") || !Core.HasAchievement(10, "ip16") || !Core.HasAchievement(12, "ip17") || !Core.HasAchievement(18, "ip18") || !Core.HasAchievement(2, "ip20"))
+        {
+            DragonRoad.StoryLine();
+            Core.Logger($"Story: DragonRoad  - Complete");
+        }
 
         DreadForest.Storyline();
         Core.Logger($"Story: Dread Forest - Complete");
@@ -623,6 +643,8 @@ public class AllStories
         Core.Logger($"Story: Trygve - Complete");
 
 
+        Ubear.StoryLine();
+        Core.Logger($"Story: Ubear - Complete?");
 
         UnderGroundLab.partofundergroundlabb();
         Core.Logger($"Story: Underground Lab - Complete?");

@@ -54,7 +54,7 @@ public class CurrentDailyGifts
         GetGift(AvailableUntil(14, 10), "battleontown", "Zard", new[] { "Chibi Plushie Teka", "Chibi Teka Pet", "GIANT Haunted Teka Plushie", "Haunted Teka Plushie", "Teka's Birthday Hat" });
         GetGift(AvailableUntil(14, 10), "lowtide", "Spectral Jellyfish", new[] { "Lance of the Depths", "Spear of the Depths", "Staff of the Depths", "Trident of the Depths" });
         GetGift(Permanent, "garden", "Creature 83", new[] { "Chibi Darkon's Shag", "Chibi Darkon's Twintails", "Chibi Drago's Shag", "Chibi Drago's Twintails", "Chibi Fa's Shag", "Chibi Fa's Twintails", "Chibi La's Shag", "Chibi La's Twintails", "Chibi Mi's Shag", "Chibi Mi's Twintails", "Chibi Re's Shag", "Chibi Re's Twintails", "Chibi So's Shag", "Chibi So's Twintails", "Chibi Suki's Shag", "Chibi Suki's Twintails", "Chibi Ti's Shag", "Chibi Ti's Twintails" });
-        // GetGift(Permanent, "garden", "Creature 72", new[] { "item are to be announced" });
+        GetGift(Permanent, "garden", "Creature 72", new[] { "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow","Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow" });
         // GetGift(AvailableUntil(14, 10), "mystcroftforest", "Barghest", new[] { "item are to be announced" });
 
         #endregion
@@ -87,7 +87,7 @@ public class CurrentDailyGifts
         if ((expiresAt == Permanent ? false : expiresAt.AddDays(1) < DateTime.Now) || Core.CheckInventory(items, toInv: false))
             return;
 
-        Core.AddDrop(items);
+        Bot.Drops.Add(items);
         Core.Logger($"Daily Gift from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "they're permanent. " :
             $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +
@@ -98,7 +98,7 @@ public class CurrentDailyGifts
             Core.ToBank(item);
         }
     }
-    
+
 
     private DateTime AvailableUntil(int Day, int Month, int Year = 2022) => new(Year, Month, Day, 07, 00, 00, DateTimeKind.Utc);
     private DateTime AvailableUntil(int Day, Month Month, int Year = 2022) => new(Year, (int)Month, Day, 07, 00, 00, DateTimeKind.Utc);

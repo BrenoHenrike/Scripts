@@ -103,7 +103,7 @@ public class MergeTemplateHelper
 
 
         string AppPath = Core.AppPath ?? "";
-        string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\MergeTemplate.cs");
+        string[] MergeTemplate = File.ReadAllLines(AppPath + @"\Scripts\Templates\MergeTemplate.cs");
 
         int itemsIndex = Array.IndexOf(MergeTemplate, "                // Add how to get items here") - 1;
         if (itemsIndex < 0)
@@ -119,7 +119,7 @@ public class MergeTemplateHelper
         }
         MergeTemplate[classIndex] = $"public class {className}Merge";
 
-        int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] {\"\"});");
+        int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] { \"\" });");
         if (blackListIndex < 0)
         {
             Core.Logger("Failed to find blackListIndex");

@@ -423,17 +423,21 @@ public class CoreDailies
     {
         if (!Core.IsMember)
             return;
+
         Core.Logger("Daily: Death KnightLord Class");
+
         if (Core.CheckInventory("DeathKnight Lord", toInv: false))
         {
             Core.Logger("You already own DeathKnight Lord Class, Skipped");
             return;
         }
+
         if (!CheckDaily(492, true, "Shadow Skull"))
+            return;
 
-            DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
+        DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
+
         Core.FarmingLogger("Shadow Skull", 30);
-
         if (Core.CheckInventory("Shadow Skull", 30))
             Core.BuyItem("bonecastle", 1242, "DeathKnight Lord", shopItemID: 4397);
 
@@ -540,10 +544,15 @@ public class CoreDailies
             Core.Logger($"Next keys are available on {new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).ToLongDateString()}");
         else Core.ChainComplete(1239);
 
+
+        var questData = Core.EnsureLoad(1238);
+        if (Core.CheckInventory(questData.Rewards.Select(x => x.Name).ToArray(), toInv: false))
+            return;
+
         List<string> PreQuestInv = Bot.Inventory.Items.Select(x => x.Name).ToList();
 
         if (Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
-            Bot.Drops.Add(Core.EnsureLoad(1238).Rewards.Select(x => x.Name).ToArray());
+            Bot.Drops.Add(questData.Rewards.Select(x => x.Name).ToArray());
 
         while (!Bot.ShouldExit && Core.CheckInventory("Magic Treasure Chest Key") && Core.CheckInventory("Treasure Chest", 1))
         {

@@ -20,7 +20,6 @@ public class CoreNSOD
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreDailies Daily = new();
-    public CoreStory Story = new();
 
     public CoreBLOD BLOD = new();
     public CoreSDKA SDKA = new();

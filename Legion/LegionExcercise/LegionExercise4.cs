@@ -49,7 +49,6 @@ public class LegionExercise4
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frostbit Skull", 15);
             Core.HuntMonster("Marsh2", "Lesser Shadow Serpent", "Potent Viper's Blood");
-            Bot.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Marsh2", "Soulseeker", "Soul Scythe", isTemp: false);
             Core.EnsureComplete(824);

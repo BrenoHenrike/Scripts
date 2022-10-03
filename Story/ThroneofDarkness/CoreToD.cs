@@ -509,7 +509,12 @@ public class CoreToD
         Story.KillQuest(5113, "baconcatlair", "Ice Cream Shark");
 
         // We're Gonna Need A Bigger Eraser
-        Story.BuyQuest(5114, "librarium", 651, "Really Big Pencil");
+        if (!Story.QuestProgression(5114))
+        {
+            Core.EnsureAccept(5114);
+            Core.BuyItem("librarium", 651, "Really Big Pencil");
+            Core.EnsureComplete(5114);
+        }
 
         // Second Draft
         Story.MapItemQuest(5115, "baconcatlair", 4475, 4);
@@ -639,14 +644,14 @@ public class CoreToD
         if (!Story.QuestProgression(5155))
         {
             Core.EnsureAccept(5155);
-            DeathPitToken("Death Pit Token", 1);
+            DeathPitToken();
             Core.EnsureComplete(5155);
         }
         // Flex For Hun'Gar
         if (!Story.QuestProgression(5156))
         {
             Core.EnsureAccept(5156);
-            DeathPitToken("Death Pit Token", 15);
+            DeathPitToken(quant: 15);
             Core.EnsureComplete(5156);
         }
         // Pummel For Hun'Gar
@@ -666,44 +671,62 @@ public class CoreToD
         }
     }
 
-    void DeathPitToken(string item = "Death Pit Token", int quant = 30, bool temp = false)
+    void DeathPitToken(string item = "Death Pit Token", int quant = 1, bool temp = false)
     {
         if (Core.CheckInventory(item, quant))
             return;
 
         Core.EquipClass(ClassType.Solo);
+        Core.AddDrop(item);
         Core.Logger($"Farming {quant} {item}");
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.AddDrop(item);
             Core.Join("DeathPitbrawl", "Enter0", "Spawn");
+            GetPitToken();
+            Core.Join("whitemap");
+        }
 
+        void GetPitToken()
+        {
+            int Move = 1;
             Core.PvPMove(5, "Morale0C", 228, 291);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(4, "Morale0B", 936, 397);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(7, "Morale0A", 946, 394);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(9, "Crosslower", 948, 400);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(14, "Crossupper", 903, 324);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(18, "Resource1A", 482, 295);
+            Core.Logger($"Move: {Move++}, Restorers");
             Bot.Kill.Monster("Velm's Restorer");
             Bot.Kill.Monster("Velm's Restorer");
             Core.PvPMove(20, "Resource1B", 938, 400);
+            Core.Logger($"Move: {Move++}, Restorers");
             Bot.Kill.Monster("Velm's Restorer");
             Bot.Kill.Monster("Velm's Restorer");
             Core.PvPMove(21, "Resource1A", 9, 435);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(19, "Crossupper", 461, 315);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(17, "Crosslower", 54, 339);
+            Core.Logger($"Move: {Move++}");
             Core.PvPMove(15, "Morale1A", 522, 286);
+            Core.Logger($"Move: {Move++}, Velm's Brawler");
             Bot.Kill.Monster("Velm's Brawler");
             Core.PvPMove(23, "Morale1B", 948, 403);
-            Bot.Kill.Monster("Velm's Brawler");
+            Core.Logger($"Move: {Move++}, Velm's Brawler");
             Core.PvPMove(25, "Morale1C", 945, 397);
+            Core.Logger($"Move: {Move++}, Velm's Brawler");
             Bot.Kill.Monster("Velm's Brawler");
             Core.PvPMove(28, "Captain1", 943, 404);
+            Core.Logger($"Move: {Move++}, General Velm (B)");
             Bot.Kill.Monster("General Velm (B)");
-            Bot.Wait.ForDrop(item);
-            Bot.Sleep(Core.ActionDelay);
-            Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+            Bot.Wait.ForPickup(item);
+            Bot.Sleep(2500);
         }
     }
 

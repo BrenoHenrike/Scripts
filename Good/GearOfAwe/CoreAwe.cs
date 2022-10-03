@@ -1,18 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class CoreAwe
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreDailies Daily = new();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     private int QuestID;
 
     public void ScriptMain(IScriptInterface bot)
@@ -32,7 +28,7 @@ public class CoreAwe
             Core.BuyItem("museum", 1130, "Legendary Awe Pass");
             QuestID = LegendQuest;
         }
-        else if (_GuardianCheck())
+        else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
             Farm.BladeofAweREP(5, false);
             Farm.Experience(35);
@@ -66,21 +62,5 @@ public class CoreAwe
         }
 
         Core.BuyItem("museum", 1129, $"{Item} Relic");
-    }
-
-    private bool _GuardianCheck()
-    {
-        if (Core.CheckInventory("Guardian Awe Pass"))
-            return true;
-
-        Core.Logger("Checking AQ Guardian");
-        Core.BuyItem("museum", 53, "Guardian Awe Pass");
-        if (Core.CheckInventory("Guardian Awe Pass"))
-        {
-            Core.Logger("You own the Guardian Awe Pass! You're AQ Guardian!");
-            return true;
-        }
-        Core.Logger("You're not AQ Guardian.");
-        return false;
     }
 }

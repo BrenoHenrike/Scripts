@@ -22,10 +22,7 @@ public class VampiricKnightAndBloodGuardian
 
     public void GetAll()
     {
-        string[] AllRewards = { "Vampiric Knight's Cane", "Vampiric Knight's Sword", "Vampiric Knight", "Vampiric Knight Cape", "Ceremonial Assistant Pet", "Blood Guardian Armor", "Blood Guardian Shag", "Blood Guardian's Sword", "Rubies" };
-        string[] Quest1Rewards = { "Vampiric Knight's Cane", "Vampiric Knight's Sword" };
-        string[] Quest2Rewards = { "Vampiric Knight", "Vampiric Knight Cape" };
-        string[] Quest3Rewards = { "Ceremonial Assistant Pet", "Blood Guardian Armor", "Blood Guardian Shag", "Blood Guardian's Sword" };
+        string[] AllRewards = (Core.EnsureLoad(6068).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(6069).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(6070).Rewards.Select(i => i.Name)).ToArray();
 
         if (Core.CheckInventory(AllRewards, toInv: false))
             return;
@@ -36,27 +33,26 @@ public class VampiricKnightAndBloodGuardian
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(6068, 6069, 6070);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Quest1Rewards, toInv: false))
-            //Lycan Medals 6068
-            Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Lycan Medal", 5);
+        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
+            //Lycan Medals 6068 //Mega Lycan Medals 6069 //Vampire Medals 6070
+            Core.KillMonster("BloodWarVamp", "r5", "Left", "*", log: false);
         Core.JumpWait();
-        Core.ToBank(Quest1Rewards);
-
-        Core.RegisterQuests(6069);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Quest2Rewards, toInv: false))
-            //Mega Lycan Medals 6069
-            Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Mega Lycan Medal", 3);
-        Core.JumpWait();
-        Core.ToBank(Quest2Rewards);
-
-        Core.RegisterQuests(6070);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Quest3Rewards, toInv: false))
-            //Blackened Incense 6072
-            Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Blackened Incense", 5);
-        Core.CancelRegisteredQuests();
-        Core.JumpWait();
-        Core.ToBank(Quest3Rewards);
-
-
+        Core.ToBank(AllRewards);
     }
+
+    // while (!Bot.ShouldExit && !Core.CheckInventory(Quest2Rewards, toInv: false))
+    //     //Mega Lycan Medals 6069
+    //     Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Mega Lycan Medal", 3);
+    // Core.JumpWait();
+    // Core.ToBank(Quest2Rewards);
+
+    // while (!Bot.ShouldExit && !Core.CheckInventory(Quest3Rewards, toInv: false))
+    //     //Blackened Incense 6072
+    //     Core.HuntMonster("BloodWarVamp", "Lunar Blazebinder", "Blackened Incense", 5);
+    // Core.CancelRegisteredQuests();
+    // Core.JumpWait();
+    // Core.ToBank(Quest3Rewards);
+
+
+    // }
 }

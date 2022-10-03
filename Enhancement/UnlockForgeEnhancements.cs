@@ -397,13 +397,14 @@ public class UnlockForgeEnhancements
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
         ED.getSet();
-
         if (!Core.CheckInventory(23689))
         {
+            Core.AddDrop("Eternity Blade");
             Core.EnsureAccept(3485);
             Bot.Quests.UpdateQuest(3484);
             Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade");
             Core.EnsureComplete(3485);
+            Bot.Wait.ForPickup(23689);
         }
 
         Farm.Experience(100);
