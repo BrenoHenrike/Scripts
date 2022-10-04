@@ -216,6 +216,6 @@ public class CoreYnR
             }
         }
 
-        Core.EnsureComplete(questID);
+        Core.EnsureComplete(nonLegion ? 7410 : 7443);
     }
 }
