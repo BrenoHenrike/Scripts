@@ -48,8 +48,7 @@ public class NulgathDemandsWork
 
         if (items == null)
         {
-            Core.Logger("No Item Input");
-            return;
+            items = NDWItems;
         }
 
         Core.AddDrop(Nation.bagDrops);
@@ -58,13 +57,13 @@ public class NulgathDemandsWork
 
         foreach (string item in items)
         {
-            
-        InventoryItem NDWItem = Bot.Inventory.GetItem(item);
-            
-            
+
+            InventoryItem NDWItem = Bot.Inventory.GetItem(item);
+
+
             if (Core.CheckInventory(NDWItem.ID, quant))
                 break;
-                
+
             else Core.FarmingLogger(NDWItem.Name, quant);
 
             int i = 0;
