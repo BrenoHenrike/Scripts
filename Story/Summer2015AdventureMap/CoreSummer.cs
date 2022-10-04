@@ -39,13 +39,28 @@ public class CoreSummer
         Story.ChainQuest(4263);
 
         //1st Contact (4264)
-        Story.KillQuest(4264, "dreadspace", "Undead Space Marine|Undead Space Warrior");
+        if (!Story.QuestProgression(4264))
+        {
+            Core.EnsureAccept(4264);
+            Core.KillMonster("dreadspace", "r4", "Left", "*", "Proof of Undead");
+            Core.EnsureComplete(4264);
+        }
 
         //SO SLAY WE ALL! (4265)
-        Story.KillQuest(4265, "dreadspace", "Undead Space Marine|Undead Space Warrior");
+        if (!Story.QuestProgression(4265))
+        {
+            Core.EnsureAccept(4265);
+            Core.KillMonster("dreadspace", "r4", "Left", "*", "Space Zombie Gun", 10);
+            Core.EnsureComplete(4265);
+        }
 
         //Starship Troopers (4266)
-        Story.KillQuest(4266, "dreadspace", "Undead Space Marine|Undead Space Warrior");
+        if (!Story.QuestProgression(4266))
+        {
+            Core.EnsureAccept(4266);
+            Core.KillMonster("dreadspace", "r4", "Left", "*", "Troopers Interrogated", 5);
+            Core.EnsureComplete(4266);
+        }
 
         //Takai Me On (4267)
         Story.KillQuest(4267, "dreadspace", new[] { "Defense Turret", "Vaderix" });
@@ -69,15 +84,15 @@ public class CoreSummer
         }
 
         //Cowboyz vs Alienz (4273)
-        Story.KillQuest(4273, "dreadspace", new[] { "Holo Gunslinger|Holo Outlaw", "Vaderix" });
+        Story.KillQuest(4273, "dreadspace", new[] { "Holo Gunslinger", "Vaderix" });
 
         //Recover J6's Head! (4272)
-        Story.KillQuest(4272, "dreadspace", "Holo Gunslinger|Holo Outlaw");
+        Story.KillQuest(4272, "dreadspace", "Holo Gunslinger");
         if (ReplicatorMerge)
             return;
 
         //Titanic II (4274)
-        Story.KillQuest(4274, "dreadspace", "Jack|Rosie");
+        Story.KillQuest(4274, "dreadspace", "Jack");
 
         //Holo-Yulgar's (4275)
         Story.KillQuest(4275, "dreadspace", "Old Twilly");
@@ -98,10 +113,10 @@ public class CoreSummer
         Story.KillQuest(4280, "dreadspace", "Vaderix");
 
         //DO NOT OPEN - Space Door Codes (4281)
-        Story.KillQuest(4281, "dreadspace", "Undead Space Marine|Undead Space Warrior");
+        Story.KillQuest(4281, "dreadspace", "Undead Space Marine");
 
         //The Search for Spork (4282)
-        Story.KillQuest(4282, "dreadspace", "Undead Space Marine|Undead Space Warrior");
+        Story.KillQuest(4282, "dreadspace", "Undead Space Marine");
 
         //Crew Cut (4283)
         Story.KillQuest(4283, "dreadspace", new[] { "Vaderix", "Undead Space Marine", "Undead Space Warrior", "Cyber Horg" });
