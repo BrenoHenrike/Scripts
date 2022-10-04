@@ -148,8 +148,7 @@ public class CoreYnR
         Core.FarmingLogger("Blademaster Sword Scroll", 1);
         Core.AddDrop("Blademaster Sword Scroll");
 
-        int questID = nonLegion ? 7410 : 7443;
-        Core.EnsureAccept(questID);
+        Core.EnsureAccept(nonLegion ? 7410 : 7443);
         Core.EquipClass(ClassType.Solo);
         if (nonLegionMethod)
         {
