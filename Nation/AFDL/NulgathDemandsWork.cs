@@ -35,7 +35,7 @@ public class NulgathDemandsWork
         Core.BankingBlackList.Add("Archfiend Essence Fragment");
         Core.SetOptions();
 
-        Uni35(1);
+        NDWQuest(new[] { "Unidentified 35" });
         NDWQuest(NDWItems);
 
         Core.SetOptions(false);
@@ -47,27 +47,25 @@ public class NulgathDemandsWork
             return;
 
         if (items == null)
-        {
             items = NDWItems;
-        }
 
-        Core.AddDrop(Nation.bagDrops);
+
         Core.AddDrop(NDWItems);
+        Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("unidentified 27");
 
         foreach (string item in items)
         {
 
-            InventoryItem NDWItem = Bot.Inventory.GetItem(item);
-
-
-            if (Core.CheckInventory(NDWItem.ID, quant))
+            InventoryItem Stuff = Bot.Inventory.GetItem(item);
+            
+            if (Core.CheckInventory(item, quant))
                 break;
 
-            else Core.FarmingLogger(NDWItem.Name, quant);
+            else Core.FarmingLogger(item, quant);
 
             int i = 0;
-            while (!Bot.ShouldExit && !Core.CheckInventory(NDWItem.ID, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 Core.EnsureAccept(5259);
 
@@ -84,21 +82,13 @@ public class NulgathDemandsWork
                 GHV.GetGHV();
                 if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
                     Core.BuyItem("tercessuinotlim", 1951, 35770);
-                else Core.EnsureComplete(5259, NDWItem.ID);
-                Core.ToBank(NDWItem.Name);
+                else Core.EnsureComplete(5259, Stuff.ID);
+                Core.ToBank(item);
 
                 Core.Logger($"Completed x{i}");
                 i++;
             }
         }
-    }
-
-    public void Uni35(int quant = 1)
-    {
-        if (Core.CheckInventory("Unidentified 35", quant))
-            return;
-
-        NDWQuest(new[] { "Unidentified 35" });
     }
 
     public void Uni27(int quant = 1)
