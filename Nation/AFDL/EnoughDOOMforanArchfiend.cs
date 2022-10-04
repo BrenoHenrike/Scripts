@@ -34,14 +34,14 @@ public class EnoughDOOMforanArchfiend
         if (Core.CheckInventory("ArchFiend DoomLord", toInv: false))
             return;
 
-        string[] NDWRequiredItems = { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" };
+        // string[] NDWRequiredItems = { "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" };
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("ArchFiend DoomLord", "Undead Essence", "Chaorruption Essence",
             "Essence Potion", "Essence of Klunk", "Living Star Essence", "Bone Dust",
             "Undead Energy", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
         // Quest Accept Requirements:
-        NulgathDemandsWork.NDWQuest(NDWRequiredItems);
+        NulgathDemandsWork.NDWQuest();
 
         //Quest Turnin Items:
         WillpowerExtraction.Unidentified34(4);

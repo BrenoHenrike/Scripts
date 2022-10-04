@@ -22,9 +22,11 @@ public class SRoD
 
         Core.Logger("Farming for ShadowReaper Of Doom");
 
-        Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("brightfall", "r1", "Down", "*", "Mirror Realm Token", 300, isTemp: false);
-
+        Core.EquipClass(ClassType.Solo);
+        Core.RegisterQuests(3188);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 300))
+            Core.HuntMonsterMapID("mirrorportal", 1);
+        Core.CancelRegisteredQuests();
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("overworld", "boss1", "Left", "Undead Artix", "Undead Paladin Token", isTemp: false);
 

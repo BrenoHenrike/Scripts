@@ -5,6 +5,7 @@
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
 //cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class NulgathDemandsWork
 {
@@ -47,8 +48,7 @@ public class NulgathDemandsWork
 
         if (items == null)
         {
-            Core.Logger("No Item Input");
-            return;
+            items = NDWItems;
         }
 
         Core.AddDrop(Nation.bagDrops);
@@ -57,12 +57,17 @@ public class NulgathDemandsWork
 
         foreach (string item in items)
         {
-            if (Core.CheckInventory(items, quant))
+
+            InventoryItem NDWItem = Bot.Inventory.GetItem(item);
+
+
+            if (Core.CheckInventory(NDWItem.ID, quant))
                 break;
-            else Core.FarmingLogger(item, quant);
+
+            else Core.FarmingLogger(NDWItem.Name, quant);
 
             int i = 0;
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(NDWItem.ID, quant))
             {
                 Core.EnsureAccept(5259);
 
@@ -79,8 +84,8 @@ public class NulgathDemandsWork
                 GHV.GetGHV();
                 if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
                     Core.BuyItem("tercessuinotlim", 1951, 35770);
-                else Core.EnsureCompleteChoose(5259, items);
-                Core.ToBank(item);
+                else Core.EnsureComplete(5259, NDWItem.ID);
+                Core.ToBank(NDWItem.Name);
 
                 Core.Logger($"Completed x{i}");
                 i++;

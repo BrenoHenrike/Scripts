@@ -470,11 +470,12 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 528, 255);
 
             Bot.Kill.Monster("Team B Captain");
-            Bot.Wait.ForDrop(item);
+            Bot.Wait.ForPickup(item);
 
             while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
                 Bot.Sleep(5000);
+                Core.JumpWait();
                 Core.Join("battleon");
             }
         }
@@ -1476,17 +1477,20 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
 
-        if (!Core.isCompletedBefore(5155)) {
+        if (!Core.isCompletedBefore(5155))
+        {
             Core.EnsureAccept(5155);
             DeathPitToken();
             Core.EnsureComplete(5155);
         }
-        if (!Core.isCompletedBefore(5156)) {
+        if (!Core.isCompletedBefore(5156))
+        {
             Core.EnsureAccept(5156);
             Core.EnsureComplete(5156);
         }
         Core.RegisterQuests(5156);
-        if (!Core.isCompletedBefore(5157)) {
+        if (!Core.isCompletedBefore(5157))
+        {
             Core.EnsureAccept(5157);
             RunDeathPitBrawl();
             Core.EnsureComplete(5157);
@@ -1499,8 +1503,10 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
 
-        void RunDeathPitBrawl() {
-            while (Bot.Map.Name != "deathpitbrawl") {
+        void RunDeathPitBrawl()
+        {
+            while (Bot.Map.Name != "deathpitbrawl")
+            {
                 Core.Join("DeathPitbrawl", "Enter0", "Spawn");
                 Bot.Sleep(Core.ActionDelay);
             }

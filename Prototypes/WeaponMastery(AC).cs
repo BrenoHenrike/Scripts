@@ -51,7 +51,11 @@ public class WeaponMasteryAC
                 {
                     if (!Core.CheckInventory("Mirror Realm Token", 10))
                     {
-                        Core.HuntMonster("BattleOff", "Evil Moglin", "Mirror Realm Token", 10, false);
+                        Core.EquipClass(ClassType.Solo);
+                        Core.RegisterQuests(3188);
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 300))
+                            Core.HuntMonsterMapID("mirrorportal", 1);
+                        Core.CancelRegisteredQuests();  
                     }
                     if (Bot.Player.Gold <= 100000)
                     {

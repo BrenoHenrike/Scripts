@@ -63,15 +63,9 @@ public class MirrorRealmMerge
                     LoC.Xiang();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(3189);
+                    Core.RegisterQuests(3188);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        //Good, Evil, and Chaos Battle! 3189
-                        Adv.GearStore();
-                        Core.KillXiang("Chaos Lord Xiang Defeated", publicRoom: true);
-                        Adv.GearStore(true);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                        Core.HuntMonsterMapID("mirrorportal", 1);
                     Core.CancelRegisteredQuests();
                     break;
 

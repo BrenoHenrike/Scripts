@@ -2,9 +2,9 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
+using Skua.Core.Options;
 
 public class JuggernautItemsofNulgath
 {
@@ -43,12 +43,12 @@ public class JuggernautItemsofNulgath
 
         var Count = 0;
         int x = 1;
-      
+
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
-        Count = RewardsList.Count();       
+        Count = RewardsList.Count();
 
         ItemBase item = Core.EnsureLoad(837).Rewards.Find(x => x.ID == (int)reward) ?? null;
 
@@ -67,9 +67,9 @@ public class JuggernautItemsofNulgath
             Nation.SwindleBulk(50);
             Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
 
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") != RewardsSelection.All)
-                Core.EnsureComplete(837, (int)reward);
-            else Core.EnsureCompleteChoose(837);
+            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
+                Core.EnsureCompleteChoose(837);
+            else Core.EnsureComplete(837, (int)reward);
         }
     }
 
