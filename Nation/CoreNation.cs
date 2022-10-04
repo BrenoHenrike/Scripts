@@ -554,7 +554,7 @@ public class CoreNation
                     Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune", log: false);
                 }
 
-                Core.KillEscherion("Relic of Chaos", publicRoom: true);
+                Core.KillEscherion("Relic of Chaos", publicRoom: true, log: false);
                 Bot.Drops.Pickup(item);
 
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)

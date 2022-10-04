@@ -76,10 +76,8 @@ public class UltimateBLoD
 
     public void PurifiedUndeadDragonEssence()
     {
-        if (!Core.CheckInventory(14467))
-            BLOD.DoAll();
-        if (!Core.CheckInventory(55899))
-            OverwhelmedAxe();
+        BLOD.DoAll();
+        OverwhelmedAxe();
         if (Core.CheckInventory("Purified Undead Dragon Essence"))
             return;
 
