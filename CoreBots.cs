@@ -1333,7 +1333,7 @@ public class CoreBots
             return;
 
         if (CheckInventory("Dragon of Time"))
-            Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Base);
+            Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
         else if (CheckInventory("Healer (Rare)"))
             Bot.Skills.StartAdvanced("Healer (Rare)", true, ClassUseMode.Base);
         else if (CheckInventory("Healer"))
@@ -1832,6 +1832,11 @@ public class CoreBots
             case "hyperium":
                 JumpWait();
                 Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%hyperium%");
+                break;
+
+            case "lycan":
+                JumpWait();
+                Bot.Quests.UpdateQuest(598);
                 break;
         }
 
