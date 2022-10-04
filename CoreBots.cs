@@ -1833,6 +1833,11 @@ public class CoreBots
                 JumpWait();
                 Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%hyperium%");
                 break;
+
+            case "lycan":
+                JumpWait();
+                Bot.Quests.UpdateQuest(598);
+                break;
         }
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
