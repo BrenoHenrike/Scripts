@@ -33,7 +33,7 @@ public class CelestialStarMageSet
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
                 return;
-            else Core.FarmingLogger(Reward.Name, 1);
+            Core.FarmingLogger(Reward.Name, 1);
 
             Core.EnsureAccept(6592);
             Core.HuntMonster("lumafortress", "Light Elemental", "Light Particles", 5, log: false);

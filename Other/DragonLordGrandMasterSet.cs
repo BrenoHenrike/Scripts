@@ -32,7 +32,7 @@ public class DragonLordGrandMasterSet
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
                 return;
-            else Core.FarmingLogger(Reward.Name, 1);
+            Core.FarmingLogger(Reward.Name, 1);
 
             Core.EnsureAccept(6689);
             Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General Defeated", log: false);

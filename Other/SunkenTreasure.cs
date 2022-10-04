@@ -32,7 +32,7 @@ public class SunkenTreasure
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
                 return;
-            else Core.FarmingLogger(Reward.Name, 1);
+            Core.FarmingLogger(Reward.Name, 1);
 
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name) && !Bot.House.Contains("Hidden Pirate Base"))
             {
