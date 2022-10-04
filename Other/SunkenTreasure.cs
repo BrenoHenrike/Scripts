@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class SunkenTreasure
 {
@@ -20,28 +21,29 @@ public class SunkenTreasure
     public void GetAll()
     {
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7715).Rewards;
-        List<string> RewardsList = new List<string>();
-        List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
-        RewardList.Remove("Hidden Pirate Base");
-        string[] Rewards = RewardList.ToArray();
 
-        if (Core.CheckInventory("Rewards", toInv: false))
-            return;
-
-        Bot.Drops.Add(Rewards);
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
         Bot.Drops.Add("Hidden Pirate Base");
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7715);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false) && !Bot.House.Contains("Hidden Pirate Base"))
-        {
-            //Sunken Treasure? 7715
-            Core.HuntMonster("Pirates", "Shark Bait", "Waterlogged Chest");
-            Core.HuntMonster("Pirates", "Fishman Soldier", "Rusty Key");
-            Core.Jump("Wait", "Spawn");
-            Core.ToBank(Rewards);
-        }
-        Core.CancelRegisteredQuests();
 
+        foreach (ItemBase Reward in RewardOptions)
+        {
+            if (Core.CheckInventory(Reward.Name, toInv: false))
+                return;
+            else Core.FarmingLogger(Reward.Name, 1);
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name) && !Bot.House.Contains("Hidden Pirate Base"))
+            {
+                //Sunken Treasure? 7715
+                Core.EnsureAccept(7715);
+                Core.HuntMonster("Pirates", "Shark Bait", "Waterlogged Chest");
+                Core.HuntMonster("Pirates", "Fishman Soldier", "Rusty Key");
+                Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General Defeated", log: false);
+                Core.EnsureComplete(7715, Reward.ID);
+                Core.JumpWait();
+                Core.ToBank(Reward.Name);
+            }
+        }
     }
-}
