@@ -53,25 +53,24 @@ public class NulgathDemandsWork
         Core.AddDrop(NDWItems);
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("unidentified 27");
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5259).Rewards;
 
-        foreach (string item in items)
-        {
-
-            InventoryItem Stuff = Bot.Inventory.GetItem(item);
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
             
-            if (Core.CheckInventory(item, quant))
-                break;
-
-            else Core.FarmingLogger(item, quant);
+        foreach (ItemBase item in RewardOptions)
+        {            
+            if (Core.CheckInventory(item.Name, quant))
+                return;
+            Core.FarmingLogger(item.Name, quant);
 
             int i = 0;
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.Name, quant))
             {
                 Core.EnsureAccept(5259);
 
                 WillpowerExtraction.Unidentified34(10);
                 Nation.FarmUni13(2);
-                Core.EnsureAccept(5259);
                 Nation.FarmBloodGem(2);
                 Nation.FarmDiamondofNulgath(60);
                 Nation.FarmDarkCrystalShard(45);
@@ -80,10 +79,10 @@ public class NulgathDemandsWork
                 Nation.FarmGemofNulgath(15);
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
-                if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
+                if (item.Name == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
                     Core.BuyItem("tercessuinotlim", 1951, 35770);
-                else Core.EnsureComplete(5259, Stuff.ID);
-                Core.ToBank(item);
+                else Core.EnsureComplete(5259, item.ID);
+                Core.ToBank(item.Name);
 
                 Core.Logger($"Completed x{i}");
                 i++;
