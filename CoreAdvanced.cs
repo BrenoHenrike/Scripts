@@ -1374,39 +1374,44 @@ public class CoreAdvanced
             }
 
             // Empty check
+            ShopItem? bestEnhancement = null;
             if (availableEnh.Count == 0)
             {
                 Core.Logger($"Enhancement Failed: availableEnh is empty");
                 return;
             }
-
-            // Sorting by level (ascending)
-            List<ShopItem> sortedList = availableEnh.OrderBy(x => x.Level).ToList();
-
-            // Grabbing the two best enhancements
-            List<ShopItem> bestTwoEnhancements = new();
-            if (sortedList.Count >= 4)
-                bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
-            else if (sortedList.Count == 3)
-                bestTwoEnhancements = sortedList.Skip(sortedList.Count - 1).OrderBy(x => x.Level).ToList();
-            else if (sortedList.Count == 2)
-                bestTwoEnhancements = sortedList.Skip(sortedList.Count - 0).OrderBy(x => x.Level).ToList();
+            else if (availableEnh.Count == 1)
+                bestEnhancement = availableEnh.First();
             else
             {
-                Core.Logger($"Enhancement Failed: sortedList {(sortedList.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
-                return;
-            }
+                // Sorting by level (ascending)
+                List<ShopItem> sortedList = availableEnh.OrderBy(x => x.Level).ToList();
 
-            if (bestTwoEnhancements.Count != 2)
-            {
-                Core.Logger($"Enhancement Failed: bestTwoEnhancements {(bestTwoEnhancements.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
-                return;
-            }
+                // Grabbing the two best enhancements
+                List<ShopItem> bestTwoEnhancements = new();
+                if (sortedList.Count >= 4)
+                    bestTwoEnhancements = sortedList.Skip(sortedList.Count - 2).OrderBy(x => x.Level).ToList();
+                else if (sortedList.Count == 3)
+                    bestTwoEnhancements = sortedList.Skip(sortedList.Count - 1).OrderBy(x => x.Level).ToList();
+                else if (sortedList.Count == 2)
+                    bestTwoEnhancements = sortedList.Skip(sortedList.Count - 0).OrderBy(x => x.Level).ToList();
+                else
+                {
+                    Core.Logger($"Enhancement Failed: sortedList {(sortedList.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
+                    return;
+                }
 
-            // Getting the best enhancement out of the two
-            ShopItem bestEnhancement =
-               bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
-                   bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+                if (bestTwoEnhancements.Count != 2)
+                {
+                    Core.Logger($"Enhancement Failed: bestTwoEnhancements {(bestTwoEnhancements.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
+                    return;
+                }
+
+                // Getting the best enhancement out of the two
+                bestEnhancement =
+                   bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
+                       bestTwoEnhancements.First(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+            }
 
             // Null check
             if (bestEnhancement == null)
