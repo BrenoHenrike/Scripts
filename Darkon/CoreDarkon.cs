@@ -25,10 +25,13 @@ public class CoreDarkon
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
-        Core.Join("tercessuinotlim");
-        Bot.Sleep(10000);
-        if (Bot.Map.PlayerNames.Count >= 5)
-            ThirdErrand(Quantity);
+        if (!Bot.Options.PrivateRooms)
+        {
+            Core.Join("tercessuinotlim");
+            Bot.Sleep(10000);
+            if (Bot.Map.PlayerNames.Count >= 5)
+                ThirdErrand(Quantity);
+        }
         SecondErrand(Quantity, true);
         FirstErrand(Quantity);
     }
