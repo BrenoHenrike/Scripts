@@ -79,7 +79,7 @@ public class ArmyLegionToken
 
         Core.AddDrop(item);
         if (!Bot.Quests.Active.Contains(QuestData))
-            Core.EnsureAccept(questID);
+            Core.RegisterQuests(questID);
 
         Army.SmartAggroMonStart(map, Monster);
 
