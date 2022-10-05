@@ -137,6 +137,8 @@
 
 //cs_include Scripts/Story/VasalkarLairWar.cs
 
+//cs_include Scripts/Story/WatchTower.cs
+
 //cs_include Scripts/Story/XansLair.cs
 
 //cs_include Scripts/Story/Yokai.cs
@@ -298,6 +300,8 @@ public class AllStories
     public UnderGroundLab UnderGroundLab = new();
 
     public LairWar LairWar = new(); //VasalkarLairWar.cs
+
+    public WatchTower WatchTower = new();
 
     public XansLair Xans = new();
 
@@ -653,6 +657,8 @@ public class AllStories
         LairWar.doAll();
         Core.Logger($"Story: Vasalkar Lair War - Complete");
 
+        WatchTower.StoryLine();
+        Core.Logger($"Story: WatchTower - Complete");
 
         Xans.DoAll();
         Core.Logger($"Story: Xans Lair - Complete");
