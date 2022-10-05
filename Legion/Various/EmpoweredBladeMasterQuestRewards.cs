@@ -27,90 +27,55 @@ public class EmpoweredBladeMaster
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
-        new Option<bool>("SelectReward", "Choose the Reward?", "Select the Reward the Bot will Get, then stop.", false),
-        new Option<bool>("AutoRewardChoice", "Let the bot do it?", "does the quest till you have all the rewards possible.", false),
+        new Option<bool>("GetAllRewards", "Pick Automatically", "if true, does the quest till you have all the rewards possible. otherwise Gets selcted item", false),
         new Option<rewards>("RewardSelect", "Choose Your Reward", "", rewards.Empowered_Blade_Master)
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        RequiredItems();
-        DageChallenge.DageChallengeQuests();
-        if (!Bot.Config.Get<bool>("SelectReward"))
-            GetRewards();
-        else OptionsSelect(8547);
+
+        GetSet();
 
         Core.SetOptions(false);
     }
 
-    void RequiredItems()
+    public void GetSet()
     {
-        if (Core.CheckInventory(new[] { "BladeMaster's Dual Katanas", "Living BladeMaster", "Dark Unicorn Rib" }))
-            return;
-        else Core.Logger("Required Items not found, Stopping", stopBot: true);
-    }
+        // if (!Core.CheckInventory(new[] { "BladeMaster's Dual Katanas", "Living BladeMaster", "Dark Unicorn Rib" }))
+        //     return;
 
-    public void OptionsSelect(int questID, rewards reward = new())
-    {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
+        DageChallenge.DageChallengeQuests();
 
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8554).Rewards;
 
-        ItemBase item = Core.EnsureLoad(questID).Rewards.Find(x => x.ID == (int)Bot.Config.Get<rewards>("RewardSelect"));
-        if (item == null)
-            Core.Logger($"{item.Name} not found in Quest Rewards", stopBot: true);
+        Core.AddDrop(RewardOptions.Select(x => x.Name).ToArray());
 
-        if (Core.CheckInventory(item.ID))
-            return;
+        Farm.Experience(95);
+        Core.EquipClass(ClassType.Solo);
 
-        Core.FarmingLogger(item.Name, 1);
+        if (Bot.Config.Get<bool>("GetAllRewards"))
+            Core.RegisterQuests(8554);
+        else Core.EnsureAccept(8554);
 
-        while (!Core.CheckInventory(item.Name))
+        foreach (var Reward in RewardOptions)
         {
-            Core.EnsureAccept(questID);
-            Farm.Experience(95);
+            if (Core.CheckInventory(Reward.Name, toInv: false))
+                return;
+
+            Core.FarmingLogger(Reward.Name, 1);
+
             Legion.FarmLegionToken(15000);
             DageInsignia(30);
-            Core.EnsureAccept(questID, item.ID);
-        }
-    }
-
-    public void GetRewards()
-    {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8554).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
-
-        string[] Rewards = RewardsList.ToArray();
-
-        Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(8554);
-        foreach (string item in Rewards)
-        {
-            InventoryItem RewardChoice = Bot.Inventory.GetItem(item);
-
-            while (!Bot.ShouldExit && !Core.CheckInventory(item))
+            if (!Bot.Config.Get<bool>("GetAllRewards"))
             {
-                Core.FarmingLogger(item, 1);
-                DageInsignia(30);
-                Core.EnsureAccept(8547);
-                Farm.Experience(95);
-                Legion.FarmLegionToken(15000);
-                DageInsignia(30);
-                Core.EnsureAccept(8547, RewardChoice.ID);
+                Core.EnsureComplete(8554, (int)Bot.Config.Get<rewards>("RewardSelect"));
+                return;
             }
-            Core.CancelRegisteredQuests();
+            Core.JumpWait();
+            Core.ToBank(Reward.Name);
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DageInsignia(int quant)
@@ -153,8 +118,8 @@ public class EmpoweredBladeMaster
 
     public enum rewards
     {
-        Empowered_Blade_Master,
-        Empowered_Blade_Masters_Katana,
-        Empowered_Dual_Katanas
+        Empowered_Blade_Master = 68470,
+        Empowered_Blade_Masters_Katana = 68471,
+        Empowered_Dual_Katanas = 68472
     };
 }
