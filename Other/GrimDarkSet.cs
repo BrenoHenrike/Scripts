@@ -23,39 +23,28 @@ public class GrimDarkSet
 
     public void GetAll()
     {
-        string[] rewards = Core.EnsureLoad(7049).Rewards.Select(i => i.Name).ToArray();
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7049).Rewards;
 
-        if (Core.CheckInventory(rewards))
-            return;
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
 
-        int count = 0;
+        Core.EquipClass(ClassType.Farm);
 
-        Core.CheckSpaces(ref count, rewards);
-        Core.AddDrop(rewards);
-
-        Cave.Storyline();
-
-        Core.RegisterQuests(7049);
-        Bot.Events.ItemDropped += ItemDropped;
-        Core.Logger($"Farm for the DarkMage set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
+        foreach (ItemBase Reward in RewardOptions)
         {
-            Core.HuntMonster("mustycave", "Mogdring", "Golden Gear", 5, false);
-            Core.HuntMonster("mustycave", "Spy Drone", "Aura Core", 25, false);
-            Core.HuntMonster("mustycave", "Guard Drone", "Dimension Stabilizer", 35, false);
-            Bot.Wait.ForPickup("*");
-        }
+            if (Core.CheckInventory(Reward.Name, toInv: false))
+                return;
+            Core.FarmingLogger(Reward.Name, 1);
 
-        Bot.Events.ItemDropped -= ItemDropped;
-        Core.CancelRegisteredQuests();
-
-        void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
-        {
-            if (rewards.Contains(item.Name))
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
             {
-                count++;
-                Core.Logger($"Got {item.Name}, {rewards.Length - count} items to go");
+                Core.EnsureAccept(7049);
+                Core.HuntMonster("mustycave", "Mogdring", "Golden Gear", 5, false);
+                Core.HuntMonster("mustycave", "Spy Drone", "Aura Core", 25, false);
+                Core.HuntMonster("mustycave", "Guard Drone", "Dimension Stabilizer", 35, false);
+                Core.EnsureComplete(7049, Reward.ID);
+                Core.JumpWait();
+                Core.ToBank(Reward.Name);
             }
         }
     }

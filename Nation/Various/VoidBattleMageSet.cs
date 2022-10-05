@@ -21,35 +21,24 @@ public class VoidBattleMageSet
 
     public void GetSet()
     {
-        string[] rewards = Core.EnsureLoad(6694).Rewards.Select(i => i.Name).ToArray();
-        if (Core.CheckInventory(rewards))
-            return;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(6694).Rewards;
 
-        int count = 0;
-        Core.CheckSpaces(ref count, rewards);
-        Core.AddDrop(rewards);
-        War.Attack();
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
+            
+        Core.EquipClass(ClassType.Solo);
 
-        Core.RegisterQuests(6694);
-        Bot.Events.ItemDropped += ItemDropped;
-        Core.Logger($"Farm for Void BattleMage set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
-
-        while (!Core.CheckInventory(rewards))
+        foreach (ItemBase Reward in RewardOptions)
         {
-            Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General", log: false);
-            Bot.Wait.ForPickup("*");
-        }
+            if (Core.CheckInventory(Reward.Name, toInv: false))
+                return;
+            Core.FarmingLogger(Reward.Name, 1);
 
-        Bot.Events.ItemDropped -= ItemDropped;
-        Core.CancelRegisteredQuests();
-
-        void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
-        {
-            if (rewards.Contains(item.Name))
-            {
-                count++;
-                Core.Logger($"Got {item.Name}, {rewards.Length - count} items to go");
-            }
+            Core.EnsureAccept(6694);
+            Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General Defeated", log: false);
+            Core.EnsureComplete(6694, Reward.ID);
+            Core.JumpWait();
+            Core.ToBank(Reward.Name);
         }
     }
 }

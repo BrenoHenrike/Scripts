@@ -53,7 +53,10 @@ public class FiendofLight
         ItemBase item = Core.EnsureLoad(questID).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
 
         if (item == null)
-            Core.Logger($"{item.Name} not found in Quest Rewards", stopBot: true);
+        {
+            Core.Logger($"{item.Name} not found in Quest Rewards");
+            return;
+        }
 
         if (Core.CheckInventory(item.Name))
             return;

@@ -55,7 +55,10 @@ public class EnhancedNulgathNationHouse
 
             Core.EnsureAccept(4779);
             if (!Core.EnsureComplete(4779))
-                Core.Logger("Could not complete the quest, stopping bot", messageBox: true, stopBot: true);
+            {
+                Core.Logger("Could not complete the quest, stopping bot", messageBox: true);
+                return;
+            }
             Bot.Drops.Pickup("Nulgath Nation House");
         }
 

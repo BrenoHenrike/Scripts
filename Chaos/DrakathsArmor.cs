@@ -70,7 +70,10 @@ public class DrakathArmorBot
             Daily.DagesScrollFragment();
         }
         if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
-            Core.Logger("You dont have Dage's Scroll Fragment x13", stopBot: true);
+        {
+            Core.Logger("You dont have Dage's Scroll Fragment x13", messageBox: true);
+            return;
+        }
         Core.EnsureAccept(3882);
         Farm.BladeofAweREP(6, farmBoA: true);
         BLOD.DoAll();

@@ -148,11 +148,10 @@ public class CoreYnR
         Core.FarmingLogger("Blademaster Sword Scroll", 1);
         Core.AddDrop("Blademaster Sword Scroll");
 
-        int questID = nonLegion ? 7410 : 7443;
-        Core.EnsureAccept(questID);
         Core.EquipClass(ClassType.Solo);
         if (nonLegionMethod)
         {
+            Core.EnsureAccept(7410);
             Core.Logger("Using Non-Legion variant for the Blademaster Sword Scroll");
             Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 26, false, publicRoom: true);
             Core.KillMonster("Judgement", "r10a", "Spawn", "Ultra Aeacus", "Aeacus Empowered", 100, false, publicRoom: true);
@@ -162,11 +161,13 @@ public class CoreYnR
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("evilwardage", "Blade Master", "Discipline", isTemp: false);
             Legion.DagePvP(400, 50, 1000);
+            Core.EnsureComplete(7410);
         }
 
         else
         {
             Core.Logger("Using Legion variant for the Blademaster Sword Scroll");
+            Core.EnsureAccept(7443);
             Core.KillMonster("frozenlair", "r3", "Left", "Legion Lich Lord", "Sapphire Orb", 13, false, publicRoom: true);
             Legion.FarmLegionToken(17500);
             Core.KillMonster("Judgement", "r10a", "Spawn", "Ultra Aeacus", "Aeacus Empowered", 50, false, publicRoom: true);
@@ -215,8 +216,7 @@ public class CoreYnR
                 Core.EnsureComplete(m_questID);
                 Bot.Wait.ForPickup("Meditation");
             }
+            Core.EnsureComplete(7443);
         }
-
-        Core.EnsureComplete(questID);
     }
 }

@@ -53,7 +53,11 @@ public class TheLeeryContract
         int x = 1;
 
         if (item == null)
-            Core.Logger($"{item.Name} not found in Quest Rewards", stopBot: true);
+        {
+            Core.Logger($"{item.Name} not found in Quest Rewards");
+            return;
+        }
+
 
         if (Core.CheckInventory(item.Name))
             return;
@@ -79,7 +83,7 @@ public class TheLeeryContract
         Ddog_Sea_Serpent_Sword = 4766,
         Godly_Golden_Dragon_Axe = 4724,
         Corpse_Maker_of_Nulgath = 4764,
-        
+
 
         All
     };

@@ -83,7 +83,10 @@ public class NecroticBladeoftheUnderworld
         if (!Core.CheckInventory("Dage the Evil Insignia", 5))
         {
             if (Bot.Quests.IsDailyComplete(8547))
-                Core.Logger("Can't accept quest 8547 because the weekly is complete", messageBox: true, stopBot: true);
+            {
+                Core.Logger("Can't accept quest 8547 because the weekly is complete", messageBox: true);
+                return;
+            }
             Core.EnsureAccept(8547);
             Core.EquipClass(ClassType.Solo);
 

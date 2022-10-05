@@ -45,7 +45,7 @@ public class EnoughDOOMforanArchfiend
 
         //Quest Turnin Items:
         WillpowerExtraction.Unidentified34(4);
-        NulgathDemandsWork.Uni35(1);
+        NulgathDemandsWork.NDWQuest(new[] {"Unidentified 35"});
         Nation.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
         Nation.FarmUni13();
         Nation.ApprovalAndFavor(0, 5000);
