@@ -18,8 +18,8 @@ public class CurrentDailyGifts
 
     public void GetAllGifts()
     {
-        int Day = 26;
-        int Month = 09;
+        int Day = 05;
+        int Month = 10;
         int Year = 2022;
         DateTime lastUpdate = new(Year, Month, Day);
         Core.Logger("Last update to this bot was on: " + lastUpdate.ToString(formatInfo)[..10]);
@@ -54,7 +54,8 @@ public class CurrentDailyGifts
         GetGift(AvailableUntil(14, 10), "battleontown", "Zard", new[] { "Chibi Plushie Teka", "Chibi Teka Pet", "GIANT Haunted Teka Plushie", "Haunted Teka Plushie", "Teka's Birthday Hat" });
         GetGift(AvailableUntil(14, 10), "lowtide", "Spectral Jellyfish", new[] { "Lance of the Depths", "Spear of the Depths", "Staff of the Depths", "Trident of the Depths" });
         GetGift(Permanent, "garden", "Creature 83", new[] { "Chibi Darkon's Shag", "Chibi Darkon's Twintails", "Chibi Drago's Shag", "Chibi Drago's Twintails", "Chibi Fa's Shag", "Chibi Fa's Twintails", "Chibi La's Shag", "Chibi La's Twintails", "Chibi Mi's Shag", "Chibi Mi's Twintails", "Chibi Re's Shag", "Chibi Re's Twintails", "Chibi So's Shag", "Chibi So's Twintails", "Chibi Suki's Shag", "Chibi Suki's Twintails", "Chibi Ti's Shag", "Chibi Ti's Twintails" });
-        GetGift(Permanent, "garden", "Creature 72", new[] { "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow","Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow" });
+        GetGift(Permanent, "garden", "Creature 72", new[] { "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow", "Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow" });
+        GetGift(Permanent, "falcontower", "Alteon", new[] { "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword" });
         // GetGift(AvailableUntil(14, 10), "mystcroftforest", "Barghest", new[] { "item are to be announced" });
 
         #endregion
