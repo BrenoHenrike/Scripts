@@ -1391,6 +1391,17 @@ public class CoreAdvanced
                 bestTwoEnhancements = sortedList.Skip(sortedList.Count - 1).OrderBy(x => x.Level).ToList();
             else if (sortedList.Count == 2)
                 bestTwoEnhancements = sortedList.Skip(sortedList.Count - 0).OrderBy(x => x.Level).ToList();
+            else
+            {
+                Core.Logger($"Enhancement Failed: sortedList {(sortedList.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
+                return;
+            }
+
+            if (bestTwoEnhancements.Count != 2)
+            {
+                Core.Logger($"Enhancement Failed: bestTwoEnhancements {(bestTwoEnhancements.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
+                return;
+            }
 
             // Getting the best enhancement out of the two
             ShopItem bestEnhancement =
