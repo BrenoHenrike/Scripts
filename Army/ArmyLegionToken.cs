@@ -58,7 +58,7 @@ public class ArmyLegionToken
         
         Core.EquipClass(ClassType.Farm);
         if (Method.ToString() == "Dreadrock")
-            GetItem("dreadrock", "*", 4850, "Legion Token", quant);
+            GetItem("dreadrock", "*", 4849, "Legion Token", quant);
         if (Method.ToString() == "Shogun_Paragon_Pet")
             GetItem("fotia", "*", 5755, "Legion Token", quant);
         else
