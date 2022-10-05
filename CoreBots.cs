@@ -1836,6 +1836,7 @@ public class CoreBots
             case "lycan":
                 JumpWait();
                 Bot.Quests.UpdateQuest(598);
+                tryJoin();
                 break;
         }
 
