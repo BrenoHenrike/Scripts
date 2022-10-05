@@ -21,14 +21,13 @@ public class LegendaryElementalWarrior
 
     public void GetLEW(bool rankUpClass = true)
     {
-        if (!Core.IsMember)
-        {
-            Core.Logger("Class Requires member to buy without acs, sorry.");
-            return;
-        }
-
         if (Core.CheckInventory("Legendary Elemental Warrior"))
             return;
+        if (!Core.IsMember)
+        {
+            Core.Logger("Class requires member to buy without ACs.");
+            return;
+        }
 
         Adv.BuyItem("Curio", 807, 22190);
         Adv.BuyItem("Curio", 807, 22191);
@@ -38,7 +37,6 @@ public class LegendaryElementalWarrior
         Adv.BuyItem("Curio", 807, 22187);
         Adv.BuyItem("Curio", 807, 22188);
         Adv.BuyItem("Curio", 807, 22189);
-        Bot.Wait.ForItemBuy();
 
         Core.BuyItem("Curio", 809, "Legendary Elemental Warrior", shopItemID: 2412);
 

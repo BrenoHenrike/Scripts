@@ -393,7 +393,10 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
         LOO.GetLoO();
         if (!Core.isCompletedBefore(7165))
-            Core.Logger("Quest Progrestion not Available For LOO (requires last quest to be complete and these are dailies)", stopBot: true);
+        {
+            Core.Logger("Quest Progrestion not Available For LOO (requires last quest to be complete and these are dailies)");
+            return;
+        }
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
         ED.getSet();
@@ -432,7 +435,10 @@ public class UnlockForgeEnhancements
         Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
 
         if (!Core.isCompletedBefore(8746))
-            Core.Logger("You must have faced Darkon the Conductor and done the weekly quest in order to unlock \"Arcana's Concerto\"", stopBot: true);
+        {
+            Core.Logger("You must have faced Darkon the Conductor and done the weekly quest in order to unlock \"Arcana's Concerto\"", messageBox: true);
+            return;
+        }
         PDPPR.FarmPreReqs();
 
         if (!Core.CheckInventory("Darkon's Debris 2 (Reconstructed)"))
@@ -447,15 +453,23 @@ public class UnlockForgeEnhancements
             Darkon.AncientRemnant(22);
             Darkon.MourningFlower(22);
             if (!Core.CheckInventory("Darkon Insignia", 20))
-                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+            {
+                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);
+                return;
+            }
             else Core.BuyItem("ultradarkon", 2147, "Darkon's Debris 2 (Reconstructed)");
         }
 
         if (!Core.CheckInventory("King Drago Insignia", 5))
-            Core.Logger(" x5 \"King Drago Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
+        {
+            Core.Logger(" x5 \"King Drago Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
+            return;
+        }
         if (!Core.CheckInventory("Darkon Insignia", 5))
-            Core.Logger(" x5 \"Darkon Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true, stopBot: true);
-
+        {
+            Core.Logger(" x5 \"Darkon Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
+            return;
+        }
         Core.ChainComplete(8742);
         Core.Logger("Enhancement Unlocked: Arcana's Concerto");
     }

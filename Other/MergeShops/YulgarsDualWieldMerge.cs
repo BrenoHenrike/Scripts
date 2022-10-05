@@ -51,7 +51,10 @@ public class YulgarsDualWieldMerge
             Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
         Bot.Sleep(1500);
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
-            Core.Logger("Golden Candle not found - stopping bot.", messageBox: true, stopBot: true);
+        {
+            Core.Logger("Golden Candle not found - stopping bot.", messageBox: true);
+            return;
+        }
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("nostalgiaquest", 1311, findIngredients);
 

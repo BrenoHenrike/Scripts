@@ -512,29 +512,33 @@ public class CoreAdvanced
     {
         Bot.Wait.ForPickup(ClassName);
 
+        if (!Core.CheckInventory("ClassName"))
+            return;
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class);
-        if (itemInv == null)
-            Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true, stopBot: true);
-        if (GearRestore)
-            GearStore();
-
-        if (itemInv == null)
+        if (itemInv == null && !Bot.Inventory.TryGetItem("ClassName", out itemInv))
         {
-            Core.Logger($"\"{ClassName}\" is not a valid Class", messageBox: true, stopBot: true);
+            Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true);
             return;
         }
+        if (itemInv == null)
+            return;
         if (itemInv.Quantity == 302500)
         {
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
 
+        if (GearRestore)
+            GearStore();
+
         SmartEnhance(ClassName);
         string[]? CPBoost = BestGear(GearBoost.cp);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
+
         Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
+
         if (GearRestore)
             GearStore(true);
     }

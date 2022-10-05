@@ -219,12 +219,6 @@ public class CoreStory
         Quest QuestData = Core.EnsureLoad(QuestID);
         ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
-        if (QuestData == null)
-        {
-            Core.Logger($"Quest [{QuestID}] doesn't exist", messageBox: true, stopBot: true);
-            return true;
-        }
-
         int timeout = 0;
         while (!Bot.Quests.IsUnlocked(QuestID))
         {
@@ -465,11 +459,7 @@ public class CoreStory
         {
             lastQuestID = questID;
             Quest quest = Core.EnsureLoad(questID);
-            if (quest == null)
-            {
-                Core.Logger($"Quest [{questID}] doesn't exist", messageBox: true, stopBot: true);
-                return;
-            }
+            
             List<string> reqItems = new();
             quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest.Requirements.ForEach(item =>

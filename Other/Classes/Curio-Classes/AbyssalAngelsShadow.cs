@@ -24,15 +24,15 @@ public class AbyssalAngelsShadow
         Core.SetOptions(false);
     }
 
-    public void GetAbyssal(string ClassName = "Abyssal Angel", bool rankUpClass = true)
+    public void GetAbyssal(bool rankUpClass = true)
     {
-        if (!Core.CheckInventory("Abyssal Angel"))
-            Core.Logger($"this Bot Requires {ClassName}, you dont own it, stopping", stopBot: true);
-
         if (Core.CheckInventory("Abyssal Angel Shadow"))
             return;
-
-        InventoryItem itemInv = Bot.Inventory.Items.First(i => i.Name.ToLower() == ClassName.ToLower() && i.Category == ItemCategory.Class);
+        if (!Core.CheckInventory("Abyssal Angel"))
+        {
+            Core.Logger($"This bot requires \"Abyssal Angel\", stopping the bot");
+            return;
+        }
 
         Adv.rankUpClass("Abyssal Angel");
         Core.BuyItem("curio", 1245, "Abyssal Angel Shadow");

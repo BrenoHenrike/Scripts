@@ -980,7 +980,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
         if (toReturn == null)
         {
-            Logger("Failed to get the Quest Object, please restart the client.", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questID {questID}, please restart the client.", messageBox: true, stopBot: true);
             return new();
         }
 
@@ -1011,7 +1011,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
-            Logger("Failed to get the Quest Object, please restart the client.", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questIDs {String.Join('|', questIDs)}, please restart the client.", messageBox: true, stopBot: true);
             return new();
         }
         return toReturn;
@@ -1450,8 +1450,7 @@ public class CoreBots
     /// <param name="caption">Title of the box</param>
     public void Message(string message, string caption)
     {
-        if (Bot.ShowMessageBox(message, caption) == true)
-            return;
+        Bot.Handlers.RegisterOnce(1, (Bot) => Bot.ShowMessageBox(message, caption));
     }
 
     /// <summary>

@@ -26,7 +26,10 @@ public class HighSeasCommander
             return;
 
         if (!Core.HasAchievement(27, "ip14"))
-            Core.Logger("This bot requiers you to have an account of 10 years or older.", messageBox: true, stopBot: true);
+        {
+            Core.Logger("This bot requiers you to have an account of 10 years or older.", messageBox: true);
+            return;
+        }
 
         UnlockFarm();
 

@@ -782,7 +782,10 @@ public class CoreFarms
             return;
 
         if (!Bot.Quests.IsUnlocked(5120))
-            Core.Logger($"Quest [5120] \"Ziri Is Also Tough\", has yet to be completed, please run \"Farm/REP/BaconCatREP.cs\"", stopBot: true, messageBox: true);
+        {
+            Core.Logger($"Quest [5120] \"Ziri Is Also Tough\", has yet to be completed, please run \"Farm/REP/BaconCatREP.cs\"", messageBox: true);
+            return;
+        }
 
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
@@ -1599,7 +1602,10 @@ public class CoreFarms
             return;
 
         if (!Core.isCompletedBefore(5601))
-            Core.Logger("Farming Quests are not unlocked, Please run: \"Story/Glacera.cs\"", stopBot: true);
+        {
+            Core.Logger("Farming Quests are not unlocked, Please run: \"Story/Glacera.cs\"");
+            return;
+        }
 
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();

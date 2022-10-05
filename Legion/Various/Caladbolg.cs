@@ -35,13 +35,18 @@ public class Caladbogl
             return;
 
         if (!Core.CheckInventory("Altar Of Caladbogl"))
-            Core.Logger("This bot requiers you to have a \"Altar Of Caladbogl\". Stopping the bot.", messageBox: true, stopBot: true);
+        {
+            Core.Logger("This bot requiers you to have a \"Altar Of Caladbogl\". Stopping the bot.", messageBox: true);
+            return;
+        }
 
         if (!Core.CheckInventory("Legion Titan"))
         {
             if (!Core.CheckInventory("Essence of the Undead Legend"))
-                Core.Logger("This bot requiers you to have a \"Essence of the Undead Legend\" (Seasonal - March). Stopping the bot.", messageBox: true, stopBot: true);
-
+            {
+                Core.Logger("This bot requiers you to have a \"Essence of the Undead Legend\" (Seasonal - March). Stopping the bot.", messageBox: true);
+                return;
+            }
             if (!Core.CheckInventory("Undead Legend"))
             {
                 if (!Core.CheckInventory("Undead Legion Overlord"))

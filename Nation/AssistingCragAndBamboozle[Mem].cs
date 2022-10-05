@@ -44,7 +44,10 @@ public class AssistingCragAndBamboozle
         Nation.NationRound4Medal();
 
         if (!Core.CheckInventory("Sparrow's Blood"))
-            Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)", messageBox: true, stopBot: true);
+        {
+            Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)", messageBox: true);
+            return;
+        }
 
         if (Reward == "any")
         {

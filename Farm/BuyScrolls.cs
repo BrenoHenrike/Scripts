@@ -29,9 +29,6 @@ public class BuyScrolls
 
     public void BuyScroll(Scrolls scroll, int quant = -1)
     {
-        if (scroll.ToString() == "0")
-            Core.Logger("No scroll selected, stopping the bot", messageBox: true, stopBot: true);
-
         Quest questData = Core.EnsureLoad((int)scroll);
         string _scroll = questData.Rewards.First().Name;
         quant = quant == -1 ? questData.Rewards.First().MaxStack : quant;
