@@ -11,10 +11,9 @@ public class NulgathDemandsWork
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public GoldenHanzoVoid GHV = new();
-    public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
+    public WillpowerExtraction WillpowerExtraction = new();
 
     public string[] NDWItems =
     {   "Unidentified 35",
@@ -49,23 +48,32 @@ public class NulgathDemandsWork
         if (items == null)
             items = NDWItems;
 
+        var rewards = Core.EnsureLoad(5259).Rewards;
 
         Core.AddDrop(NDWItems);
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop("unidentified 27");
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5259).Rewards;
+        Core.AddDrop("Unidentified 27");
+        Core.AddDrop(rewards.Select(x => x.Name).ToArray());
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
-            
-        foreach (ItemBase item in RewardOptions)
-        {            
-            if (Core.CheckInventory(item.Name, quant))
-                return;
-            Core.FarmingLogger(item.Name, quant);
+        foreach (string item in items)
+        {
+            if (Core.CheckInventory(item, quant))
+                continue;
+
+            int itemID = 0;
+            try
+            {
+                itemID = rewards.First(x => x.Name.ToLower() == item.ToLower()).ID;
+            }
+            catch
+            {
+                continue;
+            }
+
+            Core.FarmingLogger(item, quant);
 
             int i = 0;
-            while (!Bot.ShouldExit && !Core.CheckInventory(item.Name, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 Core.EnsureAccept(5259);
 
@@ -79,10 +87,11 @@ public class NulgathDemandsWork
                 Nation.FarmGemofNulgath(15);
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
-                if (item.Name == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
+
+                if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
                     Core.BuyItem("tercessuinotlim", 1951, 35770);
-                else Core.EnsureComplete(5259, item.ID);
-                Core.ToBank(item.Name);
+                else Core.EnsureComplete(5259, itemID);
+                Core.ToBank(item);
 
                 Core.Logger($"Completed x{i}");
                 i++;
