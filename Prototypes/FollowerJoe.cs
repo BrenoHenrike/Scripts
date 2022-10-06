@@ -87,7 +87,8 @@ public class FollowerJoe
 
         for (int i = 0; i < 3; i++)
         {
-            Core.JumpWait();
+            if (!Bot.Map.PlayerExists(userName))
+                Core.JumpWait();
             Bot.Player.Goto(userName);
             Bot.Sleep(1000);
             if (Bot.Map.PlayerExists(userName))
