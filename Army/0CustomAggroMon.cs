@@ -19,13 +19,13 @@ public class CustomAggroMon
         new Option<string>("map", "Map Name", "Please provide the map you wish to join.", ""),
         new Option<string>("monsters", "Monster Names*",
                             "Please provide the monster names you wish to fight.\n" +
-                            "Split them with a |\n" +
-                            "Example: \"monster1|monster2|monster3\"\n" +
+                            "Split them with a ,\n" +
+                            "Example: \"monster1,monster2,monster3\" or \"monster1, monster2, monster3\"\n" +
                             "* = If left empty, the bot will give you a prompt where you get an overview of all the monsters in the map.", ""),
         new Option<string>("quests", "QuestIDs",
                             "Please provide the monster names you wish to fight.\n" +
-                            "Split them with a |\n" +
-                            "Example: \"1234|1235|1236\"", ""),
+                            "Split them with a ,\n" +
+                            "Example: \"1234,1235,1236\" or \"1234, 1235, 1236\"", ""),
         new Option<ClassType>("classtype", "Class Type", "Would you like to use your Solo or Farm Class?", ClassType.Farm),
         new Option<bool>("genFile", "Save to file", "If true, the bot will generate a copy of these settings in the \"Army/Generated\"", false),
         sArmy.player1,
@@ -59,7 +59,7 @@ public class CustomAggroMon
         string monsters = Bot.Config.Get<string>("monsters");
         if (String.IsNullOrEmpty(monsters) || String.IsNullOrWhiteSpace(monsters))
             monsters = getMonsters();
-        string[] monsterList = monsters.Split('|');
+        string[] monsterList = monsters.Split(',');
         //if (monsterList.Length == 0)//|| monsterList.All(m => _monDataNames.Any(t => t.ToLower().Trim() == m.ToLower().Trim())))
         //    monsterList = getMonsters().Split('|');
 
@@ -143,7 +143,7 @@ public class CustomAggroMon
             InputDialogViewModel monDiag = new("Monsters in /" + map,
                     "Please tell us what monsters you would wanna aggromon?\n\n" +
                     String.Join('\n', _monsters) +
-                    "\n\nDont forget to use | as a divider if you wish to use more than one\nmonster.", false);
+                    "\n\nDont forget to use , as a divider if you wish to use more than one\nmonster.", false);
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(monDiag) != true)
                 Bot.Stop(true);
             return monDiag.DialogTextInput;
