@@ -5,7 +5,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs 
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/Various/DragonBlade.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
 using Skua.Core.Interfaces;
 
 public class LegionDBoN
