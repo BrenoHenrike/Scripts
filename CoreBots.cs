@@ -1764,7 +1764,7 @@ public class CoreBots
 
             lastJumpWait = $"{Bot.Map.Name} | {cell} | {pad}";
 
-            Bot.Sleep(ExitCombatDelay - 200);
+            Bot.Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
         Bot.Combat.Exit();
