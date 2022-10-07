@@ -13,7 +13,7 @@ public class AggroMonReader
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "CustomAggroMon";
+    public string OptionsStorage = "AggroMonReader";
     public List<IOption> Options = new List<IOption>()
     {
         sArmy.player1,
