@@ -10,7 +10,7 @@
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise3.cs
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise4.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/Various/DragonBlade.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
 
 
 using Skua.Core.Interfaces;
