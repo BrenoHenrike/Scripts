@@ -1,7 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
-using Skua.Core.ViewModels;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class AggroMonReader
@@ -34,7 +33,7 @@ public class AggroMonReader
 
         AggroMon();
 
-        //Core.SetOptions(false);
+        Core.SetOptions(false);
     }
 #nullable enable
 
