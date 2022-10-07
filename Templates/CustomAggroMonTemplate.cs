@@ -35,7 +35,7 @@ public class CustomAggroMonTemplate
     }
 
     public void CustomAggroMon()
-        => Army.GeneratedAggoMon(map, monNames, questIDs, classtype);
+        => Army.RunGeneratedAggroMon(map, monNames, questIDs, classtype);
     private List<int> questIDs = new() { };
     private List<string> monNames = new() { };
     private string map = "";

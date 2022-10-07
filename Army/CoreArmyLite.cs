@@ -146,7 +146,7 @@ public class CoreArmyLite
     private bool _getCellsForSmartAggroMon = false;
     private List<string> _SmartAggroMonCells = new();
 
-    public void GeneratedAggoMon(string map, List<string> monNames, List<int> questIDs, ClassType classtype)
+    public void RunGeneratedAggroMon(string map, List<string> monNames, List<int> questIDs, ClassType classtype)
     {
         Bot.Drops.Stop();
         Core.EquipClass(classtype);
