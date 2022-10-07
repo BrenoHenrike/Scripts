@@ -35,21 +35,7 @@ public class CustomAggroMonTemplate
     }
 
     public void CustomAggroMon()
-    {
-        Bot.Drops.Stop();
-        Core.EquipClass(classtype);
-
-        if (questIDs.Count > 0)
-            Core.RegisterQuests(questIDs.ToArray());
-
-        Army.SmartAggroMonStart(map, monNames.ToArray());
-        while (!Bot.ShouldExit)
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-
-        if (questIDs.Count > 0)
-            Core.CancelRegisteredQuests();
-    }
+        => Army.GeneratedAggoMon(map, monNames, questIDs, classtype);
     private List<int> questIDs = new() { };
     private List<string> monNames = new() { };
     private string map = "";
