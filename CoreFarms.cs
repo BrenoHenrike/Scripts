@@ -838,7 +838,7 @@ public class CoreFarms
 
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
-        ToggleBoost(BoostType.Reputation, false);
+        ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
         if (!UseGold)
@@ -880,7 +880,7 @@ public class CoreFarms
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
         }
         Core.CancelRegisteredQuests();
-        ToggleBoost(BoostType.Reputation);
+        ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
     }
 
