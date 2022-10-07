@@ -1426,8 +1426,7 @@ public class Core13LoC
         Story.MapItemQuest(2376, "aqlesson", 1467);
 
         //Reach the Temple
-        Story.KillQuest(2377, "aqlesson", "Ninja "); // <- Intentional space in "Ninja ", AE Moment
-
+        Story.KillQuest(2377, "aqlesson", "Ninja");
 
         //Not All Hope is Lost
         Story.MapItemQuest(2378, "aqlesson", 1468, 8);
