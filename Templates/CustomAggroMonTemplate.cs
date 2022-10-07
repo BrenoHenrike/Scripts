@@ -10,7 +10,7 @@ public class CustomAggroMonTemplate
 
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "CustomAggroMonTemplate";
+    public string OptionsStorage = "CustomAggroMon";
     public List<IOption> Options = new List<IOption>()
     {
         sArmy.player1,
