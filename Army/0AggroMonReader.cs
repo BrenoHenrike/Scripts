@@ -40,6 +40,7 @@ public class AggroMonReader
 
     public void AggroMon()
     {
+        #region Gathering Data
         // Finding file
         _fileDialog = Ioc.Default.GetRequiredService<IFileDialogService>();
         string _scriptPath = _scriptPath = Path.Combine(AppContext.BaseDirectory, "Scripts");
@@ -78,8 +79,11 @@ public class AggroMonReader
             return null;
         }
 
+        #endregion
+
         Core.Logger("Map parsed, will join the following map: /" + map.ToLower(), caller);
 
+        #region Cleaning Data
         // Cleaning up data
         List<string> cells = new();
         for (int i = 0; i < cellPads.Length; i = i + 2)
@@ -131,6 +135,8 @@ public class AggroMonReader
             Core.Logger("Drop parsed, will pickup the following item: " + toAddDrop.First(), caller);
         else if (toAddDrop.Count >= 2)
             Core.Logger("Drops parsed, will pickup the following items: " + String.Join(", ", toAddDrop), caller);
+
+        #endregion
 
         // Showtime
         Core.PrivateRoomNumber = Army.getRoomNr();
