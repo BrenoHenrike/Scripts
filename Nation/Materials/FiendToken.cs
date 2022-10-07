@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation\Various\HanzoOrbQuest.cs
+//cs_include Scripts/Nation/Various/HanzoOrbQuest.cs
 using Skua.Core.Interfaces;
 
 public class FiendToken

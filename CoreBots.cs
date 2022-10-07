@@ -1011,7 +1011,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
-            Logger($"Failed to get the Quest Object for questIDs {String.Join('|', questIDs)}, please restart the client.", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}, please restart the client.", messageBox: true, stopBot: true);
             return new();
         }
         return toReturn;
@@ -2232,23 +2232,22 @@ public class CoreBots
             if (!File.Exists(path))
             {
                 DialogResult consent = Bot.ShowMessageBox(
-                    "We wish to gather data, in an effort to keep us motivated, knowing people use what we make.\n\n" +
-                    "We would gather the following things:\n" +
-                    "· An anon userID we generate which will allows us to know our active user count.\n" +
-                    "· Start time of scripts.\n" +
-                    "· What script is being run.\n" +
-                    "· Stop time of scripts, this would be paired with the point below\n" +
-                    "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
-                    "Consent for this is requiered, and puts my mind at ease. " +
-                    "So you will be able to select what data is being send and what is not.\n\n" +
-                    "Select \"Full\" to give full consent.\n" +
-                    "Select \"Partial\" to give partial consent, you will then get a couple more pop-up boxes where you can select your preferences.\n" +
-                    "Select \"None\" to not consent, we will then gather no data whatsoever.",
+                    "Skua gathers data to help us bot makers get a better idea of what we should focus our efforts on.\n\n" +
+                    "The following information will be observed and collected:\n" +
+                    "· An anonymous user ID, which is generated for you by Skua, to help us estimate the active user count.\n" +
+                    "· How long it takes to start a script.\n" +
+                    "· What scripts are used and how often.\n" +
+                    "· How long it takes to stop a script.\n" +
+                    "· A Script Instance ID, to help us match start- and stoptime.\n\n" +
+                    "However, we require your consent for the same. " +
+                    "You can select what information the developers are allowed to collect from your instance here:\n\n" +
+                    "Select \"Full\" to give full consent to the developers collecting all the aforementioned information.\n" +
+                    "Select \"Partial\" if you would like to choose what information you are comfortable sharing with the developers.\n" +
+                    "Select \"None\" if you would prefer that none of your data is collected.",
 
                     "Data Collection",
                     "Full", "Partial", "None"
                 );
-
                 if (consent.Text == "Full")
                 {
                     genericData = true;

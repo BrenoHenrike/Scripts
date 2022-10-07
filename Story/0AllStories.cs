@@ -549,8 +549,8 @@ public class AllStories
         Eden.EdenStoryline();
         Core.Logger($"Story: Eden - Complete");
 
-        EtherStormWastes.StoryLine();
-        Core.Logger($"Story: Ether Storm Wastes - Complete");
+        EtherStormWastes.DoAll();
+        Core.Logger($"Saga: Ether Storm Wastes - Complete");
 
         ExaltiaTower.StoryLine();
         Core.Logger($"Story: Exaltia Tower - Complete");
