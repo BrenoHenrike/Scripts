@@ -99,6 +99,7 @@ public class CoreAdvanced
         matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         List<ShopItem> items = new();
+        bool memSkipped = false;
 
         foreach (ShopItem item in shopItems)
         {
@@ -119,6 +120,32 @@ public class CoreAdvanced
                     items.Add(item);
                 else if (item.Coins)
                     items.Add(item);
+            }
+            else if (mode == 3 && Bot.Config.Get<bool>("Select", $"{item.ID}"))
+            {
+                Core.Logger($"\"{item.Name}\" will be skipped, as you aren't member.");
+                memSkipped = true;
+            }
+        }
+
+        if (items.Count == 0)
+        {
+            switch (mode)
+            {
+                case 0: // all
+                case 2: // mergeMats
+                    Core.Logger("The bot fetched 0 items to farm. Something must have gone wrong.");
+                    return;
+                case 1: // acOnly
+                    if (shopItems.All(x => !x.Coins))
+                        Core.Logger("The bot fetched 0 items to farm. This is because none of the items in this shop are AC tagged.");
+                    else Core.Logger("The bot fetched 0 items to farm. Something must have gone wrong.");
+                    return;
+                case 3: // select
+                    if (memSkipped)
+                        Core.Logger("The bot fetched 0 items to farm. This is because you aren't member.");
+                    else Core.Logger("The bot fetched 0 items to farm. Something must have gone wrong.");
+                    return;
             }
         }
 
