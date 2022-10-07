@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
 public class WeaponMasteryAC
@@ -9,6 +10,7 @@ public class WeaponMasteryAC
     public CoreBots Core => CoreBots.Instance;
     public CoreNation Nation = new();
     public CoreFarms Farm = new();
+    public Core13LoC LoC = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -49,13 +51,13 @@ public class WeaponMasteryAC
 
                 if (!Core.CheckInventory("Underfriend Blade of Nulgath"))
                 {
-                    if (!Core.CheckInventory("Mirror Realm Token", 10))
+                    LoC.Xiang();
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(3188);
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 10))
                     {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.RegisterQuests(3188);
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 300))
-                            Core.HuntMonsterMapID("mirrorportal", 1);
-                        Core.CancelRegisteredQuests();  
+                        Core.HuntMonsterMapID("mirrorportal", 1);
+                        Core.CancelRegisteredQuests();
                     }
                     if (Bot.Player.Gold <= 100000)
                     {
