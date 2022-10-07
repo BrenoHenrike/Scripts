@@ -7,7 +7,6 @@ public class CustomAggroMonTemplate
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreArmyLite Army = new();
-
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "CustomAggroMon";
