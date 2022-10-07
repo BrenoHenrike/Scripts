@@ -129,14 +129,17 @@ public class CoreAdvanced
             {
                 if (!matsOnly)
                     Core.Logger($"Farming to buy {item.Name} (#{t}/{items.Count})");
+
                 getIngredients(item, 1);
+
                 if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
                     BuyItem(map, shopID, item.ID);
+
                     if (item.Coins)
                         Core.ToBank(item.Name);
-                    else Core.Logger($"{item} Culd not be banked");
+                    else Core.Logger($"{item} could not be banked");
                 }
             }
             if (!matsOnly)
@@ -163,24 +166,44 @@ public class CoreAdvanced
                         else externalQuant = Bot.Inventory.GetQuantity(req.Name) + req.Quantity;
                     }
                 }
+                else if (MaxStackOneItems.Contains(req.Name))
+                    externalQuant = 1;
                 else
                     externalQuant = req.Quantity * (craftingQ - Bot.Inventory.GetQuantity(item.ID));
 
                 if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
                     continue;
 
-                if (shopItems.Select(x => x.ID).Contains(req.ID))
+                if (shopItems.Select(x => x.ID).Contains(req.ID) && !AltFarmItems.Contains(req.Name))
                 {
                     ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
 
-                    getIngredients(selectedItem, req.Quantity);
-                    if (!matsOnly)
-                        BuyItem(map, shopID, selectedItem.ID, req.Quantity);
+                    if (selectedItem.Requirements.Any(r => MaxStackOneItems.Contains(r.Name)))
+                    {
+                        while (!Core.CheckInventory(selectedItem.ID, req.Quantity))
+                        {
+                            getIngredients(selectedItem, req.Quantity);
+                            Bot.Sleep(Core.ActionDelay);
+
+                            if (!matsOnly)
+                                BuyItem(map, shopID, selectedItem.ID, (Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity), selectedItem.Quantity);
+                            else break;
+                        }
+                    }
+                    else
+                    {
+                        getIngredients(selectedItem, req.Quantity);
+                        Bot.Sleep(Core.ActionDelay);
+
+                        if (!matsOnly)
+                            BuyItem(map, shopID, selectedItem.ID, req.Quantity);
+                    }
                 }
                 else
                 {
                     Core.AddDrop(req.Name);
                     externalItem = req;
+
                     findIngredients();
                 }
             }
@@ -190,6 +213,8 @@ public class CoreAdvanced
     public ItemBase externalItem = new();
     public int externalQuant = 0;
     public bool matsOnly = false;
+    public List<string> MaxStackOneItems = new();
+    public List<string> AltFarmItems = new();
 
     /// <summary>
     /// Checks if everything needed to buy the item is present, if not, it will log and return false
@@ -266,11 +291,14 @@ public class CoreAdvanced
         {
             foreach (ItemBase req in item.Requirements)
             {
+                Bot.Drops.Pickup(req.ID);
+                Bot.Wait.ForPickup(req.ID);
+
                 if (!Core.CheckInventory(req.ID, req.Quantity))
                 {
                     if (Core.CheckInventory(req.ID))
                     {
-                        Core.Logger($"Cannot buy {item.Name} from {shopID}. You own {Bot.Inventory.GetQuantity(item.ID)}x {req.Name} but need {req.Quantity} .");
+                        Core.Logger($"Cannot buy {item.Name} from {shopID}. You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name} but need {req.Quantity} .");
                         return false;
                     }
                     Core.Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
