@@ -1838,6 +1838,12 @@ public class CoreBots
                 Bot.Quests.UpdateQuest(598);
                 tryJoin();
                 break;
+
+            case "icestormarena":
+                JumpWait();
+                tryJoin();
+                Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}");
+                break;
         }
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())

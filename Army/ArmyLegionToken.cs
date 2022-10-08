@@ -46,7 +46,7 @@ public class ArmyLegionToken
         Core.SetOptions(disableClassSwap: false);
         bot.Options.RestPackets = false;
 
-        Setup(Bot.Config.Get<Method>("Method"));
+        Setup(Bot.Config.Get<Method>("Method"), 25001);
 
         Core.SetOptions(false);
     }
@@ -55,20 +55,20 @@ public class ArmyLegionToken
     public void Setup(Method Method, int quant = 25000)
     {
         Legion.JoinLegion();
-        
+
         Core.EquipClass(ClassType.Farm);
         if (Method.ToString() == "Dreadrock")
-            GetItem("dreadrock", "*", 4849, "Legion Token", quant);
+            GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", quant);
         if (Method.ToString() == "Shogun_Paragon_Pet")
-            GetItem("fotia", "*", 5755, "Legion Token", quant);
+            GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Legion Token", quant);
         else
         {
             Core.EquipClass(ClassType.Solo);
-            GetItem("legionarena", "Legion Fiend Rider", 6743, "Legion Token", quant);
+            GetItem("legionarena", new[] { "Legion Fiend Rider" }, 6743, "Legion Token", quant);
         }
     }
 
-    public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, int quant = 0)
+    public void GetItem(string map = null, string[] monsters = null, int questID = 000, string item = null, int quant = 0)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -81,10 +81,12 @@ public class ArmyLegionToken
         if (!Bot.Quests.Active.Contains(QuestData))
             Core.RegisterQuests(questID);
 
-        Army.SmartAggroMonStart(map, Monster);
+        foreach (string monster in monsters)
+            Army.SmartAggroMonStart(map, monster);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Core.HuntMonster(map, Monster);
+            Bot.Combat.Attack("*");
+
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }

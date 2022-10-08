@@ -23,6 +23,7 @@ public class FollowerJoe
         new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
         new Option<bool>("LockedMaps", "Try Locked maps?", "If Following an acc thats doing scripts and can potentialy goto a locked map, swap this to true.", true),
         new Option<bool>("Solo?", "Use Solo Class?", "Set to true for Solo Class, False for Farm Class", false),
+        new Option<bool>("CopyWalk", "CopyWalk ", "Set to true if you want to Move to the Same position of the player You follow", false),
         new Option<string>("RoomNumber", "Room Number", "Insert the Room# of the Possible Locked Zone", "Room#"),
     };
 
@@ -63,11 +64,27 @@ public class FollowerJoe
 
         Bot.Events.MapChanged += MapNumberParses;
 
+        if (Bot.Config.Get<bool>("CopyWalk"))
+            Bot.Events.ExtensionPacketReceived += CopyWalkListener;
+
+
         while (!Bot.ShouldExit)
         {
-            if (!tryGoto(playerName) && LockedMaps)
+            if (!tryGoto(playerName))
             {
-                LockedMap();
+                Core.Join("whitemap");
+                Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you. The bot will now hibernate and try to /goto to {playerName} every 60 seconds.", "tryGoto");
+                int min = 1;
+                while (!Bot.ShouldExit)
+                {
+                    Bot.Sleep(60000);
+                    if (tryGoto(playerName))
+                        return;
+                    min++;
+
+                    if (min % 5 == 0)
+                        Core.Logger($"The bot is has been hibernating for {min} minutes");
+                }
             }
 
             if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
@@ -77,6 +94,50 @@ public class FollowerJoe
         }
 
         Bot.Events.MapChanged -= MapNumberParses;
+        Bot.Events.ExtensionPacketReceived -= CopyWalkListener;
+
+
+        void CopyWalkListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "str")
+            {
+                string cmd = data[0];
+                switch (cmd)
+                {
+                    case "uotls":
+                        string WalkPacket = Convert.ToString(packet);
+                        if (WalkPacket.Contains(playerName))
+                        {
+                            int playerNameX = 0;
+                            int playerNameY = 0;
+                            foreach (string str in WalkPacket.Split(','))
+                            {
+                                if (str.Split(':')[0] == "strFrame")
+                                {
+                                    string playerNameCell = str.Split(':')[1];
+                                }
+                                if (str.Split(':')[0] == "strPad")
+                                {
+                                    string playerNamePad = str.Split(':')[1];
+                                }
+                                if (str.Split(':')[0] == "sp")
+                                {
+                                    string playerNameSpeed = str.Split(':')[1];
+                                }
+                                if (str.Split(':')[0] == "tx")
+                                    playerNameX = int.Parse(str.Split(':')[1]);
+                                if (str.Split(':')[0] == "ty")
+                                    playerNameY = int.Parse(str.Split(':')[1]);
+                            }
+                            Bot.Player.WalkTo((int)playerNameX, (int)playerNameY);
+                        }
+                        break;
+                }
+            }
+        }
+
     }
     private string playerName = null;
 
@@ -84,6 +145,10 @@ public class FollowerJoe
     {
         if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo playerObject1) && playerObject1.Cell == Bot.Player.Cell)
             return true;
+        bool LockedZoneWarning = false;
+
+        if (Bot.Config.Get<bool>("LockedMaps"))
+            Bot.Events.ExtensionPacketReceived += LockedZoneListener;
 
         for (int i = 0; i < 3; i++)
         {
@@ -98,8 +163,33 @@ public class FollowerJoe
                 return true;
             }
         }
+        if (Bot.Config.Get<bool>("LockedMaps") && LockedZoneWarning)
+            LockedMap();
+
+        Bot.Events.ExtensionPacketReceived -= LockedZoneListener;
         return false;
+
+        void LockedZoneListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+
+            if (type is not null and "str")
+            {
+                string cmd = data[0];
+                switch (cmd)
+                {
+                    case "warning":
+                        string LockerZonePacket = Convert.ToString(packet);
+                        if (LockerZonePacket.Contains("a Locked zone."))
+                            LockedZoneWarning = true;
+                        break;
+                }
+            }
+        }
+
     }
+
 
     private void MapNumberParses(string map)
     {
