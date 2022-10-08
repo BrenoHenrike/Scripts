@@ -567,7 +567,7 @@ public class CoreAdvanced
     {
         Bot.Wait.ForPickup(ClassName);
 
-        if (!Core.CheckInventory("ClassName"))
+        if (!Core.CheckInventory(ClassName))
             return;
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class);
         if (itemInv == null && !Bot.Inventory.TryGetItem("ClassName", out itemInv))
