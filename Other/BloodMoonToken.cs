@@ -22,13 +22,12 @@ public class BloodMoonToken
 
         Core.FarmingLogger("Blood Moon Token", 300);
         Core.AddDrop("Blood Moon Token");
-
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", 300))
         {
-            Core.EnsureAccept(6059);
+            Core.EnsureAccept(Core.IsMember ? 6060 : 6059);
             Core.HuntMonster("bloodmoon", "Black Unicorn", "Black Blood Vial", isTemp: false);
             Core.HuntMonster("bloodmoon", "Lycan Guard", "Moon Stone", isTemp: false);
-            Core.EnsureComplete(6059);
+            Core.EnsureComplete(Core.IsMember ? 6060 : 6059);
             Bot.Wait.ForPickup("Blood Moon Token");
         }
     }
