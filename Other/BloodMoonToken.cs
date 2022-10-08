@@ -9,7 +9,7 @@ public class BloodMoonToken
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
+        Core.BankingBlackList.Add("Blood Moon Token");
         BMToken();
 
         Core.SetOptions(false);
@@ -23,12 +23,12 @@ public class BloodMoonToken
         Core.FarmingLogger("Blood Moon Token", 300);
         Core.AddDrop("Blood Moon Token");
 
-        Core.RegisterQuests(6059);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", 300))
         {
-            Core.HuntMonster("bloodmoon", "Black Unicorn", "Black Blood Vial", 1, false);
-            Core.HuntMonster("bloodmoon", "Lycan Guard", "Moon Stone", 1, false);
-
+            Core.EnsureAccept(6059);
+            Core.HuntMonster("bloodmoon", "Black Unicorn", "Black Blood Vial", isTemp: false);
+            Core.HuntMonster("bloodmoon", "Lycan Guard", "Moon Stone", isTemp: false);
+            Core.EnsureComplete(6059);
             Bot.Wait.ForPickup("Blood Moon Token");
         }
     }
