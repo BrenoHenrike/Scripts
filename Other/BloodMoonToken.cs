@@ -19,9 +19,9 @@ public class BloodMoonToken
     {
         if (Core.CheckInventory("Blood Moon Token", 300))
             return;
-
         Core.FarmingLogger("Blood Moon Token", 300);
         Core.AddDrop("Blood Moon Token");
+        // Core.RegisterQuests(Core.IsMember ? 6060 : 6059); // uncomment when registerquest is fixed. if more then 1 item is found in inv it only complets once then afks
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", 300))
         {
             Core.EnsureAccept(Core.IsMember ? 6060 : 6059);
