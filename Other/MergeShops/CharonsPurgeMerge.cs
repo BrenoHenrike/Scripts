@@ -107,6 +107,16 @@ public class CharonsPurgeMerge
                     Adv.BuyItem("underworld", 577, req.Name);
                     break;
 
+                case "Golden Bough":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+
+                    Core.EnsureAccept(3010);
+                    Core.HuntMonster("UnderRealm", "Underworld Soul", "Souls Released", 8);
+                    Core.EnsureComplete(3010);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
                 case "Molten Staff":
                     Core.HuntMonster("Fotia", "Fotia Elemental", req.Name, isTemp: false);
                     break;
