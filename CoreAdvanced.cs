@@ -283,7 +283,7 @@ public class CoreAdvanced
         }
 
         //Member Check
-        if (item.Upgrade)
+        if (item.Upgrade && !Core.IsMember)
         {
             Core.Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.");
             return false;
