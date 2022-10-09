@@ -2,132 +2,72 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class ThatStory {
-  public IScriptInterface Bot => IScriptInterface.Instance;
-  public CoreBots Core => CoreBots.Instance;
-  public CoreStory Story = new();
+public class ThatStory
+{
+    public IScriptInterface Bot => IScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new();
 
-  public void ScriptMain(IScriptInterface bot) {
-    Core.SetOptions();
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.SetOptions();
 
-    Storyline();
+        Storyline();
 
-    Core.SetOptions(false);
-  }
+        Core.SetOptions(false);
+    }
 
-  public void Storyline() {
-    if (Core.isCompletedBefore(8374))
-      return;
+    public void Storyline()
+    {
+        if (Core.isCompletedBefore(8374))
+            return;
 
-    Story.PreLoad(this);
+        Story.PreLoad(this);
 
-    //Dolls' Hide and Seek 8363
-    if (!Story.QuestProgression(8363)) {
-      Core.EnsureAccept(8363);
-      Core.Logger("Doing Quest: [8363] - \"Dolls' Hide and Seek\"", "QuestProgression");
-      Core.GetMapItem(9249, 8, "necrocarnival");
-      Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Cartilage Gathered", 9);
-      Core.EnsureComplete(8363);
-      Core.Logger("Completed Quest: [8363] - \"Dolls' Hide and Seek\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8363] - \"Dolls' Hide and Seek\"", "QuestProgression");
+        //Dolls' Hide and Seek 8363
+        Story.MapItemQuest(8363), "necrocarnival", 9249, 8);
+        Story.KillQuest(8363), "necrocarnival", "Gummy Tapeworm");
 
-    //Arts and Crafts 8364
-    if (!Story.QuestProgression(8364)) {
-      Core.EnsureAccept(8364);
-      Core.Logger("Doing Quest: [8364] - \"Arts and Crafts\"", "QuestProgression");
-      Core.GetMapItem(9250, 1, "necrocarnival");
-      Core.HuntMonster("necrocarnival", "Skeleclown", "Clowns Disciplined", 10);
-      Core.EnsureComplete(8364);
-      Core.Logger("Completed Quest: [8364] - \"Arts and Crafts\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8364] - \"Arts and Crafts\"", "QuestProgression");
+        //Arts and Crafts 8364
+        Story.MapItemQuest(8364), "necrocarnival", 9250, 1);
+        Story.KillQuest(8364), "necrocarnival", "Skeleclown");
 
-    //Lemonade, Chewy Ice 8365
-    if (!Story.QuestProgression(8365)) {
-      Core.EnsureAccept(8365);
-      Core.Logger("Doing Quest: [8365] - \"Lemonade, Chewy Ice\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Mooch Treeant", "Red Sap Collected", 9);
-      Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Tape Worms Fried", 9);
-      Core.GetMapItem(9251, 2, "necrocarnival");
-      Core.EnsureComplete(8365);
-      Core.Logger("Completed Quest: [8365] - \"Lemonade, Chewy Ice\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8365] - \"Lemonade, Chewy Ice\"", "QuestProgression");
+        //Lemonade, Chewy Ice 8365
+        Story.MapItemQuest(8365), "necrocarnival", 9251, 2);
+        Story.KillQuest(8365), "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm" });
 
-    //Screams and Tag 8366
-    if (!Story.QuestProgression(8366)) {
-      Core.EnsureAccept(8366);
-      Core.Logger("Doing Quest: [8366] - \"Screams and Tag\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Skeleclown", "Clown Fired", 10);
-      Core.GetMapItem(9252, 1, "necrocarnival");
-      Core.EnsureComplete(8366);
-      Core.Logger("Completed Quest: [8366] - \"Screams and Tag\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8366] - \"Screams and Tag\"", "QuestProgression");
+        //Screams and Tag 8366
+        Story.KillQuest(8366), "necrocarnival", "Skeleclown");
+        Story.MapItemQuest(8366), "necrocarnival", 9252, 1);
 
-    //Playful Teething 8367
-    if (!Story.QuestProgression(8367)) {
-      Core.EnsureAccept(8367);
-      Core.Logger("Doing Quest: [8367] - \"Playful Teething\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Mooch Treeant", "Pet Food", 9);
-      Core.GetMapItem(9253, 4, "necrocarnival");
-      Core.EnsureComplete(8367);
-      Core.Logger("Completed Quest: [8367] - \"Playful Teething\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8367] - \"Playful Teething\"", "QuestProgression");
+        //Playful Teething 8367
+        Story.KillQuest(8367), "necrocarnival", "Mooch Treeant");
+        Story.MapItemQuest(8367), "necrocarnival", 9253, 4);
 
-    //Days Pass 8368
-    if (!Story.QuestProgression(8368)) {
-      Core.EnsureAccept(8368);
-      Core.Logger("Doing Quest: [8368] - \"Days Pass\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Cotton Tick", "Cotton Tick Fluff Collected", 10);
-      Core.GetMapItem(9254, 1, "necrocarnival");
-      Core.EnsureComplete(8368);
-      Core.Logger("Completed Quest: [8368] - \"Days Pass\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8368] - \"Days Pass\"", "QuestProgression");
+        //Days Pass 8368
+        Story.KillQuest(8368), "necrocarnival", "Cotton Tick");
+        Story.MapItemQuest(8368), "necrocarnival", 9254, 1);
 
-    //Pinned Bugs 8369
-    if (!Story.QuestProgression(8369)) {
-      Core.EnsureAccept(8369);
-      Core.Logger("Doing Quest: [8369] - \"Pinned Bugs\"", "QuestProgression");
-      Core.GetMapItem(9255, 1, "necrocarnival");
-      Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Gum Sludge", 10);
-      Core.EnsureComplete(8369);
-      Core.Logger("Completed Quest: [8369] - \"Pinned Bugs\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8369] - \"Pinned Bugs\"", "QuestProgression");
+        //Pinned Bugs 8369
+        Story.MapItemQuest(8369), "necrocarnival", 9255, 1);
+        Story.KillQuest(8369), "necrocarnival", "Gummy Tapeworm");
 
-    //Sweet Glue 8370
-    Story.KillQuest(8370, "necrocarnival", "Mooch Treeant");
+        //Sweet Glue 8370
+        Story.KillQuest(8370), "necrocarnival", "Mooch Treeant");
 
-    //Witch Soup 8371
-    if (!Story.QuestProgression(8371)) {
-      Core.EnsureAccept(8371);
-      Core.Logger("Doing Quest: [8371] - \"Witch Soup\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Gum Eye", 10);
-      Core.HuntMonster("necrocarnival", "Mooch Treeant", "Sticky Bark", 10);
-      Core.HuntMonster("necrocarnival", "Skeleclown", "Finger Tips", 10);
-      Core.GetMapItem(9256, 1, "necrocarnival");
-      Core.EnsureComplete(8371);
-      Core.Logger("Completed Quest: [8371] - \"Witch Soup\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8371] - \"Witch Soup\"", "QuestProgression");
+        //Witch Soup 8371
+        Story.KillQuest(8371), "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm", "Skeleclown" });
+        Story.MapItemQuest(8371), "necrocarnival", 9256, 1);
 
-    //Written Promise 8372
-    if (!Story.QuestProgression(8372)) {
-      Core.EnsureAccept(8372);
-      Core.Logger("Doing Quest: [8372] - \"Yeti Witual\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Cotton Tick", "Red Tick Juice", 10);
-      Core.GetMapItem(9257, 7, "necrocarnival");
-      Core.EnsureComplete(8372);
-      Core.Logger("Completed Quest: [8372] - \"Yeti Witual\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8372] - \"Yeti Witual\"", "QuestProgression");
+        //Written Promise 8372
+        Story.KillQuest(8372), "necrocarnival", "Cotton Tick");
+        Story.MapItemQuest(8372), "necrocarnival", 9257, 7);
 
-    //All Fall Down 8373
-    if (!Story.QuestProgression(8373)) {
-      Core.EnsureAccept(8373);
-      Core.Logger("Doing Quest: [8373] - \"Yeti Witual\"", "QuestProgression");
-      Core.HuntMonster("necrocarnival", "Skeleclown", "Skeleclowns Reaped", 10);
-      Core.GetMapItem(9258, 1, "necrocarnival");
-      Core.EnsureComplete(8373);
-      Core.Logger("Completed Quest: [8373] - \"Yeti Witual\"", "TryComplete");
-    } else Core.Logger("Already Completed: [8373] - \"Yeti Witual\"", "QuestProgression");
-
-    //Lullaby 8374
-    Story.KillQuest(8374, "necrocarnival", "Deva");
-  }
+        //All Fall Down 8373
+        Story.KillQuest(8373), "necrocarnival", "Skeleclown");
+        Story.MapItemQuest(8373), "necrocarnival", 9258, 1);
+      
+        //Lullaby 8374
+        Story.KillQuest(8374, "necrocarnival", "Deva");
+    }
 }
