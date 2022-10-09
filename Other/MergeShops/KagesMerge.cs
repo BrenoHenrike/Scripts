@@ -24,7 +24,7 @@ public class KagesMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Jade Box Trinket", "Jade Box Jewel", "Jade Box Heirloom "});
+        Core.BankingBlackList.AddRange(new[] { "Jade Box Trinket", "Jade Box Jewel", "Jade Box Heirloom" });
         Core.SetOptions();
         Core.Logger($"{Core.IsMember}");
 
@@ -66,12 +66,11 @@ public class KagesMerge
                     Core.RegisterQuests(1593);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("akiba", "Shadow Nukemichi", "Jade Box", 1);
+                        Core.HuntMonster("akiba", "Shadow Nukemichi", "Jade Box");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
-
             }
         }
     }
