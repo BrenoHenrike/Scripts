@@ -34,12 +34,6 @@ public class ArmyChaosRep
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-        {
-            Core.Logger("Fill in all names at once or don't complain when it doesn't work", messageBox: true);
-            Bot.Config.Configure();
-        }
-
         Core.SetOptions();
         bot.Options.RestPackets = false;
         bot.Options.LagKiller = false;

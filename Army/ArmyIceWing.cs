@@ -16,16 +16,13 @@ public class IceWingLevelingArmy
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
     };
 
     public int level = 75;
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
-            Bot.Config.Configure();
-
         Core.SetOptions();
 
         ArmyIceWing();

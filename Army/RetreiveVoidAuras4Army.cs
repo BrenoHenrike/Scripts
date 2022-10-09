@@ -13,7 +13,7 @@ public class RVAArmy
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 1),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false)
+        CoreBots.Instance.SkipOptions,
     };
     private int EssenceQuantity;
 
@@ -37,8 +37,6 @@ public class RVAArmy
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
-        if (!Bot.Config.Get<bool>("skipSetup"))
-            Bot.Config.Configure();
         Core.Unbank(VA);
         WaitingRoom();
 

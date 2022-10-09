@@ -13,14 +13,11 @@ public class CelestialPirateCommander
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("PetOnly", "Do you want to get the pet only?", "Whether to farm only the pet or everthing", false),
-        new Option<bool>("skipSetup", "Skip this window next time?", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false)
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
-            Bot.Config.Configure();
-        
         Core.SetOptions();
 
         GetCPC(Bot.Config.Get<bool>("PetOnly"));
@@ -68,7 +65,7 @@ public class CelestialPirateCommander
             if (Bot.Config.Get<bool>("PetOnly"))
             {
                 Core.EnsureCompleteChoose(7713, new[] { "Polly Roger" });
-                return; 
+                return;
             }
             else
             {

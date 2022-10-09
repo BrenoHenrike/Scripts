@@ -42,9 +42,6 @@ public class ArmyTaintedGem
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions();
@@ -79,7 +76,7 @@ public class ArmyTaintedGem
     {
         Core.Join("boxes");
         if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-        Army.AggroMonCells("Fort2", "Closet", "Fort1", "Boss");
+            Army.AggroMonCells("Fort2", "Closet", "Fort1", "Boss");
         Army.AggroMonStart("boxes");
         Army.DivideOnCells("Fort2", "Closet", "Fort1", "Boss");
 
@@ -94,7 +91,7 @@ public class ArmyTaintedGem
     {
         Core.Join("mountfrost");
         if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-        Army.AggroMonCells("War");
+            Army.AggroMonCells("War");
         Army.AggroMonStart("mountfrost");
         Core.Jump("War", "Left");
 

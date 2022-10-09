@@ -30,9 +30,6 @@ public class SmartVoidAuras
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption") && !Core.CheckInventory(14474, toInv: false) && Core.IsMember)
-            Bot.Config.Configure();
-
         if ((!Bot.Config.Get<bool>("getSDKA") && !Core.IsMember) || (!Core.CheckInventory(14474, toInv: false) && !Core.IsMember))
             Core.BankingBlackList.AddRange(NSoD.Essences);
         Core.BankingBlackList.Add("Void Aura");

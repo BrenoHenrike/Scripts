@@ -33,18 +33,12 @@ public class ArmyTemplate
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-        {
-            Core.Logger("Fill in all names at once or don't complain when it doesn't work", messageBox: true);
-            Bot.Config.Configure();
-        }
-
         Core.BankingBlackList.AddRange(new[] { "add loot here" }); // if loot is Empty for Quest(ac) rewards, delete this.
 
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 
-        GetItems("map", new[] { "mob", "mob" }, 000, new[] {"item", "item"}); //*ONLY* leave Loot Empty for AC(only) quest rewards."
+        GetItems("map", new[] { "mob", "mob" }, 000, new[] { "item", "item" }); //*ONLY* leave Loot Empty for AC(only) quest rewards."
         GetItem("map", "mob", 000, "item"); //*ONLY* leave Loot Empty for AC(only) quest rewards."
 
         //Examples;
@@ -85,8 +79,8 @@ public class ArmyTemplate
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
     }
-    
-    
+
+
     public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
