@@ -50,13 +50,19 @@ public class JuggernautItemsofNulgath
             RewardsList.Add(Item.Name);
         Count = RewardsList.Count();
 
-        ItemBase item = Core.EnsureLoad(837).Rewards.Find(x => x.ID == (int)reward) ?? null;
+        var rewards = Core.EnsureLoad(837).Rewards;
+        ItemBase item = rewards.Find(x => x.ID == (int)reward) ?? null;
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
+        while (!Bot.ShouldExit &&
+                (reward == RewardsSelection.All ?
+                    Core.CheckInventory(rewards.Select(x => x.Name).ToArray(), toInv: false) :
+                    !Core.CheckInventory(item.ID, toInv: false)
+                )
+              )
         {
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
+            if (reward == RewardsSelection.All)
                 Core.Logger($"Farming All {x++}/{Count}");
-            Core.Logger($"... {Bot.Config.Get<RewardsSelection>("RewardsSelection")} ...");
+            else Core.Logger($"... {reward} ...");
 
             Core.EnsureAccept(837);
             Nation.FarmDiamondofNulgath(13);
