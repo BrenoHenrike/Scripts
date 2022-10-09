@@ -41,7 +41,7 @@ public class CoreHollowbornDoomKnight
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("PreFarm", "Pre Farm Dark-/Doom Fragments", "Recommended setting: False", false),
-        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -78,9 +78,6 @@ public class CoreHollowbornDoomKnight
         if (Core.CheckInventory(ADKItems, toInv: false) && Core.CheckInventory("Classic Hollowborn DoomKnight", toInv: false) &&
             Core.CheckInventory(ADKFallsItems, toInv: false) && Core.CheckInventory(ADKReturnsItems, toInv: false))
             return;
-
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
 
         if (Bot.Config.Get<bool>("PreFarm"))
         {

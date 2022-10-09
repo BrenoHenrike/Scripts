@@ -19,7 +19,7 @@ public class RewardSelectTemplate
 
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
         new Option<bool>("SelectReward", "Choose the Reward?", "Select the Reward the Bot will Get, then stop.", false),
         new Option<bool>("AutoRewardChoice", "Let the bot do it?", "does the quest till you have all the rewards possible.", false),
         new Option<Template>("RewardSelect", "Choose Your Reward", "", Template.All)
@@ -28,7 +28,6 @@ public class RewardSelectTemplate
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
 
         RequiredItems();
         QuestsIfNeededSelect();
@@ -58,9 +57,6 @@ public class RewardSelectTemplate
 
     public void OptionsSelect(Template reward = new(), int questID = 000)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
@@ -86,9 +82,6 @@ public class RewardSelectTemplate
 
     public void ForeachSelect(int questID)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)

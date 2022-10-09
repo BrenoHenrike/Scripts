@@ -28,12 +28,8 @@ public class ArmyBloodyChaos
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-        {
-            Core.Logger("Make sure each account starts with similar amounts of Hydra Scales(max 50 difference) and no Escherions Helm/Shattered Swords", messageBox: true);
-            Core.Logger("This script requires 13 inventory spaces. So, make sure you have that or get fucked x)", messageBox: true);
-            Bot.Config.Configure();
-        }
+        Core.Logger("Make sure each account starts with similar amounts of Hydra Scales(max 50 difference) and no Escherions Helm/Shattered Swords", messageBox: true);
+        Core.Logger("This script requires 13 inventory spaces. So, make sure you have that or get fucked x)", messageBox: true);
 
         Core.BankingBlackList.AddRange(Loot);
 

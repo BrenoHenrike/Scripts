@@ -20,7 +20,7 @@ public class FollowerJoe
     public List<IOption> Options = new List<IOption>()
     {
         new Option<string>("playerName", "Player Name", "Insert the name of the player to follow", "Insert Name"),
-        new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
         new Option<bool>("LockedMaps", "Try Locked maps?", "If Following an acc thats doing scripts and can potentialy goto a locked map, swap this to true.", true),
         new Option<bool>("Solo?", "Use Solo Class?", "Set to true for Solo Class, False for Farm Class", false),
         new Option<bool>("CopyWalk", "CopyWalk ", "Set to true if you want to Move to the Same position of the player You follow", false),
@@ -29,9 +29,6 @@ public class FollowerJoe
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("skipSetup"))
-            Bot.Config.Configure();
-
         Core.SetOptions();
 
         FollowJoe(Bot.Config.Get<string>("playerName"), Bot.Config.Get<bool>("LockedMaps"));

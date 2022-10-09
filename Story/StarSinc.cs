@@ -17,6 +17,8 @@ public class StarSinc
     {
         Core.SetOptions();
 
+        Core.BankingBlackList.Add("SuperNova Badge");
+
         StarSincQuests();
 
         Core.SetOptions(false);
@@ -35,7 +37,6 @@ public class StarSinc
 
         if (!Core.CheckInventory("SuperNova Badge"))
         {
-
             if (!Core.CheckInventory("Nova Badge 11.0"))
             {
                 if (!Core.CheckInventory("Nova Badge 10.0"))
@@ -135,9 +136,16 @@ public class StarSinc
         //4413 | Become one with the Universe
         Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(4413);
-        Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30);
+        while (!Core.CheckInventory(30595, 30))
+            Core.HuntMonster("starsinc", "Living Star");
         Core.EnsureComplete(4413);
 
+        Core.JumpWait();
+        foreach (string item in RequiredItems)
+        {
+            Core.ToBank(item);
+            Bot.Sleep(Core.ActionDelay);
+        }
         //4414 | Becoming the Star Dominus
         Core.EnsureAccept(4414);
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Bone dust", 15);
@@ -150,6 +158,6 @@ public class StarSinc
         Core.EnsureAccept(4415);
         Core.HuntMonster("starsinc", "Empowered Prime", "Empowered Primed Defeated", 10);
         Core.EnsureComplete(4415);
-        Core.ToBank(RequiredItems);
+
     }
 }

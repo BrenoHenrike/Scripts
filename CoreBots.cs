@@ -88,6 +88,9 @@ public class CoreBots
     {
         if (changeTo)
         {
+            if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
+                Bot.Config.Configure();
+
             if (CBO_Active())
             {
                 CBOList = File.ReadAllLines(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
@@ -1653,7 +1656,7 @@ public class CoreBots
         //}
     }
 
-    public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false);
+    public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
 
     #endregion

@@ -51,12 +51,6 @@ public class ArmyLegionFealty2
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-        {
-            Core.Logger("Fill in all names at once or don't complain when it doesn't work", messageBox: true);
-            Bot.Config.Configure();
-        }
-
         Core.BankingBlackList.AddRange(LR2);
 
         Core.SetOptions(disableClassSwap: true);
@@ -71,7 +65,7 @@ public class ArmyLegionFealty2
             return;
 
         Legion.JoinLegion();
-        
+
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger($"Conquest Wreath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
@@ -106,7 +100,7 @@ public class ArmyLegionFealty2
             Core.EnsureAccept(questID);
 
         Army.SmartAggroMonStart(map, Monster);
-        
+
         Core.FarmingLogger(item, quant);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Core.HuntMonster(map, Monster, log: false);

@@ -553,8 +553,6 @@ public class CoreAdvanced
             GearStore(true);
     }
 
-
-
     #endregion
 
     #region Gear
