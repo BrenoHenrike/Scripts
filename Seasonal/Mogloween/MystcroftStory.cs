@@ -45,15 +45,7 @@ public class MystcroftStory {
         Story.KillQuest(5424, "timevoid", "Void Phoenix");
 
         //Ooh, Shiny! 5425
-        if (!Story.QuestProgression(5425)) {
-            Core.EnsureAccept(5425);
-            Core.Logger("Doing Quest: [5425] - \"Ooh, Shiny!\"", "QuestProgression");
-            Core.HuntMonster("skytower", "Moonstone", "Moonstone Crystal", 10);
-            Core.HuntMonster("skytower", "Sunstone", "Sunstone Crystal", 10);
-            Core.HuntMonster("skytower", "Star Sapphire", "Sapphire Crystal", 10);
-            Core.EnsureComplete(5425);
-            Core.Logger("Completed Quest: [5425] - \"Ooh, Shiny!\"", "TryComplete");
-        } else Core.Logger("Already Completed: [5425] - \"Ooh, Shiny!\"", "QuestProgression");
+        Story.KillQuest(4358, "skytower", new[] { "Moonstone", "Sunstone", "Star Sapphire" });
 
         //Time to get Dressed Up! 5426
         Story.MapItemQuest(5426, "mystcroftforest", 4800, 1);
