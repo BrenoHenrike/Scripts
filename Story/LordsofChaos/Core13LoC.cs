@@ -2238,14 +2238,21 @@ public class Core13LoC
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
+        // Defeat Drakath!
+        if (!Story.QuestProgression(3876))
+        {
+            Core.EnsureAccept(3876);
+            if (!Core.CheckInventory(26875))
+                Core.KillMonster("finalbattle", "r1", "Left", "*");
+            Core.EnsureComplete(3876);
+        }
+
         // Defeat Drakath! && //Defeat Drakath.. again!
         if (!Story.QuestProgression(3877))
         {
-            Core.EnsureAccept(3876, 3877);
-
-            Core.KillMonster("finalbattle", "r1", "Left", "*");
-            Core.EnsureComplete(3876);
-            Bot.Wait.ForQuestComplete(3876);
+            Core.EnsureAccept(3877);
+            if (!Core.CheckInventory(26876))
+                Core.KillMonster("finalbattle", "r4", "Left", "*");
             Core.EnsureComplete(3877);
         }
 
@@ -2253,7 +2260,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
-            if (!Core.CheckInventory(26876))
+            if (!Core.CheckInventory(26877))
                 Core.KillMonster("finalbattle", "r9", "Left", "*");
             Core.EnsureComplete(3878);
         }
