@@ -230,7 +230,7 @@ public class CoreLegion
         LTShogunParagon(quant);
         LTThanatosParagon(quant);
         LTDreadnaughtParagon(quant);
-        LTFestiveParagonDracolichRider();
+        LTFestiveParagonDracolichRider(quant);
         LTHolidayParagon(quant);
         LTHardCoreParagon(quant);
         LTUW3017(quant);
