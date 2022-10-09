@@ -298,7 +298,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTHolidayParagon(int quant)
+    public void LTHolidayParagon(int quant = 25000)
     {
 
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Holiday Paragon Pet"))
