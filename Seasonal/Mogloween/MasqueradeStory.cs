@@ -31,18 +31,8 @@ public class MasqueradeStory {
         Story.KillQuest(7141, "masquerade", "Kitchen Brownie");
 
         //Things are Getting Hairy 7142
-        if (!Story.QuestProgression(7142)) {
-            Core.EnsureAccept(7142);
-            Core.Logger("Doing Quest: [7142] - \"Things are Getting Hairy\"", "QuestProgression");
-            Core.GetMapItem(6779, 1, "masquerade");
-            Core.GetMapItem(6780, 1, "masquerade");
-            Core.GetMapItem(6781, 1, "masquerade");
-            Core.GetMapItem(6782, 1, "masquerade");
-            Core.GetMapItem(6783, 1, "masquerade");
-            Core.EnsureComplete(7142);
-            Core.Logger("Completed Quest: [7142] - \"Things are Getting Hairy\"", "TryComplete");
-        } else Core.Logger("Already Completed: [7142] - \"Things are Getting Hairy\"", "QuestProgression");
-
+        Story.MapItemQuest(7142, "masquerade", new[] { 6780, 6781, 6782, 6783 });
+        
         //Let 'em Loose 7143
         Story.MapItemQuest(7143, "masquerade", 6784, 1);
 
@@ -59,14 +49,8 @@ public class MasqueradeStory {
         Story.MapItemQuest(7147, "masquerade", 6785, 1);
 
         //Feed Bramblebite 7148
-        if (!Story.QuestProgression(7148)) {
-            Core.EnsureAccept(7148);
-            Core.Logger("Doing Quest: [7148] - \"Feed Bramblebite\"", "QuestProgression");
-            Core.GetMapItem(6786, 6, "masquerade");
-            Core.HuntMonster("masquerade", "Glass Spitter", "Gemseeds", 10);
-            Core.EnsureComplete(7148);
-            Core.Logger("Completed Quest: [7148] - \"Feed Bramblebite\"", "TryComplete");
-        } else Core.Logger("Already Completed: [7148] - \"Feed Bramblebite\"", "QuestProgression");
+        Story.MapItemQuest(7148, "masquerade", 6786, 6);
+        Story.KillQuest(7148, "masquerade", "Glass Spitter");
 
         //So Glamourous 7149
         Story.KillQuest(7149, "masquerade", "Garden Sprite");
@@ -78,14 +62,8 @@ public class MasqueradeStory {
         Story.KillQuest(7151, "masquerade", "Wandering Guest");
 
         //Nap Time for Barb 7152
-        if (!Story.QuestProgression(7152)) {
-            Core.EnsureAccept(7152);
-            Core.Logger("Doing Quest: [7152] - \"Nap Time for Barb\"", "QuestProgression");
-            Core.GetMapItem(6789, 1, "masquerade");
-            Core.HuntMonster("masquerade", "Scriptkeeper", "Put Barb To Sleep", 1);
-            Core.EnsureComplete(7152);
-            Core.Logger("Completed Quest: [7152] - \"Nap Time for Barb\"", "TryComplete");
-        } else Core.Logger("Already Completed: [7152] - \"Nap Time for Barb\"", "QuestProgression");
+        Story.MapItemQuest(7152, "masquerade", 6789, 1);
+        Story.KillQuest(7152, "masquerade", "Scriptkeeper");
 
         //Sneak Out 7153
         Story.MapItemQuest(7153, "masquerade", 6787, 1);
