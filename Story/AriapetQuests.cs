@@ -2,42 +2,49 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class AriapetQuests {
-  public IScriptInterface Bot =>IScriptInterface.Instance;
-  public CoreBots Core =>CoreBots.Instance;
-  public CoreStory Story = new();
+public class AriaPet
+{
+    public IScriptInterface Bot => IScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new();
 
-  public void ScriptMain(IScriptInterface bot) {
-    Core.SetOptions();
-    Storyline();
-    Core.SetOptions(false);
-  }
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.SetOptions();
+        Storyline();
+        Core.SetOptions(false);
+    }
 
-  public void Storyline() {
-    if (Core.isCompletedBefore(46)) return;
+    public void Storyline()
+    {
+        if (!Core.IsMember)
+            return;
+            
+        if (Core.isCompletedBefore(46))
+            return;
 
-    Story.PreLoad(this);
+        Story.PreLoad(this);
 
-    //Pet Food Delivery 10
-    Story.KillQuest(10, "farm", "Scarecrow");
+        //Pet Food Delivery 10
+        Story.KillQuest(10, "farm", "Scarecrow");
 
-    //Starving Pets 41
-    Story.KillQuest(41, "sewer", "Greenrat");
+        //Starving Pets 41
+        Story.KillQuest(41, "sewer", "Greenrat");
 
-    //Picky Eaters 42
-    Story.KillQuest(42, "river", "River Fishman");
+        //Picky Eaters 42
+        Story.KillQuest(42, "river", "River Fishman");
 
-    //Missing Crate 43
-    Story.KillQuest(43, "pirates", "Shark Bait");
+        //Missing Crate 43
+        Story.KillQuest(43, "pirates", "Shark Bait");
 
-    //Wilderness 44
-    Story.KillQuest(44, "guru", "Trobble");
+        //Wilderness 44
+        Story.KillQuest(44, "guru", "Trobble");
 
-    //Trobble Bath 45
-    Story.KillQuest(45, "swordhaven", "Slime");
+        //Trobble Bath 45
+        Story.KillQuest(45, "swordhaven", "Slime");
 
-    //Home Sick 46
-    Story.KillQuest(46, "marsh2", "Soulseeker");
+        //Home Sick 46
+        Story.KillQuest(46, "marsh2", "Soulseeker");
 
-  }
+    }
 }
