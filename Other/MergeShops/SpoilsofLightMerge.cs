@@ -81,22 +81,6 @@ public class SpoilsofLightMerge
                 case "Apprentice of the Light Hair":
                 case "Apprentice of the Light Locks":
                 case "Citadel's Light Blade":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(6560, 6561);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster(
-                            "lightguardwar",
-                            "Citadel Crusader|Lightguard Cast",
-                            "Lightguard Medals",
-                            5
-                        );
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Medal of Light":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
@@ -113,7 +97,7 @@ public class SpoilsofLightMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
-
+                   
                 case "Medal of Honor":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
