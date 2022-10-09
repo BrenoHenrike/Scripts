@@ -92,6 +92,11 @@ public class CoreYnR
         if (Core.CheckInventory("Folded Steel"))
             return;
 
+        Core.Logger("Checking which method to use");
+        if (!Core.isCompletedBefore(793))
+            nonLegion = true;
+        else nonLegion = false;
+
         Core.FarmingLogger("Folded Steel", 1);
         Core.AddDrop("Folded Steel");
 
@@ -134,22 +139,22 @@ public class CoreYnR
         Core.CancelRegisteredQuests();
     }
 
-    public void BlademasterSwordScroll(bool nonLegionMethod = false)
+    public void BlademasterSwordScroll(bool nonLegion = false)
     {
         if (Core.CheckInventory("Blademaster Sword Scroll"))
             return;
 
         Core.Logger("Checking which method to use");
         if (!Core.isCompletedBefore(793))
-            nonLegionMethod = true;
-        else nonLegionMethod = false;
+            nonLegion = true;
+        else nonLegion = false;
 
         SOW.DarkAlly();
         Core.FarmingLogger("Blademaster Sword Scroll", 1);
         Core.AddDrop("Blademaster Sword Scroll");
 
         Core.EquipClass(ClassType.Solo);
-        if (nonLegionMethod)
+        if (nonLegion)
         {
             Core.EnsureAccept(7410);
             Core.Logger("Using Non-Legion variant for the Blademaster Sword Scroll");
