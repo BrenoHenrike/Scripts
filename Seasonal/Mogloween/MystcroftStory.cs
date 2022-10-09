@@ -38,8 +38,8 @@ public class MystcroftStory
         Story.KillQuest(5421, "mystcroftforest", "Grim Goblin");
 
         //Make those Munchies 5422
-        Story.KillQuest(5422, "mystcroftforest", "Eerie Apparition");
         Story.MapItemQuest(5422, "mystcroftforest", 4802, 8);
+        Story.KillQuest(5422, "mystcroftforest", "Eerie Apparition");
 
         //Every Party Needs Drinks 5423
         Story.KillQuest(5423, "mystcroftforest", "Grim Goblin");
