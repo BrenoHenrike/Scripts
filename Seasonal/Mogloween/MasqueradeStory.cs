@@ -2,12 +2,14 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class MasqueradeStory {
+public class MasqueradeStory
+{
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
-    public void ScriptMain(IScriptInterface bot) {
+    public void ScriptMain(IScriptInterface bot)
+    {
         Core.SetOptions();
 
         Storyline();
@@ -15,7 +17,8 @@ public class MasqueradeStory {
         Core.SetOptions(false);
     }
 
-    public void Storyline() {
+    public void Storyline()
+    {
         if (Core.isCompletedBefore(7154))
             return;
 
@@ -31,8 +34,8 @@ public class MasqueradeStory {
         Story.KillQuest(7141, "masquerade", "Kitchen Brownie");
 
         //Things are Getting Hairy 7142
-        Story.MapItemQuest(7142, "masquerade", new[] { 6780, 6781, 6782, 6783 });
-        
+        Story.MapItemQuest(7142, "masquerade", new[] { 6779, 6780, 6781, 6782, 6783 });
+
         //Let 'em Loose 7143
         Story.MapItemQuest(7143, "masquerade", 6784, 1);
 
