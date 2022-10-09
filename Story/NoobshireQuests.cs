@@ -2,78 +2,95 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class GiantTaleStoryWIP {
-  public IScriptInterface Bot =>IScriptInterface.Instance;
-  public CoreBots Core =>CoreBots.Instance;
-  public CoreStory Story = new();
+public class NoobshireQuests
+{
+    public IScriptInterface Bot => IScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new();
 
-  public void ScriptMain(IScriptInterface bot) {
-    Core.SetOptions();
-    doAll();
-    Core.SetOptions(false);
-  }
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.SetOptions();
+        doAll();
+        Core.SetOptions(false);
+    }
 
-  public void doAll() {
-    Story.PreLoad(this);
-    RolithQuests();
-    LowellCatQuests();
-  }
+    public void doAll()
+    {
+        Story.PreLoad(this);
+        RolithQuests();
+        LowellCatQuests();
+    }
 
-  public void RolithQuests() {
-    if (Core.isCompletedBefore(39)) return;
+    public void RolithQuests()
+    {
+        if (Core.isCompletedBefore(39))
+            return;
 
-    //Defend the Rats
-    Story.KillQuest(32, "noobshire", "Kittarian Mouse Eater");
+        //Defend the Rats 32
+        Story.KillQuest(32, "noobshire", "Kittarian Mouse Eater");
 
-    //Rats in the Cradle
-    Story.MapItemQuest(33, "noobshire", 11, 6);
-    Story.KillQuest(33, "noobshire", "Horc Noob");
+        //Rats in the Cradle 33
+        Story.MapItemQuest(33, "noobshire", 11, 6);
+        Story.KillQuest(33, "noobshire", "Horc Noob");
 
-    //Short in Spoons
-    Story.KillQuest(35, "noobshire", "Kittarian Mouse Eater");
+        //Short in Spoons 35
+        Story.KillQuest(35, "noobshire", "Kittarian Mouse Eater");
 
-    //Short in Forks
-    Story.KillQuest(36, "noobshire", "Kittarian Mouse Flayer");
+        //Short in Forks 36
+        Story.KillQuest(36, "noobshire", "Kittarian Mouse Flayer");
 
-    //Letter Interception
-    Story.KillQuest(37, "noobshire", "Horc Noob");
+        //Letter Interception 37
+        Story.KillQuest(37, "noobshire", "Horc Noob");
 
-    //Not A Noob
-    Story.KillQuest(38, "noobshire", "Horc Trainer");
+        //Not A Noob 38
+        Story.KillQuest(38, "noobshire", "Horc Trainer");
 
-    //Missing King
-    Story.MapItemQuest(39, "noobshire", 12, 1);
-    Story.KillQuest(39, "noobshire", "Horc Noob");
-  }
+        //Missing King 39
+        Story.MapItemQuest(39, "noobshire", 12);
+        Story.KillQuest(39, "noobshire", "Horc Noob");
+    }
 
-  public void LowellCatQuests() {
-    if (Core.isCompletedBefore(2196)) return;
+    public void LowellCatQuests()
+    {
+        if (!Core.IsMember)
+            return;
 
-    //PORKON RIPOFF
-    Story.KillQuest(2188, "orctown", "General Porkon");
+        if (Core.isCompletedBefore(2196))
+            return;
 
-    //GRILL THE LOCALS
-    Story.KillQuest(2189, "noobshire", "Horc Noob");
+        //PORKON RIPOFF 2188
+        Story.KillQuest(2188, "orctown", "General Porkon");
 
-    //DOGEAR THE CAT BURGLAR
-    Story.KillQuest(2190, "newbie", "Dogear");
+        //GRILL THE LOCALS 2189
+        Story.KillQuest(2189, "noobshire", "Horc Noob");
 
-    //BLOODTUSK CATWALK
-    Story.MapItemQuest(2191, "bloodtusk", 1270, 1);
+        //DOGEAR THE CAT BURGLAR 2190
+        if (!Story.QuestProgression(2190))
+        {
+            Core.EnsureAccept(2190);
+            Core.KillMonster("newbie", "r4", "right", "Dogear", "Front Wheel Location");
+            Core.KillMonster("newbie", "r4", "right", "Dogear", "Frame Location");
+            Core.KillMonster("newbie", "r4", "right", "Dogear", "Back Wheel Location");
+            Core.EnsureComplete(2190);
+        }
 
-    //You scratch me back...
-    Story.KillQuest(2192, "bloodtusk", "Horc Boar Scout");
+        //BLOODTUSK CATWALK 2191
+        Story.MapItemQuest(2191, "bloodtusk", 1270);
 
-    //...And me scratch yours
-    Story.KillQuest(2193, "bloodtusk", "Rhison");
+        //You scratch me back... 2192
+        Story.KillQuest(2192, "bloodtusk", "Horc Boar Scout");
 
-    //Sign here
-    Story.MapItemQuest(2194, "bloodtusk", 1271, 1);
+        //...And me scratch yours 2193
+        Story.KillQuest(2193, "bloodtusk", "Rhison");
 
-    //THE FRAME UP
-    Story.KillQuest(2195, "sandport", "Giant Cat");
+        //Sign here 2194
+        Story.MapItemQuest(2194, "noobshire", 1271);
 
-    //THAT DARN CAT
-    Story.KillQuest(2196, "giant", "Horc Noob");
-  }
+        //THE FRAME UP 2195
+        Story.KillQuest(2195, "sandport", "Horc Sell-Sword");
+
+        //THAT DARN CAT 2196
+        Story.KillQuest(2196, "giant", "Giant Cat");
+    }
 }
