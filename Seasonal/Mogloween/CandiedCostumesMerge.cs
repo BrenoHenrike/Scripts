@@ -76,6 +76,7 @@ public class CandiedCostumesMerge
                 case "MarshMeowllows":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    //Chocolate and Caramel Cravings 7120
                     Core.RegisterQuests(7120);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -89,6 +90,7 @@ public class CandiedCostumesMerge
                 case "Horehound Bits":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    //Loads of Gummies and Lollies 7121
                     Core.RegisterQuests(7121);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -102,6 +104,7 @@ public class CandiedCostumesMerge
                 case "Kitty Cordials":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    //Fizzies and Stickies and Gooies OH MY 7122
                     Core.RegisterQuests(7122);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -114,24 +117,11 @@ public class CandiedCostumesMerge
                     break;
 
                 case "Candied Jalapeno":
-                    Core.FarmingLogger(req.Name, quant);
+                case "Spicy Sample":
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("candyshop", "Sugarrush Ghoul", "Candied Jalapeno ");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("candyshop", "Sugarrush Ghoul", req.Name, isTemp: false);
                     break;
 
-                case "Spicy Sample":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("chromafection", "Free Samples", "Spicy Sample");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
             }
         }
     }
