@@ -26,7 +26,7 @@ public class EmpoweredBladeMaster
 
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("skipSetup", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
         new Option<bool>("GetAllRewards", "Pick Automatically", "if true, does the quest till you have all the rewards possible. otherwise Gets selcted item", false),
         new Option<rewards>("RewardSelect", "Choose Your Reward", "", rewards.Empowered_Blade_Master)
     };

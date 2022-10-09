@@ -13,7 +13,7 @@ public class FreeBoosts
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
         new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 1),
         new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 1),
         new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 1),
@@ -31,9 +31,6 @@ public class FreeBoosts
 
     public void GetBoostsSelect(int Booster, int GoldBoostQuant, int CLassBoostQuant, int RepBoostQuant) //used when running this script itself.
     {
-         if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         Core.AddDrop("GOLD Boost! (10 min)", "CLASS Boost! (10 min)", "REPUTATION Boost! (10 min)");
 
         int ItemID = (int)Bot.Config.Get<Booster>("Booster");

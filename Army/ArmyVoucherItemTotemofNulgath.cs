@@ -35,9 +35,6 @@ public class ArmyTotemAndGem
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions();

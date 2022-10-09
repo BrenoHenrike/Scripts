@@ -62,7 +62,7 @@ public class FarmerJoeStartingTheAcc
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
         new Option<bool>("OutFit", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),
         new Option<bool>("EquipOutfit", "Equip outfit at the end?", "Yay or Nay", false),
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
@@ -80,9 +80,6 @@ public class FarmerJoeStartingTheAcc
 
     public void StartingTheAcc()
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         #region starting out the acc
         Core.BuyItem("classhalla", 176, "Healer");
         Farm.Experience(30);
@@ -175,7 +172,7 @@ public class FarmerJoeStartingTheAcc
             Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
             Core.Equip(Bot.Config.Get<PetChoice>("PetChoice").ToString());
         }
-        
+
         Core.Logger("We are farmers, bum ba dum bum bum bum bum");
     }
 

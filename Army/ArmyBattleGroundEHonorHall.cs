@@ -32,9 +32,6 @@ public class ArmyBattlegroundE
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
-
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 

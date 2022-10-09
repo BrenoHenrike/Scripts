@@ -32,13 +32,6 @@ public class ArmyPennyForYourThoughts
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-        {
-            Core.Logger("Fill in all names at once or don't complain when it doesn't work", messageBox: true);
-            Bot.Config.Configure();
-        }
-            
-
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
@@ -48,7 +41,7 @@ public class ArmyPennyForYourThoughts
 
         Core.SetOptions(false);
     }
-    
+
     public void Setup()
     {
         Core.PrivateRooms = true;
