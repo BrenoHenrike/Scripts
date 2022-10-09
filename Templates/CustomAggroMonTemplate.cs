@@ -10,8 +10,10 @@ public class CustomAggroMonTemplate
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "CustomAggroMon";
+    public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
+        CoreBots.Instance.SkipOptions,
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -37,6 +39,7 @@ public class CustomAggroMonTemplate
         => Army.RunGeneratedAggroMon(map, monNames, questIDs, classtype);
     private List<int> questIDs = new() { };
     private List<string> monNames = new() { };
+    private List<string> drops = new() { };
     private string map = "";
     private ClassType classtype = ClassType.None;
 }

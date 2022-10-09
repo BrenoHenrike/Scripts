@@ -29,8 +29,6 @@ public class RetrieveVoidAuras
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
         Core.BankingBlackList.AddRange(NSoD.Essences);
 
         Core.SetOptions();

@@ -16,18 +16,33 @@ public class CustomAggroMon
     public string OptionsStorage = "CustomAggroMon";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<string>("map", "Map Name", "Please provide the map you wish to join.", ""),
+        new Option<string>("map", "Map Name",
+                           "Please provide the map you wish to join."),
+
         new Option<string>("monsters", "Monster Names*",
-                            "Please provide the monster names you wish to fight.\n" +
-                            "Split them with a ,\n" +
-                            "Example: \"monster1,monster2,monster3\" or \"monster1, monster2, monster3\"\n" +
-                            "* = If left empty, the bot will give you a prompt where you get an overview of all the monsters in the map.", ""),
+                           "Please provide the monster names or IDs you wish to fight.\n" +
+                           "Split them with a ,\n" +
+                           "Example: \"monster1,monster2,103\" or \"monster1, 102, monster3\"\n" +
+                           "* = If left empty, the bot will give you a prompt where you get an overview of all the monsters in the map."),
+
         new Option<string>("quests", "QuestIDs",
-                            "Please provide the monster names you wish to fight.\n" +
-                            "Split them with a ,\n" +
-                            "Example: \"1234,1235,1236\" or \"1234, 1235, 1236\"", ""),
-        new Option<ClassType>("classtype", "Class Type", "Would you like to use your Solo or Farm Class?", ClassType.Farm),
-        new Option<bool>("genFile", "Save to file", "If true, the bot will generate a copy of these settings in the \"Army/Generated\"", false),
+                           "Please provide the quest IDs you wish to have the quest handle (optional).\n" +
+                           "Split them with a ,\n" +
+                           "Example: \"1234,1235,1236\" or \"1234, 1235, 1236\""),
+
+        new Option<string>("drops", "Drops to pickup",
+                           "Please provide the names of the items you wish to automatically pick up (optional).\n" +
+                           "Split them with a ,\n" +
+                           "Example: \"drop1,drop2,drop3\" or \"drop1, drop2, drop3\""),
+
+        new Option<ClassType>("classtype", "Class Type",
+                              "Would you like to use your Solo or Farm Class?",
+                              ClassType.Farm),
+
+        new Option<bool>("genFile", "Save to file",
+                         "If true, the bot will generate a copy of these settings in the \"Army/Generated\"",
+                         false),
+
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -44,12 +59,12 @@ public class CustomAggroMon
     {
         Core.SetOptions();
 
-        AggroMon();
+        MakeAggroMon();
 
         Core.SetOptions(false);
     }
 
-    public void AggroMon()
+    public void MakeAggroMon()
     {
         string map = Bot.Config.Get<string>("map");
         Core.Join(map);
@@ -60,8 +75,6 @@ public class CustomAggroMon
         if (String.IsNullOrEmpty(monsters) || String.IsNullOrWhiteSpace(monsters))
             monsters = getMonsters();
         string[] monsterList = monsters.Split(',');
-        //if (monsterList.Length == 0)//|| monsterList.All(m => _monDataNames.Any(t => t.ToLower().Trim() == m.ToLower().Trim())))
-        //    monsterList = getMonsters().Split('|');
 
         // player correction
         for (int i = 0; i < monsterList.Length; i++)
@@ -103,6 +116,8 @@ public class CustomAggroMon
             questIDs.Add(ID);
         }
 
+        List<string> drops = Bot.Config.Get<string>("drops").Split(',').ToList();
+
         GenerateFile();
 
         Bot.Drops.Stop();
@@ -141,7 +156,7 @@ public class CustomAggroMon
             }
 
             InputDialogViewModel monDiag = new("Monsters in /" + map,
-                    "Please tell us what monsters you would wanna aggromon?\n\n" +
+                    "Please tell us what monsters you would wanna aggromon? (Names/IDs)\n\n" +
                     String.Join('\n', _monsters) +
                     "\n\nDont forget to use , as a divider if you wish to use more than one\nmonster.", false);
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(monDiag) != true)
@@ -166,8 +181,6 @@ public class CustomAggroMon
 
             int classIndex = FetchIndex("public class CustomAggroMonTemplate");
             template[classIndex] = $"{spaces}public class Generated_{botName.Replace(" ", "")}";
-            //int optionsStorageIndex = FetchIndex("public string OptionsStorage = \"CustomAggroMonTemplate\";");
-            //template[optionsStorageIndex] = $"{spaces}public string OptionsStorage = \"{botName.Replace(" ", "")}\";";
 
             int callingMethodIndex = FetchIndex("CustomAggroMon();");
             template[callingMethodIndex] = $"{spaces}{botName.Replace(" ", "")}();";
@@ -181,6 +194,12 @@ public class CustomAggroMon
             }
             int monsterIndex = FetchIndex("private List<string> monNames = new() { };");
             template[monsterIndex] = $"{spaces}private List<string> monNames = new() {{ \"{String.Join("\", \"", monNames)}\" }};";
+
+            if (drops.Count > 0)
+            {
+                int dropsIndex = FetchIndex("private List<string> drops = new() { };");
+                template[dropsIndex] = $"{spaces}private List<string> drops = new() {{ \"{String.Join("\", \"", drops)}\" }};";
+            }
             int mapIndex = FetchIndex("private string map = \"\";");
             template[mapIndex] = $"{spaces}private string map = \"{map.ToLower().Trim()}\";";
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");

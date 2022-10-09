@@ -230,7 +230,7 @@ public class CoreLegion
         LTShogunParagon(quant);
         LTThanatosParagon(quant);
         LTDreadnaughtParagon(quant);
-        LTFestiveParagonDracolichRider();
+        LTFestiveParagonDracolichRider(quant);
         LTHolidayParagon(quant);
         LTHardCoreParagon(quant);
         LTUW3017(quant);
@@ -241,7 +241,7 @@ public class CoreLegion
 
     public void LTHardCoreParagon(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant) || !Bot.Quests.IsDailyComplete(3394) && Core.CheckInventory("Hardcore Paragon Pet"))
+        if (Core.CheckInventory("Legion Token", quant) || Core.CheckInventory("Hardcore Paragon Pet") || !Bot.Quests.IsDailyComplete(3394))
             return;
 
         Core.AddDrop("Legion Token");
@@ -298,7 +298,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTHolidayParagon(int quant)
+    public void LTHolidayParagon(int quant = 25000)
     {
 
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Holiday Paragon Pet"))

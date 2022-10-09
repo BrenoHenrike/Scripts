@@ -30,8 +30,6 @@ public class CommandingShadowEssences
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption") && !Core.CheckInventory(14474, toInv: false))
-            Bot.Config.Configure();
         Core.SetOptions();
 
         NSoD.CommandingShadowEssences();

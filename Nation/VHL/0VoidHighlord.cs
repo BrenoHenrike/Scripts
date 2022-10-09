@@ -22,8 +22,6 @@ public class VoidHighlord
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
 
