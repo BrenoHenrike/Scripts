@@ -78,7 +78,6 @@ public class CurrentDailyGifts
 
             GetGift(Permanent, "falcontower", "Alteon", "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword");
             GetGift(Permanent, "aqlesson", "Carnax", "Guardian Blade Evolution", "Sanctified Guardian Blade");
-
             GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Demolicious Guard", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard");
             GetGift(AvailableUntil(31, 10), "mystcroftforest", "Barghest", "Skullbound Kamas", "Skullbound Kusarigama", "Skullbound Kama");
             GetGift(Permanent, "evilwardage", "Dilligas", "Oversoul Black Dragon Pet", "Oversoul Black Dragon Battlepet");
