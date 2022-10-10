@@ -62,6 +62,7 @@ public class CoreMogloween
             Core.KillMonster("mogloween", "Pit1", "Right", "Blister", "Mystery Candy", 3);
             Core.EnsureComplete(98);
         }
+        
         //Can't have enough 99
         if (!Story.QuestProgression(99))
         {
