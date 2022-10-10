@@ -63,6 +63,7 @@ public class KagesMerge
                 case "Jade Box Heirloom":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
+                    //Jade Boxes 1593
                     Core.RegisterQuests(1593);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
