@@ -11,11 +11,11 @@ public class ArcAttack
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Storyline();
+        StoryLine();
         Core.SetOptions(false);
     }
 
-    public void Storyline()
+    public void StoryLine()
     {
         if (Core.isCompletedBefore(1169))
             return;
@@ -23,7 +23,7 @@ public class ArcAttack
         Story.PreLoad(this);
 
         //CastleMania: Disharmony and Despair 1155
-        Story.MapItemQuest(1155, "lab", 488, 1);
+        Story.MapItemQuest(1155, "lab", 488);
 
         //Stringing Your Enemies Along 1156
         Story.KillQuest(1156, "lab", "Ant Giant|Giant Scorpion");
@@ -52,9 +52,9 @@ public class ArcAttack
         Story.MapItemQuest(1163, "lab", 492, 10);
 
         //Upward Over the Mountain 1164
-        Story.MapItemQuest(1164, "lab", 493, 1);
+        Story.MapItemQuest(1164, "mountain", 493);
 
         //Charging Up! 1169
-        Story.MapItemQuest(1169, "mountain", 494, 1);
+        Story.MapItemQuest(1169, "mountain", 494);
     }
 }
