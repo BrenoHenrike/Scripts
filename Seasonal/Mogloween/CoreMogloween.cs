@@ -56,10 +56,19 @@ public class CoreMogloween
         Story.KillQuest(97, "mogloween", "Jack-O-Doom");
 
         //Mystery Candy 98
-        Story.KillQuest(98, "mogloween", "Blister");
-
+        if (!Story.QuestProgression(98))
+        {
+            Core.EnsureAccept(98);
+            Core.KillMonster("mogloween", "Pit1", "Right", "Blister", "Mystery Candy", 3);
+            Core.EnsureComplete(98);
+        }
         //Can't have enough 99
-        Story.KillQuest(99, "mogloween", "Blister");
+        if (!Story.QuestProgression(99))
+        {
+            Core.EnsureAccept(99);
+            Core.KillMonster("mogloween", "Pit1", "Right", "Blister", "Mystery Candy", 5);
+            Core.EnsureComplete(99);
+        }
 
         //Squash the King 391
         Story.KillQuest(391, "mogloween", "Great Pumpkin King");
@@ -563,7 +572,7 @@ public class CoreMogloween
         //Lemonade, Chewy Ice 8365
         Story.KillQuest(8365, "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm" });
         Story.MapItemQuest(8365, "necrocarnival", 9251, 2);
-        
+
         //Screams and Tag 8366
         Story.MapItemQuest(8366, "necrocarnival", 9252);
         Story.KillQuest(8366, "necrocarnival", "Skeleclown");
