@@ -265,7 +265,7 @@ public class CoreMogloween
         Story.PreLoad(this);
 
         //Story Time! 3833
-        Story.KillQuest(3833, "crusher", "Bookcase");
+        Story.KillQuest(3833, "poehub", "Bookcase");
 
         //Medicine Man 3834
         if (!Story.QuestProgression(3834))
