@@ -191,7 +191,7 @@ public class CoreMogloween
         Story.MapItemQuest(1361, "pie", 658);
 
         //Remember Your Quest 1362
-        Story.KillQuest(1362, "pie", "Gourdo");
+        Story.KillQuest(1362, "pie", "Myst Imp");
 
         //Head to WillowCreek! 1363
         Story.MapItemQuest(1363, "willowcreek", 657);
