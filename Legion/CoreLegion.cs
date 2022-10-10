@@ -228,6 +228,7 @@ public class CoreLegion
         LTBrightParagon(quant);
         LTArcaneParagon(quant);
         LTShogunParagon(quant);
+        LTMountedParagonPet(quant);
         LTThanatosParagon(quant);
         LTDreadnaughtParagon(quant);
         LTFestiveParagonDracolichRider(quant);
@@ -521,6 +522,26 @@ public class CoreLegion
             Core.HuntMonster("laken", "Mad Scientist", "Taken Axe", 10);
         }
         Core.CancelRegisteredQuests();
+    }
+    
+    public void LTMountedParagonPet(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Mounted Paragon Pet"))
+            return;
+
+        JoinLegion();
+
+        Core.AddDrop("Legion Token");
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(5604);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+        {
+            Core.HuntMonster("frozentower", "Ice Wolf", "Giant Coal Lump", 10);
+            Core.HuntMonster("frozentower", "Ice Wolf", "Small Coal Lump", 8);
+        }
+        Core.CancelRegisteredQuests();
+        
     }
 
     #endregion
