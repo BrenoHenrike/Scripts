@@ -15,7 +15,7 @@ public class AriaPet
         Core.SetOptions(false);
     }
 
-    public void Storyline()
+    public void StoryLine()
     {
         if (!Core.IsMember)
             return;
