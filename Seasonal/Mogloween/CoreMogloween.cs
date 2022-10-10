@@ -84,7 +84,7 @@ public class CoreMogloween
         Story.KillQuest(394, "mogloweengrave", "Thriller");
 
         //Candy Shop Cutscene 395
-        Story.MapItemQuest(395, "candycorn", 69);
+        Story.MapItemQuest(395, "candyshop", 69);
 
     }
 
@@ -97,7 +97,7 @@ public class CoreMogloween
         Story.PreLoad(this);
 
         //Clear A Path 396
-        Story.KillQuest(396, "candyshop", "Dark Moglinster");
+        Story.KillQuest(396, "candyshop", "Dark Moglinster"); 
 
         //Kanthalite-D 397
         Story.KillQuest(397, "candyshop", "Sugarrush Ghoul");
