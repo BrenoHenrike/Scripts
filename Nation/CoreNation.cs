@@ -724,33 +724,34 @@ public class CoreNation
                 }
             }
 
-            if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && item != "Voucher of Nulgath (non-mem)")
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.EnsureAccept(605);
+            // if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && item != "Voucher of Nulgath (non-mem)")
+            // {
+            //     Core.EquipClass(ClassType.Farm);
+            //     Core.EnsureAccept(605);
 
-                Core.HuntMonster("cloister", "Acornent", "Diamonds of Time", isTemp: false);
-                Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Rune of Evil");
+            //     Core.HuntMonster("cloister", "Acornent", "Diamonds of Time", isTemp: false);
+            //     Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Rune of Evil");
 
-                switch (item)
-                {
-                    case "Tainted Gem":
-                        Core.EnsureComplete(605, 4769);
-                        break;
-                    case "Dark Crystal Shard":
-                        Core.EnsureComplete(605, 4770);
-                        break;
-                    case "Gem of Nulgath":
-                        Core.EnsureComplete(605, 6136);
-                        break;
-                    case "Blood Gem of the Archfiend":
-                        Core.EnsureComplete(605, 22332);
-                        break;
-                    default: // Diamond of Nulgath
-                        Core.EnsureComplete(605, 4771);
-                        break;
-                }
-            }
+            //     switch (item)
+            //     {
+            //         case "Tainted Gem":
+            //             Core.EnsureComplete(605, 4769);
+            //             break;
+            //         case "Dark Crystal Shard":
+            //             Core.EnsureComplete(605, 4770);
+            //             break;
+            //         case "Gem of Nulgath":
+            //             Core.EnsureComplete(605, 6136);
+            //             break;
+            //         case "Blood Gem of the Archfiend":
+            //             Core.EnsureComplete(605, 22332);
+            //             break;
+            //         default: // Diamond of Nulgath
+            //             Core.EnsureComplete(605, 4771);
+            //             break;
+            //     }
+            // } //Disabled to to "Diamonds of Time"'s low Drop rate.
+            
             if (item != "Any")
                 Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
