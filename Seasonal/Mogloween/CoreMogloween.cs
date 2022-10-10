@@ -56,7 +56,7 @@ public class CoreMogloween
         Story.KillQuest(97, "mogloween", "Jack-O-Doom");
 
         //Mystery Candy 98
-        Story.KillQuest(98, "mogloween", "Blister");
+        Story.KillQuest(98, "mogloween", "Blister", 3);
 
         //Can't have enough 99
         Story.KillQuest(99, "mogloween", "Blister");
