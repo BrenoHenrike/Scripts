@@ -69,6 +69,7 @@
 
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/ArtixWedding.cs
+//cs_include Scripts/Story/Asylum.cs
 
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
@@ -105,7 +106,6 @@
 //cs_include Scripts/Story/LightoviaCave.cs
 
 //cs_include Scripts/Story/Manor.cs
-//cs_include Scripts/Story/MirrorMaze.cs
 //cs_include Scripts/Story/MustyCave.cs
 
 //cs_include Scripts/Story/NytheraSaga.cs
@@ -233,6 +233,7 @@ public class AllStories
     #region Standalone (sorted alphabetically)
     public Artixpointe Artixpointe = new();
     public ArtixWedding ArtixWedding = new();
+    public Asylum Asylum = new();
 
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
@@ -268,7 +269,6 @@ public class AllStories
     public LightoviaCave LightoviaCave = new();
 
     public Manor Manor = new();
-    public MirrorMaze MirrorMaze = new();
     public MustyCave MustyCave = new();
 
     public NytheraSaga NytheraSaga = new();
@@ -484,7 +484,9 @@ public class AllStories
 
         ArtixWedding.ArtixWeddingComplete();
         Core.Logger($"Story: ArtixWedding - Complete");
-
+        
+        Asylum.StoryLine();
+        Core.Logger($"Story: Asylum - Complete");
 
         Banished.doall();
         Core.Logger($"Story: Banished - Complete");
@@ -581,9 +583,6 @@ public class AllStories
 
         Manor.StoryLine();
         Core.Logger($"Story: Manor - Complete");
-        
-        MirrorMaze.StoryLine();
-        Core.Logger($"Story: MirrorMaze - Complete");
 
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
