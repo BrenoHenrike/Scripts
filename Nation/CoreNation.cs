@@ -339,8 +339,8 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
         {
             Core.EnsureAccept(quant < 25 ? 569 : 7817);
-            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false, log: false);
-            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", 6, log: false);
+            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", quant < 25 ? 25 : 500, false, log: false);
+            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", quant < 25 ? 1 : 6, log: false);
             Core.EnsureComplete(quant < 25 ? 569 : 7817);
             Bot.Drops.Pickup("Tainted Gem");
             Core.Logger($"Completed x{i++}");
