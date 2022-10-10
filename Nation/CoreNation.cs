@@ -338,10 +338,10 @@ public class CoreNation
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
         {
-            Core.EnsureAccept(7817);
+            Core.EnsureAccept(quant < 25 ? 569 : 7817);
             Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false, log: false);
             Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", 6, log: false);
-            Core.EnsureComplete(7817);
+            Core.EnsureComplete(quant < 25 ? 569 : 7817);
             Bot.Drops.Pickup("Tainted Gem");
             Core.Logger($"Completed x{i++}");
             if (Bot.Inventory.IsMaxStack("Tainted Gem"))
