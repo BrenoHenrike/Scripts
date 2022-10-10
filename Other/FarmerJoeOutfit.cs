@@ -99,7 +99,7 @@ public class FarmerJoeStartingTheAcc
 
         #region Prepare for Lvl100
         //step 1 Farming Class:
-        LOC.Complete13LOC();
+        LOC.Complete13LOC(true);
         Farm.ChaosREP();
         Adv.BuyItem("Confrontation", 891, "Chaos Slayer Berserker", shopItemID: 24359);
         AP.GetAP();

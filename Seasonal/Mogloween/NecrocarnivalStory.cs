@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class NecroCarnivalStory
+public class NecrocarnivalStory
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -66,7 +66,7 @@ public class NecroCarnivalStory
         //All Fall Down 8373
         Story.KillQuest(8373, "necrocarnival", "Skeleclown");
         Story.MapItemQuest(8373, "necrocarnival", 9258, 1);
-
+      
         //Lullaby 8374
         Story.KillQuest(8374, "necrocarnival", "Deva");
     }

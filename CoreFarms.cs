@@ -1636,16 +1636,6 @@ public class CoreFarms
                     Bot.Sleep(2500);
                 }
             }
-            //if more maps get stuck, just fillin the bit below.
-            if (map == "Map" && cell != "Cell")
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
-                {
-                    Bot.Sleep(2500);
-                    Core.Jump("Cell", "pad");
-                    Bot.Sleep(2500);
-                }
-            }
         }
     }
 
