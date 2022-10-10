@@ -356,8 +356,8 @@ public class CoreMogloween
         {
             Core.EnsureAccept(5425);
             Core.HuntMonster("skytower", "Moonstone", "Moonstone Crystal", 10);
-            Core.HuntMonster("skytower", "Sunstone", "Sapphire Crystal", 10);
-            Core.HuntMonster("skytower", "Star Sapphire", "Sunstone Crystal", 10);
+            Core.HuntMonster("skytower", "Sunstone", "Sunstone Crystal", 10);
+            Core.HuntMonster("skytower", "Star Sapphire", "Sapphire Crystal", 10);
             Core.EnsureComplete(5425);
         }
 
