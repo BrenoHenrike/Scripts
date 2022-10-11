@@ -224,7 +224,6 @@ public class CoreSDKA
             Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Serpent Scythe", 1, false);
             Core.HuntMonster("ruins", "Dark Witch", "Shadow Whiskers", 6);
 
-            Bot.Drops.Pickup("Dark Spirit Orb");
             if (Core.CheckInventory("Dark Energy", 5000))
                 DoomMerge("Dark Spirit Orb", 100);
         }

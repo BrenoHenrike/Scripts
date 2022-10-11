@@ -181,7 +181,7 @@ public class CoreDailies
                 Core.AddDrop(metal);
                 int metalID = MetalID(metal);
                 Core.EnsureComplete(2098, metalID);
-                Bot.Wait.ForDrop(metal);
+                Bot.Wait.ForPickup(metal);
                 if (ToBank)
                     Core.ToBank(HardCoreMetalsMetals);
                 break;

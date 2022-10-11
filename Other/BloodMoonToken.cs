@@ -10,19 +10,19 @@ public class BloodMoonToken
     {
         Core.SetOptions();
         Core.BankingBlackList.Add("Blood Moon Token");
-        BMToken();
+        BMToken(300);
 
         Core.SetOptions(false);
     }
 
-    public void BMToken()
+    public void BMToken(int quant)
     {
-        if (Core.CheckInventory("Blood Moon Token", 300))
+        if (Core.CheckInventory("Blood Moon Token", quant))
             return;
-        Core.FarmingLogger("Blood Moon Token", 300);
+        Core.FarmingLogger("Blood Moon Token", quant);
         Core.AddDrop("Blood Moon Token");
         // Core.RegisterQuests(Core.IsMember ? 6060 : 6059); // uncomment when registerquest is fixed. if more then 1 item is found in inv it only complets once then afks/
-        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", 300))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", quant))
         {
             Core.EnsureAccept(Core.IsMember ? 6060 : 6059);
             Core.KillMonster("bloodmoon", "r12a", "Left", "Black Unicorn", "Black Blood Vial", isTemp: false);

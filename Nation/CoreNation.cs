@@ -338,10 +338,10 @@ public class CoreNation
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
         {
-            Core.EnsureAccept(7817);
-            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 500, false, log: false);
-            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", 6, log: false);
-            Core.EnsureComplete(7817);
+            Core.EnsureAccept(quant % 25 == 0 ? 7817 : 569);
+            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", quant % 25 == 0 ? 500 : 25, false, log: false);
+            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", quant % 25 == 0 ? 6 : 1, log: false);
+            Core.EnsureComplete(quant % 25 == 0 ? 7817 : 569);
             Bot.Drops.Pickup("Tainted Gem");
             Core.Logger($"Completed x{i++}");
             if (Bot.Inventory.IsMaxStack("Tainted Gem"))
@@ -724,33 +724,34 @@ public class CoreNation
                 }
             }
 
-            if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && item != "Voucher of Nulgath (non-mem)")
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.EnsureAccept(605);
+            // if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && item != "Voucher of Nulgath (non-mem)")
+            // {
+            //     Core.EquipClass(ClassType.Farm);
+            //     Core.EnsureAccept(605);
 
-                Core.HuntMonster("cloister", "Acornent", "Diamonds of Time", isTemp: false);
-                Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Rune of Evil");
+            //     Core.HuntMonster("cloister", "Acornent", "Diamonds of Time", isTemp: false);
+            //     Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Rune of Evil");
 
-                switch (item)
-                {
-                    case "Tainted Gem":
-                        Core.EnsureComplete(605, 4769);
-                        break;
-                    case "Dark Crystal Shard":
-                        Core.EnsureComplete(605, 4770);
-                        break;
-                    case "Gem of Nulgath":
-                        Core.EnsureComplete(605, 6136);
-                        break;
-                    case "Blood Gem of the Archfiend":
-                        Core.EnsureComplete(605, 22332);
-                        break;
-                    default: // Diamond of Nulgath
-                        Core.EnsureComplete(605, 4771);
-                        break;
-                }
-            }
+            //     switch (item)
+            //     {
+            //         case "Tainted Gem":
+            //             Core.EnsureComplete(605, 4769);
+            //             break;
+            //         case "Dark Crystal Shard":
+            //             Core.EnsureComplete(605, 4770);
+            //             break;
+            //         case "Gem of Nulgath":
+            //             Core.EnsureComplete(605, 6136);
+            //             break;
+            //         case "Blood Gem of the Archfiend":
+            //             Core.EnsureComplete(605, 22332);
+            //             break;
+            //         default: // Diamond of Nulgath
+            //             Core.EnsureComplete(605, 4771);
+            //             break;
+            //     }
+            // } //Disabled to to "Diamonds of Time"'s low Drop rate.
+            
             if (item != "Any")
                 Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }

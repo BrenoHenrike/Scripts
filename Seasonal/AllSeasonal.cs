@@ -16,7 +16,8 @@
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
-//cs_include Scripts/Other\BloodMoonToken.cs
+//cs_include Scripts/Other/BloodMoonToken.cs
+//cs_include Scripts/Seasonal/Mogloween/VampireLord.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
 //cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
@@ -57,7 +58,8 @@ public class AllSeasonal
     public MmmmMeatyQuest Meaty = new();
     public DarkLord DarkLord = new();
     public MurderMoon MurderMoon = new();
-    public BloodMoonToken BMToken = new();
+    
+    public VampireLord VPL = new();
     public DageRecruitStory DageRecruit = new();
     public UndervoidStory Undervoid = new();
     public StarFestival StarFestival = new();
@@ -207,8 +209,8 @@ public class AllSeasonal
                 case 11:
                     Core.Logger("Starting Scripts for November");
                     //insert script voids here
+                    VPL.GetClass(false);
                     Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
-                    BMToken.BMToken();
                     break;
 
                 case 12:
