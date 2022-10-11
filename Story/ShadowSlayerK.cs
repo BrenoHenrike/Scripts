@@ -138,9 +138,9 @@ public class ShadowSlayerK
             }
 
             Core.EnsureAccept(8835);
-            Scroll.BuyScroll(BuyScrolls.Scrolls.SpiritRend, 30);
-            Scroll.BuyScroll(BuyScrolls.Scrolls.Eclipse, 15);
-            Scroll.BuyScroll(BuyScrolls.Scrolls.BlessedShard, 30);
+            Scroll.BuyScroll(Scrolls.SpiritRend, 30);
+            Scroll.BuyScroll(Scrolls.Eclipse, 15);
+            Scroll.BuyScroll(Scrolls.BlessedShard, 30);
             if (!Core.CheckInventory("Meat Ration"))
             {
                 Core.EnsureAccept(8263);
