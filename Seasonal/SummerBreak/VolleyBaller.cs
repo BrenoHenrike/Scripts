@@ -43,6 +43,9 @@ public class VolleyBaller
     };
     public void VolleyBallerQuest()
     {
+        if (!Core.isSeasonalMapActive("summerbreak"))
+            return;
+
         Core.AddDrop(Rewards);
 
         int i = 1;

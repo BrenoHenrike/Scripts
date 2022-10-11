@@ -2012,62 +2012,80 @@ public class CoreBots
         return nr < 1000;
     }
 
-    //public bool isSeasonalMapActive(string map, bool log = true)
-    //{
-    //    map = map.ToLower().Replace(" ", "");
-    //    if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
-    //        return true;
+    /// <summary>
+    /// Checks if the map is available for joining or it is seasonal and not yet released
+    /// </summary>
+    public bool isSeasonalMapActive(string map, bool log = true)
+    {
+        map = map.ToLower().Replace(" ", "");
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
+            return true;
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
 
-    //    bool AggroMonsters = false;
-    //    if (Bot.Options.AggroMonsters)
-    //    {
-    //        AggroMonsters = true;
-    //        Bot.Options.AggroMonsters = false;
-    //    }
+        JumpWait();
+        Bot.Events.ExtensionPacketReceived += MapIsNotAvailableListener;
+        bool seasonalMessageProc = false;
 
-    //    JumpWait();
-    //    Bot.Events.ExtensionPacketReceived += PacketListener;
-    //    bool seasonalMessageProc = false;
+        for (int i = 0; i < 20; i++)
+        {
+            Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}");
+            Bot.Wait.ForMapLoad(map);
 
-    //    for (int i = 0; i < 20; i++)
-    //    {
-    //        Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}");
-    //        Bot.Wait.ForMapLoad(map);
+            string? currentMap = Bot.Map.Name;
+            if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
+                break;
 
-    //        string? currentMap = Bot.Map.Name;
-    //        if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
-    //            break;
+            if (seasonalMessageProc)
+            {
+                seasonalMessageProc = false;
+                break;
+            }
 
-    //        if (seasonalMessageProc)
-    //        {
-    //            Bot.Events.ExtensionPacketReceived -= PacketListener;
-    //            return false;
-    //        }
+            if (i == 19)
+                Logger($"Failed to join {map}");
+        }
 
-    //        if (i == 19)
-    //            Logger($"Failed to join {map}");
-    //    }
+        
 
-    //    if (AggroMonsters)
-    //        Bot.Options.AggroMonsters = true;
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
 
-    //    Bot.Events.ExtensionPacketReceived -= PacketListener;
-    //    return true;
+        Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
 
-    //    void PacketListener(dynamic packet)
-    //    {
-    //        string type = packet;
-    //        switch (type)
-    //        {
-    //            case "%xt%warning%-1%\"mogloween\" is not available.%":
-    //                if (log)
-    //                    Logger($"Map \"map\" is currently disabled.");
-    //                seasonalMessageProc = true;
-    //                break;
-    //        }
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
+            return true;
+        else
+            return false;
 
-    //    }
-    //}
+        void MapIsNotAvailableListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "str")
+            {
+                string cmd = data[0];
+                switch (cmd)
+                {
+                    case "warning":
+                        string b = Convert.ToString(packet);
+                        if (b.Contains("is not available."))
+                        {
+                            if (log)
+                                Logger($" \"{map}\" is currently seasonal map. Check Wiki.");
+                            seasonalMessageProc = true;
+                            Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
+                        }
+                        break;
+                }
+            }
+        }
+
+    }
 
     #endregion
 

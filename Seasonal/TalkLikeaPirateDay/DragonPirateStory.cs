@@ -19,6 +19,8 @@ public class DragonPirateStory
 
     public void DragonPirate()
     {
+        if (!Core.isSeasonalMapActive("dragonpirate"))
+            return;
         if (Core.isCompletedBefore(8275))
             return;
 

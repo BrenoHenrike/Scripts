@@ -19,6 +19,8 @@ public class MurderMoon
 
     public void MurderMoonStory()
     {
+        if (!Core.isSeasonalMapActive("murdermoon"))
+            return;
         if (Core.isCompletedBefore(8064))
             return;
 

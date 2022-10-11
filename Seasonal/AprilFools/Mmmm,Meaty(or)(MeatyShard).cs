@@ -21,6 +21,8 @@ public class MmmmMeatyQuest
 
     public void CompleteQuests()
     {
+        if (!Core.isSeasonalMapActive("MeateorTown"))
+            return;
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8613).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)

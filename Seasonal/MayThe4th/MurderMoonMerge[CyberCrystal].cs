@@ -20,6 +20,8 @@ public class MurderMoonMerge
 
     public void CyberCrystal(int quant = 300)
     {
+        if (!Core.isSeasonalMapActive("murdermoon"))
+            return;
         if (Core.CheckInventory("Cyber Crystal", quant))
             return;
 

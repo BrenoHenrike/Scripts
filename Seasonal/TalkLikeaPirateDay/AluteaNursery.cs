@@ -22,6 +22,9 @@ public class AluteaNursery
 
     public void DoAll()
     {
+        if (!Core.isSeasonalMapActive("AluteaNursery"))
+            return;
+            
         AluteaNurseryStory();
         AluteaNurseryRewards();
     }

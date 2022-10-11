@@ -21,6 +21,12 @@ public class BlazingBeachStory
 
     public void StoryLine()
     {
+        if (!Core.isSeasonalMapActive("blazingbeach"))
+            return;
+
+        if (Core.isCompletedBefore(8708))
+            return;
+
         Story.PreLoad(this);
 
         // (Volca)No Trespassing

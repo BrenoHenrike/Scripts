@@ -22,6 +22,8 @@ public class MeateorHuntMerge
 
     public void GetUnoriginalRecipe(int Quant = 300)
     {
+        if (!Core.isSeasonalMapActive("MeateorTown"))
+            return;
         //Item Check
         if (Core.CheckInventory("Unoriginal Recipe", Quant))
             return;
