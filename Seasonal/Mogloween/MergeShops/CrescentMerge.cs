@@ -34,6 +34,8 @@ public class CrescentMerge
 
     public void BuyAllMerge()
     {
+        if (Core.isSeasonalMapActive("crescentmoon"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("crescentmoon", 2172, findIngredients);
 

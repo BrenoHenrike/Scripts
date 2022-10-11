@@ -38,6 +38,8 @@ public class MogloweenSeasonalMerge
 
     public void BuyAllMerge()
     {
+        if (Core.isSeasonalMapActive("mogloween"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("mogloween", 223, findIngredients);
 
