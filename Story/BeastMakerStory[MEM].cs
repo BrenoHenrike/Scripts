@@ -65,8 +65,8 @@ public class BeastMakerStory
         Story.KillQuest(2229, "neverworld", "Generator");
 
         //Shielded Against the Shadows 2230
-        Story.KillQuest(2230, "neverworld", "Fishizzle");
         Story.MapItemQuest(2230, "neverworld", 1319);
+        Story.KillQuest(2230, "neverworld", "Fishizzle");
 
         //Making a Many-armed Army 2231
         Story.KillQuest(2231, "neverworld", "Kennel Door");
