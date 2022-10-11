@@ -1404,49 +1404,35 @@ public class CoreBots
 
         string _class = _this.GetType().ToString();
         string[] compiledScript = CompiledScript();
-        string[] compiledScriptWOWhiteLines = compiledScript.Except(new[] { "" }).ToArray();
 
         int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
         string[] currentScript = File.ReadAllLines(Bot.Manager.LoadedScript);
-        string[] currentScriptWOWhiteLines = currentScript.Except(new[] { "" }).ToArray();
-
-        int seperateClassLine = -1;
         string[]? includedScript = null;
-        string[]? includedScriptWOWhiteLines = null;
 
         bool inCurrentScript = false;
-
-        if (currentScriptWOWhiteLines.Any(line => line.Trim() == $"public class {_class}"))
-        {
-            seperateClassLine = Array.IndexOf(currentScriptWOWhiteLines, currentScriptWOWhiteLines.First(line => line.Trim() == $"public class {_class}")) + 1;
+        if (currentScript.Any(line => line.Trim() == $"public class {_class}"))
             inCurrentScript = true;
-        }
         else
         {
-            string[] cs_includes = currentScriptWOWhiteLines.Where(x => x.StartsWith("//cs_include")).ToArray();
-            foreach (string cs in cs_includes)
+            foreach (string cs in currentScript.Where(x => x.StartsWith("//cs_include")).ToArray())
             {
                 includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
-                includedScriptWOWhiteLines = includedScript.Except(new[] { "" }).ToArray();
-                if (includedScriptWOWhiteLines.Any(line => line.Trim() == $"public class {_class}"))
-                {
-                    seperateClassLine = Array.IndexOf(includedScriptWOWhiteLines, includedScriptWOWhiteLines.First(line => line.Trim() == $"public class {_class}")) + 1;
+
+                if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
                     break;
-                }
             }
         }
 
-        if (seperateClassLine == -1 || includedScript == null || includedScriptWOWhiteLines == null)
+        if (!inCurrentScript && includedScript == null)
         {
-            Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
+            Logger("includedScript is NULL", "DEBUG LOGGER");
             return;
         }
 
         int count = 0;
-        int endOfClass = Array.FindIndex(compiledScript, compiledClassLine, l => l == "}");
         int lastIndex = compiledClassLine;
 
-        foreach (string l in compiledScript[compiledClassLine..endOfClass])
+        foreach (string l in compiledScript[compiledClassLine..Array.FindIndex(compiledScript, compiledClassLine, l => l == "}")])
         {
             if (!l.Contains("Core.DebugLogger(this"))
                 continue;
@@ -1459,7 +1445,7 @@ public class CoreBots
 
         int count2 = 0;
         int lastIndex2 = -1;
-        string[] selectedScript = inCurrentScript ? currentScript : includedScript;
+        string[] selectedScript = inCurrentScript || includedScript == null ? currentScript : includedScript;
         foreach (string l in selectedScript)
         {
             if (!l.Contains("Core.DebugLogger(this"))
