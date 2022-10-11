@@ -69,9 +69,9 @@ public class Noobshire
         if (!Story.QuestProgression(2190))
         {
             Core.EnsureAccept(2190);
-            Core.KillMonster("newbie", "r4", "right", "Dogear", "Front Wheel Location");
-            Core.KillMonster("newbie", "r4", "right", "Dogear", "Frame Location");
-            Core.KillMonster("newbie", "r4", "right", "Dogear", "Back Wheel Location");
+            Core.HuntMonster("newbie", "Dogear", "Front Wheel Location");
+            Core.HuntMonster("newbie", "Dogear", "Frame Location");
+            Core.HuntMonster("newbie", "Dogear", "Back Wheel Location");
             Core.EnsureComplete(2190);
         }
 
