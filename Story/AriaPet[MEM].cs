@@ -11,11 +11,11 @@ public class AriaPet
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Storyline();
+        StoryLine();
         Core.SetOptions(false);
     }
 
-    public void Storyline()
+    public void StoryLine()
     {
         if (!Core.IsMember)
         {
