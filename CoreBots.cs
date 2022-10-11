@@ -250,9 +250,13 @@ public class CoreBots
                 Equip(EquipmentBeforeBot.ToArray());
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
-                if (CustomStopLocation.ToLower() == "home")
-                    Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
-                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap" }
+                if (CustomStopLocation.Trim().ToLower() == "home")
+                {
+                    if (Bot.House.Items.Count(h => h.Equipped) > 0)
+                        Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+                    else Join("whitemap");
+                }
+                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
                     Join(CustomStopLocation);
@@ -266,7 +270,8 @@ public class CoreBots
         }
 
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
-        Bot.Options.CustomGuild = $"< {(Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name").Replace("&lt; ", "< ").Replace(" &gt;", " >"))} >"; ;
+        string guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
+        Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
 
         if (File.Exists($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt"))
             File.Delete($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt");
@@ -1922,6 +1927,7 @@ public class CoreBots
                     Bot.Map.Join(map, cell, pad, ignoreCheck);
                 else Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
                 Bot.Wait.ForMapLoad(strippedMap);
+                Bot.Sleep(200);
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
