@@ -1397,42 +1397,82 @@ public class CoreBots
     public void FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")
         => Logger($"Farming {item} ({Bot.Inventory.GetQuantity(item)}/{quant})", caller);
 
-    public void DebugLogger(object _this, string marker = "Checkpoint", [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
+    public void DebugLogger(object _this, string? marker = null, [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
         if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
             return;
 
         string _class = _this.GetType().ToString();
         string[] compiledScript = CompiledScript();
+        string[] compiledScriptWOWhiteLines = compiledScript.Except(new[] { "" }).ToArray();
 
         int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
-
         string[] currentScript = File.ReadAllLines(Bot.Manager.LoadedScript);
-        int seperateClassLine = -1;
+        string[] currentScriptWOWhiteLines = currentScript.Except(new[] { "" }).ToArray();
 
-        if (currentScript.Any(line => line.Trim() == $"public class {_class}"))
-            seperateClassLine = Array.IndexOf(currentScript, currentScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+        int seperateClassLine = -1;
+        string[]? includedScript = null;
+        string[]? includedScriptWOWhiteLines = null;
+
+        bool inCurrentScript = false;
+
+        if (currentScriptWOWhiteLines.Any(line => line.Trim() == $"public class {_class}"))
+        {
+            seperateClassLine = Array.IndexOf(currentScriptWOWhiteLines, currentScriptWOWhiteLines.First(line => line.Trim() == $"public class {_class}")) + 1;
+            inCurrentScript = true;
+        }
         else
         {
-            string[] cs_includes = currentScript.Where(x => x.StartsWith("//cs_include")).ToArray();
+            string[] cs_includes = currentScriptWOWhiteLines.Where(x => x.StartsWith("//cs_include")).ToArray();
             foreach (string cs in cs_includes)
             {
-                string[] includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
-                if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
+                includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
+                includedScriptWOWhiteLines = includedScript.Except(new[] { "" }).ToArray();
+                if (includedScriptWOWhiteLines.Any(line => line.Trim() == $"public class {_class}"))
                 {
-                    seperateClassLine = Array.IndexOf(includedScript, includedScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+                    seperateClassLine = Array.IndexOf(includedScriptWOWhiteLines, includedScriptWOWhiteLines.First(line => line.Trim() == $"public class {_class}")) + 1;
                     break;
                 }
             }
         }
 
-        if (seperateClassLine == -1)
+        if (seperateClassLine == -1 || includedScript == null || includedScriptWOWhiteLines == null)
         {
             Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
             return;
         }
 
-        Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
+        int count = 0;
+        int endOfClass = Array.FindIndex(compiledScript, compiledClassLine, l => l == "}");
+        int lastIndex = compiledClassLine;
+
+        foreach (string l in compiledScript[compiledClassLine..endOfClass])
+        {
+            if (!l.Contains("Core.DebugLogger(this"))
+                continue;
+
+            count++;
+            lastIndex = Array.FindIndex(compiledScript, lastIndex + 1, _l => _l.Trim() == l.Trim());
+            if (lastIndex + 1 == lineNumber)
+                break;
+        }
+
+        int count2 = 0;
+        int lastIndex2 = -1;
+        string[] selectedScript = inCurrentScript ? currentScript : includedScript;
+        foreach (string l in selectedScript)
+        {
+            if (!l.Contains("Core.DebugLogger(this"))
+                continue;
+
+            count2++;
+            lastIndex2 = Array.FindIndex(selectedScript, lastIndex2 + 1, _l => _l.Trim() == l.Trim());
+
+            if (count == count2)
+                break;
+        }
+
+        Logger($"{marker}{(String.IsNullOrEmpty(marker) ? null : " | ")}{_class} => {caller}, line {lastIndex2 + 1}", "DEBUG LOGGER");
     }
     private bool DL_Enabled { get; set; } = false;
     public string? DL_CallerFilter { get; set; } = null;
