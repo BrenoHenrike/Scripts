@@ -40,7 +40,7 @@ public class EnoughDOOMforanArchfiend
             "Essence Potion", "Essence of Klunk", "Living Star Essence", "Bone Dust",
             "Undead Energy", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
-        // Quest Accept Requirements:
+        // Quest Accept Requirements: "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" 
         NulgathDemandsWork.NDWQuest();
 
         //Quest Turnin Items:
