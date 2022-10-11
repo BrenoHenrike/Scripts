@@ -58,22 +58,17 @@ public class DeathPitArenaRepMerge
                 #endregion
 
                 case "Death Pit Arena Medal":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("deathpit", "Training Dummy", "Death Pit Arena Medal");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("deathpit", "Training Dummy", req.Name, quant, false);
                     break;
 
                 case "General Gall Medal":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    //Battle: You vs General Gall! 5147
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(5147);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        //Battle: You vs General Gall! 5147
                         Core.HuntMonster("deathpit", "General Gall", "General Gall Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
@@ -82,11 +77,11 @@ public class DeathPitArenaRepMerge
 
                 case "General Velm Medal":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    //General Velm 5149
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(5149);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        //General Velm 5149
                         Core.HuntMonster("deathpit", "General Velm", "General Velm Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
@@ -95,11 +90,11 @@ public class DeathPitArenaRepMerge
 
                 case "General Hun'Gar Medal":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    //Do You Even Brawl 5155
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(5155);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        //Do You Even Brawl 5155
                         Core.HuntMonster("deathpit", "Velm's Restorer|Velm's Brawler", "Death Pit Token");
                         Bot.Wait.ForPickup(req.Name);
                     }
@@ -108,11 +103,11 @@ public class DeathPitArenaRepMerge
 
                 case "General Chud Medal":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    //General Chud 5151
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(5151);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        //General Chud 5151
                         Core.HuntMonster("deathpit", "General Chud", "General Chud Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
