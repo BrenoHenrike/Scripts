@@ -62,7 +62,7 @@ public class DeathPitArenaRepMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("deathpit", "Training Dummy");
+                        Core.HuntMonster("deathpit", "Training Dummy", "Death Pit Arena Medal");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -74,7 +74,7 @@ public class DeathPitArenaRepMerge
                     Core.RegisterQuests(5147);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("deathpit", "General Gall");
+                        Core.HuntMonster("deathpit", "General Gall", "General Gall Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -87,7 +87,7 @@ public class DeathPitArenaRepMerge
                     Core.RegisterQuests(5149);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("deathpit", "General Velm");
+                        Core.HuntMonster("deathpit", "General Velm", "General Velm Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -100,7 +100,7 @@ public class DeathPitArenaRepMerge
                     Core.RegisterQuests(5155);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("deathpit", "Velm's Restorer|Velm's Brawler");
+                        Core.HuntMonster("deathpit", "Velm's Restorer|Velm's Brawler", "Death Pit Token");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -113,7 +113,7 @@ public class DeathPitArenaRepMerge
                     Core.RegisterQuests(5151);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("deathpit", "General Chud");
+                        Core.HuntMonster("deathpit", "General Chud", "General Chud Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
