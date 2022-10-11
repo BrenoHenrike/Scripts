@@ -38,7 +38,7 @@ public class BlazingBeachMerge
 
     public void BuyAllMerge()
     {
-        if (Core.isSeasonalMapActive("blazingbeach"))
+        if (!Core.isSeasonalMapActive("blazingbeach"))
             return;
 
         //Only edit the map and shopID here

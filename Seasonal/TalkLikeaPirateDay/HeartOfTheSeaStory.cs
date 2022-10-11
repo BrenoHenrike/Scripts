@@ -19,7 +19,7 @@ public class HeartOfTheSeaStory
 
     public void HeartOfTheSea()
     {
-        if (Core.isSeasonalMapActive("HeartOfTheSea"))
+        if (!Core.isSeasonalMapActive("HeartOfTheSea"))
             return;
         if (Core.isCompletedBefore(6520))
             return;

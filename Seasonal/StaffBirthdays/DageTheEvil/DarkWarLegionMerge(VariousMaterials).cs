@@ -22,7 +22,7 @@ public class DarkWarLegionMerge
 
     public void GetMergeItems()
     {
-        if (Core.isSeasonalMapActive("darkwarlegion"))
+        if (!Core.isSeasonalMapActive("darkwarlegion"))
             return;
         //Needed AddDrop
         Core.AddDrop("Legion Defender Medal", "Legion Trophy", "Legion War Banner", "Soiled Fiend Crystal");

@@ -21,7 +21,7 @@ public class KalaSeasonal
 
     public void StoryLine()
     {
-        if (Core.isSeasonalMapActive("kala"))
+        if (!Core.isSeasonalMapActive("kala"))
             return;
             
         Ran.StoryLine();

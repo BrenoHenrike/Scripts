@@ -22,7 +22,7 @@ public class DarkWarNationMerge
 
     public void GetMergeItems()
     {
-        if (Core.isSeasonalMapActive("darkwarnation"))
+        if (!Core.isSeasonalMapActive("darkwarnation"))
             return;
         //Needed AddDrop
         Core.AddDrop("Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War");

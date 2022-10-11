@@ -20,7 +20,7 @@ public class Frostvale
 
     public void DoAll()
     {
-        if (Core.isSeasonalMapActive("frostvale"))
+        if (!Core.isSeasonalMapActive("frostvale"))
         {
             Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
             return;
@@ -46,7 +46,7 @@ public class Frostvale
 
     public void IceCave()
     {
-        if (Core.isSeasonalMapActive("icecave"))
+        if (!Core.isSeasonalMapActive("icecave"))
             return;
         if (Core.isCompletedBefore(906))
             return;
@@ -111,7 +111,7 @@ public class Frostvale
 
     public void SnowGlobe()
     {
-        if (Core.isSeasonalMapActive("snowglobe"))
+        if (!Core.isSeasonalMapActive("snowglobe"))
             return;
 
         if (Core.isCompletedBefore(1508))
@@ -148,7 +148,7 @@ public class Frostvale
 
     public void Alpine()
     {
-        if (Core.isSeasonalMapActive("alpine"))
+        if (!Core.isSeasonalMapActive("alpine"))
             return;
         if (Core.isCompletedBefore(1521))
             return;
@@ -189,7 +189,7 @@ public class Frostvale
 
     public void SnowyVale()
     {
-        if (Core.isSeasonalMapActive("snowyvale"))
+        if (!Core.isSeasonalMapActive("snowyvale"))
             return;
 
         if (Core.isCompletedBefore(2576))
@@ -289,7 +289,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        if (Core.isSeasonalMapActive("icerise"))
+        if (!Core.isSeasonalMapActive("icerise"))
             return;
 
         if (Core.isCompletedBefore(2582))
@@ -321,7 +321,7 @@ public class Frostvale
 
     public void ColdWindValley()
     {
-        if (Core.isSeasonalMapActive("coldwindvalley"))
+        if (!Core.isSeasonalMapActive("coldwindvalley"))
             return;
 
         if (Core.isCompletedBefore(6132))
@@ -375,7 +375,7 @@ public class Frostvale
 
     public void BrightLights()
     {
-        if (Core.isSeasonalMapActive("icestorm"))
+        if (!Core.isSeasonalMapActive("icestorm"))
             return;
 
         if (Core.isCompletedBefore(8176))
@@ -442,7 +442,7 @@ public class Frostvale
 
     public void Battlefield()
     {
-        if (Core.isSeasonalMapActive("Battlefield"))
+        if (!Core.isSeasonalMapActive("Battlefield"))
             return;
 
         //Not avaiable
@@ -451,42 +451,42 @@ public class Frostvale
 
     public void Darkwinter()
     {
-        if (Core.isSeasonalMapActive("Darkwinter"))
+        if (!Core.isSeasonalMapActive("Darkwinter"))
             return;
         //Not avaiable
     }
 
     public void Frozensoul()
     {
-        if (Core.isSeasonalMapActive("Frozensoul"))
+        if (!Core.isSeasonalMapActive("Frozensoul"))
             return;
         //Not avaiable
     }
 
     public void Howardshill()
     {
-        if (Core.isSeasonalMapActive("Howardshill"))
+        if (!Core.isSeasonalMapActive("Howardshill"))
             return;
         //Not avaiable
     }
 
     public void Icerisepast()
     {
-        if (Core.isSeasonalMapActive("Icerisepast"))
+        if (!Core.isSeasonalMapActive("Icerisepast"))
             return;
         //Not avaiable
     }
 
     public void Winterhorror()
     {
-        if (Core.isSeasonalMapActive("Winterhorror"))
+        if (!Core.isSeasonalMapActive("Winterhorror"))
             return;
         //Not avaiable
     }
 
     public void Gifthulu()
     {
-        if (Core.isSeasonalMapActive("Gifthulu"))
+        if (!Core.isSeasonalMapActive("Gifthulu"))
             return;
         //Not avaiable
     }
@@ -494,7 +494,7 @@ public class Frostvale
 
     public void cryostorm()
     {
-        if (Core.isSeasonalMapActive("cryostorm"))
+        if (!Core.isSeasonalMapActive("cryostorm"))
             return;
         if (Core.isCompletedBefore(4716))
             return;
@@ -548,7 +548,7 @@ public class Frostvale
 
     public void icewindpass()
     {
-        if (Core.isSeasonalMapActive("icewindpass"))
+        if (!Core.isSeasonalMapActive("icewindpass"))
             return;
         //avaiable
         Core.Logger("map: \"icewindpass\" is available, but not finished");
@@ -591,7 +591,7 @@ public class Frostvale
 
     public void icepike()
     {
-        if (Core.isSeasonalMapActive("icepike"))
+        if (!Core.isSeasonalMapActive("icepike"))
             return;
         if (Core.isCompletedBefore(5617))
             return;

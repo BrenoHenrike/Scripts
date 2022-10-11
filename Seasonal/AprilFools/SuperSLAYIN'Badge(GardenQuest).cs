@@ -22,7 +22,7 @@ public class SuperSLAYINBadge
         //Progress Check
         if (Core.isCompletedBefore(8006))
             return;
-        if (Core.isSeasonalMapActive("gardenquest"))
+        if (!Core.isSeasonalMapActive("gardenquest"))
             return;
 
         //Preload Quests

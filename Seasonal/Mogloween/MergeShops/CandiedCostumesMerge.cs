@@ -43,7 +43,7 @@ public class CandiedCostumesMerge
 
     public void BuyAllMerge()
     {
-        if (Core.isSeasonalMapActive("mogloween"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("candyshop", 1761, findIngredients);

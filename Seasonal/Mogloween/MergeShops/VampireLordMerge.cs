@@ -34,7 +34,7 @@ public class VampireLordMerge
 
     public void BuyAllMerge()
     {
-        if (Core.isSeasonalMapActive("mogloween"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("mogloween", 1477, findIngredients);

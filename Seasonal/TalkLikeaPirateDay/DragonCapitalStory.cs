@@ -21,7 +21,7 @@ public class DragonCapitalStory
 
     public void DragonCapital()
     {
-        if (Core.isSeasonalMapActive("dragoncapital"))
+        if (!Core.isSeasonalMapActive("dragoncapital"))
             return;
             
         if (Core.isCompletedBefore(8287))

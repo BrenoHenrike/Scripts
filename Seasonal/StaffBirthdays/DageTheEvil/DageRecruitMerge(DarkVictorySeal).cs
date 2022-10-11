@@ -16,7 +16,7 @@ public class DarkVictorySeal
 
     public void DarkVictorySealFarm()
     {
-        if (Core.isSeasonalMapActive("dagerecruit"))
+        if (!Core.isSeasonalMapActive("dagerecruit"))
             return;
         Core.AddDrop("Dark Victory Seal");
 

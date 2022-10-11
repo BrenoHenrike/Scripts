@@ -47,7 +47,7 @@ public class ExtraCreditAC
 
     public void ExtraFunAC()
     {
-        if (Core.isSeasonalMapActive("extracredit"))
+        if (!Core.isSeasonalMapActive("extracredit"))
             return;
             
         if (Core.CheckInventory(Dogear) && Core.CheckInventory(Bully) && Core.CheckInventory(Locker))

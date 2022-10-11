@@ -22,7 +22,7 @@ public class BlazeBeard
 
     public void TokenQuests()
     {
-        if (Core.isSeasonalMapActive("BlazeBeard"))
+        if (!Core.isSeasonalMapActive("BlazeBeard"))
             return;
 
         if (Core.CheckInventory("Pirate Booty XV", toInv: false))

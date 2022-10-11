@@ -21,7 +21,7 @@ public class BlazingBeachStory
 
     public void StoryLine()
     {
-        if (Core.isSeasonalMapActive("blazingbeach"))
+        if (!Core.isSeasonalMapActive("blazingbeach"))
             return;
 
         if (Core.isCompletedBefore(8708))

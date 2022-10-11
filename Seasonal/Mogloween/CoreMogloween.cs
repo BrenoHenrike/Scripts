@@ -20,7 +20,7 @@ public class CoreMogloween
 
     public void DoAll()
     {
-        if (Core.isSeasonalMapActive("mogloween"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
         Mogloween();
         CandyShop();
@@ -38,7 +38,7 @@ public class CoreMogloween
 
     public void Mogloween()
     {
-        if (Core.isSeasonalMapActive("mogloween"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
         if (Core.isCompletedBefore(395))
             return;
@@ -94,7 +94,7 @@ public class CoreMogloween
 
     public void CandyShop()
     {
-        if (Core.isSeasonalMapActive("candyshop"))
+        if (!Core.isSeasonalMapActive("candyshop"))
             return;
         Mogloween();
         if (Core.isCompletedBefore(401))
@@ -130,7 +130,7 @@ public class CoreMogloween
     }
     public void CandyCorn()
     {
-        if (Core.isSeasonalMapActive("candycorn"))
+        if (!Core.isSeasonalMapActive("candycorn"))
             return;
         CandyShop();
         if (Core.isCompletedBefore(878))
@@ -165,7 +165,7 @@ public class CoreMogloween
     }
     public void Pie()
     {
-        if (Core.isSeasonalMapActive("pie"))
+        if (!Core.isSeasonalMapActive("pie"))
             return;
         CandyShop();
         if (Core.isCompletedBefore(1363))
@@ -269,7 +269,7 @@ public class CoreMogloween
 
     public void PoeHub()
     {
-        if (Core.isSeasonalMapActive("poehub"))
+        if (!Core.isSeasonalMapActive("poehub"))
             return;
         if (Core.isCompletedBefore(4571))
             return;
@@ -335,7 +335,7 @@ public class CoreMogloween
 
     public void MystcroftForest()
     {
-        if (Core.isSeasonalMapActive("mystcroftforest"))
+        if (!Core.isSeasonalMapActive("mystcroftforest"))
             return;
         if (Core.isCompletedBefore(5427))
             return;
@@ -385,7 +385,7 @@ public class CoreMogloween
 
     public void Chromafection()
     {
-        if (Core.isSeasonalMapActive("chromafection"))
+        if (!Core.isSeasonalMapActive("chromafection"))
             return;
         if (Core.isCompletedBefore(6537))
             return;
@@ -419,7 +419,7 @@ public class CoreMogloween
 
     public void TwigsArcade()
     {
-        if (Core.isSeasonalMapActive("twigsarcade"))
+        if (!Core.isSeasonalMapActive("twigsarcade"))
             return;
         if (Core.isCompletedBefore(6579))
             return;
@@ -467,7 +467,7 @@ public class CoreMogloween
 
     public void Masquerade()
     {
-        if (Core.isSeasonalMapActive("masquerade"))
+        if (!Core.isSeasonalMapActive("masquerade"))
             return;
         if (Core.isCompletedBefore(7154))
             return;
@@ -527,7 +527,7 @@ public class CoreMogloween
 
     public void That()
     {
-        if (Core.isSeasonalMapActive("that"))
+        if (!Core.isSeasonalMapActive("that"))
             return;
         if (Core.isCompletedBefore(7179))
             return;
@@ -579,7 +579,7 @@ public class CoreMogloween
 
     public void NecroCarnival()
     {
-        if (Core.isSeasonalMapActive("necrocarnival"))
+        if (!Core.isSeasonalMapActive("necrocarnival"))
             return;
         if (Core.isCompletedBefore(8374))
             return;

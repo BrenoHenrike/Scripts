@@ -33,7 +33,7 @@ public class LunaCoveMerge
 
     public void BuyAllMerge()
     {
-        if (Core.isSeasonalMapActive("lunacove"))
+        if (!Core.isSeasonalMapActive("lunacove"))
             return;
             
         //Only edit the map and shopID here

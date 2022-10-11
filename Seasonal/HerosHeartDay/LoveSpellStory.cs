@@ -19,7 +19,7 @@ public class LoveSpell
 
     public void LoveSpellScript()
     {
-        if (Core.isSeasonalMapActive("lovespell"))
+        if (!Core.isSeasonalMapActive("lovespell"))
             return;
         if (Core.isCompletedBefore(7934))
             return;

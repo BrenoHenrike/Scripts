@@ -32,7 +32,7 @@ public class FrostvalBarbarian
         
         if (Core.CheckInventory("Frostval Barbarian"))
             return;
-        if (Core.isSeasonalMapActive("frostvale"))
+        if (!Core.isSeasonalMapActive("frostvale"))
             return;
 
         Frostvale.DoAll();

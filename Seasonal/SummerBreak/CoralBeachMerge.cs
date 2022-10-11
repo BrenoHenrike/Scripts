@@ -33,7 +33,7 @@ public class CoralBeachMerge
 
     public void BuyAllMerge()
     {
-        if (Core.isSeasonalMapActive("coralbeach"))
+        if (!Core.isSeasonalMapActive("coralbeach"))
             return;
 
         //Only edit the map and shopID here

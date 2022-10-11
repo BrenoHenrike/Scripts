@@ -18,7 +18,7 @@ public class FarmPaintedButterfly
 
     public void PaintedButterfly()
     {
-        if (Core.isSeasonalMapActive("arcadia"))
+        if (!Core.isSeasonalMapActive("arcadia"))
             return;
         Core.AddDrop("Painted Butterfly");
 

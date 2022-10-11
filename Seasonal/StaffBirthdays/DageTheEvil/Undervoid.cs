@@ -19,7 +19,7 @@ public class UndervoidStory
 
     public void CompleteUnderVoid()
     {
-        if (Core.isSeasonalMapActive("undervoid"))
+        if (!Core.isSeasonalMapActive("undervoid"))
             return;
         if (Core.isCompletedBefore(3406))
             return;

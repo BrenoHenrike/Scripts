@@ -28,7 +28,7 @@ public class AlphaPirate
 
     public void GetAlphaPirate(bool rankUpClass = true)
     {
-        if (Core.isSeasonalMapActive("blazebeard"))
+        if (!Core.isSeasonalMapActive("blazebeard"))
             return;
 
         if (!Core.CheckInventory("Alpha Pirate Class Token"))

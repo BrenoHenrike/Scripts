@@ -25,7 +25,7 @@ public class WheeleOfLove
 
     public void WheelOfLoveDungeon()
     {
-        if (Core.isSeasonalMapActive("wheeloflove"))
+        if (!Core.isSeasonalMapActive("wheeloflove"))
             return;
         if (Core.isCompletedBefore(5693))
             return;

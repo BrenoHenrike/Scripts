@@ -2020,7 +2020,6 @@ public class CoreBots
         map = map.ToLower().Replace(" ", "");
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
             return true;
-
         bool AggroMonsters = false;
         if (Bot.Options.AggroMonsters)
         {
@@ -2050,13 +2049,18 @@ public class CoreBots
             if (i == 19)
                 Logger($"Failed to join {map}");
         }
+
         
 
         if (AggroMonsters)
             Bot.Options.AggroMonsters = true;
-            
+
         Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
-        return true;
+
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
+            return true;
+        else
+            return false;
 
         void MapIsNotAvailableListener(dynamic packet)
         {
@@ -2080,6 +2084,7 @@ public class CoreBots
                 }
             }
         }
+
     }
 
     #endregion

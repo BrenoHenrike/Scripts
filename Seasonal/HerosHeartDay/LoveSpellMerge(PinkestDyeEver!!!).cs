@@ -20,7 +20,7 @@ public class PinkestDyeEver
 
     public void PinkestDyeEverScript()
     {
-        if (Core.isSeasonalMapActive("lovespell"))
+        if (!Core.isSeasonalMapActive("lovespell"))
             return;
         if (Core.CheckInventory("Pinkest Dye Ever!!!", 200))
         {

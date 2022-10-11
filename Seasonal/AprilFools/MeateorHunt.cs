@@ -20,7 +20,7 @@ public class MeateorHunt
 
     public void StoryLine()
     {
-        if (Core.isSeasonalMapActive("MeateorTown"))
+        if (!Core.isSeasonalMapActive("MeateorTown"))
             return;
         if (Core.isCompletedBefore(8628))
         {

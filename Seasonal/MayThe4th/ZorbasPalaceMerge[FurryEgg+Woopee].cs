@@ -17,7 +17,7 @@ public class ZorbasPalaceMerge
 
     public void Woopee(int quant = 300)
     {
-        if (Core.isSeasonalMapActive("zorbaspalace"))
+        if (!Core.isSeasonalMapActive("zorbaspalace"))
             return;
         if (Core.CheckInventory("Woopee", quant))
             return;

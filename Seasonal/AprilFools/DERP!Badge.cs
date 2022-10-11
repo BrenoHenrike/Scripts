@@ -22,7 +22,7 @@ public class DERPBadge
         //Progress Check
         if (Core.isCompletedBefore(8007))
             return;
-        if (Core.isSeasonalMapActive("gardenquest"))
+        if (!Core.isSeasonalMapActive("gardenquest"))
             return;
 
         Core.AddDrop(new[] { "Rainbow Derpicorn Guard (L)", "Rainbow Derpicorn Guard (R)" });

@@ -19,7 +19,7 @@ public class FezziniStory
 
     public void FezziniScript()
     {
-        if (Core.isSeasonalMapActive("fezzini"))
+        if (!Core.isSeasonalMapActive("fezzini"))
             return;
         if (Core.isCompletedBefore(7389))
             return;

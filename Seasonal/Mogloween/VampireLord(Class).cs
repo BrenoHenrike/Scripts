@@ -21,7 +21,7 @@ public class VampireLord
 
     public void GetClass(bool rankUpClass = false)
     {
-        if (Core.isSeasonalMapActive("mogloween"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
         if (Core.CheckInventory(41575, toInv: false))
             return;

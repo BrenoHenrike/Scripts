@@ -38,7 +38,7 @@ public class SummerBreakMerge
 
     public void BuyAllMerge()
     {
-        if (Core.isSeasonalMapActive("summerbreak"))
+        if (!Core.isSeasonalMapActive("summerbreak"))
             return;
             
         //Only edit the map and shopID here

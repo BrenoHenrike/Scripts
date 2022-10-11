@@ -19,7 +19,7 @@ public class LowTideStory
 
     public void Storyline()
     {
-        if (Core.isSeasonalMapActive("lowtide"))
+        if (!Core.isSeasonalMapActive("lowtide"))
             return;
         if (Core.isCompletedBefore(8845))
             return;

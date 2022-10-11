@@ -19,7 +19,7 @@ public class RangdaSeasonal
 
     public void StoryLine()
     {
-        if (Core.isSeasonalMapActive("rangda"))
+        if (!Core.isSeasonalMapActive("rangda"))
             return;
         if (Core.isCompletedBefore(7622))
             return;

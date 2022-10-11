@@ -19,7 +19,7 @@ public class GardenQuestMerge
 
     public void GetVegetableTokens()
     {
-        if (Core.isSeasonalMapActive("gardenquest"))
+        if (!Core.isSeasonalMapActive("gardenquest"))
             return;
         Core.AddDrop("Vegetable Token");
         Core.Logger($"Hunting For: Vegetable Token, {Bot.Inventory.GetQuantity("Vegetable Token")}/300");

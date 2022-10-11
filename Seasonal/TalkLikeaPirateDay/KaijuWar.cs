@@ -67,7 +67,7 @@ public class KaijuWar
     public string[] Kaiju = { "Kaiju Cannoneer", "Cannoneer Bandana" };
     public void KaijuItems()
     {
-        if (Core.isSeasonalMapActive("kaijuwar"))
+        if (!Core.isSeasonalMapActive("kaijuwar"))
             return;
 
         if (Core.CheckInventory(AllLoot, toInv: false))

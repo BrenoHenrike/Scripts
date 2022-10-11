@@ -20,7 +20,7 @@ public class BeachPartyTokenItems
 
     public void TokenItems()
     {
-        if (Core.isSeasonalMapActive("beachparty"))
+        if (!Core.isSeasonalMapActive("beachparty"))
             return;
 
         string[] rewards = Core.EnsureLoad(7010).Rewards.Where(x => Core.IsMember ? true : !x.Upgrade).Select(x => x.Name).ToArray();

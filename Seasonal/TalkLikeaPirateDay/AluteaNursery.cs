@@ -22,7 +22,7 @@ public class AluteaNursery
 
     public void DoAll()
     {
-        if (Core.isSeasonalMapActive("AluteaNursery"))
+        if (!Core.isSeasonalMapActive("AluteaNursery"))
             return;
             
         AluteaNurseryStory();

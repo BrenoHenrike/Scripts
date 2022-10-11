@@ -17,7 +17,7 @@ public class EvolvedLeprechaun
 
     public void GetItems()
     {
-        if (Core.isSeasonalMapActive("luck"))
+        if (!Core.isSeasonalMapActive("luck"))
             return;
         if (Core.CheckInventory("Evolved Leprechaun"))
             return;

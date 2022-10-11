@@ -19,7 +19,7 @@ public class BurningBeachStory
 
     public void Storyline()
     {
-        if (Core.isSeasonalMapActive("burningbeach"))
+        if (!Core.isSeasonalMapActive("burningbeach"))
             return;
 
         if (Core.isCompletedBefore(7577))
