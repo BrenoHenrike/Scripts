@@ -50,9 +50,7 @@ public class NulgathDemandsWork
 
         var rewards = Core.EnsureLoad(5259).Rewards;
 
-        Core.AddDrop(NDWItems);
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop("Unidentified 27");
         Core.AddDrop(rewards.Select(x => x.Name).ToArray());
 
         foreach (string item in items)
@@ -88,7 +86,7 @@ public class NulgathDemandsWork
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
 
-                if (item == "Unidentified 35" && !Core.CheckInventory("Unidentified 35", quant) && Core.CheckInventory("Archfiend Essence Fragment", 9))
+                if (item == "Unidentified 35" && Core.CheckInventory("Archfiend Essence Fragment", 9))
                     Core.BuyItem("tercessuinotlim", 1951, 35770);
                 else Core.EnsureComplete(5259, itemID);
                 Core.ToBank(item);
@@ -104,6 +102,7 @@ public class NulgathDemandsWork
         if (Core.CheckInventory("Unidentified 27"))
             return;
 
+        Core.AddDrop("Unidentified 27");
         Nation.Supplies("Unidentified 26", 1, true);
         Core.EnsureAccept(584);
         Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");

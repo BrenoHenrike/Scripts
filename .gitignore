@@ -27,6 +27,7 @@ Class1.cs
 *.code-workspace
 Projects
 .shacache
-ArmyOnly
+UltraBosses
+CoreArmy.cs
 z_CompiledScript.cs
 Generated
