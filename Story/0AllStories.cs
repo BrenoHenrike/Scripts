@@ -66,17 +66,20 @@
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
-
+//cs_include Scripts/Story/ArcAttack.cs
+//cs_include Scripts/Story/AriaPet[MEM].cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/ArtixWedding.cs
 
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/Story/BeastMakerStory[MEM].cs
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/Borgars.cs
 
 //cs_include Scripts/Story/CastleTunnels.cs
+//cs_include Scripts/Story/Cleric.cs
 //cs_include Scripts/Story/CruxShip.cs
 
 //cs_include Scripts/Story/DarkCarnax.cs
@@ -98,6 +101,7 @@
 //cs_include Scripts/Story/FrozenNorthlands.cs
 
 //cs_include Scripts/Story/GameHaven.cs
+//cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Story/Glacera.cs
 
 //cs_include Scripts/Story/J6Saga.cs
@@ -108,6 +112,7 @@
 //cs_include Scripts/Story/MirrorMaze.cs
 //cs_include Scripts/Story/MustyCave.cs
 
+//cs_include Scripts/Story/Noobshire.cs
 //cs_include Scripts/Story/NytheraSaga.cs
 
 //cs_include Scripts/Story/Oddities.cs
@@ -231,16 +236,20 @@ public class AllStories
     #endregion
 
     #region Standalone (sorted alphabetically)
+    public ArcAttack ArcAttack = new();
+    public AriaPet AriaPet = new();
     public Artixpointe Artixpointe = new();
     public ArtixWedding ArtixWedding = new();
 
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
+    public BeastMakerStory BeastMakerStory = new();
     public BloodMoon BloodMoon = new();
     public Bludrut Bludrut = new();
     public Borgars Borgars = new();
 
     public CastleTunnels CastleTunnels = new();
+    public Cleric Cleric = new();
     public CruxShip CruxShip = new();
 
     public DarkCarnaxStory DarkCarnax = new();
@@ -259,6 +268,7 @@ public class AllStories
     public ExaltiaTower ExaltiaTower = new();
 
     public Gamehaven Gamehaven = new();
+    public GiantTaleStory GiantTaleStory = new();
 
     public FireHouse FireHouse = new();
     public FrozenNorthlands FrozenNorthlands = new();
@@ -271,6 +281,7 @@ public class AllStories
     public MirrorMaze MirrorMaze = new();
     public MustyCave MustyCave = new();
 
+    public Noobshire Noobshire = new();
     public NytheraSaga NytheraSaga = new();
 
     public J6Saga J6Saga = new();
@@ -478,6 +489,14 @@ public class AllStories
         #endregion
 
         #region Standalone
+        ArcAttack.StoryLine();
+        Core.Logger($"Story: Arc Attack - Complete");
+
+        if (Core.IsMember)
+        {
+            AriaPet.StoryLine();
+            Core.Logger($"Story: Aria Pet - Complete");
+        }
 
         Artixpointe.OmniArtifact();
         Core.Logger($"Story: Artixpointe - Complete");
@@ -491,6 +510,12 @@ public class AllStories
 
         BattleUnder.BattleUnderAll();
         Core.Logger($"Story: BattleUnder - Complete");
+
+        if (Core.IsMember)
+        {
+            BeastMakerStory.StoryLine();
+            Core.Logger($"Story: Beast Maker - Complete");
+        }
 
         BloodMoon.BloodMoonSaga();
         Core.Logger($"Story: Blood Moon - Complete");
@@ -507,6 +532,9 @@ public class AllStories
 
         CelestialPast.CompleteCeletialPast();
         Core.Logger($"Story: CelestialPast - Complete");
+
+        Cleric.StoryLine();
+        Core.Logger($"Story: Cleric - Complete");
 
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
@@ -568,6 +596,9 @@ public class AllStories
         Gamehaven.Storyline();
         Core.Logger($"Story: Game Haven - Complete");
 
+        GiantTaleStory.doAll();
+        Core.Logger($"Story: Giant Tale - Complete");
+
         GlaceraStory.DoAll();
         Core.Logger($"Story: Glacera - Complete");
 
@@ -588,6 +619,8 @@ public class AllStories
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
 
+        Noobshire.doAll();
+        Core.Logger($"Story: Noobshire - Complete");
 
         NytheraSaga.DoAll();
         Core.Logger($"Saga: Nythera - Complete");
