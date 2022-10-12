@@ -24,6 +24,9 @@ public class StarSinc
 
     public void StarSincQuests()
     {
+        if (Core.CheckInventory("SuperNova Badge"))
+            return;
+
         Story.LegacyQuestManager(QuestLogic, 4400, 4401, 4402, 4403, 4404, 4405, 4406, 4407, 4408, 4409, 4410, 4412);
 
         void QuestLogic()
