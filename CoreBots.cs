@@ -1687,6 +1687,14 @@ public class CoreBots
         //}
     }
 
+    public int[] FromTo(int from, int to)
+    {
+        List<int> toReturn = new();
+        for (int i = from; i < to + 1; i++)
+            toReturn.Add(i);
+        return toReturn.ToArray();
+    }
+
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
 
@@ -2050,7 +2058,7 @@ public class CoreBots
                 Logger($"Failed to join {map}");
         }
 
-        
+
 
         if (AggroMonsters)
             Bot.Options.AggroMonsters = true;
