@@ -470,6 +470,8 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 528, 255);
 
             Bot.Kill.Monster("Team B Captain");
+            Bot.Wait.ForDrop(item);
+            Bot.Sleep(Core.ActionDelay);
             Bot.Wait.ForPickup(item);
 
             while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
