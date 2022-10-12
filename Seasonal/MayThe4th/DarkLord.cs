@@ -25,6 +25,8 @@ public class DarkLord
 
     public void GetDL(bool rankUpClass = true)
     {
+        if (!Core.isSeasonalMapActive("murdermoon"))
+            return;
         if (Core.CheckInventory("Dark Lord"))
         {
             if (rankUpClass)

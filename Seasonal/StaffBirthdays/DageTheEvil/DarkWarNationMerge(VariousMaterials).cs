@@ -22,11 +22,14 @@ public class DarkWarNationMerge
 
     public void GetMergeItems()
     {
+        if (!Core.isSeasonalMapActive("darkwarnation"))
+            return;
         //Needed AddDrop
         Core.AddDrop("Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War");
 
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Nation Defender Medal", "Nation Trophy", "Nation War Banner", "Spoils of War" }, 300))
         {
+            
             //Nation Defender Medal - Legion Badges, Mega Legion Badges
             if (!Core.CheckInventory("Nation Defender Medal", 300))
             {

@@ -18,6 +18,8 @@ public class FarmPaintedButterfly
 
     public void PaintedButterfly()
     {
+        if (!Core.isSeasonalMapActive("arcadia"))
+            return;
         Core.AddDrop("Painted Butterfly");
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Painted Butterfly", 300))

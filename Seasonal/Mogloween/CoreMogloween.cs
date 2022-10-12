@@ -20,6 +20,8 @@ public class CoreMogloween
 
     public void DoAll()
     {
+        if (!Core.isSeasonalMapActive("mogloween"))
+            return;
         Mogloween();
         CandyShop();
         CandyCorn();
@@ -36,6 +38,8 @@ public class CoreMogloween
 
     public void Mogloween()
     {
+        if (!Core.isSeasonalMapActive("mogloween"))
+            return;
         if (Core.isCompletedBefore(395))
             return;
 
@@ -62,7 +66,7 @@ public class CoreMogloween
             Core.KillMonster("mogloween", "Pit1", "Right", "Blister", "Mystery Candy", 3);
             Core.EnsureComplete(98);
         }
-        
+
         //Can't have enough 99
         if (!Story.QuestProgression(99))
         {
@@ -90,6 +94,8 @@ public class CoreMogloween
 
     public void CandyShop()
     {
+        if (!Core.isSeasonalMapActive("candyshop"))
+            return;
         Mogloween();
         if (Core.isCompletedBefore(401))
             return;
@@ -97,7 +103,7 @@ public class CoreMogloween
         Story.PreLoad(this);
 
         //Clear A Path 396
-        Story.KillQuest(396, "candyshop", "Dark Moglinster"); 
+        Story.KillQuest(396, "candyshop", "Dark Moglinster");
 
         //Kanthalite-D 397
         Story.KillQuest(397, "candyshop", "Sugarrush Ghoul");
@@ -124,6 +130,8 @@ public class CoreMogloween
     }
     public void CandyCorn()
     {
+        if (!Core.isSeasonalMapActive("candycorn"))
+            return;
         CandyShop();
         if (Core.isCompletedBefore(878))
             return;
@@ -157,6 +165,8 @@ public class CoreMogloween
     }
     public void Pie()
     {
+        if (!Core.isSeasonalMapActive("pie"))
+            return;
         CandyShop();
         if (Core.isCompletedBefore(1363))
             return;
@@ -259,6 +269,8 @@ public class CoreMogloween
 
     public void PoeHub()
     {
+        if (!Core.isSeasonalMapActive("poehub"))
+            return;
         if (Core.isCompletedBefore(4571))
             return;
 
@@ -323,6 +335,8 @@ public class CoreMogloween
 
     public void MystcroftForest()
     {
+        if (!Core.isSeasonalMapActive("mystcroftforest"))
+            return;
         if (Core.isCompletedBefore(5427))
             return;
 
@@ -371,6 +385,8 @@ public class CoreMogloween
 
     public void Chromafection()
     {
+        if (!Core.isSeasonalMapActive("chromafection"))
+            return;
         if (Core.isCompletedBefore(6537))
             return;
 
@@ -403,6 +419,8 @@ public class CoreMogloween
 
     public void TwigsArcade()
     {
+        if (!Core.isSeasonalMapActive("twigsarcade"))
+            return;
         if (Core.isCompletedBefore(6579))
             return;
 
@@ -423,7 +441,7 @@ public class CoreMogloween
         Story.KillQuest(6571, "twigsarcade", "Ectoplasm");
 
         //Plop Plop Fizz Fizz 6572
-        Story.MapItemQuest(6572, "twigsarcade", 6071, 1);
+        Story.MapItemQuest(6572, "twigsarcade", 6071);
 
         //Test the Ghost box 6573
         Story.KillQuest(6573, "twigsarcade", new[] { "Scotty Sneevil", "Clucky Moo" });
@@ -449,6 +467,8 @@ public class CoreMogloween
 
     public void Masquerade()
     {
+        if (!Core.isSeasonalMapActive("masquerade"))
+            return;
         if (Core.isCompletedBefore(7154))
             return;
 
@@ -507,6 +527,8 @@ public class CoreMogloween
 
     public void That()
     {
+        if (!Core.isSeasonalMapActive("that"))
+            return;
         if (Core.isCompletedBefore(7179))
             return;
 
@@ -557,6 +579,8 @@ public class CoreMogloween
 
     public void NecroCarnival()
     {
+        if (!Core.isSeasonalMapActive("necrocarnival"))
+            return;
         if (Core.isCompletedBefore(8374))
             return;
 

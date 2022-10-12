@@ -43,6 +43,8 @@ public class CandiedCostumesMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.isSeasonalMapActive("mogloween"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("candyshop", 1761, findIngredients);
 
@@ -81,7 +83,7 @@ public class CandiedCostumesMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("twigsarcade", "Clucky Moo", "Chocolate Candy", 10);
-                        Core.HuntMonster("pie", "Gourdo", "Pumpkin Caramel", 10);
+                        Core.KillMonster("pie", "r5", "left", "Gourdo", "Pumpkin Caramel", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

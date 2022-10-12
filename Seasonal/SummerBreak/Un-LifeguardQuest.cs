@@ -17,6 +17,9 @@ public class UnLifeGuardQuest
 
     public void GetItems()
     {
+        if (!Core.isSeasonalMapActive("summerbreak"))
+            return;
+
         string[] nonMemrewards = { "LifeGuard", "LifeGuard Cap + Locks", "LifeGuard Cap", "LifeGuard Tube" };
         string[] memRewards = { "LifeGuard", "LifeGuard Cap + Locks", "LifeGuard Cap", "LifeGuard Tube", "LifeGuard Tube of DOOM" };
         string[] rewards = Core.IsMember ? memRewards : nonMemrewards;

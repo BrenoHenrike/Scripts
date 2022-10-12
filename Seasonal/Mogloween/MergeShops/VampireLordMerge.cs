@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class LunaCoveMerge
+public class VampireLordMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -24,6 +24,7 @@ public class LunaCoveMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Blood Moon Token "});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -33,11 +34,10 @@ public class LunaCoveMerge
 
     public void BuyAllMerge()
     {
-        if (!Core.isSeasonalMapActive("lunacove"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
-            
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("lunacove", 32, findIngredients);
+        Adv.StartBuyAllMerge("mogloween", 1477, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -59,9 +59,18 @@ public class LunaCoveMerge
                     break;
                 #endregion
 
-                case "Moon Rock Fragments":
+                case "Blood Moon Token":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("lunacove", "r2", "Right", "*", req.Name, quant, false);
+                    // Core.RegisterQuests(Core.IsMember ? 6060 : 6059); // uncomment when registerquest is fixed. if more then 1 item is found in inv it only complets once then afks/
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", quant))
+                    {
+                        Core.EnsureAccept(Core.IsMember ? 6060 : 6059);
+                        Core.KillMonster("bloodmoon", "r12a", "Left", "Black Unicorn", "Black Blood Vial", isTemp: false);
+                        Core.KillMonster("bloodmoon", "r4a", "Left", "Lycan Guard", "Moon Stone", isTemp: false);
+                        Core.EnsureComplete(Core.IsMember ? 6060 : 6059);
+                        Bot.Wait.ForPickup("Blood Moon Token");
+                    }
                     break;
 
             }
@@ -70,12 +79,11 @@ public class LunaCoveMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("30397", "Beachin' Werewolf", "Mode: [select] only\nShould the bot buy \"Beachin' Werewolf\" ?", false),
-        new Option<bool>("30398", "Were-diver Morph", "Mode: [select] only\nShould the bot buy \"Were-diver Morph\" ?", false),
-        new Option<bool>("30399", "Snorkling Wolf", "Mode: [select] only\nShould the bot buy \"Snorkling Wolf\" ?", false),
-        new Option<bool>("30400", "Wolf on the Beach Morph", "Mode: [select] only\nShould the bot buy \"Wolf on the Beach Morph\" ?", false),
-        new Option<bool>("30391", "Spiralling Stars Hair", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Hair\" ?", false),
-        new Option<bool>("30392", "Spiralling Stars Locks", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Locks\" ?", false),
-        new Option<bool>("30402", "Crescent Moon Staff", "Mode: [select] only\nShould the bot buy \"Crescent Moon Staff\" ?", false),
+        new Option<bool>("41575", "Vampire Lord (Class)", "Mode: [select] only\nShould the bot buy \"Vampire Lord\" ?", false),
+        new Option<bool>("41619", "Vampire Lord", "Mode: [select] only\nShould the bot buy \"Vampire Lord\" ?", false),
+        new Option<bool>("41623", "Vampire Lord Morph", "Mode: [select] only\nShould the bot buy \"Vampire Lord Morph\" ?", false),
+        new Option<bool>("41621", "Vampire Lord Locks Morph", "Mode: [select] only\nShould the bot buy \"Vampire Lord Locks Morph\" ?", false),
+        new Option<bool>("41624", "Vampire Lord Cape", "Mode: [select] only\nShould the bot buy \"Vampire Lord Cape\" ?", false),
+        new Option<bool>("41666", "Enraged Vampire Morph", "Mode: [select] only\nShould the bot buy \"Enraged Vampire Morph\" ?", false),
     };
 }

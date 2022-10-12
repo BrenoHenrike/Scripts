@@ -146,7 +146,7 @@ public class EtherStormWastes
         Story.MapItemQuest(1409, "dragonplane", 688);
 
         //Hot Hot Heat 1410
-        Story.MapItemQuest(1409, "dragonplane", 687, 6);
+        Story.MapItemQuest(1410, "dragonplane", 687, 6);
 
         //Meet me in the Fire Plane 1411
         Story.MapItemQuest(1411, "fire", 688);
@@ -374,7 +374,15 @@ public class EtherStormWastes
         Story.KillQuest(3509, "dragonhame", "Infected Dragon");
 
         //Recover samples in Lair 3511
-        Story.KillQuest(3511, "lair", new[] { "Water Draconian", "Venom Draconian", "Water Draconian", "Wyvern" });
+        if (!Story.QuestProgression(3511))
+        {
+            Core.EnsureAccept(3511);
+            Core.HuntMonster("lair", "Dark Draconian", "Superior Dragon Blood", 3);
+            Core.HuntMonster("lair", "Venom Draconian", "Draconian Venom", 3);
+            Core.HuntMonster("lair", "Water Draconian", "Draconian Tears", 3);
+            Core.HuntMonster("lair", "Wyvern", "Wyvern Scales", 3);
+            Core.EnsureAccept(3511);
+        }
 
         //Darkness to Calm Dragons 3512
         Story.KillQuest(3512, "lair", "Dark Draconian");

@@ -29,7 +29,7 @@ public class DragonCristal
             //Gather Energy Beans 4549
             Core.EquipClass(ClassType.Farm);
             Core.GetMapItem(3760, 4, "DragonRoad");
-            Core.HuntMonster("DragonRoad", "Desert Wolf Bandit", "Energy Bean0", 3);
+            Core.HuntMonster("DragonRoad", "Desert Wolf Bandit", "Energy Bean", 3);
         }
         Core.CancelRegisteredQuests();
 

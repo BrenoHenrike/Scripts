@@ -60,6 +60,9 @@ public class CetoleonWarStory
 
     public void CetoleonWar()
     {
+        if (!Core.isSeasonalMapActive("CetoleonWar"))
+            return;
+
         if (Core.CheckInventory(AllLoot, toInv: false))
             return;
 

@@ -20,40 +20,34 @@ public class Frostvale
 
     public void DoAll()
     {
-        int month = DateTime.Now.Month;
-        if (month == 8 || month == 7) //July / August
+        if (!Core.isSeasonalMapActive("frostvale"))
         {
-            IceCave();
-            SnowGlobe();
-            Alpine();
-            SnowyVale();
-            IceRise();
-            ColdWindValley();
-            BrightLights();
-            Battlefield();
-            Darkwinter();
-            Frozensoul();
-            Howardshill();
-            Icerisepast();
-            Winterhorror();
-            Gifthulu();
-            cryostorm();
-            icewindpass();
-            icepike();
+            Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
+            return;
         }
-        else Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
-        //https://www.aq.com/gamedesignnotes/aqw-july16-frostvaljuly-8412 <--
+        IceCave();
+        SnowGlobe();
+        Alpine();
+        SnowyVale();
+        IceRise();
+        ColdWindValley();
+        BrightLights();
+        Battlefield();
+        Darkwinter();
+        Frozensoul();
+        Howardshill();
+        Icerisepast();
+        Winterhorror();
+        Gifthulu();
+        cryostorm();
+        icewindpass();
+        icepike();
     }
 
     public void IceCave()
     {
-        Bot.Map.Join("icecave");
-        if (Bot.Map.Name != "icecave")
-        {
-            Core.Logger("map: \"icecave\" is not available");
+        if (!Core.isSeasonalMapActive("icecave"))
             return;
-        }
-
         if (Core.isCompletedBefore(906))
             return;
 
@@ -117,12 +111,8 @@ public class Frostvale
 
     public void SnowGlobe()
     {
-        Bot.Map.Join("snowglobe");
-        if (Bot.Map.Name != "snowglobe")
-        {
-            Core.Logger("map: \"snowglobe\" is not available");
+        if (!Core.isSeasonalMapActive("snowglobe"))
             return;
-        }
 
         if (Core.isCompletedBefore(1508))
             return;
@@ -158,13 +148,8 @@ public class Frostvale
 
     public void Alpine()
     {
-        Bot.Map.Join("Alpine");
-        if (Bot.Map.Name != "Alpine")
-        {
-            Core.Logger("map: \"Alpine\" is not available");
+        if (!Core.isSeasonalMapActive("alpine"))
             return;
-        }
-
         if (Core.isCompletedBefore(1521))
             return;
 
@@ -204,12 +189,8 @@ public class Frostvale
 
     public void SnowyVale()
     {
-        Bot.Map.Join("snowyvale");
-        if (Bot.Map.Name != "snowyvale")
-        {
-            Core.Logger("map: \"SnowyVale\" is not available");
+        if (!Core.isSeasonalMapActive("snowyvale"))
             return;
-        }
 
         if (Core.isCompletedBefore(2576))
             return;
@@ -308,12 +289,8 @@ public class Frostvale
 
     public void IceRise()
     {
-        Bot.Map.Join("icerise");
-        if (Bot.Map.Name != "icerise")
-        {
-            Core.Logger("map: \"IceRise\" is not available");
+        if (!Core.isSeasonalMapActive("icerise"))
             return;
-        }
 
         if (Core.isCompletedBefore(2582))
             return;
@@ -344,12 +321,8 @@ public class Frostvale
 
     public void ColdWindValley()
     {
-        Bot.Map.Join("coldwindvalley");
-        if (Bot.Map.Name != "coldwindvalley")
-        {
-            Core.Logger("map: \"ColdWindValley\" is not available");
+        if (!Core.isSeasonalMapActive("coldwindvalley"))
             return;
-        }
 
         if (Core.isCompletedBefore(6132))
             return;
@@ -402,12 +375,8 @@ public class Frostvale
 
     public void BrightLights()
     {
-        Bot.Map.Join("brightlights");
-        if (Bot.Map.Name != "brightlights")
-        {
-            Core.Logger("map: \"BrightLights\" is not available");
+        if (!Core.isSeasonalMapActive("icestorm"))
             return;
-        }
 
         if (Core.isCompletedBefore(8176))
             return;
@@ -473,93 +442,60 @@ public class Frostvale
 
     public void Battlefield()
     {
-        Bot.Map.Join("battlefield");
-        if (Bot.Map.Name != "battlefield")
-        {
-            Core.Logger("map: \"Battlefield\" is not available");
+        if (!Core.isSeasonalMapActive("Battlefield"))
             return;
-        }
+
         //Not avaiable
     }
 
 
     public void Darkwinter()
     {
-        Bot.Map.Join("darkwinter");
-        if (Bot.Map.Name != "darkwinter")
-        {
-            Core.Logger("map: \"Darkwinter\" is not available");
+        if (!Core.isSeasonalMapActive("Darkwinter"))
             return;
-        }
         //Not avaiable
     }
 
     public void Frozensoul()
     {
-        Bot.Map.Join("frozensoul");
-        if (Bot.Map.Name != "frozensoul")
-        {
-            Core.Logger("map: \"Frozensoul\" is not available");
+        if (!Core.isSeasonalMapActive("Frozensoul"))
             return;
-        }
         //Not avaiable
     }
 
     public void Howardshill()
     {
-        Bot.Map.Join("howardshill");
-        if (Bot.Map.Name != "howardshill")
-        {
-            Core.Logger("map: \"Howardshill\" is not available");
+        if (!Core.isSeasonalMapActive("Howardshill"))
             return;
-        }
         //Not avaiable
     }
 
     public void Icerisepast()
     {
-        Bot.Map.Join("icerisepast");
-        if (Bot.Map.Name != "icerisepast")
-        {
-            Core.Logger("map: \"Icerisepast\" is not available");
+        if (!Core.isSeasonalMapActive("Icerisepast"))
             return;
-        }
         //Not avaiable
     }
 
     public void Winterhorror()
     {
-        Bot.Map.Join("winterhorror");
-        if (Bot.Map.Name != "winterhorror")
-        {
-            Core.Logger("map: \"Winterhorror\" is not available");
+        if (!Core.isSeasonalMapActive("Winterhorror"))
             return;
-        }
         //Not avaiable
     }
 
     public void Gifthulu()
     {
-        Bot.Map.Join("gifthulu");
-        if (Bot.Map.Name != "gifthulu")
-        {
-            Core.Logger("map: \"Gifthulu\" is not available");
+        if (!Core.isSeasonalMapActive("Gifthulu"))
             return;
-        }
         //Not avaiable
     }
 
 
     public void cryostorm()
     {
-        Bot.Map.Join("cryostorm");
-        if (Bot.Map.Name != "cryostorm")
-        {
-            Core.Logger("map: \"cryostorm\" is not available");
+        if (!Core.isSeasonalMapActive("cryostorm"))
             return;
-        }
-        //avaiable
-        Core.Logger("map: \"cryostorm\" is available, but not finished");
         if (Core.isCompletedBefore(4716))
             return;
 
@@ -612,12 +548,8 @@ public class Frostvale
 
     public void icewindpass()
     {
-        Bot.Map.Join("icewindpass");
-        if (Bot.Map.Name != "icewindpass")
-        {
-            Core.Logger("map: \"icewindpass\" is not available");
+        if (!Core.isSeasonalMapActive("icewindpass"))
             return;
-        }
         //avaiable
         Core.Logger("map: \"icewindpass\" is available, but not finished");
         if (Core.isCompletedBefore(5596))
@@ -659,14 +591,8 @@ public class Frostvale
 
     public void icepike()
     {
-        Bot.Map.Join("icepike");
-        if (Bot.Map.Name != "icepike")
-        {
-            Core.Logger("map: \"icepike\" is not available");
+        if (!Core.isSeasonalMapActive("icepike"))
             return;
-        }
-        //avaiable
-        Core.Logger("map: \"icepike\" is available, but not finished");
         if (Core.isCompletedBefore(5617))
             return;
 

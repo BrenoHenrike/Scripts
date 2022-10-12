@@ -20,6 +20,8 @@ public class PookasGiftsMerge
 
     public void GetGiftItems()
     {
+        if (!Core.isSeasonalMapActive("pooka"))
+            return;
         Core.AddDrop("Golden Clover", "Golden Oak Leaf", "Enchanted Gold");
 
         Pooka.CompletePooka();

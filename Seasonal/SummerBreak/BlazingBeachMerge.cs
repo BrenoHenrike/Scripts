@@ -38,6 +38,9 @@ public class BlazingBeachMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.isSeasonalMapActive("blazingbeach"))
+            return;
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("blazingbeach", 2138, findIngredients);
 

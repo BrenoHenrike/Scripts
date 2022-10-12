@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class LunaCoveMerge
+public class MogGLOWweenMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -24,6 +24,7 @@ public class LunaCoveMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Glowball " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -33,11 +34,10 @@ public class LunaCoveMerge
 
     public void BuyAllMerge()
     {
-        if (!Core.isSeasonalMapActive("lunacove"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
-            
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("lunacove", 32, findIngredients);
+        Adv.StartBuyAllMerge("franken", 770, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -59,9 +59,17 @@ public class LunaCoveMerge
                     break;
                 #endregion
 
-                case "Moon Rock Fragments":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("lunacove", "r2", "Right", "*", req.Name, quant, false);
+                case "Glowball":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    //Survive Frankenwerepire! 3163
+                    Core.RegisterQuests(3163);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("franken", "Frankenwerepire", "Defeat Frankenwerepire");
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
                     break;
 
             }
@@ -70,12 +78,15 @@ public class LunaCoveMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("30397", "Beachin' Werewolf", "Mode: [select] only\nShould the bot buy \"Beachin' Werewolf\" ?", false),
-        new Option<bool>("30398", "Were-diver Morph", "Mode: [select] only\nShould the bot buy \"Were-diver Morph\" ?", false),
-        new Option<bool>("30399", "Snorkling Wolf", "Mode: [select] only\nShould the bot buy \"Snorkling Wolf\" ?", false),
-        new Option<bool>("30400", "Wolf on the Beach Morph", "Mode: [select] only\nShould the bot buy \"Wolf on the Beach Morph\" ?", false),
-        new Option<bool>("30391", "Spiralling Stars Hair", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Hair\" ?", false),
-        new Option<bool>("30392", "Spiralling Stars Locks", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Locks\" ?", false),
-        new Option<bool>("30402", "Crescent Moon Staff", "Mode: [select] only\nShould the bot buy \"Crescent Moon Staff\" ?", false),
+        new Option<bool>("20753", "Green Glowchucks", "Mode: [select] only\nShould the bot buy \"Green Glowchucks\" ?", false),
+        new Option<bool>("20756", "Blue Glowchucks", "Mode: [select] only\nShould the bot buy \"Blue Glowchucks\" ?", false),
+        new Option<bool>("20758", "Pink Glowchucks", "Mode: [select] only\nShould the bot buy \"Pink Glowchucks\" ?", false),
+        new Option<bool>("20759", "Orange Glowchucks", "Mode: [select] only\nShould the bot buy \"Orange Glowchucks\" ?", false),
+        new Option<bool>("36677", "Glow Dreads", "Mode: [select] only\nShould the bot buy \"Glow Dreads\" ?", false),
+        new Option<bool>("36676", "Glow Falls", "Mode: [select] only\nShould the bot buy \"Glow Falls\" ?", false),
+        new Option<bool>("36675", "Glow Smasher", "Mode: [select] only\nShould the bot buy \"Glow Smasher\" ?", false),
+        new Option<bool>("36674", "Blade of Cursed Glow", "Mode: [select] only\nShould the bot buy \"Blade of Cursed Glow\" ?", false),
+        new Option<bool>("36673", "Glow Flail", "Mode: [select] only\nShould the bot buy \"Glow Flail\" ?", false),
+        new Option<bool>("36672", "Blacklight Bone Club", "Mode: [select] only\nShould the bot buy \"Blacklight Bone Club\" ?", false),
     };
 }

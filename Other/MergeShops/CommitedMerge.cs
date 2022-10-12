@@ -2,11 +2,13 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Asylum.cs
+
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class LunaCoveMerge
+public class CommitedMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,6 +16,8 @@ public class LunaCoveMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    public Asylum Asylum = new();
+
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -24,6 +28,7 @@ public class LunaCoveMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Crawler Leg", "Zombie Dragon Scale", "De'Sawed's Stinger " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -33,11 +38,9 @@ public class LunaCoveMerge
 
     public void BuyAllMerge()
     {
-        if (!Core.isSeasonalMapActive("lunacove"))
-            return;
-            
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("lunacove", 32, findIngredients);
+        Asylum.StoryLine();
+        Adv.StartBuyAllMerge("asylum", 506, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -59,9 +62,19 @@ public class LunaCoveMerge
                     break;
                 #endregion
 
-                case "Moon Rock Fragments":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("lunacove", "r2", "Right", "*", req.Name, quant, false);
+                case "Crawler Leg":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("mirrormaze", "Doom Crawler", req.Name, quant, false);
+                    break;
+
+                case "Zombie Dragon Scale":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("mirrormaze", "Zombie Dragon", req.Name, quant, false);
+                    break;
+
+                case "De'Sawed's Stinger":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.KillMonster("catacombs", "Boss2", "Left", "Dr. De'Sawed", req.Name, quant, false);
                     break;
 
             }
@@ -70,12 +83,12 @@ public class LunaCoveMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("30397", "Beachin' Werewolf", "Mode: [select] only\nShould the bot buy \"Beachin' Werewolf\" ?", false),
-        new Option<bool>("30398", "Were-diver Morph", "Mode: [select] only\nShould the bot buy \"Were-diver Morph\" ?", false),
-        new Option<bool>("30399", "Snorkling Wolf", "Mode: [select] only\nShould the bot buy \"Snorkling Wolf\" ?", false),
-        new Option<bool>("30400", "Wolf on the Beach Morph", "Mode: [select] only\nShould the bot buy \"Wolf on the Beach Morph\" ?", false),
-        new Option<bool>("30391", "Spiralling Stars Hair", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Hair\" ?", false),
-        new Option<bool>("30392", "Spiralling Stars Locks", "Mode: [select] only\nShould the bot buy \"Spiralling Stars Locks\" ?", false),
-        new Option<bool>("30402", "Crescent Moon Staff", "Mode: [select] only\nShould the bot buy \"Crescent Moon Staff\" ?", false),
+        new Option<bool>("14525", "Mad Doctor", "Mode: [select] only\nShould the bot buy \"Mad Doctor\" ?", false),
+        new Option<bool>("14534", "Scorpion Blades", "Mode: [select] only\nShould the bot buy \"Scorpion Blades\" ?", false),
+        new Option<bool>("14536", "Mask of the Scorpion", "Mode: [select] only\nShould the bot buy \"Mask of the Scorpion\" ?", false),
+        new Option<bool>("14538", "Staff of the Scorpion", "Mode: [select] only\nShould the bot buy \"Staff of the Scorpion\" ?", false),
+        new Option<bool>("14539", "Scorpion Scythe", "Mode: [select] only\nShould the bot buy \"Scorpion Scythe\" ?", false),
+        new Option<bool>("14545", "Bandaged Face", "Mode: [select] only\nShould the bot buy \"Bandaged Face\" ?", false),
+        new Option<bool>("14549", "Mad Surgeon's Mask", "Mode: [select] only\nShould the bot buy \"Mad Surgeon's Mask\" ?", false),
     };
 }

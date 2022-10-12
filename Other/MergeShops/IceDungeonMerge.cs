@@ -111,7 +111,7 @@ public class IceDungeonMerge
                     Glacera.IceDungeon();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(0000);
+                    Core.RegisterQuests(7841);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //Icing on the Cake 7841

@@ -32,7 +32,7 @@ public class GlacialBerserker
         Adv.BestGear(GearBoost.rep);
         Farm.GlaceraREP();
 
-        Core.BuyItem("icewindpass", 1339, "Glacial Berserker", 22266);
+        Core.BuyItem("icewindpass", 1339, 38084);
 
         if (rankUpClass)
             Adv.rankUpClass("Glacial Berserker");

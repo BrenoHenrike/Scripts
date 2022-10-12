@@ -250,9 +250,13 @@ public class CoreBots
                 Equip(EquipmentBeforeBot.ToArray());
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
-                if (CustomStopLocation.ToLower() == "home")
-                    Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
-                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap" }
+                if (CustomStopLocation.Trim().ToLower() == "home")
+                {
+                    if (Bot.House.Items.Count(h => h.Equipped) > 0)
+                        Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+                    else Join("whitemap");
+                }
+                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
                     Join(CustomStopLocation);
@@ -266,7 +270,8 @@ public class CoreBots
         }
 
         Bot.Options.CustomName = Bot.Player.Username.ToUpper();
-        Bot.Options.CustomGuild = $"< {(Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name").Replace("&lt; ", "< ").Replace(" &gt;", " >"))} >"; ;
+        string guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
+        Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
 
         if (File.Exists($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt"))
             File.Delete($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt");
@@ -1397,7 +1402,7 @@ public class CoreBots
     public void FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")
         => Logger($"Farming {item} ({Bot.Inventory.GetQuantity(item)}/{quant})", caller);
 
-    public void DebugLogger(object _this, string marker = "Checkpoint", [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
+    public void DebugLogger(object _this, string? marker = null, [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
         if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
             return;
@@ -1406,33 +1411,59 @@ public class CoreBots
         string[] compiledScript = CompiledScript();
 
         int compiledClassLine = Array.IndexOf(compiledScript, compiledScript.First(line => line.Trim() == $"public class {_class}")) + 1;
-
         string[] currentScript = File.ReadAllLines(Bot.Manager.LoadedScript);
-        int seperateClassLine = -1;
+        string[]? includedScript = null;
 
+        bool inCurrentScript = false;
         if (currentScript.Any(line => line.Trim() == $"public class {_class}"))
-            seperateClassLine = Array.IndexOf(currentScript, currentScript.First(line => line.Trim() == $"public class {_class}")) + 1;
+            inCurrentScript = true;
         else
         {
-            string[] cs_includes = currentScript.Where(x => x.StartsWith("//cs_include")).ToArray();
-            foreach (string cs in cs_includes)
+            foreach (string cs in currentScript.Where(x => x.StartsWith("//cs_include")).ToArray())
             {
-                string[] includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
+                includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
+
                 if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
-                {
-                    seperateClassLine = Array.IndexOf(includedScript, includedScript.First(line => line.Trim() == $"public class {_class}")) + 1;
                     break;
-                }
             }
         }
 
-        if (seperateClassLine == -1)
+        if (!inCurrentScript && includedScript == null)
         {
-            Logger("Failed trying to find seperateClassLine", "DEBUG LOGGER");
+            Logger("includedScript is NULL", "DEBUG LOGGER");
             return;
         }
 
-        Logger($"{marker}, {_class} => {caller}, line {lineNumber - (compiledClassLine - seperateClassLine)}", "DEBUG LOGGER");
+        int count = 0;
+        int lastIndex = compiledClassLine;
+
+        foreach (string l in compiledScript[compiledClassLine..Array.FindIndex(compiledScript, compiledClassLine, l => l == "}")])
+        {
+            if (!l.Contains("Core.DebugLogger(this"))
+                continue;
+
+            count++;
+            lastIndex = Array.FindIndex(compiledScript, lastIndex + 1, _l => _l.Trim() == l.Trim());
+            if (lastIndex + 1 == lineNumber)
+                break;
+        }
+
+        int count2 = 0;
+        int lastIndex2 = -1;
+        string[] selectedScript = inCurrentScript || includedScript == null ? currentScript : includedScript;
+        foreach (string l in selectedScript)
+        {
+            if (!l.Contains("Core.DebugLogger(this"))
+                continue;
+
+            count2++;
+            lastIndex2 = Array.FindIndex(selectedScript, lastIndex2 + 1, _l => _l.Trim() == l.Trim());
+
+            if (count == count2)
+                break;
+        }
+
+        Logger($"{marker}{(String.IsNullOrEmpty(marker) ? null : " | ")}{_class} => {caller}, line {lastIndex2 + 1}", "DEBUG LOGGER");
     }
     private bool DL_Enabled { get; set; } = false;
     public string? DL_CallerFilter { get; set; } = null;
@@ -1896,6 +1927,7 @@ public class CoreBots
                     Bot.Map.Join(map, cell, pad, ignoreCheck);
                 else Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
                 Bot.Wait.ForMapLoad(strippedMap);
+                Bot.Sleep(200);
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
@@ -1980,62 +2012,80 @@ public class CoreBots
         return nr < 1000;
     }
 
-    //public bool isSeasonalMapActive(string map, bool log = true)
-    //{
-    //    map = map.ToLower().Replace(" ", "");
-    //    if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
-    //        return true;
+    /// <summary>
+    /// Checks if the map is available for joining or it is seasonal and not yet released
+    /// </summary>
+    public bool isSeasonalMapActive(string map, bool log = true)
+    {
+        map = map.ToLower().Replace(" ", "");
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
+            return true;
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
 
-    //    bool AggroMonsters = false;
-    //    if (Bot.Options.AggroMonsters)
-    //    {
-    //        AggroMonsters = true;
-    //        Bot.Options.AggroMonsters = false;
-    //    }
+        JumpWait();
+        Bot.Events.ExtensionPacketReceived += MapIsNotAvailableListener;
+        bool seasonalMessageProc = false;
 
-    //    JumpWait();
-    //    Bot.Events.ExtensionPacketReceived += PacketListener;
-    //    bool seasonalMessageProc = false;
+        for (int i = 0; i < 20; i++)
+        {
+            Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}");
+            Bot.Wait.ForMapLoad(map);
 
-    //    for (int i = 0; i < 20; i++)
-    //    {
-    //        Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}");
-    //        Bot.Wait.ForMapLoad(map);
+            string? currentMap = Bot.Map.Name;
+            if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
+                break;
 
-    //        string? currentMap = Bot.Map.Name;
-    //        if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
-    //            break;
+            if (seasonalMessageProc)
+            {
+                seasonalMessageProc = false;
+                break;
+            }
 
-    //        if (seasonalMessageProc)
-    //        {
-    //            Bot.Events.ExtensionPacketReceived -= PacketListener;
-    //            return false;
-    //        }
+            if (i == 19)
+                Logger($"Failed to join {map}");
+        }
 
-    //        if (i == 19)
-    //            Logger($"Failed to join {map}");
-    //    }
+        
 
-    //    if (AggroMonsters)
-    //        Bot.Options.AggroMonsters = true;
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
 
-    //    Bot.Events.ExtensionPacketReceived -= PacketListener;
-    //    return true;
+        Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
 
-    //    void PacketListener(dynamic packet)
-    //    {
-    //        string type = packet;
-    //        switch (type)
-    //        {
-    //            case "%xt%warning%-1%\"mogloween\" is not available.%":
-    //                if (log)
-    //                    Logger($"Map \"map\" is currently disabled.");
-    //                seasonalMessageProc = true;
-    //                break;
-    //        }
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
+            return true;
+        else
+            return false;
 
-    //    }
-    //}
+        void MapIsNotAvailableListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "str")
+            {
+                string cmd = data[0];
+                switch (cmd)
+                {
+                    case "warning":
+                        string b = Convert.ToString(packet);
+                        if (b.Contains("is not available."))
+                        {
+                            if (log)
+                                Logger($" \"{map}\" is currently seasonal map. Check Wiki.");
+                            seasonalMessageProc = true;
+                            Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
+                        }
+                        break;
+                }
+            }
+        }
+
+    }
 
     #endregion
 

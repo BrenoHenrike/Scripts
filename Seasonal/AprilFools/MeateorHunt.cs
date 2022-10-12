@@ -20,6 +20,8 @@ public class MeateorHunt
 
     public void StoryLine()
     {
+        if (!Core.isSeasonalMapActive("MeateorTown"))
+            return;
         if (Core.isCompletedBefore(8628))
         {
             Core.Logger("You have already completed this storyline");

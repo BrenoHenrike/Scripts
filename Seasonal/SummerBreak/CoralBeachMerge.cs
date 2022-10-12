@@ -33,6 +33,9 @@ public class CoralBeachMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.isSeasonalMapActive("coralbeach"))
+            return;
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("coralbeach", 79, findIngredients);
 

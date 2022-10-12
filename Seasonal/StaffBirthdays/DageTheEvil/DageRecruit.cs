@@ -19,6 +19,8 @@ public class DageRecruitStory
 
     public void CompleteDageRecruit()
     {
+        if (!Core.isSeasonalMapActive("dagerecruit"))
+            return;
         if (Core.isCompletedBefore(8575))
             return;
 

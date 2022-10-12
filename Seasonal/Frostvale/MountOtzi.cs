@@ -18,6 +18,8 @@ public class MountOtzi
 
     public void MountOtziQuests()
     {
+        if (!Core.isSeasonalMapActive("MountOtzi"))
+            return;
         if (Core.isCompletedBefore(8444))
             return;
 

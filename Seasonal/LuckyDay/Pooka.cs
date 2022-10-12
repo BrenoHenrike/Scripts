@@ -19,6 +19,8 @@ public class PookaStory
 
     public void CompletePooka()
     {
+        if (!Core.isSeasonalMapActive("pooka"))
+            return;
         if (Core.isCompletedBefore(7962))
             return;
 
