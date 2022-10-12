@@ -297,11 +297,28 @@ public class CoreStory
         var questData = Core.EnsureLoad(questIDs);
         var whereToGet = new List<LegacyQuestObject>();
 
+        //Core.DL_Enable();
+        Core.DebugLogger(this, "-------------\t");
         foreach (var quest in questData)
         {
             var desiredQuestReward = quest.Rewards.Where(r => questData.Any(q => q.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))).ToList();
             var requieredQuestID = questData.Find((q => q.Rewards.Any(r => quest.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))))?.ID ?? 0;
             var requieredQuestReward = quest.AcceptRequirements?.Where(r => questData.Any(q => q.Rewards.Any(a => a.ID == r.ID || a.Name == r.Name)))?.ToList();
+
+            Core.DebugLogger(this, $"{quest.ID}\t\t");
+            Core.DebugLogger(this, $"{desiredQuestReward.FirstOrDefault()?.Name}\t");
+            Core.DebugLogger(this, $"{requieredQuestID}\t\t");
+            Core.DebugLogger(this, $"{requieredQuestReward.FirstOrDefault()?.Name}\t");
+            Core.DebugLogger(this, "-------------\t");
+
+            if (requieredQuestReward.Count() == 0 && quest.AcceptRequirements.Count() > 0)
+            {
+                Core.Logger("The managed failed to find the location of \"" +
+                String.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
+                $"\" for Quest ID {quest.ID}, is the function missing a Quest ID?",
+                messageBox: true);
+                return;
+            }
 
             whereToGet.Add(new(quest.ID, desiredQuestReward, requieredQuestID, requieredQuestReward));
         }
@@ -320,6 +337,8 @@ public class CoreStory
             Core.Logger("Could not find the Quest ID of the last quest in the item chain");
             return;
         }
+
+        Core.Logger($"Final quest to work torwards: [{finalItemQuestID}] \"{Core.EnsureLoad(finalItemQuestID).Name}\"");
 
         runQuest(finalItemQuestID);
 
