@@ -16,22 +16,17 @@ public class NulgathDemandsWork
     public WillpowerExtraction WillpowerExtraction = new();
 
     public string[] NDWItems =
-    {   "Unidentified 35",
-        "Unidentified 27",
-        "Unidentified 26",
-        "Golden Hanzo Void",
-        "DoomLord's War Mask",
+    {   "DoomLord's War Mask",
         "ShadowFiend Cloak",
         "Locks of the DoomLord",
         "Doomblade of Destruction",
-        "Archfiend Essence Fragment"
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.AddRange(NDWItems);
-        Core.BankingBlackList.Add("Archfiend Essence Fragment");
+        Core.BankingBlackList.AddRange(new[] { "Archfiend Essence Fragment", "Unidentified 35" });
         Core.SetOptions();
 
         NDWQuest(new[] { "Unidentified 35" });
@@ -40,6 +35,13 @@ public class NulgathDemandsWork
         Core.SetOptions(false);
     }
 
+
+
+    /// <summary>
+    /// Complets "Nulgath Demands Work" until the Desired Items are gotten. 
+    /// <param name="string[] items">The List of items to Get from the Quest</param>
+    /// <param name="quant">Amount of the "item" [Mostly the Archfiend Ess and Uni 35]</param>
+    /// </summary>
     public void NDWQuest(string[] items = null, int quant = 1)
     {
         if (Core.CheckInventory(items, quant))
@@ -86,9 +88,13 @@ public class NulgathDemandsWork
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
 
-                if (item == "Unidentified 35" && Core.CheckInventory("Archfiend Essence Fragment", 9))
-                    Core.BuyItem("tercessuinotlim", 1951, 35770);
-                else Core.EnsureComplete(5259, itemID);
+                if (item == "Unidentified 35")
+                {
+                    if (Core.CheckInventory("Archfiend Essence Fragment", 9))
+                        Core.BuyItem("tercessuinotlim", 1951, 35770);
+                    else Core.EnsureComplete(5259);
+                }
+                Core.EnsureComplete(5259, itemID);
                 Core.ToBank(item);
 
                 Core.Logger($"Completed x{i}");
