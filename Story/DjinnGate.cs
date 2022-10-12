@@ -24,7 +24,7 @@ public class DjinnGateStory
 
     public void DjinnGate()
     {
-        if (Core.isCompletedBefore(7312))
+        if (Core.isCompletedBefore(7312) && Core.isCompletedBefore(6161))
             return;
 
         Story.PreLoad(this);
@@ -105,7 +105,6 @@ public class DjinnGateStory
 
         //Break the Seal 6159
         Story.MapItemQuest(6159, "djinngate", 5571, 5, false);
-
 
         if (!Story.QuestProgression(6160))
         {
