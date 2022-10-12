@@ -306,6 +306,14 @@ public class CoreStory
             whereToGet.Add(new(quest.ID, desiredQuestReward, requieredQuestID, requieredQuestReward));
         }
 
+        if (whereToGet.All(x => x.desiredQuestReward.Count == 0) || whereToGet.All(x => x.requiredQuestReward.Count == 0))
+        {
+            Core.Logger("None of Quest IDs filled in are supposed to be used in the LegacyQuestManager, " +
+                        "please report to the bot makers that they must make this story line in the normal way.",
+                        messageBox: true);
+            return;
+        }
+
         int finalItemQuestID = whereToGet.Find(x => x.desiredQuestReward.Count == 0).desiredQuestID;
         if (finalItemQuestID <= 0)
         {
