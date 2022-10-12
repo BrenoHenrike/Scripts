@@ -357,7 +357,7 @@ public class CoreStory
             if (!Core.CheckInventory(requiredReward))
                 runQuest(runQuestData.requieredQuestID);
 
-            if (LegacyQuestStop)
+            if (_LegacyQuestStop)
                 return;
 
             Core.Logger($"Doing Quest: [{questID}] - \"{questData.Name}\"", "QuestProgression");
@@ -391,7 +391,8 @@ public class CoreStory
     }
     public int LegacyQuestID = -1;
     public bool LegacyQuestAutoComplete = true;
-    public bool LegacyQuestStop = false;
+    private bool _LegacyQuestStop = false;
+    public void LegacyQuestStop() => _LegacyQuestStop = true;
 
     /// <summary>
     /// Put this at the start of your story script so that the bot will load all quests that are used in the bot. This will speed up any progression checks tremendiously.
