@@ -8,8 +8,6 @@ public class ThirdSpell
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
-    string[] RequiredItems = { "Brainz n' Eggs", "Heart of the Sun" };
-
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] {
