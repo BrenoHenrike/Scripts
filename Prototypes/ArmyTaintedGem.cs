@@ -30,7 +30,7 @@ public class ArmyTaintedGem
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions,
     };
 
     public string[] Loot =
@@ -75,10 +75,9 @@ public class ArmyTaintedGem
     public void boxes()
     {
         Core.Join("boxes");
-        if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-            Army.AggroMonCells("Fort2", "Closet", "Fort1", "Boss");
+        Army.AggroMonCells("Fort2", "Closet", "Fort1", "Boss");
         Army.AggroMonStart("boxes");
-        Army.DivideOnCells("Fort2", "Closet", "Fort1", "Boss");
+        Army.DivideOnCells("Fort2", "Closet", "Fort1", "Boss", "Boss", "Boss");
 
         while (!Bot.ShouldExit && (!Core.CheckInventory("Cubes", 500)))
             Bot.Combat.Attack("*");
@@ -90,8 +89,7 @@ public class ArmyTaintedGem
     public void mountfrost()
     {
         Core.Join("mountfrost");
-        if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-            Army.AggroMonCells("War");
+        Army.AggroMonCells("War");
         Army.AggroMonStart("mountfrost");
         Core.Jump("War", "Left");
 
