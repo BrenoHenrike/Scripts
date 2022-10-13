@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
-//cs_include Scripts/Story/Table.cs
+//cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_Include Scripts/Farm/BuyScrolls.cs
 using Skua.Core.Interfaces;

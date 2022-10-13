@@ -131,7 +131,6 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/SuperDeath.cs
 
-//cs_include Scripts/Story/Table.cs
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
@@ -302,7 +301,6 @@ public class AllStories
     public StarSinc StarSinc = new();
     public SuperDeath SuperDeath = new();
 
-    public Table Table = new();
     public ThirdSpell ThirdSpell = new();
     public TitanAttackStory TitanAttackStory = new();
     public TowerOfDoom TowerOfDoom = new();
@@ -598,7 +596,7 @@ public class AllStories
         Gamehaven.Storyline();
         Core.Logger($"Story: Game Haven - Complete");
 
-        GiantTaleStory.doAll();
+        GiantTaleStory.DoAll();
         Core.Logger($"Story: Giant Tale - Complete");
 
         GlaceraStory.DoAll();
@@ -667,9 +665,6 @@ public class AllStories
         SuperDeath.StoryLine();
         Core.Logger($"Story: SuperDeath - Complete");
 
-
-        Table.DoAll();
-        Core.Logger($"Story: Table - Complete");
 
         ThirdSpell.StoryLine();
         Core.Logger($"Story: Third Spell - Complete");
