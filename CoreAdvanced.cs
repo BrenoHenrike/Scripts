@@ -877,11 +877,16 @@ public class CoreAdvanced
     /// <param name="Monster">The Monster object of the monster</param>
     public void _RaceGear(string Monster)
     {
+        if (!Bot.Monsters.MapMonsters.Any(x => x.Name.ToLower() == Monster.ToLower()))
+        {
+            Core.Logger("Could not find any monster with the name " + Monster);
+            return;
+        }
         GearStore();
         string Map = Bot.Map.LastMap;
         string MonsterRace = "";
         if (Monster != "*")
-            MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower()).Race ?? "";
+            MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower())?.Race ?? "";
         else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race ?? "";
 
         if (MonsterRace == null || MonsterRace == "")
