@@ -191,9 +191,16 @@ public class CoreBots
                 List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
                 List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
                 List<string> MiscForBank = new();
+
+                bool boostsEnabled = Bot.Boosts.Enabled || (CBO_Active() && (
+                                    (CBOBool("doGoldBoost", out bool _doGoldBoost) && _doGoldBoost) ||
+                                    (CBOBool("doClassBoost", out bool _doClassBoost) && _doClassBoost) ||
+                                    (CBOBool("doRepBoost", out bool _doRepBoost) && _doRepBoost) ||
+                                    (CBOBool("doExpBoost", out bool _doExpBoost) && _doExpBoost)));
+
                 foreach (var item in Bot.Inventory.Items)
                 {
-                    if (Bot.Boosts.Enabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
+                    if (boostsEnabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
                         continue;
                     if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
                         MiscForBank.Add(item.Name);
