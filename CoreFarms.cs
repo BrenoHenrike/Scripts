@@ -657,7 +657,7 @@ public class CoreFarms
         //more to be added by request
     };
 
-    public void DragonRunestone(int quant = 1)
+    public void DragonRunestone(int quant)
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
@@ -665,8 +665,11 @@ public class CoreFarms
         Core.FarmingLogger("Dragon Rune", quant);
         Gold(100000 * quant);
         Core.FarmingLogger("Gold Voucher 100k", quant);
-        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
-        Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 1, 1, 8844);
+        if (!Core.CheckInventory("Dragon Runestone", quant))
+        {
+            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 1, 8844);
+        }
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)
@@ -1380,16 +1383,16 @@ public class CoreFarms
 
             while (!Bot.ShouldExit && FactionRank("Evil") < rank)
             {
-                if (!Core.IsMember)
-                {
-                    Core.HuntMonster("castleundead", "*", "Replacement Tibia", 6, log: false);
-                    Core.HuntMonster("castleundead", "*", "Phalanges", 3, log: false);
-                }
-                else
+                if (Core.IsMember)
                 {
                     Core.HuntMonster("sleuthhound", "Chair", "Chair", 4, log: false);
                     Core.HuntMonster("sleuthhound", "Table", "Table", 2, log: false);
                     Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase", log: false);
+                }
+                else
+                {
+                    Core.HuntMonster("castleundead", "*", "Replacement Tibia", 6, log: false);
+                    Core.HuntMonster("castleundead", "*", "Phalanges", 3, log: false);
                 }
             }
             Core.CancelRegisteredQuests();
