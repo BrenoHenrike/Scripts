@@ -107,7 +107,7 @@ public class CustomAggroMon
         if (monNames.Count == 0)
             Core.Logger("No monsters were found based on your input. The bot will now stop.", messageBox: true, stopBot: true);
 
-        string[] quests = Bot.Config.Get<string>("quests").Split('|');
+        string[] quests = Bot.Config.Get<string>("quests").Split(',');
         List<int> questIDs = new();
         foreach (string q in quests)
         {
