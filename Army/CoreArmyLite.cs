@@ -130,11 +130,11 @@ public class CoreArmyLite
         var _monsters = Bot.Monsters.MapMonsters.Where(m => monsters.Contains(m.Name)).ToList();
         var cellComparison = new Dictionary<string, int>();
 
-        //Finding highest count of monsters
+        //Prioritizing monsters of which fewer excist
         foreach (Monster m in _monsters)
             if (!cellComparison.ContainsKey(m.Cell))
-                cellComparison.Add(m.Cell, _monsters.Count(t => t.Cell == m.Cell));
-        var SortedDict = cellComparison.OrderByDescending(kvp => kvp.Value).ToDictionary(pair => pair.Key, pair => pair.Value).Keys.ToArray();
+                cellComparison.Add(m.Cell, _monsters.Count(t => t.Name == m.Name));
+        var SortedDict = cellComparison.OrderBy(kvp => kvp.Value).ToDictionary(pair => pair.Key, pair => pair.Value).Keys.ToArray();
         cellComparison = null;
 
         //Special option on DivideOnCells, which will have it store all cells that it divides people to
