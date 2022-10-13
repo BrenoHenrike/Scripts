@@ -122,6 +122,8 @@ public class CoreArmyLite
 
     public void SmartAggroMonStart(string map, params string[] monsters)
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = getRoomNr();
         Core.Join(map);
 
         //Devining variables

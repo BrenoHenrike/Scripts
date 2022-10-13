@@ -67,6 +67,8 @@ public class CustomAggroMon
     public void MakeAggroMon()
     {
         string map = Bot.Config.Get<string>("map");
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
         Core.Join(map);
 
         var _monData = Bot.Monsters.MapMonsters;
