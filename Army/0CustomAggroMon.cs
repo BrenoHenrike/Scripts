@@ -118,10 +118,17 @@ public class CustomAggroMon
 
         List<string> drops = Bot.Config.Get<string>("drops").Split(',').ToList();
 
+
         GenerateFile();
 
-        Bot.Drops.Stop();
-        Core.EquipClass(Bot.Config.Get<ClassType>("classtype"));
+
+        if (drops == null || drops.Count() == 0 || drops.All(x => String.IsNullOrEmpty(x)))
+            Bot.Drops.Stop();
+        else Core.AddDrop(drops.ToArray());
+
+        ClassType classtype = Bot.Config.Get<ClassType>("classtype");
+        if (classtype != ClassType.None)
+            Core.EquipClass(classtype);
 
         if (questIDs.Count > 0)
             Core.RegisterQuests(questIDs.ToArray());

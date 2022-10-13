@@ -148,12 +148,15 @@ public class CoreArmyLite
 
     public void RunGeneratedAggroMon(string map, List<string> monNames, List<int> questIDs, ClassType classtype, List<string>? drops = null)
     {
-        Core.EquipClass(classtype);
+        if (classtype != ClassType.None)
+            Core.EquipClass(classtype);
 
         if (questIDs.Count > 0)
             Core.RegisterQuests(questIDs.ToArray());
-        else if (drops == null) 
+
+        if (drops == null || drops.Count() == 0 || drops.All(x => String.IsNullOrEmpty(x)))
             Bot.Drops.Stop();
+        else Core.AddDrop(drops.ToArray());
 
         SmartAggroMonStart(map, monNames.ToArray());
         while (!Bot.ShouldExit)
