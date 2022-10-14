@@ -38,7 +38,7 @@ public class CoreVoltaire
         TreasureIsland();
         GustavduGrog();
         Wormhole();
-        Crownsreach();
+        CrownsreachFXIII();
     }
 
     public void FiveSaloon()
@@ -430,7 +430,7 @@ public class CoreVoltaire
         Story.KillQuest(5066, "wormhole", "Trobbolegion");
     }
 
-    public void Crownsreach()
+    public void CrownsreachFXIII()
     {
         Story.Preload(This);
         
