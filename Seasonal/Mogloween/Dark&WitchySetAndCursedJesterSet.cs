@@ -1,11 +1,12 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Mogloween/CoreMogloween.cs
 
 using Skua.Core.Interfaces;
 
 public class DarkWitchyAndCurstedJester
- {
+{
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
@@ -35,24 +36,25 @@ public class DarkWitchyAndCurstedJester
             return;
 
         CoreMogloween.NecroCarnival();
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false) )
+
+        
+        for (int i = 0; i < Rewards.Count(); i++)
         {
-            //Scare Uniforms 8375
-            Core.EnsureAccept(8375);
+            if (!Core.CheckInventory(Rewards[i]))
+            {
+                //Scare Uniforms 8375
+                Core.EnsureAccept(8375);
 
-            Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("necrocarnival", "Mooch Treeant", "Cherry Lemonade", 10, log: false);
-            Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Crunchy Fried Clusters", 5, log: false);
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("necrocarnival", "Deva", "Felt Patch", log: false);
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("necrocarnival", "Mooch Treeant", "Cherry Lemonade", 10, log: false);
+                Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Crunchy Fried Clusters", 5, log: false);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("necrocarnival", "Deva", "Felt Patch", log: false);
 
-            Core.EnsureComplete(8375);
-            Core.JumpWait();
-            Core.ToBank(Rewards);
+                Core.EnsureComplete(8375);
+                Core.JumpWait();
+                Core.ToBank(Rewards);
+            }
         }
-        
-
-
-        
     }
 }
