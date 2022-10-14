@@ -159,7 +159,7 @@ public class HeadoftheLegionBeast
 
         Core.AddDrop(HeadLegionBeast);
         if (!Bot.Quests.IsUnlocked(7983))
-            Circles.CirclesWar();
+            Circles.CirclesWar(true);
         Core.Logger($"Farming {quant} Souls of Heresy");
         Core.RegisterQuests(7983);
         while (!Bot.ShouldExit && !Core.CheckInventory("Souls of Heresy", quant))
