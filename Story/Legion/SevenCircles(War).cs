@@ -49,7 +49,7 @@ public class SevenCircles
         //Cirlces of Fate
         Story.KillQuest(7978, "sevencircles", new[] { "Luxuria", "Gluttony", "Avarice", "Limbo Guard" });
     }
-    public void CirclesWar()
+    public void CirclesWar(bool excludeBoss = false)
     {
         if (Core.isCompletedBefore(7990))
             return;
@@ -80,6 +80,10 @@ public class SevenCircles
         Story.KillQuest(7988, "sevencircleswar", "Treachery Guard");
         //Hanged for Treason
         Story.KillQuest(7989, "sevencircleswar", "Treachery");
+
+        if (excludeBoss)
+            return;
+
         Bot.Events.CellChanged += CutSceneFixer;
         //The Beast
         if (!Story.QuestProgression(7990))
