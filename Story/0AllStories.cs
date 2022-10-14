@@ -74,7 +74,6 @@
 
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Story/BeastMakerStory[MEM].cs
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/Borgars.cs
@@ -152,6 +151,8 @@
 //cs_include Scripts/Story/Yokai.cs
 
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
+
+//cs_include Scripts/Story/Voltaire/CoreVoltaire.cs
 
 
 using Skua.Core.Interfaces;
@@ -234,6 +235,9 @@ public class AllStories
 
     //MemetsRealm
     public MemetsRealm MemetsRealm = new();
+    
+    //Voltaire
+    public CoreVoltaire Voltaire = new();
 
     #endregion
 
@@ -246,7 +250,6 @@ public class AllStories
 
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
-    public BeastMakerStory BeastMakerStory = new();
     public BloodMoon BloodMoon = new();
     public Bludrut Bludrut = new();
     public Borgars Borgars = new();
@@ -517,12 +520,6 @@ public class AllStories
         BattleUnder.BattleUnderAll();
         Core.Logger($"Story: BattleUnder - Complete");
 
-        if (Core.IsMember)
-        {
-            BeastMakerStory.StoryLine();
-            Core.Logger($"Story: Beast Maker - Complete");
-        }
-
         BloodMoon.BloodMoonSaga();
         Core.Logger($"Story: Blood Moon - Complete");
 
@@ -709,7 +706,12 @@ public class AllStories
         UnderGroundLab.partofundergroundlabb();
         Core.Logger($"Story: Underground Lab - Complete?");
 
-
+        if (Core.IsMember)
+        {
+            Voltaire.DoAll();
+            Core.Logger($"Story: Voltaire Quests - Complete");
+        }
+        
         LairWar.doAll();
         Core.Logger($"Story: Vasalkar Lair War - Complete");
 
