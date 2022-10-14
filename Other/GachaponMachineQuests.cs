@@ -71,7 +71,19 @@ public class GachaponMachine
         "Klawaii Enlightenment",
         "KotaPon Prize B",
         "KotaPon Prize C",
+        "Eden Formal Outfit",
+        "Eden Formal Hair",
+        "Eden Formal Locks",
+        "Eden High Formal Hair",
+        "Eden High Formal Locks",
+        "Eden High Formal Cape",
+        "Eden Judgement Blade",
+        "Eden Judgement Blades",
+        "Eden Formal Cane",
+        "A Story of Eden: Light Novel",
+        "A Story of Eden: Special Edition",
     };
+    
     public void Gacha()
     {
         ES.EdenStoryline();
