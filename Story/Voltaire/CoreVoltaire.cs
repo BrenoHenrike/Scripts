@@ -43,7 +43,8 @@ public class CoreVoltaire
 
     public void FiveSaloon()
     {
-            
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1049))
             return;
 
@@ -51,13 +52,13 @@ public class CoreVoltaire
         Story.ChainQuest(1042);
 
         //Exit, Stage Right 1043
-        Story.MapItemQuest(1043, "fivesaloon", 406, 1);
+        Story.MapItemQuest(1043, "fivesaloon", 406);
 
         //The Wedge 1044
         Story.KillQuest(1044, "fivesaloon", "Bulletless Bandit");
 
         //Freedom? 1045
-        Story.MapItemQuest(1045, "fivesaloon", 407, 1);
+        Story.MapItemQuest(1045, "fivesaloon", 407);
 
         //Other Ideas?! 1046
         Story.KillQuest(1046, "fivesaloon", "Storagebox");
@@ -66,7 +67,7 @@ public class CoreVoltaire
         Story.KillQuest(1047, "fivesaloon", "Bulletless Bandit");
 
         //BADABOOM! 1048
-        Story.MapItemQuest(1048, "fivesaloon", 408, 1);
+        Story.MapItemQuest(1048, "fivesaloon", 408);
 
         //Lack of Subtlety 1049
         Story.KillQuest(1049, "fivesaloon", "One-Armed Bandit");
@@ -74,17 +75,21 @@ public class CoreVoltaire
 
      public void Train()
     {
+        FiveSaloon();
+        
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1053))
             return;
 
         //Look Around 1050
-        Story.MapItemQuest(1050, "train", 409, 1);
+        Story.MapItemQuest(1050, "train", 409);
 
         //Caboose Key 1051
         Story.KillQuest(1051, "train", "Ghostly Conductor");
         
         //Slow your Role 1052
-        Story.MapItemQuest(1052, "train", 410, 1);
+        Story.MapItemQuest(1052, "train", 410);
         
         //Slow the Coal 1053
         Story.KillQuest(1053, "train", "Coal Ghoul");
@@ -92,6 +97,10 @@ public class CoreVoltaire
 
      public void Blackstone()
     {
+        Train();
+        
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1057))
             return;
         
@@ -110,6 +119,8 @@ public class CoreVoltaire
 
     public void FireTown()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1554))
             return;
         
@@ -125,6 +136,10 @@ public class CoreVoltaire
 
     public void FireRiver()
     {
+        FireTown();
+        
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1557))
             return;
 
@@ -141,6 +156,10 @@ public class CoreVoltaire
 
     public void FireTunnel()
     {
+        FireRiver();
+        
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1564))
             return;
 
@@ -168,6 +187,8 @@ public class CoreVoltaire
 
     public void Sleezter()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(1972))
             return;
 
@@ -181,13 +202,13 @@ public class CoreVoltaire
         Story.MapItemQuest(1963, "sleezter", 973, 6);
 
         //Guess What in a Guess Where 1964
-        Story.MapItemQuest(1964, "sleezter", 974, 1);
+        Story.MapItemQuest(1964, "sleezter", 974);
         
         //Splitting Hares 1965
         Story.KillQuest(1965, "sleezter", "BunnyMinion");
         
         //Sleezter Bunny's Quarters 1966
-        Story.MapItemQuest(1966, "sleezter", 975, 1);
+        Story.MapItemQuest(1966, "sleezter", 975);
         
         //The Sleezter Bunivinci Code 1967
         Story.KillQuest(1967, "sleezter", "BunnyMinion");
@@ -202,14 +223,16 @@ public class CoreVoltaire
         Story.KillQuest(1970, "sleezter", "BunnyMinion");
         
         //Endin' Minions 1971
-        Story.MapItemQuest(1971, "sleezter", 977, 1);
+        Story.MapItemQuest(1971, "sleezter", 977);
         
         //Breaking Bad Eggs 1972
-        Story.MapItemQuest(1972, "sleezter", 978, 1);
+        Story.MapItemQuest(1972, "sleezter", 978);
     }
 
     public void Neverlore()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(2234))
             return;
 
@@ -259,6 +282,8 @@ public class CoreVoltaire
 
     public void Skullpunch()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(3099))
             return;
 
@@ -274,6 +299,8 @@ public class CoreVoltaire
 
     public void Vampirates()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(3108))
             return;
         
@@ -307,6 +334,8 @@ public class CoreVoltaire
 
     public void TreasureIsland()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(3111))
             return;
 
@@ -314,7 +343,7 @@ public class CoreVoltaire
         Story.MapItemQuest(3109, "treasureisland", new[] { 1986, 1987, 1988, 1989 });
         
         //X Marks The Spot 3110
-        Story.MapItemQuest(3110, "treasureisland", 1958, 1);
+        Story.MapItemQuest(3110, "treasureisland", 1958);
         
         //Captain Von Poach 3111
         Story.KillQuest(3111, "treasureisland", "Captain Von Poach");
@@ -322,6 +351,8 @@ public class CoreVoltaire
 
     public void GustavduGrog()
     {
+        Story.Preload(This);
+        
         if (Core.isCompletedBefore(3119))
             return;
 
@@ -346,6 +377,8 @@ public class CoreVoltaire
 
     public void Wormhole()
     {
+        Story.Preload(This);
+        
         //Something In The Air 5051
         Story.KillQuest(5051, "wormhole", new[] { "Goth Girl", "Vamp Boy" });
         
@@ -369,7 +402,7 @@ public class CoreVoltaire
         Story.KillQuest(5057, "wormhole", "Green Trobbolier|Purple Trobbolier"); // Be patient
 
         //System Failure! 5058
-        Story.MapItemQuest(5058, "wormhole", 4428, 1);
+        Story.MapItemQuest(5058, "wormhole", 4428);
 
         //I Think I Saw This Movie Once 5059
         Story.KillQuest(5059, "wormhole", "Space Horror");
@@ -399,19 +432,21 @@ public class CoreVoltaire
 
     public void Crownsreach()
     {
+        Story.Preload(This);
+        
         //Those Bloody Maggots 5637
         Story.MapItemQuest(5637, "crownsreachfxiii", 5115, 8);
         Story.KillQuest(5637, "crownsreachfxiii", "Blood Maggot");
 
         //Purple is the Best Color 5639
-        Story.MapItemQuest(5639, "safiria", 5114, 1);
+        Story.MapItemQuest(5639, "safiria", 5114);
         Story.KillQuest(5639, "safiria", "Albino Bat");
 
         //Get Some Candles 5640
         Story.KillQuest(5640, "battleundera", "Skeletal Fire Mage");
 
         //Time For a Break 5641
-        Story.MapItemQuest(5641, "crownsreachfxiii", 5116, 1);
+        Story.MapItemQuest(5641, "crownsreachfxiii", 5116);
         Story.KillQuest(5641, "crownsreachfxiii", "Vampire Bat");
 
         //Call the Exterminator 5642
