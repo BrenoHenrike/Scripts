@@ -52,3 +52,13 @@ public class SweatBirthdayTreatsRewards
         Core.ToBank(Rewards);
     }
 }
+//Wolfblade Scythe
+//Runehawk Scythe
+//Mystraven Scythe
+//Chrono Trobble
+//Emblazoned Competitor's Bag
+//Weaponized Emblazoned Bag
+//Emblazoned Competitor's Phone and Bag
+//Customizable Emblazoned Competitor's Bag
+//Custom Weaponized Emblazoned Bag
+//Custom Emblazoned Competitor's Phone and Bag
