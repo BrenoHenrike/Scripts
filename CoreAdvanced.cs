@@ -585,6 +585,12 @@ public class CoreAdvanced
             GearStore();
 
         SmartEnhance(ClassName);
+        if (Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class)?.EnhancementLevel == 0)
+        {
+            Core.Logger($"Cant level up \"{ClassName}\" because it's not enhanced and AutoEnhance is turned off");
+            return;
+        }
+
         string[]? CPBoost = BestGear(GearBoost.cp);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
