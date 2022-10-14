@@ -66,6 +66,8 @@
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
+//cs_include Scripts/Story/Voltaire/CoreVoltaire.cs
+
 //cs_include Scripts/Story/ArcAttack.cs
 //cs_include Scripts/Story/AriaPet[MEM].cs
 //cs_include Scripts/Story/Artixpointe.cs
@@ -151,9 +153,6 @@
 //cs_include Scripts/Story/Yokai.cs
 
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
-
-//cs_include Scripts/Story/Voltaire/CoreVoltaire.cs
-
 
 using Skua.Core.Interfaces;
 
@@ -492,6 +491,14 @@ public class AllStories
         TOD.CompleteToD();
         Core.Logger($"Saga: Throne of Darkness - Complete");
         #endregion
+        
+        #region Voltaire
+        if (Core.IsMember)
+        {
+            Voltaire.DoAll();
+            Core.Logger($"Saga: Voltaire Quests - Complete");
+        }
+        #endregion
 
         #endregion
 
@@ -705,12 +712,7 @@ public class AllStories
 
         UnderGroundLab.partofundergroundlabb();
         Core.Logger($"Story: Underground Lab - Complete?");
-
-        if (Core.IsMember)
-        {
-            Voltaire.DoAll();
-            Core.Logger($"Story: Voltaire Quests - Complete");
-        }
+    
         
         LairWar.doAll();
         Core.Logger($"Story: Vasalkar Lair War - Complete");
