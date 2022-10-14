@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
-//cs_include Scripts/Story/Table.cs
+//cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Farm/BuyScrolls.cs
 using Skua.Core.Interfaces;
 
@@ -17,7 +17,7 @@ public class ShadowSlayerK
     public CoreDailies Daily = new();
     public CoreAdvanced Adv = new();
     public Core7DD DD = new();
-    public Table Table = new();
+    public GiantTaleStory GiantTaleStory = new();
     public BuyScrolls Scroll = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -96,7 +96,7 @@ public class ShadowSlayerK
             Core.EnsureAccept(8834);
             if (!Core.CheckInventory("Tea Cup (Mem)"))
             {
-                Table.DoAll();
+                GiantTaleStory.DoAll();
                 while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 100))
                     Core.ChainComplete(746);
                 Core.EnsureAccept(741);
