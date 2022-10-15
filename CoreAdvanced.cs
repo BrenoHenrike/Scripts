@@ -893,7 +893,15 @@ public class CoreAdvanced
         string MonsterRace = "";
         if (Monster != "*")
             MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower())?.Race ?? "";
-        else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race ?? "";
+        else
+        {
+            if (Bot.Monsters.CurrentMonsters.Count() == 0)
+            {
+                Core.Logger($"No monsters are present in cell \"{Bot.Player.Cell}\" in /{Bot.Map.Name}");
+                return;
+            }
+            MonsterRace = Bot.Monsters.CurrentMonsters.First().Race ?? "";
+        }
 
         if (MonsterRace == null || MonsterRace == "")
             return;
