@@ -64,17 +64,20 @@ public class ZorbaksMerge
                 case "Onyx Scale":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(6554);
+
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         // 14th Anniversary Gifts 6554
+                        Core.EnsureAccept(6554);
+
                         Core.HuntMonster("birthday", "Birthday Cake", "Top Cherry");
                         Core.HuntMonster("birthday", "Birthday Cake", "Copper Knife");
                         Core.HuntMonster("birthday", "Birthday Cake", "Platinum Fork");
                         Core.HuntMonster("birthday", "Birthday Cake", "Gold Spoon");
+
+                        Core.EnsureComplete(6554, req.ID);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
 
