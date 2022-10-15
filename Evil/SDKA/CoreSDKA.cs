@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -10,6 +11,7 @@ public class CoreSDKA
     public CoreBots Core => CoreBots.Instance;
     public static CoreBots sCore => CoreBots.Instance;
     public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     public CoreDailies Daily = new();
 
     public string OptionsStorage = "SupulchuresDoomKnightArmorOptions";
@@ -122,48 +124,42 @@ public class CoreSDKA
             if (!Core.CheckInventory(2083))
             {
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
-                Farm.EvilREP(5);
 
-                Core.Logger("Ranking up Healer.");
                 Core.BuyItem("trainers", 176, "Healer");
-                Core.JumpWait();
-                Bot.Inventory.EquipItem("Healer");
-                Farm.IcestormArena(rankUpClass: true);
+                Adv.rankUpClass("Healer", false);
 
-                Core.Logger("Ranking up Warrior.");
                 Core.BuyItem("trainers", 170, "Warrior");
-                Bot.Inventory.EquipItem("Warrior");
-                Farm.IcestormArena(rankUpClass: true);
-                Core.BuyItem("shadowfall", 100, "Doomknight", shopItemID: 6309);
-                Bot.Inventory.EquipItem(2083);
-                Farm.IcestormArena(rankUpClass: true);
-                Core.EquipClass(ClassType.Solo);
-            }
+                Adv.rankUpClass("Warrior", false);
 
-            if (Core.CheckInventory(2083) && Bot.Inventory.GetQuantity("DoomKnight") != 302500)
-            {
-                Bot.Inventory.EquipItem(2083);
-                Farm.IcestormArena(rankUpClass: true);
-                Core.EquipClass(ClassType.Solo);
+                Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             }
+            Adv.rankUpClass("Doomknight", false);
+
+            Core.EquipClass(ClassType.Solo);
+
             Core.ChainComplete(2087);
             Core.ToBank("DoomKnight");
         }
+
         if (!Bot.Quests.IsUnlocked(2089))
         {
             Core.Logger("Toiling with Terror [2088]");
             Daily.EldersBlood();
+
             if (!Core.CheckInventory("Elders' Blood"))
-                Core.Logger("No Elders' Blood available.", messageBox: true, stopBot: true);
+                Core.Logger($"Not enough \"Elders' Blood\", please do the daily at a later date", messageBox: true, stopBot: true);
+
             Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
             Core.ChainComplete(2088);
             Core.ToBank("Elders' Blood");
         }
+
         if (!Bot.Quests.IsUnlocked(2090))
         {
             Core.Logger("Quest: A Penny for your Foughts [2089]");
             Penny(oneTime: true);
         }
+
         if (!Bot.Quests.IsAvailable(2098))
         {
             Core.Logger("Quest: Dark Spirit Donation [2090]");

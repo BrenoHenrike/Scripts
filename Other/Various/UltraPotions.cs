@@ -53,6 +53,7 @@ public class PotionBuyer
         }
 
         Core.AddDrop(potions);
+        Core.AddDrop("Potent Malice Potion");
 
         foreach (string potion in potions)
         {
@@ -69,7 +70,8 @@ public class PotionBuyer
             switch (potion)
             {
                 case "Potent Malevolence Elixir":
-                    currTrait = CoreFarms.AlchemyTraits.SPw;
+                case "Potent Battle Elixir":
+                    currTrait = potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
                     BulkGrind("Doomatter", "Nimblestem");
                     break;
 
@@ -87,7 +89,6 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.Int;
                     BulkGrind("Arashtite Ore", "Doomatter");
                     break;
-
                 default:
                     Core.Logger("The bot was not taught how to make " + potion);
                     break;
