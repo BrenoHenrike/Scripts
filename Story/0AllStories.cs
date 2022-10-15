@@ -80,6 +80,7 @@
 //cs_include Scripts/Story/Borgars.cs
 
 //cs_include Scripts/Story/CastleTunnels.cs
+//cs_include Scripts/Story/Concert[MEM].cs
 //cs_include Scripts/Story/Cleric.cs
 //cs_include Scripts/Story/CruxShip.cs
 
@@ -107,9 +108,11 @@
 
 //cs_include Scripts/Story/J6Saga.cs
 
+//cs_include Scripts/Story/Lightguard[MEM].cs
 //cs_include Scripts/Story/LightoviaCave.cs
 
 //cs_include Scripts/Story/Manor.cs
+//cs_include Scripts/Story/Marsh2[MEM].cs
 //cs_include Scripts/Story/MustyCave.cs
 
 //cs_include Scripts/Story/Noobshire.cs
@@ -131,7 +134,6 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/SuperDeath.cs
 
-//cs_include Scripts/Story/Table.cs
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
@@ -251,6 +253,7 @@ public class AllStories
 
     public CastleTunnels CastleTunnels = new();
     public Cleric Cleric = new();
+    public Concert Concert = new();
     public CruxShip CruxShip = new();
 
     public DarkCarnaxStory DarkCarnax = new();
@@ -276,9 +279,11 @@ public class AllStories
 
     public GlaceraStory GlaceraStory = new();
 
+    public Lightguard Lightguard = new();
     public LightoviaCave LightoviaCave = new();
 
     public Manor Manor = new();
+    public Marsh2 Marsh2 = new();
     public MustyCave MustyCave = new();
 
     public Noobshire Noobshire = new();
@@ -302,7 +307,6 @@ public class AllStories
     public StarSinc StarSinc = new();
     public SuperDeath SuperDeath = new();
 
-    public Table Table = new();
     public ThirdSpell ThirdSpell = new();
     public TitanAttackStory TitanAttackStory = new();
     public TowerOfDoom TowerOfDoom = new();
@@ -538,6 +542,12 @@ public class AllStories
         Cleric.StoryLine();
         Core.Logger($"Story: Cleric - Complete");
 
+        if (Core.IsMember)
+        {
+            Concert.DoAll();
+            Core.Logger($"Story: Concert Event - Complete");
+        }
+
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
 
@@ -598,7 +608,7 @@ public class AllStories
         Gamehaven.Storyline();
         Core.Logger($"Story: Game Haven - Complete");
 
-        GiantTaleStory.doAll();
+        GiantTaleStory.DoAll();
         Core.Logger($"Story: Giant Tale - Complete");
 
         GlaceraStory.DoAll();
@@ -608,12 +618,24 @@ public class AllStories
         Core.Logger($"Sage: J6 - Complete");
 
 
+        if (Core.IsMember)
+        {
+            Lightguard.StoryLine();
+            Core.Logger($"Story: Lightguard Michem Quests - Complete");
+        }
+
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
 
 
         Manor.StoryLine();
         Core.Logger($"Story: Manor - Complete");
+
+        if (Core.IsMember)
+        {
+            Marsh2.StoryLine();
+            Core.Logger($"Story: Marsh 2 - Complete");
+        }
 
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
@@ -667,9 +689,6 @@ public class AllStories
         SuperDeath.StoryLine();
         Core.Logger($"Story: SuperDeath - Complete");
 
-
-        Table.DoAll();
-        Core.Logger($"Story: Table - Complete");
 
         ThirdSpell.StoryLine();
         Core.Logger($"Story: Third Spell - Complete");

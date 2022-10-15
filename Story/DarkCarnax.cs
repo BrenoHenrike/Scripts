@@ -21,9 +21,9 @@ public class DarkCarnaxStory
         Core.SetOptions(false);
     }
 
-    public void Storyline()
+    public void Storyline(bool forUltra = false)
     {
-        if (Core.isCompletedBefore(8872))
+        if (Core.isCompletedBefore(forUltra ? 8871 : 8872))
             return;
 
         Story.PreLoad(this);
@@ -41,6 +41,8 @@ public class DarkCarnaxStory
             Core.HuntMonster("fearhouse", "ALL FEARS", "Sheer Horror", isTemp: false);
             Core.EnsureComplete(8871);
         }
+        if (forUltra)
+            return;
 
         //8872 The Last Stand
         if (!Story.QuestProgression(8872))

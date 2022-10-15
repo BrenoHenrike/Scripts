@@ -11,11 +11,11 @@ public class GiantTaleStory
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        doAll();
+        DoAll();
         Core.SetOptions(false);
     }
 
-    public void doAll()
+    public void DoAll()
     {
         Story.PreLoad(this);
         GiantQuests();
