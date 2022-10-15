@@ -37,7 +37,7 @@ public class ArmyDarkonErrands
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: false);
-        bot.Options.RestPackets = false;
+        Bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Method>("Method"), 222);
 
@@ -50,9 +50,11 @@ public class ArmyDarkonErrands
         Core.EquipClass(ClassType.Solo);
         if (Method.ToString() == "Third_Errands")
             GetItem("tercessuinotlim", new[] { "Nulgath" }, 7326, "Darkon's Receipt", quant);
-        if (Method.ToString() == "Second_Errands")
+
+        else if (Method.ToString() == "Second_Errands")
             GetItem("doomvault", new[] { "Binky" }, 7325, "Darkon's Receipt", quant);
-        if (Method.ToString() == "First_Errands_Strong_Team")
+            
+        else if (Method.ToString() == "First_Errands_Strong_Team")
         {
             Core.EquipClass(ClassType.Farm);
             Bot.Quests.UpdateQuest(3481);

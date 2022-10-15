@@ -1,6 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -9,8 +7,6 @@ public class ArmyBloodMoonToken
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
 
     private static CoreArmyLite sArmy = new();
@@ -35,7 +31,7 @@ public class ArmyBloodMoonToken
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
+        Bot.Options.RestPackets = false;
 
         Setup();
 

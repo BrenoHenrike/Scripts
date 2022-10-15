@@ -29,9 +29,8 @@ public class ArmyGoodEvilREP
 
     public void ScriptMain(IScriptInterface bot)
     {
-
         Core.SetOptions();
-        bot.Options.RestPackets = false;
+        Bot.Options.RestPackets = false;
 
         Setup();
 

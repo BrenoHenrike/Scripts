@@ -34,7 +34,7 @@ public class ArmyMirrorRealmToken
     {
         Core.BankingBlackList.AddRange(Loot);
         Core.SetOptions();
-        bot.Options.RestPackets = false;
+        Bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Method>("Method"), 300);
 
@@ -49,15 +49,17 @@ public class ArmyMirrorRealmToken
 
         if (Method.ToString() == "Kill_Weak_Mob")
         {
-        Core.EquipClass(ClassType.Farm);
-        Army.SmartAggroMonStart("overworld", "Undead Bruiser", "Undead Mage", "Undead Minion");
+            Core.EquipClass(ClassType.Farm);
+            Army.SmartAggroMonStart("overworld", "Undead Bruiser", "Undead Mage", "Undead Minion");
         }
+
         if (Method.ToString() == "Kill_Boss")
         {
-        Core.EquipClass(ClassType.Solo);
-        Core.RegisterQuests(3188);
-        Army.SmartAggroMonStart("mirrorportal", "Chaos Harpy");
+            Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(3188);
+            Army.SmartAggroMonStart("mirrorportal", "Chaos Harpy");
         }
+        
         while (!Bot.ShouldExit && (!Core.CheckInventory("Mirror Realm Token", 300)))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
