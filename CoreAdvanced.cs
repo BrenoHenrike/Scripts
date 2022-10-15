@@ -585,6 +585,12 @@ public class CoreAdvanced
             GearStore();
 
         SmartEnhance(ClassName);
+        if (Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class)?.EnhancementLevel == 0)
+        {
+            Core.Logger($"Cant level up \"{ClassName}\" because it's not enhanced and AutoEnhance is turned off");
+            return;
+        }
+
         string[]? CPBoost = BestGear(GearBoost.cp);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
@@ -624,7 +630,7 @@ public class CoreAdvanced
             Dictionary<string, float> BoostedGear = new();
 
             foreach (InventoryItem Item in BankInvData)
-                if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
+                if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()) && !BoostedGear.Any(kvp => kvp.Key == Item.Name))
                     BoostedGear.Add(Item.Name, getBoostFloat(Item, BoostType.ToString()));
 
             if (BoostedGear.Count != 0)
@@ -887,7 +893,15 @@ public class CoreAdvanced
         string MonsterRace = "";
         if (Monster != "*")
             MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower())?.Race ?? "";
-        else MonsterRace = Bot.Monsters.CurrentMonsters.First().Race ?? "";
+        else
+        {
+            if (Bot.Monsters.CurrentMonsters.Count() == 0)
+            {
+                Core.Logger($"No monsters are present in cell \"{Bot.Player.Cell}\" in /{Bot.Map.Name}");
+                return;
+            }
+            MonsterRace = Bot.Monsters.CurrentMonsters.First().Race ?? "";
+        }
 
         if (MonsterRace == null || MonsterRace == "")
             return;
