@@ -41,7 +41,7 @@ public class AspiringNecromancer
         //Like No One Ever Was 7752
         Core.RegisterQuests(7752);
         while (!Bot.ShouldExit && !Core.CheckInventory(Quest2Rewards, toInv: false))
-            Core.HuntMonster("DoomPally", "Doomwood Bonemuncher", "Bones Collected", 15, log: false);
+            Core.HuntMonster("DoomWood", "Doomwood Bonemuncher", "Bones Collected", 15, log: false);
         Core.JumpWait();
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
