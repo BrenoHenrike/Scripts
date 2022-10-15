@@ -630,7 +630,7 @@ public class CoreAdvanced
             Dictionary<string, float> BoostedGear = new();
 
             foreach (InventoryItem Item in BankInvData)
-                if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()))
+                if (Item.Meta != null && Item.Meta.Contains(BoostType.ToString()) && !BoostedGear.Any(kvp => kvp.Key == Item.Name))
                     BoostedGear.Add(Item.Name, getBoostFloat(Item, BoostType.ToString()));
 
             if (BoostedGear.Count != 0)
