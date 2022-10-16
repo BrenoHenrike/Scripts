@@ -91,6 +91,7 @@ public class AspiringNecromancerMerge
                     Core.EquipClass(ClassType.Farm);
                     //To Raise Them is my Real Quest 7753
                     Bot.Quests.UpdateQuest(2060);
+                    Bot.Quests.UpdateQuest(3019);
                     Core.RegisterQuests(7753);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
