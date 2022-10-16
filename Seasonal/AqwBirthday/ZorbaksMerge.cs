@@ -34,7 +34,9 @@ public class ZorbaksMerge
 
     public void BuyAllMerge()
     {
-        Core.isSeasonalMapActive("birthday");
+        if (!Core.isSeasonalMapActive("birthday"))
+            return;
+            
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("battleon", 1640, findIngredients);
 
