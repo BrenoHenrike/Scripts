@@ -101,7 +101,7 @@ public class BonecastleMerge
         new Option<bool>("34666", "Pile of Bone Skulls", "Mode: [select] only\nShould the bot buy \"Pile of Bone Skulls\" ?", false),
         new Option<bool>("34665", "Pile of Silver Skulls", "Mode: [select] only\nShould the bot buy \"Pile of Silver Skulls\" ?", false),
         new Option<bool>("34664", "Pile of Golden Skulls", "Mode: [select] only\nShould the bot buy \"Pile of Golden Skulls\" ?", false),
-        new Option<bool>("34723", "Bone Castle House", "Mode: [select] only\nShould the bot buy \"Bone Castle House\" ?", false),
+        // new Option<bool>("34723", "Bone Castle House", "Mode: [select] only\nShould the bot buy \"Bone Castle House\" ?", false), //costs 2k acs
         new Option<bool>("34780", "DeathKnight Lord", "Mode: [select] only\nShould the bot buy \"DeathKnight Lord\" ?", false),
     };
 }

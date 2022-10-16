@@ -3,7 +3,6 @@
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/CoreAdvanced.cs
 
-
 using Skua.Core.Interfaces;
 
 public class NationLoyaletyRewarded
@@ -13,8 +12,6 @@ public class NationLoyaletyRewarded
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
     public CoreAdvanced Adv = new();
-
-
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -38,30 +35,26 @@ public class NationLoyaletyRewarded
             if (Bot.Inventory.IsMaxStack(Rewards[i]))
                 Core.Logger($"{Rewards[i]} is max stack Checking next item in the \"Time is Money\" Quest's Rewards");
             else
+            {
+                Core.RegisterQuests(4749);
                 while (!Bot.Inventory.IsMaxStack(Rewards[i]))
                 {
                     //Nation Loyalty Rewarded 4749
-                    Core.EnsureAccept(4749);
-                    
-                    if (!Core.CheckInventory("Defeated Makai", 25))
-                    {
-                        Core.EquipClass(ClassType.Farm);
-                        Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
-                        Core.Jump();
-                        Core.Join("aqlesson");
-                    }
                     Core.EquipClass(ClassType.Solo);
                     Adv.BestGear(GearBoost.Chaos);
                     Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
                     Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
                     Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true);
                     Adv.BestGear(GearBoost.Dragonkin);
-                    Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
+                    Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true);
                     Adv.BestGear(GearBoost.Human);
                     Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-
-                    Core.EnsureComplete(4749);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
+                    Bot.Wait.ForPickup(Rewards[i]);
                 }
+            }
+            Core.CancelRegisteredQuests();
         }
     }
 }

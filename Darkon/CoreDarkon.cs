@@ -48,7 +48,7 @@ public class CoreDarkon
         Core.RegisterQuests(7324);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
-            Core.KillMonster("portalmaze", "r8", "Left", "*", "Banana", 22, false, log: false);
+            Core.KillMonster("arcangrove", "Right", "Left", "*", "Banana", 22, false, log: false);
             Bot.Wait.ForPickup("Darkon's Receipt");
         }
         Core.CancelRegisteredQuests();

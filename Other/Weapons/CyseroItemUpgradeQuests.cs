@@ -27,11 +27,11 @@ public class CyseroItemUpgrade
     public SepulchuresOriginalHelm Seppy = new();
     public TarosManslayer TarosManslayer = new();
 
-    public string OptionsStorage = "FarmerJoePet";
+    public string OptionsStorage = "CyseroItemUpgrade";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Options] -> [Script Options] if you wish to change anything.", false),
+        CoreBots.Instance.SkipOptions,
         new Option<bool>("PolishedBlod", "Polished Blinding Light of Destiny", "Finishes Cysero Quest \"Upgrade the Blinding Light of Destiny (7063)\" to get you \"Polished Blinding Light of Destiny\"", false),
         new Option<bool>("ToxicPlagueSpear", "Toxic Plague Spear", "Finishes Cysero Quest \"Upgrade the Plague Spear (7064)\" to get you \"Toxic Plague Spear\"", false),
         new Option<bool>("BurningPhoenixBlade", "Burning Phoenix Blade", "Finishes Cysero Quest \"Upgrade the Phoenix Blade (7065)\" to get you \"Burning Phoenix Blade\"", false),
@@ -54,8 +54,6 @@ public class CyseroItemUpgrade
 
     public void ScriptOtions()
     {
-        if (!Bot.Config.Get<bool>("SkipOption"))
-            Bot.Config.Configure();
 
         if (Bot.Config.Get<bool>("PolishedBlod"))
             GetPolishedBLoD();
