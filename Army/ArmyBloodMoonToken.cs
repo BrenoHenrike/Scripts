@@ -8,9 +8,8 @@ public class ArmyBloodMoonToken
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreArmyLite Army = new();
-
     private static CoreArmyLite sArmy = new();
-
+    
     public string OptionsStorage = "ArmyBloodMoonToken";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()

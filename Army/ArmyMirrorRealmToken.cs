@@ -1,6 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -9,12 +7,9 @@ public class ArmyMirrorRealmToken
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
-
     private static CoreArmyLite sArmy = new();
-
+    
     public string OptionsStorage = "ArmyMirrorRealmToken";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
@@ -32,7 +27,7 @@ public class ArmyMirrorRealmToken
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Loot);
+        Core.BankingBlackList.Add("Mirror Realm Token");
         Core.SetOptions();
         Bot.Options.RestPackets = false;
 
@@ -45,7 +40,7 @@ public class ArmyMirrorRealmToken
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.AddDrop(Loot);
+        Core.AddDrop("Mirror Realm Token");
 
         if (Method.ToString() == "Kill_Weak_Mob")
         {
@@ -53,7 +48,7 @@ public class ArmyMirrorRealmToken
             Army.SmartAggroMonStart("overworld", "Undead Bruiser", "Undead Mage", "Undead Minion");
         }
 
-        if (Method.ToString() == "Kill_Boss")
+        else if (Method.ToString() == "Kill_Boss")
         {
             Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(3188);
@@ -61,11 +56,10 @@ public class ArmyMirrorRealmToken
         }
         
         while (!Bot.ShouldExit && (!Core.CheckInventory("Mirror Realm Token", 300)))
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
+                Bot.Combat.Attack("*");
+            Army.AggroMonStop(true);
     }
 
-    private string[] Loot = { "Mirror Realm Token" };
     public enum Method
     {
         Kill_Weak_Mob = 0,

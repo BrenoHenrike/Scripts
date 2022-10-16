@@ -1,6 +1,5 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -10,9 +9,7 @@ public class ArmyGoodEvilREP
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
-
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyGoodEvilREP";
@@ -60,21 +57,21 @@ public class ArmyGoodEvilREP
 
     public void rank4()
     {
-    Core.RegisterQuests(364, 369);
-    Army.SmartAggroMonStart("swordhavenbridge", "Slimes");
+        Core.RegisterQuests(364, 369);
+        Army.SmartAggroMonStart("swordhavenbridge", "Slimes");
             Bot.Combat.Attack("*");
     
-    Army.AggroMonClear();
-    Core.CancelRegisteredQuests();
+        Army.AggroMonClear();
+        Core.CancelRegisteredQuests();
     }
 
     public void rankMAX()
     {
-    Core.RegisterQuests(367, 372);
-    Army.SmartAggroMonStart("castleundead", "Skeletal Viking", "Skeletal Warrior");
+        Core.RegisterQuests(367, 372);
+        Army.SmartAggroMonStart("castleundead", "Skeletal Viking", "Skeletal Warrior");
             Bot.Combat.Attack("*");
 
-    Army.AggroMonStop(true);
-    Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
+        Core.CancelRegisteredQuests();
     }
 }

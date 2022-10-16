@@ -1,8 +1,5 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
-//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -12,8 +9,6 @@ public class ArmyDarkonErrands
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
     private static CoreArmyLite sArmy = new();
 
@@ -34,7 +29,7 @@ public class ArmyDarkonErrands
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Loot);
+        Core.BankingBlackList.Add("Darkon's Receipt");
 
         Core.SetOptions(disableClassSwap: false);
         Bot.Options.RestPackets = false;
@@ -77,8 +72,7 @@ public class ArmyDarkonErrands
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
         Core.AddDrop(item);
-        if (!Bot.Quests.Active.Contains(QuestData))
-            Core.RegisterQuests(questID);
+        Core.RegisterQuests(questID);
 
         foreach (string monster in monsters)
             Army.SmartAggroMonStart(map, monster);
@@ -90,7 +84,6 @@ public class ArmyDarkonErrands
         Core.CancelRegisteredQuests();
     }
 
-    private string[] Loot = { "Darkon's Receipt" };
     public enum Method
     {
         First_Errands_Weak_Team = 0,
