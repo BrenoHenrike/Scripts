@@ -42,16 +42,16 @@ public class ArmyGoodEvilREP
         Core.EquipClass(ClassType.Farm);
 
         while (!Bot.ShouldExit && Farm.FactionRank("Evil") < 4)
-        rank4();
+            rank4();
 
         while (!Bot.ShouldExit && Farm.FactionRank("Good") < 4)
-        rank4();
+            rank4();
         
         while (!Bot.ShouldExit && Farm.FactionRank("Good") < rank)
-        rankMAX();
+            rankMAX();
 
         while (!Bot.ShouldExit && Farm.FactionRank("Evil") < rank)
-        rankMAX();
+            rankMAX();
         
     }
 
