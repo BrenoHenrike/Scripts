@@ -46,9 +46,11 @@ public class AspiringNecromancer
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
 
-        //To Raise Them is my Real Quest 7753
+        
         Bot.Quests.UpdateQuest(2060);
-        Core.RegisterQuests(7752);
+        Bot.Quests.UpdateQuest(3019);
+        //To Raise Them is my Real Quest 7753
+        Core.RegisterQuests(7753);
         while (!Bot.ShouldExit && !Core.CheckInventory(Quest3Rewards, toInv: false))
         {
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Head", log: false, publicRoom: true);
