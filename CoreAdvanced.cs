@@ -1181,6 +1181,7 @@ public class CoreAdvanced
             foreach (InventoryItem item in ItemList)
             {
                 _AutoEnhance(item, shopID);
+                Bot.Sleep(Core.ActionDelay);
                 Core.DebugLogger(this);
             }
         }
