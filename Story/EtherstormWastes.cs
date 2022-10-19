@@ -381,7 +381,7 @@ public class EtherStormWastes
             Core.HuntMonster("lair", "Venom Draconian", "Draconian Venom", 3);
             Core.HuntMonster("lair", "Water Draconian", "Draconian Tears", 3);
             Core.HuntMonster("lair", "Wyvern", "Wyvern Scales", 3);
-            Core.EnsureAccept(3511);
+            Core.EnsureComplete(3511);
         }
 
         //Darkness to Calm Dragons 3512
