@@ -55,7 +55,7 @@ public class AnniversaryofDoom
 
         // 8882 The Love of your Unlife
         Story.MapItemQuest(8882, "zombae", 10703);
-        Story.KillQuest(8882, "zombae", "Zombette");
+        Story.KillQuest(8882, "zombae", "Zombetter");
 
         Core.EquipClass(ClassType.Solo);
         // 8883 The Ultimate Ghoul Fiend
@@ -101,7 +101,12 @@ public class AnniversaryofDoom
 
         Core.EquipClass(ClassType.Farm);
         // 8894 Plague of Zom-Bays
-        Story.KillQuest(8894, "spacepwny", "Zom-Bay");
+        if (!Story.QuestProgression(8894))
+        {
+            Core.EnsureAccept(8894);
+            Core.KillMonster("spacepwny", "Enter", "Spawn", "Zom-Bay", "Zom-Bay Defeated", 10);
+            Core.EnsureComplete(8894);
+        }
 
         // 8895 Foal of (Thorough) Dread
         if (!Story.QuestProgression(8895))
