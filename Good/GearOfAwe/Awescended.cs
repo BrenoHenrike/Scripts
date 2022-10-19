@@ -199,9 +199,9 @@ public class Awescended
             ADK.DoAll(true);
             Core.Unbank("Arch DoomKnight");
             Armor.DrakathOriginalArmor();
-            Core.KillMonster("ectocave", "Boss", "Left", "*", "Bin Jett's Salvaged Armor Part", 50, false);
+            Core.HuntMonster("ectocave", "Ektorax", "Bin Jett's Salvaged Armor Part", 50, false);
 
-            Core.Unbank("GOLD Boost! (60 min)", "Doom GOLD Boost! (60 min)", "GOLD Boost! (20 min)");
+            Core.Unbank($"GOLD Boost! (60 min)", "Doom GOLD Boost! (60 min)", "GOLD Boost! (20 min)");
             Bot.Boosts.UseGoldBoost = true;
             Adv.BestGear(GearBoost.gold);
 
