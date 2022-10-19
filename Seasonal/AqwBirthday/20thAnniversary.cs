@@ -91,10 +91,12 @@ public class AnniversaryofDoom
         Story.KillQuest(8892, "mermaidsushi", "Die Fieri");
 
         // 8893 AFK Quest
-        if (!Story.QuestProgression(8893))
+        if (!Story.QuestProgression(8893) || Core.HasAchievement())
         {
+            Bot.Options.RestPackets = false;
             Core.Logger("this Will Take ~5minutes feel free to fuck off 👍");
-            Bot.Sleep(310000);
+            Bot.Sleep(325000);
+            Bot.Options.RestPackets = true;
         }
 
         Core.EquipClass(ClassType.Farm);
