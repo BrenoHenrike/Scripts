@@ -23,9 +23,9 @@ public class SRoD
             return;
 
         Core.Logger("Farming for ShadowReaper Of Doom");
-
         LoC.Xiang();
         Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Mirror Realm Token");
         Core.RegisterQuests(3188);
         while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 300))
             Core.HuntMonsterMapID("mirrorportal", 1);

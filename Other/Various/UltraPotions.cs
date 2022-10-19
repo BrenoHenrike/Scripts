@@ -15,11 +15,12 @@ public class PotionBuyer
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("GoldMethod", "Use Gold", "Buy Potions with Gold(Expensive)", false),
+        // new Option<bool>("GoldMethod", "Use Gold", "Buy Potions with Gold(Expensive)", false),
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle and Malevolence Tonics?", false),
         new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
+        new Option<bool>("farmDivine ", "Divine", "Should the bot farm Unstabe Divine Elixers?", false),
         new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount:")
     };
 
@@ -42,8 +43,8 @@ public class PotionBuyer
         potionQuant = Bot.Config.Get<int>("potionQuant");
         if (potions is null)
         {
-            potions = new[] { "Potent Malevolence Elixir", "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Sage Tonic" };
-            potionsFarm = new[] { Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmHonor"), Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmSage") };
+            potions = new[] { "Potent Malevolence Elixir", "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Sage Tonic", "Unstable Divine Elixir" };
+            potionsFarm = new[] { Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmHonor"), Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmSage"), Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmDivine") };
         }
 
         if (Array.IndexOf(potionsFarm, true) == -1 || potionQuant < 1 || potionQuant > 300)
@@ -89,6 +90,12 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.Int;
                     BulkGrind("Arashtite Ore", "Doomatter");
                     break;
+
+                case "Unstable Divine Elixir":
+                    currTrait = CoreFarms.AlchemyTraits.hOu;
+                    BulkGrind("Dragon Scale", "Searbush");
+                    break;
+                    
                 default:
                     Core.Logger("The bot was not taught how to make " + potion);
                     break;
@@ -136,6 +143,10 @@ public class PotionBuyer
                     case "Trollola Nectar":
                         Core.HuntMonster("bloodtusk", "Trollola Plant", ingredient, ingreQuant, isTemp: false);
                         break;
+                    case "Searbush":
+                        Core.HuntMonster("mafic", "Living Fire", ingredient, ingreQuant, isTemp: false);
+                        break;
+
                     default:
                         Core.Logger("The bot was not taught where to get " + ingredient);
                         break;

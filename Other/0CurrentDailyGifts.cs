@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
+using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
-using System.Globalization;
 
 public class CurrentDailyGifts
 {
@@ -85,8 +85,19 @@ public class CurrentDailyGifts
             #endregion
 
             #region October 17 - 31 leave November 11
+            GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade");
+            GetGift(Permanent, "dflesson", "Fluffy the Dracolich", "Zurvana's Blessing", "Zurvana's Wrath", "Zurvana's Wrath", "Zurvana's Pity", "Zurvana's Pity");
+            // GetGift(Permanent, "battleoff", "*", "???"); //uncomment on the 18th when it releases... still not out yet today..?
+            // GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid's Edge"); //available on the 20th (thursday) just incomment it.
 
             #endregion
+            
+            #region October 24 - 30 leave November 11
+            // GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe"); //uncomment the 27th
+            // GetGift(AvailableUntil(1,1), "crescentmoon", "Spectral Lycan", "Headless Armor", "Ghost Eta Pet"); //uncomment on the 30th + fix availuntil date.
+            
+            #endregion
+            
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
@@ -153,6 +164,7 @@ public class CurrentDailyGifts
             Core.ToBank(item);
         }
     }
+
 
     private DateTime AvailableUntil(int Day, int Month, int Year = 2022) => new(Year, Month, Day, 07, 00, 00, DateTimeKind.Utc);
     private DateTime AvailableUntil(int Day, Month Month, int Year = 2022) => new(Year, (int)Month, Day, 07, 00, 00, DateTimeKind.Utc);
