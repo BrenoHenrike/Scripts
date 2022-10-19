@@ -90,15 +90,18 @@ public class AnniversaryofDoom
         // 8892 Gore-Made for This
         Story.KillQuest(8892, "mermaidsushi", "Die Fieri");
 
+        Bot.Options.RestPackets = false;
+
         // 8893 AFK Quest
         if (!Story.QuestProgression(8893))
         {
-            Bot.Options.RestPackets = false;
             Core.Join("afkquest");
+            Bot.Send.Packet("%xt%zm%afk%0%false%");
             Core.Logger($"**DO NOT CLICK THE GAME SCREEN** this Will Take ~5minutes, Go touch some grass 👍");
-            Bot.Sleep(325000);
-            Bot.Options.RestPackets = true;
+            Bot.Sleep(360000);
         }
+
+        Bot.Options.RestPackets = true;
 
         Core.EquipClass(ClassType.Farm);
         // 8894 Plague of Zom-Bays
