@@ -426,7 +426,7 @@ public class CoreDailies
 
         Core.Logger("Daily: Death KnightLord Class");
 
-        if (Core.CheckInventory("DeathKnight Lord", toInv: false))
+        if (Core.CheckInventory(34780, toInv: false))
         {
             Core.Logger("You already own DeathKnight Lord Class, Skipped");
             return;
@@ -439,7 +439,7 @@ public class CoreDailies
 
         Core.FarmingLogger("Shadow Skull", 30);
         if (Core.CheckInventory("Shadow Skull", 30))
-            Core.BuyItem("bonecastle", 1242, "DeathKnight Lord", shopItemID: 4397);
+            Core.BuyItem("bonecastle", 1242, 34780, shopItemID: 4397);
 
         Core.ToBank("Shadow Skull");
     }
