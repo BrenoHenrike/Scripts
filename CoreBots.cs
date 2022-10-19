@@ -1384,6 +1384,62 @@ public class CoreBots
 
     #endregion
 
+    #region Aura
+
+    public bool HasAura(AuraSubject subject, string auraName)
+    {
+        auraWarning();
+        return Bot.Flash.Call<bool>("isAuraActive", "Self", auraName);
+    }
+
+    public Aura GetAura(AuraSubject subject, string auraName)
+    {
+        auraWarning();
+        return new(subject, auraName);
+    }
+    public Aura GetAura(AuraSubject subject, int index)
+    {
+        auraWarning();
+        return new(subject, index: index);
+    }
+
+    public bool TryGetAura(AuraSubject subject, string auraName, out Aura? aura)
+    {
+        auraWarning();
+        if (HasAura(subject, auraName))
+        {
+            aura = GetAura(subject, auraName);
+            return true;
+        }
+        aura = null;
+        return false;
+    }
+
+    public int AuraCount(AuraSubject subject)
+        => Bot.Flash.GetGameObject<int>($"world.myAvatar{((int)subject == 1 ? ".target" : null)}.dataLeaf.auras.length");
+
+    public List<Aura> GetAllAuras(AuraSubject subject)
+    {
+        auraWarning();
+        var toReturn = new List<Aura>();
+        for (int i = 0; i < AuraCount(subject); i++)
+        {
+            var a = GetAura(subject, i);
+            if (a == null)
+                break;
+            toReturn.Add(a);
+        }
+        return toReturn;
+    }
+
+    private void auraWarning([CallerMemberName] string caller = "")
+    {
+        if (!Bot.Flash.Call<bool>("isTrue"))
+            Logger("Looks like some botmaker decided to add a function to a bot who's SWF is not released yet, please report", caller, true, true);
+    }
+
+    #endregion
+
     #region Utility
 
     // Whether the player is Member (set to true if neccessary during setOptions)
@@ -1693,6 +1749,7 @@ public class CoreBots
         //    Logger("Saved State Handler disabled");
         //}
     }
+    #endregion
 
     public int[] FromTo(int from, int to)
     {
@@ -1705,7 +1762,6 @@ public class CoreBots
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
 
-    #endregion
 
     public void RunCore()
     {
@@ -2565,4 +2621,100 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum AuraSubject
+{
+    Player = 0,
+    Target = 1
+}
+
+public class Aura
+{
+    public int? Index { get; set; }
+    public string? Name { get; set; }
+    public AuraSubject? Subject { get; set; }
+
+    public string? stringValue { get; set; }
+    public int? intValue { get; set; }
+
+    public string? Icon { get; set; }
+    public bool Passive { get; set; }
+    public string? PotionType { get; set; }
+
+    public int? Duration { get; set; }
+    public DateTime? TimeStamp { get; set; }
+    public DateTime? ExpiresAt { get; set; }
+
+    public string? cat { get; set; }
+    public string? t { get; set; }
+    public string? s { get; set; }
+    public string? fx { get; set; }
+
+    public string? animOn { get; set; }
+    public string? animOff { get; set; }
+    public string? msgOn { get; set; }
+    public bool isNew { get; set; }
+
+    public static AuraSubject Player = AuraSubject.Player;
+    public static AuraSubject Target = AuraSubject.Target;
+
+    public Aura(AuraSubject subject, string auraName = "", int index = -1)
+    {
+        string _subject = (int)subject == 0 ? "Self" : "";
+        dynamic? _aura = null;
+        if (!String.IsNullOrEmpty(auraName))
+        {
+            _aura = JsonConvert.DeserializeObject<dynamic>(IScriptInterface.Instance.Flash.Call("getAuraByName", _subject, auraName)!)!;
+        }
+        else if (index > -1)
+        {
+            _aura = JsonConvert.DeserializeObject<dynamic>(IScriptInterface.Instance.Flash.Call("getAuraByIndex", _subject, index)!)!;
+        }
+        else return;
+        if (_aura == null)
+        {
+            return;
+        }
+
+        IScriptInterface.Instance.Log("a");
+        Index = index > -1 ? index : _aura.index;
+        Name = !String.IsNullOrEmpty(auraName) ? auraName : _aura.nam;
+        Subject = subject;
+
+        IScriptInterface.Instance.Log("b");
+        stringValue = _aura.val;
+        if (stringValue != null && Int32.TryParse(stringValue, out int o))
+            intValue = o;
+
+        IScriptInterface.Instance.Log("c");
+        Icon = _aura.icon;
+        Passive = _aura.passive;
+        PotionType = _aura.potionType;
+
+        IScriptInterface.Instance.Log("d");
+        string? _duration = _aura.dur;
+        if (_duration != null && Int32.TryParse(_duration, out int d))
+            Duration = d;
+        long? _timestamp = _aura.ts;
+        if (_timestamp != null)
+            TimeStamp = DateTimeOffset.FromUnixTimeMilliseconds((long)_timestamp).DateTime.AddHours(DateTimeOffset.Now.Offset.Hours);
+        if (TimeStamp != null && Duration != null)
+            ExpiresAt = ((DateTime)TimeStamp).AddSeconds((double)Duration);
+
+        IScriptInterface.Instance.Log("e");
+        cat = _aura.cat;
+        t = _aura.t;
+        s = _aura.s;
+        fx = _aura.fx;
+
+        IScriptInterface.Instance.Log("f");
+        animOn = _aura.animOn;
+        animOff = _aura.animOff;
+        msgOn = _aura.msgOn;
+        isNew = _aura.isNew;
+    }
+
+    public int SecondsRemaining()
+        => (this == null || ExpiresAt == null) ? 0 : (int)(((DateTime)ExpiresAt) - DateTime.Now).TotalSeconds;
 }
