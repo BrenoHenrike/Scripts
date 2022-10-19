@@ -1239,8 +1239,7 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
 
-        Join("escherion", publicRoom: publicRoom);
-        Jump("Boss", "Left");
+        Join("escherion", "Boss", "Left", publicRoom: publicRoom);
 
         if (item == null)
         {
@@ -1385,7 +1384,7 @@ public class CoreBots
     #endregion
 
     #region Aura
-    
+
     public bool HasAura(AuraSubject subject, string auraName)
     {
         auraWarning();

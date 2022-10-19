@@ -75,7 +75,7 @@ public class BeastMakerStory
         Story.MapItemQuest(2232, "neverworld", 1320, 10);
 
         //The Gang's Not All Here 2233
-        Story.KillQuest(2233, "neverworld", "Fishizzle|Spid-Squider");
+        Story.KillQuest(2233, "neverworld", "Fishizzle");
 
         //Beast Maker Beat-down 2234
         Story.ChainQuest(2234);
