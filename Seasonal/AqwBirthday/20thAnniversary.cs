@@ -91,7 +91,8 @@ public class AnniversaryofDoom
         Story.KillQuest(8892, "mermaidsushi", "Die Fieri");
 
         Bot.Options.RestPackets = false;
-
+        Bot.Handlers.Remove("AFK Handler");
+        
         // 8893 AFK Quest
         if (!Story.QuestProgression(8893))
         {
