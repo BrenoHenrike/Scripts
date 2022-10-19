@@ -93,6 +93,7 @@ public class AnniversaryofDoom
         // 8893 AFK Quest
         if (!Story.QuestProgression(8893))
         {
+            Core.Join("afkquest");
             Bot.Options.RestPackets = false;
             Core.Logger("this Will Take ~5minutes feel free to fuck off 👍");
             Bot.Sleep(325000);
