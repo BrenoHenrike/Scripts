@@ -15,7 +15,7 @@ public class PotionBuyer
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("GoldMethod", "Use Gold", "Buy Potions with Gold(Expensive)", false),
+        // new Option<bool>("GoldMethod", "Use Gold", "Buy Potions with Gold(Expensive)", false),
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle and Malevolence Tonics?", false),
         new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
@@ -95,6 +95,7 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.hOu;
                     BulkGrind("Dragon Scale", "Searbush");
                     break;
+                    
                 default:
                     Core.Logger("The bot was not taught how to make " + potion);
                     break;
