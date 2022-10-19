@@ -55,7 +55,7 @@ public class AnniversaryofDoom
 
         // 8882 The Love of your Unlife
         Story.MapItemQuest(8882, "zombae", 10703);
-        Story.KillQuest(8882, "zombae", "Zombette");
+        Story.KillQuest(8882, "zombae", "Zombetter");
 
         Core.EquipClass(ClassType.Solo);
         // 8883 The Ultimate Ghoul Fiend
