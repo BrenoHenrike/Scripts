@@ -1385,7 +1385,7 @@ public class CoreBots
     #endregion
 
     #region Aura
-    
+
     public bool HasAura(AuraSubject subject, string auraName)
     {
         auraWarning();
@@ -2698,7 +2698,7 @@ public class Aura
             Duration = d;
         long? _timestamp = _aura.ts;
         if (_timestamp != null)
-            TimeStamp = DateTimeOffset.FromUnixTimeMilliseconds((long)_timestamp).DateTime;
+            TimeStamp = DateTimeOffset.FromUnixTimeMilliseconds((long)_timestamp).DateTime.AddHours(DateTimeOffset.Now.Offset.Hours);
         if (TimeStamp != null && Duration != null)
             ExpiresAt = ((DateTime)TimeStamp).AddSeconds((double)Duration);
 
