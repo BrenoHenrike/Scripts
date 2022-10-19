@@ -2714,4 +2714,7 @@ public class Aura
         msgOn = _aura.msgOn;
         isNew = _aura.isNew;
     }
+
+    public int SecondsRemaining()
+        => (this == null || ExpiresAt == null) ? 0 : (int)(((DateTime)ExpiresAt) - DateTime.Now).TotalSeconds;
 }
