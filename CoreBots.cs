@@ -1907,6 +1907,7 @@ public class CoreBots
                 break;
 
             case "tercessuinotlim":
+                Join("citadel", "m22", "Left");
                 Bot.Map.Jump("m22", "Left");
                 tryJoin();
                 break;
