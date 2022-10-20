@@ -22,17 +22,6 @@ public class CoreDarkon
 
     public void FarmReceipt(int Quantity = 222)
     {
-        if (Core.CheckInventory("Darkon's Receipt", Quantity))
-            return;
-
-        if (!Bot.Options.PrivateRooms)
-        {
-            Core.Join("tercessuinotlim");
-            Bot.Sleep(10000);
-            if (Bot.Map.PlayerNames.Count >= 5)
-                ThirdErrand(Quantity);
-        }
-        SecondErrand(Quantity, true);
         FirstErrand(Quantity);
     }
 
