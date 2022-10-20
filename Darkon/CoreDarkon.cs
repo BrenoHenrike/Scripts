@@ -32,8 +32,8 @@ public class CoreDarkon
             if (Bot.Map.PlayerNames.Count >= 5)
                 ThirdErrand(Quantity);
         }
-        SecondErrand(Quantity, true);
         FirstErrand(Quantity);
+        SecondErrand(Quantity, true);
     }
 
     public void FirstErrand(int Quantity = 222)
