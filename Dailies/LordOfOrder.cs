@@ -28,9 +28,9 @@ public class LordOfOrder
         Core.SetOptions(false);
     }
 
-    public void GetLoO(bool rankUpClass = true)
+    public void GetLoO(bool rankUpClass = true, bool getExtras = true)
     {
-        if (Core.CheckInventory(50741, toInv: false))
+        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? Core.CheckInventory(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray()) : true))
             return;
 
         Core.Logger("Daily: Lord Of Order Class");
@@ -223,15 +223,18 @@ public class LordOfOrder
         }
 
         // The Final Challenge
-        Core.AddDrop("Lord Of Order");
         Core.EnsureAccept(7165);
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: true);
-        Core.EnsureComplete(7165);
+        if (!Core.CheckInventory(50741, toInv: false) || !getExtras)
+        {
+            Core.AddDrop("Lord Of Order");
+            Core.EnsureComplete(7165, 50741);
+            Bot.Wait.ForPickup("Lord Of Order");
 
-        Bot.Wait.ForPickup("Lord Of Order");
-
-        if (rankUpClass)
-            Adv.rankUpClass("Lord Of Order");
+            if (rankUpClass)
+                Adv.rankUpClass("Lord Of Order");
+        }
+        else Core.EnsureCompleteChoose(7165);
     }
 }

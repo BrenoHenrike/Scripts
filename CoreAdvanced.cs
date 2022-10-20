@@ -1670,6 +1670,19 @@ public class CoreAdvanced
                 break;
             #endregion
 
+            #region Lucky - Vainglory - Valiance - Vim
+            case "continuum chronomancer":
+            case "quantum chronomancer":
+                if (!uVainglory() || !uValiance() || !uVim())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Vainglory;
+                wSpecial = WeaponSpecial.Valiance;
+                hSpecial = HelmSpecial.Vim;
+                break;
+
+            #endregion
             #endregion
             #region Awe Enhancement Library
             default:
