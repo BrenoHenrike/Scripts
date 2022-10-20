@@ -82,9 +82,9 @@ public class CoreLegion
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
-        Core.RegisterQuests(4743);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
+                while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
+            Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -101,6 +101,7 @@ public class CoreLegion
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Adv.BestGear(GearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
+            Core.EnsureComplete(4743);
             Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
             Core.Logger($"Completed x{i++}");
         }
