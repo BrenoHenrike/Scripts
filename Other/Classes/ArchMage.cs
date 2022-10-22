@@ -11,6 +11,7 @@
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Story\QueenofMonsters\Extra\CelestialArena.cs
 //cs_include Scripts/Story\ThroneofDarkness\CoreToD.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
 public class ArchMage
@@ -25,13 +26,14 @@ public class ArchMage
     public BuyScrolls Scroll = new();
     public CelestialArenaQuests CAQ = new();
     public CoreToD TOD = new();
+    public CoreSoW SoW = new();
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
-        Core.BankingBlackList.AddRange(BLOD.BLoDItems); 
+        Core.BankingBlackList.AddRange(BLOD.BLoDItems);
         Core.SetOptions();
 
         GetAM();
@@ -52,8 +54,9 @@ public class ArchMage
             UnboundTomb(1);
             Core.EnsureAccept(8913);
 
+            SoW.CompleteCoreSoW();
             BLOD.FindingFragmentsMace(200);
-            
+
             Scroll.BuyScroll(Scrolls.Mystify, 50);
 
             Core.EquipClass(ClassType.Farm);
