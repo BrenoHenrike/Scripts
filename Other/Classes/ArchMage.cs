@@ -52,7 +52,7 @@ public class ArchMage
             Core.EnsureAccept(8913);
 
             BLOD.FindingFragmentsMace(200);
-
+            
             Scroll.BuyScroll(Scrolls.Mystify, 50);
 
             Core.EquipClass(ClassType.Farm);
@@ -67,6 +67,7 @@ public class ArchMage
 
             Core.EnsureComplete(8913);
             Bot.Wait.ForPickup("Book of Magus");
+            Core.ToBank(BLOD.BLoDItems);
         }
 
         //Book of Fire: Immolation
@@ -265,7 +266,7 @@ public class ArchMage
         Farm.GoodREP(10);
         Farm.EvilREP(10);
         TOD.CompleteToD();
-        
+
         MysticScribingKit(quant);
         PrismaticEther(quant);
         ArcaneLocus(quant);
