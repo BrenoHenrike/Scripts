@@ -192,7 +192,7 @@ public class ArchMage
                 Core.EnsureComplete(6286);
                 Bot.Wait.ForPickup("Semiramis Feather");
             }
-            Core.HuntMonster("deepchaos", "Kathool", "Mystic Ink", isTemp: false);
+            Core.HuntMonster("deepchaos", "Kathool", "Mystic Ink");
 
             Core.EnsureComplete(8909);
             Bot.Wait.ForPickup("Mystic Scribing Kit");
