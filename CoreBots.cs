@@ -542,22 +542,12 @@ public class CoreBots
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
-        if (item.ID == 0)
+        if (item.ID == 0 || !_canBuy(shopID, item))
             return;
 
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
-        if (item.Coins && item.Cost > 0)
-            if (Bot.ShowMessageBox(
-                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
-                                "Warning: Costs AC!", true)
-                            != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
-            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
-        if (!item.Coins && item.Cost > Bot.Player.Gold)
-            Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
 
         Join(map);
         _BuyItem(shopID, item, quant, shopQuant);
@@ -582,23 +572,12 @@ public class CoreBots
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
-        if (item == new ShopItem())
+        if (item == new ShopItem() || !_canBuy(shopID, item))
             return;
 
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
-
-        if (item.Coins && item.Cost > 0)
-            if (Bot.ShowMessageBox(
-                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
-                                "Warning: Costs AC!", true)
-                            != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
-            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You don't have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
-        if (!item.Coins && item.Cost > Bot.Player.Gold)
-            Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
 
         Join(map);
         _BuyItem(shopID, item, quant, shopQuant);
@@ -611,11 +590,13 @@ public class CoreBots
     private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant)
     {
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
-        for (int i = 0; i < quant; i++)
-        {
-            Bot.Shops.BuyItem(item.ID, item.ShopItemID);
-            Bot.Sleep(ActionDelay);
-        }
+        //for (int i = 0; i < quant; i++)
+        //{
+        //    Bot.Shops.BuyItem(item.ID, item.ShopItemID);
+        //    Bot.Sleep(ActionDelay);
+        //}
+        Bot.Send.Packet($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{item.ShopItemID}%{quant}%");
+
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
         void RelogRequieredListener(dynamic packet)
@@ -651,6 +632,128 @@ public class CoreBots
     }
 
     /// <summary>
+    /// Checks if everything needed to buy the item is present, if not, it will log and return false
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="itemName">The name of the item you're gonna check</param>
+    public bool canBuy(string map, int shopID, string itemName, int shopItemID = 0)
+        => _canBuy(shopID, parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(),
+                            shopID, itemName, shopItemID));
+
+    /// <summary>
+    /// Checks if everything needed to buy the item is present, if not, it will log and return false
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="itemID">The ID of the item you're gonna check</param>
+    public bool canBuy(string map, int shopID, int itemID, int shopItemID = 0)
+        => _canBuy(shopID, parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(),
+                            shopID, itemID.ToString(), shopItemID));
+
+    private bool _canBuy(int shopID, ShopItem item)
+    {
+        if (item == null)
+            return false;
+
+        //Achievement Check
+        int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
+        string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        if (achievementID > 0 && io != null && !HasAchievement(achievementID, io))
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.");
+            return false;
+        }
+
+        //Member Check
+        if (item.Upgrade && !IsMember)
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.");
+            return false;
+        }
+
+        //Requiered-Item Check
+        int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
+        if (reqItemID > 0 && !CheckInventory(reqItemID))
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}");
+            return false;
+        }
+
+        //Quest Check
+        //string questName = Bot.Flash.GetGameObject<string>($"world.shopinfo.items[{item.ID}].sQuest");
+        //List<QuestData> cache = Bot.Quests.Cached;
+        //Bot.Quests.Cached.Count;
+
+        //Rep check
+        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
+        {
+            int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
+            if (reqRank > Bot.Reputation.GetRank(item.Faction))
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.");
+                return false;
+            }
+        }
+
+        //Merge item check
+        if (item.Requirements != null)
+        {
+            foreach (ItemBase req in item.Requirements)
+            {
+                Bot.Drops.Pickup(req.ID);
+                Bot.Wait.ForPickup(req.ID);
+
+                if (!CheckInventory(req.ID, req.Quantity))
+                {
+                    if (CheckInventory(req.ID))
+                    {
+                        Logger($"Cannot buy {item.Name} from {shopID}. You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name} but need {req.Quantity} .");
+                        return false;
+                    }
+                    Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
+                    return false;
+                }
+            }
+        }
+
+        //Gold check
+        if (item.Cost > Bot.Player.Gold)
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
+            return false;
+        }
+
+        //AC costing check
+        if (item.Coins && item.Cost > 0)
+        {
+            if (Bot.ShowMessageBox(
+                    $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
+                    "Warning: Costs AC!", true)
+                    != true)
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
+                Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
+        }
+
+        return true;
+    }
+
+    public Dictionary<int, int> RepCPLevel = new()
+    {
+        { 0, 1 },
+        { 900, 2 },
+        { 3600, 3 },
+        { 10000, 4 },
+        { 22500, 5 },
+        { 44100, 6 },
+        { 78400, 7 },
+        { 129600, 8 },
+        { 202500, 9 },
+        { 302500, 10 }
+    };
+
+    /// <summary>
     /// Sells a item till you have the desired quantity
     /// </summary>
     /// <param name="itemName">Name of the item</param>
@@ -658,24 +761,23 @@ public class CoreBots
     /// <param name="all">Set to true if you wish to sell all the items</param>
     public void SellItem(string itemName, int quant = 0, bool all = false)
     {
-        if (!CheckInventory(itemName))
+        if (!CheckInventory(itemName) || Bot.Inventory.TryGetItem(itemName, out var item))
             return;
         JumpWait();
+
         if (!all)
         {
-            for (int i = 0; i < quant; i++)
-            {
-                Bot.Shops.SellItem(itemName);
-                Bot.Sleep(ActionDelay);
-            }
+            if (Bot.Options.SafeTimings)
+                Bot.Wait.ForActionCooldown(GameActions.SellItem);
+            Bot.Send.Packet($"%xt%zm%sellItem%{Bot.Map.RoomID}%{item!.ID}%{(quant > item!.Quantity ? quant : item!.Quantity)}%{item!.CharItemID}%");
+            if (Bot.Options.SafeTimings)
+                Bot.Wait.ForItemSell();
+
+            Bot.Sleep(ActionDelay);
             return;
         }
 
-        while (!Bot.ShouldExit && Bot.Inventory.GetQuantity(itemName) != 0)
-        {
-            Bot.Shops.SellItem(itemName);
-            Bot.Sleep(ActionDelay);
-        }
+        Bot.Shops.SellItem(itemName);
 
         Logger($"{(all ? string.Empty : quant.ToString())} {itemName} sold");
     }
@@ -844,10 +946,12 @@ public class CoreBots
                     {
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
-                            EnsureComplete(kvp.Key.ID);
+                            int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
+                            if (amountTurnedIn == 0)
+                                continue;
                             await Task.Delay(ActionDelay);
                             EnsureAccept(kvp.Key.ID);
-                            Logger($"Quest completed x{nonChooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
+                            Logger($"Quest completed x{nonChooseQuests[kvp.Key] + amountTurnedIn} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                         }
                     }
 
@@ -988,6 +1092,32 @@ public class CoreBots
         }
         Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
         return false;
+    }
+
+    /// <summary>
+    /// Completes the quest with a choose-able reward item
+    /// </summary>
+    /// <param name="questID">ID of the quest to complete</param>
+    /// <param name="amount">Amount of times you want it to turn in the quest, -1 is maximum amount possible.</param>
+    /// <param name="itemID">ID of the choose-able reward item</param>
+    public int EnsureCompleteMulti(int questID, int amount = -1, int itemID = -1)
+    {
+        var q = EnsureLoad(questID);
+
+        int turnIns = 0;
+        if (q.Once || !String.IsNullOrEmpty(q.Field))
+            turnIns = 1;
+        else
+        {
+            int possibleTurnin = Bot.Flash.CallGameFunction<int>("world.maximumQuestTurnIns", questID);
+            turnIns = possibleTurnin > amount && amount > 0 ? amount : possibleTurnin;
+            if (turnIns == 0)
+                return 0;
+        }
+        Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, itemID, false, turnIns);
+        if (Bot.Options.SafeTimings)
+            Bot.Wait.ForQuestComplete(questID);
+        return !Bot.Quests.IsInProgress(questID) ? turnIns : 0;
     }
 
     public Quest EnsureLoad(int questID)
@@ -1501,7 +1631,7 @@ public class CoreBots
 
         foreach (string l in compiledScript[compiledClassLine..Array.FindIndex(compiledScript, compiledClassLine, l => l == "}")])
         {
-            if (!l.Contains("Core.DebugLogger(this"))
+            if (!l.Contains("DebugLogger(this"))
                 continue;
 
             count++;
@@ -1515,7 +1645,7 @@ public class CoreBots
         string[] selectedScript = inCurrentScript || includedScript == null ? currentScript : includedScript;
         foreach (string l in selectedScript)
         {
-            if (!l.Contains("Core.DebugLogger(this"))
+            if (!l.Contains("DebugLogger(this"))
                 continue;
 
             count2++;
