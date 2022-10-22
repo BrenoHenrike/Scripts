@@ -542,27 +542,14 @@ public class CoreBots
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
-        if (item.ID == 0)
+        if (item.ID == 0 || !_canBuy(shopID, item))
             return;
 
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
-        if (item.Coins && item.Cost > 0)
-            if (Bot.ShowMessageBox(
-                    $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
-                    "Warning: Costs AC!", true)
-                    != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
-            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
-        if (!item.Coins && item.Cost > Bot.Player.Gold)
-            Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
 
         Join(map);
-        if (!_canBuy(shopID, item))
-            return;
-
         _BuyItem(shopID, item, quant, shopQuant);
 
         if (CheckInventory(item.Name, quant))
@@ -585,28 +572,14 @@ public class CoreBots
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
-        if (item == new ShopItem())
+        if (item == new ShopItem() || !_canBuy(shopID, item))
             return;
 
         quant = _CalcBuyQuantity(item, quant, shopQuant);
         if (quant <= 0)
             return;
 
-        if (item.Coins && item.Cost > 0)
-            if (Bot.ShowMessageBox(
-                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
-                                "Warning: Costs AC!", true)
-                            != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
-            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
-                Logger($"You don't have the {item.Cost} AC needed to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
-        if (!item.Coins && item.Cost > Bot.Player.Gold)
-            Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
-
         Join(map);
-        if (!_canBuy(shopID, item))
-            return;
-
         _BuyItem(shopID, item, quant, shopQuant);
 
         if (CheckInventory(item.Name, quant))
@@ -749,6 +722,18 @@ public class CoreBots
         {
             Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
             return false;
+        }
+
+        //AC costing check
+        if (item.Coins && item.Cost > 0)
+        {
+            if (Bot.ShowMessageBox(
+                    $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
+                    "Warning: Costs AC!", true)
+                    != true)
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
+                Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
         }
 
         return true;
