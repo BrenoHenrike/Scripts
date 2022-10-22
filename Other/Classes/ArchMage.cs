@@ -211,9 +211,7 @@ public class ArchMage
 
         Core.FarmingLogger("Prismatic Ether", quant);
         Farm.ChaosREP(10);
-        CAQ.Arena1to10();
-        CAQ.Arena11to20();
-        CAQ.Arena21to29();
+        Bot.Quests.UpdateQuest(6042);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
             Core.EnsureAccept(8910);
