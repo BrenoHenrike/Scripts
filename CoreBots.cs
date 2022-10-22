@@ -590,12 +590,12 @@ public class CoreBots
     private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant)
     {
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
-        //for (int i = 0; i < quant; i++)
-        //{
-        //    Bot.Shops.BuyItem(item.ID, item.ShopItemID);
-        //    Bot.Sleep(ActionDelay);
-        //}
-        Bot.Send.Packet($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{item.ShopItemID}%{quant}%");
+        for (int i = 0; i < quant; i++)
+        {
+           Bot.Shops.BuyItem(item.ID, item.ShopItemID);
+           Bot.Sleep(ActionDelay);
+        }
+        // Bot.Send.Packet($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{item.ShopItemID}%{quant}%");
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 

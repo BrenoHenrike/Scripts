@@ -10,6 +10,7 @@
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Story\QueenofMonsters\Extra\CelestialArena.cs
+//cs_include Scripts/Story\ThroneofDarkness\CoreToD.cs
 using Skua.Core.Interfaces;
 
 public class ArchMage
@@ -23,6 +24,7 @@ public class ArchMage
     public CoreVHL VHL = new();
     public BuyScrolls Scroll = new();
     public CelestialArenaQuests CAQ = new();
+    public CoreToD TOD = new();
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
 
@@ -173,7 +175,7 @@ public class ArchMage
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
         Farm.Experience(60);
-        QOM.TheReshaper();
+        QOM.CompleteEverything();
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
@@ -228,7 +230,7 @@ public class ArchMage
 
     void ArcaneLocus(int quant = 1)
     {
-        if (Core.CheckInventory("Arcane Locus", quant))
+        if (Core.CheckInventory("73339", quant))
             return;
 
         if (!Bot.Quests.IsUnlocked(8911))
@@ -262,20 +264,21 @@ public class ArchMage
 
         Farm.GoodREP(10);
         Farm.EvilREP(10);
-
+        TOD.CompleteToD();
+        
         MysticScribingKit(quant);
         PrismaticEther(quant);
         ArcaneLocus(quant);
 
-        Core.RegisterQuests(8912);
         while (!Core.CheckInventory("Unbound Tome", quant))
         {
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 6);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 6);
-            Core.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
-            Core.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
+            Core.EnsureAccept(8912);
+            Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 1, 8844);
+            Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
+            Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
+            Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
         }
-        Core.CancelRegisteredQuests();
     }
 }
