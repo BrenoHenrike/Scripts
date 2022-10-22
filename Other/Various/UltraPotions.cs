@@ -78,7 +78,7 @@ public class PotionBuyer
                 case "Potent Battle Elixir":
                     // if (Bot.Config.Get<bool>("GoldMethod"))
                     // {
-                    //     Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant);
+                        Adv.BuyItem("alchemyacademy", 2036, potion, potionQuant);
                     //     break;
                     // }
                     currTrait = potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
