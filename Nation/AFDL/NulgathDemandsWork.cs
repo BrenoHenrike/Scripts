@@ -29,7 +29,7 @@ public class NulgathDemandsWork
         Core.BankingBlackList.AddRange(new[] { "Archfiend Essence Fragment", "Unidentified 35" });
         Core.SetOptions();
 
-        NDWQuest(new[] { "Unidentified 35" });
+        NDWQuest(new[] {"Unidentified 35"});
         NDWQuest(NDWItems);
 
         Core.SetOptions(false);
