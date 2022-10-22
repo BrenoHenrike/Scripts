@@ -560,6 +560,9 @@ public class CoreBots
             Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
 
         Join(map);
+        if (!_canBuy(shopID, item))
+            return;
+
         _BuyItem(shopID, item, quant, shopQuant);
 
         if (CheckInventory(item.Name, quant))
@@ -601,6 +604,9 @@ public class CoreBots
             Logger($"You don't have the {item.Cost} Gold to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
 
         Join(map);
+        if (!_canBuy(shopID, item))
+            return;
+
         _BuyItem(shopID, item, quant, shopQuant);
 
         if (CheckInventory(item.Name, quant))
@@ -611,11 +617,13 @@ public class CoreBots
     private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant)
     {
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
-        for (int i = 0; i < quant; i++)
-        {
-            Bot.Shops.BuyItem(item.ID, item.ShopItemID);
-            Bot.Sleep(ActionDelay);
-        }
+        //for (int i = 0; i < quant; i++)
+        //{
+        //    Bot.Shops.BuyItem(item.ID, item.ShopItemID);
+        //    Bot.Sleep(ActionDelay);
+        //}
+        Bot.Send.Packet($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{item.ShopItemID}%{quant}%");
+
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
         void RelogRequieredListener(dynamic packet)
@@ -649,6 +657,116 @@ public class CoreBots
         decimal quantF = (decimal)quantB / (decimal)shopQuant;
         return (int)Math.Ceiling(quantF);
     }
+
+    /// <summary>
+    /// Checks if everything needed to buy the item is present, if not, it will log and return false
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="itemName">The name of the item you're gonna check</param>
+    public bool canBuy(string map, int shopID, string itemName, int shopItemID = 0)
+        => _canBuy(shopID, parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(),
+                            shopID, itemName, shopItemID));
+
+    /// <summary>
+    /// Checks if everything needed to buy the item is present, if not, it will log and return false
+    /// </summary>
+    /// <param name="map">The map where the shop can be loaded from</param>
+    /// <param name="shopID">The shop ID to load the shopdata</param>
+    /// <param name="itemID">The ID of the item you're gonna check</param>
+    public bool canBuy(string map, int shopID, int itemID, int shopItemID = 0)
+        => _canBuy(shopID, parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(),
+                            shopID, itemID.ToString(), shopItemID));
+
+    private bool _canBuy(int shopID, ShopItem item)
+    {
+        if (item == null)
+            return false;
+
+        //Achievement Check
+        int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
+        string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+        if (achievementID > 0 && io != null && !HasAchievement(achievementID, io))
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.");
+            return false;
+        }
+
+        //Member Check
+        if (item.Upgrade && !IsMember)
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.");
+            return false;
+        }
+
+        //Requiered-Item Check
+        int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
+        if (reqItemID > 0 && !CheckInventory(reqItemID))
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}");
+            return false;
+        }
+
+        //Quest Check
+        //string questName = Bot.Flash.GetGameObject<string>($"world.shopinfo.items[{item.ID}].sQuest");
+        //List<QuestData> cache = Bot.Quests.Cached;
+        //Bot.Quests.Cached.Count;
+
+        //Rep check
+        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
+        {
+            int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
+            if (reqRank > Bot.Reputation.GetRank(item.Faction))
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.");
+                return false;
+            }
+        }
+
+        //Merge item check
+        if (item.Requirements != null)
+        {
+            foreach (ItemBase req in item.Requirements)
+            {
+                Bot.Drops.Pickup(req.ID);
+                Bot.Wait.ForPickup(req.ID);
+
+                if (!CheckInventory(req.ID, req.Quantity))
+                {
+                    if (CheckInventory(req.ID))
+                    {
+                        Logger($"Cannot buy {item.Name} from {shopID}. You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name} but need {req.Quantity} .");
+                        return false;
+                    }
+                    Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
+                    return false;
+                }
+            }
+        }
+
+        //Gold check
+        if (item.Cost > Bot.Player.Gold)
+        {
+            Logger($"Cannot buy {item.Name} from {shopID} because you are missing {item.Cost - Bot.Player.Gold} gold.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public Dictionary<int, int> RepCPLevel = new()
+    {
+        { 0, 1 },
+        { 900, 2 },
+        { 3600, 3 },
+        { 10000, 4 },
+        { 22500, 5 },
+        { 44100, 6 },
+        { 78400, 7 },
+        { 129600, 8 },
+        { 202500, 9 },
+        { 302500, 10 }
+    };
 
     /// <summary>
     /// Sells a item till you have the desired quantity
