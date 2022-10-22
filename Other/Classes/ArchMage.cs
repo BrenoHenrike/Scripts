@@ -150,7 +150,7 @@ public class ArchMage
         }
 
         //Archmage's Ascension        
-        
+
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
 
@@ -178,9 +178,11 @@ public class ArchMage
             Core.EnsureAccept(8909);
 
             Core.RegisterQuests(3048);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Quil", 49) && !Core.CheckInventory("Mystic Shard", 49))
-                Core.KillMonster("castleundead", "Enter", "Spawn", "*");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Quills", 49))
+                Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             Core.CancelRegisteredQuests();
+            Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 49, false, log: false);
+
 
             if (!Core.CheckInventory("Semiramis Feather"))
             {
@@ -196,7 +198,7 @@ public class ArchMage
             Bot.Wait.ForPickup("Mystic Scribing Kit");
         }
     }
-    
+
     void PrismaticEther(int quant = 1)
     {
         if (Core.CheckInventory("Prismatic Ether", quant))
@@ -211,11 +213,11 @@ public class ArchMage
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
             Core.EnsureAccept(8910);
-            Core.HuntMonster("celestialarenad", "Aranx", "Celestial Ether", isTemp: false);
-            Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
-            Core.HuntMonster("shadowattack", "Death", "Mortal Ether", isTemp: false);
-            Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
-            Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
+            Core.HuntMonster("celestialarenad", "Aranx", "Celestial Ether", isTemp: false, log: false);
+            Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false, log: false);
+            Core.HuntMonster("shadowattack", "Death", "Mortal Ether", isTemp: false, log: false);
+            Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false, log: false);
+            Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false, log: false);
 
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
@@ -235,11 +237,11 @@ public class ArchMage
         while (!Bot.ShouldExit && !Core.CheckInventory("Arcane Locus", quant))
         {
             Core.EnsureAccept(8911);
-            Core.HuntMonster("skytower", "*", "Sky Locus", isTemp: false);
-            Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false);
-            Core.HuntMonster("downward", "*", "Earth Locus", isTemp: false);
-            Core.HuntMonster("volcano", "Magman", "Fire Locus", isTemp: false);
-            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus", isTemp: false);
+            Core.HuntMonster("skytower", "*", "Sky Locus", isTemp: false, log: false);
+            Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
+            Core.HuntMonster("downward", "*", "Earth Locus", isTemp: false, log: false);
+            Core.HuntMonster("volcano", "Magman", "Fire Locus", isTemp: false, log: false);
+            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus", isTemp: false, log: false);
 
             Core.EnsureComplete(8911);
             Bot.Wait.ForPickup("Arcane Locus");
