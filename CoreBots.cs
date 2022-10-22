@@ -550,9 +550,9 @@ public class CoreBots
             return;
         if (item.Coins && item.Cost > 0)
             if (Bot.ShowMessageBox(
-                                $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
-                                "Warning: Costs AC!", true)
-                            != true)
+                    $"The bot is about to buy \"{item.Name}\", which costs {item.Cost} AC, do you accept this?",
+                    "Warning: Costs AC!", true)
+                    != true)
                 Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
             else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < item.Cost)
                 Logger($"You don't have enough AC to buy \"{item.Name}\", the bot cannot continue.", messageBox: true, stopBot: true);
@@ -658,24 +658,23 @@ public class CoreBots
     /// <param name="all">Set to true if you wish to sell all the items</param>
     public void SellItem(string itemName, int quant = 0, bool all = false)
     {
-        if (!CheckInventory(itemName))
+        if (!CheckInventory(itemName) || Bot.Inventory.TryGetItem(itemName, out var item))
             return;
         JumpWait();
+
         if (!all)
         {
-            for (int i = 0; i < quant; i++)
-            {
-                Bot.Shops.SellItem(itemName);
-                Bot.Sleep(ActionDelay);
-            }
+            if (Bot.Options.SafeTimings)
+                Bot.Wait.ForActionCooldown(GameActions.SellItem);
+            Bot.Send.Packet($"%xt%zm%sellItem%{Bot.Map.RoomID}%{item!.ID}%{(quant > item!.Quantity ? quant : item!.Quantity)}%{item!.CharItemID}%");
+            if (Bot.Options.SafeTimings)
+                Bot.Wait.ForItemSell();
+
+            Bot.Sleep(ActionDelay);
             return;
         }
 
-        while (!Bot.ShouldExit && Bot.Inventory.GetQuantity(itemName) != 0)
-        {
-            Bot.Shops.SellItem(itemName);
-            Bot.Sleep(ActionDelay);
-        }
+        Bot.Shops.SellItem(itemName);
 
         Logger($"{(all ? string.Empty : quant.ToString())} {itemName} sold");
     }
@@ -844,10 +843,12 @@ public class CoreBots
                     {
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
-                            EnsureComplete(kvp.Key.ID);
+                            int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
+                            if (amountTurnedIn == 0)
+                                continue;
                             await Task.Delay(ActionDelay);
                             EnsureAccept(kvp.Key.ID);
-                            Logger($"Quest completed x{nonChooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
+                            Logger($"Quest completed x{nonChooseQuests[kvp.Key] + amountTurnedIn} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                         }
                     }
 
@@ -988,6 +989,32 @@ public class CoreBots
         }
         Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
         return false;
+    }
+
+    /// <summary>
+    /// Completes the quest with a choose-able reward item
+    /// </summary>
+    /// <param name="questID">ID of the quest to complete</param>
+    /// <param name="amount">Amount of times you want it to turn in the quest, -1 is maximum amount possible.</param>
+    /// <param name="itemID">ID of the choose-able reward item</param>
+    public int EnsureCompleteMulti(int questID, int amount = -1, int itemID = -1)
+    {
+        var q = EnsureLoad(questID);
+
+        int turnIns = 0;
+        if (q.Once || !String.IsNullOrEmpty(q.Field))
+            turnIns = 1;
+        else
+        {
+            int possibleTurnin = Bot.Flash.CallGameFunction<int>("world.maximumQuestTurnIns", questID);
+            turnIns = possibleTurnin > amount && amount > 0 ? amount : possibleTurnin;
+            if (turnIns == 0)
+                return 0;
+        }
+        Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, itemID, false, turnIns);
+        if (Bot.Options.SafeTimings)
+            Bot.Wait.ForQuestComplete(questID);
+        return !Bot.Quests.IsInProgress(questID) ? turnIns : 0;
     }
 
     public Quest EnsureLoad(int questID)
@@ -1501,7 +1528,7 @@ public class CoreBots
 
         foreach (string l in compiledScript[compiledClassLine..Array.FindIndex(compiledScript, compiledClassLine, l => l == "}")])
         {
-            if (!l.Contains("Core.DebugLogger(this"))
+            if (!l.Contains("DebugLogger(this"))
                 continue;
 
             count++;
@@ -1515,7 +1542,7 @@ public class CoreBots
         string[] selectedScript = inCurrentScript || includedScript == null ? currentScript : includedScript;
         foreach (string l in selectedScript)
         {
-            if (!l.Contains("Core.DebugLogger(this"))
+            if (!l.Contains("DebugLogger(this"))
                 continue;
 
             count2++;

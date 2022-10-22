@@ -858,7 +858,7 @@ public class CoreAdvanced
                 ReHEnhanceAfter = CurrentHelmSpecial();
             ReWEnhanceAfter = CurrentWeaponSpecial();
         }
-        else
+        else if (ReEquippedItems.Count() > 0)
         {
             Core.Equip(ReEquippedItems.ToArray());
             EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
@@ -911,7 +911,7 @@ public class CoreAdvanced
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
+        //EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Join(Map);
     }
 
@@ -933,7 +933,7 @@ public class CoreAdvanced
             return;
         EnhanceItem(_BestGear, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(_BestGear);
-        EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
+        //EnhanceEquipped(CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Join(Map);
     }
 
