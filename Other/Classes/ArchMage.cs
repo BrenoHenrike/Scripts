@@ -171,7 +171,7 @@ public class ArchMage
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
         Farm.Experience(60);
-        QOM.TheReshaper();
+        QOM.CompleteEverything();
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
