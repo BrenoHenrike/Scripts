@@ -47,7 +47,7 @@ public class ArchMage
             UnboundTomb(1);
             Core.EnsureAccept(8913);
 
-            BLOD.FindingFragmentsBow(200);
+            BLOD.FindingFragmentsMace(200);
 
             Scroll.BuyScroll(Scrolls.Mystify, 50);
 
@@ -192,7 +192,7 @@ public class ArchMage
                 Core.EnsureComplete(6286);
                 Bot.Wait.ForPickup("Semiramis Feather");
             }
-            Core.HuntMonster("deepchaos", "Kathool", "Mystic Ink", isTemp: false);
+            Core.HuntMonster("deepchaos", "Kathool", "Mystic Ink", isTemp: false); 
 
             Core.EnsureComplete(8909);
             Bot.Wait.ForPickup("Mystic Scribing Kit");
