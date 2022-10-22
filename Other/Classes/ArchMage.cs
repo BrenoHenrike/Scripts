@@ -31,6 +31,7 @@ public class ArchMage
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
+        Core.BankingBlackList.AddRange(BLOD.BLoDItems); 
         Core.SetOptions();
 
         GetAM();
