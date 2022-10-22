@@ -75,7 +75,7 @@ public class ArchMage
             UnboundTomb(1);
             Core.EnsureAccept(8914);
 
-            Scroll.BuyScroll(Scrolls.Fireball, 50);
+            Scroll.BuyScroll(Scrolls.FireStorm, 50);
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("fireavatar", "Shadefire Cavalry", "ShadowFire Wisps", 200, false);
@@ -273,6 +273,7 @@ public class ArchMage
         while (!Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
+            // Farm.Gold(3000000);
             Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
             Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 1, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
