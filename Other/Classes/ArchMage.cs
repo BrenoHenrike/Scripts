@@ -9,6 +9,7 @@
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
+//cs_include Scripts/Story\QueenofMonsters\Extra\CelestialArena.cs
 using Skua.Core.Interfaces;
 
 public class ArchMage
@@ -21,6 +22,7 @@ public class ArchMage
     public CoreQOM QOM = new();
     public CoreVHL VHL = new();
     public BuyScrolls Scroll = new();
+    public CelestialArenaQuests CAQ = new();
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
 
@@ -171,7 +173,7 @@ public class ArchMage
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
         Farm.Experience(60);
-        QOM.CompleteEverything();
+        QOM.TheReshaper();
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
@@ -192,7 +194,7 @@ public class ArchMage
                 Core.EnsureComplete(6286);
                 Bot.Wait.ForPickup("Semiramis Feather");
             }
-            Core.HuntMonster("deepchaos", "Kathool", "Mystic Ink", isTemp: false); 
+            Core.HuntMonster("deepchaos", "Kathool", "Mystic Ink", isTemp: false);
 
             Core.EnsureComplete(8909);
             Bot.Wait.ForPickup("Mystic Scribing Kit");
@@ -209,7 +211,9 @@ public class ArchMage
 
         Core.FarmingLogger("Prismatic Ether", quant);
         Farm.ChaosREP(10);
-
+        CAQ.Arena1to10();
+        CAQ.Arena11to20();
+        CAQ.Arena21to29();
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
             Core.EnsureAccept(8910);
@@ -237,7 +241,7 @@ public class ArchMage
         while (!Bot.ShouldExit && !Core.CheckInventory("Arcane Locus", quant))
         {
             Core.EnsureAccept(8911);
-            Core.HuntMonster("skytower", "*", "Sky Locus", isTemp: false, log: false);
+            Core.KillMonster("skytower", "r3", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
             Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
             Core.HuntMonster("downward", "Crystal Mana Construct", "Earth Locus", isTemp: false, log: false);
             Core.HuntMonster("volcano", "Magman", "Fire Locus", isTemp: false, log: false);
