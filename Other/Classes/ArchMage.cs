@@ -239,7 +239,7 @@ public class ArchMage
             Core.EnsureAccept(8911);
             Core.HuntMonster("skytower", "*", "Sky Locus", isTemp: false, log: false);
             Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
-            Core.HuntMonster("downward", "*", "Earth Locus", isTemp: false, log: false);
+            Core.HuntMonster("downward", "Crystal Mana Construct", "Earth Locus", isTemp: false, log: false);
             Core.HuntMonster("volcano", "Magman", "Fire Locus", isTemp: false, log: false);
             Core.HuntMonster("elemental", "Mana Golem", "Prime Locus", isTemp: false, log: false);
 
