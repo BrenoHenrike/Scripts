@@ -29,7 +29,7 @@ public class NulgathDemandsWork
         Core.BankingBlackList.AddRange(new[] { "Archfiend Essence Fragment", "Unidentified 35" });
         Core.SetOptions();
 
-        NDWQuest(new[] {"Unidentified 35"});
+        NDWQuest(new[] { "Unidentified 35" });
         NDWQuest(NDWItems);
 
         Core.SetOptions(false);
@@ -44,11 +44,11 @@ public class NulgathDemandsWork
     /// </summary>
     public void NDWQuest(string[] items = null, int quant = 1)
     {
-        if (Core.CheckInventory(items, quant))
-            return;
-
         if (items == null)
             items = NDWItems;
+
+        if (Core.CheckInventory(items, quant))
+            return;
 
         var rewards = Core.EnsureLoad(5259).Rewards;
 
