@@ -50,8 +50,8 @@ public class ArchMage
 
         #region  "Required quests/reps"
         Farm.SpellCraftingREP();
-        SoW.CompleteCoreSoW();
-        QOM.CompleteEverything();
+        SoW.TimestreamWar();
+        QOM.TheReshaper();
         Farm.Experience(60);
         Farm.ChaosREP(10);
         Farm.GoodREP(10);
@@ -143,7 +143,7 @@ public class ArchMage
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("streamwar", "Second Speaker", "A Fragment of the Beginning", isTemp: false);
             Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Everlight Flame", isTemp: false);
-
+            
             //Army Bosses.            
             Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
                         "Dage the Evil - dage - Vital Examina" +
