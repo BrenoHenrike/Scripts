@@ -143,7 +143,7 @@ public class ArchMage
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("streamwar", "Second Speaker", "A Fragment of the Beginning", isTemp: false);
             Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Everlight Flame", isTemp: false);
-            
+
             //Army Bosses.            
             Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
                         "Dage the Evil - dage - Vital Examina" +
@@ -161,9 +161,9 @@ public class ArchMage
             Core.EnsureAccept(8917);
 
             Scroll.BuyScroll(Scrolls.EtherealCurse, 50);
-
-            //The mortal coil (x4 roents) //once we get a nulgath army also add that
-            VHL.VHLChallenge(4);
+            
+            Core.EquipClass(ClassType.Solo);
+            Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false);
 
             //Army Bosses:
             Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
