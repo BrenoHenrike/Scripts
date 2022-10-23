@@ -36,7 +36,6 @@ public class SkyGuardSaga
         HighCommand();
         Bunker();
         ChaosGuard();
-
     }
 
     public void AirShip()
@@ -128,7 +127,7 @@ public class SkyGuardSaga
 
     public void Strategy()
     {
-        if (Core.isCompletedBefore(1288))
+        if (Core.isCompletedBefore(1290))
             return;
 
         Story.PreLoad(this);
@@ -139,14 +138,15 @@ public class SkyGuardSaga
         // Strategic Alarm Sequence
         Story.MapItemQuest(1287, "strategy", 558);
 
+        // SkyShip Chase Scene
+        Story.MapItemQuest(1288, "strategy", 559);
+        
         // SkyPirate Shot-caller Neutralized
         Story.KillQuest(1289, "strategy", "Dravir Pirate Captain");
 
         // SkyPirate Map Hunt    
         Story.KillQuest(1290, "strategy", new[] { "Dravir Pirate", "Dravir Pirate", "Dravir Pirate", "Dravir Pirate" });
 
-        // SkyShip Chase Scene
-        Story.MapItemQuest(1288, "strategy", 559);
 
     }
 
