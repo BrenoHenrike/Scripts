@@ -456,7 +456,7 @@ public class CoreSoW
         Story.KillQuest(7343, "shadowsong", "Shattered Crystal");
 
         //Mega Shadow Medals (7344)
-        Story.KillQuest(7344, "shadowsong", "Shadowflame Troll|Shadowflame Ur-Troll");
+        Story.KillQuest(7344, "shadowsong", "Shadowflame Ur-Troll");
 
         //New Music (7345)
         Story.KillQuest(7345, "shadowsong", "Mozard");
