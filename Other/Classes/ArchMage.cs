@@ -47,6 +47,19 @@ public class ArchMage
             return;
 
         Core.AddDrop(RequiredItems);
+        
+        
+        #region  "Required quests/reps"
+        Farm.SpellCraftingREP();
+        SoW.CompleteCoreSoW();
+        QOM.CompleteEverything();
+        Farm.Experience(60);
+        Farm.ChaosREP(10);
+        Farm.GoodREP(10);
+        Farm.EvilREP(10);
+        TOD.CompleteToD();
+        #endregion
+
 
         //Book of Magus: Incantation
         if (!Core.CheckInventory("Book of Magus"))
@@ -54,7 +67,6 @@ public class ArchMage
             UnboundTomb(1);
             Core.EnsureAccept(8913);
 
-            SoW.CompleteCoreSoW();
             BLOD.FindingFragmentsMace(200);
 
             Scroll.BuyScroll(Scrolls.Mystify, 50);
@@ -103,7 +115,11 @@ public class ArchMage
 
             Scroll.BuyScroll(Scrolls.Frostbite, 50);
 
-            Core.HuntMonster("kingcoal", "Frost King", "Ice Diamond", 100, false);
+            Core.RegisterQuests(7279);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
+                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
+            Core.CancelRegisteredQuests();
+
             Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
             Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
             Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
@@ -179,8 +195,6 @@ public class ArchMage
             return;
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
-        Farm.Experience(60);
-        QOM.CompleteEverything();
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
@@ -217,7 +231,6 @@ public class ArchMage
             MysticScribingKit(1);
 
         Core.FarmingLogger("Prismatic Ether", quant);
-        Farm.ChaosREP(10);
         Bot.Quests.UpdateQuest(6042);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
@@ -266,10 +279,6 @@ public class ArchMage
             ArcaneLocus();
 
         Core.FarmingLogger("Arcane Locus", quant);
-
-        Farm.GoodREP(10);
-        Farm.EvilREP(10);
-        TOD.CompleteToD();
 
         MysticScribingKit(quant);
         PrismaticEther(quant);
