@@ -16,17 +16,17 @@ using Skua.Core.Interfaces;
 
 public class ArchMage
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new();
-    public CoreBLOD BLOD = new();
-    public CoreQOM QOM = new();
-    public CoreVHL VHL = new();
-    public BuyScrolls Scroll = new();
-    public CelestialArenaQuests CAQ = new();
-    public CoreToD TOD = new();
-    public CoreSoW SoW = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
+    private CoreBLOD BLOD = new();
+    private CoreQOM QOM = new();
+    private CoreVHL VHL = new();
+    private BuyScrolls Scroll = new();
+    private CelestialArenaQuests CAQ = new();
+    private CoreToD TOD = new();
+    private CoreSoW SoW = new();
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
 
@@ -47,8 +47,7 @@ public class ArchMage
             return;
 
         Core.AddDrop(RequiredItems);
-        
-        
+
         #region  "Required quests/reps"
         Farm.SpellCraftingREP();
         SoW.CompleteCoreSoW();
@@ -77,9 +76,11 @@ public class ArchMage
                 Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
             Core.CancelRegisteredQuests();
 
-            Core.HuntMonster("timeinn", "Ezrajal", "Celestial Magia", 50, false);
             Core.HuntMonster("noxustower", "Lightguard Caster", "Mortal Essence", 100, false);
             Core.HuntMonster("portalmazec", "Pactagonal Knight", "Orthogonal Energy", 150, false);
+
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("timeinn", "Ezrajal", "Celestial Magia", 50, false);
 
             Core.EnsureComplete(8913);
             Bot.Wait.ForPickup("Book of Magus");
@@ -115,6 +116,7 @@ public class ArchMage
 
             Scroll.BuyScroll(Scrolls.Frostbite, 50);
 
+            Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(7279);
             while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
                 Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
@@ -189,7 +191,7 @@ public class ArchMage
 
     }
 
-    void MysticScribingKit(int quant = 5)
+    public void MysticScribingKit(int quant = 5)
     {
         if (Core.CheckInventory("Mystic Scribing Kit", quant))
             return;
@@ -200,13 +202,14 @@ public class ArchMage
         {
             Core.EnsureAccept(8909);
 
+            Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(3048);
             while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Quills", 49))
                 Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             Core.CancelRegisteredQuests();
             Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 49, false, log: false);
 
-
+            Core.EquipClass(ClassType.Solo);
             if (!Core.CheckInventory("Semiramis Feather"))
             {
                 Core.AddDrop("Semiramis Feather");
@@ -222,7 +225,7 @@ public class ArchMage
         }
     }
 
-    void PrismaticEther(int quant = 1)
+    public void PrismaticEther(int quant = 1)
     {
         if (Core.CheckInventory("Prismatic Ether", quant))
             return;
@@ -231,6 +234,7 @@ public class ArchMage
             MysticScribingKit(1);
 
         Core.FarmingLogger("Prismatic Ether", quant);
+        Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(6042);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
@@ -246,7 +250,7 @@ public class ArchMage
         }
     }
 
-    void ArcaneLocus(int quant = 1)
+    public void ArcaneLocus(int quant = 1)
     {
         if (Core.CheckInventory("73339", quant))
             return;
@@ -255,6 +259,7 @@ public class ArchMage
             PrismaticEther(1);
 
         Core.FarmingLogger("Arcane Locus", quant);
+        Core.EquipClass(ClassType.Farm);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Arcane Locus", quant))
         {
@@ -270,7 +275,7 @@ public class ArchMage
         }
     }
 
-    void UnboundTomb(int quant)
+    public void UnboundTomb(int quant)
     {
         if (Core.CheckInventory("Unbound Tome", quant))
             return;
@@ -292,6 +297,7 @@ public class ArchMage
             Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 1, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
+
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
         }
