@@ -592,8 +592,8 @@ public class CoreBots
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
         for (int i = 0; i < quant; i++)
         {
-           Bot.Shops.BuyItem(item.ID, item.ShopItemID);
-           Bot.Sleep(ActionDelay);
+            Bot.Shops.BuyItem(item.ID, item.ShopItemID);
+            Bot.Sleep(ActionDelay);
         }
         // Bot.Send.Packet($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{item.ShopItemID}%{quant}%");
 
@@ -951,7 +951,8 @@ public class CoreBots
                                 continue;
                             await Task.Delay(ActionDelay);
                             EnsureAccept(kvp.Key.ID);
-                            Logger($"Quest completed x{nonChooseQuests[kvp.Key] + amountTurnedIn} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
+                            nonChooseQuests[kvp.Key] = nonChooseQuests[kvp.Key] + amountTurnedIn;
+                            Logger($"Quest completed x{nonChooseQuests[kvp.Key]} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                         }
                     }
 
