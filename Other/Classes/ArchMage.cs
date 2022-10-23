@@ -49,10 +49,11 @@ public class ArchMage
         Core.AddDrop(RequiredItems);
 
         #region  "Required quests/reps"
-        Farm.SpellCraftingREP();
         SoW.TimestreamWar();
         QOM.TheReshaper();
         Farm.Experience(60);
+        Farm.SpellCraftingREP();
+        Farm.EmberseaREP();
         Farm.ChaosREP(10);
         Farm.GoodREP(10);
         Farm.EvilREP(10);
