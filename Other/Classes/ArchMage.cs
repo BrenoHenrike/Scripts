@@ -29,7 +29,8 @@ public class ArchMage
     private CoreSoW SoW = new();
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-
+    private string[] Extras = { "Arcane Sigil", "Archmage", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes" };
+    
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -37,7 +38,6 @@ public class ArchMage
         Core.SetOptions();
 
         GetAM();
-
         Core.SetOptions(false);
     }
 
@@ -49,16 +49,19 @@ public class ArchMage
         Core.AddDrop(RequiredItems);
 
         #region  "Required quests/reps"
-        Farm.SpellCraftingREP();
-        SoW.CompleteCoreSoW();
-        QOM.CompleteEverything();
+        SoW.TimestreamWar();
+        QOM.TheReshaper();
         Farm.Experience(60);
+        Farm.SpellCraftingREP();
+        Farm.EmberseaREP();
         Farm.ChaosREP(10);
         Farm.GoodREP(10);
         Farm.EvilREP(10);
         TOD.CompleteToD();
         #endregion
 
+        Core.AddDrop(RequiredItems);
+        Core.AddDrop(Extras);
 
         //Book of Magus: Incantation
         if (!Core.CheckInventory("Book of Magus"))
@@ -117,11 +120,13 @@ public class ArchMage
             Scroll.BuyScroll(Scrolls.Frostbite, 50);
 
             Core.EquipClass(ClassType.Solo);
-            Core.RegisterQuests(7279);
             while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
+            {
+                Core.EnsureAccept(7279);
                 Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
-            Core.CancelRegisteredQuests();
-
+                Core.EnsureComplete(7279);
+                Bot.Wait.ForPickup("Ice Diamond");
+            }
             Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
             Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
             Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
@@ -162,8 +167,8 @@ public class ArchMage
 
             Scroll.BuyScroll(Scrolls.EtherealCurse, 50);
 
-            //The mortal coil (x4 roents) //once we get a nulgath army also add that
-            VHL.VHLChallenge(4);
+            Core.EquipClass(ClassType.Solo);
+            Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false);
 
             //Army Bosses:
             Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +

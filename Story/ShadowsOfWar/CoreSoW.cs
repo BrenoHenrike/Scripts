@@ -86,7 +86,7 @@ public class CoreSoW
         Story.KillQuest(6858, "shadowlordkeep", new[] { "Shadow Mage", "Shadow Gunner|Shadow Mage" });
 
         //Light 'em Up! (6859)
-        Story.MapItemQuest(6859, "shadowlordkeep", 6391);
+        Story.MapItemQuest(6859, "shadowlordkeep", 6391, 12);
 
         //Fight the Shadows (6860)
         Story.KillQuest(6860, "shadowlordkeep", "Shadow Imp|Shadow Locust");
