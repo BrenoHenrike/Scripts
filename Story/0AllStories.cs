@@ -18,6 +18,8 @@
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
+//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+
 
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 
@@ -181,6 +183,9 @@ public class AllStories
     //Fire Island
     public CoreFireIsland FI = new();
 
+    //Friday 13th
+    public CoreFriday13th CoreFriday13th = new();
+    
     // Isle Of Fotia
     public CoreIsleOfFotia CoreIsleOfFotia = new();
 
@@ -389,6 +394,11 @@ public class AllStories
         #region CoreFireIsland
         FI.CompleteFireIsland();
         Core.Logger($"Saga: Fireisland Maps - Complete");
+        #endregion
+            
+        #region CoreFriday13th
+        CoreFriday13th.DoAll();
+        Core.Logger($"Saga: Friday 13th - Complete");
         #endregion
 
         #region IsleOfFotia
