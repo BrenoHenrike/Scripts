@@ -19,6 +19,9 @@ public class CoreFriday13th
 
     public void DoAll()
     {
+        if (!Core.IsMember && !CalculateFriday13())
+            return;
+        
         Skullpunch();
         Lowe();
         Saloonfront();
