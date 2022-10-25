@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/DeadFly[Member].cs
+//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -15,7 +15,7 @@ public class DeadflyMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public DeadFly DeadFly = new();
+    public CoreFriday13th CoreFriday13th = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -60,7 +60,7 @@ public class DeadflyMerge
                 #endregion
 
                 case "Ragged Cloth Scrap":
-                    DeadFly.StoryLine();
+                    CoreFriday13th.Deadfly();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8212);
