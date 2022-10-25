@@ -76,7 +76,6 @@
 
 //cs_include Scripts/Story/Banished.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Story/BeastMakerStory[MEM].cs
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/Borgars.cs
@@ -87,7 +86,6 @@
 //cs_include Scripts/Story/CruxShip.cs
 
 //cs_include Scripts/Story/DarkCarnax.cs
-//cs_include Scripts/Story/DeadFly[Member].cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
@@ -101,7 +99,6 @@
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Story/ExaltiaTower.cs
 
-//cs_include Scripts/Story/FireHouse[SeasonalOrMem].cs
 //cs_include Scripts/Story/FrozenNorthlands.cs
 
 //cs_include Scripts/Story/GameHaven.cs
@@ -119,8 +116,6 @@
 
 //cs_include Scripts/Story/Noobshire.cs
 //cs_include Scripts/Story/NytheraSaga.cs
-
-//cs_include Scripts/Story/Oddities.cs
 
 //cs_include Scripts/Story/PoisonForest.cs
 
@@ -251,7 +246,6 @@ public class AllStories
 
     public Banished Banished = new();
     public BattleUnder BattleUnder = new();
-    public BeastMakerStory BeastMakerStory = new();
     public BloodMoon BloodMoon = new();
     public Bludrut Bludrut = new();
     public Borgars Borgars = new();
@@ -262,7 +256,6 @@ public class AllStories
     public CruxShip CruxShip = new();
 
     public DarkCarnaxStory DarkCarnax = new();
-    public DeadFly DeadFly = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -279,7 +272,6 @@ public class AllStories
     public Gamehaven Gamehaven = new();
     public GiantTaleStory GiantTaleStory = new();
 
-    public FireHouse FireHouse = new();
     public FrozenNorthlands FrozenNorthlands = new();
 
     public GlaceraStory GlaceraStory = new();
@@ -295,8 +287,6 @@ public class AllStories
     public NytheraSaga NytheraSaga = new();
 
     public J6Saga J6Saga = new();
-
-    public Oddities Oddities = new();
 
     public PoisonForest PoisonForest = new();
 
@@ -527,12 +517,6 @@ public class AllStories
         BattleUnder.BattleUnderAll();
         Core.Logger($"Story: BattleUnder - Complete");
 
-        if (Core.IsMember)
-        {
-            BeastMakerStory.StoryLine();
-            Core.Logger($"Story: Beast Maker - Complete");
-        }
-
         BloodMoon.BloodMoonSaga();
         Core.Logger($"Story: Blood Moon - Complete");
 
@@ -608,9 +592,6 @@ public class AllStories
         Core.Logger($"Story: Exaltia Tower - Complete");
 
 
-        FireHouse.Storyline();
-        Core.Logger($"Story: Fire House - {(Core.isCompletedBefore(1564) ? "Complete" : "Skipped")}");
-
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");
 
@@ -655,10 +636,6 @@ public class AllStories
 
         NytheraSaga.DoAll();
         Core.Logger($"Saga: Nythera - Complete");
-
-
-        Oddities.StoryLine();
-        Core.Logger($"Story: Oddities - {(Core.isCompletedBefore(8667) ? "Complete" : "Member Only")}");
 
 
         PoisonForest.StoryLine();
