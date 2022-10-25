@@ -3,7 +3,7 @@
 //cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 
-public class Splatterwarshrade
+public class Splatterwar
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,7 +14,7 @@ public class Splatterwarshrade
     {
         Core.SetOptions();
 
-        CoreFriday13th.Splatterwarshrade();
+        CoreFriday13th.Splatterwar();
 
         Core.SetOptions(false);
     }
