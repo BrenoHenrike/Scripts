@@ -19,9 +19,6 @@ public class CoreFriday13th
 
     public void DoAll()
     {
-        if (!Core.IsMember && !CalculateFriday13())
-            return;
-        
         Skullpunch();
         Lowe();
         Saloonfront();
@@ -648,6 +645,8 @@ public class CoreFriday13th
 
     public void Splatterwar()
     {
+        Puzzlebox();
+        
         if (Core.isCompletedBefore(7407) || !Core.IsMember && !CalculateFriday13())
             return;
 
