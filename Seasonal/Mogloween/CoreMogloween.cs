@@ -595,8 +595,8 @@ public class CoreMogloween
         Story.KillQuest(8364, "necrocarnival", "Skeleclown");
 
         //Lemonade, Chewy Ice 8365
-        Story.KillQuest(8365, "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm" });
         Story.MapItemQuest(8365, "necrocarnival", 9251, 2);
+        Story.KillQuest(8365, "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm" });
 
         //Screams and Tag 8366
         Story.MapItemQuest(8366, "necrocarnival", 9252);

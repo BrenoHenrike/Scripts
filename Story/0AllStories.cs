@@ -551,7 +551,7 @@ public class AllStories
 
         if (Core.IsMember)
         {
-            DeadFly.StoryLine();
+            CoreFriday13th.Deadfly();
             Core.Logger($"Story: DeadFly - Complete");
         }
 

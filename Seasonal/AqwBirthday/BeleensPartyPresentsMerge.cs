@@ -72,15 +72,15 @@ public class BeleensPartyPresentsMerge
                     Bot.Quests.UpdateQuest(8892);
                     Core.KillMonster("mermaidsushi", "r7a", "Left", "*", req.Name, quant, false);
                     break;
-                
+
+                case "Golden Anniversary Gift":
                 case "Platinum Leaf":
                     Core.EquipClass(ClassType.Solo);
+                    if (req.Name == "Platinum Leaf")
+                        Core.RegisterQuests(8925);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.EnsureAccept(8925);
                         Core.HuntMonster("yulgarparty", "Treasure Pile", "Twilly's Treasure Defeated");
-                        Core.EnsureComplete(8925);
-                    }
+                    Core.CancelRegisteredQuests();
                     break;
 
             }
