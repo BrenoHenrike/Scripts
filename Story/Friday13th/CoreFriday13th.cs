@@ -19,6 +19,9 @@ public class CoreFriday13th
 
     public void DoAll()
     {
+        if (!Core.IsMember && !CalculateFriday13())
+            return;
+        
         Skullpunch();
         Lowe();
         Saloonfront();
@@ -31,18 +34,16 @@ public class CoreFriday13th
         Gonnagetcha();
         Greymoor();
         Puzzlebox();
-        Splatterwarshrade();
+        Splatterwar();
         Deadfly();
         Oddities();
     }
 
     public void Skullpunch()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(3119) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Fishbones, Fishbones 3097
@@ -111,11 +112,9 @@ public class CoreFriday13th
 
     public void Lowe()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(764) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
         
         // Listen to George Lowe's story 750
@@ -164,13 +163,12 @@ public class CoreFriday13th
 
     public void Saloonfront()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(1057) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
-
+        
+        // Deady's Return 1042
         Story.ChainQuest(1042);
 
         // Exit, Stage Right 1043
@@ -221,11 +219,9 @@ public class CoreFriday13th
 
     public void Firehouse()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(1564) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
         
         // Gaining Trust 1552
@@ -270,11 +266,9 @@ public class CoreFriday13th
 
     public void Sleezter()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(1972) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Make Way 1961
@@ -319,11 +313,9 @@ public class CoreFriday13th
 
     public void Neverhub()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(2234) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Find the Shadow's Door 2222
@@ -372,20 +364,16 @@ public class CoreFriday13th
 
     public void Battledoom()
     {
-        // Check membership
         if (Core.IsMember && CalculateFriday13())
             return;
      
-        // Mark items to not bank
         Core.BankingBlackList.AddRange(new[] { "Unlucky Gem I", "Unlucky Gem II", "Unlucky Gem III",
                                                "Unlucky Gem IV", "Unlucky Gem V", "Unlucky Gem VI",
                                                "Unlucky Gem VII", "Cursed Mirror of Enutrof", "Shadowglass Shard" });
 
-        // Check if item is in inventory
         if (Core.CheckInventory("Cursed Mirror of Enutrof"))
             return;
 
-        // Load quests using the Legacy Quest Manager
         Story.LegacyQuestManager(QuestLogic, 4648, 4649, 4650, 4651, 4652, 4653, 4654, 4655);
 
         void QuestLogic()
@@ -441,11 +429,9 @@ public class CoreFriday13th
 
     public void Wormhole()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(5066) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Something In The Air 5051
@@ -501,11 +487,9 @@ public class CoreFriday13th
 
     public void Crownsreachfxiii()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(5646) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
         
         // Those Bloody Maggots 5637
@@ -541,11 +525,9 @@ public class CoreFriday13th
 
     public void Gonnagetcha()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(6269) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Who Screamed? 6259
@@ -589,7 +571,6 @@ public class CoreFriday13th
 
     public void Greymoor()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(6420) || !Core.IsMember && !CalculateFriday13())
             return;
 
@@ -638,11 +619,9 @@ public class CoreFriday13th
 
     public void Puzzlebox()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(7399) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Find the Souls 7394
@@ -667,15 +646,25 @@ public class CoreFriday13th
         Story.MapItemQuest(7399, "PuzzleBox", 7165);
     }
 
-    public void Splatterwarshrade()
+    public void Splatterwar()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(7407) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
+        // Slasher Medals 7400
+        Story.KillQuest(7400, "SplatterWarDage", "Bladehands");
+
+        // Mega Slasher Medals 7402
+        Story.KillQuest(7402, "SplatterWarDage", "Bladehands");
+
+        // Bladehands 7404
+        Story.KillQuest(7404, "SplatterWarDage", "Bladehands");
+
+        // Defeat Shrade 7406
+        Story.KillQuest(7406, "SplatterWarDage", "Shrade");
+        
         // Legion Medals 7401
         Story.KillQuest(7401, "SplatterWarShrade", "Legion Maw");
 
@@ -691,11 +680,9 @@ public class CoreFriday13th
 
     public void Deadfly()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(8232) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // The Flies 8217
@@ -753,11 +740,9 @@ public class CoreFriday13th
 
     public void Oddities()
     {
-        // Check progress and membership
         if (Core.isCompletedBefore(8667) || !Core.IsMember && !CalculateFriday13())
             return;
 
-        // Preload quests
         Story.PreLoad(this);
 
         // Shop of Vandalized Horrors 8654
