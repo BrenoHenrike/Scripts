@@ -30,7 +30,7 @@ public class ArchMage
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
     private string[] Extras = { "Arcane Sigil", "Archmage", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes" };
-    
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -38,6 +38,7 @@ public class ArchMage
         Core.SetOptions();
 
         GetAM();
+
         Core.SetOptions(false);
     }
 
@@ -47,9 +48,11 @@ public class ArchMage
             return;
 
         Core.AddDrop(RequiredItems);
+        if (getExtras)
+            Core.AddDrop(Extras);
 
         #region  "Required quests/reps"
-        SoW.TimestreamWar();
+        SoW.DeadLines();
         QOM.TheReshaper();
         Farm.Experience(60);
         Farm.SpellCraftingREP();
@@ -63,139 +66,195 @@ public class ArchMage
         Core.AddDrop(RequiredItems);
         Core.AddDrop(Extras);
 
-        //Book of Magus: Incantation
-        if (!Core.CheckInventory("Book of Magus"))
+        //Archmage's Ascension  
+              
+        Core.EnsureAccept(8918);
+        
+        Magus();
+        Fire();
+        Ice();
+        Aether();
+        Arcana();
+
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
+
+        Core.EnsureComplete(8918);
+
+        if (rankUpClass)
+            Adv.rankUpClass("ArchMage");
+
+        //Lumina Elementi
+
+        if (getExtras)
         {
-            UnboundTomb(1);
-            Core.EnsureAccept(8913);
-
-            BLOD.FindingFragmentsMace(200);
-
-            Scroll.BuyScroll(Scrolls.Mystify, 50);
-
+            UnboundTomb(30);
+            Arcana();
             Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(8814, 8815);
             while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
                 Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
             Core.CancelRegisteredQuests();
-
-            Core.HuntMonster("noxustower", "Lightguard Caster", "Mortal Essence", 100, false);
-            Core.HuntMonster("portalmazec", "Pactagonal Knight", "Orthogonal Energy", 150, false);
-
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("timeinn", "Ezrajal", "Celestial Magia", 50, false);
-
-            Core.EnsureComplete(8913);
-            Bot.Wait.ForPickup("Book of Magus");
-            Core.ToBank(BLOD.BLoDItems);
-        }
-
-        //Book of Fire: Immolation
-        if (!Core.CheckInventory("Book of Fire"))
-        {
-            UnboundTomb(1);
-            Core.EnsureAccept(8914);
-
-            Scroll.BuyScroll(Scrolls.FireStorm, 50);
-
-            Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("fireavatar", "Shadefire Cavalry", "ShadowFire Wisps", 200, false);
-            Core.HuntMonster("fotia", "Femme Cult Worshiper", "Spark of Life", 200, false);
-            Core.HuntMonster("mafic", "*", "Emblazoned Basalt", 200, false);
-
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("underlair", "r6", "left", "Void Draconian", "Dense Dragon Crystal", 200, false);
-
-            Core.EnsureComplete(8914);
-            Bot.Wait.ForPickup("Book of Fire");
-            Core.ToBank("Arcane Floating Sigil", "Sheathed Archmage's Staff");
-        }
-
-        //Book of Ice: Glacial Impact
-        if (!Core.CheckInventory("Book of Ice"))
-        {
-            UnboundTomb(1);
-            Core.EnsureAccept(8915);
-
-            Scroll.BuyScroll(Scrolls.Frostbite, 50);
-
-            Core.EquipClass(ClassType.Solo);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
+            Core.FarmingLogger("Unbound Thread", 100);
+            Core.RegisterQuests(8869);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", 100))
             {
-                Core.EnsureAccept(7279);
-                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
-                Core.EnsureComplete(7279);
-                Bot.Wait.ForPickup("Ice Diamond");
+                //Fallen Branches 8869
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
+                Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
+                Bot.Wait.ForPickup("Unbound Thread");
             }
-            Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
-            Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
-            Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
-
-            Core.EnsureComplete(8915);
-            Bot.Wait.ForPickup("Book of Ice");
-            Core.ToBank("Archmage's Cowl", "Archmage's Cowl and Locks");
-        }
-
-        //Book of Aether: Supernova
-        if (!Core.CheckInventory("Book of Aether"))
-        {
-            UnboundTomb(1);
-            Core.EnsureAccept(8916);
-
-            Scroll.BuyScroll(Scrolls.Eclipse, 50);
-
-            //these are hard bosses anyways
+            Core.CancelRegisteredQuests();
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("streamwar", "Second Speaker", "A Fragment of the Beginning", isTemp: false);
-            Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Everlight Flame", isTemp: false);
+            Core.HuntMonster("archmage", "Prismata", "Elemental Binding", 2500, false, publicRoom: true);
+        }
+    }
 
-            //Army Bosses.            
+    //Books:
+
+    public void Magus()
+    {
+        //Book of Magus: Incantation
+        if (Core.CheckInventory("Book of Magus"))
+            return;
+
+        UnboundTomb(1);
+        Core.EnsureAccept(8913);
+
+        BLOD.FindingFragmentsMace(200);
+
+        Scroll.BuyScroll(Scrolls.Mystify, 50);
+
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(8814, 8815);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
+            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
+        Core.CancelRegisteredQuests();
+
+        Core.HuntMonster("noxustower", "Lightguard Caster", "Mortal Essence", 100, false);
+        Core.HuntMonster("portalmazec", "Pactagonal Knight", "Orthogonal Energy", 150, false);
+
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("timeinn", "Ezrajal", "Celestial Magia", 50, false);
+
+        Core.EnsureComplete(8913);
+        Bot.Wait.ForPickup("Book of Magus");
+        Core.ToBank(BLOD.BLoDItems);
+
+    }
+
+    public void Fire()
+    {
+        //Book of Fire: Immolation
+        if (Core.CheckInventory("Book of Fire"))
+            return;
+
+        UnboundTomb(1);
+        Core.EnsureAccept(8914);
+
+        Scroll.BuyScroll(Scrolls.FireStorm, 50);
+
+        Core.EquipClass(ClassType.Farm);
+        Core.HuntMonster("fireavatar", "Shadefire Cavalry", "ShadowFire Wisps", 200, false);
+        Core.HuntMonster("fotia", "Femme Cult Worshiper", "Spark of Life", 200, false);
+        Core.HuntMonster("mafic", "*", "Emblazoned Basalt", 200, false);
+
+        Core.EquipClass(ClassType.Solo);
+        Core.KillMonster("underlair", "r6", "left", "Void Draconian", "Dense Dragon Crystal", 200, false);
+
+        Core.EnsureComplete(8914);
+        Bot.Wait.ForPickup("Book of Fire");
+        Core.ToBank("Arcane Floating Sigil", "Sheathed Archmage's Staff");
+
+    }
+
+    public void Ice()
+    {
+        if (Core.CheckInventory("Book of Ice"))
+            return;
+
+        UnboundTomb(1);
+        Core.EnsureAccept(8915);
+
+        Scroll.BuyScroll(Scrolls.Frostbite, 50);
+
+        Core.EquipClass(ClassType.Solo);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
+        {
+            Core.EnsureAccept(7279);
+            Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
+            Core.EnsureComplete(7279);
+            Bot.Wait.ForPickup("Ice Diamond");
+        }
+        Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
+        Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
+        Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
+
+        Core.EnsureComplete(8915);
+        Bot.Wait.ForPickup("Book of Ice");
+        Core.ToBank("Archmage's Cowl", "Archmage's Cowl and Locks");
+
+    }
+
+    public void Aether()
+    {
+        //Book of Aether: Supernova
+        if (Core.CheckInventory("Book of Aether"))
+            return;
+
+        UnboundTomb(1);
+        Core.EnsureAccept(8916);
+
+        Scroll.BuyScroll(Scrolls.Eclipse, 50);
+
+        //these are hard bosses anyways
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("streamwar", "Second Speaker", "A Fragment of the Beginning", isTemp: false);
+        Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Everlight Flame", isTemp: false);
+
+        //Army Bosses.  
+        if (!Core.CheckInventory(new[] { "Void Essentia", "A Fragment of the Beginning", "Vital Exanima", "Everlight Flame" }))
             Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
                         "Dage the Evil - dage - Vital Examina" +
-                        "Flibbitiestgibbet thevoid - Void Essentia");
+                        "Flibbitiestgibbet thevoid - Void Essentia", stopBot: true);
 
-            Core.EnsureComplete(8916);
-            Bot.Wait.ForPickup("Book of Aether");
-            Core.ToBank("Archmage's Staff");
-        }
+        Core.EnsureComplete(8916);
+        Bot.Wait.ForPickup("Book of Aether");
+        Core.ToBank("Archmage's Staff");
 
+    }
+
+    public void Arcana()
+    {
         //Book of Arcana: Arcane Sigil
-        if (!Core.CheckInventory("Book of Arcana"))
-        {
-            UnboundTomb(1);
-            Core.EnsureAccept(8917);
+        if (Core.CheckInventory("Book of Arcana"))
+            return;
 
-            Scroll.BuyScroll(Scrolls.EtherealCurse, 50);
+        UnboundTomb(1);
+        Core.EnsureAccept(8917);
 
-            Core.EquipClass(ClassType.Solo);
-            Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false);
+        Scroll.BuyScroll(Scrolls.EtherealCurse, 50);
 
-            //Army Bosses:
+        Core.EquipClass(ClassType.Solo);
+        Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false);
+
+        //Army Bosses:
+        if (!Core.CheckInventory(new[] { "Calamitous Ruin", "The Mortal Coi", "The Divine Will", "Insatiable Hunger", "Undying Resolve" }))
             Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
                         "azalith - celestialpast - the divine will" +
                         "nightbane thevoid - insatiable hunger" +
                         "darkon - theworld - Undying resolve");
 
-            Core.EnsureComplete(8917);
-            Bot.Wait.ForPickup("Book of Arcana");
-            Core.ToBank("Archmage's Robes");
-        }
-
-        //Archmage's Ascension        
-
-        Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
-
-        Core.ChainComplete(8918);
-
-        if (rankUpClass)
-            Adv.rankUpClass("ArchMage");
-
-        if (!getExtras)
-            return;
+        Core.EnsureComplete(8917);
+        Bot.Wait.ForPickup("Book of Arcana");
+        Core.ToBank("Archmage's Robes");
 
     }
 
+    //Materials:
     public void MysticScribingKit(int quant = 5)
     {
         if (Core.CheckInventory("Mystic Scribing Kit", quant))
