@@ -147,14 +147,16 @@ public class CoreFriday13th
         // Cover Me 760
         Story.KillQuest(760, "Ebildread", "Pink Hand");
 
-        // Twig's Nightmare
+        // Dweam-Maze 761
         Story.ChainQuest(761);
+        
+        // Big Bad Kwueger Man 762
         Story.ChainQuest(762);
 
-        // Loweviathan
+        // George Lowe-viathan 763
         Story.ChainQuest(763);
 
-        // Super Loweviathan
+        // Super George Lowe-viathan 764
         Story.KillQuest(764, "SuperLowe", "Super Lowe-Viathan");        
     }
 
