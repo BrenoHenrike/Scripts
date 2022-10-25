@@ -29,8 +29,7 @@ public class ArchMage
     private CoreSoW SoW = new();
 
     private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-    private string[] Extras = { "Arcane Sigil", "Archmage", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes" };
-
+    private string[] Extras = { "Arcane Sigil", "Archmage", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -44,7 +43,7 @@ public class ArchMage
 
     public void GetAM(bool rankUpClass = true, bool getExtras = true)
     {
-        if (Core.CheckInventory("Archmage"))
+        if (Core.CheckInventory("Archmage") && !getExtras)
             return;
 
         Core.AddDrop(RequiredItems);
@@ -52,7 +51,7 @@ public class ArchMage
             Core.AddDrop(Extras);
 
         #region  "Required quests/reps"
-        SoW.DeadLines();
+        SoW.CompleteCoreSoW();
         QOM.TheReshaper();
         Farm.Experience(60);
         Farm.SpellCraftingREP();
@@ -60,6 +59,8 @@ public class ArchMage
         Farm.ChaosREP(10);
         Farm.GoodREP(10);
         Farm.EvilREP(10);
+        Farm.EtherStormREP();
+        Farm.LoremasterREP();
         TOD.CompleteToD();
         #endregion
 
@@ -67,9 +68,9 @@ public class ArchMage
         Core.AddDrop(Extras);
 
         //Archmage's Ascension  
-              
+
         Core.EnsureAccept(8918);
-        
+
         Magus();
         Fire();
         Ice();
@@ -84,6 +85,9 @@ public class ArchMage
         if (rankUpClass)
             Adv.rankUpClass("ArchMage");
 
+        if (Core.CheckInventory("Archmage") && !getExtras)
+            return;
+            
         //Lumina Elementi
 
         if (getExtras)
@@ -268,10 +272,9 @@ public class ArchMage
 
             Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(3048);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Quills", 49))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Quills", 49) && !Core.CheckInventory("Mystic Shard", 49))
                 Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             Core.CancelRegisteredQuests();
-            Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 49, false, log: false);
 
             Core.EquipClass(ClassType.Solo);
             if (!Core.CheckInventory("Semiramis Feather"))

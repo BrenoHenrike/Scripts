@@ -49,8 +49,9 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4085, "DarkFortress", new[] { "Ninja Spy", "Dark Elemental", "Cloaked Fiend" });
 
         //Test 3: Bonesaw Break 4086
-        if (!Story.QuestProgression(4088) || !Core.CheckInventory("Ultra Dark Mystery Stone Of Evil Animosity"))
+        if (!Story.QuestProgression(4086) || !Core.CheckInventory("Ultra Dark Mystery Stone Of Evil Animosity"))
         {
+            Core.AddDrop("Ultra Dark Mystery Stone Of Evil Animosity");
             Core.EnsureAccept(4086);
             Core.HuntMonster("DarkFortress", "Infernalfiend", "Ultra Dark Mystery Stone");
             Core.EnsureComplete(4086);

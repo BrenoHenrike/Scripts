@@ -247,13 +247,13 @@ public class CoreQOM
         Story.PreLoad(this);
 
         //Hounds and Infernals and Imp, Oh my!
-        Story.KillQuest(5487, "DarkoviaInvasion", new[] { "Underworld Hound", "Infernal Imp" });
+        Story.KillQuest(5487, "Darkovianvasion", new[] { "Underworld Hound", "Infernal Imp" });
 
         //Like Imps in A Pod
-        Story.MapItemQuest(5488, "DarkoviaInvasion", 4905, 6);
+        Story.MapItemQuest(5488, "Darkovianvasion", 4905, 6);
 
         //A Grievous Threat
-        Story.KillQuest(5489, "DarkoviaInvasion", "Grievous Fiend");
+        Story.KillQuest(5489, "Darkovianvasion", "Grievous Fiend");
 
         //Undead Investigation
         Story.MapItemQuest(5490, "SafiriaInvasion", 4904);
@@ -382,7 +382,7 @@ public class CoreQOM
         {
             Core.EnsureAccept(5578);
             Core.KillMonster("DoomPally", "r3", "Right", "*", "Doomwood Invaders Fought", 4);
-            Core.KillMonster("DarkoviaInvasion", "Enter", "Spawn", "*", "Darkovia Invaders Fought", 4);
+            Core.KillMonster("Darkovianvasion", "Enter", "Spawn", "*", "Darkovia Invaders Fought", 4);
             Core.KillMonster("ShadowfallInvasion", "r4", "Left", "*", "Shadowfall Invaders Fought", 4);
             Core.EnsureComplete(5578);
         }

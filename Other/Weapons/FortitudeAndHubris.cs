@@ -30,15 +30,15 @@ public class FandH
         Story.KillQuest(6593, "stalagbite", "Balboa");
 
         // Rest for the Not Very Wicked
-        Story.KillQuest(6594, "pines", new[] { "Red Shell Turtle", "Pine Grizzly", "Pine Troll" });
         Story.MapItemQuest(6594, "tavern", 6114);
+        Story.KillQuest(6594, "pines", new[] { "Red Shell Turtle", "Pine Grizzly", "Pine Troll" });
 
         // Pisces Pieces
         Story.KillQuest(6595, "river", "Kuro");
 
         // Be Ebil
-        Story.KillQuest(6596, "maul", "Creature Creation");
         Story.MapItemQuest(6596, "maul", 6116);
+        Story.KillQuest(6596, "maul", "Creature Creation");
 
         // Eternal, Never-Ending Darkness and Death Lance        
         Story.KillQuest(6598, "shadowrealm", "Shadow Lord");
@@ -47,8 +47,8 @@ public class FandH
         Story.KillQuest(6599, "dragontown", "Chaos Fluffy");
 
         // 1st Trial
-        Story.KillQuest(6600, "mountfrost", "Snow Golem");
         Story.MapItemQuest(6600, "david", 6115);
+        Story.KillQuest(6600, "mountfrost", "Snow Golem");
 
         // 2nd Trial
         Story.KillQuest(6601, "northpointe", "Wyvern");
