@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Oddities.cs
+//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -14,7 +14,7 @@ public class OdditiesMerge
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
-    public Oddities Odd => new();
+    public CoreFriday13th CoreFriday13th => new();
 
     string[] MergeShop1Items =
     {
@@ -61,7 +61,7 @@ public class OdditiesMerge
     {
         Core.SetOptions();
 
-        Odd.StoryLine();
+        CoreFriday13th.Oddities();
 
         MergeShopFabyo("all");
         MergeShopOddities("all");
