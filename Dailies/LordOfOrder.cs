@@ -92,7 +92,7 @@ public class LordOfOrder
             {
                 Farm.Gold(600000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 2);
-                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15, 10);
+                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15);
             }
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);

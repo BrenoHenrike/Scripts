@@ -130,7 +130,7 @@ public class ShadowSlayerKMerge
                             Core.EnsureComplete(1075);
                             Bot.Wait.ForPickup("Holy Wasabi");
                         }
-                        Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
+                        Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3);
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("Sloth", "Phlegnn", "Unnatural Ooze", 8);
                         Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");

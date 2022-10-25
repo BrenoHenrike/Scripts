@@ -536,25 +536,13 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0)
     {
         if (CheckInventory(itemName, quant))
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
-        if (item.ID == 0 || !_canBuy(shopID, item))
-            return;
-
-        quant = _CalcBuyQuantity(item, quant, shopQuant);
-        if (quant <= 0)
-            return;
-
-        Join(map);
-        _BuyItem(shopID, item, quant, shopQuant);
-
-        if (CheckInventory(item.Name, quant))
-            Logger($"Bought {quant}x{shopQuant} {item.Name}");
-        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
+        _BuyItem(map, shopID, item, quant);
     }
 
     /// <summary>
@@ -566,38 +554,48 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopItemID = 0)
     {
         if (CheckInventory(itemID, quant))
             return;
 
         ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
-        if (item == new ShopItem() || !_canBuy(shopID, item))
+        _BuyItem(map, shopID, item, quant);
+    }
+
+    private void _BuyItem(string map, int shopID, ShopItem item, int quant)
+    {
+        if (item == null || !_canBuy(shopID, item))
             return;
 
-        quant = _CalcBuyQuantity(item, quant, shopQuant);
+        int logQuant = _CalcBuyQuantity(item, quant, true);
+        quant = _CalcBuyQuantity(item, quant);
         if (quant <= 0)
             return;
 
         Join(map);
-        _BuyItem(shopID, item, quant, shopQuant);
-
-        if (CheckInventory(item.Name, quant))
-            Logger($"Bought {quant}x{shopQuant} {item.Name}");
-        else Logger($"Failed at buying {quant}x{shopQuant} {item.Name}");
-    }
-
-    private void _BuyItem(int shopID, ShopItem item, int quant, int shopQuant)
-    {
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
-        for (int i = 0; i < quant; i++)
-        {
-            Bot.Shops.BuyItem(item.ID, item.ShopItemID);
-            Bot.Sleep(ActionDelay);
-        }
-        // Bot.Send.Packet($"%xt%zm%buyItem%{Bot.Map.RoomID}%{item.ID}%{shopID}%{item.ShopItemID}%{quant}%");
+
+        dynamic sItem = new ExpandoObject();
+        dynamic objData = getData(item.ID, item.ShopItemID);
+        sItem = objData;
+        sItem.iSel = objData;
+        sItem.iQty = quant;
+        sItem.iSel.iQty = quant;
+        sItem.accept = 1;
+
+        if (Bot.Options.SafeTimings)
+            Bot.Wait.ForActionCooldown(GameActions.BuyItem);
+        Bot.Flash.CallGameFunction("world.sendBuyItemRequestWithQuantity", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(sItem))!);
+        if (Bot.Options.SafeTimings)
+            Bot.Wait.ForItemBuy();
+        Bot.Sleep(ActionDelay);
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
+
+        if (CheckInventory(item.Name, quant))
+            Logger($"Bought {logQuant}x{item.Quantity} {item.Name}");
+        else Logger($"Failed at buying {logQuant}x{item.Quantity} {item.Name}");
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -615,20 +613,45 @@ public class CoreBots
                 }
             }
         }
+
+        dynamic getData(int itemID, int shopItemID = 0)
+        {
+            var shopItems = Bot.Flash.GetGameObject<dynamic[]>("world.shopinfo.items")!;
+            foreach (dynamic i in shopItems)
+            {
+                if (i == null || i!.ItemID == null || i!.ItemID != itemID ||
+                   (shopItemID != 0 ? (i!.ShopItemID == null || i!.ShopItemID != shopItemID) : false))
+                    continue;
+                return i!;
+            }
+            Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}");
+            return null!;
+        }
     }
 
-    private int _CalcBuyQuantity(ShopItem item, int quant, int shopQuant)
+    private int _CalcBuyQuantity(ShopItem item, int requestedQuant, bool old = false)
     {
-        if (Bot.Inventory.GetQuantity(item.Name) + shopQuant > item.MaxStack)
+        if (Bot.Inventory.GetQuantity(item.Name) + item.Quantity > item.MaxStack)
         {
             Logger("Can't buy merge item past its max stack, skipping");
             return 0;
         }
-        int quantB = quant - Bot.Inventory.GetQuantity(item.Name);
+        int quantB = requestedQuant - Bot.Inventory.GetQuantity(item.Name);
         if (quantB < 0)
             return 0;
-        decimal quantF = (decimal)quantB / (decimal)shopQuant;
-        return (int)Math.Ceiling(quantF);
+
+        decimal quantF = (decimal)quantB / (decimal)item.Quantity;
+        int quantC = (int)Math.Ceiling(quantF);
+
+        if (old)
+            return quantC;
+
+        for (int i = 0; i < item.Quantity; i++)
+        {
+            if ((quantC + i) % item.Quantity == 0)
+                return quantC + i;
+        }
+        return quantC;
     }
 
     /// <summary>

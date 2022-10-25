@@ -31,7 +31,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0)
     {
         if (Core.CheckInventory(itemName, quant))
             return;
@@ -40,7 +40,7 @@ public class CoreAdvanced
         if (item == null)
             return;
 
-        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
+        _BuyItem(map, shopID, item, quant, shopItemID);
     }
 
     /// <summary>
@@ -61,10 +61,10 @@ public class CoreAdvanced
         if (item == null)
             return;
 
-        _BuyItem(map, shopID, item, quant, shopQuant, shopItemID);
+        _BuyItem(map, shopID, item, quant, shopItemID);
     }
 
-    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopItemID = 0)
     {
         GetItemReq(item);
 
@@ -80,7 +80,7 @@ public class CoreAdvanced
             }
         }
 
-        Core.BuyItem(map, shopID, item.Name, quant, shopQuant, shopItemID);
+        Core.BuyItem(map, shopID, item.Name, quant, shopItemID);
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public class CoreAdvanced
                             Bot.Sleep(Core.ActionDelay);
 
                             if (!matsOnly)
-                                BuyItem(map, shopID, selectedItem.ID, (Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity), selectedItem.Quantity);
+                                BuyItem(map, shopID, selectedItem.ID, (Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity));
                             else break;
                         }
                     }

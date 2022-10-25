@@ -76,7 +76,7 @@ public class VoidPaladin
                 if (!Core.CheckInventory("Archmage Ink"))
                 {
                     Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 2, false);
-                    Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
+                    Core.BuyItem("dragonrune", 549, "Archmage Ink", 1);
                 }
                 Core.ChainComplete(2346);
                 Bot.Drops.Pickup("Scroll of Underworld");

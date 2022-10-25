@@ -34,8 +34,8 @@ public class YouMadBroBadge
             while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory(11478, 30))
                 Core.KillMonster("lair", "Enter", "Spawn", "*", log: false);
             Core.Logger($"Buying Runestones");
-            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 10, 8845);
-            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 1, 8844);
+            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8845);
+            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8844);
             //the 2nd buy is for if its close but not at max stack, it wont buy the full 30.
             Core.Join("alchemy");
             Core.Logger($"Beginning RNG");

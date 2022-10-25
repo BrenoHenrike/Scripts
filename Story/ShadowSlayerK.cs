@@ -129,7 +129,7 @@ public class ShadowSlayerK
                     Core.EnsureComplete(1075);
                     Bot.Wait.ForPickup("Holy Wasabi");
                 }
-                Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3, 10);
+                Adv.BuyItem("alchemyacademy", 2036, "Sage Tonic", 3);
                 DD.HazMatSuit();
                 Core.HuntMonster("sloth", "Phlegnn", "Unnatural Ooze", 8);
                 Core.HuntMonster("beehive", "Killer Queen Bee", "Sleepy Honey");

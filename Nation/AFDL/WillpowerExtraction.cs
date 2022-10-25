@@ -48,9 +48,9 @@ public class WillpowerExtraction
             uni19(1);
 
             Core.EquipClass(ClassType.Farm);
-            Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 5, 10);
-            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5, 10);
-            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 5, 10);
+            Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 5);
+            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5);
+            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 5);
 
             if (!Core.CheckInventory("Mortality Cape of Revontheus"))
             {

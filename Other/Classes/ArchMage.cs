@@ -299,7 +299,7 @@ public class ArchMage
             Core.EnsureAccept(8912);
             // Farm.Gold(3000000);
             Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 1, 8844);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 

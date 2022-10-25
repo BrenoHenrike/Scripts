@@ -160,22 +160,22 @@ public class ArchPaladin
                 {
                     Farm.SpellCraftingREP(8);
                     if (Core.CheckInventory("Mystic Shards", 2))
-                        Core.BuyItem("spellcraft", 549, "Archmage Ink", 1, 5);
+                        Core.BuyItem("spellcraft", 549, "Archmage Ink", 1);
                     else
                     {
                         if (!Core.CheckInventory("Arcane Quill"))
                         {
                             Farm.Gold(100000);
                             Core.BuyItem("spellcraft", 693, "Gold Voucher 100k");
-                            Core.BuyItem("spellcraft", 693, "Arcane Quill", 1, 1);
+                            Core.BuyItem("spellcraft", 693, "Arcane Quill", 1);
                         }
-                        Core.BuyItem("spellcraft", 622, "Archmage Ink", 1, 5);
+                        Core.BuyItem("spellcraft", 622, "Archmage Ink", 1);
                     }
                 }
                 if (!Core.CheckInventory("Archmage Ink"))
                 {
                     Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 2, false);
-                    Core.BuyItem("dragonrune", 549, "Archmage Ink", 1, 5);
+                    Core.BuyItem("dragonrune", 549, "Archmage Ink", 1);
                 }
                 Core.ChainComplete(2347);
                 Bot.Wait.ForPickup("Scroll of Ethereal Slumber");

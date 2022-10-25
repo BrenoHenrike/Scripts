@@ -163,7 +163,7 @@ public class PotionBuyer
                         break;
                     case "Doomatter":
                         // Farm.Gold(ingreQuant * 30000);
-                        Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", ingreQuant, 10);
+                        Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", ingreQuant);
                         break;
                     case "Nimblestem":
                         Core.HuntMonster("mudluk", "Swamp Frogdrake", "Nimblestem", ingreQuant, isTemp: false);

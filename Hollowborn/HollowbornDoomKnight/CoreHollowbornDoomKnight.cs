@@ -137,7 +137,7 @@ public class CoreHollowbornDoomKnight
             Core.EnsureAccept(8414);
 
             ADK(5);
-            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 10, 10);
+            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 10);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Shadow DoomReaver", 1, false);
             Core.HuntMonster("lumafortress", "Corrupted Luma", "Worshipper of Doom", 1, false);

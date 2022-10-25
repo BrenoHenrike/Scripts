@@ -668,7 +668,7 @@ public class CoreFarms
         if (!Core.CheckInventory("Dragon Runestone", quant))
         {
             Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 1, 8844);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 8844);
         }
     }
 
@@ -687,9 +687,9 @@ public class CoreFarms
                     Gold(1000000);
                     Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
                 }
-                Core.BuyItem("alchemyacademy", 395, 7132, 10, 10, 8845);
-                Core.BuyItem("alchemyacademy", 397, 11475, 1, 2, 1232);
-                Core.BuyItem("alchemyacademy", 397, 11478, 1, 2, 1235);
+                Core.BuyItem("alchemyacademy", 395, 7132, 10, 8845);
+                Core.BuyItem("alchemyacademy", 397, 11475, 1, 1232);
+                Core.BuyItem("alchemyacademy", 397, 11478, 1, 1235);
 
                 AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
             }
@@ -712,9 +712,9 @@ public class CoreFarms
                         Gold(1000000);
                         Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
                     }
-                    Core.BuyItem("alchemyacademy", 395, 7132, 10, 10, 8845);
-                    Core.BuyItem("alchemyacademy", 397, 11475, 10, 2, 1232);
-                    Core.BuyItem("alchemyacademy", 397, 11478, 10, 2, 1235);
+                    Core.BuyItem("alchemyacademy", 395, 7132, 10, 8845);
+                    Core.BuyItem("alchemyacademy", 397, 11475, 10, 1232);
+                    Core.BuyItem("alchemyacademy", 397, 11478, 10, 1235);
                 }
 
                 if (FactionRank("Alchemy") < 3)
@@ -2141,7 +2141,7 @@ public class CoreFarms
         if (FactionRank("SpellCrafting") < 4)
         {
             Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
-            Core.BuyItem("dragonrune", 549, "Ember Ink", 50, 5);
+            Core.BuyItem("dragonrune", 549, "Ember Ink", 50);
             while (!Bot.ShouldExit && FactionRank("SpellCrafting") < (rank > 4 ? rank : 4))
             {
                 Core.ChainComplete(2299);
@@ -2150,7 +2150,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("SpellCrafting") < rank)
         {
             Core.HuntMonster("underworld", "Skull Warrior", "Mystic Parchment", 10, false);
-            Core.BuyItem("dragonrune", 549, "Hallow Ink", 50, 5);
+            Core.BuyItem("dragonrune", 549, "Hallow Ink", 50);
             while (!Bot.ShouldExit && Core.CheckInventory("Hallow Ink") && FactionRank("SpellCrafting") < rank)
             {
                 Core.ChainComplete(2322);

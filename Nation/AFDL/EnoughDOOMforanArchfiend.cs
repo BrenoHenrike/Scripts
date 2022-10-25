@@ -53,24 +53,24 @@ public class EnoughDOOMforanArchfiend
         Core.EnsureAccept(5260);
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("orecavern", "r3", "Up", "*", "Chaorruption Essence", 75, false);
-        
-        Adv.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 1, 9770); // see if this works
-        // if (!Core.CheckInventory("Essence Potion", 5))
-        // {
-        //     Farm.Gold(12500000);
-        //     Core.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 25);
-        //     Core.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 1, 9770);
-        //     Bot.Wait.ForItemBuy();
-        // }
-        
-        Nation.ApprovalAndFavor(0, 5000);        
+
+        Adv.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 9770); // see if this works
+                                                                        // if (!Core.CheckInventory("Essence Potion", 5))
+                                                                        // {
+                                                                        //     Farm.Gold(12500000);
+                                                                        //     Core.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 25);
+                                                                        //     Core.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 9770);
+                                                                        //     Bot.Wait.ForItemBuy();
+                                                                        // }
+
+        Nation.ApprovalAndFavor(0, 5000);
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", isTemp: false);
         Nation.FarmBloodGem(10);
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
         WillpowerExtraction.Unidentified34(4);
-        NulgathDemandsWork.NDWQuest(new[] {"Unidentified 35"});
+        NulgathDemandsWork.NDWQuest(new[] { "Unidentified 35" });
         Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
         //Quest Turnin
