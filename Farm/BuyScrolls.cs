@@ -54,11 +54,12 @@ public class BuyScrolls
                         if (!Core.CheckInventory("Gold Voucher 500k"))
                             Farm.Gold(500000);
                         Core.BuyItem("spellcraft", 693, "Gold Voucher 500k", 2);
-                        Core.BuyItem("spellcraft", 693, "Arcane Quill", shopQuant: 10, shopItemID: 8847);
+                        Core.BuyItem("spellcraft", 693, "Arcane Quill", shopItemID: 8847);
                     }
-                    Core.BuyItem("spellcraft", 622, ink, shopQuant: 5);
+                    Core.BuyItem("spellcraft", 622, ink);
                 }
-                Core.ChainComplete((int)scroll);
+                Core.EnsureAccept((int)scroll);
+                Core.EnsureCompleteMulti((int)scroll, Bot.Inventory.GetQuantity(_scroll) - ((int)Math.Ceiling((float)quant / (float)questData.Rewards.First().Quantity)));
                 Bot.Wait.ForPickup(_scroll);
                 Core.Logger($"You now own {Bot.Inventory.GetQuantity(_scroll)} of the requested {quant} {_scroll}'s");
             }
@@ -71,9 +72,10 @@ public class BuyScrolls
                 if (!Core.CheckInventory(ink))
                 {
                     Core.HuntMonster("tercessuinotlim", "Dark makai", "Mystic Parchment", ((quant / 5) / 2) - (Bot.Inventory.GetQuantity("Mystic Parchment")), isTemp: false);
-                    Core.BuyItem("spellcraft", 549, ink, shopQuant: 5);
+                    Core.BuyItem("spellcraft", 549, ink);
                 }
-                Core.ChainComplete((int)scroll);
+                Core.EnsureAccept((int)scroll);
+                Core.EnsureCompleteMulti((int)scroll, Bot.Inventory.GetQuantity(_scroll) - ((int)Math.Ceiling((float)quant / (float)questData.Rewards.First().Quantity)));
                 Bot.Wait.ForPickup(_scroll);
                 Core.Logger($"You now own {Bot.Inventory.GetQuantity(_scroll)} of the requested {quant} {_scroll}'s");
             }
