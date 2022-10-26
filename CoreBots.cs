@@ -1456,7 +1456,14 @@ public class CoreBots
         AddDrop(item);
 
         if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
-            Logger($" \'Damage over Time\' Class / VHL not found, stopping.", messageBox: true, stopBot: true);
+        {
+            Logger("--------------------------------");
+            Logger("Possible classes for DoomKitten:");
+            DOTClasses.ForEach(l => Logger(l));
+            Logger("--------------------------------");
+
+            Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
+        }
 
         foreach (string Class in DOTClasses)
         {
@@ -2043,7 +2050,6 @@ public class CoreBots
                 break;
 
             case "tercessuinotlim":
-                Join("citadel", "m22", "Left");
                 Bot.Map.Jump("m22", "Left");
                 tryJoin();
                 break;
