@@ -331,7 +331,7 @@ public class CoreSoW
         if(!Story.QuestProgression(6998))
         {
             Core.EnsureAccept(6998);
-            Core.KillMonster("shadowgrove", "r4", "Left", "Mutant Shadow Dragon", "Mutant Dragon Oil", 3);
+            Core.KillMonster("shadowgrove", "r9", "Left", "Mutant Shadow Dragon", "Mutant Dragon Oil", 3);
             Core.EnsureComplete(6998);            
         }
 
