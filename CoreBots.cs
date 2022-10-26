@@ -945,6 +945,8 @@ public class CoreBots
                     // Quests that dont need a choice
                     foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
                     {
+                        if (!Bot.Quests.IsInProgress(kvp.Key.ID))
+                            EnsureAccept(kvp.Key.ID);
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
                             int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
@@ -960,6 +962,8 @@ public class CoreBots
                     // Quests that need a choice
                     foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
                     {
+                        if (!Bot.Quests.IsInProgress(kvp.Key.ID))
+                            EnsureAccept(kvp.Key.ID);
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
                             // Finding the next item that you dont have max stack of yet
