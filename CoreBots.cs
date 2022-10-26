@@ -2133,6 +2133,7 @@ public class CoreBots
                 };
                 if (lockedMaps.Contains(strippedMap))
                     File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
+                AggroMonsters = true;
             }
             Jump(cell, pad);
             Bot.Sleep(200);
