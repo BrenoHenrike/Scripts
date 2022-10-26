@@ -327,8 +327,13 @@ public class CoreSoW
         //Head of a Dragon (6997)
         Story.KillQuest(6997, "shadowgrove", "Mutant Shadow Dragon");
 
-        //Mutant Dragon Oil (6998)
-        Story.KillQuest(6998, "shadowgrove", "Mutant Shadow Dragon");
+        //Mutant Dragon Oil (6998) - buggy mob
+        if(!Story.QuestProgression(6998))
+        {
+            Core.EnsureAccept(6998);
+            Core.KillMonster("shadowgrove", "r4", "Left", "Mutant Shadow Dragon", "Mutant Dragon Oil", 3);
+            Core.EnsureComplete(6998);            
+        }
 
         //Titan Shadow Dragonlord (6999)
         Story.KillQuest(6999, "shadowgrove", "Titan Shadow Dragonlord");
@@ -447,7 +452,7 @@ public class CoreSoW
         Story.KillQuest(7340, "shadowsong", "Shadowflame Troll");
 
         //Song of Fate (7341)
-        Story.KillQuest(7341, "shadowsong", "Beatle|Tune-A-Fish");
+        Story.KillQuest(7341, "shadowsong", "Tune-A-Fish");
 
         //Broken Strings (7342)
         Story.KillQuest(7342, "shadowsong", "Beatle");
