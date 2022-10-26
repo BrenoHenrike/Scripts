@@ -103,6 +103,16 @@ public class CoreBots
 
             SkuaVersionChecker("1.1.1.0");
 
+            if (Directory.Exists("options/Butler"))
+            {
+                if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}.txt"))
+                    File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}.txt");
+
+                string[] files = Directory.GetFiles("options/Butler");
+                if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Bot.Player.Username.ToLower()))
+                    File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Bot.Player.Username.ToLower()));
+            }
+
             if (!Bot.Player.LoggedIn)
             {
                 if (Bot.Servers.CachedServers.Count() > 0)
@@ -280,8 +290,8 @@ public class CoreBots
         string guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
         Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
 
-        if (File.Exists($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt"))
-            File.Delete($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt");
+        if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}.txt"))
+            File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}.txt");
 
         if (crashed)
             Logger("Bot Stopped due to crash.");
@@ -2095,8 +2105,8 @@ public class CoreBots
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
         {
-            if (Directory.Exists("options/FollowerJoe") &&
-                Directory.GetFiles("options/FollowerJoe").Any(x => x.Contains('-') && x.Split('-').Last() == Bot.Player.Username.ToLower() + ".txt"))
+            if (Directory.Exists("options/Butler") &&
+                Directory.GetFiles("options/Butler").Any(x => x.Contains("~!") && x.Split("~!").Last() == Bot.Player.Username.ToLower() + ".txt"))
             {
                 string[] lockedMaps =
                 {
@@ -2122,7 +2132,7 @@ public class CoreBots
                     "superlowe"
                 };
                 if (lockedMaps.Contains(strippedMap))
-                    File.WriteAllText($"options/FollowerJoe/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
+                    File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
             }
             Jump(cell, pad);
             Bot.Sleep(200);
