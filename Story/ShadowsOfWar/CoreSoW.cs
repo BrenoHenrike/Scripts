@@ -59,7 +59,7 @@ public class CoreSoW
         Story.KillQuest(6849, "shadowwar", "Umbral Goo");
 
         //Shadow Medals: Fight them Back! 6850
-        Story.KillQuest(6850, "shadowwar", "Shadowflame Slasher");
+        Story.KillQuest(6850, "shadowwar", "Shadowflame Scout");
 
         //Interrogation 6851
         Story.KillQuest(6851, "shadowwar", "Shadowflame Scout");
