@@ -59,7 +59,7 @@ public class CoreSoW
         Story.KillQuest(6849, "shadowwar", "Umbral Goo");
 
         //Shadow Medals: Fight them Back! 6850
-        Story.KillQuest(6850, "shadowwar", "Shadowflame Slasher");
+        Story.KillQuest(6850, "shadowwar", "Shadowflame Scout");
 
         //Interrogation 6851
         Story.KillQuest(6851, "shadowwar", "Shadowflame Scout");
@@ -327,8 +327,13 @@ public class CoreSoW
         //Head of a Dragon (6997)
         Story.KillQuest(6997, "shadowgrove", "Mutant Shadow Dragon");
 
-        //Mutant Dragon Oil (6998)
-        Story.KillQuest(6998, "shadowgrove", "Mutant Shadow Dragon");
+        //Mutant Dragon Oil (6998) - buggy mob
+        if (!Story.QuestProgression(6998))
+        {
+            Core.EnsureAccept(6998);
+            Core.KillMonster("shadowgrove", "r9", "Left", "Mutant Shadow Dragon", "Mutant Dragon Oil", 3);
+            Core.EnsureComplete(6998);
+        }
 
         //Titan Shadow Dragonlord (6999)
         Story.KillQuest(6999, "shadowgrove", "Titan Shadow Dragonlord");
@@ -444,10 +449,15 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Shadow Medal (7340)
-        Story.KillQuest(7340, "shadowsong", "Shadowflame Troll");
+        if (!Bot.Quests.IsUnlocked(7341))
+        {
+            Core.EnsureAccept(7340);
+            Core.HuntMonster("shadowsong", "Shadowflame Troll", "Shadow Medal", 6);
+            Core.EnsureComplete(7340);
+        }
 
         //Song of Fate (7341)
-        Story.KillQuest(7341, "shadowsong", "Beatle|Tune-A-Fish");
+        Story.KillQuest(7341, "shadowsong", "Tune-A-Fish");
 
         //Broken Strings (7342)
         Story.KillQuest(7342, "shadowsong", "Beatle");
@@ -455,8 +465,13 @@ public class CoreSoW
         //Shattered Crystal (7343)
         Story.KillQuest(7343, "shadowsong", "Shattered Crystal");
 
-        //Mega Shadow Medals (7344)
-        Story.KillQuest(7344, "shadowsong", "Shadowflame Ur-Troll");
+        //Mega Shadow Medals (7345)
+        if (!Bot.Quests.IsUnlocked(7345))
+        {
+            Core.EnsureAccept(7344);
+            Core.HuntMonster("shadowsong", "Shadowflame Ur-Troll", "Mega Shadow Medal", 3);
+            Core.EnsureComplete(7344);
+        }
 
         //New Music (7345)
         Story.KillQuest(7345, "shadowsong", "Mozard");
