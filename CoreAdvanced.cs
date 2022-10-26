@@ -1545,6 +1545,7 @@ public class CoreAdvanced
 
             #region Lucky - Vainglory - Valiance
             case "archfiend":
+            case "archmage":
                 if (!uVainglory() || !uValiance())
                     goto default;
 

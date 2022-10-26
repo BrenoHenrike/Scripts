@@ -14,7 +14,7 @@
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
-public class ArchMage
+public class Archmage
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -28,8 +28,8 @@ public class ArchMage
     private CoreToD TOD = new();
     private CoreSoW SoW = new();
 
-    private string[] RequiredItems = { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-    private string[] Extras = { "Arcane Sigil", "Archmage", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
+    private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
+    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -50,71 +50,80 @@ public class ArchMage
         if (getExtras)
             Core.AddDrop(Extras);
 
-        #region  "Required quests/reps"
-        SoW.CompleteCoreSoW();
-        QOM.TheReshaper();
-        Farm.Experience(60);
-        Farm.SpellCraftingREP();
-        Farm.EmberseaREP();
-        Farm.ChaosREP(10);
-        Farm.GoodREP(10);
-        Farm.EvilREP(10);
-        Farm.EtherStormREP();
-        Farm.LoremasterREP();
-        TOD.CompleteToD();
-        #endregion
+        if (!Core.CheckInventory("Archmage") && Core.CheckInventory(Extras))
+        {
+            #region  "Required quests/reps"
+            SoW.CompleteCoreSoW();
+            QOM.TheReshaper();
+            Farm.Experience(60);
+            Farm.SpellCraftingREP();
+            Farm.EmberseaREP();
+            Farm.ChaosREP(10);
+            Farm.GoodREP(10);
+            Farm.EvilREP(10);
+            Farm.EtherStormREP();
+            Farm.LoremasterREP();
+            TOD.CompleteToD();
+            #endregion
 
-        Core.AddDrop(RequiredItems);
-        Core.AddDrop(Extras);
+            //Archmage's Ascension  
 
-        //Archmage's Ascension  
+            Core.EnsureAccept(8918);
 
-        Core.EnsureAccept(8918);
+            Magus();
+            Fire();
+            Ice();
+            Aether();
+            Arcana();
 
-        Magus();
-        Fire();
-        Ice();
-        Aether();
-        Arcana();
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("Archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
 
-        Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
+            Core.EnsureComplete(8918);
 
-        Core.EnsureComplete(8918);
+            Bot.Wait.ForPickup("Archmage");
+            Core.ToBank(Extras);
 
-        if (rankUpClass)
-            Adv.rankUpClass("ArchMage");
+            if (rankUpClass)
+                Adv.rankUpClass("Archmage");
 
-        if (Core.CheckInventory("Archmage") && !getExtras)
-            return;
-            
+            if (!getExtras)
+                return;
+        }
+
+        LuminaElementi();
+
+    }
+
+    //getExtras:
+
+    void LuminaElementi()
+    {
         //Lumina Elementi
 
-        if (getExtras)
+        UnboundTomb(30);
+        Arcana();
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(8814, 8815);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
+            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
+        Core.CancelRegisteredQuests();
+        Core.FarmingLogger("Unbound Thread", 100);
+        Core.RegisterQuests(8869);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", 100))
         {
-            UnboundTomb(30);
-            Arcana();
+            //Fallen Branches 8869
             Core.EquipClass(ClassType.Farm);
-            Core.RegisterQuests(8814, 8815);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
-                Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
-            Core.CancelRegisteredQuests();
-            Core.FarmingLogger("Unbound Thread", 100);
-            Core.RegisterQuests(8869);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", 100))
-            {
-                //Fallen Branches 8869
-                Core.EquipClass(ClassType.Farm);
-                Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
-                Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
-                Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
-                Bot.Wait.ForPickup("Unbound Thread");
-            }
-            Core.CancelRegisteredQuests();
+            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
+            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("archmage", "Prismata", "Elemental Binding", 2500, false, publicRoom: true);
+            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
+            Bot.Wait.ForPickup("Unbound Thread");
         }
+        Core.CancelRegisteredQuests();
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("Archmage", "Prismata", "Elemental Binding", 2500, false, publicRoom: true);
+
     }
 
     //Books:
@@ -272,7 +281,7 @@ public class ArchMage
 
             Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(3048);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Quills", 49) && !Core.CheckInventory("Mystic Shard", 49))
+            while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Quills", "Mystic Shard" }, 49))
                 Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             Core.CancelRegisteredQuests();
 
