@@ -13,6 +13,7 @@
 //cs_include Scripts/Story\ThroneofDarkness\CoreToD.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class Archmage
 {
@@ -28,8 +29,17 @@ public class Archmage
     private CoreToD TOD = new();
     private CoreSoW SoW = new();
 
+    public bool DontPreconfigure = true;
+    public string OptionsStorage = "Archmage";
+    public List<IOption> Options = new List<IOption>()
+    {
+        CoreBots.Instance.SkipOptions,
+        new Option<bool>("Extras?", "Get Extras?", "Get teh Extra items from the quests", false)
+    };
+
     private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
     private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
+   
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -41,16 +51,20 @@ public class Archmage
         Core.SetOptions(false);
     }
 
-    public void GetAM(bool rankUpClass = true, bool getExtras = true)
+    public void GetAM(bool rankUpClass = true, bool getExtras = false)
     {
+        if (Bot.Config.Get<bool>("Extras?"))
+            getExtras = true;
+
         if (Core.CheckInventory("Archmage") && !getExtras)
             return;
 
         Core.AddDrop(RequiredItems);
-        if (getExtras)
+
+        if (Bot.Config.Get<bool>("Extras?"))
             Core.AddDrop(Extras);
 
-        if (!Core.CheckInventory("Archmage") && Core.CheckInventory(Extras))
+        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Extras?") && !Core.CheckInventory(Extras, toInv: false))
         {
             #region  "Required quests/reps"
             SoW.CompleteCoreSoW();
@@ -87,8 +101,12 @@ public class Archmage
             if (rankUpClass)
                 Adv.rankUpClass("Archmage");
 
-            if (!getExtras)
-                return;
+        }
+
+        if (Bot.Config.Get<bool>("Extras?"))
+        {
+            Core.Logger("Extras not selected, Farm Finished.");
+            return;
         }
 
         LuminaElementi();
@@ -281,7 +299,7 @@ public class Archmage
 
             Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(3048);
-            while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Quills", "Mystic Shard" }, 49))
+            while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Quills", "Mystic Shards" }, 49))
                 Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             Core.CancelRegisteredQuests();
 
