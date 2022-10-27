@@ -584,6 +584,15 @@ public class CoreBots
             return;
 
         Join(map);
+
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
+
+        JumpWait();
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
 
         dynamic sItem = new ExpandoObject();
@@ -606,6 +615,9 @@ public class CoreBots
         if (CheckInventory(item.Name, quant))
             Logger($"Bought {logQuant}x{item.Quantity} {item.Name}");
         else Logger($"Failed at buying {logQuant}x{item.Quantity} {item.Name}");
+
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -1762,10 +1774,19 @@ public class CoreBots
     {
         if (currentClass == classToUse && Bot.Skills.TimerRunning)
             return;
+
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
+
+        JumpWait();
+
         switch (classToUse)
         {
             case ClassType.Farm:
-                JumpWait();
                 if (!usingFarmGeneric)
                 {
                     if (FarmGearOn & Bot.Player.CurrentClass?.Name != FarmClass)
@@ -1782,7 +1803,6 @@ public class CoreBots
                 Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
                 break;
             default:
-                JumpWait();
                 if (!usingSoloGeneric)
                 {
                     if (SoloGearOn & Bot.Player.CurrentClass?.Name != SoloClass)
@@ -1799,6 +1819,8 @@ public class CoreBots
                 Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
                 break;
         }
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
         currentClass = classToUse;
     }
     private bool logEquip = true;
@@ -1807,7 +1829,16 @@ public class CoreBots
     {
         if (gear == null)
             return;
+
+        bool AggroMonsters = false;
+        if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
+
         JumpWait();
+
         foreach (string Item in gear)
         {
             if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape" && Item != "False") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
@@ -1818,6 +1849,9 @@ public class CoreBots
                     Logger($"Equipped {Item}");
             }
         }
+
+        if (AggroMonsters)
+            Bot.Options.AggroMonsters = true;
     }
 
     /// <summary>
@@ -2273,8 +2307,6 @@ public class CoreBots
             if (i == 19)
                 Logger($"Failed to join {map}");
         }
-
-
 
         if (AggroMonsters)
             Bot.Options.AggroMonsters = true;
