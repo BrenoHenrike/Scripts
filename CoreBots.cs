@@ -551,7 +551,7 @@ public class CoreBots
         if (CheckInventory(itemName, quant))
             return;
 
-        ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
+        ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
         _BuyItem(map, shopID, item, quant);
     }
 
@@ -569,18 +569,17 @@ public class CoreBots
         if (CheckInventory(itemID, quant))
             return;
 
-        ShopItem item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
+        ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
         _BuyItem(map, shopID, item, quant);
     }
 
-    private void _BuyItem(string map, int shopID, ShopItem item, int quant)
+    private void _BuyItem(string map, int shopID, ShopItem? item, int quant)
     {
         if (item == null || !_canBuy(shopID, item))
             return;
 
-        int logQuant = _CalcBuyQuantity(item, quant, true);
-        quant = _CalcBuyQuantity(item, quant);
-        if (quant <= 0)
+        int buy_quant = _CalcBuyQuantity(item, quant);
+        if (buy_quant <= 0)
             return;
 
         Join(map);
@@ -590,8 +589,8 @@ public class CoreBots
         dynamic objData = getData(item.ID, item.ShopItemID);
         sItem = objData;
         sItem.iSel = objData;
-        sItem.iQty = quant;
-        sItem.iSel.iQty = quant;
+        sItem.iQty = buy_quant;
+        sItem.iSel.iQty = buy_quant;
         sItem.accept = 1;
 
         if (Bot.Options.SafeTimings)
@@ -604,8 +603,8 @@ public class CoreBots
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
         if (CheckInventory(item.Name, quant))
-            Logger($"Bought {logQuant}x{item.Quantity} {item.Name}");
-        else Logger($"Failed at buying {logQuant}x{item.Quantity} {item.Name}");
+            Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}");
+        else Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -647,21 +646,10 @@ public class CoreBots
             return 0;
         }
         int quantB = requestedQuant - Bot.Inventory.GetQuantity(item.Name);
-        if (quantB < 0)
+        if (quantB <= 0)
             return 0;
 
-        decimal quantF = (decimal)quantB / (decimal)item.Quantity;
-        int quantC = (int)Math.Ceiling(quantF);
-
-        if (old)
-            return quantC;
-
-        for (int i = 0; i < item.Quantity; i++)
-        {
-            if ((quantC + i) % item.Quantity == 0)
-                return quantC + i;
-        }
-        return quantC;
+        return quantB;
     }
 
     /// <summary>
@@ -684,7 +672,7 @@ public class CoreBots
         => _canBuy(shopID, parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(),
                             shopID, itemID.ToString(), shopItemID));
 
-    private bool _canBuy(int shopID, ShopItem item)
+    private bool _canBuy(int shopID, ShopItem? item)
     {
         if (item == null)
             return false;
@@ -832,12 +820,12 @@ public class CoreBots
         return Bot.Shops.Items;
     }
 
-    public ShopItem parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID, int shopItemID = 0)
+    public ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID, int shopItemID = 0)
     {
         if (shopItem.Count == 0)
         {
             Logger($"Item {itemNameID} not found in shop {shopID}.");
-            return new();
+            return null;
         }
         else if (shopItem.Count > 1)
         {
@@ -846,12 +834,10 @@ public class CoreBots
                 if (!shopItem.Any(x => x.ShopItemID == shopItemID))
                 {
                     Logger($"Item {itemNameID} with ShopItemID {shopItemID} was not in {shopID}. The developer needs to correc the Shop Item ID");
-                    return new();
+                    return null;
                 }
                 return shopItem.First(x => x.ShopItemID == shopItemID);
             }
-            Logger($"Multiple items found with the name {shopItem.First().Name} in shop {shopID}. The developer needs to specify the Shop Item ID.");
-            return new();
         }
 
         return shopItem.First();
