@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 using Skua.Core.Interfaces;
 
@@ -22,7 +23,7 @@ public class ElementalDragonSlayer
 
     public void GetAll()
     {
-        List<string> Rewards = Core.EnsureLoad(8858).Rewards.Select(x => x.Name).ToList();
+        List<string> Rewards = Core.EnsureLoad(6171).Rewards.Select(x => x.Name).ToList();
         Rewards.Remove("Mysterious Egg");
         string[] SetItems = Rewards.ToArray();
 
