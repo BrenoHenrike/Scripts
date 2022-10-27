@@ -37,8 +37,8 @@ public class Archmage
         new Option<bool>("Extras?", "Get Extras?", "Get teh Extra items from the quests", false)
     };
 
-    private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
+    private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
+    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -53,7 +53,7 @@ public class Archmage
 
     public void GetAM(bool rankUpClass = true, bool getExtras = false)
     {
-        if(Bot.Config.Get<bool>("Extras?"))
+        if (Bot.Config.Get<bool>("Extras?"))
             getExtras = true;
 
         if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Extras?"))
@@ -68,9 +68,7 @@ public class Archmage
             return;
         }
 
-
-        if (Bot.Config.Get<bool>("Extras?"))
-            Core.AddDrop(Extras);
+        Core.AddDrop(Extras);
         Core.AddDrop(RequiredItems);
 
         if (!Core.CheckInventory("Archmage"))
@@ -100,6 +98,7 @@ public class Archmage
             Arcana();
 
             Core.EquipClass(ClassType.Solo);
+            Core.Logger("You May Need To Army These -- just warning you.");
             Core.HuntMonster("Archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
 
             Core.EnsureComplete(8918);
@@ -109,12 +108,8 @@ public class Archmage
 
             if (rankUpClass)
                 Adv.rankUpClass("Archmage");
-
-
         }
-
-        if (Bot.Config.Get<bool>("Extras?"))
-            LuminaElementi();
+        LuminaElementi();
     }
 
     //getExtras:
