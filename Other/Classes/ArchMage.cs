@@ -71,7 +71,7 @@ public class Archmage
         Core.AddDrop(Extras);
         Core.AddDrop(RequiredItems);
 
-        if (!Core.CheckInventory("Archmage"))
+        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Extras?") && !Core.CheckInventory(Extras, toInv: false))
         {
             #region  "Required quests/reps"
             SoW.CompleteCoreSoW();
