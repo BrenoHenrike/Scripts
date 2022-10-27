@@ -573,6 +573,19 @@ public class CoreBots
         _BuyItem(map, shopID, item, quant);
     }
 
+    public void BuyItemTest(string map, int shopID, string itemName, int quant, int shopItemID, bool old)
+    {
+        if (CheckInventory(itemName, quant))
+            return;
+
+        ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
+        if (old) {
+            _BuyItemOld(map, shopID, item, quant);
+        } else {
+            _BuyItem(map, shopID, item, quant);
+        }
+    }
+
     private void _BuyItem(string map, int shopID, ShopItem? item, int quant)
     {
         if (item == null || !_canBuy(shopID, item))
@@ -638,6 +651,72 @@ public class CoreBots
         }
     }
 
+    private void _BuyItemOld(string map, int shopID, ShopItem item, int quant)
+    {
+        if (item == null || !_canBuy(shopID, item))
+            return;
+
+        int logQuant = _CalcBuyQuantity2(item, quant, true);
+        quant = _CalcBuyQuantity2(item, quant);
+        if (quant <= 0)
+            return;
+
+        Join(map);
+        Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
+
+        dynamic sItem = new ExpandoObject();
+        dynamic objData = getData(item.ID, item.ShopItemID);
+        sItem = objData;
+        sItem.iSel = objData;
+        sItem.iQty = quant;
+        sItem.iSel.iQty = quant;
+        sItem.accept = 1;
+
+        if (Bot.Options.SafeTimings)
+            Bot.Wait.ForActionCooldown(GameActions.BuyItem);
+        Bot.Flash.CallGameFunction("world.sendBuyItemRequestWithQuantity", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(sItem))!);
+        if (Bot.Options.SafeTimings)
+            Bot.Wait.ForItemBuy();
+        Bot.Sleep(ActionDelay);
+
+        Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
+
+        if (CheckInventory(item.Name, quant))
+            Logger($"Bought {logQuant}x{item.Quantity} {item.Name}");
+        else Logger($"Failed at buying {logQuant}x{item.Quantity} {item.Name}");
+
+        void RelogRequieredListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type == "json")
+            {
+                string str = data.strMessage;
+                switch (str)
+                {
+                    case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
+                        Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
+                        Relogin();
+                        break;
+                }
+            }
+        }
+
+        dynamic getData(int itemID, int shopItemID = 0)
+        {
+            var shopItems = Bot.Flash.GetGameObject<dynamic[]>("world.shopinfo.items")!;
+            foreach (dynamic i in shopItems)
+            {
+                if (i == null || i!.ItemID == null || i!.ItemID != itemID ||
+                   (shopItemID != 0 ? (i!.ShopItemID == null || i!.ShopItemID != shopItemID) : false))
+                    continue;
+                return i!;
+            }
+            Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}");
+            return null!;
+        }
+    }
+
     private int _CalcBuyQuantity(ShopItem item, int requestedQuant, bool old = false)
     {
         if (Bot.Inventory.GetQuantity(item.Name) + item.Quantity > item.MaxStack)
@@ -650,6 +729,31 @@ public class CoreBots
             return 0;
 
         return quantB;
+    }
+
+    private int _CalcBuyQuantity2(ShopItem item, int requestedQuant, bool old = false)
+    {
+        if (Bot.Inventory.GetQuantity(item.Name) + item.Quantity > item.MaxStack)
+        {
+            Logger("Can't buy merge item past its max stack, skipping");
+            return 0;
+        }
+        int quantB = requestedQuant - Bot.Inventory.GetQuantity(item.Name);
+        if (quantB < 0)
+            return 0;
+
+        decimal quantF = (decimal)quantB / (decimal)item.Quantity;
+        int quantC = (int)Math.Ceiling(quantF);
+
+        if (old)
+            return quantC;
+
+        for (int i = 0; i < item.Quantity; i++)
+        {
+            if ((quantC + i) % item.Quantity == 0)
+                return quantC + i;
+        }
+        return quantC;
     }
 
     /// <summary>
@@ -759,7 +863,6 @@ public class CoreBots
 
         return true;
     }
-
     public Dictionary<int, int> RepCPLevel = new()
     {
         { 0, 1 },
