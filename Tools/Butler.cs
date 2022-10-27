@@ -346,7 +346,7 @@ public class Follower
                 Core.Logger("Static room number detected. PrivateRoomNumber is now " + mapNr);
                 Core.PrivateRoomNumber = mapNr;
             }
-            Core.PrivateRooms = true;
+            Core.PrivateRooms = mapNr >= 1000;
             Bot.Events.MapChanged -= MapNumberParses;
             return;
         }
