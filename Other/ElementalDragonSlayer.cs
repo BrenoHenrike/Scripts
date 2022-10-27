@@ -60,26 +60,5 @@ public class ElementalDragonSlayer
                 Bot.Wait.ForPickup(SetItems[i]);
             }
         }
-        //Mysterious Chest 6171
-
-        Core.EnsureAccept(6171);
-
-        Core.KillMonster("pride", "r13", "Left", "Valsarian", "Key of Pride", isTemp: false);
-        Core.KillMonster("gluttony", "Enter2", "Top", "Deflated Glutus", "Key of Gluttony", isTemp: false);
-        Core.KillMonster("greed", "r16", "Left", "Goregold", "Key of Greed", isTemp: false);
-
-        if (!Core.CheckInventory("Key of Sloth"))
-        {
-            DD.HazMatSuit();
-            Core.HuntMonster("sloth", "Phlegnn", "Key of Sloth", isTemp: false);
-        }
-
-        Core.HuntMonster("lust", "Lascivia", "Key of Lust", isTemp: false);
-        Bot.Quests.UpdateQuest(6000);
-        Core.HuntMonster("maloth", "Maloth", "Key of Envy", isTemp: false);
-        Core.HuntMonster("wrath", "Gorgorath", "Key of Wrath", isTemp: false);
-
-        Core.EnsureComplete(6171, 42497);
-        Bot.Wait.ForPickup("Mysterious Egg");
     }
 }
