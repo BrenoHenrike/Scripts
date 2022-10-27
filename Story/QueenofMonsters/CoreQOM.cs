@@ -247,13 +247,13 @@ public class CoreQOM
         Story.PreLoad(this);
 
         //Hounds and Infernals and Imp, Oh my!
-        Story.KillQuest(5487, "Darkovianvasion", new[] { "Underworld Hound", "Infernal Imp" });
+        Story.KillQuest(5487, "DarkoviaInvasion", new[] { "Underworld Hound", "Infernal Imp" });
 
         //Like Imps in A Pod
-        Story.MapItemQuest(5488, "Darkovianvasion", 4905, 6);
+        Story.MapItemQuest(5488, "DarkoviaInvasion", 4905, 6);
 
         //A Grievous Threat
-        Story.KillQuest(5489, "Darkovianvasion", "Grievous Fiend");
+        Story.KillQuest(5489, "DarkoviaInvasion", "Grievous Fiend");
 
         //Undead Investigation
         Story.MapItemQuest(5490, "SafiriaInvasion", 4904);

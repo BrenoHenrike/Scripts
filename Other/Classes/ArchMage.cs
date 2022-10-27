@@ -37,9 +37,9 @@ public class Archmage
         new Option<bool>("Extras?", "Get Extras?", "Get teh Extra items from the quests", false)
     };
 
-    private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
-   
+    private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
+    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -56,13 +56,20 @@ public class Archmage
         if (Bot.Config.Get<bool>("Extras?"))
             getExtras = true;
 
-        if (Core.CheckInventory("Archmage") && !getExtras)
+        if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Extras?"))
+        {
+            Core.Logger("Extras not selected, Archmage Owned, Farm Finished.");
             return;
+        }
 
+        if (Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Extras?") && Core.CheckInventory(Extras, toInv: false))
+        {
+            Core.Logger("Archmage owned, Extras Owned, Farm Finished.");
+            return;
+        }
+
+        Core.AddDrop(Extras);
         Core.AddDrop(RequiredItems);
-
-        if (Bot.Config.Get<bool>("Extras?"))
-            Core.AddDrop(Extras);
 
         if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Extras?") && !Core.CheckInventory(Extras, toInv: false))
         {
@@ -91,6 +98,7 @@ public class Archmage
             Arcana();
 
             Core.EquipClass(ClassType.Solo);
+            Core.Logger("You May Need To Army These -- just warning you.");
             Core.HuntMonster("Archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
 
             Core.EnsureComplete(8918);
@@ -100,17 +108,8 @@ public class Archmage
 
             if (rankUpClass)
                 Adv.rankUpClass("Archmage");
-
         }
-
-        if (Bot.Config.Get<bool>("Extras?"))
-        {
-            Core.Logger("Extras not selected, Farm Finished.");
-            return;
-        }
-
         LuminaElementi();
-
     }
 
     //getExtras:
@@ -173,6 +172,7 @@ public class Archmage
 
         Core.EnsureComplete(8913);
         Bot.Wait.ForPickup("Book of Magus");
+        Core.ToBank(Extras);
         Core.ToBank(BLOD.BLoDItems);
 
     }
@@ -198,7 +198,7 @@ public class Archmage
 
         Core.EnsureComplete(8914);
         Bot.Wait.ForPickup("Book of Fire");
-        Core.ToBank("Arcane Floating Sigil", "Sheathed Archmage's Staff");
+        Core.ToBank(Extras);
 
     }
 
@@ -226,7 +226,7 @@ public class Archmage
 
         Core.EnsureComplete(8915);
         Bot.Wait.ForPickup("Book of Ice");
-        Core.ToBank("Archmage's Cowl", "Archmage's Cowl and Locks");
+        Core.ToBank(Extras);
 
     }
 
@@ -254,7 +254,7 @@ public class Archmage
 
         Core.EnsureComplete(8916);
         Bot.Wait.ForPickup("Book of Aether");
-        Core.ToBank("Archmage's Staff");
+        Core.ToBank(Extras);
 
     }
 
@@ -281,7 +281,7 @@ public class Archmage
 
         Core.EnsureComplete(8917);
         Bot.Wait.ForPickup("Book of Arcana");
-        Core.ToBank("Archmage's Robes");
+        Core.ToBank(Extras);
 
     }
 
