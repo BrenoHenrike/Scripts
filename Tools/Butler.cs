@@ -366,6 +366,8 @@ public class Follower
             string cmd = data[0];
             switch (cmd)
             {
+                //movement in the same cell || From server: %xt%uotls%-1%{playerName}%sp:8,tx:181,ty:358,strFrame:Bigger%
+                //movement to another cell || From server: %xt%uotls%-1%{playerName}%mvts:-1,px:500,py:375,strPad:Left,bResting:false,mvtd:0,tx:0,ty:0,strFrame:Bigger%
                 case "uotls":
                     string WalkPacket = Convert.ToString(packet);
                     if (!WalkPacket.Contains(playerName))
@@ -401,8 +403,8 @@ public class Follower
                         }
                     }
 
-                    if (playerNameCell != "" && playerNamePad != "")
-                        Core.Jump(playerNameCell, playerNamePad);
+                    // if (playerNameCell != "" && playerNamePad != "")
+                    //     Core.Jump(playerNameCell, playerNamePad);
 
                     if (playerNameX != 0 && playerNameY != 0)
                         Bot.Flash.Call("walkTo", playerNameX, playerNameY, playerNameSpeed);
