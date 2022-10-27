@@ -20,6 +20,7 @@ public class ElementalDragonSlayer
         Core.SetOptions(false);
     }
 
+    public void GetAll()
     {
         List<string> Rewards = Core.EnsureLoad(8858).Rewards.Select(x => x.Name).ToList();
         Rewards.Remove("Mysterious Egg");
