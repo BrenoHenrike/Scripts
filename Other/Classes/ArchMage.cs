@@ -39,7 +39,7 @@ public class Archmage
 
     private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
     private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Providence", "Astral Mantle" };
-   
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
@@ -53,18 +53,27 @@ public class Archmage
 
     public void GetAM(bool rankUpClass = true, bool getExtras = false)
     {
-        if (Bot.Config.Get<bool>("Extras?"))
+        if(Bot.Config.Get<bool>("Extras?"))
             getExtras = true;
 
-        if (Core.CheckInventory("Archmage") && !getExtras)
+        if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Extras?"))
+        {
+            Core.Logger("Extras not selected, Archmage Owned, Farm Finished.");
             return;
+        }
 
-        Core.AddDrop(RequiredItems);
+        if (Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Extras?") && Core.CheckInventory(Extras, toInv: false))
+        {
+            Core.Logger("Archmage owned, Extras Owned, Farm Finished.");
+            return;
+        }
+
 
         if (Bot.Config.Get<bool>("Extras?"))
             Core.AddDrop(Extras);
+        Core.AddDrop(RequiredItems);
 
-        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Extras?") && !Core.CheckInventory(Extras, toInv: false))
+        if (!Core.CheckInventory("Archmage"))
         {
             #region  "Required quests/reps"
             SoW.CompleteCoreSoW();
@@ -101,16 +110,11 @@ public class Archmage
             if (rankUpClass)
                 Adv.rankUpClass("Archmage");
 
+
         }
 
         if (Bot.Config.Get<bool>("Extras?"))
-        {
-            Core.Logger("Extras not selected, Farm Finished.");
-            return;
-        }
-
-        LuminaElementi();
-
+            LuminaElementi();
     }
 
     //getExtras:
@@ -173,6 +177,7 @@ public class Archmage
 
         Core.EnsureComplete(8913);
         Bot.Wait.ForPickup("Book of Magus");
+        Core.ToBank(Extras);
         Core.ToBank(BLOD.BLoDItems);
 
     }
@@ -198,7 +203,7 @@ public class Archmage
 
         Core.EnsureComplete(8914);
         Bot.Wait.ForPickup("Book of Fire");
-        Core.ToBank("Arcane Floating Sigil", "Sheathed Archmage's Staff");
+        Core.ToBank(Extras);
 
     }
 
@@ -226,7 +231,7 @@ public class Archmage
 
         Core.EnsureComplete(8915);
         Bot.Wait.ForPickup("Book of Ice");
-        Core.ToBank("Archmage's Cowl", "Archmage's Cowl and Locks");
+        Core.ToBank(Extras);
 
     }
 
@@ -254,7 +259,7 @@ public class Archmage
 
         Core.EnsureComplete(8916);
         Bot.Wait.ForPickup("Book of Aether");
-        Core.ToBank("Archmage's Staff");
+        Core.ToBank(Extras);
 
     }
 
@@ -281,7 +286,7 @@ public class Archmage
 
         Core.EnsureComplete(8917);
         Bot.Wait.ForPickup("Book of Arcana");
-        Core.ToBank("Archmage's Robes");
+        Core.ToBank(Extras);
 
     }
 
