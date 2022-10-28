@@ -167,7 +167,7 @@ public class ArchPaladin
                         {
                             Farm.Gold(100000);
                             Core.BuyItem("spellcraft", 693, "Gold Voucher 100k");
-                            Core.BuyItem("spellcraft", 693, "Arcane Quill", 1);
+                            Core.BuyItem("spellcraft", 693, "Arcane Quill", 1, 8846);
                         }
                         Core.BuyItem("spellcraft", 622, "Archmage Ink", 1);
                     }
