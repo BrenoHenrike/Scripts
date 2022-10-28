@@ -118,7 +118,11 @@
 //cs_include Scripts/Story/Noobshire.cs
 //cs_include Scripts/Story/NytheraSaga.cs
 
+//cs_include Scripts/Pirates[Member].cs
 //cs_include Scripts/Story/PoisonForest.cs
+
+//cs_include Scripts/Story/QueenReign.cs
+//cs_include Scripts/Story/QuibbleHunt.cs
 
 //cs_include Scripts/Story/RavenlossSaga.cs
 
@@ -290,7 +294,11 @@ public class AllStories
 
     public J6Saga J6Saga = new();
 
+    public Pirates Pirates = new();
     public PoisonForest PoisonForest = new();
+
+    public QueenReign QueenReign = new();
+    public QuibbleHunt QuibbleHunt = new();
 
     public RavenlossSaga RavenlossSaga = new();
 
@@ -643,8 +651,21 @@ public class AllStories
         Core.Logger($"Saga: Nythera - Complete");
 
 
+        if (Core.IsMember)
+        {
+            Pirates.StoryLine();
+            Core.Logger($"Story: Pirates - Complete");
+        }
+
         PoisonForest.StoryLine();
         Core.Logger($"Story: PoisonForest - Complete");
+
+
+        QueenReign.DoAll();
+        Core.Logger($"Story: QueenReign - Complete");
+
+        QuibbleHunt.StoryLine();
+        Core.Logger($"Story: QuibbleHunt - Complete");
 
 
         RavenlossSaga.DoAll();

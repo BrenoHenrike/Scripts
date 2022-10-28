@@ -119,5 +119,48 @@ public class NecroTowerStory
         //Necro Tower Elevator Minigame
         for (int i = 1092; i <= 1101; i++)
             Story.ChainQuest(i);
+
+        // [[[ NecroU  map]]]
+
+
+        //Silence is Ghoulden 1112
+        Story.KillQuest(1090, "necroU", "Ghoul");
+
+        //Ghouls with Gall 1113
+        Story.MapItemQuest(1113, "necroU", 450, 5);
+
+        //Goals for Ghouls and Other Undead 1114
+        Story.KillQuest(1114, "necroU", new[] { "Ghoul", "Doomwood Soldier" });
+
+        //Knee Bone's Connected to the Thigh Bone 1115
+        Story.MapItemQuest(1115, "necroU", 449, 6);
+
+        //Hip Bone's Connected to the Back Bone 1116
+        Story.KillQuest(1116, "necroU", new[] { "Doomwood Soldier", "Doomwood Soldier" });
+
+        //Back Bone's Connected to the Neck Bone 1117
+        Story.MapItemQuest(1117, "necroU", 451, 3);
+        Story.KillQuest(1117, "necroU", "Doomwood Treeant");
+
+        //Slip 'n Slimes 1118
+        Story.MapItemQuest(1118, "necroU", 452, 5);
+        Story.KillQuest(1118, "necroU", "Slimeskull");
+
+        //Sl-eye-me 1119
+        Story.MapItemQuest(1119, "necroU", 453, 5);
+
+        //Bones Over Brawn 1120
+        Story.KillQuest(1120, "necroU", "Doomwood Soldier");
+
+        //Skullaton Shells 1121
+        Story.MapItemQuest(1121, "necroU", 454, 3);
+        Story.MapItemQuest(1121, "necroU", 455, 3);
+        Story.KillQuest(1121, "necroU", new[] { "Shelleton", "Necro U" });
+
+        //Noxious Noxus 1154
+        Story.ChainQuest(1154);
+
+        //Vordred Boss! 1170
+        Story.KillQuest(1170, "vordredboss", "Ultra Vordred");
     }
 }
