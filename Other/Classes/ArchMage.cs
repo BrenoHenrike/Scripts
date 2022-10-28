@@ -426,7 +426,7 @@ public class Archmage
                 {
                     case "Void Essentia":
                         if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Thevoid]");
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [Thevoid]");
                         break;
 
                     case "Vital Exanima":
