@@ -76,6 +76,9 @@ public class FrostSpiritReaver
             Core.CancelRegisteredQuests();
 
             Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
+            Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
+            Adv.BuyItem("Glacera", 1055, "Cold Scythe of Vengeance");
+            Adv.BuyItem("Glacera", 1055, "Frigid Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Fallen Scythe of Vengeance");
         }
 

@@ -34,6 +34,8 @@ public class BeleensPartyPresentsMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.isSeasonalMapActive("yulgar20"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("yulgar20", 2177, findIngredients);
 
@@ -75,6 +77,8 @@ public class BeleensPartyPresentsMerge
 
                 case "Golden Anniversary Gift":
                 case "Platinum Leaf":
+                case "Ultimate Dragonlord Cape":
+                case "Ultimate Dragonlord Wings":
                     Core.EquipClass(ClassType.Solo);
                     if (req.Name == "Platinum Leaf")
                         Core.RegisterQuests(8925);

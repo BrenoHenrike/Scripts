@@ -53,8 +53,7 @@ public class Archmage
 
     public void GetAM(bool rankUpClass = true, bool getExtras = false)
     {
-        if (Bot.Config.Get<bool>("Extras?"))
-            getExtras = true;
+            getExtras = Bot.Config.Get<bool>("Extras?")? true : false;
 
         if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Extras?"))
         {
