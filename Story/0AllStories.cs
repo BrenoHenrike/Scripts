@@ -108,6 +108,7 @@
 
 //cs_include Scripts/Story/J6Saga.cs
 
+//cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Story/Lightguard[MEM].cs
 //cs_include Scripts/Story/LightoviaCave.cs
 
@@ -282,6 +283,7 @@ public class AllStories
 
     public GlaceraStory GlaceraStory = new();
 
+    public Lair Lair = new();
     public Lightguard Lightguard = new();
     public LightoviaCave LightoviaCave = new();
 
@@ -621,7 +623,10 @@ public class AllStories
         J6Saga.J6();
         Core.Logger($"Sage: J6 - Complete");
 
-
+        
+        Lair.DoAll();
+        Core.Logger($"Story: Lair - Complete");
+        
         if (Core.IsMember)
         {
             Lightguard.StoryLine();
