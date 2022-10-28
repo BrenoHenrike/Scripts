@@ -90,6 +90,7 @@
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
 //cs_include Scripts/Story/DoomVaultB.cs
+//cs_include Scripts/Story/Downward.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/DragonRoad[Upholader].cs
 //cs_include Scripts/Story/DreadForest.cs
@@ -260,6 +261,7 @@ public class AllStories
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
     public DoomVaultB DoomVaultB = new();
+    public Downward Downward = new();
     public DragonFableOrigins DragonFableOrigins = new();
     public DragonRoad DragonRoad = new();
     public DreadForest DreadForest = new();
@@ -565,6 +567,9 @@ public class AllStories
         Core.Logger($"Story: Doom Vault B - Complete");
         DoomVaultB.StoryLine();
         Core.Logger($"Story: Doom Vault A - Complete");
+
+        Downward.StoryLine();
+        Core.Logger($"Story: Downward - Complete");
 
         DragonFableOrigins.DragonFableOriginsAll();
         Core.Logger($"Saga: Dragon Fable Origins - Complete");

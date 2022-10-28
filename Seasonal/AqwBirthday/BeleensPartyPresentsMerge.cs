@@ -34,6 +34,8 @@ public class BeleensPartyPresentsMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.isSeasonalMapActive("yulgar20"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("yulgar20", 2177, findIngredients);
 
