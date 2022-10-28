@@ -75,6 +75,8 @@ public class BeleensPartyPresentsMerge
 
                 case "Golden Anniversary Gift":
                 case "Platinum Leaf":
+                case "Ultimate Dragonlord Cape":
+                case "Ultimate Dragonlord Wings":
                     Core.EquipClass(ClassType.Solo);
                     if (req.Name == "Platinum Leaf")
                         Core.RegisterQuests(8925);

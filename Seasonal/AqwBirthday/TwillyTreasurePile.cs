@@ -33,7 +33,6 @@ public class TwillyTreasurePile
         Bot.Drops.Add(Rewards);
         Bot.Drops.Add(HouseItems);
 
-        Core.Logger($"{Rewards} _____ {HouseItems}");
         bool CheckHouseInventory(string[] itemNames)
         {
             foreach (string item in itemNames)
