@@ -2207,11 +2207,13 @@ public class CoreBots
             }
         }
     }
-    
+
     public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         Join(map, ignoreCheck: ignoreCheck);
         Bot.Flash.CallGameFunction("world.loadMap", swfPath);
+        Bot.Wait.ForMapLoad(map);
+        Bot.Sleep(ActionDelay);
         Jump(cell, pad);
     }
 
