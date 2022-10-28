@@ -461,7 +461,7 @@ public class Archmage
 
                     case "Undying Resolve":
                         if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworldc]");
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]");
                         break;
                 }
             }
