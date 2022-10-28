@@ -35,10 +35,15 @@ public class DjinnGateStory
         if (!Story.QuestProgression(6153))
         {
             Core.EnsureAccept(6153);
-            Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
+
+            if (!Core.CheckInventory("Fragment 1") || !Core.CheckInventory("Fragment 4"))
+            {
+                Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
+                Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
+                Core.KillMonster("mobius", "End", "Center", "Cyclops Warlord", "Fragment 4");
+            }
             Core.KillMonster("faerie", "TopRock", "Left", "*", "Fragment 2");
             Core.KillMonster("faerie", "Side4", "Right", "*", "Fragment 3");
-            Core.KillMonster("faerie", "End", "Center", "Cyclops Warlord", "Fragment 4");
             Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
             Core.EnsureComplete(6153);
         }

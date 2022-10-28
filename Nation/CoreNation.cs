@@ -173,33 +173,31 @@ public class CoreNation
             return;
 
         if (item != "Any")
-            Core.AddDrop(item);
-        else
-            Core.AddDrop(bagDrops);
-        Core.Logger($"Farming for {item}({quant})");
-        int i = 1;
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            if (Core.CheckInventory("Bounty Hunter's Drone Pet"))
-                Core.EnsureAccept(6183);
-            else
-                Core.EnsureAccept(6697);
-            Core.HuntMonsterMapID("mobius", 10, "Slugfit Horn", 5, log: false);
+            Core.AddDrop(item);
+            Core.FarmingLogger(item, quant);
+        }
+        Core.AddDrop(bagDrops);
+
+        Core.RegisterQuests(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697);
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && !Bot.Inventory.IsMaxStack(item))
+        {
+            if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
+            {
+                Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
+                Core.HuntMonsterMapID("mobius", 10, "Slugfit Horn", 5, log: false);
+                Core.HuntMonster("mobius", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
+            }
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3, log: false);
-            Core.HuntMonster("faerie", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
-            if (Core.CheckInventory("Bounty Hunter's Drone Pet"))
-                Core.EnsureComplete(6183);
-            else
-                Core.EnsureComplete(6697);
-            Bot.Drops.Pickup(bagDrops);
-            Core.Logger($"Completed x{i++}");
-            if (Bot.Inventory.IsMaxStack(item))
-                Core.Logger("Max Stack Hit.");
-            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+
+            if (item != "Any")
+                Bot.Wait.ForPickup(item);
+
+            Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -751,7 +749,7 @@ public class CoreNation
             //             break;
             //     }
             // } //Disabled to to "Diamonds of Time"'s low Drop rate.
-            
+
             if (item != "Any")
                 Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }

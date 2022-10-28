@@ -2179,6 +2179,7 @@ public class CoreBots
                     File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
                 AggroMonsters = true;
             }
+
             Jump(cell, pad);
             Bot.Sleep(200);
         }
@@ -2205,7 +2206,13 @@ public class CoreBots
                     Logger($"Failed to join {map}");
             }
         }
-
+    }
+    
+    public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
+    {
+        Join(map, ignoreCheck: ignoreCheck);
+        Bot.Flash.CallGameFunction("world.loadMap", swfPath);
+        Jump(cell, pad);
     }
 
     /// <summary>
