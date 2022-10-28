@@ -1150,21 +1150,31 @@ public class CoreBots
 
     public Quest EnsureLoad(int questID)
     {
-        var toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad(questID);
+        var toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad1() ?? _EnsureLoad2();
         if (toReturn == null)
         {
-            Logger($"Failed to get the Quest Object for questID {questID}, please restart the client.", messageBox: true, stopBot: true);
-            return new();
+            Bot.Quests.Load(questID);
+            toReturn = Bot.Quests.Tree.Find(x => x.ID == questID) ?? _EnsureLoad1() ?? _EnsureLoad2();
+
+            if (toReturn == null)
+            {
+                Logger($"Failed to get the Quest Object for questID {questID}, please restart the client.", messageBox: true, stopBot: true);
+                return new();
+            }
         }
 
         return toReturn;
 
-        Quest _EnsureLoad(int questID)
+        Quest? _EnsureLoad1()
         {
             Bot.Sleep(ActionDelay);
             Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(x => x.ID == questID), () => Bot.Quests.Load(questID), 20);
             return Bot.Quests.Tree.Find(q => q.ID == questID)!;
-            // return Bot.Quests.EnsureLoad(questID);
+        }
+        Quest? _EnsureLoad2()
+        {
+            Bot.Sleep(ActionDelay);
+            return Bot.Quests.EnsureLoad(questID);
         }
     }
 
