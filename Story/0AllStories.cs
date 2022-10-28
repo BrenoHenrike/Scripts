@@ -119,7 +119,7 @@
 //cs_include Scripts/Story/Noobshire.cs
 //cs_include Scripts/Story/NytheraSaga.cs
 
-//cs_include Scripts/Pirates[Member].cs
+//cs_include Scripts/Story/Pirates[Member].cs
 //cs_include Scripts/Story/PoisonForest.cs
 
 //cs_include Scripts/Story/QueenReign.cs
