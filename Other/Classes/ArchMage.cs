@@ -37,13 +37,15 @@ public class Archmage
         new Option<bool>("Extras?", "Get Extras?", "Get teh Extra items from the quests", false)
     };
 
-    private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
+    private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
+    private string[] BossDrops = { "Void Essentia", "Vital Exanima", "Everlight Flame", "Calamitous Ruin", "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve" };
+    private string[] Extras = { "Providence", "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems);
         Core.BankingBlackList.AddRange(BLOD.BLoDItems);
+        Core.BankingBlackList.Add("Ice Diamond");
         Core.SetOptions();
 
         GetAM();
@@ -53,43 +55,28 @@ public class Archmage
 
     public void GetAM(bool rankUpClass = true, bool getExtras = false)
     {
-            getExtras = Bot.Config.Get<bool>("Extras?")? true : false;
+        getExtras = Bot.Config.Get<bool>("Extras?") ? true : false;
 
-        if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Extras?"))
+        if (Core.CheckInventory("Archmage") && !getExtras)
         {
             Core.Logger("Extras not selected, Archmage Owned, Farm Finished.");
             return;
         }
 
-        if (Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Extras?") && Core.CheckInventory(Extras, toInv: false))
+        if (Core.CheckInventory("Archmage") && getExtras && Core.CheckInventory(Extras, toInv: false))
         {
             Core.Logger("Archmage owned, Extras Owned, Farm Finished.");
             return;
         }
 
-        Core.AddDrop(Extras);
-        Core.AddDrop(RequiredItems);
+        Core.AddDrop(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
 
-        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Extras?") && !Core.CheckInventory(Extras, toInv: false))
+        RequiredStuffs();
+        ItemCheck();
+
+        if (!Core.CheckInventory("Archmage"))
         {
-            #region  "Required quests/reps"
-            SoW.CompleteCoreSoW();
-            QOM.TheReshaper();
-            Farm.Experience(60);
-            Farm.SpellCraftingREP();
-            Farm.EmberseaREP();
-            Farm.ChaosREP(10);
-            Farm.GoodREP(10);
-            Farm.EvilREP(10);
-            Farm.EtherStormREP();
-            Farm.LoremasterREP();
-            TOD.CompleteToD();
-            #endregion
-
-            //Archmage's Ascension  
-
-            Core.EnsureAccept(8918);
-
+            //Archmage's Ascension 
             Magus();
             Fire();
             Ice();
@@ -99,24 +86,22 @@ public class Archmage
             Core.EquipClass(ClassType.Solo);
             Core.Logger("You May Need To Army These -- just warning you.");
             Core.HuntMonster("Archmage", "Prismata", "Elemental Binding", 250, false, publicRoom: true);
-
             Core.EnsureComplete(8918);
 
             Bot.Wait.ForPickup("Archmage");
             Core.ToBank(Extras);
-
-            if (rankUpClass)
-                Adv.rankUpClass("Archmage");
         }
+        if (rankUpClass)
+            Adv.rankUpClass("Archmage");
         LuminaElementi();
     }
 
     //getExtras:
-
     void LuminaElementi()
     {
+        Core.Logger("Extra Quest for 51% wep.");
+        Core.EnsureAccept(8919);
         //Lumina Elementi
-
         UnboundTomb(30);
         Arcana();
         Core.EquipClass(ClassType.Farm);
@@ -139,17 +124,18 @@ public class Archmage
         Core.CancelRegisteredQuests();
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("Archmage", "Prismata", "Elemental Binding", 2500, false, publicRoom: true);
-
+        Core.EnsureComplete(8919);
+        Bot.Wait.ForPickup("Providence");
+        Core.Logger("51% wepon Obtained.");
     }
 
     //Books:
-
     public void Magus()
     {
         //Book of Magus: Incantation
         if (Core.CheckInventory("Book of Magus"))
             return;
-
+        Core.Logger("Book: Book of Magus");
         UnboundTomb(1);
         Core.EnsureAccept(8913);
 
@@ -182,6 +168,8 @@ public class Archmage
         if (Core.CheckInventory("Book of Fire"))
             return;
 
+        Core.Logger("Book of Fire");
+
         UnboundTomb(1);
         Core.EnsureAccept(8914);
 
@@ -205,6 +193,8 @@ public class Archmage
     {
         if (Core.CheckInventory("Book of Ice"))
             return;
+
+        Core.Logger("Book of Ice");
 
         UnboundTomb(1);
         Core.EnsureAccept(8915);
@@ -235,6 +225,8 @@ public class Archmage
         if (Core.CheckInventory("Book of Aether"))
             return;
 
+        Core.Logger("Book of Aether");
+
         UnboundTomb(1);
         Core.EnsureAccept(8916);
 
@@ -245,11 +237,13 @@ public class Archmage
         Core.HuntMonster("streamwar", "Second Speaker", "A Fragment of the Beginning", isTemp: false);
         Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Everlight Flame", isTemp: false);
 
-        //Army Bosses.  
-        if (!Core.CheckInventory(new[] { "Void Essentia", "A Fragment of the Beginning", "Vital Exanima", "Everlight Flame" }))
-            Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
-                        "Dage the Evil - dage - Vital Examina" +
-                        "Flibbitiestgibbet thevoid - Void Essentia", stopBot: true);
+        // Core.Unbank("Void Essentia", "A Fragment of the Beginning", "Vital Exanima", "Everlight Flame");
+
+        // //Army Bosses.  
+        // if (!Core.CheckInventory(new[] { "Void Essentia", "A Fragment of the Beginning", "Vital Exanima", "Everlight Flame" }))
+        //     Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
+        //                 "Dage the Evil - dage - Vital Examina" +
+        //                 "Flibbitiestgibbet thevoid - Void Essentia", stopBot: true);
 
         Core.EnsureComplete(8916);
         Bot.Wait.ForPickup("Book of Aether");
@@ -263,6 +257,8 @@ public class Archmage
         if (Core.CheckInventory("Book of Arcana"))
             return;
 
+        Core.Logger("Book of Arcana");
+
         UnboundTomb(1);
         Core.EnsureAccept(8917);
 
@@ -271,12 +267,13 @@ public class Archmage
         Core.EquipClass(ClassType.Solo);
         Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false);
 
-        //Army Bosses:
-        if (!Core.CheckInventory(new[] { "Calamitous Ruin", "The Mortal Coi", "The Divine Will", "Insatiable Hunger", "Undying Resolve" }))
-            Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
-                        "azalith - celestialpast - the divine will" +
-                        "nightbane thevoid - insatiable hunger" +
-                        "darkon - theworld - Undying resolve");
+        // Core.Unbank("Calamitous Ruin", "The Mortal Coi", "The Divine Will", "Insatiable Hunger", "Undying Resolve");
+        // // Army Bosses:
+        // if (!Core.CheckInventory(new[] { "Calamitous Ruin", "The Mortal Coi", "The Divine Will", "Insatiable Hunger", "Undying Resolve" }))
+        //     Core.Logger("for the Following items You will Need to either public army them, sorry that we can't help *yet*" +
+        //                 "azalith - celestialpast - The Divine Will" +
+        //                 "nightbane thevoid - insatiable hunger" +
+        //                 "darkon - theworld - Undying resolve", stopBot: true);
 
         Core.EnsureComplete(8917);
         Bot.Wait.ForPickup("Book of Arcana");
@@ -394,5 +391,81 @@ public class Archmage
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
         }
+    }
+
+    //Required Stuffs
+    void RequiredStuffs()
+    {
+        Core.Logger("Completing Quests / Rep Requirements");
+        SoW.CompleteCoreSoW();
+        QOM.TheReshaper();
+        Farm.Experience(60);
+        Farm.SpellCraftingREP();
+        Farm.EmberseaREP();
+        Farm.ChaosREP(10);
+        Farm.GoodREP(10);
+        Farm.EvilREP(10);
+        Farm.EtherStormREP();
+        Farm.LoremasterREP();
+        TOD.CompleteToD();
+        Core.Logger("Done.");
+    }
+
+    //Item Check
+    void ItemCheck(params string[] Items)
+    {
+        Core.Logger("Item Check.");
+        if (Items == null)
+            Items = BossDrops;
+
+        if (!Core.CheckInventory(Items))
+        {
+            foreach (string item in Items)
+            {
+                switch (item)
+                {
+                    case "Void Essentia":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Thevoid]");
+                        break;
+
+                    case "Vital Exanima":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]");
+                        break;
+
+                    case "Everlight Flame":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]");
+                        break;
+
+                    case "Calamitous Ruin":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]");
+                        break;
+
+                    case "The Mortal Coil":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]");
+                        break;
+
+                    case "The Divine Will":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]");
+                        break;
+
+                    case "Insatiable Hunger":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [Thevoid]");
+                        break;
+
+                    case "Undying Resolve":
+                        if (Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworldc]");
+                        break;
+                }
+            }
+        }
+        Core.Logger("All Boss drops Found. Item Check Complete, Continuing");
     }
 }

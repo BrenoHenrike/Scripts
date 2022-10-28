@@ -1544,8 +1544,8 @@ public class CoreAdvanced
             #endregion
 
             #region Lucky - Vainglory - Valiance
-            case "archfiend":
             case "archmage":
+            case "archfiend":
                 if (!uVainglory() || !uValiance())
                     goto default;
 
@@ -1579,6 +1579,7 @@ public class CoreAdvanced
                     case "archpaladin":
                     case "artifact hunter":
                     case "assassin":
+                    case "archmage":
                     case "beastmaster":
                     case "berserker":
                     case "beta berserker":
