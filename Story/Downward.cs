@@ -55,7 +55,7 @@ public class Downward
         Story.MapItemQuest(2870, "battleontown", 1756);
 
         //Enter the Entrance 2871
-        Story.KillQuest(2871, "downward", "Rotfeeder Worm");
+        Story.KillQuest(2871, "downward", "Unearthed Skeleton");
 
         //Can You Dig It? 2872
         Story.KillQuest(2872, "downward", "Rotfeeder Worm");
