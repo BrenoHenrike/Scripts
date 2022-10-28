@@ -28,7 +28,7 @@ public class CurrentDailyGifts
 
     public void GetAllGifts(DailyGiftsMode mode)
     {
-        int Day = 09;
+        int Day = 28;
         int Month = 10;
         int Year = 2022;
         DateTime lastUpdate = new(Year, Month, Day);
@@ -87,17 +87,16 @@ public class CurrentDailyGifts
             #region October 17 - 31 leave November 11
             GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade");
             GetGift(Permanent, "dflesson", "Fluffy the Dracolich", "Zurvana's Blessing", "Zurvana's Wrath", "Zurvana's Wrath", "Zurvana's Pity", "Zurvana's Pity");
-            // GetGift(Permanent, "battleoff", "*", "???"); //uncomment on the 18th when it releases... still not out yet today..?
-            // GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid's Edge"); //available on the 20th (thursday) just incomment it.
+            GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid Edge", "Dragonoid Edges");
 
             #endregion
-            
+
             #region October 24 - 30 leave November 11
-            // GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe"); //uncomment the 27th
+            GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe");
             // GetGift(AvailableUntil(1,1), "crescentmoon", "Spectral Lycan", "Headless Armor", "Ghost Eta Pet"); //uncomment on the 30th + fix availuntil date.
-            
+
             #endregion
-            
+
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
