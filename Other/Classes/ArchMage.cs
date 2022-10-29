@@ -292,9 +292,12 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
             Core.EnsureAccept(8909);
-
+            
+            
             Core.EquipClass(ClassType.Farm);
             Core.RegisterQuests(3048);
+            Core.FarmingLogger("Mystic Quills", 49);
+            Core.FarmingLogger("Mystic Shards", 49);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Quills", "Mystic Shards" }, 49))
                 Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             Core.CancelRegisteredQuests();
