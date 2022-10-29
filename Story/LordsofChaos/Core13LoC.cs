@@ -1571,6 +1571,12 @@ public class Core13LoC
                 Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
             Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
         }
+
+        if (Core.IsMember)
+        {
+            // Ultra Carnax Challenge Fight! 2388  (Not in Story Slo but Badge relevant to thi)
+            Story.KillQuest(2388, "ultracarnax", "Ultra-Carnax");
+        }
     }
 
     public void Lionfang()
