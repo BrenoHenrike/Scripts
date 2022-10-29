@@ -102,7 +102,7 @@ public class Archmage
         Core.Logger("Extra Quest for 51% wep.");
         Core.EnsureAccept(8919);
         //Lumina Elementi
-        UnboundTomb(30);
+        UnboundTomb(31);
         Arcana();
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
