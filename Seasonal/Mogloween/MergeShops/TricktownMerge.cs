@@ -65,6 +65,7 @@ public class TricktownMerge
 
                 case "Treats":
                     Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.AddDrop("Treats");
@@ -79,7 +80,9 @@ public class TricktownMerge
                     Core.RegisterQuests(8936);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("tricktown", "Madam Ester", "Crystalized Slime", 1);
+                        Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("tricktown", "Decay Spirit", "Decay Essence", 10);
                         Core.HuntMonster("tricktown", "Rotting Mound", "Melty Scabs", 10);
                         Bot.Wait.ForPickup(req.Name);
