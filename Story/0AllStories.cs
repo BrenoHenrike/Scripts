@@ -14,6 +14,7 @@
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Story/Doomwood/Necrodungeon.cs
 //cs_include Scripts/Story/Doomwood/Necrotower.cs
+//cs_include Scripts/Story/Doomwood/Temple.cs
 
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
@@ -145,13 +146,15 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/SuperDeath.cs
 
-//cs_include Scripts/Story/Doomwood/Temple.cs
+
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/TitanAttack.cs
+//cs_include Scripts/Story/Tournament.cs
+//cs_include Scripts/Story/Tower[mem].cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
-//cs_include Scripts/Story/Tower[mem].cs
+
 
 //cs_include Scripts/Story/Ubear.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
@@ -335,6 +338,7 @@ public class AllStories
     public Temple Temple = new();
     public ThirdSpell ThirdSpell = new();
     public TitanAttackStory TitanAttackStory = new();
+    public Tournament Tournament = new();
     public Tower Tower = new();
     public TowerOfDoom TowerOfDoom = new();
     public Trygve Trygve = new();
@@ -762,6 +766,9 @@ public class AllStories
 
         TitanAttackStory.DoAll();
         Core.Logger($"Story: Titan Attack - Complete");
+
+        Tournament.StoryLine();
+        Core.Logger($"Story: Tournament - Complete");
         
         Tower.StoryLine();
         Core.Logger($"Story: Tower - Complete");
