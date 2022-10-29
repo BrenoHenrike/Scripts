@@ -632,7 +632,8 @@ public class CoreMogloween
 
         //Lullaby 8374
         Story.KillQuest(8374, "necrocarnival", "Deva");
-        
+    }
+    
     public void TrickTown()
     {
         if (!Core.isSeasonalMapActive("tricktown"))
