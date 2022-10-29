@@ -36,8 +36,19 @@ public class Tricktown
         Story.MapItemQuest(8928, "tricktown", 10805, 5);
         Story.KillQuest(8928, "tricktown", "Playful Ghost");
 
-        // Door to Door 8929
-        Story.KillQuest(8929, "trickortreat", "Trick or Treater");
+        //Door to Door 8929
+        if (!Story.QuestProgression(8929))
+        {
+            Core.EnsureAccept(8929);
+            while (!Bot.ShouldExit && !Core.CheckInventory(73465, 300))
+            {
+                Core.AddDrop("Treats");
+                Core.Join("tricktown");
+                Core.KillMonster("trickortreat", "Enter", "Spawn", "Trick or Treater");
+                Bot.Wait.ForPickup("Treats");
+            }
+            Core.EnsureComplete(8929);
+        }
 
         // Crusted Compost 8930
         Story.MapItemQuest(8930, "tricktown", 10806, 3);
