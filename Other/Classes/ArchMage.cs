@@ -411,9 +411,9 @@ public class Archmage
         Farm.Experience(100);
         Farm.SpellCraftingREP();
         Farm.EmberseaREP();
-        Farm.ChaosREP(10);
-        Farm.GoodREP(10);
-        Farm.EvilREP(10);
+        Farm.ChaosREP();
+        Farm.GoodREP();
+        Farm.EvilREP();
         Farm.EtherStormREP();
         Farm.LoremasterREP();
         TOD.CompleteToD();
