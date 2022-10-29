@@ -400,6 +400,7 @@ public class CoreBots
         ItemBase? itemTempInv = Bot.TempInv.Items.Find(i => i.ID == itemID);
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
         InventoryItem? itemBank = Bot.Bank.Items.Find(i => i.ID == itemID);
+        InventoryItem? itemHouse = Bot.House.Items.Find(i => i.ID == itemID);
 
         if (itemTempInv == null && itemInv == null && itemBank == null)
             return false;
@@ -408,6 +409,9 @@ public class CoreBots
             return true;
 
         if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
+            return true;
+
+        if (itemHouse != null && Bot.House.Contains(itemHouse.Name, quant))
             return true;
 
         if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
