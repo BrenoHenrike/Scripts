@@ -102,8 +102,8 @@ public class Archmage
         Core.Logger("Extra Quest for 51% wep.");
         Core.EnsureAccept(8919);
         //Lumina Elementi
-        UnboundTomb(30);
         Arcana();
+        UnboundTomb(30);
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
