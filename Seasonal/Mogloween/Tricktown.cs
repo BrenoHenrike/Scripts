@@ -69,7 +69,7 @@ public class Tricktown
         Story.MapItemQuest(8934, "tricktown", 10809, 5);
         Story.KillQuest(8934, "tricktown", "Rotting Mound");
 
-        // The Fruits of Labor 8435
+        // The Fruits of Labor 8935
         Story.KillQuest(8935, "tricktown", "Madam Ester");
     }
 }
