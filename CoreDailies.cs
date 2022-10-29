@@ -129,7 +129,7 @@ public class CoreDailies
 
         Core.EnsureAccept(2091);
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
+        Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", isTemp: false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
         foreach (string metal in metals)
         {

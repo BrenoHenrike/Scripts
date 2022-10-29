@@ -61,8 +61,14 @@ public class CoreSoW
         //Shadow Medals: Fight them Back! 6850
         Story.KillQuest(6850, "shadowwar", "Shadowflame Scout");
 
-        //Interrogation 6851
-        Story.KillQuest(6851, "shadowwar", "Shadowflame Scout");
+        //Interrogation 6851 //had multiple reports made it a questprog.
+        if (!Story.QuestProgression(6851))
+        {
+            Core.EnsureAccept(6851);
+            Core.HuntMonster("shadowwar", "Shadowflame Scout", "Useful Clue", 3);
+            Core.EnsureComplete(6851);
+            Bot.Wait.ForQuestComplete(6851); //insurance... because y[e]
+        }
 
         //Defeat Malgor! 6852
         Story.KillQuest(6852, "malgor", "Malgor");
@@ -76,8 +82,8 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Defeat the Minions (6856)
-        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner|Shadow Mage");
         Story.MapItemQuest(6856, "shadowlordkeep", 6390);
+        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner|Shadow Mage");
 
         //Gather the Gunpowder (6857)
         Story.KillQuest(6857, "shadowlordkeep", "Shadow Gunner");
