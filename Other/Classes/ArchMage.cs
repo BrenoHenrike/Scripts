@@ -292,16 +292,22 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
             Core.EnsureAccept(8909);
-            
-            
+
+
             Core.EquipClass(ClassType.Farm);
-            Core.RegisterQuests(3048);
             Core.FarmingLogger("Mystic Quills", 49);
             Core.FarmingLogger("Mystic Shards", 49);
-            while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Quills", "Mystic Shards" }, 49))
-                Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
+            Core.RegisterQuests(3050);
+            while (!Bot.ShouldExit && !Core.CheckInventory(new[] {"Mystic Shards", "Mystic Quills"}, 49))
+            {
+                Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
+                Core.HuntMonster("gilead", "Fire Elemental", "Fire Core", log: false);
+                Core.HuntMonster("gilead", "Air Elemental", "Air Core", log: false);
+                Core.HuntMonster("gilead", "Earth Elemental", "Earth Core", log: false);
+                Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
+            }
             Core.CancelRegisteredQuests();
-
+            
             Core.EquipClass(ClassType.Solo);
             if (!Core.CheckInventory("Semiramis Feather"))
             {
