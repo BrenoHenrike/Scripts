@@ -548,6 +548,50 @@ public class CoreToD
 
         // Ziri Is Also Tough
         Story.KillQuest(5120, "baconcatlair", "Cloud Shark");
+
+        if (Core.IsMember)
+        {
+            //Robo Sharks! 5121
+            Story.KillQuest(5121, "baconcatlair", "Robo Shark");
+
+            //Beat the Bushes 5122
+            Story.MapItemQuest(5122, "baconcatlair", 4477, 4);
+
+            //Sharks Should Not Walk 5123
+            Story.KillQuest(5123, "baconcatlair", new[] { "Robo Shark", "Robo Shark" });
+
+            //Grab those Quarters 5124
+            Story.KillQuest(5124, "baconcatlair", "Robo Shark");
+
+            //Shark Invaders! 5125
+            Story.KillQuest(5125, "baconcatlair", new[] { "Shark Invader", "Shark Invader" });
+
+            //Sharks like Honey? 5126
+            Story.MapItemQuest(5126, "baconcatlair", 4480, 6);
+            Story.KillQuest(5124, "baconcatlair", "Robo Shark");
+
+            //At Least They Like to Party 5127
+            Story.MapItemQuest(5127, "baconcatlair", 4479, 6);
+            Story.KillQuest(5127, "baconcatlair", new[] { "Party Shark", "Party Shark" });
+
+            //Remora Brigade 5128
+            Story.KillQuest(5128, "baconcatlair", "Laser Remora");
+
+            //Into the Whirlpool 5129
+            Story.MapItemQuest(5129, "baconcatlair", 4478);
+
+            //Giant, Huge Cyborg Shark! 5130
+            Story.KillQuest(5130, "baconcatlair", "Cyborg Laser Shark");
+
+
+            //Wheel of Bacon 5131
+            if (!Story.QuestProgression(5131))
+            {
+                Core.EnsureAccept(5131);
+                Core.HuntMonster("baconcatlair", "Robo Shark", "Wheel of Bacon Token", 5, isTemp: false);
+                Core.EnsureComplete(5131);
+            }
+        }
     }
 
     #endregion
