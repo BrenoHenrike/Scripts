@@ -512,7 +512,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8821);
         CorNSOD.BonesVoidRealm(20);
         YNR.BlademasterSwordScroll();
-        NDW.NDWQuest(new[] {"Archfiend Essence Fragment"}, 3);
+        NDW.NDWQuest(new[] { "Archfiend Essence Fragment" }, 3);
         Awescended.GetAwe();
         if (!Core.CheckInventory("The Divine Will"))
         {
@@ -562,9 +562,9 @@ public class UnlockForgeEnhancements
         if (!Core.CheckInventory("Ascended Paladin"))
         {
             Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
-            Core.BuyItem("therift", 1399, 39091);
-            Core.BuyItem("therift", 1399, 39093);
-            Core.BuyItem("therift", 1399, 39094);
+            Core.BuyItem("therift", 1399, "Ascended Paladin");
+            Core.BuyItem("therift", 1399, "Ascended Paladin Staff");
+            Core.BuyItem("therift", 1399, "Ascended Paladin Sword");
         }
 
         Core.EnsureComplete(8743);
@@ -601,7 +601,6 @@ public class UnlockForgeEnhancements
         }
         else
             Awe.GetAweRelic("Pauldron", 4160, 15, 15, "gravestrike", "Ultra Akriloth");
-
         Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
         Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
         Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "Ultra Alteon");
