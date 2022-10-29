@@ -77,7 +77,7 @@ public class TricktownMerge
 
                 case "Ghastly Gummy":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(8936);
+                    Core.RegisterQuests(8936); // Ghoul Gang 8936
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Solo);
