@@ -82,10 +82,12 @@
 
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/Concert[MEM].cs
+//cs_include Scripts/Story/Cornelis[mem].cs
 //cs_include Scripts/Story/Cleric.cs
 //cs_include Scripts/Story/CruxShip.cs
 
 //cs_include Scripts/Story/DarkCarnax.cs
+//cs_include Scripts/Story/DeerHunt.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
@@ -95,6 +97,7 @@
 //cs_include Scripts/Story/DragonRoad[Upholader].cs
 //cs_include Scripts/Story/DreadForest.cs
 //cs_include Scripts/Story/DreamPalace.cs
+//cs_include Scripts/Story/DwarvesVsGiants.cs
 
 //cs_include Scripts/Story/Eden.cs
 //cs_include Scripts/Story/EtherstormWastes.cs
@@ -112,11 +115,13 @@
 //cs_include Scripts/Story/Lightguard[MEM].cs
 //cs_include Scripts/Story/LightoviaCave.cs
 
+//cs_include Scripts/Story/Mazumi.cs
 //cs_include Scripts/Story/Manor.cs
 //cs_include Scripts/Story/Marsh2[MEM].cs
 //cs_include Scripts/Story/MustyCave.cs
 
 //cs_include Scripts/Story/Noobshire.cs
+//cs_include Scripts/Story/Nukemichi[mem].cs
 //cs_include Scripts/Story/NytheraSaga.cs
 
 //cs_include Scripts/Story/Pirates[Member].cs
@@ -126,6 +131,7 @@
 //cs_include Scripts/Story/QuibbleHunt.cs
 
 //cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/Story/River.cs
 
 //cs_include Scripts/Story/Safiria[Member].cs
 //cs_include Scripts/Story/ShadowGates.cs
@@ -133,15 +139,18 @@
 //cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/ShadowVoid.cs
 //cs_include Scripts/Story/Shinkansen.cs
+//cs_include Scripts/Story/ShipWreck.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/SuperDeath.cs
 
+//cs_include Scripts/Story/Temple.cs
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
+//cs_include Scripts/Story/Tower[mem].cs
 
 //cs_include Scripts/Story/Ubear.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
@@ -149,6 +158,7 @@
 //cs_include Scripts/Story/VasalkarLairWar.cs
 
 //cs_include Scripts/Story/WatchTower.cs
+//cs_include Scripts/Story/WillowCreek.cs
 
 //cs_include Scripts/Story/XansLair.cs
 
@@ -259,9 +269,11 @@ public class AllStories
     public CastleTunnels CastleTunnels = new();
     public Cleric Cleric = new();
     public Concert Concert = new();
+    public Cornelis Cornelis = new();
     public CruxShip CruxShip = new();
 
     public DarkCarnaxStory DarkCarnax = new();
+    public DeerHunt DeerHunt = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
@@ -271,6 +283,7 @@ public class AllStories
     public DragonRoad DragonRoad = new();
     public DreadForest DreadForest = new();
     public DreamPalace DreamPalace = new();
+    public DwarvesVsGiants DwarvesVsGiants = new();
 
     public Eden Eden = new();
     public EtherStormWastes EtherStormWastes = new();
@@ -289,9 +302,11 @@ public class AllStories
 
     public Manor Manor = new();
     public Marsh2 Marsh2 = new();
+    public Mazumi Mazumi = new();
     public MustyCave MustyCave = new();
 
     public Noobshire Noobshire = new();
+    public Nukemichi Nukemichi = new();
     public NytheraSaga NytheraSaga = new();
 
     public J6Saga J6Saga = new();
@@ -303,6 +318,7 @@ public class AllStories
     public QuibbleHunt QuibbleHunt = new();
 
     public RavenlossSaga RavenlossSaga = new();
+    public River River = new();
 
     public Safiria Safiria = new();
     public ShadowGates ShadowGates = new();
@@ -310,12 +326,15 @@ public class AllStories
     public ShadowVault ShadowVault = new();
     public ShadowVoid ShadowVoid = new();
     public Shinkansen Shinkansen = new();
+    public ShipWreck ShipWreck = new();
     public SkyGuardSaga SkyGuardSaga = new();
     public StarSinc StarSinc = new();
     public SuperDeath SuperDeath = new();
 
+    public Temple Temple = new();
     public ThirdSpell ThirdSpell = new();
     public TitanAttackStory TitanAttackStory = new();
+    public Tower Tower = new();
     public TowerOfDoom TowerOfDoom = new();
     public Trygve Trygve = new();
     public Tutorial Tutorial = new();
@@ -326,6 +345,7 @@ public class AllStories
     public LairWar LairWar = new(); //VasalkarLairWar.cs
 
     public WatchTower WatchTower = new();
+    public WillowCreek WillowCreek = new();
 
     public XansLair Xans = new();
 
@@ -554,6 +574,9 @@ public class AllStories
             Core.Logger($"Story: Concert Event - Complete");
         }
 
+        Cornelis.StoryLine();
+        Core.Logger($"Story: Hodan Quests - Complete");
+        
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
 
@@ -567,6 +590,9 @@ public class AllStories
             Core.Logger($"Story: DeadFly - Complete");
         }
 
+        DeerHunt.StoryLine();
+        Core.Logger($"Story: Deer Hunt - Complete");
+        
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
 
@@ -595,6 +621,9 @@ public class AllStories
 
         DreamPalace.CompleteDreamPalace();
         Core.Logger($"Story: Dream Palace - Complete");
+        
+        DwarvesVsGiants.StoryLine();
+        Core.Logger($"Story: Dwarves Vs Giants - Complete");
 
 
         Eden.EdenStoryline();
@@ -640,6 +669,9 @@ public class AllStories
         Manor.StoryLine();
         Core.Logger($"Story: Manor - Complete");
 
+        Mazumi.MazumiQuests();
+        Core.Logger($"Story: Mazumi Quests - Complete");
+        
         if (Core.IsMember)
         {
             Marsh2.StoryLine();
@@ -652,6 +684,9 @@ public class AllStories
         Noobshire.doAll();
         Core.Logger($"Story: Noobshire - Complete");
 
+        Nukemichi.NukemichiQuests();
+        Core.Logger($"Saga: Nukemichi Quests - Complete");
+        
         NytheraSaga.DoAll();
         Core.Logger($"Saga: Nythera - Complete");
 
@@ -676,6 +711,9 @@ public class AllStories
         RavenlossSaga.DoAll();
         Core.Logger($"Saga: RavenLoss - Complete");
 
+        River.StoryLine();
+        Core.Logger($"Saga: River - Complete");
+        
 
         if (Core.IsMember)
         {
@@ -698,6 +736,9 @@ public class AllStories
         Shinkansen.Storyline();
         Core.Logger($"Story: Shinkansen - Complete");
 
+        ShipWreck.StoryLine();
+        Core.Logger($"Story: ShipWreck - Complete");
+        
         SkyGuardSaga.DoAll();
         Core.Logger($"Saga: SkyGuard Saga - Complete");
 
@@ -708,11 +749,17 @@ public class AllStories
         Core.Logger($"Story: SuperDeath - Complete");
 
 
+        Temple.StoryLine();
+        Core.Logger($"Story: Temple - Complete");
+        
         ThirdSpell.StoryLine();
         Core.Logger($"Story: Third Spell - Complete");
 
         TitanAttackStory.DoAll();
         Core.Logger($"Story: Titan Attack - Complete");
+        
+        Tower.StoryLine();
+        Core.Logger($"Story: Tower - Complete");
 
         TowerOfDoom.TowerProgress();
         Core.Logger($"Story: Tower Of Doom - Complete");
@@ -731,9 +778,14 @@ public class AllStories
         LairWar.doAll();
         Core.Logger($"Story: Vasalkar Lair War - Complete");
 
+        
         WatchTower.StoryLine();
         Core.Logger($"Story: WatchTower - Complete");
+        
+        WillowCreek.StoryLine();
+        Core.Logger($"Story: Willow Creek - Complete");
 
+        
         Xans.DoAll();
         Core.Logger($"Story: Xans Lair - Complete");
 
