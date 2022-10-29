@@ -358,7 +358,7 @@ public class Archmage
             Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
             Core.HuntMonster("downward", "Crystal Mana Construct", "Earth Locus", isTemp: false, log: false);
             Core.HuntMonster("volcano", "Magman", "Fire Locus", isTemp: false, log: false);
-            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus", isTemp: false, log: false);
+            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunment", isTemp: false, log: false);
 
             Core.EnsureComplete(8911);
             Bot.Wait.ForPickup("Arcane Locus");
