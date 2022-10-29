@@ -356,9 +356,9 @@ public class Archmage
             Core.EnsureAccept(8911);
             Core.KillMonster("skytower", "r3", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
             Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
-            Core.HuntMonster("downward", "Crystal Mana Construct", "Earth Locus", isTemp: false, log: false);
-            Core.HuntMonster("volcano", "Magman", "Fire Locus", isTemp: false, log: false);
-            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunment", 30, isTemp: false, log: false);
+            Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false, log: false);
+            Core.HuntMonster("drakonnan", "Drakonnan", "Fire Locus", isTemp: false, log: false);
+            Core.HuntMonster("elemental", "Mana Falcon|Mana Imp", "Prime Locus Attunment", 30, isTemp: false, log: false);
 
             Core.EnsureComplete(8911);
             Bot.Wait.ForPickup("Arcane Locus");
@@ -399,7 +399,7 @@ public class Archmage
         Core.Logger("Completing Quests / Rep Requirements");
         SoW.CompleteCoreSoW();
         QOM.TheReshaper();
-        Farm.Experience(60);
+        Farm.Experience(100);
         Farm.SpellCraftingREP();
         Farm.EmberseaREP();
         Farm.ChaosREP(10);
