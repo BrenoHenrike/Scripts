@@ -122,5 +122,34 @@ public class NecroDungeon
 
         //the past will haunt you - 2061
         Story.MapItemQuest(2061, "necrodungeon", 1020);
+
+        // [[[ Necrocavern Map]]]
+
+        //Thou Shalt Not Pass 2070
+        Story.KillQuest(2070, "necrocavern", "Shadowstone Elemental");
+
+        //Blinded by the Darkness 2071
+        Story.MapItemQuest(2071, "necrodungeon", 1020);
+        Story.KillQuest(2071, "necrocavern", "Shadow Imp");
+
+        //The Tale Never Dies 2072
+        Story.MapItemQuest(2072, "necrodungeon", 1044);
+        Story.MapItemQuest(2072, "necrodungeon", 1045, 3);
+        Story.KillQuest(2072, "necrocavern", new[] {"Shadowstone Elemental", "Shadow Imp"});
+
+        //Doom Outside the Dome 2073
+        Story.KillQuest(2073, "necrocavern", "Shadowstone Elemental");
+
+        //Last Bastion of Light 2074
+        Story.KillQuest(2074, "necrocavern", new[] { "Shadowstone Elemental", "Shadow Imp" });
+
+        //Shadowy Corruption 2075
+        Story.MapItemQuest(2072, "necrodungeon", 1043, 5);
+
+        //Strength of the Darkness 2076
+        Story.KillQuest(2076, "necrocavern", "Shadow Dragon");
+
+        //Bring Down the Necropolis 2077
+        Story.KillQuest(2077, "necrocavern", "Shadowstone Support");
     }
 }

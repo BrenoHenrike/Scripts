@@ -108,6 +108,7 @@
 //cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Story/Guru.cs
 
 //cs_include Scripts/Story/J6Saga.cs
 
@@ -144,7 +145,7 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/SuperDeath.cs
 
-//cs_include Scripts/Story/Temple.cs
+//cs_include Scripts/Story/Doomwood/Temple.cs
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
@@ -289,12 +290,12 @@ public class AllStories
     public EtherStormWastes EtherStormWastes = new();
     public ExaltiaTower ExaltiaTower = new();
 
-    public Gamehaven Gamehaven = new();
-    public GiantTaleStory GiantTaleStory = new();
-
     public FrozenNorthlands FrozenNorthlands = new();
 
+    public Gamehaven Gamehaven = new();
+    public GiantTaleStory GiantTaleStory = new();
     public GlaceraStory GlaceraStory = new();
+    public Guru Guru = new();
 
     public Lair Lair = new();
     public Lightguard Lightguard = new();
@@ -648,6 +649,10 @@ public class AllStories
 
         GlaceraStory.DoAll();
         Core.Logger($"Story: Glacera - Complete");
+
+        Guru.StoryLine();
+        Core.Logger($"Story: Guru - Complete");
+
 
         J6Saga.J6();
         Core.Logger($"Sage: J6 - Complete");
