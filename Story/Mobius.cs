@@ -61,7 +61,7 @@ public class Mobius
         Story.KillQuest(2373, "natatorium", "Marianus");
 
         //The Star of Earth 2374
-        Story.KillQuest(2374, "mountain", "Pine Troll");
+        Story.KillQuest(2374, "pines", "Pine Troll");
 
         //Star of the Flames 2375
         Story.KillQuest(2375, "greendragon", "Greenguard Dragon");
