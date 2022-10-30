@@ -421,56 +421,54 @@ public class Archmage
     }
 
     //Item Check
-    void ItemCheck(params string[] Items)
+    void ItemCheck()
     {
         Core.Logger("Item Check.");
-        if (Items == null)
-            Items = BossDrops;
 
-        if (!Core.CheckInventory(Items))
+        if (!Core.CheckInventory(BossDrops))
         {
-            foreach (string item in Items)
+            foreach (string item in BossDrops)
             {
                 switch (item)
                 {
                     case "Void Essentia":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [Thevoid]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [Thevoid]", stopBot: true);
                         break;
 
                     case "Vital Exanima":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
                         break;
 
                     case "Everlight Flame":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
                         break;
 
                     case "Calamitous Ruin":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]", stopBot: true);
                         break;
 
                     case "The Mortal Coil":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]", stopBot: true);
                         break;
 
                     case "The Divine Will":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]", stopBot: true);
                         break;
 
                     case "Insatiable Hunger":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [Thevoid]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [Thevoid]", stopBot: true);
                         break;
 
                     case "Undying Resolve":
-                        if (Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]");
+                        if (!Core.CheckInventory(item))
+                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]", stopBot: true);
                         break;
                 }
             }
