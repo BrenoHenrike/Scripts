@@ -35,19 +35,21 @@ public class Archmage
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("51%Wep?", "Do Last Quest?", "Todo The last Quest or not, for the 51% wep(takes awhile). [On by default]", true),
-        new Option<bool>("getExtras", "Get Cosmetics", "Gets the Cosmetic Rewards (Redoes quests if you don't have them.) [On by default]", true),
+        new Option<bool>("51%Wep?", "51% wep?", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
+        new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them.) [Off by default]", false),
         new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only.) [Off by default]", false)
     };
 
-    private string[] RequiredItems = { "Archmage", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
+    private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
     private string[] BossDrops = { "Void Essentia", "Vital Exanima", "Everlight Flame", "Calamitous Ruin", "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Elemental Binding" };
-    private string[] Extras = { "Providence", "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
+    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
-        // Core.BankingBlackList.AddRange(new[] { "Ice Diamond", "Providence" });
+        if (Bot.Config.Get<bool>("Cosmetics"))
+            Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
+        else Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
+
         Core.SetOptions();
 
         GetAM();
@@ -58,23 +60,25 @@ public class Archmage
     public void GetAM(bool rankUpClass = true)
     {
 
-        if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("getExtras"))
+        if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage Owned, Farm Finished.", stopBot: true);
-        if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("getExtras"))
+        if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage and Providence Owned, Farm Finished.", stopBot: true);
-        if (Bot.Config.Get<bool>("51%Wep?") && Bot.Config.Get<bool>("getExtras") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Extras))
+        if (Bot.Config.Get<bool>("51%Wep?") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Extras))
             Core.Logger("Archmage, Providence, and Extras Owned, Farm Finished.", stopBot: true);
         if (Bot.Config.Get<bool>("Armying?"))
             Core.Logger("Armying Set to True, Please have all accounts logged in and Following this Acc using the Tools > Butler.cs");
 
-        Core.AddDrop(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
+        if (Bot.Config.Get<bool>("Cosmetics"))
+            Core.AddDrop(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
+        else Core.AddDrop(RequiredItems.Concat(BossDrops).ToArray());
 
         RequiredStuffs();
 
-        if (Bot.Config.Get<bool>("getExtras"))
+        if (Bot.Config.Get<bool>("Cosmetics"))
             ExtrasCheck(Extras);
 
-        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("getExtras") && !Core.CheckInventory(Extras))
+        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Extras))
         {
             //Archmage's Ascension 
             Core.EnsureAccept(8918);

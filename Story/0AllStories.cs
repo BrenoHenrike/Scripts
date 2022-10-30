@@ -97,7 +97,6 @@
 //cs_include Scripts/Story/Downward.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/DragonRoad[Upholader].cs
-//cs_include Scripts/Story/DreadForest.cs
 //cs_include Scripts/Story/DreamPalace.cs
 //cs_include Scripts/Story/Dwarfhold.cs
 //cs_include Scripts/Story/DwarvesVsGiants.cs
@@ -290,7 +289,6 @@ public class AllStories
     public Downward Downward = new();
     public DragonFableOrigins DragonFableOrigins = new();
     public DragonRoad DragonRoad = new();
-    public DreadForest DreadForest = new();
     public DreamPalace DreamPalace = new();
     public Dwarfhold Dwarfhold = new();
     public DwarvesVsGiants DwarvesVsGiants = new();
@@ -634,8 +632,6 @@ public class AllStories
             Core.Logger($"Story: DragonRoad  - Complete");
         }
 
-        DreadForest.Storyline();
-        Core.Logger($"Story: Dread Forest - Complete");
 
         DreamPalace.CompleteDreamPalace();
         Core.Logger($"Story: Dream Palace - Complete");
