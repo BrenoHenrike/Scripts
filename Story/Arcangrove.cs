@@ -50,7 +50,7 @@ public class Arcangrove
         Story.KillQuest(3374, "arcangrove", "Seed Spitter");
 
         //Kinda Like a Giant Bubble 3375
-        Story.MapItemQuest(3375, "mapname", new[] { 2514, 2515, 2516, 2517 });
+        Story.MapItemQuest(3375, "arcangrove", new[] { 2514, 2515, 2516, 2517 });
 
     }
 }
