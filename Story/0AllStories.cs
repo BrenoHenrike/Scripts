@@ -98,6 +98,7 @@
 //cs_include Scripts/Story/DragonRoad[Upholader].cs
 //cs_include Scripts/Story/DreadForest.cs
 //cs_include Scripts/Story/DreamPalace.cs
+//cs_include Scripts/Story/Dwarfhold.cs
 //cs_include Scripts/Story/DwarvesVsGiants.cs
 
 //cs_include Scripts/Story/Eden.cs
@@ -191,6 +192,7 @@ public class AllStories
     public DoomwoodPart3 DoomwoodPart3 = new();
     public NecroDungeon NecroDungeon = new();
     public NecroTowerStory NecroTower = new();
+    public Temple Temple = new();
 
     // Elergy of Madness - Darkon
     public CoreAstravia CoreAstravia = new();
@@ -200,7 +202,7 @@ public class AllStories
 
     //Friday 13th
     public CoreFriday13th CoreFriday13th = new();
-    
+
     // Isle Of Fotia
     public CoreIsleOfFotia CoreIsleOfFotia = new();
 
@@ -287,6 +289,7 @@ public class AllStories
     public DragonRoad DragonRoad = new();
     public DreadForest DreadForest = new();
     public DreamPalace DreamPalace = new();
+    public Dwarfhold Dwarfhold = new();
     public DwarvesVsGiants DwarvesVsGiants = new();
 
     public Eden Eden = new();
@@ -335,7 +338,6 @@ public class AllStories
     public StarSinc StarSinc = new();
     public SuperDeath SuperDeath = new();
 
-    public Temple Temple = new();
     public ThirdSpell ThirdSpell = new();
     public TitanAttackStory TitanAttackStory = new();
     public Tournament Tournament = new();
@@ -411,6 +413,10 @@ public class AllStories
 
         DoomwoodPart3.StoryLine();
         Core.Logger($"Story: Doomwood Part 3 - Complete");
+
+        Temple.StoryLine();
+        Core.Logger($"Story: Temple - Complete");
+
         #endregion
 
         #region Elergy
@@ -422,7 +428,7 @@ public class AllStories
         FI.CompleteFireIsland();
         Core.Logger($"Saga: Fireisland Maps - Complete");
         #endregion
-            
+
         #region CoreFriday13th
         CoreFriday13th.DoAll();
         Core.Logger($"Saga: Friday 13th - Complete");
@@ -544,7 +550,7 @@ public class AllStories
 
         ArtixWedding.ArtixWeddingComplete();
         Core.Logger($"Story: ArtixWedding - Complete");
-        
+
         Asylum.StoryLine();
         Core.Logger($"Story: Asylum - Complete");
 
@@ -559,7 +565,7 @@ public class AllStories
 
         Bludrut.StoryLine();
         Core.Logger($"Story: Bludrut - Complete");
-        
+
         Borgars.BorgarQuests();
         Core.Logger($"Story: Borgars - Complete");
 
@@ -581,7 +587,7 @@ public class AllStories
 
         Cornelis.StoryLine();
         Core.Logger($"Story: Hodan Quests - Complete");
-        
+
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
 
@@ -597,7 +603,7 @@ public class AllStories
 
         DeerHunt.StoryLine();
         Core.Logger($"Story: Deer Hunt - Complete");
-        
+
         DjinnGateStory.DjinnGate();
         Core.Logger($"Story: Djinn Gate - Complete");
 
@@ -626,7 +632,10 @@ public class AllStories
 
         DreamPalace.CompleteDreamPalace();
         Core.Logger($"Story: Dream Palace - Complete");
-        
+
+        Dwarfhold.StoryLine();
+        Core.Logger($"Story: Dwarfhold - Complete");
+
         DwarvesVsGiants.StoryLine();
         Core.Logger($"Story: Dwarves Vs Giants - Complete");
 
@@ -661,10 +670,10 @@ public class AllStories
         J6Saga.J6();
         Core.Logger($"Sage: J6 - Complete");
 
-        
+
         Lair.DoAll();
         Core.Logger($"Story: Lair - Complete");
-        
+
         if (Core.IsMember)
         {
             Lightguard.StoryLine();
@@ -680,7 +689,7 @@ public class AllStories
 
         Mazumi.MazumiQuests();
         Core.Logger($"Story: Mazumi Quests - Complete");
-        
+
         if (Core.IsMember)
         {
             Marsh2.StoryLine();
@@ -695,7 +704,7 @@ public class AllStories
 
         Nukemichi.NukemichiQuests();
         Core.Logger($"Saga: Nukemichi Quests - Complete");
-        
+
         NytheraSaga.DoAll();
         Core.Logger($"Saga: Nythera - Complete");
 
@@ -722,7 +731,7 @@ public class AllStories
 
         River.StoryLine();
         Core.Logger($"Saga: River - Complete");
-        
+
 
         if (Core.IsMember)
         {
@@ -747,7 +756,7 @@ public class AllStories
 
         ShipWreck.StoryLine();
         Core.Logger($"Story: ShipWreck - Complete");
-        
+
         SkyGuardSaga.DoAll();
         Core.Logger($"Saga: SkyGuard Saga - Complete");
 
@@ -758,9 +767,7 @@ public class AllStories
         Core.Logger($"Story: SuperDeath - Complete");
 
 
-        Temple.StoryLine();
-        Core.Logger($"Story: Temple - Complete");
-        
+
         ThirdSpell.StoryLine();
         Core.Logger($"Story: Third Spell - Complete");
 
@@ -769,7 +776,7 @@ public class AllStories
 
         Tournament.StoryLine();
         Core.Logger($"Story: Tournament - Complete");
-        
+
         Tower.StoryLine();
         Core.Logger($"Story: Tower - Complete");
 
@@ -790,14 +797,14 @@ public class AllStories
         LairWar.doAll();
         Core.Logger($"Story: Vasalkar Lair War - Complete");
 
-        
+
         WatchTower.StoryLine();
         Core.Logger($"Story: WatchTower - Complete");
-        
+
         WillowCreek.StoryLine();
         Core.Logger($"Story: Willow Creek - Complete");
 
-        
+
         Xans.DoAll();
         Core.Logger($"Story: Xans Lair - Complete");
 
