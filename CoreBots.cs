@@ -645,7 +645,14 @@ public class CoreBots
 
         // requestQuant <= max stack.
         // No clamp checks needed, as Buys already asserts current quantity is less.
-        return requestedQuant - Bot.Inventory.GetQuantity(item.Name);
+        int buy_quant;
+        if ((buy_quant = requestedQuant - Bot.Inventory.GetQuantity(item.Name)) % item.Quantity != 0)
+        {
+            int diff = item.Quantity - (buy_quant % item.Quantity);
+            SellItem(item.Name, Bot.Inventory.GetQuantity(item.Name) - diff);
+            buy_quant += diff;
+        }
+        return buy_quant;
     }
 
     private bool _canBuy(int shopID, ShopItem? item, int buy_quant)
@@ -775,15 +782,16 @@ public class CoreBots
     /// <param name="all">Set to true if you wish to sell all the items</param>
     public void SellItem(string itemName, int quant = 0, bool all = false)
     {
-        if (!CheckInventory(itemName) || Bot.Inventory.TryGetItem(itemName, out var item))
+        if (!(quant > 0 ? CheckInventory(itemName, quant) : CheckInventory(itemName)) || !Bot.Inventory.TryGetItem(itemName, out var item))
             return;
         JumpWait();
 
         if (!all)
         {
+            // Inv quant >= current quantity.
             if (Bot.Options.SafeTimings)
                 Bot.Wait.ForActionCooldown(GameActions.SellItem);
-            Bot.Send.Packet($"%xt%zm%sellItem%{Bot.Map.RoomID}%{item!.ID}%{(quant > item!.Quantity ? quant : item!.Quantity)}%{item!.CharItemID}%");
+            Bot.Send.Packet($"%xt%zm%sellItem%{Bot.Map.RoomID}%{item!.ID}%{item!.Quantity - quant}%{item!.CharItemID}%");
             if (Bot.Options.SafeTimings)
                 Bot.Wait.ForItemSell();
 
