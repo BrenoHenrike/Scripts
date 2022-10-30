@@ -124,7 +124,7 @@ public class NecroTowerStory
 
 
         //Silence is Ghoulden 1112
-        Story.KillQuest(1090, "necroU", "Ghoul");
+        Story.KillQuest(1112, "necroU", "Ghoul");
 
         //Ghouls with Gall 1113
         Story.MapItemQuest(1113, "necroU", 450, 5);
