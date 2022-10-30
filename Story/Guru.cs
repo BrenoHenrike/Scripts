@@ -19,7 +19,7 @@ public class Guru
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(000))
+        if ((Core.IsMember && Core.isCompletedBefore(53)) || (!Core.IsMember && Core.isCompletedBefore(52)))
             return;
 
         Story.PreLoad(this);
