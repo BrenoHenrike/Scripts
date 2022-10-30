@@ -24,7 +24,7 @@ public class Arcangrove
 
     public void GravelynandVictoria()
     {
-        if (Core.isCompletedBefore(000))
+        if (Core.isCompletedBefore(3375))
             return;
 
         LoC.Ledgermayne();
