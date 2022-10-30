@@ -42,7 +42,7 @@ public class Tournament
         Story.MapItemQuest(2712, "tournament", 1684);
 
         //Battle Khai Kaldun 2713
-        Story.KillQuest(2713, "tournament", "Khai Kaldun");
+        Story.KillQuest(2713, "tournament", "Khai Khaldun");
 
         //Battle Johann Wryce 2714
         Story.KillQuest(2714, "tournament", "Johann Wryce");
