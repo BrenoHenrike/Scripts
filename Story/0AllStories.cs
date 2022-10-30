@@ -69,6 +69,7 @@
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
+//cs_include Scripts/Story/Arcangrove.cs
 //cs_include Scripts/Story/ArcAttack.cs
 //cs_include Scripts/Story/AriaPet[MEM].cs
 //cs_include Scripts/Story/Artixpointe.cs
@@ -118,9 +119,10 @@
 //cs_include Scripts/Story/Lightguard[MEM].cs
 //cs_include Scripts/Story/LightoviaCave.cs
 
-//cs_include Scripts/Story/Mazumi.cs
 //cs_include Scripts/Story/Manor.cs
 //cs_include Scripts/Story/Marsh2[MEM].cs
+//cs_include Scripts/Story/Mazumi.cs
+//cs_include Scripts/Story/Mobius.cs
 //cs_include Scripts/Story/MustyCave.cs
 
 //cs_include Scripts/Story/Noobshire.cs
@@ -260,6 +262,7 @@ public class AllStories
     #endregion
 
     #region Standalone (sorted alphabetically)
+    public Arcangrove Arcangrove = new();
     public ArcAttack ArcAttack = new();
     public AriaPet AriaPet = new();
     public Artixpointe Artixpointe = new();
@@ -310,6 +313,7 @@ public class AllStories
     public Manor Manor = new();
     public Marsh2 Marsh2 = new();
     public Mazumi Mazumi = new();
+    public Mobius Mobius = new();
     public MustyCave MustyCave = new();
 
     public Noobshire Noobshire = new();
@@ -536,6 +540,9 @@ public class AllStories
         #endregion
 
         #region Standalone
+        Arcangrove.GravelynandVictoria();
+        Core.Logger($"Story: Arcangrove - Complete");
+
         ArcAttack.StoryLine();
         Core.Logger($"Story: Arc Attack - Complete");
 
@@ -633,7 +640,7 @@ public class AllStories
         DreamPalace.CompleteDreamPalace();
         Core.Logger($"Story: Dream Palace - Complete");
 
-        Dwarfhold.StoryLine();
+        Dwarfhold.DoAll();
         Core.Logger($"Story: Dwarfhold - Complete");
 
         DwarvesVsGiants.StoryLine();
@@ -689,6 +696,9 @@ public class AllStories
 
         Mazumi.MazumiQuests();
         Core.Logger($"Story: Mazumi Quests - Complete");
+
+        Mobius.DoAll();
+        Core.Logger($"Story: Mobius Quests - Complete");
 
         if (Core.IsMember)
         {

@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
@@ -15,36 +16,26 @@ public class Dwarfhold
     {
         Core.SetOptions();
 
-        StoryLine();
+        DoAll();
 
         Core.SetOptions(false);
     }
 
+    public void DoAll()
+    {
+        StoryLine();
+        GravelynandVictoria();
+    }
+
     public void StoryLine()
     {
-        LoC.Ledgermayne();
-        LoC.Escherion();
-        LoC.Vath();
 
         if (Core.isCompletedBefore(1757))
             return;
 
         Story.PreLoad(this);
 
-        //Whats Worse Than Drow? 3376
-        Story.KillQuest(3376, "dwarfhold", "Chaos Drow");
-
-        //We Can Replenish Our Armory Too! 3377
-        Story.KillQuest(3376, "dwarfhold", "Chaotic Draconian");
-
-        //Begemralded 3378
-        Story.KillQuest(3378, "dwarfhold", "Gemrald");
-
-        //Natural Resources 3379
-        Story.KillQuest(3379, "dwarfhold", "Glow Worm");
-
-        //Rally the Troops 3380
-        Story.MapItemQuest(3380, "dwarfhold", new[] { 2506, 2508, 2509, 2510, 2511 });
+        GravelynandVictoria();
 
         if (Core.IsMember)
         {
@@ -94,5 +85,31 @@ public class Dwarfhold
             Story.KillQuest(1757, "dwarfhold", "Albino Bat");
         }
 
+    }
+    public void GravelynandVictoria()
+    {
+        if (Core.isCompletedBefore(3380))
+            return;
+
+        Story.PreLoad(this);
+
+        LoC.Ledgermayne();
+        LoC.Escherion();
+        LoC.Vath();
+
+        //Whats Worse Than Drow? 3376
+        Story.KillQuest(3376, "dwarfhold", "Chaos Drow");
+
+        //We Can Replenish Our Armory Too! 3377
+        Story.KillQuest(3376, "dwarfhold", "Chaotic Draconian");
+
+        //Begemralded 3378
+        Story.KillQuest(3378, "dwarfhold", "Gemrald");
+
+        //Natural Resources 3379
+        Story.KillQuest(3379, "dwarfhold", "Glow Worm");
+
+        //Rally the Troops 3380
+        Story.MapItemQuest(3380, "dwarfhold", new[] { 2506, 2508, 2509, 2510, 2511 });
     }
 }
