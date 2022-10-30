@@ -425,54 +425,64 @@ public class Archmage
     {
         Core.Logger("Item Check.");
 
-        if (!Core.CheckInventory(BossDrops))
+        foreach (string item in BossDrops)
         {
-            foreach (string item in BossDrops)
+            switch (item)
             {
-                switch (item)
-                {
-                    case "Void Essentia":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [Thevoid]", stopBot: true);
-                        break;
+                case "Void Essentia":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [Thevoid]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "Vital Exanima":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
-                        break;
+                case "Vital Exanima":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "Everlight Flame":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
-                        break;
+                case "Everlight Flame":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "Calamitous Ruin":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]", stopBot: true);
-                        break;
+                case "Calamitous Ruin":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "The Mortal Coil":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]", stopBot: true);
-                        break;
+                case "The Mortal Coil":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "The Divine Will":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]", stopBot: true);
-                        break;
+                case "The Divine Will":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "Insatiable Hunger":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [Thevoid]", stopBot: true);
-                        break;
+                case "Insatiable Hunger":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [Thevoid]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
 
-                    case "Undying Resolve":
-                        if (!Core.CheckInventory(item))
-                            Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]", stopBot: true);
-                        break;
-                }
+                case "Undying Resolve":
+                    if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]", stopBot: true);
+                    else Core.Logger($"{item} Found");
+                    break;
+
+                case "Elemental Binding":
+                    if (!Core.CheckInventory(item, 250))
+                        Core.Logger($"{item} x250 Not Found, Can Be Farmed (with an Army) from [Prismata] in [Archmage]", stopBot: true);
+                    else Core.Logger($"{item} x250 Found");
+                    break;
             }
         }
-        Core.Logger("All Boss drops Found. Item Check Complete, Continuing");
     }
 }
