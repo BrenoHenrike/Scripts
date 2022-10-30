@@ -42,12 +42,12 @@ public class Archmage
 
     private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
     private string[] BossDrops = { "Void Essentia", "Vital Exanima", "Everlight Flame", "Calamitous Ruin", "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Elemental Binding" };
-    private string[] Extras = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
+    private string[] Cosmetics = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
 
     public void ScriptMain(IScriptInterface bot)
     {
         if (Bot.Config.Get<bool>("Cosmetics"))
-            Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
+            Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
         else Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
 
         Core.SetOptions();
@@ -60,25 +60,45 @@ public class Archmage
     public void GetAM(bool rankUpClass = true)
     {
 
-        if (Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
+        if (Core.CheckInventory("Archmage", toInv: false) && !Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage Owned, Farm Finished.", stopBot: true);
         if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage and Providence Owned, Farm Finished.", stopBot: true);
-        if (Bot.Config.Get<bool>("51%Wep?") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Extras))
+        if (Bot.Config.Get<bool>("51%Wep?") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Cosmetics))
             Core.Logger("Archmage, Providence, and Extras Owned, Farm Finished.", stopBot: true);
         if (Bot.Config.Get<bool>("Armying?"))
             Core.Logger("Armying Set to True, Please have all accounts logged in and Following this Acc using the Tools > Butler.cs");
 
         if (Bot.Config.Get<bool>("Cosmetics"))
-            Core.AddDrop(RequiredItems.Concat(BossDrops).Concat(Extras).ToArray());
+            Core.AddDrop(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
         else Core.AddDrop(RequiredItems.Concat(BossDrops).ToArray());
 
         RequiredStuffs();
 
         if (Bot.Config.Get<bool>("Cosmetics"))
-            ExtrasCheck(Extras);
 
-        if (!Core.CheckInventory("Archmage") || Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Extras))
+            if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Cosmetics))
+            {
+                Core.EnsureAccept(8918);
+
+                ExtrasCheck(Cosmetics);
+
+                Magus(true);
+                Fire(true);
+                Ice(true);
+                Aether(true);
+                Arcana(true);
+
+                Core.EnsureComplete(8918);
+
+                Bot.Wait.ForPickup("Archmage");
+                Core.ToBank(Cosmetics);
+
+                if (rankUpClass)
+                    Adv.rankUpClass("Archmage");
+            }
+
+        if (!Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Cosmetics"))
         {
             //Archmage's Ascension 
             Core.EnsureAccept(8918);
@@ -92,16 +112,14 @@ public class Archmage
             Core.EnsureComplete(8918);
 
             Bot.Wait.ForPickup("Archmage");
-            Core.ToBank(Extras);
+            Core.ToBank(Cosmetics);
 
             if (rankUpClass)
                 Adv.rankUpClass("Archmage");
         }
 
-        if (!Bot.Config.Get<bool>("51%Wep?"))
-            return;
-
-        LuminaElementi();
+        if (Bot.Config.Get<bool>("51%Wep?"))
+            LuminaElementi();
     }
 
     //getExtras:
@@ -143,10 +161,10 @@ public class Archmage
     }
 
     //Books:
-    public void Magus()
+    public void Magus(bool Extras = false)
     {
         //Book of Magus: Incantation
-        if (Core.CheckInventory("Book of Magus"))
+        if (Core.CheckInventory("Book of Magus") && !Extras)
             return;
         Core.Logger("Book: Book of Magus");
         UnboundTomb(1);
@@ -170,15 +188,15 @@ public class Archmage
 
         Core.EnsureComplete(8913);
         Bot.Wait.ForPickup("Book of Magus");
-        Core.ToBank(Extras);
+        Core.ToBank(Cosmetics);
         Core.ToBank(BLOD.BLoDItems);
 
     }
 
-    public void Fire()
+    public void Fire(bool Extras = false)
     {
         //Book of Fire: Immolation
-        if (Core.CheckInventory("Book of Fire"))
+        if (Core.CheckInventory("Book of Fire") && !Extras)
             return;
 
         Core.Logger("Book of Fire");
@@ -198,13 +216,13 @@ public class Archmage
 
         Core.EnsureComplete(8914);
         Bot.Wait.ForPickup("Book of Fire");
-        Core.ToBank(Extras);
+        Core.ToBank(Cosmetics);
 
     }
 
-    public void Ice()
+    public void Ice(bool Extras = false)
     {
-        if (Core.CheckInventory("Book of Ice"))
+        if (Core.CheckInventory("Book of Ice") && !Extras)
             return;
 
         Core.Logger("Book of Ice");
@@ -228,14 +246,14 @@ public class Archmage
 
         Core.EnsureComplete(8915);
         Bot.Wait.ForPickup("Book of Ice");
-        Core.ToBank(Extras);
+        Core.ToBank(Cosmetics);
 
     }
 
-    public void Aether()
+    public void Aether(bool Extras = false)
     {
         //Book of Aether: Supernova
-        if (Core.CheckInventory("Book of Aether"))
+        if (Core.CheckInventory("Book of Aether") && !Extras)
             return;
 
         BossItemCheck(new[] { "Void Essentia", "Vital Exanima", "Everlight Flame" });
@@ -252,14 +270,14 @@ public class Archmage
         // Core.HuntMonster("fireavatar", "Avatar Tyndarius", "Everlight Flame", isTemp: false); //1% Drop Rate
         Core.EnsureComplete(8916);
         Bot.Wait.ForPickup("Book of Aether");
-        Core.ToBank(Extras);
+        Core.ToBank(Cosmetics);
 
     }
 
-    public void Arcana()
+    public void Arcana(bool Extras = false)
     {
         //Book of Arcana: Arcane Sigil
-        if (Core.CheckInventory("Book of Arcana"))
+        if (Core.CheckInventory("Book of Arcana") && !Extras)
             return;
 
         BossItemCheck(new[] { "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin" });
@@ -275,7 +293,7 @@ public class Archmage
         Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false); //just get lucky :4Head:
         Core.EnsureComplete(8917);
         Bot.Wait.ForPickup("Book of Arcana");
-        Core.ToBank(Extras);
+        Core.ToBank(Cosmetics);
 
     }
 
@@ -422,9 +440,6 @@ public class Archmage
     {
         Core.Logger("Item Check.");
 
-        if (Items == null)
-            Items = BossDrops;
-
         foreach (string item in BossDrops)
         {
             switch (item)
@@ -499,18 +514,19 @@ public class Archmage
             }
         }
     }
+
     void ExtrasCheck(string[] Items)
     {
         Core.Logger("Extra Items Check.");
 
-        foreach (string item in Extras)
+        foreach (string item in Cosmetics)
         {
             if (!Core.CheckInventory(item))
                 Core.Logger($"{item} Missing. Bot Will Refarm for it.");
         }
     }
 
-
+    //For Nightmare Carnax
     void DarkCarnaxMove(string zone)
     {
         switch (zone.ToLower())
