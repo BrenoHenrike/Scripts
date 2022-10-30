@@ -129,7 +129,7 @@ public class Archmage
         Core.EnsureAccept(8919);
         Core.Logger("Doing Extra Quest for 51% wep.");
 
-        BossItemCheck(new[] { "Elemental Binding" });
+        BossItemCheck("Elemental Binding");
 
         Arcana();
         UnboundTomb(30);
@@ -256,7 +256,7 @@ public class Archmage
         if (Core.CheckInventory("Book of Aether") && !Extras)
             return;
 
-        BossItemCheck(new[] { "Void Essentia", "Vital Exanima", "Everlight Flame" });
+        BossItemCheck("Void Essentia", "Vital Exanima", "Everlight Flame" );
 
         Core.Logger("Book of Aether");
 
@@ -280,7 +280,7 @@ public class Archmage
         if (Core.CheckInventory("Book of Arcana") && !Extras)
             return;
 
-        BossItemCheck(new[] { "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin" });
+        BossItemCheck( "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin" );
 
         Core.Logger("Book of Arcana");
 
@@ -308,7 +308,6 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
             Core.EnsureAccept(8909);
-
 
             Core.EquipClass(ClassType.Farm);
             Core.FarmingLogger("Mystic Quills", 49);
@@ -436,11 +435,11 @@ public class Archmage
     }
 
     //Item Checks
-    void BossItemCheck(string[] Items)
+    void BossItemCheck(params string[] Items)
     {
         Core.Logger("Item Check.");
 
-        foreach (string item in BossDrops)
+        foreach (string item in Items)
         {
             switch (item)
             {
@@ -515,7 +514,7 @@ public class Archmage
         }
     }
 
-    void ExtrasCheck(string[] Items)
+    void ExtrasCheck(params string[] Items)
     {
         Core.Logger("Extra Items Check.");
 
