@@ -36,7 +36,7 @@ public class Archmage
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("Lumina Elementi", "Do the extra quest?", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
-        new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them.) [Off by default]", false),
+        new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get Archmage and the weapon) [On by default]", true),
         new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false)
     };
 
@@ -75,29 +75,27 @@ public class Archmage
 
         RequiredStuffs();
 
-        if (Bot.Config.Get<bool>("Cosmetics"))
+        if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Cosmetics))
+        {
+            Core.EnsureAccept(8918);
 
-            if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Cosmetics))
-            {
-                Core.EnsureAccept(8918);
+            ExtrasCheck(Cosmetics);
 
-                ExtrasCheck(Cosmetics);
+            Magus(true);
+            Fire(true);
+            Ice(true);
+            Aether(true);
+            Arcana(true);
 
-                Magus(true);
-                Fire(true);
-                Ice(true);
-                Aether(true);
-                Arcana(true);
+            Core.EnsureComplete(8918);
 
-                Core.EnsureComplete(8918);
+            Bot.Wait.ForPickup("Archmage");
+            Core.ToBank(Cosmetics);
 
-                Bot.Wait.ForPickup("Archmage");
-                Core.ToBank(Cosmetics);
-
-                if (rankUpClass)
-                    Adv.rankUpClass("Archmage");
-            }
-
+            if (rankUpClass)
+                Adv.rankUpClass("Archmage");
+        }
+        
         if (!Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Cosmetics"))
         {
             //Archmage's Ascension 
@@ -256,7 +254,7 @@ public class Archmage
         if (Core.CheckInventory("Book of Aether") && !Extras)
             return;
 
-        BossItemCheck("Void Essentia", "Vital Exanima", "Everlight Flame" );
+        BossItemCheck("Void Essentia", "Vital Exanima", "Everlight Flame");
 
         Core.Logger("Book of Aether");
 
@@ -280,7 +278,7 @@ public class Archmage
         if (Core.CheckInventory("Book of Arcana") && !Extras)
             return;
 
-        BossItemCheck( "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin" );
+        BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
         Core.Logger("Book of Arcana");
 
