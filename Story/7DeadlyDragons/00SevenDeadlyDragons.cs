@@ -13,7 +13,7 @@ public class Complete7DeadlyDragons
     {
         Core.SetOptions();
 
-        DD.Saga();
+        DD.Complete7DD();
 
         Core.SetOptions(false);
     }
