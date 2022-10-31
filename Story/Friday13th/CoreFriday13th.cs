@@ -328,7 +328,7 @@ public class CoreFriday13th
         Story.PreLoad(this);
 
         // Find the Shadow's Door 2222
-        Story.MapItemQuest(2222, "Neverworld", 1315);
+        Story.MapItemQuest(2222, "neverlore", 1315);
 
         // One-way Trip to Neverworld 2223
         Story.KillQuest(2223, "Neverworld", "Whablobble");
