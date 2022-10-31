@@ -260,7 +260,14 @@ public class CoreFriday13th
         Story.KillQuest(1562, "FireTunnel", "Elder Magma Wyrm");
 
         //Spirit of the Black Unicorn 1563
-        Story.KillQuest(1563, "FireTown", new[] { "Obsidian Golem", "Fire Spirit", "Loup-Garou" });
+        if (!Story.QuestProgression(1563))
+        {
+            Core.EnsureAccept(1563);
+            Core.HuntMonster("firetown", "Obsidian Golem", "Heart of Stone", 5);
+            Core.HuntMonster("firetown", "Fire Spirit", "Fiery Will", 5);
+            Core.HuntMonster("fireriver", "Loup-Garou", "Primal Spirit", 5);
+            Core.EnsureComplete(1563);
+        }
 
         //Tie a Black Ribbon 'Round an Old Burnt Tree 1564
         Story.KillQuest(1564, "FireTown", "Burnt Tree");
