@@ -35,9 +35,9 @@ public class Archmage
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("51%Wep?", "51% wep?", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
+        new Option<bool>("Lumina Elementi", "Do the extra quest?", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
         new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them.) [Off by default]", false),
-        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only.) [Off by default]", false)
+        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false)
     };
 
     private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
@@ -60,11 +60,11 @@ public class Archmage
     public void GetAM(bool rankUpClass = true)
     {
 
-        if (Core.CheckInventory("Archmage", toInv: false) && !Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
+        if (Core.CheckInventory("Archmage", toInv: false) && !Bot.Config.Get<bool>("Lumina Elementi") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage Owned, Farm Finished.", stopBot: true);
-        if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("51%Wep?") && !Bot.Config.Get<bool>("Cosmetics"))
+        if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("Lumina Elementi") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage and Providence Owned, Farm Finished.", stopBot: true);
-        if (Bot.Config.Get<bool>("51%Wep?") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Cosmetics))
+        if (Bot.Config.Get<bool>("Lumina Elementi") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Cosmetics))
             Core.Logger("Archmage, Providence, and Extras Owned, Farm Finished.", stopBot: true);
         if (Bot.Config.Get<bool>("Armying?"))
             Core.Logger("Armying Set to True, Please have all accounts logged in and Following this Acc using the Tools > Butler.cs");
@@ -118,7 +118,7 @@ public class Archmage
                 Adv.rankUpClass("Archmage");
         }
 
-        if (Bot.Config.Get<bool>("51%Wep?"))
+        if (Bot.Config.Get<bool>("Lumina Elementi"))
             LuminaElementi();
     }
 
