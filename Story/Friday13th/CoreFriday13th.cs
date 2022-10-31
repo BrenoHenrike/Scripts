@@ -331,7 +331,7 @@ public class CoreFriday13th
         Story.MapItemQuest(2222, "neverlore", 1315);
 
         // One-way Trip to Neverworld 2223
-        Story.KillQuest(2223, "Neverworld", "Whablobble");
+        Story.KillQuest(2223, "neverlore", "Whablobble");
 
         // Slash the Shadows 2224
         Story.KillQuest(2224, "Neverworld", "Spid-Squider");
