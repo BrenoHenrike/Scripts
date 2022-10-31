@@ -56,6 +56,8 @@ public class ArmyLegionFealty2
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 
+        LegionFealty2();
+
         Core.SetOptions(false);
     }
 
@@ -63,29 +65,28 @@ public class ArmyLegionFealty2
     {
         if (Core.CheckInventory("Conquest Wreath", quant))
             return;
-
         Legion.JoinLegion();
-
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger($"Conquest Wreath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
             Bot.Quests.UpdateQuest(3008);
-            GetItem("doomvault", "*", 6898, "Grim Cohort Conquered", 500);
-            GetItem("mummies", "*", 6898, "Ancient Cohort Conquered", 500);
-            GetItem("wrath", "*", 6898, "Pirate Cohort Conquered", 500);
-            GetItem("doomwar", "*", 6898, "Battleon Cohort Conquered", 500);
-            GetItem("overworld", "*", 6898, "Mirror Cohort Conquered", 500);
-            GetItem("deathpits", "*", 6898, "Darkblood Cohort Conquered", 500);
-            GetItem("maxius", "*", 6898, "Vampire Cohort Conquered", 500);
-            GetItem("curseshore", "*", 6898, "Spirit Cohort Conquered", 500);
-            GetItem("dragonbone", "*", 6898, "Dragon Cohort Conquered", 500);
-            GetItem("doomwood", "*", 6898, "Doomwood Cohort Conquered", 500);
+            GetItem("doomvault", new[] { "*" }, 6898, "Grim Cohort Conquered", 500);
+            GetItem("mummies", new[] { "*" }, 6898, "Ancient Cohort Conquered", 500);
+            GetItem("wrath", new[] { "*" }, 6898, "Pirate Cohort Conquered", 500);
+            GetItem("doomwar", new[] { "*" }, 6898, "Battleon Cohort Conquered", 500);
+            GetItem("overworld", new[] { "*" }, 6898, "Mirror Cohort Conquered", 500);
+            GetItem("deathpits", new[] { "*" }, 6898, "Darkblood Cohort Conquered", 500);
+            GetItem("maxius", new[] { "*" }, 6898, "Vampire Cohort Conquered", 500);
+            GetItem("curseshore", new[] { "*" }, 6898, "Spirit Cohort Conquered", 500);
+            GetItem("dragonbone", new[] { "*" }, 6898, "Dragon Cohort Conquered", 500);
+            GetItem("doomwood", new[] { "*" }, 6898, "Doomwood Cohort Conquered", 500);
             Core.EnsureComplete(6898);
         }
     }
 
-    public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, int quant = 0)
+
+    public void GetItem(string map = null, string[] monsters = null, int questID = 000, string item = null, int quant = 0)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -95,15 +96,15 @@ public class ArmyLegionFealty2
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
         Core.AddDrop(item);
-        Core.EquipClass(ClassType.Farm);
         if (!Bot.Quests.Active.Contains(QuestData))
-            Core.EnsureAccept(questID);
+            Core.RegisterQuests(questID);
 
-        Army.SmartAggroMonStart(map, Monster);
+        foreach (string monster in monsters)
+            Army.SmartAggroMonStart(map, monster);
 
-        Core.FarmingLogger(item, quant);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Core.HuntMonster(map, Monster, log: false);
+            Bot.Combat.Attack("*");
+
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
