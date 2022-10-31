@@ -13,7 +13,7 @@ public class Core7DD
         Core.RunCore();
     }
 
-    public void Saga()
+    public void Complete7DD()
     {
         Gluttony();
         Pride();
