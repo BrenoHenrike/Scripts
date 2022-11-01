@@ -34,13 +34,13 @@ public class FrozenNorthlands
         Story.KillQuest(3634, "chaosnorth", new[] { "Chaotic Symbiote", "Chaorruption" });
 
         //Book of Chaos and Flames (3635)
-        Story.KillQuest(3635, "chaosnorth", new[] { "Chaorrupted Mage|Chaos Mage", "Chaorrupted Mage", "Chaorrupted Mage|Chaos Mage" });
+        Story.KillQuest(3635, "chaosnorth", new[] { "Chaorrupted Mage", "Chaorrupted Mage", "Chaorrupted Mage" });
 
         //Facets of Chaos (3636)
         Story.KillQuest(3636, "chaosnorth", "Chaos Gemrald");
 
         //Chaos Eye Spy (3637)
-        Story.KillQuest(3637, "chaosnorth", new[] { "Chaorrupted Imp", "Chaorrupted Mage|Chaos Mage", "Chaorruption", "Chaos Sp-Eye" });
+        Story.KillQuest(3637, "chaosnorth", new[] { "Chaorrupted Imp", "Chaorrupted Mage", "Chaorruption", "Chaos Sp-Eye" });
 
         //Defeat Chaorrupted Xan Illusion (3638)
         Story.KillQuest(3638, "chaosnorth", "Chaorrupted Xan");

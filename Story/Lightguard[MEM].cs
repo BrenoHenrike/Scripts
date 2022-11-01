@@ -22,7 +22,7 @@ public class Lightguard
             Core.Logger("Michem Quests Is Member Only. Skipping this Script");
             return;
         }
-            
+
         if (Core.isCompletedBefore(2036))
             return;
 
@@ -35,7 +35,7 @@ public class Lightguard
         Story.KillQuest(2032, "doomwood", "Doomwood Treeant");
 
         //Supplies Party 2033
-        Story.KillQuest(2033, "darkness", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer" });
+        Story.KillQuest(2033, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer" });
 
         //Copious Notes 2034
         Story.KillQuest(2034, "doomwood", "Doomwood Bonemuncher");
