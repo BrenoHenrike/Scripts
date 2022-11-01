@@ -65,6 +65,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class UnlockForgeEnhancements
@@ -477,21 +478,18 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8820);
+        
         VoidLodestone();
+        
         SoW.Tyndarius();
+        
         // have the Dark Box and Dark Key mini-saga completed 
         // Quest complete will require you to turn in the Power of Darkness, 
         Core.BuyItem(Bot.Map.Name, 1380, "The Power of Darkness");
+        
         //20 Dark Potions,
-        Daily.MonthlyTreasureChestKeys();
-        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
-        {
-            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
-            return;
-        }
-
         Core.RegisterQuests(5710);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Potion", 20))
         {
             if (Core.IsMember)
                 Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
@@ -499,7 +497,7 @@ public class UnlockForgeEnhancements
         }
         Core.CancelRegisteredQuests();
 
-        Core.HuntMonster("tercessuinotlim", "Nulgass", "The Mortal Coil", isTemp: false);
+        Core.HuntMonster("tercessuinotlim", "Nulgath", "The Mortal Coil", isTemp: false);
         Core.EnsureComplete(8820);
         Core.Logger("Enhancement Unlocked: Acheron");
     }
@@ -760,8 +758,7 @@ public class UnlockForgeEnhancements
         {
             //(Reward from the 'Open Ebony Chest' quest
             //Requires: ???(38565) to acess quest
-            if (!Core.CheckInventory(38565))
-                TheDarkBox(38565);
+            TheDarkBox(38565);
 
             if (Core.CheckInventory(38565))
             {
@@ -788,26 +785,6 @@ public class UnlockForgeEnhancements
         Core.BuyItem("doomwood", 1381, "Void Lodestone");
     }
 
-    public void TheDarkBox(string Item = "any", int quant = 1)
-    {
-        Daily.MonthlyTreasureChestKeys();
-        if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
-        {
-            Core.Logger("Dark Box & Key Not Found, Cannot Continue with Enh");
-            return;
-        }
-
-        Core.Logger("Pray to RNGsus for your item");
-        if (!Bot.ShouldExit && !Core.CheckInventory(Item, quant) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
-        {
-            Core.EnsureAccept(5710);
-            if (Core.IsMember)
-                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
-            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
-            Core.EnsureComplete(5710);
-        }
-    }
-
     public void TheDarkBox(int itemID, int quant = 1)
     {
         Daily.MonthlyTreasureChestKeys();
@@ -817,14 +794,17 @@ public class UnlockForgeEnhancements
             return;
         }
 
+        ItemBase Reward = Core.EnsureLoad(5710).Rewards.Find(x => x.ID == itemID);
+
         Core.Logger("Pray to RNGsus for your item");
-        if (!Bot.ShouldExit && !Core.CheckInventory(itemID, quant) && Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID, quant))
         {
             Core.EnsureAccept(5710);
             if (Core.IsMember)
                 Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
             else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
             Core.EnsureComplete(5710);
+            Bot.Wait.ForPickup(Reward.ID);
         }
     }
 }
