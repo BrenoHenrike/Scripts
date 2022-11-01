@@ -109,7 +109,7 @@ public class StreamwarMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8814, 8815);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
+                        Core.HuntMonster("Streamwar", "False Wyvern", "Timestream Medal", 5, log: false);
                     Core.CancelRegisteredQuests();
                     break;
             }
