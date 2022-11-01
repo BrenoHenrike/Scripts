@@ -28,7 +28,7 @@ public class Pirates
         Story.MapItemQuest(1534, "pirates", 769, 3);
 
         //Skeleton Crew, Skeleton Key 1535
-        Story.KillQuest(1535, "pirates", "Undead Pirate ");
+        Story.KillQuest(1535, "pirates", "Undead Pirate");
 
         //Dead Journal 1536
         Story.MapItemQuest(1536, "pirates", 770);

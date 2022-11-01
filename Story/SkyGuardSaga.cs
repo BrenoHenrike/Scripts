@@ -140,7 +140,7 @@ public class SkyGuardSaga
 
         // SkyShip Chase Scene
         Story.MapItemQuest(1288, "strategy", 559);
-        
+
         // SkyPirate Shot-caller Neutralized
         Story.KillQuest(1289, "strategy", "Dravir Pirate Captain");
 
@@ -212,43 +212,48 @@ public class SkyGuardSaga
 
         Story.PreLoad(this);
 
-        //Hoof it til it Beaks 2248
-        while (!Story.QuestProgression(2248) || !Core.CheckInventory("Bag of Gross Supplies") || !Core.CheckInventory(new[] { "Tanned Skin", "Hootbeak Piercer" }))
+        if (!Core.CheckInventory("Bag of Gross Supplies"))
         {
-            Core.AddDrop("Tanned Skin", "Hootbeak Piercer");
-            Core.EnsureAccept(2248);
-            Core.GetMapItem(1410, 5, "Bunker");
-            Core.HuntMonster("Bunker", "Subrysa", "Subrysa Skin", 5);
-            Core.HuntMonster("Bunker", "Hootbear", "Hootbeak", 5);
-            Core.EnsureComplete(2248);
-        }
 
-        //Bind it with Twine 2249
-        while (!Story.QuestProgression(2249) || !Core.CheckInventory("Bag of Gross Supplies") || !Core.CheckInventory(new[] { "Emu Egg Binder", "Medical Twine" }))
-        {
-            Core.AddDrop("Emu Egg Binder", "Medical Twine");
-            Core.EnsureAccept(2249);
-            Core.GetMapItem(1411, 7, "Bunker");
-            Core.GetMapItem(1412, 3, "Bunker");
-            Core.HuntMonster("Bunker", "Tainted Emu", "Emu Spine", 3);
-            Core.HuntMonster("Bunker", "Koalion", "Koalion Claw", 6);
-            Core.EnsureComplete(2249);
-        }
+            //Hoof it til it Beaks 2248
+            if (!Core.CheckInventory(new[] { "Tanned Skin", "Hootbeak Piercer" }))
+            {
+                Core.AddDrop("Tanned Skin", "Hootbeak Piercer");
+                Core.EnsureAccept(2248);
+                Core.GetMapItem(1410, 5, "Bunker");
+                Core.HuntMonster("Bunker", "Subrysa", "Subrysa Skin", 5);
+                Core.HuntMonster("Bunker", "Hootbear", "Hootbeak", 5);
+                Core.EnsureComplete(2248);
+            }
 
-        //Hold it Together 2250
-        while (!Story.QuestProgression(2250) || !Core.CheckInventory("Bag of Gross Supplies") || !Core.CheckInventory("Rhison Glue"))
-        {
-            Core.AddDrop("Rhison Glue");
-            Core.EnsureAccept(2250);
-            Core.HuntMonster("bloodtusk", "Rhison", "Rhison Hoof", 10);
-            Core.EnsureComplete(2250);
+            //Bind it with Twine 2249
+            if (!Core.CheckInventory(new[] { "Emu Egg Binder", "Medical Twine" }))
+            {
+                Core.AddDrop("Emu Egg Binder", "Medical Twine");
+                Core.EnsureAccept(2249);
+                Core.GetMapItem(1411, 7, "Bunker");
+                Core.GetMapItem(1412, 3, "Bunker");
+                Core.HuntMonster("Bunker", "Tainted Emu", "Emu Spine", 3);
+                Core.HuntMonster("Bunker", "Koalion", "Koalion Claw", 6);
+                Core.EnsureComplete(2249);
+            }
+
+            //Hold it Together 2250
+            if (!Core.CheckInventory("Rhison Glue"))
+            {
+                Core.AddDrop("Rhison Glue");
+                Core.EnsureAccept(2250);
+                Core.HuntMonster("bloodtusk", "Rhison", "Rhison Hooves", 10);
+                Core.EnsureComplete(2250);
+            }
+
+            Core.BuyItem("Bunker", 467, "Bag of Gross Supplies");
         }
 
         //Build a Beast! 2251
         if (!Story.QuestProgression(2251))
         {
             Core.EnsureAccept(2251);
-            Core.BuyItem("Bunker", 467, "Bag of Gross Supplies");
             Core.HuntMonster("Palace", "Subrysa", "Subrysa Corpse", 3);
             Core.HuntMonster("Bunker", "Koalion", "Koalion Corpse", 3);
             Core.HuntMonster("Bunker", "Tainted Emu", "Tainted Emu Corpse", 3);
@@ -269,7 +274,7 @@ public class SkyGuardSaga
         Story.PreLoad(this);
 
         //Break the Chains 2484
-        if (!Story.QuestProgression(2484) || !Core.CheckInventory("All the Guards Defeated"))
+        if (!Core.CheckInventory("All the Guards Defeated"))
         {
             Core.EnsureAccept(2484);
             Core.HuntMonster("ChaosGuard", "Chaos Skylord", "Defeated SkyLord", 2);
@@ -278,7 +283,7 @@ public class SkyGuardSaga
         }
 
         //Eye Spy Victory! 2486
-        if (!Story.QuestProgression(2486) || !Core.CheckInventory("No Spy-eyes on me"))
+        if (!Core.CheckInventory("No Spy-eyes on me"))
         {
             Core.EnsureAccept(2486);
             Core.HuntMonster("ChaosGuard", "Sky Spy-Eye", "Defeated Sky Spy-Eye", 8);
@@ -286,7 +291,7 @@ public class SkyGuardSaga
         }
 
         //Discover the Passage 2489
-        if (!Story.QuestProgression(2489) || !Core.CheckInventory("Explore the passage"))
+        if (!Core.CheckInventory("Explore the passage"))
         {
             Core.EnsureAccept(2489);
             Core.GetMapItem(1553, 1, "ChaosGuard");
