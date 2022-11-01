@@ -787,6 +787,10 @@ public class UnlockForgeEnhancements
 
     public void TheDarkBox(int itemID, int quant = 1)
     {
+        ItemBase Reward = Core.EnsureLoad(5710).Rewards.Find(x => x.ID == itemID);
+        
+        Core.AddDrop("Dark Potion", Reward.Name);
+        
         Daily.MonthlyTreasureChestKeys();
         if (!Core.CheckInventory(new[] { "Dark Box", "Dark Key" }))
         {
@@ -794,7 +798,6 @@ public class UnlockForgeEnhancements
             return;
         }
 
-        ItemBase Reward = Core.EnsureLoad(5710).Rewards.Find(x => x.ID == itemID);
 
         Core.Logger("Pray to RNGsus for your item");
         while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID, quant))

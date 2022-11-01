@@ -296,8 +296,7 @@ public class CoreNSOD
 
         Core.Logger("Unenhanced Aura");
         Adv.GearStore();
-        Necro.GetNecromancer(false);
-        Adv.rankUpClass("Necromancer");
+        Necro.GetNecromancer(true);
         Adv.GearStore(true);
 
         Core.AddDrop("Unenhanced Aura");
