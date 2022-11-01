@@ -382,7 +382,7 @@ public class CoreQOM
         {
             Core.EnsureAccept(5578);
             Core.KillMonster("DoomPally", "r3", "Right", "*", "Doomwood Invaders Fought", 4);
-            Core.KillMonster("Darkovianvasion", "Enter", "Spawn", "*", "Darkovia Invaders Fought", 4);
+            Core.KillMonster("DarkoviaInvasion", "Enter", "Spawn", "*", "Darkovia Invaders Fought", 4);
             Core.KillMonster("ShadowfallInvasion", "r4", "Left", "*", "Shadowfall Invaders Fought", 4);
             Core.EnsureComplete(5578);
         }

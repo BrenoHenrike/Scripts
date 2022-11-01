@@ -399,6 +399,7 @@ public class AllStories
         #region 7DD
         DD.Complete7DD();
         Core.Logger($"Saga: 7 Deadly Dragons - Complete");
+        
         Egg.Hatch();
         Core.Logger($"Saga: 7 Deadly Dragons (Extra) - Complete");
         #endregion

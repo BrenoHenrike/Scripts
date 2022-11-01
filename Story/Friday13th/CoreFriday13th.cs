@@ -21,7 +21,7 @@ public class CoreFriday13th
     {
         if (!Core.IsMember && !CalculateFriday13())
             return;
-        
+
         Skullpunch();
         Lowe();
         Saloonfront();
@@ -54,40 +54,40 @@ public class CoreFriday13th
 
         // Roly Poly Fishbones 3099
         Story.KillQuest(3099, "Skullpunch", "Fishbones");
-        
+
         // We Can't Stop Here! 3100
         Story.KillQuest(3100, "Vampirates", "Creepy Bat");
-        
+
         // It's Bat Country! 3101
         Story.KillQuest(3101, "Vampirates", "Creepy Bat");
-        
+
         // Vampirates! 3102
         Story.KillQuest(3102, "Vampirates", "Vampirate");
 
         // Oh Right, They're Vampires 3103
         Story.KillQuest(3103, "Vampirates", new[] { "Creepy Bat", "Vampirate" });
-        
+
         // The Vampirate Captain 3104
         Story.MapItemQuest(3104, "Vampirates", 1959);
-        
+
         // How Are We Breathing Under Here!? 3105
         Story.KillQuest(3105, "Vampirates", "Stranglerfish");
-        
+
         // Unsink This Ship! 3106
         Story.KillQuest(3106, "Vampirates", new[] { "Murderaconian", "Vampirate", "Vampirate" });
-        
+
         // Release the Kraken! Wait, no - Don't. 3107
         Story.KillQuest(3107, "Vampirates", "Bracken Kraken");
-        
+
         // I Didn't Know They Could Swarm! 3108
         Story.KillQuest(3108, "Vampirates", "Vampirate");
 
         // Now Where Are Those Landmarks? 3109
         Story.MapItemQuest(3109, "TreasureIsland", new[] { 1986, 1987, 1988, 1989 });
-        
+
         // X Marks The Spot 3110
         Story.MapItemQuest(3110, "TreasureIsland", 1958);
-        
+
         // Captain Von Poach 3111
         Story.KillQuest(3111, "TreasureIsland", "Captain Von Poach");
 
@@ -116,13 +116,13 @@ public class CoreFriday13th
             return;
 
         Story.PreLoad(this);
-        
+
         // Listen to George Lowe's story 750
         Story.ChainQuest(750);
 
         // Ladies First 751
         Story.KillQuest(751, "Brain", "Slimed Girl");
-        
+
         // Slimy Boys 752
         Story.KillQuest(752, "Brain", "Slimed Boy");
 
@@ -140,19 +140,19 @@ public class CoreFriday13th
 
         // The First 6 Chapters 757
         Story.KillQuest(757, "Ebildread", new[] { "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet" });
-        
+
         // The Last 6 Chapters 758
         Story.KillQuest(758, "Ebildread", new[] { "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier" });
-        
+
         // The Glossary 759
         Story.KillQuest(759, "Ebildread", "Jay Sun");
-        
+
         // Cover Me 760
         Story.KillQuest(760, "Ebildread", "Pink Hand");
 
         // Dweam-Maze 761
         Story.ChainQuest(761);
-        
+
         // Big Bad Kwueger Man 762
         Story.ChainQuest(762);
 
@@ -160,7 +160,7 @@ public class CoreFriday13th
         Story.ChainQuest(763);
 
         // Super George Lowe-viathan 764
-        Story.KillQuest(764, "SuperLowe", "Super Lowe-Viathan");        
+        Story.KillQuest(764, "SuperLowe", "Super Lowe-Viathan");
     }
 
     public void Saloonfront()
@@ -169,7 +169,7 @@ public class CoreFriday13th
             return;
 
         Story.PreLoad(this);
-        
+
         // Deady's Return 1042
         Story.ChainQuest(1042);
 
@@ -199,16 +199,16 @@ public class CoreFriday13th
 
         // Caboose Key 1051
         Story.KillQuest(1051, "Train", "Ghostly Conductor");
-        
+
         // Slow your Role 1052
         Story.MapItemQuest(1052, "Train", 410);
-        
+
         // Slow the Coal 1053
         Story.KillQuest(1053, "Train", "Coal Ghoul");
-        
+
         // Laying Traps 1054
         Story.MapItemQuest(1054, "Blackstone", 411, 12);
-        
+
         // Gathering Mats 1055
         Story.MapItemQuest(1055, "Blackstone", 412, 12);
 
@@ -225,7 +225,7 @@ public class CoreFriday13th
             return;
 
         Story.PreLoad(this);
-        
+
         // Gaining Trust 1552
         Story.KillQuest(1552, "FireTown", new[] { "Fire Elemental", "Fire Elemental", "Fire Elemental" });
 
@@ -291,28 +291,28 @@ public class CoreFriday13th
 
         // Guess What in a Guess Where 1964
         Story.MapItemQuest(1964, "Sleezter", 974);
-        
+
         // Splitting Hares 1965
         Story.KillQuest(1965, "Sleezter", "BunnyMinion");
-        
+
         // Sleezter Bunny's Quarters 1966
         Story.MapItemQuest(1966, "Sleezter", 975);
-        
+
         // The Sleezter Bunivinci Code 1967
         Story.KillQuest(1967, "Sleezter", "BunnyMinion");
-        
+
         // Take Sleezter Bunny Out! 1968
         Story.KillQuest(1968, "Sleezter", "Sleezter Bunny");
-        
+
         // Mantis Ray Repair 1969
         Story.MapItemQuest(1969, "Sleezter", 976, 6);
-        
+
         // A Map Wouldn't Hurt 1970
         Story.KillQuest(1970, "Sleezter", "BunnyMinion");
-        
+
         // Endin' Minions 1971
         Story.MapItemQuest(1971, "Sleezter", 977);
-        
+
         // Breaking Bad Eggs 1972
         Story.MapItemQuest(1972, "Sleezter", 978);
 
@@ -331,7 +331,7 @@ public class CoreFriday13th
         Story.MapItemQuest(2222, "neverlore", 1315);
 
         // One-way Trip to Neverworld 2223
-        Story.KillQuest(2223, "Neverworld", "Whablobble");
+        Story.KillQuest(2223, "neverlore", "Whablobble");
 
         // Slash the Shadows 2224
         Story.KillQuest(2224, "Neverworld", "Spid-Squider");
@@ -375,7 +375,7 @@ public class CoreFriday13th
     {
         if (Core.IsMember && CalculateFriday13())
             return;
-     
+
         Core.BankingBlackList.AddRange(new[] { "Unlucky Gem I", "Unlucky Gem II", "Unlucky Gem III",
                                                "Unlucky Gem IV", "Unlucky Gem V", "Unlucky Gem VI",
                                                "Unlucky Gem VII", "Cursed Mirror of Enutrof", "Shadowglass Shard" });
@@ -397,11 +397,11 @@ public class CoreFriday13th
                 case 4649: // Slippery Shadows 4649
                     Core.HuntMonster("Battledoom", "Shadow Skelly", "Necronomicon Page", 6);
                     break;
-                
+
                 case 4650: // Through the Looking-Glass 4650
                     Core.HuntMonster("Battledoom", "Shadow Skelly", "Mirror Fragment Retrieved");
                     break;
-                
+
                 case 4651: // Necro-Polished 4651
                     Core.GetMapItem(3976, 1, "necropolis");
                     Core.HuntMonster("Battledoom", "Shadow Skelly", "Shadow Skeletons Defeated", 13);
@@ -411,12 +411,12 @@ public class CoreFriday13th
                     Core.HuntMonster("NecroCavern", "Shadow Imp", "Mirror Fragment Found");
                     Core.HuntMonster("NecroCavern", "ShadowStone Elemental", "Mirror Fragment Located");
                     break;
-                
+
                 case 4653: // Mirror, Mirror, Off the Wall 4653
                     Core.GetMapItem(3975, 1, "battleoff");
                     Core.HuntMonster("Battleoff", "Evil Moglin", "Evil Moglin Defeated", 3);
                     break;
-                
+
                 case 4654: // To the Underworld! 4654
                     Core.HuntMonster("Underworld", "Undead Legend", "Mirror Fragment Obtained");
                     Core.HuntMonster("Underworld", "Klunk", "Mirror Fragment Acquired");
@@ -445,7 +445,7 @@ public class CoreFriday13th
 
         // Something In The Air 5051
         Story.KillQuest(5051, "Wormhole", new[] { "Goth Girl", "Vamp Boy" });
-        
+
         // They're Not Red Shirts - They're Deadshirts! 5052
         Story.MapItemQuest(5052, "Wormhole", new[] { 4420, 4421, 4422 });
         Story.KillQuest(5052, "Wormhole", "Deadshirt");
@@ -500,7 +500,7 @@ public class CoreFriday13th
             return;
 
         Story.PreLoad(this);
-        
+
         // Those Bloody Maggots 5637
         Story.MapItemQuest(5637, "CrownsReachFXIII", 5115, 8);
         Story.KillQuest(5637, "CrownsReachFXIII", "Blood Maggot");
@@ -570,7 +570,7 @@ public class CoreFriday13th
 
         // Stop the Ringleader 6267
         Story.KillQuest(6267, "Gonnagetcha", "Bride of Shrade");
-        
+
         // Defeat Shrade! 6268
         Story.KillQuest(6268, "Gonnagetcha", "Shrade");
 
@@ -658,7 +658,7 @@ public class CoreFriday13th
     public void Splatterwar()
     {
         Puzzlebox();
-        
+
         if (Core.isCompletedBefore(7407) || !Core.IsMember && !CalculateFriday13())
             return;
 
@@ -675,7 +675,7 @@ public class CoreFriday13th
 
         // Defeat Shrade 7406
         Story.KillQuest(7406, "SplatterWarDage", "Shrade");
-        
+
         // Legion Medals 7401
         Story.KillQuest(7401, "SplatterWarShrade", "Legion Maw");
 
@@ -732,8 +732,13 @@ public class CoreFriday13th
         Story.KillQuest(8227, "Deadfly", "Skeletal Minion");
 
         // Souls for Offering 8228
-        Story.MapItemQuest(8228, "Deadfly", 8772);
-        Story.KillQuest(8228, "Deadfly", "Skeletal Mage");
+        if (!Story.QuestProgression(8228))
+        {
+            Core.EnsureAccept(8228);
+            Core.HuntMonster("deadfly", "Skeletal Mage", "Fresh Soul", 8);
+            Core.GetMapItem(8772, 1, "deadfly");
+            Core.EnsureComplete(8228);
+        }
 
         // Clue by 8 8229
         Story.KillQuest(8229, "RotFinger", "Lost Soul");
