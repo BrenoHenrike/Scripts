@@ -653,7 +653,8 @@ public class CoreFarms
         Luc = 11683, // Fate Tonic
         Int = 11635, // Sage Tonic
         SPw = 11745, // Potent Malevolence Elixir    
-        hOu = 11761 // Healer Elixer / Potent Guard Potion / Unstable Healer Elixer // rep spam with jerra
+        hOu = 11761, // Healer Elixer / Potent Guard Potion / Unstable Healer Elixer // rep spam with jerra
+        hRe = 11758 // Potent Revitalize Elixi
         //more to be added by request
     };
 
