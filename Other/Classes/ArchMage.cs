@@ -133,8 +133,8 @@ public class Archmage
 
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2500))
-            Core.HuntMonster("Streamwar", "False Wyvern", "Timestream Medal", 5, log: false);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2000))
+            Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
         Core.CancelRegisteredQuests();
 
         Core.FarmingLogger("Unbound Thread", 100);
