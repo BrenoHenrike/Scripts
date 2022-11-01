@@ -53,7 +53,6 @@ public class Archmage
         Core.SetOptions();
 
         GetAM();
-
         Core.SetOptions(false);
     }
 
@@ -134,8 +133,8 @@ public class Archmage
 
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
-            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2500))
+            Core.HuntMonster("Streamwar", "Second Speaker", "Timestream Medal", 5, log: false);
         Core.CancelRegisteredQuests();
 
         Core.FarmingLogger("Unbound Thread", 100);
