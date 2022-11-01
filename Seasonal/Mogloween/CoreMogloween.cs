@@ -432,7 +432,7 @@ public class CoreMogloween
 
         //Gather the Goods 6569
         Story.MapItemQuest(6569, "twigsarcade", 6069, 3);
-        Story.MapItemQuest(6569, "twigsarcade", 6070, 6);
+        Story.MapItemQuest(6569, "twigsarcade", 6070, 3);
         Story.KillQuest(6569, "twigsarcade", "Scotty Sneevil");
 
         //Spooky Casings 6570
@@ -633,7 +633,7 @@ public class CoreMogloween
         //Lullaby 8374
         Story.KillQuest(8374, "necrocarnival", "Deva");
     }
-    
+
     public void TrickTown()
     {
         if (!Core.isSeasonalMapActive("tricktown"))

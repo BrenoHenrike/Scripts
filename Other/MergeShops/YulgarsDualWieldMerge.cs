@@ -9,6 +9,7 @@
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
 //cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
