@@ -212,11 +212,11 @@ public class SkyGuardSaga
 
         Story.PreLoad(this);
 
-        while (!Core.CheckInventory("Bag of Gross Supplies"))
+        if (!Core.CheckInventory("Bag of Gross Supplies"))
         {
 
             //Hoof it til it Beaks 2248
-            while (!Core.CheckInventory(new[] { "Tanned Skin", "Hootbeak Piercer" }))
+            if (!Core.CheckInventory(new[] { "Tanned Skin", "Hootbeak Piercer" }))
             {
                 Core.AddDrop("Tanned Skin", "Hootbeak Piercer");
                 Core.EnsureAccept(2248);
@@ -227,7 +227,7 @@ public class SkyGuardSaga
             }
 
             //Bind it with Twine 2249
-            while (!Core.CheckInventory(new[] { "Emu Egg Binder", "Medical Twine" }))
+            if (!Core.CheckInventory(new[] { "Emu Egg Binder", "Medical Twine" }))
             {
                 Core.AddDrop("Emu Egg Binder", "Medical Twine");
                 Core.EnsureAccept(2249);
@@ -239,7 +239,7 @@ public class SkyGuardSaga
             }
 
             //Hold it Together 2250
-            while (!Core.CheckInventory("Rhison Glue"))
+            if (!Core.CheckInventory("Rhison Glue"))
             {
                 Core.AddDrop("Rhison Glue");
                 Core.EnsureAccept(2250);
@@ -274,7 +274,7 @@ public class SkyGuardSaga
         Story.PreLoad(this);
 
         //Break the Chains 2484
-        if (!Story.QuestProgression(2484) || !Core.CheckInventory("All the Guards Defeated"))
+        if (!Core.CheckInventory("All the Guards Defeated"))
         {
             Core.EnsureAccept(2484);
             Core.HuntMonster("ChaosGuard", "Chaos Skylord", "Defeated SkyLord", 2);
@@ -283,7 +283,7 @@ public class SkyGuardSaga
         }
 
         //Eye Spy Victory! 2486
-        if (!Story.QuestProgression(2486) || !Core.CheckInventory("No Spy-eyes on me"))
+        if (!Core.CheckInventory("No Spy-eyes on me"))
         {
             Core.EnsureAccept(2486);
             Core.HuntMonster("ChaosGuard", "Sky Spy-Eye", "Defeated Sky Spy-Eye", 8);
@@ -291,7 +291,7 @@ public class SkyGuardSaga
         }
 
         //Discover the Passage 2489
-        if (!Story.QuestProgression(2489) || !Core.CheckInventory("Explore the passage"))
+        if (!Core.CheckInventory("Explore the passage"))
         {
             Core.EnsureAccept(2489);
             Core.GetMapItem(1553, 1, "ChaosGuard");
