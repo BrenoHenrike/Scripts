@@ -35,7 +35,7 @@ public class Archmage
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("Lumina Elementi", "Do the extra quest?", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
+        new Option<bool>("Lumina Elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
         new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get Archmage and the weapon) [On by default]", true),
         new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false)
     };
@@ -78,7 +78,8 @@ public class Archmage
         {
             Core.EnsureAccept(8918);
 
-            ExtrasCheck(Cosmetics);
+            if (Bot.Config.Get<bool>("Cosmetics"))
+                ExtrasCheck("Arcane Sigil");
 
             Magus(true);
             Fire(true);
@@ -94,11 +95,14 @@ public class Archmage
             if (rankUpClass)
                 Adv.rankUpClass("Archmage");
         }
-        
+
         if (!Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Cosmetics"))
         {
             //Archmage's Ascension 
             Core.EnsureAccept(8918);
+
+            if (Bot.Config.Get<bool>("Cosmetics"))
+                ExtrasCheck("Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle");
 
             Magus();
             Fire();
@@ -163,6 +167,7 @@ public class Archmage
         //Book of Magus: Incantation
         if (Core.CheckInventory("Book of Magus") && !Extras)
             return;
+
         Core.Logger("Book: Book of Magus");
         UnboundTomb(1);
         Core.EnsureAccept(8913);
@@ -196,6 +201,9 @@ public class Archmage
         if (Core.CheckInventory("Book of Fire") && !Extras)
             return;
 
+        if (Extras)
+            ExtrasCheck("Arcane Floating Sigil", "Sheathed Archmage's Staff");
+
         Core.Logger("Book of Fire");
 
         UnboundTomb(1);
@@ -221,6 +229,9 @@ public class Archmage
     {
         if (Core.CheckInventory("Book of Ice") && !Extras)
             return;
+
+        if (Extras)
+            ExtrasCheck("Archmage's Cowl", "Archmage's Cowl and Locks");
 
         Core.Logger("Book of Ice");
 
@@ -253,6 +264,9 @@ public class Archmage
         if (Core.CheckInventory("Book of Aether") && !Extras)
             return;
 
+        if (Extras)
+            ExtrasCheck("Archmage's Staff");
+
         BossItemCheck("Void Essentia", "Vital Exanima", "Everlight Flame");
 
         Core.Logger("Book of Aether");
@@ -276,6 +290,9 @@ public class Archmage
         //Book of Arcana: Arcane Sigil
         if (Core.CheckInventory("Book of Arcana") && !Extras)
             return;
+
+        if (Extras)
+            ExtrasCheck("Archmage's Robes");
 
         BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
@@ -394,7 +411,7 @@ public class Archmage
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus();
 
-        Core.FarmingLogger("Arcane Locus", quant);
+        Core.FarmingLogger("Unbound Tome", quant);
 
         MysticScribingKit(quant);
         PrismaticEther(quant);
@@ -414,7 +431,7 @@ public class Archmage
         }
     }
 
-    //Required Stuffs
+    //Required Story & Reputations
     void RequiredStuffs()
     {
         Core.Logger("Completing Quests / Rep Requirements");
@@ -431,7 +448,7 @@ public class Archmage
         Core.Logger("Quests / Rep Requirements, Done.");
     }
 
-    //Item Checks
+    //Boss Items
     void BossItemCheck(params string[] Items)
     {
         Core.Logger("Item Check.");
@@ -511,6 +528,7 @@ public class Archmage
         }
     }
 
+    //Cosmetics
     void ExtrasCheck(params string[] Items)
     {
         Core.Logger("Extra Items Check.");
@@ -519,6 +537,7 @@ public class Archmage
         {
             if (!Core.CheckInventory(item))
                 Core.Logger($"{item} Missing. Bot Will Refarm for it.");
+            else Core.Logger($"{item} Found");
         }
     }
 
