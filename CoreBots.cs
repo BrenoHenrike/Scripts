@@ -717,7 +717,8 @@ public class CoreBots
         }
 
         //Merge item check
-        int buy_count = (int)Math.Ceiling((decimal)buy_quant / (decimal)(item.Quantity));
+        int itemCount = item.Quantity == 0 ? 1 : item.Quantity;
+        int buy_count = (int)Math.Ceiling((decimal)buy_quant / (decimal)(itemCount));
         if (item.Requirements != null)
         {
             foreach (ItemBase req in item.Requirements)
