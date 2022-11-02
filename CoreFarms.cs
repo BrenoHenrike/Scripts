@@ -430,11 +430,12 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
+        Bot.Options.AggroMonsters = false;
+        
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
             Core.Join("bludrutbrawl", "Enter0", "Spawn");
-
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
             Core.PvPMove(7, "Morale0A");

@@ -21,7 +21,7 @@ public class QueenBattle
 
     public void StoryLine()
     {
-        OrbHunt.SagaName();
+        OrbHunt.OrbHuntSaga();
 
         if (Core.isCompletedBefore(8361))
             return;
