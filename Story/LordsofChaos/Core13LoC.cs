@@ -87,8 +87,13 @@ public class Core13LoC
         Story.KillQuest(196, "chaoscrypt", "Chaorrupted Armor");
 
         //Unlife Insurance
-        Story.MapItemQuest(6216, "prison", 39, 5);
-        Story.BuyQuest(6216, "prison", 1559, "Unlife Insurance Bond");
+        if (!Story.QuestProgression(6216))
+        {
+            Core.EnsureAccept(6216);
+            Core.GetMapItem(39, 5, "prison");
+            Adv.BuyItem("prison", 1559, 42993);
+            Core.EnsureComplete(6216);
+        }
 
         //Enter the Crypt
         Story.MapItemQuest(6217, "chaoscrypt", 5662);
