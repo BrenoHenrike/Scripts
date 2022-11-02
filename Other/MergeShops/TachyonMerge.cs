@@ -34,18 +34,18 @@ public class TachyonMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null)
     {
         if (!Core.IsMember)
         {
             Core.Logger("This Merge Requires Membership.");
             return;
         }
-        
+
         TOD.DeepSpace();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("tachyon", 1251, findIngredients);
+        Adv.StartBuyAllMerge("tachyon", 1251, findIngredients, buyOnlyThis);
 
         #region Dont edit this part
         void findIngredients()
@@ -72,17 +72,13 @@ public class TachyonMerge
                 case "Blue Tachyon Trigger":
                 case "Tachyon Core Piece":
                 case "Blue Tachyon Grip":
+                    if (!Core.CheckInventory("Orange Tachyon Blade"))
+                        BuyAllMerge("Orange Tachyon Blade");
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5084);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Orange Tachyon Blade"))
-                        {
-                            Core.EnsureAccept(5083);
-                            Core.HuntMonster("tachyon", "Svelgr the Devourer", "Svelgr the Devourer Defeated");
-                            Core.EnsureComplete(5083);
-                        }
                         Core.HuntMonster("tachyon", "Svelgr the Devourer", "Svelgr the Devourer Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
