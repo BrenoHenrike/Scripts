@@ -47,7 +47,7 @@ public class Archmage
     public void ScriptMain(IScriptInterface bot)
     {
         if (Bot.Config.Get<bool>("Cosmetics"))
-            Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
+            Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
         else Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
 
         Core.SetOptions();
@@ -74,7 +74,7 @@ public class Archmage
 
         RequiredStuffs();
 
-        if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Cosmetics))
+        if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics") && !Core.CheckInventory(Cosmetics, toInv: false))
         {
             Core.EnsureAccept(8918);
 
@@ -535,7 +535,7 @@ public class Archmage
 
         foreach (string item in Cosmetics)
         {
-            if (!Core.CheckInventory(item))
+            if (!Core.CheckInventory(item, toInv: false))
                 Core.Logger($"{item} Missing. Bot Will Refarm for it.");
             else Core.Logger($"{item} Found");
         }
