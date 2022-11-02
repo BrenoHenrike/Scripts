@@ -39,8 +39,8 @@ public class DjinnGateStory
             if (!Core.CheckInventory("Fragment 1") || !Core.CheckInventory("Fragment 4"))
             {
                 Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
-                Core.KillMonster("mobius", "Slugfit", "Left", "Slugfit", "Fragment 1");
-                Core.KillMonster("mobius", "End", "Center", "Cyclops Warlord", "Fragment 4");
+                Core.HuntMonster("mobius", "Slugfit", "Fragment 1");
+                Core.HuntMonster("mobius", "Cyclops Warlord", "Fragment 4");
             }
             Core.KillMonster("faerie", "TopRock", "Left", "*", "Fragment 2");
             Core.KillMonster("faerie", "Side4", "Right", "*", "Fragment 3");
