@@ -27,7 +27,7 @@ public class OrbHuntMerge
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        OH.SagaName();
+        OH.OrbHuntSaga();
         BuyAllMerge();
 
         Core.SetOptions(false);

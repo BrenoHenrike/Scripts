@@ -12,12 +12,12 @@ public class OrbHunt
     {
         Core.SetOptions();
 
-        SagaName();
+        OrbHuntSaga();
 
         Core.SetOptions(false);
     }
 
-    public void SagaName()
+    public void OrbHuntSaga()
     {
         if (Core.isCompletedBefore(8349))
             return;

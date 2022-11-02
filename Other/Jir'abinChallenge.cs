@@ -72,7 +72,7 @@ public class JirabinChallenge
         Story.KillQuest(3984, "darkoviagrave", "Darkovia Shade");
 
         //Discover the Void 3985
-        Story.KillQuest(0000, "void", new[] { "Void Elemental", "Void Bear" });
+        Story.KillQuest(3985, "void", new[] { "Void Elemental", "Void Bear" });
 
         //Confront Jir'abin 3986
         Story.KillQuest(3986, "runedwoods", "Jir'abin");

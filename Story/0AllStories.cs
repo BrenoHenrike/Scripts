@@ -504,7 +504,7 @@ public class AllStories
         LivingDungeon.LivingDungeonStory();
         Core.Logger($"Story: LivingDungeon - Complete");
 
-        OrbHunt.SagaName();
+        OrbHunt.OrbHuntSaga();
         Core.Logger($"Story: Orb Hunt - Complete");
 
         QueenBattle.StoryLine();
