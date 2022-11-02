@@ -101,7 +101,7 @@ public class Dwarfhold
         Story.KillQuest(3376, "dwarfhold", "Chaos Drow");
 
         //We Can Replenish Our Armory Too! 3377
-        Story.KillQuest(3376, "dwarfhold", "Chaotic Draconian");
+        Story.KillQuest(3377, "dwarfhold", "Chaotic Draconian");
 
         //Begemralded 3378
         Story.KillQuest(3378, "dwarfhold", "Gemrald");
