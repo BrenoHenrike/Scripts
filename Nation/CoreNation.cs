@@ -185,7 +185,7 @@ public class CoreNation
             if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
             {
                 Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
-                Core.HuntMonsterMapID("mobius", 10, "Slugfit Horn", 5, log: false);
+                Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5, log: false);
                 Core.HuntMonster("mobius", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             }
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
