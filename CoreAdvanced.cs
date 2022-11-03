@@ -1487,6 +1487,7 @@ public class CoreAdvanced
             case "legendary elemental warrior":
             case "ultra elemental warrior":
             case "chaos avenger":
+            case "yami no ronin":
                 if (!uForgeCape())
                     goto default;
 
@@ -1557,7 +1558,6 @@ public class CoreAdvanced
             #region Lucky - Vainglory - Valiance - Vim
             case "continuum chronomancer":
             case "quantum chronomancer":
-            case "yami no ronin":
                 if (!uVainglory() || !uValiance() || !uVim())
                     goto default;
 
@@ -1714,6 +1714,7 @@ public class CoreAdvanced
                     case "warrior":
                     case "warrior (rare)":
                     case "warriorscythe general":
+                    case "yami no ronin":
                         type = EnhancementType.Lucky;
                         wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
@@ -1861,13 +1862,6 @@ public class CoreAdvanced
                     case "dragon of time":
                         type = EnhancementType.Healer;
                         wSpecial = WeaponSpecial.Health_Vamp;
-                        break;
-                    #endregion
-
-                    #region Thief - none - Mana Vamp
-                    case "yami no ronin":
-                        type = EnhancementType.Thief;
-                        wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
                     #endregion
 
