@@ -101,8 +101,8 @@ public class CoreSoW
         Story.KillQuest(6861, "shadowlordkeep", "Shadow Mage");
 
         //Overload the Energy Field (6862)
-        Story.KillQuest(6862, "shadowlordkeep", "Stray Energy");
         Story.MapItemQuest(6862, "shadowlordkeep", 6392);
+        Story.KillQuest(6862, "shadowlordkeep", "Stray Energy");
 
         //Defeat the Portal Guards (6863)
         Story.KillQuest(6863, "shadowlordkeep", "Portal Guard");
@@ -273,15 +273,15 @@ public class CoreSoW
         Story.KillQuest(6962, "junkheap", "Magpie");
 
         //Charge the Portals (6963)
-        Story.KillQuest(6963, "junkheap", "Tiny Manifestation");
         Story.MapItemQuest(6963, "junkheap", 6501);
+        Story.KillQuest(6963, "junkheap", "Tiny Manifestation");
 
         //Through the Rift (6964)
         Story.MapItemQuest(6964, "junkheap", 6502);
 
         //Free Niknak (6965)
-        Story.KillQuest(6965, "junkheap", "Shadowflame Scout");
         Story.MapItemQuest(6965, "junkheap", 6503);
+        Story.KillQuest(6965, "junkheap", "Shadowflame Scout");
 
         //Afraid of Shadows (6966)
         Story.KillQuest(6966, "junkheap", "Shadow Imp|Shadowflame Scout");
@@ -370,22 +370,22 @@ public class CoreSoW
         Story.KillQuest(7054, "aozorahills", "Kosenjobi");
 
         //Attune to Fuyurei (7055)
-        Story.KillQuest(7055, "aozorahills", "Fuyurei");
         Story.MapItemQuest(7055, "aozorahills", 6646);
+        Story.KillQuest(7055, "aozorahills", "Fuyurei");
 
         //Follow the Path (7056)
         Story.MapItemQuest(7056, "aozorahills", 6647, 3);
 
         //Attune to Kijimuna (7057)
-        Story.KillQuest(7057, "aozorahills", "Aozora Kijimuna");
         Story.MapItemQuest(7057, "aozorahills", 6648);
+        Story.KillQuest(7057, "aozorahills", "Aozora Kijimuna");
 
         //Path of the Kijimuna (7058)
         Story.MapItemQuest(7058, "aozorahills", 6649, 3);
 
         //Attune to Reishi (7059)
-        Story.KillQuest(7059, "aozorahills", "Reishi");
         Story.MapItemQuest(7059, "aozorahills", 6650);
+        Story.KillQuest(7059, "aozorahills", "Reishi");
 
         //Path to Reishi (7060)
         Story.MapItemQuest(7060, "aozorahills", 6651, 3);
@@ -648,8 +648,8 @@ public class CoreSoW
         Story.KillQuest(8128, "fireplanewar", "Shadowflame Soldier");
 
         // Fanning the Flames
-        Story.KillQuest(8129, "fireplanewar", "Shadowflame Soldier");
         Story.MapItemQuest(8129, "fireplanewar", 8523, 5);
+        Story.KillQuest(8129, "fireplanewar", "Shadowflame Soldier");
 
         // Trailblazer
         Story.KillQuest(8130, "fireplanewar", "Shadefire Onslaught");
@@ -661,8 +661,8 @@ public class CoreSoW
         Story.KillQuest(8132, "fireplanewar", "Shadefire Elemental");
 
         // Cure the Fire
-        Story.KillQuest(8133, "fireplanewar", "Living Shadowflame");
         Story.MapItemQuest(8133, "fireplanewar", 8524, 5);
+        Story.KillQuest(8133, "fireplanewar", "Living Shadowflame");
 
         // Human Torch
         Story.KillQuest(8134, "fireplanewar", "Living Shadowflame");
@@ -710,8 +710,8 @@ public class CoreSoW
         Story.KillQuest(8179, "fireinvasion", "Onslaught Knight");
 
         // Tiger Burning Bright
-        Story.KillQuest(8180, "fireinvasion", "Shadowfire Tiger");
         Story.MapItemQuest(8180, "fireinvasion", 8728, 3);
+        Story.KillQuest(8180, "fireinvasion", "Shadowfire Tiger");
 
         // Crush the Cavalry
         Story.KillQuest(8181, "fireinvasion", "Shadefire Cavalry");
@@ -720,8 +720,8 @@ public class CoreSoW
         Story.KillQuest(8182, "fireinvasion", "Shadowfire Corporal");
 
         // Light up the Night
-        Story.KillQuest(8183, "fireinvasion", "Shadefire Elemental");
         Story.MapItemQuest(8183, "fireinvasion", 8729, 6);
+        Story.KillQuest(8183, "fireinvasion", "Shadefire Elemental");
 
         // Major Malfunction
         Story.KillQuest(8184, "fireinvasion", "Shadefire Major");
@@ -952,28 +952,23 @@ public class CoreSoW
         Story.KillQuest(8860, "DeadLines", "Frenzied Mana");
 
         //Eternal Flame 8861
-        Story.MapItemQuest(8861, "DeadLines", 10603);
-        Story.MapItemQuest(8861, "DeadLines", 10604);
+        Story.MapItemQuest(8861, "DeadLines", new[] { 10603, 10604 });
         Story.KillQuest(8861, "DeadLines", "Shadowfall Warrior");
 
         //The Wolf Cries 8862
-        Story.MapItemQuest(8862, "DeadLines", 10605);
-        Story.MapItemQuest(8862, "DeadLines", 10606);
+        Story.MapItemQuest(8862, "DeadLines", new[] { 10605, 10606 });
         Story.KillQuest(8862, "DeadLines", "Swordhaven Knight");
 
         //Breaking Down 8863
-        Story.MapItemQuest(8863, "DeadLines", 10607);
-        Story.MapItemQuest(8863, "DeadLines", 10608);
+        Story.MapItemQuest(8863, "DeadLines", new[] { 10607, 10608 });
         Story.KillQuest(8863, "DeadLines", "Shadowfall Warrior");
 
         //Growth Through Hardship 8864
-        Story.MapItemQuest(8864, "DeadLines", 10609);
-        Story.MapItemQuest(8864, "DeadLines", 10610);
+        Story.MapItemQuest(8864, "DeadLines", new[] { 10609, 10610 });
         Story.KillQuest(8864, "DeadLines", "Swordhaven Knight");
 
         //Arteries 8865
-        Story.MapItemQuest(8865, "DeadLines", 10611);
-        Story.MapItemQuest(8865, "DeadLines", 10612);
+        Story.MapItemQuest(8865, "DeadLines", new[] { 10611, 10612 });
         Story.KillQuest(8865, "DeadLines", "Frenzied Mana");
 
         //Paranoiac 8866
