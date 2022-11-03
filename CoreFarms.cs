@@ -1754,7 +1754,7 @@ public class CoreFarms
                 Core.RegisterQuests(7505);
                 while (!Bot.ShouldExit && Core.IsMember ? FactionRank("Loremaster") < 10 : FactionRank("Loremaster") < rank)
                 {
-                    Core.HuntMonster("uppercity", "Drow Assassin", "Poisoned Dagger", 4, log: false);
+                    Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
                 }
                 Core.CancelRegisteredQuests();

@@ -1484,7 +1484,6 @@ public class CoreAdvanced
             case "shadowwalker of time":
             case "shadowstalker of time":
             case "shadowweaver of time":
-            case "yami no ronin":
             case "legendary elemental warrior":
             case "ultra elemental warrior":
             case "chaos avenger":
@@ -1713,7 +1712,6 @@ public class CoreAdvanced
                     case "warrior":
                     case "warrior (rare)":
                     case "warriorscythe general":
-                    case "yami no ronin":
                         type = EnhancementType.Lucky;
                         wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
@@ -1863,6 +1861,15 @@ public class CoreAdvanced
                         wSpecial = WeaponSpecial.Health_Vamp;
                         break;
                     #endregion
+
+                    #region Thief - Vainglory - Mana Vamp
+                    case "yami no ronin":
+                        type = EnhancementType.Thief;
+                        cSpecial = CapeSpecial.Vainglory;
+                        wSpecial = WeaponSpecial.Mana_Vamp;
+                        break;
+                    #endregion
+
                     default:
                         Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
                         return;
