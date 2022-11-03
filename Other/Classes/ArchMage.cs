@@ -46,9 +46,8 @@ public class Archmage
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (Bot.Config.Get<bool>("Cosmetics"))
-            Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
-        else Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
+        
+        Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
 
         Core.SetOptions();
 
@@ -63,13 +62,13 @@ public class Archmage
             Core.Logger("Archmage Owned, Farm Finished.", stopBot: true);
         if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("Lumina Elementi") && !Bot.Config.Get<bool>("Cosmetics"))
             Core.Logger("Archmage and Providence Owned, Farm Finished.", stopBot: true);
-        if (Bot.Config.Get<bool>("Lumina Elementi") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Cosmetics))
+        if (Bot.Config.Get<bool>("Lumina Elementi") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Cosmetics, toInv: false))
             Core.Logger("Archmage, Providence, and Extras Owned, Farm Finished.", stopBot: true);
         if (Bot.Config.Get<bool>("Armying?"))
             Core.Logger("Armying Set to True, Please have all accounts logged in and Following this Acc using the Tools > Butler.cs");
 
         if (Bot.Config.Get<bool>("Cosmetics"))
-            Core.AddDrop(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
+            Bot.Drops.Add(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
         else Core.AddDrop(RequiredItems.Concat(BossDrops).ToArray());
 
         RequiredStuffs();
