@@ -1557,6 +1557,7 @@ public class CoreAdvanced
             #region Lucky - Vainglory - Valiance - Vim
             case "continuum chronomancer":
             case "quantum chronomancer":
+            case "yami no ronin":
                 if (!uVainglory() || !uValiance() || !uVim())
                     goto default;
 
@@ -1664,6 +1665,7 @@ public class CoreAdvanced
                     case "unlucky leperchaun":
                     case "void highlord":
                     case "void highlord (ioda)":
+
                         type = EnhancementType.Lucky;
                         wSpecial = WeaponSpecial.Spiral_Carve;
                         break;
@@ -1862,10 +1864,9 @@ public class CoreAdvanced
                         break;
                     #endregion
 
-                    #region Thief - Vainglory - Mana Vamp
+                    #region Thief - none - Mana Vamp
                     case "yami no ronin":
                         type = EnhancementType.Thief;
-                        cSpecial = CapeSpecial.Vainglory;
                         wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
                     #endregion
