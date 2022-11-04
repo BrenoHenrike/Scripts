@@ -13,6 +13,7 @@
 //cs_include Scripts/Story\ThroneofDarkness\CoreToD.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Skills;
 using Skua.Core.Options;
 
 public class Archmage
@@ -66,16 +67,14 @@ public class Archmage
         if (Bot.Config.Get<bool>("Armying?"))
             Core.Logger("Armying Set to True, Please have all accounts logged in and Following this Acc using the Tools > Butler.cs");
 
-        if (Bot.Config.Get<bool>("Cosmetics"))
-            Bot.Drops.Add(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
-        else Bot.Drops.Add(RequiredItems.Concat(BossDrops).ToArray());
+        Bot.Drops.Add(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
 
         RequiredStuffs();
 
         if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics"))
         {
             Core.EnsureAccept(8918);
-
+            Core.Logger("Archmage: Cosmetics = true");
             ExtrasCheck();
 
             Magus();
@@ -94,16 +93,20 @@ public class Archmage
                 Adv.rankUpClass("Archmage");
         }
 
-        if (!Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Cosmetics"))
+        else if (!Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Cosmetics"))
         {
             //Archmage's Ascension 
             Core.EnsureAccept(8918);
+
+            Core.Logger("Archmage: Cosmetics = false");
 
             Magus();
             Fire();
             Ice();
             Aether();
             Arcana();
+
+            Core.ToBank(Cosmetics);
 
             Core.Unbank(new[] { "book of Magus", "book of Fire", "book of Ice", "book of Aether", "book of Arcana", "Elemental Binding" });
 
@@ -192,7 +195,6 @@ public class Archmage
 
         Core.EnsureComplete(8913);
         Bot.Wait.ForPickup("Book of Magus");
-        Core.ToBank(Cosmetics);
         Core.ToBank(BLOD.BLoDItems);
 
     }
@@ -295,6 +297,19 @@ public class Archmage
 
         if (Extras && Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false))
             return;
+
+        Bot.Options.AggroMonsters = false; //just incse for the equip.
+
+        if (Core.CheckInventory("Yami No Ronin"))
+        {
+            Adv.GearStore();
+            Core.Join("whitemap"); //till aggro shit gets fixed.
+            Adv.BestGear(GearBoost.dmgAll);
+            Core.Equip("Yami No Ronin");
+            Bot.Skills.StartAdvanced("Yami No Ronin", false, ClassUseMode.Base);
+            Core.HuntMonster("tercessuinotlim", "Nulgath", "The Mortal Coil", isTemp: false);
+            Adv.GearStore(true);
+        }
 
         BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
@@ -485,7 +500,7 @@ public class Archmage
                     {
                         Bot.Events.RunToArea += DarkCarnaxMove;
                         Core.Logger("You May need to Babysit this one... because of the laser");
-                        Adv.KillUltra("Darkcarnax", "Boss", "Right", "Nightmare Carnax", item, isTemp: false);
+                        Adv.KillUltra("DarkCarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
                         Bot.Events.RunToArea -= DarkCarnaxMove;
                     }
                     if (!Core.CheckInventory(item))
@@ -551,10 +566,17 @@ public class Archmage
             case "a":
                 //Move to the right
                 Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
+                Bot.Sleep(2500);
                 break;
             case "b":
                 //Move to the left
                 Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
+                Bot.Sleep(2500);
+                break;
+            default:
+                //Move to the center
+                Bot.Player.WalkTo(Bot.Random.Next(325, 600), Bot.Random.Next(380, 475));
+                Bot.Sleep(2500);
                 break;
         }
     }
