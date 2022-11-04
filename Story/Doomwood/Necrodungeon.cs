@@ -20,7 +20,7 @@ public class NecroDungeon
 
     public void NecrodungeonStoryLine()
     {
-        if (Core.isCompletedBefore(2061))
+        if (Core.isCompletedBefore(2077))
         {
             Core.Logger($"Story: Necro Dungeon - Complete");
             return;
@@ -133,9 +133,9 @@ public class NecroDungeon
         Story.KillQuest(2071, "necrocavern", "Shadow Imp");
 
         //The Tale Never Dies 2072
-        Story.MapItemQuest(2072, "necrodungeon", 1044);
-        Story.MapItemQuest(2072, "necrodungeon", 1045, 3);
-        Story.KillQuest(2072, "necrocavern", new[] {"Shadowstone Elemental", "Shadow Imp"});
+        Story.MapItemQuest(2072, "necrocavern", 1044);
+        Story.MapItemQuest(2072, "necrocavern", 1045, 3);
+        Story.KillQuest(2072, "necrocavern", new[] { "Shadowstone Elemental", "Shadow Imp" });
 
         //Doom Outside the Dome 2073
         Story.KillQuest(2073, "necrocavern", "Shadowstone Elemental");
@@ -144,7 +144,7 @@ public class NecroDungeon
         Story.KillQuest(2074, "necrocavern", new[] { "Shadowstone Elemental", "Shadow Imp" });
 
         //Shadowy Corruption 2075
-        Story.MapItemQuest(2072, "necrodungeon", 1043, 5);
+        Story.MapItemQuest(2075, "necrocavern", 1043, 5);
 
         //Strength of the Darkness 2076
         Story.KillQuest(2076, "necrocavern", "Shadow Dragon");

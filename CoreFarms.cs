@@ -430,12 +430,12 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
-        Bot.Options.AggroMonsters = false;
         
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
             Core.Join("bludrutbrawl", "Enter0", "Spawn");
+            Bot.Options.AggroMonsters = false;
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
             Core.PvPMove(7, "Morale0A");
@@ -1754,7 +1754,7 @@ public class CoreFarms
                 Core.RegisterQuests(7505);
                 while (!Bot.ShouldExit && Core.IsMember ? FactionRank("Loremaster") < 10 : FactionRank("Loremaster") < rank)
                 {
-                    Core.HuntMonster("uppercity", "Drow Assassin", "Poisoned Dagger", 4, log: false);
+                    Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
                 }
                 Core.CancelRegisteredQuests();

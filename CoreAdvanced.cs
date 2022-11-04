@@ -1484,10 +1484,10 @@ public class CoreAdvanced
             case "shadowwalker of time":
             case "shadowstalker of time":
             case "shadowweaver of time":
-            case "yami no ronin":
             case "legendary elemental warrior":
             case "ultra elemental warrior":
             case "chaos avenger":
+            case "yami no ronin":
                 if (!uForgeCape())
                     goto default;
 
@@ -1665,6 +1665,7 @@ public class CoreAdvanced
                     case "unlucky leperchaun":
                     case "void highlord":
                     case "void highlord (ioda)":
+
                         type = EnhancementType.Lucky;
                         wSpecial = WeaponSpecial.Spiral_Carve;
                         break;
@@ -1863,6 +1864,7 @@ public class CoreAdvanced
                         wSpecial = WeaponSpecial.Health_Vamp;
                         break;
                     #endregion
+
                     default:
                         Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
                         return;
