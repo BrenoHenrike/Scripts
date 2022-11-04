@@ -289,7 +289,7 @@ public class CoreArmyLite
         {
             if (char.IsDigit(c))
                 combinedDigits += c;
-            else if (char.IsLetter(c))
+            else if (char.IsLetter(c) && Alphabet.Contains(c))
                 combinedDigits += Alphabet.IndexOf(c);
 
             if (combinedDigits.Length >= 36)

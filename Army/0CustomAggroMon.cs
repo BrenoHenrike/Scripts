@@ -186,15 +186,15 @@ public class CustomAggroMon
                 Directory.CreateDirectory("Scripts/Army/Generated");
 
             string[] template = File.ReadAllLines("Scripts/Templates/CustomAggroMonTemplate.cs");
-            string botName = diag.DialogTextInput;
+            string botName = removeInvalidChar(diag.DialogTextInput);
 
             int classIndex = FetchIndex("public class CustomAggroMonTemplate");
-            template[classIndex] = $"{spaces}public class Generated_{botName.Replace(" ", "")}";
+            template[classIndex] = $"{spaces}public class Generated_{botName}";
 
             int callingMethodIndex = FetchIndex("CustomAggroMon();");
-            template[callingMethodIndex] = $"{spaces}{botName.Replace(" ", "")}();";
+            template[callingMethodIndex] = $"{spaces}{botName}();";
             int methodVoidIndex = FetchIndex("public void CustomAggroMon()");
-            template[methodVoidIndex] = $"{spaces}public void {botName.Replace(" ", "")}()";
+            template[methodVoidIndex] = $"{spaces}public void {botName}()";
 
             if (questIDs.Count > 0)
             {
@@ -214,8 +214,8 @@ public class CustomAggroMon
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");
             template[classTypeIndex] = $"{spaces}private ClassType classtype = ClassType.{Bot.Config.Get<ClassType>("classtype")};";
 
-            File.WriteAllLines($"Scripts/Army/Generated/{botName.Replace(" ", "")}.cs", template);
-            Core.Logger($"\"{botName.Replace(" ", "")}.cs\" has been generated and can be found in Scripts/Army/Generated", messageBox: true);
+            File.WriteAllLines($"Scripts/Army/Generated/{diag.DialogTextInput.Replace(" ", "")}.cs", template);
+            Core.Logger($"\"{diag.DialogTextInput.Replace(" ", "")}.cs\" has been generated and can be found in Scripts/Army/Generated", messageBox: true);
 
             int FetchIndex(string text)
             {
@@ -232,4 +232,13 @@ public class CustomAggroMon
         }
     }
     private string spaces = "";
+
+    private string removeInvalidChar(string input)
+    {
+        string toReturn = "";
+        foreach (char c in input)
+            if (Char.IsLetter(c))
+                toReturn += c;
+        return toReturn;
+    }
 }
