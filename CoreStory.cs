@@ -244,7 +244,7 @@ public class CoreStory
                                       "Please fill in the Skua Scripts Form to report this.|" +
                                       "Do you wish to be brought to the form?";
                     Core.Logger(message2.Replace("|", " "));
-                    if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked") == true)
+                    if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked", true) == true)
                     {
                         string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
                         Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +

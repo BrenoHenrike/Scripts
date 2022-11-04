@@ -230,12 +230,7 @@ public class CyseroItemUpgrade
         if (Core.CheckInventory("Cursed DoomBlade", toInv: false))
             return;
 
-        if (!Core.CheckInventory("Sepulchure's Undead Blade"))
-        {
-            Bot.ShowMessageBox($"The bot is about to buy \"Sepulchure's Undead Blade\", which costs 2500 AC, do you accept this?", "Warning: Costs AC!", true);
-            Adv.BuyItem("museum", 580, "Sepulchure's Undead Blade");
-        }
-
+        Adv.BuyItem("museum", 580, "Sepulchure's Undead Blade");
         Core.AddDrop("Cursed DoomBlade");
 
 

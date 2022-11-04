@@ -1762,7 +1762,7 @@ public class CoreBots
             return;
 
         if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, " +
-        "click OK to open the download page of the latest release", "Outdated Skua detected") == true)
+        "click OK to open the download page of the latest release", "Outdated Skua detected", "OK").Text == "OK")
             Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases/latest");
         Logger($"This script requires Skua {targetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
     }
@@ -2372,7 +2372,7 @@ public class CoreBots
             return;
 
         // Popup
-        bool? result = Bot.ShowMessageBox(
+        var result = Bot.ShowMessageBox(
             "Welcome to Skua's Master Bots!\n" +
             "These bots are a tad different from what you might be used to with Grimoire or other botting clients.\n\n" +
             "Its highly recommended to read the ReadMe.txt file if this is your first time running one of our bots, or if you just started.\n" +
@@ -2382,7 +2382,7 @@ public class CoreBots
             "If you do see it again at a later moment, there might have just been a update to the ReadMe, in which case you can ignore this message.\n\n" +
             "Click OK to open the ReadMe.txt",
 
-            "READ ME");
+            "READ ME", "OK");
 
         // Creating ReadMe.txt
         string[] ReadMe =
@@ -2470,7 +2470,7 @@ public class CoreBots
         File.WriteAllLines(readMePath, ReadMe);
 
         // Opening ReadMe.txt
-        if (result == true)
+        if (result.Text == "OK")
             Process.Start("explorer", readMePath);
     }
 

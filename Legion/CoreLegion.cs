@@ -82,7 +82,7 @@ public class CoreLegion
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
         int i = 1;
-                while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
             Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
@@ -524,7 +524,7 @@ public class CoreLegion
         }
         Core.CancelRegisteredQuests();
     }
-    
+
     public void LTMountedParagonPet(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Mounted Paragon Pet"))
@@ -542,7 +542,7 @@ public class CoreLegion
             Core.HuntMonster("frozentower", "Ice Wolf", "Small Coal Lump", 8);
         }
         Core.CancelRegisteredQuests();
-        
+
     }
 
     #endregion
@@ -553,10 +553,10 @@ public class CoreLegion
             return;
 
         Core.BuyItem("underworld", 215, "Undead Warrior");
-        DialogResult SellUW = Bot.ShowMessageBox(
+        var SellUW = Bot.ShowMessageBox(
                                 "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
                                 "Sell \"Undead Warrior\"?",
-                                "Yes", "No");
+                                true);
 
         Core.AddDrop("Ravaged Champion Soul");
 
@@ -588,7 +588,7 @@ public class CoreLegion
         // Fail to the King
         Story.KillQuest(793, "prison", "King Alteon's Knight");
 
-        if (SellUW.Text == "Yes")
+        if (SellUW == true)
             Core.SellItem("Undead Warrior", all: true);
     }
 

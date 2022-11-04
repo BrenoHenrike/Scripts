@@ -148,7 +148,7 @@ public class MergeTemplateHelper
         Directory.CreateDirectory(AppPath + @"\Scripts\WIP");
         File.WriteAllLines(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",
-                                                "File Generated") == true)
+                                                "File Generated", "OK").Text == "OK")
             Process.Start("explorer", path);
     }
 }

@@ -43,10 +43,10 @@ public class ShadowSlayerKMerge
 
     public void BuyAllMerge()
     {
-        DialogResult result = Bot.ShowMessageBox("Items containing the word \"Shadow\" in this shop cost 1 Elders' Blood per piece, " +
+        var result = Bot.ShowMessageBox("Items containing the word \"Shadow\" in this shop cost 1 Elders' Blood per piece, " +
                                                 "which is a valuable resource used to get Void Highlord. Are you sure you want to continue?",
-                                                "Warning: Elders' Blood Usage", "Yes", "No");
-        if (result.Text != "Yes")
+                                                "Warning: Elders' Blood Usage", true);
+        if (result != true)
             return;
 
         //Only edit the map and shopID here
