@@ -921,7 +921,7 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Enhancement Type</returns>
     public EnhancementType CurrentClassEnh()
     {
-        int? EnhPatternID = Bot.Player.CurrentClass?.EnhancementPatternID;
+        int? EnhPatternID = getEnhPatternID(Bot.Player.CurrentClass!);
         if (EnhPatternID == 1 || EnhPatternID == 23 || EnhPatternID == null)
             EnhPatternID = 9;
         return (EnhancementType)EnhPatternID;
@@ -936,7 +936,7 @@ public class CoreAdvanced
         InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
             return CapeSpecial.None;
-        return (CapeSpecial)EquippedCape.EnhancementPatternID;
+        return (CapeSpecial)getEnhPatternID(EquippedCape);
     }
 
     /// <summary>
@@ -948,7 +948,7 @@ public class CoreAdvanced
         InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Helm);
         if (EquippedHelm == null)
             return HelmSpecial.None;
-        return (HelmSpecial)EquippedHelm.EnhancementPatternID;
+        return (HelmSpecial)getEnhPatternID(EquippedHelm);
     }
 
     /// <summary>
@@ -960,7 +960,7 @@ public class CoreAdvanced
         InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped && WeaponCatagories.Contains(i.Category));
         if (EquippedWeapon == null)
             return WeaponSpecial.None;
-        return (WeaponSpecial)Bot.Flash.GetGameObject<int>($"world.invTree.{EquippedWeapon.ID}.ProcID");
+        return (WeaponSpecial)getProcID(EquippedWeapon);
     }
 
     private static ItemCategory[] EnhanceableCatagories =
