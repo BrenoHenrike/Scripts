@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models.Items;
 
 public class PotionBuyer
 {
@@ -193,8 +194,12 @@ public class PotionBuyer
                         Core.HuntMonster("mafic", "Living Fire", ingredient, ingreQuant, isTemp: false);
                         break;
                     case "Dragon Scale":
-                        while (!Bot.ShouldExit && !Core.CheckInventory(11475, ingreQuant))
+                        InventoryItem DragonScale = Bot.Inventory.Items.Find(i => i.ID == 11475);
+                        while (!Bot.ShouldExit && !Core.CheckInventory(DragonScale.ID, ingreQuant))
+                        {
+                            Core.AddDrop(DragonScale.Name);
                             Core.KillMonster("lair", "Hole", "Center", "*", log: false);
+                        }
                         break;
                     default:
                         Core.Logger("The bot was not taught where to get " + ingredient);
