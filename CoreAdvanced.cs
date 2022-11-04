@@ -612,6 +612,11 @@ public class CoreAdvanced
             else foreach (InventoryItem iAll in AllDMGallItems)
                     BestGearData.Add(new("", iAll.Name, getBoostFloat(iAll, "dmgAll")));
 
+            if (BestGearData.Count == 0)
+            {
+                Core.Logger("Best gear " + (isRacial() ? "against " : "for ") + $"{BoostType.ToString()} wasnt found!");
+                return new[] { "" };
+            }
             BestGearData FinalCombo = BestGearData.MaxBy(x => x.BoostValue) ?? new("", "", 0);
             TotalBoostValue = FinalCombo.BoostValue;
             string BestRace = FinalCombo.iRace ?? "";
