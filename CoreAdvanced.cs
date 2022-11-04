@@ -1059,6 +1059,9 @@ public class CoreAdvanced
                 case EnhancementType.Lucky:
                     shopID = Bot.Player.Level >= 50 ? 763 : 147;
                     break;
+                default:
+                    Core.Logger($"Enhancement Failed: Invalid EnhancementType given, received {(int)type} | {type}");
+                    return;
             }
 
             // Enhancing the remaining items
@@ -1105,6 +1108,9 @@ public class CoreAdvanced
                     if (!uLament())
                         Fail();
                     break;
+                default:
+                    Core.Logger($"Enhancement Failed: Invalid CapeSpecial given, received {(int)cSpecial} | {cSpecial}");
+                    return;
 
                     void Fail()
                     {
@@ -1142,6 +1148,9 @@ public class CoreAdvanced
                     if (!uPneuma())
                         Fail();
                     break;
+                default:
+                    Core.Logger($"Enhancement Failed: Invalid HelmSpecial given, received {(int)hSpecial} | {hSpecial}");
+                    return;
 
                     void Fail()
                     {
@@ -1187,6 +1196,9 @@ public class CoreAdvanced
                     case EnhancementType.Lucky:
                         shopID = 639;
                         break;
+                    default:
+                        Core.Logger($"Enhancement Failed: Invalid EnhancementType given, received {(int)wSpecial} | {wSpecial}");
+                        return;
                 }
             }
             else
@@ -1228,6 +1240,9 @@ public class CoreAdvanced
                         if (!uArchon())
                             Fail();
                         break;
+                    default:
+                        Core.Logger($"Enhancement Failed: Invalid WeaponSpecial given, received {(int)wSpecial} | {wSpecial}");
+                        return;
 
                         void Fail()
                         {
