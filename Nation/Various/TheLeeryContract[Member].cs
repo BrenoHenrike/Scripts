@@ -39,37 +39,31 @@ public class TheLeeryContract
         if (!Core.IsMember)
             return;
 
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(554).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
+        var RewardOptions = Core.EnsureLoad(554).Rewards.Select(x => x.Name).ToArray();
+        Core.AddDrop(RewardOptions);
+        bool getAll = (int)Bot.Config.Get<RewardsSelection>("RewardSelect") == 9999;
 
-        ItemBase item = Core.EnsureLoad(554).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
-
-        var Count = 0;
-        int x = 1;
-
-        if (item == null)
+        ItemBase item = null;
+        if (!getAll)
         {
-            Core.Logger($"{item.Name} not found in Quest Rewards");
-            return;
+            item = Core.EnsureLoad(554).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
+            if (item == null)
+            {
+                Core.Logger($"{item.Name} not found in Quest Rewards");
+                return;
+            }
+            if (Core.CheckInventory(item.Name))
+                return;
+            Core.FarmingLogger(item.Name, 1);
         }
 
-
-        if (Core.CheckInventory(item.Name))
-            return;
-
-        while (!Core.CheckInventory(item.Name))
+        while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item.Name))
         {
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
-                Core.Logger($"Farming All {x++}/{Count}");
-            Core.Logger($"... {Bot.Config.Get<RewardsSelection>("RewardsSelection")} ...");
-
             Core.EnsureAccept(554);
             Nation.FarmUni13(1);
             Core.HuntMonster("EvilWarNul", "Undead Legend", "Undead Legend Rune");
 
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") != RewardsSelection.All)
+            if (!getAll)
                 Core.EnsureComplete(554, item.ID);
             else Core.EnsureCompleteChoose(554);
         }
@@ -82,6 +76,6 @@ public class TheLeeryContract
         Corpse_Maker_of_Nulgath = 4764,
 
 
-        All
+        All = 9999,
     };
 }
