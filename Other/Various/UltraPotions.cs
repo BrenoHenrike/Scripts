@@ -57,8 +57,14 @@ public class PotionBuyer
 
         foreach (string potion in potions)
         {
-            Core.Logger($"{potionsFarm[Array.IndexOf(potions, potion)]}");
-            if (!potionsFarm[Array.IndexOf(potions, potion)])
+            var t = Array.IndexOf(potions, potion);
+            if (t < 0)
+                continue;
+            Core.Logger($"{potionsFarm[t]}");
+            t = Array.IndexOf(potions, potion);
+            if (t < 0)
+                continue;
+            if (!potionsFarm[t])
                 continue;
             Core.Logger($"{Core.CheckInventory(potion, potionQuant)}");
             if (Core.CheckInventory(potion, potionQuant))
@@ -120,12 +126,12 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.hOu;
                     BulkGrind("Dragon Scale", "Searbush");
                     break;
-                    
+
                 case "Potent Revitalize Elixir":
                     currTrait = CoreFarms.AlchemyTraits.hRe;
                     BulkGrind("Dried Slime", "Lemurphant Tears");
                     break;
-                    
+
                 default:
                     Core.Logger("The bot was not taught how to make " + potion);
                     break;
