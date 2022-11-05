@@ -31,12 +31,7 @@ public class LegionDoomKnight
         if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
             SDKA.DoAll();
 
-        Core.RegisterQuests(4099);
-        while (!Bot.ShouldExit && Core.CheckInventory("Dark Sepulchure's Badge", 100))
-            Adv.BoostHuntMonster("sepulchure", "Dark Sepulchure", "Dark Sepulchure's Badge", 100, isTemp: false);
-
-        Core.CancelRegisteredQuests();
-
+        Core.HuntMonster("sepulchure", "Dark Sepulchure", "Dark Sepulchure's Badge", 100, isTemp: false);
         Core.BuyItem("battleon", 1106, "Legion DoomKnight");
 
         if (rankUpClass)
