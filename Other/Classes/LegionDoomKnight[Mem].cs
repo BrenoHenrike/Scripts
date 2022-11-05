@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using Skua.Core.Interfaces;
 
 public class LegionDoomKnight
@@ -10,6 +11,7 @@ public class LegionDoomKnight
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
     public CoreAdvanced Adv => new();
+    public CoreSDKA SDKA = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -24,6 +26,9 @@ public class LegionDoomKnight
     {
         if (Core.CheckInventory("Legion DoomKnight"))
             return;
+
+        if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+            SDKA.DoAll();
 
         Core.RegisterQuests(4099);
         while (!Bot.ShouldExit && Core.CheckInventory("Dark Sepulchure's Badge", 100))
