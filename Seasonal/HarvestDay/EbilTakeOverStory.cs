@@ -19,7 +19,7 @@ public class EpilTakeOver
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(8953))
+        if (Core.isCompletedBefore(8953) && !Core.isSeasonalMapActive("EbilTakeOver"))
             return;
 
         Story.PreLoad(this);
