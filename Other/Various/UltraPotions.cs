@@ -75,7 +75,7 @@ public class PotionBuyer
             if (Bot.Config.Get<bool>("GoldMethod"))
             {
                 Core.Logger($"Using Gold to Purchase {potion} Exceptions: \"Unstable Divine Elixir\"");
-            }   
+            }
 
             Core.FarmingLogger(potion, potionQuant);
             CoreFarms.AlchemyTraits currTrait = CoreFarms.AlchemyTraits.Int;
@@ -186,7 +186,8 @@ public class PotionBuyer
                         Core.HuntMonster("orecavern", "Deathmole", ingredient, ingreQuant, isTemp: false);
                         break;
                     case "Chaos Entity":
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
+                        Farm.Gold(100000 * (ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
+                        Core.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
                         Core.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
                         break;
                     case "Doomatter":
