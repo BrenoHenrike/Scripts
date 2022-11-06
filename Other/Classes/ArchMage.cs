@@ -298,6 +298,8 @@ public class Archmage
         if (Extras && Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false))
             return;
 
+        BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
+
         Bot.Options.AggroMonsters = false; //just incse for the equip.
 
         if (Core.CheckInventory("Yami No Ronin"))
@@ -311,7 +313,6 @@ public class Archmage
             Adv.GearStore(true);
         }
 
-        BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
         Core.Logger("Book of Arcana");
 

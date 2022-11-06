@@ -31,14 +31,14 @@ public class DarkCarnaxStory
         //8870 The Beast Awakens
         Story.KillQuest(8870, "aqlesson", "Carnax");
 
-        //8871 Nightmare Containment
+        //8871 Nightmare Containment Field
         if (!Story.QuestProgression(8871))
         {
             Core.EnsureAccept(8871);
             Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false);
             Core.HuntMonster("deadmoor", "Nightmare", "Nightmare Mane", isTemp: false);
             Core.HuntMonster("somnia", "NightWyrm", "NightWyrm Chitin", isTemp: false);
-            Core.HuntMonster("fearhouse", "ALL FEARS", "Sheer Horror", isTemp: false);
+            Core.HuntMonster("fearhouse", "All Fears", "Sheer Horror", isTemp: false);
             Core.EnsureComplete(8871);
         }
         if (forUltra)

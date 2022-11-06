@@ -2139,6 +2139,16 @@ public class CoreBots
                 tryJoin();
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}");
                 break;
+
+            case "celestialarenad":
+                JumpWait();
+                Bot.Quests.UpdateQuest(6032);
+                Bot.Map.Join($"{"celestialarenad"}-{9999999}");
+                break;
+
+            // case "fearhouse":
+            //     SendPackets($"%xt%zm%cmd%{Bot.Map.RoomID}%tfer%{Bot.Player.Username}%fearhouse%{999999}&Enter%Spawn%");
+            //     break;
         }
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())

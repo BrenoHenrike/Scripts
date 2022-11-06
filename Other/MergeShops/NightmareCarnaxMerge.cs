@@ -49,7 +49,7 @@ public class NightmareCarnaxMerge
 
     public void BuyAllMerge()
     {
-        DarkCarnax.Storyline();
+        DarkCarnax.Storyline(true);
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("darkcarnax", 2170, findIngredients);
 
