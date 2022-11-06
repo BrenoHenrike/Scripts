@@ -24,7 +24,7 @@ public class HarvestMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Goredon's Zard Sauce", "Harvest Golem Parfait", "Ultra Turdrakogiblet", "Wretched Rider Meat", "Overgourd Seed "});
+        Core.BankingBlackList.AddRange(new[] { "Goredon's Zard Sauce", "Harvest Golem Parfait", "Ultra Turdrakogiblet", "Wretched Rider Meat", "Overgourd Seed " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -74,6 +74,34 @@ public class HarvestMerge
 
                 case "Wretched Rider Meat":
                     Core.EquipClass(ClassType.Solo);
+                    if (!Core.CheckInventory("Muddy Soulflare")) // should be replaced with A Story Method later
+                    {
+                        Core.AddDrop("Muddy Soulflare");
+                        //Give Me The Gold! 6086
+                        Core.EnsureAccept(6086);
+                        Core.HuntMonster("harvestzombie", "Golden Warrior", "Golden Armor Piece", 6);
+                        Core.EnsureComplete(6086);
+
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Soulflare"))
+                        {
+                            //Cyser-Os! 6088
+                            Core.AddDrop("Soulflare");
+                            Core.EnsureAccept(6088);
+                            Core.HuntMonster("battlefowl", "ChickenCow", "Box of Cyser-Os", 3);
+                            Bot.Wait.ForDrop("Soulflare");
+                            Core.EnsureComplete(6088);
+                        }
+                        
+                        //A Golden Blade 6087
+                        Core.EnsureAccept(6087);
+                        Core.EnsureComplete(6087);
+
+                        // Cover the Shine 6089
+                        Core.EnsureAccept(6086);
+                        Core.HuntMonster("brightoak", "Tainted Earth", "Sticky Mud", 8);
+                        Bot.Wait.ForDrop("Muddy Soulflare");
+                        Core.EnsureComplete(6086);
+                    }
                     Core.HuntMonster("dullahan", "Wretched Rider", req.Name, quant, isTemp: false);
                     break;
 
