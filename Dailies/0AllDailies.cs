@@ -40,7 +40,7 @@ public class FarmAllDailys
         Daily.CyserosSuperHammer();
         Daily.BrightKnightArmor();
         Daily.CollectorClass();
-        Glac.DoAll();
+        Glac.FrozenTower();
         Daily.Cryomancer();
         Daily.Pyromancer();
         Daily.DeathKnightLord();
