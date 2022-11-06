@@ -489,9 +489,13 @@ public class CoreBots
     {
         if (items == null)
             return;
+
+        ToggleAggro(false);
         JumpWait();
+
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
             Bot.Bank.Open();
+
         foreach (string item in items)
         {
             if (Bot.Bank.Contains(item))
@@ -508,6 +512,7 @@ public class CoreBots
                 Logger($"{item} moved from bank");
             }
         }
+        ToggleAggro(true);
     }
 
     /// <summary>
@@ -519,9 +524,12 @@ public class CoreBots
         if (items == null)
             return;
 
+        ToggleAggro(false);
         JumpWait();
+
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
             Bot.Bank.Open();
+
         foreach (string item in items)
         {
             if (Bot.Inventory.IsEquipped(item))
@@ -539,6 +547,7 @@ public class CoreBots
                 Logger($"{item} moved to bank");
             }
         }
+        ToggleAggro(true);
     }
 
     /// <summary>
@@ -584,14 +593,7 @@ public class CoreBots
             return;
 
         Join(map);
-
-        bool AggroMonsters = false;
-        if (Bot.Options.AggroMonsters)
-        {
-            AggroMonsters = true;
-            Bot.Options.AggroMonsters = false;
-        }
-
+        ToggleAggro(false);
         JumpWait();
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
 
@@ -616,8 +618,7 @@ public class CoreBots
             Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}");
         else Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
 
-        if (AggroMonsters)
-            Bot.Options.AggroMonsters = true;
+        ToggleAggro(true);
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -869,6 +870,8 @@ public class CoreBots
     /// </summary>
     public void TrashCan(params string[] items)
     {
+        ToggleAggro(false);
+        JumpWait();
         foreach (string item in items)
         {
             if (!Bot.Inventory.TryGetItem(item, out var TrashItem) || TrashItem == null)
@@ -881,6 +884,7 @@ public class CoreBots
             }
             else ToBank(item);
         }
+        ToggleAggro(true);
     }
 
     #endregion
@@ -1718,6 +1722,21 @@ public class CoreBots
         Bot.Handlers.RegisterOnce(1, (Bot) => Bot.ShowMessageBox(message, caption));
     }
 
+    public void ToggleAggro(bool enable)
+    {
+        if (enable && AggroMonsters)
+        {
+            AggroMonsters = false;
+            Bot.Options.AggroMonsters = true;
+        }
+        else if (Bot.Options.AggroMonsters)
+        {
+            AggroMonsters = true;
+            Bot.Options.AggroMonsters = false;
+        }
+    }
+    private bool AggroMonsters = false;
+
     /// <summary>
     /// Send a packet to the server the desired amount of times
     /// </summary>
@@ -1779,15 +1798,6 @@ public class CoreBots
         if (currentClass == classToUse && Bot.Skills.TimerRunning)
             return;
 
-        bool AggroMonsters = false;
-        if (Bot.Options.AggroMonsters)
-        {
-            AggroMonsters = true;
-            Bot.Options.AggroMonsters = false;
-        }
-
-        JumpWait();
-
         switch (classToUse)
         {
             case ClassType.Farm:
@@ -1823,8 +1833,6 @@ public class CoreBots
                 Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
                 break;
         }
-        if (AggroMonsters)
-            Bot.Options.AggroMonsters = true;
         currentClass = classToUse;
     }
     private bool logEquip = true;
@@ -1834,13 +1842,7 @@ public class CoreBots
         if (gear == null)
             return;
 
-        bool AggroMonsters = false;
-        if (Bot.Options.AggroMonsters)
-        {
-            AggroMonsters = true;
-            Bot.Options.AggroMonsters = false;
-        }
-
+        ToggleAggro(false);
         JumpWait();
 
         foreach (string Item in gear)
@@ -1854,8 +1856,7 @@ public class CoreBots
             }
         }
 
-        if (AggroMonsters)
-            Bot.Options.AggroMonsters = true;
+        ToggleAggro(true);
     }
 
     /// <summary>
@@ -2083,12 +2084,7 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
-        bool AggroMonsters = false;
-        if (Bot.Options.AggroMonsters)
-        {
-            AggroMonsters = true;
-            Bot.Options.AggroMonsters = false;
-        }
+        ToggleAggro(false);
 
         switch (strippedMap)
         {
@@ -2203,8 +2199,7 @@ public class CoreBots
             Bot.Sleep(200);
         }
 
-        if (AggroMonsters)
-            Bot.Options.AggroMonsters = true;
+        ToggleAggro(true);
 
         void tryJoin()
         {
@@ -2246,10 +2241,14 @@ public class CoreBots
     {
         if (map != null)
             Join(map);
+
+        ToggleAggro(false);
+        JumpWait();
         Bot.Sleep(ActionDelay);
         List<ItemBase> tempItems = Bot.TempInv.Items;
         ItemBase? newItem = null;
         bool found = false;
+
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
@@ -2275,6 +2274,7 @@ public class CoreBots
                     break;
             }
         }
+        ToggleAggro(true);
 
         Logger($"Map item {itemID}({quant}) acquired");
     }
@@ -2316,12 +2316,8 @@ public class CoreBots
         map = map.ToLower().Replace(" ", "");
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
             return true;
-        bool AggroMonsters = false;
-        if (Bot.Options.AggroMonsters)
-        {
-            AggroMonsters = true;
-            Bot.Options.AggroMonsters = false;
-        }
+
+        ToggleAggro(false);
 
         JumpWait();
         Bot.Events.ExtensionPacketReceived += MapIsNotAvailableListener;
@@ -2346,8 +2342,7 @@ public class CoreBots
                 Logger($"Failed to join {map}");
         }
 
-        if (AggroMonsters)
-            Bot.Options.AggroMonsters = true;
+        ToggleAggro(true);
 
         Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
 
