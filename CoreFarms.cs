@@ -882,7 +882,7 @@ public class CoreFarms
         Bot.Quests.UpdateQuest(3484);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
-            Core.HuntMonster("towerofdoom10", "Slugbutter", "Monster Trophy", 15, isTemp: false, log: false);
+            Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
         }

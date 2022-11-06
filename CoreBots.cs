@@ -2142,16 +2142,16 @@ public class CoreBots
                 Bot.Map.Join($"{"celestialarenad"}-{9999999}");
                 break;
 
-            case "Towerofdoom1":
-            case "Towerofdoom2":
-            case "Towerofdoom3":
-            case "Towerofdoom4":
-            case "Towerofdoom5":
-            case "Towerofdoom6":
-            case "Towerofdoom7":
-            case "Towerofdoom8":
-            case "Towerofdoom9":
-            case "Towerofdoom10":
+            case "towerofdoom1":
+            case "towerofdoom2":
+            case "towerofdoom3":
+            case "towerofdoom4":
+            case "towerofdoom5":
+            case "towerofdoom6":
+            case "towerofdoom7":
+            case "towerofdoom8":
+            case "towerofdoom9":
+            case "towerofdoom10":
                 JumpWait();
                 Bot.Quests.UpdateQuest(3484);
                 tryJoin();
