@@ -681,14 +681,14 @@ public class CoreBots
         string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
         if (achievementID > 0 && io != null && !HasAchievement(achievementID, io))
         {
-            Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.");
+            Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.", "CanBuy");
             return false;
         }
 
         //Member Check
         if (item.Upgrade && !IsMember)
         {
-            Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.");
+            Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.", "CanBuy");
             return false;
         }
 
@@ -696,7 +696,7 @@ public class CoreBots
         int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
         if (reqItemID > 0 && !CheckInventory(reqItemID))
         {
-            Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}");
+            Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}", "CanBuy");
             return false;
         }
 
@@ -711,7 +711,7 @@ public class CoreBots
             int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
             if (reqRank > Bot.Reputation.GetRank(item.Faction))
             {
-                Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.");
+                Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.", "CanBuy");
                 return false;
             }
         }
@@ -731,13 +731,13 @@ public class CoreBots
                 {
                     if (CheckInventory(req.ID))
                     {
-                        Logger($"Cannot buy {item.Name} from {shopID}.");
-                        Logger($"You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name}.");
-                        Logger($"You need {total_quant}.");
+                        Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
+                        Logger($"You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name}.", "CanBuy");
+                        Logger($"You need {total_quant}.", "CanBuy");
 
                         return false;
                     }
-                    Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.");
+                    Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.", "CanBuy");
                     return false;
                 }
             }
@@ -749,15 +749,15 @@ public class CoreBots
             int total_gold_cost = buy_count * item.Cost;
             if (total_gold_cost > 100000000)
             {
-                Logger($"Cannot buy more than 100 mil worth of items.");
+                Logger($"Cannot buy more than 100 mil worth of items.", "CanBuy");
                 return false;
             }
             else if (total_gold_cost > Bot.Player.Gold)
             {
-                Logger($"Cannot buy {item.Name} from {shopID}.");
-                Logger($"You own {Bot.Inventory.GetQuantity(item.ID)}x {item.Name}.");
-                Logger($"You need {Bot.Inventory.GetQuantity(item.ID) + buy_count}.");
-                Logger($"You are missing {total_gold_cost - Bot.Player.Gold} gold to buy enough.");
+                Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
+                Logger($"You own {Bot.Inventory.GetQuantity(item.ID)}x {item.Name}.", "CanBuy");
+                Logger($"You need {Bot.Inventory.GetQuantity(item.ID) + buy_count}.", "CanBuy");
+                Logger($"You are missing {total_gold_cost - Bot.Player.Gold} gold to buy enough.", "CanBuy");
                 return false;
             }
         }
@@ -770,9 +770,9 @@ public class CoreBots
                     $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
                     "Warning: Costs AC!", true)
                     != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", messageBox: true, stopBot: true);
+                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", "CanBuy", messageBox: true, stopBot: true);
             else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
-                Logger($"You don't have enough AC to buy \"{item.Name}\" {buy_count} times, the bot cannot continue.", messageBox: true, stopBot: true);
+                Logger($"You don't have enough AC to buy \"{item.Name}\" {buy_count} times, the bot cannot continue.", "CanBuy", messageBox: true, stopBot: true);
         }
 
         return true;
