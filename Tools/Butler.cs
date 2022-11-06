@@ -92,12 +92,15 @@ public class Follower
                 int min = 1;
                 while (!Bot.ShouldExit)
                 {
+                    // Wait 60 seconds
                     for (int t = 0; t < 60; t++)
                     {
                         Bot.Sleep(1000);
                         if (Bot.ShouldExit)
                             break;
                     }
+
+                    // Try again
                     if (tryGoto(playerName))
                     {
                         Core.Logger(playerName + " found!");
@@ -105,6 +108,7 @@ public class Follower
                     }
                     min++;
 
+                    // Log every 5 minutes
                     if (min % 5 == 0)
                         Core.Logger($"The bot is has been hibernating for {min} minutes");
                 }
@@ -123,16 +127,21 @@ public class Follower
 
     private bool tryGoto(string userName)
     {
+        // If you're in the same map and same cell, don't do anything
         if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo playerObject) && playerObject.Cell == Bot.Player.Cell)
             return true;
 
         if (doLockedMaps)
             Bot.Events.ExtensionPacketReceived += LockedZoneListener;
 
+        // Try 3 times
         for (int i = 0; i < 3; i++)
         {
+            // If the followed player is not in the map, go to a save space
             if (!Bot.Map.PlayerExists(userName))
                 Core.JumpWait();
+
+            Core.ToggleAggro(false);
 
             Bot.Player.Goto(userName);
             Bot.Sleep(1000);
@@ -144,6 +153,7 @@ public class Follower
             {
                 if (Bot.Map.TryGetPlayer(userName, out playerObject) && playerObject.Cell == Bot.Player.Cell)
                     Bot.Player.SetSpawnPoint();
+                Core.ToggleAggro(true);
                 return true;
             }
         }
@@ -152,6 +162,7 @@ public class Follower
         {
             LockedZoneWarning = false;
             LockedMaps();
+            Core.ToggleAggro(true);
             Bot.Events.ExtensionPacketReceived -= LockedZoneListener;
             return true;
         }
@@ -184,9 +195,13 @@ public class Follower
 
     private void LockedMaps()
     {
+        // If the followed player is leaving behind a location in the file
         if (File.Exists($"options/FollowerJoe/{playerName}.txt"))
         {
+            // Fetch the first line in the file (should only have 1 thing)
             string targetMap = File.ReadAllLines($"options/FollowerJoe/{playerName}.txt").FirstOrDefault();
+
+            // If it was not empty
             if (targetMap != null)
             {
                 Core.Join(targetMap);
@@ -325,6 +340,7 @@ public class Follower
 
     private async void MapNumberParses(string map)
     {
+        // Wait untill the full name I.E. "battleon-12345" is set
         if (String.IsNullOrEmpty(Bot.Map.FullName))
         {
             for (int a = 0; a < 10; a++)
@@ -336,11 +352,14 @@ public class Follower
                     return;
             }
         }
+
         if (!Int32.TryParse(Bot.Map.FullName.Split('-').Last(), out int mapNr) || map == prevRoom || !Bot.Map.PlayerExists(playerName))
             return;
 
+        // If the number is the same number as on the previous map
         if (allocRoomNr == mapNr)
         {
+            // If the set private room number wasn't correct
             if (Core.PrivateRoomNumber != mapNr)
             {
                 Core.Logger("Static room number detected. PrivateRoomNumber is now " + mapNr);
@@ -373,55 +392,52 @@ public class Follower
                     if (!WalkPacket.Contains(playerName))
                         break;
 
-                    string playerNameCell = "";
-                    string playerNamePad = "";
-                    int playerNameSpeed = 0;
-
                     foreach (string str in WalkPacket.Split(','))
                     {
                         string spl = "";
                         if (str.Contains(':'))
                             spl = str.Split(':')[1];
+
                         switch (str.Split(':')[0])
                         {
-                            case "strFrame":
-                                playerNameCell = spl;
-                                break;
-                            case "strPad":
-                                playerNamePad = spl;
-                                break;
-                            case "sp":
-                                playerNameSpeed = int.Parse(spl);
+                            // Setting X cordinate
+                            case "tx":
+                                moveX = int.Parse(spl);
                                 break;
 
-                            case "tx":
-                                playerNameX = int.Parse(spl);
-                                break;
+                            // Setting Y cordinate
                             case "ty":
-                                playerNameY = int.Parse(spl);
+                                moveY = int.Parse(spl);
+                                break;
+
+                            // Setting speed
+                            case "sp":
+                                moveSpeed = int.Parse(spl);
                                 break;
                         }
                     }
 
-                    // if (playerNameCell != "" && playerNamePad != "")
-                    //     Core.Jump(playerNameCell, playerNamePad);
-
-                    if (playerNameX != 0 && playerNameY != 0)
-                        Bot.Flash.Call("walkTo", playerNameX, playerNameY, playerNameSpeed);
+                    if (moveX != 0 || moveY != 0)
+                        Bot.Flash.Call("walkTo", moveX, moveY, moveSpeed);
                     break;
             }
         }
     }
-    private int playerNameX = 0;
-    private int playerNameY = 0;
+    private int moveX = 0;
+    private int moveY = 0;
+    private int moveSpeed = 0;
 
     private bool ScriptStopping(Exception e)
     {
+        // Removing listeners
         Bot.Events.MapChanged -= MapNumberParses;
         Bot.Events.ExtensionPacketReceived -= LockedZoneListener;
         Bot.Events.ExtensionPacketReceived -= CopyWalkListener;
+
+        // Delete communication files
         if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}~!{playerName}.txt"))
-            File.Create($"options/Butler/{Bot.Player.Username.ToLower()}~!{playerName}.txt");
+            File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}~!{playerName}.txt");
+
         return true;
     }
 }
