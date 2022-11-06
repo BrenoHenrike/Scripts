@@ -2146,9 +2146,24 @@ public class CoreBots
                 Bot.Map.Join($"{"celestialarenad"}-{9999999}");
                 break;
 
-            // case "fearhouse":
-            //     SendPackets($"%xt%zm%cmd%{Bot.Map.RoomID}%tfer%{Bot.Player.Username}%fearhouse%{999999}&Enter%Spawn%");
-            //     break;
+            case "Towerofdoom1":
+            case "Towerofdoom2":
+            case "Towerofdoom3":
+            case "Towerofdoom4":
+            case "Towerofdoom5":
+            case "Towerofdoom6":
+            case "Towerofdoom7":
+            case "Towerofdoom8":
+            case "Towerofdoom9":
+            case "Towerofdoom10":
+                JumpWait();
+                Bot.Quests.UpdateQuest(3484);
+                tryJoin();
+                break;
+
+                // case "fearhouse":
+                //     SendPackets($"%xt%zm%cmd%{Bot.Map.RoomID}%tfer%{Bot.Player.Username}%fearhouse%{999999}&Enter%Spawn%");
+                //     break;
         }
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
