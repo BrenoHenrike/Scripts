@@ -131,7 +131,7 @@ public class NecroDungeon
         Story.KillQuest(2070, "necrocavern", "Shadowstone Elemental");
 
         //Blinded by the Darkness 2071
-        Story.MapItemQuest(2071, "necrodungeon", 1020, 6);
+        Story.MapItemQuest(2071, "necrodungeon", 1042, 6);
         Story.KillQuest(2071, "necrocavern", "Shadow Imp");
 
         //The Tale Never Dies 2072
