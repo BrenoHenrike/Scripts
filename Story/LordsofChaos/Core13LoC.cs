@@ -1911,11 +1911,11 @@ public class Core13LoC
         Story.MapItemQuest(3183, "battleontown", 2203);
 
 
-        Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
 
         //Reflect the Damage
-        if (!Story.QuestProgression(3184))
+        if (!Story.QuestProgression(3184) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("Perfect Prism")) )
         {
+            Core.AddDrop("Perfect Prism");
             Core.EnsureAccept(3184);
             Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
             Core.EnsureComplete(3184);
@@ -1923,8 +1923,9 @@ public class Core13LoC
         }
 
         //Pure Chaos
-        if (!Story.QuestProgression(3185))
+        if (!Story.QuestProgression(3185) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("nchaorrupted Sample")) )
         {
+            Core.AddDrop("Unchaorrupted Sample");
             Core.EnsureAccept(3185);
             Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
             Core.EnsureComplete(3185);
@@ -1932,8 +1933,9 @@ public class Core13LoC
         }
 
         //Enemies of a Feather Flock Together
-        if (!Story.QuestProgression(3186))
+        if (!Story.QuestProgression(3186) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("Harpy Feather")) )
         {
+            Core.AddDrop("Harpy Feather");
             Core.EnsureAccept(3186);
             Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
             Core.EnsureComplete(3186);
@@ -1941,27 +1943,10 @@ public class Core13LoC
         }
 
         //Ward Off the Beast
-        if (!Story.QuestProgression(3187))
-        {
-            Core.AddDrop("Perfect Prism", "Unchaorrupted Sample", "Harpy Feather");
+        Core.Join("mirrorportal");
+        Bot.Wait.ForMapLoad("mirrorportal");
+        Story.ChainQuest(3187);
 
-            if (!Core.CheckInventory(new[] { "Perfect Prism", "Unchaorrupted Sample", "Harpy Feather" }))
-            {
-                Core.EnsureAccept(new[] { 3184, 3185, 3186 });
-                Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
-                Core.EnsureComplete(3184);
-                Bot.Wait.ForPickup("Perfect Prism");
-                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
-                Core.EnsureComplete(3185);
-                Bot.Wait.ForPickup("Unchaorrupted Sample");
-                Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
-                Core.EnsureComplete(3186);
-                Bot.Wait.ForPickup("Harpy Feather");
-                Core.Join("mirrorportal");
-                Bot.Wait.ForMapLoad("mirrorportal");
-            }
-            Story.ChainQuest(3187);
-        }
 
         //Horror Takes Flight
         Story.KillQuest(3188, "mirrorportal", "Chaos Harpy");
