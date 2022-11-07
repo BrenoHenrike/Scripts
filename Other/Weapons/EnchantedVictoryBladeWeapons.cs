@@ -65,9 +65,9 @@ public class EnchantedVictoryBladeWeapons
 
             Core.HuntMonster("graveyard", "Skeletal Viking", "Ravenwing Scroll", 1, false);
             Core.HuntMonster("graveyard", "Skeletal Warrior", "Unseeing Eye", 3, false);
-            Core.HuntMonster("graveyard", "Big Jack Sprat", "Shard of Diamond Blade", 5, false); 
+            Core.HuntMonster("graveyard", "Big Jack Sprat", "Shard of Diamond Blade", 5, false);
 
-            Core.EnsureAccept(4811);
+            Core.EnsureComplete(4811);
             Bot.Wait.ForPickup("Enchantment Rune");
         }
         Adv.BuyItem("river", 1213, "Enchanted Victory Blade");
