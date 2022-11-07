@@ -16,14 +16,16 @@ public class PotionBuyer
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("GoldMethod", "Use Gold", "Buy Potions with Gold(Expensive)", false),
+        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]"),
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle and Malevolence Tonics?", false),
         new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
         new Option<bool>("farmDivine", "Divine", "Should the bot farm Unstabe Divine Elixers?", false),
         new Option<bool>("farmRevitalize", "Revitalize", "Should the bot farm Potent Revitalize Elixirs", false),
-        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]")
+        new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
+        new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false),
+        new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false)
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -71,12 +73,6 @@ public class PotionBuyer
             if (Core.CheckInventory(potion, potionQuant))
                 continue;
 
-
-            if (Bot.Config.Get<bool>("GoldMethod"))
-            {
-                Core.Logger($"Using Gold to Purchase {potion} Exceptions: \"Unstable Divine Elixir\"");
-            }
-
             Core.FarmingLogger(potion, potionQuant);
             CoreFarms.AlchemyTraits currTrait = CoreFarms.AlchemyTraits.Int;
 
@@ -84,63 +80,37 @@ public class PotionBuyer
             {
                 case "Potent Malevolence Elixir":
                 case "Potent Battle Elixir":
-                    if (Bot.Config.Get<bool>("GoldMethod"))
-                    {
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", potionQuant);
-                        Core.BuyItem("alchemyacademy", 2036, potion, potionQuant);
-                        break;
-                    }
                     currTrait = potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
-                    BulkGrind("Doomatter", "Nimblestem");
+                    BulkGrind("Doomatter", "Chaoroot");
                     break;
 
                 case "Potent Honor Potion": //200k/pot vs 500k non-alchemy
-                    if (Bot.Config.Get<bool>("GoldMethod"))
-                    {
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", potionQuant);
-                        Core.BuyItem("alchemyacademy", 2036, potion, potionQuant);
-                        break;
-                    }
                     currTrait = CoreFarms.AlchemyTraits.Dam;
-                    BulkGrind("Chaos Entity", "Nimblestem");
-                    break;
-
-                case "Fate Tonic":
-                    if (Bot.Config.Get<bool>("GoldMethod"))
-                    {
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", potionQuant);
-                        Core.BuyItem("alchemyacademy", 2036, potion, potionQuant);
-                        break;
-                    }
-                    currTrait = CoreFarms.AlchemyTraits.Luc;
-                    BulkGrind("Trollola Nectar", "Arashtite Ore");
+                    BulkGrind("Chaos Entity", "Chaoroot");
                     break;
 
                 case "Sage Tonic":
-                    if (Bot.Config.Get<bool>("GoldMethod"))
-                    {
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", potionQuant);
-                        Core.BuyItem("alchemyacademy", 2036, potion, potionQuant);
-                        break;
-                    }
-                    currTrait = CoreFarms.AlchemyTraits.Int;
-                    BulkGrind("Arashtite Ore", "Doomatter");
+                case "Fate Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Luc;
+                    BulkGrind("Arashtite Ore", "Dried Slime");
                     break;
 
                 case "Unstable Divine Elixir":
                     currTrait = CoreFarms.AlchemyTraits.hOu;
-                    BulkGrind("Dragon Scale", "Searbush");
+                    BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
 
                 case "Potent Revitalize Elixir":
-                    if (Bot.Config.Get<bool>("GoldMethod"))
-                    {
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", potionQuant);
-                        Core.BuyItem("alchemyacademy", 2036, potion, potionQuant);
-                        break;
-                    }
                     currTrait = CoreFarms.AlchemyTraits.hRe;
-                    BulkGrind("Dried Slime", "Lemurphant Tears");
+                    BulkGrind("Chaoroot", "Lemurphant Tears");
+                    break;
+
+                case "Felicitous Philtre": // No Farm emthod
+                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant);
+                    break;
+
+                case "Endurance Draught": // No Farm emthod
+                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant);
                     break;
 
                 default:
@@ -158,6 +128,7 @@ public class PotionBuyer
                         GetIngredient(reagent2);
                         Farm.DragonRunestone(30);
                     }
+                    Core.ToggleAggro(enable: false);
                     Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait, P2w: true);
                 }
             }
@@ -166,43 +137,52 @@ public class PotionBuyer
             {
                 // todo: add option to just use gold or prepruchased vouchers
 
-                if (!Bot.Config.Get<bool>("GoldMethod") && ingredient == "Dragon Scale" && Core.CheckInventory(11475, ingreQuant))
-                    return; //there are 2 dragon scales and it has to be checked by itemID
-
                 if (Core.CheckInventory(ingredient, ingreQuant))
                     return;
 
                 Core.EquipClass(ClassType.Farm);
+                Core.ToggleAggro(enable: true);
 
                 switch (ingredient)
                 {
                     case "Lemurphant Tears":
                         Core.HuntMonster("crossroads", "Lemurphant", ingredient, ingreQuant, isTemp: false);
                         break;
+
                     case "Dried Slime":
                         Core.HuntMonster("orecavern", "Crashroom", ingredient, ingreQuant, isTemp: false);
                         break;
+
                     case "Arashtite Ore":
                         Core.HuntMonster("orecavern", "Deathmole", ingredient, ingreQuant, isTemp: false);
                         break;
+
                     case "Chaos Entity":
                         Farm.Gold(100000 * (ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
                         Core.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
                         Core.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
                         break;
+
+                    case "Chaoroot":
                     case "Doomatter":
-                        // Farm.Gold(ingreQuant * 30000);
-                        Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", ingreQuant);
+                        // Bot.Options.AggroMonsters = false;
+                        // Core.Join("tercessuinotlim", "Swindle", "Left");
+                        Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", ingreQuant);
+                        Core.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
+
                     case "Nimblestem":
                         Core.HuntMonster("mudluk", "Swamp Frogdrake", "Nimblestem", ingreQuant, isTemp: false);
                         break;
+
                     case "Trollola Nectar":
                         Core.HuntMonster("bloodtusk", "Trollola Plant", ingredient, ingreQuant, isTemp: false);
                         break;
+
                     case "Searbush":
                         Core.HuntMonster("mafic", "Living Fire", ingredient, ingreQuant, isTemp: false);
                         break;
+
                     case "Dragon Scale":
                         InventoryItem DragonScale = Bot.Inventory.Items.Find(i => i.ID == 11475);
                         while (!Bot.ShouldExit && !Core.CheckInventory(DragonScale.ID, ingreQuant))
@@ -211,6 +191,11 @@ public class PotionBuyer
                             Core.KillMonster("lair", "Hole", "Center", "*", log: false);
                         }
                         break;
+
+                    case "Roc Tongue":
+                        Core.HuntMonster("roc", "Rock Roc", ingredient, ingreQuant, isTemp: false, log: false);
+                        break;
+
                     default:
                         Core.Logger("The bot was not taught where to get " + ingredient);
                         break;
