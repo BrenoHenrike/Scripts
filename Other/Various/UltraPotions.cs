@@ -141,7 +141,7 @@ public class PotionBuyer
                     return;
 
                 Core.EquipClass(ClassType.Farm);
-                Core.ToggleAggro(enable: true);
+                Core.ToggleAggro(false);
 
                 switch (ingredient)
                 {
