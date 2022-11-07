@@ -434,7 +434,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
-            Core.Join("bludrutbrawl", "Enter0", "Spawn");
+            Core.Join("bludrutbrawl-99999999", "Enter0", "Spawn");
             Bot.Options.AggroMonsters = false;
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
