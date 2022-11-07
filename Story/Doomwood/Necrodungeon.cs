@@ -34,7 +34,6 @@ public class NecroDungeon
         {
             Core.EnsureAccept(2044);
             Core.HuntMonsterMapID("necrodungeon", 10 | 11, "F1 Floor Descended", 10);
-            Core.KillMonster("necrodungeon", "r6", "Down", "Bellhop", "1 Floor Descended", 10);
             Core.EnsureComplete(2044);
         }
 
