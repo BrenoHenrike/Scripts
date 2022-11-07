@@ -31,6 +31,7 @@
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Other\Weapons\EnchantedVictoryBladeWeapons.cs
+//cs_include Scripts/Story/Tutorial.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -57,6 +58,7 @@ public class FarmerJoeStartingTheAcc
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
     public EnchantedVictoryBladeWeapons EVBW = new();
+    public Tutorial Tutorial = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -82,7 +84,10 @@ public class FarmerJoeStartingTheAcc
     {
         #region starting out the acc
         Core.BuyItem("classhalla", 176, "Healer");
-        Farm.Experience(30);
+        
+        Tutorial.Badges();
+        Farm.IcestormArena(30);
+        InvEn.EnhanceInventory();
 
         #endregion starting out the acc
 
