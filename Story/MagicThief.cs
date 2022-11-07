@@ -32,10 +32,10 @@ public class MagicThief
         Story.MapItemQuest(1910, "twilightslums", 954);
 
         // 1911|Lock-Blocked
-        Story.MapItemQuest(1912, "palace", 955);
+        Story.MapItemQuest(1911, "palace", 955);
 
         // 1912|Bridge Over Troubled Wellmet
-        Story.MapItemQuest(1911, "palace", 956);
+        Story.MapItemQuest(1912, "palace", 956);
 
         // 1913|Focus on the Locus
         Story.MapItemQuest(1913, "twilightslums", 957);
