@@ -605,6 +605,8 @@ public class CoreBots
         sItem.iSel.iQty = buy_quant;
         sItem.accept = 1;
 
+        Bot.Sleep(ActionDelay); 
+
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForActionCooldown(GameActions.BuyItem);
         Bot.Flash.CallGameFunction("world.sendBuyItemRequestWithQuantity", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(sItem))!);
