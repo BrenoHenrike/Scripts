@@ -18,10 +18,11 @@ public class PotionBuyer
         CoreBots.Instance.SkipOptions,
         new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]"),
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
-        new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle and Malevolence Tonics?", false),
-        new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
-        new Option<bool>("farmDivine", "Divine", "Should the bot farm Unstabe Divine Elixers?", false),
+        new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle Elixirs?", false),
+        new Option<bool>("farmMalevolence", "Battle/Malevolence", "Should the bot farm Malevolence Elixirs?", false),
+        new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
+        new Option<bool>("farmDivine", "Divine", "Should the bot farm Unstable Divine Elixers?", false),
         new Option<bool>("farmRevitalize", "Revitalize", "Should the bot farm Potent Revitalize Elixirs", false),
         new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false),
@@ -46,15 +47,16 @@ public class PotionBuyer
         potionQuant = Bot.Config.Get<int>("potionQuant");
         if (potions is null)
         {
-            potions = new[] { "Potent Malevolence Elixir", "Potent Battle Elixir",
-             "Potent Honor Potion", "Fate Tonic", "Sage Tonic", "Unstable Divine Elixir",
-              "Potent Revitalize Elixir", "Potent Destruction Elixir",
-              "Felicitous Philtre", "Endurance Draught", "Body Tonic" };
+            potions = new[] { "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
+            "Potent Malevolence Elixir","Potent Honor Potion", "Unstable Divine Elixir",
+            "Potent Revitalize Elixir", "Potent Destruction Elixir",
+            "Felicitous Philtre", "Endurance Draught", "Body Tonic" };
 
-            potionsFarm = new[] { Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmBattle"),
-            Bot.Config.Get<bool>("farmHonor"), Bot.Config.Get<bool>("farmSage"), Bot.Config.Get<bool>("farmDivine"),
-            Bot.Config.Get<bool>("farmRevitalize"), Bot.Config.Get<bool>("farmDestruction"),
-            Bot.Config.Get<bool>("buyFeli"), Bot.Config.Get<bool>("buyEndu"), Bot.Config.Get<bool>("farmBody") };
+            potionsFarm = new[] { Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmSage"),
+            Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmMalevolence"), Bot.Config.Get<bool>("farmHonor"),
+            Bot.Config.Get<bool>("farmDivine"), Bot.Config.Get<bool>("farmRevitalize"),
+            Bot.Config.Get<bool>("buyFeli"), Bot.Config.Get<bool>("buyEndu"), Bot.Config.Get<bool>("farmDestruction"),
+            Bot.Config.Get<bool>("farmBody") };
         }
 
         if (Array.IndexOf(potionsFarm, true) == -1 || potionQuant < 1 || potionQuant > 300)
@@ -71,7 +73,7 @@ public class PotionBuyer
             var t = Array.IndexOf(potions, potion);
             if (t < 0)
                 continue;
-            Core.Logger($"{potionsFarm[t]}");
+            Core.Logger($"{potion} : {potionsFarm[t]}");
             t = Array.IndexOf(potions, potion);
             if (t < 0)
                 continue;
@@ -86,15 +88,16 @@ public class PotionBuyer
 
             switch (potion)
             {
-                case "Potent Honor Potion":
-                    currTrait = CoreFarms.AlchemyTraits.Dam;
-                    BulkGrind("Chaoroot", "Chaos Entity");
-                    break;
 
                 case "Potent Malevolence Elixir":
                 case "Potent Battle Elixir":
                     currTrait = potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
                     BulkGrind("Doomatter", "Chaoroot");
+                    break;
+
+                case "Potent Honor Potion":
+                    currTrait = CoreFarms.AlchemyTraits.Dam;
+                    BulkGrind("Chaoroot", "Chaos Entity");
                     break;
 
                 case "Sage Tonic":
@@ -183,9 +186,7 @@ public class PotionBuyer
 
                     case "Chaoroot":
                     case "Doomatter":
-                        // Bot.Options.AggroMonsters = false;
-                        // Core.Join("tercessuinotlim", "Swindle", "Left");
-                        // Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", ingreQuant);
+                        Bot.Options.AggroMonsters = false;
                         Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 
@@ -202,12 +203,9 @@ public class PotionBuyer
                         break;
 
                     case "Dragon Scale":
-                        InventoryItem DragonScale = Bot.Inventory.Items.Find(i => i.ID == 11475);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(DragonScale.ID, ingreQuant))
-                        {
-                            Core.AddDrop(DragonScale.Name);
-                            Core.KillMonster("lair", "Hole", "Center", "*", log: false);
-                        }
+                        Bot.Drops.Add(11475);
+                        while (!Bot.ShouldExit && !Core.CheckInventory(11475, ingreQuant))
+                            Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                         break;
 
                     case "Roc Tongue":
