@@ -410,7 +410,7 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Arcane Locus", quant))
         {
             Core.EnsureAccept(8911);
-            Core.KillMonster("skytower", "r13", "Bottom", "*" "Sky Locus", isTemp: false, log: false);
+            Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
             Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
             Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false, log: false);
             Core.HuntMonster("drakonnan", "Drakonnan", "Fire Locus", isTemp: false, log: false);
