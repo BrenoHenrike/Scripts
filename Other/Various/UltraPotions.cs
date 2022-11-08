@@ -25,6 +25,7 @@ public class PotionBuyer
         new Option<bool>("farmRevitalize", "Revitalize", "Should the bot farm Potent Revitalize Elixirs", false),
         new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false),
+        new Option<bool>("farmDestruction", "Destruction", "Should the bot farm Potent Destruction Elixir?", false),
         new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false)
     };
 
@@ -45,8 +46,15 @@ public class PotionBuyer
         potionQuant = Bot.Config.Get<int>("potionQuant");
         if (potions is null)
         {
-            potions = new[] { "Potent Malevolence Elixir", "Potent Battle Elixir", "Potent Honor Potion", "Fate Tonic", "Sage Tonic", "Unstable Divine Elixir", "Potent Revitalize Elixir" };
-            potionsFarm = new[] { Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmHonor"), Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmSage"), Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmDivine"), Bot.Config.Get<bool>("farmRevitalize") };
+            potions = new[] { "Potent Malevolence Elixir", "Potent Battle Elixir",
+             "Potent Honor Potion", "Fate Tonic", "Sage Tonic", "Unstable Divine Elixir",
+              "Potent Revitalize Elixir", "Potent Destruction Elixir",
+              "Felicitous Philtre", "Endurance Draught" };
+
+            potionsFarm = new[] { Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmBattle"),
+            Bot.Config.Get<bool>("farmHonor"), Bot.Config.Get<bool>("farmSage"), Bot.Config.Get<bool>("farmDivine"),
+            Bot.Config.Get<bool>("farmRevitalize"), Bot.Config.Get<bool>("farmDestruction"),
+            Bot.Config.Get<bool>("buyFeli"), Bot.Config.Get<bool>("buyEndu") };
         }
 
         if (Array.IndexOf(potionsFarm, true) == -1 || potionQuant < 1 || potionQuant > 300)
@@ -78,20 +86,20 @@ public class PotionBuyer
 
             switch (potion)
             {
+                case "Potent Honor Potion":
+                    currTrait = CoreFarms.AlchemyTraits.Dam;
+                    BulkGrind("Chaoroot", "Chaos Entity");
+                    break;
+
                 case "Potent Malevolence Elixir":
                 case "Potent Battle Elixir":
                     currTrait = potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
                     BulkGrind("Doomatter", "Chaoroot");
                     break;
 
-                case "Potent Honor Potion": //200k/pot vs 500k non-alchemy
-                    currTrait = CoreFarms.AlchemyTraits.Dam;
-                    BulkGrind("Chaos Entity", "Chaoroot");
-                    break;
-
                 case "Sage Tonic":
                 case "Fate Tonic":
-                    currTrait = CoreFarms.AlchemyTraits.Luc;
+                    currTrait = potion == "Sage Tonic" ? CoreFarms.AlchemyTraits.Int : CoreFarms.AlchemyTraits.Luc;
                     BulkGrind("Arashtite Ore", "Dried Slime");
                     break;
 
@@ -111,6 +119,16 @@ public class PotionBuyer
 
                 case "Endurance Draught": // No Farm emthod
                     Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant);
+                    break;
+
+                case "Potent Destruction Elixir":
+                    currTrait = CoreFarms.AlchemyTraits.mRe;
+                    BulkGrind("Dried Slime", "Arashtite Ore");
+                    break;
+
+                case "Body Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.End;
+                    BulkGrind("Roc tongue", "Chaoroot");
                     break;
 
                 default:
@@ -146,7 +164,7 @@ public class PotionBuyer
                 switch (ingredient)
                 {
                     case "Lemurphant Tears":
-                        Core.HuntMonster("crossroads", "Lemurphant", ingredient, ingreQuant, isTemp: false);
+                        Core.HuntMonster("ravinetemple", "Lemurphant", ingredient, ingreQuant, isTemp: false);
                         break;
 
                     case "Dried Slime":
@@ -158,17 +176,17 @@ public class PotionBuyer
                         break;
 
                     case "Chaos Entity":
-                        Farm.Gold(100000 * (ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
-                        Core.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
-                        Core.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
+                        // Farm.Gold(100000 * (ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
+                        // Core.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
+                        Adv.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
                         break;
 
                     case "Chaoroot":
                     case "Doomatter":
                         // Bot.Options.AggroMonsters = false;
                         // Core.Join("tercessuinotlim", "Swindle", "Left");
-                        Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", ingreQuant);
-                        Core.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
+                        // Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", ingreQuant);
+                        Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 
                     case "Nimblestem":
