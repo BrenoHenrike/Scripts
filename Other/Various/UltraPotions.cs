@@ -49,12 +49,12 @@ public class PotionBuyer
             potions = new[] { "Potent Malevolence Elixir", "Potent Battle Elixir",
              "Potent Honor Potion", "Fate Tonic", "Sage Tonic", "Unstable Divine Elixir",
               "Potent Revitalize Elixir", "Potent Destruction Elixir",
-              "Felicitous Philtre", "Endurance Draught" };
+              "Felicitous Philtre", "Endurance Draught", "Body Tonic" };
 
             potionsFarm = new[] { Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmBattle"),
             Bot.Config.Get<bool>("farmHonor"), Bot.Config.Get<bool>("farmSage"), Bot.Config.Get<bool>("farmDivine"),
             Bot.Config.Get<bool>("farmRevitalize"), Bot.Config.Get<bool>("farmDestruction"),
-            Bot.Config.Get<bool>("buyFeli"), Bot.Config.Get<bool>("buyEndu") };
+            Bot.Config.Get<bool>("buyFeli"), Bot.Config.Get<bool>("buyEndu"), Bot.Config.Get<bool>("farmBody") };
         }
 
         if (Array.IndexOf(potionsFarm, true) == -1 || potionQuant < 1 || potionQuant > 300)
@@ -128,7 +128,7 @@ public class PotionBuyer
 
                 case "Body Tonic":
                     currTrait = CoreFarms.AlchemyTraits.End;
-                    BulkGrind("Roc tongue", "Chaoroot");
+                    BulkGrind("Roc Tongue", "Chaoroot");
                     break;
 
                 default:
