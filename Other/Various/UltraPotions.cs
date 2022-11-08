@@ -19,8 +19,8 @@ public class PotionBuyer
         new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 1),
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
-        new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle Elixirs?", false),
-        new Option<bool>("farmMalevolence", "Battle/Malevolence", "Should the bot farm Malevolence Elixirs?", false),
+        new Option<bool>("farmBattle", "Battle", "Should the bot farm Battle Elixirs?", false),
+        new Option<bool>("farmMalevolence", "Malevolence", "Should the bot farm Malevolence Elixirs?", false),
         new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmDivine", "Divine", "Should the bot farm Unstable Divine Elixers?", false),
         new Option<bool>("farmRevitalize", "Revitalize", "Should the bot farm Potent Revitalize Elixirs", false),
@@ -34,7 +34,6 @@ public class PotionBuyer
     {
         Core.BankingBlackList.Add("Dragon Runestone");
         Core.SetOptions();
-        Core.DL_Enable();
         INeedYourStrongestPotions();
 
         Core.SetOptions(false);
@@ -49,8 +48,8 @@ public class PotionBuyer
         {
             potions = new[] { "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
             "Potent Malevolence Elixir","Potent Honor Potion", "Unstable Divine Elixir",
-            "Potent Revitalize Elixir", "Potent Destruction Elixir",
-            "Felicitous Philtre", "Endurance Draught", "Body Tonic" };
+            "Potent Revitalize Elixir", "Felicitous Philtre", "Endurance Draught",
+            "Potent Destruction Elixir", "Body Tonic" };
 
             potionsFarm = new[] { Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmSage"),
             Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmMalevolence"), Bot.Config.Get<bool>("farmHonor"),
@@ -86,6 +85,7 @@ public class PotionBuyer
             Core.FarmingLogger(potion, potionQuant);
             CoreFarms.AlchemyTraits currTrait = CoreFarms.AlchemyTraits.Int;
 
+
             switch (potion)
             {
 
@@ -107,6 +107,8 @@ public class PotionBuyer
                     break;
 
                 case "Unstable Divine Elixir":
+                    potionQuant = 99;
+                    Core.Logger($"{potionQuant} : {potionQuant} is the max for this pot. isntead of 300.");
                     currTrait = CoreFarms.AlchemyTraits.hOu;
                     BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
@@ -116,12 +118,26 @@ public class PotionBuyer
                     BulkGrind("Chaoroot", "Lemurphant Tears");
                     break;
 
-                case "Felicitous Philtre": // No Farm emthod
-                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant);
+                case "Felicitous Philtre": // No Farm method
+                    if (potionQuant > 150)
+                    {
+                        Core.Logger($"{potion}, {potionQuant} is annoying to make so doing 150 as its the max in once shot. buy more yourself.");
+                        potionQuant = 150;
+                    }
+                    if (Bot.Inventory.FreeSlots == 0)
+                        Core.Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
+                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant > 150 ? 150 : potionQuant);
                     break;
 
-                case "Endurance Draught": // No Farm emthod
-                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant);
+                case "Endurance Draught": // No Farm method
+                    if (potionQuant > 150)
+                    {
+                        Core.Logger($"{potion}, {potionQuant} is annoying to make so doing 150 as its the max in once shot. buy more yourself.");
+                        potionQuant = 150;
+                    }
+                    if (Bot.Inventory.FreeSlots == 0)
+                        Core.Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
+                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant > 150 ? 150 : potionQuant);
                     break;
 
                 case "Potent Destruction Elixir":
