@@ -93,7 +93,7 @@ public class FarmerJoeStartingTheAcc
 
         #region Obtain the Enchanted Victory Blade
 
-        EVBW.EnchantedVictoryBlade();
+        EVBW.GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
         Core.Equip("Enchanted Victory Blade");
         InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade

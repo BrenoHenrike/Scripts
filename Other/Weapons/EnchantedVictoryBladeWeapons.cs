@@ -93,7 +93,7 @@ public class EnchantedVictoryBladeWeapons
 
         Core.HuntMonster("graveyard", "Skeletal Warrior", "Broken Dream Catcher", 10, false);
 
-        Core.EnsureAccept(4812, type == "Bright Aura Gem" ? 33500 : 33499);
+        Core.EnsureComplete(4812, type == "Bright Aura Gem" ? 33500 : 33499);
         Bot.Wait.ForPickup(type);
     }
 
