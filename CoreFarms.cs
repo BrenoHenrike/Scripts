@@ -884,6 +884,15 @@ public class CoreFarms
         Bot.Quests.UpdateQuest(3484);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
+            Core.Join("towerofdoom10", "r10", "Left", publicRoom: true);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.Drops.Add("Monster Trophy");
+            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4)
+            {
+                Bot.Combat.Attack("Slugbutter");
+                if (Bot.Map.PlayerCount < 4)
+                    break;
+            }
             Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
