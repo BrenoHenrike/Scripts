@@ -665,14 +665,14 @@ public class CoreFarms
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
-
+        Core.ToggleAggro(false);
         Core.FarmingLogger("Dragon Rune", quant);
         Core.FarmingLogger("Gold Voucher 100k", quant);
         if (!Core.CheckInventory("Dragon Runestone", quant))
         {
-            Gold(100000 * ( quant- Bot.Inventory.GetQuantity("Dragon Runestone")));
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 8844);
+            Gold(100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone")));
+            Core.BuyItem("Alchemy", 395, "Gold Voucher 100k", quant);
+            Core.BuyItem("Alchemy", 395, "Dragon Runestone", quant, 8844);
         }
     }
 

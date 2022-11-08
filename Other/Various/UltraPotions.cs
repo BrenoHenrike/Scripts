@@ -16,7 +16,7 @@ public class PotionBuyer
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]"),
+        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 1),
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
         new Option<bool>("farmBattle", "Battle/Malevolence", "Should the bot farm Battle Elixirs?", false),
@@ -34,7 +34,7 @@ public class PotionBuyer
     {
         Core.BankingBlackList.Add("Dragon Runestone");
         Core.SetOptions();
-
+        Core.DL_Enable();
         INeedYourStrongestPotions();
 
         Core.SetOptions(false);
@@ -147,6 +147,7 @@ public class PotionBuyer
                     {
                         GetIngredient(reagent1);
                         GetIngredient(reagent2);
+                        // Adv.BuyItem("Alchemy", 395, "Dragon Runestone", 30, 8844); //leave here incase
                         Farm.DragonRunestone(30);
                     }
                     Core.ToggleAggro(enable: false);
@@ -180,13 +181,12 @@ public class PotionBuyer
 
                     case "Chaos Entity":
                         // Farm.Gold(100000 * (ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
-                        // Core.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
+                        // Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
                         Adv.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
                         break;
 
                     case "Chaoroot":
                     case "Doomatter":
-                        Bot.Options.AggroMonsters = false;
                         Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 

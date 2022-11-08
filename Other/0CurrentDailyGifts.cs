@@ -97,6 +97,14 @@ public class CurrentDailyGifts
 
             #endregion
 
+
+            #region November 11 - 18 leave November ??
+
+            GetGift(AvailableUntil(18, 11), "moonlab", "Nightmare Zorbak", "Zorbak's VordredSlayer", "Zorbak's VordredSlayers");
+            GetGift(AvailableUntil(18, 11), "tricktown", "Madam Ester", "Twilleven's Power", "Zorbaknar");
+
+            #endregion
+
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
