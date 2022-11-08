@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class EnchantedVictoryBladeWeapons
 {
@@ -12,9 +13,9 @@ public class EnchantedVictoryBladeWeapons
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
+        Core.BankingBlackList.AddRange(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory", "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Dispair", "Shadow Blade of Dispair" });
         GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
-        GetWeapon(VictoryBladeStyles.ShadowBladeOfDispair);
+        GetWeapon(VictoryBladeStyles.ShadowBladeOfDespair);
 
         Core.SetOptions(false);
     }
@@ -27,15 +28,15 @@ public class EnchantedVictoryBladeWeapons
             if (Core.CheckInventory(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory" }, any: true))
                 Method = VictoryBladeStyles.ArcaneBladeOfGlory;
             else if (Core.CheckInventory(new[] { "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Dispair", "Shadow Blade of Dispair" }, any: true))
-                Method = VictoryBladeStyles.ShadowBladeOfDispair;
+                Method = VictoryBladeStyles.ShadowBladeOfDespair;
             else
             {
                 Alignment alignment = (Alignment)Bot.Flash.CallGameFunction<int>("world.getQuestValue", 41);
                 if (alignment == Alignment.Good)
                     Method = VictoryBladeStyles.ArcaneBladeOfGlory;
                 else if (alignment == Alignment.Evil)
-                    Method = VictoryBladeStyles.ShadowBladeOfDispair;
-                else Method = Bot.Random.Next(0, 100) > 50 ? VictoryBladeStyles.ArcaneBladeOfGlory : VictoryBladeStyles.ShadowBladeOfDispair;
+                    Method = VictoryBladeStyles.ShadowBladeOfDespair;
+                else Method = Bot.Random.Next(0, 100) > 50 ? VictoryBladeStyles.ArcaneBladeOfGlory : VictoryBladeStyles.ShadowBladeOfDespair;
             }
         }
         bool doGlory = (int)Method == 0;
@@ -46,8 +47,10 @@ public class EnchantedVictoryBladeWeapons
             return;
 
         TypeAuraGem(doGlory ? "bright" : "dark");
+        Bot.Sleep(Core.ActionDelay);
         Adv.BuyItem("river", 1213, doGlory ? "Enchanted Mana Blade" : "Enchanted Shadow Blade");
-        AmuletOfType(doGlory ? "glory" : "dispair");
+        AmuletOfType(doGlory ? "glory" : "despair");
+        Bot.Sleep(Core.ActionDelay);
         Adv.BuyItem("river", 1213, doGlory ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
     }
 
@@ -70,6 +73,7 @@ public class EnchantedVictoryBladeWeapons
             Core.EnsureComplete(4811);
             Bot.Wait.ForPickup("Enchantment Rune");
         }
+        Bot.Sleep(Core.ActionDelay);
         Adv.BuyItem("river", 1213, "Enchanted Victory Blade");
     }
 
@@ -100,6 +104,7 @@ public class EnchantedVictoryBladeWeapons
     public void AmuletOfType(string type)
     {
         type = Captialize(type.Trim());
+        ItemBase Amulet = Bot.Inventory.GetItem($"Amulet of " + type);
         if (type != "Glory" && type != "Dispair")
         {
             Core.Logger("Invalid paramater. Expected \"Glory\" or \"Dispair\"");
@@ -115,7 +120,8 @@ public class EnchantedVictoryBladeWeapons
 
         Core.HuntMonster("graveyard", "Skeletal Viking", "Nornir Triad Shard", 12, false);
 
-        Core.EnsureAccept(4813, type == "Amulet of Glory" ? 33502 : 33501);
+        Core.EnsureComplete(4813, type == "Amulet of Glory" ? 33502 : 33501); 
+        // Core.EnsureComplete(4813, Amulet.ID); 
         Bot.Wait.ForPickup(type);
     }
 
@@ -132,6 +138,6 @@ public class EnchantedVictoryBladeWeapons
 public enum VictoryBladeStyles
 {
     ArcaneBladeOfGlory = 0,
-    ShadowBladeOfDispair = 1,
+    ShadowBladeOfDespair = 1,
     Smart = 2,
 }

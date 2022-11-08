@@ -1,3 +1,4 @@
+using System;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
@@ -69,6 +70,7 @@ public class FarmerJoeStartingTheAcc
         new Option<bool>("EquipOutfit", "Equip outfit at the end?", "Yay or Nay", false),
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
     };
+    
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -84,7 +86,7 @@ public class FarmerJoeStartingTheAcc
     {
         #region starting out the acc
         Core.BuyItem("classhalla", 176, "Healer");
-        
+
         Tutorial.Badges();
         Farm.IcestormArena(30);
         InvEn.EnhanceInventory();
@@ -93,11 +95,11 @@ public class FarmerJoeStartingTheAcc
 
         #region Obtain the Enchanted Victory Blade
 
-        EVBW.GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
+        EVBW.GetWeapon(VictoryBladeStyles.Smart);
         Core.Equip("Enchanted Victory Blade");
         InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade
-
+        
         #region Level to 75
         Farm.Experience(75);
         #endregion Level to 75
@@ -148,7 +150,7 @@ public class FarmerJoeStartingTheAcc
 
         if (Bot.Config.Get<bool>("OutFit"))
             Outfit();
-
+                    
     }
 
     public void Outfit()
