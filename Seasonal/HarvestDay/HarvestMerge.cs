@@ -97,10 +97,10 @@ public class HarvestMerge
                         Core.EnsureComplete(6087);
 
                         // Cover the Shine 6089
-                        Core.EnsureAccept(6086);
+                        Core.EnsureAccept(6089);
                         Core.HuntMonster("brightoak", "Tainted Earth", "Sticky Mud", 8);
                         Bot.Wait.ForDrop("Muddy Soulflare");
-                        Core.EnsureComplete(6086);
+                        Core.EnsureComplete(6089);
                     }
                     Core.HuntMonster("dullahan", "Wretched Rider", req.Name, quant, isTemp: false);
                     break;
