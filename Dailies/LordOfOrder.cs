@@ -22,7 +22,6 @@ public class LordOfOrder
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
         GetLoO();
 
         Core.SetOptions(false);

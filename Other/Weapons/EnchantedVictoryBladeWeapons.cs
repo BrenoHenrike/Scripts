@@ -13,7 +13,7 @@ public class EnchantedVictoryBladeWeapons
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Core.BankingBlackList.AddRange(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory", "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Dispair", "Shadow Blade of Dispair" });
+        Core.BankingBlackList.AddRange(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory", "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Despair", "Shadow Blade of Despair" });
         GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
         GetWeapon(VictoryBladeStyles.ShadowBladeOfDespair);
 
@@ -27,7 +27,7 @@ public class EnchantedVictoryBladeWeapons
         {
             if (Core.CheckInventory(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory" }, any: true))
                 Method = VictoryBladeStyles.ArcaneBladeOfGlory;
-            else if (Core.CheckInventory(new[] { "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Dispair", "Shadow Blade of Dispair" }, any: true))
+            else if (Core.CheckInventory(new[] { "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Despair", "Shadow Blade of Despair" }, any: true))
                 Method = VictoryBladeStyles.ShadowBladeOfDespair;
             else
             {
@@ -43,7 +43,7 @@ public class EnchantedVictoryBladeWeapons
 
         if (doGlory && Core.CheckInventory("Arcane Blade of Glory"))
             return;
-        else if ((int)Method == 1 && Core.CheckInventory("Shadow Blade of Dispair"))
+        else if ((int)Method == 1 && Core.CheckInventory("Shadow Blade of Despair"))
             return;
 
         TypeAuraGem(doGlory ? "bright" : "dark");
@@ -105,9 +105,9 @@ public class EnchantedVictoryBladeWeapons
     {
         type = Captialize(type.Trim());
         ItemBase Amulet = Bot.Inventory.GetItem($"Amulet of " + type);
-        if (type != "Glory" && type != "Dispair")
+        if (type != "Glory" && type != "Despair")
         {
-            Core.Logger("Invalid paramater. Expected \"Glory\" or \"Dispair\"");
+            Core.Logger("Invalid paramater. Expected \"Glory\" or \"Despair\"");
             return;
         }
         type = $"Amulet of {type}";
