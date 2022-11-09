@@ -12,6 +12,7 @@ public class VampireLord
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.Add("Blood Moon Token");
         Core.SetOptions();
 
         GetClass(true);
@@ -27,17 +28,27 @@ public class VampireLord
             return;
 
         Core.FarmingLogger("Blood Moon Token", 300);
-        Core.AddDrop("Blood Moon Token");
-        // Core.RegisterQuests(Core.IsMember ? 6060 : 6059); // uncomment when registerquest is fixed. if more then 1 item is found in inv it only complets once then afks/
+        Bot.Drops.Add("Blood Moon Token");
+        Core.EquipClass(ClassType.Solo);
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Moon Token", 300))
         {
-            Core.EnsureAccept(Core.IsMember ? 6060 : 6059);
-            Core.KillMonster("bloodmoon", "r12a", "Left", "Black Unicorn", "Black Blood Vial", isTemp: false);
-            Core.KillMonster("bloodmoon", "r4a", "Left", "Lycan Guard", "Moon Stone", isTemp: false);
-            Core.EnsureComplete(Core.IsMember ? 6060 : 6059);
-            Bot.Wait.ForPickup("Blood Moon Token");
-        }
 
+            while (!Bot.ShouldExit && Core.CheckInventory("Black Blood Vial", 1) && Core.CheckInventory("Moon Stone", 1))
+            {
+                Bot.Sleep(Core.ActionDelay);
+                Core.ChainComplete(Core.IsMember ? 6060 : 6059);
+                Bot.Wait.ForPickup("Blood Moon Token");
+                if (Core.CheckInventory("Blood Moon Token", 300))
+                    break;
+            }
+
+            //to keep track:
+            Core.EnsureAccept(Core.IsMember ? 6060 : 6059);
+
+            Core.KillMonster("bloodmoon", "r12a", "Left", "Black Unicorn", "Black Blood Vial", 100, isTemp: false);
+            Core.KillMonster("bloodmoon", "r4a", "Left", "Lycan Guard", "Moon Stone", 100, isTemp: false);
+        }
         Core.BuyItem("mogloween", 1477, "Vampire Lord", shopItemID: 5459);
 
         if (rankUpClass)
