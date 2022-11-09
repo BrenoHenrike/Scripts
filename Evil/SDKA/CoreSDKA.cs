@@ -18,9 +18,9 @@ public class CoreSDKA
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
+        sCore.SkipOptions,
         new Option<SDKAQuest>("SelectedQuest", "Dark Spirit Orbs Quest",
             "Which quest should the bot use to farm Dark Spirit Orbs with?\nRecommended setting: A Penny for Your Foughts", SDKAQuest.APennyforYourFoughts),
-        sCore.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -118,6 +118,7 @@ public class CoreSDKA
             Bot.Drops.Pickup("Experimental Dark Item");
             Core.ToBank("Experimental Dark Item");
         }
+
         if (!Bot.Quests.IsUnlocked(2088))
         {
             Core.Logger("The Doom that Looms [2087]");
@@ -131,9 +132,9 @@ public class CoreSDKA
                 Core.BuyItem("trainers", 170, "Warrior");
                 Adv.rankUpClass("Warrior", false);
 
-                Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             }
-            Adv.rankUpClass("Doomknight", false);
+            Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
+            Adv.rankUpClass("DoomKnight", false);
 
             Core.EquipClass(ClassType.Solo);
 
@@ -177,8 +178,7 @@ public class CoreSDKA
 
         if (Bot.Config.Get<SDKAQuest>("SelectedQuest") == SDKAQuest.DarkSpiritOrbs)
             DSO(quant);
-        else
-            Penny(quant);
+        else Penny(quant);
     }
 
     public void Penny(int quant = 10500, bool oneTime = false)
