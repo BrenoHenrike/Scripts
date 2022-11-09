@@ -14,9 +14,9 @@ public class FreeBoosts
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 1),
-        new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 1),
-        new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 1),
+        new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 99),
+        new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 99),
+        new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get", 99),
         new Option<Booster>("Booster", "Choose Your Boost Type", "Completes the Quest \"Zifwin the Colorful's Quest\", For a 10minute Booster of either Gold/Exp/Rep", Booster.All),
     };
 
