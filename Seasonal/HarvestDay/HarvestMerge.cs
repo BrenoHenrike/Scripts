@@ -93,8 +93,7 @@ public class HarvestMerge
                         }
                         
                         //A Golden Blade 6087
-                        Core.EnsureAccept(6087);
-                        Core.EnsureComplete(6087);
+                        Core.ChainComplete(6087);
 
                         // Cover the Shine 6089
                         Core.EnsureAccept(6089);

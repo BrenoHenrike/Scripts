@@ -30,8 +30,9 @@
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/Good/Paladin.cs
-//cs_include Scripts/Other\Weapons\EnchantedVictoryBladeWeapons.cs
+//cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
 //cs_include Scripts/Story/Tutorial.cs
+//cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -61,6 +62,7 @@ public class FarmerJoeStartingTheAcc
     public StoneCrusher SC = new();
     public EnchantedVictoryBladeWeapons EVBW = new();
     public Tutorial Tutorial = new();
+    public DualChainSawKatanas DCSK = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -104,9 +106,16 @@ public class FarmerJoeStartingTheAcc
             Core.ToBank("Arcane Blade of Glory");
         if (Core.CheckInventory("Shadow Blade of Dispair"))
             Core.ToBank("Shadow Blade of Dispair");
-        Core.Equip("Enchanted Victory Blade");
+        Core.Equip(Core.CheckInventory("Enchanted Victory Blade") ? "Enchanted Victory Blade" : "Shadow Blade of Dispair");
         InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade
+
+        #region Dual Chainsaw Katanas
+        Core.BuyItem("classhalla", 174, "Mage");
+        Adv.rankUpClass("Mage");
+        DCSK.GetWep();
+        InvEn.EnhanceInventory();
+        #endregion Dual Chainsaw Katanas
 
 
         #region Level to 75

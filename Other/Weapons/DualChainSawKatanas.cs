@@ -19,7 +19,6 @@ public class DualChainSawKatanas
 
     public void GetWep()
     {
-
         Core.EnsureAccept(8670);
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("darkoviahorde", "r8", "Right", "Zombie", "Zombie Defeated", 100);
