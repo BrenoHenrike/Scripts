@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
-public class DefaultTemplate
+public class MountDoomSkull
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,14 +14,14 @@ public class DefaultTemplate
         //To skip clearing Lord of Chaos story, useful when starting account to faster farm for others
         Core.SetOptions();
 
-        MountDoomSkull();
+        EasyMountDoomSkull();
 
         Core.SetOptions(false);
     }
 
-    public void MountDoomSkull()
+    public void EasyMountDoomSkull()
     {
-        Core.Join(mountdoomskull);
+        Core.Join("mountdoomskull");
         //13Loc
         Core.Logger("Doing 13 Lord of Chaos");
         Core.SendPackets("%xt%zm%tryQuestComplete%60014%3578%-1%false%wvz%");
@@ -48,11 +48,7 @@ public class DefaultTemplate
         Core.SendPackets("%xt%zm%setAchievement%937075%ia1%22%1%");
         Core.SendPackets("%xt%zm%tryQuestComplete%937075%3766%-1%false%wvz%");
 
-        //New finale
-        Core.Join(newfinale);
-        Core.Logger("Donezo!")
-
-        
+        Core.Join("newfinale");
 
     }
 }
