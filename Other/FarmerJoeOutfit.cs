@@ -24,7 +24,7 @@
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
-//cs_include Scripts/Other/Classes/REP-based/EvolvedShaman.cs
+//cs_include Scripts/Other\Classes\REP-based\Shaman.cs
 //cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
@@ -57,7 +57,7 @@ public class FarmerJoeStartingTheAcc
     public CoreNation Nation = new();
     public FarmAllDailys FAD = new();
     public BurningBlade BB = new();
-    public EvolvedShaman ES = new();
+    public Shaman Shaman = new();
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
     public EnchantedVictoryBladeWeapons EVBW = new();
@@ -157,7 +157,7 @@ public class FarmerJoeStartingTheAcc
         //Step 6 Improving Efficiency, and more Classes
         Core.Logger("Step 6 Improving Efficiency, and more Classes");
         EI.GetEI();
-        ES.GetES();
+        Shaman.GetShaman();
         GB.GetGB();
         SC.GetSC();
         Adv.BuyItem("Classhalla", 178, "Ninja");

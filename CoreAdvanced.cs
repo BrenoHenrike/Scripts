@@ -481,7 +481,6 @@ public class CoreAdvanced
 
         Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-
         if (GearRestore)
             GearStore(true);
     }

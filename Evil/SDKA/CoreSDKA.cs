@@ -121,6 +121,7 @@ public class CoreSDKA
 
         if (!Bot.Quests.IsUnlocked(2088))
         {
+            Adv.GearStore();
             Core.Logger("The Doom that Looms [2087]");
             if (!Core.CheckInventory(2083))
             {
@@ -132,10 +133,11 @@ public class CoreSDKA
                 Core.BuyItem("trainers", 170, "Warrior");
                 Adv.rankUpClass("Warrior", false);
 
+                Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             }
-            Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             Adv.rankUpClass("DoomKnight", false);
 
+            Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);
 
             Core.ChainComplete(2087);
