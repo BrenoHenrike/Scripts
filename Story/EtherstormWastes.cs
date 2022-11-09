@@ -185,6 +185,9 @@ public class EtherStormWastes
     }
     public void Desoloth()
     {
+        if (!Core.IsMember)
+            return;
+
         Fire();
         if (Core.isCompletedBefore(1418))
             return;
