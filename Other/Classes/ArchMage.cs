@@ -135,10 +135,10 @@ public class Archmage
         Core.EnsureAccept(8919);
         Core.Logger("Doing Extra Quest for 51% wep.");
 
-        BossItemCheck("Elemental Binding");
-
         Arcana();
         UnboundTomb(30);
+        
+        BossItemCheck("Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
@@ -410,11 +410,11 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Arcane Locus", quant))
         {
             Core.EnsureAccept(8911);
-            Core.KillMonster("skytower", "r3", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
+            Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
             Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
             Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false, log: false);
             Core.HuntMonster("drakonnan", "Drakonnan", "Fire Locus", isTemp: false, log: false);
-            Core.HuntMonster("elemental", "Mana Falcon|Mana Imp", "Prime Locus Attunement", 30, isTemp: false, log: false);
+            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunement", 30, isTemp: false, log: false);
 
             Core.EnsureComplete(8911);
             Bot.Wait.ForPickup("Arcane Locus");
@@ -435,15 +435,12 @@ public class Archmage
         PrismaticEther(quant);
         ArcaneLocus(quant);
 
-        while (!Core.CheckInventory("Unbound Tome", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            // Farm.Gold(3000000);
-            Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
-
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
         }

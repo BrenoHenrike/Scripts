@@ -235,7 +235,9 @@ public class CoreFarms
 
         if (!rankUpClass)
             Core.EquipClass(ClassType.Farm);
-
+        if (rankUpClass)
+            ToggleBoost(BoostType.Class);
+            
         bool OptionRestore = Bot.Options.AggroMonsters;
         Bot.Options.AggroMonsters = true;
         Core.SavedState();
@@ -434,7 +436,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
-            Core.Join("bludrutbrawl", "Enter0", "Spawn");
+            Core.Join("bludrutbrawl-99999999", "Enter0", "Spawn");
             Bot.Options.AggroMonsters = false;
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
@@ -655,7 +657,9 @@ public class CoreFarms
         Int = 11635, // Sage Tonic
         SPw = 11745, // Potent Malevolence Elixir    
         hOu = 11761, // Healer Elixer / Potent Guard Potion / Unstable Healer Elixer // rep spam with jerra
-        hRe = 11758 // Potent Revitalize Elixi
+        hRe = 11758, // Potent Revitalize Elixi
+        mRe = 12056, // Potent Destruction Elixir
+        End = 11647 // Body Tonic
         //more to be added by request
     };
 
@@ -663,14 +667,14 @@ public class CoreFarms
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
-
+        Core.ToggleAggro(false);
         Core.FarmingLogger("Dragon Rune", quant);
         Core.FarmingLogger("Gold Voucher 100k", quant);
         if (!Core.CheckInventory("Dragon Runestone", quant))
         {
-            Gold(100000 * ( quant- Bot.Inventory.GetQuantity("Dragon Runestone")));
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 8844);
+            Gold(100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone")));
+            Core.BuyItem("Alchemy", 395, "Gold Voucher 100k", quant);
+            Core.BuyItem("Alchemy", 395, "Dragon Runestone", quant, 8844);
         }
     }
 
@@ -882,6 +886,15 @@ public class CoreFarms
         Bot.Quests.UpdateQuest(3484);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
+            Core.Join("towerofdoom10", "r10", "Left", publicRoom: true);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.Drops.Add("Monster Trophy");
+            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4)
+            {
+                Bot.Combat.Attack("Slugbutter");
+                if (Bot.Map.PlayerCount < 4)
+                    break;
+            }
             Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);

@@ -1,5 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;

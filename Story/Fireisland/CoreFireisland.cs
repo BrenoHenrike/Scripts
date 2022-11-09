@@ -88,7 +88,7 @@ public class CoreFireIsland
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
 
         //Signal Fire 4079
-        Story.KillQuest(4079, "Pyrewatch", new[] { "Storm Scout", "Fire Pikeman", "Flame Soldier", "Fyreborn Tiger" });
+        Story.KillQuest(4079, "Pyrewatch", new[] { "Storm Scout", "Flame Soldier", "Flame Soldier", "Fyreborn Tiger" });
 
         //Spreading Like Wildfire 4080
         Story.MapItemQuest(4080, "Pyrewatch", 3162, 4);

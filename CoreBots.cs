@@ -594,6 +594,7 @@ public class CoreBots
 
         Join(map);
         ToggleAggro(false);
+        Bot.Wait.ForMapLoad(map);
         JumpWait();
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
 
@@ -604,6 +605,8 @@ public class CoreBots
         sItem.iQty = buy_quant;
         sItem.iSel.iQty = buy_quant;
         sItem.accept = 1;
+
+        Bot.Sleep(ActionDelay);
 
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForActionCooldown(GameActions.BuyItem);
