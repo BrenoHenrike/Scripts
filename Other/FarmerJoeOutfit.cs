@@ -33,6 +33,7 @@
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
+//cs_include Scripts/Other\FreeBoostsQuest(10mns).cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -63,6 +64,7 @@ public class FarmerJoeStartingTheAcc
     public EnchantedVictoryBladeWeapons EVBW = new();
     public Tutorial Tutorial = new();
     public DualChainSawKatanas DCSK = new();
+    public FreeBoosts Boosts = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -117,6 +119,9 @@ public class FarmerJoeStartingTheAcc
         InvEn.EnhanceInventory();
         #endregion Dual Chainsaw Katanas
 
+        #region Boosts
+        Boosts.GetBoosts((int)Booster.All, 99, 99, 99);
+        #endregion
 
         #region Level to 75
         Core.Logger("Level to 75");
@@ -145,6 +150,9 @@ public class FarmerJoeStartingTheAcc
         //Step 4 Blade and Cape of Awe:
         Core.Logger("Step 4 Blade and Cape of Awe");
         Farm.BladeofAweREP(6, true);
+        Core.ToBank("Blade of Awe");
+        Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
+        Core.Equip("Awethur's Accoutrements");
         COA.GetCoA();
         InvEn.EnhanceInventory();
 
