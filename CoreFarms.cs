@@ -238,7 +238,7 @@ public class CoreFarms
         if (rankUpClass)
             ToggleBoost(BoostType.Class);
         Core.ToggleAggro(true);
-            
+
         bool OptionRestore = Bot.Options.AggroMonsters;
         Bot.Options.AggroMonsters = true;
         Core.SavedState();
@@ -427,7 +427,7 @@ public class CoreFarms
             return;
 
         if (Core.CBOBool("PVP_SoloPvPBoss", out bool _canSoloBoss))
-            canSoloBoss = _canSoloBoss;
+            canSoloBoss = !_canSoloBoss;
 
         Core.AddDrop(item);
 
