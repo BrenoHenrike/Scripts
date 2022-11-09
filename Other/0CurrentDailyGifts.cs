@@ -94,22 +94,14 @@ public class CurrentDailyGifts
             #region October 24 - 30 leave November 11
             GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe");
             // GetGift(AvailableUntil(1,1), "crescentmoon", "Spectral Lycan", "Headless Armor", "Ghost Eta Pet"); //uncomment on the 30th + fix availuntil date.
-            
-            #endregion
-            
-            #region November 11 - 18 leave November ??
 
-            GetGift(AvailableUntil(18, 11), "moonlab", "Nightmare Zorbak", "Zorbak's VordredSlayer", "Zorbak's VordredSlayers");
-            GetGift(AvailableUntil(18, 11), "tricktown", "Madam Ester", "Twilleven's Power", "Zorbaknar (House Item)");
-            GetGift(AvailableUntil(18, 11), "birthday", "Twilly Pinata", "Enchanted League Competitor's Hair","Enchanted League Competitor's Locks","Enchanted League Competitor's Locks and Shades","Enchanted League Competitor's Shades","League Competitor's Hair Morph","League Competitor's Locks Morph","League Competitor's Shaded Locks Morph","League Competitor's Shades Morph","Competitor Watch","Custom Competitor's Watch", "Custom Competitor's Phone", "Competitor's Cane", "Custom Competitor's Cane ");
-            
             #endregion
-
 
             #region November 11 - 18 leave November ??
 
             GetGift(AvailableUntil(18, 11), "moonlab", "Nightmare Zorbak", "Zorbak's VordredSlayer", "Zorbak's VordredSlayers");
             GetGift(AvailableUntil(18, 11), "tricktown", "Madam Ester", "Twilleven's Power", "Zorbaknar");
+            GetGift(AvailableUntil(18, 11), "birthday", "Twilly Pinata", "Enchanted League Competitor's Hair", "Enchanted League Competitor's Locks", "Enchanted League Competitor's Locks and Shades", "Enchanted League Competitor's Shades", "League Competitor's Hair Morph", "League Competitor's Locks Morph", "League Competitor's Shaded Locks Morph", "League Competitor's Shades Morph", "Competitor Watch", "Custom Competitor's Watch", "Custom Competitor's Phone", "Competitor's Cane", "Custom Competitor's Cane");
 
             #endregion
 
