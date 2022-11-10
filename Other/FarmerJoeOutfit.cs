@@ -24,7 +24,7 @@
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
-//cs_include Scripts/Other\Classes\REP-based\Shaman.cs
+//cs_include Scripts/Other/Classes/REP-based/Shaman.cs
 //cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
@@ -33,8 +33,8 @@
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
-//cs_include Scripts/Other\FreeBoostsQuest(10mns).cs
-//cs_include Scripts/Other/MountDoomSkull.cs
+//cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Story/LordsofChaos/MountDoomSkull.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -122,7 +122,8 @@ public class FarmerJoeStartingTheAcc
         #endregion Dual Chainsaw Katanas
 
         #region Boosts
-        Boosts.GetBoosts((int)Booster.All, 99, 99, 99);
+        Core.Logger("Getting Boosters for Gold, Class, and Rep");
+        Boosts.GetBoosts((int)Booster.All, 50, 50, 50);
         #endregion
 
         #region Level to 75
@@ -134,7 +135,6 @@ public class FarmerJoeStartingTheAcc
         #region Prepare for Lvl100
         //step 1 Farming Classes:
         Core.Logger("Farming Classes");
-        //LOC.Complete13LOC(true);
         MDS.EasyMountDoomSkull();
         Farm.ChaosREP();
         Adv.BuyItem("Confrontation", 891, "Chaos Slayer Berserker", shopItemID: 24359);
