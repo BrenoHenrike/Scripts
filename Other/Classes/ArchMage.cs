@@ -481,7 +481,7 @@ public class Archmage
 
                 case "Vital Exanima":
                     if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Dage", "Dage", item, isTemp: false);
+                        Core.HuntMonster("Dage", "Dage the Evil", item, isTemp: false);
                     if (!Core.CheckInventory(item))
                         Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
                     break;
