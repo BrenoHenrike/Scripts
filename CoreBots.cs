@@ -2142,7 +2142,7 @@ public class CoreBots
             case "celestialarenad":
                 JumpWait();
                 Bot.Quests.UpdateQuest(6032);
-                Bot.Map.Join($"{"celestialarenad"}-{9999999}");
+                Bot.Map.Join("celestialarenad-9999999");
                 break;
 
             case "towerofdoom1":
