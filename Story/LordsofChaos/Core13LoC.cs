@@ -1923,7 +1923,7 @@ public class Core13LoC
         }
 
         //Pure Chaos
-        if (!Story.QuestProgression(3185) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("nchaorrupted Sample")) )
+        if (!Story.QuestProgression(3185) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("Unchaorrupted Sample")) )
         {
             Core.AddDrop("Unchaorrupted Sample");
             Core.EnsureAccept(3185);
