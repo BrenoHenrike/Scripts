@@ -11,7 +11,6 @@ public class FirstClassEntertainment
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new CoreLegion();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
