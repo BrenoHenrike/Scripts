@@ -34,6 +34,7 @@
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other\FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Other/MountDoomSkull.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -65,6 +66,7 @@ public class FarmerJoeStartingTheAcc
     public Tutorial Tutorial = new();
     public DualChainSawKatanas DCSK = new();
     public FreeBoosts Boosts = new();
+    public MountDoomSkull MDS = new();
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -132,7 +134,8 @@ public class FarmerJoeStartingTheAcc
         #region Prepare for Lvl100
         //step 1 Farming Classes:
         Core.Logger("Farming Classes");
-        LOC.Complete13LOC(true);
+        //LOC.Complete13LOC(true);
+        MDS.EasyMountDoomSkull();
         Farm.ChaosREP();
         Adv.BuyItem("Confrontation", 891, "Chaos Slayer Berserker", shopItemID: 24359);
         Adv.rankUpClass("Chaos Slayer Berserker");
