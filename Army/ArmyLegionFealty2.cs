@@ -68,9 +68,9 @@ public class ArmyLegionFealty2
         Legion.JoinLegion();
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger($"Conquest Wreath", quant);
+        Bot.Quests.UpdateQuest(3008);
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
-            Bot.Quests.UpdateQuest(3008);
             GetItem("doomvault", new[] { "*" }, 6898, "Grim Cohort Conquered", 500);
             GetItem("mummies", new[] { "*" }, 6898, "Ancient Cohort Conquered", 500);
             GetItem("wrath", new[] { "*" }, 6898, "Pirate Cohort Conquered", 500);
