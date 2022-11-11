@@ -20,6 +20,8 @@ public class CoreHarvestDay
 
     public void DoAll()
     {
+        if (!Core.isSeasonalMapActive("harvest"))
+            return;
         Harvest();
         Turdraken();
         Float();
@@ -510,7 +512,13 @@ public class CoreHarvestDay
         Story.KillQuest(7798, "memetnightmare", "Burning Ember");
 
         // Kibble for Nibbles 7799
-        Story.KillQuest(7799, "memetnightmare", "Nightmare Maw");
+        if (!Story.QuestProgression(7799))
+        {
+            Core.EnsureAccept(7799);
+            while (!Bot.ShouldExit && !Core.CheckInventory(57666, 8))
+                Core.HuntMonster("memetnightmare", "Nightmare Maw");
+            Core.EnsureComplete(7799);
+        }
 
         // Board up the Windows 7800
         Story.KillQuest(7800, "memetnightmare", new[] { "Fire Cyclone", "Fire Cyclone" });
