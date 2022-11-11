@@ -119,7 +119,7 @@ public class CoreHarvestDay
         Story.KillQuest(143, "turdraken", "Cholesterious");
 
         //Turkey go Boom! 429
-        Story.ChainQuest(429);
+        Story.MapItemQuest(429, "turdraken", 75);
 
         //Cater To His Every Dish 430
         if (!Story.QuestProgression(430))
