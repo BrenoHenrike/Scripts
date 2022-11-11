@@ -395,7 +395,13 @@ public class CoreHarvestDay
         Story.MapItemQuest(7201, "meatlab", new[] { 6834, 6835 });
 
         // Spice it Up 7202
-        Story.KillQuest(7202, "firestorm", "Firestorm Hatchling");
+        if (!Story.QuestProgression(7202))
+        {
+            Core.EnsureAccept(7202);
+            Bot.Quests.UpdateQuest(1542);
+            Core.HuntMonster("firestorm", "Firestorm Hatchling", "Firestorm Sample", 8);
+            Core.EnsureComplete(7202);
+        }
 
         // Test Sample #2 7203
         Story.MapItemQuest(7203, "meatlab", new[] { 6836, 6837 });
