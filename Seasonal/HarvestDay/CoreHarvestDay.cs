@@ -20,6 +20,8 @@ public class CoreHarvestDay
 
     public void DoAll()
     {
+        if (!Core.isSeasonalMapActive("harvest"))
+            return;
         Harvest();
         Turdraken();
         Float();
