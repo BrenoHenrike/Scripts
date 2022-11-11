@@ -55,11 +55,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/QueenBattle.cs
 
-//cs_include Scripts/Story/SepulchureSaga/00CompleteSepulchureSaga.cs
-//cs_include Scripts/Story/SepulchureSaga/01SepulchurePrequelAlden.cs
-//cs_include Scripts/Story/SepulchureSaga/02SepulchurePrequelLynaria.cs
-//cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
-//cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
+//cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
 
@@ -241,7 +237,7 @@ public class AllStories
     public QueenBattle QueenBattle = new();
 
     // Sepulchure Saga
-    public CompleteSepulchureSaga SeppySaga = new();
+    public CoreSepulchure CoreSS = new();
 
     // Shadows of Chaos
     public CoreSoC CoreSoC = new();
@@ -511,8 +507,8 @@ public class AllStories
         Core.Logger($"Story: QueenBattle - Complete");
         #endregion
 
-        #region Seppy
-        SeppySaga.CompleteALL();
+        #region Sepulchure Saga
+        CoreSS.CompleteSS();
         Core.Logger($"Saga: Sepulchure - Complete");
         #endregion
 
