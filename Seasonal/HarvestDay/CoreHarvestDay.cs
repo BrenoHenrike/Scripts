@@ -422,7 +422,12 @@ public class CoreHarvestDay
         Story.KillQuest(7211, "meatlab", "Meat Nubbin");
 
         // Shut it Down  7212
-        Story.MapItemQuest(7212, "meatlab", 6842);
+        if (!Story.QuestProgression(7212))
+        {
+            Core.EnsureAccept(7212);
+            Core.GetMapItem(6842, 1, "meatlab");
+            Core.EnsureComplete(7212);
+        }
 
         // Kill it with Fire 7213
         Story.KillQuest(7213, "meatlab", "Meatmongous");
