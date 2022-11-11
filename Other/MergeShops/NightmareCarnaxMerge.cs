@@ -39,7 +39,7 @@ public class NightmareCarnaxMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Synthetic Viscera", "Carnax Essence", "Perfect Orochi Scales", "Energized Aura", "Abyssal Contract", "Purified Undead Dragon Essence", "Overwhelmed Axe " });
+        Core.BankingBlackList.AddRange(new[] { "Synthetic Viscera", "Carnax Essence", "Perfect Orochi Scales", "Energized Aura", "Abyssal Contract", "Purified Undead Dragon Essence", "Overwhelmed Axe" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -122,10 +122,17 @@ public class NightmareCarnaxMerge
         new Option<bool>("70911", "Carnax Disciple's Dagger", "Mode: [select] only\nShould the bot buy \"Carnax Disciple's Dagger\" ?", false),
         new Option<bool>("70912", "Carnax Disciple's Daggers", "Mode: [select] only\nShould the bot buy \"Carnax Disciple's Daggers\" ?", false),
         new Option<bool>("70913", "Carnax Devotee's Claws", "Mode: [select] only\nShould the bot buy \"Carnax Devotee's Claws\" ?", false),
+        new Option<bool>("72688", "Nightmare Queen", "Mode: [select] only\nShould the bot buy \"Nightmare Queen\" ?", false),
+        new Option<bool>("72689", "Nightmare Queen's Face", "Mode: [select] only\nShould the bot buy \"Nightmare Queen's Face\" ?", false),
+        new Option<bool>("72690", "Nightmare Queen's Morph", "Mode: [select] only\nShould the bot buy \"Nightmare Queen's Morph\" ?", false),
+        new Option<bool>("72691", "Nightmare Queen's Tiara", "Mode: [select] only\nShould the bot buy \"Nightmare Queen's Tiara\" ?", false),
+        new Option<bool>("72692", "Nightmare Queen's Spikes", "Mode: [select] only\nShould the bot buy \"Nightmare Queen's Spikes\" ?", false),
+        new Option<bool>("72693", "Nightmare Queen's Sword", "Mode: [select] only\nShould the bot buy \"Nightmare Queen's Sword\" ?", false),
+        new Option<bool>("72694", "Nightmare Queen's Gauntlet", "Mode: [select] only\nShould the bot buy \"Nightmare Queen's Gauntlet\" ?", false),
         new Option<bool>("72799", "Nightmare Carnax Disciple", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax Disciple\" ?", false),
         new Option<bool>("72800", "Nightmare Carnax Devotee", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax Devotee\" ?", false),
-        new Option<bool>("72803", "Nightmare Carnax's Morph", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax's Morph\" ?", false),
         new Option<bool>("72802", "Nightmare Carnax's Horned Hood", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax's Horned Hood\" ?", false),
+        new Option<bool>("72803", "Nightmare Carnax's Morph", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax's Morph\" ?", false),
         new Option<bool>("72804", "Nightmare Carnax's Temple", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax's Temple\" ?", false),
         new Option<bool>("72805", "Nightmare Carnax's Guardians", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax's Guardians\" ?", false),
         new Option<bool>("72806", "Nightmare Carnax's BattleAxe", "Mode: [select] only\nShould the bot buy \"Nightmare Carnax's BattleAxe\" ?", false),
