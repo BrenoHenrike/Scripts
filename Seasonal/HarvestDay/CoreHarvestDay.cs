@@ -165,8 +165,6 @@ public class CoreHarvestDay
         if (!Core.isSeasonalMapActive("banquet") || Core.isCompletedBefore(1436))
             return;
 
-        Float();
-
 
         Story.PreLoad(this);
 
