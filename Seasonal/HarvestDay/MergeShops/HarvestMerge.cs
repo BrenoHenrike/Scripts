@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -14,6 +15,7 @@ public class HarvestMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    public CoreHarvestDay HarvestDay = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -34,6 +36,8 @@ public class HarvestMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.isSeasonalMapActive("feastboss"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("feast", 2181, findIngredients);
 
@@ -73,34 +77,8 @@ public class HarvestMerge
                     break;
 
                 case "Wretched Rider Meat":
+                    HarvestDay.FoulFarm();
                     Core.EquipClass(ClassType.Solo);
-                    if (!Core.CheckInventory("Muddy Soulflare")) // should be replaced with A Story Method later
-                    {
-                        Core.AddDrop("Muddy Soulflare");
-                        //Give Me The Gold! 6086
-                        Core.EnsureAccept(6086);
-                        Core.HuntMonster("harvestzombie", "Golden Warrior", "Golden Armor Piece", 6);
-                        Core.EnsureComplete(6086);
-
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Soulflare"))
-                        {
-                            //Cyser-Os! 6088
-                            Core.AddDrop("Soulflare");
-                            Core.EnsureAccept(6088);
-                            Core.HuntMonster("battlefowl", "ChickenCow", "Box of Cyser-Os", 3);
-                            Bot.Wait.ForDrop("Soulflare");
-                            Core.EnsureComplete(6088);
-                        }
-                        
-                        //A Golden Blade 6087
-                        Core.ChainComplete(6087);
-
-                        // Cover the Shine 6089
-                        Core.EnsureAccept(6089);
-                        Core.HuntMonster("brightoak", "Tainted Earth", "Sticky Mud", 8);
-                        Bot.Wait.ForDrop("Muddy Soulflare");
-                        Core.EnsureComplete(6089);
-                    }
                     Core.HuntMonster("dullahan", "Wretched Rider", req.Name, quant, isTemp: false);
                     break;
 
