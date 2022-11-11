@@ -2208,6 +2208,7 @@ public class CoreBots
 
         void tryJoin()
         {
+            Bot.Events.ExtensionPacketReceived += MapIsMemberLocked;
             bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
             for (int i = 0; i < 20; i++)
             {
@@ -2225,6 +2226,28 @@ public class CoreBots
                     Logger($"Failed to join {map}");
             }
         }
+        void MapIsMemberLocked(dynamic packet)
+        { //%xt%warning%-1%"artixhome" is an Membership-Only Map.%
+
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "str")
+            {
+                string cmd = data[0];
+                switch (cmd)
+                {
+                    case "warning":
+                        string b = Convert.ToString(packet);
+                        if (b.Contains("is an Membership-Only Map"))
+                        {
+                            Logger($" \"{map}\" Requires MemberShip to access it, Stopping the Bot.", stopBot: true);
+                            Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
+                        }
+                        break;
+                }
+            }
+        }
+
     }
 
     public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)

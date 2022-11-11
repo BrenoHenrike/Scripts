@@ -24,6 +24,7 @@ public class Mobius
     public void DoAll()
     {
         StoryLine();
+        Saathel();
         GravelynandVictoria();
     }
     public void StoryLine()
@@ -65,6 +66,48 @@ public class Mobius
 
         //Star of the Flames 2375
         Story.KillQuest(2375, "greendragon", "Greenguard Dragon");
+
+    }
+
+    public void Saathel()
+    {
+        if (Core.isCompletedBefore(2364))
+            return;
+
+        Story.PreLoad(this);
+
+        // The Dead City 2354
+        Story.MapItemQuest(2354, "mobius", 1465);
+
+        //Grains of Chaos 2355
+        Story.KillQuest(2355, "mobius", "Chaos Sp-Eye");
+
+        //Call of the Sun 2356
+        Story.MapItemQuest(2356, "mobius", 1461, 10);
+
+        //Shattered Past 2357
+        Story.KillQuest(2357, "mobius", "Chaos Sp-Eye");
+
+        //The Spoiler 2358
+        Story.MapItemQuest(2358, "mobius", 1462, 10);
+
+        //Heart Of The Sun 2359
+        Story.KillQuest(2359, "mobius", "Slugfit");
+
+        //The Sol 2360
+        Story.MapItemQuest(2360, "mobius", 1466);
+
+        //Star of the Wild 2361
+        Story.KillQuest(2361, "Guru", "Wisteria");
+
+        //Star of the Seas 2362
+        Story.KillQuest(2362, "natatorium", "Marianus");
+
+        //Star of the Earth 2363
+        Story.KillQuest(2363, "pines", "Pine Troll");
+
+        //The Star of Flames 2364
+        Story.KillQuest(2364, "greendragon", "Greenguard Dragon");
 
     }
 

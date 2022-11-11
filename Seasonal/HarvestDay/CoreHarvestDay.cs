@@ -20,6 +20,8 @@ public class CoreHarvestDay
 
     public void DoAll()
     {
+        if (!Core.isSeasonalMapActive("harvest"))
+            return;
         Harvest();
         Turdraken();
         Float();
@@ -93,7 +95,9 @@ public class CoreHarvestDay
 
     public void Turdraken()
     {
-        if (!Core.isSeasonalMapActive("turdraken") || (Core.isCompletedBefore(430) || !Core.IsMember))
+        if (!Core.IsMember)
+            return;
+        if (!Core.isSeasonalMapActive("turdraken") || Core.isCompletedBefore(430))
             return;
 
         Harvest();
@@ -135,7 +139,9 @@ public class CoreHarvestDay
 
     public void Float()
     {
-        if (!Core.isSeasonalMapActive("float") || (Core.isCompletedBefore(897) || !Core.IsMember))
+        if (!Core.IsMember)
+            return;
+        if (!Core.isSeasonalMapActive("float") || Core.isCompletedBefore(897))
             return;
 
         Turdraken();
@@ -206,7 +212,9 @@ public class CoreHarvestDay
 
     public void ArtixHome()
     {
-        if (!Core.isSeasonalMapActive("artixhome") || (Core.isCompletedBefore(1440) || !Core.IsMember))
+        if (!Core.IsMember)
+            return;
+        if (!Core.isSeasonalMapActive("artixhome") || Core.isCompletedBefore(1440))
             return;
 
         Grams();
@@ -389,7 +397,13 @@ public class CoreHarvestDay
         Story.MapItemQuest(7201, "meatlab", new[] { 6834, 6835 });
 
         // Spice it Up 7202
-        Story.KillQuest(7202, "firestorm", "Firestorm Hatchling");
+        if (!Story.QuestProgression(7202))
+        {
+            Core.EnsureAccept(7202);
+            Bot.Quests.UpdateQuest(1542);
+            Core.HuntMonster("firestorm", "Firestorm Hatchling", "Firestorm Sample", 8);
+            Core.EnsureComplete(7202);
+        }
 
         // Test Sample #2 7203
         Story.MapItemQuest(7203, "meatlab", new[] { 6836, 6837 });
@@ -498,7 +512,13 @@ public class CoreHarvestDay
         Story.KillQuest(7798, "memetnightmare", "Burning Ember");
 
         // Kibble for Nibbles 7799
-        Story.KillQuest(7799, "memetnightmare", "Nightmare Maw");
+        if (!Story.QuestProgression(7799))
+        {
+            Core.EnsureAccept(7799);
+            while (!Bot.ShouldExit && !Core.CheckInventory(57666, 8))
+                Core.HuntMonster("memetnightmare", "Nightmare Maw");
+            Core.EnsureComplete(7799);
+        }
 
         // Board up the Windows 7800
         Story.KillQuest(7800, "memetnightmare", new[] { "Fire Cyclone", "Fire Cyclone" });
