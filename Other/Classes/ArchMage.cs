@@ -474,9 +474,9 @@ public class Archmage
             {
                 case "Void Essentia":
                     if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Thevoid", "Flibbitiestgibbet", item, isTemp: false);
+                        Core.HuntMonster("voidflibbi", "Flibbitiestgibbet", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [Thevoid]", stopBot: true);
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [voidflibbi]", stopBot: true);
                     break;
 
                 case "Vital Exanima":
@@ -521,9 +521,9 @@ public class Archmage
 
                 case "Insatiable Hunger":
                     if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Thevoid", "Nightbane", item, isTemp: false);
+                        Core.HuntMonster("voidnightbane", "Nightbane", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [Thevoid]", stopBot: true);
+                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [voidnightbane]", stopBot: true);
                     break;
 
                 case "Undying Resolve":
