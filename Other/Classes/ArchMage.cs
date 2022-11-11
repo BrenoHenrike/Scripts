@@ -440,7 +440,7 @@ public class Archmage
         {
             Core.EnsureAccept(8912);
             if (Bot.Config.Get<bool>("Voucher"))
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 3, 8845);
+                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
             else 
                 Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
