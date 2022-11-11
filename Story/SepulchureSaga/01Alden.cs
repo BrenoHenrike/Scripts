@@ -3,7 +3,7 @@
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 using Skua.Core.Interfaces;
 
-public class CompleteSS
+public class Alden
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,7 +14,7 @@ public class CompleteSS
     {
         Core.SetOptions();
 
-        CoreSS.CompleteSS();
+        CoreSS.Alden();
 
         Core.SetOptions(false);
     }

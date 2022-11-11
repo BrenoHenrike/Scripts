@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/SepulchureSaga/03SepulchuresRise.cs
+//cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -14,7 +14,7 @@ public class FiendofLight
     public CoreStory Story = new();
     public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
-    public SepulchuresRise SepulchureSaga = new();
+    public CoreSepulchure CoreSS = new();
 
     public bool DontPreconfigure = true;
 
@@ -32,8 +32,8 @@ public class FiendofLight
     {
         Core.SetOptions();
 
+        CoreSS.SepulchuresRise();
 
-        SepulchureSaga.StoryLine();
         if (!Bot.Config.Get<bool>("SelectReward"))
             ForeachSelect(6408);
         else OptionsSelect(Bot.Config.Get<RewardsSelection>("RewardSelect"), 6408);
