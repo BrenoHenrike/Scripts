@@ -93,9 +93,11 @@ public class CoreHarvestDay
 
     public void Turdraken()
     {
-        Harvest();
         if (!Core.isSeasonalMapActive("turdraken") || Core.isCompletedBefore(430) || !Core.IsMember)
             return;
+
+        Harvest();
+
 
         Story.PreLoad(this);
 
@@ -133,9 +135,11 @@ public class CoreHarvestDay
 
     public void Float()
     {
-        Turdraken();
         if (!Core.isSeasonalMapActive("float") || Core.isCompletedBefore(897) || !Core.IsMember)
             return;
+
+        Turdraken();
+
 
         Story.PreLoad(this);
 
@@ -158,9 +162,11 @@ public class CoreHarvestDay
 
     public void Banquet()
     {
-        Float();
         if (!Core.isSeasonalMapActive("banquet") || Core.isCompletedBefore(1436))
             return;
+
+        Float();
+
 
         Story.PreLoad(this);
 
@@ -180,9 +186,11 @@ public class CoreHarvestDay
 
     public void Grams()
     {
-        Banquet();
         if (!Core.isSeasonalMapActive("grams") || Core.isCompletedBefore(1444))
             return;
+
+        Banquet();
+
 
         Story.PreLoad(this);
         //Bandits are Bad News 1441
@@ -200,9 +208,11 @@ public class CoreHarvestDay
 
     public void ArtixHome()
     {
-        Grams();
         if (!Core.isSeasonalMapActive("artixhome") || Core.isCompletedBefore(1440) || !Core.IsMember)
             return;
+
+        Grams();
+
 
         Story.PreLoad(this);
 
@@ -224,9 +234,11 @@ public class CoreHarvestDay
 
     public void FoulFarm()
     {
-        ArtixHome();
         if (!Core.isSeasonalMapActive("foulfarm") || Core.isCompletedBefore(6090))
             return;
+
+        ArtixHome();
+
 
         Story.PreLoad(this);
 
@@ -334,9 +346,11 @@ public class CoreHarvestDay
 
     public void FurborgShip()
     {
-        FurbleFeast();
         if (!Core.isSeasonalMapActive("furborgship") || Core.isCompletedBefore(7231))
             return;
+
+        FurbleFeast();
+
 
         Story.PreLoad(this);
 
@@ -463,9 +477,11 @@ public class CoreHarvestDay
 
     public void MemetNightmare()
     {
-        GothicDream();
         if (!Core.isSeasonalMapActive("memetnightmare") || Core.isCompletedBefore(7808))
             return;
+
+        GothicDream();
+
 
         Story.PreLoad(this);
 
@@ -513,9 +529,11 @@ public class CoreHarvestDay
 
     public void NightmareWar()
     {
-        MemetNightmare();
         if (!Core.isSeasonalMapActive("nightmarewar") || Core.isCompletedBefore(7813))
             return;
+
+        MemetNightmare();
+
 
         Story.PreLoad(this);
 
