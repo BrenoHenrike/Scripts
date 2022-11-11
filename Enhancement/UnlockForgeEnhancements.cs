@@ -34,7 +34,7 @@
 //cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
-//cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
+//cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 //cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/StarSinc.cs
@@ -87,7 +87,7 @@ public class UnlockForgeEnhancements
     public CoreYnR YNR = new();
 
     public CoreSoW SoW = new();
-    public ShadowfallRise SFR = new();
+    public CoreSepulchure CoreSS = new();
     public ArchPaladin AP = new();
     public DragonOfTime DOT = new();
     public FireChampionsArmor FCA = new();
@@ -367,7 +367,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Smite");
 
-        SFR.StoryLine();
+        CoreSS.ShadowfallRise();
         Farm.Experience(60);
         Farm.BlacksmithingREP(6, Bot.Config.Get<bool>("UseGold"));
 
