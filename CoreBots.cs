@@ -2191,7 +2191,9 @@ public class CoreBots
                     "willowcreek",
                     "shadowlordpast",
                     "binky",
-                    "superlowe"
+                    "superlowe",
+                    "voidflibbi",
+                    "voidnightbane"
                 };
                 if (lockedMaps.Contains(strippedMap))
                     File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);

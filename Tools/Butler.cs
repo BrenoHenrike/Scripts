@@ -228,7 +228,9 @@ public class Follower
             "doomwood",
             "hollowdeep",
             "hyperium",
-            "willowcreek"
+            "willowcreek",
+            "voidflibbi",
+            "voidnightbane"
         };
         string[] MemMaps =
         {
