@@ -93,7 +93,7 @@ public class CoreHarvestDay
 
     public void Turdraken()
     {
-        if (!Core.isSeasonalMapActive("turdraken") || Core.isCompletedBefore(430) || !Core.IsMember)
+        if (!Core.isSeasonalMapActive("turdraken") || (Core.isCompletedBefore(430) || !Core.IsMember))
             return;
 
         Harvest();
@@ -135,7 +135,7 @@ public class CoreHarvestDay
 
     public void Float()
     {
-        if (!Core.isSeasonalMapActive("float") || Core.isCompletedBefore(897) || !Core.IsMember)
+        if (!Core.isSeasonalMapActive("float") || (Core.isCompletedBefore(897) || !Core.IsMember))
             return;
 
         Turdraken();
@@ -206,7 +206,7 @@ public class CoreHarvestDay
 
     public void ArtixHome()
     {
-        if (!Core.isSeasonalMapActive("artixhome") || Core.isCompletedBefore(1440) || !Core.IsMember)
+        if (!Core.isSeasonalMapActive("artixhome") || (Core.isCompletedBefore(1440) || !Core.IsMember))
             return;
 
         Grams();
