@@ -632,7 +632,7 @@ public class AllStories
         }
 
 
-        DreamPalace.CompleteDreamPalace();
+        DreamPalace.StoryLine();
         Core.Logger($"Story: Dream Palace - Complete");
 
         Dwarfhold.DoAll();
@@ -642,7 +642,7 @@ public class AllStories
         Core.Logger($"Story: Dwarves Vs Giants - Complete");
 
 
-        Eden.EdenStoryline();
+        Eden.StoryLine();
         Core.Logger($"Story: Eden - Complete");
 
         EtherStormWastes.DoAll();
