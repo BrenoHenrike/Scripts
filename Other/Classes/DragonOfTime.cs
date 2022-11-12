@@ -31,7 +31,7 @@ public class DragonOfTime
     public CoreToD TOD = new();
     public MysteriousEgg Egg = new();
     public CoreSummer Coll = new();
-    public Borgars Borg = new();
+    public Borgars Borgars = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -51,7 +51,7 @@ public class DragonOfTime
 
         Story.PreLoad(this);
 
-        //Acquiring Ancient Secrets
+        // Acquiring Ancient Secrets 7716
         if (!Story.QuestProgression(7716))
         {
             Core.EnsureAccept(7716);
@@ -76,7 +76,7 @@ public class DragonOfTime
             Core.ToBank("Dragon of Time Helm", "Dragon of Time Ponytail");
         }
 
-        //Time to Train Yourself
+        // Time to Train Yourself 7717
         if (!Story.QuestProgression(7717))
         {
             Core.EnsureAccept(7717);
@@ -99,7 +99,7 @@ public class DragonOfTime
             Core.ToBank("Dragon of Time Runes", "Dragon of Time Wings", "Dragon of Time Tail");
         }
 
-        //Do You Have the Time?
+        // Do You Have the Time? 7718
         if (!Story.QuestProgression(7718))
         {
             Farm.Experience(31);
@@ -126,7 +126,7 @@ public class DragonOfTime
             Core.ToBank("Dragon of Time FangBlade", "Dual Dragon of Time FangBlades");
         }
 
-        //Through the Wormhole
+        // Through the Wormhole 7719
         if (!Story.QuestProgression(7719))
         {
             Farm.Experience(40);
@@ -148,7 +148,7 @@ public class DragonOfTime
             Core.ToBank("Dragon of Time Armor");
         }
 
-        //Rend
+        // Rend 7720
         if (!Story.QuestProgression(7720))
         {
             Farm.Experience(60);
@@ -166,7 +166,7 @@ public class DragonOfTime
             Core.ToBank("Dragon of Time Daggers", "Dragon of Time Cleaver");
         }
 
-        //Confluence of Fates
+        // Confluence of Fates 7721
         if (!Story.QuestProgression(7721))
         {
             Farm.Experience(60);
@@ -182,6 +182,7 @@ public class DragonOfTime
             if (!Core.CheckInventory("Semiramis Feather"))
             {
                 Core.AddDrop("Semiramis Feather");
+                // Take Down Terrane 6286
                 Core.EnsureAccept(6286);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("guardiantree", "Terrane", "Terrane Defeated");
@@ -196,6 +197,7 @@ public class DragonOfTime
             if (!Core.CheckInventory("Starlight Singularity"))
             {
                 Core.AddDrop("Starlight Singularity");
+                // Serpent of the Stars 5186
                 Core.EnsureAccept(5186);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("whitehole", "Mehensi Serpent", "Mehen Slain");
@@ -213,7 +215,7 @@ public class DragonOfTime
             Core.ToBank("Ascended Dragon of Time Runes", "Runes Of Time");
         }
 
-        //Dragon's Will
+        // Dragon's Will 7722
         if (!Story.QuestProgression(7722))
         {
             Farm.Experience(65);
@@ -239,7 +241,7 @@ public class DragonOfTime
             Core.ToBank("Dragon of Time Reaper", "Dragon of Time WingBlade");
         }
 
-        //Burning Fates
+        // Burning Fates 7723
         if (!Story.QuestProgression(7723))
         {
             Farm.Experience(70);
@@ -260,7 +262,7 @@ public class DragonOfTime
             Core.ToBank("Ascended Dragon of Time");
         }
 
-        //Hero's Heartbeat
+        // Hero's Heartbeat 7724
         if (!Story.QuestProgression(7724) || !Core.CheckInventory("Dragon of Time"))
         {
             Farm.Experience(75);
@@ -288,7 +290,7 @@ public class DragonOfTime
         if (rankUpClass)
             Adv.rankUpClass("Dragon of Time");
 
-        //I'm Loving It My Way
+        // I'm Loving It My Way 7725
         if (doExtra)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(Extras, toInv: false))
@@ -296,7 +298,7 @@ public class DragonOfTime
                 Farm.Experience(75);
                 Core.EnsureAccept(7725);
 
-                Borg.BorgarQuests();
+                Borgars.StoryLine();
                 Core.AddDrop("Burger Buns");
                 Core.EquipClass(ClassType.Solo);
 
@@ -305,6 +307,7 @@ public class DragonOfTime
                     bool LoggedBefore = false;
                     while (!Bot.ShouldExit && !Core.CheckInventory("Burger Buns", 5))
                     {
+                        // Burglinster's Revenge 7522
                         Core.EnsureAccept(7522);
                         Core.HuntMonster("borgars", "Burglinster", "Burglinster Cured", log: !LoggedBefore);
                         Core.EnsureComplete(7522);
