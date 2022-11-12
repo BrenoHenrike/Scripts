@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/SepulchureSaga/04ShadowfallRise.cs
+//cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -8,13 +8,13 @@ public class CelestialStarMageSet
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private ShadowfallRise SFR = new();
+    public CoreSepulchure CoreSS = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        SFR.StoryLine();
+        CoreSS.ShadowfallRise();
         GetSet();
 
         Core.SetOptions(false);
@@ -26,7 +26,7 @@ public class CelestialStarMageSet
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);
-            
+
         Core.EquipClass(ClassType.Solo);
 
         foreach (ItemBase Reward in RewardOptions)
