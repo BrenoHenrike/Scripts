@@ -1020,11 +1020,11 @@ public class CoreSoW
 
         // Innocent Crafts 8963
         Story.MapItemQuest(8963, "worldscore", 10883);
-        Story.KillQuest(8962, "worldscore", "Infernal Mockery");
+        Story.KillQuest(8963, "worldscore", "Infernal Mockery");
 
         // Cold Bedrock 8964
         Story.MapItemQuest(8964, "worldscore", 10884);
-        Story.KillQuest(8962, "worldscore", "Elemental Attempt");
+        Story.KillQuest(8964, "worldscore", "Elemental Attempt");
 
         // Rippling Heartbeat 8965
         Story.KillQuest(8965, "worldscore", "Mask of Tranquility");
