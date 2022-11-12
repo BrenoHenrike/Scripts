@@ -2160,6 +2160,26 @@ public class CoreBots
                 tryJoin();
                 break;
 
+
+            case "shadowattack":
+                JumpWait();
+                Bot.Quests.UpdateQuest(3798);
+                tryJoin();
+                break;
+
+            case "confrontation":
+                JumpWait();
+                // Bot.Quests.UpdateQuest(3765);                
+                Bot.Quests.UpdateQuest(3799);
+                tryJoin();
+                break;
+
+            case "finalshowdown":
+                JumpWait();
+                Bot.Quests.UpdateQuest(3880);
+                tryJoin();
+                break;
+
                 // case "fearhouse":
                 //     SendPackets($"%xt%zm%cmd%{Bot.Map.RoomID}%tfer%{Bot.Player.Username}%fearhouse%{999999}&Enter%Spawn%");
                 //     break;

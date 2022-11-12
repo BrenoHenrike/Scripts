@@ -137,7 +137,7 @@ public class LowDRWeapons
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Apocryphal_Blade_Of_The_Truth || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Apocryphal Blade Of The Truth"))
         {
-            CCore.HuntMonster("banished", "Desterrat Moya", "Apocryphal Blade Of The Truth", isTemp: false);
+            Core.HuntMonster("banished", "Desterrat Moya", "Apocryphal Blade Of The Truth", isTemp: false);
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Evolved_Agony_Chain || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Evolved Agony Chain"))
