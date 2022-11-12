@@ -83,7 +83,7 @@ public class LowDRWeapons
             Bot.Wait.ForPickup("Death's Scythe");
         }
 
-        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Bone_Claws_ofTurmoil || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Bone Claws of Turmoil"))
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Bone_Claws_of_Turmoil || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Bone Claws of Turmoil"))
         {
             Core.HuntMonster("cloister", "Acornment", "Bone Claws of Turmoil", isTemp: false);
             Bot.Wait.ForPickup("Bone Claws of Turmoil");
@@ -95,7 +95,56 @@ public class LowDRWeapons
             Bot.Wait.ForPickup("Diamonds Of Time");
         }
 
-        // if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Insert && !Core.CheckInventory("Insert"))
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Underworldly_Dark_Wand || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Underworldly Dark Wand"))
+        {
+            Core.HuntMonster("legionarena", "Exalted Legion Champion", "Underworldly Dark Wand", isTemp: false);
+            Bot.Wait.ForPickup("Underworldly Dark Wand");
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Legion_Chain_Whip || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Legion Chain Whip"))
+        {
+            Core.HuntMonster("legionarena", "Exalted Legion Champion", "Legion Chain Whip", isTemp: false);
+            Bot.Wait.ForPickup("Legion Chain Whip");
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Blood_Scythe_Of_Destruction || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Blood Scythe Of Destruction"))
+        {
+            Core.HuntMonster("infernalspire", "Helzekiel", "Blood Scythe Of Destruction", isTemp: false);
+            Bot.Wait.ForPickup("Blood Scythe Of Destruction");
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Sanctified_Guardian_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Sanctified Guardian Blade"))
+        {
+            Core.HuntMonster("aqlesson", "Carnax", "Sanctified Guardian Blade", isTemp: false);
+            Bot.Wait.ForPickup("Sanctified Guardian Blade");
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Feral_Blade_of_Doom || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Feral Blade of Doom"))
+        {
+            Core.HuntMonster("stonewooddeep", "Asherion", "Feral Blade of Doom", isTemp: false);
+            Bot.Wait.ForPickup("Feral Blade of Doom");
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Feral_DoomBlade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Feral DoomBlade"))
+        {
+            Core.HuntMonster("stonewooddeep", "Asherion", "Feral DoomBlade", isTemp: false);
+            Bot.Wait.ForPickup("Feral DoomBlade");
+        }
+        
+        //Confirmed by staff it's lower than 1% but has Epic rarity
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Ruby_Pickaxe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Ruby Pickaxe"))
+        {
+            Core.HuntMonster("banished", "Desterrat Moya", "Ruby Pickaxe", isTemp: false);
+            Bot.Wait.ForPickup("Ruby Pickaxe");
+        }
+        
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Duel_Swords_of_Vindication || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Duel Swords of Vindication"))
+        {
+            Core.HuntMonster("xancave", "Shurpu Ring Guardian", "Duel Swords of Vindication", isTemp: false);
+            Bot.Wait.ForPickup("Duel Swords of Vindication");
+        }
+
+        // if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Insert || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Insert"))
         // {
         //     Core.HuntMonster("Map", "Mob", "Item", isTemp: false);
         //     Bot.Wait.ForPickup("Item");
@@ -115,7 +164,15 @@ public enum Weapons
     Deaths_Bright_Blade,
     Deaths_Scythe,
     Diamonds_Of_Time,
-    Bone_Claws_ofTurmoil,
+    Bone_Claws_of_Turmoil,
+    Underworldly_Dark_Wand,
+    Legion_Chain_Whip,
+    Blood_Scythe_Of_Destruction,
+    Sanctified_Guardian_Blade,
+    Feral_Blade_of_Doom,
+    Feral_DoomBlade,
+    Ruby_Pickaxe,
+    Duel_Swords_of_Vindication,
     All,
     None
 }
