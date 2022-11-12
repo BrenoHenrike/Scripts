@@ -34,25 +34,22 @@ public class LowDRCapes
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
-        
+
         Core.FarmingLogger($"{Bot.Config.Get<Capes>("Capes").ToString()}", 1);
 
         if (Bot.Config.Get<Capes>("Capes") == Capes.Infinity_Shield_Cape || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Infinity Shield Cape"))
         {
             Core.HuntMonster("whitehole", "Mehensi Serpent", "Infinity Shield Cape", isTemp: false);
-            Bot.Wait.ForPickup("Infinity Shield Cape");
         }
 
         if (Bot.Config.Get<Capes>("Capes") == Capes.Drakath_Wings || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Drakath Wings"))
         {
             Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
-            Bot.Wait.ForPickup("Drakath Wings");
         }
-
+        
         if (Bot.Config.Get<Capes>("Capes") == Capes.Wings_Of_Destruction || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Wings Of Destruction"))
         {
             Core.HuntMonster("infernalspire", "Malxas", "Wings Of Destruction", isTemp: false);
-            Bot.Wait.ForPickup("Wings Of Destruction");
         }
 
         // if (Bot.Config.Get<Capes>("Capes") == Capes.Insert || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Insert"))

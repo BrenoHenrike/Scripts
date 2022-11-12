@@ -40,13 +40,11 @@ public class LowDRHelmets
         if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Sekts_Mummys_Hat || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Sekt's Mummy's Hat"))
         {
             Core.HuntMonster("fourdpyramid", "Sekt's Mummy", "Sekt's Mummy's Hat", isTemp: false);
-            Bot.Wait.ForPickup("Sekt's Mummy's Hat");
         }
 
         if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Dracolich_Destroyer_Mask || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Dracolich Destroyer Mask"))
         {
             Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Mask", isTemp: false);
-            Bot.Wait.ForPickup("Dracolich Destroyer Mask");
         }
 
         // if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Insert || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Insert"))

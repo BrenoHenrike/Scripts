@@ -38,110 +38,92 @@ public class LowDRWeapons
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Adas_Overcharged_Scythe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Ada's Overcharged Scythe"))
         {
             Core.HuntMonster("laken", "Ada", "Ada's Overcharged Scythe", isTemp: false);
-            Bot.Wait.ForPickup("Ada's Overcharged Scythe");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Amethyst_Pickaxe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Amethyst Pickaxe"))
         {
             Core.HuntMonster("djinn", "Tibicenas", "Amethyst Pickaxe", isTemp: false);
-            Bot.Wait.ForPickup("Amethyst Pickaxe");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Ancient_Frying_Pan || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Ancient Frying Pan"))
         {
             Core.HuntMonster("timevoid", "Unending Avatar", "Ancient Frying Pan", isTemp: false);
-            Bot.Wait.ForPickup("Ancient Frying Pan");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Blood_of_the_Void_Daggers || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Blood of the Void Daggers"))
         {
             Core.HuntMonster("voidbattle", "Jir'abin Challenge", "Blood of the Void Daggers", isTemp: false);
-            Bot.Wait.ForPickup("Blood of the Void Daggers");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Blood_of_the_Void_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Blood of the Void Blade"))
         {
             Core.HuntMonster("voidbattle", "Jir'abin Challenge", "Blood of the Void Blade", isTemp: false);
-            Bot.Wait.ForPickup("Blood of the Void Blade");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Burning_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory(31058))
         {
             Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Burning Blade");
-            Bot.Wait.ForPickup("Burning Blade");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Deaths_Bright_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Death's Bright Blade"))
         {
             Core.HuntMonster("tercessuinotlim", "Death's Head", "Death's Bright Blade", isTemp: false);
-            Bot.Wait.ForPickup("Death's Bright Blade");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Deaths_Scythe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory(25117))
         {
             Core.HuntMonster("shadowattack", "Death", "Death's Scythe", isTemp: false);
-            Bot.Wait.ForPickup("Death's Scythe");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Bone_Claws_of_Turmoil || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Bone Claws of Turmoil"))
         {
             Core.HuntMonster("cloister", "Acornment", "Bone Claws of Turmoil", isTemp: false);
-            Bot.Wait.ForPickup("Bone Claws of Turmoil");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Diamonds_Of_Time || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Diamonds Of Time"))
         {
             Core.HuntMonster("cloister", "Acornment", "Diamonds Of Time", isTemp: false);
-            Bot.Wait.ForPickup("Diamonds Of Time");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Underworldly_Dark_Wand || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Underworldly Dark Wand"))
         {
             Core.HuntMonster("legionarena", "Exalted Legion Champion", "Underworldly Dark Wand", isTemp: false);
-            Bot.Wait.ForPickup("Underworldly Dark Wand");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Legion_Chain_Whip || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Legion Chain Whip"))
         {
             Core.HuntMonster("legionarena", "Exalted Legion Champion", "Legion Chain Whip", isTemp: false);
-            Bot.Wait.ForPickup("Legion Chain Whip");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Blood_Scythe_Of_Destruction || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Blood Scythe Of Destruction"))
         {
             Core.HuntMonster("infernalspire", "Helzekiel", "Blood Scythe Of Destruction", isTemp: false);
-            Bot.Wait.ForPickup("Blood Scythe Of Destruction");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Sanctified_Guardian_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Sanctified Guardian Blade"))
         {
             Core.HuntMonster("aqlesson", "Carnax", "Sanctified Guardian Blade", isTemp: false);
-            Bot.Wait.ForPickup("Sanctified Guardian Blade");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Feral_Blade_of_Doom || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Feral Blade of Doom"))
         {
             Core.HuntMonster("stonewooddeep", "Asherion", "Feral Blade of Doom", isTemp: false);
-            Bot.Wait.ForPickup("Feral Blade of Doom");
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Feral_DoomBlade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Feral DoomBlade"))
         {
             Core.HuntMonster("stonewooddeep", "Asherion", "Feral DoomBlade", isTemp: false);
-            Bot.Wait.ForPickup("Feral DoomBlade");
         }
         
         //Confirmed by staff it's lower than 1% but has Epic rarity
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Ruby_Pickaxe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Ruby Pickaxe"))
         {
             Core.HuntMonster("banished", "Desterrat Moya", "Ruby Pickaxe", isTemp: false);
-            Bot.Wait.ForPickup("Ruby Pickaxe");
         }
         
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Duel_Swords_of_Vindication || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Duel Swords of Vindication"))
         {
             Core.HuntMonster("xancave", "Shurpu Ring Guardian", "Duel Swords of Vindication", isTemp: false);
-            Bot.Wait.ForPickup("Duel Swords of Vindication");
         }
 
         // if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Insert || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Insert"))
