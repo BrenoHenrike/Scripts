@@ -37,7 +37,7 @@ public class HuntersMoon
         Story.KillQuest(6701, "huntersmoon", "Eclipsed One");
         
         // Find the Elder 6702
-        Story.MapItemQuest(6702, "huntersmoon", 1);
+        Story.MapItemQuest(6702, "huntersmoon", 9784, 6);
         
         // Send them Home 6703
         Story.MapItemQuest(6703, "huntersmoon", 1, 6);
