@@ -62,7 +62,6 @@ public class WorldsCoreMerge
 
                 case "Acquiescence":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8966);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
