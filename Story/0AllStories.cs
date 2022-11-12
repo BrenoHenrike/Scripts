@@ -102,6 +102,7 @@
 //cs_include Scripts/Story/ExaltiaTower.cs
 
 //cs_include Scripts/Story/FrozenNorthlands.cs
+//cs_include Scripts/Story/FableForest.cs
 
 //cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/GiantTaleStory.cs
@@ -294,6 +295,7 @@ public class AllStories
     public ExaltiaTower ExaltiaTower = new();
 
     public FrozenNorthlands FrozenNorthlands = new();
+    public FableForest FableForest = new();
 
     public Gamehaven Gamehaven = new();
     public GiantTaleStory GiantTaleStory = new();
@@ -652,7 +654,8 @@ public class AllStories
 
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");
-
+        FableForest.StoryLine();
+        Core.Logger($"Story: FableForest - Complete");
 
         Gamehaven.Storyline();
         Core.Logger($"Story: Game Haven - Complete");
