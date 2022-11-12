@@ -37,6 +37,7 @@ public class CoreSoW
         Timekeep();
         TimestreamWar();
         DeadLines();
+        ShadowFlame();
     }
 
     public void ShadowWar()
@@ -981,6 +982,51 @@ public class CoreSoW
 
         //Nigh Invincible 8868
         Story.KillQuest(8868, "DeadLines", "Eternal Dragon");
+    }
 
+    public void ShadowFlame()
+    {
+        if (Core.isCompletedBefore(8965))
+            return;
+
+        Story.PreLoad(this);
+
+        // Lies in Peace 8956
+        Core.EquipClass(ClassType.Solo);
+        Story.MapItemQuest(8956, "worldscore", 10877);
+        Story.KillQuest(8956, "worldscore", "False Wyvern");
+
+        // There Was an Attempt 8957
+        Story.MapItemQuest(8957, "worldscore", 10878, 5);
+        Story.KillQuest(8957, "worldscore", "Elemental Attempt");
+
+        // Scared Straight 8958
+        Story.MapItemQuest(8958, "worldscore", 10879);
+        Story.KillQuest(8958, "worldscore", "Infernal Mockery");
+
+        // Making Waves 8959
+        Story.MapItemQuest(8959, "worldscore", 10880, 4);
+        Story.KillQuest(8959, "worldscore", "Infernal Mockery");
+
+        // In Circles 8960
+        Story.MapItemQuest(8960, "worldscore", 10881);
+        Story.KillQuest(8960, "worldscore", "Elemental Attempt");
+
+        // Nameless Remnants 8961
+        Story.MapItemQuest(8961, "worldscore", 10882, 4);
+
+        // Dreams Unborn 8962
+        Story.KillQuest(8962, "worldscore", "Crystalized Mana");
+
+        // Innocent Crafts 8963
+        Story.MapItemQuest(8963, "worldscore", 10883);
+        Story.KillQuest(8963, "worldscore", "Infernal Mockery");
+
+        // Cold Bedrock 8964
+        Story.MapItemQuest(8964, "worldscore", 10884);
+        Story.KillQuest(8964, "worldscore", "Elemental Attempt");
+
+        // Rippling Heartbeat 8965
+        Story.KillQuest(8965, "worldscore", "Mask of Tranquility");
     }
 }
