@@ -570,7 +570,7 @@ public class AllStories
         Bludrut.StoryLine();
         Core.Logger($"Story: Bludrut - Complete");
 
-        Borgars.BorgarQuests();
+        Borgars.StoryLine();
         Core.Logger($"Story: Borgars - Complete");
 
 
