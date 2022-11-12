@@ -102,7 +102,6 @@
 //cs_include Scripts/Story/ExaltiaTower.cs
 
 //cs_include Scripts/Story/FrozenNorthlands.cs
-//cs_include Scripts/Story/FableForest.cs
 
 //cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/GiantTaleStory.cs
@@ -168,6 +167,10 @@
 //cs_include Scripts/Story/Yokai.cs
 
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
+
+//cs_include Scripts/Story/HuntersMoon.cs
+//cs_include Scripts/Story/Shattersword.cs
+
 
 
 using Skua.Core.Interfaces;
@@ -295,7 +298,6 @@ public class AllStories
     public ExaltiaTower ExaltiaTower = new();
 
     public FrozenNorthlands FrozenNorthlands = new();
-    public FableForest FableForest = new();
 
     public Gamehaven Gamehaven = new();
     public GiantTaleStory GiantTaleStory = new();
@@ -357,6 +359,9 @@ public class AllStories
     public XansLair Xans = new();
 
     public YokaiQuests Yokai = new();
+
+    public HuntersMoon HuntersMoon = new();
+    public Shattersword Shattersword = new();
 
     #endregion
 
@@ -654,8 +659,7 @@ public class AllStories
 
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");
-        FableForest.StoryLine();
-        Core.Logger($"Story: FableForest - Complete");
+
 
         Gamehaven.Storyline();
         Core.Logger($"Story: Game Haven - Complete");
@@ -817,6 +821,12 @@ public class AllStories
 
         Yokai.Quests();
         Core.Logger($"Story: Yokai - Complete");
+
+        Shattersword.StoryLine();
+        Core.Logger($"Story: Shattersword - Complete");
+
+        HuntersMoon.StoryLine();
+        Core.Logger($"Story: Hunters Moon - Complete");
 
         #endregion
     }
