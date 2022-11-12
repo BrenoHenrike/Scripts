@@ -60,6 +60,16 @@ public class LowDRWeapons
             Core.HuntMonster("voidbattle", "Jir'abin Challenge", "Blood of the Void Blade", isTemp: false);
         }
 
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Purified_Void_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Purified Void Blade"))
+        {
+            Core.HuntMonster("voidbattle", "Jir'abin Challenge", "Purified Void Blade", isTemp: false);
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Purified_Void_Daggers || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory("Purified Void Daggers"))
+        {
+            Core.HuntMonster("voidbattle", "Jir'abin Challenge", "Purified Void Daggers", isTemp: false);
+        }
+
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Burning_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All  && !Core.CheckInventory(31058))
         {
             Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Burning Blade");
@@ -115,7 +125,6 @@ public class LowDRWeapons
             Core.HuntMonster("stonewooddeep", "Asherion", "Feral DoomBlade", isTemp: false);
         }
         
-        //Confirmed by staff it's lower than 1% but has Epic rarity
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Ruby_Pickaxe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Ruby Pickaxe"))
         {
             Core.HuntMonster("banished", "Desterrat Moya", "Ruby Pickaxe", isTemp: false);
@@ -126,10 +135,25 @@ public class LowDRWeapons
             Core.HuntMonster("xancave", "Shurpu Ring Guardian", "Duel Swords of Vindication", isTemp: false);
         }
 
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Apocryphal_Blade_Of_The_Truth || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Apocryphal Blade Of The Truth"))
+        {
+            CCore.HuntMonster("banished", "Desterrat Moya", "Apocryphal Blade Of The Truth", isTemp: false);
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Evolved_Agony_Chain || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Evolved Agony Chain"))
+        {
+            Core.HuntMonster("lust", "Lascivia", "Evolved Agony Chain", isTemp: false);
+        }
+
+        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.TOO_Big_100K || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("TOO Big 100K"))
+        {
+            Core.HuntMonster("lair", "Red Dragon", "TOO Big 100K", isTemp: false);
+        }
+
+
         // if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Insert || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Insert"))
         // {
         //     Core.HuntMonster("Map", "Mob", "Item", isTemp: false);
-        //     Bot.Wait.ForPickup("Item");
         // }
 
     }
@@ -155,6 +179,11 @@ public enum Weapons
     Feral_DoomBlade,
     Ruby_Pickaxe,
     Duel_Swords_of_Vindication,
+    Apocryphal_Blade_Of_The_Truth,
+    Evolved_Agony_Chain,
+    Purified_Void_Blade,
+    Purified_Void_Daggers,
+    TOO_Big_100K,
     All,
     None
 }

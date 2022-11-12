@@ -57,10 +57,19 @@ public class LowDRArmors
             Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer", isTemp: false);
         }
         
+        if (Bot.Config.Get<Armors>("Armors") == Armors.Asherion_Armor || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Asherion Armor"))
+        {
+            Core.HuntMonster("stonewooddeep", "Sir Kut", "Asherion Armor", isTemp: false);
+        }
+
+        if (Bot.Config.Get<Armors>("Armors") == Armors.Lore_Golem || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Lore Golem"))
+        {
+            Core.HuntMonster("twistedcavern", "Lore Golem", "Lore Golem", isTemp: false);
+        }
+
         // if (Bot.Config.Get<Armors>("Armors") == Armors.Insert || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Insert"))
         // {
         //     Core.HuntMonster("Map", "Mob", "Item", isTemp: false);
-        //     Bot.Wait.ForPickup("Item");
         // }
 
         // case "item":
@@ -76,6 +85,8 @@ public enum Armors
     Feral_DoomKnight,
     Alteons_Royal_Armor,
     Dracolich_Destroyer,
+    Asherion_Armor,
+    Lore_Golem,
     All,
     None
 }
