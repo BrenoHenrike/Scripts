@@ -20,10 +20,7 @@ public class FableForest
     public void StoryLine()
     {
         if (Core.isCompletedBefore(3313))
-        {
-            Core.Logger("You have done this storyline");
             return;
-        }
 
         Story.PreLoad(this);
 
@@ -32,7 +29,7 @@ public class FableForest
         Story.KillQuest(3300, "greendragon", "Greenguard Dragon");
 
         //Get Choppin' 3301
-        Story.MapItemQuest(3301, "fableforest", 2425, 1);
+        Story.MapItemQuest(3301, "fableforest", 2425);
 
         //Fae Quests
         //Fight Fire with Fire Elementals 3302
@@ -60,7 +57,7 @@ public class FableForest
         Story.KillQuest(3310, "fableforest", "Forest Fury");
 
         // Mystery Tree 3311
-        Story.MapItemQuest(3311, "fableforest", 2424, 1);
+        Story.MapItemQuest(3311, "fableforest", 2424);
 
         // Guidance from the Guardian 3313
         Story.KillQuest(3313, "fableforest", "Forest Guardian");
