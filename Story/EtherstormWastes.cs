@@ -192,7 +192,7 @@ public class EtherStormWastes
         if (Core.isCompletedBefore(1418))
             return;
 
-        //    [[DesolothFreed Character Page Badge]]
+        //    [[Desoloth Freed Character Page Badge]]
         //Open the DragonGate 1418
         if (!Story.QuestProgression(1418))
         {

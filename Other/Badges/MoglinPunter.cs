@@ -12,12 +12,12 @@ public class MoglinPunter
     {
         Core.SetOptions();
 
-        Example();
+        MoglinPunterBadge();
 
         Core.SetOptions(false);
     }
 
-    public void Example()
+    public void MoglinPunterBadge()
     {
         if (!Core.isSeasonalMapActive("Punt"))
             return;

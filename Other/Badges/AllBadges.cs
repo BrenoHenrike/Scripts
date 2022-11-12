@@ -8,6 +8,8 @@
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Other/Badges/SkyPirateSlayerBadge.cs
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
+//cs_include Scripts/Other\Badges\MoglinPunter.cs
+//cs_include Scripts/Other\Badges\CtrlAltDelMemberBadge.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
@@ -20,6 +22,9 @@ public class AllBadges
     public DerpMoosefishBadge DMF = new();
     public SkyPirateBadge SPB = new();
     public YouMadBroBadge YMBB = new();
+    public MoglinPunter MPB = new();
+    public EtherStormWastes ESW = new();
+    public CtrlAltDelMemberBadge CAD = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -29,6 +34,9 @@ public class AllBadges
         SPB.Badge();
         DMF.Badge();
         YMBB.Badge();
+        MPB.MoglinPunterBadge();
+        ESW.DoAll();
+        CAD.Badge();
         //add more as they are made.
 
         Core.SetOptions(false);
