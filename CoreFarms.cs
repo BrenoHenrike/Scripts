@@ -1566,6 +1566,7 @@ public class CoreFarms
             Bot.Kill.Monster("Velm's Brawler");
             Core.PvPMove(23, "Morale1B", 948, 403);
             Core.Logger($"Move: {Move++}, Velm's Brawler");
+            Bot.Kill.Monster("Velm's Brawler");
             Core.PvPMove(25, "Morale1C", 945, 397);
             Core.Logger($"Move: {Move++}, Velm's Brawler");
             Bot.Kill.Monster("Velm's Brawler");
