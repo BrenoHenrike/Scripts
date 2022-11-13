@@ -1573,8 +1573,8 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 943, 404);
             Core.Logger($"Move: {Move++}, General Velm (B)");
             Bot.Kill.Monster("General Velm (B)");
+            Bot.Wait.ForDrop("Death Pit Token");
 
-            Bot.Sleep(5000);
             while (Bot.Map.Name != "battleon")
             {
                 Core.Logger("Exiting Brawl");
