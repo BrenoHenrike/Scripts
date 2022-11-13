@@ -74,7 +74,7 @@ public class JuggernautItemsofNulgath
             Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
 
             if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
-                Core.EnsureCompleteChoose(837);
+                Core.EnsureComplete(837);
             else Core.EnsureComplete(837, (int)reward);
         }
     }

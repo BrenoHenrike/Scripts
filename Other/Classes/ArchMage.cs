@@ -38,8 +38,7 @@ public class Archmage
         CoreBots.Instance.SkipOptions,
         new Option<bool>("Lumina Elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
         new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get Archmage and the weapon) [On by default]", true),
-        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
-        new Option<bool>("Voucher", "Dragon stone", "Buy dragon stone with 500k vouchers? [Off by default]", false)
+        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false)
     };
 
     private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
@@ -53,6 +52,7 @@ public class Archmage
         Core.SetOptions();
 
         GetAM();
+        
         Core.SetOptions(false);
     }
 
@@ -138,7 +138,7 @@ public class Archmage
 
         Arcana();
         UnboundTomb(30);
-        
+
         BossItemCheck("Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
@@ -439,10 +439,7 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            if (Bot.Config.Get<bool>("Voucher"))
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
-            else 
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
             Core.EnsureComplete(8912);

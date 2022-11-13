@@ -592,8 +592,9 @@ public class CoreBots
         if (item == null || (buy_quant = _CalcBuyQuantity(item, quant)) == 0 || !_canBuy(shopID, item, buy_quant))
             return;
 
-        Join(map);
         ToggleAggro(false);
+
+        Join(map);
         Bot.Wait.ForMapLoad(map);
         JumpWait();
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
