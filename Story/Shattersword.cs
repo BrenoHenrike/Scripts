@@ -35,7 +35,7 @@ public class Shattersword
         {
             Core.EnsureAccept(2681);
             Core.GetMapItem(1642, 4, "shattersword");
-            Core.KillMonster("shattersword", "enter", "spawn", "Forest Imp", "Imp Removed", 5, log: false);
+            Core.KillMonster("shattersword", "Enter", "Spawn", "Forest Imp", "Imp Removed", 5, log: false);
             Core.EnsureComplete(2681);
         }
 
@@ -43,7 +43,7 @@ public class Shattersword
         if (!Story.QuestProgression(2682))
         {
             Core.EnsureAccept(2682);
-            Core.KillMonster("shattersword", "r2", "left", "Fallen Warrior", "Guard Slain", 4, log: false);
+            Core.KillMonster("shattersword", "r2", "Left", "Fallen Warrior", "Guards Slain", 4, log: false);
             Core.EnsureComplete(2682);
         }
 
@@ -51,8 +51,8 @@ public class Shattersword
         if (!Story.QuestProgression(2683))
         {
             Core.EnsureAccept(2683);
-            Core.KillMonster("shattersword", "r3", "left", "Dark Fairy", "Fairy Defeated", 6, log: false);
-            Core.KillMonster("shattersword", "r3", "left", "Dark Fairy", "Tainted Reduced", 5, log: false);
+            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Fairy Defeated", 6, log: false);
+            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Tainted Reduced", 5, log: false);
             Core.EnsureComplete(2683);
         }
 
@@ -60,7 +60,7 @@ public class Shattersword
         if (!Story.QuestProgression(2684))
         {
             Core.EnsureAccept(2684);
-            Core.KillMonster("shattersword", "r6", "right", "Shattersword Prisoner", "Minions Slain", 6, log: false);
+            Core.KillMonster("shattersword", "r6", "Right", "Shattersword Prisoner", "Minions Slain", 6, log: false);
             Core.EnsureComplete(2684);
         }
 
@@ -71,7 +71,7 @@ public class Shattersword
             Core.GetMapItem(1643, 6, "shattersword");
             Core.GetMapItem(1644, 3, "shattersword");
             Core.GetMapItem(1645, 4, "shattersword");
-            Core.KillMonster("shattersword", "r2", "left", "Fallen Warrior", "Flint and Striker", log: false);
+            Core.KillMonster("shattersword", "r2", "Left", "Fallen Warrior", "Flint and Striker", log: false);
             Core.EnsureComplete(2685);
         }
 
@@ -79,7 +79,7 @@ public class Shattersword
         if (!Story.QuestProgression(2686))
         {
             Core.EnsureAccept(2686);
-            Core.KillMonster("shattersword", "r6", "right", "Shattersword Prisoner", "Attackers Slain", 7, log: false);
+            Core.KillMonster("shattersword", "r6", "Right", "Shattersword Prisoner", "Attackers Slain", 7, log: false);
             Core.EnsureComplete(2686);
         }
 
@@ -87,7 +87,7 @@ public class Shattersword
         if (!Story.QuestProgression(2691))
         {
             Core.EnsureAccept(2691);
-            Core.KillMonster("shattersword", "r3", "left", "Dark Fairy", "Dark Spark", 25, log: false);
+            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Dark Spark", 25, log: false);
             Core.EnsureComplete(2691);
         }
 
@@ -95,9 +95,9 @@ public class Shattersword
         if (!Story.QuestProgression(2687))
         {
             Core.EnsureAccept(2687);
-            Core.KillMonster("shattersword", "r7", "right", "Forest Elf", "Treewalker Sandals", log: false);
-            Core.KillMonster("shattersword", "r7", "right", "Forest Elf", "Rappelling Gear", log: false);
-            Core.KillMonster("shattersword", "r7", "right", "Forest Elf", "Sap-B-Gone", log: false);
+            Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Treewalker Sandals", log: false);
+            Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Rappelling Gear", log: false);
+            Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Sap-B-Gone", log: false);
             Core.EnsureComplete(2687);
         }
 
@@ -105,7 +105,7 @@ public class Shattersword
         if (!Story.QuestProgression(2688))
         {
             Core.EnsureAccept(2688);
-            Core.KillMonster("shattersword", "enter", "spawn", "Forest Imp", "Imp Slain", 6, log: false);
+            Core.KillMonster("shattersword", "Enter", "Spawn", "Forest Imp", "Imp Slain", 6, log: false);
             Core.EnsureComplete(2688);
         }
 
@@ -115,7 +115,7 @@ public class Shattersword
             Core.EnsureAccept(2689);
             Core.GetMapItem(1646, 7, "shattersword");
             Core.GetMapItem(1647, 7, "shattersword");
-            Core.KillMonster("shattersword", "r6", "right", "Shattersword Prisoner", "Guard Slain", 5, log: false);
+            Core.KillMonster("shattersword", "r6", "Right", "Shattersword Prisoner", "Guards Slain", 5, log: false);
             Core.EnsureComplete(2689);
         }
 
@@ -123,7 +123,7 @@ public class Shattersword
         if (!Story.QuestProgression(2690))
         {
             Core.EnsureAccept(2690);
-            Core.KillMonster("shattersword", "r11", "left", "Graveclaw the Defiler", "Graveclaw Slain", log: false);
+            Core.KillMonster("shattersword", "r11", "Left", "Graveclaw the Defiler", "Graveclaw Slain", log: false);
             Core.EnsureComplete(2690);
         }
     }
