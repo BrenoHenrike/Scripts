@@ -22,7 +22,7 @@ public class CelestialStarMageSet
 
     public void GetSet()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7672).Rewards;
+        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(6592).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);
