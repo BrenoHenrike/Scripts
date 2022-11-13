@@ -104,6 +104,8 @@
 //cs_include Scripts/Story/FrozenNorthlands.cs
 //cs_include Scripts/Story/FableForest.cs
 
+//cs_include Scripts/Story/HuntersMoon.cs
+
 //cs_include Scripts/Story/GameHaven.cs
 //cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Story/Glacera.cs
@@ -139,6 +141,7 @@
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/ShadowVoid.cs
+//cs_include Scripts/Story/Shattersword.cs
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/ShipWreck.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
@@ -302,6 +305,8 @@ public class AllStories
     public GlaceraStory GlaceraStory = new();
     public Guru Guru = new();
 
+    public HuntersMoon HuntersMoon = new();
+
     public Lair Lair = new();
     public Lightguard Lightguard = new();
     public LightoviaCave LightoviaCave = new();
@@ -332,6 +337,7 @@ public class AllStories
     public ShadowSlayerK ShadowSlayerK = new();
     public ShadowVault ShadowVault = new();
     public ShadowVoid ShadowVoid = new();
+    public Shattersword Shattersword = new();
     public Shinkansen Shinkansen = new();
     public ShipWreck ShipWreck = new();
     public SkyGuardSaga SkyGuardSaga = new();
@@ -431,7 +437,7 @@ public class AllStories
         #endregion
 
         #region CoreFriday13th
-        CoreFriday13th.DoAll();
+        CoreFriday13th.CompleteFriday13th();
         Core.Logger($"Saga: Friday 13th - Complete");
         #endregion
 
@@ -632,7 +638,7 @@ public class AllStories
         }
 
 
-        DreamPalace.CompleteDreamPalace();
+        DreamPalace.StoryLine();
         Core.Logger($"Story: Dream Palace - Complete");
 
         Dwarfhold.DoAll();
@@ -642,7 +648,7 @@ public class AllStories
         Core.Logger($"Story: Dwarves Vs Giants - Complete");
 
 
-        Eden.EdenStoryline();
+        Eden.StoryLine();
         Core.Logger($"Story: Eden - Complete");
 
         EtherStormWastes.DoAll();
@@ -654,8 +660,14 @@ public class AllStories
 
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");
+
         FableForest.StoryLine();
         Core.Logger($"Story: FableForest - Complete");
+
+
+        HuntersMoon.StoryLine();
+        Core.Logger($"Story: Hunter's Moon - Complete");
+
 
         Gamehaven.Storyline();
         Core.Logger($"Story: Game Haven - Complete");
@@ -756,6 +768,9 @@ public class AllStories
 
         ShadowVoid.ShadowVoidQuests();
         Core.Logger($"Story: ShadowVoid - Complete");
+
+        Shattersword.StoryLine();
+        Core.Logger($"Story: Shattersword - Complete");
 
         Shinkansen.Storyline();
         Core.Logger($"Story: Shinkansen - Complete");

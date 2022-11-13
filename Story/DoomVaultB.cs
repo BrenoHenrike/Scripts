@@ -13,7 +13,7 @@ public class DoomVaultB
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
-    public DoomVaultA DV = new();
+    public DoomVaultA DoomVaultA = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -26,95 +26,91 @@ public class DoomVaultB
 
     public void StoryLine()
     {
-        if (!Bot.Quests.IsUnlocked(2972))
-        {
-            Core.Logger("DoomVaultB not unlocked, Completing DoomVault");
-            DV.StoryLine();
-        }
+        DoomVaultA.StoryLine();
 
         if (Core.isCompletedBefore(3004))
             return;
 
-        Core.AcceptandCompleteTries = 1;
-
         Story.PreLoad(this);
 
-        // Grim Underdungeon I        
-        Story.KillQuest(2972, "Doomvaultb", "Grimmer Soldier");
+        Core.AcceptandCompleteTries = 1;
 
-        // Grim Underdungeon II        
-        Story.KillQuest(2973, "Doomvaultb", "Grimmer Fighter");
+        // Grim Underdungeon I 2972
+        Story.KillQuest(2972, "doomvaultb", "Grimmer Soldier");
 
-        // Grim Underdungeon III        
-        Story.KillQuest(2975, "Doomvaultb", "Grimmer Lich");
+        // Grim Underdungeon II 2973
+        Story.KillQuest(2973, "doomvaultb", "Grimmer Fighter");
 
-        // Grim Underdungeon IV        
-        Story.KillQuest(2976, "Doomvaultb", "Weeping Spyball");
+        // Grim Underdungeon III 2975
+        Story.KillQuest(2975, "doomvaultb", "Grimmer Lich");
 
-        // Grim Underdungeon V        
-        Story.KillQuest(2977, "Doomvaultb", "Grimmer Ectomancer");
+        // Grim Underdungeon IV 2976
+        Story.KillQuest(2976, "doomvaultb", "Weeping Spyball");
 
-        // Grim Underdungeon VI   
-        Story.KillQuest(2978, "Doomvaultb", "Grimmer Shelleton");
+        // Grim Underdungeon V 2977
+        Story.KillQuest(2977, "doomvaultb", "Grimmer Ectomancer");
 
-        // Grim Underdungeon VII        
-        Story.KillQuest(2979, "Doomvaultb", "Grimmer Fighter");
+        // Grim Underdungeon VI 2978
+        Story.KillQuest(2978, "doomvaultb", "Grimmer Shelleton");
 
-        // Grim Underdungeon VIII        
-        Story.KillQuest(2980, "Doomvaultb", "Grimmer Fire Mage");
+        // Grim Underdungeon VII 2979
+        Story.KillQuest(2979, "doomvaultb", "Grimmer Fighter");
 
-        // Grim Underdungeon IX        
-        Story.KillQuest(2984, "Doomvaultb", "Grimmer Lich");
+        // Grim Underdungeon VIII 2980
+        Story.KillQuest(2980, "doomvaultb", "Grimmer Fire Mage");
 
-        // Grim Underdungeon X        
-        Story.KillQuest(2985, "Doomvaultb", "Weeping Spyball");
+        // Grim Underdungeon IX 2984
+        Story.KillQuest(2984, "doomvaultb", "Grimmer Lich");
 
-        // Grim Underdungeon XI        
-        Story.KillQuest(2986, "Doomvaultb", "Grimmer Fighter");
+        // Grim Underdungeon X 2985
+        Story.KillQuest(2985, "doomvaultb", "Weeping Spyball");
 
-        // Grim Underdungeon XII        
-        Story.KillQuest(2987, "Doomvaultb", "Grimmer Lich");
+        // Grim Underdungeon XI 2986
+        Story.KillQuest(2986, "doomvaultb", "Grimmer Fighter");
 
-        // Grim Underdungeon XIII        
-        Story.KillQuest(2988, "Doomvaultb", "Grimmer Fighter");
+        // Grim Underdungeon XII 2987
+        Story.KillQuest(2987, "doomvaultb", "Grimmer Lich");
 
-        // Grim Underdungeon XIV        
-        Story.KillQuest(2989, "Doomvaultb", "Weeping Spyball");
+        // Grim Underdungeon XIII 2988
+        Story.KillQuest(2988, "doomvaultb", "Grimmer Fighter");
 
-        // Grim Underdungeon XV        
+        // Grim Underdungeon XIV 2989
+        Story.KillQuest(2989, "doomvaultb", "Weeping Spyball");
+
+        // Grim Underdungeon XV 2990
         Story.ChainQuest(2990);
 
-        // Grim Underdungeon XVI        
-        Story.KillQuest(2991, "Doomvaultb", "Grimmer Shelleton");
+        // Grim Underdungeon XVI 2991
+        Story.KillQuest(2991, "doomvaultb", "Grimmer Shelleton");
 
-        // Grim Underdungeon XVII        
-        Story.KillQuest(2992, "Doomvaultb", "Grimmer Soldier");
+        // Grim Underdungeon XVII 2992
+        Story.KillQuest(2992, "doomvaultb", "Grimmer Soldier");
 
-        // Grim Underdungeon XVIII        
-        Story.KillQuest(2993, "Doomvaultb", "Grimmer Lich");
+        // Grim Underdungeon XVIII 2993
+        Story.KillQuest(2993, "doomvaultb", "Grimmer Lich");
 
-        // Grim Underdungeon XIX      
-        Story.KillQuest(2994, "Doomvaultb", "Grimmer Lich");
+        // Grim Underdungeon XIX 2994
+        Story.KillQuest(2994, "doomvaultb", "Grimmer Lich");
 
-        // Grim Underdungeon XX     
+        // Grim Underdungeon XX 2995
         Story.ChainQuest(2995);
 
-        // Grim Underdungeon XXI        
-        Story.KillQuest(2996, "Doomvaultb", "Grimmer Fire Mage");
+        // Grim Underdungeon XXI 2996
+        Story.KillQuest(2996, "doomvaultb", "Grimmer Fire Mage");
 
-        // Grim Underdungeon XXII
-        Story.KillQuest(2997, "Doomvaultb", "Grimmer Fighter");
+        // Grim Underdungeon XXII 2997
+        Story.KillQuest(2997, "doomvaultb", "Grimmer Fighter");
 
-        // Grim Underdungeon XXIII        
-        Story.KillQuest(2998, "Doomvaultb", "Grimmer Ectomancer");
+        // Grim Underdungeon XXIII 2998
+        Story.KillQuest(2998, "doomvaultb", "Grimmer Ectomancer");
 
-        // Grim Underdungeon XXIV        
-        Story.KillQuest(2999, "Doomvaultb", "Grimmer Soldier");
+        // Grim Underdungeon XXIV 2999
+        Story.KillQuest(2999, "doomvaultb", "Grimmer Soldier");
 
-        // Grim Underdungeon XXV        
+        // Grim Underdungeon XXV 3000
         Story.ChainQuest(3000);
 
-        // Grim Underdungeon XXIX    
+        // Grim Underdungeon XXIX 3004
         if (!Story.QuestProgression(3004))
         {
             Core.EnsureAccept(3004);
