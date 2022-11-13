@@ -1814,7 +1814,13 @@ public class CoreBots
                         Equip(FarmGear);
                         logEquip = true;
                     }
-                    Bot.Wait.ForItemEquip(FarmClass);
+
+                    int? class_id = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == FarmClass.ToLower().Trim() && i.Category == ItemCategory.Class)?.ID;
+                    if (class_id == null)
+                        Logger("Class not found", stopBot: true);
+                    ToggleAggro(false);
+                    Bot.Wait.ForItemEquip(class_id ?? 0);
+                    ToggleAggro(true);
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                     break;
                 }
@@ -1830,7 +1836,13 @@ public class CoreBots
                         Equip(SoloGear);
                         logEquip = true;
                     }
-                    Bot.Wait.ForItemEquip(SoloClass);
+                    int? class_id = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == SoloClass.ToLower().Trim() && i.Category == ItemCategory.Class)?.ID;
+                    if (class_id == null)
+                        Logger("Class not found", stopBot: true);
+                    ToggleAggro(false);
+                    Bot.Wait.ForItemEquip(class_id ?? 0);
+                    ToggleAggro(true);
+
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                     break;
                 }
