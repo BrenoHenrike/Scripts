@@ -51,8 +51,8 @@ public class Shattersword
         if (!Story.QuestProgression(2683))
         {
             Core.EnsureAccept(2683);
-            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Fairy Defeated", 6, log: false);
-            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Tainted Reduced", 5, log: false);
+            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Faerie Defeated", 6, log: false);
+            Core.KillMonster("shattersword", "r3", "Left", "Dark Fairy", "Taint Reduced", 5, log: false);
             Core.EnsureComplete(2683);
         }
 
