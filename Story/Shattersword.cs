@@ -97,7 +97,7 @@ public class Shattersword
             Core.EnsureAccept(2687);
             Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Treewalker Sandals", log: false);
             Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Rappelling Gear", log: false);
-            Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Sap-B-Gone", log: false);
+            Core.KillMonster("shattersword", "r7", "Right", "Forest Elf", "Sap-B-Gone", 3, log: false);
             Core.EnsureComplete(2687);
         }
 
