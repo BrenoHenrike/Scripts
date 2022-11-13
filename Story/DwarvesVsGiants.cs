@@ -46,16 +46,13 @@ public class DwarvesVsGiants
         // Mow Down Munthor 2783
         Story.KillQuest(2783, "dvg", "Munthor");
 
-        if (!Core.IsMember)
+        if (Core.IsMember)
         {
-            Core.Logger("You must be a Member to complete DvG Challenge quests.");
-            return;
+            // Challenge Meatball 2784
+            Story.KillQuest(2784, "dvgchallenge", "Meatball");
+
+            // Challenge Blixx 2784
+            Story.KillQuest(2784, "dvgchallenge", "Blixx");
         }
-
-        // Challenge Meatball 2784
-        Story.KillQuest(2784, "dvgchallenge", "Meatball");
-
-        // Challenge Blixx 2784
-        Story.KillQuest(2784, "dvgchallenge", "Blixx");
     }
 }

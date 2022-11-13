@@ -3,7 +3,7 @@
 //cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 
-public class DoAllFriday13th
+public class CompleteFriday13th
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -14,7 +14,7 @@ public class DoAllFriday13th
     {
         Core.SetOptions();
 
-        CoreFriday13th.DoAll();
+        CoreFriday13th.CompleteFriday13th();
 
         Core.SetOptions(false);
     }

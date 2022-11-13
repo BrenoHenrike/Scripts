@@ -30,26 +30,22 @@ public class DoomVaultA
 
         Bot.Quests.UpdateQuest(3008);
 
-        // the challenge begins
+        // The Challenge Begins 2952
         Story.KillQuest(2952, "doomvault", "Grim Soldier");
 
-        //fight to survive
+        // Fight to Survive 2953
         Story.KillQuest(2953, "doomvault", "Grim Fighter");
 
-
-        // the battle's heating up
+        // The Battle's Heating Up 2954
         Story.KillQuest(2954, "doomvault", "Grim Fire Mage");
 
-
-        // a close shave
+        // A Close Shave 2955
         Story.KillQuest(2955, "doomvault", "Grim Shelleton");
 
-
-        // eye spy a victim
+        // Eye Spy a Victim 2965
         Story.KillQuest(2965, "doomvault", "Flying Spyball");
 
-
-        // help me!
+        // Help Me! 2966
         if (!Story.QuestProgression(2966))
         {
             Core.EnsureAccept(2966);
@@ -57,20 +53,19 @@ public class DoomVaultA
             Core.EnsureComplete(2966);
         }
 
-        // get your hands dirty
+        // Get Your Hands Dirty 2967
         Story.KillQuest(2967, "doomvault", "Grim Ectomancer");
 
-
-        // a rocky battle
+        // A Rocky Battle 2968
         Story.KillQuest(2968, "doomvault", "Fallen Light Statue");
 
-        //soul-d of defeat
+        // Soul-d on Defeat 2969
         Story.KillQuest(2969, "doomvault", "Grim Soldier");
 
-        //the key to help me
+        // The Key to Help Me 2970
         Story.KillQuest(2970, "doomvault", "Grim Shelleton");
 
-        //help me again!
+        // Help Me Again! 2971
         if (!Story.QuestProgression(2971))
         {
             Core.EnsureAccept(2971);
@@ -78,25 +73,25 @@ public class DoomVaultA
             Core.EnsureComplete(2971);
         }
 
-        //overheated hero
+        // Overheated Hero 2974
         Story.KillQuest(2974, "doomvault", "Grim Fire Mage");
 
-        //the blade-breaker
+        // The Blade-breaker 2981
         Story.KillQuest(2981, "doomvault", "Grim Lich");
 
-        //anti-magic warrior
+        // Anti-Magic Warrior 2982
         Story.KillQuest(2982, "doomvault", "Grim Fighter");
 
-        //elemental destroyer
+        // Elemental Destroyer 2983
         Story.KillQuest(2983, "doomvault", "Grim Ectomancer");
 
-        //the unkillable
+        // The Unkillable 3006
         Story.KillQuest(3006, "doomvault", "Grim Shelleton");
 
-        //key to victory
+        // Key to Victory 3007
         Story.KillQuest(3007, "doomvault", "Fallen Light Statue");
 
-        //i command you, help me!
+        // I Command You, Help Me! 3008
         Story.KillQuest(3008, "doomvault", "Ghost King Angler");
     }
 }

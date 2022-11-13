@@ -15,12 +15,12 @@ public class Eden
     {
         Core.SetOptions();
 
-        EdenStoryline();
+        StoryLine();
 
         Core.SetOptions(false);
     }
 
-    public void EdenStoryline()
+    public void StoryLine()
     {
         if (Core.isCompletedBefore(8801))
             return;
@@ -28,10 +28,10 @@ public class Eden
         Shin.Storyline();
         Story.PreLoad(this);
 
-        //Welcome to Eden! 8795
+        // Welcome to Eden! 8795
         Story.KillQuest(8795, "eden", "Harmless Choir");
 
-        //The Fashion and Arcade District 8796
+        // The Fashion and Arcade District 8796
         if (!Story.QuestProgression(8796))
         {
             Core.EnsureAccept(8796);
@@ -40,10 +40,10 @@ public class Eden
             Core.EnsureComplete(8796);
         }
 
-        //Eden City KotaMart 8797
+        // Eden City KotaMart 8797
         Story.KillQuest(8797, "eden", "SalaryMan");
 
-        //Save the Citizens! 8798
+        // Save the Citizens! 8798
         if (!Story.QuestProgression(8798))
         {
             Core.EnsureAccept(8798);
@@ -54,14 +54,14 @@ public class Eden
             Core.EnsureComplete(8798);
         }
 
-        //Armorchy 8799
+        // Armorchy 8799
         Story.KillQuest(8799, "eden", "CRC Power Armor");
 
-        //Clear the Way! 8800
+        // Clear the Way! 8800
         Story.MapItemQuest(8800, "eden", 10449, 3);
         Story.KillQuest(8800, "eden", "Yokaified Experiment 1");
 
-        //Protect the Reactor! 8801
+        // Protect the Reactor! 8801
         Story.KillQuest(8801, "eden", "Major Anomaly");
     }
 }

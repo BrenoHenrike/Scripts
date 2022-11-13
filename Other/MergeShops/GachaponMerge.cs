@@ -16,7 +16,7 @@ public class GachaponMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public Eden ES = new();
+    public Eden Eden = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -37,7 +37,7 @@ public class GachaponMerge
 
     public void BuyAllMerge()
     {
-        ES.EdenStoryline();
+        Eden.StoryLine();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("onsen", 1926, findIngredients);
 

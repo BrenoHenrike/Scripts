@@ -12,34 +12,34 @@ public class DreamPalace
     {
         Core.SetOptions();
 
-        CompleteDreamPalace();
+        StoryLine();
 
         Core.SetOptions(false);
     }
 
-    public void CompleteDreamPalace()
+    public void StoryLine()
     {
         if (Core.isCompletedBefore(7874))
             return;
 
         Story.PreLoad(this);
 
-        //Potent Ruby 7869
-        Story.KillQuest(7869, "DreamPalace", new[] { "Flaming Harpy|Mote of Power", "Golmoth" });
+        // Potent Ruby 7869
+        Story.KillQuest(7869, "dreampalace", new[] { "Flaming Harpy|Mote of Power", "Golmoth" });
 
-        //Mystic Sapphire 7870
-        Story.KillQuest(7870, "DreamPalace", new[] { "Lotus Spider|Mote of Power", "Zelkur" });
+        // Mystic Sapphire 7870
+        Story.KillQuest(7870, "dreampalace", new[] { "Lotus Spider|Mote of Power", "Zelkur" });
 
-        //Living Emerald 7871
-        Story.KillQuest(7871, "DreamPalace", new[] { "Palace Hound|Mote of Power", "Gazeroth" });
+        // Living Emerald 7871
+        Story.KillQuest(7871, "dreampalace", new[] { "Palace Hound|Mote of Power", "Gazeroth" });
 
-        //Ethereal Diamond 7872
-        Story.KillQuest(7872, "DreamPalace", new[] { "Ethereal Harpy|Mote of Power", "Zal" });
+        // Ethereal Diamond 7872
+        Story.KillQuest(7872, "dreampalace", new[] { "Ethereal Harpy|Mote of Power", "Zal" });
 
-        //Open the Door 7873
-        Story.MapItemQuest(7873, "DreamPalace", 7944);
+        // Open the Door 7873
+        Story.MapItemQuest(7873, "dreampalace", 7944);
 
-        //Zahad 7874
-        Story.KillQuest(7874, "DreamPalace", new[] { "Guardian Hound|Mote of Power", "Zahad" });
+        // Zahad 7874
+        Story.KillQuest(7874, "dreampalace", new[] { "Guardian Hound|Mote of Power", "Zahad" });
     }
 }
