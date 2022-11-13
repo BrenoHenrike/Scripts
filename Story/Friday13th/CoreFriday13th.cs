@@ -17,11 +17,8 @@ public class CoreFriday13th
         Core.SetOptions(false);
     }
 
-    public void DoAll()
+    public void CompleteFriday13th()
     {
-        if (!Core.IsMember && !CalculateFriday13())
-            return;
-
         Skullpunch();
         Lowe();
         Saloonfront();
@@ -41,8 +38,14 @@ public class CoreFriday13th
 
     public void Skullpunch()
     {
-        if (Core.isCompletedBefore(3119) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(3119))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Skullpunch.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -112,8 +115,14 @@ public class CoreFriday13th
 
     public void Lowe()
     {
-        if (Core.isCompletedBefore(764) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(764))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Lowe.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -165,8 +174,14 @@ public class CoreFriday13th
 
     public void Saloonfront()
     {
-        if (Core.isCompletedBefore(1057) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(1057))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Saloon Front.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -221,8 +236,14 @@ public class CoreFriday13th
 
     public void Firehouse()
     {
-        if (Core.isCompletedBefore(1564) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(1564))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Firehouse.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -253,13 +274,13 @@ public class CoreFriday13th
         // Spirit of a Dragon 1560
         Story.KillQuest(1560, "FireTunnel", "Elder Magma Wyrm");
 
-        //Initiate Shutdown Sequence 1561
+        // Initiate Shutdown Sequence 1561
         Story.ChainQuest(1561);
 
-        //Aura of Dragon's Flame 1562
+        // Aura of Dragon's Flame 1562
         Story.KillQuest(1562, "FireTunnel", "Elder Magma Wyrm");
 
-        //Spirit of the Black Unicorn 1563
+        // Spirit of the Black Unicorn 1563
         if (!Story.QuestProgression(1563))
         {
             Core.EnsureAccept(1563);
@@ -269,14 +290,20 @@ public class CoreFriday13th
             Core.EnsureComplete(1563);
         }
 
-        //Tie a Black Ribbon 'Round an Old Burnt Tree 1564
+        // Tie a Black Ribbon 'Round an Old Burnt Tree 1564
         Story.KillQuest(1564, "FireTown", "Burnt Tree");
     }
 
     public void Sleezter()
     {
-        if (Core.isCompletedBefore(1972) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(1972))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Sleezter.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -322,8 +349,14 @@ public class CoreFriday13th
 
     public void Neverhub()
     {
-        if (Core.isCompletedBefore(2234) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(2234))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Neverlore.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -373,8 +406,11 @@ public class CoreFriday13th
 
     public void Battledoom()
     {
-        if (Core.IsMember && CalculateFriday13())
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Battledoom.");
             return;
+        }
 
         Core.BankingBlackList.AddRange(new[] { "Unlucky Gem I", "Unlucky Gem II", "Unlucky Gem III",
                                                "Unlucky Gem IV", "Unlucky Gem V", "Unlucky Gem VI",
@@ -438,8 +474,14 @@ public class CoreFriday13th
 
     public void Wormhole()
     {
-        if (Core.isCompletedBefore(5066) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(5066))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Wormhole.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -496,8 +538,14 @@ public class CoreFriday13th
 
     public void Crownsreachfxiii()
     {
-        if (Core.isCompletedBefore(5646) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(5646))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Crownsreach FXIII.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -534,8 +582,14 @@ public class CoreFriday13th
 
     public void Gonnagetcha()
     {
-        if (Core.isCompletedBefore(6269) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(6269))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Gonnagetcha.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -580,10 +634,15 @@ public class CoreFriday13th
 
     public void Greymoor()
     {
-        if (Core.isCompletedBefore(6420) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(6420))
             return;
 
-        // Preload quests
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Greymoor.");
+            return;
+        }
+
         Story.PreLoad(this);
 
         // Tired of Gremlins 6409
@@ -628,8 +687,14 @@ public class CoreFriday13th
 
     public void Puzzlebox()
     {
-        if (Core.isCompletedBefore(7399) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(7399))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Puzzlebox.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -659,8 +724,14 @@ public class CoreFriday13th
     {
         Puzzlebox();
 
-        if (Core.isCompletedBefore(7407) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(7407))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Splatter War.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -691,8 +762,14 @@ public class CoreFriday13th
 
     public void Deadfly()
     {
-        if (Core.isCompletedBefore(8232) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(8232))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Deadfly.");
+            return;
+        }
 
         Story.PreLoad(this);
 
@@ -756,8 +833,14 @@ public class CoreFriday13th
 
     public void Oddities()
     {
-        if (Core.isCompletedBefore(8667) || !Core.IsMember && !CalculateFriday13())
+        if (Core.isCompletedBefore(8667))
             return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Oddities.");
+            return;
+        }
 
         Story.PreLoad(this);
 
