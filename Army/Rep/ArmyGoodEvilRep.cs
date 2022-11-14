@@ -20,6 +20,7 @@ public class ArmyGoodEvilREP
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
+        sArmy.player5,
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions,
     };
@@ -40,6 +41,7 @@ public class ArmyGoodEvilREP
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
+        Farm.ToggleBoost(BoostType.Reputation);
 
         while (!Bot.ShouldExit && Farm.FactionRank("Evil") < 4)
             rank4();
@@ -52,7 +54,8 @@ public class ArmyGoodEvilREP
 
         while (!Bot.ShouldExit && Farm.FactionRank("Evil") < rank)
             rankMAX();
-        
+            
+        Farm.ToggleBoost(BoostType.Reputation, false);
     }
 
     public void rank4()
@@ -69,8 +72,8 @@ public class ArmyGoodEvilREP
     {
         Core.RegisterQuests(367, 372);
         Army.SmartAggroMonStart("castleundead", "Skeletal Viking", "Skeletal Warrior");
+        while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))    
             Bot.Combat.Attack("*");
-
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }

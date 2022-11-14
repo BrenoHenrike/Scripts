@@ -36,7 +36,6 @@ public class ArmyChaosRep
     {
         Core.SetOptions();
         bot.Options.RestPackets = false;
-        bot.Options.LagKiller = false;
 
         Core.BankingBlackList.Add("Fragment of Mount Doomskull");
 
@@ -53,11 +52,12 @@ public class ArmyChaosRep
         Core.AddDrop("Fragment of Mount Doomskull");
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(3594);
-
+        Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("mountdoomskull", "Chaos Spider", "Chaos Draconian");
-
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && Farm.FactionRank("Chaos") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Reputation, false);
+        Core.CancelRegisteredQuests();
     }
 }
