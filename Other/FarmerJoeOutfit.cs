@@ -97,7 +97,7 @@ public class FarmerJoeStartingTheAcc
         Core.Logger("starting out the acc");
         Core.BuyItem("classhalla", 176, "Healer");
         Tutorial.Badges();
-        Farm.IcestormArena(30, tru);
+        Farm.IcestormArena(30, true);
         InvEn.EnhanceInventory();
         #endregion starting out the acc
 
