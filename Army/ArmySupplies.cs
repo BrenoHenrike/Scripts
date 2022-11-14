@@ -27,6 +27,7 @@ public class SuppliesWheelArmy
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
+        Core.BankingBlackList.Add("Relic of Chaos");
 
         Core.SetOptions();
         bot.Options.RestPackets = false;
@@ -62,6 +63,7 @@ public class SuppliesWheelArmy
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(Nation.bagDrops);
+        Core.AddDrop("Relic of Chaos");
         while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 14))
             ArmyHydra90("hydrachallenge", "h90", "Left", "*");
         Bot.Options.AggroMonsters = false;
