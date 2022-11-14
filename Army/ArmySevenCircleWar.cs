@@ -57,7 +57,8 @@ public class ArmySevenCircle
         Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
-        Farm.ToggleBoost(BoostType.Gold, false);
         Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Gold, false);
+        Core.CancelRegisteredQuests();
     }
 }
