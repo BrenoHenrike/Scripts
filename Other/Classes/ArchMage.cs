@@ -500,7 +500,7 @@ public class Archmage
 
                 case "Everlight Flame":
                     if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Fireavatar", "Tyndarius", item, isTemp: false);
+                        Core.HuntMonster("Fireavatar", "Avatar Tyndarius", item, isTemp: false);
                     if (!Core.CheckInventory(item))
                         Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
                     break;
