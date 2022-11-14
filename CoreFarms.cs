@@ -1499,6 +1499,7 @@ public class CoreFarms
         Core.AddDrop("Death Pit Token");
         Core.EquipClass(ClassType.Solo);
         ToggleBoost(BoostType.Reputation);
+        Core.ToggleAggro(false);
 
         Core.Logger($"Farming rank {rank}");
 
@@ -1523,16 +1524,20 @@ public class CoreFarms
         Core.RegisterQuests(5157, 5165);
 
         while (!Bot.ShouldExit && FactionRank("Death Pit Brawl") < rank)
+        {
+            Core.ToggleAggro(false);
             RunDeathPitBrawl();
+        }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
+        Core.ToggleAggro(true);
 
         void RunDeathPitBrawl()
         {
             while (Bot.Map.Name != "deathpitbrawl")
             {
                 Core.Logger("Joining Brawl");
-                Core.Join("DeathPitbrawl", "Enter0", "Spawn");
+                Bot.Map.Join("DeathPitbrawl-999999", "Enter0", "Spawn");
                 Bot.Sleep(Core.ActionDelay);
             }
 
@@ -1573,12 +1578,15 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 943, 404);
             Core.Logger($"Move: {Move++}, General Velm (B)");
             Bot.Kill.Monster("General Velm (B)");
-            Bot.Wait.ForDrop("Death Pit Token");
+            Bot.Wait.ForCombatExit();
+
+            Core.Logger("Delaying exit(5s, bugs otherwise)");
+            Bot.Sleep(7500);
 
             while (Bot.Map.Name != "battleon")
             {
-                Core.Logger("Exiting Brawl");
-                Core.Join("battleon");
+                Core.Logger("Now exiting brawl.");
+                Bot.Map.Join("battleon-999999");
                 Bot.Sleep(Core.ActionDelay);
             }
         }
