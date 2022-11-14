@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/Legion/SevenCircles(War).cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -13,6 +14,7 @@ public class ArmySevenCircle
     private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
+    public SevenCircles SC = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -39,8 +41,8 @@ public class ArmySevenCircle
 
         if (!Bot.Quests.IsUnlocked(7979))
         {
-            Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs in order to use the SevenCircles method");
-            return;
+            Core.Logger("Doing the storyline");
+            SC.Circles();
         }
         Setup();
         Core.SetOptions(false);
