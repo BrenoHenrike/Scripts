@@ -65,5 +65,8 @@ public class LovesCurse
 
         //You Only Get One Shot at True Love (1664)
         Story.MapItemQuest(1664, "curseblue", 867);
+
+        //Happy Ending (1671)
+        Story.ChainQuest(1671);
     }
 }
