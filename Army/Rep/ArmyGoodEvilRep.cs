@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class ArmyGoodEvilREP
