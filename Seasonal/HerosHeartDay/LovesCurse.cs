@@ -19,7 +19,7 @@ public class LovesCurse
 
     public void Storyline()
     {
-        if (!Core.isSeasonalMapActive("lovescurse") || Core.isCompletedBefore(1664))
+        if (!Core.isSeasonalMapActive("lovescurse") || Core.isCompletedBefore(1671))
             return;
 
         Story.PreLoad(this);
