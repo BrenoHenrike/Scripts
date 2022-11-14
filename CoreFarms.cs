@@ -1598,7 +1598,7 @@ public class CoreFarms
         }
     }
 
-    public void DeathPitToken(string item = "Death Pit Token", int quant = 30)
+    public void DeathPitToken(string item = "Death Pit Token", int quant = 30, bool isTemp = false)
     {
         // Do not call this with registered quests, or it technically never exits.
         if (Core.CheckInventory(item, quant))

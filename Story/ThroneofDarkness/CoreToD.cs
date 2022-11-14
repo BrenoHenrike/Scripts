@@ -713,7 +713,7 @@ public class CoreToD
         if (!Story.QuestProgression(5165))
         {
             Core.EnsureAccept(5165);
-            Farm.DeathPitToken(quant: 1);
+            Farm.DeathPitToken("Death Pit Victory (Captain Defeat)", quant: 1, true);
             Core.EnsureComplete(5165);
         }
     }
