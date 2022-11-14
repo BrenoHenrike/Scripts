@@ -124,8 +124,8 @@ public class Banished
         if (!Story.QuestProgression(2025))
         {
             Core.EnsureAccept(2025);
-            Core.HuntMonster("banished", "Desterrat Crux", "Drop of Life", 10);
-            Core.HuntMonster("banished", "Desterrat Cruor", "Breath of Life", 4);
+            Core.HuntMonster("banished", "Desterrat Cruor", "Drop of Life", 10);
+            Core.HuntMonster("banished", "Desterrat Crux", "Breath of Life", 4);
             Core.EnsureComplete(2025);
         }
 
