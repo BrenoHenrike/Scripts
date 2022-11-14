@@ -3,9 +3,10 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
-public class ArmyHollowbornRep
+public class ArmySevenCircle
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -16,7 +17,7 @@ public class ArmyHollowbornRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyHollowbornRep";
+    public string OptionsStorage = "ArmySevenCircle";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -24,20 +25,23 @@ public class ArmyHollowbornRep
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
         sArmy.packetDelay,
         sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.Add("Hollow Soul");
-
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
-        //bot.Options.LagKiller = false;
 
+        if (!Bot.Quests.IsUnlocked(7979))
+        {
+            Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs in order to use the SevenCircles method");
+            return;
+        }
         Setup();
-
         Core.SetOptions(false);
     }
 
@@ -45,16 +49,14 @@ public class ArmyHollowbornRep
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.AddDrop("Hollow Soul");
+        
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7553, 7555);
-        Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("shadowrealm", "Gargrowl", "Shadow Guardian");
-        while (!Bot.ShouldExit && Farm.FactionRank("Hollowborn") < 10)
+        Core.RegisterQuests(7979, 7980, 7981);
+        Farm.ToggleBoost(BoostType.Gold);
+        Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
+        Farm.ToggleBoost(BoostType.Gold, false);
         Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        Core.CancelRegisteredQuests();
     }
 }

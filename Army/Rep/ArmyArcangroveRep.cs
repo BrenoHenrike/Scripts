@@ -5,7 +5,7 @@
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
-public class ArmyHollowbornRep
+public class ArmyArcangroveRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -16,7 +16,7 @@ public class ArmyHollowbornRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyHollowbornRep";
+    public string OptionsStorage = "ArmyArcangroveRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -24,17 +24,18 @@ public class ArmyHollowbornRep
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.player7,
+        sArmy.player8,
         sArmy.packetDelay,
         sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.Add("Hollow Soul");
-
         Core.SetOptions();
         bot.Options.RestPackets = false;
-        //bot.Options.LagKiller = false;
 
         Setup();
 
@@ -46,12 +47,11 @@ public class ArmyHollowbornRep
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.AddDrop("Hollow Soul");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7553, 7555);
+        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("shadowrealm", "Gargrowl", "Shadow Guardian");
-        while (!Bot.ShouldExit && Farm.FactionRank("Hollowborn") < 10)
+        Army.SmartAggroMonStart("arcangrove", "Seed SpitterSeed Spitter", "Gorillaphant");
+        while (!Bot.ShouldExit && Farm.FactionRank("Arcangrove") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
