@@ -1013,9 +1013,15 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
 
         Core.RegisterQuests(4667);
+        Core.Join("elfhame", "Cut1", "Left");
+        Core.ToggleAggro(false);
+
         while (!Bot.ShouldExit && FactionRank("Brightoak") < rank)
-            Core.GetMapItem(3984, map: "elfhame");
-        Bot.Wait.ForQuestComplete(4667);
+        {
+            Bot.Map.GetMapItem(3984);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.Wait.ForQuestComplete(4667);
+        }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
