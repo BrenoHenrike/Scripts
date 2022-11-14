@@ -27,6 +27,7 @@ public class ArmySevenCircle
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        sArmy.player7,
         sArmy.packetDelay,
         sCore.SkipOptions
     };

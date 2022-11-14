@@ -26,8 +26,6 @@ public class ArmyArcangroveRep
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-        sArmy.player7,
-        sArmy.player8,
         sArmy.packetDelay,
         sCore.SkipOptions
     };
