@@ -98,7 +98,7 @@ public class CoreDageTheEvilIsland
         if (!Story.QuestProgression(4185))
         {
             Core.EnsureAccept(4185);
-            Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
+            Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion Infiltrators Defeated", 10, log: false);
             Core.EnsureComplete(4185);
         }
 
@@ -106,7 +106,7 @@ public class CoreDageTheEvilIsland
 
         Core.RegisterQuests(4185);
         while (!Bot.ShouldExit && !Bot.Quests.IsUnlocked(4186))
-            Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion infiltrators defeated", 10, log: false);
+            Core.KillMonster("Seraph", "r6", "Left", "Legion Infiltrator", "Legion Infiltrators Defeated", 10, log: false);
         Core.CancelRegisteredQuests();
     }
 
