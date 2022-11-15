@@ -622,7 +622,7 @@ public class CoreDailies
             Core.EnsureAccept(8653);
             Core.HuntMonster("icestormarena", "Warlord Icewing", "Glacial Pinion", isTemp: false, publicRoom: true);
             Core.HuntMonster("hydrachallenge", "Hydra Head 90", "Hydra Eyeball", 3, isTemp: false);
-            Core.HuntMonster("thevoid", "Flibbitiestgibbet", "Flibbitigiblets", isTemp: false, publicRoom: true);
+            Core.HuntMonster("voidflibbi", "Flibbitiestgibbet", "Flibbitigiblets", isTemp: false, publicRoom: true);
             Core.EnsureComplete(8653);
             Bot.Wait.ForPickup("Void Aura");
         }
