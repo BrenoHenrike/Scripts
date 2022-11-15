@@ -1,4 +1,7 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
@@ -6,6 +9,10 @@ public class SRoD
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv => new();
+    public CoreStory Story = new();
+
     public Core13LoC LoC = new();
 
     public void ScriptMain(IScriptInterface bot)
