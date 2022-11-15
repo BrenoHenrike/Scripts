@@ -101,7 +101,7 @@ public class FarmerJoeStartingTheAcc
             Core.Logger("Getting Starting Cash");
             Core.RegisterQuests(4007);
         }
-        while (!Bot.ShouldExit && Bot.Player.Gold < 10000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 10000 && Bot.Player.Level < 10)
             Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
         Core.CancelRegisteredQuests();
         Core.BuyItem("classhalla", 176, "Healer");
