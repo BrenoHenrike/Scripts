@@ -11,7 +11,7 @@ public class GachaponMachine
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public Eden ES = new();
+    public Eden Eden = new();
 
     public CoreAdvanced Adv = new CoreAdvanced();
 
@@ -86,7 +86,7 @@ public class GachaponMachine
     
     public void Gacha()
     {
-        ES.EdenStoryline();
+        Eden.StoryLine();
         Core.AddDrop(Rewards);
         Core.AddDrop(Rewards2);
 

@@ -38,8 +38,7 @@ public class Archmage
         CoreBots.Instance.SkipOptions,
         new Option<bool>("Lumina Elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
         new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get Archmage and the weapon) [On by default]", true),
-        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
-        new Option<bool>("Voucher", "Dragon stone", "Buy dragon stone with 500k vouchers? [Off by default]", false)
+        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false)
     };
 
     private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
@@ -53,6 +52,7 @@ public class Archmage
         Core.SetOptions();
 
         GetAM();
+        
         Core.SetOptions(false);
     }
 
@@ -138,7 +138,7 @@ public class Archmage
 
         Arcana();
         UnboundTomb(30);
-        
+
         BossItemCheck("Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
@@ -440,9 +440,17 @@ public class Archmage
         {
             Core.EnsureAccept(8912);
             if (Bot.Config.Get<bool>("Voucher"))
+            {
+                // 500k * 2
+                Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 6);
                 Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
-            else 
+            }
+            else
+            {
+                // 100k
+                Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
                 Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            }
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
             Core.EnsureComplete(8912);
@@ -492,7 +500,7 @@ public class Archmage
 
                 case "Everlight Flame":
                     if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Fireavatar", "Tyndarius", item, isTemp: false);
+                        Core.HuntMonster("Fireavatar", "Avatar Tyndarius", item, isTemp: false);
                     if (!Core.CheckInventory(item))
                         Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
                     break;

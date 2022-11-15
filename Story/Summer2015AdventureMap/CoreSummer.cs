@@ -385,7 +385,7 @@ public class CoreSummer
         Story.KillQuest(4361, "livingdungeon", new[] { "Evil Plant Horror", "Evil Tree Faerie" });
 
         // DRAGON vs TITAN
-        Story.KillQuest(4362, "treetitanbattle", "Dakka the Dire Dragon");
+        Story.KillQuest(4362, "treetitanbattle-999999", "Dakka the Dire Dragon");
 
         // Smells like trouble!
         Story.KillQuest(4363, "livingdungeon", "Lil' Poot");
@@ -474,7 +474,7 @@ public class CoreSummer
         {
             Core.Logger("Giant Dakka Fang not found, finding it for you");
             Core.EnsureAccept(4384);
-            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka Defeated... again");
+            Core.HuntMonster("treetitanbattle-999999", "Dakka the Dire Dragon", "Dakka Defeated... again");
             Core.EnsureComplete(4384);
             // Bot.Wait.ForPickup("Giant Dakka Fang");
         }

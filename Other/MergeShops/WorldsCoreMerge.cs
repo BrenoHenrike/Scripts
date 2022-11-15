@@ -26,7 +26,7 @@ public class WorldsCoreMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Acquiescence", "Unbound Thread", "Prismatic Seams "});
+        Core.BankingBlackList.AddRange(new[] { "Acquiescence", "Unbound Thread", "Prismatic Seams " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -66,6 +66,7 @@ public class WorldsCoreMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Solo);
+                        Core.AddDrop(req.Name);
                         Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
                         Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
                         Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
@@ -82,6 +83,7 @@ public class WorldsCoreMerge
                     {
                         // Fallen Branches 8869
                         Core.EquipClass(ClassType.Farm);
+                        Core.AddDrop(req.Name);
                         Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
                         Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
                         Core.EquipClass(ClassType.Solo);
@@ -94,6 +96,7 @@ public class WorldsCoreMerge
                 case "Prismatic Seams":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.AddDrop(req.Name);
                     Core.RegisterQuests(8814, 8815);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);

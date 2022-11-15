@@ -20,12 +20,13 @@ public class ThreeLittleWolvesHousesMerge
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
-    private bool dontStopMissingIng = true;
+    private bool dontStopMissingIng = false;
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Building Material", "Foundation Material", "Decor Material", "Dragonrune Blueprint", "Mana Golem's Core", "Arcangrove Blueprint", "Falcontower Blueprint", "Citadel Caverns Blueprint", "Citadel Blueprint", "Seraphic Blueprint", "Hachiko Blueprint", "Clubhouse Blueprint "});
         Core.SetOptions();
-
+ 
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -34,7 +35,7 @@ public class ThreeLittleWolvesHousesMerge
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("buyHouse", 1729, findIngredients);
+        Adv.StartBuyAllMerge("buyhouse", 1729, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -52,14 +53,14 @@ public class ThreeLittleWolvesHousesMerge
             {
                 default:
                     bool shouldStop = Adv.matsOnly ? !dontStopMissingIng : true;
-                    Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping."), messageBox: shouldStop, stopBot: shouldStop);
+                    Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion
 
-                // Add how to get items here
                 case "Building Material":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6915);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("farm", "Treeant", "Wooden Planks", 5);
@@ -71,8 +72,9 @@ public class ThreeLittleWolvesHousesMerge
                     break;
 
                 case "Foundation Material":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6916);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("river", "Zardman Fisher", "River Stones", 5);
@@ -85,8 +87,9 @@ public class ThreeLittleWolvesHousesMerge
                     break;
 
                 case "Decor Material":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6917);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("farm", "Scarecrow", "Fabric", 5);
@@ -96,6 +99,96 @@ public class ThreeLittleWolvesHousesMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
+
+                case "Dragonrune Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Farm.ElementalMasterREP();
+                        Core.BuyItem("dragonrune", 690, 48758);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
+                case "Mana Golem's Core":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("elemental", "Mana Golem", "Mana Golem's Core", isTemp: false, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Arcangrove Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Farm.ArcangroveREP();
+                        Core.BuyItem("arcangrove", 214, 48759);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
+                case "Falcontower Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("falconreach", "Dragon Drakath", "Falcontower Blueprint", isTemp: false, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Citadel Caverns Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("citadel", "Belrot the Fiend", "Citadel Caverns Blueprint", isTemp: false, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
+                case "Citadel Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.BuyItem("citadel", 44, 48761);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
+                case "Seraphic Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.BuyItem("seraph", 1133, 48762);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
+                case "Hachiko Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.BuyItem("dragonkoiz", 95, 48763);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
+                case "Clubhouse Blueprint":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("clubhouse", "Riddlelord's Golem", "Clubhouse Blueprint", isTemp: false, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    break;
+
             }
         }
     }
@@ -114,4 +207,3 @@ public class ThreeLittleWolvesHousesMerge
         new Option<bool>("48770", "Clubhouse", "Mode: [select] only\nShould the bot buy \"Clubhouse\" ?", false),
     };
 }
-

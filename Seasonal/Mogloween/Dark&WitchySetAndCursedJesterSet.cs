@@ -4,6 +4,7 @@
 //cs_include Scripts/Seasonal/Mogloween/CoreMogloween.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class DarkWitchyAndCurstedJester
 {
@@ -24,24 +25,24 @@ public class DarkWitchyAndCurstedJester
 
     public void GetAll()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8375).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
-
-        string[] Rewards = RewardsList.ToArray();
-        Bot.Drops.Add(Rewards);
-
-        if (Core.CheckInventory(Rewards, toInv: false))
-            return;
+        // List<string> RewardsList = new List<string>();
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8375).Rewards.ToList();
+        // RewardsList.AddRange(Core.EnsureLoad(8375).Rewards.Select(x => x.Name).ToArray());
+        Bot.Drops.Add(Core.EnsureLoad(8375).Rewards.Select(x => x.ID).ToArray());
 
         CoreMogloween.NecroCarnival();
 
-        
-        for (int i = 0; i < Rewards.Count(); i++)
+        foreach (ItemBase item in RewardOptions)
         {
-            if (!Core.CheckInventory(Rewards[i]))
+            // if (item.Name.Contains($"&"))
+            //     item.Name.Replace($"&", "and");
+            // if (item.Name.Contains($"&amp;"))
+            //     item.Name.Replace($"&amp;", "and");
+
+            if (!Core.CheckInventory(item.ID, toInv: false))
             {
+                Core.FarmingLogger($"{item.Name}", 1);
+
                 //Scare Uniforms 8375
                 Core.EnsureAccept(8375);
 
@@ -51,10 +52,11 @@ public class DarkWitchyAndCurstedJester
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("necrocarnival", "Deva", "Felt Patch", log: false);
 
-                Core.EnsureComplete(8375);
-                Core.JumpWait();
-                Core.ToBank(Rewards);
+                Core.EnsureComplete(8375, item.ID);
+                Bot.Wait.ForPickup(item.ID);
             }
+            else Core.Logger($"{item.Name} Found");
+            Core.ToBank(item.Name);
         }
     }
 }

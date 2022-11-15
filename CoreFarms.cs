@@ -1013,9 +1013,15 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
 
         Core.RegisterQuests(4667);
+        Core.Join("elfhame", "Cut1", "Left");
+        Core.ToggleAggro(false);
+
         while (!Bot.ShouldExit && FactionRank("Brightoak") < rank)
-            Core.GetMapItem(3984, map: "elfhame");
-        Bot.Wait.ForQuestComplete(4667);
+        {
+            Bot.Map.GetMapItem(3984);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.Wait.ForQuestComplete(4667);
+        }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
@@ -1499,7 +1505,8 @@ public class CoreFarms
         Core.AddDrop("Death Pit Token");
         Core.EquipClass(ClassType.Solo);
         ToggleBoost(BoostType.Reputation);
-        Core.SavedState();
+        Core.ToggleAggro(false);
+
         Core.Logger($"Farming rank {rank}");
 
         if (!Core.isCompletedBefore(5155))
@@ -1523,62 +1530,83 @@ public class CoreFarms
         Core.RegisterQuests(5157, 5165);
 
         while (!Bot.ShouldExit && FactionRank("Death Pit Brawl") < rank)
+        {
+            Core.ToggleAggro(false);
             RunDeathPitBrawl();
+        }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
-        Core.SavedState(false);
+        Core.ToggleAggro(true);
+    }
 
-        void RunDeathPitBrawl()
+    void RunDeathPitBrawl()
+    {
+        while (Bot.Map.Name != "deathpitbrawl")
         {
-            while (Bot.Map.Name != "deathpitbrawl")
-            {
-                Core.Join("DeathPitbrawl", "Enter0", "Spawn");
-                Bot.Sleep(Core.ActionDelay);
-            }
-
-            Core.PvPMove(5, "Morale0C", 228, 291);
-            Core.PvPMove(4, "Morale0B", 936, 397);
-            Core.PvPMove(7, "Morale0A", 946, 394);
-            Core.PvPMove(9, "Crosslower", 948, 400);
-            Core.PvPMove(14, "Crossupper", 903, 324);
-            Core.PvPMove(18, "Resource1A", 482, 295);
-            Bot.Kill.Monster("Velm's Restorer");
-            Bot.Kill.Monster("Velm's Restorer");
-            Core.PvPMove(20, "Resource1B", 938, 400);
-            Bot.Kill.Monster("Velm's Restorer");
-            Bot.Kill.Monster("Velm's Restorer");
-            Core.PvPMove(21, "Resource1A", 9, 435);
-            Core.PvPMove(19, "Crossupper", 461, 315);
-            Core.PvPMove(17, "Crosslower", 54, 339);
-            Core.PvPMove(15, "Morale1A", 522, 286);
-            Bot.Kill.Monster("Velm's Brawler");
-            Core.PvPMove(23, "Morale1B", 948, 403);
-            Bot.Kill.Monster("Velm's Brawler");
-            Core.PvPMove(25, "Morale1C", 945, 397);
-            Bot.Kill.Monster("Velm's Brawler");
-            Core.PvPMove(28, "Captain1", 943, 404);
-            Bot.Kill.Monster("General Velm (B)");
-            Bot.Wait.ForDrop("Death Pit Token");
-
-            // All PVP related bots need to wait 5 seconds after boss dies.
-            Bot.Sleep(5000);
-            while (Bot.Map.Name != "battleon")
-            {
-                Core.Join("battleon");
-                Bot.Sleep(Core.ActionDelay);
-            }
+            Core.Logger("Joining Brawl");
+            Bot.Map.Join("DeathPitbrawl-999999", "Enter0", "Spawn");
+            Bot.Sleep(Core.ActionDelay);
         }
 
-        void DeathPitToken(string item = "Death Pit Token", int quant = 30)
+        int Move = 1;
+        Core.PvPMove(5, "Morale0C", 228, 291);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(4, "Morale0B", 936, 397);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(7, "Morale0A", 946, 394);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(9, "Crosslower", 948, 400);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(14, "Crossupper", 903, 324);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(18, "Resource1A", 482, 295);
+        Core.Logger($"Move: {Move++}, Restorers");
+        Bot.Kill.Monster("Velm's Restorer");
+        Bot.Kill.Monster("Velm's Restorer");
+        Core.PvPMove(20, "Resource1B", 938, 400);
+        Core.Logger($"Move: {Move++}, Restorers");
+        Bot.Kill.Monster("Velm's Restorer");
+        Bot.Kill.Monster("Velm's Restorer");
+        Core.PvPMove(21, "Resource1A", 9, 435);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(19, "Crossupper", 461, 315);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(17, "Crosslower", 54, 339);
+        Core.Logger($"Move: {Move++}");
+        Core.PvPMove(15, "Morale1A", 522, 286);
+        Core.Logger($"Move: {Move++}, Velm's Brawler");
+        Bot.Kill.Monster("Velm's Brawler");
+        Core.PvPMove(23, "Morale1B", 948, 403);
+        Core.Logger($"Move: {Move++}, Velm's Brawler");
+        Bot.Kill.Monster("Velm's Brawler");
+        Core.PvPMove(25, "Morale1C", 945, 397);
+        Core.Logger($"Move: {Move++}, Velm's Brawler");
+        Bot.Kill.Monster("Velm's Brawler");
+        Core.PvPMove(28, "Captain1", 943, 404);
+        Core.Logger($"Move: {Move++}, General Velm (B)");
+        Bot.Kill.Monster("General Velm (B)");
+        Bot.Wait.ForCombatExit();
+
+        Core.Logger("Delaying exit(5s, bugs otherwise)");
+        Bot.Sleep(7500);
+
+        while (Bot.Map.Name != "battleon")
         {
-            // Do not call this with registered quests, or it technically never exits.
-            if (Core.CheckInventory(item, quant))
-                return;
-            Core.Logger($"Farming {quant} {item}");
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            {
-                RunDeathPitBrawl();
-            }
+            Core.Logger("Now exiting brawl.");
+            Bot.Map.Join("battleon-999999");
+            Bot.Sleep(Core.ActionDelay);
+        }
+    }
+
+    public void DeathPitToken(string item = "Death Pit Token", int quant = 30, bool isTemp = false)
+    {
+        // Do not call this with registered quests, or it technically never exits.
+        if (Core.CheckInventory(item, quant))
+            return;
+        Core.Logger($"Farming {quant} {item}");
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            RunDeathPitBrawl();
         }
     }
 

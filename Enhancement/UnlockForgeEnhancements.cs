@@ -575,7 +575,7 @@ public class UnlockForgeEnhancements
             return;
 
         Absolution();
-        Core.Logger("Unlocking Enhancement: Vaingory");
+        Core.Logger("Unlocking Enhancement: Vainglory");
 
         Core.EnsureAccept(8744);
 

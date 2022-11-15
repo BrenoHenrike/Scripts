@@ -62,7 +62,7 @@ public class CoreHarvestDay
         if (!Story.QuestProgression(132))
         {
             Core.EnsureAccept(132, 421);
-            Core.HuntMonster("harvest", "Corn Stalker", "Corn Stalker Ears", 8);
+            Core.HuntMonster("harvest", "Corn Stalker", "Corn Stalker Ears", 8, log: false);
             Core.EnsureComplete(421);
             Core.EnsureComplete(132);
         }
@@ -71,7 +71,7 @@ public class CoreHarvestDay
         if (!Story.QuestProgression(133))
         {
             Core.EnsureAccept(133, 422);
-            Core.HuntMonster("harvest", "Bad Apple", "Worm", 5);
+            Core.HuntMonster("harvest", "Bad Apple", "Worm", 5, log: false);
             Core.EnsureComplete(422);
             Core.EnsureComplete(133);
         }
@@ -80,7 +80,7 @@ public class CoreHarvestDay
         if (!Story.QuestProgression(134))
         {
             Core.EnsureAccept(134, 423);
-            Core.HuntMonster("harvest", "Grapes of Wrath", "Whine", 8);
+            Core.HuntMonster("harvest", "Grapes of Wrath", "Whine", 8, log: false);
             Core.EnsureComplete(423);
             Core.EnsureComplete(134);
         }
@@ -97,6 +97,7 @@ public class CoreHarvestDay
     {
         if (!Core.IsMember)
             return;
+            
         if (!Core.isSeasonalMapActive("turdraken") || Core.isCompletedBefore(430))
             return;
 
@@ -127,11 +128,11 @@ public class CoreHarvestDay
         if (!Story.QuestProgression(430))
         {
             Core.EnsureAccept(430);
-            Core.HuntMonster("orctown", "Horc Warrior", "Pulled Horc Sandwich");
-            Core.HuntMonster("farm", "Mosquito", "French Flies");
-            Core.HuntMonster("GreenguardEast", "Spider", "Corn Cob Web");
-            Core.HuntMonster("sewer", "GreenRat", "Ratatouille");
-            Core.HuntMonster("uppercity", "Rhino Beetle", "Chocolate Covered Beetle");
+            Core.HuntMonster("orctown", "Horc Warrior", "Pulled Horc Sandwich", log: false);
+            Core.HuntMonster("farm", "Mosquito", "French Flies", log: false);
+            Core.HuntMonster("GreenguardEast", "Spider", "Corn Cob Web", log: false);
+            Core.HuntMonster("sewer", "GreenRat", "Ratatouille", log: false);
+            Core.HuntMonster("uppercity", "Rhino Beetle", "Chocolate Covered Beetle", log: false);
             Core.EnsureComplete(430);
         }
 
@@ -257,7 +258,7 @@ public class CoreHarvestDay
             //Cyser-Os! 6088
             Core.AddDrop("Soulflare");
             Core.EnsureAccept(6088);
-            Core.HuntMonster("battlefowl", "ChickenCow", "Box of Cyser-Os", 3);
+            Core.HuntMonster("battlefowl", "ChickenCow", "Box of Cyser-Os", 3, log: false);
             Bot.Wait.ForDrop("Soulflare");
             Core.EnsureComplete(6088);
         }
@@ -270,7 +271,7 @@ public class CoreHarvestDay
         if (!Story.QuestProgression(6089) || !Core.CheckInventory("Muddy Soulflare"))
         {
             Core.EnsureAccept(6089);
-            Core.HuntMonster("brightoak", "Tainted Earth", "Sticky Mud", 8);
+            Core.HuntMonster("brightoak", "Tainted Earth", "Sticky Mud", 8, log: false);
             Bot.Wait.ForDrop("Muddy Soulflare");
             Core.EnsureComplete(6089);
         }
@@ -401,7 +402,7 @@ public class CoreHarvestDay
         {
             Core.EnsureAccept(7202);
             Bot.Quests.UpdateQuest(1542);
-            Core.HuntMonster("firestorm", "Firestorm Hatchling", "Firestorm Sample", 8);
+            Core.HuntMonster("firestorm", "Firestorm Hatchling", "Firestorm Sample", 8, log: false);
             Core.EnsureComplete(7202);
         }
 
@@ -516,7 +517,7 @@ public class CoreHarvestDay
         {
             Core.EnsureAccept(7799);
             while (!Bot.ShouldExit && !Core.CheckInventory(57666, 8))
-                Core.HuntMonster("memetnightmare", "Nightmare Maw");
+                Core.HuntMonster("memetnightmare", "Nightmare Maw", log: false);
             Core.EnsureComplete(7799);
         }
 

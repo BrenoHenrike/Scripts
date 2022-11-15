@@ -1949,7 +1949,12 @@ public class Core13LoC
 
 
         //Horror Takes Flight
-        Story.KillQuest(3188, "mirrorportal", "Chaos Harpy");
+        if(!Story.QuestProgression(3188))
+        {
+            Core.EnsureAccept(3188);
+            Core.HuntMonsterMapID("mirrorportal", 1, "Chaos Harpy Defeated");
+            Core.EnsureComplete(3188);
+        }
 
         //Good, Evil and Chaos Battle!
         if (!Story.QuestProgression(3189))

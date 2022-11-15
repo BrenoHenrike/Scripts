@@ -19,13 +19,7 @@ public class Cornelis
 
     public void StoryLine()
     {
-        if (!Core.IsMember)
-        {
-            Core.Logger("You must be a Member to complete Hodan's quests!");
-            return;
-        }
-
-        if (Core.isCompletedBefore(1633))
+        if (!Core.IsMember || Core.isCompletedBefore(1633))
             return;
 
         Story.PreLoad(this);

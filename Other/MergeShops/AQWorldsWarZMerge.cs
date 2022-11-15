@@ -2,13 +2,11 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Shinkansen.cs
-//cs_include Scripts/Story/Eden.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class GachaponMerge
+public class AQWorldsWarZMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,7 +14,6 @@ public class GachaponMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public Eden Eden = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,7 +24,7 @@ public class GachaponMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Second Chance Coin "});
+        Core.BankingBlackList.AddRange(new[] { "Angry Zombie Skull "});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -37,9 +34,8 @@ public class GachaponMerge
 
     public void BuyAllMerge()
     {
-        Eden.StoryLine();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("onsen", 1926, findIngredients);
+        Adv.StartBuyAllMerge("doomwar", 665, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -61,18 +57,14 @@ public class GachaponMerge
                     break;
                 #endregion
 
-                case "Second Chance Coin":
+                case "Angry Zombie Skull":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    //I heard you like Gacha 7781
-                    Core.RegisterQuests(7781);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("onsen", 1926, "Gachapon Coin");
-                        Core.HuntMonster("yokaigrave", "Skello Kitty", "Skello Kitty Bone");
+                        Core.HuntMonster("doomwar", "Angry Zombie", "Angry Zombie Skull");
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
             }
@@ -81,13 +73,11 @@ public class GachaponMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57239", "Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Crystallis Jinbei\" ?", false),
-        new Option<bool>("57240", "Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata\" ?", false),
-        new Option<bool>("57241", "Crystallis Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata + Haori\" ?", false),
-        new Option<bool>("57242", "Cool Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Cool Crystallis Yukata\" ?", false),
-        new Option<bool>("57243", "Dark Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Dark Crystallis Jinbei\" ?", false),
-        new Option<bool>("57244", "Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Onsen Yukata\" ?", false),
-        new Option<bool>("57245", "Onsen Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Onsen Yukata + Haori\" ?", false),
-        new Option<bool>("57246", "Cool Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Cool Onsen Yukata\" ?", false),
+        new Option<bool>("18326", "Zombie Trophyhunter", "Mode: [select] only\nShould the bot buy \"Zombie Trophyhunter\" ?", false),
+        new Option<bool>("18292", "Zombie Gunslinger", "Mode: [select] only\nShould the bot buy \"Zombie Gunslinger\" ?", false),
+        new Option<bool>("18298", "Crazy Eye Zombie Face", "Mode: [select] only\nShould the bot buy \"Crazy Eye Zombie Face\" ?", false),
+        new Option<bool>("18299", "Scalp Wound Zombie Face", "Mode: [select] only\nShould the bot buy \"Scalp Wound Zombie Face\" ?", false),
+        new Option<bool>("18300", "Baldhead McZombieface", "Mode: [select] only\nShould the bot buy \"Baldhead McZombieface\" ?", false),
+        new Option<bool>("18305", "Sir Scalps-a-Lot", "Mode: [select] only\nShould the bot buy \"Sir Scalps-a-Lot\" ?", false),
     };
 }

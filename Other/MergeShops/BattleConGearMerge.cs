@@ -2,13 +2,11 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Shinkansen.cs
-//cs_include Scripts/Story/Eden.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class GachaponMerge
+public class BattleConGearMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,7 +14,6 @@ public class GachaponMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public Eden Eden = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,7 +24,7 @@ public class GachaponMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Second Chance Coin "});
+        Core.BankingBlackList.AddRange(new[] { "DeadMog LED "});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -37,9 +34,8 @@ public class GachaponMerge
 
     public void BuyAllMerge()
     {
-        Eden.StoryLine();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("onsen", 1926, findIngredients);
+        Adv.StartBuyAllMerge("arena", 1162, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -61,15 +57,13 @@ public class GachaponMerge
                     break;
                 #endregion
 
-                case "Second Chance Coin":
+                case "DeadMog LED":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    //I heard you like Gacha 7781
-                    Core.RegisterQuests(7781);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(4576);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("onsen", 1926, "Gachapon Coin");
-                        Core.HuntMonster("yokaigrave", "Skello Kitty", "Skello Kitty Bone");
+                        Core.HuntMonster("arena", "Deadmoglinster", "DeadMoglinster Defeated");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -81,13 +75,16 @@ public class GachaponMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57239", "Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Crystallis Jinbei\" ?", false),
-        new Option<bool>("57240", "Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata\" ?", false),
-        new Option<bool>("57241", "Crystallis Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata + Haori\" ?", false),
-        new Option<bool>("57242", "Cool Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Cool Crystallis Yukata\" ?", false),
-        new Option<bool>("57243", "Dark Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Dark Crystallis Jinbei\" ?", false),
-        new Option<bool>("57244", "Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Onsen Yukata\" ?", false),
-        new Option<bool>("57245", "Onsen Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Onsen Yukata + Haori\" ?", false),
-        new Option<bool>("57246", "Cool Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Cool Onsen Yukata\" ?", false),
+        new Option<bool>("31649", "Scarf of Ambition", "Mode: [select] only\nShould the bot buy \"Scarf of Ambition\" ?", false),
+        new Option<bool>("31647", "Scarf of Wisdom", "Mode: [select] only\nShould the bot buy \"Scarf of Wisdom\" ?", false),
+        new Option<bool>("31650", "Scarf of Dedication", "Mode: [select] only\nShould the bot buy \"Scarf of Dedication\" ?", false),
+        new Option<bool>("31648", "Scarf of Bravery", "Mode: [select] only\nShould the bot buy \"Scarf of Bravery\" ?", false),
+        new Option<bool>("31646", "Ambitious Ferret", "Mode: [select] only\nShould the bot buy \"Ambitious Ferret\" ?", false),
+        new Option<bool>("31671", "Dead Moglinster", "Mode: [select] only\nShould the bot buy \"Dead Moglinster\" ?", false),
+        new Option<bool>("31652", "Magenta StarBlade", "Mode: [select] only\nShould the bot buy \"Magenta StarBlade\" ?", false),
+        new Option<bool>("31653", "Azure StarBlade", "Mode: [select] only\nShould the bot buy \"Azure StarBlade\" ?", false),
+        new Option<bool>("31654", "Flame StarBlade", "Mode: [select] only\nShould the bot buy \"Flame StarBlade\" ?", false),
+        new Option<bool>("31655", "Verde StarBlade", "Mode: [select] only\nShould the bot buy \"Verde StarBlade\" ?", false),
+        new Option<bool>("31736", "Fairy Tail", "Mode: [select] only\nShould the bot buy \"Fairy Tail\" ?", false),
     };
 }

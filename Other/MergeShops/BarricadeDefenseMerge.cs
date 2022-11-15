@@ -2,13 +2,12 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Shinkansen.cs
-//cs_include Scripts/Story/Eden.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class GachaponMerge
+public class BarricadeDefenseMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,7 +15,7 @@ public class GachaponMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public Eden Eden = new();
+    public CoreQOM QOM => new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,7 +26,7 @@ public class GachaponMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Second Chance Coin "});
+        Core.BankingBlackList.AddRange(new[] { "Rift Defense Medal "});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -37,9 +36,10 @@ public class GachaponMerge
 
     public void BuyAllMerge()
     {
-        Eden.StoryLine();
+        QOM.TheDestroyer();
+
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("onsen", 1926, findIngredients);
+        Adv.StartBuyAllMerge("greenguardeast", 1401, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -61,15 +61,13 @@ public class GachaponMerge
                     break;
                 #endregion
 
-                case "Second Chance Coin":
+                case "Rift Defense Medal":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    //I heard you like Gacha 7781
-                    Core.RegisterQuests(7781);
+                    Core.RegisterQuests(5825);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("onsen", 1926, "Gachapon Coin");
-                        Core.HuntMonster("yokaigrave", "Skello Kitty", "Skello Kitty Bone");
+                        Core.HuntMonster("charredpath", "Infected Hare", "Invader Slain", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -81,13 +79,12 @@ public class GachaponMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57239", "Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Crystallis Jinbei\" ?", false),
-        new Option<bool>("57240", "Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata\" ?", false),
-        new Option<bool>("57241", "Crystallis Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata + Haori\" ?", false),
-        new Option<bool>("57242", "Cool Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Cool Crystallis Yukata\" ?", false),
-        new Option<bool>("57243", "Dark Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Dark Crystallis Jinbei\" ?", false),
-        new Option<bool>("57244", "Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Onsen Yukata\" ?", false),
-        new Option<bool>("57245", "Onsen Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Onsen Yukata + Haori\" ?", false),
-        new Option<bool>("57246", "Cool Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Cool Onsen Yukata\" ?", false),
+        new Option<bool>("39202", "RiftBreaker", "Mode: [select] only\nShould the bot buy \"RiftBreaker\" ?", false),
+        new Option<bool>("39203", "Riftbreaker Helm", "Mode: [select] only\nShould the bot buy \"Riftbreaker Helm\" ?", false),
+        new Option<bool>("39204", "Riftbreaker Horns", "Mode: [select] only\nShould the bot buy \"Riftbreaker Horns\" ?", false),
+        new Option<bool>("39209", "Riftbreaker Sword", "Mode: [select] only\nShould the bot buy \"Riftbreaker Sword\" ?", false),
+        new Option<bool>("39210", "Riftbreaker Cutlass", "Mode: [select] only\nShould the bot buy \"Riftbreaker Cutlass\" ?", false),
+        new Option<bool>("39205", "Riftbreaker Wings", "Mode: [select] only\nShould the bot buy \"Riftbreaker Wings\" ?", false),
+        new Option<bool>("39206", "Riftbreaker Cape", "Mode: [select] only\nShould the bot buy \"Riftbreaker Cape\" ?", false),
     };
 }

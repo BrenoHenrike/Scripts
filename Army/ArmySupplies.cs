@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -11,6 +12,7 @@ public class SuppliesWheelArmy
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreArmyLite Army = new();
+    public CoreNation Nation = new();
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmySupplies";
@@ -24,7 +26,8 @@ public class SuppliesWheelArmy
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(SuppliesArmy);
+        Core.BankingBlackList.AddRange(Nation.bagDrops);
+        Core.BankingBlackList.Add("Relic of Chaos");
 
         Core.SetOptions();
         bot.Options.RestPackets = false;
@@ -34,18 +37,18 @@ public class SuppliesWheelArmy
         Core.SetOptions(false);
     }
 
-    public string[] SuppliesArmy =
-    {
-        "Tainted Gem",
-        "Dark Crystal Shard",
-        "Diamond of Nulgath",
-        "Voucher of Nulgath",
-        "Voucher of Nulgath (non-mem)",
-        "Unidentified 10",
-        "Unidentified 13",
-        "Gem of Nulgath",
-        "Relic of Chaos"
-    };
+    // public string[] SuppliesArmy =
+    // {
+    //     "Tainted Gem",
+    //     "Dark Crystal Shard",
+    //     "Diamond of Nulgath",
+    //     "Voucher of Nulgath",
+    //     "Voucher of Nulgath (non-mem)",
+    //     "Unidentified 10",
+    //     "Unidentified 13",
+    //     "Gem of Nulgath",
+    //     "Relic of Chaos"
+    // };
     // public void handler(ItemBase item, bool addedToInv, int quantityNow)
     // {
     //     if (item.Name == "Relic of Chaos")
@@ -59,7 +62,8 @@ public class SuppliesWheelArmy
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.AddDrop(SuppliesArmy);
+        Core.AddDrop(Nation.bagDrops);
+        Core.AddDrop("Relic of Chaos");
         while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 14))
             ArmyHydra90("hydrachallenge", "h90", "Left", "*");
         Bot.Options.AggroMonsters = false;

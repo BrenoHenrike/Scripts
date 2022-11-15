@@ -2,13 +2,11 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Shinkansen.cs
-//cs_include Scripts/Story/Eden.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class GachaponMerge
+public class GooseMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,7 +14,6 @@ public class GachaponMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public Eden Eden = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,7 +24,7 @@ public class GachaponMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Second Chance Coin "});
+        Core.BankingBlackList.AddRange(new[] { "Cysero's Cookie "});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -37,9 +34,8 @@ public class GachaponMerge
 
     public void BuyAllMerge()
     {
-        Eden.StoryLine();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("onsen", 1926, findIngredients);
+        Adv.StartBuyAllMerge("goose", 58, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
@@ -61,18 +57,14 @@ public class GachaponMerge
                     break;
                 #endregion
 
-                case "Second Chance Coin":
+                case "Cysero's Cookie":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    //I heard you like Gacha 7781
-                    Core.RegisterQuests(7781);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("onsen", 1926, "Gachapon Coin");
-                        Core.HuntMonster("yokaigrave", "Skello Kitty", "Skello Kitty Bone");
+                        Core.HuntMonster("goose", "Queen's Sage", "Cysero's Cookie");
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
             }
@@ -81,13 +73,15 @@ public class GachaponMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57239", "Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Crystallis Jinbei\" ?", false),
-        new Option<bool>("57240", "Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata\" ?", false),
-        new Option<bool>("57241", "Crystallis Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Crystallis Yukata + Haori\" ?", false),
-        new Option<bool>("57242", "Cool Crystallis Yukata", "Mode: [select] only\nShould the bot buy \"Cool Crystallis Yukata\" ?", false),
-        new Option<bool>("57243", "Dark Crystallis Jinbei", "Mode: [select] only\nShould the bot buy \"Dark Crystallis Jinbei\" ?", false),
-        new Option<bool>("57244", "Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Onsen Yukata\" ?", false),
-        new Option<bool>("57245", "Onsen Yukata + Haori", "Mode: [select] only\nShould the bot buy \"Onsen Yukata + Haori\" ?", false),
-        new Option<bool>("57246", "Cool Onsen Yukata", "Mode: [select] only\nShould the bot buy \"Cool Onsen Yukata\" ?", false),
+        new Option<bool>("30448", "Queen's Sage", "Mode: [select] only\nShould the bot buy \"Queen's Sage\" ?", false),
+        new Option<bool>("30449", "Queen's Sage Hood", "Mode: [select] only\nShould the bot buy \"Queen's Sage Hood\" ?", false),
+        new Option<bool>("30450", "Queen's Sage Cape", "Mode: [select] only\nShould the bot buy \"Queen's Sage Cape\" ?", false),
+        new Option<bool>("30451", "Queen's Sage Scythe", "Mode: [select] only\nShould the bot buy \"Queen's Sage Scythe\" ?", false),
+        new Option<bool>("30422", "GIANT Mountain of Socks", "Mode: [select] only\nShould the bot buy \"GIANT Mountain of Socks\" ?", false),
+        new Option<bool>("30421", "Cyser-Duck Painting", "Mode: [select] only\nShould the bot buy \"Cyser-Duck Painting\" ?", false),
+        new Option<bool>("30404", "Bucket of Paint Helm", "Mode: [select] only\nShould the bot buy \"Bucket of Paint Helm\" ?", false),
+        new Option<bool>("30418", "Sock Ape", "Mode: [select] only\nShould the bot buy \"Sock Ape\" ?", false),
+        new Option<bool>("30419", "Chris P. Bacon", "Mode: [select] only\nShould the bot buy \"Chris P. Bacon\" ?", false),
+        new Option<bool>("30420", "Grandhonk Goose the Gray", "Mode: [select] only\nShould the bot buy \"Grandhonk Goose the Gray\" ?", false),
     };
 }
