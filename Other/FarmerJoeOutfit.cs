@@ -95,8 +95,16 @@ public class FarmerJoeStartingTheAcc
         #region starting out the acc
         //starting out the acc
         Core.Logger("starting out the acc");
-        Core.BuyItem("classhalla", 176, "Healer");
         Tutorial.Badges();
+        if (Bot.Player.Gold < 10000)
+        {
+            Core.Logger("Getting Starting Cash");
+            Core.RegisterQuests(4007);
+        }
+        while (!Bot.ShouldExit && Bot.Player.Gold < 10000)
+            Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
+        Core.CancelRegisteredQuests();
+        Core.BuyItem("classhalla", 176, "Healer");
         Farm.IcestormArena(30, true);
         InvEn.EnhanceInventory();
         #endregion starting out the acc
