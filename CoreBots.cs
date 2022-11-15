@@ -2237,7 +2237,8 @@ public class CoreBots
             Bot.Sleep(200);
         }
 
-        ToggleAggro(true);
+        // ToggleAggro(true);
+        //^ breaks shit
 
         void tryJoin()
         {
