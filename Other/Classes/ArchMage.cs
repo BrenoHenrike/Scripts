@@ -432,9 +432,9 @@ public class Archmage
 
         Core.FarmingLogger("Unbound Tome", quant);
 
-        MysticScribingKit(quant);
-        PrismaticEther(quant);
-        ArcaneLocus(quant);
+        MysticScribingKit(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
+        PrismaticEther(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
+        ArcaneLocus(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
