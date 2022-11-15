@@ -36,7 +36,7 @@ public class SpellRaiser
         Core.RegisterQuests(7400, 7402, 7404);
         while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
             // Slasher Medals 7400   //Mega Slasher Medals 7402 //Bladehands 7404
-            Core.KillMonster("splatterwardage", "r5", "Left", "*", log: false);
+            Core.KillMonster("splatterwardage", "r4", "Left", "*", log: false);
         Core.JumpWait();
         Core.ToBank(AllRewards);
         Core.CancelRegisteredQuests();
