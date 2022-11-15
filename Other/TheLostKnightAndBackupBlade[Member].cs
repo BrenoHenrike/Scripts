@@ -37,7 +37,7 @@ public class TheLostKnightAndBackupBlade
         Core.RegisterQuests(7401, 7403, 7405);
         while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
             //Legion Medals 7401   //Mega Legion Medals 7403 //Jagged Canines 7405
-            Core.KillMonster("splatterwarshrade", "r5", "Left", "*", log: false);
+            Core.KillMonster("splatterwarshrade", "r3", "Right", "*", log: false);
         Core.JumpWait();
         Core.ToBank(AllRewards);
         Core.CancelRegisteredQuests();
