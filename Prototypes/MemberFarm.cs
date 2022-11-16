@@ -362,14 +362,14 @@ public class MemberFarm
         Core.ToBank("Dual Frostbite");
 
         //DragonBlade of Nulgath
-        if (!Core.CheckInventory("Dual DragonBlade of Nulgath"))
+        if (!Core.CheckInventory("Dual DragonBlades of Nulgath"))
         {
             if (!Core.CheckInventory("DragonBlade of Nulgath"))
             {
                 Core.Logger("You don't have DBoN on your inventory/bank, please check your buyback menu");
                 return;
             }
-            Adv.BuyItem("nostalgiaquest", 1311, "Dual DragonBlade of Nulgath");
+            Adv.BuyItem("nostalgiaquest", 1311, "Dual DragonBlades of Nulgath");
         }
         Core.ToBank("Dual DragonBlade of Nulgath");
 
