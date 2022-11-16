@@ -2112,6 +2112,7 @@ public class CoreBots
             return;
 
         ToggleAggro(false);
+        Bot.Sleep(ActionDelay);
 
         switch (strippedMap)
         {
