@@ -30,7 +30,7 @@ public class Mazumi
         Story.KillQuest(90, "pirates", "Fishman Soldier");
 
         // Without a Trace 91
-        Story.KillQuest(91, "greenguardwest", new[] { "Kittarian", "River Fishman", "Slime", "River Fishman", "Big Bad Boar" });
+        Story.KillQuest(91, "greenguardwest", new[] { "Kittarian", "River Fishman", "Slime", "Frogzard", "Big Bad Boar" });
 
         // Hit Job 92
         Story.KillQuest(92, "greenguardwest", new[] { "Breken the Vile", "Ogug Stoneaxe" });
