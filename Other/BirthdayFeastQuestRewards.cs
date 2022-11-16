@@ -33,12 +33,13 @@ public class BirthdayFeastQuestRewards
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
                 return;
+                
             Core.FarmingLogger(Reward.Name, 1);
 
             Core.EnsureAccept(8383);
             Core.HuntMonster("shinkansen", "Saint Eta", "Saint Eta's Gauntlet", log: false);
-            Core.EnsureComplete(8383, Reward.ID);
-            Core.JumpWait();
+            Core.EnsureComplete(8383);
+            Core.JumpWait();            
             Core.ToBank(Reward.Name);
         }
     }
