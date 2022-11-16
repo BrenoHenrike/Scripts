@@ -30,7 +30,6 @@ public class Mazumi
         Story.KillQuest(90, "pirates", "Fishman Soldier");
 
         // Without a Trace 91
-        Story.KillQuest(91, "greenguardwest", new[] { "Kittarian", "River Fishman", "Slime", "River Fishman", "Big Bad Boar" });
         if (!Story.QuestProgression(91))
         {
             Core.EnsureAccept(91);
