@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class ArmyBattlegroundE
@@ -49,6 +50,7 @@ public class ArmyBattlegroundE
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
+        Farm.ToggleBoost(BoostType.Gold);
         if (((int)mapname == 0 && Core.IsMember))
             Core.RegisterQuests(3991, 3992, 3993);
         else if (((int)mapname == 1))
@@ -62,9 +64,11 @@ public class ArmyBattlegroundE
             Army.DivideOnCells("r5", "r4", "r3", "r2");
         else Army.DivideOnCells("r4", "r3", "r2", "r1");
 
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Gold, false);
+        Core.CancelRegisteredQuests();
     }
 
     public enum Method

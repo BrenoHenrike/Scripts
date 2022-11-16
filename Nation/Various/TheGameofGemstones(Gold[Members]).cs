@@ -12,6 +12,7 @@ public class TheGameofGemstones
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] {"Tendurrr The Assistant", "Unidentified 13"});
         Core.SetOptions();
 
         Gold();
@@ -30,12 +31,10 @@ public class TheGameofGemstones
         Core.RegisterQuests(5815);
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
         {
-            if (Core.CheckInventory("Nulgath's Approval"))
-                Nation.ApprovalAndFavor(50);
+            Nation.ApprovalAndFavor(1, 0);
             Core.HuntMonster("Lavarun", "Mega Tyndarius", "Archfiend's Amber", isTemp: false);
             Core.HuntMonster("asylum", "Dr. De'Sawed", "Phantasmia's Charoite", isTemp: false);
             Farm.BludrutBrawlBoss("Yoshino's Citrine");
-            Bot.Quests.UpdateQuest(597);
             Core.HuntMonster("Wolfwing", "Wolfwing", "Tendou's Moonstone", isTemp: false);
             Core.HuntMonster("baconcatyou", "*", "Asuka's Ruby", isTemp: false);
         }

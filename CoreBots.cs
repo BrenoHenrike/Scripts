@@ -618,9 +618,20 @@ public class CoreBots
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
-        if (CheckInventory(item.Name, quant))
+        if (buy_quant > quant && (CheckInventory(item.Name, buy_quant)))
+        {
+            // Sell spares
+            // This only occurs when you buy sth with stack limits, but want less then the stack limit.
+            int sell_quant = buy_quant - quant;
+            SellItem(item.Name, quant);
+            Logger($"Bought {buy_quant} {item.Name}, sold {sell_quant}, now at {quant} {item.Name}");
+        }
+        else if (CheckInventory(item.Name, quant))
+        {
             Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}");
-        else Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
+        }
+        else
+            Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
 
         ToggleAggro(true);
 
@@ -2101,6 +2112,7 @@ public class CoreBots
             return;
 
         ToggleAggro(false);
+        Bot.Sleep(ActionDelay);
 
         switch (strippedMap)
         {
@@ -2237,7 +2249,8 @@ public class CoreBots
             Bot.Sleep(200);
         }
 
-        ToggleAggro(true);
+        // ToggleAggro(true);
+        //^ breaks shit
 
         void tryJoin()
         {

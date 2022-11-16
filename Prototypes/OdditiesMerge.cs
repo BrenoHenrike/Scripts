@@ -16,7 +16,7 @@ public class OdditiesMerge
     public CoreStory Story = new();
     public CoreFriday13th CoreFriday13th => new();
 
-    string[] MergeShop1Items =
+    public string[] MergeShop1Items =
     {
         "Gothic Musician's Beard",
         "Bloodmoon Musician",
@@ -31,7 +31,7 @@ public class OdditiesMerge
         "Goth Pirate Musician"
     };
 
-    string[] MergeShop2Items =
+    public string[] MergeShop2Items =
     {
         "Spirit Katana of Wrath",
         "Slasher of Wrath",

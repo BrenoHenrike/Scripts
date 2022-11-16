@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyChaosRep
+public class ArmyArcangroveRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -17,7 +17,7 @@ public class ArmyChaosRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyChaosRep";
+    public string OptionsStorage = "ArmyArcangroveRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -27,8 +27,6 @@ public class ArmyChaosRep
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-        sArmy.player7,
-        sArmy.player8,
         sArmy.packetDelay,
         sCore.SkipOptions
     };
@@ -37,8 +35,6 @@ public class ArmyChaosRep
     {
         Core.SetOptions();
         bot.Options.RestPackets = false;
-
-        Core.BankingBlackList.Add("Fragment of Mount Doomskull");
 
         Setup();
 
@@ -50,12 +46,11 @@ public class ArmyChaosRep
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.AddDrop("Fragment of Mount Doomskull");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(3594);
+        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("mountdoomskull", "Chaos Spider", "Chaos Draconian");
-        while (!Bot.ShouldExit && Farm.FactionRank("Chaos") < 10)
+        Army.SmartAggroMonStart("arcangrove", "Seed SpitterSeed Spitter", "Gorillaphant");
+        while (!Bot.ShouldExit && Farm.FactionRank("Arcangrove") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
