@@ -58,7 +58,7 @@ public class MemberFarm
     public CruxShip Crux = new();
     public TendurrrTheAssistantQuests Tendurr = new();
     public TarosPrismaticManslayers TarosItems = new();
-    public GonnaGetchaMerge GonnaGetcha = new ();
+    public GonnaGetchaMerge GonnaGetcha = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -94,7 +94,7 @@ public class MemberFarm
 
         ArchfiendDragonPet.GetAFDE();
         Core.ToBank("ArchFiend Baby Dragon Pet");
-        
+
         CoinCollector.GetItems();
         DualWield();
         FireWar();
@@ -148,7 +148,7 @@ public class MemberFarm
         Core.BuyItem("firewar", 1586, "Flame Guardian's Accoutrements");
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("firewar", "Uriax", "Dragon Eye", 2, isTemp: false);
-        
+
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dragon Flame", 25)))
         {
             Core.EquipClass(ClassType.Farm);
@@ -157,7 +157,7 @@ public class MemberFarm
             Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
             Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
             Core.EnsureComplete(6300);
-        }   
+        }
         Core.BuyItem("firewar", 1587, "Ignited Guardian's Accoutrements");
         Core.ToBank("Ignited Guardian's Accoutrements");
     }
@@ -250,7 +250,7 @@ public class MemberFarm
             Adv.BuyItem("nostalgiaquest", 1311, "Dual Leviasea Sword");
         }
         Core.ToBank("Dual Leviasea Sword");
-        
+
         //Ddog Sea Serpent Sword
         if (!Core.CheckInventory("Dual Ddog Sea Serpent Sword"))
         {
@@ -286,8 +286,8 @@ public class MemberFarm
                 Core.EquipClass(ClassType.Solo);
                 if (!Core.CheckInventory("Abaddon's Terror"))
                     Core.HuntMonster("twilight", "Abaddon", "Abaddon's Terror", isTemp: false);
-                    Core.EnsureComplete(571);
-                    Bot.Wait.ForPickup("Soulreaper of Nulgath");
+                Core.EnsureComplete(571);
+                Bot.Wait.ForPickup("Soulreaper of Nulgath");
             }
             Adv.BuyItem("nostalgiaquest", 1311, "Dual Soulreaper of Nulgath");
         }
@@ -317,16 +317,16 @@ public class MemberFarm
         Core.ToBank("Dual Balor's Cruelty");
 
         //Abaddon's Terror
-        if (!Core.CheckInventory("Dual Abaddon's Terror"))
+        if (!Core.CheckInventory("Dual Abaddon's Terrors"))
         {
             if (!Core.CheckInventory("Abaddon's Terror"))
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("twilight", "Abaddon", "Abaddon's Terror", isTemp: false);
             }
-            Adv.BuyItem("nostalgiaquest", 1311, "Dual Abaddon's Terror");
+            Adv.BuyItem("nostalgiaquest", 1311, "Dual Abaddon's Terrors");
         }
-        Core.ToBank("Dual Abaddon's Terror");
+        Core.ToBank("Dual Abaddon's Terrors");
 
         //Mighty Sword Of The Dragons
         if (!Core.CheckInventory("Dual Mighty Sword Of The Dragons"))
@@ -338,12 +338,12 @@ public class MemberFarm
                 Core.RegisterQuests(3343);
                 Bot.Quests.UpdateQuest(1416);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Mighty Sword Of The Dragons"))
-                    {
-                        Core.HuntMonster("wind", "Cellot", "Cellot's Death Scale", isTemp: false);
-                        Core.HuntMonster("fire", "Zellare", "Zellare's Death Scale", isTemp: false);
-                        Core.HuntMonster("water", "Udaroth", "Udaroth's Death Scale", isTemp: false);
-                        Core.HuntMonster("dragonplane", "Moganth", "Moganth's Death Scale", isTemp: false);
-                    }
+                {
+                    Core.HuntMonster("wind", "Cellot", "Cellot's Death Scale", isTemp: false);
+                    Core.HuntMonster("fire", "Zellare", "Zellare's Death Scale", isTemp: false);
+                    Core.HuntMonster("water", "Udaroth", "Udaroth's Death Scale", isTemp: false);
+                    Core.HuntMonster("dragonplane", "Moganth", "Moganth's Death Scale", isTemp: false);
+                }
             }
             Adv.BuyItem("nostalgiaquest", 1311, "Dual Mighty Sword Of The Dragons");
         }
@@ -384,7 +384,7 @@ public class MemberFarm
         GetItems("bonebreak", "Undead Berserker", "Berserker Minion Skull Mace");
         GetItems("bonebreak", "Bonebreaker", "Undead Berserker Guard", "Undead Berserker Guard Helm");
         GetItems("deadfly", "BlackSkulls Knuckle", "Deadfly Morph", "Deadfly's Armor", "Dual BlackSkulls Knuckles");
-        GetItems("oddities", "Cursed Spirit", "Cursed Spirit Hunter", "Reaver of Wrath", "Scary Machete", "Scary Machetes", "Spirit Scythe of Wrath","Spooky Spirit Hunter", "Spooky Spirit Hunter Hat", "Spooky Spirit Hunter Hat + Locks", "Spooky Spirit Hunter Hood", "Unlucky Farmer", "Unlucky Farmer's Hood", "Unlucky Portal Cape");
+        GetItems("oddities", "Cursed Spirit", "Cursed Spirit Hunter", "Reaver of Wrath", "Scary Machete", "Scary Machetes", "Spirit Scythe of Wrath", "Spooky Spirit Hunter", "Spooky Spirit Hunter Hat", "Spooky Spirit Hunter Hat + Locks", "Spooky Spirit Hunter Hood", "Unlucky Farmer", "Unlucky Farmer's Hood", "Unlucky Portal Cape");
         GetItems("wormhole", "Trobbolegion", "Blue Trobbolier Morph", "Gold Trobbolier Morph", "Mutated Pink Trobbolier Morph", "Silver Trobbolier Morph");
         GetItems("gonnagetcha", "Shrade Cultist", "Cultist Knife", "Dual Cultist Knife", "Missing Keys Plaque");
         GetItems("gonnagetcha", "Murkonian", "GonnaGetcha Trident");
