@@ -371,7 +371,7 @@ public class MemberFarm
             }
             Adv.BuyItem("nostalgiaquest", 1311, "Dual DragonBlades of Nulgath");
         }
-        Core.ToBank("Dual DragonBlade of Nulgath");
+        Core.ToBank("Dual DragonBlades of Nulgath");
 
         //Phoenix Blade of Nulgath (Pseudo-Rare Item)
     }
