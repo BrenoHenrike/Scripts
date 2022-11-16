@@ -37,7 +37,7 @@ public class Mazumi
             Core.HuntMonster("greenguardwest", "River Fishman", "River Fishman's Wallet", 2);
             Core.HuntMonster("greenguardwest", "Slime", "Slime-Soaked Wallet", 2);
             Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard's Lint Hoard", 2);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Big Bad Boar's Wallet", 2);
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Big Bad Boar's Wallet");
             Core.EnsureComplete(91);
         }
 
