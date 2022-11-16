@@ -33,7 +33,7 @@ public class Mazumi
         if (!Story.QuestProgression(91))
         {
             Core.EnsureAccept(91);
-            Core.HuntMonster("greenguardwest", "Kittarian", "Kittarian's Walle", 2);
+            Core.HuntMonster("greenguardwest", "Kittarian", "Kittarian's Wallet", 2);
             Core.HuntMonster("greenguardwest", "River Fishman", "River Fishman's Wallet", 2);
             Core.HuntMonster("greenguardwest", "Slime", "Slime-Soaked Wallet", 2);
             Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard's Lint Hoard", 2);
