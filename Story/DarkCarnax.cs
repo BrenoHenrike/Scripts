@@ -38,7 +38,8 @@ public class DarkCarnaxStory
             Core.HuntMonster("doomvault", "Binky", "Binky's Uni-horn", isTemp: false);
             Core.HuntMonster("deadmoor", "Nightmare", "Nightmare Mane", isTemp: false);
             Core.HuntMonster("somnia", "NightWyrm", "NightWyrm Chitin", isTemp: false);
-            Core.HuntMonster("fearhouse", "All Fears", "Sheer Horror", isTemp: false);
+            Core.Logger("Fearhouse is a force public map.. enough though the wiki says otherwise... sorry");
+            Core.HuntMonster("fearhouse-1", "All Fears", "Sheer Horror", isTemp: false);
             Core.EnsureComplete(8871);
         }
         if (forUltra)
