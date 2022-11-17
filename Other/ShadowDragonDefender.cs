@@ -29,5 +29,6 @@ public class GetSDD
         Egg.Hatch();
 
         Core.BuyItem("mysteriousegg", 1728, "Shadow Dragon Defender");
+        Core.ToBank("Manticore Cub Pet");
     }
 }

@@ -97,6 +97,7 @@ public class J6Saga
             Core.KillMonster("xantown", "Enter", "Spawn", "*", "Flare Artifact");
             Core.EnsureComplete(2830);
             Core.Jump("Cut1", "Left"); // because xantown is aggressive and breaks trying to goto sandsea
+            Core.SellItem("Auxiliary Clue 3");
         }
 
         //Fuel For Flight
@@ -211,5 +212,7 @@ public class J6Saga
 
         //J6 Epilogue
         Story.ChainQuest(2858);
+
+        Core.SellItem("Hyperium Spaceship Key");
     }
 }
