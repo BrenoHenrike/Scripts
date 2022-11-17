@@ -97,7 +97,7 @@ public class CoreHarvestDay
     {
         if (!Core.IsMember)
             return;
-            
+
         if (!Core.isSeasonalMapActive("turdraken") || Core.isCompletedBefore(430))
             return;
 
@@ -241,7 +241,7 @@ public class CoreHarvestDay
 
     public void FoulFarm()
     {
-        if (!Core.isSeasonalMapActive("foulfarm") || Core.isCompletedBefore(6090))
+        if (!Core.isSeasonalMapActive("foulfarm") || (Core.isCompletedBefore(6090) && Core.CheckInventory("Muddy Soulflare")))
             return;
 
         ArtixHome();
@@ -270,6 +270,7 @@ public class CoreHarvestDay
         // Cover the Shine 6089
         if (!Story.QuestProgression(6089) || !Core.CheckInventory("Muddy Soulflare"))
         {
+            Core.AddDrop("Muddy Soulflare");
             Core.EnsureAccept(6089);
             Core.HuntMonster("brightoak", "Tainted Earth", "Sticky Mud", 8, log: false);
             Bot.Wait.ForDrop("Muddy Soulflare");
