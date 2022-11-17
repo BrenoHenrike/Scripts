@@ -51,16 +51,7 @@ public class HatchTheEgg
         Story.MapItemQuest(6907, "void", 6453);
 
         //6908 | Void Energy Needed
-        if (!Story.QuestProgression(6908))
-        {
-            Core.EnsureAccept(6908);
-            while (!Bot.ShouldExit && !Core.CheckInventory(48632, 8))
-            {
-                Core.Join("void", "r11", "Left");
-                Bot.Kill.Monster("Void Elemental");
-            }
-            Core.EnsureComplete(6908);
-        }
+        Story.KillQuest(6908, "void", "Void Elemental");
 
         //6909 | Go Find Mariel
         Story.MapItemQuest(6909, "void", 6454);
