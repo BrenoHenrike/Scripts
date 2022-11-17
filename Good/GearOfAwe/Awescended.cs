@@ -142,7 +142,11 @@ public class Awescended
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("bonecastlec", "r25", "Bottom", "Vaden", "Vaden Helm Token", 333, false);
-                Core.BuyItem("bonecastlec", 1242, "Vaden's Helm", shopItemID: 4363);
+                while (!Core.CheckInventory("Vaden's Helm"))
+                {
+                    Core.BuyItem("bonecastlec", 1242, "Vaden's Helm", shopItemID: 4363);
+                    Bot.Sleep(500);
+                }
             }
             Core.EquipClass(ClassType.Farm);
             ArmorOfZular();
@@ -201,6 +205,9 @@ public class Awescended
             ADK.DoAll(true);
             Core.Unbank("Arch DoomKnight");
             Armor.DrakathOriginalArmor();
+
+            // Relogin triggered by Drakath
+            Core.EnsureAccept(8042);
             Core.HuntMonster("ectocave", "Ektorax", "Bin Jett's Salvaged Armor Part", 50, false);
 
             Core.Unbank($"GOLD Boost! (60 min)", "Doom GOLD Boost! (60 min)", "GOLD Boost! (20 min)");
@@ -226,5 +233,6 @@ public class Awescended
         Core.AddDrop("Armor of Zular", "Djinn's Essence");
         Core.EquipClass(ClassType.Farm);
         Djinn.DjinnGate();
+        Core.Unbank("Armor of Zular");
     }
 }
