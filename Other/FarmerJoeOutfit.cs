@@ -101,10 +101,18 @@ public class FarmerJoeStartingTheAcc
             Core.Logger("Getting Starting Cash");
             Core.RegisterQuests(4007);
         }
-        while (!Bot.ShouldExit && Bot.Player.Gold < 10000 && Bot.Player.Level < 10)
+        while (!Bot.ShouldExit && Bot.Player.Level < 10)
             Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
         Core.CancelRegisteredQuests();
-        Core.BuyItem("classhalla", 176, "Healer");
+        if (!Core.CheckInventory("Healer"))
+            Core.BuyItem("classhalla", 176, "Healer");
+        if (!Core.CheckInventory("Mage's Hood"))
+            Core.BuyItem("classhalla", 174, "Mage's Hood");
+        if (!Core.CheckInventory("White Feather Wings"))
+            Core.BuyItem("classhalla", 176, "White Feather Wings");
+        InvEn.EnhanceInventory();
+        Farm.IcestormArena(20, true);
+        InvEn.EnhanceInventory();
         Farm.IcestormArena(30, true);
         InvEn.EnhanceInventory();
         #endregion starting out the acc
