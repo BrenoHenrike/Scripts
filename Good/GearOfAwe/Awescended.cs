@@ -83,6 +83,8 @@ public class Awescended
         {
             Core.EnsureAccept(8036);
             Core.KillMonster("deathsrealm", "Frame3", "Down", "Undead Mage", "Enchanted Manuscript", 8);
+            Core.EquipCached();
+
             Core.KillMonster("citadel", "m14", "Left", "Grand Inquisitor", "Rite of Renewal");
             Core.KillMonster("marsh", "Forest3", "Left", "Dark Witch", "Coven's Sigil");
             Core.KillMonster("gilead", "r4", "Left", "*", "Spell Stone", 10);
