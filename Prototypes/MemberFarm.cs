@@ -383,7 +383,7 @@ public class MemberFarm
         GetItems("bonebreak", "Unbroken Minion", "Berserker Minion Mace");
         GetItems("bonebreak", "Undead Berserker", "Berserker Minion Skull Mace");
         GetItems("bonebreak", "Bonebreaker", "Undead Berserker Guard", "Undead Berserker Guard Helm");
-        GetItems("deadfly", "BlackSkulls Knuckle", "Deadfly Morph", "Deadfly's Armor", "Dual BlackSkulls Knuckles");
+        GetItems("deadfly", "Deadfly", "BlackSkulls Knuckle", "Deadfly Morph", "Deadfly's Armor", "Dual BlackSkulls Knuckles");
         GetItems("oddities", "Cursed Spirit", "Cursed Spirit Hunter", "Reaver of Wrath", "Scary Machete", "Scary Machetes", "Spirit Scythe of Wrath", "Spooky Spirit Hunter", "Spooky Spirit Hunter Hat", "Spooky Spirit Hunter Hat + Locks", "Spooky Spirit Hunter Hood", "Unlucky Farmer", "Unlucky Farmer's Hood", "Unlucky Portal Cape");
         GetItems("wormhole", "Trobbolegion", "Blue Trobbolier Morph", "Gold Trobbolier Morph", "Mutated Pink Trobbolier Morph", "Silver Trobbolier Morph");
         GetItems("gonnagetcha", "Shrade Cultist", "Cultist Knife", "Dual Cultist Knife", "Missing Keys Plaque");
@@ -394,7 +394,6 @@ public class MemberFarm
         GetItems("greymoor", "Ultra Shrade", "Shrade Armor", "Shrade Helm");
         GetItems("battledoom", "13th Doom Lord", "Doom Lord Vaal and Vayle (Legend)", "Dual Skull Half-Axes", "Skulled Half-Axe", "SkullBorne Dagger", "Vaal's Doom Visage", "Vayle's Doom Hood", "Weeping Axe of DOOM");
         GetItems("crownsreachfxiii", "Shub-Hathrys", "Tentacled Tophat and Beard", "Tentacled Tophat and Locks");
-        GetItems("map", "monster", "item", "item", "item");
     }
 
     private void GetItems(string map, string monster, params string[] items)
