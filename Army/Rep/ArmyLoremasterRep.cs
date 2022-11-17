@@ -48,33 +48,10 @@ public class ArmyArcangroveRep
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
         while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
         {
-            if (!Core.IsMember ? Farm.FactionRank("Loremaster") < 10 : Farm.FactionRank("Loremaster") < 10)
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.RegisterQuests(7505);
-                while (!Bot.ShouldExit && Core.IsMember ? Farm.FactionRank("Loremaster") < 10 : Farm.FactionRank("Loremaster") < 10)
-                {
-                    Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
-                }
-                Core.CancelRegisteredQuests();
-                Army.AggroMonStop(true);
-            }
-            else if (Core.IsMember ? Farm.FactionRank("Loremaster") < 3 : Farm.FactionRank("Loremaster") < 10)
-            {
-                Core.RegisterQuests(7505);
-                Core.EquipClass(ClassType.Farm);
-                while (!Bot.ShouldExit && Core.IsMember ? Farm.FactionRank("Loremaster") < 3 : Farm.FactionRank("Loremaster") < 10)
-                {
-                    Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
-                }
-                Core.CancelRegisteredQuests();
-                Army.AggroMonStop(true);
-            }
-            else if (Core.IsMember && Farm.FactionRank("Loremaster") >= 3)
+            if (Core.IsMember)
             {
                 if (!Bot.Quests.IsUnlocked(3032))
                 {
@@ -93,17 +70,26 @@ public class ArmyArcangroveRep
                     Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
                     Core.EnsureComplete(3031);
                 }
-                // Quite the Problem
-                Core.RegisterQuests(3032);
                 Core.EquipClass(ClassType.Solo);
-                while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
+                Core.RegisterQuests(3032);
+                while (!Bot.ShouldExit && FactionRank("Loremaster") < 10)
                 {
                     Army.SmartAggroMonStart("druids", "Young Void Giant");
                 }
-                Core.CancelRegisteredQuests();
                 Army.AggroMonStop(true);
+                Core.CancelRegisteredQuests();
+            }
+            else if (!Core.IsMember)
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(7505);
+                while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
+                {
+                    Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
+                }
+                Army.AggroMonStop(true);
+                Core.CancelRegisteredQuests();
             }
         }
-        Farm.ToggleBoost(BoostType.Reputation, false);
     }
 }
