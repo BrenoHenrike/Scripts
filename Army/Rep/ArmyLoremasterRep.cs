@@ -1,0 +1,109 @@
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Army/CoreArmyLite.cs
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
+
+public class ArmyArcangroveRep
+{
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv => new();
+    private CoreArmyLite Army = new();
+
+    private static CoreBots sCore = new();
+    private static CoreArmyLite sArmy = new();
+
+    public string OptionsStorage = "ArmyArcangroveRep";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new List<IOption>()
+    {
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.packetDelay,
+        sCore.SkipOptions
+    };
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.SetOptions();
+        bot.Options.RestPackets = false;
+
+        Setup();
+
+        Core.SetOptions(false);
+    }
+
+    public void Setup()
+    {
+        if (Farm.Farm.FactionRank("Loremaster") >= 10)
+            return;
+
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+        Core.EquipClass(ClassType.Farm);
+        Farm.ToggleBoost(BoostType.Reputation);
+        while (!Bot.ShouldExit && Farm.Farm.FactionRank("Loremaster") < 10)
+        {
+            if (!Core.IsMember ? Farm.Farm.FactionRank("Loremaster") < 10 : Farm.Farm.FactionRank("Loremaster") < 10)
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(7505);
+                while (!Bot.ShouldExit && Core.IsMember ? Farm.FactionRank("Loremaster") < 10 : Farm.FactionRank("Loremaster") < 10)
+                {
+                    Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
+                }
+                Core.CancelRegisteredQuests();
+                Army.AggroMonStop(true);
+            }
+            else if (Core.IsMember ? Farm.FactionRank("Loremaster") < 3 : Farm.FactionRank("Loremaster") < 10)
+            {
+                Core.RegisterQuests(7505);
+                Core.EquipClass(ClassType.Farm);
+                while (!Bot.ShouldExit && Core.IsMember ? Farm.FactionRank("Loremaster") < 3 : Farm.FactionRank("Loremaster") < 10)
+                {
+                    Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
+                }
+                Core.CancelRegisteredQuests();
+                Army.AggroMonStop(true);
+            }
+            else if (Core.IsMember && Farm.FactionRank("Loremaster") >= 3)
+            {
+                if (!Bot.Quests.IsUnlocked(3032))
+                {
+                    // Rosetta Stones
+                    Core.EnsureAccept(3029);
+                    Core.HuntMonster("druids", "Void Bear", "Voidstone ", 6);
+                    Core.EnsureComplete(3029);
+
+                    // Cull the Foot Soldiers
+                    Core.EnsureAccept(3030);
+                    Core.HuntMonster("druids", "Void Larva", "Void Larvae Death Cry", 4);
+                    Core.EnsureComplete(3030);
+
+                    // Bad Vibes
+                    Core.EnsureAccept(3031);
+                    Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
+                    Core.EnsureComplete(3031);
+                }
+                // Quite the Problem
+                Core.RegisterQuests(3032);
+                Core.EquipClass(ClassType.Solo);
+                while (!Bot.ShouldExit && Farm.Farm.FactionRank("Loremaster") < 10)
+                {
+                    Army.SmartAggroMonStart("druids", "Young Void Giant");
+                }
+                Core.CancelRegisteredQuests();
+                Army.AggroMonStop(true);
+            }
+        }
+        Farm.ToggleBoost(BoostType.Reputation, false);
+    }
+}
