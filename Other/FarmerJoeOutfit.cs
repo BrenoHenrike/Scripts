@@ -113,6 +113,8 @@ public class FarmerJoeStartingTheAcc
                 Core.BuyItem("classhalla", 174, "Mage's Hood");
             if (!Core.CheckInventory("White Feather Wings"))
                 Core.BuyItem("classhalla", 176, "White Feather Wings");
+            Core.Equip("White Feather Wings");
+            Core.Equip("Mage's Hood");
             InvEn.EnhanceInventory();
             Farm.IcestormArena(20, true);
         }
@@ -134,13 +136,13 @@ public class FarmerJoeStartingTheAcc
         if (Core.CheckInventory("Shadow Blade of Dispair"))
             Core.ToBank("Shadow Blade of Dispair");
 
+        InvEn.EnhanceInventory();
         if (Core.CheckInventory("Enchanted Victory Blade"))
             Core.Equip("Enchanted Victory Blade");
         else if (Core.CheckInventory("Arcane Blade of Glory"))
             Core.Equip("Arcane Blade of Glory");
         else if (Core.CheckInventory("Shadow Blade of Dispair"))
             Core.Equip("Shadow Blade of Dispair");
-        InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
