@@ -43,16 +43,16 @@ public class ArmyArcangroveRep
 
     public void Setup()
     {
-        if (Farm.Farm.FactionRank("Loremaster") >= 10)
+        if (Farm.FactionRank("Loremaster") >= 10)
             return;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
-        while (!Bot.ShouldExit && Farm.Farm.FactionRank("Loremaster") < 10)
+        while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
         {
-            if (!Core.IsMember ? Farm.Farm.FactionRank("Loremaster") < 10 : Farm.Farm.FactionRank("Loremaster") < 10)
+            if (!Core.IsMember ? Farm.FactionRank("Loremaster") < 10 : Farm.FactionRank("Loremaster") < 10)
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505);
@@ -96,7 +96,7 @@ public class ArmyArcangroveRep
                 // Quite the Problem
                 Core.RegisterQuests(3032);
                 Core.EquipClass(ClassType.Solo);
-                while (!Bot.ShouldExit && Farm.Farm.FactionRank("Loremaster") < 10)
+                while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
                 {
                     Army.SmartAggroMonStart("druids", "Young Void Giant");
                 }
