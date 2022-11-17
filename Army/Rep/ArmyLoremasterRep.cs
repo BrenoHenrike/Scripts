@@ -72,7 +72,7 @@ public class ArmyArcangroveRep
                 }
                 Core.EquipClass(ClassType.Solo);
                 Core.RegisterQuests(3032);
-                while (!Bot.ShouldExit && FactionRank("Loremaster") < 10)
+                while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
                 {
                     Army.SmartAggroMonStart("druids", "Young Void Giant");
                 }
