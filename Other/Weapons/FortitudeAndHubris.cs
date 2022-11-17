@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
@@ -6,6 +7,8 @@ public class FandH
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+
     public CoreStory Story = new CoreStory();
 
     public void ScriptMain(IScriptInterface bot)
@@ -52,7 +55,8 @@ public class FandH
         Story.KillQuest(6596, "maul", "Creature Creation", GetReward: false);
         Core.SellItem("Zorbak's Secret G-Rave Key");
 
-        // Eternal, Never-Ending Darkness and Death Lance        
+        // Eternal, Never-Ending Darkness and Death Lance
+        Farm.Experience(45);
         Story.KillQuest(6598, "shadowrealm", "Shadow Lord", GetReward: false);
 
         // It Takes a Special Brand of Glory
