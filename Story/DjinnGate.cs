@@ -10,7 +10,7 @@ public class DjinnGateStory
 
     private string[] drops =
     {
-     "Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun"
+        "Armor of Zular", "Djinn's Essence", "Unseen Essence", "Fangs of the Lion", "Claws of the Daeva", "Light of the Serpent", "Pike of the Shimmering Sands", "Reavers of the Gilded Sun"
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -46,6 +46,7 @@ public class DjinnGateStory
             Core.KillMonster("faerie", "Side4", "Right", "*", "Fragment 3");
             Core.KillMonster("cornelis", "Side1", "Left", "*", "Fragment 5");
             Core.EnsureComplete(6153);
+            Core.ToBank(drops);
         }
 
         //Recovering the Claws of the Daeva 6154
@@ -58,6 +59,7 @@ public class DjinnGateStory
             Core.KillMonster("natatorium", "r2", "Left", "Merdraconian", "Fragment 9");
             Core.KillMonster("mafic", "r6", "Left", "*", "Fragment 10");
             Core.EnsureComplete(6154);
+            Core.ToBank(drops);
         }
 
         //Recovering the Light of the Serpent 6155
@@ -70,6 +72,7 @@ public class DjinnGateStory
             Core.HuntMonster("beehive", "Killer Queen Bee", "Fragment 14");
             Core.HuntMonster("palooza", "Mozard", "Fragment 15");
             Core.EnsureComplete(6155);
+            Core.ToBank(drops);
         }
 
         //Recovering the Pike of the Shimmering Sands 6156
@@ -82,6 +85,7 @@ public class DjinnGateStory
             Core.KillMonster("marsh", "Forest3", "Left", "Spider", "Fragment 19");
             Core.KillMonster("marsh2", "End", "Left", "Soulseeker", "Fragment 20");
             Core.EnsureComplete(6156);
+            Core.ToBank(drops);
         }
 
         //Recovering the Reavers of the Gilded Sun 6157
@@ -94,7 +98,9 @@ public class DjinnGateStory
             Core.KillMonster("bamboo", "Enter", "Spawn", "*", "Fragment 23");
             Core.KillMonster("yokaiwar", "War2", "Left", "Samurai Nopperabo", "Fragment 24");
             Core.EnsureComplete(6157);
+            Core.ToBank(drops);
         }
+
         //Potent Mana 6158
         if (!Story.QuestProgression(6158))
         {
