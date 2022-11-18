@@ -439,6 +439,7 @@ public class Archmage
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
+            Farm.Gold(100000 * 30);
             if (Bot.Config.Get<bool>("Voucher"))
             {
                 // 500k * 2

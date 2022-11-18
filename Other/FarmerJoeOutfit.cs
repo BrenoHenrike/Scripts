@@ -209,6 +209,7 @@ public class FarmerJoeStartingTheAcc
         Shaman.GetShaman();
         GB.GetGB();
         SC.GetSC();
+        DS.GetDSS();
         Adv.BuyItem("Classhalla", 178, "Ninja");
         Adv.rankUpClass("Ninja");
         #endregion Prepare for Lvl100
@@ -239,18 +240,7 @@ public class FarmerJoeStartingTheAcc
         //Easy Difficulty Stuff
         RagsandHat();
         ServersAreDown();
-        Farm.Experience(50);
         Adv.EnhanceEquipped(EnhancementType.Lucky);
-
-        //Medium Difficulty Stuff
-        DS.GetDSS();
-        COA.GetCoA();
-        Farm.Experience(80);
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
-
-        //Hard Difficulty Stuff
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
-        Farm.Experience();
 
         //Extra Stuff
         Pets();
