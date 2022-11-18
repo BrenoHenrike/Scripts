@@ -49,11 +49,11 @@ public class ArmyArcangroveRep
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
         Farm.ToggleBoost(BoostType.Reputation);
-        while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
+        if (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
         {
             if (Core.IsMember)
             {
-                if (!Bot.Quests.IsUnlocked(3032))
+                if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
                 {
                     // Rosetta Stones
                     Core.EnsureAccept(3029);
