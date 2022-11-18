@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyArcangroveRep
+public class ArmyDoomWoodRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -17,7 +17,7 @@ public class ArmyArcangroveRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyArcangroveRep";
+    public string OptionsStorage = "ArmyDoomWoodRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -43,17 +43,17 @@ public class ArmyArcangroveRep
 
     public void Setup()
     {
-        if (Farm.FactionRank("Arcangrove") >= 10)
+        if (Farm.FactionRank("DoomWood") >= 10)
             return;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
+        Core.RegisterQuests(1151, 1152, 1153);
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("arcangrove", "Seed SpitterSeed Spitter", "Gorillaphant");
-        while (!Bot.ShouldExit && Farm.FactionRank("Arcangrove") < 10)
+        Army.SmartAggroMonStart("shadowfallwar", "Bonemucher", "Ghoul", "Undead Soldier", "Skeletal Fire Mage", "Undead War Mage");
+        while (!Bot.ShouldExit && Farm.FactionRank("DoomWood") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
