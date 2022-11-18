@@ -101,6 +101,8 @@ public class MemberFarm
         CruxVIPWeapon();
         DeepForestItems();
         Tendurr.TendurrItems();
+        Core.ToBank(Nation.bagDrops);
+        Core.ToBank(Tendurr.Rewards);
         HuntingMonster();
         SpellRaiser.GetAll();
         LostKnight.GetAll();
@@ -220,7 +222,7 @@ public class MemberFarm
         //Boom Went The Dynamite
         if (!Core.CheckInventory("Dual Boom Went The Dynamite"))
         {
-            if (!Core.CheckInventory("Boom Went The Dynamite"))
+            if (!Core.CheckInventory("Boom Went The Dynamite", toInv: false))
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("banished", "Desterrat Moya", "Boom Went The Dynamite", isTemp: false);
@@ -232,7 +234,7 @@ public class MemberFarm
         //Unarmed
         if (!Core.CheckInventory("Dual Unarmed"))
         {
-            if (!Core.CheckInventory("Unarmed"))
+            if (!Core.CheckInventory("Unarmed", toInv: false))
             {
                 Adv.BuyItem(Bot.Map.Name, 1536, "Unarmed");
             }
@@ -243,7 +245,7 @@ public class MemberFarm
         //Leviasea Sword
         if (!Core.CheckInventory("Dual Leviasea Sword"))
         {
-            if (!Core.CheckInventory("Leviasea Sword"))
+            if (!Core.CheckInventory("Leviasea Sword", toInv: false))
             {
                 Adv.BuyItem("yulgar", 69, "Leviasea Sword");
             }
@@ -254,7 +256,7 @@ public class MemberFarm
         //Ddog Sea Serpent Sword
         if (!Core.CheckInventory("Dual Ddog Sea Serpent Sword"))
         {
-            if (!Core.CheckInventory("Ddog Sea Serpent Sword"))
+            if (!Core.CheckInventory("Ddog Sea Serpent Sword", toInv: false))
             {
                 Core.EnsureAccept(554);
                 Nation.FarmUni13(1);
@@ -307,7 +309,7 @@ public class MemberFarm
         //Balor's Cruelty
         if (!Core.CheckInventory("Dual Balor's Cruelty"))
         {
-            if (!Core.CheckInventory("Balor's Cruelty"))
+            if (!Core.CheckInventory("Balor's Cruelty", toInv: false))
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("twilight", "Abaddon", "Balor's Cruelty", isTemp: false);

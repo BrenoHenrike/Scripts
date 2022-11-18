@@ -1355,7 +1355,7 @@ public class CoreBots
             Bot.Sleep(ActionDelay);
             Rest();
         }
-        
+
     }
 
     /// <summary>
