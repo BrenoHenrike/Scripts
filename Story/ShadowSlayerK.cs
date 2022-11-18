@@ -151,7 +151,7 @@ public class ShadowSlayerK
             Core.RegisterQuests(8264);
             while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
             {
-                Core.HuntMonsterMapID("castletunnels", 1|3|9|12|17|18, "Bundle of Rice", 3, log: false);
+                Core.HuntMonsterMapID("castletunnels", 1|3, "Bundle of Rice", 3, log: false);
                 Bot.Wait.ForPickup("Grain Ration");
             }
             Core.CancelRegisteredQuests();
