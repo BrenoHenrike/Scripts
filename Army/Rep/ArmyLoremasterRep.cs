@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyArcangroveRep
+public class ArmyLoremasterRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -17,7 +17,7 @@ public class ArmyArcangroveRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyArcangroveRep";
+    public string OptionsStorage = "ArmyLoremasterRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -48,6 +48,7 @@ public class ArmyArcangroveRep
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
         if (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
         {
