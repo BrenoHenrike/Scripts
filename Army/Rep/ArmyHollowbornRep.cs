@@ -49,7 +49,7 @@ public class ArmyHollowbornRep
 
         Core.AddDrop("Hollow Soul");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7553, 7555);
+        Core.RegisterQuests(7553, 7555); //Get the Seeds 7553, Flex it! 7555
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("shadowrealm", "Gargrowl", "Shadow Guardian");
         while (!Bot.ShouldExit && Farm.FactionRank("Hollowborn") < 10)

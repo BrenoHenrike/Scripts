@@ -50,7 +50,7 @@ public class ArmyChronoSpanRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(2204, 2205);
+        Core.RegisterQuests(2204, 2205); //Do the 'do 2204, Business is BOOMing 2205
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("thespan", "Moglin Ghost", "Minx Fairy" , "Tog", "Sneak", "Moglin Ghost");
         while (!Bot.ShouldExit && Farm.FactionRank("ChronoSpan") < 10)

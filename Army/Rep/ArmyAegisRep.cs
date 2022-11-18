@@ -50,7 +50,7 @@ public class ArmyAegisRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(4900, 4910, 4914);
+        Core.RegisterQuests(4900, 4910, 4914); //Kick Some Can 4900, The Best You Can Buy 4910, Testing My Metal 4914
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("skytower", "Seraphic Assassin", "Virtuous Warrior", "Seraphic Assassin", "Virtuous Warrior");
         while (!Bot.ShouldExit && Farm.FactionRank("Aegis") < 10)

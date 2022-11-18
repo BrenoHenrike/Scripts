@@ -49,7 +49,7 @@ public class ArmyChaosMilitiaRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(5775);
+        Core.RegisterQuests(5775); //Expect the Inquisitors 5775
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("citadel", "Inquisitor Guard");
         while (!Bot.ShouldExit && Farm.FactionRank("Chaos Militia") < 10)

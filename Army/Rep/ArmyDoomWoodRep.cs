@@ -50,7 +50,7 @@ public class ArmyDoomWoodRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(1151, 1152, 1153);
+        Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("shadowfallwar", "Bonemucher", "Ghoul", "Undead Soldier", "Skeletal Fire Mage", "Undead War Mage");
         while (!Bot.ShouldExit && Farm.FactionRank("DoomWood") < 10)

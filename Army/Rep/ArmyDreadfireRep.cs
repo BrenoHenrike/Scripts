@@ -50,7 +50,7 @@ public class ArmyDreadfireRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(5695, 5696, 5697);
+        Core.RegisterQuests(5695, 5696, 5697); //Sparring Practice 5695, Fill the Vials 5696, Gather Crystals 5697
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("dreadfire", "Nethermage", "Stray Mana", "Arcane Crystal");
         while (!Bot.ShouldExit && Farm.FactionRank("Dreadfire") < 10)

@@ -50,7 +50,7 @@ public class ArmyEmberseaRep
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
-        Core.RegisterQuests(4227, 4228, 4229); //Kill the Firestorm Tigers, Slay the Blazebinders, Take out the Firestorm Knights
+        Core.RegisterQuests(4227, 4228, 4229); //Kill the Firestorm Tigers 4227, Slay the Blazebinders 4228, Take out the Firestorm Knights 4229
         Army.SmartAggroMonStart("fireforge", "Armored Tiger", "Firestorm Tiger", "Tiger Cavalry", "Blazebinder", "Firestorm Knight");
         while (!Bot.ShouldExit && Farm.FactionRank("Embersea") < 10)
             Bot.Combat.Attack("*");

@@ -52,7 +52,7 @@ public class ArmyChaosRep
 
         Core.AddDrop("Fragment of Mount Doomskull");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(3594);
+        Core.RegisterQuests(3594); //Embrace Your Chaos 3594
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("mountdoomskull", "Chaos Spider", "Chaos Draconian");
         while (!Bot.ShouldExit && Farm.FactionRank("Chaos") < 10)

@@ -50,7 +50,7 @@ public class ArmyCraggleRockRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7277);
+        Core.RegisterQuests(7277); //Star of the Sandsea 7277
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("wanders", "Kalestri Worshiper");
         while (!Bot.ShouldExit && Farm.FactionRank("CraggleRock") < 10)

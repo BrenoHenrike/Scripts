@@ -50,7 +50,7 @@ public class ArmyEtherstormRep
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
-        Core.RegisterQuests(1721); 
+        Core.RegisterQuests(1721); //Defend Your Master! 1721
         Army.SmartAggroMonStart("etherwardes", "Water Dragon Warrior", "Fire Dragon Warrior", "Air Dragon Warrior", "Earth Dragon Warrior");
         while (!Bot.ShouldExit && Farm.FactionRank("Etherstorm") < 10)
             Bot.Combat.Attack("*");
