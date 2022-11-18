@@ -1355,6 +1355,7 @@ public class CoreBots
             Bot.Sleep(ActionDelay);
             Rest();
         }
+        
     }
 
     /// <summary>
@@ -1566,6 +1567,8 @@ public class CoreBots
             if (rejectElse)
                 Bot.Drops.RejectExcept(item);
         }
+        ToggleAggro(false);
+        Bot.Sleep(ActionDelay);
         Rest();
     }
 
@@ -1884,6 +1887,12 @@ public class CoreBots
         }
 
         ToggleAggro(true);
+    }
+
+    public void EquipCached()
+    {
+        if (EquipmentBeforeBot.Count() > 0)
+            Equip(EquipmentBeforeBot.ToArray());
     }
 
     /// <summary>
@@ -2212,7 +2221,7 @@ public class CoreBots
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
         {
-            if (Directory.Exists("options/Butler") &&
+            if (Directory.Exists("options/Butler") && Directory.GetFiles("options/Butler") != null &&
                 Directory.GetFiles("options/Butler").Any(x => x.Contains("~!") && x.Split("~!").Last() == Bot.Player.Username.ToLower() + ".txt"))
             {
                 string[] lockedMaps =

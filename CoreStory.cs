@@ -270,19 +270,22 @@ public class CoreStory
             return true;
         }
 
-        if (Reward != "All")
+        if (GetReward)
         {
-            if (Core.CheckInventory(Reward))
+            if (Reward != "All")
             {
-                Core.Logger($"You already have {Reward}, skipping quest");
-                PreviousQuestState = true;
-                return true;
+                if (Core.CheckInventory(Reward))
+                {
+                    Core.Logger($"You already have {Reward}, skipping quest");
+                    PreviousQuestState = true;
+                    return true;
+                }
+                Core.AddDrop(Reward);
             }
-            Core.AddDrop(Reward);
+            else
+                foreach (ItemBase Item in Rewards)
+                    Core.AddDrop(Item.Name);
         }
-        else
-            foreach (ItemBase Item in Rewards)
-                Core.AddDrop(Item.Name);
 
         Core.Logger($"Doing Quest: [{QuestID}] - \"{QuestData.Name}\"");
         Core.EquipClass(ClassType.Solo);
