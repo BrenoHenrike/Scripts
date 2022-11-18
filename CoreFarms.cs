@@ -1788,7 +1788,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        if (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
+        if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
             if (Core.IsMember)
             {
@@ -1811,7 +1811,7 @@ public class CoreFarms
                 }
                 Core.EquipClass(ClassType.Solo);
                 Core.RegisterQuests(3032);
-                while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
+                while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
                 {
                     Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
                 }
@@ -1821,7 +1821,7 @@ public class CoreFarms
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505);
-                while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
+                while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
                 {
                     Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
