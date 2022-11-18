@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyHollowbornRep
+public class ArmyDreadfireRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -17,7 +17,7 @@ public class ArmyHollowbornRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyHollowbornRep";
+    public string OptionsStorage = "ArmyDreadfireRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -25,17 +25,16 @@ public class ArmyHollowbornRep
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
         sArmy.packetDelay,
         sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.Add("Hollow Soul");
-
         Core.SetOptions();
         bot.Options.RestPackets = false;
-        //bot.Options.LagKiller = false;
 
         Setup();
 
@@ -44,15 +43,17 @@ public class ArmyHollowbornRep
 
     public void Setup()
     {
+        if (Farm.FactionRank("Dreadfire") >= 10)
+            return;
+
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.AddDrop("Hollow Soul");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7553, 7555); //Get the Seeds 7553, Flex it! 7555
+        Core.RegisterQuests(5695, 5696, 5697); //Sparring Practice 5695, Fill the Vials 5696, Gather Crystals 5697
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("shadowrealm", "Gargrowl", "Shadow Guardian");
-        while (!Bot.ShouldExit && Farm.FactionRank("Hollowborn") < 10)
+        Army.SmartAggroMonStart("dreadfire", "Nethermage", "Stray Mana", "Arcane Crystal");
+        while (!Bot.ShouldExit && Farm.FactionRank("Dreadfire") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);

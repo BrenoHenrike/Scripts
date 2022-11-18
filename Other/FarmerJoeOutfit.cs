@@ -101,12 +101,29 @@ public class FarmerJoeStartingTheAcc
             Core.Logger("Getting Starting Cash");
             Core.RegisterQuests(4007);
         }
-        while (!Bot.ShouldExit && Bot.Player.Gold < 10000 && Bot.Player.Level < 10)
+        while (!Bot.ShouldExit && Bot.Player.Level < 10)
             Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
         Core.CancelRegisteredQuests();
-        Core.BuyItem("classhalla", 176, "Healer");
-        Farm.IcestormArena(30, true);
-        InvEn.EnhanceInventory();
+
+        if (Bot.Player.Level < 20) 
+        {
+            if (!Core.CheckInventory("Healer"))
+                Core.BuyItem("classhalla", 176, "Healer");
+            if (!Core.CheckInventory("Mage's Hood"))
+                Core.BuyItem("classhalla", 174, "Mage's Hood");
+            if (!Core.CheckInventory("White Feather Wings"))
+                Core.BuyItem("classhalla", 176, "White Feather Wings");
+            Core.Equip("White Feather Wings");
+            Core.Equip("Mage's Hood");
+            InvEn.EnhanceInventory();
+            Farm.IcestormArena(20, true);
+        }
+        
+        if (Bot.Player.Level < 30)
+        {
+            InvEn.EnhanceInventory();
+            Farm.IcestormArena(30, true);
+        }
         #endregion starting out the acc
 
 
@@ -118,8 +135,14 @@ public class FarmerJoeStartingTheAcc
             Core.ToBank("Arcane Blade of Glory");
         if (Core.CheckInventory("Shadow Blade of Dispair"))
             Core.ToBank("Shadow Blade of Dispair");
-        Core.Equip(Core.CheckInventory("Enchanted Victory Blade") ? "Enchanted Victory Blade" : "Shadow Blade of Dispair");
+
         InvEn.EnhanceInventory();
+        if (Core.CheckInventory("Enchanted Victory Blade"))
+            Core.Equip("Enchanted Victory Blade");
+        else if (Core.CheckInventory("Arcane Blade of Glory"))
+            Core.Equip("Arcane Blade of Glory");
+        else if (Core.CheckInventory("Shadow Blade of Dispair"))
+            Core.Equip("Shadow Blade of Dispair");
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
@@ -136,7 +159,14 @@ public class FarmerJoeStartingTheAcc
 
         #region Level to 75
         Core.Logger("Level to 75");
-        Farm.Experience(75);
+        foreach (int level in new int[]{45, 60, 75})
+        {
+            if (Bot.Player.Level < level)
+            {
+                Farm.Experience(level);
+                InvEn.EnhanceInventory();
+            }
+        }
         #endregion Level to 75
 
 

@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
@@ -6,6 +7,8 @@ public class FandH
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+
     public CoreStory Story = new CoreStory();
 
     public void ScriptMain(IScriptInterface bot)
@@ -24,40 +27,53 @@ public class FandH
 
         Story.PreLoad(this);
 
-        Core.AddDrop("Zorbak's Secret G-Rave Key", "Sword's Cost", "Shards of the Sword", "Hubris's Final Blade Shard", "Hubris' Magic Essence", "Hubris", "Fortitude's Blade Shards", "Fortitude's Magic Essence", "Fortitude", "Fortitude + Hubris");
+        Core.AddDrop(
+            "Zorbak's Secret G-Rave Key", 
+            "Sword's Cost", 
+            "Shards of the Sword", 
+            "Hubris's Final Blade Shard",
+            "Hubris' Magic Essence", 
+            "Hubris", 
+            "Fortitude's Blade Shards", 
+            "Fortitude's Magic Essence", 
+            "Fortitude", 
+            "Fortitude + Hubris"
+        );
 
         // Qualifying Quest
-        Story.KillQuest(6593, "stalagbite", "Balboa");
+        Story.KillQuest(6593, "stalagbite", "Balboa", GetReward: false);
 
         // Rest for the Not Very Wicked
-        Story.MapItemQuest(6594, "tavern", 6114);
+        Story.MapItemQuest(6594, "tavern", 6114, GetReward: false);
         Story.KillQuest(6594, "pines", new[] { "Red Shell Turtle", "Pine Grizzly", "Pine Troll" });
 
         // Pisces Pieces
-        Story.KillQuest(6595, "river", "Kuro");
+        Story.KillQuest(6595, "river", "Kuro", GetReward: false);
 
         // Be Ebil
         Story.MapItemQuest(6596, "maul", 6116);
-        Story.KillQuest(6596, "maul", "Creature Creation");
+        Story.KillQuest(6596, "maul", "Creature Creation", GetReward: false);
+        Core.SellItem("Zorbak's Secret G-Rave Key");
 
-        // Eternal, Never-Ending Darkness and Death Lance        
-        Story.KillQuest(6598, "shadowrealm", "Shadow Lord");
+        // Eternal, Never-Ending Darkness and Death Lance
+        Farm.Experience(45);
+        Story.KillQuest(6598, "shadowrealm", "Shadow Lord", GetReward: false);
 
         // It Takes a Special Brand of Glory
-        Story.KillQuest(6599, "dragontown", "Chaos Fluffy");
+        Story.KillQuest(6599, "dragontown", "Chaos Fluffy", GetReward: false);
 
         // 1st Trial
         Story.MapItemQuest(6600, "david", 6115);
-        Story.KillQuest(6600, "mountfrost", "Snow Golem");
+        Story.KillQuest(6600, "mountfrost", "Snow Golem", GetReward: false);
 
         // 2nd Trial
-        Story.KillQuest(6601, "northpointe", "Wyvern");
+        Story.KillQuest(6601, "northpointe", "Wyvern", GetReward: false);
 
         // 3rd Trial
-        Story.BuyQuest(6602, "museum", 1653, "Sword's Cost");
+        Story.BuyQuest(6602, "museum", 1653, "Sword's Cost", GetReward: false);
 
         // 4th Trial
-        Story.KillQuest(6603, "razorclaw", "Enraged Razorclaw");
+        Story.KillQuest(6603, "razorclaw", "Enraged Razorclaw", GetReward: false);
 
         // Hubris
         if (!Core.CheckInventory("Hubris"))

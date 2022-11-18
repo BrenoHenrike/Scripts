@@ -606,7 +606,7 @@ public class CoreNation
                 Bot.Drops.Pickup(bagDrops);
                 Core.Logger($"Completed x{i++}");
                 if (Bot.Inventory.IsMaxStack(item))
-                    Core.Logger("Max Stack Hit.");
+                    Core.Logger($"Max Stack Hit for {item}.");
                 else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
             }
         }
@@ -941,8 +941,8 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
-        if (Bot.Player.Gold > 30000000)
-            TheAssistant("Gem of Nulgath", quant);
+        // if (Bot.Player.Gold > 30000000)
+        //     TheAssistant("Gem of Nulgath", quant);
         NewWorldsNewOpportunities("Dark Crystal Shard", quant);
         VoidKightSwordQuest("Dark Crystal Shard", quant);
         Supplies("Dark Crystal Shard", quant);
