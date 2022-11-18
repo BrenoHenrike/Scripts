@@ -25,6 +25,7 @@ public class BirthdayFeastQuestRewards
 
     void ArlettesQuests()
     {
+        Core.Logger("Arlette's quests started");
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8385).Rewards;
 
         foreach (ItemBase item in RewardOptions)
@@ -34,23 +35,32 @@ public class BirthdayFeastQuestRewards
         Core.RegisterQuests(8385);
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            if (Core.CheckInventory(Reward.ID, toInv: false))
             {
                 Core.Logger($"{Reward.Name} Found.");
                 return;
             }
+
             Core.FarmingLogger(Reward.Name, 1);
 
-            Core.HuntMonster("celestialrealm", "Celestial Bird of Paradise", "Celestial Artifact", 6, log: false);
-            Core.HuntMonster("celestialrealm", "Infernal Imp| Infernal Knight", "Infernal Artifact", 6, log: false);
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                Core.ToBank(Reward.Name);
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
+            {
+                Core.HuntMonster("celestialrealm", "Celestial Bird of Paradise", "Celestial Artifact", 6, log: false);
+                Core.HuntMonster("celestialrealm", "Infernal Imp|Infernal Knight", "Infernal Artifact", 6, log: false);
+
+                if (Bot.Inventory.FreeSlots == 0)
+                    Core.ToBank(Core.EnsureLoad(8385).Rewards.ToString());
+
+                if (Core.CheckInventory(Reward.ID, toInv: false))
+                    Core.ToBank(Reward.Name);
+            }
         }
-        Core.Logger("Arlette's Quests done");
+        Core.Logger("Arlette's quests done");
     }
 
     void InanitasQuests()
     {
+        Core.Logger("Inanita's quests started");
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
 
         foreach (ItemBase item in RewardOptions)
@@ -61,22 +71,35 @@ public class BirthdayFeastQuestRewards
         Core.RegisterQuests(8384);
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            if (Core.CheckInventory(Reward.ID, toInv: false))
             {
                 Core.Logger($"{Reward.Name} Found.");
                 return;
             }
 
             Core.FarmingLogger(Reward.Name, 1);
-            Core.HuntMonster("timeinn", "Ezrajal", "Ezrajal's Feather", log: false);
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                Core.ToBank(Reward.Name);
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
+            {
+                Core.HuntMonster("timeinn", "Ezrajal", "Ezrajal's Feather", log: false);
+
+                if (Bot.Inventory.FreeSlots == 0)
+                    Core.ToBank(Core.EnsureLoad(8384).Rewards.ToString());
+
+                if (Core.CheckInventory(Reward.ID, toInv: false))
+                {
+                    Bot.Wait.ForQuestComplete(8384);
+                    Core.Logger($"{Reward.Name} Found.");
+                    Core.ToBank(Reward.Name);
+                }
+            }
         }
-        Core.Logger("Inanita's Quests done");
+        Core.Logger("Inanita's quests done");
     }
 
     void KotarosQuests()
     {
+        Core.Logger("Kotaro's quests started");
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8383).Rewards;
 
         foreach (ItemBase item in RewardOptions)
@@ -87,7 +110,7 @@ public class BirthdayFeastQuestRewards
         Core.RegisterQuests(8383);
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            if (Core.CheckInventory(Reward.ID, toInv: false))
             {
                 Core.Logger($"{Reward.Name} Found.");
                 return;
@@ -95,16 +118,27 @@ public class BirthdayFeastQuestRewards
 
             Core.FarmingLogger(Reward.Name, 1);
 
-            Core.HuntMonster("shinkansen", "Saint Eta", "Saint Eta's Gauntlet", log: false);
-            Bot.Wait.ForQuestComplete(8383);
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                Core.ToBank(Reward.Name);
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
+            {
+                Core.HuntMonster("shinkansen", "Saint Eta", "Saint Eta's Gauntlet", log: false);
+
+                if (Bot.Inventory.FreeSlots == 0)
+                    Core.ToBank(Core.EnsureLoad(8383).Rewards.ToString());
+
+                if (Core.CheckInventory(Reward.ID, toInv: false))
+                {
+                    Bot.Wait.ForQuestComplete(8383);
+                    Core.Logger($"{Reward.Name} Found.");
+                    Core.ToBank(Reward.Name);
+                }
+            }
         }
-        Core.Logger("Kotaro's Quests done");
+        Core.Logger("Kotaro's quests done");
     }
 
     void MemetsQuests()
     {
+        Core.Logger("Memet's quests started");
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
 
         foreach (ItemBase item in RewardOptions)
@@ -112,21 +146,32 @@ public class BirthdayFeastQuestRewards
 
         Core.RegisterQuests(8384);
         Core.EquipClass(ClassType.Solo);
-
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            if (Core.CheckInventory(Reward.ID, toInv: false))
             {
                 Core.Logger($"{Reward.Name} Found.");
                 return;
             }
 
             Core.FarmingLogger(Reward.Name, 1);
-            Core.HuntMonster("byrodax", "Mutated Critter", "Picture of Mutated Critter", 3, log: false);
-            Core.HuntMonster("byrodax", "Byro-Dax Monstrosity", "Picture of Byro-Dax Monstrosity", log: false);
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                Core.ToBank(Reward.Name);
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
+            {
+                Core.HuntMonster("byrodax", "Mutated Critter", "Picture of Mutated Critter", 3, log: false);
+                Core.HuntMonster("byrodax", "Byro-Dax Monstrosity", "Picture of Byro-Dax Monstrosity", log: false);
+
+                if (Bot.Inventory.FreeSlots == 0)
+                    Core.ToBank(Core.EnsureLoad(8384).Rewards.ToString());
+
+                if (Core.CheckInventory(Reward.ID, toInv: false))
+                {
+                    Bot.Wait.ForQuestComplete(8384);
+                    Core.Logger($"{Reward.Name} Found.");
+                    Core.ToBank(Reward.Name);
+                }
+            }
         }
-        Core.Logger("Memet's Quests done");
+        Core.Logger("Memet's quests done");
     }
 }
