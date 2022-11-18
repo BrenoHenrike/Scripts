@@ -1355,6 +1355,7 @@ public class CoreBots
             Bot.Sleep(ActionDelay);
             Rest();
         }
+        
     }
 
     /// <summary>
@@ -1566,6 +1567,8 @@ public class CoreBots
             if (rejectElse)
                 Bot.Drops.RejectExcept(item);
         }
+        ToggleAggro(false);
+        Bot.Sleep(ActionDelay);
         Rest();
     }
 
