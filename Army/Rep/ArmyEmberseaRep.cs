@@ -52,7 +52,7 @@ public class ArmyEmberseaRep
         Farm.ToggleBoost(BoostType.Reputation);
         Core.RegisterQuests(4227, 4228, 4229); //Kill the Firestorm Tigers, Slay the Blazebinders, Take out the Firestorm Knights
         Army.SmartAggroMonStart("fireforge", "Armored Tiger", "Firestorm Tiger", "Tiger Cavalry", "Blazebinder", "Firestorm Knight");
-        while (!Bot.ShouldExit && FactionRank("Embersea") < 10)
+        while (!Bot.ShouldExit && Farm.FactionRank("Embersea") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);

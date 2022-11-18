@@ -52,7 +52,7 @@ public class ArmyEtherstormRep
         Farm.ToggleBoost(BoostType.Reputation);
         Core.RegisterQuests(1721); 
         Army.SmartAggroMonStart("etherwardes", "Water Dragon Warrior", "Fire Dragon Warrior", "Air Dragon Warrior", "Earth Dragon Warrior");
-        while (!Bot.ShouldExit && FactionRank("Etherstorm") < 10)
+        while (!Bot.ShouldExit && Farm.FactionRank("Etherstorm") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
