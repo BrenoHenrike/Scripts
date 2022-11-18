@@ -61,7 +61,7 @@ public class ArmyGoodEvilREP
 
     public void rank4()
     {
-        Core.RegisterQuests(364, 369);
+        Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
         Army.SmartAggroMonStart("swordhavenbridge", "Slimes");
             Bot.Combat.Attack("*");
     
@@ -71,7 +71,7 @@ public class ArmyGoodEvilREP
 
     public void rankMAX()
     {
-        Core.RegisterQuests(367, 372);
+        Core.RegisterQuests(367, 372); //Bone-afide 367, Tomb with a View 372
         Army.SmartAggroMonStart("castleundead", "Skeletal Viking", "Skeletal Warrior");
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))    
             Bot.Combat.Attack("*");
