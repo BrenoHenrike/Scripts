@@ -44,7 +44,7 @@ public class SepulchuresOriginalHelm
         if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
         {
             Core.BuyItem("shadowfall", 1642, "Sepulchure's Original Helm");
-            Core.SetOptions(false);
+            return;
         }
 
         Core.ChangeAlignment(Alignment.Evil);
@@ -53,16 +53,17 @@ public class SepulchuresOriginalHelm
         Zombie.Storyline();
         TOD.MysteriousDungeon();
         LOC.Hero();
-        Core.EnsureAccept(6555);
-        if (!Core.CheckInventory(new[] { "Lore's Champion Seal", "Gravelyns DoomFire Token", "Royal ShadowScythe Blade" }))
+        if (!Core.CheckInventory(new[] { "Lore's Champion Seal", "Gravelyn's DoomFire Token", "Royal ShadowScythe Blade" }))
         {
             GravelynsDoomFireToken();
             RoyalShadowScytheBlade();
             Core.Relogin();
             Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Seal");
         }
+        Core.EnsureAccept(6555);
         Core.EnsureComplete(6555);
         Bot.Wait.ForDrop("Sepulchure's Original Helm");
+        Core.SellItem("Royal ShadowScythe Blade");
     }
 
     public void GravelynsDoomFireToken(int quant = 1)

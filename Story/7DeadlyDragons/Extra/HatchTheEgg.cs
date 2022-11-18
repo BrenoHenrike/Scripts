@@ -55,10 +55,7 @@ public class HatchTheEgg
         {
             Core.EnsureAccept(6908);
             while (!Bot.ShouldExit && !Core.CheckInventory(48632, 8))
-            {
-                Core.Join("void", "r11", "Left");
-                Bot.Kill.Monster("Void Elemental");
-            }
+                Core.KillMonster("void", "r11", "Left", "Void Elemental");
             Core.EnsureComplete(6908);
         }
 

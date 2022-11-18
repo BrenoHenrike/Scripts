@@ -46,7 +46,7 @@ public class BirthdayFeastQuestRewards
             Core.FarmingLogger(Reward.Name, 1);
 
             Core.HuntMonster("celestialrealm", "Celestial Bird of Paradise", "Celestial Artifact", 6, log: false);
-            Core.HuntMonster("celestialrealm", "Infernal Imp| Infernal Knight", "Infernal Artifact ", 6, log: false);
+            Core.HuntMonster("celestialrealm", "Infernal Imp| Infernal Knight", "Infernal Artifact", 6, log: false);
             if (Bot.Inventory.FreeSlots == 0)
             {
                 Bot.Wait.ForQuestComplete(8385);

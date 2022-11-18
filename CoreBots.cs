@@ -1886,6 +1886,12 @@ public class CoreBots
         ToggleAggro(true);
     }
 
+    public void EquipCached()
+    {
+        if (EquipmentBeforeBot.Count() > 0)
+            Equip(EquipmentBeforeBot.ToArray());
+    }
+
     /// <summary>
     /// Switches the player's Alignment to the input Alignment type
     /// </summary>
