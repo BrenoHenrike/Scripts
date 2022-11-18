@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyArcangroveRep
+public class ArmyLoremasterRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -17,7 +17,7 @@ public class ArmyArcangroveRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyArcangroveRep";
+    public string OptionsStorage = "ArmyLoremasterRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -48,6 +48,7 @@ public class ArmyArcangroveRep
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
         if (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
         {
@@ -55,23 +56,20 @@ public class ArmyArcangroveRep
             {
                 if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
                 {
-                    // Rosetta Stones
-                    Core.EnsureAccept(3029);
+                    Core.EnsureAccept(3029); //Rosetta Stones 3029
                     Core.HuntMonster("druids", "Void Bear", "Voidstone ", 6);
                     Core.EnsureComplete(3029);
 
-                    // Cull the Foot Soldiers
-                    Core.EnsureAccept(3030);
+                    Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
                     Core.HuntMonster("druids", "Void Larva", "Void Larvae Death Cry", 4);
                     Core.EnsureComplete(3030);
 
-                    // Bad Vibes
-                    Core.EnsureAccept(3031);
+                    Core.EnsureAccept(3031); // Bad Vibes 3031
                     Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
                     Core.EnsureComplete(3031);
                 }
                 Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(3032);
+                Core.RegisterQuests(3032); //Quite the Problem 3032
                 while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
                 {
                     Army.SmartAggroMonStart("druids", "Young Void Giant");
@@ -82,7 +80,7 @@ public class ArmyArcangroveRep
             else if (!Core.IsMember)
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.RegisterQuests(7505);
+                Core.RegisterQuests(7505); //Studying the Rogue 7505
                 while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
                 {
                     Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");

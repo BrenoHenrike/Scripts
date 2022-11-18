@@ -151,7 +151,7 @@ public class ShadowSlayerK
             Core.RegisterQuests(8264);
             while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
             {
-                Core.HuntMonster("castletunnels", "Blood Maggot", "Bundle of Rice", 3, log: false);
+                Core.KillMonster("castletunnels", "r5", "Left", "Blood Maggot", "Bundle of Rice", 3, log: false);
                 Bot.Wait.ForPickup("Grain Ration");
             }
             Core.CancelRegisteredQuests();

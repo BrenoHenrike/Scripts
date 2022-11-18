@@ -43,11 +43,14 @@ public class ArmyArcangroveRep
 
     public void Setup()
     {
+        if (Farm.FactionRank("Arcangrove") >= 10)
+            return;
+
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
+        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("arcangrove", "Seed SpitterSeed Spitter", "Gorillaphant");
         while (!Bot.ShouldExit && Farm.FactionRank("Arcangrove") < 10)
