@@ -10,6 +10,7 @@
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
 //cs_include Scripts/Other\Badges\MoglinPunter.cs
 //cs_include Scripts/Other\Badges\CtrlAltDelMemberBadge.cs
+//cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
 //cs_include Scripts/Other/Badges/NoEgrets.cs
 using Skua.Core.Interfaces;
 
