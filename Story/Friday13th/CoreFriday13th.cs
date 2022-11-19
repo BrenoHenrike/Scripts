@@ -812,7 +812,7 @@ public class CoreFriday13th
         if (!Story.QuestProgression(8228))
         {
             Core.EnsureAccept(8228);
-            Core.HuntMonster("deadfly", "Skeletal Mage", "Fresh Soul", 8);
+            Core.HuntMonster("deadfly", "Skeletal Mage", "Fresh Soul", 8, log: false);
             Core.GetMapItem(8772, 1, "deadfly");
             Core.EnsureComplete(8228);
         }

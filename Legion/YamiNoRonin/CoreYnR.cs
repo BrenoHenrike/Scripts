@@ -52,8 +52,8 @@ public class CoreYnR
 
         Core.EnsureAccept(7445);
 
-        Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("shadowfortress", "1st Head of Orochi", "Perfect Orochi Scales", 888, false);
+        Core.EquipClass(ClassType.Farm);
+        Core.KillMonster("shadowfortress", "r12", "Top", "*", "Perfect Orochi Scales", 888, false);
 
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Darkened Essence", 600, false);
