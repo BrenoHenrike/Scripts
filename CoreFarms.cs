@@ -1003,7 +1003,7 @@ public class CoreFarms
         if (FactionRank("Brethwren") >= rank)
             return;
 
-        if (!Bot.Quests.IsAvailable(4667))
+        if (!Bot.Quests.IsAvailable(8989))
         {
             Core.Logger("Quest not avaible for farm, run the complete Brethwren storyline script.");
             return;
