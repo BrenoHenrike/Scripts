@@ -30,7 +30,9 @@ public class WarfuryEmblem
 
         Core.AddDrop("Warfury Emblem");
         Adv.BestGear(GearBoost.Human);
+        Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8204);
+        Core.Logger($"Farming for {EmblemQuant} Warfury Emblems");
         while (!Bot.ShouldExit && !Core.CheckInventory("Warfury Emblem", EmblemQuant))
             Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
         Bot.Wait.ForPickup("Warfury Emblem");
