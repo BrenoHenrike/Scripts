@@ -99,6 +99,7 @@ public class UnlockForgeEnhancements
     public NulgathDemandsWork NDW = new();
     public ThirdSpell TSS = new();
     public LordOfOrder LOO = new();
+    public SevenCircles Circles = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -619,6 +620,7 @@ public class UnlockForgeEnhancements
 
         Core.EnsureAccept(8745);
 
+        Circles.CirclesWar();
         HOTLB.Indulgence(75);
         HOTLB.Penance(75);
 
