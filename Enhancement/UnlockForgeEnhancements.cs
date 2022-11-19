@@ -400,6 +400,7 @@ public class UnlockForgeEnhancements
         ED.getSet();
         if (!Core.CheckInventory(23689))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.AddDrop("Eternity Blade");
             Core.EnsureAccept(3485);
             Bot.Quests.UpdateQuest(3484);
@@ -559,6 +560,7 @@ public class UnlockForgeEnhancements
         Farm.GoodREP(10);
         if (!Core.CheckInventory("Ascended Paladin"))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
             Core.BuyItem("therift", 1399, "Ascended Paladin");
             Core.BuyItem("therift", 1399, "Ascended Paladin Staff");
@@ -576,7 +578,7 @@ public class UnlockForgeEnhancements
 
         Absolution();
         Core.Logger("Unlocking Enhancement: Vainglory");
-
+        Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8744);
 
         if (Core.IsMember)
@@ -584,7 +586,6 @@ public class UnlockForgeEnhancements
             if (!Core.CheckInventory("Pauldron Relic"))
             {
                 Core.AddDrop("Pauldron Fragment");
-                Core.EquipClass(ClassType.Solo);
 
                 Core.RegisterQuests(4162);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Pauldron Fragment", 15))
@@ -635,6 +636,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8822);
         Bot.Quests.UpdateQuest(3008);
         Core.AddDrop("Night Mare Scythe");
+        Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
         {
             Core.EnsureAccept(3270);
@@ -654,7 +656,8 @@ public class UnlockForgeEnhancements
 
         if (Core.isCompletedBefore(8823))
             return;
-
+        
+        Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8823);
         Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
         if (!Core.CheckInventory("Heart of the Sun"))
@@ -673,7 +676,8 @@ public class UnlockForgeEnhancements
     {
         if (Core.isCompletedBefore(8828))
             return;
-
+        
+        Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8828);
         Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Prismatic Celestial Wings", isTemp: false);
         Core.HuntMonster("lostruins", "Infernal Warlord", "Broken Wings", isTemp: false);
@@ -694,6 +698,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8824);
         Core.BuyItem("Classhalla", 172, "Rogue");
         Adv.rankUpClass("Rogue");
+        Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8824);
@@ -710,6 +715,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8825);
         Core.BuyItem("Classhalla", 176, "Healer");
         Adv.rankUpClass("Healer");
+        Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8825);
@@ -726,6 +732,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8826);
         Core.BuyItem("Classhalla", 170, "Warrior");
         Adv.rankUpClass("Warrior");
+        Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8826);
@@ -742,6 +749,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8827);
         Core.BuyItem("Classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
+        Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8827);

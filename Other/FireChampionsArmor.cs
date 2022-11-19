@@ -54,6 +54,7 @@ public class FireChampionsArmor
         Farm.Gold(1000000);
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
+        Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("lair", "Water Draconian", "Dragon Scale", 30, false);
         Core.BuyItem("wartraining", 2035, "Polished DragonSlayer");
     }
@@ -65,6 +66,7 @@ public class FireChampionsArmor
             return;
 
         Adv.BestGear(GearBoost.Undead);
+        Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Flame-Forged Metal");
 
         Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
