@@ -400,6 +400,7 @@ public class UnlockForgeEnhancements
         ED.getSet();
         if (!Core.CheckInventory(23689))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.AddDrop("Eternity Blade");
             Core.EnsureAccept(3485);
             Bot.Quests.UpdateQuest(3484);
