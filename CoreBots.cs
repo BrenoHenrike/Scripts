@@ -2612,7 +2612,7 @@ public class CoreBots
 
             string[] allowedPathStarters =
             {
-                "ArmyOnly",
+                "Army",
                 "Chaos",
                 "Dailies",
                 "Darkon",
@@ -2623,11 +2623,12 @@ public class CoreBots
                 "Hollowborn",
                 "Legion",
                 "Nation",
-                "Nulgath",
                 "Other",
                 "Prototypes",
                 "Seasonal",
                 "Story",
+                "Templates",
+                "Tools",
                 "WIP"
             };
 
