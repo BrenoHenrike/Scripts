@@ -10,6 +10,7 @@
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
 //cs_include Scripts/Other\Badges\MoglinPunter.cs
 //cs_include Scripts/Other\Badges\CtrlAltDelMemberBadge.cs
+//cs_include Scripts/Other/Badges/NoEgrets.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
@@ -25,6 +26,7 @@ public class AllBadges
     public MoglinPunter MPB = new();
     public EtherStormWastes ESW = new();
     public CtrlAltDelMemberBadge CAD = new();
+    public NoEgretsbadge NE = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -37,6 +39,8 @@ public class AllBadges
         MPB.MoglinPunterBadge();
         ESW.DoAll();
         CAD.Badge();
+        if (Core.isSeasonalMapActive("birdswithharms"))
+            NE.Badge();
         //add more as they are made.
 
         Core.SetOptions(false);
