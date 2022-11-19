@@ -23,12 +23,12 @@ public class CoinCollectorSet
     {
         Armor();
         Weapon();
-        Helm();    
+        Helm();
     }
 
     public void Armor()
     {
-        if (Core.CheckInventory("Coin Collector"))
+        if (Core.CheckInventory("Coin Collector", toInv: false))
             return;
 
         Adv.BuyItem("hyperspace", 194, "Le Chocolat");
@@ -38,9 +38,9 @@ public class CoinCollectorSet
 
     public void Weapon()
     {
-        if (Core.CheckInventory("Coin Collector Gun"))
+        if (Core.CheckInventory("Coin Collector Gun", toInv: false))
             return;
-        
+
         Adv.BuyItem("hyperspace", 194, "Chocolate Doubloon");
         Core.BuyItem("hollowhalls", 335, "Coin Collector Gun");
         Core.ToBank("Coin Collector Gun");
@@ -48,7 +48,7 @@ public class CoinCollectorSet
 
     public void Helm()
     {
-        if (Core.CheckInventory("Coin Collector Helmet"))
+        if (Core.CheckInventory("Coin Collector Helmet", toInv: false))
             return;
 
         Adv.BuyItem("hyperspace", 194, "Chocolate Loonie");
