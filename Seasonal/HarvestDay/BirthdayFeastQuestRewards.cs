@@ -3,6 +3,8 @@
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Options;
+
 
 public class BirthdayFeastQuestRewards
 {
