@@ -10,7 +10,7 @@ public class BirthdayFeastQuestRewards
     private CoreBots Core => CoreBots.Instance;
     public CoreSepulchure CoreSS = new();
 
- public string OptionsStorage = "BirthdayFeast";
+    public string OptionsStorage = "BirthdayFeast";
 
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
@@ -28,33 +28,33 @@ public class BirthdayFeastQuestRewards
     {
         Core.SetOptions();
 
-if (Bot.Config.Get<bool>("ArlettesQuests"))
-{
-  ArlettesQuests();
-        Core.ToBank(Core.EnsureLoad(8385).Rewards.ToString());
-}
+        if (Bot.Config.Get<bool>("ArlettesQuests"))
+        {
+            ArlettesQuests();
+            Core.ToBank(Core.EnsureLoad(8385).Rewards.ToString());
+        }
 
-if (Bot.Config.Get<bool>("InanitasQuests"))
-{
-  InanitasQuests();
-        Core.ToBank(Core.EnsureLoad(8384).Rewards.ToString());
-}
-if (Bot.Config.Get<bool>("MemetsQuests"))
-{
-  MemetsQuests();
-        Core.ToBank(Core.EnsureLoad(8382).Rewards.ToString());
-}
-if (Bot.Config.Get<bool>("KotarosQuests"))
-{
- KotarosQuests();
-        Core.ToBank(Core.EnsureLoad(8383).Rewards.ToString());
-}
-      
+        if (Bot.Config.Get<bool>("InanitasQuests"))
+        {
+            InanitasQuests();
+            Core.ToBank(Core.EnsureLoad(8384).Rewards.ToString());
+        }
+        if (Bot.Config.Get<bool>("MemetsQuests"))
+        {
+            MemetsQuests();
+            Core.ToBank(Core.EnsureLoad(8382).Rewards.ToString());
+        }
+        if (Bot.Config.Get<bool>("KotarosQuests"))
+        {
+            KotarosQuests();
+            Core.ToBank(Core.EnsureLoad(8383).Rewards.ToString());
+        }
+
         Core.SetOptions(false);
     }
 
     int i = 0;
-    
+
     void ArlettesQuests()
     {
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8385).Rewards;
