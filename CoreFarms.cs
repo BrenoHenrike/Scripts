@@ -517,6 +517,7 @@ public class CoreFarms
             BeastMasterREP();
         BlacksmithingREP();
         BladeofAweREP(farmBoA: false);
+        //BrethwrenREP();
         BrightoakREP();
         ChaosMilitiaREP();
         ChaosREP();
@@ -996,6 +997,33 @@ public class CoreFarms
             else Core.Logger($"Already Completed: [2937] - \"Find the Runes!\"");
         }
     }
+
+    public void BrethwrenREP(int rank = 10)
+    {
+        if (FactionRank("Brethwren") >= rank)
+            return;
+
+        if (!Bot.Quests.IsAvailable(4667))
+        {
+            Core.Logger("Quest not avaible for farm, run the complete Brethwren storyline script.");
+            return;
+        }
+
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(8989);
+        while (!Bot.ShouldExit && FactionRank("Brethwren") < rank)
+        {
+            Core.HuntMonster("birdswithharms", "Turkonian", "Turkonian Beaten", 10);
+        }
+
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
+    }
+
 
     public void BrightoakREP(int rank = 10)
     {
