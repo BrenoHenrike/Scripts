@@ -1005,7 +1005,7 @@ public class CoreFarms
 
         if (!Bot.Quests.IsAvailable(8989))
         {
-            Core.Logger("Quest not avaible for farm, run the complete Brethwren storyline script.");
+            Core.Logger("Quest not avaible for farm, run the complete Birds With Harms storyline script.");
             return;
         }
 
