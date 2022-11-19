@@ -2079,7 +2079,7 @@ public class Core13LoC
 
     public void Hero()
     {
-        if (!Core.isCompletedBefore(3799) && !Core.isCompletedBefore(3881))
+        if (Core.isCompletedBefore(3799) && Core.isCompletedBefore(3881))
             return;
 
         Story.PreLoad(this);
@@ -2301,7 +2301,7 @@ public class Core13LoC
 
     public void Extra()
     {
-        if (!Core.isCompletedBefore(3824))
+        if (Core.isCompletedBefore(3824))
             return;
 
         Hero();
