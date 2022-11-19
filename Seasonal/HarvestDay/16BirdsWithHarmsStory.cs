@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class BirdsWithHarms
+public class BirdsWithHarmsStory
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -110,8 +110,7 @@ public class BirdsWithHarms
     }
     public void Gandalf()
     {
-        if (Core.isCompletedBefore(8987) || !Core.isSeasonalMapActive("birdswithharms"))
-            return;
+       
 
         // 8985 United We Stand, Divided We Fowl
         Story.KillQuest(8985, "birdswithharms", "Turkonian");
