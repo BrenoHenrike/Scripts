@@ -8,7 +8,6 @@ public class NoEgretsbadge
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     CoreHarvestDay HarvestDay = new();
-
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();

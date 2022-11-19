@@ -10,6 +10,7 @@
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
 //cs_include Scripts/Other\Badges\MoglinPunter.cs
 //cs_include Scripts/Other\Badges\CtrlAltDelMemberBadge.cs
+//cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
 //cs_include Scripts/Other/Badges/NoEgrets.cs
 using Skua.Core.Interfaces;
 
@@ -32,6 +33,8 @@ public class AllBadges
     {
         Core.SetOptions();
 
+        if (Core.isSeasonalMapActive("birdswithharms"))
+            NE.Badge();
         Cornelis.Badge();
         SPB.Badge();
         DMF.Badge();
@@ -39,8 +42,6 @@ public class AllBadges
         MPB.MoglinPunterBadge();
         ESW.DoAll();
         CAD.Badge();
-        if (Core.isSeasonalMapActive("birdswithharms"))
-            NE.Badge();
         //add more as they are made.
 
         Core.SetOptions(false);
