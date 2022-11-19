@@ -599,7 +599,7 @@ public class CoreQOM
 
         //Help the Hedgies
         Story.MapItemQuest(6277, "guardiantree", 5776, 5);
-        Story.MapItemQuest(6277, "guardiantree", 5770);
+        Story.MapItemQuest(6277, "guardiantree", 5770, 5);
 
         //Cleanse the Corrupted Zards
         Story.KillQuest(6278, "guardiantree", "Corrupted Zard");

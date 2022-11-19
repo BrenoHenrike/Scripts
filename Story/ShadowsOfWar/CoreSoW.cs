@@ -48,19 +48,19 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Shadow Medals: Defend the Village! 6846
-        Story.KillQuest(6846, "shadowwar", "Shadowflame Slasher");
+        Story.KillQuest(6846, "shadowwar", "Shadowflame Slasher", GetReward: false);
 
         //Seed Spitter Oil 6847
-        Story.KillQuest(6847, "shadowwar", "Seed Spitter");
+        Story.KillQuest(6847, "shadowwar", "Seed Spitter", GetReward: false);
 
         //Mega Shadow Medals 6848
-        Story.KillQuest(6848, "shadowwar", "Shadowflame Slasher");
+        Story.KillQuest(6848, "shadowwar", "Shadowflame Slasher", GetReward: false);
 
         //Shadow Samples 6849
-        Story.KillQuest(6849, "shadowwar", "Umbral Goo");
+        Story.KillQuest(6849, "shadowwar", "Umbral Goo", GetReward: false);
 
         //Shadow Medals: Fight them Back! 6850
-        Story.KillQuest(6850, "shadowwar", "Shadowflame Scout");
+        Story.KillQuest(6850, "shadowwar", "Shadowflame Scout", GetReward: false);
 
         //Interrogation 6851 //had multiple reports made it a questprog.
         if (!Story.QuestProgression(6851))
