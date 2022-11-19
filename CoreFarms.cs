@@ -517,7 +517,8 @@ public class CoreFarms
             BeastMasterREP();
         BlacksmithingREP();
         BladeofAweREP(farmBoA: false);
-        //BrethwrenREP();
+        if (Core.isSeasonalMapActive("birdswithharms"))
+            BrethwrenREP();
         BrightoakREP();
         ChaosMilitiaREP();
         ChaosREP();
@@ -536,7 +537,8 @@ public class CoreFarms
         EternalREP();
         EtherStormREP();
         EvilREP();
-        //FaerieCourtREP();
+        if (Core.isSeasonalMapActive("rainbow"))
+            FaerieCourtREP();
         FishingREP();
         GlaceraREP();
         GoodREP();
