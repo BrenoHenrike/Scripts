@@ -91,7 +91,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(6216);
             Core.GetMapItem(39, 5, "prison");
-            Adv.BuyItem("prison", 1559, 42993);
+            Adv.BuyItem("prison", 1559, 5661);
             Core.EnsureComplete(6216);
         }
 
@@ -2252,7 +2252,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3876);
             if (!Core.CheckInventory(26875))
-                Core.KillMonster("finalbattle", "r1", "Left", "*");
+                Core.KillMonster("finalbattle", "r1", "Left", "Drakath");
             Core.EnsureComplete(3876);
         }
 
@@ -2261,7 +2261,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3877);
             if (!Core.CheckInventory(26876))
-                Core.KillMonster("finalbattle", "r4", "Left", "*");
+                Core.KillMonster("finalbattle", "r4", "Left", "Drakath");
             Core.EnsureComplete(3877);
         }
 
@@ -2270,7 +2270,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3878);
             if (!Core.CheckInventory(26877))
-                Core.KillMonster("finalbattle", "r9", "Left", "*");
+                Core.KillMonster("finalbattle", "r9", "Left", "Drakath");
             Core.EnsureComplete(3878);
         }
 
