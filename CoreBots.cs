@@ -2214,6 +2214,12 @@ public class CoreBots
                 tryJoin();
                 break;
 
+            case "Mummies":
+                JumpWait();
+                Bot.Quests.UpdateQuest(4616);
+                tryJoin();
+                break;
+
                 // case "fearhouse":
                 //     SendPackets($"%xt%zm%cmd%{Bot.Map.RoomID}%tfer%{Bot.Player.Username}%fearhouse%{999999}&Enter%Spawn%");
                 //     break;
