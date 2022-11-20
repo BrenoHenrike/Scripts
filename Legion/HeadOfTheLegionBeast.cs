@@ -163,6 +163,7 @@ public class HeadoftheLegionBeast
             Circles.CirclesWar(true);
         Core.Logger($"Farming {quant} Souls of Heresy");
         Core.RegisterQuests(7983, 7980, 7981);
+        Core.EnsureComplete(7980,7981);
         while (!Bot.ShouldExit && !Core.CheckInventory("Souls of Heresy", quant))
             Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", log: false);
         Core.CancelRegisteredQuests();
@@ -179,7 +180,6 @@ public class HeadoftheLegionBeast
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Penance", quant))
         {
-            Core.EnsureComplete(7980,7981);
             SoulsHeresy(75);
             EssenceWrath(5);
             EssenceViolence(5);
