@@ -43,9 +43,9 @@ public class FreeBoosts
         Core.RegisterQuests(6208);
         while (!Bot.ShouldExit && !Core.CheckInventory(7140, Bot.Config.Get<int>("GoldBoostQuant")) || !Core.CheckInventory(8877, Bot.Config.Get<int>("ClassBoostQuant")) || !Core.CheckInventory(8879, Bot.Config.Get<int>("RepBoostQuant")))
         {
-            Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false);
-            Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false);
-            Core.KillMonster("mudluk", "r3", "Left", "*", "Nimblestem", isTemp: false);
+            Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
+            Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
+            Core.KillMonster("mudluk", "r3", "Left", "*", "Nimblestem", isTemp: false, log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -66,9 +66,9 @@ public class FreeBoosts
         Core.RegisterQuests(6208);
         while (!Bot.ShouldExit && !Core.CheckInventory(7140, GoldBoostQuant) || !Core.CheckInventory(8877, CLassBoostQuant) || !Core.CheckInventory(8879, RepBoostQuant))
         {
-            Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false);
-            Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false);
-            Core.KillMonster("mudluk", "r3", "Left", "*", "Nimblestem", isTemp: false);
+            Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
+            Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
+            Core.KillMonster("mudluk", "r3", "Left", "*", "Nimblestem", isTemp: false, log: false);
         }
         Core.CancelRegisteredQuests();
     }

@@ -1013,13 +1013,12 @@ public class CoreFarms
 
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
+        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
 
         Core.RegisterQuests(8989);
         while (!Bot.ShouldExit && FactionRank("Brethwren") < rank)
-        {
             Core.HuntMonster("birdswithharms", "Turkonian", "Turkonian Beaten", 10);
-        }
 
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
