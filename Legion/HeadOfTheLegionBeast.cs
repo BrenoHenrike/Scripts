@@ -179,10 +179,11 @@ public class HeadoftheLegionBeast
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Penance", quant))
         {
+            Core.EnsureComplete(7980,7981);
+            SoulsHeresy(75);
             EssenceWrath(5);
             EssenceViolence(5);
             EssenceTreachery(5);
-            SoulsHeresy(75);
             Adv.BuyItem("sevencircleswar", 1984, "Penance", Bot.Inventory.GetQuantity("Penance") + 5);
         }
     }
