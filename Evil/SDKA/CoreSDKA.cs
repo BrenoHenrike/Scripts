@@ -84,7 +84,7 @@ public class CoreSDKA
 
     public void DoAll()
     {
-        if (Core.CheckInventory(14474) || !Core.IsMember)
+        if (Core.CheckInventory("Sepulchure's DoomKnight Armor") || !Core.IsMember)
             return;
 
         Core.AddDrop(SDKAItems);
