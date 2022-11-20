@@ -406,7 +406,7 @@ public class CoreFriday13th
 
     public void Battledoom()
     {
-        if (!Core.IsMember && !CalculateFriday13())
+        if (!Core.IsMember && !CalculateFriday13() || Core.isCompletedBefore(4656))
         {
             Core.Logger("You must be Member or wait until Friday13th to complete Battledoom.");
             return;
