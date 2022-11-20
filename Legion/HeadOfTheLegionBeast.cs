@@ -57,7 +57,8 @@ public class HeadoftheLegionBeast
         Legion.FarmLegionToken(15000);
 
         Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("sevencircleswar", "r17", "Left", "The Beast", "Beast Soul", 15, false, publicRoom: true);
+        Adv.BestGear(GearBoost.Undead);
+        Core.KillMonster("sevencircleswar", "r17", "Left", "The Beast", "Beast Soul", 15, isTemp: false, publicRoom: true);
 
         Adv.BuyItem("sevencircleswar", 1984, "Head of the Legion Beast");
     }

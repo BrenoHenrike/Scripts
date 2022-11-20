@@ -37,6 +37,7 @@ public class CoreHarvestDay
         MemetNightmare();
         NightmareWar();
         EpilTakeOver();
+        BirdsWithHarms();
     }
 
     public void Harvest()
@@ -634,4 +635,81 @@ public class CoreHarvestDay
         // Chief Immolation Officer 8953
         Story.KillQuest(8953, "ebiltakeover", "Ebil Red Dragon");
     }
+
+    public void BirdsWithHarms()
+    {
+        if (Core.isCompletedBefore(8987) || !Core.isSeasonalMapActive("birdswithharms"))
+            return;
+
+        Story.PreLoad(this);
+
+        // 8972 Angriest Birds
+        Story.MapItemQuest(8972, "birdswithharms", new[] { 10913, 10924 });
+
+        // 8973 Harms in Arms
+        if (!Story.QuestProgression(8973))
+        {
+            Core.EnsureAccept(8973);
+            Core.HuntMonster("birdswithharms", "Birdbarian", "Birdbarian Weapon", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Fencing Finch", "Finch Weapon", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Unsettling Sparrow", "Sparrow Weapon", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Robber Ducky", "Ducky Weapon", 1, log: false);
+            Core.EnsureComplete(8973);
+        }
+
+        // 8974 Literal Arms Dealer
+        Story.MapItemQuest(8974, "birdswithharms", 10914);
+
+        // 8975 What the Duck?
+        Story.MapItemQuest(8975, "birdswithharms", 10915);
+
+        // 8976 Like Feather, Like Son
+        if (!Story.QuestProgression(8976))
+        {
+            Core.EnsureAccept(8976);
+            Core.HuntMonster("birdswithharms", "Birdbarian", "Birdbarian Feather", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Fencing Finch", "Finch Feather", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Unsettling Sparrow", "Sparrow Feather", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Robber Ducky", "Ducky Feather", 1, log: false);
+            Core.HuntMonster("birdswithharms", "Swole Swan", "Swan Feather", 1, log: false);
+            Core.EnsureComplete(8976);
+        }
+
+        // 8977 Literal Arms Dealer
+        Story.MapItemQuest(8977, "birdswithharms", 10916);
+
+        // 8978 Sketchy Dead Parrot
+        Story.MapItemQuest(8978, "birdswithharms", 10922);
+
+        // 8979 Hoo Are You?
+        Story.MapItemQuest(8979, "birdswithharms", 10917);
+
+        // 8980 Bully Birdies
+        Story.KillQuest(8980, "birdswithharms", "Bully Owl");
+        Story.MapItemQuest(8980, "birdswithharms", 10918, 6);
+
+        // 8981 Hoo Are You?
+        Story.KillQuest(8981, "birdswithharms", "Knight Owl");
+        Story.MapItemQuest(8981, "birdswithharms", 10919, 2);
+
+        // 8982 Hoodini's Magic Act
+        Story.KillQuest(8982, "birdswithharms", "Hoodini");
+
+        // 8983 Owl Give You the Answer
+        Core.BuyItem("birdswithharms", 2183, "Stunned?! Parrot");
+        Story.MapItemQuest(8983, "birdswithharms", 10923);
+
+        // 8984 Down Feather Up to No Good
+        Story.MapItemQuest(8984, "birdswithharms", 10920);
+
+        // 8985 United We Stand, Divided We Fowl
+        Story.KillQuest(8985, "birdswithharms", "Turkonian");
+
+        // 8986 Race against the Cluck
+        Story.KillQuest(8986, "birdswithharms", "Schwarzenegger");
+
+        // 8987 Without Feather Ado
+        Story.KillQuest(8987, "birdswithharms", "Turking");
+    }
+
 }
