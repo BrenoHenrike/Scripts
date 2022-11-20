@@ -80,6 +80,7 @@ public class ArchMageMatsArmy
             else Core.Logger($"{item} Found.");
         }
 
+        Bot.Quests.UpdateQuest(8732);
         while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
         {
             ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", log: false);

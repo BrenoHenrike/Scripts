@@ -19,11 +19,11 @@ public class MitrilPvPAmulet
 
     public void GetAmulet()
     {
-        if (Core.CheckInventory("Mithril PvP Amulet +15000"))
+        if (Core.CheckInventory(59667))
             return;
 
-        Core.HuntMonster("thevoid", "Reaper", "Diamond PvP Amulet +5500");
-        Core.HuntMonster("thevoid", "Reaper", "Platinum PvP Amulet +5000");
+        Core.HuntMonster("thevoid", "Reaper", "Diamond PvP Amulet +5500", isTemp: false);
+        Core.HuntMonster("thevoid", "Reaper", "Platinum PvP Amulet +5000", isTemp: false);
 
         Core.BuyItem(Bot.Map.Name, 222, "Mithril PvP Amulet +15000");
     }

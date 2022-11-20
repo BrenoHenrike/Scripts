@@ -540,6 +540,7 @@ public class Archmage
                     break;
 
                 case "Undying Resolve":
+                        Bot.Quests.UpdateQuest(8732);
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("Theworld", "Encore Darkon", item, isTemp: false);
                     if (!Core.CheckInventory(item))
