@@ -64,6 +64,7 @@ public class TowersMerge
                 // Add how to get items here
                 case "SilverSkull Amulet":
                     Core.RegisterQuests(5009);
+                    Core.EquipClass(ClassType.Farm);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -79,6 +80,7 @@ public class TowersMerge
 
                 case "GoldSkull Amulet":
                     Core.RegisterQuests(5023);
+                    Core.EquipClass(ClassType.Farm);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -92,6 +94,7 @@ public class TowersMerge
 
                 case "Bonecastle Amulet":
                     Core.RegisterQuests(4993);
+                    Core.EquipClass(ClassType.Farm);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -106,152 +109,47 @@ public class TowersMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "DeathKnight Lord Gauntlets":
-                    Core.AddDrop("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("bonecastle", "Vaden", "DeathKnight Lord Gauntlets");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "DeathKnight Lord Greaves":
-                    Core.AddDrop("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("bonecastle", "Vaden", "DeathKnight Lord Greaves");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
-                case "DeathKnight Lord Chest Plate":
-                    Core.AddDrop("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("bonecastle", "Vaden", "DeathKnight Lord Chest Plate");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "DeathKnight Lord Hauberk":
-                    Core.AddDrop("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("bonecastle", "Vaden", "DeathKnight Lord Hauberk");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
+                case "DeathKnight Lord Chest Plate":
+                case "DeathKnight Lord Gauntlets":
                 case "DeathKnight Lord Boots":
-                    Core.AddDrop("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
+                    Bot.Drops.Add("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
+                    Core.EquipClass(ClassType.Solo);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("bonecastle", "Vaden", "DeathKnight Lord Boots");
+                        Core.HuntMonster("bonecastle", "Vaden", req.Name, isTemp: false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
 
                 case "Golden DeathKnight Lord Gauntlets":
-                    Core.AddDrop("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towergold", "Yurrod the Gold", "Golden DeathKnight Lord Gauntlets");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
-                case "Golden DeathKnight Lord Greaves":
-                    Core.AddDrop("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towergold", "Yurrod the Gold", "Golden DeathKnight Lord Greaves");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Golden DeathKnight Lord Chest Plate":
-                    Core.AddDrop("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towergold", "Yurrod the Gold", "Golden DeathKnight Lord Chest Plate");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Golden DeathKnight Lord Hauberk":
-                    Core.AddDrop("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towergold", "Yurrod the Gold", "Golden DeathKnight Lord Hauberk");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Golden DeathKnight Lord Boots":
-                    Core.AddDrop("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
+                case "Golden DeathKnight Lord Greaves":
+                    Bot.Drops.Add("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
+                    Core.EquipClass(ClassType.Farm);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("Towergold", "Yurrod the Gold", "Golden DeathKnight Lord Boots");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
-                case "Silver DeathKnight Lord Gauntlets":
-                    Core.AddDrop("Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towersilver", "Flester the Silver", "Gold DeathKnight Lord Gauntlets");
+                        Core.HuntMonster("Towergold", "Yurrod the Gold", req.Name, isTemp: false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
 
                 case "Silver DeathKnight Lord Greaves":
-                    Core.AddDrop("Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towersilver", "Flester the Silver", "Gold DeathKnight Lord Greaves");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Silver DeathKnight Lord Chest Plate":
-                    Core.AddDrop("Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towersilver", "Flester the Silver", "Gold DeathKnight Lord Chest Plate");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Silver DeathKnight Lord Hauberk":
-                    Core.AddDrop("Gold DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
+                case "Silver DeathKnight Lord Boots":
+                case "Silver DeathKnight Lord Gauntlets":
+                    Bot.Drops.Add("Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
+                    Core.EquipClass(ClassType.Farm);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("Towersilver", "Flester the Silver", "Silver DeathKnight Lord Hauberk");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
-                case "iSilver DeathKnight Lord Bootstem":
-                    Core.AddDrop("Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towersilver", "Flester the Silver", "Silver DeathKnight Lord Boots");
+                        Core.HuntMonster("Towersilver", "Flester the Silver", req.Name, isTemp: false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
