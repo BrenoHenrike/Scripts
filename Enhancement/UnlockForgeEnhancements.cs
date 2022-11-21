@@ -562,7 +562,7 @@ public class UnlockForgeEnhancements
         if (!Core.CheckInventory("Ascended Paladin"))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
+            Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
             Core.BuyItem("therift", 1399, "Ascended Paladin");
             Core.BuyItem("therift", 1399, "Ascended Paladin Staff");
             Core.BuyItem("therift", 1399, "Ascended Paladin Sword");
