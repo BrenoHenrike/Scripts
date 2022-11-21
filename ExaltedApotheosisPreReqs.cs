@@ -1,5 +1,6 @@
     //cs_include Scripts/CoreBots.cs
     //cs_include Scripts/CoreFarms.cs
+    //cs_include Scripts/CoreAdvanced.cs
     using Skua.Core.Interfaces;
 
     public class ExaltedApotheosisPreReqs
@@ -7,7 +8,7 @@
         public IScriptInterface Bot => IScriptInterface.Instance;
         public CoreBots Core => CoreBots.Instance;
         public CoreFarms Farm = new();
-
+        public CoreAdvanced Adv = new();
         public void ScriptMain(IScriptInterface bot)
         {
             Core.SetOptions();
@@ -44,6 +45,8 @@
             /// Apotheosis merge once got insignias
             if (Core.CheckInventory("Ezrajal Insignia", 24) && Core.CheckInventory("Warden Insignia", 24) && Core.CheckInventory("Engineer Insignia", 16))
             {
+                /* 
+                ///Keeping these buys in case Adv.BuyItem can't actually merge all the weapons by itself
                 Core.BuyItem("timeinn", 2010, "Apostate Omega");
                 Core.BuyItem("timeinn", 2010, "Apostate Ultima");
                 Core.BuyItem("timeinn", 2010, "Thaumaturgus Omega");
@@ -51,6 +54,8 @@
                 Core.BuyItem("timeinn", 2010, "Exalted Unity");
                 Core.BuyItem("timeinn", 2010, "Exalted Penultima");
                 Core.BuyItem("timeinn", 2010, "Exalted Apotheosis");
+                 */
+                Adv.BuyItem("timeinn", 2010, "Exalted Apotheosis");
                 Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
             }
 
