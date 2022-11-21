@@ -296,6 +296,8 @@ public class CoreFarms
         Bot.Options.AggroMonsters = OptionRestore;
         Core.SavedState(false);
         Core.ToggleAggro(false);
+        if (rankUpClass)
+            ToggleBoost(BoostType.Class, false);
 
         bool NotYetLevel(int _level)
         {
