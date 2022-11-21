@@ -7,6 +7,7 @@ public class NoEgretsbadge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new();
     CoreHarvestDay HarvestDay = new();
     public void ScriptMain(IScriptInterface bot)
     {
@@ -20,10 +21,11 @@ public class NoEgretsbadge
     public void Badge()
     {
         if (!Bot.Quests.IsAvailable(8992) && !Bot.Quests.IsUnlocked(8992) || !Core.isSeasonalMapActive("birdswithharms"))
-            HarvestDay.BirdsWithHarms();
-
-        Core.EnsureAccept(8992);
-        Core.HuntMonster("birdswithharms", "Turkonian", "Ruffled Feather", 1000, false);
-        Core.EnsureComplete(8992);
+            {
+                Core.Logger($"Quest [8992] \"No Egrets Badge\", has yet to be completed, please run \"Seasonal/HarvestDay/16BirdsWithHarmsStory.cs\"", messageBox: true);
+                return;
+            }
+        
+        Story.KillQuest(8992, "birdswithharms", "Turkonian");
     }
 }
