@@ -20,7 +20,7 @@ public class NoEgretsbadge
 
     public void Badge()
     {
-        if (!Bot.Quests.IsAvailable(8992) && !Bot.Quests.IsUnlocked(8992) || !Core.isSeasonalMapActive("birdswithharms"))
+        if (!Core.isCompletedBefore(8992) || !Core.isSeasonalMapActive("birdswithharms"))
             {
                 Core.Logger($"Quest [8992] \"No Egrets Badge\", has yet to be completed, please run \"Seasonal/HarvestDay/16BirdsWithHarmsStory.cs\"", messageBox: true);
                 return;
