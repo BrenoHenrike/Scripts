@@ -296,8 +296,6 @@ public class CoreFarms
         Bot.Options.AggroMonsters = OptionRestore;
         Core.SavedState(false);
         Core.ToggleAggro(false);
-        if (!rankUpClass)
-            Core.EquipClass(ClassType.Farm, false);
         if (rankUpClass)
             ToggleBoost(BoostType.Class, false);
 
