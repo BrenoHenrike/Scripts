@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -58,7 +59,7 @@ public class ArmyDarkWarNation
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
         Farm.ToggleBoost(BoostType.Gold);
-        Army.SmartAggroMonStart("sevencircleswar", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider");
+        Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
