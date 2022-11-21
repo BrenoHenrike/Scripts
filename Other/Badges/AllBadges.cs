@@ -11,7 +11,7 @@
 //cs_include Scripts/Other\Badges\MoglinPunter.cs
 //cs_include Scripts/Other\Badges\CtrlAltDelMemberBadge.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
-//cs_include Scripts/Other/Badges/NoEgrets.cs
+//cs_include Scripts/Seasonal/HarvestDay/NoEgretsBadge.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
