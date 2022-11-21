@@ -257,7 +257,7 @@ public class BeleensMerge
                         {
                             //Legion Armored Daimyo [Member] 2951
                             Core.HuntMonster("Ruins", "Dark Elemental", "Souls of the Destroyed", 15);
-                            Core.HuntMonster("DarkDungeon", "Shadow Serpent", "Shadow Essence", 4);
+                            Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Essence", 4);
                             Core.HuntMonster("GreenguardWest", "Black Knight", "Black Metal Armor", 4);
                         }
                         Core.EnsureCompleteChoose(2951, new[] { req.Name });
