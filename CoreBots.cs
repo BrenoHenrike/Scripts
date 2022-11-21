@@ -1742,16 +1742,16 @@ public class CoreBots
 
     public void ToggleAggro(bool enable)
     {
-        if (enable && AggroMonsters)
-        {
-            AggroMonsters = false;
-            Bot.Options.AggroMonsters = true;
-        }
-        else if (Bot.Options.AggroMonsters)
-        {
-            AggroMonsters = true;
-            Bot.Options.AggroMonsters = false;
-        }
+        //if (enable && AggroMonsters)
+        //{
+        //    AggroMonsters = false;
+        //    Bot.Options.AggroMonsters = true;
+        //}
+        //else if (Bot.Options.AggroMonsters)
+        //{
+        //    AggroMonsters = true;
+        //    Bot.Options.AggroMonsters = false;
+        //}
     }
     private bool AggroMonsters = false;
 

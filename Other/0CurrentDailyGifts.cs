@@ -104,6 +104,8 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(30, 11), "birthday", "Twilly Pinata", "Enchanted League Competitor's Hair", "Enchanted League Competitor's Locks", "Enchanted League Competitor's Locks and Shades", "Enchanted League Competitor's Shades", "League Competitor's Hair Morph", "League Competitor's Locks Morph", "League Competitor's Shaded Locks Morph", "League Competitor's Shades Morph", "Competitor Watch", "Custom Competitor's Watch", "Custom Competitor's Phone", "Competitor's Cane", "Custom Competitor's Cane");
             GetGift(AvailableUntil(30, 11), "deathofgames", "Titan Fluffy", "Enchanted Transcendence Blade", "Enchanted Transcendence Blades", "Transcendence Blade", "Transcendence Blades");
             GetGift(AvailableUntil(30, 11), "citadelruins", "Grand Inquisitor Murry", "Crimson Grand Inquisitor Armor", "Grand Inquisitor's Cape", "Crimson Grand Inquisitor's Bearded Headdress", "Crimson Grand Inquisitor's Collared Headdress", "Crimson Grand Inquisitor's Headdress", "Crimson Grand Inquisitor's Shaded Headdress");
+            GetGift(AvailableUntil(30, 11), "harvestqueen", "Harvest Queen", "Cursed Pumpkin Pet", "Cute Pumpkin Pet");
+            GetGift(AvailableUntil(30, 11), "birdswithharms", "Turking", "Harvest Assassin", "Harvest Assassin's Cape", "Harvest Assassin's Hood", "Harvest Assassin's Blades", "Harvest Assassin's Sword + Axe", "Harvest Assassin's Blade");
 
             #endregion
 
