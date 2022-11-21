@@ -2,7 +2,7 @@
     //cs_include Scripts/CoreFarms.cs
     using Skua.Core.Interfaces;
 
-    public class DefaultTemplate
+    public class ExaltedApotheosisPreReqs
     {
         public IScriptInterface Bot => IScriptInterface.Instance;
         public CoreBots Core => CoreBots.Instance;
@@ -12,12 +12,12 @@
         {
             Core.SetOptions();
 
-            ExaltedApotheosisPreReqs();
+            PreReqs();
 
             Core.SetOptions(false);
         }
 
-        public void ExaltedApotheosisPreReqs()
+        public void PreReqs()
         {
             Core.AddDrop("Exalted Node", "Thaumaturgus Alpha", "Apostate Alpha", "Exalted Relic Piece", "Exalted Forgemetal", "Exalted Artillery Shard");
             if (Core.CheckInventory("Exalted Node", 300) && Core.CheckInventory("Thaumaturgus Alpha") && Core.CheckInventory("Apostate Alpha"))
@@ -54,8 +54,6 @@
                     Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", log: true);
                 }
                 Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
-            
-            
             return; 
         }
     }
