@@ -712,7 +712,9 @@ public class CoreHarvestDay
         Story.KillQuest(8987, "birdswithharms", "Turking");
 
         // 8992 No Egrets Badge
-        Story.KillQuest(8992, "birdswithharms", "Turkonian");
+        Core.EnsureAccept(8992);
+        Core.HuntMonster("birdswithharms", "Unsettling Sparrow", "Ruffled Feather", 1000, false);
+        Core.EnsureComplete(8992);
     }
 
 }
