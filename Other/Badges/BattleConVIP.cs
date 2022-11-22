@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Cornelis[mem].cs
+//cs_include Scripts/Story/UnderGroundLab.cs
 using Skua.Core.Interfaces;
 
-public class CornelisRebornbadge
+public class BattleConVIP
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Cornelis Cornelis = new();
+    public UnderGroundLab UGL = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -20,13 +20,16 @@ public class CornelisRebornbadge
 
     public void Badge()
     {
-        if (Core.HasAchievement(13))
+        if (Core.HasWebBadge(badge))
         {
-            Core.Logger("Already have the Cornelis Reborn badge");
+            Core.Logger($"Already have the {badge} badge");
             return;
         }
 
-        Core.Logger($"Doing Cornelis story for the badge");
-        Cornelis.StoryLine();
+        Core.Logger($"Doing UnderGroundLab story for {badge} badge");
+        UGL.partofundergroundlabb();
+        
     }
+
+    private string badge = "BattleCon VIP";
 }

@@ -74,26 +74,26 @@ public class CurrentDailyGifts
 
             #endregion
 
-            #region October 1 - 16 leave October 31
+            #region October 1 - 16 leave November 25
 
             GetGift(Permanent, "falcontower", "Alteon", "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword");
             GetGift(Permanent, "aqlesson", "Carnax", "Guardian Blade Evolution", "Sanctified Guardian Blade");
             GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Demolicious Guard", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard");
-            GetGift(AvailableUntil(31, 10), "mystcroftforest", "Barghest", "Skullbound Kamas", "Skullbound Kusarigama", "Skullbound Kama");
-            GetGift(Permanent, "evilwardage", "Dilligas", "Oversoul Black Dragon Pet", "Oversoul Black Dragon Battlepet");
+            GetGift(AvailableUntil(25, 11), "mystcroftforest", "Barghest", "Skullbound Kamas", "Skullbound Kusarigama", "Skullbound Kama");
+            GetGift(AvailableUntil(25, 11), "evilwardage", "Dilligas", "Oversoul Black Dragon Pet", "Oversoul Black Dragon Battlepet");
 
             #endregion
 
-            #region October 17 - 31 leave November 11
+            #region October 17 - 31 leave November 25
             GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade");
             GetGift(Permanent, "dflesson", "Fluffy the Dracolich", "Zurvana's Blessing", "Zurvana's Wrath", "Zurvana's Wrath", "Zurvana's Pity", "Zurvana's Pity");
             GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid Edge", "Dragonoid Edges");
 
             #endregion
 
-            #region October 24 - 30 leave November 11
+            #region October 24 - 30 leave November 25
             GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe");
-            // GetGift(AvailableUntil(1,1), "crescentmoon", "Spectral Lycan", "Headless Armor", "Ghost Eta Pet"); //uncomment on the 30th + fix availuntil date.
+            GetGift(AvailableUntil(25,11), "crescentmoon", "Royce", "Headless Horseman", "Ghost Eta");
 
             #endregion
 
