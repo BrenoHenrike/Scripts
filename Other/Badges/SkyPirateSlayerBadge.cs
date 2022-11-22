@@ -25,6 +25,12 @@ public class SkyPirateBadge
         if (!Core.IsMember)
             return;
 
+        if (Core.HasWebBadge("SkyPirate Slayer"))
+        {
+            Core.Logger("Already have the SkyPirate Slayer badge");
+            return;
+        }
+
         SkyGuardSaga.DoAll();
 
         Core.AddDrop("SkyPirate Annhilator Recognition");
