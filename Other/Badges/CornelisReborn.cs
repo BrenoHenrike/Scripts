@@ -7,7 +7,7 @@ public class CornelisRebornbadge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Cornelis Cornelis = new();
+    public Cornelis Corn = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,6 +27,6 @@ public class CornelisRebornbadge
         }
 
         Core.Logger($"Doing Cornelis story for the badge");
-        Cornelis.StoryLine();
+        Corn.StoryLine();
     }
 }
