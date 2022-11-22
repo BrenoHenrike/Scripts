@@ -49,7 +49,7 @@ public class AllBadges
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 
-    public CornelisRebornbadge Cornelis = new();
+    public CornelisRebornbadge CRB = new();
     public DerpMoosefishBadge DMF = new();
     public SkyPirateBadge SPB = new();
     public YouMadBroBadge YMBB = new();
@@ -76,7 +76,7 @@ public class AllBadges
     {
         Core.SetOptions();
 
-        Cornelis.Badge();
+        CRB.Badge();
         SPB.Badge();
         MPB.Badge();
         CAD.Badge();
