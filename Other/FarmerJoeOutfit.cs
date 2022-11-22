@@ -97,68 +97,60 @@ public class FarmerJoeStartingTheAcc
         Core.Logger("starting out the acc");
         Tutorial.Badges();
 
-        Core.Logger("Getting Starting Cash");
+        Core.Logger("Getting Starting Cash and Levels");
         Core.RegisterQuests(4007);
-        
+
         while (!Bot.ShouldExit && Bot.Player.Level < 10)
-            Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
+            Core.HuntMonster("oaklore", "Bone Berserker");
         Core.CancelRegisteredQuests();
 
-        if (Bot.Player.Level < 20) 
+        if (Bot.Player.Level < 20)
         {
-            if (!Core.CheckInventory("Healer"))
-                Core.BuyItem("classhalla", 176, "Healer");
-            if (!Core.CheckInventory("Mage's Hood"))
-                Core.BuyItem("classhalla", 174, "Mage's Hood");
-            if (!Core.CheckInventory("White Feather Wings"))
-                Core.BuyItem("classhalla", 176, "White Feather Wings");
+            Adv.BuyItem("classhalla", 176, "Healer");
+            Adv.BuyItem("classhalla", 174, "Mage's Hood");
+            Adv.BuyItem("classhalla", 176, "White Feather Wings");
             Core.Equip("White Feather Wings");
             Core.Equip("Mage's Hood");
+            Core.Equip("Healer");
             InvEn.EnhanceInventory();
             Farm.IcestormArena(20, true);
         }
-        
-        if (Bot.Player.Level < 30)
-        {
-            InvEn.EnhanceInventory();
-            Farm.IcestormArena(30, true);
-        }
+
+        InvEn.EnhanceInventory();
+        Farm.IcestormArena(30, true);
+
         #endregion starting out the acc
 
 
-        #region Obtain the Enchanted Victory Blade
-        //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
+        #region Obtain the Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
         Core.Logger("Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)");
         EVBW.GetWeapon(VictoryBladeStyles.Smart);
         if (Core.CheckInventory("Arcane Blade of Glory"))
             Core.ToBank("Arcane Blade of Glory");
         if (Core.CheckInventory("Shadow Blade of Dispair"))
             Core.ToBank("Shadow Blade of Dispair");
-
-        InvEn.EnhanceInventory();
-        if (Core.CheckInventory("Enchanted Victory Blade"))
-            Core.Equip("Enchanted Victory Blade");
-        else if (Core.CheckInventory("Arcane Blade of Glory"))
+        if (Core.CheckInventory("Arcane Blade of Glory"))
             Core.Equip("Arcane Blade of Glory");
         else if (Core.CheckInventory("Shadow Blade of Dispair"))
             Core.Equip("Shadow Blade of Dispair");
-        #endregion Obtain the Silver Victory Blade
+        InvEn.EnhanceInventory();
+        #endregion Obtain the Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
 
         #region Dual Chainsaw Katanas
-        Core.BuyItem("classhalla", 174, "Mage");
+        Adv.BuyItem("classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
         DCSK.GetWep();
         InvEn.EnhanceInventory();
         #endregion Dual Chainsaw Katanas
 
         #region Boosts
-        Core.Logger("Getting Boosters for Gold, Class, and Rep");
+        Core.Logger("Getting Boosters for Gold, Class, and Rep, Rewards are now random. Chances are 20%/booster this may take a minute or two.");
         Boosts.GetBoosts((int)Booster.All, 50, 50, 50);
         #endregion
 
         #region Level to 75
         Core.Logger("Level to 75");
-        foreach (int level in new int[]{45, 60, 75})
+        foreach (int level in new int[] { 45, 60, 75 })
         {
             if (Bot.Player.Level < level)
             {
@@ -170,8 +162,7 @@ public class FarmerJoeStartingTheAcc
 
 
         #region Prepare for Lvl100
-        //step 1 Farming Classes:
-        Core.Logger("Farming Classes");
+        Core.Logger("step 1 Farming Classes");
         MDS.EasyMountDoomSkull();
         Farm.ChaosREP();
         Adv.BuyItem("Confrontation", 891, "Chaos Slayer Berserker", shopItemID: 24359);
@@ -179,15 +170,13 @@ public class FarmerJoeStartingTheAcc
         AP.GetAP();
 
         //Step 2 Solo CLass:
-        Core.Logger("LOO Class Daily");
+        Core.Logger("step 2 LOO Class Daily");
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
-        //Step 3 Dailies for Classes:
-        Core.Logger("DailiesAll Dailies");
+        Core.Logger("Step 3 Dailies for Classes");
         FAD.DoAllDailys();
 
-        //Step 4 Blade and Cape of Awe:
         Core.Logger("Step 4 Blade and Cape of Awe");
         Farm.BladeofAweREP(6, true);
         Core.ToBank("Blade of Awe");
@@ -196,13 +185,11 @@ public class FarmerJoeStartingTheAcc
         COA.GetCoA();
         InvEn.EnhanceInventory();
 
-        //Step 5 Burning Blade
         Core.Logger("Step 5 Burning Blade");
         Core.EquipClass(ClassType.Solo);
         BB.GetBurningBlade();
         InvEn.EnhanceInventory();
 
-        //Step 6 Improving Efficiency, and more Classes
         Core.Logger("Step 6 Improving Efficiency, and more Classes");
         EI.GetEI();
         Shaman.GetShaman();
@@ -215,7 +202,6 @@ public class FarmerJoeStartingTheAcc
 
 
         #region Leveling to 100
-        //Leveling to 100
         Core.Logger("Leveling to 100");
         Farm.Experience();
         InvEn.EnhanceInventory();
@@ -223,7 +209,6 @@ public class FarmerJoeStartingTheAcc
 
 
         #region Ending & Extras 
-        //Pre-Farm Enh
         Scythe.GetHBReapersScythe();
         InvEn.EnhanceInventory();
         #endregion Ending & Extras
@@ -262,7 +247,7 @@ public class FarmerJoeStartingTheAcc
 
         if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))
         {
-            Core.HuntMonster("battleundere", "Hot Mama", "Hot Mama", isTemp: false);
+            Core.HuntMonster("battleundere", "Hot Mama", "Hot Mama", isTemp: false, log: false);
             Bot.Wait.ForPickup("Hot Mama");
             Core.Equip("Hot Mama");
         }
