@@ -19,7 +19,7 @@ public class Cornelis
 
     public void StoryLine()
     {
-        if (!Core.IsMember || Core.isCompletedBefore(1633))
+        if (!Core.IsMember || Core.isCompletedBefore(1632))
             return;
 
         Story.PreLoad(this);
@@ -51,6 +51,8 @@ public class Cornelis
         Story.MapItemQuest(1631, "cornelis", 859);
 
         // [BADGE] Cornelis Reborn 1632
-        Story.KillQuest(1633, "cornelis", "Gargoyle");
+        Core.EnsureAccept(1632);
+        Core.HuntMonster("cornelis", "Gargoyle", "Gargoyle Horn", 100, isTemp: false, log: false);
+        Core.EnsureComplete(1632);
     }
 }

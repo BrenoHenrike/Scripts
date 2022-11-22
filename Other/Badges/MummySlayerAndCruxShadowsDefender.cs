@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Cornelis[mem].cs
+//cs_include Scripts/Story/CruxShip.cs
 using Skua.Core.Interfaces;
 
-public class CornelisRebornbadge
+public class MummySlayerAndCruxShadowsDefender
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Cornelis Cornelis = new();
+    public CruxShip CS = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -20,13 +20,15 @@ public class CornelisRebornbadge
 
     public void Badge()
     {
-        if (Core.HasAchievement(13))
+        if (Core.HasWebBadge("Mummy Slayer") || Core.HasWebBadge("CruxShadows Defender")) 
         {
-            Core.Logger("Already have the Cornelis Reborn badge");
+            Core.Logger("Already have the Mummy Slayer and CruxShadows Defender badge");
             return;
         }
 
-        Core.Logger($"Doing Cornelis story for the badge");
-        Cornelis.StoryLine();
+        Core.Logger("Doing CruxShip story for Mummy Slayer and CruxShadows Defender badge");
+        CS.StoryLine();
+
     }
+
 }

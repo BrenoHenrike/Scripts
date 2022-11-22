@@ -15,9 +15,23 @@ public class DesolichFreed
     {
         Core.SetOptions();
 
-        Core.Logger("Gotta do the story first, will get the badge during the story don't worry :D");
-        ESW.DoAll();
+        Badge();
 
         Core.SetOptions(false);
+    }
+
+    public void Badge()
+    {
+        if (!Core.IsMember)
+            return;
+        
+        if (Core.HasWebBadge("Desoloth Freed"))
+        {
+            Core.Logger($"Already have the Desoloth Freed badge");
+            return;
+        }
+
+        Core.Logger("Gotta do the EtherStorm story first, will get the badge during the story don't worry :D");
+        ESW.DoAll();
     }
 }
