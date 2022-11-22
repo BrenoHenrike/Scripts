@@ -47,7 +47,7 @@ public class LegionExercise4
         {
             Core.EnsureAccept(824);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frostbit Skull", 15);
+            Core.KillMonster("swordhavenundead", "Extras1", "Center", "Skeletal Ice Mage", "Frostbit Skull", 15); //can get stuck on mobs
             Core.HuntMonster("Marsh2", "Lesser Shadow Serpent", "Potent Viper's Blood");
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Marsh2", "Soulseeker", "Soul Scythe", isTemp: false);
