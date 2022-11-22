@@ -710,6 +710,9 @@ public class CoreHarvestDay
 
         // 8987 Without Feather Ado
         Story.KillQuest(8987, "birdswithharms", "Turking");
+
+        // 8992 No Egrets Badge
+        Story.KillQuest(8992, "birdswithharms", "Turkonian");
     }
 
 }
