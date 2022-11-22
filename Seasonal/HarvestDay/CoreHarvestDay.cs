@@ -638,7 +638,7 @@ public class CoreHarvestDay
 
     public void BirdsWithHarms()
     {
-        if (Core.isCompletedBefore(8987) || !Core.isSeasonalMapActive("birdswithharms"))
+        if (Core.isCompletedBefore(8992) || !Core.isSeasonalMapActive("birdswithharms"))
             return;
 
         Story.PreLoad(this);
