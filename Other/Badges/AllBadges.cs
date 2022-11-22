@@ -6,6 +6,7 @@
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/ArtixWedding.cs
 //cs_include Scripts/Story/Borgars.cs
+//cs_include Scripts/Story/Cornelis[mem].cs
 //cs_include Scripts/Story/CruxShip.cs
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
