@@ -17,6 +17,7 @@
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs
+//cs_include Scripts/Story/Cornelis[mem].cs
 //cs_include Scripts/Other/Badges/6thBirthdaySavior.cs
 //cs_include Scripts/Other/Badges/BattleBabysitter.cs
 //cs_include Scripts/Other/Badges/BattleConVIP.cs
