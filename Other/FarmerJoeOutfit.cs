@@ -96,11 +96,10 @@ public class FarmerJoeStartingTheAcc
         //starting out the acc
         Core.Logger("starting out the acc");
         Tutorial.Badges();
-        if (Bot.Player.Gold < 10000)
-        {
-            Core.Logger("Getting Starting Cash");
-            Core.RegisterQuests(4007);
-        }
+
+        Core.Logger("Getting Starting Cash");
+        Core.RegisterQuests(4007);
+        
         while (!Bot.ShouldExit && Bot.Player.Level < 10)
             Core.HuntMonster("oaklore", "Bone Berserker", "Bone Berserker Slain");
         Core.CancelRegisteredQuests();
