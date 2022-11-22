@@ -29,7 +29,7 @@ public class HordeZombieSLAYER
         Core.EquipClass(ClassType.Farm);
 
         Core.EnsureAccept(8670);
-        Core.KillMonster("darkoviahorde", "r8", "Right", "*", "Zombie Defeated", 100);
+        Core.KillMonster("darkoviahorde", "r8", "Right", "*", "Zombie Defeated", 100, log: false);
         Core.EnsureComplete(8670);
 
     }

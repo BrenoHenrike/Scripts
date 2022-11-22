@@ -37,7 +37,7 @@ public class SkyPirateBadge
         Core.EquipClass(ClassType.Farm);
 
         Core.EnsureAccept(1291);
-        Core.KillMonster("strategy", "r22", "Left", "*", "SkyPirate Annihilator Token", 100);
+        Core.KillMonster("strategy", "r22", "Left", "*", "SkyPirate Annihilator Token", 100, log: false);
         Core.EnsureComplete(1291);
 
         Core.JumpWait();
