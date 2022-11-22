@@ -37,12 +37,12 @@ public class ConZombieSlayer
         if (!Story.QuestProgression(3136))
         {
             Core.EnsureAccept(3136);
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Con Survival Guide");
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Water Bottle");
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Hoopy Frood brand Towel");
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Event Schedule");
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Xtra-Strength Energy Potion");
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Anti-Con Rot Sanitation Device");            
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Con Survival Guide", log: false);
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Water Bottle", log: false);
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Hoopy Frood brand Towel", log: false);
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Event Schedule", log: false);
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Xtra-Strength Energy Potion", log: false);
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Anti-Con Rot Sanitation Device", log: false);            
             Core.EnsureComplete(3136);
         }
 
@@ -51,7 +51,7 @@ public class ConZombieSlayer
 
         //Badge Quest - Cosplay Zombies On Parade 3144
         Core.EnsureAccept(3144);
-        Core.HuntMonster("battlecon", "Cosplay Zombie", "Defeat Cosplay Zombie", 100, isTemp: true);
+        Core.HuntMonster("battlecon", "Cosplay Zombie", "Defeat Cosplay Zombie", 100, log: false);
         Core.EnsureComplete(3144);
     }
 

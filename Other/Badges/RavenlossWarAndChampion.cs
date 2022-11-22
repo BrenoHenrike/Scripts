@@ -31,7 +31,7 @@ public class RavenlossWarAndChampion
 
         Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(8668);
-        Core.HuntMonster("ravenloss", "ChaosWeaver Magi", "ChaosWeaver Defeated", 100, isTemp: true);
+        Core.HuntMonster("ravenloss", "ChaosWeaver Magi", "ChaosWeaver Defeated", 100, log: false);
         Core.EnsureComplete(8668);
     }
 

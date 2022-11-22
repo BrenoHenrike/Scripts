@@ -638,7 +638,7 @@ public class CoreHarvestDay
 
     public void BirdsWithHarms()
     {
-        if (Core.isCompletedBefore(8987) || !Core.isSeasonalMapActive("birdswithharms"))
+        if (Core.isCompletedBefore(8992) || !Core.isSeasonalMapActive("birdswithharms"))
             return;
 
         Story.PreLoad(this);
@@ -712,8 +712,9 @@ public class CoreHarvestDay
         Story.KillQuest(8987, "birdswithharms", "Turking");
 
         // 8992 No Egrets Badge
+        Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(8992);
-        Core.HuntMonster("birdswithharms", "Unsettling Sparrow", "Ruffled Feather", 1000, false);
+        Core.HuntMonster("birdswithharms", "Unsettling Sparrow", "Ruffled Feather", 1000, isTemp: false, log: false);
         Core.EnsureComplete(8992);
     }
 

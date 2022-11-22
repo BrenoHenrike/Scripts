@@ -52,7 +52,7 @@ public class Cornelis
 
         // [BADGE] Cornelis Reborn 1632
         Core.EnsureAccept(1632);
-        Core.HuntMonster("cornelis", "Gargoyle", "Gargoyle Horn", 100, false);
+        Core.HuntMonster("cornelis", "Gargoyle", "Gargoyle Horn", 100, isTemp: false, log: false);
         Core.EnsureComplete(1632);
     }
 }
