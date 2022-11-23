@@ -67,6 +67,7 @@ public class GoldenBladeOfFate
                 Core.EnsureComplete(5678);
             }
 
+            //The Mysterious Reward 5679
             Story.MapItemQuest(5679, "yulgar", 5145);
             Bot.Wait.ForPickup("Golden Blade of Fate");
         }

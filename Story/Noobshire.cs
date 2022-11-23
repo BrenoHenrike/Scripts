@@ -24,7 +24,7 @@ public class Noobshire
 
     public void RolithQuests()
     {
-        if (Core.isCompletedBefore(39))
+        if (Core.isCompletedBefore(118))
             return;
 
         //Defend the Rats 32
@@ -49,6 +49,14 @@ public class Noobshire
         //Missing King 39
         Story.MapItemQuest(39, "noobshire", 12);
         Story.KillQuest(39, "noobshire", "Horc Noob");
+
+        // [[[Tutor]]]
+
+        // Fighting Exercise 117 
+        Story.KillQuest(117, "Tutor", "Horc Noob");
+
+        // Tougher Monsters 118
+        Story.KillQuest(118, "Tutor", "Horc Tutor Trainer");
     }
 
     public void LowellCatQuests()
