@@ -422,7 +422,7 @@ public class CoreFriday13th
         if (Core.CheckInventory("Cursed Mirror of Enutrof"))
             return;
 
-        Story.LegacyQuestManager(QuestLogic, 4648, 4649, 4650, 4651, 4652, 4653, 4654, 4655);
+        Story.LegacyQuestManager(QuestLogic, 4648, 4649, 4650, 4651, 4652, 4653, 4654, 4655, 4656);
 
         void QuestLogic()
         {

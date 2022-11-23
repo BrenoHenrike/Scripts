@@ -336,7 +336,7 @@ public class CoreStory
             return;
         }
 
-        Core.Logger($"Final quest to work torwards: [{finalItemQuestID}] \"{Core.EnsureLoad(finalItemQuestID).Name}\"");
+        Core.Logger($"Final quest in Legacy Quest Chain: [{finalItemQuestID}] \"{Core.EnsureLoad(finalItemQuestID).Name}\"");
 
         runQuest(finalItemQuestID);
 
@@ -350,43 +350,56 @@ public class CoreStory
             var runQuestData = whereToGet.Find(d => d.desiredQuestID == questID);
             var questData = Core.EnsureLoad(questID);
 
+            Core.DebugLogger(this);
             if (runQuestData == null)
             {
                 Core.Logger("runQuestData is NULL");
                 return;
             }
+            Core.DebugLogger(this);
 
             var requiredReward = runQuestData.requiredQuestReward.Select(i => i.Name).ToArray();
-            if (runQuestData.desiredQuestReward.Count == 0)
+            Core.DebugLogger(this);
+            if (runQuestData.desiredQuestReward.Count == 0 && questID != finalItemQuestID)
             {
                 if (!Core.CheckInventory(requiredReward))
                     runQuest(runQuestData.requieredQuestID);
                 return;
             }
 
+            Core.DebugLogger(this);
             var desiredReward = runQuestData.desiredQuestReward.Select(i => i.Name).ToArray();
-            if (Core.CheckInventory(desiredReward))
+            if (questID != finalItemQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.Name).ToArray()))
             {
                 Core.Logger($"Already Completed: [{questID}] - \"{questData.Name}\"", "QuestProgression");
                 return;
             }
+            Core.DebugLogger(this);
 
             if (!Core.CheckInventory(requiredReward))
                 runQuest(runQuestData.requieredQuestID);
 
             if (_LegacyQuestStop)
                 return;
+            Core.DebugLogger(this);
 
             Core.Logger($"Doing Quest: [{questID}] - \"{questData.Name}\"", "QuestProgression");
             Core.EnsureAccept(questID);
             Core.AddDrop(desiredReward);
 
+            Core.DebugLogger(this);
             LegacyQuestID = questID;
             questLogic();
+            Core.DebugLogger(this);
 
             TryComplete(questData, LegacyQuestAutoComplete);
+            Core.DebugLogger(this);
             foreach (var i in desiredReward)
                 Bot.Wait.ForPickup(i);
+            Core.DebugLogger(this);
+            if (questID == finalItemQuestID)
+                Bot.Drops.Pickup(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.ID).ToArray());
+            Core.DebugLogger(this);
 
             LegacyQuestAutoComplete = true;
         }
