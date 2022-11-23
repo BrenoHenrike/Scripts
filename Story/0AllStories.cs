@@ -78,6 +78,7 @@
 //cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/Borgars.cs
 
+//cs_include Scripts/Story/CastleOfGlass.cs
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/Concert[MEM].cs
 //cs_include Scripts/Story/Cornelis[mem].cs
@@ -276,6 +277,7 @@ public class AllStories
     public Bludrut Bludrut = new();
     public Borgars Borgars = new();
 
+    public CastleOfGlass CastleOfGlass = new();
     public CastleTunnels CastleTunnels = new();
     public Cleric Cleric = new();
     public Concert Concert = new();
@@ -583,6 +585,9 @@ public class AllStories
         Borgars.StoryLine();
         Core.Logger($"Story: Borgars - Complete");
 
+
+        CastleOfGlass.StoryLine();
+        Core.Logger($"Story: CastleOfGlass - Complete");
 
         CastleTunnels.StoryLine();
         Core.Logger($"Story: CastleTunnels - Complete");
