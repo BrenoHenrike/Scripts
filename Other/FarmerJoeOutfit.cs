@@ -160,10 +160,10 @@ public class FarmerJoeStartingTheAcc
         InvEn.EnhanceInventory();
         #endregion Dual Chainsaw Katanas
 
-        #region Boosts
-        Core.Logger("Getting Boosters for Gold, Class, and Rep, Rewards are now random. Chances are 20%/booster this may take a minute or two.");
-        Boosts.GetBoosts((int)Booster.All, 50, 50, 50);
-        #endregion
+        // #region Boosts
+        // Core.Logger("Getting Boosters for Gold, Class, and Rep, Rewards are now random. Chances are 20%/booster this may take a minute or two.");
+        // Boosts.GetBoosts((int)Booster.All, 50, 50, 50);
+        // #endregion //appearntly the rates are supper fucked?
 
         #region Level to 75
         Core.Logger("Level to 75");
