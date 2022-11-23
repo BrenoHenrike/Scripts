@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class MineCrafting
 {
@@ -12,12 +13,17 @@ public class MineCrafting
     public CoreDailies Daily = new();
     public CoreBLOD BLOD = new();
 
+    public List<IOption> Options = new()
+    {
+        new Option<MineCraftingMetalsEnum>("metals", "Which Metal", "Select the metal you wish to get here")
+    };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting(ToBank: true);
+        Daily.MineCrafting(new[] { Bot.Config!.Get<MineCraftingMetalsEnum>("metals").ToString() }, 10, false);
 
         Core.SetOptions(false);
     }
