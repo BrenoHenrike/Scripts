@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/VasalkarLairWar.cs
+
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -14,31 +15,45 @@ public class VoidBattleMageSet
     {
         Core.SetOptions();
 
+        War.Attack();
         GetSet();
 
         Core.SetOptions(false);
     }
+
+    int i = 0;
 
     public void GetSet()
     {
         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(6694).Rewards;
 
         foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
-            
-        Core.EquipClass(ClassType.Solo);
+            Bot.Drops.Add(item.Name);
 
+        string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
+
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(6694); //Arlette's Birthday Quest 6694
         foreach (ItemBase Reward in RewardOptions)
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
-                return;
-            Core.FarmingLogger(Reward.Name, 1);
+                Core.Logger($"{Reward.Name} Found.");
+            else
+            {
+                Core.FarmingLogger(Reward.Name, 1);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
+                {
+                    Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General", log: false);
 
-            Core.EnsureAccept(6694);
-            Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General Defeated", log: false);
-            Core.EnsureComplete(6694, Reward.ID);
-            Core.JumpWait();
-            Core.ToBank(Reward.Name);
+                    i++;
+
+                    if (i % 5 == 0)
+                    {
+                        Core.JumpWait();
+                        Core.ToBank(QuestRewards);
+                    }
+                }
+            }
         }
     }
 }

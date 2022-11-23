@@ -40,6 +40,7 @@ public class LairWar
             Core.KillMonster("lairdefend", "Bridge", "LeftUp", "*", "Flamefang Medal", 3);
             Bot.Wait.ForQuestComplete(6685);
         }
+        Core.CancelRegisteredQuests();
 
         //6686 | Mega Flamefang Medals
         //Can be skipped, has the same quest value
@@ -75,6 +76,7 @@ public class LairWar
             Core.KillMonster("lairattack", "Bridge", "LeftUp", "*", "Defender Medal", 3);
             Bot.Wait.ForQuestComplete(6690);
         }
+        Core.CancelRegisteredQuests();
 
         //6691 | Mega Defender Medals
         //Can be skipped, has the same quest value
