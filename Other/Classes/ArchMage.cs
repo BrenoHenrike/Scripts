@@ -273,7 +273,7 @@ public class Archmage
         if (Extras && Core.CheckInventory(new[] { "Book of Aether", "Archmage's Staff" }, toInv: false))
             return;
 
-        BossItemCheck("Void Essentia", "Vital Exanima", "Everlight Flame");
+        BossItemCheck(1, "Void Essentia", "Vital Exanima", "Everlight Flame");
 
         Core.Logger("Book of Aether");
 
@@ -300,7 +300,7 @@ public class Archmage
         if (Extras && Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false))
             return;
 
-        BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
+        BossItemCheck(1, "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
         Bot.Options.AggroMonsters = false; //just incse for the equip.
 
