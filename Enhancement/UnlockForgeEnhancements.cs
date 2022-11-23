@@ -27,7 +27,7 @@
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
-//cs_include Scripts/Other/Armor/FireChampionsArmor.cs
+//cs_include Scripts/Other/FireChampionsArmor.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
@@ -436,7 +436,7 @@ public class UnlockForgeEnhancements
 
         if (!Core.isCompletedBefore(8746))
         {
-            Core.Logger("You must have faced Darkon the Conductor and done the weekly quest in order to unlock /"Arcana's Concerto/"", messageBox: true);
+            Core.Logger("You must have faced Darkon the Conductor and done the weekly quest in order to unlock \"Arcana's Concerto\"", messageBox: true);
             return;
         }
         PDPPR.FarmPreReqs();
@@ -454,7 +454,7 @@ public class UnlockForgeEnhancements
             Darkon.MourningFlower(22);
             if (!Core.CheckInventory("Darkon Insignia", 20))
             {
-                Core.Logger(" x20 /"Darkon Insignia/" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);
+                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);
                 return;
             }
             else Core.BuyItem("ultradarkon", 2147, "Darkon's Debris 2 (Reconstructed)");
@@ -462,12 +462,12 @@ public class UnlockForgeEnhancements
 
         if (!Core.CheckInventory("King Drago Insignia", 5))
         {
-            Core.Logger(" x5 /"King Drago Insignia/" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
+            Core.Logger(" x5 \"King Drago Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
             return;
         }
         if (!Core.CheckInventory("Darkon Insignia", 5))
         {
-            Core.Logger(" x5 /"Darkon Insignia/" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
+            Core.Logger(" x5 \"Darkon Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
             return;
         }
         Core.ChainComplete(8742);
@@ -516,7 +516,7 @@ public class UnlockForgeEnhancements
         Awescended.GetAwe();
         if (!Core.CheckInventory("The Divine Will"))
         {
-            Core.Logger("/"Azalith/" is not Soloable, please go kill it otherwise for the Drop /"The Divine Will/", and return here and re-run the script.");
+            Core.Logger("\"Azalith\" is not Soloable, please go kill it otherwise for the Drop \"The Divine Will\", and return here and re-run the script.");
             return;
         }
         Core.EnsureComplete(8821);
@@ -780,7 +780,7 @@ public class UnlockForgeEnhancements
             }
             else
             {
-                Core.Logger("Cannot Accept Quest Without Item /"???/"");
+                Core.Logger("Cannot Accept Quest Without Item \"???\"");
                 return;
             }
         }
