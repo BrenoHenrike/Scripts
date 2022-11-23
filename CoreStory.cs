@@ -340,10 +340,8 @@ public class CoreStory
 
         runQuest(finalItemQuestID);
 
-        List<string> toBank = new();
         foreach (var l in whereToGet)
-            toBank.AddRange(l.requiredQuestReward.Select(i => i.Name));
-        Core.ToBank(toBank.ToArray());
+            Core.ToBank(l.requiredQuestReward.Select(i => i.ID).ToArray());
 
         void runQuest(int questID)
         {
@@ -358,7 +356,7 @@ public class CoreStory
             }
             Core.DebugLogger(this);
 
-            var requiredReward = runQuestData.requiredQuestReward.Select(i => i.Name).ToArray();
+            var requiredReward = runQuestData.requiredQuestReward.Select(i => i.ID).ToArray();
             Core.DebugLogger(this);
             if (runQuestData.desiredQuestReward.Count == 0 && questID != finalItemQuestID)
             {
@@ -369,7 +367,7 @@ public class CoreStory
 
             Core.DebugLogger(this);
             var desiredReward = runQuestData.desiredQuestReward.Select(i => i.ID).ToArray();
-            if (questID != finalItemQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.Name).ToArray()))
+            if (questID != finalItemQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.ID).ToArray()))
             {
                 Core.Logger($"Already Completed: [{questID}] - \"{questData.Name}\"", "QuestProgression");
                 return;
