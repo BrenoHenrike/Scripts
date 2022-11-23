@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class MmmmMeatyQuest
 {
@@ -23,7 +24,7 @@ public class MmmmMeatyQuest
     {
         if (!Core.isSeasonalMapActive("MeateorTown"))
             return;
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8613).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8613).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

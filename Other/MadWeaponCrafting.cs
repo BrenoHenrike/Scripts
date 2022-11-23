@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class MadWeaponCrafting
 {
@@ -22,7 +23,7 @@ public class MadWeaponCrafting
 
     public void GetAll()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7070).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(7070).Rewards;
         List<string> RewardsList = new List<string>();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
         string[] Rewards = RewardList.ToArray();

@@ -59,7 +59,7 @@ public class BirthdayFeastQuestRewards
 
     void ArlettesQuests()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8385).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8385).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Bot.Drops.Add(item.Name);
@@ -98,7 +98,7 @@ public class BirthdayFeastQuestRewards
 
     void InanitasQuests()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Bot.Drops.Add(item.Name);
@@ -135,7 +135,7 @@ public class BirthdayFeastQuestRewards
 
     void KotarosQuests()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8383).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8383).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Bot.Drops.Add(item.Name);
@@ -174,7 +174,7 @@ public class BirthdayFeastQuestRewards
 
     void MemetsQuests()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);

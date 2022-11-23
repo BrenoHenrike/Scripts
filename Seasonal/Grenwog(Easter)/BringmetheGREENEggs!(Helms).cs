@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class GreenEggs
 {
@@ -17,7 +18,7 @@ public class GreenEggs
 
     public void GetGreenEggs()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5785).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(5785).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

@@ -3,6 +3,7 @@
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/LowTideStory.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class AluteaNursery
 {
@@ -77,7 +78,7 @@ public class AluteaNursery
 
     public void AluteaNurseryRewards()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8858).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8858).Rewards;
         List<string> RewardsList = new List<string>();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
 

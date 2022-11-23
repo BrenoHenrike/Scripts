@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class SanctifiedArbiter
 {
@@ -19,7 +20,7 @@ public class SanctifiedArbiter
 
     public void GetAll()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8114).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8114).Rewards;
         List<string> RewardsList = new List<string>();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
         string[] Rewards = RewardList.ToArray();

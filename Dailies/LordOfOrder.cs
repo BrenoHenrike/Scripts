@@ -7,6 +7,7 @@
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class LordOfOrder
 {
@@ -141,7 +142,6 @@ public class LordOfOrder
                 Core.HuntMonster("drakonnan", "Living Fire", "Inferno Heart");
                 Core.EnsureComplete(6319);
             }
-
             Core.EnsureComplete(7160);
             return;
         }
@@ -222,12 +222,15 @@ public class LordOfOrder
         }
 
         // The Final Challenge
+        if (getExtras)
+            Bot.Drops.Add(Core.EnsureLoad(7165).Rewards.Select(x => x.ID).ToArray());
+
         Core.EnsureAccept(7165);
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: true);
         if (!Core.CheckInventory(50741, toInv: false) || !getExtras)
         {
-            Core.AddDrop("Lord Of Order");
+            Bot.Drops.Add(50741);
             Core.EnsureComplete(7165, 50741);
             Bot.Wait.ForPickup("Lord Of Order");
 

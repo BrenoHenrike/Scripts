@@ -46,7 +46,7 @@ public class QuestRewardTemplate
     {
         int i = 0;
 
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Bot.Drops.Add(item.Name);
@@ -96,7 +96,7 @@ public class QuestRewardTemplate
 
     public void AutoReward(int questID, int quant)
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
@@ -138,7 +138,7 @@ public class QuestRewardTemplate
 // stuff not needed:
 //     public void OptionsSelect(Template reward = new(), int questID = 000)
 //     {
-//         List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
+//         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 //         List<string> RewardsList = new List<string>();
 //         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
 //             RewardsList.Add(Item.Name);

@@ -22,7 +22,7 @@ public class TrobbolierPet
     {
         F13.Wormhole();
 
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5067).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(5067).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);

@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class DecorateYourSpace
 {
@@ -18,7 +19,7 @@ public class DecorateYourSpace
 
     public void Getthestuff()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7782).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(7782).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
