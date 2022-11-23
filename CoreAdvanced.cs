@@ -94,7 +94,7 @@ public class CoreAdvanced
         if (buyOnlyThis == null && buyMode == null)
             Bot.Config.Configure();
 
-        int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
+        int mode = (int)(buyMode ?? Bot.Config.Get<mergeOptionsEnum>("Generic", "mode"));
         matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         List<ShopItem> items = new();
