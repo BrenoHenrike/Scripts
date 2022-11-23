@@ -1,27 +1,42 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Good/BLOD/CoreBLOD.cs
-//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Other/Classes/Necromancer.cs
-//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 using Skua.Core.Interfaces;
 
-public class SoulSearching
+public class SoulSearchingc
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreNSOD NSOD = new();
+    public BattleUnder BattleUnder = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        NSOD.CavernCelestite(1601);
+        SoulSearching();
 
         Core.SetOptions(false);
+    }
+
+    public void SoulSearching(int quant = 65000)
+    {
+        if (Core.CheckInventory("Spirit Orb", quant))
+            return;
+
+        Core.AddDrop("Undead Essence", "Cavern Celestite", "Spirit Orb");
+        if (!Bot.Quests.IsUnlocked(939))
+            BattleUnder.BattleUnderC();
+        Core.FarmingLogger("Spirit Orb", quant);
+
+        Core.RegisterQuests(939, 2082);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
+        {
+            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
+            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");
+            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul");
+
+            Bot.Wait.ForPickup("Undead Essence");
+            Bot.Wait.ForPickup("Spirit Orb");
+        }
+        Core.CancelRegisteredQuests();
     }
 }
