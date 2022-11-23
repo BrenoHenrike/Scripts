@@ -17,7 +17,13 @@ public class Trygve
         Core.SetOptions(false);
     }
 
+
     public void Storyline()
+    {
+        TrygveStory();
+        ShadowrRealm();
+    }
+    public void TrygveStory()
     {
         if (Core.isCompletedBefore(8298))
             return;
@@ -48,5 +54,25 @@ public class Trygve
         Story.KillQuest(8297, "trygve", new[] { "Blood Eagle|Rune Boar", "Vindicator Recruit|Vindicator Soldier" });
         //Isa, Reversed (8298)
         Story.KillQuest(8298, "trygve", "Gramiel");
+
     }
+
+    public void ShadowrRealm()
+    {
+        if (Core.isCompletedBefore(3182))
+            return;
+
+        Story.PreLoad(this);
+
+        // [[[Shadowrealm]]] un related quest but releted to hollowborn
+
+        //Key to the ShadowLord 3182
+        if (!Story.QuestProgression(3182))
+        {
+            Core.EnsureAccept(3182);
+            Core.HuntMonster("shadowrealmpast", "Pure Shadowscythe", "Source of Luminance", 50, false);
+            Core.EnsureComplete(3182);
+        }
+    }
+
 }
