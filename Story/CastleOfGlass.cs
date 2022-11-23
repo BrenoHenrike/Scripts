@@ -35,7 +35,7 @@ public class CastleOfGlass
         Story.MapItemQuest(5341, "castleofglass", new[] { 4700, 4711 });
         Story.KillQuest(5341, "castleofglass", "Glass Panther");
 
-        //Try Try Again 5342
+        //Try, Try Again 5342
         Story.MapItemQuest(5342, "castleofglass", new[] { 4701, 4712 });
         Story.KillQuest(5342, "castleofglass", "Mirror Knight");
 
