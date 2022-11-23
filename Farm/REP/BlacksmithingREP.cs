@@ -17,7 +17,8 @@ public class BlacksmithingREP
 
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("UseGold", "Use Gold To Get Rep?", "Will Farm the Quest \"Intrepid Investing\" which costs 500k/ turnin, if you dont have the gold the bot will farm it.", false)
+        new Option<bool>("UseGold", "Use Gold To Get Rep?", "Will Farm the Quest \"Intrepid Investing\" which costs 500k/ turnin, if you dont have the gold the bot will farm it.", false),
+        new Option<bool>("CanSolo", "SoloSlugButter", "If not, it will do the mobs in the begining of the map.", false)
     };
 
 
@@ -28,7 +29,7 @@ public class BlacksmithingREP
         //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
 
         Adv.BestGear(GearBoost.rep);
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
+        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), Bot.Config.Get<bool>("CanSolo"));
 
         Core.SetOptions(false);
     }

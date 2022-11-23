@@ -849,7 +849,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void BlacksmithingREP(int rank = 10, bool UseGold = false)
+    public void BlacksmithingREP(int rank = 10, bool UseGold = false, bool CanSolo = false)
     {
         if (FactionRank("Blacksmithing") >= rank)
             return;
@@ -893,16 +893,11 @@ public class CoreFarms
         Bot.Quests.UpdateQuest(3484);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
-            Core.Join("towerofdoom10", "r10", "Left", publicRoom: true);
             Bot.Sleep(Core.ActionDelay);
             Bot.Drops.Add("Monster Trophy");
-            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4 && !Core.CheckInventory("Monster Trophy", 15))
-            {
-                Bot.Combat.Attack("Slugbutter");
-                if (Bot.Map.PlayerCount < 4)
-                    break;
-            }
-            Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
+            if (CanSolo)
+                Core.HuntMonster("towerofdoom10", "Slugbutter", "Monster Trophy", 15, isTemp: false, log: false);
+            else Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
         }
