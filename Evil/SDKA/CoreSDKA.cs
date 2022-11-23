@@ -315,16 +315,16 @@ public class CoreSDKA
             return;
         }
 
-        if (!Core.CheckInventory(new[] { "Necrotic Daggers of Destruction", "Shadow Daggers of Destruction", "Daggers of Destruction" }, any: true))
+        if (!Core.CheckInventory(new[] { "Necrotic Daggers of Destruction", "Shadow Daggers of Destruction", "Daggers of Destruction"}))
         {
-            if (!Core.CheckInventory(new[] { "Accursed Arsenic of Doom", "Accursed Arsenic" }, any: true)
+            if (!Core.CheckInventory(new[] { "Accursed Arsenic of Doom", "Accursed Arsenic" })
                 && !Core.CheckInventory("Ominous Aura", 2))
             {
                 int DSOQuantity = 10500 - (Bot.Inventory.GetQuantity("Corrupt Spirit Orb") * 100) - (Bot.Inventory.GetQuantity("Ominous Aura") * 5000);
                 FarmDSO(DSOQuantity);
             }
 
-            if (!Core.CheckInventory(new[] { "Accursed Arsenic of Doom", "Accursed Arsenic" }, any: true)
+            if (!Core.CheckInventory(new[] { "Accursed Arsenic of Doom", "Accursed Arsenic" })
                 && !Core.CheckInventory("Ominous Aura", 2))
             {
                 int CSOQuantity = 105 - (Bot.Inventory.GetQuantity("Ominous Aura") * 50);
@@ -333,7 +333,7 @@ public class CoreSDKA
                 DoomMerge("Corrupt Spirit Orb", CSOQuantity);
             }
 
-            if (!Core.CheckInventory(new[] { "Accursed Arsenic of Doom", "Accursed Arsenic" }, any: true)
+            if (!Core.CheckInventory(new[] { "Accursed Arsenic of Doom", "Accursed Arsenic" })
                 && !Core.CheckInventory("Ominous Aura", 2))
                 DoomMerge("Ominous Aura", 2);
 
