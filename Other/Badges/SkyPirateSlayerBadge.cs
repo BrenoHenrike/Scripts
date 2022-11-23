@@ -25,13 +25,19 @@ public class SkyPirateBadge
         if (!Core.IsMember)
             return;
 
+        if (Core.HasWebBadge("SkyPirate Slayer"))
+        {
+            Core.Logger("Already have the SkyPirate Slayer badge");
+            return;
+        }
+
         SkyGuardSaga.DoAll();
 
         Core.AddDrop("SkyPirate Annhilator Recognition");
         Core.EquipClass(ClassType.Farm);
 
         Core.EnsureAccept(1291);
-        Core.KillMonster("strategy", "r22", "Left", "*", "SkyPirate Annihilator Token", 100);
+        Core.KillMonster("strategy", "r22", "Left", "*", "SkyPirate Annihilator Token", 100, log: false);
         Core.EnsureComplete(1291);
 
         Core.JumpWait();

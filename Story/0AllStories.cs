@@ -145,6 +145,7 @@
 //cs_include Scripts/Story/Shinkansen.cs
 //cs_include Scripts/Story/ShipWreck.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
+//cs_include Scripts/Story/SpirePast.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/SuperDeath.cs
 
@@ -341,6 +342,7 @@ public class AllStories
     public Shinkansen Shinkansen = new();
     public ShipWreck ShipWreck = new();
     public SkyGuardSaga SkyGuardSaga = new();
+    public SpirePast SpirePast = new();
     public StarSinc StarSinc = new();
     public SuperDeath SuperDeath = new();
 
@@ -403,7 +405,7 @@ public class AllStories
         #region 7DD
         DD.Complete7DD();
         Core.Logger($"Saga: 7 Deadly Dragons - Complete");
-        
+
         Egg.Hatch();
         Core.Logger($"Saga: 7 Deadly Dragons (Extra) - Complete");
         #endregion
@@ -780,6 +782,9 @@ public class AllStories
 
         SkyGuardSaga.DoAll();
         Core.Logger($"Saga: SkyGuard Saga - Complete");
+
+        SpirePast.Storyline();
+        Core.Logger($"Story: Spire Past - Complete");
 
         StarSinc.StarSincQuests();
         Core.Logger($"Story: Star Sinc - Complete");

@@ -52,7 +52,7 @@ public class Archmage
         Core.SetOptions();
 
         GetAM();
-        
+
         Core.SetOptions(false);
     }
 
@@ -109,6 +109,7 @@ public class Archmage
 
             Core.ToBank(Cosmetics);
 
+            BossItemCheck(250, "Elemental Binding");
             Core.Unbank(new[] { "book of Magus", "book of Fire", "book of Ice", "book of Aether", "book of Arcana", "Elemental Binding" });
 
             Core.EnsureComplete(8918);
@@ -139,7 +140,7 @@ public class Archmage
         Arcana();
         UnboundTomb(30);
 
-        BossItemCheck("Elemental Binding");
+        BossItemCheck(2500, "Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
@@ -272,7 +273,7 @@ public class Archmage
         if (Extras && Core.CheckInventory(new[] { "Book of Aether", "Archmage's Staff" }, toInv: false))
             return;
 
-        BossItemCheck("Void Essentia", "Vital Exanima", "Everlight Flame");
+        BossItemCheck(1, "Void Essentia", "Vital Exanima", "Everlight Flame");
 
         Core.Logger("Book of Aether");
 
@@ -299,7 +300,7 @@ public class Archmage
         if (Extras && Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false))
             return;
 
-        BossItemCheck("The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
+        BossItemCheck(1, "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
         Bot.Options.AggroMonsters = false; //just incse for the equip.
 
@@ -477,7 +478,7 @@ public class Archmage
     }
 
     //Boss Items
-    void BossItemCheck(params string[] Items)
+    void BossItemCheck(int quant = 1, params string[] Items)
     {
         Core.Logger("Item Check.");
 
@@ -489,21 +490,21 @@ public class Archmage
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("voidflibbi", "Flibbitiestgibbet", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [voidflibbi]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [voidflibbi]", stopBot: true);
                     break;
 
                 case "Vital Exanima":
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("Dage", "Dage the Evil", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
                     break;
 
                 case "Everlight Flame":
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("Fireavatar", "Avatar Tyndarius", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
                     break;
 
                 case "Calamitous Ruin":
@@ -515,43 +516,43 @@ public class Archmage
                         Bot.Events.RunToArea -= DarkCarnaxMove;
                     }
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]", stopBot: true);
                     break;
 
                 case "The Mortal Coil":
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("Tercessuinotlim", "Nulgath", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]", stopBot: true);
                     break;
 
                 case "The Divine Will":
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("celestialpast", "Azalith", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]", stopBot: true);
                     break;
 
                 case "Insatiable Hunger":
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("voidnightbane", "Nightbane", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [voidnightbane]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [voidnightbane]", stopBot: true);
                     break;
 
                 case "Undying Resolve":
-                        Bot.Quests.UpdateQuest(8732);
+                    Bot.Quests.UpdateQuest(8732);
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("Theworld", "Encore Darkon", item, isTemp: false);
                     if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]", stopBot: true);
                     break;
 
                 case "Elemental Binding":
                     if (Bot.Config.Get<bool>("Armying?"))
                         Core.HuntMonster("Archmage", "Prismata", item, 250, isTemp: false);
                     if (!Core.CheckInventory(item, 250))
-                        Core.Logger($"{item} x250 Not Found, Can Be Farmed (with an Army) from [Prismata] in [Archmage]", stopBot: true);
+                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Prismata] in [Archmage]", stopBot: true);
                     break;
             }
         }

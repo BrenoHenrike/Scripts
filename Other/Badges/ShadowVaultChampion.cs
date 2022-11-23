@@ -1,13 +1,14 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Cornelis[mem].cs
+//cs_include Scripts/Story/ShadowVault.cs
 using Skua.Core.Interfaces;
 
-public class CornelisRebornbadge
+public class ShadowVaultChampion
+
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Cornelis Corn = new();
+    public ShadowVault SV = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -20,13 +21,16 @@ public class CornelisRebornbadge
 
     public void Badge()
     {
-        if (Core.HasAchievement(13))
+        if (Core.HasWebBadge(badge))
         {
-            Core.Logger("Already have the Cornelis Reborn badge");
+            Core.Logger($"Already have the {badge} badge");
             return;
         }
 
-        Core.Logger($"Doing Cornelis story for the badge");
-        Corn.StoryLine();
+        Core.Logger($"Doing ShadowVault story for {badge} badge");
+        SV.StoryLine();
+        
     }
+
+    private string badge = "ShadowScythe Champion";
 }

@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Cornelis[mem].cs
+//cs_include Scripts/Story/Asylum.cs
 using Skua.Core.Interfaces;
 
-public class CornelisRebornbadge
+public class Committed
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Cornelis Corn = new();
+    public Asylum Asylum = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -20,13 +20,15 @@ public class CornelisRebornbadge
 
     public void Badge()
     {
-        if (Core.HasAchievement(13))
+        if (Core.HasWebBadge(badge))
         {
-            Core.Logger("Already have the Cornelis Reborn badge");
+            Core.Logger($"Already have the {badge} badge");
             return;
         }
 
-        Core.Logger($"Doing Cornelis story for the badge");
-        Corn.StoryLine();
+        Core.Logger($"Doing Asylum story for {badge} badge");
+        Asylum.StoryLine();
     }
+
+    private string badge = "Committed";
 }
