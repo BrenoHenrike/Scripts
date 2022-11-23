@@ -180,7 +180,8 @@ public class FarmerJoeStartingTheAcc
 
         #region Prepare for Lvl100
         Core.Logger("step 1 Farming Classes");
-        MDS.EasyMountDoomSkull();
+        // MDS.EasyMountDoomSkull(); //no longer works for the shop
+        LOC.Complete13LOC();
         Farm.ChaosREP();
         Adv.BuyItem("Confrontation", 891, "Chaos Slayer Berserker", shopItemID: 24359);
         Adv.rankUpClass("Chaos Slayer Berserker");
