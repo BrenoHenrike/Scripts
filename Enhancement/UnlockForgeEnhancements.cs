@@ -27,7 +27,7 @@
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
-//cs_include ScriptsOther/Armor/FireChampionsArmor.cs
+//cs_include Scripts/Other/Armor/FireChampionsArmor.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
