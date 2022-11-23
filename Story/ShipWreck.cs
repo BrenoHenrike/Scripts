@@ -18,7 +18,9 @@ public class ShipWreck
 
         StoryLine();
 
+
         Core.SetOptions(false);
+
     }
 
     public void StoryLine()
@@ -78,5 +80,15 @@ public class ShipWreck
                     break;
             }
         }
+
+        Core.Unbank("Golden Scale", "Crystal Fragment", "Powder Flask",
+                            "Broken Anti-Au Crystal", "Flagon of Water", "Old Weapon",
+                            "Shell", "Crystallized Crowbar", "Trapdoor Key",
+                            "What is THAT?!"); // didn't add the last token to it
+        Core.TrashCan("Golden Scale", "Crystal Fragment", "Powder Flask",
+                                           "Broken Anti-Au Crystal", "Flagon of Water", "Old Weapon",
+                                           "Shell", "Crystallized Crowbar", "Trapdoor Key",
+                                           "What is THAT?!");
+
     }
 }
