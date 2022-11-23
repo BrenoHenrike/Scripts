@@ -23,6 +23,12 @@ public class BlackFridayAlphaHunterRogue
 
     public void GetSets(bool toBank = true)
     {
+        if (!Core.isSeasonalMapActive("blackfridaywar"))
+        {
+            Core.Logger("This bot is seasonal only.");
+            return;
+        }
+
         var AllRewards = Core.EnsureLoad(6104).Rewards;
         AllRewards.AddRange(Core.EnsureLoad(6106).Rewards);
         var AllRewardsArray = AllRewards.Select(x => x.ID).ToArray();
