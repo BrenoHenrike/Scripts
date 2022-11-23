@@ -70,7 +70,7 @@ public class CastleOfGlass
         Story.KillQuest(5352, "castleofglass", "Shard Golem");
 
         //The Shardy Boys 5353
-        Story.MapItemQuest(5353, "castleofglass", 4707);
+        Story.MapItemQuest(5353, "castleofglass", 4707, 5);
         Story.KillQuest(5353, "castleofglass", "Glass Golem");
 
         //Cold Iron 5354
