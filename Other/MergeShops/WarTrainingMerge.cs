@@ -5,7 +5,7 @@
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
-//cs_include Scripts/Other/FireChampionsArmor.cs
+//cs_include Scripts/Other/Armor/FireChampionsArmor.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
