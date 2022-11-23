@@ -309,7 +309,7 @@ public class CoreDailies
         DailyRoutine(4308, "deadmoor", "Nightmare", "Nightmare Fire");
         if (Core.IsMember)
             DailyRoutine(4309, "deadmoor", "Nightmare", "Unlucky Horseshoe");
-        Core.ToBank("C-Armor Token");
+        Core.ToBank("C-Armor Token", "Mad Weaponsmith");
     }
 
     public void BrightKnightArmor(bool checkArmor = true)
