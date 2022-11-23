@@ -104,7 +104,7 @@ public class Follower
                     if (tryGoto(playerName))
                     {
                         Core.Logger(playerName + " found!");
-                        return;
+                        break;
                     }
                     min++;
 
@@ -315,7 +315,7 @@ public class Follower
             }
             if (tryGoto(playerName))
             {
-                Core.Logger(playerName + " found!");    
+                Core.Logger(playerName + " found!");
                 return;
             }
             min++;
