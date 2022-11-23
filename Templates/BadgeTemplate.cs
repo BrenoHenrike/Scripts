@@ -1,12 +1,10 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
-public class MoglinPunter
+public class BadgeTemplate
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -19,14 +17,15 @@ public class MoglinPunter
 
     public void Badge()
     {
-        if (!Core.isSeasonalMapActive("Punt"))
-            return;
-
-        Core.Join("Punt");
-        while (!Bot.ShouldExit && !Core.HasWebBadge("Moglin Punter"))
+        if (Core.HasWebBadge(badge))
         {
-            Core.Jump("Enter", "Spawn");
-            Bot.Send.Packet("%xt%zm%ia%1%rval%btnPuntting%%");
+            Core.Logger($"Already have the {badge} badge");
+            return;
         }
+
+        Core.Logger($"Doing xxx story for {badge} badge");
+        
     }
+
+    private string badge = "BadgeName";
 }

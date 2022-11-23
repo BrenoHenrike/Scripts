@@ -243,7 +243,7 @@ public class SkyGuardSaga
             {
                 Core.AddDrop("Rhison Glue");
                 Core.EnsureAccept(2250);
-                Core.HuntMonster("bloodtusk", "Rhison", "Rhison Hooves", 10);
+                Core.HuntMonster("bloodtusk", "Rhison", "Rhison Hoof", 10);
                 Core.EnsureComplete(2250);
             }
 

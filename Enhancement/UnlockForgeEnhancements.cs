@@ -27,7 +27,7 @@
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
-//cs_include Scripts/Other/FireChampionsArmor.cs
+//cs_include Scripts/Other/Armor/FireChampionsArmor.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
@@ -562,7 +562,7 @@ public class UnlockForgeEnhancements
         if (!Core.CheckInventory("Ascended Paladin"))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
+            Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
             Core.BuyItem("therift", 1399, "Ascended Paladin");
             Core.BuyItem("therift", 1399, "Ascended Paladin Staff");
             Core.BuyItem("therift", 1399, "Ascended Paladin Sword");

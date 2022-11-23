@@ -95,12 +95,12 @@ public class ThirdSpell
                     break;
 
                 case 4488: //I Enjoy Being a Soul
-                    Core.HuntMonster("thirdspell", "Living Fire", "Sun Monster Ember", 15);
+                    Core.KillMonster("thirdspell", "r12", "Left", "Living Fire", "Sun Monster Ember", 15);
                     break;
 
                 case 4489: //Burning Like Me!
                     Core.HuntMonster("thirdspell", "Sun Flare", "Sun Flare Defeated", 10);
-                    Core.HuntMonster("thirdspell", "Living Fire", "Living Fire Defeated", 5);
+                    Core.KillMonster("thirdspell", "r12", "Left", "Living Fire", "Living Fire Defeated", 5);
                     break;
 
                 case 4490: //Assault With a Deadly Shadow

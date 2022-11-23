@@ -292,6 +292,8 @@ public class CoreFarms
 
         Core.SavedState(false);
         Core.ToggleAggro(false);
+        if (rankUpClass)
+            ToggleBoost(BoostType.Class, false);
 
         bool NotYetLevel(int _level)
         {
@@ -890,7 +892,7 @@ public class CoreFarms
             Core.Join("towerofdoom10", "r10", "Left", publicRoom: true);
             Bot.Sleep(Core.ActionDelay);
             Bot.Drops.Add("Monster Trophy");
-            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4)
+            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4 && !Core.CheckInventory("Monster Trophy", 15))
             {
                 Bot.Combat.Attack("Slugbutter");
                 if (Bot.Map.PlayerCount < 4)
@@ -1009,13 +1011,12 @@ public class CoreFarms
 
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
+        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
 
         Core.RegisterQuests(8989);
         while (!Bot.ShouldExit && FactionRank("Brethwren") < rank)
-        {
             Core.HuntMonster("birdswithharms", "Turkonian", "Turkonian Beaten", 10);
-        }
 
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
