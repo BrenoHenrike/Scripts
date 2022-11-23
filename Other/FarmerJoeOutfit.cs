@@ -98,11 +98,28 @@ public class FarmerJoeStartingTheAcc
         Tutorial.Badges();
 
         Core.Logger("Getting Starting Cash and Levels");
-        Core.RegisterQuests(4007);
 
-        while (!Bot.ShouldExit && Bot.Player.Level < 10)
-            Core.HuntMonster("oaklore", "Bone Berserker");
-        Core.CancelRegisteredQuests();
+
+        if (Bot.Player.Level < 10)
+        {
+            Core.RegisterQuests(4007);
+            Core.EquipClass(ClassType.Solo);
+            while (!Bot.ShouldExit && Bot.Player.Level < 10)
+            {
+                if (Bot.Player.Level >= 5 && !Core.CheckInventory(new[] { "Healer's Staff", "Greenguard Knight", "Greenguard Knight Sheathed Blades" }))
+                {
+                    Bot.Drops.Add("Greenguard Knight", "Greenguard Knight Sheathed Blades");
+                    Core.BuyItem("oaklore", 1576, "Healer's Staff");
+                    Core.Equip("Healer's Staff");
+                    Core.EnsureAccept(6257);
+                    Core.KillMonster("oaklore", "r4Up", "Right", "*", "Training Monster Slain", 5);
+                    Core.EnsureComplete(6257);
+                    Core.Equip("Greenguard Knight", "Greenguard Knight Sheathed Blades");
+                }
+                Core.HuntMonster("oaklore", "Bone Berserker");
+                Core.CancelRegisteredQuests();
+            }
+        }
 
         if (Bot.Player.Level < 20)
         {
