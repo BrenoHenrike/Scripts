@@ -238,9 +238,6 @@ public class CoreFarms
         if (rankUpClass)
             ToggleBoost(BoostType.Class);
         Core.ToggleAggro(true);
-
-        bool OptionRestore = Bot.Options.AggroMonsters;
-        Bot.Options.AggroMonsters = true;
         Core.SavedState();
 
         //Between level 1 and 5
@@ -293,7 +290,6 @@ public class CoreFarms
         while (NotYetLevel(100))
             Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
 
-        Bot.Options.AggroMonsters = OptionRestore;
         Core.SavedState(false);
         Core.ToggleAggro(false);
 
