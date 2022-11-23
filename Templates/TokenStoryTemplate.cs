@@ -37,38 +37,47 @@ public class TokenStoryTemplate
             {
                 case 0001: // QuestName 0001
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0002: // QuestName 0002
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0003: // QuestName 0003
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0004: // QuestName 0004
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0005: // QuestName 0005
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0006: // QuestName 0006
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0007: // QuestName 0007
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0008: // QuestName 0008
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
                 case 0009: // QuestName 0009
                     Core.HuntMonster("MapName", "MonsterName", "DropName", 0000);
+                    Core.GetMapItem(0000, 0000, "MapName");
                     break;
 
             }
