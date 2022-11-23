@@ -89,12 +89,12 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string buyOnlyThis = null, string[] itemBlackList = null)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string buyOnlyThis = null, string[] itemBlackList = null, mergeOptionsEnum? buyMode = null)
     {
-        if (buyOnlyThis == null)
+        if (buyOnlyThis == null && buyMode == null)
             Bot.Config.Configure();
 
-        int mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
+        int mode = (int)(buyMode ?? Bot.Config.Get<mergeOptionsEnum>("Generic", "mode"));
         matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         List<ShopItem> items = new();
@@ -306,15 +306,6 @@ public class CoreAdvanced
     /// The name of ScriptOptions for any merge script.
     /// </summary>
     public string OptionsStorage = "MergeOptionStorage";
-
-    private enum mergeOptionsEnum
-    {
-        all = 0,
-        acOnly = 1,
-        mergeMats = 2,
-        select = 3
-    };
-
     #endregion
 
     #region Kill
@@ -1363,7 +1354,8 @@ public class CoreAdvanced
                 // Sorting by level (descending)
                 List<ShopItem> sortedList = availableEnh.OrderByDescending(x => x.Level).ToList();
                 List<ShopItem> bestTwoEnhancements = new();
-                if (sortedList.Count >= 2) {
+                if (sortedList.Count >= 2)
+                {
                     bestTwoEnhancements = sortedList.GetRange(0, 2);
                 }
                 else
@@ -1968,3 +1960,11 @@ public enum HelmSpecial //Enhancement Pattern ID
     Anima = 28,
     Pneuma = 27,
 }
+
+public enum mergeOptionsEnum
+{
+    all = 0,
+    acOnly = 1,
+    mergeMats = 2,
+    select = 3
+};

@@ -34,7 +34,7 @@ public class TachyonMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null)
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.IsMember)
         {
@@ -45,7 +45,7 @@ public class TachyonMerge
         TOD.DeepSpace();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("tachyon", 1251, findIngredients, buyOnlyThis);
+        Adv.StartBuyAllMerge("tachyon", 1251, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
