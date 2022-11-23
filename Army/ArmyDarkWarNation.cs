@@ -41,7 +41,7 @@ public class ArmyDarkWarNation
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 
-        if (!Bot.Quests.IsUnlocked(8578))
+        if (!isCompletedBefore(8578))
         {
             Core.Logger("Doing the storyline");
             DW.DarkWarLegion();

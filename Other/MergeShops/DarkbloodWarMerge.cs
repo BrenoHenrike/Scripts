@@ -62,7 +62,7 @@ public class DarkbloodWarMerge
                 case "Darkblood War Medal":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(5874, 5875);
+                    Core.RegisterQuests(5874, 5875); //Acolyte's Medallions 5874, Acolyte's Mega Medallions 5875
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("kolyaban", "r2", "Left", "*", "Acolyte's Medallion", 4);
