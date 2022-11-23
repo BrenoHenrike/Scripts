@@ -35,7 +35,7 @@ public class CastleOfGlass
         Story.MapItemQuest(5341, "castleofglass", new[] { 4700, 4711 });
         Story.KillQuest(5341, "castleofglass", "Glass Panther");
 
-        //Try Try Again 5342
+        //Try, Try Again 5342
         Story.MapItemQuest(5342, "castleofglass", new[] { 4701, 4712 });
         Story.KillQuest(5342, "castleofglass", "Mirror Knight");
 
@@ -70,7 +70,7 @@ public class CastleOfGlass
         Story.KillQuest(5352, "castleofglass", "Shard Golem");
 
         //The Shardy Boys 5353
-        Story.MapItemQuest(5353, "castleofglass", 4707);
+        Story.MapItemQuest(5353, "castleofglass", 4707, 5);
         Story.KillQuest(5353, "castleofglass", "Glass Golem");
 
         //Cold Iron 5354
