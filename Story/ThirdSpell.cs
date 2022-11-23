@@ -100,7 +100,7 @@ public class ThirdSpell
 
                 case 4489: //Burning Like Me!
                     Core.HuntMonster("thirdspell", "Sun Flare", "Sun Flare Defeated", 10);
-                    Core.HuntMonster("thirdspell", "Living Fire", "Living Fire Defeated", 5);
+                    Core.KillMonster("thirdspell", "r12", "Left", "Living Fire", "Living Fire Defeated", 5);
                     break;
 
                 case 4490: //Assault With a Deadly Shadow
