@@ -34,7 +34,7 @@ public class TheGameofGemstones
             Nation.ApprovalAndFavor(1, 0);
             Core.HuntMonster("Lavarun", "Mega Tyndarius", "Archfiend's Amber", isTemp: false);
             Core.KillMonster("Catacombs", "Boss2", "Left", "Dr. De'Sawed", "Phantasmia's Charoite", isTemp: false);
-            Farm.BludrutBrawlBoss("Yoshino's Citrine", 1);
+            Farm.BludrutBrawlBoss("Yoshino's Citrine", 1, false);
             Core.HuntMonster("Wolfwing", "Wolfwing", "Tendou's Moonstone", isTemp: false);
             Core.HuntMonster("baconcatyou", "*", "Asuka's Ruby", isTemp: false);
         }
