@@ -368,7 +368,7 @@ public class CoreStory
             }
 
             Core.DebugLogger(this);
-            var desiredReward = runQuestData.desiredQuestReward.Select(i => i.Name).ToArray();
+            var desiredReward = runQuestData.desiredQuestReward.Select(i => i.ID).ToArray();
             if (questID != finalItemQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.Name).ToArray()))
             {
                 Core.Logger($"Already Completed: [{questID}] - \"{questData.Name}\"", "QuestProgression");
