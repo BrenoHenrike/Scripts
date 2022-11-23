@@ -28,7 +28,7 @@ public class DoomVaultA
 
         Story.PreLoad(this);
 
-        Bot.Quests.UpdateQuest(3008);
+        Core.AcceptandCompleteTries = 1;
 
         // The Challenge Begins 2952
         Story.KillQuest(2952, "doomvault", "Grim Soldier");
@@ -60,7 +60,7 @@ public class DoomVaultA
         Story.KillQuest(2968, "doomvault", "Fallen Light Statue");
 
         // Soul-d on Defeat 2969
-        Story.KillQuest(2969, "doomvault", "Grim Soldier");
+        Story.KillQuest(2969, "doomvault", "Grim Souldier");
 
         // The Key to Help Me 2970
         Story.KillQuest(2970, "doomvault", "Grim Shelleton");
