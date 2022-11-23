@@ -81,6 +81,7 @@
 //cs_include Scripts/Story/CastleTunnels.cs
 //cs_include Scripts/Story/Concert[MEM].cs
 //cs_include Scripts/Story/Cornelis[mem].cs
+//cs_include Scripts/Story/CrashSite.cs
 //cs_include Scripts/Story/Cleric.cs
 //cs_include Scripts/Story/CruxShip.cs
 
@@ -279,6 +280,7 @@ public class AllStories
     public Cleric Cleric = new();
     public Concert Concert = new();
     public Cornelis Cornelis = new();
+    public CrashSite CrashSite = new();
     public CruxShip CruxShip = new();
 
     public DarkCarnaxStory DarkCarnax = new();
@@ -599,6 +601,9 @@ public class AllStories
 
         Cornelis.StoryLine();
         Core.Logger($"Story: Hodan Quests - Complete");
+
+        CrashSite.StoryLine();
+        Core.Logger($"Story: CrashSite - Complete");
 
         CruxShip.StoryLine();
         Core.Logger($"Story: CruxShip - Complete");
