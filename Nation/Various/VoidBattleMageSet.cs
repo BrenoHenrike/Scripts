@@ -33,11 +33,11 @@ public class VoidBattleMageSet
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(6694); //Arlette's Birthday Quest 6694
+        Core.RegisterQuests(6694);
         foreach (ItemBase Reward in RewardOptions)
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
-                Core.Logger($"{Reward.Name} Found.");
+                return;
             else
             {
                 Core.FarmingLogger(Reward.Name, 1);
