@@ -397,31 +397,24 @@ public class CoreBots
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
     public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
     {
-        ItemBase? itemTempInv = Bot.TempInv.Items.Find(i => i.ID == itemID);
-        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.ID == itemID);
-        InventoryItem? itemBank = Bot.Bank.Items.Find(i => i.ID == itemID);
-        InventoryItem? itemHouse = Bot.House.Items.Find(i => i.ID == itemID);
-
-        if (itemTempInv == null && itemInv == null && itemBank == null)
-            return false;
-
-        if (itemTempInv != null && Bot.TempInv.Contains(itemTempInv.Name, quant))
+        if (Bot.TempInv.Contains(itemID, quant))
             return true;
 
-        if (itemInv != null && Bot.Inventory.Contains(itemInv.Name, quant))
+        if (Bot.Inventory.Contains(itemID, quant))
             return true;
 
-        if (itemHouse != null && Bot.House.Contains(itemHouse.Name, quant))
-            return true;
-
-        if (itemBank != null && Bot.Bank.Contains(itemBank.Name))
+        if (Bot.Bank.Contains(itemID))
         {
             if (toInv)
-                Unbank(itemBank.Name);
+                Unbank(itemID);
 
-            if (itemBank.Quantity >= quant)
+            if ((toInv && Bot.Inventory.GetQuantity(itemID) >= quant) ||
+               (!toInv && Bot.Bank.TryGetItem(itemID, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
                 return true;
         }
+
+        if (Bot.House.Contains(itemID))
+            return true;
 
         return false;
     }
@@ -455,6 +448,42 @@ public class CoreBots
 
                 if ((toInv && Bot.Inventory.GetQuantity(name) >= quant) ||
                    (!toInv && Bot.Bank.TryGetItem(name, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
+                {
+                    if (any)
+                        return true;
+                    else continue;
+                }
+            }
+
+            if (!any)
+                return false;
+        }
+
+        return !any;
+    }
+
+    public bool CheckInventory(int[] itemIDs, int quant = 1, bool any = false, bool toInv = true)
+    {
+        if (itemIDs == null)
+            return true;
+
+        foreach (int id in itemIDs)
+        {
+            if (Bot.Inventory.Contains(id, quant))
+            {
+                if (any)
+                    return true;
+                else
+                    continue;
+            }
+
+            else if (Bot.Bank.Contains(id))
+            {
+                if (toInv)
+                    Unbank(id);
+
+                if ((toInv && Bot.Inventory.GetQuantity(id) >= quant) ||
+                   (!toInv && Bot.Bank.TryGetItem(id, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
                 {
                     if (any)
                         return true;
@@ -516,6 +545,40 @@ public class CoreBots
     }
 
     /// <summary>
+    /// Move items from bank to inventory
+    /// </summary>
+    /// <param name="items">Items to move</param>
+    public void Unbank(params int[] items)
+    {
+        if (items == null)
+            return;
+
+        ToggleAggro(false);
+        JumpWait();
+
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+            Bot.Bank.Open();
+
+        foreach (int item in items)
+        {
+            if (Bot.Bank.Contains(item))
+            {
+                Bot.Sleep(ActionDelay);
+                if (Bot.Inventory.FreeSlots == 0)
+                    Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
+
+                if (!Bot.Bank.EnsureToInventory(item))
+                {
+                    Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                    continue;
+                }
+                Logger($"{item} moved from bank");
+            }
+        }
+        ToggleAggro(true);
+    }
+
+    /// <summary>
     /// Move items from inventory to bank
     /// </summary>
     /// <param name="items">Items to move</param>
@@ -531,6 +594,41 @@ public class CoreBots
             Bot.Bank.Open();
 
         foreach (string item in items)
+        {
+            if (Bot.Inventory.IsEquipped(item))
+            {
+                Logger("Can't bank an equipped item");
+                continue;
+            }
+            if (Bot.Inventory.Contains(item))
+            {
+                if (!Bot.Inventory.EnsureToBank(item))
+                {
+                    Logger($"Failed to bank {item}, skipping it");
+                    continue;
+                }
+                Logger($"{item} moved to bank");
+            }
+        }
+        ToggleAggro(true);
+    }
+
+    /// <summary>
+    /// Move items from inventory to bank
+    /// </summary>
+    /// <param name="items">Items to move</param>
+    public void ToBank(params int[] items)
+    {
+        if (items == null)
+            return;
+
+        ToggleAggro(false);
+        JumpWait();
+
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+            Bot.Bank.Open();
+
+        foreach (int item in items)
         {
             if (Bot.Inventory.IsEquipped(item))
             {
@@ -921,6 +1019,25 @@ public class CoreBots
     /// </summary>
     /// <param name="items">Items to remove</param>
     public void RemoveDrop(params string[] items)
+    {
+        Bot.Drops.Remove(items);
+    }
+
+    /// <summary>
+    /// Adds drops to the pickup list, un-bank the items.
+    /// </summary>
+    /// <param name="items">Items to add</param>
+    public void AddDrop(params int[] items)
+    {
+        Unbank(items);
+        Bot.Drops.Add(items);
+    }
+
+    /// <summary>
+    /// Removes drops from the pickup list.
+    /// </summary>
+    /// <param name="items">Items to remove</param>
+    public void RemoveDrop(params int[] items)
     {
         Bot.Drops.Remove(items);
     }
