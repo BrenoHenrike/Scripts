@@ -34,23 +34,21 @@ public class CoreStory
     public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Core.EnsureLoad(QuestID);
-        ItemBase[] Requirements = QuestData.Requirements.ToArray();
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
-        SmartKillMonster(QuestID, MapName, MonsterName, 50, Requirements[0].Coins);
+        SmartKillMonster(QuestID, MapName, MonsterName);
         if (AutoCompleteQuest)
-            Bot.Wait.ForPickup(Requirements.ToString());
+            foreach (var item in QuestData.Requirements)
+                Bot.Wait.ForPickup(item.ID);
         TryComplete(QuestData, AutoCompleteQuest);
 
-        void SmartKillMonster(int questID, string map, string monster, int iterations = 20, bool completeQuest = false, bool publicRoom = false)
+        void SmartKillMonster(int questID, string map, string monster)
         {
             Core.EnsureAccept(questID);
             _AddRequirement(questID);
-            Core.Join(map, publicRoom: publicRoom);
-            _SmartKill(monster, iterations);
-            if (completeQuest)
-                Core.EnsureComplete(questID);
+            Core.Join(map);
+            _SmartKill(monster, 20);
             CurrentRequirements.Clear();
         }
     }
@@ -67,25 +65,22 @@ public class CoreStory
     public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
         Quest QuestData = Core.EnsureLoad(QuestID);
-        ItemBase[] Requirements = QuestData.Requirements.ToArray();
-
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
-        SmartKillMonster(QuestID, MapName, MonsterNames, 50, Requirements[0].Coins);
+        SmartKillMonster(QuestID, MapName, MonsterNames);
         if (AutoCompleteQuest)
-            Bot.Wait.ForPickup(Requirements.ToString());
+            foreach (var item in QuestData.Requirements)
+                Bot.Wait.ForPickup(item.ID);
         TryComplete(QuestData, AutoCompleteQuest);
 
-        void SmartKillMonster(int questID, string map, string[] monsters, int iterations = 20, bool completeQuest = false, bool publicRoom = false)
+        void SmartKillMonster(int questID, string map, string[] monsters)
         {
             Core.EnsureAccept(questID);
             _AddRequirement(questID);
-            Core.Join(map, publicRoom: publicRoom);
+            Core.Join(map);
             foreach (string monster in monsters)
-                _SmartKill(monster, iterations);
-            if (completeQuest)
-                Core.EnsureComplete(questID);
+                _SmartKill(monster, 20);
             CurrentRequirements.Clear();
         }
     }
