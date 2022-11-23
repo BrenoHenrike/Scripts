@@ -896,7 +896,7 @@ public class CoreFarms
             Core.Join("towerofdoom10", "r10", "Left", publicRoom: true);
             Bot.Sleep(Core.ActionDelay);
             Bot.Drops.Add("Monster Trophy");
-            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4)
+            while (!Bot.ShouldExit && Bot.Map.PlayerCount >= 4 && !Core.CheckInventory("Monster Trophy", 15))
             {
                 Bot.Combat.Attack("Slugbutter");
                 if (Bot.Map.PlayerCount < 4)
