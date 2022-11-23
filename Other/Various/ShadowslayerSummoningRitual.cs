@@ -8,6 +8,7 @@
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class ShadowslayerSummoningRitual
 {
@@ -32,7 +33,7 @@ public class ShadowslayerSummoningRitual
 
     public void GetAll()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

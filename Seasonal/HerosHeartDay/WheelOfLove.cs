@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class WheeleOfLove
 {
@@ -75,7 +76,7 @@ public class WheeleOfLove
 
     public void WheelOfLoveQuest()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5694).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(5694).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

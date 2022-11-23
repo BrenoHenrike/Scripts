@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class SweatBirthdayTreatsRewards
 {
@@ -19,7 +20,7 @@ public class SweatBirthdayTreatsRewards
 
     public void QuestFarming()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(8906).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8906).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

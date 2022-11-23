@@ -20,7 +20,7 @@ public class SunkenTreasure
 
     public void GetAll()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7715).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(7715).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);

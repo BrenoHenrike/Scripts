@@ -44,7 +44,7 @@ public class JuggernautItemsofNulgath
         var Count = 0;
         int x = 1;
 
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

@@ -31,7 +31,7 @@ public class AssistingOblivionBlade
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant");
 
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);

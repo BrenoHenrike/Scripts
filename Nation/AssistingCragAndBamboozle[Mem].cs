@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using System.Collections.Generic;
 
 public class AssistingCragAndBamboozle
@@ -64,7 +65,7 @@ public class AssistingCragAndBamboozle
         }
         else
         {
-            List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
+            List<ItemBase> RewardOptions = Core.EnsureLoad(5817).Rewards;
             Core.EnsureComplete(5817, RewardOptions.First(x => x.Name == Reward).ID);
         }
         Bot.Wait.ForPickup("*");

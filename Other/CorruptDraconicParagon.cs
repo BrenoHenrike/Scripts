@@ -4,6 +4,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class CorruptDraconicParagon
 {
@@ -23,7 +24,7 @@ public class CorruptDraconicParagon
 
     public void GetAll()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(7428).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(7428).Rewards;
         List<string> RewardsList = new List<string>();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
         string[] Rewards = RewardList.ToArray();

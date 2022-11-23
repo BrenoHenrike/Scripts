@@ -25,7 +25,7 @@ public class VoidBattleMageSet
 
     public void GetSet()
     {
-        List<Skua.Core.Models.Items.ItemBase> RewardOptions = Core.EnsureLoad(6694).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(6694).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Bot.Drops.Add(item.Name);
