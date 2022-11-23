@@ -37,8 +37,8 @@ public class CrashSite
             {
 
                 case 4787: //Mug Me Some Dwakels 4787
-                    Core.HuntMonster("crashsite", "Flamethrower Dwakel", "Pneumatic Relay");
-                    Core.HuntMonster("crashsite", "Dwakel Warrior", "Sonic Transducer");
+                    Core.HuntMonster("crashsite", "Dwakel Warrior", "Pneumatic Relay");
+                    Core.HuntMonster("crashsite", "Flamethrower Dwakel", "Sonic Transducer");
                     Core.HuntMonster("crashsite", "Dwakel Blaster", "Solenoid Helix");
 
                     break;
