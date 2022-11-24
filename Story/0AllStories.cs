@@ -77,6 +77,7 @@
 //cs_include Scripts/Story/BeleensDream.cs
 //cs_include Scripts/Story/BloodMoon.cs
 //cs_include Scripts/Story/Bludrut.cs
+//cs_include Scripts/Story/BoneBreak.cs
 //cs_include Scripts/Story/Borgars.cs
 
 //cs_include Scripts/Story/CastleOfGlass.cs
@@ -277,6 +278,7 @@ public class AllStories
     public BeleensDream BeleensDream = new();
     public BloodMoon BloodMoon = new();
     public Bludrut Bludrut = new();
+    public BoneBreak BoneBreak = new();
     public Borgars Borgars = new();
 
     public CastleOfGlass CastleOfGlass = new();
@@ -586,6 +588,14 @@ public class AllStories
 
         Bludrut.StoryLine();
         Core.Logger($"Story: Bludrut - Complete");
+
+        if (!Core.HasAchievement(30, "ip6") || Core.isCompletedBefore(5981) || !Core.CheckInventory(27222) || !Core.IsMember)
+
+        {
+            BoneBreak.StoryLine();
+            Core.Logger($"Story: BoneBreak - Complete");
+
+        }
 
         Borgars.StoryLine();
         Core.Logger($"Story: Borgars - Complete");
