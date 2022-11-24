@@ -65,11 +65,11 @@ public class ArmyTemplate
                 if (item.Coins)
                     Core.AddDrop(Reward);
                 else
-                    Core.Logger($"{item} Has Been Excluded as it is not a AC item.");
+                    Core.Logger($"{item} has been excluded as it is not a AC item.");
             }
         }
-
         else Core.AddDrop(Loot);
+
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(questID);
 
