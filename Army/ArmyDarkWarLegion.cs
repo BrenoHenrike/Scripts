@@ -41,7 +41,7 @@ public class ArmyDarkWarLegion
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 
-        if (!isCompletedBefore(8584))
+        if (!Core.isCompletedBefore(8584))
         {
             Core.Logger("Doing the storyline");
             DW.DarkWarLegion();
