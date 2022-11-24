@@ -138,20 +138,21 @@ public class FarmerJoeStartingTheAcc
 
         #endregion starting out the acc
 
-
-        #region Obtain the Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
+        #region Obtain the Enchanted Victory Blade
+        //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
         Core.Logger("Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)");
         EVBW.GetWeapon(VictoryBladeStyles.Smart);
-        if (Core.CheckInventory("Arcane Blade of Glory"))
-            Core.ToBank("Arcane Blade of Glory");
-        if (Core.CheckInventory("Shadow Blade of Dispair"))
-            Core.ToBank("Shadow Blade of Dispair");
-        if (Core.CheckInventory("Arcane Blade of Glory"))
-            Core.Equip("Arcane Blade of Glory");
+
+        string wep = "";
+        if (Core.CheckInventory("Enchanted Victory Blade"))
+            wep = "Enchanted Victory Blade";
+        else if (Core.CheckInventory("Arcane Blade of Glory"))
+            wep = "Arcane Blade of Glory";
         else if (Core.CheckInventory("Shadow Blade of Dispair"))
-            Core.Equip("Shadow Blade of Dispair");
+            wep = "Shadow Blade of Dispair";
         InvEn.EnhanceInventory();
-        #endregion Obtain the Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
+        Core.Equip(wep);
+        #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
         Adv.BuyItem("classhalla", 174, "Mage");
