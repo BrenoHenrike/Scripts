@@ -6,7 +6,7 @@
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
-public class Caladbogl
+public class Caladbolg
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -16,27 +16,27 @@ public class Caladbogl
 
     public List<IOption> Options = new()
     {
-        new Option<bool>("other", "Other Rewards", "If True, the bot will also get the Dual Caladbogls and Caladboogly", false)
+        new Option<bool>("other", "Other Rewards", "If True, the bot will also get the Dual Caladbolgs and Caladboogly", false)
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        GetCaladbogl(Bot.Config.Get<bool>("other"));
+        GetCaladbolg(Bot.Config.Get<bool>("other"));
 
         Core.SetOptions(false);
     }
 
-    public void GetCaladbogl(bool otherRewards = true)
+    public void GetCaladbolg(bool otherRewards = true)
     {
-        string[] target = otherRewards ? new[] { "Caladbogl", "Caladboogly", "Dual Caladbolgs" } : new[] { "Caladbogl" };
+        string[] target = otherRewards ? new[] { "Caladbolg", "Caladboogly", "Dual Caladbolgs" } : new[] { "Caladbolg" };
         if (Core.CheckInventory(target))
             return;
 
-        if (!Core.CheckInventory("Altar Of Caladbogl"))
+        if (!Core.CheckInventory("Altar Of Caladbolg"))
         {
-            Core.Logger("This bot requiers you to have a \"Altar Of Caladbogl\". Stopping the bot.", messageBox: true);
+            Core.Logger("This bot requiers you to have a \"Altar Of Caladbolg\". Stopping the bot.", messageBox: true);
             return;
         }
 
