@@ -476,7 +476,7 @@ public class UnlockForgeEnhancements
 
     public void Acheron()
     {
-        if (Core.isCompletedBefore(8820))
+        if (Core.isCompletedBefore(8820) || !Core.CheckInventory(new[] {38566, 38567} ))
             return;
 
         Core.EnsureAccept(8820);
