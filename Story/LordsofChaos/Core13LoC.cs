@@ -1922,7 +1922,7 @@ public class Core13LoC
             Bot.Wait.ForPickup("Perfect Prism");
         }
 
-        //Pure Chaos
+        //Pure Chaos 
         if (!Story.QuestProgression(3185) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Unchaorrupted Sample")))
         {
             Core.AddDrop("Unchaorrupted Sample");
