@@ -1913,7 +1913,7 @@ public class Core13LoC
 
 
         //Reflect the Damage
-        if (!Story.QuestProgression(3184) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("Perfect Prism")))
+        if (!Story.QuestProgression(3184) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Perfect Prism")))
         {
             Core.AddDrop("Perfect Prism");
             Core.EnsureAccept(3184);
@@ -1923,7 +1923,7 @@ public class Core13LoC
         }
 
         //Pure Chaos
-        if (!Story.QuestProgression(3185) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("Unchaorrupted Sample")))
+        if (!Story.QuestProgression(3185) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Unchaorrupted Sample")))
         {
             Core.AddDrop("Unchaorrupted Sample");
             Core.EnsureAccept(3185);
@@ -1933,7 +1933,7 @@ public class Core13LoC
         }
 
         //Enemies of a Feather Flock Together
-        if (!Story.QuestProgression(3186) || (Core.isCompletedBefore(3188) ? false : !Core.CheckInventory("Harpy Feather")))
+        if (!Story.QuestProgression(3186) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Harpy Feather")))
         {
             Core.AddDrop("Harpy Feather");
             Core.EnsureAccept(3186);
