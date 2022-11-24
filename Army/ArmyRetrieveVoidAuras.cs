@@ -149,6 +149,7 @@ public class RVAArmy
             Bot.Options.AggroMonsters = true;
             Core._KillForItem(monster, item, quant, isTemp, log: log);
         }
+        Bot.Options.AggroMonsters = false;
     }
 
     public void PlayerAFK()
