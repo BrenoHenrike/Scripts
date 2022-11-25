@@ -1,43 +1,41 @@
-//cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
-//cs_include Scripts/Enhancement/InventoryEnhancer.cs
-//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-//cs_include Scripts/Good/ArchPaladin.cs
-//cs_include Scripts/Story/XansLair.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Story/Yokai.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Other/Classes/DragonShinobi.cs
-//cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
-//cs_include Scripts/Dailies/LordOfOrder.cs
-//cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
-//cs_include Scripts/Nation/VHL/CoreVHL.cs
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Dailies/0AllDailies.cs
-//cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
+//cs_include Scripts/Dailies/LordOfOrder.cs
+//cs_include Scripts/Enhancement/InventoryEnhancer.cs
+//cs_include Scripts/Good/ArchPaladin.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
+//cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
+//cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Nation/VHL/CoreVHL.cs
+//cs_include Scripts/Other/Classes/DragonShinobi.cs
+//cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
+//cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
+//cs_include Scripts/Other/Classes/REP-based/Shaman.cs
+//cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
+//cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Other/Weapons/BurningBlade.cs
+//cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
+//cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
-//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
-//cs_include Scripts/Other/Weapons/BurningBlade.cs
-//cs_include Scripts/Other/Classes/REP-based/Shaman.cs
-//cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
-//cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
-//cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
-//cs_include Scripts/Good/Paladin.cs
-//cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
-//cs_include Scripts/Story/Tutorial.cs
-//cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
-//cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/LordsofChaos/MountDoomSkull.cs
+//cs_include Scripts/Story/Nation/CitadelRuins.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/Story/Tutorial.cs
+//cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Story/Yokai.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
-using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
 public class FarmerJoeStartingTheAcc
@@ -99,7 +97,6 @@ public class FarmerJoeStartingTheAcc
 
         Core.Logger("Getting Starting Cash and Levels");
 
-
         if (Bot.Player.Level < 10)
         {
             Core.RegisterQuests(4007);
@@ -133,8 +130,11 @@ public class FarmerJoeStartingTheAcc
             Farm.IcestormArena(20, true);
         }
 
-        InvEn.EnhanceInventory();
-        Farm.IcestormArena(30, true);
+        if (Bot.Player.Level < 30)
+        {
+            InvEn.EnhanceInventory();
+            Farm.IcestormArena(30, true);
+        }
 
         #endregion starting out the acc
 
@@ -157,18 +157,14 @@ public class FarmerJoeStartingTheAcc
         #region Dual Chainsaw Katanas
         Adv.BuyItem("classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
+        Core.Equip("Mage");
         DCSK.GetWep();
         InvEn.EnhanceInventory();
         #endregion Dual Chainsaw Katanas
 
-        // #region Boosts
-        // Core.Logger("Getting Boosters for Gold, Class, and Rep, Rewards are now random. Chances are 20%/booster this may take a minute or two.");
-        // Boosts.GetBoosts((int)Booster.All, 50, 50, 50);
-        // #endregion //appearntly the rates are supper fucked?
-
         #region Level to 75
         Core.Logger("Level to 75");
-        foreach (int level in new int[] { 45, 60, 75 })
+        foreach (int level in new int[] { 45, 50, 55, 60, 65, 70, 75 })
         {
             if (Bot.Player.Level < level)
             {
@@ -181,10 +177,24 @@ public class FarmerJoeStartingTheAcc
 
         #region Prepare for Lvl100
         Core.Logger("step 1 Farming Classes");
+        // P1: Healer LOC
+        Core.Equip("Healer");
+        Adv.rankUpClass("Healer");
         LOC.Complete13LOC();
+
+        // P2: Mage Chaos Rep
+        Core.Equip("Mage");
         Farm.ChaosREP();
+
+        // P3: Chaos Slayer
         Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker", shopItemID: 15402);
         Adv.rankUpClass("Chaos Slayer Berserker");
+
+        // P4: DragonSoul Shinobi for Doomkitten
+        DS.GetDSS();
+
+        // P5: Farm ArchPaladin
+        Core.Equip("Chaos Slayer Berserker");
         AP.GetAP();
 
         //Step 2 Solo CLass:
@@ -213,7 +223,6 @@ public class FarmerJoeStartingTheAcc
         Shaman.GetShaman();
         GB.GetGB();
         SC.GetSC();
-        DS.GetDSS();
         Adv.BuyItem("Classhalla", 178, "Ninja");
         Adv.rankUpClass("Ninja");
         #endregion Prepare for Lvl100
