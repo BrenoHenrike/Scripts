@@ -4,11 +4,11 @@ using Skua.Core.Interfaces;
 
 public class TokenStoryTemplate
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreStory Story = new();
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.BankingBlackList.AddRange(new[] { "QuestDropName", "QuestDropName", "QuestDropName",
                                                "QuestDropName", "QuestDropName", "QuestDropName",
@@ -18,9 +18,7 @@ public class TokenStoryTemplate
 
         StoryLine();
 
-
         Core.SetOptions(false);
-
     }
 
     public void StoryLine()
@@ -29,7 +27,7 @@ public class TokenStoryTemplate
             return;
 
         //Add questIDs of the tokenQuests on their right ordre
-        Story.LegacyQuestManager(QuestLogic, 0001, 0002, 0003, 0004, 0005, 0006, 0007, 0008, 0009);
+        Story.LegacyQuestManager(QuestLogic, 0001, 0002, 0003, 0004, 0005, 0006, 0007, 0008, 0009); // Or use Core.FromTo(0001, 0009)
 
         void QuestLogic()
         {
