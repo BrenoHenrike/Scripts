@@ -27,6 +27,7 @@ public class ArmyLightCaster
     public AvatarOfDeathsScythe AODS = new AvatarOfDeathsScythe();
     public GuardianOfSpiritsBlade GOSB = new GuardianOfSpiritsBlade();
     public LanceOfTime LOT = new LanceOfTime();
+    public BurningBlade BB = new BurningBlade();
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
@@ -74,8 +75,9 @@ public class ArmyLightCaster
                 ArmyThing(4511, "lostruinswar", new[] { "Infernal Imp" }, "Energy of Death", false, 500);
             if (!Core.CheckInventory(31028))
                 ArmyThing(4512, "lostruinswar", new[] { "Underworld Hound" }, "Captured Time", false, 500);
-            LM.GetLM(false);
             Core.EquipClass(ClassType.Solo);
+            BB.GetBurningBlade();
+            LM.GetLM(true);
             Bot.Quests.UpdateQuest(6042);
             Core.EnsureAccept(6495);
             BBOA.GetBBoA();
