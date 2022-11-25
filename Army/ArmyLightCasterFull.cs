@@ -47,7 +47,7 @@ public class ArmyLightCasterFull
     public void FullLC()
     {   
         Core.BankingBlackList.AddRange(Loot);
-        bot.Options.RestPackets = false;
+        Bot.Options.RestPackets = false;
         /*Checking if missing burning blade or the other 3 quest swords from lostruinswar, didn't work without using item ids specifically*/
         if (!Core.CheckInventory(31058) || !Core.CheckInventory(30266) || 
             !Core.CheckInventory(31019) || !Core.CheckInventory(31028))
