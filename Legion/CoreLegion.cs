@@ -452,11 +452,11 @@ public class CoreLegion
         Core.FarmingLogger("Legion Token", quant);
         Core.Join("dreadrock");
         Core.RegisterQuests(4849);
-        Bot.Options.AggroMonsters = true;
+        Core.ConfigureAggro();
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6, log: false);
 
-        Bot.Options.AggroMonsters = false;
+        Core.ConfigureAggro(false);
         Core.CancelRegisteredQuests();
     }
 
