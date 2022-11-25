@@ -35,10 +35,10 @@ public class Tower
 
         // Interview The Troops 1604
         Story.MapItemQuest(1604, "tower", 836, 4);
-        
+
         // The Drop Spot 1605
         Story.MapItemQuest(1605, "tower", 837);
-        
+
         // The Spider's Gem 1606
         Story.KillQuest(1606, "greenguardeast", "Spider");
 
@@ -52,6 +52,11 @@ public class Tower
         Story.MapItemQuest(1609, "tower", 839, 12);
 
         // Face the Traitor! 1610
-        Story.KillQuest(1610, "tower", "Guardian Baxter");
+        if (!Story.QuestProgression(1610))
+        {
+            Core.EnsureAccept(1610);
+            Core.HuntMonsterMapID("tower", 6, "Baxter Defeated!");
+            Core.EnsureComplete(1610);
+        }
     }
 }

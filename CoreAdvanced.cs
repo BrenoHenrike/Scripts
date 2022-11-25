@@ -1711,7 +1711,6 @@ public class CoreAdvanced
                     case "skyguard grenadier":
                     case "soul cleaver":
                     case "starlord":
-                    case "stonecrusher":
                     case "swordmaster assassin":
                     case "swordmaster":
                     case "timekeeper":
@@ -1859,6 +1858,7 @@ public class CoreAdvanced
                     case "royal battlemage":
                     case "timeless dark caster":
                     case "witch":
+                    case "stonecrusher":
                         type = EnhancementType.Wizard;
                         wSpecial = WeaponSpecial.Awe_Blast;
                         break;

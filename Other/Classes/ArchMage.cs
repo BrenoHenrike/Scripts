@@ -3,14 +3,14 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\QueenofMonsters\CoreQOM.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
-//cs_include Scripts/Story\QueenofMonsters\Extra\CelestialArena.cs
-//cs_include Scripts/Story\ThroneofDarkness\CoreToD.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Skills;

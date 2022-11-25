@@ -30,12 +30,13 @@ public class SoulSearchingc
         Core.RegisterQuests(939, 2082);
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
         {
-            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
-            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");
-            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul");
+            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul", log: false);
+            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul", log: false);
+            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
 
             Bot.Wait.ForPickup("Undead Essence");
             Bot.Wait.ForPickup("Spirit Orb");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Spirit Orb")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }

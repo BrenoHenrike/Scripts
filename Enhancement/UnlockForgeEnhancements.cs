@@ -476,8 +476,10 @@ public class UnlockForgeEnhancements
 
     public void Acheron()
     {
-        if (Core.isCompletedBefore(8820))
+        if (Core.isCompletedBefore(8820) || !Core.CheckInventory(new[] {38566, 38567}, toInv: false))
             return;
+
+        Core.Logger("Unlocking Enhancement: Acheron");
 
         Core.EnsureAccept(8820);
         
@@ -508,6 +510,8 @@ public class UnlockForgeEnhancements
     {
         if (Core.isCompletedBefore(8821))
             return;
+            
+        Core.Logger("Unlocking Enhancement: Elysium");
 
         Core.EnsureAccept(8821);
         CorNSOD.BonesVoidRealm(20);
@@ -520,7 +524,7 @@ public class UnlockForgeEnhancements
             return;
         }
         Core.EnsureComplete(8821);
-        Core.Logger("Enhancement Unlocked: insert");
+        Core.Logger("Enhancement Unlocked: Elysium");
     }
 
     public void ForgeCapeEnhancement()

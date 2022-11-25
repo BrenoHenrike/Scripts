@@ -70,12 +70,12 @@ public class CoreNSOD
                 BladeEssence(2);
                 CHourglass(31);
                 ScrollDarkArts(4);
-                Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
+                Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
             }
             NSBlade();
             NSHilt();
             NSAura();
-            Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
+            Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
             VoidAuras(800);
 
             Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");
@@ -84,7 +84,7 @@ public class CoreNSOD
 
         Core.Logger("Getting the NSOD character page badge");
         Core.EnsureAccept(7652);
-        Core.HuntMonster("graveyard", "Skeletal Warrior", "Arcane Parchment");
+        Core.HuntMonster("graveyard", "Skeletal Warrior", "Arcane Parchment", log: false);
         Core.EnsureComplete(7652);
         Core.Relogin();
 
@@ -118,11 +118,12 @@ public class CoreNSOD
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
+            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false, publicRoom: true);
+            Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false, publicRoom: true, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }
@@ -140,11 +141,12 @@ public class CoreNSOD
         Core.RegisterQuests(4438);
         while (!Core.CheckInventory("Void Aura", quant))
         {
-            Core.KillMonster("reddeath", "r2", "Left", "*", "Mirror Essence", 175, false);
-            Core.KillMonster("neverworldb", "r2", "Left", "*", "Twisted Essence", 25, false);
-            Core.HuntMonster("doomwar", "Zombie King Alteon", "Transposed Essence", 1, false);
+            Core.KillMonster("reddeath", "r2", "Left", "*", "Mirror Essence", 175, false, log: false);
+            Core.KillMonster("neverworldb", "r2", "Left", "*", "Twisted Essence", 25, false, log: false);
+            Core.HuntMonster("doomwar", "Zombie King Alteon", "Transposed Essence", 1, false, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }
@@ -167,18 +169,19 @@ public class CoreNSOD
         Core.RegisterQuests(4432);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
-            Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false);
-            Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", Essencequant, false, publicRoom: true);
-            Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", Essencequant, false, publicRoom: true);
-            Core.KillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", Essencequant, false, publicRoom: true);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence", Essencequant, false, publicRoom: true);
-            Core.KillMonster("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence", Essencequant, false, publicRoom: true);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Dai Tengu Essence", Essencequant, false, publicRoom: true);
-            Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", Essencequant, false, publicRoom: true);
-            Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", Essencequant, false, publicRoom: true);
-            Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", Essencequant, false, publicRoom: true);
+            Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
+            Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.KillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.KillMonster("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.HuntMonster("hachiko", "Dai Tengu", "Dai Tengu Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", Essencequant, false, publicRoom: true, log: false);
+            Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", Essencequant, false, publicRoom: true, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }
@@ -380,9 +383,9 @@ public class CoreNSOD
         Core.RegisterQuests(939);
         while (!Bot.ShouldExit && !Core.CheckInventory("Cavern Celestite", quant))
         {
-            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul");
-            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul");
-            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul");
+            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul", log: false);
+            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul", log: false);
+            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
 
             Bot.Wait.ForPickup("Cavern Celestite");
         }
@@ -395,7 +398,7 @@ public class CoreNSOD
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("bosschallenge", "Colossal Primarch", "Primarch's Hilt", quant, false, publicRoom: true);
+        Core.HuntMonster("bosschallenge", "Colossal Primarch", "Primarch's Hilt", quant, false, publicRoom: true, log: false);
     }
 
     public void BladeEssence(int quant)
@@ -404,7 +407,7 @@ public class CoreNSOD
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("chaoscrypt", "Chaorrupted Armor", "Blade Essence", quant, false);
+        Core.HuntMonster("chaoscrypt", "Chaorrupted Armor", "Blade Essence", quant, false, log: false);
     }
 
     public void CHourglass(int quant)
@@ -413,8 +416,8 @@ public class CoreNSOD
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false, publicRoom: true);
-        Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", quant, false, publicRoom: true);
+        Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false, publicRoom: true, log: false);
+        Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", quant, false, publicRoom: true, log: false);
     }
 
     public void ScrollDarkArts(int quant)
@@ -423,7 +426,7 @@ public class CoreNSOD
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", quant, false, publicRoom: true);
+        Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", quant, false, publicRoom: true, log: false);
     }
 
     #endregion
