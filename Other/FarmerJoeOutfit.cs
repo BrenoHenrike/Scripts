@@ -189,6 +189,7 @@ public class FarmerJoeStartingTheAcc
         // P3: Chaos Slayer
         Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker", shopItemID: 15402);
         Adv.rankUpClass("Chaos Slayer Berserker");
+        Core.Equip("Chaos Slayer Berserker");
 
         // P4: DragonSoul Shinobi for Doomkitten
         DS.GetDSS();
