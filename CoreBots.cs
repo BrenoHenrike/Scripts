@@ -519,7 +519,6 @@ public class CoreBots
         if (items == null)
             return;
 
-        ToggleAggro(false);
         JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
@@ -541,7 +540,6 @@ public class CoreBots
                 Logger($"{item} moved from bank");
             }
         }
-        ToggleAggro(true);
     }
 
     /// <summary>
@@ -553,7 +551,6 @@ public class CoreBots
         if (items == null)
             return;
 
-        ToggleAggro(false);
         JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
@@ -575,7 +572,6 @@ public class CoreBots
                 Logger($"{item} moved from bank");
             }
         }
-        ToggleAggro(true);
     }
 
     /// <summary>
@@ -587,7 +583,6 @@ public class CoreBots
         if (items == null)
             return;
 
-        ToggleAggro(false);
         JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
@@ -610,7 +605,6 @@ public class CoreBots
                 Logger($"{item} moved to bank");
             }
         }
-        ToggleAggro(true);
     }
 
     /// <summary>
@@ -622,7 +616,6 @@ public class CoreBots
         if (items == null)
             return;
 
-        ToggleAggro(false);
         JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
@@ -645,7 +638,6 @@ public class CoreBots
                 Logger($"{item} moved to bank");
             }
         }
-        ToggleAggro(true);
     }
 
     /// <summary>
@@ -690,8 +682,6 @@ public class CoreBots
         if (item == null || (buy_quant = _CalcBuyQuantity(item, quant)) == 0 || !_canBuy(shopID, item, buy_quant))
             return;
 
-        ToggleAggro(false);
-
         Join(map);
         Bot.Wait.ForMapLoad(map);
         JumpWait();
@@ -730,8 +720,6 @@ public class CoreBots
         }
         else
             Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
-
-        ToggleAggro(true);
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -983,7 +971,6 @@ public class CoreBots
     /// </summary>
     public void TrashCan(params string[] items)
     {
-        ToggleAggro(false);
         JumpWait();
         foreach (string item in items)
         {
@@ -997,7 +984,6 @@ public class CoreBots
             }
             else ToBank(item);
         }
-        ToggleAggro(true);
     }
 
     #endregion
@@ -1386,7 +1372,9 @@ public class CoreBots
         {
             if (log)
                 Logger($"Killing {monster}");
+            ToggleAggro(true);
             Bot.Kill.Monster(monster);
+            ToggleAggro(false);
             Rest();
             return;
         }
@@ -1426,7 +1414,9 @@ public class CoreBots
         {
             if (log)
                 Logger($"Killing {monster}");
+            ToggleAggro(true);
             Bot.Kill.Monster(monster);
+            ToggleAggro(false);
             Rest();
             return;
         }
@@ -1676,6 +1666,7 @@ public class CoreBots
             Logger($"Killing {name} for {item}, ({dynamicQuantity}/{quantity}) [Temp = {tempItem}]");
         }
 
+        ToggleAggro(true);
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
             if (!Bot.Combat.StopAttacking)
@@ -1857,20 +1848,43 @@ public class CoreBots
         Bot.Handlers.RegisterOnce(1, (Bot) => Bot.ShowMessageBox(message, caption));
     }
 
+    public void ConfigureAggro(bool status = true)
+    {
+        Logger("Configuring aggro");
+        last_aggro_status = status;
+    }
+
     public void ToggleAggro(bool enable)
     {
-        //if (enable && AggroMonsters)
-        //{
-        //    AggroMonsters = false;
-        //    Bot.Options.AggroMonsters = true;
-        //}
-        //else if (Bot.Options.AggroMonsters)
-        //{
-        //    AggroMonsters = true;
-        //    Bot.Options.AggroMonsters = false;
-        //}
+        if (enable)
+        {
+            if (last_aggro_status)
+            {
+                // If was previously aggro when untoggled
+                // Set aggro back and flip last aggro
+                Logger("Flipping aggro to False");
+                last_aggro_status = false;
+                Bot.Options.AggroMonsters = true;
+            }
+            else
+                return;
+        }
+        else
+        {
+            if (!Bot.Options.AggroMonsters)
+                return;
+            else
+            {
+                // If currently aggro, set last aggro to true
+                // and flip current aggro status
+                Logger("Flipping aggro to False");
+                last_aggro_status = true;
+                Bot.Options.AggroMonsters = false;
+            }
+        }
     }
-    private bool AggroMonsters = false;
+
+    private bool last_aggro_status = false;
 
     /// <summary>
     /// Send a packet to the server the desired amount of times
@@ -1949,9 +1963,7 @@ public class CoreBots
                     int? class_id = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == FarmClass.ToLower().Trim() && i.Category == ItemCategory.Class)?.ID;
                     if (class_id == null)
                         Logger("Class not found", stopBot: true);
-                    ToggleAggro(false);
                     Bot.Wait.ForItemEquip(class_id ?? 0);
-                    ToggleAggro(true);
                     Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
                     break;
                 }
@@ -1970,9 +1982,7 @@ public class CoreBots
                     int? class_id = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == SoloClass.ToLower().Trim() && i.Category == ItemCategory.Class)?.ID;
                     if (class_id == null)
                         Logger("Class not found", stopBot: true);
-                    ToggleAggro(false);
                     Bot.Wait.ForItemEquip(class_id ?? 0);
-                    ToggleAggro(true);
 
                     Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
                     break;
@@ -1989,7 +1999,6 @@ public class CoreBots
         if (gear == null)
             return;
 
-        ToggleAggro(false);
         JumpWait();
 
         foreach (string Item in gear)
@@ -2002,8 +2011,6 @@ public class CoreBots
                     Logger($"Equipped {Item}");
             }
         }
-
-        ToggleAggro(true);
     }
 
     public void EquipCached()
@@ -2169,6 +2176,7 @@ public class CoreBots
         if (!Bot.Player.InCombat)
             return;
 
+        ToggleAggro(false);
         List<string> MonsterCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToList();
 
         if (!MonsterCells.Contains(Bot.Player.Cell))
@@ -2237,7 +2245,6 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
-        ToggleAggro(false);
         Bot.Sleep(ActionDelay);
 
         switch (strippedMap)
@@ -2374,15 +2381,11 @@ public class CoreBots
                 };
                 if (lockedMaps.Contains(strippedMap))
                     File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
-                AggroMonsters = true;
             }
 
             Jump(cell, pad);
             Bot.Sleep(200);
         }
-
-        // ToggleAggro(true);
-        //^ breaks shit
 
         void tryJoin()
         {
@@ -2450,7 +2453,6 @@ public class CoreBots
         if (map != null)
             Join(map);
 
-        ToggleAggro(false);
         JumpWait();
         Bot.Sleep(ActionDelay);
         List<ItemBase> tempItems = Bot.TempInv.Items;
@@ -2482,7 +2484,6 @@ public class CoreBots
                     break;
             }
         }
-        ToggleAggro(true);
 
         Logger($"Map item {itemID}({quant}) acquired");
     }
@@ -2525,8 +2526,6 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
             return true;
 
-        ToggleAggro(false);
-
         JumpWait();
         Bot.Events.ExtensionPacketReceived += MapIsNotAvailableListener;
         bool seasonalMessageProc = false;
@@ -2549,8 +2548,6 @@ public class CoreBots
             if (i == 19)
                 Logger($"Failed to join {map}");
         }
-
-        ToggleAggro(true);
 
         Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
 
