@@ -11,7 +11,7 @@ public class CustomAggroMonTemplate
 
     public string OptionsStorage = "CustomAggroMon";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         sArmy.player1,
@@ -26,7 +26,7 @@ public class CustomAggroMonTemplate
         sArmy.player10,
     };
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 

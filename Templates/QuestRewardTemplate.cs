@@ -1,8 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 // using Skua.Core.Options;
@@ -19,7 +15,7 @@ public class QuestRewardTemplate
     int quant = 0;
     //Please fillin the above^
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
