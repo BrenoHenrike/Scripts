@@ -2388,13 +2388,15 @@ public class CoreBots
         {
             Bot.Events.ExtensionPacketReceived += MapIsMemberLocked;
             bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
+            Random rnd = new Random();
             for (int i = 0; i < 20; i++)
             {
                 if (hasMapNumber)
                     Bot.Map.Join(map, cell, pad, ignoreCheck);
                 else Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
                 Bot.Wait.ForMapLoad(strippedMap);
-                Bot.Sleep(200);
+                // Exponential Backoff
+                Bot.Sleep(100 * rnd.Next((int)(Math.Pow(2, i / 2.0))));
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
