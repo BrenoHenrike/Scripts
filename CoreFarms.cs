@@ -1817,7 +1817,7 @@ public class CoreFarms
                 if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
                 {
                     Core.EnsureAccept(3029); //Rosetta Stones 3029
-                    Core.HuntMonster("druids", "Void Bear", "Voidstone ", 6);
+                    Core.HuntMonster("druids", "Void Bear", "Voidstone", 6);
                     Core.EnsureComplete(3029);
 
                     Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
