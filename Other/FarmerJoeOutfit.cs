@@ -195,8 +195,10 @@ public class FarmerJoeStartingTheAcc
         DS.GetDSS();
 
         // P5: Farm ArchPaladin
+        Core.Logger("This will stall at Ultra Alteon, it is your job to unblock it");
         Core.Equip("Chaos Slayer Berserker");
         AP.GetAP();
+        Core.Equip("Arch Paladin");
 
         //Step 2 Solo CLass:
         Core.Logger("step 2 LOO Class Daily");
