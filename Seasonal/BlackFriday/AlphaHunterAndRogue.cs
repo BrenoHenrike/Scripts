@@ -37,7 +37,7 @@ public class BlackFridayAlphaHunterRogue
 
         Core.EquipClass(ClassType.Solo);
 
-        Core.RegisterQuests(Core.FromTo(6104, 6407));
+        Core.RegisterQuests(Core.FromTo(6104, 6107));
         while (!Bot.ShouldExit && !Core.CheckInventory(AllRewardsArray))
             Core.KillMonster("blackfridaywar", "r4", "Left", "*", log: false);
 

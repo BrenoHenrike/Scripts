@@ -2,15 +2,15 @@
 //cs_include Scripts/CoreFarms.cs
 using System.Globalization;
 using System.Reflection;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Shops;
-using Skua.Core.Utils;
-using Skua.Core.Models;
 using Skua.Core.Options;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using Skua.Core.Utils;
 
 public class CoreAdvanced
 {
@@ -1528,6 +1528,18 @@ public class CoreAdvanced
                 break;
             #endregion
 
+            #region Forge - Lucky - Smite
+            case "necrotic chronomancer":
+            case "Draconic Chronomancer":
+                if (!uSmite() || !uForgeCape())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Smite;
+                break;
+            #endregion
+
             #region Lucky - Forge - Awe Blast
             case "glacial berserker":
                 if (!Core.isCompletedBefore(8758))
@@ -1711,7 +1723,6 @@ public class CoreAdvanced
                     case "skyguard grenadier":
                     case "soul cleaver":
                     case "starlord":
-                    case "stonecrusher":
                     case "swordmaster assassin":
                     case "swordmaster":
                     case "timekeeper":
@@ -1800,6 +1811,7 @@ public class CoreAdvanced
                     case "lord of order":
                     case "nechronomancer":
                     case "necrotic chronomancer":
+                    case "Draconic Chronomancer":
                     case "no class":
                     case "nu metal necro":
                     case "obsidian no class":
@@ -1859,6 +1871,7 @@ public class CoreAdvanced
                     case "royal battlemage":
                     case "timeless dark caster":
                     case "witch":
+                    case "stonecrusher":
                         type = EnhancementType.Wizard;
                         wSpecial = WeaponSpecial.Awe_Blast;
                         break;

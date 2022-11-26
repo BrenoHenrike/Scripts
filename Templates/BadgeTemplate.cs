@@ -3,10 +3,10 @@ using Skua.Core.Interfaces;
 
 public class BadgeTemplate
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -24,7 +24,6 @@ public class BadgeTemplate
         }
 
         Core.Logger($"Doing xxx story for {badge} badge");
-        
     }
 
     private string badge = "BadgeName";

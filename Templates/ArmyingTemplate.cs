@@ -1,6 +1,4 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -10,8 +8,6 @@ public class ArmyTemplate
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
 
     private static CoreBots sCore = new();
@@ -19,7 +15,7 @@ public class ArmyTemplate
 
     public string OptionsStorage = "ArmyTemplate";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -31,12 +27,12 @@ public class ArmyTemplate
         sCore.SkipOptions
     };
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.BankingBlackList.AddRange(new[] { "add loot here" }); // if loot is Empty for Quest(ac) rewards, delete this.
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
+        Bot.Options.RestPackets = false;
 
         GetItems("map", new[] { "mob", "mob" }, 000, new[] { "item", "item" }); //*ONLY* leave Loot Empty for AC(only) quest rewards."
         GetItem("map", "mob", 000, "item"); //*ONLY* leave Loot Empty for AC(only) quest rewards."
@@ -65,11 +61,11 @@ public class ArmyTemplate
                 if (item.Coins)
                     Core.AddDrop(Reward);
                 else
-                    Core.Logger($"{item} Has Been Excluded as it is not a AC item.");
+                    Core.Logger($"{item} has been excluded as it is not a AC item.");
             }
         }
-
         else Core.AddDrop(Loot);
+
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(questID);
 

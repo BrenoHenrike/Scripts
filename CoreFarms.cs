@@ -346,11 +346,11 @@ public class CoreFarms
         Core.SavedState();
 
         Core.RegisterQuests(6294, 6295);
-        Bot.Options.AggroMonsters = true;
+        Core.ConfigureAggro();
         while (!Bot.ShouldExit && Bot.Player.Level < level)
             Core.KillMonster("Firewar", "r2", "Right", "*", log: false);
 
-        Bot.Options.AggroMonsters = false;
+        Core.ConfigureAggro(false);
         Core.CancelRegisteredQuests();
     }
     #endregion
@@ -431,13 +431,12 @@ public class CoreFarms
 
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
-
+        Core.ConfigureAggro(false);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
             Core.Join("bludrutbrawl-99999999", "Enter0", "Spawn");
-            Bot.Options.AggroMonsters = false;
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
             Core.PvPMove(7, "Morale0A");
@@ -494,9 +493,9 @@ public class CoreFarms
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
 
-        Bot.Options.AggroMonsters = true;
+        Core.ConfigureAggro();
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true, log: false);
-        Bot.Options.AggroMonsters = false;
+        Core.ConfigureAggro(false);
         Bot.Combat.Exit();
     }
 
@@ -1817,7 +1816,7 @@ public class CoreFarms
                 if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
                 {
                     Core.EnsureAccept(3029); //Rosetta Stones 3029
-                    Core.HuntMonster("druids", "Void Bear", "Voidstone ", 6);
+                    Core.HuntMonster("druids", "Void Bear", "Voidstone", 6);
                     Core.EnsureComplete(3029);
 
                     Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
@@ -2193,7 +2192,7 @@ public class CoreFarms
         {
             Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
             Core.BuyItem("dragonrune", 549, "Ember Ink", 50);
-            while (!Bot.ShouldExit && FactionRank("SpellCrafting") < (rank > 4 ? rank : 4))
+            while (!Bot.ShouldExit && Core.CheckInventory("Ember Ink") && FactionRank("SpellCrafting") < 4)
             {
                 Core.ChainComplete(2299);
             }

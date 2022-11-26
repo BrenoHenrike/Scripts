@@ -34,14 +34,17 @@ public class BuyOut
             string map = map_name == "-" ? Bot.Map.Name : map_name;
 
             List<ShopItem> shop_items = Core.GetShopItems(map, shop_id);
+            int i = 0;
             foreach (ShopItem item in shop_items)
             {
+                i++;
                 if (Core.CheckInventory(item.ID, toInv: false))
                     continue;
 
                 Core.BuyItem(map, shop_id, item.ID, shopItemID: item.ShopItemID);
                 if (item.Coins)
                     Core.ToBank(item.Name);
+                Core.Logger($"Bought {i} / {shop_items.Count} {item.Name}");
             }
         }
     }
