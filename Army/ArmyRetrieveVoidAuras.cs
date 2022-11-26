@@ -50,16 +50,6 @@ public class RVAArmy
         RetrieveVoidAurasArmy(7500);
     }
 
-    // public void WtfAmIDoing()
-    // {
-    //     while (Bot.Map.PlayerNames.Count < Bot.Config.Get<int>("armysize"))
-    //     {
-    //         Core.Logger($"Less than {Bot.Config.Get<int>("armysize")} players found");
-    //         Bot.Sleep(Core.ActionDelay);
-    //     }
-    //     RetrieveVoidAuras(7500);
-    // }
-
     public void RetrieveVoidAurasArmy(int Quantity)
     {
         if (Core.CheckInventory("Void Aura", Quantity))
@@ -73,6 +63,8 @@ public class RVAArmy
             Core.AddDrop("Creature Shard");
         Core.RegisterQuests(4432);
         Core.FarmingLogger($"Void Aura", Quantity);
+        Core.ConfigureAggro();
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.DebugLogger(this, "Accept Quest");
@@ -109,6 +101,7 @@ public class RVAArmy
             ArmyKillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", EssenceQuantity, false);
         }
         Core.CancelRegisteredQuests();
+        Core.ConfigureAggro(false);
         Core.Logger("THANKS FOR RIDING THE PAIN TRAIN!");
     }
 
@@ -140,13 +133,11 @@ public class RVAArmy
         {
             if (log)
                 Core.Logger($"Killing {monster}");
-            Bot.Options.AggroMonsters = true;
             Bot.Kill.Monster(monster);
             Core.Rest();
         }
         else
         {
-            Bot.Options.AggroMonsters = true;
             Core._KillForItem(monster, item, quant, isTemp, log: log);
         }
     }
