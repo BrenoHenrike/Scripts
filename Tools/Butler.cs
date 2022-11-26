@@ -75,8 +75,10 @@ public class Follower
             3798, // shadowattack
             4616, // mummies
         };
-    
-        Bot.Quests.UpdateQuest(Questids);
+
+        foreach(int questId in Questids) {
+            Bot.Quests.UpdateQuest(questId);
+        }
 
         // Setting Acheivment for doomvaultb
         Core.SetAchievement(18);
