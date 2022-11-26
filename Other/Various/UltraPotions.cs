@@ -173,8 +173,6 @@ public class PotionBuyer
 
             void GetIngredient(string ingredient, int ingreQuant = 30)
             {
-                // todo: add option to just use gold or prepruchased vouchers
-
                 if (Core.CheckInventory(ingredient, ingreQuant))
                     return;
 
@@ -196,13 +194,13 @@ public class PotionBuyer
                         break;
 
                     case "Chaos Entity":
-                        // Farm.Gold(100000 * (ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
-                        // Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", ingreQuant);
+                        Farm.Gold(100000 * Math.Min(0, ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
                         Adv.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
                         break;
 
                     case "Chaoroot":
                     case "Doomatter":
+                        Farm.Gold(300000 * Math.Min(0, ingreQuant - Bot.Inventory.GetQuantity("Receipt of Swindle")));
                         Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 

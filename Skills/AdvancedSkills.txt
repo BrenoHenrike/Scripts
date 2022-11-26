@@ -46,7 +46,11 @@ Base = Chrono Chaorruptor = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 
 Base = Chrono Commandant = 4 | 1 | 1 | 1 | 1 | 2 | 3 | Timeout:250
 Base = Chrono DataKnight = 1 | 2 | 3 | 1 | 2S | 3S | 1 | 2S | 3S | 1 | 4 | Timeout:250
 Base = Chrono DragonKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 | Timeout:250
+Base = Chronomancer = 2 | 4 | 1 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 1 | 1 | 3  = 250
+Solo = Chronomancer =  1 | 2S | 4 | 1 | 1 | 1 | 1 | 2H<60S | 1 | 1 | 1 | 3 = 120
+Base = ChronoCommander =  = 4 | 1 | 1 | 1 | 1 | 2 | 3 = 250
 Base = Chronomancer Prime = 2 | 4 | 1 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 1 | 1 | 3  = 250
+Solo = Chronomancer Prime =  1 | 2S | 4 | 1 | 1 | 1 | 1 | 2H<60S | 1 | 1 | 1 | 3 = 120
 Base = Chunin = 1 | 2 | 4 | 3 | Timeout:250
 Base = Classic Alpha Pirate = 4 | 1 | 3 | 2 | Mode Optimistic
 Base = Classic Barber = 4 | 1 | 3 | 2 | Timeout:250
@@ -60,6 +64,7 @@ Base = Classic Paladin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Classic Pirate = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Classic Soul Cleaver = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ClawSuit = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Continuum Chronomancer = 2 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
 Base = Cryomancer Mini Pet Coming Soon = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
 Farm = Daimon = 1 | 3 | 2H<50S | Mode Optimistic
@@ -92,6 +97,7 @@ Base = Drakel Warlord = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 | Mode Optimistic
 Base = Empyrean Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 | Timeout: 250
 Base = Enchanted Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
+Solo = Enchanted Vampire Lord = 2 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Enforcer = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Eternal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 | Timeout: 250
 Farm = Eternal Inversionist = 2 | 4 | 1 | 3 | Mode Optimistic
@@ -185,6 +191,7 @@ Base = Rogue = 2 | 3 | 1 | 4 | Mode Optimistic
 Base = Rogue (Rare) = 2 | 3 | 1 | 4 | Mode Optimistic
 Base = Royal BattleMage = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Royal Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
+Solo = Royal Vampire Lord = 2 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Rustbucket = 4 | 1 | 3 | 2 | Timeout:250
 Base = Quantum Chronomancer = 2 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Sakura Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
@@ -202,7 +209,8 @@ Def = ShadowWalker of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
 Solo = ShadowWeaver of Time = 3 | 2 | 4 | 1 | 2 | 1 | 2 | 1 | 4 | 2 | 3 | 1 | 2 | 1 | 2 | Timeout: 250
 Def = ShadowWeaver of Time = 3 | 2 | 1 | 4 | 2 | 1 | 2 | 1 | Timeout:250
 Base = Shaman = 4 | 1 | 2 | 3 | Mode Optimistic
-Base = Shaman = 1 | 2 | Mode Optimistic
+Farm = Shaman = 1 | 2 | 1 | 2 | 1 | 2 | Mode Optimistic
+Solo = Shaman = 4 | 1 | 2 | 1 | 2 | 1 | 2 | 3 | Mode Optimistic
 Base = Silver Paladin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SkyGuard Grenadier = 1 | 2 | 3 | 4 | Mode Optimistic
@@ -212,8 +220,9 @@ Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 | Timeout:300
 Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 | Timeout:300
 Solo = Star Captain = 1 | 1S | 2S | 3S | 4 | 1 | Timeout:300
 Base = StarLord = 1 | 2 | 3 | 4 | Mode Optimistic
-Solo = StoneCrusher = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 | Mode Optimistic
 Base = StoneCrusher = 2 | 3 | 1 | 4 | Timeout: 250
+Solo = StoneCrusher = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 | Mode Optimistic
+Supp = StoneCrusher = 3 | 2 | 4 | 1 | Mode Optimistic
 Base = SwordMaster = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = SwordMaster Assassin = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = The Collector = 1WW20000 | 3 | 4 | 1 | Timeout: 250
@@ -236,7 +245,9 @@ Base = Undead Leperchaun = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = UndeadSlayer = 1 | 3 | 2H<50S | Timeout: 250
 Base = Unlucky Leperchaun = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Vampire = 2 | 4 | 3 | 1 | Timeout: 250
+Solo = Vampire = 2 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 | Timeout: 250
+Solo = Vampire Lord = 2 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Vindicator Of They = 1WW20000 | 3 | 4 | 1 | Timeout: 250
 Atk = Void Highlord = 3H>25S | 4 | 2 | 1H>25S | 3H>25S | 2 | 1H>25S | 3H>25S | 2 | 1H>25S | Timeout: 250
 Def = Void Highlord = 4 | 2 | 1 | Mode Optimistic
