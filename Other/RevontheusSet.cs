@@ -11,7 +11,7 @@ public class RevontheusSet
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("Equip", "Equip the revontheus set?", "", false)
+        new Option<bool>("Equip", "Equip the revontheus set?", "", false),
     };
 
     public void ScriptMain(IScriptInterface bot)
