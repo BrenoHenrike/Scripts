@@ -66,10 +66,24 @@ public class Follower
             Core.PrivateRoomNumber = roomNr;
         }
 
+        // Bypasses
+        int[] Questids = {
+            598, // lycan
+            3004, // doomvaultb
+            3008, // doomvault
+            3484, // towerofdoom
+            3798, // shadowattack
+            4616, // mummies
+        };
+    
+        Bot.Quests.UpdateQuest(Questids);
+
+        // Setting Acheivment for doomvaultb
+        Core.SetAchievement(18);
+        
         // Enabling listeners
         Bot.Events.MapChanged += MapNumberParses;
         Bot.Events.ScriptStopping += ScriptStopping;
-        Bot.Events.MapChanged += TowerofDoomHandler;
 
         if (CopyWalk)
             Bot.Events.ExtensionPacketReceived += CopyWalkListener;
@@ -342,51 +356,6 @@ public class Follower
         }
     }
 
-    private async void TowerofDoomHandler(string map)
-    {
-        switch(Bot.Map.Name) {
-            case "towerofdoom1":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3475);
-                break;
-            case "towerofdoom2":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3476);
-                break;
-            case "towerofdoom3":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3477);
-                break;
-            case "towerofdoom4":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3478);
-                break;
-            case "towerofdoom5":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3479);
-                break;
-            case "towerofdoom6":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3480);
-                break;
-            case "towerofdoom7":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3481);
-                break;
-            case "towerofdoom8":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3482);
-                break;
-            case "towerofdoom9":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3483);
-                break;
-            case "towerofdoom10":
-                Core.Logger("bypassing map " + Bot.Map.Name);
-                Bot.Quests.UpdateQuest(3484);
-                break;
-        }
-    }
 
     private async void MapNumberParses(string map)
     {
