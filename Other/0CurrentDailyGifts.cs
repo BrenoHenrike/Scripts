@@ -109,6 +109,14 @@ public class CurrentDailyGifts
 
             #endregion
 
+            #region November 25 leaves December 9
+
+            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Jack Sprat", "Pink POSE! Pitchfork" , "Pitchfork of Shadows");
+            GetGift(AvailableUntil(9, 12), "hbchallenge", "Module 005", "Module 005 Chibi Pet");
+            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Red Dragon", "Darkened Adherent Faceplate" , "Darken");
+
+            #endregion
+
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
