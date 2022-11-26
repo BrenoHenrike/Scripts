@@ -69,6 +69,8 @@ public class Follower
         // Enabling listeners
         Bot.Events.MapChanged += MapNumberParses;
         Bot.Events.ScriptStopping += ScriptStopping;
+        Bot.Events.MapChanged += TowerofDoomHandler;
+
         if (CopyWalk)
             Bot.Events.ExtensionPacketReceived += CopyWalkListener;
 
@@ -117,7 +119,7 @@ public class Follower
             // Attack any monster that is alive.
             if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
                 Bot.Combat.Attack("*");
-
+            Core.Rest();
             Bot.Sleep(Core.ActionDelay);
         }
     }
@@ -337,6 +339,52 @@ public class Follower
                 }
                 Bot.Combat.Attack(Target.Name);
             }
+        }
+    }
+
+    private async void TowerofDoomHandler(string map)
+    {
+        switch(Bot.Map.Name) {
+            case "towerofdoom1":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3475);
+                break;
+            case "towerofdoom2":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3476);
+                break;
+            case "towerofdoom3":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3477);
+                break;
+            case "towerofdoom4":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3478);
+                break;
+            case "towerofdoom5":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3479);
+                break;
+            case "towerofdoom6":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3480);
+                break;
+            case "towerofdoom7":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3481);
+                break;
+            case "towerofdoom8":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3482);
+                break;
+            case "towerofdoom9":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3483);
+                break;
+            case "towerofdoom10":
+                Core.Logger("bypassing map " + Bot.Map.Name);
+                Bot.Quests.UpdateQuest(3484);
+                break;
         }
     }
 
