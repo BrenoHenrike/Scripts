@@ -48,6 +48,5 @@ public class RevontheusSet
         if(Bot.Config.Get<bool>("Equip"))
             Core.Equip(Set);
 
-        Core.Logger("Finished Farming", stopBot: true);
     }
 }
