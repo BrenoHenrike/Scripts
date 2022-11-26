@@ -119,7 +119,7 @@ public class ArmyLR
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
     }
-    public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, bool isTemp = false, int quant = 1)
+    /* public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -137,6 +137,28 @@ public class ArmyLR
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Core.HuntMonster(map, Monster);
+        Army.AggroMonStop(true);
+        Core.CancelRegisteredQuests();
+    } */
+    public void GetItem(string map = null, string[] monsters = null, int questID = 000, string item = null, int quant = 0)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Quest QuestData = Core.EnsureLoad(questID);
+        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+
+        Core.AddDrop(item);
+        if (!Bot.Quests.Active.Contains(QuestData))
+            Core.RegisterQuests(questID);
+
+        foreach (string monster in monsters)
+            Army.SmartAggroMonStart(map, monster);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
@@ -257,11 +279,11 @@ public class ArmyLR
         Step 1: Evil Rank 10 prefarm (need to handle 5 player room limit somehow)*/
         /*Step 2: 24000 LTs Dreadrock Aggromon prefarm*/
         Core.EquipClass(ClassType.Farm);
-        GetItem("dreadrock", "Fallen Hero, Hollow Wraith, Legion Sentinel, Shadowknight, Void Mercenary", 4849, "Legion Token", false, 24000);
+        GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", 24000);
         /*Step 3: 5,000,000+ gold for LF3 Helmet buying prefarm*/
         GoldFarm();
         /*Step 4: 3000 Dage Favor prefarm*/
-        GetItem("evilwarnul", "Skull Warrior, Undead Infantry", 6897, "Dage Favor", false, 3000);
+        GetItem("evilwarnul", new[] { "Skull Warrior", "Undead Infantry" }, 6897, "Dage Favor", 3000);
         /*Step 5: 10 Emblem of Dage prefarm*/
         Legion.EmblemofDage(10);
         /*Step 6: 300 Diamond Token of Dage prefarm*/
@@ -276,7 +298,7 @@ public class ArmyLR
         CoreLR.ExaltedCrown(1);
         /*Step 11: 12000 LTs Dreadrock Aggromon prefarm*/
         Core.EquipClass(ClassType.Farm);
-        GetItem("dreadrock", "Fallen Hero, Hollow Wraith, Legion Sentinel, Shadowknight, Void Mercenary", 4849, "Legion Token", false, 12000);
+        GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", 12000);
         /*
         ********************************************************************************
         **********************************FINISH****************************************
