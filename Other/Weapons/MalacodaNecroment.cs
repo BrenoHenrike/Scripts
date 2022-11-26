@@ -22,7 +22,7 @@ public class MalacodaNecroment
 
         Core.AddDrop("Malacoda Necroment");
         Core.EnsureAccept(3577);
-        Core.HuntMonster("marsh2", "Lich", "Crystal of Reanimation");
+        Core.HuntMonster("battleundera", "Lich", "Crystal of Reanimation");
         Core.EnsureComplete(3577, 24217);
     }
 }
