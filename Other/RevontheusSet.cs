@@ -31,7 +31,8 @@ public class RevontheusSet
             "Revontheus"
         };
 
-        if(Core.CheckInventory(Set)){
+        if(Core.CheckInventory(Set))
+        {
             Core.Logger("You already have the set");
             return;
         }
@@ -39,7 +40,8 @@ public class RevontheusSet
         Core.AddDrop(Set);
         Core.EquipClass(ClassType.Solo);
         
-        while(!Bot.ShouldExit && !Core.CheckInventory(Set)) {
+        while(!Bot.ShouldExit && !Core.CheckInventory(Set)) 
+        {
             Core.KillMonster("underworld", "r10", "left", "Undead Legend", log:false);
         }
 

@@ -11,7 +11,7 @@ public class EternalDragonDrops
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("CanSolo", "Can solo boss?", "Can you solo Eternal Dragon?", false),
+        new Option<bool>("CanSolo", "Can solo boss?", "unchecking this will take you to public room", false),
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -60,11 +60,13 @@ public class EternalDragonDrops
         Core.Logger("Starting to get drops");
         //Can't Solo section
         if(!Bot.Config.Get<bool>("CanSolo"))
-            while(!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops)) {
+            while(!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops)) 
+            {
                 Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false, publicRoom: true);
             }
         else
-            while(!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops)) {
+            while(!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops)) 
+            {
                 Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false);
             }
     }
