@@ -36,6 +36,7 @@ public class HarvestMergeNew
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
+        Bot.Quests.UpdateQuest(8987);
         Adv.StartBuyAllMerge("feast", 2181, findIngredients);
 
         #region Dont edit this part
