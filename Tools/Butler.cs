@@ -66,9 +66,27 @@ public class Follower
             Core.PrivateRoomNumber = roomNr;
         }
 
+        // Bypasses
+        int[] Questids = {
+            598, // lycan
+            3004, // doomvaultb
+            3008, // doomvault
+            3484, // towerofdoom
+            3798, // shadowattack
+            4616, // mummies
+        };
+
+        foreach(int questId in Questids) {
+            Bot.Quests.UpdateQuest(questId);
+        }
+
+        // Setting Acheivment for doomvaultb
+        Core.SetAchievement(18);
+        
         // Enabling listeners
         Bot.Events.MapChanged += MapNumberParses;
         Bot.Events.ScriptStopping += ScriptStopping;
+
         if (CopyWalk)
             Bot.Events.ExtensionPacketReceived += CopyWalkListener;
 
@@ -117,7 +135,7 @@ public class Follower
             // Attack any monster that is alive.
             if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
                 Bot.Combat.Attack("*");
-
+            Core.Rest();
             Bot.Sleep(Core.ActionDelay);
         }
     }
@@ -339,6 +357,7 @@ public class Follower
             }
         }
     }
+
 
     private async void MapNumberParses(string map)
     {

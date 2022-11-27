@@ -109,7 +109,8 @@ public class UnlockForgeEnhancements
         new Option<ForgeQuestWeapon>("ForgeQuestWeapon", "Weapon Enhancement", "Forge Quests to unlock Weapon Enhancement, change to none to unselect", ForgeQuestWeapon.None),
         new Option<ForgeQuestCape>("ForgeQuestCape", "Cape Enhancement", "Forge Quests to unlock Cape Enhancement, change to none to unselect", ForgeQuestCape.None),
         new Option<ForgeQuestHelm>("ForgeQuestHelm", "Helm Enhancement", "Forge Quests to unlock Helm Enhancement, change to none to unselect", ForgeQuestHelm.None),
-        new Option<bool>("UseGold", "Use Gold", "Speed the BlacksmithingREP grind up with Gold?", false)
+        new Option<bool>("UseGold", "Use Gold", "Speed the BlacksmithingREP grind up with Gold?", false),
+        new Option<bool>("CanSolo", "Can solo", "Solo Sluggbutter"),
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -268,7 +269,7 @@ public class UnlockForgeEnhancements
 
         LOC.Kitsune();
         Farm.Experience(30);
-        Farm.BlacksmithingREP(4, Bot.Config.Get<bool>("UseGold"));
+        Farm.BlacksmithingREP(4, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8738);
@@ -429,10 +430,9 @@ public class UnlockForgeEnhancements
             return;
 
         Core.Logger("Unlocking Enhancement: Arcana's Concerto (WIP)");
-
         Astravia.CompleteCoreAstravia();
         Farm.Experience(100);
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"));
+        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), CanSolo:Bot.Config.Get<bool>("CanSolo"));
 
         if (!Core.isCompletedBefore(8746))
         {
