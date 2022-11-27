@@ -261,22 +261,24 @@ public class CoreBots
         if (Bot.Player.LoggedIn)
         {
             JumpWait();
-            Bot.Combat.Exit();
             Bot.Sleep(ActionDelay);
+
             if (EquipmentBeforeBot.Count() > 0)
                 Equip(EquipmentBeforeBot.ToArray());
+
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
                 if (CustomStopLocation.Trim().ToLower() == "home")
                 {
                     if (Bot.House.Items.Count(h => h.Equipped) > 0)
                         Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
-                    else Join("whitemap");
+                    else 
+                        Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-100000%");
                 }
                 else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
-                    Join(CustomStopLocation);
+                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}%");
             }
         }
         if (AntiLag)
@@ -2396,10 +2398,12 @@ public class CoreBots
             {
                 if (hasMapNumber)
                     Bot.Map.Join(map, cell, pad, ignoreCheck);
-                else Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                else
+                    Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
                 Bot.Wait.ForMapLoad(strippedMap);
+
                 // Exponential Backoff
-                Bot.Sleep(100 * rnd.Next((int)(Math.Pow(2, i / 2.0))));
+                Bot.Sleep(Math.Max(1, 100 * rnd.Next((int)(Math.Pow(2, i / 2.0)))));
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
@@ -2408,6 +2412,7 @@ public class CoreBots
                 if (i == 19)
                     Logger($"Failed to join {map}");
             }
+            Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
         }
         void MapIsMemberLocked(dynamic packet)
         { //%xt%warning%-1%"artixhome" is an Membership-Only Map.%
