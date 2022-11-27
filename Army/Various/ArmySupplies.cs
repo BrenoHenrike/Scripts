@@ -64,9 +64,10 @@ public class SuppliesWheelArmy
 
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
+        Core.ConfigureAggro();
         while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 14))
             ArmyHydra90("hydrachallenge", "h90", "Left", "*");
-        Bot.Options.AggroMonsters = false;
+        Core.ConfigureAggro(false);
     }
 
     public void ArmyHydra90(string map, string cell, string pad, string monster)
@@ -74,7 +75,6 @@ public class SuppliesWheelArmy
         Core.Join(map, cell, pad);
         while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
         {
-            Bot.Options.AggroMonsters = false;
             if (Bot.Player.Cell != "Enter")
                 Core.Jump("Enter");
             Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
@@ -86,14 +86,12 @@ public class SuppliesWheelArmy
 
         while (Bot.Inventory.Contains("Relic of Chaos"))
         {
-            Bot.Options.AggroMonsters = true;
             Bot.Combat.Attack(monster);
             Core.ChainComplete(Bot.Quests.IsUnlocked(555) ? 555 : 2857);
             i++;
             Core.Logger($"Quest completed x{i} times");
         }
 
-        Bot.Options.AggroMonsters = true;
         Bot.Quests.EnsureAccept(Bot.Quests.IsUnlocked(555) ? 555 : 2857);
         Bot.Kill.Monster(monster);
     }
