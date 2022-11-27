@@ -13,7 +13,7 @@ public class CreepyUndeadMonkeyQuest
         Core.BankingBlackList.Add("Twisted Monkey Paw");
         Core.SetOptions();
 
-        RandomReward(4016);
+        RandomReward(4106);
 
         Core.SetOptions(false);
     }
