@@ -351,6 +351,11 @@ public class CoreSDKA
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Deadly Knightshade", 16);
                     Core.EnsureComplete(2110);
                 }
+                int CSOQuantity = 105 - (Bot.Inventory.GetQuantity("Ominous Aura") * 50);
+                if ((CSOQuantity * 100) > Bot.Inventory.GetQuantity("Dark Spirit Orb"))
+                    FarmDSO(CSOQuantity * 100);
+                DoomMerge("Corrupt Spirit Orb", CSOQuantity);
+                DoomMerge("Ominous Aura", 2);
                 Core.BuyItem("dwarfhold", 434, "Accursed Arsenic of Doom");
             }
 

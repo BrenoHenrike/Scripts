@@ -40,6 +40,7 @@
 //cs_include Scripts/Other/Badges/StoneCold.cs
 //cs_include Scripts/Other/Badges/TableFlipper.cs
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
+//cs_include Scripts/Other/Badges/VoidHighlordBadge.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
@@ -70,6 +71,7 @@ public class AllBadges
     public ShadowVaultChampion SVC = new();
     public StoneCold SC = new();
     public TableFlipper TF = new();
+    public VoidHighlordBadge VHL = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -97,6 +99,7 @@ public class AllBadges
         TF.Badge();
         DMF.Badge();
         YMBB.Badge();
+        VHL.Badge();
         //add more as they are made.
 
         Core.SetOptions(false);
