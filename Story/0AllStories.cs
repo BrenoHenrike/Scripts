@@ -10,17 +10,12 @@
 //cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Other/ShadowDragonDefender.cs
 
-//cs_include Scripts/Story/Doomwood/AQWZombies.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
-//cs_include Scripts/Story/Doomwood/Necrodungeon.cs
-//cs_include Scripts/Story/Doomwood/Necrotower.cs
-//cs_include Scripts/Story/Doomwood/Temple.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 //cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
-
 
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 
@@ -66,7 +61,6 @@
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
 //cs_include Scripts/Story/Arcangrove.cs
-//cs_include Scripts/Story/ArcAttack.cs
 //cs_include Scripts/Story/AriaPet[MEM].cs
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/ArtixWedding.cs
@@ -193,12 +187,8 @@ public class AllStories
     public HatchTheEgg Egg = new();
     public GetSDD SDD = new();
 
-    // Doomwood
-    public AQWZombies AQWZombies = new();
-    public DoomwoodPart3 DoomwoodPart3 = new();
-    public NecroDungeon NecroDungeon = new();
-    public NecroTowerStory NecroTower = new();
-    public Temple Temple = new();
+    // Doomwood (all parts)
+    public CoreDoomwood DW = new();
 
     // Elergy of Madness - Darkon
     public CoreAstravia CoreAstravia = new();
@@ -267,7 +257,6 @@ public class AllStories
 
     #region Standalone (sorted alphabetically)
     public Arcangrove Arcangrove = new();
-    public ArcAttack ArcAttack = new();
     public AriaPet AriaPet = new();
     public Artixpointe Artixpointe = new();
     public ArtixWedding ArtixWedding = new();
@@ -419,21 +408,8 @@ public class AllStories
         #endregion
 
         #region Doomwood
-        AQWZombies.Storyline();
-        Core.Logger($"Story: AQW Zombies - Complete");
-
-        NecroDungeon.NecrodungeonStoryLine();
-        Core.Logger($"Story: Necro Dungeon - Complete");
-
-        NecroTower.DoAll();
-        Core.Logger($"Story: Necro Tower - Complete");
-
-        DoomwoodPart3.StoryLine();
-        Core.Logger($"Story: Doomwood Part 3 - Complete");
-
-        Temple.StoryLine();
-        Core.Logger($"Story: Temple - Complete");
-
+        DW.CompleteDoomwood();
+        Core.Logger($"Saga: Doomwood - Complete");
         #endregion
 
         #region Elergy
@@ -500,7 +476,6 @@ public class AllStories
         QOM.CompleteEverything();
         Core.Logger($"Saga: Queen of Monsters - Complete");
 
-
         BrightOak.doall();
         Core.Logger($"Story: BrightOak - Complete");
 
@@ -556,9 +531,6 @@ public class AllStories
         Arcangrove.GravelynandVictoria();
         Core.Logger($"Story: Arcangrove - Complete");
 
-        ArcAttack.StoryLine();
-        Core.Logger($"Story: Arc Attack - Complete");
-
         if (Core.IsMember)
         {
             AriaPet.StoryLine();
@@ -573,6 +545,7 @@ public class AllStories
 
         Asylum.StoryLine();
         Core.Logger($"Story: Asylum - Complete");
+
 
         Banished.doall();
         Core.Logger($"Story: Banished - Complete");
@@ -590,11 +563,9 @@ public class AllStories
         Core.Logger($"Story: Bludrut - Complete");
 
         if (!Core.HasAchievement(30, "ip6") || Core.isCompletedBefore(5981) || !Core.CheckInventory(27222) || !Core.IsMember)
-
         {
             BoneBreak.StoryLine();
             Core.Logger($"Story: BoneBreak - Complete");
-
         }
 
         Borgars.StoryLine();
@@ -661,9 +632,8 @@ public class AllStories
         if (Core.HasAchievement(22, "ip9") || Core.HasAchievement(15, "ip11") || Core.HasAchievement(8, "ip14") || !Core.HasAchievement(10, "ip16") || !Core.HasAchievement(12, "ip17") || !Core.HasAchievement(18, "ip18") || !Core.HasAchievement(2, "ip20"))
         {
             DragonRoad.StoryLine();
-            Core.Logger($"Story: DragonRoad  - Complete");
+            Core.Logger($"Story: DragonRoad - Complete");
         }
-
 
         DreamPalace.StoryLine();
         Core.Logger($"Story: Dream Palace - Complete");

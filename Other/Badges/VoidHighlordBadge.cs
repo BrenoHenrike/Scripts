@@ -23,14 +23,14 @@ public class VoidHighlordBadge
             Core.Logger($"Already have the {badge} badge");
             return;
         }
-		
-		if (!Core.CheckInventory("Void Highlord"))
-			return;
+
+        if (!Core.CheckInventory("Void Highlord"))
+            return;
 
         Core.Logger($"Doing the quest for {badge} badge");
         Core.EnsureAccept(7651);
-		Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 1, isTemp:false);
-		Core.EnsureComplete(7651);
+        Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 1, isTemp: false);
+        Core.EnsureComplete(7651);
     }
 
     private string badge = "Void Highlord";
