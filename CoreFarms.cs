@@ -1828,7 +1828,7 @@ public class CoreFarms
                 Core.SavedState(false);
                 return;
             }
-            if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
+            if (!Bot.Quests.IsUnlocked(3032) && Core.IsMember) //Need boat for this questsline (member only)
             {
                 Core.EnsureAccept(3029); //Rosetta Stones 3029
                 Core.HuntMonster("druids", "Void Bear", "Voidstone", 6);
@@ -1844,7 +1844,7 @@ public class CoreFarms
             }
             Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(3032); //Quite the Problem 3032
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+            while (!Bot.ShouldExit && Core.IsMember && FactionRank("Loremaster") < rank)
                 Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
             Core.CancelRegisteredQuests();
         }
