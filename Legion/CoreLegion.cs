@@ -43,7 +43,7 @@ public class CoreLegion
         {
             Core.EnsureAccept(4742);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
-            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 27, false);
+            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 25, false);
             Core.EnsureComplete(4742);
             Bot.Wait.ForPickup("Emblem of Dage");
             Core.Logger($"Completed x{i++}");
