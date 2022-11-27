@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
 public class SoulSearchingc
