@@ -1811,31 +1811,8 @@ public class CoreFarms
 
         if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
-            if (Core.IsMember)
-            {
-                if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
-                {
-                    Core.EnsureAccept(3029); //Rosetta Stones 3029
-                    Core.HuntMonster("druids", "Void Bear", "Voidstone", 6);
-                    Core.EnsureComplete(3029);
 
-                    Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
-                    Core.HuntMonster("druids", "Void Larva", "Void Larvae Death Cry", 4);
-                    Core.EnsureComplete(3030);
-
-                    Core.EnsureAccept(3031); // Bad Vibes 3031
-                    Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
-                    Core.EnsureComplete(3031);
-                }
-                Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(3032); //Quite the Problem 3032
-                while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
-                {
-                    Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
-                }
-                Core.CancelRegisteredQuests();
-            }
-            else if (!Core.IsMember)
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 || FactionRank("Loremaster") < rank)
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505); //Studying the Rogue 7505
@@ -1843,12 +1820,34 @@ public class CoreFarms
                 {
                     Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
                     Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
+                    if (Core.IsMember && FactionRank("Loremaster") >= 3)
+                        break;
                 }
                 Core.CancelRegisteredQuests();
+                ToggleBoost(BoostType.Reputation, false);
+                Core.SavedState(false);
+                return;
             }
+            if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
+            {
+                Core.EnsureAccept(3029); //Rosetta Stones 3029
+                Core.HuntMonster("druids", "Void Bear", "Voidstone", 6);
+                Core.EnsureComplete(3029);
+
+                Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
+                Core.HuntMonster("druids", "Void Larva", "Void Larvae Death Cry", 4);
+                Core.EnsureComplete(3030);
+
+                Core.EnsureAccept(3031); // Bad Vibes 3031
+                Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
+                Core.EnsureComplete(3031);
+            }
+            Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(3032); //Quite the Problem 3032
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+                Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
+            Core.CancelRegisteredQuests();
         }
-        ToggleBoost(BoostType.Reputation, false);
-        Core.SavedState(false);
     }
 
     public void LycanREP(int rank = 10)

@@ -100,10 +100,12 @@ public class HarvestMergeNew
                 case "TurKing Claw":
                 case "Iron Ore":
                     Core.FarmingLogger(req.Name, quant);
+                    if (req.Name == "Iron Ore")
+                        Core.AddDrop(req.ID);
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                         Core.HuntMonster("birdswithharms", "TurKing", req.Name, isTemp: false, log: false);
-                    Bot.Wait.ForPickup(req.Name);
+                    Bot.Wait.ForPickup(req.ID);
                     break;
 
                 case "Guncraft Shadowslayer Big Irons":
