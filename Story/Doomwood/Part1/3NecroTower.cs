@@ -13,7 +13,7 @@ public class AQWZombies
     {
         Core.SetOptions();
 
-        DW.AQWZombies();
+        DW.NecroTower();
 
         Core.SetOptions(false);
     }
