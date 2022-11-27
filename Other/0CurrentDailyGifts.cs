@@ -113,7 +113,7 @@ public class CurrentDailyGifts
 
             GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Jack Sprat", "Pink POSE! Pitchfork" , "Pitchfork of Shadows");
             GetGift(AvailableUntil(9, 12), "hbchallenge", "Module 005", "Module 005 Chibi Pet");
-            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Red Dragon", "Darkened Adherent Faceplate" , "Darken", "Prisma Guard", "Prisma Cracked Orb", "Prisma Plunger", "Prisma Shoe-Chucks");
+            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Red Dragon", "Darkened Adherent Faceplate" , "Darken");
             GetGift(AvailableUntil(9, 12), "blackfridaywar", "Deal Bot 2.0", "Rose Phoenix Sword" , "Obsidian Phoenix Sword");
             GetGift(AvailableUntil(9, 12), "dreammaster", "Calico Cobby", "Cute Calico Cobby Pet");
 
