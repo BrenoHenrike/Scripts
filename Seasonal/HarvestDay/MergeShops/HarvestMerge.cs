@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -35,6 +36,7 @@ public class HarvestMergeNew
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
+        Bot.Quests.UpdateQuest(8987);
         Adv.StartBuyAllMerge("feast", 2181, findIngredients);
 
         #region Dont edit this part
@@ -100,10 +102,12 @@ public class HarvestMergeNew
                 case "TurKing Claw":
                 case "Iron Ore":
                     Core.FarmingLogger(req.Name, quant);
+                    if (req.Name == "Iron Ore")
+                        Core.AddDrop(req.ID);
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                         Core.HuntMonster("birdswithharms", "TurKing", req.Name, isTemp: false, log: false);
-                    Bot.Wait.ForPickup(req.Name);
+                    Bot.Wait.ForPickup(req.ID);
                     break;
 
                 case "Guncraft Shadowslayer Big Irons":

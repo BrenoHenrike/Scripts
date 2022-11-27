@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+using System.Linq;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -29,19 +30,23 @@ public class BlackFridayAlphaHunterRogue
             return;
         }
 
-        var AllRewards = Core.EnsureLoad(6104).Rewards;
-        AllRewards.AddRange(Core.EnsureLoad(6106).Rewards);
-        var AllRewardsArray = AllRewards.Select(x => x.ID).ToArray();
+        var AllRewards1 = Core.EnsureLoad(6104).Rewards;
+        var AllRewards2 = Core.EnsureLoad(6105).Rewards;
+        var AllRewards3 = Core.EnsureLoad(6106).Rewards;
+        var AllRewards4 = Core.EnsureLoad(6107).Rewards;
+        var AllRewardsArray = AllRewards1.Concat(AllRewards2).Concat(AllRewards3).Concat(AllRewards4).Select(x => x.ID).ToArray();
         if (Core.CheckInventory(AllRewardsArray))
             return;
 
         Core.EquipClass(ClassType.Solo);
-
+        Core.AddDrop(AllRewardsArray);
         Core.RegisterQuests(Core.FromTo(6104, 6107));
         while (!Bot.ShouldExit && !Core.CheckInventory(AllRewardsArray))
+        {
             Core.KillMonster("blackfridaywar", "r4", "Left", "*", log: false);
-
-        if (toBank)
-            Core.ToBank(AllRewardsArray);
+            if (toBank && Bot.Inventory.FreeSlots == 0)
+                Core.ToBank(AllRewardsArray);
+        }
+        Core.ToBank(AllRewardsArray);
     }
 }
