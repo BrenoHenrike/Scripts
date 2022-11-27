@@ -7,7 +7,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class HarvestMergeNew
+public class HarvestMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -36,7 +36,6 @@ public class HarvestMergeNew
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
-        Bot.Quests.UpdateQuest(8987);
         Adv.StartBuyAllMerge("feast", 2181, findIngredients);
 
         #region Dont edit this part
@@ -99,14 +98,22 @@ public class HarvestMergeNew
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
-                case "TurKing Claw":
+
                 case "Iron Ore":
-                    Core.FarmingLogger(req.Name, quant);
-                    if (req.Name == "Iron Ore")
-                        Core.AddDrop(req.ID);
-                    Core.EquipClass(ClassType.Solo);
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.AddDrop(req.ID);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
-                        Core.HuntMonster("birdswithharms", "TurKing", req.Name, isTemp: false, log: false);
+                        Core.HuntMonster("birdswithharms", "TurKing", log: false);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "TurKing Claw":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.AddDrop(req.ID);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
+                        Core.KillMonster("birdswithharms", "r10", "Left", "TurKing", log: false);
                     Bot.Wait.ForPickup(req.ID);
                     break;
 
