@@ -82,6 +82,8 @@ public class ArchMageMatsArmy
         }
 
         Bot.Quests.UpdateQuest(8732);
+        Core.ConfigureAggro();
+
         while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
         {
             ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", log: false);
@@ -94,6 +96,7 @@ public class ArchMageMatsArmy
             ArmyKillMonster("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", log: false);
             ArmyKillMonster("archmage", "Boss", "Right", "Prismata", "Elemental Binding", 250, isTemp: false, log: false);
         }
+        Core.ConfigureAggro(false);
         Core.Logger($"🖕");
     }
 
@@ -128,7 +131,6 @@ public class ArchMageMatsArmy
         {
             if (log)
                 Core.Logger($"Killing {monster}");
-            Bot.Options.AggroMonsters = true;
             Bot.Kill.Monster(monster);
             Core.Rest();
         }
@@ -144,7 +146,6 @@ public class ArchMageMatsArmy
             }
             else
             {
-                Bot.Options.AggroMonsters = true;
                 Core._KillForItem(monster, item, quant, isTemp, log: log);
             }
         }

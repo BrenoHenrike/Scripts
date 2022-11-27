@@ -198,9 +198,9 @@ public class FarmerJoeStartingTheAcc
         Core.Logger("This will stall at Ultra Alteon, it is your job to unblock it");
         Core.Equip("Chaos Slayer Berserker");
         AP.GetAP();
-        Core.Equip("Arch Paladin");
+        Core.Equip("ArchPaladin");
 
-        //Step 2 Solo CLass:
+        //Step 2 Solo Class:
         Core.Logger("step 2 LOO Class Daily");
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
@@ -217,12 +217,13 @@ public class FarmerJoeStartingTheAcc
         InvEn.EnhanceInventory();
 
         Core.Logger("Step 5 Burning Blade");
-        Core.EquipClass(ClassType.Solo);
+        Core.Equip("ArchPaladin");
         BB.GetBurningBlade();
         InvEn.EnhanceInventory();
 
         Core.Logger("Step 6 Improving Efficiency, and more Classes");
         EI.GetEI();
+        Core.Equip("Eternal Inversionist");
         Shaman.GetShaman();
         GB.GetGB();
         SC.GetSC();

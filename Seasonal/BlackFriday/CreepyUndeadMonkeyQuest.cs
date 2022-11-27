@@ -13,7 +13,7 @@ public class CreepyUndeadMonkeyQuest
         Core.BankingBlackList.Add("Twisted Monkey Paw");
         Core.SetOptions();
 
-        RandomReward(4016);
+        RandomReward(4106);
 
         Core.SetOptions(false);
     }
@@ -49,10 +49,10 @@ public class CreepyUndeadMonkeyQuest
                     Core.HuntMonster("neverlore", "Whablobble", "Whablobble Tongue");
                     Core.HuntMonster("thespan", "Minx Fairy", "Minx Fairy Wings");
                     Core.HuntMonster("battlecon", "BrutalCorn", "Evil Con Corny");
-                    Core.HuntMonster("crossroads", "Lermuphant", "Lemurphant's Peanuts");
+                    Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant's Peanuts");
                     Core.HuntMonster("arcangrove", "Gorillaphant", "Fresh Gorilla Paw");
                     Core.HuntMonster("arcangrove", "Gorillaphant", "Bananas in pajamas");
-                    Core.HuntMonster("battlefowl", "Chickencow", "hickencow Head");
+                    Core.HuntMonster("battlefowl", "Chickencow", "Chickencow Head");
                     Core.HuntMonster("mafic", "Scoria Serpent", "Scoria Serpent Charmer");
                     Core.HuntMonster("underrealm", "Grief", "Grief's Tears ");
                     Core.HuntMonster("deepchaos", "Kathool", "Kathool… All of him");

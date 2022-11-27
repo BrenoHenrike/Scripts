@@ -43,7 +43,7 @@ public class CoreLegion
         {
             Core.EnsureAccept(4742);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
-            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 27, false);
+            Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 25, false);
             Core.EnsureComplete(4742);
             Bot.Wait.ForPickup("Emblem of Dage");
             Core.Logger($"Completed x{i++}");
@@ -452,11 +452,11 @@ public class CoreLegion
         Core.FarmingLogger("Legion Token", quant);
         Core.Join("dreadrock");
         Core.RegisterQuests(4849);
-        Bot.Options.AggroMonsters = true;
+        Core.ConfigureAggro();
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6, log: false);
 
-        Bot.Options.AggroMonsters = false;
+        Core.ConfigureAggro(false);
         Core.CancelRegisteredQuests();
     }
 
