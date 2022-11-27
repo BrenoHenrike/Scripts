@@ -37,7 +37,9 @@ public class SoulSearchingc
 
             Bot.Wait.ForPickup("Undead Essence");
             Bot.Wait.ForPickup("Spirit Orb");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Spirit Orb")}/{quant})");
+            if (Core.CheckInventory("Spirit Orb", quant))
+                break;
+            else Core.FarmingLogger("Spirit Orb", quant);
         }
         Core.CancelRegisteredQuests();
     }
