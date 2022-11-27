@@ -1,9 +1,9 @@
 //cs_include Scripts/CoreBots.cs
+using System.IO;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
-using System.IO;
 
 public class Follower
 {
@@ -76,13 +76,14 @@ public class Follower
             4616, // mummies
         };
 
-        foreach(int questId in Questids) {
+        foreach (int questId in Questids)
+        {
             Bot.Quests.UpdateQuest(questId);
         }
 
         // Setting Acheivment for doomvaultb
         Core.SetAchievement(18);
-        
+
         // Enabling listeners
         Bot.Events.MapChanged += MapNumberParses;
         Bot.Events.ScriptStopping += ScriptStopping;

@@ -24,26 +24,26 @@ public class RevontheusSet
     }
 
     public void GetSet()
-    {   
+    {
         string[] Set = {
             "Revontheus Visage",
             "Wings of Revontheus",
             "Revontheus"
         };
 
-        if(Core.CheckInventory(Set))
+        if (Core.CheckInventory(Set))
         {
             Core.Logger("You already have the set");
             return;
         }
-        
+
         Core.AddDrop(Set);
         Core.EquipClass(ClassType.Solo);
-        
-        while(!Bot.ShouldExit && !Core.CheckInventory(Set)) 
-            Core.KillMonster("underworld", "r10", "left", "Undead Legend", log:false);
 
-        if(Bot.Config.Get<bool>("Equip"))
+        while (!Bot.ShouldExit && !Core.CheckInventory(Set))
+            Core.KillMonster("underworld", "r10", "left", "Undead Legend", log: false);
+
+        if (Bot.Config.Get<bool>("Equip"))
             Core.Equip(Set);
 
     }

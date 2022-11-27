@@ -24,7 +24,7 @@ public class EternalDragonDrops
     }
 
     public void GetDrops()
-    {   
+    {
         string[] MemDrops = {
             "Dark Embrace Of The Queen",
             "ShadowFlame Aura",
@@ -38,32 +38,33 @@ public class EternalDragonDrops
             "Monster Queen's Malicious Morph",
             "Monster Queen's Wings",
             "Requiescat Regina",
-            "Requiescat Regina Cane",   
+            "Requiescat Regina Cane",
             "Requiescat Regina Hair",
             "Requiescat Regina Locks",
             "ShadowFlame Portal",
             "Timestream Ravager's Sigil"
         };
 
-        if(Core.CheckInventory(NonMemDrops)){
+        if (Core.CheckInventory(NonMemDrops))
+        {
             Core.Logger("You already have the items");
             return;
         }
-        
-        if(Core.IsMember)
+
+        if (Core.IsMember)
             Core.AddDrop(MemDrops);
         Core.AddDrop(NonMemDrops);
 
         Core.EquipClass(ClassType.Solo);
-        
+
 
         Core.Logger("Starting to get drops");
         //Can't Solo section
-        if(!Bot.Config.Get<bool>("CanSolo"))
-            while(!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops)) 
+        if (!Bot.Config.Get<bool>("CanSolo"))
+            while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
                 Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false, publicRoom: true);
         else
-            while(!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops)) 
+            while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
                 Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false);
     }
 }
