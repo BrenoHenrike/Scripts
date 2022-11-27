@@ -89,9 +89,9 @@ public class ArmyLR
     {
         Core.SetOptions(disableClassSwap: true);
         Bot.Options.RestPackets = false;
-        
+
         LR();
-        
+
         Core.SetOptions(false);
     }
     public void LR()
@@ -166,7 +166,7 @@ public class ArmyLR
             Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
             Bot.Sleep(5000);
         }
-            Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
+        Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
     }
     /*Define map specific party splitting here*/
     void AggroNavigation(string map = null)
@@ -291,15 +291,15 @@ public class ArmyLR
 
         ArmyEvilGoodRank4();
         ArmyEvilGoodRankMax();
-        
+
         Farm.ToggleBoost(BoostType.Reputation, false);
     }
     public void ArmyEvilGoodRank4()
     {
         Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 4 && Farm.FactionRank("Evil") < 4))
-            ArmyHunt("swordhavenbridge", new[] {"Slime"}, "Slime in a Jar", true, 6);
-              
+            ArmyHunt("swordhavenbridge", new[] { "Slime" }, "Slime in a Jar", true, 6);
+
         Core.CancelRegisteredQuests();
     }
     public void ArmyEvilGoodRankMax()
@@ -307,12 +307,13 @@ public class ArmyLR
         Core.RegisterQuests(367, 372); //Bone-afide 367, Tomb with a View 372
         //ArmyHunt("castleundead", new[] {"Skeletal Viking", "Skeletal Warrior"}, 372, new[] {"Chaorrupted Skull"}, true, 5);
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
-            ArmyHunt("castleundead", new[] {"Skeletal Viking", "Skeletal Warrior"}, "Replacement Tibia", true, 6);
-        
+            ArmyHunt("castleundead", new[] { "Skeletal Viking", "Skeletal Warrior" }, "Replacement Tibia", true, 6);
+
         Core.CancelRegisteredQuests();
     }
     public void ArmyGoldFarm(int quant)
-    {   Core.PrivateRooms = true;
+    {
+        Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
@@ -329,7 +330,7 @@ public class ArmyLR
         ArmyHunt("evilwarnul", new[] { "Skull Warrior", "Undead Infantry" }, "Dage Favor", false, quant);
     }
     public void ArmyEmblemOfDage(int quant)
-    {   
+    {
         if (Core.CheckInventory("Emblem of Dage", quant))
             return;
         Core.Logger($"Farming {quant} Emblems");
@@ -341,8 +342,8 @@ public class ArmyLR
         int i = 1;
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {   /*Keeping second armyhunt in case gem of mastery doesn't drop within 25 legion seals, vhl experience tells me it doesn't always*/
-            ArmyHunt("shadowblast", new[] {"Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal"}, "Legion Seal", false, 25);
-            ArmyHunt("shadowblast", new[] {"Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal"}, "Gem of Mastery", false, 1);
+            ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Legion Seal", false, 25);
+            ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Gem of Mastery", false, 1);
             Bot.Wait.ForPickup("Emblem of Dage");
             Core.Logger($"Completed x{i++}");
         }
@@ -361,11 +362,11 @@ public class ArmyLR
         Core.RegisterQuests(4743);
         int i = 1;
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
-        {   
+        {
             Core.EquipClass(ClassType.Farm);
             if (!Core.CheckInventory("Defeated Makai", 25))
-                ArmyHunt("tercessuinotlim", new[] {"Dark Makai"}, "Defeated Makai", false, 25);   
-            
+                ArmyHunt("tercessuinotlim", new[] { "Dark Makai" }, "Defeated Makai", false, 25);
+
             Core.EquipClass(ClassType.Solo);
             Adv.BestGear(GearBoost.Chaos);
             GetItem("aqlesson", "Carnax", 4743, "Carnax Eye", true, 1);
@@ -390,9 +391,9 @@ public class ArmyLR
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Round 4 Medal"))
         {
-            Core.RegisterQuests(4738,4739,4740,4741);
+            Core.RegisterQuests(4738, 4739, 4740, 4741);
             if (!Core.CheckInventory("Legion Round 1 Medal"))
-            {   
+            {
                 GetItem("shadowblast", "Caesaristhedark", 4738, "Nation Rookie Defeated", true, 5);
                 GetItem("shadowblast", "Shadowrise Guard", 4738, "Shadowscythe Rookie Defeated", true, 5);
                 Bot.Wait.ForDrop("Legion Round 1 Medal");
@@ -430,8 +431,8 @@ public class ArmyLR
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
-            ArmyHunt("seraphicwardage", new[] {"Seraphic Commander, Seraphic Soldier"}, "Seraphic Commanders Slain", true, 6);
-        
+            ArmyHunt("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" }, "Seraphic Commanders Slain", true, 6);
+
         Core.CancelRegisteredQuests();
     }
     public void ArmyLTs(int quant)
@@ -446,8 +447,8 @@ public class ArmyLR
         Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Legion Token")} Legion Tokens");
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", 25000))
-            ArmyHunt("dreadrock", new[] {"Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary"}, "Dreadrock Enemy Recruited", true, 6);
-            
+            ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Dreadrock Enemy Recruited", true, 6);
+
         Core.CancelRegisteredQuests();
 
     }
@@ -503,12 +504,12 @@ public class ArmyLR
 
             Core.EquipClass(ClassType.Farm);
             Adv.BestGear(GearBoost.dmgAll);
-            ArmyHunt("revenant", new[] {"Tethered Soul"}, "Tethered Soul", false, 300);
-            ArmyHunt("shadowrealmpast", new[]{"Pure Shadowscythe, Shadow Guardian, Shadow Warrior"}, "Darkened Essence", false, 500);
-            
+            ArmyHunt("revenant", new[] { "Tethered Soul" }, "Tethered Soul", false, 300);
+            ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", false, 500);
+
             Adv.BestGear(GearBoost.Undead);
-            ArmyHunt("necrodungeon", new[]{"5 Headed Dracolich"}, "Dracolich Contract", false, 1000);
-            
+            ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", false, 1000);
+
             Bot.Drops.Pickup("Revenant's Spellscroll");
             Core.Logger($"Completed x{i++}");
         }
@@ -524,7 +525,7 @@ public class ArmyLR
             Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
             /*This is the only not prefarmed item left to get*/
             ArmyDarkTokenOfDage(100);
-            if(!Core.CheckInventory("Legion Token", 4000))
+            if (!Core.CheckInventory("Legion Token", 4000))
                 ArmyLTs(4000);
             Bot.Drops.Pickup("Exalted Crown");
             Core.Logger($"Completed x{i++}");
