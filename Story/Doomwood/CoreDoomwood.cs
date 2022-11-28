@@ -100,6 +100,8 @@ public class CoreDoomwood
         if (Core.isCompletedBefore(1085))
             return;
 
+        DoomwoodForest();
+
         Story.PreLoad(this);
 
         //1081    Zorbak's Hideout
@@ -128,6 +130,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(1101))
             return;
+
+        ChoppingMaul();
 
         Story.PreLoad(this);
 
@@ -158,6 +162,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(1154))
             return;
+
+        NecroTower();
 
         Story.PreLoad(this);
 
