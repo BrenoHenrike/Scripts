@@ -148,7 +148,7 @@ public class RavenlossSaga
         Story.KillQuest(3450, "RavenLoss", "ChaosWeaver Magi");
 
         //Legendary Heroes of the Chaos Weavers 3451
-        Story.KillQuest(3451, "RavenLoss", "ChaosWeaver Knight|ChaosWeaver Magi");
+        Story.KillQuest(3451, "RavenLoss", "ChaosWeaver Knight");
 
         //Weaver Tales and Legends 3452
         Story.MapItemQuest(3452, "RavenLoss", 2594);

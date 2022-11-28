@@ -24,6 +24,8 @@ public class CruxShip
 
         Story.PreLoad(this);
 
+        Core.EquipClass(ClassType.Farm);
+
         //By the Power of the Moon 4598
         Story.KillQuest(4598, "CruxShip", "Shadow Locust");
 
@@ -41,7 +43,7 @@ public class CruxShip
         Story.ChainQuest(4602);
 
         //Treasure Hunters Attack! 4603
-        Story.KillQuest(4603, "CruxShip", "Treasure Hunter|Enraged Hunter");
+        Story.KillQuest(4603, "CruxShip", "Treasure Hunter");
 
         //Airship Sabotage 4604
         Story.MapItemQuest(4604, "CruxShip", 3902, 3);
@@ -56,15 +58,16 @@ public class CruxShip
         Story.KillQuest(4607, "CruxShip", new[] { "Shadow Locust", "Nokris Plaguebringer" });
 
         //Battle to the Temple 4610
-        Story.KillQuest(4610, "CruxShip", new[] { "Treasure Hunter|Enraged Hunter", "Ancient Mummy|Mummy" });
+        Story.KillQuest(4610, "CruxShip", new[] { "Treasure Hunter", "Mummy" });
 
         //Treasure Hunter's Last Stand 4611
-        Story.KillQuest(4611, "CruxShip", new[] { "Treasure Hunter|Enraged Hunter", "Treasure Hunter Captain" });
+        Story.KillQuest(4611, "CruxShip", new[] { "Treasure Hunter", "Treasure Hunter Captain" });
 
         //Act 4 Complete 4612
         Story.ChainQuest(4612);
 
         //Apephyrx Rises 4613
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4613, "CruxShip", "Apephryx");
 
         //Act 5 Complete 4614
@@ -73,6 +76,7 @@ public class CruxShip
         //100 Mummy Massacre 4616
         if (!Story.QuestProgression(4616))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(4616);
             Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100, false);
             Core.EnsureComplete(4616);
