@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 
 using Skua.Core.Interfaces;
@@ -14,7 +14,7 @@ public class VordredArmor
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public DoomwoodPart3 DW3 = new();
+    public CoreDoomwood DW = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public CoreSDKA SDKA = new();
@@ -35,7 +35,7 @@ public class VordredArmor
 
         Story.PreLoad(this);
 
-        DW3.StoryLine();
+        DW.DoomwoodPart3();
         Farm.Experience(60);
         Adv.BestGear(GearBoost.Undead);
 

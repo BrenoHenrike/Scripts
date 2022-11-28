@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 
 using Skua.Core.Interfaces;
 
@@ -17,13 +17,13 @@ public class ObsidianLightofDestiny
     public CoreStory Story = new CoreStory();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreBLOD BLOD = new CoreBLOD();
-    public DoomwoodPart3 DW3 = new();
+    public CoreDoomwood DW = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        DW3.StoryLine();
+        DW.DoomwoodPart3();
         Axe();
 
         Core.SetOptions(false);

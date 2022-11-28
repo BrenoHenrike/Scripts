@@ -31,7 +31,7 @@
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs

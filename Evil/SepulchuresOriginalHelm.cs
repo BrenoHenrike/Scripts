@@ -4,7 +4,7 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Story/Doomwood/AQWZombies.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
 using Skua.Core.Interfaces;
@@ -20,7 +20,7 @@ public class SepulchuresOriginalHelm
     public CoreDailies Daily = new();
     public Core13LoC LOC = new();
     public CoreToD TOD = new();
-    public AQWZombies Zombie = new();
+    public CoreDoomwood DW = new();
     public string[] GravelynsDoomFireTokenItems = { "Empowered Essence", "Gravelyn's Blessing", "Painful Memory Bubble", "Burning Passion Flame", "Father's Sorrowful Tear", "Gravelyn's DoomFire Token", "Necrotic Sword of Doom", "Sepulchure's DoomKnight Armor" };
 
     public void ScriptMain(IScriptInterface bot)
@@ -50,7 +50,7 @@ public class SepulchuresOriginalHelm
         Core.ChangeAlignment(Alignment.Evil);
         Farm.EvilREP(10);
         Farm.Experience(70);
-        Zombie.Storyline();
+        DW.AQWZombies();
         TOD.MysteriousDungeon();
         LOC.Hero();
         if (!Core.CheckInventory(new[] { "Lore's Champion Seal", "Gravelyn's DoomFire Token", "Royal ShadowScythe Blade" }))

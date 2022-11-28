@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 using Skua.Core.Interfaces;
 
 public class BattleBabysitter
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public DoomwoodPart3 Doomwood = new();
+    public CoreDoomwood Doomwood = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,7 +27,7 @@ public class BattleBabysitter
         }
 
         Core.Logger($"Doing Doomwood story for {badge} badge");
-        Doomwood.StoryLine();
+        Doomwood.DoomwoodPart3();
     }
 
     private string badge = "Battle Babysitter";
