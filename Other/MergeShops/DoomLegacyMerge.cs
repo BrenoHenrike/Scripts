@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,7 +16,7 @@ public class DoomLegacyMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
-    public DoomwoodPart3 DWp3 = new();
+    public CoreDoomwood DWp3 = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -113,7 +113,7 @@ public class DoomLegacyMerge
 
                 case "Zealous Badge":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    DWp3.StoryLine();
+                    DWp3.DoomwoodPart3();
                     Core.RegisterQuests(7616);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

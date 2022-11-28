@@ -3,7 +3,7 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 using Skua.Core.Interfaces;
 
 public class PinkBladeOfDestruciton
@@ -12,7 +12,7 @@ public class PinkBladeOfDestruciton
     public CoreBots Core => CoreBots.Instance;
     public CoreBLOD BLoD = new CoreBLOD();
     public CoreStory Story = new CoreStory();
-    public DoomwoodPart3 P3 = new DoomwoodPart3();
+    public CoreDoomwood P3 = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -28,7 +28,7 @@ public class PinkBladeOfDestruciton
         if (Core.CheckInventory("Pink Blade of Destruction"))
             return;
 
-        P3.StoryLine();
+        P3.DoomwoodPart3();
 
         Core.AddDrop("Fuchsia Dye", "Zealous Badge", "Pink Blade of Destruction");
 
