@@ -20,7 +20,7 @@ public class ExaltedApotheosisPreReqs
 
     public void PreReqs()
     {
-        if (Core.CheckInventory("Exalted Node", 300) && Core.CheckInventory("Thaumaturgus Alpha") && Core.CheckInventory("Apostate Alpha"))
+        if (Core.CheckInventory("Exalted Node", 300, toInv: false) && Core.CheckInventory("Thaumaturgus Alpha", toInv: false) && Core.CheckInventory("Apostate Alpha", toInv: false))
         {
             Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
             return;
@@ -29,9 +29,9 @@ public class ExaltedApotheosisPreReqs
         /// No ultras required
         if (!Core.CheckInventory("Apostate Alpha") && !Core.CheckInventory("Thaumaturgus Alpha"))
         {
-            Core.EquipClass(ClassType.Solo);
-
+            Core.EquipClass(ClassType.Farm);
             Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
+            Core.EquipClass(ClassType.Solo);
             Core.KillMonster("timeinn", "r7", "Bottom", "The Warden", "Exalted Relic Piece", 10, isTemp: false);
             Core.KillMonster("timeinn", "r8", "Left", "The Engineer", "Exalted Artillery Shard", 10, isTemp: false);
             Core.KillMonster("timeinn", "r6", "Left", "Ezrajal", "Exalted Forgemetal", 10, isTemp: false);
@@ -39,6 +39,7 @@ public class ExaltedApotheosisPreReqs
             Core.BuyItem("timeinn", 2010, "Apostate Alpha");
             Core.BuyItem("timeinn", 2010, "Thaumaturgus Alpha");
 
+            Core.EquipClass(ClassType.Farm);
             Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
 
             Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
