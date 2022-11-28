@@ -1265,7 +1265,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(3049);
+        Core.RegisterQuests(3049); //Help Professor Maedoc 3049
         while (!Bot.ShouldExit && FactionRank("Druid Grove") < rank)
             Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 5, log: false);
         Bot.Wait.ForQuestComplete(3049);
@@ -1288,7 +1288,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(320, 321);
+            Core.RegisterQuests(320, 321); //Warm and Furry 320, Shell Shock 321
             while (!Bot.ShouldExit && FactionRank("Dwarfhold") < rank)
             {
                 Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
@@ -1310,7 +1310,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(3050, 3298);
+        Core.RegisterQuests(3050, 3298); //Help Professor Warlic 3050, Elements of Research 3298
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
             Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
@@ -1870,7 +1870,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(537);
+            Core.RegisterQuests(537); //Sanguine 537
             while (!Bot.ShouldExit && FactionRank("Lycan") < rank)
             {
                 Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask", log: false);
@@ -1892,7 +1892,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5707);
+        Core.RegisterQuests(5707); // Practice Time 5707
         while (!Bot.ShouldExit && FactionRank("Infernal Army") < rank)
         {
             Core.KillMonster("dreadfire", "r10", "Left", "Living Brimstone", "Living Brimstone Defeated", log: false);
@@ -1913,7 +1913,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5849, 5850);
+        Core.RegisterQuests(5849, 5850); //Capture the Misshapen 5849, Defeat the Parasites 5850
         if (!Bot.Quests.IsAvailable(5850))
         {
             Core.KillMonster("pilgrimage", "r5", "Left", "SpiderWing", "Spiderwing Captured", 4, log: false);
@@ -1953,7 +1953,7 @@ public class CoreFarms
             Bot.Map.Jump("Enter", "Spawn");
         }
 
-        Core.RegisterQuests(5429);
+        Core.RegisterQuests(5429); //Lamps, Paintings and Chairs, oh my! 5429
         while (!Bot.ShouldExit && FactionRank("Mysterious Dungeon") < rank)
         {
             Core.HuntMonster("cursedshop", "Antique Chair", "Antique Chair Defeated", log: false);
@@ -1983,7 +1983,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4829);
+            Core.RegisterQuests(4829); //Sugar, Sugar 4829
             while (!Bot.ShouldExit && FactionRank("Mythsong") < rank)
             {
                 Core.HuntMonster("beehive", "Stinger", "Honey Gathered", 10, log: false);
@@ -2005,7 +2005,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(3048);
+        Core.RegisterQuests(3048); //Help Professor Mueran 3048
         while (!Bot.ShouldExit && FactionRank("Necro Crypt") < rank)
         {
             Core.HuntMonster("castleundead", "Skeletal Viking", "Old Bone", 5, log: false);
@@ -2029,7 +2029,7 @@ public class CoreFarms
             Core.SavedState();
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4027);
+            Core.RegisterQuests(4027); //Sage Advice 4027
             while (!Bot.ShouldExit && FactionRank("Northpointe") < rank)
                 Core.HuntMonster("northpointe", "Grim Stalker", "Bunch of Sage", 10, log: false);
             Bot.Wait.ForQuestComplete(4027);
@@ -2079,7 +2079,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(3445);
+            Core.RegisterQuests(3445); //Slay the Spiderkin 3445
             while (!Bot.ShouldExit && FactionRank("Ravenloss") < rank)
             {
                 Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10);
@@ -2105,7 +2105,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(916, 917, 919, 921, 922);
+            Core.RegisterQuests(916, 917, 919, 921, 922); //Dissertations Bupers Camel 916, Crafty Creepers: A Favorite of Mine 917, Parched Pets 919, Oasis Ornaments 921, The Power of Pomade 922
             while (!Bot.ShouldExit && FactionRank("Sandsea") < rank)
             {
                 Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10);
