@@ -31,7 +31,7 @@ public class ArmyBaconCatRep
         sArmy.player5,
         sArmy.player6, //adjust if needed, check maps limit on wiki
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

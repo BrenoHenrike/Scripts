@@ -30,7 +30,7 @@ public class ArmyTotemAndGem
         sArmy.player6,
         sArmy.packetDelay,
         new Option<Rewards>("QuestReward", "Totems, Gems or Essences?", "Select the reward to farm first - if you pick Essences it will just Army while picking them up", Rewards.EssenceofNulgath),
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)
