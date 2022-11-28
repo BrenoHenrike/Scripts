@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Doomwood/Temple.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 using Skua.Core.Interfaces;
 
 public class StoneCold
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public Temple Temple = new();
+    public CoreDoomwood DW = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,7 +27,7 @@ public class StoneCold
         }
 
         Core.Logger($"Doing Temple story for {badge} badge");
-        Temple.StoryLine();
+        DW.TempleOfTheLight();
     }
 
     private string badge = "Stone Cold";

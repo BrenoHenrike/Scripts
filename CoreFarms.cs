@@ -1246,7 +1246,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(4863, 4862, 4865, 4868);
+        Core.RegisterQuests(4863, 4862, 4865, 4868); //Endurance Tesssssst 4863, Supply Run 4862, Ghastly Blades 4865, Glub, Glub, Glub 4868
         while (!Bot.ShouldExit && FactionRank("Dreadrock") < rank)
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Goldfish Companion", log: false);
         Bot.Wait.ForQuestComplete(4868);

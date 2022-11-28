@@ -36,7 +36,7 @@ public class CreepyUndeadMonkeyQuest
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
         Core.EquipClass(ClassType.Farm);
-        Core.UpdateQuest(3010);
+        Bot.Quests.UpdateQuest(3010);
         Core.RegisterQuests(questID);
         foreach (ItemBase Reward in RewardOptions)
         {
