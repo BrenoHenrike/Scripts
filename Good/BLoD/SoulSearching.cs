@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
 public class SoulSearchingc
@@ -36,7 +37,9 @@ public class SoulSearchingc
 
             Bot.Wait.ForPickup("Undead Essence");
             Bot.Wait.ForPickup("Spirit Orb");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Spirit Orb")}/{quant})");
+            if (Core.CheckInventory("Spirit Orb", quant))
+                break;
+            else Core.FarmingLogger("Spirit Orb", quant);
         }
         Core.CancelRegisteredQuests();
     }

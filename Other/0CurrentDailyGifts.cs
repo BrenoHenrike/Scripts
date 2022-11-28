@@ -93,7 +93,7 @@ public class CurrentDailyGifts
 
             #region October 24 - 30 leave November 25
             GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe");
-            GetGift(AvailableUntil(25,11), "crescentmoon", "Royce", "Headless Horseman", "Ghost Eta");
+            GetGift(AvailableUntil(25, 11), "crescentmoon", "Royce", "Headless Horseman", "Ghost Eta");
 
             #endregion
 
@@ -111,10 +111,10 @@ public class CurrentDailyGifts
 
             #region November 25 leaves December 9
 
-            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Jack Sprat", "Pink POSE! Pitchfork" , "Pitchfork of Shadows");
+            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Jack Sprat", "Pink POSE! Pitchfork", "Pitchfork of Shadows");
             GetGift(AvailableUntil(9, 12), "hbchallenge", "Module 005", "Module 005 Chibi Pet");
-            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Red Dragon", "Darkened Adherent Faceplate" , "Darken");
-            GetGift(AvailableUntil(9, 12), "blackfridaywar", "Deal Bot 2.0", "Rose Phoenix Sword" , "Obsidian Phoenix Sword");
+            GetGift(AvailableUntil(9, 12), "ebiltakeover", "Ebil Red Dragon", "Darkened Adherent Faceplate", "Darken");
+            GetGift(AvailableUntil(9, 12), "blackfridaywar", "Deal Bot 2.0", "Rose Phoenix Sword", "Obsidian Phoenix Sword");
             GetGift(AvailableUntil(9, 12), "dreammaster", "Calico Cobby", "Cute Calico Cobby Pet");
 
             #endregion

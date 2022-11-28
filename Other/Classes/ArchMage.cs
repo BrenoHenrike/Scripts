@@ -302,8 +302,6 @@ public class Archmage
 
         BossItemCheck(1, "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
-        Bot.Options.AggroMonsters = false; //just incse for the equip.
-
         if (Core.CheckInventory("Yami No Ronin"))
         {
             Adv.GearStore();
