@@ -35,6 +35,16 @@ public class CreepyUndeadMonkeyQuest
 
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
+        if (!Core.CheckInventory("Golden Bough"))
+        {
+            Bot.Drops.Add("Golden Bough");
+            Core.EquipClass(ClassType.Farm);
+
+            Core.EnsureAccept(3010);
+            Core.HuntMonster("UnderRealm", "Underworld Soul", "Souls Released", 8);
+            Core.EnsureComplete(3010);
+        }
+
         Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(3010);
         Core.RegisterQuests(questID);
