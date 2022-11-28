@@ -1983,7 +1983,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4829);
+            Core.RegisterQuests(4829); //Sugar, Sugar 4829
             while (!Bot.ShouldExit && FactionRank("Mythsong") < rank)
             {
                 Core.HuntMonster("beehive", "Stinger", "Honey Gathered", 10, log: false);
@@ -2005,7 +2005,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(3048);
+        Core.RegisterQuests(3048); //Help Professor Mueran 3048
         while (!Bot.ShouldExit && FactionRank("Necro Crypt") < rank)
         {
             Core.HuntMonster("castleundead", "Skeletal Viking", "Old Bone", 5, log: false);
@@ -2029,7 +2029,7 @@ public class CoreFarms
             Core.SavedState();
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4027);
+            Core.RegisterQuests(4027); //Sage Advice 4027
             while (!Bot.ShouldExit && FactionRank("Northpointe") < rank)
                 Core.HuntMonster("northpointe", "Grim Stalker", "Bunch of Sage", 10, log: false);
             Bot.Wait.ForQuestComplete(4027);
@@ -2079,7 +2079,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(3445);
+            Core.RegisterQuests(3445); //Slay the Spiderkin 3445
             while (!Bot.ShouldExit && FactionRank("Ravenloss") < rank)
             {
                 Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10);
@@ -2105,7 +2105,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(916, 917, 919, 921, 922);
+            Core.RegisterQuests(916, 917, 919, 921, 922); //Dissertations Bupers Camel 916, Crafty Creepers: A Favorite of Mine 917, Parched Pets 919, Oasis Ornaments 921, The Power of Pomade 922
             while (!Bot.ShouldExit && FactionRank("Sandsea") < rank)
             {
                 Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10);
