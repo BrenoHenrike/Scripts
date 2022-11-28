@@ -26,7 +26,7 @@ public class ArmyHollowbornRep
         sArmy.player3,
         sArmy.player4,
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

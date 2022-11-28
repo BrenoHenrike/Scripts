@@ -40,7 +40,7 @@ public class ArmyLR
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions
     };
     
     public string[] LRMaterials =

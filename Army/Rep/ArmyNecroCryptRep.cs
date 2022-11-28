@@ -27,7 +27,7 @@ public class ArmyNecroCryptRep
         sArmy.player4,
         sArmy.player5, //adjust if needed, check maps limit on wiki
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

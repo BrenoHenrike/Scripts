@@ -32,7 +32,7 @@ public class ArmySevenCircle
         sArmy.player6,
         sArmy.player7,
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

@@ -30,7 +30,7 @@ public class ArmyChaosRep
         sArmy.player7,
         sArmy.player8,
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

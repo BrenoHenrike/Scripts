@@ -22,7 +22,7 @@ public class ArmyBloodyChaos
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
         new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
-        sCore.SkipOptions,
+        CoreBots.Instance.SkipOptions,
         sArmy.packetDelay
     };
 

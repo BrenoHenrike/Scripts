@@ -26,7 +26,7 @@ public class NecroticSwordOfDoom
         sNSoD.MaxStack,
         sNSoD.PreFarm,
         sNSoD.GetSDKA,
-        sCore.SkipOptions,
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

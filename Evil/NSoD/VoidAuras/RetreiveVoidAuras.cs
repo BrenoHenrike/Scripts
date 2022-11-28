@@ -24,7 +24,7 @@ public class RetrieveVoidAuras
     public List<IOption> Options = new()
     {
         sNSoD.MaxStack,
-        sCore.SkipOptions,
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)
