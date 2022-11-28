@@ -243,7 +243,7 @@ public class CoreLegion
 
     public void LTHardCoreParagon(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant) || Core.CheckInventory("Hardcore Paragon Pet") || !Bot.Quests.IsDailyComplete(3394))
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet") || !Bot.Quests.IsDailyComplete(3394))
             return;
 
         Core.AddDrop("Legion Token");
