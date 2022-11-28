@@ -94,7 +94,7 @@ public class HarvestMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("birdswithharms", "Rawrgobble", req.Name, isTemp: false, log: false);
+                        Core.HuntMonster("birdswithharms", "Rawrgobble", req.Name, quant, isTemp: false, log: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 

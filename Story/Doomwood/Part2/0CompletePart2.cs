@@ -3,17 +3,17 @@
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 using Skua.Core.Interfaces;
 
-public class AQWZombies
+public class DoomwoodPart2
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreDoomwood DW = new();
 
-    public void ScriptMain(IScriptInterface Bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        DW.AQWZombies();
+        DW.DoomwoodPart2();
 
         Core.SetOptions(false);
     }
