@@ -25,7 +25,7 @@ public class SmartVoidAuras
     {
         sNSoD.MaxStack,
         sNSoD.GetSDKA,
-        CoreBots.Instance.SkipOptions,,
+        sCore.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

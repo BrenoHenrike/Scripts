@@ -33,7 +33,7 @@ public class CoreVHL
             "Needs Crag and Bamboozle and is Legend-Only.\n" +
             "Will not be done if you don't meed the conditions\n" +
             "Recommended setting: True", true),
-        CoreBots.Instance.SkipOptions,,
+        sCore.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

@@ -33,7 +33,7 @@ public class ArmyLegionFealty2
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        CoreBots.Instance.SkipOptions,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

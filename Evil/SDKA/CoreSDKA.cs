@@ -18,7 +18,7 @@ public class CoreSDKA
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        CoreBots.Instance.SkipOptions,,
+        sCore.SkipOptions,
         new Option<SDKAQuest>("SelectedQuest", "Dark Spirit Orbs Quest",
             "Which quest should the bot use to farm Dark Spirit Orbs with?\nRecommended setting: A Penny for Your Foughts", SDKAQuest.APennyforYourFoughts),
     };

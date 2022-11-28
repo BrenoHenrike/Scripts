@@ -28,7 +28,7 @@ public class ArmyInfernalArmyRep
         sArmy.player5,
         sArmy.player6, //adjust if needed, check maps limit on wiki
         sArmy.packetDelay,
-        CoreBots.Instance.SkipOptions,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

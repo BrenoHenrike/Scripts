@@ -33,7 +33,7 @@ public class ArmyDarkWarNation
         sArmy.player6,
         sArmy.player7,
         sArmy.packetDelay,
-        CoreBots.Instance.SkipOptions,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

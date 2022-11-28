@@ -26,7 +26,7 @@ public class ArmyApprovalFavour
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-        CoreBots.Instance.SkipOptions,
+        sCore.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
