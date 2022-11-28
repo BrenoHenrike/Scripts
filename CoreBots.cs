@@ -2227,6 +2227,7 @@ public class CoreBots
             Bot.Wait.ForCombatExit();
         }
         Bot.Combat.Exit();
+        Bot.Wait.ForCombatExit();
     }
     private string lastJumpWait = "";
 
