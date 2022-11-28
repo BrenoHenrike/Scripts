@@ -1,4 +1,6 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 // using Skua.Core.Options;
@@ -7,6 +9,7 @@ public class CreepyUndeadMonkeyQuest
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreIsleOfFotia Fotia => new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -33,6 +36,7 @@ public class CreepyUndeadMonkeyQuest
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
         Core.EquipClass(ClassType.Farm);
+        Core.UpdateQuest(3010);
         Core.RegisterQuests(questID);
         foreach (ItemBase Reward in RewardOptions)
         {
@@ -54,7 +58,7 @@ public class CreepyUndeadMonkeyQuest
                     Core.HuntMonster("arcangrove", "Gorillaphant", "Bananas in pajamas");
                     Core.HuntMonster("battlefowl", "Chickencow", "hickencow Head");
                     Core.HuntMonster("mafic", "Scoria Serpent", "Scoria Serpent Charmer");
-                    Core.HuntMonster("underrealm", "Grief", "Grief's Tears ");
+                    Core.HuntMonster("underrealm", "Grief", "Grief's Tears");
                     Core.HuntMonster("deepchaos", "Kathool", "Kathool… All of him");
                     Core.HuntMonster("twig", "Sweetish Fish", "Candy from a Sweetish Fish");
 
