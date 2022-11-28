@@ -344,7 +344,7 @@ public class ArmyLR
     
     public void ArmyDageFavor(int quant)
     {
-        ArmyHunt("evilwarnul", new[] { "Skull Warrior", "Undead Infantry" }, "Dage Favor", false, quant);
+        ArmyHunt("evilwarnul", new[] { "Skull Warrior", "Undead Infantry" }, "Dage's Favor", false, quant);
     }
     
     public void ArmyEmblemOfDage(int quant)
