@@ -9,7 +9,7 @@ public class BrethwrenREPFarm
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new();
-    CoreHarvestDay HarvestDay = new();
+    public CoreHarvestDay HarvestDay = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
