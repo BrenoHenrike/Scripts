@@ -12,8 +12,8 @@
 //cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
-//cs_include Scripts/Story/Doomwood/DoomwoodPart3.cs
-//cs_include Scripts/Story/Doomwood/Temple.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+//cs_include Scripts/Story/Doomwood/Part1/5TempleOfLight.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs

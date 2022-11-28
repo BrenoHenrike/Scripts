@@ -7,7 +7,7 @@
 //cs_include Scripts/Darkon/CoreDarkon.cs
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
-//cs_include Scripts/Story/Doomwood/Part3/0CompletePart3.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
