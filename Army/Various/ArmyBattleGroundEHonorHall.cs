@@ -28,7 +28,7 @@ public class ArmyBattlegroundE
         sArmy.player5,
         sArmy.player6,
         new Option<Method>("mapname", "BGE or Honour Hall?", "Farm BGE or Honourhall(member)?", Method.BattleGroundE),
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

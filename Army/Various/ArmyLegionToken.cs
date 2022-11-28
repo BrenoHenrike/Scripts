@@ -32,7 +32,7 @@ public class ArmyLegionToken
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        sCore.SkipOptions,
+        CoreBots.Instance.SkipOptions,,
         new Option<Method>("Method", "Which method to get LTs?", "Choose your method", Method.Dreadrock)
     };
 

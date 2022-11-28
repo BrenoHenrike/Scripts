@@ -28,7 +28,7 @@ public class ArmySpiritOrb
         sArmy.player6,
         sArmy.packetDelay,
         new Option<int>("amount","Amount", "Input the amount of spirit orbs to farm", 65000),
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

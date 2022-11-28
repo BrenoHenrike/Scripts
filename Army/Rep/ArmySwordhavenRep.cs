@@ -6,7 +6,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyDreadfireRep
+public class ArmySwordhavenRep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -17,7 +17,7 @@ public class ArmyDreadfireRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyDreadfireRep";
+    public string OptionsStorage = "ArmySwordhavenRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -26,7 +26,7 @@ public class ArmyDreadfireRep
         sArmy.player3,
         sArmy.player4,
         sArmy.player5,
-        sArmy.player6,
+        sArmy.player6, //adjust if needed, check maps limit on wiki
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions,
     };
@@ -43,17 +43,17 @@ public class ArmyDreadfireRep
 
     public void Setup()
     {
-        if (Farm.FactionRank("Dreadfire") >= 10)
+        if (Farm.FactionRank("Swordhaven") >= 10)
             return;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(5695, 5696, 5697); //Sparring Practice 5695, Fill the Vials 5696, Gather Crystals 5697
+        Core.RegisterQuests(3065, 3066, 3067, 3070, 3085, 3086, 3087); //questName ID, questName ID
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("dreadfire", "Nethermage", "Stray Mana", "Arcane Crystal");
-        while (!Bot.ShouldExit && Farm.FactionRank("Dreadfire") < 10)
+        Army.SmartAggroMonStart("castle", "Castle Spider", "Castle Wraith", "Gargoyle", "Dungeon Fiend");
+        while (!Bot.ShouldExit && Farm.FactionRank("Swordhaven") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
