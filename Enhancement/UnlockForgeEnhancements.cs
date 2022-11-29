@@ -32,7 +32,6 @@
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
-//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 //cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
