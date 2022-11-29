@@ -275,7 +275,6 @@ public class ArmyLR
     public void GetItem(string map = null, string Monster = null, int questID = 000, string item = null, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
 
         Quest QuestData = Core.EnsureLoad(questID);
         ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
@@ -301,7 +300,6 @@ public class ArmyLR
 
         Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
-
         ArmyEvilGoodRank4();
         ArmyEvilGoodRankMax();
 
@@ -351,15 +349,16 @@ public class ArmyLR
     {
         if (Core.CheckInventory("Emblem of Dage", quant))
             return;
+        Core.AddDrop("Emblem of Dage");
         Core.Logger($"Farming {quant} Emblems");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.gold);
         Core.AddDrop("Legion Seal", "Gem of Mastery");
-        Legion.LegionRound4Medal();
+        ArmyLegionRound4Medal();
         Core.RegisterQuests(4742);
+        ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Legion Seal", false, (25*(10-Bot.Inventory.GetQuantity("Emblem of Dage"))));
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {   /*Keeping second armyhunt in case gem of mastery doesn't drop within 25 legion seals, vhl experience tells me it doesn't always*/
-            ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Legion Seal", false, 25);
             ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Gem of Mastery", false, 1);
             Bot.Wait.ForPickup("Emblem of Dage");
         }
@@ -374,24 +373,28 @@ public class ArmyLR
             ArmyLegionRound4Medal();
         if (!Core.CheckInventory("Legion Token", 50))
             ArmyLTs(50);
-
+        /*Sell any existing Defeated Makai to sync up army before farming bosses*/
+        if (Core.CheckInventory("Defeated Makai"))
+            Core.SellItem("Defeated Makai", 0, true);
+        Core.Logger("Defeated Makai sold to sync up your army!");
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
             Core.EquipClass(ClassType.Farm);
             if (!Core.CheckInventory("Defeated Makai", 25))
-                ArmyHunt("tercessuinotlim", new[] { "Dark Makai" }, "Defeated Makai", false, 25);
-
+                Core.PrivateRoomNumber = 100000;
+                Core.KillMonster("tercessuinotlim", "m2", "Spawn", "Dark Makai", "Defeated Makai", 25, false, false,false);
+            Core.PrivateRoomNumber = Army.getRoomNr();
             Core.EquipClass(ClassType.Solo);
             Adv.BestGear(GearBoost.Chaos);
-            GetItem("aqlesson", "Carnax", 4743, "Carnax Eye", true, 1);
-            GetItem("deepchaos", "Kathool", 4743, "Kathool Tentacle", true, 1);
-            GetItem("dflesson", "Fluffy the Dracolich", 4743, "Fluffy's Bones", true, 1);
+            ArmyHunt("aqlesson", new[] {"Carnax"}, "Carnax Eye", true, 1);
+            ArmyHunt("deepchaos", new[] {"Kathool"}, "Kathool Tentacle", true, 1);
+            ArmyHunt("dflesson", new[] {"Fluffy the Dracolich"}, "Fluffy's Bones", true, 1);
             Adv.BestGear(GearBoost.Dragonkin);
-            GetItem("lair", "Red Dragon", 4743, "Red Dragon's Fang", true, 1);
+            ArmyHunt("lair", new[] {"Red Dragon"}, "Red Dragon's Fang", true, 1);
             Adv.BestGear(GearBoost.Human);
-            GetItem("bloodtitan", "Blood Titan", 4743, "Blood Titan's Blade", true, 1);
+            ArmyHunt("bloodtitan", new[] {"Blood Titan"}, "Blood Titan's Blade", true, 1);
             Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
         }
         Core.CancelRegisteredQuests();
@@ -405,31 +408,42 @@ public class ArmyLR
         Core.AddDrop(legionMedals);
         Core.Logger("Farming Legion Round 4 Medal");
 
+        /*Sell existing medals to sync up army. Not sure how to implement foreach to replace this mess*/
+        if (Core.CheckInventory("Legion Round 4 Medal") || Core.CheckInventory("Legion Round 3 Medal") ||
+            Core.CheckInventory("Legion Round 2 Medal") || Core.CheckInventory("Legion Round 1 Medal"))
+        {
+            Core.SellItem("Legion Round 1 Medal", 0, true);
+            Core.SellItem("Legion Round 2 Medal", 0, true);
+            Core.SellItem("Legion Round 3 Medal", 0, true);
+            Core.SellItem("Legion Round 4 Medal", 0, true);
+            Core.Logger("Legion Round Medals sold to sync up your army!");           
+        }
+        
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Round 4 Medal"))
         {
             Core.RegisterQuests(4738, 4739, 4740, 4741);
             if (!Core.CheckInventory("Legion Round 1 Medal"))
             {
-                GetItem("shadowblast", "Caesaristhedark", 4738, "Nation Rookie Defeated", true, 5);
-                GetItem("shadowblast", "Shadowrise Guard", 4738, "Shadowscythe Rookie Defeated", true, 5);
+                ArmyHunt("shadowblast", new[] {"Caesaristhedark"}, "Nation Rookie Defeated", true, 5);
+                ArmyHunt("shadowblast", new[] {"Shadowrise Guard"}, "Shadowscythe Rookie Defeated", true, 5);
                 Bot.Wait.ForDrop("Legion Round 1 Medal");
                 Core.Logger("Medal 1 acquired");
             }
             if (!Core.CheckInventory("Legion Round 2 Medal"))
             {
-                GetItem("shadowblast", "Carnage", 4739, "Nation Veteran Defeated", true, 7);
-                GetItem("shadowblast", "Doombringer", 4739, "Shadowscythe Veteran Defeated", true, 7);
+                ArmyHunt("shadowblast", new[] {"Carnage"}, "Nation Veteran Defeated", true, 7);
+                ArmyHunt("shadowblast", new[] {"Doombringer"}, "Shadowscythe Veteran Defeated", true, 7);
                 Bot.Wait.ForDrop("Legion Round 2 Medal");
                 Core.Logger("Medal 2 acquired");
             }
             if (!Core.CheckInventory("Legion Round 3 Medal"))
             {
-                GetItem("shadowblast", "Minotaurofwar", 4740, "Nation Elite Defeated", true, 10);
-                GetItem("shadowblast", "Draconic Doomknight", 4740, "Shadowscythe Elite Defeated", true, 10);
+                ArmyHunt("shadowblast", new[] {"Minotaurofwar"}, "Nation Elite Defeated", true, 10);
+                ArmyHunt("shadowblast", new[] {"Draconic Doomknight"}, "Shadowscythe Elite Defeated", true, 10);
                 Bot.Wait.ForDrop("Legion Round 3 Medal");
                 Core.Logger("Medal 3 acquired");
             }
-            GetItem("shadowblast", "Thanatos", 4741, "Thanatos Vanquished", true, 1);
+            ArmyHunt("shadowblast", new[] {"Thanatos"}, "Thanatos Vanquished", true, 1);
             Bot.Wait.ForDrop("Legion Round 4 Medal");
             Core.Logger("Medal 4 acquired");
         }
@@ -516,15 +530,26 @@ public class ArmyLR
         {
             Core.EquipClass(ClassType.Solo);
             Adv.BestGear(GearBoost.Undead);
-            GetItem("judgement", "Ultra Aeacus", 6897, "Aeacus Empowered", false, 50);
+            if (Core.CheckInventory("Aeacus Empowered"))
+                Core.SellItem("Aeacus Empowered", 0, true);
+            ArmyHunt("judgement", new[] {"Ultra Aeacus"}, "Aeacus Empowered", false, 50);
 
             Core.EquipClass(ClassType.Farm);
             Adv.BestGear(GearBoost.dmgAll);
+            
+            if (Core.CheckInventory("Tethered Soul"))
+                Core.SellItem("Tethered Soul", 0 , true);
             ArmyHunt("revenant", new[] { "Tethered Soul" }, "Tethered Soul", false, 300);
+            
+            if (Core.CheckInventory("Darkened Essence"))
+                Core.SellItem("Darkened Essence", 0, true);
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", false, 500);
 
             Bot.Quests.UpdateQuest(2061);
             Adv.BestGear(GearBoost.Undead);
+            
+            if (Core.CheckInventory("Dracolich Contract"))
+                Core.SellItem("Dracolich Contract", 0, true);
             ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", false, 1000);
 
             Bot.Drops.Pickup("Revenant's Spellscroll");
