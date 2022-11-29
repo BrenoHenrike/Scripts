@@ -28,7 +28,7 @@ public class ArmyLowTideMergeReqs
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        sCore.SkipOptions
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

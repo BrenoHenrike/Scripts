@@ -25,7 +25,7 @@ public class CommandingShadowEssences
     public List<IOption> Options = new()
     {
         sNSoD.GetSDKA,
-        sCore.SkipOptions,
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface bot)

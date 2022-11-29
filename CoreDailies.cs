@@ -35,6 +35,7 @@ public class CoreDailies
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return;
+        Bot.Drops.Add(item);
         Core.Join(map);
         Core.EnsureAccept(quest);
         if (cell != null)

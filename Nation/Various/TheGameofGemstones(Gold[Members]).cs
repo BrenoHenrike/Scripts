@@ -12,7 +12,7 @@ public class TheGameofGemstones
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] {"Tendurrr The Assistant", "Unidentified 13"});
+        Core.BankingBlackList.AddRange(new[] { "Tendurrr The Assistant", "Unidentified 13" });
         Core.SetOptions();
 
         Gold();
@@ -26,6 +26,7 @@ public class TheGameofGemstones
             return;
 
         Nation.FarmUni13();
+        Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
 
         Bot.Quests.UpdateQuest(597);
         Core.RegisterQuests(5815);
