@@ -35,13 +35,13 @@ public class BlackFridayAlphaHunterRogue
         var AllRewards3 = Core.EnsureLoad(6106).Rewards;
         var AllRewards4 = Core.EnsureLoad(6107).Rewards;
         var AllRewardsArray = AllRewards1.Concat(AllRewards2).Concat(AllRewards3).Concat(AllRewards4).Select(x => x.ID).ToArray();
-        if (Core.CheckInventory(AllRewardsArray))
+        if (Core.CheckInventory(AllRewardsArray, toInv: false))
             return;
 
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(AllRewardsArray);
         Core.RegisterQuests(Core.FromTo(6104, 6107));
-        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewardsArray))
+        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewardsArray, toInv: false))
         {
             Core.KillMonster("blackfridaywar", "r4", "Left", "*", log: false);
             if (toBank && Bot.Inventory.FreeSlots == 0)
