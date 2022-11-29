@@ -115,7 +115,7 @@ public class CoreOblivionBladeofNulgath
     {
         if (Core.CheckInventory("Relic of Chaos", quant))
             return;
-
+        Bot.Drops.Add("Relic of Chaos");
         PetCheck(2561, 599);
         while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", quant))
             Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Soul");
