@@ -94,7 +94,7 @@ public class ArchMageMatsArmy
             ArmyKillMonster("theworld", "r9", "Left", "Encore Darkon", "Undying Resolve", log: false);
             ArmyKillMonster("celestialpast", "r11a", "Left", "Azalith", "drop", log: false);
             ArmyKillMonster("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", log: false);
-            ArmyKillMonster("archmage", "Boss", "Right", "Prismata", "Elemental Binding", 250, isTemp: false, log: false);
+            ArmyKillMonster("archmage", "r2", "Right", "Prismata", "Elemental Binding", 250, isTemp: false, log: false);
         }
         Core.ConfigureAggro(false);
         Core.Logger($"🖕");
