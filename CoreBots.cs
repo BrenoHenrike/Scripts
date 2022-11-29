@@ -272,14 +272,16 @@ public class CoreBots
                 {
                     if (Bot.House.Items.Count(h => h.Equipped) > 0)
                         Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
-                    else 
-                        Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-100000%");
+                    else
+                        SendPackets($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
                 }
+
                 else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
                     Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}%");
             }
+            Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
         }
         if (AntiLag)
         {
