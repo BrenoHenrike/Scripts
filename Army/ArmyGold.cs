@@ -44,15 +44,6 @@ public class ArmyGold
 
     public void Setup(Method mapname)
     {
-        // if (((int)mapname == 0) || ((int)mapname == 1))
-        //     BGE.Setup(Bot.Config.Get<Method>("mapname"));
-        // else if (((int)mapname == 2))
-        //     DWL.Setup();
-        // else if (((int)mapname == 3))
-        //     DWN.Setup();
-        // else if (((int)mapname == 4))
-        //     ASC.Setup();
-
         if (((int)mapname == 0) || ((int)mapname == 1))
             BGE(Bot.Config.Get<Method>("mapname"));
         else if (((int)mapname == 2))
@@ -72,7 +63,7 @@ public class ArmyGold
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        //Farm.ToggleBoost(BoostType.Gold);
+        Farm.ToggleBoost(BoostType.Gold);
         if (((int)mapname == 0 && Core.IsMember))
             Core.RegisterQuests(3991, 3992, 3993);
         else if (((int)mapname == 1))
@@ -100,7 +91,7 @@ public class ArmyGold
         
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
-        //Farm.ToggleBoost(BoostType.Gold);
+        Farm.ToggleBoost(BoostType.Gold);
         Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
@@ -116,7 +107,7 @@ public class ArmyGold
         
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
-        //Farm.ToggleBoost(BoostType.Gold);
+        Farm.ToggleBoost(BoostType.Gold);
         Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
@@ -132,7 +123,7 @@ public class ArmyGold
         
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(7979, 7980, 7981);
-        //Farm.ToggleBoost(BoostType.Gold);
+        Farm.ToggleBoost(BoostType.Gold);
         Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
