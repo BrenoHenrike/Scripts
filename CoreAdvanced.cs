@@ -1540,6 +1540,18 @@ public class CoreAdvanced
                 break;
             #endregion
 
+            #region Forge - Lucky - Elysium
+            case "ultra omniknight":
+            case "dark ultra omninight":
+                if (!uElysium() || !uForgeCape())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Forge;
+                wSpecial = WeaponSpecial.Elysium;
+                break;
+            #endregion
+
             #region Lucky - Forge - Awe Blast
             case "glacial berserker":
                 if (!Core.isCompletedBefore(8758))
@@ -1753,6 +1765,7 @@ public class CoreAdvanced
                     case "clawsuit":
                     case "cryomancer mini pet coming soon":
                     case "dark legendary hero":
+                    case "ultra omniknight":
                     case "dark ultra omninight":
                     case "doomknight overlord":
                     case "dragonslayer general":
@@ -1778,7 +1791,6 @@ public class CoreAdvanced
                     case "silver paladin":
                     case "thief of hours":
                     case "ultra elemental warrior":
-                    case "ultra omniknight":
                     case "void highlord tester":
                     case "warlord":
                     case "warrior":
