@@ -42,7 +42,8 @@ public class ExaltedApotheosisPreReqs
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
 
-            Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
+            Core.Logger("Got all prerequisites! Kill the ultra bosses manually\n"+
+            "for insignias next to complete Exalted Apotheosis.");
         }
 
         /// Apotheosis merge once got insignias
@@ -64,7 +65,11 @@ public class ExaltedApotheosisPreReqs
 
         else
         {
-            Core.Logger("Please obtain a total of 24 Ezrajal and Warden Insignias and 16 Engineer Insignias with your army to complete the merge. Currently our boats can't do the Ultra Bosses for you until CoreArmy is finished.");
+            Core.Logger("Please obtain the rest ofthe insinias with your army to complete the merge. \n"+
+            "Currently our boats can't do the Ultra Bosses for you until CoreArmy is finished.");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Ezrajal Insignia")/24}");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Warden Insignia")/24}");
+            Core.Logger($"{Bot.Inventory.GetQuantity("Engineer Insignia")/16}");
             return;
         }
     }
