@@ -197,7 +197,7 @@ Base = Quantum Chronomancer = 2 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Sakura Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 | Timeout: 250
 Base = Scarlet Sorceress = 4 | 1 | 2 | 3 | Timeout: 250
 Base = Sentinel = 1 | 2 | 3 | 4 | Mode Optimistic
-Base = Shadow Dragon Shinobi = 1 | 2 | 3 | 4 | Mode Optimistic
+Base = Shadow Dragon Shinobi = 4 | 1 | 2 H < 60 | 3 M < 40 = Use if Available
 Base = Shadow Ripper = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = Shadow Rocker = 1 | 2 | 3 | 4 | Mode Optimistic
 Base = ShadowFlame DragonLord = 1 | 2 | 3 | 4 | Mode Optimistic
