@@ -281,7 +281,6 @@ public class CoreBots
                 else
                     Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
             }
-            Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
         }
         if (AntiLag)
         {
