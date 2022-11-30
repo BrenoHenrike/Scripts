@@ -2914,6 +2914,81 @@ public class CoreBots
     }
     private int ScriptInstanceID = 0;
 
+    public void UpdateSkills()
+    {
+        string settings = AppPath + @"/UpdateSkillsSettings.txt";
+        string skillsFile = AppPath + @"/AdvancedSkills.txt";
+        if (!FileSetup())
+            return;
+
+        string[]? skills = GetSkills().Result;
+        if (skills == null)
+            return;
+
+        File.WriteAllLines(skillsFile, skills);
+
+        bool FileSetup()
+        {
+            if (File.Exists(settings))
+                return File.ReadAllText(settings) == "Yes";
+
+            var response = Bot.ShowMessageBox(
+                "Do you wish for the AdvancedSkills.txt file to be automatically updated when you run a script?\n\n" +
+                "This file is what dictates the skill combos that our bots use for your various classes.\n" +
+                "This is a temporary workaround so that this file will update." +
+                "In a later version of Skua this function will be integrated and it will update on startup, just like our scripts.\n\n" +
+                "If you have made any custom skill-sets, it's recommended to use the backup option here. Then a backup will be made for you this one time.\n" +
+                "The current AdvancedSkills.txt will be overwriten every time you start a bot whilst this option is on." +
+                "If you have any skillsets you want us to integrate into the general file, " +
+                "make sure to ping a Skua Hero or above in #skua-questions-help in our discord (https://discord.gg/pearlharbor)",
+
+                "Auto Update AdvancedSkills.txt?", "Yes", "Yes and backup old file", "No"
+            );
+
+            if (response.Text.StartsWith("Yes"))
+            {
+                File.WriteAllText(settings, "Yes");
+                if (response.Text == "Yes and backup old file")
+                {
+                    File.WriteAllLines(AppPath + @"/AdvancedSkills_Backup.txt", File.ReadAllLines(skillsFile));
+                }
+            }
+            else if (response.Text == "No")
+            {
+                File.WriteAllText(settings, "No");
+            }
+            else return false;
+
+            Bot.ShowMessageBox(
+                    $"If you wish to change this setting, you can easily modify it in the following file:\n[{settings}]" +
+                    (response.Text == "Yes and backup old file" ?
+                        $"\n\nThe backup has been stored in:\n[{AppPath + @"/AdvancedSkills_Backup.txt"}]" : ""),
+
+                    "File Location"
+                );
+            return response.Text.StartsWith("Yes");
+        }
+
+        async Task<string[]?> GetSkills()
+        {
+            string? toReturn = null;
+            HttpClient client = new();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Skills/AdvancedSkills.txt");
+                }
+                catch { }
+            });
+            if (String.IsNullOrEmpty(toReturn))
+                return null;
+            return toReturn.Split("\r\n")[..^1];
+        }
+    }
+
     private void ReadCBO()
     {
         //Generic
