@@ -279,7 +279,7 @@ public class CoreBots
                 else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
-                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}%");
+                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
             }
             Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
         }
