@@ -251,8 +251,10 @@ Solo = Vampire Lord = 2 | 3 | 1 | 1 | 3 | Timeout: 250
 Base = Vindicator Of They = 1WW20000 | 3 | 4 | 1 | Timeout: 250
 Atk = Void Highlord = 3H>25S | 4 | 2 | 1H>25S | 3H>25S | 2 | 1H>25S | 3H>25S | 2 | 1H>25S | Timeout: 250
 Def = Void Highlord = 4 | 2 | 1 | Mode Optimistic
+Farm = Void Highlord = 3 H>30S | 2 | 4 | 1 H>30S = Use if Available
 Atk = Void Highlord (IoDA) = 3H>25S | 4 | 2 | 1H>25S | 3H>25S | 2 | 1H>25S | 3H>25S | 2 | 1H>25S | Timeout: 250
 Def = Void Highlord (IoDA) = 4 | 2 | 1 | Mode Optimistic
+Farm = Void Highlord (IoDA) = 3 H>30S | 2 | 4 | 1 H>30S = Use if Available
 Base = Void Highlord Tester = 3 | 2 | 4 | 3 | 2 | 1 | 3 | 2 | 1 | Timeout: 250
 Def = Void Highlord Tester = 4 | 2 | 1 | Mode Optimistic
 Base = Warlord = 1 | 2 | 3 | 4 | Mode Optimistic
