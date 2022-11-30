@@ -20,10 +20,6 @@ public class Generated_ArmyDreadRockLT
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-        sArmy.player7,
-        sArmy.player8,
-        sArmy.player9,
-        sArmy.player10,
     };
 
     public void ScriptMain(IScriptInterface bot)
