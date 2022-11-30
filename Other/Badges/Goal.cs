@@ -28,9 +28,10 @@ public class GoalBadge
         while (!Core.HasWebBadge(badge)) //I hope this works
         {
             Core.SendPackets("%xt%zm%ia%1%rval%btnPuntting%%");
+			Bot.Sleep(15000);
             Core.Jump("Enter", "Right");
         }
     }
 
-    private string badge = "Goal";
+    private string badge = "GOAL!";
 }
