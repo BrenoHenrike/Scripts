@@ -74,7 +74,7 @@ public class CoreBots
 
     private static CoreBots _instance;
     public static CoreBots Instance => _instance ??= new CoreBots();
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
 
     #endregion
 
@@ -98,7 +98,10 @@ public class CoreBots
             }
 
             if (AppPath != null)
-                Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
+            {
+                loadedBot = Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "");
+                Logger($"Bot Started [{loadedBot}]");
+            }
             else Logger($"Bot Started");
 
             SkuaVersionChecker("1.1.1.0");
@@ -128,6 +131,7 @@ public class CoreBots
             IsMember = Bot.Player.IsMember;
 
             ReadMe();
+            UpdateSkills();
         }
 
         // Common Options
@@ -177,20 +181,23 @@ public class CoreBots
                 }
             }, "Quest-Limit Handler");
 
-            Bot.Events.MapChanged += PrisonDetector;
-            void PrisonDetector(string map)
+            if (loadedBot != "Tools/Butler")
             {
-                if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
+                Bot.Events.MapChanged += PrisonDetector;
+                void PrisonDetector(string map)
                 {
-                    prisonListernerActive = true;
-                    Bot.Options.AutoRelogin = false;
-                    Bot.Servers.Logout();
-                    string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
-                                     "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
-                                     (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
-                    Logger(message);
-                    Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
-                    Bot.Stop(true);
+                    if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
+                    {
+                        prisonListernerActive = true;
+                        Bot.Options.AutoRelogin = false;
+                        Bot.Servers.Logout();
+                        string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
+                                         "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
+                                         (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                        Logger(message);
+                        Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
+                        Bot.Stop(true);
+                    }
                 }
             }
 
@@ -248,6 +255,7 @@ public class CoreBots
     private List<string> EquipmentBeforeBot = new();
     private bool joinedPrison = false;
     private bool prisonListernerActive = false;
+    public string loadedBot = String.Empty;
 
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
@@ -279,9 +287,8 @@ public class CoreBots
                 else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
-                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}%");
+                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
             }
-            Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
         }
         if (AntiLag)
         {
@@ -301,8 +308,7 @@ public class CoreBots
             Logger("Bot Stopped due to crash.");
         else if (!Bot.Player.LoggedIn)
             Logger("Auto Relogin appears to have failed.");
-        else
-            Logger("Bot Stopped Successfully.");
+        else Logger("Bot Stopped Successfully.");
 
         GC.KeepAlive(Instance);
         return scriptFinished;
@@ -1737,7 +1743,7 @@ public class CoreBots
     private void auraWarning([CallerMemberName] string caller = "")
     {
         if (!Bot.Flash.Call<bool>("isTrue"))
-            Logger("Looks like some botmaker decided to add a function to a bot who's SWF is not released yet, please report", caller, true, true);
+            Logger("Looks like some botmaker decided to add a function to a bot who's SWF is not released yet, please report.", caller, true, true);
     }
 
     #endregion
@@ -1887,7 +1893,6 @@ public class CoreBots
             }
         }
     }
-
     private bool last_aggro_status = false;
 
     /// <summary>
@@ -2044,7 +2049,6 @@ public class CoreBots
     public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
     public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
 
-    // To find the 
     private async Task<string> GetBadgeJSON()
     {
         string toReturn = string.Empty;
@@ -2066,45 +2070,10 @@ public class CoreBots
         return toReturn;
     }
 
-    #region Save State
     public void SavedState(bool on = true)
     {
-        return;
-        //string[] Files = Directory.GetFiles(@"Scripts\SavedState");
-        //string file = Files[Bot.Random.Next(0, Files.Count() - 1)];
-        //string[] SavedStateRNG = File.ReadAllLines(file);
 
-        //if (on)
-        //{
-        //    int MinumumDelay = 180;
-        //    int MaximumDelay = 300;
-        //    int timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay + 1);
-        //    int SSH = 0;
-        //    Logger("Saved State Handler enabled");
-        //    Bot.Send.ClientModerator("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages");
-        //    Bot.Handlers.RegisterHandler(5000, s =>
-        //    {
-        //        SSH++;
-        //        if (SSH >= (timerInterval / 5))
-        //        {
-        //            int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-        //            Bot.Send.ClientModerator($"Ignore the whisper below, this is to save your player data ({file.Split('\\').Last().Split('/').Last()})", "Saved-State");
-        //            Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
-        //            timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay);
-        //            SSH = 0;
-        //        }
-        //    }, "Saved-State Handler");
-        //}
-        //else if (Bot.Handlers.CurrentHandlers.Any(handler => handler.Name == "Saved-State Handler"))
-        //{
-        //    Bot.Handlers.Remove("Saved-State Handler");
-        //    int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-        //    Bot.Send.ClientModerator("Final Saved-State before the Saved State Handler is turned off", "Saved-State");
-        //    Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
-        //    Logger("Saved State Handler disabled");
-        //}
     }
-    #endregion
 
     public int[] FromTo(int from, int to)
     {
@@ -2116,7 +2085,6 @@ public class CoreBots
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
-
 
     public void RunCore()
     {
@@ -2306,6 +2274,7 @@ public class CoreBots
                 JumpWait();
                 Bot.Quests.UpdateQuest(6032);
                 Bot.Map.Join("celestialarenad-9999999");
+                Bot.Wait.ForMapLoad("celestialarenad");
                 break;
 
             case "towerofdoom1":
@@ -2323,7 +2292,6 @@ public class CoreBots
                 tryJoin();
                 break;
 
-
             case "shadowattack":
                 JumpWait();
                 Bot.Quests.UpdateQuest(3798);
@@ -2332,7 +2300,7 @@ public class CoreBots
 
             case "confrontation":
                 JumpWait();
-                // Bot.Quests.UpdateQuest(3765);                
+                // Bot.Quests.UpdateQuest(3765);
                 Bot.Quests.UpdateQuest(3799);
                 tryJoin();
                 break;
@@ -2343,7 +2311,7 @@ public class CoreBots
                 tryJoin();
                 break;
 
-            case "Mummies":
+            case "mummies":
                 JumpWait();
                 Bot.Quests.UpdateQuest(4616);
                 tryJoin();
@@ -2428,17 +2396,15 @@ public class CoreBots
                 switch (cmd)
                 {
                     case "warning":
-                        string b = Convert.ToString(packet);
-                        if (b.Contains("is an Membership-Only Map"))
+                        if (Convert.ToString(packet).Contains("is an Membership-Only Map"))
                         {
-                            Logger($" \"{map}\" Requires MemberShip to access it, Stopping the Bot.", stopBot: true);
+                            Logger($" \"{map}\" requires membership to access it. Stopping the Bot.", stopBot: true);
                             Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
                         }
                         break;
                 }
             }
         }
-
     }
 
     public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
@@ -2559,10 +2525,7 @@ public class CoreBots
 
         Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
 
-        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
-            return true;
-        else
-            return false;
+        return Bot.Map.Name != null && Bot.Map.Name.ToLower() == map;
 
         void MapIsNotAvailableListener(dynamic packet)
         {
@@ -2586,7 +2549,6 @@ public class CoreBots
                 }
             }
         }
-
     }
 
     #endregion
@@ -2907,6 +2869,81 @@ public class CoreBots
         }
     }
     private int ScriptInstanceID = 0;
+
+    private void UpdateSkills()
+    {
+        string settings = AppPath + @"/UpdateSkillsSettings.txt";
+        string skillsFile = AppPath + @"/AdvancedSkills.txt";
+        if (!FileSetup())
+            return;
+
+        string[]? skills = GetSkills().Result;
+        if (skills == null)
+            return;
+
+        File.WriteAllLines(skillsFile, skills);
+
+        bool FileSetup()
+        {
+            if (File.Exists(settings))
+                return File.ReadAllText(settings) == "Yes";
+
+            var response = Bot.ShowMessageBox(
+                "Do you wish for the AdvancedSkills.txt file to be automatically updated when you run a script?\n\n" +
+                "This file is what dictates the skill combos that our bots use for your various classes.\n" +
+                "This is a temporary workaround so that this file will update." +
+                "In a later version of Skua this function will be integrated and it will update on startup, just like our scripts.\n\n" +
+                "If you have made any custom skill-sets, it's recommended to use the backup option here. Then a backup will be made for you this one time.\n" +
+                "The current AdvancedSkills.txt will be overwriten every time you start a bot whilst this option is on.\n" +
+                "If you have any skillsets you want us to integrate into the general file, " +
+                "make sure to ping a Skua Hero or above in #skua-questions-help in our discord (https://discord.gg/pearlharbor)",
+
+                "Auto Update AdvancedSkills.txt?", "Yes", "Yes and backup old file", "No"
+            );
+
+            if (response.Text.StartsWith("Yes"))
+            {
+                File.WriteAllText(settings, "Yes");
+                if (response.Text == "Yes and backup old file")
+                {
+                    File.WriteAllLines(AppPath + @"/AdvancedSkills_Backup.txt", File.ReadAllLines(skillsFile));
+                }
+            }
+            else if (response.Text == "No")
+            {
+                File.WriteAllText(settings, "No");
+            }
+            else return false;
+
+            Bot.ShowMessageBox(
+                    $"If you wish to change this setting, you can easily modify it in the following file:\n[{settings}]" +
+                    (response.Text == "Yes and backup old file" ?
+                        $"\n\nThe backup has been stored in:\n[{AppPath + @"/AdvancedSkills_Backup.txt"}]" : ""),
+
+                    "File Location"
+                );
+            return response.Text.StartsWith("Yes");
+        }
+
+        async Task<string[]?> GetSkills()
+        {
+            string? toReturn = null;
+            HttpClient client = new();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Skills/AdvancedSkills.txt");
+                }
+                catch { }
+            });
+            if (String.IsNullOrEmpty(toReturn))
+                return null;
+            return toReturn.Split("\r\n")[..^1];
+        }
+    }
 
     private void ReadCBO()
     {
