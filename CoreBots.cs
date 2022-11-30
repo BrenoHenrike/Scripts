@@ -131,6 +131,7 @@ public class CoreBots
             IsMember = Bot.Player.IsMember;
 
             ReadMe();
+            UpdateSkills();
         }
 
         // Common Options
@@ -2938,7 +2939,7 @@ public class CoreBots
                 "This is a temporary workaround so that this file will update." +
                 "In a later version of Skua this function will be integrated and it will update on startup, just like our scripts.\n\n" +
                 "If you have made any custom skill-sets, it's recommended to use the backup option here. Then a backup will be made for you this one time.\n" +
-                "The current AdvancedSkills.txt will be overwriten every time you start a bot whilst this option is on." +
+                "The current AdvancedSkills.txt will be overwriten every time you start a bot whilst this option is on.\n" +
                 "If you have any skillsets you want us to integrate into the general file, " +
                 "make sure to ping a Skua Hero or above in #skua-questions-help in our discord (https://discord.gg/pearlharbor)",
 
