@@ -98,7 +98,10 @@ public class CoreBots
             }
 
             if (AppPath != null)
-                Logger($"Bot Started [{Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "")}]");
+            {
+                loadedBot = Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\Scripts\\", "").Replace(".cs", "");
+                Logger($"Bot Started [{loadedBot}]");
+            }
             else Logger($"Bot Started");
 
             SkuaVersionChecker("1.1.1.0");
@@ -177,20 +180,23 @@ public class CoreBots
                 }
             }, "Quest-Limit Handler");
 
-            Bot.Events.MapChanged += PrisonDetector;
-            void PrisonDetector(string map)
+            if (loadedBot != "Tools/Butler")
             {
-                if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
+                Bot.Events.MapChanged += PrisonDetector;
+                void PrisonDetector(string map)
                 {
-                    prisonListernerActive = true;
-                    Bot.Options.AutoRelogin = false;
-                    Bot.Servers.Logout();
-                    string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
-                                     "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
-                                     (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
-                    Logger(message);
-                    Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
-                    Bot.Stop(true);
+                    if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
+                    {
+                        prisonListernerActive = true;
+                        Bot.Options.AutoRelogin = false;
+                        Bot.Servers.Logout();
+                        string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
+                                         "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
+                                         (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                        Logger(message);
+                        Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
+                        Bot.Stop(true);
+                    }
                 }
             }
 
@@ -248,6 +254,7 @@ public class CoreBots
     private List<string> EquipmentBeforeBot = new();
     private bool joinedPrison = false;
     private bool prisonListernerActive = false;
+    public string loadedBot = String.Empty;
 
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
