@@ -74,7 +74,7 @@ public class CoreBots
 
     private static CoreBots _instance;
     public static CoreBots Instance => _instance ??= new CoreBots();
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
 
     #endregion
 
@@ -308,8 +308,7 @@ public class CoreBots
             Logger("Bot Stopped due to crash.");
         else if (!Bot.Player.LoggedIn)
             Logger("Auto Relogin appears to have failed.");
-        else
-            Logger("Bot Stopped Successfully.");
+        else Logger("Bot Stopped Successfully.");
 
         GC.KeepAlive(Instance);
         return scriptFinished;
@@ -1744,7 +1743,7 @@ public class CoreBots
     private void auraWarning([CallerMemberName] string caller = "")
     {
         if (!Bot.Flash.Call<bool>("isTrue"))
-            Logger("Looks like some botmaker decided to add a function to a bot who's SWF is not released yet, please report", caller, true, true);
+            Logger("Looks like some botmaker decided to add a function to a bot who's SWF is not released yet, please report.", caller, true, true);
     }
 
     #endregion
@@ -1894,7 +1893,6 @@ public class CoreBots
             }
         }
     }
-
     private bool last_aggro_status = false;
 
     /// <summary>
@@ -2051,7 +2049,6 @@ public class CoreBots
     public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
     public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
 
-    // To find the 
     private async Task<string> GetBadgeJSON()
     {
         string toReturn = string.Empty;
@@ -2073,45 +2070,10 @@ public class CoreBots
         return toReturn;
     }
 
-    #region Save State
     public void SavedState(bool on = true)
     {
-        return;
-        //string[] Files = Directory.GetFiles(@"Scripts\SavedState");
-        //string file = Files[Bot.Random.Next(0, Files.Count() - 1)];
-        //string[] SavedStateRNG = File.ReadAllLines(file);
 
-        //if (on)
-        //{
-        //    int MinumumDelay = 180;
-        //    int MaximumDelay = 300;
-        //    int timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay + 1);
-        //    int SSH = 0;
-        //    Logger("Saved State Handler enabled");
-        //    Bot.Send.ClientModerator("These Moderator messages about botting are client side and wont be seen by AE", "Mod-Messages");
-        //    Bot.Handlers.RegisterHandler(5000, s =>
-        //    {
-        //        SSH++;
-        //        if (SSH >= (timerInterval / 5))
-        //        {
-        //            int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-        //            Bot.Send.ClientModerator($"Ignore the whisper below, this is to save your player data ({file.Split('\\').Last().Split('/').Last()})", "Saved-State");
-        //            Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
-        //            timerInterval = Bot.Random.Next(MinumumDelay, MaximumDelay);
-        //            SSH = 0;
-        //        }
-        //    }, "Saved-State Handler");
-        //}
-        //else if (Bot.Handlers.CurrentHandlers.Any(handler => handler.Name == "Saved-State Handler"))
-        //{
-        //    Bot.Handlers.Remove("Saved-State Handler");
-        //    int messageSelect = Bot.Random.Next(1, SavedStateRNG.Length);
-        //    Bot.Send.ClientModerator("Final Saved-State before the Saved State Handler is turned off", "Saved-State");
-        //    Bot.Send.Whisper(Bot.Player.Username, SavedStateRNG[messageSelect][2..]);
-        //    Logger("Saved State Handler disabled");
-        //}
     }
-    #endregion
 
     public int[] FromTo(int from, int to)
     {
@@ -2123,7 +2085,6 @@ public class CoreBots
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
-
 
     public void RunCore()
     {
@@ -2313,6 +2274,7 @@ public class CoreBots
                 JumpWait();
                 Bot.Quests.UpdateQuest(6032);
                 Bot.Map.Join("celestialarenad-9999999");
+                Bot.Wait.ForMapLoad("celestialarenad");
                 break;
 
             case "towerofdoom1":
@@ -2330,7 +2292,6 @@ public class CoreBots
                 tryJoin();
                 break;
 
-
             case "shadowattack":
                 JumpWait();
                 Bot.Quests.UpdateQuest(3798);
@@ -2339,7 +2300,7 @@ public class CoreBots
 
             case "confrontation":
                 JumpWait();
-                // Bot.Quests.UpdateQuest(3765);                
+                // Bot.Quests.UpdateQuest(3765);
                 Bot.Quests.UpdateQuest(3799);
                 tryJoin();
                 break;
@@ -2350,7 +2311,7 @@ public class CoreBots
                 tryJoin();
                 break;
 
-            case "Mummies":
+            case "mummies":
                 JumpWait();
                 Bot.Quests.UpdateQuest(4616);
                 tryJoin();
@@ -2435,17 +2396,15 @@ public class CoreBots
                 switch (cmd)
                 {
                     case "warning":
-                        string b = Convert.ToString(packet);
-                        if (b.Contains("is an Membership-Only Map"))
+                        if (Convert.ToString(packet).Contains("is an Membership-Only Map"))
                         {
-                            Logger($" \"{map}\" Requires MemberShip to access it, Stopping the Bot.", stopBot: true);
+                            Logger($" \"{map}\" requires membership to access it. Stopping the Bot.", stopBot: true);
                             Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
                         }
                         break;
                 }
             }
         }
-
     }
 
     public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
@@ -2566,10 +2525,7 @@ public class CoreBots
 
         Bot.Events.ExtensionPacketReceived -= MapIsNotAvailableListener;
 
-        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == map)
-            return true;
-        else
-            return false;
+        return Bot.Map.Name != null && Bot.Map.Name.ToLower() == map;
 
         void MapIsNotAvailableListener(dynamic packet)
         {
@@ -2593,7 +2549,6 @@ public class CoreBots
                 }
             }
         }
-
     }
 
     #endregion
@@ -2915,7 +2870,7 @@ public class CoreBots
     }
     private int ScriptInstanceID = 0;
 
-    public void UpdateSkills()
+    private void UpdateSkills()
     {
         string settings = AppPath + @"/UpdateSkillsSettings.txt";
         string skillsFile = AppPath + @"/AdvancedSkills.txt";
