@@ -98,6 +98,7 @@
 //cs_include Scripts/Story/Eden.cs
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Story/ExaltiaTower.cs
+//cs_include Scripts/Story/Extinction.cs
 
 //cs_include Scripts/Story/FrozenNorthlands.cs
 //cs_include Scripts/Story/FableForest.cs
