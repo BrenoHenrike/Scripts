@@ -20,10 +20,6 @@ public class Generated_ArmyTimeforspringCleaningLT
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-        sArmy.player7,
-        sArmy.player8,
-        sArmy.player9,
-        sArmy.player10,
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -55,7 +51,7 @@ public class Generated_ArmyTimeforspringCleaningLT
     }
     private List<int> questIDs = new();
     private List<string> monNames = new() { "Fotia Elemental", "Fotia Spirit" };
-    private List<string> drops = new() { "Legino Token" };
+    private List<string> drops = new() { "Legion Token" };
     private string map = "fotia";
     private ClassType classtype = ClassType.Farm;
 }

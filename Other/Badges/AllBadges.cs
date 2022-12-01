@@ -40,6 +40,11 @@
 //cs_include Scripts/Other/Badges/TableFlipper.cs
 //cs_include Scripts/Other/Badges/YouMadBroBadge.cs
 //cs_include Scripts/Other/Badges/VoidHighlordBadge.cs
+//cs_include Scripts/Other/Badges/StoryARC.cs
+//cs_include Scripts/Other/Badges/JusticeSquad.cs
+//cs_include Scripts/Other/Badges/ThiefofChaos.cs
+//cs_include Scripts/Other/Badges/Goal.cs
+//cs_include Scripts/Other/Badges/UltraCarnax.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
@@ -71,6 +76,11 @@ public class AllBadges
     public StoneCold SC = new();
     public TableFlipper TF = new();
     public VoidHighlordBadge VHL = new();
+    public StoryArcBadge SA = new();
+    public JusticeSquadBadge JS = new();
+    public ThiefofChaosBadge ToC = new();
+    public UltraCarnaxBadge UC = new();
+    public GoalBadge G = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -99,6 +109,11 @@ public class AllBadges
         DMF.Badge();
         YMBB.Badge();
         VHL.Badge();
+        SA.Badge();
+        JS.Badge();
+        ToC.Badge();
+        UC.Badge();
+        //G.Badge(); //Kinda not stable yet?
         //add more as they are made.
 
         Core.SetOptions(false);
