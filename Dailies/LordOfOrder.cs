@@ -19,7 +19,37 @@ public class LordOfOrder
     public CitadelRuins CR = new();
     public LivingDungeon LD = new();
     public DragonFableOrigins DFO = new();
-
+    private string[] LoODrops = new string[]{
+        "Lord of Order Wrap",
+        "Lord of Order Bladed Wrap",
+        "Lord of Order Wings",
+        "Lord of Order Wings + Wrap",
+        "Lord of Order Double Wings + Wrap",
+        "Lord of Order Helm",
+        "Lord of Order Horns",
+        "High Lord of Order Helm",
+        "Lord of Order Blade",
+        "Lord of Order Polearm",
+        "Lord of Order Armor",
+        // "Lord of Order",
+        "Lord of Order Xing",
+        "Lord of Order Xing's Morph",
+        "Lord of Order Xang",
+        "Lord of Order Xang's Morph",
+        "Lord of Order Kitsune",
+        "Lord of Order Kitsune's Morph",
+        "Lord of Order Alteon",
+        "Lord of Order Alteon's Morph",
+        "Lord of Order Alteon's Crown",
+        "Lord of Order Vath",
+        "Lord of Order Wolfwing",
+        "Lord of Order Wolfwing's Morph",
+        "Lord of Order Wolfwing's Wings",
+        "Lord of Order Wolfwing's Claw",
+        "Lord of Order Ledgermayne",
+        "Lord of Order Khasaanda",
+        "Lord of Order Khasaanda's Morph"
+    };
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -63,6 +93,7 @@ public class LordOfOrder
             Core.BuyItem("ravenscar", 614, "Ravenscar's Truth");
 
             Core.EnsureComplete(7156);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -78,6 +109,7 @@ public class LordOfOrder
             Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false);
 
             Core.EnsureComplete(7157);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -99,6 +131,7 @@ public class LordOfOrder
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true);
 
             Core.EnsureComplete(7158);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -115,6 +148,7 @@ public class LordOfOrder
             Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: true);
 
             Core.EnsureComplete(7159);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -143,6 +177,7 @@ public class LordOfOrder
                 Core.EnsureComplete(6319);
             }
             Core.EnsureComplete(7160);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -160,6 +195,7 @@ public class LordOfOrder
             Core.HuntMonster("goose", "Queen's ArchSage", "Scroll of Enchantment", isTemp: false);
 
             Core.EnsureComplete(7161);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -178,6 +214,7 @@ public class LordOfOrder
             Core.HuntMonster("thevoid", "Xyfrag", "Strength of Resilience", isTemp: false);
 
             Core.EnsureComplete(7162);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -195,6 +232,7 @@ public class LordOfOrder
             Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false);
 
             Core.EnsureComplete(7163);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -218,6 +256,7 @@ public class LordOfOrder
             Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false);
 
             Core.EnsureComplete(7164);
+            Core.ToBank(LoODrops);
             return;
         }
 
@@ -237,6 +276,10 @@ public class LordOfOrder
             if (rankUpClass)
                 Adv.rankUpClass("Lord Of Order");
         }
-        else Core.EnsureCompleteChoose(7165);
+        else
+        {
+            Core.EnsureCompleteChoose(7165);
+            Core.ToBank(LoODrops);
+        }
     }
 }

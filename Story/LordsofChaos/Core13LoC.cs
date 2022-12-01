@@ -529,6 +529,7 @@ public class Core13LoC
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
             Core.EnsureComplete(515);
             Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
+            Core.RemoveDrop("Red's Big Wolf Slaying Axe");
             Core.EnsureComplete(514);
         }
 
@@ -1514,7 +1515,7 @@ public class Core13LoC
         Story.KillQuest(2479, "dflesson", "Fluffy the Dracolich");
 
         //Board the Ship to Your Future
-        Story.MapItemQuest(2504, "mqlesson", 1580);
+        Story.MapItemQuest(2504, "mqlesson", 1580, GetReward: false);
 
         //Heal the Chaos Lord
         Story.KillQuest(2505, "mqlesson", "Asteroid");

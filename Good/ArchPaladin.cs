@@ -187,6 +187,7 @@ public class ArchPaladin
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("palace", "Pettivox", "Ring of Mana Transposition", isTemp: false);
             Core.EnsureComplete(5469);
+            Core.SellItem("Scroll of Ethereal Slumber", all: true);
         }
 
         // Sacred Magic: Eden
