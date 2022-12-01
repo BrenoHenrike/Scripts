@@ -8,8 +8,6 @@ public class LowDRArmors
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-
-
     public string OptionsStorage = "1%Armors";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
@@ -34,7 +32,7 @@ public class LowDRArmors
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
-        
+
         Core.FarmingLogger($"{Bot.Config.Get<Armors>("Armors").ToString()}", 1);
 
         if (Bot.Config.Get<Armors>("Armors") == Armors.Dark_FrostSpawn_Mage || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Dark FrostSpawn Mage"))
@@ -42,21 +40,21 @@ public class LowDRArmors
             Core.HuntMonster("northstar", "Karok the Fallen", "Dark FrostSpawn Mage", isTemp: false);
         }
 
-         if (Bot.Config.Get<Armors>("Armors") == Armors.Feral_DoomKnight || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Feral DoomKnight"))
+        if (Bot.Config.Get<Armors>("Armors") == Armors.Feral_DoomKnight || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Feral DoomKnight"))
         {
-            Core.HuntMonster("stonewooddeep", "Asherion", "Feral DoomKnight", isTemp: false);
+            Core.HuntMonster("stonewooddeep", "Sir Kut", "Feral DoomKnight", isTemp: false);
         }
 
         if (Bot.Config.Get<Armors>("Armors") == Armors.Alteons_Royal_Armor || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Alteon's Royal Armor"))
         {
             Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Alteon's Royal Armor", isTemp: false);
         }
-        
+
         if (Bot.Config.Get<Armors>("Armors") == Armors.Dracolich_Destroyer || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Dracolich Destroyer"))
         {
             Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer", isTemp: false);
         }
-        
+
         if (Bot.Config.Get<Armors>("Armors") == Armors.Asherion_Armor || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Asherion Armor"))
         {
             Core.HuntMonster("stonewooddeep", "Sir Kut", "Asherion Armor", isTemp: false);

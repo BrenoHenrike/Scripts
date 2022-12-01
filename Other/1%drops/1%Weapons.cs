@@ -117,12 +117,12 @@ public class LowDRWeapons
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Feral_Blade_of_Doom || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Feral Blade of Doom"))
         {
-            Core.HuntMonster("stonewooddeep", "Asherion", "Feral Blade of Doom", isTemp: false);
+            Core.HuntMonster("stonewooddeep", "Sir Kut", "Feral Blade of Doom", isTemp: false);
         }
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Feral_DoomBlade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Feral DoomBlade"))
         {
-            Core.HuntMonster("stonewooddeep", "Asherion", "Feral DoomBlade", isTemp: false);
+            Core.HuntMonster("stonewooddeep", "Sir Kut", "Feral DoomBlade", isTemp: false);
         }
         
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Ruby_Pickaxe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory("Ruby Pickaxe"))
