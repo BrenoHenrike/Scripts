@@ -8,6 +8,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
+using System.Linq;
 
 public class ArmyLegionFealty2
 {
@@ -36,13 +37,15 @@ public class ArmyLegionFealty2
         CoreBots.Instance.SkipOptions
     };
 
-    public void ScriptMain(IScriptInterface bot)
-    {
-        Core.BankingBlackList.AddRange(new[]
-        {"Conquest Wreath", "Grim Cohort Conquered", "Ancient Cohort Conquered",
+    string[] CoHortList = {"Grim Cohort Conquered", "Ancient Cohort Conquered",
         "Pirate Cohort Conquered", "Battleon Cohort Conquered",
         "Darkblood Cohort Conquered", "Vampire Cohort Conquered",
-        "Dragon Cohort Conquered", "Doomwood Cohort Conquered"});
+        "Dragon Cohort Conquered", "Doomwood Cohort Conquered"};
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.BankingBlackList.Add("Conquest Wreath");
+        Core.BankingBlackList.AddRange(CoHortList);
 
         Core.SetOptions();
         bot.Options.RestPackets = false;
@@ -58,11 +61,14 @@ public class ArmyLegionFealty2
 
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Conquest Wreath");
+        Core.Logger("Selling Cohort Conquered's to sync accs (hopefully)");
+        foreach (string item in CoHortList)
+            Core.SellItem(item, all: true);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", 6))
         {
             Core.EnsureAccept(6898);
-            ArmyThing("doomvault", new[] { "Grim Soldier", "Grim Fighter", "Grim Fire Mage", "Highibiscus", "Lowtus", "Flying Spyball", "Grim Ectomancer" }, "Grim Cohort Conquered", false, 500);
+            ArmyThing("doomvault", new[] { "Grim Soldier", "Grim Fighter" }, "Grim Cohort Conquered", false, 500);
             ArmyThing("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", false, 500);
             ArmyThing("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", false, 500);
             ArmyThing("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", false, 500);
@@ -114,14 +120,13 @@ public class ArmyLegionFealty2
             Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
             Bot.Sleep(5000);
         }
-            Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
+        Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
     }
 
     void Armyshit(string map = null)
     {
         if (Bot.Map.Name == null)
             return;
-
         if (Bot.Map.Name == "doomvault")
         {
             Army.AggroMonCells("r1", "r2", "r3");
