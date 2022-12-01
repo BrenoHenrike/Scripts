@@ -1406,27 +1406,9 @@ public class CoreAdvanced
             else
             {
                 // Sorting by level (descending)
-                List<ShopItem> sortedList = availableEnh.OrderByDescending(x => x.Level).ToList();
-                List<ShopItem> bestTwoEnhancements = new();
-                if (sortedList.Count >= 2)
-                {
-                    bestTwoEnhancements = sortedList.GetRange(0, 2);
-                }
-                else
-                {
-                    Core.Logger($"Enhancement Failed: sortedList {(sortedList.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
-                    return;
-                }
-
-                if (bestTwoEnhancements.Count != 2)
-                {
-                    Core.Logger($"Enhancement Failed: bestTwoEnhancements {(bestTwoEnhancements.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
-                    return;
-                }
-
-                // Getting the best enhancement out of the two
-                bestEnhancement = bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
-                    bestTwoEnhancements.FirstOrDefault(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+                List<ShopItem> sortedList = availableEnh.OrderByDescending(x => x.Level)
+                    .ThenByDescending(x => x.Upgrade ? 1 : 0).ToList();
+                bestEnhancement = sortedList[0];
             }
 
             // Null check
