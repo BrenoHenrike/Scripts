@@ -5,7 +5,7 @@
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Army/ArmyLegionFealty2.cs
+//cs_include Scripts/Army/Various/ArmyLegionFealty2.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 
@@ -188,7 +188,7 @@ public class ArmyLR
         {
             Army.AggroMonCells("r2");
             Army.AggroMonStart("revenant");
-            Army.DivideOnCells("r2");
+            Army.DivideOnCells("r2"); 
         }
         if (Bot.Map.Name == "swordhavenbridge")
         {
@@ -530,25 +530,26 @@ public class ArmyLR
         {
             Core.EquipClass(ClassType.Solo);
             Adv.BestGear(GearBoost.Undead);
-            if (Core.CheckInventory("Aeacus Empowered"))
+            /*Sells non-full stacks to keep in sync for each LF1 quest item*/
+            if (!Core.CheckInventory("Aeacus Empowered", 50))
                 Core.SellItem("Aeacus Empowered", 0, true);
             ArmyHunt("judgement", new[] {"Ultra Aeacus"}, "Aeacus Empowered", false, 50);
 
             Core.EquipClass(ClassType.Farm);
             Adv.BestGear(GearBoost.dmgAll);
             
-            if (Core.CheckInventory("Tethered Soul"))
+            if (!Core.CheckInventory("Tethered Soul", 300))
                 Core.SellItem("Tethered Soul", 0 , true);
-            ArmyHunt("revenant", new[] { "Tethered Soul" }, "Tethered Soul", false, 300);
+            ArmyHunt("revenant",  new[] {"Forgotten Soul"}, "Tethered Soul", false, 300);
             
-            if (Core.CheckInventory("Darkened Essence"))
+            if (!Core.CheckInventory("Darkened Essence", 500))
                 Core.SellItem("Darkened Essence", 0, true);
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", false, 500);
 
             Bot.Quests.UpdateQuest(2061);
             Adv.BestGear(GearBoost.Undead);
             
-            if (Core.CheckInventory("Dracolich Contract"))
+            if (!Core.CheckInventory("Dracolich Contract", 1000))
                 Core.SellItem("Dracolich Contract", 0, true);
             ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", false, 1000);
 
