@@ -2345,6 +2345,7 @@ public class CoreFarms
             Core.Logger($"Farming rank {rank}");
 
             Core.RegisterQuests(522);
+            Core.RemoveDrop("Old Moon");
             while (!Bot.ShouldExit && FactionRank("Vampire") < rank)
             {
                 Core.HuntMonster("safiria", "Twisted Paw", "Twisted Paw's Head");
