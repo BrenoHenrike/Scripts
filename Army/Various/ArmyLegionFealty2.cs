@@ -37,7 +37,7 @@ public class ArmyLegionFealty2
         CoreBots.Instance.SkipOptions
     };
 
-    string[] CoHortList = {"Grim Cohort Conquered", "Ancient Cohort Conquered",
+    private string[] CoHortList = {"Grim Cohort Conquered", "Ancient Cohort Conquered",
         "Pirate Cohort Conquered", "Battleon Cohort Conquered",
         "Darkblood Cohort Conquered", "Vampire Cohort Conquered",
         "Dragon Cohort Conquered", "Doomwood Cohort Conquered"};
@@ -62,13 +62,14 @@ public class ArmyLegionFealty2
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Conquest Wreath");
         Core.Logger("Selling Cohort Conquered's to sync accs (hopefully)");
+        
         foreach (string item in CoHortList)
             Core.SellItem(item, all: true);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", 6))
         {
             Core.EnsureAccept(6898);
-            ArmyThing("doomvault", new[] { "Grim Soldier", "Grim Fighter" }, "Grim Cohort Conquered", false, 500);
+            ArmyThing("doomvault", new[] { "Grim Soldier" }, "Grim Cohort Conquered", false, 500);
             ArmyThing("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", false, 500);
             ArmyThing("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", false, 500);
             ArmyThing("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", false, 500);
@@ -129,9 +130,9 @@ public class ArmyLegionFealty2
             return;
         if (Bot.Map.Name == "doomvault")
         {
-            Army.AggroMonCells("r1", "r2", "r3");
+            Army.AggroMonMIDs(1,2,3,6,7,8);
             Army.AggroMonStart("doomvault");
-            Army.DivideOnCells("r1", "r2", "r3");
+            Army.DivideOnCells("r1", "r3");
         }
 
         if (Bot.Map.Name == "mummies")
