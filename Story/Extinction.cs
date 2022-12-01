@@ -24,35 +24,35 @@ public class Extinction
 
         Story.PreLoad(this);
 
-    //Chopped HAMM 3855
+        //Chopped HAMM 3855
         Story.MapItemQuest(3855, "extinction", 2956, 5);
         Story.KillQuest(3855, "extinction", "Control Panel");
 
-    //Bad Dog 3856
+        //Bad Dog 3856
         Story.KillQuest(3856, "extinction", "Cyworg");
 
-    //Pink Slime Yum! 3857
+        //Pink Slime Yum! 3857
         Story.KillQuest(3857, "extinction", new[] { "Pink Slime", "Gelatinous Slime" });
 
-    //Processed What? 3858
+        //Processed What? 3858
         Story.MapItemQuest(3858, "extinction", 2957, 5);
 
-    //Another Locked Door 3859
+        //Another Locked Door 3859
         Story.KillQuest(3859, "extinction", "Slimed Drone");
 
-    //This Factory is On Fire 3860
+        //This Factory is On Fire 3860
         Story.KillQuest(3860, "extinction", "Freezer Drone");
 
-    //Frozen... Food? 3861
+        //Frozen... Food? 3861
         Story.MapItemQuest(3861, "extinction", 2958, 5);
 
-    //Fight Fire With Flammable Ingredients 3862
+        //Fight Fire With Flammable Ingredients 3862
         Story.KillQuest(3862, "extinction", "Lard");
 
-    //The Last Lock 3863
+        //The Last Lock 3863
         Story.KillQuest(3863, "extinction", "Freezer Drone");
 
-    //SN.O.W. Fall 3864
+        //SN.O.W. Fall 3864
         Story.KillQuest(3864, "extinction", "SN.O.W.");
     }
 }
