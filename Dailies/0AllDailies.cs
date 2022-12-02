@@ -54,7 +54,7 @@ public class FarmAllDailys
         Daily.BeastMasterChallenge();
         Daily.FungiforaFunGuy();
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting(ToBank: true);
+        Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
         Daily.HardCoreMetals(ToBank: true);
         Daily.MonthlyTreasureChestKeys();
         Daily.WheelofDoom();

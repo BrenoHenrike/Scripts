@@ -113,7 +113,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void MineCrafting(string[] metals = null, int quant = 10, bool ToBank = false)
+    public void MineCrafting(string[] metals = null, int quant = 2, bool ToBank = false)
     {
         if (metals == null)
             metals = MineCraftingMetalsArray;
