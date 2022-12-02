@@ -1812,7 +1812,7 @@ public class CoreFarms
         if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
 
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 || FactionRank("Loremaster") < rank)
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 && FactionRank("Loremaster") < rank)
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505); //Studying the Rogue 7505
@@ -2345,6 +2345,7 @@ public class CoreFarms
             Core.Logger($"Farming rank {rank}");
 
             Core.RegisterQuests(522);
+            Core.RemoveDrop("Old Moon");
             while (!Bot.ShouldExit && FactionRank("Vampire") < rank)
             {
                 Core.HuntMonster("safiria", "Twisted Paw", "Twisted Paw's Head");

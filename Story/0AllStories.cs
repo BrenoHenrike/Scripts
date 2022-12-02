@@ -295,6 +295,7 @@ public class AllStories
     public Eden Eden = new();
     public EtherStormWastes EtherStormWastes = new();
     public ExaltiaTower ExaltiaTower = new();
+    public Extinction Extinction = new();
 
     public FrozenNorthlands FrozenNorthlands = new();
     public FableForest FableForest = new();
@@ -655,6 +656,8 @@ public class AllStories
         ExaltiaTower.StoryLine();
         Core.Logger($"Story: Exaltia Tower - Complete");
 
+        Extinction.StoryLine();
+        Core.Logger($"Story: Extinction - Complete");
 
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");

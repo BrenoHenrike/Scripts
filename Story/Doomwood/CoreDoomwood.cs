@@ -174,7 +174,7 @@ public class CoreDoomwood
         Story.MapItemQuest(1113, "necroU", 450, 5);
 
         //1114    Goals for Ghouls and Other Undead
-        Story.KillQuest(1114, "necroU", new[] { "Ghoul", "Doomwood Soldier" });
+        Story.KillQuest(1114, "necroU", new[] { "Ghoul", "Doomwood Soldier", "Doomwood Soldier" });
 
         //1115    Knee Bone's Connected to the Thigh Bone
         Story.MapItemQuest(1115, "necroU", 449, 6);
