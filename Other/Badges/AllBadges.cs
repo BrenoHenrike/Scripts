@@ -45,6 +45,7 @@
 //cs_include Scripts/Other/Badges/ThiefofChaos.cs
 //cs_include Scripts/Other/Badges/Goal.cs
 //cs_include Scripts/Other/Badges/UltraCarnax.cs
+//cs_include Scripts/Story/MagicThief.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
