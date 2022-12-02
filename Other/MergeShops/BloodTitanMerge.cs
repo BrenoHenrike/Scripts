@@ -22,7 +22,7 @@ public class BloodTitanMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Blood Titan Token " });
+        Core.BankingBlackList.AddRange(new[] { "Blood Titan Token" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,6 +32,9 @@ public class BloodTitanMerge
 
     public void BuyAllMerge()
     {
+        if (!Core.IsMember)
+            return;
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("classhalla", 617, findIngredients);
 
