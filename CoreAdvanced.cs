@@ -985,7 +985,10 @@ public class CoreAdvanced
         InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
             return CapeSpecial.None;
-        return (CapeSpecial)getEnhPatternID(EquippedCape);
+        int pattern_id = getEnhPatternID(EquippedCape);
+        if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
+            return CapeSpecial.None;
+        return (CapeSpecial)pattern_id;
     }
 
     /// <summary>
@@ -997,7 +1000,10 @@ public class CoreAdvanced
         InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Helm);
         if (EquippedHelm == null)
             return HelmSpecial.None;
-        return (HelmSpecial)getEnhPatternID(EquippedHelm);
+        int pattern_id = getEnhPatternID(EquippedHelm);
+        if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
+            return HelmSpecial.None;
+        return (HelmSpecial)pattern_id;
     }
 
     /// <summary>
@@ -1009,7 +1015,10 @@ public class CoreAdvanced
         InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped && WeaponCatagories.Contains(i.Category));
         if (EquippedWeapon == null)
             return WeaponSpecial.None;
-        return (WeaponSpecial)getProcID(EquippedWeapon);
+        int pattern_id = getProcID(EquippedWeapon);
+        if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
+            return WeaponSpecial.None;
+        return (WeaponSpecial)pattern_id;
     }
 
     private static ItemCategory[] EnhanceableCatagories =
