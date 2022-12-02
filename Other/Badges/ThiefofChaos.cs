@@ -28,7 +28,7 @@ public class ThiefofChaosBadge
         }
 
         Core.Logger($"Doing Magic Thief story for {badge} badge");
-        MT.Storyline;
+        MT.Storyline();
     }
 
     private string badge = "Thief of Chaos";
