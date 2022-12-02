@@ -227,20 +227,16 @@ public class Core13LoC
         Story.KillQuest(326, "pines", "Leatherwing");
 
         //Follow your Nose!
-        Story.KillQuest(327, "pines", "Pine Troll");
+        if (!Story.QuestProgression(327) || !Core.isCompletedBefore(323))
+        {
+            Core.EnsureAccept(327);
+            Core.HuntMonster("pines", "Pine Troll");
+            Core.EnsureComplete(327);
+            Bot.Wait.ForPickup("Snowbeard's Gold");
+        }
 
         //Give Snowbeard His Gold
-        if (!Story.QuestProgression(323))
-        {
-            if (!Core.CheckInventory("Snowbeard's Gold"))
-            {
-                Core.EnsureAccept(327);
-                Core.HuntMonster("pines", "Pine Troll");
-                Core.EnsureComplete(327);
-                Bot.Wait.ForPickup("Snowbeard's Gold");
-            }
-            Story.ChainQuest(323);
-        }
+        Story.ChainQuest(323);
 
         //Bad Memory
         Story.MapItemQuest(344, "dwarfhold", 60);
@@ -1950,7 +1946,7 @@ public class Core13LoC
 
 
         //Horror Takes Flight
-        if(!Story.QuestProgression(3188))
+        if (!Story.QuestProgression(3188))
         {
             Core.EnsureAccept(3188);
             Core.HuntMonsterMapID("mirrorportal", 1, "Chaos Harpy Defeated");
