@@ -602,8 +602,8 @@ public class AllStories
         Core.Logger($"Story: CruxShip - Complete");
 
 
-        DarkCarnax.Storyline();
-        Core.Logger($"Story: Nightmare Carnax - Complete");
+        // DarkCarnax.Storyline();
+        // Core.Logger($"Story: Nightmare Carnax - Complete");
 
         if (Core.IsMember)
         {
@@ -623,6 +623,7 @@ public class AllStories
         DoomVaultA.StoryLine();
         Core.Logger($"Story: Doom Vault B - Complete");
         DoomVaultB.StoryLine();
+        
         Core.Logger($"Story: Doom Vault A - Complete");
 
         Downward.StoryLine();
