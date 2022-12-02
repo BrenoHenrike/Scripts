@@ -1812,7 +1812,7 @@ public class CoreFarms
         if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
 
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 || FactionRank("Loremaster") < rank)
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 && FactionRank("Loremaster") < rank)
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505); //Studying the Rogue 7505
