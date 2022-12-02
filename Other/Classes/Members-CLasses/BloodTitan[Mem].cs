@@ -20,7 +20,7 @@ public class BloodTitan
 
     public void Getclass(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Blood Titan Token") || !Core.IsMember)
+        if (Core.CheckInventory("Blood Titan") || !Core.IsMember)
             return;
 
         Core.EquipClass(ClassType.Farm);
