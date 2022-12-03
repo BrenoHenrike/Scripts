@@ -293,10 +293,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        if (!Core.isSeasonalMapActive("icerise"))
-            return;
-
-        if (Core.isCompletedBefore(2582))
+        if (!Core.isSeasonalMapActive("icerise") || !Core.IsMember || Core.isCompletedBefore(2582))
             return;
 
         Story.PreLoad(this);
