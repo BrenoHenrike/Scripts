@@ -208,10 +208,10 @@ public class CoreHollowbornChaosEnvoy
         Core.EnsureComplete(9002);
     }
 
-    public void PersistingMayhem()
+    public void PersistingMayhem(bool getAll = true)
     {
         string[] rewards = Core.EnsureLoad(9003).Rewards.Select(x => x.Name).ToArray();
-        if (Core.CheckInventory(rewards, toInv: false))
+        if (Core.CheckInventory(rewards, any: !getAll, toInv: false))
             return;
 
         Core.AddDrop(rewards);
@@ -219,10 +219,14 @@ public class CoreHollowbornChaosEnvoy
             ShadowsOfDisdain();
         Farm.Experience(95);
 
-        Core.EnsureAccept(9003);
+        Core.RegisterQuests(9003);
+        while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
+        {
+            Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
 
-        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
-
-        Core.EnsureComplete(9003);
+            foreach (string s in rewards)
+                Bot.Wait.ForPickup(s);
+        }
+        Core.CancelRegisteredQuests();
     }
 }
