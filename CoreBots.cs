@@ -2240,6 +2240,18 @@ public class CoreBots
                 SimpleQuestBypass(3798);
                 break;
 
+            case "mummies":
+                SimpleQuestBypass(4616);
+                break;
+
+            case "doomvault":
+                SimpleQuestBypass(3008);
+                break;
+
+            case "ultradrakath":
+                SimpleQuestBypass(3879);
+                break;
+
             case "towerofdoom1":
             case "towerofdoom2":
             case "towerofdoom3":
@@ -2251,14 +2263,6 @@ public class CoreBots
             case "towerofdoom9":
             case "towerofdoom10":
                 SimpleQuestBypass(3484);
-                break;
-
-            case "mummies":
-                SimpleQuestBypass(4616);
-                break;
-
-            case "doomvault":
-                SimpleQuestBypass(3008);
                 break;
             #endregion
 
