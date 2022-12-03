@@ -25,7 +25,7 @@ public class EbilCorpCafeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Tin Can of ???", "PACVEC Mach 1.0", "PACVEC Helm", "PACVEC Visor", "PACVEC Guard", "PACVEC Battle Wings", "PACVEC Battle Hammer", "PACVEC Railgun", "PACVEC Alien " });
+        Core.BankingBlackList.AddRange(new[] { "Tin Can of ???", "PACVEC Mach 1.0", "PACVEC Helm", "PACVEC Visor", "PACVEC Guard", "PACVEC Battle Wings", "PACVEC Battle Hammer", "PACVEC Railgun", "PACVEC Alien" });
         Core.SetOptions();
 
         BuyAllMerge();
