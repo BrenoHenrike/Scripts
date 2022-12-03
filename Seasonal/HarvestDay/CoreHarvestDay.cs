@@ -581,7 +581,7 @@ public class CoreHarvestDay
 
     public void EpilTakeOver()
     {
-        if (Core.isCompletedBefore(8953) || !Core.isSeasonalMapActive("EbilTakeOver"))
+        if ((Core.isCompletedBefore(8953) && Core.isCompletedBefore(8970)) || !Core.isSeasonalMapActive("EbilTakeOver"))
             return;
 
         Story.PreLoad(this);
