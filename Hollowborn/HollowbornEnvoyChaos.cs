@@ -47,18 +47,18 @@ public class HollowbornEnvoyChaos
 
     public void GetAll()
     {
-        if (!Core.CheckInventory(Quest1, toInv: false))
-            AutoReward(8998);
-        if (!Core.CheckInventory(Quest2, toInv: false))
-            AutoReward(8999);
-        if (!Core.CheckInventory(Quest3, toInv: false))
-            AutoReward(9000);
-        if (!Core.CheckInventory(Quest4, toInv: false))
-            AutoReward(9001);
-        if (!Core.CheckInventory(Quest5, toInv: false))
-            AutoReward(9002);
-        if (!Core.CheckInventory(Quest6, toInv: false))
-            AutoReward(9003);
+        // if (!Core.CheckInventory(Quest1, toInv: false))
+        AutoReward(8998);
+        // if (!Core.CheckInventory(Quest2, toInv: false))
+        AutoReward(8999);
+        // if (!Core.CheckInventory(Quest3, toInv: false))
+        AutoReward(9000);
+        // if (!Core.CheckInventory(Quest4, toInv: false))
+        AutoReward(9001);
+        // if (!Core.CheckInventory(Quest5, toInv: false))
+        AutoReward(9002);
+        // if (!Core.CheckInventory(Quest6, toInv: false))
+        AutoReward(9003);
     }
 
     public void Reqs()
@@ -111,21 +111,21 @@ public class HollowbornEnvoyChaos
             //Titanic Destroyer
             if (!Core.CheckInventory("Titanic Destroyer"))
             {
-                Adv.BuyItem("titanattack", 2154, "Gold Voucher 500k");
+                Adv.BuyItem("titanstrike", 2154, "Gold Voucher 500k");
                 Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 60, isTemp: false);
-                Core.BuyItem("titanattack", 2154, "Titanic Destroyer");
+                Core.BuyItem("titanstrike", 2154, "Titanic Destroyer");
             }
 
             //Heroic Titan
             if (!Core.CheckInventory("Heroic Titan"))
             {
-                Adv.BuyItem("titanattack", 2154, "Gold Voucher 500k");
+                Adv.BuyItem("titanstrike", 2154, "Gold Voucher 500k");
                 Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 40, isTemp: false);
-                Core.BuyItem("titanattack", 2154, "Heroic Titan");
+                Core.BuyItem("titanstrike", 2154, "Heroic Titan");
             }
 
             //Titan Drakath
-            Core.BuyItem("titanattack", 2154, "Titan Drakath");
+            Core.BuyItem("titanstrike", 2154, "Titan Drakath");
             Core.ToBank(new string[] { "Titan Paladin", "Vindicator Titan XL", "Titanic Destroyer", "Heroic Titan" }); //just incase, don't think needed
         }
     }
@@ -147,6 +147,9 @@ public class HollowbornEnvoyChaos
         {
             foreach (ItemBase Item in RewardOptions)
             {
+                if (Core.CheckInventory(Item.Name, toInv: false))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(new int[] { 7158, questID }); //7158 Needed for the item to drop
                 Core.EquipClass(ClassType.Solo);
@@ -166,6 +169,9 @@ public class HollowbornEnvoyChaos
         {
             foreach (ItemBase Item in RewardOptions)
             {
+                if (Core.CheckInventory(Item.Name, toInv: false))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
                 Core.EquipClass(ClassType.Solo);
@@ -185,6 +191,9 @@ public class HollowbornEnvoyChaos
         {
             foreach (ItemBase Item in RewardOptions)
             {
+                if (Core.CheckInventory(Item.Name, toInv: false))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
                 Core.EquipClass(ClassType.Solo);
@@ -206,6 +215,9 @@ public class HollowbornEnvoyChaos
         {
             foreach (ItemBase Item in RewardOptions)
             {
+                if (Core.CheckInventory(Item.Name, toInv: false))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
                 Core.EquipClass(ClassType.Farm);
@@ -224,6 +236,9 @@ public class HollowbornEnvoyChaos
         {
             foreach (ItemBase Item in RewardOptions)
             {
+                if (Core.CheckInventory(Item.Name, toInv: false))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
                 Core.EquipClass(ClassType.Farm);
@@ -244,6 +259,9 @@ public class HollowbornEnvoyChaos
             Core.EquipClass(ClassType.Solo);
             foreach (ItemBase Item in RewardOptions)
             {
+                if (Core.CheckInventory(Item.Name, toInv: false))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
                 Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
@@ -253,87 +271,87 @@ public class HollowbornEnvoyChaos
         }
     }
 
-    private string[] QuestsRewards =
-    {
-        "Hollowborn Chaos Warrior",
-        "Hollowborn Chaos Morph",
-        "Hollowborn Chaotic Wings",
-        "Hollowborn Omega Blades",
-        "Hollowborn Omega Sword",
-        "Hollowborn Chaos Unlocker",
-        "Hollowborn Benevolent Locks",
-        "Hollowborn Malignant Locks",
-        "Hollowborn Face of Chaos",
-        "Hollowborn Gaze of Chaos",
-        "Hollowborn Eye of Chaos",
-        "Hollowborn Wings of Chaos",
-        "Hollowborn Chaotic Portal",
-        "Hollowborn Envoy of Chaos",
-        "Hollowborn Alignment Aspects",
-        "Hollowborn Blade of Chaos Cape",
-        "Hollowborn Chaotic Portal",
-        "Hollowborn Blade of Chaos",
-        "Hollowborn Claw of Chaos",
-        "Hollowborn Benevolent",
-        "Hollowborn Benevolent Morph",
-        "Hollowborn Malignant",
-        "Hollowborn Malignant Morph",
-        "Idle Hollowborn Envoy of Chaos",
-        "Hollowborn Blade of Chaos",
-        "Hollowborn Blades of Chaos",
-        "Hollowborn Omega Swords",
-        "Hollowborn Chaos Unlockers"
-    };
+    // private string[] QuestsRewards =
+    // {
+    //     "Hollowborn Chaos Warrior",
+    //     "Hollowborn Chaos Morph",
+    //     "Hollowborn Chaotic Wings",
+    //     "Hollowborn Omega Blades",
+    //     "Hollowborn Omega Sword",
+    //     "Hollowborn Chaos Unlocker",
+    //     "Hollowborn Benevolent Locks",
+    //     "Hollowborn Malignant Locks",
+    //     "Hollowborn Face of Chaos",
+    //     "Hollowborn Gaze of Chaos",
+    //     "Hollowborn Eye of Chaos",
+    //     "Hollowborn Wings of Chaos",
+    //     "Hollowborn Chaotic Portal",
+    //     "Hollowborn Envoy of Chaos",
+    //     "Hollowborn Alignment Aspects",
+    //     "Hollowborn Blade of Chaos Cape",
+    //     "Hollowborn Chaotic Portal",
+    //     "Hollowborn Blade of Chaos",
+    //     "Hollowborn Claw of Chaos",
+    //     "Hollowborn Benevolent",
+    //     "Hollowborn Benevolent Morph",
+    //     "Hollowborn Malignant",
+    //     "Hollowborn Malignant Morph",
+    //     "Idle Hollowborn Envoy of Chaos",
+    //     "Hollowborn Blade of Chaos",
+    //     "Hollowborn Blades of Chaos",
+    //     "Hollowborn Omega Swords",
+    //     "Hollowborn Chaos Unlockers"
+    // };
 
-    private string[] Quest1 =
-    {
-        "Hollowborn Chaos Warrior",
-        "Hollowborn Chaos Morph",
-        "Hollowborn Chaotic Wings"
-    };
+    // private string[] Quest1 =
+    // {
+    //     "Hollowborn Chaos Warrior",
+    //     "Hollowborn Chaos Morph",
+    //     "Hollowborn Chaotic Wings"
+    // };
 
-    private string[] Quest2 =
-    {
-        "Hollowborn Omega Blades",
-        "Hollowborn Omega Sword",
-        "Hollowborn Chaos Unlocker"
-    };
+    // private string[] Quest2 =
+    // {
+    //     "Hollowborn Omega Blades",
+    //     "Hollowborn Omega Sword",
+    //     "Hollowborn Chaos Unlocker"
+    // };
 
-    private string[] Quest3 =
-    {
-        "Hollowborn Benevolent Locks",
-        "Hollowborn Malignant Locks",
-        "Hollowborn Face of Chaos",
-        "Hollowborn Gaze of Chaos"
-    };
+    // private string[] Quest3 =
+    // {
+    //     "Hollowborn Benevolent Locks",
+    //     "Hollowborn Malignant Locks",
+    //     "Hollowborn Face of Chaos",
+    //     "Hollowborn Gaze of Chaos"
+    // };
 
-    private string[] Quest4 =
-    {
-        "Hollowborn Eye of Chaos",
-        "Hollowborn Wings of Chaos",
-        "Hollowborn Chaotic Portal"
-    };
+    // private string[] Quest4 =
+    // {
+    //     "Hollowborn Eye of Chaos",
+    //     "Hollowborn Wings of Chaos",
+    //     "Hollowborn Chaotic Portal"
+    // };
 
-    private string[] Quest5 =
-    {
-        "Hollowborn Envoy of Chaos",
-        "Hollowborn Alignment Aspects",
-        "Hollowborn Blade of Chaos Cape",
-        "Hollowborn Chaotic Portal",
-        "Hollowborn Blade of Chaos",
-        "Hollowborn Claw of Chaos"
-    };
+    // private string[] Quest5 =
+    // {
+    //     "Hollowborn Envoy of Chaos",
+    //     "Hollowborn Alignment Aspects",
+    //     "Hollowborn Blade of Chaos Cape",
+    //     "Hollowborn Chaotic Portal",
+    //     "Hollowborn Blade of Chaos",
+    //     "Hollowborn Claw of Chaos"
+    // };
 
-    private string[] Quest6 =
-    {
-        "Hollowborn Benevolent",
-        "Hollowborn Benevolent Morph",
-        "Hollowborn Malignant",
-        "Hollowborn Malignant Morph",
-        "Idle Hollowborn Envoy of Chaos",
-        "Hollowborn Blade of Chaos",
-        "Hollowborn Blades of Chaos",
-        "Hollowborn Omega Swords",
-        "Hollowborn Chaos Unlockers"
-    };
+    // private string[] Quest6 =
+    // {
+    //     "Hollowborn Benevolent",
+    //     "Hollowborn Benevolent Morph",
+    //     "Hollowborn Malignant",
+    //     "Hollowborn Malignant Morph",
+    //     "Idle Hollowborn Envoy of Chaos",
+    //     "Hollowborn Blade of Chaos",
+    //     "Hollowborn Blades of Chaos",
+    //     "Hollowborn Omega Swords",
+    //     "Hollowborn Chaos Unlockers"
+    // };
 }
