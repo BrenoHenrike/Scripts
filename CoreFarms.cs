@@ -424,7 +424,7 @@ public class CoreFarms
         if (Core.CheckInventory(item, quant))
             return;
 
-        if (Core.CBOBool("PVP_SoloPvPBoss", out bool _canSoloBoss))
+        if (Core.CBOBool("PvP_SoloPvPBoss", out bool _canSoloBoss))
             canSoloBoss = !_canSoloBoss;
 
         Core.AddDrop(item);
@@ -437,6 +437,7 @@ public class CoreFarms
         {
             Core.AddDrop(item);
             Core.Join("bludrutbrawl-99999999", "Enter0", "Spawn");
+            Bot.Sleep(2500);
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
             Core.PvPMove(7, "Morale0A");
