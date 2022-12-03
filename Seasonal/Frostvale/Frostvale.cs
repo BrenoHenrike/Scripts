@@ -215,9 +215,9 @@ public class Frostvale
         if (!Story.QuestProgression(2526))
         {
             Core.EnsureAccept(2526);
-            Bot.Map.Join("frostdeep");
-            Core.GetMapItem(1587, 1, "frostdeep");
+            Core.Join("frostdeep");
             Bot.Wait.ForMapLoad("frostdeep");
+            Core.GetMapItem(1587, 1, "frostdeep");
             Core.EnsureComplete(2526);
         }
 
