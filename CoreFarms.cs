@@ -424,7 +424,7 @@ public class CoreFarms
         if (Core.CheckInventory(item, quant))
             return;
 
-        if (Core.CBOBool("PVP_SoloPvPBoss", out bool _canSoloBoss))
+        if (Core.CBOBool("PvP_SoloPvPBoss", out bool _canSoloBoss))
             canSoloBoss = !_canSoloBoss;
 
         Core.AddDrop(item);
