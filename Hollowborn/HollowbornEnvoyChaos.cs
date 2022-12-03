@@ -16,7 +16,7 @@
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Chaos/EternalDrakathSet.cs
 using Skua.Core.Interfaces;
-public class HollowbornOblivionBlade
+public class HollowbornEnvoyChaos
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -37,8 +37,8 @@ public class HollowbornOblivionBlade
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
-        
-        if (Core.CheckInventory(QuestsRewards))
+
+        if (Core.CheckInventory(QuestsRewards, toInv: false))
             return;
 
         Reqs();
@@ -49,17 +49,24 @@ public class HollowbornOblivionBlade
 
     public void GetAll()
     {
-        AutoReward(8998, 1);
-        AutoReward(8999, 1);
-        AutoReward(9000, 1);
-        AutoReward(9001, 1);
-        AutoReward(9002, 1);
-        AutoReward(9003, 1);
+        if (!Core.CheckInventory(Quest1, toInv: false))
+            AutoReward(8998);
+        if (!Core.CheckInventory(Quest2, toInv: false))
+            AutoReward(8999);
+        if (!Core.CheckInventory(Quest3, toInv: false))
+            AutoReward(9000);
+        if (!Core.CheckInventory(Quest4, toInv: false))
+            AutoReward(9001);
+        if (!Core.CheckInventory(Quest5, toInv: false))
+            AutoReward(9002);
+        if (!Core.CheckInventory(Quest6, toInv: false))
+            AutoReward(9003);
     }
 
     public void Reqs()
     {
-        HB.HardcoreContract();
+        if (!Core.CheckInventory("Lae\'s Hardcore Contract"))
+            HB.HardcoreContract();
         LOC.Complete13LOC();
         QOM.CompleteEverything();
         TAS.DoAll();
@@ -68,47 +75,63 @@ public class HollowbornOblivionBlade
         //Unique Quarry req
         ADG.AscendedGear("Ascended Face of Chaos");
         //Wavering Illusion req
-        Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
-        if (Core.CheckInventory("Supreme Arcane Staff of Chaos"))
+        Core.HuntMonster("finalbattle-999999", "Drakath", "Drakath Wings", isTemp: false); //Public because of room limit 1
+        if (!Core.CheckInventory("Supreme Arcane Staff of Chaos"))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false); //Can buyback
             Adv.BuyItem("deepforest", 1999, "Gold Voucher 500k", 4);
+            Core.BuyItem("deepforest", 1999, "Supreme Arcane Staff of Chaos");
 
         }
         //Shadows of Desdain
-        ED.getSet();
-        if (Core.CheckInventory("Titan Drakath"))
+        if (!Core.CheckInventory("Drakath the Eternal"))
+            ED.getSet();
+        if (!Core.CheckInventory("Titan Drakath"))
         {
             //Titan Paladin
-            Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 40, false);
-            Adv.BuyItem("titanattack", 2149, "Titan Paladin");
+            if (!Core.CheckInventory("Titan Paladin"))
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 40, false);
+                Adv.BuyItem("titanattack", 2149, "Titan Paladin");
+            }
 
             //Vindicator Titan XL
-            Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 40, false);
-            Core.HuntMonster("titanattack", "Titanic Vindicator", "Vindicator Titan", isTemp: false);
-            Adv.BuyItem("titanattack", 2149, "Vindicator Titan XL");
+            if (!Core.CheckInventory("Vindicator Titan XL"))
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("titanattack", "Titanic Vindicator", "Titanic Fluid", 40, false);
+                Core.HuntMonster("titanattack", "Titanic Vindicator", "Vindicator Titan", isTemp: false);
+                Adv.BuyItem("titanattack", 2149, "Vindicator Titan XL");
+            }
 
             //Titanic Destroyer
-            Adv.BuyItem("titanattack", 2154, "Gold Voucher 500k");
-            Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 60, isTemp: false);
-            Core.BuyItem("titanattack", 2154, "Titanic Destroyer");
+            if (!Core.CheckInventory("Titanic Destroyer"))
+            {
+                Adv.BuyItem("titanattack", 2154, "Gold Voucher 500k");
+                Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 60, isTemp: false);
+                Core.BuyItem("titanattack", 2154, "Titanic Destroyer");
+            }
 
-            //Titanic Destroyer
-            Adv.BuyItem("titanattack", 2154, "Gold Voucher 500k");
-            Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 40, isTemp: false);
-            Core.BuyItem("titanattack", 2154, "Heroic Titan");
+            //Heroic Titan
+            if (!Core.CheckInventory("Heroic Titan"))
+            {
+                Adv.BuyItem("titanattack", 2154, "Gold Voucher 500k");
+                Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 40, isTemp: false);
+                Core.BuyItem("titanattack", 2154, "Heroic Titan");
+            }
 
             //Titan Drakath
             Core.BuyItem("titanattack", 2154, "Titan Drakath");
+            Core.ToBank(new string[] { "Titan Paladin", "Vindicator Titan XL", "Titanic Destroyer", "Heroic Titan" }); //just incase, don't think needed
         }
     }
-    private void AutoReward(int questID, int quant)
+    private void AutoReward(int questID)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
         List<string> RewardsList = new List<string>();
@@ -116,6 +139,9 @@ public class HollowbornOblivionBlade
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
+
+        // if(Core.CheckInventory(Rewards, toInv: false))
+        //     return;
 
         Core.AddDrop(Rewards);
 
@@ -126,15 +152,18 @@ public class HollowbornOblivionBlade
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
-                    Core.EnsureAccept(7158);
+                    Core.EnsureAccept(7158); //Needed for the item to drop
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
                     Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
                     Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
-                    Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
-                    Core.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
                     Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
+                    Core.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
+                    Core.EquipClass(ClassType.Farm);
+                    Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
                 }
                 Core.CancelRegisteredQuests();
+                Core.ToBank(Rewards);
             }
         }
 
@@ -145,14 +174,17 @@ public class HollowbornOblivionBlade
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("hydra", "Heart of Chaos", "Hydra Armor", isTemp: false);
                     Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
                     Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
+                    Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
                     Core.KillEscherion("Relic of Chaos", 13, log: false);
                 }
                 Core.CancelRegisteredQuests();
+                Core.ToBank(Rewards);
             }
         }
 
@@ -163,16 +195,19 @@ public class HollowbornOblivionBlade
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
                     Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
                     Core.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
-                    Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
                     Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
                     Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
                     Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
                     Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
                 }
                 Core.CancelRegisteredQuests();
+                Core.ToBank(Rewards);
             }
         }
 
@@ -183,13 +218,16 @@ public class HollowbornOblivionBlade
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
+                    Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
                     Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 20, isTemp: false);
                     Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
                     Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
                 }
                 Core.CancelRegisteredQuests();
+                Core.ToBank(Rewards);
             }
         }
 
@@ -200,32 +238,35 @@ public class HollowbornOblivionBlade
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
+                    Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
-                    Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
                     Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
                     CAV.FragmentsoftheLordsA();
                     CAV.FragmentsoftheLordsB();
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
                     Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
                 }
                 Core.CancelRegisteredQuests();
+                Core.ToBank(Rewards);
             }
         }
 
         if (questID == 9003) //Persisting Mayhem
         {
+            Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(questID);
             foreach (string item in Rewards)
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
                     Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
-                }
                 Core.CancelRegisteredQuests();
+                Core.ToBank(Rewards);
             }
         }
     }
 
-    private string[] QuestsRewards = 
+    private string[] QuestsRewards =
     {
         "Hollowborn Chaos Warrior",
         "Hollowborn Chaos Morph",
