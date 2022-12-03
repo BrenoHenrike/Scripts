@@ -2227,13 +2227,65 @@ public class CoreBots
                 tryJoin();
                 break;
 
-            case "tercessuinotlim":
-                Bot.Map.Jump("m22", "Left");
-                tryJoin();
+            #region Simple Quest Bypasses
+            case "lycan":
+                SimpleQuestBypass(598);
+                break;
+
+            case "downbelow":
+                SimpleQuestBypass(8107);
+                break;
+
+            case "shadowattack":
+                SimpleQuestBypass(3798);
+                break;
+
+            case "towerofdoom1":
+            case "towerofdoom2":
+            case "towerofdoom3":
+            case "towerofdoom4":
+            case "towerofdoom5":
+            case "towerofdoom6":
+            case "towerofdoom7":
+            case "towerofdoom8":
+            case "towerofdoom9":
+            case "towerofdoom10":
+                SimpleQuestBypass(3484);
+                break;
+
+            case "mummies":
+                SimpleQuestBypass(4616);
                 break;
 
             case "doomvault":
                 SimpleQuestBypass(3008);
+                break;
+            #endregion
+
+            #region Private Simple Quest Bypasses
+            case "celestialarenab":
+            case "celestialarenac":
+            case "celestialarenad":
+                PrivateSimpleQuestBypass(6032);
+                break;
+
+            case "titandrakath":
+                PrivateSimpleQuestBypass(8776);
+                break;
+
+            case "confrontation":
+                PrivateSimpleQuestBypass(3799);
+                break;
+
+            case "finalshowdown":
+                PrivateSimpleQuestBypass(3880);
+                break;
+            #endregion
+
+            #region Special Cases
+            case "tercessuinotlim":
+                Bot.Map.Jump("m22", "Left");
+                tryJoin();
                 break;
 
             case "doomvaultb":
@@ -2253,62 +2305,14 @@ public class CoreBots
                 Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%hyperium%");
                 break;
 
-            case "lycan":
-                SimpleQuestBypass(598);
-                break;
-
             case "icestormarena":
                 JumpWait();
                 tryJoin();
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}");
                 break;
+            #endregion
 
-            case "celestialarenab":
-            case "celestialarenac":
-            case "celestialarenad":
-                map = strippedMap + "-999999";
-                SimpleQuestBypass(6032);
-                break;
-
-            case "titandrakath":
-                map = strippedMap + "-999999";
-                SimpleQuestBypass(8776);
-                break;
-
-            case "downbelow":
-                SimpleQuestBypass(8107);
-                break;
-
-            case "towerofdoom1":
-            case "towerofdoom2":
-            case "towerofdoom3":
-            case "towerofdoom4":
-            case "towerofdoom5":
-            case "towerofdoom6":
-            case "towerofdoom7":
-            case "towerofdoom8":
-            case "towerofdoom9":
-            case "towerofdoom10":
-                SimpleQuestBypass(3484);
-                break;
-
-            case "shadowattack":
-                SimpleQuestBypass(3798);
-                break;
-
-            case "confrontation":
-                SimpleQuestBypass(3799);
-                break;
-
-            case "finalshowdown":
-                SimpleQuestBypass(3880);
-                break;
-
-            case "mummies":
-                SimpleQuestBypass(4616);
-                break;
-
-            // Always private
+            #region Always Private
             // PvP
             case "blutrutbrawl":
             case "dagepvp":
@@ -2317,29 +2321,30 @@ public class CoreBots
             case "treetitanbattle":
             case "chaosrealm":
             case "vordredboss":
-            case "trickortreat": 
-            case "drakathfight": 
-            case "finalbattle": 
-            case "dragonfire": 
-            case "darkthronehub": 
-            case "malgor": 
-            case "chaosbattle": 
-            case "baconcatyou": 
-            case "herotournament": 
-            case "dragonkoi": 
-            case "chaoslord": 
-            case "ravenscar": 
-            case "nothing": 
-            case "falcontower": 
-            case "baconcatb": 
-            case "baconcat": 
-            case "tlapd": 
-            // Special
-            //case "fearhouse":
+            case "trickortreat":
+            case "drakathfight":
+            case "finalbattle":
+            case "dragonfire":
+            case "darkthronehub":
+            case "malgor":
+            case "chaosbattle":
+            case "baconcatyou":
+            case "herotournament":
+            case "dragonkoi":
+            case "chaoslord":
+            case "ravenscar":
+            case "nothing":
+            case "falcontower":
+            case "baconcatb":
+            case "baconcat":
+            case "tlapd":
+                // Special
+                //case "fearhouse":
                 JumpWait();
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;
+                #endregion
         }
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
@@ -2433,6 +2438,12 @@ public class CoreBots
             foreach (int id in questIDs)
                 Bot.Quests.UpdateQuest(id);
             tryJoin();
+        }
+
+        void PrivateSimpleQuestBypass(params int[] questIDs)
+        {
+            map = strippedMap + "-999999";
+            SimpleQuestBypass(questIDs);
         }
     }
 
