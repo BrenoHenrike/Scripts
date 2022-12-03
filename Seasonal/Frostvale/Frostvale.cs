@@ -212,10 +212,10 @@ public class Frostvale
         Story.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
-        if (!Story.QuestProgression(2527))
+        if (!Story.QuestProgression(2526))
         {
             Core.EnsureAccept(2526);
-            Bot.Map.Join("Map");
+            Bot.Map.Join("frostdeep");
             Bot.Sleep(2500);
             Core.EnsureComplete(2526);
         }
