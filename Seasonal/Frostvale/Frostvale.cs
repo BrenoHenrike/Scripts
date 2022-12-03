@@ -247,11 +247,15 @@ public class Frostvale
         // Icy Prizes
         Story.KillQuest(2535, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
 
-        // Fading Magic - may bug out as its 2 items from 1 mob if the delay doesnt work idfk, doesnt work as a string[] as it gets the sand drop 
-        Story.KillQuest(2536, "frostdeep", "Ancient Golem");
-        Bot.Sleep(2500);
-        Story.KillQuest(2536, "frostdeep", "Ancient Golem");
-        //Story.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        // Fading Magic
+        if (!Story.QuestProgression(2536))
+        {
+            Core.EnsureAccept(2536);
+            Core.HuntMonster("frostdeep", "Ancient Golem", "Sands of Time", 6);
+            Core.HuntMonster("frostdeep", "Ancient Golem", "Obsidian Key", 2);
+            Core.EnsureComplete(2536);
+
+        }
 
         // FrostDeep Dwellers
         Story.KillQuest(2537, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
@@ -472,7 +476,7 @@ public class Frostvale
 
     public void Icerisepast()
     {
-        if (!Core.isSeasonalMapActive("Icerisepast"))
+        if (!Core.IsMember || !Core.isSeasonalMapActive("Icerisepast"))
             return;
         //Not avaiable
     }
