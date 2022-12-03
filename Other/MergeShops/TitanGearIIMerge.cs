@@ -9,13 +9,13 @@ using Skua.Core.Options;
 
 public class TitanGearIIMerge
 {
-    private IScriptInterface Bot => IScriptInterface.Instance;
-    private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreStory Story = new();
-    private CoreAdvanced Adv = new();
-    private static CoreAdvanced sAdv = new();
-    private TitanAttackStory TAS = new();
+    public IScriptInterface Bot => IScriptInterface.Instance;
+    public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
+    public static CoreAdvanced sAdv = new();
+    public TitanAttackStory TAS = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -33,11 +33,12 @@ public class TitanGearIIMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge()
     {
+
         TAS.DoAll();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("titanstrike", 2154, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("titanstrike", 2154, findIngredients);
 
         #region Dont edit this part
         void findIngredients()
