@@ -136,7 +136,7 @@ public class HollowbornEnvoyChaos
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
-        //string[] Rewards = RewardsList.ToArray();
+        string[] Rewards = RewardsList.ToArray();
 
         // if(Core.CheckInventory(Rewards, toInv: false))
         //     return;
@@ -148,21 +148,18 @@ public class HollowbornEnvoyChaos
             foreach (ItemBase Item in RewardOptions)
             {
                 Core.FarmingLogger(Item.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
-                    Core.EnsureAccept(new int[] {7158, questID}); //7158 Needed for the item to drop
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
-                    Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
-                    Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
-                    Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
-                    Core.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
-                    Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
-                    Core.EnsureComplete(questID, Item.ID);
-                }
-                Core.ToBank(Rewards);
+                Core.EnsureAccept(new int[] { 7158, questID }); //7158 Needed for the item to drop
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
+                Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
+                Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
+                Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
+                Core.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
+                Core.EnsureComplete(questID, Item.ID);
             }
+            Core.ToBank(Rewards);
         }
 
         if (questID == 8999) //In the Beasts' Shadow
@@ -170,45 +167,39 @@ public class HollowbornEnvoyChaos
             foreach (ItemBase Item in RewardOptions)
             {
                 Core.FarmingLogger(Item.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
-                    Core.EnsureAccept(questID);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.KillMonster("hydra", "Boss", "Left", "*", "Hydra Armor", isTemp: false);
-                    Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
-                    Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
-                    Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
-                    Core.KillEscherion("Relic of Chaos", 13, log: false);
-                    Core.EnsureComplete(questID, Item.ID);
-                }
-                Core.ToBank(Rewards);
+                Core.EnsureAccept(questID);
+                Core.EquipClass(ClassType.Solo);
+                Core.KillMonster("hydra", "Boss", "Left", "*", "Hydra Armor", isTemp: false);
+                Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
+                Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
+                Core.KillEscherion("Relic of Chaos", 13, log: false);
+                Core.EnsureComplete(questID, Item.ID);
             }
         }
+        Core.ToBank(Rewards);
 
         if (questID == 9000) //Unique Quarry
         {
             foreach (ItemBase Item in RewardOptions)
             {
                 Core.FarmingLogger(Item.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
-                    Core.EnsureAccept(questID);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
-                    Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
-                    Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
-                    Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
-                    Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
-                    Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
-                    Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
-                    Core.EnsureComplete(questID, Item.ID);
-                }
-                Core.ToBank(Rewards);
+                Core.EnsureAccept(questID);
+                Core.EquipClass(ClassType.Solo);
+                Core.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
+                Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
+                Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
+                Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
+                Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
+                Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
+                Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+                Core.EnsureComplete(questID, Item.ID);
             }
+            Core.ToBank(Rewards);
         }
 
         if (questID == 9001) //Wavering Illusions
@@ -216,20 +207,17 @@ public class HollowbornEnvoyChaos
             foreach (ItemBase Item in RewardOptions)
             {
                 Core.FarmingLogger(Item.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
-                    Core.EnsureAccept(questID);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
-                    Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 20, isTemp: false);
-                    Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
-                    Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
-                    Core.EnsureComplete(questID, Item.ID);
-                }
-                Core.ToBank(Rewards);
+                Core.EnsureAccept(questID);
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
+                Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 20, isTemp: false);
+                Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
+                Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
+                Core.EnsureComplete(questID, Item.ID);
             }
+            Core.ToBank(Rewards);
         }
 
         if (questID == 9002) //Shadows of Disdain
@@ -237,32 +225,28 @@ public class HollowbornEnvoyChaos
             foreach (ItemBase Item in RewardOptions)
             {
                 Core.FarmingLogger(Item.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                {
-                    Core.EnsureAccept(questID);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
-                    Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
-                    CAV.FragmentsoftheLordsA();
-                    CAV.FragmentsoftheLordsB();
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
-                    Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
-                    Core.EnsureComplete(questID, Item.ID);
-                }
-                Core.ToBank(Rewards);
+                Core.EnsureAccept(questID);
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
+                Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
+                CAV.FragmentsoftheLordsA();
+                CAV.FragmentsoftheLordsB();
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
+                Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
+                Core.EnsureComplete(questID, Item.ID);
             }
+            Core.ToBank(Rewards);
         }
 
         if (questID == 9003) //Persisting Mayhem
         {
-            Core.FarmingLogger(Item.Name, 1);
             Core.EquipClass(ClassType.Solo);
             foreach (ItemBase Item in RewardOptions)
             {
+                Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item))
-                    Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
+                Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
                 Core.EnsureComplete(questID, Item.ID);
             }
             Core.ToBank(Rewards);
