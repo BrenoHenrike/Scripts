@@ -29,7 +29,7 @@ public class DrakathArmorBot
     }
 
     public void GetBoth()
-    {        
+    {
         LOC.Complete13LOC();
         DrakathArmorQuest();
         Core.BuyItem("battleon", 994, "Original Drakath Armor");
@@ -40,7 +40,7 @@ public class DrakathArmorBot
     {
         if (Core.CheckInventory("Drakath Armor"))
             return;
-            
+
         DrakathArmorQuest();
         Core.BuyItem("battleon", 994, "Drakath Armor");
     }
@@ -49,7 +49,7 @@ public class DrakathArmorBot
     {
         if (Core.CheckInventory("Original Drakath Armor"))
             return;
-            
+
         LOC.Complete13LOC();
         DrakathArmorQuest();
         Core.BuyItem("battleon", 994, "Original Drakath Armor");
@@ -57,6 +57,9 @@ public class DrakathArmorBot
 
     public void DrakathArmorQuest()
     {
+        if (Core.CheckInventory("Get Your Original Drakath's Armor"))
+            return;
+
         Core.AddDrop("Dage's Scroll Fragment", "Treasure Chest", "Face of Chaos", "Get Your Original Drakath's Armor");
 
         Core.EnsureAccept(3882);
