@@ -436,7 +436,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
-            Core.Join("bludrutbrawl-99999999", "Enter0", "Spawn");
+            Core.Join("bludrutbrawl", "Enter0", "Spawn");
             Bot.Sleep(2500);
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
@@ -1566,7 +1566,7 @@ public class CoreFarms
         while (Bot.Map.Name != "deathpitbrawl")
         {
             Core.Logger("Joining Brawl");
-            Bot.Map.Join("DeathPitbrawl-999999", "Enter0", "Spawn");
+            Bot.Map.Join("DeathPitbrawl", "Enter0", "Spawn");
             Bot.Sleep(Core.ActionDelay);
         }
 

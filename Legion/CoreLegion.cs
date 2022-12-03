@@ -648,7 +648,7 @@ public class CoreLegion
             if (ScrollQuant > 0)
                 Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
 
-            Core.Join("Dagepvp-99999999", "Enter0", "Spawn", ignoreCheck: true);
+            Core.Join("dagepvp", "Enter0", "Spawn", ignoreCheck: true);
 
             Core.PvPMove(1, "r2", 475, 269);
             Core.PvPMove(4, "r4", 963, 351);

@@ -2233,17 +2233,12 @@ public class CoreBots
                 break;
 
             case "doomvault":
-                JumpWait();
-                Bot.Quests.UpdateQuest(3008);
-                tryJoin();
+                SimpleQuestBypass(3008);
                 break;
 
             case "doomvaultb":
-                JumpWait();
-                Bot.Quests.UpdateQuest(3008);
                 SetAchievement(18);
-                Bot.Quests.UpdateQuest(3004);
-                tryJoin();
+                SimpleQuestBypass(3004, 3008);
                 break;
 
             case "prison":
@@ -2259,9 +2254,7 @@ public class CoreBots
                 break;
 
             case "lycan":
-                JumpWait();
-                Bot.Quests.UpdateQuest(598);
-                tryJoin();
+                SimpleQuestBypass(598);
                 break;
 
             case "icestormarena":
@@ -2270,17 +2263,20 @@ public class CoreBots
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}");
                 break;
 
+            case "celestialarenab":
+            case "celestialarenac":
             case "celestialarenad":
-                JumpWait();
-                Bot.Quests.UpdateQuest(6032);
-                Bot.Map.Join("celestialarenad-9999999");
-                Bot.Wait.ForMapLoad("celestialarenad");
+                map = strippedMap + "-999999";
+                SimpleQuestBypass(6032);
+                break;
+
+            case "titandrakath":
+                map = strippedMap + "-999999";
+                SimpleQuestBypass(8776);
                 break;
 
             case "downbelow":
-                JumpWait();
-                Bot.Quests.UpdateQuest(8107);
-                tryJoin();
+                SimpleQuestBypass(8107);
                 break;
 
             case "towerofdoom1":
@@ -2293,39 +2289,57 @@ public class CoreBots
             case "towerofdoom8":
             case "towerofdoom9":
             case "towerofdoom10":
-                JumpWait();
-                Bot.Quests.UpdateQuest(3484);
-                tryJoin();
+                SimpleQuestBypass(3484);
                 break;
 
             case "shadowattack":
-                JumpWait();
-                Bot.Quests.UpdateQuest(3798);
-                tryJoin();
+                SimpleQuestBypass(3798);
                 break;
 
             case "confrontation":
-                JumpWait();
-                // Bot.Quests.UpdateQuest(3765);
-                Bot.Quests.UpdateQuest(3799);
-                tryJoin();
+                SimpleQuestBypass(3799);
                 break;
 
             case "finalshowdown":
-                JumpWait();
-                Bot.Quests.UpdateQuest(3880);
-                tryJoin();
+                SimpleQuestBypass(3880);
                 break;
 
             case "mummies":
-                JumpWait();
-                Bot.Quests.UpdateQuest(4616);
-                tryJoin();
+                SimpleQuestBypass(4616);
                 break;
 
-                // case "fearhouse":
-                //     SendPackets($"%xt%zm%cmd%{Bot.Map.RoomID}%tfer%{Bot.Player.Username}%fearhouse%{999999}&Enter%Spawn%");
-                //     break;
+            // Always private
+            // PvP
+            case "blutrutbrawl":
+            case "dagepvp":
+            case "deathpitbrawl":
+            // Room Limit: 1
+            case "treetitanbattle":
+            case "chaosrealm":
+            case "vordredboss":
+            case "trickortreat": 
+            case "drakathfight": 
+            case "finalbattle": 
+            case "dragonfire": 
+            case "darkthronehub": 
+            case "malgor": 
+            case "chaosbattle": 
+            case "baconcatyou": 
+            case "herotournament": 
+            case "dragonkoi": 
+            case "chaoslord": 
+            case "ravenscar": 
+            case "nothing": 
+            case "falcontower": 
+            case "baconcatb": 
+            case "baconcat": 
+            case "tlapd": 
+            // Special
+            //case "fearhouse":
+                JumpWait();
+                map = strippedMap + "-999999";
+                tryJoin();
+                break;
         }
 
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
@@ -2370,7 +2384,7 @@ public class CoreBots
         {
             Bot.Events.ExtensionPacketReceived += MapIsMemberLocked;
             bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
-            Random rnd = new Random();
+            Random rnd = new();
             for (int i = 0; i < 20; i++)
             {
                 if (hasMapNumber)
@@ -2390,26 +2404,35 @@ public class CoreBots
                     Logger($"Failed to join {map}");
             }
             Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
-        }
-        void MapIsMemberLocked(dynamic packet)
-        { //%xt%warning%-1%"artixhome" is an Membership-Only Map.%
 
-            string type = packet["params"].type;
-            dynamic data = packet["params"].dataObj;
-            if (type is not null and "str")
-            {
-                string cmd = data[0];
-                switch (cmd)
+            void MapIsMemberLocked(dynamic packet)
+            { //%xt%warning%-1%"artixhome" is an Membership-Only Map.%
+
+                string type = packet["params"].type;
+                dynamic data = packet["params"].dataObj;
+                if (type is not null and "str")
                 {
-                    case "warning":
-                        if (Convert.ToString(packet).Contains("is an Membership-Only Map"))
-                        {
-                            Logger($" \"{map}\" requires membership to access it. Stopping the Bot.", stopBot: true);
-                            Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
-                        }
-                        break;
+                    string cmd = data[0];
+                    switch (cmd)
+                    {
+                        case "warning":
+                            if (Convert.ToString(packet).Contains("is an Membership-Only Map"))
+                            {
+                                Logger($" \"{map}\" requires membership to access it. Stopping the Bot.", stopBot: true);
+                                Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
+                            }
+                            break;
+                    }
                 }
             }
+        }
+
+        void SimpleQuestBypass(params int[] questIDs)
+        {
+            JumpWait();
+            foreach (int id in questIDs)
+                Bot.Quests.UpdateQuest(id);
+            tryJoin();
         }
     }
 
@@ -2557,10 +2580,10 @@ public class CoreBots
         }
     }
 
+
     #endregion
 
     #region Using Local Files
-
     /// <summary>
     /// Returns the file path the user has Skua stored in.
     /// </summary>
