@@ -120,7 +120,7 @@ public class HollowbornEnvoyChaos
             if (!Core.CheckInventory("Heroic Titan"))
             {
                 Adv.BuyItem("titanstrike", 2154, "Gold Voucher 500k");
-                Core.HuntMonster("titanstrike", "Titanic Destroyer", "Destroyer Essence", 40, isTemp: false);
+                Core.HuntMonster("titandrakath-999999", "Titan Drakath", "Titanic Tincture", 40, isTemp: false);
                 Core.BuyItem("titanstrike", 2154, "Heroic Titan");
             }
 
