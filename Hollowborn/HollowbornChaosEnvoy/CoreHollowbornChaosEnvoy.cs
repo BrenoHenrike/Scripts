@@ -76,11 +76,15 @@ public class CoreHollowbornChaosEnvoy
         Core.EnsureAccept(7158);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
             Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
+            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
+
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
             Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
-            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
+
             Adv.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
 
             foreach (string s in rewards)
@@ -104,12 +108,15 @@ public class CoreHollowbornChaosEnvoy
         Core.RegisterQuests(8999);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
-            Core.HuntMonster("hydra", "Heart of Chaos", "Hydra Armor", isTemp: false);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("hydra", "Hydra Head", "Hydra Armor", isTemp: false);
             Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
             Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
-            Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
             Core.KillEscherion("Relic of Chaos", 13);
+
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
@@ -169,10 +176,14 @@ public class CoreHollowbornChaosEnvoy
         Core.RegisterQuests(9001);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
+
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
             Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 20, isTemp: false);
             Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
+
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
 
             foreach (string s in rewards)
@@ -198,12 +209,16 @@ public class CoreHollowbornChaosEnvoy
 
         Core.EnsureAccept(9002);
 
+        Core.EquipClass(ClassType.Farm);
         Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
+
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
-        Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
         CAV.FragmentsoftheLordsA();
         CAV.FragmentsoftheLordsB();
         Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
+
+        Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
         Core.EnsureComplete(9002);
     }
@@ -218,6 +233,8 @@ public class CoreHollowbornChaosEnvoy
         if (!Bot.Quests.IsUnlocked(9003))
             ShadowsOfDisdain();
         Farm.Experience(95);
+
+        Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(9003);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
