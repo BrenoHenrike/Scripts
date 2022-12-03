@@ -74,6 +74,7 @@ public class Follower
                         3484,   // towerofdoom
                         3798,   // shadowattack
                         4616,   // mummies
+                        8107    // downbelow
                     }
                 )
         {

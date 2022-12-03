@@ -2277,6 +2277,12 @@ public class CoreBots
                 Bot.Wait.ForMapLoad("celestialarenad");
                 break;
 
+            case "downbelow":
+                JumpWait();
+                Bot.Quests.UpdateQuest(8107);
+                tryJoin();
+                break;
+
             case "towerofdoom1":
             case "towerofdoom2":
             case "towerofdoom3":
