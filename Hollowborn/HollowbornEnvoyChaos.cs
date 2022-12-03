@@ -1,5 +1,7 @@
+//cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
+//cs_include Scripts/Chaos/EternalDrakathSet.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
@@ -13,8 +15,6 @@
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Chaos/AscendedDrakathGear.cs
-//cs_include Scripts/Chaos/EternalDrakathSet.cs
 using Skua.Core.Interfaces;
 public class HollowbornEnvoyChaos
 {
@@ -23,16 +23,12 @@ public class HollowbornEnvoyChaos
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreHollowborn HB = new CoreHollowborn();
-    public Core13LoC LOC => new Core13LoC();
+    public Core13LoC LOC = new Core13LoC();
     public CoreQOM QOM = new();
     public ChaosAvengerClass CAV = new();
     public EternalDrakath ED = new EternalDrakath();
     public TitanAttackStory TAS = new();
-    public TowerOfDoom TOD = new TowerOfDoom();
-    public DrakathArmorBot DA = new DrakathArmorBot();
     public AscendedDrakathGear ADG = new();
-    public CoreBLOD BLOD = new();
-    public StarSinc Star = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
