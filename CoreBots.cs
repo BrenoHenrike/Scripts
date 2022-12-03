@@ -1326,6 +1326,13 @@ public class CoreBots
         return toReturn;
     }
 
+    public string[] QuestRewards(params int[] questIDs)
+    {
+        List<string> toReturn = new();
+        EnsureLoad(questIDs).Select(q => q.Rewards).ForEach(r => toReturn.AddRange(r.Select(i => i.Name)));
+        return toReturn.ToArray();
+    }
+
     /// <summary>
     /// Accepts and then completes the quest, used inside a loop
     /// </summary>
