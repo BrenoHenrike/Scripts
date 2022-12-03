@@ -164,8 +164,7 @@ Base = MechaJouster = 1 | 2 | 3 | 4 = Use if Available
 Base = MindBreaker = 1 | 2 | 3 | 4 = Use if Available
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Naval Commander = 3WW10000 | 4 | 2 | 1 = 250
-Base = Nechronomancer = 1 | 2 | 3S | 4 = Use if Available
-Base = Nechronomancer = 1 | 2 | 4 | 1 | 2 | 1 | 1 | 2 | 1 | 1 | 3 = 250
+Base = Nechronomancer = 4 H<40S | 3 | 1 | 2 = Use if Available
 Base = Necrotic Chronomancer = 4 H<40S | 3 | 1 | 2 = Use if Available
 Base = Ninja = 1 | 2 | 3 | 4 = Use if Available
 Base = Ninja Warrior = 1 | 2 | 3 | 4 = Use if Available
