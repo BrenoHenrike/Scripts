@@ -47,17 +47,11 @@ public class HollowbornEnvoyChaos
 
     public void GetAll()
     {
-        // if (!Core.CheckInventory(Quest1, toInv: false))
         AutoReward(8998);
-        // if (!Core.CheckInventory(Quest2, toInv: false))
         AutoReward(8999);
-        // if (!Core.CheckInventory(Quest3, toInv: false))
         AutoReward(9000);
-        // if (!Core.CheckInventory(Quest4, toInv: false))
         AutoReward(9001);
-        // if (!Core.CheckInventory(Quest5, toInv: false))
         AutoReward(9002);
-        // if (!Core.CheckInventory(Quest6, toInv: false))
         AutoReward(9003);
     }
 
@@ -68,7 +62,7 @@ public class HollowbornEnvoyChaos
         LOC.Complete13LOC();
         QOM.CompleteEverything();
         TAS.DoAll();
-        //Stiring Discord
+        //Stirring Discord
         Farm.ChaosMilitiaREP(5);
         //Unique Quarry req
         ADG.AscendedGear("Ascended Face of Chaos");
@@ -138,12 +132,9 @@ public class HollowbornEnvoyChaos
 
         string[] Rewards = RewardsList.ToArray();
 
-        // if(Core.CheckInventory(Rewards, toInv: false))
-        //     return;
-
         Core.AddDrop(Rewards);
 
-        if (questID == 8998) //
+        if (questID == 8998) //Stirring Discord
         {
             foreach (ItemBase Item in RewardOptions)
             {
@@ -152,12 +143,12 @@ public class HollowbornEnvoyChaos
 
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(new int[] { 7158, questID }); //7158 Needed for the item to drop
+                Core.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
                 Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
                 Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
                 Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
-                Core.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
                 Core.EquipClass(ClassType.Farm);
                 Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
                 Core.EnsureComplete(questID, Item.ID);
@@ -197,6 +188,7 @@ public class HollowbornEnvoyChaos
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
                 Core.EquipClass(ClassType.Solo);
+                Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
                 Core.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
                 Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
                 Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
@@ -205,7 +197,6 @@ public class HollowbornEnvoyChaos
                 Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
                 Core.EquipClass(ClassType.Farm);
                 Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
-                Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
                 Core.EnsureComplete(questID, Item.ID);
             }
             Core.ToBank(Rewards);
@@ -220,13 +211,13 @@ public class HollowbornEnvoyChaos
 
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
+                Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
                 Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 20, isTemp: false);
                 Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
-                Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
                 Core.EnsureComplete(questID, Item.ID);
             }
             Core.ToBank(Rewards);
@@ -241,14 +232,14 @@ public class HollowbornEnvoyChaos
 
                 Core.FarmingLogger(Item.Name, 1);
                 Core.EnsureAccept(questID);
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
-                Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
                 CAV.FragmentsoftheLordsA();
                 CAV.FragmentsoftheLordsB();
+                Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
                 Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
                 Core.EnsureComplete(questID, Item.ID);
             }
             Core.ToBank(Rewards);
@@ -302,56 +293,4 @@ public class HollowbornEnvoyChaos
         "Hollowborn Omega Swords",
         "Hollowborn Chaos Unlockers"
     };
-
-    // private string[] Quest1 =
-    // {
-    //     "Hollowborn Chaos Warrior",
-    //     "Hollowborn Chaos Morph",
-    //     "Hollowborn Chaotic Wings"
-    // };
-
-    // private string[] Quest2 =
-    // {
-    //     "Hollowborn Omega Blades",
-    //     "Hollowborn Omega Sword",
-    //     "Hollowborn Chaos Unlocker"
-    // };
-
-    // private string[] Quest3 =
-    // {
-    //     "Hollowborn Benevolent Locks",
-    //     "Hollowborn Malignant Locks",
-    //     "Hollowborn Face of Chaos",
-    //     "Hollowborn Gaze of Chaos"
-    // };
-
-    // private string[] Quest4 =
-    // {
-    //     "Hollowborn Eye of Chaos",
-    //     "Hollowborn Wings of Chaos",
-    //     "Hollowborn Chaotic Portal"
-    // };
-
-    // private string[] Quest5 =
-    // {
-    //     "Hollowborn Envoy of Chaos",
-    //     "Hollowborn Alignment Aspects",
-    //     "Hollowborn Blade of Chaos Cape",
-    //     "Hollowborn Chaotic Portal",
-    //     "Hollowborn Blade of Chaos",
-    //     "Hollowborn Claw of Chaos"
-    // };
-
-    // private string[] Quest6 =
-    // {
-    //     "Hollowborn Benevolent",
-    //     "Hollowborn Benevolent Morph",
-    //     "Hollowborn Malignant",
-    //     "Hollowborn Malignant Morph",
-    //     "Idle Hollowborn Envoy of Chaos",
-    //     "Hollowborn Blade of Chaos",
-    //     "Hollowborn Blades of Chaos",
-    //     "Hollowborn Omega Swords",
-    //     "Hollowborn Chaos Unlockers"
-    // };
 }
