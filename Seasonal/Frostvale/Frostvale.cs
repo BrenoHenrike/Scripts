@@ -216,6 +216,7 @@ public class Frostvale
         {
             Core.EnsureAccept(2526);
             Bot.Map.Join("frostdeep");
+            Core.GetMapItem(1587, 1, "frostdeep");
             Bot.Wait.ForMapLoad("frostdeep");
             Core.EnsureComplete(2526);
         }
