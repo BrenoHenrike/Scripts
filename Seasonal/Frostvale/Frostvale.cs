@@ -249,7 +249,7 @@ public class Frostvale
         Story.KillQuest(2535, "frostdeep", new[] { "Temple Prowler", "Temple Maggot" });
 
         // Fading Magic - may bug out as its 2 items from 1 mob if the delay doesnt work idfk, doesnt work as a string[] as it gets the sand drop 
-        if(!Story.QuestProgression(2536))
+        if (!Story.QuestProgression(2536))
         {
             Core.EnsureAccept(2536);
             Core.HuntMonster("frostdeep", "Ancient Golem", "Sands of Time", 6);
@@ -293,7 +293,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        if (!Core.isSeasonalMapActive("icerise") || !Core.IsMember || Core.isCompletedBefore(2582))
+        if (!Core.isSeasonalMapActive("icerise") || Core.isCompletedBefore(2582))
             return;
 
         Story.PreLoad(this);
@@ -473,7 +473,7 @@ public class Frostvale
 
     public void Icerisepast()
     {
-        if (!Core.isSeasonalMapActive("Icerisepast") || !Core.IsMember)
+        if (!Core.IsMember || !Core.isSeasonalMapActive("Icerisepast"))
             return;
         //Not avaiable
     }
