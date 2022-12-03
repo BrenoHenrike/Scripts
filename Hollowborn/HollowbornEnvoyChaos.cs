@@ -171,7 +171,7 @@ public class HollowbornEnvoyChaos
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("hydra", "Heart of Chaos", "Hydra Armor", isTemp: false);
+                    Core.KillMonster("hydra", "Boss", "Left", "*", "Hydra Armor", isTemp: false);
                     Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
                     Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
@@ -192,9 +192,9 @@ public class HollowbornEnvoyChaos
                 while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 {
                     Core.EquipClass(ClassType.Solo);
+                    Core.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
                     Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
                     Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
-                    Core.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
                     Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
                     Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
                     Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
