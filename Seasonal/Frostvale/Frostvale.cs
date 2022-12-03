@@ -215,9 +215,9 @@ public class Frostvale
         if (!Story.QuestProgression(2526))
         {
             Core.EnsureAccept(2526);
-            Bot.Map.Join("frostdeep");
-            Core.GetMapItem(1587, 1, "frostdeep");
+            Core.Join("frostdeep");
             Bot.Wait.ForMapLoad("frostdeep");
+            Core.GetMapItem(1587, 1, "frostdeep");
             Core.EnsureComplete(2526);
         }
 
@@ -249,10 +249,13 @@ public class Frostvale
         Story.KillQuest(2535, "frostdeep", new[] { "Temple Prowler", "Temple Maggot" });
 
         // Fading Magic - may bug out as its 2 items from 1 mob if the delay doesnt work idfk, doesnt work as a string[] as it gets the sand drop 
-        Story.KillQuest(2536, "frostdeep", "Ancient Golem");
-        Bot.Sleep(2500);
-        Story.KillQuest(2536, "frostdeep", "Ancient Golem");
-        //Story.KillQuest(2536, "frostdeep", new[] { "Ancient Golem", "Ancient Golem" });
+        if (!Story.QuestProgression(2536))
+        {
+            Core.EnsureAccept(2536);
+            Core.HuntMonster("frostdeep", "Ancient Golem", "Sands of Time", 6);
+            Core.HuntMonster("frostdeep", "Ancient Golem", "Obsidian Key", 2);
+            Core.EnsureComplete(2536);
+        }
 
         // FrostDeep Dwellers
         Story.KillQuest(2537, "frostdeep", new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
@@ -290,10 +293,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        if (!Core.isSeasonalMapActive("icerise"))
-            return;
-
-        if (Core.isCompletedBefore(2582))
+        if (!Core.isSeasonalMapActive("icerise") || Core.isCompletedBefore(2582))
             return;
 
         Story.PreLoad(this);
@@ -473,7 +473,7 @@ public class Frostvale
 
     public void Icerisepast()
     {
-        if (!Core.isSeasonalMapActive("Icerisepast"))
+        if (!Core.IsMember || !Core.isSeasonalMapActive("Icerisepast"))
             return;
         //Not avaiable
     }
