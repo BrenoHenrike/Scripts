@@ -271,37 +271,37 @@ public class HollowbornEnvoyChaos
         }
     }
 
-    // private string[] QuestsRewards =
-    // {
-    //     "Hollowborn Chaos Warrior",
-    //     "Hollowborn Chaos Morph",
-    //     "Hollowborn Chaotic Wings",
-    //     "Hollowborn Omega Blades",
-    //     "Hollowborn Omega Sword",
-    //     "Hollowborn Chaos Unlocker",
-    //     "Hollowborn Benevolent Locks",
-    //     "Hollowborn Malignant Locks",
-    //     "Hollowborn Face of Chaos",
-    //     "Hollowborn Gaze of Chaos",
-    //     "Hollowborn Eye of Chaos",
-    //     "Hollowborn Wings of Chaos",
-    //     "Hollowborn Chaotic Portal",
-    //     "Hollowborn Envoy of Chaos",
-    //     "Hollowborn Alignment Aspects",
-    //     "Hollowborn Blade of Chaos Cape",
-    //     "Hollowborn Chaotic Portal",
-    //     "Hollowborn Blade of Chaos",
-    //     "Hollowborn Claw of Chaos",
-    //     "Hollowborn Benevolent",
-    //     "Hollowborn Benevolent Morph",
-    //     "Hollowborn Malignant",
-    //     "Hollowborn Malignant Morph",
-    //     "Idle Hollowborn Envoy of Chaos",
-    //     "Hollowborn Blade of Chaos",
-    //     "Hollowborn Blades of Chaos",
-    //     "Hollowborn Omega Swords",
-    //     "Hollowborn Chaos Unlockers"
-    // };
+    private string[] QuestsRewards =
+    {
+        "Hollowborn Chaos Warrior",
+        "Hollowborn Chaos Morph",
+        "Hollowborn Chaotic Wings",
+        "Hollowborn Omega Blades",
+        "Hollowborn Omega Sword",
+        "Hollowborn Chaos Unlocker",
+        "Hollowborn Benevolent Locks",
+        "Hollowborn Malignant Locks",
+        "Hollowborn Face of Chaos",
+        "Hollowborn Gaze of Chaos",
+        "Hollowborn Eye of Chaos",
+        "Hollowborn Wings of Chaos",
+        "Hollowborn Chaotic Portal",
+        "Hollowborn Envoy of Chaos",
+        "Hollowborn Alignment Aspects",
+        "Hollowborn Blade of Chaos Cape",
+        "Hollowborn Chaotic Portal",
+        "Hollowborn Blade of Chaos",
+        "Hollowborn Claw of Chaos",
+        "Hollowborn Benevolent",
+        "Hollowborn Benevolent Morph",
+        "Hollowborn Malignant",
+        "Hollowborn Malignant Morph",
+        "Idle Hollowborn Envoy of Chaos",
+        "Hollowborn Blade of Chaos",
+        "Hollowborn Blades of Chaos",
+        "Hollowborn Omega Swords",
+        "Hollowborn Chaos Unlockers"
+    };
 
     // private string[] Quest1 =
     // {
