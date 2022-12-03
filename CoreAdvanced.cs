@@ -39,7 +39,7 @@ public class CoreAdvanced
         if (Core.CheckInventory(itemName, quant))
             return;
 
-        ShopItem item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name == itemName : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
+        ShopItem item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
 
@@ -985,7 +985,10 @@ public class CoreAdvanced
         InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
             return CapeSpecial.None;
-        return (CapeSpecial)getEnhPatternID(EquippedCape);
+        int pattern_id = getEnhPatternID(EquippedCape);
+        if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
+            return CapeSpecial.None;
+        return (CapeSpecial)pattern_id;
     }
 
     /// <summary>
@@ -997,7 +1000,10 @@ public class CoreAdvanced
         InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Helm);
         if (EquippedHelm == null)
             return HelmSpecial.None;
-        return (HelmSpecial)getEnhPatternID(EquippedHelm);
+        int pattern_id = getEnhPatternID(EquippedHelm);
+        if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
+            return HelmSpecial.None;
+        return (HelmSpecial)pattern_id;
     }
 
     /// <summary>
@@ -1009,7 +1015,10 @@ public class CoreAdvanced
         InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i.Equipped && WeaponCatagories.Contains(i.Category));
         if (EquippedWeapon == null)
             return WeaponSpecial.None;
-        return (WeaponSpecial)getProcID(EquippedWeapon);
+        int pattern_id = getProcID(EquippedWeapon);
+        if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
+            return WeaponSpecial.None;
+        return (WeaponSpecial)pattern_id;
     }
 
     private static ItemCategory[] EnhanceableCatagories =
@@ -1406,27 +1415,9 @@ public class CoreAdvanced
             else
             {
                 // Sorting by level (descending)
-                List<ShopItem> sortedList = availableEnh.OrderByDescending(x => x.Level).ToList();
-                List<ShopItem> bestTwoEnhancements = new();
-                if (sortedList.Count >= 2)
-                {
-                    bestTwoEnhancements = sortedList.GetRange(0, 2);
-                }
-                else
-                {
-                    Core.Logger($"Enhancement Failed: sortedList {(sortedList.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
-                    return;
-                }
-
-                if (bestTwoEnhancements.Count != 2)
-                {
-                    Core.Logger($"Enhancement Failed: bestTwoEnhancements {(bestTwoEnhancements.Count > 0 ? $"has a count of {sortedList.Count}" : "is empty")}");
-                    return;
-                }
-
-                // Getting the best enhancement out of the two
-                bestEnhancement = bestTwoEnhancements.First().Level == bestTwoEnhancements.Last().Level ?
-                    bestTwoEnhancements.FirstOrDefault(x => Core.IsMember ? x.Upgrade : !x.Upgrade) : bestTwoEnhancements.Last();
+                List<ShopItem> sortedList = availableEnh.OrderByDescending(x => x.Level)
+                    .ThenByDescending(x => x.Upgrade ? 1 : 0).ToList();
+                bestEnhancement = sortedList[0];
             }
 
             // Null check

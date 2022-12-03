@@ -184,6 +184,7 @@ public class FarmerJoeStartingTheAcc
 
         // P2: Mage Chaos Rep
         Core.Equip("Mage");
+        Core.EquipClass(ClassType.Farm);
         Farm.ChaosREP();
 
         // P3: Chaos Slayer

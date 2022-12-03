@@ -174,7 +174,7 @@ public class BirthdayFeastQuestRewards
 
     void MemetsQuests()
     {
-        List<ItemBase> RewardOptions = Core.EnsureLoad(8384).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(8382).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);

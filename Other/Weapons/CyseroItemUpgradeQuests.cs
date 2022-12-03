@@ -7,7 +7,7 @@
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Other/Materials/DarknessShard.cs
-//cs_include Scripts/Story/Doomwood/AQWZombies.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Nation/Various/TarosManslayer.cs
 //cs_include Scripts/Nation/CoreNation.cs

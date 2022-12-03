@@ -67,27 +67,23 @@ public class Follower
         }
 
         // Bypasses
-        int[] Questids = {
-            598, // lycan
-            3004, // doomvaultb
-            3008, // doomvault
-            3484, // towerofdoom
-            3798, // shadowattack
-            4616, // mummies
-        };
-
-        foreach (int questId in Questids)
+        foreach (int questId in new int[] {
+                        598,    // lycan
+                        3004,   // doomvaultb
+                        3008,   // doomvault
+                        3484,   // towerofdoom
+                        3798,   // shadowattack
+                        4616,   // mummies
+                    }
+                )
         {
             Bot.Quests.UpdateQuest(questId);
         }
-
-        // Setting Acheivment for doomvaultb
-        Core.SetAchievement(18);
+        Core.SetAchievement(18); // doomvaultb
 
         // Enabling listeners
         Bot.Events.MapChanged += MapNumberParses;
         Bot.Events.ScriptStopping += ScriptStopping;
-
         if (CopyWalk)
             Bot.Events.ExtensionPacketReceived += CopyWalkListener;
 

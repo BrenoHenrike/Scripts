@@ -98,6 +98,7 @@
 //cs_include Scripts/Story/Eden.cs
 //cs_include Scripts/Story/EtherstormWastes.cs
 //cs_include Scripts/Story/ExaltiaTower.cs
+//cs_include Scripts/Story/Extinction.cs
 
 //cs_include Scripts/Story/FrozenNorthlands.cs
 //cs_include Scripts/Story/FableForest.cs
@@ -294,6 +295,7 @@ public class AllStories
     public Eden Eden = new();
     public EtherStormWastes EtherStormWastes = new();
     public ExaltiaTower ExaltiaTower = new();
+    public Extinction Extinction = new();
 
     public FrozenNorthlands FrozenNorthlands = new();
     public FableForest FableForest = new();
@@ -600,8 +602,8 @@ public class AllStories
         Core.Logger($"Story: CruxShip - Complete");
 
 
-        DarkCarnax.Storyline();
-        Core.Logger($"Story: Nightmare Carnax - Complete");
+        // DarkCarnax.Storyline();
+        // Core.Logger($"Story: Nightmare Carnax - Complete");
 
         if (Core.IsMember)
         {
@@ -621,6 +623,7 @@ public class AllStories
         DoomVaultA.StoryLine();
         Core.Logger($"Story: Doom Vault B - Complete");
         DoomVaultB.StoryLine();
+        
         Core.Logger($"Story: Doom Vault A - Complete");
 
         Downward.StoryLine();
@@ -654,6 +657,8 @@ public class AllStories
         ExaltiaTower.StoryLine();
         Core.Logger($"Story: Exaltia Tower - Complete");
 
+        Extinction.StoryLine();
+        Core.Logger($"Story: Extinction - Complete");
 
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");

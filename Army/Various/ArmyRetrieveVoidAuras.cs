@@ -32,12 +32,30 @@ public class RVAArmy
         "Creature Creation Essence"
     };
 
+    public string[] SellMe =
+    {
+        "Astral Ephemerite Essence",
+        "Belrot the Fiend Essence",
+        "Black Knight Essence",
+        "Tiger Leech Essence",
+        "Carnax Essence",
+        "Chaos Vordred Essence",
+        "Dai Tengu Essence",
+        "Unending Avatar Essence",
+        "Void Dragon Essence",
+        "Creature Creation Essence"
+    };
+
+
     public void ScriptMain(IScriptInterface bot)
     {
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
         Core.Unbank(VA);
+        Core.Logger("Selling essences for syncing purposes");
+        foreach (string item in SellMe)
+            Core.SellItem(item, all: true);
         WaitingRoom();
 
         Core.SetOptions(false);
@@ -45,7 +63,8 @@ public class RVAArmy
 
     public void WaitingRoom()
     {
-        Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up, lets hope this works LFMAO");
+        Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up\n" +
+                                                            "lets hope this works LFMAO");
         Bot.Sleep(2500);
         RetrieveVoidAurasArmy(7500);
     }
@@ -61,46 +80,26 @@ public class RVAArmy
         Core.AddDrop(VA);
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
             Core.AddDrop("Creature Shard");
-        Core.RegisterQuests(4432);
         Core.FarmingLogger($"Void Aura", Quantity);
         Core.ConfigureAggro();
+        Core.Logger("Army may get slightly out of sync\n" +
+                    "(4-5 items on farm mobs, 0 - 1 on boss mobs, still better then before");
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
-            Core.DebugLogger(this, "Accept Quest");
             Core.EnsureAccept(4432);
-            //if (!Core.CheckInventory("Astral Ephemerite Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Astral Ephemerite Essence");
             ArmyKillMonster("timespace", "Frame1", "Left", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Belrot the Fiend Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Belrot the Fiend Essence");
             ArmyKillMonster("citadel", "m13", "Left", "Belrot the Fiend", "Belrot the Fiend Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Black Knight Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Black Knight Essence");
             ArmyKillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Tiger Leech Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Tiger Leech Essence");
             ArmyKillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Carnax Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Carnax Essence");
             ArmyKillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Chaos Vordred Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Chaos Vordred Essence");
             ArmyKillMonster("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Dai Tengu Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Dai Tengu Essence");
             ArmyKillMonster("hachiko", "Roof", "Left", "Dai Tengu", "Dai Tengu Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Unending Avatar Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Unending Avatar Essence");
             ArmyKillMonster("timevoid", "Frame8", "Left", "Unending Avatar", "Unending Avatar Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Void Dragon Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Void Dragon Essence");
             ArmyKillMonster("dragonchallenge", "r4", "Left", "Void Dragon", "Void Dragon Essence", EssenceQuantity, false);
-            //if (!Core.CheckInventory("Creature Creation Essence", EssenceQuantity))
-            Core.DebugLogger(this, "Creature Creation Essence");
             ArmyKillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", EssenceQuantity, false);
+            Core.EnsureCompleteMulti(4432);
         }
-        Core.CancelRegisteredQuests();
         Core.ConfigureAggro(false);
         Core.Logger("THANKS FOR RIDING THE PAIN TRAIN!");
     }
@@ -127,8 +126,9 @@ public class RVAArmy
         while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
         {
             Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
-            Bot.Sleep(1500);
+            Bot.Sleep(2500);
         }
+        Bot.Sleep(2500);
         if (item == null)
         {
             if (log)

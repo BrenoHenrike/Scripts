@@ -160,7 +160,7 @@ public class CitadelRuins
         Story.KillQuest(146, "Citadel", "Inquisitor Captain");
         Story.KillQuest(147, "Citadel", "Burning Witch");
         Story.KillQuest(148, "Citadel", "Inquisitor Guard");
-        Story.KillQuest(149, "Citadel", "Inquisitor Guard");
+        Story.KillQuest(149, "Citadel", "Inquisitor Guard", false);
         Story.KillQuest(181, "Citadel", "Belrot The Fiend");
         if (!Story.QuestProgression(182)) // 151 dcs you when u try to load it, and can be skipped.. somehow idk itd break otherwise.
         {

@@ -16,7 +16,6 @@
 //cs_include Scripts/Story/Nation/Bamboozle.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
-//cs_include Scripts/Story/Doomwood/AQWZombies.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Story/7DeadlyDragons/Extra/HatchTheEgg.cs
