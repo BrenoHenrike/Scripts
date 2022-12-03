@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Skills;
 using Skua.Core.Options;
 
-public class ArchMage
+public class CoreArchMage
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
