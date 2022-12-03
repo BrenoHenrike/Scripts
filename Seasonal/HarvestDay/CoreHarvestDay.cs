@@ -1,4 +1,3 @@
-using System.Reflection.PortableExecutable;
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
@@ -634,6 +633,18 @@ public class CoreHarvestDay
 
         // Chief Immolation Officer 8953
         Story.KillQuest(8953, "ebiltakeover", "Ebil Red Dragon");
+
+        // Devil’s Food 8967
+        Story.KillQuest(8967, "ebiltakeover", "Ebil Ghoul");
+
+        // Sample Processing 8968
+        Story.KillQuest(8968, "ebiltakeover", new[] { "Traitor Goon", "Ebil Fishman" });
+
+        // What's That Smell 8969
+        Story.KillQuest(8969, "ebiltakeover", "Mystery Meat");
+
+        // Mystery Solved 8970
+        Story.KillQuest(8970, "ebiltakeover", "Smorgasbord");
     }
 
     public void BirdsWithHarms()
