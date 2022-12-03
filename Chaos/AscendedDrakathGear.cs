@@ -47,6 +47,7 @@ public class AscendedDrakathGear
 
         DA.DrakathOriginalArmor();
         Core.AddDrop(Target);
+        Core.Logger($"Farming for {Target}");
         Core.RegisterQuests(3767);
         while (!Bot.ShouldExit && !Core.CheckInventory(Target))
         {

@@ -57,8 +57,10 @@ public class DrakathArmorBot
 
     public void DrakathArmorQuest()
     {
+        if (Core.CheckInventory("Get Your Original Drakath's Armor"))
+            return;
+        
         Core.AddDrop("Dage's Scroll Fragment", "Treasure Chest", "Face of Chaos", "Get Your Original Drakath's Armor");
-
         Core.EnsureAccept(3882);
         Farm.BladeofAweREP(6, farmBoA: true);
         BLOD.DoAll();
