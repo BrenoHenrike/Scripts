@@ -177,7 +177,7 @@ public class Frostvale
         Story.KillQuest(1513, "alpine", "Wendigo");
 
         // Snow Turning Back!
-        Story.KillQuest(1519, "icevolcano", MonsterNames: new[] { "Snow Golem", "Dead-ly Ice Elemental" });
+        Story.KillQuest(1519, "icevolcano", new[] { "Snow Golem", "Dead-ly Ice Elemental" });
         Story.MapItemQuest(1519, "icevolcano", 761, 10);
 
         // Venom in Your Veins
@@ -212,7 +212,7 @@ public class Frostvale
         Story.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
-        if (!Story.QuestProgression(2527))
+        if (!Story.QuestProgression(2526))
         {
             Core.EnsureAccept(2526);
             Bot.Map.Join("frostdeep");
@@ -221,70 +221,70 @@ public class Frostvale
         }
 
         // Heart of Ice
-        Story.KillQuest(2527, "frostdeep", MonsterNames: new[] { "Polar Golem", "Polar Elemental" });
+        Story.KillQuest(2527, "frostdeep", new[] { "Polar Golem", "Polar Elemental" });
 
         // Absolute Zero Success
-        Story.KillQuest(2528, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Golem" });
+        Story.KillQuest(2528, "frostdeep", new[] { "Temple Prowler", "Polar Elemental", "Polar Golem" });
 
         // Dirty Secret
-        Story.KillQuest(2529, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Mole" });
+        Story.KillQuest(2529, "frostdeep", new[] { "Temple Prowler", "Polar Mole" });
 
         // Frozen Venom
-        Story.KillQuest(2530, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Spider" });
+        Story.KillQuest(2530, "frostdeep", new[] { "Polarwyrm Rider", "Polar Spider" });
 
         // Rune-ing His Plan
         Story.KillQuest(2531, "frostdeep", "Ancient Golem");
 
         // Deadly Beauty
-        Story.KillQuest(2532, "frostdeep", MonsterNames: new[] { "Polar Elemental", "Polar Golem", "Polar Golem" });
+        Story.KillQuest(2532, "frostdeep", new[] { "Polar Elemental", "Polar Golem", "Polar Golem" });
 
         // Cold-Hearted Trophies
-        Story.KillQuest(2533, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Prowler", "Temple Prowler" });
+        Story.KillQuest(2533, "frostdeep", new[] { "Polar Mole", "Temple Prowler", "Temple Prowler" });
 
         // Warmth in the Cold
-        Story.KillQuest(2534, "frostdeep", MonsterNames: new[] { "Temple Spider", "Temple Maggot" });
+        Story.KillQuest(2534, "frostdeep", new[] { "Temple Spider", "Temple Maggot" });
 
         // Icy Prizes
-        Story.KillQuest(2535, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Temple Maggot" });
+        Story.KillQuest(2535, "frostdeep", new[] { "Temple Prowler", "Temple Maggot" });
 
         // Fading Magic - may bug out as its 2 items from 1 mob if the delay doesnt work idfk, doesnt work as a string[] as it gets the sand drop 
         Story.KillQuest(2536, "frostdeep", "Ancient Golem");
         Bot.Sleep(2500);
         Story.KillQuest(2536, "frostdeep", "Ancient Golem");
-        //Story.KillQuest(2536, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        //Story.KillQuest(2536, "frostdeep", new[] { "Ancient Golem", "Ancient Golem" });
 
         // FrostDeep Dwellers
-        Story.KillQuest(2537, "frostdeep", MonsterNames: new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
+        Story.KillQuest(2537, "frostdeep", new[] { "Polarwyrm Rider", "Polar Mole", "Polar Mole" });
 
         // A Breather
-        Story.KillQuest(2538, "frostdeep", MonsterNames: new[] { "Polar Mole", "Temple Spider", "Polar Spider" });
+        Story.KillQuest(2538, "frostdeep", new[] { "Polar Mole", "Temple Spider", "Polar Spider" });
 
         // Raiders From FrostDeep
-        Story.KillQuest(2539, "frostdeep", MonsterNames: new[] { "Polar Draconian", "Temple Maggot" });
+        Story.KillQuest(2539, "frostdeep", new[] { "Polar Draconian", "Temple Maggot" });
 
         // 8 Legged Frost Freaks
-        Story.KillQuest(2540, "frostdeep", MonsterNames: new[] { "Temple Spider", "Polar Spider" });
+        Story.KillQuest(2540, "frostdeep", new[] { "Temple Spider", "Polar Spider" });
 
         // Freezing the Stone
-        Story.KillQuest(2541, "frostdeep", MonsterNames: new[] { "Ancient Golem", "Ancient Golem" });
+        Story.KillQuest(2541, "frostdeep", new[] { "Ancient Golem", "Ancient Golem" });
 
         // Can You Feel the Chill Tonight?
-        Story.KillQuest(2542, "frostdeep", MonsterNames: new[] { "Temple Prowler", "Polar Elemental", "Polar Elemental" });
+        Story.KillQuest(2542, "frostdeep", new[] { "Temple Prowler", "Polar Elemental", "Polar Elemental" });
 
         // Shrouded in Ice
-        Story.KillQuest(2543, "frostdeep", MonsterNames: new[] { "Ancient Maggot", "Ancient Maggot" });
+        Story.KillQuest(2543, "frostdeep", new[] { "Ancient Maggot", "Ancient Maggot" });
 
         // Hard Fight for a Cold Truth
-        Story.KillQuest(2544, "frostdeep", MonsterNames: new[] { "Ancient Prowler", "Ancient Prowler" });
+        Story.KillQuest(2544, "frostdeep", new[] { "Ancient Prowler", "Ancient Prowler" });
 
         // Sand and Shardin' Bones
-        Story.KillQuest(2545, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Mole" });
+        Story.KillQuest(2545, "frostdeep", new[] { "Ancient Mole", "Ancient Mole" });
 
         // Older and Colder
-        Story.KillQuest(2546, "frostdeep", MonsterNames: new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
+        Story.KillQuest(2546, "frostdeep", new[] { "Ancient Mole", "Ancient Prowler", "Ancient Maggot" });
 
         // The Sword Of Hope
-        Story.KillQuest(2547, "frostdeep", MonsterNames: new[] { "Ancient Terror", "Ancient Terror" });
+        Story.KillQuest(2547, "frostdeep", new[] { "Ancient Terror", "Ancient Terror" });
     }
 
     public void IceRise()
@@ -307,10 +307,10 @@ public class Frostvale
         Story.KillQuest(2578, "icerise", "Polar Golem");
 
         // Uncovering Pages Of The Past
-        Story.KillQuest(2579, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
+        Story.KillQuest(2579, "icerise", new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
 
         // We Know Where To Look
-        Story.KillQuest(2580, "icerise", MonsterNames: new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
+        Story.KillQuest(2580, "icerise", new[] { "Polar Golem", "Polar Elemental", "Arctic Direwolf" });
 
         // A Terrible Hiding Place
         Story.KillQuest(2581, "icerise", "Arctic Direwolf");
