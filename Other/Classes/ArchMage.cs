@@ -3,53 +3,39 @@
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/VHL/CoreVHL.cs
 //cs_include Scripts/Farm/BuyScrolls.cs
-//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
-//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Skills;
 using Skua.Core.Options;
 
-public class Archmage
+public class ArchMage
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private BuyScrolls Scroll = new();
     private CoreBLOD BLOD = new();
     private CoreQOM QOM = new();
-    private CoreVHL VHL = new();
-    private BuyScrolls Scroll = new();
-    private CelestialArenaQuests CAQ = new();
-    private CoreToD TOD = new();
     private CoreSoW SoW = new();
-    public CoreStory Story = new CoreStory();
 
     public bool DontPreconfigure = true;
-    public string OptionsStorage = "Archmage";
-    public List<IOption> Options = new List<IOption>()
+    public string OptionsStorage = "ArchMage";
+    public List<IOption> Options = new()
     {
+        new Option<bool>("lumina_elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
+        new Option<bool>("cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get ArchMage and the weapon) [On by default]", true),
+        new Option<bool>("army", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
+        //new Option<bool>("voucher", "500k Vouchers?", "Do you want to use 500k vouchers instead of 100k?", true),
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("Lumina Elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
-        new Option<bool>("Cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get Archmage and the weapon) [On by default]", true),
-        new Option<bool>("Armying?", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
-        new Option<bool>("Voucher", "500k Vouchers?", "Do you want to use 500k vouchers instead of 100k?", true)
     };
-
-    private string[] RequiredItems = { "Archmage", "Providence", "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Unbound Tome", "Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Arcane Sigil", "Archmage" };
-    private string[] BossDrops = { "Void Essentia", "Vital Exanima", "Everlight Flame", "Calamitous Ruin", "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Elemental Binding" };
-    private string[] Cosmetics = { "Arcane Sigil", "Arcane Floating Sigil", "Sheathed Archmage's Staff", "Archmage's Cowl", "Archmage's Cowl and Locks", "Archmage's Staff", "Archmage's Robes", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(RequiredItems.Concat(BossDrops).ToArray());
-
         Core.SetOptions();
 
         GetAM();
@@ -59,101 +45,117 @@ public class Archmage
 
     public void GetAM(bool rankUpClass = true)
     {
+        bool cosmetics = Bot.Config.Get<bool>("cosmetics");
+        bool lumina = Bot.Config.Get<bool>("lumina_elementi");
+        army = Bot.Config.Get<bool>("army");
 
-        if (Core.CheckInventory("Archmage", toInv: false) && !Bot.Config.Get<bool>("Lumina Elementi") && !Bot.Config.Get<bool>("Cosmetics"))
-            Core.Logger("Archmage Owned, Farm Finished.", stopBot: true);
-        if (Core.CheckInventory(new[] { "Archmage", "Providence" }, toInv: false) && Bot.Config.Get<bool>("Lumina Elementi") && !Bot.Config.Get<bool>("Cosmetics"))
-            Core.Logger("Archmage and Providence Owned, Farm Finished.", stopBot: true);
-        if (Bot.Config.Get<bool>("Lumina Elementi") && Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory("Archmage", toInv: false) && Core.CheckInventory(Cosmetics))
-            Core.Logger("Archmage, Providence, and Extras Owned, Farm Finished.", stopBot: true);
-        if (Bot.Config.Get<bool>("Armying?"))
+        if (Core.CheckInventory("ArchMage", toInv: false))
+        {
+            if (!lumina)
+            {
+                if (!cosmetics)
+                {
+                    Core.Logger("You own \"ArchMage\", farm complete.");
+                    return;
+                }
+                else if (Core.CheckInventory(Cosmetics, toInv: false))
+                {
+                    Core.Logger("You own \"ArchMage\" and the extra cometics, farm complete.");
+                    return;
+                }
+            }
+            else if (Core.CheckInventory("Providence", toInv: false))
+            {
+                if (!cosmetics)
+                {
+                    Core.Logger("You own \"ArchMage\" and \"Providence\", farm complete.");
+                    return;
+                }
+                else if (Core.CheckInventory(Cosmetics, toInv: false))
+                {
+                    Core.Logger("You own \"ArchMage\", \"Providence\", and the extra cometics, farm complete.");
+                    return;
+                }
+            }
+        }
+
+        if (army)
             Core.Logger("Armying Set to True, Please have all accounts logged in and Following this Acc using the Tools > Butler.cs");
-
         Bot.Drops.Add(RequiredItems.Concat(BossDrops).Concat(Cosmetics).ToArray());
 
-        RequiredStuffs();
+        Core.Logger("The bot will now farm all requierments for ArchMage");
+        SoW.CompleteCoreSoW();
+        QOM.TheReshaper();
 
-        if (!Core.CheckInventory("Archmage") && Bot.Config.Get<bool>("Cosmetics"))
+        Farm.SpellCraftingREP();
+        Farm.EmberseaREP();
+        Farm.ChaosREP();
+        Farm.GoodREP();
+        Farm.EvilREP();
+        Farm.EtherStormREP();
+        Farm.LoremasterREP();
+
+        Farm.Experience(100);
+
+        Core.Logger("Requirements complete");
+
+        if (!Core.CheckInventory("ArchMage"))
         {
             Core.EnsureAccept(8918);
-            Core.Logger("Archmage: Cosmetics = true");
-            ExtrasCheck();
+            Core.Logger($"ArchMage: Cosmetics = {cosmetics}");
 
-            Magus();
-            Fire(true);
-            Ice(true);
-            Aether(true);
-            Arcana(true);
-
-            Core.Unbank(new[] { "book of Magus", "book of Fire", "book of Ice", "book of Aether", "book of Arcana", "Elemental Binding" });
-            Core.EnsureComplete(8918);
-
-            Bot.Wait.ForPickup("Archmage");
-            Core.ToBank(Cosmetics);
-
-            if (rankUpClass)
-                Adv.rankUpClass("Archmage");
-        }
-
-        else if (!Core.CheckInventory("Archmage") && !Bot.Config.Get<bool>("Cosmetics"))
-        {
-            //Archmage's Ascension 
-            Core.EnsureAccept(8918);
-
-            Core.Logger("Archmage: Cosmetics = false");
-
-            Magus();
-            Fire();
-            Ice();
-            Aether();
-            Arcana();
+            BookOfMagus();
+            BookOfFire(cosmetics);
+            BookOfIce(cosmetics);
+            BookOfAether(cosmetics);
+            BookOfArcana(cosmetics);
 
             Core.ToBank(Cosmetics);
-
             BossItemCheck(250, "Elemental Binding");
-            Core.Unbank(new[] { "book of Magus", "book of Fire", "book of Ice", "book of Aether", "book of Arcana", "Elemental Binding" });
 
+            Core.Unbank("Book of Magus", "Book of Fire", "Book of Ice", "Book of Aether", "Book of Arcana", "Elemental Binding");
             Core.EnsureComplete(8918);
 
-            Bot.Wait.ForPickup("Archmage");
+            Bot.Wait.ForPickup("ArchMage");
             Core.ToBank(Cosmetics);
 
             if (rankUpClass)
-                Adv.rankUpClass("Archmage");
+                Adv.rankUpClass("ArchMage");
         }
 
-        if (Bot.Config.Get<bool>("Lumina Elementi"))
+        if (lumina)
             LuminaElementi();
     }
 
-    //getExtras:
-    void LuminaElementi()
+    public void LuminaElementi(bool standalone = false)
     {
-        if (Bot.Config.Get<bool>("Cosmetics") && Core.CheckInventory(new[] { "Providence", "Divine Mantle", "Divine Veil", "Divine Veil and Locks", "Prismatic Floating Sigil", "Sheathed Providence", "Prismatic Sigil", "Astral Mantle" }, toInv: false))
-            return;
-        else if (Core.CheckInventory("Providence", toInv: false))
+        if (standalone || Bot.Config.Get<bool>("cosmetics") ?
+                Core.CheckInventory(Core.EnsureLoad(8919).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
+                Core.CheckInventory("Providence", toInv: false))
             return;
 
-        //Lumina Elementi
+        if (Bot.Quests.IsUnlocked(8919))
+            GetAM(false);
+
         Core.EnsureAccept(8919);
-        Core.Logger("Doing Extra Quest for 51% wep.");
+        Core.Logger("Doing the extra quest for the 51% weapon \"Providence\"");
 
-        Arcana();
-        UnboundTomb(30);
-
+        BookOfArcana();
+        UnboundTome(30);
         BossItemCheck(2500, "Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
+
         Core.RegisterQuests(8814, 8815);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2000))
             Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
         Core.CancelRegisteredQuests();
 
         Core.FarmingLogger("Unbound Thread", 100);
+        //Fallen Branches 8869
         Core.RegisterQuests(8869);
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", 100))
         {
-            //Fallen Branches 8869
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
             Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
@@ -163,21 +165,20 @@ public class Archmage
         }
         Core.CancelRegisteredQuests();
 
-        Core.EquipClass(ClassType.Solo);
         Core.EnsureComplete(8919);
         Bot.Wait.ForPickup("Providence");
-        Core.Logger("51% wepon [Providence] Obtained.");
+        Core.Logger("Weapon obtained: \"Providence\" [51% damage to all]");
     }
 
-    //Books:
-    public void Magus()
+    #region Books
+    public void BookOfMagus()
     {
         //Book of Magus: Incantation
         if (Core.CheckInventory("Book of Magus"))
             return;
 
-        Core.Logger("Book: Book of Magus");
-        UnboundTomb(1);
+        Core.FarmingLogger("Book of Magus", 1);
+        UnboundTome(1);
         Core.EnsureAccept(8913);
 
         BLOD.FindingFragmentsMace(200);
@@ -202,18 +203,17 @@ public class Archmage
 
     }
 
-    public void Fire(bool Extras = false)
+    public void BookOfFire(bool Extras = false)
     {
         //Book of Fire: Immolation
-        if (Core.CheckInventory("Book of Fire") && !Extras)
+        if (Extras ?
+                Core.CheckInventory(new[] { "Book of Fire", "Arcane Floating Sigil", "Sheathed Archmage's Staff" }, toInv: false) :
+                Core.CheckInventory("Book of Fire"))
             return;
 
-        if (Extras && Core.CheckInventory(new[] { "Book of Fire", "Arcane Floating Sigil", "Sheathed Archmage's Staff" }, toInv: false))
-            return;
+        Core.FarmingLogger("Book of Fire", 1);
 
-        Core.Logger("Book of Fire");
-
-        UnboundTomb(1);
+        UnboundTome(1);
         Core.EnsureAccept(8914);
 
         Scroll.BuyScroll(Scrolls.FireStorm, 50);
@@ -229,20 +229,18 @@ public class Archmage
         Core.EnsureComplete(8914);
         Bot.Wait.ForPickup("Book of Fire");
         Core.ToBank(Cosmetics);
-
     }
 
-    public void Ice(bool Extras = false)
+    public void BookOfIce(bool Extras = false)
     {
-        if (Core.CheckInventory("Book of Ice") && !Extras)
+        if (Extras ?
+                Core.CheckInventory(new[] { "Book of Ice", "Archmage's Cowl", "Archmage's Cowl and Locks" }, toInv: false) :
+                Core.CheckInventory("Book of Ice"))
             return;
 
-        if (Extras && Core.CheckInventory(new[] { "Book of Ice", "Archmage's Cowl", "Archmage's Cowl and Locks" }, toInv: false))
-            return;
+        Core.FarmingLogger("Book of Ice", 1);
 
-        Core.Logger("Book of Ice");
-
-        UnboundTomb(1);
+        UnboundTome(1);
         Core.EnsureAccept(8915);
 
         Scroll.BuyScroll(Scrolls.Frostbite, 50);
@@ -265,20 +263,18 @@ public class Archmage
 
     }
 
-    public void Aether(bool Extras = false)
+    public void BookOfAether(bool Extras = false)
     {
-        //Book of Aether: Supernova
-        if (Core.CheckInventory("Book of Aether") && !Extras)
+        if (Extras ?
+                Core.CheckInventory(new[] { "Book of Aether", "Archmage's Staff" }, toInv: false) :
+                Core.CheckInventory("Book of Aether"))
             return;
 
-        if (Extras && Core.CheckInventory(new[] { "Book of Aether", "Archmage's Staff" }, toInv: false))
-            return;
+        Core.FarmingLogger("Book of Aether", 1);
 
         BossItemCheck(1, "Void Essentia", "Vital Exanima", "Everlight Flame");
 
-        Core.Logger("Book of Aether");
-
-        UnboundTomb(1);
+        UnboundTome(1);
         Core.EnsureAccept(8916);
 
         Scroll.BuyScroll(Scrolls.Eclipse, 50);
@@ -292,21 +288,19 @@ public class Archmage
 
     }
 
-    public void Arcana(bool Extras = false)
+    public void BookOfArcana(bool Extras = false)
     {
-        //Book of Arcana: Arcane Sigil
-        if (Core.CheckInventory("Book of Arcana") && !Extras)
+        if (Extras ?
+                Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false) :
+                Core.CheckInventory("Book of Arcana") && !Extras)
             return;
 
-        if (Extras && Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false))
-            return;
-
-        BossItemCheck(1, "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
+        Core.FarmingLogger("Book of Arcana", 1);
 
         if (Core.CheckInventory("Yami No Ronin"))
         {
             Adv.GearStore();
-            Core.Join("whitemap"); //till aggro shit gets fixed.
+            //Core.Join("whitemap"); //till aggro shit gets fixed.
             Adv.BestGear(GearBoost.dmgAll);
             Core.Equip("Yami No Ronin");
             Bot.Skills.StartAdvanced("Yami No Ronin", false, ClassUseMode.Base);
@@ -314,10 +308,9 @@ public class Archmage
             Adv.GearStore(true);
         }
 
+        BossItemCheck(1, "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
-        Core.Logger("Book of Arcana");
-
-        UnboundTomb(1);
+        UnboundTome(1);
         Core.EnsureAccept(8917);
 
         Scroll.BuyScroll(Scrolls.EtherealCurse, 50);
@@ -327,16 +320,18 @@ public class Archmage
         Core.EnsureComplete(8917);
         Bot.Wait.ForPickup("Book of Arcana");
         Core.ToBank(Cosmetics);
-
     }
 
-    //Materials:
+    #endregion
+
+    #region Materials
     public void MysticScribingKit(int quant = 5)
     {
         if (Core.CheckInventory("Mystic Scribing Kit", quant))
             return;
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
+        Core.AddDrop("Mystic Scribing Kit");
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Mystic Scribing Kit", quant))
         {
@@ -345,6 +340,7 @@ public class Archmage
             Core.EquipClass(ClassType.Farm);
             Core.FarmingLogger("Mystic Quills", 49);
             Core.FarmingLogger("Mystic Shards", 49);
+
             Core.RegisterQuests(3050);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             {
@@ -381,8 +377,10 @@ public class Archmage
             MysticScribingKit(1);
 
         Core.FarmingLogger("Prismatic Ether", quant);
+        Core.AddDrop("Prismatic Ether");
         Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(6042);
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
             Core.EnsureAccept(8910);
@@ -399,16 +397,17 @@ public class Archmage
 
     public void ArcaneLocus(int quant = 1)
     {
-        if (Core.CheckInventory("73339", quant))
+        if (Core.CheckInventory(73339, quant))
             return;
 
         if (!Bot.Quests.IsUnlocked(8911))
             PrismaticEther(1);
 
         Core.FarmingLogger("Arcane Locus", quant);
+        Core.AddDrop(73339);
         Core.EquipClass(ClassType.Farm);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Arcane Locus", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(73339, quant))
         {
             Core.EnsureAccept(8911);
             Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
@@ -418,11 +417,11 @@ public class Archmage
             Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunement", 30, isTemp: false, log: false);
 
             Core.EnsureComplete(8911);
-            Bot.Wait.ForPickup("Arcane Locus");
+            Bot.Wait.ForPickup(73339);
         }
     }
 
-    public void UnboundTomb(int quant)
+    public void UnboundTome(int quant)
     {
         if (Core.CheckInventory("Unbound Tome", quant))
             return;
@@ -431,147 +430,103 @@ public class Archmage
             ArcaneLocus();
 
         Core.FarmingLogger("Unbound Tome", quant);
+        Core.AddDrop("Unbound Tome");
 
         MysticScribingKit(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
         PrismaticEther(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
         ArcaneLocus(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
 
+        //bool voucher = Bot.Config.Get<bool>("Voucher");
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            Farm.Gold(100000 * 30);
-            if (Bot.Config.Get<bool>("Voucher"))
-            {
-                // 500k * 2
-                Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 6);
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
-            }
-            else
-            {
-                // 100k
-                Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
-            }
+            //if (voucher)
+            //{
+            //    // 500k * 2
+            //    Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 6);
+            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
+            //}
+            //else
+            //{
+            //    // 100k
+            //    Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
+            //    Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            //}
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
+
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
         }
     }
 
-    //Required Story & Reputations
-    void RequiredStuffs()
-    {
-        Core.Logger("Completing Quests / Rep Requirements");
-        SoW.CompleteCoreSoW();
-        QOM.TheReshaper();
-        Farm.Experience(100);
-        Farm.SpellCraftingREP();
-        Farm.EmberseaREP();
-        Farm.ChaosREP();
-        Farm.GoodREP();
-        Farm.EvilREP();
-        Farm.EtherStormREP();
-        Farm.LoremasterREP();
-        Core.Logger("Quests / Rep Requirements, Done.");
-    }
+    #endregion
 
-    //Boss Items
-    void BossItemCheck(int quant = 1, params string[] Items)
+    private void BossItemCheck(int quant = 1, params string[] Items)
     {
-        Core.Logger("Item Check.");
-
         foreach (string item in Items)
         {
             switch (item)
             {
                 case "Void Essentia":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("voidflibbi", "Flibbitiestgibbet", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Flibbitiestgibbet] in [voidflibbi]", stopBot: true);
+                    Item("voidflibbi", "Flibbitiestgibbet", item, quant);
                     break;
 
                 case "Vital Exanima":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Dage", "Dage the Evil", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Dage] in [Dage]", stopBot: true);
+                    Item("dage", "Dage the Evil", item, quant);
                     break;
 
                 case "Everlight Flame":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Fireavatar", "Avatar Tyndarius", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Tyndarius] in [Fireavatar]", stopBot: true);
+                    Item("fireavatar", "Avatar Tyndarius", item, quant);
                     break;
 
                 case "Calamitous Ruin":
-                    if (Bot.Config.Get<bool>("Armying?"))
+                    if (army)
                     {
                         Bot.Events.RunToArea += DarkCarnaxMove;
-                        Core.Logger("You May need to Babysit this one... because of the laser");
-                        Adv.KillUltra("DarkCarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
+                        Core.Logger("You might need to babysit this one due to the laser");
+                        Adv.KillUltra("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
                         Bot.Events.RunToArea -= DarkCarnaxMove;
                     }
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Nightmare Carnax] in [Darkcarnax]", stopBot: true);
+                    else if (!Core.CheckInventory(item))
+                        Core.Logger($"{item} x{quant} not found, it can be farmed (with an army) from \"Nightmare Carnax\" in /darkcarnax", stopBot: true);
                     break;
 
                 case "The Mortal Coil":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Tercessuinotlim", "Nulgath", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Nulgath] in [Tercessuinotlim]", stopBot: true);
+                    Item("tercessuinotlim", "Nulgath", item, quant);
                     break;
 
                 case "The Divine Will":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("celestialpast", "Azalith", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Azalith] in [celestialpast]", stopBot: true);
+                    Item("celestialpast", "Azalith", item, quant);
                     break;
 
                 case "Insatiable Hunger":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("voidnightbane", "Nightbane", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Nightbane] in [voidnightbane]", stopBot: true);
+                    Item("voidnightbane", "Nightbane", item, quant);
                     break;
 
                 case "Undying Resolve":
                     Bot.Quests.UpdateQuest(8732);
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Theworld", "Encore Darkon", item, isTemp: false);
-                    if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Encore Darkon] in [Theworld]", stopBot: true);
+                    Item("theworld", "Encore Darkon", item, quant);
                     break;
 
                 case "Elemental Binding":
-                    if (Bot.Config.Get<bool>("Armying?"))
-                        Core.HuntMonster("Archmage", "Prismata", item, 250, isTemp: false);
-                    if (!Core.CheckInventory(item, 250))
-                        Core.Logger($"{item} x {quant} Not Found, Can Be Farmed (with an Army) from [Prismata] in [Archmage]", stopBot: true);
+                    Item("archmage", "Prismata", item, quant);
                     break;
             }
         }
-    }
 
-    //Cosmetics
-    void ExtrasCheck(params string[] Items)
-    {
-        Core.Logger("Extra Items Check.");
-
-        foreach (string item in Cosmetics)
+        void Item(string map, string monster, string item, int quant)
         {
-            if (!Core.CheckInventory(item, toInv: false))
-                Core.Logger($"{item} Missing. Bot Will Refarm for it.");
-            else Core.Logger($"{item} Found");
+            if (army)
+                Core.HuntMonster(map, monster, item, quant, isTemp: false);
+            else if (!Core.CheckInventory(item, quant))
+                Core.Logger($"{item} x{quant} not found, it can be farmed (with an army) from \"{monster}\" in /{map.ToLower()}", stopBot: true);
         }
     }
 
     //For Nightmare Carnax
-    void DarkCarnaxMove(string zone)
+    private void DarkCarnaxMove(string zone)
     {
         switch (zone.ToLower())
         {
@@ -592,4 +547,50 @@ public class Archmage
                 break;
         }
     }
+
+    private string[] RequiredItems = {
+        "ArchMage",
+        "Providence",
+        "Mystic Scribing Kit",
+        "Prismatic Ether",
+        "Arcane Locus",
+        "Unbound Tome",
+        "Book of Magus",
+        "Book of Fire",
+        "Book of Ice",
+        "Book of Aether",
+        "Book of Arcana",
+        "Arcane Sigil",
+        "Archmage"
+    };
+    private string[] BossDrops = {
+        "Void Essentia",
+        "Vital Exanima",
+        "Everlight Flame",
+        "Calamitous Ruin",
+        "The Mortal Coil",
+        "The Divine Will",
+        "Insatiable Hunger",
+        "Undying Resolve",
+        "Elemental Binding"
+    };
+    private string[] Cosmetics = {
+        "Arcane Sigil",
+        "Arcane Floating Sigil",
+        "Sheathed Archmage's Staff",
+        "Archmage's Cowl",
+        "Archmage's Cowl and Locks",
+        "Archmage's Staff",
+        "Archmage's Robes",
+        "Divine Mantle",
+        "Divine Veil",
+        "Divine Veil and Locks",
+        "Prismatic Floating Sigil",
+        "Sheathed Providence",
+        "Prismatic Sigil",
+        "Astral Mantle"
+    };
+    private bool army = false;
+
+
 }
