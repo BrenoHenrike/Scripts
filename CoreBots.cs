@@ -579,7 +579,7 @@ public class CoreBots
                     Logger($"Failed to unbank {item}, skipping it", messageBox: true);
                     continue;
                 }
-                Logger($"{item} moved from bank");
+                Logger($"{Bot.Inventory.GetItem(item)?.Name ?? item.ToString()} moved from bank");
             }
         }
     }
