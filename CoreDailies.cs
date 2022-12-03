@@ -505,7 +505,7 @@ public class CoreDailies
 
         Core.Logger("Montly: Treasure Chest Keys");
         if (!CheckDaily(1239))
-            Core.Logger($"Next keys are available on {new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).ToLongDateString()}");
+            Core.Logger($"Next keys are available on {new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).ToLongDateString()}");
         else Core.ChainComplete(1239);
 
 
