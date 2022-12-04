@@ -138,8 +138,6 @@ public class CoreHollowbornChaosEnvoy
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
-        Bot.Quests.UpdateQuest(2804);
-        Core.HuntMonster("venomvaults", "Ultra Manticore", "Treasure Vault Key", isTemp: false);
 
         Core.RegisterQuests(9000);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
