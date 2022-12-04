@@ -109,9 +109,10 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("odokuro", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Armor", isTemp: false);
             Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
+            Core.HuntMonster("odokuro", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
+            Core.HuntMonster("chaoscave", "Dracowerepyre", "Burning Dragon Mace", isTemp: false);
             Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
             Core.KillEscherion("Relic of Chaos", 13);
