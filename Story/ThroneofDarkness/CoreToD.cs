@@ -573,7 +573,7 @@ public class CoreToD
             Story.KillQuest(5124, "baconcatlair", "Robo Shark");
 
             //At Least They Like to Party 5127
-            Story.MapItemQuest(5127, "baconcatlair", 4479, 6);
+            Story.MapItemQuest(5127, "baconcatlair", 4479, 3);
             Story.KillQuest(5127, "baconcatlair", new[] { "Party Shark", "Party Shark" });
 
             //Remora Brigade 5128
