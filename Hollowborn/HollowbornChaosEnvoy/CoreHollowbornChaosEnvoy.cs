@@ -58,7 +58,7 @@ public class CoreHollowbornChaosEnvoy
         UniqueQuarry(getAllDrops);
         WaveringIllusions(getAllDrops);
         ShadowsOfDisdain();
-        PersistingMayhem();
+        PersistingMayhem(getAllDrops);
     }
 
     public void StirringDiscord(bool getAll = true)
@@ -111,7 +111,7 @@ public class CoreHollowbornChaosEnvoy
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Armor", isTemp: false);
             Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
-            Core.HuntMonster("odokuro", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
+            Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
             Core.HuntMonster("chaoscave", "Dracowerepyre", "Burning Dragon Mace", isTemp: false);
             Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
@@ -201,8 +201,6 @@ public class CoreHollowbornChaosEnvoy
         if (Core.CheckInventory(rewards, toInv: false))
             return;
 
-        Bot.Quests.UpdateQuest(8094);
-
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
             WaveringIllusions(Bot.Config == null || Bot.Config.Get<bool>("getAll"));
@@ -211,7 +209,7 @@ public class CoreHollowbornChaosEnvoy
         ED.getSet();
         if (!Core.CheckInventory("Titan Drakath"))
             TGM.BuyAllMerge("Titan Drakath");
-
+            
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
