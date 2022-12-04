@@ -530,6 +530,8 @@ public class Frostvale
         if (!Core.isSeasonalMapActive("frozensoul"))
             return;
         
+        Story.PreLoad(this);
+        
         // Looks like quest is not unlocked behind anything
         // Ice Cold Killer 7262
         Story.KillQuest(7262, "frozensoul", "Frozen Minion", GetReward: false);
