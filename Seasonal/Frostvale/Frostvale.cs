@@ -588,10 +588,10 @@ public class Frostvale
         Story.PreLoad(this);
         
         // Through the pass 3899
-        Story.KillQuest(3899, "Icerisepast", "Ice Wolf");
+        Story.KillQuest(3899, "icerisepast", "Ice Wolf");
 
         // Higher Passes 3900
-        if (Story.QuestProgression(3900))
+        if (!Story.QuestProgression(3900))
         {
             Core.EnsureAccept(3900);
             Core.HuntMonster("icerisepast", "Ice Bear", "Bear Tooth", 10, log: false);
