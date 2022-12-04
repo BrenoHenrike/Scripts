@@ -1118,8 +1118,8 @@ public class CoreBots
                             // Finding the next item that you dont have max stack of yet
                             List<SimpleReward> simpleRewards =
                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                    (!Bot.Inventory.IsMaxStack(r.ID) || !CheckInventory(r.ID) ||
-                                    !(Bot.Inventory.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList();
+                                    (!Bot.Inventory.IsMaxStack(r.ID) &&
+                                    !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
 
                             if (simpleRewards.Count == 0)
                             {
