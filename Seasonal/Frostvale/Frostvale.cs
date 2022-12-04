@@ -520,9 +520,18 @@ public class Frostvale
 
     public void Frozensoul()
     {
-        if (!Core.isSeasonalMapActive("Frozensoul"))
+        if (!Core.isSeasonalMapActive("frozensoul"))
             return;
-        //Not avaiable
+        
+        // Looks like quest is not unlocked behind anything
+        // Ice Cold Killer 7262
+        Story.KillQuest(7262, "frozensoul", "Frozen Minion", GetReward: false);
+        
+        // Get Jacked 7263
+        Story.KillQuest(7263, "frozensoul", "Jack Frost", GetReward: false);
+
+        // Shatter the FrozenSoul Queen 7264
+        Story.KillQuest(7264, "frozensoul", "FrozenSoul Queen", GetReward: false);
     }
 
     public void Howardshill()
