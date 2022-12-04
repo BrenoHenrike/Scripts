@@ -102,6 +102,7 @@ public class TitanAttackStory
         Story.KillQuest(8775, "titanstrike", "Titanic Destroyer");
 
         // Topple Some Titans! 8776
+        Core.AddDrop("Heroic Titan's Greatsword");
         Story.KillQuest(8776, "titanstrike", new[] { "Titanic Paladin", "Titanic DoomKnight", "Titanic Destroyer" });
 
         // The BIG Finish 8777
@@ -109,6 +110,5 @@ public class TitanAttackStory
         Adv.BestGear(GearBoost.Drakath);
 
         Story.KillQuest(8777, "titandrakath", "Titan Drakath");
-
     }
 }

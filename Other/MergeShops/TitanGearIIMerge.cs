@@ -72,6 +72,9 @@ public class TitanGearIIMerge
                     break;
 
                 case "Heroic Titan's Greatsword":
+                    if (Core.isCompletedBefore(8776))
+                        Core.Logger($"{req.Name} is obtained from a One-Time only quest that you have already completed. Please check your BuyBack", messageBox: true, stopBot: true);
+
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.EnsureAccept(8776);
