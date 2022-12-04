@@ -37,10 +37,10 @@ public class Frostvale
         Howardshill();
         Icerisepast();
         Winterhorror();
-        Gifthulu();
-        cryostorm();
-        icewindpass();
-        icepike();
+        //Gifthulu();
+        Cryostorm();
+        Icewindpass();
+        Icepike();
     }
 
     public void IceCave()
@@ -481,6 +481,8 @@ public class Frostvale
         if (Core.isCompletedBefore(3260))
             return;
 
+        Story.PreLoad(this);
+
         // Feed the Greed 3217
         Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Gift", 5);
         Core.HuntMonster("darkwinter", "White Stalker", "Frostval Decoration", 5);
@@ -539,6 +541,11 @@ public class Frostvale
         if (!Core.isSeasonalMapActive("howardshill"))
             return;
 
+        if (Core.isCompletedBefore(7854))
+            return;
+        
+        Story.PreLoad(this);
+
         // Blizzy's
         // Find the Source 7843
         Story.KillQuest(7843, "howardshill", "Frozen Wisp");
@@ -589,20 +596,37 @@ public class Frostvale
 
     public void Winterhorror()
     {
-        if (!Core.isSeasonalMapActive("Winterhorror"))
+        if (!Core.isSeasonalMapActive("winterhorror"))
             return;
-        //Not avaiable
+        
+        if (Core.isCompletedBefore(7859))
+            return;
+
+        Story.PreLoad(this);
+
+        // Monster Gems 7856
+        Story.KillQuest(7856, "winterhorror", "Chillybones");
+
+        // Mega Monster Gems 7857
+        Story.KillQuest(7857, "winterhorror", "FrostBite");
+
+        // Oh Heck! 7858
+        Story.KillQuest(7858, "winterhorror", "Arthur and Elise");
+
+        // He's Ragin' 7859
+        Story.KillQuest(7859, "winterhorror", "Howard's Rage");
     }
 
     public void Gifthulu()
     {
-        if (!Core.isSeasonalMapActive("Gifthulu"))
+        if (!Core.isSeasonalMapActive("gifthulu"))
             return;
         //Not avaiable
+        //There is no quests over here
     }
 
 
-    public void cryostorm()
+    public void Cryostorm()
     {
         if (!Core.isSeasonalMapActive("cryostorm"))
             return;
@@ -656,7 +680,7 @@ public class Frostvale
         Story.KillQuest(4716, "cryowar", "Super-Charged Karok");
     }
 
-    public void icewindpass()
+    public void Icewindpass()
     {
         if (!Core.isSeasonalMapActive("icewindpass"))
             return;
@@ -699,7 +723,7 @@ public class Frostvale
         Story.KillQuest(5596, "icewindpass", new[] { "Polar Golem", "Glacial Elemental" });
     }
 
-    public void icepike()
+    public void Icepike()
     {
         if (!Core.isSeasonalMapActive("icepike"))
             return;
