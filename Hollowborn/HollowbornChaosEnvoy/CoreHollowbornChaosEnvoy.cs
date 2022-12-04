@@ -148,6 +148,7 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
             Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
+            Core.HuntMonster("venomvaults", "Manticore", "Treasure Vault Key", isTemp: false);
             Adv.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
             Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
 
@@ -199,7 +200,7 @@ public class CoreHollowbornChaosEnvoy
         string[] rewards = Core.EnsureLoad(9002).Rewards.Select(x => x.Name).ToArray();
         if (Core.CheckInventory(rewards, toInv: false))
             return;
-            
+
         Bot.Quests.UpdateQuest(8094);
 
         Core.AddDrop(rewards);
