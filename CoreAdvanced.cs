@@ -98,10 +98,10 @@ public class CoreAdvanced
             Bot.Config.Configure();
 
         int mode = 0;
-        if (buyMode != null)
-            mode = (int)buyMode;
-        else if (buyOnlyThis != null)
+        if (buyOnlyThis != null)
             mode = (int)mergeOptionsEnum.all;
+        else if (buyMode != null)
+            mode = (int)buyMode;
         else if (Bot.Config != null && Bot.Config.Options.Any(o => o.Category == "Generic" && o.Name == "mode"))
             mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
         else Core.Logger("Invalid setup detected for StartBuyAllMerge. Please report", messageBox: true, stopBot: true);
