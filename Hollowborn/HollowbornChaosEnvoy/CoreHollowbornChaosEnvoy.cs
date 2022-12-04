@@ -109,6 +109,7 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("odokuro", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Armor", isTemp: false);
             Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
             Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
@@ -116,7 +117,7 @@ public class CoreHollowbornChaosEnvoy
             Core.KillEscherion("Relic of Chaos", 13);
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
+            Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Fragment of Mount Doomskull", 1300, isTemp: false);
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
