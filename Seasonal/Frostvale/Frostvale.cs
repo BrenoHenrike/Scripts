@@ -473,10 +473,49 @@ public class Frostvale
 
     public void Darkwinter()
     {
-        if (!Core.isSeasonalMapActive("Darkwinter"))
+        if (!Core.isSeasonalMapActive("darkwinter"))
             return;
-            
-        //Not avaiable
+
+        //Good way
+        Core.ChangeAlignment(Alignment.Good);
+        if (Core.isCompletedBefore(3260))
+            return;
+
+        // Feed the Greed 3217
+        Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Gift", 5);
+        Core.HuntMonster("darkwinter", "White Stalker", "Frostval Decoration", 5);
+        Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Dessert", 5);
+
+        // Sleet Samples 3218
+        Story.KillQuest(3218, "darkwinter", "White Stalker");
+
+        // Blighted Deer 3219
+        Story.KillQuest(3219, "darkwinter", "Blighted Deer");
+
+        // Frosty Hearts 3220
+        Story.KillQuest(3220, "darkwinter", "Ice Golem");
+
+        // On the Offensive 3221
+        Story.KillQuest(3221, "darkwinter", "Legion Minion");
+
+        // Inoculation 3222
+        Story.MapItemQuest(3222, "darkwinter", 2280, 6);
+        Story.MapItemQuest(3222, "darkwinter", 2281, 6);
+
+        // A Different Way 3223
+        Story.KillQuest(3223, "darkwinter", "Blighted Deer");
+
+        // Breaking In 3257
+        Story.MapItemQuest(3257, "darkwinter", 2281);
+
+        // Break the Barrier 3258
+        Story.KillQuest(3258, "darkwinter", "Ice Golem");
+
+        // The Final Ward 3259
+        Story.KillQuest(3259, "darkwinter", "Frost Golem");
+
+        // Defeat Frostfang (Good) 3260 /Evil is the same
+        Story.KillQuest(3260, "darkwinter", "Frost Fang");
     }
 
     public void Frozensoul()
