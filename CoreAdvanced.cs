@@ -97,9 +97,6 @@ public class CoreAdvanced
         if (buyOnlyThis == null && buyMode == null)
             Bot.Config.Configure();
 
-        Core.DL_Enable();
-
-        Core.DebugLogger(this);
         int mode = 0;
         if (buyMode != null)
             mode = (int)buyMode;
@@ -108,7 +105,6 @@ public class CoreAdvanced
         else if (Bot.Config != null && Bot.Config.Options.Any(o => o.Category == "Generic" && o.Name == "mode"))
             mode = (int)Bot.Config.Get<mergeOptionsEnum>("Generic", "mode");
         else Core.Logger("Invalid setup detected for StartBuyAllMerge. Please report", messageBox: true, stopBot: true);
-        Core.DebugLogger(this);
 
         matsOnly = mode == 2;
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
