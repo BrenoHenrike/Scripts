@@ -124,9 +124,18 @@ public class ArmyUniqueQuarry
 
         if (Bot.Map.Name == "chaoswar")
         {
-            Army.AggroMonCells("r2");
-            Army.AggroMonStart("chaoswar");
-            Army.DivideOnCells("r2");
+            if (Bot.Config.Get<int>("armysize") <= 3)
+            {
+                Army.AggroMonCells("r2");
+                Army.AggroMonStart("chaoswar");
+                Army.DivideOnCells("r2");
+            }
+            else 
+            {                
+                Army.AggroMonCells("r1", "r2");
+                Army.AggroMonStart("chaoswar");
+                Army.DivideOnCells("r1", "r2");
+            }
         }
     }
 }
