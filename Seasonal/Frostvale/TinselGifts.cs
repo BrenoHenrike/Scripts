@@ -30,18 +30,17 @@ public class TinselGifts
 
         string[] rewards = Core.QuestRewards(914); //Tinsel's Weapon Gift
 
+        if (Core.CheckInventory(rewards))
+            return;
+
         Core.AddDrop(rewards);
 
-        foreach (string s in rewards)
+        Core.RegisterQuests(914);
+        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
         {
-            Core.EnsureAccept(914);
-            if (Core.CheckInventory(s, toInv: false))
-                continue;
-
-            Core.FarmingLogger(s, 1);
             Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
-            Core.EnsureCompleteChoose(914, new string[] { s });
         }
+        Core.CancelRegisteredQuests();
         Core.ToBank(rewards);
     }
 
@@ -52,19 +51,17 @@ public class TinselGifts
 
         string[] rewards = Core.QuestRewards(915); //Tinsel's Helm & Pet Gift
 
+        if (Core.CheckInventory(rewards))
+            return;
+
         Core.AddDrop(rewards);
 
-        foreach (string s in rewards)
+        Core.RegisterQuests(915);
+        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
         {
-            Core.EnsureAccept(914);
-
-            if (Core.CheckInventory(s, toInv: false))
-                continue;
-            
-            Core.FarmingLogger(s, 1);
-            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
-            Core.EnsureCompleteChoose(914, new string[] { s });
+            Core.HuntMonster("icevolcano", "Ice Symbiote", "Tinsel's Helm Bow", log: false);
         }
+        Core.CancelRegisteredQuests();
         Core.ToBank(rewards);
     }
 
@@ -75,18 +72,17 @@ public class TinselGifts
 
         string[] rewards = Core.QuestRewards(1517); //Tinsel's Armor Gift
 
+        if (Core.CheckInventory(rewards))
+            return;
+
         Core.AddDrop(rewards);
 
-        foreach (string s in rewards)
+        Core.RegisterQuests(1517);
+        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
         {
-            Core.EnsureAccept(914);
-            if (Core.CheckInventory(s, toInv: false))
-                continue;
-            
-            Core.FarmingLogger(s, 1);
-            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
-            Core.EnsureCompleteChoose(914, new string[] { s });
+            Core.HuntMonster("goldenruins", "Golden Warrior", "Tinsel's Armor Bow", log: false);
         }
+        Core.CancelRegisteredQuests();
         Core.ToBank(rewards);
     }
 
@@ -97,18 +93,17 @@ public class TinselGifts
 
         string[] rewards = Core.QuestRewards(2554); //Tinsel's Cape Gift
 
+        if (Core.CheckInventory(rewards))
+            return;
+
         Core.AddDrop(rewards);
 
-        foreach (string s in rewards)
+        Core.RegisterQuests(2554);
+        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
         {
-            Core.EnsureAccept(914);
-            if (Core.CheckInventory(s, toInv: false))
-                continue;
-
-            Core.FarmingLogger(s, 1);
-            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
-            Core.EnsureCompleteChoose(914, new string[] { s });
+            Core.HuntMonster("icerise", "Arctic Direwolf", "Tinsel's Cape Bow", log: false);
         }
+        Core.CancelRegisteredQuests();
         Core.ToBank(rewards);
     }
 }
