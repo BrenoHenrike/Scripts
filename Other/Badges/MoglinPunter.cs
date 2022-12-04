@@ -28,7 +28,7 @@ public class MoglinPunter
         Core.Logger($"Doing quest for {badge} badge");
 
         Core.Join("punt");
-        while (!Bot.ShouldExit && !Core.HasWebBadge("Moglin Punter"))
+        while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
             Core.Jump("Enter", "Spawn");
             Bot.Send.Packet("%xt%zm%ia%1%rval%btnPuntting%%");
