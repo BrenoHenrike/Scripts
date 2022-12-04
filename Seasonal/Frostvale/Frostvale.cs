@@ -484,9 +484,14 @@ public class Frostvale
         Story.PreLoad(this);
 
         // Feed the Greed 3217
-        Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Gift", 5);
-        Core.HuntMonster("darkwinter", "White Stalker", "Frostval Decoration", 5);
-        Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Dessert", 5);
+        if (!Story.QuestProgression(3217))
+        {
+            Core.EnsureAccept(3217);
+            Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Gift", 5);
+            Core.HuntMonster("darkwinter", "White Stalker", "Frostval Decoration", 5);
+            Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Dessert", 5);
+            Core.EnsureComplete(3217);
+        }
 
         // Sleet Samples 3218
         Story.KillQuest(3218, "darkwinter", "White Stalker");
@@ -591,7 +596,31 @@ public class Frostvale
     {
         if (!Core.IsMember || !Core.isSeasonalMapActive("Icerisepast"))
             return;
-        //Not avaiable
+        
+        // Through the pass 3899
+        Story.KillQuest(3899, "Icerisepast", "Ice Wolf");
+
+        // Higher Passes 3900
+        if (Story.QuestProgression(3900))
+        {
+            Core.EnsureAccept(3900);
+            Core.HuntMonster("icerisepast", "Ice Bear", "Bear Tooth", 10, log: false);
+            Core.HuntMonster("icerisepast", "Ice Bear", "Bear Claw", 5, log: false);
+            Core.HuntMonster("icerisepast", "Ice Bear", "Bear Pelt", 5, log: false);
+            Core.EnsureComplete(3900);
+        }
+
+        // Bears? 3901
+        Story.MapItemQuest(3901, "Icerisepast", 2987);
+
+        // In the Den 3902
+        Story.KillQuest(3902, "Icerisepast", "Guard Drumlin");
+
+        // The Camp 3903
+         Story.KillQuest(3903, "Icerisepast", "Drumlin");
+
+        // Fire from the Hole 3904
+        Story.KillQuest(3904, "icerisepast", "Ice Drumlinster");
     }
 
     public void Winterhorror()
