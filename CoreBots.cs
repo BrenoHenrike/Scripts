@@ -1112,13 +1112,16 @@ public class CoreBots
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
                             EnsureAccept(kvp.Key.ID);
+
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
                             // Finding the next item that you dont have max stack of yet
                             List<SimpleReward> simpleRewards =
                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                                            (!Bot.Inventory.IsMaxStack(r.Name) ||
-                                                                            !(Bot.Bank.TryGetItem(r.Name, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList(); if (simpleRewards.Count == 0)
+                                    (!Bot.Inventory.IsMaxStack(r.ID) || !CheckInventory(r.ID) ||
+                                    !(Bot.Inventory.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= r.MaxStack))).ToList();
+
+                            if (simpleRewards.Count == 0)
                             {
                                 EnsureComplete(kvp.Key.ID);
                                 await Task.Delay(ActionDelay);
@@ -1130,8 +1133,7 @@ public class CoreBots
                             EnsureComplete(kvp.Key.ID, simpleRewards.First().ID);
                             await Task.Delay(ActionDelay);
                             EnsureAccept(kvp.Key.ID);
-                            Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID} \"{kvp.Key.Name}\" (got {kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}])");
-
+                            Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
                         }
                     }
                 }
