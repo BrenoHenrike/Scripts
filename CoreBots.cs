@@ -2268,6 +2268,19 @@ public class CoreBots
             case "venomvaults":
                 SimpleQuestBypass(2804);
                 break;
+            
+            case "chaoscave":
+            case "lycanwar":
+                SimpleQuestBypass(567);
+                break;
+            
+            case "timespace":
+                SimpleQuestBypass(2518);
+                break;
+
+            case "transformation":
+                SimpleQuestBypass(8094);
+                break;
 
             case "towerofdoom1":
             case "towerofdoom2":
