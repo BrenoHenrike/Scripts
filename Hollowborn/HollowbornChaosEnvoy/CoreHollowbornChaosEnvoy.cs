@@ -104,7 +104,7 @@ public class CoreHollowbornChaosEnvoy
             StirringDiscord(getAll);
 
         Farm.Experience(75);
-        Bot.Quests.UpdateQuest(567);
+
         Core.RegisterQuests(8999);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
@@ -176,8 +176,6 @@ public class CoreHollowbornChaosEnvoy
             Adv.BuyItem("deepforest", 1999, "Supreme Arcane Staff of Chaos");
         }
 
-        Bot.Quests.UpdateQuest(2518);
-
         Core.RegisterQuests(9001);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
@@ -203,8 +201,6 @@ public class CoreHollowbornChaosEnvoy
         if (Core.CheckInventory(rewards, toInv: false))
             return;
 
-        Bot.Quests.UpdateQuest(8094);
-
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
             WaveringIllusions(Bot.Config == null || Bot.Config.Get<bool>("getAll"));
@@ -213,8 +209,7 @@ public class CoreHollowbornChaosEnvoy
         ED.getSet();
         if (!Core.CheckInventory("Titan Drakath"))
             TGM.BuyAllMerge("Titan Drakath");
-
-        Bot.Quests.UpdateQuest(8107);
+            
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
