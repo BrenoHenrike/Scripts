@@ -9,7 +9,8 @@ public class BurningBladeOfAbezeth
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CelestialChampion CC = new();
+    public CoreAdvanced Adv = new CoreAdvanced();
+    //public CelestialChampion CC = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -21,14 +22,14 @@ public class BurningBladeOfAbezeth
 
     public void GetBBoA()
     {
-        if (Core.CheckInventory("Burning Blade Of Abezeth"))
+        if (Core.CheckInventory("Burning Blade Of Abezeth")) //Other method until it's fixed
             return;
 
-        CC.BuyAllMerge("Burning Blade Of Abezeth", mergeOptionsEnum.all);
-        // Core.EquipClass(ClassType.Solo);
-        // Bot.Quests.UpdateQuest(6042);
-        // Core.HuntMonster("celestialarenad", "Aranx", "Champion Sash", 20, isTemp: false);
-        // Adv.BuyItem("celestialarena", , "Burning Blade Of Abezeth");
-        // Adv.EnhanceItem("Burning Blade Of Abezeth", EnhancementType.Lucky);
+        // CC.BuyAllMerge("Burning Blade Of Abezeth", mergeOptionsEnum.select);
+        Core.EquipClass(ClassType.Solo);
+        Bot.Quests.UpdateQuest(6042);
+        Core.HuntMonster("celestialarenad", "Aranx", "Champion Sash", 20, isTemp: false);
+        Adv.BuyItem("celestialarena", 1474, "Burning Blade Of Abezeth");
+        Adv.EnhanceItem("Burning Blade Of Abezeth", EnhancementType.Lucky);
     }
 }
