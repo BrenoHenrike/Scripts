@@ -2261,6 +2261,10 @@ public class CoreBots
                 SimpleQuestBypass(3879);
                 break;
 
+            case "backroom":
+                SimpleQuestBypass(8059);
+                break;
+
             case "towerofdoom1":
             case "towerofdoom2":
             case "towerofdoom3":
