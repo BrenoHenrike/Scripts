@@ -212,14 +212,15 @@ public class Frostvale
         Story.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
-        if (!Story.QuestProgression(2526))
-        {
-            Core.EnsureAccept(2526);
-            Core.Join("frostdeep");
-            Bot.Wait.ForMapLoad("frostdeep");
-            Core.GetMapItem(1587, 1, "frostdeep");
-            Core.EnsureComplete(2526);
-        }
+        // if (!Story.QuestProgression(2526))
+        // {
+        //     Core.EnsureAccept(2526);
+        //     Core.Join("frostdeep");
+        //     Bot.Wait.ForMapLoad("frostdeep");
+        //     Core.GetMapItem(1587, 1, "frostdeep");
+        //     Core.EnsureComplete(2526);
+        // }
+        Story.MapItemQuest(2526, "frostdeep", 1587, AutoCompleteQuest: false);
 
         // Heart of Ice
         Story.KillQuest(2527, "frostdeep", new[] { "Polar Golem", "Polar Elemental" });
