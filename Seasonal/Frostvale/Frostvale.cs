@@ -322,10 +322,7 @@ public class Frostvale
 
     public void ColdWindValley()
     {
-        if (!Core.isSeasonalMapActive("coldwindvalley"))
-            return;
-
-        if (Core.isCompletedBefore(6132))
+        if (Core.isCompletedBefore(6132) || !Core.isSeasonalMapActive("coldwindvalley"))
             return;
 
         Story.PreLoad(this);
@@ -376,10 +373,7 @@ public class Frostvale
 
     public void BrightLights()
     {
-        if (!Core.isSeasonalMapActive("icestorm"))
-            return;
-
-        if (Core.isCompletedBefore(8176))
+        if (Core.isCompletedBefore(8176) || !Core.isSeasonalMapActive("icestorm"))
             return;
 
         Story.PreLoad(this);
@@ -443,10 +437,7 @@ public class Frostvale
 
     public void Battlefield()
     {
-        if (!Core.isSeasonalMapActive("battlefield"))
-            return;
-        
-        if (Core.isCompletedBefore(2575))
+        if (Core.isCompletedBefore(2575) || !Core.isSeasonalMapActive("battlefield"))
             return;
         
         Story.PreLoad(this);
@@ -473,13 +464,11 @@ public class Frostvale
 
     public void Darkwinter()
     {
-        if (!Core.isSeasonalMapActive("darkwinter"))
+        if (Core.isCompletedBefore(3260) || !Core.isSeasonalMapActive("darkwinter"))
             return;
 
         //Good way | Yorumi & Einyuki Questline
         Core.ChangeAlignment(Alignment.Good);
-        if (Core.isCompletedBefore(3260))
-            return;
 
         Story.PreLoad(this);
 
@@ -513,7 +502,7 @@ public class Frostvale
         Story.KillQuest(3223, "darkwinter", "Blighted Deer");
 
         // Breaking In 3257
-        Story.MapItemQuest(3257, "darkwinter", 2281);
+        Story.MapItemQuest(3257, "darkwinter", 2315);
 
         // Break the Barrier 3258
         Story.KillQuest(3258, "darkwinter", "Ice Golem");
@@ -527,7 +516,7 @@ public class Frostvale
 
     public void Frozensoul()
     {
-        if (!Core.isSeasonalMapActive("frozensoul"))
+        if (Core.isCompletedBefore(7264) || !Core.isSeasonalMapActive("frozensoul"))
             return;
         
         Story.PreLoad(this);
@@ -545,10 +534,7 @@ public class Frostvale
 
     public void Howardshill()
     {
-        if (!Core.isSeasonalMapActive("howardshill"))
-            return;
-
-        if (Core.isCompletedBefore(7854))
+        if (Core.isCompletedBefore(7854) || !Core.isSeasonalMapActive("howardshill"))
             return;
         
         Story.PreLoad(this);
@@ -596,10 +582,7 @@ public class Frostvale
 
     public void Icerisepast()
     {
-        if (!Core.IsMember || !Core.isSeasonalMapActive("Icerisepast"))
-            return;
-        
-        if (Core.isCompletedBefore(3904))
+        if (!Core.IsMember || Core.isCompletedBefore(3904) || !Core.isSeasonalMapActive("Icerisepast"))
             return;
         
         Story.PreLoad(this);
@@ -632,10 +615,7 @@ public class Frostvale
 
     public void Winterhorror()
     {
-        if (!Core.isSeasonalMapActive("winterhorror"))
-            return;
-        
-        if (Core.isCompletedBefore(7859))
+        if (Core.isCompletedBefore(7859) || !Core.isSeasonalMapActive("winterhorror"))
             return;
 
         Story.PreLoad(this);
@@ -650,7 +630,7 @@ public class Frostvale
         Story.KillQuest(7858, "winterhorror", "Arthur and Elise");
 
         // He's Ragin' 7859
-        Story.KillQuest(7859, "winterhorror", "Howard's Rage");
+        Story.KillQuest(7859, "winterhorror", $"Howard’s Rage");
     }
 
     public void Gifthulu()
@@ -664,9 +644,7 @@ public class Frostvale
 
     public void Cryostorm()
     {
-        if (!Core.isSeasonalMapActive("cryostorm"))
-            return;
-        if (Core.isCompletedBefore(4716))
+        if (Core.isCompletedBefore(4716) || !Core.isSeasonalMapActive("cryostorm"))
             return;
 
         Story.PreLoad(this);
@@ -718,11 +696,7 @@ public class Frostvale
 
     public void Icewindpass()
     {
-        if (!Core.isSeasonalMapActive("icewindpass"))
-            return;
-        //avaiable
-        Core.Logger("map: \"icewindpass\" is available, but not finished");
-        if (Core.isCompletedBefore(5596))
+        if (Core.isCompletedBefore(5596) || !Core.isSeasonalMapActive("icewindpass"))
             return;
 
         Story.PreLoad(this);
@@ -761,9 +735,7 @@ public class Frostvale
 
     public void Icepike()
     {
-        if (!Core.isSeasonalMapActive("icepike"))
-            return;
-        if (Core.isCompletedBefore(5617))
+        if (Core.isCompletedBefore(5617) || !Core.isSeasonalMapActive("icepike"))
             return;
 
         Story.PreLoad(this);
