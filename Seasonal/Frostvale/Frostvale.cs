@@ -484,14 +484,15 @@ public class Frostvale
         Story.PreLoad(this);
 
         // Feed the Greed 3217
-        if (!Story.QuestProgression(3217))
-        {
-            Core.EnsureAccept(3217);
-            Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Gift", 5);
-            Core.HuntMonster("darkwinter", "White Stalker", "Frostval Decoration", 5);
-            Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Dessert", 5);
-            Core.EnsureComplete(3217);
-        }
+        Story.KillQuest(3217, "darkwinter", new [] { "Blighted Moglin", "White Stalker" });
+        // if (!Story.QuestProgression(3217))
+        // {
+        //     Core.EnsureAccept(3217);
+        //     Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Gift", 5);
+        //     Core.HuntMonster("darkwinter", "White Stalker", "Frostval Decoration", 5);
+        //     Core.HuntMonster("darkwinter", "Blighted Moglin", "Frostval Dessert", 5);
+        //     Core.EnsureComplete(3217);
+        // }
 
         // Sleet Samples 3218
         Story.KillQuest(3218, "darkwinter", "White Stalker");
