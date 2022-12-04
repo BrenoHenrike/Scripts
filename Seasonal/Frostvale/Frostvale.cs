@@ -526,7 +526,7 @@ public class Frostvale
         // Looks like quest is not unlocked behind anything
         // Ice Cold Killer 7262
         Story.KillQuest(7262, "frozensoul", "Frozen Minion", GetReward: false);
-        
+
         // Get Jacked 7263
         Story.KillQuest(7263, "frozensoul", "Jack Frost", GetReward: false);
 
@@ -536,9 +536,48 @@ public class Frostvale
 
     public void Howardshill()
     {
-        if (!Core.isSeasonalMapActive("Howardshill"))
+        if (!Core.isSeasonalMapActive("howardshill"))
             return;
-        //Not avaiable
+
+        // Blizzy's
+        // Find the Source 7843
+        Story.KillQuest(7843, "howardshill", "Frozen Wisp");
+        Story.MapItemQuest(7843, "howardshill", 7921);
+
+        // Try the Door 7844
+        Story.MapItemQuest(7844, "howardshill", 7922);
+        
+        // Find the Key 7845
+        Story.KillQuest(7845, "howardshill", "Frozen Treeant");
+
+        //Howard's
+        // Till the Ground 7846
+        Story.KillQuest(7846, "howardshill", "FrostBite");
+
+        // Beautiful Blossoms 7847
+        Story.KillQuest(7847, "howardshill", "Chillybones");
+
+        // Moldy Trees 7848
+        Story.KillQuest(7848, "howardshill", "Frozen Treeant");
+
+        // Ichor for Elixir 7849
+        Story.KillQuest(7849, "howardshill", "Chillybones");
+
+        // Frozen Tears 7850
+        Story.KillQuest(7850, "howardshill", "Chillybones");
+
+        // Keep them Away 7851
+        Story.KillQuest(7846, "howardshill", "FrostBite");
+
+        // Light up the Darkness 7852
+        Story.KillQuest(7852, "howardshill", "Frozen Wisp");
+
+        // Return to Blizzy 7853
+        Story.KillQuest(7853, "howardshill", "Chillybones");
+        Story.MapItemQuest(7853, "howardshill", 7924);        
+
+        // Howard's Grief 7854
+        Story.KillQuest(7854, "howardshill", "Howard's Grief");
     }
 
     public void Icerisepast()
