@@ -1,114 +1,114 @@
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
 
 public class TinselGifts
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
 
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        TinselWeapon(914);
-        TinselHelm(915);
-        TinselArmor(1517);
-        TinselCape(2554);
+        GetAll();
 
         Core.SetOptions(false);
     }
 
-    public void TinselWeapon(int questID)
+    public void GetAll()
+    {
+        TinselWeapon();
+        TinselHelm();
+        TinselArmor();
+        TinselCape();
+    }
+
+    public void TinselWeapon()
     {
         if (!Core.isSeasonalMapActive("frostdeep"))
             return;
 
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
+        string[] rewards = Core.QuestRewards(914); //Tinsel's Weapon Gift
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        Core.AddDrop(rewards);
 
-        foreach (ItemBase Reward in RewardOptions)
+        foreach (string s in rewards)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            Core.EnsureAccept(914);
+            if (Core.CheckInventory(s, toInv: false))
                 continue;
 
-            Core.EnsureAccept(questID);
+            Core.FarmingLogger(s, 1);
             Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
-            Core.EnsureComplete(questID, Reward.ID);
-            Core.JumpWait();
-            Core.ToBank(Reward.Name);
+            Core.EnsureCompleteChoose(914, new string[] { s });
         }
+        Core.ToBank(rewards);
     }
 
-    public void TinselHelm(int questID)
+    public void TinselHelm()
     {
         if (!Core.isSeasonalMapActive("icevolcano"))
             return;
-        
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        string[] rewards = Core.QuestRewards(915); //Tinsel's Helm & Pet Gift
 
-        foreach (ItemBase Reward in RewardOptions)
+        Core.AddDrop(rewards);
+
+        foreach (string s in rewards)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                continue;
-            Core.FarmingLogger(Reward.Name, 1);
+            Core.EnsureAccept(914);
 
-            Core.EnsureAccept(questID);
-            Core.HuntMonster("icevolcano", "Ice Symbiote", "Tinsel's Helm Bow", log: false);
-            Core.EnsureComplete(questID, Reward.ID);
-            Core.JumpWait();
-            Core.ToBank(Reward.Name);
+            if (Core.CheckInventory(s, toInv: false))
+                continue;
+            
+            Core.FarmingLogger(s, 1);
+            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
+            Core.EnsureCompleteChoose(914, new string[] { s });
         }
+        Core.ToBank(rewards);
     }
 
-    public void TinselArmor(int questID)
+    public void TinselArmor()
     {
         if (!Core.isSeasonalMapActive("goldenruins"))
             return;
-        
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        string[] rewards = Core.QuestRewards(1517); //Tinsel's Armor Gift
 
-        foreach (ItemBase Reward in RewardOptions)
+        Core.AddDrop(rewards);
+
+        foreach (string s in rewards)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            Core.EnsureAccept(914);
+            if (Core.CheckInventory(s, toInv: false))
                 continue;
-
-            Core.EnsureAccept(questID);
-            Core.HuntMonster("goldenruins", "Golden Warrior", "Tinsel's Armor Bow", log: false);
-            Core.EnsureComplete(questID, Reward.ID);
-            Core.JumpWait();
-            Core.ToBank(Reward.Name);
+            
+            Core.FarmingLogger(s, 1);
+            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
+            Core.EnsureCompleteChoose(914, new string[] { s });
         }
+        Core.ToBank(rewards);
     }
 
-    public void TinselCape(int questID)
+    public void TinselCape()
     {
         if (!Core.isSeasonalMapActive("icerise"))
             return;
-        
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        string[] rewards = Core.QuestRewards(2554); //Tinsel's Cape Gift
 
-        foreach (ItemBase Reward in RewardOptions)
+        Core.AddDrop(rewards);
+
+        foreach (string s in rewards)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
+            Core.EnsureAccept(914);
+            if (Core.CheckInventory(s, toInv: false))
                 continue;
 
-            Core.EnsureAccept(questID);
-            Core.HuntMonster("icerise", "Arctic Direwolf", "Tinsel's Cape Bow", log: false);
-            Core.EnsureComplete(questID, Reward.ID);
-            Core.JumpWait();
-            Core.ToBank(Reward.Name);
+            Core.FarmingLogger(s, 1);
+            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
+            Core.EnsureCompleteChoose(914, new string[] { s });
         }
+        Core.ToBank(rewards);
     }
 }
