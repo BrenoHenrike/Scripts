@@ -10,7 +10,6 @@ public class Frostvale
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
         DoAll();
@@ -212,14 +211,15 @@ public class Frostvale
         Story.MapItemQuest(2525, "snowyvale", 1586);
 
         // Before the Darkest Hour - Will continue after the QuestComplete tries end (idk how many it is but y[e])
-        if (!Story.QuestProgression(2526))
-        {
-            Core.EnsureAccept(2526);
-            Core.Join("frostdeep");
-            Bot.Wait.ForMapLoad("frostdeep");
-            Core.GetMapItem(1587, 1, "frostdeep");
-            Core.EnsureComplete(2526);
-        }
+        // if (!Story.QuestProgression(2526))
+        // {
+        //     Core.EnsureAccept(2526);
+        //     Core.Join("frostdeep");
+        //     Bot.Wait.ForMapLoad("frostdeep");
+        //     Core.GetMapItem(1587, 1, "frostdeep");
+        //     Core.EnsureComplete(2526);
+        // }
+        Story.MapItemQuest(2526, "frostdeep", 1587, AutoCompleteQuest: false);
 
         // Heart of Ice
         Story.KillQuest(2527, "frostdeep", new[] { "Polar Golem", "Polar Elemental" });
@@ -445,8 +445,29 @@ public class Frostvale
     {
         if (!Core.isSeasonalMapActive("Battlefield"))
             return;
+        
+        if (Core.isCompletedBefore(2575))
+            return;
+        
+        Story.PreLoad(this);
 
-        //Not avaiable
+        // Mana for the Magi 2570
+        Story.KillQuest(2570, "newbie", "Slime", GetReward: false);
+
+        // Gathering Spell Components 2571
+        Story.KillQuest(2571, "hydra", "Fire Imp", GetReward: false);
+
+        // Looking for Loggers 2572
+        Story.KillQuest(2572, "farm", "Treeant", GetReward: false);
+
+        // Ballista Cables 2573
+        Story.KillQuest(2573, "orctown", "Horc Warrior", GetReward: false);
+
+        // Arrowheads for Archers 2574
+        Story.KillQuest(2573, "yokairiver", "Kappa Ninja", GetReward: false);
+
+        // Fetching Fletching Feathers 2575
+        Story.KillQuest(2575, "creatures", "Red Bird", GetReward: false);
     }
 
 
@@ -454,6 +475,7 @@ public class Frostvale
     {
         if (!Core.isSeasonalMapActive("Darkwinter"))
             return;
+            
         //Not avaiable
     }
 
