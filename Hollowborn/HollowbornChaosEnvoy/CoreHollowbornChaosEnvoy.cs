@@ -58,7 +58,7 @@ public class CoreHollowbornChaosEnvoy
         UniqueQuarry(getAllDrops);
         WaveringIllusions(getAllDrops);
         ShadowsOfDisdain();
-        PersistingMayhem();
+        PersistingMayhem(getAllDrops);
     }
 
     public void StirringDiscord(bool getAll = true)
@@ -104,14 +104,14 @@ public class CoreHollowbornChaosEnvoy
             StirringDiscord(getAll);
 
         Farm.Experience(75);
-
+        Bot.Quests.UpdateQuest(567);
         Core.RegisterQuests(8999);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Armor", isTemp: false);
             Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
-            Core.HuntMonster("odokuro", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
+            Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
             Core.HuntMonster("chaoscave", "Dracowerepyre", "Burning Dragon Mace", isTemp: false);
             Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
@@ -138,6 +138,8 @@ public class CoreHollowbornChaosEnvoy
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
+        Bot.Quests.UpdateQuest(2804);
+        Core.HuntMonster("venomvaults", "Ultra Manticore", "Treasure Vault Key", isTemp: false);
 
         Core.RegisterQuests(9000);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
@@ -175,6 +177,8 @@ public class CoreHollowbornChaosEnvoy
             Adv.BuyItem("deepforest", 1999, "Supreme Arcane Staff of Chaos");
         }
 
+        Bot.Quests.UpdateQuest(2518);
+
         Core.RegisterQuests(9001);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
@@ -211,6 +215,7 @@ public class CoreHollowbornChaosEnvoy
         if (!Core.CheckInventory("Titan Drakath"))
             TGM.BuyAllMerge("Titan Drakath");
 
+        Bot.Quests.UpdateQuest(8107);
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
