@@ -118,7 +118,7 @@ public class CoreHollowbornChaosEnvoy
             Core.KillEscherion("Relic of Chaos", 13);
 
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Fragment of Mount Doomskull", 1300, isTemp: false);
+            Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Fragment of Mount Doomskull", 1000, isTemp: false);
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
