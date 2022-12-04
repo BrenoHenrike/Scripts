@@ -199,6 +199,8 @@ public class CoreHollowbornChaosEnvoy
         string[] rewards = Core.EnsureLoad(9002).Rewards.Select(x => x.Name).ToArray();
         if (Core.CheckInventory(rewards, toInv: false))
             return;
+            
+        Bot.Quests.UpdateQuest(8094);
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
