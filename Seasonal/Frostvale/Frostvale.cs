@@ -443,7 +443,7 @@ public class Frostvale
 
     public void Battlefield()
     {
-        if (!Core.isSeasonalMapActive("Battlefield"))
+        if (!Core.isSeasonalMapActive("battlefield"))
             return;
         
         if (Core.isCompletedBefore(2575))
@@ -464,7 +464,7 @@ public class Frostvale
         Story.KillQuest(2573, "orctown", "Horc Warrior", GetReward: false);
 
         // Arrowheads for Archers 2574
-        Story.KillQuest(2573, "yokairiver", "Kappa Ninja", GetReward: false);
+        Story.KillQuest(2574, "yokairiver", "Kappa Ninja", GetReward: false);
 
         // Fetching Fletching Feathers 2575
         Story.KillQuest(2575, "creatures", "Red Bird", GetReward: false);
@@ -476,7 +476,7 @@ public class Frostvale
         if (!Core.isSeasonalMapActive("darkwinter"))
             return;
 
-        //Good way
+        //Good way | Yorumi & Einyuki Questline
         Core.ChangeAlignment(Alignment.Good);
         if (Core.isCompletedBefore(3260))
             return;
@@ -484,7 +484,7 @@ public class Frostvale
         Story.PreLoad(this);
 
         // Feed the Greed 3217
-        Story.KillQuest(3217, "darkwinter", new [] { "Blighted Moglin", "White Stalker" });
+        Story.KillQuest(3217, "darkwinter", new [] { "Blighted Moglin", "White Stalker", "Blighted Moglin" });
         // if (!Story.QuestProgression(3217))
         // {
         //     Core.EnsureAccept(3217);
@@ -507,8 +507,7 @@ public class Frostvale
         Story.KillQuest(3221, "darkwinter", "Legion Minion");
 
         // Inoculation 3222
-        Story.MapItemQuest(3222, "darkwinter", 2280, 6);
-        Story.MapItemQuest(3222, "darkwinter", 2281, 6);
+        Story.MapItemQuest(3222, "darkwinter", new [] { 2280, 2281 }, 6);
 
         // A Different Way 3223
         Story.KillQuest(3223, "darkwinter", "Blighted Deer");
@@ -580,7 +579,7 @@ public class Frostvale
         Story.KillQuest(7850, "howardshill", "Chillybones");
 
         // Keep them Away 7851
-        Story.KillQuest(7846, "howardshill", "FrostBite");
+        Story.KillQuest(7851, "howardshill", "FrostBite");
 
         // Light up the Darkness 7852
         Story.KillQuest(7852, "howardshill", "Frozen Wisp");
@@ -617,13 +616,13 @@ public class Frostvale
         }
 
         // Bears? 3901
-        Story.MapItemQuest(3901, "Icerisepast", 2987);
+        Story.MapItemQuest(3901, "icerisepast", 2987);
 
         // In the Den 3902
-        Story.KillQuest(3902, "Icerisepast", "Guard Drumlin");
+        Story.KillQuest(3902, "icerisepast", "Guard Drumlin");
 
         // The Camp 3903
-         Story.KillQuest(3903, "Icerisepast", "Drumlin");
+         Story.KillQuest(3903, "icerisepast", "Drumlin");
 
         // Fire from the Hole 3904
         Story.KillQuest(3904, "icerisepast", "Ice Drumlinster");
