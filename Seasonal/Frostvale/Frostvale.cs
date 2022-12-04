@@ -45,9 +45,7 @@ public class Frostvale
 
     public void IceCave()
     {
-        if (!Core.isSeasonalMapActive("icecave"))
-            return;
-        if (Core.isCompletedBefore(906))
+        if (Core.isCompletedBefore(906) || !Core.isSeasonalMapActive("icecave"))
             return;
 
         Story.PreLoad(this);
@@ -104,16 +102,12 @@ public class Frostvale
         Story.KillQuest(461, "icecave", "Frozen Moglin");
 
         // Spirit Abducted 
-        Bot.Map.Join("Map");
-        Core.ChainComplete(905);
+        Story.ChainQuest(905);
     }
 
     public void SnowGlobe()
     {
-        if (!Core.isSeasonalMapActive("snowglobe"))
-            return;
-
-        if (Core.isCompletedBefore(1508))
+        if (Core.isCompletedBefore(1508) || !Core.isSeasonalMapActive("snowglobe"))
             return;
 
         Story.PreLoad(this);
@@ -147,9 +141,7 @@ public class Frostvale
 
     public void Alpine()
     {
-        if (!Core.isSeasonalMapActive("alpine"))
-            return;
-        if (Core.isCompletedBefore(1521))
+        if (Core.isCompletedBefore(1521) || !Core.isSeasonalMapActive("alpine"))
             return;
 
         Story.PreLoad(this);
@@ -188,10 +180,7 @@ public class Frostvale
 
     public void SnowyVale()
     {
-        if (!Core.isSeasonalMapActive("snowyvale"))
-            return;
-
-        if (Core.isCompletedBefore(2576))
+        if (Core.isCompletedBefore(2576) || !Core.isSeasonalMapActive("snowyvale"))
             return;
 
         Story.PreLoad(this);
@@ -293,7 +282,7 @@ public class Frostvale
 
     public void IceRise()
     {
-        if (!Core.isSeasonalMapActive("icerise") || Core.isCompletedBefore(2582))
+        if (Core.isCompletedBefore(2582) || !Core.isSeasonalMapActive("icerise"))
             return;
 
         Story.PreLoad(this);
@@ -439,7 +428,7 @@ public class Frostvale
     {
         if (Core.isCompletedBefore(2575) || !Core.isSeasonalMapActive("battlefield"))
             return;
-        
+
         Story.PreLoad(this);
 
         // Mana for the Magi 2570
@@ -473,7 +462,7 @@ public class Frostvale
         Story.PreLoad(this);
 
         // Feed the Greed 3217
-        Story.KillQuest(3217, "darkwinter", new [] { "Blighted Moglin", "White Stalker", "Blighted Moglin" });
+        Story.KillQuest(3217, "darkwinter", new[] { "Blighted Moglin", "White Stalker", "Blighted Moglin" });
         // if (!Story.QuestProgression(3217))
         // {
         //     Core.EnsureAccept(3217);
@@ -496,7 +485,7 @@ public class Frostvale
         Story.KillQuest(3221, "darkwinter", "Legion Minion");
 
         // Inoculation 3222
-        Story.MapItemQuest(3222, "darkwinter", new [] { 2280, 2281 }, 6);
+        Story.MapItemQuest(3222, "darkwinter", new[] { 2280, 2281 }, 6);
 
         // A Different Way 3223
         Story.KillQuest(3223, "darkwinter", "Blighted Deer");
@@ -518,9 +507,9 @@ public class Frostvale
     {
         if (Core.isCompletedBefore(7264) || !Core.isSeasonalMapActive("frozensoul"))
             return;
-        
+
         Story.PreLoad(this);
-        
+
         // Looks like quest is not unlocked behind anything
         // Ice Cold Killer 7262
         Story.KillQuest(7262, "frozensoul", "Frozen Minion", GetReward: false);
@@ -536,7 +525,7 @@ public class Frostvale
     {
         if (Core.isCompletedBefore(7854) || !Core.isSeasonalMapActive("howardshill"))
             return;
-        
+
         Story.PreLoad(this);
 
         // Blizzy's
@@ -546,7 +535,7 @@ public class Frostvale
 
         // Try the Door 7844
         Story.MapItemQuest(7844, "howardshill", 7922);
-        
+
         // Find the Key 7845
         Story.KillQuest(7845, "howardshill", "Frozen Treeant");
 
@@ -574,7 +563,7 @@ public class Frostvale
 
         // Return to Blizzy 7853
         Story.KillQuest(7853, "howardshill", "Chillybones");
-        Story.MapItemQuest(7853, "howardshill", 7924);        
+        Story.MapItemQuest(7853, "howardshill", 7924);
 
         // Howard's Grief 7854
         Story.KillQuest(7854, "howardshill", "Howard's Grief");
@@ -584,21 +573,14 @@ public class Frostvale
     {
         if (!Core.IsMember || Core.isCompletedBefore(3904) || !Core.isSeasonalMapActive("Icerisepast"))
             return;
-        
+
         Story.PreLoad(this);
-        
+
         // Through the pass 3899
         Story.KillQuest(3899, "icerisepast", "Ice Wolf");
 
         // Higher Passes 3900
-        if (!Story.QuestProgression(3900))
-        {
-            Core.EnsureAccept(3900);
-            Core.HuntMonster("icerisepast", "Ice Bear", "Bear Tooth", 10, log: false);
-            Core.HuntMonster("icerisepast", "Ice Bear", "Bear Claw", 5, log: false);
-            Core.HuntMonster("icerisepast", "Ice Bear", "Bear Pelt", 5, log: false);
-            Core.EnsureComplete(3900);
-        }
+        Story.KillQuest(3900, "icerisepast", new[] { "Ice Bear", "Ice Bear", "Ice Bear" });
 
         // Bears? 3901
         Story.MapItemQuest(3901, "icerisepast", 2987);
@@ -607,7 +589,7 @@ public class Frostvale
         Story.KillQuest(3902, "icerisepast", "Guard Drumlin");
 
         // The Camp 3903
-         Story.KillQuest(3903, "icerisepast", "Drumlin");
+        Story.KillQuest(3903, "icerisepast", "Drumlin");
 
         // Fire from the Hole 3904
         Story.KillQuest(3904, "icerisepast", "Ice Drumlinster");
