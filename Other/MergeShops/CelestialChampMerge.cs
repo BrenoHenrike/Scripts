@@ -28,19 +28,21 @@ public class CelestialChampion
     {
         Core.SetOptions();
 
+        Core.BankingBlackList.AddRange(new[] { "Champion Sash", "Lumin Badge" });
         Adv.BestGear(GearBoost.dmgAll);
         CAQ.Arena1to10();
         CAQ.Arena11to20();
         CAQ.Arena21to29();
+        //Bot.Quests.UpdateQuest(6042);
         BuyAllMerge();
 
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("celestialarena", 1474, findIngredients);
+        Adv.StartBuyAllMerge("celestialarena", 1474, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -117,5 +119,6 @@ public class CelestialChampion
         new Option<bool>("50363", "Infernal Slayer's Hat + Locks", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Hat + Locks\" ?", false),
         new Option<bool>("50409", "Infernal Slayer's Armored Wing", "Mode: [select] only\nShould the bot buy \"Infernal Slayer's Armored Wing\" ?", false),
         new Option<bool>("50408", "Slayer's Wings", "Mode: [select] only\nShould the bot buy \"Slayer's Wings\" ?", false),
+        new Option<bool>("41453", "Burning Blade Of Abezeth", "Mode: [select] only\nShould the bot buy \"Burning Blade Of Abezeth\" ?", false),
     };
 }
