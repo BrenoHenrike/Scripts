@@ -598,6 +598,11 @@ public class Frostvale
         if (!Core.IsMember || !Core.isSeasonalMapActive("Icerisepast"))
             return;
         
+        if (Core.isCompletedBefore(3904))
+            return;
+        
+        Story.PreLoad(this);
+        
         // Through the pass 3899
         Story.KillQuest(3899, "Icerisepast", "Ice Wolf");
 
