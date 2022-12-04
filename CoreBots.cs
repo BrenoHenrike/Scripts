@@ -2264,6 +2264,10 @@ public class CoreBots
             case "backroom":
                 SimpleQuestBypass(8059);
                 break;
+                
+            case "venomvaults":
+                SimpleQuestBypass(2804);
+                break;
 
             case "towerofdoom1":
             case "towerofdoom2":
