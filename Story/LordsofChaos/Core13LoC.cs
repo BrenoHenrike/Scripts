@@ -230,14 +230,12 @@ public class Core13LoC
         if (!Story.QuestProgression(327) || !Core.isCompletedBefore(323))
         {
             Core.EnsureAccept(327);
-            Core.HuntMonster("pines", "Pine Troll");
+            Core.HuntMonster("pines", "Pine Troll", "Pine Air Freshener");
             Core.EnsureComplete(327);
             Bot.Wait.ForPickup("Snowbeard's Gold");
-        }
-
-        //Give Snowbeard His Gold
-        if ((!Bot.Quests.IsUnlocked(344)))
+            //Give Snowbeard His Gold
             Core.ChainComplete(323);
+        }
 
         //Bad Memory
         Story.MapItemQuest(344, "dwarfhold", 60);
