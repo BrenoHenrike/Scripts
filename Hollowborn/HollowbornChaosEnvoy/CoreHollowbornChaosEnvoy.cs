@@ -85,7 +85,6 @@ public class CoreHollowbornChaosEnvoy
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
-            //Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
             AggroKill("blindingsnow", new[] { "Chaorrupted Wolf" }, "r5", "Shard of Chaos", 100, isTemp: false);
 
             Adv.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
@@ -122,7 +121,6 @@ public class CoreHollowbornChaosEnvoy
 
             Core.EquipClass(ClassType.Farm);
             AggroKill("mountdoomskull", new[] { "Chaos Drow" }, "b1", "Shard of Chaos", 1000, isTemp: false);
-            //Core.KillMonster("", "", "Left", "*", "Fragment of Mount Doomskull", , isTemp: false);
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
