@@ -165,10 +165,11 @@ public class CoreNSOD
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
             Core.AddDrop("Creature Shard");
         Core.Logger($"Gathering {quant} Void Aura's with Non-Mem/Non-SDKA Method");
+        Core.ConfigureAggro();
 
-        Core.RegisterQuests(4432);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
+            Core.EnsureAccept(4432);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
             Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", Essencequant, false, publicRoom: true, log: false);
             Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", Essencequant, false, publicRoom: true, log: false);
@@ -179,11 +180,11 @@ public class CoreNSOD
             Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", Essencequant, false, publicRoom: true, log: false);
             Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", Essencequant, false, publicRoom: true, log: false);
             Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", Essencequant, false, publicRoom: true, log: false);
-
+            Core.EnsureCompleteMulti(4432);
             Bot.Wait.ForPickup("Void Aura");
             Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
-        Core.CancelRegisteredQuests();
+        Core.ConfigureAggro(false);
     }
 
     #endregion
