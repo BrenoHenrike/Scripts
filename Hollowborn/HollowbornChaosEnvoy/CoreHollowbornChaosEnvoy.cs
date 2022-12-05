@@ -150,7 +150,12 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
             Core.HuntMonster("venomvaults", "Manticore", "Treasure Vault Key", isTemp: false);
             Adv.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
-            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+            if (!Core.CheckInventory("Chaoroot", 30))
+            {
+                Farm.Gold(900000);
+                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 3);
+                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+            }
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
@@ -180,10 +185,11 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
+            Core.HuntMonster("chaoscrypt", "Chaorrupted Knight", "Chaos Gem", 200, isTemp: false);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
             Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 30, isTemp: false);
             Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
 
@@ -209,11 +215,11 @@ public class CoreHollowbornChaosEnvoy
         ED.getSet();
         if (!Core.CheckInventory("Titan Drakath"))
             TGM.BuyAllMerge("Titan Drakath");
-            
+
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
+        Core.HuntMonster("mountdoomskull", "Chaos Spider", "Chaos War Medal", 1000, isTemp: false);
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
