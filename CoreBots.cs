@@ -1885,7 +1885,7 @@ public class CoreBots
             {
                 // If was previously aggro when untoggled
                 // Set aggro back and flip last aggro
-                Logger("Flipping aggro to False");
+                //Logger("Flipping aggro to False");
                 last_aggro_status = false;
                 Bot.Options.AggroMonsters = true;
             }
@@ -1900,7 +1900,7 @@ public class CoreBots
             {
                 // If currently aggro, set last aggro to true
                 // and flip current aggro status
-                Logger("Flipping aggro to False");
+                //Logger("Flipping aggro to False");
                 last_aggro_status = true;
                 Bot.Options.AggroMonsters = false;
             }
