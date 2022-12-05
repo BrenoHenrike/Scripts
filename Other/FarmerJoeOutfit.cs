@@ -150,20 +150,22 @@ public class FarmerJoeStartingTheAcc
             wep = "Arcane Blade of Glory";
         else if (Core.CheckInventory("Shadow Blade of Dispair"))
             wep = "Shadow Blade of Dispair";
-        InvEn.EnhanceInventory();
         Core.Equip(wep);
+        InvEn.EnhanceInventory();
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
+        Adv.GearStore();
         Adv.BuyItem("classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
-        Core.Equip("Mage");
-        DCSK.GetWep();
+        Adv.GearStore(true);
         InvEn.EnhanceInventory();
+        DCSK.GetWep();
         #endregion Dual Chainsaw Katanas
 
         #region Level to 75
         Core.Logger("Level to 75");
+        Core.EquipClass(ClassType.Farm);
         foreach (int level in new int[] { 45, 50, 55, 60, 65, 70, 75 })
         {
             if (Bot.Player.Level < level)
