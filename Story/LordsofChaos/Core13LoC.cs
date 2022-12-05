@@ -236,7 +236,8 @@ public class Core13LoC
         }
 
         //Give Snowbeard His Gold
-        Story.ChainQuest(323);
+        if ((!Bot.Quests.IsUnlocked(344)))
+            Core.ChainComplete(323);
 
         //Bad Memory
         Story.MapItemQuest(344, "dwarfhold", 60);
