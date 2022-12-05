@@ -2281,6 +2281,10 @@ public class CoreBots
             case "transformation":
                 SimpleQuestBypass(8094);
                 break;
+            
+            case "ebilcorphq":
+                SimpleQuestBypass(8406);
+                break;
 
             case "towerofdoom1":
             case "towerofdoom2":
