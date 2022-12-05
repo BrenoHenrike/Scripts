@@ -1458,7 +1458,9 @@ public class CoreBots
         if (!isTemp && item != null)
             AddDrop(item);
 
+        ToggleAggro(false);
         Join(map, publicRoom: publicRoom);
+        ToggleAggro(true);
         if (item == null)
         {
             if (log)
@@ -1501,8 +1503,10 @@ public class CoreBots
             return;
         if (!isTemp && item != null)
             AddDrop(item);
-        Join(map, publicRoom: publicRoom);
 
+        ToggleAggro(false);
+        Join(map, publicRoom: publicRoom);
+        ToggleAggro(true);
         Monster? monster = Bot.Monsters.MapMonsters?.Find(m => m.MapID == monsterMapID);
         if (monster == null)
         {
