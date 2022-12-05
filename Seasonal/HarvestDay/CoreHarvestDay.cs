@@ -19,25 +19,29 @@ public class CoreHarvestDay
 
     public void DoAll()
     {
-        if (!Core.isSeasonalMapActive("harvest"))
-            return;
-        Harvest();
-        Turdraken();
-        Float();
-        Banquet();
-        Grams();
-        ArtixHome();
-        FoulFarm();
-        KillerKitchen();
-        FurbleFeast();
-        FurborgShip();
-        MeatLab();
-        GothicDream();
-        MemetNightmare();
-        NightmareWar();
-        EpilTakeOver();
-        BirdsWithHarms();
-        EbilCorpHQStory();
+        if (Core.isSeasonalMapActive("harvest"))
+        {
+            Harvest();
+            Turdraken();
+            Float();
+            Banquet();
+            Grams();
+            ArtixHome();
+            FoulFarm();
+            KillerKitchen();
+            FurbleFeast();
+            FurborgShip();
+            MeatLab();
+            GothicDream();
+            MemetNightmare();
+            NightmareWar();
+            EpilTakeOver();
+            BirdsWithHarms();
+            EbilCorpHQ();
+        } else
+        {
+            EbilCorpHQ();
+        }
     }
 
     public void Harvest()
@@ -730,11 +734,11 @@ public class CoreHarvestDay
         Core.EnsureComplete(8992);
     }
 
-    public void EbilCorpHQStory()
+    public void EbilCorpHQ()
     {
-        if (Core.isCompletedBefore(8407) || !Core.isSeasonalMapActive("ebilcorphq"))
+        if (Core.isCompletedBefore(8407))
             return;
-        
+
         Story.PreLoad(this);
 
         // Ziri's Contract 8398
@@ -748,7 +752,7 @@ public class CoreHarvestDay
 
         // Nulgath's ...Contract? 8401
         Story.KillQuest(8401, "ebilcorphq", "Nulgath");
-        
+
         // Dage's Contract 8402
         Story.KillQuest(8402, "ebilcorphq", " Dage the Evil");
 
@@ -763,9 +767,9 @@ public class CoreHarvestDay
 
         // Server Room Access 8406
         Story.KillQuest(8406, "ebilcorphq", new[] { "EbilCorp Goon", "EbilCorp Security" });
-        
+
         // The M.C.P 8407
         Story.KillQuest(8407, "ebilcorphq", "Master Chairman");
-    }   
+    }
 
 }
