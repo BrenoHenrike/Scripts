@@ -754,7 +754,7 @@ public class CoreHarvestDay
         Story.KillQuest(8401, "ebilcorphq", "Nulgath");
 
         // Dage's Contract 8402
-        Story.KillQuest(8402, "ebilcorphq", " Dage the Evil");
+        Story.KillQuest(8402, "ebilcorphq", "Dage the Evil");
 
         // Swaggy's Contract 8403
         Story.KillQuest(8403, "ebilcorphq", "Swaggy");
@@ -763,7 +763,7 @@ public class CoreHarvestDay
         Story.KillQuest(8404, "ebilcorphq", "Cysero");
 
         // Gravelyn's Contract 8405
-        Story.KillQuest(8404, "ebilcorphq", "Gravelyn");
+        Story.KillQuest(8405, "ebilcorphq", "Gravelyn");
 
         // Server Room Access 8406
         Story.KillQuest(8406, "ebilcorphq", new[] { "EbilCorp Goon", "EbilCorp Security" });
