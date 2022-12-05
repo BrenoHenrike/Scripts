@@ -187,7 +187,7 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("chaoscrypt", "Chaorrupted Knight", "Chaos Gem", 200, isTemp: false);
+            AggroKill("chaoscrypt", new[] { "Chaorrupted Knight" }, "Basement", "Chaos Gem", 200, isTemp: false);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
