@@ -14,7 +14,7 @@ public class EbilCorpHQStory
     {
         Core.SetOptions();
 
-        HarvestDay.EbilCorpHQStory();
+        HarvestDay.EbilCorpHQ();
 
         Core.SetOptions(false);
     }
