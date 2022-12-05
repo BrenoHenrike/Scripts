@@ -65,7 +65,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void StirringDiscord(bool getAll = true)
     {
-        string[] rewards = Core.EnsureLoad(8998).Rewards.Select(x => x.Name).ToArray();
+        string[] rewards = Core.QuestRewards(8998);
         if (Core.CheckInventory(rewards, any: !getAll, toInv: false))
             return;
 
@@ -97,13 +97,13 @@ public class CoreHollowbornChaosEnvoy
 
     public void InTheBeastsShadow(bool getAll = true)
     {
-        string[] rewards = Core.EnsureLoad(8999).Rewards.Select(x => x.Name).ToArray();
+        string[] rewards = Core.QuestRewards(8999);
         if (Core.CheckInventory(rewards, any: !getAll, toInv: false))
             return;
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(8999))
-            StirringDiscord(getAll);
+            StirringDiscord(Bot.Config.Get<bool>("getAll"));
 
         Farm.Experience(75);
 
@@ -130,13 +130,13 @@ public class CoreHollowbornChaosEnvoy
 
     public void UniqueQuarry(bool getAll = true)
     {
-        string[] rewards = Core.EnsureLoad(9000).Rewards.Select(x => x.Name).ToArray();
+        string[] rewards = Core.QuestRewards(9000);
         if (Core.CheckInventory(rewards, any: !getAll, toInv: false))
             return;
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9000))
-            InTheBeastsShadow(getAll);
+            InTheBeastsShadow(Bot.Config.Get<bool>("getAll"));
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
@@ -146,7 +146,7 @@ public class CoreHollowbornChaosEnvoy
         {
             Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
-            Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
+            AggroKill("chaoswar", new[] { "Chaos Knight" }, "r13", "Chaos Tentacle", 300, isTemp: false);
             Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
             Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
@@ -167,13 +167,13 @@ public class CoreHollowbornChaosEnvoy
 
     public void WaveringIllusions(bool getAll = true)
     {
-        string[] rewards = Core.EnsureLoad(9001).Rewards.Select(x => x.Name).ToArray();
+        string[] rewards = Core.QuestRewards(9001);
         if (Core.CheckInventory(rewards, any: !getAll, toInv: false))
             return;
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9001))
-            UniqueQuarry(getAll);
+            UniqueQuarry(Bot.Config.Get<bool>("getAll"));
 
         Farm.Experience(80);
         Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
@@ -204,13 +204,13 @@ public class CoreHollowbornChaosEnvoy
 
     public void ShadowsOfDisdain()
     {
-        string[] rewards = Core.EnsureLoad(9002).Rewards.Select(x => x.Name).ToArray();
+        string[] rewards = Core.QuestRewards(9002);
         if (Core.CheckInventory(rewards, toInv: false))
             return;
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
-            WaveringIllusions(Bot.Config == null || Bot.Config.Get<bool>("getAll"));
+            WaveringIllusions(Bot.Config.Get<bool>("getAll"));
 
         Farm.Experience(95);
         ED.getSet();
@@ -231,11 +231,14 @@ public class CoreHollowbornChaosEnvoy
         Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
         Core.EnsureComplete(9002);
+
+        foreach (string s in rewards)
+            Bot.Wait.ForPickup(s);
     }
 
     public void PersistingMayhem(bool getAll = true)
     {
-        string[] rewards = Core.EnsureLoad(9003).Rewards.Select(x => x.Name).ToArray();
+        string[] rewards = Core.QuestRewards(9003);
         if (Core.CheckInventory(rewards, any: !getAll, toInv: false))
             return;
 
