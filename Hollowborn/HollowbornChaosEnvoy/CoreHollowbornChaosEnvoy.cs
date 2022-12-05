@@ -150,7 +150,12 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
             Core.HuntMonster("venomvaults", "Manticore", "Treasure Vault Key", isTemp: false);
             Adv.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
-            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+            if (!Core.CheckInventory("Chaoroot", 30))
+            {
+                Farm.Gold(900000);
+                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 3);
+                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+            }
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
