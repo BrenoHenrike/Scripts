@@ -119,6 +119,12 @@ public class CurrentDailyGifts
 
             #endregion
 
+            #region December 4 leaves December 31
+
+            GetGift(AvailableUntil(31, 12), "ebilcorphq", "Master Chairman", "Suave Suit of Ebil", "Chic Frostval Locks", "Chic Frostval Locks + Glasses", "Chic Locks", "Chic Locks + Glasses", "Suave Frostval Hair + Glasses", "Suave Frostval Hat", "Suave Hair", "Suave Hair + Glasses", "Classy Cane of Ebil", "Elegant Cane of Ebil");
+            
+            #endregion
+
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
