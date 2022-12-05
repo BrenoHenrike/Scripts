@@ -218,7 +218,7 @@ public class CoreHollowbornChaosEnvoy
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
+        Core.HuntMonster("mountdoomskull", "Chaos Spider", "Chaos War Medal", 1000, isTemp: false);
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
