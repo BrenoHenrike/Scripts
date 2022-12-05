@@ -20,34 +20,25 @@ public class CoreAwe
     {
         if (Core.CheckInventory($"{Item} Relic"))
             return;
-        Core.AddDrop($"{Item} Fragment");
-        int QuestID;
 
-        if (Core.IsMember)
-        {
-            Core.BuyItem("museum", 1130, "Legendary Awe Pass");
-            QuestID = LegendQuest;
-        }
-        else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
+        Core.AddDrop($"{Item} Fragment");
+        
+        if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
             Farm.BladeofAweREP(5, false);
             Farm.Experience(35);
             QuestID = LegendQuest + 1;
         }
-        else
+        else if (Core.IsMember ? !Core.CheckInventory("Legendary Awe Pass") : !Core.CheckInventory("Armor of Awe Pass"))
         {
+            if (!Core.IsMember)
+            {
+                Farm.BladeofAweREP(10, false);
+                Farm.Experience(55);
+            }
 
-            Farm.BladeofAweREP(10, false);
-            Farm.Experience(55);
-            Core.BuyItem("museum", 1130, "Armor of Awe Pass");
-            QuestID = LegendQuest + 2;
-        }
-
-        if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
-        {
-            Bot.Quests.UpdateQuest(3008);
-            Core.SendPackets("%xt%zm%setAchievement%108927%ia0%18%1%");
-            Bot.Quests.UpdateQuest(3004);
+            Core.BuyItem("museum", 1130, Core.IsMember ? "Legendary Awe Pass" : "Armor of Awe Pass");
+            QuestID = Core.IsMember ? LegendQuest : LegendQuest + 2;
         }
 
         Core.EquipClass(ClassType.Solo);
