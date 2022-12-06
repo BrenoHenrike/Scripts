@@ -16,7 +16,6 @@
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Other/MergeShops/TitanGearIIMerge.cs
-//cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs
 using Skua.Core.Interfaces;
 
