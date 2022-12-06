@@ -92,6 +92,7 @@ public class CoreHollowbornChaosEnvoy
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
         }
+        Core.ToBank(rewards);
         Core.CancelRegisteredQuests();
     }
 
@@ -125,6 +126,7 @@ public class CoreHollowbornChaosEnvoy
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
         }
+        Core.ToBank(rewards);
         Core.CancelRegisteredQuests();
     }
 
@@ -162,6 +164,7 @@ public class CoreHollowbornChaosEnvoy
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
         }
+        Core.ToBank(rewards);
         Core.CancelRegisteredQuests();
     }
 
@@ -200,6 +203,7 @@ public class CoreHollowbornChaosEnvoy
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
         }
+        Core.ToBank(rewards);
         Core.CancelRegisteredQuests();
     }
 
@@ -235,6 +239,8 @@ public class CoreHollowbornChaosEnvoy
 
         foreach (string s in rewards)
             Bot.Wait.ForPickup(s);
+
+        Core.ToBank(rewards);
     }
 
     public void PersistingMayhem(bool getAll = true)
@@ -258,6 +264,7 @@ public class CoreHollowbornChaosEnvoy
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
         }
+        Core.ToBank(rewards);
         Core.CancelRegisteredQuests();
     }
     
