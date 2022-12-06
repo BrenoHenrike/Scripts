@@ -125,7 +125,7 @@ public class CoreBots
                         Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
                     Bot.Sleep(5000);
                 }
-                else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
+                else Logger("Please log-in before starting the bot.\nIf you are already logged in but are recieving this message regardless, please re-install cleanFlash", messageBox: true, stopBot: true);
             }
 
             IsMember = Bot.Player.IsMember;
