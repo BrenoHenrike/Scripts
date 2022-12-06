@@ -16,7 +16,6 @@
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Other/MergeShops/TitanGearIIMerge.cs
-//cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -33,7 +32,6 @@ public class CoreHollowbornChaosEnvoy
     private EternalDrakath ED = new();
     private AscendedDrakathGear ADG = new();
     private TitanGearIIMerge TGM = new();
-    private CoreArmyLite Army = new();
 
     public string OptionsStorage = "HollowbornChaosEnvoy";
     public bool DontPreconfigure = true;
@@ -85,7 +83,7 @@ public class CoreHollowbornChaosEnvoy
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
-            AggroKill("blindingsnow", new[] { "Chaorrupted Wolf" }, "r5", "Shard of Chaos", 100, isTemp: false);
+            Core.KillMonster("blindingsnow", "r5", "Spawn", "*", "Shard of Chaos", 100, isTemp: false);
 
             Adv.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
 
@@ -121,7 +119,7 @@ public class CoreHollowbornChaosEnvoy
             Core.KillEscherion("Relic of Chaos", 13);
 
             Core.EquipClass(ClassType.Farm);
-            AggroKill("mountdoomskull", new[] { "Chaos Drow" }, "b1", "Shard of Chaos", 1000, isTemp: false);
+            Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Fragment of Mount Doomskull", 1000, isTemp: false);
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
@@ -148,7 +146,7 @@ public class CoreHollowbornChaosEnvoy
         {
             Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
-            AggroKill("chaoswar", new[] { "Chaos Knight" }, "r13", "Chaos Tentacle", 300, isTemp: false);
+            Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
             Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
             Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
@@ -190,7 +188,7 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Farm);
-            AggroKill("chaoscrypt", new[] { "Chaorrupted Knight" }, "Basement", "Chaos Gem", 200, isTemp: false);
+            Core.HuntMonster("chaoscrypt", "Chaorrupted Knight", "Chaos Gem", 200, isTemp: false);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
@@ -225,7 +223,7 @@ public class CoreHollowbornChaosEnvoy
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
-        AggroKill("mountdoomskull", new[] { "Chaos Drow" }, "b1", "Shard of Chaos", 1000, isTemp: false);
+        Core.HuntMonster("mountdoomskull", "Chaos Spider", "Chaos War Medal", 1000, isTemp: false);
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
@@ -266,31 +264,5 @@ public class CoreHollowbornChaosEnvoy
         }
         Core.ToBank(rewards);
         Core.CancelRegisteredQuests();
-    }
-    
-    /// <summary>
-    /// Joins a map and aggro, then kill the monsters
-    /// Do not aggro too many monsters
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="monsterNames">Name of the monsters to kill. Recommended to pick monster with highest quantity and lowest stats</param>
-    /// <param name="cell">Cell to jump to. Recommended to pick cell with most monsters</param>
-    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="pad">Pad to jump to. Set default to Spawn because needed to bypass the Army restriction</param>
-    public void AggroKill(string map, string [] monsterNames, string cell, string item, int quant, bool isTemp = true, string pad = "Spawn")
-    {
-        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant)))
-            return;
-        if (!isTemp && item != null)
-            Core.AddDrop(item);
-        
-        Core.Join(map, cell, pad);
-        Army.AggroMonNames(monsterNames);
-        Army.AggroMonStart(map);
-        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !Core.CheckInventory(item, quant)))
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
     }
 }

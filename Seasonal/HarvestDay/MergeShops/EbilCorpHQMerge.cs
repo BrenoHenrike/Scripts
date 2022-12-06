@@ -26,7 +26,6 @@ public class EbilHQMerge
         Core.BankingBlackList.AddRange(NeededItems);
         Core.SetOptions();
 
-        HarvestDay.EbilCorpHQ();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -34,6 +33,8 @@ public class EbilHQMerge
 
     public void BuyAllMerge()
     {
+        HarvestDay.EbilCorpHQ();
+        
         Core.AddDrop(NeededItems);
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("ebilcorphq", 2067, findIngredients);
@@ -65,7 +66,7 @@ public class EbilHQMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EnsureAccept(8408);
-                        Core.HuntMonster("ebilcorphq", "Master Chairman", "Master Chairman Destroyed (again)", 10, log: false);
+                        Core.HuntMonster("ebilcorphq", "Master Chairman", "Master Chairman Destroyed (again)", 10);
                         Core.EnsureCompleteMulti(8408);
                     }
                     //Core.CancelRegisteredQuests();
@@ -93,7 +94,7 @@ public class EbilHQMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("ebilcorphq", "Master Chairman", req.Name, isTemp: false, log: false);
+                        Core.HuntMonster("ebilcorphq", "Master Chairman", req.Name, isTemp: false);
                         Core.Logger("This item is not setup yet");
                         Bot.Wait.ForPickup(req.Name);
                     }
