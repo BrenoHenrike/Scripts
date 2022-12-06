@@ -58,7 +58,7 @@ public class CoreHollowbornChaosEnvoy
         UniqueQuarry(getAllDrops);
         WaveringIllusions(getAllDrops);
         ShadowsOfDisdain();
-        PersistingMayhem();
+        PersistingMayhem(getAllDrops);
     }
 
     public void StirringDiscord(bool getAll = true)
@@ -111,7 +111,7 @@ public class CoreHollowbornChaosEnvoy
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Armor", isTemp: false);
             Core.HuntMonster("roc", "Rock Roc", "Mini Rock Roc", isTemp: false);
-            Core.HuntMonster("odokuro", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
+            Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "O-dokuro on Your Back", isTemp: false);
             Core.HuntMonster("chaoscave", "Dracowerepyre", "Burning Dragon Mace", isTemp: false);
             Core.HuntMonster("palooza", "Pony Gary Yellow", "Mini Pony Gary Yellow", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Mana Golem", isTemp: false);
@@ -148,8 +148,14 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
             Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
+            Core.HuntMonster("venomvaults", "Manticore", "Treasure Vault Key", isTemp: false);
             Adv.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
-            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+            if (!Core.CheckInventory("Chaoroot", 30))
+            {
+                Farm.Gold(900000);
+                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 3);
+                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+            }
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
@@ -179,11 +185,12 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("chaoscrypt", "Basement", "Left", "*", "Chaos Gem", 200, isTemp: false);
+            Core.HuntMonster("chaoscrypt", "Chaorrupted Knight", "Chaos Gem", 200, isTemp: false);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
-            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 20, isTemp: false);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
+            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 30, isTemp: false);
             Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
 
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
@@ -212,7 +219,7 @@ public class CoreHollowbornChaosEnvoy
         Core.EnsureAccept(9002);
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Chaos War Medal", 1000, isTemp: false);
+        Core.HuntMonster("mountdoomskull", "Chaos Spider", "Chaos War Medal", 1000, isTemp: false);
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);

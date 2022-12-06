@@ -19,14 +19,21 @@ public class MoglinPunter
 
     public void Badge()
     {
-        if (!Core.isSeasonalMapActive("Punt"))
+        if (Core.HasWebBadge(badge) || !Core.isSeasonalMapActive("punt"))
+        {
+            Core.Logger($"Already have the {badge} badge, or the map is not available.");
             return;
+        }
 
-        Core.Join("Punt");
-        while (!Bot.ShouldExit && !Core.HasWebBadge("Moglin Punter"))
+        Core.Logger($"Doing quest for {badge} badge");
+
+        Core.Join("punt");
+        while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
             Core.Jump("Enter", "Spawn");
             Bot.Send.Packet("%xt%zm%ia%1%rval%btnPuntting%%");
         }
     }
+
+    private string badge = "Moglin Punter";
 }

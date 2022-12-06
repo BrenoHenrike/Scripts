@@ -98,21 +98,8 @@ public class ChaosAvengerClass
             Core.KillEscherion("Escherion's Robe", publicRoom: true);
 
             //Vath's Chaotic Dragonlord Armor
-            while (!Core.CheckInventory("Vath's Chaotic Dragonlord Armor"))
-            {
-                Core.AddDrop("Vath's Chaotic Dragonlord Armor");
-                if (Bot.Map.Name != "stalagbite")
-                    Core.Join("stalagbite", "r2", "Left");
-
-                while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-                {
-                    if (Bot.Monsters.MapMonsters.First(m => m.Name == "Stalagbite").Alive)
-                        Bot.Hunt.Monster("Vath");
-                    Bot.Combat.Attack("Stalagbite");
-                    Bot.Sleep(1000);
-                }
-            }
-
+            Core.KillVath("Vath's Chaotic Dragonlord Armor");
+            
             //Chaos Shogun Armor
             Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Armor", isTemp: false, publicRoom: true);
 

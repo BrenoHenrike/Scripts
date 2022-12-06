@@ -8,7 +8,7 @@ using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
-public class ArmyTemplate
+public class ArmyUniqueQuarry
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -19,7 +19,7 @@ public class ArmyTemplate
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyTemplatev2";
+    public string OptionsStorage = "ArmyUniqueQuarry";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -37,7 +37,7 @@ public class ArmyTemplate
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[]
-        {"stuff", "you", "don't", "want", "banked"});
+        {"Chaos Sphinx", "Chaoroot", "Kathool Annihilator", "Chaotic Manticore Head", "Chaos Tentacle", "Chaos Dragon Slayer", "HarpyHunter", "Naga Baas Pet"});
 
         Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
@@ -49,16 +49,31 @@ public class ArmyTemplate
 
     public void Setup()
     {
-        Core.EquipClass(ClassType.Farm);
-        // Core.EquipClass(ClassType.Solo);
-        Core.AddDrop("item");
+        Quest QuestData = Core.EnsureLoad(9000);
+        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("item", 1))
-        {
-            Core.EnsureAccept(0000);
-            Armykill("map", new[] { "mob", "mob" }, "item", isTemp: false, 1);
-            Core.EnsureComplete(0000);
-        }
+        // Core.EquipClass(ClassType.Solo);
+        // Core.AddDrop("Chaos Sphinx", "Chaoroot", "Kathool Annihilator", "Chaotic Manticore Head", "Chaos Tentacle", "Chaos Dragon Slayer", "HarpyHunter", "Naga Baas Pet");
+        foreach (ItemBase item in RequiredItems.Concat(QuestReward))
+            Bot.Drops.Add(item.ID);
+
+        Core.EnsureAccept(9000);
+
+        Core.EquipClass(ClassType.Farm);
+        Armykill("chaoswar", new[] { "*" }, "Chaos Tentacle", isTemp: false, 300);
+        Core.EquipClass(ClassType.Solo);
+        Armykill("sandcastle", new[] { "Chaos Sphinx" }, "Chaos Sphinx", isTemp: false);
+        Armykill("deepchaos", new[] { "Kathool" }, "Kathool Annihilator", isTemp: false);
+        Armykill("castleroof", new[] { "Chaos Dragon" }, "Chaos Dragon Slayer", isTemp: false);
+        Armykill("mirrorportal", new[] { "Chaos Harpy" }, "HarpyHunter", isTemp: false);
+        Armykill("orecavern", new[] { "Naga Baas" }, "Naga Baas Pet", isTemp: false);
+        Armykill("venomvaults", new[] { "Ultra Manticore" }, "Treasure Vault Key", isTemp: false);
+        Adv.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
+        Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
+        Core.EnsureComplete(9000);
+        foreach (ItemBase item in QuestReward)
+            Core.ToBank(item.ID);
     }
 
     void Armykill(string map = null, string[] monsters = null, string item = null, bool isTemp = false, int quant = 1)
@@ -107,11 +122,20 @@ public class ArmyTemplate
         if (Bot.Map.Name == null)
             return;
 
-        if (Bot.Map.Name == "MaptoAggro")
+        if (Bot.Map.Name == "chaoswar")
         {
-            Army.AggroMonCells("cell1", "cell2", "cell3");
-            Army.AggroMonStart("MaptoAggro");
-            Army.DivideOnCells("cell1", "cell2", "cell3");
+            if (Bot.Config.Get<int>("armysize") <= 3)
+            {
+                Army.AggroMonCells("r2");
+                Army.AggroMonStart("chaoswar");
+                Army.DivideOnCells("r2");
+            }
+            else 
+            {                
+                Army.AggroMonCells("r1", "r2");
+                Army.AggroMonStart("chaoswar");
+                Army.DivideOnCells("r1", "r2");
+            }
         }
     }
 }
