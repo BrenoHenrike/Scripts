@@ -114,7 +114,7 @@ public class AllBadges
         JS.Badge();
         ToC.Badge();
         UC.Badge();
-        //G.Badge(); //Kinda not stable yet?
+        G.Badge();
         //add more as they are made.
 
         Core.SetOptions(false);
