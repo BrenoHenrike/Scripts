@@ -25,12 +25,10 @@ public class GoalBadge
 
         Core.Logger($"Kicking some balls for the {badge}");
         Core.Join("chute");
-        while (!Core.HasWebBadge(badge)) //I hope this works
-        {
-            Core.SendPackets("%xt%zm%ia%1%rval%btnPuntting%%");
-			Bot.Sleep(15000);
-            Core.Jump("Enter", "Right");
-        }
+        Core.EnsureAccept(8543);
+        Bot.Map.GetMapItem(9837);
+        Bot.Sleep(Core.ActionDelay);
+        Core.EnsureComplete(8543);
     }
 
     private string badge = "GOAL!";
