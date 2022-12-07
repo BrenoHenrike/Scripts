@@ -2538,7 +2538,7 @@ public class CoreBots
             int t = 0;
             while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
                 (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
-                (Bot.TempInv.GetQuantity(newItem.Name) < _item.MaxStack)))
+                (_item.Quantity < _item.MaxStack)))
             {
                 Bot.Map.GetMapItem(itemID);
                 Bot.Sleep(1000);
