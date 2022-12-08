@@ -125,7 +125,7 @@ public class CoreBots
                         Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
                     Bot.Sleep(5000);
                 }
-                else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
+                else Logger("Please log-in before starting the bot.\nIf you are already logged in but are recieving this message regardless, please re-install cleanFlash", messageBox: true, stopBot: true);
             }
 
             IsMember = Bot.Player.IsMember;
@@ -1115,11 +1115,19 @@ public class CoreBots
 
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
-                            // Finding the next item that you dont have max stack of yet
+                            // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                    (!Bot.Inventory.IsMaxStack(r.ID) &&
-                                    !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
+                                    Bot.Inventory.GetQuantity(r.ID) <= 0 && Bot.Bank.GetQuantity(r.ID) <= 0).ToList();
+
+                            // If you have at least 1 of each item, start finding items that you dont have max stack of yet
+                            if (simpleRewards.Count == 0)
+                            {
+                                simpleRewards =
+                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
+                                        (!Bot.Inventory.IsMaxStack(r.ID) &&
+                                        !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
+                            }
 
                             if (simpleRewards.Count == 0)
                             {
@@ -2264,16 +2272,16 @@ public class CoreBots
             case "backroom":
                 SimpleQuestBypass(8059);
                 break;
-                
+
             case "venomvaults":
                 SimpleQuestBypass(2804);
                 break;
-            
+
             case "chaoscave":
             case "lycanwar":
                 SimpleQuestBypass(567);
                 break;
-            
+
             case "timespace":
                 SimpleQuestBypass(2518);
                 break;
@@ -2281,9 +2289,13 @@ public class CoreBots
             case "transformation":
                 SimpleQuestBypass(8094);
                 break;
-            
+
             case "ebilcorphq":
                 SimpleQuestBypass(8406);
+                break;
+
+            case "championdrakath":
+                SimpleQuestBypass(3881);
                 break;
 
             case "towerofdoom1":
@@ -2526,7 +2538,7 @@ public class CoreBots
             int t = 0;
             while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
                 (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
-                (Bot.TempInv.GetQuantity(newItem.Name) < _item.MaxStack)))
+                (_item.Quantity < _item.MaxStack)))
             {
                 Bot.Map.GetMapItem(itemID);
                 Bot.Sleep(1000);
