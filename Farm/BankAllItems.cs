@@ -16,13 +16,13 @@ public class BankAllItems
     {
         foreach (InventoryItem item in Bot.Inventory.Items.Where(i => !i.Equipped && i.Name != "Treasure Potion"))
         {
-            Bot.Sleep(Core.ActionDelay);
             if (item.Coins)
-                Core.ToBank(item.Name);
-            if (!item.Coins || Bot.Bank.FreeSlots < 1)
+                Core.ToBank(item.ID);
+            else if (!item.Coins || Bot.Bank.FreeSlots < 1)
                 Core.Logger($"Failed to bank {item.Name}");
             else
-                Core.ToBank(item.Name);
+                Core.ToBank(item.ID);
+            Bot.Sleep(1500);
         }
 
         // foreach (InventoryItem item in Bot.House.Items.Where(i => !i.Equipped))

@@ -88,7 +88,9 @@ public class RVAArmy
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
         {
             Core.EnsureAccept(4432);
+            Core.EquipClass(ClassType.Farm);
             ArmyKillMonster("timespace", "Frame1", "Left", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
+            Core.EquipClass(ClassType.Solo);
             ArmyKillMonster("citadel", "m13", "Left", "Belrot the Fiend", "Belrot the Fiend Essence", EssenceQuantity, false);
             ArmyKillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", EssenceQuantity, false);
             ArmyKillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", EssenceQuantity, false);
