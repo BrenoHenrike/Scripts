@@ -569,8 +569,8 @@ public class CoreToD
             Story.KillQuest(5125, "baconcatlair", new[] { "Shark Invader", "Shark Invader" });
 
             //Sharks like Honey? 5126
+            Story.KillQuest(5126, "baconcatlair", "Robo Shark");
             Story.MapItemQuest(5126, "baconcatlair", 4480, 6);
-            Story.KillQuest(5124, "baconcatlair", "Robo Shark");
 
             //At Least They Like to Party 5127
             Story.MapItemQuest(5127, "baconcatlair", 4479, 3);
