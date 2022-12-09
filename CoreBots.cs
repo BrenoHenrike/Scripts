@@ -900,9 +900,15 @@ public class CoreBots
                     $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
                     "Warning: Costs AC!", true)
                     != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", "CanBuy", messageBox: true, stopBot: true);
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you didn't allow the bot to buy the item", "CanBuy");
+                return false;
+            }
             else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
-                Logger($"You don't have enough AC to buy \"{item.Name}\" {buy_count} times, the bot cannot continue.", "CanBuy", messageBox: true, stopBot: true);
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you are missing {Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") - total_ac_cost} ACs", "CanBuy");
+                return false;
+            }
         }
 
         return true;
