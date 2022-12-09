@@ -73,9 +73,9 @@ public class CoreAstravia
         if (!Story.QuestProgression(7774))
         {
             Core.EnsureAccept(7774);
-            Core.KillMonster("eridani", "r10", "Right", "Rat-Like Creature", "Rat-Like Creature Slain");
-            Core.KillMonster("eridani", "r10", "Right", "Bat-Like Creature", "Bat-Like Creature Slain");
-            Core.KillMonster("eridani", "Enter", "Spawn", "Maggot-Like Creature", "Maggot-Like Creatures Slain", 2);
+            Core.HuntMonsterMapID("eridani", 22|3, "Rat-Like Creature Slain");
+            Core.HuntMonsterMapID("eridani", 13|24|29, "Bat-Like Creature Slain");
+            Core.HuntMonsterMapID("eridani", 1, "Maggot-Like Creatures Slain", 2);
             Story.MapItemQuest(7774, "eridani", 7784);
         }
 
@@ -88,9 +88,9 @@ public class CoreAstravia
         {
             Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7776);
-            Core.KillMonster("eridani", "r4", "Left", "Creature 15", "Creature 15 Hunted");
-            Core.KillMonster("eridani", "r5", "Left", "Creature 16", "Creature 16 Hunted");
-            Core.KillMonster("eridani", "r6", "Left", "Creature 34", "Creature 34 Hunted", 7);
+            Core.HuntMonsterMapID("eridani", 8, "Creature 15 Hunted");
+            Core.HuntMonsterMapID("eridani", 11, "Creature 16 Hunted");
+            Core.HuntMonsterMapID("eridani", 5, "Creature 34 Hunted", 7);
             Core.EnsureComplete(7776);
             Bot.Options.AttackWithoutTarget = false;
         }
@@ -100,8 +100,8 @@ public class CoreAstravia
         {
             Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7777);
-            Core.KillMonster("eridani", "r7", "Right", "Creature 30", "Creature 30 Hunted", 1);
-            Core.KillMonster("eridani", "r3", "Right", "Creature 31", "Creature 31 Hunted", 1);
+            Core.HuntMonsterMapID("eridani", 17, "Creature 30 Hunted");
+            Core.HuntMonsterMapID("eridani", 2, "Creature 31 Hunted");
             Core.EnsureComplete(7777);
             Bot.Options.AttackWithoutTarget = false;
         }
