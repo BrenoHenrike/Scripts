@@ -29,7 +29,7 @@ public class CoreAwe
             Farm.Experience(35);
             QuestID = LegendQuest + 1;
         }
-        else if (Core.IsMember ? !Core.CheckInventory("Legendary Awe Pass") : !Core.CheckInventory("Armor of Awe Pass"))
+        else
         {
             if (!Core.IsMember)
             {

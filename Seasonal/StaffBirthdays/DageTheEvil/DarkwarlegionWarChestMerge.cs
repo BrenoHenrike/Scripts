@@ -7,7 +7,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class DarkwarlegionMerge
+public class DarkwarlegionWarChestMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -36,6 +36,9 @@ public class DarkwarlegionMerge
     public void BuyAllMerge()
     {
         //Only edit the map and shopID here
+        if(!Core.isSeasonalMapActive("darkwarlegion"))
+        return;
+        
         Adv.StartBuyAllMerge("darkwarlegion", 2124, findIngredients);
 
         #region Dont edit this part
@@ -61,7 +64,7 @@ public class DarkwarlegionMerge
                 case "Wretched Blade of the Void":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Adv.BuyItem("darkwarnation", 2123, req.Name);
                         Bot.Wait.ForItemBuy();
@@ -71,7 +74,7 @@ public class DarkwarlegionMerge
                 case "Legion Token":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Legion.FarmLegionToken(2500);
                         Bot.Wait.ForPickup(req.Name);

@@ -35,7 +35,7 @@ public class FiendofLight
         CoreSS.SepulchuresRise();
 
         if (!Bot.Config.Get<bool>("SelectReward"))
-            ForeachSelect(6408);
+            ForeachSelect(6408); 
         else OptionsSelect(Bot.Config.Get<RewardsSelection>("RewardSelect"), 6408);
 
         Core.SetOptions(false);
@@ -96,7 +96,7 @@ public class FiendofLight
         All,
         Fiend_of_Light = 44276,
         Fiend_of_Light_Helm = 44278,
-        iend_of_Light_Hair = 44279,
+        Fiend_of_Light_Hair = 44279,
         Fiend_of_Light_Winged_Hair = 44280,
         Fiend_of_Light_Blinded_Hair = 44281,
         Fiend_of_Light_Locks = 44282,

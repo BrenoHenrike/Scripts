@@ -128,6 +128,7 @@ public class RVAArmy
             Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
             Bot.Sleep(2500);
         }
+        Core.EquipClass(monster == "Astral Ephemerite" ? ClassType.Farm : ClassType.Solo);
         Bot.Sleep(2500);
         if (item == null)
         {
