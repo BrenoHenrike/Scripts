@@ -813,9 +813,27 @@ public class CoreBots
         }
 
         //Quest Check
-        //string questName = Bot.Flash.GetGameObject<string>($"world.shopinfo.items[{item.ID}].sQuest");
-        //List<QuestData> cache = Bot.Quests.Cached;
-        //Bot.Quests.Cached.Count;
+        string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
+        if (!String.IsNullOrEmpty(questName))
+        {
+            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText("Quests.txt"));
+            if (v != null)
+            {
+                List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
+                if (ids.Count > 0)
+                {
+                    List<Quest> quests = EnsureLoad(ids.Where(q => !isCompletedBefore(q)).ToArray());
+                    if (quests.Count > 0)
+                    {
+                        string s = String.Empty;
+                        quests.ForEach(q => s += $"[{q.ID}] |");
+                        bool one = quests.Count == 1;
+                        Logger($"Cannot buy {item.Name} from {shopID} because you havn't completed the {(one ? "" : "one of ")}following quest{(one ? "" : "s")}: \"{questName}\" {s[..^2]}", "CanBuy");
+                        return false;
+                    }
+                }
+            }
+        }
 
         //Rep check
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
@@ -2249,10 +2267,6 @@ public class CoreBots
                 SimpleQuestBypass(598);
                 break;
 
-            case "downbelow":
-                SimpleQuestBypass(8107);
-                break;
-
             case "shadowattack":
                 SimpleQuestBypass(3798);
                 break;
@@ -2394,6 +2408,13 @@ public class CoreBots
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;
+            #endregion
+
+            #region Bypass Banned
+            // This doesn't mean that you cant do a bypass inside the boat itself, it just can't be in Join because it fucks up CanBuy
+            // Write the ID that can be used for the bypass in a comment after it, so people can easily fetch it if they are gonna used a banned map
+            case "downbelow": // 8107
+                goto default;
                 #endregion
         }
 
