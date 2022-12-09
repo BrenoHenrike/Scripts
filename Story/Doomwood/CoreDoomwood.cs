@@ -320,9 +320,9 @@ public class CoreDoomwood
         if (!Story.QuestProgression(1148))
         {
             Core.EnsureAccept(1148);
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Basilisk's Scale");
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Scroll of Magic Inversion");
-            Core.Jump("enter", "spawn");
+            Core.KillMonster("temple", "r2", "up", "Shelleton", "Basilisk's Scale", isTemp: false);
+            Core.KillMonster("temple", "r2", "up", "Shelleton", "Scroll of Magic Inversion", isTemp: false);
+            Core.JumpWait();
             Core.BuyItem("temple", 287, "Scroll of Cure Petrification");
             Core.EnsureComplete(1148);
         }
