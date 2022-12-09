@@ -667,8 +667,13 @@ public class CoreDoomwood
         Story.MapItemQuest(7623, "stonewooddeep", 7528, 1);
 
         //7624    EN GARDE!
-        Story.KillQuest(7624, "stonewooddeep", "Asherion");
-
+        if (!Story.QuestProgression(7624))
+        {
+            Core.EnsureAccept(7624);
+            Core.HuntMonsterMapID("stonewooddeep", 1, "Defeat Asherion");
+            Core.EnsureAccept(7624);
+        }
+        
         //7625    The Light Of Destiny
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
 

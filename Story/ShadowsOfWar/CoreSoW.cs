@@ -47,7 +47,7 @@ public class CoreSoW
 
         Story.PreLoad(this);
 
-        //Shadow Medals: Defend the Village! 6846
+        // Shadow Medals: Defend the Village! 6846
         Story.KillQuest(6846, "shadowwar", "Shadowflame Slasher", GetReward: false);
 
         //Seed Spitter Oil 6847
@@ -60,7 +60,12 @@ public class CoreSoW
         Story.KillQuest(6849, "shadowwar", "Umbral Goo", GetReward: false);
 
         //Shadow Medals: Fight them Back! 6850
-        Story.KillQuest(6850, "shadowwar", "Shadowflame Scout", GetReward: false);
+        if (!Story.QuestProgression(6850))
+        {
+            Core.EnsureAccept(6850);
+            Core.KillMonster("shadowwar", "r2", "Left", "*", "Shadow Medal", 5);
+            Core.EnsureComplete(6850);
+        }
 
         //Interrogation 6851 //had multiple reports made it a questprog.
         if (!Story.QuestProgression(6851))
@@ -71,8 +76,18 @@ public class CoreSoW
             Bot.Wait.ForQuestComplete(6851); //insurance... because y[e]
         }
 
-        //Defeat Malgor! 6852
-        Story.KillQuest(6852, "malgor", "Malgor");
+        //Defeat Malgor! 6852 //quest prog, due to getting stuck on a cutscene cell.
+        if (!Story.QuestProgression(6852))
+        {
+            Core.JumpWait();
+            Bot.Options.AttackWithoutTarget = true;
+            Core.EnsureAccept(6852);
+            Core.HuntMonster("malgor", "Malgor", "Defeat Malgor", log: false);
+            Bot.Options.AttackWithoutTarget = false;
+            Core.EnsureComplete(6852);
+            Bot.Wait.ForMapLoad("shadowwar"); //game will force you bac to shadowar-1 ._. so you're welcome.
+            Core.Join("whitemap-100000"); 
+        }
     }
 
     public void ShadowlordKeep()
