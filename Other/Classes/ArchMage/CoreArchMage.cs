@@ -461,18 +461,27 @@ public class CoreArchMage
                     break;
 
                 case "Vital Exanima":
-                    if (Core.CheckInventory("Yami No Ronin") || Core.CheckInventory("Void Highlord"))
+                    if (Core.CheckInventory("Yami No Ronin") || Core.CheckInventory("Void Highlord") || Core.CheckInventory("Void HighLord (IoDA)"))
                     {
-                        Bot.Skills.StartAdvanced(Core.CheckInventory("Yami No Ronin") ? "Yami No Ronin" : "Void Highlord", true, ClassUseMode.Def);
+                        if (Core.CheckInventory("Yami No Ronin"))
+                            Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Def);
+                        if (Core.CheckInventory("Void Highlord"))
+                            Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
+                        if (Core.CheckInventory("Void HighLord (IoDA)"))
+                            Bot.Skills.StartAdvanced("Void HighLord (IoDA)", true, ClassUseMode.Def);
                         Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
                     }
                     else Item("dage", "Dage the Evil", item, quant);
                     break;
 
                 case "Everlight Flame":
-                    if (Core.CheckInventory("Void Highlord"))
+                    if (Core.CheckInventory("Void Highlord") || Core.CheckInventory("Void HighLord (IoDA)"))
                     {
-                        Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
+                        if (Core.CheckInventory("Void Highlord"))
+                            Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
+                        if (Core.CheckInventory("Void HighLord (IoDA)"))
+                            Bot.Skills.StartAdvanced("Void HighLord (IoDA)", true, ClassUseMode.Def);
+                        Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord") ? "Void Highlord" : "Void HighLord (IoDA)", true, ClassUseMode.Def);
                         Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
                     }
                     else Item("fireavatar", "Avatar Tyndarius", item, quant);
@@ -494,7 +503,7 @@ public class CoreArchMage
                     {
                         Core.Logger("This may Take a few trys to kill it but it'll work Trust the Potato.");
                         Bot.Skills.StartAdvanced("Yami No Ronin", true, ClassUseMode.Def);
-                        Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false); 
+                        Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false);
                     }
                     else Item("tercessuinotlim", "Nulgath", item, quant);
                     break;
