@@ -101,7 +101,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(8999))
-            StirringDiscord(Bot.Config.Get<bool>("getAll"));
+            StirringDiscord(getAll);
 
         Farm.Experience(75);
 
@@ -135,7 +135,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9000))
-            InTheBeastsShadow(Bot.Config.Get<bool>("getAll"));
+            InTheBeastsShadow(getAll);
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
@@ -176,7 +176,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9001))
-            UniqueQuarry(Bot.Config.Get<bool>("getAll"));
+            UniqueQuarry(getAll);
 
         Farm.Experience(80);
         QOM.TheQueensSecrets();
@@ -216,7 +216,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
-            WaveringIllusions(Bot.Config.Get<bool>("getAll"));
+            WaveringIllusions(Bot.Config == null || Bot.Config.Get<bool>("getAll"));
 
         Farm.Experience(95);
         ED.getSet();
@@ -237,9 +237,6 @@ public class CoreHollowbornChaosEnvoy
         Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
         Core.EnsureComplete(9002);
-
-        foreach (string s in rewards)
-            Bot.Wait.ForPickup(s);
 
         Core.ToBank(rewards);
     }
