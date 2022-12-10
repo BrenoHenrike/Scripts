@@ -297,17 +297,6 @@ public class CoreArchMage
 
         Core.FarmingLogger("Book of Arcana", 1);
 
-        if (Core.CheckInventory("Yami No Ronin"))
-        {
-            Adv.GearStore();
-            //Core.Join("whitemap"); //till aggro shit gets fixed.
-            Adv.BestGear(GearBoost.dmgAll);
-            Core.Equip("Yami No Ronin");
-            Bot.Skills.StartAdvanced("Yami No Ronin", false, ClassUseMode.Base);
-            Core.HuntMonster("tercessuinotlim", "Nulgath", "The Mortal Coil", isTemp: false);
-            Adv.GearStore(true);
-        }
-
         BossItemCheck(1, "The Mortal Coil", "The Divine Will", "Insatiable Hunger", "Undying Resolve", "Calamitous Ruin");
 
         UnboundTome(1);
@@ -315,8 +304,6 @@ public class CoreArchMage
 
         Scroll.BuyScroll(Scrolls.EtherealCurse, 50);
 
-        Core.EquipClass(ClassType.Solo);
-        Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false); //just get lucky :4Head:
         Core.EnsureComplete(8917);
         Bot.Wait.ForPickup("Book of Arcana");
         Core.ToBank(Cosmetics);
@@ -474,11 +461,21 @@ public class CoreArchMage
                     break;
 
                 case "Vital Exanima":
-                    Item("dage", "Dage the Evil", item, quant);
+                    if (Core.CheckInventory("Yami No Ronin") || Core.CheckInventory("Void Highlord"))
+                    {
+                        Bot.Skills.StartAdvanced(Core.CheckInventory("Yami No Ronin") ? "Yami No Ronin" : "Void Highlord", true, ClassUseMode.Def);
+                        Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
+                    }
+                    else Item("dage", "Dage the Evil", item, quant);
                     break;
 
                 case "Everlight Flame":
-                    Item("fireavatar", "Avatar Tyndarius", item, quant);
+                    if (Core.CheckInventory("Void Highlord"))
+                    {
+                        Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
+                        Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
+                    }
+                    else Item("fireavatar", "Avatar Tyndarius", item, quant);
                     break;
 
                 case "Calamitous Ruin":
@@ -489,12 +486,17 @@ public class CoreArchMage
                         Adv.KillUltra("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
                         Bot.Events.RunToArea -= DarkCarnaxMove;
                     }
-                    else if (!Core.CheckInventory(item))
-                        Core.Logger($"{item} x{quant} not found, it can be farmed (with an army) from \"Nightmare Carnax\" in /darkcarnax", stopBot: true);
+                    else Item("tercessuinotlim", "Nulgath", item, quant);
                     break;
 
                 case "The Mortal Coil":
-                    Item("tercessuinotlim", "Nulgath", item, quant);
+                    if (Core.CheckInventory("Yami No Ronin"))
+                    {
+                        Core.Logger("This may Take a few trys to kill it but it'll work Trust the Potato.");
+                        Bot.Skills.StartAdvanced("Yami No Ronin", true, ClassUseMode.Def);
+                        Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false); 
+                    }
+                    else Item("tercessuinotlim", "Nulgath", item, quant);
                     break;
 
                 case "The Divine Will":
