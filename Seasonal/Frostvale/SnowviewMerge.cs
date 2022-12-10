@@ -1,7 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\Frostvale\Frostvale.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -79,19 +80,19 @@ public class SnowviewMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("74595", "Festive Sled Racer", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer\" ?", false),
-        new Option<bool>("74596", "Festive Sled Racer Hat", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer Hat\" ?", false),
-        new Option<bool>("74597", "Festive Sled Racer Champion Crown", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer Champion Crown\" ?", false),
-        new Option<bool>("74598", "Festive Sled Racer Locks and Hat", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer Locks and Hat\" ?", false),
-        new Option<bool>("74599", "Festive Sled Racer Locks and Crown", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer Locks and Crown\" ?", false),
-        new Option<bool>("74600", "Festive Enamel Snowflakes", "Mode: [select] only\nShould the bot buy \"Festive Enamel Snowflakes\" ?", false),
-        new Option<bool>("74602", "Festive Sled Racer Cape", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer Cape\" ?", false),
-        new Option<bool>("74603", "Festive Sled Racer Cape and Enamel Snowflakes", "Mode: [select] only\nShould the bot buy \"Festive Sled Racer Cape and Enamel Snowflakes\" ?", false),
-        new Option<bool>("74604", "Golden Snowflake Sickle", "Mode: [select] only\nShould the bot buy \"Golden Snowflake Sickle\" ?", false),
-        new Option<bool>("74605", "Golden Snowflake Sickles", "Mode: [select] only\nShould the bot buy \"Golden Snowflake Sickles\" ?", false),
-        new Option<bool>("74606", "Snowflake Sickle", "Mode: [select] only\nShould the bot buy \"Snowflake Sickle\" ?", false),
-        new Option<bool>("74607", "Snowflake Sickles", "Mode: [select] only\nShould the bot buy \"Snowflake Sickles\" ?", false),
-        new Option<bool>("74608", "Festive Golden Snowflake Bow", "Mode: [select] only\nShould the bot buy \"Festive Golden Snowflake Bow\" ?", false),
-        new Option<bool>("74609", "Mix n' Match Sickles", "Mode: [select] only\nShould the bot buy \"Mix n' Match Sickles\" ?", false),
+        new Option<bool>("74595", "Festive Sled Racer", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer/" ?", false),
+        new Option<bool>("74596", "Festive Sled Racer Hat", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer Hat/" ?", false),
+        new Option<bool>("74597", "Festive Sled Racer Champion Crown", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer Champion Crown/" ?", false),
+        new Option<bool>("74598", "Festive Sled Racer Locks and Hat", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer Locks and Hat/" ?", false),
+        new Option<bool>("74599", "Festive Sled Racer Locks and Crown", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer Locks and Crown/" ?", false),
+        new Option<bool>("74600", "Festive Enamel Snowflakes", "Mode: [select] only/nShould the bot buy /"Festive Enamel Snowflakes/" ?", false),
+        new Option<bool>("74602", "Festive Sled Racer Cape", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer Cape/" ?", false),
+        new Option<bool>("74603", "Festive Sled Racer Cape and Enamel Snowflakes", "Mode: [select] only/nShould the bot buy /"Festive Sled Racer Cape and Enamel Snowflakes/" ?", false),
+        new Option<bool>("74604", "Golden Snowflake Sickle", "Mode: [select] only/nShould the bot buy /"Golden Snowflake Sickle/" ?", false),
+        new Option<bool>("74605", "Golden Snowflake Sickles", "Mode: [select] only/nShould the bot buy /"Golden Snowflake Sickles/" ?", false),
+        new Option<bool>("74606", "Snowflake Sickle", "Mode: [select] only/nShould the bot buy /"Snowflake Sickle/" ?", false),
+        new Option<bool>("74607", "Snowflake Sickles", "Mode: [select] only/nShould the bot buy /"Snowflake Sickles/" ?", false),
+        new Option<bool>("74608", "Festive Golden Snowflake Bow", "Mode: [select] only/nShould the bot buy /"Festive Golden Snowflake Bow/" ?", false),
+        new Option<bool>("74609", "Mix n' Match Sickles", "Mode: [select] only/nShould the bot buy /"Mix n' Match Sickles/" ?", false),
     };
 }
