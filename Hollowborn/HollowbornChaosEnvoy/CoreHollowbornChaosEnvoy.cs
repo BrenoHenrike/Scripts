@@ -144,13 +144,16 @@ public class CoreHollowbornChaosEnvoy
         Core.RegisterQuests(9000);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
-            Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
             Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
             Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
             Core.HuntMonster("venomvaults", "Manticore", "Treasure Vault Key", isTemp: false);
+
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
             Adv.BuyItem("venomvaults", 585, "Chaotic Manticore Head");
             if (!Core.CheckInventory("Chaoroot", 30))
             {
