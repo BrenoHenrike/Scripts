@@ -278,7 +278,7 @@ public class CoreFireIsland
             return;
         }
 
-        //The Hard Way 4107
+        // The Hard Way 4107
         Story.KillQuest(4107, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
 
         //Encrypt Keepers 4108
@@ -288,7 +288,16 @@ public class CoreFireIsland
         Story.KillQuest(4109, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
 
         //Steppe Quickly 4110
-        Story.KillQuest(4110, "Brimstone", new[] { "Brimstone Marauder", "Fyreborn Tiger", "Fyresyn", "Brimstone Looter", "Brimstone Bandit" });
+        if (!Story.QuestProgression(4110))
+        {
+            Core.EnsureAccept(4110);
+            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Marauders slain", 3, log: false);
+            Core.HuntMonster("Brimstone", "Fyreborn Tiger", "Fyreborn Tigers slain", 5, log: false);
+            Core.HuntMonster("Brimstone", "Fyresyn", "Fyresyn slain", 5, log: false);
+            Core.HuntMonster("Brimstone", "Brimstone Looter", "Looters slain", 3, log: false);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Bandits slain", 3, log: false);
+            Core.EnsureComplete(4110);
+        }
 
         //Reclamation 4111
         Story.KillQuest(4111, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter" });
@@ -300,7 +309,7 @@ public class CoreFireIsland
         Story.KillQuest(4113, "Brimstone", new[] { "Fyresyn", "Fyreborn Tiger", "Pyradon" });
 
         //One Last Push 4114
-        Story.KillQuest(4114, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
+        Story.KillQuest(4114, "Brimstone", new[] { "Brimstone Bandit" ,"Brimstone Marauder", "Brimstone Looter" });
 
         //Redemption 4115
         Story.KillQuest(4115, "Brimstone", "Chief Talmin");

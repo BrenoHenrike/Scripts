@@ -320,9 +320,9 @@ public class CoreDoomwood
         if (!Story.QuestProgression(1148))
         {
             Core.EnsureAccept(1148);
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Basilisk's Scale");
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Scroll of Magic Inversion");
-            Core.Jump("enter", "spawn");
+            Core.KillMonster("temple", "r2", "up", "Shelleton", "Basilisk's Scale", isTemp: false);
+            Core.KillMonster("temple", "r2", "up", "Shelleton", "Scroll of Magic Inversion", isTemp: false);
+            Core.JumpWait();
             Core.BuyItem("temple", 287, "Scroll of Cure Petrification");
             Core.EnsureComplete(1148);
         }
@@ -667,8 +667,13 @@ public class CoreDoomwood
         Story.MapItemQuest(7623, "stonewooddeep", 7528, 1);
 
         //7624    EN GARDE!
-        Story.KillQuest(7624, "stonewooddeep", "Asherion");
-
+        if (!Story.QuestProgression(7624))
+        {
+            Core.EnsureAccept(7624);
+            Core.HuntMonsterMapID("stonewooddeep", 1, "Defeat Asherion");
+            Core.EnsureAccept(7624);
+        }
+        
         //7625    The Light Of Destiny
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
 

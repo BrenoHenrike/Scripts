@@ -211,7 +211,7 @@ public class AllSeasonal
             case 12:
                 Core.Logger("Starting Scripts for December");
                 //insert script voids here
-                // Frostvale.DoAll();
+                Frostvale.DoAll();
                 Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
                 break;
         }

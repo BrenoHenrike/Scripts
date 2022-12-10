@@ -78,7 +78,7 @@ public class TheWorldHouseMerge
                     break;
 
                 case "Bandit's Correspondence":
-                    Darkon.Teeth(quant);
+                    Darkon.BanditsCorrespondence(quant);
                     break;
 
                 case "Suki's Prestige":

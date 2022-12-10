@@ -125,7 +125,7 @@ public class CoreBots
                         Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
                     Bot.Sleep(5000);
                 }
-                else Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
+                else Logger("Please log-in before starting the bot.\nIf you are already logged in but are recieving this message regardless, please re-install cleanFlash", messageBox: true, stopBot: true);
             }
 
             IsMember = Bot.Player.IsMember;
@@ -813,9 +813,27 @@ public class CoreBots
         }
 
         //Quest Check
-        //string questName = Bot.Flash.GetGameObject<string>($"world.shopinfo.items[{item.ID}].sQuest");
-        //List<QuestData> cache = Bot.Quests.Cached;
-        //Bot.Quests.Cached.Count;
+        string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
+        if (!String.IsNullOrEmpty(questName))
+        {
+            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText("Quests.txt"));
+            if (v != null)
+            {
+                List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
+                if (ids.Count > 0)
+                {
+                    List<Quest> quests = EnsureLoad(ids.Where(q => !isCompletedBefore(q)).ToArray());
+                    if (quests.Count > 0)
+                    {
+                        string s = String.Empty;
+                        quests.ForEach(q => s += $"[{q.ID}] |");
+                        bool one = quests.Count == 1;
+                        Logger($"Cannot buy {item.Name} from {shopID} because you havn't completed the {(one ? "" : "one of ")}following quest{(one ? "" : "s")}: \"{questName}\" {s[..^2]}", "CanBuy");
+                        return false;
+                    }
+                }
+            }
+        }
 
         //Rep check
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
@@ -882,9 +900,15 @@ public class CoreBots
                     $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
                     "Warning: Costs AC!", true)
                     != true)
-                Logger($"The bot cannot continue without buying \"{item.Name}\", stopping the bot.", "CanBuy", messageBox: true, stopBot: true);
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you didn't allow the bot to buy the item", "CanBuy");
+                return false;
+            }
             else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
-                Logger($"You don't have enough AC to buy \"{item.Name}\" {buy_count} times, the bot cannot continue.", "CanBuy", messageBox: true, stopBot: true);
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you are missing {Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") - total_ac_cost} ACs", "CanBuy");
+                return false;
+            }
         }
 
         return true;
@@ -1115,11 +1139,19 @@ public class CoreBots
 
                         if (Bot.Quests.CanComplete(kvp.Key.ID))
                         {
-                            // Finding the next item that you dont have max stack of yet
+                            // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                    (!Bot.Inventory.IsMaxStack(r.ID) &&
-                                    !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
+                                    Bot.Inventory.GetQuantity(r.ID) <= 0 && Bot.Bank.GetQuantity(r.ID) <= 0).ToList();
+
+                            // If you have at least 1 of each item, start finding items that you dont have max stack of yet
+                            if (simpleRewards.Count == 0)
+                            {
+                                simpleRewards =
+                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
+                                        (!Bot.Inventory.IsMaxStack(r.ID) &&
+                                        !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
+                            }
 
                             if (simpleRewards.Count == 0)
                             {
@@ -2241,10 +2273,6 @@ public class CoreBots
                 SimpleQuestBypass(598);
                 break;
 
-            case "downbelow":
-                SimpleQuestBypass(8107);
-                break;
-
             case "shadowattack":
                 SimpleQuestBypass(3798);
                 break;
@@ -2264,16 +2292,16 @@ public class CoreBots
             case "backroom":
                 SimpleQuestBypass(8059);
                 break;
-                
+
             case "venomvaults":
                 SimpleQuestBypass(2804);
                 break;
-            
+
             case "chaoscave":
             case "lycanwar":
                 SimpleQuestBypass(567);
                 break;
-            
+
             case "timespace":
                 SimpleQuestBypass(2518);
                 break;
@@ -2281,9 +2309,13 @@ public class CoreBots
             case "transformation":
                 SimpleQuestBypass(8094);
                 break;
-            
+
             case "ebilcorphq":
                 SimpleQuestBypass(8406);
+                break;
+
+            case "championdrakath":
+                SimpleQuestBypass(3881);
                 break;
 
             case "towerofdoom1":
@@ -2382,6 +2414,13 @@ public class CoreBots
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;
+            #endregion
+
+            #region Bypass Banned
+            // This doesn't mean that you cant do a bypass inside the boat itself, it just can't be in Join because it fucks up CanBuy
+            // Write the ID that can be used for the bypass in a comment after it, so people can easily fetch it if they are gonna used a banned map
+            case "downbelow": // 8107
+                goto default;
                 #endregion
         }
 
@@ -2526,7 +2565,7 @@ public class CoreBots
             int t = 0;
             while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
                 (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
-                (Bot.TempInv.GetQuantity(newItem.Name) < _item.MaxStack)))
+                (_item.Quantity < _item.MaxStack)))
             {
                 Bot.Map.GetMapItem(itemID);
                 Bot.Sleep(1000);

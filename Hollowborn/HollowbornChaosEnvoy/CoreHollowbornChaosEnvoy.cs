@@ -26,7 +26,6 @@ public class CoreHollowbornChaosEnvoy
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private CoreHollowborn HB = new();
-    private Core13LoC LOC => new();
     private CoreQOM QOM = new();
     private ChaosAvengerClass CAV = new();
     private EternalDrakath ED = new();
@@ -180,6 +179,7 @@ public class CoreHollowbornChaosEnvoy
             UniqueQuarry(Bot.Config.Get<bool>("getAll"));
 
         Farm.Experience(80);
+        QOM.TheQueensSecrets();
         Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
         if (!Core.CheckInventory("Supreme Arcane Staff of Chaos"))
         {
