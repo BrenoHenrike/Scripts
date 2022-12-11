@@ -28,7 +28,7 @@ public class CurrentDailyGifts
 
     public void GetAllGifts(DailyGiftsMode mode)
     {
-        int Day = 4;
+        int Day = 11;
         int Month = 12;
         int Year = 2022;
         DateTime lastUpdate = new(Year, Month, Day);
@@ -122,6 +122,7 @@ public class CurrentDailyGifts
             #region December 4 leaves December 31
 
             GetGift(AvailableUntil(31, 12), "ebilcorphq", "Master Chairman", "Suave Suit of Ebil", "Chic Frostval Locks", "Chic Frostval Locks + Glasses", "Chic Locks", "Chic Locks + Glasses", "Suave Frostval Hair + Glasses", "Suave Frostval Hat", "Suave Hair", "Suave Hair + Glasses", "Classy Cane of Ebil", "Elegant Cane of Ebil");
+            GetGift(AvailableUntil(31, 12), "Helsgrove", "Helsdottir", "Frostval Barbarian Axe", "Frostval Barbarian Axes");
             
             #endregion
 
