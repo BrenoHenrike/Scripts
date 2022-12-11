@@ -53,11 +53,17 @@ public class CoreHollowbornChaosEnvoy
     public void GetAll(bool getAllDrops = true)
     {
         StirringDiscord(getAllDrops);
+        Core.ToBank(Core.EnsureLoad(8998).Rewards.Select(x => x.Name).ToArray());
         InTheBeastsShadow(getAllDrops);
+        Core.ToBank(Core.EnsureLoad(8999).Rewards.Select(x => x.Name).ToArray());
         UniqueQuarry(getAllDrops);
+        Core.ToBank(Core.EnsureLoad(9000).Rewards.Select(x => x.Name).ToArray());
         WaveringIllusions(getAllDrops);
+        Core.ToBank(Core.EnsureLoad(9001).Rewards.Select(x => x.Name).ToArray());
         ShadowsOfDisdain();
+        Core.ToBank(Core.EnsureLoad(9002).Rewards.Select(x => x.Name).ToArray());
         PersistingMayhem(getAllDrops);
+        Core.ToBank(Core.EnsureLoad(9003).Rewards.Select(x => x.Name).ToArray());
     }
 
     public void StirringDiscord(bool getAll = true)
@@ -90,7 +96,6 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
     }
 
     public void InTheBeastsShadow(bool getAll = true)
@@ -124,7 +129,6 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
     }
 
     public void UniqueQuarry(bool getAll = true)
@@ -143,9 +147,11 @@ public class CoreHollowbornChaosEnvoy
         Core.RegisterQuests(9000);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("sandcastle", "Chaos Sphinx", "Chaos Sphinx", isTemp: false);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Annihilator", isTemp: false);
-            Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 300, isTemp: false);
             Core.HuntMonster("castleroof", "Chaos Dragon", "Chaos Dragon Slayer", isTemp: false);
             Core.HuntMonster("mirrorportal", "Chaos Harpy", "HarpyHunter", isTemp: false);
             Core.HuntMonster("orecavern", "Naga Baas", "Naga Baas Pet", isTemp: false);
@@ -162,7 +168,6 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
     }
 
     public void WaveringIllusions(bool getAll = true)
@@ -202,7 +207,6 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
     }
 
     public void ShadowsOfDisdain()
@@ -234,7 +238,6 @@ public class CoreHollowbornChaosEnvoy
         Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
         Core.EnsureComplete(9002);
-        Core.ToBank(rewards);
     }
 
     public void PersistingMayhem(bool getAll = true)
@@ -259,6 +262,5 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
     }
 }
