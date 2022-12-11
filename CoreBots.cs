@@ -2273,10 +2273,6 @@ public class CoreBots
                 SimpleQuestBypass(598);
                 break;
 
-            case "shadowattack":
-                SimpleQuestBypass(3798);
-                break;
-
             case "mummies":
                 SimpleQuestBypass(4616);
                 break;
@@ -2344,6 +2340,7 @@ public class CoreBots
                 break;
 
             case "confrontation":
+            case "shadowattack":
                 PrivateSimpleQuestBypass(3799);
                 break;
 

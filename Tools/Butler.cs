@@ -72,7 +72,7 @@ public class Follower
                         3004,   // doomvaultb
                         3008,   // doomvault
                         3484,   // towerofdoom
-                        3798,   // shadowattack
+                        3799,   // shadowattack
                         4616,   // mummies
                         8107    // downbelow
                     }
@@ -257,7 +257,6 @@ public class Follower
 
         int maptry = 1;
         int mapCount = Core.IsMember ? (NonMemMaps.Count() + MemMaps.Count()) : NonMemMaps.Count();
-        Bot.Quests.UpdateQuest(3799);
 
         foreach (string map in NonMemMaps)
         {
