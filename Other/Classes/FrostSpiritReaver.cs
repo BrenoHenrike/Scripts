@@ -108,11 +108,12 @@ public class FrostSpiritReaver
         Core.FarmingLogger("Glaceran Attunement", quant);
 
         Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
+        Core.AddDrop(38915, 39011);
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38915, 39011 }))
-                    Core.HuntMonster("iceplane", "Enfield", isTemp: false, log: false);
+            Core.HuntMonster("iceplane", "Enfield", isTemp: false, log: false);
         Core.Logger("Got the requirements for \"Cold Blooded\"");
-        
+
 
         Core.RegisterQuests(7921);
         while (!Bot.ShouldExit && !Core.CheckInventory("Glaceran Attunement", quant))
