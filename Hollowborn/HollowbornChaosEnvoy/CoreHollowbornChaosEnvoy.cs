@@ -90,6 +90,7 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
+        Core.ToBank(rewards);
     }
 
     public void InTheBeastsShadow(bool getAll = true)
@@ -123,6 +124,7 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
+        Core.ToBank(rewards);
     }
 
     public void UniqueQuarry(bool getAll = true)
@@ -160,6 +162,7 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
+        Core.ToBank(rewards);
     }
 
     public void WaveringIllusions(bool getAll = true)
@@ -199,6 +202,7 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
+        Core.ToBank(rewards);
     }
 
     public void ShadowsOfDisdain()
@@ -230,6 +234,7 @@ public class CoreHollowbornChaosEnvoy
         Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
         Core.EnsureComplete(9002);
+        Core.ToBank(rewards);
     }
 
     public void PersistingMayhem(bool getAll = true)
@@ -254,5 +259,6 @@ public class CoreHollowbornChaosEnvoy
                 Bot.Wait.ForPickup(s);
         }
         Core.CancelRegisteredQuests();
+        Core.ToBank(rewards);
     }
 }
