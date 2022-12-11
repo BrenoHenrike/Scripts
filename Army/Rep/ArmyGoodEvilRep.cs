@@ -57,7 +57,7 @@ public class ArmyGoodEvilREP
     {
         Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
         Army.SmartAggroMonStart("swordhavenbridge", "Slimes");
-        while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
+        while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 4 && Farm.FactionRank("Evil") < 4))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
