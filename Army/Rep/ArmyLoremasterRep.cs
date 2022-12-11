@@ -55,7 +55,7 @@ public class ArmyLoremasterRep
             Core.RegisterQuests(7505); //Studying the Rogue 7505
             Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
             while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
-            {  
+            {
                 Bot.Combat.Attack("*");
                 if (Farm.FactionRank("Loremaster") >= 3 && Core.IsMember)
                     break;
