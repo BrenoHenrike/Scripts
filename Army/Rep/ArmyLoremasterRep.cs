@@ -52,15 +52,17 @@ public class ArmyLoremasterRep
         Farm.ToggleBoost(BoostType.Reputation);
         if (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
         {
+            Core.RegisterQuests(7505); //Studying the Rogue 7505
+            Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
             while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
-            {
-                Core.RegisterQuests(7505); //Studying the Rogue 7505
-                Army.SmartAggroMonStart("wardwarf", "Drow Assassin", "D'wain Jonsen");
+            {  
+                Bot.Combat.Attack("*");
                 if (Farm.FactionRank("Loremaster") >= 3 && Core.IsMember)
                     break;
             }
             Army.AggroMonStop(true);
             Core.CancelRegisteredQuests();
+            Farm.ToggleBoost(BoostType.Reputation, false);
             if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
             {
                 Core.EnsureAccept(3029); //Rosetta Stones 3029
@@ -77,10 +79,13 @@ public class ArmyLoremasterRep
             }
             Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(3032); //Quite the Problem 3032
+            Army.SmartAggroMonStart("druids", "Young Void Giant");
+            Farm.ToggleBoost(BoostType.Reputation);
             while (!Bot.ShouldExit && Farm.FactionRank("Loremaster") < 10)
-                Army.SmartAggroMonStart("druids", "Young Void Giant");
+                Bot.Combat.Attack("*");
             Army.AggroMonStop(true);
             Core.CancelRegisteredQuests();
+            Farm.ToggleBoost(BoostType.Reputation, false);
         }
     }
 }
