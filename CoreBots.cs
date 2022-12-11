@@ -443,26 +443,12 @@ public class CoreBots
 
         foreach (string name in itemNames)
         {
-            if (Bot.Inventory.Contains(name, quant))
+            if (CheckInventory(name, quant, toInv))
             {
                 if (any)
                     return true;
                 else
                     continue;
-            }
-
-            else if (Bot.Bank.Contains(name))
-            {
-                if (toInv)
-                    Unbank(name);
-
-                if ((toInv && Bot.Inventory.GetQuantity(name) >= quant) ||
-                   (!toInv && Bot.Bank.TryGetItem(name, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
-                {
-                    if (any)
-                        return true;
-                    else continue;
-                }
             }
 
             if (!any)
@@ -479,26 +465,12 @@ public class CoreBots
 
         foreach (int id in itemIDs)
         {
-            if (Bot.Inventory.Contains(id, quant))
+            if (CheckInventory(id, quant, toInv))
             {
                 if (any)
                     return true;
                 else
                     continue;
-            }
-
-            else if (Bot.Bank.Contains(id))
-            {
-                if (toInv)
-                    Unbank(id);
-
-                if ((toInv && Bot.Inventory.GetQuantity(id) >= quant) ||
-                   (!toInv && Bot.Bank.TryGetItem(id, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
-                {
-                    if (any)
-                        return true;
-                    else continue;
-                }
             }
 
             if (!any)
