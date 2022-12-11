@@ -65,15 +65,4 @@ public class ArmyBaconCatRep
         Farm.ToggleBoost(BoostType.Reputation, false);
         Core.CancelRegisteredQuests();
     }
-
-    //Maybe will become neccessary when accounts desync cause of doing storyline
-    // void WaitCheck()
-    // {
-    //     while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
-    //     {
-    //         Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-    //         Bot.Sleep(5000);
-    //     }
-    //     Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-    // }
 }
