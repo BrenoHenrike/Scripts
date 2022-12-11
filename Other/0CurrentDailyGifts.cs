@@ -28,10 +28,7 @@ public class CurrentDailyGifts
 
     public void GetAllGifts(DailyGiftsMode mode)
     {
-        int Day = 11;
-        int Month = 12;
-        int Year = 2022;
-        DateTime lastUpdate = new(Year, Month, Day);
+        DateTime lastUpdate = DateTime.Now;
         Core.Logger("Last update to this bot was on: " + lastUpdate.ToString(formatInfo)[..10]);
 
         this.mode = mode;
