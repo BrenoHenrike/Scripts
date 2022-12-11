@@ -52,7 +52,7 @@ public class ArmyChronoSpanRep
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(2204, 2205); //Do the 'do 2204, Business is BOOMing 2205
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("thespan", "Moglin Ghost", "Minx Fairy" , "Tog", "Sneak", "Moglin Ghost");
+        Army.SmartAggroMonStart("thespan", "Moglin Ghost", "Minx Fairy", "Tog", "Sneak", "Moglin Ghost");
         while (!Bot.ShouldExit && Farm.FactionRank("ChronoSpan") < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);

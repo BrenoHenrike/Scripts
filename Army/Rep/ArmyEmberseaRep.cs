@@ -43,7 +43,7 @@ public class ArmyEmberseaRep
 
     public void Setup()
     {
-       if (Farm.FactionRank("Embersea") >= 10)
+        if (Farm.FactionRank("Embersea") >= 10)
             return;
 
         Core.PrivateRooms = true;

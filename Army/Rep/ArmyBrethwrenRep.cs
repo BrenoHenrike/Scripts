@@ -39,7 +39,6 @@ public class ArmyBrethwrenRep
         Core.SetOptions();
         bot.Options.RestPackets = false;
 
-        HarvestDay.BirdsWithHarms();
         Setup();
 
         Core.SetOptions(false);
@@ -50,6 +49,7 @@ public class ArmyBrethwrenRep
         if (Farm.FactionRank("Brethwren") >= 10)
             return;
 
+        HarvestDay.BirdsWithHarms();
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 

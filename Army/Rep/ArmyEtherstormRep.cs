@@ -43,7 +43,7 @@ public class ArmyEtherstormRep
 
     public void Setup()
     {
-       if (Farm.FactionRank("Etherstorm") >= 10)
+        if (Farm.FactionRank("Etherstorm") >= 10)
             return;
 
         Core.PrivateRooms = true;
