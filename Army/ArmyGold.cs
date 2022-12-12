@@ -1,6 +1,7 @@
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
