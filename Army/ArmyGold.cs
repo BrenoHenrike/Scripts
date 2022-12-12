@@ -2,6 +2,8 @@
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//sc_include Scripts/Story\Legion\DarkWarLegionandNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -14,6 +16,7 @@ public class ArmyGold
     private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
+    private DarkWarLegionandNation DWLN = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -90,6 +93,8 @@ public class ArmyGold
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
         
+        DWLN.DarkWarLegion();
+        
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
         Farm.ToggleBoost(BoostType.Gold);
@@ -105,6 +110,8 @@ public class ArmyGold
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        
+        DWLN.DarkWarNation();
         
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
