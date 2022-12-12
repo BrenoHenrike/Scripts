@@ -233,7 +233,7 @@ public class CoreHollowbornChaosEnvoy
         Core.HuntMonster("finalshowdown", "Prince Drakath", "Drakath Pet", isTemp: false);
         CAV.FragmentsoftheLordsA();
         CAV.FragmentsoftheLordsB();
-        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
+        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false, publicRoom: true);
 
         Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
@@ -256,7 +256,7 @@ public class CoreHollowbornChaosEnvoy
         Core.RegisterQuests(9003);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
-            Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false);
+            Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false, publicRoom: true);
 
             foreach (string s in rewards)
                 Bot.Wait.ForPickup(s);
