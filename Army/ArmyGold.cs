@@ -5,6 +5,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
+//cs_include Scripts/Story/Legion/SevenCircles(War).cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -18,6 +19,7 @@ public class ArmyGold
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
     private DarkWarLegionandNation DWLN = new();
+    public SevenCircles SC = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -49,6 +51,10 @@ public class ArmyGold
 
     public void Setup(Method mapname)
     {
+        Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.gold);
+        Farm.ToggleBoost(BoostType.Gold);
+
         if (((int)mapname == 0) || ((int)mapname == 1))
             BGE(Bot.Config.Get<Method>("mapname"));
         else if (((int)mapname == 2))
@@ -67,8 +73,6 @@ public class ArmyGold
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.EquipClass(ClassType.Farm);
-        Farm.ToggleBoost(BoostType.Gold);
         if (((int)mapname == 0 && Core.IsMember))
             Core.RegisterQuests(3991, 3992, 3993);
         else if (((int)mapname == 1))
@@ -93,12 +97,10 @@ public class ArmyGold
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        
+
         DWLN.DarkWarLegion();
-        
-        Core.EquipClass(ClassType.Farm);
+
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
-        Farm.ToggleBoost(BoostType.Gold);
         Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
@@ -111,12 +113,10 @@ public class ArmyGold
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        
+
         DWLN.DarkWarNation();
-        
-        Core.EquipClass(ClassType.Farm);
+
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
-        Farm.ToggleBoost(BoostType.Gold);
         Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
@@ -129,10 +129,10 @@ public class ArmyGold
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        
-        Core.EquipClass(ClassType.Farm);
+
+        SC.CirclesWar();
+
         Core.RegisterQuests(7979, 7980, 7981);
-        Farm.ToggleBoost(BoostType.Gold);
         Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
