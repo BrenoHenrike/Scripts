@@ -2,14 +2,14 @@
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 
-public class Generated_ArmyDreadRockLT
+public class ArmyDreadRockLT
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreArmyLite Army = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "CustomAggroMon";
+    public string OptionsStorage = "ArmyDreadrockLT";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -26,16 +26,22 @@ public class Generated_ArmyDreadRockLT
     {
         Core.SetOptions();
 
-        ArmyDreadRockLT();
+        Setup();
 
         Core.SetOptions(false);
     }
 
-    public void ArmyDreadRockLT()
-        => Army.RunGeneratedAggroMon(map, monNames, questIDs, classtype, drops);
-    private List<int> questIDs = new() { 4849 };
-    private List<string> monNames = new() { "Legion Sentinel", "Shadowknight", "Void Mercenary" };
-    private List<string> drops = new() { "Legion Token" };
-    private string map = "dreadrock";
-    private ClassType classtype = ClassType.Farm;
+    public void Setup(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant))
+            return;
+        Core.AddDrop("Legion Token");
+        Core.Logger($"Farming {quant} Legion Tokens");
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(4849);
+        Army.SmartAggroMonStart("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" });
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", 25000))
+            Bot.Combat.Attack("*");
+        Core.CancelRegisteredQuests();
+    }
 }
