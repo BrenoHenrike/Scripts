@@ -263,3 +263,4 @@ Base = WarriorScythe General = 1 | 2 | 3 | 4 = Use if Available
 Base = Witch = 1 | 2 | 3 | 4 = Use if Available
 Def = Yami no Ronin = 2 | 1 | 1 | 2 | 1 | 4 = 250
 Atk = Yami no Ronin = 3 | 2 | 3 | 3 | 1 | 3 | 1 | 4 = 250
+Solo = Yami no Ronin = 4 | 2 | 1 | 4  Use if Available
