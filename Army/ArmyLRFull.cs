@@ -176,7 +176,7 @@ public class ArmyLR
         Core.AddDrop(LRMaterials);
         Core.AddDrop(LF1);
 
-        Core.Logger($"Farming {quant} Revenant's Spellscroll");
+        Core.FarmingLogger("Revenant's Spellscroll", quant);
         Bot.Quests.UpdateQuest(2060);
         Core.RegisterQuests(6897);
         int i = 1;
@@ -213,10 +213,10 @@ public class ArmyLR
 
     public void ArmyLF3(int quant)
     {
-        Core.Logger($"Farming {quant} Exalted Crown");
+        Core.FarmingLogger("Exalted Crown", quant);
         Core.RegisterQuests(6899);
         Core.AddDrop(LF3);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", 10))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", quant))
         {
             Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
             /*This is the only not prefarmed item left to get*/
@@ -230,9 +230,6 @@ public class ArmyLR
 
     public void ArmyEvilGoodRepMax(int rank = 10)
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
         ArmyEvilGoodRank4();
         ArmyEvilGoodRankMax();
     }
@@ -269,9 +266,6 @@ public class ArmyLR
         if (Bot.Player.Gold >= quant)
             return;
 
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
         Farm.ToggleBoost(BoostType.Gold);
         Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
@@ -294,10 +288,9 @@ public class ArmyLR
         if (!Core.CheckInventory("Emblem of Dage", quant))
             Core.SellItem("Emblem of Dage", 0, true); //Cannot survive soloing these monsters without the full army
         else return;
-        Core.AddDrop("Emblem of Dage");
-        Core.Logger($"Farming {quant} Emblems");
+        Core.FarmingLogger("Emblem of Dage", quant);
+        Core.AddDrop("Emblem of Dage", "Legion Seal", "Gem of Mastery");
         Adv.BestGear(GearBoost.gold);
-        Core.AddDrop("Legion Seal", "Gem of Mastery");
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
@@ -314,10 +307,10 @@ public class ArmyLR
         else return;
         if (!Core.CheckInventory("Legion Token", 50))
             ArmyLTs(50);
-        /*Sell any existing Defeated Makai to sync up army before farming bosses*/
+        /*Sell any existing Defeated Makai to sync up army before farming bosses, log in SellItem*/
         if (Core.CheckInventory("Defeated Makai"))
             Core.SellItem("Defeated Makai", 0, true);
-        Core.Logger("Defeated Makai sold to sync up your army!");
+        Core.FarmingLogger("Diamond Token of Dage", quant);
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
@@ -378,28 +371,27 @@ public class ArmyLR
     public void ArmyDarkTokenOfDage(int quant)
     {
         if (!Core.CheckInventory("Dark Token", quant))
-            Core.SellItem("Diamond Token of Dage", 0, true);
+            Core.SellItem("Dark Token", 0, true);
         else return;
+        
+        Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
-        Core.Logger($"Farming {quant} Dark Tokens");
         Adv.BestGear(GearBoost.Human);
-        Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             ArmyHunt("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" }, "Seraphic Commanders Slain", ClassType.Farm, true, 6);
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyLTs(int quant)
+    public void ArmyLTs(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
+        Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.Logger($"Farming {quant} Legion Tokens");
         Adv.BestGear(GearBoost.Human);
-        Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Legion Token")} Legion Tokens");
         Core.RegisterQuests(4849);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", 25000))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Dreadrock Enemy Recruited", ClassType.Farm, true, 6);
         Core.CancelRegisteredQuests();
     }
@@ -441,6 +433,6 @@ public class ArmyLR
             Bot.Sleep(5000);
         }
         Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-        Bot.Sleep(7000); //To make sure everyone attack at the same time, to avoid deaths
+        Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
     }
 }
