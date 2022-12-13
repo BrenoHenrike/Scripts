@@ -205,7 +205,7 @@ public class ArmyLR
                 Core.SellItem("Dracolich Contract", 0, true);
             ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", ClassType.Farm, false, 1000);
 
-            Bot.Drops.Pickup("Revenant's Spellscroll");
+            Bot.Wait.ForPickup("Revenant's Spellscroll");
             Core.Logger($"Completed x{i++}");
         }
         Core.CancelRegisteredQuests();
@@ -214,15 +214,16 @@ public class ArmyLR
     public void ArmyLF3(int quant)
     {
         Core.Logger($"Farming {quant} Exalted Crown");
+        Core.RegisterQuests(6899);
+        Core.AddDrop(LF3);
         while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", 10))
         {
-            Core.RegisterQuests(6899);
             Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
             /*This is the only not prefarmed item left to get*/
             ArmyDarkTokenOfDage(100);
             if (!Core.CheckInventory("Legion Token", 4000))
                 ArmyLTs(4000);
-            Bot.Drops.Pickup("Exalted Crown");
+            Bot.Wait.ForPickup("Exalted Crown");
         }
         Core.CancelRegisteredQuests();
     }
@@ -245,7 +246,6 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation);
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 4 && Farm.FactionRank("Evil") < 4))
             ArmyHunt("swordhavenbridge", new[] { "Slime" }, "Slime in a Jar", ClassType.Farm, true, 6);
-
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Reputation, false);
     }
@@ -260,7 +260,6 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation);
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
             ArmyHunt("castleundead", new[] { "Skeletal Viking", "Skeletal Warrior" }, "Replacement Tibia", ClassType.Farm, true, 6);
-
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Reputation, false);
     }
@@ -302,14 +301,13 @@ public class ArmyLR
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
-			ArmyHunt("shadowblast", new[] { "Carnage" }, "Legion Seal", ClassType.Farm, false, 25 );
+            ArmyHunt("shadowblast", new[] { "Carnage" }, "Legion Seal", ClassType.Farm, false, 25);
             ArmyHunt("shadowblast", new[] { "Shadowrise Guard" }, "Gem of Mastery", ClassType.Farm, false, 1);
-            Bot.Wait.ForPickup("Emblem of Dage");
         }
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyDiamondTokenOfDage(int quant)
+    public void ArmyDiamondTokenOfDage(int quant = 300)
     {
         if (!Core.CheckInventory("Diamond Token of Dage", quant))
             Core.SellItem("Diamond Token of Dage", 0, true); //Cannot survive soloing these monsters without the full army
@@ -333,7 +331,6 @@ public class ArmyLR
             ArmyHunt("lair", new[] { "Red Dragon" }, "Red Dragon's Fang", ClassType.Solo, true, 1);
             Adv.BestGear(GearBoost.Human);
             ArmyHunt("bloodtitan", new[] { "Blood Titan" }, "Blood Titan's Blade", ClassType.Solo, true, 1);
-            Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
         }
         Core.CancelRegisteredQuests();
     }
