@@ -237,7 +237,7 @@ public class ArmyLR
 
     public void ArmyEvilGoodRank4()
     {
-        if (Farm.FactionRank("Good") < 4 && Farm.FactionRank("Evil") < 4)
+        if (Farm.FactionRank("Good") >= 4 && Farm.FactionRank("Evil") >= 4)
             return;
 
         Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
@@ -251,7 +251,7 @@ public class ArmyLR
 
     public void ArmyEvilGoodRankMax()
     {
-        if (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10)
+        if (Farm.FactionRank("Good") >= 10 && Farm.FactionRank("Evil") >= 10)
             return;
 
         Core.RegisterQuests(367, 372); //Bone-afide 367, Tomb with a View 372
