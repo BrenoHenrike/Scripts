@@ -116,6 +116,7 @@ public class ArmyLR
         /*Step 3: 3000 Dage Favor*/
         ArmyDageFavor(3000);
         /*Step 4: 10 Emblem of Dage*/
+        Legion.LegionRound4Medal();
         ArmyEmblemOfDage(10);
         /*Step 5: 300 Diamond Token of Dage*/
         ArmyDiamondTokenOfDage(300);
@@ -298,7 +299,6 @@ public class ArmyLR
         Core.Logger($"Farming {quant} Emblems");
         Adv.BestGear(GearBoost.gold);
         Core.AddDrop("Legion Seal", "Gem of Mastery");
-        ArmyLegionRound4Medal();
         Core.RegisterQuests(4742);
         ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Legion Seal", ClassType.Farm, false, (25 * (10 - Bot.Inventory.GetQuantity("Emblem of Dage"))));
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
@@ -314,8 +314,6 @@ public class ArmyLR
         if (!Core.CheckInventory("Diamond Token of Dage", quant))
             Core.SellItem("Diamond Token of Dage", 0, true); //Cannot survive soloing these monsters without the full army
         else return;
-        if (!Core.CheckInventory("Legion Round 4 Medal"))
-            ArmyLegionRound4Medal();
         if (!Core.CheckInventory("Legion Token", 50))
             ArmyLTs(50);
         /*Sell any existing Defeated Makai to sync up army before farming bosses*/
@@ -342,45 +340,45 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyLegionRound4Medal()
-    {
-        if (Core.CheckInventory("Legion Round 4 Medal"))
-            return;
+    // public void ArmyLegionRound4Medal()
+    // {
+    //     if (Core.CheckInventory("Legion Round 4 Medal"))
+    //         return;
 
-        Core.AddDrop(legionMedals);
-        Core.Logger("Farming Legion Round 4 Medal");
+    //     Core.AddDrop(legionMedals);
+    //     Core.Logger("Farming Legion Round 4 Medal");
 
-        /*Sell existing medals to sync up army. Not sure how to implement foreach to replace this mess*/
-        foreach (string item in legionMedals)
-            Core.SellItem(item, 0, true);
+    //     /*Sell existing medals to sync up army. Not sure how to implement foreach to replace this mess*/
+    //     foreach (string item in legionMedals)
+    //         Core.SellItem(item, 0, true);
 
-        Core.RegisterQuests(4738, 4739, 4740, 4741);
-        if (!Core.CheckInventory("Legion Round 1 Medal"))
-        {
-            ArmyHunt("shadowblast", new[] { "Caesaristhedark" }, "Nation Rookie Defeated", ClassType.Farm, true, 5);
-            ArmyHunt("shadowblast", new[] { "Shadowrise Guard" }, "Shadowscythe Rookie Defeated", ClassType.Farm, true, 5);
-            Bot.Wait.ForDrop("Legion Round 1 Medal");
-            Core.Logger("Medal 1 acquired");
-        }
-        if (!Core.CheckInventory("Legion Round 2 Medal"))
-        {
-            ArmyHunt("shadowblast", new[] { "Carnage" }, "Nation Veteran Defeated", ClassType.Farm, true, 7);
-            ArmyHunt("shadowblast", new[] { "Doombringer" }, "Shadowscythe Veteran Defeated", ClassType.Farm, true, 7);
-            Bot.Wait.ForDrop("Legion Round 2 Medal");
-            Core.Logger("Medal 2 acquired");
-        }
-        if (!Core.CheckInventory("Legion Round 3 Medal"))
-        {
-            ArmyHunt("shadowblast", new[] { "Minotaurofwar" }, "Nation Elite Defeated", ClassType.Farm, true, 10);
-            ArmyHunt("shadowblast", new[] { "Draconic Doomknight" }, "Shadowscythe Elite Defeated", ClassType.Farm, true, 10);
-            Bot.Wait.ForDrop("Legion Round 3 Medal");
-            Core.Logger("Medal 3 acquired");
-        }
-        ArmyHunt("shadowblast", new[] { "Thanatos" }, "Thanatos Vanquished", ClassType.Solo, true, 1);
-        Bot.Wait.ForDrop("Legion Round 4 Medal");
-        Core.Logger("Medal 4 acquired");
-        Core.CancelRegisteredQuests();
-    }
+    //     Core.RegisterQuests(4738, 4739, 4740, 4741);
+    //     if (!Core.CheckInventory("Legion Round 1 Medal"))
+    //     {
+    //         ArmyHunt("shadowblast", new[] { "Caesaristhedark" }, "Nation Rookie Defeated", ClassType.Farm, true, 5);
+    //         ArmyHunt("shadowblast", new[] { "Shadowrise Guard" }, "Shadowscythe Rookie Defeated", ClassType.Farm, true, 5);
+    //         Bot.Wait.ForDrop("Legion Round 1 Medal");
+    //         Core.Logger("Medal 1 acquired");
+    //     }
+    //     if (!Core.CheckInventory("Legion Round 2 Medal"))
+    //     {
+    //         ArmyHunt("shadowblast", new[] { "Carnage" }, "Nation Veteran Defeated", ClassType.Farm, true, 7);
+    //         ArmyHunt("shadowblast", new[] { "Doombringer" }, "Shadowscythe Veteran Defeated", ClassType.Farm, true, 7);
+    //         Bot.Wait.ForDrop("Legion Round 2 Medal");
+    //         Core.Logger("Medal 2 acquired");
+    //     }
+    //     if (!Core.CheckInventory("Legion Round 3 Medal"))
+    //     {
+    //         ArmyHunt("shadowblast", new[] { "Minotaurofwar" }, "Nation Elite Defeated", ClassType.Farm, true, 10);
+    //         ArmyHunt("shadowblast", new[] { "Draconic Doomknight" }, "Shadowscythe Elite Defeated", ClassType.Farm, true, 10);
+    //         Bot.Wait.ForDrop("Legion Round 3 Medal");
+    //         Core.Logger("Medal 3 acquired");
+    //     }
+    //     ArmyHunt("shadowblast", new[] { "Thanatos" }, "Thanatos Vanquished", ClassType.Solo, true, 1);
+    //     Bot.Wait.ForDrop("Legion Round 4 Medal");
+    //     Core.Logger("Medal 4 acquired");
+    //     Core.CancelRegisteredQuests();
+    // }
 
     public void ArmyDarkTokenOfDage(int quant)
     {
