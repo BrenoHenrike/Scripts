@@ -397,7 +397,6 @@ public class ArmyLR
 
     public void ArmyLTs(int quant)
     {
-        Core.SellItem("Legion Token", quant - 10); //In case a player has the amount, so the rest is not stuck
         if (Core.CheckInventory("Legion Token", quant))
             return;
         Core.AddDrop("Legion Token");
