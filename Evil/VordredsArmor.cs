@@ -108,8 +108,10 @@ public class VordredArmor
             Core.EnsureAccept(8380);
             Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 1, isTemp: false);
             Core.HuntMonster("lightguardwar", "Extreme Noxus", "Noxus Runes", isTemp: false);
-            Farm.Gold(20000000);
-            Core.BuyItem("necrotower", 282, "Sally's Necronomicon");
+            if (!Core.CheckInventory("Sally's Necronomicon")){
+                Farm.Gold(20000000);
+                Core.BuyItem("necrotower", 282, "Sally's Necronomicon");
+            }
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Ancient Evil of the Necropolis", isTemp: false);
             Core.EnsureComplete(8380);
