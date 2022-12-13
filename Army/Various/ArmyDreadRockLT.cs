@@ -42,7 +42,7 @@ public class ArmyDreadRockLT
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(4849);
         Army.SmartAggroMonStart("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" });
-        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", 25000))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();
     }
