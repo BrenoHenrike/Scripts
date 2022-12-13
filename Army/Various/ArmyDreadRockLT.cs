@@ -24,7 +24,9 @@ public class ArmyDreadRockLT
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
+        Core.BankingBlackList.Add("Legion Token");
+        Core.SetOptions(disableClassSwap: false);
+        Bot.Options.RestPackets = false;
 
         Setup();
 
