@@ -290,7 +290,7 @@ public class ArmyLR
         ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
     }
 
-    public void ArmyEmblemOfDage(int quant)
+    public void ArmyEmblemOfDage(int quant = 10)
     {
         if (!Core.CheckInventory("Emblem of Dage", quant))
             Core.SellItem("Emblem of Dage", 0, true); //Cannot survive soloing these monsters without the full army
@@ -300,9 +300,9 @@ public class ArmyLR
         Adv.BestGear(GearBoost.gold);
         Core.AddDrop("Legion Seal", "Gem of Mastery");
         Core.RegisterQuests(4742);
-        ArmyHunt("shadowblast", new[] { "Carnage" }, "Legion Seal", ClassType.Farm, false, (25 * (10 - Bot.Inventory.GetQuantity("Emblem of Dage"))));
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
-        {   /*Keeping second armyhunt in case gem of mastery doesn't drop within 25 legion seals, vhl experience tells me it doesn't always*/
+        {
+			ArmyHunt("shadowblast", new[] { "Carnage" }, "Legion Seal", ClassType.Farm, false, 25 );
             ArmyHunt("shadowblast", new[] { "Shadowrise Guard" }, "Gem of Mastery", ClassType.Farm, false, 1);
             Bot.Wait.ForPickup("Emblem of Dage");
         }
