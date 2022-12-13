@@ -1,4 +1,4 @@
-Farm = ArchMage = 4 H>70 M>70S | 1S | 2 M<30S | 3S = 250
+Farm = ArchMage = 1S | 4 H>70 M>70S | 2 M<30S | 3S = 250
 Solo = ArchMage = 2 | 4 | 3 | 2 | 4 | 3 | 1 = 250
 Base = Abyssal Angel = 4 | 2 | 1 | 3H<50S = 250
 Base = Abyssal Angel's Shadow = 4 | 2 | 1 | 3H<50S = 250

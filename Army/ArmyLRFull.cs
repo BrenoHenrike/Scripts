@@ -283,15 +283,17 @@ public class ArmyLR
 
     public void ArmyDageFavor(int quant)
     {
-        Core.SellItem("Dage's Favor", 0, true); //Cannot survive soloing these monsters without the full army
+        if (!Core.CheckInventory("Dage's Favor", quant))
+            Core.SellItem("Dage's Favor", 0, true); //Cannot survive soloing these monsters without the full army
+        else return;
         ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
     }
 
     public void ArmyEmblemOfDage(int quant)
     {
-        Core.SellItem("Emblem of Dage", 0, true); //Cannot survive soloing these monsters without the full army
-        if (Core.CheckInventory("Emblem of Dage", quant))
-            return;
+        if (!Core.CheckInventory("Emblem of Dage", quant))
+            Core.SellItem("Emblem of Dage", 0, true); //Cannot survive soloing these monsters without the full army
+        else return;
         Core.AddDrop("Emblem of Dage");
         Core.Logger($"Farming {quant} Emblems");
         Adv.BestGear(GearBoost.gold);
@@ -309,9 +311,9 @@ public class ArmyLR
 
     public void ArmyDiamondTokenOfDage(int quant)
     {
-        Core.SellItem("Diamond Token of Dage", 0, true); //Cannot survive soloing these monsters without the full army
-        if (Core.CheckInventory("Diamond Token of Dage", quant))
-            return;
+        if (!Core.CheckInventory("Diamond Token of Dage", quant))
+            Core.SellItem("Diamond Token of Dage", 0, true); //Cannot survive soloing these monsters without the full army
+        else return;
         if (!Core.CheckInventory("Legion Round 4 Medal"))
             ArmyLegionRound4Medal();
         if (!Core.CheckInventory("Legion Token", 50))
@@ -382,9 +384,9 @@ public class ArmyLR
 
     public void ArmyDarkTokenOfDage(int quant)
     {
-        Core.SellItem("Diamond Token of Dage", 0, true);
-        if (Core.CheckInventory("Dark Token", quant))
-            return;
+        if (!Core.CheckInventory("Dark Token", quant))
+            Core.SellItem("Diamond Token of Dage", 0, true);
+        else return;
         Core.AddDrop("Dark Token");
         Core.Logger($"Farming {quant} Dark Tokens");
         Adv.BestGear(GearBoost.Human);
