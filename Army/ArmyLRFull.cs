@@ -407,13 +407,14 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    void ArmyHunt(string map = null, string[] monsters = null, string item = null, ClassType classType = ClassType.Farm, bool isTemp = false, int quant = 0)
+    void ArmyHunt(string map = null, string[] monsters = null, string item = null, ClassType classType = ClassType.Farm, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (Core.CheckInventory(item, quant))
-            return;
+        // if (Core.CheckInventory(item, quant))
+        //     return;
+        // Let the while loop check, so it doesn't stuck, waiting for players
 
         if (item == null)
             return;
