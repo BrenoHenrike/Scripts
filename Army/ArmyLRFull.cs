@@ -300,10 +300,10 @@ public class ArmyLR
         Adv.BestGear(GearBoost.gold);
         Core.AddDrop("Legion Seal", "Gem of Mastery");
         Core.RegisterQuests(4742);
-        ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Legion Seal", ClassType.Farm, false, (25 * (10 - Bot.Inventory.GetQuantity("Emblem of Dage"))));
+        ArmyHunt("shadowblast", new[] { "Carnage" }, "Legion Seal", ClassType.Farm, false, (25 * (10 - Bot.Inventory.GetQuantity("Emblem of Dage"))));
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {   /*Keeping second armyhunt in case gem of mastery doesn't drop within 25 legion seals, vhl experience tells me it doesn't always*/
-            ArmyHunt("shadowblast", new[] { "Draconic DoomKnight, Minotaurofwar, Shadowrise Guard, DoomKnight Prime, Doombringer, Carnage, Crag and Bamboozle, Caesaristhedark, Shadow Destroyer", "Left", "*", "Legion Seal" }, "Gem of Mastery", ClassType.Farm, false, 1);
+            ArmyHunt("shadowblast", new[] { "Shadowrise Guard" }, "Gem of Mastery", ClassType.Farm, false, 1);
             Bot.Wait.ForPickup("Emblem of Dage");
         }
         Core.CancelRegisteredQuests();
@@ -324,9 +324,7 @@ public class ArmyLR
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            if (!Core.CheckInventory("Defeated Makai", 25))
-                Core.PrivateRoomNumber = 100000;
-            Core.KillMonster("tercessuinotlim", "m2", "Spawn", "Dark Makai", "Defeated Makai", 25, false, false, false);
+            Core.KillMonster("tercessuinotlim-999999", "m2", "Spawn", "Dark Makai", "Defeated Makai", 25, false, false, false);
             Adv.BestGear(GearBoost.Chaos);
             ArmyHunt("aqlesson", new[] { "Carnax" }, "Carnax Eye", ClassType.Solo, true, 1);
             ArmyHunt("deepchaos", new[] { "Kathool" }, "Kathool Tentacle", ClassType.Solo, true, 1);
