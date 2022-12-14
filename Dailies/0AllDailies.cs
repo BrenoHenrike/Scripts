@@ -35,36 +35,39 @@ public class FarmAllDailys
         Core.Logger("Doing all dailies");
 
         LOO.GetLoO();
+        BLOD.UnlockMineCrafting();
 
+        //With solo class
         Daily.MadWeaponSmith();
         Daily.CyserosSuperHammer();
         Daily.BrightKnightArmor();
-        Daily.CollectorClass();
         Glac.FrozenTower();
-        Daily.Cryomancer();
         Daily.Pyromancer();
         Daily.DeathKnightLord();
         Daily.ShadowScytheClass();
         Daily.GrumbleGrumble();
+        Daily.MonthlyTreasureChestKeys();
+        Daily.WheelofDoom();
+        Daily.FreeDailyBoost();
+        Daily.BallyhooAdRewards();
+        Daily.PowerGem();
+        Daily.DesignNotes();
+        Daily.MoglinPets();
+        // Daily.NSoDDaily();
+
+        //With farm class
+        Daily.CollectorClass();
+        Daily.Cryomancer();
         Daily.EldersBlood();
         Daily.SparrowsBlood();
         Daily.ShadowShroud();
         Daily.DagesScrollFragment();
-        Daily.CryptoToken();
         Daily.BeastMasterChallenge();
         Daily.FungiforaFunGuy();
-        BLOD.UnlockMineCrafting();
         Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
-        Daily.HardCoreMetals(ToBank: true);
-        Daily.MonthlyTreasureChestKeys();
-        Daily.WheelofDoom();
-        Daily.FreeDailyBoost();
-        // Daily.NSoDDaily();
-        Daily.BallyhooAdRewards();
-        Daily.PowerGem();
+        Daily.HardCoreMetals(new [] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury"}, 10, ToBank: true);
+        Daily.CryptoToken();
         Daily.GoldenInquisitor();
-        Daily.DesignNotes();
-        Daily.MoglinPets();
 
         Core.Logger("All dailies are completed");
     }

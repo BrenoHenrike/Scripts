@@ -172,6 +172,7 @@ Base = Northlands Monk = 1 | 2 | 3 | 4 = Use if Available
 Base = NOT A MOD = 1 | 2 | 3 | 4 = Use if Available
 Base = Nu Metal Necro = 1 | 2 | 3 | 4 = Use if Available
 Base = Oracle = 1 | 2 | 3 | 4 = Use if Available
+Base = Overworld Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Paladin = 1 | 2 | 3 | 4 = Use if Available
 Base = Paladin Highlord = 4 | 1 | 3 | 2 H<60 = 250
 Base = PaladinSlayer = 1 | 2 | 3 | 4 = Use if Available
