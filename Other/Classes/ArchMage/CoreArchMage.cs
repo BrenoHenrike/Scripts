@@ -29,7 +29,6 @@ public class CoreArchMage
         new Option<bool>("lumina_elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
         new Option<bool>("cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get ArchMage and the weapon) [On by default]", true),
         new Option<bool>("army", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
-        //new Option<bool>("voucher", "500k Vouchers?", "Do you want to use 500k vouchers instead of 100k?", true),
         CoreBots.Instance.SkipOptions,
     };
 
@@ -423,23 +422,10 @@ public class CoreArchMage
         PrismaticEther(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
         ArcaneLocus(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
 
-        //bool voucher = Bot.Config.Get<bool>("Voucher");
-
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            //if (voucher)
-            //{
-            //    // 500k * 2
-            //    Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 6);
             Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
-            //}
-            //else
-            //{
-            //    // 100k
-            //    Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
-            //    Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
-            //}
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
@@ -465,10 +451,7 @@ public class CoreArchMage
                     {
                         if (Core.CheckInventory("Yami No Ronin"))
                             Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Def);
-                        if (Core.CheckInventory("Void Highlord"))
-                            Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
-                        if (Core.CheckInventory("Void HighLord (IoDA)"))
-                            Bot.Skills.StartAdvanced("Void HighLord (IoDA)", true, ClassUseMode.Def);
+                        else Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord") ? "Void Highlord" : "Void HighLord (IoDA)", true, ClassUseMode.Def);
                         Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
                     }
                     else Item("dage", "Dage the Evil", item, quant);
@@ -477,10 +460,6 @@ public class CoreArchMage
                 case "Everlight Flame":
                     if (Core.CheckInventory("Void Highlord") || Core.CheckInventory("Void HighLord (IoDA)"))
                     {
-                        if (Core.CheckInventory("Void Highlord"))
-                            Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Def);
-                        if (Core.CheckInventory("Void HighLord (IoDA)"))
-                            Bot.Skills.StartAdvanced("Void HighLord (IoDA)", true, ClassUseMode.Def);
                         Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord") ? "Void Highlord" : "Void HighLord (IoDA)", true, ClassUseMode.Def);
                         Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
                     }
