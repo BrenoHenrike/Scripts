@@ -597,7 +597,7 @@ public class CoreLegion
 
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
-        
+
         Core.FarmingLogger("Obsidian Rock", quant);
         Core.AddDrop("Obsidian Rock");
         if (!Core.IsMember)
