@@ -16,8 +16,8 @@ public class FiendToken
     {
         Core.SetOptions();
 
-        Nation.FarmFiendToken();
         HanzoOrbQuest.HanzoOrb("FiendToken, 30");
+        Nation.FarmFiendToken();
 
         Core.SetOptions(false);
     }

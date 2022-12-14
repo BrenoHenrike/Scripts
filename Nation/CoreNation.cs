@@ -791,6 +791,25 @@ public class CoreNation
         }
     }
 
+    public void FeedtheFiend(string item = "Any", int quant = 1)
+    {
+
+        if (Core.CheckInventory(item, quant) || !Core.IsMember)
+            return;
+
+        Core.RegisterQuests(3053);
+        Core.EquipClass(ClassType.Solo);
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            FarmDiamondofNulgath(1);
+            Core.HuntMonster("lair", "Red Dragon", "Dragon Fiend Gem", isTemp: false, log: false);
+            Core.HuntMonster("battleunderd", "Glacial Horror", "Dragon Fiend Gem", isTemp: false, log: false);
+            Core.HuntMonster("dreammaze", "Screamfeeder", "Screamfeeder Heart", isTemp: false, log: false);
+        }
+        Bot.Wait.ForPickup(item);
+        Core.CancelRegisteredQuests();
+    }
+
     public void VoidKightSwordQuest(string item = "Any", int quant = 1)
     {
         if (Core.CheckInventory(item, quant) || (!Core.CheckInventory(38275) && !Core.CheckInventory(38254)))
@@ -974,6 +993,7 @@ public class CoreNation
         NewWorldsNewOpportunities("Fiend Token", quant);
         VoidKightSwordQuest("Fiend Token", quant);
         AssistingDrudgen("Fiend Token", quant);
+        FeedtheFiend("Fiend Token", quant);
     }
 
 
