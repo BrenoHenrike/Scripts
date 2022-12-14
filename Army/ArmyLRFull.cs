@@ -102,6 +102,7 @@ public class ArmyLR
     public void LR()
     {
         Legion.JoinLegion();
+        Legion.LegionRound4Medal();
         Seraph.SeraphicWar_Questline();
         Core.BankingBlackList.AddRange(new[] { "LRMaterials, LF1, LF2, LF3, legionMedals" });
         /*
@@ -114,25 +115,24 @@ public class ArmyLR
         /*Step 2: Hooded Legion Cowl funds and some change for enhancement costs*/
         ArmyGoldFarm(5500000);
         /*Step 3: 3000 Dage Favor*/
-        ArmyDageFavor(3000);
+        ArmyDageFavor();
         /*Step 4: 10 Emblem of Dage*/
-        Legion.LegionRound4Medal();
         ArmyEmblemOfDage(10);
         /*Step 5: 300 Diamond Token of Dage*/
-        ArmyDiamondTokenOfDage(300);
+        ArmyDiamondTokenOfDage();
         /*Step 6: 600 Dark Token*/
-        ArmyDarkTokenOfDage(600);
+        ArmyDarkTokenOfDage();
         /*
         ********************************************************************************
         **********************************FINISH****************************************
         ********************************************************************************
         */
         /*Step 7: LF1*/
-        ArmyLF1(20);
+        ArmyLF1();
         /*Step 9: LF2, thx tato :TatoGasm:*/
         ArmyLF2.Setup();
         /*Step 10: LF3 and Finish*/
-        ArmyLF3(10);
+        ArmyLF3();
         CoreLR.GetLR(true);
     }
 
@@ -283,7 +283,7 @@ public class ArmyLR
         ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
     }
 
-    public void ArmyEmblemOfDage(int quant = 10)
+    public void ArmyEmblemOfDage(int quant = 500)
     {
         if (!Core.CheckInventory("Emblem of Dage", quant))
             Core.SellItem("Emblem of Dage", 0, true); //Cannot survive soloing these monsters without the full army
