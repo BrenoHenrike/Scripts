@@ -136,7 +136,7 @@ public class ArmyLR
         CoreLR.GetLR(true);
     }
 
-    public void ArmyLF1(int quant)
+    public void ArmyLF1(int quant = 20)
     {
         if (Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
@@ -211,7 +211,7 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyLF3(int quant)
+    public void ArmyLF3(int quant = 10)
     {
         Core.FarmingLogger("Exalted Crown", quant);
         Core.RegisterQuests(6899);
@@ -261,7 +261,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation, false);
     }
 
-    public void ArmyGoldFarm(int quant)
+    public void ArmyGoldFarm(int quant = 100000000)
     {
         if (Bot.Player.Gold >= quant)
             return;
@@ -275,7 +275,7 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyDageFavor(int quant)
+    public void ArmyDageFavor(int quant = 3000)
     {
         if (!Core.CheckInventory("Dage's Favor", quant))
             Core.SellItem("Dage's Favor", 0, true); //Cannot survive soloing these monsters without the full army
@@ -368,12 +368,12 @@ public class ArmyLR
     //     Core.CancelRegisteredQuests();
     // }
 
-    public void ArmyDarkTokenOfDage(int quant)
+    public void ArmyDarkTokenOfDage(int quant = 600)
     {
         if (!Core.CheckInventory("Dark Token", quant))
             Core.SellItem("Dark Token", 0, true);
         else return;
-        
+
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
         Adv.BestGear(GearBoost.Human);
