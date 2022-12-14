@@ -78,7 +78,12 @@ public class CoreFireIsland
         Story.KillQuest(4075, "pyrewatch", "Lavazard");
 
         //Protect the Plague Sufferers 4076
-        Story.KillQuest(4076, "Pyrewatch", new[] { "Coal Creeper", "Lavazard", "Caustocrush" });
+        if (!Story.QuestProgression(4076))
+        {
+            Core.HuntMonster("Pyrewatch", "Coal Creeper", "Kindling", 3, log: false);
+            Core.HuntMonster("Pyrewatch", "Lavazard", "Flint and Steel", log: false);
+            Core.HuntMonster("Pyrewatch", "Caustocrush", "Coal", 6, log: false);
+        }
 
         //Ease the Ill 4077
         if (!Story.QuestProgression(4077))
@@ -88,6 +93,7 @@ public class CoreFireIsland
             Core.HuntMonster("Pyrewatch", "Living Lava", "Living Lava Blood", 2, log: false);
             Story.MapItemQuest(4077, "Pyrewatch", 3161, 5);
         }
+        
         //Defend Pyrewatch Peak 4078
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
 
