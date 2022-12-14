@@ -96,18 +96,28 @@ public class CoreFireIsland
             Core.HuntMonster("Pyrewatch", "Living Lava", "Living Lava Blood", 2, log: false);
             Story.MapItemQuest(4077, "Pyrewatch", 3161, 5);
         }
-        
+
         //Defend Pyrewatch Peak 4078
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
 
         //Signal Fire 4079
         Story.KillQuest(4079, "Pyrewatch", new[] { "Storm Scout", "Flame Soldier", "Flame Soldier", "Fyreborn Tiger" });
 
+        if (!Story.QuestProgression(4079))
+        {
+            Core.EnsureAccept(4079);
+            Core.HuntMonster("Pyrewatch", "Storm Scout", "Polish", log: false);
+            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Cloth", log: false);
+            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Stand Legs", 8, log: false);
+            Core.HuntMonster("Pyrewatch", "Fyreborn Tiger", "Reflectors", 4, log: false);
+            Core.EnsureComplete(4079);
+        }
+
         //Spreading Like Wildfire 4080
         Story.MapItemQuest(4080, "Pyrewatch", 3162, 4);
 
         //Pyrewatch Defender Badge 4081
-        Story.KillQuest(4081, "Pyrewatch", new[] { "Fire Pikeman", "Firestorm Knight", "Flame Soldier", "Storm Scout" });
+        Story.KillQuest(4081, "Pyrewatch", "Storm Scout");
     }
 
     public void Feverfew()
