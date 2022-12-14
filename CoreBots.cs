@@ -1119,7 +1119,7 @@ public class CoreBots
                             // If you have at least 1 of each item, start finding items that you dont have max stack of yet
                             if (simpleRewards.Count == 0)
                             {
-                                List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i =>i.ID).ToList();
+                                List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i => i.ID).ToList();
                                 simpleRewards =
                                     kvp.Key.SimpleRewards.Where(r => r.Type == 2 && matches.Contains(r.ID)).ToList();
                             }
@@ -1662,6 +1662,8 @@ public class CoreBots
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
+
+        JumpWait();
 
         if (CheckInventory("Dragon of Time"))
             Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
