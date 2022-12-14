@@ -107,24 +107,24 @@ public class FrostSpiritReaver
         Core.AddDrop("Glaceran Attunement");
         Core.FarmingLogger("Glaceran Attunement", quant);
 
+        Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
+        Core.AddDrop(38915, 39011);
         Core.EquipClass(ClassType.Solo);
-        if (!Core.CheckInventory("IceBreaker Mage") && !Core.CheckInventory("FrostSlayer"))
-        {
-            Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
-            Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", isTemp: false);
-            Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", isTemp: false);
-        }
+        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38915, 39011 }))
+            Core.HuntMonster("iceplane", "Enfield", isTemp: false, log: false);
+        Core.Logger("Got the requirements for \"Cold Blooded\"");
+
 
         Core.RegisterQuests(7921);
         while (!Bot.ShouldExit && !Core.CheckInventory("Glaceran Attunement", quant))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100, isTemp: false);
-            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 2, isTemp: false);
+            Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100, isTemp: false, log: false);
+            Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 2, isTemp: false, log: false);
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20, isTemp: false);
-            Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20, isTemp: false);
+            Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20, isTemp: false, log: false);
+            Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20, isTemp: false, log: false);
 
             Bot.Wait.ForPickup("Glaceran Attunement");
         }
@@ -194,9 +194,9 @@ public class FrostSpiritReaver
             Core.RegisterQuests(7841);
             while (!Bot.ShouldExit && !Core.CheckInventory("Icy Token IV", Token4))
             {
-                Core.HuntMonster("icedungeon", "Image of Glace", "Glace's Approval");
-                Core.HuntMonster("icedungeon", "Abel", "Abel's Approval");
-                Core.HuntMonster("icedungeon", "Shade of Kyanos", "Kyanos' Approval");
+                Core.HuntMonster("icedungeon", "Image of Glace", "Glace's Approval", log: false);
+                Core.HuntMonster("icedungeon", "Abel", "Abel's Approval", log: false);
+                Core.HuntMonster("icedungeon", "Shade of Kyanos", "Kyanos' Approval", log: false);
 
                 Bot.Wait.ForPickup("Icy Token IV");
             }

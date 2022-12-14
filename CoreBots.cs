@@ -443,26 +443,12 @@ public class CoreBots
 
         foreach (string name in itemNames)
         {
-            if (Bot.Inventory.Contains(name, quant))
+            if (CheckInventory(name, quant, toInv))
             {
                 if (any)
                     return true;
                 else
                     continue;
-            }
-
-            else if (Bot.Bank.Contains(name))
-            {
-                if (toInv)
-                    Unbank(name);
-
-                if ((toInv && Bot.Inventory.GetQuantity(name) >= quant) ||
-                   (!toInv && Bot.Bank.TryGetItem(name, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
-                {
-                    if (any)
-                        return true;
-                    else continue;
-                }
             }
 
             if (!any)
@@ -479,26 +465,12 @@ public class CoreBots
 
         foreach (int id in itemIDs)
         {
-            if (Bot.Inventory.Contains(id, quant))
+            if (CheckInventory(id, quant, toInv))
             {
                 if (any)
                     return true;
                 else
                     continue;
-            }
-
-            else if (Bot.Bank.Contains(id))
-            {
-                if (toInv)
-                    Unbank(id);
-
-                if ((toInv && Bot.Inventory.GetQuantity(id) >= quant) ||
-                   (!toInv && Bot.Bank.TryGetItem(id, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
-                {
-                    if (any)
-                        return true;
-                    else continue;
-                }
             }
 
             if (!any)
@@ -1142,17 +1114,15 @@ public class CoreBots
                             // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                    Bot.Inventory.GetQuantity(r.ID) <= 0 && Bot.Bank.GetQuantity(r.ID) <= 0).ToList();
+                                    !CheckInventory(r.ID, toInv: false)).ToList();
 
                             // If you have at least 1 of each item, start finding items that you dont have max stack of yet
                             if (simpleRewards.Count == 0)
                             {
+                                List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i => i.ID).ToList();
                                 simpleRewards =
-                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                        (!Bot.Inventory.IsMaxStack(r.ID) &&
-                                        !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
+                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 && matches.Contains(r.ID)).ToList();
                             }
-
                             if (simpleRewards.Count == 0)
                             {
                                 EnsureComplete(kvp.Key.ID);
@@ -1692,6 +1662,8 @@ public class CoreBots
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
+
+        JumpWait();
 
         if (CheckInventory("Dragon of Time"))
             Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
@@ -2273,10 +2245,6 @@ public class CoreBots
                 SimpleQuestBypass(598);
                 break;
 
-            case "shadowattack":
-                SimpleQuestBypass(3798);
-                break;
-
             case "mummies":
                 SimpleQuestBypass(4616);
                 break;
@@ -2344,6 +2312,7 @@ public class CoreBots
                 break;
 
             case "confrontation":
+            case "shadowattack":
                 PrivateSimpleQuestBypass(3799);
                 break;
 

@@ -390,15 +390,15 @@ public class UnlockForgeEnhancements
             return;
 
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
+        FCA.GetFireChampsArmor();
+        DOT.GetDoT(doExtra: false);
+        ED.getSet();
         LOO.GetLoO();
         if (!Core.isCompletedBefore(7165))
         {
             Core.Logger("Quest Progrestion not Available For LOO (requires last quest to be complete and these are dailies)");
             return;
         }
-        FCA.GetFireChampsArmor();
-        DOT.GetDoT(doExtra: false);
-        ED.getSet();
         if (!Core.CheckInventory(23689))
         {
             Core.EquipClass(ClassType.Solo);

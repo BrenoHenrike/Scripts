@@ -669,11 +669,12 @@ public class CoreDoomwood
         //7624    EN GARDE!
         if (!Story.QuestProgression(7624))
         {
+            Bot.Quests.UpdateQuest(7623); //dunno it makes dood apear :shrug:
             Core.EnsureAccept(7624);
-            Core.HuntMonsterMapID("stonewooddeep", 1, "Defeat Asherion");
+            Core.KillMonster("stonewooddeep", "r2", "Left", "Asherion", "Defeat Asherion");
             Core.EnsureAccept(7624);
         }
-        
+
         //7625    The Light Of Destiny
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
 

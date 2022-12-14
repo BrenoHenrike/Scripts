@@ -884,18 +884,20 @@ public class CoreFarms
         }
         Core.CancelRegisteredQuests();
 
-        Core.EquipClass(ClassType.Solo);
-        Core.RegisterQuests(8736);
         Bot.Quests.UpdateQuest(3484);
+        Core.RegisterQuests(8736);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
-            Bot.Sleep(Core.ActionDelay);
-            Bot.Drops.Add("Monster Trophy");
-            if (CanSolo)
-                Core.HuntMonster("towerofdoom10", "Slugbutter", "Monster Trophy", 15, isTemp: false, log: false);
-            else Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
+            if (CanSolo)
+                Core.HuntMonster("towerofdoom10", "Slugbutter", "Monster Trophy", 15, isTemp: false, log: false);
+            else
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
+            }
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);

@@ -21,25 +21,28 @@ public class YouMadBroBadge
 
     public void Badge()
     {
+        if (Core.HasWebBadge(badge))
+        {
+            Core.Logger($"Already have the {badge} badge");
+            return;
+        }
+
         Farm.AlchemyREP();
 
-        while (!Bot.ShouldExit && !Core.HasAchievement(15))
+        while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
             Core.AddDrop("Dragon Scale", "Ice Vapor");
-            Core.Logger("Farming Reagents.\n" +
-            "buying takes 60m / 30 achemy Packets.\n" +
-            "meaning youd have to Farm gold each go around.");
             Core.FarmingLogger("Dragon Scale", 30);
             Core.FarmingLogger("Ice Vapor", 30);
             while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory(11478, 30))
                 Core.KillMonster("lair", "Enter", "Spawn", "*", log: false);
-            Core.Logger($"Buying Runestones");
             Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8845);
-            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8844);
-            //the 2nd buy is for if its close but not at max stack, it wont buy the full 30.
-            Core.Join("alchemy");
-            Core.Logger($"Beginning RNG");
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
         }
+        Core.SellItem("Dragon Scale", all: true);
+        Core.SellItem("Ice Vapor", all: true);
+        Core.ToBank("Dragon Runestone");
     }
+    // private string[] PotionsToSell = {"Life Potion", "Basic Crusader Elixir", "Basic Barrier Potion", "Basic Crusader Elixir", "Divine Elixir", "Barrier Potion", "Basic Barrier Potion", "Basic Divine Elixir", "Crusader Elixir"};
+    private string badge = "You mad bro?";
 }

@@ -34,20 +34,19 @@ public class CoreLegion
         if (!Core.CheckInventory("Legion Round 4 Medal"))
             LegionRound4Medal();
 
-        Core.AddDrop("Legion Seal", "Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.gold);
-        Core.Logger($"Farming {quant} Emblems");
-        int i = 1;
+
+        Core.FarmingLogger("Emblem of Dage", quant);
+        Core.AddDrop("Legion Seal", "Gem of Mastery");
+        Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
-            Core.EnsureAccept(4742);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 25, false);
-            Core.EnsureComplete(4742);
             Bot.Wait.ForPickup("Emblem of Dage");
-            Core.Logger($"Completed x{i++}");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DarkToken(int quant = 600)
@@ -55,16 +54,15 @@ public class CoreLegion
         if (Core.CheckInventory("Dark Token", quant))
             return;
 
-        Core.AddDrop("Dark Token");
-        Core.Logger($"Farming {quant} Dark Tokens");
         Core.EquipClass(ClassType.Farm);
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
         Adv.BestGear(GearBoost.Human);
-        Core.Logger($"Starting off with {Bot.Inventory.GetQuantity("Dark Token")} Dark Tokens");
+
+        Core.AddDrop("Dark Token");
+        Core.FarmingLogger("Dark Token", quant);
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.KillMonster("seraphicwardage", "r3", "Right", "*", log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Soldier", log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -79,12 +77,11 @@ public class CoreLegion
         if (!Core.CheckInventory("Legion Token", 50))
             FarmLegionToken(50);
 
+        Core.FarmingLogger("Diamond Token of Dage", quant);
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
-
-        int i = 1;
+        Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            Core.EnsureAccept(4743);
             if (!Core.CheckInventory("Defeated Makai", 25))
             {
                 Core.EquipClass(ClassType.Farm);
@@ -101,10 +98,9 @@ public class CoreLegion
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Adv.BestGear(GearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-            Core.EnsureComplete(4743);
             Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
-            Core.Logger($"Completed x{i++}");
         }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -191,15 +187,18 @@ public class CoreLegion
         if (Core.CheckInventory("Bone Sigil", quant))
             return;
 
-        Core.AddDrop("Bone Sigil");
+        Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Undead);
+
+        Core.FarmingLogger("Bone Sigil", quant);
+        Core.AddDrop("Bone Sigil");
+        Core.RegisterQuests(6739);
         while (!Bot.ShouldExit && !Core.CheckInventory("Bone Sigil", quant))
         {
-            Core.EnsureAccept(6739);
             Core.HuntMonster("legionarena", "Legion Gladiator", "Legion Grunt Defeated", 5);
-            Core.EnsureComplete(6739);
             Bot.Wait.ForPickup("Bone Sigil");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void SoulForgeHammer()
@@ -207,8 +206,10 @@ public class CoreLegion
         if (Core.CheckInventory("SoulForge Hammer"))
             return;
 
-        Core.AddDrop("SoulForge Hammer");
+        Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.dmgAll);
+
+        Core.AddDrop("SoulForge Hammer");
         Core.EnsureAccept(2741);
         Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", isTemp: false);
         // Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", isTemp: false);
@@ -246,11 +247,11 @@ public class CoreLegion
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet") || !Bot.Quests.IsDailyComplete(3394))
             return;
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Chaos);
 
         Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
         Core.RegisterQuests(3394);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaorrupted Dark Fire", 20, isTemp: false, log: false);
@@ -264,11 +265,11 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
         Core.RegisterQuests(3722);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -285,11 +286,11 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
         Core.RegisterQuests(5738);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -308,11 +309,11 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
         Core.RegisterQuests(3256);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -330,13 +331,12 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
         Core.RegisterQuests(3968, 3969);
-
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("frozenruins", "Frost Fangbeast", "Frost Heart", 10);
@@ -354,19 +354,20 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token", "Legion Token Pile");
         Core.RegisterQuests(4704, 4703);
-
+        Core.ConfigureAggro();
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Loyalty", 10);
             Core.KillMonster("brightfortress", "r3", "Right", "*", "Badge of Corruption", 8);
             Core.KillMonster("brightfortress", "r3", "Right", "*", "Twisted Light Token", 6);
         }
+        Core.ConfigureAggro(false);
         Core.CancelRegisteredQuests();
     }
 
@@ -377,8 +378,6 @@ public class CoreLegion
             return;
 
         JoinLegion();
-
-        Core.AddDrop("Legion Token");
 
         int QuestID = 0;
         if (Core.CheckInventory("Shogun Paragon Pet"))
@@ -395,11 +394,12 @@ public class CoreLegion
         else if (Core.CheckInventory("Paragon Ringbearer"))
             QuestID = 7073;
 
-        Core.FarmingLogger("Legion Token", quant);
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
-        Core.RegisterQuests(QuestID);
 
+        Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
+        Core.RegisterQuests(QuestID);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("fotia", "Fotia Elemental", "Nothing Heard", 10);
@@ -415,24 +415,24 @@ public class CoreLegion
             return;
 
         JoinLegion();
-        Adv.BestGear(GearBoost.Undead);
 
-        Core.AddDrop("Legion Token", "Bone Sigil");
         Core.Join("legionarena", publicRoom: true);
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
             Core.Join("legionarena", ignoreCheck: true, publicRoom: true);
-            if (Bot.Map.PlayerCount < partySize)
-                return;
+            while (Bot.Map.PlayerCount < partySize)
+                Bot.Sleep(5000);
+            Core.Logger($"Party gathered [{Bot.Map.PlayerNames.Count}/{partySize}]");
         }
 
-        Core.FarmingLogger("Legion Token", quant);
         Core.EquipClass(ClassType.Solo);
-        Core.RegisterQuests(6742, 6743);
+        Adv.BestGear(GearBoost.Undead);
 
+        Core.FarmingLogger("Legion Token", quant);
+        Core.RegisterQuests(6742, 6743);
+        Core.AddDrop("Legion Token", "Bone Sigil");
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("legionarena", "Boss", "Left", "Legion Fiend Rider", log: false);
-
         Core.CancelRegisteredQuests();
         Core.ToBank("Bone Sigil");
     }
@@ -445,17 +445,15 @@ public class CoreLegion
         JoinLegion();
         Core.BuyItem("underworld", 216, "Undead Champion");
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Human);
 
         Core.FarmingLogger("Legion Token", quant);
-        Core.Join("dreadrock");
         Core.RegisterQuests(4849);
+        Core.AddDrop("Legion Token");
         Core.ConfigureAggro();
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dreadrock", "r3", "Bottom", "*", "Dreadrock Enemy Recruited", 6, log: false);
-
         Core.ConfigureAggro(false);
         Core.CancelRegisteredQuests();
     }
@@ -467,14 +465,12 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token", "Granite Dracolich Soul", "Tempest Dracolich Soul", "Deluge Dracolich Soul", "Inferno Dracolich Soul");
-
-        Core.Join("dragonheart");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Dragonkin);
-        Core.FarmingLogger("Legion Token", quant);
-        Core.RegisterQuests(4896);
 
+        Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token", "Granite Dracolich Soul", "Tempest Dracolich Soul", "Deluge Dracolich Soul", "Inferno Dracolich Soul");
+        Core.RegisterQuests(4896);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
@@ -492,17 +488,14 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token");
-
-        Core.Join("dragonheart");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Dragonkin);
-        Core.FarmingLogger("Legion Token", quant);
-        Core.RegisterQuests(4100);
 
+        Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
+        Core.RegisterQuests(4100);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Core.KillMonster("dragonheart", "r6", "Right", "Zombie Dragon", "Elemental Dragon Soul", 20);
-
         Core.CancelRegisteredQuests();
     }
 
@@ -511,10 +504,11 @@ public class CoreLegion
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Paragon Dreadnaught Pet"))
             return;
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
-        Core.FarmingLogger("Legion Token", quant);
+        Adv.BestGear(GearBoost.dmgAll);
 
+        Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
         Core.RegisterQuests(5741);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
@@ -532,10 +526,12 @@ public class CoreLegion
 
         JoinLegion();
 
-        Core.AddDrop("Legion Token");
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(5604);
+        Adv.BestGear(GearBoost.dmgAll);
 
+        Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
+        Core.RegisterQuests(5604);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("frozentower", "Ice Wolf", "Giant Coal Lump", 10);
@@ -599,9 +595,11 @@ public class CoreLegion
 
         SoulForgeHammer();
 
-        Core.AddDrop("Obsidian Rock");
         Core.EquipClass(ClassType.Farm);
-
+        Adv.BestGear(GearBoost.dmgAll);
+        
+        Core.FarmingLogger("Obsidian Rock", quant);
+        Core.AddDrop("Obsidian Rock");
         if (!Core.IsMember)
         {
             Core.Logger("Using Non-Member Method");

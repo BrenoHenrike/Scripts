@@ -46,6 +46,7 @@
 //cs_include Scripts/Other/Badges/Goal.cs
 //cs_include Scripts/Other/Badges/UltraCarnax.cs
 //cs_include Scripts/Story/MagicThief.cs
+//cs_include Scripts/Seasonal/Frostvale/FrostvaleBadges.cs
 using Skua.Core.Interfaces;
 
 public class AllBadges
@@ -82,6 +83,7 @@ public class AllBadges
     public ThiefofChaosBadge ToC = new();
     public UltraCarnaxBadge UC = new();
     public GoalBadge G = new();
+    public FrostvaleBadges FV = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -115,6 +117,7 @@ public class AllBadges
         ToC.Badge();
         UC.Badge();
         G.Badge();
+        FV.Badges();
         //add more as they are made.
 
         Core.SetOptions(false);

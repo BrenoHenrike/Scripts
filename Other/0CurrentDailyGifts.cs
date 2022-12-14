@@ -28,10 +28,7 @@ public class CurrentDailyGifts
 
     public void GetAllGifts(DailyGiftsMode mode)
     {
-        int Day = 4;
-        int Month = 12;
-        int Year = 2022;
-        DateTime lastUpdate = new(Year, Month, Day);
+        DateTime lastUpdate = DateTime.Now;
         Core.Logger("Last update to this bot was on: " + lastUpdate.ToString(formatInfo)[..10]);
 
         this.mode = mode;
@@ -122,6 +119,12 @@ public class CurrentDailyGifts
             #region December 4 leaves December 31
 
             GetGift(AvailableUntil(31, 12), "ebilcorphq", "Master Chairman", "Suave Suit of Ebil", "Chic Frostval Locks", "Chic Frostval Locks + Glasses", "Chic Locks", "Chic Locks + Glasses", "Suave Frostval Hair + Glasses", "Suave Frostval Hat", "Suave Hair", "Suave Hair + Glasses", "Classy Cane of Ebil", "Elegant Cane of Ebil");
+            GetGift(AvailableUntil(31, 12), "Helsgrove", "Helsdottir", "Frostval Barbarian Axe", "Frostval Barbarian Axes");
+            GetGift(AvailableUntil(31, 12), "deerhunt", "Deer?", "Little Reindeer Morph", "Reind'AWWW Moglin");
+            GetGift(AvailableUntil(31, 12), "yulecat", "Kitty Yu Yule", "Beleen's Festive Frostval Outfit", "Beleen's Festive Hero Hat + Locks", "Beleen's Festive Hero Hat + Hair");
+            // GetGift(AvailableUntil(31, 12), "ultrafrostfang", "Ultra Frost Fang", "Antisam's Frost Dragon"); /Release: 15/12/22
+            // GetGift(AvailableUntil(31, 12), "snowview", "Acrtic Fox", "Acrtic Fox Pet + Guards"); /Release: 17/12/22
+            // GetGift(AvailableUntil(31, 12), "deerhunt", "Zweinichtirsch", "Spirit of Frostval"); /Release: 18/12/22
             
             #endregion
 
