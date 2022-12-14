@@ -1114,17 +1114,15 @@ public class CoreBots
                             // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                    Bot.Inventory.GetQuantity(r.ID) <= 0 && Bot.Bank.GetQuantity(r.ID) <= 0).ToList();
+                                    !CheckInventory(r.ID, toInv: false)).ToList();
 
                             // If you have at least 1 of each item, start finding items that you dont have max stack of yet
                             if (simpleRewards.Count == 0)
                             {
+                                List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i =>i.ID).ToList();
                                 simpleRewards =
-                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                        (!Bot.Inventory.IsMaxStack(r.ID) &&
-                                        !(Bot.Bank.TryGetItem(r.ID, out InventoryItem? item) && item != null && item.Quantity >= item.MaxStack))).ToList();
+                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 && matches.Contains(r.ID)).ToList();
                             }
-
                             if (simpleRewards.Count == 0)
                             {
                                 EnsureComplete(kvp.Key.ID);
