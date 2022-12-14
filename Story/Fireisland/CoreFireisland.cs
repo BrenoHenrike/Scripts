@@ -80,14 +80,17 @@ public class CoreFireIsland
         //Protect the Plague Sufferers 4076
         if (!Story.QuestProgression(4076))
         {
+            Core.EnsureAccept(4076);
             Core.HuntMonster("Pyrewatch", "Coal Creeper", "Kindling", 3, log: false);
             Core.HuntMonster("Pyrewatch", "Lavazard", "Flint and Steel", log: false);
             Core.HuntMonster("Pyrewatch", "Caustocrush", "Coal", 6, log: false);
+            Core.EnsureComplete(4076);
         }
 
         //Ease the Ill 4077
         if (!Story.QuestProgression(4077))
         {
+            Core.EnsureAccept(4077);
             Core.HuntMonster("Pyrewatch", "Lavazard", "Wickskin Root", 3, log: false);
             Core.HuntMonster("Pyrewatch", "Lavazard", "Zard Marrow", 3, log: false);
             Core.HuntMonster("Pyrewatch", "Living Lava", "Living Lava Blood", 2, log: false);
