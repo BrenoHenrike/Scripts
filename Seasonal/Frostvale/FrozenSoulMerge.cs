@@ -94,18 +94,8 @@ public class FrozenSoulMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Frozen Rune of Kheimon":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", req.Name, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Poleaxe of Kheimon":
+                case "Frozen Rune of Kheimon":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
