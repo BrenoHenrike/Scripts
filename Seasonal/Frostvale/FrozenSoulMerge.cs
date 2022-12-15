@@ -53,6 +53,7 @@ public class FrozenSoulMerge
                     break;
                 #endregion
 
+                case "Elegant Frostval Wrap":
                 case "Hammered Ice":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
@@ -66,75 +67,7 @@ public class FrozenSoulMerge
                     break;
 
                 case "Frosted Heart":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7263);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("frozensoul", "Jack Frost", "Jack's Frosted Heart", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Frozen Soul":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7264);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", "Queen's Frozen Soul", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Frozen Rune of Kheimon":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", "Frozen Rune of Kheimon", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Poleaxe of Kheimon":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", "Poleaxe of Kheimon", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Elegant Frostvale Suit":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7264);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", "Queen's Frozen Soul", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Cheery Frostvale Hat + Locks":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7263);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("frozensoul", "Jack Frost", "Jack's Frosted Heart", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Cheery Frostvale Hat":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
@@ -147,19 +80,9 @@ public class FrozenSoulMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Elegant Frostval Wrap":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7262);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("frozensoul", "Frozen Minion", "Shard of Ice", 10, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
+                case "Elegant Frostvale Suit":
                 case "Ruby Frostval Cane":
+                case "Frozen Soul":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(7264);
@@ -171,6 +94,17 @@ public class FrozenSoulMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Poleaxe of Kheimon":
+                case "Frozen Rune of Kheimon":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.KillMonster("frozensoul", "r4", "Left", "*", req.Name, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
             }
         }
     }
