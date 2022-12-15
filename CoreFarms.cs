@@ -1815,7 +1815,7 @@ public class CoreFarms
         if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
 
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 && FactionRank("Loremaster") < rank)
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 || FactionRank("Loremaster") < rank)
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505); //Studying the Rogue 7505
@@ -1845,11 +1845,14 @@ public class CoreFarms
                 Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
                 Core.EnsureComplete(3031);
             }
-            Core.EquipClass(ClassType.Solo);
-            Core.RegisterQuests(3032); //Quite the Problem 3032
-            while (!Bot.ShouldExit && Core.IsMember && FactionRank("Loremaster") < rank)
-                Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
-            Core.CancelRegisteredQuests();
+            if (Core.IsMember)
+            {
+                Core.EquipClass(ClassType.Solo);
+                Core.RegisterQuests(3032); //Quite the Problem 3032
+                while (!Bot.ShouldExit && Core.IsMember && FactionRank("Loremaster") < rank)
+                    Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
+                Core.CancelRegisteredQuests();
+            }
         }
     }
 

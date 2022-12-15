@@ -91,7 +91,7 @@ public class ArmyLR
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.SetOptions(disableClassSwap: true);
+        Core.SetOptions();
         Bot.Options.RestPackets = false;
 
         LR();
@@ -188,7 +188,6 @@ public class ArmyLR
                 Core.SellItem("Aeacus Empowered", 0, true);
             ArmyHunt("judgement", new[] { "Ultra Aeacus" }, "Aeacus Empowered", ClassType.Solo, false, 50);
 
-            Core.EquipClass(ClassType.Farm);
             Adv.BestGear(GearBoost.dmgAll);
             if (!Core.CheckInventory("Tethered Soul", 300))
                 Core.SellItem("Tethered Soul", 0, true);
