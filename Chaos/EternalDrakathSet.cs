@@ -62,7 +62,7 @@ public class EternalDrakath
             Core.RegisterQuests(4413);
             while (!Bot.ShouldExit && !Core.CheckInventory("Star Fragment", 33))
             {
-                Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30, isTemp: false);
+                Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 33, isTemp: false);
                 Bot.Wait.ForPickup("Star Fragment");
             }
             Core.CancelRegisteredQuests();
