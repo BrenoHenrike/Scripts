@@ -1910,35 +1910,28 @@ public class Core13LoC
         {
             Core.EnsureAccept(3187);
             Core.EquipClass(ClassType.Farm);
+            Core.AddDrop("Harpy Feather", "Perfect Prism", "Unchaorrupted Sample");
+
             //Reflect the Damage
-            if ((!Core.CheckInventory("Perfect Prism")))
-            {
-                Core.AddDrop("Perfect Prism");
-                Core.EnsureAccept(3184);
+            Core.RegisterQuests(3184);
+            while ((!Core.CheckInventory("Perfect Prism")))
                 Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
-                Core.EnsureComplete(3184);
-                Bot.Wait.ForPickup("Perfect Prism");
-            }
+            Core.CancelRegisteredQuests();
+            Bot.Wait.ForPickup("Perfect Prism");
 
             //Pure Chaos 
-            if (!Core.CheckInventory("Unchaorrupted Sample"))
-            {
-                Core.AddDrop("Unchaorrupted Sample");
-                Core.EnsureAccept(3185);
+            Core.RegisterQuests(3185);
+            while (!Core.CheckInventory("Unchaorrupted Sample"))
                 Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
-                Core.EnsureComplete(3185);
-                Bot.Wait.ForPickup("Unchaorrupted Sample");
-            }
+            Core.CancelRegisteredQuests();
+            Bot.Wait.ForPickup("Unchaorrupted Sample");
 
             //Enemies of a Feather Flock Together
-            if (!Core.CheckInventory("Harpy Feather"))
-            {
-                Core.AddDrop("Harpy Feather");
-                Core.EnsureAccept(3186);
+            Core.RegisterQuests(3186);
+            while (!Core.CheckInventory("Harpy Feather"))
                 Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
-                Core.EnsureComplete(3186);
-                Bot.Wait.ForPickup("Harpy Feather");
-            }
+            Core.CancelRegisteredQuests();
+            Bot.Wait.ForPickup("Harpy Feather");
 
             //Ward Off the Beast
             Core.Join("mirrorportal");
