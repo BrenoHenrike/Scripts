@@ -46,6 +46,7 @@
 //cs_include Scripts/Other/Badges/Goal.cs
 //cs_include Scripts/Other/Badges/UltraCarnax.cs
 //cs_include Scripts/Story/MagicThief.cs
+//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/FrostvaleBadges.cs
 using Skua.Core.Interfaces;
 
