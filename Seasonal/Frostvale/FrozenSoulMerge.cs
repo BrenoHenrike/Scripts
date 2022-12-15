@@ -53,6 +53,7 @@ public class FrozenSoulMerge
                     break;
                 #endregion
 
+                case "Elegant Frostval Wrap":
                 case "Hammered Ice":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
@@ -66,6 +67,8 @@ public class FrozenSoulMerge
                     break;
 
                 case "Frosted Heart":
+                case "Cheery Frostvale Hat + Locks":
+                case "Cheery Frostvale Hat":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(7263);
@@ -77,6 +80,8 @@ public class FrozenSoulMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Elegant Frostvale Suit":
+                case "Ruby Frostval Cane":
                 case "Frozen Soul":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
@@ -110,67 +115,6 @@ public class FrozenSoulMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
-
-                case "Elegant Frostvale Suit":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7264);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", "Queen's Frozen Soul", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Cheery Frostvale Hat + Locks":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7263);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("frozensoul", "Jack Frost", "Jack's Frosted Heart", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Cheery Frostvale Hat":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7263);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("frozensoul", "Jack Frost", "Jack's Frosted Heart", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Elegant Frostval Wrap":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7262);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("frozensoul", "Frozen Minion", "Shard of Ice", 10, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "Ruby Frostval Cane":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(7264);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", "Queen's Frozen Soul", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
             }
         }
     }
