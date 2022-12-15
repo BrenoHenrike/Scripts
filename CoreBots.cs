@@ -2028,7 +2028,7 @@ public class CoreBots
             if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape" && Item != "False") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
             {
                 Bot.Inventory.EquipItem(Item);
-                Bot.Sleep(ActionDelay);
+                Bot.Wait.ForItemEquip(Item);
                 if (logEquip)
                     Logger($"Equipped {Item}");
             }
