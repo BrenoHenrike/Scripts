@@ -300,16 +300,16 @@ public class CoreStory
         foreach (var quest in questData)
         {
             var desiredQuestReward = quest.Rewards.Where(r => questData.Any(q => q.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))).ToList();
-            var requieredQuestID = questData.Find((q => q.Rewards.Any(r => quest.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))))?.ID ?? 0;
-            var requieredQuestReward = quest.AcceptRequirements?.Where(r => questData.Any(q => q.Rewards.Any(a => a.ID == r.ID || a.Name == r.Name)))?.ToList();
+            var requiredQuestID = questData.Find((q => q.Rewards.Any(r => quest.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))))?.ID ?? 0;
+            var requiredQuestReward = quest.AcceptRequirements?.Where(r => questData.Any(q => q.Rewards.Any(a => a.ID == r.ID || a.Name == r.Name)))?.ToList();
 
             Core.DebugLogger(this, $"{quest.ID}\t\t");
             Core.DebugLogger(this, $"{desiredQuestReward.FirstOrDefault()?.Name}\t");
-            Core.DebugLogger(this, $"{requieredQuestID}\t\t");
-            Core.DebugLogger(this, $"{requieredQuestReward.FirstOrDefault()?.Name}\t");
+            Core.DebugLogger(this, $"{requiredQuestID}\t\t");
+            Core.DebugLogger(this, $"{requiredQuestReward.FirstOrDefault()?.Name}\t");
             Core.DebugLogger(this, "-------------\t");
 
-            if (requieredQuestReward.Count() == 0 && quest.AcceptRequirements.Count() > 0)
+            if (requiredQuestReward.Count() == 0 && quest.AcceptRequirements.Count() > 0)
             {
                 Core.Logger("The managed failed to find the location of \"" +
                 String.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
@@ -318,7 +318,7 @@ public class CoreStory
                 return;
             }
 
-            whereToGet.Add(new(quest.ID, desiredQuestReward, requieredQuestID, requieredQuestReward));
+            whereToGet.Add(new(quest.ID, desiredQuestReward, requiredQuestID, requiredQuestReward));
         }
 
         if (whereToGet.All(x => x.desiredQuestReward.Count == 0) || whereToGet.All(x => x.requiredQuestReward.Count == 0))
@@ -361,7 +361,7 @@ public class CoreStory
             if (runQuestData.desiredQuestReward.Count == 0 && questID != finalItemQuestID)
             {
                 if (!Core.CheckInventory(requiredReward))
-                    runQuest(runQuestData.requieredQuestID);
+                    runQuest(runQuestData.requiredQuestID);
                 return;
             }
 
@@ -375,7 +375,7 @@ public class CoreStory
             Core.DebugLogger(this);
 
             if (!Core.CheckInventory(requiredReward))
-                runQuest(runQuestData.requieredQuestID);
+                runQuest(runQuestData.requiredQuestID);
 
             if (_LegacyQuestStop)
                 return;
@@ -406,14 +406,14 @@ public class CoreStory
     {
         public int desiredQuestID { get; set; } // In order to do ....
         public List<ItemBase> desiredQuestReward { get; set; } // And obtain ...
-        public int requieredQuestID { get; set; } // You must do ...
+        public int requiredQuestID { get; set; } // You must do ...
         public List<ItemBase> requiredQuestReward { get; set; } // And obtain ...
 
-        public LegacyQuestObject(int desiredQuestID, List<ItemBase> desiredQuestReward, int requieredQuestID, List<ItemBase> requiredQuestReward)
+        public LegacyQuestObject(int desiredQuestID, List<ItemBase> desiredQuestReward, int requiredQuestID, List<ItemBase> requiredQuestReward)
         {
             this.desiredQuestID = desiredQuestID;
             this.desiredQuestReward = desiredQuestReward;
-            this.requieredQuestID = requieredQuestID;
+            this.requiredQuestID = requiredQuestID;
             this.requiredQuestReward = requiredQuestReward;
         }
     }
