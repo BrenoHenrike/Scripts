@@ -49,8 +49,7 @@ public class EternalDrakath
 
         BLOD.FindingFragmentsBlade(2000, 0);
 
-        if (!Core.CheckInventory("Crystallized Chaos", 800))
-            Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Farm);
         Core.KillMonster("chaoslab", "r3", "Center", "Chaorrupted Moglin", "Crystallized Chaos", 800, false);
 
         if (!Core.CheckInventory("Star Fragment", 33))
@@ -62,7 +61,7 @@ public class EternalDrakath
             Core.RegisterQuests(4413);
             while (!Bot.ShouldExit && !Core.CheckInventory("Star Fragment", 33))
             {
-                Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 33, isTemp: false);
+                Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30, isTemp: false);
                 Bot.Wait.ForPickup("Star Fragment");
             }
             Core.CancelRegisteredQuests();
