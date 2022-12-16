@@ -1906,50 +1906,56 @@ public class Core13LoC
         //Craft a Better Defense
         Story.MapItemQuest(3183, "battleontown", 2203);
 
-
-
-        //Reflect the Damage
-        if (!Story.QuestProgression(3184) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Perfect Prism")))
+        if (!Core.isCompletedBefore(3188))
         {
-            Core.AddDrop("Perfect Prism");
-            Core.EnsureAccept(3184);
-            Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
-            Core.EnsureComplete(3184);
+            Core.EnsureAccept(3187);
+            Core.EquipClass(ClassType.Farm);
+            Core.AddDrop("Harpy Feather", "Perfect Prism", "Unchaorrupted Sample", "Shriekward Potion");
+
+            //Reflect the Damage
+            Core.RegisterQuests(3184);
+            while ((!Core.CheckInventory("Perfect Prism")))
+                Core.HuntMonster("earthstorm", "Shard Spinner", "Reflective Fragment", 5);
+            Core.CancelRegisteredQuests();
             Bot.Wait.ForPickup("Perfect Prism");
-        }
 
-        //Pure Chaos 
-        if (!Story.QuestProgression(3185) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Unchaorrupted Sample")))
-        {
-            Core.AddDrop("Unchaorrupted Sample");
-            Core.EnsureAccept(3185);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
-            Core.EnsureComplete(3185);
+            //Pure Chaos 
+            Core.RegisterQuests(3185);
+            while (!Core.CheckInventory("Unchaorrupted Sample"))
+                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Vials of Blood", 5);
+            Core.CancelRegisteredQuests();
             Bot.Wait.ForPickup("Unchaorrupted Sample");
-        }
 
-        //Enemies of a Feather Flock Together
-        if (!Story.QuestProgression(3186) || (!Core.isCompletedBefore(3188) || !Core.CheckInventory("Harpy Feather")))
-        {
-            Core.AddDrop("Harpy Feather");
-            Core.EnsureAccept(3186);
-            Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
-            Core.EnsureComplete(3186);
+            //Enemies of a Feather Flock Together
+            Core.RegisterQuests(3186);
+            while (!Core.CheckInventory("Harpy Feather"))
+                Core.HuntMonster("bloodtuskwar", "Chaos Tigriff", "Feathers", 5);
+            Core.CancelRegisteredQuests();
             Bot.Wait.ForPickup("Harpy Feather");
+
+            //Ward Off the Beast
+            Core.Join("mirrorportal");
+            Bot.Wait.ForMapLoad("mirrorportal");
+            Core.EnsureComplete(3187);
+            Bot.Wait.ForPickup("Shriekward Potion");
         }
-
-        //Ward Off the Beast
-        Core.Join("mirrorportal");
-        Bot.Wait.ForMapLoad("mirrorportal");
-        Story.ChainQuest(3187);
-
 
         //Horror Takes Flight
         if (!Story.QuestProgression(3188))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(3188);
+            Core.BuyItem("mirrorportal", 774, "Shriekward Potion", 1);
+            Core.Equip("Shriekward Potion");
+            Bot.Skills.UseSkill(5);
             Core.HuntMonsterMapID("mirrorportal", 1, "Chaos Harpy Defeated");
             Core.EnsureComplete(3188);
+            if (Core.CheckInventory("Shriekward Potion"))
+            {
+                Core.JumpWait();
+                Core.SendPackets($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{20771}%");
+                Core.SellItem("Shriekward Potion", all: true);
+            }
         }
 
         //Good, Evil and Chaos Battle!
