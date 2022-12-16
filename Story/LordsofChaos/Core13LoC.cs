@@ -1910,7 +1910,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3187);
             Core.EquipClass(ClassType.Farm);
-            Core.AddDrop("Harpy Feather", "Perfect Prism", "Unchaorrupted Sample");
+            Core.AddDrop("Harpy Feather", "Perfect Prism", "Unchaorrupted Sample", "Shriekward Potion");
 
             //Reflect the Damage
             Core.RegisterQuests(3184);
@@ -1937,6 +1937,7 @@ public class Core13LoC
             Core.Join("mirrorportal");
             Bot.Wait.ForMapLoad("mirrorportal");
             Core.EnsureComplete(3187);
+            Bot.Wait.ForPickup("Shriekward Potion");
         }
 
         //Horror Takes Flight
