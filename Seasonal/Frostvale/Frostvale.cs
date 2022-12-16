@@ -629,7 +629,7 @@ public class Frostvale
 
     public void Cryostorm()
     {
-        if(!Bot.Quests.IsUnlocked(3951)){
+        if(!Bot.Quests.IsUnlocked(4705)){
             Core.Logger("Quests are locked. Running Glacera Script.");
             GlaceraStory.DoAll();
         }
