@@ -1007,8 +1007,8 @@ public class CoreNation
             return;
 
         Core.AddDrop("Gem of Nulgath");
-        if (Bot.Player.Gold > 30000000)
-            TheAssistant("Gem of Nulgath", quant);
+        // if (Bot.Player.Gold > 30000000)
+        //     TheAssistant("Gem of Nulgath", quant);
         NewWorldsNewOpportunities("Gem of Nulgath", quant);
         VoidKightSwordQuest("Gem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
