@@ -100,7 +100,7 @@ public class FrozenSoulMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", req.Name, log: false);
+                        Core.KillMonster("frozensoul", "r4", "Left", "*", req.Name, isTemp: false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
