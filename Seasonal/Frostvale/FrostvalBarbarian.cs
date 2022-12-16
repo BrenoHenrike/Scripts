@@ -29,7 +29,7 @@ public class FrostvalBarbarian
 
     public void GetFB(bool rankUpClass = true)
     {
-        
+
         if (Core.CheckInventory("Frostval Barbarian"))
             return;
         if (!Core.isSeasonalMapActive("frostvale"))

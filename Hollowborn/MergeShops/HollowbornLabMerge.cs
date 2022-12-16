@@ -22,7 +22,7 @@ public class HollowbornLabMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hollowborn Residue "});
+        Core.BankingBlackList.AddRange(new[] { "Hollowborn Residue " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -30,10 +30,10 @@ public class HollowbornLabMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("hbchallenge", 2191, findIngredients);
+        Adv.StartBuyAllMerge("hbchallenge", 2191, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -120,7 +120,7 @@ public class EnchantedVictoryBladeWeapons
 
         Core.HuntMonster("graveyard", "Skeletal Viking", "Nornir Triad Shard", 12, false);
 
-        Core.EnsureComplete(4813, type == "Amulet of Glory" ? 33502 : 33501); 
+        Core.EnsureComplete(4813, type == "Amulet of Glory" ? 33502 : 33501);
         // Core.EnsureComplete(4813, Amulet.ID); 
         Bot.Wait.ForPickup(type);
     }

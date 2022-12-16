@@ -35,7 +35,7 @@ public class Manor
         Story.KillQuest(1060, "Manor", "Frigid Frogdrake");
 
         //Inscrutable Motivation 1061
-       Story.MapItemQuest(1061, "Manor", 404, 10);
+        Story.MapItemQuest(1061, "Manor", 404, 10);
 
         //Paradise is Not So Nice 1062
         Story.KillQuest(1062, "Manor", "Bird of Paradise");

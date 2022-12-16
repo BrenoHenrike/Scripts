@@ -20,7 +20,7 @@ public class FrozenSoulMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hammered Ice", "Frosted Heart", "Frozen Soul", "Frozen Rune of Kheimon", "Poleaxe of Kheimon", "Elegant Frostvale Suit", "Cheery Frostvale Hat + Locks", "Elegant Frostval Wrap", "Cheery Frostvale Hat", "Ruby Frostval Cane "});
+        Core.BankingBlackList.AddRange(new[] { "Hammered Ice", "Frosted Heart", "Frozen Soul", "Frozen Rune of Kheimon", "Poleaxe of Kheimon", "Elegant Frostvale Suit", "Cheery Frostvale Hat + Locks", "Elegant Frostval Wrap", "Cheery Frostvale Hat", "Ruby Frostval Cane " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -28,10 +28,10 @@ public class FrozenSoulMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("frozensoul", 1815, findIngredients);
+        Adv.StartBuyAllMerge("frozensoul", 1815, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

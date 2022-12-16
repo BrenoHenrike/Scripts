@@ -25,7 +25,7 @@ public class SnowviewMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Fire Starting Kit "});
+        Core.BankingBlackList.AddRange(new[] { "Fire Starting Kit " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -33,12 +33,12 @@ public class SnowviewMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Frostvale.Snowview();
-        
+
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("snowview", 2195, findIngredients);
+        Adv.StartBuyAllMerge("snowview", 2195, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

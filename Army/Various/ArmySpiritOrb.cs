@@ -49,13 +49,13 @@ public class ArmySpiritOrb
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-		Core.RegisterQuests(2082, 2083);
+        Core.RegisterQuests(2082, 2083);
         Core.Logger($"Farming for {quant} bone dust");
-		Army.SmartAggroMonStart("battleunderb", "Skeleton Warrior", "Skeleton Fighter", "Undead Champion");
+        Army.SmartAggroMonStart("battleunderb", "Skeleton Warrior", "Skeleton Fighter", "Undead Champion");
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
-		Core.CancelRegisteredQuests();
+        Core.CancelRegisteredQuests();
     }
 
     private string[] Loot = { "Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb" };

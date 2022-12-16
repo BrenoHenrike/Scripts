@@ -24,7 +24,7 @@ public class QueensReignMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Ancient Hourglass", "LightningLord", "LightningLord Helm", "LightningLord Locks", "LightningLord Rune "});
+        Core.BankingBlackList.AddRange(new[] { "Ancient Hourglass", "LightningLord", "LightningLord Helm", "LightningLord Locks", "LightningLord Rune " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,10 +32,10 @@ public class QueensReignMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("queenreign", 2058, findIngredients);
+        Adv.StartBuyAllMerge("queenreign", 2058, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

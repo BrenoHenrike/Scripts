@@ -34,10 +34,10 @@ public class ShadowofChaosMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Laguna.LagunaBeach();
-        Adv.StartBuyAllMerge("laguna", 1917, findIngredients);
+        Adv.StartBuyAllMerge("laguna", 1917, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

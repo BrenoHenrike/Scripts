@@ -63,9 +63,9 @@ public class BringTheCheer
                 return;
             Core.FarmingLogger(item.Name, 1);
         }
-        
+
         Core.EquipClass(ClassType.Solo);
-        
+
         while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item.Name))
         {
             Core.EnsureAccept(6651);

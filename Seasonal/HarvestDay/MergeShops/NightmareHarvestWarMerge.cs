@@ -35,12 +35,12 @@ public class NightmareHarvestWarMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("nightmarewar"))
             return;
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("nightmarewar", 1941, findIngredients);
+        Adv.StartBuyAllMerge("nightmarewar", 1941, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

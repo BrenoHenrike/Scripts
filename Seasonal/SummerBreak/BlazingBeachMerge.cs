@@ -36,13 +36,13 @@ public class BlazingBeachMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("blazingbeach"))
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("blazingbeach", 2138, findIngredients);
+        Adv.StartBuyAllMerge("blazingbeach", 2138, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

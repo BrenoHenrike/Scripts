@@ -48,9 +48,9 @@ public class FireChampionsArmor
 
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
-            
+
         Adv.rankUpClass("Dragonslayer");
-        
+
         Farm.Gold(1000000);
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);

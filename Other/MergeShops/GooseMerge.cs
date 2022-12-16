@@ -24,7 +24,7 @@ public class GooseMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Cysero's Cookie "});
+        Core.BankingBlackList.AddRange(new[] { "Cysero's Cookie " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,10 +32,10 @@ public class GooseMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("goose", 58, findIngredients);
+        Adv.StartBuyAllMerge("goose", 58, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

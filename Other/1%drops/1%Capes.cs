@@ -51,7 +51,7 @@ public class LowDRCapes
         {
             Core.HuntMonster("finalbattle", "Drakath", "Chaotic Champion Wings", isTemp: false);
         }
-        
+
         if (Bot.Config.Get<Capes>("Capes") == Capes.Wings_Of_Destruction || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Wings Of Destruction"))
         {
             Core.HuntMonster("infernalspire", "Malxas", "Wings Of Destruction", isTemp: false);

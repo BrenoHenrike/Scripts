@@ -32,7 +32,7 @@ public class ConZombieSlayer
 
         //I Guess We DO Need Steenkin' Badges 3135
         Story.KillQuest(3135, "vendorbooths", "Ravin' Skelly");
-        
+
         //Con Kit 3136
         if (!Story.QuestProgression(3136))
         {
@@ -42,7 +42,7 @@ public class ConZombieSlayer
             Core.HuntMonster("battlecon", "Cosplay Zombie", "Hoopy Frood brand Towel", log: false);
             Core.HuntMonster("battlecon", "Cosplay Zombie", "Event Schedule", log: false);
             Core.HuntMonster("battlecon", "Cosplay Zombie", "Xtra-Strength Energy Potion", log: false);
-            Core.HuntMonster("battlecon", "Cosplay Zombie", "Anti-Con Rot Sanitation Device", log: false);            
+            Core.HuntMonster("battlecon", "Cosplay Zombie", "Anti-Con Rot Sanitation Device", log: false);
             Core.EnsureComplete(3136);
         }
 

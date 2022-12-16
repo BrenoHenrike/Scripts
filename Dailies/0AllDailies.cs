@@ -65,7 +65,7 @@ public class FarmAllDailys
         Daily.BeastMasterChallenge();
         Daily.FungiforaFunGuy();
         Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
-        Daily.HardCoreMetals(new [] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury"}, 10, ToBank: true);
+        Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
         Daily.CryptoToken();
         Daily.GoldenInquisitor();
 

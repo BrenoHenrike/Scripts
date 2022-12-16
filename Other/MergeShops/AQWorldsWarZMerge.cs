@@ -24,7 +24,7 @@ public class AQWorldsWarZMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Angry Zombie Skull "});
+        Core.BankingBlackList.AddRange(new[] { "Angry Zombie Skull " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,10 +32,10 @@ public class AQWorldsWarZMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("doomwar", 665, findIngredients);
+        Adv.StartBuyAllMerge("doomwar", 665, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

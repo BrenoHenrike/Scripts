@@ -38,7 +38,8 @@ public class CoreHarvestDay
             EpilTakeOver();
             BirdsWithHarms();
             EbilCorpHQ();
-        } else
+        }
+        else
         {
             EbilCorpHQ();
         }

@@ -97,7 +97,7 @@ public class Lair
 
         // Do Not Crush The Eggs 1502
         Story.ChainQuest(1502);
-        
+
         // Heat ‘Em Up! 1503
         Story.MapItemQuest(1503, "lair", 754, 12);
 

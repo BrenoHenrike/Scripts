@@ -24,7 +24,7 @@ public class AprilFools2019WarMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Punadin Badge "});
+        Core.BankingBlackList.AddRange(new[] { "Punadin Badge " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,10 +32,10 @@ public class AprilFools2019WarMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("pal9001", 1709, findIngredients);
+        Adv.StartBuyAllMerge("pal9001", 1709, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -62,7 +62,7 @@ public class ArmyLegionFealty2
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Conquest Wreath");
         Core.Logger("Selling Cohort Conquered's to sync accs (hopefully)");
-        
+
         foreach (string item in CoHortList)
             Core.SellItem(item, all: true);
 
@@ -130,7 +130,7 @@ public class ArmyLegionFealty2
             return;
         if (Bot.Map.Name == "doomvault")
         {
-            Army.AggroMonMIDs(1,2,3,6,7,8);
+            Army.AggroMonMIDs(1, 2, 3, 6, 7, 8);
             Army.AggroMonStart("doomvault");
             Army.DivideOnCells("r1", "r3");
         }

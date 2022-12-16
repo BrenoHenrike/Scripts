@@ -44,10 +44,10 @@ public class SpoilsofLightMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("lightguardwar", 1643, findIngredients);
+        Adv.StartBuyAllMerge("lightguardwar", 1643, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -97,7 +97,7 @@ public class SpoilsofLightMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
-                   
+
                 case "Medal of Honor":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);

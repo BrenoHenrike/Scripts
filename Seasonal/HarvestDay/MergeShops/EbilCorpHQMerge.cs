@@ -31,13 +31,13 @@ public class EbilHQMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         HarvestDay.EbilCorpHQ();
-        
+
         Core.AddDrop(NeededItems);
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("ebilcorphq", 2067, findIngredients);
+        Adv.StartBuyAllMerge("ebilcorphq", 2067, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

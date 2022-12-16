@@ -37,10 +37,10 @@ public class ArchFiendWarlordMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("tercessuinotlim", 1820, findIngredients);
+        Adv.StartBuyAllMerge("tercessuinotlim", 1820, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

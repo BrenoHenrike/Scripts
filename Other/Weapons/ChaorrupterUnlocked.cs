@@ -41,7 +41,7 @@ public class ChaorrupterUnlocked
             Core.Logger("Farming Chaorrupter Unlocked (Free Player)");
             Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Eye", 250, isTemp: false, log: false);
             Core.KillMonster("chaoswar", "r2", "Spawn", "*", "Chaos Tentacle", 250, isTemp: false, log: false);
-            Core.BuyItem("chaoswar", 642, 17932 , 1, 10986);
+            Core.BuyItem("chaoswar", 642, 17932, 1, 10986);
         }
         Adv.EnhanceItem("Chaorrupter Unlocked", EnhancementType.Lucky);
     }

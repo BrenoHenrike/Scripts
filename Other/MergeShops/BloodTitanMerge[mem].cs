@@ -30,13 +30,13 @@ public class BloodTitanMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.IsMember)
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("classhalla", 617, findIngredients);
+        Adv.StartBuyAllMerge("classhalla", 617, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -10,7 +10,7 @@ public class DemandingApprovalFromNulgath
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
-    
+
 
 
     public void ScriptMain(IScriptInterface bot)

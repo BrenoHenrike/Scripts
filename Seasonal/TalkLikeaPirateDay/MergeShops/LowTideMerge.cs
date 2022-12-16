@@ -34,11 +34,11 @@ public class LowTideMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         LT.Storyline();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("lowtide", 2166, findIngredients);
+        Adv.StartBuyAllMerge("lowtide", 2166, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

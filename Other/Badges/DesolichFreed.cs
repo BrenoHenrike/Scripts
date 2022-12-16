@@ -24,7 +24,7 @@ public class DesolichFreed
     {
         if (!Core.IsMember)
             return;
-        
+
         if (Core.HasWebBadge("Desoloth Freed"))
         {
             Core.Logger($"Already have the Desoloth Freed badge");

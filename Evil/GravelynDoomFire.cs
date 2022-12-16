@@ -67,7 +67,7 @@ public class GravelynDoomFire
             Core.EnsureComplete(5461);
             Bot.Wait.ForPickup("Gravelyn's DoomFire Token");
         }
-        
+
         Core.BuyItem("darkthronehub", 1307, "DOOMFire OF Gravelyn");
         Core.BuyItem("darkthronehub", 1307, "Horned DOOMFire Helm");
         Core.ToBank(ShopItems);
