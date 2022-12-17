@@ -49,8 +49,7 @@ public class EternalDrakath
 
         BLOD.FindingFragmentsBlade(2000, 0);
 
-        if (!Core.CheckInventory("Crystallized Chaos", 800))
-            Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Farm);
         Core.KillMonster("chaoslab", "r3", "Center", "Chaorrupted Moglin", "Crystallized Chaos", 800, false);
 
         if (!Core.CheckInventory("Star Fragment", 33))

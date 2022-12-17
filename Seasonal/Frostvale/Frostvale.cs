@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/Glacera.cs
 using Skua.Core.Interfaces;
 
 public class Frostvale
@@ -7,7 +8,7 @@ public class Frostvale
     public CoreBots Core => CoreBots.Instance;
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreStory Story = new CoreStory();
-
+    public GlaceraStory GlaceraStory = new();
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
@@ -629,6 +630,11 @@ public class Frostvale
 
     public void Cryostorm()
     {
+        if(!Bot.Quests.IsUnlocked(4705)){
+            Core.Logger("Quests are locked. Running Glacera Script.");
+            GlaceraStory.DoAll();
+        }
+
         if (Core.isCompletedBefore(4716) || !Core.isSeasonalMapActive("cryostorm"))
             return;
 
