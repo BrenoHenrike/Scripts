@@ -3,6 +3,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
+//cs_include Scripts/Story/Glacera.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -63,9 +64,9 @@ public class BringTheCheer
                 return;
             Core.FarmingLogger(item.Name, 1);
         }
-        
+
         Core.EquipClass(ClassType.Solo);
-        
+
         while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item.Name))
         {
             Core.EnsureAccept(6651);

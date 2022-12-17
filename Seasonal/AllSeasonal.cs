@@ -6,6 +6,7 @@
 //cs_include Scripts/Seasonal/AprilFools/MeateorHunt.cs
 //cs_include Scripts/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs
 //cs_include Scripts/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs
+//cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/MountOtzi.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/Fezzini.cs
