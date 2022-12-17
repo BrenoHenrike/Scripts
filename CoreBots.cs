@@ -923,8 +923,7 @@ public class CoreBots
             Bot.Sleep(ActionDelay);
             return;
         }
-
-        Bot.Shops.SellItem(itemName);
+        else Bot.Shops.SellItem(itemName);
 
         Logger($"{(all ? string.Empty : quant.ToString())} {itemName} sold");
     }
