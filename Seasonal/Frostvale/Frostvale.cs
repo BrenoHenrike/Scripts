@@ -44,6 +44,7 @@ public class Frostvale
         Icepike();
         FrostvalPastPresentandFuture();
         Snowview();
+        SnowviewRace();
     }
 
     public void IceCave()
@@ -872,6 +873,45 @@ public class Frostvale
         Story.KillQuest(9015, "snowview", "Vaderix");
     }
 
+    public void SnowviewRace()
+    {
+        if (Core.isCompletedBefore(9026))
+            return;
+
+        // 9017 Encroaching Frost
+        Story.KillQuest(9017, "snowviewrace", "Mountain Owl");
+        Story.MapItemQuest(9017, "snowviewrace", 11010);
+
+        // 9018 Horse Vision
+        Story.KillQuest(9018, "snowviewrace", "Tundra Steed");
+
+        // 9019 Frigid Mirage
+        Story.MapItemQuest(9019, "snowviewrace", new[] { 11011, 11012, 11013 });
+
+        // 9020 Hiding Cavities
+        Story.KillQuest(9020, "snowviewrace", new[] { "Mountain Owl", "Tundra Steed" });
+        Story.MapItemQuest(9020, "snowviewrace", 11014);
+
+        // 9021 Cosmic Interference
+        Story.KillQuest(9021, "snowviewrace", "Juvenile Vaderix");
+        Story.MapItemQuest(9021, "snowviewrace", 11015);
+
+        // 9022 Cold Resistance
+        Story.KillQuest(9022, "snowviewrace", "Juvenile Vaderix");
+
+        // 9023 Bandits of Summer
+        Story.MapItemQuest(9023, "snowviewrace", 11016);
+        Story.KillQuest(9023, "snowviewrace", "Bandit");
+
+        // 9024 Avalanche of Wings and Feelers
+        Story.KillQuest(9024, "snowviewrace", new[] { "Bandit", "Juvenile Vaderix" });
+
+        // 9025 Bargain Bin Bounty
+        Story.KillQuest(9025, "snowviewrace", "Bandit Fletcher");
+
+        // 9026 Vaderix Requiem
+        Story.KillQuest(9026, "snowviewrace", "Aurora Vaderix");
+    }
 
 
     // --------------------------------------------------------------------------------------------------------------------------
