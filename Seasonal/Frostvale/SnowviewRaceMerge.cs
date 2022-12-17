@@ -12,7 +12,6 @@ public class SnowviewRaceMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
