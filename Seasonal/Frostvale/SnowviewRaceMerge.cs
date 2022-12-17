@@ -1,8 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Glacera.cs
-//cs_include Scripts/Seasonal/Frostvale.cs
+//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -11,6 +12,7 @@ public class SnowviewRaceMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
+    public CoreStory Story = new CoreStory();
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
