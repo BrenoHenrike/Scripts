@@ -20,7 +20,7 @@ public class VokunMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Unitas Fragment "});
+        Core.BankingBlackList.AddRange(new[] { "Unitas Fragment" });
         Core.SetOptions();
 
         BuyAllMerge();

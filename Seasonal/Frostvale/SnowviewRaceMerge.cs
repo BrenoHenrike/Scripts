@@ -20,7 +20,7 @@ public class SnowviewRaceMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Turkey Leg? "});
+        Core.BankingBlackList.AddRange(new[] { "Turkey Leg?" });
         Core.SetOptions();
 
         BuyAllMerge();
