@@ -1,6 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Seasonal/Frostvale.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -12,6 +14,7 @@ public class SnowviewRaceMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    public Frostvale FV = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -30,6 +33,7 @@ public class SnowviewRaceMerge
 
     public void BuyAllMerge()
     {
+        FV.SnowviewRace();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("snowviewrace", 2196, findIngredients);
 
