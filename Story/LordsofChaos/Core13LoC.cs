@@ -477,7 +477,7 @@ public class Core13LoC
 
     public void Wolfwing()
     {
-        if (Core.isCompletedBefore(598))
+        if (Core.isCompletedBefore(597) || Core.isCompletedBefore(598))
             return;
 
         Story.PreLoad(this);
