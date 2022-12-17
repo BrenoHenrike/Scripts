@@ -56,27 +56,8 @@ public class FlockMerge
                 #endregion
 
                 case "Golden Egg":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("battlefowl", "Chicken|Sabertooth Chicken", isTemp: false, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
+                case "Chickenwing ArmBlade":
                 case "Golden Feather":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("battlefowl", "Chicken|Sabertooth Chicken", isTemp: false, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Chicken Claw":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
@@ -87,18 +68,6 @@ public class FlockMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
-
-                case "Chickenwing ArmBlade":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("battlefowl", "Chicken|Sabertooth Chicken", isTemp: false, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
             }
         }
     }
