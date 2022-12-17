@@ -19,7 +19,9 @@ public class ChillysQuest
     {
         if (Core.isCompletedBefore(9004))
             return;
-        Core.Logger("Make sure email is verified!");
+
+        if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
+            Core.Logger("Your email adres is not verified!", messageBox: true, stopBot: false);
 
         Core.EnsureAccept(9004);
         Core.HuntMonster("battleontown", "Festive Zard", "Reminder Delivered");
