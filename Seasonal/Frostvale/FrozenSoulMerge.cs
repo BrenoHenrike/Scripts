@@ -20,7 +20,7 @@ public class FrozenSoulMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hammered Ice", "Frosted Heart", "Frozen Soul", "Frozen Rune of Kheimon", "Poleaxe of Kheimon", "Elegant Frostvale Suit", "Cheery Frostvale Hat + Locks", "Elegant Frostval Wrap", "Cheery Frostvale Hat", "Ruby Frostval Cane " });
+        Core.BankingBlackList.AddRange(new[] { "Hammered Ice", "Frosted Heart", "Frozen Soul", "Frozen Rune of Kheimon", "Poleaxe of Kheimon", "Elegant Frostvale Suit", "Cheery Frostvale Hat + Locks", "Elegant Frostval Wrap", "Cheery Frostvale Hat", "Ruby Frostval Cane" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -100,7 +100,7 @@ public class FrozenSoulMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("frozensoul", "r4", "Left", "*", req.Name, log: false);
+                        Core.KillMonster("frozensoul", "r4", "Left", "*", req.Name, isTemp: false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
