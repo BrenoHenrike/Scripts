@@ -17,9 +17,9 @@ public class ChillysQuest
 
     public void ChillysParticipation()
     {
-        Core.Logger("Make sure email is verified!");
         if (Core.isCompletedBefore(9004))
             return;
+        Core.Logger("Make sure email is verified!");
 
         Core.EnsureAccept(9004);
         Core.HuntMonster("battleontown", "Festive Zard", "Reminder Delivered");
