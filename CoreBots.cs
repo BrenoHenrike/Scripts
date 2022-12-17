@@ -93,7 +93,7 @@ public class CoreBots
 
             if (CBO_Active())
             {
-                CBOList = File.ReadAllLines(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
+                CBOList = File.ReadAllLines(AppPath + $@"\options\CBO_Storage({Username()}).txt").ToList();
                 ReadCBO();
             }
 
@@ -108,12 +108,12 @@ public class CoreBots
 
             if (Directory.Exists("options/Butler"))
             {
-                if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}.txt"))
-                    File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}.txt");
+                if (File.Exists($"options/Butler/{Username().ToLower()}.txt"))
+                    File.Delete($"options/Butler/{Username().ToLower()}.txt");
 
                 string[] files = Directory.GetFiles("options/Butler");
-                if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Bot.Player.Username.ToLower()))
-                    File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Bot.Player.Username.ToLower()));
+                if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()))
+                    File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()));
             }
 
             if (!Bot.Player.LoggedIn)
@@ -279,15 +279,15 @@ public class CoreBots
                 if (CustomStopLocation.Trim().ToLower() == "home")
                 {
                     if (Bot.House.Items.Count(h => h.Equipped) > 0)
-                        Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+                        Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
                     else
-                        SendPackets($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
+                        SendPackets($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
                 }
 
                 else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
-                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
+                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
             }
         }
         if (AntiLag)
@@ -297,12 +297,12 @@ public class CoreBots
                 Bot.Flash.CallGameFunction("world.toggleMonsters");
         }
 
-        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
+        Bot.Options.CustomName = Username().ToUpper();
         string guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
         Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
 
-        if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}.txt"))
-            File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}.txt");
+        if (File.Exists($"options/Butler/{Username().ToLower()}.txt"))
+            File.Delete($"options/Butler/{Username().ToLower()}.txt");
 
         if (crashed)
             Logger("Bot Stopped due to crash.");
@@ -1765,6 +1765,8 @@ public class CoreBots
     // Whether the player is Member (set to true if neccessary during setOptions)
     public bool IsMember = false;
 
+    public string Username() => Bot.Flash.GetGameObject("sfc.myUserName")![1..^1];
+
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
     /// </summary>
@@ -2395,7 +2397,7 @@ public class CoreBots
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
         {
             if (Directory.Exists("options/Butler") && Directory.GetFiles("options/Butler") != null &&
-                Directory.GetFiles("options/Butler").Any(x => x.Contains("~!") && x.Split("~!").Last() == Bot.Player.Username.ToLower() + ".txt"))
+                Directory.GetFiles("options/Butler").Any(x => x.Contains("~!") && x.Split("~!").Last() == Username().ToLower() + ".txt"))
             {
                 string[] lockedMaps =
                 {
@@ -2423,7 +2425,7 @@ public class CoreBots
                     "voidnightbane"
                 };
                 if (lockedMaps.Contains(strippedMap))
-                    File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
+                    File.WriteAllText($"options/Butler/{Username().ToLower()}.txt", Bot.Map.FullName);
             }
 
             Jump(cell, pad);
@@ -3125,7 +3127,7 @@ public class CoreBots
             FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
-    public bool CBO_Active() => File.Exists(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt");
+    public bool CBO_Active() => File.Exists(AppPath + $@"\options\CBO_Storage({Username()}).txt");
 
     public bool CBOString(string Name, out string output)
     {
