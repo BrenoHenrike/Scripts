@@ -43,6 +43,7 @@ public class Frostvale
         Icepike();
         FrostvalPastPresentandFuture();
         Snowview();
+        SnowviewRace();
     }
 
     public void IceCave()
@@ -773,7 +774,7 @@ public class Frostvale
 
     public void FrostvalPastPresentandFuture()
     {
-        if (Core.isCompletedBefore(6651) || Core.isSeasonalMapActive("frostvalperil"))
+        if (Core.isCompletedBefore(6651) || !Core.isSeasonalMapActive("frostvalperil"))
             return;
 
         Story.PreLoad(this);
@@ -862,8 +863,50 @@ public class Frostvale
         Story.KillQuest(9014, "snowview", "Tundra Steed");
         Story.MapItemQuest(9014, "snowview", 10995);
 
-        //Intrudere From the Stars (9015)
+        //Intruder From the Stars (9015)
         Story.KillQuest(9015, "snowview", "Vaderix");
+    }
+
+    public void SnowviewRace()
+    {
+        if (Core.isCompletedBefore(9026) || !Core.isSeasonalMapActive("snowviewrace"))
+            return;
+
+        Story.PreLoad(this);
+
+        //Encroaching Frost (9017)
+        Story.KillQuest(9017, "snowviewrace", "Mountain Owl");
+        Story.MapItemQuest(9017, "snowviewrace", 11010);
+
+        //Horse Vision (9018)
+        Story.KillQuest(9018, "snowviewrace", "Tundra Steed");
+
+        //Frigid Mirage (9019)
+        Story.MapItemQuest(9019, "snowviewrace", new[] { 11011, 11012, 11013 });
+
+        //Hiding Cavities (9020)
+        Story.KillQuest(9020, "snowviewrace", new[] { "Mountain Owl", "Tundra Steed" });
+        Story.MapItemQuest(9020, "snowviewrace", 11014);
+
+        //Cosmic Interference (9021)
+        Story.KillQuest(9021, "snowviewrace", "Juvenile Vaderix");
+        Story.MapItemQuest(9021, "snowviewrace", 11015);
+
+        //Cold Resistance (9022)
+        Story.KillQuest(9022, "snowviewrace", "Juvenile Vaderix");
+
+        //Bandits of Summer (9023)
+        Story.MapItemQuest(9023, "snowviewrace", 11016);
+        Story.KillQuest(9023, "snowviewrace", "Bandit");
+
+        //Avalanche of Wings and Feelers (9024)
+        Story.KillQuest(9024, "snowviewrace", new[] { "Bandit", "Juvenile Vaderix" });
+
+        //Bargain Bin Bounty (9025)
+        Story.KillQuest(9025, "snowviewrace", "Bandit Fletcher");
+
+        //Vaderix Requiem (9026)
+        Story.KillQuest(9026, "snowviewrace", "Aurora Vaderix");
     }
 
 
