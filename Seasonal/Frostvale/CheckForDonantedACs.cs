@@ -31,6 +31,7 @@ public class CheckForDonatedACs
         List<string> ACs = new();
         List<string> oldACs = new();
         List<string> newACs = new();
+        List<string> warnings = new();
         if (!firstTime)
             oldACs = File.ReadAllLines(logPath).ToList();
         string[] BlacklistedServers =
@@ -88,6 +89,7 @@ public class CheckForDonatedACs
             if (accountAgeInDays < (double)14)
             {
                 Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays.ToString()}/14 days) - Skipping");
+                warnings.Add($"- {Core.Username()}: account is too young ({accountAgeInDays.ToString()}/14 days)");
                 continue;
             }
 
@@ -98,6 +100,7 @@ public class CheckForDonatedACs
             else
             {
                 Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
+                warnings.Add($"- {Core.Username()}: email is unverified ({Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail")[1..^1]})");
                 continue;
             }
         }
@@ -115,12 +118,12 @@ public class CheckForDonatedACs
 
         if (newACs.Count() == 0)
             Bot.ShowMessageBox($"We checked {acc.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs sicne last time")}." +
-            "\n\nQuick notice, this function is very difficult to test due to the random nature of the event, so this message and the counter feature might not be accurate." +
-            "\nThe important part is that all accounts got to log in and possibly receive ACs",
+            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
             (Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs"));
         else
         {
-            Bot.ShowMessageBox($"{newACs.Count()} out of {acc.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs), "Got ACs!");
+            Bot.ShowMessageBox($"{newACs.Count()} out of {acc.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
+            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}", "Got ACs!");
         }
 
         string[] fileSetup()
