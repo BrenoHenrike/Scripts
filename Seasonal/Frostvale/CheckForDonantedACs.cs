@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Seasonal/Frostvale/ChillysParticipation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;
@@ -8,6 +9,7 @@ public class CheckForDonatedACs
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
     private ChillysQuest CQ = new();
 
     public void ScriptMain(IScriptInterface Bot)
@@ -29,6 +31,7 @@ public class CheckForDonatedACs
         List<string> ACs = new();
         List<string> oldACs = new();
         List<string> newACs = new();
+        List<string> warnings = new();
         if (!firstTime)
             oldACs = File.ReadAllLines(logPath).ToList();
         string[] BlacklistedServers =
@@ -64,9 +67,42 @@ public class CheckForDonatedACs
 
             Bot.Sleep(2000);
 
+            //Requierments:
+            // Level 30
+            Farm.Experience(30);
+
+            // Two week old account
+            string _output = Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated")!;
+            //"Fri Dec 3 08:32:00 GMT+0100 2021"
+            string[] output = _output[1..^1].Split(' ');
+            string[] time = output[3].Split(':');
+            var creationDate = new DateTime(
+                Int32.Parse(output[5]),
+                Months.First(x => x.Key == output[1]).Value,
+                Int32.Parse(output[2]),
+                Int32.Parse(time[0]),
+                Int32.Parse(time[1]),
+                Int32.Parse(time[2]),
+                DateTimeKind.Unspecified
+                );
+            double accountAgeInDays = DateTime.Now.Subtract(creationDate).TotalDays;
+            if (accountAgeInDays < (double)14)
+            {
+                Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays.ToString()}/14 days) - Skipping");
+                warnings.Add($"- {Core.Username()}: account is too young ({accountAgeInDays.ToString()}/14 days)");
+                continue;
+            }
+
+            // Verified Email
             if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
+                // Participation Quest
                 CQ.ChillysParticipation();
-            else Core.Logger($"{Core.Username()} does not have a verified account. Skipping");
+            else
+            {
+                Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
+                warnings.Add($"- {Core.Username()}: email is unverified ({Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail")[1..^1]})");
+                continue;
+            }
         }
         Bot.Events.ExtensionPacketReceived -= ACsListener;
 
@@ -82,12 +118,12 @@ public class CheckForDonatedACs
 
         if (newACs.Count() == 0)
             Bot.ShowMessageBox($"We checked {acc.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs sicne last time")}." +
-            "\n\nQuick notice, this function is very difficult to test due to the random nature of the event, so this message and the counter feature might not be accurate." +
-            "\nThe important part is that all accounts got to log in and possibly receive ACs",
+            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
             (Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs"));
         else
         {
-            Bot.ShowMessageBox($"{newACs.Count()} out of {acc.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs), "Got ACs!");
+            Bot.ShowMessageBox($"{newACs.Count()} out of {acc.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
+            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}", "Got ACs!");
         }
 
         string[] fileSetup()
@@ -179,4 +215,19 @@ public class CheckForDonatedACs
             }
         }
     }
+    private Dictionary<string, int> Months = new()
+    {
+        { "Jan", 1 },
+        { "Feb", 2 },
+        { "Mar", 3 },
+        { "May", 4 },
+        { "Apr", 5 },
+        { "Jun", 6 },
+        { "Jul", 7 },
+        { "Aug", 8 },
+        { "Sep", 9 },
+        { "Oct", 10},
+        { "Nov", 11},
+        { "Dec", 12}
+    };
 }
