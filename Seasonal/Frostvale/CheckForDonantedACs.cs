@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Seasonal/Frostvale/ChillysParticipation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;
@@ -8,6 +9,7 @@ public class CheckForDonatedACs
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
     private ChillysQuest CQ = new();
 
     public void ScriptMain(IScriptInterface Bot)
@@ -62,9 +64,40 @@ public class CheckForDonatedACs
 
             Bot.Sleep(2000);
 
+            //Requierments:
+            // Level 30
+            Farm.Experience(30);
+
+            // Two week old account
+            string _output = Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated")!;
+            //"Fri Dec 3 08:32:00 GMT+0100 2021"
+            string[] output = _output[1..^1].Split(' ');
+            string[] time = output[3].Split(':');
+            var creationDate = new DateTime(
+                Int32.Parse(output[5]),
+                Months.First(x => x.Key == output[1]).Value,
+                Int32.Parse(output[2]),
+                Int32.Parse(time[0]),
+                Int32.Parse(time[1]),
+                Int32.Parse(time[2]),
+                DateTimeKind.Unspecified
+                );
+            double accountAgeInDays = DateTime.Now.Subtract(creationDate).TotalDays;
+            if (accountAgeInDays < (double)14)
+            {
+                Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays.ToString()}/14 days) - Skipping");
+                continue;
+            }
+
+            // Verified Email
             if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
+                // Participation Quest
                 CQ.ChillysParticipation();
-            else Core.Logger($"{Core.Username()} does not have a verified account. Skipping");
+            else
+            {
+                Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
+                continue;
+            }
         }
         Bot.Events.ExtensionPacketReceived -= ACsListener;
 
@@ -177,4 +210,19 @@ public class CheckForDonatedACs
             }
         }
     }
+    private Dictionary<string, int> Months = new()
+    {
+        { "Jan", 1 },
+        { "Feb", 2 },
+        { "Mar", 3 },
+        { "May", 4 },
+        { "Apr", 5 },
+        { "Jun", 6 },
+        { "Jul", 7 },
+        { "Aug", 8 },
+        { "Sep", 9 },
+        { "Oct", 10},
+        { "Nov", 11},
+        { "Dec", 12}
+    };
 }
