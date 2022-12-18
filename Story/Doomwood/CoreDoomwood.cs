@@ -674,7 +674,7 @@ public class CoreDoomwood
             Core.EnsureAccept(7624);
             Core.KillMonster("stonewooddeep", "r2", "Left", "Asherion", "Defeat Asherion");
             Bot.Options.AttackWithoutTarget = false;
-            Core.EnsureAccept(7624);
+            Core.EnsureComplete(7624);
         }
 
         //7625    The Light Of Destiny
