@@ -38,6 +38,8 @@ public class CheckForDonatedACs
             "artix",
             "sir ver",
             "yorumi",
+            "gravelyn",
+            "galanoth",
             "class test realm"
         };
 
