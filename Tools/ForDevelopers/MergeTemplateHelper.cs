@@ -125,7 +125,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find blackListIndex");
             return;
         }
-        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + String.Join("\", \"", itemsToLearn) + " \"});";
+        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + String.Join("\", \"", itemsToLearn) + "\"});";
 
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients, buyOnlyThis, buyMode: buyMode);");
         if (startIndex < 0)
