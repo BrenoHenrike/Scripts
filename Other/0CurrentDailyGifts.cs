@@ -123,8 +123,8 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(31, 12), "deerhunt", "Deer?", "Little Reindeer Morph", "Reind'AWWW Moglin");
             GetGift(AvailableUntil(31, 12), "yulecat", "Kitty Yu Yule", "Beleen's Festive Frostval Outfit", "Beleen's Festive Hero Hat + Locks", "Beleen's Festive Hero Hat + Hair");
             GetGift(AvailableUntil(31, 12), "ultrafrostfang", "Ultra Frost Fang", "Baby Frost Dragon");
-            // GetGift(AvailableUntil(31, 12), "snowview", "Acrtic Fox", "Acrtic Fox Pet + Guards"); /Release: 17/12/22
-            // GetGift(AvailableUntil(31, 12), "deerhunt", "Zweinichtirsch", "Spirit of Frostval"); /Release: 18/12/22
+            GetGift(AvailableUntil(31, 12), "snowview", "Arctic Fox", "Arctic Fox Guard", "Arctic Fox Guard At Rest", "Arctic Fox Pet");
+            GetGift(AvailableUntil(31, 12), "deerhunt", "Zweinichthirsch", "Spirit Of Frostval", "Frostval Holly + Candle");
 
             #endregion
 
