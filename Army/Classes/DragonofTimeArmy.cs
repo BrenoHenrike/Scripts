@@ -46,7 +46,7 @@ public class DoTArmy
     public string OptionsStorage = "DoTArmy";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
+        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1), //so that it waits
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -470,7 +470,7 @@ public class DoTArmy
         while ((r != null && Bot.Map.PlayerNames.Count() > 0 ? Bot.Map.PlayerNames.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
         {
             Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
-            Bot.Sleep(1500);
+            Bot.Sleep(5000);
         }
         if (item == null)
         {
