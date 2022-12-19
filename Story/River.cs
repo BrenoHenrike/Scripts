@@ -29,10 +29,10 @@ public class River
 
         // Restocking 64
         Story.KillQuest(64, "river", "Zardman Fisher");
-        
+
         // Spear Sabotage 65
         Story.KillQuest(65, "river", "Zardman Fisher");
-        
+
         // Retaliation 66
         Story.KillQuest(66, "river", "Kuro");
 
@@ -41,7 +41,7 @@ public class River
             Core.Logger("You must be a Member to complete Fishing Bait and Flood of Power quests.");
             return;
         }
-        
+
         // Fishing Bait 72
         Story.KillQuest(72, "river", "Kuro");
 

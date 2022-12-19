@@ -26,13 +26,13 @@ public class FrostvaleBadges
             Core.Logger($"Already have the Frostvale badges");
             return;
         }
-        
+
         if (!Core.HasWebBadge(badge1))
             Core.Logger("World Savior: Reward from; \"Face Kezeroth\" Quest.");
-        
+
         if (!Core.HasWebBadge(badge2))
             Core.Logger("Frost Defanged: Reward from; \"Defeat Frostfang (Evil/Good)\" ");
-        
+
         Core.Logger("Doing Frostvale story for badges");
         Frostvale.DoAll();
     }

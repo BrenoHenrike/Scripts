@@ -22,7 +22,7 @@ public class ChaosWarMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Chaos Eye", "Chaos Tentacle "});
+        Core.BankingBlackList.AddRange(new[] { "Chaos Eye", "Chaos Tentacle " });
         Core.SetOptions();
 
         BuyAllMerge();

@@ -18,5 +18,5 @@ public class Judgement
 
         Core.SetOptions(false);
     }
-   
+
 }

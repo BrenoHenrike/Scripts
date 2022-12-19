@@ -39,10 +39,10 @@ public class DageRecruitMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("dagerecruit", 2119, findIngredients);
+        Adv.StartBuyAllMerge("dagerecruit", 2119, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

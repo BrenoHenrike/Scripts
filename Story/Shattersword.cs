@@ -21,7 +21,7 @@ public class Shattersword
     {
         if (Core.isCompletedBefore(2690))
             return;
-        
+
         if (!Core.IsMember)
         {
             Core.Logger("Shattersword is a member-only storyline.");

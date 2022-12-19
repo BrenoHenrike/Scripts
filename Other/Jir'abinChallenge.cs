@@ -83,7 +83,7 @@ public class JirabinChallenge
     {
         if (Core.isCompletedBefore(4005))
             return;
-            
+
         RunedWoods();
 
         Story.PreLoad(this);

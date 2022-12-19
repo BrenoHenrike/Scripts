@@ -28,7 +28,7 @@ public class BattleConVIP
 
         Core.Logger($"Doing UnderGroundLab story for {badge} badge");
         UGL.partofundergroundlabb();
-        
+
     }
 
     private string badge = "BattleCon VIP";

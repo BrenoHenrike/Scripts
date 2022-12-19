@@ -12,7 +12,7 @@ public class TrobbolierPet
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        
+
         GetAll();
 
         Core.SetOptions(false);

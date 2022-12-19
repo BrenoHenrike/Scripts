@@ -32,7 +32,7 @@ public class GoldenHanzoVoid
         Nation.TheAssistant("Dark Crystal Shard", 15);
         Nation.FarmDiamondofNulgath(50);
         Nation.FarmVoucher(false);
-        
+
         Core.Join("evilwarnul");
         Bot.Shops.Load(456);
         List<ShopItem> shopdata = Bot.Shops.Items;

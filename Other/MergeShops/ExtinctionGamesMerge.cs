@@ -22,7 +22,7 @@ public class ExtinctionGamesMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Burningjay Feather", "Coal", "Fabric Scraps", "Iron II.0", "A Kitten? "});
+        Core.BankingBlackList.AddRange(new[] { "Burningjay Feather", "Coal", "Fabric Scraps", "Iron II.0", "A Kitten? " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -30,10 +30,10 @@ public class ExtinctionGamesMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("extinction", 1025, findIngredients);
+        Adv.StartBuyAllMerge("extinction", 1025, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

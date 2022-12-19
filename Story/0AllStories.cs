@@ -623,7 +623,7 @@ public class AllStories
         DoomVaultA.StoryLine();
         Core.Logger($"Story: Doom Vault B - Complete");
         DoomVaultB.StoryLine();
-        
+
         Core.Logger($"Story: Doom Vault A - Complete");
 
         Downward.StoryLine();

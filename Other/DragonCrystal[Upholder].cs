@@ -22,7 +22,7 @@ public class DragonCristal
     public void Quantity(int quant = 5000)
     {
         DragonRoad.StoryLine();
-        
+
         Core.RegisterQuests(4549);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dragon Crystal", quant))
         {

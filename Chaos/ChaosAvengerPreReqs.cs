@@ -99,7 +99,7 @@ public class ChaosAvengerClass
 
             //Vath's Chaotic Dragonlord Armor
             Core.KillVath("Vath's Chaotic Dragonlord Armor");
-            
+
             //Chaos Shogun Armor
             Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Armor", isTemp: false, publicRoom: true);
 

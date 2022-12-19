@@ -76,7 +76,7 @@ public class Concert
     {
         if (Core.isCompletedBefore(1035))
             return;
-        
+
         //Death Be Not Pround 1030
         Story.MapItemQuest(1030, "feardeath", 391);
 

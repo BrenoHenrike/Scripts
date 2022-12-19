@@ -23,7 +23,7 @@ public class KalaSeasonal
     {
         if (!Core.isSeasonalMapActive("kala"))
             return;
-            
+
         Ran.StoryLine();
 
         if (Core.isCompletedBefore(8214))

@@ -34,10 +34,10 @@ public class DreadspaceReplicatorMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Dread.DreadSpace(true);
-        Adv.StartBuyAllMerge("dreadspace", 527, findIngredients);
+        Adv.StartBuyAllMerge("dreadspace", 527, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

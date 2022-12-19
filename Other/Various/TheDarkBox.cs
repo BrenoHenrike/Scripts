@@ -42,6 +42,6 @@ public class TheDarkBox
             Core.ToBank(Rewards);
         }
         Core.CancelRegisteredQuests();
-        
+
     }
 }

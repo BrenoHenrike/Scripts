@@ -26,10 +26,10 @@ public class OblivionNulgath
     {
         Core.SetOptions();
 
-        COBoN.OblivionNulgath(Bot.Config.Get<string >("Reward"), Bot.Config.Get<int>("Quanity"));
+        COBoN.OblivionNulgath(Bot.Config.Get<string>("Reward"), Bot.Config.Get<int>("Quanity"));
 
         Core.SetOptions(false);
-    }  
+    }
 
     private enum OblivionNulgathRewards
     {

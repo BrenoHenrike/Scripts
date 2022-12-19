@@ -23,16 +23,16 @@ public class EbonyDragonBladeofNulgath
         if (Core.CheckInventory("Ebony DragonBlade of Nulgath"))
             return;
 
-        if(!Core.IsMember && !Core.CheckInventory("DragonBlade of Nulgath"))
+        if (!Core.IsMember && !Core.CheckInventory("DragonBlade of Nulgath"))
         {
             Core.Logger("You must be a member to farm DragonBlade of Nulgath! (Required to merge Ebony DBoN)");
             return;
         }
-        
-        Core.BankingBlackList.AddRange(new[] {"DragonBlade of Nulgath", "Diamond of Nulgath", "Ebony DragonBlade of Nulgath"});
-        if(!Core.CheckInventory("Diamond of Nulgath", 100))
+
+        Core.BankingBlackList.AddRange(new[] { "DragonBlade of Nulgath", "Diamond of Nulgath", "Ebony DragonBlade of Nulgath" });
+        if (!Core.CheckInventory("Diamond of Nulgath", 100))
             Nation.FarmDiamondofNulgath(100);
-        if(!Core.CheckInventory("DragonBlade of Nulgath"))
+        if (!Core.CheckInventory("DragonBlade of Nulgath"))
             DBoN.GetDragonBlade();
         Core.BuyItem("evilwarnul", 456, "Ebony DragonBlade of Nulgath");
     }

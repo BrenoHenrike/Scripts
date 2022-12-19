@@ -35,7 +35,7 @@ public class FiendofLight
         CoreSS.SepulchuresRise();
 
         if (!Bot.Config.Get<bool>("SelectReward"))
-            ForeachSelect(6408); 
+            ForeachSelect(6408);
         else OptionsSelect(Bot.Config.Get<RewardsSelection>("RewardSelect"), 6408);
 
         Core.SetOptions(false);

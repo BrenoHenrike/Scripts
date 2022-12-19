@@ -36,12 +36,12 @@ public class MogloweenSeasonalMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("mogloween"))
             return;
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("mogloween", 223, findIngredients);
+        Adv.StartBuyAllMerge("mogloween", 223, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

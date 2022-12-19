@@ -32,11 +32,11 @@ public class MermaidSushiMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Bot.Quests.UpdateQuest(8892);
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("mermaidsushi", 2178, findIngredients);
+        Adv.StartBuyAllMerge("mermaidsushi", 2178, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

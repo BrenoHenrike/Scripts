@@ -32,7 +32,7 @@ public class Cornelis
 
         // The Frame Up 1627
         Story.KillQuest(1627, "cornelis", "Gargoyle");
-        
+
         // The Lenscrafter 1628
         if (!Story.QuestProgression(1628))
         {
@@ -40,13 +40,13 @@ public class Cornelis
             Core.BuyItem("yulgar", 366, "The Lens of Cornelis");
             Core.EnsureComplete(1628);
         }
-        
+
         // The Hidden Vault 1629
         Story.MapItemQuest(1629, "cornelis", 858);
-        
+
         // The Guardian 1630
         Story.KillQuest(1630, "cornelis", "Gargantugoyle");
-        
+
         //The Family Jewels 1631
         Story.MapItemQuest(1631, "cornelis", 859);
 
