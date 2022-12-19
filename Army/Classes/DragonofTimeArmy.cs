@@ -47,13 +47,6 @@ public class DoTArmy
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1), //so that it waits
-        sArmy.player1,
-        sArmy.player2,
-        sArmy.player3,
-        sArmy.player4,
-        sArmy.player5,
-        sArmy.player6,
-        sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
 
