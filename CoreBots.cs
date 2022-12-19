@@ -1772,7 +1772,18 @@ public class CoreBots
     // Whether the player is Member (set to true if neccessary during setOptions)
     public bool IsMember = false;
 
-    public string Username() => Bot.Flash.GetGameObject("sfc.myUserName")![1..^1];
+    public string Username()
+    {
+        try
+        {
+            return Bot.Flash.GetGameObject("sfc.myUserName")![1..^1];
+        }
+        catch
+        {
+            return Bot.Player.Username;
+        }
+    }
+
 
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
