@@ -232,6 +232,7 @@ public class CoreLegion
         LTShogunParagon(quant);
         LTMountedParagonPet(quant);
         LTThanatosParagon(quant);
+        LTAscendedParagon(quant);
         LTDreadnaughtParagon(quant);
         LTFestiveParagonDracolichRider(quant);
         LTHolidayParagon(quant);
@@ -539,6 +540,30 @@ public class CoreLegion
         }
         Core.CancelRegisteredQuests();
 
+    }
+
+    public void LTAscendedParagon(int quant = 25000)
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Ascended Paragon Pet"))
+            return;
+
+        JoinLegion();
+
+        Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
+
+        Core.FarmingLogger("Legion Token", quant);
+        Core.AddDrop("Legion Token");
+        Core.RegisterQuests(2747);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+        {
+            Core.HuntMonster("tournament", "Lord Brentan", "Lord Brentan's Regal Blade");
+            Core.HuntMonster("tournament", "Roderick", "Roderick's Chaotic Bane");
+            Core.HuntMonster("tournament", "Knight of Thorns", "Knight of Thorns' Sword");
+            Core.HuntMonster("tournament", "Johann Wryce", "Platinum of Johann Wryce");
+            Core.HuntMonster("tournament", "Khai Kaldun", "Khai Kaldun's Scimitar");
+        }
+        Core.CancelRegisteredQuests();
     }
 
     #endregion
