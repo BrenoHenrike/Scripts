@@ -25,7 +25,7 @@ public class AluteaNursery
     {
         if (!Core.isSeasonalMapActive("AluteaNursery"))
             return;
-            
+
         AluteaNurseryStory();
         AluteaNurseryRewards();
     }

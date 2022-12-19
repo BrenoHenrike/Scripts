@@ -26,7 +26,7 @@ public class TricktownMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Treats", "Ghastly Gummy "});
+        Core.BankingBlackList.AddRange(new[] { "Treats", "Ghastly Gummy " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -34,14 +34,14 @@ public class TricktownMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("tricktown"))
             return;
         CoreMogloween.TrickTown();
-        
+
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("tricktown", 2179, findIngredients);
+        Adv.StartBuyAllMerge("tricktown", 2179, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -36,13 +36,13 @@ public class TimeIsMoney
                 {
                     //Time is Money 6185
                     Core.EnsureAccept(6185);
-                    
+
                     Core.HuntMonster("Mobius", "Slugfit", "Slugfit Horn", 5);
                     Core.HuntMonster("Mobius", "Fire Imp", "Imp Flame", 3);
                     Core.HuntMonster("bamboo", "Tanuki", "Tanuki Ears", 3);
                     Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2);
                     Core.HuntMonster("junkyard", "Onibaba", "Onibaba Nails", 5);
-                    
+
                     Core.EnsureComplete(6185);
                 }
         }

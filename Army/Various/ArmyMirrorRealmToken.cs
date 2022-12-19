@@ -9,7 +9,7 @@ public class ArmyMirrorRealmToken
     private CoreBots Core => CoreBots.Instance;
     private CoreArmyLite Army = new();
     private static CoreArmyLite sArmy = new();
-    
+
     public string OptionsStorage = "ArmyMirrorRealmToken";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
@@ -54,10 +54,10 @@ public class ArmyMirrorRealmToken
             Core.RegisterQuests(3188);
             Army.SmartAggroMonStart("mirrorportal", "Chaos Harpy");
         }
-        
+
         while (!Bot.ShouldExit && (!Core.CheckInventory("Mirror Realm Token", 300)))
-                Bot.Combat.Attack("*");
-            Army.AggroMonStop(true);
+            Bot.Combat.Attack("*");
+        Army.AggroMonStop(true);
     }
 
     public enum Method

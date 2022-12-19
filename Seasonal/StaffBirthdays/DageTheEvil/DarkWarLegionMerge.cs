@@ -30,13 +30,13 @@ public class DarkWarLegionMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         if (!Core.isSeasonalMapActive("darkwarlegion"))
             return;
 
-        Adv.StartBuyAllMerge("darkwarlegion", 2122, findIngredients);
+        Adv.StartBuyAllMerge("darkwarlegion", 2122, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

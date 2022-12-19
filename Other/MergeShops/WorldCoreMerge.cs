@@ -31,7 +31,7 @@ public class WorldCoreMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("worldsoul", 1572, findIngredients, itemBlackList: new[] { "Core Guardian Bank" });

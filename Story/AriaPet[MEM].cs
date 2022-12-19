@@ -22,7 +22,7 @@ public class AriaPet
             Core.Logger("Aria Pet Storyline Is Member Only. Skipping this Script");
             return;
         }
-            
+
         if (Core.isCompletedBefore(46))
             return;
 

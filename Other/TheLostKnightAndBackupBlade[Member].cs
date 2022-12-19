@@ -27,7 +27,7 @@ public class TheLostKnightAndBackupBlade
 
         if (Core.CheckInventory(AllRewards, toInv: false))
             return;
-            
+
         CoreFriday13th.Splatterwar();
 
         Bot.Drops.Add(AllRewards);

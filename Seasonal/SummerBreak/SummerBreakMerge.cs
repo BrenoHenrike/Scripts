@@ -36,13 +36,13 @@ public class SummerBreakMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("summerbreak"))
             return;
-            
+
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("summerbreak", 2155, findIngredients);
+        Adv.StartBuyAllMerge("summerbreak", 2155, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -24,7 +24,7 @@ public class ArtixWeddingMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Love Token "});
+        Core.BankingBlackList.AddRange(new[] { "Love Token " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,10 +32,10 @@ public class ArtixWeddingMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("battlewedding", 788, findIngredients);
+        Adv.StartBuyAllMerge("battlewedding", 788, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

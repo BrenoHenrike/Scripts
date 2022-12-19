@@ -38,11 +38,11 @@ public class CrownsreachDefenseMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SoW.ShadowWar();
         SoC.DualPlane();
-        Adv.StartBuyAllMerge("chaosamulet", 1914, findIngredients);
+        Adv.StartBuyAllMerge("chaosamulet", 1914, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -24,7 +24,7 @@ public class ChromaCandyMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Orange Dye", "Green Dye", "Yellow Dye", "Black Dye", "Purple Dye", "Pink Dye "});
+        Core.BankingBlackList.AddRange(new[] { "Orange Dye", "Green Dye", "Yellow Dye", "Black Dye", "Purple Dye", "Pink Dye " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,12 +32,12 @@ public class ChromaCandyMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("mogloween"))
             return;
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("chromafection", 1622, findIngredients);
+        Adv.StartBuyAllMerge("chromafection", 1622, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -73,7 +73,7 @@ public class ChromaCandyMerge
                         Core.HuntMonster("chromafection", "Chromafection", "Candy Dye", 3);
                         Core.EnsureComplete(6538, req.ID);
                     }
-                    break;  
+                    break;
 
             }
         }

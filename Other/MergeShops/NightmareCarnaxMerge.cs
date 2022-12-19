@@ -47,11 +47,11 @@ public class NightmareCarnaxMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         DarkCarnax.Storyline(true);
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("darkcarnax", 2170, findIngredients);
+        Adv.StartBuyAllMerge("darkcarnax", 2170, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

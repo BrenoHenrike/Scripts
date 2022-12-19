@@ -34,11 +34,11 @@ public class RuinedCrownMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SoW.RuinedCrown();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("ruinedcrown", 2156, findIngredients);
+        Adv.StartBuyAllMerge("ruinedcrown", 2156, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

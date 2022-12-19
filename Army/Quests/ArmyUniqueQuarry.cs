@@ -130,8 +130,8 @@ public class ArmyUniqueQuarry
                 Army.AggroMonStart("chaoswar");
                 Army.DivideOnCells("r2");
             }
-            else 
-            {                
+            else
+            {
                 Army.AggroMonCells("r1", "r2");
                 Army.AggroMonStart("chaoswar");
                 Army.DivideOnCells("r1", "r2");

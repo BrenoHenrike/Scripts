@@ -26,7 +26,7 @@ public class ShipWreckMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Enchanted Gauntlet Leather", "Anti-Au Crystals "});
+        Core.BankingBlackList.AddRange(new[] { "Enchanted Gauntlet Leather", "Anti-Au Crystals " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -34,12 +34,12 @@ public class ShipWreckMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         ShipWreck.StoryLine();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("shipwreck", 105, findIngredients);
+        Adv.StartBuyAllMerge("shipwreck", 105, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

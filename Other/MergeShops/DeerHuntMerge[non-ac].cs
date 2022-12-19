@@ -26,7 +26,7 @@ public class DeerHuntMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Icy Pelt", "WinterWild Axe", "Old Moglin Teddy Mace "});
+        Core.BankingBlackList.AddRange(new[] { "Icy Pelt", "WinterWild Axe", "Old Moglin Teddy Mace " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -34,12 +34,12 @@ public class DeerHuntMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         DeerHunt.StoryLine();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("deerhunt", 2077, findIngredients);
+        Adv.StartBuyAllMerge("deerhunt", 2077, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -74,7 +74,7 @@ public class DeerHuntMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
-                
+
                 case "WinterWild Axe":
                 case "Old Moglin Teddy Mace":
                     Core.FarmingLogger(req.Name, quant);

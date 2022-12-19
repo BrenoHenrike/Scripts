@@ -38,7 +38,7 @@ public class MountDoomSkull
         Core.SendPackets("%xt%zm%tryQuestComplete%937075%3589%-1%false%wvz%");
         Core.SendPackets("%xt%zm%tryQuestComplete%937075%3590%-1%false%wvz%");
         Core.SendPackets("%xt%zm%tryQuestComplete%937075%3591%-1%false%wvz%");
-        
+
         //Drakath Defeated
         Core.Logger("Doing drakath defeated");
         Core.Jump("NPC2", "Left");

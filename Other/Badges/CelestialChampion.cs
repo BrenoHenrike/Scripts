@@ -32,7 +32,7 @@ public class CelestialArenaChampion
         CA.Arena1to10();
         CA.Arena11to20();
         CA.Arena21to29();
-        
+
     }
 
     private string badge = "Celestial Champion";

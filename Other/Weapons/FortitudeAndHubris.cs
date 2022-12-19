@@ -28,15 +28,15 @@ public class FandH
         Story.PreLoad(this);
 
         Core.AddDrop(
-            "Zorbak's Secret G-Rave Key", 
-            "Sword's Cost", 
-            "Shards of the Sword", 
+            "Zorbak's Secret G-Rave Key",
+            "Sword's Cost",
+            "Shards of the Sword",
             "Hubris's Final Blade Shard",
-            "Hubris' Magic Essence", 
-            "Hubris", 
-            "Fortitude's Blade Shards", 
-            "Fortitude's Magic Essence", 
-            "Fortitude", 
+            "Hubris' Magic Essence",
+            "Hubris",
+            "Fortitude's Blade Shards",
+            "Fortitude's Magic Essence",
+            "Fortitude",
             "Fortitude + Hubris"
         );
 

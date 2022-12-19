@@ -24,18 +24,18 @@ public class ThreeLittleWolvesHousesMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Building Material", "Foundation Material", "Decor Material", "Dragonrune Blueprint", "Mana Golem's Core", "Arcangrove Blueprint", "Falcontower Blueprint", "Citadel Caverns Blueprint", "Citadel Blueprint", "Seraphic Blueprint", "Hachiko Blueprint", "Clubhouse Blueprint "});
+        Core.BankingBlackList.AddRange(new[] { "Building Material", "Foundation Material", "Decor Material", "Dragonrune Blueprint", "Mana Golem's Core", "Arcangrove Blueprint", "Falcontower Blueprint", "Citadel Caverns Blueprint", "Citadel Blueprint", "Seraphic Blueprint", "Hachiko Blueprint", "Clubhouse Blueprint " });
         Core.SetOptions();
- 
+
         BuyAllMerge();
 
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("buyhouse", 1729, findIngredients);
+        Adv.StartBuyAllMerge("buyhouse", 1729, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

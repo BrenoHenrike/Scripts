@@ -86,7 +86,7 @@ public class CoreSoW
             Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(6852);
             Bot.Wait.ForMapLoad("shadowwar"); //game will force you bac to shadowar-1 ._. so you're welcome.
-            Core.Join("whitemap-100000"); 
+            Core.Join("whitemap-100000");
         }
     }
 

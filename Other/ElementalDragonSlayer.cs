@@ -56,7 +56,7 @@ public class ElementalDragonSlayer
                 Core.HuntMonster("maloth", "Maloth", "Key of Envy", isTemp: false);
                 Core.HuntMonster("wrath", "Gorgorath", "Key of Wrath", isTemp: false);
 
-                Core.EnsureCompleteChoose(6171, new[] {SetItems[i]});
+                Core.EnsureCompleteChoose(6171, new[] { SetItems[i] });
                 Bot.Wait.ForPickup(SetItems[i]);
             }
         }

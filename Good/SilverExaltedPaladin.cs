@@ -45,26 +45,26 @@ public class SEP
             // The First Scroll
             Story.KillQuest(7581, "ectocave", "Ichor Dracolich", AutoCompleteQuest: false);
             Core.EnsureCompleteChoose(7581);
-            Core.ToBank(new string[]{"Silver Exalted Helmet", "Silver Exalted Visor"});
+            Core.ToBank(new string[] { "Silver Exalted Helmet", "Silver Exalted Visor" });
 
             // The Second Scroll
             Story.KillQuest(7582, "frozenruins", "Frostdeep Dweller", AutoCompleteQuest: false);
             Core.EnsureCompleteChoose(7582);
-            Core.ToBank(new string[]{"Silver Exalted Winged Helm", "Silver Exalted Winged Visor"});
+            Core.ToBank(new string[] { "Silver Exalted Winged Helm", "Silver Exalted Winged Visor" });
 
             // The Third Scroll
             Story.KillQuest(7583, "thirdspell", "Great Solar Elemental", GetReward: false);
             Core.ToBank("Silver Exalted Haloed Wings");
-           
+
             // The Fourth Scroll
             Story.KillQuest(7584, "table", "Roach", AutoCompleteQuest: false);
             Core.EnsureCompleteChoose(7584);
-            Core.ToBank(new string[]{"Silver Exalted Paladin Spear", "Silver Exalted Paladin Poleaxe", "Silver Exalted Spears of Light"});
+            Core.ToBank(new string[] { "Silver Exalted Paladin Spear", "Silver Exalted Paladin Poleaxe", "Silver Exalted Spears of Light" });
 
             // The Fifth Scroll
             Story.KillQuest(7585, "dracocon", "Singer", AutoCompleteQuest: false);
             Core.EnsureCompleteChoose(7585);
-            Core.ToBank(new string[]{"Silver Exalted Paladin Blade", "Silver Exalted Paladin Axe"});
+            Core.ToBank(new string[] { "Silver Exalted Paladin Blade", "Silver Exalted Paladin Axe" });
         }
         Core.EnsureAccept(7586);
         Core.HuntMonster("warhorc", "General Drox", "Paladin Armor Found");

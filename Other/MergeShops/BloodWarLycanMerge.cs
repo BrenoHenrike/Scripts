@@ -34,11 +34,11 @@ public class BloodWarLycanMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         BloodMoonQuests.BloodMoonSaga();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("bloodwarlycan", 1488, findIngredients);
+        Adv.StartBuyAllMerge("bloodwarlycan", 1488, findIngredients, buyOnlyThis, buyMode: buyMode);
         #region Dont edit this part
         void findIngredients()
         {

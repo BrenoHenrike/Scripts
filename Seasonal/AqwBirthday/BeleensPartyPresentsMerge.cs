@@ -32,12 +32,12 @@ public class BeleensPartyPresentsMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("yulgar20"))
             return;
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("yulgar20", 2177, findIngredients);
+        Adv.StartBuyAllMerge("yulgar20", 2177, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -32,7 +32,7 @@ public class ShadowDragonShinobiMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         if (!Core.isSeasonalMapActive("blackfridaywar"))
@@ -41,7 +41,7 @@ public class ShadowDragonShinobiMerge
             return;
         }
 
-        Adv.StartBuyAllMerge("blackfridaywar", 756, findIngredients);
+        Adv.StartBuyAllMerge("blackfridaywar", 756, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

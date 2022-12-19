@@ -34,10 +34,10 @@ public class TerranesMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         QOM.TheReshaper(true);
-        Adv.StartBuyAllMerge("guardiantree", 1584, findIngredients);
+        Adv.StartBuyAllMerge("guardiantree", 1584, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

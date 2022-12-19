@@ -22,7 +22,7 @@ public class HelsgroveMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Golden Branch", "Frostval Treat", "Hazel Switch", "Helsgrove Guardian Scarf", "Chibi GroveRider's Locks", "Chibi GroveRider's Locks + Bridle "});
+        Core.BankingBlackList.AddRange(new[] { "Golden Branch", "Frostval Treat", "Hazel Switch", "Helsgrove Guardian Scarf", "Chibi GroveRider's Locks", "Chibi GroveRider's Locks + Bridle " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -30,10 +30,10 @@ public class HelsgroveMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("helsgrove", 2076, findIngredients);
+        Adv.StartBuyAllMerge("helsgrove", 2076, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

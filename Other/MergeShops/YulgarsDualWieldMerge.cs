@@ -46,7 +46,7 @@ public class YulgarsDualWieldMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
             Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
@@ -57,7 +57,7 @@ public class YulgarsDualWieldMerge
             return;
         }
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("nostalgiaquest", 1311, findIngredients);
+        Adv.StartBuyAllMerge("nostalgiaquest", 1311, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

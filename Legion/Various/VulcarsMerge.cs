@@ -42,10 +42,10 @@ public class VulcarsMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("underworld", 1985, findIngredients);
+        Adv.StartBuyAllMerge("underworld", 1985, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -87,7 +87,7 @@ public class VulcarsMerge
                         Core.EnsureAccept(7992);
                         Core.HuntMonster("dagefortress", "Grrrberus", "Grrberus' Flame");
                         SSand.SoulSand(3);
-                        Core.EnsureCompleteChoose(7992, new[] {req.Name});
+                        Core.EnsureCompleteChoose(7992, new[] { req.Name });
                     }
                     break;
 

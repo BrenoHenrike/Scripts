@@ -25,7 +25,7 @@ public class HordeZombieSLAYER
         }
 
         Core.Logger($"Doing quest for {badge} badge");
-        
+
         Core.EquipClass(ClassType.Farm);
 
         Core.EnsureAccept(8670);
