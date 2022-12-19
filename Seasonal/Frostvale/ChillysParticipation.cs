@@ -17,10 +17,14 @@ public class ChillysQuest
 
     public void ChillysParticipation()
     {
-        Core.Logger("Make sure email is verified!");
         if (Core.isCompletedBefore(9004))
             return;
 
+        if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
+            Core.Logger("Your email adres is not verified!", messageBox: true, stopBot: true);
+        if (Bot.Player.Level < 30)
+            Core.Logger("Level 30+ required.", messageBox: true, stopBot: true);
+            
         Core.EnsureAccept(9004);
         Core.HuntMonster("battleontown", "Festive Zard", "Reminder Delivered");
         Core.EnsureComplete(9004);

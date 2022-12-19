@@ -54,7 +54,7 @@ public class Follower
         // Creating directory and file to communicate with the followed player.
         if (!Directory.Exists("options/Butler"))
             Directory.CreateDirectory("options/Butler");
-        File.Create($"options/Butler/{Bot.Player.Username.ToLower()}~!{playerName}.txt");
+        File.Create($"options/Butler/{Core.Username().ToLower()}~!{playerName}.txt");
         // Deleting old files
         if (Directory.Exists("options/FollowerJoe"))
             Directory.Delete("options/FollowerJoe", true);
@@ -453,8 +453,8 @@ public class Follower
         Bot.Events.ExtensionPacketReceived -= CopyWalkListener;
 
         // Delete communication files
-        if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}~!{playerName}.txt"))
-            File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}~!{playerName}.txt");
+        if (File.Exists($"options/Butler/{Core.Username().ToLower()}~!{playerName}.txt"))
+            File.Delete($"options/Butler/{Core.Username().ToLower()}~!{playerName}.txt");
 
         return true;
     }
