@@ -46,8 +46,15 @@ public class DoTArmy
     public string OptionsStorage = "DoTArmy";
     public List<IOption> Options = new List<IOption>()
     {
-        CoreBots.Instance.SkipOptions,
-        new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 4)
+        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.packetDelay,
+        CoreBots.Instance.SkipOptions
     };
 
     private string[] Extras = { "Dragon of Time Horns", "Dragon of Time Horns + Ponytail", "Dragon of Time Wings + Tail" };
@@ -66,12 +73,11 @@ public class DoTArmy
 
     public void GetDoTArmy(bool rankUpClass = true, bool doExtra = true)
     {
+        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(Extras)))
+            return;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(Extras)))
-            return;
 
         DoQuest1();
         DoQuest2();
@@ -96,7 +102,13 @@ public class DoTArmy
         // Acquiring Ancient Secrets 7716
         Core.EnsureAccept(7716);
 
+        Quest QuestData = Core.EnsureLoad(7716);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
         Farm.LoremasterREP(4);
+
+        Core.SellItem("Lost Hieroglyphic", all: true);
+        Core.SellItem("Frost King's Story", all: true);
 
         Bot.Quests.UpdateQuest(4614);
         Core.EquipClass(ClassType.Farm);
@@ -115,6 +127,9 @@ public class DoTArmy
         Bot.Drops.Add(Core.EnsureLoad(7717).Rewards.Select(x => x.Name).ToArray());
 
         Core.EnsureAccept(7717);
+
+        Quest QuestData = Core.EnsureLoad(7717);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Solo);
         ArmyKillMonster("dragonchallenge", "r13", "Left", "Desoloth the Final", "Desoloth's Destructive Aura", isTemp: false);
@@ -137,6 +152,9 @@ public class DoTArmy
 
         Farm.Experience(31);
         Core.EnsureAccept(7718);
+
+        Quest QuestData = Core.EnsureLoad(7718);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         GBoF.GetGBoF();
         PBoD.GetPBoD();
@@ -165,6 +183,9 @@ public class DoTArmy
         Farm.Experience(40);
         Core.EnsureAccept(7719);
 
+        Quest QuestData = Core.EnsureLoad(7719);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
         Core.EquipClass(ClassType.Solo);
         ArmyKillMonster("cathedral", "r14", "Left", "Incarnation of Time", "Time Loop Broken", isTemp: false);
         ArmyKillMonster("ubear", "r7", "Left", "Cornholio", "Is This a Wormhole?", isTemp: false);
@@ -185,6 +206,9 @@ public class DoTArmy
         Farm.Experience(60);
         Core.EnsureAccept(7720);
 
+        Quest QuestData = Core.EnsureLoad(7720);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
         Core.EquipClass(ClassType.Solo);
         ArmyKillMonster("lairdefend", "End", "Left", "Dragon Summoner", "Dimensional Dragon Portal", 2, false);
         ArmyKillMonster("bosschallenge", "r13", "Left", "Grievous Inbunche", "Brutal Slash Studied", 10, false);
@@ -202,6 +226,9 @@ public class DoTArmy
 
         Farm.Experience(60);
         Core.EnsureAccept(7721);
+
+        Quest QuestData = Core.EnsureLoad(7721);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Solo);
         ArmyKillMonster("ivoliss", "r11", "Left", "Ivoliss", "Sword of Voids", isTemp: false); Bot.Wait.ForPickup("Sword of Voids");
@@ -254,6 +281,9 @@ public class DoTArmy
         Farm.Experience(65);
         Core.EnsureAccept(7722);
 
+        Quest QuestData = Core.EnsureLoad(7722);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
         Core.EquipClass(ClassType.Farm);
         ArmyKillMonster("moonlab", "r2", "Left", "Slime Mold", "Unyielding Slime", 300, false);
         Core.EquipClass(ClassType.Solo);
@@ -278,6 +308,10 @@ public class DoTArmy
         Farm.Experience(70);
         Core.EnsureAccept(7723);
 
+        Quest QuestData = Core.EnsureLoad(7723);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
+
         Core.EquipClass(ClassType.Farm);
         ArmyKillMonster("volcano", "r10", "Left", "Fire Imp", "Fire Essence", 3000, false);
         Core.EquipClass(ClassType.Solo);
@@ -300,6 +334,9 @@ public class DoTArmy
         if (!Core.CheckInventory("Blade of Awe"))
             Farm.BladeofAweREP(6, true);
         Core.EnsureAccept(7724);
+
+        Quest QuestData = Core.EnsureLoad(7724);
+        Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Egg.GetMysteriousEgg();
 
@@ -329,6 +366,9 @@ public class DoTArmy
 
             Farm.Experience(75);
             Core.EnsureAccept(7725);
+
+            Quest QuestData = Core.EnsureLoad(7725);
+            Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
             Borgars.StoryLine();
             Core.AddDrop("Burger Buns");
@@ -418,12 +458,13 @@ public class DoTArmy
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void ArmyKillMonster(string map, string r, string Left, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        // Core.PrivateRooms = true;
+        // Core.PrivateRoomNumber = Army.getRoomNr();
+
         if (item != null && isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant))
             return;
         if (!isTemp && item != null)
             Core.AddDrop(item);
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
         Core.Join(map, r, Left);
         Core.Jump(r, Left);
         while ((r != null && Bot.Map.PlayerNames.Count() > 0 ? Bot.Map.PlayerNames.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
