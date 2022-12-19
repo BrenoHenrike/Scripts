@@ -125,15 +125,15 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find blackListIndex");
             return;
         }
-        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + String.Join("\", \"", itemsToLearn) + " \"});";
+        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + String.Join("\", \"", itemsToLearn) + "\"});";
 
-        int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients);");
+        int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients, buyOnlyThis, buyMode: buyMode);");
         if (startIndex < 0)
         {
             Core.Logger("Failed to find startIndex");
             return;
         }
-        MergeTemplate[startIndex] = $"        Adv.StartBuyAllMerge(\"{map.ToLower()}\", {shopID}, findIngredients);";
+        MergeTemplate[startIndex] = $"        Adv.StartBuyAllMerge(\"{map.ToLower()}\", {shopID}, findIngredients, buyOnlyThis, buyMode: buyMode);";
 
         shopItemNames.Add("    };");
 

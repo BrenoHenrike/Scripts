@@ -22,7 +22,7 @@ public class TechnocasterMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Purified Energy Core", "Seraphic Steel Plate"});
+        Core.BankingBlackList.AddRange(new[] { "Purified Energy Core", "Seraphic Steel Plate" });
         Core.AddDrop("Purified Energy Core", "Seraphic Steel Plate");
         Core.SetOptions();
 
@@ -31,10 +31,10 @@ public class TechnocasterMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("technospace", 1802, findIngredients);
+        Adv.StartBuyAllMerge("technospace", 1802, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -62,7 +62,7 @@ public class TechnocasterMerge
                     Core.RegisterQuests(7236);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("technospace", "Technocaster Rogue", "Energy Core", log:false);
+                        Core.HuntMonster("technospace", "Technocaster Rogue", "Energy Core", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -74,7 +74,7 @@ public class TechnocasterMerge
                     Core.RegisterQuests(7235);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("technospace", "Technowolf", "Seraphic Steel", 5, log:false);
+                        Core.HuntMonster("technospace", "Technowolf", "Seraphic Steel", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

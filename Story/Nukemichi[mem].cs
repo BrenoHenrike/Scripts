@@ -32,19 +32,19 @@ public class Nukemichi
 
         // Trusted Sources 1587
         Story.MapItemQuest(1587, "akiba", 794, 10);
-        
+
         // Shades Of Gray 1588
         Story.MapItemQuest(1588, "akiba", 795);
-        
+
         // Hiding In Shadows 1589
         Story.KillQuest(1589, "akiba", "Kage Nopperabo");
 
         // Fading Light 1590
         Story.KillQuest(1590, "akiba", "Kage Nopperabo");
-        
+
         // Candles in the Dark 1591
         Story.MapItemQuest(1591, "akiba", 796, 8);
-        
+
         // Shadow Battle! 1592
         Story.KillQuest(1592, "akiba", "Shadow Nukemichi");
     }

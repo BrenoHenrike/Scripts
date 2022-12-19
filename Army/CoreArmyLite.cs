@@ -221,7 +221,7 @@ public class CoreArmyLite
     public string[]? PartyMemberArray()
     {
         string[]? members = Bot.Flash.GetGameObject<string[]>("world.partyMembers");
-        return members == null ? null : members.Concat(new[] { Bot.Player.Username.ToLower() }).ToArray();
+        return members == null ? null : members.Concat(new[] { Core.Username().ToLower() }).ToArray();
     }
 
     public string? getPartyLeader()
@@ -229,7 +229,7 @@ public class CoreArmyLite
 
 
     public bool isPartyLeader()
-        => Bot.Player.Username.ToLower() == (getPartyLeader() ?? String.Empty).ToLower();
+        => Core.Username().ToLower() == (getPartyLeader() ?? String.Empty).ToLower();
 
     private int getPartyID()
         => Bot.Flash.GetGameObject<int>("world.partyID");
@@ -337,7 +337,7 @@ public class CoreArmyLite
 
         //Dividing the players amongst the cells
         int cellCount = 0;
-        string username = Bot.Player.Username.ToLower();
+        string username = Core.Username().ToLower();
         foreach (string p in _players)
         {
             string cell = cells[cellCount];

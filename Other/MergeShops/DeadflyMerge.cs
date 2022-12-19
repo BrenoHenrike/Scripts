@@ -34,10 +34,10 @@ public class DeadflyMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("deadfly", 2037, findIngredients);
+        Adv.StartBuyAllMerge("deadfly", 2037, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -86,7 +86,7 @@ public class DeadflyMerge
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("RotFinger", "Rotfinger", req.Name, isTemp: false);
                     break;
-                
+
             }
         }
     }

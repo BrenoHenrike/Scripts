@@ -29,7 +29,7 @@ public class BirthdaySavior
 
         Core.Logger($"Doing Artixpointe story for {badge} badge");
         AP.OmniArtifact();
-        
+
     }
 
     private string badge = "6th Birthday Savior";

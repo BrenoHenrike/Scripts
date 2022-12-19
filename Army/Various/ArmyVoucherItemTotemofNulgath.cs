@@ -58,11 +58,11 @@ public class ArmyTotemAndGem
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
         Core.Join("tercessuinotlim");
-        if ((Bot.Player.Username == Bot.Config.Get<string>("player1").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player4").ToLower()))
+        if ((Core.Username() == Bot.Config.Get<string>("player1").ToLower()) || (Core.Username() == Bot.Config.Get<string>("player4").ToLower()))
             Core.Jump("m1", "Left");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player2").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player5").ToLower()))
+        else if ((Core.Username() == Bot.Config.Get<string>("player2").ToLower()) || (Core.Username() == Bot.Config.Get<string>("player5").ToLower()))
             Core.Jump("m2", "Left");
-        else if ((Bot.Player.Username == Bot.Config.Get<string>("player3").ToLower()) || (Bot.Player.Username == Bot.Config.Get<string>("player6").ToLower()))
+        else if ((Core.Username() == Bot.Config.Get<string>("player3").ToLower()) || (Core.Username() == Bot.Config.Get<string>("player6").ToLower()))
             Core.Jump("m3", "Left");
         else
             Core.Jump("m2", "Left");

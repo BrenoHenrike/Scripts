@@ -48,7 +48,7 @@ public class ArmyDarkonErrands
 
         else if (Method.ToString() == "Second_Errands")
             GetItem("doomvault", new[] { "Binky" }, 7325, "Darkon's Receipt", quant);
-            
+
         else if (Method.ToString() == "First_Errands_Strong_Team")
         {
             Core.EquipClass(ClassType.Farm);

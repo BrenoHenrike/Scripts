@@ -33,12 +33,12 @@ public class GonnaGetchaMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         F13.Gonnagetcha();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("gonnagetcha", 1581, findIngredients);
+        Adv.StartBuyAllMerge("gonnagetcha", 1581, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

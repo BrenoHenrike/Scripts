@@ -34,10 +34,10 @@ public class TrygveMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Trygve.Storyline();
-        Adv.StartBuyAllMerge("trygve", 2054, findIngredients);
+        Adv.StartBuyAllMerge("trygve", 2054, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

@@ -33,11 +33,11 @@ public class DarkbloodWarMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         QOM.CompleteEverything();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("kolyaban", 1420, findIngredients);
+        Adv.StartBuyAllMerge("kolyaban", 1420, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

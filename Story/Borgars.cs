@@ -27,19 +27,19 @@ public class Borgars
         // Beef Up 7510
         Core.AddDrop("Slice of Cake");
         Story.KillQuest(7510, "extinction", new[] { "Lard", "Freezer Drone" });
-       
+
         // Creamy! 7511
         Story.KillQuest(7511, "battlefowl", "Chickencow", false);
-      
+
         // Sacchar-Imp 7512
         Story.KillQuest(7512, "freakitiki", "Sugar Imp", false);
-      
+
         // Salty Balboa 7513
         Story.KillQuest(7513, "stalagbite", "Balboa");
-       
+
         // Filet o' Fishwing 7514
         Story.KillQuest(7514, "pirates", "Fishwing", false);
-      
+
         // A Potion Master 7515
         Story.MapItemQuest(7515, "arcangrove", 7370);
 

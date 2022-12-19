@@ -34,10 +34,10 @@ public class GenesisGardenMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("genesisgarden", 2136, findIngredients);
+        Adv.StartBuyAllMerge("genesisgarden", 2136, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

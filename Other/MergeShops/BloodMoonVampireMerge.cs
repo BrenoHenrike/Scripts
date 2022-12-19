@@ -34,12 +34,12 @@ public class BloodMoonVampireMergeTemp
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         BloodMoonQuests.BloodMoonSaga();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("bloodwarvamp", 1489, findIngredients);
+        Adv.StartBuyAllMerge("bloodwarvamp", 1489, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

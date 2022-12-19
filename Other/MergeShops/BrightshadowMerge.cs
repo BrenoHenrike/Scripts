@@ -34,11 +34,11 @@ public class BrightshadowMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SoC.BrightShadow();
         SoC.BrightChaos();
-        Adv.StartBuyAllMerge("brightshadow", 1921, findIngredients);
+        Adv.StartBuyAllMerge("brightshadow", 1921, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

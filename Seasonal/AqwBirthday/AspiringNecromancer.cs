@@ -19,7 +19,7 @@ public class AspiringNecromancer
 
     public void Example()
     {
-        
+
         string[] Quest1Rewards = (Core.EnsureLoad(7751).Rewards.Select(i => i.Name).ToArray());
         string[] Quest2Rewards = (Core.EnsureLoad(7752).Rewards.Select(i => i.Name).ToArray());
         string[] Quest3Rewards = (Core.EnsureLoad(7753).Rewards.Select(i => i.Name).ToArray());
@@ -37,7 +37,7 @@ public class AspiringNecromancer
         Core.JumpWait();
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
-        
+
         //Like No One Ever Was 7752
         Core.RegisterQuests(7752);
         while (!Bot.ShouldExit && !Core.CheckInventory(Quest2Rewards, toInv: false))
@@ -46,7 +46,7 @@ public class AspiringNecromancer
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
 
-        
+
         Bot.Quests.UpdateQuest(2060);
         Bot.Quests.UpdateQuest(3019);
         //To Raise Them is my Real Quest 7753

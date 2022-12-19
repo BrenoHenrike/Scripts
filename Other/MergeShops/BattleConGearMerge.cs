@@ -24,7 +24,7 @@ public class BattleConGearMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "DeadMog LED "});
+        Core.BankingBlackList.AddRange(new[] { "DeadMog LED " });
         Core.SetOptions();
 
         BuyAllMerge();

@@ -24,35 +24,35 @@ public class Extinction
 
         Story.PreLoad(this);
 
-    //Chopped HAMM 3855
-    Story.MapItemQuest(3855, "extinction", 2956, 5);
-    Story.KillQuest(3855, "extinction", "Control Panel");
+        //Chopped HAMM 3855
+        Story.MapItemQuest(3855, "extinction", 2956, 5);
+        Story.KillQuest(3855, "extinction", "Control Panel");
 
-    //Bad Dog 3856
-    Story.KillQuest(3856, "extinction", "Cyworg");
+        //Bad Dog 3856
+        Story.KillQuest(3856, "extinction", "Cyworg");
 
-    //Pink Slime Yum! 3857
-    Story.KillQuest(3857, "extinction", new[] { "Pink Slime", "Gelatinous Slime" });
+        //Pink Slime Yum! 3857
+        Story.KillQuest(3857, "extinction", new[] { "Pink Slime", "Gelatinous Slime" });
 
-    //Processed What? 3858
-    Story.MapItemQuest(3858, "extinction", 2957, 5);
+        //Processed What? 3858
+        Story.MapItemQuest(3858, "extinction", 2957, 5);
 
-    //Another Locked Door 3859
-    Story.KillQuest(3859, "extinction", "Slimed Drone");
+        //Another Locked Door 3859
+        Story.KillQuest(3859, "extinction", "Slimed Drone");
 
-    //This Factory is On Fire 3860
-    Story.KillQuest(3860, "extinction", "Freezer Drone");
+        //This Factory is On Fire 3860
+        Story.KillQuest(3860, "extinction", "Freezer Drone");
 
-    //Frozen... Food? 3861
-    Story.MapItemQuest(3861, "extinction", 2958, 5);
+        //Frozen... Food? 3861
+        Story.MapItemQuest(3861, "extinction", 2958, 5);
 
-    //Fight Fire With Flammable Ingredients 3862
-    Story.KillQuest(3862, "extinction", "Lard");
+        //Fight Fire With Flammable Ingredients 3862
+        Story.KillQuest(3862, "extinction", "Lard");
 
-    //The Last Lock 3863
-    Story.KillQuest(3863, "extinction", "Freezer Drone");
+        //The Last Lock 3863
+        Story.KillQuest(3863, "extinction", "Freezer Drone");
 
-    //SN.O.W. Fall 3864
-    Story.KillQuest(3864, "extinction", "SN.O.W.");
+        //SN.O.W. Fall 3864
+        Story.KillQuest(3864, "extinction", "SN.O.W.");
     }
 }

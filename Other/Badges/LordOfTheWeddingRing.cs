@@ -17,7 +17,7 @@ public class LordOfTheWeddingRing
 
         Core.SetOptions(false);
     }
-    
+
     public void Badge()
     {
         if (Core.HasWebBadge(badge))
@@ -28,7 +28,7 @@ public class LordOfTheWeddingRing
 
         Core.Logger($"Doing Artix Wedding story for {badge} badge");
         AW.ArtixWeddingComplete();
-        
+
     }
 
     private string badge = "Lord of the Wedding Ring";

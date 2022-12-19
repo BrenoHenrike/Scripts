@@ -48,5 +48,5 @@ public class ChooseBestGear
         if (EnhanceEquipment)
             Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
     }
-    
+
 }

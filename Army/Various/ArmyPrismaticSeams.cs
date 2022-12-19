@@ -36,7 +36,7 @@ public class ArmyPrimaticSeams
         {
             SoW.CompleteCoreSoW();
         }
-        
+
         ArmyPS();
 
         Core.SetOptions(false);

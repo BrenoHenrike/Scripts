@@ -19,7 +19,7 @@ public class SweetSummerTreats
     {
         if (!Core.isSeasonalMapActive("summerbreak"))
             return;
-            
+
         string[] rewards = { "Sunflower Outfit", "SunFlower Locks", "Sunflower Hair" };
         if (Core.CheckInventory(rewards, toInv: false))
             return;

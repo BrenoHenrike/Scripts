@@ -137,7 +137,7 @@ public class Core7DD
             return;
 
         Core.Logger("Hunting the Ice Dragon of Greed!");
-            
+
         Story.PreLoad(this);
 
         // Looting is for Sneevils 5934

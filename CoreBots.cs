@@ -88,12 +88,14 @@ public class CoreBots
     {
         if (changeTo)
         {
+            Bot.Events.ScriptStopping += CrashDetector;
+
             if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
                 Bot.Config.Configure();
 
             if (CBO_Active())
             {
-                CBOList = File.ReadAllLines(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt").ToList();
+                CBOList = File.ReadAllLines(AppPath + $@"\options\CBO_Storage({Username()}).txt").ToList();
                 ReadCBO();
             }
 
@@ -108,12 +110,12 @@ public class CoreBots
 
             if (Directory.Exists("options/Butler"))
             {
-                if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}.txt"))
-                    File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}.txt");
+                if (File.Exists($"options/Butler/{Username().ToLower()}.txt"))
+                    File.Delete($"options/Butler/{Username().ToLower()}.txt");
 
                 string[] files = Directory.GetFiles("options/Butler");
-                if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Bot.Player.Username.ToLower()))
-                    File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Bot.Player.Username.ToLower()));
+                if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()))
+                    File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()));
             }
 
             if (!Bot.Player.LoggedIn)
@@ -122,10 +124,10 @@ public class CoreBots
                 {
                     Logger("Auto Login triggered");
                     if (!Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer ?? Bot.Servers.CachedServers[0].Name))
-                        Logger("Please log-in before starting the bot.", messageBox: true, stopBot: true);
+                        Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
                     Bot.Sleep(5000);
                 }
-                else Logger("Please log-in before starting the bot.\nIf you are already logged in but are recieving this message regardless, please re-install cleanFlash", messageBox: true, stopBot: true);
+                else Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
             }
 
             IsMember = Bot.Player.IsMember;
@@ -279,15 +281,15 @@ public class CoreBots
                 if (CustomStopLocation.Trim().ToLower() == "home")
                 {
                     if (Bot.House.Items.Count(h => h.Equipped) > 0)
-                        Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+                        Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
                     else
-                        SendPackets($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%whitemap-{PrivateRoomNumber}%");
+                        SendPackets($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
                 }
 
                 else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
                                 .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
                 else
-                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Bot.Player.Username}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
+                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
             }
         }
         if (AntiLag)
@@ -297,12 +299,12 @@ public class CoreBots
                 Bot.Flash.CallGameFunction("world.toggleMonsters");
         }
 
-        Bot.Options.CustomName = Bot.Player.Username.ToUpper();
+        Bot.Options.CustomName = Username().ToUpper();
         string guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
         Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
 
-        if (File.Exists($"options/Butler/{Bot.Player.Username.ToLower()}.txt"))
-            File.Delete($"options/Butler/{Bot.Player.Username.ToLower()}.txt");
+        if (File.Exists($"options/Butler/{Username().ToLower()}.txt"))
+            File.Delete($"options/Butler/{Username().ToLower()}.txt");
 
         if (crashed)
             Logger("Bot Stopped due to crash.");
@@ -318,43 +320,48 @@ public class CoreBots
     private bool StopBotEvent(Exception e)
     {
         SetOptions(false);
-
-        if (e != null)
-        {
-            string eSlice = e.Message + "\n" + e.InnerException;
-            List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
-            logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
-            if (Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice,
-                                   "Script Crashed", "Open Form", "Close Window").Text == "Open Form")
-            {
-                string url = "\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
-                    "entry.2118425091=Bug+Report&" +
-                   $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1).Replace(".cs", "")}&" +
-                    "entry.1803231651=It+stopped+at+the+wrong+time+(crash)&" +
-                   $"entry.1954840906={logs.Join("%0A")}&" +
-                   $"entry.285894207={eSlice}&\"";
-                url = url.Replace("\r\n", "%0A").Replace("\n", "").Replace(" ", "%20");
-
-                Process p = new();
-                p.StartInfo.FileName = "rundll32";
-                p.StartInfo.Arguments = "url,OpenURL " + url;
-                p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
-                p.Start();
-
-                Logger("Thank you for reporting the crash. Below you will find the information you will need to report, in case it isn't being auto filled");
-
-            }
-            else Logger("A crash has occurred. Please report it in the form with the details below");
-
-            Bot.Log("--------------------------------------");
-            Logger("Last 5 Logs:");
-            Bot.Log(logs.Join('\n'));
-            Bot.Log("--------------------------------------");
-            Logger("Crash (Debug)");
-            Bot.Log(eSlice);
-            Bot.Log("--------------------------------------");
-        }
         return StopBot(e != null);
+    }
+
+    private bool CrashDetector(Exception e)
+    {
+        if (e == null)
+            return scriptFinished;
+
+        string eSlice = e.Message + "\n" + e.InnerException;
+        List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
+        logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
+        if (Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice,
+                               "Script Crashed", "Open Form", "Close Window").Text == "Open Form")
+        {
+            string url = "\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                "entry.2118425091=Bug+Report&" +
+               $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1).Replace(".cs", "")}&" +
+                "entry.1803231651=It+stopped+at+the+wrong+time+(crash)&" +
+               $"entry.1954840906={logs.Join("%0A")}&" +
+               $"entry.285894207={eSlice}&\"";
+            url = url.Replace("\r\n", "%0A").Replace("\n", "").Replace(" ", "%20");
+
+            Process p = new();
+            p.StartInfo.FileName = "rundll32";
+            p.StartInfo.Arguments = "url,OpenURL " + url;
+            p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
+            p.Start();
+
+            Logger("Thank you for reporting the crash. Below you will find the information you will need to report, in case it isn't being auto filled");
+
+        }
+        else Logger("A crash has occurred. Please report it in the form with the details below");
+
+        Bot.Log("--------------------------------------");
+        Logger("Last 5 Logs:");
+        Bot.Log(logs.Join('\n'));
+        Bot.Log("--------------------------------------");
+        Logger("Crash (Debug)");
+        Bot.Log(eSlice);
+        Bot.Log("--------------------------------------");
+
+        return false;
     }
 
     public void ScriptMain(IScriptInterface bot)
@@ -923,8 +930,7 @@ public class CoreBots
             Bot.Sleep(ActionDelay);
             return;
         }
-
-        Bot.Shops.SellItem(itemName);
+        else Bot.Shops.SellItem(itemName);
 
         Logger($"{(all ? string.Empty : quant.ToString())} {itemName} sold");
     }
@@ -1766,6 +1772,19 @@ public class CoreBots
     // Whether the player is Member (set to true if neccessary during setOptions)
     public bool IsMember = false;
 
+    public string Username()
+    {
+        try
+        {
+            return Bot.Flash.GetGameObject("sfc.myUserName")![1..^1];
+        }
+        catch
+        {
+            return Bot.Player.Username;
+        }
+    }
+
+
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
     /// </summary>
@@ -2396,7 +2415,7 @@ public class CoreBots
         if (Bot.Map.Name != null && strippedMap == Bot.Map.Name.ToLower())
         {
             if (Directory.Exists("options/Butler") && Directory.GetFiles("options/Butler") != null &&
-                Directory.GetFiles("options/Butler").Any(x => x.Contains("~!") && x.Split("~!").Last() == Bot.Player.Username.ToLower() + ".txt"))
+                Directory.GetFiles("options/Butler").Any(x => x.Contains("~!") && x.Split("~!").Last() == Username().ToLower() + ".txt"))
             {
                 string[] lockedMaps =
                 {
@@ -2424,7 +2443,7 @@ public class CoreBots
                     "voidnightbane"
                 };
                 if (lockedMaps.Contains(strippedMap))
-                    File.WriteAllText($"options/Butler/{Bot.Player.Username.ToLower()}.txt", Bot.Map.FullName);
+                    File.WriteAllText($"options/Butler/{Username().ToLower()}.txt", Bot.Map.FullName);
             }
 
             Jump(cell, pad);
@@ -3126,7 +3145,7 @@ public class CoreBots
             FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
-    public bool CBO_Active() => File.Exists(AppPath + $@"\options\CBO_Storage({Bot.Player.Username}).txt");
+    public bool CBO_Active() => File.Exists(AppPath + $@"\options\CBO_Storage({Username()}).txt");
 
     public bool CBOString(string Name, out string output)
     {

@@ -34,12 +34,12 @@ public class TowersMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         TOD.BoneTowerAll();
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("towersilver", 1243, findIngredients);
+        Adv.StartBuyAllMerge("towersilver", 1243, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

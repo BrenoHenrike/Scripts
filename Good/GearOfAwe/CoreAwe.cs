@@ -22,7 +22,7 @@ public class CoreAwe
             return;
 
         Core.AddDrop($"{Item} Fragment");
-        
+
         if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
             Farm.BladeofAweREP(5, false);

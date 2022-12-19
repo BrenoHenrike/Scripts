@@ -24,7 +24,7 @@ public class HarvestDayParadeMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Pink Balloon Scrap", "Green Balloon Scrap", "Red Balloon Scrap "});
+        Core.BankingBlackList.AddRange(new[] { "Pink Balloon Scrap", "Green Balloon Scrap", "Red Balloon Scrap " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -32,12 +32,12 @@ public class HarvestDayParadeMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("float"))
             return;
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("float", 234, findIngredients);
+        Adv.StartBuyAllMerge("float", 234, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()

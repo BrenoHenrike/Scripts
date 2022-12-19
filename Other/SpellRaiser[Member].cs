@@ -24,7 +24,7 @@ public class SpellRaiser
     {
         string[] AllRewards = (Core.EnsureLoad(7400).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(7402).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(7404).Rewards.Select(i => i.Name)).ToArray();
 
-       if (Core.CheckInventory(AllRewards, toInv: false))
+        if (Core.CheckInventory(AllRewards, toInv: false))
             return;
 
         CoreFriday13th.Splatterwar();

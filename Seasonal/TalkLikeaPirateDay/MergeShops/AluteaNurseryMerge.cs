@@ -35,11 +35,11 @@ public class AluteaNurseryMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         AN.DoAll();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("aluteanursery", 2168, findIngredients);
+        Adv.StartBuyAllMerge("aluteanursery", 2168, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -92,7 +92,7 @@ public class AluteaNurseryMerge
                 case "DeepSea Star Pirate's Light Guns":
                 case "DeepSea Smol Wave":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("aluteanursery", "Last Alutian", req.Name, isTemp:false);
+                    Core.HuntMonster("aluteanursery", "Last Alutian", req.Name, isTemp: false);
                     break;
 
             }

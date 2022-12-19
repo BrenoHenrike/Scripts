@@ -34,7 +34,7 @@ public class LowDRHelmets
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
-        
+
         Core.FarmingLogger($"{Bot.Config.Get<Helmets>("Helmets").ToString()}", 1);
 
         if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Sekts_Mummys_Hat || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Sekt's Mummy's Hat"))

@@ -34,14 +34,14 @@ public class LowDRPets
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
-        
+
         Core.FarmingLogger($"{Bot.Config.Get<Pets>("Pets").ToString()}", 1);
 
         if (Bot.Config.Get<Pets>("Pets") == Pets.Akriloth_Pet || Bot.Config.Get<Pets>("Pets") == Pets.All && !Core.CheckInventory("Akriloth Pet"))
         {
             Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false);
         }
- 
+
         // if (Bot.Config.Get<Pets>("Pets") == Pets.Insert || Bot.Config.Get<Pets>("Pets") == Pets.All && !Core.CheckInventory("Insert"))
         // {
         //     Core.HuntMonster("Map", "Mob", "Item", isTemp: false);

@@ -28,7 +28,7 @@ public class GoldenLaurel
 
         Core.Logger($"Doing Golden Arena story for {badge} badge");
         GA.StoryLine();
-        
+
     }
 
     private string badge = "Golden Laurel";

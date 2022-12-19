@@ -29,7 +29,7 @@ public class ShadowVaultChampion
 
         Core.Logger($"Doing ShadowVault story for {badge} badge");
         SV.StoryLine();
-        
+
     }
 
     private string badge = "ShadowScythe Champion";

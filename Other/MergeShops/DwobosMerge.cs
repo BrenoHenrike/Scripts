@@ -32,10 +32,10 @@ public class DwobosMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge()
+    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("crashruins", 1212, findIngredients);
+        Adv.StartBuyAllMerge("crashruins", 1212, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -71,7 +71,7 @@ public class DwobosMerge
                             Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 7);
                         else Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 5);
 
-                            Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
+                        Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
 
                         Bot.Wait.ForPickup(req.Name);
                     }

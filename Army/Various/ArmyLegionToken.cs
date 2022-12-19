@@ -52,11 +52,11 @@ public class ArmyLegionToken
     public void Setup(Method Method, int quant = 25000)
     {
         Legion.JoinLegion();
-        
+
         Core.EquipClass(ClassType.Farm);
         if (Method.ToString() == "Dreadrock")
             Core.BuyItem("underworld", 216, "Undead Champion");
-            GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", quant);
+        GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", quant);
         if (Method.ToString() == "Shogun_Paragon_Pet")
             GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Legion Token", quant);
         else

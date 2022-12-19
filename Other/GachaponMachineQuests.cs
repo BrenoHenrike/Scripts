@@ -83,7 +83,7 @@ public class GachaponMachine
         "A Story of Eden: Light Novel",
         "A Story of Eden: Special Edition",
     };
-    
+
     public void Gacha()
     {
         Eden.StoryLine();
