@@ -117,7 +117,7 @@ public class CheckForDonatedACs
         File.WriteAllLines(logPath, writeACs);
 
         if (newACs.Count() == 0)
-            Bot.ShowMessageBox($"We checked {acc.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs sicne last time")}." +
+            Bot.ShowMessageBox($"We checked {acc.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
             $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
             (Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs"));
         else
