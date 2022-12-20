@@ -105,12 +105,12 @@ public class DoTArmy
 
         Bot.Quests.UpdateQuest(4614);
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false); 
-        ArmyKillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false); 
+        ArmyKillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
+        ArmyKillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
         Core.EquipClass(ClassType.Solo);
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("kingcoal", "King", "Left", "Frost King", "Frost King's Story", isTemp: false); 
-        Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false); 
+        ArmyKillMonster("kingcoal", "King", "Left", "Frost King", "Frost King's Story", isTemp: false);
+        Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false);
         Core.BuyItem("librarium", 651, "Myths of Lore");
         Core.ChainComplete(7716);
         Core.Logger($"Quest 1: 🖕");
@@ -473,10 +473,15 @@ public class DoTArmy
         {
             if (log)
                 Core.Logger($"Killing {monster}");
-            Bot.Kill.Monster(monster);
+            Core.HuntMonster(map, monster);
             Core.Rest();
         }
-        else Core._KillForItem(monster, item, quant, isTemp, log: log);
+        else
+        {
+            if (Bot.Map.Name == "trigoras")
+                Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
+            else Core.HuntMonster(map, monster, item, quant, isTemp, log: log);
+        }
 
     }
 
