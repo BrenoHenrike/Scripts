@@ -388,10 +388,12 @@ public class ArmyLR
             return;
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
+        Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Human);
         Core.RegisterQuests(4849);
+        Army.SmartAggroMonStart("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" });
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Dreadrock Enemy Recruited", ClassType.Farm, true, 6);
+            Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();
     }
 
