@@ -126,7 +126,7 @@ public class GlaceraStory
         Story.KillQuest(3934, "frozentower", "Rotten Ice");
 
         // Create the Gate
-        Story.MapItemQuest(3935, "frozentower", 3018, 13);
+        Story.MapItemQuest(3935, "frozentower", 3018, 7);
         Story.KillQuest(3935, "frozentower", "Ice Wolf");
 
         // Drive Back the Invaders
