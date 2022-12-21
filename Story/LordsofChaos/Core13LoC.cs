@@ -2295,8 +2295,8 @@ public class Core13LoC
         //The Final Showdown!
         if (!Story.QuestProgression(3881))
         {
-            Core.Join("finalshowdown"); // for the updatequestbit
             Core.EnsureAccept(3881);
+            Core.Join("finalshowdown"); // for the updatequestbit
             Core.KillMonster("finalshowdown", "r2", "Left", "Prince Drakath", "Prince Drakath Defeated");
             Core.EnsureComplete(3881);
         }
