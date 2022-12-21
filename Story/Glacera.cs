@@ -50,7 +50,7 @@ public class GlaceraStory
         Story.MapItemQuest(3910, "frozentower", 3004, 13);
 
         // Refugee Roundup
-        Story.KillQuest(3911, "frozentower", "Frostwyrm");
+        Story.KillQuest(3911, "frozentower", MonsterNames: new[] { "Frostwyrm", "Frostwyrm" });
 
         // Retrieve the Water Starstone
         Story.KillQuest(3912, "frozentower", "FrostDeep Dweller");
@@ -70,7 +70,7 @@ public class GlaceraStory
         // Refugee Rescue Run
         Story.MapItemQuest(3917, "frozentower", 3007, 6);
 
-        // Retrieve the Earth Starstone
+        // Retrieve the Earth Starston
         Story.MapItemQuest(3918, "frozentower", 3013);
 
         // Polar Penetration and Progress
@@ -82,7 +82,7 @@ public class GlaceraStory
         Story.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" });
 
         // Glacial Elixir
-        Story.MapItemQuest(3921, "frozentower", 3017, 5);
+        Story.MapItemQuest(3921, "frozentower", 3017, 6);
         Story.KillQuest(3921, "frozentower", "FrostDeep Dweller");
 
         // Retrieve the Energy Starstone
@@ -95,11 +95,12 @@ public class GlaceraStory
         Story.MapItemQuest(3924, "frozentower", 3009, 6);
 
         // Divination Draft
-        Story.MapItemQuest(3925, "frozentower", new[] { 3011, 3012 }, 4);
+        Story.MapItemQuest(3925, "frozentower", 3012, 4);
+        Story.MapItemQuest(3925, "frozentower", 3011, 4);
         Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
 
         // Retrieve the Light StarStone
-        Story.MapItemQuest(3926, "frozentower", 3021);
+        Story.MapItemQuest(3926, "frozentower", 3021, 4);
 
         // The Future is Bright
         Story.MapItemQuest(3927, "frozentower", 3014, 7);
@@ -126,7 +127,7 @@ public class GlaceraStory
         Story.KillQuest(3934, "frozentower", "Rotten Ice");
 
         // Create the Gate
-        Story.MapItemQuest(3935, "frozentower", 3018, 7);
+        Story.MapItemQuest(3935, "frozentower", 3018, 13);
         Story.KillQuest(3935, "frozentower", "Ice Wolf");
 
         // Drive Back the Invaders
