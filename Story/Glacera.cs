@@ -95,12 +95,11 @@ public class GlaceraStory
         Story.MapItemQuest(3924, "frozentower", 3009, 6);
 
         // Divination Draft
-        Story.MapItemQuest(3925, "frozentower", 3012, 4);
-        Story.MapItemQuest(3925, "frozentower", 3011, 4);
+        Story.MapItemQuest(3925, "frozentower", new[] { 3011, 3012 }, 4);
         Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
 
         // Retrieve the Light StarStone
-        Story.MapItemQuest(3926, "frozentower", 3021, 4);
+        Story.MapItemQuest(3926, "frozentower", 3021);
 
         // The Future is Bright
         Story.MapItemQuest(3927, "frozentower", 3014, 7);
