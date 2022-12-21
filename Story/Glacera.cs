@@ -50,7 +50,7 @@ public class GlaceraStory
         Story.MapItemQuest(3910, "frozentower", 3004, 13);
 
         // Refugee Roundup
-        Story.KillQuest(3911, "frozentower", MonsterNames: new[] { "Frostwyrm", "Frostwyrm" });
+        Story.KillQuest(3911, "frozentower", "Frostwyrm");
 
         // Retrieve the Water Starstone
         Story.KillQuest(3912, "frozentower", "FrostDeep Dweller");
@@ -70,7 +70,7 @@ public class GlaceraStory
         // Refugee Rescue Run
         Story.MapItemQuest(3917, "frozentower", 3007, 6);
 
-        // Retrieve the Earth Starston
+        // Retrieve the Earth Starstone
         Story.MapItemQuest(3918, "frozentower", 3013);
 
         // Polar Penetration and Progress
@@ -82,7 +82,7 @@ public class GlaceraStory
         Story.KillQuest(3920, "frozentower", new[] { "Ice Wolf", "Polar Elemental" });
 
         // Glacial Elixir
-        Story.MapItemQuest(3921, "frozentower", 3017, 6);
+        Story.MapItemQuest(3921, "frozentower", 3017, 5);
         Story.KillQuest(3921, "frozentower", "FrostDeep Dweller");
 
         // Retrieve the Energy Starstone
