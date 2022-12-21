@@ -1815,23 +1815,31 @@ public class CoreFarms
         if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
 
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3 || FactionRank("Loremaster") < rank)
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
             {
+
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7505); //Studying the Rogue 7505
                 while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
                 {
-                    Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
-                    Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
+
                     if (Core.IsMember && FactionRank("Loremaster") >= 3)
-                        break;
+                        LoremasterREPAbove3();
+                    else
+                    {
+                        Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
+                        Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
+                    }
                 }
                 Core.CancelRegisteredQuests();
                 ToggleBoost(BoostType.Reputation, false);
                 Core.SavedState(false);
-                return;
             }
-            if (!Bot.Quests.IsUnlocked(3032) && Core.IsMember) //Need boat for this questsline (member only)
+        }
+
+        void LoremasterREPAbove3()
+        {
+            if (!Bot.Quests.IsUnlocked(3032)) //Need boat for this questsline (member only)
             {
                 Core.EnsureAccept(3029); //Rosetta Stones 3029
                 Core.HuntMonster("druids", "Void Bear", "Voidstone", 6);
@@ -1845,14 +1853,11 @@ public class CoreFarms
                 Core.HuntMonster("druids", "Void Ghast", "Ghast's Death Cry", 4);
                 Core.EnsureComplete(3031);
             }
-            if (Core.IsMember)
-            {
-                Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(3032); //Quite the Problem 3032
-                while (!Bot.ShouldExit && Core.IsMember && FactionRank("Loremaster") < rank)
-                    Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
-                Core.CancelRegisteredQuests();
-            }
+
+            Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(3032); //Quite the Problem 3032
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+                Core.HuntMonster("druids", "Young Void Giant", "Void Giant Death Knell", log: false);
         }
     }
 

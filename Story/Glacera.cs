@@ -278,7 +278,7 @@ public class GlaceraStory
             return;
 
         // Rescue the Refugees
-        Story.KillQuest(3951, "frozenruins", "Frost Invader|Frozen Moglinster");
+        Story.KillQuest(3951, "frozenruins", "Frost Invader");
 
         // Defeat the Fangbeasts
         Story.KillQuest(3952, "frozenruins", "Frost Fangbeast");
@@ -315,7 +315,7 @@ public class GlaceraStory
         Story.KillQuest(5592, "IceWindPass", "Frostspawn Symbiote");
 
         // Keep Going!
-        Story.KillQuest(5593, "IceWindPass", "Frost Invader|Frostspawn Troll");
+        Story.KillQuest(5593, "IceWindPass", "Frost Invader");
 
         // Take it Down 
         Story.KillQuest(5594, "IceWindPass", "Frostspawn Horror");
