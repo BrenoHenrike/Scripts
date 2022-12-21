@@ -606,11 +606,15 @@ public class Frostvale
 
         Story.PreLoad(this);
 
-        // Monster Gems 7856
-        Story.KillQuest(7856, "winterhorror", "Chillybones");
-
-        // Mega Monster Gems 7857
-        Story.KillQuest(7857, "winterhorror", "FrostBite");
+        // Monster Gems  7856 && Mega Monster Gems 7857
+        if (!Bot.Quests.IsUnlocked(7858))
+        {
+            Core.EnsureAccept(7856, 7857);
+            Core.KillMonster("winterhorror", "Enter", "Spawn", "*", "Monster Gem", 5);
+            Core.EnsureComplete(7856);
+            Core.KillMonster("winterhorror", "Enter", "Spawn", "*", "Mega Monster Gem", 3);
+            Core.EnsureComplete(7857);
+        }
 
         // Oh Heck! 7858
         Story.KillQuest(7858, "winterhorror", "Arthur and Elise");
