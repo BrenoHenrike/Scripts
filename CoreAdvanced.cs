@@ -39,6 +39,7 @@ public class CoreAdvanced
         if (Core.CheckInventory(itemName, quant))
             return;
 
+        Core.Join(map);
         ShopItem item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
@@ -60,6 +61,7 @@ public class CoreAdvanced
         if (Core.CheckInventory(itemID, quant))
             return;
 
+        Core.Join(map);
         ShopItem item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
@@ -70,7 +72,7 @@ public class CoreAdvanced
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopItemID = 0)
     {
         GetItemReq(item);
-
+        
         if (item.Requirements != null)
         {
             foreach (ItemBase req in item.Requirements)
