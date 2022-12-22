@@ -20,6 +20,7 @@ public class ArmySpiritOrb
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
+        new Option<int>("amount","Amount", "Input the amount of spirit orbs to farm", 65000),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -27,7 +28,6 @@ public class ArmySpiritOrb
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        new Option<int>("amount","Amount", "Input the amount of spirit orbs to farm", 65000),
         CoreBots.Instance.SkipOptions
     };
 

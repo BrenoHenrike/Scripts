@@ -26,6 +26,7 @@ public class ArmyApprovalFavour
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
 

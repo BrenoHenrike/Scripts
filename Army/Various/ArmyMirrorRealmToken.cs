@@ -14,6 +14,7 @@ public class ArmyMirrorRealmToken
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
+        new Option<Method>("Method", "Which method to farm Mirror Realm Token?", "Choose your method", Method.Kill_Weak_Mob),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -21,8 +22,7 @@ public class ArmyMirrorRealmToken
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        CoreBots.Instance.SkipOptions,
-        new Option<Method>("Method", "Which method to farm Mirror Realm Token?", "Choose your method", Method.Kill_Weak_Mob)
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

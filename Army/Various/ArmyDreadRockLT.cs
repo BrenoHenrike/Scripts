@@ -13,13 +13,14 @@ public class ArmyDreadRockLT
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        CoreBots.Instance.SkipOptions,
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        sArmy.packetDelay,
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

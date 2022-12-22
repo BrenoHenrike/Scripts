@@ -14,14 +14,16 @@ public class SuppliesWheelArmy
     public CoreArmyLite Army = new();
     public CoreNation Nation = new();
 
+    private static CoreArmyLite sArmy = new();
+
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmySupplies";
-    public int i = 0;
 
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
-        CoreBots.Instance.SkipOptions,
+        sArmy.packetDelay,
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -37,26 +39,6 @@ public class SuppliesWheelArmy
         Core.SetOptions(false);
     }
 
-    // public string[] SuppliesArmy =
-    // {
-    //     "Tainted Gem",
-    //     "Dark Crystal Shard",
-    //     "Diamond of Nulgath",
-    //     "Voucher of Nulgath",
-    //     "Voucher of Nulgath (non-mem)",
-    //     "Unidentified 10",
-    //     "Unidentified 13",
-    //     "Gem of Nulgath",
-    //     "Relic of Chaos"
-    // };
-    // public void handler(ItemBase item, bool addedToInv, int quantityNow)
-    // {
-    //     if (item.Name == "Relic of Chaos")
-    //         {
-    //             Core.ChainComplete(Bot.Quests.IsUnlocked(555) ? 555 : 2857);
-    //             Core.Logger($"Quest completed x{i} times");
-    //         }
-    // }
     public void ArmySupplies()
     {
         Core.PrivateRooms = true;
@@ -64,13 +46,16 @@ public class SuppliesWheelArmy
 
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
-        Core.ConfigureAggro();
+        Core.EquipClass(ClassType.Farm);
+
+        Core.RegisterQuests(2857);
         while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 13))
-            ArmyHydra90("hydrachallenge", "h90", "Left", "*");
-        Core.ConfigureAggro(false);
+            ArmyHydra90("hydrachallenge", "h90", "Left");
+        Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
     }
 
-    public void ArmyHydra90(string map, string cell, string pad, string monster)
+    public void ArmyHydra90(string map, string cell, string pad)
     {
         Core.Join(map, cell, pad);
         while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
@@ -84,15 +69,9 @@ public class SuppliesWheelArmy
         if (Bot.Player.Cell != cell)
             Core.Jump(cell, pad);
 
-        while (Bot.Inventory.Contains("Relic of Chaos"))
-        {
-            Bot.Combat.Attack(monster);
-            Core.ChainComplete(Bot.Quests.IsUnlocked(555) ? 555 : 2857);
-            i++;
-            Core.Logger($"Quest completed x{i} times");
-        }
-
-        Bot.Quests.EnsureAccept(Bot.Quests.IsUnlocked(555) ? 555 : 2857);
-        Bot.Kill.Monster(monster);
+        Army.AggroMonCells(cell);
+        Army.AggroMonStart(map);
+        while (Core.CheckInventory("Relic of Chaos", 13))
+            Bot.Combat.Attack("*");
     }
 }

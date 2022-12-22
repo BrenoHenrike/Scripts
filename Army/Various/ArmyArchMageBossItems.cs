@@ -17,8 +17,8 @@ public class ArchMageMatsArmy
     public string OptionsStorage = "BossDrops";
     public List<IOption> Options = new List<IOption>()
     {
-        CoreBots.Instance.SkipOptions,
-        new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 4)
+        new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 4),
+        CoreBots.Instance.SkipOptions
     };
 
     public string[] Drops =
