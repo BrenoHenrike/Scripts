@@ -41,7 +41,7 @@ public class ArmyBloodyChaos
         Core.SetOptions(false);
     }
 
-    public void Setup(Cell mob)
+    public void Setup(Cell mob, int quant = 100)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -51,10 +51,12 @@ public class ArmyBloodyChaos
         Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(363);
 
-        Core.Logger("Selling hydra Scale Piece to sync up your army");
+        Core.Logger("Selling items to sync up your army");
         Core.SellItem("Hydra Scale Piece", all: true);
+        Core.SellItem("Shattered Legendary Sword of Dragon Control");
+        Core.SellItem("Escherion's Helm");
 
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
             Core.Join("hydrachallenge", mob.ToString(), "Left");
             WaitCheck();
