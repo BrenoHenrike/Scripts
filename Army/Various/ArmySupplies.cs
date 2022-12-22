@@ -49,10 +49,11 @@ public class SuppliesWheelArmy
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(2857);
+        Core.ConfigureAggro();
         while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 13))
             ArmyHydra90("hydrachallenge", "h90", "Left");
         Core.CancelRegisteredQuests();
-        Army.AggroMonStop(true);
+        Core.ConfigureAggro(false);
     }
 
     public void ArmyHydra90(string map, string cell, string pad)
@@ -69,9 +70,7 @@ public class SuppliesWheelArmy
         if (Bot.Player.Cell != cell)
             Core.Jump(cell, pad);
 
-        Army.AggroMonCells(cell);
-        Army.AggroMonStart(map);
-        while (Core.CheckInventory("Relic of Chaos", 13))
+        while (!Core.CheckInventory("Relic of Chaos", 13))
             Bot.Combat.Attack("*");
     }
 }
