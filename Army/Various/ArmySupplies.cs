@@ -65,7 +65,7 @@ public class SuppliesWheelArmy
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
         Core.ConfigureAggro();
-        while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 14))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 13))
             ArmyHydra90("hydrachallenge", "h90", "Left", "*");
         Core.ConfigureAggro(false);
     }
