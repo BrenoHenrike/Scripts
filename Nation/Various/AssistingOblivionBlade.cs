@@ -31,19 +31,17 @@ public class AssistingOblivionBlade
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant");
 
-        List<ItemBase> RewardOptions = Core.EnsureLoad(4019).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(5818).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
-
         string[] Rewards = RewardsList.ToArray();
-
         Core.AddDrop(Rewards);
 
         Core.RegisterQuests(5818);
-        foreach (string item in RewardsList)
+        foreach (ItemBase item in RewardOptions)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item) && !Bot.Inventory.IsMaxStack(item))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
             {
                 Farm.TheSecret4();
                 Nation.EssenceofNulgath(20);
@@ -51,8 +49,9 @@ public class AssistingOblivionBlade
                 Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 50, false);
                 Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 10, false);
                 Farm.BattleUnderB(quant: 200);
+                Bot.Sleep(Core.ActionDelay);
             }
-            Core.CancelRegisteredQuests();
         }
+        Core.CancelRegisteredQuests();
     }
 }
