@@ -395,6 +395,7 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
     }
 
     void ArmyHunt(string map = null, string[] monsters = null, string item = null, ClassType classType = ClassType.Farm, bool isTemp = false, int quant = 1)

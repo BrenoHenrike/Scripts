@@ -53,8 +53,7 @@ public class ArmyEmblemofDage
         if (Core.CheckInventory("Emblem of Dage", quant))
             return;
 
-        if (!Core.CheckInventory("Legion Round 4 Medal"))
-            Legion.LegionRound4Medal();
+        Legion.LegionRound4Medal();
 
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.AddDrop("Emblem of Dage", "Legion Seal", "Gem of Mastery");
@@ -65,5 +64,6 @@ public class ArmyEmblemofDage
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
     }
 }

@@ -63,6 +63,6 @@ public class ArmyDarkToken
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();
-
+        Army.AggroMonStop(true);
     }
 }

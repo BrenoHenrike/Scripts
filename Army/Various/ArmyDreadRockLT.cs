@@ -46,5 +46,6 @@ public class ArmyDreadRockLT
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
     }
 }

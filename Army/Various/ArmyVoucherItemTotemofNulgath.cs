@@ -45,8 +45,7 @@ public class ArmyTotemAndGem
 
     public void Setup(Rewards reward)
     {
-        if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
-            Nation.FarmVoucher(false);
+        Nation.FarmVoucher(false);
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
