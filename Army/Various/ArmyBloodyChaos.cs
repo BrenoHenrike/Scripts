@@ -58,7 +58,7 @@ public class ArmyBloodyChaos
             Bot.Sleep(2000);
             Army.AggroMonCells(mob.ToString());
             Army.AggroMonStart("hydrachallenge");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Hydra Scale Piece", 350, false))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Hydra Scale Piece", 200, false))
             {
                 Bot.Combat.Attack("*");
                 if (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
