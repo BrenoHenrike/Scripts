@@ -387,29 +387,37 @@ public class CoreFarms
         Core.JumpWait();
         while (!Bot.ShouldExit && !Core.CheckInventory("The Secret 4"))
         {
-            Core.Join("bludrutbrawl", "Enter0", "Spawn", ignoreCheck: true);
+            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl")
+            {
+                Bot.Sleep(5000);
+                Core.JumpWait();
+                Core.Join("bludrutbrawl", "Enter0", "Spawn");
+            }
 
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
             Core.PvPMove(7, "Morale0A");
             Core.PvPMove(9, "Crosslower");
             Core.PvPMove(14, "Crossupper", 528, 255);
+
             Core.PvPMove(18, "Resource1A");
-
             Bot.Kill.Monster("(B) Defensive Restorer");
             Bot.Drops.Pickup("The Secret 4");
             Bot.Kill.Monster("(B) Defensive Restorer");
             Bot.Drops.Pickup("The Secret 4");
-
-            if (Core.CheckInventory("The Secret 4"))
-                break;
 
             Core.PvPMove(20, "Resource1B");
+            Bot.Kill.Monster("(B) Defensive Restorer");
+            Bot.Drops.Pickup("The Secret 4");
+            Bot.Kill.Monster("(B) Defensive Restorer");
+            Bot.Drops.Pickup("The Secret 4");
 
-            Bot.Kill.Monster("(B) Defensive Restorer");
-            Bot.Drops.Pickup("The Secret 4");
-            Bot.Kill.Monster("(B) Defensive Restorer");
-            Bot.Drops.Pickup("The Secret 4");
+            while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
+            {
+                Bot.Sleep(5000);
+                Core.JumpWait();
+                Core.Join("battleon");
+            }
         }
     }
 
