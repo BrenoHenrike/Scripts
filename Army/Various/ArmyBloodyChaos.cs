@@ -28,9 +28,6 @@ public class ArmyBloodyChaos
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.Logger("Make sure each account starts with similar amounts of Hydra Scales(max 50 difference) and no Escherions Helm/Shattered Swords", messageBox: true);
-        Core.Logger("This script requires 13 inventory spaces. So, make sure you have that or get fucked x)", messageBox: true);
-
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
@@ -47,8 +44,9 @@ public class ArmyBloodyChaos
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(Loot);
-        Core.RegisterQuests(7816, 2857);
         Core.EquipClass(ClassType.Farm);
+        
+        Core.RegisterQuests(2857); //Supplies to Spin the Wheel
         Bot.Quests.UpdateQuest(363);
 
         Core.Logger("Selling items to sync up your army");
@@ -58,17 +56,14 @@ public class ArmyBloodyChaos
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
+            Core.EnsureAccept(7816); //Bloody Chaos
             Core.Join("hydrachallenge", mob.ToString(), "Left");
             WaitCheck();
             Bot.Sleep(2000);
             Army.AggroMonCells(mob.ToString());
             Army.AggroMonStart("hydrachallenge");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Hydra Scale Piece", 200, false))
-            {
+            while (!Bot.ShouldExit && !Core.CheckInventory("Hydra Scale Piece", 200))
                 Bot.Combat.Attack("*");
-                if (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
-                    break;
-            }
             Army.AggroMonStop(true);
             Core.Join("stalagbite");
             Core.Jump("r2", "Right");
@@ -76,10 +71,11 @@ public class ArmyBloodyChaos
             Bot.Sleep(2000);
             Army.AggroMonCells("r2");
             Army.AggroMonStart("stalagbite");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Shattered Legendary Sword of Dragon Control", toInv: false))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Shattered Legendary Sword of Dragon Control"))
             {
-                Bot.Kill.Monster("Stalagbite");
-                Bot.Kill.Monster("Vath");
+                if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Stalagbite")?.Alive ?? false)
+                    Bot.Kill.Monster("Stalagbite");
+                Bot.Combat.Attack("Vath");
             }
             Army.AggroMonStop(true);
             Core.Join("escherion");
@@ -88,9 +84,14 @@ public class ArmyBloodyChaos
             Bot.Sleep(2000);
             Army.AggroMonCells("Boss");
             Army.AggroMonStart("escherion");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Escherion's Helm", toInv: false))
-                Bot.Combat.Attack("*");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Escherion's Helm"))
+            {
+                if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Staff of Inversion")?.Alive ?? false)
+                    Bot.Kill.Monster("Staff of Inversion");
+                Bot.Combat.Attack("Escherion");
+            }
             Army.AggroMonStop(true);
+            Core.EnsureComplete(7816);
         }
 
         void WaitCheck()
