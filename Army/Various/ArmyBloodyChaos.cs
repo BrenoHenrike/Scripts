@@ -51,6 +51,9 @@ public class ArmyBloodyChaos
         Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(363);
 
+        Core.Logger("Selling hydra Scale Piece to sync up your army");
+        Core.SellItem("Hydra Scale Piece", all: true);
+
         while (!Bot.ShouldExit)
         {
             Core.Join("hydrachallenge", mob.ToString(), "Left");
