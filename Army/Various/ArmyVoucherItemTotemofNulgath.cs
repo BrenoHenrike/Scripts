@@ -1,6 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -10,16 +11,13 @@ public class ArmyTotemAndGem
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreArmyLite Army = new();
+    private CoreNation Nation = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyTotemAndGem";
     public bool DontPreconfigure = true;
-    CancellationTokenSource cts = new();
-
-    private int t = 0;
-    private int g = 0;
     public List<IOption> Options = new List<IOption>()
     {
         sArmy.player1,
@@ -29,7 +27,7 @@ public class ArmyTotemAndGem
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        new Option<Rewards>("QuestReward", "Totems, Gems or Essences?", "Select the reward to farm first - if you pick Essences it will just Army while picking them up", Rewards.EssenceofNulgath),
+        new Option<Rewards>("QuestReward", "Totems or Gems", "Select the reward to max stack first, will continue farming for the other later", Rewards.TotemofNulgath),
         CoreBots.Instance.SkipOptions
     };
 
@@ -40,38 +38,21 @@ public class ArmyTotemAndGem
         Core.SetOptions();
         bot.Options.RestPackets = false;
 
-        Setup();
+        Setup(Bot.Config.Get<Rewards>("QuestReward"));
 
         Core.SetOptions(false);
     }
 
-    private string[] Loot = { "Totem of Nulgath", "Gem of Nulgath", "Essence of Nulgath" };
-
-    public void Setup()
+    public void Setup(Rewards reward)
     {
-        if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
-            Core.Logger("Voucher of Nulgath (non-mem) not found - go get one before running this", messageBox: true, stopBot: true);
+        Nation.FarmVoucher(false);
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-        Core.Join("tercessuinotlim");
-        if ((Core.Username() == Bot.Config.Get<string>("player1").ToLower()) || (Core.Username() == Bot.Config.Get<string>("player4").ToLower()))
-            Core.Jump("m1", "Left");
-        else if ((Core.Username() == Bot.Config.Get<string>("player2").ToLower()) || (Core.Username() == Bot.Config.Get<string>("player5").ToLower()))
-            Core.Jump("m2", "Left");
-        else if ((Core.Username() == Bot.Config.Get<string>("player3").ToLower()) || (Core.Username() == Bot.Config.Get<string>("player6").ToLower()))
-            Core.Jump("m3", "Left");
-        else
-            Core.Jump("m2", "Left");
-        TotemAndGem(Bot.Config.Get<Rewards>("QuestReward"));
-    }
 
-    public void TotemAndGem(Rewards reward)
-    {
-        Core.EnsureAccept(4778);
         if (reward.ToString() == "TotemofNulgath")
         {
             Core.Logger("Totems Of Nulgath selected, farming max Totems first - then Gems");
@@ -82,92 +63,69 @@ public class ArmyTotemAndGem
             Core.Logger("Gems Of Nulgath selected, farming max Gems first - then Totems");
             Gems();
         }
-        else
-            Core.Logger("Essences Of Nulgath selected - Armying");
-        Army();
-
-        void Totems()
-        {
-            if (Core.CheckInventory(5357, 100))
-            {
-                Core.Logger("You already own Max Totems - checking Gems, if maxed will just army for the others");
-                if (Bot.Inventory.Contains(6136, 300))
-                {
-                    Core.Logger("You also have Max Gems - proceeding to army for the others.");
-                    Army();
-                }
-                else
-                    Gems();
-            }
-            Core.FarmingLogger("Totem of Nulgath", 100);
-            var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%2%3%4%5%6%7%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token);
-            while (!Bot.ShouldExit && !Core.CheckInventory(5357, 100))
-            {
-                Bot.Combat.Attack("*");
-                if (Bot.Inventory.Contains("Essence of Nulgath", 65))
-                {
-                    Bot.Quests.EnsureComplete(4778, (int)Rewards.TotemofNulgath);
-                    Bot.Sleep(Core.ActionDelay);
-                    Bot.Quests.EnsureAccept(4778);
-                    t++;
-                    Core.Logger($"Quest for Totems completed x{t} times");
-                }
-            }
-            cts.Cancel();
-            Core.Jump(Bot.Player.Cell);
-            if (!Core.CheckInventory(6136, 300))
-                Gems();
-            else
-                Army();
-        }
-
-        void Gems()
-        {
-            if (Core.CheckInventory(6136, 300))
-            {
-                Core.Logger("You already own Max Gems - checking Totems, if maxed will just army for the others.");
-                if (Bot.Inventory.Contains(5357, 100))
-                {
-                    Core.Logger("You also have Max Totems - proceeding to army for the others.");
-                    Army();
-                }
-                else
-                    Totems();
-            }
-            Core.FarmingLogger("Gem of Nulgath", 300);
-            var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%2%3%4%5%6%7%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token);
-            while (!Bot.ShouldExit && !Core.CheckInventory(6136, 300))
-            {
-                Bot.Combat.Attack("*");
-                if (Bot.Inventory.Contains("Essence of Nulgath", 65))
-                {
-                    Bot.Quests.EnsureComplete(4778, (int)Rewards.GemofNulgath);
-                    Bot.Sleep(Core.ActionDelay);
-                    Bot.Quests.EnsureAccept(4778);
-                    g++;
-                    Core.Logger($"Quest for Gems completed x{g} times");
-                }
-            }
-            cts.Cancel();
-            Core.Jump(Bot.Player.Cell);
-            if (!Core.CheckInventory(5357, 100))
-                Totems();
-            else
-                Army();
-        }
-
-        void Army()
-        {
-            Core.Logger("Armying for the squad");
-            var task = Bot.Send.PacketSpam("%xt%zm%aggroMon%1%2%3%4%5%6%7%", "String", Bot.Config.Get<int>("PacketDelay"), cts.Token);
-            while (!Bot.ShouldExit)
-                Bot.Combat.Attack("*");
-        }
     }
+
+    void Totems(int quant = 100)
+    {
+        if (Core.CheckInventory("Totem of Nulgath", quant))
+            Gems();
+        else if (Core.CheckInventory("Gem of Nulgath", 300))
+            Slave();
+
+        Core.FarmingLogger("Totem of Nulgath", quant);
+        Army.SmartAggroMonStart("tercessuinotlim", "Dark Makai");
+        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+        {
+            Bot.Combat.Attack("*");
+            if (Core.CheckInventory("Essence of Nulgath", 65))
+                Core.EnsureComplete(4778, (int)Rewards.TotemofNulgath);
+        }
+        Core.Jump(Bot.Player.Cell);
+        if (!Core.CheckInventory("Gem of Nulgath", 300))
+            Gems();
+        else Slave();
+    }
+
+    void Gems(int quant = 300)
+    {
+        if (Core.CheckInventory("Gem of Nulgath", quant))
+            Totems();
+        else if (Core.CheckInventory("Totem of Nulgath", 100))
+            Slave();
+
+        Core.FarmingLogger("Gem of Nulgath", quant);
+        Army.SmartAggroMonStart("tercessuinotlim", "Dark Makai");
+        while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
+        {
+            Bot.Combat.Attack("*");
+            if (Core.CheckInventory("Essence of Nulgath", 65))
+                Core.EnsureComplete(4778, (int)Rewards.TotemofNulgath);
+        }
+        Core.Jump(Bot.Player.Cell);
+
+        if (!Core.CheckInventory("Totem of Nulgath", 100))
+            Totems();
+        else Slave();
+    }
+
+    void Slave()
+    {
+        Core.Logger("You have max stack of Totem and Gem, armying for the squad");
+        Army.SmartAggroMonStart("tercessuinotlim", "Dark Makai");
+        while (!Bot.ShouldExit)
+            Bot.Combat.Attack("*");
+    }
+
     public enum Rewards
     {
         TotemofNulgath = 5357,
-        GemofNulgath = 6136,
-        EssenceofNulgath = 0
+        GemofNulgath = 6136
     }
+
+    private string[] Loot =
+    {
+        "Totem of Nulgath",
+        "Gem of Nulgath",
+        "Essence of Nulgath"
+    };
 }

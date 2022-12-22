@@ -1,22 +1,27 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
-public class ArmyApprovalFavour
+public class ArmyEmblemofDage
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
+    private CoreLegion Legion = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyApprovalFavour";
+    public string OptionsStorage = "ArmyEmblemofDage";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -32,9 +37,10 @@ public class ArmyApprovalFavour
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Loot);
+        Core.BankingBlackList.AddRange(new[]
+        {"Emblem of Dage", "Legion Round 4 Medal"});
 
-        Core.SetOptions();
+        Core.SetOptions(disableClassSwap: true);
         bot.Options.RestPackets = false;
 
         Setup();
@@ -42,24 +48,22 @@ public class ArmyApprovalFavour
         Core.SetOptions(false);
     }
 
-    public void Setup()
+    public void Setup(int quant = 500)
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
+        if (Core.CheckInventory("Emblem of Dage", quant))
+            return;
 
-        Core.AddDrop(Loot);
+        Legion.LegionRound4Medal();
+
+        Core.FarmingLogger("Emblem of Dage", quant);
+        Core.AddDrop("Emblem of Dage", "Legion Seal", "Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
 
-        if (String.IsNullOrEmpty(Bot.Config.Get<string>("player4")))
-            Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        else Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        Army.AggroMonStart("evilwarnul");
-        Army.DivideOnCells("r2", "r3", "r4", "r5", "r6");
-
-        while (!Bot.ShouldExit)
+        Core.RegisterQuests(4742);
+        Army.SmartAggroMonStart("shadowblast", "Carnage", "Shadowrise Guard");
+        while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
             Bot.Combat.Attack("*");
+        Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
     }
-
-    private string[] Loot = { "Archfiend's Favor", "Nulgath's Approval" };
 }

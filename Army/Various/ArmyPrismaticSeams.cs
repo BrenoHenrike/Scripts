@@ -18,7 +18,6 @@ public class ArmyPrimaticSeams
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        CoreBots.Instance.SkipOptions,
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -26,6 +25,8 @@ public class ArmyPrimaticSeams
         sArmy.player5,
         sArmy.player6,
         sArmy.player7,
+        sArmy.packetDelay,
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

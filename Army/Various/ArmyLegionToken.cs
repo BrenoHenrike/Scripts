@@ -25,6 +25,7 @@ public class ArmyLegionToken
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
+        new Option<Method>("Method", "Which method to get LTs?", "Choose your method", Method.Dreadrock),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -32,8 +33,7 @@ public class ArmyLegionToken
         sArmy.player5,
         sArmy.player6,
         sArmy.packetDelay,
-        sCore.SkipOptions,
-        new Option<Method>("Method", "Which method to get LTs?", "Choose your method", Method.Dreadrock)
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

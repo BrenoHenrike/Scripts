@@ -13,7 +13,7 @@ public class RVAArmy
     public List<IOption> Options = new List<IOption>()
     {
         new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 1),
-        CoreBots.Instance.SkipOptions,
+        CoreBots.Instance.SkipOptions
     };
     private int EssenceQuantity;
 
