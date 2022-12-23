@@ -57,19 +57,21 @@ public class CarolingMerge
                 case "Silver Tinsel":
                 case "Red Ribbon":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        // Core.HuntMonster("caroling", "Frostval Tree", req.Name, quant, false);
+                        Bot.Wait.ForPickup(req.Name);
                         Core.Join("caroling");
-                        for (int i = 1; i <= 5; i++)
+                        for (int i = 0; i <= 5; i++)
                         {
                             Bot.Kill.Monster("Frostval Tree");
+                            Bot.Sleep(Core.ActionDelay);
                             Bot.Wait.ForPickup(req.Name);
-
                             if (i == 5)
                             {
-                                Core.Join("carolinn");
-                                Core.Join("caroling");
+                                Core.Join("carolinn-100000");
+                                Bot.Sleep(1500);
                             }
                         }
                     }
