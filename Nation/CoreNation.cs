@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class CoreNation
 {
@@ -1450,28 +1451,32 @@ public class CoreNation
 
     public void leeryExchangeGold(int quant = 100000000)
     {
-        if ((!Bot.Player.IsMember && Core.CheckInventory("Crag & Bamboozle") )|| Bot.Player.Gold >= quant)
+        if ((!Bot.Player.IsMember) || Bot.Player.Gold >= quant)
             return;
 
-        var RewardOptions = Core.EnsureLoad(554).Rewards.Select(x => x.Name).ToArray();
-        Core.AddDrop(RewardOptions);
+        Core.AddDrop("Unidentified 13");
+        Farm.ToggleBoost(BoostType.Gold);
 
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
         {
-            Core.RegisterQuests(869);
-            while (!Core.CheckInventory("Unidentified 13", 13))
+            if (Core.CheckInventory("Crag & Bamboozle"))
             {
-                FarmDiamondofNulgath(15);
-                Core.KillMonster("nulgath", "Field1", "Left", "Dark Makai", "Dark Makai Sigil", log: false);
+                while (!Core.CheckInventory("Unidentified 13", 13))
+                {
+                    Core.EnsureAccept(869);
+                    FarmDiamondofNulgath(15);
+                    Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Sigil", log: false);
+                    Core.EnsureComplete(869);
+                }
             }
-            Core.CancelRegisteredQuests();
+            else FarmUni13(13);
 
-            Core.RegisterQuests(554);
             while (Core.CheckInventory("Unidentified 13"))
+            {
+                Core.EnsureAccept(554);
                 Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
-            Core.CancelRegisteredQuests();
-            if (Core.CheckInventory(RewardOptions))
-                Core.ToBank(RewardOptions);
+                Core.EnsureComplete(554);
+            }
         }
     }
 
