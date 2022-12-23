@@ -1448,6 +1448,33 @@ public class CoreNation
         }
     }
 
+    public void leeryExchangeGold(int quant = 100000000)
+    {
+        if ((!Bot.Player.IsMember && Core.CheckInventory("Crag & Bamboozle") )|| Bot.Player.Gold >= quant)
+            return;
+
+        var RewardOptions = Core.EnsureLoad(554).Rewards.Select(x => x.Name).ToArray();
+        Core.AddDrop(RewardOptions);
+
+        while (!Bot.ShouldExit && Bot.Player.Gold < quant)
+        {
+            Core.RegisterQuests(869);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 13", 13))
+            {
+                FarmDiamondofNulgath(15);
+                Core.KillMonster("nulgath", "Field1", "Left", "Dark Makai", "Dark Makai Sigil", log: false);
+            }
+            Core.CancelRegisteredQuests();
+
+            Core.RegisterQuests(554);
+            while (!Bot.ShouldExit && Core.CheckInventory("Unidentified 13"))
+                Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
+            Core.CancelRegisteredQuests();
+            if (Core.CheckInventory(RewardOptions))
+                Core.ToBank(RewardOptions);
+        }
+    }
+
     public void HireNulgathLarvae()
     {
         if (Core.CheckInventory("Nulgath Larvae"))
