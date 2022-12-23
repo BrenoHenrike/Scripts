@@ -1478,6 +1478,7 @@ public class CoreNation
                 Core.EnsureComplete(554);
             }
         }
+        Farm.ToggleBoost(BoostType.Gold, false);
     }
 
     public void HireNulgathLarvae()
