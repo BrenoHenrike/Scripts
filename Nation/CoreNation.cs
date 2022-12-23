@@ -1465,18 +1465,17 @@ public class CoreNation
                 {
                     Core.EnsureAccept(869);
                     FarmDiamondofNulgath(15);
-                    Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Sigil", log: false);
-                    Core.EnsureComplete(869);
+                    Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 3, log: false);
+                    Bot.Wait.ForDrop("Dark Makai Sigil");
+                    Core.EnsureCompleteMulti(869);
                 }
             }
             else FarmUni13(13);
 
+            Core.RegisterQuests(554);
             while (Core.CheckInventory("Unidentified 13"))
-            {
-                Core.EnsureAccept(554);
                 Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
-                Core.EnsureComplete(554);
-            }
+            Core.CancelRegisteredQuests();
         }
         Farm.ToggleBoost(BoostType.Gold, false);
     }
