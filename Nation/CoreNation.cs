@@ -1465,8 +1465,7 @@ public class CoreNation
                 {
                     Core.EnsureAccept(869);
                     FarmDiamondofNulgath(15);
-                    Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 3, log: false);
-                    Bot.Wait.ForDrop("Dark Makai Sigil");
+                    Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", log: false);
                     Core.EnsureCompleteMulti(869);
                 }
             }
