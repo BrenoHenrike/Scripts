@@ -29,10 +29,8 @@ public class HuntressMerge
         Core.BankingBlackList.AddRange(new[] { "Sluagh Bell", "Punk Coal Elf Stabber", "Festive Punk Elf Stabber", "Wild Huntress' Sword " });
         Core.SetOptions();
 
-        if (!Core.isCompletedBefore(8448)){
-            MO.MountOtziQuests();
-        }
-
+        MO.MountOtziQuests();
+        
         BuyAllMerge();
 
         Core.SetOptions(false);
