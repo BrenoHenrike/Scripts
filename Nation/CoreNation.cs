@@ -2,6 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class CoreNation
 {
@@ -1446,6 +1447,38 @@ public class CoreNation
                 Core.Logger("Max Stack Hit.");
             else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
+    }
+
+    public void leeryExchangeGold(int quant = 100000000)
+    {
+        if ((!Bot.Player.IsMember) || Bot.Player.Gold >= quant)
+            return;
+
+        Core.AddDrop("Unidentified 13");
+        Farm.ToggleBoost(BoostType.Gold);
+
+        while (!Bot.ShouldExit && Bot.Player.Gold < quant)
+        {
+            if (Core.CheckInventory("Crag & Bamboozle"))
+            {
+                while (!Core.CheckInventory("Unidentified 13", 13))
+                {
+                    Core.EnsureAccept(869);
+                    FarmDiamondofNulgath(15);
+                    Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Sigil", log: false);
+                    Core.EnsureComplete(869);
+                }
+            }
+            else FarmUni13(13);
+
+            while (Core.CheckInventory("Unidentified 13"))
+            {
+                Core.EnsureAccept(554);
+                Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
+                Core.EnsureComplete(554);
+            }
+        }
+        Farm.ToggleBoost(BoostType.Gold, false);
     }
 
     public void HireNulgathLarvae()

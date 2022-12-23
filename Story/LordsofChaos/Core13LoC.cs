@@ -1771,7 +1771,12 @@ public class Core13LoC
         Story.MapItemQuest(2805, "stormtemple", 1729, 4);
 
         //New Shoes
-        Story.KillQuest(2806, "stormtemple", "Chaonslaught Warrior");
+        if (!Story.QuestProgression(2806)) //quest was fucky for no reason. hopefully a fix.
+        {
+            Core.EnsureAccept(2806);
+            Core.KillMonster("tormtemple", "r1", "Left", "Chaonslaught Warrior", "Lightning Boots");
+            Core.EnsureComplete(2806);
+        }
 
         //Mouth Of The Lion
         Story.KillQuest(2807, "stormtemple", "Chaonslaught Caster");
