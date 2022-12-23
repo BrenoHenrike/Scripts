@@ -60,8 +60,18 @@ public class CarolingMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("caroling", "Frostval Tree", req.Name, quant, false);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.Join("caroling");
+                        for (int i = 1; i <= 5; i++)
+                        {
+                            Bot.Kill.Monster("Frostval Tree");
+                            Bot.Wait.ForPickup(req.Name);
+
+                            if (i == 5)
+                            {
+                                Core.Join("carolinn");
+                                Core.Join("caroling");
+                            }
+                        }
                     }
                     break;
 
