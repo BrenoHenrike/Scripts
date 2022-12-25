@@ -1,5 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Seasonal/Frostvale/ChillysParticipation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;
@@ -11,10 +12,12 @@ public class CheckForDonatedACs
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private ChillysQuest CQ = new();
+    public CoreDailies Daily = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
+        Core.BankingBlackList.Add("Treasure Potion");
 
         CheckACs();
 
@@ -66,6 +69,8 @@ public class CheckForDonatedACs
             else Core.Join("battleon-999999");
 
             Bot.Sleep(2000);
+
+            Daily.WheelofDoom();
 
             //Requierments:
             // Level 30

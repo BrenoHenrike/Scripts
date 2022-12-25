@@ -228,6 +228,15 @@ public class Follower
 
         string[] NonMemMaps =
         {
+            "championdrakath",
+            "ultraezrajal",
+            "ultrawarden",
+            "ultraengineer",
+            "ultradage",
+            "ultratyndarius",
+            "ultranulgath",
+            "ultradrago",
+            "ultradarkon",
             "tercessuinotlim",
             "doomvaultb",
             "doomvault",
