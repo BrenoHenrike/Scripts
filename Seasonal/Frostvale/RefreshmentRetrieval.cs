@@ -34,7 +34,7 @@ public class RefreshmentRetrieval
 
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(questID);
         foreach (ItemBase Reward in RewardOptions)
         {
