@@ -228,6 +228,25 @@ public class Follower
 
         string[] NonMemMaps =
         {
+            "tercessuinotlim",
+            "doomvaultb",
+            "doomvault",
+            "shadowrealmpast",
+            "battlegrounda",
+            "battlegroundb",
+            "battlegroundc",
+            "battlegroundd",
+            "battlegrounde",
+            "battlegroundf",
+            "doomwood",
+            "shadowrealm",
+            "confrontation",
+            "darkoviaforest",
+            "hollowdeep",
+            "hyperium",
+            "willowcreek",
+            "voidflibbi",
+            "voidnightbane",
             "championdrakath",
             "ultraezrajal",
             "ultrawarden",
@@ -236,26 +255,7 @@ public class Follower
             "ultratyndarius",
             "ultranulgath",
             "ultradrago",
-            "ultradarkon",
-            "tercessuinotlim",
-            "doomvaultb",
-            "doomvault",
-            "shadowrealmpast",
-            "shadowrealm",
-            "battlegrounda",
-            "battlegroundb",
-            "battlegroundc",
-            "battlegroundd",
-            "battlegrounde",
-            "battlegroundf",
-            "confrontation",
-            "darkoviaforest",
-            "doomwood",
-            "hollowdeep",
-            "hyperium",
-            "willowcreek",
-            "voidflibbi",
-            "voidnightbane"
+            "ultradarkon"
         };
         string[] MemMaps =
         {
