@@ -1,6 +1,9 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Seasonal/Frostvale/MountOtzi.cs
+
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -12,6 +15,7 @@ public class HuntressMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    private MountOtzi MO = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -21,10 +25,12 @@ public class HuntressMerge
     private bool dontStopMissingIng = false;
 
     public void ScriptMain(IScriptInterface Bot)
-    {
+    {   
         Core.BankingBlackList.AddRange(new[] { "Sluagh Bell", "Punk Coal Elf Stabber", "Festive Punk Elf Stabber", "Wild Huntress' Sword " });
         Core.SetOptions();
 
+        MO.MountOtziQuests();
+        
         BuyAllMerge();
 
         Core.SetOptions(false);
