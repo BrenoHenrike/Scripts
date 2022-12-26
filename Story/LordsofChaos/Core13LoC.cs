@@ -1774,7 +1774,7 @@ public class Core13LoC
         if (!Story.QuestProgression(2806)) //quest was fucky for no reason. hopefully a fix.
         {
             Core.EnsureAccept(2806);
-            Core.KillMonster("tormtemple", "r1", "Left", "Chaonslaught Warrior", "Lightning Boots");
+            Core.KillMonster("stormtemple", "r1", "Left", "Chaonslaught Warrior", "Lightning Boots");
             Core.EnsureComplete(2806);
         }
 
