@@ -253,10 +253,21 @@ public class CoreLegion
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.RegisterQuests(3394);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaorrupted Dark Fire", 20, isTemp: false, log: false);
-        Core.CancelRegisteredQuests();
+        if (!Bot.Quests.IsUnlocked(793))
+        {
+            Core.RegisterQuests(3393);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                Adv.BoostHuntMonster(Core.IsMember ? "binky" : "doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
+            Core.CancelRegisteredQuests();
+
+        }
+        else
+        {
+            Core.RegisterQuests(3394);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaorrupted Dark Fire", 20, isTemp: false, log: false);
+            Core.CancelRegisteredQuests();
+        }
     }
 
     public void LTInfernalLegionBetrayal(int quant = 25000)
