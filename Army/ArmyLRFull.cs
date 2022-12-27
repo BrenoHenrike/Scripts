@@ -5,7 +5,6 @@
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Army/Various/ArmyLegionFealty2.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 using Skua.Core.Interfaces;
@@ -22,7 +21,6 @@ public class ArmyLR
     private CoreArmyLite Army = new();
     public CoreLegion Legion = new CoreLegion();
     public CoreLR CoreLR = new CoreLR();
-    public ArmyLegionFealty2 ArmyLF2 = new ArmyLegionFealty2();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
     public SeraphicWar_Story Seraph = new SeraphicWar_Story();
     private static CoreBots sCore = new();
