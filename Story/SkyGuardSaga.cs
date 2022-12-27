@@ -156,7 +156,12 @@ public class SkyGuardSaga
         Story.PreLoad(this);
 
         // Deserter in the Ranks 1696
-        Story.KillQuest(1696, "lair", "Golden Draconian");
+        if (!Story.QuestProgression(1696))
+        {
+            Core.EnsureAccept(1696);
+            Core.HuntMonster("lair", "Golden Draconian", "SkyPirate Base Key");
+            Core.EnsureComplete(1696);
+        }
 
         // Secure the Ship 1697
         Story.MapItemQuest(1697, "piratebase", 896, 14);
