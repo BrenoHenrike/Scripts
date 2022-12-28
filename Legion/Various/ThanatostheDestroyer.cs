@@ -25,7 +25,7 @@ public class ThanatostheDestroyer
     {
         if (!Core.CheckInventory("Thanatos Paragon Pet") || Core.CheckInventory(Core.EnsureLoad(4101).Rewards.Select(i => i.Name).ToArray()))
             Core.Logger("Pet not owned, or All Items already owned.", stopBot: true);
-        else Core.Logger("Thanatos Paragon Pet owned, continueing.");
+        else Core.Logger("Thanatos Paragon Pet owned, continuing.");
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(4101).Rewards;
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
