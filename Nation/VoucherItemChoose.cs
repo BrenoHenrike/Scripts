@@ -31,8 +31,6 @@ public class VoucherItem
     public void Choose()
     {
         while (!Bot.ShouldExit)
-        {
             Nation.VoucherItemTotemofNulgath(Bot.Config.Get<ChooseReward>("VoucherItem"));
-        }
     }
 }
