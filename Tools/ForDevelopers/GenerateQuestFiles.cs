@@ -14,7 +14,6 @@ public class GetQuests
         Core.SetOptions(true, true);
 
         GenerateQuestFiles();
-		
 
         Core.SetOptions(false);
     }
