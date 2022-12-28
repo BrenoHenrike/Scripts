@@ -239,8 +239,8 @@ public class CoreLegion
         LTHardCoreParagon(quant);
         LTUW3017(quant);
         LTInfernalLegionBetrayal(quant);
-        LTFirstClassEntertainment(quant);
         LTDreadrock(quant);
+        LTFirstClassEntertainment(quant);
     }
 
     public void LTHardCoreParagon(int quant = 25000)

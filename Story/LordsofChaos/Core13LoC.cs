@@ -723,8 +723,13 @@ public class Core13LoC
         Story.KillQuest(809, "cloister", "Karasu");
 
         //It's A Bough-t Time
-        Story.BuyQuest(810, "arcangrove", 211, "Mana Potion");
-        Story.MapItemQuest(810, "cloister", 141, 3);
+        if (!Story.QuestProgression(810))
+        {
+            Core.EnsureAccept(810);
+            Core.BuyItem("arcangrove", 211, "Mana Potion");
+            Core.GetMapItem(141, 3, "cloister");
+            Core.EnsureComplete(810);
+        }
 
         //Wendigo Whereabouts
         Story.KillQuest(811, "cloister", "Wendigo");
