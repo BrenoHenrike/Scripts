@@ -1823,7 +1823,7 @@ public class CoreAdvanced
 
             #region Lucky - Vainglory - Valiance - None
             case "legion doomknight":
-            if (!uVainglory() || !uValiance())
+                if (!uVainglory() || !uValiance())
                     goto default;
 
                 type = EnhancementType.Lucky;
