@@ -55,10 +55,24 @@ public class ArmyLegionToken
 
         Core.EquipClass(ClassType.Farm);
         if (Method.ToString() == "Dreadrock")
+        {
             Core.BuyItem("underworld", 216, "Undead Champion");
-        GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", quant);
+            GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", quant);
+        }
         if (Method.ToString() == "Shogun_Paragon_Pet")
+        {
+            if (!Core.CheckInventory("Shogun Paragon Pet"))
+                Core.Logger("Pet not owned, stopping", stopBot: true);
             GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Legion Token", quant);
+        }
+        if (Method.ToString() == "Thanatos_Paragon_Pet")
+        {
+            if (!Core.CheckInventory("Thanatos Paragon Pet"))
+                Core.Logger("Pet not owned, stopping", stopBot: true);
+
+            Adv.BestGear(GearBoost.Dragonkin);
+            GetItem("dragonheart", new[] { "Zombie Dragon" }, 4100, "Legion Token", quant);
+        }
         else
         {
             Core.EquipClass(ClassType.Solo);
@@ -93,6 +107,7 @@ public class ArmyLegionToken
     {
         Dreadrock = 0,
         Shogun_Paragon_Pet = 1,
-        Legion_Arena = 2,
+        Thanatos_Paragon_Pet = 2,
+        Legion_Arena = 3,
     }
 }
