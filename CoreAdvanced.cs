@@ -72,7 +72,7 @@ public class CoreAdvanced
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopItemID = 0)
     {
         GetItemReq(item);
-        
+
         if (item.Requirements != null)
         {
             foreach (ItemBase req in item.Requirements)
@@ -307,12 +307,10 @@ public class CoreAdvanced
     {
         new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
                                                                      "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
-        new Option<string>("blank", " ", "", ""),
         new Option<string>(" ", "Mode Explanation [all]", "Mode [all]: \t\tYou get all the items from shop, even if non-AC ones if any.", "click here"),
         new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]: \tYou get all the AC tagged items from the shop.", "click here"),
         new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]: \tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
         new Option<string>(" ", "Mode Explanation [select]", "Mode [select]: \tYou are able to select what items you get and which ones you dont in the Select Category below.", "click here"),
-        new Option<string>("blank", " ", "", ""),
     };
 
     /// <summary>
