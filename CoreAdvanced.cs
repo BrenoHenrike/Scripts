@@ -1511,7 +1511,6 @@ public class CoreAdvanced
             case "immortal chronomancer":
             case "dark metal necro":
             case "great thief":
-            case "legion doomknight":
                 if (!uForgeCape())
                     goto default;
 
@@ -1556,12 +1555,8 @@ public class CoreAdvanced
             #endregion 
 
             #region Lucky - Forge - Mana Vamp
-            case "shadowwalker of time":
-            case "shadowstalker of time":
-            case "shadowweaver of time":
             case "legendary elemental warrior":
             case "ultra elemental warrior":
-            case "chaos avenger":
                 if (!uForgeCape())
                     goto default;
 
@@ -1712,6 +1707,7 @@ public class CoreAdvanced
             #region Lucky - Vainglory - Valiance - Vim
             case "continuum chronomancer":
             case "quantum chronomancer":
+            case "chaos avenger":
                 if (!uVainglory() || !uValiance() || !uVim())
                     goto default;
 
@@ -1744,6 +1740,20 @@ public class CoreAdvanced
                 cSpecial = CapeSpecial.Vainglory;
                 wSpecial = WeaponSpecial.Valiance;
                 hSpecial = HelmSpecial.Anima;
+                break;
+            #endregion
+
+            #region Lucky - Vainglory - Elysium - Vim
+            case "shadowwalker of time":
+            case "shadowstalker of time":
+            case "shadowweaver of time":
+                if (!uVainglory() || !uElysium() || !uVim())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Vainglory;
+                wSpecial = WeaponSpecial.Elysium;
+                hSpecial = HelmSpecial.Vim;
                 break;
             #endregion
 
@@ -1787,6 +1797,38 @@ public class CoreAdvanced
                 cSpecial = CapeSpecial.Avarice;
                 wSpecial = WeaponSpecial.Elysium;
                 hSpecial = HelmSpecial.Anima;
+                break;
+            #endregion
+
+            #region Lucky - Penitence - Valiance - None
+            case "archpaladin":
+                if (!uPenitence() || !uValiance())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Penitence;
+                wSpecial = WeaponSpecial.Valiance;
+                break;
+            #endregion
+
+            #region Lucky - None - Valiance - None
+            case "stonecrusher":
+                if (!uValiance())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                wSpecial = WeaponSpecial.Valiance;
+                break;
+            #endregion
+
+            #region Lucky - Vainglory - Valiance - None
+            case "legion doomknight":
+            if (!uVainglory() || !uValiance())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Vainglory;
+                wSpecial = WeaponSpecial.Valiance;
                 break;
             #endregion
 
