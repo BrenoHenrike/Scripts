@@ -45,6 +45,7 @@ public class Frostvale
         FrostvalPastPresentandFuture();
         Snowview();
         SnowviewRace();
+        DeerHunt();
     }
 
     public void IceCave()
@@ -919,7 +920,46 @@ public class Frostvale
         //Vaderix Requiem (9026)
         Story.KillQuest(9026, "snowviewrace", "Aurora Vaderix");
     }
+    public void DeerHunt()
+    {
+        if (Bot.Quests.IsUnlocked(8433) || !Core.isSeasonalMapActive("deerhunt"))
+            return;
 
+        Story.PreLoad(this);
+
+        // 8423 Scout the Area,
+        Story.KillQuest(8423, "deerhunt", "Deer?");
+        Story.MapItemQuest(8423, "deerhunt", 9372);
+
+        // 8424 Deer?
+        Story.KillQuest(8424, "deerhunt", "Deer?");
+
+        // 8425 Comparing Claws
+        Story.KillQuest(8425, "deerhunt", new[] { "Scared Wolf", "Frightened Owl" });
+        Story.MapItemQuest(8425, "deerhunt", 9373, 4);
+
+        // 8426 Lair Investigated
+        Story.MapItemQuest(8426, "deerhunt", new[] {9374, 9375});
+
+        // 8427 Fight or Flight or Freeze
+        Story.KillQuest(8427, "deerhunt", "Frightened Owl");
+
+        // 8428 Not Deer Hunting
+        Story.KillQuest(8428, "deerhunt", "Deer?");
+
+        // 8429 Monstrous Tracks
+        Story.MapItemQuest(8429, "deerhunt", 9376, 6);
+
+        // 8430  Final Blessing
+        Story.KillQuest(8430, "deerhunt", new[] { "Deer?", "Scared Wolf", "Frightened Owl" });
+
+        // 8431 The Zweinichthirsch
+        Story.KillQuest(8431, "deerhunt", "Zweinichthirsch");
+
+        // 8432 Cries Investigated 
+        Story.MapItemQuest(8432, "deerhunt", 9377);
+
+    }
 
 
     // --------------------------------------------------------------------------------------------------------------------------
