@@ -71,6 +71,7 @@ public class CheckForDonatedACs
             Bot.Sleep(2000);
 
             Daily.WheelofDoom();
+            Daily.MonthlyTreasureChestKeys();
 
             //Requierments:
             // Level 30
