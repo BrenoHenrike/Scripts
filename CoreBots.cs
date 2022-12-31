@@ -106,7 +106,7 @@ public class CoreBots
             }
             else Logger($"Bot Started");
 
-            SkuaVersionChecker("1.1.1.0");
+            SkuaVersionChecker("1.1.1");
 
             if (Directory.Exists("options/Butler"))
             {
