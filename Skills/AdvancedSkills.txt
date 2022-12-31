@@ -225,7 +225,7 @@ Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 = 300
 Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 = 300
 Solo = Star Captain = 1 | 1S | 2S | 3S | 4 | 1 = 300
 Base = StarLord = 1 | 2 | 3 | 4 = Use if Available
-Base = StoneCrusher = 2 | 3 | 1 | 4 = 250
+Base = StoneCrusher = 2 | 3 | 1 | 4 = Use if Available
 Solo = StoneCrusher = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 = Use if Available
 Supp = StoneCrusher = 3 | 2 | 4 | 1 = Use if Available
 Base = SwordMaster = 1 | 2 | 3 | 4 = Use if Available
