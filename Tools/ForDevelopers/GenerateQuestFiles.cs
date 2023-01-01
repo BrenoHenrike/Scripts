@@ -24,7 +24,7 @@ public class GetQuests
             return;
 
         Core.Logger("Reading Quest.txt");
-        var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText("Quests.txt"));
+        var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Quests.txt")));
 
         List<string> r = new();
         List<string> d = new();
