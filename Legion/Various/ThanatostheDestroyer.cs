@@ -1,6 +1,8 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -9,6 +11,7 @@ public class ThanatostheDestroyer
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
+    public CoreIsleOfFotia CoreIsleOfFotia = new();
     private CoreAdvanced Adv => new();
 
 
@@ -30,13 +33,7 @@ public class ThanatostheDestroyer
         List<ItemBase> RewardOptions = Core.EnsureLoad(4101).Rewards;
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
-
-        if (!Core.CheckInventory("Golden Bough"))
-        {
-            Core.EnsureAccept(3010);
-            Core.HuntMonster("UnderRealm", "Underworld Soul", "Souls Released", 8);
-            Core.EnsureComplete(3010);
-        }
+        CoreIsleOfFotia.UnderRealm();
 
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
