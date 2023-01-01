@@ -134,7 +134,9 @@ Base = Imperial Chunin = 1 | 2 | 3 | 4 = Use if Available
 Base = Infinite Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Infinite Legion Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Interstellar Knight = 1 | 2 | 4 | 1 | 2 | 1 | 1 | 2 | 1 | 1 | 2 | 3 = 250
-Base = Infinity Titan = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 = Use if Available
+Base = Infinity Titan = 3 | 2 | 1 | 4 = Use if Available
+Solo = Infinity Titan = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 = Use if Available
+Supp = Infinity Titan = 3 | 2 | 4 | 1 = Use if Available
 Base = Interstellar Knight = 1 | 2 | 4 | 1 | 2 | 1 | 1 | 2 | 1 | 1 | 2 | 3 = 250
 Base = Legendary ArchFiend = 1 | 2 | 3 | 4 = Use if Available
 Atk = Legendary Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 4 | 1 | 3 | 2 | 1 | 4 | 2 = 250
@@ -225,7 +227,7 @@ Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 = 300
 Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 = 300
 Solo = Star Captain = 1 | 1S | 2S | 3S | 4 | 1 = 300
 Base = StarLord = 1 | 2 | 3 | 4 = Use if Available
-Base = StoneCrusher = 2 | 3 | 1 | 4 = Use if Available
+Base = StoneCrusher = 3 | 2 | 1 | 4 = Use if Available
 Solo = StoneCrusher = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 = Use if Available
 Supp = StoneCrusher = 3 | 2 | 4 | 1 = Use if Available
 Base = SwordMaster = 1 | 2 | 3 | 4 = Use if Available
