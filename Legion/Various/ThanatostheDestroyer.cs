@@ -42,7 +42,7 @@ public class ThanatostheDestroyer
             {
                 Bot.Drops.Add(Reward.ID);
                 Core.FarmingLogger(Reward.Name, 1);
-                while (Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
+                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
                     Core.HuntMonster("underrealm", "Death", "Become Death", log: false);
                 Bot.Wait.ForPickup(Reward.ID);
                 Core.ToBank(Reward.ID);
