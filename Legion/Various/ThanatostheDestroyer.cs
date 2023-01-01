@@ -31,6 +31,13 @@ public class ThanatostheDestroyer
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
 
+        if (!Core.CheckInventory("Golden Bough"))
+        {
+            Core.EnsureAccept(3010);
+            Core.HuntMonster("UnderRealm", "Underworld Soul", "Souls Released", 8);
+            Core.EnsureComplete(3010);
+        }
+
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
         Core.RegisterQuests(4101);
