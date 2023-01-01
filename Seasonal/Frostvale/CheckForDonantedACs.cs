@@ -29,7 +29,7 @@ public class CheckForDonatedACs
         var acc = fileSetup();
 
         Bot.Options.AutoRelogin = false;
-        string logPath = "Skua_Modules/options/FrostvaleDonationLog.txt";
+        string logPath = "Skua_Modules/options/TheFamily.txt";
         bool firstTime = !File.Exists(logPath);
         List<string> ACs = new();
         List<string> oldACs = new();
@@ -134,7 +134,7 @@ public class CheckForDonatedACs
 
         string[] fileSetup()
         {
-            string path = "Skua_Modules/options/FrostvaleDonations.txt";
+            string path = "Skua_Modules/options/TheFamily.txt";
             if (File.Exists(path))
                 return File.ReadAllLines(path);
 

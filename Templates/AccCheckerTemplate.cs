@@ -26,7 +26,7 @@ public class AccCheckerTemplate
         var acc = fileSetup();
 
         Bot.Options.AutoRelogin = false;
-        string logPath = "options/TheFamily.txt";
+        string logPath = "Skua_Modules/options/TheFamily.txt"; 
         bool firstTime = !File.Exists(logPath);
         string[] BlacklistedServers =
         {
@@ -70,7 +70,7 @@ public class AccCheckerTemplate
 
         string[] fileSetup()
         {
-            string path = "options/TheFamily.txt";
+            string path = "Skua_Modules/options/TheFamily.txt";
             if (File.Exists(path))
                 return File.ReadAllLines(path);
 
