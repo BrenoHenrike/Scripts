@@ -37,8 +37,6 @@ public class DailysChecker
         var acc = fileSetup();
 
         Bot.Options.AutoRelogin = false;
-        string logPath = "Skua_Modules/options/TheFamily.txt";
-        bool firstTime = !File.Exists(logPath);
         string[] BlacklistedServers =
         {
             "artix",
