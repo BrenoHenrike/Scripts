@@ -383,7 +383,7 @@ public class CoreArmyLite
             return false;
 
         doForAllAccountDetails = doForAllAccountDetails ?? fileSetup();
-        if (_doForAllIndex < doForAllAccountDetails.Length)
+        if (_doForAllIndex > doForAllAccountDetails.Length)
             return false;
 
         Bot.Options.AutoRelogin = false;
