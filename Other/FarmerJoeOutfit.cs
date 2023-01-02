@@ -209,7 +209,7 @@ public class FarmerJoeStartingTheAcc
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
         Core.Logger("Step 3 Dailies for Classes");
-        FAD.DoAllDailys();
+        FAD.DoAllDailies();
 
         Core.Logger("Step 4 Blade and Cape of Awe");
         Farm.BladeofAweREP(6, true);
