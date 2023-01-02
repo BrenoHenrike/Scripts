@@ -12,7 +12,7 @@
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 using Skua.Core.Interfaces;
 
-public class FarmAllDailys
+public class FarmAllDailies
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -25,12 +25,12 @@ public class FarmAllDailys
     {
         Core.SetOptions();
 
-        DoAllDailys();
+        DoAllDailies();
 
         Core.SetOptions(false);
     }
 
-    public void DoAllDailys()
+    public void DoAllDailies()
     {
         Core.Logger("Doing all dailies");
 
