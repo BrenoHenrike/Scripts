@@ -1824,7 +1824,7 @@ public class CoreBots
         {
             foreach (string cs in currentScript.Where(x => x.StartsWith("//cs_include")).ToArray())
             {
-                includedScript = File.ReadAllLines(cs.Replace("//cs_include ", ""));
+                includedScript = File.ReadAllLines(Path.Combine(AppContext.BaseDirectory, cs.Replace("//cs_include ", "")));
 
                 if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
                     break;
