@@ -14,19 +14,24 @@ public class BankAllItems
 
     public void BankAll()
     {
+        bool logged = false;
         List<string> blackListedItems = new() { Core.SoloClass, Core.FarmClass, "Treasure Potion" };
         blackListedItems.AddRange(Core.SoloGear);
         blackListedItems.AddRange(Core.FarmGear);
 
         foreach (InventoryItem item in Bot.Inventory.Items)
         {
-            if (item.Equipped || !item.Coins || blackListedItems.Contains(item.Name))
+            if (item.Equipped || blackListedItems.Contains(item.Name))
                 continue;
 
-            if (Bot.Bank.FreeSlots == 0)
+            if (Bot.Bank.FreeSlots == 0 && !item.Coins)
             {
-                Core.Logger($"Bank is full");
-                break;
+                if (!logged)
+                {
+                    Core.Logger($"Bank is full");
+                    logged = true;
+                }
+                continue;
             }
 
             Core.ToBank(item.ID);
