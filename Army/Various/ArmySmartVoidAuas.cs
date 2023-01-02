@@ -32,6 +32,13 @@ public class ArmySmartVoidAuras
         "Creature Creation Essence"
     };
 
+    public string[] VASDKA =
+    {
+        "Void Aura",
+        "Empowered Essence",
+        "Malignant Essence"
+    };
+
     public string[] SellMe =
     {
         "Astral Ephemerite Essence",
@@ -43,12 +50,7 @@ public class ArmySmartVoidAuras
         "Dai Tengu Essence",
         "Unending Avatar Essence",
         "Void Dragon Essence",
-        "Creature Creation Essence"
-    };
-
-    public string[] VASDKA =
-    {
-        "Void Aura",
+        "Creature Creation Essence",
         "Empowered Essence",
         "Malignant Essence"
     };
