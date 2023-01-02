@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Army/CoreArmyLite
+//cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Seasonal/Frostvale/ChillysParticipation.cs
 using Skua.Core.Interfaces;
