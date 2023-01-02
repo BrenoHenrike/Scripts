@@ -101,7 +101,7 @@ public class CoreBots
 
             if (AppPath != null)
             {
-                loadedBot = Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\", "").Replace("/Scripts/", "").Replace(".cs", "");
+                loadedBot = Bot.Manager.LoadedScript.Replace(AppPath, string.Empty).Replace("\\", "/").Replace("/Scripts/", "").Replace(".cs", "");
                 Logger($"Bot Started [{loadedBot}]");
             }
             else Logger($"Bot Started");
