@@ -662,15 +662,20 @@ public class CoreFarms
     /// </summary>
     public enum AlchemyTraits
     {
-        Dam = 11736, // Potent Honor Potion (trait, itemID)
-        APw = 11741, // Potent Battle Elixir
-        Luc = 11683, // Fate Tonic
-        Int = 11635, // Sage Tonic
-        SPw = 11745, // Potent Malevolence Elixir    
-        hOu = 11761, // Healer Elixer / Potent Guard Potion / Unstable Healer Elixer // rep spam with jerra
-        hRe = 11758, // Potent Revitalize Elixi
-        mRe = 12056, // Potent Destruction Elixir
-        End = 11647 // Body Tonic
+        Dam = 0, // Potent Honor Potion (trait, itemID)
+        APw = 1, // Potent Battle Elixir
+        Luc = 2, // Fate Tonic
+        Int = 3, // Sage Tonic
+        SPw = 4, // Potent Malevolence Elixir    
+        hOu = 5, // Healer Elixer / Potent Guard Potion / Unstable Healer Elixer // rep spam with jerra
+        hRe = 6, // Potent Revitalize Elixi
+        mRe = 7, // Potent Destruction Elixir
+        End = 8, // Body Tonic
+        Eva = 9, //
+        Str = 10,
+        Cri = 11,
+        Dex = 12,
+        Wis = 13
         //more to be added by request
     };
 

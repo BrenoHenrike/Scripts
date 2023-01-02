@@ -7,7 +7,7 @@
 //cs_include Scripts/Other/Classes/REP-based/Bard.cs
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrb[Mem].cs
 //cs_include Scripts/Other/MergeShops/BattleConGearMerge.cs
-//cs_include Scripts/Other/Various/UltraPotions.cs
+//cs_include Scripts/Other/Various/Potions.cs
 using Skua.Core.Interfaces;
 
 public class EvolvedShadowOrbItems
