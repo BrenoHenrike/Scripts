@@ -55,7 +55,7 @@ public class FarmerJoeStartingTheAcc
     public LordOfOrder LOO = new();
     public CoreVHL VHL = new CoreVHL();
     public CoreNation Nation = new();
-    public FarmAllDailys FAD = new();
+    public FarmAllDailies FAD = new();
     public BurningBlade BB = new();
     public Shaman Shaman = new();
     public GlacialBerserker GB = new();
