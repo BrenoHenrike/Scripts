@@ -14,15 +14,22 @@ public class BankAllItems
 
     public void BankAll()
     {
-        foreach (InventoryItem item in Bot.Inventory.Items.Where(i => !i.Equipped && i.Name != "Treasure Potion"))
+        List<string> blackListedItems = new() { Core.SoloClass, Core.FarmClass, "Treasure Potion" };
+        blackListedItems.AddRange(Core.SoloGear);
+        blackListedItems.AddRange(Core.FarmGear);
+
+        foreach (InventoryItem item in Bot.Inventory.Items)
         {
-            if (item.Coins)
-                Core.ToBank(item.ID);
-            else if (!item.Coins || Bot.Bank.FreeSlots < 1)
-                Core.Logger($"Failed to bank {item.Name}");
-            else
-                Core.ToBank(item.ID);
-            Bot.Sleep(1500);
+            if (item.Equipped || !item.Coins || blackListedItems.Contains(item.Name))
+                continue;
+
+            if (Bot.Bank.FreeSlots == 0)
+            {
+                Core.Logger($"Bank is full");
+                break;
+            }
+
+            Core.ToBank(item.ID);
         }
 
         // foreach (InventoryItem item in Bot.House.Items.Where(i => !i.Equipped))
