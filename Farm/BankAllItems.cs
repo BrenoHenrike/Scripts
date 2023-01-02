@@ -31,17 +31,5 @@ public class BankAllItems
 
             Core.ToBank(item.ID);
         }
-
-        // foreach (InventoryItem item in Bot.House.Items.Where(i => !i.Equipped))
-        // {
-        //     Bot.Sleep(Core.ActionDelay);
-        //     if (item.Coins)
-        //         Core.ToBank(item.Name);
-        //     if (!item.Coins || Bot.Bank.FreeSlots < 1)
-        //         Core.Logger($"Failed to bank {item.Name}");
-        //     else
-        //         Core.ToBank(item.Name);
-        // }
-
     }
 }
