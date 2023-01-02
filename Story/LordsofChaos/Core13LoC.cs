@@ -91,7 +91,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(6216);
             Core.GetMapItem(39, 5, "prison");
-            Adv.BuyItem("prison", 1559, 5661);
+            Core.BuyItem("prison", 1559, 42993);
             Core.EnsureComplete(6216);
         }
 
