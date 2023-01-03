@@ -168,7 +168,10 @@ public class GenQueueScript
                     methods.Add($"        {(line.Contains('.') ? "" : className + ".")}{line.Trim()}");
                     if (line.Contains('.'))
                     {
-                        string? _otherClass = Array.Find(script, l => l.Contains($"{line.Trim().Split('.').First()} = new"));
+                        string? _otherClass = Array.Find(script, l =>
+                                                    (l.Contains("private") || l.Contains("public") &&
+                                                    l.Contains($" {line.Trim().Split('.').First()} =") &&
+                                                    l.Contains(" new();")));
                         if (_otherClass != null && !classes.Contains(_otherClass))
                             classes.Add(_otherClass);
                     }

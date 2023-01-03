@@ -377,7 +377,7 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public bool doForAll()
+    public bool doForAll(bool randomServers = true)
     {
         if (Bot.ShouldExit)
             return false;
@@ -399,7 +399,10 @@ public class CoreArmyLite
             }
             Bot.Servers.Login(name, pass);
             Bot.Sleep(3000);
-            Bot.Servers.Connect(Bot.Servers.CachedServers.Where(x => !BlacklistedServers.Contains(x.Name.ToLower())).ToArray()[Bot.Random.Next(0, 8)]);
+            Bot.Servers.Connect(
+                randomServers ?
+                Bot.Servers.CachedServers.Where(x => !BlacklistedServers.Contains(x.Name.ToLower())).ToArray()[Bot.Random.Next(0, 8)] :
+                Bot.Servers.CachedServers.First(x => x.Name == Bot.Options.ReloginServer));
             Bot.Wait.ForMapLoad("battleon");
             while (!Bot.Player.Loaded) { }
         }
