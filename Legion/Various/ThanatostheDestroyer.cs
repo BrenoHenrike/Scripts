@@ -35,6 +35,8 @@ public class ThanatostheDestroyer
 
         CoreIsleOfFotia.UnderRealm();
 
+        Bot.Drops.Add(QuestRewards);
+
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
         Core.RegisterQuests(4101);
@@ -44,7 +46,6 @@ public class ThanatostheDestroyer
                 Core.Logger($"{Reward.Name} Found.");
             else
             {
-                Bot.Drops.Add(Reward.ID);
                 Core.FarmingLogger(Reward.Name, 1);
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
                     Core.HuntMonster("underrealm", "Death", "Become Death", log: false);
