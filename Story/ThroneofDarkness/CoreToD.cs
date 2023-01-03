@@ -1006,22 +1006,20 @@ public class CoreToD
         //Get More Crystals 5232
         Story.KillQuest(5232, "yasaris", "Dimensional Crystal");
 
-        //Charge the Pedestal 5233
-        if (!Story.QuestProgression(5233) || !Core.CheckInventory("Crystal of Hatoth"))
-        {
-            Core.AddDrop("Crystal of Hatoth");
-            Core.EnsureAccept(5233);
-            Core.GetMapItem(4595, 1, "yasaris");
-            Core.GetMapItem(4586, 1, "yasaris");
-            Bot.Wait.ForPickup("Crystal of Hatoth");
-            Core.EnsureComplete(5233);
-        }
-
         //An Offering to the Baboon Guardian 5242
-        if (!Story.QuestProgression(5242) && Core.CheckInventory("Crystal of Hatoth"))
+        if (!Core.isCompletedBefore(5234))
         {
-            Core.EnsureAccept(5242);
-            Core.EnsureComplete(5242);
+            //Charge the Pedestal 5233
+            if (!Core.CheckInventory("Crystal of Hatoth"))
+            {
+                Core.AddDrop("Crystal of Hatoth");
+                Core.EnsureAccept(5233);
+                Core.GetMapItem(4595, 1, "yasaris");
+                Core.GetMapItem(4586, 1, "yasaris");
+                Bot.Wait.ForPickup("Crystal of Hatoth");
+                Core.EnsureComplete(5233);
+            }
+            Story.ChainQuest(5242);
         }
 
         //The Hall of Humanity 5234
@@ -1038,20 +1036,18 @@ public class CoreToD
         Story.KillQuest(5237, "yasaris", "Spirit of Ptahmun");
 
         //Find the Spirit Knife 5238
-        if (!Story.QuestProgression(5238) || !Core.CheckInventory("Heart of Ptahmun"))
+        if (!Core.isCompletedBefore(5234))
         {
-            Core.AddDrop("Heart of Ptahmun");
-            Core.EnsureAccept(5238);
-            Core.GetMapItem(4589, 1, "yasaris");
-            Bot.Wait.ForPickup("Heart of Ptahmun");
-            Core.EnsureComplete(5238);
-        }
-
-        //An Offering to the Human Guardian 5243
-        if (!Story.QuestProgression(5243) && Core.CheckInventory("Heart of Ptahmun"))
-        {
-            Core.EnsureAccept(5243);
-            Core.EnsureComplete(5243);
+            if (!Core.CheckInventory("Heart of Ptahmun"))
+            {
+                Core.AddDrop("Heart of Ptahmun");
+                Core.EnsureAccept(5238);
+                Core.GetMapItem(4589, 1, "yasaris");
+                Bot.Wait.ForPickup("Heart of Ptahmun");
+                Core.EnsureComplete(5238);
+            }
+            //An Offering to the Human Guardian 5243
+            Story.ChainQuest(5243);
         }
 
         //Battle Serepthys 5239
