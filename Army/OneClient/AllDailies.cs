@@ -13,6 +13,7 @@
 //cs_include Scripts/Dailies/0AllDailies.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class ArmyAllDailies
 {
@@ -21,18 +22,25 @@ public class ArmyAllDailies
     private FarmAllDailies FAD = new();
     private CoreArmyLite Army = new();
 
+    public bool DontPreconfigure = true;
+    public string OptionsStorage = "ArmyAllDailies";
+    public List<IOption> Options = new()
+    {
+        new Option<bool>("randomServers", "Random Servers", "Should the bot use a random server each for each account.", true),
+    };
+
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        CheckACs();
+        CheckACs(Bot.Config.Get<bool>("randomServers"));
 
         Core.SetOptions(false);
     }
 
-    public void CheckACs()
+    public void CheckACs(bool randomServers)
     {
-        while (Army.doForAll())
+        while (Army.doForAll(randomServers))
             FAD.DoAllDailies();
     }
 }
