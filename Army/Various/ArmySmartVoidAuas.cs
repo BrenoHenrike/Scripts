@@ -91,7 +91,7 @@ public class ArmySmartVoidAuras
         Core.AddDrop("Void Aura");
         Core.Logger($"Farming Void Aura's with SDKA Method");
 
-        EssenceQuantity = 100;
+        EssenceQuantity = 50;
         Core.AddDrop(VA);
         Core.FarmingLogger($"Void Aura", Quantity);
         Core.ConfigureAggro();
@@ -102,10 +102,10 @@ public class ArmySmartVoidAuras
         {
             Core.EnsureAccept(4439);
             Core.EquipClass(ClassType.Farm);
-            ArmyKillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", EssenceQuantity, false);
+            ArmyKillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
             Core.EquipClass(ClassType.Solo);
-            ArmyKillMonster("shadowrealmpast", "Frame1", "Left", "Astral Ephemerite", "Astral Ephemerite Essence", EssenceQuantity, false);
-            Core.EnsureCompleteMulti(4439);
+            ArmyKillMonster("shadowrealmpast", "Frame1", "Left", "Shadow Lord", "Malignant Essence", 3, false);
+            Core.EnsureComplete(4439);
         }
         Core.ConfigureAggro(false);
         Core.Logger("THANKS FOR RIDING THE PAIN TRAIN!");
