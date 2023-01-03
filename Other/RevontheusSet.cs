@@ -8,6 +8,8 @@ public class RevontheusSet
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
+    public bool DontPreconfigure = true;
+    public string OptionsStorage = "RevontheusSet";
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
