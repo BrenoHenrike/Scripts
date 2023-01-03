@@ -585,7 +585,7 @@ public class CoreBLOD
         Core.Logger($"Farming {quantSO} SOs and {quantLSO} LSOs");
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
         {
-            FindingFragments(2179);
+            FindingFragments(2178);
             Bot.Drops.Pickup("Spirit Orb", "Loyal Spirit Orb");
         }
     }
