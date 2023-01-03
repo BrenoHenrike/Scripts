@@ -104,7 +104,7 @@ public class ArmySmartVoidAuras
             Core.EquipClass(ClassType.Farm);
             ArmyKillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
             Core.EquipClass(ClassType.Solo);
-            ArmyKillMonster("shadowrealmpast", "Frame1", "Left", "Shadow Lord", "Malignant Essence", 3, false);
+            ArmyKillMonster("shadowrealmpast", "r4", "Left", "Shadow Lord", "Malignant Essence", 3, false);
             Core.EnsureComplete(4439);
         }
         Core.ConfigureAggro(false);
