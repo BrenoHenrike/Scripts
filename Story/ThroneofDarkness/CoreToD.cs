@@ -971,22 +971,20 @@ public class CoreToD
         //Charge the Spear 5225
         Story.MapItemQuest(5225, "yasaris", 4582);
 
-        //Take the Offering 5226
-        if (!Story.QuestProgression(5226) || !Core.CheckInventory("Charged Spear of Anubyx"))
-        {
-            Core.AddDrop("Get Charged Spear of Anubyx", "Charged Spear of Anubyx");
-            Core.EnsureAccept(5226);
-            Core.GetMapItem(4583, 1, "yasaris");
-            Bot.Wait.ForPickup("Get Charged Spear of Anubyx");
-            Bot.Wait.ForPickup("Charged Spear of Anubyx");
-            Core.EnsureComplete(5226);
-        }
-
         //An Offering to the Jackal Guardian 5241
-        if (!Story.QuestProgression(5241) && Core.CheckInventory("Charged Spear of Anubyx"))
+        if (!Core.isCompletedBefore(5227))
         {
-            Core.EnsureAccept(5241);
-            Core.EnsureComplete(5241);
+            //Take the Offering 5226
+            if (!Core.CheckInventory("Charged Spear of Anubyx"))
+            {
+                Core.AddDrop("Get Charged Spear of Anubyx", "Charged Spear of Anubyx");
+                Core.EnsureAccept(5226);
+                Core.GetMapItem(4583, 1, "yasaris");
+                Bot.Wait.ForPickup("Get Charged Spear of Anubyx");
+                Bot.Wait.ForPickup("Charged Spear of Anubyx");
+                Core.EnsureComplete(5226);
+            }
+            Story.ChainQuest(5241);
         }
 
         //The Hall of the Baboon 5227
