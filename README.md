@@ -37,4 +37,4 @@ Use the CoreBots Options. You can find these at _Skua_ > _Menubar_ > _Options_ >
 **A:** Open the script you got an error and certify that the first lines with `//cs_include` have the right path/file name, typos happen.
 
 **Q:** Even after doing the solutions above my script doesn't run, what now?  
-**A:** Then we might have messed up something. In this case you can reach out to us in Discord: **Breno_Henrike#6959** or **Lord Exelot#9674** and tell which script, the part the problem occurred and the version of Skua you are having trouble with, you can also use the channel _#Skua-Questions-Help_ [in this server](https://discord.io/AQWBots/).
+**A:** Then we might have messed up something. In this case you can reach out to us in Discord: **Breno_Henrike#6959** or **Lord Exelot#9674** and tell which script, the part the problem occurred and the version of Skua you are having trouble with, you can also use the channel _#Skua-Questions-Help_ [in this server](https://discord.gg/pearlharbor).
