@@ -182,10 +182,10 @@ public class CustomAggroMon
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) != true)
                 return;
 
-            if (!Directory.Exists("Scripts/Army/Generated"))
-                Directory.CreateDirectory("Scripts/Army/Generated");
+            if (!Directory.Exists("Skua_Modules/Scripts/Army/Generated"))
+                Directory.CreateDirectory("Skua_Modules/Scripts/Army/Generated");
 
-            string[] template = File.ReadAllLines("Scripts/Templates/CustomAggroMonTemplate.cs");
+            string[] template = File.ReadAllLines("Skua_Modules/Scripts/Templates/CustomAggroMonTemplate.cs");
             string botName = removeInvalidChar(diag.DialogTextInput);
 
             int classIndex = FetchIndex("public class CustomAggroMonTemplate");
