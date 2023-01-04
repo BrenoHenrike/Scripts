@@ -603,7 +603,7 @@ public class CoreBLOD
         Core.Logger($"Farming {quantSO} SOs and {quantBA} BAs");
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Bright Aura", quantBA))
         {
-            FindingFragments(2179);
+            FindingFragments(2178);
             Bot.Drops.Pickup("Spirit Orb", "Bright Aura");
         }
     }
