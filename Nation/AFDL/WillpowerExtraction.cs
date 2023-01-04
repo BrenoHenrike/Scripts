@@ -55,7 +55,7 @@ public class WillpowerExtraction
             if (!Core.CheckInventory("Mortality Cape of Revontheus"))
             {
                 Nation.ApprovalAndFavor(0, 35);
-                Adv.BuyItem("evilwarnul", 452, "Mortality Cape of Revontheus");
+                Adv.BuyItem("evilwarnul", 452, 13167);
                 Bot.Wait.ForItemBuy();
             }
 
