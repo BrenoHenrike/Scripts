@@ -18,6 +18,7 @@ public class Follower
         CoreBots.Instance.SkipOptions,
         new Option<bool>("lockedMaps", "Locked Zone Handling", "When the followed account goes in to a locked map, this function allows the Butler to follow that account.", true),
         new Option<ClassType>("classType", "Class Type", "This uses the farm or solo class set in [Options] > [CoreBots]", ClassType.Farm),
+        new Option<string>("attackPriority", "Attack Priority", "Fill in the monsters that the bot should prioritize (in order), split with a , (comma)."),
         new Option<bool>("copyWalk", "Copy Walk", "Set to true if you want to move to the same position of the player you follow.", false),
         new Option<int>("roomNumber", "Room Number", "Insert the room number which will be used when looking through Locked Zones.", 999999),
         new Option<bool>("rejectDrops", "Reject Drops", "Do you wish for the Butler to reject all drops? If false, your drop screen will fill up.", true),
@@ -33,13 +34,14 @@ public class Follower
             Bot.Config.Get<ClassType>("classType"),
             Bot.Config.Get<bool>("copyWalk"),
             Bot.Config.Get<int>("roomNumber"),
-            Bot.Config.Get<bool>("rejectDrops")
+            Bot.Config.Get<bool>("rejectDrops"),
+            Bot.Config.Get<string>("attackPriority")
         );
 
         Core.SetOptions(false);
     }
 
-    public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true)
+    public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string attackPriority = null)
     {
         // Double checking the playername and assigning it so all functions can read it
         if (playerName == "Insert Name" || String.IsNullOrEmpty(playerName))
@@ -50,6 +52,9 @@ public class Follower
         // Assigning params to private objects.
         doLockedMaps = LockedMaps;
         doCopyWalk = CopyWalk;
+
+        if (!String.IsNullOrEmpty(attackPriority))
+            _attackPriority.AddRange(attackPriority.Split(',', StringSplitOptions.TrimEntries));
 
         // Creating directory and file to communicate with the followed player.
         if (!Directory.Exists("options/Butler"))
@@ -132,7 +137,7 @@ public class Follower
 
             // Attack any monster that is alive.
             if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
-                Bot.Combat.Attack("*");
+                PriorityAttack("*");
             Core.Rest();
             Bot.Sleep(Core.ActionDelay);
         }
@@ -140,6 +145,7 @@ public class Follower
     private string playerName = null;
     private bool doLockedMaps = true;
     private bool doCopyWalk = false;
+    private List<string> _attackPriority = new();
 
     private bool tryGoto(string userName)
     {
@@ -288,7 +294,7 @@ public class Follower
                     _killTheUltra("r5");
                     break;
             }
-            Bot.Combat.Attack("*");
+            PriorityAttack("*");
             return;
         }
 
@@ -311,7 +317,7 @@ public class Follower
                         _killTheUltra("binky");
                         break;
                 }
-                Bot.Combat.Attack("*");
+                PriorityAttack("*");
                 return;
             }
         }
@@ -359,11 +365,30 @@ public class Follower
                     Core.Logger("No monsters found", "KillUltra");
                     return;
                 }
-                Bot.Combat.Attack(Target.Name);
+                PriorityAttack(Target.Name);
             }
         }
     }
 
+    private void PriorityAttack(string attNoPrio)
+    {
+        if (_attackPriority.Count() == 0)
+        {
+            Bot.Combat.Attack(attNoPrio);
+            return;
+        }
+
+        foreach (string mon in _attackPriority)
+        {
+            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.Trim().ToLower() == mon.ToLower() && m.Alive);
+            if (_mon != null)
+            {
+                Bot.Combat.Attack(_mon);
+                return;
+            }
+        }
+        Bot.Combat.Attack(attNoPrio);
+    }
 
     private async void MapNumberParses(string map)
     {
