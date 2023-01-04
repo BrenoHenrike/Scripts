@@ -214,8 +214,8 @@ public class CustomAggroMon
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");
             template[classTypeIndex] = $"{spaces}private ClassType classtype = ClassType.{Bot.Config.Get<ClassType>("classtype")};";
 
-            File.WriteAllLines($"Scripts/Army/Generated/{diag.DialogTextInput.Replace(" ", "")}.cs", template);
-            Core.Logger($"\"{diag.DialogTextInput.Replace(" ", "")}.cs\" has been generated and can be found in Scripts/Army/Generated", messageBox: true);
+            File.WriteAllLines($"Skua_Modules/Scripts/Army/Generated/{diag.DialogTextInput.Replace(" ", "")}.cs", template);
+            Core.Logger($"\"{diag.DialogTextInput.Replace(" ", "")}.cs\" has been generated and can be found in Skua_Modules/Scripts/Army/Generated", messageBox: true);
 
             int FetchIndex(string text)
             {
