@@ -105,7 +105,7 @@ public class CoreSoW
         Story.KillQuest(6857, "shadowlordkeep", "Shadow Gunner");
 
         //Build a Bomb (6858)
-        Story.KillQuest(6858, "shadowlordkeep", new[] { "Shadow Mage", "Shadow Gunner|Shadow Mage" });
+        Story.KillQuest(6858, "shadowlordkeep", new[] { "Shadow Mage", "Shadow Gunner" });
 
         //Light 'em Up! (6859)
         Story.MapItemQuest(6859, "shadowlordkeep", 6391);

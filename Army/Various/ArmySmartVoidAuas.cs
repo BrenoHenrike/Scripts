@@ -3,7 +3,7 @@
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
-public class RVAArmy
+public class ArmySmartVoidAuras
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -32,6 +32,13 @@ public class RVAArmy
         "Creature Creation Essence"
     };
 
+    public string[] VASDKA =
+    {
+        "Void Aura",
+        "Empowered Essence",
+        "Malignant Essence"
+    };
+
     public string[] SellMe =
     {
         "Astral Ephemerite Essence",
@@ -43,8 +50,11 @@ public class RVAArmy
         "Dai Tengu Essence",
         "Unending Avatar Essence",
         "Void Dragon Essence",
-        "Creature Creation Essence"
+        "Creature Creation Essence",
+        "Empowered Essence",
+        "Malignant Essence"
     };
+
 
 
     public void ScriptMain(IScriptInterface bot)
@@ -52,7 +62,9 @@ public class RVAArmy
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
-        Core.Unbank(VA);
+        if (Core.CheckInventory(14474))
+            Core.Unbank(VASDKA);
+        else Core.Unbank(VA);
         Core.Logger("Selling essences for syncing purposes");
         foreach (string item in SellMe)
             Core.SellItem(item, all: true);
@@ -66,7 +78,37 @@ public class RVAArmy
         Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up\n" +
                                                             "lets hope this works LFMAO");
         Bot.Sleep(2500);
-        RetrieveVoidAurasArmy(7500);
+        if (Core.CheckInventory(14474))
+            CommandingShadowEssences(7500);
+        else RetrieveVoidAurasArmy(7500);
+    }
+
+    public void CommandingShadowEssences(int Quantity)
+    {
+        if (Core.CheckInventory("Void Aura", Quantity))
+            return;
+
+        Core.AddDrop("Void Aura");
+        Core.Logger($"Farming Void Aura's with SDKA Method");
+
+        EssenceQuantity = 50;
+        Core.AddDrop(VA);
+        Core.FarmingLogger($"Void Aura", Quantity);
+        Core.ConfigureAggro();
+        Core.Logger("Army may get slightly out of sync\n" +
+                    "(4-5 items on farm mobs, 0 - 1 on boss mobs, still better then before");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", Quantity))
+        {
+            Core.EnsureAccept(4439);
+            Core.EquipClass(ClassType.Farm);
+            ArmyKillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
+            Core.EquipClass(ClassType.Solo);
+            ArmyKillMonster("shadowrealmpast", "r4", "Left", "Shadow Lord", "Malignant Essence", 3, false);
+            Core.EnsureComplete(4439);
+        }
+        Core.ConfigureAggro(false);
+        Core.Logger("THANKS FOR RIDING THE PAIN TRAIN!");
     }
 
     public void RetrieveVoidAurasArmy(int Quantity)
@@ -74,8 +116,10 @@ public class RVAArmy
         if (Core.CheckInventory("Void Aura", Quantity))
             return;
 
+        Core.Logger($"Farming Void Aura's with Non-SDKA Method");
+
         EssenceQuantity = 100;
-        Farm.EvilREP(); //Anti-AFK should work now so yeah - though who doesn't have Evil Rank 10 if you're going for NSOD
+        Farm.EvilREP();
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(VA);
         if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))

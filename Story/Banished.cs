@@ -31,7 +31,6 @@ public class Banished
         Story.PreLoad(this);
         HikarisQuests();
         Knave1sQuests();
-
     }
 
     public void HikarisQuests()

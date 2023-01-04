@@ -37,7 +37,12 @@ public class FrozenNorthlands
         Story.KillQuest(3635, "chaosnorth", new[] { "Chaorrupted Mage", "Chaorrupted Mage", "Chaorrupted Mage" });
 
         // Facets of Chaos 3636
-        Story.KillQuest(3636, "chaosnorth", "Chaos Gemrald");
+        if (!Story.QuestProgression(3636))
+        {
+            Core.EnsureAccept(3636);
+            Core.HuntMonster("chaosnorth", "Chaos Gemrald", "Shard of Chaos", 13);
+            Core.EnsureComplete(3636);
+        }
 
         // Chaos Eye Spy 3637
         Story.KillQuest(3637, "chaosnorth", new[] { "Chaorrupted Imp", "Chaorrupted Mage", "Chaorruption", "Chaos Sp-Eye" });

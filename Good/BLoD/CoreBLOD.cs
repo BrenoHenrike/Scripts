@@ -451,6 +451,67 @@ public class CoreBLOD
         }
     }
 
+    public void BlindingBroadsword()
+    {
+        if (Core.CheckInventory("Blinding Broadsword of Destiny"))
+        {
+            Core.Logger("Broadsword found, skipping.");
+            return;
+        }
+
+        Core.AddDrop(BLoDItems);
+
+        if (!Core.CheckInventory("Blinding Bow of Destiny"))
+            BlindingBow();
+
+        if (!Core.CheckInventory(new[] { "Blinding Broadsword of Destiny", "Bright Broadsword of Destiny", "Broadsword of Destiny" }, any: true))
+        {
+            if (!Core.CheckInventory("Glorious Gold of Destiny"))
+            {
+                if (!Core.CheckInventory("Glorious Gold"))
+                {
+                    Core.FarmingLogger("Glorious Gold", 1);
+                    Core.EnsureAccept(2105);
+                    Farm.BattleUnderB("Undead Energy", 25);
+                    Daily.MineCrafting(new[] { "Gold" });
+                    if (!Core.CheckInventory("Gold"))
+                        Core.Logger("Can't complete Glorious Gold Enchantment (Missing Gold).", messageBox: true, stopBot: true);
+                    UltimateWK("Spirit Orb", 5);
+                    Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
+                    Core.EnsureComplete(2105);
+                    Bot.Wait.ForPickup("Glorious Gold");
+                }
+                Core.FarmingLogger("Glorious Gold of Destiny", 1);
+                FindingFragmentsBow(2);
+                UltimateWK("Loyal Spirit Orb", 5);
+                Core.BuyItem("dwarfhold", 434, "Glorious Gold of Destiny");
+                Bot.Wait.ForPickup("Glorious Gold of Destiny");
+            }
+            Core.FarmingLogger("Broadsword of Destiny", 1);
+            FindingFragmentsMace();
+            UltimateWK("Loyal Spirit Orb", 5);
+            UltimateWK("Spirit Orb", 15);
+            BasicWK();
+            LightMerge("Broadsword of Destiny");
+        }
+
+        if (Core.CheckInventory("Broadsword of Destiny"))
+        {
+            Core.FarmingLogger("Bright Broadsword of Destiny", 1);
+            FindingFragmentsMace();
+            AdvancedWK();
+            LightMerge("Bright Broadsword of Destiny");
+        }
+
+        if (Core.CheckInventory("Bright Broadsword of Destiny"))
+        {
+            Core.FarmingLogger("Blinding Broadsword of Destiny", 1);
+            UltimateWK();
+            LightMerge("Blinding Broadsword of Destiny");
+        }
+    }
+
+
     public void TheBlindingLightofDestiny()
     {
         if (Core.CheckInventory("Blinding Light of Destiny"))
@@ -459,9 +520,9 @@ public class CoreBLOD
         Core.AddDrop(BLoDItems);
 
         Core.Logger("Final part");
-        FindingFragmentsBow(125);
+        FindingFragmentsBroadSword(500, 125);
         FindingFragmentsMace(75);
-        FindingFragmentsBlade(500, 250);
+        FindingFragmentsBlade(0, 250);
         Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
         while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
         {
@@ -526,6 +587,24 @@ public class CoreBLOD
         {
             FindingFragments(2179);
             Bot.Drops.Pickup("Spirit Orb", "Loyal Spirit Orb");
+        }
+    }
+
+    public void FindingFragmentsBroadSword(int quantSO, int quantBA)
+    {
+        if (Core.CheckInventory("Spirit Orb", quantSO) && Core.CheckInventory("Bright Aura", quantBA))
+            return;
+        if (!Core.CheckInventory("Blinding Scythe of Destiny"))
+            BlindingBroadsword();
+
+        Core.AddDrop(BLoDItems);
+
+        Core.EquipClass(ClassType.Farm);
+        Core.Logger($"Farming {quantSO} SOs and {quantBA} BAs");
+        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Bright Aura", quantBA))
+        {
+            FindingFragments(2178);
+            Bot.Drops.Pickup("Spirit Orb", "Bright Aura");
         }
     }
 

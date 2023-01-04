@@ -16,6 +16,7 @@
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Other/MergeShops/TitanGearIIMerge.cs
+//cs_include Scripts/Other/Badges/ChaosPuppetMaster.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -31,6 +32,7 @@ public class CoreHollowbornChaosEnvoy
     private EternalDrakath ED = new();
     private AscendedDrakathGear ADG = new();
     private TitanGearIIMerge TGM = new();
+    private ChaosPuppetMaster CPM = new();
 
     public string OptionsStorage = "HollowbornChaosEnvoy";
     public bool DontPreconfigure = true;
@@ -189,6 +191,7 @@ public class CoreHollowbornChaosEnvoy
             Adv.BuyItem("deepforest", 1999, "Supreme Arcane Staff of Chaos");
         }
 
+        CPM.Badge();
         Core.RegisterQuests(9001);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {

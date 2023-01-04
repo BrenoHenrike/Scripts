@@ -208,8 +208,8 @@ public class CitadelRuins
         // "citadelruins";
 
         //get ready to amplify
-        Story.KillQuest(6172, "citadelruins", "Mana Sprites");
         Story.MapItemQuest(6172, "citadelruins", 5592);
+        Story.KillQuest(6172, "citadelruins", "Mana Sprites");
 
         //break the seal
         Story.MapItemQuest(6173, "citadelruins", 5602);

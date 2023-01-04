@@ -27,7 +27,17 @@ public class PotionBuyer
         new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false),
         new Option<bool>("farmDestruction", "Destruction", "Should the bot farm Potent Destruction Elixir?", false),
-        new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false)
+        new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false),
+        new Option<bool>("farmSoul", "Soul", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableBattle", "Unstable Battle Elixir", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableBody", "Unstable Body Tonic", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableFate", "Unstable Fate Tonic ", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableKeen", "Unstable Keen Elixir", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableMastery", "Unstable Mastery Tonic", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableMight", "Unstable Might Tonic ", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableVelocity", "Unstable Velocity Elixir", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("UnstableWise", "Unstable Wise Tonic", "Should the bot farm Soul Potions?", false)
+
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -49,13 +59,19 @@ public class PotionBuyer
             potions = new[] { "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
             "Potent Malevolence Elixir","Potent Honor Potion", "Unstable Divine Elixir",
             "Potent Revitalize Elixir", "Felicitous Philtre", "Endurance Draught",
-            "Potent Destruction Elixir", "Body Tonic" };
+            "Potent Destruction Elixir", "Body Tonic", "Soul Potion", "Unstable Battle Elixir",
+            "Unstable Body Tonic", "Unstable Fate Tonic", "Unstable Keen Elixir",
+            "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Velocity Elixir",
+            "Unstable Wise Tonic"};
 
             potionsFarm = new[] { Bot.Config.Get<bool>("farmFate"), Bot.Config.Get<bool>("farmSage"),
             Bot.Config.Get<bool>("farmBattle"), Bot.Config.Get<bool>("farmMalevolence"), Bot.Config.Get<bool>("farmHonor"),
             Bot.Config.Get<bool>("farmDivine"), Bot.Config.Get<bool>("farmRevitalize"),
             Bot.Config.Get<bool>("buyFeli"), Bot.Config.Get<bool>("buyEndu"), Bot.Config.Get<bool>("farmDestruction"),
-            Bot.Config.Get<bool>("farmBody") };
+            Bot.Config.Get<bool>("farmBody"), Bot.Config.Get<bool>("FarmSoul"), Bot.Config.Get<bool>("UnstableBattle"),
+             Bot.Config.Get<bool>("UnstableBody"), Bot.Config.Get<bool>("UnstableFate"), Bot.Config.Get<bool>("UnstableKeen"),
+              Bot.Config.Get<bool>("UnstableMastery"), Bot.Config.Get<bool>("UnstableMight"), Bot.Config.Get<bool>("UnstableVelocity"),
+               Bot.Config.Get<bool>("UnstableWise") };
         }
 
         if (Array.IndexOf(potionsFarm, true) == -1 || potionQuant < 1 || potionQuant > 300)
@@ -106,13 +122,6 @@ public class PotionBuyer
                     BulkGrind("Arashtite Ore", "Dried Slime");
                     break;
 
-                case "Unstable Divine Elixir":
-                    potionQuant = 99;
-                    Core.Logger($"{potionQuant} : {potionQuant} is the max for this pot. isntead of 300.");
-                    currTrait = CoreFarms.AlchemyTraits.hOu;
-                    BulkGrind("Dragon Scale", "Lemurphant Tears");
-                    break;
-
                 case "Potent Revitalize Elixir":
                     currTrait = CoreFarms.AlchemyTraits.hRe;
                     BulkGrind("Chaoroot", "Lemurphant Tears");
@@ -148,6 +157,58 @@ public class PotionBuyer
                 case "Body Tonic":
                     currTrait = CoreFarms.AlchemyTraits.End;
                     BulkGrind("Roc Tongue", "Chaoroot");
+                    break;
+
+                case "Soul Potion":
+                    currTrait = CoreFarms.AlchemyTraits.Dam;
+                    BulkGrind("Necrot", "Nimblestem");
+                    break;
+
+                case "Unstable Divine Elixir":
+                    potionQuant = 99;
+                    Core.Logger($"{potionQuant} : {potionQuant} is the max for this pot. isntead of 300.");
+                    currTrait = CoreFarms.AlchemyTraits.hOu;
+                    BulkGrind("Dragon Scale", "Lemurphant Tears");
+                    break;
+
+                case "Unstable Battle Elixir":
+                    currTrait = CoreFarms.AlchemyTraits.APw;
+                    BulkGrind("Doomatter", "Nimblestem");
+                    break;
+
+                case "Unstable Body Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.End;
+                    BulkGrind("Nimblestem", "Roc Tongue");
+                    break;
+
+                case "Unstable Fate Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Luc;
+                    BulkGrind("Dried Slime", "Trollola Nectar");
+                    break;
+
+                case "Unstable Keen Elixir":
+                    currTrait = CoreFarms.AlchemyTraits.Cri;
+                    BulkGrind("Chaos Entity", "Fish Oil");
+                    break;
+
+                case "Unstable Mastery Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Dex;
+                    BulkGrind("Chaos Entity", "Dried Slime");
+                    break;
+
+                case "Unstable Might Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Str;
+                    BulkGrind("Chaos Entity", "Fish Oil");
+                    break;
+
+                case "Unstable Velocity Elixir":
+                    currTrait = CoreFarms.AlchemyTraits.Eva;
+                    BulkGrind("Doomatter", "Nimblestem");
+                    break;
+
+                case "Unstable Wise Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Wis;
+                    BulkGrind("Moglin Tears", "Rhison Blood");
                     break;
 
                 default:
@@ -224,6 +285,14 @@ public class PotionBuyer
 
                     case "Roc Tongue":
                         Core.HuntMonster("roc", "Rock Roc", ingredient, ingreQuant, isTemp: false, log: false);
+                        break;
+
+                    case "Necrot":
+                        Core.HuntMonster("deathsrealm", "Skeleton Fighter", ingredient, ingreQuant, isTemp: false, log: false);
+                        break;
+
+                    case "Rhison Blood":
+                        Core.HuntMonster("bloodtusk", "Rhison", ingredient, ingreQuant, isTemp: false, log: false);
                         break;
 
                     default:

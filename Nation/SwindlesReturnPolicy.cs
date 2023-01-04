@@ -11,7 +11,7 @@ public class SwindlesReturnPolicy
     public CoreNation Nation = new();
 
 
-    public string OptionsStorage = "FarmerJoePet";
+    public string OptionsStorage = "SwindlesReturnPolicy";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {

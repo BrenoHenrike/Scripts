@@ -91,7 +91,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(6216);
             Core.GetMapItem(39, 5, "prison");
-            Adv.BuyItem("prison", 1559, 5661);
+            Core.BuyItem("prison", 1559, 42993);
             Core.EnsureComplete(6216);
         }
 
@@ -723,8 +723,13 @@ public class Core13LoC
         Story.KillQuest(809, "cloister", "Karasu");
 
         //It's A Bough-t Time
-        Story.BuyQuest(810, "arcangrove", 211, "Mana Potion");
-        Story.MapItemQuest(810, "cloister", 141, 3);
+        if (!Story.QuestProgression(810))
+        {
+            Core.EnsureAccept(810);
+            Core.BuyItem("arcangrove", 211, "Mana Potion");
+            Core.GetMapItem(141, 3, "cloister");
+            Core.EnsureComplete(810);
+        }
 
         //Wendigo Whereabouts
         Story.KillQuest(811, "cloister", "Wendigo");
@@ -1774,7 +1779,7 @@ public class Core13LoC
         if (!Story.QuestProgression(2806)) //quest was fucky for no reason. hopefully a fix.
         {
             Core.EnsureAccept(2806);
-            Core.KillMonster("tormtemple", "r1", "Left", "Chaonslaught Warrior", "Lightning Boots");
+            Core.KillMonster("stormtemple", "r1", "Left", "Chaonslaught Warrior", "Lightning Boots");
             Core.EnsureComplete(2806);
         }
 

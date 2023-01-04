@@ -9,7 +9,7 @@
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs
 //cs_include Scripts/Other/Classes/REP-based/Bard.cs
 //cs_include Scripts/Other/MergeShops/BattleConGearMerge.cs
-//cs_include Scripts/Other/Various/UltraPotions.cs
+//cs_include Scripts/Other/Various/Potions.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 

@@ -174,7 +174,14 @@ public class CoreDoomwood
         Story.MapItemQuest(1113, "necroU", 450, 5);
 
         //1114    Goals for Ghouls and Other Undead
-        Story.KillQuest(1114, "necroU", new[] { "Ghoul", "Doomwood Soldier", "Doomwood Soldier" });
+        if (!Story.QuestProgression(1114))
+        {
+            Core.EnsureAccept(1114);
+            Core.HuntMonster("necroU", "Ghoul", "Undead Wishes");
+            Core.HuntMonster("necroU", "Doomwood Soldier", "Undead Dreams");
+            Core.HuntMonster("necroU", "Doomwood Soldier", "Undead Ambitions");
+            Core.EnsureComplete(1114);
+        }
 
         //1115    Knee Bone's Connected to the Thigh Bone
         Story.MapItemQuest(1115, "necroU", 449, 6);

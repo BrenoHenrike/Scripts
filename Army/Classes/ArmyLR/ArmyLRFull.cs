@@ -5,12 +5,12 @@
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Army/Various/ArmyLegionFealty2.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
+using System.Linq;
 
 public class ArmyLR
 {
@@ -21,7 +21,6 @@ public class ArmyLR
     private CoreArmyLite Army = new();
     public CoreLegion Legion = new CoreLegion();
     public CoreLR CoreLR = new CoreLR();
-    public ArmyLegionFealty2 ArmyLF2 = new ArmyLegionFealty2();
     public InfiniteLegionDC ILDC = new InfiniteLegionDC();
     public SeraphicWar_Story Seraph = new SeraphicWar_Story();
     private static CoreBots sCore = new();
@@ -94,6 +93,8 @@ public class ArmyLR
         Core.SetOptions();
         Bot.Options.RestPackets = false;
 
+        Core.BankingBlackList.AddRange(LRMaterials.Concat(LF1).Concat(LF2).Concat(LF3).Concat(legionMedals));
+
         LR();
 
         Core.SetOptions(false);
@@ -104,7 +105,6 @@ public class ArmyLR
         Legion.JoinLegion();
         Legion.LegionRound4Medal();
         Seraph.SeraphicWar_Questline();
-        Core.BankingBlackList.AddRange(new[] { "LRMaterials, LF1, LF2, LF3, legionMedals" });
         /*
         ********************************************************************************
         ********************************PREFARM ZONE************************************
@@ -130,7 +130,7 @@ public class ArmyLR
         /*Step 7: LF1*/
         ArmyLF1();
         /*Step 9: LF2, thx tato :TatoGasm:*/
-        ArmyLF2.Setup();
+        ArmyFL2();
         /*Step 10: LF3 and Finish*/
         ArmyLF3();
         CoreLR.GetLR(true);
@@ -210,6 +210,65 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
+    public void ArmyFL2(int quant = 6)
+    {
+        if (Core.CheckInventory("Conquest Wreath", quant))
+            return;
+
+        Core.AddDrop(LF2);
+
+        Core.RegisterQuests(6898);
+        Adv.BestGear(GearBoost.Undead);
+        Core.FarmingLogger("Conquest Wreath", quant);
+        int i = 1;
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
+        {
+            if (!Core.CheckInventory("Grim Cohort Conquered", 500))
+                Core.SellItem("Grim Cohort Conquered", 0, true);
+            ArmyHunt("doomvault", new[] { "Grim Soldier" }, "Grim Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Ancient Cohort Conquered", 500))
+                Core.SellItem("Ancient Cohort Conquered", 0, true);
+            ArmyHunt("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Pirate Cohort Conquered", 500))
+                Core.SellItem("Pirate Cohort Conquered", 0, true);
+            ArmyHunt("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Battleon Cohort Conquered", 500))
+                Core.SellItem("Battleon Cohort Conquered", 0, true);
+            ArmyHunt("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Mirror Cohort Conquered", 500))
+                Core.SellItem("Mirror Cohort Conquered", 0, true);
+            ArmyHunt("overworld", new[] { "Undead Minion", "Undead Mage", "Undead Bruiser" }, "Mirror Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Darkblood Cohort Conquered", 500))
+                Core.SellItem("Darkblood Cohort Conquered", 0, true);
+            ArmyHunt("deathpits", new[] { "Ghastly Darkblood", "Rotting Darkblood", "Sundered Darkblood" }, "Darkblood Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Vampire Cohort Conquered", 500))
+                Core.SellItem("Vampire Cohort Conquered", 0, true);
+            ArmyHunt("maxius", new[] { "Ghoul Minion", "Vampire Minion" }, "Vampire Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Dracolich Contract", 500))
+                Core.SellItem("Spirit Cohort Conquered", 0, true);
+            ArmyHunt("curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Wendighost", "Escaped Dai Tenghost" }, "Spirit Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Dragon Cohort Conquered", 500))
+                Core.SellItem("Dragon Cohort Conquered", 0, true);
+            ArmyHunt("dragonbone", new[] { "Bone Dragonling", "Dark Fire", }, "Dragon Cohort Conquered", ClassType.Farm, false, 500);
+
+            if (!Core.CheckInventory("Doomwood Cohort Conquered", 500))
+                Core.SellItem("Doomwood Cohort Conquered", 0, true);
+            ArmyHunt("doomwood", new[] { "Doomwood Soldier", "Doomwood Bonemuncher", "Doomwood Ectomancer", "Undead Paladin", "Doomwood Treeant" }, "Doomwood Cohort Conquered", ClassType.Farm, false, 500);
+            Core.EnsureComplete(6898);
+            Bot.Wait.ForPickup("Conquest Wreath");
+            Core.Logger($"Completed x{i++}");
+        }
+    }
+
     public void ArmyLF3(int quant = 10)
     {
         Core.FarmingLogger("Exalted Crown", quant);
@@ -252,7 +311,7 @@ public class ArmyLR
             return;
 
         Core.RegisterQuests(367, 372); //Bone-afide 367, Tomb with a View 372
-        //ArmyHunt("castleundead", new[] {"Skeletal Viking", "Skeletal Warrior"}, 372, new[] {"Chaorrupted Skull"}, true, 5);
+                                       //ArmyHunt("castleundead", new[] {"Skeletal Viking", "Skeletal Warrior"}, 372, new[] {"Chaorrupted Skull"}, true, 5);
         Farm.ToggleBoost(BoostType.Reputation);
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
             ArmyHunt("castleundead", new[] { "Skeletal Viking", "Skeletal Warrior" }, "Replacement Tibia", ClassType.Farm, true, 6);

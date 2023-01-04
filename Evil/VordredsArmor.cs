@@ -109,6 +109,7 @@ public class VordredArmor
             Core.HuntMonster("lightguardwar", "Extreme Noxus", "Noxus Runes", isTemp: false);
             Adv.BuyItem("necrotower", 282, "Sally's Necronomicon");
             Core.EquipClass(ClassType.Farm);
+            Bot.Quests.UpdateQuest(2059);
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Ancient Evil of the Necropolis", isTemp: false);
             Core.EnsureComplete(8380);
         }

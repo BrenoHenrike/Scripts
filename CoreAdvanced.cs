@@ -72,7 +72,7 @@ public class CoreAdvanced
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopItemID = 0)
     {
         GetItemReq(item);
-        
+
         if (item.Requirements != null)
         {
             foreach (ItemBase req in item.Requirements)
@@ -307,12 +307,10 @@ public class CoreAdvanced
     {
         new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
                                                                      "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
-        new Option<string>("blank", " ", "", ""),
         new Option<string>(" ", "Mode Explanation [all]", "Mode [all]: \t\tYou get all the items from shop, even if non-AC ones if any.", "click here"),
         new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]: \tYou get all the AC tagged items from the shop.", "click here"),
         new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]: \tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
         new Option<string>(" ", "Mode Explanation [select]", "Mode [select]: \tYou are able to select what items you get and which ones you dont in the Select Category below.", "click here"),
-        new Option<string>("blank", " ", "", ""),
     };
 
     /// <summary>
@@ -1513,7 +1511,6 @@ public class CoreAdvanced
             case "immortal chronomancer":
             case "dark metal necro":
             case "great thief":
-            case "legion doomknight":
                 if (!uForgeCape())
                     goto default;
 
@@ -1558,12 +1555,8 @@ public class CoreAdvanced
             #endregion 
 
             #region Lucky - Forge - Mana Vamp
-            case "shadowwalker of time":
-            case "shadowstalker of time":
-            case "shadowweaver of time":
             case "legendary elemental warrior":
             case "ultra elemental warrior":
-            case "chaos avenger":
                 if (!uForgeCape())
                     goto default;
 
@@ -1714,6 +1707,7 @@ public class CoreAdvanced
             #region Lucky - Vainglory - Valiance - Vim
             case "continuum chronomancer":
             case "quantum chronomancer":
+            case "chaos avenger":
                 if (!uVainglory() || !uValiance() || !uVim())
                     goto default;
 
@@ -1746,6 +1740,20 @@ public class CoreAdvanced
                 cSpecial = CapeSpecial.Vainglory;
                 wSpecial = WeaponSpecial.Valiance;
                 hSpecial = HelmSpecial.Anima;
+                break;
+            #endregion
+
+            #region Lucky - Vainglory - Elysium - Vim
+            case "shadowwalker of time":
+            case "shadowstalker of time":
+            case "shadowweaver of time":
+                if (!uVainglory() || !uElysium() || !uVim())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Vainglory;
+                wSpecial = WeaponSpecial.Elysium;
+                hSpecial = HelmSpecial.Vim;
                 break;
             #endregion
 
@@ -1789,6 +1797,38 @@ public class CoreAdvanced
                 cSpecial = CapeSpecial.Avarice;
                 wSpecial = WeaponSpecial.Elysium;
                 hSpecial = HelmSpecial.Anima;
+                break;
+            #endregion
+
+            #region Lucky - Penitence - Valiance - None
+            case "archpaladin":
+                if (!uPenitence() || !uValiance())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Penitence;
+                wSpecial = WeaponSpecial.Valiance;
+                break;
+            #endregion
+
+            #region Lucky - None - Valiance - None
+            case "stonecrusher":
+                if (!uValiance())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                wSpecial = WeaponSpecial.Valiance;
+                break;
+            #endregion
+
+            #region Lucky - Vainglory - Valiance - None
+            case "legion doomknight":
+                if (!uVainglory() || !uValiance())
+                    goto default;
+
+                type = EnhancementType.Lucky;
+                cSpecial = CapeSpecial.Vainglory;
+                wSpecial = WeaponSpecial.Valiance;
                 break;
             #endregion
 
