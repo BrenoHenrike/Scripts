@@ -14,7 +14,8 @@ public class RankUpAll
 
     public List<IOption> Options = new()
     {
-        new Option<bool>("inclBank", "Include Bank", "If True, will also rank up all unranked classes in the bank", false)
+        new Option<bool>("inclBank", "Include Bank", "If True, will also rank up all unranked classes in the bank", false),
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
