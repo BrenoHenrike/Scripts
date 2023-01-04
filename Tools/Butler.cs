@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.IO.Compression;
 //cs_include Scripts/CoreBots.cs
 using System.IO;
 using Skua.Core.Interfaces;
