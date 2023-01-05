@@ -182,10 +182,10 @@ public class CustomAggroMon
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) != true)
                 return;
 
-            if (!Directory.Exists("Scripts/Army/Generated"))
-                Directory.CreateDirectory("Scripts/Army/Generated");
+            if (!Directory.Exists("Skua_Modules/Scripts/Army/Generated"))
+                Directory.CreateDirectory("Skua_Modules/Scripts/Army/Generated");
 
-            string[] template = File.ReadAllLines("Scripts/Templates/CustomAggroMonTemplate.cs");
+            string[] template = File.ReadAllLines("Skua_Modules/Scripts/Templates/CustomAggroMonTemplate.cs");
             string botName = removeInvalidChar(diag.DialogTextInput);
 
             int classIndex = FetchIndex("public class CustomAggroMonTemplate");
@@ -214,8 +214,8 @@ public class CustomAggroMon
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");
             template[classTypeIndex] = $"{spaces}private ClassType classtype = ClassType.{Bot.Config.Get<ClassType>("classtype")};";
 
-            File.WriteAllLines($"Scripts/Army/Generated/{diag.DialogTextInput.Replace(" ", "")}.cs", template);
-            Core.Logger($"\"{diag.DialogTextInput.Replace(" ", "")}.cs\" has been generated and can be found in Scripts/Army/Generated", messageBox: true);
+            File.WriteAllLines($"Skua_Modules/Scripts/Army/Generated/{diag.DialogTextInput.Replace(" ", "")}.cs", template);
+            Core.Logger($"\"{diag.DialogTextInput.Replace(" ", "")}.cs\" has been generated and can be found in Skua_Modules/Scripts/Army/Generated", messageBox: true);
 
             int FetchIndex(string text)
             {

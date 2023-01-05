@@ -2301,6 +2301,11 @@ public class CoreBots
                 SimpleQuestBypass(8406);
                 break;
 
+            case "necrodungeon":
+                SimpleQuestBypass(2061);
+                break;
+
+
             case "championdrakath":
                 SimpleQuestBypass(3881);
                 break;
