@@ -46,7 +46,7 @@ public class DragonOfTime
 
     public void GetDoT(bool rankUpClass = true, bool doExtra = true)
     {
-        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(Extras)))
+        if (doExtra ? Core.CheckInventory(Extras) : Core.CheckInventory("Dragon of Time"))
             return;
 
         Story.PreLoad(this);
