@@ -102,7 +102,7 @@ public class CoreDailies
         }
         if (quest == 3075 || quest == 3076)
             Bot.Drops.Add(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
-        else Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
+        else Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).Where(x => !Core.CheckInventory(x, toInv: false)).ToArray());
         Core.AddDrop(Core.EnsureLoad(quest).Requirements.Select(x => x.Name).ToArray());
 
         return true;
