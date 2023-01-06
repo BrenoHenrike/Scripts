@@ -20,7 +20,8 @@
 //cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
 //cs_include Scripts/Other/Classes/REP-based/Shaman.cs
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
-//cs_include Scripts/Other/Classes/Other/Classes/ScarletSorceress.cs
+//cs_include Scripts/Other/Classes/ScarletSorceress.cs
+//cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
