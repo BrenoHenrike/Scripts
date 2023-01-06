@@ -176,7 +176,7 @@ public class FarmerJoeStartingTheAcc
                 Core.Equip("DragonSoul Shinobi");
                 SS.GetSSorc();
                 Core.SoloClass = "DragonSoul Shinobi";
-                Core.FarmClass = "Blood Sorceress";
+                Core.FarmClass = "Scarlet Sorceress";
             }
             if (Bot.Player.Level < level)
             {
