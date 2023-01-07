@@ -35,31 +35,22 @@ public class DiabolicalWarden
             return;
         }
 
-        int count = 0;
-        Core.CheckSpaces(ref count, rewards);
         Core.AddDrop(rewards);
 
         Core.EquipClass(ClassType.Solo);
 
         Bot.Quests.UpdateQuest(9044);
-        Bot.Events.ItemDropped += ItemDropped;
 
-        Core.Logger($"Farm for the Diabolical Warden set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
-        while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
+        foreach (string Reward in rewards)
         {
-            Core.HuntMonster("brokenwoods", "Eldritch Amalgamation", "*", isTemp: false);
-            Bot.Wait.ForPickup("*");
-        }
-
-        Bot.Events.ItemDropped -= ItemDropped;
-
-        void ItemDropped(ItemBase item, bool addedToInv, int quantityNow)
-        {
-            if (rewards.Contains(item.Name))
+            if (Core.CheckInventory(Reward))
             {
-                count++;
-                Core.Logger($"Got {item.Name}, {rewards.Length - count} items to go");
+                Core.ToBank(Reward);
+                continue;
             }
+            Core.FarmingLogger(Reward, 1);
+            Core.HuntMonster("brokenwoods", "Eldritch Amalgamation", Reward, isTemp: false, log: false);
+            Core.ToBank(Reward);
         }
     }
 }
