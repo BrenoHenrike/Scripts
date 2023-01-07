@@ -116,9 +116,8 @@ public class WillpowerExtraction
             return;
 
         if (Core.IsMember)
-        {
             Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
-        }
+            
         else Nation.Supplies("Unidentified 19");
     }
 }
