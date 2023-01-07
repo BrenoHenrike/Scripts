@@ -1629,6 +1629,7 @@ public class CoreBots
                     "Blaze Binder",
                     "DeathKnight",
                     "DragonSoul Shinobi",
+                    "Legion Revenant",
                 };
 
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
@@ -2300,6 +2301,11 @@ public class CoreBots
             case "ebilcorphq":
                 SimpleQuestBypass(8406);
                 break;
+
+            case "necrodungeon":
+                SimpleQuestBypass(2061);
+                break;
+
 
             case "championdrakath":
                 SimpleQuestBypass(3881);

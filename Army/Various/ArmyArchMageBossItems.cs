@@ -87,7 +87,7 @@ public class ArchMageMatsArmy
         while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
         {
             ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", log: false);
-            ArmyKillMonster("voidnightbane", "Enter", "Spawn", "Nightbane", "voidnightbane", log: false);
+            ArmyKillMonster("voidnightbane", "Enter", "Spawn", "Nightbane", "Insatiable Hunger", log: false);
             ArmyKillMonster("dage", "Boss", "Right", "Dage the Evil", "Vital Exanima", log: false);
             ArmyKillMonster("fireavatar", "r9", "Left", "Avatar Tyndarius", "Everlight Flame", log: false);
             ArmyKillMonster("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", log: false);

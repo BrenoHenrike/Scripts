@@ -1459,17 +1459,7 @@ public class CoreNation
 
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
         {
-            if (Core.CheckInventory("Crag & Bamboozle"))
-            {
-                while (!Core.CheckInventory("Unidentified 13", 13))
-                {
-                    Core.EnsureAccept(869);
-                    FarmDiamondofNulgath(15);
-                    Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", log: false);
-                    Core.EnsureCompleteMulti(869);
-                }
-            }
-            else FarmUni13(13);
+            FarmUni13(13);
 
             Core.RegisterQuests(554);
             while (Core.CheckInventory("Unidentified 13"))

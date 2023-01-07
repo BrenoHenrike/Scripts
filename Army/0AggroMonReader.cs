@@ -42,7 +42,7 @@ public class AggroMonReader
         #region Gathering Data
         // Finding file
         _fileDialog = Ioc.Default.GetRequiredService<IFileDialogService>();
-        string _scriptPath = _scriptPath = Path.Combine(AppContext.BaseDirectory, "Scripts");
+        string _scriptPath = _scriptPath = Path.Combine(AppContext.BaseDirectory, "Skua_Modules/Scripts");
         string? path = _fileDialog.OpenFile(_scriptPath, "Aggromon File (*.txt)|*.txt");
         if (path == null)
             return;

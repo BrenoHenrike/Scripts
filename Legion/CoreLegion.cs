@@ -245,7 +245,7 @@ public class CoreLegion
 
     public void LTHardCoreParagon(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet") || !Bot.Quests.IsDailyComplete(3394))
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet"))
             return;
 
         Core.EquipClass(ClassType.Solo);
@@ -253,21 +253,19 @@ public class CoreLegion
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        if (!Bot.Quests.IsUnlocked(793))
-        {
-            Core.RegisterQuests(3393);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                Adv.BoostHuntMonster(Core.IsMember ? "binky" : "doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
-            Core.CancelRegisteredQuests();
 
-        }
-        else
+        if (!Bot.Quests.IsDailyComplete(3394))
         {
-            Core.RegisterQuests(3394);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaorrupted Dark Fire", 20, isTemp: false, log: false);
-            Core.CancelRegisteredQuests();
+            Core.EnsureAccept(3394);
+            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaorrupted Dark Fire", 20, isTemp: false);
+            Core.EnsureComplete(3394);
         }
+
+        Core.RegisterQuests(3393);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+            Adv.BoostHuntMonster(Core.IsMember ? "binky" : "doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
+        Core.CancelRegisteredQuests();
+
     }
 
     public void LTInfernalLegionBetrayal(int quant = 25000)

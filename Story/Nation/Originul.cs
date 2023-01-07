@@ -41,16 +41,12 @@ public class Originul_Story
         // Champion Usurper
         Story.KillQuest(7888, "Originul", "Fiend Champion");
         // Break their Muti-kneecaps
-        Core.EnsureAccept(7889);
-        Core.Join("Originul", "r10", "Top");
-        while (!Bot.ShouldExit && !Bot.Quests.CanComplete(7889))
+        if (!Story.QuestProgression(7889))
         {
-            Bot.Kill.Monster("Bloodfiend");
-            Bot.Kill.Monster("Dreadfiend");
+            Core.EnsureAccept(7889);
+            Core.KillMonster("Originul", "r5", "Left", "Bloodfiend");
+            Core.EnsureComplete(7889);
         }
-        Core.EnsureComplete(7889);
-
         Core.Logger("Questline completed.");
     }
-
 }
