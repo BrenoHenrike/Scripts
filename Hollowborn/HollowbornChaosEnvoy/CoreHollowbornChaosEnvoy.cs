@@ -84,8 +84,8 @@ public class CoreHollowbornChaosEnvoy
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, any: !getAll))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
-            Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
+            Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false, publicRoom: true);
+            Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false, publicRoom: true);
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
 
             Core.EquipClass(ClassType.Farm);
@@ -201,8 +201,8 @@ public class CoreHollowbornChaosEnvoy
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("chaoslab", "Chaos Artix", "Chaorrupted Light of Destiny", isTemp: false);
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 30, isTemp: false);
-            Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false);
+            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", 30, isTemp: false, publicRoom: true);
+            Core.HuntMonster("chaoskraken", "Chaos Kraken", "Chaotic Invertebrae", 20, isTemp: false, publicRoom: true);
 
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
 

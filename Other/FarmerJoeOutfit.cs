@@ -20,6 +20,8 @@
 //cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
 //cs_include Scripts/Other/Classes/REP-based/Shaman.cs
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
+//cs_include Scripts/Other/Classes/ScarletSorceress.cs
+//cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
@@ -60,6 +62,7 @@ public class FarmerJoeStartingTheAcc
     public Shaman Shaman = new();
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
+    public ScarletSorceress SS = new();
     public EnchantedVictoryBladeWeapons EVBW = new();
     public Tutorial Tutorial = new();
     public DualChainSawKatanas DCSK = new();
@@ -168,6 +171,14 @@ public class FarmerJoeStartingTheAcc
         Core.EquipClass(ClassType.Farm);
         foreach (int level in new int[] { 45, 50, 55, 60, 65, 70, 75 })
         {
+            if (Bot.Player.Level >= 50)
+            {
+                DS.GetDSS();
+                Core.Equip("DragonSoul Shinobi");
+                SS.GetSSorc();
+                Core.SoloClass = "DragonSoul Shinobi";
+                Core.FarmClass = "Scarlet Sorceress";
+            }
             if (Bot.Player.Level < level)
             {
                 Farm.Experience(level);
@@ -193,9 +204,6 @@ public class FarmerJoeStartingTheAcc
         Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker", shopItemID: 15402);
         Adv.rankUpClass("Chaos Slayer Berserker");
         Core.Equip("Chaos Slayer Berserker");
-
-        // P4: DragonSoul Shinobi for Doomkitten
-        DS.GetDSS();
 
         // P5: Farm ArchPaladin
         Core.Logger("This will stall at Ultra Alteon, it is your job to unblock it");

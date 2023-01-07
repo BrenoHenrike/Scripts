@@ -70,7 +70,6 @@ public class TachyonMerge
                 case "Blue Overdrive":
                 case "Blue Powercell":
                 case "Blue Tachyon Trigger":
-                case "Tachyon Core Piece":
                 case "Blue Tachyon Grip":
                     if (!Core.CheckInventory("Orange Tachyon Blade"))
                         BuyAllMerge("Orange Tachyon Blade");
@@ -85,6 +84,7 @@ public class TachyonMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Tachyon Core Piece":
                 case "Orange Overdrive":
                 case "Orange Tachyon Grip":
                 case "Orange Tachyon Trigger":

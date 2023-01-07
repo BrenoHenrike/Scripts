@@ -86,14 +86,14 @@ public class ArchMageMatsArmy
 
         while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
         {
-            ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", log: false);
-            ArmyKillMonster("voidnightbane", "Enter", "Spawn", "Nightbane", "Insatiable Hunger", log: false);
-            ArmyKillMonster("dage", "Boss", "Right", "Dage the Evil", "Vital Exanima", log: false);
-            ArmyKillMonster("fireavatar", "r9", "Left", "Avatar Tyndarius", "Everlight Flame", log: false);
-            ArmyKillMonster("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", log: false);
-            ArmyKillMonster("theworld", "r9", "Left", "Encore Darkon", "Undying Resolve", log: false);
-            ArmyKillMonster("celestialpast", "r11a", "Left", "Azalith", "drop", log: false);
-            ArmyKillMonster("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", log: false);
+            ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
+            ArmyKillMonster("voidnightbane", "Enter", "Spawn", "Nightbane", "Insatiable Hunger", isTemp: false, log: false);
+            ArmyKillMonster("dage", "Boss", "Right", "Dage the Evil", "Vital Exanima", isTemp: false, log: false);
+            ArmyKillMonster("fireavatar", "r9", "Left", "Avatar Tyndarius", "Everlight Flame", isTemp: false, log: false);
+            ArmyKillMonster("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false, log: false);
+            ArmyKillMonster("theworld", "r9", "Left", "Encore Darkon", "Undying Resolve", isTemp: false, log: false);
+            ArmyKillMonster("celestialpast", "r11a", "Left", "Azalith", "The Divie Will", isTemp: false, log: false);
+            ArmyKillMonster("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false, log: false);
             ArmyKillMonster("archmage", "r2", "Right", "Prismata", "Elemental Binding", 250, isTemp: false, log: false);
         }
         Core.ConfigureAggro(false);

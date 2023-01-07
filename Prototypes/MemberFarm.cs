@@ -10,6 +10,7 @@
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
 //cs_include Scripts/Nation/Various/TarosManslayer.cs
 //cs_include Scripts/Nation/Various/TarosPrismaticManslayers.cs
+//cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrb[Mem].cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
@@ -40,12 +41,12 @@ public class MemberFarm
     public CoreStory Story = new();
     public CoreNation Nation = new();
     public CoreFriday13th C13F = new();
+    public CoreSDKA SDKA = new();
     public TrobbolierPet Trobbolier = new();
     public CoinCollectorSet CoinCollector = new();
     public TheLostKnightAndBackupBlade LostKnight = new();
     public DeadflyMerge Deadfly = new();
     public OdditiesMerge Oddities = new();
-    public CoreSDKA SDKA = new();
     public SpellRaiser SpellRaiser = new();
     public ArchfiendDragonEgg ArchfiendDragonPet = new();
     public DragonBladeofNulgath DBoN = new();
@@ -59,6 +60,7 @@ public class MemberFarm
     public TendurrrTheAssistantQuests Tendurr = new();
     public TarosPrismaticManslayers TarosItems = new();
     public GonnaGetchaMerge GonnaGetcha = new();
+    public EvolvedShadowOrb ShadowOrb = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -77,48 +79,79 @@ public class MemberFarm
             return;
         }
 
+        //Core Farm
         SDKA.DoAll();
-        Core.ToBank("Sepulchure's DoomKnight Armor");
+        Core.ToBank(SDKA.SDKAItems);
 
-        DBoN.GetDragonBlade();
-        Core.ToBank("DragonBlade of Nulgath");
+        DragonBlade();
+        Core.ToBank("DragonBlade of Nulgath", "Legion DragonBlade of Nulgath", "Ebony DragonBlade of Nulgath", "Dual DragonBlades of Nulgath");
 
+        //Class
         ChronoAssassin.GetChronoAss();
         Core.ToBank("Chrono Assassin");
 
         LegendaryElementalWarrior.GetLEW();
         Core.ToBank("Legendary Elemental Warrior");
 
+        //Nation Item
         TarosItems.TemptationTest();
         Core.ToBank("Taro's Prismatic Manslayer", "Taro's Dual Prismatic Manslayers", "Taro's BattleBlade");
 
         ArchfiendDragonPet.GetAFDE();
         Core.ToBank("ArchFiend Baby Dragon Pet");
 
+        ShadowOrb.GetEvolvedShadowOrb();
+        Core.ToBank("Evolved Shadow Orb");
+
+        Tendurr.TendurrItems();
+        Core.ToBank(Tendurr.Rewards);
+
+        //Evolved Orb Item Quest (Need ACs for this quest)
+
+        Core.ToBank(Nation.bagDrops);
+        
+        //Free AC Items on Member quest/shop
         CoinCollector.GetItems();
-        DualWield();
+        BabyDragonOfAwe();
         FireWar();
         CruxVIPWeapon();
         DeepForestItems();
-        Tendurr.TendurrItems();
-        Core.ToBank(Nation.bagDrops);
-        Core.ToBank(Tendurr.Rewards);
+        DualWield();
+        
+        //Free AC Items on Member Area
         HuntingMonster();
         SpellRaiser.GetAll();
         LostKnight.GetAll();
         Trobbolier.GetAll();
-        DeathKnight.BuyAllMerge();
-        Tachyon.BuyAllMerge();
-        Deadfly.BuyAllMerge();
-        GonnaGetcha.BuyAllMerge();
-        OdditiesMergeShop();
-        //Dark Orb Quest (Need ACs for this quest)
+
+        //MergeShops - not working until find efficient method
+        TachyonMerge();
+        BoneTowerMerge();
+        //Deadfly.BuyAllMerge();
+        //GonnaGetcha.BuyAllMerge();
+        //OdditiesMergeShop();
     }
 
 
+    public void DragonBlade()
+    {
+        if (!Core.CheckInventory("DragonBlade of Nulgath", toInv: false))
+        {
+            if (Core.CheckInventory("Ebony DragonBlade of Nulgath", toInv: false)
+            || Core.CheckInventory("Legion DragonBlade of Nulgath", toInv: false)
+            || Core.CheckInventory("Dual DragonBlades of Nulgath", toInv: false))
+            {
+                Core.Logger("You already have DBoN but it's not in your inventory/bank, please check your buyback menu");
+                return;
+            }
+        }
+
+        DBoN.GetDragonBlade();
+    }
+
     public void CruxVIPWeapon()
     {
-        if (Core.CheckInventory("Darkwave Khopesh"))
+        if (Core.CheckInventory("Darkwave Khopesh", toInv: false))
         {
             Core.ToBank("Darkwave Khopesh");
             return;
@@ -140,7 +173,7 @@ public class MemberFarm
 
     public void FireWar()
     {
-        if (Core.CheckInventory("Ignited Guardian's Accoutrements"))
+        if (Core.CheckInventory("Ignited Guardian's Accoutrements", toInv: false))
         {
             Core.ToBank("Ignited Guardian's Accoutrements");
             return;
@@ -169,7 +202,7 @@ public class MemberFarm
     {
         QOM.TheBook();
 
-        if (!Core.CheckInventory("Polished Necrotic Blade of Chaos"))
+        if (!Core.CheckInventory("Polished Necrotic Blade of Chaos", toInv: false))
         {
             Core.BuyItem("castleundead", 45, "Necrotic Blade of Chaos");
             Adv.BuyItem("deepforest", 1999, "Gold Voucher 500k", 4);
@@ -177,25 +210,13 @@ public class MemberFarm
         }
         Core.ToBank("Polished Necrotic Blade of Chaos");
 
-        if (!Core.CheckInventory("Polished Dragon Sword of Chaos"))
+        if (!Core.CheckInventory("Polished Dragon Sword of Chaos", toInv: false))
         {
             Core.BuyItem("castleundead", 45, "Dragon Sword of Chaos");
             Adv.BuyItem("deepforest", 1999, "Gold Voucher 500k", 4);
             Core.BuyItem("deepforest", 1999, "Polished Dragon Sword of Chaos");
         }
         Core.ToBank("Polished Dragon Sword of Chaos");
-    }
-
-
-    public void OdditiesMergeShop()
-    {
-        C13F.Oddities();
-
-        Oddities.MergeShopFabyo("all");
-        Oddities.MergeShopOddities("all");
-
-        Core.ToBank(Oddities.MergeShop1Items);
-        Core.ToBank(Oddities.MergeShop2Items);
     }
 
 
@@ -206,7 +227,7 @@ public class MemberFarm
         Bot.Sleep(1500);
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
         {
-            Core.Logger("Golden Candle not found - stopping bot.", messageBox: true);
+            Core.Logger("Golden Candle not found - skip dual wield script.");
             return;
         }
 
@@ -220,9 +241,9 @@ public class MemberFarm
         }
 
         //Boom Went The Dynamite
-        if (!Core.CheckInventory("Dual Boom Went The Dynamite"))
+        if (!Core.CheckInventory("Dual Boom Went The Dynamite", toInv: false))
         {
-            if (!Core.CheckInventory("Boom Went The Dynamite", toInv: false))
+            if (!Core.CheckInventory("Boom Went The Dynamite"))
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("banished", "Desterrat Moya", "Boom Went The Dynamite", isTemp: false);
@@ -232,9 +253,9 @@ public class MemberFarm
         Core.ToBank("Dual Boom Went The Dynamite");
 
         //Unarmed
-        if (!Core.CheckInventory("Dual Unarmed"))
+        if (!Core.CheckInventory("Dual Unarmed", toInv: false))
         {
-            if (!Core.CheckInventory("Unarmed", toInv: false))
+            if (!Core.CheckInventory("Unarmed"))
             {
                 Adv.BuyItem(Bot.Map.Name, 1536, "Unarmed");
             }
@@ -243,9 +264,9 @@ public class MemberFarm
         Core.ToBank("Dual Unarmed");
 
         //Leviasea Sword
-        if (!Core.CheckInventory("Dual Leviasea Sword"))
+        if (!Core.CheckInventory("Dual Leviasea Sword", toInv: false))
         {
-            if (!Core.CheckInventory("Leviasea Sword", toInv: false))
+            if (!Core.CheckInventory("Leviasea Sword"))
             {
                 Adv.BuyItem("yulgar", 69, "Leviasea Sword");
             }
@@ -254,9 +275,9 @@ public class MemberFarm
         Core.ToBank("Dual Leviasea Sword");
 
         //Ddog Sea Serpent Sword
-        if (!Core.CheckInventory("Dual Ddog Sea Serpent Sword"))
+        if (!Core.CheckInventory("Dual Ddog Sea Serpent Sword", toInv: false))
         {
-            if (!Core.CheckInventory("Ddog Sea Serpent Sword", toInv: false))
+            if (!Core.CheckInventory("Ddog Sea Serpent Sword"))
             {
                 Core.EnsureAccept(554);
                 Nation.FarmUni13(1);
@@ -268,7 +289,7 @@ public class MemberFarm
         Core.ToBank("Dual Ddog Sea Serpent Sword");
 
         //Soulreaper of Nulgath
-        if (!Core.CheckInventory("Dual Soulreaper of Nulgath"))
+        if (!Core.CheckInventory("Dual Soulreaper of Nulgath", toInv: false))
         {
             if (!Core.CheckInventory("Soulreaper of Nulgath"))
             {
@@ -296,7 +317,7 @@ public class MemberFarm
         Core.ToBank("Dual Soulreaper of Nulgath");
 
         //Godly Mace of the Ancients
-        if (!Core.CheckInventory("Dual Godly Mace of the Ancients"))
+        if (!Core.CheckInventory("Dual Godly Mace of the Ancients", toInv: false))
         {
             if (!Core.CheckInventory("Godly Mace of the Ancients"))
             {
@@ -307,9 +328,9 @@ public class MemberFarm
         Core.ToBank("Dual Godly Mace of the Ancients");
 
         //Balor's Cruelty
-        if (!Core.CheckInventory("Dual Balor's Cruelty"))
+        if (!Core.CheckInventory("Dual Balor's Cruelty", toInv: false))
         {
-            if (!Core.CheckInventory("Balor's Cruelty", toInv: false))
+            if (!Core.CheckInventory("Balor's Cruelty"))
             {
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("twilight", "Abaddon", "Balor's Cruelty", isTemp: false);
@@ -319,7 +340,7 @@ public class MemberFarm
         Core.ToBank("Dual Balor's Cruelty");
 
         //Abaddon's Terror
-        if (!Core.CheckInventory("Dual Abaddon's Terrors"))
+        if (!Core.CheckInventory("Dual Abaddon's Terrors", toInv: false))
         {
             if (!Core.CheckInventory("Abaddon's Terror"))
             {
@@ -331,7 +352,7 @@ public class MemberFarm
         Core.ToBank("Dual Abaddon's Terrors");
 
         //Mighty Sword Of The Dragons
-        if (!Core.CheckInventory("Dual Mighty Sword Of The Dragons"))
+        if (!Core.CheckInventory("Dual Mighty Sword Of The Dragons", toInv: false))
         {
             if (!Core.CheckInventory("Mighty Sword Of The Dragons"))
             {
@@ -352,7 +373,7 @@ public class MemberFarm
         Core.ToBank("Dual Mighty Sword Of The Dragons");
 
         //Frostbite
-        if (!Core.CheckInventory("Dual Frostbite"))
+        if (!Core.CheckInventory("Dual Frostbite", toInv: false))
         {
             if (!Core.CheckInventory("Frostbite"))
             {
@@ -364,7 +385,7 @@ public class MemberFarm
         Core.ToBank("Dual Frostbite");
 
         //DragonBlade of Nulgath
-        if (!Core.CheckInventory("Dual DragonBlades of Nulgath"))
+        if (!Core.CheckInventory("Dual DragonBlades of Nulgath", toInv: false))
         {
             if (!Core.CheckInventory("DragonBlade of Nulgath"))
             {
@@ -376,6 +397,27 @@ public class MemberFarm
         Core.ToBank("Dual DragonBlades of Nulgath");
 
         //Phoenix Blade of Nulgath (Pseudo-Rare Item)
+    }
+
+    public void BabyDragonOfAwe()
+    {
+        if (Core.CheckInventory("Baby Dragon of Awe", toInv: false))
+        {
+            Core.ToBank("Baby Dragon of Awe");
+            return;
+        }
+
+        if (!Core.CheckInventory("Guardian Patent"))
+            Core.BuyItem("museum", 53, "Guardian Patent");
+        Bot.Sleep(1500);
+        if (!Core.CheckInventory("Guardian Patent"))
+        {
+            Core.Logger("Guardian Patent not found - skip Baby Dragon of Awe script");
+            return;
+        }
+
+        Core.BuyItem("battleon", 10, "Baby Red Dragon");
+        Core.BuyItem("museum", 632, "Baby Dragon of Awe");
     }
 
     public void HuntingMonster()
@@ -410,4 +452,63 @@ public class MemberFarm
             Core.ToBank(item);
         }
     }
+    
+    public void OdditiesMergeShop()
+    {
+        C13F.Oddities();
+
+        Oddities.MergeShopFabyo("all");
+        Oddities.MergeShopOddities("all");
+
+        Core.ToBank(Oddities.MergeShop1Items);
+        Core.ToBank(Oddities.MergeShop2Items);
+    }
+
+    public void TachyonMerge()
+    {
+        if (Core.CheckInventory(TachyonShop, toInv: false))
+            return;
+
+        Bot.Drops.Add(TachyonShop);
+        foreach (string TachyonItem in TachyonShop)
+        {
+            Tachyon.BuyAllMerge(TachyonItem);
+            Core.ToBank(TachyonItem);
+        }
+    }
+
+    public void BoneTowerMerge()
+    {
+        if (Core.CheckInventory(BoneTowerShop, toInv: false))
+            return;
+    
+        Bot.Drops.Add(BoneTowerShop);
+        foreach (string BoneTowerItem in BoneTowerShop)
+        {
+            DeathKnight.BuyAllMerge(BoneTowerItem);
+            Core.ToBank(BoneTowerItem);
+        }
+    }
+
+    private string[] TachyonShop =
+    {
+        "Orange Tachyon Blade",
+        "Blue Tachyon Blade",
+        "Chrono Assassin Armor",
+        "Dual Tachyon Blades",
+    };
+
+    private string[] BoneTowerShop =
+    {
+        "DeathKnight Lord",
+        "DeathKnight's Blade",
+        "DeathKnight Helm",
+        "Silver DeathKnight Lord",
+        "Silver DeathKnight's Blade",
+        "Silver DeathKnight Helm", 
+        "Golden DeathKnight Lord",
+        "Golden DeathKnight's Blade",
+        "Golden DeathKnight Helm",
+        "DeathKnight Lord Cape"
+    };
 }
