@@ -48,9 +48,24 @@ public class WillpowerExtraction
             uni19(1);
 
             Core.EquipClass(ClassType.Farm);
-            Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 5);
-            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 5);
-            Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 5);
+
+            if (!Core.CheckInventory("Necrot", 5))
+            {
+                Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 10);
+                Bot.Wait.ForItemBuy();
+            }
+            
+            if (!Core.CheckInventory("Chaoroot", 5))
+            {
+                Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 10);
+                Bot.Wait.ForItemBuy();
+            }
+
+            if (!Core.CheckInventory("Doomatter", 5))
+            {
+                Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 10);
+                Bot.Wait.ForItemBuy();
+            }
 
             if (!Core.CheckInventory("Mortality Cape of Revontheus"))
             {
@@ -102,9 +117,7 @@ public class WillpowerExtraction
 
         if (Core.IsMember)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Swindle", 6))
-                Nation.SwindleReturn();
-            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+            Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
         }
         else Nation.Supplies("Unidentified 19");
     }
