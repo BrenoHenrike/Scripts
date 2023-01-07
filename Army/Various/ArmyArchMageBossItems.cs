@@ -92,7 +92,7 @@ public class ArchMageMatsArmy
             ArmyKillMonster("fireavatar", "r9", "Left", "Avatar Tyndarius", "Everlight Flame", isTemp: false, log: false);
             ArmyKillMonster("tercessuinotlim", "Boss2", "Right", "Nulgath", "The Mortal Coil", isTemp: false, log: false);
             ArmyKillMonster("theworld", "r9", "Left", "Encore Darkon", "Undying Resolve", isTemp: false, log: false);
-            ArmyKillMonster("celestialpast", "r11a", "Left", "Azalith", "The Divie Will", isTemp: false, log: false);
+            ArmyKillMonster("celestialpast", "r11a", "Left", "Azalith", "The Divine Will", isTemp: false, log: false);
             ArmyKillMonster("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false, log: false);
             ArmyKillMonster("archmage", "r2", "Right", "Prismata", "Elemental Binding", 250, isTemp: false, log: false);
         }
