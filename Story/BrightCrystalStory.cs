@@ -63,7 +63,7 @@ public class BrightCrystalStory
         if (!Story.QuestProgression(4963))
         {
             Core.EnsureAccept(4963);
-            Core.HuntMonsterMapID("dreamforest", 2624, "Prize Ticket", 10);
+            Core.HuntMonsterMapID("dreamforest", 19, "Prize Ticket", 10);
             Core.EnsureComplete(4963);
         }
         //Story.KillQuest(4963, "dreamforest", "Balloons");
