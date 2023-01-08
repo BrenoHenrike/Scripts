@@ -34,7 +34,7 @@ public class NorthlandsMonk
         Core.AddDrop(52413);
 
         Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit && !Core.CheckInventory("DNorthlands Monk"))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Northlands Monk"))
             Core.KillMonster("frozensoul", "r4", "Left", "FrozenSoul Queen", "Northlands Monk", isTemp: false);
 
         if (rankUpClass)
