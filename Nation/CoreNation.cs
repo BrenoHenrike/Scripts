@@ -1185,53 +1185,70 @@ public class CoreNation
     /// </summary>
     public void GemStoneReceiptOfNulgath(int quant = 10)
     {
-        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        if (!Core.IsMember)
         {
-            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            Core.Logger("This quest membership to be able to accept it");
             return;
         }
+
         if (Core.CheckInventory("Gemstone Receipt of Nulgath", quant))
             return;
-        Core.AddDrop("Gemstone Receipt of Nulgath");
+
+        Core.AddDrop("Gemstone Receipt of Nulgath", "Receipt of Nulgath", "Gemstone Receipt of Nulgath");
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Gemstone Receipt of Nulgath", quant))
         {
-            //Demanding Approval from Nulgath [Member] 4917
+            //Demanding Approval from Nulgath [Member] 4917 Receipt of Nulgath
             Core.EnsureAccept(4917);
+
             FarmUni13(3);
+
+            Farm.VampireREP();
+
+            //Receipt of Nulgath [Member] 4924
             while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath"))
             {
-                //Receipt of Nulgath [Member] 4924
-                Farm.VampireREP();
                 Core.EnsureAccept(4924);
-                Core.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
-                EssenceofNulgath(10);
+
                 ApprovalAndFavor(0, 100);
-                Core.HuntMonster("Extinction", "Control Panel", "Coal", 15, isTemp: false);
-                Core.RegisterQuests(Core.IsMember ? 4798 : 4797);
-                while (!Bot.ShouldExit && !Core.CheckInventory("Dwobo Coin", 10))
-                {
-                    if (!Core.IsMember)
-                        Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 10);
-                    else Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 8);
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("Extinction", "Control Panel", "Coal", 15, isTemp: false, log: false);
+                DwoboCoin(10);
+                EssenceofNulgath(10);
+                Core.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
 
-                    if (!Core.IsMember)
-                        Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 7);
-                    else Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 5);
-
-                    Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
-
-                    Bot.Wait.ForPickup("Dwobo Coin");
-                }
-                Core.CancelRegisteredQuests();
                 Core.EnsureComplete(4924);
+                Bot.Wait.ForPickup("Receipt of Nulgath");
             }
+
             FarmVoucher(member: true);
             FarmVoucher(member: false);
             EssenceofNulgath(100);
             FarmTotemofNulgath(1);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", 5, isTemp: false);
+
             Core.EnsureComplete(4917);
+            Bot.Wait.ForPickup("Gemstone Receipt of Nulgath");
+            void DwoboCoin(int quant)
+            {
+                Core.RegisterQuests(Core.IsMember ? 4798 : 4797);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Dwobo Coin", quant))
+                {
+                    if (!Core.IsMember)
+                        Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 10, log: false);
+                    else Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 8, log: false);
+
+                    if (!Core.IsMember)
+                        Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 7, log: false);
+                    else Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 5, log: false);
+
+                    Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart", log: false);
+
+                    Bot.Wait.ForPickup("Dwobo Coin");
+                }
+                Core.CancelRegisteredQuests();
+            }
         }
     }
 
@@ -1409,9 +1426,13 @@ public class CoreNation
         if (Core.CheckInventory(item, quant))
             return;
 
+        #region Required items
+
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
         GemStoneReceiptOfNulgath(1);
         Supplies("Unidentified 5");
+
+        #endregion
 
         if (item != "Any")
             Core.AddDrop(item);
