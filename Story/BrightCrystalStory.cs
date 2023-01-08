@@ -60,7 +60,7 @@ public class BrightCrystalStory
         Story.KillQuest(4962, "dreamforest", new[] { "Acrobat", "Fire Dancer", "Elephant Trainer" });
 
         //Balloons 4963
-        Story.KillQuest(4963, "dreamforest", "Balloon");
+        Story.KillQuest(4963, "dreamforest", "Balloons");
 
         //Out of the Shadows 4964
         Story.KillQuest(4964, "dreamforest", new[] { "Living Shadow", "Dark Imp" });
