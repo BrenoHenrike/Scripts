@@ -1,4 +1,5 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
@@ -9,6 +10,7 @@ public class ArchFiendEnchantedOrbs
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
     public CoreHollowborn HB = new();
 
@@ -31,7 +33,7 @@ public class ArchFiendEnchantedOrbs
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
 
-        Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+        Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmUni13(1);
         Nation.FarmDiamondofNulgath(150);
         HB.FreshSouls(1, 100); // Also has the uni36
