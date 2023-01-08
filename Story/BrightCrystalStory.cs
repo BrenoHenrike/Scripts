@@ -50,8 +50,8 @@ public class BrightCrystalStory
         Story.MapItemQuest(4959, "dreamforest", 4332);
 
         //Trainers 4960
-        Story.MapItemQuest(4960, "dreamforest", 4333);
-        Story.MapItemQuest(4960, "dreamforest", 4334, 6);
+        Story.MapItemQuest(4960, "dreamforest", 4333, 6);
+        Story.MapItemQuest(4960, "dreamforest", 4334);
 
         //Tumblers 4961
         Story.KillQuest(4961, "dreamforest", "Acrobat");
