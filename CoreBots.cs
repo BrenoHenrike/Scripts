@@ -2040,14 +2040,37 @@ public class CoreBots
         {
             if (!Bot.Inventory.IsEquipped(item))
             {
-                if (CheckInventory(item))
+                if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
                 {
-                    Bot.Inventory.EquipItem(item);
+                    switch (_item.CategoryString.ToLower())
+                    {
+                        case "item": // Consumables
+                            dynamic dItem = new ExpandoObject();
+                            dItem.ItemID = _item.ID;
+                            dItem.sLink = Bot.Flash.GetGameObject<string>($"world.invTree.{_item.ID}.sLink");
+                            dItem.sES = _item.ItemGroup;
+                            dItem.sType = _item.CategoryString;
+                            dItem.sIcon = Bot.Flash.GetGameObject<string>($"world.invTree.{_item.ID}.sIcon");
+                            dItem.sFile = Bot.Flash.GetGameObject<string>($"world.invTree.{_item.ID}.sFile");
+                            dItem.bUpg = _item.Upgrade ? 1 : 0;
+                            dItem.sDesc = _item.Description;
+                            dItem.bEquip = _item.Equipped ? 1 : 0;
+                            dItem.sName = _item.Name;
+                            dItem.sMeta = _item.Meta;
+
+                            Bot.Flash.CallGameFunction("toggleItemEquip", dItem);
+                            break;
+
+                        default:
+                            Bot.Inventory.EquipItem(item);
+                            break;
+                    }
+
                     Bot.Wait.ForItemEquip(item);
                     if (logEquip)
-                        Logger($"Equipped {item}");
+                        Logger($"Equipping {(_item.Equipped ? String.Empty : "failed: ")} {item}");
                 }
-                else Logger($"{item} not found");
+                else Logger($"\"{item}\" not found");
             }
         }
     }
@@ -3159,7 +3182,7 @@ public class CoreBots
             return false;
         }
         output = (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $".: fail").Split(": ")[1];
-        return output != "fail";
+        return output != "fail" && !String.IsNullOrWhiteSpace(output) && !String.IsNullOrWhiteSpace(output);
     }
     public bool CBOBool(string Name, out bool output)
     {
