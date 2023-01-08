@@ -73,6 +73,7 @@
 //cs_include Scripts/Story/Bludrut.cs
 //cs_include Scripts/Story/BoneBreak.cs
 //cs_include Scripts/Story/Borgars.cs
+//cs_include Scripts/Story/BrightCrystalStory.cs
 
 //cs_include Scripts/Story/CastleOfGlass.cs
 //cs_include Scripts/Story/CastleTunnels.cs
@@ -270,6 +271,7 @@ public class AllStories
     public Bludrut Bludrut = new();
     public BoneBreak BoneBreak = new();
     public Borgars Borgars = new();
+    public BrightCrystalStory BrightCrystal = new();
 
     public CastleOfGlass CastleOfGlass = new();
     public CastleTunnels CastleTunnels = new();
@@ -572,6 +574,9 @@ public class AllStories
 
         Borgars.StoryLine();
         Core.Logger($"Story: Borgars - Complete");
+
+        BrightCrystal.CrystalBrightQuests();
+        Core.Logger($"Story: Bright Crystal - Complete");
 
 
         CastleOfGlass.StoryLine();
