@@ -25,13 +25,13 @@ public class NorthlandsMonk
         if (!Core.isSeasonalMapActive("frozensoul"))
             return;
 
-        if (Core.CheckInventory("Northlands Monk"))
+        if (Core.CheckInventory(52413))
         {
             Adv.rankUpClass("Northlands Monk");
             return;
         }
 
-        Core.AddDrop("Northlands Monk");
+        Core.AddDrop(52413);
 
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("DNorthlands Monk"))
@@ -40,7 +40,6 @@ public class NorthlandsMonk
         if (rankUpClass)
         {
             Adv.GearStore();
-            Core.Equip("Northlands Monk");
             Adv.rankUpClass("Northlands Monk");
             Adv.GearStore(true);
         }
