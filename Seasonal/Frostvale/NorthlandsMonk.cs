@@ -22,7 +22,7 @@ public class NorthlandsMonk
 
     public void GetNlMonk(bool rankUpClass = true)
     {
-        if (!Core.isSeasonalMapActive("fozensoul"))
+        if (!Core.isSeasonalMapActive("frozensoul"))
             return;
 
         if (Core.CheckInventory("Northlands Monk"))
@@ -35,7 +35,7 @@ public class NorthlandsMonk
 
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("DNorthlands Monk"))
-            Core.HuntMonster("frozensoul", "FrozenSoul Queen", "PeNorthlands Monk", isTemp: false);
+            Core.KillMonster("frozensoul", "r4", "Left", "FrozenSoul Queen", "Northlands Monk", isTemp: false);
 
         if (rankUpClass)
         {
