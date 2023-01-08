@@ -1996,13 +1996,18 @@ public class CoreBots
             case ClassType.Farm:
                 if (!usingFarmGeneric)
                 {
+                    if (!CheckInventory(FarmClass) || !Bot.Inventory.TryGetItem(FarmClass, out var item) || item == null)
+                    {
+                        Logger("You do not own " + SoloClass);
+                        break;
+                    }
                     if (FarmGearOn)
                     {
                         Bot.Sleep(ActionDelay);
                         Equip(FarmGear);
                     }
 
-                    Equip(FarmClass);
+                    Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == FarmClass.Trim().ToLower() && x.CategoryString == "Class").ID);
                     Bot.Skills.StartAdvanced(FarmClass, false, FarmUseMode);
                     logEquip = true;
                     return;
@@ -2012,13 +2017,17 @@ public class CoreBots
             case ClassType.Solo:
                 if (!usingSoloGeneric)
                 {
+                    if (!CheckInventory(SoloClass))
+                    {
+                        Logger("You do not own " + SoloClass);
+                        break;
+                    }
                     if (SoloGearOn)
                     {
                         Bot.Sleep(ActionDelay);
                         Equip(SoloGear);
                     }
-
-                    Equip(SoloClass);
+                    Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == SoloClass.Trim().ToLower() && x.CategoryString == "Class").ID);
                     Bot.Skills.StartAdvanced(SoloClass, false, SoloUseMode);
                     logEquip = true;
                     return;
@@ -2042,37 +2051,62 @@ public class CoreBots
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
                 {
-                    switch (_item.CategoryString.ToLower())
-                    {
-                        case "item": // Consumables
-                            dynamic dItem = new ExpandoObject();
-                            dItem.ItemID = _item.ID;
-                            dItem.sLink = Bot.Flash.GetGameObject<string>($"world.invTree.{_item.ID}.sLink");
-                            dItem.sES = _item.ItemGroup;
-                            dItem.sType = _item.CategoryString;
-                            dItem.sIcon = Bot.Flash.GetGameObject<string>($"world.invTree.{_item.ID}.sIcon");
-                            dItem.sFile = Bot.Flash.GetGameObject<string>($"world.invTree.{_item.ID}.sFile");
-                            dItem.bUpg = _item.Upgrade ? 1 : 0;
-                            dItem.sDesc = _item.Description;
-                            dItem.bEquip = _item.Equipped ? 1 : 0;
-                            dItem.sName = _item.Name;
-                            dItem.sMeta = _item.Meta;
-
-                            Bot.Flash.CallGameFunction("toggleItemEquip", dItem);
-                            break;
-
-                        default:
-                            Bot.Inventory.EquipItem(item);
-                            break;
-                    }
-
-                    Bot.Wait.ForItemEquip(item);
-                    if (logEquip)
-                        Logger($"Equipping {(_item.Equipped ? String.Empty : "failed: ")} {item}");
+                    _Equip(_item);
                 }
                 else Logger($"\"{item}\" not found");
             }
         }
+    }
+
+    public void Equip(params int[] gear)
+    {
+        if (gear == null || gear.Length == 0)
+            return;
+
+        JumpWait();
+
+        foreach (int item in gear)
+        {
+            if (!Bot.Inventory.IsEquipped(item))
+            {
+                if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
+                {
+                    _Equip(_item);
+                }
+                else Logger($"\"{item}\" not found");
+            }
+        }
+    }
+
+    private void _Equip(InventoryItem item)
+    {
+        switch (item.CategoryString.ToLower())
+        {
+            case "item": // Consumables
+                dynamic dItem = new ExpandoObject();
+                dItem.ItemID = item.ID;
+                dItem.sLink = Bot.Flash.GetGameObject<string>($"world.invTree.{item.ID}.sLink");
+                dItem.sES = item.ItemGroup;
+                dItem.sType = item.CategoryString;
+                dItem.sIcon = Bot.Flash.GetGameObject<string>($"world.invTree.{item.ID}.sIcon");
+                dItem.sFile = Bot.Flash.GetGameObject<string>($"world.invTree.{item.ID}.sFile");
+                dItem.bUpg = item.Upgrade ? 1 : 0;
+                dItem.sDesc = item.Description;
+                dItem.bEquip = item.Equipped ? 1 : 0;
+                dItem.sName = item.Name;
+                dItem.sMeta = item.Meta;
+
+                Bot.Flash.CallGameFunction("toggleItemEquip", dItem);
+                break;
+
+            default:
+                Bot.Inventory.EquipItem(item.ID);
+                break;
+        }
+
+        Bot.Wait.ForItemEquip(item.ID);
+        if (logEquip)
+            Logger($"Equipping {(item.Equipped ? String.Empty : "failed: ")} {item.Name}");
     }
 
     public void EquipCached()
