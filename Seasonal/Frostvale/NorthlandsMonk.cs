@@ -2,8 +2,6 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Yokai.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
 public class NorthlandsMonk
@@ -13,7 +11,6 @@ public class NorthlandsMonk
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new CoreAdvanced();
-    public YokaiQuests Yokai = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
