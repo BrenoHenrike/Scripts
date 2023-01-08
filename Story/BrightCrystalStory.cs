@@ -19,7 +19,7 @@ public class BrightCrystalStory
 
     public void CrystalBrightQuests()
     {
-        if (Core.isCompletedBefore(4959))
+        if (Core.isCompletedBefore(4967))
             return;
      
         Story.PreLoad(this);
