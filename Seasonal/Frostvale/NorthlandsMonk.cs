@@ -22,6 +22,9 @@ public class NorthlandsMonk
 
     public void GetNlMonk(bool rankUpClass = true)
     {
+        if (!Core.isSeasonalMapActive("fozensoul"))
+            return;
+
         if (Core.CheckInventory("Northlands Monk"))
         {
             Adv.rankUpClass("Northlands Monk");
