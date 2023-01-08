@@ -127,6 +127,13 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(31, 12), "deerhunt", "Zweinichthirsch", "Spirit Of Frostval", "Frostval Holly + Candle");
 
             #endregion
+			
+			#region January?
+			
+			GetGift(AvailableUntil(31, 1), "newyear", "2023 Ball", "Chaotic Chrono Eye", "New Year Dawning");
+			GetGift(AvailableUntil(31, 1), "timeretaliate", "Retrograde Maw", "Nascent ChronoWeaver's Clock");
+			
+			#endregion
 
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
@@ -196,8 +203,8 @@ public class CurrentDailyGifts
     }
 
 
-    private DateTime AvailableUntil(int Day, int Month, int Year = 2022) => new(Year, Month, Day, 07, 00, 00, DateTimeKind.Utc);
-    private DateTime AvailableUntil(int Day, Month Month, int Year = 2022) => new(Year, (int)Month, Day, 07, 00, 00, DateTimeKind.Utc);
+    private DateTime AvailableUntil(int Day, int Month, int Year = 2023) => new(Year, Month, Day, 07, 00, 00, DateTimeKind.Utc);
+    private DateTime AvailableUntil(int Day, Month Month, int Year = 2023) => new(Year, (int)Month, Day, 07, 00, 00, DateTimeKind.Utc);
     private DateTime Permanent = DateTime.MaxValue;
     private DateTimeFormatInfo formatInfo = CultureInfo.CurrentUICulture.DateTimeFormat;
     private DailyGiftsMode mode = DailyGiftsMode.All_Chronological;
