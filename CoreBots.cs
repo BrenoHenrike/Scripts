@@ -1629,6 +1629,7 @@ public class CoreBots
                     "Blaze Binder",
                     "DeathKnight",
                     "DragonSoul Shinobi",
+                    "Legion Revenant",
                 };
 
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))

@@ -711,9 +711,11 @@ public class CoreDoomwood
         //7628    Battle the Dummies
         if (!Story.QuestProgression(7628))
         {
+            Core.Logger("trying to fix this broke map.");
+            Bot.Map.Reload();
             Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7628);
-            Core.HuntMonsterMapID("stonewooddeep", 4 | 5, "Target Dummy Slain", 6);
+            Core.HuntMonsterMapID("stonewooddeep", 5, "Target Dummy Slain", 6);
             Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7628);
         }

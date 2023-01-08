@@ -46,6 +46,7 @@ public class Frostvale
         Snowview();
         SnowviewRace();
         DeerHunt();
+        BowJangles();
     }
 
     public void IceCave()
@@ -939,7 +940,7 @@ public class Frostvale
         Story.MapItemQuest(8425, "deerhunt", 9373, 4);
 
         // 8426 Lair Investigated
-        Story.MapItemQuest(8426, "deerhunt", new[] {9374, 9375});
+        Story.MapItemQuest(8426, "deerhunt", new[] { 9374, 9375 });
 
         // 8427 Fight or Flight or Freeze
         Story.KillQuest(8427, "deerhunt", "Frightened Owl");
@@ -959,6 +960,46 @@ public class Frostvale
         // 8432 Cries Investigated 
         Story.MapItemQuest(8432, "deerhunt", 9377);
 
+    }
+
+    public void BowJangles()
+    {
+        if (Core.isCompletedBefore(7828) || !Core.isSeasonalMapActive("frostvale"))
+            return;
+
+        Story.PreLoad(this);
+        Core.EquipClass(ClassType.Solo);
+
+        //Beauty Comes At a Price (7819)
+        Story.KillQuest(7819, "towerofmirrors", "Scarletta");
+
+        //Bloody Skulls (7820)
+        Story.KillQuest(7820, "epicvordred", "Ultra Vordred");
+        
+        //Making The World a Cleaner Place (7821)
+        Story.KillQuest(7821, "palace", "Misery Eel");
+
+        //Big and Deadly (7822)
+        Bot.Quests.UpdateQuest(4361);
+        Story.KillQuest(7822, "treetitanbattle", "Dakka the Dire Dragon");
+
+        //A Hunting We Will Go (7823)
+        Story.KillQuest(7823, "darkoviaforest", "Lich Of The Stone");
+
+        //Returning to Oblivion (7824)
+        Story.KillQuest(7824, "underworld", new[] { "Dreadfiend of Nulgath", "Infernalfiend", "Bloodfiend" });
+
+        //Both Sides are Guilty (7825)
+        Story.KillQuest(7825, "judgement", new[] { "Aeacus", "Minos", "Rhadamanthys" });
+
+        //Bait and Switch (7826)
+        Story.KillQuest(7826, "doomvault", "Princess Angler");
+
+        //What Chaos Touches, We Destroy (7827)
+        Story.KillQuest(7827, "orecavern", "Naga Baas");
+
+        //A Finale to Remember (7828)
+        Story.KillQuest(7828, "stormtemple", "Chaos Lord Lionfang");
     }
 
 
