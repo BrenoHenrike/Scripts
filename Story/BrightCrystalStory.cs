@@ -54,7 +54,7 @@ public class BrightCrystalStory
         Story.MapItemQuest(4960, "dreamforest", 4334);
 
         //Tumblers 4961
-        Story.KillQuest(4961, "dreamforest", "Acrobat");
+        Story.KillQuest(4961, "dreamforest", new[] { "Acrobat", "Acrobat" });
 
         //Head to the Midway 4962
         Story.KillQuest(4962, "dreamforest", new[] { "Acrobat", "Fire Dancer", "Elephant Trainer" });
