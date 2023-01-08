@@ -28,12 +28,9 @@ public class BrightCrystalStory
         Story.MapItemQuest(4953, "dreamforest", 4326, 5);        
     
         //De-Pesting 4954
-        if (!Story.QuestProgression(4954))
-        {
-            Core.EquipClass(ClassType.Farm);
-            Story.KillQuest(4954, "dreamforest", new[] { "Green Rat", "Crow"});
-        }
-
+        Core.EquipClass(ClassType.Farm);
+        Story.KillQuest(4954, "dreamforest", new[] { "Green Rat", "Crow"});
+       
         //Earning That Guest Pass 4955
         Story.MapItemQuest(4955, "dreamforest", 4327, 4);
         Story.MapItemQuest(4955, "dreamforest", 4328, 3);
@@ -46,12 +43,9 @@ public class BrightCrystalStory
         Story.MapItemQuest(4957, "dreamforest", 4331);
 
         //Give me a Ticket 4958
-        if (!Story.QuestProgression(4958))
-        {
-            Core.EquipClass(ClassType.Farm);
-            Story.KillQuest(4958, "dreamforest", "Crow");
-        }
-
+        Core.EquipClass(ClassType.Farm);
+        Story.KillQuest(4958, "dreamforest", "Crow");
+       
         //For an Elephant Ride? 4959
         Story.MapItemQuest(4959, "dreamforest", 4332);
 
