@@ -57,13 +57,13 @@ public class WillpowerExtraction
             
             if (!Core.CheckInventory("Chaoroot", 5))
             {
-                Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 10);
+                Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 10);
                 Bot.Wait.ForItemBuy();
             }
 
             if (!Core.CheckInventory("Doomatter", 5))
             {
-                Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 10);
+                Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 10);
                 Bot.Wait.ForItemBuy();
             }
 
