@@ -22,7 +22,7 @@ public class TimeIsMoney
         string[] Rewards = (Core.EnsureLoad(6185).Rewards.Select(i => i.Name).ToArray());
         Core.AddDrop(Rewards);
 
-        if (Core.CheckInventory("Bounty Hunter Blade Pet"))
+        if (!Core.CheckInventory("Bounty Hunter Blade Pet"))
         {
             Core.Logger("You Don't Have \"Bounty Hunter Blade Pet\". Pet is required for doing the quests.");
             return;
