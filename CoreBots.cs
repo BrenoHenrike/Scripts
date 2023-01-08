@@ -60,7 +60,7 @@ public class CoreBots
     // [Can Change] Whether you wish to equip solo equipment
     public bool SoloGearOn { get; set; } = true;
     // [Can Change] Names of your soloing equipment
-    public string[] SoloGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
+    public string[] SoloGear { get; set; } = Array.Empty<string>();
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
     // [Can Change] Mode of farming class, if it has multiple. 
@@ -68,7 +68,7 @@ public class CoreBots
     // [Can Change] Whether you wish to equip farm equipment
     public bool FarmGearOn { get; set; } = true;
     // [Can Change] Names of your farming equipment
-    public string[] FarmGear { get; set; } = { "Weapon", "Headpiece", "Cape" };
+    public string[] FarmGear { get; set; } = Array.Empty<string>();
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
@@ -230,11 +230,10 @@ public class CoreBots
             foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
                 EquipmentBeforeBot.Add(item.Name);
 
+            currentClass = ClassType.None;
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
-            if (disableClassSwap)
-                usingSoloGeneric = true;
-            EquipClass(ClassType.Solo);
+            EquipClass(disableClassSwap ? ClassType.None : ClassType.Solo);
 
             // Anti-lag option
             if (AntiLag)
@@ -1989,85 +1988,82 @@ public class CoreBots
         if (currentClass == classToUse && Bot.Skills.TimerRunning)
             return;
 
+        currentClass = classToUse;
+        logEquip = false;
+
         switch (classToUse)
         {
             case ClassType.Farm:
                 if (!usingFarmGeneric)
                 {
-                    if (FarmGearOn & Bot.Player.CurrentClass?.Name != FarmClass)
+                    if (FarmGearOn)
                     {
-                        logEquip = false;
                         Bot.Sleep(ActionDelay);
                         Equip(FarmGear);
-                        logEquip = true;
                     }
 
-                    int? class_id = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == FarmClass.ToLower().Trim() && i.Category == ItemCategory.Class)?.ID;
-                    if (class_id == null)
-                        Logger("Class not found", stopBot: true);
-                    Bot.Wait.ForItemEquip(class_id ?? 0);
-                    Bot.Skills.StartAdvanced(FarmClass, true, FarmUseMode);
-                    break;
+                    Equip(FarmClass);
+                    Bot.Skills.StartAdvanced(FarmClass, false, FarmUseMode);
+                    logEquip = true;
+                    return;
                 }
-                Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
                 break;
-            default:
+
+            case ClassType.Solo:
                 if (!usingSoloGeneric)
                 {
-                    if (SoloGearOn & Bot.Player.CurrentClass?.Name != SoloClass)
+                    if (SoloGearOn)
                     {
-                        logEquip = false;
                         Bot.Sleep(ActionDelay);
                         Equip(SoloGear);
-                        logEquip = true;
                     }
-                    int? class_id = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == SoloClass.ToLower().Trim() && i.Category == ItemCategory.Class)?.ID;
-                    if (class_id == null)
-                        Logger("Class not found", stopBot: true);
-                    Bot.Wait.ForItemEquip(class_id ?? 0);
 
-                    Bot.Skills.StartAdvanced(SoloClass, true, SoloUseMode);
-                    break;
+                    Equip(SoloClass);
+                    Bot.Skills.StartAdvanced(SoloClass, false, SoloUseMode);
+                    logEquip = true;
+                    return;
                 }
-                Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
                 break;
         }
-        currentClass = classToUse;
+        Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
     }
     private bool logEquip = true;
 
     public void Equip(params string[] gear)
     {
-        if (gear == null)
+        if (gear == null || gear.Length == 0)
             return;
 
         JumpWait();
 
-        foreach (string Item in gear)
+        foreach (string item in gear)
         {
-            if ((Item != "Weapon" && Item != "Headpiece" && Item != "Cape" && Item != "False") && CheckInventory(Item) && !Bot.Inventory.IsEquipped(Item))
+            if (!Bot.Inventory.IsEquipped(item))
             {
-                Bot.Inventory.EquipItem(Item);
-                Bot.Wait.ForItemEquip(Item);
-                if (logEquip)
-                    Logger($"Equipped {Item}");
+                if (CheckInventory(item))
+                {
+                    Bot.Inventory.EquipItem(item);
+                    Bot.Wait.ForItemEquip(item);
+                    if (logEquip)
+                        Logger($"Equipped {item}");
+                }
+                else Logger($"{item} not found");
             }
         }
     }
 
     public void EquipCached()
     {
-        if (EquipmentBeforeBot.Count() > 0)
-            Equip(EquipmentBeforeBot.ToArray());
+        Equip(EquipmentBeforeBot.ToArray());
     }
 
     /// <summary>
     /// Switches the player's Alignment to the input Alignment type
     /// </summary>
-    /// <param name="Side">Type "Alignment." and then Good, Evil or Chaos in order to select which Alignment it should swap too</param>
-    public void ChangeAlignment(Alignment Side)
+    /// <param name="side">Type "Alignment." and then Good, Evil or Chaos in order to select which Alignment it should swap too</param>
+    public void ChangeAlignment(Alignment side)
     {
-        Bot.Send.Packet($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)Side}%");
+        Bot.Send.Packet($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)side}%");
         Bot.Sleep(ActionDelay * 2);
     }
 
@@ -3120,7 +3116,8 @@ public class CoreBots
             _SoloGear.Add(_Pet1);
         if (CBOString("GroundItem1Select", out string _GroundItem1))
             _SoloGear.Add(_GroundItem1);
-        SoloGear = _SoloGear.ToArray();
+        if (_SoloGear.Count() > 0)
+            SoloGear = _SoloGear.ToArray();
 
         List<string> _FarmGear = new List<string>();
         if (CBOString("Helm2Select", out string _Helm2))
@@ -3135,7 +3132,8 @@ public class CoreBots
             _FarmGear.Add(_Pet2);
         if (CBOString("GroundItem2Select", out string _GroundItem2))
             _FarmGear.Add(_GroundItem2);
-        FarmGear = _FarmGear.ToArray();
+        if (_FarmGear.Count() > 0)
+            FarmGear = _FarmGear.ToArray();
 
         //Best set order modification
         string[] bestSet = {
