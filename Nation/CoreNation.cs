@@ -1443,7 +1443,7 @@ public class CoreNation
         {
             //Carve the Unidentified Gemstone [Member] 4923
             Core.EnsureAccept(4923);
-            Core.HuntMonster("WillowCreek", "Hidden Spy", "The Secret 1");
+            Core.HuntMonster("WillowCreek", "Hidden Spy", "The Secret 1", isTemp: false);
             FarmGemofNulgath(7);
             GemStonesOfnulgath(1, 3, 1, 1);
             switch (item)
