@@ -21,16 +21,16 @@ public class BrightCrystalStory
     {
         if (Core.isCompletedBefore(4967))
             return;
-     
+
         Story.PreLoad(this);
 
         //Street Team 4953
-        Story.MapItemQuest(4953, "dreamforest", 4326, 5);        
-    
+        Story.MapItemQuest(4953, "dreamforest", 4326, 5);
+
         //De-Pesting 4954
         Core.EquipClass(ClassType.Farm);
-        Story.KillQuest(4954, "dreamforest", new[] { "Green Rat", "Crow"});
-       
+        Story.KillQuest(4954, "dreamforest", new[] { "Green Rat", "Crow" });
+
         //Earning That Guest Pass 4955
         Story.MapItemQuest(4955, "dreamforest", 4327, 4);
         Story.MapItemQuest(4955, "dreamforest", 4328, 3);
@@ -40,12 +40,12 @@ public class BrightCrystalStory
         Story.MapItemQuest(4956, "northpointe", 4330);
 
         //Feels like a Dream 4957
-        Story.MapItemQuest(4957, "dreamforest", 4331);
+        Story.MapItemQuest(4957, "dreamforest", 4331, 5);
 
         //Give me a Ticket 4958
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(4958, "dreamforest", "Crow");
-       
+
         //For an Elephant Ride? 4959
         Story.MapItemQuest(4959, "dreamforest", 4332);
 
