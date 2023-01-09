@@ -128,7 +128,7 @@ public class FarmerJoeStartingTheAcc
             Adv.BuyItem("classhalla", 176, "White Feather Wings");
             Core.Equip("White Feather Wings");
             Core.Equip("Mage's Hood");
-            Core.Equip("Healer");
+            Core.Equip("Oracle");
             InvEn.EnhanceInventory();
             Farm.IcestormArena(20, true);
         }
@@ -173,6 +173,10 @@ public class FarmerJoeStartingTheAcc
         {
             if (Bot.Player.Level >= 50)
             {
+                Adv.BuyItem("classhalla", 759, "Oracle");
+                Adv.rankUpClass("Oracle");
+                Core.Equip("Oracle");
+
                 DS.GetDSS();
                 Core.Equip("DragonSoul Shinobi");
                 SS.GetSSorc();
