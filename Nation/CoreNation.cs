@@ -1206,6 +1206,14 @@ public class CoreNation
             Farm.VampireREP();
 
             //Receipt of Nulgath [Member] 4924
+
+            //requirements:
+            if (!Core.CheckInventory(33451))
+            {
+                DwoboCoin(100);
+                Core.BuyItem("crashedruins", 1212, 33451);
+            }
+
             while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Nulgath"))
             {
                 Core.EnsureAccept(4924);
@@ -1257,54 +1265,57 @@ public class CoreNation
     /// </summary>
     public void GemStonesOfnulgath(int BloodStone = 15, int Quartz = 20, int Tanzanite = 10, int UniGemStone = 1)
     {
-        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        if (!Core.CheckInventory(33451) && !Core.IsMember)
         {
             Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
             return;
         }
-
         FarmUni13(1);
         GemStoneReceiptOfNulgath(1);
         Supplies("Unidentified 4");
         Core.AddDrop("Gem of Nulgath", "Bloodstone of Nulgath", "Quartz of Nulgath", "Tanzanite of Nulgath", "Unidentified Gemstone of Nulgath");
         while (!Bot.ShouldExit && !Core.CheckInventory("Bloodstone of Nulgath", BloodStone)
-        && !Core.CheckInventory("Quartz of Nulgath", Quartz)
-        && !Core.CheckInventory("Tanzanite of Nulgath", Tanzanite)
-        && !Core.CheckInventory("Unidentified Gemstone of Nulgath", UniGemStone))
+        || !Core.CheckInventory("Quartz of Nulgath", Quartz)
+        || !Core.CheckInventory("Tanzanite of Nulgath", Tanzanite)
+        || !Core.CheckInventory("Unidentified Gemstone of Nulgath", UniGemStone))
         {
             //Forge Gemstones for Nulgath [Member] 4918
             Core.EnsureAccept(4918);
-            Core.HuntMonster("Twilight", "Abaddon", "Balor's Cruelty", isTemp: false);
+            Core.HuntMonster("Twilight", "Abaddon", "Balor's Cruelty", isTemp: false, log: false);
             if (!Core.isCompletedBefore(376))
             {
                 if (!Core.isCompletedBefore(374))
                 {
+                    Core.DebugLogger(this);
                     Core.EnsureAccept(374);
-                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Ring");
+                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Yara's Ring", log: false);
                     Core.EnsureComplete(374);
                 }
                 if (!Core.isCompletedBefore(375))
                 {
+                    Core.DebugLogger(this);
                     Core.EnsureAccept(375);
-                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Skeletal Claymore", 6);
-                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Bony Chestplate", 3);
+                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Skeletal Claymore", 6, log: false);
+                    Core.HuntMonster("battleundera", "Skeletal Warrior", "Bony Chestplate", 3, log: false);
                     Core.EnsureComplete(375);
                 }
                 if (!Core.isCompletedBefore(376))
                 {
+                    Core.DebugLogger(this);
                     Core.EnsureAccept(376);
-                    Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror's Head");
+                    Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror's Head", log: false);
                     Core.EnsureComplete(376);
                 }
             }
             while (!Bot.ShouldExit && !Core.CheckInventory("Yara's Sword"))
             {
+                Core.DebugLogger(this);
                 Core.AddDrop("Yara's Sword");
                 Core.EnsureAccept(377);
-                Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon");
+                Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon", log: false);
                 Core.EnsureComplete(377);
             }
-            Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", isTemp: false);
+            Core.HuntMonster("ShadowfallWar", "Bonemuncher", "Ultimate Darkness Gem", isTemp: false, log: false);
             Core.EnsureComplete(4918);
         }
     }
@@ -1418,7 +1429,7 @@ public class CoreNation
     /// </summary>
     public void CarveUniGemStone(string item = "Any", int quant = 1000)
     {
-        if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
+        if (!Core.IsMember)
         {
             Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
             return;
@@ -1444,6 +1455,8 @@ public class CoreNation
             //Carve the Unidentified Gemstone [Member] 4923
             Core.EnsureAccept(4923);
             Core.HuntMonster("WillowCreek", "Hidden Spy", "The Secret 1", isTemp: false);
+            // BLoodstone of Nulgath
+            // Unidentified Gemstone of Nulgath
             FarmGemofNulgath(7);
             GemStonesOfnulgath(1, 3, 1, 1);
             switch (item)
