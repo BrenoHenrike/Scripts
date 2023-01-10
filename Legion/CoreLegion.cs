@@ -680,7 +680,7 @@ public class CoreLegion
             if (ScrollQuant > 0)
                 Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
 
-            Core.Join("dagepvp", "Enter0", "Spawn", ignoreCheck: true);
+            Core.Join("dagepvp-99999", "Enter0", "Spawn", ignoreCheck: true);
 
             Core.PvPMove(1, "r2", 475, 269);
             Core.PvPMove(4, "r4", 963, 351);
@@ -730,7 +730,16 @@ public class CoreLegion
             Bot.Sleep(5000);
             Bot.Wait.ForDrop("Legion Combat Trophy");
 
-            Core.Join("battleon");
+            Core.Logger("Delaying exit");
+            Bot.Sleep(7500);
+
+            while (Bot.Map.Name != "battleon")
+            {
+                int i = 0;
+                Core.Logger($"Attemping Exit {i++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Sleep(Core.ActionDelay);
+            }
         }
     }
 }
