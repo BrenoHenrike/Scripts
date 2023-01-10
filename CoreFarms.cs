@@ -387,11 +387,11 @@ public class CoreFarms
         Core.JumpWait();
         while (!Bot.ShouldExit && !Core.CheckInventory("The Secret 4"))
         {
-            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl")
+            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl-999999")
             {
                 Bot.Sleep(5000);
                 Core.JumpWait();
-                Core.Join("bludrutbrawl", "Enter0", "Spawn");
+                Core.Join("bludrutbrawl-999999", "Enter0", "Spawn");
             }
 
             Core.PvPMove(5, "Morale0C");
@@ -444,7 +444,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
-            Core.Join("bludrutbrawl", "Enter0", "Spawn");
+            Core.Join("bludrutbrawl-999999", "Enter0", "Spawn");
             Bot.Sleep(2500);
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
