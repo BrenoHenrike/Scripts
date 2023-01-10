@@ -17,6 +17,9 @@ public class YearBall
 
     public void GetDrops()
     {
+        if (!Core.isSeasonalMapActive("newyear"))
+            return;
+
         string[] ACNonmem = {
             "AntiRetrograde Clock",
             "Aurora Caller",
@@ -50,9 +53,6 @@ public class YearBall
             "Timeseeker's Staff"
         };
 
-        if (!Core.isSeasonalMapActive("newyear"))
-            return;
-
         if (Core.CheckInventory(ACNonmem, toInv: false))
         {
             Core.Logger("You already have all of the items.");
@@ -61,13 +61,7 @@ public class YearBall
 
         foreach (string Reward in ACNonmem)
         {
-            if (Core.CheckInventory(Reward))
-            {
-                Core.ToBank(Reward);
-                continue;
-            }
-            Core.FarmingLogger(Reward, 1);
-            Core.HuntMonster("newyear", "2023 Ball", Reward, isTemp: false, log: false);
+            Core.HuntMonster("newyear", "2023 Ball", Reward, isTemp: false);
             Core.ToBank(Reward);
         }
     }
