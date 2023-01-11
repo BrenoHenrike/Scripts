@@ -387,7 +387,7 @@ public class CoreFarms
         Core.JumpWait();
         while (!Bot.ShouldExit && !Core.CheckInventory("The Secret 4"))
         {
-            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl")
+            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl-999999")
             {
                 Bot.Sleep(5000);
                 Core.JumpWait();
@@ -485,11 +485,15 @@ public class CoreFarms
             Bot.Sleep(Core.ActionDelay);
             Bot.Wait.ForPickup(item);
 
-            while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
+            Core.Logger("Delaying exit");
+            Bot.Sleep(7500);
+
+            while (Bot.Map.Name != "battleon")
             {
-                Bot.Sleep(5000);
-                Core.JumpWait();
-                Core.Join("battleon");
+                int i = 0;
+                Core.Logger($"Attemping Exit {i++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Sleep(Core.ActionDelay);
             }
         }
     }
@@ -1581,7 +1585,7 @@ public class CoreFarms
         while (Bot.Map.Name != "deathpitbrawl")
         {
             Core.Logger("Joining Brawl");
-             Bot.Map.Join("DeathPitbrawl-100000", "Enter0", "Spawn");
+            Bot.Map.Join("DeathPitbrawl", "Enter0", "Spawn");
             Bot.Sleep(Core.ActionDelay);
         }
 
@@ -1629,7 +1633,8 @@ public class CoreFarms
 
         while (Bot.Map.Name != "battleon")
         {
-            Core.Logger("Now exiting brawl.");
+            int i = 0;
+            Core.Logger($"Attemping Exit {i++}.");
             Bot.Map.Join("battleon-999999");
             Bot.Sleep(Core.ActionDelay);
         }
@@ -2420,7 +2425,7 @@ public class CoreFarms
         {
             Core.FarmingLogger($"Super-Fan Swag Token A", quant);
 
-            Core.RegisterQuests(1310,1312,1313,1314);
+            Core.RegisterQuests(1310, 1312, 1313, 1314);
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 200))
                 Core.KillMonster("collectorlab", "r2", "Right", "*", "Doppelganger Documents", log: false);
             Core.CancelRegisteredQuests();

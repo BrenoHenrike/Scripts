@@ -730,7 +730,16 @@ public class CoreLegion
             Bot.Sleep(5000);
             Bot.Wait.ForDrop("Legion Combat Trophy");
 
-            Core.Join("battleon");
+            Core.Logger("Delaying exit");
+            Bot.Sleep(7500);
+
+            while (Bot.Map.Name != "battleon")
+            {
+                int i = 0;
+                Core.Logger($"Attemping Exit {i++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Sleep(Core.ActionDelay);
+            }
         }
     }
 }

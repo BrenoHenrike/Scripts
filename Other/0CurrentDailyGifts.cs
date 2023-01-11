@@ -135,7 +135,8 @@ public class CurrentDailyGifts
             #region January 2023
 
             GetGift(AvailableUntil(31, 1), "newyear", "2023 Ball", "Chaotic Chrono Eye", "New Year Dawning");
-            GetGift(AvailableUntil(31, 1), "timeretaliate", "Retrograde Maw", "Nascent ChronoWeaver's Clock");
+            GetGift(AvailableUntil(31, 1), "timeretaliate", "Retrograde Maw", "Nascent ChronoWeaver's Clock", "Polychronic Magister's Hourglasses", "Polychronic Magister's Hourglass");
+            
 
             #endregion
 

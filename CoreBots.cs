@@ -2431,7 +2431,7 @@ public class CoreBots
 
             #region Always Private
             // PvP
-            case "blutrutbrawl":
+            case "bludrutbrawl":
             case "dagepvp":
             case "deathpitbrawl":
             // Room Limit: 1

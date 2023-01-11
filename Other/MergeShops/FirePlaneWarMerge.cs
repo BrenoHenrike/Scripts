@@ -73,7 +73,6 @@ public class FirePlaneWarMerge
                 case "Burnt Cinders":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EquipClass(ClassType.Solo);
-                    SoW.Tyndarius();
                     Core.RegisterQuests(8131);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
