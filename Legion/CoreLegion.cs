@@ -412,9 +412,10 @@ public class CoreLegion
         Core.RegisterQuests(QuestID);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
-            Core.HuntMonster("fotia", "Fotia Elemental", "Nothing Heard", 10);
-            Core.HuntMonster("fotia", "Fotia Elemental", "Nothing To See", 10);
-            Core.HuntMonster("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
+            Core.HuntMonster("fotia", "Fotia Elemental");
+            // Core.HuntMonster("fotia", "Fotia Elemental", "Nothing Heard", 10);
+            // Core.HuntMonster("fotia", "Fotia Elemental", "Nothing To See", 10);
+            // Core.HuntMonster("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
         }
         Core.CancelRegisteredQuests();
     }

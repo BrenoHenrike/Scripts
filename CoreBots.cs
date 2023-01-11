@@ -2359,7 +2359,6 @@ public class CoreBots
                 SimpleQuestBypass(2061);
                 break;
 
-
             case "championdrakath":
                 SimpleQuestBypass(3881);
                 break;

@@ -67,7 +67,7 @@ public class HuntressMerge
                     Core.RegisterQuests(8446, 8447, 8448);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("otziwar", "Sluagh Warrior", "Ancient Fragments", 3);
+                        Core.KillMonster("otziwar", "r6", "Left", "Sluagh Warrior", "Ancient Fragments", 3);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
