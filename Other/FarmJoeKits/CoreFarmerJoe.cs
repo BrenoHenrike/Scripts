@@ -40,34 +40,45 @@
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
-public class FarmerJoeStartingTheAcc
+public class CoreFarmerJoe
 {
+    //other
     public IScriptInterface Bot => IScriptInterface.Instance;
+    public FreeBoosts Boosts = new();
+    public FarmAllDailies FAD = new();
+    public InventoryEnhancer InvEn = new();
+
+
+    //Cores
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
-    public HollowbornScythe Scythe = new();
-    public EternalInversionist EI = new();
-    public InventoryEnhancer InvEn = new();
-    public ArchPaladin AP = new();
-    public DragonShinobi DS = new();
     public CapeOfAwe COA = new();
     public Core13LoC LOC => new Core13LoC();
     public CoreDailies Daily = new();
-    public LordOfOrder LOO = new();
     public CoreVHL VHL = new CoreVHL();
     public CoreNation Nation = new();
-    public FarmAllDailies FAD = new();
-    public BurningBlade BB = new();
+
+    //Classes
     public Shaman Shaman = new();
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
+    public DragonShinobi DS = new();
+    public ArchPaladin AP = new();
+    public LordOfOrder LOO = new();
     public ScarletSorceress SS = new();
-    public EnchantedVictoryBladeWeapons EVBW = new();
-    public Tutorial Tutorial = new();
+    public EternalInversionist EI = new();
+
+    //Weapons
     public DualChainSawKatanas DCSK = new();
-    public FreeBoosts Boosts = new();
+    public BurningBlade BB = new();
+    public EnchantedVictoryBladeWeapons EVBW = new();
+    public HollowbornScythe Scythe = new();
+
+    //Story
     public MountDoomSkull MDS = new();
+    public Tutorial Tutorial = new();
+
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
@@ -79,19 +90,24 @@ public class FarmerJoeStartingTheAcc
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
     };
 
-
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
-
-        Core.BankingBlackList.AddRange(Nation.bagDrops);
-        Core.BankingBlackList.Add("Lord of Order");
-        StartingTheAcc();
-
-        Core.SetOptions(false);
+        Core.RunCore();
     }
 
-    public void StartingTheAcc()
+    public void DoAll()
+    {
+        Level1to30();
+        Level30to75();
+        Level75to100();
+        EndGame();
+        Outfit();
+        Pets(PetChoice.HotMama);
+        Pets(PetChoice.Akriloth);
+    }
+
+
+    public void Level1to30()
     {
         #region starting out the acc
         //starting out the acc
@@ -121,6 +137,7 @@ public class FarmerJoeStartingTheAcc
             }
         }
 
+
         if (Bot.Player.Level < 20)
         {
             Adv.BuyItem("classhalla", 176, "Healer");
@@ -138,9 +155,11 @@ public class FarmerJoeStartingTheAcc
             InvEn.EnhanceInventory();
             Farm.IcestormArena(30, true);
         }
+    }
+    #endregion starting out the acc
 
-        #endregion starting out the acc
-
+    public void Level30to75()
+    {
         #region Obtain the Enchanted Victory Blade
         //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
         Core.Logger("Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)");
@@ -183,6 +202,11 @@ public class FarmerJoeStartingTheAcc
                 Core.SoloClass = "DragonSoul Shinobi";
                 Core.FarmClass = "Scarlet Sorceress";
             }
+            if (Bot.Player.Level >= 65)
+            {
+                InvEn.EnhanceInventory();
+                AP.GetAP();
+            }
             if (Bot.Player.Level < level)
             {
                 Farm.Experience(level);
@@ -190,8 +214,10 @@ public class FarmerJoeStartingTheAcc
             }
         }
         #endregion Level to 75
+    }
 
-
+    public void Level75to100()
+    {
         #region Prepare for Lvl100
         Core.Logger("step 1 Farming Classes");
         // P1: Healer LOC
@@ -208,12 +234,6 @@ public class FarmerJoeStartingTheAcc
         Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker", shopItemID: 15402);
         Adv.rankUpClass("Chaos Slayer Berserker");
         Core.Equip("Chaos Slayer Berserker");
-
-        // P5: Farm ArchPaladin
-        Core.Logger("This will stall at Ultra Alteon, it is your job to unblock it");
-        Core.Equip("Chaos Slayer Berserker");
-        AP.GetAP();
-        Core.Equip("ArchPaladin");
 
         //Step 2 Solo Class:
         Core.Logger("step 2 LOO Class Daily");
@@ -251,19 +271,23 @@ public class FarmerJoeStartingTheAcc
         Core.Logger("Leveling to 100");
         Farm.Experience();
         InvEn.EnhanceInventory();
-        #endregion Leveling to 100
+        #endregion Leveling to 100}
+    }
 
-
+    public void EndGame()
+    {
         #region Ending & Extras 
         Scythe.GetHBReapersScythe();
         InvEn.EnhanceInventory();
+
         #endregion Ending & Extras
 
 
         if (Bot.Config.Get<bool>("OutFit"))
             Outfit();
-
     }
+
+
 
     public void Outfit()
     {
@@ -273,7 +297,7 @@ public class FarmerJoeStartingTheAcc
         Adv.EnhanceEquipped(EnhancementType.Lucky);
 
         //Extra Stuff
-        Pets();
+        Pets(PetChoice.None);
 
         if (Bot.Config.Get<bool>("EquipOutfit"))
         {
@@ -286,7 +310,7 @@ public class FarmerJoeStartingTheAcc
 
     #region other stuff
 
-    public void Pets()
+    public void Pets(PetChoice PetChoice = PetChoice.None)
     {
         if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.None)
             return;
@@ -339,5 +363,4 @@ public class FarmerJoeStartingTheAcc
         Akriloth
     };
     #endregion other stuff
-
 }
