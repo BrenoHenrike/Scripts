@@ -58,7 +58,7 @@ public class EvolvedBloodOrbItems
         Core.AddDrop("Evolved Blood of Nulgath");
         if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33196))
             return;
-            
+
         if (!Core.CheckInventory("RustBucket"))
         {
             Core.EnsureAccept(126);
@@ -81,10 +81,7 @@ public class EvolvedBloodOrbItems
             Core.EnsureComplete(765, 4961);
         }
         Nation.FarmUni13(3);
-
-        if (Bot.Player.Gold >= 15000000)
-            Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
-        else Nation.TheAssistant("Unidentified 25");
+        Nation.TheAssistant("Unidentified 25");
         juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Dimensional_Championof_Nulgath);
         if (Core.IsMember)
             Nation.ForgeBloodGems(20);
