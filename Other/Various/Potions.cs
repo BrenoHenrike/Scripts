@@ -210,9 +210,15 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.Wis;
                     BulkGrind("Moglin Tears", "Rhison Blood");
                     break;
-
                 default:
                     Core.Logger("The bot was not taught how to make " + potion);
+                    break;
+
+                //For other scripts:
+
+                case "Bright Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Int;
+                    BulkGrind("Arashtite Ore", "Dried Slime");
                     break;
             }
 
