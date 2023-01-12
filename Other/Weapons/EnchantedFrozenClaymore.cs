@@ -1,7 +1,7 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/DragonFableOrgins.cs
+//cs_include Scripts/Story/DragonFableOrigins.cs
 using Skua.Core.Interfaces;
 
 public class EnchantedFrozenClaymore
