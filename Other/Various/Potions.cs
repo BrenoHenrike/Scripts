@@ -259,10 +259,16 @@ public class PotionBuyer
                         Adv.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
                         break;
 
-                    case "Chaoroot":
                     case "Doomatter":
-                        Farm.Gold(300000 * Math.Min(0, ingreQuant - Bot.Inventory.GetQuantity("Receipt of Swindle")));
-                        Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
+                        // Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
+                        if (Bot.Player.IsMember)
+                            Core.HuntMonster("Creepy", "Fear Feeder", ingredient, ingreQuant, isTemp: false);
+                        else Core.HuntMonster("maul", "Creature Creation", ingredient, ingreQuant, isTemp: false);
+                        break;
+
+                    case "Chaoroot":
+                        Core.HuntMonster("orecavern", "Naga Baas", ingredient, ingreQuant, isTemp: false);
+                        // Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 
                     case "Nimblestem":
