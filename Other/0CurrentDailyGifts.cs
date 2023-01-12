@@ -134,10 +134,11 @@ public class CurrentDailyGifts
 
             #region January 2023
 
+            GetGift(Permanent, "brokenwood", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diablocal Blade", "Inflamed Diabolical Tail");
             GetGift(AvailableUntil(31, 1), "newyear", "2023 Ball", "Chaotic Chrono Eye", "New Year Dawning");
             GetGift(AvailableUntil(31, 1), "timeretaliate", "Retrograde Maw", "Nascent ChronoWeaver's Clock", "Polychronic Magister's Hourglasses", "Polychronic Magister's Hourglass");
-            GetGift(Permanent, "brokenwood", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diablocal Blade", "Inflamed Diabolical Tail");
             GetGift(AvailableUntil(31, 1), "timeritual", "Chronocide", "Space-timeless Claws", "Space-timeless Sword", "Space-timeless Staff", "Space-timeless Daggers", "Space-timeless Axe", "Danilo's Gauntlet");
+            GetGift(AvailableUntil(31, 1), "newyear", "2023 Ball", "Chaotic Chrono Eye", "New Year Dawning", "Elegant Bejeweled Cane", "AntiRetrograde Clock", "Nascent ChronoWeaver's Runes", "Frigid Wolf Spear");
             // GetGift(AvailableUntil(31, 1), "timeretaliate", "Min'et's Corpse", "Astromancer's Shag", "Astromancer's Locks", "Astromancer's Cowl + locks", "Astromancer's Cowl", "BlackHole Shrine", "Astral Balance", "Astral Lantern");
             // GetGift(AvailableUntil(31, 1), "everfrost", "Chillbite", " Ancient Axe of the Archipelago");
             // GetGift(AvailableUntil(31, 1), "snowviewrace", "Bandit", "Frostlorn Hair", "Frostlorn Locks");
