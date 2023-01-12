@@ -2,13 +2,8 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Other/Classes/REP-based/Bard.cs
-//cs_include Scripts/Nation\EvolvedOrb\EvolvedBloodOrb.cs
-//cs_include Scripts/Other/MergeShops/BattleConGearMerge.cs
-//cs_include Scripts/Other/Various/Potions.cs
-//cs_include Scripts/Story/CrashSite.cs
+//cs_include Scripts/Nation/EvolvedOrb/EvolvedBloodOrb.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
 using Skua.Core.Interfaces;
 
@@ -20,7 +15,6 @@ public class EvolvedBloodOrbItems
     private CoreFarms Farm = new CoreFarms();
     private CoreNation Nation = new();
     private EvolvedBloodOrb EBO = new();
-    private BattleConGearMerge BCon = new();
     public JuggernautItemsofNulgath juggernaut = new();
 
     public void ScriptMain(IScriptInterface Bot)
