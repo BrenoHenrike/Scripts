@@ -74,6 +74,7 @@ public class CoreOblivionBladeofNulgath
         Nation.FarmDarkCrystalShard(5);
         Nation.SwindleBulk(5);
         Nation.FarmUni13();
+        Core.HuntMonster("lair", "Onyx Lava Dragon", "Phoenix Blade", isTemp: false);
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
 
         Core.CancelRegisteredQuests();
@@ -212,7 +213,7 @@ public class CoreOblivionBladeofNulgath
             Nation.FarmUni13();
             Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
         }
-        
+
         Core.EnsureAccept(558);
         Nation.FarmUni13();
         Nation.FarmDiamondofNulgath(10);
