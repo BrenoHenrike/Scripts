@@ -630,10 +630,11 @@ public class CoreFarms
             else if (!P2w)
                 Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
             if (P2w)
-                Bot.Sleep(1500);
+                Bot.Sleep(2500);
             else Bot.Sleep(11000);
             if (P2w && Core.CheckInventory("Dragon Runestone"))
                 Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
+
             else if (!P2w)
                 Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }

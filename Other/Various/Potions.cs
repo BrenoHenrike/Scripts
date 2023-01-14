@@ -188,7 +188,8 @@ public class PotionBuyer
 
                 case "Unstable Keen Elixir":
                     currTrait = CoreFarms.AlchemyTraits.Cri;
-                    BulkGrind("Chaos Entity", "Fish Oil");
+                    // BulkGrind("Chaos Entity", "Fish Oil");
+                    BulkGrind("Trollola Nectar", "Doomatter");
                     break;
 
                 case "Unstable Mastery Tonic":
