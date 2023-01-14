@@ -1170,20 +1170,39 @@ public class Core13LoC
             while (!Bot.ShouldExit && Bot.Player.Cell != "r17a")
             {
                 Bot.Sleep(2500);
-                Core.Jump("r17a", "Up");
+                Core.Jump("r17a");
                 Bot.Sleep(2500);
             }
         }
-        //if more maps get stuck, just fillin the bit below.
-        if (map == "Map" && cell != "Cell")
+        if (map == "finalbattle" && !Core.isCompletedBefore(3878) && cell != "r4")
         {
-            while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
             {
                 Bot.Sleep(2500);
-                Core.Jump("Cell", "pad");
+                Core.Jump("r4");
                 Bot.Sleep(2500);
             }
         }
+        if (map == "finalbattle" && Core.isCompletedBefore(3878) && cell != "r9")
+        {
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("r9");
+                Bot.Sleep(2500);
+            }
+        }
+
+        ///if more maps get stuck, just fillin the bit below.
+        // if (map == "Map" && cell != "Cell")
+        // {
+        //     while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
+        //     {
+        //         Bot.Sleep(2500);
+        //         Core.Jump("Cell");
+        //         Bot.Sleep(2500);
+        //     }
+        // }
     }
 
     public void KhasaandaTroll()
@@ -2259,6 +2278,7 @@ public class Core13LoC
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
+        Bot.Events.CellChanged += CutSceneFixer;
         // Defeat Drakath!
         if (!Story.QuestProgression(3876))
         {
@@ -2273,7 +2293,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3877);
             if (!Bot.Quests.CanComplete(3877))
-                Core.HuntMonsterMapID("finalbattle", 14);
+                Core.HuntMonsterMapID("finalbattle", 1);
             Core.EnsureComplete(3877);
         }
 
@@ -2285,6 +2305,7 @@ public class Core13LoC
                 Core.HuntMonsterMapID("finalbattle", 23);
             Core.EnsureComplete(3878);
         }
+        Bot.Events.CellChanged -= CutSceneFixer;
 
         //Defeat the 12 Lords of Chaos!
         if (!Story.QuestProgression(3879))
