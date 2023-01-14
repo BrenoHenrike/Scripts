@@ -56,13 +56,28 @@ public class Fiendshard_Story
 
         // Destroy the Fiend Shard
         // Archfiend DeathLord quests can be done without finishing this quest.
+        Bot.Events.CellChanged += CutSceneFixer;
         if (!Core.isCompletedBefore(7898))
         {
             Core.EnsureAccept(7898);
             Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Nulgath's Fiend Shard Destroyed");
             Core.KillMonster("fiendshard", "r9", "Left", "Paladin Fiend", "Fiends Fended Off", 15);
             Core.EnsureComplete(7898);
+            Bot.Events.CellChanged -= CutSceneFixer;
         }
     }
 
+
+    void CutSceneFixer(string map, string cell, string pad)
+    {
+        if (map == "fiendshard" && cell != "r9")
+        {
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("r9", "Left");
+                Bot.Sleep(2500);
+            }
+        }
+    }
 }
