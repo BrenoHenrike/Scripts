@@ -143,6 +143,7 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(31, 1), "carolinn", "Frostval Deer", "CandyCane Capybara Pet");
             GetGift(AvailableUntil(31, 1), "everfrost", "Chillbite", " Ancient Axe of the Archipelago");
             GetGift(AvailableUntil(31, 1), "snowviewrace", "Bandit", "Frostlorn Hair", "Frostlorn Locks");
+            GetGift(AvailableUntil(31, 1), "timeritual", "Chronocide", "Space-timeless Claws", "Space-timeless Sword", "Space-timeless Staff", "Space-timeless Daggers", "Space-timeless Axe", "Hollowborn Alchemist's Fist");
             GetGift(Permanent, "brokenwood", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diablocal Blade", "Inflamed Diabolical Tail");
 
             #endregion

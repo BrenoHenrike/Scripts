@@ -261,8 +261,12 @@ public class PotionBuyer
                         break;
 
                     case "Chaos Entity":
-                        Farm.Gold(100000 * Math.Min(0, ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
                         Adv.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
+                        break;
+
+                    case "Fish Oil":
+                        if (!Core.CheckInventory(11467, ingreQuant))
+                            Adv.BuyItem("alchemyacademy", 397, 11467, ingreQuant);
                         break;
 
                     case "Doomatter":
