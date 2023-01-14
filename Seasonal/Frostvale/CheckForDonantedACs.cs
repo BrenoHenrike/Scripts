@@ -44,6 +44,13 @@ public class CheckForDonatedACs
             Daily.WheelofDoom();
             Daily.MonthlyTreasureChestKeys();
 
+            if (!Core.isCompletedBefore(9057))
+            {
+                Core.EnsureAccept(9057);
+                Core.KillMonster("battleontown", "Enter", "Spawn", "Frogzard", "Free AC Giftbox");
+                Core.EnsureComplete(9057);
+            }
+
             //Requierments:
             // Level 30
             Farm.Experience(30);
