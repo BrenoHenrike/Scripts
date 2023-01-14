@@ -50,7 +50,6 @@ public class CreepyUndeadMonkeyQuest
             Core.EnsureComplete(3010);
         }
 
-        Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(3010);
         Core.RegisterQuests(questID);
         foreach (ItemBase Reward in RewardOptions)
@@ -63,6 +62,7 @@ public class CreepyUndeadMonkeyQuest
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
                 {
 
+                    Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("alliance", "Good Soldier", "Good Soldier's Face");
                     Core.HuntMonster("alliance", "Evil Soldier", "Evil Soldier's Skull");
                     Core.HuntMonster("neverlore", "Whablobble", "Whablobble Tongue");
@@ -71,6 +71,7 @@ public class CreepyUndeadMonkeyQuest
                     Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant's Peanuts");
                     Core.HuntMonster("arcangrove", "Gorillaphant", "Fresh Gorilla Paw");
                     Core.HuntMonster("arcangrove", "Gorillaphant", "Bananas in pajamas");
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("battlefowl", "Chickencow", "Chickencow Head");
                     Core.HuntMonster("mafic", "Scoria Serpent", "Scoria Serpent Charmer");
                     Core.HuntMonster("underrealm", "Grief", "Grief's Tears");
