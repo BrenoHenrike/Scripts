@@ -918,8 +918,6 @@ public class CoreFriday13th
             Core.Logger("You must be Member or wait until Friday13th to complete Oddities.");
             return;
         }
-        if (Core.isCompletedBefore(9056))
-            return;
 
         //9045 | Gobbling Globlins
         Story.KillQuest(9045, "blackmaze", "Globlin");
@@ -961,11 +959,6 @@ public class CoreFriday13th
 
         //9055 | With the Power
         Story.KillQuest(9055, "blackmaze", "Shadow Fernando");
-
-        //9056 | Magic Dance
-        // this is the farm quest FarmQuest
-        // Story.KillQuest(9053, "blackmaze", new[] { "Screamon", "Globlin", "Shadow Demon" });
-
     }
 
     bool CalculateFriday13()
