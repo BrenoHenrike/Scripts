@@ -30,7 +30,7 @@ public class CreepyUndeadMonkeyQuest
         }
 
         Fotia.UnderRealm();
-        
+
         int i = 0;
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
@@ -74,7 +74,7 @@ public class CreepyUndeadMonkeyQuest
                     Core.HuntMonster("battlefowl", "Chickencow", "Chickencow Head");
                     Core.HuntMonster("mafic", "Scoria Serpent", "Scoria Serpent Charmer");
                     Core.HuntMonster("underrealm", "Grief", "Grief's Tears");
-                    Core.HuntMonster("deepchaos", "Kathool", "Kathool… All of him");
+                    Core.HuntMonster("deepchaos", "Kathool", "Kathool... All of him");
                     Core.HuntMonster("twig", "Sweetish Fish", "Candy from a Sweetish Fish");
 
                     i++;
