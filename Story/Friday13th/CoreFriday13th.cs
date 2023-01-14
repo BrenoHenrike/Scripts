@@ -948,7 +948,7 @@ public class CoreFriday13th
         Story.KillQuest(9051, "blackmaze", "Shadow Demon");
 
         //9052 | On Deaf Ears
-        Story.KillQuest(9054, "blackmaze", "Vi'eel Dreaddacovra");
+        Story.KillQuest(9052, "blackmaze", "Vi'eel Dreaddacovra");
 
         //9053 | Neurocranium in a Haystack
         Story.KillQuest(9053, "blackmaze", new[] { "Screamon", "Globlin", "Shadow Demon" });
