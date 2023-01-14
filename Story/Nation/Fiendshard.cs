@@ -39,8 +39,14 @@ public class Fiendshard_Story
         Story.KillQuest(7894, "Fiendshard", "Paladin Fiend");
 
         // Unlock the Door
-        Story.KillQuest(7895, "Fiendshard", new[] { "Rogue Fiend", "Paladin Fiend", "Void Knight" });
-        Story.MapItemQuest(7895, "Fiendshard", 7984);
+        if (!Core.isCompletedBefore(7895))
+        {
+            Core.EnsureAccept(7895);
+            Core.HuntMonster("fiendshard", "Rogue Fiend", "Rogue Fiend Defeated", 5);
+            Core.HuntMonster("fiendshard", "Paladin Fiend", "Paladin Fiend Defeated", 5);
+            Core.HuntMonster("fiendshard", "Void Knight", "Void Knight Defeated", 3);
+            Story.MapItemQuest(7895, "Fiendshard", 7984);
+        }
 
         // Dirtlicking Guards
         Story.KillQuest(7896, "Fiendshard", "Paladin Fiend");
