@@ -34,6 +34,7 @@ public class CoreFriday13th
         Splatterwar();
         Deadfly();
         Oddities();
+        BlackMaze();
     }
 
     public void Skullpunch()
@@ -905,6 +906,66 @@ public class CoreFriday13th
 
         // Deep Cleanse 8667
         Story.KillQuest(8667, "Oddities", new[] { "Cursed Curio", "Creepy Baby", "Cursed Spirit" }, GetReward: false);
+    }
+
+    public void BlackMaze()
+    {
+        if (Core.isCompletedBefore(9055))
+            return;
+
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to complete Oddities.");
+            return;
+        }
+        if (Core.isCompletedBefore(9056))
+            return;
+
+        //9045 | Gobbling Globlins
+        Story.KillQuest(9045, "blackmaze", "Globlin");
+        Story.MapItemQuest(9045, "blackmaze", 11085);
+
+        //9046 | Flowers for Forever
+        Story.MapItemQuest(9046, "blackmaze", 11086, 2);
+        Story.MapItemQuest(9046, "blackmaze", 11087);
+
+        //9047 | A Memory’s Shadow
+        Story.KillQuest(9047, "blackmaze", "Shadow Demon");
+
+        //9048 | Behind the Bones
+        Story.MapItemQuest(9048, "blackmaze", 11088);
+        Story.MapItemQuest(9048, "blackmaze", 11089, 3);
+        Story.KillQuest(9048, "blackmaze", "Screamon");
+
+        //9049 | Peek-a-Bones
+        Story.MapItemQuest(9049, "blackmaze", 11090, 2);
+        Story.KillQuest(9049, "blackmaze", "Screamon");
+
+        //9050 | Extreme Exfoliation
+        Story.MapItemQuest(9050, "blackmaze", 11091, 3);
+        Story.KillQuest(9050, "blackmaze", "Possessed Bones");
+
+        //9051 | Easy Pickings
+        Story.MapItemQuest(9051, "blackmaze", 11092, 2);
+        Story.KillQuest(9051, "blackmaze", "Shadow Demon");
+
+        //9052 | On Deaf Ears
+        Story.KillQuest(9054, "blackmaze", "Vi'eel Dreaddacovra");
+
+        //9053 | Neurocranium in a Haystack
+        Story.KillQuest(9053, "blackmaze", new[] { "Screamon", "Globlin", "Shadow Demon" });
+
+        //9054 | Burning Skeleman
+        Story.MapItemQuest(9054, "blackmaze", 11093);
+        Story.KillQuest(9054, "blackmaze", "Possessed Bones");
+
+        //9055 | With the Power
+        Story.KillQuest(9055, "blackmaze", "Shadow Fernando");
+
+        //9056 | Magic Dance
+        // this is the farm quest FarmQuest
+        // Story.KillQuest(9053, "blackmaze", new[] { "Screamon", "Globlin", "Shadow Demon" });
+
     }
 
     bool CalculateFriday13()
