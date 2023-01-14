@@ -76,7 +76,7 @@ public class ValariansMerge
                     //9056 | Magic Dance
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("blackmaze", "Goblin", "Goblin Wings", 7);
+                        Core.HuntMonster("blackmaze", "Globlin", "Globlin Wings", 7);
                         Core.HuntMonster("blackmaze", "Vi'eel Dreaddacovra", "White Scale");
                         Core.HuntMonster("blackmaze", "Shadow Fernando", "Purple Flame");
                         Bot.Wait.ForPickup(req.Name);
