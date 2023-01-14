@@ -1,10 +1,12 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
 public class FreeAcGift
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {

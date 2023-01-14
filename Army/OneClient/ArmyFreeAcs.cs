@@ -10,8 +10,8 @@ public class ArmyFreeAcs
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private BankAllItems BAI = new();
     private CoreArmyLite Army = new();
+    private CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -26,12 +26,13 @@ public class ArmyFreeAcs
     {
         while (Army.doForAll())
         {
+            Farm.Experience(20);
             if (!Core.isCompletedBefore(9057))
             {
                 Core.EnsureAccept(9057);
                 Core.KillMonster("battleontown", "Enter", "Spawn", "Frogzard", "Free AC Giftbox");
                 Core.EnsureComplete(9057);
-            }
+            }            
         }
     }
 }
