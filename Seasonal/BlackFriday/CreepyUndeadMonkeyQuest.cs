@@ -23,9 +23,14 @@ public class CreepyUndeadMonkeyQuest
 
     private void RandomReward(int questID, int quant = 1)
     {
-        if (!Core.IsMember || !Core.isSeasonalMapActive("twig"))
+        if (!Core.IsMember && !CalculateFriday13())
+        {
+            Core.Logger("You must be Member or wait until Friday13th to Acess Twig.");
             return;
+        }
 
+        Fotia.UnderRealm();
+        
         int i = 0;
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
@@ -83,4 +88,7 @@ public class CreepyUndeadMonkeyQuest
             }
         }
     }
+
+    bool CalculateFriday13()
+            => new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5;
 }
