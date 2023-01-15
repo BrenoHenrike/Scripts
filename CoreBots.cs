@@ -2106,7 +2106,7 @@ public class CoreBots
 
         Bot.Wait.ForItemEquip(item.ID);
         if (logEquip)
-            Logger($"Equipping {(item.Equipped ? String.Empty : "failed: ")} {item.Name}");
+            Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
 
     public void EquipCached()
