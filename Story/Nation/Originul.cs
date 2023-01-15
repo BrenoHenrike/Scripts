@@ -44,7 +44,7 @@ public class Originul_Story
         if (!Story.QuestProgression(7889))
         {
             Core.EnsureAccept(7889);
-            Core.KillMonster("Originul", "r5", "Left", "Bloodfiend");
+            Core.KillMonster("Originul", "r10", "Top", "Bloodfiend", "Mutineer Crushed", 25);
             Core.EnsureComplete(7889);
         }
         Core.Logger("Questline completed.");

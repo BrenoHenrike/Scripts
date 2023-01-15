@@ -29,11 +29,11 @@ public class CelestialPast
 
         //The Path Revealed 7675
         Story.MapItemQuest(7675, "CelestialPast", 7592);
-        Story.KillQuest(7675, "CelestialPast", "Blessed Deer|Blessed Bear|Blessed Centaur|Blessed Hydra");
+        Story.KillQuest(7675, "CelestialPast", "Blessed Deer");
 
         //Well of Knowledge 7676
         Story.MapItemQuest(7676, "CelestialPast", 7593);
-        Story.KillQuest(7676, "CelestialPast", "Blessed Deer|Blessed Bear|Blessed Centaur|Blessed Hydra");
+        Story.KillQuest(7676, "CelestialPast", "Blessed Deer");
 
         //Gather the Artifacts 7677
         Story.MapItemQuest(7677, "CelestialPast", 7594);

@@ -74,6 +74,7 @@ public class CoreOblivionBladeofNulgath
         Nation.FarmDarkCrystalShard(5);
         Nation.SwindleBulk(5);
         Nation.FarmUni13();
+        Core.HuntMonster("lair", "Onyx Lava Dragon", "Phoenix Blade", isTemp: false);
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
 
         Core.CancelRegisteredQuests();
@@ -188,7 +189,7 @@ public class CoreOblivionBladeofNulgath
 
         PetCheck(2565, 610);
 
-        Core.AddDrop("The Secret 1", "The Secret 2");
+        Core.AddDrop("The Secret 1", "The Secret 2", "Unholy Reaper of Nulgath");
         Core.EnsureAccept(623);
         Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
         Core.HuntMonster("Tercessuinotlim", "Ninja Spy", "The Secret 2", isTemp: false);
@@ -204,7 +205,14 @@ public class CoreOblivionBladeofNulgath
         if (Core.CheckInventory("Death Scythe of Nulgath"))
             return;
 
-        Core.AddDrop("Death Scythe of Nulgath");
+        Core.AddDrop("Death Scythe of Nulgath", "Unidentified Item of Nulgath");
+
+        if (!Core.CheckInventory("Unidentified Item of Nulgath"))
+        {
+            Core.EnsureAccept(623);
+            Nation.FarmUni13();
+            Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
+        }
 
         Core.EnsureAccept(558);
         Nation.FarmUni13();

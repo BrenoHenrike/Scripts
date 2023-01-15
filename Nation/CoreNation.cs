@@ -179,6 +179,7 @@ public class CoreNation
             Core.FarmingLogger(item, quant);
         }
         Core.AddDrop(bagDrops);
+        Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && !Bot.Inventory.IsMaxStack(item))
@@ -186,11 +187,11 @@ public class CoreNation
             if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
             {
                 Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
-                Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5, log: false);
-                Core.HuntMonster("mobius", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
+                Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
+                Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             }
             Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
-            Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3, log: false);
+            Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
 
             if (item != "Any")

@@ -10,6 +10,14 @@ public class ExaltedApotheosisPreReqs
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
+
+    private string[] Weps =
+    {
+        "Exalted Penultima", "Exalted Unity",
+        "Thaumaturgus Ultima", "Thaumaturgus Omega",
+        "Apostate Ultima", "Apostate Omega"
+    };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -29,8 +37,11 @@ public class ExaltedApotheosisPreReqs
         // }
 
         /// No ultras required
-        if (!Core.CheckInventory("Apostate Alpha") && !Core.CheckInventory("Thaumaturgus Alpha"))
+        if (!Core.CheckInventory("Thaumaturgus Alpha") && !Core.CheckInventory("Apostate Alpha"))
         {
+            if (Core.CheckInventory(Weps))
+                return;
+
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
             Core.EquipClass(ClassType.Solo);

@@ -73,8 +73,8 @@ public class CoreAstravia
         if (!Story.QuestProgression(7774))
         {
             Core.EnsureAccept(7774);
-            Core.HuntMonsterMapID("eridani", 22 | 3, "Rat-Like Creature Slain");
-            Core.HuntMonsterMapID("eridani", 13 | 24 | 29, "Bat-Like Creature Slain");
+            Core.HuntMonsterMapID("eridani", 3, "Rat-Like Creature Slain");
+            Core.HuntMonsterMapID("eridani", 13, "Bat-Like Creature Slain");
             Core.HuntMonsterMapID("eridani", 1, "Maggot-Like Creatures Slain", 2);
             Story.MapItemQuest(7774, "eridani", 7784);
         }

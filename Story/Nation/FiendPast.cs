@@ -62,8 +62,9 @@ public class FiendPast
         //Defeat Baelgar 8489
         if (!Story.QuestProgression(8489))
         {
+            Bot.Map.Reload();
             Core.EnsureAccept(8489);
-            Core.HuntMonster("fiendpast", "Baelgar", "Baelgar Defeated");
+            Core.KillMonster("fiendpast", "r11", "Left", "Baelgar", "Baelgar Defeated");
             Core.EnsureComplete(8489);
         }
 

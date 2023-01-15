@@ -188,7 +188,8 @@ public class PotionBuyer
 
                 case "Unstable Keen Elixir":
                     currTrait = CoreFarms.AlchemyTraits.Cri;
-                    BulkGrind("Chaos Entity", "Fish Oil");
+                    // BulkGrind("Chaos Entity", "Fish Oil");
+                    BulkGrind("Trollola Nectar", "Doomatter");
                     break;
 
                 case "Unstable Mastery Tonic":
@@ -210,9 +211,15 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.Wis;
                     BulkGrind("Moglin Tears", "Rhison Blood");
                     break;
-
                 default:
                     Core.Logger("The bot was not taught how to make " + potion);
+                    break;
+
+                //For other scripts:
+
+                case "Bright Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Int;
+                    BulkGrind("Arashtite Ore", "Dried Slime");
                     break;
             }
 
@@ -255,8 +262,12 @@ public class PotionBuyer
                         break;
 
                     case "Chaos Entity":
-                        Farm.Gold(100000 * Math.Min(0, ingreQuant - Bot.Inventory.GetQuantity("Gold Voucher 100k")));
                         Adv.BuyItem("alchemyacademy", 2114, ingredient, ingreQuant);
+                        break;
+
+                    case "Fish Oil":
+                        if (!Core.CheckInventory(11467, ingreQuant))
+                            Adv.BuyItem("alchemyacademy", 397, 11467, ingreQuant);
                         break;
 
                     case "Doomatter":
