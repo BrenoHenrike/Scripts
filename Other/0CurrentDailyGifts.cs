@@ -143,6 +143,8 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(31, 1), "timeretaliate", $"Min’et’s Corpse", "Astromancer's Shag", "Astromancer's Locks", "Astromancer's Cowl + locks", "Astromancer's Cowl", "BlackHole Shrine", "Astral Balance", "Astral Lantern");
             GetGift(AvailableUntil(31, 1), "timeritual", "Chronocide", "Space-timeless Claws", "Space-timeless Sword", "Space-timeless Staff", "Space-timeless Daggers", "Space-timeless Axe", "Hollowborn Alchemist's Fist");
             GetGift(Permanent, "brokenwood", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diablocal Blade", "Inflamed Diabolical Tail");
+            Bot.Quests.UpdateQuest(7874);
+            GetGift(AvailableUntil(31, 1), "dreampalace", "Zahad", "Mana Rift", "Mana Spiral");
 
             #endregion
 
