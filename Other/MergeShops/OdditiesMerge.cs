@@ -102,6 +102,7 @@ public class OdditiesMergeRemade
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("oddities", "Cursed Spirit", "Doll Eye", 5, log: false);
+                        Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
