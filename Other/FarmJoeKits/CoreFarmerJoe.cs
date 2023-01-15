@@ -133,8 +133,8 @@ public class CoreFarmerJoe
                     Core.Equip("Greenguard Knight", "Greenguard Knight Sheathed Blades");
                 }
                 Core.HuntMonster("oaklore", "Bone Berserker");
-                Core.CancelRegisteredQuests();
             }
+            Core.CancelRegisteredQuests();
         }
 
 
