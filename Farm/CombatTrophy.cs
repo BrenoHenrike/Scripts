@@ -14,9 +14,14 @@ public class CombatTrophy
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.dmgAll);
-        Farm.BludrutBrawlBoss();
+        DoCombatTrophy();
 
         Core.SetOptions(false);
+    }
+
+    public void DoCombatTrophy()
+    {
+        Adv.BestGear(GearBoost.dmgAll);
+        Farm.BludrutBrawlBoss();
     }
 }

@@ -33,15 +33,17 @@ public class ArmyPrimaticSeams
     {
         Core.SetOptions();
 
-        if (!Core.isCompletedBefore(8814))
-        {
-            SoW.CompleteCoreSoW();
-        }
-
-        ArmyPS();
+        Dothething();
 
         Core.SetOptions(false);
     }
+
+    private void Dothething()
+    {
+        SoW.CompleteCoreSoW();
+        ArmyPS();
+    }
+
 
     public void ArmyPS()
         => Army.RunGeneratedAggroMon(map, monNames, questIDs, classtype, drops);

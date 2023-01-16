@@ -14,10 +14,15 @@ public class Leveling
     {
         Core.SetOptions();
 
+        DoLeveling();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoLeveling()
+    {
         Adv.BestGear(GearBoost.exp);
         //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
         Farm.Experience();
-
-        Core.SetOptions(false);
     }
 }

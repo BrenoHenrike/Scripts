@@ -10,8 +10,6 @@ public class RavenlossREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.RavenlossREP();
 
         Core.SetOptions(false);

@@ -36,11 +36,9 @@ public class ArchMageMatsArmy
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions(disableClassSwap: true);
-        Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(Drops);
-        Core.SetOptions();
-        Core.Unbank(Drops);
+        Core.SetOptions(disableClassSwap: true);
+        
         WaitingRoom();
 
         Core.SetOptions(false);
@@ -48,6 +46,8 @@ public class ArchMageMatsArmy
 
     public void WaitingRoom()
     {
+        Bot.Events.PlayerAFK += PlayerAFK;
+        Core.Unbank(Drops);
         Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up, lets hope this works LFMAO");
         Bot.Sleep(2500);
         GetmBois();

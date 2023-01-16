@@ -16,8 +16,6 @@ public class BaconCatREP
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.BaconCatREP();
 
         Core.SetOptions(false);

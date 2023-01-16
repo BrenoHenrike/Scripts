@@ -10,8 +10,6 @@ public class CraggleRockREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.CraggleRockREP();
 
         Core.SetOptions(false);

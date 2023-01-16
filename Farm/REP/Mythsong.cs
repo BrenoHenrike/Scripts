@@ -17,8 +17,6 @@ public class MythsongREP
 
         LOC.Kimberly();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.MythsongREP();
 
         Core.SetOptions(false);

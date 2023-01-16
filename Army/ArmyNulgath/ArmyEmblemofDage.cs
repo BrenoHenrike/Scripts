@@ -37,8 +37,7 @@ public class ArmyEmblemofDage
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[]
-        {"Emblem of Dage", "Legion Round 4 Medal"});
+        Core.BankingBlackList.AddRange(new[] { "Emblem of Dage", "Legion Round 4 Medal" });
 
         Core.SetOptions(disableClassSwap: true);
 

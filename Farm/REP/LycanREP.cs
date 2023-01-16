@@ -17,8 +17,6 @@ public class LycanREP
 
         LOC.Wolfwing();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.LycanREP();
 
         Core.SetOptions(false);

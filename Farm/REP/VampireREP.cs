@@ -17,8 +17,6 @@ public class VampireREP
 
         LOC.Wolfwing();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.VampireREP();
 
         Core.SetOptions(false);

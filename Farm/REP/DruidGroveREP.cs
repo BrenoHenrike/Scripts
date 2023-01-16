@@ -10,8 +10,6 @@ public class DruidGroveREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.DruidGroveREP();
 
         Core.SetOptions(false);

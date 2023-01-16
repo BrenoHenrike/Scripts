@@ -15,8 +15,6 @@ public class DiabolicalREP
 
         UnlockDiabolical();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.DiabolicalREP();
 
         Core.SetOptions(false);

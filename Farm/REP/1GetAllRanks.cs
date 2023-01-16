@@ -19,6 +19,14 @@ public class GetAllRanks
     {
         Core.SetOptions();
 
+        DoGetAllRanks();
+
+        Core.SetOptions(false);
+    }
+
+
+    public void DoGetAllRanks()
+    {
         TOD.FourthDimensionalPyramid();
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
@@ -26,10 +34,7 @@ public class GetAllRanks
         LOC.Kimberly();
         LOC.Lionfang();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, true);
-
         Farm.GetAllRanks();
 
-        Core.SetOptions(false);
     }
 }

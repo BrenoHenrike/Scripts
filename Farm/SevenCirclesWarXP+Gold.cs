@@ -16,7 +16,14 @@ public class SevenCirclesWarXP
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+        
+        DoSevenCirclesWarXP();
 
+        Core.SetOptions(false);
+    }
+
+    public void DoSevenCirclesWarXP()
+    {
         SC.Circles();
 
         Adv.BestGear(GearBoost.exp);
@@ -25,6 +32,5 @@ public class SevenCirclesWarXP
 
         Farm.SevenCirclesWar(Bot.Player.Level == 100 ? 101 : 100, 100000000);
 
-        Core.SetOptions(false);
     }
 }

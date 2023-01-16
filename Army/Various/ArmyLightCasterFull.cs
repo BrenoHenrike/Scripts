@@ -48,9 +48,7 @@ public class ArmyLightCaster
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[]
-        {"Aranx's Pure Light, Lightcaster, Lightmage, Burning Blade, Burning Blade of Abezeth, Guardian of Spirits' Blade, Lance of Time, Avatar Of Death's Scythe"});
-
+        Core.BankingBlackList.AddRange(new[] { "Aranx's Pure Light, Lightcaster, Lightmage, Burning Blade, Burning Blade of Abezeth, Guardian of Spirits' Blade, Lance of Time, Avatar Of Death's Scythe" });
         Core.SetOptions();
 
         LightCaster();

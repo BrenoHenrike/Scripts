@@ -13,8 +13,6 @@ public class DeathPitBrawlREP
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
         CoreToD.DeathPitPVP();
         Farm.DeathPitBrawlREP();
 

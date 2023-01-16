@@ -10,8 +10,6 @@ public class SkyguardREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.SkyguardREP();
 
         Core.SetOptions(false);

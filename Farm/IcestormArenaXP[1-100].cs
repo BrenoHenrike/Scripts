@@ -14,10 +14,15 @@ public class IcestormArenaXP
     {
         Core.SetOptions();
 
+        DoIcestormArenaXP();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoIcestormArenaXP()
+    {
         Adv.BestGear(GearBoost.exp);
         //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
         Farm.IcestormArena();
-
-        Core.SetOptions(false);
     }
 }

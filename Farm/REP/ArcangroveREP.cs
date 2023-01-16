@@ -10,8 +10,6 @@ public class ArcangroveREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.ArcangroveREP();
 
         Core.SetOptions(false);

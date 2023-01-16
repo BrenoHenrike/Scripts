@@ -10,8 +10,6 @@ public class SandseaREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.SandseaREP();
 
         Core.SetOptions(false);

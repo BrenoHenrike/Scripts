@@ -10,8 +10,6 @@ public class HorcREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.HorcREP();
 
         Core.SetOptions(false);

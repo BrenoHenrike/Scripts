@@ -10,8 +10,6 @@ public class GoodREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.GoodREP();
 
         Core.SetOptions(false);

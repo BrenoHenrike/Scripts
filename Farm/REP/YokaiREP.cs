@@ -10,8 +10,6 @@ public class YokaiREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.YokaiREP();
 
         Core.SetOptions(false);
