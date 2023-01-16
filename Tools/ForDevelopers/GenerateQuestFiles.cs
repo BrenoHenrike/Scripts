@@ -11,11 +11,7 @@ public class GetQuests
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions(true, true);
-
         GenerateQuestFiles();
-
-        Core.SetOptions(false);
     }
 
     private void GenerateQuestFiles()
