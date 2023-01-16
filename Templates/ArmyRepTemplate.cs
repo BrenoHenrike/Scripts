@@ -36,6 +36,7 @@ public class ChangeMeRep
         Core.SetOptions();
 
         Setup();
+        Core.SetOptions(false);
     }
 
     public void Setup()

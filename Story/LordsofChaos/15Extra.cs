@@ -15,7 +15,6 @@ public class SagaChaosExtra
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
         LOC.Extra();

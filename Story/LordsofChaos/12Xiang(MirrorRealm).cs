@@ -15,7 +15,6 @@ public class SagaMirrorRealm
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
         LOC.Xiang();

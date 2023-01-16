@@ -32,12 +32,12 @@ public class MultiQuestAggromonTemplate  //<-- replace
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[]
-        {"all the item names here, to prevent them from beign banked."}); //<-- fill in stuffs
+        Core.BankingBlackList.AddRange(new[]        {"all the item names here, to prevent them from beign banked."}); //<-- fill in stuffs
 
         Core.SetOptions();
 
         RenameME();
+        Core.SetOptions(false);
     }
 
     public void RenameME()

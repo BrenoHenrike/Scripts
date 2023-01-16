@@ -8,7 +8,6 @@ public class FarmPaintedButterfly
     public CoreBots Core => CoreBots.Instance;
     public void ScriptMain(IScriptInterface bot)
     {
-        ;
         Core.SetOptions();
 
         PaintedButterfly();

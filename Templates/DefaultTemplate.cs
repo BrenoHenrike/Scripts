@@ -11,6 +11,7 @@ public class DefaultTemplate
         Core.SetOptions();
 
         Example();
+        Core.SetOptions(false);
     }
 
     public void Example()

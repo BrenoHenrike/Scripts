@@ -25,7 +25,6 @@ public class ShadowslayerSummoningRitual
     {
         Core.SetOptions();
 
-        ShadowStory.Storyline();
         GetAll();
 
         Core.SetOptions(false);
@@ -33,6 +32,8 @@ public class ShadowslayerSummoningRitual
 
     public void GetAll()
     {
+        ShadowStory.Storyline();
+        
         List<ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)

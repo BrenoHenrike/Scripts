@@ -27,7 +27,6 @@ public class ShorinzanMerge
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        SF.StoryLine();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -35,6 +34,7 @@ public class ShorinzanMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        SF.StoryLine();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("starfest", 2148, findIngredients, buyOnlyThis, buyMode: buyMode);
 

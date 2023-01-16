@@ -16,10 +16,16 @@ public class BrethwrenREP
     {
         Core.SetOptions();
 
+        DoRep();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
         HarvestDay.BirdsWithHarms();
 
         Farm.BrethwrenREP();
 
-        Core.SetOptions(false);
     }
 }

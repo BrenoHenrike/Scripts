@@ -35,7 +35,6 @@ public class ShadowSlayerKMerge
     {
         Core.SetOptions();
 
-        SSK.Storyline();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -49,6 +48,7 @@ public class ShadowSlayerKMerge
         if (result != true)
             return;
 
+        SSK.Storyline();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("safiria", 2044, findIngredients, buyOnlyThis, buyMode: buyMode);
 

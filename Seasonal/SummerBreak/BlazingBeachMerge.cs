@@ -30,7 +30,6 @@ public class BlazingBeachMerge
     {
         Core.SetOptions();
 
-        BBS.StoryLine();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -41,6 +40,7 @@ public class BlazingBeachMerge
         if (!Core.isSeasonalMapActive("blazingbeach"))
             return;
 
+        BBS.StoryLine();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("blazingbeach", 2138, findIngredients, buyOnlyThis, buyMode: buyMode);
 

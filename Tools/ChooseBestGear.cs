@@ -26,13 +26,14 @@ public class ChooseBestGear
     {
         Core.SetOptions();
 
-        ChooseItem
-        (
-            Bot.Config.Get<GearBoost>("RacialGearBoost"),
-            Bot.Config.Get<bool>("EnhanceEquipment")
-        );
+        ChooseItem(Bot.Config.Get<GearBoost>("RacialGearBoost"), Bot.Config.Get<bool>("EnhanceEquipment"));
 
         Core.SetOptions(false);
+    }
+
+    public void Choose()
+    {
+
     }
 
     public void ChooseItem(GearBoost gearBoost = GearBoost.dmgAll, bool EnhanceEquipment = true)

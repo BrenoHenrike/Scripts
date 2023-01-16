@@ -15,7 +15,6 @@ public class RefreshmentRetrieval
     {
         Core.SetOptions();
 
-        QuestPreReq();
 
         RandomReward(questID, quant);
 
@@ -25,6 +24,7 @@ public class RefreshmentRetrieval
 
     private void RandomReward(int questID, int quant)
     {
+        QuestPreReq();
         int i = 0;
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;

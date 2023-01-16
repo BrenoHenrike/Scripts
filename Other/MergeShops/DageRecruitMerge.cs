@@ -33,7 +33,6 @@ public class DageRecruitMerge
         Core.BankingBlackList.AddRange(new[] { "Dark Victory Seal", "Legion Token", "Underworld Asgardian Helm", "Underworld Asgardian Cape", "Underworld Asgardian Sword", "Underworld Asgardian Mace", "Underworld DeathSpine", "Underworld Oni's Blade", "Underworld Oni's Blades", "Underworld Oni's Naginata " });
         Core.SetOptions();
 
-        DWLaN.DarkWarLegion();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -41,6 +40,7 @@ public class DageRecruitMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        DWLaN.DarkWarLegion();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("dagerecruit", 2119, findIngredients, buyOnlyThis, buyMode: buyMode);
 

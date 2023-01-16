@@ -15,7 +15,6 @@ public class SagaHorc
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
         LOC.KhasaandaHorc();

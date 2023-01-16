@@ -17,10 +17,15 @@ public class DarkWarLegionandNation
     {
         Core.SetOptions();
 
-        DarkWarLegion();
-        DarkWarNation();
+        DoBoth();
 
         Core.SetOptions(false);
+    }
+
+    public void DoBoth()
+    {
+        DarkWarLegion();
+        DarkWarNation();
     }
 
     public void DarkWarLegion()

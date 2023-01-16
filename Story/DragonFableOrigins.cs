@@ -10,7 +10,6 @@ public class DragonFableOrigins
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
         DragonFableOriginsAll();

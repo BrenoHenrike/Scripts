@@ -169,7 +169,15 @@ public class ScriptMainCleaner
         @"Nation\AFDL\WillpowerExtraction.cs",
         @"Nation\Various\ArchFiendEnchantedOrbs.cs",
         @"Nation\Various\ArchFiendSpear.cs",
-        // @
+        @"Other\MergeShops\SpoilsofLightMerge.cs",
+        @"Seasonal\Mogloween\MergeShops\CandiedCostumesMerge.cs",
+        @"Story\CrashSite.cs",
+        @"Story\ShipWreck.cs",
+        @"Story\StarSinc.cs",
+        @"Story\ThirdSpell.cs",
+        @"Templates\QuestRewardTemplate.cs",
+        @"Templates\TokenStoryTemplate.cs",
+        
         #endregion
     };
     private string[] NoSetOptionsAllowed =

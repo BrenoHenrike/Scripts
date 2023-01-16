@@ -29,11 +29,6 @@ public class CelestialChampion
         Core.SetOptions();
 
         Core.BankingBlackList.AddRange(new[] { "Champion Sash", "Lumin Badge" });
-        Adv.BestGear(GearBoost.dmgAll);
-        CAQ.Arena1to10();
-        CAQ.Arena11to20();
-        CAQ.Arena21to29();
-        //Bot.Quests.UpdateQuest(6042);
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -41,6 +36,9 @@ public class CelestialChampion
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        CAQ.Arena1to10();
+        CAQ.Arena11to20();
+        CAQ.Arena21to29();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("celestialarena", 1474, findIngredients, buyOnlyThis, buyMode: buyMode);
 
