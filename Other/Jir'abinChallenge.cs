@@ -8,16 +8,6 @@ public class JirabinChallenge
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
-    public void ScriptMain(IScriptInterface bot)
-    {
-        Core.SetOptions();
-
-        RunedWoods();
-        DetherTombs();
-        VoidBattle();
-
-        Core.SetOptions(false);
-    }
 
     public readonly string[] Drops =
     {
@@ -27,6 +17,23 @@ public class JirabinChallenge
         "Purified Void Blade",
         "Purified Void Daggers"
     };
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.SetOptions();
+
+        DoAll();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoAll()
+    {
+        RunedWoods();
+        DetherTombs();
+        VoidBattle();
+
+    }
 
     public void RunedWoods()
     {

@@ -17,11 +17,17 @@ public class LegionCombatTrophy
     {
         Core.SetOptions();
 
+        DoLegionCombatTrophy();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoLegionCombatTrophy()
+    {
         Bot.Options.LagKiller = false;
         Adv.BestGear(GearBoost.Undead);
         //order of quants: Trophy - Technique - Scroll
         Legion.DagePvP(400, 50, 1000);
 
-        Core.SetOptions(false);
     }
 }

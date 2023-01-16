@@ -26,6 +26,13 @@ public class BehemothBlade
         Core.BankingBlackList.AddRange(new[] { "", "Combat Trophy", "Basic War Sword", "Behemoth Blade of Shadow", "Behemoth Blade of Light" });
         Core.SetOptions();
 
+        Blades();
+
+        Core.SetOptions(false);
+    }
+
+    public void Blades()
+    {
         if (Bot.Config.Get<Blade>("BladeChoice") == Blade.Both)
         {
             BehemothBladeof("Shadow");
@@ -34,7 +41,6 @@ public class BehemothBlade
 
         else BehemothBladeof("$Bot.Config.Get<Blade>(\"BladeChoice\").ToString()");
 
-        Core.SetOptions(false);
     }
 
     public void BehemothBladeof(string blade)

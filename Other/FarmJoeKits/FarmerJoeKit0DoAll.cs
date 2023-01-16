@@ -52,9 +52,16 @@ public class FarmerJoeKit0DoAll
     {
         Core.SetOptions();
 
+        FJDoAll();
+
+        Core.SetOptions(false);
+    }
+
+    public void FJDoAll()
+    {
         CFJ.DoAll();
 
         BAI.BankAll();
-        Core.SetOptions(false);
+
     }
 }

@@ -32,13 +32,18 @@ public class FiendofLight
     {
         Core.SetOptions();
 
-        CoreSS.SepulchuresRise();
+        DoFiendofLight();
 
+        Core.SetOptions(false);
+    }
+
+    public void DoFiendofLight()
+    {
+        CoreSS.SepulchuresRise();
         if (!Bot.Config.Get<bool>("SelectReward"))
             ForeachSelect(6408);
         else OptionsSelect(Bot.Config.Get<RewardsSelection>("RewardSelect"), 6408);
 
-        Core.SetOptions(false);
     }
 
     public void OptionsSelect(RewardsSelection reward = new(), int questID = 000)

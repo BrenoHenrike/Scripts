@@ -25,9 +25,16 @@ public class EvolvedOrb
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+
+        DoBoth();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoBoth()
+    {
         GetAllOrb();
         GetAllItems();
-        Core.SetOptions(false);
     }
 
     public void GetAllOrb()

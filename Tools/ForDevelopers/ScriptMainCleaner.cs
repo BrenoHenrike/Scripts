@@ -159,6 +159,17 @@ public class ScriptMainCleaner
         #region Exceptions
         @"Tools\Butler.cs",
         @"Tools\ChooseBestGear",
+        @"Evil\NSoD\0NecroticSwordOfDoom.cs",
+        @"Evil\NSoD\VoidAuras\0SmartVoidAuras.cs",
+
+        //Undo these after you fix stuff tomarrow.
+        @"Nation\AFDL\0DoAll.cs",
+        @"Nation\AFDL\NulgathDemandsWork.cs",
+        @"Nation\AFDL\EnoughDOOMforanArchfiend.cs",
+        @"Nation\AFDL\WillpowerExtraction.cs",
+        @"Nation\Various\ArchFiendEnchantedOrbs.cs",
+        @"Nation\Various\ArchFiendSpear.cs",
+        // @
         #endregion
     };
     private string[] NoSetOptionsAllowed =

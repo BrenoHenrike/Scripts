@@ -15,10 +15,15 @@ public class VampireREP
     {
         Core.SetOptions();
 
-        LOC.Wolfwing();
-
-        Farm.VampireREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        LOC.Wolfwing();
+        Farm.VampireREP();
+
     }
 }

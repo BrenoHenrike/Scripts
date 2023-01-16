@@ -13,11 +13,13 @@ public class AssistingCragAndBamboozle
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
 
+    string[] ACaBItems = {"Nulgath Larvae",
+                     "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
+                     "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)"};
+
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] {"Nulgath Larvae",
-                     "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
-                     "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)"});
+        Core.BankingBlackList.AddRange(ACaBItems);
         Core.SetOptions();
 
         AssistingCandB();

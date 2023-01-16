@@ -10,9 +10,6 @@ public class KisstheVoid
     {
         Core.SetOptions();
 
-        // Uncomment to pick up the Betrayal Blades
-        //Core.AddDrop(Nation.betrayalBlades);
-
         Nation.KisstheVoid();
 
         Core.SetOptions(false);

@@ -62,6 +62,14 @@ public class FarmerJoeKitClasses
     {
         Core.SetOptions();
 
+        FJClasses();
+
+        Core.SetOptions(false);
+    }
+
+    public void FJClasses()
+    {
+
         //Rep Classes
         Shaman.GetShaman();
         DragonShinobi.GetDSS();
@@ -77,6 +85,6 @@ public class FarmerJoeKitClasses
         LordOfOrder.GetLoO();
 
         BAI.BankAll();
-        Core.SetOptions(false);
+
     }
 }

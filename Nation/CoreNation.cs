@@ -516,6 +516,15 @@ public class CoreNation
         if (Core.CheckInventory(item, quant))
             return;
 
+        /*Core.AddDrop("Wicked Edge Cape", "ArchFiend's Spikes", "ArchFiend's Vampragon",
+        * "Unidentified 14", "Unidentified 15", "Unidentified 16", "Unidentified 17", 
+        * "Unidentified 18", "Unidentified 2", "Unidentified 1", "Unidentified 12", 
+        * "Unidentified 20", "Unidentified 21", "Unidentified 26", "Unidentified 28", 
+        * "Unidentified 29", "Unidentified 30", "Unidentified 31", "Unidentified 32", 
+        * "Unidentified 33", "Ddog's Sea Serpent Armor", "Primal Dread Fang", "Claw of Nulgath", 
+        * "Rando    m Weapon of Nulgath", "Unidentified 3", "Unidentified 4", "Unidentified 5", 
+        * "Unidentified 6", "Unidentified 7", "Unidentified 8", "Unidentified 9");*/
+
         if (Core.CheckInventory(CragName))
             BambloozevsDrudgen(item, quant);
         else
@@ -1156,7 +1165,7 @@ public class CoreNation
     {
         if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
             return;
-
+        //Core.AddDrop(Nation.betrayalBlades);
         Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Blood Gems");
@@ -1532,6 +1541,11 @@ public class CoreNation
 
 
 
+    }
+
+    internal void SwindleReturn(object value)
+    {
+        throw new NotImplementedException();
     }
 }
 public enum ChooseReward

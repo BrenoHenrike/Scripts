@@ -17,9 +17,15 @@ public class DarkToken
     {
         Core.SetOptions();
 
-        WS.WorldSoulQuests();
-        Legion.DarkToken();
+        FarmDarkToken();
 
         Core.SetOptions(false);
+    }
+
+    public void FarmDarkToken()
+    {
+
+        WS.WorldSoulQuests();
+        Legion.DarkToken();
     }
 }
