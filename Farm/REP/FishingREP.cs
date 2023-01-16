@@ -11,7 +11,7 @@ public class FishingREP
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Adv.BestGear(GearBoost.rep);
+        
         Farm.FishingREP();
 
         Core.SetOptions(false);

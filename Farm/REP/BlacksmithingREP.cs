@@ -26,7 +26,6 @@ public class BlacksmithingREP
     {
         Core.SetOptions();
 
-        Adv.BestGear(GearBoost.rep);
         Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), Bot.Config.Get<bool>("CanSolo"));
 
         Core.SetOptions(false);

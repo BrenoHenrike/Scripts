@@ -15,10 +15,15 @@ public class ThunderForgeREP
     {
         Core.SetOptions();
 
-        LOC.Lionfang();
-
-        Farm.ThunderForgeREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        LOC.Lionfang();
+        Farm.ThunderForgeREP();
+
     }
 }

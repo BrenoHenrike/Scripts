@@ -13,9 +13,16 @@ public class DeathPitBrawlREP
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        CoreToD.DeathPitPVP();
-        Farm.DeathPitBrawlREP();
+
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        CoreToD.DeathPitPVP();
+        Farm.DeathPitBrawlREP();
+        
     }
 }

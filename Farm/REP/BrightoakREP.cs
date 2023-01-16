@@ -16,9 +16,16 @@ public class BrightoakREP
     {
         Core.SetOptions();
 
+        DoRep();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+
         BrightOak.doall();
         Farm.BrightoakREP();
 
-        Core.SetOptions(false);
     }
 }

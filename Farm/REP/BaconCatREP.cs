@@ -13,11 +13,17 @@ public class BaconCatREP
     {
         Core.SetOptions();
 
+        DoRep();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
 
         Farm.BaconCatREP();
 
-        Core.SetOptions(false);
     }
 }

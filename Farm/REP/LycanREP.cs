@@ -15,10 +15,15 @@ public class LycanREP
     {
         Core.SetOptions();
 
-        LOC.Wolfwing();
-
-        Farm.LycanREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+
+        LOC.Wolfwing();
+        Farm.LycanREP();
     }
 }

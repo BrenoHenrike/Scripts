@@ -15,10 +15,14 @@ public class MythsongREP
     {
         Core.SetOptions();
 
-        LOC.Kimberly();
-
-        Farm.MythsongREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {        
+        LOC.Kimberly();
+        Farm.MythsongREP();
     }
 }

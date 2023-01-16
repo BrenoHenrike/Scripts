@@ -13,10 +13,15 @@ public class EternalREP
     {
         Core.SetOptions();
 
-        TOD.FourthDimensionalPyramid();
-
-        Farm.EternalREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        TOD.FourthDimensionalPyramid();
+        Farm.EternalREP();
+
     }
 }
