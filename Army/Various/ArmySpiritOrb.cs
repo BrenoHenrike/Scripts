@@ -35,7 +35,6 @@ public class ArmySpiritOrb
     {
         Core.BankingBlackList.AddRange(Loot);
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<int>("amount"));
 

@@ -35,7 +35,6 @@ public class ArmyEmblemOfNulgath
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
 
         FarmingTime();
 

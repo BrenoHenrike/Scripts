@@ -91,7 +91,6 @@ public class ArmyLR
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
-        Bot.Options.RestPackets = false;
 
         Core.BankingBlackList.AddRange(LRMaterials.Concat(LF1).Concat(LF2).Concat(LF3).Concat(legionMedals));
 

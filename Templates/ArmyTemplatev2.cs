@@ -40,7 +40,6 @@ public class ArmyTemplate
         {"stuff", "you", "don't", "want", "banked"});
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
 
         Setup();
     }

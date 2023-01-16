@@ -52,7 +52,6 @@ public class ArmyLightCaster
         {"Aranx's Pure Light, Lightcaster, Lightmage, Burning Blade, Burning Blade of Abezeth, Guardian of Spirits' Blade, Lance of Time, Avatar Of Death's Scythe"});
 
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         LightCaster();
 

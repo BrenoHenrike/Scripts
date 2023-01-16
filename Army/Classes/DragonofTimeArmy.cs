@@ -57,7 +57,6 @@ public class DoTArmy
         Core.BankingBlackList.Add("Dragon of Time");
         Core.SetOptions(disableClassSwap: true);
 
-        bot.Options.RestPackets = false;
         Bot.Events.PlayerAFK += PlayerAFK;
         GetDoTArmy();
 

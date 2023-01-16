@@ -34,7 +34,6 @@ public class ArmyHollowbornRep
         Core.BankingBlackList.Add("Hollow Soul");
 
         Core.SetOptions();
-        Bot.Options.RestPackets = false;
 
         Setup();
 

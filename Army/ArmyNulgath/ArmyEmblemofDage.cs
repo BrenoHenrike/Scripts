@@ -41,7 +41,6 @@ public class ArmyEmblemofDage
         {"Emblem of Dage", "Legion Round 4 Medal"});
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
 
         Setup();
 

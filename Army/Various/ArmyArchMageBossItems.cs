@@ -37,7 +37,6 @@ public class ArchMageMatsArmy
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(Drops);
         Core.SetOptions();

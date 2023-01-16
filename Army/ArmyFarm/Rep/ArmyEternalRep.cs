@@ -39,7 +39,6 @@ public class ArmyEternalRep
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Setup();
 

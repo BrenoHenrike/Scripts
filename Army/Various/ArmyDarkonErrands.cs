@@ -32,7 +32,6 @@ public class ArmyDarkonErrands
         Core.BankingBlackList.Add("Darkon's Receipt");
 
         Core.SetOptions(disableClassSwap: false);
-        Bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Method>("Method"), 222);
 

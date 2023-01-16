@@ -41,7 +41,6 @@ public class ArmyLegionToken
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: false);
-        bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Method>("Method"), 25001);
 

@@ -37,7 +37,6 @@ public class ArmyBaconCatRep
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();

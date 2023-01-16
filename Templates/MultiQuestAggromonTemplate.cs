@@ -36,7 +36,6 @@ public class MultiQuestAggromonTemplate  //<-- replace
         {"all the item names here, to prevent them from beign banked."}); //<-- fill in stuffs
 
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         RenameME();
     }
