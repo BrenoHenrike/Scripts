@@ -37,8 +37,6 @@ public class ChangeMeRep
         bot.Options.RestPackets = false;
 
         Setup();
-
-        Core.SetOptions(false);
     }
 
     public void Setup()
@@ -50,7 +48,7 @@ public class ChangeMeRep
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(questID); //questName ID, questName ID
+        Core.RegisterQuests(0000); //questName ID, questName ID
         Farm.ToggleBoost(BoostType.Reputation);
         Army.SmartAggroMonStart("map", "monster", "monster");
         while (!Bot.ShouldExit && Farm.FactionRank("ChangeMe") < 10)

@@ -17,8 +17,6 @@ public class TokenStoryTemplate
         Core.SetOptions();
 
         StoryLine();
-
-        Core.SetOptions(false);
     }
 
     public void StoryLine()

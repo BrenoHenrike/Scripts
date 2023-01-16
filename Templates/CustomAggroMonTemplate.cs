@@ -31,8 +31,6 @@ public class CustomAggroMonTemplate
         Core.SetOptions();
 
         CustomAggroMon();
-
-        Core.SetOptions(false);
     }
 
     public void CustomAggroMon()

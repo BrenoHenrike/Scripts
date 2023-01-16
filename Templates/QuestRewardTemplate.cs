@@ -27,8 +27,6 @@ public class QuestRewardTemplate
         // RandomReward(questID, quant);
         // SelectReward(questID, quant);
         // AutoReward(questID, quant);
-
-        Core.SetOptions(false);
     }
 
     //Use RandomReward for non-guaranteed Rewards

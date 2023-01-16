@@ -39,8 +39,6 @@ public class MultiQuestAggromonTemplate  //<-- replace
         bot.Options.RestPackets = false;
 
         RenameME();
-
-        Core.SetOptions(false);
     }
 
     public void RenameME()

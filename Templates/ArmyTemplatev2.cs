@@ -43,8 +43,6 @@ public class ArmyTemplate
         bot.Options.RestPackets = false;
 
         Setup();
-
-        Core.SetOptions(false);
     }
 
     public void Setup()
