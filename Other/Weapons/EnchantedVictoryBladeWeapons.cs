@@ -14,10 +14,17 @@ public class EnchantedVictoryBladeWeapons
     {
         Core.SetOptions();
         Core.BankingBlackList.AddRange(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory", "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Despair", "Shadow Blade of Despair" });
-        GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
-        GetWeapon(VictoryBladeStyles.ShadowBladeOfDespair);
+
+GetBoth();
 
         Core.SetOptions(false);
+    }
+
+    public void GetBoth()
+    {
+        GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
+        GetWeapon(VictoryBladeStyles.ShadowBladeOfDespair);
+        
     }
 
     public void GetWeapon(VictoryBladeStyles Method = VictoryBladeStyles.Smart)

@@ -22,9 +22,14 @@ public class MineCrafting
     {
         Core.SetOptions();
 
-        BLOD.UnlockMineCrafting();
-        Daily.MineCrafting(new[] { Bot.Config!.Get<MineCraftingMetalsEnum>("metals").ToString() }, 10, false);
+        DoMinecrafting();
 
         Core.SetOptions(false);
+    }
+
+    public void DoMinecrafting()
+    {
+        BLOD.UnlockMineCrafting();
+        Daily.MineCrafting(new[] { Bot.Config!.Get<MineCraftingMetalsEnum>("metals").ToString() }, 10, false);
     }
 }

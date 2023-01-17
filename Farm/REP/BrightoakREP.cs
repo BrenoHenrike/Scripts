@@ -16,11 +16,16 @@ public class BrightoakREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
+        DoRep();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
 
         BrightOak.doall();
         Farm.BrightoakREP();
 
-        Core.SetOptions(false);
     }
 }

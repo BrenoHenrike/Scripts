@@ -14,10 +14,15 @@ public class DeathPitBrawlREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-        CoreToD.DeathPitPVP();
-        Farm.DeathPitBrawlREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        CoreToD.DeathPitPVP();
+        Farm.DeathPitBrawlREP();
+        
     }
 }

@@ -10,8 +10,6 @@ public class ChronoSpanREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.ChronoSpanREP();
 
         Core.SetOptions(false);

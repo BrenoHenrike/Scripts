@@ -52,11 +52,19 @@ public class FarmerJoeLeveling
     {
         Core.SetOptions();
 
+        FJLeveling();
+        
+        Core.SetOptions(false);
+    }
+
+    public void FJLeveling()
+    {
+
         CFJ.Level1to30();
         CFJ.Level30to75();
         CFJ.Level75to100();
 
         BAI.BankAll();
-        Core.SetOptions(false);
+
     }
 }

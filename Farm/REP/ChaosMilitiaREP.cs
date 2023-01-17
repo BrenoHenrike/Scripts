@@ -10,8 +10,6 @@ public class ChaosMilitiaREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.ChaosMilitiaREP();
 
         Core.SetOptions(false);

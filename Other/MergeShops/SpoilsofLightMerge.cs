@@ -24,19 +24,15 @@ public class SpoilsofLightMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(
-            new[]
-            {
-                "Apprentice of the Light",
-                "Medal of Light",
-                "Furred Ruff of the Light",
-                "Apprentice of the Light Hair",
-                "Apprentice of the Light Locks",
-                "Medal of Honor",
-                "Citadel's Light Blade",
-                "Medal of Justice "
-            }
-        );
+        Core.BankingBlackList.AddRange(new[] {
+            "Apprentice of the Light",
+            "Medal of Light",
+            "Furred Ruff of the Light",
+            "Apprentice of the Light Hair",
+            "Apprentice of the Light Locks",
+            "Medal of Honor",
+            "Citadel's Light Blade",
+            "Medal of Justice "});
         Core.SetOptions();
 
         BuyAllMerge();

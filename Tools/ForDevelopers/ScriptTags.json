@@ -1,0 +1,54 @@
+[
+    {
+        "path": "Army/0AggroMonReader.cs",
+        "description": "This script allows you to run AggroMon bots from ChaosRipjaw's AggroMon Generator in Skua.",
+        "tags": [
+            "AggroMon",
+            "Kaos",
+            "ChaosRipjaw",
+            "Aggro",
+            "Aggro Mon",
+            "Aggro Monster",
+            "Army",
+            "Reader",
+            "Custom"
+        ]
+    },
+    {
+        "path": "Army/0CustomAggroMon.cs",
+        "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
+        "tags": [
+            "Custom",
+            "AggroMon",
+            "AggroMonster",
+            "Aggro Mon",
+            "Aggro Monster",
+            "Army"
+        ]
+    },
+    {
+        "path": "Others/Classes/DragonOfTime.cs",
+        "description": "This bot farms the Dragon of Time class for you.",
+        "tags": [
+            "Class",
+            "DOT",
+            "Damage over Time",
+            "Dragon of Time",
+            "Timeinn"
+        ]
+    },
+    {
+        "path": "Good/ArchPaladin.cs",
+        "description": "This bot farms the ArchPaladin class for you.",
+        "tags": [
+            "Class",
+            "Good",
+            "Tank",
+            "HP",
+            "Templar",
+            "Figher",
+            "Healer",
+            "Undead"
+        ]
+    }
+]

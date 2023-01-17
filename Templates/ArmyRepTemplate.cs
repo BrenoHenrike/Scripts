@@ -34,9 +34,9 @@ public class ChangeMeRep
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Setup();
+        Core.SetOptions(false);
     }
 
     public void Setup()

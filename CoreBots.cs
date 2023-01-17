@@ -2359,6 +2359,10 @@ public class CoreBots
                 SimpleQuestBypass(2061);
                 break;
 
+            case "stormtemple":
+                SimpleQuestBypass(2814);
+                break;
+
             case "championdrakath":
                 SimpleQuestBypass(3881);
                 break;

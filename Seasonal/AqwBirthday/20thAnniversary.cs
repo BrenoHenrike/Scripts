@@ -118,7 +118,6 @@ public class AnniversaryofDoom
         if (Core.isCompletedBefore(8893))
             return;
 
-        Bot.Options.RestPackets = false;
         Bot.Handlers.Remove("AFK Handler");
 
         // 8893 AFK Quest

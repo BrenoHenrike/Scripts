@@ -43,7 +43,6 @@ public class ArmyGold
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions(disableClassSwap: true);
-        Bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Method>("mapname"));
 

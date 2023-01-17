@@ -36,7 +36,6 @@ public class ArmyChaosRep
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Core.BankingBlackList.Add("Fragment of Mount Doomskull");
 

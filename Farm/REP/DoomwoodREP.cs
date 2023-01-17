@@ -10,8 +10,6 @@ public class DoomwoodREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.DoomWoodREP();
 
         Core.SetOptions(false);

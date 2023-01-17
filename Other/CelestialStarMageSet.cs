@@ -14,7 +14,6 @@ public class CelestialStarMageSet
     {
         Core.SetOptions();
 
-        CoreSS.ShadowfallRise();
         GetSet();
 
         Core.SetOptions(false);
@@ -22,6 +21,7 @@ public class CelestialStarMageSet
 
     public void GetSet()
     {
+        CoreSS.ShadowfallRise();
         List<ItemBase> RewardOptions = Core.EnsureLoad(6592).Rewards;
 
         foreach (ItemBase item in RewardOptions)

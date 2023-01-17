@@ -10,8 +10,6 @@ public class DreadrockREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.DreadrockREP();
 
         Core.SetOptions(false);

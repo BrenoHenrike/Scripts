@@ -30,7 +30,6 @@ public class ArmyBloodMoonToken
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
-        Bot.Options.RestPackets = false;
 
         Setup();
 

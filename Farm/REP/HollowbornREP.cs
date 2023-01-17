@@ -10,8 +10,6 @@ public class HollowbornREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.HollowbornREP();
 
         Core.SetOptions(false);

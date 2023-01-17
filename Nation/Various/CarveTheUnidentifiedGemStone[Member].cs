@@ -25,12 +25,17 @@ public class CarveTheUnidentifiedGemStone
     {
         Core.SetOptions();
         
+DoCarveTheUnidentifiedGemStone();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoCarveTheUnidentifiedGemStone()
+    {
         if (Bot.Config.Get<ChooseReward>("ChooseReward") == ChooseReward.All)
             Nation.CarveUniGemStone();
         else Nation.CarveUniGemStone(Bot.Config.Get<ChooseReward>("ChooseReward").ToString());
-
-
-        Core.SetOptions(false);
+        
     }
 
     private enum ChooseReward

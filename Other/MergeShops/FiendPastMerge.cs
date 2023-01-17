@@ -28,7 +28,6 @@ public class FiendPastMerge
     {
         Core.SetOptions();
 
-        Fiend.DoAll();
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -36,6 +35,7 @@ public class FiendPastMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        Fiend.DoAll();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("fiendpast", 2106, findIngredients, buyOnlyThis, buyMode: buyMode);
 

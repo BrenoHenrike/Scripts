@@ -10,8 +10,6 @@ public class TreasureHunterREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.TreasureHunterREP();
 
         Core.SetOptions(false);

@@ -10,8 +10,6 @@ public class InfernalArmyREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.InfernalArmyREP();
 
         Core.SetOptions(false);

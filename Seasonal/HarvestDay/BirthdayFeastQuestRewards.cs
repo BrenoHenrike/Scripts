@@ -30,6 +30,13 @@ public class BirthdayFeastQuestRewards
     {
         Core.SetOptions();
 
+        configure();
+
+        Core.SetOptions(false);
+    }
+
+    public void configure()
+    {
         if (Bot.Config.Get<bool>("ArlettesQuests"))
         {
             ArlettesQuests();
@@ -51,8 +58,6 @@ public class BirthdayFeastQuestRewards
             KotarosQuests();
             Core.ToBank(Core.EnsureLoad(8383).Rewards.ToString());
         }
-
-        Core.SetOptions(false);
     }
 
     int i = 0;

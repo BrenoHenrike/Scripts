@@ -10,8 +10,6 @@ public class DwarfholdREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.DwarfholdREP();
 
         Core.SetOptions(false);

@@ -24,16 +24,12 @@ public class CandiedCostumesMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(
-            new[]
-            {
-                "MarshMeowllows",
-                "Horehound Bits",
-                "Kitty Cordials",
-                "Candied Jalapeno",
-                "Spicy Sample "
-            }
-        );
+        Core.BankingBlackList.AddRange(new[] {
+            "MarshMeowllows",
+            "Horehound Bits",
+            "Kitty Cordials",
+            "Candied Jalapeno",
+            "Spicy Sample "});
         Core.SetOptions();
 
         BuyAllMerge();

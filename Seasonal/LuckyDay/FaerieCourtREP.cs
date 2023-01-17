@@ -10,8 +10,6 @@ public class FaerieCourtREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.FaerieCourtREP();
 
         Core.SetOptions(false);

@@ -10,8 +10,6 @@ public class AegisREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.AegisREP();
 
         Core.SetOptions(false);

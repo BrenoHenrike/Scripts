@@ -29,7 +29,6 @@ public class HuntressMerge
         Core.BankingBlackList.AddRange(new[] { "Sluagh Bell", "Punk Coal Elf Stabber", "Festive Punk Elf Stabber", "Wild Huntress' Sword " });
         Core.SetOptions();
 
-        MO.MountOtziQuests();
         
         BuyAllMerge();
 
@@ -38,6 +37,7 @@ public class HuntressMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        MO.MountOtziQuests();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("otziwar", 2088, findIngredients, buyOnlyThis, buyMode: buyMode);
 

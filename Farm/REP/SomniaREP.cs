@@ -10,8 +10,6 @@ public class SomniaREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.SomniaREP();
 
         Core.SetOptions(false);

@@ -36,7 +36,6 @@ public class ArmyTotemAndGem
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Rewards>("QuestReward"));
 

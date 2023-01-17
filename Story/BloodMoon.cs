@@ -94,30 +94,69 @@ public class BloodMoon
         //Get Him! 6064
         if (!Story.QuestProgression(6064))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6064);
-            Core.HuntMonsterMapID("maxius", 6, "Count Maxius Defeated");
+            Core.KillMonster("maxius", "r3", "Left", "Count Maxius", "Count Maxius Defeated");
             Core.EnsureComplete(6064);
-            Core.EquipClass(ClassType.Farm);
         }
 
         //Minions Everywhere 6065
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(6065, "maxius", "Vampire Minion");
 
         //Get Barnabus! 6066
         if (!Story.QuestProgression(6066))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(6066, "maxius", "Barnabus");
+            Core.EnsureAccept(6066);
+            Core.KillMonster("maxius", "r3", "Left", "Barnabus", "Barnabus Defeated");
+            Core.EnsureComplete(6066);
         }
 
         //An End To This Threat 6067
         if (!Story.QuestProgression(6067))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6067);
-            Core.HuntMonsterMapID("maxius", 13, "Count Maxius Slain");
+            Core.KillMonster("maxius", "r6", "Left","Count Maxius", "Count Maxius Slain");
             Core.EnsureComplete(6067);
         }
+    }
+
+
+    private void CutSceneFixer(string map, string cell, string pad)
+    {
+
+        // /if more maps get stuck, just fillin the bit below.
+        if (map == "maxius")
+        {
+            if (!Core.isCompletedBefore(6064))
+            {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r3")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r3");
+                    Bot.Sleep(2500);
+                }
+            }
+            else if (!Core.isCompletedBefore(6066))
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r5");
+                    Bot.Sleep(2500);
+                }
+            else if (!Core.isCompletedBefore(6067))
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r6")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r6");
+                    Bot.Sleep(2500);
+                }
+        }
+        Bot.Events.CellChanged -= CutSceneFixer;
     }
 }

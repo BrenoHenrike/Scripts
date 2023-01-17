@@ -57,8 +57,6 @@ public class DoTArmy
         Core.BankingBlackList.Add("Dragon of Time");
         Core.SetOptions(disableClassSwap: true);
 
-        bot.Options.RestPackets = false;
-        Bot.Events.PlayerAFK += PlayerAFK;
         GetDoTArmy();
 
         Core.SetOptions(false);
@@ -72,6 +70,8 @@ public class DoTArmy
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        Bot.Events.PlayerAFK += PlayerAFK;
+      
         DoQuest1();
         DoQuest2();
         DoQuest3();

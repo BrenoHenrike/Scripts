@@ -14,11 +14,16 @@ public class SmartEnhance
     {
         Core.SetOptions(disableClassSwap: true);
 
+        DoSmartEnhance();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoSmartEnhance()
+    {
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             return;
 
         Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
-
-        Core.SetOptions(false);
     }
 }

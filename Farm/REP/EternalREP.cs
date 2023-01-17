@@ -13,12 +13,15 @@ public class EternalREP
     {
         Core.SetOptions();
 
-        TOD.FourthDimensionalPyramid();
-
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
-        Farm.EternalREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        TOD.FourthDimensionalPyramid();
+        Farm.EternalREP();
+
     }
 }

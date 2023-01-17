@@ -10,8 +10,6 @@ public class MysteriousDungeonREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.MysteriousDungeonREP();
 
         Core.SetOptions(false);

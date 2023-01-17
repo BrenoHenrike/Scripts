@@ -37,10 +37,7 @@ public class ArmyBaconCatRep
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
-        TOD.BaconCatFortress();
-        TOD.LaserSharkInvasion();
         Setup();
 
         Core.SetOptions(false);
@@ -54,6 +51,9 @@ public class ArmyBaconCatRep
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        TOD.BaconCatFortress();
+        TOD.LaserSharkInvasion();
+        
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(5111, 5112, 5118, 5119, 5120); //Cloud Sharks! 5111, Get Those Waffle Cones Ready 5112, Save the Kittarians 5118, Bacon Cat Force Needs YOU! 5119, Ziri Is Also Tough 5120
         Farm.ToggleBoost(BoostType.Reputation);

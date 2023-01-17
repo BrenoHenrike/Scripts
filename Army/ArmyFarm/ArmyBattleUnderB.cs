@@ -34,7 +34,6 @@ public class ArmyBoneDust
     {
         Core.BankingBlackList.AddRange(Loot);
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Setup();
 

@@ -45,7 +45,6 @@ public class ArmyTaintedGem
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         TaintedGem();
 

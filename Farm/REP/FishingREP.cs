@@ -11,9 +11,7 @@ public class FishingREP
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-        Adv.BestGear(GearBoost.rep);
+        
         Farm.FishingREP();
 
         Core.SetOptions(false);

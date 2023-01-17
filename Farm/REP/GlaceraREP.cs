@@ -10,8 +10,6 @@ public class GlaceraREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.GlaceraREP();
 
         Core.SetOptions(false);

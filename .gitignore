@@ -24,6 +24,7 @@ RBot_3.6.3.2
 Projects W.I.P
 Class1.cs
 *.json
+!ScriptTags.json
 *.code-workspace
 Projects
 .shacache

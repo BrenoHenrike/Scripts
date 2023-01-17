@@ -91,6 +91,13 @@ public class AllBadges
     {
         Core.SetOptions();
 
+        DoAll();
+
+        Core.SetOptions(false);
+    }
+    
+    public void DoAll()
+    {
         CRB.Badge();
         SPB.Badge();
         MPB.Badge();
@@ -121,7 +128,5 @@ public class AllBadges
         G.Badge();
         FV.Badges();
         //add more as they are made.
-
-        Core.SetOptions(false);
     }
 }

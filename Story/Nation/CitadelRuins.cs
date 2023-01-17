@@ -17,8 +17,6 @@ public class CitadelRuins
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Farm.Experience(30);
-        Farm.GoodREP();
         DoAll();
 
         Core.SetOptions(false);
@@ -26,6 +24,8 @@ public class CitadelRuins
 
     public void DoAll()
     {
+        Farm.Experience(30);
+        Farm.GoodREP();
         MurrysQuests();
         PolishsQuestsTercessuinotlim();
         PolishsQuestsCitadelRuins();

@@ -15,7 +15,6 @@ public class SagaMythsong
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.AcceptandCompleteTries = 5;
         Core.SetOptions();
 
         LOC.Kimberly();

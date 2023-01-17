@@ -10,8 +10,6 @@ public class NorthpointeREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.NorthpointeREP();
 
         Core.SetOptions(false);

@@ -31,7 +31,6 @@ public class ArmyBloodyChaos
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
 
         Setup(Bot.Config.Get<Cell>("mob"));
 

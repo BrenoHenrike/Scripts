@@ -36,13 +36,12 @@ public class ArmyTemplate
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[]
-        {"stuff", "you", "don't", "want", "banked"});
+        Core.BankingBlackList.AddRange(new[] { "stuff", "you", "don't", "want", "banked" });
 
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
 
         Setup();
+        Core.SetOptions(false);
     }
 
     public void Setup()

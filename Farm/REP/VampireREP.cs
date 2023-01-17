@@ -15,12 +15,15 @@ public class VampireREP
     {
         Core.SetOptions();
 
-        LOC.Wolfwing();
-
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
-        Farm.VampireREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        LOC.Wolfwing();
+        Farm.VampireREP();
+
     }
 }

@@ -16,9 +16,15 @@ public class Cryomancer
     {
         Core.SetOptions();
 
-        Glac.DoAll();
-        Daily.Cryomancer();
+        DoCryomancer();
 
         Core.SetOptions(false);
     }
+
+    public void DoCryomancer()
+    {
+        Glac.DoAll();
+        Daily.Cryomancer();
+    }
+
 }

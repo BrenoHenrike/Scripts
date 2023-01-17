@@ -13,13 +13,17 @@ public class BaconCatREP
     {
         Core.SetOptions();
 
+        DoRep();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.BaconCatREP();
 
-        Core.SetOptions(false);
     }
 }

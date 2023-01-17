@@ -10,8 +10,6 @@ public class PetTamerREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.PetTamerREP();
 
         Core.SetOptions(false);

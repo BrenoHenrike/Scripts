@@ -16,7 +16,6 @@ public class SagaSwordhaven
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Core.AcceptandCompleteTries = 5;
 
         LOC.Alteon();
 

@@ -10,8 +10,6 @@ public class EmberseaREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.EmberseaREP();
 
         Core.SetOptions(false);

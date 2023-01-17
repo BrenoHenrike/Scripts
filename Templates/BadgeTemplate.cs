@@ -11,6 +11,7 @@ public class BadgeTemplate
         Core.SetOptions();
 
         Badge();
+        Core.SetOptions(false);
     }
 
     public void Badge()

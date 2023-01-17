@@ -15,12 +15,14 @@ public class MythsongREP
     {
         Core.SetOptions();
 
-        LOC.Kimberly();
-
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
-        Farm.MythsongREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {        
+        LOC.Kimberly();
+        Farm.MythsongREP();
     }
 }

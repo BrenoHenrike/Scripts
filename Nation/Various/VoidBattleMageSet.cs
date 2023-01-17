@@ -15,7 +15,6 @@ public class VoidBattleMageSet
     {
         Core.SetOptions();
 
-        War.Attack();
         GetSet();
 
         Core.SetOptions(false);
@@ -25,6 +24,8 @@ public class VoidBattleMageSet
 
     public void GetSet()
     {
+        War.Attack();
+        
         List<ItemBase> RewardOptions = Core.EnsureLoad(6694).Rewards;
 
         foreach (ItemBase item in RewardOptions)

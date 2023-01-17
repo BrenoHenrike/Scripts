@@ -23,7 +23,6 @@ public class TechnocasterMerge
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Purified Energy Core", "Seraphic Steel Plate" });
-        Core.AddDrop("Purified Energy Core", "Seraphic Steel Plate");
         Core.SetOptions();
 
         BuyAllMerge();
@@ -33,6 +32,7 @@ public class TechnocasterMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        Core.AddDrop("Purified Energy Core", "Seraphic Steel Plate");
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("technospace", 1802, findIngredients, buyOnlyThis, buyMode: buyMode);
 

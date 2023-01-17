@@ -59,15 +59,9 @@ public class ArmySmartVoidAuras
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Bot.Events.PlayerAFK += PlayerAFK;
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
-        if (Core.CheckInventory(14474))
-            Core.Unbank(VASDKA);
-        else Core.Unbank(VA);
-        Core.Logger("Selling essences for syncing purposes");
-        foreach (string item in SellMe)
-            Core.SellItem(item, all: true);
+        
         WaitingRoom();
 
         Core.SetOptions(false);
@@ -77,7 +71,17 @@ public class ArmySmartVoidAuras
     {
         Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up\n" +
                                                             "lets hope this works LFMAO");
+        Bot.Events.PlayerAFK += PlayerAFK;
         Bot.Sleep(2500);
+
+        if (Core.CheckInventory(14474))
+            Core.Unbank(VASDKA);
+        else Core.Unbank(VA);
+        
+        Core.Logger("Selling essences for syncing purposes");
+        foreach (string item in SellMe)
+            Core.SellItem(item, all: true);
+
         if (Core.CheckInventory(14474))
             CommandingShadowEssences(7500);
         else RetrieveVoidAurasArmy(7500);

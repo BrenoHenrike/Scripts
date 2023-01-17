@@ -32,7 +32,6 @@ public class SuppliesWheelArmy
         Core.BankingBlackList.Add("Relic of Chaos");
 
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         ArmySupplies();
 

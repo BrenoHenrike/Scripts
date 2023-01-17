@@ -36,11 +36,8 @@ public class ArmyUniqueQuarry
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[]
-        {"Chaos Sphinx", "Chaoroot", "Kathool Annihilator", "Chaotic Manticore Head", "Chaos Tentacle", "Chaos Dragon Slayer", "HarpyHunter", "Naga Baas Pet"});
-
+        Core.BankingBlackList.AddRange(new[] { "Chaos Sphinx", "Chaoroot", "Kathool Annihilator", "Chaotic Manticore Head", "Chaos Tentacle", "Chaos Dragon Slayer", "HarpyHunter", "Naga Baas Pet" });
         Core.SetOptions(disableClassSwap: true);
-        bot.Options.RestPackets = false;
 
         Setup();
 

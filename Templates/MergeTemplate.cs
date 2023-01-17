@@ -26,6 +26,7 @@ public class MergeTemplate
         Core.SetOptions();
 
         BuyAllMerge();
+        Core.SetOptions(false);
     }
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)

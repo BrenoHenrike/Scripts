@@ -51,11 +51,18 @@ public class FarmerJoeEndGame
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
-        
+
+        FJEndgame();
+
+        Core.SetOptions(false);
+    }
+
+    public void FJEndgame()
+    {
         Core.Logger("Endgame doesnt have much added yet, if you have suggestions please do request them.");
         CFJ.EndGame();
 
         BAI.BankAll();
-        Core.SetOptions(false);
+
     }
 }

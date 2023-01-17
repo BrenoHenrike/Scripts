@@ -27,7 +27,6 @@ public class ThePostSummoning
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Bot.Bank.Load();
 
         HBPal.GetAll();
 

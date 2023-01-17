@@ -22,7 +22,6 @@ public class TradingandStuffDual
         Core.SetOptions();
 
         GetBlade();
-        Adv.EnhanceItem("Hollowborn Oblivion Blade", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
 
         Core.SetOptions(false);
     }
@@ -49,6 +48,7 @@ public class TradingandStuffDual
         HB.FreshSouls(1, 100);
         Core.EnsureComplete(7295);
         Bot.Wait.ForPickup("Hollowborn Oblivion Blade");
+        Adv.EnhanceItem("Hollowborn Oblivion Blade", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
     }
 
     public void ArchFiendEnchantedOrbs()

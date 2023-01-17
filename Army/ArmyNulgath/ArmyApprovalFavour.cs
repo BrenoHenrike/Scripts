@@ -35,7 +35,6 @@ public class ArmyApprovalFavour
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions();
-        bot.Options.RestPackets = false;
 
         Setup();
 

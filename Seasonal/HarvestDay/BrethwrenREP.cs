@@ -16,12 +16,16 @@ public class BrethwrenREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
+        DoRep();
 
+        Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
         HarvestDay.BirdsWithHarms();
 
         Farm.BrethwrenREP();
 
-        Core.SetOptions(false);
     }
 }

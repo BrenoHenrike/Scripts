@@ -27,7 +27,6 @@ public class ArmyDreadRockLT
     {
         Core.BankingBlackList.Add("Legion Token");
         Core.SetOptions(disableClassSwap: false);
-        Bot.Options.RestPackets = false;
 
         Setup();
 

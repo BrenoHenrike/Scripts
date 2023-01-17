@@ -6,10 +6,11 @@ using Skua.Core.Options;
 
 public class SwindlesReturnPolicy
 {
+    public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
-
+    
 
     public string OptionsStorage = "SwindlesReturnPolicy";
     public bool DontPreconfigure = true;
@@ -23,8 +24,15 @@ public class SwindlesReturnPolicy
     {
         Core.SetOptions();
         
-        if (bot.Config.Get<SwindleReturnItems>("ItemChoice") != SwindleReturnItems.All)
-            Nation.SwindleReturn(bot.Config.Get<SwindleReturnItems>("ItemChoice").ToString());
+        DoSwindlesReturnPolicy();
+
+        Core.SetOptions(false);
+    }
+
+    public void DoSwindlesReturnPolicy()
+    {
+        if (Bot.Config.Get<SwindleReturnItems>("ItemChoice") != SwindleReturnItems.All)
+            Nation.SwindleReturn(Bot.Config.Get<SwindleReturnItems>("ItemChoice").ToString());
         else
         {
             Nation.SwindleReturn("Dark Crystal Shard");
@@ -32,9 +40,7 @@ public class SwindlesReturnPolicy
             Nation.SwindleReturn("Gem of Nulgath");
             Nation.SwindleReturn("Blood Gem of the Archfiend");
             Nation.SwindleReturn("Tainted Gem");
-        }
-
-        Core.SetOptions(false);
+        }        
     }
 
     private enum SwindleReturnItems

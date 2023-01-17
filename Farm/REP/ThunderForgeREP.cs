@@ -15,12 +15,15 @@ public class ThunderForgeREP
     {
         Core.SetOptions();
 
-        LOC.Lionfang();
-
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
-        Farm.ThunderForgeREP();
+        DoRep();
 
         Core.SetOptions(false);
+    }
+
+    public void DoRep()
+    {
+        LOC.Lionfang();
+        Farm.ThunderForgeREP();
+
     }
 }

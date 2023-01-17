@@ -52,11 +52,17 @@ public class FarmerJoeOutfitandPet
     {
         Core.SetOptions();
 
+        FJOutfit();
+
+        Core.SetOptions(false);
+    }
+
+    public void FJOutfit()
+    {
         CFJ.Outfit();
         CFJ.Pets(CoreFarmerJoe.PetChoice.Akriloth);
         CFJ.Pets(CoreFarmerJoe.PetChoice.HotMama);
         BAI.BankAll();
 
-        Core.SetOptions(false);
     }
 }

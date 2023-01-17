@@ -10,8 +10,6 @@ public class SwordhavenREP
     {
         Core.SetOptions();
 
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Reputation, false);
-
         Farm.SwordhavenREP();
 
         Core.SetOptions(false);
