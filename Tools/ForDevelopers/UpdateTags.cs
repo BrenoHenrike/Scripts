@@ -169,6 +169,7 @@ public class UpdateTags
                         shouldReturn = true;
                         return;
                     }
+                    // Capitalizing the first char of every tag
                     List<string> _tags = new();
                     foreach (string tag in tags.DialogTextInput.Split(',', StringSplitOptions.TrimEntries))
                         _tags.Add(char.ToUpper(tag[0]) + tag.Substring(1));
