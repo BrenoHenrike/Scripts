@@ -96,19 +96,21 @@ public class BloodMoon
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6064);
-            Core.HuntMonsterMapID("maxius", 6, "Count Maxius Defeated");
+            Core.KillMonster("maxius", "r3", "Left", "Count Maxius", "Count Maxius Defeated");
             Core.EnsureComplete(6064);
-            Core.EquipClass(ClassType.Farm);
         }
 
         //Minions Everywhere 6065
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(6065, "maxius", "Vampire Minion");
 
         //Get Barnabus! 6066
         if (!Story.QuestProgression(6066))
         {
             Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(6066, "maxius", "Barnabus");
+            Core.EnsureAccept(6066);
+            Core.KillMonster("maxius", "r3", "Left", "Barnabus", "Barnabus Defeated");
+            Core.EnsureComplete(6066);
         }
 
         //An End To This Threat 6067
@@ -116,8 +118,27 @@ public class BloodMoon
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6067);
-            Core.HuntMonsterMapID("maxius", 13, "Count Maxius Slain");
+            Core.KillMonster("maxius", "r6", "Left", "Count Maxius Slain");
             Core.EnsureComplete(6067);
         }
     }
+
+
+    // private void CutSceneFixer(string map, string cell, string pad)
+    // {
+
+    //     Bot.Events.CellChanged -= CutSceneFixer;
+
+
+    //     // /if more maps get stuck, just fillin the bit below.
+    //     if (map == "Map" && cell != "Cell")
+    //     {
+    //         while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
+    //         {
+    //             Bot.Sleep(2500);
+    //             Core.Jump("Cell");
+    //             Bot.Sleep(2500);
+    //         }
+    //     }
+    // }
 }
