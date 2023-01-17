@@ -31,6 +31,8 @@ public class KillYoshinoBoss
 
         Core.EnsureAccept(5720);
         Core.KillMonster("yoshino", "r1", "Right", "Xyfrag", "Limited Event Monster Proof");
+        Core.JumpWait();
+        Adv.BestGear(GearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
         Bot.Sleep(Core.ActionDelay);
         Core.EnsureComplete(5720);
