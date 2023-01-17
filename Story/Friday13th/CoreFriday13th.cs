@@ -94,24 +94,26 @@ public class CoreFriday13th
 
         // Captain Von Poach 3111
         Story.KillQuest(3111, "TreasureIsland", "Captain Von Poach");
+        if (Core.IsMember)
+        {
+            //Me Knickers Got a Big Hole Across th' Bum 3114
+            Story.KillQuest(3114, "Skullpunch", new[] { "Vampirate", "Fishbones" });
 
-        //Me Knickers Got a Big Hole Across th' Bum 3114
-        Story.KillQuest(3114, "Skullpunch", new[] { "Vampirate", "Fishbones" });
+            // Where'd Me Ship's Cargo? 3115
+            Story.KillQuest(3115, "Skullpunch", new[] { "Fishbones", "Fishbones", "Fishbones", "Fishbones" });
 
-        // Where'd Me Ship's Cargo? 3115
-        Story.KillQuest(3115, "Skullpunch", new[] { "Fishbones", "Fishbones", "Fishbones", "Fishbones" });
+            // A Most Important Package 3116
+            Story.KillQuest(3116, "Skullpunch", "Fishbones");
 
-        // A Most Important Package 3116
-        Story.KillQuest(3116, "Skullpunch", "Fishbones");
+            // Comfort Food 3117
+            Story.KillQuest(3117, "Skullpunch", new[] { "Shelleton", "Fishwing" });
 
-        // Comfort Food 3117
-        Story.KillQuest(3117, "Skullpunch", new[] { "Shelleton", "Fishwing" });
+            // Full o' Holes 3118
+            Story.KillQuest(3118, "Skullpunch", "Shelleton");
 
-        // Full o' Holes 3118
-        Story.KillQuest(3118, "Skullpunch", "Shelleton");
-
-        // Keelhaulin' a Kraken! 3119
-        Story.KillQuest(3119, "ChaosKraken", "Chaos Kraken");
+            // Keelhaulin' a Kraken! 3119
+            Story.KillQuest(3119, "ChaosKraken", "Chaos Kraken");
+        }
     }
 
     public void Lowe()
