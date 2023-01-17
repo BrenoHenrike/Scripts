@@ -1178,20 +1178,20 @@ public class Core13LoC
         {
             if (!Bot.Quests.IsUnlocked(3877))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
                 {
                     Bot.Sleep(2500);
-                    Core.Jump("r4");
+                    Core.Jump("r1");
                     Bot.Sleep(2500);
                 }
             }
 
             else if (!Core.isCompletedBefore(3878))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
                 {
                     Bot.Sleep(2500);
-                    Core.Jump("r9");
+                    Core.Jump("r4");
                     Bot.Sleep(2500);
                 }
             }
