@@ -118,7 +118,7 @@ public class CoreFriday13th
 
     public void Lowe()
     {
-        if (Core.isCompletedBefore(764))
+        if (Core.isCompletedBefore(763))
             return;
 
         if (!Core.IsMember && !CalculateFriday13())
