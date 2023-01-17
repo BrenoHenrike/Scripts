@@ -65,6 +65,7 @@ public class FirePlaneWarMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Core.KillMonster("fireplanewar", "r5", "Right", "*", "War Medal", 5, log: false);
+                        Core.KillMonster("fireplanewar", "r5", "Right", "*", "Mega War Medal", 3, log: false);
                         Bot.Wait.ForPickup(req.ID);
                     }
                     Core.CancelRegisteredQuests();
