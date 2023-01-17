@@ -180,7 +180,7 @@ public class ArmyLegionToken
         if (Method.ToString() == "Infernal_Caladbolg")
         {
             if (!Core.CheckInventory("Infernal_Caladbolg"))
-                Core.Logger("Pet not owned, stopping", stopBot: true);
+                Core.Logger("Sword not owned, stopping", stopBot: true);
             Adv.BestGear(GearBoost.dmgAll);
             while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             {
