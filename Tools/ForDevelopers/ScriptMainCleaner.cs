@@ -137,6 +137,7 @@ public class ScriptMainCleaner
         ".csproj",
         ".md",
         ".file",
+        ".json",
     };
     private string[] Directories =
     {
@@ -163,7 +164,7 @@ public class ScriptMainCleaner
         @"Tools\ChooseBestGear",
         @"Evil\NSoD\0NecroticSwordOfDoom.cs",
         @"Evil\NSoD\VoidAuras\0SmartVoidAuras.cs",
-        
+
         #endregion
     };
     private string[] NoSetOptionsAllowed =
