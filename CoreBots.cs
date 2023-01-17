@@ -945,7 +945,7 @@ public class CoreBots
 
         if (Bot.Shops.ID != shopID || Bot.Shops.Items == null)
         {
-            Bot.ShowMessageBox("Failed to load shop the shop and get it's data, please restart the client.", "Shop Data Loading Failed");
+            Bot.ShowMessageBox("Failed to load shop the shop and get it's data" + reinstallCleanFlash, "Shop Data Loading Failed");
             return new();
         }
         return Bot.Shops.Items;
@@ -1293,7 +1293,7 @@ public class CoreBots
 
             if (toReturn == null)
             {
-                Logger($"Failed to get the Quest Object for questID {questID}, please restart the client.", messageBox: true, stopBot: true);
+                Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, messageBox: true, stopBot: true);
                 return new();
             }
         }
@@ -1329,7 +1329,7 @@ public class CoreBots
         var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
-            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}, please restart the client.", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, messageBox: true, stopBot: true);
             return new();
         }
         return toReturn;
@@ -2171,6 +2171,8 @@ public class CoreBots
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
+
+    public const string reinstallCleanFlash = ". If the issue persists, try the following things in the order they are here:\n - Restart the client.\n - Restart your computer.\n - Reinstall CleanFlash";
 
     public void RunCore()
     {
