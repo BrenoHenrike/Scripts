@@ -1006,21 +1006,20 @@ public class CoreToD
         //Get More Crystals 5232
         Story.KillQuest(5232, "yasaris", "Dimensional Crystal");
 
-        //An Offering to the Baboon Guardian 5242
-        if (!Core.isCompletedBefore(5234))
+        //Charge the Pedestal 5233
+        if (!Core.CheckInventory("Crystal of Hatoth"))
         {
-            //Charge the Pedestal 5233
-            if (!Core.CheckInventory("Crystal of Hatoth"))
-            {
-                Core.AddDrop("Crystal of Hatoth");
-                Core.EnsureAccept(5233);
-                Core.GetMapItem(4595, 1, "yasaris");
-                Core.GetMapItem(4586, 1, "yasaris");
-                Bot.Wait.ForPickup("Crystal of Hatoth");
-                Core.EnsureComplete(5233);
-            }
-            Story.ChainQuest(5242);
+            Core.AddDrop("Crystal of Hatoth");
+            Core.EnsureAccept(5233);
+            Core.GetMapItem(4595, 1, "yasaris");
+            Core.GetMapItem(4586, 1, "yasaris");
+            Core.EnsureComplete(5233);
+            Bot.Wait.ForPickup("Crystal of Hatoth");
         }
+        
+        //An Offering to the Baboon Guardian 5242
+        Story.ChainQuest(5242);
+
 
         //The Hall of Humanity 5234
         Story.MapItemQuest(5234, "yasaris", 4594);
