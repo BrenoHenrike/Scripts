@@ -95,8 +95,10 @@ public class ScriptMainCleaner
                         !l.Contains("Core.SetOptions(") &&
                         !String.IsNullOrEmpty(l) &&
                         !String.IsNullOrWhiteSpace(l) &&
-                        !l.Contains("Core.BankingBlackList"))
-                    .ToList();
+                        !l.Contains("Core.BankingBlackList") &&
+                        !l.Trim().StartsWith("//") &&
+                        !l.Trim().StartsWith('"')
+                    ).ToList();
 
                 if (inner.Count() > 1)
                 {
@@ -161,22 +163,6 @@ public class ScriptMainCleaner
         @"Tools\ChooseBestGear",
         @"Evil\NSoD\0NecroticSwordOfDoom.cs",
         @"Evil\NSoD\VoidAuras\0SmartVoidAuras.cs",
-
-        //Undo these after you fix stuff tomarrow.
-        @"Nation\AFDL\0DoAll.cs",
-        @"Nation\AFDL\NulgathDemandsWork.cs",
-        @"Nation\AFDL\EnoughDOOMforanArchfiend.cs",
-        @"Nation\AFDL\WillpowerExtraction.cs",
-        @"Nation\Various\ArchFiendEnchantedOrbs.cs",
-        @"Nation\Various\ArchFiendSpear.cs",
-        @"Other\MergeShops\SpoilsofLightMerge.cs",
-        @"Seasonal\Mogloween\MergeShops\CandiedCostumesMerge.cs",
-        @"Story\CrashSite.cs",
-        @"Story\ShipWreck.cs",
-        @"Story\StarSinc.cs",
-        @"Story\ThirdSpell.cs",
-        @"Templates\QuestRewardTemplate.cs",
-        @"Templates\TokenStoryTemplate.cs",
         
         #endregion
     };
@@ -188,6 +174,7 @@ public class ScriptMainCleaner
         @"Tools\GenerateQueuedScript.cs",
         @"Tools\ForDevelopers\MergeTemplateHelper.cs",
         @"Tools\ForDevelopers\ScriptMainCleaner.cs",
+        @"Tools\ForDevelopers\UpdateTags.cs",
     };
     #endregion
 }

@@ -16,7 +16,8 @@ public class NulgathDemandsWork
     public WillpowerExtraction WillpowerExtraction = new();
 
     public string[] NDWItems =
-    {   "DoomLord's War Mask",
+    {
+        "DoomLord's War Mask",
         "ShadowFiend Cloak",
         "Locks of the DoomLord",
         "Doomblade of Destruction",
@@ -29,13 +30,16 @@ public class NulgathDemandsWork
         Core.BankingBlackList.AddRange(new[] { "Archfiend Essence Fragment", "Unidentified 35" });
         Core.SetOptions();
 
-        NDWQuest(new[] { "Unidentified 35" });
-        NDWQuest(NDWItems);
+        DoNulgathDemandsWork();
 
         Core.SetOptions(false);
     }
 
-
+    public void DoNulgathDemandsWork()
+    {
+        NDWQuest(new[] { "Unidentified 35" });
+        NDWQuest(NDWItems);
+    }
 
     /// <summary>
     /// Complets "Nulgath Demands Work" until the Desired Items are gotten. 
