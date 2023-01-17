@@ -936,22 +936,18 @@ public class CoreToD
         Story.MapItemQuest(5218, "yasaris", 4578);
 
         //Well, Go Get the Sac, Then! 5219
-        if (!Story.QuestProgression(5219) || !Core.CheckInventory("Preserved Venom Sac of Mehensi"))
+        if (!Bot.Quests.IsUnlocked(5220) || !Core.CheckInventory("Preserved Venom Sac of Mehensi"))
         {
             Core.AddDrop("Preserved Venom", "Preserved Venom Sac of Mehensi");
             Core.EnsureAccept(5219);
             Core.GetMapItem(4579, 1, "yasaris");
+            Core.EnsureComplete(5219);
             Bot.Wait.ForPickup("Preserved Venom");
             Bot.Wait.ForPickup("Preserved Venom Sac of Mehensi");
-            Core.EnsureComplete(5219);
         }
 
         //An Offering to the Falcon Guardian 5240
-        if (!Story.QuestProgression(5240))
-        {
-            Core.EnsureAccept(5240);
-            Core.EnsureComplete(5240);
-        }
+        Story.ChainQuest(5240);
 
         //The Hall of the Jackal 5220
         Story.MapItemQuest(5220, "yasaris", 4591);
@@ -971,21 +967,19 @@ public class CoreToD
         //Charge the Spear 5225
         Story.MapItemQuest(5225, "yasaris", 4582);
 
-        //An Offering to the Jackal Guardian 5241
-        if (!Core.isCompletedBefore(5227))
+        //Take the Offering 5226
+        if (!Bot.Quests.IsUnlocked(5227) || !Core.CheckInventory("Charged Spear of Anubyx"))
         {
-            //Take the Offering 5226
-            if (!Core.CheckInventory("Charged Spear of Anubyx"))
-            {
-                Core.AddDrop("Get Charged Spear of Anubyx", "Charged Spear of Anubyx");
-                Core.EnsureAccept(5226);
-                Core.GetMapItem(4583, 1, "yasaris");
-                Bot.Wait.ForPickup("Get Charged Spear of Anubyx");
-                Bot.Wait.ForPickup("Charged Spear of Anubyx");
-                Core.EnsureComplete(5226);
-            }
-            Story.ChainQuest(5241);
+            Core.AddDrop("Get Charged Spear of Anubyx", "Charged Spear of Anubyx");
+            Core.EnsureAccept(5226);
+            Core.GetMapItem(4583, 1, "yasaris");
+            Core.EnsureComplete(5226);
+            Bot.Wait.ForPickup("Get Charged Spear of Anubyx");
+            Bot.Wait.ForPickup("Charged Spear of Anubyx");
         }
+
+        //An Offering to the Jackal Guardian 5241
+        Story.ChainQuest(5241);
 
         //The Hall of the Baboon 5227
         Story.MapItemQuest(5227, "yasaris", 4592);
@@ -1007,7 +1001,7 @@ public class CoreToD
         Story.KillQuest(5232, "yasaris", "Dimensional Crystal");
 
         //Charge the Pedestal 5233
-        if (!Core.CheckInventory("Crystal of Hatoth"))
+        if (!Bot.Quests.IsUnlocked(5234) || !Core.CheckInventory("Crystal of Hatoth"))
         {
             Core.AddDrop("Crystal of Hatoth");
             Core.EnsureAccept(5233);
@@ -1016,10 +1010,9 @@ public class CoreToD
             Core.EnsureComplete(5233);
             Bot.Wait.ForPickup("Crystal of Hatoth");
         }
-        
+
         //An Offering to the Baboon Guardian 5242
         Story.ChainQuest(5242);
-
 
         //The Hall of Humanity 5234
         Story.MapItemQuest(5234, "yasaris", 4594);
@@ -1037,7 +1030,7 @@ public class CoreToD
         //Find the Spirit Knife 5238
         Story.MapItemQuest(5238, "yasaris", 4589);
 
-        if (!Core.CheckInventory("Heart of Ptahmun"))
+        if (!Bot.Quests.IsUnlocked(5239) || !Core.CheckInventory("Heart of Ptahmun"))
         {
             Core.AddDrop("Heart of Ptahmun");
             Core.EnsureAccept(5238);
