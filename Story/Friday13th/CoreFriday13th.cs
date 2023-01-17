@@ -145,7 +145,7 @@ public class CoreFriday13th
         Story.MapItemQuest(754, "Brain", 132);
 
         // Spilt Salt 755
-        Story.KillQuest(755, "Brain", "Slimed Girl|Slimed Boy|Brain Slurper");
+        Story.KillQuest(755, "Brain", "Slimed Girl");
 
         // Defeat the Giant Brain Slime Prime 756
         Story.ChainQuest(756);
@@ -154,9 +154,9 @@ public class CoreFriday13th
         Story.KillQuest(757, "Ebildread", new[] { "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet" });
 
         // The Last 6 Chapters 758
-        Story.KillQuest(758, "Ebildread", new[] { "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier" });
+        Story.KillQuest(758, "Ebildread", new[] { "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier" });
 
-        // The Glossary 759
+        // The Glossary 759 
         Story.KillQuest(759, "Ebildread", "Jay Sun");
 
         // Cover Me 760
@@ -263,7 +263,7 @@ public class CoreFriday13th
         Story.KillQuest(1555, "FireRiver", "Swamp Thing");
 
         // Locket Holds the Key 1556
-        Story.KillQuest(1556, "FireRiver", "Lava Bat|Lava Garou");
+        Story.KillQuest(1556, "FireRiver", "Lava Bat");
 
         // Plans Fit for a King 1557
         Story.MapItemQuest(1557, "FireRiver", 792, 10);
@@ -876,7 +876,7 @@ public class CoreFriday13th
         Story.KillQuest(8658, "Oddities", new[] { "Cursed Curio", "Gothic Chest", "Oddity Swarm" });
 
         // Stuffy Guests  8659
-        Story.KillQuest(8659, "Oddities", "Creepy Baby|Dready Bear");
+        Story.KillQuest(8659, "Oddities", "Creepy Baby");
 
         // Snotty Crumbs 8660
         Story.KillQuest(8660, "Oddities", new[] { "Oddity Swarm", "Cursed Doll-Head" });
