@@ -1036,19 +1036,19 @@ public class CoreToD
         Story.KillQuest(5237, "yasaris", "Spirit of Ptahmun");
 
         //Find the Spirit Knife 5238
-        if (!Core.isCompletedBefore(5234))
+        Story.MapItemQuest(5238, "yasaris", 4589);
+
+        if (!Core.CheckInventory("Heart of Ptahmun"))
         {
-            if (!Core.CheckInventory("Heart of Ptahmun"))
-            {
-                Core.AddDrop("Heart of Ptahmun");
-                Core.EnsureAccept(5238);
-                Core.GetMapItem(4589, 1, "yasaris");
-                Bot.Wait.ForPickup("Heart of Ptahmun");
-                Core.EnsureComplete(5238);
-            }
-            //An Offering to the Human Guardian 5243
-            Story.ChainQuest(5243);
+            Core.AddDrop("Heart of Ptahmun");
+            Core.EnsureAccept(5238);
+            Core.GetMapItem(4589, 1, "yasaris");
+            Core.EnsureComplete(5238);
+            Bot.Wait.ForPickup("Heart of Ptahmun");
         }
+
+        //An Offering to the Human Guardian 5243
+        Story.ChainQuest(5243);
 
         //Battle Serepthys 5239
         Story.KillQuest(5239, "yasaris", "Serepthys");
