@@ -24,7 +24,6 @@ public class KillYoshinoBoss
         if (!Bot.Quests.IsAvailable(5720))
             return;
 
-        Farm.ToggleBoost(BoostType.Gold);
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.dmgAll);
 
@@ -32,6 +31,8 @@ public class KillYoshinoBoss
 
         Core.EnsureAccept(5720);
         Core.KillMonster("yoshino", "r1", "Right", "Xyfrag", "Limited Event Monster Proof");
+        Farm.ToggleBoost(BoostType.Gold);
+        Bot.Sleep(Core.ActionDelay);
         Core.EnsureComplete(5720);
         Bot.Wait.ForPickup("Limited Event Coin");
         Farm.ToggleBoost(BoostType.Gold, false);
