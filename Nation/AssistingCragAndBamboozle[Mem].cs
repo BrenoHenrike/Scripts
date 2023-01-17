@@ -22,15 +22,22 @@ public class AssistingCragAndBamboozle
         Core.BankingBlackList.AddRange(ACaBItems);
         Core.SetOptions();
 
-        AssistingCandB();
+        AssistingCandB(logSparrow: true);
 
         Core.SetOptions(false);
     }
 
-    public void AssistingCandB(string Reward = "any")
+    public void AssistingCandB(string Reward = "any", bool logSparrow = false)
     {
-        if (!Core.IsMember || !Core.CheckInventory(Nation.CragName) || (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, "Sparrow's Blood")))
+        if (!Core.IsMember || !Core.CheckInventory(Nation.CragName))
             return;
+
+        if (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, "Sparrow's Blood"))
+        {
+            if (logSparrow)
+                Core.Logger("This bot requiers you to have at least 1 Sparrow's Blood OR to have not done the Sparrow's Blood Daily yet");
+            return;
+        }
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant", 1, false);
