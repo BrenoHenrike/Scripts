@@ -88,13 +88,13 @@ public class AshfallCampMerge
 
                 case "Defender Badge":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Blackrawk|Infernus|Smoldur", req.Name, quant);
+                    Core.HuntMonster("AshfallCamp", "Blackrawk|Infernus|Smoldur", req.Name, quant, false);
                     break;
 
                 case "Flame Claws":
                 case "Flame Heart":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Smoldur", req.Name, quant);
+                    Core.HuntMonster("AshfallCamp", "Smoldur", req.Name, quant, false);
                     break;
 
                 case "Sulphur Ore":
@@ -154,24 +154,24 @@ public class AshfallCampMerge
                 case "Venom Sac":
                 case "Venom Fangs":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Infernus", req.Name, quant);
+                    Core.HuntMonster("AshfallCamp", "Infernus", req.Name, quant, false);
                     break;
 
                 case "Crystal Eye":
                 case "Glass Horns":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Blackrawk", req.Name, quant);
+                    Core.HuntMonster("AshfallCamp", "Blackrawk", req.Name, quant, false);
                     break;
 
                 case "Storm Heart":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("Pride", "Valsarian", req.Name, quant);
+                    Core.HuntMonster("Pride", "Valsarian", req.Name, quant, false);
                     break;
 
                 case "Melted Glass":
                 case "Copper Wire":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Pride", "Cellar Guard|Drakel Guard|Elite Guard", req.Name, quant);
+                    Core.HuntMonster("Pride", "Cellar Guard|Drakel Guard|Elite Guard", req.Name, quant, false);
                     break;
 
             }
