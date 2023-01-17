@@ -121,7 +121,7 @@ public class BloodMoon
             Bot.Events.CellChanged += CutSceneFixer;
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6067);
-            Core.KillMonster("maxius", "r6", "Left", "Count Maxius Slain");
+            Core.KillMonster("maxius", "r6", "Left","Count Maxius", "Count Maxius Slain");
             Core.EnsureComplete(6067);
         }
     }
