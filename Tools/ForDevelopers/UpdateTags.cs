@@ -169,11 +169,14 @@ public class UpdateTags
                         shouldReturn = true;
                         return;
                     }
+                    List<string> _tags = new();
+                    foreach (string tag in tags.DialogTextInput.Split(',', StringSplitOptions.TrimEntries))
+                        _tags.Add(char.ToUpper(tag[0]) + tag.Substring(1));
 
                     // Assigning data
                     newItem.path = _file;
                     newItem.description = desc.DialogTextInput;
-                    newItem.tags = tags.DialogTextInput.Split(',', StringSplitOptions.TrimEntries);
+                    newItem.tags = _tags.ToArray();
                 }
                 // Adding to the database
                 newFile.Add(newItem);

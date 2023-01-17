@@ -141,6 +141,7 @@ public class CoreFarmerJoe
         if (Bot.Player.Level < 20)
         {
             Adv.BuyItem("classhalla", 176, "Healer");
+            Adv.BuyItem("classhalla", 759, "Oracle");
             Adv.BuyItem("classhalla", 174, "Mage's Hood");
             Adv.BuyItem("classhalla", 176, "White Feather Wings");
             Core.Equip("White Feather Wings");
