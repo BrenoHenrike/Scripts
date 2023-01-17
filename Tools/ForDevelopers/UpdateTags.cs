@@ -227,6 +227,7 @@ public class UpdateTags
         "plugins",
         "Skills",
         "WIP",
+        "Army\\UltraBosses"
     };
     #endregion
 }
