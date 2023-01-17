@@ -1,54 +1,408 @@
 [
-    {
-        "path": "Army/0AggroMonReader.cs",
-        "description": "This script allows you to run AggroMon bots from ChaosRipjaw's AggroMon Generator in Skua.",
-        "tags": [
-            "AggroMon",
-            "Kaos",
-            "ChaosRipjaw",
-            "Aggro",
-            "Aggro Mon",
-            "Aggro Monster",
-            "Army",
-            "Reader",
-            "Custom"
-        ]
-    },
-    {
-        "path": "Army/0CustomAggroMon.cs",
-        "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
-        "tags": [
-            "Custom",
-            "AggroMon",
-            "AggroMonster",
-            "Aggro Mon",
-            "Aggro Monster",
-            "Army"
-        ]
-    },
-    {
-        "path": "Others/Classes/DragonOfTime.cs",
-        "description": "This bot farms the Dragon of Time class for you.",
-        "tags": [
-            "Class",
-            "DOT",
-            "Damage over Time",
-            "Dragon of Time",
-            "Timeinn"
-        ]
-    },
-    {
-        "path": "Good/ArchPaladin.cs",
-        "description": "This bot farms the ArchPaladin class for you.",
-        "tags": [
-            "Class",
-            "Good",
-            "Tank",
-            "HP",
-            "Templar",
-            "Figher",
-            "Healer",
-            "Undead"
-        ]
-    }
+  {
+    "path": "Army/0AggroMonReader.cs",
+    "description": "This script allows you to run AggroMon bots from ChaosRipjaw's AggroMon Generator in Skua.",
+    "tags": [
+      "AggroMon",
+      "Kaos",
+      "ChaosRipjaw",
+      "Aggro",
+      "Aggro Mon",
+      "Aggro Monster",
+      "Army",
+      "Reader",
+      "Custom"
+    ]
+  },
+  {
+    "path": "Army/0CustomAggroMon.cs",
+    "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
+    "tags": [
+      "Custom",
+      "AggroMon",
+      "AggroMonster",
+      "Aggro Mon",
+      "Aggro Monster",
+      "Army"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/ArmyBattleUnderB.cs",
+    "description": "Uses your army to gather bonedust",
+    "tags": [
+      "bone dust",
+      "army",
+      "battleunderb"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/ArmyGold.cs",
+    "description": "uses different methods with your army to farm gold",
+    "tags": [
+      "army",
+      "gold",
+      "battlegrounde",
+      "darkwarlegion",
+      "darkwarnation",
+      "sevencircleswar"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/ArmyIceWing.cs",
+    "description": "uses your army to kill icewing",
+    "tags": [
+      "army",
+      "icewing",
+      "exp",
+      "gold",
+      "icestormarena"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyAegisRep.cs",
+    "description": "Army rep for: Aegis",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "aegis"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyAllRep.cs",
+    "description": "Army rep for: all reps in order.",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "allrep"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyArcangroveRep.cs",
+    "description": "Army rep for: arcanegrove",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "arcanegrove"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyBaconCatRep.cs",
+    "description": "Army rep for: baconcat",
+    "tags": [
+      "rep",
+      "reputation",
+      "baconcat",
+      "army"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs",
+    "description": "Army rep for: brethwren",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "brethwren"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs",
+    "description": "Army rep for: chaos militia",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "reputation",
+      "chaosmilitia"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyChaosRep.cs",
+    "description": "Army rep for: chaos",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "chaos"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs",
+    "description": "Army rep for: chronospan",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "chronospan"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
+    "description": "Army rep for: cragglerock",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "cragglerock"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs",
+    "description": "Army rep for: Doomwood",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "doomwood"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyDreadfireRep.cs",
+    "description": "Army rep for: dreadfire",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "dreadfire"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyDreadrockRep.cs",
+    "description": "Army rep for: dreadrock",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "dreadrock"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs",
+    "description": "Army rep for: druidgrove",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "druidgrove"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs",
+    "description": "Army rep for: dwarfhold",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "dwarfhold"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs",
+    "description": "Army rep for: elementalmaster",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "elementalmaster"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyEmberseaRep.cs",
+    "description": "Army rep for: embersea",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "embersea"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyEternalRep.cs",
+    "description": "Army rep for: eternal",
+    "tags": [
+      "rmy",
+      "rep",
+      "reputation",
+      "eternal"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyEtherstormRep.cs",
+    "description": "Army rep for: etherstorm",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "etherstorm"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs",
+    "description": "Army rep for:  good & evil",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "good",
+      "evil"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyHollowbornRep.cs",
+    "description": "Army rep for: hollowborn",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "hollowborn"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs",
+    "description": "Army rep for: infernalarmy",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "infernalarmy"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyLoremasterRep.cs",
+    "description": "Army rep for: loremaster",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "loremaster"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyLycanRep.cs",
+    "description": "Army rep for: lycan",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "lycan"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs",
+    "description": "Army rep for: monsterhunter",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "monsterhunter"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs",
+    "description": "Army rep for: myteriousdungeon",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "mysteriousdungeon"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyMythsongRep.cs",
+    "description": "Army rep for: mythsong",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "mythsong"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs",
+    "description": "Army rep for: necrocrypt",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "necrocrypt"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs",
+    "description": "Army rep for: northpointe",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "northpointe"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmyRavenlossRep.cs",
+    "description": "Army rep for: ravenloss",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "ravenloss"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmySandseaRep.cs",
+    "description": "Army rep for: sandsea",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "sandsea"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmySomniaRep.cs",
+    "description": "Army rep for: somnia",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "somnia"
+    ]
+  },
+  {
+    "path": "Army/ArmyFarm/Rep/ArmySwordhavenRep.cs",
+    "description": "Army rep for: swordhaven",
+    "tags": [
+      "army",
+      "rep",
+      "reputation",
+      "swordhaven"
+    ]
+  },
+  {
+    "path": "Others/Classes/DragonOfTime.cs",
+    "description": "This bot farms the Dragon of Time class for you.",
+    "tags": [
+      "Class",
+      "DOT",
+      "Damage over Time",
+      "Dragon of Time",
+      "Timeinn"
+    ]
+  },
+  {
+    "path": "Good/ArchPaladin.cs",
+    "description": "This bot farms the ArchPaladin class for you.",
+    "tags": [
+      "Class",
+      "Good",
+      "Tank",
+      "HP",
+      "Templar",
+      "Figher",
+      "Healer",
+      "Undead"
+    ]
+  }
 ]
