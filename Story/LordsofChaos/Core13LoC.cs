@@ -1150,7 +1150,6 @@ public class Core13LoC
             Core.EnsureComplete(1472);
         }
 
-        Bot.Events.CellChanged += CutSceneFixer;
         //Choose: Khasaanda Confrontation?
         if (!Story.QuestProgression(1473))
         {
@@ -1174,24 +1173,41 @@ public class Core13LoC
                 Bot.Sleep(2500);
             }
         }
-        if (map == "finalbattle" && !Core.isCompletedBefore(3878) && cell != "r4")
+
+        if (map == "finalbattle" && !Core.isCompletedBefore(3878))
         {
-            while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
+            if (!Bot.Quests.IsUnlocked(3877))
             {
-                Bot.Sleep(2500);
-                Core.Jump("r4");
-                Bot.Sleep(2500);
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r4");
+                    Bot.Sleep(2500);
+                }
+            }
+
+            else if (!Core.isCompletedBefore(3878))
+            {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r9");
+                    Bot.Sleep(2500);
+                }
+            }
+            else if (Core.isCompletedBefore(3878))
+            {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+                {
+                    Bot.Sleep(2500);
+                    Core.Jump("r9");
+                    Bot.Sleep(2500);
+                }
             }
         }
-        if (map == "finalbattle" && Core.isCompletedBefore(3878) && cell != "r9")
-        {
-            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
-            {
-                Bot.Sleep(2500);
-                Core.Jump("r9");
-                Bot.Sleep(2500);
-            }
-        }
+
+        Bot.Events.CellChanged -= CutSceneFixer;
+
 
         ///if more maps get stuck, just fillin the bit below.
         // if (map == "Map" && cell != "Cell")
@@ -2278,10 +2294,10 @@ public class Core13LoC
         Core.Join("confrontation");
         Story.ChainQuest(3875);
 
-        Bot.Events.CellChanged += CutSceneFixer;
         // Defeat Drakath!
         if (!Story.QuestProgression(3876))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(3876);
             if (!Bot.Quests.CanComplete(3876))
                 Core.HuntMonsterMapID("finalbattle", 1);
@@ -2291,6 +2307,7 @@ public class Core13LoC
         //Defeat Drakath.. again!
         if (!Story.QuestProgression(3877))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(3877);
             if (!Bot.Quests.CanComplete(3877))
                 Core.HuntMonsterMapID("finalbattle", 1);
@@ -2300,12 +2317,12 @@ public class Core13LoC
         //Defeat Drakath!   
         if (!Story.QuestProgression(3878))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(3878);
             if (!Bot.Quests.CanComplete(3878))
                 Core.HuntMonsterMapID("finalbattle", 23);
             Core.EnsureComplete(3878);
         }
-        Bot.Events.CellChanged -= CutSceneFixer;
 
         //Defeat the 12 Lords of Chaos!
         if (!Story.QuestProgression(3879))
