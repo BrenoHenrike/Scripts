@@ -13,6 +13,7 @@ public class StoryTemplate
         Core.SetOptions();
 
         SagaName();
+        Core.SetOptions(false);
     }
 
     public void SagaName()
