@@ -2857,6 +2857,9 @@ public class CoreBots
         // Opening ReadMe.txt
         if (result.Text == "OK")
             Process.Start("explorer", readMePath);
+
+        if (Bot.ShowMessageBox("If you have discord, consider joining our Discord server (https://discord.gg/pearlharbor).\nHere you can talk to other botters, ask questions, and get notified on new bots!\nDo you wish to join?", "Join our Discord", true) == true)
+            Process.Start("explorer", "https://discord.gg/pearlharbor");
     }
 
     private void CollectData(bool onStartup)
