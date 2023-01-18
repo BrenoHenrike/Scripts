@@ -64,25 +64,13 @@ public class CelestialChampion
 
                 // Add how to get items here
                 case "Champion Sash":
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Solo);
-                    while (!Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("celestialarenad", "Aranx", "Champion Sash", quant, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.HuntMonster("celestialarenad", "Aranx", "Champion Sash", quant, isTemp: false);
                     break;
 
                 case "Lumin Badge":
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Solo);
-                    while (!Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("celestialarenac", "Undead Raxgore Construct", "Lumin Badge", quant, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.HuntMonster("celestialarenac", "Undead Raxgore Construct", "Lumin Badge", quant, isTemp: false);
                     break;
             }
         }

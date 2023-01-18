@@ -531,7 +531,6 @@ public class YulgarsDualWieldMerge
 
                 case "Burning Blade Of Abezeth":
                     Core.EquipClass(ClassType.Solo);
-                    Bot.Quests.UpdateQuest(6042);
                     Core.HuntMonster("celestialarenad", "Aranx", req.Name, isTemp: false);
                     break;
 
