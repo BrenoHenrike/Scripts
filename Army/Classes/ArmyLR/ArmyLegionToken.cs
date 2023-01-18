@@ -64,7 +64,23 @@ public class ArmyLegionToken
         {
             if (!Core.CheckInventory("Shogun Paragon Pet"))
                 Core.Logger("Pet not owned, stopping", stopBot: true);
-            GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Legion Token", quant);
+
+            if (Core.CheckInventory("Infernal Caladbolg"))
+                Core.RegisterQuests(3722);
+
+            Adv.BestGear(GearBoost.dmgAll);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+            {
+                GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing Heard", 10);
+                GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing to See", 10);
+                GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Area Secured and Quiet", 10);
+
+                if (Core.CheckInventory("Infernal Caladbolg"))
+                {
+                    GetItem("fotia", new[] { "Fotia Elemental" }, 3722, "Betrayer Extinguished", 5);
+                    GetItem("evilwardage", new[] { "Dreadfiend of Nulgath" }, 3722, "Fiend Felled", 2);
+                }
+            }
         }
 
         if (Method.ToString() == "Thanatos_Paragon_Pet")
@@ -181,9 +197,20 @@ public class ArmyLegionToken
         {
             if (!Core.CheckInventory("Infernal_Caladbolg"))
                 Core.Logger("Sword not owned, stopping", stopBot: true);
+
+            if (Core.CheckInventory("Shogun Paragon Pet"))
+                Core.RegisterQuests(3722);
+
             Adv.BestGear(GearBoost.dmgAll);
             while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             {
+                if (Core.CheckInventory("Shogun Paragon Pet"))
+                {
+                    GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing Heard", 10);
+                    GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing to See", 10);
+                    GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Area Secured and Quiet", 10);
+                }
+
                 GetItem("fotia", new[] { "Fotia Elemental" }, 3722, "Betrayer Extinguished", 5);
                 GetItem("evilwardage", new[] { "Dreadfiend of Nulgath" }, 3722, "Fiend Felled", 2);
             }
