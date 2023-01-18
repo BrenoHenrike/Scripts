@@ -436,7 +436,7 @@ public class CoreDailies
 
     public void GrumbleGrumble()
     {
-        if (!Core.CheckInventory("Crag & Bamboozle"))
+        if (!Core.CheckInventory(4845))
             return;
         Core.Logger("Daily: Grumble Grumble (Blood Gem of the Archfiend)");
         if (!CheckDaily(592, false, new[] { "Diamond of Nulgath", "Blood Gem of the Archfiend" }))

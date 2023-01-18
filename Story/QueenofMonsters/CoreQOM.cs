@@ -830,7 +830,7 @@ public class CoreQOM
         Story.KillQuest(8080, "deepforest", "Aberrant Horror");
     }
 
-    public void TheQueensSecrets()
+    public void TheQueensSecrets(bool DeepTunnelMerge = false)
     {
         if (Core.isCompletedBefore(8107))
             return;
@@ -880,6 +880,8 @@ public class CoreQOM
 
         //8094 | Tame the Queen
         Story.KillQuest(8094, "transformation", "Queen of Monsters");
+        if (DeepTunnelMerge)
+            return;
 
         //8096 | Worms of Earth
         Story.KillQuest(8096, "downbelow", "Earthwyrm");

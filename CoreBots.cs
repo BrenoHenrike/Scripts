@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -277,10 +278,30 @@ public class CoreBots
 
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
-                if (CustomStopLocation.Trim().ToLower() == "home")
+                if (new[] { "home", "house" }
+                        .Any(m => CustomStopLocation.Trim().ToLower() == m))
                 {
                     if (Bot.House.Items.Count(h => h.Equipped) > 0)
+                    {
+                        string toSend = null;
+                        Bot.Events.ExtensionPacketReceived += modifyPacket;
                         Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
+                        Bot.Wait.ForMapLoad("house");
+                        if (toSend != null)
+                            Bot.Send.ClientPacket(toSend, "json");
+                        Bot.Events.ExtensionPacketReceived -= modifyPacket;
+
+                        void modifyPacket(dynamic packet)
+                        {
+                            string type = packet["params"].type;
+                            dynamic data = packet["params"].dataObj;
+                            if ((type is not null and "json") && (data.houseData is not null))
+                            {
+                                toSend = $"{{\"t\":\"xt\",\"b\":{{\"r\":-1,\"o\":{{\"cmd\":\"moveToArea\",\"areaName\":\"house\",\"uoBranch\":{JsonConvert.SerializeObject(data.uoBranch)},\"strMapFileName\":\"{data.strMapFileName}\",\"intType\":\"1\",\"monBranch\":[],\"houseData\":{Regex.Replace(JsonConvert.SerializeObject(data.houseData), Username(), "Skua user", RegexOptions.IgnoreCase)},\"sExtra\":\"\",\"areaId\":{data.areaId},\"strMapName\":\"house\"}}}}}}";
+                                Bot.Events.ExtensionPacketReceived -= modifyPacket;
+                            }
+                        }
+                    }
                     else
                         SendPackets($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
                 }
@@ -2836,6 +2857,9 @@ public class CoreBots
         // Opening ReadMe.txt
         if (result.Text == "OK")
             Process.Start("explorer", readMePath);
+
+        if (Bot.ShowMessageBox("If you have discord, consider joining our Discord server (https://discord.gg/pearlharbor).\nHere you can talk to other botters, ask questions, and get notified on new bots!\nDo you wish to join?", "Join our Discord", true) == true)
+            Process.Start("explorer", "https://discord.gg/pearlharbor");
     }
 
     private void CollectData(bool onStartup)
