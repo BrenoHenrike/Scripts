@@ -1,6 +1,6 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 
 public class TheLostKnightAndBackupBlade
@@ -8,7 +8,7 @@ public class TheLostKnightAndBackupBlade
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
-    public CoreFriday13th CoreFriday13th = new();
+    public CoreFriday13th F13 = new();
 
 
     public void ScriptMain(IScriptInterface bot)
@@ -22,13 +22,12 @@ public class TheLostKnightAndBackupBlade
 
     public void GetAll()
     {
-
         string[] AllRewards = (Core.EnsureLoad(7401).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(7403).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(7405).Rewards.Select(i => i.Name)).ToArray();
 
         if (Core.CheckInventory(AllRewards, toInv: false))
             return;
 
-        CoreFriday13th.Splatterwar();
+        F13.Splatterwar();
 
         Bot.Drops.Add(AllRewards);
 

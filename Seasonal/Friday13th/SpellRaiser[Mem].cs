@@ -1,15 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 
 public class SpellRaiser
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
-    public CoreFriday13th CoreFriday13th = new();
-
+    public CoreFriday13th F13 = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,7 +25,7 @@ public class SpellRaiser
         if (Core.CheckInventory(AllRewards, toInv: false))
             return;
 
-        CoreFriday13th.Splatterwar();
+        F13.Splatterwar();
 
         Bot.Drops.Add(AllRewards);
 

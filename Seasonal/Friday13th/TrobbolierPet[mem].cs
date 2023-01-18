@@ -1,13 +1,13 @@
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
 public class TrobbolierPet
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFriday13th F13 = new();
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFriday13th F13 = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

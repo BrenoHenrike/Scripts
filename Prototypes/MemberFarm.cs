@@ -13,19 +13,19 @@
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrb[Mem].cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/CruxShip.cs
-//cs_include Scripts/Prototypes/OdditiesMerge.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-//cs_include Scripts/Other/TrobbolierPet[Member].cs
-//cs_include Scripts/Other/MergeShops/DeadflyMerge.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/MergeShops/DeadflyMerge.cs
+//cs_include Scripts/Seasonal/Friday13th/MergeShops/OdditiesMerge.cs
+//cs_include Scripts/Seasonal/Friday13th/MergeShops/GonnaGetchaMerge.cs
+//cs_include Scripts/Seasonal/Friday13th/SpellRaiser[Mem].cs
+//cs_include Scripts/Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs
+//cs_include Scripts/Seasonal/Friday13th/TrobbolierPet[Mem].cs
 //cs_include Scripts/Other/MergeShops/BoneTowersMerge.cs
 //cs_include Scripts/Other/MergeShops/TachyonMerge.cs
-//cs_include Scripts/Other/MergeShops/GonnaGetchaMerge.cs
-//cs_include Scripts/Other/SpellRaiser[Member].cs
-//cs_include Scripts/Other/TheLostKnightAndBackupBlade[Member].cs
 //cs_include Scripts/Other/CoinCollectorSet[Member].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
@@ -109,7 +109,7 @@ public class MemberFarm
         //Evolved Orb Item Quest (Need ACs for this quest)
 
         Core.ToBank(Nation.bagDrops);
-        
+
         //Free AC Items on Member quest/shop
         CoinCollector.GetItems();
         BabyDragonOfAwe();
@@ -117,7 +117,7 @@ public class MemberFarm
         CruxVIPWeapon();
         DeepForestItems();
         DualWield();
-        
+
         //Free AC Items on Member Area
         HuntingMonster();
         SpellRaiser.GetAll();
@@ -127,9 +127,10 @@ public class MemberFarm
         //MergeShops - not working until find efficient method
         TachyonMerge();
         BoneTowerMerge();
+
         //Deadfly.BuyAllMerge();
         //GonnaGetcha.BuyAllMerge();
-        //OdditiesMergeShop();
+        //Oddities.BuyAllMerge();
     }
 
 
@@ -452,17 +453,6 @@ public class MemberFarm
             Core.ToBank(item);
         }
     }
-    
-    public void OdditiesMergeShop()
-    {
-        C13F.Oddities();
-
-        Oddities.MergeShopFabyo("all");
-        Oddities.MergeShopOddities("all");
-
-        Core.ToBank(Oddities.MergeShop1Items);
-        Core.ToBank(Oddities.MergeShop2Items);
-    }
 
     public void TachyonMerge()
     {
@@ -481,7 +471,7 @@ public class MemberFarm
     {
         if (Core.CheckInventory(BoneTowerShop, toInv: false))
             return;
-    
+
         Bot.Drops.Add(BoneTowerShop);
         foreach (string BoneTowerItem in BoneTowerShop)
         {
@@ -505,7 +495,7 @@ public class MemberFarm
         "DeathKnight Helm",
         "Silver DeathKnight Lord",
         "Silver DeathKnight's Blade",
-        "Silver DeathKnight Helm", 
+        "Silver DeathKnight Helm",
         "Golden DeathKnight Lord",
         "Golden DeathKnight's Blade",
         "Golden DeathKnight Helm",

@@ -4,17 +4,13 @@ using Skua.Core.Interfaces;
 
 public class CoreFriday13th
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
-
         Core.RunCore();
-
-        Core.SetOptions(false);
     }
 
     public void CompleteFriday13th()

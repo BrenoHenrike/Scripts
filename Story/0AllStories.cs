@@ -15,7 +15,7 @@
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 

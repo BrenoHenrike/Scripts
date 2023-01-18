@@ -1,14 +1,13 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 
 public class Puzzlebox
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
-    public CoreFriday13th CoreFriday13th = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFriday13th CoreFriday13th = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -18,5 +17,4 @@ public class Puzzlebox
 
         Core.SetOptions(false);
     }
-
 }

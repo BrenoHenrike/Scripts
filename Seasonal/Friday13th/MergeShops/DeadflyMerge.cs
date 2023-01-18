@@ -2,20 +2,18 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class DeadflyMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public static CoreAdvanced sAdv = new();
-    public CoreFriday13th CoreFriday13th = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
+    private static CoreAdvanced sAdv = new();
+    private CoreFriday13th F13 = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -36,6 +34,7 @@ public class DeadflyMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        F13.Deadfly();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("deadfly", 2037, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -60,7 +59,6 @@ public class DeadflyMerge
                 #endregion
 
                 case "Ragged Cloth Scrap":
-                    CoreFriday13th.Deadfly();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8212);

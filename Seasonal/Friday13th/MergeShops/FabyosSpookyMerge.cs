@@ -2,7 +2,7 @@
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/Friday13th/CoreFriday13th.cs
+//cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -25,9 +25,9 @@ public class FabyosSpookyMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Spooky Fabric Scrap", "Eerie Embellishment"});
+        Core.BankingBlackList.AddRange(new[] { "Spooky Fabric Scrap", "Eerie Embellishment" });
         Core.SetOptions();
-        
+
         BuyAllMerge();
 
         Core.SetOptions(false);
