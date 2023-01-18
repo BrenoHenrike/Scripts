@@ -94,29 +94,31 @@ public class CoreFriday13th
 
         // Captain Von Poach 3111
         Story.KillQuest(3111, "TreasureIsland", "Captain Von Poach");
+        if (Core.IsMember)
+        {
+            //Me Knickers Got a Big Hole Across th' Bum 3114
+            Story.KillQuest(3114, "Skullpunch", new[] { "Vampirate", "Fishbones" });
 
-        //Me Knickers Got a Big Hole Across th' Bum 3114
-        Story.KillQuest(3114, "Skullpunch", new[] { "Vampirate", "Fishbones" });
+            // Where'd Me Ship's Cargo? 3115
+            Story.KillQuest(3115, "Skullpunch", new[] { "Fishbones", "Fishbones", "Fishbones", "Fishbones" });
 
-        // Where'd Me Ship's Cargo? 3115
-        Story.KillQuest(3115, "Skullpunch", new[] { "Fishbones", "Fishbones", "Fishbones", "Fishbones" });
+            // A Most Important Package 3116
+            Story.KillQuest(3116, "Skullpunch", "Fishbones");
 
-        // A Most Important Package 3116
-        Story.KillQuest(3116, "Skullpunch", "Fishbones");
+            // Comfort Food 3117
+            Story.KillQuest(3117, "Skullpunch", new[] { "Shelleton", "Fishwing" });
 
-        // Comfort Food 3117
-        Story.KillQuest(3117, "Skullpunch", new[] { "Shelleton", "Fishwing" });
+            // Full o' Holes 3118
+            Story.KillQuest(3118, "Skullpunch", "Shelleton");
 
-        // Full o' Holes 3118
-        Story.KillQuest(3118, "Skullpunch", "Shelleton");
-
-        // Keelhaulin' a Kraken! 3119
-        Story.KillQuest(3119, "ChaosKraken", "Chaos Kraken");
+            // Keelhaulin' a Kraken! 3119
+            Story.KillQuest(3119, "ChaosKraken", "Chaos Kraken");
+        }
     }
 
     public void Lowe()
     {
-        if (Core.isCompletedBefore(764))
+        if (Core.isCompletedBefore(763))
             return;
 
         if (!Core.IsMember && !CalculateFriday13())
@@ -143,7 +145,7 @@ public class CoreFriday13th
         Story.MapItemQuest(754, "Brain", 132);
 
         // Spilt Salt 755
-        Story.KillQuest(755, "Brain", "Slimed Girl|Slimed Boy|Brain Slurper");
+        Story.KillQuest(755, "Brain", "Slimed Girl");
 
         // Defeat the Giant Brain Slime Prime 756
         Story.ChainQuest(756);
@@ -152,9 +154,9 @@ public class CoreFriday13th
         Story.KillQuest(757, "Ebildread", new[] { "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet", "Pink Ghostly Sheet" });
 
         // The Last 6 Chapters 758
-        Story.KillQuest(758, "Ebildread", new[] { "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier", "Pink Ghostly Soldier" });
+        Story.KillQuest(758, "Ebildread", new[] { "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier", "Pink Skeletal Soldier" });
 
-        // The Glossary 759
+        // The Glossary 759 
         Story.KillQuest(759, "Ebildread", "Jay Sun");
 
         // Cover Me 760
@@ -261,7 +263,7 @@ public class CoreFriday13th
         Story.KillQuest(1555, "FireRiver", "Swamp Thing");
 
         // Locket Holds the Key 1556
-        Story.KillQuest(1556, "FireRiver", "Lava Bat|Lava Garou");
+        Story.KillQuest(1556, "FireRiver", "Lava Bat");
 
         // Plans Fit for a King 1557
         Story.MapItemQuest(1557, "FireRiver", 792, 10);
@@ -874,7 +876,7 @@ public class CoreFriday13th
         Story.KillQuest(8658, "Oddities", new[] { "Cursed Curio", "Gothic Chest", "Oddity Swarm" });
 
         // Stuffy Guests  8659
-        Story.KillQuest(8659, "Oddities", "Creepy Baby|Dready Bear");
+        Story.KillQuest(8659, "Oddities", "Creepy Baby");
 
         // Snotty Crumbs 8660
         Story.KillQuest(8660, "Oddities", new[] { "Oddity Swarm", "Cursed Doll-Head" });
