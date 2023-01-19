@@ -34,14 +34,8 @@ public class OdditiesMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        bool CalculateFriday13()
-            => new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete the Required Quests.");
+        if (!F13.Friday13thCheck("Oddities Merge"))
             return;
-        }
 
         F13.Oddities();
         //Only edit the map and shopID here

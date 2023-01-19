@@ -16,33 +16,28 @@ public class CreepyUndeadMonkeyQuest
         Core.BankingBlackList.Add("Twisted Monkey Paw");
         Core.SetOptions();
 
-        RandomReward(4106);
+        RandomReward();
 
         Core.SetOptions(false);
     }
 
-    private void RandomReward(int questID, int quant = 1)
+    private void RandomReward()
     {
         if (!Core.IsMember && !CalculateFriday13())
         {
-            Core.Logger("You must be Member or wait until Friday13th to Acess Twig.");
+            Core.Logger("You must be Member or wait until a week before Friday the 13th to access /twig.");
             return;
         }
 
         Fotia.UnderRealm();
 
+        string[] QuestRewards = Core.QuestRewards(4106);
+        Bot.Drops.Add(QuestRewards);
         int i = 0;
-
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-
-        foreach (ItemBase item in RewardOptions)
-            Bot.Drops.Add(item.Name);
-
-        string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
         if (!Core.CheckInventory("Golden Bough"))
         {
-            Bot.Drops.Add("Golden Bough");
+            Core.AddDrop("Golden Bough");
             Core.EquipClass(ClassType.Farm);
 
             Core.EnsureAccept(3010);
@@ -51,45 +46,42 @@ public class CreepyUndeadMonkeyQuest
         }
 
         Bot.Quests.UpdateQuest(3010);
-        Core.RegisterQuests(questID);
-        foreach (ItemBase Reward in RewardOptions)
+        Core.RegisterQuests(4106);
+        foreach (string Reward in QuestRewards)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                Core.Logger($"{Reward.Name} Found.");
-            else
+            if (Core.CheckInventory(Reward, toInv: false))
             {
-                Core.FarmingLogger(Reward.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
-                {
+                Core.Logger($"{Reward} found.");
+                continue;
+            }
 
-                    Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("alliance", "Good Soldier", "Good Soldier's Face");
-                    Core.HuntMonster("alliance", "Evil Soldier", "Evil Soldier's Skull");
-                    Core.HuntMonster("neverlore", "Whablobble", "Whablobble Tongue");
-                    Core.HuntMonster("thespan", "Minx Fairy", "Minx Fairy Wings");
-                    Core.HuntMonster("battlecon", "BrutalCorn", "Evil Con Corny");
-                    Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant's Peanuts");
-                    Core.HuntMonster("arcangrove", "Gorillaphant", "Fresh Gorilla Paw");
-                    Core.HuntMonster("arcangrove", "Gorillaphant", "Bananas in pajamas");
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("battlefowl", "Chickencow", "Chickencow Head");
-                    Core.HuntMonster("mafic", "Scoria Serpent", "Scoria Serpent Charmer");
-                    Core.HuntMonster("underrealm", "Grief", "Grief's Tears");
-                    Core.HuntMonster("deepchaos", "Kathool", "Kathool... All of him");
-                    Core.HuntMonster("twig", "Sweetish Fish", "Candy from a Sweetish Fish");
+            Core.FarmingLogger(Reward, 1);
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward, toInv: false))
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("alliance", "Good Soldier", "Good Soldier's Face");
+                Core.HuntMonster("alliance", "Evil Soldier", "Evil Soldier's Skull");
+                Core.HuntMonster("neverlore", "Whablobble", "Whablobble Tongue");
+                Core.HuntMonster("thespan", "Minx Fairy", "Minx Fairy Wings");
+                Core.HuntMonster("battlecon", "BrutalCorn", "Evil Con Corny");
+                Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant's Peanuts");
+                Core.HuntMonster("arcangrove", "Gorillaphant", "Fresh Gorilla Paw");
+                Core.HuntMonster("arcangrove", "Gorillaphant", "Bananas in pajamas");
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("battlefowl", "Chickencow", "Chickencow Head");
+                Core.HuntMonster("mafic", "Scoria Serpent", "Scoria Serpent Charmer");
+                Core.HuntMonster("underrealm", "Grief", "Grief's Tears");
+                Core.HuntMonster("deepchaos", "Kathool", "Kathool... All of him");
+                Core.HuntMonster("twig", "Sweetish Fish", "Candy from a Sweetish Fish");
 
-                    i++;
+                i++;
 
-                    if (i % 5 == 0)
-                    {
-                        Core.JumpWait();
-                        Core.ToBank(QuestRewards);
-                    }
-                }
+                if (i % 5 == 0)
+                    Core.ToBank(QuestRewards);
             }
         }
     }
 
     bool CalculateFriday13()
-            => new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5;
+        => new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5;
 }

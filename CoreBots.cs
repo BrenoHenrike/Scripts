@@ -290,6 +290,8 @@ public class CoreBots
                         if (toSend != null)
                             Bot.Send.ClientPacket(toSend, "json");
                         Bot.Events.ExtensionPacketReceived -= modifyPacket;
+                        for (int i = 0; i < 7; i++)
+                            Bot.Send.ClientServer(" ", "");
 
                         void modifyPacket(dynamic packet)
                         {
@@ -2380,6 +2382,10 @@ public class CoreBots
 
             case "necrodungeon":
                 SimpleQuestBypass(2061);
+                break;
+
+            case "oddities":
+                SimpleQuestBypass(8667);
                 break;
 
             case "stormtemple":

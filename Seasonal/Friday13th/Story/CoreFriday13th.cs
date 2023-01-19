@@ -1,12 +1,21 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using System.Runtime.CompilerServices;
 
 public class CoreFriday13th
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreStory Story = new();
+
+    public bool Friday13thCheck([CallerMemberName] string caller = "")
+    {
+        bool _bool = Core.IsMember || (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5);
+        if (!_bool)
+            Core.Logger($"You must be Member or wait until a week before Friday the 13th to complete {caller}.");
+        return _bool;
+    }
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -15,6 +24,9 @@ public class CoreFriday13th
 
     public void CompleteFriday13th()
     {
+        if (!Friday13thCheck())
+            return;
+
         Skullpunch();
         Lowe();
         Saloonfront();
@@ -35,14 +47,8 @@ public class CoreFriday13th
 
     public void Skullpunch()
     {
-        if (Core.isCompletedBefore(3119))
+        if (Core.isCompletedBefore(3119) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Skullpunch.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -90,6 +96,7 @@ public class CoreFriday13th
 
         // Captain Von Poach 3111
         Story.KillQuest(3111, "TreasureIsland", "Captain Von Poach");
+        
         if (Core.IsMember)
         {
             //Me Knickers Got a Big Hole Across th' Bum 3114
@@ -114,14 +121,8 @@ public class CoreFriday13th
 
     public void Lowe()
     {
-        if (Core.isCompletedBefore(763))
+        if (Core.isCompletedBefore(763) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Lowe.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -173,14 +174,8 @@ public class CoreFriday13th
 
     public void Saloonfront()
     {
-        if (Core.isCompletedBefore(1057))
+        if (Core.isCompletedBefore(1057) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Saloon Front.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -235,15 +230,8 @@ public class CoreFriday13th
 
     public void Firehouse()
     {
-        if (Core.isCompletedBefore(1564))
+        if (Core.isCompletedBefore(1564) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Firehouse.");
-            return;
-        }
-
         Story.PreLoad(this);
 
         // Gaining Trust 1552
@@ -295,14 +283,8 @@ public class CoreFriday13th
 
     public void Sleezter()
     {
-        if (Core.isCompletedBefore(1972))
+        if (Core.isCompletedBefore(1972) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Sleezter.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -348,14 +330,8 @@ public class CoreFriday13th
 
     public void Neverhub()
     {
-        if (Core.isCompletedBefore(2234))
+        if (Core.isCompletedBefore(2234) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Neverlore.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -405,21 +381,13 @@ public class CoreFriday13th
 
     public void Battledoom()
     {
-        if (Core.isCompletedBefore(4656))
+        if (Core.CheckInventory("Cursed Mirror of Enutrof") || !Friday13thCheck())
             return;
 
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Battledoom.");
-            return;
-        }
-
-        Core.BankingBlackList.AddRange(new[] { "Unlucky Gem I", "Unlucky Gem II", "Unlucky Gem III",
-                                               "Unlucky Gem IV", "Unlucky Gem V", "Unlucky Gem VI",
-                                               "Unlucky Gem VII", "Cursed Mirror of Enutrof", "Shadowglass Shard" });
-
-        if (Core.CheckInventory("Cursed Mirror of Enutrof"))
-            return;
+        //Banking Black List doesn't do anything after SetOptions has been called. ~Lord Exelot
+        //Core.BankingBlackList.AddRange(new[] { "Unlucky Gem I", "Unlucky Gem II", "Unlucky Gem III",
+        //                                       "Unlucky Gem IV", "Unlucky Gem V", "Unlucky Gem VI",
+        //                                       "Unlucky Gem VII", "Cursed Mirror of Enutrof", "Shadowglass Shard" });
 
         Story.LegacyQuestManager(QuestLogic, 4648, 4649, 4650, 4651, 4652, 4653, 4654, 4655, 4656);
 
@@ -476,14 +444,8 @@ public class CoreFriday13th
 
     public void Wormhole()
     {
-        if (Core.isCompletedBefore(5066))
+        if (Core.isCompletedBefore(5066) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Wormhole.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -540,14 +502,8 @@ public class CoreFriday13th
 
     public void Crownsreachfxiii()
     {
-        if (Core.isCompletedBefore(5646))
+        if (Core.isCompletedBefore(5646) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Crownsreach FXIII.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -584,14 +540,8 @@ public class CoreFriday13th
 
     public void Gonnagetcha()
     {
-        if (Core.isCompletedBefore(6269))
+        if (Core.isCompletedBefore(6269) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Gonnagetcha.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -636,14 +586,8 @@ public class CoreFriday13th
 
     public void Greymoor()
     {
-        if (Core.isCompletedBefore(6420))
+        if (Core.isCompletedBefore(6420) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Greymoor.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -689,14 +633,8 @@ public class CoreFriday13th
 
     public void Puzzlebox()
     {
-        if (Core.isCompletedBefore(7399))
+        if (Core.isCompletedBefore(7399) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Puzzlebox.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -724,16 +662,10 @@ public class CoreFriday13th
 
     public void Splatterwar()
     {
+        if (Core.isCompletedBefore(7407) || !Friday13thCheck())
+            return;
+
         Puzzlebox();
-
-        if (Core.isCompletedBefore(7407))
-            return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Splatter War.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -764,14 +696,8 @@ public class CoreFriday13th
 
     public void Deadfly()
     {
-        if (Core.isCompletedBefore(8232))
+        if (Core.isCompletedBefore(8232) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Deadfly.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -835,14 +761,8 @@ public class CoreFriday13th
 
     public void Oddities()
     {
-        if (Core.isCompletedBefore(8667))
+        if (Core.isCompletedBefore(8667) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Oddities.");
-            return;
-        }
 
         Story.PreLoad(this);
 
@@ -908,14 +828,8 @@ public class CoreFriday13th
 
     public void BlackMaze()
     {
-        if (Core.isCompletedBefore(9055))
+        if (Core.isCompletedBefore(9055) || !Friday13thCheck())
             return;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete Oddities.");
-            return;
-        }
 
         //9045 | Gobbling Globlins
         Story.KillQuest(9045, "blackmaze", "Globlin");
@@ -958,7 +872,4 @@ public class CoreFriday13th
         //9055 | With the Power
         Story.KillQuest(9055, "blackmaze", "Shadow Fernando");
     }
-
-    bool CalculateFriday13()
-            => new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5;
 }
