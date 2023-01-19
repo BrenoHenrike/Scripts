@@ -12,7 +12,7 @@ public class ValariansMerge
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreAdvanced Adv = new();
-    private CoreFriday13th CoreFriday13Th = new();
+    private CoreFriday13th F13 = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -34,16 +34,10 @@ public class ValariansMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        bool CalculateFriday13()
-            => new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5;
-
-        if (!Core.IsMember && !CalculateFriday13())
-        {
-            Core.Logger("You must be Member or wait until Friday13th to complete the Required Quests.");
+        if (!F13.Friday13thCheck("Valarians Merge"))
             return;
-        }
 
-        CoreFriday13Th.BlackMaze();
+        F13.BlackMaze();
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("blackmaze", 2218, findIngredients, buyOnlyThis, buyMode: buyMode);
