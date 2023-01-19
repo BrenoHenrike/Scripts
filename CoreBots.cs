@@ -2382,6 +2382,10 @@ public class CoreBots
                 SimpleQuestBypass(2061);
                 break;
 
+            case "Oddities":
+                SimpleQuestBypass(8667);
+                break;
+
             case "stormtemple":
                 SimpleQuestBypass(2814);
                 break;
