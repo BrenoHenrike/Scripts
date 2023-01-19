@@ -53,7 +53,7 @@ public class CoreNSOD
 
     public void GetNSOD()
     {
-        if (Core.CheckInventory("Necrotic Sword of Doom") /*&& Core.hasAchievement(nosd badge?)*/)
+        if (Core.CheckInventory("Necrotic Sword of Doom") && Core.HasWebBadge("Necrotic Sword of Doom"))
             return;
 
         if (!Core.CheckInventory("Necrotic Sword of Doom"))
@@ -89,7 +89,7 @@ public class CoreNSOD
         Core.Relogin();
 
         if (!Core.CheckInventory(14474) && !Core.IsMember)
-            Bot.Handlers.RegisterOnce(1, h => Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true));
+            Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true);
     }
 
     #region Void Auras
