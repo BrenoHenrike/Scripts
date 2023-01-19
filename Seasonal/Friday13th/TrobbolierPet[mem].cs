@@ -34,7 +34,7 @@ public class TrobbolierPet
         foreach (ItemBase Reward in RewardOptions)
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
-                return;
+                continue;
             Core.FarmingLogger(Reward.Name, 1);
 
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
