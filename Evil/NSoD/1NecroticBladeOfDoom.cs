@@ -36,7 +36,7 @@ public class NecroticBladeOfDoom
 
         Core.SetOptions();
 
-        NSoD.GetNSOD();
+        NSoD.GetNBOD();
 
         Core.SetOptions(false);
     }
