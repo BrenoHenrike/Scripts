@@ -13,7 +13,7 @@ public class ArchfiendDeathLord
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private Fiendshard_Story fiendshard = new();
+    private Fiendshard_Story Fiendshard = new();
     private CoreNation Nation = new();
     private WillpowerExtraction Willpower = new();
 
@@ -39,7 +39,7 @@ public class ArchfiendDeathLord
             return;
 
         Core.AddDrop(RewardsList.ToArray());
-        fiendshard.Fiendshard_Questline();
+        Fiendshard.Fiendshard_Questline();
 
         Core.RegisterQuests(7900);
         while (!Bot.ShouldExit && !Core.CheckInventory(RewardsList))
