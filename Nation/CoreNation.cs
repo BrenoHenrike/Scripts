@@ -689,6 +689,14 @@ public class CoreNation
         if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
             returnPolicyDuringSupplies = _returnSupplies;
 
+        string[] rewards = {
+            "Tainted Gem",
+            "Dark Crystal Shard",
+            "Gem of Nulgath",
+            "Blood Gem of the Archfiend",
+            "Diamond of Nulgath"
+        };
+
         if (item != "Any")
             Core.FarmingLogger(item, quant);
 
@@ -761,7 +769,7 @@ public class CoreNation
             //     }
             // } //Disabled to to "Diamonds of Time"'s low Drop rate.
 
-            if (item != "Any")
+            if (item != "Any" && rewards.Contains(item))
                 Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
         Core.CancelRegisteredQuests();
