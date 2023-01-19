@@ -2382,7 +2382,7 @@ public class CoreBots
                 SimpleQuestBypass(2061);
                 break;
 
-            case "Oddities":
+            case "oddities":
                 SimpleQuestBypass(8667);
                 break;
 
