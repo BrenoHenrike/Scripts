@@ -105,6 +105,7 @@ public class CoreNSOD
             Core.KillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
         }
         Core.BuyItem("shadowfall", 793, "Necrotic Blade of Doom");
+        Core.Logger("Don't forget to use AE's Buy-Back system to retreive your Necrotic Sword of Doom", messageBox: true);
     }
 
     #region Void Auras
