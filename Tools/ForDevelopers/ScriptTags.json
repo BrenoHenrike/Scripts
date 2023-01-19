@@ -54,7 +54,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyAegisRep.cs",
-    "description": "Army rep for: Aegis",
+    "description": "Farm reputation with your army. Faction: Aegis",
     "tags": [
       "Army",
       "Reputation",
@@ -63,7 +63,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyAllRep.cs",
-    "description": "Army rep for: all reps in order.",
+    "description": "Farm reputation with your army. Faction: all reps in order.",
     "tags": [
       "Army",
       "Reputation",
@@ -72,7 +72,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyArcangroveRep.cs",
-    "description": "Army rep for: Arcangrove",
+    "description": "Farm reputation with your army. Faction: Arcangrove",
     "tags": [
       "Army",
       "Reputation",
@@ -81,7 +81,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyBaconCatRep.cs",
-    "description": "Army rep for: baconcat",
+    "description": "Farm reputation with your army. Faction: baconcat",
     "tags": [
       "Army",
       "Reputation",
@@ -90,7 +90,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs",
-    "description": "Army rep for: Brethwren",
+    "description": "Farm reputation with your army. Faction: Brethwren",
     "tags": [
       "Army",
       "Reputation",
@@ -99,7 +99,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs",
-    "description": "Army rep for: chaos Militia",
+    "description": "Farm reputation with your army. Faction: chaos Militia",
     "tags": [
       "Army",
       "Reputation",
@@ -108,7 +108,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyChaosRep.cs",
-    "description": "Army rep for: Chaos",
+    "description": "Farm reputation with your army. Faction: Chaos",
     "tags": [
       "Army",
       "Reputation",
@@ -117,7 +117,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs",
-    "description": "Army rep for: Chrono Span",
+    "description": "Farm reputation with your army. Faction: Chrono Span",
     "tags": [
       "Army",
       "Reputation",
@@ -126,7 +126,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
-    "description": "Army rep for: Craggle Rock",
+    "description": "Farm reputation with your army. Faction: Craggle Rock",
     "tags": [
       "Army",
       "Reputation",
@@ -135,7 +135,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs",
-    "description": "Army rep for: Doomwood",
+    "description": "Farm reputation with your army. Faction: Doomwood",
     "tags": [
       "Army",
       "Reputation",
@@ -144,7 +144,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyDreadfireRep.cs",
-    "description": "Army rep for: Dreadfire",
+    "description": "Farm reputation with your army. Faction: Dreadfire",
     "tags": [
       "Army",
       "Reputation",
@@ -153,7 +153,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyDreadrockRep.cs",
-    "description": "Army rep for: Dreadrock",
+    "description": "Farm reputation with your army. Faction: Dreadrock",
     "tags": [
       "Army",
       "Reputation",
@@ -162,7 +162,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs",
-    "description": "Army rep for: Druid Grove",
+    "description": "Farm reputation with your army. Faction: Druid Grove",
     "tags": [
       "Army",
       "Reputation",
@@ -171,7 +171,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs",
-    "description": "Army rep for: Dwarfhold",
+    "description": "Farm reputation with your army. Faction: Dwarfhold",
     "tags": [
       "Army",
       "Reputation",
@@ -180,7 +180,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs",
-    "description": "Army rep for: Elemental Master",
+    "description": "Farm reputation with your army. Faction: Elemental Master",
     "tags": [
       "Army",
       "Reputation",
@@ -189,7 +189,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyEmberseaRep.cs",
-    "description": "Army rep for: Embersea",
+    "description": "Farm reputation with your army. Faction: Embersea",
     "tags": [
       "Army",
       "Reputation",
@@ -198,7 +198,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyEternalRep.cs",
-    "description": "Army rep for: Eternal",
+    "description": "Farm reputation with your army. Faction: Eternal",
     "tags": [
       "Army",
       "Reputation",
@@ -207,7 +207,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyEtherstormRep.cs",
-    "description": "Army rep for: Etherstorm",
+    "description": "Farm reputation with your army. Faction: Etherstorm",
     "tags": [
       "Army",
       "Reputation",
@@ -216,7 +216,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs",
-    "description": "Army rep for: Good & Evil",
+    "description": "Farm reputation with your army. Faction: Good & Evil",
     "tags": [
       "Army",
       "Reputation",
@@ -226,7 +226,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyHollowbornRep.cs",
-    "description": "Army rep for: Hollowborn",
+    "description": "Farm reputation with your army. Faction: Hollowborn",
     "tags": [
       "Army",
       "Reputation",
@@ -235,7 +235,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs",
-    "description": "Army rep for: Infernal Army",
+    "description": "Farm reputation with your army. Faction: Infernal Army",
     "tags": [
       "Army",
       "Reputation",
@@ -244,7 +244,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyLoremasterRep.cs",
-    "description": "Army rep for: Lore Master",
+    "description": "Farm reputation with your army. Faction: Lore Master",
     "tags": [
       "Army",
       "Reputation",
@@ -253,7 +253,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyLycanRep.cs",
-    "description": "Army rep for: Lycan",
+    "description": "Farm reputation with your army. Faction: Lycan",
     "tags": [
       "Army",
       "Reputation",
@@ -262,7 +262,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs",
-    "description": "Army rep for: Monster Hunter",
+    "description": "Farm reputation with your army. Faction: Monster Hunter",
     "tags": [
       "Army",
       "Reputation",
@@ -271,7 +271,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs",
-    "description": "Army rep for: Myterious Dungeon",
+    "description": "Farm reputation with your army. Faction: Myterious Dungeon",
     "tags": [
       "Army",
       "Reputation",
@@ -280,7 +280,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyMythsongRep.cs",
-    "description": "Army rep for: mythsong",
+    "description": "Farm reputation with your army. Faction: mythsong",
     "tags": [
       "Army",
       "Reputation",
@@ -289,7 +289,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs",
-    "description": "Army rep for: Necro Crypt",
+    "description": "Farm reputation with your army. Faction: Necro Crypt",
     "tags": [
       "Army",
       "Reputation",
@@ -298,7 +298,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs",
-    "description": "Army rep for: North Pointe",
+    "description": "Farm reputation with your army. Faction: North Pointe",
     "tags": [
       "Army",
       "Reputation",
@@ -307,7 +307,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmyRavenlossRep.cs",
-    "description": "Army rep for: Ravenloss",
+    "description": "Farm reputation with your army. Faction: Ravenloss",
     "tags": [
       "Army",
       "Reputation",
@@ -316,7 +316,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmySandseaRep.cs",
-    "description": "Army rep for: Sandsea",
+    "description": "Farm reputation with your army. Faction: Sandsea",
     "tags": [
       "Army",
       "Reputation",
@@ -325,7 +325,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmySomniaRep.cs",
-    "description": "Army rep for: Somnia",
+    "description": "Farm reputation with your army. Faction: Somnia",
     "tags": [
       "Army",
       "Reputation",
@@ -334,7 +334,7 @@
   },
   {
     "path": "Army/ArmyFarm/Rep/ArmySwordhavenRep.cs",
-    "description": "Army rep for: Sword Haven",
+    "description": "Farm reputation with your army. Faction: Sword Haven",
     "tags": [
       "Army",
       "Reputation",
