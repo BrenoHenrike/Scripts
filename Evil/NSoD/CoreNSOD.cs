@@ -92,6 +92,21 @@ public class CoreNSOD
             Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true);
     }
 
+    public void GetNBOD()
+    {
+        if (Core.CheckInventory("Necrotic Blade of Doom"))
+            return;
+
+        GetNSOD();
+        VoidAuras(750);
+        if (!Core.CheckInventory("Void Essentia"))
+        {
+            Core.Logger("Flibbitiestgibbet is a very tough monster, I hope you brought your army/butler/friends!");
+            Core.KillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
+        }
+        Core.BuyItem("shadowfall", 793, "Necrotic Blade of Doom");
+    }
+
     #region Void Auras
 
     public void VoidAuras(int quant = 7500, bool getSDKA = false)
