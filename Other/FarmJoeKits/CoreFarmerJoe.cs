@@ -118,7 +118,14 @@ public class CoreFarmerJoe
 
         if (Bot.Player.Level < 10)
         {
+            Core.SoloClass = "Oracle";
+            Core.FarmClass = "Mage";
+
             Core.RegisterQuests(4007);
+            Adv.BuyItem("classhalla", 174, "Mage");
+            Adv.BuyItem("classhalla", 759, "Oracle");
+            Adv.rankUpClass("Mage");
+            Adv.rankUpClass("Oracle");
             Core.EquipClass(ClassType.Solo);
             while (!Bot.ShouldExit && Bot.Player.Level < 10)
             {
@@ -137,22 +144,30 @@ public class CoreFarmerJoe
             Core.CancelRegisteredQuests();
         }
 
-
         if (Bot.Player.Level < 20)
         {
-            Adv.BuyItem("classhalla", 176, "Healer");
+            Core.SoloClass = "Oracle";
+            Core.FarmClass = "Mage";
+
+            Adv.BuyItem("classhalla", 174, "Mage");
             Adv.BuyItem("classhalla", 759, "Oracle");
             Adv.BuyItem("classhalla", 174, "Mage's Hood");
             Adv.BuyItem("classhalla", 176, "White Feather Wings");
             Core.Equip("White Feather Wings");
             Core.Equip("Mage's Hood");
-            Core.Equip("Oracle");
-            InvEn.EnhanceInventory();
+            Adv.rankUpClass("Mage");
+            Adv.rankUpClass("Oracle");
             Farm.IcestormArena(20, true);
+            Core.SoloClass = "Oracle";
+            Core.FarmClass = "Mage";
+            InvEn.EnhanceInventory();
         }
 
         if (Bot.Player.Level < 30)
         {
+            Core.SoloClass = "Oracle";
+            Core.FarmClass = "Mage";
+
             InvEn.EnhanceInventory();
             Farm.IcestormArena(30, true);
         }
@@ -178,35 +193,43 @@ public class CoreFarmerJoe
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
-        Adv.GearStore();
         Adv.BuyItem("classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
-        Adv.GearStore(true);
-        InvEn.EnhanceInventory();
+        Adv.BuyItem("classhalla", 759, "Oracle");
+        Adv.rankUpClass("Oracle", false);
         DCSK.GetWep();
+        InvEn.EnhanceInventory();
         #endregion Dual Chainsaw Katanas
 
-        #region Level to 75
+        #region Leve30 to 75
         Core.Logger("Level to 75");
         Core.EquipClass(ClassType.Farm);
         foreach (int level in new int[] { 45, 50, 55, 60, 65, 70, 75 })
         {
             if (Bot.Player.Level >= 50)
             {
-                Adv.BuyItem("classhalla", 759, "Oracle");
-                Adv.rankUpClass("Oracle");
-                Core.Equip("Oracle");
-
                 DS.GetDSS();
                 Core.Equip("DragonSoul Shinobi");
                 SS.GetSSorc();
+
                 Core.SoloClass = "DragonSoul Shinobi";
                 Core.FarmClass = "Scarlet Sorceress";
+
+                Farm.Experience(level);
+                InvEn.EnhanceInventory();
             }
             if (Bot.Player.Level >= 65)
             {
                 InvEn.EnhanceInventory();
                 AP.GetAP();
+                EI.GetEI();
+
+                Core.SoloClass = "Arch Paladin";
+                Core.FarmClass = "Eternal Inversionist";
+
+                Core.EquipClass(ClassType.Farm);
+                Farm.Experience(level);
+                InvEn.EnhanceInventory();
             }
             if (Bot.Player.Level < level)
             {
@@ -220,31 +243,37 @@ public class CoreFarmerJoe
     public void Level75to100()
     {
         #region Prepare for Lvl100
-        Core.Logger("step 1 Farming Classes");
-        // P1: Healer LOC
-        Core.Equip("Healer");
-        Adv.rankUpClass("Healer");
+        // P1: Healer for xiang
+        Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
+        "class to prep for xiang (Skipped if you have Dragon of Time.");
+
+        if (!Core.CheckInventory("Dragon of Time"))
+        {
+            if (!Core.CheckInventory(new[] { "Healer", "Healer (Rare)" }))
+                Adv.BuyItem("classhalla", 176, "Healer");
+            if (Core.CheckInventory("Healer (Rare)"))
+                Adv.rankUpClass("Healer (Rare)");
+            else Adv.rankUpClass("Healer");
+        }
+
+        //P2 Chaos Shenanagins
+        Core.Logger("P2: Chaos Shenanagins");
         LOC.Complete13LOC();
-
-        // P2: Mage Chaos Rep
-        Core.Equip("Mage");
-        Core.EquipClass(ClassType.Farm);
         Farm.ChaosREP();
-
-        // P3: Chaos Slayer
         Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker", shopItemID: 15402);
         Adv.rankUpClass("Chaos Slayer Berserker");
         Core.Equip("Chaos Slayer Berserker");
 
         //Step 2 Solo Class:
-        Core.Logger("step 2 LOO Class Daily");
+        Core.Logger("P3: Solo Classes & Weapon");
+        Core.Logger("Getting Lord of order.");
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
-        Core.Logger("Step 3 Dailies for Classes");
+        Core.Logger("P3-1: Dailies for Classes");
         FAD.DoAllDailies();
 
-        Core.Logger("Step 4 Blade and Cape of Awe");
+        Core.Logger("P3 - 2: Blade and Cape of Awe");
         Farm.BladeofAweREP(6, true);
         Core.ToBank("Blade of Awe");
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
@@ -252,24 +281,18 @@ public class CoreFarmerJoe
         COA.GetCoA();
         InvEn.EnhanceInventory();
 
-        Core.Logger("Step 5 Burning Blade");
-        Core.Equip("ArchPaladin");
+        Core.Logger("P3 - 3: Burning Blade");
         BB.GetBurningBlade();
-        InvEn.EnhanceInventory();
 
-        Core.Logger("Step 6 Improving Efficiency, and more Classes");
-        EI.GetEI();
-        Core.Equip("Eternal Inversionist");
+        Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         Shaman.GetShaman();
         GB.GetGB();
         SC.GetSC();
-        Adv.BuyItem("Classhalla", 178, "Ninja");
-        Adv.rankUpClass("Ninja");
         #endregion Prepare for Lvl100
 
 
         #region Leveling to 100
-        Core.Logger("Leveling to 100");
+        Core.Logger("P4 Leveling to 100");
         Farm.Experience();
         InvEn.EnhanceInventory();
         #endregion Leveling to 100}
@@ -278,14 +301,14 @@ public class CoreFarmerJoe
     public void EndGame()
     {
         #region Ending & Extras 
-        Scythe.GetHBReapersScythe();
-        InvEn.EnhanceInventory();
-
-        #endregion Ending & Extras
-
 
         if (Bot.Config.Get<bool>("OutFit"))
             Outfit();
+
+        Scythe.GetHBReapersScythe();
+        //Add more eventualy >.> please?
+
+        #endregion Ending & Extras
     }
 
 
@@ -295,7 +318,7 @@ public class CoreFarmerJoe
         //Easy Difficulty Stuff
         RagsandHat();
         ServersAreDown();
-        Adv.EnhanceEquipped(EnhancementType.Lucky);
+        Adv.SmartEnhance(Bot.Player.CurrentClass.ToString());
 
         //Extra Stuff
         Pets(PetChoice.None);
