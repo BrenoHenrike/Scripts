@@ -34,17 +34,6 @@ jobs:
       with:
         name: scripts.json
         path: scripts.json
-    # - name: Commit and push files
-    #   uses: actions/github-script@0.10.0
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     script: |
-    #       git config --local user.email "action@github.com"
-    #       git config --local user.name "GitHub Action"
-    #       git add output.json
-    #       git commit -m "Add script.json"
-    #       git push
 
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v4
@@ -52,3 +41,8 @@ jobs:
         commit_message: 'Automatic commit by GitHub Actions'
         files: 'scripts.json'
         push: true
+
+    - name: Delete artifact
+      uses: actions/delete-artifacts@v2
+      with:
+        name: scripts.json
