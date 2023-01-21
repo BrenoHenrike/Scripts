@@ -36,8 +36,6 @@ public class BambloozevsDrudgen
             Nation.ContractExchange(ChooseReward.GemofNulgath);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", 100))
             Nation.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", 100))
-            Nation.ContractExchange(ChooseReward.TotemofNulgath);
 
     }
 }
