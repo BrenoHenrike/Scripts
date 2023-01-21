@@ -13,17 +13,15 @@ public class ArmyLegionToken
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
     public CoreLegion Legion = new();
 
-    private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyLegionToken";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<Method>("Method", "Which method to get LTs?", "Choose your method", Method.Dreadrock),
         sArmy.player1,
@@ -38,13 +36,10 @@ public class ArmyLegionToken
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Loot);
-
+        Core.BankingBlackList.Add("Legion Token");
         Core.SetOptions(disableClassSwap: false);
 
         Setup(Bot.Config.Get<Method>("Method"), 25001);
-
-        Core.SetOptions(false);
     }
 
 
@@ -204,6 +199,7 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("Infernal Caladbolg"))
                     Core.Logger("Sword not owned, stopping", stopBot: true);
 
+                Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
                 if (Core.CheckInventory("Shogun Paragon Pet"))
@@ -227,6 +223,7 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("Hardcore Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
+                Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.dmgAll);
 
                 if (!Bot.Quests.IsUnlocked(793))
@@ -296,8 +293,6 @@ public class ArmyLegionToken
         Core.CancelRegisteredQuests();
     }
 
-
-    private string[] Loot = { "Legion Token" };
     public enum Method
     {
         Dreadrock = 0,
