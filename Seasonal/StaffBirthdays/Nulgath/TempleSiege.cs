@@ -18,10 +18,10 @@ public class TempleSiege
 
     public void CompleteTempleSiege()
     {
-        if (!Core.isSeasonalMapActive("templesiege"))
+        if (Core.isCompletedBefore(9067))
             return;
 
-        if (Core.isCompletedBefore(9067))
+        if (!Core.isSeasonalMapActive("templesiege"))
             return;
 
         Story.PreLoad(this);
@@ -29,7 +29,7 @@ public class TempleSiege
         //Fairweather Elementals || 9058
         Story.KillQuest(9058, "templesiege", "Light Elemental");
         Story.MapItemQuest(9058, "templesiege", 11129);
-        
+
         //In Case of Emergency || 9059
         Story.KillQuest(9059, "templesiege", "Overdriven Paladin");
 

@@ -67,7 +67,6 @@ public class TempleSiegeMerge
                 #endregion
 
                 case "Gem of Nulgath":
-                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmGemofNulgath(quant);
                     break;
 
@@ -87,27 +86,22 @@ public class TempleSiegeMerge
                     break;
 
                 case "Unidentified 13":
-                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmUni13(quant);
                     break;
 
                 case "Tainted Gem":
-                    Core.FarmingLogger(req.Name, quant);
                     Nation.SwindleBulk(quant);
                     break;
 
                 case "Dark Crystal Shard":
-                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmDarkCrystalShard(quant);
                     break;
 
                 case "Diamond of Nulgath":
-                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmDiamondofNulgath(quant);
                     break;
 
                 case "Blood Gem of the Archfiend":
-                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmBloodGem(quant);
                     break;
 
@@ -133,12 +127,10 @@ public class TempleSiegeMerge
                     break;
 
                 case "Behemoth Blade of Light":
-                    Core.FarmingLogger(req.Name, quant);
                     DB.BehemothBladeof("Light");
                     break;
 
                 case "Behemoth Blade of Shadow":
-                    Core.FarmingLogger(req.Name, quant);
                     DB.BehemothBladeof("Shadow");
                     break;
 
