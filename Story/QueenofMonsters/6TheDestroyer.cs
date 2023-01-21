@@ -1,3 +1,10 @@
+/*
+path: Story/QueenofMonsters/6TheDestroyer.cs
+fileName: 6TheDestroyer.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

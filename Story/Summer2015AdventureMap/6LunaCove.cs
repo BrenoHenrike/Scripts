@@ -1,3 +1,10 @@
+/*
+path: Story/Summer2015AdventureMap/6LunaCove.cs
+fileName: 6LunaCove.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

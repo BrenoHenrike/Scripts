@@ -1,3 +1,10 @@
+/*
+path: Story/Summer2015AdventureMap/4Collector.cs
+fileName: 4Collector.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

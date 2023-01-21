@@ -1,3 +1,10 @@
+/*
+path: Seasonal/HarvestDay/01HarvestStory.cs
+fileName: 01HarvestStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs

@@ -1,3 +1,10 @@
+/*
+path: Other/2022AcGift.cs
+fileName: 2022AcGift.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;

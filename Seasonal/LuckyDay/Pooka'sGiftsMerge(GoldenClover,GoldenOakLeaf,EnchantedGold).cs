@@ -1,3 +1,10 @@
+/*
+path: Seasonal/LuckyDay/Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs
+fileName: Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/LuckyDay/Pooka.cs

@@ -1,3 +1,10 @@
+/*
+path: Other/Badges/GoldenLaurel.cs
+fileName: GoldenLaurel.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/GoldenArena.cs

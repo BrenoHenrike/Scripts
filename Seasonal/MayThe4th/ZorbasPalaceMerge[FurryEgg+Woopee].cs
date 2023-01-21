@@ -1,3 +1,10 @@
+/*
+path: Seasonal/MayThe4th/ZorbasPalaceMerge[FurryEgg+Woopee].cs
+fileName: ZorbasPalaceMerge[FurryEgg+Woopee].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

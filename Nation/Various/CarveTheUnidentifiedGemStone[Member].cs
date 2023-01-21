@@ -1,3 +1,10 @@
+/*
+path: Nation/Various/CarveTheUnidentifiedGemStone[Member].cs
+fileName: CarveTheUnidentifiedGemStone[Member].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs

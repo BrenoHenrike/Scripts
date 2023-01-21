@@ -1,3 +1,10 @@
+/*
+path: Story/Doomwood/Part3/1Thornsgarde.cs
+fileName: 1Thornsgarde.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs

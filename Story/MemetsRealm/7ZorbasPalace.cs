@@ -1,3 +1,10 @@
+/*
+path: Story/MemetsRealm/7ZorbasPalace.cs
+fileName: 7ZorbasPalace.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs

@@ -1,3 +1,10 @@
+/*
+path: Other/ShadowDragonDefender.cs
+fileName: ShadowDragonDefender.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs

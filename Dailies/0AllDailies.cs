@@ -1,4 +1,11 @@
-﻿//cs_include Scripts/CoreBots.cs
+/*
+path: Dailies/0AllDailies.cs
+fileName: 0AllDailies.cs
+name: null
+description: null
+tags: null
+*/
+//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs

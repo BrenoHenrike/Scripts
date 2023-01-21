@@ -1,3 +1,10 @@
+/*
+path: Other/WOOOOOOOOOOOOOO.CS
+fileName: WOOOOOOOOOOOOOO.CS
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;

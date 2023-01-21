@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfWar/18TimestreamWar.cs
+fileName: 18TimestreamWar.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

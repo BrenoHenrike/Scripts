@@ -1,3 +1,10 @@
+/*
+path: Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs
+fileName: BlazeBeardMerge.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

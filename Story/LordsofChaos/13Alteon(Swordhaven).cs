@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/13Alteon(Swordhaven).cs
+fileName: 13Alteon(Swordhaven).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs

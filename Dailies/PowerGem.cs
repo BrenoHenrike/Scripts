@@ -1,3 +1,10 @@
+/*
+path: Dailies/PowerGem.cs
+fileName: PowerGem.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;

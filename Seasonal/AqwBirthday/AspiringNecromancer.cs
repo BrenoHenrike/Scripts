@@ -1,3 +1,10 @@
+/*
+path: Seasonal/AqwBirthday/AspiringNecromancer.cs
+fileName: AspiringNecromancer.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;

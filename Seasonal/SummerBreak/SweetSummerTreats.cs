@@ -1,3 +1,10 @@
+/*
+path: Seasonal/SummerBreak/SweetSummerTreats.cs
+fileName: SweetSummerTreats.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

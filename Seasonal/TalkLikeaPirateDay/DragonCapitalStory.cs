@@ -1,3 +1,10 @@
+/*
+path: Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs
+fileName: DragonCapitalStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs

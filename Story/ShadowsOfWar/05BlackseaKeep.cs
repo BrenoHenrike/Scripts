@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfWar/05BlackseaKeep.cs
+fileName: 05BlackseaKeep.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

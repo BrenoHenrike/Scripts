@@ -1,3 +1,10 @@
+/*
+path: Other/ShadowedWarMageSet.cs
+fileName: ShadowedWarMageSet.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;

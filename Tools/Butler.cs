@@ -1,3 +1,10 @@
+/*
+path: Tools/Butler.cs
+fileName: Butler.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using System.IO;
 using Skua.Core.Interfaces;

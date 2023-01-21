@@ -1,3 +1,10 @@
+/*
+path: Story/MemetsRealm/1BeachParty.cs
+fileName: 1BeachParty.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs

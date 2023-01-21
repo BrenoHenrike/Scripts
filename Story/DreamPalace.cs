@@ -1,3 +1,10 @@
+/*
+path: Story/DreamPalace.cs
+fileName: DreamPalace.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;

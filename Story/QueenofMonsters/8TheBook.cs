@@ -1,3 +1,10 @@
+/*
+path: Story/QueenofMonsters/8TheBook.cs
+fileName: 8TheBook.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

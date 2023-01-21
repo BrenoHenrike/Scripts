@@ -1,3 +1,10 @@
+/*
+path: Story/ElegyofMadness(Darkon)/8GenesisGarden.cs
+fileName: 8GenesisGarden.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs

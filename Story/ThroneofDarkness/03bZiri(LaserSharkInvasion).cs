@@ -1,3 +1,10 @@
+/*
+path: Story/ThroneofDarkness/03bZiri(LaserSharkInvasion).cs
+fileName: 03bZiri(LaserSharkInvasion).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

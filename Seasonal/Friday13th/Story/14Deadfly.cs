@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Friday13th/Story/14Deadfly.cs
+fileName: 14Deadfly.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs

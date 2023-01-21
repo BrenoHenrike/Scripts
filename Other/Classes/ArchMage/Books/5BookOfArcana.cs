@@ -1,3 +1,10 @@
+/*
+path: Other/Classes/ArchMage/Books/5BookOfArcana.cs
+fileName: 5BookOfArcana.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

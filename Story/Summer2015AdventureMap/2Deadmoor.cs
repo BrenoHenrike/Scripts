@@ -1,3 +1,10 @@
+/*
+path: Story/Summer2015AdventureMap/2Deadmoor.cs
+fileName: 2Deadmoor.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

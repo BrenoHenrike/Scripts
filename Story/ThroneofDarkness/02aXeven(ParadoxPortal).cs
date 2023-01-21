@@ -1,3 +1,10 @@
+/*
+path: Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
+fileName: 02aXeven(ParadoxPortal).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

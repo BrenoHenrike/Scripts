@@ -1,3 +1,10 @@
+/*
+path: Nation/EvolvedOrb/0EvolvedOrb.cs
+fileName: 0EvolvedOrb.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

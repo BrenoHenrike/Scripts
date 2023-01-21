@@ -1,3 +1,10 @@
+/*
+path: Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs
+fileName: CoreHollowbornDoomKnight.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

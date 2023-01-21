@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Mogloween/VampireLord(Class).cs
+fileName: VampireLord(Class).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

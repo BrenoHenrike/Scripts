@@ -1,3 +1,10 @@
+/*
+path: Hollowborn/TradingandStuff(single).cs
+fileName: TradingandStuff(single).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs

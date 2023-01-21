@@ -1,3 +1,10 @@
+/*
+path: Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs
+fileName: AvastBadge[mem].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,3 +1,10 @@
+/*
+path: Other/MergeShops/3LittleWolvesHousesMerge.cs
+fileName: 3LittleWolvesHousesMerge.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

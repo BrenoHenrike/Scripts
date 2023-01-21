@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/04Kitsune(Yokai).cs
+fileName: 04Kitsune(Yokai).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs

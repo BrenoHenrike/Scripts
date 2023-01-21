@@ -1,3 +1,10 @@
+/*
+path: Other/Classes/ArchMage/Books/1BookOfMagus.cs
+fileName: 1BookOfMagus.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

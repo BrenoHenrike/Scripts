@@ -1,3 +1,10 @@
+/*
+path: Seasonal/HarvestDay/03FloatStory[Member].cs
+fileName: 03FloatStory[Member].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs

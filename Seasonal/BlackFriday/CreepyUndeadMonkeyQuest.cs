@@ -1,3 +1,10 @@
+/*
+path: Seasonal/BlackFriday/CreepyUndeadMonkeyQuest.cs
+fileName: CreepyUndeadMonkeyQuest.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs

@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfWar/11Shadowsong.cs
+fileName: 11Shadowsong.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

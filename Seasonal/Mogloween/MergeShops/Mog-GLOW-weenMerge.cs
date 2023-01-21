@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Mogloween/MergeShops/Mog-GLOW-weenMerge.cs
+fileName: Mog-GLOW-weenMerge.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

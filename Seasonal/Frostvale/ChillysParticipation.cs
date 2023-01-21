@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Frostvale/ChillysParticipation.cs
+fileName: ChillysParticipation.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

@@ -1,3 +1,10 @@
+/*
+path: Story/ElegyofMadness(Darkon)/3AstraviaCastle.cs
+fileName: 3AstraviaCastle.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs

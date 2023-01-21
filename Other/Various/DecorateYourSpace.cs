@@ -1,3 +1,10 @@
+/*
+path: Other/Various/DecorateYourSpace.cs
+fileName: DecorateYourSpace.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 
 using Skua.Core.Interfaces;

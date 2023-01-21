@@ -1,3 +1,10 @@
+/*
+path: Farm/BankAllItems.cs
+fileName: BankAllItems.cs
+name:  testname
+description:  testdesc
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

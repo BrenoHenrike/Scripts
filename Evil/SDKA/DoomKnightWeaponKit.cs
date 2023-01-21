@@ -1,4 +1,11 @@
-﻿//cs_include Scripts/CoreBots.cs
+/*
+path: Evil/SDKA/DoomKnightWeaponKit.cs
+fileName: DoomKnightWeaponKit.cs
+name: null
+description: null
+tags: null
+*/
+//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs

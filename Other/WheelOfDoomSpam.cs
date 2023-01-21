@@ -1,3 +1,10 @@
+/*
+path: Other/WheelOfDoomSpam.cs
+fileName: WheelOfDoomSpam.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;

@@ -1,3 +1,10 @@
+/*
+path: Other/Classes/ArchMage/0ArchMage.cs
+fileName: 0ArchMage.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
