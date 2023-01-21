@@ -1,0 +1,38 @@
+name: Run Auto Generate JSON with C# File
+
+on:
+  push:
+  pull_request:
+    types: [closed]
+
+jobs:
+  run-csharp-file:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Run C# file
+      run: dotnet run Program.cs --project SkuaScriptsGenerator/SkuaScriptsGenerator.csproj
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: scripts.json
+    - name: Commit and push files
+      uses: actions/github-script@0.10.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        script: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add output.json
+          git commit -m "Add script.json"
+          git push
