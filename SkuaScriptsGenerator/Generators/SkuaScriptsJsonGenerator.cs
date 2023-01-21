@@ -51,25 +51,26 @@ namespace SkuaScriptsGenerator.Generators
             }
 
             var json = JsonConvert.SerializeObject(scripts, Formatting.Indented);
-            File.WriteAllText("scripts.json", json);
+            // File.WriteAllText("scripts.json", json);
+            Console.WriteLine(json);
         }
         
         class ScriptInfo 
         {
             [JsonProperty("name")]
-            public string Name { get; set; }
+            public string? Name { get; set; }
             [JsonProperty("description")]
-            public string Description { get; set; }
+            public string? Description { get; set; }
             [JsonProperty("tags")]
-            public string[] Tags { get; set; }
+            public string[]? Tags { get; set; }
             [JsonProperty("path")]
-            public string Path { get; set; }
+            public string? Path { get; set; }
             [JsonProperty("size")]
-            public int Size { get; set; }
+            public int? Size { get; set; }
             [JsonProperty("fileName")]
-            public string FileName { get; set; }
+            public string? FileName { get; set; }
             [JsonProperty("downloadUrl")]
-            public string DownloadUrl { get; set; }
+            public string? DownloadUrl { get; set; }
         }
     }
 }

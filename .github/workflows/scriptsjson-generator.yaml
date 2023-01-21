@@ -19,7 +19,7 @@ jobs:
         dotnet-version: '6.0.x'
 
     - name: Run C# file
-      run: dotnet run Program.cs --project SkuaScriptsGenerator/SkuaScriptsGenerator.csproj
+      run: dotnet run Program.cs --project SkuaScriptsGenerator/SkuaScriptsGenerator.csproj > scripts.json
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
