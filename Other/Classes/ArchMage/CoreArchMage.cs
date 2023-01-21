@@ -440,6 +440,9 @@ public class CoreArchMage
     {
         foreach (string item in Items)
         {
+            if (Core.CheckInventory(item))
+                continue;
+
             switch (item)
             {
                 case "Void Essentia":
