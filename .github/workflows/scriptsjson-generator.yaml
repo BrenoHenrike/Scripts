@@ -37,14 +37,9 @@ jobs:
     #       git commit -m "Add script.json"
     #       git push
 
-    - name: Commit and push files
-      uses: actions/checkout@v2
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add output.json
-        git commit -m "Add output.json"
-    - name: Push changes
-      uses: actions/git-client@v2
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        args: push
+        commit_message: 'Automatic commit by GitHub Actions'
+        files: 'scripts.json'
+        push: true
