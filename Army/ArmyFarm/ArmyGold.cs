@@ -1,3 +1,10 @@
+/*
+path: Army/ArmyFarm/ArmyGold.cs
+fileName: ArmyGold.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs

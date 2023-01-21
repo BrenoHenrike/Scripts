@@ -1,3 +1,10 @@
+/*
+path: Other/Various/KillYoshinoBoss.cs
+fileName: KillYoshinoBoss.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs

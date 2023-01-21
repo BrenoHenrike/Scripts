@@ -1,3 +1,10 @@
+/*
+path: Story/Summer2015AdventureMap/5LivingDungeon.cs
+fileName: 5LivingDungeon.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

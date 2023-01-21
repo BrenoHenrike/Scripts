@@ -1,3 +1,10 @@
+/*
+path: Hollowborn/HollowbornChaosEnvoy/2InTheBeastsShadow.cs
+fileName: 2InTheBeastsShadow.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/CoreAdvanced.cs

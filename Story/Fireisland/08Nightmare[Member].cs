@@ -1,3 +1,10 @@
+/*
+path: Story/FireIsland/08Nightmare[Member].cs
+fileName: 08Nightmare[Member].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs

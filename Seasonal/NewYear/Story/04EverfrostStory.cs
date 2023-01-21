@@ -1,3 +1,10 @@
+/*
+path: Seasonal/NewYear/Story/04EverfrostStory.cs
+fileName: 04EverfrostStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/NewYear/CoreNewYear.cs

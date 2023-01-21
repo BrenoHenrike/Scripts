@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfChaos/09BrightForestPast.cs
+fileName: 09BrightForestPast.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs

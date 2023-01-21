@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Friday13th/Story/16BlackMaze.cs
+fileName: 16BlackMaze.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs

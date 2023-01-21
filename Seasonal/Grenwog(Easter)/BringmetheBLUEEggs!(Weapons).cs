@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs
+fileName: BringmetheBLUEEggs!(Weapons).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

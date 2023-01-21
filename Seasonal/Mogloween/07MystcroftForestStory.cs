@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Mogloween/07MystcroftForestStory.cs
+fileName: 07MystcroftForestStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Mogloween/CoreMogloween.cs

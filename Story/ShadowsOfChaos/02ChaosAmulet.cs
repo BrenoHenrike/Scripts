@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfChaos/02ChaosAmulet.cs
+fileName: 02ChaosAmulet.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs

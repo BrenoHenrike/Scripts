@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/09Khasaanda(Horc).cs
+fileName: 09Khasaanda(Horc).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

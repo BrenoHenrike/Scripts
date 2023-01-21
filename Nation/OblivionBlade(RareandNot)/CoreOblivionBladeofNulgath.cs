@@ -1,3 +1,10 @@
+/*
+path: Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs
+fileName: CoreOblivionBladeofNulgath.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs

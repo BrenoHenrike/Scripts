@@ -1,3 +1,10 @@
+/*
+path: Story/Summer2015AdventureMap/1DreadSpace.cs
+fileName: 1DreadSpace.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

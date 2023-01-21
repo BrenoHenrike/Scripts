@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Frostvale/TinselGifts.cs
+fileName: TinselGifts.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

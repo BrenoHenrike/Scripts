@@ -1,3 +1,10 @@
+/*
+path: Story/Legion/DageTheEvilIsland/03LegionCrypt.cs
+fileName: 03LegionCrypt.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs

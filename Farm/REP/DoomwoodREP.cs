@@ -1,4 +1,11 @@
-﻿//cs_include Scripts/CoreBots.cs
+/*
+path: Farm/REP/DoomwoodREP.cs
+fileName: DoomwoodREP.cs
+name: null
+description: null
+tags: null
+*/
+//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 public class DoomwoodREP

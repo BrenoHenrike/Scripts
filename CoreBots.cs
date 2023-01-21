@@ -1,4 +1,11 @@
-﻿using System;
+/*
+path: CoreBots.cs
+fileName: CoreBots.cs
+name: null
+description: null
+tags: null
+*/
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;

@@ -1,3 +1,10 @@
+/*
+path: Seasonal/SummerBreak/BeachPartyTokenItems.cs
+fileName: BeachPartyTokenItems.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs

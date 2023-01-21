@@ -1,3 +1,10 @@
+/*
+path: Other/DragonCrystal[Upholder].cs
+fileName: DragonCrystal[Upholder].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/DragonRoad[Upholader].cs

@@ -1,3 +1,10 @@
+/*
+path: Hollowborn/MergeShops/HBChallengeMerge.cs
+fileName: HBChallengeMerge.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

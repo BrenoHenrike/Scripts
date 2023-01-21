@@ -1,3 +1,10 @@
+/*
+path: Nation/Various/ArchfiendDragonEgg[Mem].cs
+fileName: ArchfiendDragonEgg[Mem].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs

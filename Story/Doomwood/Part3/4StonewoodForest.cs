@@ -1,3 +1,10 @@
+/*
+path: Story/Doomwood/Part3/4StonewoodForest.cs
+fileName: 4StonewoodForest.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs

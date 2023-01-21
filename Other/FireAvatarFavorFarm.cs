@@ -1,3 +1,10 @@
+/*
+path: Other/FireAvatarFavorFarm.cs
+fileName: FireAvatarFavorFarm.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 
 using Skua.Core.Interfaces;

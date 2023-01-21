@@ -1,4 +1,11 @@
-﻿//cs_include Scripts/CoreBots.cs
+/*
+path: Farm/REP/BrightoakREP.cs
+fileName: BrightoakREP.cs
+name: null
+description: null
+tags: null
+*/
+//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs

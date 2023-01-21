@@ -1,3 +1,10 @@
+/*
+path: Story/SepulchureSaga/04ShadowfallRise.cs
+fileName: 04ShadowfallRise.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs

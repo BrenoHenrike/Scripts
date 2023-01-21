@@ -1,3 +1,10 @@
+/*
+path: Nation/Materials/FiendEmblem.cs
+fileName: FiendEmblem.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

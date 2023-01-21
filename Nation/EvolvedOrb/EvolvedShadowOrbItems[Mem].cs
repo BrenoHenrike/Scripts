@@ -1,3 +1,10 @@
+/*
+path: Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs
+fileName: EvolvedShadowOrbItems[Mem].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

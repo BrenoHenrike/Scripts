@@ -1,3 +1,10 @@
+/*
+path: Story/IsleOfFotia/00DoAllIsleOfFotia.cs
+fileName: 00DoAllIsleOfFotia.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs

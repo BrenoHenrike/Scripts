@@ -1,3 +1,10 @@
+/*
+path: Tools/GenerateQueuedScript.cs
+fileName: GenerateQueuedScript.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;

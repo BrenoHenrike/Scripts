@@ -1,3 +1,10 @@
+/*
+path: Army/Various/ArmyMirrorRealmToken.cs
+fileName: ArmyMirrorRealmToken.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;

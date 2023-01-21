@@ -1,3 +1,10 @@
+/*
+path: Seasonal/AprilFools/GardenQuestMerge(VegetableToken).cs
+fileName: GardenQuestMerge(VegetableToken).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

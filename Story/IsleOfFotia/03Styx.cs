@@ -1,3 +1,10 @@
+/*
+path: Story/IsleOfFotia/03Styx.cs
+fileName: 03Styx.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs

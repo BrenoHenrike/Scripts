@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfWar/20ShadowFlame.cs
+fileName: 20ShadowFlame.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

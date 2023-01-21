@@ -1,3 +1,10 @@
+/*
+path: Nation/VHL/0VoidHighlord.cs
+fileName: 0VoidHighlord.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

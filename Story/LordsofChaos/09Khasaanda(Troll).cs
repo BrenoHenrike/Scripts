@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/09Khasaanda(Troll).cs
+fileName: 09Khasaanda(Troll).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

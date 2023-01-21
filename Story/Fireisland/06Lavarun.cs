@@ -1,3 +1,10 @@
+/*
+path: Story/FireIsland/06Lavarun.cs
+fileName: 06Lavarun.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs

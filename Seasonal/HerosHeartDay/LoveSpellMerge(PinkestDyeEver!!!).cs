@@ -1,3 +1,10 @@
+/*
+path: Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs
+fileName: LoveSpellMerge(PinkestDyeEver!!!).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/LoveSpellStory.cs

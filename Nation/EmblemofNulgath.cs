@@ -1,4 +1,11 @@
-﻿//cs_include Scripts/CoreBots.cs
+/*
+path: Nation/EmblemofNulgath.cs
+fileName: EmblemofNulgath.cs
+name: null
+description: null
+tags: null
+*/
+//cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;

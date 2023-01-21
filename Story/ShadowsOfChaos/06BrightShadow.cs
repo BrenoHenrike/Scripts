@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfChaos/06BrightShadow.cs
+fileName: 06BrightShadow.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs

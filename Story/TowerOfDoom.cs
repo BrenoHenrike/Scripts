@@ -1,3 +1,10 @@
+/*
+path: Story/TowerOfDoom.cs
+fileName: TowerOfDoom.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

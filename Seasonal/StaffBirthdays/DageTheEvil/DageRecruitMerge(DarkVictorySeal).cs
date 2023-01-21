@@ -1,3 +1,10 @@
+/*
+path: Seasonal/StaffBirthdays/DageTheEvil/DageRecruitMerge(DarkVictorySeal).cs
+fileName: DageRecruitMerge(DarkVictorySeal).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

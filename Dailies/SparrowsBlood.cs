@@ -1,3 +1,10 @@
+/*
+path: Dailies/SparrowsBlood.cs
+fileName: SparrowsBlood.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;

@@ -1,3 +1,10 @@
+/*
+path: Seasonal/BlackFriday/AlphaHunterAndRogue.cs
+fileName: AlphaHunterAndRogue.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using System.Linq;
 using Skua.Core.Interfaces;

@@ -1,3 +1,10 @@
+/*
+path: Story/Doomwood/0CompleteDoomwood.cs
+fileName: 0CompleteDoomwood.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs

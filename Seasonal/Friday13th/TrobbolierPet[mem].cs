@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Friday13th/TrobbolierPet[mem].cs
+fileName: TrobbolierPet[mem].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,3 +1,10 @@
+/*
+path: Story/Legion/DageTheEvilIsland/05Laken.cs
+fileName: 05Laken.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs

@@ -1,3 +1,10 @@
+/*
+path: Hollowborn/HollowbornDoomKnight/0RunAll.cs
+fileName: 0RunAll.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

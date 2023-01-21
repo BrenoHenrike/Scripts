@@ -1,3 +1,10 @@
+/*
+path: Other/Badges/6thBirthdaySavior.cs
+fileName: 6thBirthdaySavior.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Artixpointe.cs

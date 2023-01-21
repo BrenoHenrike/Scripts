@@ -1,3 +1,10 @@
+/*
+path: Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs
+fileName: EvolvedLeprechaunMerge.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

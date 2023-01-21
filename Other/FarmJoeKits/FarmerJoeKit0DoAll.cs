@@ -1,3 +1,10 @@
+/*
+path: Other/FarmJoeKits/FarmerJoeKit0DoAll.cs
+fileName: FarmerJoeKit0DoAll.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

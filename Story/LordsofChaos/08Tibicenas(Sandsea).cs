@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/08Tibicenas(Sandsea).cs
+fileName: 08Tibicenas(Sandsea).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

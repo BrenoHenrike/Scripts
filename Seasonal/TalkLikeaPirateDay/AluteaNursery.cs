@@ -1,3 +1,10 @@
+/*
+path: Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
+fileName: AluteaNursery.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/LowTideStory.cs

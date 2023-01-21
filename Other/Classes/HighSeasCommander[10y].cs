@@ -1,3 +1,10 @@
+/*
+path: Other/Classes/HighSeasCommander[10y].cs
+fileName: HighSeasCommander[10y].cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

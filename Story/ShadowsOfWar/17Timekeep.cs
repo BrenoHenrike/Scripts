@@ -1,3 +1,10 @@
+/*
+path: Story/ShadowsOfWar/17Timekeep.cs
+fileName: 17Timekeep.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

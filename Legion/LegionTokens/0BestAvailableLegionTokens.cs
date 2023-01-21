@@ -1,3 +1,10 @@
+/*
+path: Legion/LegionTokens/0BestAvailableLegionTokens.cs
+fileName: 0BestAvailableLegionTokens.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

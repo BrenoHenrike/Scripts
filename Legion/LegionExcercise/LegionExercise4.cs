@@ -1,3 +1,10 @@
+/*
+path: Legion/LegionExcercise/LegionExercise4.cs
+fileName: LegionExercise4.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

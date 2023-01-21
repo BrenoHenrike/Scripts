@@ -1,3 +1,10 @@
+/*
+path: Other/1%drops/1%Weapons.cs
+fileName: 1%Weapons.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;

@@ -1,3 +1,10 @@
+/*
+path: Seasonal/HarvestDay/BirthdayFeastQuestRewards.cs
+fileName: BirthdayFeastQuestRewards.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs

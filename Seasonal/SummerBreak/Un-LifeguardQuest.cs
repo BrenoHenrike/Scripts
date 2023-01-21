@@ -1,3 +1,10 @@
+/*
+path: Seasonal/SummerBreak/Un-LifeguardQuest.cs
+fileName: Un-LifeguardQuest.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

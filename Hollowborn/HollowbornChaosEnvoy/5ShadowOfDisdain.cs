@@ -1,3 +1,10 @@
+/*
+path: Hollowborn/HollowbornChaosEnvoy/5ShadowOfDisdain.cs
+fileName: 5ShadowOfDisdain.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/CoreAdvanced.cs

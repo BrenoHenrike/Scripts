@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/05Wolfwing(Darkovia).cs
+fileName: 05Wolfwing(Darkovia).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs

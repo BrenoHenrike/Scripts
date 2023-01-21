@@ -1,3 +1,10 @@
+/*
+path: Story/QueenofMonsters/1CelestialRealmATheftofLight.cs
+fileName: 1CelestialRealmATheftofLight.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

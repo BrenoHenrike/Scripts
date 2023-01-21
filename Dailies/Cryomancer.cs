@@ -1,3 +1,10 @@
+/*
+path: Dailies/Cryomancer.cs
+fileName: Cryomancer.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs

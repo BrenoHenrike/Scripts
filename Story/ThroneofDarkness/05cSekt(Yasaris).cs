@@ -1,3 +1,10 @@
+/*
+path: Story/ThroneofDarkness/05cSekt(Yasaris).cs
+fileName: 05cSekt(Yasaris).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

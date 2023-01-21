@@ -1,3 +1,10 @@
+/*
+path: Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs
+fileName: DragonPirateStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;

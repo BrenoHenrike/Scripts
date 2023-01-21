@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Mogloween/01MogloweenStory.cs
+fileName: 01MogloweenStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Mogloween/CoreMogloween.cs

@@ -1,3 +1,10 @@
+/*
+path: Other/MergeShops/AprilFools2019WarMerge.cs
+fileName: AprilFools2019WarMerge.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

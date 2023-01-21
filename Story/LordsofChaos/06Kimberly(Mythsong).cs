@@ -1,3 +1,10 @@
+/*
+path: Story/LordsofChaos/06Kimberly(Mythsong).cs
+fileName: 06Kimberly(Mythsong).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

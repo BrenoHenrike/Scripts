@@ -1,3 +1,10 @@
+/*
+path: Legion/Various/LegionOverfiendBlade.cs
+fileName: LegionOverfiendBlade.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

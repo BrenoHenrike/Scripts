@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Grenwog(Easter)/BringmetheGREENEggs!(Helms).cs
+fileName: BringmetheGREENEggs!(Helms).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

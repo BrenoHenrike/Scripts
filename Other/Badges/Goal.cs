@@ -1,3 +1,10 @@
+/*
+path: Other/Badges/Goal.cs
+fileName: Goal.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

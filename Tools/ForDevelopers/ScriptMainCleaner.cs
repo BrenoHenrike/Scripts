@@ -1,3 +1,10 @@
+/*
+path: Tools/ForDevelopers/ScriptMainCleaner.cs
+fileName: ScriptMainCleaner.cs
+name: null
+description: null
+tags: null
+*/
 using System.Net.NetworkInformation;
 using Newtonsoft.Json;
 using System.Collections.Generic;

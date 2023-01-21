@@ -1,3 +1,10 @@
+/*
+path: Other/Weapons/UltraOmniknightBlade.cs
+fileName: UltraOmniknightBlade.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

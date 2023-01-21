@@ -1,3 +1,10 @@
+/*
+path: Seasonal/Grenwog(Easter)/BringmetheMULTICOLOREDEggs!(House).cs
+fileName: BringmetheMULTICOLOREDEggs!(House).cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 

@@ -1,3 +1,10 @@
+/*
+path: Other/DragonLordGrandMasterSet.cs
+fileName: DragonLordGrandMasterSet.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/VasalkarLairWar.cs

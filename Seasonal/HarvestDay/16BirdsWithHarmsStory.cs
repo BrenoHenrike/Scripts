@@ -1,3 +1,10 @@
+/*
+path: Seasonal/HarvestDay/16BirdsWithHarmsStory.cs
+fileName: 16BirdsWithHarmsStory.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs

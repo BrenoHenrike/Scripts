@@ -1,3 +1,10 @@
+/*
+path: Darkon/Materials/Errands/ThirdErrand.cs
+fileName: ThirdErrand.cs
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
