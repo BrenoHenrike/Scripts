@@ -25,14 +25,26 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: scripts.json
+    # - name: Commit and push files
+    #   uses: actions/github-script@0.10.0
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     script: |
+    #       git config --local user.email "action@github.com"
+    #       git config --local user.name "GitHub Action"
+    #       git add output.json
+    #       git commit -m "Add script.json"
+    #       git push
+
     - name: Commit and push files
-      uses: actions/github-script@0.10.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: actions/checkout@v2
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add output.json
+        git commit -m "Add output.json"
+    - name: Push changes
+      uses: actions/git-client@v2
       with:
-        script: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add output.json
-          git commit -m "Add script.json"
-          git push
+        args: push
