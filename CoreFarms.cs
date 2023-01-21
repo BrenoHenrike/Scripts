@@ -387,7 +387,7 @@ public class CoreFarms
         Core.JumpWait();
         while (!Bot.ShouldExit && !Core.CheckInventory("The Secret 4"))
         {
-            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl-999999")
+            while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl")
             {
                 Bot.Sleep(5000);
                 Core.JumpWait();
