@@ -1,6 +1,5 @@
 /*
 path: Tools/ForDevelopers/GenerateQuestFiles.cs
-downloadUrl: https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs
 fileName: GenerateQuestFiles.cs
 name: null
 description: null
