@@ -25,6 +25,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: scripts.json
+        path: scripts.json
     # - name: Commit and push files
     #   uses: actions/github-script@0.10.0
     #   env:
