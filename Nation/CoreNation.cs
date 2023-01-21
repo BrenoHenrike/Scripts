@@ -190,7 +190,9 @@ public class CoreNation
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             }
-            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
+            if (Core.IsMember)
+                Core.KillMonster("nulgath", "Field1", "Left", "Dark Makai", "Makai Fang", 5, log: false);
+            else Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
             Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
 
@@ -689,6 +691,14 @@ public class CoreNation
         if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
             returnPolicyDuringSupplies = _returnSupplies;
 
+        string[] rewards = {
+            "Tainted Gem",
+            "Dark Crystal Shard",
+            "Gem of Nulgath",
+            "Blood Gem of the Archfiend",
+            "Diamond of Nulgath"
+        };
+
         if (item != "Any")
             Core.FarmingLogger(item, quant);
 
@@ -761,7 +771,7 @@ public class CoreNation
             //     }
             // } //Disabled to to "Diamonds of Time"'s low Drop rate.
 
-            if (item != "Any")
+            if (item != "Any" && rewards.Contains(item))
                 Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
         }
         Core.CancelRegisteredQuests();

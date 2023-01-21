@@ -53,7 +53,7 @@ public class CoreNSOD
 
     public void GetNSOD()
     {
-        if (Core.CheckInventory("Necrotic Sword of Doom") /*&& Core.hasAchievement(nosd badge?)*/)
+        if (Core.CheckInventory("Necrotic Sword of Doom") && Core.HasWebBadge("Necrotic Sword of Doom"))
             return;
 
         if (!Core.CheckInventory("Necrotic Sword of Doom"))
@@ -89,7 +89,23 @@ public class CoreNSOD
         Core.Relogin();
 
         if (!Core.CheckInventory(14474) && !Core.IsMember)
-            Bot.Handlers.RegisterOnce(1, h => Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true));
+            Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true);
+    }
+
+    public void GetNBOD()
+    {
+        if (Core.CheckInventory("Necrotic Blade of Doom"))
+            return;
+
+        GetNSOD();
+        VoidAuras(750);
+        if (!Core.CheckInventory("Void Essentia"))
+        {
+            Core.Logger("Flibbitiestgibbet is a very tough monster, I hope you brought your army/butler/friends!");
+            Core.KillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
+        }
+        Core.BuyItem("shadowfall", 793, "Necrotic Blade of Doom");
+        Core.Logger("Don't forget to use AE's Buy-Back system to retreive your Necrotic Sword of Doom", messageBox: true);
     }
 
     #region Void Auras

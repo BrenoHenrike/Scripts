@@ -68,10 +68,18 @@ public class CoreFireIsland
         Story.MapItemQuest(4072, "pyrewatch", 3159, 12);
 
         //Push on to Pyrewatch
-        Story.KillQuest(4073, "pyrewatch", new[] { "Firestorm Knight", "Firestorm Knight" });
+        Story.KillQuest(4073, "pyrewatch", new[] { "Firestorm Knight", "Firestorm Knight" }); 
 
         //Friends of Pyrewatch Peak
-        Story.KillQuest(4074, "pyrewatch", new[] { "Caustocrush", "Fire Pikeman", "Flame Soldier", "Fire Pikeman" });
+        if (!Story.QuestProgression(4074))
+        {
+            Core.EnsureAccept(4074);
+            Core.HuntMonster("Pyrewatch", "Caustocrush", "Caustocrush Slain", 3, log: false);
+            Core.HuntMonster("Pyrewatch", "Fire Pikeman", "Pikeman Slain", 3, log: false);
+            Core.HuntMonster("Pyrewatch", "Flame Soldier", "lame Soldier Slain", 3, log: false);
+            Core.HuntMonster("Pyrewatch", "Storm Scout", "Firestorm Helm", 6, log: false);
+            Core.EnsureComplete(4074);
+        }
 
         //A Salve to Soothe
         Story.MapItemQuest(4075, "pyrewatch", 3160, 5);
@@ -101,8 +109,6 @@ public class CoreFireIsland
         Story.KillQuest(4078, "Pyrewatch", "Storm Scout");
 
         //Signal Fire 4079
-        Story.KillQuest(4079, "Pyrewatch", new[] { "Storm Scout", "Flame Soldier", "Flame Soldier", "Fyreborn Tiger" });
-
         if (!Story.QuestProgression(4079))
         {
             Core.EnsureAccept(4079);

@@ -726,7 +726,7 @@ public class Core13LoC
         if (!Story.QuestProgression(810))
         {
             Core.EnsureAccept(810);
-            Core.BuyItem("arcangrove", 211, "Mana Potion");
+            Core.BuyItem("embersea", 1100, 5572);
             Core.GetMapItem(141, 3, "cloister");
             Core.EnsureComplete(810);
         }

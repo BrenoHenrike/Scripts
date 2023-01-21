@@ -1,4 +1,6 @@
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -32,7 +34,7 @@ public class TrobbolierPet
         foreach (ItemBase Reward in RewardOptions)
         {
             if (Core.CheckInventory(Reward.Name, toInv: false))
-                return;
+                continue;
             Core.FarmingLogger(Reward.Name, 1);
 
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
