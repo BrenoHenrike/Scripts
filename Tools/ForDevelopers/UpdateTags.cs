@@ -22,8 +22,9 @@ public class UpdateTags
     private void Update()
     {
         // Variables
+        //string scriptDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua", "Scripts"); uncomment this on new version
         string scriptDir = Path.Combine(AppContext.BaseDirectory, "Scripts");
-        string filePath = Path.Combine(scriptDir, "Tools", "ForDevelopers", "ScriptTags.json");
+        string filePath = Path.Combine(scriptDir, "scripts.json");
         bool shouldReturn = false;
         bool selectedFolder = false;
 
