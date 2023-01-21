@@ -36,7 +36,7 @@ public class YouMadBroBadge
             Core.FarmingLogger("Ice Vapor", 30);
             while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory(11478, 30))
                 Core.KillMonster("lair", "Enter", "Spawn", "*", log: false);
-            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8845);
+            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 100, 8844);
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
         }
         Core.SellItem("Dragon Scale", all: true);
