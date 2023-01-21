@@ -88,11 +88,8 @@ public class CoreVHL
 
             Nation.FarmVoucher(false);
             Farm.BlackKnightOrb();
-            if (!Core.CheckInventory("Nulgath Shaped Chocolate"))
-            {
-                Farm.Gold(2000000);
-                Core.BuyItem("citadel", 44, 38316);
-            }
+            Adv.BuyItem("citadel", 44, 38316);
+
             Core.BuyItem("yulgar", 16, "Aelita's Emerald");
             Nation.FarmUni13(1);
             Nation.FarmGemofNulgath(20);

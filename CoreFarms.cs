@@ -434,7 +434,7 @@ public class CoreFarms
     /// <param name="item">Name of the desired item</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="canSoloBoss">Whether you can solo the Boss without killing Restorers and Brawlers</param>
-    public void BludrutBrawlBoss(string item = "Combat Trophy", int quant = 500, bool canSoloBoss = true)
+    public void BludrutBrawlBoss(string item = "Combat Trophy", int quant = 5000, bool canSoloBoss = true)
     {
         if (Core.CheckInventory(item, quant))
             return;

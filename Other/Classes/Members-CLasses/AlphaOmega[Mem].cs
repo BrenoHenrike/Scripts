@@ -38,8 +38,7 @@ public class AlphaOmega
         if (Core.CheckInventory("Alpha Omega") || !Core.IsMember)
             return;
 
-        if (!Core.CheckInventory("Combat Trophy", 300))
-            Farm.BludrutBrawlBoss("Combat Trophy", 300, false); // Change to true if u can solo the boss.
+        Farm.BludrutBrawlBoss("Combat Trophy", 300); 
         Core.BuyItem("digitalmain", 561, "Alpha Omega");
 
         if (rankUpClass)

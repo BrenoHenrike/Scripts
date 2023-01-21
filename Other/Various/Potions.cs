@@ -238,8 +238,7 @@ public class PotionBuyer
                     {
                         GetIngredient(reagent1);
                         GetIngredient(reagent2);
-                        // Adv.BuyItem("Alchemy", 395, "Dragon Runestone", 30, 8844); //leave here incase
-                        Farm.DragonRunestone(30);
+                        Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8844);
                     }
                     Core.ToggleAggro(enable: false);
                     Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait, P2w: true);

@@ -59,7 +59,7 @@ public class CoreHollowborn
         Core.KillMonster("noxustower", "r14", "Left", "*", "Human Soul", quant, false);
     }
 
-    public void FreshSouls(int Uni36Quant, int FSQuant)
+    public void FreshSouls(int Uni36Quant = 3, int FSQuant = 1000)
     {
         if (Core.CheckInventory("Unidentified 36", Uni36Quant) && Core.CheckInventory("Fresh Soul", FSQuant))
             return;
