@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 26815,
+    "size": 26733,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 130969,
+    "size": 127013,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -204,7 +204,7 @@
       "null"
     ],
     "path": "Tools/GenerateQueuedScript.cs",
-    "size": 10568,
+    "size": 10509,
     "fileName": "GenerateQueuedScript.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/GenerateQueuedScript.cs"
   },
@@ -2123,24 +2123,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Aggro Monster File Reader",
+    "description": "This script allows you to run AggroMon bots from ChaosRipjaw's AggroMon Generator in Skua.",
     "tags": [
-      "null"
+      "kaos",
+      "chaosripjaw",
+      "aggro monster",
+      "army",
+      "reader",
+      "custom"
     ],
     "path": "Army/0AggroMonReader.cs",
-    "size": 5285,
+    "size": 5344,
     "fileName": "0AggroMonReader.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
     "tags": [
-      "null"
+      "custom",
+      "aggro monster",
+      "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 10079,
+    "size": 10287,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
@@ -3282,7 +3289,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/UpdateTags.cs",
-    "size": 9806,
+    "size": 9527,
     "fileName": "UpdateTags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/UpdateTags.cs"
   },
@@ -3293,7 +3300,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/ScriptMainCleaner.cs",
-    "size": 5718,
+    "size": 5722,
     "fileName": "ScriptMainCleaner.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/ScriptMainCleaner.cs"
   },
@@ -3304,7 +3311,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 6600,
+    "size": 6608,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
@@ -3315,7 +3322,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/GenerateQuestFiles.cs",
-    "size": 1655,
+    "size": 1648,
     "fileName": "GenerateQuestFiles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
   },
@@ -6113,7 +6120,7 @@
       "null"
     ],
     "path": "Seasonal/Frostvale/CheckForDonantedACs.cs",
-    "size": 5688,
+    "size": 5703,
     "fileName": "CheckForDonantedACs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
