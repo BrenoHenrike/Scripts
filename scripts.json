@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 127013,
+    "size": 127082,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2118,7 +2118,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 35266,
+    "size": 35573,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -12818,7 +12818,7 @@
       "null"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 20883,
+    "size": 18896,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
   },
