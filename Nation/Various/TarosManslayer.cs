@@ -52,7 +52,7 @@ public class TarosManslayer
             {
                 Core.EnsureAccept(1111);
                 Nation.FarmGemofNulgath(10);
-                Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune");
+                Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "MDark Makai Rune");
                 Core.EnsureCompleteChoose(1111, Rewards);
                 Bot.Sleep(Core.ActionDelay);
             }

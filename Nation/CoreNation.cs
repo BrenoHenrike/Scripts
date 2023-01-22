@@ -195,9 +195,7 @@ public class CoreNation
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             }
-            if (Core.IsMember)
-                Core.KillMonster("nulgath", "Field1", "Left", "Dark Makai", "Makai Fang", 5, log: false);
-            else Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5, log: false);
+            Core.HuntMonster(Core.IsMember ? "nulgath" : "tercessuinotlim", "Dark Makai", "Makai Fang", 5);
             Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
 
@@ -301,7 +299,7 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
-            Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Rune", log: false);
+            Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
             switch (item)
             {
                 case "Dark Crystal Shard":
@@ -564,11 +562,7 @@ public class CoreNation
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
-                {
-                    if (Core.IsMember)
-                        Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Rune", log: false);
-                    Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune", log: false);
-                }
+                    Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "MDark Makai Rune");
 
                 Core.KillEscherion("Relic of Chaos", publicRoom: true, log: false);
                 Bot.Drops.Pickup(item);
@@ -726,7 +720,7 @@ public class CoreNation
                 Core.EquipClass(ClassType.Farm);
                 Core.EnsureAccept(7551);
 
-                Core.HuntMonster("Tercessuinotlim", "dark makai", "Dark Makai Rune");
+                Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "MDark Makai Rune");
 
                 switch (item)
                 {
@@ -858,7 +852,7 @@ public class CoreNation
             Core.HuntMonster("faerie", "Aracara", "Aracara Silk");
 
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Makai Fang", 5);
+            Core.HuntMonster(Core.IsMember ? "nulgath" : "tercessuinotlim", "Dark Makai", "Makai Fang", 5);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
             Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Aquamarine of Nulgath", 3, false);
 
@@ -891,21 +885,22 @@ public class CoreNation
     /// </summary>
     /// <param name="reward">Desired reward</param>
     /// <param name="farmUni13">Whether or not farm Uni 13</param>
-    public void ContractExchange(ChooseReward reward = ChooseReward.DiamondofNulgath, bool farmUni13 = true)
+    public void ContractExchange(ChooseReward reward = ChooseReward.DiamondofNulgath, int quant = 1, bool farmUni13 = true)
     {
         if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
             return;
 
         Core.AddDrop(bagDrops);
-
-        if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
-            FarmUni13();
         Core.EquipClass(ClassType.Solo);
-        Core.EnsureAccept(870);
-        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune", log: false);
-        Core.EnsureComplete(870, (int)reward);
-        Bot.Drops.Pickup(bagDrops);
-        Core.Logger($"Exchanged for {reward}");
+        while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, quant))
+        {
+            if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
+                FarmUni13();
+            Core.EnsureAccept(870);
+            Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune", 3, log: false);
+            Core.EnsureCompleteMulti(870, (int)reward);
+            Core.Logger($"Exchanged for {reward}");
+        }
     }
 
     /// <summary>
@@ -1053,8 +1048,8 @@ public class CoreNation
         Core.AddDrop("Blood Gem of the Archfiend");
 
         if (Core.CheckInventory("Drudgen the Assistant"))
-            while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
-                ContractExchange(ChooseReward.BloodGemoftheArchfiend);
+            // while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
+            ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant);
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         VoidKightSwordQuest("Blood Gem of the Archfiend", quant);
         BloodyChaos(quant, true);
