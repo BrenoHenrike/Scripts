@@ -36,7 +36,7 @@ public class GenQueueScript
         {
             // Selecting all files
             _fileDialog = Ioc.Default.GetRequiredService<IFileDialogService>();
-            string _scriptPath = _scriptPath = Path.Combine(AppContext.BaseDirectory, "Scripts");
+            string _scriptPath = _scriptPath = Path.Combine(CoreBots.SkuaPath, "Scripts");
             string? path = _fileDialog.OpenFile(_scriptPath, "Skua Script (*.cs)|*.cs");
             if (path == null)
                 break;
@@ -48,7 +48,7 @@ public class GenQueueScript
                 continue;
             }
 
-            string[] file = File.ReadAllLines(Path.Combine(AppContext.BaseDirectory, includePath));
+            string[] file = File.ReadAllLines(Path.Combine(CoreBots.SkuaPath, includePath));
             if (file.Any(l => l.Contains("public List<IOption>")))
             {
                 Bot.ShowMessageBox($"The bot you selected: [{includePath}] has \"Script Options\", these are not supported for queued scripts. It will not be added to the queue", "Contains Script Options!");
@@ -229,9 +229,9 @@ public class GenQueueScript
             "}"
         });
 
-        if (!Directory.Exists(Path.Combine(AppContext.BaseDirectory, "Scripts", "Generated")))
-            Directory.CreateDirectory(Path.Combine(AppContext.BaseDirectory, "Scripts", "Generated"));
-        File.WriteAllLines(Path.Combine(AppContext.BaseDirectory, "Scripts", "Generated", botName + ".cs"), newFile);
+        if (!Directory.Exists(Path.Combine(CoreBots.ScriptsPath, "Generated")))
+            Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "Generated"));
+        File.WriteAllLines(Path.Combine(CoreBots.ScriptsPath, "Generated", botName + ".cs"), newFile);
 
         Bot.ShowMessageBox($"File Path:\n- Scripts/Generated/{botName}.cs\n\nIt does the following bots in the same order:\n- {String.Join("\n- ", scriptNames)}", "Script is succesfully generated");
     }
