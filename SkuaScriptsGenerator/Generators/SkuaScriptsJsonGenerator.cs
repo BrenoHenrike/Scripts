@@ -8,7 +8,7 @@ namespace SkuaScriptsGenerator.Generators
         {
             var rawScriptsURL = "https://raw.githubusercontent.com/BrenoHenrike/Scripts/dev/";
             var scripts = new List<ScriptInfo>();
-            foreach (var script in Directory.EnumerateFiles("../", "*.cs", SearchOption.AllDirectories))
+            foreach (var script in Directory.EnumerateFiles("./", "*.cs", SearchOption.AllDirectories))
             {
                 var firstLine = File.ReadLines(script).First();
                 if (firstLine.StartsWith("/*"))
@@ -32,15 +32,11 @@ namespace SkuaScriptsGenerator.Generators
                             case "tags":
                                 scriptInfo.Tags = value.Split(',').Select(x => x.Trim()).Select(x => x.All(c => char.IsUpper(c)) ? x : x.ToLower()).ToArray();
                                 break;
-                            case "path":
-                                scriptInfo.Path = value;
-                                scriptInfo.DownloadUrl = rawScriptsURL+value;
-                                break;
-                            case "fileName":
-                                scriptInfo.FileName = value;
-                                break;
                         }
                     }
+                    scriptInfo.Path = script.Replace("\\", "/").Replace("./", "");
+                    scriptInfo.FileName = script.Split('\\').Last();
+                    scriptInfo.DownloadUrl = rawScriptsURL+scriptInfo.Path;
                     scriptInfo.Size = (int)new FileInfo(script).Length;
 
                     scripts.Add(scriptInfo);
