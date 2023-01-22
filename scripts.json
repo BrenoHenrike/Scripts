@@ -2151,7 +2151,7 @@
       "class",
       "good",
       "tank",
-      "HP",
+      "hp",
       "templar",
       "support",
       "survivability",
@@ -3720,7 +3720,7 @@
     "description": "This bot farms the Dragon of Time class for you.",
     "tags": [
       "class",
-      "DOT",
+      "dot",
       "damage over time",
       "dragon of time",
       "timeinn"
