@@ -35,7 +35,7 @@ namespace SkuaScriptsGenerator.Generators
                         }
                     }
                     scriptInfo.Path = script.Replace("\\", "/").Replace("./", "");
-                    scriptInfo.FileName = script.Split('\\').Last();
+                    scriptInfo.FileName = script.Split('\\').Last().Replace("./", "");
                     scriptInfo.DownloadUrl = rawScriptsURL+scriptInfo.Path;
                     scriptInfo.Size = (int)new FileInfo(script).Length;
 
