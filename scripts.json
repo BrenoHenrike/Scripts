@@ -369,7 +369,7 @@
       "null"
     ],
     "path": "Other/DragonCrystal[Upholder].cs",
-    "size": 1040,
+    "size": 1039,
     "fileName": "DragonCrystal[Upholder].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonCrystal[Upholder].cs"
   },
@@ -1777,7 +1777,7 @@
       "null"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 25663,
+    "size": 25662,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -3647,7 +3647,7 @@
       "null"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 2923,
+    "size": 2960,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
@@ -7772,7 +7772,7 @@
       "null"
     ],
     "path": "Nation/Various/DragonBlade[mem}.cs",
-    "size": 2615,
+    "size": 2625,
     "fileName": "DragonBlade[mem}.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/DragonBlade[mem}.cs"
   },
@@ -7816,7 +7816,7 @@
       "null"
     ],
     "path": "Nation/Various/BehemothBlades.cs",
-    "size": 2157,
+    "size": 2167,
     "fileName": "BehemothBlades.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/BehemothBlades.cs"
   },
@@ -7893,7 +7893,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs",
-    "size": 3387,
+    "size": 3397,
     "fileName": "EvovledHexOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs"
   },
@@ -11226,7 +11226,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21675,
+    "size": 21745,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
