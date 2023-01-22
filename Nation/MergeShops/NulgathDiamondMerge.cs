@@ -152,7 +152,7 @@ public class NulgathDiamondMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EnsureAccept(584);
                     Nation.Supplies("Unidentified 26");
-                    Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil", 1);
+                    Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
                     Core.EnsureComplete(584);
                     Bot.Wait.ForPickup(req.Name);
                     break;

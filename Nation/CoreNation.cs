@@ -875,7 +875,7 @@ public class CoreNation
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
-        Core.KillMonster("evilmarsh", "Field1", "Left", "Dark Makai", log: false);
+        Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
         Core.EnsureComplete(869);
         Core.Logger("Completed");
     }
