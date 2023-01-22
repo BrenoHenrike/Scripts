@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/05Lust.cs
-fileName: 05Lust.cs
 name: null
 description: null
 tags: null

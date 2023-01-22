@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/OrbHunt.cs
-fileName: OrbHunt.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/Arcangrove.cs
-fileName: Arcangrove.cs
 name: null
 description: null
 tags: null

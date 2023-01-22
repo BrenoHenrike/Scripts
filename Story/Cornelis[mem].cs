@@ -1,6 +1,4 @@
 /*
-path: Story/Cornelis[mem].cs
-fileName: Cornelis[mem].cs
 name: null
 description: null
 tags: null

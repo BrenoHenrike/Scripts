@@ -1,6 +1,4 @@
 /*
-path: Prototypes/ArmyTaintedGem.cs
-fileName: ArmyTaintedGem.cs
 name: null
 description: null
 tags: null

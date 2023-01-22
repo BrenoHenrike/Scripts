@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AqwBirthday/SweatBirthdayTreatsRewards.cs
-fileName: SweatBirthdayTreatsRewards.cs
 name: null
 description: null
 tags: null

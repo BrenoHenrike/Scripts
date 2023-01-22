@@ -1,6 +1,4 @@
 /*
-path: Seasonal/LuckyDay/Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs
-fileName: Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Templates/StoryTemplate.cs
-fileName: StoryTemplate.cs
 name: null
 description: null
 tags: null

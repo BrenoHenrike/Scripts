@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/HolidayParagon.cs
-fileName: HolidayParagon.cs
 name: null
 description: null
 tags: null

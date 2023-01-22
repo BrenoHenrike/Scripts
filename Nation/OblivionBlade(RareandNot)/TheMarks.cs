@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/TheMarks.cs
-fileName: TheMarks.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BloodAncientMerge.cs
-fileName: BloodAncientMerge.cs
 name: null
 description: null
 tags: null

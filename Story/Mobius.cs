@@ -1,6 +1,4 @@
 /*
-path: Story/Mobius.cs
-fileName: Mobius.cs
 name: null
 description: null
 tags: null

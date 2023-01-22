@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StaffBirthdays/DageTheEvil/DarkwarlegionWarChestMerge.cs
-fileName: DarkwarlegionWarChestMerge.cs
 name: null
 description: null
 tags: null

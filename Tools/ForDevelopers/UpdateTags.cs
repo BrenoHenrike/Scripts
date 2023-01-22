@@ -1,6 +1,4 @@
 /*
-path: Tools/ForDevelopers/UpdateTags.cs
-fileName: UpdateTags.cs
 name: null
 description: null
 tags: null

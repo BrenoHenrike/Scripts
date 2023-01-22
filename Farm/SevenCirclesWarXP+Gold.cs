@@ -1,6 +1,4 @@
 /*
-path: Farm/SevenCirclesWarXP+Gold.cs
-fileName: SevenCirclesWarXP+Gold.cs
 name: null
 description: null
 tags: null

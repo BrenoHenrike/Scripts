@@ -1,6 +1,4 @@
 /*
-path: Story/DeerHunt.cs
-fileName: DeerHunt.cs
 name: null
 description: null
 tags: null

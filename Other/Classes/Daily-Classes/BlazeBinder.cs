@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Daily-Classes/BlazeBinder.cs
-fileName: BlazeBinder.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/NightmareCarnaxMerge.cs
-fileName: NightmareCarnaxMerge.cs
 name: null
 description: null
 tags: null

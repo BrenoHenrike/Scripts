@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/VoidAvengerScythe.cs
-fileName: VoidAvengerScythe.cs
 name: null
 description: null
 tags: null

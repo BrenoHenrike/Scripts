@@ -1,6 +1,4 @@
 /*
-path: Legion/DarkToken.cs
-fileName: DarkToken.cs
 name: null
 description: null
 tags: null

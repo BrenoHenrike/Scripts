@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs
-fileName: ArmyVoucherItemTotemofNulgath.cs
 name: null
 description: null
 tags: null

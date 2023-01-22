@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part3/5TechFortress.cs
-fileName: 5TechFortress.cs
 name: null
 description: null
 tags: null

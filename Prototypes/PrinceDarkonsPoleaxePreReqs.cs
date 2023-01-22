@@ -1,6 +1,4 @@
 /*
-path: Prototypes/PrinceDarkonsPoleaxePreReqs.cs
-fileName: PrinceDarkonsPoleaxePreReqs.cs
 name: null
 description: null
 tags: null

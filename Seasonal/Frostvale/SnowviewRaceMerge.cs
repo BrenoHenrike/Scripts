@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/SnowviewRaceMerge.cs
-fileName: SnowviewRaceMerge.cs
 name: null
 description: null
 tags: null

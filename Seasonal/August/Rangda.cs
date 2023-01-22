@@ -1,6 +1,4 @@
 /*
-path: Seasonal/August/Rangda.cs
-fileName: Rangda.cs
 name: null
 description: null
 tags: null

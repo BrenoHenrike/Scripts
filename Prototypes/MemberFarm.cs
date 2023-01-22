@@ -1,6 +1,4 @@
 /*
-path: Prototypes/MemberFarm.cs
-fileName: MemberFarm.cs
 name: null
 description: null
 tags: null

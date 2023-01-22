@@ -1,6 +1,4 @@
 /*
-path: Legion/SwordMaster.cs
-fileName: SwordMaster.cs
 name: null
 description: null
 tags: null

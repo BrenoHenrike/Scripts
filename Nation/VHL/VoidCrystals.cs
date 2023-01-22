@@ -1,6 +1,4 @@
 /*
-path: Nation/VHL/VoidCrystals.cs
-fileName: VoidCrystals.cs
 name: null
 description: null
 tags: null

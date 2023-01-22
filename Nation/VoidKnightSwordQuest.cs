@@ -1,6 +1,4 @@
 /*
-path: Nation/VoidKnightSwordQuest.cs
-fileName: VoidKnightSwordQuest.cs
 name: null
 description: null
 tags: null

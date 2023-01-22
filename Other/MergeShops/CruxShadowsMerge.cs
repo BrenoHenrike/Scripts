@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CruxShadowsMerge.cs
-fileName: CruxShadowsMerge.cs
 name: null
 description: null
 tags: null

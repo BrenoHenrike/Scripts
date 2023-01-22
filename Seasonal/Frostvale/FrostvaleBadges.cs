@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/FrostvaleBadges.cs
-fileName: FrostvaleBadges.cs
 name: null
 description: null
 tags: null

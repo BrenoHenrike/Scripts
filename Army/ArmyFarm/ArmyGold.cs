@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyFarm/ArmyGold.cs
-fileName: ArmyGold.cs
 name: null
 description: null
 tags: null

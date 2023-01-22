@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TimekeepMerge.cs
-fileName: TimekeepMerge.cs
 name: null
 description: null
 tags: null

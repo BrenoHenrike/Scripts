@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/5LivingDungeon.cs
-fileName: 5LivingDungeon.cs
 name: null
 description: null
 tags: null

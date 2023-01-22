@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/00DoAllMogloweenStory.cs
-fileName: 00DoAllMogloweenStory.cs
 name: null
 description: null
 tags: null

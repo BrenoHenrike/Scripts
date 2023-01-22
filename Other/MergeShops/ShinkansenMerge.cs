@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShinkansenMerge.cs
-fileName: ShinkansenMerge.cs
 name: null
 description: null
 tags: null

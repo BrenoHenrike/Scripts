@@ -1,6 +1,4 @@
 /*
-path: Other/MysteriousEgg.cs
-fileName: MysteriousEgg.cs
 name: null
 description: null
 tags: null

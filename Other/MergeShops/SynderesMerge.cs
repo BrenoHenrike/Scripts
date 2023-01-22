@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/SynderesMerge.cs
-fileName: SynderesMerge.cs
 name: null
 description: null
 tags: null

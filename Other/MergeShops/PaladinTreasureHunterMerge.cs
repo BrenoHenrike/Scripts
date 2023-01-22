@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/PaladinTreasureHunterMerge.cs
-fileName: PaladinTreasureHunterMerge.cs
 name: null
 description: null
 tags: null

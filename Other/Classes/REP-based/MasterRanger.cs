@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/MasterRanger.cs
-fileName: MasterRanger.cs
 name: null
 description: null
 tags: null

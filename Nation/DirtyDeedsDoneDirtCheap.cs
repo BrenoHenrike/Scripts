@@ -1,6 +1,4 @@
 /*
-path: Nation/DirtyDeedsDoneDirtCheap.cs
-fileName: DirtyDeedsDoneDirtCheap.cs
 name: null
 description: null
 tags: null

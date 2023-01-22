@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/15Tyndarius.cs
-fileName: 15Tyndarius.cs
 name: null
 description: null
 tags: null

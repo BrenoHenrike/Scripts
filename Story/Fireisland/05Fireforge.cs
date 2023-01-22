@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/05Fireforge.cs
-fileName: 05Fireforge.cs
 name: null
 description: null
 tags: null

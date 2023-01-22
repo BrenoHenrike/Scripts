@@ -1,6 +1,4 @@
 /*
-path: Story/TowerOfDoom.cs
-fileName: TowerOfDoom.cs
 name: null
 description: null
 tags: null

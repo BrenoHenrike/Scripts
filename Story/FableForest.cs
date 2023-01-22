@@ -1,6 +1,4 @@
 /*
-path: Story/FableForest.cs
-fileName: FableForest.cs
 name: null
 description: null
 tags: null

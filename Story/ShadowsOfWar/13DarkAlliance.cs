@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/13DarkAlliance.cs
-fileName: 13DarkAlliance.cs
 name: null
 description: null
 tags: null

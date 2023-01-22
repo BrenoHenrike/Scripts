@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/DarkonGarden.cs
-fileName: DarkonGarden.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/LordOfTheWeddingRing.cs
-fileName: LordOfTheWeddingRing.cs
 name: null
 description: null
 tags: null

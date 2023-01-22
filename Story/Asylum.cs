@@ -1,6 +1,4 @@
 /*
-path: Story/Asylum.cs
-fileName: Asylum.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/RuinedCrownMerge.cs
-fileName: RuinedCrownMerge.cs
 name: null
 description: null
 tags: null

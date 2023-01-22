@@ -1,6 +1,4 @@
 /*
-path: Story/Tower[mem].cs
-fileName: Tower[mem].cs
 name: null
 description: null
 tags: null

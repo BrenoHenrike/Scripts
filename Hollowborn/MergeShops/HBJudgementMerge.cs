@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/MergeShops/HBJudgementMerge.cs
-fileName: HBJudgementMerge.cs
 name: null
 description: null
 tags: null

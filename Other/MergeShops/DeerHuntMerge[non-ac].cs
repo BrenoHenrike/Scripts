@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DeerHuntMerge[non-ac].cs
-fileName: DeerHuntMerge[non-ac].cs
 name: null
 description: null
 tags: null

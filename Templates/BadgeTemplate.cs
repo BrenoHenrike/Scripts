@@ -1,6 +1,4 @@
 /*
-path: Templates/BadgeTemplate.cs
-fileName: BadgeTemplate.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ChronoMerge.cs
-fileName: ChronoMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/BattleUnder.cs
-fileName: BattleUnder.cs
 name: null
 description: null
 tags: null

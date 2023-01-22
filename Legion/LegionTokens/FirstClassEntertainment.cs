@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/FirstClassEntertainment.cs
-fileName: FirstClassEntertainment.cs
 name: null
 description: null
 tags: null

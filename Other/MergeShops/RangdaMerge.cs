@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/RangdaMerge.cs
-fileName: RangdaMerge.cs
 name: null
 description: null
 tags: null

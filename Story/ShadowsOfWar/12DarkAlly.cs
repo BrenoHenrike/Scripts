@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/12DarkAlly.cs
-fileName: 12DarkAlly.cs
 name: null
 description: null
 tags: null

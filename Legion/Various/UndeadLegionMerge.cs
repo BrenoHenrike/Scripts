@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/UndeadLegionMerge.cs
-fileName: UndeadLegionMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/HighSeasCommander[10y].cs
-fileName: HighSeasCommander[10y].cs
 name: null
 description: null
 tags: null

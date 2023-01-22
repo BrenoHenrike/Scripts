@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/CoreSoC.cs
-fileName: CoreSoC.cs
 name: null
 description: null
 tags: null

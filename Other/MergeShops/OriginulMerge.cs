@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/OriginulMerge.cs
-fileName: OriginulMerge.cs
 name: null
 description: null
 tags: null

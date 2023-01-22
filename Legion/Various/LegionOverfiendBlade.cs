@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/LegionOverfiendBlade.cs
-fileName: LegionOverfiendBlade.cs
 name: null
 description: null
 tags: null

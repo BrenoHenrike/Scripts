@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AqwBirthday/ZorbaksMerge.cs
-fileName: ZorbaksMerge.cs
 name: null
 description: null
 tags: null

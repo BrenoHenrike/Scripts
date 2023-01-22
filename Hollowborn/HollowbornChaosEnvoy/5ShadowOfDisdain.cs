@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornChaosEnvoy/5ShadowOfDisdain.cs
-fileName: 5ShadowOfDisdain.cs
 name: null
 description: null
 tags: null

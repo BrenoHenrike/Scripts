@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Necromancer.cs
-fileName: Necromancer.cs
 name: null
 description: null
 tags: null

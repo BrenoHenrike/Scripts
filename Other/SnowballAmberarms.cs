@@ -1,6 +1,4 @@
 /*
-path: Other/SnowballAmberarms.cs
-fileName: SnowballAmberarms.cs
 name: null
 description: null
 tags: null

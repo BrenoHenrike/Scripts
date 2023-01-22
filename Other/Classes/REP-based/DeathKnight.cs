@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/DeathKnight.cs
-fileName: DeathKnight.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/MayThe4th/MurderMoonStory.cs
-fileName: MurderMoonStory.cs
 name: null
 description: null
 tags: null

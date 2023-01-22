@@ -1,6 +1,4 @@
 /*
-path: Nation/AFDL/EnoughDOOMforanArchfiend.cs
-fileName: EnoughDOOMforanArchfiend.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/BloodGem.cs
-fileName: BloodGem.cs
 name: null
 description: null
 tags: null

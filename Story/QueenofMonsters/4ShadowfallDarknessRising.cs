@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/4ShadowfallDarknessRising.cs
-fileName: 4ShadowfallDarknessRising.cs
 name: null
 description: null
 tags: null

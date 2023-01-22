@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/Extra/HatchTheEgg.cs
-fileName: HatchTheEgg.cs
 name: null
 description: null
 tags: null

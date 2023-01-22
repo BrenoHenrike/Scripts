@@ -1,6 +1,4 @@
 /*
-path: Story/J6Saga.cs
-fileName: J6Saga.cs
 name: null
 description: null
 tags: null

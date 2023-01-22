@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs
-fileName: CoreOblivionBladeofNulgath.cs
 name: null
 description: null
 tags: null

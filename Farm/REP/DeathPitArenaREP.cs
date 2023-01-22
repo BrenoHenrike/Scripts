@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DeathPitArenaREP.cs
-fileName: DeathPitArenaREP.cs
 name: null
 description: null
 tags: null

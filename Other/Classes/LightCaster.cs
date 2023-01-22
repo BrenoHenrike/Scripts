@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/LightCaster.cs
-fileName: LightCaster.cs
 name: null
 description: null
 tags: null

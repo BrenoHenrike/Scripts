@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/AQWorldsWarZMerge.cs
-fileName: AQWorldsWarZMerge.cs
 name: null
 description: null
 tags: null

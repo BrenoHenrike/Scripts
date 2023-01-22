@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BeleensMerge.cs
-fileName: BeleensMerge.cs
 name: null
 description: null
 tags: null

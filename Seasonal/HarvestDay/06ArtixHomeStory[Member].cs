@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/06ArtixHomeStory[Member].cs
-fileName: 06ArtixHomeStory[Member].cs
 name: null
 description: null
 tags: null

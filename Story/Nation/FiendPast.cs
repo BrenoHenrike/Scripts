@@ -1,6 +1,4 @@
 /*
-path: Story/Nation/FiendPast.cs
-fileName: FiendPast.cs
 name: null
 description: null
 tags: null

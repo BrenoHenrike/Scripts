@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TachyonMerge.cs
-fileName: TachyonMerge.cs
 name: null
 description: null
 tags: null

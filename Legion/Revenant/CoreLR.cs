@@ -1,6 +1,4 @@
 /*
-path: Legion/Revenant/CoreLR.cs
-fileName: CoreLR.cs
 name: null
 description: null
 tags: null

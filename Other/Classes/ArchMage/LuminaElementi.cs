@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/ArchMage/LuminaElementi.cs
-fileName: LuminaElementi.cs
 name: null
 description: null
 tags: null

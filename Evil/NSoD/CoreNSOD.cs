@@ -1,6 +1,4 @@
 /*
-path: Evil/NSoD/CoreNSOD.cs
-fileName: CoreNSOD.cs
 name: null
 description: null
 tags: null

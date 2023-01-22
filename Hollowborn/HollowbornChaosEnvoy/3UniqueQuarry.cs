@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornChaosEnvoy/3UniqueQuarry.cs
-fileName: 3UniqueQuarry.cs
 name: null
 description: null
 tags: null

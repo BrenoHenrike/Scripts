@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/MalacodaNecroment.cs
-fileName: MalacodaNecroment.cs
 name: null
 description: null
 tags: null

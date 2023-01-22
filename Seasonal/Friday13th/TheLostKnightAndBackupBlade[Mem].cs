@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs
-fileName: TheLostKnightAndBackupBlade[Mem].cs
 name: null
 description: null
 tags: null

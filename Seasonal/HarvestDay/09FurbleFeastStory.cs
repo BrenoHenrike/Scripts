@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/09FurbleFeastStory.cs
-fileName: 09FurbleFeastStory.cs
 name: null
 description: null
 tags: null

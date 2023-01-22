@@ -1,6 +1,4 @@
 /*
-path: Evil/SepulchuresOriginalHelm.cs
-fileName: SepulchuresOriginalHelm.cs
 name: null
 description: null
 tags: null

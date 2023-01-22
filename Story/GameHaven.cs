@@ -1,6 +1,4 @@
 /*
-path: Story/GameHaven.cs
-fileName: GameHaven.cs
 name: null
 description: null
 tags: null

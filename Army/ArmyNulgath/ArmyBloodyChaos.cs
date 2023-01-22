@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyNulgath/ArmyBloodyChaos.cs
-fileName: ArmyBloodyChaos.cs
 name: null
 description: null
 tags: null

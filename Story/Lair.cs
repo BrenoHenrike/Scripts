@@ -1,6 +1,4 @@
 /*
-path: Story/Lair.cs
-fileName: Lair.cs
 name: null
 description: null
 tags: null

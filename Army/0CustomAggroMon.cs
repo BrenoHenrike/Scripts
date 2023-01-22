@@ -1,6 +1,4 @@
 /*
-path: Army/0CustomAggroMon.cs
-fileName: 0CustomAggroMon.cs
 name: null
 description: null
 tags: null

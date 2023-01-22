@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs
-fileName: DeadlyDungeon[Mem].cs
 name: null
 description: null
 tags: null

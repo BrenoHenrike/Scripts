@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/BattleConVIP.cs
-fileName: BattleConVIP.cs
 name: null
 description: null
 tags: null

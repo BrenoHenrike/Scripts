@@ -1,6 +1,4 @@
 /*
-path: Army/Quests/ArmyUniqueQuarry.cs
-fileName: ArmyUniqueQuarry.cs
 name: null
 description: null
 tags: null

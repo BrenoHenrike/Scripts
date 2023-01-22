@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/14Hero(ChaosFinale).cs
-fileName: 14Hero(ChaosFinale).cs
 name: null
 description: null
 tags: null

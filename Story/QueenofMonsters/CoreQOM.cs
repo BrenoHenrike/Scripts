@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/CoreQOM.cs
-fileName: CoreQOM.cs
 name: null
 description: null
 tags: null

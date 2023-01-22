@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/LanceOfTime.cs
-fileName: LanceOfTime.cs
 name: null
 description: null
 tags: null

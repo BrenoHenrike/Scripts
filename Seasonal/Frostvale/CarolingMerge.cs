@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/CarolingMerge.cs
-fileName: CarolingMerge.cs
 name: null
 description: null
 tags: null

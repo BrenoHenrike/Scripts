@@ -1,6 +1,4 @@
 /*
-path: Seasonal/BlackFriday/AlphaHunterAndRogue.cs
-fileName: AlphaHunterAndRogue.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Dailies/Pyromancer.cs
-fileName: Pyromancer.cs
 name: null
 description: null
 tags: null

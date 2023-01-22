@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/ChoasFinaleBonus[Mem]/KillerCatacombs[Mem].cs
-fileName: KillerCatacombs[Mem].cs
 name: null
 description: null
 tags: null

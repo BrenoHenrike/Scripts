@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DarkPalaceMerge.cs
-fileName: DarkPalaceMerge.cs
 name: null
 description: null
 tags: null

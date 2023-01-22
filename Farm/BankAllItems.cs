@@ -1,8 +1,6 @@
 /*
-path: Farm/BankAllItems.cs
-fileName: BankAllItems.cs
-name:  testname
-description:  testdesc
+name: null
+description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,6 +1,4 @@
 /*
-path: Legion/DagePvP.cs
-fileName: DagePvP.cs
 name: null
 description: null
 tags: null

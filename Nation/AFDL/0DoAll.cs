@@ -1,6 +1,4 @@
 /*
-path: Nation/AFDL/0DoAll.cs
-fileName: 0DoAll.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Evil/NSoD/VoidAuras/CommandingShadowEssences.cs
-fileName: CommandingShadowEssences.cs
 name: null
 description: null
 tags: null

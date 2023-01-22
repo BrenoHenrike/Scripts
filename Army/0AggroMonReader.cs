@@ -1,6 +1,4 @@
 /*
-path: Army/0AggroMonReader.cs
-fileName: 0AggroMonReader.cs
 name: null
 description: null
 tags: null

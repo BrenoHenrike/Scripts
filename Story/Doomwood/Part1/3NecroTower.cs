@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part1/3NecroTower.cs
-fileName: 3NecroTower.cs
 name: null
 description: null
 tags: null

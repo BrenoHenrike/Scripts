@@ -1,6 +1,4 @@
 /*
-path: Legion/SoulForgeHammer.cs
-fileName: SoulForgeHammer.cs
 name: null
 description: null
 tags: null

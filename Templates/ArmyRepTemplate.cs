@@ -1,6 +1,4 @@
 /*
-path: Templates/ArmyRepTemplate.cs
-fileName: ArmyRepTemplate.cs
 name: null
 description: null
 tags: null

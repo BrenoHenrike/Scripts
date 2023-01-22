@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/SkyPirateSlayerBadge.cs
-fileName: SkyPirateSlayerBadge.cs
 name: null
 description: null
 tags: null

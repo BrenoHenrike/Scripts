@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionExcercise/LegionExercise3.cs
-fileName: LegionExercise3.cs
 name: null
 description: null
 tags: null

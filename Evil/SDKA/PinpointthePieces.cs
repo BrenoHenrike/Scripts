@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/PinpointthePieces.cs
-fileName: PinpointthePieces.cs
 name: null
 description: null
 tags: null

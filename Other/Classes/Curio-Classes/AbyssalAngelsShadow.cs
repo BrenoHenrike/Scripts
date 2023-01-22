@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Curio-Classes/AbyssalAngelsShadow.cs
-fileName: AbyssalAngelsShadow.cs
 name: null
 description: null
 tags: null

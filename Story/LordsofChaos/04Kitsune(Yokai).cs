@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/04Kitsune(Yokai).cs
-fileName: 04Kitsune(Yokai).cs
 name: null
 description: null
 tags: null

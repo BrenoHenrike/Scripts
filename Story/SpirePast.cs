@@ -1,6 +1,4 @@
 /*
-path: Story/SpirePast.cs
-fileName: SpirePast.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/FrostvalBarbarian.cs
-fileName: FrostvalBarbarian.cs
 name: null
 description: null
 tags: null

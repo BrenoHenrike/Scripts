@@ -1,6 +1,4 @@
 /*
-path: Other/FireAvatarFavorFarm.cs
-fileName: FireAvatarFavorFarm.cs
 name: null
 description: null
 tags: null

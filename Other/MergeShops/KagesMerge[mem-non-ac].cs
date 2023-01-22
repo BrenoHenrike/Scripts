@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/KagesMerge[mem-non-ac].cs
-fileName: KagesMerge[mem-non-ac].cs
 name: null
 description: null
 tags: null

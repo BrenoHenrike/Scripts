@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/07FoulFarmStory.cs
-fileName: 07FoulFarmStory.cs
 name: null
 description: null
 tags: null

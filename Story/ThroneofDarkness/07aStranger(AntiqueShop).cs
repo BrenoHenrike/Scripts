@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/07aStranger(AntiqueShop).cs
-fileName: 07aStranger(AntiqueShop).cs
 name: null
 description: null
 tags: null

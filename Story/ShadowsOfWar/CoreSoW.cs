@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/CoreSoW.cs
-fileName: CoreSoW.cs
 name: null
 description: null
 tags: null

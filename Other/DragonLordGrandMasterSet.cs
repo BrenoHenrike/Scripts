@@ -1,6 +1,4 @@
 /*
-path: Other/DragonLordGrandMasterSet.cs
-fileName: DragonLordGrandMasterSet.cs
 name: null
 description: null
 tags: null

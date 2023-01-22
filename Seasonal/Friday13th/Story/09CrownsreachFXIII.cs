@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/09CrownsreachFXIII.cs
-fileName: 09CrownsreachFXIII.cs
 name: null
 description: null
 tags: null

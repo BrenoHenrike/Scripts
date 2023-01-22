@@ -1,6 +1,4 @@
 /*
-path: Nation/VHL/VoidHighlordsChallenge.cs
-fileName: VoidHighlordsChallenge.cs
 name: null
 description: null
 tags: null

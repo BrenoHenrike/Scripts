@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DageTheEvilIsland/02Seraph.cs
-fileName: 02Seraph.cs
 name: null
 description: null
 tags: null

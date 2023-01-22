@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ProofOfRecruitmentQuest.cs
-fileName: ProofOfRecruitmentQuest.cs
 name: null
 description: null
 tags: null

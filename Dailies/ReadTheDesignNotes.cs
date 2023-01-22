@@ -1,6 +1,4 @@
 /*
-path: Dailies/ReadTheDesignNotes.cs
-fileName: ReadTheDesignNotes.cs
 name: null
 description: null
 tags: null

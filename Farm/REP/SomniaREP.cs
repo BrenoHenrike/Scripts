@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/SomniaREP.cs
-fileName: SomniaREP.cs
 name: null
 description: null
 tags: null

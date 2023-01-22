@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DageChallengeStory.cs
-fileName: DageChallengeStory.cs
 name: null
 description: null
 tags: null

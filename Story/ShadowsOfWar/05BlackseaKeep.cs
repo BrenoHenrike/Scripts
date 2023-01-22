@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/05BlackseaKeep.cs
-fileName: 05BlackseaKeep.cs
 name: null
 description: null
 tags: null

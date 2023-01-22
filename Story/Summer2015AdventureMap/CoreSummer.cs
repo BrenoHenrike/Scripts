@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/CoreSummer.cs
-fileName: CoreSummer.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/DarkSpiritOrbs.cs
-fileName: DarkSpiritOrbs.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ENNH.cs
-fileName: ENNH.cs
 name: null
 description: null
 tags: null

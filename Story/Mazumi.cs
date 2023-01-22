@@ -1,6 +1,4 @@
 /*
-path: Story/Mazumi.cs
-fileName: Mazumi.cs
 name: null
 description: null
 tags: null

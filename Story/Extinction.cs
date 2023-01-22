@@ -1,6 +1,4 @@
 /*
-path: Story/Extinction.cs
-fileName: Extinction.cs
 name: null
 description: null
 tags: null

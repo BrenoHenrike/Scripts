@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/BrethwrenREP.cs
-fileName: BrethwrenREP.cs
 name: null
 description: null
 tags: null

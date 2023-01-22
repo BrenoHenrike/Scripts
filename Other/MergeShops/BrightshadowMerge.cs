@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BrightshadowMerge.cs
-fileName: BrightshadowMerge.cs
 name: null
 description: null
 tags: null

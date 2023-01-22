@@ -1,6 +1,4 @@
 /*
-path: Nation/EvolvedOrb/EvolvedBloodOrb.cs
-fileName: EvolvedBloodOrb.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/InfernalArmyREP.cs
-fileName: InfernalArmyREP.cs
 name: null
 description: null
 tags: null

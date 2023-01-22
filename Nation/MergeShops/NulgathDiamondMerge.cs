@@ -1,6 +1,4 @@
 /*
-path: Nation/MergeShops/NulgathDiamondMerge.cs
-fileName: NulgathDiamondMerge.cs
 name: null
 description: null
 tags: null

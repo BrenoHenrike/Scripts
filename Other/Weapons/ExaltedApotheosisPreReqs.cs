@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/ExaltedApotheosisPreReqs.cs
-fileName: ExaltedApotheosisPreReqs.cs
 name: null
 description: null
 tags: null

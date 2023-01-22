@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part3/3TechDungeon.cs
-fileName: 3TechDungeon.cs
 name: null
 description: null
 tags: null

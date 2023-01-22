@@ -1,6 +1,4 @@
 /*
-path: Nation/VHL/CoreVHL.cs
-fileName: CoreVHL.cs
 name: null
 description: null
 tags: null

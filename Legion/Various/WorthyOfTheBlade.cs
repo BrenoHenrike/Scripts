@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/WorthyOfTheBlade.cs
-fileName: WorthyOfTheBlade.cs
 name: null
 description: null
 tags: null

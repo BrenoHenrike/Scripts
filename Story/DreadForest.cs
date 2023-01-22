@@ -1,6 +1,4 @@
 /*
-path: Story/DreadForest.cs
-fileName: DreadForest.cs
 name: null
 description: null
 tags: null

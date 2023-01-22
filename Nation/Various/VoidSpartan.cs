@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/VoidSpartan.cs
-fileName: VoidSpartan.cs
 name: null
 description: null
 tags: null

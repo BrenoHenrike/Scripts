@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TrickstersGiftsMerge.cs
-fileName: TrickstersGiftsMerge.cs
 name: null
 description: null
 tags: null

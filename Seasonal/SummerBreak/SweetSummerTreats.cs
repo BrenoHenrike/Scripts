@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/SweetSummerTreats.cs
-fileName: SweetSummerTreats.cs
 name: null
 description: null
 tags: null

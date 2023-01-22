@@ -1,6 +1,4 @@
 /*
-path: Other/CorruptDraconicParagon.cs
-fileName: CorruptDraconicParagon.cs
 name: null
 description: null
 tags: null

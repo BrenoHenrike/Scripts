@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/02Escherion(ChiralValley).cs
-fileName: 02Escherion(ChiralValley).cs
 name: null
 description: null
 tags: null

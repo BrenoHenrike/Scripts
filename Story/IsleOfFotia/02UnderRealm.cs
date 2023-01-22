@@ -1,6 +1,4 @@
 /*
-path: Story/IsleOfFotia/02UnderRealm.cs
-fileName: 02UnderRealm.cs
 name: null
 description: null
 tags: null

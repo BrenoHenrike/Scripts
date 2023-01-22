@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/17EbilCorpHQStory.cs
-fileName: 17EbilCorpHQStory.cs
 name: null
 description: null
 tags: null

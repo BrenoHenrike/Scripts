@@ -1,6 +1,4 @@
 /*
-path: Darkon/DarkonDebris2ReconstructedPrerequisites.cs
-fileName: DarkonDebris2ReconstructedPrerequisites.cs
 name: null
 description: null
 tags: null

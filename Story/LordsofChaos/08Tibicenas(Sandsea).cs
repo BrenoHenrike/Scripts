@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/08Tibicenas(Sandsea).cs
-fileName: 08Tibicenas(Sandsea).cs
 name: null
 description: null
 tags: null

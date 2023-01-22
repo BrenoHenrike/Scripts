@@ -1,6 +1,4 @@
 /*
-path: Dailies/TheCollector.cs
-fileName: TheCollector.cs
 name: null
 description: null
 tags: null

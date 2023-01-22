@@ -1,6 +1,4 @@
 /*
-path: Templates/DefaultTemplate.cs
-fileName: DefaultTemplate.cs
 name: null
 description: null
 tags: null

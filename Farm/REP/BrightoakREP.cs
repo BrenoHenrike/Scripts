@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/BrightoakREP.cs
-fileName: BrightoakREP.cs
 name: null
 description: null
 tags: null

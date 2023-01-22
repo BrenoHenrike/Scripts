@@ -1,6 +1,4 @@
 /*
-path: Army/OneClient/ArmyFreeAcs.cs
-fileName: ArmyFreeAcs.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/01Prologue.cs
-fileName: 01Prologue.cs
 name: null
 description: null
 tags: null

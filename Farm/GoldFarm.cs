@@ -1,6 +1,4 @@
 /*
-path: Farm/GoldFarm.cs
-fileName: GoldFarm.cs
 name: null
 description: null
 tags: null

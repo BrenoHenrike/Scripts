@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs
-fileName: AvastBadge[mem].cs
 name: null
 description: null
 tags: null

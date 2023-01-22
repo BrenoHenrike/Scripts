@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/16BlackMaze.cs
-fileName: 16BlackMaze.cs
 name: null
 description: null
 tags: null

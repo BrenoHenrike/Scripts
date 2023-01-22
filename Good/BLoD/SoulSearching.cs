@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/SoulSearching.cs
-fileName: SoulSearching.cs
 name: null
 description: null
 tags: null

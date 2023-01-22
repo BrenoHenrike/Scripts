@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyFarm/ArmyIceWing.cs
-fileName: ArmyIceWing.cs
 name: null
 description: null
 tags: null

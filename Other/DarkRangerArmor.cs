@@ -1,6 +1,4 @@
 /*
-path: Other/DarkRangerArmor.cs
-fileName: DarkRangerArmor.cs
 name: null
 description: null
 tags: null

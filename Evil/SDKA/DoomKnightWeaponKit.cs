@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/DoomKnightWeaponKit.cs
-fileName: DoomKnightWeaponKit.cs
 name: null
 description: null
 tags: null

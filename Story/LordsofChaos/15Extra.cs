@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/15Extra.cs
-fileName: 15Extra.cs
 name: null
 description: null
 tags: null

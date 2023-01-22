@@ -1,6 +1,4 @@
 /*
-path: Other/SecondFirstMate.cs
-fileName: SecondFirstMate.cs
 name: null
 description: null
 tags: null

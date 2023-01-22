@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/EliteVoid.cs
-fileName: EliteVoid.cs
 name: null
 description: null
 tags: null

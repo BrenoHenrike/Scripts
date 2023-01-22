@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/4Spookeasy.cs
-fileName: 4Spookeasy.cs
 name: null
 description: null
 tags: null

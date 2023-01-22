@@ -1,6 +1,4 @@
 /*
-path: Templates/CustomAggroMonTemplate.cs
-fileName: CustomAggroMonTemplate.cs
 name: null
 description: null
 tags: null

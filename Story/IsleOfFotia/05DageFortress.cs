@@ -1,6 +1,4 @@
 /*
-path: Story/IsleOfFotia/05DageFortress.cs
-fileName: 05DageFortress.cs
 name: null
 description: null
 tags: null

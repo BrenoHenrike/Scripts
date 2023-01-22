@@ -1,6 +1,4 @@
 /*
-path: Darkon/MergeShops/EridaniMerge.cs
-fileName: EridaniMerge.cs
 name: null
 description: null
 tags: null

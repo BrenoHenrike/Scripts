@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/VulcarsMerge.cs
-fileName: VulcarsMerge.cs
 name: null
 description: null
 tags: null

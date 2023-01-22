@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/4DPyramidHouseMerge.cs
-fileName: 4DPyramidHouseMerge.cs
 name: null
 description: null
 tags: null

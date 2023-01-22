@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/19DeadLines.cs
-fileName: 19DeadLines.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/NewYear/YearBall.cs
-fileName: YearBall.cs
 name: null
 description: null
 tags: null

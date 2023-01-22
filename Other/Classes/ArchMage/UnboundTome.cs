@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/ArchMage/UnboundTome.cs
-fileName: UnboundTome.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DreadForestMerge.cs
-fileName: DreadForestMerge.cs
 name: null
 description: null
 tags: null

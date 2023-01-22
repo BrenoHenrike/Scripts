@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/02ChaosAmulet.cs
-fileName: 02ChaosAmulet.cs
 name: null
 description: null
 tags: null

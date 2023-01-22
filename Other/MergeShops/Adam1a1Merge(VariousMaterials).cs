@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/Adam1a1Merge(VariousMaterials).cs
-fileName: Adam1a1Merge(VariousMaterials).cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/BlackFriday/EbonyDragonBladeOfNulgath.cs
-fileName: EbonyDragonBladeOfNulgath.cs
 name: null
 description: null
 tags: null

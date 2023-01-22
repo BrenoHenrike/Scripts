@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/SwordhavenREP.cs
-fileName: SwordhavenREP.cs
 name: null
 description: null
 tags: null

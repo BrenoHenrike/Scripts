@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmySpiritOrb.cs
-fileName: ArmySpiritOrb.cs
 name: null
 description: null
 tags: null

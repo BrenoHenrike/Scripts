@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/MergeShops/HollowbornLabMerge.cs
-fileName: HollowbornLabMerge.cs
 name: null
 description: null
 tags: null

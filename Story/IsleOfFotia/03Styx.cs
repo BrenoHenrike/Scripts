@@ -1,6 +1,4 @@
 /*
-path: Story/IsleOfFotia/03Styx.cs
-fileName: 03Styx.cs
 name: null
 description: null
 tags: null

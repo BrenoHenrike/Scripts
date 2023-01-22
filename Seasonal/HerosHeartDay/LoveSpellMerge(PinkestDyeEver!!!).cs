@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs
-fileName: LoveSpellMerge(PinkestDyeEver!!!).cs
 name: null
 description: null
 tags: null

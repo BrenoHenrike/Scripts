@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/UnfinishedMusicalScore.cs
-fileName: UnfinishedMusicalScore.cs
 name: null
 description: null
 tags: null

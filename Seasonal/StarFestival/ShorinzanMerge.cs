@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StarFestival/ShorinzanMerge.cs
-fileName: ShorinzanMerge.cs
 name: null
 description: null
 tags: null

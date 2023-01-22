@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/ArcaneParagon.cs
-fileName: ArcaneParagon.cs
 name: null
 description: null
 tags: null

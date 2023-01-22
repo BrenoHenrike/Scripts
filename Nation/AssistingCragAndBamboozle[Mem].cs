@@ -1,6 +1,4 @@
 /*
-path: Nation/AssistingCragAndBamboozle[Mem].cs
-fileName: AssistingCragAndBamboozle[Mem].cs
 name: null
 description: null
 tags: null

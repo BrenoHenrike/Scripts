@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/02ShadowlordKeep.cs
-fileName: 02ShadowlordKeep.cs
 name: null
 description: null
 tags: null

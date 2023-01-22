@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/Core13LoC.cs
-fileName: Core13LoC.cs
 name: null
 description: null
 tags: null

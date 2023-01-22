@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyNulgath/ArmyApprovalFavour.cs
-fileName: ArmyApprovalFavour.cs
 name: null
 description: null
 tags: null

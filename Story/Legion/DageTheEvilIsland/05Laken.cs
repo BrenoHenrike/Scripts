@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DageTheEvilIsland/05Laken.cs
-fileName: 05Laken.cs
 name: null
 description: null
 tags: null

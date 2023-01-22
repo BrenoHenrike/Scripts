@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/HallofClassesMerge.cs
-fileName: HallofClassesMerge.cs
 name: null
 description: null
 tags: null

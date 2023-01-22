@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyLightCasterFull.cs
-fileName: ArmyLightCasterFull.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/10GhostNexus.cs
-fileName: 10GhostNexus.cs
 name: null
 description: null
 tags: null

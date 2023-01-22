@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/12Puzzlebox.cs
-fileName: 12Puzzlebox.cs
 name: null
 description: null
 tags: null

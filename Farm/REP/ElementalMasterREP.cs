@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/ElementalMasterREP.cs
-fileName: ElementalMasterREP.cs
 name: null
 description: null
 tags: null

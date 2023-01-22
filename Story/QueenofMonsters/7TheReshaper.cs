@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/7TheReshaper.cs
-fileName: 7TheReshaper.cs
 name: null
 description: null
 tags: null

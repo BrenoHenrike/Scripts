@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ParadoxPortalMerge.cs
-fileName: ParadoxPortalMerge.cs
 name: null
 description: null
 tags: null

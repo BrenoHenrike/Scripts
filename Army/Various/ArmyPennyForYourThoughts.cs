@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyPennyForYourThoughts.cs
-fileName: ArmyPennyForYourThoughts.cs
 name: null
 description: null
 tags: null

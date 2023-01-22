@@ -1,6 +1,4 @@
 /*
-path: Story/StarSinc.cs
-fileName: StarSinc.cs
 name: null
 description: null
 tags: null

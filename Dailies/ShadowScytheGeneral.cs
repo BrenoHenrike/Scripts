@@ -1,6 +1,4 @@
 /*
-path: Dailies/ShadowScytheGeneral.cs
-fileName: ShadowScytheGeneral.cs
 name: null
 description: null
 tags: null

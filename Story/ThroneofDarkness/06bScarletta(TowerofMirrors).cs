@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs
-fileName: 06bScarletta(TowerofMirrors).cs
 name: null
 description: null
 tags: null

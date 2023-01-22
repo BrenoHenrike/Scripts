@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/APennyforyourFoughts.cs
-fileName: APennyforyourFoughts.cs
 name: null
 description: null
 tags: null

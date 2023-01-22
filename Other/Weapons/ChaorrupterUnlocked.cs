@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/ChaorrupterUnlocked.cs
-fileName: ChaorrupterUnlocked.cs
 name: null
 description: null
 tags: null

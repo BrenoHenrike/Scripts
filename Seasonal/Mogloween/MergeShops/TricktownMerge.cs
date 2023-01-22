@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/MergeShops/TricktownMerge.cs
-fileName: TricktownMerge.cs
 name: null
 description: null
 tags: null

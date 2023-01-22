@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/6thBirthdaySavior.cs
-fileName: 6thBirthdaySavior.cs
 name: null
 description: null
 tags: null

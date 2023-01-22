@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/EternalREP.cs
-fileName: EternalREP.cs
 name: null
 description: null
 tags: null

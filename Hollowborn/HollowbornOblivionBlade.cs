@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornOblivionBlade.cs
-fileName: HollowbornOblivionBlade.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/CoreSDKA.cs
-fileName: CoreSDKA.cs
 name: null
 description: null
 tags: null

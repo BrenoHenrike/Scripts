@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TowerofWindsMerge.cs
-fileName: TowerofWindsMerge.cs
 name: null
 description: null
 tags: null

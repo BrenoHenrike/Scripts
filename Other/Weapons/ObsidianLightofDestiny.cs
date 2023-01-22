@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/ObsidianLightofDestiny.cs
-fileName: ObsidianLightofDestiny.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Chaos/AscendedDrakathGear.cs
-fileName: AscendedDrakathGear.cs
 name: null
 description: null
 tags: null

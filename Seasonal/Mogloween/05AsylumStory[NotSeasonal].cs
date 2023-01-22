@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/05AsylumStory[NotSeasonal].cs
-fileName: 05AsylumStory[NotSeasonal].cs
 name: null
 description: null
 tags: null

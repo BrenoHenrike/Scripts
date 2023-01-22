@@ -1,6 +1,4 @@
 /*
-path: Nation/EmblemofNulgath.cs
-fileName: EmblemofNulgath.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Templates/MultiQuestAggromonTemplate.cs
-fileName: MultiQuestAggromonTemplate.cs
 name: null
 description: null
 tags: null

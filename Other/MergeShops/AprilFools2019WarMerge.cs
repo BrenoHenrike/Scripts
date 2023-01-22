@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/AprilFools2019WarMerge.cs
-fileName: AprilFools2019WarMerge.cs
 name: null
 description: null
 tags: null

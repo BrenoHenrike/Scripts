@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CrystalBrightMerge.cs
-fileName: CrystalBrightMerge.cs
 name: null
 description: null
 tags: null

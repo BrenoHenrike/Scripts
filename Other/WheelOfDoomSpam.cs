@@ -1,6 +1,4 @@
 /*
-path: Other/WheelOfDoomSpam.cs
-fileName: WheelOfDoomSpam.cs
 name: null
 description: null
 tags: null

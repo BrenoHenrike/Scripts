@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/BurningBlade.cs
-fileName: BurningBlade.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs
-fileName: DageRecruit.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/DualChainSawKatanas.cs
-fileName: DualChainSawKatanas.cs
 name: null
 description: null
 tags: null

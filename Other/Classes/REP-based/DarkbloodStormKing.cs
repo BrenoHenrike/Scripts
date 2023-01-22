@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/DarkbloodStormKing.cs
-fileName: DarkbloodStormKing.cs
 name: null
 description: null
 tags: null

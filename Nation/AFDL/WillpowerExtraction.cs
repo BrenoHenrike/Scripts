@@ -1,6 +1,4 @@
 /*
-path: Nation/AFDL/WillpowerExtraction.cs
-fileName: WillpowerExtraction.cs
 name: null
 description: null
 tags: null

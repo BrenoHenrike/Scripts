@@ -1,6 +1,4 @@
 /*
-path: Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs
-fileName: EvolvedLeprechaunMerge.cs
 name: null
 description: null
 tags: null

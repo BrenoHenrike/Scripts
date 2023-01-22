@@ -1,6 +1,4 @@
 /*
-path: Farm/Leveling.cs
-fileName: Leveling.cs
 name: null
 description: null
 tags: null

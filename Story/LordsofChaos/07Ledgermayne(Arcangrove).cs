@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/07Ledgermayne(Arcangrove).cs
-fileName: 07Ledgermayne(Arcangrove).cs
 name: null
 description: null
 tags: null

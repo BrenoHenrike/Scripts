@@ -1,6 +1,4 @@
 /*
-path: Other/DragonCrystal[Upholder].cs
-fileName: DragonCrystal[Upholder].cs
 name: null
 description: null
 tags: null

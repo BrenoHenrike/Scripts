@@ -1,6 +1,4 @@
 /*
-path: Other/ShadowDragonDefender.cs
-fileName: ShadowDragonDefender.cs
 name: null
 description: null
 tags: null

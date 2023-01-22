@@ -1,6 +1,4 @@
 /*
-path: Evil/DoomKnight[Mem].cs
-fileName: DoomKnight[Mem].cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/Nation/Fiendshard.cs
-fileName: Fiendshard.cs
 name: null
 description: null
 tags: null

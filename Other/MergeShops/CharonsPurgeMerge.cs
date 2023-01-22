@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CharonsPurgeMerge.cs
-fileName: CharonsPurgeMerge.cs
 name: null
 description: null
 tags: null

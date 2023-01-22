@@ -1,6 +1,4 @@
 /*
-path: Templates/ArmyTemplatev2.cs
-fileName: ArmyTemplatev2.cs
 name: null
 description: null
 tags: null

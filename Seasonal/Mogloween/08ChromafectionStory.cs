@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/08ChromafectionStory.cs
-fileName: 08ChromafectionStory.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Legion/InfiniteLegionDarkCaster.cs
-fileName: InfiniteLegionDarkCaster.cs
 name: null
 description: null
 tags: null

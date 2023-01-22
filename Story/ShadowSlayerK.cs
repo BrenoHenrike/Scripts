@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowSlayerK.cs
-fileName: ShadowSlayerK.cs
 name: null
 description: null
 tags: null

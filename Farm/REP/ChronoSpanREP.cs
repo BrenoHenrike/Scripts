@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/ChronoSpanREP.cs
-fileName: ChronoSpanREP.cs
 name: null
 description: null
 tags: null

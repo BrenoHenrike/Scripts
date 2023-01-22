@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/06BrightShadow.cs
-fileName: 06BrightShadow.cs
 name: null
 description: null
 tags: null

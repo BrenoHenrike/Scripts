@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BattleConGearMerge.cs
-fileName: BattleConGearMerge.cs
 name: null
 description: null
 tags: null

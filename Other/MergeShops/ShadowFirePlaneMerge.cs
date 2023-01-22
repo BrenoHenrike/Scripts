@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShadowFirePlaneMerge.cs
-fileName: ShadowFirePlaneMerge.cs
 name: null
 description: null
 tags: null

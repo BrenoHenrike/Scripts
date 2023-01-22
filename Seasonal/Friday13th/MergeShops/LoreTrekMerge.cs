@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/MergeShops/LoreTrekMerge.cs
-fileName: LoreTrekMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/RefreshmentRetrieval.cs
-fileName: RefreshmentRetrieval.cs
 name: null
 description: null
 tags: null

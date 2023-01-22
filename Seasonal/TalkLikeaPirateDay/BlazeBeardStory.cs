@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs
-fileName: BlazeBeardStory.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/CarveTheUnidentifiedGemStone[Member].cs
-fileName: CarveTheUnidentifiedGemStone[Member].cs
 name: null
 description: null
 tags: null

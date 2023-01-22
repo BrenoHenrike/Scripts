@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/06Lavarun.cs
-fileName: 06Lavarun.cs
 name: null
 description: null
 tags: null

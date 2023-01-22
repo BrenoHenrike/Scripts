@@ -1,6 +1,4 @@
 /*
-path: Story/SepulchureSaga/00CompleteSepulchureSaga.cs
-fileName: 00CompleteSepulchureSaga.cs
 name: null
 description: null
 tags: null

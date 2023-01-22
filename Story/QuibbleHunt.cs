@@ -1,6 +1,4 @@
 /*
-path: Story/QuibbleHunt.cs
-fileName: QuibbleHunt.cs
 name: null
 description: null
 tags: null

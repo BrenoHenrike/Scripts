@@ -1,6 +1,4 @@
 /*
-path: Nation/CoreNation.cs
-fileName: CoreNation.cs
 name: null
 description: null
 tags: null

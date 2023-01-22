@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyBloodMoonToken.cs
-fileName: ArmyBloodMoonToken.cs
 name: null
 description: null
 tags: null

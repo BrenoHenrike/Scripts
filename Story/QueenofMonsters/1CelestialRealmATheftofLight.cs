@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/1CelestialRealmATheftofLight.cs
-fileName: 1CelestialRealmATheftofLight.cs
 name: null
 description: null
 tags: null

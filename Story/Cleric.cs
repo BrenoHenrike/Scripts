@@ -1,6 +1,4 @@
 /*
-path: Story/Cleric.cs
-fileName: Cleric.cs
 name: null
 description: null
 tags: null

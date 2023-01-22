@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/BirthdayFeastQuestRewards.cs
-fileName: BirthdayFeastQuestRewards.cs
 name: null
 description: null
 tags: null

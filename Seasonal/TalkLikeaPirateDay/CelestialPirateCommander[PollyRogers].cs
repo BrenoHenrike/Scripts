@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs
-fileName: CelestialPirateCommander[PollyRogers].cs
 name: null
 description: null
 tags: null

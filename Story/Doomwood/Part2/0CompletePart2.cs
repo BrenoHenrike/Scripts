@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part2/0CompletePart2.cs
-fileName: 0CompletePart2.cs
 name: null
 description: null
 tags: null

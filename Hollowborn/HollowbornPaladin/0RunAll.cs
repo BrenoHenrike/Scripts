@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornPaladin/0RunAll.cs
-fileName: 0RunAll.cs
 name: null
 description: null
 tags: null

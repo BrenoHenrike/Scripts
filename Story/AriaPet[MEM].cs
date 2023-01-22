@@ -1,6 +1,4 @@
 /*
-path: Story/AriaPet[MEM].cs
-fileName: AriaPet[MEM].cs
 name: null
 description: null
 tags: null

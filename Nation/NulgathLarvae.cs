@@ -1,6 +1,4 @@
 /*
-path: Nation/NulgathLarvae.cs
-fileName: NulgathLarvae.cs
 name: null
 description: null
 tags: null

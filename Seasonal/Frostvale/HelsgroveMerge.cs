@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/HelsgroveMerge.cs
-fileName: HelsgroveMerge.cs
 name: null
 description: null
 tags: null

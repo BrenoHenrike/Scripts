@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/BeachPartyTokenItems.cs
-fileName: BeachPartyTokenItems.cs
 name: null
 description: null
 tags: null

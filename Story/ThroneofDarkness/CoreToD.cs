@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/CoreToD.cs
-fileName: CoreToD.cs
 name: null
 description: null
 tags: null

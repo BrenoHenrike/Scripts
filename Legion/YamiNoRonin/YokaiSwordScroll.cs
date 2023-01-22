@@ -1,6 +1,4 @@
 /*
-path: Legion/YamiNoRonin/YokaiSwordScroll.cs
-fileName: YokaiSwordScroll.cs
 name: null
 description: null
 tags: null

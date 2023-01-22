@@ -1,6 +1,4 @@
 /*
-path: Seasonal/BlackFriday/ShadowDragonShinobiMerge.cs
-fileName: ShadowDragonShinobiMerge.cs
 name: null
 description: null
 tags: null

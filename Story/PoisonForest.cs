@@ -1,6 +1,4 @@
 /*
-path: Story/PoisonForest.cs
-fileName: PoisonForest.cs
 name: null
 description: null
 tags: null

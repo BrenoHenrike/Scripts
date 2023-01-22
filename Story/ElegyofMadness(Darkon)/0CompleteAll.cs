@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/0CompleteAll.cs
-fileName: 0CompleteAll.cs
 name: null
 description: null
 tags: null

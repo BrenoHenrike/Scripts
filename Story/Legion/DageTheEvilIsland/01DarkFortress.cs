@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DageTheEvilIsland/01DarkFortress.cs
-fileName: 01DarkFortress.cs
 name: null
 description: null
 tags: null

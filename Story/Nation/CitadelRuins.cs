@@ -1,6 +1,4 @@
 /*
-path: Story/Nation/CitadelRuins.cs
-fileName: CitadelRuins.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/GachaponMachineQuests.cs
-fileName: GachaponMachineQuests.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/ThanatostheDestroyer.cs
-fileName: ThanatostheDestroyer.cs
 name: null
 description: null
 tags: null

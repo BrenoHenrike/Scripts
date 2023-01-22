@@ -1,6 +1,4 @@
 /*
-path: Story/Borgars.cs
-fileName: Borgars.cs
 name: null
 description: null
 tags: null

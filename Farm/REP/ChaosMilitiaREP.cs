@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/ChaosMilitiaREP.cs
-fileName: ChaosMilitiaREP.cs
 name: null
 description: null
 tags: null

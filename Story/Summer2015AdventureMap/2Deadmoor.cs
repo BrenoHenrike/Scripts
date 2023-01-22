@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/2Deadmoor.cs
-fileName: 2Deadmoor.cs
 name: null
 description: null
 tags: null

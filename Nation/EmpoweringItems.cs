@@ -1,6 +1,4 @@
 /*
-path: Nation/EmpoweringItems.cs
-fileName: EmpoweringItems.cs
 name: null
 description: null
 tags: null

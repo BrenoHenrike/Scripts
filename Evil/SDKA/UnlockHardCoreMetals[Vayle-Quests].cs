@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/UnlockHardCoreMetals[Vayle-Quests].cs
-fileName: UnlockHardCoreMetals[Vayle-Quests].cs
 name: null
 description: null
 tags: null

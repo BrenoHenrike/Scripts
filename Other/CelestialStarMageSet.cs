@@ -1,6 +1,4 @@
 /*
-path: Other/CelestialStarMageSet.cs
-fileName: CelestialStarMageSet.cs
 name: null
 description: null
 tags: null

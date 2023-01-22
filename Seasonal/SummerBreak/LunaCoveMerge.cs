@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/LunaCoveMerge.cs
-fileName: LunaCoveMerge.cs
 name: null
 description: null
 tags: null

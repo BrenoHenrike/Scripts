@@ -1,6 +1,4 @@
 /*
-path: Story/WatchTower.cs
-fileName: WatchTower.cs
 name: null
 description: null
 tags: null

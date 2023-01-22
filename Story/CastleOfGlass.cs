@@ -1,6 +1,4 @@
 /*
-path: Story/CastleOfGlass.cs
-fileName: CastleOfGlass.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/CoreMemet.cs
-fileName: CoreMemet.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/MergeShops/HarvestDayParadeMerge.cs
-fileName: HarvestDayParadeMerge.cs
 name: null
 description: null
 tags: null

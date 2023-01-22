@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/ThunderForgeREP.cs
-fileName: ThunderForgeREP.cs
 name: null
 description: null
 tags: null

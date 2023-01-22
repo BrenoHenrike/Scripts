@@ -1,6 +1,4 @@
 /*
-path: Other/VampiricKnightAndBloodGuardian.cs
-fileName: VampiricKnightAndBloodGuardian.cs
 name: null
 description: null
 tags: null

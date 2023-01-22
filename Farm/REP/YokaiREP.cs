@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/YokaiREP.cs
-fileName: YokaiREP.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Darkon/MergeShops/GenesisGardenMerge.cs
-fileName: GenesisGardenMerge.cs
 name: null
 description: null
 tags: null

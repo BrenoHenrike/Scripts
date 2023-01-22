@@ -1,6 +1,4 @@
 /*
-path: Story/GiantTaleStory.cs
-fileName: GiantTaleStory.cs
 name: null
 description: null
 tags: null

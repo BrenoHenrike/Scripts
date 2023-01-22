@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/08KillerKitchenStory.cs
-fileName: 08KillerKitchenStory.cs
 name: null
 description: null
 tags: null

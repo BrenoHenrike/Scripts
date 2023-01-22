@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DreadrockREP.cs
-fileName: DreadrockREP.cs
 name: null
 description: null
 tags: null

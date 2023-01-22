@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/WorldsCoreMerge.cs
-fileName: WorldsCoreMerge.cs
 name: null
 description: null
 tags: null

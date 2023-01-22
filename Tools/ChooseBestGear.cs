@@ -1,6 +1,4 @@
 /*
-path: Tools/ChooseBestGear.cs
-fileName: ChooseBestGear.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/TotemofNulgath.cs
-fileName: TotemofNulgath.cs
 name: null
 description: null
 tags: null

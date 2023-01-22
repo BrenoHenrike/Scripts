@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HerosHeartDay/ArcadiaMerge(PaintedButterfly).cs
-fileName: ArcadiaMerge(PaintedButterfly).cs
 name: null
 description: null
 tags: null

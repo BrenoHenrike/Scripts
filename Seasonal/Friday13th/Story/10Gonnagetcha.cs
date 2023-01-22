@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/10Gonnagetcha.cs
-fileName: 10Gonnagetcha.cs
 name: null
 description: null
 tags: null

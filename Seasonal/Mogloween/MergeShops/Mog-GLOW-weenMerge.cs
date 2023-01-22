@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/MergeShops/Mog-GLOW-weenMerge.cs
-fileName: Mog-GLOW-weenMerge.cs
 name: null
 description: null
 tags: null

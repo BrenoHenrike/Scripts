@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/DoomWormCreepers.cs
-fileName: DoomWormCreepers.cs
 name: null
 description: null
 tags: null

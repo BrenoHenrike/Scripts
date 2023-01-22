@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AprilFools/DERP!Badge.cs
-fileName: DERP!Badge.cs
 name: null
 description: null
 tags: null

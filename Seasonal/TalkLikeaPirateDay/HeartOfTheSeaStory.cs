@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/HeartOfTheSeaStory.cs
-fileName: HeartOfTheSeaStory.cs
 name: null
 description: null
 tags: null

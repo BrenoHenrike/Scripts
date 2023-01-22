@@ -1,6 +1,4 @@
 /*
-path: Story/CruxShip.cs
-fileName: CruxShip.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/00CompleteThroneofDarkness.cs
-fileName: 00CompleteThroneofDarkness.cs
 name: null
 description: null
 tags: null

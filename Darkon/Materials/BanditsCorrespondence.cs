@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/BanditsCorrespondence.cs
-fileName: BanditsCorrespondence.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/11Greymoor.cs
-fileName: 11Greymoor.cs
 name: null
 description: null
 tags: null

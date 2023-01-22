@@ -1,6 +1,4 @@
 /*
-path: Nation/TheAssistant.cs
-fileName: TheAssistant.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Tools/ForDevelopers/MergeTemplateHelper.cs
-fileName: MergeTemplateHelper.cs
 name: null
 description: null
 tags: null

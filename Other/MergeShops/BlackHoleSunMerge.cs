@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BlackHoleSunMerge.cs
-fileName: BlackHoleSunMerge.cs
 name: null
 description: null
 tags: null

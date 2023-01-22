@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/DiamondsofNulgathSale.cs
-fileName: DiamondsofNulgathSale.cs
 name: null
 description: null
 tags: null

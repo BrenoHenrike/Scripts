@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/03Greed.cs
-fileName: 03Greed.cs
 name: null
 description: null
 tags: null

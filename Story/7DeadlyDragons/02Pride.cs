@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/02Pride.cs
-fileName: 02Pride.cs
 name: null
 description: null
 tags: null

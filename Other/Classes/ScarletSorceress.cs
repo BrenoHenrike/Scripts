@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/ScarletSorceress.cs
-fileName: ScarletSorceress.cs
 name: null
 description: null
 tags: null

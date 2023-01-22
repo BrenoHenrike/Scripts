@@ -1,6 +1,4 @@
 /*
-path: Story/SepulchureSaga/02Lynaria.cs
-fileName: 02Lynaria.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Dailies/HardCoreMetals[Mem].cs
-fileName: HardCoreMetals[Mem].cs
 name: null
 description: null
 tags: null

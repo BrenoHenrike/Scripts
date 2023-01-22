@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/AssistingOblivionBlade.cs
-fileName: AssistingOblivionBlade.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/11MeatLabStory.cs
-fileName: 11MeatLabStory.cs
 name: null
 description: null
 tags: null

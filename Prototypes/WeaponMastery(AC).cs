@@ -1,6 +1,4 @@
 /*
-path: Prototypes/WeaponMastery(AC).cs
-fileName: WeaponMastery(AC).cs
 name: null
 description: null
 tags: null

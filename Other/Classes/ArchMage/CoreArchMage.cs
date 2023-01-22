@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/ArchMage/CoreArchMage.cs
-fileName: CoreArchMage.cs
 name: null
 description: null
 tags: null

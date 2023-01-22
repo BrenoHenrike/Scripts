@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AqwBirthday/TwillyTreasurePile.cs
-fileName: TwillyTreasurePile.cs
 name: null
 description: null
 tags: null

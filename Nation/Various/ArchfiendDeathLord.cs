@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ArchfiendDeathLord.cs
-fileName: ArchfiendDeathLord.cs
 name: null
 description: null
 tags: null

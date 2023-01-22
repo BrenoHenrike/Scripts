@@ -1,6 +1,4 @@
 /*
-path: Other/MasterofYourCraft.cs
-fileName: MasterofYourCraft.cs
 name: null
 description: null
 tags: null

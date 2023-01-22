@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/DarkonsReceipts.cs
-fileName: DarkonsReceipts.cs
 name: null
 description: null
 tags: null

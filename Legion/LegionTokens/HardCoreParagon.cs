@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/HardCoreParagon.cs
-fileName: HardCoreParagon.cs
 name: null
 description: null
 tags: null

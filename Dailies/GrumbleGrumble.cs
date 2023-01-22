@@ -1,6 +1,4 @@
 /*
-path: Dailies/GrumbleGrumble.cs
-fileName: GrumbleGrumble.cs
 name: null
 description: null
 tags: null

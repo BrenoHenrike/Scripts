@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyMirrorRealmToken.cs
-fileName: ArmyMirrorRealmToken.cs
 name: null
 description: null
 tags: null

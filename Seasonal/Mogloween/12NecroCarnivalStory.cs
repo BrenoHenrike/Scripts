@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/12NecroCarnivalStory.cs
-fileName: 12NecroCarnivalStory.cs
 name: null
 description: null
 tags: null

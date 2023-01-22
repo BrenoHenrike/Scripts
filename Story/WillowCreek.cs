@@ -1,6 +1,4 @@
 /*
-path: Story/WillowCreek.cs
-fileName: WillowCreek.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/UltimateWeaponKit.cs
-fileName: UltimateWeaponKit.cs
 name: null
 description: null
 tags: null

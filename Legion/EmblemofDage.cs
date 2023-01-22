@@ -1,6 +1,4 @@
 /*
-path: Legion/EmblemofDage.cs
-fileName: EmblemofDage.cs
 name: null
 description: null
 tags: null

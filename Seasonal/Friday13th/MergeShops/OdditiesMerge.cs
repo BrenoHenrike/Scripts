@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/MergeShops/OdditiesMerge.cs
-fileName: OdditiesMerge.cs
 name: null
 description: null
 tags: null

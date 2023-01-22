@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/LegionBonfire.cs
-fileName: LegionBonfire.cs
 name: null
 description: null
 tags: null

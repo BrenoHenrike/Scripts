@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/3MoonLab.cs
-fileName: 3MoonLab.cs
 name: null
 description: null
 tags: null

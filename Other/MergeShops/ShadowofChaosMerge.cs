@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShadowofChaosMerge.cs
-fileName: ShadowofChaosMerge.cs
 name: null
 description: null
 tags: null

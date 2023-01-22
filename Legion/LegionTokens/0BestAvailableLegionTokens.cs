@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/0BestAvailableLegionTokens.cs
-fileName: 0BestAvailableLegionTokens.cs
 name: null
 description: null
 tags: null

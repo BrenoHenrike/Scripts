@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/LycanREP.cs
-fileName: LycanREP.cs
 name: null
 description: null
 tags: null

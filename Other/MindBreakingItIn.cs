@@ -1,6 +1,4 @@
 /*
-path: Other/MindBreakingItIn.cs
-fileName: MindBreakingItIn.cs
 name: null
 description: null
 tags: null

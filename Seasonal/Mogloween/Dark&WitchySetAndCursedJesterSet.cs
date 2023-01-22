@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/Dark&WitchySetAndCursedJesterSet.cs
-fileName: Dark&WitchySetAndCursedJesterSet.cs
 name: null
 description: null
 tags: null

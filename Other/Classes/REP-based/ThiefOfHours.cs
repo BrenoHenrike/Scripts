@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/ThiefOfHours.cs
-fileName: ThiefOfHours.cs
 name: null
 description: null
 tags: null

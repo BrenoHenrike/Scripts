@@ -1,6 +1,4 @@
 /*
-path: Other/ShadowflameWarMedal.cs
-fileName: ShadowflameWarMedal.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/WorldSoul.cs
-fileName: WorldSoul.cs
 name: null
 description: null
 tags: null

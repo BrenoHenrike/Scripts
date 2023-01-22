@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowVault.cs
-fileName: ShadowVault.cs
 name: null
 description: null
 tags: null

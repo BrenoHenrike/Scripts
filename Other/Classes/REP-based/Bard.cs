@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/Bard.cs
-fileName: Bard.cs
 name: null
 description: null
 tags: null

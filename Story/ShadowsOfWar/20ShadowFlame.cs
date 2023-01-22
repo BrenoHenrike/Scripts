@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/20ShadowFlame.cs
-fileName: 20ShadowFlame.cs
 name: null
 description: null
 tags: null

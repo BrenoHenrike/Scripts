@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornChaosEnvoy/1StirringDiscord.cs
-fileName: 1StirringDiscord.cs
 name: null
 description: null
 tags: null

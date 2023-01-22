@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/MergeShops/ChromaCandyMerge.cs
-fileName: ChromaCandyMerge.cs
 name: null
 description: null
 tags: null

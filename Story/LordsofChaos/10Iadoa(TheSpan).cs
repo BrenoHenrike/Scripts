@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/10Iadoa(TheSpan).cs
-fileName: 10Iadoa(TheSpan).cs
 name: null
 description: null
 tags: null

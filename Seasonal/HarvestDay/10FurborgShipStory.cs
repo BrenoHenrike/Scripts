@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/10FurborgShipStory.cs
-fileName: 10FurborgShipStory.cs
 name: null
 description: null
 tags: null

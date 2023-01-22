@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/DarkCrystalShards.cs
-fileName: DarkCrystalShards.cs
 name: null
 description: null
 tags: null

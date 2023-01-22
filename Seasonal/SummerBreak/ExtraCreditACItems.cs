@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/ExtraCreditACItems.cs
-fileName: ExtraCreditACItems.cs
 name: null
 description: null
 tags: null

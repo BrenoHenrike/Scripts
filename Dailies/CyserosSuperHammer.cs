@@ -1,6 +1,4 @@
 /*
-path: Dailies/CyserosSuperHammer.cs
-fileName: CyserosSuperHammer.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/03bZiri(LaserSharkInvasion).cs
-fileName: 03bZiri(LaserSharkInvasion).cs
 name: null
 description: null
 tags: null

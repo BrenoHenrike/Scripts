@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ArchFiendWarlordMerge.cs
-fileName: ArchFiendWarlordMerge.cs
 name: null
 description: null
 tags: null

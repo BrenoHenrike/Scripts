@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/02Lowe.cs
-fileName: 02Lowe.cs
 name: null
 description: null
 tags: null

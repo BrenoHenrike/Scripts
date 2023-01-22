@@ -1,6 +1,4 @@
 /*
-path: Dailies/DeathKnightLord[Mem].cs
-fileName: DeathKnightLord[Mem].cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/FindingFragments.cs
-fileName: FindingFragments.cs
 name: null
 description: null
 tags: null

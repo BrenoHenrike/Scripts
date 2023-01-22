@@ -1,6 +1,4 @@
 /*
-path: Story/QueenReign.cs
-fileName: QueenReign.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmySmartVoidAuas.cs
-fileName: ArmySmartVoidAuas.cs
 name: null
 description: null
 tags: null

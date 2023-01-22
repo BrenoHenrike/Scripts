@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DageTheEvilIsland/03LegionCrypt.cs
-fileName: 03LegionCrypt.cs
 name: null
 description: null
 tags: null

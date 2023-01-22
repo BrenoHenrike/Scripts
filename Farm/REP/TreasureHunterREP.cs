@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/TreasureHunterREP.cs
-fileName: TreasureHunterREP.cs
 name: null
 description: null
 tags: null

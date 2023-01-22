@@ -1,9 +1,7 @@
 /*
-path: CoreBots.cs
-fileName: CoreBots.cs
 name: null
-description: Let see if this works
-tags: corebot, aqwbot, skua
+description: null
+tags: null
 */
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CrownsreachDefenseMerge.cs
-fileName: CrownsreachDefenseMerge.cs
 name: null
 description: null
 tags: null

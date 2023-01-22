@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs
-fileName: TimeforSomeSpringCleaning[AnyPet].cs
 name: null
 description: null
 tags: null

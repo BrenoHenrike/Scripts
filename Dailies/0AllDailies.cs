@@ -1,6 +1,4 @@
 /*
-path: Dailies/0AllDailies.cs
-fileName: 0AllDailies.cs
 name: null
 description: null
 tags: null

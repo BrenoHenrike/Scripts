@@ -1,6 +1,4 @@
 /*
-path: Dailies/DagesScrollFragment.cs
-fileName: DagesScrollFragment.cs
 name: null
 description: null
 tags: null

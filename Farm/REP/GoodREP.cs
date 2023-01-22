@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/GoodREP.cs
-fileName: GoodREP.cs
 name: null
 description: null
 tags: null

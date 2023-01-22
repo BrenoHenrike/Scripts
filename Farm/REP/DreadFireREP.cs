@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DreadFireREP.cs
-fileName: DreadFireREP.cs
 name: null
 description: null
 tags: null

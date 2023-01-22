@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/08Wormhole.cs
-fileName: 08Wormhole.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ExtraCreditMerge[non-ac].cs
-fileName: ExtraCreditMerge[non-ac].cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Legion/DiamondTokenofDage.cs
-fileName: DiamondTokenofDage.cs
 name: null
 description: null
 tags: null

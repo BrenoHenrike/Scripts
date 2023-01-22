@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/7CyserosSecret.cs
-fileName: 7CyserosSecret.cs
 name: null
 description: null
 tags: null

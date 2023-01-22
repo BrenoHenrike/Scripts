@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/GuardianOfSpiritsBlade.cs
-fileName: GuardianOfSpiritsBlade.cs
 name: null
 description: null
 tags: null

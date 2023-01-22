@@ -1,6 +1,4 @@
 /*
-path: Farm/RankUpEquippedClass.cs
-fileName: RankUpEquippedClass.cs
 name: null
 description: null
 tags: null

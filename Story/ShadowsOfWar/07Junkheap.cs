@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/07Junkheap.cs
-fileName: 07Junkheap.cs
 name: null
 description: null
 tags: null

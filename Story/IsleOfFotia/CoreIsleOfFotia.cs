@@ -1,6 +1,4 @@
 /*
-path: Story/IsleOfFotia/CoreIsleOfFotia.cs
-fileName: CoreIsleOfFotia.cs
 name: null
 description: null
 tags: null

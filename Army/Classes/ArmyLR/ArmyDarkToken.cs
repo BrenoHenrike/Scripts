@@ -1,6 +1,4 @@
 /*
-path: Army/Classes/ArmyLR/ArmyDarkToken.cs
-fileName: ArmyDarkToken.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/NoEgretsBadge.cs
-fileName: NoEgretsBadge.cs
 name: null
 description: null
 tags: null

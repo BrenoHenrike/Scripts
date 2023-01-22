@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs
-fileName: 06aScarletta(ShatterGlassMaze).cs
 name: null
 description: null
 tags: null

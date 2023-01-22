@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/FishingREP.cs
-fileName: FishingREP.cs
 name: null
 description: null
 tags: null

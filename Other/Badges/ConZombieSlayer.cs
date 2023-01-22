@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/ConZombieSlayer.cs
-fileName: ConZombieSlayer.cs
 name: null
 description: null
 tags: null

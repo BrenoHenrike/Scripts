@@ -1,6 +1,4 @@
 /*
-path: Chaos/EternalDrakathSet.cs
-fileName: EternalDrakathSet.cs
 name: null
 description: null
 tags: null

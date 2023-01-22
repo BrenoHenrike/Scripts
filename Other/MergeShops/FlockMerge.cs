@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/FlockMerge.cs
-fileName: FlockMerge.cs
 name: null
 description: null
 tags: null

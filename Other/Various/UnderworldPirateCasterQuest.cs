@@ -1,6 +1,4 @@
 /*
-path: Other/Various/UnderworldPirateCasterQuest.cs
-fileName: UnderworldPirateCasterQuest.cs
 name: null
 description: null
 tags: null

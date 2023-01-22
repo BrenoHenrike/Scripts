@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/7FirstObservatory.cs
-fileName: 7FirstObservatory.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/PinkBladeofDestruction.cs
-fileName: PinkBladeofDestruction.cs
 name: null
 description: null
 tags: null

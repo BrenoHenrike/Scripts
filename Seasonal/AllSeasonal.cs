@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AllSeasonal.cs
-fileName: AllSeasonal.cs
 name: null
 description: null
 tags: null

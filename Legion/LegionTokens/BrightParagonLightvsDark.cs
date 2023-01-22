@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/BrightParagonLightvsDark.cs
-fileName: BrightParagonLightvsDark.cs
 name: null
 description: null
 tags: null

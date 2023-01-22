@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/ShadowVaultChampion.cs
-fileName: ShadowVaultChampion.cs
 name: null
 description: null
 tags: null

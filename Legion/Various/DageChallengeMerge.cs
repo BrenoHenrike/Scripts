@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/DageChallengeMerge.cs
-fileName: DageChallengeMerge.cs
 name: null
 description: null
 tags: null

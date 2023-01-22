@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/LightMage.cs
-fileName: LightMage.cs
 name: null
 description: null
 tags: null

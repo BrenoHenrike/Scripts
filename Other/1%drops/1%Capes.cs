@@ -1,6 +1,4 @@
 /*
-path: Other/1%drops/1%Capes.cs
-fileName: 1%Capes.cs
 name: null
 description: null
 tags: null

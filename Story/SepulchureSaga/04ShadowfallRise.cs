@@ -1,6 +1,4 @@
 /*
-path: Story/SepulchureSaga/04ShadowfallRise.cs
-fileName: 04ShadowfallRise.cs
 name: null
 description: null
 tags: null

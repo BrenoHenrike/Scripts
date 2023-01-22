@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/CoralBeachMerge.cs
-fileName: CoralBeachMerge.cs
 name: null
 description: null
 tags: null

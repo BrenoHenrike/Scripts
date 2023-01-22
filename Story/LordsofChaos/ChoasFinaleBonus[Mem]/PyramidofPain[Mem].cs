@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/ChoasFinaleBonus[Mem]/PyramidofPain[Mem].cs
-fileName: PyramidofPain[Mem].cs
 name: null
 description: null
 tags: null

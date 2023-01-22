@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DragonSoulShinobiMerge.cs
-fileName: DragonSoulShinobiMerge.cs
 name: null
 description: null
 tags: null

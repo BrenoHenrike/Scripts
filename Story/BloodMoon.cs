@@ -1,6 +1,4 @@
 /*
-path: Story/BloodMoon.cs
-fileName: BloodMoon.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs
-fileName: DragonPirateStory.cs
 name: null
 description: null
 tags: null

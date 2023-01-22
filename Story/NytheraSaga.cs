@@ -1,6 +1,4 @@
 /*
-path: Story/NytheraSaga.cs
-fileName: NytheraSaga.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/13MemetNightmareStory.cs
-fileName: 13MemetNightmareStory.cs
 name: null
 description: null
 tags: null

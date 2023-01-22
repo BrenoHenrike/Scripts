@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs
-fileName: BringmetheBLUEEggs!(Weapons).cs
 name: null
 description: null
 tags: null

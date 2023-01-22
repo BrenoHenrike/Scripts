@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/02Pyrewatch.cs
-fileName: 02Pyrewatch.cs
 name: null
 description: null
 tags: null

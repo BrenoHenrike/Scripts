@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/MergeShops/ValariansMerge.cs
-fileName: ValariansMerge.cs
 name: null
 description: null
 tags: null

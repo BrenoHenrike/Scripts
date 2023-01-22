@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/PhoenixBladeofNulgath.cs
-fileName: PhoenixBladeofNulgath.cs
 name: null
 description: null
 tags: null

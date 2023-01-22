@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/ArchfiendCloak.cs
-fileName: ArchfiendCloak.cs
 name: null
 description: null
 tags: null

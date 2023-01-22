@@ -1,6 +1,4 @@
 /*
-path: Story/DragonRoad[Upholder].cs
-fileName: DragonRoad[Upholder].cs
 name: null
 description: null
 tags: null

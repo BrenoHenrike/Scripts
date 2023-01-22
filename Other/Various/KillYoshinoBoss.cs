@@ -1,6 +1,4 @@
 /*
-path: Other/Various/KillYoshinoBoss.cs
-fileName: KillYoshinoBoss.cs
 name: null
 description: null
 tags: null

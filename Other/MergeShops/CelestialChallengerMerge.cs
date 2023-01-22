@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CelestialChallengerMerge.cs
-fileName: CelestialChallengerMerge.cs
 name: null
 description: null
 tags: null

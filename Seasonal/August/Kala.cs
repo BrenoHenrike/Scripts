@@ -1,6 +1,4 @@
 /*
-path: Seasonal/August/Kala.cs
-fileName: Kala.cs
 name: null
 description: null
 tags: null

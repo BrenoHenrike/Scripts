@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/BehemothBlades.cs
-fileName: BehemothBlades.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/01aVaden(CastleofBones).cs
-fileName: 01aVaden(CastleofBones).cs
 name: null
 description: null
 tags: null

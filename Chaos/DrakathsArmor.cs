@@ -1,6 +1,4 @@
 /*
-path: Chaos/DrakathsArmor.cs
-fileName: DrakathsArmor.cs
 name: null
 description: null
 tags: null

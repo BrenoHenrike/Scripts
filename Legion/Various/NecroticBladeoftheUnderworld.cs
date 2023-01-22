@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/NecroticBladeoftheUnderworld.cs
-fileName: NecroticBladeoftheUnderworld.cs
 name: null
 description: null
 tags: null

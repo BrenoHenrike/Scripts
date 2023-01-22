@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/3Beleen.cs
-fileName: 3Beleen.cs
 name: null
 description: null
 tags: null

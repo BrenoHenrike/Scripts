@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BeleensChaosFuzzyMerge.cs
-fileName: BeleensChaosFuzzyMerge.cs
 name: null
 description: null
 tags: null

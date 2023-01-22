@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/DreadrockLegionToken.cs
-fileName: DreadrockLegionToken.cs
 name: null
 description: null
 tags: null

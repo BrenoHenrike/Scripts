@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/LasGratitude.cs
-fileName: LasGratitude.cs
 name: null
 description: null
 tags: null

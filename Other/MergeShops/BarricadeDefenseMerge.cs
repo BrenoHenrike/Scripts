@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BarricadeDefenseMerge.cs
-fileName: BarricadeDefenseMerge.cs
 name: null
 description: null
 tags: null

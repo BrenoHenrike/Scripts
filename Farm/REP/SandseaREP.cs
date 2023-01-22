@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/SandseaREP.cs
-fileName: SandseaREP.cs
 name: null
 description: null
 tags: null

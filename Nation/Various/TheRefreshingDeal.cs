@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/TheRefreshingDeal.cs
-fileName: TheRefreshingDeal.cs
 name: null
 description: null
 tags: null

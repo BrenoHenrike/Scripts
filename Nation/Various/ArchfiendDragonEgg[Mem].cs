@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ArchfiendDragonEgg[Mem].cs
-fileName: ArchfiendDragonEgg[Mem].cs
 name: null
 description: null
 tags: null

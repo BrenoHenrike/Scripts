@@ -1,6 +1,4 @@
 /*
-path: Other/Armor/FireChampionsArmor.cs
-fileName: FireChampionsArmor.cs
 name: null
 description: null
 tags: null

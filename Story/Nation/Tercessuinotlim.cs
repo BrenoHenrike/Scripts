@@ -1,6 +1,4 @@
 /*
-path: Story/Nation/Tercessuinotlim.cs
-fileName: Tercessuinotlim.cs
 name: null
 description: null
 tags: null

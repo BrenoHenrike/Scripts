@@ -1,6 +1,4 @@
 /*
-path: Army/Classes/ArmyLR/ArmyLRFull.cs
-fileName: ArmyLRFull.cs
 name: null
 description: null
 tags: null

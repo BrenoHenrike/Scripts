@@ -1,6 +1,4 @@
 /*
-path: Dailies/NSoDDaily.cs
-fileName: NSoDDaily.cs
 name: null
 description: null
 tags: null

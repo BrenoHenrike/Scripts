@@ -1,6 +1,4 @@
 /*
-path: Nation/BambloozevsDrudgen.cs
-fileName: BambloozevsDrudgen.cs
 name: null
 description: null
 tags: null

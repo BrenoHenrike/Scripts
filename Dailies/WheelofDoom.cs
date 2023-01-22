@@ -1,6 +1,4 @@
 /*
-path: Dailies/WheelofDoom.cs
-fileName: WheelofDoom.cs
 name: null
 description: null
 tags: null

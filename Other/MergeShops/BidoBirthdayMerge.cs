@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BidoBirthdayMerge.cs
-fileName: BidoBirthdayMerge.cs
 name: null
 description: null
 tags: null

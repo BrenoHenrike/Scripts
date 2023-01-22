@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SolarNewYear/WaterWarMerge(VariousMaterials).cs
-fileName: WaterWarMerge(VariousMaterials).cs
 name: null
 description: null
 tags: null

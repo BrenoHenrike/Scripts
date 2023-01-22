@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AqwBirthday/20thAnniversary.cs
-fileName: 20thAnniversary.cs
 name: null
 description: null
 tags: null

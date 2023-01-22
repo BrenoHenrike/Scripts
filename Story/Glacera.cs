@@ -1,6 +1,4 @@
 /*
-path: Story/Glacera.cs
-fileName: Glacera.cs
 name: null
 description: null
 tags: null

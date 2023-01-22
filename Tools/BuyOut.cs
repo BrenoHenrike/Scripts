@@ -1,6 +1,4 @@
 /*
-path: Tools/BuyOut.cs
-fileName: BuyOut.cs
 name: null
 description: null
 tags: null

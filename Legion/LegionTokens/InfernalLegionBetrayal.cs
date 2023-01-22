@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/InfernalLegionBetrayal.cs
-fileName: InfernalLegionBetrayal.cs
 name: null
 description: null
 tags: null

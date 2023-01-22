@@ -1,6 +1,4 @@
 /*
-path: Story/Ubear.cs
-fileName: Ubear.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Good/GearOfAwe/ArmorOfAwe.cs
-fileName: ArmorOfAwe.cs
 name: null
 description: null
 tags: null

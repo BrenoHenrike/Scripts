@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/EnchantedRodofGreasedLightning.cs
-fileName: EnchantedRodofGreasedLightning.cs
 name: null
 description: null
 tags: null

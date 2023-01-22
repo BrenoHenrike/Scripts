@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs
-fileName: 05aSekt(ShiftingPyramid).cs
 name: null
 description: null
 tags: null

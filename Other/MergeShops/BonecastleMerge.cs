@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BonecastleMerge.cs
-fileName: BonecastleMerge.cs
 name: null
 description: null
 tags: null

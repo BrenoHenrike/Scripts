@@ -1,6 +1,4 @@
 /*
-path: Nation/TenacityChallenge.cs
-fileName: TenacityChallenge.cs
 name: null
 description: null
 tags: null

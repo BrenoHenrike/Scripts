@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/LoremasterREP.cs
-fileName: LoremasterREP.cs
 name: null
 description: null
 tags: null

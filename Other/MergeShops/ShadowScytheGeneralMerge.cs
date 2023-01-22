@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShadowScytheGeneralMerge.cs
-fileName: ShadowScytheGeneralMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/NewYear/Story/04EverfrostStory.cs
-fileName: 04EverfrostStory.cs
 name: null
 description: null
 tags: null

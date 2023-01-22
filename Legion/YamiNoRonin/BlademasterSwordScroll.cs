@@ -1,6 +1,4 @@
 /*
-path: Legion/YamiNoRonin/BlademasterSwordScroll.cs
-fileName: BlademasterSwordScroll.cs
 name: null
 description: null
 tags: null

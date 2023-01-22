@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/01bVaden(BoneTowers)[Mem].cs
-fileName: 01bVaden(BoneTowers)[Mem].cs
 name: null
 description: null
 tags: null

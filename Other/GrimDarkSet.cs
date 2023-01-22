@@ -1,6 +1,4 @@
 /*
-path: Other/GrimDarkSet.cs
-fileName: GrimDarkSet.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/02bXeven(DeepPortalspace)[Mem].cs
-fileName: 02bXeven(DeepPortalspace)[Mem].cs
 name: null
 description: null
 tags: null

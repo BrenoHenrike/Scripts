@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/VoucheritemChampionofNulgath.cs
-fileName: VoucheritemChampionofNulgath.cs
 name: null
 description: null
 tags: null

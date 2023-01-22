@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/YulgathsInn.cs
-fileName: YulgathsInn.cs
 name: null
 description: null
 tags: null

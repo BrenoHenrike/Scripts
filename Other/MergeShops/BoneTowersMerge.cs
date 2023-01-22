@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BoneTowersMerge.cs
-fileName: BoneTowersMerge.cs
 name: null
 description: null
 tags: null

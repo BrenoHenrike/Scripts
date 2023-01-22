@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/ArchMage/Books/4BookOfAether.cs
-fileName: 4BookOfAether.cs
 name: null
 description: null
 tags: null

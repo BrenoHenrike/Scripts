@@ -1,6 +1,4 @@
 /*
-path: Other/Various/Potions.cs
-fileName: Potions.cs
 name: null
 description: null
 tags: null

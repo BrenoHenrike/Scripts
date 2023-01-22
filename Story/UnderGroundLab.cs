@@ -1,6 +1,4 @@
 /*
-path: Story/UnderGroundLab.cs
-fileName: UnderGroundLab.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs
-fileName: Mmmm,Meaty(or)(MeatyShard).cs
 name: null
 description: null
 tags: null

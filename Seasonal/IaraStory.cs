@@ -1,6 +1,4 @@
 /*
-path: Seasonal/IaraStory.cs
-fileName: IaraStory.cs
 name: null
 description: null
 tags: null

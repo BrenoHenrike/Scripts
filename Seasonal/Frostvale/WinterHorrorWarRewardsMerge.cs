@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs
-fileName: WinterHorrorWarRewardsMerge.cs
 name: null
 description: null
 tags: null

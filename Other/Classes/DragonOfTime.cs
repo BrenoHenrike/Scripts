@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/DragonOfTime.cs
-fileName: DragonOfTime.cs
 name: null
 description: null
 tags: null

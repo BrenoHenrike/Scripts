@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DarkbloodWarMerge.cs
-fileName: DarkbloodWarMerge.cs
 name: null
 description: null
 tags: null

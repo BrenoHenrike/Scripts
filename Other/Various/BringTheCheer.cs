@@ -1,6 +1,4 @@
 /*
-path: Other/Various/BringTheCheer.cs
-fileName: BringTheCheer.cs
 name: null
 description: null
 tags: null

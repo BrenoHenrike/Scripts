@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/4Collector.cs
-fileName: 4Collector.cs
 name: null
 description: null
 tags: null

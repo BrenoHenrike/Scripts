@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/VokunMerge.cs
-fileName: VokunMerge.cs
 name: null
 description: null
 tags: null

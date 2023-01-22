@@ -1,6 +1,4 @@
 /*
-path: Story/Downward.cs
-fileName: Downward.cs
 name: null
 description: null
 tags: null

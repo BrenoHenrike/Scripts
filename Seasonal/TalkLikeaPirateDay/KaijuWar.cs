@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/KaijuWar.cs
-fileName: KaijuWar.cs
 name: null
 description: null
 tags: null

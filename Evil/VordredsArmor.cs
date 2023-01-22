@@ -1,6 +1,4 @@
 /*
-path: Evil/VordredsArmor.cs
-fileName: VordredsArmor.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HerosHeartDay/LovesCurse.cs
-fileName: LovesCurse.cs
 name: null
 description: null
 tags: null

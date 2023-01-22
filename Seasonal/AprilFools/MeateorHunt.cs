@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AprilFools/MeateorHunt.cs
-fileName: MeateorHunt.cs
 name: null
 description: null
 tags: null

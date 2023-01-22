@@ -1,6 +1,4 @@
 /*
-path: Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs
-fileName: EvolvedShadowOrbItems[Mem].cs
 name: null
 description: null
 tags: null

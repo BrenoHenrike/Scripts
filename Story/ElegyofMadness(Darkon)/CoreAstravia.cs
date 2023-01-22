@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/CoreAstravia.cs
-fileName: CoreAstravia.cs
 name: null
 description: null
 tags: null

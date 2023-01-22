@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ForgeGemStonesForNulgath[Member].cs
-fileName: ForgeGemStonesForNulgath[Member].cs
 name: null
 description: null
 tags: null

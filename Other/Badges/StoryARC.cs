@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/StoryARC.cs
-fileName: StoryARC.cs
 name: null
 description: null
 tags: null

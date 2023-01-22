@@ -1,6 +1,4 @@
 /*
-path: Darkon/MergeShops/AstraviaPastMerge.cs
-fileName: AstraviaPastMerge.cs
 name: null
 description: null
 tags: null

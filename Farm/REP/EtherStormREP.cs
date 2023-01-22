@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/EtherStormREP.cs
-fileName: EtherStormREP.cs
 name: null
 description: null
 tags: null

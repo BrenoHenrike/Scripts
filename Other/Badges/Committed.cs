@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/Committed.cs
-fileName: Committed.cs
 name: null
 description: null
 tags: null

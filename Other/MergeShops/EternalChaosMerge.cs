@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/EternalChaosMerge.cs
-fileName: EternalChaosMerge.cs
 name: null
 description: null
 tags: null

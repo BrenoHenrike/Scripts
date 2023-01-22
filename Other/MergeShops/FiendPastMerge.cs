@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/FiendPastMerge.cs
-fileName: FiendPastMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyNulgath/ArmyEmblemofDage.cs
-fileName: ArmyEmblemofDage.cs
 name: null
 description: null
 tags: null

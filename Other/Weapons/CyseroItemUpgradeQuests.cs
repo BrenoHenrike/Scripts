@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/CyseroItemUpgradeQuests.cs
-fileName: CyseroItemUpgradeQuests.cs
 name: null
 description: null
 tags: null
