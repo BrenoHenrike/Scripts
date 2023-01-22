@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: Farm reputation with your army. Faction: Dreadfire
+tags: Army, Reputation, Dreadfire
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: This bot farms the ArchPaladin class for you.
+tags: Class, Good, Tank, HP, Templar, Support, Survivability, Figher, Healer, Undead
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

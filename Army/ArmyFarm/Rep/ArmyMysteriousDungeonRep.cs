@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: Farm reputation with your army. Faction: Myterious Dungeon
+tags: Army, Reputation, Mysterious Dungeon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

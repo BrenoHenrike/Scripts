@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: Uses your army to gather bonedust
+tags: Bone Dust, Army, Battleunderb
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

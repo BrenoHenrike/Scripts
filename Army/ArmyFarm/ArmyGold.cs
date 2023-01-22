@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: Uses different methods with your army to farm gold.
+tags: Army, Gold, Battle Ground E, Dark War Legion, Dark War Nation, Seven Circles War
 */
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/CoreAdvanced.cs
