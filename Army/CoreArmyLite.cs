@@ -150,13 +150,8 @@ public class CoreArmyLite
         DivideOnCells(SortedDict);
         _getCellsForSmartAggroMon = false;
 
-        bool beingFollowed = Core.ButlerOnMe();
-        if (beingFollowed)
-            Core.ToggleAggro(true);
-        AggroMonCells(beingFollowed ? new[] { Bot.Player.Cell } : _SmartAggroMonCells.ToArray());
+        AggroMonCells(Core.ButlerOnMe() ? new[] { Bot.Player.Cell } : _SmartAggroMonCells.ToArray());
         AggroMonStart(map);
-        if (beingFollowed)
-            Core.ToggleAggro(false);
     }
     private bool _getCellsForSmartAggroMon = false;
     private List<string> _SmartAggroMonCells = new();
@@ -388,14 +383,19 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public void waitForParty(string? item = null)
+    public void waitForParty(string map, string? item = null)
     {
         string[] players = Players();
         int partySize = players.Count();
-        int playerCount = 1;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
+        int playerCount = 1;
+
         int logCount = 0;
         int butlerTimer = 0;
+        bool hasWaited = false;
+
+        Core.Join(map);
+
         while (playerCount < partySize)
         {
             if (Bot.Map.PlayerNames != null)
@@ -408,6 +408,7 @@ public class CoreArmyLite
             if (logCount == 15)
             {
                 Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{partySize}]");
+                hasWaited = true;
                 logCount = 0;
             }
             Bot.Sleep(1000);
@@ -421,12 +422,24 @@ public class CoreArmyLite
                 Core.Logger($"Missing {toFollow}, initiating Butler.cs");
                 Core.Logger("Butler active until in map /" + b_breakOnMap);
                 Butler(toFollow, roomNr: getRoomNr());
+                Core.Logger($"{toFollow} has joined {b_breakOnMap}. Continueing");
                 break;
             }
         }
-        Core.Logger($"Party complete [{partySize}/{partySize}]");
+        if (hasWaited)
+            Core.Logger($"Party complete [{partySize}/{partySize}]");
         Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
     }
+
+    public bool SellToSync(string item, int quant)
+    {
+        if (Core.CheckInventory(item, quant))
+            return true;
+        if (SellToSyncOn)
+            Core.SellItem(item, 0, true);
+        return false;
+    }
+    public bool SellToSyncOn = false;
     #endregion
     #region OneClient
 
