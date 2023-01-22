@@ -7,11 +7,8 @@ namespace SkuaScriptsGenerator.Generators
         public void Generate()
         {
             var rawScriptsURL = "https://raw.githubusercontent.com/BrenoHenrike/Scripts/dev/";
-        
             var scripts = new List<ScriptInfo>();
-            
-            // foreach (var script in Directory.EnumerateFiles("..\\", "*.cs", SearchOption.AllDirectories))
-            foreach (var script in Directory.EnumerateFiles("./", "*.cs", SearchOption.AllDirectories))
+            foreach (var script in Directory.EnumerateFiles("../", "*.cs", SearchOption.AllDirectories))
             {
                 var firstLine = File.ReadLines(script).First();
                 if (firstLine.StartsWith("/*"))
