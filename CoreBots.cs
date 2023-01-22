@@ -2706,7 +2706,9 @@ public class CoreBots
     /// Returns the file path of the Skua folder in the user's Documents
     /// </summary>
     public static string SkuaPath =
-        (Version.Parse("1.1.4.1").CompareTo(IScriptInterface.Instance.Version) <= 0) ?
+        (AppContext.BaseDirectory.Replace('\\', '/').Split('/', StringSplitOptions.RemoveEmptyEntries)
+            [AppContext.BaseDirectory.Replace('\\', '/').Split('/', StringSplitOptions.RemoveEmptyEntries).Count() - 2]
+                .StartsWith("Program Files")) ?
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua") :
             Path.Combine(Path.GetDirectoryName(AppContext.BaseDirectory)!);
     public static string ScriptsPath = Path.Combine(SkuaPath, "Scripts");
