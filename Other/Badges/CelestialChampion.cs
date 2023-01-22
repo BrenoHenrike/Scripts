@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/CelestialChampion.cs
-fileName: CelestialChampion.cs
 name: null
 description: null
 tags: null

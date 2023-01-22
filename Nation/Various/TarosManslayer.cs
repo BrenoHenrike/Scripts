@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/TarosManslayer.cs
-fileName: TarosManslayer.cs
 name: null
 description: null
 tags: null

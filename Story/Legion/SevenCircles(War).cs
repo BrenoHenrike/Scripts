@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/SevenCircles(War).cs
-fileName: SevenCircles(War).cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Good/GearOfAwe/CoreAwe.cs
-fileName: CoreAwe.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShadowfallDefenseMerge.cs
-fileName: ShadowfallDefenseMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/MergeShops/DragonCapitalMerge.cs
-fileName: DragonCapitalMerge.cs
 name: null
 description: null
 tags: null

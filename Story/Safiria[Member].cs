@@ -1,6 +1,4 @@
 /*
-path: Story/Safiria[Member].cs
-fileName: Safiria[Member].cs
 name: null
 description: null
 tags: null

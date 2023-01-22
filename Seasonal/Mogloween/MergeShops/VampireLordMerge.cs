@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/MergeShops/VampireLordMerge.cs
-fileName: VampireLordMerge.cs
 name: null
 description: null
 tags: null

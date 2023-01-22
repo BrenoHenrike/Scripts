@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/PlagueGearMerge.cs
-fileName: PlagueGearMerge.cs
 name: null
 description: null
 tags: null

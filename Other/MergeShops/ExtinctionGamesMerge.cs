@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ExtinctionGamesMerge.cs
-fileName: ExtinctionGamesMerge.cs
 name: null
 description: null
 tags: null

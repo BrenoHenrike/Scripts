@@ -1,6 +1,4 @@
 /*
-path: CoreFarms.cs
-fileName: CoreFarms.cs
 name: null
 description: null
 tags: null

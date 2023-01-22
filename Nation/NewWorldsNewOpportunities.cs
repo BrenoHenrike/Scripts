@@ -1,6 +1,4 @@
 /*
-path: Nation/NewWorldsNewOpportunities.cs
-fileName: NewWorldsNewOpportunities.cs
 name: null
 description: null
 tags: null

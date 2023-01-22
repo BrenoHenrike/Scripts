@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/AQWZombies.cs
-fileName: AQWZombies.cs
 name: null
 description: null
 tags: null

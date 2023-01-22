@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/CoreBLOD.cs
-fileName: CoreBLOD.cs
 name: null
 description: null
 tags: null

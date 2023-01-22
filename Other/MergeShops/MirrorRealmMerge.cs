@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/MirrorRealmMerge.cs
-fileName: MirrorRealmMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/CoinCollectorSet[Member].cs
-fileName: CoinCollectorSet[Member].cs
 name: null
 description: null
 tags: null

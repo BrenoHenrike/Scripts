@@ -1,6 +1,4 @@
 /*
-path: Dailies/CryptoToken.cs
-fileName: CryptoToken.cs
 name: null
 description: null
 tags: null

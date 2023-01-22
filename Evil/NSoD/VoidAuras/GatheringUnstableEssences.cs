@@ -1,6 +1,4 @@
 /*
-path: Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs
-fileName: GatheringUnstableEssences.cs
 name: null
 description: null
 tags: null

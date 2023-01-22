@@ -1,6 +1,4 @@
 /*
-path: Story/DragonFableOrigins.cs
-fileName: DragonFableOrigins.cs
 name: null
 description: null
 tags: null

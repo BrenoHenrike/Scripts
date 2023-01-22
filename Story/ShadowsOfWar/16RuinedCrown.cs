@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/16RuinedCrown.cs
-fileName: 16RuinedCrown.cs
 name: null
 description: null
 tags: null

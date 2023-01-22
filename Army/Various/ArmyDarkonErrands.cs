@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyDarkonErrands.cs
-fileName: ArmyDarkonErrands.cs
 name: null
 description: null
 tags: null

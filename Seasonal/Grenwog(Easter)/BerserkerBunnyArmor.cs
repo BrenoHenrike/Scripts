@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Grenwog(Easter)/BerserkerBunnyArmor.cs
-fileName: BerserkerBunnyArmor.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/GemofNulgath.cs
-fileName: GemofNulgath.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/12Xiang(MirrorRealm).cs
-fileName: 12Xiang(MirrorRealm).cs
 name: null
 description: null
 tags: null

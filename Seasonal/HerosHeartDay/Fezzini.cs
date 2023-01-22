@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HerosHeartDay/Fezzini.cs
-fileName: Fezzini.cs
 name: null
 description: null
 tags: null

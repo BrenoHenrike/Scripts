@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/RoyalBattleMage.cs
-fileName: RoyalBattleMage.cs
 name: null
 description: null
 tags: null

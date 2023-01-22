@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DoomwoodREP.cs
-fileName: DoomwoodREP.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/LegionCastle.cs
-fileName: LegionCastle.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/13Splatterwar.cs
-fileName: 13Splatterwar.cs
 name: null
 description: null
 tags: null

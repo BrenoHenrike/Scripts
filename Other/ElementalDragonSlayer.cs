@@ -1,6 +1,4 @@
 /*
-path: Other/ElementalDragonSlayer.cs
-fileName: ElementalDragonSlayer.cs
 name: null
 description: null
 tags: null

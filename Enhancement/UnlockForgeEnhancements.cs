@@ -1,6 +1,4 @@
 /*
-path: Enhancement/UnlockForgeEnhancements.cs
-fileName: UnlockForgeEnhancements.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/CetoleonWarStory.cs
-fileName: CetoleonWarStory.cs
 name: null
 description: null
 tags: null

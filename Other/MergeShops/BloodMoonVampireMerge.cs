@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BloodMoonVampireMerge.cs
-fileName: BloodMoonVampireMerge.cs
 name: null
 description: null
 tags: null

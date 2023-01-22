@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/MergeShops/CrescentMerge.cs
-fileName: CrescentMerge.cs
 name: null
 description: null
 tags: null

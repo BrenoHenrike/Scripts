@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/FiendToken.cs
-fileName: FiendToken.cs
 name: null
 description: null
 tags: null

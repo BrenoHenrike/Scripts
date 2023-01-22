@@ -1,6 +1,4 @@
 /*
-path: Dailies/MadWeaponSmith.cs
-fileName: MadWeaponSmith.cs
 name: null
 description: null
 tags: null

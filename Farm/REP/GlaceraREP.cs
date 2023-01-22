@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/GlaceraREP.cs
-fileName: GlaceraREP.cs
 name: null
 description: null
 tags: null

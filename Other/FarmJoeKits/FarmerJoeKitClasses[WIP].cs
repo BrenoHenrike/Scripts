@@ -1,6 +1,4 @@
 /*
-path: Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs
-fileName: FarmerJoeKitClasses[WIP].cs
 name: null
 description: null
 tags: null

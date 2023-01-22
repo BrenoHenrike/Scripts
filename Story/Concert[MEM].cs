@@ -1,6 +1,4 @@
 /*
-path: Story/Concert[MEM].cs
-fileName: Concert[MEM].cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/TrollREP.cs
-fileName: TrollREP.cs
 name: null
 description: null
 tags: null

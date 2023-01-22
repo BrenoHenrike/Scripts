@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/DragonBlade[mem}.cs
-fileName: DragonBlade[mem}.cs
 name: null
 description: null
 tags: null

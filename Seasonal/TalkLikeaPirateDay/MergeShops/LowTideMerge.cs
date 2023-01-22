@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs
-fileName: LowTideMerge.cs
 name: null
 description: null
 tags: null

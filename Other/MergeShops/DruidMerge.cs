@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DruidMerge.cs
-fileName: DruidMerge.cs
 name: null
 description: null
 tags: null

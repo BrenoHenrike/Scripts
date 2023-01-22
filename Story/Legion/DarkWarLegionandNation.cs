@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DarkWarLegionandNation.cs
-fileName: DarkWarLegionandNation.cs
 name: null
 description: null
 tags: null

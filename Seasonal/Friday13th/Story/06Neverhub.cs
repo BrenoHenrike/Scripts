@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/06Neverhub.cs
-fileName: 06Neverhub.cs
 name: null
 description: null
 tags: null

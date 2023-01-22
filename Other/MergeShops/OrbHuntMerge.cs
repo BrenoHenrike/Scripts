@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/OrbHuntMerge.cs
-fileName: OrbHuntMerge.cs
 name: null
 description: null
 tags: null

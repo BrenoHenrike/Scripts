@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/FireandIceMerge.cs
-fileName: FireandIceMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/ChaosPuppetMaster.cs
-fileName: ChaosPuppetMaster.cs
 name: null
 description: null
 tags: null

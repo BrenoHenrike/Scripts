@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/JuggernautItems.cs
-fileName: JuggernautItems.cs
 name: null
 description: null
 tags: null

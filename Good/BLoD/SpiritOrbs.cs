@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/SpiritOrbs.cs
-fileName: SpiritOrbs.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/DoomVault.cs
-fileName: DoomVault.cs
 name: null
 description: null
 tags: null

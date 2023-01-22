@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/CraggleRockREP.cs
-fileName: CraggleRockREP.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/LevelAllClasses.cs
-fileName: LevelAllClasses.cs
 name: null
 description: null
 tags: null

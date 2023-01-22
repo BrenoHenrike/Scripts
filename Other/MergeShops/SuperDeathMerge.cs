@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/SuperDeathMerge.cs
-fileName: SuperDeathMerge.cs
 name: null
 description: null
 tags: null

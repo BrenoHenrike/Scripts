@@ -1,6 +1,4 @@
 /*
-path: Nation/MergeShops/FiendishLoreMasterMerge.cs
-fileName: FiendishLoreMasterMerge.cs
 name: null
 description: null
 tags: null

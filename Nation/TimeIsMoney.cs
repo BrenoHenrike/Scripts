@@ -1,6 +1,4 @@
 /*
-path: Nation/TimeIsMoney.cs
-fileName: TimeIsMoney.cs
 name: null
 description: null
 tags: null

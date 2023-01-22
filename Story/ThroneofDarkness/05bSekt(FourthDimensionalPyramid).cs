@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs
-fileName: 05bSekt(FourthDimensionalPyramid).cs
 name: null
 description: null
 tags: null

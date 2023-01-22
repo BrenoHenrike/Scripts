@@ -1,6 +1,4 @@
 /*
-path: Story/LightoviaCave.cs
-fileName: LightoviaCave.cs
 name: null
 description: null
 tags: null

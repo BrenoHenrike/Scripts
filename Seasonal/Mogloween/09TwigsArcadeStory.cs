@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/09TwigsArcadeStory.cs
-fileName: 09TwigsArcadeStory.cs
 name: null
 description: null
 tags: null

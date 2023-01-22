@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/ImperialChunin.cs
-fileName: ImperialChunin.cs
 name: null
 description: null
 tags: null

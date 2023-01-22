@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/GoldenHanzoVoid.cs
-fileName: GoldenHanzoVoid.cs
 name: null
 description: null
 tags: null

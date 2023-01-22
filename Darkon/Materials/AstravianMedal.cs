@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/AstravianMedal.cs
-fileName: AstravianMedal.cs
 name: null
 description: null
 tags: null

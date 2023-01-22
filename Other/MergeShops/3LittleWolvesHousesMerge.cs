@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/3LittleWolvesHousesMerge.cs
-fileName: 3LittleWolvesHousesMerge.cs
 name: null
 description: null
 tags: null

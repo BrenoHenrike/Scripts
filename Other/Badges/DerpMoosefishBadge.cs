@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/DerpMoosefishBadge.cs
-fileName: DerpMoosefishBadge.cs
 name: null
 description: null
 tags: null

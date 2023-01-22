@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/MergeShops/GonnaGetchaMerge.cs
-fileName: GonnaGetchaMerge.cs
 name: null
 description: null
 tags: null

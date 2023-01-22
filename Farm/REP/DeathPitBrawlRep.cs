@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DeathPitBrawlRep.cs
-fileName: DeathPitBrawlRep.cs
 name: null
 description: null
 tags: null

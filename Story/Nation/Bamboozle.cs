@@ -1,6 +1,4 @@
 /*
-path: Story/Nation/Bamboozle.cs
-fileName: Bamboozle.cs
 name: null
 description: null
 tags: null

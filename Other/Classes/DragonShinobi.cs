@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/DragonShinobi.cs
-fileName: DragonShinobi.cs
 name: null
 description: null
 tags: null

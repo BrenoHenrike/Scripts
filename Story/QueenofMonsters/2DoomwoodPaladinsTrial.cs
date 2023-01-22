@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/2DoomwoodPaladinsTrial.cs
-fileName: 2DoomwoodPaladinsTrial.cs
 name: null
 description: null
 tags: null

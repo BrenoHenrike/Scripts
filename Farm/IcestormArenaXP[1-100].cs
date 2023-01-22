@@ -1,6 +1,4 @@
 /*
-path: Farm/IcestormArenaXP[1-100].cs
-fileName: IcestormArenaXP[1-100].cs
 name: null
 description: null
 tags: null

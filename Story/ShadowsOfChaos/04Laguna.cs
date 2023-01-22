@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/04Laguna.cs
-fileName: 04Laguna.cs
 name: null
 description: null
 tags: null

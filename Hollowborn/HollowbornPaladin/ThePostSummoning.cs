@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornPaladin/ThePostSummoning.cs
-fileName: ThePostSummoning.cs
 name: null
 description: null
 tags: null

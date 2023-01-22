@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/8ByroDax.cs
-fileName: 8ByroDax.cs
 name: null
 description: null
 tags: null

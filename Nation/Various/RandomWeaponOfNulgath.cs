@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/RandomWeaponOfNulgath.cs
-fileName: RandomWeaponOfNulgath.cs
 name: null
 description: null
 tags: null

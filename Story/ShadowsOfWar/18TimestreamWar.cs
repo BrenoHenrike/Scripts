@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/18TimestreamWar.cs
-fileName: 18TimestreamWar.cs
 name: null
 description: null
 tags: null

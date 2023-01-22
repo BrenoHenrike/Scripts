@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs
-fileName: DarkWarNationMerge.cs
 name: null
 description: null
 tags: null

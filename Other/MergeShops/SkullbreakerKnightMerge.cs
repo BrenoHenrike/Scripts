@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/SkullbreakerKnightMerge.cs
-fileName: SkullbreakerKnightMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Army/OneClient/AllBankAllItems.cs
-fileName: AllBankAllItems.cs
 name: null
 description: null
 tags: null

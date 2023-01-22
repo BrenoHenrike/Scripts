@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/Shaman.cs
-fileName: Shaman.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Enhancement/InventoryEnhancer.cs
-fileName: InventoryEnhancer.cs
 name: null
 description: null
 tags: null

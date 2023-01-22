@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AprilFools/GardenQuestMerge(VegetableToken).cs
-fileName: GardenQuestMerge(VegetableToken).cs
 name: null
 description: null
 tags: null

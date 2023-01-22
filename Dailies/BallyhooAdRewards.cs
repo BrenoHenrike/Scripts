@@ -1,6 +1,4 @@
 /*
-path: Dailies/BallyhooAdRewards.cs
-fileName: BallyhooAdRewards.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CraggleRockMerge.cs
-fileName: CraggleRockMerge.cs
 name: null
 description: null
 tags: null

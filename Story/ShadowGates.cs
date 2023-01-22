@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowGates.cs
-fileName: ShadowGates.cs
 name: null
 description: null
 tags: null

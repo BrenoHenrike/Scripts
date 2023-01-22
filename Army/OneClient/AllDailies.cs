@@ -1,6 +1,4 @@
 /*
-path: Army/OneClient/AllDailies.cs
-fileName: AllDailies.cs
 name: null
 description: null
 tags: null

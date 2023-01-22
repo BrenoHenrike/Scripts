@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornChaosEnvoy/4WaveringIllusions.cs
-fileName: 4WaveringIllusions.cs
 name: null
 description: null
 tags: null

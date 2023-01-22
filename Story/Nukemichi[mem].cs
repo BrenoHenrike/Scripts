@@ -1,6 +1,4 @@
 /*
-path: Story/Nukemichi[mem].cs
-fileName: Nukemichi[mem].cs
 name: null
 description: null
 tags: null

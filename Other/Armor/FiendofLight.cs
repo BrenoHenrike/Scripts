@@ -1,6 +1,4 @@
 /*
-path: Other/Armor/FiendofLight.cs
-fileName: FiendofLight.cs
 name: null
 description: null
 tags: null

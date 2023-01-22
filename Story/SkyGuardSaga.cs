@@ -1,6 +1,4 @@
 /*
-path: Story/SkyGuardSaga.cs
-fileName: SkyGuardSaga.cs
 name: null
 description: null
 tags: null

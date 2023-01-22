@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/UW3017.cs
-fileName: UW3017.cs
 name: null
 description: null
 tags: null

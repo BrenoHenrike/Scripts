@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DreadspaceReplicatorMerge.cs
-fileName: DreadspaceReplicatorMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/01Embersea.cs
-fileName: 01Embersea.cs
 name: null
 description: null
 tags: null

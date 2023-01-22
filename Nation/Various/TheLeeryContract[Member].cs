@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/TheLeeryContract[Member].cs
-fileName: TheLeeryContract[Member].cs
 name: null
 description: null
 tags: null

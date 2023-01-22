@@ -1,6 +1,4 @@
 /*
-path: Other/Various/TheDarkBox.cs
-fileName: TheDarkBox.cs
 name: null
 description: null
 tags: null

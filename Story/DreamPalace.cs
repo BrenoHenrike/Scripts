@@ -1,6 +1,4 @@
 /*
-path: Story/DreamPalace.cs
-fileName: DreamPalace.cs
 name: null
 description: null
 tags: null

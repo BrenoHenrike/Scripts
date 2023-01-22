@@ -1,6 +1,4 @@
 /*
-path: Legion/HeadOfTheLegionBeast.cs
-fileName: HeadOfTheLegionBeast.cs
 name: null
 description: null
 tags: null

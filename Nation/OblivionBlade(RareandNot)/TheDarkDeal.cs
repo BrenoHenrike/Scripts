@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/TheDarkDeal.cs
-fileName: TheDarkDeal.cs
 name: null
 description: null
 tags: null

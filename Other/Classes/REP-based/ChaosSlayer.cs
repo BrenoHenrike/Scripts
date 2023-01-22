@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/ChaosSlayer.cs
-fileName: ChaosSlayer.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/00DoAll.cs
-fileName: 00DoAll.cs
 name: null
 description: null
 tags: null

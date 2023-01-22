@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/Teeth.cs
-fileName: Teeth.cs
 name: null
 description: null
 tags: null

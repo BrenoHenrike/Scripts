@@ -1,6 +1,4 @@
 /*
-path: Story/DarkCarnax.cs
-fileName: DarkCarnax.cs
 name: null
 description: null
 tags: null

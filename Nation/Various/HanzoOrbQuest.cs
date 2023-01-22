@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/HanzoOrbQuest.cs
-fileName: HanzoOrbQuest.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/GundaharsStashMerge.cs
-fileName: GundaharsStashMerge.cs
 name: null
 description: null
 tags: null

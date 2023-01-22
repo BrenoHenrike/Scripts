@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part1/1DoomwoodForest.cs
-fileName: 1DoomwoodForest.cs
 name: null
 description: null
 tags: null

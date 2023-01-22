@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/BeastMasterREP[Mem].cs
-fileName: BeastMasterREP[Mem].cs
 name: null
 description: null
 tags: null

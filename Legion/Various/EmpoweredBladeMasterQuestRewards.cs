@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/EmpoweredBladeMasterQuestRewards.cs
-fileName: EmpoweredBladeMasterQuestRewards.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/UndeadSlayer[Mem].cs
-fileName: UndeadSlayer[Mem].cs
 name: null
 description: null
 tags: null

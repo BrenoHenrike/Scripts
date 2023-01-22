@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Grenwog(Easter)/BringmethePINKEggs!(Cape).cs
-fileName: BringmethePINKEggs!(Cape).cs
 name: null
 description: null
 tags: null

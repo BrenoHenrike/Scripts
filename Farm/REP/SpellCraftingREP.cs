@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/SpellCraftingREP.cs
-fileName: SpellCraftingREP.cs
 name: null
 description: null
 tags: null

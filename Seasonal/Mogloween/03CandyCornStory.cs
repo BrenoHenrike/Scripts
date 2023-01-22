@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/03CandyCornStory.cs
-fileName: 03CandyCornStory.cs
 name: null
 description: null
 tags: null

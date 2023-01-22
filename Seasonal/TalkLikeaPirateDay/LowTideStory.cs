@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/LowTideStory.cs
-fileName: LowTideStory.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TrygveMerge.cs
-fileName: TrygveMerge.cs
 name: null
 description: null
 tags: null

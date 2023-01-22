@@ -1,6 +1,4 @@
 /*
-path: Farm/BuyScrolls.cs
-fileName: BuyScrolls.cs
 name: null
 description: null
 tags: null

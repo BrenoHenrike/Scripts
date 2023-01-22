@@ -1,6 +1,4 @@
 /*
-path: CoreStory.cs
-fileName: CoreStory.cs
 name: null
 description: null
 tags: null

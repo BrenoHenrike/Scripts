@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/00DoAllHarvestDay.cs
-fileName: 00DoAllHarvestDay.cs
 name: null
 description: null
 tags: null

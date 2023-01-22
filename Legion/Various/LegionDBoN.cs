@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/LegionDBoN.cs
-fileName: LegionDBoN.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/0TheBlindingLightofDestiny.cs
-fileName: 0TheBlindingLightofDestiny.cs
 name: null
 description: null
 tags: null

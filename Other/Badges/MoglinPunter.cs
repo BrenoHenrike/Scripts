@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/MoglinPunter.cs
-fileName: MoglinPunter.cs
 name: null
 description: null
 tags: null

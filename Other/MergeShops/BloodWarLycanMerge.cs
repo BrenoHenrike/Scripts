@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BloodWarLycanMerge.cs
-fileName: BloodWarLycanMerge.cs
 name: null
 description: null
 tags: null

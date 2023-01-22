@@ -1,6 +1,4 @@
 /*
-path: Story/River.cs
-fileName: River.cs
 name: null
 description: null
 tags: null

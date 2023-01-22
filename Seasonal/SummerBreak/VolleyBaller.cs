@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/VolleyBaller.cs
-fileName: VolleyBaller.cs
 name: null
 description: null
 tags: null

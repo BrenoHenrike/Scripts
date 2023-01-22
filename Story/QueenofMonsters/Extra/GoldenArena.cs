@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/GoldenArena.cs
-fileName: GoldenArena.cs
 name: null
 description: null
 tags: null

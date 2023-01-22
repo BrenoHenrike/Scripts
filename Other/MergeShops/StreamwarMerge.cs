@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/StreamwarMerge.cs
-fileName: StreamwarMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/MazeMerge.cs
-fileName: MazeMerge.cs
 name: null
 description: null
 tags: null

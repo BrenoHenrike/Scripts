@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/BladeofAweREP.cs
-fileName: BladeofAweREP.cs
 name: null
 description: null
 tags: null

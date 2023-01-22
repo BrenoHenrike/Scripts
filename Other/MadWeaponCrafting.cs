@@ -1,6 +1,4 @@
 /*
-path: Other/MadWeaponCrafting.cs
-fileName: MadWeaponCrafting.cs
 name: null
 description: null
 tags: null

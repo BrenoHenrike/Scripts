@@ -1,6 +1,4 @@
 /*
-path: Legion/Revenant/LegionFealty3.cs
-fileName: LegionFealty3.cs
 name: null
 description: null
 tags: null

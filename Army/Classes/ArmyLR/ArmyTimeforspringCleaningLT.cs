@@ -1,6 +1,4 @@
 /*
-path: Army/Classes/ArmyLR/ArmyTimeforspringCleaningLT.cs
-fileName: ArmyTimeforspringCleaningLT.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/OblivionBlade(RareandNot)/TheWeaponParasite.cs
-fileName: TheWeaponParasite.cs
 name: null
 description: null
 tags: null

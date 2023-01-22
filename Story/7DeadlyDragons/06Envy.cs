@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/06Envy.cs
-fileName: 06Envy.cs
 name: null
 description: null
 tags: null

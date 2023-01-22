@@ -1,6 +1,4 @@
 /*
-path: Dailies/MineCrafting.cs
-fileName: MineCrafting.cs
 name: null
 description: null
 tags: null

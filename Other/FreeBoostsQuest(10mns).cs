@@ -1,6 +1,4 @@
 /*
-path: Other/FreeBoostsQuest(10mns).cs
-fileName: FreeBoostsQuest(10mns).cs
 name: null
 description: null
 tags: null

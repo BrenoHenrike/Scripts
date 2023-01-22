@@ -1,6 +1,4 @@
 /*
-path: Good/ArchPaladin.cs
-fileName: ArchPaladin.cs
 name: null
 description: null
 tags: null

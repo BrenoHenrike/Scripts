@@ -1,6 +1,4 @@
 /*
-path: Evil/SDKA/0SepulchureDoomKnightArmor.cs
-fileName: 0SepulchureDoomKnightArmor.cs
 name: null
 description: null
 tags: null

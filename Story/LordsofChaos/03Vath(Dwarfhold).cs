@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/03Vath(Dwarfhold).cs
-fileName: 03Vath(Dwarfhold).cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ArchFiendEnchantedOrbs.cs
-fileName: ArchFiendEnchantedOrbs.cs
 name: null
 description: null
 tags: null

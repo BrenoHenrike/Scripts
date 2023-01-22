@@ -1,6 +1,4 @@
 /*
-path: Army/Classes/ArmyLR/ArmyDreadRockLT.cs
-fileName: ArmyDreadRockLT.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/CelestialPast.cs
-fileName: CelestialPast.cs
 name: null
 description: null
 tags: null

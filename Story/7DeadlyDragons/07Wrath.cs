@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/07Wrath.cs
-fileName: 07Wrath.cs
 name: null
 description: null
 tags: null

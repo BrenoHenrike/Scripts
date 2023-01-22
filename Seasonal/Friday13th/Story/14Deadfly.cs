@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/14Deadfly.cs
-fileName: 14Deadfly.cs
 name: null
 description: null
 tags: null

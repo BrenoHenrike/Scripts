@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/5EridaniPast.cs
-fileName: 5EridaniPast.cs
 name: null
 description: null
 tags: null

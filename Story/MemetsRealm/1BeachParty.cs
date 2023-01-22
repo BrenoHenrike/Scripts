@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/1BeachParty.cs
-fileName: 1BeachParty.cs
 name: null
 description: null
 tags: null

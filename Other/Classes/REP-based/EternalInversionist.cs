@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/EternalInversionist.cs
-fileName: EternalInversionist.cs
 name: null
 description: null
 tags: null

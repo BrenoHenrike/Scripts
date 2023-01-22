@@ -1,6 +1,4 @@
 /*
-path: Story/Shattersword.cs
-fileName: Shattersword.cs
 name: null
 description: null
 tags: null

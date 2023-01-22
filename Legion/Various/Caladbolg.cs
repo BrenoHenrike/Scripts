@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/Caladbolg.cs
-fileName: Caladbolg.cs
 name: null
 description: null
 tags: null

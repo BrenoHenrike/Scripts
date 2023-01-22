@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/CornelisReborn.cs
-fileName: CornelisReborn.cs
 name: null
 description: null
 tags: null

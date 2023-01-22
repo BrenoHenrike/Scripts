@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/Lycan.cs
-fileName: Lycan.cs
 name: null
 description: null
 tags: null

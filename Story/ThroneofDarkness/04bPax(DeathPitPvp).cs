@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/04bPax(DeathPitPvp).cs
-fileName: 04bPax(DeathPitPvp).cs
 name: null
 description: null
 tags: null

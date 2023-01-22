@@ -1,6 +1,4 @@
 /*
-path: Other/2022AcGift.cs
-fileName: 2022AcGift.cs
 name: null
 description: null
 tags: null

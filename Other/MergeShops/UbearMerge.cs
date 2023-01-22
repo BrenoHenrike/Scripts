@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/UbearMerge.cs
-fileName: UbearMerge.cs
 name: null
 description: null
 tags: null

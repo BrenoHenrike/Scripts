@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/ShadowReaperOfDoom.cs
-fileName: ShadowReaperOfDoom.cs
 name: null
 description: null
 tags: null

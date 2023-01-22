@@ -1,6 +1,4 @@
 /*
-path: Darkon/MergeShops/FirstObservatoryMerge.cs
-fileName: FirstObservatoryMerge.cs
 name: null
 description: null
 tags: null

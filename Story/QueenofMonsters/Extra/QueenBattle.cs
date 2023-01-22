@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/QueenBattle.cs
-fileName: QueenBattle.cs
 name: null
 description: null
 tags: null

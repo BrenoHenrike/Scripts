@@ -1,6 +1,4 @@
 /*
-path: Story/CrashSite.cs
-fileName: CrashSite.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DeadLinesMerge.cs
-fileName: DeadLinesMerge.cs
 name: null
 description: null
 tags: null

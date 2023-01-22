@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/TableFlipper.cs
-fileName: TableFlipper.cs
 name: null
 description: null
 tags: null

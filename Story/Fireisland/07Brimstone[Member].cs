@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/07Brimstone[Member].cs
-fileName: 07Brimstone[Member].cs
 name: null
 description: null
 tags: null

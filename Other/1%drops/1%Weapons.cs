@@ -1,6 +1,4 @@
 /*
-path: Other/1%drops/1%Weapons.cs
-fileName: 1%Weapons.cs
 name: null
 description: null
 tags: null

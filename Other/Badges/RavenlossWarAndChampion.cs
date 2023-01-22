@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/RavenlossWarAndChampion.cs
-fileName: RavenlossWarAndChampion.cs
 name: null
 description: null
 tags: null

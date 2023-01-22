@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DwobosMerge.cs
-fileName: DwobosMerge.cs
 name: null
 description: null
 tags: null

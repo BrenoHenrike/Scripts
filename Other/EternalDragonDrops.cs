@@ -1,6 +1,4 @@
 /*
-path: Other/EternalDragonDrops.cs
-fileName: EternalDragonDrops.cs
 name: null
 description: null
 tags: null

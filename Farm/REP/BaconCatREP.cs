@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/BaconCatREP.cs
-fileName: BaconCatREP.cs
 name: null
 description: null
 tags: null

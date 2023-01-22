@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part3/1Thornsgarde.cs
-fileName: 1Thornsgarde.cs
 name: null
 description: null
 tags: null

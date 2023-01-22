@@ -1,6 +1,4 @@
 /*
-path: Other/WeaponReflection.cs
-fileName: WeaponReflection.cs
 name: null
 description: null
 tags: null

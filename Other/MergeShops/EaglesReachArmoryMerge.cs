@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/EaglesReachArmoryMerge.cs
-fileName: EaglesReachArmoryMerge.cs
 name: null
 description: null
 tags: null

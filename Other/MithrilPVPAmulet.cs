@@ -1,6 +1,4 @@
 /*
-path: Other/MithrilPVPAmulet.cs
-fileName: MithrilPVPAmulet.cs
 name: null
 description: null
 tags: null

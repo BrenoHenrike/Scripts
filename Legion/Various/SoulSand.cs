@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/SoulSand.cs
-fileName: SoulSand.cs
 name: null
 description: null
 tags: null

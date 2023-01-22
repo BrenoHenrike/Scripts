@@ -1,6 +1,4 @@
 /*
-path: Story/Pirates[Member].cs
-fileName: Pirates[Member].cs
 name: null
 description: null
 tags: null

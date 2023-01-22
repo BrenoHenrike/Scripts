@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/PetTamerREP.CS
-fileName: PetTamerREP.CS
 name: null
 description: null
 tags: null

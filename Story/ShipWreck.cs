@@ -1,6 +1,4 @@
 /*
-path: Story/ShipWreck.cs
-fileName: ShipWreck.cs
 name: null
 description: null
 tags: null

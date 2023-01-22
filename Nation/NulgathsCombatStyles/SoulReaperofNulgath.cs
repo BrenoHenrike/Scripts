@@ -1,6 +1,4 @@
 /*
-path: Nation/NulgathsCombatStyles/SoulReaperofNulgath.cs
-fileName: SoulReaperofNulgath.cs
 name: null
 description: null
 tags: null

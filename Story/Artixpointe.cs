@@ -1,6 +1,4 @@
 /*
-path: Story/Artixpointe.cs
-fileName: Artixpointe.cs
 name: null
 description: null
 tags: null

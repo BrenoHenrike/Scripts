@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/Yulecat.cs
-fileName: Yulecat.cs
 name: null
 description: null
 tags: null

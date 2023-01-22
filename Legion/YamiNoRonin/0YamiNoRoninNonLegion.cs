@@ -1,6 +1,4 @@
 /*
-path: Legion/YamiNoRonin/0YamiNoRoninNonLegion.cs
-fileName: 0YamiNoRoninNonLegion.cs
 name: null
 description: null
 tags: null

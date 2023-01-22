@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/8TheBook.cs
-fileName: 8TheBook.cs
 name: null
 description: null
 tags: null

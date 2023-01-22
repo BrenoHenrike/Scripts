@@ -1,6 +1,4 @@
 /*
-path: Nation/VHL/0VoidHighlord.cs
-fileName: 0VoidHighlord.cs
 name: null
 description: null
 tags: null

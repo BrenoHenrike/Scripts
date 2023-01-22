@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/CoreFireisland.cs
-fileName: CoreFireisland.cs
 name: null
 description: null
 tags: null

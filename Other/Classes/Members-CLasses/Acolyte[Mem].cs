@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Members-CLasses/Acolyte[Mem].cs
-fileName: Acolyte[Mem].cs
 name: null
 description: null
 tags: null

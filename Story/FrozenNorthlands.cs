@@ -1,6 +1,4 @@
 /*
-path: Story/FrozenNorthlands.cs
-fileName: FrozenNorthlands.cs
 name: null
 description: null
 tags: null

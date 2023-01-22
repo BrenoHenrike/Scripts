@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
-fileName: Undervoid.cs
 name: null
 description: null
 tags: null

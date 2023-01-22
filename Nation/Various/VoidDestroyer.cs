@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/VoidDestroyer.cs
-fileName: VoidDestroyer.cs
 name: null
 description: null
 tags: null

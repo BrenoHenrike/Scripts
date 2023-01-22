@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/SwirlingTheAbyss.cs
-fileName: SwirlingTheAbyss.cs
 name: null
 description: null
 tags: null

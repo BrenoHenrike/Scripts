@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/10BrightForestExtra.cs
-fileName: 10BrightForestExtra.cs
 name: null
 description: null
 tags: null

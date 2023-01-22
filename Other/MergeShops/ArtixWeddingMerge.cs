@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ArtixWeddingMerge.cs
-fileName: ArtixWeddingMerge.cs
 name: null
 description: null
 tags: null

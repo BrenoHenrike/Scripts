@@ -1,6 +1,4 @@
 /*
-path: Seasonal/BlackFriday/CreepyUndeadMonkeyQuest.cs
-fileName: CreepyUndeadMonkeyQuest.cs
 name: null
 description: null
 tags: null

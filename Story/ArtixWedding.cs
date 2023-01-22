@@ -1,6 +1,4 @@
 /*
-path: Story/ArtixWedding.cs
-fileName: ArtixWedding.cs
 name: null
 description: null
 tags: null

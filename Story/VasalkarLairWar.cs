@@ -1,6 +1,4 @@
 /*
-path: Story/VasalkarLairWar.cs
-fileName: VasalkarLairWar.cs
 name: null
 description: null
 tags: null

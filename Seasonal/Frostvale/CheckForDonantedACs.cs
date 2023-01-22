@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/CheckForDonantedACs.cs
-fileName: CheckForDonantedACs.cs
 name: null
 description: null
 tags: null

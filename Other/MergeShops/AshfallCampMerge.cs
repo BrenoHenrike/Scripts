@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/AshfallCampMerge.cs
-fileName: AshfallCampMerge.cs
 name: null
 description: null
 tags: null

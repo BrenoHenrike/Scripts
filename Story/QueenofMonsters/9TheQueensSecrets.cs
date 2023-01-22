@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/9TheQueensSecrets.cs
-fileName: 9TheQueensSecrets.cs
 name: null
 description: null
 tags: null

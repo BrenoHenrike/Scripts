@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/VoidPaladin.cs
-fileName: VoidPaladin.cs
 name: null
 description: null
 tags: null

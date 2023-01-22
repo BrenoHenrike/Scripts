@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AqwBirthday/AspiringNecromancer.cs
-fileName: AspiringNecromancer.cs
 name: null
 description: null
 tags: null

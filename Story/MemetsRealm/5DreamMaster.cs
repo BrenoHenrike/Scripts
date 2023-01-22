@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/5DreamMaster.cs
-fileName: 5DreamMaster.cs
 name: null
 description: null
 tags: null

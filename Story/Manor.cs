@@ -1,6 +1,4 @@
 /*
-path: Story/Manor.cs
-fileName: Manor.cs
 name: null
 description: null
 tags: null

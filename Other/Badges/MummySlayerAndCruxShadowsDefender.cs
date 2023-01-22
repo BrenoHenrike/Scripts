@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/MummySlayerAndCruxShadowsDefender.cs
-fileName: MummySlayerAndCruxShadowsDefender.cs
 name: null
 description: null
 tags: null

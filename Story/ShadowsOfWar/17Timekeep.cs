@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/17Timekeep.cs
-fileName: 17Timekeep.cs
 name: null
 description: null
 tags: null

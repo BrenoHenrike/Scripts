@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/4AstraviaJudgement.cs
-fileName: 4AstraviaJudgement.cs
 name: null
 description: null
 tags: null

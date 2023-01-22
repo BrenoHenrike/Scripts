@@ -1,6 +1,4 @@
 /*
-path: Story/DjinnGate.cs
-fileName: DjinnGate.cs
 name: null
 description: null
 tags: null

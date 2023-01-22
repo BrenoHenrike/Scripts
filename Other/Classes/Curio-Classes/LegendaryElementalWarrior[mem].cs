@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
-fileName: LegendaryElementalWarrior[mem].cs
 name: null
 description: null
 tags: null

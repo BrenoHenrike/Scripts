@@ -1,6 +1,4 @@
 /*
-path: Other/SunkenTreasure.cs
-fileName: SunkenTreasure.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/SwindlesReturnPolicy.cs
-fileName: SwindlesReturnPolicy.cs
 name: null
 description: null
 tags: null

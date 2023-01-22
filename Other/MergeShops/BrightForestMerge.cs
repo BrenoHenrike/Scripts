@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BrightForestMerge.cs
-fileName: BrightForestMerge.cs
 name: null
 description: null
 tags: null

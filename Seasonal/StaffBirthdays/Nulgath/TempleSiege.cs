@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
-fileName: TempleSiege.cs
 name: null
 description: null
 tags: null

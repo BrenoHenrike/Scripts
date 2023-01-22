@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/ShadowLegacyofNulgath.cs
-fileName: ShadowLegacyofNulgath.cs
 name: null
 description: null
 tags: null

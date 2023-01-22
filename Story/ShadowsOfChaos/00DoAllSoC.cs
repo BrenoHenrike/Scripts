@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/00DoAllSoC.cs
-fileName: 00DoAllSoC.cs
 name: null
 description: null
 tags: null

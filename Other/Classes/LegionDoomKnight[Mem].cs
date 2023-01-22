@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/LegionDoomKnight[Mem].cs
-fileName: LegionDoomKnight[Mem].cs
 name: null
 description: null
 tags: null

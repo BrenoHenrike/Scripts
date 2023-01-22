@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/5SwordhavenTheNewWorld.cs
-fileName: 5SwordhavenTheNewWorld.cs
 name: null
 description: null
 tags: null

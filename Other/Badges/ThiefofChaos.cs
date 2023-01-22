@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/ThiefofChaos.cs
-fileName: ThiefofChaos.cs
 name: null
 description: null
 tags: null

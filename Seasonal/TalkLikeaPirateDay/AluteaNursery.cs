@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
-fileName: AluteaNursery.cs
 name: null
 description: null
 tags: null

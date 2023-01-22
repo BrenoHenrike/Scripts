@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/UltraCarnax.cs
-fileName: UltraCarnax.cs
 name: null
 description: null
 tags: null

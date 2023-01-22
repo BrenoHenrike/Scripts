@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/08Shadowgrove.cs
-fileName: 08Shadowgrove.cs
 name: null
 description: null
 tags: null

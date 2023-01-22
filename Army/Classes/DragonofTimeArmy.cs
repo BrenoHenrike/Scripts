@@ -1,6 +1,4 @@
 /*
-path: Army/Classes/DragonofTimeArmy.cs
-fileName: DragonofTimeArmy.cs
 name: null
 description: null
 tags: null

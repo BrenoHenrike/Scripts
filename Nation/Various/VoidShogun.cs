@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/VoidShogun.cs
-fileName: VoidShogun.cs
 name: null
 description: null
 tags: null

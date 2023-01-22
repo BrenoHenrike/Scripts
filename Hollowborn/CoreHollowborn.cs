@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/CoreHollowborn.cs
-fileName: CoreHollowborn.cs
 name: null
 description: null
 tags: null

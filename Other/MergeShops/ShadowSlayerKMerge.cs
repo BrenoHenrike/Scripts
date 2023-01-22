@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShadowSlayerKMerge.cs
-fileName: ShadowSlayerKMerge.cs
 name: null
 description: null
 tags: null

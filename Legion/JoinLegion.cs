@@ -1,6 +1,4 @@
 /*
-path: Legion/JoinLegion.cs
-fileName: JoinLegion.cs
 name: null
 description: null
 tags: null

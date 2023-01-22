@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/ThanatosParagon.cs
-fileName: ThanatosParagon.cs
 name: null
 description: null
 tags: null

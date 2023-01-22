@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/Errands/SecondErrand.cs
-fileName: SecondErrand.cs
 name: null
 description: null
 tags: null

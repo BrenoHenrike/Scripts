@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/JusticeSquad.cs
-fileName: JusticeSquad.cs
 name: null
 description: null
 tags: null

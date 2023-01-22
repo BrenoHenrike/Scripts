@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/CommitedMerge.cs
-fileName: CommitedMerge.cs
 name: null
 description: null
 tags: null

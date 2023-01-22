@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DruidGroveREP.cs
-fileName: DruidGroveREP.cs
 name: null
 description: null
 tags: null

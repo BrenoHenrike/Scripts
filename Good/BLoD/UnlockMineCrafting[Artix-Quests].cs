@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/UnlockMineCrafting[Artix-Quests].cs
-fileName: UnlockMineCrafting[Artix-Quests].cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/01Skullpunch.cs
-fileName: 01Skullpunch.cs
 name: null
 description: null
 tags: null

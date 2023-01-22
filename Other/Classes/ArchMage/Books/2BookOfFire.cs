@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/ArchMage/Books/2BookOfFire.cs
-fileName: 2BookOfFire.cs
 name: null
 description: null
 tags: null

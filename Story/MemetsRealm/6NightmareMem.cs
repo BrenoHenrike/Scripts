@@ -1,6 +1,4 @@
 /*
-path: Story/MemetsRealm/6NightmareMem.cs
-fileName: 6NightmareMem.cs
 name: null
 description: null
 tags: null

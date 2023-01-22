@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part1/5TempleOfLight.cs
-fileName: 5TempleOfLight.cs
 name: null
 description: null
 tags: null

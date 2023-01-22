@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AprilFools/MeateorHuntMerge(UnoriginalRecipe).cs
-fileName: MeateorHuntMerge(UnoriginalRecipe).cs
 name: null
 description: null
 tags: null

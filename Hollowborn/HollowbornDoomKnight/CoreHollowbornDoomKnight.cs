@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs
-fileName: CoreHollowbornDoomKnight.cs
 name: null
 description: null
 tags: null

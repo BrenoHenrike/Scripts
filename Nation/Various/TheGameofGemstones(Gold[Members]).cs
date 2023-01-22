@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/TheGameofGemstones(Gold[Members]).cs
-fileName: TheGameofGemstones(Gold[Members]).cs
 name: null
 description: null
 tags: null

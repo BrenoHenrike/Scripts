@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TechfortressWarMerge.cs
-fileName: TechfortressWarMerge.cs
 name: null
 description: null
 tags: null

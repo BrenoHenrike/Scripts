@@ -1,6 +1,4 @@
 /*
-path: Other/Various/DecorateYourSpace.cs
-fileName: DecorateYourSpace.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DwarfholdREP.cs
-fileName: DwarfholdREP.cs
 name: null
 description: null
 tags: null

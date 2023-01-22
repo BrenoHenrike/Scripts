@@ -1,6 +1,4 @@
 /*
-path: Dailies/ShadowShroud.cs
-fileName: ShadowShroud.cs
 name: null
 description: null
 tags: null

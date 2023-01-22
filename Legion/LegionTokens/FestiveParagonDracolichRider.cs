@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/FestiveParagonDracolichRider.cs
-fileName: FestiveParagonDracolichRider.cs
 name: null
 description: null
 tags: null

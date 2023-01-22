@@ -1,6 +1,4 @@
 /*
-path: Nation/KisstheVoid.cs
-fileName: KisstheVoid.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/DesolichFreed.cs
-fileName: DesolichFreed.cs
 name: null
 description: null
 tags: null

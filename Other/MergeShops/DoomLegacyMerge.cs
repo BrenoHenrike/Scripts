@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DoomLegacyMerge.cs
-fileName: DoomLegacyMerge.cs
 name: null
 description: null
 tags: null

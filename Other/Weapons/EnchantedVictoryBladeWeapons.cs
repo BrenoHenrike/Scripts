@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/EnchantedVictoryBladeWeapons.cs
-fileName: EnchantedVictoryBladeWeapons.cs
 name: null
 description: null
 tags: null

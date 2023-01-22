@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/ChillysParticipation.cs
-fileName: ChillysParticipation.cs
 name: null
 description: null
 tags: null

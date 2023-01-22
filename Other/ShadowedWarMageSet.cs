@@ -1,6 +1,4 @@
 /*
-path: Other/ShadowedWarMageSet.cs
-fileName: ShadowedWarMageSet.cs
 name: null
 description: null
 tags: null

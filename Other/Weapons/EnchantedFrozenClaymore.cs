@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/EnchantedFrozenClaymore.cs
-fileName: EnchantedFrozenClaymore.cs
 name: null
 description: null
 tags: null

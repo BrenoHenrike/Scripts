@@ -1,6 +1,4 @@
 /*
-path: Dailies/BrightKnightArmor.cs
-fileName: BrightKnightArmor.cs
 name: null
 description: null
 tags: null

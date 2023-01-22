@@ -1,6 +1,4 @@
 /*
-path: Nation/VoucherItemChoose.cs
-fileName: VoucherItemChoose.cs
 name: null
 description: null
 tags: null

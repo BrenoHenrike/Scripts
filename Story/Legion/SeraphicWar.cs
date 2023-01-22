@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/SeraphicWar.cs
-fileName: SeraphicWar.cs
 name: null
 description: null
 tags: null

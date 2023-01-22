@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/VampireREP.cs
-fileName: VampireREP.cs
 name: null
 description: null
 tags: null

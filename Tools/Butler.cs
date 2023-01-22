@@ -1,6 +1,4 @@
 /*
-path: Tools/Butler.cs
-fileName: Butler.cs
 name: null
 description: null
 tags: null

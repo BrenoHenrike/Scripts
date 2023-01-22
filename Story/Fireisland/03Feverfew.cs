@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/03Feverfew.cs
-fileName: 03Feverfew.cs
 name: null
 description: null
 tags: null

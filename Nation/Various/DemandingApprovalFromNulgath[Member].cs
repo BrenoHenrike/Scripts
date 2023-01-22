@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/DemandingApprovalFromNulgath[Member].cs
-fileName: DemandingApprovalFromNulgath[Member].cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornPaladin/IGotYourBackAndYourTop.cs
-fileName: IGotYourBackAndYourTop.cs
 name: null
 description: null
 tags: null

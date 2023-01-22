@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/StoneCrusher.cs
-fileName: StoneCrusher.cs
 name: null
 description: null
 tags: null

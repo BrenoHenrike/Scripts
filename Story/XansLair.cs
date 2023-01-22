@@ -1,6 +1,4 @@
 /*
-path: Story/XansLair.cs
-fileName: XansLair.cs
 name: null
 description: null
 tags: null

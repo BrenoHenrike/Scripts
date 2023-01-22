@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/MergeShops/CandiedCostumesMerge.cs
-fileName: CandiedCostumesMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/SuppliesToSpinTheWheelofChance.cs
-fileName: SuppliesToSpinTheWheelofChance.cs
 name: null
 description: null
 tags: null

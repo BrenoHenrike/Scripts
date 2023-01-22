@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/01DualPlane.cs
-fileName: 01DualPlane.cs
 name: null
 description: null
 tags: null

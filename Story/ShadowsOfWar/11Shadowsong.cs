@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/11Shadowsong.cs
-fileName: 11Shadowsong.cs
 name: null
 description: null
 tags: null

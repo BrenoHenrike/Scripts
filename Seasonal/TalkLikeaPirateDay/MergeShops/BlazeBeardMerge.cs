@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs
-fileName: BlazeBeardMerge.cs
 name: null
 description: null
 tags: null

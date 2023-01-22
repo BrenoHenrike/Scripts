@@ -1,6 +1,4 @@
 /*
-path: Good/Paladin.cs
-fileName: Paladin.cs
 name: null
 description: null
 tags: null

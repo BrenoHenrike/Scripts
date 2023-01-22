@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/VampireLord(Class).cs
-fileName: VampireLord(Class).cs
 name: null
 description: null
 tags: null

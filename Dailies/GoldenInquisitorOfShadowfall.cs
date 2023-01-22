@@ -1,6 +1,4 @@
 /*
-path: Dailies/GoldenInquisitorOfShadowfall.cs
-fileName: GoldenInquisitorOfShadowfall.cs
 name: null
 description: null
 tags: null

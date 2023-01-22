@@ -1,6 +1,4 @@
 /*
-path: Story/Guru.cs
-fileName: Guru.cs
 name: null
 description: null
 tags: null

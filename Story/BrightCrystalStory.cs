@@ -1,6 +1,4 @@
 /*
-path: Story/BrightCrystalStory.cs
-fileName: BrightCrystalStory.cs
 name: null
 description: null
 tags: null

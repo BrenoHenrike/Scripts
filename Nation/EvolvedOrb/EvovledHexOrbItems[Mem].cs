@@ -1,6 +1,4 @@
 /*
-path: Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs
-fileName: EvovledHexOrbItems[Mem].cs
 name: null
 description: null
 tags: null

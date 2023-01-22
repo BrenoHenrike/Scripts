@@ -1,6 +1,4 @@
 /*
-path: Legion/Various/LetitBurn(SoulEssence).cs
-fileName: LetitBurn(SoulEssence).cs
 name: null
 description: null
 tags: null

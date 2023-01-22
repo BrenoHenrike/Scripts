@@ -1,6 +1,4 @@
 /*
-path: Other/DiabolicalWardenSet.cs
-fileName: DiabolicalWardenSet.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/06Junkhoard.cs
-fileName: 06Junkhoard.cs
 name: null
 description: null
 tags: null

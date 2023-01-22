@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/EnchantedMountaineerAndFlameHeartWarriorSets.cs
-fileName: EnchantedMountaineerAndFlameHeartWarriorSets.cs
 name: null
 description: null
 tags: null

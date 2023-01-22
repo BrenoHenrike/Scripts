@@ -1,6 +1,4 @@
 /*
-path: Army/CoreArmyLite.cs
-fileName: CoreArmyLite.cs
 name: null
 description: null
 tags: null

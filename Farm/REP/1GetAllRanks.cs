@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/1GetAllRanks.cs
-fileName: 1GetAllRanks.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs
-fileName: ArmyChronoSpanRep.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Legion/LegionTokens/DreadnaughtParagon.cs
-fileName: DreadnaughtParagon.cs
 name: null
 description: null
 tags: null

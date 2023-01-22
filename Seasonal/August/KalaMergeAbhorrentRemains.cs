@@ -1,6 +1,4 @@
 /*
-path: Seasonal/August/KalaMergeAbhorrentRemains.cs
-fileName: KalaMergeAbhorrentRemains.cs
 name: null
 description: null
 tags: null

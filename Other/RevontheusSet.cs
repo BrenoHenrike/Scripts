@@ -1,6 +1,4 @@
 /*
-path: Other/RevontheusSet.cs
-fileName: RevontheusSet.cs
 name: null
 description: null
 tags: null

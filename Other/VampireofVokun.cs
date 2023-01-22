@@ -1,6 +1,4 @@
 /*
-path: Other/VampireofVokun.cs
-fileName: VampireofVokun.cs
 name: null
 description: null
 tags: null

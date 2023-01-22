@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/MergeShops/NightmareHarvestWarMerge.cs
-fileName: NightmareHarvestWarMerge.cs
 name: null
 description: null
 tags: null

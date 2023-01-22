@@ -1,6 +1,4 @@
 /*
-path: Story/Bludrut.cs
-fileName: Bludrut.cs
 name: null
 description: null
 tags: null

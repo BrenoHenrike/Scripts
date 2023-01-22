@@ -1,6 +1,4 @@
 /*
-path: Nation/NationLoyaltyRewarded.cs
-fileName: NationLoyaltyRewarded.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/NavalTopHatMerge.cs
-fileName: NavalTopHatMerge.cs
 name: null
 description: null
 tags: null

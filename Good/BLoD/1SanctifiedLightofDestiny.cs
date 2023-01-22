@@ -1,6 +1,4 @@
 /*
-path: Good/BLoD/1SanctifiedLightofDestiny.cs
-fileName: 1SanctifiedLightofDestiny.cs
 name: null
 description: null
 tags: null

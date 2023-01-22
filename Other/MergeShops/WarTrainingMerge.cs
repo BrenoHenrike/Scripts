@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/WarTrainingMerge.cs
-fileName: WarTrainingMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/VoucherofNulgath.cs
-fileName: VoucherofNulgath.cs
 name: null
 description: null
 tags: null

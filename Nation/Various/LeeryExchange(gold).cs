@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/LeeryExchange(gold).cs
-fileName: LeeryExchange(gold).cs
 name: null
 description: null
 tags: null

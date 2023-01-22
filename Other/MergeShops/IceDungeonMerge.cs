@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/IceDungeonMerge.cs
-fileName: IceDungeonMerge.cs
 name: null
 description: null
 tags: null

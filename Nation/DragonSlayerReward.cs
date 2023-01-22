@@ -1,6 +1,4 @@
 /*
-path: Nation/DragonSlayerReward.cs
-fileName: DragonSlayerReward.cs
 name: null
 description: null
 tags: null

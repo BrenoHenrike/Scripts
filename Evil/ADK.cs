@@ -1,6 +1,4 @@
 /*
-path: Evil/ADK.cs
-fileName: ADK.cs
 name: null
 description: null
 tags: null

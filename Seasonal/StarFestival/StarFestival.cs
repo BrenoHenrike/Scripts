@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StarFestival/StarFestival.cs
-fileName: StarFestival.cs
 name: null
 description: null
 tags: null

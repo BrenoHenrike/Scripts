@@ -1,6 +1,4 @@
 /*
-path: Story/Nation/Originul.cs
-fileName: Originul.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Jir'abinChallenge.cs
-fileName: Jir'abinChallenge.cs
 name: null
 description: null
 tags: null

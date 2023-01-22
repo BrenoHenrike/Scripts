@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/SkyguardREP[Mem].cs
-fileName: SkyguardREP[Mem].cs
 name: null
 description: null
 tags: null

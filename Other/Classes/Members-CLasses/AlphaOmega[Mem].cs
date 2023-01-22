@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Members-CLasses/AlphaOmega[Mem].cs
-fileName: AlphaOmega[Mem].cs
 name: null
 description: null
 tags: null

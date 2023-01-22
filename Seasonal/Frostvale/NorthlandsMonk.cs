@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/NorthlandsMonk.cs
-fileName: NorthlandsMonk.cs
 name: null
 description: null
 tags: null

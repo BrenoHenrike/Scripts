@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/BattleBabysitter.cs
-fileName: BattleBabysitter.cs
 name: null
 description: null
 tags: null

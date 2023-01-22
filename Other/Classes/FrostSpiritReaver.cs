@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/FrostSpiritReaver.cs
-fileName: FrostSpiritReaver.cs
 name: null
 description: null
 tags: null

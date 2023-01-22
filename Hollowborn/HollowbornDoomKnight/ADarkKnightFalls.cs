@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornDoomKnight/ADarkKnightFalls.cs
-fileName: ADarkKnightFalls.cs
 name: null
 description: null
 tags: null

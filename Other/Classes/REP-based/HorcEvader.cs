@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/HorcEvader.cs
-fileName: HorcEvader.cs
 name: null
 description: null
 tags: null

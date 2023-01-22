@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornReapersScythe.cs
-fileName: HollowbornReapersScythe.cs
 name: null
 description: null
 tags: null

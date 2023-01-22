@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/Core7DD.cs
-fileName: Core7DD.cs
 name: null
 description: null
 tags: null

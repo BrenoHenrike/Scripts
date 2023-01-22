@@ -1,6 +1,4 @@
 /*
-path: Story/Yokai.cs
-fileName: Yokai.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/FarmJoeKits/FarmerJoeLeveling.cs
-fileName: FarmerJoeLeveling.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DeepTunnelMerge.cs
-fileName: DeepTunnelMerge.cs
 name: null
 description: null
 tags: null

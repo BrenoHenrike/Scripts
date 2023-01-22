@@ -1,6 +1,4 @@
 /*
-path: Legion/Revenant/0LegionRevenant.cs
-fileName: 0LegionRevenant.cs
 name: null
 description: null
 tags: null

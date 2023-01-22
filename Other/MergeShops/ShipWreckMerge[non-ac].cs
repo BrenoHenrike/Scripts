@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ShipWreckMerge[non-ac].cs
-fileName: ShipWreckMerge[non-ac].cs
 name: null
 description: null
 tags: null

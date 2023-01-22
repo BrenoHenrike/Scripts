@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/TaintedGem.cs
-fileName: TaintedGem.cs
 name: null
 description: null
 tags: null

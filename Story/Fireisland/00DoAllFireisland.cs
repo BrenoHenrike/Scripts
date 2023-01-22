@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/00DoAllFireisland.cs
-fileName: 00DoAllFireisland.cs
 name: null
 description: null
 tags: null

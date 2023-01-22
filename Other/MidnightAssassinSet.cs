@@ -1,6 +1,4 @@
 /*
-path: Other/MidnightAssassinSet.cs
-fileName: MidnightAssassinSet.cs
 name: null
 description: null
 tags: null

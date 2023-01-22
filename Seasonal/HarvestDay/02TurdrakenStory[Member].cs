@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/02TurdrakenStory[Member].cs
-fileName: 02TurdrakenStory[Member].cs
 name: null
 description: null
 tags: null

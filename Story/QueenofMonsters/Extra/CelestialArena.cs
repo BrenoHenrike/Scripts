@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/CelestialArena.cs
-fileName: CelestialArena.cs
 name: null
 description: null
 tags: null

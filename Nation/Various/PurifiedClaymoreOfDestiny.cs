@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/PurifiedClaymoreOfDestiny.cs
-fileName: PurifiedClaymoreOfDestiny.cs
 name: null
 description: null
 tags: null

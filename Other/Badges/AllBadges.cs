@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/AllBadges.cs
-fileName: AllBadges.cs
 name: null
 description: null
 tags: null

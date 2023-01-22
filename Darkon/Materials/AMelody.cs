@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/AMelody.cs
-fileName: AMelody.cs
 name: null
 description: null
 tags: null

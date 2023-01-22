@@ -1,6 +1,4 @@
 /*
-path: Legion/YamiNoRonin/CoreYnR.cs
-fileName: CoreYnR.cs
 name: null
 description: null
 tags: null

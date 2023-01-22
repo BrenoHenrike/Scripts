@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs
-fileName: 02aXeven(ParadoxPortal).cs
 name: null
 description: null
 tags: null

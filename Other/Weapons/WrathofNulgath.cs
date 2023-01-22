@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/WrathofNulgath.cs
-fileName: WrathofNulgath.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/05cSekt(Yasaris).cs
-fileName: 05cSekt(Yasaris).cs
 name: null
 description: null
 tags: null

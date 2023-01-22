@@ -1,6 +1,4 @@
 /*
-path: Templates/MergeTemplate.cs
-fileName: MergeTemplate.cs
 name: null
 description: null
 tags: null

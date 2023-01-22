@@ -1,6 +1,4 @@
 /*
-path: Chaos/ChaosAvengerPreReqs.cs
-fileName: ChaosAvengerPreReqs.cs
 name: null
 description: null
 tags: null

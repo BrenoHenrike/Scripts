@@ -1,6 +1,4 @@
 /*
-path: Dailies/PowerGem.cs
-fileName: PowerGem.cs
 name: null
 description: null
 tags: null

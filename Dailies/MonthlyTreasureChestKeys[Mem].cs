@@ -1,6 +1,4 @@
 /*
-path: Dailies/MonthlyTreasureChestKeys[Mem].cs
-fileName: MonthlyTreasureChestKeys[Mem].cs
 name: null
 description: null
 tags: null

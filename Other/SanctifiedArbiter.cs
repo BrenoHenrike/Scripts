@@ -1,6 +1,4 @@
 /*
-path: Other/SanctifiedArbiter.cs
-fileName: SanctifiedArbiter.cs
 name: null
 description: null
 tags: null

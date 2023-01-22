@@ -1,6 +1,4 @@
 /*
-path: Other/Various/ShadowslayerSummoningRitual.cs
-fileName: ShadowslayerSummoningRitual.cs
 name: null
 description: null
 tags: null

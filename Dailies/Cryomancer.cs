@@ -1,6 +1,4 @@
 /*
-path: Dailies/Cryomancer.cs
-fileName: Cryomancer.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/FirePlaneWarMerge.cs
-fileName: FirePlaneWarMerge.cs
 name: null
 description: null
 tags: null

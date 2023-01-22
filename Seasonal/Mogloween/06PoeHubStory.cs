@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/06PoeHubStory.cs
-fileName: 06PoeHubStory.cs
 name: null
 description: null
 tags: null

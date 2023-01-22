@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/ByrodaxMerge.cs
-fileName: ByrodaxMerge.cs
 name: null
 description: null
 tags: null

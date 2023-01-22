@@ -1,6 +1,4 @@
 /*
-path: Story/EtherstormWastes.cs
-fileName: EtherstormWastes.cs
 name: null
 description: null
 tags: null

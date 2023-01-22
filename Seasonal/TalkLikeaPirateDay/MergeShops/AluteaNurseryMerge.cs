@@ -1,6 +1,4 @@
 /*
-path: Seasonal/TalkLikeaPirateDay/MergeShops/AluteaNurseryMerge.cs
-fileName: AluteaNurseryMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/TradingandStuff(single).cs
-fileName: TradingandStuff(single).cs
 name: null
 description: null
 tags: null

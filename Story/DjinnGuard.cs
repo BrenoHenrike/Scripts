@@ -1,6 +1,4 @@
 /*
-path: Story/DjinnGuard.cs
-fileName: DjinnGuard.cs
 name: null
 description: null
 tags: null

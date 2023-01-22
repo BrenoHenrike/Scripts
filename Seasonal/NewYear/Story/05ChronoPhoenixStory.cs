@@ -1,6 +1,4 @@
 /*
-path: Seasonal/NewYear/Story/05ChronoPhoenixStory.cs
-fileName: 05ChronoPhoenixStory.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Enhancement/EnhanceEquipped[Selectable].cs
-fileName: EnhanceEquipped[Selectable].cs
 name: null
 description: null
 tags: null

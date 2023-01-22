@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs
-fileName: 07bStranger(MysteriousDungeon).cs
 name: null
 description: null
 tags: null

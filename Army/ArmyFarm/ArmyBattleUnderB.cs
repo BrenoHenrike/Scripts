@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyFarm/ArmyBattleUnderB.cs
-fileName: ArmyBattleUnderB.cs
 name: null
 description: null
 tags: null

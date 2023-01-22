@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/GooseMerge.cs
-fileName: GooseMerge.cs
 name: null
 description: null
 tags: null

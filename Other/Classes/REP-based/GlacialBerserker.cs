@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/GlacialBerserker.cs
-fileName: GlacialBerserker.cs
 name: null
 description: null
 tags: null

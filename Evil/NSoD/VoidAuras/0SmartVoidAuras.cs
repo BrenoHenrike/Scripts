@@ -1,6 +1,4 @@
 /*
-path: Evil/NSoD/VoidAuras/0SmartVoidAuras.cs
-fileName: 0SmartVoidAuras.cs
 name: null
 description: null
 tags: null

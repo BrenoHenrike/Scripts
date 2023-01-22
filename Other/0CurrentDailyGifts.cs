@@ -1,6 +1,4 @@
 /*
-path: Other/0CurrentDailyGifts.cs
-fileName: 0CurrentDailyGifts.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/MergeShops/DeadflyMerge.cs
-fileName: DeadflyMerge.cs
 name: null
 description: null
 tags: null

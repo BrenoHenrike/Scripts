@@ -1,6 +1,4 @@
 /*
-path: Seasonal/LuckyDay/Pooka.cs
-fileName: Pooka.cs
 name: null
 description: null
 tags: null

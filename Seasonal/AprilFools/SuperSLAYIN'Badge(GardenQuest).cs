@@ -1,6 +1,4 @@
 /*
-path: Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs
-fileName: SuperSLAYIN'Badge(GardenQuest).cs
 name: null
 description: null
 tags: null

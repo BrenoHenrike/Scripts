@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/TendurrrTheAssistantQuests.cs
-fileName: TendurrrTheAssistantQuests.cs
 name: null
 description: null
 tags: null

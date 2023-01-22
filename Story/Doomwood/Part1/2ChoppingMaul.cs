@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part1/2ChoppingMaul.cs
-fileName: 2ChoppingMaul.cs
 name: null
 description: null
 tags: null

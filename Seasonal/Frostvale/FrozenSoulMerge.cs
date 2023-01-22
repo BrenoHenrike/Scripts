@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/FrozenSoulMerge.cs
-fileName: FrozenSoulMerge.cs
 name: null
 description: null
 tags: null

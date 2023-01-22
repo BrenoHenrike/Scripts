@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/CtrlAltDelMemberBadge.cs
-fileName: CtrlAltDelMemberBadge.cs
 name: null
 description: null
 tags: null

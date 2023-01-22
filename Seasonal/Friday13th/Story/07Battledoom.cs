@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/07Battledoom.cs
-fileName: 07Battledoom.cs
 name: null
 description: null
 tags: null

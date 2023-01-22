@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/BowJanglesMerge.cs
-fileName: BowJanglesMerge.cs
 name: null
 description: null
 tags: null

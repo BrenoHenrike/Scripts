@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/11Lionfang(Darkblood).cs
-fileName: 11Lionfang(Darkblood).cs
 name: null
 description: null
 tags: null

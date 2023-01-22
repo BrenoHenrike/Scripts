@@ -1,6 +1,4 @@
 /*
-path: Dailies/FungiforaFunGuy[Mem].cs
-fileName: FungiforaFunGuy[Mem].cs
 name: null
 description: null
 tags: null

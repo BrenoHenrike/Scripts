@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/DiabolicalREP.cs
-fileName: DiabolicalREP.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/6TheDestroyer.cs
-fileName: 6TheDestroyer.cs
 name: null
 description: null
 tags: null

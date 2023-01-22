@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/VoidHighlordBadge.cs
-fileName: VoidHighlordBadge.cs
 name: null
 description: null
 tags: null

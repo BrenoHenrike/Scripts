@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/3DarkoviaDarkDiaspora.cs
-fileName: 3DarkoviaDarkDiaspora.cs
 name: null
 description: null
 tags: null

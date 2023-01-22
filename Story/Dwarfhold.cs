@@ -1,6 +1,4 @@
 /*
-path: Story/Dwarfhold.cs
-fileName: Dwarfhold.cs
 name: null
 description: null
 tags: null

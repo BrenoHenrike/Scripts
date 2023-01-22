@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/BlacksmithingREP.cs
-fileName: BlacksmithingREP.cs
 name: null
 description: null
 tags: null

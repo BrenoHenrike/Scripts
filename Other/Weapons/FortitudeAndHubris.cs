@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/FortitudeAndHubris.cs
-fileName: FortitudeAndHubris.cs
 name: null
 description: null
 tags: null

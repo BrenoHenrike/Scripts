@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/00Complete13LOC.cs
-fileName: 00Complete13LOC.cs
 name: null
 description: null
 tags: null

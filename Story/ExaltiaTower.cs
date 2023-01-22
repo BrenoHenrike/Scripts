@@ -1,6 +1,4 @@
 /*
-path: Story/ExaltiaTower.cs
-fileName: ExaltiaTower.cs
 name: null
 description: null
 tags: null

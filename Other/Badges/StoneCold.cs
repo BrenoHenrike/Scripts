@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/StoneCold.cs
-fileName: StoneCold.cs
 name: null
 description: null
 tags: null

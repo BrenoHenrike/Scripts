@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/AncientRemnant.cs
-fileName: AncientRemnant.cs
 name: null
 description: null
 tags: null

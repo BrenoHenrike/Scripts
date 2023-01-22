@@ -1,6 +1,4 @@
 /*
-path: Story/CastleTunnels.cs
-fileName: CastleTunnels.cs
 name: null
 description: null
 tags: null

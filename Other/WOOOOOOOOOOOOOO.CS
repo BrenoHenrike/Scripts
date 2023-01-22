@@ -1,6 +1,4 @@
 /*
-path: Other/WOOOOOOOOOOOOOO.CS
-fileName: WOOOOOOOOOOOOOO.CS
 name: null
 description: null
 tags: null

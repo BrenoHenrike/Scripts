@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs
-fileName: CoreHollowbornChaosEnvoy.cs
 name: null
 description: null
 tags: null

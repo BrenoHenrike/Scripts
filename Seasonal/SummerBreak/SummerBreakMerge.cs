@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/SummerBreakMerge.cs
-fileName: SummerBreakMerge.cs
 name: null
 description: null
 tags: null

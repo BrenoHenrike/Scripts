@@ -1,6 +1,4 @@
 /*
-path: Story/Marsh2[MEM].cs
-fileName: Marsh2[MEM].cs
 name: null
 description: null
 tags: null

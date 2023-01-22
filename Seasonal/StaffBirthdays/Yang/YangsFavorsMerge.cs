@@ -1,6 +1,4 @@
 /*
-path: Seasonal/StaffBirthdays/Yang/YangsFavorsMerge.cs
-fileName: YangsFavorsMerge.cs
 name: null
 description: null
 tags: null

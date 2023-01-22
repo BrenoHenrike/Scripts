@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/05ShadowOff.cs
-fileName: 05ShadowOff.cs
 name: null
 description: null
 tags: null

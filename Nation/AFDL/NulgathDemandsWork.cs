@@ -1,6 +1,4 @@
 /*
-path: Nation/AFDL/NulgathDemandsWork.cs
-fileName: NulgathDemandsWork.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Dailies/MoglinPets.cs
-fileName: MoglinPets.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/FireIsland/04Phoenixrise.cs
-fileName: 04Phoenixrise.cs
 name: null
 description: null
 tags: null

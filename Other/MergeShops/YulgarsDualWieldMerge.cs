@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/YulgarsDualWieldMerge.cs
-fileName: YulgarsDualWieldMerge.cs
 name: null
 description: null
 tags: null

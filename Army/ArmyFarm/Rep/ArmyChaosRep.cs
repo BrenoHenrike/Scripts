@@ -1,6 +1,4 @@
 /*
-path: Army/ArmyFarm/Rep/ArmyChaosRep.cs
-fileName: ArmyChaosRep.cs
 name: null
 description: null
 tags: null

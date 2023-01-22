@@ -1,6 +1,4 @@
 /*
-path: Story/MagicThief.cs
-fileName: MagicThief.cs
 name: null
 description: null
 tags: null

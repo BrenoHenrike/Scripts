@@ -1,6 +1,4 @@
 /*
-path: Seasonal/NewYear/TimeRetaliateMerge.cs
-fileName: TimeRetaliateMerge.cs
 name: null
 description: null
 tags: null

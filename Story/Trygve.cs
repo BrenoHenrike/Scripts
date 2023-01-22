@@ -1,6 +1,4 @@
 /*
-path: Story/Trygve.cs
-fileName: Trygve.cs
 name: null
 description: null
 tags: null

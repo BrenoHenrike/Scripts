@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/BrightOak.cs
-fileName: BrightOak.cs
 name: null
 description: null
 tags: null

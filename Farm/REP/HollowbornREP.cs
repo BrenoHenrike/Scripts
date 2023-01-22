@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/HollowbornREP.cs
-fileName: HollowbornREP.cs
 name: null
 description: null
 tags: null

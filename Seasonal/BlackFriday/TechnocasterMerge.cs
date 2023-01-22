@@ -1,6 +1,4 @@
 /*
-path: Seasonal/BlackFriday/TechnocasterMerge.cs
-fileName: TechnocasterMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/LycanShamanSet.cs
-fileName: LycanShamanSet.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/Legion/DageTheEvilIsland/04EnvyMap.cs
-fileName: 04EnvyMap.cs
 name: null
 description: null
 tags: null

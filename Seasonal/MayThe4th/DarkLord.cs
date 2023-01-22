@@ -1,6 +1,4 @@
 /*
-path: Seasonal/MayThe4th/DarkLord.cs
-fileName: DarkLord.cs
 name: null
 description: null
 tags: null

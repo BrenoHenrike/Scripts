@@ -1,6 +1,4 @@
 /*
-path: CoreAdvanced.cs
-fileName: CoreAdvanced.cs
 name: null
 description: null
 tags: null

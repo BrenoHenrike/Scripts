@@ -1,6 +1,4 @@
 /*
-path: Nation/EssenceofDefeatReagent.cs
-fileName: EssenceofDefeatReagent.cs
 name: null
 description: null
 tags: null

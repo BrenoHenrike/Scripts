@@ -1,6 +1,4 @@
 /*
-path: Dailies/SparrowsBlood.cs
-fileName: SparrowsBlood.cs
 name: null
 description: null
 tags: null

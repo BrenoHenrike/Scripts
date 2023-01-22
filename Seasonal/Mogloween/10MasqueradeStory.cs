@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/10MasqueradeStory.cs
-fileName: 10MasqueradeStory.cs
 name: null
 description: null
 tags: null

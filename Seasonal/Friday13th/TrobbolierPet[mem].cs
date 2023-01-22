@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/TrobbolierPet[mem].cs
-fileName: TrobbolierPet[mem].cs
 name: null
 description: null
 tags: null

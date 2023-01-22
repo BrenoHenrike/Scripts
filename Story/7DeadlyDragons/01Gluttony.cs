@@ -1,6 +1,4 @@
 /*
-path: Story/7DeadlyDragons/01Gluttony.cs
-fileName: 01Gluttony.cs
 name: null
 description: null
 tags: null

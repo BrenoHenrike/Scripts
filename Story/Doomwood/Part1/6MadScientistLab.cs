@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part1/6MadScientistLab.cs
-fileName: 6MadScientistLab.cs
 name: null
 description: null
 tags: null

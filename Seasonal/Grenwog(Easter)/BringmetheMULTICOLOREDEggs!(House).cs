@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Grenwog(Easter)/BringmetheMULTICOLOREDEggs!(House).cs
-fileName: BringmetheMULTICOLOREDEggs!(House).cs
 name: null
 description: null
 tags: null

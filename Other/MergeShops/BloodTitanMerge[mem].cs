@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/BloodTitanMerge[mem].cs
-fileName: BloodTitanMerge[mem].cs
 name: null
 description: null
 tags: null

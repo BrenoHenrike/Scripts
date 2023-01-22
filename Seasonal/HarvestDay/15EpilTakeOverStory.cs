@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/15EpilTakeOverStory.cs
-fileName: 15EpilTakeOverStory.cs
 name: null
 description: null
 tags: null

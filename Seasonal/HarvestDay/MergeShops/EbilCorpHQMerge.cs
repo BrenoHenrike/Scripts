@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HarvestDay/MergeShops/EbilCorpHQMerge.cs
-fileName: EbilCorpHQMerge.cs
 name: null
 description: null
 tags: null

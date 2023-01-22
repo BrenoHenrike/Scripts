@@ -1,6 +1,4 @@
 /*
-path: Story/DwarvesVsGiants.cs
-fileName: DwarvesVsGiants.cs
 name: null
 description: null
 tags: null

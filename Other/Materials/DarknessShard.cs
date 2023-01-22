@@ -1,6 +1,4 @@
 /*
-path: Other/Materials/DarknessShard.cs
-fileName: DarknessShard.cs
 name: null
 description: null
 tags: null

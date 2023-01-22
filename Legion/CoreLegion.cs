@@ -1,6 +1,4 @@
 /*
-path: Legion/CoreLegion.cs
-fileName: CoreLegion.cs
 name: null
 description: null
 tags: null

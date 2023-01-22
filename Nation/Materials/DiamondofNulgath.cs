@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/DiamondofNulgath.cs
-fileName: DiamondofNulgath.cs
 name: null
 description: null
 tags: null

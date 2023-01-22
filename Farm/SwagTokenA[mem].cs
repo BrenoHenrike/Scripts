@@ -1,6 +1,4 @@
 /*
-path: Farm/SwagTokenA[mem].cs
-fileName: SwagTokenA[mem].cs
 name: null
 description: null
 tags: null

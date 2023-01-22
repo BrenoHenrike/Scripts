@@ -1,6 +1,4 @@
 /*
-path: Darkon/MergeShops/TheWorldHouseMerge.cs
-fileName: TheWorldHouseMerge.cs
 name: null
 description: null
 tags: null

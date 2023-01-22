@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/SukisPrestige.cs
-fileName: SukisPrestige.cs
 name: null
 description: null
 tags: null

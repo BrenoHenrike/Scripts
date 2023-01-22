@@ -1,6 +1,4 @@
 /*
-path: Story/RavenlossSaga.cs
-fileName: RavenlossSaga.cs
 name: null
 description: null
 tags: null

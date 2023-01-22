@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfChaos/03LagunaBeach.cs
-fileName: 03LagunaBeach.cs
 name: null
 description: null
 tags: null

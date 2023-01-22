@@ -1,6 +1,4 @@
 /*
-path: Other/Badges/HordeZombieSLAYER.cs
-fileName: HordeZombieSLAYER.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Darkon/CoreDarkon.cs
-fileName: CoreDarkon.cs
 name: null
 description: null
 tags: null

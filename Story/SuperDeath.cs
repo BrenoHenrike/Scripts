@@ -1,6 +1,4 @@
 /*
-path: Story/SuperDeath.cs
-fileName: SuperDeath.cs
 name: null
 description: null
 tags: null

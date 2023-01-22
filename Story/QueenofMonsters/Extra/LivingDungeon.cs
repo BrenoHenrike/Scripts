@@ -1,6 +1,4 @@
 /*
-path: Story/QueenofMonsters/Extra/LivingDungeon.cs
-fileName: LivingDungeon.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TerranesMerge.cs
-fileName: TerranesMerge.cs
 name: null
 description: null
 tags: null

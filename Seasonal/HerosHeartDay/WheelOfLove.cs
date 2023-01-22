@@ -1,6 +1,4 @@
 /*
-path: Seasonal/HerosHeartDay/WheelOfLove.cs
-fileName: WheelOfLove.cs
 name: null
 description: null
 tags: null

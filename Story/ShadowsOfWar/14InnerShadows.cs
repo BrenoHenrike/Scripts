@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/14InnerShadows.cs
-fileName: 14InnerShadows.cs
 name: null
 description: null
 tags: null

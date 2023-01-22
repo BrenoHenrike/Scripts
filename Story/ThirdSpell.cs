@@ -1,6 +1,4 @@
 /*
-path: Story/ThirdSpell.cs
-fileName: ThirdSpell.cs
 name: null
 description: null
 tags: null

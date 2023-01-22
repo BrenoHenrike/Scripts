@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/0MaxBags.cs
-fileName: 0MaxBags.cs
 name: null
 description: null
 tags: null

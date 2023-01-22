@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/GachaponMerge.cs
-fileName: GachaponMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/HuntersMoon.cs
-fileName: HuntersMoon.cs
 name: null
 description: null
 tags: null

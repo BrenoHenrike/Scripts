@@ -1,6 +1,4 @@
 /*
-path: Story/BeleensDream.cs
-fileName: BeleensDream.cs
 name: null
 description: null
 tags: null

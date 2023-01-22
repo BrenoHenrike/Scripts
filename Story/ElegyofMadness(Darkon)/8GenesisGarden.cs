@@ -1,6 +1,4 @@
 /*
-path: Story/ElegyofMadness(Darkon)/8GenesisGarden.cs
-fileName: 8GenesisGarden.cs
 name: null
 description: null
 tags: null

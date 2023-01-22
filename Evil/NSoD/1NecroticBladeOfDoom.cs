@@ -1,6 +1,4 @@
 /*
-path: Evil/NSoD/1NecroticBladeOfDoom.cs
-fileName: 1NecroticBladeOfDoom.cs
 name: null
 description: null
 tags: null

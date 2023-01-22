@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/Story/04Firehouse.cs
-fileName: 04Firehouse.cs
 name: null
 description: null
 tags: null

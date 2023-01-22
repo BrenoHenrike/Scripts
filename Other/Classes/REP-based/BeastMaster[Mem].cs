@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/BeastMaster[Mem].cs
-fileName: BeastMaster[Mem].cs
 name: null
 description: null
 tags: null

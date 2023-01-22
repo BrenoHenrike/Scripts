@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
-fileName: ChronoAssassin[Mem].cs
 name: null
 description: null
 tags: null

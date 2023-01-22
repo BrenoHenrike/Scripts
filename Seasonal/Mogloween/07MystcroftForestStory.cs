@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Mogloween/07MystcroftForestStory.cs
-fileName: 07MystcroftForestStory.cs
 name: null
 description: null
 tags: null

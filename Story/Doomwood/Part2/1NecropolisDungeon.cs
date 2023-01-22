@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part2/1NecropolisDungeon.cs
-fileName: 1NecropolisDungeon.cs
 name: null
 description: null
 tags: null

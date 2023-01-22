@@ -1,6 +1,4 @@
 /*
-path: Other/Weapons/BurningBladeOfAbezeth.cs
-fileName: BurningBladeOfAbezeth.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/Members-CLasses/BloodTitan[Mem].cs
-fileName: BloodTitan[Mem].cs
 name: null
 description: null
 tags: null

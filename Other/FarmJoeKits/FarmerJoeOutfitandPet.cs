@@ -1,6 +1,4 @@
 /*
-path: Other/FarmJoeKits/FarmerJoeOutfitandPet.cs
-fileName: FarmerJoeOutfitandPet.cs
 name: null
 description: null
 tags: null

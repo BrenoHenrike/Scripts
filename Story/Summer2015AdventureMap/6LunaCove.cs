@@ -1,6 +1,4 @@
 /*
-path: Story/Summer2015AdventureMap/6LunaCove.cs
-fileName: 6LunaCove.cs
 name: null
 description: null
 tags: null

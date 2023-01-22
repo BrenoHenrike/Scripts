@@ -1,6 +1,4 @@
 /*
-path: Evil/GravelynDoomFire.cs
-fileName: GravelynDoomFire.cs
 name: null
 description: null
 tags: null

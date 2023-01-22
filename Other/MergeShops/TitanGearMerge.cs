@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/TitanGearMerge.cs
-fileName: TitanGearMerge.cs
 name: null
 description: null
 tags: null

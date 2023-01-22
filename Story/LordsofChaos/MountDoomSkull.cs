@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/MountDoomSkull.cs
-fileName: MountDoomSkull.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyArchMageBossItems.cs
-fileName: ArmyArchMageBossItems.cs
 name: null
 description: null
 tags: null

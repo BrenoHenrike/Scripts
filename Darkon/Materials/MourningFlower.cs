@@ -1,6 +1,4 @@
 /*
-path: Darkon/Materials/MourningFlower.cs
-fileName: MourningFlower.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/Eden.cs
-fileName: Eden.cs
 name: null
 description: null
 tags: null

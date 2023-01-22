@@ -1,6 +1,4 @@
 /*
-path: Farm/CombatTrophy.cs
-fileName: CombatTrophy.cs
 name: null
 description: null
 tags: null

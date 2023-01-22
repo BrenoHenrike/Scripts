@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/VoidBattleMageSet.cs
-fileName: VoidBattleMageSet.cs
 name: null
 description: null
 tags: null

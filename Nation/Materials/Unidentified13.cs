@@ -1,6 +1,4 @@
 /*
-path: Nation/Materials/Unidentified13.cs
-fileName: Unidentified13.cs
 name: null
 description: null
 tags: null

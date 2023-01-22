@@ -1,6 +1,4 @@
 /*
-path: Other/LoreMasterUniversityHouse.cs
-fileName: LoreMasterUniversityHouse.cs
 name: null
 description: null
 tags: null

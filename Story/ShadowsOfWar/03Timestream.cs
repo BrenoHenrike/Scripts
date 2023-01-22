@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/03Timestream.cs
-fileName: 03Timestream.cs
 name: null
 description: null
 tags: null

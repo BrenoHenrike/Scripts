@@ -1,6 +1,4 @@
 /*
-path: Seasonal/LuckyDay/FaerieCourtREP.cs
-fileName: FaerieCourtREP.cs
 name: null
 description: null
 tags: null

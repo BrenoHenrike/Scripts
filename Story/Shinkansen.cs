@@ -1,6 +1,4 @@
 /*
-path: Story/Shinkansen.cs
-fileName: Shinkansen.cs
 name: null
 description: null
 tags: null

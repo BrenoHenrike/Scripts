@@ -1,6 +1,4 @@
 /*
-path: Army/Various/ArmyPrismaticSeams.cs
-fileName: ArmyPrismaticSeams.cs
 name: null
 description: null
 tags: null

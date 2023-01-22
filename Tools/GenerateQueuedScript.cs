@@ -1,6 +1,4 @@
 /*
-path: Tools/GenerateQueuedScript.cs
-fileName: GenerateQueuedScript.cs
 name: null
 description: null
 tags: null

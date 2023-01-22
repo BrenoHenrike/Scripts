@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/DeathPitArenaRepMerge.cs
-fileName: DeathPitArenaRepMerge.cs
 name: null
 description: null
 tags: null

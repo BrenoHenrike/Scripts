@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/REP-based/Arachnomancer.cs
-fileName: Arachnomancer.cs
 name: null
 description: null
 tags: null

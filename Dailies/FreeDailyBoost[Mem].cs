@@ -1,6 +1,4 @@
 /*
-path: Dailies/FreeDailyBoost[Mem].cs
-fileName: FreeDailyBoost[Mem].cs
 name: null
 description: null
 tags: null

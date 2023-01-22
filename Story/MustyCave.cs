@@ -1,6 +1,4 @@
 /*
-path: Story/MustyCave.cs
-fileName: MustyCave.cs
 name: null
 description: null
 tags: null

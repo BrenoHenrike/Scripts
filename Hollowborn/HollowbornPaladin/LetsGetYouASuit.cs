@@ -1,6 +1,4 @@
 /*
-path: Hollowborn/HollowbornPaladin/LetsGetYouASuit.cs
-fileName: LetsGetYouASuit.cs
 name: null
 description: null
 tags: null

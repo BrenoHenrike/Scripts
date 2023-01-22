@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/QueensReignMerge.cs
-fileName: QueensReignMerge.cs
 name: null
 description: null
 tags: null

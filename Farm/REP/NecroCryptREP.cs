@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/NecroCryptREP.cs
-fileName: NecroCryptREP.cs
 name: null
 description: null
 tags: null

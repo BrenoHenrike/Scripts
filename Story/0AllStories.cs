@@ -1,6 +1,4 @@
 /*
-path: Story/0AllStories.cs
-fileName: 0AllStories.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Good/SilverExaltedPaladin.cs
-fileName: SilverExaltedPaladin.cs
 name: null
 description: null
 tags: null

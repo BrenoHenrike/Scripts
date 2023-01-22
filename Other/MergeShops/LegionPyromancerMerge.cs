@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/LegionPyromancerMerge.cs
-fileName: LegionPyromancerMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Story/Banished.cs
-fileName: Banished.cs
 name: null
 description: null
 tags: null

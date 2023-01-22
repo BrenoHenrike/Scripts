@@ -1,6 +1,4 @@
 /*
-path: Story/Doomwood/Part1/4NecroU.cs
-fileName: 4NecroU.cs
 name: null
 description: null
 tags: null

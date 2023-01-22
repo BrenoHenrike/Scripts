@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Friday13th/SpellRaiser[Mem].cs
-fileName: SpellRaiser[Mem].cs
 name: null
 description: null
 tags: null

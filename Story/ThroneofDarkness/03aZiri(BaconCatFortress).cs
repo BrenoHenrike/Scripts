@@ -1,6 +1,4 @@
 /*
-path: Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs
-fileName: 03aZiri(BaconCatFortress).cs
 name: null
 description: null
 tags: null

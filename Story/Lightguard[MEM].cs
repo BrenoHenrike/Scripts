@@ -1,6 +1,4 @@
 /*
-path: Story/Lightguard[MEM].cs
-fileName: Lightguard[MEM].cs
 name: null
 description: null
 tags: null

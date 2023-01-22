@@ -1,6 +1,4 @@
 /*
-path: Story/ShadowsOfWar/04GraniteCove.cs
-fileName: 04GraniteCove.cs
 name: null
 description: null
 tags: null

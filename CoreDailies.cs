@@ -1,6 +1,4 @@
 /*
-path: CoreDailies.cs
-fileName: CoreDailies.cs
 name: null
 description: null
 tags: null

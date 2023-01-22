@@ -1,6 +1,4 @@
 /*
-path: Story/SepulchureSaga/01Alden.cs
-fileName: 01Alden.cs
 name: null
 description: null
 tags: null

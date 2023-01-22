@@ -1,6 +1,4 @@
 /*
-path: Dailies/BeastMasterChallenge[Mem].cs
-fileName: BeastMasterChallenge[Mem].cs
 name: null
 description: null
 tags: null

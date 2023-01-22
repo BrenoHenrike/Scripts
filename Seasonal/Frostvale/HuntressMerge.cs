@@ -1,6 +1,4 @@
 /*
-path: Seasonal/Frostvale/HuntressMerge.cs
-fileName: HuntressMerge.cs
 name: null
 description: null
 tags: null

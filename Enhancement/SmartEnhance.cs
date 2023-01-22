@@ -1,6 +1,4 @@
 /*
-path: Enhancement/SmartEnhance.cs
-fileName: SmartEnhance.cs
 name: null
 description: null
 tags: null

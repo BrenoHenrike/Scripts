@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/09Khasaanda(Horc).cs
-fileName: 09Khasaanda(Horc).cs
 name: null
 description: null
 tags: null

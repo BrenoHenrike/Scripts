@@ -1,6 +1,4 @@
 /*
-path: Farm/REP/MysteriousDungeonREP.cs
-fileName: MysteriousDungeonREP.cs
 name: null
 description: null
 tags: null

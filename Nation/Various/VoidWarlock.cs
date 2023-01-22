@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/VoidWarlock.cs
-fileName: VoidWarlock.cs
 name: null
 description: null
 tags: null

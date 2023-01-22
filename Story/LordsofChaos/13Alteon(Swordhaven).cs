@@ -1,6 +1,4 @@
 /*
-path: Story/LordsofChaos/13Alteon(Swordhaven).cs
-fileName: 13Alteon(Swordhaven).cs
 name: null
 description: null
 tags: null

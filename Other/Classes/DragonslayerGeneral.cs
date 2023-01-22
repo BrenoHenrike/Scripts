@@ -1,6 +1,4 @@
 /*
-path: Other/Classes/DragonslayerGeneral.cs
-fileName: DragonslayerGeneral.cs
 name: null
 description: null
 tags: null

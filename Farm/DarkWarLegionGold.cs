@@ -1,6 +1,4 @@
 /*
-path: Farm/DarkWarLegionGold.cs
-fileName: DarkWarLegionGold.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Seasonal/SummerBreak/BlazingBeach.cs
-fileName: BlazingBeach.cs
 name: null
 description: null
 tags: null

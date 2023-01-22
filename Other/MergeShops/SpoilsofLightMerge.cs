@@ -1,6 +1,4 @@
 /*
-path: Other/MergeShops/SpoilsofLightMerge.cs
-fileName: SpoilsofLightMerge.cs
 name: null
 description: null
 tags: null

@@ -1,6 +1,4 @@
 /*
-path: Nation/Various/SinoftheAbyssMatsPreFarm[NoInsignia].cs
-fileName: SinoftheAbyssMatsPreFarm[NoInsignia].cs
 name: null
 description: null
 tags: null
