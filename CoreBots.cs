@@ -260,6 +260,7 @@ public class CoreBots
     private bool StopBot(bool crashed)
     {
         CancelRegisteredQuests();
+        AbandonQuest(Bot.Quests.Active.Select(x => x.ID).ToArray());
         SavedState(false);
         Bot.Handlers.Clear();
 
