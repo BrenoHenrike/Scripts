@@ -1,3 +1,8 @@
+/*
+name: null
+description: null
+tags: null
+*/
 using System.Dynamic;
 using System.Net.NetworkInformation;
 using Newtonsoft.Json;
@@ -22,19 +27,11 @@ public class UpdateTags
     private void Update()
     {
         // Variables
-        //string scriptDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua", "Scripts"); uncomment this on new version
-        string scriptDir = Path.Combine(AppContext.BaseDirectory, "Scripts");
-        string filePath = Path.Combine(scriptDir, "scripts.json");
-        bool shouldReturn = false;
-        bool selectedFolder = false;
-
-        // File lists
-        dynamic[]? currentFile = File.Exists(filePath) ? JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(filePath)) : null;
-        List<dynamic> newFile = new();
-        // Sometimes stuff is still in memory
-        newFile.Clear();
-
-        Bot.Log($"[{DateTime.Now:HH:mm:ss}] (UpdateTags)  Current ScriptTags.json holds < {currentFile?.Count()} > scripts.");
+        string scriptDir = String.Empty;
+        if (Bot.Version == null || Version.Parse("1.1.4.1").CompareTo(Bot.Version) <= 0)
+            scriptDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua", "Scripts"); //uncomment this on new version
+        else scriptDir = Path.Combine(AppContext.BaseDirectory, "Scripts");
+        bool userExit = false;
 
         // Allowing the user to select a folder they wish to focus on
         switch (Bot.ShowMessageBox(
@@ -53,7 +50,6 @@ public class UpdateTags
                     return;
                 }
 
-                selectedFolder = true;
                 // Incursive function starts in the selected folder
                 _UpdateTags(customFolder);
                 break;
@@ -68,30 +64,6 @@ public class UpdateTags
                 return;
         }
 
-        Bot.Log($"[{DateTime.Now:HH:mm:ss}] (UpdateTags)  You added < {newFile.Count()} > scripts to the ScriptTags.json");
-
-        // In case the user ends the program early, or the user selected a custom folder, make sure to add the old data to the new file
-        if ((shouldReturn || selectedFolder) && currentFile != null)
-        {
-            foreach (var d in currentFile)
-            {
-                if (!newFile.Any(v => JsonConvert.DeserializeObject(JsonConvert.SerializeObject(v))!.ToString()!.Replace("\\\\", "/") == d.ToString()))
-                    newFile.Add(d);
-            }
-        }
-
-        // Write all the data to the file
-        File.WriteAllText(
-            filePath,
-            JsonConvert.DeserializeObject(
-                JsonConvert.SerializeObject(newFile))!
-                .ToString()!
-                .Replace("\\\\", "/")
-                .Replace("\"\",", "")
-                .Replace("\"\"", ""));
-
-        Bot.Log($"[{DateTime.Now:HH:mm:ss}] (UpdateTags)  ScriptTags.json now holds < {newFile.Count()} > scripts.");
-
         void _UpdateTags(string path)
         {
             // Gathering data for foreach and loggers
@@ -105,96 +77,135 @@ public class UpdateTags
             foreach (var file in files)
             {
                 // Skip blacklisted file-extensions and core-files
-                if (Extensions.Any(e => file.EndsWith(e)) || file.Split('\\').Last().StartsWith("Core"))
+                if (Extensions.Any(e => file.EndsWith(e)))
                     continue;
 
-                string _file = removeDir(file)!;
+                string _file = removeDir(file)!.Replace('\\', '/');
                 // Skip blacklisted files
-                if (Files.Any(f => f.ToLower() == _file.ToLower()))
+                if (Files.Any(f => f.ToLower().Replace('\\', '/') == _file.ToLower()))
                     continue;
 
-                dynamic newItem = new ExpandoObject();
-                // If tags are already made, use those
-                if (currentFile != null && currentFile.Any(d => d.path == _file.Replace('\\', '/')))
+                // Reading file
+                List<string> fileData = File.ReadAllLines(file).ToList();
+                // Starting on writing the new data for the file
+                List<string> newData = new() { "/*" };
+
+                List<string> scriptData = new();
+                bool hasLogged = false;
+                bool isCore = _file.StartsWith("Core");
+
+                handleProp("name");
+                handleProp("description");
+
+                // If tags are already made, use it
+                if (!isCore && hasProperty(fileData, "tags", out string tags))
                 {
-                    newItem = currentFile.First(d => d.path == _file.Replace('\\', '/'));
+                    string[] _tags = tags.Split(',', StringSplitOptions.TrimEntries);
+                    for (int i = 0; i < _tags.Length; i++)
+                        _tags[i] = _tags[i] == _tags[i].ToUpper() ? _tags[i] : _tags[i].ToLower();
+                    newData.Add("tags: " + String.Join(", ", _tags));
                 }
+                // If the user has exited, write null
+                else if (userExit || isCore)
+                {
+                    newData.Add("tags: null");
+                }
+                // Otherwise, ask for the tags
                 else
                 {
-                    Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({_path})  {_file.Split('\\').Last()}");
-
-                    // Filter and clean lines for the prompt
-                    List<string> data = new();
-                    File.ReadAllLines(file)
-                                        .Where(l =>
-                                            (l.Trim().StartsWith("public") ||
-                                             l.Trim().StartsWith("private")) &&
-                                            (l.Trim().EndsWith(")") ||
-                                             l.Contains("class")) &&
-                                            !l.Contains("ScriptMain") &&
-                                            !l.Contains("new"))
-                                        .ToList()
-                                        .ForEach(l =>
-                                            data.Add(
-                                                new string(
-                                                    l.Trim()
-                                                     .TakeWhile(c => c != '(')
-                                                     .ToArray()
-                                        )));
-
-                    // Script Description prompt
-                    InputDialogViewModel desc = new(
-                        "Script Description",
-                        $"[ {_file} ]\n" +
-                        "Please provide an acurate description of this script\n\n" +
-                        "Methods and Classes inside file:\n·  " + String.Join("\n·  ", data),
-                        false
-                    );
-                    if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(desc) != true)
-                    {
-                        shouldReturn = true;
-                        return;
-                    }
-
-                    // Script Tags prompt
-                    InputDialogViewModel tags = new(
-                        "Script Tags",
-                        $"[ {_file} ]\n" +
-                        "Please provide search-tags of this script\n\n" +
-                        "Methods and Classes inside file:\n·  " + String.Join("\n·  ", data),
-                        "Don't forget to use , [comma] as a divider when adding multiple tags.",
-                        false
-                    );
-                    if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(tags) != true)
-                    {
-                        shouldReturn = true;
-                        return;
-                    }
-                    // Capitalizing the first char of every tag
-                    List<string> _tags = new();
-                    foreach (string tag in tags.DialogTextInput.Split(',', StringSplitOptions.TrimEntries))
-                        _tags.Add(char.ToUpper(tag[0]) + tag.Substring(1));
-
-                    // Assigning data
-                    newItem.path = _file;
-                    newItem.description = desc.DialogTextInput;
-                    newItem.tags = _tags.ToArray();
+                    logOnce();
+                    addProperty(_file, "tags", scriptData, ref newData);
                 }
-                // Adding to the database
-                newFile.Add(newItem);
+
+                // Adding the comment closing tag
+                newData.Add("*/");
+                // Making the dataset that is to be writen
+                List<string> toWrite = fileData.SkipWhile(l => !l.StartsWith("//cs_include") && !l.StartsWith("using")).ToList();
+                toWrite.InsertRange(0, newData);
+                // Overwriting the new file
+                File.WriteAllLines(file, toWrite);
+
+                void logOnce()
+                {
+                    if (hasLogged)
+                        return;
+
+                    Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({_path})  {_file.Split('/').Last()}");
+                    hasLogged = true;
+
+                    fileData.Where(l =>
+                        (l.Trim().StartsWith("public") ||
+                         l.Trim().StartsWith("private")) &&
+                        (l.Trim().EndsWith(")") ||
+                         l.Contains("class")) &&
+                        !l.Contains("ScriptMain") &&
+                        !l.Contains("new"))
+                        .ToList()
+                        .ForEach(l =>
+                            scriptData.Add(
+                                new string(
+                                    l.Trim()
+                                    .TakeWhile(c => c != '(')
+                                    .ToArray()
+                    )));
+                }
+                void handleProp(string prop)
+                {
+                    // If prop is already made, use it
+                    if (!isCore && hasProperty(fileData, prop, out string _prop))
+                        newData.Add($"{prop}: {_prop.Replace("  ", " ")}");
+                    // If the user has exited, write null
+                    else if (userExit || isCore)
+                    {
+                        newData.Add(prop + ": null");
+                    }
+                    // Otherwise, ask for the prop
+                    else
+                    {
+                        logOnce();
+                        addProperty(_file, prop, scriptData, ref newData);
+                    }
+                }
             }
 
             // Go over every directory within the directory
             foreach (var dir in dirs)
             {
                 // Skip blacklisted directories
-                if (Directories.Any(d => Path.Combine(scriptDir, d) == dir))
+                if (Directories.Any(d => Path.Combine(scriptDir, d).Replace('\\', '/') == dir.Replace('\\', '/')))
                     continue;
 
                 // Incurisve file check
                 _UpdateTags(dir);
-                if (shouldReturn)
-                    return;
+            }
+
+            bool addProperty(string file, string prop, List<string> data, ref List<string> list)
+            {
+                bool tags = prop == "tags";
+                InputDialogViewModel diag = new(
+                    "Script " + Char.ToUpper(prop[0]) + prop.Substring(1),
+                    $"[ {file} ]\n" +
+                    $"Please provide an acurate {prop} of this script\n\n" +
+                    "Methods and Classes inside file:\n·  " + String.Join("\n·  ", data),
+                    tags ? "Don't forget to use , [comma] as a divider when adding multiple tags." : String.Empty,
+                    false
+                );
+                if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) != true)
+                {
+                    userExit = true;
+                    Bot.Log($"[{DateTime.Now:HH:mm:ss}] (UpdateTags)  You have exited the tool, please wait a moment whilst it wraps things up.");
+                    list.Add(prop + ": null");
+                    return false;
+                }
+                string[]? _tags = null;
+                if (tags)
+                {
+                    _tags = diag.DialogTextInput.Split(',', StringSplitOptions.TrimEntries);
+                    for (int i = 0; i < _tags.Length; i++)
+                        _tags[i] = _tags[i] == _tags[i].ToUpper() ? _tags[i] : _tags[i].ToLower();
+                }
+                list.Add(prop + ": " + (tags ? String.Join(", ", _tags!) : diag.DialogTextInput));
+                return true;
             }
         }
 
@@ -202,6 +213,18 @@ public class UpdateTags
         {
             string? toReturn = path.Replace(scriptDir, "");
             return toReturn.Count() > 0 ? toReturn[1..] : null;
+        }
+
+        bool hasProperty(List<string> file, string prop, out string propData)
+        {
+            var _file = file.TakeWhile(l => l != "*/");
+            if (_file.Any(l => l.StartsWith(prop.ToLower()) && l.Contains(':') && !l.TrimEnd().EndsWith("null")))
+            {
+                propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(':').Last();
+                return true;
+            }
+            propData = String.Empty;
+            return false;
         }
     }
 
@@ -220,6 +243,7 @@ public class UpdateTags
         ".gitattributes",
         "Class1.cs",
         "z_CompiledScript.cs",
+        "Army/CoreArmy.cs"
     };
     private string[] Directories =
     {
@@ -232,7 +256,7 @@ public class UpdateTags
         "plugins",
         "Skills",
         "WIP",
-        "Army\\UltraBosses"
+        "Army/UltraBosses"
     };
     #endregion
 }

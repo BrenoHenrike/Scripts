@@ -1,6 +1,4 @@
 /*
-path: Tools/ForDevelopers/GenerateQuestFiles.cs
-fileName: GenerateQuestFiles.cs
 name: null
 description: null
 tags: null

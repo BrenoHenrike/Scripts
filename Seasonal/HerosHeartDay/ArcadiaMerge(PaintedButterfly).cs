@@ -1,3 +1,8 @@
+/*
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 // Must Have Completed Arcadia Storyline Up To: "Seperation Anxiety": http://aqwwiki.wikidot.com/big-daddy-s-quests#ArcadiaFarm
 using Skua.Core.Interfaces;
