@@ -1022,7 +1022,7 @@ public class CoreNation
     /// Farms Gem of Nulgath with the best method available
     /// </summary>
     /// <param name="quant">Desired quantity, 300 = max stack</param>
-    public void FarmGemofNulgath(int quant = 300)
+    public void FarmGemofNulgath(int quant = 1000)
     {
         if (Core.CheckInventory("Gem of Nulgath", quant))
             return;
@@ -1283,7 +1283,7 @@ public class CoreNation
     /// <summary>
     /// [Member] Does Forge Gemstones for Nulgath [Quest] to get You Bloodstone|Quartz|Tanzanite|Unidentified GemStone of Nulgath with your specific quantities
     /// </summary>
-    public void GemStonesOfnulgath(int BloodStone = 15, int Quartz = 20, int Tanzanite = 10, int UniGemStone = 1)
+    public void GemStonesOfnulgath(int BloodStone = 100, int Quartz = 100, int Tanzanite = 100, int UniGemStone = 1)
     {
         if (!Core.CheckInventory(33451) && !Core.IsMember)
         {
