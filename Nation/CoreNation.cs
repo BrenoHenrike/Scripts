@@ -895,7 +895,7 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, quant))
         {
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
-                FarmUni13();
+                FarmUni13(3);
             Core.EnsureAccept(870);
             Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Blade Master Rune", 3, log: false);
             Core.EnsureCompleteMulti(870, (int)reward);
