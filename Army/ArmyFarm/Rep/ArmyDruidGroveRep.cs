@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Druid Grove
-tags: Army, Reputation, Druid Grove
+tags: army, reputation, druid grove
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

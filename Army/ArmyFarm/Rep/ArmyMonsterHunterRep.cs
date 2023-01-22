@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Monster Hunter
-tags: Army, Reputation, Monster Hunter
+tags: army, reputation, monster hunter
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

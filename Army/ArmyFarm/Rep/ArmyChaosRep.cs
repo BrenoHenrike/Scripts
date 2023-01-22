@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Chaos
-tags: Army, Reputation, Chaos
+tags: army, reputation, chaos
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

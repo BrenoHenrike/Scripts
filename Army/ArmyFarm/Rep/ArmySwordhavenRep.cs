@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Sword Haven
-tags: Army, Reputation, Sword Haven
+tags: army, reputation, sword haven
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

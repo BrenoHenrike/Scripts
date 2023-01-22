@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Good & Evil
-tags: Army, Reputation, Good, Evil
+tags: army, reputation, good, evil
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

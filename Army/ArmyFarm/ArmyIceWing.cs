@@ -1,7 +1,7 @@
 /*
 name: null
 description: Uses your army to kill Warlord Icewing.
-tags: Army, Warlord Icewing, Experience, Gold, Icestorm Arena
+tags: army, warlord icewing, experience, gold, icestorm arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

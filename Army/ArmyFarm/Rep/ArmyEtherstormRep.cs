@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Etherstorm
-tags: Army, Reputation, Etherstorm
+tags: army, reputation, etherstorm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: null
 description: Farm reputation with your army. Faction: Infernal Army
-tags: Army, Reputation, Infernal Army
+tags: army, reputation, infernal army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
