@@ -11,7 +11,7 @@ namespace SkuaScriptsGenerator.Generators
             var scripts = new List<ScriptInfo>();
             
             // foreach (var script in Directory.EnumerateFiles("..\\", "*.cs", SearchOption.AllDirectories))
-            foreach (var script in Directory.EnumerateFiles("../", "*.cs", SearchOption.AllDirectories))
+            foreach (var script in Directory.EnumerateFiles("./", "*.cs", SearchOption.AllDirectories))
             {
                 var firstLine = File.ReadLines(script).First();
                 if (firstLine.StartsWith("/*"))
