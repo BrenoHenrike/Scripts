@@ -1,6 +1,4 @@
 /*
-path: Tools/ForDevelopers/GenerateQuestFiles.cs
-fileName: GenerateQuestFiles.cs
 name: null
 description: null
 tags: null
@@ -27,7 +25,7 @@ public class GetQuests
             return;
 
         Core.Logger("Reading Quest.txt");
-        var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Quests.txt")));
+        var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(Path.Combine(CoreBots.SkuaPath, "Quests.txt")));
 
         List<string> r = new();
         List<string> d = new();

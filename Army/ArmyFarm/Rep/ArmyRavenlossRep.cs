@@ -1,3 +1,8 @@
+/*
+name: null
+description: Farm reputation with your army. Faction: Ravenloss
+tags: army, reputation, ravenloss
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

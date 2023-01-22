@@ -1,3 +1,8 @@
+/*
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -241,7 +246,7 @@ public class CoreStory
                     Core.Logger(message2.Replace("|", " "));
                     if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked", true) == true)
                     {
-                        string path = Bot.Manager.LoadedScript.Replace(Core.AppPath, "").Replace("\\Scripts\\", "").Replace(".cs", "");
+                        string path = Core.loadedBot;
                         Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
                                                      "entry.2118425091=Bug+Report&" +
                                                     $"entry.290078150={path}&" +

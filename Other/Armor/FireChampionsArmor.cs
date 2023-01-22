@@ -1,3 +1,8 @@
+/*
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
@@ -55,7 +60,8 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("lair", "Water Draconian", "Dragon Scale", 30, false);
+        while (!Core.CheckInventory(11475, 30))
+            Core.HuntMonster("lair", "Water Draconian", log: false);
         Core.BuyItem("wartraining", 2035, "Polished DragonSlayer");
     }
 

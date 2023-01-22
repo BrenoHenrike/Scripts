@@ -1,3 +1,9 @@
+/*
+name: null
+description: null
+tags: null
+*/
+//cs_include Scripts/CoreBots.cs
 using System.Net.NetworkInformation;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -18,7 +24,7 @@ public class ScriptMainCleaner
 #nullable enable
     private void Cleaner()
     {
-        string scriptDir = Path.Combine(AppContext.BaseDirectory, "Scripts");
+        string scriptDir = CoreBots.ScriptsPath;
         List<string> GotNull = new();
         List<string> NoSetOptions = new();
         List<string> TooManyInScriptMain = new();

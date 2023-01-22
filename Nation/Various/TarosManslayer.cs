@@ -1,3 +1,8 @@
+/*
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
@@ -47,7 +52,7 @@ public class TarosManslayer
             {
                 Core.EnsureAccept(1111);
                 Nation.FarmGemofNulgath(10);
-                Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Makai Rune");
+                Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
                 Core.EnsureCompleteChoose(1111, Rewards);
                 Bot.Sleep(Core.ActionDelay);
             }
