@@ -562,7 +562,7 @@ public class CoreNation
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
-                    Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "MDark Makai Rune");
+                    Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
 
                 Core.KillEscherion("Relic of Chaos", publicRoom: true, log: false);
                 Bot.Drops.Pickup(item);
@@ -720,7 +720,7 @@ public class CoreNation
                 Core.EquipClass(ClassType.Farm);
                 Core.EnsureAccept(7551);
 
-                Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "MDark Makai Rune");
+                Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
 
                 switch (item)
                 {
