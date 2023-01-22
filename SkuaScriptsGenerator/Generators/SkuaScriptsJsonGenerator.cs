@@ -6,7 +6,7 @@ namespace SkuaScriptsGenerator.Generators
     {
         public void Generate()
         {
-            var rawScriptsURL = "https://raw.githubusercontent.com/BrenoHenrike/Scripts/dev/";
+            var rawScriptsURL = "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/";
             var scripts = new List<ScriptInfo>();
             foreach (var script in Directory.EnumerateFiles("./", "*.cs", SearchOption.AllDirectories))
             {
