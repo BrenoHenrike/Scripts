@@ -25,12 +25,12 @@
     "name": "null",
     "description": "Let see if this works",
     "tags": [
-      "[corebot",
+      "corebot",
       "aqwbot",
-      "skua]"
+      "skua"
     ],
     "path": "CoreBots.cs",
-    "size": 131045,
+    "size": 131043,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/dev/CoreBots.cs"
   },
