@@ -1000,10 +1000,10 @@ public class CoreNation
 
         Core.AddDrop("Diamond of Nulgath");
 
-        NewWorldsNewOpportunities("Diamond of Nulgath", quant);
-        VoidKightSwordQuest("Diamond of Nulgath", quant);
         Supplies("Diamond of Nulgath", quant);
+        VoidKightSwordQuest("Diamond of Nulgath", quant);
         DiamondEvilWar(quant);
+        NewWorldsNewOpportunities("Diamond of Nulgath", quant);
     }
 
     public void FarmFiendToken(int quant = 30)
