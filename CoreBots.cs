@@ -2662,8 +2662,7 @@ public class CoreBots
 
             if (seasonalMessageProc)
             {
-                seasonalMessageProc = false;
-                break;
+                return false;
             }
 
             if (i == 19)
