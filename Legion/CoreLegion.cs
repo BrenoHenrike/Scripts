@@ -285,7 +285,8 @@ public class CoreLegion
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.RegisterQuests(3722);
+
+        Core.RegisterQuests(Core.CheckInventory("Shogun Paragon Pet") ? new[] { 3722, 5755 } : new[] { 3722 });
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
