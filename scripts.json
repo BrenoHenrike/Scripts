@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 127266,
+    "size": 127228,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -314,7 +314,7 @@
       "null"
     ],
     "path": "Other/Jir'abinChallenge.cs",
-    "size": 4835,
+    "size": 5082,
     "fileName": "Jir'abinChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
@@ -732,7 +732,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28070,
+    "size": 28148,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
