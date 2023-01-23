@@ -22,13 +22,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "CoreBots",
+    "description": "This script should not be loaded as start script.",
     "tags": [
-      "null"
+      "corebots"
     ],
     "path": "CoreBots.cs",
-    "size": 130969,
+    "size": 131022,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
