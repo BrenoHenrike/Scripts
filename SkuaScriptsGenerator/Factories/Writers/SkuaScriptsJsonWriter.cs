@@ -2,9 +2,9 @@ using Newtonsoft.Json;
 
 namespace SkuaScriptsGenerator.Generators
 {
-    public class SkuaScriptsJsonGenerator
+    public class SkuaScriptsJsonWriter : ISkuaScriptWriter
     {
-        public void Generate()
+        public void Write()
         {
             var rawScriptsURL = "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/";
             var scripts = new List<ScriptInfo>();
