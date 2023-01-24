@@ -2708,12 +2708,11 @@ public class CoreBots
     {
         get
         {
-            string userDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string appPath = Path.GetDirectoryName(AppContext.BaseDirectory);
+            string appPath = Path.GetDirectoryName(AppContext.BaseDirectory)!;
             if (appPath.Contains("Program Files"))
-                return Path.Combine(userDir, "Skua");
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua");
             else
-                return Path.GetDirectoryName(AppContext.BaseDirectory)!;
+                return appPath;
         }
     }
 
