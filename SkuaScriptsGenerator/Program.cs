@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using SkuaScriptsGenerator.Generators;
+using SkuaScriptsGenerator.Factories;
 
-new SkuaScriptsJsonGenerator().Generate();
+ISkuaScriptFactory script = new ScriptSkuaFactory();
+script.Generate("json").Write();

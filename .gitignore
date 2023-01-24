@@ -25,7 +25,7 @@ Projects W.I.P
 Class1.cs
 *.json
 !ScriptTags.json
-!scripts.json
+scripts.json
 *.code-workspace
 Projects
 .shacache

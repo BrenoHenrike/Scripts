@@ -1,13 +1,14 @@
+using SkuaScriptsGenerator.Generators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SkuaScriptsGenerator.Generators
+namespace SkuaScriptsGenerator.Writers
 {
-    public class SkuaScriptsInfoGenerator
+    public class SkuaScriptsInfoWriter : ISkuaScriptWriter
     {
-        public void WriteInfoTemplate()
+        public void Write()
         {
             foreach(var script in Directory.EnumerateFiles(".\\", "*.cs", SearchOption.AllDirectories))
             {
