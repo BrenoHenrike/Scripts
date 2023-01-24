@@ -13,7 +13,7 @@ public class BeetleWarlordPet
     private CoreFarms Farm = new();
     private CoreNation Nation = new();
 
-    int questID = 9077;
+    int questID = 9078;
     int quant = 1;
 
     public void ScriptMain(IScriptInterface Bot)
