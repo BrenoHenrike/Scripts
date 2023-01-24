@@ -1,24 +1,19 @@
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
-//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs
-//cs_include Scripts/Hollowborn/CoreHollowborn.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 // using Skua.Core.Options;
 
-public class BeetleGeneralPet
+public class BeetleWarlordPet
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    private TempleSiegeMerge TSM = new();
+    private CoreFarms Farm = new();
     private CoreNation Nation = new();
-    private CoreHollowborn HB = new();
-    int questID = 9076;
+
+    int questID = 9077;
     int quant = 1;
 
     public void ScriptMain(IScriptInterface Bot)
@@ -26,7 +21,7 @@ public class BeetleGeneralPet
         Core.SetOptions();
 
         QuestsIfNeeded();
-        RequiredItems("Beetle General Pet");
+        RequiredItems("Beetle Warlord Pet");
         AutoReward(questID, quant);
     }
 
@@ -42,14 +37,15 @@ public class BeetleGeneralPet
         Core.AddDrop(Rewards);
 
         Core.RegisterQuests(questID);
-        Core.AddDrop("Red Ant Pet", "Beetle EXP");
+        Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
         foreach (string item in Rewards)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item))
             {
-                Core.HuntMonster("giant", "Red Ant", "Red Ant Pet", isTemp: false);
-                Nation.EssenceofNulgath(10);
-                HB.FreshSouls(10);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("dragonchallenge", "Chaos Dragon", "Baby Chaos Dragon", isTemp: false);
+                Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
+                Nation.FarmTotemofNulgath(1);
             }
             Core.CancelRegisteredQuests();
         }
@@ -57,7 +53,7 @@ public class BeetleGeneralPet
 
     public void QuestsIfNeeded()
     {
-        TSM.BuyAllMerge("Beetle General Pet");
+        Farm.Experience(80);
     }
 
     void RequiredItems(params string[] items)
