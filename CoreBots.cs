@@ -1,7 +1,7 @@
 /*
 name: CoreBots
 description: This script should not be loaded as start script.
-tags: CoreBots
+tags: CoreBots, core, bots
 */
 using System;
 using System.Collections.Generic;
