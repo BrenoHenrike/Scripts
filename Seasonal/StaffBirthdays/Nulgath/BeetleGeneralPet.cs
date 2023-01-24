@@ -48,7 +48,7 @@ public class BeetleGeneralPet
             {
                 Core.HuntMonster("giant", "Red Ant", "Red Ant Pet", isTemp: false);
                 Nation.EssenceofNulgath(10);
-                HB.FreshSouls(0, 10);
+                HB.FreshSouls(1, 10);
             }
             Core.CancelRegisteredQuests();
         }
