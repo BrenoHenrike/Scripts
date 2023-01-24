@@ -77,7 +77,7 @@ public class UpdateTags
             foreach (var file in files)
             {
                 // Skip blacklisted file-extensions and core-files
-                if (Extensions.Any(e => file.EndsWith(e)))// || file.Replace('\\', '/').Split('/').Last().StartsWith("Core"))
+                if (Extensions.Any(e => file.EndsWith(e)))
                     continue;
 
                 string _file = removeDir(file)!.Replace('\\', '/');
@@ -88,7 +88,7 @@ public class UpdateTags
                 // Reading file
                 List<string> fileData = File.ReadAllLines(file).ToList();
                 // Starting on writing the new data for the file
-                List<string> newData = new() { "/*", "path: " + _file, "fileName: " + _file.Split('/').Last() };
+                List<string> newData = new() { "/*" };
 
                 List<string> scriptData = new();
                 bool hasLogged = false;
@@ -221,7 +221,6 @@ public class UpdateTags
             if (_file.Any(l => l.StartsWith(prop.ToLower()) && l.Contains(':') && !l.TrimEnd().EndsWith("null")))
             {
                 propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(':').Last();
-                Bot.Log(propData); //REMOVE LATER
                 return true;
             }
             propData = String.Empty;
