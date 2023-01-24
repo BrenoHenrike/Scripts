@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 // using Skua.Core.Options;
 
-public class QuestRewardTemplate
+public class BeetleGeneralPet
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
