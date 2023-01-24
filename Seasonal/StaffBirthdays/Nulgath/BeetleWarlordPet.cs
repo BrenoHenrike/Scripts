@@ -35,9 +35,8 @@ public class BeetleWarlordPet
         string[] Rewards = RewardsList.ToArray();
 
         Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(questID);
         Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
+        Core.RegisterQuests(questID);
         foreach (string item in Rewards)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item))

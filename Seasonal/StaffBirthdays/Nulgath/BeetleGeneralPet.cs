@@ -40,9 +40,8 @@ public class BeetleGeneralPet
         string[] Rewards = RewardsList.ToArray();
 
         Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(questID);
         Core.AddDrop("Red Ant Pet", "Beetle EXP");
+        Core.RegisterQuests(questID);
         foreach (string item in Rewards)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item))
@@ -57,7 +56,8 @@ public class BeetleGeneralPet
 
     public void QuestsIfNeeded()
     {
-        TSM.BuyAllMerge("Beetle General Pet");
+        if (!Core.CheckInventory("Beetle General Pet"))
+            TSM.BuyAllMerge("Beetle General Pet");
     }
 
     void RequiredItems(params string[] items)
