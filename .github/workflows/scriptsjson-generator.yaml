@@ -41,6 +41,7 @@ jobs:
         commit_message: 'Automatic commit by GitHub Actions'
         files: 'scripts.json'
         push: true
+        push_options: '--force'
 
     - name: Delete artifact
       uses: geekyeggo/delete-artifact@v2
