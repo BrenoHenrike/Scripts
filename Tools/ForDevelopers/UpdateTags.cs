@@ -3,6 +3,7 @@ name: null
 description: null
 tags: null
 */
+//cs_include Scripts/CoreBots.cs
 using System.Dynamic;
 using System.Net.NetworkInformation;
 using Newtonsoft.Json;
@@ -27,10 +28,7 @@ public class UpdateTags
     private void Update()
     {
         // Variables
-        string scriptDir = String.Empty;
-        if (Bot.Version == null || Version.Parse("1.1.4.1").CompareTo(Bot.Version) <= 0)
-            scriptDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua", "Scripts"); //uncomment this on new version
-        else scriptDir = Path.Combine(AppContext.BaseDirectory, "Scripts");
+        string scriptDir = CoreBots.ScriptsPath;
         bool userExit = false;
 
         // Allowing the user to select a folder they wish to focus on
@@ -77,7 +75,7 @@ public class UpdateTags
             foreach (var file in files)
             {
                 // Skip blacklisted file-extensions and core-files
-                if (Extensions.Any(e => file.EndsWith(e)))// || file.Replace('\\', '/').Split('/').Last().StartsWith("Core"))
+                if (Extensions.Any(e => file.EndsWith(e)))
                     continue;
 
                 string _file = removeDir(file)!.Replace('\\', '/');
@@ -88,7 +86,7 @@ public class UpdateTags
                 // Reading file
                 List<string> fileData = File.ReadAllLines(file).ToList();
                 // Starting on writing the new data for the file
-                List<string> newData = new() { "/*", "path: " + _file, "fileName: " + _file.Split('/').Last() };
+                List<string> newData = new() { "/*" };
 
                 List<string> scriptData = new();
                 bool hasLogged = false;
@@ -221,7 +219,6 @@ public class UpdateTags
             if (_file.Any(l => l.StartsWith(prop.ToLower()) && l.Contains(':') && !l.TrimEnd().EndsWith("null")))
             {
                 propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(':').Last();
-                Bot.Log(propData); //REMOVE LATER
                 return true;
             }
             propData = String.Empty;

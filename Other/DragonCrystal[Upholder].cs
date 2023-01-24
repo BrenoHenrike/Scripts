@@ -5,7 +5,7 @@ tags: null
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/DragonRoad[Upholader].cs
+//cs_include Scripts/Story/DragonRoad[Upholder].cs
 using Skua.Core.Interfaces;
 
 public class DragonCristal

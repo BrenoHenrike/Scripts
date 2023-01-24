@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: Farm reputation with your army. Faction: Lore Master
+tags: army, reputation, lore master
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

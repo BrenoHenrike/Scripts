@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 26815,
+    "size": 26733,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -30,7 +30,7 @@
       "bots"
     ],
     "path": "CoreBots.cs",
-    "size": 131034,
+    "size": 127228,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -206,7 +206,7 @@
       "null"
     ],
     "path": "Tools/GenerateQueuedScript.cs",
-    "size": 10568,
+    "size": 10509,
     "fileName": "GenerateQueuedScript.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/GenerateQueuedScript.cs"
   },
@@ -217,7 +217,7 @@
       "null"
     ],
     "path": "Tools/Butler.cs",
-    "size": 25532,
+    "size": 10327,
     "fileName": "Butler.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
@@ -316,7 +316,7 @@
       "null"
     ],
     "path": "Other/Jir'abinChallenge.cs",
-    "size": 4835,
+    "size": 5082,
     "fileName": "Jir'abinChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
@@ -371,7 +371,7 @@
       "null"
     ],
     "path": "Other/DragonCrystal[Upholder].cs",
-    "size": 1040,
+    "size": 1039,
     "fileName": "DragonCrystal[Upholder].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonCrystal[Upholder].cs"
   },
@@ -734,7 +734,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28070,
+    "size": 28148,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -998,7 +998,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 62036,
+    "size": 61861,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1779,7 +1779,7 @@
       "null"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 25663,
+    "size": 25662,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -2120,40 +2120,56 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 17808,
+    "size": 35573,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Aggro Monster File Reader",
+    "description": "This script allows you to run AggroMon bots from ChaosRipjaw's AggroMon Generator in Skua.",
     "tags": [
-      "null"
+      "kaos",
+      "chaosripjaw",
+      "aggro monster",
+      "army",
+      "reader",
+      "custom"
     ],
     "path": "Army/0AggroMonReader.cs",
-    "size": 5285,
+    "size": 5344,
     "fileName": "0AggroMonReader.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
     "tags": [
-      "null"
+      "custom",
+      "aggro monster",
+      "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 10079,
+    "size": 10287,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "This bot farms the ArchPaladin class for you.",
     "tags": [
-      "null"
+      "class",
+      "good",
+      "tank",
+      "hp",
+      "templar",
+      "support",
+      "survivability",
+      "figher",
+      "healer",
+      "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10337,
+    "size": 10457,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -3275,7 +3291,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/UpdateTags.cs",
-    "size": 9981,
+    "size": 9527,
     "fileName": "UpdateTags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/UpdateTags.cs"
   },
@@ -3286,7 +3302,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/ScriptMainCleaner.cs",
-    "size": 5718,
+    "size": 5722,
     "fileName": "ScriptMainCleaner.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/ScriptMainCleaner.cs"
   },
@@ -3297,7 +3313,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 6600,
+    "size": 6608,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
@@ -3308,7 +3324,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/GenerateQuestFiles.cs",
-    "size": 1655,
+    "size": 1648,
     "fileName": "GenerateQuestFiles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
   },
@@ -3649,7 +3665,7 @@
       "null"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 2923,
+    "size": 2960,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
@@ -3710,12 +3726,16 @@
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "This bot farms the Dragon of Time class for you.",
     "tags": [
-      "null"
+      "class",
+      "dot",
+      "damage over time",
+      "dragon of time",
+      "timeinn"
     ],
     "path": "Other/Classes/DragonOfTime.cs",
-    "size": 12563,
+    "size": 12656,
     "fileName": "DragonOfTime.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonOfTime.cs"
   },
@@ -6102,7 +6122,7 @@
       "null"
     ],
     "path": "Seasonal/Frostvale/CheckForDonantedACs.cs",
-    "size": 5688,
+    "size": 5703,
     "fileName": "CheckForDonantedACs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
@@ -7774,7 +7794,7 @@
       "null"
     ],
     "path": "Nation/Various/DragonBlade[mem}.cs",
-    "size": 2615,
+    "size": 2625,
     "fileName": "DragonBlade[mem}.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/DragonBlade[mem}.cs"
   },
@@ -7818,7 +7838,7 @@
       "null"
     ],
     "path": "Nation/Various/BehemothBlades.cs",
-    "size": 2157,
+    "size": 2167,
     "fileName": "BehemothBlades.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/BehemothBlades.cs"
   },
@@ -7862,7 +7882,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 1672,
+    "size": 1694,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -7895,7 +7915,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs",
-    "size": 3387,
+    "size": 3397,
     "fileName": "EvovledHexOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs"
   },
@@ -8213,6 +8233,17 @@
     "tags": [
       "null"
     ],
+    "path": "Nation/MergeShops/NulgathWarMerge.cs",
+    "size": 7931,
+    "fileName": "NulgathWarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
     "size": 5393,
     "fileName": "FiendshardMerge.cs",
@@ -8224,8 +8255,19 @@
     "tags": [
       "null"
     ],
+    "path": "Nation/MergeShops/DilligasMerge.cs",
+    "size": 6426,
+    "fileName": "DilligasMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DilligasMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 10976,
+    "size": 10973,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -10046,34 +10088,45 @@
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Uses your army to gather bonedust",
     "tags": [
-      "null"
+      "bone dust",
+      "army",
+      "battleunderb"
     ],
     "path": "Army/ArmyFarm/ArmyBattleUnderB.cs",
-    "size": 1740,
+    "size": 1794,
     "fileName": "ArmyBattleUnderB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyBattleUnderB.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Uses your army to kill Warlord Icewing.",
     "tags": [
-      "null"
+      "army",
+      "warlord icewing",
+      "experience",
+      "gold",
+      "icestorm arena"
     ],
     "path": "Army/ArmyFarm/ArmyIceWing.cs",
-    "size": 2173,
+    "size": 2259,
     "fileName": "ArmyIceWing.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Uses different methods with your army to farm gold.",
     "tags": [
-      "null"
+      "army",
+      "gold",
+      "battle ground e",
+      "dark war legion",
+      "dark war nation",
+      "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 5082,
+    "size": 5205,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
@@ -11228,7 +11281,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21675,
+    "size": 21745,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
@@ -12345,320 +12398,379 @@
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "druid grove"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs",
-    "size": 1826,
+    "size": 1899,
     "fileName": "ArmyDruidGroveRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "baconcat"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBaconCatRep.cs",
-    "size": 2245,
+    "size": 2312,
     "fileName": "ArmyBaconCatRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBaconCatRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "somnia"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySomniaRep.cs",
-    "size": 1891,
+    "size": 1954,
     "fileName": "ArmySomniaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySomniaRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "lore master"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyLoremasterRep.cs",
-    "size": 3205,
+    "size": 3278,
     "fileName": "ArmyLoremasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLoremasterRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "good",
+      "evil"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs",
-    "size": 2262,
+    "size": 2334,
     "fileName": "ArmyGoodEvilRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "mysterious dungeon"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs",
-    "size": 2344,
+    "size": 2430,
     "fileName": "ArmyMysteriousDungeonRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "arcangrove"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyArcangroveRep.cs",
-    "size": 2010,
+    "size": 2081,
     "fileName": "ArmyArcangroveRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyArcangroveRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "sword haven"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySwordhavenRep.cs",
-    "size": 1904,
+    "size": 1977,
     "fileName": "ArmySwordhavenRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySwordhavenRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "north pointe"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs",
-    "size": 1820,
+    "size": 1895,
     "fileName": "ArmyNorthpoienteRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "chrono span"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs",
-    "size": 1844,
+    "size": 1917,
     "fileName": "ArmyChronoSpanRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "ravenloss"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyRavenlossRep.cs",
-    "size": 2006,
+    "size": 2075,
     "fileName": "ArmyRavenlossRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyRavenlossRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "embersea"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEmberseaRep.cs",
-    "size": 1923,
+    "size": 1990,
     "fileName": "ArmyEmberseaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEmberseaRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "dreadfire"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDreadfireRep.cs",
-    "size": 1856,
+    "size": 1925,
     "fileName": "ArmyDreadfireRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadfireRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyAegisRep.cs",
-    "size": 1878,
+    "size": 1939,
     "fileName": "ArmyAegisRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAegisRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "hollowborn"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyHollowbornRep.cs",
-    "size": 1780,
+    "size": 1851,
     "fileName": "ArmyHollowbornRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyHollowbornRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "chaos"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosRep.cs",
-    "size": 1880,
+    "size": 1941,
     "fileName": "ArmyChaosRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "dreadrock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDreadrockRep.cs",
-    "size": 2015,
+    "size": 2084,
     "fileName": "ArmyDreadrockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadrockRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "chaos militia"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs",
-    "size": 1769,
+    "size": 1846,
     "fileName": "ArmyChaosMilitiaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "doomwood"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs",
-    "size": 1896,
+    "size": 1963,
     "fileName": "ArmyDoomWoodRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "monster hunter"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs",
-    "size": 2246,
+    "size": 2325,
     "fileName": "ArmyMonsterHunterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "all reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyAllRep.cs",
-    "size": 6210,
+    "size": 6293,
     "fileName": "ArmyAllRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAllRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "dwarfhold"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs",
-    "size": 1849,
+    "size": 1918,
     "fileName": "ArmyDwarfholdRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "lycan"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyLycanRep.cs",
-    "size": 2004,
+    "size": 2065,
     "fileName": "ArmyLycanRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLycanRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "etherstorm"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEtherstormRep.cs",
-    "size": 1855,
+    "size": 1926,
     "fileName": "ArmyEtherstormRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEtherstormRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "mythsong"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMythsongRep.cs",
-    "size": 1980,
+    "size": 2047,
     "fileName": "ArmyMythsongRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMythsongRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "eternal"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEternalRep.cs",
-    "size": 3649,
+    "size": 3714,
     "fileName": "ArmyEternalRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEternalRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "sandsea"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySandseaRep.cs",
-    "size": 1956,
+    "size": 2021,
     "fileName": "ArmySandseaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySandseaRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "infernal army"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs",
-    "size": 1909,
+    "size": 1986,
     "fileName": "ArmyInfernalArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "craggle rock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
-    "size": 1785,
+    "size": 1860,
     "fileName": "ArmyCraggleRockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs"
   },
@@ -12675,23 +12787,27 @@
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "necro crypt"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs",
-    "size": 1809,
+    "size": 1882,
     "fileName": "ArmyNecroCryptRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs"
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "brethwren"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs",
-    "size": 1970,
+    "size": 2039,
     "fileName": "ArmyBrethwrenRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs"
   },
@@ -12708,12 +12824,14 @@
   },
   {
     "name": "null",
-    "description": "null",
+    "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "elemental master"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs",
-    "size": 1952,
+    "size": 2035,
     "fileName": "ArmyElementalMasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs"
   },
@@ -12724,7 +12842,7 @@
       "null"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 20883,
+    "size": 18896,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
   },
