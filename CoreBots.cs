@@ -1,4 +1,4 @@
-/*
+﻿/*
 name: CoreBots
 description: This script should not be loaded as start script.
 tags: CoreBots, core, bots
@@ -2706,17 +2706,17 @@ public class CoreBots
     /// </summary>
     public static string SkuaPath
     {
-        get 
+        get
         {
             string userDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string appPath = Path.GetDirectoryName(AppContext.BaseDirectory);
             if (appPath.Contains("Program Files"))
                 return Path.Combine(userDir, "Skua");
-            else 
+            else
                 return Path.GetDirectoryName(AppContext.BaseDirectory)!;
         }
     }
-    
+
     public static string ScriptsPath = Path.Combine(SkuaPath, "Scripts");
     public static string OptionsPath = Path.Combine(SkuaPath, "options");
 
