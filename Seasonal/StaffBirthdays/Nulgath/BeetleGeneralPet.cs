@@ -26,8 +26,8 @@ public class BeetleGeneralPet
         Core.SetOptions();
 
         QuestsIfNeeded();
-        RequiredItems("Beetle General Pet"); // Replace these
-        // AutoReward(questID, quant);
+        RequiredItems("Beetle General Pet");
+        AutoReward(questID, quant);
     }
 
     public void AutoReward(int questID, int quant)
