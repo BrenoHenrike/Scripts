@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Dreadrock Rep
+description: Farm reputation with your army. Faction: Dreadrock
+tags: army, reputation, dreadrock
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

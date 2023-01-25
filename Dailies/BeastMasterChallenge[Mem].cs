@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beast Master Challenge Daily
+description: does the daily for: 
+tags: Daily, Beast Master Challenge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

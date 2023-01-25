@@ -34,7 +34,7 @@ public class TempleSiegeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Gem of Nulgath", "Shadow Extract", "Unidentified 13", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Blood Gem of the Archfiend", "Warden of Light", "Conqueror of Shadow", "Crimson Plate of Nulgath", "Behemoth Blade of Light", "Behemoth Blade of Shadow", "DragonFire of Nulgath", "Light Warden Helm", "Shadow Conqueror Helm", "Crimson Face Plate of Nulgath"});
+        Core.BankingBlackList.AddRange(new[] { "Gem of Nulgath", "Shadow Extract", "Unidentified 13", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Blood Gem of the Archfiend", "Warden of Light", "Conqueror of Shadow", "Crimson Plate of Nulgath", "Behemoth Blade of Light", "Behemoth Blade of Shadow", "DragonFire of Nulgath", "Light Warden Helm", "Shadow Conqueror Helm", "Crimson Face Plate of Nulgath" });
         Core.SetOptions();
 
         BuyAllMerge();

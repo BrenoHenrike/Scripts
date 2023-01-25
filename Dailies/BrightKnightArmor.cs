@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Bright Knight Armor Daily
+description: does the daily for: Bright Knight Armor
+tags: Daily, Bright Knight Armor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Sparrows Blood Daily
+description: does the daily for: Sparrows Blood
+tags: Daily, Sparrows Blood, void highlord, VHL, nulgath, elders blood
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dragon of Time Army
+description: sues an army to get the dragon of time class
+tags: dragon of time, class, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

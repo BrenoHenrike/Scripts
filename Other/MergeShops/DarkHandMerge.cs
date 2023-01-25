@@ -7,17 +7,19 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class DarkHandMerge
+public class DarkHandMerge1
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
+    public CoreLegion Legion = new CoreLegion();
     public static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -98,6 +100,15 @@ public class DarkHandMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Legion Token":
+                    Legion.FarmLegionToken(quant);
+                    break;
+
+                case "Essence of Blade Master":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("underworld", "Blade Master", "Essence of Blade Master", quant, false);
+                    break;
+
             }
         }
     }
@@ -117,5 +128,9 @@ public class DarkHandMerge
         new Option<bool>("47325", "Dark Hand's Cyclone", "Mode: [select] only\nShould the bot buy \"Dark Hand's Cyclone\" ?", false),
         new Option<bool>("47326", "Dark Hand's Double Edge", "Mode: [select] only\nShould the bot buy \"Dark Hand's Double Edge\" ?", false),
         new Option<bool>("47327", "Dark Hand's Kusari-Gama", "Mode: [select] only\nShould the bot buy \"Dark Hand's Kusari-Gama\" ?", false),
+        new Option<bool>("74003", "Axeros Moult", "Mode: [select] only\nShould the bot buy \"Axeros Moult\" ?", false),
+        new Option<bool>("74004", "Axeros Mandibles", "Mode: [select] only\nShould the bot buy \"Axeros Mandibles\" ?", false),
+        new Option<bool>("74005", "Axeros Torn Shroud", "Mode: [select] only\nShould the bot buy \"Axeros Torn Shroud\" ?", false),
+        new Option<bool>("74006", "Moon Airstrike Pet", "Mode: [select] only\nShould the bot buy \"Moon Airstrike Pet\" ?", false),
     };
 }

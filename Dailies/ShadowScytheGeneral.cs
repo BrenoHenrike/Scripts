@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Scythe Class Daily
+description: does the daily for:Shadow Scythe Class
+tags: Daily, Shadow Scythe Class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

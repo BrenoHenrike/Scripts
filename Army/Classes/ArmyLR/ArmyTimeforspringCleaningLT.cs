@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: uses an army to farm the "time for spring cleaning quest".
+tags: time for spring cleaning quest, army, legion, legion tokens
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

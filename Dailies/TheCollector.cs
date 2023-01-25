@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Collector Class Daily
+description: does the daily for: Collector Class
+tags: Daily, Collector Class, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

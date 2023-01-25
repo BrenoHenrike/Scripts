@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army NecroCrypt Rep
+description: Farm reputation with your army. Faction: Necro Crypt
+tags: army, reputation, necro crypt
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Elders Blood Daily
+description: does the daily for: Elders Blood
+tags: Daily, Elders Blood, nulgath, roentgenium
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

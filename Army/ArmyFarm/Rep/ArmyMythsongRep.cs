@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Mythsong Rep
+description: Farm reputation with your army. Faction: mythsong
+tags: army, reputation, mythsong
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

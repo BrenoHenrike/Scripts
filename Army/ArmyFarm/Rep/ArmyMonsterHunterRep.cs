@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Monster Hunter Rep
+description: Farm reputation with your army. Faction: Monster Hunter
+tags: army, reputation, monster hunter
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

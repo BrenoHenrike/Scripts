@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: uses an army to help farm the required boss items for archmage.
+tags: archmage, army, boss items
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

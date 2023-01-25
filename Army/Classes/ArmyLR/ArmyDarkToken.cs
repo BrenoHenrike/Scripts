@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Dark Token
+description: uses an army to farm dark tokens
+tags: Dark Token, army, seraphicwardage
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

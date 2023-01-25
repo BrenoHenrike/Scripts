@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army All Rep
+description: Farm reputation with your army. Faction: all reps in order.
+tags: army, reputation, all reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

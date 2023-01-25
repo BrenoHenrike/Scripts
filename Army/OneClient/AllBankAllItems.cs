@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: All accs bank all
+description: banks all items on all accs in the "thefamily.txt" file.
+tags: bank, army, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

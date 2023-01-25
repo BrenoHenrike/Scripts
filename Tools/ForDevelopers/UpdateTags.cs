@@ -3,6 +3,7 @@ name: null
 description: null
 tags: null
 */
+//cs_include Scripts/CoreBots.cs
 using System.Dynamic;
 using System.Net.NetworkInformation;
 using Newtonsoft.Json;
@@ -27,10 +28,7 @@ public class UpdateTags
     private void Update()
     {
         // Variables
-        string scriptDir = String.Empty;
-        if (Bot.Version == null || Version.Parse("1.1.4.1").CompareTo(Bot.Version) <= 0)
-            scriptDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua", "Scripts"); //uncomment this on new version
-        else scriptDir = Path.Combine(AppContext.BaseDirectory, "Scripts");
+        string scriptDir = CoreBots.ScriptsPath;
         bool userExit = false;
 
         // Allowing the user to select a folder they wish to focus on

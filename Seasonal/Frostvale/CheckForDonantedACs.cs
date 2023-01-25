@@ -32,7 +32,7 @@ public class CheckForDonatedACs
 
     public void CheckACs()
     {
-        string logPath = "Skua_Modules/options/FrostvaleDonationLog.txt";
+        string logPath = Path.Combine(CoreBots.OptionsPath, "FrostvaleDonationLog.txt");
         bool firstTime = !File.Exists(logPath);
         List<string> ACs = new();
         List<string> oldACs = new();

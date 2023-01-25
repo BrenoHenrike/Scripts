@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army DoomWood Rep
+description: Farm reputation with your army. Faction: Doomwood
+tags: army, reputation, doomwood
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

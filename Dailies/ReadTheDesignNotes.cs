@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Design Notes Daily
+description: does the daily for: Design Notes
+tags: Daily, Design Notes
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Brethwren Rep
+description: Farm reputation with your army. Faction: Brethwren
+tags: army, reputation, brethwren
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

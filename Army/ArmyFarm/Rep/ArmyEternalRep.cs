@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Eternal Rep
+description: Farm reputation with your army. Faction: Eternal
+tags: army, reputation, eternal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

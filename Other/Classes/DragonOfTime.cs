@@ -1,7 +1,7 @@
 /*
 name: null
-description: null
-tags: null
+description: This bot farms the Dragon of Time class for you.
+tags: class, dot, damage over time, dragon of time, timeinn
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army CraggleRock Rep
+description: Farm reputation with your army. Faction: Craggle Rock
+tags: army, reputation, craggle rock
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

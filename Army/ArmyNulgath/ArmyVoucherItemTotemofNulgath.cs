@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Totem And Gem
+description: description: uses an army to farm Totems Of Nulgath or Gem of Nulgath from "voucher item totem of nulgath"
+tags: Totems Of Nulgath, Gem of Nulgath, army, voucher item totem of nulgath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

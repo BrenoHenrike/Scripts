@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: IceWing Leveling Army
+description: Uses your army to kill Warlord Icewing.
+tags: army, warlord icewing, experience, gold, icestorm arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
