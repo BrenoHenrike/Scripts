@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army All Rep
 description: Farm reputation with your army. Faction: all reps in order.
 tags: army, reputation, all reputation
 */

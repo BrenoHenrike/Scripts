@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Hollowborn Rep
 description: Farm reputation with your army. Faction: Hollowborn
 tags: army, reputation, hollowborn
 */

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Unique Quarry
+description: uses an army to farm the queust rewards from "unique quarry"
+tags: army, Unique Quarry, quest, rewards
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Crypto Token Daily
+description: does the daily for: Crypto Token
+tags: Daily, Crypto Token
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Brethwren Rep
 description: Farm reputation with your army. Faction: Brethwren
 tags: army, reputation, brethwren
 */

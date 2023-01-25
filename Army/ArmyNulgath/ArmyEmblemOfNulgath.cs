@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Emblem Of Nulgath
+description: description: uses an army to farm Emblem of Nulgath
+tags: emblem of nulgah, army, nation round 4 medal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

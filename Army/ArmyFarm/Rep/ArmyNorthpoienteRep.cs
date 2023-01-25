@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Northpointe Rep
 description: Farm reputation with your army. Faction: North Pointe
 tags: army, reputation, north pointe
 */

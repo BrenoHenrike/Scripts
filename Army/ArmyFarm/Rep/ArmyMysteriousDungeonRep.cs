@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Mysterious Dungeon Rep
 description: Farm reputation with your army. Faction: Myterious Dungeon
 tags: army, reputation, mysterious dungeon
 */

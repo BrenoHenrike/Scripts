@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Monster Hunter Rep
 description: Farm reputation with your army. Faction: Monster Hunter
 tags: army, reputation, monster hunter
 */

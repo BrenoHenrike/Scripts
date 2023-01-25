@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ascended Drakath Gear
+description: Farms the ascended Drakath Set
+tags: Ascended Drakath, Set, Drakath, Ascended Blade of Awe, Ascended Light of Destiny, Ascended Face of Chaos
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

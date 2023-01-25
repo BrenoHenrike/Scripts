@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Lycan Rep
 description: Farm reputation with your army. Faction: Lycan
 tags: army, reputation, lycan
 */

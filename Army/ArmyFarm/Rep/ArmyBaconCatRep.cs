@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army BaconCat Rep
 description: Farm reputation with your army. Faction: baconcat
 tags: army, reputation, baconcat
 */

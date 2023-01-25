@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Chaos Rep
 description: Farm reputation with your army. Faction: Chaos
 tags: army, reputation, chaos
 */

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Silver Exalted Paladin
+description: Farms the Silver Exalted Paladin.
+tags: Silver Exalted Paladin, dragonheart
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

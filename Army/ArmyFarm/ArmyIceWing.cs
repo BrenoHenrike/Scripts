@@ -1,5 +1,5 @@
 /*
-name: null
+name: IceWing Leveling Army
 description: Uses your army to kill Warlord Icewing.
 tags: army, warlord icewing, experience, gold, icestorm arena
 */

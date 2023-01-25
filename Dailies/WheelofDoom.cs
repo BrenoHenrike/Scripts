@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Wheel of Doom Daily
+description: does the daily for: Wheel of Doom
+tags: Daily, Wheel of Doom
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fungi for a Fun Guy Daily
+description: does the daily for:Fungi for a Fun Guy
+tags: Daily, Fungi for a Fun Guy, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

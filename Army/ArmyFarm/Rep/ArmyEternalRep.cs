@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Eternal Rep
 description: Farm reputation with your army. Faction: Eternal
 tags: army, reputation, eternal
 */

@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Dwarfhold Rep
 description: Farm reputation with your army. Faction: Dwarfhold
 tags: army, reputation, dwarfhold
 */

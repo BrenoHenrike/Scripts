@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army InfernalArm yRep
 description: Farm reputation with your army. Faction: Infernal Army
 tags: army, reputation, infernal army
 */

@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Mythsong Rep
 description: Farm reputation with your army. Faction: mythsong
 tags: army, reputation, mythsong
 */

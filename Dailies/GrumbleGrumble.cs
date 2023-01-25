@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Grumble Grumble Daily
+description: does the daily for:Grumble Grumble
+tags: Daily, Grumble Grumble
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Moglin Pets Daily
+description: does the daily for: Moglin Pets
+tags: Daily, Moglin Pets, pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

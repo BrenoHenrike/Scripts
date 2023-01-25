@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army ChronoSpan Rep
 description: Farm reputation with your army. Faction: Chrono Span
 tags: army, reputation, chrono span
 */

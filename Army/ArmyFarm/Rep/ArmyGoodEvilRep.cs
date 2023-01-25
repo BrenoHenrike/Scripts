@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army GoodEvil REP
 description: Farm reputation with your army. Faction: Good & Evil
 tags: army, reputation, good, evil
 */

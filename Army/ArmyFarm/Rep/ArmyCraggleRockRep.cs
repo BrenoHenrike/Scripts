@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army CraggleRock Rep
 description: Farm reputation with your army. Faction: Craggle Rock
 tags: army, reputation, craggle rock
 */

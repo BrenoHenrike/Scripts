@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Dreadfire Rep
 description: Farm reputation with your army. Faction: Dreadfire
 tags: army, reputation, dreadfire
 */

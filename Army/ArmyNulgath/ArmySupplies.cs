@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Supplies Wheel Army
+description: description: uses an army to farm the "supplies to spin the wheen of chance" quest. 
+tags: nulgath, supplies to spin teh wheels, army, reagents
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,5 +1,5 @@
 /*
-name: null
+name: Arch Paladin
 description: This bot farms the ArchPaladin class for you.
 tags: class, good, tank, hp, templar, support, survivability, figher, healer, undead
 */

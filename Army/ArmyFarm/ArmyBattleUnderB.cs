@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Bone Dust
 description: Uses your army to gather bonedust
 tags: bone dust, army, battleunderb
 */

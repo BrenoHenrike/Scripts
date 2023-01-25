@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army LR Full
+description: uses an army to to do the entirely of teh legion revenant grind together
+tags: legion, legion reventant, class, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

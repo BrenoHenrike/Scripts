@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Pyromancer Daily
+description: does the daily for: Pyromancer
+tags: Daily, insertthinghere, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

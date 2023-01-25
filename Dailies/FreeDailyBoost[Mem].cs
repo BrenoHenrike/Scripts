@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Free Daily Boost Daily
+description: does the daily for:Free Daily Boost
+tags: Daily, Free Daily Boost, member, boost, free
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

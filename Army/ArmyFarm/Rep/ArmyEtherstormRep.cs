@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Etherstorm Rep
 description: Farm reputation with your army. Faction: Etherstorm
 tags: army, reputation, etherstorm
 */
