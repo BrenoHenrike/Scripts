@@ -20,45 +20,35 @@ public class BeetleWarlordPet
     {
         Core.SetOptions();
 
-        QuestsIfNeeded();
-        RequiredItems("Beetle Warlord Pet");
         AutoReward(questID, quant);
+
+        Core.SetOptions(false);
     }
 
     public void AutoReward(int questID, int quant)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
 
-        string[] Rewards = RewardsList.ToArray();
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
 
-        Core.AddDrop(Rewards);
         Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
-        Core.RegisterQuests(questID);
-        foreach (string item in Rewards)
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item))
-            {
-                Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("dragonchallenge", "Chaos Dragon", "Baby Chaos Dragon", isTemp: false);
-                Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
-                Nation.FarmTotemofNulgath(1);
-            }
-            Core.CancelRegisteredQuests();
-        }
-    }
-
-    public void QuestsIfNeeded()
-    {
         Farm.Experience(80);
-    }
-
-    void RequiredItems(params string[] items)
-    {
-        if (Core.CheckInventory(items) || items == null)
-            return;
-        else Core.Logger("Required Items not found, Stopping", stopBot: true);
+        
+        foreach (ItemBase item in RewardOptions)
+        {
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID))
+            {
+                Core.EnsureAccept(questID);
+                Nation.FarmTotemofNulgath(1);
+                Core.EquipClass(ClassType.Farm);
+                Core.HuntMonster("dragonchallenge", "Chaos Dragon", "Baby Chaos Dragon", isTemp: false);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
+                Core.EnsureComplete(questID, item.ID);
+                Core.JumpWait();
+                Core.ToBank(item.ID);
+            }
+        }
     }
 }
