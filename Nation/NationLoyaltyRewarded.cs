@@ -44,21 +44,22 @@ public class NationLoyaltyRewarded
                 Core.Logger($"{item.Name} is max stack Checking next item in the \"Time is Money\" Quest's Rewards");
             else
             {
+                Core.FarmingLogger(item.Name, Bot.Inventory.GetItem(item.ID).MaxStack);
                 Core.RegisterQuests(4749);
                 while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(item.ID))
                 {
                     //Nation Loyalty Rewarded 4749
                     Core.EquipClass(ClassType.Solo);
                     Adv.BestGear(GearBoost.Chaos);
-                    Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
-                    Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
-                    Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true);
+                    Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye", publicRoom: true, log: false);
+                    Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true, log: false);
+                    Core.HuntMonster("dflesson", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true, log: false);
                     Adv.BestGear(GearBoost.Dragonkin);
-                    Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true);
+                    Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true, log: false);
                     Adv.BestGear(GearBoost.Human);
-                    Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
+                    Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true, log: false);
                     Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false, false);
                 }
             }
                 Core.CancelRegisteredQuests();
