@@ -30,7 +30,7 @@
       "bots"
     ],
     "path": "CoreBots.cs",
-    "size": 127254,
+    "size": 127270,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -9672,7 +9672,7 @@
       "null"
     ],
     "path": "Story/7DeadlyDragons/Core7DD.cs",
-    "size": 14799,
+    "size": 14837,
     "fileName": "Core7DD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Core7DD.cs"
   },
