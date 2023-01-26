@@ -1020,7 +1020,7 @@ public class CoreFarms
 
     public void BrethwrenREP(int rank = 10)
     {
-        if (FactionRank("Brethwren") >= rank)
+        if (FactionRank("Brethwren") >= rank || !Core.isSeasonalMapActive("birdswithharms"))
             return;
 
         if (!Bot.Quests.IsAvailable(8989))
