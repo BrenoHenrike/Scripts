@@ -1342,7 +1342,7 @@ public class CoreBots
 
     public List<Quest> EnsureLoad(params int[] questIDs)
     {
-        List<Quest>? quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest> quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (quests.Count == questIDs.Length)
             return quests;
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
@@ -1364,8 +1364,6 @@ public class CoreBots
 
     public void AbandonQuest(params int[] questIDs)
     {
-        if (questIDs == null || questIDs.Count() == 0)
-            return;
         foreach (var q in EnsureLoad(questIDs))
         {
             if (!q.Active)
@@ -2293,6 +2291,10 @@ public class CoreBots
                 break;
 
             #region Simple Quest Bypasses
+            case "maloth":
+                SimpleQuestBypass(6005);
+                break;
+
             case "lycan":
                 SimpleQuestBypass(598);
                 break;

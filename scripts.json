@@ -30,7 +30,7 @@
       "bots"
     ],
     "path": "CoreBots.cs",
-    "size": 127178,
+    "size": 127270,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -981,13 +981,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EssenceofDefeatReagent.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nation Loyalty Rewarded",
+    "description": "Does the Nation Loyalty Rewarded Quest to max the quest rewards.",
     "tags": [
-      "null"
+      "nation loyalty rewarded",
+      "nulgath",
+      "nation",
+      "dark crystal shard",
+      "diamond of nulgath",
+      "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2351,
+    "size": 2682,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
