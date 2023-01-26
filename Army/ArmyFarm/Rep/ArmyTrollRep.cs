@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army Troll Rep
+description: Farm reputation with your army. Faction: Troll
+tags: troll, rep, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

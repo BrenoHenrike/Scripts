@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Brethwren Rep
 description: Farm reputation with your army. Faction: Brethwren
 tags: army, reputation, brethwren
 */
@@ -50,7 +50,7 @@ public class ArmyBrethwrenRep
 
     public void Setup()
     {
-        if (Farm.FactionRank("Brethwren") >= 10)
+        if (Farm.FactionRank("Brethwren") >= 10 || !Core.isSeasonalMapActive("birdswithharms"))
             return;
 
         HarvestDay.BirdsWithHarms();

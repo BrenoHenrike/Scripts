@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army LowTide Merge Reqs
+description: Gets the Merge item requirements for the Low Tide merge shop.
+tags: merge, shop, low tide, rquirements
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

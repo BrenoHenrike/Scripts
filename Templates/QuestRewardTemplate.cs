@@ -19,15 +19,23 @@ public class QuestRewardTemplate
     {
         Core.SetOptions();
 
+        DoQuest();
+
+        Core.SetOptions(true);
+    }
+
+    public void DoQuest()
+    {
+
         QuestsIfNeeded(); //fillin below
         RequiredItems("item", "item"); // Replace these
-
+        
+        // RandomReward(0000, 1);//-----|
+        // SelectReward(0000, 1);//-----| Pick one
+        // AutoReward(0000, 1);  //-----|
         // "//" the one you want to use.
-
-        // RandomReward(questID, quant);
-        // SelectReward(questID, quant);
-        // AutoReward(questID, quant);
     }
+
 
     //Use RandomReward for non-guaranteed Rewards
     //Use AutoReward for Quests with Selectable Rewards that you want all of them
@@ -36,7 +44,7 @@ public class QuestRewardTemplate
 
     //Basicly when making Set/simple quest reward scripts... pick one of these // the rest in scriptmain 👍
 
-    private void RandomReward(int questID, int quant)
+    private void RandomReward(int questID = 0000, int quant = 1)
     {
         int i = 0;
 
@@ -56,7 +64,7 @@ public class QuestRewardTemplate
             else
             {
                 Core.FarmingLogger(Reward.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
+                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant, toInv: false))
                 {
 
                     //kill/Hunt Goes here.
@@ -73,7 +81,7 @@ public class QuestRewardTemplate
         }
     }
 
-    public void SelectReward(int questID, int quant)
+    public void SelectReward(int questID = 0000, int quant = 1)
     {
         ItemBase item = Core.EnsureLoad(questID).Rewards.Find(x => x.ID == itemID); //<-- replace 0000 with the itemID
 
@@ -88,25 +96,21 @@ public class QuestRewardTemplate
         Core.CancelRegisteredQuests();
     }
 
-    public void AutoReward(int questID, int quant)
+    public void AutoReward(int questID = 0000, int quant = 1)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
 
-        string[] Rewards = RewardsList.ToArray();
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
 
-        Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(questID);
-        foreach (string item in Rewards)
+        foreach (ItemBase item in RewardOptions)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
             {
+               Core.EnsureAccept(questID);
                 //Questing stuff here --
+               Core.EnsureComplete(questID, item.ID);
             }
-            Core.CancelRegisteredQuests();
         }
     }
 

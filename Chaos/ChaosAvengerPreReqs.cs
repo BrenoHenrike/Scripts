@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chaos Avenger Class
+description: Gets the prerequisites for the Chaos avengers class besides the insignias.
+tags: Chaos Avenger, class, prerequisites
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

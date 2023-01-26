@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Somnia Rep
 description: Farm reputation with your army. Faction: Somnia
 tags: army, reputation, somnia
 */

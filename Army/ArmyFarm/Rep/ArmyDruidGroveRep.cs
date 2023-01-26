@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army DruidGrove Rep
 description: Farm reputation with your army. Faction: Druid Grove
 tags: army, reputation, druid grove
 */

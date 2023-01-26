@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Paladin
+description: This bot farms the Paladin class for you.
+tags: warrior, healer, paladin, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

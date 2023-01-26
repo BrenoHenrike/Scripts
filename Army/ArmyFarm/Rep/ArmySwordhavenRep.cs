@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Swordhaven Rep
 description: Farm reputation with your army. Faction: Sword Haven
 tags: army, reputation, sword haven
 */

@@ -1,6 +1,6 @@
 /*
 name: null
-description: null
+description:  uses an army to farm: 
 tags: null
 */
 //cs_include Scripts/CoreBots.cs

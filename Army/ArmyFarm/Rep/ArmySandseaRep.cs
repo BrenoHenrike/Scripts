@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Sandsea Rep
 description: Farm reputation with your army. Faction: Sandsea
 tags: army, reputation, sandsea
 */

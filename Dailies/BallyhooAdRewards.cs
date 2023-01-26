@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ballyhoo Ad Rewards Daily
+description: realy just gets you 200-500 gold.. not realy usefull
+tags: Ballyhoo, rewards, useless
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

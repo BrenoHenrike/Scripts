@@ -25,45 +25,39 @@ public class BeetleGeneralPet
     {
         Core.SetOptions();
 
-        QuestsIfNeeded();
-        RequiredItems("Beetle General Pet");
+        RequiredItemsandQuests("Beetle General Pet");
         AutoReward(questID, quant);
+
+        Core.SetOptions(false);
+
     }
 
     public void AutoReward(int questID, int quant)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
 
-        string[] Rewards = RewardsList.ToArray();
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
 
-        Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(questID);
         Core.AddDrop("Red Ant Pet", "Beetle EXP");
-        foreach (string item in Rewards)
+        foreach (ItemBase item in RewardOptions)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
             {
+                Core.EnsureAccept(questID);
                 Core.HuntMonster("giant", "Red Ant", "Red Ant Pet", isTemp: false);
                 Nation.EssenceofNulgath(10);
-                HB.FreshSouls(10);
+                HB.FreshSouls(1, 10);
+                Core.EnsureComplete(questID, item.ID);
+                Core.JumpWait();
+                Core.ToBank(item.ID);
             }
-            Core.CancelRegisteredQuests();
         }
     }
 
-    public void QuestsIfNeeded()
+    void RequiredItemsandQuests(params string[] items)
     {
-        TSM.BuyAllMerge("Beetle General Pet");
-    }
-
-    void RequiredItems(params string[] items)
-    {
-        if (Core.CheckInventory(items) || items == null)
-            return;
-        else Core.Logger("Required Items not found, Stopping", stopBot: true);
+        if (!Core.CheckInventory("Beetle General Pet"))
+            TSM.BuyAllMerge("Beetle General Pet");
     }
 }

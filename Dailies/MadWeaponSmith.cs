@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mad Weapon Smith Daily
+description: does the daily for: Mad Weapon Smith
+tags: Daily, Mad Weapon Smith
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

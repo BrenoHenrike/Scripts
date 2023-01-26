@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Army DreadRock LT
+description: Uses an army to farm legion tokens at dreadrock
+tags: army, legion, dreadrock, legion tokens
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

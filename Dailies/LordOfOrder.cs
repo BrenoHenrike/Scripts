@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lord Of Order Daily
+description: does the daily for: Lord Of Order
+tags: Daily, Lord Of Order, LOO
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

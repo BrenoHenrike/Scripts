@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Elemental Master Rep
 description: Farm reputation with your army. Faction: Elemental Master
 tags: army, reputation, elemental master
 */

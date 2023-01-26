@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Dreadrock Rep
 description: Farm reputation with your army. Faction: Dreadrock
 tags: army, reputation, dreadrock
 */

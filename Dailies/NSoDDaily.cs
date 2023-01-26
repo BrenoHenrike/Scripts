@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Necrotic Sword of Doom Daily
+description: [use butler] does the daily:
+tags: Daily, NSod, necrotic sword of doom
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

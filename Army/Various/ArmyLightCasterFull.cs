@@ -1,6 +1,6 @@
 /*
-name: null
-description: null
+name: Army Light Caster
+description: uses an army to farm: 
 tags: null
 */
 //cs_include Scripts/CoreBots.cs

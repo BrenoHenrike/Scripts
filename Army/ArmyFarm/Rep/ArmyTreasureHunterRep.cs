@@ -1,6 +1,6 @@
 /*
-name: null
-description: null
+name: Army TreasureHunter Rep
+description: Farm reputation with your army. Faction: Treasure Hunter
 tags: null
 */
 //cs_include Scripts/CoreBots.cs

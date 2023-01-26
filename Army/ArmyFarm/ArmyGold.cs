@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Gold
 description: Uses different methods with your army to farm gold.
 tags: army, gold, battle ground e, dark war legion, dark war nation, seven circles war
 */

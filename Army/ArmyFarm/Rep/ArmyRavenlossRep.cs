@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Ravenloss Rep
 description: Farm reputation with your army. Faction: Ravenloss
 tags: army, reputation, ravenloss
 */

@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army NecroCrypt Rep
 description: Farm reputation with your army. Faction: Necro Crypt
 tags: army, reputation, necro crypt
 */

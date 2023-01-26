@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Aegis Rep
 description: Farm reputation with your army. Faction: Aegis
 tags: army, reputation, aegis
 */

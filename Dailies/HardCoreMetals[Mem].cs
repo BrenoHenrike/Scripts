@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: HardCore Metals Daily
+description: does the daily for:HardCore Metals
+tags: Daily, HardCore Metals, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

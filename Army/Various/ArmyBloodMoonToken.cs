@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: army blood moon tokens
+description: uses an army to farm blood moon tokens
+tags: blood moon tokens, army, seasonal, bloodmoon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army DoomWood Rep
 description: Farm reputation with your army. Faction: Doomwood
 tags: army, reputation, doomwood
 */

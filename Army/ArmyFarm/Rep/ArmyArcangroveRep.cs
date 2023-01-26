@@ -1,5 +1,5 @@
 /*
-name: null
+name: Army Arcangrove Rep
 description: Farm reputation with your army. Faction: Arcangrove
 tags: army, reputation, arcangrove
 */
