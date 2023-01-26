@@ -639,7 +639,7 @@ public class CoreArmyLite
 
                     // Log every 5 minutes
                     if (min % 5 == 0)
-                        Core.Logger($"The bot is has been hibernating for {min} minutes");
+                        Core.Logger($"The bot has been hibernating for {min} minutes");
                 }
             }
             if (b_breakOnMap != null && b_breakOnMap == Bot.Map.Name)
