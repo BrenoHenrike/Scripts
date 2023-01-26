@@ -390,7 +390,6 @@ public class Core7DD
         Story.KillQuest(6004, "Maloth", new[] { "Golgar", "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest" });
 
         // Confront the Dragon King 6005
-        Bot.Quests.UpdateQuest(6004);
         Story.KillQuest(6005, "Maloth", "Maloth");
     }
     #endregion Envy
