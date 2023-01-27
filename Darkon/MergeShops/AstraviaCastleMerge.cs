@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Astravia Castle Merge
+description:  Astravia Castle Merge
+tags: astravia castle, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

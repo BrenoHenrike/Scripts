@@ -1,7 +1,7 @@
 /*
-name: All Dailies
-description: Does all the avaiable dailies.
-tags: All Dailies, dailies, daily, All
+name:  All Dailies
+description:  Does all the avaiable dailies.
+tags: all dailies, dailies, daily, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description:  uses an army to farm: 
-tags: null
+name:  Army Prismatic Seams
+description:  
+tags: army, prismatic seams
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

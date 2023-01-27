@@ -1,7 +1,7 @@
 /*
-name: Cryomancer Daily
-description: does the daily for: Cryomancer
-tags: Daily, Cryomancer, class, seasonal
+name:  Cryomancer Daily
+description:  Cryomancer
+tags: daily, cryomancer, class, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

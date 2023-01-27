@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Farms the A Melody for the Darkon Debris 2 [reconstructed]
+description:  Farms the A Melody for the Darkon Debris 2 [reconstructed]
+tags: a melody, darkon, debris
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

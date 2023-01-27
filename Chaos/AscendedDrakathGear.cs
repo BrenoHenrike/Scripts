@@ -1,7 +1,7 @@
 /*
-name: Ascended Drakath Gear
-description: Farms the ascended Drakath Set
-tags: Ascended Drakath, Set, Drakath, Ascended Blade of Awe, Ascended Light of Destiny, Ascended Face of Chaos
+name:  Ascended Drakath Gear
+description:  Farms the ascended Drakath Set
+tags: ascended drakath, set, drakath, ascended blade of awe, ascended light of destiny, ascended face of chaos
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

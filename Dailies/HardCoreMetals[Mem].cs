@@ -1,7 +1,7 @@
 /*
-name: HardCore Metals Daily
-description: does the daily for:HardCore Metals
-tags: Daily, HardCore Metals, member
+name:  HardCore Metals Daily
+description:  HardCore Metals
+tags: daily, hardcore metals, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

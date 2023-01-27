@@ -1,7 +1,7 @@
 /*
-name: null
-description:  uses an army to farm: 
-tags: null
+name:  Army Penny for Your Thoughts
+description:  
+tags: army, penny for your thoughts, dark spirit orb
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
