@@ -1,6 +1,6 @@
 /*
-name: Iara seasonal story
-description: Do iara seasonal storyline
+name: Iara Story
+description: This will finish the Iara seasonal storyline.
 tags: iara, seasonal
 */
 //cs_include Scripts/CoreBots.cs
