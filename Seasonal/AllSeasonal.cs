@@ -1,6 +1,6 @@
 /*
-name:  All Seasonal Story
-description:  This will finish all of seasonal story on current month.
+name: All Seasonal Story
+description: This will finish all of seasonal story on current month.
 tags: seasonal, story
 */
 //cs_include Scripts/CoreBots.cs
