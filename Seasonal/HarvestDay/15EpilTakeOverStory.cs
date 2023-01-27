@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Epil Take Over Story
+description: This will finish the Ebil Take Over storyline.
+tags: ebil-take-over-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

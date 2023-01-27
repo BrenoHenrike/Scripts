@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Frostvale All Stories
+description: This will finish the entire frostvale storylines.
+tags: frostvale-story, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

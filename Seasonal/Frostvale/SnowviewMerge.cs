@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Snowview Merge
+description: This will get all or selected items on this merge shop.
+tags: snowview-merge, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

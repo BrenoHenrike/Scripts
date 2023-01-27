@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Eggsplorer Helmets
+description: This will finish the Bring me the GREEN Eggs quest to obtain the eggsplorer helmets.
+tags: eggsplorer-helmet, bring-me-the-green-eggs, seasonal, easter
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Donated ACs Checker
+description: This will check all of the accounts you provided that stored locally for ACs recieved from the event.
+tags: donated-acs-checker, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

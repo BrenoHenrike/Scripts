@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nightmare War Story
+description: This will finish the Nightmare War storyline.
+tags: nightmare-war-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

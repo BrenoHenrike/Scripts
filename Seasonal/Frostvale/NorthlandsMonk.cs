@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Northlands Monk (Class)
+description: This will kill the FrozenSoul Queen that drops the Northlands Monk (Class).
+tags: northlands-monk, seasonal, class, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

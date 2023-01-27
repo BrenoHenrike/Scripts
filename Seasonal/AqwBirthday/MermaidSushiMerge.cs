@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mermaid Sushi Merge
+description: This will get all or selected items on this merge shop.
+tags: mermaid-sushi-merge, seasonal, aqw-anniversary
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

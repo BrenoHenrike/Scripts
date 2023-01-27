@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Wormhole Story
+description: This will finish the Wormhole Storyline.
+tags: wormhole-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

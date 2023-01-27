@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Iara seasonal story
+description:  Do iara seasonal storyline
+tags: iara, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

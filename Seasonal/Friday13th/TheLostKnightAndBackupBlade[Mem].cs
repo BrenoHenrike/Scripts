@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: The Lost Knight Set and Backup Blade (Member Only)
+description: This will do the required quest for the The Lost Knight Set and Backup Blade Cape.
+tags: the-lost-knight, backup-blade, member, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

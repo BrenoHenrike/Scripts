@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Dragon Shinobi Merge
+description: This will get all or selected items on this merge shop.
+tags: shadow-dragon-shinobi-merge, black-friday, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

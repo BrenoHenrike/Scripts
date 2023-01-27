@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gonna Getcha Story
+description: This will finish the Gonna Getcha Storyline.
+tags: gonna-getcha-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
