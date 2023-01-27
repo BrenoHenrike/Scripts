@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gothic Dream Story
+description: This will finish the Gothic Dream storyline.
+tags: gothic-dream-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

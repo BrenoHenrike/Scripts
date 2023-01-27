@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Easter Egg House
+description: This will finish the Bring me the MULTICOLORED Egg quest to obtain the Easter Egg House.
+tags: easter-egg-house, bring-me-the-multicoloredeggs, seasonal, easter
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ebil Corp HQ Story
+description: This will finish the Ebil Corp HQ storyline.
+tags: ebil-corp-hq-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fire House Story
+description: This will finish the Fire House story.
+tags: fire-house-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

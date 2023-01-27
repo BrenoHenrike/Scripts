@@ -848,24 +848,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/SwordMaster.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Iara Story",
+    "description": "This will finish the Iara seasonal storyline.",
     "tags": [
-      "null"
+      "iara",
+      "seasonal"
     ],
     "path": "Seasonal/IaraStory.cs",
-    "size": 1006,
+    "size": 1063,
     "fileName": "IaraStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IaraStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "All Seasonal Story",
+    "description": "This will finish all of seasonal story on current month.",
     "tags": [
-      "null"
+      "seasonal",
+      "story"
     ],
     "path": "Seasonal/AllSeasonal.cs",
-    "size": 9416,
+    "size": 9493,
     "fileName": "AllSeasonal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
@@ -5958,57 +5960,67 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionExcercise/LegionExercise4.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Technocaster Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "technocaster-merge",
+      "black-friday",
+      "seasonal"
     ],
     "path": "Seasonal/BlackFriday/TechnocasterMerge.cs",
-    "size": 5737,
+    "size": 5840,
     "fileName": "TechnocasterMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/TechnocasterMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Dragon Shinobi Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "shadow-dragon-shinobi-merge",
+      "black-friday",
+      "seasonal"
     ],
     "path": "Seasonal/BlackFriday/ShadowDragonShinobiMerge.cs",
-    "size": 4744,
+    "size": 4865,
     "fileName": "ShadowDragonShinobiMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowDragonShinobiMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Creepy Undead Monkey",
+    "description": "This will do the Creepy Undead Monkey quest to obtain all of the reward items.",
     "tags": [
-      "null"
+      "creepy-undead-monkey",
+      "black-friday",
+      "seasonal"
     ],
     "path": "Seasonal/BlackFriday/CreepyUndeadMonkeyQuest.cs",
-    "size": 3255,
+    "size": 3385,
     "fileName": "CreepyUndeadMonkeyQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/CreepyUndeadMonkeyQuest.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ebony DragonBlade of Nulgath",
+    "description": "This will get the Ebony DragonBlade of Nulgath.",
     "tags": [
-      "null"
+      "ebony-dragonblade-of-nulgath",
+      "ebony-dbon"
     ],
     "path": "Seasonal/BlackFriday/EbonyDragonBladeOfNulgath.cs",
-    "size": 1478,
+    "size": 1586,
     "fileName": "EbonyDragonBladeOfNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/EbonyDragonBladeOfNulgath.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Alpha Hunter And Rogue Set",
+    "description": "This will do the quest to obtain the Alpha Hunter and Rogue set.",
     "tags": [
-      "null"
+      "alpha-hunter",
+      "alpha-rogue",
+      "black-friday",
+      "seasonal"
     ],
     "path": "Seasonal/BlackFriday/AlphaHunterAndRogue.cs",
-    "size": 1736,
+    "size": 1863,
     "fileName": "AlphaHunterAndRogue.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/AlphaHunterAndRogue.cs"
   },
@@ -6057,222 +6069,266 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/FaerieCourtREP.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Frozen Soul Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "frozen-soul-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/FrozenSoulMerge.cs",
-    "size": 6114,
+    "size": 6212,
     "fileName": "FrozenSoulMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrozenSoulMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Frostvale All Stories",
+    "description": "This will finish the entire frostvale storylines.",
     "tags": [
-      "null"
+      "frostvale-story",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/Frostvale.cs",
-    "size": 33410,
+    "size": 33504,
     "fileName": "Frostvale.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Frostvale.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Frostval Barbarian (Class)",
+    "description": "This will finish the required quest and farms the required materials in order to get the Frostval Barbarian (Class).",
     "tags": [
-      "null"
+      "frostval-barbarian",
+      "class",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/FrostvalBarbarian.cs",
-    "size": 3657,
+    "size": 3833,
     "fileName": "FrostvalBarbarian.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrostvalBarbarian.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Enchanted Mountaineer & FlameHeart Warrior Set",
+    "description": "This will do the quest to obtain the Enchanted Mountaineer and FlameHeart Warrior Sets.",
     "tags": [
-      "null"
+      "flameheart-warrior",
+      "enchanted-mountaineer",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/EnchantedMountaineerAndFlameHeartWarriorSets.cs",
-    "size": 2030,
+    "size": 2213,
     "fileName": "EnchantedMountaineerAndFlameHeartWarriorSets.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/EnchantedMountaineerAndFlameHeartWarriorSets.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tinsel's Gifts",
+    "description": "This will finish all of Tinsel's quest and obtain all of the quest rewards.",
     "tags": [
-      "null"
+      "tinsels-gifts",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/TinselGifts.cs",
-    "size": 2805,
+    "size": 2916,
     "fileName": "TinselGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/TinselGifts.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Snowview Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "snowview-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/SnowviewMerge.cs",
-    "size": 5257,
+    "size": 5349,
     "fileName": "SnowviewMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Chilly's Participation",
+    "description": "This will finish the quest that is required to get free acs throughout the event.",
     "tags": [
-      "null"
+      "chillys-participation",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/ChillysParticipation.cs",
-    "size": 972,
+    "size": 1105,
     "fileName": "ChillysParticipation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/ChillysParticipation.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bow Jangles Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "bow-jangles-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/BowJanglesMerge.cs",
-    "size": 5237,
+    "size": 5335,
     "fileName": "BowJanglesMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/BowJanglesMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "World Savior & Frost Defanged Badge",
+    "description": "This will finish the required quest in order to get the badge.",
     "tags": [
-      "null"
+      "frost-defanged-badge",
+      "world-savior-badge",
+      "frostvale",
+      "seasonal"
     ],
     "path": "Seasonal/Frostvale/FrostvaleBadges.cs",
-    "size": 1190,
+    "size": 1336,
     "fileName": "FrostvaleBadges.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrostvaleBadges.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Huntress Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "huntress-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/HuntressMerge.cs",
-    "size": 7930,
+    "size": 8027,
     "fileName": "HuntressMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/HuntressMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Refreshment Retrieval",
+    "description": "This will obtain all of the reward items on Refreshment Retrieval quest.",
     "tags": [
-      "null"
+      "refreshment-retrieval",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/RefreshmentRetrieval.cs",
-    "size": 1901,
+    "size": 2024,
     "fileName": "RefreshmentRetrieval.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/RefreshmentRetrieval.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Yulecat Drops",
+    "description": "This will repeatedly kill Yulecat until you got all of the drops.",
     "tags": [
-      "null"
+      "yulecat-drops",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/Yulecat.cs",
-    "size": 1899,
+    "size": 1999,
     "fileName": "Yulecat.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Yulecat.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mount Otzi Story",
+    "description": "This will finish the Mount Otzi Storyline.",
     "tags": [
-      "null"
+      "mount-otzi-story",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/MountOtzi.cs",
-    "size": 2623,
+    "size": 2706,
     "fileName": "MountOtzi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/MountOtzi.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Helsgrove Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "helsgrove-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/HelsgroveMerge.cs",
-    "size": 5338,
+    "size": 5432,
     "fileName": "HelsgroveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/HelsgroveMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Donated ACs Checker",
+    "description": "This will check all of the accounts you provided that stored locally for ACs recieved from the event.",
     "tags": [
-      "null"
+      "donated-acs-checker",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/CheckForDonantedACs.cs",
-    "size": 5703,
+    "size": 5851,
     "fileName": "CheckForDonantedACs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Winter Horror War Rewards Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "winter-horror-war-rewards-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs",
-    "size": 4650,
+    "size": 4776,
     "fileName": "WinterHorrorWarRewardsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Caroling Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "caroling-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/CarolingMerge.cs",
-    "size": 5892,
+    "size": 5984,
     "fileName": "CarolingMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CarolingMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Northlands Monk (Class)",
+    "description": "This will kill the FrozenSoul Queen that drops the Northlands Monk (Class).",
     "tags": [
-      "null"
+      "northlands-monk",
+      "seasonal",
+      "class",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/NorthlandsMonk.cs",
-    "size": 1299,
+    "size": 1428,
     "fileName": "NorthlandsMonk.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/NorthlandsMonk.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Snowview Race Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "snowview-race-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/SnowviewRaceMerge.cs",
-    "size": 4294,
+    "size": 4396,
     "fileName": "SnowviewRaceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewRaceMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gundahar's Stash Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "gundahars-stash-merge",
+      "seasonal",
+      "frostvale"
     ],
     "path": "Seasonal/Frostvale/GundaharsStashMerge.cs",
-    "size": 5018,
+    "size": 5125,
     "fileName": "GundaharsStashMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/GundaharsStashMerge.cs"
   },
@@ -6321,35 +6377,41 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/DarkLord.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Kala Story",
+    "description": "This will finish the Kala storyline.",
     "tags": [
-      "null"
+      "kala-story",
+      "kala",
+      "seasonal"
     ],
     "path": "Seasonal/August/Kala.cs",
-    "size": 2264,
+    "size": 2324,
     "fileName": "Kala.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/Kala.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Rangda Story",
+    "description": "This will finish the Rangda storyline.",
     "tags": [
-      "null"
+      "rangda-story",
+      "rangda",
+      "seasonal"
     ],
     "path": "Seasonal/August/Rangda.cs",
-    "size": 1915,
+    "size": 1983,
     "fileName": "Rangda.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/Rangda.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Abhorrent Remains Farm",
+    "description": "Farms the max Abhorrent Remains quantity.",
     "tags": [
-      "null"
+      "abhorrent-remains",
+      "kala",
+      "seasonal"
     ],
     "path": "Seasonal/August/KalaMergeAbhorrentRemains.cs",
-    "size": 1377,
+    "size": 1461,
     "fileName": "KalaMergeAbhorrentRemains.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/KalaMergeAbhorrentRemains.cs"
   },
@@ -6684,200 +6746,248 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BlazingBeachMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Aspiring Necromancer Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "aspiring-necromancer-merge",
+      "seasonal",
+      "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/AspiringNecromancerMerge.cs",
-    "size": 6492,
+    "size": 6614,
     "fileName": "AspiringNecromancerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/AspiringNecromancerMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Aspiring Necromancer Rewards",
+    "description": "This will do the 3 Aspiring Necromancer quest and obtain all of the rewards.",
     "tags": [
-      "null"
+      "aspiring-necromancer",
+      "aqw-anniversary",
+      "seasonal"
     ],
     "path": "Seasonal/AqwBirthday/AspiringNecromancer.cs",
-    "size": 2548,
+    "size": 2687,
     "fileName": "AspiringNecromancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/AspiringNecromancer.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "AQW 20th Anniversary Story",
+    "description": "This will finish the storyline of 20th anniversary.",
     "tags": [
-      "null"
+      "20th-anniv",
+      "free-acs",
+      "seasonal"
     ],
     "path": "Seasonal/AqwBirthday/20thAnniversary.cs",
-    "size": 6924,
+    "size": 7019,
     "fileName": "20thAnniversary.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/20thAnniversary.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sweet Birthday Treats Rewards",
+    "description": "This will do the Sweet Birthday Treats quest and obtain all of the rewards.",
     "tags": [
-      "null"
+      "sweet-birthday-treats",
+      "seasonal",
+      "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/SweatBirthdayTreatsRewards.cs",
-    "size": 1810,
+    "size": 1950,
     "fileName": "SweatBirthdayTreatsRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/SweatBirthdayTreatsRewards.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mermaid Sushi Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "mermaid-sushi-merge",
+      "seasonal",
+      "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/MermaidSushiMerge.cs",
-    "size": 3616,
+    "size": 3724,
     "fileName": "MermaidSushiMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/MermaidSushiMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Twilly's Treasure Pile",
+    "description": "This will do the Twilly's Treasure Pile quest and obtain all of the rewards.",
     "tags": [
-      "null"
+      "twillys-treasure-pile",
+      "seasonal",
+      "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/TwillyTreasurePile.cs",
-    "size": 2087,
+    "size": 2221,
     "fileName": "TwillyTreasurePile.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/TwillyTreasurePile.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Zorbak's Merge Shop",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "zorbaks-merge",
+      "seasonal",
+      "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/ZorbaksMerge.cs",
-    "size": 13375,
+    "size": 13477,
     "fileName": "ZorbaksMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/ZorbaksMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Beleen's Party Presents Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "beleens-party-presents-merge",
+      "seasonal",
+      "aqw-anniverasary"
     ],
     "path": "Seasonal/AqwBirthday/BeleensPartyPresentsMerge.cs",
-    "size": 8939,
+    "size": 9067,
     "fileName": "BeleensPartyPresentsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/BeleensPartyPresentsMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "SpellRaiser Set (Member Only)",
+    "description": "This will do the required quest for the SpellRaiser Set.",
     "tags": [
-      "null"
+      "spellraiser",
+      "member",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/SpellRaiser[Mem].cs",
-    "size": 1349,
+    "size": 1468,
     "fileName": "SpellRaiser[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/SpellRaiser[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Trobbolier Pet (Member Only)",
+    "description": "This will finish the required quest to obtain all of the Trobbolier Pets.",
     "tags": [
-      "null"
+      "trobbolier-pet",
+      "member",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/TrobbolierPet[mem].cs",
-    "size": 1741,
+    "size": 1879,
     "fileName": "TrobbolierPet[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/TrobbolierPet[mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "The Lost Knight Set and Backup Blade (Member Only)",
+    "description": "This will do the required quest for the The Lost Knight Set and Backup Blade Cape.",
     "tags": [
-      "null"
+      "the-lost-knight",
+      "backup-blade",
+      "member",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs",
-    "size": 1405,
+    "size": 1589,
     "fileName": "TheLostKnightAndBackupBlade[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Candyshell Merge Materials",
+    "description": "Farms all of the candyshell materials at max quantity.",
     "tags": [
-      "null"
+      "candyshell-merge",
+      "seasonal",
+      "easter",
+      "materials",
+      "mats"
     ],
     "path": "Seasonal/Grenwog(Easter)/CandyshellMerge(VariousItems).cs",
-    "size": 3149,
+    "size": 3268,
     "fileName": "CandyshellMerge(VariousItems).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/CandyshellMerge(VariousItems).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Steampunk Eggsplorer Armor",
+    "description": "This will finish the Bring me the PURPLE Eggs! quest to obtain the Steampunk Eggsplorer Armor.",
     "tags": [
-      "null"
+      "steampunk-eggsplorer-armor",
+      "bring-me-the-purple-eggs",
+      "seasonal",
+      "easter"
     ],
     "path": "Seasonal/Grenwog(Easter)/BringmethePURPLEEggs!(Armor).cs",
-    "size": 857,
+    "size": 1035,
     "fileName": "BringmethePURPLEEggs!(Armor).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmethePURPLEEggs!(Armor).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Steampunk Weapons",
+    "description": "This will finish the Bring me the BLUE Eggs quest to obtain all of the steampunk weapons.",
     "tags": [
-      "null"
+      "steampunk-weapons",
+      "bring-me-the-blue-eggs",
+      "seasonal",
+      "easter"
     ],
     "path": "Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs",
-    "size": 1270,
+    "size": 1423,
     "fileName": "BringmetheBLUEEggs!(Weapons).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "The Eggcubator",
+    "description": "This will finish the Bring me the PINK Eggs! quest to obtain The Eggcubator Cape.",
     "tags": [
-      "null"
+      "the-eggcubator",
+      "bring-me-the-pink-eggs",
+      "seasonal",
+      "easter"
     ],
     "path": "Seasonal/Grenwog(Easter)/BringmethePINKEggs!(Cape).cs",
-    "size": 787,
+    "size": 926,
     "fileName": "BringmethePINKEggs!(Cape).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmethePINKEggs!(Cape).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Easter Egg House",
+    "description": "This will finish the Bring me the MULTICOLORED Egg quest to obtain the Easter Egg House.",
     "tags": [
-      "null"
+      "easter-egg-house",
+      "bring-me-the-multicoloredeggs",
+      "seasonal",
+      "easter"
     ],
     "path": "Seasonal/Grenwog(Easter)/BringmetheMULTICOLOREDEggs!(House).cs",
-    "size": 874,
+    "size": 1031,
     "fileName": "BringmetheMULTICOLOREDEggs!(House).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheMULTICOLOREDEggs!(House).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Berserker Bunny Armor",
+    "description": "This will finish the quest to obtain the Berserker Bunny Armor.",
     "tags": [
-      "null"
+      "berserker-bunny-armor",
+      "seasonal",
+      "easter",
+      "BBA"
     ],
     "path": "Seasonal/Grenwog(Easter)/BerserkerBunnyArmor.cs",
-    "size": 1139,
+    "size": 1255,
     "fileName": "BerserkerBunnyArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BerserkerBunnyArmor.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Eggsplorer Helmets",
+    "description": "This will finish the Bring me the GREEN Eggs quest to obtain the eggsplorer helmets.",
     "tags": [
-      "null"
+      "eggsplorer-helmet",
+      "bring-me-the-green-eggs",
+      "seasonal",
+      "easter"
     ],
     "path": "Seasonal/Grenwog(Easter)/BringmetheGREENEggs!(Helms).cs",
-    "size": 1283,
+    "size": 1433,
     "fileName": "BringmetheGREENEggs!(Helms).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheGREENEggs!(Helms).cs"
   },
@@ -7069,68 +7179,80 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/01MogloweenStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "DERP! Badge",
+    "description": "This will get the DERP! Badge.",
     "tags": [
-      "null"
+      "derp-badge",
+      "seasonal",
+      "april-fools"
     ],
     "path": "Seasonal/AprilFools/DERP!Badge.cs",
-    "size": 1181,
+    "size": 1243,
     "fileName": "DERP!Badge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/DERP!Badge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Super Slayin Badge",
+    "description": "This will get the Super Slayin Badge.",
     "tags": [
-      "null"
+      "super-slayin-badge",
+      "seasonal",
+      "april-fools"
     ],
     "path": "Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs",
-    "size": 1300,
+    "size": 1384,
     "fileName": "SuperSLAYIN'Badge(GardenQuest).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mmmm, Meaty Quest Rewards",
+    "description": "This will obtain all of the Quest Rewards.",
     "tags": [
-      "null"
+      "mmmm-meaty-quest",
+      "seasonal",
+      "april-fools"
     ],
     "path": "Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs",
-    "size": 1678,
+    "size": 1772,
     "fileName": "Mmmm,Meaty(or)(MeatyShard).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Meateor Hunt Story",
+    "description": "This will finish the Meateor Hunt storyline.",
     "tags": [
-      "null"
+      "meateor-hunt",
+      "seasonal",
+      "april-fools"
     ],
     "path": "Seasonal/AprilFools/MeateorHunt.cs",
-    "size": 3644,
+    "size": 3729,
     "fileName": "MeateorHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorHunt.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Unoriginal Recipe Farm",
+    "description": "Farms the max Unoriginal Recipe quantity.",
     "tags": [
-      "null"
+      "unoriginal-recipe",
+      "seasonal",
+      "april-fools"
     ],
     "path": "Seasonal/AprilFools/MeateorHuntMerge(UnoriginalRecipe).cs",
-    "size": 1546,
+    "size": 1637,
     "fileName": "MeateorHuntMerge(UnoriginalRecipe).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorHuntMerge(UnoriginalRecipe).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Vegetable Token Farm",
+    "description": "Farms the max vegetable token quantity.",
     "tags": [
-      "null"
+      "vegetable-token",
+      "seasonal",
+      "april-fools"
     ],
     "path": "Seasonal/AprilFools/GardenQuestMerge(VegetableToken).cs",
-    "size": 1099,
+    "size": 1184,
     "fileName": "GardenQuestMerge(VegetableToken).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/GardenQuestMerge(VegetableToken).cs"
   },
@@ -7146,79 +7268,95 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWarMerge(VariousMaterials).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Artix Home Story (Member)",
+    "description": "This will finish the Artix Home storyline.",
     "tags": [
-      "null"
+      "artix-home-story",
+      "member",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/06ArtixHomeStory[Member].cs",
-    "size": 581,
+    "size": 683,
     "fileName": "06ArtixHomeStory[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/06ArtixHomeStory[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Epil Take Over Story",
+    "description": "This will finish the Ebil Take Over storyline.",
     "tags": [
-      "null"
+      "ebil-take-over-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/15EpilTakeOverStory.cs",
-    "size": 587,
+    "size": 684,
     "fileName": "15EpilTakeOverStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/15EpilTakeOverStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Foul Farm Story",
+    "description": "This will finish the Foul Farm storyline.",
     "tags": [
-      "null"
+      "foul-farm-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/07FoulFarmStory.cs",
-    "size": 579,
+    "size": 661,
     "fileName": "07FoulFarmStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/07FoulFarmStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Harvest Story",
+    "description": "This will finish the Harvest storyline.",
     "tags": [
-      "null"
+      "harvest-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/01HarvestStory.cs",
-    "size": 577,
+    "size": 653,
     "fileName": "01HarvestStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/01HarvestStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Turdraken Story (Member)",
+    "description": "This will finish the Turdaken storyline.",
     "tags": [
-      "null"
+      "turdraken-story",
+      "seasonal",
+      "harvest-day",
+      "member"
     ],
     "path": "Seasonal/HarvestDay/02TurdrakenStory[Member].cs",
-    "size": 581,
+    "size": 679,
     "fileName": "02TurdrakenStory[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/02TurdrakenStory[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Meatlab Story",
+    "description": "This will finish the Meatlab storyline.",
     "tags": [
-      "null"
+      "meatlab-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/11MeatLabStory.cs",
-    "size": 577,
+    "size": 653,
     "fileName": "11MeatLabStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/11MeatLabStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gothic Dream Story",
+    "description": "This will finish the Gothic Dream storyline.",
     "tags": [
-      "null"
+      "gothic-dream-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/12GothicDreamStory.cs",
-    "size": 585,
+    "size": 676,
     "fileName": "12GothicDreamStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/12GothicDreamStory.cs"
   },
@@ -7234,156 +7372,186 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/CoreHarvestDay.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Birds with Harms Story",
+    "description": "This will finish the Birds with Harms storyline.",
     "tags": [
-      "null"
+      "birds-with-harms-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/16BirdsWithHarmsStory.cs",
-    "size": 583,
+    "size": 686,
     "fileName": "16BirdsWithHarmsStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/16BirdsWithHarmsStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Float Story (Member)",
+    "description": "This will finish the Float storyline.",
     "tags": [
-      "null"
+      "float-story",
+      "seasonal",
+      "harvest-day",
+      "member"
     ],
     "path": "Seasonal/HarvestDay/03FloatStory[Member].cs",
-    "size": 573,
+    "size": 660,
     "fileName": "03FloatStory[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/03FloatStory[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "No Egrets Badge",
+    "description": "This will get the No Egrets Badge.",
     "tags": [
-      "null"
+      "no-egrets-badge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/NoEgretsBadge.cs",
-    "size": 1066,
+    "size": 1141,
     "fileName": "NoEgretsBadge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/NoEgretsBadge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Birthday Feast Rewards",
+    "description": "This will obtain all of the quest rewards of your quest choice.",
     "tags": [
-      "null"
+      "birthday-feast-quest-rewards",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/BirthdayFeastQuestRewards.cs",
-    "size": 7060,
+    "size": 7184,
     "fileName": "BirthdayFeastQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/BirthdayFeastQuestRewards.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Memet Nightmare Story",
+    "description": "This will finish the Memet Nightmare storyline.",
     "tags": [
-      "null"
+      "memet-nightmare-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/13MemetNightmareStory.cs",
-    "size": 591,
+    "size": 691,
     "fileName": "13MemetNightmareStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/13MemetNightmareStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Killer Kitchen Story",
+    "description": "This will finish the Killer Kitchen storyline.",
     "tags": [
-      "null"
+      "killer-kitchen-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/08KillerKitchenStory.cs",
-    "size": 589,
+    "size": 686,
     "fileName": "08KillerKitchenStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/08KillerKitchenStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nightmare War Story",
+    "description": "This will finish the Nightmare War storyline.",
     "tags": [
-      "null"
+      "nightmare-war-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/14NightmareWarStory.cs",
-    "size": 587,
+    "size": 681,
     "fileName": "14NightmareWarStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/14NightmareWarStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Grams Story",
+    "description": "This will finish the Grams storyline.",
     "tags": [
-      "null"
+      "grams-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/05GramsStory.cs",
-    "size": 573,
+    "size": 643,
     "fileName": "05GramsStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/05GramsStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Harvest Day All Stories",
+    "description": "This will finish the entire Harvest Day storylines.",
     "tags": [
-      "null"
+      "harvest-day-stories",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/00DoAllHarvestDay.cs",
-    "size": 578,
+    "size": 682,
     "fileName": "00DoAllHarvestDay.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/00DoAllHarvestDay.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Furborg Ship Story",
+    "description": "This will finish the Furborg Ship storyline.",
     "tags": [
-      "null"
+      "furborg-ship-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/10FurborgShipStory.cs",
-    "size": 585,
+    "size": 676,
     "fileName": "10FurborgShipStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/10FurborgShipStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Furble Feast Story",
+    "description": "This will finish the Furble Feast storyline.",
     "tags": [
-      "null"
+      "furble-feast-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/09FurbleFeastStory.cs",
-    "size": 585,
+    "size": 676,
     "fileName": "09FurbleFeastStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/09FurbleFeastStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Brethwren REP Farm",
+    "description": "This will farm Brethwren Faction to Rank 10.",
     "tags": [
-      "null"
+      "brethwren-rep",
+      "farm",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/BrethwrenREP.cs",
-    "size": 678,
+    "size": 770,
     "fileName": "BrethwrenREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/BrethwrenREP.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ebil Corp HQ Story",
+    "description": "This will finish the Ebil Corp HQ storyline.",
     "tags": [
-      "null"
+      "ebil-corp-hq-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/17EbilCorpHQStory.cs",
-    "size": 582,
+    "size": 673,
     "fileName": "17EbilCorpHQStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/17EbilCorpHQStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Banquet Story",
+    "description": "This will finish the Banquet storyline.",
     "tags": [
-      "null"
+      "banquet-story",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/04BanquetStory.cs",
-    "size": 577,
+    "size": 653,
     "fileName": "04BanquetStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/04BanquetStory.cs"
   },
@@ -11681,112 +11849,132 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Saloon Front Story",
+    "description": "This will finish the Saloon Front story.",
     "tags": [
-      "null"
+      "saloon-front-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/03Saloonfront.cs",
-    "size": 559,
+    "size": 650,
     "fileName": "03Saloonfront.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/03Saloonfront.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gonna Getcha Story",
+    "description": "This will finish the Gonna Getcha Storyline.",
     "tags": [
-      "null"
+      "gonna-getcha-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/10Gonnagetcha.cs",
-    "size": 559,
+    "size": 654,
     "fileName": "10Gonnagetcha.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/10Gonnagetcha.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Splatterwar Story",
+    "description": "This will finish the Splatterwar Storyline.",
     "tags": [
-      "null"
+      "splatterwar-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/13Splatterwar.cs",
-    "size": 560,
+    "size": 652,
     "fileName": "13Splatterwar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/13Splatterwar.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Skull Punch Story",
+    "description": "This will finish the Skull Punch story.",
     "tags": [
-      "null"
+      "skull-punch-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/01Skullpunch.cs",
-    "size": 557,
+    "size": 645,
     "fileName": "01Skullpunch.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/01Skullpunch.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Black Maze Story",
+    "description": "This will finish the Black Maze Storyline.",
     "tags": [
-      "null"
+      "black-maze-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/16BlackMaze.cs",
-    "size": 556,
+    "size": 645,
     "fileName": "16BlackMaze.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/16BlackMaze.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Battledoom Story",
+    "description": "This will finish the Battledoom story.",
     "tags": [
-      "null"
+      "battledoom-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/07Battledoom.cs",
-    "size": 557,
+    "size": 642,
     "fileName": "07Battledoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/07Battledoom.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Puzzlebox Story",
+    "description": "This will finish the Puzzlebox Storyline.",
     "tags": [
-      "null"
+      "puzzlebox-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/12Puzzlebox.cs",
-    "size": 555,
+    "size": 641,
     "fileName": "12Puzzlebox.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/12Puzzlebox.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lowe Story",
+    "description": "This will finish the Lowe story.",
     "tags": [
-      "null"
+      "lowe-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/02Lowe.cs",
-    "size": 545,
+    "size": 612,
     "fileName": "02Lowe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/02Lowe.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Neverhub Story",
+    "description": "This will finish the Neverhub story.",
     "tags": [
-      "null"
+      "neverhub-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/06Neverhub.cs",
-    "size": 553,
+    "size": 632,
     "fileName": "06Neverhub.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/06Neverhub.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Oddities Story",
+    "description": "This will finish the Oddities Storyline.",
     "tags": [
-      "null"
+      "oddities-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/15Oddities.cs",
-    "size": 553,
+    "size": 636,
     "fileName": "15Oddities.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/15Oddities.cs"
   },
@@ -11802,145 +11990,171 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/CoreFriday13th.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sleezter Story",
+    "description": "This will finish the Sleezter story.",
     "tags": [
-      "null"
+      "sleezter-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/05Sleezter.cs",
-    "size": 553,
+    "size": 632,
     "fileName": "05Sleezter.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/05Sleezter.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Deadfly Story",
+    "description": "This will finish the Deadfly Storyline.",
     "tags": [
-      "null"
+      "deadfly-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/14Deadfly.cs",
-    "size": 551,
+    "size": 631,
     "fileName": "14Deadfly.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/14Deadfly.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Wormhole Story",
+    "description": "This will finish the Wormhole Storyline.",
     "tags": [
-      "null"
+      "wormhole-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/08Wormhole.cs",
-    "size": 553,
+    "size": 636,
     "fileName": "08Wormhole.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/08Wormhole.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Greymoor Story",
+    "description": "This will finish the Greymoor Storyline.",
     "tags": [
-      "null"
+      "greymoor-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/11Greymoor.cs",
-    "size": 553,
+    "size": 636,
     "fileName": "11Greymoor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/11Greymoor.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Crownsreach FXIII Story",
+    "description": "This will finish the Crownsreach FXIII Storyline.",
     "tags": [
-      "null"
+      "crownsreach-fxiii-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/09CrownsreachFXIII.cs",
-    "size": 569,
+    "size": 679,
     "fileName": "09CrownsreachFXIII.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/09CrownsreachFXIII.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Friday the 13th Stories",
+    "description": "This will finish all of the Friday the 13th Stories.",
     "tags": [
-      "null"
+      "friday-the-13th",
+      "all-stories",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/00CompleteFriday13th.cs",
-    "size": 573,
+    "size": 683,
     "fileName": "00CompleteFriday13th.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/00CompleteFriday13th.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fire House Story",
+    "description": "This will finish the Fire House story.",
     "tags": [
-      "null"
+      "fire-house-story",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/Story/04Firehouse.cs",
-    "size": 555,
+    "size": 640,
     "fileName": "04Firehouse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/04Firehouse.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lore Trek Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "lore-trek-merge",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/MergeShops/LoreTrekMerge.cs",
-    "size": 5900,
+    "size": 6000,
     "fileName": "LoreTrekMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/LoreTrekMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Valarian's Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "valarians-merge",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/MergeShops/ValariansMerge.cs",
-    "size": 5797,
+    "size": 5898,
     "fileName": "ValariansMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/ValariansMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Oddities Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "oddities-merge",
+      "friday the 13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/MergeShops/OdditiesMerge.cs",
-    "size": 7308,
+    "size": 7406,
     "fileName": "OdditiesMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/OdditiesMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Deadfly Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "deadfly-merge",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/MergeShops/DeadflyMerge.cs",
-    "size": 5162,
+    "size": 5258,
     "fileName": "DeadflyMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/DeadflyMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gonna Getcha Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "gonna-getcha-merge",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/MergeShops/GonnaGetchaMerge.cs",
-    "size": 4599,
+    "size": 4705,
     "fileName": "GonnaGetchaMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/GonnaGetchaMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fabyo's Spooky Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "fabyos-spooky-merge",
+      "friday-the-13th",
+      "seasonal"
     ],
     "path": "Seasonal/Friday13th/MergeShops/FabyosSpookyMerge.cs",
-    "size": 5234,
+    "size": 5343,
     "fileName": "FabyosSpookyMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/FabyosSpookyMerge.cs"
   },
@@ -12022,68 +12236,80 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/TricktownMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Harvest Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "harvest-merge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/MergeShops/HarvestMerge.cs",
-    "size": 11669,
+    "size": 11761,
     "fileName": "HarvestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/HarvestMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nightmare Harvest Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "nightmare-harvest-merge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/MergeShops/NightmareHarvestMerge.cs",
-    "size": 6014,
+    "size": 6126,
     "fileName": "NightmareHarvestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/NightmareHarvestMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nightmare Harvest War Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "nightmare-harvest-war-merge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/MergeShops/NightmareHarvestWarMerge.cs",
-    "size": 6321,
+    "size": 6441,
     "fileName": "NightmareHarvestWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/NightmareHarvestWarMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ebil Corp Cafe Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "ebil-corp-cafe-merge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/MergeShops/EbilCorpCafeMerge.cs",
-    "size": 4633,
+    "size": 4739,
     "fileName": "EbilCorpCafeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/EbilCorpCafeMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ebil Corp HQ Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "ebil-corp-hq-merge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/MergeShops/EbilCorpHQMerge.cs",
-    "size": 8193,
+    "size": 8295,
     "fileName": "EbilCorpHQMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/EbilCorpHQMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Harvest Day Parade Merge",
+    "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "null"
+      "harvest-day-parade-merge",
+      "seasonal",
+      "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/MergeShops/HarvestDayParadeMerge.cs",
-    "size": 4058,
+    "size": 4172,
     "fileName": "HarvestDayParadeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/HarvestDayParadeMerge.cs"
   },

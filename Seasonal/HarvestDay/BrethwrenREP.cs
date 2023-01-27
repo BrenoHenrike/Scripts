@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Brethwren REP Farm
+description: This will farm Brethwren Faction to Rank 10.
+tags: brethwren-rep, farm, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

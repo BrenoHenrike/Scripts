@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: DERP! Badge
+description: This will get the DERP! Badge.
+tags: derp-badge, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

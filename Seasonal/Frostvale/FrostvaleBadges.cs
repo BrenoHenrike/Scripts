@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: World Savior & Frost Defanged Badge
+description: This will finish the required quest in order to get the badge.
+tags: frost-defanged-badge, world-savior-badge, frostvale, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

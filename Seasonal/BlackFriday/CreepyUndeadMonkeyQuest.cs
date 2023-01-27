@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Creepy Undead Monkey
+description: This will do the Creepy Undead Monkey quest to obtain all of the reward items.
+tags: creepy-undead-monkey, black-friday, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

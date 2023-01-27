@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tinsel's Gifts
+description: This will finish all of Tinsel's quest and obtain all of the quest rewards.
+tags: tinsels-gifts, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

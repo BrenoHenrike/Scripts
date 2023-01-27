@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Killer Kitchen Story
+description: This will finish the Killer Kitchen storyline.
+tags: killer-kitchen-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

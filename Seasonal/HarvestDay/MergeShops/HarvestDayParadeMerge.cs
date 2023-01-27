@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Harvest Day Parade Merge
+description: This will get all or selected items on this merge shop.
+tags: harvest-day-parade-merge, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

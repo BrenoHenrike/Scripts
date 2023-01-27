@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Deadfly Merge
+description: This will get all or selected items on this merge shop.
+tags: deadfly-merge, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Black Maze Story
+description: This will finish the Black Maze Storyline.
+tags: black-maze-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

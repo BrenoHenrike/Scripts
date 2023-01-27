@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Yulecat Drops
+description: This will repeatedly kill Yulecat until you got all of the drops.
+tags: yulecat-drops, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
