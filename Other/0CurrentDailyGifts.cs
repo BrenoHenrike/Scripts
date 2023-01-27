@@ -149,7 +149,7 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(31, 1), "timeritual", "Chronocide", "Space-timeless Claws", "Space-timeless Sword", "Space-timeless Staff", "Space-timeless Daggers", "Space-timeless Axe", "Hollowborn Alchemist's Fist");
             GetGift(Permanent, "brokenwoods", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diablocal Blade", "Inflamed Diabolical Tail", "Diabolical Banner", "Diabolical Bed", "Diablocal BookShelf", "Diabolical Torch");
             Bot.Quests.UpdateQuest(7874);
-            GetGift(AvailableUntil(31, 1), "dreampalace", "Zahad", "Mana Rift", "Mana Spiral");
+            GetGift(AvailableUntil(31, 1), "dreampalace", "Zahad", "Mana Rift", "Mana Spiral", "Golden Hawk of Dreams Statue", "Golden Lion of Dreams Statue");
             GetGift(AvailableUntil(31, 1), "tercessuinotlim", "Dark Makai", "Birthday Helm + Locks of Evil", "Birthday Helm + Locks of Good", "Birthday Helm of Evil", "Birthday Helm of Good");
 
             #endregion
