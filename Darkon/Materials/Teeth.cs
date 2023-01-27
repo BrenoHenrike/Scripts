@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Teeth
+description:  Teeth
+tags: darkon, teeth
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

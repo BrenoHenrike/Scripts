@@ -1,7 +1,7 @@
 /*
-name: null
-description:  uses an army to farm: 
-tags: null
+name:  Army Spirit Orbs
+description:  
+tags: army, spirit orb
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

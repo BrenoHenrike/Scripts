@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Bandits Correspondence
+description:  Bandits Correspondence
+tags: darkon, bandits correspondence
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: Power Gem Daily
-description: does the daily for: Power Gem
-tags: Daily, Power Gem
+name:  Power Gem Daily
+description:  Power Gem
+tags: daily, power gem
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

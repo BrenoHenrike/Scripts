@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Darkons First Errand
+description:  Darkons First Errand
+tags: darkon, errand, first
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

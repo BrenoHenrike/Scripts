@@ -1,7 +1,7 @@
 /*
-name: Eternal Drakath Set
-description: Gets the Eternal Drakath Set
-tags: Eternal Drakath Set, drakath, set
+name:  Eternal Drakath Set
+description:  Gets the Eternal Drakath Set
+tags: eternal drakath set, drakath, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: Treasure Chest Keys Daily
-description: does the daily for: reasure Chest Keys
-tags: Monthly, Treasure Chest Keys, member
+name:  Treasure Chest Keys Daily
+description:  reasure Chest Keys
+tags: monthly, treasure chest keys, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
