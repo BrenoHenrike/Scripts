@@ -4052,39 +4052,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Materials/DarknessShard.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/1%drops/1%Helmets.cs",
-    "size": 4262,
-    "fileName": "1%Helmets.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Helmets.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/1%drops/1%Pets.cs",
-    "size": 1707,
-    "fileName": "1%Pets.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Pets.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/1%drops/1%Armors.cs",
-    "size": 3320,
-    "fileName": "1%Armors.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Armors.cs"
-  },
-  {
     "name": "1% Drop Rate Capes",
     "description": "Farms all 1% drop rate capes.",
     "tags": [
@@ -4092,10 +4059,10 @@
       "cape",
       "drop-rate"
     ],
-    "path": "Other/1%drops/1%Capes.cs",
+    "path": "Other/OnePercentDrops/LowDRCapes.cs",
     "size": 3719,
-    "fileName": "1%Capes.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Capes.cs"
+    "fileName": "LowDRCapes.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRCapes.cs"
   },
   {
     "name": "null",
@@ -4103,10 +4070,43 @@
     "tags": [
       "null"
     ],
-    "path": "Other/1%drops/1%Weapons.cs",
+    "path": "Other/OnePercentDrops/LowDRHelmets.cs",
+    "size": 4262,
+    "fileName": "LowDRHelmets.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRHelmets.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/OnePercentDrops/LowDRPets.cs",
+    "size": 1707,
+    "fileName": "LowDRPets.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRPets.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/OnePercentDrops/LowDRArmors.cs",
+    "size": 3320,
+    "fileName": "LowDRArmors.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRArmors.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/OnePercentDrops/LowDRWeapons.cs",
     "size": 7338,
-    "fileName": "1%Weapons.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Weapons.cs"
+    "fileName": "LowDRWeapons.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRWeapons.cs"
   },
   {
     "name": "null",
