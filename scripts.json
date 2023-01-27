@@ -848,14 +848,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/SwordMaster.cs"
   },
   {
-    "name": "Iara seasonal story",
-    "description": "Do iara seasonal storyline",
+    "name": "Iara Story",
+    "description": "This will finish the Iara seasonal storyline.",
     "tags": [
       "iara",
       "seasonal"
     ],
     "path": "Seasonal/IaraStory.cs",
-    "size": 1053,
+    "size": 1063,
     "fileName": "IaraStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IaraStory.cs"
   },
