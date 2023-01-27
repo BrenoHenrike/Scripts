@@ -2291,6 +2291,10 @@ public class CoreBots
                 break;
 
             #region Simple Quest Bypasses
+            case "maloth":
+                SimpleQuestBypass(6005);
+                break;
+
             case "lycan":
                 SimpleQuestBypass(598);
                 break;
