@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Daily Gifts
+description: This will get all of the available gifts upto this date.
+tags: daily-gifts, rare-items
 */
 //cs_include Scripts/CoreBots.cs
 using System.Globalization;
