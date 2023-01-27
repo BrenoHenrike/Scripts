@@ -3720,13 +3720,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/VoidHighlordBadge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fiend of Light",
+    "description": "This script will obtain the items from Fiend of Light set that you choose.",
     "tags": [
-      "null"
+      "learn-from-the-past",
+      "fiend-of-light"
     ],
     "path": "Other/Armor/FiendofLight.cs",
-    "size": 3890,
+    "size": 4001,
     "fileName": "FiendofLight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
