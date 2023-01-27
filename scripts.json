@@ -3732,13 +3732,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fire Champion's Armor",
+    "description": "This script will farm Fire Champion's Armor.",
     "tags": [
-      "null"
+      "fire-champion-s-armor",
+      "fire-champions-armor",
+      "polished-dragon-slayer",
+      "flame-forged-metal",
+      "void-scale",
+      "damage-dragon",
+      "hero-s-valiance"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 2979,
+    "size": 3163,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
