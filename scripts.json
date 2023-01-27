@@ -242,13 +242,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DarkRangerArmor.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Daily Gifts",
+    "description": "This will get all of the available gifts upto this date.",
     "tags": [
-      "null"
+      "daily-gifts",
+      "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 16209,
+    "size": 16287,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
