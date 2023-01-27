@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fiend of Light
+description: This script will obtain the items from Fiend of Light set that you choose.
+tags: learn-from-the-past, fiend-of-light
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
