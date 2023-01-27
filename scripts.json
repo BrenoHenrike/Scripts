@@ -4085,13 +4085,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Armors.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "1% Drop Rate Capes",
+    "description": "Farms all 1% drop rate capes.",
     "tags": [
-      "null"
+      "1%",
+      "cape",
+      "drop-rate"
     ],
     "path": "Other/1%drops/1%Capes.cs",
-    "size": 3665,
+    "size": 3719,
     "fileName": "1%Capes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/1%drops/1%Capes.cs"
   },
