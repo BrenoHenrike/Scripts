@@ -141,14 +141,15 @@ public class CoreNation
             Core.EnsureAccept(570);
             Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", 1, false, log: false);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false, log: false);
-            if (!Core.CheckInventory("Strand of Vath's Hair"))
-            {
-                Core.Join("stalagbite", "r2", "Left");
-                Bot.Kill.Monster("Vath");
-                Core.JumpWait();
-                if (Bot.Drops.Exists("Strand of Vath's Hair"))
-                    Bot.Drops.Pickup("Strand of Vath's Hair");
-            }
+            Core.KillVath("Strand of Vath's Hair", 1, false, false);
+            // if (!Core.CheckInventory("Strand of Vath's Hair"))
+            // {
+            //     Core.Join("stalagbite", "r2", "Left");
+            //     Bot.Kill.Monster("Vath");
+            //     Core.JumpWait();
+            //     if (Bot.Drops.Exists("Strand of Vath's Hair"))
+            //         Bot.Drops.Pickup("Strand of Vath's Hair");
+            // }
             Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false, log: false);
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
             if (!Core.CheckInventory("Defeated Makai", 50))
@@ -951,7 +952,6 @@ public class CoreNation
         if (Core.CheckInventory(CragName))
             while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 13", quant))
                 DiamondExchange();
-        NewWorldsNewOpportunities("Unidentified 13", quant);
         VoidKightSwordQuest("Unidentified 13", quant);
         NulgathLarvae("Unidentified 13", quant);
     }
@@ -981,12 +981,10 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
-        // if (Bot.Player.Gold > 30000000)
-        //     TheAssistant("Gem of Nulgath", quant);
-        NewWorldsNewOpportunities("Dark Crystal Shard", quant);
         VoidKightSwordQuest("Dark Crystal Shard", quant);
-        Supplies("Dark Crystal Shard", quant);
+        NewWorldsNewOpportunities("Fiend Token", quant); //1minute turning  = 1x guaranteed
         EssenceofDefeatReagent(quant);
+        Supplies("Dark Crystal Shard", quant); //xx:xx time turnin = 10% chance
     }
 
     /// <summary>
@@ -1000,10 +998,10 @@ public class CoreNation
 
         Core.AddDrop("Diamond of Nulgath");
 
-        Supplies("Diamond of Nulgath", quant);
         VoidKightSwordQuest("Diamond of Nulgath", quant);
-        DiamondEvilWar(quant);
-        NewWorldsNewOpportunities("Diamond of Nulgath", quant);
+        if (!Core.CheckInventory(new[] { CragName }))
+            DiamondEvilWar(quant);
+        else Supplies("Diamond of Nulgath", quant);
     }
 
     public void FarmFiendToken(int quant = 30)
@@ -1011,10 +1009,10 @@ public class CoreNation
         if (Core.CheckInventory("Fiend Token", quant))
             return;
 
-        NewWorldsNewOpportunities("Fiend Token", quant);
         VoidKightSwordQuest("Fiend Token", quant);
         AssistingDrudgen("Fiend Token", quant);
         FeedtheFiend("Fiend Token", quant);
+        NewWorldsNewOpportunities("Fiend Token", quant);
     }
 
 
@@ -1028,9 +1026,6 @@ public class CoreNation
             return;
 
         Core.AddDrop("Gem of Nulgath");
-        // if (Bot.Player.Gold > 30000000)
-        //     TheAssistant("Gem of Nulgath", quant);
-        NewWorldsNewOpportunities("Gem of Nulgath", quant);
         VoidKightSwordQuest("Gem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
@@ -1050,7 +1045,6 @@ public class CoreNation
         if (Core.CheckInventory("Drudgen the Assistant"))
             // while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
             ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant);
-        NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         VoidKightSwordQuest("Blood Gem of the Archfiend", quant);
         BloodyChaos(quant, true);
         KisstheVoid(quant);
@@ -1115,13 +1109,13 @@ public class CoreNation
 
         Core.AddDrop("Totem of Nulgath");
 
-        NewWorldsNewOpportunities("Totem of Nulgath", quant);
         VoidKightSwordQuest("Totem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
             VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
         if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
             Core.Logger("Max Stack Hit.");
         else Core.Logger($"Totem of Nulgath: {Bot.Inventory.GetQuantity("Totem of Nulgath")}/{quant}");
+        // NewWorldsNewOpportunities("Totem of Nulgath", quant);
     }
 
     /// <summary>
@@ -1136,7 +1130,6 @@ public class CoreNation
         Core.AddDrop(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 
         BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
-        NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
     }
