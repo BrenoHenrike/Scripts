@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fire Champion's Armor
+description: This script will farm Fire Champion's Armor.
+tags: fire-champion-s-armor, fire-champions-armor, polished-dragon-slayer, flame-forged-metal, void-scale, damage-dragon, hero-s-valiance
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
