@@ -100,7 +100,6 @@ public class TempleDelveMerge
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("templedelve", "Doomed Fiend", req.Name, isTemp: false, log: false);
                     Bot.Wait.ForPickup(req.Name);
-                    Core.CancelRegisteredQuests();
                     break;
 
             }
