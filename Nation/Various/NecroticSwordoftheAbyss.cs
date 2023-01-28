@@ -29,6 +29,7 @@ public class NSoA
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
 
         GetNSoA();
@@ -40,8 +41,6 @@ public class NSoA
     {
         if (Core.CheckInventory("Necrotic Sword of the Abyss"))
             return;
-            
-        Core.BankingBlackList.AddRange(Nation.bagDrops);
 
         NSOD.GetNSOD();
 
