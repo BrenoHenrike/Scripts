@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Unoriginal Recipe Farm
+description: Farms the max Unoriginal Recipe quantity.
+tags: unoriginal-recipe, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

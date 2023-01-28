@@ -1,7 +1,7 @@
 /*
-name: Death Knight Lord Daily
-description: does the daily for: Death Knight Lord
-tags: Daily, Death Knight Lord, member, class
+name:  Death Knight Lord Daily
+description:  Death Knight Lord
+tags: daily, death knight lord, member, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

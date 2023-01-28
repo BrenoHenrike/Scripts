@@ -1,7 +1,7 @@
 /*
-name: null
-description:  uses an army to farm: 
-tags: null
+name:  Army Mirror Realm Tokens
+description:  
+tags: army, mirror realm token, token, mirror realm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

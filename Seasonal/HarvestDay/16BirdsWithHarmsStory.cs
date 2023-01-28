@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Birds with Harms Story
+description: This will finish the Birds with Harms storyline.
+tags: birds-with-harms-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

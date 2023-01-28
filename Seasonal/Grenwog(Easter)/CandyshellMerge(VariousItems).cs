@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Candyshell Merge Materials
+description: Farms all of the candyshell materials at max quantity.
+tags: candyshell-merge, seasonal, easter, materials, mats
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Splatterwar Story
+description: This will finish the Splatterwar Storyline.
+tags: splatterwar-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

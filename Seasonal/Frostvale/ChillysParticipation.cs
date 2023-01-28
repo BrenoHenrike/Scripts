@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chilly's Participation
+description: This will finish the quest that is required to get free acs throughout the event.
+tags: chillys-participation, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

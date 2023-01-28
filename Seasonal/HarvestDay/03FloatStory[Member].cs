@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Float Story (Member)
+description: This will finish the Float storyline.
+tags: float-story, seasonal, harvest-day, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

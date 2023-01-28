@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Alpha Hunter And Rogue Set
+description: This will do the quest to obtain the Alpha Hunter and Rogue set.
+tags: alpha-hunter, alpha-rogue, black-friday, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 using System.Linq;

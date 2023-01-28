@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: The Eggcubator
+description: This will finish the Bring me the PINK Eggs! quest to obtain The Eggcubator Cape.
+tags: the-eggcubator, bring-me-the-pink-eggs, seasonal, easter
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

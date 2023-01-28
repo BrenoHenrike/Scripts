@@ -1,7 +1,7 @@
 /*
-name: Silver Exalted Paladin
-description: Farms the Silver Exalted Paladin.
-tags: Silver Exalted Paladin, dragonheart
+name:  Silver Exalted Paladin
+description:  Farms the Silver Exalted Paladin.
+tags: silver exalted paladin, dragonheart
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

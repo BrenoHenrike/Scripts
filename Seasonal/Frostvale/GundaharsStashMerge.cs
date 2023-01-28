@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gundahar's Stash Merge
+description: This will get all or selected items on this merge shop.
+tags: gundahars-stash-merge, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

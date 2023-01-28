@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Vegetable Token Farm
+description: Farms the max vegetable token quantity.
+tags: vegetable-token, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

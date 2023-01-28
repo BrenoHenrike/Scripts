@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gonna Getcha Merge
+description: This will get all or selected items on this merge shop.
+tags: gonna-getcha-merge, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

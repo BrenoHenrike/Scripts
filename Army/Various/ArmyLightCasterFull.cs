@@ -1,7 +1,7 @@
 /*
-name: Army Light Caster
-description: uses an army to farm: 
-tags: null
+name:  Army Light Caster
+description:  
+tags: army, lightcaster, lightmage, class, 0file, doall
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

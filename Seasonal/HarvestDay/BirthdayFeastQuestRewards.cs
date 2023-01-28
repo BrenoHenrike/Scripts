@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Birthday Feast Rewards
+description: This will obtain all of the quest rewards of your quest choice.
+tags: birthday-feast-quest-rewards, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

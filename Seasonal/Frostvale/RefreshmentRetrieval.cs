@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Refreshment Retrieval
+description: This will obtain all of the reward items on Refreshment Retrieval quest.
+tags: refreshment-retrieval, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

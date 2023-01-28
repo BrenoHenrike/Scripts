@@ -1,7 +1,7 @@
 /*
-name: Army Bloody Chaos
-description: uses an army to farm Blood Gem of the Archfiend
-tags: Blood Gem of the Archfiend, army
+name:  Army Bloody Chaos
+description:  uses an army to farm Blood Gem of the Archfiend
+tags: blood gem of the archfiend, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

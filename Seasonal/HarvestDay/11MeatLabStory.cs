@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Meatlab Story
+description: This will finish the Meatlab storyline.
+tags: meatlab-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

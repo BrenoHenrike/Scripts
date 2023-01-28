@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Berserker Bunny Armor
+description: This will finish the quest to obtain the Berserker Bunny Armor.
+tags: berserker-bunny-armor, seasonal, easter, BBA
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

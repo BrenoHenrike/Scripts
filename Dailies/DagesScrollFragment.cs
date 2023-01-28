@@ -1,7 +1,7 @@
 /*
-name: Dages Scroll Fragment Daily
-description: does the daily for: Dages Scroll Fragment
-tags: Daily, Dages Scroll Fragment
+name:  Dages Scroll Fragment Daily
+description:  Dages Scroll Fragment
+tags: daily, dages scroll fragment
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

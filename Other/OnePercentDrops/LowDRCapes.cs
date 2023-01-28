@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: 1% Drop Rate Capes
+description: Farms all 1% drop rate capes.
+tags: 1%, cape, drop-rate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: All Seasonal Story
+description: This will finish all of seasonal story on current month.
+tags: seasonal, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
