@@ -96,10 +96,8 @@ public class TempleDelveMerge
 
                 case "Nation Ritualist":
                 case "Void Nation Ritualist":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("templedelve", "Doomed Fiend", req.Name, isTemp: false, log: false);
-                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }
