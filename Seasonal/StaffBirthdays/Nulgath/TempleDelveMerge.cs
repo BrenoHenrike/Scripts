@@ -4,6 +4,7 @@ description: This will get all or selected items on this merge shop.
 tags: temple-delve-merge, templedelve-merge, seasonal, nulgath-birthday
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
