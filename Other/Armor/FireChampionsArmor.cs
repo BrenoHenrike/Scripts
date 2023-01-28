@@ -40,9 +40,7 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(60);
         FlameForgedMetal(10);
         VoidScale(13);
-        Farm.Gold(25000000);
-        Core.BuyItem("wartraining", 2035, "Gold Voucher 500k", 50);
-        Core.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 8759);
+        Adv.BuyItem("wartraining", 2035, "Fire Champion's Armor", shopItemID: 8759);
     }
 
 
@@ -76,7 +74,7 @@ public class FireChampionsArmor
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Flame-Forged Metal");
 
-        Core.Logger($"Farming \"Flame-Forged Metal\" {Core.CheckInventory("Flame-Forged Metal", toInv: false)}/{Metalquant}");
+        Core.FarmingLogger("Flame-Forged Metal", Metalquant);
 
         Core.RegisterQuests(6975);
         while (!Bot.ShouldExit && !Core.CheckInventory("Flame-Forged Metal", Metalquant))
