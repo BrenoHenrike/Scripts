@@ -7754,6 +7754,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchFiendEnchantedOrbs.cs"
   },
   {
+    "name": "Necrotic Sword of the Abyss",
+    "description": "This will farm the required materials and buy the item.",
+    "tags": [
+      "necrotic-sword-of-the-abyss",
+      "nation",
+      "boosted-item",
+      "nsoa"
+    ],
+    "path": "Nation/Various/NecroticSwordoftheAbyss.cs",
+    "size": 1521,
+    "fileName": "NecroticSwordoftheAbyss.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/NecroticSwordoftheAbyss.cs"
+  },
+  {
     "name": "null",
     "description": "null",
     "tags": [
