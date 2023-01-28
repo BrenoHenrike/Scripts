@@ -755,7 +755,7 @@ public class CoreBots
             Logger($"Your inventory is very full [{prefCount}/{Bot.Inventory.Slots}], the bot will now clean it a bit before continueing.", "BuyItem");
             BankACMisc();
             if (Bot.Inventory.FreeSlots <= 0)
-                Logger($"Banked {(prefCount - Bot.Inventory.UsedSlots)} items but it still wasn't enough. Please clean the rest of your inventory manually. Stopping the bot.", messageBox: true, stopBot: true);
+                Logger($"Banked {(prefCount - Bot.Inventory.UsedSlots)} items but it still wasn't enough. Please clean the rest of your inventory manually. Stopping the bot.", "BuyItem", true, true);
         }
     }
 
