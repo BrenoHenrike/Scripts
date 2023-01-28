@@ -56,14 +56,14 @@ public class FireChampionsArmor
 
         Adv.rankUpClass("Dragonslayer");
 
-        Farm.Gold(1000000);
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
-        Core.EquipClass(ClassType.Farm);
+        Core.AddDrop(11475);
         Core.FarmingLogger("Dragon Scale", 30);
+        Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && !Core.CheckInventory(11475, 30))
-            Core.HuntMonster("lair", "Water Draconian", log: false);
-        Core.BuyItem("wartraining", 2035, "Polished DragonSlayer");
+            Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+        Adv.BuyItem("wartraining", 2035, "Polished DragonSlayer");
     }
 
 
