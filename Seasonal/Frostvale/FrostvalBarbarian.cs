@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Frostval Barbarian (Class)
+description: This will finish the required quest and farms the required materials in order to get the Frostval Barbarian (Class).
+tags: frostval-barbarian, class, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

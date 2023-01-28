@@ -1,8 +1,7 @@
 /*
-name: Army Legion Token
-description: Uses an army, and method select to farm Legion tokens
-tags: army, legion, legion tokens, dreadrock, pet,  Bright Paragon Pet, Shogun Paragon Pet, Thanatos Paragon Pet, Arcane Paragon Pet, Paragon Dreadnaught Pet, Munted Paragon Pet, Ascended Paragon Pet, Festive Paragon Dracolich Rider, 
-Holiday Paragon Pet, UW3017 Pet, Infernal Caladbolg, Hardcore Paragon Pet, Legion Arena 
+name:  Army Legion Token
+description:  Uses an army, and method select to farm Legion tokens
+tags: army, legion, legion tokens, dreadrock, pet, bright paragon pet, shogun paragon pet, thanatos paragon pet, arcane paragon pet, paragon dreadnaught pet, munted paragon pet, ascended paragon pet, festive paragon dracolich rider, holiday paragon pet, uw3017 pet, infernal caladbolg, hardcore paragon pet, legion arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

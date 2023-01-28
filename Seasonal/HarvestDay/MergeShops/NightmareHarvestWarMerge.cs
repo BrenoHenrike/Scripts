@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nightmare Harvest War Merge
+description: This will get all or selected items on this merge shop.
+tags: nightmare-harvest-war-merge, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

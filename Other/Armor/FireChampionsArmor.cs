@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fire Champion's Armor
+description: This script will farm Fire Champion's Armor.
+tags: fire-champion-s-armor, fire-champions-armor, polished-dragon-slayer, flame-forged-metal, void-scale, damage-dragon, hero-s-valiance
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -60,7 +60,7 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
         Core.EquipClass(ClassType.Farm);
-        while (!Core.CheckInventory(11475, 30))
+        while (!Bot.ShouldExit && !Core.CheckInventory(11475, 30))
             Core.HuntMonster("lair", "Water Draconian", log: false);
         Core.BuyItem("wartraining", 2035, "Polished DragonSlayer");
     }

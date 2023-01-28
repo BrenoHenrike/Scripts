@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beleen's Party Presents Merge
+description: This will get all or selected items on this merge shop.
+tags: beleens-party-presents-merge, seasonal, aqw-anniverasary
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

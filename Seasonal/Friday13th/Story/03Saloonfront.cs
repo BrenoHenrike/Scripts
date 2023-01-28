@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Saloon Front Story
+description: This will finish the Saloon Front story.
+tags: saloon-front-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

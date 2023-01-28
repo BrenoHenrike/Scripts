@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Steampunk Eggsplorer Armor
+description: This will finish the Bring me the PURPLE Eggs! quest to obtain the Steampunk Eggsplorer Armor.
+tags: steampunk-eggsplorer-armor, bring-me-the-purple-eggs, seasonal, easter
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

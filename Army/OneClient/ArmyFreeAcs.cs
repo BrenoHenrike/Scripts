@@ -1,6 +1,6 @@
 /*
-name: Army Free 500 accs
-description: uses the "thefamily.txt" accouunts to do: the 500 free acs quest 
+name:  Army Free 500 accs
+description:  the 500 free acs quest 
 tags: acs, free, thefamily, army.
 */
 //cs_include Scripts/CoreBots.cs

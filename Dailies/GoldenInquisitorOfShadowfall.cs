@@ -1,7 +1,7 @@
 /*
-name: Golden Inquisitor Daily
-description: does the daily for:Golden Inquisitor
-tags: Daily, Golden Inquisitor
+name:  Golden Inquisitor Daily
+description:  Golden Inquisitor
+tags: daily, golden inquisitor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

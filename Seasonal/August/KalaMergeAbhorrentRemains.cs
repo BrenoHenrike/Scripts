@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Abhorrent Remains Farm
+description: Farms the max Abhorrent Remains quantity.
+tags: abhorrent-remains, kala, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

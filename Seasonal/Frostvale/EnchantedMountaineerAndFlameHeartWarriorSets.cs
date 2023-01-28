@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Enchanted Mountaineer & FlameHeart Warrior Set
+description: This will do the quest to obtain the Enchanted Mountaineer and FlameHeart Warrior Sets.
+tags: flameheart-warrior, enchanted-mountaineer, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: Drakath Armor
-description: Gets the Drakath Armor / Original Drakath Armor
-tags: Drakath, Drakath Armor, Original Drakath Armor
+name:  Drakath Armor
+description:  Gets the Drakath Armor / Original Drakath Armor
+tags: drakath, drakath armor, original drakath armor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

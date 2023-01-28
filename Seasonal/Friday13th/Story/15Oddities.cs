@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Oddities Story
+description: This will finish the Oddities Storyline.
+tags: oddities-story, friday-the-13th, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

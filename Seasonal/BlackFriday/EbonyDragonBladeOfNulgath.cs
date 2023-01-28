@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ebony DragonBlade of Nulgath
+description: This will get the Ebony DragonBlade of Nulgath.
+tags: ebony-dragonblade-of-nulgath, ebony-DBON
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

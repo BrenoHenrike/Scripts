@@ -1,7 +1,7 @@
 /*
-name: All do AllDailies
-description: uses the "thefamily.txt" accouunts to do: Alldailies
-tags: Alldailies, army, thefamily
+name:  All do AllDailies
+description:  Alldailies
+tags: alldailies, army, thefamily
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

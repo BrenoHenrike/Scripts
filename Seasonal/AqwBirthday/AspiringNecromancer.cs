@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Aspiring Necromancer Rewards
+description: This will do the 3 Aspiring Necromancer quest and obtain all of the rewards.
+tags: aspiring-necromancer, aqw-anniversary, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

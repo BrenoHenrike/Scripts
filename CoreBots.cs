@@ -1,7 +1,7 @@
 ﻿/*
-name: CoreBots
-description: This script should not be loaded as start script.
-tags: CoreBots, core, bots
+name: null
+description: null
+tags: null
 */
 using System;
 using System.Collections.Generic;
@@ -202,26 +202,7 @@ public class CoreBots
             Bot.Bank.Load();
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
-            {
-                List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
-                List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
-                List<string> MiscForBank = new();
-
-                bool boostsEnabled = Bot.Boosts.Enabled || (CBO_Active() && (
-                                    (CBOBool("doGoldBoost", out bool _doGoldBoost) && _doGoldBoost) ||
-                                    (CBOBool("doClassBoost", out bool _doClassBoost) && _doClassBoost) ||
-                                    (CBOBool("doRepBoost", out bool _doRepBoost) && _doRepBoost) ||
-                                    (CBOBool("doExpBoost", out bool _doExpBoost) && _doExpBoost)));
-
-                foreach (var item in Bot.Inventory.Items)
-                {
-                    if (boostsEnabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
-                        continue;
-                    if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
-                        MiscForBank.Add(item.Name);
-                }
-                ToBank(MiscForBank.ToArray());
-            }
+                BankACMisc();
 
             foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
                 EquipmentBeforeBot.Add(item.Name);
@@ -661,6 +642,7 @@ public class CoreBots
     {
         if (CheckInventory(itemName, quant))
             return;
+        _CheckInventorySpace();
 
         ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
         _BuyItem(map, shopID, item, quant);
@@ -679,6 +661,7 @@ public class CoreBots
     {
         if (CheckInventory(itemID, quant))
             return;
+        _CheckInventorySpace();
 
         ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
         _BuyItem(map, shopID, item, quant);
@@ -720,14 +703,14 @@ public class CoreBots
             // This only occurs when you buy sth with stack limits, but want less then the stack limit.
             int sell_quant = buy_quant - quant;
             SellItem(item.Name, quant);
-            Logger($"Bought {buy_quant} {item.Name}, sold {sell_quant}, now at {quant} {item.Name}");
+            Logger($"Bought {buy_quant} {item.Name}, sold {sell_quant}, now at {quant} {item.Name}", "BuyItem");
         }
         else if (CheckInventory(item.Name, quant))
         {
-            Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}");
+            Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}", "BuyItem");
         }
         else
-            Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
+            Logger($"Failed at buying {buy_quant}/{quant} {item.Name}", "BuyItem");
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -759,8 +742,20 @@ public class CoreBots
                     return i!;
                 }
             }
-            Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}" + reinstallCleanFlash);
+            Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}" + reinstallCleanFlash, "BuyItem");
             return null!;
+        }
+    }
+
+    private void _CheckInventorySpace()
+    {
+        if (Bot.Inventory.FreeSlots <= 0)
+        {
+            int prefCount = Bot.Inventory.UsedSlots;
+            Logger($"Your inventory is very full [{prefCount}/{Bot.Inventory.Slots}], the bot will now clean it a bit before continueing.", "BuyItem");
+            BankACMisc();
+            if (Bot.Inventory.FreeSlots <= 0)
+                Logger($"Banked {(prefCount - Bot.Inventory.UsedSlots)} items but it still wasn't enough. Please clean the rest of your inventory manually. Stopping the bot.", "BuyItem", true, true);
         }
     }
 
@@ -768,7 +763,7 @@ public class CoreBots
     {
         if (requestedQuant > item.MaxStack)
         {
-            Logger($"Attempting to buy more than {item.MaxStack} of {item.Name}. The developer needs to fix the calling script.");
+            Logger($"Attempting to buy more than {item.MaxStack} of {item.Name}. The developer needs to fix the calling script.", "BuyItem");
             Bot.Stop();
         }
 
@@ -1933,7 +1928,13 @@ public class CoreBots
     /// </summary>
     public void Relogin()
     {
-        Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer ?? Bot.Servers.GetServers(true).Result.First(s => s.Name != "Class Test Realm").Name);
+        if (Bot.Options.ReloginServer == null || !Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer))
+        {
+            var servers = Bot.Servers.GetServers(true).Result;
+            if (servers.Count() == 0)
+                Logger("Failed to relogin: could not fetch server details" + (Bot.Options.ReloginServer == null ? '.' : " or the find the server you've set in Options > Game."), messageBox: true, stopBot: true);
+            Bot.Servers.EnsureRelogin(servers.First(s => s.Name != "Class Test Realm").Name);
+        }
     }
 
     /// <summary>
@@ -1978,7 +1979,7 @@ public class CoreBots
                     }
                     if (FarmGearOn)
                     {
-                        Bot.Sleep(ActionDelay);
+                        Bot.Sleep((int)(ActionDelay * 1.5));
                         Equip(FarmGear);
                     }
 
@@ -1999,7 +2000,7 @@ public class CoreBots
                     }
                     if (SoloGearOn)
                     {
-                        Bot.Sleep(ActionDelay);
+                        Bot.Sleep((int)(ActionDelay * 1.5));
                         Equip(SoloGear);
                     }
                     Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == SoloClass.Trim().ToLower() && x.CategoryString == "Class").ID);
@@ -2080,6 +2081,7 @@ public class CoreBots
         }
 
         Bot.Wait.ForItemEquip(item.ID);
+        Bot.Sleep((int)(ActionDelay * 1.5));
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
@@ -2142,6 +2144,28 @@ public class CoreBots
         for (int i = from; i < to + 1; i++)
             toReturn.Add(i);
         return toReturn.ToArray();
+    }
+
+    public void BankACMisc()
+    {
+        List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
+        List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
+        List<string> MiscForBank = new();
+
+        bool boostsEnabled = Bot.Boosts.Enabled || (CBO_Active() && (
+                            (CBOBool("doGoldBoost", out bool _doGoldBoost) && _doGoldBoost) ||
+                            (CBOBool("doClassBoost", out bool _doClassBoost) && _doClassBoost) ||
+                            (CBOBool("doRepBoost", out bool _doRepBoost) && _doRepBoost) ||
+                            (CBOBool("doExpBoost", out bool _doExpBoost) && _doExpBoost)));
+
+        foreach (var item in Bot.Inventory.Items)
+        {
+            if (boostsEnabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
+                continue;
+            if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
+                MiscForBank.Add(item.Name);
+        }
+        ToBank(MiscForBank.ToArray());
     }
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
@@ -2291,6 +2315,10 @@ public class CoreBots
                 break;
 
             #region Simple Quest Bypasses
+            case "maloth":
+                SimpleQuestBypass(6005);
+                break;
+
             case "lycan":
                 SimpleQuestBypass(598);
                 break;

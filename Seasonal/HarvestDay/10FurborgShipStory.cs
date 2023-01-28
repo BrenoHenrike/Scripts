@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Furborg Ship Story
+description: This will finish the Furborg Ship storyline.
+tags: furborg-ship-story, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

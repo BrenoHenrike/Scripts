@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mount Otzi Story
+description: This will finish the Mount Otzi Storyline.
+tags: mount-otzi-story, seasonal, frostvale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

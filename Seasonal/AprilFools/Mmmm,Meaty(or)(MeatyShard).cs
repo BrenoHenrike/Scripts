@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mmmm, Meaty Quest Rewards
+description: This will obtain all of the Quest Rewards.
+tags: mmmm-meaty-quest, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

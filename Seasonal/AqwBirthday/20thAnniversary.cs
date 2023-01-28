@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: AQW 20th Anniversary Story
+description: This will finish the storyline of 20th anniversary.
+tags: 20th-anniv, free-acs, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: Shadow Shroud Daily
-description: does the daily for: Shadow Shroud
-tags: Daily, Shadow Shroud
+name:  Shadow Shroud Daily
+description:  Shadow Shroud
+tags: daily, shadow shroud
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

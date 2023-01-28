@@ -1,3 +1,8 @@
+/*
+name: null
+description: null
+tags: null
+*/
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -99,22 +104,18 @@ public class QuestRewardTemplate
     public void AutoReward(int questID = 0000, int quant = 1)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
 
-        string[] Rewards = RewardsList.ToArray();
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.Name);
 
-        Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(questID);
-        foreach (string item in Rewards)
+        foreach (ItemBase item in RewardOptions)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
             {
+               Core.EnsureAccept(questID);
                 //Questing stuff here --
+               Core.EnsureComplete(questID, item.ID);
             }
-            Core.CancelRegisteredQuests();
         }
     }
 

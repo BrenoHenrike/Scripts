@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name:  Ancient Remnant
+description:  Farms the Ancient Remnant for the Darkon Debris 2 [reconstructed]
+tags: ancient remnant, darkon, debris
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

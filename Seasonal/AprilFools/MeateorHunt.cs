@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Meateor Hunt Story
+description: This will finish the Meateor Hunt storyline.
+tags: meateor-hunt, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

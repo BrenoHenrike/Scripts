@@ -31,7 +31,7 @@ public class WillpowerExtraction
         Core.SetOptions(false);
     }
 
-    public void Unidentified34(int quant)
+    public void Unidentified34(int quant = 300)
     {
         if (Core.CheckInventory("Unidentified 34", quant))
             return;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Kala Story
+description: This will finish the Kala storyline.
+tags: kala-story, kala, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

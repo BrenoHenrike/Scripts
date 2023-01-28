@@ -1,7 +1,7 @@
 /*
-name: Mine Crafting Daily
-description: does the daily for:Mine Crafting
-tags: Daily, Mine Crafting, metal
+name:  Mine Crafting Daily
+description:  Mine Crafting
+tags: daily, mine crafting, metal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs

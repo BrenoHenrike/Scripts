@@ -1,7 +1,7 @@
 /*
-name: null
-description:  uses an army to farm: 
-tags: null
+name:  Army Smart Void Auras
+description:  
+tags: army, void aura, methods, smart
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

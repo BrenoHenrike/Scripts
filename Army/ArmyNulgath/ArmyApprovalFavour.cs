@@ -1,7 +1,7 @@
 /*
-name: Army Approval Favour
-description: Uses army to Farm Archfiend's Favor and Nulgath's Approval.
-tags: Archfiend's Favor, Nulgath's Approval, army
+name:  Army Approval Favour
+description:  Uses army to Farm Archfiend's Favor and Nulgath's Approval.
+tags: archfiend's favor, nulgath's approval, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
