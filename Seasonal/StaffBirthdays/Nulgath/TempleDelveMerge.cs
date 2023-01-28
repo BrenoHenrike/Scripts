@@ -8,6 +8,7 @@ tags: temple-delve-merge, templedelve-merge, seasonal, nulgath-birthday
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
