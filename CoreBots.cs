@@ -1979,7 +1979,7 @@ public class CoreBots
                     }
                     if (FarmGearOn)
                     {
-                        Bot.Sleep(ActionDelay);
+                        Bot.Sleep((int)(ActionDelay * 1.5));
                         Equip(FarmGear);
                     }
 
@@ -2000,7 +2000,7 @@ public class CoreBots
                     }
                     if (SoloGearOn)
                     {
-                        Bot.Sleep(ActionDelay);
+                        Bot.Sleep((int)(ActionDelay * 1.5));
                         Equip(SoloGear);
                     }
                     Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == SoloClass.Trim().ToLower() && x.CategoryString == "Class").ID);
@@ -2081,6 +2081,7 @@ public class CoreBots
         }
 
         Bot.Wait.ForItemEquip(item.ID);
+        Bot.Sleep((int)(ActionDelay * 1.5));
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
