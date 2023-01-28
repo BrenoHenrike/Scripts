@@ -11841,6 +11841,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPet.cs"
   },
   {
+    "name": "Temple Delve Merge",
+    "description": "This will get all or selected items on this merge shop.",
+    "tags": [
+      "temple-delve-merge",
+      "templedelve-merge",
+      "seasonal",
+      "nulgath-birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs",
+    "size": 6976,
+    "fileName": "TempleDelveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs"
+  },
+  {
     "name": "null",
     "description": "null",
     "tags": [
