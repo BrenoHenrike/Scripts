@@ -60,8 +60,9 @@ public class FireChampionsArmor
         WFE.WarfuryEmblemFarm(30);
         DSG.EnchantedScaleandClaw(30, 0);
         Core.EquipClass(ClassType.Farm);
+        Core.FarmingLogger("Dragon Scale", 30);
         while (!Bot.ShouldExit && !Core.CheckInventory(11475, 30))
-            Core.HuntMonster("lair", "Water Draconian", log: false);
+            Core.HuntMonster("lair", "Water Draconian");
         Core.BuyItem("wartraining", 2035, "Polished DragonSlayer");
     }
 
