@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 127202,
+    "size": 127205,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -11836,6 +11836,22 @@
     "size": 2048,
     "fileName": "BeetleGeneralPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPet.cs"
+  },
+  {
+    "name": "Temple Delve",
+    "description": "Completes the Temple Delve storyline.",
+    "tags": [
+      "temple-delve",
+      "templedelve",
+      "nulgath",
+      "seasonal",
+      "nulgath-birthday",
+      "nulgath-story"
+    ],
+    "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs",
+    "size": 2329,
+    "fileName": "TempleDelve.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs"
   },
   {
     "name": "null",
