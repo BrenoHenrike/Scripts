@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 91791,
+    "size": 93329,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -53,6 +53,20 @@
     "size": 90638,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
+  },
+  {
+    "name": "Swag Token A",
+    "description": "Farms Swag Token As with mem and non-mem methods",
+    "tags": [
+      "swag token a",
+      "swag token b",
+      "swag token c",
+      "swag token d"
+    ],
+    "path": "Farm/SwagTokenA.cs",
+    "size": 577,
+    "fileName": "SwagTokenA.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
   {
     "name": "null",
@@ -130,17 +144,6 @@
     "size": 759,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Farm/SwagTokenA[mem].cs",
-    "size": 411,
-    "fileName": "SwagTokenA[mem].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA[mem].cs"
   },
   {
     "name": "null",
