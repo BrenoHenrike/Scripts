@@ -512,9 +512,9 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
 
         Core.ConfigureAggro();
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true, log: false);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, true, false);
         Core.ConfigureAggro(false);
-        Bot.Combat.Exit();
+        Core.JumpWait();
     }
 
     #endregion
