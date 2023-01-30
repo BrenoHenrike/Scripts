@@ -645,7 +645,7 @@ public class CoreArmyLite
             if (b_breakOnMap != null && b_breakOnMap == Bot.Map.Name)
             {
                 b_breakOnMap = null;
-                return;
+                break;
             }
 
             // Attack any monster that is alive.
@@ -654,6 +654,7 @@ public class CoreArmyLite
             Core.Rest();
             Bot.Sleep(Core.ActionDelay);
         }
+        ButlerStop();
     }
     private string? b_playerName = null;
     private bool b_doLockedMaps = true;
@@ -994,6 +995,12 @@ public class CoreArmyLite
 
     private bool ScriptStopping(Exception? e)
     {
+        ButlerStop();
+        return true;
+    }
+
+    private void ButlerStop()
+    {
         // Removing listeners
         Bot.Events.MapChanged -= MapNumberParses;
         Bot.Events.ExtensionPacketReceived -= LockedZoneListener;
@@ -1002,8 +1009,6 @@ public class CoreArmyLite
         // Delete communication files
         if (File.Exists(commFile()))
             File.Delete(commFile());
-
-        return true;
     }
 
     private string commFile() => Path.Combine(CoreBots.ButlerLogDir, $"{Core.Username().ToLower()}~!{b_playerName}.txt");
