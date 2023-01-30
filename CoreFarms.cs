@@ -2456,7 +2456,6 @@ public class CoreFarms
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
             Core.KillMonster("terrarium", "r3", "Right", "*", "Super-Fan Swag Token D", 500, isTemp: false, log: false);
-            Core.CancelRegisteredQuests();
 
             //Check if shop is loaded into Cache
             Core.Join("Collection", "Begin", "Spawn");
@@ -2471,6 +2470,7 @@ public class CoreFarms
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant) && Core.CheckInventory("Super-Fan Swag Token B", 20))
                 Bot.Shops.BuyItem("Super-Fan Swag Token A");
         }
+            Core.CancelRegisteredQuests();
     }
 
     public void MembershipDues(MemberShipsIDS faction, int rank = 10)
