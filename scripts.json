@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 128284,
+    "size": 129191,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -207,7 +207,7 @@
       "null"
     ],
     "path": "Tools/GenerateQueuedScript.cs",
-    "size": 10509,
+    "size": 10505,
     "fileName": "GenerateQueuedScript.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/GenerateQueuedScript.cs"
   },
@@ -2140,7 +2140,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 35570,
+    "size": 35567,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -2169,7 +2169,7 @@
       "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 10304,
+    "size": 10300,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
@@ -3382,7 +3382,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/UpdateTags.cs",
-    "size": 9527,
+    "size": 9523,
     "fileName": "UpdateTags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/UpdateTags.cs"
   },
@@ -3404,7 +3404,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 6608,
+    "size": 6604,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
@@ -3415,7 +3415,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/GenerateQuestFiles.cs",
-    "size": 1648,
+    "size": 1640,
     "fileName": "GenerateQuestFiles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
   },
@@ -6265,7 +6265,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/CheckForDonantedACs.cs",
-    "size": 5851,
+    "size": 5847,
     "fileName": "CheckForDonantedACs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
