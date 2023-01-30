@@ -1,3 +1,5 @@
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace SkuaScriptsGenerator.Generators
@@ -19,7 +21,6 @@ namespace SkuaScriptsGenerator.Generators
                     {
                         var parts = line.Split(':');
                         var key = parts[0].Trim();
-                        
                         var value = parts[1].Trim();
                         switch (key)
                         {
@@ -37,7 +38,11 @@ namespace SkuaScriptsGenerator.Generators
                     scriptInfo.Path = script.Replace("./", "");
                     scriptInfo.FileName = script.Split('/').Last();
                     scriptInfo.DownloadUrl = rawScriptsURL+scriptInfo.Path;
-                    scriptInfo.Size = (int)new FileInfo(script).Length;
+                    // string normalization
+                    var scriptNormalized = script.Normalize(NormalizationForm.FormC);
+                    // remove uknown characters/red dots
+                    var scriptCleaned = Regex.Replace(scriptNormalized, @"[^\u0000-\uFFFF]", string.Empty);
+                    scriptInfo.Size = (int)new FileInfo(scriptCleaned).Length;
 
                     scripts.Add(scriptInfo);
                 }

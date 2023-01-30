@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 91810,
+    "size": 93329,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 128216,
+    "size": 128284,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -53,6 +53,20 @@
     "size": 90638,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
+  },
+  {
+    "name": "Swag Token A",
+    "description": "Farms Swag Token As with mem and non-mem methods",
+    "tags": [
+      "swag token a",
+      "swag token b",
+      "swag token c",
+      "swag token d"
+    ],
+    "path": "Farm/SwagTokenA.cs",
+    "size": 577,
+    "fileName": "SwagTokenA.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
   {
     "name": "null",
@@ -130,17 +144,6 @@
     "size": 759,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Farm/SwagTokenA[mem].cs",
-    "size": 411,
-    "fileName": "SwagTokenA[mem].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA[mem].cs"
   },
   {
     "name": "null",
@@ -955,7 +958,7 @@
       "null"
     ],
     "path": "Nation/EmpoweringItems.cs",
-    "size": 1249,
+    "size": 1544,
     "fileName": "EmpoweringItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmpoweringItems.cs"
   },
@@ -1015,7 +1018,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 61531,
+    "size": 61400,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1037,7 +1040,7 @@
       "null"
     ],
     "path": "Nation/BambloozevsDrudgen.cs",
-    "size": 1404,
+    "size": 1427,
     "fileName": "BambloozevsDrudgen.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/BambloozevsDrudgen.cs"
   },
@@ -3760,7 +3763,7 @@
       "hero-s-valiance"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 3163,
+    "size": 3067,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
@@ -4217,7 +4220,7 @@
       "null"
     ],
     "path": "Other/Weapons/PinkBladeofDestruction.cs",
-    "size": 2125,
+    "size": 2187,
     "fileName": "PinkBladeofDestruction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/PinkBladeofDestruction.cs"
   },
