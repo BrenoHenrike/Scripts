@@ -2451,7 +2451,7 @@ public class CoreFarms
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
         Core.EquipClass(ClassType.Farm);
 
-            Core.RegisterQuests(1304, 1307);
+        Core.RegisterQuests(1304, 1307);
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
@@ -2465,12 +2465,12 @@ public class CoreFarms
             //Token Buying
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 10) && Core.CheckInventory("Super-Fan Swag Token D", 10))
                 Bot.Shops.BuyItem("Super-Fan Swag Token C");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token B", 10) && Core.CheckInventory("Super-Fan Swag Token C", 10))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token B", 20) && Core.CheckInventory("Super-Fan Swag Token C", 10))
                 Bot.Shops.BuyItem("Super-Fan Swag Token B");
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant) && Core.CheckInventory("Super-Fan Swag Token B", 20))
                 Bot.Shops.BuyItem("Super-Fan Swag Token A");
         }
-            Core.CancelRegisteredQuests();
+        Core.CancelRegisteredQuests();
     }
 
     public void MembershipDues(MemberShipsIDS faction, int rank = 10)

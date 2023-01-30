@@ -148,6 +148,8 @@ public class CoreArchMage
         UnboundTome(30);
         BossItemCheck(2500, "Elemental Binding");
 
+        SoW.TimestreamWar();
+
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(8814, 8815);
