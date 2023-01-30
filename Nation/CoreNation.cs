@@ -974,8 +974,8 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
-        VoidKightSwordQuest("Dark Crystal Shard", quant);
         NewWorldsNewOpportunities("Fiend Token", quant); //1minute turning  = 1x guaranteed
+        VoidKightSwordQuest("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
         Supplies("Dark Crystal Shard", quant); //xx:xx time turnin = 10% chance
     }
@@ -1005,7 +1005,6 @@ public class CoreNation
         VoidKightSwordQuest("Fiend Token", quant);
         AssistingDrudgen("Fiend Token", quant);
         FeedtheFiend("Fiend Token", quant);
-        NewWorldsNewOpportunities("Fiend Token", quant);
     }
 
 
@@ -1038,6 +1037,7 @@ public class CoreNation
         if (Core.CheckInventory("Drudgen the Assistant"))
             while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
                 ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant);
+        NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         VoidKightSwordQuest("Blood Gem of the Archfiend", quant);
         BloodyChaos(quant, true);
         KisstheVoid(quant);
