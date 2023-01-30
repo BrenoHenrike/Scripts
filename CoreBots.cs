@@ -1,4 +1,4 @@
-/*
+﻿/*
 name: null
 description: null
 tags: null
@@ -1337,7 +1337,7 @@ public class CoreBots
 
     public List<Quest> EnsureLoad(params int[] questIDs)
     {
-        List<Quest> quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest>? quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (quests.Count == questIDs.Length)
             return quests;
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
@@ -1348,7 +1348,7 @@ public class CoreBots
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
             Bot.Sleep(1500);
         }
-        var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
             Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, messageBox: true, stopBot: true);
@@ -1359,9 +1359,12 @@ public class CoreBots
 
     public void AbandonQuest(params int[] questIDs)
     {
+        if (questIDs == null || questIDs.Length == 0)
+            return;
+
         foreach (var q in EnsureLoad(questIDs))
         {
-            if (!q.Active)
+            if (q == null || !q.Active)
                 continue;
             Bot.Flash.CallGameFunction("world.abandonQuest", q.ID);
             Bot.Wait.ForTrue(() => !EnsureLoad(q.ID).Active, 20);
