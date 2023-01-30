@@ -231,7 +231,7 @@ public class GenQueueScript
 
         if (!Directory.Exists(Path.Combine(CoreBots.ScriptsPath, "Generated")))
             Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "Generated"));
-        File.WriteAllLines(Path.Combine(CoreBots.ScriptsPath, "Generated", botName + ".cs"), newFile);
+        Core.WriteFile(Path.Combine(CoreBots.ScriptsPath, "Generated", botName + ".cs"), newFile);
 
         Bot.ShowMessageBox($"File Path:\n- Scripts/Generated/{botName}.cs\n\nIt does the following bots in the same order:\n- {String.Join("\n- ", scriptNames)}", "Script is succesfully generated");
     }

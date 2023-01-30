@@ -121,7 +121,7 @@ public class UpdateTags
                 List<string> toWrite = fileData.SkipWhile(l => !l.StartsWith("//cs_include") && !l.StartsWith("using")).ToList();
                 toWrite.InsertRange(0, newData);
                 // Overwriting the new file
-                File.WriteAllLines(file, toWrite);
+                Core.WriteFile(file, toWrite);
 
                 void logOnce()
                 {

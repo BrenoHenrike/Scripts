@@ -530,7 +530,7 @@ public class CoreArmyLite
             if (String.IsNullOrEmpty(data))
                 Core.Logger("No input provided, stopping the bot.", messageBox: true, stopBot: true);
 
-            File.WriteAllText(path, data[..^1]);
+            Core.WriteFile(path, data[..^1]);
             Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"If you ever wish to edit things, the file can be found at:\n{CoreBots.SkuaPath + "/" + path}", "File path"));
             return data[..^1].Split('\n');
 

@@ -44,8 +44,8 @@ public class GetQuests
         }
 
         Core.Logger("Writing files.");
-        File.WriteAllLines("Scripts/WIP/QuestIds.txt", r);
-        File.WriteAllLines("Scripts/WIP/QuestData.csv", d);
+        Core.WriteFile("Scripts/WIP/QuestIds.txt", r);
+        Core.WriteFile("Scripts/WIP/QuestData.csv", d);
 
         Core.Logger("Files made:");
         Core.Logger(" - \"Scripts/WIP/QuestIds.txt\"");

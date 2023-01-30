@@ -2513,7 +2513,7 @@ public class CoreBots
                     "voidnightbane"
                 };
                 if (lockedMaps.Contains(strippedMap))
-                    File.WriteAllText(ButlerLogPath(), Bot.Map.FullName);
+                    WriteFile(ButlerLogPath(), Bot.Map.FullName);
             }
 
             Jump(cell, pad);
@@ -2758,6 +2758,41 @@ public class CoreBots
         return files.Count() > 0 && files.Any(x => x.Contains("~!") && (x.Split("~!").Last() == (Username().ToLower() + ".txt")));
     }
 
+    public void WriteFile(string path, IEnumerable<string> content)
+    {
+        try
+        {
+            File.WriteAllLines(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    public void WriteFile(string path, string[] content)
+    {
+        try
+        {
+            File.WriteAllLines(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    public void WriteFile(string path, string content)
+    {
+        try
+        {
+            File.WriteAllText(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    private void WriteFail(string path, Exception e) => Logger($"Skua just tried to write to \"{path}\" but got an exception:\n{e.InnerException}\n\nPlease restart Skua in Admin-Mode just this once.", "Failed at writing file", true, true);
+
     private void ReadMe()
     {
         string readMePath = Path.Combine(SkuaPath, "ReadMeV1.txt");
@@ -2860,7 +2895,7 @@ public class CoreBots
                     "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
                     "And thanks to everyone who has put time and effort RBot/Skua and the Master Bots! ~ Exelot",
         };
-        File.WriteAllLines(readMePath, ReadMe);
+        WriteFile(readMePath, ReadMe);
 
         // Opening ReadMe.txt
         if (result.Text == "OK")
@@ -3044,7 +3079,7 @@ public class CoreBots
                     $"stopTimeConsent: {stopTimeData}"
                 };
 
-                File.WriteAllLines(path, fileContent);
+                WriteFile(path, fileContent);
 
                 Bot.ShowMessageBox(
                     "If you wish to change these settings, you can easily modify them in the following file:\n" +

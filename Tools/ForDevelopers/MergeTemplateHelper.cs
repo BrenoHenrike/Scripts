@@ -149,7 +149,7 @@ public class MergeTemplateHelper
 
         string path = Path.Combine(CoreBots.ScriptsPath, "WIP", className + "Merge.cs");
         Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "WIP"));
-        File.WriteAllLines(path, content);
+        Core.WriteFile(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",
                                                 "File Generated", "OK").Text == "OK")
             Process.Start("explorer", path);
