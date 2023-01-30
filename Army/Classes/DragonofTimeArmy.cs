@@ -48,12 +48,26 @@ public class DoTArmy
 
 
     public bool DontPreconfigure = true;
-    public string OptionsStorage = "DoTArmy";
-    public List<IOption> Options = new List<IOption>()
+    // public string OptionsStorage = "DoTArmy";
+    // public List<IOption> Options = new List<IOption>()
+    // {
+    //     new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1), //so that it waits
+    //     CoreBots.Instance.SkipOptions
+    // };
+
+    public List<IOption> Options = new()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1), //so that it waits
+        new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
+
 
     private string[] Extras = { "Dragon of Time Horns", "Dragon of Time Horns + Ponytail", "Dragon of Time Wings + Tail" };
 
@@ -76,7 +90,7 @@ public class DoTArmy
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Bot.Events.PlayerAFK += PlayerAFK;
-      
+
         DoQuest1();
         DoQuest2();
         DoQuest3();
@@ -105,19 +119,22 @@ public class DoTArmy
 
         Farm.LoremasterREP(4);
 
-        Core.SellItem("Lost Hieroglyphic", all: true);
-        Core.SellItem("Frost King's Story", all: true);
+        if (Bot.Config.Get<bool>("sellToSync"))
+        {
+            Core.SellItem("Lost Hieroglyphic", all: true);
+            Core.SellItem("Frost King's Story", all: true);
+        }
 
         Bot.Quests.UpdateQuest(4614);
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("mummies", "Enter", "Spawn", "Mummy", "Lost Hieroglyphic", 30, false);
-        ArmyKillMonster("timelibrary", "FrameAQ", "Left", "*", "Historia Page", 100, false);
+        ArmyHunt("mummies", new[] { "Mummy" }, "Lost Hieroglyphic", ClassType.Solo, false, 30);
+        ArmyHunt("timelibrary", new[] { "Training Globe", "Tog", "Moglin Ghost" }, "Historia Page", ClassType.Solo, false, 100);
         Core.EquipClass(ClassType.Solo);
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("kingcoal", "King", "Left", "Frost King", "Frost King's Story", isTemp: false);
+        ArmyHunt("kingcoal", new[] { "Frost King" }, "Frost King's Story", ClassType.Solo);
         Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false);
         Core.BuyItem("librarium", 651, "Myths of Lore");
-        Core.ChainComplete(7716);
+        Core.EnsureComplete(7716);
         Core.Logger($"Quest 1: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
@@ -134,14 +151,14 @@ public class DoTArmy
         Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("dragonchallenge", "r13", "Left", "Desoloth the Final", "Desoloth's Destructive Aura", isTemp: false);
+        ArmyHunt("dragonchallenge", new[] { "Desoloth the Final" }, "Desoloth's Destructive Aura", ClassType.Solo);
         Bot.Quests.UpdateQuest(899);
-        ArmyKillMonster("blindingsnow", "r18", "Left", "Nythera", "Nythera's Patience", isTemp: false);
+        ArmyHunt("blindingsnow", new[] { "Nythera" }, "Nythera's Patience", ClassType.Solo);
         Core.AddDrop("Key of Greed");
-        ArmyKillMonster("greed", "r16", "Left", "Goregold", "Goregold's Luck", isTemp: false);
-        ArmyKillMonster("darkplane", "r8", "Left", "Victorious", "Victorious's Dignity", isTemp: false);
-        ArmyKillMonster("trigoras", "r4", "Left", "Trigoras", "Trigoras's Tenacity", 3, false);
-        Core.ChainComplete(7717);
+        ArmyHunt("greed", new[] { "Goregold" }, "Goregold's Luck", ClassType.Solo);
+        ArmyHunt("darkplane", new[] { "Victorious" }, "Victorious's Dignity", ClassType.Solo);
+        ArmyHunt("trigoras", new[] { "Trigoras" }, "Trigoras's Tenacity", ClassType.Solo, false, 3);
+        Core.EnsureComplete(7717);
         Core.Logger($"Quest 2: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
@@ -162,16 +179,16 @@ public class DoTArmy
         PBoD.GetPBoD();
 
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("underworld", "r15", "Left", "Laken", "Cross-Era Stabilizer", isTemp: false);
+        ArmyHunt("underworld", new[] { "Laken" }, "Cross-Era Stabilizer", ClassType.Solo);
         if (!Core.CheckInventory("Chronomancer's Codex"))
         {
-            ArmyKillMonster("mqlesson", "Boss", "Left", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-            ArmyKillMonster("timespace", "Frame2", "Left", "Chaos Lord Iadoa", "Chronomancer's Codex", isTemp: false);
+            ArmyHunt("mqlesson", new[] { "Dragonoid" }, "Dragonoid of Hours", ClassType.Solo);
+            ArmyHunt("timespace", new[] { "Chaos Lord Iadoa" }, "Chronomancer's Codex", ClassType.Solo);
         }
 
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("arena", "r4", "Left", "Timestream Rider", "Timestream String", 100, false);
-        Core.ChainComplete(7718);
+        ArmyHunt("arena", new[] { "Timestream Rider" }, "Timestream String", ClassType.Solo, false, 100);
+        Core.EnsureComplete(7718);
         Core.Logger($"Quest 3: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank("Dragon of Time FangBlade", "Dual Dragon of Time FangBlades");
@@ -189,12 +206,12 @@ public class DoTArmy
         Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("cathedral", "r14", "Left", "Incarnation of Time", "Time Loop Broken", isTemp: false);
-        ArmyKillMonster("ubear", "r7", "Left", "Cornholio", "Is This a Wormhole?", isTemp: false);
+        ArmyHunt("cathedral", new[] { "Incarnation of Time" }, "Time Loop Broken", ClassType.Solo);
+        ArmyHunt("ubear", new[] { "Cornholio" }, "Is This a Wormhole?", ClassType.Solo);
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("portalwar", "r4", "Right", "*", "Anomaly Silenced", 100, false);
-        ArmyKillMonster("portalmaze", "r22", "Left", "ChronoLord", "Chronolord Stopped", 50, false);
-        Core.ChainComplete(7719);
+        ArmyHunt("portalwar", new[] { "Chronorysa", "Tempus Larva", "Time Wraith" }, "Anomaly Silenced", ClassType.Solo, false, 100);
+        ArmyHunt("portalmaze", new[] { "ChronoLord" }, "Chronolord Stopped", ClassType.Solo, false, 50);
+        Core.EnsureComplete(7719);
         Core.Logger($"Quest 4: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
@@ -212,10 +229,10 @@ public class DoTArmy
         Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("lairdefend", "End", "Left", "Dragon Summoner", "Dimensional Dragon Portal", 2, false);
-        ArmyKillMonster("bosschallenge", "r13", "Left", "Grievous Inbunche", "Brutal Slash Studied", 10, false);
-        ArmyKillMonster("hydrachallenge", "h90", "Left", "*", "Epic Hydra Fang", 123, false);
-        Core.ChainComplete(7720);
+        ArmyHunt("lairdefend", new[] { "Dragon Summoner" }, "Dimensional Dragon Portal", ClassType.Solo, false, 2);
+        ArmyHunt("bosschallenge", new[] { "Grievous Inbunche" }, "Brutal Slash Studied", ClassType.Solo, false, 10);
+        ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Epic Hydra Fang", ClassType.Solo, false, 123);
+        Core.EnsureComplete(7720);
         Core.Logger($"Quest 5: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
@@ -233,7 +250,8 @@ public class DoTArmy
         Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("ivoliss", "r11", "Left", "Ivoliss", "Sword of Voids", isTemp: false); Bot.Wait.ForPickup("Sword of Voids");
+        ArmyHunt("ivoliss", new[] { "Ivoliss" }, "Sword of Voids", ClassType.Solo);
+        Bot.Wait.ForPickup("Sword of Voids");
 
         Darkon.FarmReceipt(100);
 
@@ -244,13 +262,13 @@ public class DoTArmy
             // Take Down Terrane 6286
             Core.EnsureAccept(6286);
             Core.EquipClass(ClassType.Solo);
-            ArmyKillMonster("guardiantree", "r", "Left", "Terrane", "Terrane Defeated");
+            ArmyHunt("guardiantree", new[] { "Terrane" }, "Terrane Defeated", ClassType.Solo);
             Core.EnsureComplete(6286);
             Bot.Wait.ForPickup("Semiramis Feather");
         }
 
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("aqw3d", "r13", "Bottom", "*", "Cross-Dimensional Weapons", 300, false);
+        ArmyHunt("aqw3d", new[] { "Nightlocke Axe", "Nightlocke Blade", "Nightlocke Staff" }, "Cross-Dimensional Weapons", ClassType.Solo, false, 300);
         TOD.ShiftingPyramid();
         if (!Core.CheckInventory("Starlight Singularity"))
         {
@@ -258,7 +276,7 @@ public class DoTArmy
             // Serpent of the Stars 5186
             Core.EnsureAccept(5186);
             Core.EquipClass(ClassType.Solo);
-            ArmyKillMonster("whitehole", "r", "Left", "Mehensi Serpent", "Mehen Slain");
+            ArmyHunt("whitehole", new[] { "Mehensi Serpent" }, "Mehen Slain", ClassType.Solo);
             Core.EnsureComplete(5186);
             Bot.Wait.ForPickup("Starlight Singularity");
         }
@@ -267,7 +285,7 @@ public class DoTArmy
         Core.BuyItem("collection", 325, "Collectible Collector");
         Bot.Wait.ForPickup("Collectible Collector");
 
-        Core.ChainComplete(7721);
+        Core.EnsureComplete(7721);
 
         Core.Logger($"Quest 6: 🖕");
         Bot.Wait.ForPickup("*");
@@ -287,15 +305,15 @@ public class DoTArmy
         Core.TrashCan(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("moonlab", "r2", "Left", "Slime Mold", "Unyielding Slime", 300, false);
+        ArmyHunt("moonlab", new[] { "Slime Mold" }, "Unyielding Slime", ClassType.Farm, false, 300);
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("bosschallenge", "Dragon", "Left", "Mutated Void Dragon", "Omnipotent rs", 20, false);
-        ArmyKillMonster("underlair", "r7", "Left", "ArchFiend Dragonlord", "Dragon's Plasma", 20, false);
-        ArmyKillMonster("chaoskraken", "Enter", "Left", "Chaos Kraken", "Chaotic Invertebrae", 20, false);
+        ArmyHunt("bosschallenge", new[] { "Mutated Void Dragon" }, "Omnipotent rs", ClassType.Solo, false, 20);
+        ArmyHunt("underlair", new[] { "ArchFiend Dragonlord" }, "Dragon's Plasma", ClassType.Solo, false, 20);
+        ArmyHunt("chaoskraken", new[] { "Chaos Kraken" }, "Chaotic Invertebrae", ClassType.Solo, false, 20);
         Bot.Quests.UpdateQuest(9, 159);
-        ArmyKillMonster("towerofdoom9", "r10", "Left", "Dread Fang", "Cryostatic Essence", 20, false);
-        ArmyKillMonster("castleroof", "r3", "Left", "Ultra Chaos Dragon", "Salvaged Chaos Dragon Biomass", 20, false);
-        Core.ChainComplete(7722);
+        ArmyHunt("towerofdoom9", new[] { "Dread Fang" }, "Cryostatic Essence", ClassType.Farm, false, 20);
+        ArmyHunt("castleroof", new[] { "Ultra Chaos Dragon" }, "Salvaged Chaos Dragon Biomass", ClassType.Solo, false, 20);
+        Core.EnsureComplete(7722);
         Core.Logger($"Quest 7: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
@@ -315,12 +333,12 @@ public class DoTArmy
 
 
         Core.EquipClass(ClassType.Farm);
-        ArmyKillMonster("volcano", "r10", "Left", "Fire Imp", "Fire Essence", 3000, false);
+        ArmyHunt("volcano", new[] { "Fire Imp" }, "Fire Essence", ClassType.Farm, false, 3000);
         Core.EquipClass(ClassType.Solo);
-        ArmyKillMonster("charredplains", "r4", "Left", "Akriloth", "Akriloth's Flametongue", 100, false);
-        ArmyKillMonster("ultraphedra", "Enter", "Left", "Ultra Phedra", "Immortal Embers", 50, false);
-        ArmyKillMonster("thevoid", "r16", "Left", "Reaper", "Ashes from the Void Realm", 50, false);
-        Core.ChainComplete(7723);
+        ArmyHunt("charredplains", new[] { "Akriloth" }, "Akriloth's Flametongue", ClassType.Solo, false, 100);
+        ArmyHunt("ultraphedra", new[] { "Ultra Phedra" }, "Immortal Embers", ClassType.Solo, false, 50);
+        ArmyHunt("thevoid", new[] { "Reaper" }, "Ashes from the Void Realm", ClassType.Solo, false, 50);
+        Core.EnsureComplete(7723);
         Core.Logger($"Quest 8: 🖕");
         Bot.Wait.ForPickup("*");
         Core.ToBank(Bot.Inventory.Items.Select(x => x.Name).ToList().Except(PreQuestInv).ToArray());
@@ -344,12 +362,12 @@ public class DoTArmy
 
         Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(3880);
-        ArmyKillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false);
+        Core.KillMonster("chaoslord", "r2", "Left", "*", "Conquered Past", isTemp: false);
         Bot.Quests.UpdateQuest(10, 159);
-        ArmyKillMonster("towerofdoom10", "r10", "Left", "Slugbutter", "Slugbutter Trophy", 100, false);
-        ArmyKillMonster("icestormarena", "r23", "Left", "Warlord Icewing", "Icewing's Laurel", 30, false);
+        ArmyHunt("towerofdoom10", new[] { "Slugbutter" }, "Slugbutter Trophy", ClassType.Solo, false, 100);
+        ArmyHunt("icestormarena", new[] { "Warlord Icewing" }, "Icewing's Laurel", ClassType.Solo, false, 30);
 
-        Core.ChainComplete(7724);
+        Core.EnsureComplete(7724);
         Core.Logger($"Quest 9: 🖕");
         Bot.Wait.ForPickup("Dragon of Time");
         Adv.rankUpClass("Dragon of Time");
@@ -378,16 +396,14 @@ public class DoTArmy
 
             if (!Core.CheckInventory("Borgar"))
             {
-                bool LoggedBefore = false;
                 while (!Bot.ShouldExit && !Core.CheckInventory("Burger Buns", 5))
                 {
                     // Burglinster's Revenge 7522
                     Core.EnsureAccept(7522);
                     Core.EquipClass(ClassType.Solo);
-                    ArmyKillMonster("borgars", "r2", "Left", "Burglinster", "Burglinster Cured", log: !LoggedBefore);
+                    ArmyHunt("borgars", new[] { "Burglinster" }, "Burglinster Cured", ClassType.Solo);
                     Core.EnsureComplete(7522);
                     Bot.Wait.ForPickup("Burger Buns");
-                    LoggedBefore = true;
                 }
             }
             Core.BuyItem("borgars", 1884, 54650, shopItemID: 7387);
@@ -447,48 +463,70 @@ public class DoTArmy
 
 
 
-    /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster - with an army check that waits for the input number of players
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="r">r to jump to</param>
-    /// <param name="Left">Left to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void ArmyKillMonster(string map, string r, string Left, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    // /// <summary>
+    // /// Joins a map, jump & set the spawn point and kills the specified monster - with an army check that waits for the input number of players
+    // /// </summary>
+    // /// <param name="map">Map to join</param>
+    // /// <param name="r">r to jump to</param>
+    // /// <param name="Left">Left to jump to</param>
+    // /// <param name="monster">Name of the monster to kill</param>
+    // /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    // /// <param name="quant">Desired quantity of the item</param>
+    // /// <param name="isTemp">Whether the item is temporary</param>
+    // /// <param name="log">Whether it will log that it is killing the monster</param>
+    // public void ArmyKillMonster(string map, string r, string Left, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    // {
+    //     // Core.PrivateRooms = true;
+    //     // Core.PrivateRoomNumber = Army.getRoomNr();
+
+    //     if (item != null && isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant))
+    //         return;
+    //     if (!isTemp && item != null)
+    //         Core.AddDrop(item);
+    //     Core.Join(map, r, Left);
+    //     Core.Jump(r, Left);
+    //     while ((r != null && Bot.Map.PlayerNames.Count() > 0 ? Bot.Map.PlayerNames.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
+    //     {
+    //         Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
+    //         Bot.Sleep(5000);
+    //     }
+    //     if (item == null)
+    //     {
+    //         if (log)
+    //             Core.Logger($"Killing {monster}");
+    //         Core.HuntMonster(map, monster);
+    //         Core.Rest();
+    //     }
+    //     else
+    //     {
+    //         if (Bot.Map.Name == "trigoras")
+    //             Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
+    //         else Core.HuntMonster(map, monster, item, quant, isTemp, log: log);
+    //     }
+
+    // }
+
+
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
-        // Core.PrivateRooms = true;
-        // Core.PrivateRoomNumber = Army.getRoomNr();
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (item != null && isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant))
-            return;
-        if (!isTemp && item != null)
-            Core.AddDrop(item);
-        Core.Join(map, r, Left);
-        Core.Jump(r, Left);
-        while ((r != null && Bot.Map.PlayerNames.Count() > 0 ? Bot.Map.PlayerNames.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
-        {
-            Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
-            Bot.Sleep(5000);
-        }
-        if (item == null)
-        {
-            if (log)
-                Core.Logger($"Killing {monster}");
-            Core.HuntMonster(map, monster);
-            Core.Rest();
-        }
-        else
-        {
-            if (Bot.Map.Name == "trigoras")
-                Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
-            else Core.HuntMonster(map, monster, item, quant, isTemp, log: log);
-        }
+        Core.EquipClass(classType);
+        Core.AddDrop(item);
 
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monsters);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
     }
+
 
     public void PlayerAFK()
     {
