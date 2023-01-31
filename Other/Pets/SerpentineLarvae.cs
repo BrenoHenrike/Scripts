@@ -29,7 +29,7 @@ public class SerpentineLarvae
 
     public void DoQuest()
     {
-        Core.HuntMonster("darkallaince", "Shadowflame Nulgath", "Serpentine Larvae", isTemp: false, log: false);
+        Core.HuntMonster("darkalliance", "Shadowflame Nulgath", "Serpentine Larvae", isTemp: false, log: false);
         AutoReward(8944);
         Core.TrashCan("Tainted Soul", "Blade of Holy Might", "Infected Dragon Soul");
     }
