@@ -7417,12 +7417,13 @@
     "name": "Super Slayin Badge",
     "description": "This will get the Super Slayin Badge.",
     "tags": [
-      "super-slayin-badge",
+      "super-slayin",
+      "badge",
       "seasonal",
       "april-fools"
     ],
     "path": "Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs",
-    "size": 1384,
+    "size": 1385,
     "fileName": "SuperSLAYIN'Badge(GardenQuest).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
   },
