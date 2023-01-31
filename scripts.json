@@ -6639,123 +6639,161 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/KalaMergeAbhorrentRemains.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Pirate Story",
+    "description": "This will finish the Dragon Pirate Story Line.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dragon",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs",
-    "size": 1579,
+    "size": 1660,
     "fileName": "DragonPirateStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/DragonPirateStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Capital Story",
+    "description": "This will finish the Dragon Capital Story Quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dragon",
+      "capital",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs",
-    "size": 2040,
+    "size": 2133,
     "fileName": "DragonCapitalStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Cetoleon War Story",
+    "description": "This will finish the Cetoleon War Story Line.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "cetoleon",
+      "war",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/CetoleonWarStory.cs",
-    "size": 7430,
+    "size": 7516,
     "fileName": "CetoleonWarStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CetoleonWarStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Heart of the Sea Story",
+    "description": "This will finish the Heart of the Sea Story Quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "heart-of-the-sea",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/HeartOfTheSeaStory.cs",
-    "size": 1881,
+    "size": 1979,
     "fileName": "HeartOfTheSeaStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/HeartOfTheSeaStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Avast Badge (Member)",
+    "description": "This will finish the quest line of Avast and get Avast Badge.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "avast",
+      "badge",
+      "pirate",
+      "member"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs",
-    "size": 6644,
+    "size": 6755,
     "fileName": "AvastBadge[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Kaiju War",
+    "description": "This will farm the Kaiju War items.",
     "tags": [
-      "null"
+      "farm",
+      "pirate",
+      "kaiju",
+      "war"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/KaijuWar.cs",
-    "size": 4283,
+    "size": 4339,
     "fileName": "KaijuWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/KaijuWar.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Alpha Pirate Class",
+    "description": "This will merge the Alpha Pirate Class Token.",
     "tags": [
-      "null"
+      "merge-shop",
+      "alpha",
+      "pirate",
+      "class"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AlphaPirate.cs",
-    "size": 1160,
+    "size": 1243,
     "fileName": "AlphaPirate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AlphaPirate.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Celestial Pirate Commander (Polly Rogers)",
+    "description": "This will farm the Celestial Pirate Commander items and (Polly Rogers) pet.",
     "tags": [
-      "null"
+      "farm",
+      "pet",
+      "polly-rogers",
+      "celestial-pirate-commander",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs",
-    "size": 3126,
+    "size": 3289,
     "fileName": "CelestialPirateCommander[PollyRogers].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Alutea Nursery",
+    "description": "This will finish the Alutea Nursery Quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "alutea-nursery",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AluteaNursery.cs",
-    "size": 3439,
+    "size": 3519,
     "fileName": "AluteaNursery.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Low Tide Story",
+    "description": "This will finish the Low Tide Story Quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "low-tide",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/LowTideStory.cs",
-    "size": 2238,
+    "size": 2312,
     "fileName": "LowTideStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/LowTideStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blaze Beard Story",
+    "description": "This will finish the Blaze Beard Story Quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "blaze-beard",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs",
-    "size": 8476,
+    "size": 3343,
     "fileName": "BlazeBeardStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs"
   },
@@ -12529,57 +12567,76 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Daily-Classes/BlazeBinder.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Low Tide Merge",
+    "description": "This will farm and buy all items of Low Tide Merge Shop.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "low-tide",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs",
-    "size": 6956,
+    "size": 7043,
     "fileName": "LowTideMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Alutea Nursery Merge",
+    "description": "This will farm and buy all the items from the Alutea Nursery Merge Shop.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "alutea",
+      "nursery",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/AluteaNurseryMerge.cs",
-    "size": 9873,
+    "size": 9995,
     "fileName": "AluteaNurseryMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/AluteaNurseryMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Pirate Merge",
+    "description": "This will farm and buy all items from Dragon Pirate Merge Shop.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "dragon-pirate",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DragonPirateMerge.cs",
-    "size": 7398,
+    "size": 7513,
     "fileName": "DragonPirateMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DragonPirateMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Capital Merge",
+    "description": "This will farm and buy all items of Dragon Capital Merge Shop.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "dragon-capital",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DragonCapitalMerge.cs",
-    "size": 10360,
+    "size": 10471,
     "fileName": "DragonCapitalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DragonCapitalMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blazebeard Merge",
+    "description": "This will farm the Blazebeard Merge items.",
     "tags": [
-      "null"
+      "farm",
+      "blazebeard",
+      "merge",
+      "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs",
-    "size": 9439,
+    "size": 9516,
     "fileName": "BlazeBeardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs"
   },
