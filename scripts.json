@@ -389,13 +389,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SnowballAmberarms.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Free AC Gift",
+    "description": "This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.",
     "tags": [
-      "null"
+      "free",
+      "ac",
+      "gift",
+      "box",
+      "frogzard",
+      "battleon",
+      "town"
     ],
     "path": "Other/2022AcGift.cs",
-    "size": 732,
+    "size": 854,
     "fileName": "2022AcGift.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/2022AcGift.cs"
   },
