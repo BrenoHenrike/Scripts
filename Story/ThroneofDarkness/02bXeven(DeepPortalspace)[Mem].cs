@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Xeven) Deep Portalspace Story
+description: This will finish the Deep Portalspace story.
+tags: deep, portalspace, farm, story, xeven, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

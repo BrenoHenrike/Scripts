@@ -1,7 +1,7 @@
 /*
-name: Mysterious Dungeon Story
+name: (Stranger) Mysterious Dungeon Story
 description: This will finish the Mysterious Dungeon story.
-tags: mysterious, dungeon, farm, story, throne, darkness
+tags: mysterious, dungeon, farm, story, throne, darkness, stranger
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

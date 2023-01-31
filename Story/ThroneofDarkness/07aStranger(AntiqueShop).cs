@@ -1,7 +1,7 @@
 /*
-name: Antique Shop Story
+name: (Stranger) Antique Shop Story
 description: This will finish the Antique Shop story.
-tags: antique, shop, farm, story, throne, darkness
+tags: antique, shop, farm, story, throne, darkness, stranger
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

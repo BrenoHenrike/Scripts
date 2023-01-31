@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Xeven) Paradox Portal Story
+description: This will finish the Paradox Portal story.
+tags: paradox, portal, farm, story, xeven, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

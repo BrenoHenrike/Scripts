@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Ziri) Laser Shark Invasion Story
+description: This will finish the Laser Shark Invasion story.
+tags: laser, shark, invasion, farm, story, ziri, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

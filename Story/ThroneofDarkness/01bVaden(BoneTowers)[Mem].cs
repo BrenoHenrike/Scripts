@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Vaden) Bone Towers Story
+description: This will finish the Bone Towers story.
+tags: bone, towers, farm, story, vaden, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
