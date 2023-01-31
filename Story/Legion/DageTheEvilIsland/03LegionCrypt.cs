@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Legion Crypt
+description: This will finish the Legion Crypt quest.
+tags: story, quest, legion, dage-the-evil-island, legion-crypt
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

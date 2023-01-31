@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark War Legion and Nation
+description: This will finish the Dark War Legion and Nation quest.
+tags: story, quest, legion, dark-war-legion-and-nation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs
