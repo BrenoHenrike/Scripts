@@ -10046,123 +10046,171 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/01ShadowWar.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Astravia",
+    "description": "This will finish the Astravia quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "astravia"
     ],
     "path": "Story/ElegyofMadness(Darkon)/2Astravia.cs",
-    "size": 612,
+    "size": 692,
     "fileName": "2Astravia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/2Astravia.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Astravia Past",
+    "description": "This will finish the Astravia Past quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "astravia",
+      "past"
     ],
     "path": "Story/ElegyofMadness(Darkon)/6AstraviaPast.cs",
-    "size": 612,
+    "size": 708,
     "fileName": "6AstraviaPast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/6AstraviaPast.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Elegy of Madness Story",
+    "description": "This will complete the Astravia story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "complete",
+      "all"
     ],
     "path": "Story/ElegyofMadness(Darkon)/0CompleteAll.cs",
-    "size": 616,
+    "size": 726,
     "fileName": "0CompleteAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/0CompleteAll.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "First Observatory",
+    "description": "This will finish the First Observatory quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "first-observatory"
     ],
     "path": "Story/ElegyofMadness(Darkon)/7FirstObservatory.cs",
-    "size": 620,
+    "size": 727,
     "fileName": "7FirstObservatory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/7FirstObservatory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Astravia Judgement",
+    "description": "This will finish the Astravia Judgement quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "astravia",
+      "judgement"
     ],
     "path": "Story/ElegyofMadness(Darkon)/4AstraviaJudgement.cs",
-    "size": 622,
+    "size": 733,
     "fileName": "4AstraviaJudgement.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/4AstraviaJudgement.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Erindani",
+    "description": "This will finish the Eridani quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "eridani"
     ],
     "path": "Story/ElegyofMadness(Darkon)/1Eridani.cs",
-    "size": 602,
+    "size": 680,
     "fileName": "1Eridani.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/1Eridani.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Genesis Garden",
+    "description": "This will finish the Genesis Garden quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "genesis-garden"
     ],
     "path": "Story/ElegyofMadness(Darkon)/8GenesisGarden.cs",
-    "size": 556,
+    "size": 654,
     "fileName": "8GenesisGarden.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/8GenesisGarden.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Darkon Garden",
+    "description": "This will finish the Darkon Garden quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "garden"
     ],
     "path": "Story/ElegyofMadness(Darkon)/DarkonGarden.cs",
-    "size": 1526,
+    "size": 1614,
     "fileName": "DarkonGarden.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/DarkonGarden.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Astravia Castle",
+    "description": "This will finish the Astravia Castle quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "astravia",
+      "castle"
     ],
     "path": "Story/ElegyofMadness(Darkon)/3AstraviaCastle.cs",
-    "size": 616,
+    "size": 718,
     "fileName": "3AstraviaCastle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/3AstraviaCastle.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "The World",
+    "description": "This will finish the The World quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "the-world"
     ],
     "path": "Story/ElegyofMadness(Darkon)/9TheWorld.cs",
-    "size": 546,
+    "size": 629,
     "fileName": "9TheWorld.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/9TheWorld.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Eridani Past",
+    "description": "This will finish the Eridani Past quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "eridani-past"
     ],
     "path": "Story/ElegyofMadness(Darkon)/5EridaniPast.cs",
-    "size": 610,
+    "size": 702,
     "fileName": "5EridaniPast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/5EridaniPast.cs"
   },
