@@ -1,6 +1,6 @@
 /*
-name: null
-description: null
+name: Artixpointe Story
+description: This will finish the Artixpointe quest.
 tags: null
 */
 //cs_include Scripts/CoreBots.cs

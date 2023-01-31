@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ravenloss Saga Story
+description: This will finish the Ravenloss Saga Story.
+tags: story, quest, ravenloss-saga
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

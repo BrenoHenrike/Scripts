@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Xan's Lair Story
+description: This will finish the Xan's Lair Story.
+tags: story, quest, xan, lair
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

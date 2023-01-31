@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Asylum Story
+description: This will complete the Asylum story.
+tags: story, quest, asylum
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

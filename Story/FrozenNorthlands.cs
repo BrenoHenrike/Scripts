@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Frozen Northlands Story
+description: This will finish the Frozen Northlands Story.
+tags: story, quest, frozen-northlands
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

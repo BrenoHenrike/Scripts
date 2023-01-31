@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Safiria Story (Member)
+description: This will finish the Safiria Story.
+tags: story, quest, safiria, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

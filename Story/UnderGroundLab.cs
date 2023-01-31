@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: UnderGround Lab Story
+description: This will finish the UnderGround Lab Story.
+tags: story, quest, under-ground-lab
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

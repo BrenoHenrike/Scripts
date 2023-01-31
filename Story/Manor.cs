@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Manor Story
+description: This will finish the Manor Story.
+tags: story, quest, manor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

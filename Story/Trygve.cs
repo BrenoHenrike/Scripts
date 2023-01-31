@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Trygve Story
+description: This will finish the Trygve Story.
+tags: story, quest, trygve
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

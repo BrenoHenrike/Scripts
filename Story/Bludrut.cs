@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Bludrut Story
+description: This will complete the Bludrut story.
+tags: story, quest, bludrut
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Willow Creek Story
+description: This will finish the Willow Creek Story.
+tags: story, quest, willow-creek
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

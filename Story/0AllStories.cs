@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete All Stories
+description: This will complete all stories.
+tags: story, quest, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
