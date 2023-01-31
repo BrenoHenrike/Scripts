@@ -46,7 +46,9 @@ public class SerpentineLarvae
         Adv.BestGear(GearBoost.Dragonkin);
         foreach (ItemBase item in RewardOptions)
         {
-            Core.FarmingLogger(item.Name, 1);
+            if (!Core.CheckInventory(item.ID))
+                Core.FarmingLogger(item.Name, 1);
+
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
             {
                 Core.EnsureAccept(questID);
