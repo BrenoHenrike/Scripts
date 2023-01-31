@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Celestial Past (Extra)
+description: This will finish the Celestial Past quest.
+tags: story, quest, queen-of-monsters, celestial-past, extra
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

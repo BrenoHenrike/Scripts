@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Celestial Arena (Extra)
+description: This will finish the Celestial Arena quest.
+tags: story, quest, queen-of-monsters, extra, celestial-arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
