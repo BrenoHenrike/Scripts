@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 28051,
+    "size": 28172,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -747,7 +747,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28148,
+    "size": 28340,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -10516,7 +10516,7 @@
       "f2p"
     ],
     "path": "Army/Various/ArmySwagTokensF2p.cs",
-    "size": 2703,
+    "size": 3151,
     "fileName": "ArmySwagTokensF2p.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
