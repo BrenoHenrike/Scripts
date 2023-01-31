@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Blazing Beach Merge
+description: This will farm the Blazing Beach items.
+tags: farm, merge, shop, blazing-beach, summer-break
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

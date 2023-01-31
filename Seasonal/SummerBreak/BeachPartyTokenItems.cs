@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beach Party Token Items
+description: This will farm Tiki Tokens and buy the items from the Beach Party Token Shop.
+tags: farm, beach, party, tiki, tokens, items, shop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
