@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93329,
+    "size": 93321,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -252,7 +252,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 16287,
+    "size": 16291,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -1078,13 +1078,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmblemofNulgath.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "New Worlds, New Opportunities",
+    "description": "Farms the resources of nation so instantly. Note that you must have Bounty Hunter's Drone Pet.",
     "tags": [
-      "null"
+      "bounty-hunters-pet",
+      "pet",
+      "nation-farm",
+      "farm-resources"
     ],
     "path": "Nation/NewWorldsNewOpportunities.cs",
-    "size": 536,
+    "size": 699,
     "fileName": "NewWorldsNewOpportunities.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NewWorldsNewOpportunities.cs"
   },
@@ -10500,9 +10503,22 @@
       "army"
     ],
     "path": "Army/Classes/DragonofTimeArmy.cs",
-    "size": 27092,
+    "size": 28344,
     "fileName": "DragonofTimeArmy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
+  },
+  {
+    "name": "Army superfan swag token a",
+    "description": "farms super-fan swag token a with f2p method",
+    "tags": [
+      "\"super-fan swag token a\"",
+      "army",
+      "f2p"
+    ],
+    "path": "Army/Various/ArmySwagTokensF2p.cs",
+    "size": 2703,
+    "fileName": "ArmySwagTokensF2p.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
   {
     "name": "Army Spirit Orbs",
@@ -11630,7 +11646,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21745,
+    "size": 21775,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

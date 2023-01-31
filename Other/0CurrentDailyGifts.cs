@@ -140,8 +140,8 @@ public class CurrentDailyGifts
             #region January 2023
 
             GetGift(AvailableUntil(14, 1), "snowview", "Vaderix", "Dire Wolf Pup");
-            GetGift(AvailableUntil(31, 1), "snowviewrace", "Bandit", "Frostlorn Hair", "Frostlorn Locks");
-            GetGift(AvailableUntil(31, 1), "carolinn", "Frostval Deer", "CandyCane Capybara Pet");
+            //GetGift(AvailableUntil(31, 1), "snowviewrace", "Bandit", "Frostlorn Hair", "Frostlorn Locks");
+            //GetGift(AvailableUntil(31, 1), "carolinn", "Frostval Deer", "CandyCane Capybara Pet");
             GetGift(AvailableUntil(31, 1), "everfrost", "Chillbite", "Ancient Axe of the Archipelago");
             GetGift(AvailableUntil(31, 1), "newyear", "2023 Ball", "Chaotic Chrono Eye", "New Year Dawning", "Elegant Bejeweled Cane", "AntiRetrograde Clock", "Nascent ChronoWeaver's Runes", "Frigid Wolf Spear");
             GetGift(AvailableUntil(31, 1), "timeretaliate", "Retrograde Maw", "Nascent ChronoWeaver's Clock", "Polychronic Magister's Hourglasses", "Polychronic Magister's Hourglass", "Chronobound Gear", "Nascent Temporal Portal");
