@@ -42,8 +42,8 @@ namespace SkuaScriptsGenerator.Generators
                     var scriptNormalized = script.Normalize(NormalizationForm.FormC);
                     // remove uknown characters/red dots
                     var scriptCleaned = Regex.Replace(scriptNormalized, @"[^\u0000-\uFFFF]", string.Empty);
-                    scriptCleaned = scriptCleaned.Replace("\u200B", "");
-                    scriptInfo.Size = (int)new FileInfo(scriptCleaned).Length;
+                    var strNoZWNBS = new UTF8Encoding(false).GetString(scriptCleaned);
+                    scriptInfo.Size = (int)new FileInfo(strNoZWNBS).Length;
 
                     scripts.Add(scriptInfo);
                 }
