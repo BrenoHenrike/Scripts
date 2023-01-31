@@ -1078,13 +1078,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmblemofNulgath.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "New Worlds, New Opportunities",
+    "description": "Farms the resources of nation so instantly. Note that you must have Bounty Hunter's Drone Pet.",
     "tags": [
-      "null"
+      "bounty-hunters-pet",
+      "pet",
+      "nation-farm",
+      "farm-resources"
     ],
     "path": "Nation/NewWorldsNewOpportunities.cs",
-    "size": 536,
+    "size": 699,
     "fileName": "NewWorldsNewOpportunities.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NewWorldsNewOpportunities.cs"
   },
