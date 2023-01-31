@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Isle Of Fotia Story
+description: This will complete the Isle Of Fotia story.
+tags: story, quest, isle-of-fotia, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

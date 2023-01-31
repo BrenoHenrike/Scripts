@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dage Fortress
+description: This will finish the DageFortress quest.
+tags: story, quest, isle-of-fotia, dage-fortress
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
