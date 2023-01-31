@@ -10201,134 +10201,191 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/05Lust.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Chaos Saga Extra",
+    "description": "This will finish the Chaos Saga Extra quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "extra"
     ],
     "path": "Story/LordsofChaos/15Extra.cs",
-    "size": 691,
+    "size": 789,
     "fileName": "15Extra.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/15Extra.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(The Span) Iadoa",
+    "description": "This will finish the Iadoa quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "the-span",
+      "iadoa"
     ],
     "path": "Story/LordsofChaos/10Iadoa(TheSpan).cs",
-    "size": 688,
+    "size": 785,
     "fileName": "10Iadoa(TheSpan).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/10Iadoa(TheSpan).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Prologue",
+    "description": "This will finish the Prologue quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "prologue"
     ],
     "path": "Story/LordsofChaos/01Prologue.cs",
-    "size": 692,
+    "size": 777,
     "fileName": "01Prologue.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/01Prologue.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Darkblood) Lionfang",
+    "description": "This will finish the Lionfang quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "darkblood",
+      "lionfang"
     ],
     "path": "Story/LordsofChaos/11Lionfang(Darkblood).cs",
-    "size": 693,
+    "size": 801,
     "fileName": "11Lionfang(Darkblood).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/11Lionfang(Darkblood).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Chiral Valley) Escherion",
+    "description": "This will finish the Escherion quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "chiral-valley",
+      "escherion"
     ],
     "path": "Story/LordsofChaos/02Escherion(ChiralValley).cs",
-    "size": 697,
+    "size": 817,
     "fileName": "02Escherion(ChiralValley).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/02Escherion(ChiralValley).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mount Doom Skull",
+    "description": "This will finish the Mount Doom Skull quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "mount-doom-skull"
     ],
     "path": "Story/LordsofChaos/MountDoomSkull.cs",
-    "size": 2381,
+    "size": 2490,
     "fileName": "MountDoomSkull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/MountDoomSkull.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Yokai) Kitsune",
+    "description": "This will finish the Kitsune quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "yokai",
+      "kitsune"
     ],
     "path": "Story/LordsofChaos/04Kitsune(Yokai).cs",
-    "size": 688,
+    "size": 785,
     "fileName": "04Kitsune(Yokai).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/04Kitsune(Yokai).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Chaos Finale) Hero",
+    "description": "This will finish the Hero quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "chaos-finale",
+      "hero"
     ],
     "path": "Story/LordsofChaos/14Hero(ChaosFinale).cs",
-    "size": 691,
+    "size": 793,
     "fileName": "14Hero(ChaosFinale).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/14Hero(ChaosFinale).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Troll) Khasaanda",
+    "description": "This will finish the Khasaanda quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "troll",
+      "khasaanda"
     ],
     "path": "Story/LordsofChaos/09Khasaanda(Troll).cs",
-    "size": 695,
+    "size": 798,
     "fileName": "09Khasaanda(Troll).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/09Khasaanda(Troll).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Dwarfhold) Vath",
+    "description": "This will finish the Vath quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "dwarfhold",
+      "vath"
     ],
     "path": "Story/LordsofChaos/03Vath(Dwarfhold).cs",
-    "size": 689,
+    "size": 785,
     "fileName": "03Vath(Dwarfhold).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/03Vath(Dwarfhold).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Arcangrove) Ledgermayne",
+    "description": "chaos-saga, 13-lords-of-chaos",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "arcangrove",
+      "ledgermayne"
     ],
     "path": "Story/LordsofChaos/07Ledgermayne(Arcangrove).cs",
-    "size": 697,
+    "size": 806,
     "fileName": "07Ledgermayne(Arcangrove).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/07Ledgermayne(Arcangrove).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Mirror Realm) Xiang",
+    "description": "This will finish the Xiang quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "mirror-realm",
+      "xiang"
     ],
     "path": "Story/LordsofChaos/12Xiang(MirrorRealm).cs",
-    "size": 692,
+    "size": 797,
     "fileName": "12Xiang(MirrorRealm).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/12Xiang(MirrorRealm).cs"
   },
@@ -10344,68 +10401,98 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Mythsong) Kimberly",
+    "description": "This will finish the Kimberly quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "mythsong",
+      "kimberly"
     ],
     "path": "Story/LordsofChaos/06Kimberly(Mythsong).cs",
-    "size": 692,
+    "size": 798,
     "fileName": "06Kimberly(Mythsong).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/06Kimberly(Mythsong).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Sandsea) Tibicenas",
+    "description": "This will finish the Tibicenas quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "sandsea",
+      "tibicenas"
     ],
     "path": "Story/LordsofChaos/08Tibicenas(Sandsea).cs",
-    "size": 692,
+    "size": 799,
     "fileName": "08Tibicenas(Sandsea).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/08Tibicenas(Sandsea).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Darkovia) Wolfwing",
+    "description": "This will finish the Wolfwing quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "darkovia",
+      "wolfwing"
     ],
     "path": "Story/LordsofChaos/05Wolfwing(Darkovia).cs",
-    "size": 692,
+    "size": 798,
     "fileName": "05Wolfwing(Darkovia).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/05Wolfwing(Darkovia).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Swordhaven) Alteon",
+    "description": "This will finish the Alteon quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "swordhaven",
+      "alteon"
     ],
     "path": "Story/LordsofChaos/13Alteon(Swordhaven).cs",
-    "size": 692,
+    "size": 796,
     "fileName": "13Alteon(Swordhaven).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/13Alteon(Swordhaven).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Chaos Saga Story",
+    "description": "This will finish the Chaos Saga story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "complete",
+      "all"
     ],
     "path": "Story/LordsofChaos/00Complete13LOC.cs",
-    "size": 706,
+    "size": 815,
     "fileName": "00Complete13LOC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/00Complete13LOC.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Horc) Khasaanda",
+    "description": "This will finish the Khasaanda quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "horc",
+      "khasaanda"
     ],
     "path": "Story/LordsofChaos/09Khasaanda(Horc).cs",
-    "size": 693,
+    "size": 794,
     "fileName": "09Khasaanda(Horc).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/09Khasaanda(Horc).cs"
   },
@@ -13156,35 +13243,55 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Extra/HatchTheEgg.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Chaos Finale Bonus) Deadly Dungeon",
+    "description": "This will finish the Deadly Dungeon quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "chaos-finale",
+      "deadly-dungeon",
+      "member"
     ],
     "path": "Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs",
-    "size": 2815,
+    "size": 2961,
     "fileName": "DeadlyDungeon[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Chaos Finale Bonus) Pyramid of Pain",
+    "description": "This will finish the Pyramid of Pain quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "chaos-finale",
+      "bonus",
+      "pyramid-of-pain",
+      "member"
     ],
     "path": "Story/LordsofChaos/ChoasFinaleBonus[Mem]/PyramidofPain[Mem].cs",
-    "size": 2763,
+    "size": 2919,
     "fileName": "PyramidofPain[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/ChoasFinaleBonus[Mem]/PyramidofPain[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Chaos Finale Bonus) Killer Catacombs",
+    "description": "This will finish the Killer Catacombs quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "chaos-saga",
+      "13-lords-of-chaos",
+      "chaos-finale",
+      "bonus",
+      "killer-catacombs",
+      "member"
     ],
     "path": "Story/LordsofChaos/ChoasFinaleBonus[Mem]/KillerCatacombs[Mem].cs",
-    "size": 2965,
+    "size": 3124,
     "fileName": "KillerCatacombs[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/ChoasFinaleBonus[Mem]/KillerCatacombs[Mem].cs"
   },
