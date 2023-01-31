@@ -6864,24 +6864,29 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/ArcadiaMerge(PaintedButterfly).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shorinzan Merge",
+    "description": "This script will merge all the items needed for the Shorinzan merge.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "star-festival",
+      "shorinzan"
     ],
     "path": "Seasonal/StarFestival/ShorinzanMerge.cs",
-    "size": 6583,
+    "size": 6691,
     "fileName": "ShorinzanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/ShorinzanMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Star Festival Story",
+    "description": "This script will complete the Star Festival story quests.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "star-festival"
     ],
     "path": "Seasonal/StarFestival/StarFestival.cs",
-    "size": 6020,
+    "size": 6111,
     "fileName": "StarFestival.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
