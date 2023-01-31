@@ -9569,68 +9569,86 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MemetsRealm/0DoAll.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ruined Crown",
+    "description": "This will finish the Ruined Crown quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "ruined-crown"
     ],
     "path": "Story/ShadowsOfWar/16RuinedCrown.cs",
-    "size": 583,
+    "size": 661,
     "fileName": "16RuinedCrown.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/16RuinedCrown.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Junkheap",
+    "description": "This will finish the Junkheap quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "junkheap"
     ],
     "path": "Story/ShadowsOfWar/07Junkheap.cs",
-    "size": 578,
+    "size": 644,
     "fileName": "07Junkheap.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/07Junkheap.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Junkhoard",
+    "description": "This will finish the Junkhoard quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "junkhoard"
     ],
     "path": "Story/ShadowsOfWar/06Junkhoard.cs",
-    "size": 580,
+    "size": 649,
     "fileName": "06Junkhoard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/06Junkhoard.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ghost Nexus",
+    "description": "This will finish the Ghost Nexus quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "ghost-nexus"
     ],
     "path": "Story/ShadowsOfWar/10GhostNexus.cs",
-    "size": 581,
+    "size": 656,
     "fileName": "10GhostNexus.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/10GhostNexus.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Flame",
+    "description": "This will finish the ShadowFlame quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "shadowflame"
     ],
     "path": "Story/ShadowsOfWar/20ShadowFlame.cs",
-    "size": 584,
+    "size": 660,
     "fileName": "20ShadowFlame.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/20ShadowFlame.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Grove",
+    "description": "This will finish the Shadowgrove quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "shadowgrove"
     ],
     "path": "Story/ShadowsOfWar/08Shadowgrove.cs",
-    "size": 583,
+    "size": 659,
     "fileName": "08Shadowgrove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/08Shadowgrove.cs"
   },
@@ -9646,13 +9664,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Song",
+    "description": "This will finish the Shadow Song quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "shadow-song"
     ],
     "path": "Story/ShadowsOfWar/11Shadowsong.cs",
-    "size": 582,
+    "size": 657,
     "fileName": "11Shadowsong.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/11Shadowsong.cs"
   },
@@ -9672,145 +9693,183 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/00DoAll.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadowlord Keep",
+    "description": "This is the second part of the Shadow War story arc. It will take you to the Shadowlord Keep area and start the quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "shadowlord-keep"
     ],
     "path": "Story/ShadowsOfWar/02ShadowlordKeep.cs",
-    "size": 590,
+    "size": 752,
     "fileName": "02ShadowlordKeep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/02ShadowlordKeep.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Timekeep",
+    "description": "This will finish the Timekeep quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "timekeep"
     ],
     "path": "Story/ShadowsOfWar/17Timekeep.cs",
-    "size": 577,
+    "size": 643,
     "fileName": "17Timekeep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/17Timekeep.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Ally",
+    "description": "This will finish the Dark Ally quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "dark-ally"
     ],
     "path": "Story/ShadowsOfWar/12DarkAlly.cs",
-    "size": 578,
+    "size": 647,
     "fileName": "12DarkAlly.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/12DarkAlly.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blacksea Keep",
+    "description": "This will finish the Blacksea Keep quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "blacksea-keep"
     ],
     "path": "Story/ShadowsOfWar/05BlackseaKeep.cs",
-    "size": 586,
+    "size": 667,
     "fileName": "05BlackseaKeep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/05BlackseaKeep.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Granite Cove",
+    "description": "This will finish the Granite Cove quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "granite-cove"
     ],
     "path": "Story/ShadowsOfWar/04GraniteCove.cs",
-    "size": 584,
+    "size": 662,
     "fileName": "04GraniteCove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/04GraniteCove.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Deadlines",
+    "description": "This will finish the Deadlines quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "deadlines"
     ],
     "path": "Story/ShadowsOfWar/19DeadLines.cs",
-    "size": 580,
+    "size": 649,
     "fileName": "19DeadLines.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/19DeadLines.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Inner Shadows",
+    "description": "This will finish the Inner Shadows quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "inner-shadows"
     ],
     "path": "Story/ShadowsOfWar/14InnerShadows.cs",
-    "size": 586,
+    "size": 667,
     "fileName": "14InnerShadows.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/14InnerShadows.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Alliance",
+    "description": "This will finish the Dark Alliance quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "dark-alliance"
     ],
     "path": "Story/ShadowsOfWar/13DarkAlliance.cs",
-    "size": 586,
+    "size": 667,
     "fileName": "13DarkAlliance.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/13DarkAlliance.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Aozora Hills",
+    "description": "This will finish the Aozora Hills quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "aozora-hills"
     ],
     "path": "Story/ShadowsOfWar/09AozoraHills.cs",
-    "size": 620,
+    "size": 698,
     "fileName": "09AozoraHills.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/09AozoraHills.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tyndarius",
+    "description": "This will finish the Tyndarius quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "tyndarius"
     ],
     "path": "Story/ShadowsOfWar/15Tyndarius.cs",
-    "size": 579,
+    "size": 648,
     "fileName": "15Tyndarius.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/15Tyndarius.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "TimestreamWar",
+    "description": "This will finish the TimestreamWar quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "timestream-war"
     ],
     "path": "Story/ShadowsOfWar/18TimestreamWar.cs",
-    "size": 588,
+    "size": 670,
     "fileName": "18TimestreamWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/18TimestreamWar.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Timestream",
+    "description": "This is the third part of the Shadow War story arc. It will take you to the Timestream area and start the quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war",
+      "timestream"
     ],
     "path": "Story/ShadowsOfWar/03Timestream.cs",
-    "size": 581,
+    "size": 727,
     "fileName": "03Timestream.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/03Timestream.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow War",
+    "description": "This is the first part of the Shadow War story arc. It will take you to the Shadow War area and start the quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-war"
     ],
     "path": "Story/ShadowsOfWar/01ShadowWar.cs",
-    "size": 581,
+    "size": 715,
     "fileName": "01ShadowWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/01ShadowWar.cs"
   },
