@@ -10250,79 +10250,160 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/09Khasaanda(Horc).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Summer) Collector",
+    "description": "This will finish the Collector story.",
     "tags": [
-      "null"
+      "collector",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "collector",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/4Collector.cs",
-    "size": 602,
+    "size": 738,
     "fileName": "4Collector.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/4Collector.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Summer) Luna Cove",
+    "description": "This will finish the Luna Cove story.",
     "tags": [
-      "null"
+      "luna",
+      "cove",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "luna",
+      "cove",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/6LunaCove.cs",
-    "size": 600,
+    "size": 738,
     "fileName": "6LunaCove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/6LunaCove.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Deadmoor) Summer 2015 Adventure Map Story",
+    "description": "This will finish the Deadmoor story.",
     "tags": [
-      "null"
+      "deadmoor",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "deadmoor",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/2Deadmoor.cs",
-    "size": 600,
+    "size": 757,
     "fileName": "2Deadmoor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/2Deadmoor.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Summer) Living Dungeon",
+    "description": "This will finish the Living Dungeon story.",
     "tags": [
-      "null"
+      "living",
+      "dungeon",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "living",
+      "dungeon",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/5LivingDungeon.cs",
-    "size": 615,
+    "size": 773,
     "fileName": "5LivingDungeon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/5LivingDungeon.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Cyseros) Secret",
+    "description": "This will finish the Cyseros Secret story.",
     "tags": [
-      "null"
+      "cyseros",
+      "secret",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "cyseros",
+      "secret",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/7CyserosSecret.cs",
-    "size": 610,
+    "size": 761,
     "fileName": "7CyserosSecret.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/7CyserosSecret.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Dread Space) Summer 2015 Adventure Map Story",
+    "description": "This will finish the Dread Space story.",
     "tags": [
-      "null"
+      "dread",
+      "space",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "dread",
+      "space"
     ],
     "path": "Story/Summer2015AdventureMap/1DreadSpace.cs",
-    "size": 604,
+    "size": 745,
     "fileName": "1DreadSpace.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/1DreadSpace.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Beleen) Summer 2015 Adventure Map Story",
+    "description": "This will finish the Beleen story.",
     "tags": [
-      "null"
+      "beleen",
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "beleen",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/3Beleen.cs",
-    "size": 596,
+    "size": 745,
     "fileName": "3Beleen.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/3Beleen.cs"
   },
@@ -10338,13 +10419,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/CoreSummer.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Summer) Complete Summer 2015 Adventure Map Story",
+    "description": "This will finish the Summer 2015 Adventure Map story.",
     "tags": [
-      "null"
+      "summer",
+      "2015",
+      "adventure",
+      "map",
+      "farm",
+      "story",
+      "complete",
+      "summer",
+      "2015",
+      "adventure",
+      "map"
     ],
     "path": "Story/Summer2015AdventureMap/0DoAll.cs",
-    "size": 600,
+    "size": 771,
     "fileName": "0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/0DoAll.cs"
   },
