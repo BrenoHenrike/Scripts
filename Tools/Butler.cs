@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Butler
+description: This will follow a player and copy their actions and do attack actions.
+tags: butler, follow, player, copy, actions, attack
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
