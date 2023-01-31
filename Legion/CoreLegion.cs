@@ -460,7 +460,7 @@ public class CoreLegion
             return;
 
         JoinLegion();
-        Core.BuyItem("underworld", 216, "Undead Champion");
+        Adv.BuyItem("underworld", 216, "Undead Champion");
 
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Human);
