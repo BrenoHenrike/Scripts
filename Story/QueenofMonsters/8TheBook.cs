@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: The Book
+description: This will finish the The Book quest.
+tags: story, quest, queen-of-monsters, the-book
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
