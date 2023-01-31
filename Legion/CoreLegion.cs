@@ -612,7 +612,12 @@ public class CoreLegion
         }
 
         // Understanding Undead Champions
-        Story.KillQuest(791, "battleunderb", "Undead Champion");
+        if (!Story.QuestProgression(791))
+        {
+            Core.EnsureAccept(791);
+            Core.HuntMonster("battleunderb", "Undead Champion", "Ravaged Champion Soul", 80, isTemp: false, log: false);
+            Core.EnsureComplete(791);
+        }
 
         // Player vs Power
         if (!Story.QuestProgression(792))
