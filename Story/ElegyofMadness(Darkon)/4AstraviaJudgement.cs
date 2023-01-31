@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Astravia Judgement
+description: This will finish the Astravia Judgement quest.
+tags: story, quest, elegy-of-madness, darkon, astravia, judgement
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
