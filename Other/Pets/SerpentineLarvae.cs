@@ -20,7 +20,6 @@ public class SerpentineLarvae
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Serpentine Larvae", "Tainted Soul", "Blade of Holy Might", "Infected Dragon Soul" });
         Core.SetOptions();
 
         DoQuest();
