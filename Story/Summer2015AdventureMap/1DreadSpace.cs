@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Dread Space) Summer 2015 Adventure Map Story
+description: This will finish the Dread Space story.
+tags: dread, space, summer, 2015, adventure, map, farm, story, dread, space
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Summer) Collector
+description: This will finish the Collector story.
+tags: collector, summer, 2015, adventure, map, farm, story, collector, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

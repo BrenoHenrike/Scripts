@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Summer) Complete Summer 2015 Adventure Map Story
+description: This will finish the Summer 2015 Adventure Map story.
+tags: summer, 2015, adventure, map, farm, story, complete, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Summer) Living Dungeon
+description: This will finish the Living Dungeon story.
+tags: living, dungeon, summer, 2015, adventure, map, farm, story, living, dungeon, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

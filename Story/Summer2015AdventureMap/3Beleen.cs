@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Beleen) Summer 2015 Adventure Map Story
+description: This will finish the Beleen story.
+tags: beleen, summer, 2015, adventure, map, farm, story, beleen, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Summer) Luna Cove
+description: This will finish the Luna Cove story.
+tags: luna, cove, summer, 2015, adventure, map, farm, story, luna, cove, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
