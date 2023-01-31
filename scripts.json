@@ -7403,12 +7403,13 @@
     "name": "DERP! Badge",
     "description": "This will get the DERP! Badge.",
     "tags": [
-      "derp-badge",
+      "derp",
+      "badge",
       "seasonal",
       "april-fools"
     ],
     "path": "Seasonal/AprilFools/DERP!Badge.cs",
-    "size": 1243,
+    "size": 1244,
     "fileName": "DERP!Badge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/DERP!Badge.cs"
   },
