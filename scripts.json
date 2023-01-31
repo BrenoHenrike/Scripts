@@ -9105,68 +9105,105 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Doomwood/CoreDoomwood.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Scarletta) Tower of Mirrors Story",
+    "description": "This will finish the Tower of Mirrors story.",
     "tags": [
-      "null"
+      "tower",
+      "mirrors",
+      "farm",
+      "story",
+      "scarletta",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs",
-    "size": 557,
+    "size": 679,
     "fileName": "06bScarletta(TowerofMirrors).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/06bScarletta(TowerofMirrors).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Yasaris) Sekt Story",
+    "description": "This will finish the Sekt story.",
     "tags": [
-      "null"
+      "sekt",
+      "farm",
+      "story",
+      "yasaris",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/05cSekt(Yasaris).cs",
-    "size": 543,
+    "size": 627,
     "fileName": "05cSekt(Yasaris).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/05cSekt(Yasaris).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Xeven) Paradox Portal Story",
+    "description": "This will finish the Paradox Portal story.",
     "tags": [
-      "null"
+      "paradox",
+      "portal",
+      "farm",
+      "story",
+      "xeven",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs",
-    "size": 555,
+    "size": 666,
     "fileName": "02aXeven(ParadoxPortal).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/02aXeven(ParadoxPortal).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Sekt) Shifting Pyramid Story",
+    "description": "This will finish the Shifting Pyramid story.",
     "tags": [
-      "null"
+      "shifting",
+      "pyramid",
+      "farm",
+      "story",
+      "sekt",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs",
-    "size": 559,
+    "size": 674,
     "fileName": "05aSekt(ShiftingPyramid).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/05aSekt(ShiftingPyramid).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Scarletta) Shatter Glass Maze Story",
+    "description": "This will finish the Shatter Glass Maze story.",
     "tags": [
-      "null"
+      "shatter",
+      "glass",
+      "maze",
+      "farm",
+      "story",
+      "scarletta",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs",
-    "size": 561,
+    "size": 693,
     "fileName": "06aScarletta(ShatterGlassMaze).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/06aScarletta(ShatterGlassMaze).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Ziri) Bacon Cat Fortress Story",
+    "description": "This will finish the Bacon Cat Fortress story.",
     "tags": [
-      "null"
+      "bacon",
+      "cat",
+      "fortress",
+      "farm",
+      "story",
+      "ziri",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs",
-    "size": 561,
+    "size": 683,
     "fileName": "03aZiri(BaconCatFortress).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/03aZiri(BaconCatFortress).cs"
   },
@@ -9182,7 +9219,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
   {
-    "name": "Mysterious Dungeon Story",
+    "name": "(Stranger) Mysterious Dungeon Story",
     "description": "This will finish the Mysterious Dungeon story.",
     "tags": [
       "mysterious",
@@ -9190,26 +9227,33 @@
       "farm",
       "story",
       "throne",
-      "darkness"
+      "darkness",
+      "stranger"
     ],
     "path": "Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs",
-    "size": 671,
+    "size": 692,
     "fileName": "07bStranger(MysteriousDungeon).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Xeven) Deep Portalspace Story",
+    "description": "This will finish the Deep Portalspace story.",
     "tags": [
-      "null"
+      "deep",
+      "portalspace",
+      "farm",
+      "story",
+      "xeven",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/02bXeven(DeepPortalspace)[Mem].cs",
-    "size": 553,
+    "size": 670,
     "fileName": "02bXeven(DeepPortalspace)[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/02bXeven(DeepPortalspace)[Mem].cs"
   },
   {
-    "name": "Antique Shop Story",
+    "name": "(Stranger) Antique Shop Story",
     "description": "This will finish the Antique Shop story.",
     "tags": [
       "antique",
@@ -9217,87 +9261,133 @@
       "farm",
       "story",
       "throne",
-      "darkness"
+      "darkness",
+      "stranger"
     ],
     "path": "Story/ThroneofDarkness/07aStranger(AntiqueShop).cs",
-    "size": 641,
+    "size": 662,
     "fileName": "07aStranger(AntiqueShop).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/07aStranger(AntiqueShop).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Sekt) Fourth Dimensional Pyramid Story",
+    "description": "This will finish the Fourth Dimensional Pyramid story.",
     "tags": [
-      "null"
+      "fourth",
+      "dimensional",
+      "pyramid",
+      "farm",
+      "story",
+      "sekt",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs",
-    "size": 577,
+    "size": 723,
     "fileName": "05bSekt(FourthDimensionalPyramid).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/05bSekt(FourthDimensionalPyramid).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Pax) Death Pit PvP",
+    "description": "This will finish the Death Pit PvP story.",
     "tags": [
-      "null"
+      "death",
+      "pit",
+      "pvp",
+      "farm",
+      "story",
+      "pax",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/04bPax(DeathPitPvp).cs",
-    "size": 551,
+    "size": 650,
     "fileName": "04bPax(DeathPitPvp).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/04bPax(DeathPitPvp).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Vaden) Bone Towers Story",
+    "description": "This will finish the Bone Towers story.",
     "tags": [
-      "null"
+      "bone",
+      "towers",
+      "farm",
+      "story",
+      "vaden",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/01bVaden(BoneTowers)[Mem].cs",
-    "size": 551,
+    "size": 653,
     "fileName": "01bVaden(BoneTowers)[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/01bVaden(BoneTowers)[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Ziri) Laser Shark Invasion Story",
+    "description": "This will finish the Laser Shark Invasion story.",
     "tags": [
-      "null"
+      "laser",
+      "shark",
+      "invasion",
+      "farm",
+      "story",
+      "ziri",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/03bZiri(LaserSharkInvasion).cs",
-    "size": 565,
+    "size": 693,
     "fileName": "03bZiri(LaserSharkInvasion).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/03bZiri(LaserSharkInvasion).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Vaden) Castle of Bones Story",
+    "description": "This will finish the Castle of Bones story.",
     "tags": [
-      "null"
+      "castle",
+      "bones",
+      "farm",
+      "story",
+      "vaden",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/01aVaden(CastleofBones).cs",
-    "size": 555,
+    "size": 666,
     "fileName": "01aVaden(CastleofBones).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/01aVaden(CastleofBones).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Pax) Death Pit Story",
+    "description": "This will finish the Death Pit story.",
     "tags": [
-      "null"
+      "death",
+      "pit",
+      "farm",
+      "story",
+      "pax",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/04aPax(DeathPit).cs",
-    "size": 545,
+    "size": 637,
     "fileName": "04aPax(DeathPit).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/04aPax(DeathPit).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(ToD) Complete Throne of Darkness Story",
+    "description": "This will finish the Throne of Darkness story.",
     "tags": [
-      "null"
+      "throne",
+      "darkness",
+      "farm",
+      "story",
+      "complete",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/00CompleteThroneofDarkness.cs",
-    "size": 556,
+    "size": 686,
     "fileName": "00CompleteThroneofDarkness.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/00CompleteThroneofDarkness.cs"
   },
