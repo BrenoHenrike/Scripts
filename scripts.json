@@ -8824,13 +8824,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/08Nightmare[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Judgement",
+    "description": "This will finish the Judgement quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "isle-of-fotia",
+      "judgement"
     ],
     "path": "Story/IsleOfFotia/04Judgement.cs",
-    "size": 550,
+    "size": 622,
     "fileName": "04Judgement.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/04Judgement.cs"
   },
@@ -8846,57 +8849,73 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/CoreIsleOfFotia.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "UnderRealm",
+    "description": "This will finish the UnderRealm quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "isle-of-fotia",
+      "underrealm"
     ],
     "path": "Story/IsleOfFotia/02UnderRealm.cs",
-    "size": 550,
+    "size": 625,
     "fileName": "02UnderRealm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/02UnderRealm.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fotia",
+    "description": "This will finish the Fotia quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "isle-of-fotia",
+      "fotia"
     ],
     "path": "Story/IsleOfFotia/01Fotia.cs",
-    "size": 542,
+    "size": 602,
     "fileName": "01Fotia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/01Fotia.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Isle Of Fotia Story",
+    "description": "This will complete the Isle Of Fotia story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "isle-of-fotia",
+      "complete",
+      "all"
     ],
     "path": "Story/IsleOfFotia/00DoAllIsleOfFotia.cs",
-    "size": 593,
+    "size": 694,
     "fileName": "00DoAllIsleOfFotia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/00DoAllIsleOfFotia.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dage Fortress",
+    "description": "This will finish the DageFortress quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "isle-of-fotia",
+      "dage-fortress"
     ],
     "path": "Story/IsleOfFotia/05DageFortress.cs",
-    "size": 557,
+    "size": 640,
     "fileName": "05DageFortress.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/05DageFortress.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Styx",
+    "description": "This will finish the Styx quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "isle-of-fotia",
+      "styx"
     ],
     "path": "Story/IsleOfFotia/03Styx.cs",
-    "size": 540,
+    "size": 597,
     "fileName": "03Styx.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/03Styx.cs"
   },
