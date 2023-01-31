@@ -8885,123 +8885,155 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/03Styx.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Chaos Amulet",
+    "description": "This will finish the Chaos Amulet quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "chaos-amulet"
     ],
     "path": "Story/ShadowsOfChaos/02ChaosAmulet.cs",
-    "size": 524,
+    "size": 604,
     "fileName": "02ChaosAmulet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/02ChaosAmulet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Chaos",
+    "description": "This will finish the Bright Chaos quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "bright-chaos"
     ],
     "path": "Story/ShadowsOfChaos/07BrightChaos.cs",
-    "size": 524,
+    "size": 604,
     "fileName": "07BrightChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/07BrightChaos.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Shadows of Chaos Story",
+    "description": "This will complete the Shadows of Chaos story arc.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadows-of-chaos"
     ],
     "path": "Story/ShadowsOfChaos/00DoAllSoC.cs",
-    "size": 524,
+    "size": 623,
     "fileName": "00DoAllSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/00DoAllSoC.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Forest Extra",
+    "description": "This will finish the Bright Forest Extra quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "bright-forest-extra"
     ],
     "path": "Story/ShadowsOfChaos/10BrightForestExtra.cs",
-    "size": 536,
+    "size": 637,
     "fileName": "10BrightForestExtra.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/10BrightForestExtra.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Off",
+    "description": "This will finish the Shadow Off quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "shadow-off"
     ],
     "path": "Story/ShadowsOfChaos/05ShadowOff.cs",
-    "size": 520,
+    "size": 594,
     "fileName": "05ShadowOff.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/05ShadowOff.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Shadow",
+    "description": "This will finish the Bright Shadow quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "bright-shadow"
     ],
     "path": "Story/ShadowsOfChaos/06BrightShadow.cs",
-    "size": 526,
+    "size": 609,
     "fileName": "06BrightShadow.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/06BrightShadow.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Forest",
+    "description": "This will finish the Bright Forest quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "bright-forest"
     ],
     "path": "Story/ShadowsOfChaos/08BrightForest.cs",
-    "size": 526,
+    "size": 609,
     "fileName": "08BrightForest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/08BrightForest.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dual Plane",
+    "description": "This will finish the Dual Plane quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "dual-plane"
     ],
     "path": "Story/ShadowsOfChaos/01DualPlane.cs",
-    "size": 520,
+    "size": 594,
     "fileName": "01DualPlane.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/01DualPlane.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Forest Past",
+    "description": "This will finish the Bright Forest Past quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "bright-forest-past"
     ],
     "path": "Story/ShadowsOfChaos/09BrightForestPast.cs",
-    "size": 534,
+    "size": 632,
     "fileName": "09BrightForestPast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/09BrightForestPast.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Laguna",
+    "description": "This will finish the Laguna quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "laguna"
     ],
     "path": "Story/ShadowsOfChaos/04Laguna.cs",
-    "size": 514,
+    "size": 576,
     "fileName": "04Laguna.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/04Laguna.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Laguna Beach",
+    "description": "This will finish the Laguna Beach quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-chaos",
+      "laguna-beach"
     ],
     "path": "Story/ShadowsOfChaos/03LagunaBeach.cs",
-    "size": 524,
+    "size": 604,
     "fileName": "03LagunaBeach.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/03LagunaBeach.cs"
   },
