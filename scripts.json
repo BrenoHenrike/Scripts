@@ -9384,10 +9384,11 @@
       "story",
       "complete",
       "throne",
-      "darkness"
+      "darkness",
+      "all"
     ],
     "path": "Story/ThroneofDarkness/00CompleteThroneofDarkness.cs",
-    "size": 686,
+    "size": 691,
     "fileName": "00CompleteThroneofDarkness.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/00CompleteThroneofDarkness.cs"
   },
@@ -9656,13 +9657,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/11Shadowsong.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete all Shadows of War",
+    "description": "This will finish all the Shadows of War story.",
     "tags": [
-      "null"
+      "story",
+      "SOW",
+      "shadow-of-war",
+      "complete",
+      "all"
     ],
     "path": "Story/ShadowsOfWar/00DoAll.cs",
-    "size": 588,
+    "size": 689,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/00DoAll.cs"
   },
@@ -10432,10 +10437,11 @@
       "summer",
       "2015",
       "adventure",
-      "map"
+      "map",
+      "all"
     ],
     "path": "Story/Summer2015AdventureMap/0DoAll.cs",
-    "size": 771,
+    "size": 776,
     "fileName": "0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/0DoAll.cs"
   },
