@@ -1,5 +1,5 @@
 /*
-name: aggro monster creator
+name: Aggro Monster Creator
 description: This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.
 tags: custom, aggro monster, army
 */
