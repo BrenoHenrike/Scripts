@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: serpentine larvae set
+description: gets pet, does quest, gets set
+tags: serpentine larvae, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
