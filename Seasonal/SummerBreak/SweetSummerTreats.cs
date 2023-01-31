@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Sweet Summer Treats
+description: This will farm the Sweet Summer Treats.
+tags: farm, merge, shop, sweet, summer-break, treats
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

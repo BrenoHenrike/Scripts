@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Un-Lifeguard Quest
+description: This will finish the Un-Lifeguard Quest.
+tags: quest, un-lifeguard, summer-break
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

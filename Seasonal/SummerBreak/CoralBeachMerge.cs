@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Coral Beach Merge
+description: This will farm the Coral Beach items.
+tags: farm, merge, shop, coral-beach, summer-break
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
