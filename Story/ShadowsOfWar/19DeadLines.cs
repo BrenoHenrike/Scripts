@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Deadlines
+description: This will finish the Deadlines quest.
+tags: story, quest, shadow-war, deadlines
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

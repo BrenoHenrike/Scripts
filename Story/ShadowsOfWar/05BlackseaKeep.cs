@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Blacksea Keep
+description: This will finish the Blacksea Keep quest.
+tags: story, quest, shadow-war, blacksea-keep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

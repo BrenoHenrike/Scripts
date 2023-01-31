@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Inner Shadows
+description: This will finish the Inner Shadows quest.
+tags: story, quest, shadow-war, inner-shadows
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

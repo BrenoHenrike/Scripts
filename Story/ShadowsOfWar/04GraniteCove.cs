@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Granite Cove
+description: This will finish the Granite Cove quest.
+tags: story, quest, shadow-war, granite-cove
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Timestream
+description: This is the third part of the Shadow War story arc. It will take you to the Timestream area and start the quest.
+tags: story, quest, shadow-war, timestream
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow War
+description: This is the first part of the Shadow War story arc. It will take you to the Shadow War area and start the quest.
+tags: story, quest, shadow-war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

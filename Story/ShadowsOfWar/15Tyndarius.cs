@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tyndarius
+description: This will finish the Tyndarius quest.
+tags: story, quest, shadow-war, tyndarius
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
