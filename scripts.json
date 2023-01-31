@@ -179,35 +179,51 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/IcestormArenaXP[1-100].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Buy Out Shops",
+    "description": "This bot will buy all items in one or multiple shops and follow the logic of the by you selected mode.",
     "tags": [
-      "null"
+      "shops",
+      "items",
+      "buy",
+      "modes"
     ],
     "path": "Tools/BuyOut.cs",
-    "size": 4327,
+    "size": 4454,
     "fileName": "BuyOut.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Choose Best Gear",
+    "description": "Select a boost type you want to optimize for, and the bot will find and equip the best combination of gear for that boost.",
     "tags": [
-      "null"
+      "best",
+      "gear",
+      "boost",
+      "damage",
+      "dmg",
+      "dps",
+      "exp",
+      "gold",
+      "reputation",
+      "class points"
     ],
     "path": "Tools/ChooseBestGear.cs",
-    "size": 2029,
+    "size": 2227,
     "fileName": "ChooseBestGear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ChooseBestGear.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Generate Queued Script",
+    "description": "Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you",
     "tags": [
-      "null"
+      "generator",
+      "queud",
+      "script",
+      "follow-up",
+      "choose"
     ],
     "path": "Tools/GenerateQueuedScript.cs",
-    "size": 10505,
+    "size": 10705,
     "fileName": "GenerateQueuedScript.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/GenerateQueuedScript.cs"
   },
@@ -220,10 +236,13 @@
       "player",
       "copy",
       "actions",
-      "attack"
+      "attack",
+      "maidr",
+      "auto",
+      "goto"
     ],
     "path": "Tools/Butler.cs",
-    "size": 10437,
+    "size": 10456,
     "fileName": "Butler.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
@@ -3584,46 +3603,63 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SpellCraftingREP.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Update Script Data",
+    "description": "This bot will check all bots so that you may add the missing Name, Description and Tags where needed",
     "tags": [
-      "null"
+      "tags",
+      "description",
+      "name",
+      "developer",
+      "data"
     ],
     "path": "Tools/ForDevelopers/UpdateTags.cs",
-    "size": 9523,
+    "size": 9780,
     "fileName": "UpdateTags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/UpdateTags.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Script Main Cleaner",
+    "description": "Checks all scripts we have to see if there are any that break format",
     "tags": [
-      "null"
+      "scriptmain",
+      "cleaner",
+      "formatter",
+      "developer"
     ],
     "path": "Tools/ForDevelopers/ScriptMainCleaner.cs",
-    "size": 5722,
+    "size": 5838,
     "fileName": "ScriptMainCleaner.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/ScriptMainCleaner.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Merge Shop Bot Generator/Helper",
+    "description": "Fill in the map and shop ID and this tool will generate most of the merge bot for you, then you fill in the rest",
     "tags": [
-      "null"
+      "merge",
+      "shop",
+      "generator",
+      "helper",
+      "developer"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 6604,
+    "size": 6776,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Generate Quest Files",
+    "description": "This will generate the the files needed for the QuestData sheet and the #quest-ids channel in our discord",
     "tags": [
-      "null"
+      "quests",
+      "developer",
+      "lists",
+      "files",
+      "spreadsheet",
+      "excel",
+      "data"
     ],
     "path": "Tools/ForDevelopers/GenerateQuestFiles.cs",
-    "size": 1640,
+    "size": 1810,
     "fileName": "GenerateQuestFiles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
   },
