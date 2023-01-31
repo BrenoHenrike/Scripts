@@ -1158,992 +1158,1184 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TimeIsMoney.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Hunter's Moon Story",
+    "description": "This will finish the Hunter's Moon Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "hunters-moon"
     ],
     "path": "Story/HuntersMoon.cs",
-    "size": 3264,
+    "size": 3338,
     "fileName": "HuntersMoon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/HuntersMoon.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Exaltia Tower Story",
+    "description": "This will finish the Exaltia Tower story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "exaltia-tower"
     ],
     "path": "Story/ExaltiaTower.cs",
-    "size": 1338,
+    "size": 1413,
     "fileName": "ExaltiaTower.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ExaltiaTower.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Downward Story",
+    "description": "This will complete the Downward Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "downward"
     ],
     "path": "Story/Downward.cs",
-    "size": 2778,
+    "size": 2840,
     "fileName": "Downward.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Downward.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Musty Cave Story",
+    "description": "This will finish the Musty Cave Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "musty-cave"
     ],
     "path": "Story/MustyCave.cs",
-    "size": 2497,
+    "size": 2563,
     "fileName": "MustyCave.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MustyCave.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Super Death Story",
+    "description": "This will finish the Super Death Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "superdeath"
     ],
     "path": "Story/SuperDeath.cs",
-    "size": 2552,
+    "size": 2620,
     "fileName": "SuperDeath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SuperDeath.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Gates Story",
+    "description": "This will finish the Shadow Gates Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadowgates"
     ],
     "path": "Story/ShadowGates.cs",
-    "size": 1548,
+    "size": 1619,
     "fileName": "ShadowGates.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowGates.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Borgars Story",
+    "description": "This will complete the Borgars story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "borgars"
     ],
     "path": "Story/Borgars.cs",
-    "size": 2335,
+    "size": 2394,
     "fileName": "Borgars.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Borgars.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Magic Thief Story",
+    "description": "This will finish the Magic Thief Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "magic-thief"
     ],
     "path": "Story/MagicThief.cs",
-    "size": 1512,
+    "size": 1581,
     "fileName": "MagicThief.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MagicThief.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "StarSinc Story",
+    "description": "This will finish the StarSinc Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "starsinc"
     ],
     "path": "Story/StarSinc.cs",
-    "size": 3383,
+    "size": 3443,
     "fileName": "StarSinc.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StarSinc.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nythera Saga Story",
+    "description": "This will finish the Nythera Saga Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "nythera"
     ],
     "path": "Story/NytheraSaga.cs",
-    "size": 3930,
+    "size": 3997,
     "fileName": "NytheraSaga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/NytheraSaga.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ship Wreck Story",
+    "description": "This will finish the Ship Wreck Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shipwreck"
     ],
     "path": "Story/ShipWreck.cs",
-    "size": 3853,
+    "size": 3918,
     "fileName": "ShipWreck.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShipWreck.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Noobshire Story",
+    "description": "This will finish the Noobshire Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "noobshire"
     ],
     "path": "Story/Noobshire.cs",
-    "size": 2880,
+    "size": 2943,
     "fileName": "Noobshire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Noobshire.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ravenloss Saga Story",
+    "description": "This will finish the Ravenloss Saga Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "ravenloss-saga"
     ],
     "path": "Story/RavenlossSaga.cs",
-    "size": 5597,
+    "size": 5675,
     "fileName": "RavenlossSaga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/RavenlossSaga.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Deer Hunt Story",
+    "description": "This will finish the Deer Hunt story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "deer-hunt"
     ],
     "path": "Story/DeerHunt.cs",
-    "size": 1668,
+    "size": 1731,
     "fileName": "DeerHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DeerHunt.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Concert Story (Member)",
+    "description": "This will finish the Concert quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "concert",
+      "member"
     ],
     "path": "Story/Concert[MEM].cs",
-    "size": 2721,
+    "size": 2795,
     "fileName": "Concert[MEM].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Concert[MEM].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Aria Pet Story (Member)",
+    "description": "This will finish the Aria Pet quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "aria",
+      "pet",
+      "member"
     ],
     "path": "Story/AriaPet[MEM].cs",
-    "size": 1292,
+    "size": 1370,
     "fileName": "AriaPet[MEM].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AriaPet[MEM].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blood Moon",
+    "description": "This will complete the Blood Moon story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "blood-moon"
     ],
     "path": "Story/BloodMoon.cs",
-    "size": 4714,
+    "size": 4776,
     "fileName": "BloodMoon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BloodMoon.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Artixpointe Story",
+    "description": "This will finish the Artixpointe quest.",
     "tags": [
       "null"
     ],
     "path": "Story/Artixpointe.cs",
-    "size": 3671,
+    "size": 3719,
     "fileName": "Artixpointe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Artixpointe.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Castle Tunnels Story",
+    "description": "This will complete the Castle Tunnels story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "castle-tunnels"
     ],
     "path": "Story/CastleTunnels.cs",
-    "size": 1940,
+    "size": 2020,
     "fileName": "CastleTunnels.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CastleTunnels.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Xan's Lair Story",
+    "description": "This will finish the Xan's Lair Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "xan",
+      "lair"
     ],
     "path": "Story/XansLair.cs",
-    "size": 4500,
+    "size": 4565,
     "fileName": "XansLair.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/XansLair.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nukemichi Story (Member)",
+    "description": "This will finish the Nukemichi Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "nukemichi",
+      "member"
     ],
     "path": "Story/Nukemichi[mem].cs",
-    "size": 1277,
+    "size": 1357,
     "fileName": "Nukemichi[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nukemichi[mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mazumi Story",
+    "description": "This will finish the Mazumi Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mazumi"
     ],
     "path": "Story/Mazumi.cs",
-    "size": 1469,
+    "size": 1523,
     "fileName": "Mazumi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Mazumi.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Doom Vault (A) Story",
+    "description": "This will finish the Doom Vault (A) Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "doom-vault-a"
     ],
     "path": "Story/DoomVault.cs",
-    "size": 2826,
+    "size": 2902,
     "fileName": "DoomVault.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVault.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dwarfhold story",
+    "description": "This will finish the Dwarfhold story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dwarfhold"
     ],
     "path": "Story/Dwarfhold.cs",
-    "size": 3107,
+    "size": 3170,
     "fileName": "Dwarfhold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Dwarfhold.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Vasalkar Lair War Story",
+    "description": "This will finish the Vasalkar Lair War Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "vasalkar",
+      "lair",
+      "war"
     ],
     "path": "Story/VasalkarLairWar.cs",
-    "size": 2685,
+    "size": 2774,
     "fileName": "VasalkarLairWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/VasalkarLairWar.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Frozen Northlands Story",
+    "description": "This will finish the Frozen Northlands Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "frozen-northlands"
     ],
     "path": "Story/FrozenNorthlands.cs",
-    "size": 1544,
+    "size": 1631,
     "fileName": "FrozenNorthlands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/FrozenNorthlands.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Beleen's Dream Story",
+    "description": "This will complete the Beleen's Dream story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "beleens-dream"
     ],
     "path": "Story/BeleensDream.cs",
-    "size": 2128,
+    "size": 2207,
     "fileName": "BeleensDream.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BeleensDream.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bludrut Story",
+    "description": "This will complete the Bludrut story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "bludrut"
     ],
     "path": "Story/Bludrut.cs",
-    "size": 2819,
+    "size": 2878,
     "fileName": "Bludrut.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Bludrut.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Arcangrove Story",
+    "description": "This will finish the Arcangrove story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "arcangrove",
+      "13-lords-of-chaos"
     ],
     "path": "Story/Arcangrove.cs",
-    "size": 1452,
+    "size": 1537,
     "fileName": "Arcangrove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Arcangrove.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Marsh 2 Story (Member)",
+    "description": "This will finish the Marsh 2 Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "marsh2",
+      "member"
     ],
     "path": "Story/Marsh2[MEM].cs",
-    "size": 1534,
+    "size": 1607,
     "fileName": "Marsh2[MEM].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Marsh2[MEM].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shatter Sword Story",
+    "description": "This will finish the Shatter Sword Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shatter-sword"
     ],
     "path": "Story/Shattersword.cs",
-    "size": 4557,
+    "size": 4632,
     "fileName": "Shattersword.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Shattersword.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Glacera Story",
+    "description": "This will finish the Glacera Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "glacera"
     ],
     "path": "Story/Glacera.cs",
-    "size": 11794,
+    "size": 11851,
     "fileName": "Glacera.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Glacera.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Extinction Story",
+    "description": "This will finish the Extinction Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "extinction"
     ],
     "path": "Story/Extinction.cs",
-    "size": 1611,
+    "size": 1677,
     "fileName": "Extinction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Extinction.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Giant Tale Story",
+    "description": "This will finish the Giant Tale Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "giant-tale"
     ],
     "path": "Story/GiantTaleStory.cs",
-    "size": 2277,
+    "size": 2343,
     "fileName": "GiantTaleStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/GiantTaleStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dread Forest Story",
+    "description": "This will finish the Dread Forest Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dread-forest"
     ],
     "path": "Story/DreadForest.cs",
-    "size": 2077,
+    "size": 2149,
     "fileName": "DreadForest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DreadForest.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Eden Story",
+    "description": "This will finish the Eden Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "eden"
     ],
     "path": "Story/Eden.cs",
-    "size": 2057,
+    "size": 2105,
     "fileName": "Eden.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Eden.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Cornelis Story (Member)",
+    "description": "This will complete the Cornelis story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "cornelis",
+      "member"
     ],
     "path": "Story/Cornelis[mem].cs",
-    "size": 1575,
+    "size": 1654,
     "fileName": "Cornelis[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Cornelis[mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Guru Story",
+    "description": "This will finish the Guru Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "guru"
     ],
     "path": "Story/Guru.cs",
-    "size": 1272,
+    "size": 1320,
     "fileName": "Guru.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Guru.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Cleric Story",
+    "description": "This will complete the Cleric story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "cleric"
     ],
     "path": "Story/Cleric.cs",
-    "size": 3527,
+    "size": 3588,
     "fileName": "Cleric.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Cleric.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Spire Past Story",
+    "description": "This will finish the Spire Past Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "spirepast"
     ],
     "path": "Story/SpirePast.cs",
-    "size": 1696,
+    "size": 1761,
     "fileName": "SpirePast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SpirePast.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lair Story",
+    "description": "This will finish the Lair Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "lair"
     ],
     "path": "Story/Lair.cs",
-    "size": 2745,
+    "size": 2793,
     "fileName": "Lair.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Lair.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mobius Story",
+    "description": "This will finish the Mobius Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mobius"
     ],
     "path": "Story/Mobius.cs",
-    "size": 3565,
+    "size": 3620,
     "fileName": "Mobius.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Mobius.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Vault Story",
+    "description": "This will finish the Shadow Vault Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-vault"
     ],
     "path": "Story/ShadowVault.cs",
-    "size": 2088,
+    "size": 2160,
     "fileName": "ShadowVault.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowVault.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Fable Origins Story",
+    "description": "This will finish the Dragon Fable Origins Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dragon-fable-origins"
     ],
     "path": "Story/DragonFableOrigins.cs",
-    "size": 4950,
+    "size": 5046,
     "fileName": "DragonFableOrigins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonFableOrigins.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bone Break Story",
+    "description": "This will complete the Bone Break Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "bone-break"
     ],
     "path": "Story/BoneBreak.cs",
-    "size": 2872,
+    "size": 2940,
     "fileName": "BoneBreak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BoneBreak.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lightovia Cave Story",
+    "description": "This will finish the Lightovia Cave Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "lightovia-cave"
     ],
     "path": "Story/LightoviaCave.cs",
-    "size": 1808,
+    "size": 1886,
     "fileName": "LightoviaCave.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LightoviaCave.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fable Forest Story",
+    "description": "This will finish the Fable Forest Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fable-forest"
     ],
     "path": "Story/FableForest.cs",
-    "size": 1810,
+    "size": 1882,
     "fileName": "FableForest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/FableForest.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Djinn Guard Story",
+    "description": "This will finish the Djinn Guard Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "djinn-guard"
     ],
     "path": "Story/DjinnGuard.cs",
-    "size": 1208,
+    "size": 1277,
     "fileName": "DjinnGuard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DjinnGuard.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Quibble Hunt Story",
+    "description": "This will finish the Quibble Hunt Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "quibble-hunt"
     ],
     "path": "Story/QuibbleHunt.cs",
-    "size": 2038,
+    "size": 2110,
     "fileName": "QuibbleHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QuibbleHunt.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tournament Story",
+    "description": "This will finish the Tournament Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "tournament"
     ],
     "path": "Story/Tournament.cs",
-    "size": 1711,
+    "size": 1777,
     "fileName": "Tournament.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tournament.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Void Story",
+    "description": "This will finish the ShadowVoid Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-void"
     ],
     "path": "Story/ShadowVoid.cs",
-    "size": 1811,
+    "size": 1879,
     "fileName": "ShadowVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowVoid.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Asylum Story",
+    "description": "This will complete the Asylum story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "asylum"
     ],
     "path": "Story/Asylum.cs",
-    "size": 2236,
+    "size": 2292,
     "fileName": "Asylum.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Asylum.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tutorial Story",
+    "description": "This will finish the Tutorial Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "tutorial"
     ],
     "path": "Story/Tutorial.cs",
-    "size": 990,
+    "size": 1050,
     "fileName": "Tutorial.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tutorial.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Battle Under Story",
+    "description": "This will complete the Battle Under Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "battleunder"
     ],
     "path": "Story/BattleUnder.cs",
-    "size": 4836,
+    "size": 4909,
     "fileName": "BattleUnder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BattleUnder.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Slayer",
+    "description": "This will finish the Shadow Slayer Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shadow-slayer"
     ],
     "path": "Story/ShadowSlayerK.cs",
-    "size": 7062,
+    "size": 7131,
     "fileName": "ShadowSlayerK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowSlayerK.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "SkyGuard Saga Story",
+    "description": "This will finish the SkyGuard Saga Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "skyguard-saga"
     ],
     "path": "Story/SkyGuardSaga.cs",
-    "size": 9601,
+    "size": 9676,
     "fileName": "SkyGuardSaga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SkyGuardSaga.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Queen Reign Story",
+    "description": "This will finish the Queen Reign Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-reign"
     ],
     "path": "Story/QueenReign.cs",
-    "size": 3587,
+    "size": 3656,
     "fileName": "QueenReign.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenReign.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Etherstorm Wastes Story",
+    "description": "This will finish the Etherstorm Wastes Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "etherstorm-wastes"
     ],
     "path": "Story/EtherstormWastes.cs",
-    "size": 14888,
+    "size": 14975,
     "fileName": "EtherstormWastes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/EtherstormWastes.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Crash Site story",
+    "description": "This will finish the Crash Site story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "crash-site"
     ],
     "path": "Story/CrashSite.cs",
-    "size": 3239,
+    "size": 3305,
     "fileName": "CrashSite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CrashSite.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete All Stories",
+    "description": "This will complete all stories.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "complete",
+      "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 25662,
+    "size": 25728,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Carnax Story",
+    "description": "This will finish the Dark Carnax story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dark-carnax"
     ],
     "path": "Story/DarkCarnax.cs",
-    "size": 3851,
+    "size": 3920,
     "fileName": "DarkCarnax.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DarkCarnax.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Doom Vault (B) Story",
+    "description": "This will finish the Doom Vault (B) Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "doom-vault-b"
     ],
     "path": "Story/DoomVaultB.cs",
-    "size": 3666,
+    "size": 3742,
     "fileName": "DoomVaultB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVaultB.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dwarves Vs Giants Story",
+    "description": "This will finish the Dwarves Vs Giants story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "DVG"
     ],
     "path": "Story/DwarvesVsGiants.cs",
-    "size": 1465,
+    "size": 1538,
     "fileName": "DwarvesVsGiants.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DwarvesVsGiants.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Yokai Story",
+    "description": "This will finish the Yokai Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "yokai"
     ],
     "path": "Story/Yokai.cs",
-    "size": 6819,
+    "size": 6870,
     "fileName": "Yokai.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Yokai.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Safiria Story (Member)",
+    "description": "This will finish the Safiria Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "safiria",
+      "member"
     ],
     "path": "Story/Safiria[Member].cs",
-    "size": 1566,
+    "size": 1640,
     "fileName": "Safiria[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Safiria[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "River Story",
+    "description": "This will finish the River Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "river"
     ],
     "path": "Story/River.cs",
-    "size": 1245,
+    "size": 1296,
     "fileName": "River.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/River.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Ubear Story",
+    "description": "This will finish the Ubear Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "ubear"
     ],
     "path": "Story/Ubear.cs",
-    "size": 1912,
+    "size": 1963,
     "fileName": "Ubear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Ubear.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Poison Forest Story",
+    "description": "This will finish the Poison Forest Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "poison-forest"
     ],
     "path": "Story/PoisonForest.cs",
-    "size": 3047,
+    "size": 3122,
     "fileName": "PoisonForest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/PoisonForest.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Titan Attack Story",
+    "description": "This will finish the Titan Attack Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "titan-attack"
     ],
     "path": "Story/TitanAttack.cs",
-    "size": 4199,
+    "size": 4271,
     "fileName": "TitanAttack.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/TitanAttack.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gamehaven Story",
+    "description": "This will finish the Gamehaven Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "gamehaven"
     ],
     "path": "Story/GameHaven.cs",
-    "size": 1778,
+    "size": 1841,
     "fileName": "GameHaven.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/GameHaven.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "WatchTower Story",
+    "description": "This will finish the WatchTower Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "watch-tower"
     ],
     "path": "Story/WatchTower.cs",
-    "size": 1846,
+    "size": 1913,
     "fileName": "WatchTower.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/WatchTower.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "J6 Saga Story",
+    "description": "This will finish the J6 Saga Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "j6-saga"
     ],
     "path": "Story/J6Saga.cs",
-    "size": 6443,
+    "size": 6500,
     "fileName": "J6Saga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/J6Saga.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shinkansen Story",
+    "description": "This will finish the Shinkansen Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "shinkansen"
     ],
     "path": "Story/Shinkansen.cs",
-    "size": 2050,
+    "size": 2116,
     "fileName": "Shinkansen.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Shinkansen.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Willow Creek Story",
+    "description": "This will finish the Willow Creek Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "willow-creek"
     ],
     "path": "Story/WillowCreek.cs",
-    "size": 1504,
+    "size": 1576,
     "fileName": "WillowCreek.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/WillowCreek.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dream Palace Story",
+    "description": "This will finish the Dream Palace Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dream-palace"
     ],
     "path": "Story/DreamPalace.cs",
-    "size": 1314,
+    "size": 1386,
     "fileName": "DreamPalace.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DreamPalace.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Crux Ship Story",
+    "description": "This will finish the Crux Ship story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "crux-ship"
     ],
     "path": "Story/CruxShip.cs",
-    "size": 2374,
+    "size": 2437,
     "fileName": "CruxShip.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CruxShip.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Castle of Glass Story",
+    "description": "This will complete the Castle of Glass story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "castle-of-glass"
     ],
     "path": "Story/CastleOfGlass.cs",
-    "size": 2648,
+    "size": 2731,
     "fileName": "CastleOfGlass.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CastleOfGlass.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Manor Story",
+    "description": "This will finish the Manor Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "manor"
     ],
     "path": "Story/Manor.cs",
-    "size": 1095,
+    "size": 1146,
     "fileName": "Manor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Manor.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Pirates Story (Member)",
+    "description": "This will finish the Pirates Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "pirates",
+      "member"
     ],
     "path": "Story/Pirates[Member].cs",
-    "size": 1460,
+    "size": 1534,
     "fileName": "Pirates[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Pirates[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Road Story (Upholder)",
+    "description": "This will finish the Dragon Road Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dragon-road"
     ],
     "path": "Story/DragonRoad[Upholder].cs",
-    "size": 3996,
+    "size": 4076,
     "fileName": "DragonRoad[Upholder].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonRoad[Upholder].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tower Story (Member)",
+    "description": "This will finish the Tower Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "tower",
+      "member"
     ],
     "path": "Story/Tower[mem].cs",
-    "size": 1609,
+    "size": 1677,
     "fileName": "Tower[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tower[mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Third Spell Story",
+    "description": "This will finish the Third Spell Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "thirdspell"
     ],
     "path": "Story/ThirdSpell.cs",
-    "size": 5457,
+    "size": 5525,
     "fileName": "ThirdSpell.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "UnderGround Lab Story",
+    "description": "This will finish the UnderGround Lab Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "under-ground-lab"
     ],
     "path": "Story/UnderGroundLab.cs",
-    "size": 2015,
+    "size": 2097,
     "fileName": "UnderGroundLab.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/UnderGroundLab.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Banished",
+    "description": "This will finish the Banished quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "banished"
     ],
     "path": "Story/Banished.cs",
-    "size": 5276,
+    "size": 5330,
     "fileName": "Banished.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tower of Doom Story",
+    "description": "This will finish the Tower of Doom Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "tower-of-doom"
     ],
     "path": "Story/TowerOfDoom.cs",
-    "size": 1131,
+    "size": 1206,
     "fileName": "TowerOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/TowerOfDoom.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Trygve Story",
+    "description": "This will finish the Trygve Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "trygve"
     ],
     "path": "Story/Trygve.cs",
-    "size": 2380,
+    "size": 2434,
     "fileName": "Trygve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Trygve.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Crystal Story",
+    "description": "This will complete the Bright Crystal story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "bright-crystal"
     ],
     "path": "Story/BrightCrystalStory.cs",
-    "size": 2450,
+    "size": 2530,
     "fileName": "BrightCrystalStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BrightCrystalStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Artix Wedding Story",
+    "description": "This will finish the Artix Wedding Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "artix-wedding"
     ],
     "path": "Story/ArtixWedding.cs",
-    "size": 3279,
+    "size": 3354,
     "fileName": "ArtixWedding.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ArtixWedding.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Djinn Gate Story",
+    "description": "This will finish the Djinn Gate story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "djinn-gate"
     ],
     "path": "Story/DjinnGate.cs",
-    "size": 6891,
+    "size": 6957,
     "fileName": "DjinnGate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DjinnGate.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lightguard Story",
+    "description": "This will finish the Lightguard Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "light-guard"
     ],
     "path": "Story/Lightguard[MEM].cs",
-    "size": 1334,
+    "size": 1401,
     "fileName": "Lightguard[MEM].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Lightguard[MEM].cs"
   },
