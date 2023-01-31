@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Off
+description: This will finish the Shadow Off quest.
+tags: story, quest, shadow-chaos, shadow-off
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
