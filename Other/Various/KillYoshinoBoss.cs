@@ -35,7 +35,7 @@ public class KillYoshinoBoss
         Core.AddDrop("Limited Event Coin");
 
         Core.EnsureAccept(5720);
-        Core.KillMonster("yoshino", "r1", "Right", "Xyfrag", "Limited Event Monster Proof");
+        Core.KillMonster("yoshino", "r1", "Right", "*", "Limited Event Monster Proof");
         Core.JumpWait();
         Adv.BestGear(GearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);

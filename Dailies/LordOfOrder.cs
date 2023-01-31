@@ -216,7 +216,7 @@ public class LordOfOrder
             Core.HuntMonster("warhorc", "Horc Warrior", "Suppressed Horcs", 50, false);
             Core.HuntMonster("weaverwar", "Weaver Queen's Hound", "Suppressed Weavers", 50, false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("thevoid", "Xyfrag", "Strength of Resilience", isTemp: false);
+            Core.HuntMonster("extriki", "Extriki", "Strength of Resilience", isTemp: false);
 
             Core.EnsureComplete(7162);
             Core.ToBank(LoODrops);
