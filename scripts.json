@@ -8632,46 +8632,59 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathsCombatStyles/SoulReaperofNulgath.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lynaria",
+    "description": "This will finish the Lynaria quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "sepulchure-saga",
+      "lynaria"
     ],
     "path": "Story/SepulchureSaga/02Lynaria.cs",
-    "size": 564,
+    "size": 632,
     "fileName": "02Lynaria.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/02Lynaria.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Sepulchure Saga Story",
+    "description": "This will finish the Sepulchure Saga story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "sepulchure-saga",
+      "complete",
+      "all"
     ],
     "path": "Story/SepulchureSaga/00CompleteSepulchureSaga.cs",
-    "size": 570,
+    "size": 675,
     "fileName": "00CompleteSepulchureSaga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/00CompleteSepulchureSaga.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Alden",
+    "description": "This will finish the Alden quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "sepulchure-saga",
+      "alden"
     ],
     "path": "Story/SepulchureSaga/01Alden.cs",
-    "size": 560,
+    "size": 622,
     "fileName": "01Alden.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/01Alden.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadowfall Rise",
+    "description": "This will finish the Shadowfall Rise quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "sepulchure-saga",
+      "shadowfall-rise"
     ],
     "path": "Story/SepulchureSaga/04ShadowfallRise.cs",
-    "size": 578,
+    "size": 670,
     "fileName": "04ShadowfallRise.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/04ShadowfallRise.cs"
   },
@@ -8687,13 +8700,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/CoreSepulchure.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sepulchure's Rise",
+    "description": "This will finish the Sepulchure's Rise quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "sepulchure-saga",
+      "sepulchures-rise"
     ],
     "path": "Story/SepulchureSaga/03SepulchuresRise.cs",
-    "size": 580,
+    "size": 677,
     "fileName": "03SepulchuresRise.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/03SepulchuresRise.cs"
   },
@@ -8918,10 +8934,12 @@
     "tags": [
       "story",
       "quest",
-      "shadows-of-chaos"
+      "shadows-of-chaos",
+      "complete",
+      "all"
     ],
     "path": "Story/ShadowsOfChaos/00DoAllSoC.cs",
-    "size": 623,
+    "size": 638,
     "fileName": "00DoAllSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/00DoAllSoC.cs"
   },
