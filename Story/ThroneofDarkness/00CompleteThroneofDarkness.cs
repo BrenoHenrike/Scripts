@@ -1,7 +1,7 @@
 /*
 name: (ToD) Complete Throne of Darkness Story
 description: This will finish the Throne of Darkness story.
-tags: throne, darkness, farm, story, complete, throne, darkness
+tags: throne, darkness, farm, story, complete, throne, darkness, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
