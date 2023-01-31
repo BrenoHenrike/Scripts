@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: NecroU
+description: This will finish the NecroU quest.
+tags: story, quest, doomwood, necrou, part1
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

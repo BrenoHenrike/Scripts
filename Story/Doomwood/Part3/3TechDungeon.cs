@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tech Dungeon
+description: This will complete the Tech Dungeon quest.
+tags: story, quest, doomwood, tech-dungeon, part3
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

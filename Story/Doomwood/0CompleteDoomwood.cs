@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Doomwood Story
+description: This will complete the Doomwood story.
+tags: story, quest, doomwood, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

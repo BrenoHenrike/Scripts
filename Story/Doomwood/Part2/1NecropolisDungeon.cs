@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Necropolis Dungeon
+description: This will complete the Necropolis Dungeon quest.
+tags: story, quest, doomwood, necropolis-dungeon, part2
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
