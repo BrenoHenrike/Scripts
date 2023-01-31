@@ -212,13 +212,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/GenerateQueuedScript.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Butler",
+    "description": "This will follow a player and copy their actions and do attack actions.",
     "tags": [
-      "null"
+      "butler",
+      "follow",
+      "player",
+      "copy",
+      "actions",
+      "attack"
     ],
     "path": "Tools/Butler.cs",
-    "size": 10327,
+    "size": 10437,
     "fileName": "Butler.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
@@ -2170,7 +2175,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
   {
-    "name": "aggro monster creator",
+    "name": "Aggro Monster Creator",
     "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
     "tags": [
       "custom",
@@ -9177,13 +9182,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mysterious Dungeon Story",
+    "description": "This will finish the Mysterious Dungeon story.",
     "tags": [
-      "null"
+      "mysterious",
+      "dungeon",
+      "farm",
+      "story",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs",
-    "size": 563,
+    "size": 671,
     "fileName": "07bStranger(MysteriousDungeon).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs"
   },
@@ -9199,13 +9209,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/02bXeven(DeepPortalspace)[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Antique Shop Story",
+    "description": "This will finish the Antique Shop story.",
     "tags": [
-      "null"
+      "antique",
+      "shop",
+      "farm",
+      "story",
+      "throne",
+      "darkness"
     ],
     "path": "Story/ThroneofDarkness/07aStranger(AntiqueShop).cs",
-    "size": 551,
+    "size": 641,
     "fileName": "07aStranger(AntiqueShop).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/07aStranger(AntiqueShop).cs"
   },
