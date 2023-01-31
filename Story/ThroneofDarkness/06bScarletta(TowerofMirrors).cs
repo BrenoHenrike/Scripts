@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Scarletta) Tower of Mirrors Story
+description: This will finish the Tower of Mirrors story.
+tags: tower, mirrors, farm, story, scarletta, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

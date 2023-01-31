@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Citadel Ruins
+description: This will finish the Citadel Ruins quest.
+tags: story, quest, nation, citadel-ruins
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

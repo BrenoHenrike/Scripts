@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Yasaris) Sekt Story
+description: This will finish the Sekt story.
+tags: sekt, farm, story, yasaris, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

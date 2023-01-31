@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Seraph
+description: This will finish the Seraph quest.
+tags: story, quest, legion, dage-the-evil-island, seraph
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

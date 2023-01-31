@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (War) Seven Circles
+description: This will finish the Seven Circles quest.
+tags: story, quest, legion, seven-circles, war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

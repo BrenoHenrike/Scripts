@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Junkheap
+description: This will finish the Junkheap quest.
+tags: story, quest, shadow-war, junkheap
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

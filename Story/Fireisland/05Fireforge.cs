@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fireforge
+description: This will finish the Fireforge quest.
+tags: story, quest, fire-island, fireforge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Sekt) Shifting Pyramid Story
+description: This will finish the Shifting Pyramid story.
+tags: shifting, pyramid, farm, story, sekt, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

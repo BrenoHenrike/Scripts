@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadowfall Darkness Rising
+description: This will finish the Shadowfall Darkness Rising quest.
+tags: story, quest, queen-monsters, shadowfall-darkness-rising
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

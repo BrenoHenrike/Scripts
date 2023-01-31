@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark Alliance
+description: This will finish the Dark Alliance quest.
+tags: story, quest, shadow-war, dark-alliance
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dage Challenge Story
+description: This will finish the Dage Challenge Story quest.
+tags: story, quest, legion, dage-challenge-story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

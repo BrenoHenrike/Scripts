@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Darkovia Dark Diaspora
+description: This will finish the Darkovia Dark Diaspora quest.
+tags: story, quest, queen-monsters, darkovia-dark-diaspora
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

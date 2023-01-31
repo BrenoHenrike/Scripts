@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Styx
+description: This will finish the Styx quest.
+tags: story, quest, isle-of-fotia, styx
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

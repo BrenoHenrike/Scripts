@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: FreakiTiki
+description: This will finish the FreakiTiki quest.
+tags: story, quest, memets-realm, freakitiki
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

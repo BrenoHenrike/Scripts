@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Dwarfhold) Vath
+description: This will finish the Vath quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, dwarfhold, vath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

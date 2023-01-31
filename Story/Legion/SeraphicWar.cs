@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Seraphic War
+description: This will finish the Seraphic War quest.
+tags: story, quest, legion, seraphic-war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

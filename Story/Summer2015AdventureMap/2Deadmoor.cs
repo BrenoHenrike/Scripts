@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Deadmoor) Summer 2015 Adventure Map Story
+description: This will finish the Deadmoor story.
+tags: deadmoor, summer, 2015, adventure, map, farm, story, deadmoor, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lavarun
+description: This will finish the Lavarun quest.
+tags: story, quest, fire-island, lavarun
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nightmare Mem
+description: This will finish the Nightmare Mem quest.
+tags: story, quest, memets-realm, nightmare-mem
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

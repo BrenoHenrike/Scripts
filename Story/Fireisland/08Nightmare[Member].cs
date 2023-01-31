@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nightmare
+description: This will finish the Nightmare quest.
+tags: story, quest, fire-island, nightmare, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

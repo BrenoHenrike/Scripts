@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Brimstone
+description: This will finish the Brimstone quest.
+tags: story, quest, fire-island, brimstone, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

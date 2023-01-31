@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Arcangrove) Ledgermayne
+description: chaos-saga, 13-lords-of-chaos
+tags: story, quest, chaos-saga, 13-lords-of-chaos, arcangrove, ledgermayne
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

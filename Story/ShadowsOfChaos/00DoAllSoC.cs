@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Shadows of Chaos Story
+description: This will complete the Shadows of Chaos story arc.
+tags: story, quest, shadows-of-chaos, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

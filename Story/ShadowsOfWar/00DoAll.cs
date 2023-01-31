@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete all Shadows of War
+description: This will finish all the Shadows of War story.
+tags: story, SOW, shadow-of-war, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

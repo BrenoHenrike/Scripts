@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Sekt) Fourth Dimensional Pyramid Story
+description: This will finish the Fourth Dimensional Pyramid story.
+tags: fourth, dimensional, pyramid, farm, story, sekt, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
