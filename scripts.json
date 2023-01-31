@@ -9067,57 +9067,73 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/CoreSoC.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dage Challenge Story",
+    "description": "This will finish the Dage Challenge Story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-challenge-story"
     ],
     "path": "Story/Legion/DageChallengeStory.cs",
-    "size": 2453,
+    "size": 2551,
     "fileName": "DageChallengeStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageChallengeStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "World Soul",
+    "description": "This will finish the World Soul quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "world-soul"
     ],
     "path": "Story/Legion/WorldSoul.cs",
-    "size": 1709,
+    "size": 1777,
     "fileName": "WorldSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/WorldSoul.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark War Legion and Nation",
+    "description": "This will finish the Dark War Legion and Nation quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dark-war-legion-and-nation"
     ],
     "path": "Story/Legion/DarkWarLegionandNation.cs",
-    "size": 4039,
+    "size": 4155,
     "fileName": "DarkWarLegionandNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DarkWarLegionandNation.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Seraphic War",
+    "description": "This will finish the Seraphic War quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "seraphic-war"
     ],
     "path": "Story/Legion/SeraphicWar.cs",
-    "size": 1610,
+    "size": 1684,
     "fileName": "SeraphicWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/SeraphicWar.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(War) Seven Circles",
+    "description": "This will finish the Seven Circles quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "seven-circles",
+      "war"
     ],
     "path": "Story/Legion/SevenCircles(War).cs",
-    "size": 3841,
+    "size": 3929,
     "fileName": "SevenCircles(War).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/SevenCircles(War).cs"
   },
@@ -12979,35 +12995,47 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Fortress",
+    "description": "This will finish the Dark Fortress quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-the-evil-island",
+      "dark-fortress"
     ],
     "path": "Story/Legion/DageTheEvilIsland/01DarkFortress.cs",
-    "size": 593,
+    "size": 692,
     "fileName": "01DarkFortress.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/01DarkFortress.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Envy Map",
+    "description": "This will finish the Envy Map quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-the-evil-island",
+      "envy-map"
     ],
     "path": "Story/Legion/DageTheEvilIsland/04EnvyMap.cs",
-    "size": 583,
+    "size": 667,
     "fileName": "04EnvyMap.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/04EnvyMap.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Laken",
+    "description": "This will finish the Laken quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-the-evil-island",
+      "laken"
     ],
     "path": "Story/Legion/DageTheEvilIsland/05Laken.cs",
-    "size": 578,
+    "size": 653,
     "fileName": "05Laken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/05Laken.cs"
   },
@@ -13023,35 +13051,48 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Dage The Evil Island Story",
+    "description": "This will complete the Dage The Evil Island story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-the-evil-island",
+      "complete",
+      "all"
     ],
     "path": "Story/Legion/DageTheEvilIsland/00DoAllDageTheEvilIsland.cs",
-    "size": 624,
+    "size": 754,
     "fileName": "00DoAllDageTheEvilIsland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/00DoAllDageTheEvilIsland.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Legion Crypt",
+    "description": "This will finish the Legion Crypt quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-the-evil-island",
+      "legion-crypt"
     ],
     "path": "Story/Legion/DageTheEvilIsland/03LegionCrypt.cs",
-    "size": 591,
+    "size": 687,
     "fileName": "03LegionCrypt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/03LegionCrypt.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Seraph",
+    "description": "This will finish the Seraph quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dage-the-evil-island",
+      "seraph"
     ],
     "path": "Story/Legion/DageTheEvilIsland/02Seraph.cs",
-    "size": 581,
+    "size": 659,
     "fileName": "02Seraph.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/02Seraph.cs"
   },
