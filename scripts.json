@@ -874,14 +874,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IaraStory.cs"
   },
   {
-    "name": "All Seasonal Story",
+    "name": "Complete All Seasonal Story",
     "description": "This will finish all of seasonal story on current month.",
     "tags": [
       "seasonal",
-      "story"
+      "story",
+      "complete",
+      "all"
     ],
     "path": "Seasonal/AllSeasonal.cs",
-    "size": 9493,
+    "size": 9517,
     "fileName": "AllSeasonal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
