@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fiendshard
+description: This will finish the Fiendshard quest.
+tags: story, quest, nation, fiendshard
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

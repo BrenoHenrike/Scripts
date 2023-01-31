@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Originul
+description: This will finish the Originul quest.
+tags: story, quest, originul, nation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
