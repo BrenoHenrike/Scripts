@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Sloth
+description: This will finish the Sloth quest.
+tags: story, quest, 7-deadly-dragons, sloth
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

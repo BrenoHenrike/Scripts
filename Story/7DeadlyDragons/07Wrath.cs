@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Wrath
+description: This will finish the Wrath quest.
+tags: story, quest, 7-deadly-dragons, wrath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
