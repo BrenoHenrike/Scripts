@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Horc) Khasaanda
+description: This will finish the Khasaanda quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, horc, khasaanda
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

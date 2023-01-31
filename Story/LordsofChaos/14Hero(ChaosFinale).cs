@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Chaos Finale) Hero
+description: This will finish the Hero quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, chaos-finale, hero
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

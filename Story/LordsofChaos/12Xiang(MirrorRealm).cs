@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Mirror Realm) Xiang
+description: This will finish the Xiang quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, mirror-realm, xiang
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
