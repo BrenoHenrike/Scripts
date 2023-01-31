@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dragon Capital Story
+description: This will finish the Dragon Capital Story Quest.
+tags: story, quest, dragon, capital, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

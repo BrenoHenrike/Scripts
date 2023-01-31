@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dragon Capital Merge
+description: This will farm and buy all items of Dragon Capital Merge Shop.
+tags: farm, merge, shop, dragon-capital, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

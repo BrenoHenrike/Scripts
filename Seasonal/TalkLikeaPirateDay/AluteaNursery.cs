@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Alutea Nursery
+description: This will finish the Alutea Nursery Quest.
+tags: story, quest, alutea-nursery, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

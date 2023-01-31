@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Heart of the Sea Story
+description: This will finish the Heart of the Sea Story Quest.
+tags: story, quest, heart-of-the-sea, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

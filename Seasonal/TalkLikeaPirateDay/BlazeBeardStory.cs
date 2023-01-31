@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Blaze Beard Story
+description: This will finish the Blaze Beard Story Quest.
+tags: story, quest, blaze-beard, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
