@@ -13545,79 +13545,107 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/ChoasFinaleBonus[Mem]/KillerCatacombs[Mem].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Queen Battle (Extra)",
+    "description": "This will finish the Queen Battle quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "queen-battle",
+      "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/QueenBattle.cs",
-    "size": 2105,
+    "size": 2205,
     "fileName": "QueenBattle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/QueenBattle.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Celestial Arena (Extra)",
+    "description": "This will finish the Celestial Arena quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "extra",
+      "celestial-arena"
     ],
     "path": "Story/QueenofMonsters/Extra/CelestialArena.cs",
-    "size": 3487,
+    "size": 3596,
     "fileName": "CelestialArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/CelestialArena.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Living Dungeon (Extra)",
+    "description": "This will finish the Living Dungeon quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "living-dungeon",
+      "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/LivingDungeon.cs",
-    "size": 6687,
+    "size": 6793,
     "fileName": "LivingDungeon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/LivingDungeon.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Golden Arena (Extra)",
+    "description": "This will finish the Golden Arena quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "golden-arena",
+      "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/GoldenArena.cs",
-    "size": 1632,
+    "size": 1732,
     "fileName": "GoldenArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/GoldenArena.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Bright Oak (Extra)",
+    "description": "This will finish the Bright Oak quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "bright-oak",
+      "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14542,
+    "size": 14636,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Celestial Past (Extra)",
+    "description": "This will finish the Celestial Past quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "celestial-past",
+      "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/CelestialPast.cs",
-    "size": 1786,
+    "size": 1892,
     "fileName": "CelestialPast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/CelestialPast.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Orb Hunt (Extra)",
+    "description": "This will finish the Orb Hunt quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "queen-of-monsters",
+      "orb-hunt",
+      "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/OrbHunt.cs",
-    "size": 5594,
+    "size": 5682,
     "fileName": "OrbHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/OrbHunt.cs"
   },
