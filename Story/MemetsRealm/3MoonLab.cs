@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Moon Lab
+description: This will finish the Moon Lab quest.
+tags: story, quest, memets-realm, moon-lab
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Zorbas Palace
+description: This will finish the Zorbas Palace quest.
+tags: story, quest, memets-realm, zorbas-palace
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

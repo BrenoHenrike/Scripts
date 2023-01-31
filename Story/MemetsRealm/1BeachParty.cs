@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beach Party
+description: This will finish the Beach Party quest.
+tags: story, quest, memets-realm, beach-party
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

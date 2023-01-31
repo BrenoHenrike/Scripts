@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dream Master
+description: This will finish the Dream Master quest.
+tags: story, quest, memets-realm, dream-master
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

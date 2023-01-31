@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: ByroDax
+description: This will finish the ByroDax quest.
+tags: story, quest, memets-realm, byrodax
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
