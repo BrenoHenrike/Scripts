@@ -8725,101 +8725,131 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/CoreFireisland.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fireforge",
+    "description": "This will finish the Fireforge quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "fireforge"
     ],
     "path": "Story/Fireisland/05Fireforge.cs",
-    "size": 520,
+    "size": 590,
     "fileName": "05Fireforge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/05Fireforge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete Fire Island Story",
+    "description": "This will complete the Fire Island story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "complete",
+      "all"
     ],
     "path": "Story/Fireisland/00DoAllFireisland.cs",
-    "size": 535,
+    "size": 630,
     "fileName": "00DoAllFireisland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/00DoAllFireisland.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Phoenixrise",
+    "description": "This will finish the Phoenixrise quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "phoenixrise"
     ],
     "path": "Story/Fireisland/04Phoenixrise.cs",
-    "size": 525,
+    "size": 601,
     "fileName": "04Phoenixrise.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/04Phoenixrise.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lavarun",
+    "description": "This will finish the Lavarun quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "lavarun"
     ],
     "path": "Story/Fireisland/06Lavarun.cs",
-    "size": 516,
+    "size": 580,
     "fileName": "06Lavarun.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/06Lavarun.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Embersea",
+    "description": "This will finish the Embersea quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "embersea"
     ],
     "path": "Story/Fireisland/01Embersea.cs",
-    "size": 518,
+    "size": 585,
     "fileName": "01Embersea.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/01Embersea.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Brimstone",
+    "description": "This will finish the Brimstone quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "brimstone",
+      "member"
     ],
     "path": "Story/Fireisland/07Brimstone[Member].cs",
-    "size": 520,
+    "size": 598,
     "fileName": "07Brimstone[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/07Brimstone[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Feverfew",
+    "description": "This will finish the Feverfew quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "feverfew"
     ],
     "path": "Story/Fireisland/03Feverfew.cs",
-    "size": 518,
+    "size": 585,
     "fileName": "03Feverfew.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/03Feverfew.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Pyrewatch",
+    "description": "This will finish the Pyrewatch quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "pyrewatch"
     ],
     "path": "Story/Fireisland/02Pyrewatch.cs",
-    "size": 520,
+    "size": 590,
     "fileName": "02Pyrewatch.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/02Pyrewatch.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nightmare",
+    "description": "This will finish the Nightmare quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "fire-island",
+      "nightmare",
+      "member"
     ],
     "path": "Story/Fireisland/08Nightmare[Member].cs",
-    "size": 520,
+    "size": 598,
     "fileName": "08Nightmare[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/08Nightmare[Member].cs"
   },
