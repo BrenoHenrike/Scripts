@@ -3782,13 +3782,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "serpentine larvae set",
+    "description": "gets pet, does quest, gets set",
     "tags": [
-      "null"
+      "serpentine larvae",
+      "set"
     ],
     "path": "Other/Pets/SerpentineLarvae.cs",
-    "size": 2225,
+    "size": 2286,
     "fileName": "SerpentineLarvae.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/SerpentineLarvae.cs"
   },
