@@ -10233,46 +10233,58 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/CoreAstravia.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Greed",
+    "description": "This will finish the Greed quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "greed"
     ],
     "path": "Story/7DeadlyDragons/03Greed.cs",
-    "size": 501,
+    "size": 564,
     "fileName": "03Greed.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/03Greed.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Pride",
+    "description": "This will finish the Pride quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "pride"
     ],
     "path": "Story/7DeadlyDragons/02Pride.cs",
-    "size": 501,
+    "size": 564,
     "fileName": "02Pride.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/02Pride.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Envy",
+    "description": "This will finish the Envy quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "envy"
     ],
     "path": "Story/7DeadlyDragons/06Envy.cs",
-    "size": 499,
+    "size": 559,
     "fileName": "06Envy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/06Envy.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gluttony",
+    "description": "This will finish the Gluttony quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "gluttony"
     ],
     "path": "Story/7DeadlyDragons/01Gluttony.cs",
-    "size": 507,
+    "size": 579,
     "fileName": "01Gluttony.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/01Gluttony.cs"
   },
@@ -10288,46 +10300,59 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Core7DD.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sloth",
+    "description": "This will finish the Sloth quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "sloth"
     ],
     "path": "Story/7DeadlyDragons/04Sloth.cs",
-    "size": 501,
+    "size": 564,
     "fileName": "04Sloth.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/04Sloth.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Wrath",
+    "description": "This will finish the Wrath quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "wrath"
     ],
     "path": "Story/7DeadlyDragons/07Wrath.cs",
-    "size": 501,
+    "size": 564,
     "fileName": "07Wrath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/07Wrath.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete 7 Deadly Dragons",
+    "description": "This will complete the 7 Deadly Dragons story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "complete",
+      "all"
     ],
     "path": "Story/7DeadlyDragons/00SevenDeadlyDragons.cs",
-    "size": 524,
+    "size": 628,
     "fileName": "00SevenDeadlyDragons.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/00SevenDeadlyDragons.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lust",
+    "description": "This will finish the Lust quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "lust"
     ],
     "path": "Story/7DeadlyDragons/05Lust.cs",
-    "size": 499,
+    "size": 559,
     "fileName": "05Lust.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/05Lust.cs"
   },
@@ -13452,13 +13477,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Doomwood/Part1/6MadScientistLab.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Hatch The Egg (Extra)",
+    "description": "This will finish the Hatch The Egg quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "7-deadly-dragons",
+      "extra",
+      "hatch-the-egg"
     ],
     "path": "Story/7DeadlyDragons/Extra/HatchTheEgg.cs",
-    "size": 2685,
+    "size": 2787,
     "fileName": "HatchTheEgg.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Extra/HatchTheEgg.cs"
   },
