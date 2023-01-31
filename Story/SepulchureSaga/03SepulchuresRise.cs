@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Sepulchure's Rise
+description: This will finish the Sepulchure's Rise quest.
+tags: story, quest, sepulchure-saga, sepulchures-rise
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

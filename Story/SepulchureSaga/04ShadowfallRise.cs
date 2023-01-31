@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadowfall Rise
+description: This will finish the Shadowfall Rise quest.
+tags: story, quest, sepulchure-saga, shadowfall-rise
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

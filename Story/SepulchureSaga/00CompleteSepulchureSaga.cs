@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Sepulchure Saga Story
+description: This will finish the Sepulchure Saga story.
+tags: story, quest, sepulchure-saga, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
