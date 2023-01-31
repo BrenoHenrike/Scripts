@@ -24,7 +24,6 @@ public class SerpentineLarvae
         Core.SetOptions();
 
         DoQuest();
-        Core.TrashCan("Tainted Soul", "Blade of Holy Might", "Infected Dragon Soul");
 
         Core.SetOptions(false);
     }
@@ -33,6 +32,7 @@ public class SerpentineLarvae
     {
         Core.HuntMonster("darkallaince", "Shadowflame Nulgath", "Serpentine Larvae", isTemp: false, log: false);
         AutoReward(8944);
+        Core.TrashCan("Tainted Soul", "Blade of Holy Might", "Infected Dragon Soul");
     }
 
     public void AutoReward(int questID = 0000, int quant = 1)
