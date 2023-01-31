@@ -6886,123 +6886,165 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Coral Beach Merge",
+    "description": "This will farm the Coral Beach items.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "coral-beach",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/CoralBeachMerge.cs",
-    "size": 4936,
+    "size": 5022,
     "fileName": "CoralBeachMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/CoralBeachMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Luna Cove Merge",
+    "description": "This will farm the Luna Cove items.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "luna-cove",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/LunaCoveMerge.cs",
-    "size": 3456,
+    "size": 3536,
     "fileName": "LunaCoveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LunaCoveMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blazing Beach Story",
+    "description": "This will finish the Blazing Beach Story Line.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "blazing-beach",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/BlazingBeach.cs",
-    "size": 2285,
+    "size": 2379,
     "fileName": "BlazingBeach.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BlazingBeach.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Burning Beach Story",
+    "description": "This will finish the Burning Beach Story Line.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "burning-beach",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/BurningBeach.cs",
-    "size": 1171,
+    "size": 1265,
     "fileName": "BurningBeach.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BurningBeach.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Un-Lifeguard Quest",
+    "description": "This will finish the Un-Lifeguard Quest.",
     "tags": [
-      "null"
+      "quest",
+      "un-lifeguard",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/Un-LifeguardQuest.cs",
-    "size": 1223,
+    "size": 1302,
     "fileName": "Un-LifeguardQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/Un-LifeguardQuest.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Beach Party Token Items",
+    "description": "This will farm Tiki Tokens and buy the items from the Beach Party Token Shop.",
     "tags": [
-      "null"
+      "farm",
+      "beach",
+      "party",
+      "tiki",
+      "tokens",
+      "items",
+      "shop"
     ],
     "path": "Seasonal/SummerBreak/BeachPartyTokenItems.cs",
-    "size": 1280,
+    "size": 1413,
     "fileName": "BeachPartyTokenItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BeachPartyTokenItems.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Extra Credit AC Items",
+    "description": "This will farm the Extra Credit AC Items.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "credit",
+      "extra",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/ExtraCreditACItems.cs",
-    "size": 1785,
+    "size": 1881,
     "fileName": "ExtraCreditACItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/ExtraCreditACItems.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Summer Break Merge",
+    "description": "This will farm the Summer Break items.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/SummerBreakMerge.cs",
-    "size": 7002,
+    "size": 7077,
     "fileName": "SummerBreakMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/SummerBreakMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sweet Summer Treats",
+    "description": "This will farm the Sweet Summer Treats.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "sweet",
+      "summer-break",
+      "treats"
     ],
     "path": "Seasonal/SummerBreak/SweetSummerTreats.cs",
-    "size": 1122,
+    "size": 1214,
     "fileName": "SweetSummerTreats.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/SweetSummerTreats.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Volley Baller",
+    "description": "This will finish the Volley Baller Quest and farm items.",
     "tags": [
-      "null"
+      "farm",
+      "quest",
+      "volley-baller",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/VolleyBaller.cs",
-    "size": 1859,
+    "size": 1956,
     "fileName": "VolleyBaller.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/VolleyBaller.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blazing Beach Merge",
+    "description": "This will farm the Blazing Beach items.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "blazing-beach",
+      "summer-break"
     ],
     "path": "Seasonal/SummerBreak/BlazingBeachMerge.cs",
-    "size": 4945,
+    "size": 5037,
     "fileName": "BlazingBeachMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BlazingBeachMerge.cs"
   },
