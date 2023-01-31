@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Update Script Data
+description: This bot will check all bots so that you may add the missing Name, Description and Tags where needed
+tags: tags, description, name, developer, data
 */
 //cs_include Scripts/CoreBots.cs
 using System.Dynamic;
@@ -18,6 +18,7 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 public class UpdateTags
 {
     private IScriptInterface Bot = IScriptInterface.Instance;
+    private CoreBots Core = CoreBots.Instance;
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -75,7 +76,7 @@ public class UpdateTags
             foreach (var file in files)
             {
                 // Skip blacklisted file-extensions and core-files
-                if (Extensions.Any(e => file.EndsWith(e)))
+                if (Extensions.Any(e => file.EndsWith(e)) || file.Replace('\\', '/').Split('/').Last().StartsWith("Core"))
                     continue;
 
                 string _file = removeDir(file)!.Replace('\\', '/');

@@ -1,7 +1,7 @@
 /*
 name: Butler
 description: This will follow a player and copy their actions and do attack actions.
-tags: butler, follow, player, copy, actions, attack
+tags: butler, follow, player, copy, actions, attack, maidr, auto, goto
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

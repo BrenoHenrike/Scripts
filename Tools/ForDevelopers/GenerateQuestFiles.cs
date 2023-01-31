@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Generate Quest Files
+description: This will generate the the files needed for the QuestData sheet and the #quest-ids channel in our discord
+tags: quests, developer, lists, files, spreadsheet, excel, data
 */
 //cs_include Scripts/CoreBots.cs
 using Newtonsoft.Json;

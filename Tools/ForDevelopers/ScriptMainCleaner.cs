@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Script Main Cleaner
+description: Checks all scripts we have to see if there are any that break format
+tags: scriptmain, cleaner, formatter, developer
 */
 //cs_include Scripts/CoreBots.cs
 using System.Net.NetworkInformation;

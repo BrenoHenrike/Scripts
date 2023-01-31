@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Generate Queued Script
+description: Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you
+tags: generator, queud, script, follow-up, choose
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
