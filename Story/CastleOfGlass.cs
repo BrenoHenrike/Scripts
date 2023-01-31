@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Castle of Glass Story
+description: This will complete the Castle of Glass story.
+tags: story, quest, castle-of-glass
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

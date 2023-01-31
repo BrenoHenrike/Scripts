@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dread Forest Story
+description: This will finish the Dread Forest Story.
+tags: story, quest, dread-forest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

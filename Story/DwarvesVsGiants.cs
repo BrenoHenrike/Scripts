@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dwarves Vs Giants Story
+description: This will finish the Dwarves Vs Giants story.
+tags: story, quest, DVG
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

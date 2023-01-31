@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lightovia Cave Story
+description: This will finish the Lightovia Cave Story.
+tags: story, quest, lightovia-cave
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

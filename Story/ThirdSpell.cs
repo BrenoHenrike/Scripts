@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Third Spell Story
+description: This will finish the Third Spell Story.
+tags: story, quest, thirdspell
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shinkansen Story
+description: This will finish the Shinkansen Story.
+tags: story, quest, shinkansen
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

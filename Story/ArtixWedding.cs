@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Artix Wedding Story
+description: This will finish the Artix Wedding Story.
+tags: story, quest, artix-wedding
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

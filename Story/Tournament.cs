@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tournament Story
+description: This will finish the Tournament Story.
+tags: story, quest, tournament
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Crux Ship Story
+description: This will finish the Crux Ship story.
+tags: story, quest, crux-ship
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

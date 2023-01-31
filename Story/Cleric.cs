@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Cleric Story
+description: This will complete the Cleric story.
+tags: story, quest, cleric
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

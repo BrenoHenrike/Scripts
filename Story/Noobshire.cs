@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Noobshire Story
+description: This will finish the Noobshire Story.
+tags: story, quest, noobshire
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

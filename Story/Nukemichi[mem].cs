@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nukemichi Story (Member)
+description: This will finish the Nukemichi Story.
+tags: story, quest, nukemichi, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

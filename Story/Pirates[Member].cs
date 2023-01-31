@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Pirates Story (Member)
+description: This will finish the Pirates Story.
+tags: story, quest, pirates, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

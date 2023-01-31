@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Banished
+description: This will finish the Banished quest.
+tags: story, quest, banished
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

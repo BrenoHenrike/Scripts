@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beleen's Dream Story
+description: This will complete the Beleen's Dream story.
+tags: story, quest, beleens-dream
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Downward Story
+description: This will complete the Downward Story.
+tags: story, quest, downward
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

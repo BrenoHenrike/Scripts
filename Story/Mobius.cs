@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mobius Story
+description: This will finish the Mobius Story. 
+tags: story, quest, mobius
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

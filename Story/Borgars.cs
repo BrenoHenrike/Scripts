@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Borgars Story
+description: This will complete the Borgars story.
+tags: story, quest, borgars
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

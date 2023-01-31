@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Etherstorm Wastes Story
+description: This will finish the Etherstorm Wastes Story.
+tags: story, quest, etherstorm-wastes
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

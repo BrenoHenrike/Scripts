@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gamehaven Story
+description: This will finish the Gamehaven Story.
+tags: story, quest, gamehaven
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

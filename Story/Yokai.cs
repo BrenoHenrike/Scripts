@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Yokai Story
+description: This will finish the Yokai Story.
+tags: story, quest, yokai
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
