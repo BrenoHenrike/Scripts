@@ -1,6 +1,6 @@
 /*
-name:  Darkons First Errand
-description:  Darkons First Errand
+name: Darkons First Errand
+description: Darkons First Errand
 tags: darkon, errand, first
 */
 //cs_include Scripts/CoreBots.cs

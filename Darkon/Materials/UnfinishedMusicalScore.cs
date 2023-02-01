@@ -1,6 +1,6 @@
 /*
-name:  Unfinished Musical Score
-description:  Unfinished Musical Score
+name: Unfinished Musical Score
+description: Unfinished Musical Score
 tags: darkon, unfinished musical score
 */
 //cs_include Scripts/CoreBots.cs

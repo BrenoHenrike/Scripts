@@ -1,6 +1,6 @@
 /*
-name:  Army Penny for Your Thoughts
-description:  
+name: Army Penny for Your Thoughts
+description: null
 tags: army, penny for your thoughts, dark spirit orb
 */
 //cs_include Scripts/CoreBots.cs

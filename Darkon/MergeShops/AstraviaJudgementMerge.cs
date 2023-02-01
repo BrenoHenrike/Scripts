@@ -1,6 +1,6 @@
 /*
-name:  Astravia Judgement Merge
-description:  Astravia Judgement Merge
+name: Astravia Judgement Merge
+description: Astravia Judgement Merge
 tags: astravia judgement, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs

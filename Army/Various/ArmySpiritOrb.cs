@@ -1,6 +1,6 @@
 /*
-name:  Army Spirit Orbs
-description:  
+name: Army Spirit Orbs
+description: null
 tags: army, spirit orb
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,6 +1,6 @@
 /*
 name: Mobius Story
-description: This will finish the Mobius Story. 
+description: This will finish the Mobius Story.
 tags: story, quest, mobius
 */
 //cs_include Scripts/CoreBots.cs

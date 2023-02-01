@@ -1,6 +1,6 @@
 /*
-name:  HardCore Metals Daily
-description:  HardCore Metals
+name: HardCore Metals Daily
+description: HardCore Metals
 tags: daily, hardcore metals, member
 */
 //cs_include Scripts/CoreBots.cs

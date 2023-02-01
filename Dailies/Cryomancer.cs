@@ -1,6 +1,6 @@
 /*
-name:  Cryomancer Daily
-description:  Cryomancer
+name: Cryomancer Daily
+description: Cryomancer
 tags: daily, cryomancer, class, seasonal
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,6 +1,6 @@
 /*
-name:  Army Prismatic Seams
-description:  
+name: Army Prismatic Seams
+description: null
 tags: army, prismatic seams
 */
 //cs_include Scripts/CoreBots.cs

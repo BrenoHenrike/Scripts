@@ -1,6 +1,6 @@
 /*
-name:  Power Gem Daily
-description:  Power Gem
+name: Power Gem Daily
+description: Power Gem
 tags: daily, power gem
 */
 //cs_include Scripts/CoreBots.cs

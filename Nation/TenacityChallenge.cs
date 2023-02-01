@@ -1,7 +1,7 @@
 /*
 name: Tenacity Challenge
 description: Farms the quest Tenacity Challenge to get Tainte Gems, Dark Crystal Shards and Blood Gem of the Archfiend (Requiers Nulgath Challenge Pet)
-tags: nation, tainted gem, dark crystal shard, blood gem of the archfiend, nulgath challenge pet 
+tags: nation, tainted gem, dark crystal shard, blood gem of the archfiend, nulgath challenge pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

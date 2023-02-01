@@ -1,6 +1,6 @@
 /*
-name:  Astravian Medal
-description:  Astravian Medals
+name: Astravian Medal
+description: Astravian Medals
 tags: astravian medals, darkon
 */
 //cs_include Scripts/CoreBots.cs

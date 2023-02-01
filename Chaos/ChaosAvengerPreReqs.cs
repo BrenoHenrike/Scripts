@@ -1,6 +1,6 @@
 /*
-name:  Chaos Avenger Class
-description:  Gets the prerequisites for the Chaos avengers class besides the insignias.
+name: Chaos Avenger Class
+description: Gets the prerequisites for the Chaos avengers class besides the insignias.
 tags: chaos avenger, class, prerequisites
 */
 //cs_include Scripts/CoreBots.cs

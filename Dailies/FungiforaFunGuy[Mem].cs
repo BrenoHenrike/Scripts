@@ -1,6 +1,6 @@
 /*
-name:  Fungi for a Fun Guy Daily
-description:  Fungi for a Fun Guy
+name: Fungi for a Fun Guy Daily
+description: Fungi for a Fun Guy
 tags: daily, fungi for a fun guy, member
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,6 +1,6 @@
 /*
-name:  Bandits Correspondence
-description:  Bandits Correspondence
+name: Bandits Correspondence
+description: Bandits Correspondence
 tags: darkon, bandits correspondence
 */
 //cs_include Scripts/CoreBots.cs

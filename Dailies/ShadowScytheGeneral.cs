@@ -1,6 +1,6 @@
 /*
-name:  Shadow Scythe Class Daily
-description:  Shadow Scythe Class
+name: Shadow Scythe Class Daily
+description: Shadow Scythe Class
 tags: daily, shadow scythe class
 */
 //cs_include Scripts/CoreBots.cs
