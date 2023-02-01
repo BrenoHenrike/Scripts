@@ -1,4 +1,4 @@
-/*
+﻿/*
 name: null
 description: null
 tags: null
@@ -57,6 +57,7 @@ public class CoreBots
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
     public bool BankMiscAC { get; set; } = false;
+    public bool BankUnenhancedACGear { get; set; } = false;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
@@ -203,6 +204,8 @@ public class CoreBots
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
                 BankACMisc();
+            if (BankUnenhancedACGear)
+                BankACUnenhancedGear();
 
             foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
                 EquipmentBeforeBot.Add(item.Name);
@@ -2171,6 +2174,20 @@ public class CoreBots
         ToBank(MiscForBank.ToArray());
     }
 
+    public void BankACUnenhancedGear()
+    {
+        List<string> Whitelisted = new() { "Class", "Helm", "Cape" };
+        ToBank(Bot.Inventory.Items.Where(i =>
+            (Whitelisted.Contains(i.CategoryString) ||
+            i.ItemGroup == "Weapon") &&
+            i.Coins &&
+            i.EnhancementLevel == 0 &&
+            !i.Equipped &&
+            !SoloGear.Contains(i.Name) &&
+            !FarmGear.Contains(i.Name)
+        ).Select(i => i.Name).ToArray());
+    }
+
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
 
@@ -3125,6 +3142,8 @@ public class CoreBots
             PublicDifficult = _PublicDifficult;
         if (CBOBool("BankMiscAC", out bool _BankMiscAC))
             BankMiscAC = _BankMiscAC;
+        if (CBOBool("BankUnenhancedACGear", out bool _BankUnenhGear))
+            BankUnenhancedACGear = _BankUnenhGear;
         if (CBOBool("LoggerInChat", out bool _LoggerInChat))
             LoggerInChat = _LoggerInChat;
 
