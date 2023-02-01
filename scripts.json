@@ -375,7 +375,7 @@
       "null"
     ],
     "path": "Other/FreeBoostsQuest(10mns).cs",
-    "size": 4144,
+    "size": 2647,
     "fileName": "FreeBoostsQuest(10mns).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
@@ -1088,13 +1088,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VoucherItemChoose.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tenacity Challenge",
+    "description": "Farms the quest Tenacity Challenge to get Tainte Gems, Dark Crystal Shards and Blood Gem of the Archfiend (Requiers Nulgath Challenge Pet)",
     "tags": [
-      "null"
+      "nation",
+      "tainted gem",
+      "dark crystal shard",
+      "blood gem of the archfiend",
+      "nulgath challenge pet"
     ],
     "path": "Nation/TenacityChallenge.cs",
-    "size": 1585,
+    "size": 1600,
     "fileName": "TenacityChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TenacityChallenge.cs"
   },
@@ -8422,13 +8426,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/DragonBlade[mem}.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Hanzo Orb Quests",
+    "description": "Does the quests from either the Astral Orb Pet, or the Crimson Orb Pet",
     "tags": [
-      "null"
+      "astral",
+      "crimson",
+      "orb",
+      "pet",
+      "quests"
     ],
     "path": "Nation/Various/HanzoOrbQuest.cs",
-    "size": 3021,
+    "size": 2449,
     "fileName": "HanzoOrbQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/HanzoOrbQuest.cs"
   },
@@ -11295,7 +11303,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31193,
+    "size": 31504,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
