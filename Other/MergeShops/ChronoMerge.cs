@@ -66,10 +66,8 @@ public class ChronoMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8171);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("shadowrealmpast", "Shadow Guardian", "Shadow Guardians Defeated");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                        Core.KillMonster("shadowrealmpast", "r2", "Right", "Shadow Guardian", "Shadow Guardians Defeated");
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
