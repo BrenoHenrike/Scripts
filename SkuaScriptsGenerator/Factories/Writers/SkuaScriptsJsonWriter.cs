@@ -38,15 +38,13 @@ namespace SkuaScriptsGenerator.Generators
                     scriptInfo.Path = script.Replace("./", "");
                     scriptInfo.FileName = script.Split('/').Last();
                     scriptInfo.DownloadUrl = rawScriptsURL+scriptInfo.Path;
+
                     var scriptB = File.ReadAllBytes(script);
                     // remove zero width no-break space
                     RemoveAllZeroWidth(ref scriptB);
                     scriptInfo.Size = scriptB.Length;
-                    if(script.Contains("1BookOfMagus.cs"))
-                    {
-                        scripts.Add(scriptInfo);  
-                    }
-                        
+                    
+                    scripts.Add(scriptInfo);     
                 }
             }
 
