@@ -3703,13 +3703,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/Goal.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Badge) Battle Babysitter",
+    "description": "This will get the Battle Babysitter badge.",
     "tags": [
-      "null"
+      "badge",
+      "doomwood",
+      "battle",
+      "baby-sitter"
     ],
     "path": "Other/Badges/BattleBabysitter.cs",
-    "size": 841,
+    "size": 932,
     "fileName": "BattleBabysitter.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/BattleBabysitter.cs"
   },
