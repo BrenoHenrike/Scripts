@@ -12732,112 +12732,183 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Yang's Favors Merge",
+    "description": "This will complete the Yang's Favors story and farm Yang's Favors Medals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "yang",
+      "favor",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Yang/YangsFavorsMerge.cs",
-    "size": 3683,
+    "size": 3812,
     "fileName": "YangsFavorsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Yang/YangsFavorsMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark War Nation Merge",
+    "description": "This will complete the Dark War Nation story and farm Nation Defender Medals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "nation",
+      "dark",
+      "war",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs",
-    "size": 8104,
+    "size": 8245,
     "fileName": "DarkWarNationMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Dark War Legion) Dark War Legion Merge",
+    "description": "This will complete the Dark War Legion story and farm Dark War Legion Medals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "legion",
+      "dark",
+      "war",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkWarLegionMerge.cs",
-    "size": 6905,
+    "size": 7064,
     "fileName": "DarkWarLegionMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkWarLegionMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Nation War Chest Merge",
+    "description": "This will complete the Nation War Chest story and farm Nation Defender Medals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "nation",
+      "war",
+      "chest",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs",
-    "size": 3803,
+    "size": 3947,
     "fileName": "NationWarChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dage Recruit Story",
+    "description": "This will complete the Dage Recruit story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dage",
+      "recruit",
+      "legion",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs",
-    "size": 2712,
+    "size": 2812,
     "fileName": "DageRecruit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Undervoid Story",
+    "description": "This will complete the Undervoid story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "void",
+      "nation",
+      "legion",
+      "underworld",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs",
-    "size": 1440,
+    "size": 1545,
     "fileName": "Undervoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Darkwarlegion War) Chest Merge",
+    "description": "This will complete the Darkwarlegion War Chest story and farm Dark Victory Seals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dark",
+      "legion",
+      "war",
+      "chest",
+      "legion",
+      "dark-victory-seal",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkwarlegionWarChestMerge.cs",
-    "size": 3874,
+    "size": 4063,
     "fileName": "DarkwarlegionWarChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkwarlegionWarChestMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Dark Victory Seal) Dage Recruit Merge",
+    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dage",
+      "recruit",
+      "legion",
+      "dark-victory-seal",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DageRecruitMerge(DarkVictorySeal).cs",
-    "size": 1363,
+    "size": 1537,
     "fileName": "DageRecruitMerge(DarkVictorySeal).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageRecruitMerge(DarkVictorySeal).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Temple Siege",
+    "description": "Completes the Temple Siege storyline.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "temple",
+      "siege",
+      "nulgath",
+      "seasonal",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs",
-    "size": 1910,
+    "size": 2010,
     "fileName": "TempleSiege.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Beetle Warlord Pet",
+    "description": "This will complete the Beetle Warlord Pet quest.",
     "tags": [
-      "null"
+      "quest",
+      "beetle",
+      "warlord",
+      "pet",
+      "staff",
+      "birthday",
+      "nulgath"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPet.cs",
-    "size": 1692,
+    "size": 1799,
     "fileName": "BeetleWarlordPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPet.cs"
   },
@@ -12845,24 +12916,32 @@
     "name": "Temple Delve Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
-      "temple-delve-merge",
-      "templedelve-merge",
+      "temple. delve",
+      "merge",
       "seasonal",
-      "nulgath-birthday"
+      "nulgath",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs",
-    "size": 6783,
+    "size": 6774,
     "fileName": "TempleDelveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Beetle General Pet",
+    "description": "This will complete the Beetle General Pet quest.",
     "tags": [
-      "null"
+      "quest",
+      "beetle",
+      "general",
+      "pet",
+      "staff",
+      "birthday",
+      "nulgath"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPet.cs",
-    "size": 2048,
+    "size": 2155,
     "fileName": "BeetleGeneralPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPet.cs"
   },
@@ -12870,26 +12949,36 @@
     "name": "Temple Delve",
     "description": "Completes the Temple Delve storyline.",
     "tags": [
-      "temple-delve",
-      "templedelve",
+      "story",
+      "quest",
+      "temple",
+      "delve",
       "nulgath",
       "seasonal",
-      "nulgath-birthday",
-      "nulgath-story"
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs",
-    "size": 2329,
+    "size": 2315,
     "fileName": "TempleDelve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Temple Siege Merge",
+    "description": "Merges all the items needed for the Temple Siege storyline.",
     "tags": [
-      "null"
+      "merge",
+      "mats",
+      "quest",
+      "temple",
+      "siege",
+      "nulgath",
+      "seasonal",
+      "staff",
+      "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs",
-    "size": 9816,
+    "size": 9950,
     "fileName": "TempleSiegeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs"
   },
