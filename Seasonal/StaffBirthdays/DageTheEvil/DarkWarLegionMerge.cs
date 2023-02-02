@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Dark War Legion) Dark War Legion Merge
+description: This will complete the Dark War Legion story and farm Dark War Legion Medals.
+tags: story, quest, legion, dark, war, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

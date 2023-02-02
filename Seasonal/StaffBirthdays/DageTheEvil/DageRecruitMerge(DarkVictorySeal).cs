@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Dark Victory Seal) Dage Recruit Merge
+description: This will complete the Dage Recruit story and farm Dark Victory Seals.
+tags: story, quest, dage, recruit, legion, dark-victory-seal, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

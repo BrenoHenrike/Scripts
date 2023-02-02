@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Temple Siege
+description: Completes the Temple Siege storyline.
+tags: story, quest, temple, siege, nulgath, seasonal, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

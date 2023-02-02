@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beetle General Pet
+description: This will complete the Beetle General Pet quest.
+tags: quest, beetle, general, pet, staff, birthday, nulgath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
