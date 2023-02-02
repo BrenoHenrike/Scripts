@@ -2336,11 +2336,11 @@ public class CoreBots
 
             #region Simple Quest Bypasses
             case "maloth":
-                SimpleQuestBypass(((246, 23)));
+                SimpleQuestBypass((246, 23));
                 break;
 
             case "lycan":
-                SimpleQuestBypass(((26, 23)));
+                SimpleQuestBypass((26, 23));
                 break;
 
             case "mummies":
