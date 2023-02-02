@@ -31,8 +31,9 @@ public class JusticeSquadBadge
         Core.Logger($"Doing a quest for the {badge}");
         Core.AddDrop("Enchanted Justice Blade");
         Core.EnsureAccept(5722);
-        Core.HuntMonster("battleontown", "Zard", "Quill Pen", isTemp: true, log: false);
+        Core.HuntMonster("battleontown", "Frogzard", "Quill Pen", log: false);
         Core.EnsureComplete(5722);
+        Core.TrashCan("Enchanted Justice Blade");
 
 
     }

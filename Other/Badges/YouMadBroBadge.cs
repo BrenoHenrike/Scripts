@@ -43,15 +43,7 @@ public class YouMadBroBadge
                 Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
             Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, isTemp: false, log: false);
 
-            Core.Join("alchemyacademy");
-
-            if (!Bot.Shops.IsLoaded)
-            {
-                Bot.Shops.Load(395);
-            }
-            
-            Adv.BuyItem("alchemyacademy", 395, 62749, 100, 1, 8777);
-            Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
+            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 100, 8844);
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
         }
         Core.TrashCan("Dragon Scale", "Ice Vapor");
