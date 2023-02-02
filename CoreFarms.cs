@@ -764,8 +764,9 @@ public class CoreFarms
             else
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("lair", "Hole", "Center", "*", "Dragon Scale", 10, false, log: false);
-                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, false, log: false);
+                while (!Core.CheckInventory(11475, 30))
+                    Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, isTemp: false, log: false);
 
                 if (FactionRank("Alchemy") < 3)
                     AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
