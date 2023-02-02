@@ -7912,13 +7912,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/04BanquetStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Year Ball",
+    "description": "This will farm the Year Ball items.",
     "tags": [
-      "null"
+      "farm",
+      "seasonal",
+      "new-year",
+      "year-ball",
+      "merge"
     ],
     "path": "Seasonal/NewYear/YearBall.cs",
-    "size": 1964,
+    "size": 2038,
     "fileName": "YearBall.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/YearBall.cs"
   },
@@ -7934,13 +7938,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/CoreNewYear.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Time Retaliate Merge",
+    "description": "This will complete the Time Retaliate story and farm Time Retaliate.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "time",
+      "retaliate",
+      "merge",
+      "seasonal",
+      "new-year"
     ],
     "path": "Seasonal/NewYear/TimeRetaliateMerge.cs",
-    "size": 4369,
+    "size": 4501,
     "fileName": "TimeRetaliateMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/TimeRetaliateMerge.cs"
   },
@@ -13454,79 +13464,105 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/HarvestDayParadeMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Time Ritual Story",
+    "description": "This will complete the Time Ritual story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year",
+      "time-ritual"
     ],
     "path": "Seasonal/NewYear/Story/06TimeRitualStory.cs",
-    "size": 552,
+    "size": 643,
     "fileName": "06TimeRitualStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/06TimeRitualStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Everfrost Story",
+    "description": "This will complete the Everfrost story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year",
+      "everfrost"
     ],
     "path": "Seasonal/NewYear/Story/04EverfrostStory.cs",
-    "size": 550,
+    "size": 635,
     "fileName": "04EverfrostStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/04EverfrostStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Frostmane Story",
+    "description": "This will complete the Frostmane story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year",
+      "frostmane"
     ],
     "path": "Seasonal/NewYear/Story/03FrostmaneStory.cs",
-    "size": 550,
+    "size": 635,
     "fileName": "03FrostmaneStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/03FrostmaneStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete New Year Story",
+    "description": "This will complete the New Year story and farm the required items.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year"
     ],
     "path": "Seasonal/NewYear/Story/00DoAllNewYear.cs",
-    "size": 549,
+    "size": 658,
     "fileName": "00DoAllNewYear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/00DoAllNewYear.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Chrono Phoenix Story",
+    "description": "This will complete the Chrono Phoenix story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year",
+      "chrono-phoenix"
     ],
     "path": "Seasonal/NewYear/Story/05ChronoPhoenixStory.cs",
-    "size": 558,
+    "size": 658,
     "fileName": "05ChronoPhoenixStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/05ChronoPhoenixStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "New Year Story",
+    "description": "This will complete the New Year story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year"
     ],
     "path": "Seasonal/NewYear/Story/01NewYearStory.cs",
-    "size": 546,
+    "size": 618,
     "fileName": "01NewYearStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/01NewYearStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Sun Story",
+    "description": "This will complete the Dark Sun story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "new-year",
+      "dark-sun"
     ],
     "path": "Seasonal/NewYear/Story/02DarkSunStory.cs",
-    "size": 546,
+    "size": 628,
     "fileName": "02DarkSunStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/02DarkSunStory.cs"
   },
