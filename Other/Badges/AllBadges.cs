@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Get All Badges
+description: This will get all badges in the game.
+tags: badge, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
