@@ -6886,68 +6886,108 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fezzini Story",
+    "description": "This will complete the Fezzini story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "fezzini",
+      "hero",
+      "heart"
     ],
     "path": "Seasonal/HerosHeartDay/Fezzini.cs",
-    "size": 1848,
+    "size": 1936,
     "fileName": "Fezzini.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Fezzini.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Love Spell Story",
+    "description": "This will complete the Love Spell story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "hero",
+      "heart",
+      "love",
+      "spell",
+      "seasonal"
     ],
     "path": "Seasonal/HerosHeartDay/LoveSpellStory.cs",
-    "size": 1541,
+    "size": 1633,
     "fileName": "LoveSpellStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Love Spell Merge (Pinkest Dye Ever!!!)",
+    "description": "This will farm Pinkest Dye Ever!!! for the Love Spell Merge.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "seasonal",
+      "heros",
+      "heart",
+      "love",
+      "spell",
+      "pinkest",
+      "dye"
     ],
     "path": "Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs",
-    "size": 1329,
+    "size": 1483,
     "fileName": "LoveSpellMerge(PinkestDyeEver!!!).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Wheel of Love Story",
+    "description": "This will complete the Wheel of Love story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "wheel",
+      "love",
+      "seasonal",
+      "hero",
+      "heart"
     ],
     "path": "Seasonal/HerosHeartDay/WheelOfLove.cs",
-    "size": 2802,
+    "size": 2906,
     "fileName": "WheelOfLove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/WheelOfLove.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Loves Curse",
+    "description": "This will complete the Loves Curse story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "hero",
+      "heart",
+      "seasonal",
+      "loves",
+      "curse"
     ],
     "path": "Seasonal/HerosHeartDay/LovesCurse.cs",
-    "size": 1982,
+    "size": 2077,
     "fileName": "LovesCurse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LovesCurse.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Painted Butterfly (Arcadia Merge)",
+    "description": "This will complete the Painted Butterfly quest.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "quest",
+      "arcadia",
+      "seasonal",
+      "painted",
+      "butterfly",
+      "hero",
+      "heart"
     ],
     "path": "Seasonal/HerosHeartDay/ArcadiaMerge(PaintedButterfly).cs",
-    "size": 1119,
+    "size": 1257,
     "fileName": "ArcadiaMerge(PaintedButterfly).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/ArcadiaMerge(PaintedButterfly).cs"
   },
