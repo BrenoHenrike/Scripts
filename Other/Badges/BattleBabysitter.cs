@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Badge) Battle Babysitter
+description: This will get the Battle Babysitter badge.
+tags: badge, doomwood, battle, baby-sitter
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
