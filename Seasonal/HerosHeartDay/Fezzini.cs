@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fezzini Story
+description: This will complete the Fezzini story quest.
+tags: story, quest, seasonal, fezzini, hero, heart
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

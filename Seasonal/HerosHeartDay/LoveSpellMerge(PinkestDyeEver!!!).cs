@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Love Spell Merge (Pinkest Dye Ever!!!)
+description: This will farm Pinkest Dye Ever!!! for the Love Spell Merge.
+tags: farm, merge, shop, seasonal, heros, heart, love, spell, pinkest, dye
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
