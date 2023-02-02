@@ -17,7 +17,6 @@ public class YouMadBroBadge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Dragon Runestone", "Gold Voucher 100k" });
         Core.SetOptions();
 
         Badge();
