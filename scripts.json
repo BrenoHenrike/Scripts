@@ -3794,13 +3794,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/SkyPirateSlayerBadge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Badge) Celestial Champion",
+    "description": "This will get the Celestial Champion badge.",
     "tags": [
-      "null"
+      "badge",
+      "celestial",
+      "arena",
+      "champion"
     ],
     "path": "Other/Badges/CelestialChampion.cs",
-    "size": 991,
+    "size": 1081,
     "fileName": "CelestialChampion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/CelestialChampion.cs"
   },
