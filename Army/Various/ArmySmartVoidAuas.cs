@@ -1,6 +1,6 @@
 /*
-name:  Army Smart Void Auras
-description:  
+name: Army Smart Void Auras
+description: null
 tags: army, void aura, methods, smart
 */
 //cs_include Scripts/CoreBots.cs

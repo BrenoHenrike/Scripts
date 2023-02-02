@@ -152,7 +152,7 @@ public class UpdateTags
                 {
                     // If prop is already made, use it
                     if (!isCore && hasProperty(fileData, prop, out string _prop))
-                        newData.Add($"{prop}: {_prop.Replace("  ", " ")}");
+                        newData.Add($"{prop}: {_prop.Replace("  ", " ").Trim()}");
                     // If the user has exited, write null
                     else if (userExit || isCore)
                     {
@@ -217,9 +217,13 @@ public class UpdateTags
         bool hasProperty(List<string> file, string prop, out string propData)
         {
             var _file = file.TakeWhile(l => l != "*/");
-            if (_file.Any(l => l.StartsWith(prop.ToLower()) && l.Contains(':') && !l.TrimEnd().EndsWith("null")))
+            if (_file.Any(l => l.StartsWith(prop.ToLower()) &&
+                l.Contains(':') && !l.TrimEnd().EndsWith("null") &&
+                !String.IsNullOrWhiteSpace(l.Split(':').Last()) &&
+                !String.IsNullOrEmpty(l.Split(':').Last())
+                ))
             {
-                propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(':').Last();
+                propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(prop.ToLower() + ':').Last();
                 return true;
             }
             propData = String.Empty;
@@ -230,6 +234,7 @@ public class UpdateTags
     #region BlackLists
     private string[] Extensions =
     {
+        ".yaml",
         ".txt",
         ".csproj",
         ".md",
@@ -247,15 +252,19 @@ public class UpdateTags
     private string[] Directories =
     {
         ".git",
+        ".github",
         ".shacache",
+        ".vscode",
         "bin",
         "docs",
         "Generated",
         "obj",
         "plugins",
         "Skills",
+        "SkuaScriptsGenerator",
         "WIP",
-        "Army/UltraBosses"
+        "Army/UltraBosses",
+        "Army/Generated",
     };
     #endregion
 }

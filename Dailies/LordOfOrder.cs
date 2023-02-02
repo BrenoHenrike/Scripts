@@ -1,6 +1,6 @@
 /*
-name:  Lord Of Order Daily
-description:  Lord Of Order
+name: Lord Of Order Daily
+description: Lord Of Order
 tags: daily, lord of order, LOO
 */
 //cs_include Scripts/CoreBots.cs

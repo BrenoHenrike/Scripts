@@ -1,6 +1,6 @@
 /*
-name:  Army Dark Token
-description:  uses an army to farm dark tokens
+name: Army Dark Token
+description: uses an army to farm dark tokens
 tags: dark token, army, seraphicwardage
 */
 //cs_include Scripts/CoreBots.cs

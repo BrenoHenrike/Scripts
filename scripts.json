@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 129289,
+    "size": 130023,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -97,7 +97,7 @@
       "null"
     ],
     "path": "Farm/RankUpAllClasses.cs",
-    "size": 1986,
+    "size": 1991,
     "fileName": "RankUpAllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/RankUpAllClasses.cs"
   },
@@ -119,7 +119,7 @@
       "null"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5176,
+    "size": 5181,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
@@ -130,7 +130,7 @@
       "null"
     ],
     "path": "Farm/GoldFarm.cs",
-    "size": 753,
+    "size": 758,
     "fileName": "GoldFarm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
@@ -152,7 +152,7 @@
       "null"
     ],
     "path": "Farm/Leveling.cs",
-    "size": 758,
+    "size": 763,
     "fileName": "Leveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/Leveling.cs"
   },
@@ -163,7 +163,7 @@
       "null"
     ],
     "path": "Farm/CombatTrophy.cs",
-    "size": 685,
+    "size": 690,
     "fileName": "CombatTrophy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/CombatTrophy.cs"
   },
@@ -342,7 +342,7 @@
       "null"
     ],
     "path": "Other/Jir'abinChallenge.cs",
-    "size": 5082,
+    "size": 5087,
     "fileName": "Jir'abinChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
@@ -375,7 +375,7 @@
       "null"
     ],
     "path": "Other/FreeBoostsQuest(10mns).cs",
-    "size": 4144,
+    "size": 2647,
     "fileName": "FreeBoostsQuest(10mns).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
@@ -913,7 +913,7 @@
       "null"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6266,
+    "size": 6271,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -924,7 +924,7 @@
       "null"
     ],
     "path": "Evil/SepulchuresOriginalHelm.cs",
-    "size": 4554,
+    "size": 4559,
     "fileName": "SepulchuresOriginalHelm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SepulchuresOriginalHelm.cs"
   },
@@ -957,7 +957,7 @@
       "null"
     ],
     "path": "Evil/VordredsArmor.cs",
-    "size": 7220,
+    "size": 7225,
     "fileName": "VordredsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/VordredsArmor.cs"
   },
@@ -1012,7 +1012,7 @@
       "null"
     ],
     "path": "Nation/DragonSlayerReward.cs",
-    "size": 484,
+    "size": 489,
     "fileName": "DragonSlayerReward.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DragonSlayerReward.cs"
   },
@@ -1039,7 +1039,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2682,
+    "size": 2681,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -1098,7 +1098,7 @@
       "nulgath challenge pet"
     ],
     "path": "Nation/TenacityChallenge.cs",
-    "size": 1600,
+    "size": 1599,
     "fileName": "TenacityChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TenacityChallenge.cs"
   },
@@ -1732,7 +1732,7 @@
       "mobius"
     ],
     "path": "Story/Mobius.cs",
-    "size": 3620,
+    "size": 3619,
     "fileName": "Mobius.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Mobius.cs"
   },
@@ -2432,7 +2432,7 @@
       "dragonheart"
     ],
     "path": "Good/SilverExaltedPaladin.cs",
-    "size": 3134,
+    "size": 3132,
     "fileName": "SilverExaltedPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/SilverExaltedPaladin.cs"
   },
@@ -2514,7 +2514,7 @@
       "prerequisites"
     ],
     "path": "Darkon/DarkonDebris2ReconstructedPrerequisites.cs",
-    "size": 1796,
+    "size": 1794,
     "fileName": "DarkonDebris2ReconstructedPrerequisites.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/DarkonDebris2ReconstructedPrerequisites.cs"
   },
@@ -2547,7 +2547,7 @@
       "null"
     ],
     "path": "Prototypes/WeaponMastery(AC).cs",
-    "size": 2610,
+    "size": 2615,
     "fileName": "WeaponMastery(AC).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Prototypes/WeaponMastery(AC).cs"
   },
@@ -2580,7 +2580,7 @@
       "null"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 31103,
+    "size": 31108,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -2591,7 +2591,7 @@
       "null"
     ],
     "path": "Enhancement/InventoryEnhancer.cs",
-    "size": 1294,
+    "size": 1299,
     "fileName": "InventoryEnhancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/InventoryEnhancer.cs"
   },
@@ -2625,7 +2625,7 @@
       "shadow shroud"
     ],
     "path": "Dailies/ShadowShroud.cs",
-    "size": 516,
+    "size": 514,
     "fileName": "ShadowShroud.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/ShadowShroud.cs"
   },
@@ -2637,7 +2637,7 @@
       "crypto token"
     ],
     "path": "Dailies/CryptoToken.cs",
-    "size": 511,
+    "size": 509,
     "fileName": "CryptoToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/CryptoToken.cs"
   },
@@ -2650,19 +2650,19 @@
       "class"
     ],
     "path": "Dailies/Pyromancer.cs",
-    "size": 515,
+    "size": 513,
     "fileName": "Pyromancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/Pyromancer.cs"
   },
   {
     "name": "Beast Master Challenge Daily",
-    "description": "",
+    "description": "null",
     "tags": [
       "daily",
       "beast master challenge"
     ],
     "path": "Dailies/BeastMasterChallenge[Mem].cs",
-    "size": 537,
+    "size": 539,
     "fileName": "BeastMasterChallenge[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BeastMasterChallenge[Mem].cs"
   },
@@ -2676,7 +2676,7 @@
       "seasonal"
     ],
     "path": "Dailies/Cryomancer.cs",
-    "size": 757,
+    "size": 755,
     "fileName": "Cryomancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/Cryomancer.cs"
   },
@@ -2688,7 +2688,7 @@
       "power gem"
     ],
     "path": "Dailies/PowerGem.cs",
-    "size": 520,
+    "size": 518,
     "fileName": "PowerGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/PowerGem.cs"
   },
@@ -2702,7 +2702,7 @@
       "class"
     ],
     "path": "Dailies/DeathKnightLord[Mem].cs",
-    "size": 549,
+    "size": 547,
     "fileName": "DeathKnightLord[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/DeathKnightLord[Mem].cs"
   },
@@ -2715,7 +2715,7 @@
       "member"
     ],
     "path": "Dailies/MonthlyTreasureChestKeys[Mem].cs",
-    "size": 567,
+    "size": 565,
     "fileName": "MonthlyTreasureChestKeys[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MonthlyTreasureChestKeys[Mem].cs"
   },
@@ -2728,7 +2728,7 @@
       "pet"
     ],
     "path": "Dailies/MoglinPets.cs",
-    "size": 535,
+    "size": 533,
     "fileName": "MoglinPets.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MoglinPets.cs"
   },
@@ -2741,7 +2741,7 @@
       "LOO"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 11129,
+    "size": 11127,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -2753,7 +2753,7 @@
       "dages scroll fragment"
     ],
     "path": "Dailies/DagesScrollFragment.cs",
-    "size": 554,
+    "size": 552,
     "fileName": "DagesScrollFragment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/DagesScrollFragment.cs"
   },
@@ -2767,7 +2767,7 @@
       "roentgenium"
     ],
     "path": "Dailies/EldersBlood.cs",
-    "size": 533,
+    "size": 531,
     "fileName": "EldersBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/EldersBlood.cs"
   },
@@ -2780,7 +2780,7 @@
       "class"
     ],
     "path": "Dailies/TheCollector.cs",
-    "size": 533,
+    "size": 531,
     "fileName": "TheCollector.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/TheCollector.cs"
   },
@@ -2792,7 +2792,7 @@
       "wheel of doom"
     ],
     "path": "Dailies/WheelofDoom.cs",
-    "size": 514,
+    "size": 512,
     "fileName": "WheelofDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/WheelofDoom.cs"
   },
@@ -2808,7 +2808,7 @@
       "elders blood"
     ],
     "path": "Dailies/SparrowsBlood.cs",
-    "size": 564,
+    "size": 562,
     "fileName": "SparrowsBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/SparrowsBlood.cs"
   },
@@ -2821,7 +2821,7 @@
       "member"
     ],
     "path": "Dailies/FungiforaFunGuy[Mem].cs",
-    "size": 548,
+    "size": 546,
     "fileName": "FungiforaFunGuy[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/FungiforaFunGuy[Mem].cs"
   },
@@ -2834,7 +2834,7 @@
       "metal"
     ],
     "path": "Dailies/MineCrafting.cs",
-    "size": 1085,
+    "size": 1083,
     "fileName": "MineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MineCrafting.cs"
   },
@@ -2849,7 +2849,7 @@
       "free"
     ],
     "path": "Dailies/FreeDailyBoost[Mem].cs",
-    "size": 550,
+    "size": 548,
     "fileName": "FreeDailyBoost[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/FreeDailyBoost[Mem].cs"
   },
@@ -2861,7 +2861,7 @@
       "design notes"
     ],
     "path": "Dailies/ReadTheDesignNotes.cs",
-    "size": 535,
+    "size": 533,
     "fileName": "ReadTheDesignNotes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/ReadTheDesignNotes.cs"
   },
@@ -2873,20 +2873,20 @@
       "bright knight armor"
     ],
     "path": "Dailies/BrightKnightArmor.cs",
-    "size": 544,
+    "size": 542,
     "fileName": "BrightKnightArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BrightKnightArmor.cs"
   },
   {
     "name": "Necrotic Sword of Doom Daily",
-    "description": "",
+    "description": "null",
     "tags": [
       "daily",
       "nsod",
       "necrotic sword of doom"
     ],
     "path": "Dailies/NSoDDaily.cs",
-    "size": 526,
+    "size": 528,
     "fileName": "NSoDDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/NSoDDaily.cs"
   },
@@ -2898,7 +2898,7 @@
       "golden inquisitor"
     ],
     "path": "Dailies/GoldenInquisitorOfShadowfall.cs",
-    "size": 560,
+    "size": 558,
     "fileName": "GoldenInquisitorOfShadowfall.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/GoldenInquisitorOfShadowfall.cs"
   },
@@ -2911,7 +2911,7 @@
       "useless"
     ],
     "path": "Dailies/BallyhooAdRewards.cs",
-    "size": 601,
+    "size": 599,
     "fileName": "BallyhooAdRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BallyhooAdRewards.cs"
   },
@@ -2923,7 +2923,7 @@
       "grumble grumble"
     ],
     "path": "Dailies/GrumbleGrumble.cs",
-    "size": 526,
+    "size": 524,
     "fileName": "GrumbleGrumble.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/GrumbleGrumble.cs"
   },
@@ -2935,7 +2935,7 @@
       "shadow scythe class"
     ],
     "path": "Dailies/ShadowScytheGeneral.cs",
-    "size": 549,
+    "size": 547,
     "fileName": "ShadowScytheGeneral.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/ShadowScytheGeneral.cs"
   },
@@ -2947,7 +2947,7 @@
       "cyseros super hammer"
     ],
     "path": "Dailies/CyserosSuperHammer.cs",
-    "size": 549,
+    "size": 547,
     "fileName": "CyserosSuperHammer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/CyserosSuperHammer.cs"
   },
@@ -2959,7 +2959,7 @@
       "mad weapon smith"
     ],
     "path": "Dailies/MadWeaponSmith.cs",
-    "size": 529,
+    "size": 527,
     "fileName": "MadWeaponSmith.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MadWeaponSmith.cs"
   },
@@ -2972,7 +2972,7 @@
       "member"
     ],
     "path": "Dailies/HardCoreMetals[Mem].cs",
-    "size": 796,
+    "size": 794,
     "fileName": "HardCoreMetals[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/HardCoreMetals[Mem].cs"
   },
@@ -2986,7 +2986,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2514,
+    "size": 2512,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -2999,7 +2999,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 5994,
+    "size": 5992,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
@@ -3012,7 +3012,7 @@
       "set"
     ],
     "path": "Chaos/EternalDrakathSet.cs",
-    "size": 3187,
+    "size": 3185,
     "fileName": "EternalDrakathSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/EternalDrakathSet.cs"
   },
@@ -3025,7 +3025,7 @@
       "original drakath armor"
     ],
     "path": "Chaos/DrakathsArmor.cs",
-    "size": 2855,
+    "size": 2853,
     "fileName": "DrakathsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/DrakathsArmor.cs"
   },
@@ -3041,7 +3041,7 @@
       "ascended face of chaos"
     ],
     "path": "Chaos/AscendedDrakathGear.cs",
-    "size": 2059,
+    "size": 2057,
     "fileName": "AscendedDrakathGear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/AscendedDrakathGear.cs"
   },
@@ -3085,7 +3085,7 @@
       "null"
     ],
     "path": "Farm/REP/BeastMasterREP[Mem].cs",
-    "size": 436,
+    "size": 441,
     "fileName": "BeastMasterREP[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BeastMasterREP[Mem].cs"
   },
@@ -3184,7 +3184,7 @@
       "null"
     ],
     "path": "Farm/REP/BaconCatREP.cs",
-    "size": 675,
+    "size": 680,
     "fileName": "BaconCatREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BaconCatREP.cs"
   },
@@ -3327,7 +3327,7 @@
       "null"
     ],
     "path": "Farm/REP/AlchemyREP.cs",
-    "size": 1397,
+    "size": 1402,
     "fileName": "AlchemyREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/AlchemyREP.cs"
   },
@@ -3349,7 +3349,7 @@
       "null"
     ],
     "path": "Farm/REP/AegisREP.cs",
-    "size": 424,
+    "size": 429,
     "fileName": "AegisREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/AegisREP.cs"
   },
@@ -3371,7 +3371,7 @@
       "null"
     ],
     "path": "Farm/REP/ArcangroveREP.cs",
-    "size": 434,
+    "size": 439,
     "fileName": "ArcangroveREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ArcangroveREP.cs"
   },
@@ -3415,7 +3415,7 @@
       "null"
     ],
     "path": "Farm/REP/1GetAllRanks.cs",
-    "size": 1075,
+    "size": 1080,
     "fileName": "1GetAllRanks.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/1GetAllRanks.cs"
   },
@@ -3617,7 +3617,7 @@
       "data"
     ],
     "path": "Tools/ForDevelopers/UpdateTags.cs",
-    "size": 9780,
+    "size": 10080,
     "fileName": "UpdateTags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/UpdateTags.cs"
   },
@@ -4722,7 +4722,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ChronoMerge.cs",
-    "size": 7083,
+    "size": 7050,
     "fileName": "ChronoMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ChronoMerge.cs"
   },
@@ -4777,7 +4777,7 @@
       "null"
     ],
     "path": "Other/MergeShops/StreamwarMerge.cs",
-    "size": 8674,
+    "size": 8679,
     "fileName": "StreamwarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StreamwarMerge.cs"
   },
@@ -4832,7 +4832,7 @@
       "null"
     ],
     "path": "Other/MergeShops/CrystalBrightMerge.cs",
-    "size": 3750,
+    "size": 3755,
     "fileName": "CrystalBrightMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CrystalBrightMerge.cs"
   },
@@ -4843,7 +4843,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ShadowrealmMerge.cs",
-    "size": 10107,
+    "size": 10112,
     "fileName": "ShadowrealmMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowrealmMerge.cs"
   },
@@ -5030,7 +5030,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ByrodaxMerge.cs",
-    "size": 4399,
+    "size": 4404,
     "fileName": "ByrodaxMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ByrodaxMerge.cs"
   },
@@ -5063,7 +5063,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ShipWreckMerge[non-ac].cs",
-    "size": 6262,
+    "size": 6267,
     "fileName": "ShipWreckMerge[non-ac].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShipWreckMerge[non-ac].cs"
   },
@@ -5129,7 +5129,7 @@
       "null"
     ],
     "path": "Other/MergeShops/FlockMerge.cs",
-    "size": 3991,
+    "size": 3996,
     "fileName": "FlockMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FlockMerge.cs"
   },
@@ -5228,7 +5228,7 @@
       "null"
     ],
     "path": "Other/MergeShops/FireandIceMerge.cs",
-    "size": 6055,
+    "size": 6060,
     "fileName": "FireandIceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FireandIceMerge.cs"
   },
@@ -5272,7 +5272,7 @@
       "null"
     ],
     "path": "Other/MergeShops/DeerHuntMerge[non-ac].cs",
-    "size": 4956,
+    "size": 4961,
     "fileName": "DeerHuntMerge[non-ac].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeerHuntMerge[non-ac].cs"
   },
@@ -5294,7 +5294,7 @@
       "null"
     ],
     "path": "Other/MergeShops/TimekeepMerge.cs",
-    "size": 4396,
+    "size": 4401,
     "fileName": "TimekeepMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TimekeepMerge.cs"
   },
@@ -5305,7 +5305,7 @@
       "null"
     ],
     "path": "Other/MergeShops/SpoilsofLightMerge.cs",
-    "size": 7321,
+    "size": 7326,
     "fileName": "SpoilsofLightMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SpoilsofLightMerge.cs"
   },
@@ -5316,7 +5316,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ExtraCreditMerge[non-ac].cs",
-    "size": 6651,
+    "size": 6656,
     "fileName": "ExtraCreditMerge[non-ac].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ExtraCreditMerge[non-ac].cs"
   },
@@ -5349,7 +5349,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ExtinctionGamesMerge.cs",
-    "size": 6239,
+    "size": 6244,
     "fileName": "ExtinctionGamesMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ExtinctionGamesMerge.cs"
   },
@@ -5580,7 +5580,7 @@
       "null"
     ],
     "path": "Other/MergeShops/KagesMerge[mem-non-ac].cs",
-    "size": 4387,
+    "size": 4392,
     "fileName": "KagesMerge[mem-non-ac].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/KagesMerge[mem-non-ac].cs"
   },
@@ -5646,7 +5646,7 @@
       "null"
     ],
     "path": "Other/MergeShops/WorldsCoreMerge.cs",
-    "size": 7006,
+    "size": 7011,
     "fileName": "WorldsCoreMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WorldsCoreMerge.cs"
   },
@@ -5668,7 +5668,7 @@
       "null"
     ],
     "path": "Other/MergeShops/DeathPitArenaRepMerge.cs",
-    "size": 7621,
+    "size": 7626,
     "fileName": "DeathPitArenaRepMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeathPitArenaRepMerge.cs"
   },
@@ -5701,7 +5701,7 @@
       "null"
     ],
     "path": "Other/MergeShops/FiendPastMerge.cs",
-    "size": 5320,
+    "size": 5325,
     "fileName": "FiendPastMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FiendPastMerge.cs"
   },
@@ -6020,7 +6020,7 @@
       "null"
     ],
     "path": "Legion/Various/WorthyOfTheBlade.cs",
-    "size": 1743,
+    "size": 1748,
     "fileName": "WorthyOfTheBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/WorthyOfTheBlade.cs"
   },
@@ -7989,7 +7989,7 @@
       "null"
     ],
     "path": "Evil/SDKA/DoomKnightWeaponKit.cs",
-    "size": 640,
+    "size": 645,
     "fileName": "DoomKnightWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/DoomKnightWeaponKit.cs"
   },
@@ -8022,7 +8022,7 @@
       "null"
     ],
     "path": "Evil/NSoD/0NecroticSwordOfDoom.cs",
-    "size": 1415,
+    "size": 1420,
     "fileName": "0NecroticSwordOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/0NecroticSwordOfDoom.cs"
   },
@@ -10756,7 +10756,7 @@
       "escherion"
     ],
     "path": "Story/LordsofChaos/02Escherion(ChiralValley).cs",
-    "size": 817,
+    "size": 816,
     "fileName": "02Escherion(ChiralValley).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/02Escherion(ChiralValley).cs"
   },
@@ -11303,7 +11303,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31193,
+    "size": 31504,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -11331,7 +11331,7 @@
       "rewards"
     ],
     "path": "Army/Quests/ArmyUniqueQuarry.cs",
-    "size": 7218,
+    "size": 7216,
     "fileName": "ArmyUniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
   },
@@ -11389,7 +11389,7 @@
       "voucher item totem of nulgath"
     ],
     "path": "Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs",
-    "size": 4093,
+    "size": 4091,
     "fileName": "ArmyVoucherItemTotemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs"
   },
@@ -11401,7 +11401,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyBloodyChaos.cs",
-    "size": 4537,
+    "size": 4535,
     "fileName": "ArmyBloodyChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
@@ -11414,7 +11414,7 @@
       "nation round 4 medal"
     ],
     "path": "Army/ArmyNulgath/ArmyEmblemOfNulgath.cs",
-    "size": 2456,
+    "size": 2454,
     "fileName": "ArmyEmblemOfNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyEmblemOfNulgath.cs"
   },
@@ -11426,7 +11426,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyEmblemofDage.cs",
-    "size": 2094,
+    "size": 2092,
     "fileName": "ArmyEmblemofDage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyEmblemofDage.cs"
   },
@@ -11439,7 +11439,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyApprovalFavour.cs",
-    "size": 1944,
+    "size": 1942,
     "fileName": "ArmyApprovalFavour.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyApprovalFavour.cs"
   },
@@ -11453,7 +11453,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 2501,
+    "size": 2498,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -11485,25 +11485,25 @@
   },
   {
     "name": "Army Spirit Orbs",
-    "description": "",
+    "description": "null",
     "tags": [
       "army",
       "spirit orb"
     ],
     "path": "Army/Various/ArmySpiritOrb.cs",
-    "size": 1982,
+    "size": 1984,
     "fileName": "ArmySpiritOrb.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySpiritOrb.cs"
   },
   {
     "name": "Army Prismatic Seams",
-    "description": "",
+    "description": "null",
     "tags": [
       "army",
       "prismatic seams"
     ],
     "path": "Army/Various/ArmyPrismaticSeams.cs",
-    "size": 1634,
+    "size": 1636,
     "fileName": "ArmyPrismaticSeams.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPrismaticSeams.cs"
   },
@@ -11516,7 +11516,7 @@
       "boss items"
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 8119,
+    "size": 8117,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
@@ -11532,13 +11532,13 @@
       "third errand"
     ],
     "path": "Army/Various/ArmyDarkonErrands.cs",
-    "size": 3125,
+    "size": 3123,
     "fileName": "ArmyDarkonErrands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyDarkonErrands.cs"
   },
   {
     "name": "Army Mirror Realm Tokens",
-    "description": "",
+    "description": "null",
     "tags": [
       "army",
       "mirror realm token",
@@ -11546,13 +11546,13 @@
       "mirror realm"
     ],
     "path": "Army/Various/ArmyMirrorRealmToken.cs",
-    "size": 2078,
+    "size": 2080,
     "fileName": "ArmyMirrorRealmToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
   },
   {
     "name": "Army Smart Void Auras",
-    "description": "",
+    "description": "null",
     "tags": [
       "army",
       "void aura",
@@ -11560,13 +11560,13 @@
       "smart"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 9312,
+    "size": 9314,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
   {
     "name": "Army Light Caster",
-    "description": "",
+    "description": "null",
     "tags": [
       "army",
       "lightcaster",
@@ -11576,20 +11576,20 @@
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4785,
+    "size": 4787,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
   {
     "name": "Army Penny for Your Thoughts",
-    "description": "",
+    "description": "null",
     "tags": [
       "army",
       "penny for your thoughts",
       "dark spirit orb"
     ],
     "path": "Army/Various/ArmyPennyForYourThoughts.cs",
-    "size": 1751,
+    "size": 1753,
     "fileName": "ArmyPennyForYourThoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPennyForYourThoughts.cs"
   },
@@ -11630,7 +11630,7 @@
       "thefamily"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1550,
+    "size": 1548,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
@@ -11657,7 +11657,7 @@
       "army."
     ],
     "path": "Army/OneClient/ArmyFreeAcs.cs",
-    "size": 1100,
+    "size": 1097,
     "fileName": "ArmyFreeAcs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
@@ -12083,10 +12083,10 @@
     "name": "Sukies Prestige",
     "description": "Sukies Prestige",
     "tags": [
-      ""
+      "null"
     ],
     "path": "Darkon/Materials/SukisPrestige.cs",
-    "size": 715,
+    "size": 717,
     "fileName": "SukisPrestige.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/SukisPrestige.cs"
   },
@@ -12098,7 +12098,7 @@
       "las gratitude"
     ],
     "path": "Darkon/Materials/LasGratitude.cs",
-    "size": 728,
+    "size": 726,
     "fileName": "LasGratitude.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/LasGratitude.cs"
   },
@@ -12110,7 +12110,7 @@
       "teeth"
     ],
     "path": "Darkon/Materials/Teeth.cs",
-    "size": 690,
+    "size": 688,
     "fileName": "Teeth.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Teeth.cs"
   },
@@ -12122,7 +12122,7 @@
       "mouring flower"
     ],
     "path": "Darkon/Materials/MourningFlower.cs",
-    "size": 725,
+    "size": 723,
     "fileName": "MourningFlower.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/MourningFlower.cs"
   },
@@ -12135,7 +12135,7 @@
       "debris"
     ],
     "path": "Darkon/Materials/AMelody.cs",
-    "size": 861,
+    "size": 859,
     "fileName": "AMelody.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/AMelody.cs"
   },
@@ -12147,7 +12147,7 @@
       "darkon"
     ],
     "path": "Darkon/Materials/AstravianMedal.cs",
-    "size": 797,
+    "size": 795,
     "fileName": "AstravianMedal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/AstravianMedal.cs"
   },
@@ -12159,7 +12159,7 @@
       "darkons receipt"
     ],
     "path": "Darkon/Materials/DarkonsReceipts.cs",
-    "size": 736,
+    "size": 734,
     "fileName": "DarkonsReceipts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/DarkonsReceipts.cs"
   },
@@ -12171,7 +12171,7 @@
       "unfinished musical score"
     ],
     "path": "Darkon/Materials/UnfinishedMusicalScore.cs",
-    "size": 771,
+    "size": 769,
     "fileName": "UnfinishedMusicalScore.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/UnfinishedMusicalScore.cs"
   },
@@ -12183,7 +12183,7 @@
       "bandits correspondence"
     ],
     "path": "Darkon/Materials/BanditsCorrespondence.cs",
-    "size": 838,
+    "size": 836,
     "fileName": "BanditsCorrespondence.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/BanditsCorrespondence.cs"
   },
@@ -12196,7 +12196,7 @@
       "debris"
     ],
     "path": "Darkon/Materials/AncientRemnant.cs",
-    "size": 786,
+    "size": 784,
     "fileName": "AncientRemnant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/AncientRemnant.cs"
   },
@@ -12207,7 +12207,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/AstraviaPastMerge.cs",
-    "size": 4873,
+    "size": 4878,
     "fileName": "AstraviaPastMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstraviaPastMerge.cs"
   },
@@ -12218,7 +12218,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/EridaniPastMerge.cs",
-    "size": 4626,
+    "size": 4631,
     "fileName": "EridaniPastMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/EridaniPastMerge.cs"
   },
@@ -12229,7 +12229,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/TheWorldHouseMerge.cs",
-    "size": 4618,
+    "size": 4623,
     "fileName": "TheWorldHouseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/TheWorldHouseMerge.cs"
   },
@@ -12240,7 +12240,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/EridaniMerge.cs",
-    "size": 3911,
+    "size": 3916,
     "fileName": "EridaniMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/EridaniMerge.cs"
   },
@@ -12251,7 +12251,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/GenesisGardenMerge.cs",
-    "size": 3994,
+    "size": 3999,
     "fileName": "GenesisGardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GenesisGardenMerge.cs"
   },
@@ -12262,7 +12262,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/GardenMerge.cs",
-    "size": 11067,
+    "size": 11072,
     "fileName": "GardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GardenMerge.cs"
   },
@@ -12275,7 +12275,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/AstraviaMerge.cs",
-    "size": 4261,
+    "size": 4259,
     "fileName": "AstraviaMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstraviaMerge.cs"
   },
@@ -12288,7 +12288,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/AstraviaCastleMerge.cs",
-    "size": 5512,
+    "size": 5510,
     "fileName": "AstraviaCastleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstraviaCastleMerge.cs"
   },
@@ -12301,7 +12301,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/AstraviaJudgementMerge.cs",
-    "size": 3913,
+    "size": 3911,
     "fileName": "AstraviaJudgementMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstraviaJudgementMerge.cs"
   },
@@ -12312,7 +12312,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/TheWorldMerge.cs",
-    "size": 3044,
+    "size": 3049,
     "fileName": "TheWorldMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/TheWorldMerge.cs"
   },
@@ -12323,7 +12323,7 @@
       "null"
     ],
     "path": "Darkon/MergeShops/FirstObservatoryMerge.cs",
-    "size": 3527,
+    "size": 3532,
     "fileName": "FirstObservatoryMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/FirstObservatoryMerge.cs"
   },
@@ -13265,7 +13265,7 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/MergeShops/ChromaCandyMerge.cs",
-    "size": 4548,
+    "size": 4553,
     "fileName": "ChromaCandyMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/ChromaCandyMerge.cs"
   },
@@ -13276,7 +13276,7 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/MergeShops/TricktownMerge.cs",
-    "size": 8245,
+    "size": 8250,
     "fileName": "TricktownMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/TricktownMerge.cs"
   },
@@ -13442,7 +13442,7 @@
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1437,
+    "size": 1442,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },
@@ -13453,7 +13453,7 @@
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs",
-    "size": 848,
+    "size": 853,
     "fileName": "GatheringUnstableEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs"
   },
@@ -13464,7 +13464,7 @@
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1239,
+    "size": 1244,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
@@ -13475,7 +13475,7 @@
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1196,
+    "size": 1201,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
@@ -14473,7 +14473,7 @@
       "legion tokens"
     ],
     "path": "Army/Classes/ArmyLR/ArmyTimeforspringCleaningLT.cs",
-    "size": 2089,
+    "size": 2087,
     "fileName": "ArmyTimeforspringCleaningLT.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyTimeforspringCleaningLT.cs"
   },
@@ -14501,7 +14501,7 @@
       "legion arena"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLegionToken.cs",
-    "size": 13212,
+    "size": 13210,
     "fileName": "ArmyLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLegionToken.cs"
   },
@@ -14514,7 +14514,7 @@
       "seraphicwardage"
     ],
     "path": "Army/Classes/ArmyLR/ArmyDarkToken.cs",
-    "size": 1987,
+    "size": 1985,
     "fileName": "ArmyDarkToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDarkToken.cs"
   },
@@ -14527,7 +14527,7 @@
       "errand"
     ],
     "path": "Darkon/Materials/Errands/ThirdErrand.cs",
-    "size": 740,
+    "size": 738,
     "fileName": "ThirdErrand.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Errands/ThirdErrand.cs"
   },
@@ -14540,7 +14540,7 @@
       "first"
     ],
     "path": "Darkon/Materials/Errands/FirstErrands.cs",
-    "size": 740,
+    "size": 738,
     "fileName": "FirstErrands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Errands/FirstErrands.cs"
   },
@@ -14553,7 +14553,7 @@
       "second"
     ],
     "path": "Darkon/Materials/Errands/SecondErrand.cs",
-    "size": 745,
+    "size": 743,
     "fileName": "SecondErrand.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Errands/SecondErrand.cs"
   },

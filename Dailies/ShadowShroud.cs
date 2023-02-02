@@ -1,6 +1,6 @@
 /*
-name:  Shadow Shroud Daily
-description:  Shadow Shroud
+name: Shadow Shroud Daily
+description: Shadow Shroud
 tags: daily, shadow shroud
 */
 //cs_include Scripts/CoreBots.cs

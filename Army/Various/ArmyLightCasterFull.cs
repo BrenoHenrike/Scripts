@@ -1,6 +1,6 @@
 /*
-name:  Army Light Caster
-description:  
+name: Army Light Caster
+description: null
 tags: army, lightcaster, lightmage, class, 0file, doall
 */
 //cs_include Scripts/CoreBots.cs

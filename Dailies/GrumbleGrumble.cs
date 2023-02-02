@@ -1,6 +1,6 @@
 /*
-name:  Grumble Grumble Daily
-description:  Grumble Grumble
+name: Grumble Grumble Daily
+description: Grumble Grumble
 tags: daily, grumble grumble
 */
 //cs_include Scripts/CoreBots.cs

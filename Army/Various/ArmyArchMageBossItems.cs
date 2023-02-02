@@ -1,6 +1,6 @@
 /*
-name:  Army ArchMage Boss Items
-description:  uses an army to help farm the required boss items for archmage.
+name: Army ArchMage Boss Items
+description: uses an army to help farm the required boss items for archmage.
 tags: archmage, army, boss items
 */
 //cs_include Scripts/CoreBots.cs

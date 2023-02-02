@@ -1,7 +1,7 @@
 /*
 name: Nation Loyalty Rewarded
 description: Does the Nation Loyalty Rewarded Quest to max the quest rewards.
-tags: Nation Loyalty Rewarded, Nulgath, Nation, dark crystal shard, diamond of nulgath, diamond badge of nulgath 
+tags: nation loyalty rewarded, nulgath, nation, dark crystal shard, diamond of nulgath, diamond badge of nulgath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

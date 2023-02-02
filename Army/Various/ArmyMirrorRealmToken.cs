@@ -1,6 +1,6 @@
 /*
-name:  Army Mirror Realm Tokens
-description:  
+name: Army Mirror Realm Tokens
+description: null
 tags: army, mirror realm token, token, mirror realm
 */
 //cs_include Scripts/CoreBots.cs

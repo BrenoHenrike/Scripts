@@ -1,6 +1,6 @@
 /*
-name:  Collector Class Daily
-description:  Collector Class
+name: Collector Class Daily
+description: Collector Class
 tags: daily, collector class, class
 */
 //cs_include Scripts/CoreBots.cs
