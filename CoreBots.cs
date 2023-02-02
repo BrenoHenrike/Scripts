@@ -2336,64 +2336,64 @@ public class CoreBots
 
             #region Simple Quest Bypasses
             case "maloth":
-                SimpleQuestBypass(6005);
+                SimpleQuestBypass(((246, 23)));
                 break;
 
             case "lycan":
-                SimpleQuestBypass(598);
+                SimpleQuestBypass(((26, 23)));
                 break;
 
             case "mummies":
-                SimpleQuestBypass(4616);
+                SimpleQuestBypass((97, 16));
                 break;
 
             case "doomvault":
-                SimpleQuestBypass(3008);
+                SimpleQuestBypass((126, 18));
                 break;
 
             case "ultradrakath":
-                SimpleQuestBypass(3879);
+                SimpleQuestBypass((182, 5));
                 break;
 
             case "backroom":
-                SimpleQuestBypass(8059);
+                SimpleQuestBypass((402, 12));
                 break;
 
             case "venomvaults":
-                SimpleQuestBypass(2804);
+                SimpleQuestBypass((117, 7));
                 break;
 
             case "chaoscave":
             case "lycanwar":
-                SimpleQuestBypass(567);
+                SimpleQuestBypass((26, 22));
                 break;
 
             case "timespace":
-                SimpleQuestBypass(2518);
+                SimpleQuestBypass((100, 14));
                 break;
 
             case "transformation":
-                SimpleQuestBypass(8094);
+                SimpleQuestBypass((405, 12));
                 break;
 
             case "ebilcorphq":
-                SimpleQuestBypass(8406);
+                SimpleQuestBypass((431, 9));
                 break;
 
             case "necrodungeon":
-                SimpleQuestBypass(2061);
+                SimpleQuestBypass((77, 18));
                 break;
 
             case "oddities":
-                SimpleQuestBypass(8667);
+                SimpleQuestBypass((456, 13));
                 break;
 
             case "stormtemple":
-                SimpleQuestBypass(2814);
+                SimpleQuestBypass((117, 17));
                 break;
 
             case "championdrakath":
-                SimpleQuestBypass(3881);
+                SimpleQuestBypass((182, 7));
                 break;
 
             case "towerofdoom1":
@@ -2406,7 +2406,7 @@ public class CoreBots
             case "towerofdoom8":
             case "towerofdoom9":
             case "towerofdoom10":
-                SimpleQuestBypass(3484);
+                SimpleQuestBypass((159, 10));
                 break;
             #endregion
 
@@ -2414,20 +2414,20 @@ public class CoreBots
             case "celestialarenab":
             case "celestialarenac":
             case "celestialarenad":
-                PrivateSimpleQuestBypass(6032);
+                PrivateSimpleQuestBypass((249, 20));
                 break;
 
             case "titandrakath":
-                PrivateSimpleQuestBypass(8776);
+                PrivateSimpleQuestBypass((470, 18));
                 break;
 
             case "confrontation":
             case "shadowattack":
-                PrivateSimpleQuestBypass(3799);
+                PrivateSimpleQuestBypass((175, 20));
                 break;
 
             case "finalshowdown":
-                PrivateSimpleQuestBypass(3880);
+                PrivateSimpleQuestBypass((182, 6));
                 break;
             #endregion
 
@@ -2439,7 +2439,7 @@ public class CoreBots
 
             case "doomvaultb":
                 SetAchievement(18);
-                SimpleQuestBypass(3004, 3008);
+                SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
                 break;
 
             case "prison":
@@ -2586,19 +2586,17 @@ public class CoreBots
                 }
             }
         }
-
-        void SimpleQuestBypass(params int[] questIDs)
+        void SimpleQuestBypass(params (int, int)[] slotValues)
         {
-            JumpWait();
-            foreach (int id in questIDs)
-                Bot.Quests.UpdateQuest(id);
+            foreach ((int, int) sV in slotValues)
+                Bot.Quests.UpdateQuest(sV.Item2, sV.Item1);
             tryJoin();
         }
 
-        void PrivateSimpleQuestBypass(params int[] questIDs)
+        void PrivateSimpleQuestBypass(params (int, int)[] slotValues)
         {
             map = strippedMap + "-999999";
-            SimpleQuestBypass(questIDs);
+            SimpleQuestBypass(slotValues);
         }
     }
 
