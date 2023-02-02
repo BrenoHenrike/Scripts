@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Pooka Story
+description: This will complete the Pooka story quest.
+tags: story, quest, pooka, seasonal, lucky
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

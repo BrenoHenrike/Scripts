@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Faerie Court REP
+description: This will farm Faerie Court REP.
+tags: reputation, faerie, court, seasonal, lucky
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
