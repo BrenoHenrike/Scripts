@@ -7607,13 +7607,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/GardenQuestMerge(VegetableToken).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Water Drop) Water War Merge",
+    "description": "This will complete the Water War story and farm Water Drops.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "war",
+      "water-drop",
+      "merge",
+      "seasonal",
+      "solar-new-year"
     ],
     "path": "Seasonal/SolarNewYear/WaterWarMerge(VariousMaterials).cs",
-    "size": 1559,
+    "size": 1697,
     "fileName": "WaterWarMerge(VariousMaterials).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWarMerge(VariousMaterials).cs"
   },
