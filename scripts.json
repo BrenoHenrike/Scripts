@@ -6288,46 +6288,70 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/AlphaHunterAndRogue.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Pooka Story",
+    "description": "This will complete the Pooka story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "pooka",
+      "seasonal",
+      "lucky"
     ],
     "path": "Seasonal/LuckyDay/Pooka.cs",
-    "size": 1033,
+    "size": 1109,
     "fileName": "Pooka.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/Pooka.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Pooka's Gifts Merge",
+    "description": "This will merge Pooka's Gifts.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "pooka",
+      "seasonal",
+      "lucky",
+      "shop",
+      "gift"
     ],
     "path": "Seasonal/LuckyDay/Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs",
-    "size": 1798,
+    "size": 1882,
     "fileName": "Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/Pooka'sGiftsMerge(GoldenClover,GoldenOakLeaf,EnchantedGold).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Evolved Leprechaun Merge",
+    "description": "This will merge Rainbow Shard and Golden Ticket.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "seasonal",
+      "lucky",
+      "evolved",
+      "leprechaun",
+      "rainbow",
+      "shard",
+      "golden",
+      "ticket"
     ],
     "path": "Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs",
-    "size": 1853,
+    "size": 2000,
     "fileName": "EvolvedLeprechaunMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Faerie Court REP",
+    "description": "This will farm Faerie Court REP.",
     "tags": [
-      "null"
+      "reputation",
+      "faerie",
+      "court",
+      "seasonal",
+      "lucky"
     ],
     "path": "Seasonal/LuckyDay/FaerieCourtREP.cs",
-    "size": 419,
+    "size": 497,
     "fileName": "FaerieCourtREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/FaerieCourtREP.cs"
   },
