@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (VHL) Challenge Quest
+description: This will farm all the requirements for Roentgenium of Nulgath Token.
+tags: farm, quest, nation, VHL, void, highlord, roentgenium, void-crystal-a, void-crystal-b, challenge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
