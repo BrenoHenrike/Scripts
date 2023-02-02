@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Year Ball
+description: This will farm the Year Ball items.
+tags: farm, seasonal, new-year, year-ball, merge
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

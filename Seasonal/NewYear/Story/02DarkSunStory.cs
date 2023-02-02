@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark Sun Story
+description: This will complete the Dark Sun story.
+tags: story, quest, seasonal, new-year, dark-sun
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

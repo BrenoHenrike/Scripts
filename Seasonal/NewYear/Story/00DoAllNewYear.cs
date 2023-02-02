@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete New Year Story
+description: This will complete the New Year story and farm the required items.
+tags: story, quest, seasonal, new-year
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Frostmane Story
+description: This will complete the Frostmane story.
+tags: story, quest, seasonal, new-year, frostmane
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
