@@ -17,6 +17,7 @@ public class YouMadBroBadge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Dragon Runestone", "Gold Voucher 100k" });
         Core.SetOptions();
 
         Badge();
@@ -33,20 +34,25 @@ public class YouMadBroBadge
         }
 
         Farm.AlchemyREP();
-
+        Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
             Core.AddDrop("Dragon Scale", "Ice Vapor");
             Core.FarmingLogger("Dragon Scale", 30);
             Core.FarmingLogger("Ice Vapor", 30);
-            while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory(11478, 30))
-                Core.KillMonster("lair", "Enter", "Spawn", "*", log: false);
-            Adv.BuyItem("alchemy", 395, "Dragon Runestone", 100, 8844);
+            while (!Core.CheckInventory(11475, 30))
+                Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+            Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, isTemp: false, log: false);
+
+            if (!Bot.Shops.IsLoaded)
+                Bot.Shops.Load(395);
+                
+            Adv.BuyItem("alchemyacademy", 395, 62749, 100, 1, 8777);
+            Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
         }
-        Core.SellItem("Dragon Scale", all: true);
-        Core.SellItem("Ice Vapor", all: true);
-        Core.ToBank("Dragon Runestone");
+        Core.TrashCan("Dragon Scale", "Ice Vapor");
+        Core.ToBank("Dragon Runestone", "Gold Voucher 100k");
     }
     // private string[] PotionsToSell = {"Life Potion", "Basic Crusader Elixir", "Basic Barrier Potion", "Basic Crusader Elixir", "Divine Elixir", "Barrier Potion", "Basic Barrier Potion", "Basic Divine Elixir", "Crusader Elixir"};
     private string badge = "You mad bro?";
