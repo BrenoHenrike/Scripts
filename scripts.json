@@ -3679,13 +3679,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/ShadowVaultChampion.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Get All Badges",
+    "description": "This will get all badges in the game.",
     "tags": [
-      "null"
+      "badge",
+      "complete",
+      "all"
     ],
     "path": "Other/Badges/AllBadges.cs",
-    "size": 4769,
+    "size": 4828,
     "fileName": "AllBadges.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/AllBadges.cs"
   },
