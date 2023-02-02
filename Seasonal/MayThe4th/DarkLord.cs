@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Class) Dark Lord
+description: This will merge Cyber Crystals and get the Dark Lord class.
+tags: merge, seasonal, may-the-4th, dark, lord, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
