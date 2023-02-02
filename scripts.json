@@ -3893,13 +3893,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/HordeZombieSLAYER.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Badge) BattleCon VIP",
+    "description": "This will get the BattleCon VIP badge.",
     "tags": [
-      "null"
+      "badge",
+      "underground",
+      "lab",
+      "battle",
+      "con",
+      "vip"
     ],
     "path": "Other/Badges/BattleConVIP.cs",
-    "size": 833,
+    "size": 921,
     "fileName": "BattleConVIP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/BattleConVIP.cs"
   },
