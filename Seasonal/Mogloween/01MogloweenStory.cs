@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mogloween Story
+description: This will complete the Mogloween story quest.
+tags: story, quest, mogloween, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: NecroCarnival Story
+description: This will complete the NecroCarnival story quest.
+tags: story, quest, mogloween, seasonal, necro, carnival
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

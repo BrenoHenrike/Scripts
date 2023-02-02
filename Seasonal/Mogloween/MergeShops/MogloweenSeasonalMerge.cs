@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mogloween Seasonal Merge
+description: This will merge all the Mogloween seasonal scripts into one.
+tags: story, quest, mogloween, seasonal, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

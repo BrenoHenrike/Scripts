@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark Witchy and Cursted Jester
+description: This will complete the Dark Witchy and Cursted Jester story.
+tags: story, quest, seasonal, mogloween, dark, witchy, cursed, jester
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

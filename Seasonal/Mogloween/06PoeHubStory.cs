@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Poe Hub Story
+description: This will complete the Poe Hub story quest.
+tags: story, quest, mogloween, seasonal, poe-hub
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

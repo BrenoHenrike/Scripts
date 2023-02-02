@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Pie Story
+description: This will complete the Pie story quest.
+tags: story, quest, mogloween, seasonal, pie
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

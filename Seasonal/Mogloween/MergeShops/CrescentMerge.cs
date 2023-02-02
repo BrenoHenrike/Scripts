@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Crescent Merge
+description: This will buy all the merge items from the Crescent Merge Shop.
+tags: merge, shop, crescent, seasonal, mogloween
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
