@@ -124,14 +124,14 @@ public class AllBadges
         SC.Badge();
         TF.Badge();
         DMF.Badge();
-        YMBB.Badge();
-        VHL.Badge();
         SA.Badge();
         JS.Badge();
         ToC.Badge();
         UC.Badge();
         G.Badge();
         FV.Badges();
+        YMBB.Badge();
+        VHL.Badge();
         //add more as they are made.
     }
 }
