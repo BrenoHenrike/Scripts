@@ -6596,46 +6596,70 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/GundaharsStashMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Zorbas Palace Merge",
+    "description": "This will merge Furry Egg and Woopee.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "shop",
+      "seasonal",
+      "may-the-4th",
+      "zorbas",
+      "palace",
+      "furry",
+      "egg",
+      "woopee"
     ],
     "path": "Seasonal/MayThe4th/ZorbasPalaceMerge[FurryEgg+Woopee].cs",
-    "size": 853,
+    "size": 973,
     "fileName": "ZorbasPalaceMerge[FurryEgg+Woopee].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/ZorbasPalaceMerge[FurryEgg+Woopee].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Murder Moon Story",
+    "description": "This will complete the Murder Moon story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "murder",
+      "moon",
+      "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonStory.cs",
-    "size": 985,
+    "size": 1080,
     "fileName": "MurderMoonStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Murder Moon Merge",
+    "description": "This will farm the cybercrystals for merge items.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "seasonal",
+      "shop",
+      "dark",
+      "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs",
-    "size": 1320,
+    "size": 1420,
     "fileName": "MurderMoonMerge[CyberCrystal].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Class) Dark Lord",
+    "description": "This will merge Cyber Crystals and get the Dark Lord class.",
     "tags": [
-      "null"
+      "merge",
+      "seasonal",
+      "may-the-4th",
+      "dark",
+      "lord",
+      "class"
     ],
     "path": "Seasonal/MayThe4th/DarkLord.cs",
-    "size": 2012,
+    "size": 2123,
     "fileName": "DarkLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/DarkLord.cs"
   },
