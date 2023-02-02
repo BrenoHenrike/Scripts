@@ -7340,167 +7340,237 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheGREENEggs!(Helms).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Witchy and Cursted Jester",
+    "description": "This will complete the Dark Witchy and Cursted Jester story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "seasonal",
+      "mogloween",
+      "dark",
+      "witchy",
+      "cursed",
+      "jester"
     ],
     "path": "Seasonal/Mogloween/Dark&WitchySetAndCursedJesterSet.cs",
-    "size": 2111,
+    "size": 2252,
     "fileName": "Dark&WitchySetAndCursedJesterSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/Dark&WitchySetAndCursedJesterSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Complete All Mogloween Story",
+    "description": "This will complete all Mogloween story quests.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "complete",
+      "all"
     ],
     "path": "Seasonal/Mogloween/00DoAllMogloweenStory.cs",
-    "size": 579,
+    "size": 689,
     "fileName": "00DoAllMogloweenStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/00DoAllMogloweenStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Candy Corn Story",
+    "description": "This will complete the Candy Corn story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "candy",
+      "corn"
     ],
     "path": "Seasonal/Mogloween/03CandyCornStory.cs",
-    "size": 578,
+    "size": 674,
     "fileName": "03CandyCornStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/03CandyCornStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mystcroft Forest Story",
+    "description": "This will complete the Mystcroft Forest story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "mystcroft",
+      "forest"
     ],
     "path": "Seasonal/Mogloween/07MystcroftForestStory.cs",
-    "size": 590,
+    "size": 704,
     "fileName": "07MystcroftForestStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/07MystcroftForestStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Masquerade Story",
+    "description": "This will complete the Masquerade story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "masquerade"
     ],
     "path": "Seasonal/Mogloween/10MasqueradeStory.cs",
-    "size": 580,
+    "size": 675,
     "fileName": "10MasqueradeStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/10MasqueradeStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Pie Story",
+    "description": "This will complete the Pie story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "pie"
     ],
     "path": "Seasonal/Mogloween/04PieStory.cs",
-    "size": 566,
+    "size": 640,
     "fileName": "04PieStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/04PieStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Asylum Story",
+    "description": "This will complete the Asylum story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "asylum"
     ],
     "path": "Seasonal/Mogloween/05AsylumStory[NotSeasonal].cs",
-    "size": 581,
+    "size": 664,
     "fileName": "05AsylumStory[NotSeasonal].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/05AsylumStory[NotSeasonal].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Poe Hub Story",
+    "description": "This will complete the Poe Hub story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "poe-hub"
     ],
     "path": "Seasonal/Mogloween/06PoeHubStory.cs",
-    "size": 572,
+    "size": 658,
     "fileName": "06PoeHubStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/06PoeHubStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "That Story",
+    "description": "This will complete the That story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "that"
     ],
     "path": "Seasonal/Mogloween/11ThatStory.cs",
-    "size": 568,
+    "size": 645,
     "fileName": "11ThatStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/11ThatStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Trick Town Story",
+    "description": "This will complete the Trick Town story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "trick",
+      "town"
     ],
     "path": "Seasonal/Mogloween/13TrickTownStory.cs",
-    "size": 578,
+    "size": 674,
     "fileName": "13TrickTownStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/13TrickTownStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Candy Shop Story",
+    "description": "This will complete the Candy Shop story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "candy",
+      "shop"
     ],
     "path": "Seasonal/Mogloween/02CandyShopStory.cs",
-    "size": 578,
+    "size": 674,
     "fileName": "02CandyShopStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/02CandyShopStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Chromafection Story",
+    "description": "This will complete the Chromafection story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "chromafection"
     ],
     "path": "Seasonal/Mogloween/08ChromafectionStory.cs",
-    "size": 586,
+    "size": 690,
     "fileName": "08ChromafectionStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/08ChromafectionStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Class) Vampire Lord",
+    "description": "This will farm the Blood Moon Token for the Vampire Lord class.",
     "tags": [
-      "null"
+      "class",
+      "mogloween",
+      "seasonal",
+      "vampire",
+      "vampire lord"
     ],
     "path": "Seasonal/Mogloween/VampireLord(Class).cs",
-    "size": 1924,
+    "size": 2045,
     "fileName": "VampireLord(Class).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/VampireLord(Class).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "NecroCarnival Story",
+    "description": "This will complete the NecroCarnival story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "necro",
+      "carnival"
     ],
     "path": "Seasonal/Mogloween/12NecroCarnivalStory.cs",
-    "size": 586,
+    "size": 692,
     "fileName": "12NecroCarnivalStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/12NecroCarnivalStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Twigs Arcade Story",
+    "description": "This will complete the Twigs Arcade story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "twigs",
+      "arcade"
     ],
     "path": "Seasonal/Mogloween/09TwigsArcadeStory.cs",
-    "size": 582,
+    "size": 684,
     "fileName": "09TwigsArcadeStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/09TwigsArcadeStory.cs"
   },
@@ -7516,13 +7586,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/CoreMogloween.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mogloween Story",
+    "description": "This will complete the Mogloween story quest.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal"
     ],
     "path": "Seasonal/Mogloween/01MogloweenStory.cs",
-    "size": 578,
+    "size": 659,
     "fileName": "01MogloweenStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/01MogloweenStory.cs"
   },
@@ -13309,79 +13382,105 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/MergeShops/FabyosSpookyMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Crescent Merge",
+    "description": "This will buy all the merge items from the Crescent Merge Shop.",
     "tags": [
-      "null"
+      "merge",
+      "shop",
+      "crescent",
+      "seasonal",
+      "mogloween"
     ],
     "path": "Seasonal/Mogloween/MergeShops/CrescentMerge.cs",
-    "size": 4329,
+    "size": 4436,
     "fileName": "CrescentMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/CrescentMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mogloween Seasonal Merge",
+    "description": "This will merge all the Mogloween seasonal scripts into one.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "merge"
     ],
     "path": "Seasonal/Mogloween/MergeShops/MogloweenSeasonalMerge.cs",
-    "size": 14892,
+    "size": 15004,
     "fileName": "MogloweenSeasonalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/MogloweenSeasonalMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Candied Costumes Merge",
+    "description": "This will buy all the Candied Costumes and merge them.",
     "tags": [
-      "null"
+      "merge",
+      "mogloween",
+      "seasonal",
+      "candied",
+      "costumes"
     ],
     "path": "Seasonal/Mogloween/MergeShops/CandiedCostumesMerge.cs",
-    "size": 11635,
+    "size": 11744,
     "fileName": "CandiedCostumesMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/CandiedCostumesMerge.cs"
   },
   {
-    "name": "null",
+    "name": "Mog-GLOW-ween Merge",
     "description": "null",
     "tags": [
-      "null"
+      "merge",
+      "mogloween",
+      "seasonal"
     ],
     "path": "Seasonal/Mogloween/MergeShops/Mog-GLOW-weenMerge.cs",
-    "size": 4221,
+    "size": 4258,
     "fileName": "Mog-GLOW-weenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/Mog-GLOW-weenMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Vampire Lord Merge",
+    "description": "This will buy all the ingredients for the Vampire Lord merge and merge them.",
     "tags": [
-      "null"
+      "merge",
+      "mogloween",
+      "seasonal",
+      "vampire",
+      "lord"
     ],
     "path": "Seasonal/Mogloween/MergeShops/VampireLordMerge.cs",
-    "size": 4119,
+    "size": 4242,
     "fileName": "VampireLordMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/VampireLordMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Chroma Candy Merge",
+    "description": "This will buy all the chroma candy and merge them.",
     "tags": [
-      "null"
+      "merge",
+      "mogloween",
+      "seasonal",
+      "candy",
+      "chroma"
     ],
     "path": "Seasonal/Mogloween/MergeShops/ChromaCandyMerge.cs",
-    "size": 4553,
+    "size": 4650,
     "fileName": "ChromaCandyMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/ChromaCandyMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Tricktown Merge",
+    "description": "This will buy all the Tricktown merge items and merge them.",
     "tags": [
-      "null"
+      "merge",
+      "mogloween",
+      "seasonal",
+      "trick",
+      "town"
     ],
     "path": "Seasonal/Mogloween/MergeShops/TricktownMerge.cs",
-    "size": 8250,
+    "size": 8351,
     "fileName": "TricktownMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/TricktownMerge.cs"
   },
