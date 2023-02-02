@@ -9091,24 +9091,40 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendishLoreMasterMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(Class) Void Highlord",
+    "description": "This will farm all requirements for the Void Highlord class to obtain.",
     "tags": [
-      "null"
+      "farm",
+      "class",
+      "nation",
+      "VHL",
+      "void",
+      "highlord",
+      "roentgenium",
+      "void-crystal-a",
+      "void-crystal-b"
     ],
     "path": "Nation/VHL/0VoidHighlord.cs",
-    "size": 985,
+    "size": 1149,
     "fileName": "0VoidHighlord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/0VoidHighlord.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(VHL) Void Crystals",
+    "description": "This will farm only the void crystals of Void Highlord class.",
     "tags": [
-      "null"
+      "farm",
+      "merge",
+      "nation",
+      "VHL",
+      "void",
+      "highlord",
+      "roentgenium",
+      "void-crystal-a",
+      "void-crystal-b"
     ],
     "path": "Nation/VHL/VoidCrystals.cs",
-    "size": 990,
+    "size": 1143,
     "fileName": "VoidCrystals.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/VoidCrystals.cs"
   },
@@ -9124,13 +9140,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "(VHL) Challenge Quest",
+    "description": "This will farm all the requirements for Roentgenium of Nulgath Token.",
     "tags": [
-      "null"
+      "farm",
+      "quest",
+      "nation",
+      "VHL",
+      "void",
+      "highlord",
+      "roentgenium",
+      "void-crystal-a",
+      "void-crystal-b",
+      "challenge"
     ],
     "path": "Nation/VHL/VoidHighlordsChallenge.cs",
-    "size": 1003,
+    "size": 1177,
     "fileName": "VoidHighlordsChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/VoidHighlordsChallenge.cs"
   },
