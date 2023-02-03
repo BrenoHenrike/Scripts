@@ -39,9 +39,8 @@ public class YouMadBroBadge
             Core.AddDrop("Dragon Scale", "Ice Vapor");
             Core.FarmingLogger("Dragon Scale", 30);
             Core.FarmingLogger("Ice Vapor", 30);
-            while (!Core.CheckInventory(11475, 30))
-                Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
-            Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 30, isTemp: false, log: false);
+            while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 30))
+                Core.KillMonster("lair", "Enter", "Spawn", "*", isTemp: false, log: false);
 
             Adv.BuyItem("alchemyacademy", 395, 62749, 100, 1, 8777);
             Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
