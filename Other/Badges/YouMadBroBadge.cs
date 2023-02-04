@@ -44,6 +44,9 @@ public class YouMadBroBadge
 
             Adv.BuyItem("alchemyacademy", 395, 62749, 100, 1, 8777);
             Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
+
+            Core.Join("alchemy"); //maybe you have to be here to get the badge?
+
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
         }
         Core.TrashCan("Dragon Scale", "Ice Vapor");
