@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Grim Dark Set
+description: farms the "Grim Dark" set from Quest: "Doom Regin Doom’s Reward".
+tags: doom regin doom’s reward, grim dark, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Warfury Emblem
+description: Farms "Warfury Emblem" From Quest: "Warfury Training".
+tags: warfury training, warfury emblem
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

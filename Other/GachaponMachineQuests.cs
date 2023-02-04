@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gachapon Machine
+description: does either "I heard you like Gacha" or "Kotapon II: Get'cha Gear" for a bunch of items
+tags: i heard you like gacha, kotapon ii: get'cha gear, gacha, gachaponmachine
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

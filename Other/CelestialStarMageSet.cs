@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: celestial starmage set
+description: farms the starmage set from "Star Light, Star Bright"
+tags: starmage, set, star light, star bright
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mind Breaking It In
+description: Farms "All Drops" From Quest: "Mind Breaking It In".
+tags: mind breaking it in, mindbreaker, drops
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -51,7 +51,7 @@ public class MindBreakingItIn
                 //Mind-Breaking It In 7672
                 Core.EnsureAccept(7672);
                 Core.EquipClass(ClassType.Farm);
-                Core.HuntMonster("Somnia", "Deorysa|Devourax|Subrysa", "Dream Devourers Vanquished", 50, false);
+                Core.HuntMonster("Somnia", "Deorysa", "Dream Devourers Vanquished", 50, false);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("Somnia", "NightWyrm", "Nightwyrm Vanquished");
                 Core.EnsureCompleteChoose(7672, new[] { Rewards[i] });

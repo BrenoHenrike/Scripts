@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: corrupt draconic paragon
+description: farms the corrupt draconic paragon set from Quest: "Defeat the Underfiend".
+tags: corrupt draconic paragon, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

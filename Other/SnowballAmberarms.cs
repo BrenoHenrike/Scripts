@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Snowball Amberarms Drops
+description: Farms "All Drops" From Quest: "Snowball Thinks You're the Best".
+tags: snowball thinks you're the best, drops
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

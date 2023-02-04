@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark Ranger Armor
+description: farms the "Dark Ranger" set from Quest: "Dark Ranger Corps".
+tags: dark ranger, armor, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

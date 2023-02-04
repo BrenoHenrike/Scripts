@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Sunken Treasure 
+description: Farms "All Drops" From Quest: "Sunken Treasure?".
+tags: sunken treasure, drops
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

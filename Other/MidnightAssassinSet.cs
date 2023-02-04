@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Midnight Assassin Set
+description: farms the "Midnight Assassin" set from Quest: "Vampire Medals, Mega Vampire Medals".
+tags: vampire medals, mega vampire medals, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

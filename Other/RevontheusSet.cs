@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Revontheus Set
+description: farms the "Revontheus" set from Mob: "Undead Legend".
+tags: revontheus, undead legend, set
 */
 //cs_include Scripts/CoreBots.cs
 

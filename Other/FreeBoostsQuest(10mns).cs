@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Free Boosts [10mns]
+description: Farms Free Boosts from "Reagents for Zifwin" (cp/gold/rep)
+tags: reagents for zifwin, free, boost, class points, reputation, gold
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

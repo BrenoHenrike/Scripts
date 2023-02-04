@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Eternal Dragon Drops
+description: Farms "all drops" From Mob: "Eternal Dragon".
+tags: eternal dragon, drops
 */
 //cs_include Scripts/CoreBots.cs
 

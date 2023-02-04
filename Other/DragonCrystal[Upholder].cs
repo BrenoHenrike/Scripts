@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dragon Crystal [Upholder]
+description: Farms "Dragon Crystals" From Quest: "Gather Energy Beans".
+tags: dragon crystal, upholder
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

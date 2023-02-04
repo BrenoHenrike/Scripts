@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: DragonLord Grand Master
+description: farms the "DragonLord Grand Master" set from Quest: "The Flame Dragon".
+tags: dragonlord grand master, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

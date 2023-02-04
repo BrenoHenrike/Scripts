@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Sanctified Arbiter Set
+description: Farms "All Drops" From Quest: "One Holy Discovery".
+tags: sanctified arbiter, drops, one holy discovery
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

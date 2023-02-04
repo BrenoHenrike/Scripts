@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Vampiric Knight And Blood Guardian
+description: Gets the Vampiric Knight And Blood Guardian Armors
+tags: vampiric knight, blood guardian, armor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
