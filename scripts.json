@@ -8134,6 +8134,39 @@
     "tags": [
       "null"
     ],
+    "path": "Seasonal/AkibaNewYear/EtokounMerge.cs",
+    "size": 7321,
+    "fileName": "EtokounMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/EtokounMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/AkibaNewYear/YokaiHunt.cs",
+    "size": 2576,
+    "fileName": "YokaiHunt.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiHunt.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/AkibaNewYear/YuesDesignMerge.cs",
+    "size": 5905,
+    "fileName": "YuesDesignMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YuesDesignMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
     "path": "Evil/SDKA/UnlockHardCoreMetals[Vayle-Quests].cs",
     "size": 620,
     "fileName": "UnlockHardCoreMetals[Vayle-Quests].cs",
