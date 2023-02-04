@@ -247,24 +247,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mind Breaking It In",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "mind breaking it in",
+      "mindbreaker",
+      "drops"
     ],
     "path": "Other/MindBreakingItIn.cs",
-    "size": 1863,
+    "size": 1944,
     "fileName": "MindBreakingItIn.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MindBreakingItIn.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dark Ranger Armor",
+    "description": "farms the \"Dark Ranger\" set from Quest",
     "tags": [
-      "null"
+      "dark ranger",
+      "armor",
+      "set"
     ],
     "path": "Other/DarkRangerArmor.cs",
-    "size": 1336,
+    "size": 1424,
     "fileName": "DarkRangerArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DarkRangerArmor.cs"
   },
@@ -281,134 +285,158 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mysterious Egg",
+    "description": "if you own the manticore cub pet, this will farm the Mysterious Egg",
     "tags": [
-      "null"
+      "mysterious egg",
+      "manticore cub pet",
+      "egg"
     ],
     "path": "Other/MysteriousEgg.cs",
-    "size": 1913,
+    "size": 2020,
     "fileName": "MysteriousEgg.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MysteriousEgg.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Warfury Emblem",
+    "description": "Farms \"Warfury Emblem\" From Quest",
     "tags": [
-      "null"
+      "warfury training",
+      "warfury emblem"
     ],
     "path": "Other/WarFuryEmblem.cs",
-    "size": 1288,
+    "size": 1376,
     "fileName": "WarFuryEmblem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WarFuryEmblem.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lore Master University",
+    "description": "does the Lore Master University Quests for House Items",
     "tags": [
-      "null"
+      "lore master university",
+      "house"
     ],
     "path": "Other/LoreMasterUniversityHouse.cs",
-    "size": 2505,
+    "size": 2598,
     "fileName": "LoreMasterUniversityHouse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LoreMasterUniversityHouse.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Wheel Of Doom Spam",
+    "description": "wastes (with a warning) your extra ACs on wheel of doom spins",
     "tags": [
-      "null"
+      "wheel of doom",
+      "spin",
+      "waste acs"
     ],
     "path": "Other/WheelOfDoomSpam.cs",
-    "size": 4110,
+    "size": 4207,
     "fileName": "WheelOfDoomSpam.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WheelOfDoomSpam.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Eternal Dragon Drops",
+    "description": "Farms \"all drops\" From Mob",
     "tags": [
-      "null"
+      "eternal dragon",
+      "drops"
     ],
     "path": "Other/EternalDragonDrops.cs",
-    "size": 2044,
+    "size": 2118,
     "fileName": "EternalDragonDrops.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/EternalDragonDrops.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Jirabin Challenge Quests",
+    "description": "Does the Jirabin Challenge Quests",
     "tags": [
-      "null"
+      "jirabin challenge",
+      "runedwoods",
+      "dethertombs",
+      "xiex",
+      "voidbattle",
+      "jir'abin"
     ],
     "path": "Other/Jir'abinChallenge.cs",
-    "size": 5087,
+    "size": 5202,
     "fileName": "Jir'abinChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadowflame War Medal",
+    "description": "farms \"Item\" from uest",
     "tags": [
-      "null"
+      "shadowflame war medal",
+      "shadow medal",
+      "mega shadow medal"
     ],
     "path": "Other/ShadowflameWarMedal.cs",
-    "size": 1424,
+    "size": 1547,
     "fileName": "ShadowflameWarMedal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ShadowflameWarMedal.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "coin collector set",
+    "description": "Farms the coin collector set from hollowhalls",
     "tags": [
-      "null"
+      "coin collector",
+      "set"
     ],
     "path": "Other/CoinCollectorSet[Member].cs",
-    "size": 1504,
+    "size": 1574,
     "fileName": "CoinCollectorSet[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/CoinCollectorSet[Member].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Free Boosts [10mns]",
+    "description": "Farms Free Boosts from \"Reagents for Zifwin\" (cp/gold/rep)",
     "tags": [
-      "null"
+      "reagents for zifwin",
+      "free",
+      "boost",
+      "class points",
+      "reputation",
+      "gold"
     ],
     "path": "Other/FreeBoostsQuest(10mns).cs",
-    "size": 2647,
+    "size": 2776,
     "fileName": "FreeBoostsQuest(10mns).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadow Dragon Defender",
+    "description": "if \"Manticore Cub Pet\" is owned, it will buy \"Shadow Dragon Defender\"",
     "tags": [
-      "null"
+      "shadow dragon defender",
+      "manticore cub pet",
+      "armor"
     ],
     "path": "Other/ShadowDragonDefender.cs",
-    "size": 929,
+    "size": 1056,
     "fileName": "ShadowDragonDefender.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ShadowDragonDefender.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Dragon Crystal [Upholder]",
+    "description": "Farms \"Dragon Crystals\" From Quest",
     "tags": [
-      "null"
+      "dragon crystal",
+      "upholder"
     ],
     "path": "Other/DragonCrystal[Upholder].cs",
-    "size": 1039,
+    "size": 1134,
     "fileName": "DragonCrystal[Upholder].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonCrystal[Upholder].cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Snowball Amberarms Drops",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "snowball thinks you're the best",
+      "drops"
     ],
     "path": "Other/SnowballAmberarms.cs",
-    "size": 1177,
+    "size": 1291,
     "fileName": "SnowballAmberarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SnowballAmberarms.cs"
   },
@@ -430,233 +458,267 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/2022AcGift.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Weapon Reflection",
+    "description": "Farms \"Weapon Reflection\" From Quest",
     "tags": [
-      "null"
+      "weapon reflection",
+      "dual wield forge",
+      "golden 8th birthday candle"
     ],
     "path": "Other/WeaponReflection.cs",
-    "size": 1609,
+    "size": 1734,
     "fileName": "WeaponReflection.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WeaponReflection.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Gachapon Machine",
+    "description": "does either \"I heard you like Gacha\" or \"Kotapon II",
     "tags": [
-      "null"
+      "i heard you like gacha",
+      "kotapon ii"
     ],
     "path": "Other/GachaponMachineQuests.cs",
-    "size": 3742,
+    "size": 3905,
     "fileName": "GachaponMachineQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GachaponMachineQuests.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Grim Dark Set",
+    "description": "farms the \"Grim Dark\" set from Quest",
     "tags": [
-      "null"
+      "doom regin doom’s reward",
+      "grim dark",
+      "set"
     ],
     "path": "Other/GrimDarkSet.cs",
-    "size": 1577,
+    "size": 1687,
     "fileName": "GrimDarkSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Elementa Dragon Slayer set",
+    "description": "farms the \"Elemental Dragon Slayer\" set from Quest",
     "tags": [
-      "null"
+      "elemental dragon slayer",
+      "set"
     ],
     "path": "Other/ElementalDragonSlayer.cs",
-    "size": 2185,
+    "size": 2298,
     "fileName": "ElementalDragonSlayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ElementalDragonSlayer.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Master of Your Craft",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "master of your craft",
+      "drops"
     ],
     "path": "Other/MasterofYourCraft.cs",
-    "size": 1486,
+    "size": 1574,
     "fileName": "MasterofYourCraft.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MasterofYourCraft.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mad Weapon Crafting",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "mad weapon crafting",
+      "drops"
     ],
     "path": "Other/MadWeaponCrafting.cs",
-    "size": 1861,
+    "size": 1946,
     "fileName": "MadWeaponCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MadWeaponCrafting.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sunken Treasure",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "sunken treasure",
+      "drops"
     ],
     "path": "Other/SunkenTreasure.cs",
-    "size": 1602,
+    "size": 1677,
     "fileName": "SunkenTreasure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SunkenTreasure.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Lycan Shaman Set",
+    "description": "farms the \"Lycan Shaman\" set from Quest",
     "tags": [
-      "null"
+      "blood rage",
+      "lycan shaman",
+      "set"
     ],
     "path": "Other/LycanShamanSet.cs",
-    "size": 1829,
+    "size": 1916,
     "fileName": "LycanShamanSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LycanShamanSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Fire Avatar Favor",
+    "description": "Farms \"Fire Avatar's Favor\" From Mob",
     "tags": [
-      "null"
+      "fire avatar's favor",
+      "fire avatar",
+      "drops"
     ],
     "path": "Other/FireAvatarFavorFarm.cs",
-    "size": 1035,
+    "size": 1130,
     "fileName": "FireAvatarFavorFarm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FireAvatarFavorFarm.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Revontheus Set",
+    "description": "farms the \"Revontheus\" set from Mob",
     "tags": [
-      "null"
+      "revontheus",
+      "undead legend",
+      "set"
     ],
     "path": "Other/RevontheusSet.cs",
-    "size": 1283,
+    "size": 1368,
     "fileName": "RevontheusSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/RevontheusSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Mithril PvP Amulet",
+    "description": "Farms \"Mithril PvP Amulet\" From Mob",
     "tags": [
-      "null"
+      "mitril pvp amulet",
+      "diamoind pvp amulet",
+      "pvp",
+      "amulet"
     ],
     "path": "Other/MithrilPVPAmulet.cs",
-    "size": 817,
+    "size": 920,
     "fileName": "MithrilPVPAmulet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MithrilPVPAmulet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "corrupt draconic paragon",
+    "description": "farms the corrupt draconic paragon set from Quest",
     "tags": [
-      "null"
+      "corrupt draconic paragon",
+      "set"
     ],
     "path": "Other/CorruptDraconicParagon.cs",
-    "size": 1515,
+    "size": 1631,
     "fileName": "CorruptDraconicParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/CorruptDraconicParagon.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "DragonLord Grand Master",
+    "description": "farms the \"DragonLord Grand Master\" set from Quest",
     "tags": [
-      "null"
+      "dragonlord grand master",
+      "set"
     ],
     "path": "Other/DragonLordGrandMasterSet.cs",
-    "size": 1673,
+    "size": 1783,
     "fileName": "DragonLordGrandMasterSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonLordGrandMasterSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Sanctified Arbiter Set",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "sanctified arbiter",
+      "drops",
+      "one holy discovery"
     ],
     "path": "Other/SanctifiedArbiter.cs",
-    "size": 1450,
+    "size": 1556,
     "fileName": "SanctifiedArbiter.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SanctifiedArbiter.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shadowed War Mage Set",
+    "description": "Farms \"All Drops\" From Mob",
     "tags": [
-      "null"
+      "shadowknight gar",
+      "set"
     ],
     "path": "Other/ShadowedWarMageSet.cs",
-    "size": 1871,
+    "size": 1948,
     "fileName": "ShadowedWarMageSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ShadowedWarMageSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Midnight Assassin Set",
+    "description": "farms the \"Midnight Assassin\" set from Quest",
     "tags": [
-      "null"
+      "vampire medals",
+      "mega vampire medals",
+      "set"
     ],
     "path": "Other/MidnightAssassinSet.cs",
-    "size": 1986,
+    "size": 2119,
     "fileName": "MidnightAssassinSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MidnightAssassinSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Diabolical Warden Set",
+    "description": "farms the \"Diabolical Warden\" set from Quest",
     "tags": [
-      "null"
+      "diabolical warden",
+      "set"
     ],
     "path": "Other/DiabolicalWardenSet.cs",
-    "size": 1474,
+    "size": 1575,
     "fileName": "DiabolicalWardenSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DiabolicalWardenSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Vampireof Vokun Daily",
+    "description": "Does the Vampireof Vokun Daily (not 100% drop)",
     "tags": [
-      "null"
+      "vampireof vokun",
+      "daily"
     ],
     "path": "Other/VampireofVokun.cs",
-    "size": 1472,
+    "size": 1549,
     "fileName": "VampireofVokun.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/VampireofVokun.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Second First Mate",
+    "description": "Farms \"All Drops\" From Quest",
     "tags": [
-      "null"
+      "a second first mate",
+      "set",
+      "pirate"
     ],
     "path": "Other/SecondFirstMate.cs",
-    "size": 1319,
+    "size": 1408,
     "fileName": "SecondFirstMate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SecondFirstMate.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "celestial starmage set",
+    "description": "farms the starmage set from \"Star Light, Star Bright\"",
     "tags": [
-      "null"
+      "starmage",
+      "set",
+      "star light",
+      "star bright"
     ],
     "path": "Other/CelestialStarMageSet.cs",
-    "size": 1296,
+    "size": 1397,
     "fileName": "CelestialStarMageSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/CelestialStarMageSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Vampiric Knight And Blood Guardian",
+    "description": "Gets the Vampiric Knight And Blood Guardian Armors",
     "tags": [
-      "null"
+      "vampiric knight",
+      "blood guardian",
+      "armor"
     ],
     "path": "Other/VampiricKnightAndBloodGuardian.cs",
-    "size": 1961,
+    "size": 2071,
     "fileName": "VampiricKnightAndBloodGuardian.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/VampiricKnightAndBloodGuardian.cs"
   },
