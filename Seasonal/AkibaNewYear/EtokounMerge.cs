@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Etokoun Merge
+description: Farms all of the items from Etokoun Merge.
+tags: etokoun-merge,etokoun,seasonal,akiba-new-year,merge-shop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

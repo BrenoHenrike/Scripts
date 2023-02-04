@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Yue's Design Merge
+description: Farms all of the items from Yue's Design Merge.
+tags: yue-s-design-merge,seasonal,merge-shop,akiba-new-year
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
