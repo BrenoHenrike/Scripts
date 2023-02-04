@@ -42,8 +42,8 @@ public class PinkBladeOfDestruciton
         while (!Bot.ShouldExit && !Core.CheckInventory("Fuchsia Dye", 50))
         {
             Core.EnsureAccept(1487);
-            Core.HuntMonster("natatorium", "Anglerfish", "Pink Coral", 3);
-            Core.HuntMonster("bloodtuskwar", "Chaotic Vulture", "Amaranth Flower", 5);
+            Core.HuntMonster("natatorium", "Anglerfish", "Pink Coral", 3, log: false);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Vulture", "Amaranth Flower", 5, log: false);
             Core.EnsureComplete(1487);
         }
 
@@ -54,15 +54,15 @@ public class PinkBladeOfDestruciton
         {
             Core.EnsureAccept(7616);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7);
+            Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7, log: false);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("techdungeon", "DoomBorg Guard", "Paladin Armor Scraps", 30);
+            Core.HuntMonster("techdungeon", "DoomBorg Guard", "Paladin Armor Scraps", 30, log: false);
             Core.EnsureComplete(7616);
         }
 
-        Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", 5, false);
+        Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", 5, false, false);
 
-        Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5, false);
+        Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 5, false, false);
 
         Core.EnsureComplete(7650, 55884);
         Bot.Wait.ForPickup("Pink Blade of Destruction");

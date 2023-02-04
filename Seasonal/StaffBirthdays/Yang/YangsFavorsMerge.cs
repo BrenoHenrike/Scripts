@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Yang's Favors Merge
+description: This will complete the Yang's Favors story and farm Yang's Favors Medals.
+tags: story, quest, yang, favor, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

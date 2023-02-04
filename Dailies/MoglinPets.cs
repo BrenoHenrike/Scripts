@@ -1,6 +1,6 @@
 /*
-name:  Moglin Pets Daily
-description:  Moglin Pets
+name: Moglin Pets Daily
+description: Moglin Pets
 tags: daily, moglin pets, pet
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark Carnax Story
+description: This will finish the Dark Carnax story.
+tags: story, quest, dark-carnax
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

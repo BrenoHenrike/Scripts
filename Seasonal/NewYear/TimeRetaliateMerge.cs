@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Time Retaliate Merge
+description: This will complete the Time Retaliate story and farm Time Retaliate.
+tags: story, quest, time, retaliate, merge, seasonal, new-year
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

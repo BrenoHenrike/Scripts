@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Time Ritual Story
+description: This will complete the Time Ritual story.
+tags: story, quest, seasonal, new-year, time-ritual
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

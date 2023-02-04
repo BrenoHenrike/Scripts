@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Vampire Lord Merge
+description: This will buy all the ingredients for the Vampire Lord merge and merge them.
+tags: merge, mogloween, seasonal, vampire, lord
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

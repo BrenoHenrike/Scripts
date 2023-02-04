@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Djinn Gate Story
+description: This will finish the Djinn Gate story.
+tags: story, quest, djinn-gate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Timekeep
+description: This will finish the Timekeep quest.
+tags: story, quest, shadow-war, timekeep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

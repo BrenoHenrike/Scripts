@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dream Palace Story
+description: This will finish the Dream Palace Story.
+tags: story, quest, dream-palace
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

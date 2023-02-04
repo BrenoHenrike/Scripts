@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Vaden) Castle of Bones Story
+description: This will finish the Castle of Bones story.
+tags: castle, bones, farm, story, vaden, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

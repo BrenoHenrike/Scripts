@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Eden Story
+description: This will finish the Eden Story.
+tags: story, quest, eden
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

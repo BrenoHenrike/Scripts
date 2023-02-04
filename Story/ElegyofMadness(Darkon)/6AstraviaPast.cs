@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Astravia Past
+description: This will finish the Astravia Past quest.
+tags: story, quest, elegy-of-madness, darkon, astravia, past
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

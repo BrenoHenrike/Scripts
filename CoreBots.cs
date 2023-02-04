@@ -57,6 +57,7 @@ public class CoreBots
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
     public bool BankMiscAC { get; set; } = false;
+    public bool BankUnenhancedACGear { get; set; } = false;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
@@ -202,26 +203,9 @@ public class CoreBots
             Bot.Bank.Load();
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
-            {
-                List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
-                List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
-                List<string> MiscForBank = new();
-
-                bool boostsEnabled = Bot.Boosts.Enabled || (CBO_Active() && (
-                                    (CBOBool("doGoldBoost", out bool _doGoldBoost) && _doGoldBoost) ||
-                                    (CBOBool("doClassBoost", out bool _doClassBoost) && _doClassBoost) ||
-                                    (CBOBool("doRepBoost", out bool _doRepBoost) && _doRepBoost) ||
-                                    (CBOBool("doExpBoost", out bool _doExpBoost) && _doExpBoost)));
-
-                foreach (var item in Bot.Inventory.Items)
-                {
-                    if (boostsEnabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
-                        continue;
-                    if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
-                        MiscForBank.Add(item.Name);
-                }
-                ToBank(MiscForBank.ToArray());
-            }
+                BankACMisc();
+            if (BankUnenhancedACGear)
+                BankACUnenhancedGear();
 
             foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
                 EquipmentBeforeBot.Add(item.Name);
@@ -661,6 +645,7 @@ public class CoreBots
     {
         if (CheckInventory(itemName, quant))
             return;
+        _CheckInventorySpace();
 
         ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
         _BuyItem(map, shopID, item, quant);
@@ -679,6 +664,7 @@ public class CoreBots
     {
         if (CheckInventory(itemID, quant))
             return;
+        _CheckInventorySpace();
 
         ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
         _BuyItem(map, shopID, item, quant);
@@ -720,14 +706,14 @@ public class CoreBots
             // This only occurs when you buy sth with stack limits, but want less then the stack limit.
             int sell_quant = buy_quant - quant;
             SellItem(item.Name, quant);
-            Logger($"Bought {buy_quant} {item.Name}, sold {sell_quant}, now at {quant} {item.Name}");
+            Logger($"Bought {buy_quant} {item.Name}, sold {sell_quant}, now at {quant} {item.Name}", "BuyItem");
         }
         else if (CheckInventory(item.Name, quant))
         {
-            Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}");
+            Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}", "BuyItem");
         }
         else
-            Logger($"Failed at buying {buy_quant}/{quant} {item.Name}");
+            Logger($"Failed at buying {buy_quant}/{quant} {item.Name}", "BuyItem");
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -759,8 +745,20 @@ public class CoreBots
                     return i!;
                 }
             }
-            Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}" + reinstallCleanFlash);
+            Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}" + reinstallCleanFlash, "BuyItem");
             return null!;
+        }
+    }
+
+    private void _CheckInventorySpace()
+    {
+        if (Bot.Inventory.FreeSlots <= 0)
+        {
+            int prefCount = Bot.Inventory.UsedSlots;
+            Logger($"Your inventory is very full [{prefCount}/{Bot.Inventory.Slots}], the bot will now clean it a bit before continueing.", "BuyItem");
+            BankACMisc();
+            if (Bot.Inventory.FreeSlots <= 0)
+                Logger($"Banked {(prefCount - Bot.Inventory.UsedSlots)} items but it still wasn't enough. Please clean the rest of your inventory manually. Stopping the bot.", "BuyItem", true, true);
         }
     }
 
@@ -768,7 +766,7 @@ public class CoreBots
     {
         if (requestedQuant > item.MaxStack)
         {
-            Logger($"Attempting to buy more than {item.MaxStack} of {item.Name}. The developer needs to fix the calling script.");
+            Logger($"Attempting to buy more than {item.MaxStack} of {item.Name}. The developer needs to fix the calling script.", "BuyItem");
             Bot.Stop();
         }
 
@@ -1342,7 +1340,7 @@ public class CoreBots
 
     public List<Quest> EnsureLoad(params int[] questIDs)
     {
-        List<Quest> quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest>? quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (quests.Count == questIDs.Length)
             return quests;
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
@@ -1353,7 +1351,7 @@ public class CoreBots
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
             Bot.Sleep(1500);
         }
-        var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
             Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, messageBox: true, stopBot: true);
@@ -1364,9 +1362,12 @@ public class CoreBots
 
     public void AbandonQuest(params int[] questIDs)
     {
+        if (questIDs == null || questIDs.Length == 0)
+            return;
+
         foreach (var q in EnsureLoad(questIDs))
         {
-            if (!q.Active)
+            if (q == null || !q.Active)
                 continue;
             Bot.Flash.CallGameFunction("world.abandonQuest", q.ID);
             Bot.Wait.ForTrue(() => !EnsureLoad(q.ID).Active, 20);
@@ -1933,7 +1934,13 @@ public class CoreBots
     /// </summary>
     public void Relogin()
     {
-        Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer ?? Bot.Servers.GetServers(true).Result.First(s => s.Name != "Class Test Realm").Name);
+        if (Bot.Options.ReloginServer == null || !Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer))
+        {
+            var servers = Bot.Servers.GetServers(true).Result;
+            if (servers.Count() == 0)
+                Logger("Failed to relogin: could not fetch server details" + (Bot.Options.ReloginServer == null ? '.' : " or the find the server you've set in Options > Game."), messageBox: true, stopBot: true);
+            Bot.Servers.EnsureRelogin(servers.First(s => s.Name != "Class Test Realm").Name);
+        }
     }
 
     /// <summary>
@@ -1978,7 +1985,7 @@ public class CoreBots
                     }
                     if (FarmGearOn)
                     {
-                        Bot.Sleep(ActionDelay);
+                        Bot.Sleep((int)(ActionDelay * 1.5));
                         Equip(FarmGear);
                     }
 
@@ -1999,7 +2006,7 @@ public class CoreBots
                     }
                     if (SoloGearOn)
                     {
-                        Bot.Sleep(ActionDelay);
+                        Bot.Sleep((int)(ActionDelay * 1.5));
                         Equip(SoloGear);
                     }
                     Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == SoloClass.Trim().ToLower() && x.CategoryString == "Class").ID);
@@ -2080,6 +2087,7 @@ public class CoreBots
         }
 
         Bot.Wait.ForItemEquip(item.ID);
+        Bot.Sleep((int)(ActionDelay * 1.5));
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
@@ -2142,6 +2150,42 @@ public class CoreBots
         for (int i = from; i < to + 1; i++)
             toReturn.Add(i);
         return toReturn.ToArray();
+    }
+
+    public void BankACMisc()
+    {
+        List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
+        List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
+        List<string> MiscForBank = new();
+
+        bool boostsEnabled = Bot.Boosts.Enabled || (CBO_Active() && (
+                            (CBOBool("doGoldBoost", out bool _doGoldBoost) && _doGoldBoost) ||
+                            (CBOBool("doClassBoost", out bool _doClassBoost) && _doClassBoost) ||
+                            (CBOBool("doRepBoost", out bool _doRepBoost) && _doRepBoost) ||
+                            (CBOBool("doExpBoost", out bool _doExpBoost) && _doExpBoost)));
+
+        foreach (var item in Bot.Inventory.Items)
+        {
+            if (boostsEnabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
+                continue;
+            if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
+                MiscForBank.Add(item.Name);
+        }
+        ToBank(MiscForBank.ToArray());
+    }
+
+    public void BankACUnenhancedGear()
+    {
+        List<string> Whitelisted = new() { "Class", "Helm", "Cape" };
+        ToBank(Bot.Inventory.Items.Where(i =>
+            (Whitelisted.Contains(i.CategoryString) ||
+            i.ItemGroup == "Weapon") &&
+            i.Coins &&
+            i.EnhancementLevel == 0 &&
+            !i.Equipped &&
+            !SoloGear.Contains(i.Name) &&
+            !FarmGear.Contains(i.Name)
+        ).Select(i => i.Name).ToArray());
     }
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
@@ -2292,64 +2336,64 @@ public class CoreBots
 
             #region Simple Quest Bypasses
             case "maloth":
-                SimpleQuestBypass(6005);
+                SimpleQuestBypass((246, 23));
                 break;
 
             case "lycan":
-                SimpleQuestBypass(598);
+                SimpleQuestBypass((26, 23));
                 break;
 
             case "mummies":
-                SimpleQuestBypass(4616);
+                SimpleQuestBypass((97, 16));
                 break;
 
             case "doomvault":
-                SimpleQuestBypass(3008);
+                SimpleQuestBypass((126, 18));
                 break;
 
             case "ultradrakath":
-                SimpleQuestBypass(3879);
+                SimpleQuestBypass((182, 5));
                 break;
 
             case "backroom":
-                SimpleQuestBypass(8059);
+                SimpleQuestBypass((402, 12));
                 break;
 
             case "venomvaults":
-                SimpleQuestBypass(2804);
+                SimpleQuestBypass((117, 7));
                 break;
 
             case "chaoscave":
             case "lycanwar":
-                SimpleQuestBypass(567);
+                SimpleQuestBypass((26, 22));
                 break;
 
             case "timespace":
-                SimpleQuestBypass(2518);
+                SimpleQuestBypass((100, 14));
                 break;
 
             case "transformation":
-                SimpleQuestBypass(8094);
+                SimpleQuestBypass((405, 12));
                 break;
 
             case "ebilcorphq":
-                SimpleQuestBypass(8406);
+                SimpleQuestBypass((431, 9));
                 break;
 
             case "necrodungeon":
-                SimpleQuestBypass(2061);
+                SimpleQuestBypass((77, 18));
                 break;
 
             case "oddities":
-                SimpleQuestBypass(8667);
+                SimpleQuestBypass((456, 13));
                 break;
 
             case "stormtemple":
-                SimpleQuestBypass(2814);
+                SimpleQuestBypass((117, 17));
                 break;
 
             case "championdrakath":
-                SimpleQuestBypass(3881);
+                SimpleQuestBypass((182, 7));
                 break;
 
             case "towerofdoom1":
@@ -2362,7 +2406,7 @@ public class CoreBots
             case "towerofdoom8":
             case "towerofdoom9":
             case "towerofdoom10":
-                SimpleQuestBypass(3484);
+                SimpleQuestBypass((159, 10));
                 break;
             #endregion
 
@@ -2370,20 +2414,20 @@ public class CoreBots
             case "celestialarenab":
             case "celestialarenac":
             case "celestialarenad":
-                PrivateSimpleQuestBypass(6032);
+                PrivateSimpleQuestBypass((249, 20));
                 break;
 
             case "titandrakath":
-                PrivateSimpleQuestBypass(8776);
+                PrivateSimpleQuestBypass((470, 18));
                 break;
 
             case "confrontation":
             case "shadowattack":
-                PrivateSimpleQuestBypass(3799);
+                PrivateSimpleQuestBypass((175, 20));
                 break;
 
             case "finalshowdown":
-                PrivateSimpleQuestBypass(3880);
+                PrivateSimpleQuestBypass((182, 6));
                 break;
             #endregion
 
@@ -2395,7 +2439,7 @@ public class CoreBots
 
             case "doomvaultb":
                 SetAchievement(18);
-                SimpleQuestBypass(3004, 3008);
+                SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
                 break;
 
             case "prison":
@@ -2489,7 +2533,7 @@ public class CoreBots
                     "voidnightbane"
                 };
                 if (lockedMaps.Contains(strippedMap))
-                    File.WriteAllText(ButlerLogPath(), Bot.Map.FullName);
+                    WriteFile(ButlerLogPath(), Bot.Map.FullName);
             }
 
             Jump(cell, pad);
@@ -2542,19 +2586,17 @@ public class CoreBots
                 }
             }
         }
-
-        void SimpleQuestBypass(params int[] questIDs)
+        void SimpleQuestBypass(params (int, int)[] slotValues)
         {
-            JumpWait();
-            foreach (int id in questIDs)
-                Bot.Quests.UpdateQuest(id);
+            foreach ((int, int) sV in slotValues)
+                Bot.Quests.UpdateQuest(sV.Item2, sV.Item1);
             tryJoin();
         }
 
-        void PrivateSimpleQuestBypass(params int[] questIDs)
+        void PrivateSimpleQuestBypass(params (int, int)[] slotValues)
         {
             map = strippedMap + "-999999";
-            SimpleQuestBypass(questIDs);
+            SimpleQuestBypass(slotValues);
         }
     }
 
@@ -2734,6 +2776,41 @@ public class CoreBots
         return files.Count() > 0 && files.Any(x => x.Contains("~!") && (x.Split("~!").Last() == (Username().ToLower() + ".txt")));
     }
 
+    public void WriteFile(string path, IEnumerable<string> content)
+    {
+        try
+        {
+            File.WriteAllLines(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    public void WriteFile(string path, string[] content)
+    {
+        try
+        {
+            File.WriteAllLines(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    public void WriteFile(string path, string content)
+    {
+        try
+        {
+            File.WriteAllText(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    private void WriteFail(string path, Exception e) => Logger($"Skua just tried to write to \"{path}\" but got an exception:\n{e.InnerException}\n\nPlease restart Skua in Admin-Mode just this once.", "Failed at writing file", true, true);
+
     private void ReadMe()
     {
         string readMePath = Path.Combine(SkuaPath, "ReadMeV1.txt");
@@ -2836,7 +2913,7 @@ public class CoreBots
                     "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
                     "And thanks to everyone who has put time and effort RBot/Skua and the Master Bots! ~ Exelot",
         };
-        File.WriteAllLines(readMePath, ReadMe);
+        WriteFile(readMePath, ReadMe);
 
         // Opening ReadMe.txt
         if (result.Text == "OK")
@@ -3020,7 +3097,7 @@ public class CoreBots
                     $"stopTimeConsent: {stopTimeData}"
                 };
 
-                File.WriteAllLines(path, fileContent);
+                WriteFile(path, fileContent);
 
                 Bot.ShowMessageBox(
                     "If you wish to change these settings, you can easily modify them in the following file:\n" +
@@ -3063,6 +3140,8 @@ public class CoreBots
             PublicDifficult = _PublicDifficult;
         if (CBOBool("BankMiscAC", out bool _BankMiscAC))
             BankMiscAC = _BankMiscAC;
+        if (CBOBool("BankUnenhancedACGear", out bool _BankUnenhGear))
+            BankUnenhancedACGear = _BankUnenhGear;
         if (CBOBool("LoggerInChat", out bool _LoggerInChat))
             LoggerInChat = _LoggerInChat;
 

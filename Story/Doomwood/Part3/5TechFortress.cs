@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tech Fortress
+description: This will complete the Tech Fortress quest.
+tags: story, quest, doomwood, tech-fortress, part3
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Quibble Hunt Story
+description: This will finish the Quibble Hunt Story.
+tags: story, quest, quibble-hunt
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

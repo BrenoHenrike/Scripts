@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Doomwood Forest
+description: This will finish the Doomwood Forest quest.
+tags: story, quest, doomwood, doomwood-forest, part1
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

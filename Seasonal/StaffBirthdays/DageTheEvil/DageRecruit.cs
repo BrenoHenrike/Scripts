@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dage Recruit Story
+description: This will complete the Dage Recruit story.
+tags: story, quest, dage, recruit, legion, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

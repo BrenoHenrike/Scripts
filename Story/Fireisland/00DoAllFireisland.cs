@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Fire Island Story
+description: This will complete the Fire Island story.
+tags: story, quest, fire-island, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

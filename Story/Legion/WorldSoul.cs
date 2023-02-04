@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: World Soul
+description: This will finish the World Soul quest.
+tags: story, quest, legion, world-soul
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

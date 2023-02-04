@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Hatch The Egg (Extra)
+description: This will finish the Hatch The Egg quest.
+tags: story, quest, 7-deadly-dragons, extra, hatch-the-egg
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

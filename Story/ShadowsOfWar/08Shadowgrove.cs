@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Grove
+description: This will finish the Shadowgrove quest.
+tags: story, quest, shadow-war, shadowgrove
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

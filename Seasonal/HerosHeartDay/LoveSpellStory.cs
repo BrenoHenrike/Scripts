@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Love Spell Story
+description: This will complete the Love Spell story.
+tags: story, quest, hero, heart, love, spell, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

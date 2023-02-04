@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: First Observatory
+description: This will finish the First Observatory quest.
+tags: story, quest, elegy-of-madness, darkon, first-observatory
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

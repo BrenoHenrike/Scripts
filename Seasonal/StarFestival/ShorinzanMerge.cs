@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shorinzan Merge
+description: This script will merge all the items needed for the Shorinzan merge.
+tags: farm, merge, star-festival, shorinzan
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

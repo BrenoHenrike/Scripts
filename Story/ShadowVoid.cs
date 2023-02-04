@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Void Story
+description: This will finish the ShadowVoid Story.
+tags: story, quest, shadow-void
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

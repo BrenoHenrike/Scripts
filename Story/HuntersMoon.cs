@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Hunter's Moon Story
+description: This will finish the Hunter's Moon Story.
+tags: story, quest, hunters-moon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

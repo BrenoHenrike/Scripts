@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Glacera Story
+description: This will finish the Glacera Story.
+tags: story, quest, glacera
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Candy Shop Story
+description: This will complete the Candy Shop story quest.
+tags: story, quest, mogloween, seasonal, candy, shop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

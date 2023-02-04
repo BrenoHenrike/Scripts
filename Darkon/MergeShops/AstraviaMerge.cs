@@ -1,6 +1,6 @@
 /*
-name:  Astravia Merge
-description:  Astravia Merge
+name: Astravia Merge
+description: Astravia Merge
 tags: astravia, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs

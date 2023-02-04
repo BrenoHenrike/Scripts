@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: TimestreamWar
+description: This will finish the TimestreamWar quest.
+tags: story, quest, shadow-war, timestream-war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

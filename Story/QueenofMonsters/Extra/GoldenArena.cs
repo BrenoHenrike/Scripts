@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Golden Arena (Extra)
+description: This will finish the Golden Arena quest.
+tags: story, quest, queen-of-monsters, golden-arena, extra
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Bright Crystal Story
+description: This will complete the Bright Crystal story.
+tags: story, quest, bright-crystal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

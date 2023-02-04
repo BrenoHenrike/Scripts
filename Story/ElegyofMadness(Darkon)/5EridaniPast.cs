@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Eridani Past
+description: This will finish the Eridani Past quest.
+tags: story, quest, elegy-of-madness, darkon, eridani-past
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

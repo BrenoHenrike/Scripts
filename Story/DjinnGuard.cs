@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Djinn Guard Story
+description: This will finish the Djinn Guard Story.
+tags: story, quest, djinn-guard
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

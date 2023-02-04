@@ -1,6 +1,6 @@
 /*
-name:  Beast Master Challenge Daily
-description:  
+name: Beast Master Challenge Daily
+description: null
 tags: daily, beast master challenge
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Envy
+description: This will finish the Envy quest.
+tags: story, quest, 7-deadly-dragons, envy
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

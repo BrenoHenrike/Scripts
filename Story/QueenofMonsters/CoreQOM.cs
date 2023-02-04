@@ -345,7 +345,14 @@ public class CoreQOM
         Story.KillQuest(5551, "ShadowfallInvasion", new[] { "Bone Guardian", "Bone Guardian" });
 
         //Infernal Attack
-        Story.KillQuest(5552, "ShadowfallInvasion", new[] { "Nethermage", "Diabolical Scryer", "Fallen Knight" });
+        if (!Story.QuestProgression(5552))
+        {
+            Core.EnsureAccept(5552);
+            Core.HuntMonster("ShadowfallInvasion", "Nethermage", "Nethermage Slain", 4);
+            Core.HuntMonster("ShadowfallInvasion", "Diabolical Scryer", "Diabolical Scryer Slain", 4);
+            Core.HuntMonster("ShadowfallInvasion", "Fallen Knight", "Fallen Knight Slain", 4);
+            Core.EnsureComplete(5552);
+        }
 
         //Here's A Hammer, Get To Work
         Story.MapItemQuest(5553, "ShadowfallInvasion", 5030, 9);

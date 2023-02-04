@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tower of Doom Story
+description: This will finish the Tower of Doom Story.
+tags: story, quest, tower-of-doom
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

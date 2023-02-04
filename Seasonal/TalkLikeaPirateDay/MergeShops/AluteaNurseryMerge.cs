@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Alutea Nursery Merge
+description: This will farm and buy all the items from the Alutea Nursery Merge Shop.
+tags: farm, merge, shop, alutea, nursery, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

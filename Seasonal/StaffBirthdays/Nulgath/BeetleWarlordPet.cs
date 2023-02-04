@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Beetle Warlord Pet
+description: This will complete the Beetle Warlord Pet quest.
+tags: quest, beetle, warlord, pet, staff, birthday, nulgath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

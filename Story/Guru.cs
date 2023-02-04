@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Guru Story
+description: This will finish the Guru Story.
+tags: story, quest, guru
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

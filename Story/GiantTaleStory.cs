@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Giant Tale Story
+description: This will finish the Giant Tale Story.
+tags: story, quest, giant-tale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

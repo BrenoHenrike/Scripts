@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Phoenixrise
+description: This will finish the Phoenixrise quest.
+tags: story, quest, fire-island, phoenixrise
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

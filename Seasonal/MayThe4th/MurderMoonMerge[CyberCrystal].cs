@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Murder Moon Merge
+description: This will farm the cybercrystals for merge items.
+tags: farm, merge, seasonal, shop, dark, may-the-4th
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

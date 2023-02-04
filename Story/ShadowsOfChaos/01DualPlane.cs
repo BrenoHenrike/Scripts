@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dual Plane
+description: This will finish the Dual Plane quest.
+tags: story, quest, shadow-chaos, dual-plane
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

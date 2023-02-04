@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Scarletta) Shatter Glass Maze Story
+description: This will finish the Shatter Glass Maze story.
+tags: shatter, glass, maze, farm, story, scarletta, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

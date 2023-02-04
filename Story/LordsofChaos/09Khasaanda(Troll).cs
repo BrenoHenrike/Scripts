@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Troll) Khasaanda
+description: This will finish the Khasaanda quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, troll, khasaanda
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

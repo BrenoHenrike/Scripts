@@ -1,6 +1,6 @@
 /*
-name:  Teeth
-description:  Teeth
+name: Teeth
+description: Teeth
 tags: darkon, teeth
 */
 //cs_include Scripts/CoreBots.cs

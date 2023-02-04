@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Doom Vault (A) Story
+description: This will finish the Doom Vault (A) Story.
+tags: story, quest, doom-vault-a
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,6 +1,6 @@
 /*
-name:  All Dailies
-description:  Does all the avaiable dailies.
+name: All Dailies
+description: Does all the avaiable dailies.
 tags: all dailies, dailies, daily, all
 */
 //cs_include Scripts/CoreBots.cs

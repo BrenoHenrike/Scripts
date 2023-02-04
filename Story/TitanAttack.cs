@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Titan Attack Story
+description: This will finish the Titan Attack Story.
+tags: story, quest, titan-attack
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

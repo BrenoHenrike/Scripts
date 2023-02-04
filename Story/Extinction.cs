@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Extinction Story
+description: This will finish the Extinction Story.
+tags: story, quest, extinction
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

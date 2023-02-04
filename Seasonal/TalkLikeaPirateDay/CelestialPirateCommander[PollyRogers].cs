@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Celestial Pirate Commander (Polly Rogers)
+description: This will farm the Celestial Pirate Commander items and (Polly Rogers) pet.
+tags: farm, pet, polly-rogers, celestial-pirate-commander, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mad Scientist Lab
+description: This will finish the Mad Scientist Lab quest.
+tags: story, quest, doomwood, mad-scientist-lab, part1
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

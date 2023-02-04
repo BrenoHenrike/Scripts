@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Loves Curse
+description: This will complete the Loves Curse story quest.
+tags: story, quest, hero, heart, seasonal, loves, curse
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

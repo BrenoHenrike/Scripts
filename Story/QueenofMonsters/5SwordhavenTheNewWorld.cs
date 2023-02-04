@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Swordhaven The New World
+description: This will finish the Swordhaven The New World quest.
+tags: story, quest, queen-of-monsters, swordhaven-the-new-world
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

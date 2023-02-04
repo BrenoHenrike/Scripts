@@ -1,7 +1,7 @@
 /*
-name: null
+name: Mog-GLOW-ween Merge
 description: null
-tags: null
+tags: merge, mogloween, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

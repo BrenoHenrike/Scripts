@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Merge Shop Bot Generator/Helper
+description: Fill in the map and shop ID and this tool will generate most of the merge bot for you, then you fill in the rest
+tags: merge, shop, generator, helper, developer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -149,7 +149,7 @@ public class MergeTemplateHelper
 
         string path = Path.Combine(CoreBots.ScriptsPath, "WIP", className + "Merge.cs");
         Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "WIP"));
-        File.WriteAllLines(path, content);
+        Core.WriteFile(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",
                                                 "File Generated", "OK").Text == "OK")
             Process.Start("explorer", path);

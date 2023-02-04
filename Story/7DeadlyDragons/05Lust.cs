@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lust
+description: This will finish the Lust quest.
+tags: story, quest, 7-deadly-dragons, lust
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Queen of Monsters Story
+description: This will complete the Queen of Monsters story arc.
+tags: story, quest, queen-of-monsters, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

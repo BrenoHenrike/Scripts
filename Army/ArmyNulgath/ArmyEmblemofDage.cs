@@ -1,6 +1,6 @@
 /*
-name:  Army Emblem of Dage
-description:  uses an army to farm Emblem of Dage
+name: Army Emblem of Dage
+description: uses an army to farm Emblem of Dage
 tags: emblem of dage, army
 */
 //cs_include Scripts/CoreBots.cs

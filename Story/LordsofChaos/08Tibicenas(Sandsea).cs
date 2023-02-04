@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Sandsea) Tibicenas
+description: This will finish the Tibicenas quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, sandsea, tibicenas
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

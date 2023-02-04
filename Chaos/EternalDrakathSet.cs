@@ -1,6 +1,6 @@
 /*
-name:  Eternal Drakath Set
-description:  Gets the Eternal Drakath Set
+name: Eternal Drakath Set
+description: Gets the Eternal Drakath Set
 tags: eternal drakath set, drakath, set
 */
 //cs_include Scripts/CoreBots.cs

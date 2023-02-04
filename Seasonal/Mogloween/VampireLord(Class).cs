@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Class) Vampire Lord 
+description: This will farm the Blood Moon Token for the Vampire Lord class.
+tags: class, mogloween, seasonal, vampire, vampire lord
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

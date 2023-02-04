@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Doomwood Paladins Trial
+description: This will finish the Doomwood Paladins Trial quest.
+tags: story, quest, queen-of-monsters, doomwood-paladins-trial
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Crash Site story
+description: This will finish the Crash Site story.
+tags: story, quest, crash-site
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

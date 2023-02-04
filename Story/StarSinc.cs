@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: StarSinc Story
+description: This will finish the StarSinc Story.
+tags: story, quest, starsinc
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

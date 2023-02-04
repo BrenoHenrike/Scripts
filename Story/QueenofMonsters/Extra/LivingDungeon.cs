@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Living Dungeon (Extra)
+description: This will finish the Living Dungeon quest.
+tags: story, quest, queen-of-monsters, living-dungeon, extra
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Envy Map
+description: This will finish the Envy Map quest.
+tags: story, quest, legion, dage-the-evil-island, envy-map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

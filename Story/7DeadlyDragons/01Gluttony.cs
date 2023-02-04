@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Gluttony
+description: This will finish the Gluttony quest.
+tags: story, quest, 7-deadly-dragons, gluttony
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

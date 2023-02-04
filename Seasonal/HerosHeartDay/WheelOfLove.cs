@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Wheel of Love Story
+description: This will complete the Wheel of Love story quest.
+tags: story, quest, wheel, love, seasonal, hero, heart
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

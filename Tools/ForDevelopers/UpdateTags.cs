@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Update Script Data
+description: This bot will check all bots so that you may add the missing Name, Description and Tags where needed
+tags: tags, description, name, developer, data
 */
 //cs_include Scripts/CoreBots.cs
 using System.Dynamic;
@@ -18,6 +18,7 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 public class UpdateTags
 {
     private IScriptInterface Bot = IScriptInterface.Instance;
+    private CoreBots Core = CoreBots.Instance;
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -75,7 +76,7 @@ public class UpdateTags
             foreach (var file in files)
             {
                 // Skip blacklisted file-extensions and core-files
-                if (Extensions.Any(e => file.EndsWith(e)))
+                if (Extensions.Any(e => file.EndsWith(e)) || file.Replace('\\', '/').Split('/').Last().StartsWith("Core"))
                     continue;
 
                 string _file = removeDir(file)!.Replace('\\', '/');
@@ -121,7 +122,7 @@ public class UpdateTags
                 List<string> toWrite = fileData.SkipWhile(l => !l.StartsWith("//cs_include") && !l.StartsWith("using")).ToList();
                 toWrite.InsertRange(0, newData);
                 // Overwriting the new file
-                File.WriteAllLines(file, toWrite);
+                Core.WriteFile(file, toWrite);
 
                 void logOnce()
                 {
@@ -151,7 +152,7 @@ public class UpdateTags
                 {
                     // If prop is already made, use it
                     if (!isCore && hasProperty(fileData, prop, out string _prop))
-                        newData.Add($"{prop}: {_prop.Replace("  ", " ")}");
+                        newData.Add($"{prop}: {_prop.Replace("  ", " ").Trim()}");
                     // If the user has exited, write null
                     else if (userExit || isCore)
                     {
@@ -216,9 +217,13 @@ public class UpdateTags
         bool hasProperty(List<string> file, string prop, out string propData)
         {
             var _file = file.TakeWhile(l => l != "*/");
-            if (_file.Any(l => l.StartsWith(prop.ToLower()) && l.Contains(':') && !l.TrimEnd().EndsWith("null")))
+            if (_file.Any(l => l.StartsWith(prop.ToLower()) &&
+                l.Contains(':') && !l.TrimEnd().EndsWith("null") &&
+                !String.IsNullOrWhiteSpace(l.Split(':').Last()) &&
+                !String.IsNullOrEmpty(l.Split(':').Last())
+                ))
             {
-                propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(':').Last();
+                propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(prop.ToLower() + ':').Last();
                 return true;
             }
             propData = String.Empty;
@@ -229,6 +234,7 @@ public class UpdateTags
     #region BlackLists
     private string[] Extensions =
     {
+        ".yaml",
         ".txt",
         ".csproj",
         ".md",
@@ -246,15 +252,19 @@ public class UpdateTags
     private string[] Directories =
     {
         ".git",
+        ".github",
         ".shacache",
+        ".vscode",
         "bin",
         "docs",
         "Generated",
         "obj",
         "plugins",
         "Skills",
+        "SkuaScriptsGenerator",
         "WIP",
-        "Army/UltraBosses"
+        "Army/UltraBosses",
+        "Army/Generated",
     };
     #endregion
 }

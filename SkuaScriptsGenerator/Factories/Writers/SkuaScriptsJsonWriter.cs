@@ -1,3 +1,5 @@
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace SkuaScriptsGenerator.Generators
@@ -19,7 +21,6 @@ namespace SkuaScriptsGenerator.Generators
                     {
                         var parts = line.Split(':');
                         var key = parts[0].Trim();
-                        
                         var value = parts[1].Trim();
                         switch (key)
                         {
@@ -37,15 +38,25 @@ namespace SkuaScriptsGenerator.Generators
                     scriptInfo.Path = script.Replace("./", "");
                     scriptInfo.FileName = script.Split('/').Last();
                     scriptInfo.DownloadUrl = rawScriptsURL+scriptInfo.Path;
-                    scriptInfo.Size = (int)new FileInfo(script).Length;
 
-                    scripts.Add(scriptInfo);
+                    var scriptB = File.ReadAllBytes(script);
+                    // remove zero width no-break space
+                    RemoveAllZeroWidth(ref scriptB);
+                    scriptInfo.Size = scriptB.Length;
+                    
+                    scripts.Add(scriptInfo);     
                 }
             }
 
             var json = JsonConvert.SerializeObject(scripts, Formatting.Indented);
             // File.WriteAllText("scripts.json", json);
             Console.WriteLine(json);
+        }
+
+        private void RemoveAllZeroWidth(ref byte[] scriptB)
+        {
+            var scriptS = Regex.Replace(Encoding.UTF8.GetString(scriptB), @"\u200B|\u200C|\u200D|\uFEFF", "");
+            scriptB = Encoding.UTF8.GetBytes(scriptS);
         }
         
         class ScriptInfo 

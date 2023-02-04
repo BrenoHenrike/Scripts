@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fable Forest Story
+description: This will finish the Fable Forest Story.
+tags: story, quest, fable-forest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

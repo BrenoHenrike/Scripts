@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Memets Realm Story
+description: This will finish the Memets Realm story.
+tags: story, quest, memets-realm, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

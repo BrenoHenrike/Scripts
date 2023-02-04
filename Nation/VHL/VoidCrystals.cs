@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (VHL) Void Crystals
+description: This will farm only the void crystals of Void Highlord class.
+tags: farm, merge, nation, VHL, void, highlord, roentgenium, void-crystal-a, void-crystal-b
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

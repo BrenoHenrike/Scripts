@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Marsh 2 Story (Member)
+description: This will finish the Marsh 2 Story.
+tags: story, quest, marsh2, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

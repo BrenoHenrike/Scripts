@@ -512,9 +512,9 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
 
         Core.ConfigureAggro();
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, publicRoom: true, log: false);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, false);
         Core.ConfigureAggro(false);
-        Bot.Combat.Exit();
+        Core.JumpWait();
     }
 
     #endregion
@@ -764,8 +764,9 @@ public class CoreFarms
             else
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("lair", "Enter", "Spawn", "*", "Dragon Scale", 10, false, log: false);
-                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, false, log: false);
+                while (!Core.CheckInventory(11475, 30))
+                    Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, isTemp: false, log: false);
 
                 if (FactionRank("Alchemy") < 3)
                     AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
@@ -1098,7 +1099,7 @@ public class CoreFarms
             return;
 
         // if (Core.IsMember)
-        //     MembershipDues(MemberShipsIDS.Chaos, rank);
+        // MembershipDues(MemberShipsIDS.Chaos, rank);
         // else
         {
             Core.EquipClass(ClassType.Farm);
@@ -2443,10 +2444,39 @@ public class CoreFarms
         }
     }
 
+    public void SwagTokenAF2p(int quant = 100)
+    {
+        if (Core.CheckInventory("Super-Fan Swag Token A", quant))
+            return;
+
+        Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
+        Core.EquipClass(ClassType.Farm);
+
+        Core.RegisterQuests(1304, 1307);
+        Core.FarmingLogger($"Super-Fan Swag Token A", quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
+        {
+            Core.KillMonster("terrarium", "r3", "Right", "*", "Super-Fan Swag Token D", 500, isTemp: false, log: false);
+
+            //Check if shop is loaded into Cache
+            Core.Join("Collection", "Begin", "Spawn");
+            if (!Bot.Shops.IsLoaded)
+                Bot.Shops.Load(325);
+
+            //Token Buying
+            while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 10) && Core.CheckInventory("Super-Fan Swag Token D", 10))
+                Bot.Shops.BuyItem("Super-Fan Swag Token C");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token B", 20) && Core.CheckInventory("Super-Fan Swag Token C", 10))
+                Bot.Shops.BuyItem("Super-Fan Swag Token B");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant) && Core.CheckInventory("Super-Fan Swag Token B", 20))
+                Bot.Shops.BuyItem("Super-Fan Swag Token A");
+        }
+        Core.CancelRegisteredQuests();
+    }
 
     public void MembershipDues(MemberShipsIDS faction, int rank = 10)
     {
-        if (!Core.IsMember || FactionRank(faction.ToString()) >= rank)
+        if (FactionRank(faction.ToString()) >= rank)
             return;
 
         Core.SavedState();
@@ -2454,7 +2484,9 @@ public class CoreFarms
         int i = 1;
         while (FactionRank($"{faction}") < 10)
         {
-            SwagTokenA(1);
+            if (Core.IsMember)
+                SwagTokenA(1);
+            else SwagTokenAF2p(1);
             Core.ChainComplete((int)faction);
             Core.Logger($"Completed x{i++}");
         }

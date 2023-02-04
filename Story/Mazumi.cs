@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mazumi Story
+description: This will finish the Mazumi Story.
+tags: story, quest, mazumi
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

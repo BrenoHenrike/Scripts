@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Chaos Finale Bonus) Pyramid of Pain
+description: This will finish the Pyramid of Pain quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, chaos-finale, bonus, pyramid-of-pain, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

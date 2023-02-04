@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Cyseros) Secret
+description: This will finish the Cyseros Secret story.
+tags: cyseros, secret, summer, 2015, adventure, map, farm, story, cyseros, secret, summer, 2015, adventure, map
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

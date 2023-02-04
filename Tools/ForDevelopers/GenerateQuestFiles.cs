@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Generate Quest Files
+description: This will generate the the files needed for the QuestData sheet and the #quest-ids channel in our discord
+tags: quests, developer, lists, files, spreadsheet, excel, data
 */
 //cs_include Scripts/CoreBots.cs
 using Newtonsoft.Json;
@@ -44,8 +44,8 @@ public class GetQuests
         }
 
         Core.Logger("Writing files.");
-        File.WriteAllLines("Scripts/WIP/QuestIds.txt", r);
-        File.WriteAllLines("Scripts/WIP/QuestData.csv", d);
+        Core.WriteFile("Scripts/WIP/QuestIds.txt", r);
+        Core.WriteFile("Scripts/WIP/QuestData.csv", d);
 
         Core.Logger("Files made:");
         Core.Logger(" - \"Scripts/WIP/QuestIds.txt\"");

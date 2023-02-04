@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: The Destroyer
+description: This will finish the The Destroyer quest.
+tags: story, quest, queen-of-monsters, the-destroyer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

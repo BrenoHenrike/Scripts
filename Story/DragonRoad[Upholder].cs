@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dragon Road Story (Upholder)
+description: This will finish the Dragon Road Story.
+tags: story, quest, dragon-road
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

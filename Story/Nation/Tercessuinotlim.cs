@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tercessuinotlim
+description: This will finish the Tercessuinotlim quest.
+tags: story, quest, tercessuinotlim, nation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

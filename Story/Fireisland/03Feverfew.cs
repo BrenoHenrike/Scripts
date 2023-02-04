@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Feverfew
+description: This will finish the Feverfew quest.
+tags: story, quest, fire-island, feverfew
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

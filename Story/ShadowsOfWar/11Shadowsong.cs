@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Song
+description: This will finish the Shadow Song quest.
+tags: story, quest, shadow-war, shadow-song
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

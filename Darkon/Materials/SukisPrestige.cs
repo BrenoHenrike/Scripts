@@ -1,7 +1,7 @@
 /*
-name:  Sukies Prestige
-description:  Sukies Prestige
-tags: 
+name: Sukies Prestige
+description: Sukies Prestige
+tags: null
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

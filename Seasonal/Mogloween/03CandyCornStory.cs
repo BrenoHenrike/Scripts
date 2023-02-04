@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Candy Corn Story
+description: This will complete the Candy Corn story quest.
+tags: story, quest, mogloween, seasonal, candy, corn
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

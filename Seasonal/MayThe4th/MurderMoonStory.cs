@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Murder Moon Story
+description: This will complete the Murder Moon story.
+tags: story, quest, seasonal, murder, moon, may-the-4th
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

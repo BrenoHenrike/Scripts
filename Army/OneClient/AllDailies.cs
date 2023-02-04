@@ -1,6 +1,6 @@
 /*
-name:  All do AllDailies
-description:  Alldailies
+name: All do AllDailies
+description: Alldailies
 tags: alldailies, army, thefamily
 */
 //cs_include Scripts/CoreBots.cs

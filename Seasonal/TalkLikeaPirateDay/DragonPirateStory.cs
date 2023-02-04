@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dragon Pirate Story
+description: This will finish the Dragon Pirate Story Line.
+tags: story, quest, dragon, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

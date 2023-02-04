@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fiend Past
+description: This will finish the Fiend Past quest.
+tags: story, quest, fiend-past, nation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

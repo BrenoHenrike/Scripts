@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Orb Hunt (Extra)
+description: This will finish the Orb Hunt quest.
+tags: story, quest, queen-of-monsters, orb-hunt, extra
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Twigs Arcade Story
+description: This will complete the Twigs Arcade story quest.
+tags: story, quest, mogloween, seasonal, twigs, arcade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

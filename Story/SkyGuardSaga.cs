@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: SkyGuard Saga Story
+description: This will finish the SkyGuard Saga Story.
+tags: story, quest, skyguard-saga
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

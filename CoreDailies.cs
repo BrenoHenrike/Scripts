@@ -452,7 +452,7 @@ public class CoreDailies
     public void EldersBlood()
     {
         Core.Logger("Daily: Elders' Blood");
-        if (Core.CheckInventory("Elders' Blood", 5))
+        if (Core.CheckInventory("Elders' Blood", 20)) //AE keeps updating this shit, Laste update: 1/30/23, https://www.aq.com/gamedesignnotes/aqw-30jan23-mondayupdates-9076
             return;
         if (!CheckDaily(802, true, "Elders' Blood"))
             return;
@@ -675,24 +675,9 @@ public class CoreDailies
 
     public void GoldenInquisitor()
     {
-        string[] rewards =
-        {
-            "Golden Inquisitor of Shadowfall",
-            "Gilded Inquisitor's Female Morph",
-            "Gilded Inquisitor's Male Morph",
-            "Golden Inquisitor's Locks",
-            "Golden Inquisitor's Hair",
-            "Golden Inquisitor's Helm",
-            "Golden Inquisitor's Crested Helm",
-            "Golden Inquisitor's Spear",
-            "Golden Inquisitor's Blade",
-            "Golden Inquisitor's Wrap",
-            "Golden Inquisitor's Back Blade",
-            "Golden Inquisitor's Back Blade + Wrap"
-        };
-
         Core.Logger("Daily: Golden Inquisitor of Shadowfall");
-        if (Core.CheckInventory(rewards, toInv: false) || !CheckDaily(491))
+        var rewards = Core.QuestRewards(491);
+        if (Core.CheckInventory(rewards) || !CheckDaily(491))
             return;
 
         Core.EnsureAccept(491);
@@ -724,14 +709,13 @@ public class CoreDailies
             if (Core.CheckInventory(pet, toInv: false))
                 continue;
 
-            Core.Logger("Dedicating daily to " + pet);
             bool dailyDone = !CheckDaily(4159);
 
             if (!Core.CheckInventory("Moglin MEAL", 30) && !dailyDone)
             {
+                Core.Logger("Dedicating daily to " + pet);
                 Core.AddDrop("Moglin MEAL");
                 Core.EnsureAccept(4159);
-                Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("nexus", "Frogzard", "Frogzard Meat", 3);
                 Core.EnsureComplete(4159);
                 Bot.Wait.ForPickup("Moglin MEAL");

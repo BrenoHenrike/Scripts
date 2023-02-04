@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Alpha Pirate Class
+description: This will merge the Alpha Pirate Class Token.
+tags: merge-shop, alpha, pirate, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Water Drop) Water War Merge
+description: This will complete the Water War story and farm Water Drops.
+tags: story, quest, war, water-drop, merge, seasonal, solar-new-year
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

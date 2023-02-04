@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Cornelis Story (Member)
+description: This will complete the Cornelis story.
+tags: story, quest, cornelis, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

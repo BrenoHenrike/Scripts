@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Battle Under Story
+description: This will complete the Battle Under Story.
+tags: story, quest, battleunder
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

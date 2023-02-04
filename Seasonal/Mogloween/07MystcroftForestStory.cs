@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mystcroft Forest Story
+description: This will complete the Mystcroft Forest story quest.
+tags: story, quest, mogloween, seasonal, mystcroft, forest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

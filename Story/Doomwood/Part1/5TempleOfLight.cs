@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Temple of the Light
+description: This will finish the Temple of the Light quest.
+tags: story, quest, doomwood, temple-of-the-light, part1
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

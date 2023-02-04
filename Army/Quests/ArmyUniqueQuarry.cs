@@ -1,6 +1,6 @@
 /*
-name:  Army Unique Quarry
-description:  uses an army to farm the queust rewards from "unique quarry"
+name: Army Unique Quarry
+description: uses an army to farm the queust rewards from "unique quarry"
 tags: army, unique quarry, quest, rewards
 */
 //cs_include Scripts/CoreBots.cs

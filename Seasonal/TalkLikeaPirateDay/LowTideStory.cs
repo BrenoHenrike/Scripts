@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Low Tide Story
+description: This will finish the Low Tide Story Quest.
+tags: story, quest, low-tide, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

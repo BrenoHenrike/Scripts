@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mount Doom Skull
+description: This will finish the Mount Doom Skull quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, mount-doom-skull
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

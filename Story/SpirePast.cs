@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Spire Past Story
+description: This will finish the Spire Past Story.
+tags: story, quest, spirepast
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

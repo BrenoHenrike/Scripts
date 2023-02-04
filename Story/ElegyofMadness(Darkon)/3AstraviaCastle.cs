@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Astravia Castle
+description: This will finish the Astravia Castle quest.
+tags: story, quest, elegy-of-madness, darkon, astravia, castle
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

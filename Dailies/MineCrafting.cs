@@ -1,6 +1,6 @@
 /*
-name:  Mine Crafting Daily
-description:  Mine Crafting
+name: Mine Crafting Daily
+description: Mine Crafting
 tags: daily, mine crafting, metal
 */
 //cs_include Scripts/CoreBots.cs

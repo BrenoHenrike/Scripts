@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lynaria
+description: This will finish the Lynaria quest.
+tags: story, quest, sepulchure-saga, lynaria
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Embersea
+description: This will finish the Embersea quest.
+tags: story, quest, fire-island, embersea
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

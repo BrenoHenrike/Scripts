@@ -1,6 +1,6 @@
 /*
-name:  Necrotic Sword of Doom Daily
-description:  
+name: Necrotic Sword of Doom Daily
+description: null
 tags: daily, nsod, necrotic sword of doom
 */
 //cs_include Scripts/CoreBots.cs

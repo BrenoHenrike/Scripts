@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Evolved Leprechaun Merge
+description: This will merge Rainbow Shard and Golden Ticket.
+tags: farm, merge, shop, seasonal, lucky, evolved, leprechaun, rainbow, shard, golden, ticket
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
