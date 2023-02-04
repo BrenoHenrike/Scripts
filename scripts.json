@@ -8129,35 +8129,46 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/TimeRetaliateMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Etokoun Merge",
+    "description": "Farms all of the items from Etokoun Merge.",
     "tags": [
-      "null"
+      "etokoun-merge",
+      "etokoun",
+      "seasonal",
+      "akiba-new-year",
+      "merge-shop"
     ],
     "path": "Seasonal/AkibaNewYear/EtokounMerge.cs",
-    "size": 7321,
+    "size": 7420,
     "fileName": "EtokounMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/EtokounMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Yokai Hunt",
+    "description": "Completes the quests in yokaihunt.",
     "tags": [
-      "null"
+      "yokai",
+      "seasonal",
+      "akiba-new-year",
+      "yokaihunt",
+      "story"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiHunt.cs",
-    "size": 2576,
+    "size": 2653,
     "fileName": "YokaiHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiHunt.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Yue's Design Merge",
+    "description": "Farms all of the items from Yue's Design Merge.",
     "tags": [
-      "null"
+      "yue-s-design-merge",
+      "seasonal",
+      "merge-shop",
+      "akiba-new-year"
     ],
     "path": "Seasonal/AkibaNewYear/YuesDesignMerge.cs",
-    "size": 5905,
+    "size": 6011,
     "fileName": "YuesDesignMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YuesDesignMerge.cs"
   },
