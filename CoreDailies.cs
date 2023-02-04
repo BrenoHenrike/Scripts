@@ -677,7 +677,7 @@ public class CoreDailies
     {
         Core.Logger("Daily: Golden Inquisitor of Shadowfall");
         var rewards = Core.QuestRewards(491);
-        if (Core.CheckInventory(rewards) || !CheckDaily(491))
+        if (Core.CheckInventory(rewards, toInv: false) || !CheckDaily(491))
             return;
 
         Core.EnsureAccept(491);
