@@ -39,12 +39,13 @@ public class FreeBoosts
 
         Core.Logger("Drops are \"randomly\" recieved, and may take awhile... be prepared if quants are high.");
 
+        Core.FarmingLogger("GOLD Boost! (10 min)", GoldBoostQuant);
+        Core.FarmingLogger("CLASS Boost! (10 min)", CLassBoostQuant);
+        Core.FarmingLogger("REPUTATION Boost! (10 min)", RepBoostQuant);
+
         Core.EquipClass(ClassType.Farm);
-        Core.FarmingLogger("GOLD Boost! (10 min)", Bot.Config.Get<int>("GoldBoostQuant"));
-        Core.FarmingLogger("CLASS Boost! (10 min)", Bot.Config.Get<int>("ClassBoostQuant"));
-        Core.FarmingLogger("REPUTATION Boost! (10 min)", Bot.Config.Get<int>("RepBoostQuant"));
         Core.RegisterQuests(6208);
-        while (!Bot.ShouldExit && !Core.CheckInventory(7140, Bot.Config.Get<int>("GoldBoostQuant")) && !Core.CheckInventory(8877, Bot.Config.Get<int>("ClassBoostQuant")) && !Core.CheckInventory(8879, Bot.Config.Get<int>("RepBoostQuant")))
+        while (!Bot.ShouldExit && !Core.CheckInventory("GOLD Boost! (10 min)", GoldBoostQuant) || !Core.CheckInventory("CLASS Boost! (10 min)", CLassBoostQuant) || !Core.CheckInventory("REPUTATION Boost! (10 min)", RepBoostQuant))
         {
             Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
             Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
