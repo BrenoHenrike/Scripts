@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 
 public class ScriptMainCleaner
 {
@@ -24,7 +25,6 @@ public class ScriptMainCleaner
 #nullable enable
     private void Cleaner()
     {
-        string scriptDir = CoreBots.ScriptsPath;
         List<string> GotNull = new();
         List<string> NoSetOptions = new();
         List<string> TooManyInScriptMain = new();
@@ -32,7 +32,7 @@ public class ScriptMainCleaner
         int fileCount = 0;
         int dirCount = 0;
         int lineCount = 0;
-        readFiles(scriptDir);
+        readFiles(ClientFileSources.SkuaScriptsDIR);
 
         Bot.Log("---------------");
         Bot.Log("Directory Count:\t" + dirCount);
@@ -121,7 +121,7 @@ public class ScriptMainCleaner
 
             foreach (var dir in dirs)
             {
-                if (Directories.Any(d => Path.Combine(scriptDir, d) == dir))
+                if (Directories.Any(d => Path.Combine(ClientFileSources.SkuaScriptsDIR, d) == dir))
                     continue;
 
                 dirCount++;
@@ -131,7 +131,7 @@ public class ScriptMainCleaner
 
         string? removeDir(string path)
         {
-            string? toReturn = path.Replace(scriptDir, "");
+            string? toReturn = path.Replace(ClientFileSources.SkuaScriptsDIR, "");
             return toReturn.Count() > 0 ? toReturn[1..] : null;
         }
     }
