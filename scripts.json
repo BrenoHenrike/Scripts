@@ -5880,13 +5880,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Legion Revenant Full",
+    "description": "does teh entirety of the legion revenant class arming from a-z",
     "tags": [
-      "null"
+      "legion revenant",
+      "class",
+      "legion"
     ],
     "path": "Legion/Revenant/0LegionRevenant.cs",
-    "size": 670,
+    "size": 770,
     "fileName": "0LegionRevenant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/0LegionRevenant.cs"
   },
