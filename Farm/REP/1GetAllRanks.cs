@@ -1,5 +1,5 @@
 /*
-name: null
+name: 1GetAllRanks
 description: null
 tags: null
 */

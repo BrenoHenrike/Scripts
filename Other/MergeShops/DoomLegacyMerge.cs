@@ -1,5 +1,5 @@
 /*
-name: null
+name: DoomLegacyMerge
 description: null
 tags: null
 */

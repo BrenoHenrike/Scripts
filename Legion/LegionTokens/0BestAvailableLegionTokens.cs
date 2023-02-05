@@ -1,5 +1,5 @@
 /*
-name: null
+name: 0BestAvailableLegionTokens
 description: null
 tags: null
 */

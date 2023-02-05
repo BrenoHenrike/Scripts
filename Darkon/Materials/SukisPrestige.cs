@@ -1,7 +1,7 @@
 /*
 name: Sukies Prestige
 description: Sukies Prestige
-tags: Darkon, Suki's Prestige
+tags: darkon, suki's prestige
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

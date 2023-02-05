@@ -1,5 +1,5 @@
 /*
-name: null
+name: ProofOfRecruitmentQuest
 description: null
 tags: null
 */

@@ -1,5 +1,5 @@
 /*
-name: null
+name: DragonOfTime
 description: This bot farms the Dragon of Time class for you.
 tags: class, dot, damage over time, dragon of time, timeinn
 */

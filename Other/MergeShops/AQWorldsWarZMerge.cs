@@ -1,5 +1,5 @@
 /*
-name: null
+name: AQWorldsWarZMerge
 description: null
 tags: null
 */

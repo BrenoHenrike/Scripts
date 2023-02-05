@@ -1,5 +1,5 @@
 /*
-name: null
+name: EnchantedFrozenClaymore
 description: null
 tags: null
 */

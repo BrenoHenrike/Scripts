@@ -1,5 +1,5 @@
 /*
-name: null
+name: JuggernautItems
 description: null
 tags: null
 */

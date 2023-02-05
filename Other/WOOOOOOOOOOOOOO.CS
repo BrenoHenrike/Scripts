@@ -1,6 +1,6 @@
 /*
 name: Moist Critical Event Drops
-description: Gets the drops from the Moist Critical Event 
+description: Gets the drops from the Moist Critical Event
 tags: moist critical, event, shroom
 */
 //cs_include Scripts/CoreBots.cs

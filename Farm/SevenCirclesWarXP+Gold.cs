@@ -1,5 +1,5 @@
 /*
-name: null
+name: SevenCirclesWarXP+Gold
 description: null
 tags: null
 */

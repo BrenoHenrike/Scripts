@@ -1,5 +1,5 @@
 /*
-name: null
+name: QuestRewardTemplate
 description: null
 tags: null
 */

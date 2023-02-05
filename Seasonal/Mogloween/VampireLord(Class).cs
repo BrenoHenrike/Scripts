@@ -1,5 +1,5 @@
 /*
-name: (Class) Vampire Lord 
+name: (Class) Vampire Lord
 description: This will farm the Blood Moon Token for the Vampire Lord class.
 tags: class, mogloween, seasonal, vampire, vampire lord
 */

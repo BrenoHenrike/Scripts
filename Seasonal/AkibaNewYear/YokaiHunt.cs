@@ -1,7 +1,7 @@
 /*
 name: Yokai Hunt
 description: Completes the quests in yokaihunt.
-tags: yokai,seasonal,akiba-new-year,yokaihunt,story
+tags: yokai, seasonal, akiba-new-year, yokaihunt, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

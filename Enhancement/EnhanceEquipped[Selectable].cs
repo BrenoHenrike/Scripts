@@ -1,5 +1,5 @@
 /*
-name: null
+name: EnhanceEquipped[Selectable]
 description: null
 tags: null
 */

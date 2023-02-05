@@ -1,5 +1,5 @@
 /*
-name: null
+name: GoldenHanzoVoid
 description: null
 tags: null
 */
