@@ -11771,7 +11771,7 @@
     "description": "uses an army to farm the \"supplies to spin the wheen of chance\" quest.",
     "tags": [
       "nulgath",
-      "supplies to spin teh wheels",
+      "supplies to spin the wheels",
       "army",
       "reagents"
     ],
@@ -13923,46 +13923,46 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/02DarkSunStory.cs"
   },
   {
-    "name": "null",
+    "name": "0SmartVoidAuras",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1442,
+    "size": 1453,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },
   {
-    "name": "null",
+    "name": "GatheringUnstableEssences",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs",
-    "size": 853,
+    "size": 874,
     "fileName": "GatheringUnstableEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs"
   },
   {
-    "name": "null",
+    "name": "RetreiveVoidAuras",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1244,
+    "size": 1257,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
   {
-    "name": "null",
+    "name": "CommandingShadowEssences",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1201,
+    "size": 1221,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
@@ -14924,7 +14924,7 @@
   },
   {
     "name": "Army LR Full",
-    "description": "uses an army to to do the entirely of teh legion revenant grind together",
+    "description": "uses an army to to do the entirely of the legion revenant grind together",
     "tags": [
       "legion",
       "legion reventant",
