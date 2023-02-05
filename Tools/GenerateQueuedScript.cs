@@ -6,6 +6,7 @@ tags: generator, queud, script, follow-up, choose
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;
+using Skua.Core.Models;
 using System.IO;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
@@ -36,7 +37,7 @@ public class GenQueueScript
         {
             // Selecting all files
             _fileDialog = Ioc.Default.GetRequiredService<IFileDialogService>();
-            string _scriptPath = _scriptPath = Path.Combine(CoreBots.SkuaPath, "Scripts");
+            string _scriptPath = _scriptPath = ClientFileSources.SkuaDIR;
             string? path = _fileDialog.OpenFile(_scriptPath, "Skua Script (*.cs)|*.cs");
             if (path == null)
                 break;
@@ -48,7 +49,7 @@ public class GenQueueScript
                 continue;
             }
 
-            string[] file = File.ReadAllLines(Path.Combine(CoreBots.SkuaPath, includePath));
+            string[] file = File.ReadAllLines(Path.Combine(ClientFileSources.SkuaDIR, includePath));
             if (file.Any(l => l.Contains("public List<IOption>")))
             {
                 Bot.ShowMessageBox($"The bot you selected: [{includePath}] has \"Script Options\", these are not supported for queued scripts. It will not be added to the queue", "Contains Script Options!");
@@ -229,9 +230,9 @@ public class GenQueueScript
             "}"
         });
 
-        if (!Directory.Exists(Path.Combine(CoreBots.ScriptsPath, "Generated")))
-            Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "Generated"));
-        Core.WriteFile(Path.Combine(CoreBots.ScriptsPath, "Generated", botName + ".cs"), newFile);
+        if (!Directory.Exists(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Generated")))
+            Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Generated"));
+        Core.WriteFile(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Generated", botName + ".cs"), newFile);
 
         Bot.ShowMessageBox($"File Path:\n- Scripts/Generated/{botName}.cs\n\nIt does the following bots in the same order:\n- {String.Join("\n- ", scriptNames)}", "Script is succesfully generated");
     }
