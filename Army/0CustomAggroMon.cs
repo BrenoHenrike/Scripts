@@ -7,6 +7,7 @@ tags: custom, aggro monster, army
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;
+using Skua.Core.Models;
 using Skua.Core.Options;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
@@ -187,10 +188,10 @@ public class CustomAggroMon
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) != true)
                 return;
 
-            if (!Directory.Exists(Path.Combine(CoreBots.ScriptsPath, "Army", "Generated")))
-                Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "Army", "Generated"));
+            if (!Directory.Exists(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Army", "Generated")))
+                Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Army", "Generated"));
 
-            string[] template = File.ReadAllLines(Path.Combine(CoreBots.ScriptsPath, "Templates", "CustomAggroMonTemplate.cs"));
+            string[] template = File.ReadAllLines(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Templates", "CustomAggroMonTemplate.cs"));
             string botName = removeInvalidChar(diag.DialogTextInput);
 
             int classIndex = FetchIndex("public class CustomAggroMonTemplate");
@@ -219,7 +220,7 @@ public class CustomAggroMon
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");
             template[classTypeIndex] = $"{spaces}private ClassType classtype = ClassType.{Bot.Config.Get<ClassType>("classtype")};";
 
-            Core.WriteFile(Path.Combine(CoreBots.SkuaPath, "Scripts", "Army", "Generated", diag.DialogTextInput.Replace(" ", "") + ".cs"), template);
+            Core.WriteFile(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Army", "Generated", diag.DialogTextInput.Replace(" ", "") + ".cs"), template);
             Core.Logger($"\"{diag.DialogTextInput.Replace(" ", "")}.cs\" has been generated and can be found in Skua_Modules/Scripts/Army/Generated", messageBox: true);
 
             int FetchIndex(string text)
