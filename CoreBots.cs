@@ -815,7 +815,7 @@ public class CoreBots
         string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
         if (!String.IsNullOrEmpty(questName))
         {
-            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(Path.Combine(SkuaPath, "Quests.txt")));
+            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
             if (v != null)
             {
                 List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
@@ -1796,7 +1796,7 @@ public class CoreBots
         {
             foreach (string cs in currentScript.Where(x => x.StartsWith("//cs_include")).ToArray())
             {
-                List<string> pathParts = new() { SkuaPath };
+                List<string> pathParts = new() { ClientFileSources.SkuaDIR };
                 pathParts.AddRange(cs.Replace("//cs_include ", "").Replace("\\", "/").Split('/'));
                 includedScript = File.ReadAllLines(Path.Combine(pathParts.ToArray()));
 
@@ -2747,25 +2747,7 @@ public class CoreBots
     #endregion
 
     #region Using Local Files
-    /// <summary>
-    /// Returns the file path of the Skua folder in the user's Documents
-    /// </summary>
-    public static string SkuaPath
-    {
-        get
-        {
-            string appPath = Path.GetDirectoryName(AppContext.BaseDirectory)!;
-            if (appPath.Contains("Program Files"))
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua");
-            else
-                return appPath;
-        }
-    }
-
-    public static string ScriptsPath = Path.Combine(SkuaPath, "Scripts");
-    public static string OptionsPath = Path.Combine(SkuaPath, "options");
-
-    public static string ButlerLogDir = Path.Combine(SkuaPath, "options", "Butler");
+    public static string ButlerLogDir = Path.Combine(ClientFileSources.SkuaOptionsDIR, "Butler");
     private string ButlerLogPath() => Path.Combine(ButlerLogDir, Username().ToLower() + ".txt");
     public bool ButlerOnMe()
     {
@@ -2813,7 +2795,7 @@ public class CoreBots
 
     private void ReadMe()
     {
-        string readMePath = Path.Combine(SkuaPath, "ReadMeV1.txt");
+        string readMePath = Path.Combine(ClientFileSources.SkuaDIR, "ReadMeV1.txt");
         if (File.Exists(readMePath))
             return;
 
@@ -3006,7 +2988,7 @@ public class CoreBots
 
         void FileSetup()
         {
-            string path = Path.Combine(SkuaPath, "DataCollectionSettings.txt");
+            string path = Path.Combine(ClientFileSources.SkuaDIR, "DataCollectionSettings.txt");
             if (!File.Exists(path))
             {
                 DialogResult consent = Bot.ShowMessageBox(
@@ -3228,7 +3210,7 @@ public class CoreBots
             FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
-    public string CBO_Path() => Path.Combine(OptionsPath, $"CBO_Storage({Username()}).txt");
+    public string CBO_Path() => Path.Combine(ClientFileSources.SkuaOptionsDIR, $"CBO_Storage({Username()}).txt");
     public bool CBO_Active() => File.Exists(CBO_Path());
 
     public bool CBOString(string Name, out string output)
