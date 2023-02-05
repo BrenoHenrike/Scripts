@@ -195,10 +195,10 @@ public class ArmyLR
 
             Adv.BestGear(GearBoost.dmgAll);
             Army.SellToSync("Tethered Soul", 300);
-            if (Army.Players().Count() > 3)
-                Core.KillMonster("revenant-999999", "r2", "Left", "*", "Tethered Soul", 300, false); //Temp fix for players > 3
-            else
-                ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
+            //if (Army.Players().Count() > 3)
+            //    Core.KillMonster("revenant-999999", "r2", "Left", "*", "Tethered Soul", 300, false); //Temp fix for players > 3
+            //else
+            ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
 
             Army.SellToSync("Darkened Essence", 500);
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", ClassType.Farm, false, 500);
