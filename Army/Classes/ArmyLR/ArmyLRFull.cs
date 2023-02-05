@@ -1,6 +1,6 @@
 /*
 name: Army LR Full
-description: uses an army to to do the entirely of teh legion revenant grind together
+description: uses an army to to do the entirely of the legion revenant grind together
 tags: legion, legion reventant, class, army
 */
 //cs_include Scripts/CoreBots.cs

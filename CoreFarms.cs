@@ -665,7 +665,7 @@ public class CoreFarms
 
     /// <summary>
     /// Uses the Jera:hOu in the alchemy packet for starting rep.
-    /// to find teh correct trait for a specific pot, goto /join alchemy with the correct reagents
+    /// to find the correct trait for a specific pot, goto /join alchemy with the correct reagents
     /// and open packet logger, enable it, start "help me", "use dragon stones"
     /// slect the level/type/kind(atk, int, spell, etc), and start it, grab the packet(copy it)
     /// make request with that and the Potion's name+itemid(from tools > grabber > inventory > grab)
