@@ -109,7 +109,7 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(28, 2), "manor", "Bird of Paradise", "Bird of Coeurs Snowboard");
             GetGift(AvailableUntil(28, 2), "worldscore", "Crystalized Mana", "Twisted Shadow Daggers");
             GetGift(AvailableUntil(28, 2), "brokenwoods", "Eldritch Amalgamation", "Diabolical Banner", "Diabolical Bed", "Diabolical BookShelf", "Diabolical Carpet", "Diabolical Couch", "Diabolical Eye Lamp", "Diabolical Fountain", "Diabolical Throne", "Diabolical Torch", "Diabolical Work Desk");
-
+            GetGift(AvailableUntil(28, 2), "yokaihunt", "Elixir Etokoun", "Lunarian Blasters", "Lunarian Blaster", "Lunarian Gohei", "Lunarian Cresent");
             #endregion
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
