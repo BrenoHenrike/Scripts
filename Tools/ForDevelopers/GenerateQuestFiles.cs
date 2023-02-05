@@ -7,6 +7,7 @@ tags: quests, developer, lists, files, spreadsheet, excel, data
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using Skua.Core.Models;
 using Skua.Core.Interfaces;
 
 public class GetQuests
@@ -25,7 +26,7 @@ public class GetQuests
             return;
 
         Core.Logger("Reading Quest.txt");
-        var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(Path.Combine(CoreBots.SkuaPath, "Quests.txt")));
+        var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
 
         List<string> r = new();
         List<string> d = new();
