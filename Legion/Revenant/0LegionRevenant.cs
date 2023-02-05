@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Legion Revenant Full
+description: does teh entirety of the legion revenant class arming from a-z
+tags: legion revenant, class, legion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
