@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: The World House Merge
+description: The World House Merge
+tags: darkon, ultradarkon, theworld, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

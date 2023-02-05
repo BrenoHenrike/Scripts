@@ -13,6 +13,7 @@ using System.Linq;
 using System;
 using Skua.Core.Interfaces;
 using Skua.Core.ViewModels;
+using Skua.Core.Models;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class UpdateTags
@@ -29,7 +30,6 @@ public class UpdateTags
     private void Update()
     {
         // Variables
-        string scriptDir = CoreBots.ScriptsPath;
         bool userExit = false;
 
         // Allowing the user to select a folder they wish to focus on
@@ -41,7 +41,7 @@ public class UpdateTags
         {
             case "Select Folder":
                 // Folder selecting
-                string? customFolder = Ioc.Default.GetRequiredService<IFileDialogService>().OpenFolder(scriptDir);
+                string? customFolder = Ioc.Default.GetRequiredService<IFileDialogService>().OpenFolder(ClientFileSources.SkuaScriptsDIR);
 
                 if (customFolder == null)
                 {
@@ -55,7 +55,7 @@ public class UpdateTags
 
             case "Auto Mode":
                 // Incursive function starts in the base Scripts Directory
-                _UpdateTags(scriptDir);
+                _UpdateTags(ClientFileSources.SkuaScriptsDIR);
                 break;
 
             default:
@@ -171,7 +171,7 @@ public class UpdateTags
             foreach (var dir in dirs)
             {
                 // Skip blacklisted directories
-                if (Directories.Any(d => Path.Combine(scriptDir, d).Replace('\\', '/') == dir.Replace('\\', '/')))
+                if (Directories.Any(d => Path.Combine(ClientFileSources.SkuaScriptsDIR, d).Replace('\\', '/') == dir.Replace('\\', '/')))
                     continue;
 
                 // Incurisve file check
@@ -210,7 +210,7 @@ public class UpdateTags
 
         string? removeDir(string path)
         {
-            string? toReturn = path.Replace(scriptDir, "");
+            string? toReturn = path.Replace(ClientFileSources.SkuaScriptsDIR, "");
             return toReturn.Count() > 0 ? toReturn[1..] : null;
         }
 

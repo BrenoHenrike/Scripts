@@ -8,6 +8,7 @@ tags: merge, shop, generator, helper, developer
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Items;
 using System.IO;
@@ -106,7 +107,7 @@ public class MergeTemplateHelper
             return;
         }
 
-        string[] MergeTemplate = File.ReadAllLines(Path.Combine(CoreBots.ScriptsPath, "Templates", "MergeTemplate.cs"));
+        string[] MergeTemplate = File.ReadAllLines(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Templates", "MergeTemplate.cs"));
 
         int itemsIndex = Array.IndexOf(MergeTemplate, "                // Add how to get items here") - 1;
         if (itemsIndex < 0)
@@ -147,8 +148,8 @@ public class MergeTemplateHelper
                             .Concat(new[] { "}" })
                             .ToArray();
 
-        string path = Path.Combine(CoreBots.ScriptsPath, "WIP", className + "Merge.cs");
-        Directory.CreateDirectory(Path.Combine(CoreBots.ScriptsPath, "WIP"));
+        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + "Merge.cs");
+        Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP"));
         Core.WriteFile(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",
                                                 "File Generated", "OK").Text == "OK")
