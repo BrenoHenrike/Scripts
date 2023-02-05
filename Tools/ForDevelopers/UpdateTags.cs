@@ -95,26 +95,7 @@ public class UpdateTags
 
                 handleProp("name");
                 handleProp("description");
-
-                // If tags are already made, use it
-                if (!isCore && hasProperty(fileData, "tags", out string tags))
-                {
-                    string[] _tags = tags.Split(',', StringSplitOptions.TrimEntries);
-                    for (int i = 0; i < _tags.Length; i++)
-                        _tags[i] = _tags[i] == _tags[i].ToUpper() ? _tags[i] : _tags[i].ToLower();
-                    newData.Add("tags: " + String.Join(", ", _tags));
-                }
-                // If the user has exited, write null
-                else if (userExit || isCore)
-                {
-                    newData.Add("tags: null");
-                }
-                // Otherwise, ask for the tags
-                else
-                {
-                    logOnce();
-                    addProperty(_file, "tags", scriptData, ref newData);
-                }
+                handleProp("tags");
 
                 // Adding the comment closing tag
                 newData.Add("*/");
@@ -151,12 +132,21 @@ public class UpdateTags
                 void handleProp(string prop)
                 {
                     // If prop is already made, use it
-                    if (!isCore && hasProperty(fileData, prop, out string _prop))
-                        newData.Add($"{prop}: {_prop.Replace("  ", " ").Trim()}");
+                    if (!isCore && hasProperty(file, fileData, prop, out string _prop))
+                    {
+                        if (prop == "tags")
+                        {
+                            string[] _tags = _prop.Split(',', StringSplitOptions.TrimEntries);
+                            for (int i = 0; i < _tags.Length; i++)
+                                _tags[i] = _tags[i] == _tags[i].ToUpper() ? _tags[i] : _tags[i].ToLower();
+                            newData.Add("tags: " + String.Join(", ", _tags));
+                        }
+                        else newData.Add($"{prop}: {_prop.Replace("  ", " ").Trim()}");
+                    }
                     // If the user has exited, write null
                     else if (userExit || isCore)
                     {
-                        newData.Add(prop + ": null");
+                        newData.Add($"{prop}: {(prop == "name" ? file.Replace('\\', '/').Split('/').Last().Replace(".cs", "") : "null")}");
                     }
                     // Otherwise, ask for the prop
                     else
@@ -214,16 +204,18 @@ public class UpdateTags
             return toReturn.Count() > 0 ? toReturn[1..] : null;
         }
 
-        bool hasProperty(List<string> file, string prop, out string propData)
+        bool hasProperty(string file, List<string> fileData, string prop, out string propData)
         {
-            var _file = file.TakeWhile(l => l != "*/");
-            if (_file.Any(l => l.StartsWith(prop.ToLower()) &&
-                l.Contains(':') && !l.TrimEnd().EndsWith("null") &&
+            var _fileData = fileData.TakeWhile(l => l != "*/");
+            if (_fileData.Any(l => l.StartsWith(prop.ToLower()) &&
+                l.Contains(':') &&
+                !l.TrimEnd().EndsWith("null") &&
+                l != "name: " + file.Replace('\\', '/').Split('/').Last().Replace(".cs", "") &&
                 !String.IsNullOrWhiteSpace(l.Split(':').Last()) &&
                 !String.IsNullOrEmpty(l.Split(':').Last())
                 ))
             {
-                propData = _file.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(prop.ToLower() + ':').Last();
+                propData = _fileData.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(prop.ToLower() + ':').Last();
                 return true;
             }
             propData = String.Empty;
