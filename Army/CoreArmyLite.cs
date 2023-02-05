@@ -8,6 +8,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
+using Skua.Core.Models;
 using Skua.Core.ViewModels;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
@@ -293,7 +294,7 @@ public class CoreArmyLite
         string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string combinedDigits = "";
 
-        foreach (char c in (CoreBots.SkuaPath ?? Bot.Config!.Get<string>(player1)!).ToUpper())
+        foreach (char c in (ClientFileSources.SkuaDIR))
         {
             if (char.IsDigit(c))
                 combinedDigits += c;
@@ -480,7 +481,7 @@ public class CoreArmyLite
 
         string[] fileSetup()
         {
-            string path = Path.Combine(CoreBots.OptionsPath, "TheFamily.txt");
+            string path = Path.Combine(ClientFileSources.SkuaOptionsDIR, "TheFamily.txt");
             if (File.Exists(path))
                 return File.ReadAllLines(path);
 
@@ -531,7 +532,7 @@ public class CoreArmyLite
                 Core.Logger("No input provided, stopping the bot.", messageBox: true, stopBot: true);
 
             Core.WriteFile(path, data[..^1]);
-            Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"If you ever wish to edit things, the file can be found at:\n{CoreBots.SkuaPath + "/" + path}", "File path"));
+            Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"If you ever wish to edit things, the file can be found at:\n{path}", "File path"));
             return data[..^1].Split('\n');
 
             bool isInvalid(InputDialogViewModel input) =>
