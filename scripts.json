@@ -11808,25 +11808,25 @@
   },
   {
     "name": "Army Spirit Orbs",
-    "description": "null",
+    "description": "Farms Spirit Orbs using your army.",
     "tags": [
       "army",
       "spirit orb"
     ],
     "path": "Army/Various/ArmySpiritOrb.cs",
-    "size": 1984,
+    "size": 2014,
     "fileName": "ArmySpiritOrb.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySpiritOrb.cs"
   },
   {
     "name": "Army Prismatic Seams",
-    "description": "null",
+    "description": "Farms Prismatic Seams using your army.",
     "tags": [
       "army",
       "prismatic seams"
     ],
     "path": "Army/Various/ArmyPrismaticSeams.cs",
-    "size": 1636,
+    "size": 1670,
     "fileName": "ArmyPrismaticSeams.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPrismaticSeams.cs"
   },
@@ -11861,7 +11861,7 @@
   },
   {
     "name": "Army Mirror Realm Tokens",
-    "description": "null",
+    "description": "Farms Mirror Realm Tokens using your army.",
     "tags": [
       "army",
       "mirror realm token",
@@ -11869,27 +11869,28 @@
       "mirror realm"
     ],
     "path": "Army/Various/ArmyMirrorRealmToken.cs",
-    "size": 2080,
+    "size": 2118,
     "fileName": "ArmyMirrorRealmToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
   },
   {
     "name": "Army Smart Void Auras",
-    "description": "null",
+    "description": "Farms Void Auras with the best method available using your army.",
     "tags": [
       "army",
       "void aura",
       "methods",
-      "smart"
+      "smart",
+      "va"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 9314,
+    "size": 9378,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
   {
     "name": "Army Light Caster",
-    "description": "null",
+    "description": "Farms LightCaster class using your army.",
     "tags": [
       "army",
       "lightcaster",
@@ -11899,20 +11900,21 @@
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4787,
+    "size": 4823,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
   {
     "name": "Army Penny for Your Thoughts",
-    "description": "null",
+    "description": "Farms Dark Spirit Orbs from Penny for Your Thoughts quest using your army.",
     "tags": [
       "army",
       "penny for your thoughts",
-      "dark spirit orb"
+      "dark spirit orb",
+      "dso"
     ],
     "path": "Army/Various/ArmyPennyForYourThoughts.cs",
-    "size": 1753,
+    "size": 1828,
     "fileName": "ArmyPennyForYourThoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPennyForYourThoughts.cs"
   },
@@ -14902,10 +14904,12 @@
     "name": "Army TreasureHunter Rep",
     "description": "Farm reputation with your army. Faction",
     "tags": [
-      "null"
+      "army",
+      "reputation",
+      "treasure hunter"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyTreasureHunterRep.cs",
-    "size": 1915,
+    "size": 1944,
     "fileName": "ArmyTreasureHunterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyTreasureHunterRep.cs"
   },
