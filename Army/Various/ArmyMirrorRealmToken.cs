@@ -1,6 +1,6 @@
 /*
 name: Army Mirror Realm Tokens
-description: null
+description: Farms Mirror Realm Tokens using your army.
 tags: army, mirror realm token, token, mirror realm
 */
 //cs_include Scripts/CoreBots.cs

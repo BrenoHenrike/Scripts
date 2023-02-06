@@ -1,7 +1,7 @@
 /*
 name: Army Penny for Your Thoughts
-description: null
-tags: army, penny for your thoughts, dark spirit orb
+description: Farms Dark Spirit Orbs from Penny for Your Thoughts quest using your army.
+tags: army, penny for your thoughts, dark spirit orb, dso
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

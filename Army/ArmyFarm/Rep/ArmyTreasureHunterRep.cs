@@ -1,7 +1,7 @@
 /*
 name: Army TreasureHunter Rep
 description: Farm reputation with your army. Faction: Treasure Hunter
-tags: null
+tags: army, reputation, treasure hunter
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

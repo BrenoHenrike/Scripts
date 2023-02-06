@@ -1,7 +1,7 @@
 /*
 name: Army Smart Void Auras
-description: null
-tags: army, void aura, methods, smart
+description: Farms Void Auras with the best method available using your army.
+tags: army, void aura, methods, smart, va
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

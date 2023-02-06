@@ -1,6 +1,6 @@
 /*
 name: Army Light Caster
-description: null
+description: Farms LightCaster class using your army.
 tags: army, lightcaster, lightmage, class, 0file, doall
 */
 //cs_include Scripts/CoreBots.cs

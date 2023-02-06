@@ -1,6 +1,6 @@
 /*
 name: Army Prismatic Seams
-description: null
+description: Farms Prismatic Seams using your army.
 tags: army, prismatic seams
 */
 //cs_include Scripts/CoreBots.cs

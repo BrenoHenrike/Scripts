@@ -1,6 +1,6 @@
 /*
 name: Army Spirit Orbs
-description: null
+description: Farms Spirit Orbs using your army.
 tags: army, spirit orb
 */
 //cs_include Scripts/CoreBots.cs
