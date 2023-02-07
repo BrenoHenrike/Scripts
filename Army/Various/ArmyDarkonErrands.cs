@@ -46,6 +46,8 @@ public class ArmyDarkonErrands
 
     public void Setup(Method Method, int quant = 222)
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Core.EquipClass(ClassType.Solo);
         if (Method.ToString() == "Third_Errands")
             GetItem("tercessuinotlim", new[] { "Nulgath" }, 7326, "Darkon's Receipt", quant);

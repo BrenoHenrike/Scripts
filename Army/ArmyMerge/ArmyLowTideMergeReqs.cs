@@ -51,6 +51,9 @@ public class ArmyLowTideMergeReqs
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Army.AggroMonPacketDelay = Bot.Config.Get<int>("PacketDelay");
 
         Core.AddDrop(Loot);

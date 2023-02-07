@@ -63,6 +63,8 @@ public class ArmyLightCaster
 
     public void LightCaster()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop(38153, 31058, 30266, 31019, 31028);
 

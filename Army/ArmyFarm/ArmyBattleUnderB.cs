@@ -50,6 +50,8 @@ public class ArmyBoneDust
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Core.AddDrop(Loot);
         if (Bot.Config.Get<bool>("UndeadEssence"))
             Core.AddDrop("Undead Essence");

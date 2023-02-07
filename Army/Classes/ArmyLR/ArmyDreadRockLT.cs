@@ -42,6 +42,9 @@ public class ArmyDreadRockLT
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
+            
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Core.AddDrop("Legion Token");
         Core.Logger($"Farming {quant} Legion Tokens");
         Core.EquipClass(ClassType.Farm);
