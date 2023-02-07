@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 129609,
+    "size": 130355,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -6179,13 +6179,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/FirstClassEntertainment.cs"
   },
   {
-    "name": "0BestAvailableLegionTokens",
-    "description": "null",
+    "name": "Best Available Token",
+    "description": "uses the best pet you have for legion token farming",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/0BestAvailableLegionTokens.cs",
-    "size": 686,
+    "size": 743,
     "fileName": "0BestAvailableLegionTokens.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/0BestAvailableLegionTokens.cs"
   },
