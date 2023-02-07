@@ -28,7 +28,8 @@ public class FiendToken
 
     public void FarmFiendToken()
     {
-        HanzoOrbQuest.HanzoOrb("FiendToken, 30");
+        if (!Core.IsMember)
+            HanzoOrbQuest.HanzoOrb("FiendToken, 30");
         Nation.FarmFiendToken();
 
     }
