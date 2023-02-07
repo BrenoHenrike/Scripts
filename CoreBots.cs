@@ -2396,6 +2396,10 @@ public class CoreBots
                 SimpleQuestBypass((182, 7));
                 break;
 
+            case "ultratyndarius":
+                SimpleQuestBypass((412, 22));
+                break;
+
             case "towerofdoom1":
             case "towerofdoom2":
             case "towerofdoom3":
