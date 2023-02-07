@@ -50,6 +50,8 @@ public class ArmyLegionToken
 
     public void Setup(Method Method, int quant = 25000)
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Legion.JoinLegion();
 
         switch (Method.ToString())

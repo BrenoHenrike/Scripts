@@ -210,6 +210,8 @@ public class DoTArmy
         if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(QuestRewards)))
             return;
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Bot.Events.PlayerAFK += PlayerAFK;
         /*
         ********************************************************************************

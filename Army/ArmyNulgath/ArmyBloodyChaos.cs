@@ -47,6 +47,8 @@ public class ArmyBloodyChaos
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
         

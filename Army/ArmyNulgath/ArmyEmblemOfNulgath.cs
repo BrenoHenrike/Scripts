@@ -36,7 +36,7 @@ public class ArmyEmblemOfNulgath
     };
 
     public void ScriptMain(IScriptInterface bot)
-    {
+    {       
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
@@ -50,6 +50,8 @@ public class ArmyEmblemOfNulgath
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         if (!Core.CheckInventory("Nation Round 4 Medal"))
         {

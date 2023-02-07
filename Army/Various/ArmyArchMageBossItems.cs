@@ -51,6 +51,8 @@ public class ArchMageMatsArmy
 
     public void WaitingRoom()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.Unbank(Drops);
         Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up, lets hope this works LFMAO");

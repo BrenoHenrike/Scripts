@@ -32,7 +32,7 @@ public class SuppliesWheelArmy
     };
 
     public void ScriptMain(IScriptInterface bot)
-    {
+    {       
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.BankingBlackList.Add("Relic of Chaos");
 
@@ -47,6 +47,8 @@ public class SuppliesWheelArmy
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");

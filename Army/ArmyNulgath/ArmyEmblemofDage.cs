@@ -41,7 +41,7 @@ public class ArmyEmblemofDage
     };
 
     public void ScriptMain(IScriptInterface bot)
-    {
+    {        
         Core.BankingBlackList.AddRange(new[] { "Emblem of Dage", "Legion Round 4 Medal" });
 
         Core.SetOptions(disableClassSwap: true);
@@ -55,6 +55,8 @@ public class ArmyEmblemofDage
     {
         if (Core.CheckInventory("Emblem of Dage", quant))
             return;
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Legion.LegionRound4Medal();
 

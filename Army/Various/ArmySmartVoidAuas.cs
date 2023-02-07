@@ -63,7 +63,7 @@ public class ArmySmartVoidAuras
 
 
     public void ScriptMain(IScriptInterface bot)
-    {
+    {       
         Core.BankingBlackList.AddRange(VA);
         Core.SetOptions();
         
@@ -74,6 +74,7 @@ public class ArmySmartVoidAuras
 
     public void WaitingRoom()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
         Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up\n" +
                                                             "lets hope this works LFMAO");
         Bot.Events.PlayerAFK += PlayerAFK;

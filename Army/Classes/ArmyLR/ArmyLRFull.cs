@@ -106,6 +106,8 @@ public class ArmyLR
 
     public void LR(bool sellToSYnc = true)
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Army.SellToSyncOn = sellToSYnc;
 
         Legion.JoinLegion();

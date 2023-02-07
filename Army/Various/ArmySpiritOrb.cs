@@ -51,6 +51,8 @@ public class ArmySpiritOrb
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(2082, 2083);

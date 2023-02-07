@@ -49,10 +49,12 @@ public class ArmyTotemAndGem
 
     public void Setup(Rewards reward)
     {
-        Nation.FarmVoucher(false);
-
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+       Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
+        Nation.FarmVoucher(false);
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

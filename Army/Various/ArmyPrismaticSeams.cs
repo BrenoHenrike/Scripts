@@ -45,6 +45,8 @@ public class ArmyPrimaticSeams
 
     private void Dothething()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         SoW.CompleteCoreSoW();
         ArmyPS();
     }

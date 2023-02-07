@@ -44,6 +44,8 @@ public class ArmyMirrorRealmToken
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
         Core.AddDrop("Mirror Realm Token");
 
         if (Method.ToString() == "Kill_Weak_Mob")

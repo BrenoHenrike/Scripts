@@ -51,6 +51,8 @@ public class ArmyUniqueQuarry
 
     public void Setup()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Quest QuestData = Core.EnsureLoad(9000);
         ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
