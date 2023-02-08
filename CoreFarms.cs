@@ -510,9 +510,8 @@ public class CoreFarms
 
         Core.AddDrop(item);
         Core.EquipClass(ClassType.Farm);
-
         Core.ConfigureAggro();
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, false, false);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp: false, log: false);
         Core.ConfigureAggro(false);
         Core.JumpWait();
     }
