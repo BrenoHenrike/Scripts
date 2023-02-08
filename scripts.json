@@ -11948,15 +11948,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyMerge/ArmyLowTideMergeReqs.cs"
   },
   {
-    "name": "All do AllDailies",
-    "description": "Alldailies",
+    "name": "Army All Dailies",
+    "description": "One-client version of AllDail ies",
     "tags": [
       "alldailies",
       "army",
       "thefamily"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1548,
+    "size": 1570,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
