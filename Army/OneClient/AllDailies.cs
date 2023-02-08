@@ -1,6 +1,6 @@
 /*
-name: All do AllDailies
-description: Alldailies
+name: Army All Dailies
+description: One-client version of All Dailies
 tags: alldailies, army, thefamily
 */
 //cs_include Scripts/CoreBots.cs
