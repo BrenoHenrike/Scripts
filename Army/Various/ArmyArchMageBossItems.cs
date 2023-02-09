@@ -17,12 +17,20 @@ public class ArchMageMatsArmy
     public CoreFarms Farm = new();
     private CoreArmyLite Army = new();
 
+    private static CoreArmyLite sArmy = new();
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "BossDrops";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 4),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.player7,
+        sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
 
