@@ -40,7 +40,7 @@ public class ArmyLightCaster
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
+        new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -64,74 +64,62 @@ public class ArmyLightCaster
     public void LightCaster()
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
+
+        Bot.Events.PlayerAFK += PlayerAFK;
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop(38153, 31058, 30266, 31019, 31028);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38153, 31058 }))
         {
-            Core.EnsureAccept(4510);
-            Core.EnsureAccept(4511);
-            Core.EnsureAccept(4512);
+            Core.EnsureAccept(4510, 4511, 4512);
             if (!Core.CheckInventory(30266))
-                ArmyThing(4510, "lostruinswar", new[] { "Fallen Knight" }, "Trapped Spirits", false, 500);
+                ArmyHunt("lostruinswar", new[] { "Fallen Knight" }, "Trapped Spirits", ClassType.Farm, isTemp: false, 500);
             if (!Core.CheckInventory(31019))
-                ArmyThing(4511, "lostruinswar", new[] { "Infernal Imp" }, "Energy of Death", false, 500);
+                ArmyHunt("lostruinswar", new[] { "Infernal Imp" }, "Energy of Death", ClassType.Farm, isTemp: false, 500);
             if (!Core.CheckInventory(31028))
-                ArmyThing(4512, "lostruinswar", new[] { "Underworld Hound" }, "Captured Time", false, 500);
-            Core.EquipClass(ClassType.Solo);
+                ArmyHunt("lostruinswar", new[] { "Underworld Hound" }, "Captured Time", ClassType.Farm, isTemp: false, 500);
             BB.GetBurningBlade();
             LM.GetLM(true);
             Bot.Quests.UpdateQuest(6042);
             Core.EnsureAccept(6495);
             BBOA.GetBBoA();
+            Core.Logger("\"Aranx\" is  Solo only boss, cannot part.");
             Adv.BoostHuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
             Core.EnsureComplete(6495);
             Bot.Wait.ForPickup("LightCaster");
             Adv.rankUpClass("LightCaster");
         }
+        Bot.Events.PlayerAFK -= PlayerAFK;
     }
 
-    void ArmyThing(int questID, string map = null, string[] monsters = null, string item = null, bool isTemp = false, int quant = 0)
+
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (Core.CheckInventory(item, quant))
-            return;
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
 
-        if (item == null)
-            return;
+        Core.AddDrop(item);
 
-        Bot.Drops.Add(item);
-
-        Core.EquipClass(ClassType.Farm);
+        Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
-        Core.Join(map);
-        WaitCheck();
-        Core.EnsureAccept(questID);
-
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monsters);
+        Army.SmartAggroMonStart(map, monsters);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
         Army.AggroMonStop(true);
         Core.JumpWait();
-        Bot.Wait.ForPickup(item);
-        Core.EnsureComplete(questID);
     }
 
-    void WaitCheck()
+    public void PlayerAFK()
     {
-        while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
-        {
-            Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-            Bot.Sleep(5000);
-        }
-        Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
+        Core.Logger("Anti-AFK engaged");
+        Bot.Sleep(1500);
+        Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 
 }

@@ -134,7 +134,7 @@ public class ArmySmartVoidAuras
         Core.ConfigureAggro(false);
     }
 
-    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1, bool sellToSYnc = true)
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
