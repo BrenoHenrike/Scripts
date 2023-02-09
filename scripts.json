@@ -11777,7 +11777,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 2616,
+    "size": 3065,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -11840,7 +11840,7 @@
       "boss items"
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 6958,
+    "size": 7073,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
